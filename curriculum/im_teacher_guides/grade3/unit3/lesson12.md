@@ -93,12 +93,12 @@ because students will be in different stages as they progress toward fluency.
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 2 × 6                                                  • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 3 × 6
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 2 × 7
+        • 3 × 7
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
@@ -108,14 +108,14 @@ Student Response                                                 • Record answ
   • 18: I knew it would be 1 more group of 6 than the
     first expression, and 12 plus 6 is 18. I just knew it.
   • 14: I knew it would be 1 more group of 2 than the          Activity Synthesis
-    first problem. It's 2 groups of 7, so I found   ,
+    first problem. It's 2 groups of 7, so I found 7 + 7,
                                                                  • “What pattern do you see as you look at the
     which is 14.
                                                                    expressions and their values? Why is that
   • 21: It would be 1 more group of 7 than the last                happening?” (When the first factor increases by 1, the
-    problem. 14 plus 7 is 21. It's 3 more than      , or 3         value increases by the other number because it’s like
-    more than 18, which is 21.                                     adding another group. The value of        is 2 more
-                                                                   than the value of      because there’s 1 more in
+    problem. 14 plus 7 is 21. It's 3 more than 3 × 6, or 3         value increases by the other number because it’s like
+    more than 18, which is 21.                                     adding another group. The value of 2 × 7 is 2 more
+                                                                   than the value of 2 × 6 because there’s 1 more in
                                                                    each group or 1 more group of 2.)
                                                                  • As needed, record student thinking, using equal-
                                                                    groups drawings or arrays to help all students
@@ -168,14 +168,14 @@ common structure and observe regularity in repeated reasoning (MP7, MP8).
       the value of each difference. Show your reasoning.            Remember that algorithms are just one way we can
       Organize your work so it can be followed by others.           solve problems. We also can use other strategies or
                                                                     representations.”
-       1.
+       1. 451 - 329
                                                                   • “How would you describe the difference between an
-       2.
+       2. 382- 190
                                                                     algorithm and other strategies?” (A strategy, like
-       3.                                                           adding up, might work for the one problem you are
-       4.                                                           solving, but an algorithm has steps that work for any
+       3. 924- 285                                                  adding up, might work for the one problem you are
+       4. 600- 478                                                  solving, but an algorithm has steps that work for any
                                                                     problem.)
-       5.
+       5. 505 - 417
                                                                   • 1 minute: partner discussion
                                                                   • Share responses.
                                                                   • “You’re going to have an opportunity to find the value
@@ -199,8 +199,8 @@ common structure and observe regularity in repeated reasoning (MP7, MP8).
  2. 192. Sample response: I subtracted 200 from 382 to
                                                                  • Choose a few problems for students to discuss.
     get 182. Then I added 10 back.
-                                                                   Consider selecting           (the second
- 3. 639. Sample response:                                          expression) and           (the fourth expression),
+                                                                   Consider selecting 382- 190 (the second
+ 3. 639. Sample response:                                          expression) and 600- 478 (the fourth expression),
                                                                    which lend themselves to be evaluated with an
                                                                    algorithm and another strategy, respectively.
                                                                  • “Find a partner who subtracted the same way you
@@ -329,7 +329,7 @@ Addressing      3.NBT.A.2
 
 
      Student Task Statement
-      How would you find the value of             ? Explain your reasoning.
+      How would you find the value of 700- 599 ? Explain your reasoning.
 
 
 

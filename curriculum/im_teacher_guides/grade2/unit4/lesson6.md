@@ -75,7 +75,7 @@ Lesson Timeline                                                  Teacher Reflect
 Number Talk: Decompose and Subtract
 
      Standards                                                        Instructional Routines
-Addressing      2.NBT.B.5                                          • Number Talk
+Addressing      2.NBT.B.5                                         • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for decomposing the
@@ -83,34 +83,34 @@ subtrahend to create a difference that is known or easier to find. These underst
 and will be helpful later in this lesson when students play center games to practice fluency.
 
 
-     Student Task Statement                                      Launch
-      Find the value of each expression mentally.                  • Display one expression.
+     Student Task Statement                                     Launch
+      Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
-                                                                     explain how you got it.”
-        •
-                                                                   • 1 minute: quiet think time
-        •
+        • 65 - 25                                                 • “Give me a signal when you have an answer and can
+                                                                    explain how you got it.”
+        • 65 - 27
+                                                                  • 1 minute: quiet think time
+        • 55 - 17
 
-        •                                                        Activity
-                                                                   • Record answers and strategy.
+        • 46- 18                                                Activity
+                                                                  • Record answers and strategy.
 Student Response
-                                                                   • Keep expressions and work displayed.
-Sample responses:                                                  • Repeat with each expression.
-  • 40: I subtracted         to get 60. Then I subtracted
-             and got 40.
-  • 38: I knew            , so I did that first. Then I
-                                                                 Activity Synthesis
-    took away 2 more because I need to take away 27.               • “What strategies did you hear people use that
-  • 38: I took away 10 first (               ). Then I took          showed thinking about decomposing what you were
-    away 5 to get 40 (              ). I had to take away 2          subtracting to make the difference easier to find?” (I
-    more and got 38.                                                 broke the second number into tens and ones. I broke
-                                                                     the number into tens and as many ones as I could to
+                                                                  • Keep expressions and work displayed.
+Sample responses:                                                 • Repeat with each expression.
+  • 40: I subtracted 65 - 5 to get 60. Then I subtracted
+    60- 20 and got 40.
+  • 38: I knew 65 - 25 = 40, so I did that first. Then I
+                                                                Activity Synthesis
+    took away 2 more because I need to take away 27.              • “What strategies did you hear people use that
+  • 38: I took away 10 first (55 - 10 = 45). Then I took            showed thinking about decomposing what you were
+    away 5 to get 40 (45 - 5 = 40). I had to take away 2            subtracting to make the difference easier to find?” (I
+    more and got 38.                                                broke the second number into tens and ones. I broke
+                                                                    the number into tens and as many ones as I could to
   • 28: I thought of the last expression and took away 10
-                                                                     take away all the ones. Then I counted back what was
-    first to get 36 (             ). Then I took away all the
-                                                                     left.)
-    ones (             ). I had two left and counted back
+                                                                    take away all the ones. Then I counted back what was
+    first to get 36 (46- 10 = 36 ). Then I took away all the
+                                                                    left.)
+    ones (36- 6 = 30 ). I had two left and counted back
     to get to 28.
 
 
@@ -130,7 +130,7 @@ and Tens, Students take turns spinning a spinner and moving their cube that inte
 
                                              Grade 2                                   CC BY NC 2024
                                               Unit 4
-                                                                Lesson 6
+                                                               Lesson 6
                                                                                 Illustrative Mathematics®                 2
 Students may use the number they spin to move that number of length units on one number line or decompose the
 number and move on multiple number lines. Each time a cube lands exactly on the last tick mark of one of the number

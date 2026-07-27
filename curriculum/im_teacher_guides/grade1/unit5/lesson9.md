@@ -86,28 +86,28 @@ use of the base-ten structure and properties of operations (MP7).
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 38 + 2                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 40 + 3
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 38 + 5
+        • 38 + 15
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
                                                                  • Keep expressions and work displayed.
   • 40: I counted on, 38… 39, 40.
                                                                  • Repeat with each expression.
-  • 43: I know that        is 43.
+  • 43: I know that 40 + 3 is 43.
   • 43: First I took 2 from the 5 and added it to 38 to get
     to 40. Then I still have 3 more to add and I know that     Activity Synthesis
-                  .
+    40 + 3 = 43.
                                                                  • “Who can restate _______ 's reasoning in a different
-  • 53: From the last problem I know that               .          way?”
+  • 53: From the last problem I know that 38 + 5 = 43.             way?”
     15 is 10 more than 5 so I need to add 10 to 43.
-                                                                 • “How could the expressions            and          help
-                 .
-                                                                   you to find the value of        ?” (The first one shows
+                                                                 • “How could the expressions 38 + 2 and 40 + 3 help
+    43 + 10 = 53.
+                                                                   you to find the value of 38 + 5?” (The first one shows
                                                                    us adding part of 5 to get to 40 and then adding the
                                                                    rest in the second expression.)
 
@@ -160,7 +160,7 @@ Materials to Gather
 
 
      Student Task Statement                                    Launch
-      Find the value of       .                                  • Groups of 2
+      Find the value of 17 + 36.                                 • Groups of 2
       Show your thinking using drawings, numbers, or             • Give students access to connecting cubes in towers
       words.                                                       of 10 and singles.
 
@@ -176,9 +176,9 @@ Student Response                                               Activity
     then adds 7 ones while counting 47, 48, 49, 50, 51,          • As you monitor for the approaches listed in the
     52, 53.                                                        activity narrative, consider asking:
 
-  • Shows 17 and 36 with tens and ones, combines 3                   ◦ “How did you find the value of           ?”
+  • Shows 17 and 36 with tens and ones, combines 3                   ◦ “How did you find the value of 17 + 36?”
     ones from 36 with the 7 ones from 17 to make a new               ◦ “How did you use tens and ones to help you find
-    ten, and then adds or counts the tens and ones.                    the value of       ?”
+    ten, and then adds or counts the tens and ones.                    the value of 17 + 36?”
                                                                      ◦ “How did you decide which parts to add first?”
 
 
@@ -217,7 +217,7 @@ Student Response                                               Activity
 
 Advancing Student Thinking
 If students count all or count on by ones to find the sum, consider asking:
-   • “How did you find the value of          ?”
+   • “How did you find the value of 36 + 17?”
   • “How could you use connecting cubes to find the value without counting by ones?”
 
 
@@ -248,7 +248,7 @@ adding tens and tens and ones and ones.
 tens and ones and ones. The teacher records students' thinking using base-ten drawings and equations and encourages
 students to explain how each representation shows the method used to determine the sum. For example, when finding
 the sum of 45 and 37, if the students add tens and tens and ones and ones by counting all the ones without making a
-new tower of 10, the teacher represents their thinking as:
+new tower of 10, the teacher represents their thinking as: 45 + 37 =
 
 
 
@@ -258,10 +258,10 @@ physically making a new ten with connecting cubes or drawing to group 10 ones to
 interpret base-ten drawings in the next lesson.
 
 
-      Access for English Language Learners
-      MLR7 Compare and Connect. Synthesis: After all methods have been presented, lead a discussion comparing,
-      contrasting, and connecting the different approaches. Ask: “How are the strategies alike? How are they different?”
-      Advances: Representing, Conversing
+     Access for English Language Learners
+     MLR7 Compare and Connect. Synthesis: After all methods have been presented, lead a discussion comparing,
+     contrasting, and connecting the different approaches. Ask: “How are the strategies alike? How are they different?”
+     Advances: Representing, Conversing
 
 
 Required Materials
@@ -271,22 +271,22 @@ Materials to Gather
 
 
      Student Task Statement                                   Launch
-      Round 1:                                                  • Groups of 4
+     Round 1:                                                   • Groups of 4
 
-      Grab a handful of towers of ten and a handful of          • Give students access to connecting cubes in towers
-      single cubes.                                               of 10 and singles.
+     Grab a handful of towers of ten and a handful of           • Give students access to connecting cubes in towers
+     single cubes.                                                of 10 and singles.
                                                                 • “We are going to play a game called Grab and Add.
-      I have ______________ cubes. My partner has
+     I have ______________ cubes. My partner has
                                                                   Each partner grabs a handful of towers and a handful
-      ______________ cubes.
+     ______________ cubes.
                                                                   of single cubes. First determine how many cubes you
                                                                   have, then determine how many cubes you and your
 
 
-                                            Grade 1                                 CC BY NC 2024
-                                             Unit 5
+                                           Grade 1                                 CC BY NC 2024
+                                            Unit 5
                                                              Lesson 9
-                                                                             Illustrative Mathematics®              5
+                                                                            Illustrative Mathematics®              5
       How many cubes do you and your partner have                  partner have altogether. Show your thinking using
       altogether?                                                  drawings, numbers, or words.”
       Show your thinking using drawings, numbers, or
@@ -326,7 +326,7 @@ Materials to Gather
 
 
 Student Response
-Sample response for          :
+Sample response for 15 + 36:
   • 1 ten and 3 tens is 4 tens. 5 and 6 is 11. 40 and 11 is
     51.
   • 15 and 5 is 20. 20 and 31 is 51.
@@ -345,39 +345,39 @@ tomorrow?”
                                               Unit 5
                                                               Lesson 9
                                                                               Illustrative Mathematics®              6
-Cool-down                                                                                                   5 min
+Cool-down                                                                                                  5 min
 
 Find the Value
 
-      Standards
+     Standards
 Addressing     1.NBT.C.4
 
 
-      Student Task Statement
-      Find the value of       .
-      Show your thinking using drawings, numbers, or words.
+     Student Task Statement
+     Find the value of 18 + 55.
+     Show your thinking using drawings, numbers, or words.
 
 
 Student Response
 73. Sample responses:
 
   • Draws 18 as 1 ten and 8 ones. Draws 55 as 5 tens and 5 ones underneath. Draws and labels to show grouping 10
-    ones as 1 ten. Labels work to show adding or counting on                 .
-  •              ,
+    ones as 1 ten. Labels work to show adding or counting on 60 + 10 + 3 = 73.
+  • 55 + 10 = 65, 65 + 8 = 73
 
 
 Responding to Student Thinking
-Students write something other than 73 as the value.          Next Day Supports
-                                                              Encourage students who find sums mentally to check
-                                                              their thinking with connecting cubes in towers of 10 and
-                                                              singles.
+Students write something other than 73 as the value.         Next Day Supports
+                                                             Encourage students who find sums mentally to check
+                                                             their thinking with connecting cubes in towers of 10 and
+                                                             singles.
 
 
 
 
-                                          Grade 1                                   CC BY NC 2024
+                                          Grade 1                                  CC BY NC 2024
                                            Unit 5
                                                          Lesson 9
-                                                                             Illustrative Mathematics®              7
+                                                                            Illustrative Mathematics®              7
 ```
 

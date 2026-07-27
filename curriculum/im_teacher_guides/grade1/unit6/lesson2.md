@@ -63,26 +63,26 @@ Materials to Gather
                                              Unit 6
                                                             Lesson 2
                                                                              Illustrative Mathematics®              1
-Lesson Timeline                                                  Teacher Reflection Questions
-                                                                 How did students explain how they used a tool (like the
- Warm-up                                        10 min
-                                                                 pencil or the string) to compare lengths indirectly? What
- Activity 1                                     15 min           did their explanations show they understand about
-                                                                 comparing attributes like length?
- Activity 2                                     20 min
+Lesson Timeline                                              Teacher Reflection Questions
+                                                             How did students explain how they used a tool (like the
+ Warm-up                                    10 min
+                                                             pencil or the string) to compare lengths indirectly? What
+ Activity 1                                 15 min           did their explanations show they understand about
+                                                             comparing attributes like length?
+ Activity 2                                 20 min
 
- Synthesis Estimate                             10 min
+ Synthesis Estimate                         10 min
 
- Cool-down                                          5 min
+ Cool-down                                      5 min
 
 
 
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                     10 min
 
 Number Talk: Add within 100
 
-      Standards                                                       Instructional Routines
-Addressing     1.NBT.C.4                                           • Number Talk
+      Standards                                                   Instructional Routines
+Addressing     1.NBT.C.4                                       • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for adding within 100. These
@@ -91,37 +91,37 @@ within 100. When students share methods based on adding tens and tens and ones a
 looking for and making use of the base-ten structure of two-digit numbers (MP7).
 
 
-      Student Task Statement                                     Launch
-      Find the value of each expression mentally.                  • Display one expression.
+      Student Task Statement                                 Launch
+      Find the value of each expression mentally.              • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
-                                                                     explain how you got it.”
-        •
-                                                                   • 1 minute: quiet think time
-        •
-        •
-                                                                 Activity
+        • 35 + 20                                              • “Give me a signal when you have an answer and can
+                                                                 explain how you got it.”
+        • 35 + 25
+                                                               • 1 minute: quiet think time
+        • 30 + 45
+        • 37 + 45
+                                                             Activity
 
-Student Response                                                   • Record answers and strategies.
-                                                                   • Keep expressions and work displayed.
+Student Response                                               • Record answers and strategies.
+                                                               • Keep expressions and work displayed.
   • 55: Add 2 tens. 45, 55
-                                                                   • Repeat with each expression.
-  • 60: It’s adding              .              .
+                                                               • Repeat with each expression.
+  • 60: It’s adding 35 + 20 + 5. 55 + 5 = 60.
   • 75: Add 3 tens. 55, 65, 75
-                                                                 Activity Synthesis
-  • 82: It’s the same as                .                   .
-                             .              .                      • “Did anyone have the same method but would
-                                                                     explain it differently?”
-                                                                   • “Did anyone approach the problem in a different
-                                                                     way?”
+                                                             Activity Synthesis
+  • 82: It’s the same as 30 + 40 + 7 + 5. 30 + 40 = 70.
+    7 + 5 = 5 + 5 + 2 = 12. 70 + 12 = 82.                      • “Did anyone have the same method but would
+                                                                 explain it differently?”
+                                                               • “Did anyone approach the problem in a different
+                                                                 way?”
 
 
 
 
-                                                Grade 1                                CC BY NC 2024
-                                                 Unit 6
-                                                                Lesson 2
-                                                                                Illustrative Mathematics®                2
+                                           Grade 1                                 CC BY NC 2024
+                                            Unit 6
+                                                           Lesson 2
+                                                                            Illustrative Mathematics®                2
 Activity 1                                                                                                       15 min
 
 Which Is Longer? Which Is Shorter?
@@ -162,14 +162,14 @@ Required Preparation
                                                                    • Display two objects that are not the same length
       Complete a sentence for each object.                           (Example: a crayon and a marker)
 
-       1. The                     is longer than the               • “How do the lengths of these objects compare?” (The
-                          .                                          crayon is shorter than the marker. The marker is
-       2. The                     is longer than the                 longer than the crayon.)
-                          .                                        • 30 seconds: quiet think time
-       3. The                     is shorter than the              • Share responses.
-                          .
+       1. The ___                 is longer than the               • “How do the lengths of these objects compare?” (The
+          ___             .                                          crayon is shorter than the marker. The marker is
+       2. The ___                 is longer than the                 longer than the crayon.)
+          ___             .                                        • 30 seconds: quiet think time
+       3. The ___                 is shorter than the              • Share responses.
+          ___             .
        4. The                     is shorter than the
-                          .                                      Activity
+          ___ ___         .                                      Activity
                                                                    • “You are going to compare the lengths of objects to
 
 
@@ -361,7 +361,7 @@ Addressing      1.MD.A.1
 
       Use the words pencil and marker to complete this sentence:
 
-      The                   is shorter than the              .
+      The ___               is shorter than the ___          .
 
 
 Student Response

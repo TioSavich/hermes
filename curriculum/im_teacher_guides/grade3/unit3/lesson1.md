@@ -97,11 +97,11 @@ any terms they use, such as “place value,” “hundreds,” “tens,” ones,
       Which 3 go together?                                      • Groups of 2
 
       A.                                     B.                 • Display the image and expressions.
-                                                                • “Pick 3 representations that go together. Be ready to
+                                             300 + 70 + 1       • “Pick 3 representations that go together. Be ready to
                                                                   share why they go together.”
                                                                 • 1 minute: quiet think time
 
-      C.                                     D.
+      C. 300 + 60 + 10                       D. 400- 30
                                                               Activity
 Student Response                                                • “Discuss your thinking with your partner.”
 
@@ -119,7 +119,7 @@ B, C, and D go together because:                                • “Remember 
                                                                   ones. It is written as a sum of the value of each digit,
                                                                   like in B.”
                                                                 • “How would we write 482 in expanded form?”
-
+                                                                  (400 + 80 + 2)
 
 
 
@@ -267,11 +267,11 @@ Sample responses:
 Part 1                                                            one way of decomposing that number in Box 2. In
  1. 485                                                           Box 3, show another way the number you were
                                                                   handed can be decomposed.”
- 2.
+ 2. 400 + 80 + 5
                                                                 • 1–2 minutes: independent work time
- 3.
+ 3. 300 + 180 + 5
                                                                 • “Pass your paper to your right and receive the paper
- 4.
+ 4. 400 + 70 + 15
                                                                   from your left. The paper shows two ways of
 Part 2                                                            decomposing a number. In Box 4, show another way
  1. I can see the 80 in all the representations. It’s the         to decompose that number.”
@@ -321,9 +321,9 @@ Lesson Synthesis
 Display 253.
 
 “Today we decomposed numbers in a lot of different ways. What are some ways that we could decompose 253?”
-(           ,           ,                 )
+(200 + 50 + 3, 200 + 40 + 13, 100 + 150 + 3)
 
-Display           .
+Display 253 + 134.
 
 “If you were adding 253 and 134, which way of decomposing the numbers do you think would be most helpful and why?”
 (I think decomposing them by hundreds, tens, and ones would be most helpful so we could add hundreds and
@@ -343,7 +343,7 @@ Cool-down                                                                       
 Let Me Count the Ways
 
      Standards
-Building Toward       3.NBT.A.2
+Building Toward      3.NBT.A.2
 
 
      Student Task Statement
@@ -358,10 +358,10 @@ Building Toward       3.NBT.A.2
                                             Unit 3
                                                            Lesson 1
                                                                              Illustrative Mathematics®               6
-       C.
-       D.
-       E.
-       F.
+       C. 200 + 50 + 7
+       D. 20 + 500 + 7
+       E. 200 + 40 + 17
+       F. 100 + 140 + 7
 
 
 Student Response

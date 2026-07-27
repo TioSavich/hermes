@@ -47,7 +47,7 @@ any two adjacent digits in a multi-digit number.
 
 The emphasis in this lesson and subsequent ones is not on how to write a number in expanded form. However, this
 notation may be helpful for students to notice a relationship between the same digits in adjacent places in large
-numbers. For example, when students expand 23,450 as                                 and 2,345 as                         ,
+numbers. For example, when students expand 23,450 as 20,000 + 3,000 + 400 + 50 and 2,345 as 2,000 + 300 + 40 + 5,
 they see that the digit 2 in 23,450 has ten times the value of the 2 in 2,345.
 
 When students use strategies that are based on place value and our number system, they are looking for and making
@@ -119,7 +119,7 @@ Sample responses:
   • 1,325                                                            • “What relationships do you notice between the
   • 1 thousand, 3 hundreds, 2 tens, 5 ones                             blocks?”
 
-  •
+  • 1,000 + 300 + 20 + 5
 
 
 
@@ -306,12 +306,12 @@ Materials to Gather
                                               Unit 4
                                                                Lesson 8
                                                                                  Illustrative Mathematics®                 5
-             used in your base-ten representations.                lesson.
+          used in your base-ten representations.                   lesson.
 
 
 Student Response
- 1. 1,325,
- 2. 13,250,
+ 1. 1,325, 1,000 + 300 + 20 + 5 = 1,325
+ 2. 13,250, 10,000 + 3,000 + 200 + 50 = 13,250
  3. Sample responses:
      a. The first number is in the thousands, the second
         is in the ten-thousands.
@@ -335,7 +335,7 @@ Activity 3                                                                      
 Build Hundred-thousands
 
      Standards
-Addressing       4.NBT.A.1, 4.NBT.A.2
+Addressing     4.NBT.A.1, 4.NBT.A.2
 
 
 The purpose of this activity is to review the meaning of expanded form so students can write numbers to the ten-
@@ -358,14 +358,14 @@ Materials to Gather
 
 
 
-                                             Grade 4                                 CC BY NC 2024
-                                              Unit 4
+                                            Grade 4                                  CC BY NC 2024
+                                             Unit 4
                                                             Lesson 8
                                                                               Illustrative Mathematics®               6
                                                                  • Select 1–2 students to share their responses to the
                                                                    first problem.
                                                                  • “How would we write this number using expanded
-                                                                   form?”
+                                                                   form?” (40,000 + 9,000 + 800 + 30)
                                                                  • “Remember, when we write a number as a sum of
                                                                    hundreds, tens, and ones, we are using expanded
            a. What number did Lin represent? Explain or            form.“
@@ -395,11 +395,11 @@ Student Response
  1.   a. 49,830, because 4 ten-thousands blocks is               • Record the reasoning about the value of the blocks
          40,000, 9 thousands is 9,000, 8 hundreds is 800,          using equations:
          and 3 tens is 30.
-      b.
+      b. 40,000 + 9,000 + 800 + 30 = 49,830
  2.   a. 120,450, because 10 ten-thousands blocks is
          100,000, 20 thousands is 20,000, 4 hundreds is
          400, and 5 tens is 50.
-      b.
+      b. 100,000 + 20,000 + 400 + 50 = 120,450
 
 
 
@@ -421,10 +421,10 @@ Write 115,000 for students to see.
                                              Unit 4
                                                             Lesson 8
                                                                                 Illustrative Mathematics®           7
-“What equation could we write to show 10 groups of 10,000 are equivalent to 100,000?” (                     or
-                    )
+“What equation could we write to show 10 groups of 10,000 are equivalent to 100,000?” (10 × 10,000 = 100,000 or
+100,000 ÷ 10 = 1,000)
 
-“How would we write 115,000 using expanded form?”
+“How would we write 115,000 using expanded form?” (100,000 + 10,000 + 5,000)
 
 
 
@@ -435,7 +435,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                               5 min
+Cool-down                                                                                                5 min
 
 Represent 234,000
 
@@ -444,22 +444,22 @@ Addressing     4.NBT.A.2
 
 
      Student Task Statement
-       1. Draw a diagram to represent 234,000.
-       2. Write 234,000 three different ways.
+      1. Draw a diagram to represent 234,000.
+      2. Write 234,000 three different ways.
 
 
 Student Response
  1. Sample responses: 2 units representing hundred-thousands, 3 units representing ten-thousands, 4 units
     representing thousands
  2. Sample responses:
-     a.
+     a. 200,000 + 30,000 + 4,000
      b. 2 large squares, 3 long rectangles, and 4 small cubes, the small cube is worth 1,000
      c. 23 long rectangles and 4 small cubes, the small cube is worth 1,000
 
 
 Responding to Student Thinking
 Students express 234,000 as something other than              Next Day Supports
-                         in expanded form or in               Before the Warm-up, pass back the Cool-down and work
+200,000 + 30,000 + 4,000 in expanded form or in               Before the Warm-up, pass back the Cool-down and work
 representations.                                              in small groups to make corrections.
 
 
@@ -468,6 +468,6 @@ representations.                                              in small groups to
                                            Grade 4                                   CC BY NC 2024
                                             Unit 4
                                                            Lesson 8
-                                                                              Illustrative Mathematics®          8
+                                                                              Illustrative Mathematics®           8
 ```
 

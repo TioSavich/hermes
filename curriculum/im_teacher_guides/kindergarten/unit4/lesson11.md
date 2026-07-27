@@ -263,7 +263,7 @@ Answers vary.                                                   • Groups of 2
                                                                      the students who left in different ways.
                                                                    • “There were 7 kids playing soccer and then 3 of the
                                                                      kids left to go play on the swings. We can write that
-                                                                     as ‘7 take away 3’ or ‘     ’.”
+                                                                     as ‘7 take away 3’ or ‘7- 3 ’.”
 
 
 

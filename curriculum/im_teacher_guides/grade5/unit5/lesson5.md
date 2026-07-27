@@ -88,11 +88,11 @@ important in this and future lessons to write a given decimal in a different for
      Student Task Statement                                     Launch
       Decide if each statement is true or false. Be               • Display one statement.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+        • 7.06 = 7.006                                              statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 7.06 = 7.060                                            • 1 minute: quiet think time
 
-        •
+        • 7.06 = 7.600
                                                                 Activity
 Student Response                                                  • Share and record answers and strategy.
 
@@ -267,7 +267,7 @@ Sample responses:                                             • Invite student
 Lesson Synthesis
 “Today we used place value understanding to compare decimals.”
 
-Display             and               .
+Display 0.51 = 0.510 and 0.52 = 0.520.
 
 “How is this helpful for determining the numbers that come between these two numbers?” (We can name all the
 thousandths. There aren’t any hundredths between 0.51 and 0.52.)

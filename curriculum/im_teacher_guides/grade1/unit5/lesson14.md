@@ -188,7 +188,7 @@ Materials to Gather
       grade levels?
                                                                  only collected 8 cans and the highest amount of cans
       What is the least amount of boxes the school can
-                                                                 collected was 51 in 1st grade.              , which is
+                                                                 collected was 51 in 1st grade. 51 + 8 = 59, which is
       pack to send to the Food Bank?
                                                                  still under 65 cans.)
                                                                • "Is this statement true? 1st grade's cans can't be
@@ -196,15 +196,15 @@ Student Response                                                 packed with any
                                                                  cans can be packed with either 3rd grade's cans or
 Sample Responses:
                                                                  6th grade's cans.)
-  • Kindergarten and 7th,
+  • Kindergarten and 7th, 18 + 29 = 47
   • 1st, 51 cans
-  • 2nd and 8th,
-  • 3rd and 5th,
-  • 4th and 6th,
+  • 2nd and 8th, 23 + 30 = 53
+  • 3rd and 5th, 13 + 40 = 53
+  • 4th and 6th, 39 + 8 = 47
 If you have time:
 
   • Yes. Sample response: Kindergarten, 6th, and
-    7th
+    7th 18 + 8 + 29 = 55
   • 4 boxes. Sample response: 1st and 3rd, 5th and 2nd,
     Kindergarten and 4th and 6th, 7th and 8th
 

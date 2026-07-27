@@ -204,13 +204,13 @@ Required Preparation
                                                                  (The crayon is shorter than the pencil.)
           Fill in the blank.
 
-          The                                      is        Activity
+          The ___                                  is        Activity
           shorter than my shoe.
                                                                • “For the first two questions, share your thinking with
        4. Find an object that is longer than your finger.        a partner. After that, you will draw or write down
           Fill in the blank.                                     your answers.”
                                                                • 10 minutes: group work time
-          The                                      is
+          The ___                                  is
           longer than my finger.                               • Monitor for students who line up the endpoints to
                                                                  compare the lengths.
 

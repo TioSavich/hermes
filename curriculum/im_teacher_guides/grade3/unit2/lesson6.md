@@ -161,9 +161,9 @@ Materials to Gather                                            Materials to Copy
                                                                    each expression. Partner 1 will use Grid 1, and
       Partner 2: Use grid 2.
                                                                    Partner 2 will use Grid 2. Think about how the
-       1.                                                          rectangles might be different.”
-       2.                                                        • 30 seconds: quiet think time
-       3.
+       1. 2 × 5                                                    rectangles might be different.”
+       2. 7 × 3                                                  • 30 seconds: quiet think time
+       3. 6 × 8
 
                                                                Activity
 Student Response                                                 • 3–5 minutes: partner work time
@@ -262,41 +262,41 @@ Required Preparation
       Estimate how many square centimeters and square         • Groups of 2
       inches it will take to tile this square.                • “Estimate how many square inches and how many
                                                                 square centimeters it will take to tile this square.
-          • about _________ square                              Record your estimates.”
-            inches
+        • about _________ square                                Record your estimates.”
+          inches
                                                               • 1 minute: independent work time
-          • about _________ square
+        • about _________ square
                                                               • “Share your estimate with your partner. You may
-            centimeters
+          centimeters
                                                                 revise your estimate if your thinking changes.”
                                                               • 1–2 minutes: partner discussion
        1. Use the inch grid and the centimeter grid to
                                                               • Give students access to scissors and additional
           find the area of the square.
                                                                 copies of the blackline master.
-             ◦ ____________________ square inches
-             ◦ ____________________ square centimeters      Activity
+            ◦ ____________________ square inches
+            ◦ ____________________ square centimeters       Activity
        2. Write a multiplication expression that
                                                               • “Now you’re going to measure the area of the square,
           describes the rows and the columns in the
                                                                 using your inch grid paper and your centimeter grid
           square, and represents the area in each unit.
                                                                 paper.”
-             ◦ ____________________ square inches             • “You can trace the square or cut it out if you want.”
-             ◦ ____________________ square centimeters        • “Then, you can place the square over the grids from
+            ◦ ____________________ square inches              • “You can trace the square or cut it out if you want.”
+            ◦ ____________________ square centimeters         • “Then, you can place the square over the grids from
                                                                 Activity 1 to find the area in square inches and
                                                                 square centimeters.”
 Student Response
                                                               • “Finally, write a multiplication expression to match
  1.   ◦ 4 square inches                                         the area you found.”
       ◦ about 25 square cm                                    • 5 minutes: partner work time
- 2.   ◦                                                     MLR2 Collect and Display
-      ◦
+ 2.   ◦ 2 × 2                                               MLR2 Collect and Display
+      ◦ 5 × 5
                                                               • Circulate to listen for and collect the language
 
 
-                                            Grade 3                               CC BY NC 2024
-                                             Unit 2
+                                           Grade 3                                CC BY NC 2024
+                                            Unit 2
                                                           Lesson 6
                                                                            Illustrative Mathematics®               5
                                                                       students use to discuss square inches and square

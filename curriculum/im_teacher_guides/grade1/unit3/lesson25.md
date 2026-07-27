@@ -150,28 +150,28 @@ Materials to Gather
      Show your thinking using drawings, numbers, or           • Groups of 2
      words.                                                   • Give students access to double 10-frames and
                                                                 connecting cubes or two-color counters.
-       1.
+       1. 20- 15 =
 
                                                             Activity
-       2.
+       2. 19- 3 =
                                                               • “We have been learning about different methods for
                                                                 subtracting. Look at each equation and think about
                                                                 which method you want to use to find the unknown
-       3.
+       3. 13 - 5 =
                                                                 number. You can use different methods for each
                                                                 problem if you would like.”
                                                               • 8 minutes: independent work time
-       4.
+       4. 18 - 9 =
                                                               • As students work, consider asking:
                                                                   ◦ “Which method did you use?”
 
-       5.                                                         ◦ “Why did you choose that method for this
+       5. 17- 15 =                                                ◦ “Why did you choose that method for this
                                                                     equation?”
                                                                   ◦ “Do you use this method for every equation?
                                                                     Why or why not?”
 Student Response                                              • Monitor for students who take away 3 for
 
- 1. 5. Sample response: I started at 15 and counted on                          , and can explain the benefit to
+ 1. 5. Sample response: I started at 15 and counted on           19- 3 =        , and can explain the benefit to
     until I got to 20.                                           choosing this method for these numbers.
 
  2. 16. Sample response: I                                    • 4 minutes: partner discussion
@@ -264,7 +264,7 @@ Student Response                                                 • “How do t
 
 
 Lesson Synthesis
-Display             .
+Display 14- 9 =     .
 
 “Today we used different methods to solve story problems and find unknown numbers in equations. Talk to your
 partner about how you can find the unknown number in this equation using addition or subtraction.”
@@ -285,8 +285,8 @@ Addressing     1.OA.C.6
 
      Show your thinking using drawings, numbers, or words.
 
-       1.
-       2.
+       1. 13 - 7
+       2. 19- 14
 
 
 Student Response

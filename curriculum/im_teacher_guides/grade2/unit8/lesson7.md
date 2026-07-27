@@ -347,9 +347,9 @@ Student Response                                         • Share responses.
                                                                   rows and 5 counters in each row.)
                                                                 • “How can we prove there are 20 counters in this
                                                                   array?” (We can count them. We can skip-count by 5.
-                                                                  We can add               . The top 2 rows have 10
+                                                                  We can add 5 + 5 + 5 + 5. The top 2 rows have 10
                                                                   and the bottom 2 rows have 10, so we can add
-                                                                           .)
+                                                                  10 + 10.)
 
 
 
@@ -365,7 +365,7 @@ Arrange counters to show:
 “How could you use the rows to find the total number of counters?” (I know there are 3 rows with 5 in each row. I can
 skip-count by 5: 5, 10, 15.)
 
-Record student thinking using                .
+Record student thinking using 5 + 5 + 5 = 15.
 
 
 

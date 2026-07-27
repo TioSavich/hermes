@@ -102,13 +102,13 @@ where students will find more complex products of decimals since making an estim
                                                                 • Invite students to share their estimates.
                                                                 • “How do you know the area is greater than 2 square
 Student Response
-                                                                  kilometers?” (I know that      is 21 tenths or 2.1
+                                                                  kilometers?” (I know that 3 × 0.7 is 21 tenths or 2.1
 Sample responses:                                                 and it’s more than that.)
 
   • Too low: 2 to 2.5 square kilometers                         • “How do you know the area is less than 3.2 square
                                                                   kilometers?” (I know 3.85 is less than 4 and 0.79 is
   • About right: near 3 square kilometers
-                                                                  less than 0.8. Then         is 32 tenths or 3.2.)
+                                                                  less than 0.8. Then 4 × 0.8 is 32 tenths or 3.2.)
   • Too high: 3.5 square kilometers or more
 
 
@@ -148,36 +148,36 @@ focus on the place value of each digit in the products (MP7).
        1. Explain or show why each pair of expressions            • Groups of 2
           have the same value.
 
-             a.             and                                 Activity
-             b.             and
+            a. 7.2 × 5.3 and (72 × 53) × 0.01                   Activity
+            b. 6.5 × 2.8 and (65 × 28) ÷ 100
                                                                   • 1–2 minutes: quiet think time
-             c.             and                                   • 8–10 minutes: partner work time
+            c. 31 × 0.44 and (31 × 44) × 1/100                    • 8–10 minutes: partner work time
        2. Find the value of the products in the previous
           problem.
                                                                 Activity Synthesis
-                                                                  • Invite students to explain why            is equivalent
-Student Response                                                    to                .
- 1. Sample responses:                                             • Display equations:                  and
-      a.                    and              so                   • “How do you know the equations are true?”
-                                              and                   (Multiplying 72 or 53 by 0.1 changes the tens to ones
-                                                                    and the ones to tenths.)
-      b.             is                 and that's the same       • Display equation:
-           as dividing by         by 100.
+                                                                  • Invite students to explain why 7.2 × 5.3 is equivalent
+Student Response                                                    to 72 × 53 × 0.01.
+ 1. Sample responses:                                             • Display equations: 7.2 = 72 × 0.1 and 5.3 = 53 × 0.1
+      a. 7.2 = 0.1 × 72 and 5.3 = 0.1 × 53 so                     • “How do you know the equations are true?”
+         7.2 × 5.3 = (0.1 × 0.1) × (72 × 53) and                    (Multiplying 72 or 53 by 0.1 changes the tens to ones
+         0.1 × 0.1 = 0.01                                           and the ones to tenths.)
+      b. 6.5 × 2.8 is 0.01 × (65 × 28) and that's the same        • Display equation: 7.2 × 5.3 = (72 × 53) × 0.01
+         as dividing by 65 × 28 by 100.
                                                                   • “How do you know the equation is true?” (I use the
-      c. Since                    ,                                 equations for 7.2 and 5.3 and multiply 0.1 and 0.1 to
-                                                                    get a hundredth or 0.01.)
+      c. Since 0.44 = 1/100 × 44,                                   equations for 7.2 and 5.3 and multiply 0.1 and 0.1 to
+         31 × 0.44 = (31 × 44) × 1/100                              get a hundredth or 0.01.)
                                                                   • “How can you use the equation to find the value of
  2.   a. 38.16
-                                                                             ?” (I can multiply 72 and 53 and then
+                                                                    7.2 × 5.3?” (I can multiply 72 and 53 and then
       b. 18.20                                                      multiply that by 0.01.)
       c. 13.64
 
 
 
 
-                                            Grade 5                                    CC BY NC 2024
-                                             Unit 5
-                                                              Lesson 21
+                                           Grade 5                                     CC BY NC 2024
+                                            Unit 5
+                                                             Lesson 21
                                                                                 Illustrative Mathematics®              3
 Activity 2                                                                                                   15 min
 
@@ -204,18 +204,18 @@ but all of the strategies students have used to multiply two-digit decimals appl
      Student Task Statement                                   Launch
       Find the value of each product.                           • Groups of 2
 
-       1.
-       2.                                                     Activity
-       3.                                                       • 5-8 minutes: independent work time
+       1. 7.3 × 4.2
+       2. 38 × 0.55                                           Activity
+       3. 285 × 0.17                                            • 5-8 minutes: independent work time
                                                                 • 2-5 minutes: partner discussion
 Student Response
- 1. 30.66. Sample response: I found                           Activity Synthesis
+ 1. 30.66. Sample response: I found 73 × 42 = 3,066           Activity Synthesis
     and then multiplied by 0.01 to get 30.66.
                                                                 • Invite students to share their responses for the first
- 2. 20.90. Sample response: I found                               two products.
+ 2. 20.90. Sample response: I found 38 × 55 = 2,090               two products.
     and multiplied by 0.01 to get 20.90.
                                                                 • “How did you use your understanding of place value
- 3. 48.45. Sample response: I found                               to find the products?” (I used whole number
+ 3. 48.45. Sample response: I found 285 × 17 = 4,845              to find the products?” (I used whole number
     and multiplied by 0.01 to get 48.45.                          products. Then I remembered that I have that many
                                                                   hundredths, so I had to multiply that product by
                                                                   0.01.)
@@ -230,8 +230,8 @@ Student Response
 
 
 
-                                           Grade 5                                  CC BY NC 2024
-                                            Unit 5
+                                          Grade 5                                   CC BY NC 2024
+                                           Unit 5
                                                           Lesson 21
                                                                              Illustrative Mathematics®                4
 Lesson Synthesis
@@ -251,28 +251,28 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                   5 min
+Cool-down                                                                                                  5 min
 
 Why Expressions Have the Same Value
 
       Standards
-Addressing       5.NBT.A.1, 5.NBT.B.7
+Addressing     5.NBT.A.1, 5.NBT.B.7
 
 
       Student Task Statement
-       1. Explain why            and                    have the same value.
-       2. Find the value of             .
+       1. Explain why 2.5 × 6.4 and (25 × 64) × 0.01 have the same value.
+       2. Find the value of 2.5 × 6.4.
 
 
 Student Response
- 1.   Sample response:                      and            so
- 2. 16. Sample response:                          so
+ 1.   Sample response: 2.5 = 25 × 0.1 and 6.4 = 64 × 0.1 so 2.5 × 6.4 = (25 × 64) × 0.01
+ 2. 16. Sample response: 25 × 64 = 1,600 so 2.5 × 6.4 = 16.00
 
 
 Responding to Student Thinking
-Students do not yet explain why the expressions have the        Next Day Supports
-same value.                                                     Create a poster with important terms and expressions
-                                                                from this Cool-down.
+Students do not yet explain why the expressions have the       Next Day Supports
+same value.                                                    Create a poster with important terms and expressions
+                                                               from this Cool-down.
 
 
       Section C Summary
@@ -280,27 +280,27 @@ same value.                                                     Create a poster 
 
       We used place value relationships to reason about the multiplication.
 
-      Example:                  because 6 groups of 14 hundredths is           or 84 hundredths.
+      Example: 6 × 0.14 = 0.84 because 6 groups of 14 hundredths is 6 × 14 or 84 hundredths.
 
       We used properties of operations to break up the multiplication.
 
-      Example:
+      Example: 0.9 × 0.3 = (9 × 3) × 0.01 = 27 × 0.01 = 0.27
 
 
-                                              Grade 5                                 CC BY NC 2024
-                                               Unit 5
-                                                            Lesson 21
-                                                                               Illustrative Mathematics®            5
+                                          Grade 5                                    CC BY NC 2024
+                                           Unit 5
+                                                           Lesson 21
+                                                                              Illustrative Mathematics®            5
 We also used diagrams to represent the multiplication.
 
-Example: This diagram shows 17 groups of 3 hundredths is 51 hundredths, so            .
+Example: This diagram shows 17 groups of 3 hundredths is 51 hundredths, so 1.7 × 0.3 = 0.51.
 
 
 
 
-                                   Grade 5                                 CC BY NC 2024
+                                   Grade 5                                  CC BY NC 2024
                                     Unit 5
                                                    Lesson 21
-                                                                    Illustrative Mathematics®   6
+                                                                     Illustrative Mathematics®   6
 ```
 

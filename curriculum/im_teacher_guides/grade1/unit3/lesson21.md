@@ -76,7 +76,7 @@ Lesson Timeline                                                Teacher Reflectio
 What Do You Know about 20?
 
      Standards                                                      Instructional Routines
-Building Toward        1.OA.C.6                                 • What Do You Know about _____?
+Building Toward      1.OA.C.6                                   • What Do You Know about _____?
 
 
 The purpose of this What Do You Know about _____? is to invite students to share what they know about the number 20
@@ -96,7 +96,7 @@ Sample responses:                                             Activity
                                                               Activity Synthesis
   • I know it is 10 and 10.
                                                                 • “What connections do you see between different
-  • I know it is              .
+  • I know it is 5 + 5 + 10.
                                                                   answers?”
                                                                 • Pick two addition expressions that use different
                                                                   addends and ask, “How are these two expressions
@@ -110,7 +110,7 @@ Activity 1                                                                      
 Introduce How Close—Add to 20
 
      Standards
-Addressing         1.OA.C.6
+Addressing     1.OA.C.6
 
 
 The purpose of this lesson is for students to learn Stage 1 of the How Close? center. Students start with 5 number cards.

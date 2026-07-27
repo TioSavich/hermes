@@ -68,11 +68,11 @@ Lesson Timeline                                              Teacher Reflection 
                                                Unit 4
                                                            Lesson 10
                                                                             Illustrative Mathematics®              1
- Activity 2                                   15 min         other representations?
+ Activity 2                                     15 min       other representations?
 
- Synthesis Estimate                           10 min
+ Synthesis Estimate                             10 min
 
- Cool-down                                     5 min
+ Cool-down                                       5 min
 
 
 
@@ -104,9 +104,9 @@ Students may notice:                                           • “Discuss yo
 
   • The arrows match the lengths of the blocks under           • Share and record responses.
     them.
-  • It looks like it is showing          .                   Activity Synthesis
+  • It looks like it is showing 28 + 10 + 5.                 Activity Synthesis
   • There are 3 tens and 13 ones. It's the same as 43.         • “What addition equation could be represented here?”
-Students may wonder:                                             (                 or              )
+Students may wonder:                                             (28 + 10 + 5 = 43 or 28 + 15 = 43)
   • Do the base-ten diagram and number line show the           • “We are going to keep thinking about what is the
     same thing?                                                  same and what is different between base-ten
   • Does this show adding centimeters or something               diagrams and number lines.”
@@ -118,8 +118,8 @@ Students may wonder:                                             (              
 
 
 
-                                             Grade 2                               CC BY NC 2024
-                                              Unit 4
+                                               Grade 2                             CC BY NC 2024
+                                                Unit 4
                                                           Lesson 10
                                                                             Illustrative Mathematics®                  2
 Activity 1                                                                                                     20 min
@@ -163,11 +163,11 @@ Materials to Gather
 
 
                                                                Activity
-       3. Find the value of          .
+       3. Find the value of 58 - 24.
                                                                  • “You are going to write an equation to represent
            Show your thinking using a base-ten diagram.            Clare’s work. Then you will represent Clare’s method
                                                                    on a number line.”
-       4. Represent how you found the value of
+       4. Represent how you found the value of 58 - 24
           on the number line.                                    • “Work with your partner to decide how to best
                                                                    represent what you think Clare did. You may discuss
                                                                    where to start, how many jumps you should draw,
@@ -182,11 +182,11 @@ Materials to Gather
                                                                 • 5 minutes: partner work time
  1. Sample responses:
                                                                 • “Now try one on your own.”
-     ◦
+     ◦ 46- 35 = 11
                                                                 • 8 minutes: independent work time
-     ◦                ,
+     ◦ 46- 30 = 16 , 16- 5 = 11
                                                                 • Monitor for students who:
-     ◦                ,          ,
+     ◦ 40- 30 = 10 , 6- 5 = 1 , 10 + 1 = 11
                                                                     ◦ Start at 58 and jump back 20 and then 4.
  2. Sample responses:
                                                                     ◦ Start at 58 and jump back 4 and then 20.
@@ -243,8 +243,8 @@ Addressing     2.MD.B.6, 2.NBT.B.5
 The purpose of this activity is for students to represent addition and subtraction within 100 on a number line. Students
 make connections to strategies based on counting on or back by place. The numbers in each subtraction equation are
 designed to elicit methods that do not require students to explicitly decompose a ten. For example, when finding the
-value of         , students may first add on to make a ten (             ), then add on more tens to reach the total
-(             ). Others may see they can count back 2, then subtract the tens. In the Synthesis, students share their
+value of 50- 32 , students may first add on to make a ten (32 + 8 = 40), then add on more tens to reach the total
+(40 + 10 = 50). Others may see they can count back 2, then subtract the tens. In the Synthesis, students share their
 thinking and discuss how the number line helps them see how they can use what they know about the structure of
 counting sequences and what they know about tens and ones to add and subtract (MP7).
 
@@ -262,27 +262,27 @@ Materials to Gather
 
 
      Student Task Statement                                   Launch
-      Diego finds the value of        . He says he can          • Groups of 2
+      Diego finds the value of 33 + 45. He says he can          • Groups of 2
       count on by tens, then by ones. He uses a number          • Give students access to base-ten blocks.
       line to show what he means.
                                                                 • Display the image of Diego’s number line.
-                                                                • “Diego found the value of          . He used a number
+                                                                • “Diego found the value of 33 + 45. He used a number
                                                                   line to represent his thinking.”
                                                                 • “Where do you see 33 and 45 on his number line?”
        1. Write an equation to show the sum for Diego’s           (On the number line the first arrow starts at 33 and
           work.                                                   there are 4 jumps of 10 and 1 jump of 5.)
-       2. Find the value of         .                           • 30 seconds: quiet think time
+       2. Find the value of 23 + 24.                            • 30 seconds: quiet think time
 
           Show your thinking using the number line.             • Share responses.
 
 
                                                               Activity
-       3. Find the value of         .
+       3. Find the value of 50- 32 .
                                                                 • “You will be finding the value of expressions and
           Show your thinking using the number line.               representing your thinking on the number line.”
                                                                 • “Draw base-ten diagrams if it helps.”
                                                                 • 8–10 minutes: independent work time
-       4. Find the value of         .
+       4. Find the value of 40- 26 .
 
           Show your thinking using the number line.           Activity Synthesis
                                                                 • Invite 2–3 previously selected students to share.
@@ -297,34 +297,34 @@ Materials to Gather
                                                                               Illustrative Mathematics®               5
 Student Response                                                   ◦ “How did you decide how much to add/subtract
                                                                      first?”
- 1.
+ 1. 33 + 45 = 78
                                                                    ◦ “How does your number line show the value of
  2. 47. Sample responses:                                            the difference?”
                                                                • “What other questions do you have about _____’s
                                                                  number line?”
-      ◦
+     ◦
                                                                • “How does the number line help you make sense of
                                                                  _____’s method?”
 
-      ◦
+     ◦
  3. 18. Sample responses:
 
 
 
-      ◦
+     ◦
 
 
 
-      ◦
+     ◦
  4. 14. Sample responses:
 
 
 
-      ◦
+     ◦
 
 
 
-      ◦
+     ◦
 
 
 
@@ -370,7 +370,7 @@ Addressing     2.MD.B.6, 2.NBT.B.5
 
 
       Student Task Statement
-
+                                                        48 - 22 = ?
 
       Find the number that makes the equation true. Represent your thinking on the number line.
 

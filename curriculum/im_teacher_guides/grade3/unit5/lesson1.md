@@ -18,15 +18,15 @@ The purpose of this lesson is to introduce students to fractions as numbers that
 Unit 5, Lesson 1
 
 Name the Parts
-     Standards                                                           Instructional Routines
-Building On          2.G.A.3                                          • Card Sort
-Addressing           3.G.A.2, 3.NF.A.1                                • Which Three Go Together?
-Building Toward      3.G.A.2
+      Standards                                                          Instructional Routines
+Building On           2.G.A.3                                        • Card Sort
+Addressing            3.G.A.2, 3.NF.A.1                              • Which Three Go Together?
+Building Toward       3.G.A.2
 
 
 
-     Goals                                                               Student Facing Learning Goals
-  • Comprehend (in spoken and written language) that                         Let’s name parts of a whole.
+      Goals                                                              Student Facing Learning Goals
+  • Comprehend (in spoken and written language) that                     Let’s name parts of a whole.
     the term “partition” refers to splitting a shape into
     parts.
   • Explain (orally) how to partition shapes into 2, 3, 4, 6,
@@ -47,12 +47,12 @@ In this lesson, students extend this understanding to partition rectangles into 
 parts as sixths or eighths, respectively. The term “parts” is used in these materials moving forward, but students
 recognize that “pieces” and “parts” are interchangeable and can use either one.
 
-In the Lesson Synthesis, students learn the fractions    ,   ,   ,   , and     as the numbers used to represent the parts
+In the Lesson Synthesis, students learn the fractions 1/2, 1/3, 1/4, 1/6, and 1/8 as the numbers used to represent the parts
 described as one-half, one-third, one-fourth, one-sixth, and one-eighth, respectively.
 
 
-     Access for Students with Disabilities                               Access for English Learners
-  • Action and Expression                                             • MLR2
+      Access for Students with Disabilities                              Access for English Learners
+  • Action and Expression                                            • MLR2
 
 
 Required Materials
@@ -64,10 +64,10 @@ Materials to Copy
 
 
 
-                                              Grade 3                                        CC BY NC 2024
-                                               Unit 5
-                                                                 Lesson 1
-                                                                                      Illustrative Mathematics®             1
+                                               Grade 3                                    CC BY NC 2024
+                                                Unit 5
+                                                                Lesson 1
+                                                                                   Illustrative Mathematics®                   1
 Lesson Timeline                                               Teacher Reflection Questions
                                                               In grade 2, students learned to partition rectangles and
  Warm-up                                     10 min
@@ -365,11 +365,11 @@ when the whole is partitioned into 8 equal parts.”
 
 “In addition to using words to describe these equal parts, we also can use numbers.”
 
-Write each fraction as it is named:                                  “One-half can be written as the number    .”
-                                                                     “One-third can be written as the number    .”
-                                                                     “One-fourth can be written as the number        .”
+Write each fraction as it is named:                                  “One-half can be written as the number 1/2.”
+                                                                     “One-third can be written as the number 1/3.”
+                                                                     “One-fourth can be written as the number 1/4.”
 
-“How would we write one-sixth and one-eighth as numbers?” (            and   )
+“How would we write one-sixth and one-eighth as numbers?” (1/6 and 1/8)
 
 “The numbers that we use to describe the equal parts of a whole are called fractions. Each fraction has two parts
 separated by a bar.”
@@ -378,7 +378,7 @@ separated by a bar.”
 
 “What about the 1 above the bar?” (the one in “one-half,” “one-third,” and so on)
 
-Display a square partitioned into two equal parts, with each part labeled with        , such as:
+Display a square partitioned into two equal parts, with each part labeled with 1/2, such as:
 
 
 
@@ -386,7 +386,7 @@ Display a square partitioned into two equal parts, with each part labeled with  
 “We can label the equal parts in a shape with fractions. If this square is the whole shape or one, each part is one-half.”
 
 “Find all the cards from the first activity that show a shape partitioned into two equal parts. Let's label each half with the
-fraction   .”
+fraction 1/2.”
 
 “Let’s label the parts in each of your rectangles with fractions.”
 

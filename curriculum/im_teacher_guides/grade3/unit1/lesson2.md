@@ -125,7 +125,7 @@ with this routine from a previous grade. However, they may benefit from a brief 
                                                            Lesson 2
                                                                             Illustrative Mathematics®                  2
 Student Response                                                    thinking?” (There were 2 more dots in the third
-                                                                    image.            .)
+                                                                    image. 8 + 2 = 10.)
 Sample responses:
 
   • 6: I see 2 rows of 3.
@@ -281,16 +281,16 @@ this task from the class graph.
 
              a. “How many more students                                ◦ “I knew the statement was false because . . . .”
                                                                        ◦ “I knew the statement was true because . . . .”
-                                             than
+                ___                          than
                                                                     • “How did you know if each statement was true or
-                                            ?”
-                                                                      false?”
+                                     ?”
+               ___                                                    false?”
             b. “How many more students                              • Share responses.
-                                             or                     • Guide the whole class to fill in the blanks in the
-                                             than                     questions using the previously identified categories.
+                ___                          or                     • Guide the whole class to fill in the blanks in the
+                ___                          than                     questions using the previously identified categories.
 
                                             ?”                      • “Use the data in your bar graph to answer the
-                                                                      questions.”
+                ___                                                   questions.”
                                                                     • 3–5 minutes: partner work time
 Student Response
 Sample responses based on sample class data shown in
@@ -384,27 +384,27 @@ Building Toward     3.MD.B.3
 
 Student Response
  1. 3 more students
- 2. False. Sample response: 6 students (       ) chose the school or library, and 8 students chose the park.
+ 2. False. Sample response: 6 students (4 + 2) chose the school or library, and 8 students chose the park.
 
 
 Responding to Student Thinking
-Students count lines on the bar graph to find the number       Next Day Supports
-represented by a bar instead of finding the scale number       During the Launch of the next day’s activity, have students
-that matches the top of the bar.Students count lines on        discuss how the scale on the bar graph can be used to
-the bar graph to find the number represented by a bar          determine the number of people or objects in each
-instead of finding the scale number that matches the top       category.
+Students count lines on the bar graph to find the number      Next Day Supports
+represented by a bar instead of finding the scale number      During the Launch of the next day’s activity, have students
+that matches the top of the bar.Students count lines on       discuss how the scale on the bar graph can be used to
+the bar graph to find the number represented by a bar         determine the number of people or objects in each
+instead of finding the scale number that matches the top      category.
 of the bar.
 
 
-The work of this lesson builds from the categorical data       Prior-Unit Support
-concepts developed in a prior unit.                            Grade 2, Unit 1, Section B Ways to Represent Data
+The work of this lesson builds from the categorical data      Prior-Unit Support
+concepts developed in a prior unit.                           Grade 2, Unit 1, Section B Ways to Represent Data
 
 
 
 
-                                            Grade 3                                  CC BY NC 2024
+                                            Grade 3                                 CC BY NC 2024
                                              Unit 1
-                                                            Lesson 2
-                                                                              Illustrative Mathematics®              8
+                                                           Lesson 2
+                                                                             Illustrative Mathematics®              8
 ```
 

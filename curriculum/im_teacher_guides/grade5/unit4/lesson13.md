@@ -102,7 +102,7 @@ sum that is equivalent to the dividend.
 
                                                                Activity Synthesis
                                                                  • “Which strategy do you prefer for finding the value of
-Student Response                                                               ” (I like Method C because it begins by
+Student Response                                                   1,312 ÷ 82?” (I like Method C because it begins by
                                                                    taking out a pretty big multiple of 82.)
 Sample responses:
 
@@ -220,7 +220,7 @@ Addressing      5.NBT.B.6
                                                                            Illustrative Mathematics®               4
 The purpose of this activity is for students to divide three- and four-digit dividends by two-digit divisors. As the size of
 the dividend increases, students have an option to subtract multiples of 100 of the divisor. In order to calculate
-efficiently, this becomes essential for a quotient such as            , as it will take many partial quotients that are
+efficiently, this becomes essential for a quotient such as 8,721 ÷ 21, as it will take many partial quotients that are
 multiples of 10 to reach the full quotient. Using a partial-quotients algorithm for greater numbers also requires fluency
 with subtraction.
 
@@ -274,8 +274,8 @@ Lesson Synthesis
                                              Unit 4
                                                              Lesson 13
                                                                                  Illustrative Mathematics®               5
-“Tell your partner how to use a partial-quotients algorithm to find the value of          .” (Look for the biggest multiple
-of 10 and 85 that I can subtract from 935. Find           . Subtract the product from 935 to see how much more is left to
+“Tell your partner how to use a partial-quotients algorithm to find the value of 935 ÷ 85.” (Look for the biggest multiple
+of 10 and 85 that I can subtract from 935. Find 10 × 85. Subtract the product from 935 to see how much more is left to
 divide. Keep doing this until the difference is zero. To check my answer, multiply the quotient by the divisor to get the
 original dividend.)
 
@@ -293,11 +293,11 @@ Cool-down                                                                       
 Divide Four-Digit Numbers
 
      Standards
-Addressing      5.NBT.B.6
+Addressing     5.NBT.B.6
 
 
      Student Task Statement
-      Find the value of            .
+      Find the value of 1,736 ÷ 28.
 
 
 
@@ -317,9 +317,9 @@ Students find a value other than 62 for the quotient.           Next Day Support
 
 
 
-                                           Grade 5                                     CC BY NC 2024
+                                           Grade 5                                    CC BY NC 2024
                                             Unit 4
                                                             Lesson 13
-                                                                                Illustrative Mathematics®               6
+                                                                               Illustrative Mathematics®                6
 ```
 

@@ -160,7 +160,7 @@ what to consider when deciding whether or not to spend money on something.
 Student Response                                                         left for the aquarium on Sunday. If he doesn’t play
                                                                          the game, he will have $17 left for the aquarium. I
  1. $17. Sample                                                          think he should play the game, because he shouldn’t
-    response:                 ,              ,                           need that much money at the aquarium. I don’t think
+    response: 11 + 8 = 19, 19 + 4 = 23, 23 + 17 = 40.                    need that much money at the aquarium. I don’t think
  2. Yes. Sample response: He has $17 which is more                       he should play the game, because he will spend too
     than $8.                                                             much on Saturday and might not have enough for
                                                                          Sunday.)
@@ -180,8 +180,8 @@ Your Spending Money
 Addressing       2.MD.C.8, 2.NBT.B.5
 
 
-                                                 Grade 2                                   CC BY NC 2024
-                                                  Unit 6
+                                               Grade 2                                     CC BY NC 2024
+                                                Unit 6
                                                                    Lesson 22
                                                                                     Illustrative Mathematics®               3
 The purpose of this activity is for students to plan how they might spend their own money at a fair. Students first

@@ -83,24 +83,24 @@ of operations (MP7).
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-          •                                                     • “Give me a signal when you have an answer and can
+        • 6 + 4 + 8                                             • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-          •
+        • 6 + 8 + 4
                                                                 • 1 minute: quiet think time
-          •
-          •
+        • 6 + 8 + 5
+        • 6 + 5 + 9
                                                               Activity
                                                                 • Record answers and strategies.
 Student Response
                                                                 • Keep expressions and work displayed.
-  • 18:            ,
+  • 18: 6 + 4 = 10, 10 + 8 = 18
                                                                 • Repeat with each expression.
   • 18: It’s the same expression as above.
-                 ,           .
+    6 + 4 = 10, 10 + 8 = 18.
                                                               Activity Synthesis
-  • 19:                ,          ,            ,
-                                                                • “Who can restate _____'s reasoning in a different
-  • 20:                                                           way?”
+  • 19: 6 + 8 + 4 + 1, 6 + 4 = 10, 10 + 8 = 18,
+    18 + 1 = 19                                                 • “Who can restate _____'s reasoning in a different
+  • 20: 6 + 10 + 4 = 10 + 10 = 20                                 way?”
                                                                 • “Does anyone have the same strategy but explains it
                                                                   differently?”
                                                                 • “Did anyone approach the problem in a different

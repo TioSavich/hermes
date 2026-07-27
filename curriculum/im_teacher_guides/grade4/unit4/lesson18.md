@@ -92,7 +92,7 @@ about subtraction.
 
 
      Student Task Statement                                   Launch
-      Estimate the difference:               .                  • Groups of 2
+      Estimate the difference: 42,050- 3,790 .                  • Groups of 2
 
       Record an estimate that is:                               • Display the expression.
                                                                 • “What is an estimate that’s too high? Too low? About
@@ -203,7 +203,7 @@ Materials to Gather
 
 
 Student Response
- 1. Tuesday and Wednesday.
+ 1. Tuesday and Wednesday. 9,587 + 9,312 = 18,899
  2.
  3.
 
@@ -331,7 +331,7 @@ between numbers, consider asking:
 
 
 Lesson Synthesis
-Display                          .
+Display 43,975 + 2,140 = 65,375.
 
 “How can you tell this equation is false without finding the sum?” (You start with 43 thousands and add 2 thousands. So,
 you can’t have 65 thousands.)

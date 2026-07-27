@@ -195,15 +195,15 @@ Required Preparation
      Make 10.
      Fill in the equation.                                    • 1 minute: independent work time
 
-
+                    10 = ___ + ___
                                                             Activity Synthesis
 Student Response                                              • Invite students to share how they figured out the
                                                                 number needed to make 10.
 Answers vary.
-                                                              • Display                  .
+                                                              • Display 10 = 8 + ___ .
                                                               • “Elena was filling in her equation. She only filled in
                                                                 the number her partner colored. She wrote
-                                                                                  . What number did Elena color? How
+                                                                10 = 8 + ___ . What number did Elena color? How
                                                                 do you know?” (She colored in 2, because 8 and 2
                                                                 make 10.)
 
@@ -241,30 +241,30 @@ Required Preparation
   • Students can use their bead tools from a previous lesson.
 
 
-      Student Task Statement                                   Launch
+     Student Task Statement                                    Launch
       Make 10.                                                   • Groups of 2
 
-        •                                                        • Give students access to connecting cubes or two-
+        • 10 = 9 + ___                                           • Give students access to connecting cubes or two-
                                                                    color counters, bead tools, and 10-frames.
-        •
+        • 10 = 3 + ___
                                                                  • “Fill in each equation to show a way to make 10.”
-        •
+        • 10 = 5 + ___
 
-        •                                                      Activity
-        •
+        • 10 = 4 + ___                                         Activity
+        • 10 = 8 + ___
                                                                  • 4 minutes: independent work time
-        •                                                        • 4 minutes: partner work time
+        • 10 = 7 + ___                                           • 4 minutes: partner work time
 
 
 Student Response                                               Activity Synthesis
- 1.                                                              • “How did you choose which tool to use to help you
- 2.                                                                figure out which number you needed to make 10?
+ 1. 10 = 9 + 1                                                   • “How did you choose which tool to use to help you
+ 2. 10 = 3 + 7                                                     figure out which number you needed to make 10?
                                                                    Were there any problems that you figured out
- 3.
+ 3. 10 = 5 + 5
                                                                    without using a tool?”
- 4.
- 5.
- 6.
+ 4. 10 = 4 + 6
+ 5. 10 = 8 + 2
+ 6. 10 = 7 + 3
 
 
 

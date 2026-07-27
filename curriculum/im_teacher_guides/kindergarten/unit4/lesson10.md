@@ -231,7 +231,7 @@ Student Response
                                                                 • “There were 3 apple slices at the picnic. Then Tyler's
                                                                   dad brought 5 more apple slices to the picnics. 3
                                                                   apple slices and 5 apple slices is 8 apple slices. We
-                                                                  can write that as ‘3 and 5’ or ‘     ’.”
+                                                                  can write that as ‘3 and 5’ or ‘3 + 5’.”
 
 
 

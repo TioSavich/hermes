@@ -254,7 +254,7 @@ Sample responses:
                                                                     we say when counting by 2 or multiplying by 2.)
         rectangle would have 24 squares.
                                                                   • “How can we check our predictions for rectangles
-      ◦ 4 tiles wide: 40. I know that          is 40.
+      ◦ 4 tiles wide: 40. I know that 4 × 10 is 40.
                                                                     that are 3 or 4 tiles wide?” (The predictions are
                                                                     numbers we get when we multiply a number by 3 or
                                                                     4.)
@@ -365,11 +365,11 @@ Student Response
     multiply 3 by to get 28.
                                                                   • “We could have an area of 12 square units when the
  3. Sample responses:                                               width of the rectangle is 3 units. That is because 12 is
-     ◦ 33 square units, since                .                      a multiple of 3.”
+     ◦ 33 square units, since 33 ÷ 3 = 11.                          a multiple of 3.”
 
-     ◦ 45 square units, since                .                    • “A multiple of a number is the result of multiplying
+     ◦ 45 square units, since 15 × 3 = 45.                        • “A multiple of a number is the result of multiplying
                                                                     a number by a whole number.”
-     ◦ 75 square units, since                .
+     ◦ 75 square units, since 3 × 25 = 75.
                                                                   • “Look back at your work and discuss with your
  4. Sample responses:
                                                                     partner: Which numbers are multiples of 3?” (3, 6, 9,
@@ -433,7 +433,7 @@ Addressing     4.OA.B.4
 
 
 Student Response
-Sample response: 12, 18, and 24, because              ,            , and            .
+Sample response: 12, 18, and 24, because 6 × 2 = 12, 6 × 3 = 18, and 6 × 4 = 24.
 
 
 Responding to Student Thinking

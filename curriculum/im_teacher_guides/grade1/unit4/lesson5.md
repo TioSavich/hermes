@@ -184,8 +184,8 @@ Required Preparation
                                                                  • Display Cards 40 and 50.
                                                                  • “Do you think we should add or subtract these
                                                                    numbers? Why?” (We should subtract because
-                                                                                 and we haven’t checked off 10 yet, but
-                                                                                 and 90 is already checked off.)
+                                                                   50- 40 = 10 and we haven’t checked off 10 yet, but
+                                                                   40 + 50 = 90 and 90 is already checked off.)
 
 
 

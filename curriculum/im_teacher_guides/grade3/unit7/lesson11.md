@@ -68,12 +68,12 @@ Lesson Timeline                                               Teacher Reflection
                                            Unit 7
                                                            Lesson 11
                                                                               Illustrative Mathematics®             1
-Warm-up                                                                                                          10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: Multiply to Divide
 
-     Standards                                                         Instructional Routines
-Addressing      3.OA.C.7                                            • Number Talk
+     Standards                                                      Instructional Routines
+Addressing      3.OA.C.7                                        • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for dividing within 100. These
@@ -81,35 +81,35 @@ understandings help students develop fluency and will be helpful later in this l
 to divide fluently within 100.
 
 
-     Student Task Statement                                       Launch
-      Find the value of each expression mentally.                   • Display one expression.
+     Student Task Statement                                   Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-        •                                                           • “Give me a signal when you have an answer and can
-                                                                      explain how you got it.”
-        •
-                                                                    • 1 minute: quiet think time
-        •
-        •
-                                                                  Activity
+        • 5 × 5                                                 • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 10 × 5
+                                                                • 1 minute: quiet think time
+        • 2 × 5
+        • 85 ÷ 5
+                                                              Activity
 
-Student Response                                                    • Record answers and strategies.
-                                                                    • Keep expressions and work displayed.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
   • 25: I just know it or it’s 5 groups of 5.
-                                                                    • Repeat with each expression.
+                                                                • Repeat with each expression.
   • 50: I just know it or it’s 10 groups of 5.
   • 10: I just know it.
-                                                                  Activity Synthesis
-  • 17: I know that                       . There are 5 fives
-    in 25, 10 fives in 50, and 2 fives in 10.                       • “How did knowing the first 3 facts help you find the
-                      . So, there are 17 fives in 85.                 value of       ?” (The first 3 products added up to 85,
-                                                                      which was the number I was dividing in the last
-                                                                      problem. So, I was able to use those to figure out
-                                                                            .)
+                                                              Activity Synthesis
+  • 17: I know that 50 + 25 + 10 = 85. There are 5 fives
+    in 25, 10 fives in 50, and 2 fives in 10.                   • “How did knowing the first 3 facts help you find the
+    5 + 10 + 2 = 17. So, there are 17 fives in 85.                value of 85 ÷ 5?” (The first 3 products added up to 85,
+                                                                  which was the number I was dividing in the last
+                                                                  problem. So, I was able to use those to figure out
+                                                                  85 ÷ 5.)
 
 
 
 
-Activity 1                                                                                                       15 min
+Activity 1                                                                                                   15 min
 
 Perimeter of 16 Units
 
@@ -124,10 +124,10 @@ with the same perimeter.
 
 
 
-                                                Grade 3                                 CC BY NC 2024
+                                                Grade 3                              CC BY NC 2024
                                                  Unit 7
-                                                                Lesson 11
-                                                                                 Illustrative Mathematics®                2
+                                                           Lesson 11
+                                                                              Illustrative Mathematics®               2
       Access for English Language Learners
       MLR8 Discussion Supports. Synthesis: Provide students with the opportunity to rehearse what they will say with a
       partner before they share with the whole class.

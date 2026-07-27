@@ -87,18 +87,18 @@ quarters).
      Student Task Statement                                     Launch
       Decide if each statement is true or false. Be               • Display one statement.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+        • (2 × 10) + (3 × 5) = (3 × 10) + (1 × 5)                   statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • (3 × 25) + (5 × 5) = 8 × 25                             • 1 minute: quiet think time
 
-        •
+        • (4 × 25) + (10 × 5) = (2 × 25) + (10 × 10)
                                                                 Activity
 Student Response                                                  • Share and record answers and strategy.
 
   • True: 2 groups of 10 and 3 groups of 5 is the same as         • Repeat with each statement.
-    3 groups of 10 and 1 group of 5, or                  .
-  • False:                                                      Activity Synthesis
-  • True:
+    3 groups of 10 and 1 group of 5, or 20 + 15 = 30 + 5.
+  • False: (3 × 25) + (5 × 5) = 4 × 25                          Activity Synthesis
+  • True: 100 + 50 = 50 + 100
                                                                   • “Which statement was your favorite to think about
                                                                     and why?” (I liked the first one because I could
                                                                     calculate all the values mentally.)
@@ -123,7 +123,7 @@ Students may wonder what to do if they get the same result twice or the same res
 
                                            Grade 5                                     CC BY NC 2024
                                             Unit 7
-                                                             Lesson 12
+                                                            Lesson 12
                                                                                 Illustrative Mathematics®                2
 already plotted on the graph. They may:
 
@@ -200,12 +200,12 @@ Required Preparation
       6. If time allows, flip the coin 10 more times and
          record your results on the coordinate grid.            • As each student shares, ask them to explain where to
                                                                   plot their point on the displayed graph.
-                                                                • “What are the coordinates of Jada’s point?” (    )
+                                                                • “What are the coordinates of Jada’s point?” ((6,3) )
 Student Response
                                                                 • “How many times did Jada toss the coin? How do you
 1. 6 heads and 3 tails. Sample response: Her point has            know?” (9 times, because she got 6 heads and 3 tails.)
    horizontal coordinate 6, representing the heads, and
-                                                                • Highlight the point       on the grid. “What does
+                                                                • Highlight the point (10,0) on the grid. “What does
    vertical coordinate 3, representing the tails.
                                                                   this point mean?” (10 heads and no tails)
 2. 3 heads and 5 tails. Sample response: His point has
@@ -220,7 +220,7 @@ Student Response
 
 
 4. Sample response: My partner plotted the points
-          and       . So, my partner got 4 heads and 6
+   (4,6) and (7,3) . So, my partner got 4 heads and 6
    tails on one try and 7 heads and 3 tails on the other
    try.
 
@@ -228,7 +228,7 @@ Student Response
                                          Grade 5                                    CC BY NC 2024
                                           Unit 7
                                                             Lesson 12
-                                                                             Illustrative Mathematics®             4
+                                                                             Illustrative Mathematics®               4
  5. Sample response: No, our points are not on the
     horizontal axis. A point on the horizontal axis would
     mean all heads (10 times) and no tails.
@@ -301,8 +301,8 @@ where to plot points and how they interpreted points on the graph.
 
 
  2. See graph above
- 3.            . Sample response: Diego has 2 coins and 35
-      cents.
+ 3. (2,35) . Sample response: Diego has 2 coins and 35
+    cents.
  4. (5,17). Sample response: There are 3 points
     representing students with 5 coins. One has 71 cents,
     one is Lin, and the third looks like 17 or 18 cents.

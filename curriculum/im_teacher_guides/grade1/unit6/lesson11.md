@@ -146,12 +146,12 @@ Materials to Gather
 
 
       Student Task Statement                                     Launch
-      My teacher's shoe is            cubes long.                  • Groups of 2
+      My teacher's shoe is ___        cubes long.                  • Groups of 2
 
-      My shoe is             cubes long.                           • Give each group connecting cubes in towers of 10
+      My shoe is ___         cubes long.                           • Give each group connecting cubes in towers of 10
                                                                      and singles and paper.
-      My partner’s shoe is            cubes long.
-                                                                   • “A few days ago we measured the length of the
+      My partner’s shoe is        cubes long.
+                           ___                                     • “A few days ago we measured the length of the
       Solve these problems about the length of your                  biggest foot in the world. Today we are each going to
       group’s shoes.                                                 measure the length of our own shoe and solve some
       Show your thinking using drawings, numbers,                    problems using the length. First we will trace our
@@ -280,11 +280,11 @@ Materials to Gather
                                                                  • Invite previously identified students to share.
 Student Response                                                 • Consider asking:
 
- 1. 16 cubes. Sample response:              ,                        ◦ “How do both methods show the length of
+ 1. 16 cubes. Sample response: 9 + 1 = 10, 10 + 6 = 16               ◦ “How do both methods show the length of
                                                                        Diego's shoe, the length of his father’s shoe, and
- 2. 20 cubes. Sample response:              ,
+ 2. 20 cubes. Sample response: 7 + 9 = 16, 16 + 4 = 20
                                                                        the difference between the two lengths?”
- 3. 5 cubes. Sample response:
+ 3. 5 cubes. Sample response: 13 - 8 = 5
                                                                      ◦ “How are the methods the same? How are they
  4. 9 cubes. Sample response: Draws a picture of 17                    different?”
     cubes. Circles 8 to represent Jada's shoe length. Sees
@@ -312,7 +312,7 @@ She put her shoe together with Elena’s shoe.
 Together the shoes are 17 cubes long.
 How long is Elena’s shoe?
 
-               and
+8 + 9 = 17 and
 
 “Today we solved story problems about measurement. Some problems were solved using addition or subtraction. What
 do the numbers in these equations represent?” (8 is the length of Jada's shoe. 17 is the length of their shoes together. 9
@@ -326,7 +326,7 @@ Cool-down                                                                       
 Measure Shoes
 
      Standards
-Addressing      1.OA.A.1
+Addressing     1.OA.A.1
 
 
      Student Task Statement
@@ -338,12 +338,12 @@ Addressing      1.OA.A.1
 
 Student Response
 7 cubes. Sample responses:
-  •             ,
+  • 13 - 3 = 10, 10- 3 = 7
   • Count back 6 from 13.
 
 
 Responding to Student Thinking
-Students add         .                                         Next Day Supports
+Students add 6 + 13.                                           Next Day Supports
                                                                Create a poster with a diagram that represents the Cool-
                                                                down from this lesson.
 

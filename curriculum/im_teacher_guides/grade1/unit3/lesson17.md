@@ -36,10 +36,10 @@ decompose one addend in order to make a ten.
 
 
 Narrative
-In previous lessons, students recognized the         structure of teen numbers and used the structure to find the sum of
+In previous lessons, students recognized the 10 + n structure of teen numbers and used the structure to find the sum of
 three numbers. In this lesson, students use the structure of the 10-frame to find the sum of two addends when one
 addend is 9. Students come to see that when they find the sum of two addends, they can decompose one addend to
-make 10 with the other addend (associative property). For example,                                   . When students
+make 10 with the other addend (associative property). For example, 9 + 5 = 9 + 1 + 4 = 10 + 4 = 14. When students
 identify and use equivalent expressions, they look for and make use of structure (MP7), and here they repeatedly make
 10 to find the value of expressions (MP8).
 
@@ -68,11 +68,11 @@ Materials to Gather
   • Number Cards 0–10: Activity 1
 
 
-Lesson Timeline                                              Teacher Reflection Questions
-                                                             What was the best question you asked students today?
+Lesson Timeline                                               Teacher Reflection Questions
+                                                              What was the best question you asked students today?
  Warm-up                                       10 min
-                                                             Why would you consider it the best one based on what
- Activity 1                                    20 min        students said or did?
+                                                              Why would you consider it the best one based on what
+ Activity 1                                    20 min         students said or did?
 
  Activity 2                                    15 min
 
@@ -82,43 +82,43 @@ Lesson Timeline                                              Teacher Reflection 
 
 
 
-Warm-up                                                                                                       10 min
+Warm-up                                                                                                        10 min
 
 How Many Do You See: Double 10-frames
 
       Standards                                                    Instructional Routines
-Addressing        1.OA.C.6                                     • How Many Do You See?
+Addressing        1.OA.C.6                                      • How Many Do You See?
 
 
 The purpose of this How Many Do You See? is for students to subitize or use grouping strategies to describe the images
 they see.
 
-When students use grouping strategies to visualize the quantities in the  structure, they come to see that some
+When students use grouping strategies to visualize the quantities in the 10 + n structure, they come to see that some
 can be taken from one group and added to the other to make a ten and some more (MP7).
 
 
-      Student Task Statement                                 Launch
-      How many do you see?                                     • Groups of 2
-      How do you see them?                                     • “How many do you see? How do you see them?”
-                                                               • Flash the first image.
-                                                               • 30 seconds: quiet think time
+      Student Task Statement                                  Launch
+      How many do you see?                                      • Groups of 2
+      How do you see them?                                      • “How many do you see? How do you see them?”
+                                                                • Flash the first image.
+                                                                • 30 seconds: quiet think time
 
 
-                                                             Activity
-                                                               • Display the image.
-                                                               • “Discuss your thinking with your partner.”
-                                                               • 1 minute: partner discussion
-                                                               • Record responses.
-                                                               • Repeat for each image.
+                                                              Activity
+                                                                • Display the image.
+                                                                • “Discuss your thinking with your partner.”
+                                                                • 1 minute: partner discussion
+                                                                • Record responses.
+                                                                • Repeat for each image.
 
 Student Response
   • 10: I took one from the bottom and added it to the 9
 
 
-                                           Grade 1                                 CC BY NC 2024
+                                           Grade 1                                  CC BY NC 2024
                                             Unit 3
                                                            Lesson 17
-                                                                            Illustrative Mathematics®                  2
+                                                                             Illustrative Mathematics®                  2
     in the top. So, 9 and 1 is 10.                               Activity Synthesis
   • 15: I took one from the 6 and added it to the 9 to
                                                                    • “Who can restate the way _____ saw the dots in
@@ -141,7 +141,7 @@ Addressing     1.OA.B.3, 1.OA.C.6
 The purpose of this activity is for students to find sums when one addend is nine. Students represent sums on the
 10-frame to encourage them to use the structure of a ten. During the Launch, the teacher demonstrates playing a round
 of the game. It is important to let students discover patterns as they play the game. For example, when finding the sum
-of      , some students may represent each addend on a separate 10-frame and count to find the sum. Other students
+of 9 + 5, some students may represent each addend on a separate 10-frame and count to find the sum. Other students
 may use the associative property and move one counter from the 5, and add it to the 9 to make a ten.
 
 
@@ -176,63 +176,63 @@ Materials to Gather
   • Each group of 2 needs a set of Number Cards (1-10). Do not use the 0 cards.
 
 
-      Student Task Statement                                  Launch
-         • Put out 9 counters.                                  • Groups of 2
-         • Pick a number card and add that many                 • Give each group a set of number cards 1–9 and
-           counters.                                              access to double 10-frames and connecting cubes or
-                                                                  two-color counters.
-         • Write an equation to represent the counters.
-           Can you write more than 1?                           • “We are going to play the 9 Plus game. In this game,
-                                                                  we add different numbers to 9 and record our
-       Equations:
-                                                                  thinking with equations. Let’s play the first round
-       Round 1:                                                   together.”
-                                                                • Demonstrate displaying 9 counters on the double
-       Round 2:                                                   10-frame to start the game.
-                                                                • “Now we pick a number card. I add that many
-       Round 3:                                                   counters to 9 and figure out the sum.”
-                                                                • Demonstrate placing each counter on the empty
-                                                                  10-frames. Start with 9 on the top frame and the
-       Round 4:
-                                                                  number picked on the second frame to demonstrate
-                                                                  using the associative property to make a ten.
-       Round 5:
-                                                                • “What is the sum? How do you know? What equation
-                                                                  can I write to show the total?” (The sum is 13. I
-                                                                  counted on from 9. We could move 1 from the 4 to
-Student Response                                                  the 9 to make 10 and then there are 3 more.
-                                                                               or            )
+     Student Task Statement                                 Launch
+       • Put out 9 counters.                                  • Groups of 2
+       • Pick a number card and add that many                 • Give each group a set of number cards 1–9 and
+         counters.                                              access to double 10-frames and connecting cubes or
+                                                                two-color counters.
+       • Write an equation to represent the counters.
+         Can you write more than 1?                           • “We are going to play the 9 Plus game. In this game,
+                                                                we add different numbers to 9 and record our
+     Equations:
+                                                                thinking with equations. Let’s play the first round
+     Round 1:                                                   together.”
+     ___                                                      • Demonstrate displaying 9 counters on the double
+     Round 2:                                                   10-frame to start the game.
+     ___                                                      • “Now we pick a number card. I add that many
+     Round 3:                                                   counters to 9 and figure out the sum.”
+     ___                                                      • Demonstrate placing each counter on the empty
+                                                                10-frames. Start with 9 on the top frame and the
+     Round 4:
+                                                                number picked on the second frame to demonstrate
+     ___                                                        using the associative property to make a ten.
+     Round 5:
+                                                              • “What is the sum? How do you know? What equation
+     ___                                                        can I write to show the total?” (The sum is 13. I
+                                                                counted on from 9. We could move 1 from the 4 to
+Student Response                                                the 9 to make 10 and then there are 3 more.
+                                                                9 + 4 = 13 or 10 + 3 = 13)
 Sample responses:
-                                                                • 30 seconds: quiet think time
-  •            . I showed 9, then added on 7. I counted
-    on from 9 to 16.                                            • Share and record responses.
+                                                              • 30 seconds: quiet think time
+  • 9 + 7 = 16. I showed 9, then added on 7. I counted
+    on from 9 to 16.                                          • Share and record responses.
 
-  •             . I showed 9 on this 10-frame. Then I
-      showed 3 on the other 10-frame. I moved a counter       Activity
-      to make 10. Now I have 10 and 2.
-                                                                • “Talk with your partner about the patterns you
-  •                 . I showed 9 on this 10-frame. Then I
-                                                                  notice as you play the game.”
-      showed 4 on the other 10-frame. I moved a counter
-      to make 10. Now I have 10 and 3.        is the same       • 8 minutes: partner work time
-      amount as          .
+  • 9 + 3 = 12. I showed 9 on this 10-frame. Then I
+    showed 3 on the other 10-frame. I moved a counter       Activity
+    to make 10. Now I have 10 and 2.
+                                                              • “Talk with your partner about the patterns you
+  • 9 + 4 = 10 + 3. I showed 9 on this 10-frame. Then I
+                                                                notice as you play the game.”
+    showed 4 on the other 10-frame. I moved a counter
+    to make 10. Now I have 10 and 3. 9 + 4 is the same        • 8 minutes: partner work time
+    amount as 10 + 3.
 
-                                                              Activity Synthesis
-                                                                • “What patterns did you notice as you played the
-                                                                  game?” (I saw that a   expression can be written as
-                                                                  a     expression. You can take 1 from the other
-                                                                  addend. The 9 goes up by 1, and the other addend
-                                                                  goes down by 1.)
-                                                                • “We can write the equation                 to
-                                                                  represent that the expressions are equal.”
-
-
+                                                            Activity Synthesis
+                                                              • “What patterns did you notice as you played the
+                                                                game?” (I saw that a 9 + expression can be written as
+                                                                a 10 + expression. You can take 1 from the other
+                                                                addend. The 9 goes up by 1, and the other addend
+                                                                goes down by 1.)
+                                                              • “We can write the equation 9 + 5 = 10 + 4 to
+                                                                represent that the expressions are equal.”
 
 
-                                          Grade 1                                   CC BY NC 2024
-                                           Unit 3
-                                                            Lesson 17
-                                                                             Illustrative Mathematics®             4
+
+
+                                         Grade 1                                  CC BY NC 2024
+                                          Unit 3
+                                                          Lesson 17
+                                                                           Illustrative Mathematics®             4
 Activity 2                                                                                                    15 min
                                                                                                               PLC Activity
 Clare’s Birds
@@ -318,9 +318,9 @@ Lesson Synthesis
 
 Display the double 10-frame with 9 red counters.
 
-“If I add 7, how could we record the sum with an equation?” (           ,             )
+“If I add 7, how could we record the sum with an equation?” (9 + 7 = 16, 10 + 6 = 16)
 
-“How can I write one equation to show that these two expressions are equivalent?” (                )
+“How can I write one equation to show that these two expressions are equivalent?” (9 + 7 = 10 + 6)
 
 
 
@@ -334,10 +334,10 @@ Addressing     1.OA.A.1, 1.OA.C.6
 
 
      Student Task Statement
-      8 birds sit in a tree.
-      6 birds sit on the grass.
-      How many birds are there in all?
-      Show your thinking using drawings, numbers, or words.
+     8 birds sit in a tree.
+     6 birds sit on the grass.
+     How many birds are there in all?
+     Show your thinking using drawings, numbers, or words.
 
 
 Student Response
@@ -348,20 +348,20 @@ Student Response
                                            Unit 3
                                                             Lesson 17
                                                                              Illustrative Mathematics®               6
-6 is the same as 2 and 4.             and
+6 is the same as 2 and 4. 8 + 2 = 10 and 10 + 4 = 14
 
 
 Responding to Student Thinking
-Students count all to find the sum.                     Next Day Supports
-                                                        During the Warm-up, use the 10-frame images to
-                                                        demonstrate making a ten to help find the sum.
+Students count all to find the sum.                      Next Day Supports
+                                                         During the Warm-up, use the 10-frame images to
+                                                         demonstrate making a ten to help find the sum.
 
 
 
 
-                                            Grade 1                          CC BY NC 2024
-                                             Unit 3
-                                                      Lesson 17
-                                                                      Illustrative Mathematics®          7
+                                         Grade 1                              CC BY NC 2024
+                                          Unit 3
+                                                       Lesson 17
+                                                                       Illustrative Mathematics®          7
 ```
 

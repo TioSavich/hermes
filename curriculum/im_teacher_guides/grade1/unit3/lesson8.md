@@ -165,7 +165,7 @@ Required Preparation
       My count:                                                    access to 10-frames.
                                                                  • “Your job is to figure out how many cubes are in the
       How many?
-                                                                   bag.”
+                  ___                                              bag.”
                                                                  • Consider asking:
 Student Response
                                                                     ◦ “How can we make sure both partners are
@@ -337,13 +337,13 @@ Display a base-ten drawing of 14.
 representation show a ten and 4 ones?” (There are 10 cubes in the tower, so that is why it is called a ten. There are 4
 single cubes left over. That shows the 4 ones.)
 
-Label the representation with 10 and 4. “We can also say that 14 is 10 and 4. We can write the equation                 .”
+Label the representation with 10 and 4. “We can also say that 14 is 10 and 4. We can write the equation 10 + 4 = 14.”
 
 “If I have a collection with 1 ten and 6 ones, how many are in my collection? What equation represents this?”
-(16;               )
+(16; 10 + 6 = 16)
 
 “If I have 19 in my collection, how can I show that with cubes?” (1 tower of 10 and 9 single cubes)
-“What equation can I write?” (              )
+“What equation can I write?” (10 + 9 = 19)
 
 
 
@@ -371,7 +371,7 @@ Addressing     1.NBT.B.2.a, 1.NBT.B.2.b
 Student Response
 15. Sample responses:
 
-  • There is 1 ten and 5 ones, which is         or 15.
+  • There is 1 ten and 5 ones, which is 10 + 5 or 15.
   • I counted on. 10…11, 12, 13, 14, 15
   • I counted them all.
 

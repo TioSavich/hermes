@@ -192,12 +192,12 @@ Required Preparation
 
 
                                                               Activity Synthesis
-                                                                • Display the expression        .
+                                                                • Display the expression 3 - 1.
                                                                 • “Noah saw this expression and went to the corner
                                                                   labeled 4. Was he correct? How do you know?” (No,
                                                                   because this is 3 take away 1 and that is 2.)
                                                                 • “Why do you think he went to the corner labeled 4?”
-                                                                  (He might have thought it was      instead of       .)
+                                                                  (He might have thought it was 3 + 1 instead of 3 - 1.)
 
 
 
@@ -241,19 +241,19 @@ Required Preparation
                                                                               Illustrative Mathematics®               4
 Student Response                                               Launch
 Sample responses:                                                • Groups of 2
-  •       is more than       , because 4 is 1 less than 5        • Give each group of students a set of cards.
+  • 5 - 1 is more than 1 + 2, because 4 is 1 less than 5         • Give each group of students a set of cards.
     and 1 and 2 is 3. 4 is more than 3.
                                                                  • Invite each student to make a pile with half of the
-  •         is the same number as       .      is 2 and            cards.
-            is 2.
+  • 4- 2 is the same number as 2 + 0. 4- 2 is 2 and                cards.
+    2 + 0 is 2.
                                                                  • “You and your partner each will flip over a card. Look
                                                                    at both expressions. If your expression shows the
                                                                    number that is more, say, ‘Me!’ and then explain to
                                                                    your partner how you know. If both expressions
                                                                    show the same number, both partners say, ‘Same!’”
-                                                                 • Display two cards:        and      .
+                                                                 • Display two cards: 2 + 0 and 4 + 1.
                                                                  • “Which expression shows a number that is more?”
-                                                                   (     is more than       . I know that because 4 and
+                                                                   (4 + 1 is more than 2 + 0. I know that because 4 and
                                                                    1 more is 5, which is more than 2.)
 
 
@@ -264,10 +264,10 @@ Sample responses:                                                • Groups of 2
 
 
                                                                Activity Synthesis
-                                                                 • Display cards with        and      .
+                                                                 • Display cards with 4- 2 and 2 + 0.
                                                                  • “Tell your partner about these expressions, using
-                                                                   ‘less’ or ‘the same number as.’” (   is the same
-                                                                   number as         . Both are 2.)
+                                                                   ‘less’ or ‘the same number as.’” (4- 2 is the same
+                                                                   number as 2 + 0. Both are 2.)
 
 
 
@@ -291,7 +291,7 @@ organized to use each day.
 
                                     Kindergarten                                     CC BY NC 2024
                                        Unit 8
-                                                            Lesson 15
+                                                           Lesson 15
                                                                               Illustrative Mathematics®                5
 Required Materials
 Materials to Gather
@@ -346,35 +346,35 @@ someone in the middle of the carpet.”
                                        Unit 8
                                                            Lesson 15
                                                                               Illustrative Mathematics®                6
-“Get into groups of       .”
+“Get into groups of 3 + 2.”
 
-“Get into groups of       .”
+“Get into groups of 2 + 0.”
 
 “Get into groups of 4.”
 
 “Get into groups of 2.”
 
-“Get into groups of       .”
+“Get into groups of 2- 1 .”
 
 
 
 
-Cool-down                                                                               5 min
+Cool-down                                                                                5 min
 
 Addition and Subtraction Expressions
 
      Standards
-Addressing      K.OA.A.2, K.OA.A.5
+Addressing       K.OA.A.2, K.OA.A.5
 
 
      Student Task Statement
       Find the value of each expression.
 
-        •
+        • 2 + 3
 
-        •
+        • 4- 1
 
-        •
+        • 5 - 3
 
 
 Student Response
@@ -385,9 +385,9 @@ Student Response
 
 
 
-                                     Kindergarten                      CC BY NC 2024
-                                        Unit 8
-                                                    Lesson 15
-                                                                Illustrative Mathematics®       7
+                                      Kindergarten                      CC BY NC 2024
+                                         Unit 8
+                                                     Lesson 15
+                                                                 Illustrative Mathematics®       7
 ```
 

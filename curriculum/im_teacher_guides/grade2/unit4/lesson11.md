@@ -70,28 +70,28 @@ Materials to Gather                                          Materials to Copy
                                                                             Illustrative Mathematics®             1
 Lesson Timeline                                                 Teacher Reflection Questions
                                                                 What evidence are you seeing that students are looking at
- Warm-up                                     10 min
+ Warm-up                                      10 min
                                                                 the relationship between the numbers in an expression to
- Activity 1                                  15 min             select their method? What progress have you seen
+ Activity 1                                   15 min            select their method? What progress have you seen
                                                                 students make toward using methods based on the
- Activity 2                                  20 min
+ Activity 2                                   20 min
                                                                 properties of operations and place value?
- Synthesis Estimate                          10 min
+ Synthesis Estimate                           10 min
 
- Cool-down                                    5 min
+ Cool-down                                     5 min
 
 
 
-Warm-up                                                                                                        10 min
+Warm-up                                                                                                         10 min
 
 Number Talk: Use Tens
 
-      Standards                                                      Instructional Routines
-Addressing     2.NBT.B.5                                          • Number Talk
+      Standards                                                       Instructional Routines
+Addressing      2.NBT.B.5                                         • Number Talk
 
 
 This Number Talk encourages students to think about decomposing the subtrahend to get to a ten when subtracting.
-For example, in the first problem it is helpful to think about 6 as    . This way you can subtract 2 to get to 30, and then
+For example, in the first problem it is helpful to think about 6 as 2 + 4. This way you can subtract 2 to get to 30, and then
 subtract 4 from 30. The understandings elicited here will be helpful later in the lesson when students represent sums
 and differences on a number line by jumping to the nearest ten.
 
@@ -102,13 +102,13 @@ the nearest ten, students need to be precise in their word choice and use of lan
       Student Task Statement                                    Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 32- 6                                                   • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 43 - 8
                                                                   • 1 minute: quiet think time
-        •
+        • 51 - 5
 
-        •                                                       Activity
+        • 52- 7                                                 Activity
                                                                   • Record answers and strategy on a number line.
 Student Response
                                                                   • Keep expressions and work displayed.
@@ -118,7 +118,7 @@ Student Response
 35: I counted back 3 to get to 40 and then 5 more to get to
                                                                 Activity Synthesis
 35.
-                                                                  • “For        some students decomposed the 7 to
+                                                                  • “For 52- 7 some students decomposed the 7 to
 46: I counted back 1 to get to 50 and then 4 more to get to
                                                                     make it easier to get to a ten. How does this number
 46.
@@ -130,10 +130,10 @@ Student Response
 
 
 
-                                           Grade 2                                    CC BY NC 2024
+                                           Grade 2                                     CC BY NC 2024
                                             Unit 4
                                                               Lesson 11
-                                                                               Illustrative Mathematics®                2
+                                                                                Illustrative Mathematics®                2
 Activity 1                                                                                                   15 min
 
 Compare Methods
@@ -144,13 +144,13 @@ Addressing     2.MD.B.6, 2.NBT.B.5
 
 The purpose of this activity is for students to use a number line to compare different methods for getting to a ten when
 subtracting a two-digit number from a two-digit number. Students analyze and try a method where they add or subtract
-the tens first and then decompose the ones to reach a multiple of 10. Diego’s method is an example of this for         .
+the tens first and then decompose the ones to reach a multiple of 10. Diego’s method is an example of this for 53 - 29.
 
 
 
 
 Students also analyze a method that begins by decomposing the ones being added or subtracted to get to a multiple of
-ten. Tyler’s method is an example of this for     .
+ten. Tyler’s method is an example of this for 53 - 29.
 
 
 
@@ -178,57 +178,57 @@ Materials to Copy
                                            Unit 4
                                                            Lesson 11
                                                                               Illustrative Mathematics®               3
-     Student Task Statement                                  Launch
-     Diego and Tyler find the value of       . Their           • Groups of 2
-     work is shown.                                            • Give each student a copy of the blackline master.
-     Diego’s method:                                           • “Diego and Tyler found the value of          on the
-                                                                 number line. Each student represented how they
-                                                                 found the difference. Explain each student’s
-                                                                 method.”
-                                                               • 1 minute: quiet think time
+     Student Task Statement                                   Launch
+     Diego and Tyler find the value of 53 - 29. Their           • Groups of 2
+     work is shown.                                             • Give each student a copy of the blackline master.
+     Diego’s method:                                            • “Diego and Tyler found the value of 53 - 29 on the
+                                                                  number line. Each student represented how they
+                                                                  found the difference. Explain each student’s
+                                                                  method.”
+                                                                • 1 minute: quiet think time
      Tyler’s method:
-                                                               • 2 minutes: partner discussion
-                                                               • Share responses.
-                                                               • “What is the same and what is different about how
-                                                                 Diego and Tyler found the difference?” (Diego started
-      1. Use Diego’s method to find the value of                 by subtracting the tens and Tyler started by
-                .                                                subtracting the ones. They both decomposed the
-      2. Use Tyler’s method to find the value of       .         ones to make subtracting the ones easier. They both
-                                                                 thought of a way they could decompose to get to a
-                                                                 ten.)
+                                                                • 2 minutes: partner discussion
+                                                                • Share responses.
+                                                                • “What is the same and what is different about how
+                                                                  Diego and Tyler found the difference?” (Diego started
+      1. Use Diego’s method to find the value of                  by subtracting the tens and Tyler started by
+         82- 35 .                                                 subtracting the ones. They both decomposed the
+      2. Use Tyler’s method to find the value of 66- 28 .         ones to make subtracting the ones easier. They both
+                                                                  thought of a way they could decompose to get to a
+                                                                  ten.)
 Student Response
-1. 47. Sample response:                                      Activity
-                                                               • “Now, you will have the opportunity to try out Diego’s
-                                                                 and Tyler’s methods. Find the value of each
-                                                                 expression. Represent the methods on the number
-2. 38. Sample response:                                          line.”
-                                                               • 8 minutes: independent work time
-                                                               • 2 minutes: partner discussion
+1. 47. Sample response:                                       Activity
+                                                                • “Now, you will have the opportunity to try out Diego’s
+                                                                  and Tyler’s methods. Find the value of each
+                                                                  expression. Represent the methods on the number
+2. 38. Sample response:                                           line.”
+                                                                • 8 minutes: independent work time
+                                                                • 2 minutes: partner discussion
 
 
-                                                             Activity Synthesis
-                                                               • Invite students to share how they used Diego’s or
-                                                                 Tyler’s methods.
-                                                               • “Did you find Diego’s method or Tyler’s method more
-                                                                 helpful? Explain.”
-                                                               • “Is there another way we could use the number line
-                                                                 to show a way to make it easier to find the value of
-                                                                          by getting to a ten?”
-                                                               • If not suggested by students, ask, “How could we
-                                                                 start with 29 and use a method like Diego’s or
-                                                                 Tyler’s?” (Start with 29, jump right 1 to get to 30, then
-                                                                 it’s easy to see all you need to do is jump right 23 to
-                                                                 get to 53.)
-                                                               • Record the method and display throughout the
-                                                                 lesson for students to reference.
-                                                               • “How is this method the same as Diego’s or Tyler’s?
-                                                                 How is it different?”
+                                                              Activity Synthesis
+                                                                • Invite students to share how they used Diego’s or
+                                                                  Tyler’s methods.
+                                                                • “Did you find Diego’s method or Tyler’s method more
+                                                                  helpful? Explain.”
+                                                                • “Is there another way we could use the number line
+                                                                  to show a way to make it easier to find the value of
+                                                                  53 - 29 by getting to a ten?”
+                                                                • If not suggested by students, ask, “How could we
+                                                                  start with 29 and use a method like Diego’s or
+                                                                  Tyler’s?” (Start with 29, jump right 1 to get to 30, then
+                                                                  it’s easy to see all you need to do is jump right 23 to
+                                                                  get to 53.)
+                                                                • Record the method and display throughout the
+                                                                  lesson for students to reference.
+                                                                • “How is this method the same as Diego’s or Tyler’s?
+                                                                  How is it different?”
 
 
-                                         Grade 2                                    CC BY NC 2024
+                                         Grade 2                                     CC BY NC 2024
                                           Unit 4
-                                                           Lesson 11
-                                                                             Illustrative Mathematics®               4
+                                                            Lesson 11
+                                                                              Illustrative Mathematics®               4
 Activity 2                                                                                                    20 min
 
 More Methods
@@ -256,14 +256,14 @@ Materials to Gather                                            Materials to Copy
      Student Task Statement                                    Launch
       Partner A                                                  • Groups of 2
 
-       1. Find the value of           .                          • Give each student a copy of the blackline master and
+       1. Find the value of 59 + 27.                             • Give each student a copy of the blackline master and
                                                                    access to base-ten blocks.
-       2. Find the value of           .
+       2. Find the value of 65 - 18.
                                                                  • Assign Partner A and Partner B.
       Partner B
 
-       1. Find the value of           .                        Activity
-       2. Find the value of           .
+       1. Find the value of 68 - 39.                           Activity
+       2. Find the value of 22 + 49.
                                                                  • “Find the value of the sum and difference. You may
                                                                    continue to try Diego’s or Tyler’s method or use any
                                                                    other way that makes sense to you. Use the number
@@ -366,13 +366,13 @@ Addressing     2.MD.B.6, 2.NBT.B.5
 
 
      Student Task Statement
-      1. Find the value of       .
+      1. Find the value of 38 + 28.
          Represent your thinking on the number line.
 
 
 
 
-      2. Find the value of       .
+      2. Find the value of 57- 19 .
          Represent your thinking on the number line.
 
 

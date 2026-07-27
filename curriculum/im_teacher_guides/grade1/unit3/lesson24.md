@@ -137,9 +137,9 @@ Materials to Gather
 
 
      Student Task Statement                                    Launch
-      We saw 2 ways to find the value of         .               • Groups of 2
+      We saw 2 ways to find the value of 15 - 8.                 • Groups of 2
 
-             Diego’s way                   Tyler’s way           • Give students access to double 10-frames and
+             Diego’s way                 Tyler’s way             • Give students access to double 10-frames and
                                                                    connecting cubes or two-color counters.
                                                                  • Read the Task Statement for Part 1.
                                                                  • “How did Diego find the difference?” (Diego put 15
@@ -150,22 +150,22 @@ Materials to Gather
       Find the value of each difference. Use Diego’s way.        • Share responses.
       Then use Tyler’s way.
                                                                  • "Look at Tyler's work. He started by putting eight red
-             Diego’s way                   Tyler’s way             counters on his double 10-frame. Then he put on
+             Diego’s way                 Tyler’s way               counters on his double 10-frame. Then he put on
                                                                    seven yellow counters. How did that help him find
-       1.
+       1. 16- 3
                                                                    the difference?” (He kept adding counters until he got
-                Diego’s way                 Tyler’s way            to 15. He knew the yellow counters show the
+                Diego’s way               Tyler’s way              to 15. He knew the yellow counters show the
                                                                    difference.)
-       2.
+       2. 17- 8
                                                                  • 30 seconds: quiet think time
-       3.
+       3. 18 - 15
                                                                  • 1 minute: partner discussion
 
 
 
 
-                                            Grade 1                                  CC BY NC 2024
-                                             Unit 3
+                                          Grade 1                                    CC BY NC 2024
+                                           Unit 3
                                                             Lesson 24
                                                                               Illustrative Mathematics®                 3
 Student Response                                              Activity
@@ -184,16 +184,16 @@ Materials to Gather
       ◦ Diego’s way: I put 17 counters in the 10-frames.
         Then I took away the 7 and 1 from the 10. I           Activity Synthesis
         counted what was left.
-                                                                 • Have a student share Diego’s way for              .
+                                                                 • Have a student share Diego’s way for 18 - 15.
       ◦ Tyler’s way: I put 8 yellow counters in the
         10-frames. Then I added red counters until I got         • Display
         to 17. I counted the red counters.                       • “How does this equation match their method?” (They
  3. 3. Sample responses:                                           started with 18 counters and then took away 15.
                                                                    They counted 3 left.)
       ◦ Diego’s way: I put 18 counters in the 10-frames.
-        Then I took away the 8 and then 7 from the 10. I         • Have a student share Tyler’s way for          .
+        Then I took away the 8 and then 7 from the 10. I         • Have a student share Tyler’s way for 18 - 15.
         counted what was left.
-                                                                 • Display                .
+                                                                 • Display 15 + 3 = 18 .
       ◦ Tyler’s way: I put 15 yellow counters in the
                                                                  • “How does this equation match Tyler’s method?”
         10-frames. Then I added red counters until I got
@@ -221,9 +221,9 @@ true. The numbers are selected to encourage students to use a ten to find the un
 sets: subtraction and addition. Students may notice that the first equation in Set B relates to a subtraction equation in
 Set A.
 
-In the Synthesis, students share methods for           . Highlight both counting on and taking away methods. Monitor for
-a student who finds the difference between            by subtracting 10 from 15 and then subtracting 2 more from the 5
-ones that are left:        is 5 and     is 3. If a student does not use this method, teachers should demonstrate to
+In the Synthesis, students share methods for 15 - 12. Highlight both counting on and taking away methods. Monitor for
+a student who finds the difference between 15 - 12 by subtracting 10 from 15 and then subtracting 2 more from the 5
+ones that are left: 15 - 10 is 5 and 5 - 2 is 3. If a student does not use this method, teachers should demonstrate to
 students. When students break up 12 into 10 and 2 and subtract each number successively they are using their
 understanding of a teen number as 10 and some ones (MP7).
 
@@ -256,17 +256,17 @@ Materials to Gather
 
      Set A:                                                  • Give students access to double 10-frames and
                                                                connecting cubes or two-color counters.
-      1.
+      1. 12- 7 =
                                                            Activity
-      2.
+      2. 18 - 5 =
                                                              • Read the Task Statement.
                                                              • “Be sure you can explain your thinking in a way that
-      3.                                                       others will understand.”
+      3. = 14- 6                                               others will understand.”
                                                              • 8 minutes: independent work time
-      4.
-                                                             • Monitor for students who solve
+      4. 15 - 12 =
+                                                             • Monitor for students who solve 15 - 12 =
 
-      5.                                                        by:
+      5. 13 - 4 =                                               by:
                                                                  ◦ Counting on from 12 to 15.
      Set B:
                                                                  ◦ Taking away 12 from 15.
@@ -276,7 +276,7 @@ Materials to Gather
       2.                                                       table. Share the methods you used to find the
                                                                unknown numbers. If you disagree about an answer,
                                                                work together until you come to an agreement.”
-      3.
+      3. 20 = 15 +
                                                              • 4 minutes: small-group discussion
 
 
@@ -288,11 +288,11 @@ Materials to Gather
                                                                           Illustrative Mathematics®             5
 Student Response                                                Activity Synthesis
 Set A
-                                                                  • Display
+                                                                  • Display 15 - 12 =
  1. 5
  2. 13                                                            • Invite previously identified students to share.
  3. 8
-                                                                  • “How is                     different from all the
+                                                                  • “How is 15 - 12 =           different from all the
  4. 3
  5. 9                                                               other equations?” (All the others only subtract a one-
                                                                     digit number but this one is subtracting 12 so you

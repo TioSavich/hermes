@@ -80,24 +80,24 @@ equal sign. This will be helpful later when students compare addition expression
       Decide whether each statement is true or false.           • Display one equation.
       Be prepared to explain your reasoning.                    • “Give me a signal when you know whether the
                                                                   statement is true and can explain how you know.”
-        •
+        • 3 + 2 = 3 + 2
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 5 + 1 = 5 + 2
+        • 4 + 6 = 3 + 7
                                                               Activity
                                                                 • Share and record answers and strategy.
 Student Response
                                                                 • Repeat with each equation.
   • True: It’s the same thing on both sides.
-  • False: Both sides have       but the right side has 1
-    more added on to make         .
+  • False: Both sides have 5 + 1 but the right side has 1
+    more added on to make 5 + 2.
                                                               Activity Synthesis
   • True: Both sides have a value of 10. We can give 1          • “Who can restate _____'s reasoning in a different
-    away from the 4 to the 6 and then have        .               way?”
-                                                                • “How could you figure out that        is not equal to
-                                                                        without finding the sum of both sides?” (Both
+    away from the 4 to the 6 and then have 3 + 7.                 way?”
+                                                                • “How could you figure out that 5 + 1 is not equal to
+                                                                  5 + 2 without finding the sum of both sides?” (Both
                                                                   sides have 5 + 1 but the right side has 1 more added
-                                                                  on to make        .)
+                                                                  on to make 5 + 2.)
 
 
 

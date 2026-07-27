@@ -93,12 +93,12 @@ When students use strategies based on place value to add, they look for and make
       Student Task Statement                                      Launch
       Find the value of each expression mentally.                   • Display the first expression.
 
-        •                                                           • “Give me a signal when you have an answer and can
+        • 40 + 35                                                   • “Give me a signal when you have an answer and can
                                                                       explain how you got it.”
-        •
+        • 45 + 35
                                                                     • 1 minute: quiet think time
-        •
-        •
+        • 45 + 36
+        • 34 + 58
                                                                   Activity
 
 Student Response                                                    • Record answers and strategies.

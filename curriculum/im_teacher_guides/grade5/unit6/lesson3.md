@@ -67,16 +67,16 @@ Lesson Timeline                                                 Teacher Reflecti
                                               Unit 6
                                                               Lesson 3
                                                                                 Illustrative Mathematics®                 1
- Cool-down                                      5 min
+ Cool-down                                         5 min
 
 
 
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                            10 min
 
 Number Talk: Multiply Then Divide
 
-     Standards                                                        Instructional Routines
-Addressing      5.NBT.A.2                                          • Number Talk
+      Standards                                                          Instructional Routines
+Addressing       5.NBT.A.2                                            • Number Talk
 
 
 In this Number Talk, students find products of a decimal number and a power of 10 and quotients of a whole number
@@ -85,51 +85,51 @@ students convert between different metric units of measure and also specifically
 number changes when it is multiplied or divided by a power of 10.
 
 
-     Student Task Statement                                      Launch
-      Find the value of each expression mentally.                  • Display the first expression.
+      Student Task Statement                                        Launch
+      Find the value of each expression mentally.                     • Display the first expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
-                                                                     explain how you got it.”
-        •
-                                                                   • 1 minute: quiet think time
-        •
-        •
-                                                                 Activity
+        • 100 × 1.5                                                   • “Give me a signal when you have an answer and can
+                                                                        explain how you got it.”
+        • 1,000 × 1.5
+                                                                      • 1 minute: quiet think time
+        • 15 ÷ 10
+        • 15 ÷ 100
+                                                                    Activity
 
-Student Response                                                   • Record students’ answers and strategies.
-                                                                   • Keep the expressions and the work displayed.
+Student Response                                                      • Record students’ answers and strategies.
+                                                                      • Keep the expressions and the work displayed.
   • 150: It’s 100 and half of another 100.
-                                                                   • Repeat with each expression.
+                                                                      • Repeat with each expression.
   • 1,500: It’s 1,000 and half of 1,000.
 
-  • 1.5: I pictured it as a fraction,   , which is equal to 1
-                                                                 Activity Synthesis
+  • 1.5: I pictured it as a fraction, 15/10, which is equal to 1
+                                                                    Activity Synthesis
      and 5 tenths.
 
-  • 0.15:                         and that is equal to 0.15.       • “What is the same about the values of the
-                                                                     expressions?” (There is a 1 and a 5 in each value.)
-                                                                   • “What is different about the values of the
-                                                                     expressions?”(Some of them are whole numbers and
-                                                                     some are decimals.)
+  • 0.15: 15 ÷ 100 = 15 × 1/100 and that is equal to 0.15.            • “What is the same about the values of the
+                                                                        expressions?” (There is a 1 and a 5 in each value.)
+                                                                      • “What is different about the values of the
+                                                                        expressions?”(Some of them are whole numbers and
+                                                                        some are decimals.)
 
 
 
 
-Activity 1                                                                                                      20 min
+Activity 1                                                                                                         20 min
 
 How Tall? How Long? How Far?
 
-     Standards
-Addressing      5.MD.A.1, 5.NBT.A.2
+      Standards
+Addressing       5.MD.A.1, 5.NBT.A.2
 
 
 The goal of this activity is to convert meters to centimeters and millimeters, and to convert kilometers to meters. This
 
 
-                                               Grade 5                                 CC BY NC 2024
-                                                Unit 6
-                                                                Lesson 3
-                                                                                Illustrative Mathematics®                2
+                                                 Grade 5                                  CC BY NC 2024
+                                                  Unit 6
+                                                                   Lesson 3
+                                                                                   Illustrative Mathematics®                2
 metric measurement context gives students an opportunity to observe several patterns (MP7).
  • When students convert from meters to centimeters or multiply by 100, the digits shift 2 places to the left.
   • When students convert from kilometers to meters or multiply by 1,000, the digits shift 3 places to the left.
@@ -287,7 +287,7 @@ Materials to Gather
                 Elena                  1.43 meters
                                                              Activity Synthesis
                 Clare                  1.57 meters
-                                                               • Display the expression:            .
+                                                               • Display the expression: 1.43 × 100.
       1. The average distance for 5th graders is 148           • “How does this expression represent Elena’s jump in
          centimeters. Is each student in the table below,        centimeters?” (There are 100 centimeters in a meter.)
          at, or above the average distance? Explain or
@@ -295,16 +295,16 @@ Materials to Gather
          show your reasoning.
                                                                  in millimeters.
       2. Elena says her jump sounds more impressive if
-                                                               • Display the expression:                    .
+                                                               • Display the expression: (1.43 × 100) × 10.
          she reports it in millimeters.
                                                                • “In what unit of measure does this expression
           a. How far is Elena’s jump in millimeters?             represent Elena's jump? How do you know?” (It
              What about Mai’s and Clare’s jumps?                 represents Elena’s jump in millimeters. There are 10
-          b. Which unit do you think is best for                 millimeters in a centimeter and
+          b. Which unit do you think is best for                 millimeters in a centimeter and 1.43 × 100
              reporting the jumps? Explain your                   represents the centimeters, so if we multiply the
              reasoning.                                          number of centimeters by 10, we will get the number
                                                                  of millimeters.)
-                                                               • Display the expression:                .
+                                                               • Display the expression: 1.43 × 1,000.
                                                                • “How does this expression represent Elena’s jump, in
 
 
@@ -318,7 +318,7 @@ Materials to Gather
     average, and Elena's jump is below average. Sample
                                                                    • Display the equation:
     response: Mai’s jump is 161 cm, Elena’s is 143 cm,
-                                                                                                       .
+                                                                     1.43 × 1,000 = (1.43 × 100) × 10.
     and Clare’s is 157 cm since there are 100 cm in a
     meter.                                                         • Invite students to share which unit they prefer to
                                                                      express the distances that the students jumped.
@@ -396,7 +396,7 @@ Student Response
                                6.5                          650                          6,500
 
 
-Sample response:                     ,
+Sample response: 100 × 6.5 = 650, 10 × 650 = 6,500
 
 
 Responding to Student Thinking

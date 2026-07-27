@@ -94,12 +94,12 @@ consider place value to add and subtract within 100.
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 9 + 5                                                 • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 20 + 30
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 29 + 35
+        • 229 + 435
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
@@ -107,11 +107,11 @@ Student Response                                                • Record answe
   • 14: 9 plus 5 is a fact I know.
                                                                 • Repeat with each expression.
   • 50: It’s 2 tens and 3 tens.
-  • 64: First I added the ones,           . Then I added
+  • 64: First I added the ones, 9 + 5 = 14. Then I added
     14 and 50 to get 64.                                      Activity Synthesis
   • 664: I know 29 and 35 is 64 from the last expression.       • “How is each sum related to the others?” (The third
     I just added 2 hundreds and 4 hundreds to get 600.            expression is like the first and the second because
-              is 664.                                             you have to add          and          if you add by
+    600 + 64 is 664.                                              you have to add 9 + 5 and 20 + 30 if you add by
                                                                   place.)
 
 
@@ -137,17 +137,17 @@ one addend and the value of the sum are known. Although the majority of sums wil
 create sums greater than 100.
 
 
-      Access for English Language Learners
-      MLR8 Discussion Supports. Synthesis: Display question starters to support small group discussion about their
-      favorite role in the game: “Why did you . . . ?” and “Can you say more about . . . ?”
-      Advances: Speaking, Conversing
+       Access for English Language Learners
+       MLR8 Discussion Supports. Synthesis: Display question starters to support small group discussion about their
+       favorite role in the game: “Why did you . . . ?” and “Can you say more about . . . ?”
+       Advances: Speaking, Conversing
 
 
-      Access for Students with Disabilities
-      Representation: Develop Language and Symbols. Support understanding of the problem by inviting students to
-      act it out using manipulatives. For example, one student can build the numbers with base-ten blocks and the
-      other students can complete the action of composing or decomposing to find and prove the answer.
-      Supports accessibility for: Conceptual Processing, Attention
+       Access for Students with Disabilities
+       Representation: Develop Language and Symbols. Support understanding of the problem by inviting students to
+       act it out using manipulatives. For example, one student can build the numbers with base-ten blocks and the
+       other students can complete the action of composing or decomposing to find and prove the answer.
+       Supports accessibility for: Conceptual Processing, Attention
 
 
 Required Materials
@@ -160,22 +160,22 @@ Required Preparation
   • Create a set of cards from the blackline master for each group of 3.
 
 
-     Student Task Statement                                    Launch
-      Play 3 rounds of the game. Write an equation that          • Groups of 3
-      shows the value you find for each round.                   • Give students number cards.
-      Round 1:
+      Student Task Statement                                   Launch
+       Play 3 rounds of the game. Write an equation that         • Groups of 3
+       shows the value you find for each round.                  • Give students number cards.
+       Round 1:
 
-      Round 2:                                                 Activity
-      Round 3:                                                   • “We are going to play a game called Heads Up.”
+       Round 2:                                                Activity
+       Round 3:                                                  • “We are going to play a game called Heads Up.”
                                                                  • Demonstrate with 2 students.
 Student Response                                                 • “Players A and B pick a card and put it on their
                                                                    foreheads without looking at it.”
 Sample response:
                                                                  • “I am Player C. My job is to find the value of the sum
-Round 1:                                                           of the two numbers on the cards and tell my group.”
-Round 2:                                                         • “Players A and B use the other player’s number and
+Round 1: 39 + 4___5___ = 84                                        of the two numbers on the cards and tell my group.”
+Round 2: 55 - 14 = 4___1___                                      • “Players A and B use the other player’s number and
                                                                    the value of the sum to determine what number is
-Round 3:
+Round 3: 66 + 24 = 9___0___
                                                                    on their head.”
                                                                  • “Finally, each player writes the equation that
                                                                    represents what they did.”

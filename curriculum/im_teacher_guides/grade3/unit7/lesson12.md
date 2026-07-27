@@ -69,12 +69,12 @@ Lesson Timeline                                              Teacher Reflection 
                                           Unit 7
                                                           Lesson 12
                                                                             Illustrative Mathematics®                1
-Warm-up                                                                                                       10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: Divide in Parts
 
-     Standards                                                        Instructional Routines
-Addressing      3.OA.C.7                                           • Number Talk
+     Standards                                                       Instructional Routines
+Addressing      3.OA.C.7                                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for dividing within 100. These
@@ -85,45 +85,45 @@ When students use properties of operations and quotients with a value of 10 to f
 make use of structure (MP7).
 
 
-     Student Task Statement                                      Launch
-      Find the value of each expression mentally.                  • Display one expression.
+     Student Task Statement                                     Launch
+      Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
-                                                                     explain how you got it.”
-        •
-                                                                   • 1 minute: quiet think time
-        •
-        •
-                                                                 Activity
+        • 40 ÷ 4                                                  • “Give me a signal when you have an answer and can
+                                                                    explain how you got it.”
+        • 60 ÷ 4
+                                                                  • 1 minute: quiet think time
+        • 80 ÷ 4
+        • 96 ÷ 4
+                                                                Activity
 
-Student Response                                                   • Record answers and strategies.
-                                                                   • Keep expressions and work displayed.
+Student Response                                                  • Record answers and strategies.
+                                                                  • Keep expressions and work displayed.
   • 10: I just know it.
-                                                                   • Repeat with each expression.
-  • 15: I know that 60 is         . I also know that
-    is 10 and        is 5, so         is       or 15.
-  • 20: 80 is double 40, so it’s like having 2 groups of 10      Activity Synthesis
+                                                                  • Repeat with each expression.
+  • 15: I know that 60 is 40 + 20. I also know that 40 ÷ 4
+    is 10 and 20 ÷ 4 is 5, so 60 ÷ 4 is 10 + 5 or 15.
+  • 20: 80 is double 40, so it’s like having 2 groups of 10     Activity Synthesis
     for 20.
-                                                                   • “How does knowing the first fact help you find other
-  • 24: The last problem shows                 . I know that         facts?”
-    96 is         and          , so           is         or
-                                                                   • Consider asking:
+                                                                  • “How does knowing the first fact help you find other
+  • 24: The last problem shows 80 ÷ 4 = 20. I know that             facts?”
+    96 is 80 + 16 and 16 ÷ 4 = 4, so 96 ÷ 4 is 20 + 4 or
+                                                                  • Consider asking:
     24.
-                                                                      ◦ “Who can restate _____’s reasoning in a different
-                                                                        way?”
-                                                                      ◦ “Did anyone have the same strategy but would
-                                                                        explain it differently?”
-                                                                      ◦ “Did anyone approach the problem in a different
-                                                                        way?”
-                                                                      ◦ “Does anyone want to add on to _____’s strategy?”
+                                                                     ◦ “Who can restate _____’s reasoning in a different
+                                                                       way?”
+                                                                     ◦ “Did anyone have the same strategy but would
+                                                                       explain it differently?”
+                                                                     ◦ “Did anyone approach the problem in a different
+                                                                       way?”
+                                                                     ◦ “Does anyone want to add on to _____’s strategy?”
 
 
 
 
-                                            Grade 3                                    CC BY NC 2024
+                                            Grade 3                                   CC BY NC 2024
                                              Unit 7
-                                                               Lesson 12
-                                                                                Illustrative Mathematics®              2
+                                                              Lesson 12
+                                                                               Illustrative Mathematics®              2
 Activity 1                                                                                                   15 min
 
 Area of 24

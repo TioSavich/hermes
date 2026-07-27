@@ -293,28 +293,28 @@ question, the features on the graph, and the context, they attend to precision a
                                             Unit 1
                                                               Lesson 14
                                                                                Illustrative Mathematics®               5
-                                                               • 6 minutes: partner discussion
+                                                             • 6 minutes: partner discussion
 
 
-                                                             Activity Synthesis
-                                                               • “How did you figure out what food was being
-                                                                 compared to pizza?” (We looked for the food that was
-                                                                 picked by 14 students.)
-                                                               • “What does the question mark represent in the
-                                                                 diagram?” (It shows the difference between hot dogs
-                                                                 and pizza. It shows how many more students would
-                                                                 need to pick hot dogs to be the same as the number
-                                                                 of students who picked pizza.)
-                                                               • Point out the dashes representing the difference, but
-                                                                 not an actual quantity.
-                                                               • “What equation could we write to represent this
-       2. How many more students chose pizza than                difference?” (         ,             )
-          burgers? Write an equation to show how you           • Record responses.
+                                                           Activity Synthesis
+                                                             • “How did you figure out what food was being
+                                                               compared to pizza?” (We looked for the food that was
+                                                               picked by 14 students.)
+                                                             • “What does the question mark represent in the
+                                                               diagram?” (It shows the difference between hot dogs
+                                                               and pizza. It shows how many more students would
+                                                               need to pick hot dogs to be the same as the number
+                                                               of students who picked pizza.)
+                                                             • Point out the dashes representing the difference, but
+                                                               not an actual quantity.
+                                                             • “What equation could we write to represent this
+       2. How many more students chose pizza than              difference?” (19- ? = 14 , 14 + ? = 19)
+          burgers? Write an equation to show how you         • Record responses.
           found the difference.
-                                                               • “How do you see each number represented in the
-       3. Use the data from the bar graph to complete            diagram?” (19 shows how many picked pizza, 14
-          the diagram.                                           shows how many picked hot dogs. The question
-                                                                 mark shows the difference.)
+                                                             • “How do you see each number represented in the
+       3. Use the data from the bar graph to complete          diagram?” (19 shows how many picked pizza, 14
+          the diagram.                                         shows how many picked hot dogs. The question
+                                                               mark shows the difference.)
 
 
 
@@ -329,17 +329,17 @@ Student Response
 
 
 
-2.                or             . 11 more players chose
+2.    19- 8 = 11 or 8 + 11 = 19. 11 more players chose
      pizza than burgers. Sample
-     response:                  so                  .
+     response: 8 + (2 + 9) = 19 so (8 + 2) + 9 = 19.
 
 
 
 
-                                         Grade 2                                   CC BY NC 2024
-                                          Unit 1
-                                                           Lesson 14
-                                                                            Illustrative Mathematics®              6
+                                        Grade 2                                  CC BY NC 2024
+                                         Unit 1
+                                                         Lesson 14
+                                                                          Illustrative Mathematics®              6
  3.
  4. Sample response: More students chose pizza than
     hot dogs.
@@ -405,7 +405,7 @@ Student Response
 
 
  1.
- 2. There are 4 more white dogs than brown dogs. Sample response:
+ 2. There are 4 more white dogs than brown dogs. Sample response: 8 + 4 = 12
 
 
 

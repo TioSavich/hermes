@@ -96,7 +96,7 @@ between the image, the tape diagram, and the equation are the important discussi
 
                                                               Activity
                                                                 • “Discuss your thinking with your partner.”
-                                                                • 1 minute: partner discussion
+                             54- 16 = ?                         • 1 minute: partner discussion
                                                                 • Share and record responses.
 Student Response
 Students may notice:                                          Activity Synthesis
@@ -107,7 +107,7 @@ Students may notice:                                          Activity Synthesis
   • There is a dashed line through a part of the diagram.         how much of the ribbon is being cut off.)
   • A ribbon is being cut.                                      • “What could the question mark represent?” (The
 Students may wonder:                                              longer part of the ribbon after it is cut. It represents
-                                                                  the value of         .)
+                                                                  the value of 54- 16 .)
   • Why is there a picture of a ribbon?
   • Is the ribbon 54 inches long?
   • Does the diagram show that the ribbon was cut?
@@ -189,8 +189,8 @@ Student Response                                                    to include t
     ribbon was cut. The part to the right is how much
     was cut from the end—18 inches.                             Activity Synthesis
  3. 26 inches. Sample responses:                                  • “How did the tape diagram help you think about
-      ◦               ,               ,                ,            what you needed to do to find the unknown value?”
-                                                                    (The diagram shows that 18 was being taken away,
+      ◦ 44- 18 = ? , 44- 10 = 34 , 34- 4 = 30 ,                     what you needed to do to find the unknown value?”
+        30- 4 = 26                                                  (The diagram shows that 18 was being taken away,
                                                                     so I decided to subtract 18 from 44.)
       ◦ Students draw a base-ten diagram to show 3
         tens and 14 ones. Students cross out 1 ten and 8
@@ -288,19 +288,19 @@ Materials to Gather
                                                                               Illustrative Mathematics®                  5
 Student Response
  1. Elena kept 31 inches of ribbon. Sample response:
-                 .
+    58 - 27 = 31.
 
 
 
 
  2. Han has 36 inches of ribbon left. Sample response:
-                 .
+    64- 28 = 36 .
 
 
 
 
  3. Priya started with 63 inches of ribbon. Sample
-    response:                .
+    response: 38 + 25 = 63.
 
 
 
@@ -344,11 +344,11 @@ Cool-down                                                                       
 
 More Saree Ribbon
 
-      Standards
+     Standards
 Addressing      2.MD.B.5, 2.NBT.B.5
 
 
-      Student Task Statement
+     Student Task Statement
       Priya had a piece of ribbon that was 74 inches long. She cut off 17 in. How long is Priya’s ribbon now?
 
       Show your thinking using drawings, numbers, or words. Use a diagram if it helps. Don’t forget the unit in your
@@ -360,7 +360,7 @@ Addressing      2.MD.B.5, 2.NBT.B.5
 Student Response
 Priya’s ribbon is 57 inches long. Sample responses:
 
-  •             ,              ,             ,
+  • 74- 17 = ?, 74- 10 = 64 , 64- 4 = 60 , 60- 3 = 57
   • Students draw a base-ten diagram that shows 5 tens and 7 ones. They show decomposing a ten and taking away 1
     ten and 7 ones. They label the diagram to show the difference is 57.
 

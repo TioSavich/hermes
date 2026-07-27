@@ -223,7 +223,7 @@ Student Response                                                • “Which num
       b.                                                        • “Which number is greater, 0.534 or 0.537? Why?”
                                                                   (0.537 because it is further to the right on the
                                                                   number line.)
-      c.                                                        • Display inequality:
+      c.                                                        • Display inequality: 0.534 < 0.537
                                                                 • “We can also say that 0.534 is less than 0.537 with
  2. Sample response: I would use the number line going            symbols.”
     from 0.53 to 0.54 because 0.534 and 0.537 are both
@@ -251,30 +251,30 @@ line.
 
 
       Student Task Statement                                    Launch
-        1. Use the symbol > or < to compare the decimals          • Groups of 2
-           0.2 and 0.02. Use the number line to explain or
-           show your reasoning.
+       1. Use the symbol > or < to compare the decimals           • Groups of 2
+          0.2 and 0.02. Use the number line to explain or
+          show your reasoning.
                                                                 Activity
                                                                   • 5 minutes: independent work
-        2. Use the symbol > or < to compare the decimals          • 2 minutes: partner discussion
-           0.3 and 0.14. Use the number line to explain or
-           show your reasoning.
+       2. Use the symbol > or < to compare the decimals           • 2 minutes: partner discussion
+          0.3 and 0.14. Use the number line to explain or
+          show your reasoning.
                                                                 Activity Synthesis
                                                                   • “How do number lines help compare decimals?” (We
-        3. Use the symbol > or < to compare the decimals            can put the decimals exactly on tick marks and then
-           0.23 and 0.216. Use the number line to explain           see which number is farther to the right.)
-           or show your reasoning.
+       3. Use the symbol > or < to compare the decimals             can put the decimals exactly on tick marks and then
+          0.23 and 0.216. Use the number line to explain            see which number is farther to the right.)
+          or show your reasoning.
 
 
 
 
 Student Response
- 1.             . Sample response: 0.02 is located two tick
-      marks after 0, between 0 and 0.1.
- 2.             . Sample response: 0.14 is located four tick
-      marks after 0.1, between 0.1 and 0.2.
- 3.                . Sample response: 0.216 is located six
-      tick marks after 0.21, between 0.21 and 0.22.
+ 1. 0.2 > 0.02. Sample response: 0.02 is located two tick
+    marks after 0, between 0 and 0.1.
+ 2. 0.3 > 0.14. Sample response: 0.14 is located four tick
+    marks after 0.1, between 0.1 and 0.2.
+ 3. 0.23 > 0.216. Sample response: 0.216 is located six
+    tick marks after 0.21, between 0.21 and 0.22.
 
 
 
@@ -289,7 +289,7 @@ Display the last number line from the last activity.
 
                                              Grade 5                                 CC BY NC 2024
                                               Unit 5
-                                                               Lesson 6
+                                                              Lesson 6
                                                                               Illustrative Mathematics®              5
 “What number is located at the last tick mark before 0.22?” (0.219)
 

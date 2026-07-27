@@ -262,7 +262,7 @@ Materials to Gather
       Do you agree or disagree?
       Explain how you know.                                     • 1 minute: quiet think time
 
-      I                             with Noah because           • “Share your thinking with your partner.”
+      I ___                         with Noah because           • “Share your thinking with your partner.”
                                                                 • 2 minutes: partner discussion
 
 Student Response                                                • “Explain why you agree or disagree with Noah. Write

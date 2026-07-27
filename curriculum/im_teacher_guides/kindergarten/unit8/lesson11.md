@@ -72,7 +72,7 @@ Lesson Timeline                                                Teacher Reflectio
 Number Talk: Add and Subtract 2 and 3
 
      Standards                                                      Instructional Routines
-Addressing     K.OA.A.5                                          • Number Talk
+Addressing       K.OA.A.5                                        • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies and understandings students have for adding and subtracting
@@ -82,12 +82,12 @@ within 5. These understandings help students develop fluency.
      Student Task Statement                                   Launch
       Find the value of each expression.                         • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 3 - 2                                                  • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 3 + 2
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 4- 2
+        • 4- 3
                                                               Activity
 
 Student Response                                                 • Record answers and strategies.
@@ -111,7 +111,7 @@ Activity 1                                                                      
 Display Story Problems and Solutions
 
      Standards
-Addressing     K.OA.A.1, K.OA.A.2
+Addressing       K.OA.A.1, K.OA.A.2
 
 
 The purpose of this activity is for students to represent and solve the story problem that they developed in the previous
@@ -122,8 +122,8 @@ story problem.
 
 
 
-                                    Kindergarten                                     CC BY NC 2024
-                                       Unit 8
+                                      Kindergarten                                   CC BY NC 2024
+                                         Unit 8
                                                            Lesson 11
                                                                               Illustrative Mathematics®               2
       Access for Students with Disabilities
@@ -150,7 +150,7 @@ How many pictures are in the hallway?                            up with yesterd
                                                                  thinking, using drawings, numbers, or words.”
 
 
-                                                             Activity
+5 + 3 = 8                                                    Activity
 There are 8 pictures.                                          • 10 minutes: independent work time
                                                                • “If you have time, you may want to show different
                                                                  ways to solve the problem, using drawings, numbers,

@@ -101,8 +101,8 @@ Student Response
 Sample responses:
   • 13: I see 5 on the top of both 10-frames so that is 10,
     and then there are 3 more.
-  • 15:
-  • 20:
+  • 15: 8 + 2 + 5
+  • 20: 5 + 5 + 5 = 15,15 + 3 + 2 = 20
 
 
 

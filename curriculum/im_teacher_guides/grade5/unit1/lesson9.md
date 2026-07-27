@@ -68,9 +68,9 @@ Lesson Timeline                                               Teacher Reflection
                                              Unit 1
                                                              Lesson 9
                                                                               Illustrative Mathematics®             1
- Activity 2                                  15 min
+ Activity 2                                 15 min
 
- Synthesis Estimate                          10 min
+ Synthesis Estimate                         10 min
 
  Cool-down                                   5 min
 
@@ -92,22 +92,22 @@ multiply large numbers. In this unit, students produce and interpret multiplicat
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 6 × 2                                                 • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 6 × 2 × 10
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 6 × 20 × 10
+        • 60 × 20 × 10
                                                               Activity
                                                                 • Record answers and strategies.
 Student Response
                                                                 • Keep expressions and work displayed.
   • 12: I just know it.
                                                                 • Repeat with each expression.
-  • 120: I know               and              .
-  • 1,200: I know                   and                .
+  • 120: I know 6 × 10 = 60 and 60 × 2 = 120.
+  • 1,200: I know 20 × 10 = 200 and 200 × 6 = 1,200.
                                                               Activity Synthesis
-  • 12,000:                       , so it is 10 times as
+  • 12,000: 200 × 10 × 6 = 12,000, so it is 10 times as
     much as the previous product.                               • “What patterns do you notice in the problems we
                                                                   solved?” (There is a 6 and a 2 in each product. There
                                                                   are also factors of 10, and the 6 and the 2 are
@@ -123,8 +123,8 @@ Student Response
 
 
 
-                                            Grade 5                                 CC BY NC 2024
-                                             Unit 1
+                                           Grade 5                                  CC BY NC 2024
+                                            Unit 1
                                                             Lesson 9
                                                                              Illustrative Mathematics®                2
 Activity 1                                                                                                    20 min
@@ -188,14 +188,14 @@ Figure 1: 78 cubic feet. Sample responses:
   • Cutting the figure vertically makes a 7-foot-by-2-foot-      • Give students access to isometric dot paper to draw
     by-2-foot prism on the left, and a 5-foot-by-5-foot-           the figures if they finish early.
     by-2-foot prism on the right. The total volume is
-                              , which is        or 78
+    (2 × 2 × 7) + (5 × 2 × 5), which is 28 + 50 or 78
     cubic feet.                                                Activity Synthesis
   • Cutting the figure horizontally makes a 2-foot-              • Display Figure 2.
     by-2-foot-by-2-foot prism on top, and a 7-foot-
                                                                  • “How did you break up this shape to find the
     by-2-foot-by-5-foot prism on the bottom. The volume
                                                                    volume?” (I cut off the overhanging piece vertically to
-    is                         , which is       or 78
+    is (2 × 2 × 2) + (7 × 2 × 5), which is 8 + 70 or 78
                                                                    make two rectangular prisms. I cut off the bottom
     cubic feet.
                                                                    piece that the shape is resting on, horizontally.)
@@ -205,14 +205,14 @@ Figure 2: 259 cubic inches. Sample responses:
     rectangular prism and a 5-inch-by-5-inch-by-7-inch             found the others by subtracting.)
     rectangular prism. The volume is
                                                                  • “Did you get the same volume when you broke up
-                               , which is         or 259
+    (3 × 4 × 7) + (5 × 5 × 7), which is 84 + 175 or 259
                                                                    the figure differently? Why?” (Yes. The calculations
     cubic inches.
                                                                    were different, but both tell me how many cubic
   • Cutting horizontally gives a 3-inch-by-9-inch-by-7-inch        inches it takes to fill the shape.)
     rectangular prism and a 2-inch-by-5-inch-by-7-inch
     rectangular prism. The volume is
-                             , which is          or 259
+    (3 × 9 × 7) + (2 × 5 × 7), which is 189 + 70 or 259
     cubic inches.
 
 
@@ -261,8 +261,8 @@ of figures composed of two rectangular prisms.
           Organize your work so it can be followed by              might decompose it into 2 prisms.”
           others.
                                                                  • 1 minute: quiet think time
-            a.                                                   • “Now you will consider how different expressions can
-           b.                                                      represent the volumes of figures.”
+            a.   ((2 × 3) × 4) + ((3 × 3) × 2)                   • “Now you will consider how different expressions can
+           b. (5 × 6) + (3 × 4)                                    represent the volumes of figures.”
 
 
                                                                Activity
@@ -273,9 +273,9 @@ of figures composed of two rectangular prisms.
                                                                  • Monitor for students who:
           followed by others.
                                                                      ◦ Use the numbers in the expressions to
-            a.                                                         determine how to break up the figure.
+            a.   (5 × 8 × 6) + (5 × 4 × 9)                             determine how to break up the figure.
                  cubic inches                                        ◦ Break up the figure and use this to identify the
-           b.                                                          expressions.
+           b.    (5 × 4 × 3) + (5 × 12 × 6)                            expressions.
                  cubic inches
 
                                                                Activity Synthesis
@@ -284,12 +284,12 @@ Student Response                                                 • Invite stud
                                                                    first prism represent its volume.
 Sample responses:
                                                                  • “Why are there three factors in the
- 1.   a. One prism has a base that is 2 inches by 3 inches         expression               but only two factors in the
-         and a height of 4 inches, and the other prism has         expression         ?” (The 2, the 3, and the 4 are the
+ 1.   a. One prism has a base that is 2 inches by 3 inches         expression (2 × 3) × 4) but only two factors in the
+         and a height of 4 inches, and the other prism has         expression (5 × 6)?” (The 2, the 3, and the 4 are the
          a base of 3 inches by 3 inches and a height of 2          length, the width, and the height of the prism in the
          inches.                                                   back. The 5 is the height of the prism on the bottom,
       b. One prism has a base area of 6 square inches              the base area of which is 6.)
-         and the height for that base is 5 inches. The           • “In the expression             , what do the
+         and the height for that base is 5 inches. The           • “In the expression (3 × 3) × 2, what do the
          other prism has a base area of 4 square inches,           parentheses tell you?” (They tell me to first multiply 3
          and the height for that base is 3 inches.                 by 3, which gives me the area of the base, and then I
  2.   a. One prism has a base that is 8 inches by 6 inches         multiply that by 2 to get the volume of the prism.)
@@ -301,8 +301,8 @@ Sample responses:
 
 
 
-                                            Grade 5                                   CC BY NC 2024
-                                             Unit 1
+                                                 Grade 5                              CC BY NC 2024
+                                                  Unit 1
                                                              Lesson 9
                                                                                Illustrative Mathematics®               5
          a base that is 12 inches by 6 inches and a height
@@ -321,17 +321,17 @@ Display the image from the first activity:
 
 “Here is one of the figures we worked with today.”
 
-Display the expression            .
+Display the expression 3 × 9 × 7.
 
 “Which part of the figure is represented by this expression? How do you know?” (The rectangular prism at the top of the
-shape. It is 3 inches tall, 9 inches wide, and 7 inches deep, so its volume is    .)
+shape. It is 3 inches tall, 9 inches wide, and 7 inches deep, so its volume is 3 × 9 × 7.)
 
 Draw a line to show the prism.
 
-“What is the volume of the other rectangular prism? How do you know?” (            cubic inches, since it is 2 inches tall, 5
+“What is the volume of the other rectangular prism? How do you know?” (2 × 5 × 7 cubic inches, since it is 2 inches tall, 5
 inches wide, and 7 inches deep.)
 
-Display the expression                +         .
+Display the expression (3 × 9 × 7) + (2 × 5 × 7).
 
 “How does this expression represent the volume of the figure?” (It shows the addition of the volumes of the two
 rectangular prisms that the make up the figure.)
@@ -345,7 +345,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                       5 min
+Cool-down                                                                                                      5 min
 
 Find the Volume of a Figure
 
@@ -358,7 +358,7 @@ Addressing      5.MD.C.5
                                              Grade 5                                  CC BY NC 2024
                                               Unit 1
                                                              Lesson 9
-                                                                               Illustrative Mathematics®                6
+                                                                               Illustrative Mathematics®               6
      Student Task Statement
       Find the volume of the figure. Explain or show your reasoning.
 
@@ -369,9 +369,9 @@ Student Response
 28 cubic feet. Sample responses:
 
   • Cutting the figure vertically makes a 5-foot-by-4-foot-by1-foot prism on the left and a 4-foot-by-2-foot-by-1-foot
-    prism on the right. The total volume is                          , which is        or 28 cubic feet.
+    prism on the right. The total volume is (5 × 4 × 1) + (4 × 2 × 1), which is 20 + 8 or 28 cubic feet.
   • Cutting the figure horizontally makes a 3-foot-by-4-foot-by-1-foot prism on top and an 8-foot-by-2-foot-by-1-foot
-    prism on the bottom. The volume is                             cubic feet, which is       or 28 cubic feet.
+    prism on the bottom. The volume is (3 × 4 × 1) + (8 × 2 × 1) cubic feet, which is 12 + 16 or 28 cubic feet.
 
 
 Responding to Student Thinking

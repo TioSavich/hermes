@@ -89,17 +89,17 @@ equation is true or false without finding the value of the expressions.
      Student Task Statement                                 Launch
      Decide if each statement is true or false.               • Display one statement.
      Be prepared to explain your reasoning.                   • “Give me a signal when you know whether the
-        •                                                       statement is true and can explain how you know.”
+        • 57 + 20 = 59                                          statement is true and can explain how you know.”
 
-        •                                                     • 1 minute: quiet think time
+        • 66- 4 = 62                                          • 1 minute: quiet think time
 
-        •
+        • 17 + 76 = 59
                                                             Activity
 Student Response                                              • Share and record answers and strategies.
 
   • False: 59 is 2 more than 57, not 20 more.                 • Repeat with each statement.
 
-  • True:       is 2, so             .
+  • True: 6- 4 is 2, so 66- 4 = 62 .
   • False: The sum can’t be less than 76.                   Activity Synthesis
                                                               • “How can you explain your answer without finding
                                                                 the value of the expression?”
@@ -177,11 +177,11 @@ Student Response
  1. 11 second graders. Sample responses:
      ◦ Student draws 7 shapes, then draws more                 Activity Synthesis
        shapes until there are 18 total shapes. Labels
-       show 7 first graders and 11 second graders.               • Display               and
+       show 7 first graders and 11 second graders.               • Display 15 - 6 =      and
 
-     ◦                ,                                          • “How do both of these equations help you find the
+     ◦                , 7 + 10 + 1 = 18                          • “How do both of these equations help you find the
                                                                    number of shooting stars Tyler sees?”
-     ◦
+     ◦ 18 - 7 = 11
 
 
                                             Grade 1                                  CC BY NC 2024
@@ -192,9 +192,9 @@ Student Response
                                                                   needed, ask students to connect the numbers they
      ◦ I counted on from 13, 13...14, 15, 16, 17, 18.
                                                                   use to the story problem.
-     ◦                 ,
+     ◦                 , 13 + 5 = 18
                                                                 • “How are these methods the same? How are they
- 3. 9 shooting stars. Sample response:                            different?” (They both find the same number of dim
+ 3. 9 shooting stars. Sample response: 15 - 5 - 1 = 9             different?” (They both find the same number of dim
  4. 8 planet stickers. Sample response: 2 and 8 make 10,          stars. Both show that there’s some bright stars, some
     so 12 and 8 make 20.                                          dim stars, and a total number. One way uses
                                                                   addition to count on from the number of bright stars.
@@ -252,9 +252,9 @@ Materials to Gather
           Noah paints 17 stars all together.
           How many yellow stars does Noah paint?
                                                             Activity
-            A.
+            A. 17- 9 =
                                                               • Read the Task Statement.
-           B.
+           B. 9 + 17 =
                                                               • 10 minutes: partner work time
             C.
 
@@ -264,20 +264,20 @@ Materials to Gather
           The rest of the objects are planets.
           How many of the objects are planets?                    ◦ Invite students to share how each equation they
                                                                     chose represents the problem.
-            A.
+            A. 16 + 11 =
                                                                   ◦ Invite students to share why one of the
            B.                                                       equations does not represent the problem.
 
-            C.
+            C. 16- 11 =
 
       If you have time: Solve each problem using both
       equations.
 
 
 Student Response
- 1.                and
+ 1. 17- 9 =        and
 
- 2.                 and
+ 2.                 and 16- 11 =
 
 If you have time: 8 yellow stars. 5 planets.
 
@@ -305,7 +305,7 @@ make sure they match what the story is about.)
                                                 Unit 8
                                                           Lesson 5
                                                                            Illustrative Mathematics®            5
-Cool-down                                                                                                          5 min
+Cool-down                                                                                                       5 min
 
 Shooting Stars
 
@@ -322,25 +322,25 @@ Addressing     1.OA.A.1, 1.OA.C.6
 
 
 Student Response
-8 shooting stars. Sample response:            ,               ,
+8 shooting stars. Sample response: 4 + 6 = 10, 10 + 2 = 12, 6 + 2 = 8
 
 
 Responding to Student Thinking
-Students write a number other than 8 for the missing              Next Day Supports
-number.                                                           Before the first activity, pair students up to discuss their
-                                                                  responses.
+Students write a number other than 8 for the missing           Next Day Supports
+number.                                                        Before the first activity, pair students up to discuss their
+                                                               responses.
 
 
-The work in this lesson builds from the work with this type       Prior-Unit Support
-of story problem that began in a prior unit.                      Grade 1, Unit 2, Section B Put Together/Take Apart Story
-                                                                  Problems
+The work in this lesson builds from the work with this type    Prior-Unit Support
+of story problem that began in a prior unit.                   Grade 1, Unit 2, Section B Put Together/Take Apart Story
+                                                               Problems
 
 
 
 
-                                            Grade 1                                      CC BY NC 2024
+                                            Grade 1                                   CC BY NC 2024
                                              Unit 8
                                                               Lesson 5
-                                                                                  Illustrative Mathematics®                6
+                                                                               Illustrative Mathematics®                6
 ```
 

@@ -73,48 +73,48 @@ Lesson Timeline
 
 
 
-Warm-up                                                                                                          10 min
+Warm-up                                                                                                         10 min
 
 Number Talk: Three Factors
 
-      Standards                                                        Instructional Routines
-Building Toward      5.NBT.B.5                                     • Number Talk
+      Standards                                                      Instructional Routines
+Building Toward       5.NBT.B.5                                   • Number Talk
 
 
 The purpose of this Number Talk is for students to mentally calculate a product, with which students will work in context
-in this lesson. The first two products students may know from memory but if not, the idea of doubling              to find
-can be helpful both for finding the value of          and for starting a pattern that continues with the next product,
-           , which is double      . The factors 8, 8, and 20 turn out to be the side lengths, in feet, of a standard container
+in this lesson. The first two products students may know from memory but if not, the idea of doubling 8 × 4 to find 8 × 8
+can be helpful both for finding the value of 8 × 8 and for starting a pattern that continues with the next product,
+8 × 8 × 2, which is double 8 × 8. The factors 8, 8, and 20 turn out to be the side lengths, in feet, of a standard container
 used on cargo ships. Students will examine these containers and the ships that carry them throughout the lesson.
 
 
-      Student Task Statement                                     Launch
-      Find the value of each expression mentally.                  • Display one expression.
+      Student Task Statement                                    Launch
+      Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
-                                                                     explain how you got it.”
-        •
-                                                                   • 1 minute: quiet think time
-        •
-        •
-                                                                 Activity
+        • 8 × 4                                                   • “Give me a signal when you have an answer and can
+                                                                    explain how you got it.”
+        • 8 × 8
+                                                                  • 1 minute: quiet think time
+        • 8 × 8 × 2
+        • 8 × 8 × 20
+                                                                Activity
 
-Student Response                                                   • Record answers and strategies.
-                                                                   • Keep expressions and work displayed.
+Student Response                                                  • Record answers and strategies.
+                                                                  • Keep expressions and work displayed.
 Sample responses
-  • 32: I just knew it.                                            • Repeat with each expression.
+  • 32: I just knew it.                                           • Repeat with each expression.
 
   • 64: I doubled 32.
-  • 128: I doubled 60 to get 120, and then doubled 4 and         Activity Synthesis
+  • 128: I doubled 60 to get 120, and then doubled 4 and        Activity Synthesis
     added that to 120.
-                                                                   • “How did you find the value of          ?” (I
-  • 1,280: I know that multiplying by 10 shifts all of the           multiplied          by 10 because 20 is           .)
+                                                                  • “How did you find the value of 8 × 8 × 20?” (I
+  • 1,280: I know that multiplying by 10 shifts all of the          multiplied 8 × 8 × 2 by 10 because 20 is 10 × 2.)
     digits one place to the left.
 
 
 
 
-Activity 1                                                                                                       15 min
+Activity 1                                                                                                      15 min
 
 What a Waste
 
@@ -127,10 +127,10 @@ produces in a day, a week, a month, and a year. Students have seen cubic feet an
 
 
 
-                                            Grade 5                                     CC BY NC 2024
+                                            Grade 5                                   CC BY NC 2024
                                              Unit 4
                                                              Lesson 19
-                                                                                 Illustrative Mathematics®                  2
+                                                                               Illustrative Mathematics®                 2
 and it may be helpful to build a cubic foot to enable them to visualize this unit of measure and improve their estimates.
 
 Answers to the questions here will vary widely, based on the size of the school, the size of the recycling bins, and the
@@ -207,8 +207,8 @@ Sample responses:
         each day.
  3. I'm not sure. I estimate our room is 10 feet high, 40
     feet long, and 30 feet wide. That would be 12,000
-    cubic feet since                   and then
-                          . But I'm not sure about my
+    cubic feet since 40 × 30 = 1,200 and then
+    1,200 × 10 = 12,000. But I'm not sure about my
     estimates, so it might fit.
 
 
@@ -253,45 +253,45 @@ use their place-value understanding and their understanding of single-digit mult
                                              Unit 4
                                                                  Lesson 19
                                                                                    Illustrative Mathematics®                  4
-       1. A standard cargo container for a ship                     2018 to other countries.”
-          measures 20 feet long, 8 feet wide, and 8 feet
-          tall. What is the volume of the container?
+      1. A standard cargo container for a ship                      2018 to other countries.”
+         measures 20 feet long, 8 feet wide, and 8 feet
+         tall. What is the volume of the container?
                                                                 Activity
-       2. Each school produces about 40 cubic feet of
-          recyclable plastic in 1 day. How many days              • 5 minutes: individual work time
-          does it take for a school to fill one cargo             • 10 minutes: partner work time
-          container?
+      2. Each school produces about 40 cubic feet of
+         recyclable plastic in 1 day. How many days               • 5 minutes: individual work time
+         does it take for a school to fill one cargo              • 10 minutes: partner work time
+         container?
                                                                   • Monitor for students who:
-       3. In 2018, the United States exported about
-                                                                      ◦ Recall that they made the calculation for the first
-          210,000 cargo containers of plastic. There are
-                                                                        problem in the Warm-up.
-          about 70,000 elementary schools in the U.S.
-          How many cargo containers does each school                  ◦ Use the partial-quotients division algorithm to
-          need to fill in order to fill all the containers?             find the number of days it takes a school to fill
-                                                                        one cargo container.
-       4. Do you think all the schools in the country
-          produce enough plastic recyclables to fill the              ◦ Use the fact that               and place value to
-          cargo containers that the U.S. ships? Explain or              find the value of                    .
-          show your reasoning.
+      3. In 2018, the United States exported about
+                                                                     ◦ Recall that they made the calculation for the first
+         210,000 cargo containers of plastic. There are
+                                                                       problem in the Warm-up.
+         about 70,000 elementary schools in the U.S.
+         How many cargo containers does each school                  ◦ Use the partial-quotients division algorithm to
+         need to fill in order to fill all the containers?             find the number of days it takes a school to fill
+                                                                       one cargo container.
+      4. Do you think all the schools in the country
+         produce enough plastic recyclables to fill the              ◦ Use the fact that 3 × 7 = 21 and place value to
+         cargo containers that the U.S. ships? Explain or              find the value of 210,000 ÷ 70,000.
+         show your reasoning.
 
                                                                 Activity Synthesis
 Student Response
                                                                   • Invite students to share their solutions for finding the
- 1. 1,280 cubic feet,                                               number of days it would take a school to fill one of
+ 1. 1,280 cubic feet, 8 × 8 × 20 = 1,280                            number of days it would take a school to fill one of
                                                                     the cargo containers with plastic.
- 2. 32,
-                                                                  • “How can you use the equation                  to find
-                                                                    the value of           ?” (They have the same value
+ 2. 32, 1,280 ÷ 40 = 32
+                                                                  • “How can you use the equation 128 ÷ 4 = 32 to find
+                                                                    the value of 1,280 ÷ 40?” (They have the same value
                                                                     because if 32 groups of 4 is 128, putting 10 times as
                                                                     many in each group will give 10 times as much for
                                                                     the total.)
                                                                   • Invite students to share their response for the
  3. 3 cargo containers. Sample response: I know                     number of cargo containers each school will fill.
-               , so                     because I am
-                                                                  • “How did you find the value of                      ?” (I
+    3 × 7 = 21, so 3 × 70,000 = 210,000 because I am
+                                                                  • “How did you find the value of 210,000 ÷ 70,000?” (I
     just adding 4 zeros to the numbers.
-                                                                    know that               , and this is also true for
+                                                                    know that 3 × 70 = 210, and this is also true for
  4. Sample responses:                                               thousands.)
      ◦ Yes, if it takes each school 32 days to fill 1 cargo       • Invite students to share their reasoning for the last
        container, then it will take 96 days to fill 3 cargo         question about all elementary schools’ plastic
@@ -314,10 +314,10 @@ Lesson Synthesis
 
 
 
-                                           Grade 5                                     CC BY NC 2024
+                                           Grade 5                                    CC BY NC 2024
                                             Unit 4
                                                               Lesson 19
-                                                                                Illustrative Mathematics®                5
+                                                                               Illustrative Mathematics®                5
 with the amount of recyclable plastic that the United States ships abroad.”
 
 “What are some of the different estimates you made or worked with today?” (The volume of recycling bins, the amount
@@ -359,7 +359,7 @@ Addressing      5.NBT.B.5, 5.NBT.B.6
 
 
 Student Response
- 1. 2,880 cubic feet. Sample response: I first found                 , and then found        .
+ 1. 2,880 cubic feet. Sample response: I first found 40 × 9 = 360, and then found 360 × 8.
  2. 120. Sample response:
 
 

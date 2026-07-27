@@ -154,15 +154,15 @@ Required Preparation
       rectangle that can represent it. Be prepared to
       explain your reasoning.
 
-       1.
-       2.
-       3.
-       4.
+       1. 9 × 5
+       2. 8 × 2
+       3. 7 × 10
+       4. 3 × 3
                                                                  • “What is one way you could describe this rectangle?”
-       5.
+       5. 2 × 6
                                                                    (It has 3 rows of 5 squares. There are 5 groups of 3.
-       6.                                                          Its area is 15 square units. There are 15 squares.)
-       7.                                                        • Share and record responses. Save responses for
+       6. 8 × 4                                                    Its area is 15 square units. There are 15 squares.)
+       7. 5 × 7                                                  • Share and record responses. Save responses for
                                                                    discussion after the next activity.
 
 Student Response                                                 • Display rectangles from the blackline master around
@@ -253,13 +253,13 @@ Materials to Gather
                                                                • 1 minute: quiet think time
           the numbers, and find its area.
 
-           a.                                                Activity
-           b.
+           a. 3 × 4                                          Activity
+           b. 4 × 6
                                                                • 7–10 minutes: partner work time
-           c.
+           c. 6 × 3
                                                                • Monitor for a rectangle that two students oriented
-           d.                                                    differently.
-           e.
+           d. 7 × 4                                              differently.
+           e. 3 × 2
 
                                                              Activity Synthesis
                                                                • Have 2 or 3 students share a rectangle for each
@@ -311,7 +311,7 @@ Display or sketch a 2-by-7 gridded rectangle, with the side lengths labeled 2 an
 
 
 “How could you figure out the total number of squares in this rectangle?” (Count by 1. Count by 2. Count by 7. Multiply
-    . Multiply     .)
+2 × 7. Multiply 7 × 2.)
 
 “How are rectangular areas similar to other ways we’ve shown multiplication?” (We can see rows and columns like
 arrays. We can see equal groups in the rows. We can see equal groups in the columns.)
@@ -338,7 +338,7 @@ Addressing     3.MD.C.7.b
 
      Student Task Statement
       Use the grid to create a rectangular area that
-      represents the expression       .
+      represents the expression 7 × 4.
 
       Explain your reasoning.
 
@@ -357,7 +357,7 @@ groups of 7.
 
 
 Responding to Student Thinking
-Students create a rectangle that doesn’t represent     .     Next Day Supports
+Students create a rectangle that doesn’t represent 7 × 4.    Next Day Supports
                                                              Use the Launch of the next day's activity to have students
                                                              discuss how to draw a rectangular area that represents a
                                                              multiplication expression.
@@ -365,9 +365,9 @@ Students create a rectangle that doesn’t represent     .     Next Day Supports
 
 
 
-                                           Grade 3                                 CC BY NC 2024
-                                            Unit 2
-                                                           Lesson 5
+                                            Grade 3                                CC BY NC 2024
+                                             Unit 2
+                                                            Lesson 5
                                                                             Illustrative Mathematics®              7
 ```
 

@@ -34,9 +34,9 @@ that makes sense to them.
 
 In a previous unit, students added within 20, including adding one-digit numbers and teen numbers. Students also
 added multiples of 10 and two-digit numbers within 100, using place value reasoning. In this lesson, students think
-about how two-digit numbers change when they add only ones or only tens. For example, in                     students
+about how two-digit numbers change when they add only ones or only tens. For example, in 24 + 3 = 27 students
 notice that the digit in the ones place changes when 3 is added to 24, but the digit in the tens place does not. In
-              , students notice that the digit in the tens place changes,when 30 is added to 24, but the digit in the ones
+24 + 30 = 54, students notice that the digit in the tens place changes,when 30 is added to 24, but the digit in the ones
 place does not. This lesson provides an opportunity for teachers to formatively assess student’s work with addition from
 previous units.
 
@@ -124,7 +124,7 @@ digit numbers, they look for and make use of the base-ten structure (MP7).
                                                                            Illustrative Mathematics®                  2
                                                                  and ones?” (3 tens and 9 ones)
                                                                • “How could we write equations to go with the last
-                                                                 image?” (            or            )
+                                                                 image?” (35 + 4 = 39 or 30 + 9 = 39)
 
 
 
@@ -134,7 +134,7 @@ Sample responses:
 
  • 30: I see three 10-frames that are full.
  • 35: I see three 10-frames that are full. 3 red and 2
-   yellow make 5. I know that         is 35.
+   yellow make 5. I know that 30 + 5 is 35.
  • 39: I see that if there was one more, there would be 4
    full 10-frames which would be 40. Since one is
    missing, there are 39.
@@ -237,7 +237,7 @@ Sample responses:
     ones place changed and I can count on.
                                                                  find the sum?“ (She could start at 34 and count on 35,
   • You added 40. I know because the number of tens              36, 37, 38, 39. She could add 5 more ones to the 4
-    changed.              .                                      ones in 34.           , so it's 39.)
+    changed. 50 + 40 = 90.                                       ones in 34. 4 + 5 = 9, so it's 39.)
                                                                • “How can she find the sum if she wants to add 5
                                                                  tens?“ (She could count on by tens: 44, 54, 64, 74, 84.
                                                                  She could add 3 tens and 5 tens to get 8 tens.)
@@ -278,35 +278,35 @@ Materials to Gather
       Student Task Statement                                   Launch
       Find the number that makes each equation true.              • Groups of 2
                                                                   • Give students access to connecting cubes in towers
-       1.   a.                                                      of 10 and singles.
+       1.   a. 43 + 5 =                                             of 10 and singles.
 
 
-            b.                                                 Activity
+            b. 43 + 50 =                                       Activity
                                                                   • Read the Task Statement.
-       2.   a.
+       2.   a. 51 + 3 =
                                                                   • 7 minutes: independent work time
                                                                   • 3 minutes: partner discussion
-            b.
+            b. 51 + 30 =
 
 
-       3.   a.                                                 Activity Synthesis
+       3.   a. 2 + 75 =                                        Activity Synthesis
                                                                   • Display the first 3 problems.
-            b.                                                    • “What did you notice about the equations and the
+            b. 20 + 75 =                                          • “What did you notice about the equations and the
                                                                     sums?” (It was like adding the same number, just to a
-                                                                    different place. When I add       , I only added the
-       4.
-                                                                    numbers in the ones place. When I add           ,I
+                                                                    different place. When I add 43 + 5, I only added the
+       4. 93 + 6 =
+                                                                    numbers in the ones place. When I add 43 + 50, I
             Show your thinking using drawings, numbers,             added 5 tens and 0 ones to 43. The number in the
             or words.                                               ones place stayed the same.)
 
 
-       5.
+       5. 60 + 28 =
 
             Show your thinking using drawings, numbers,
             or words.
 
 
-       6.
+       6. 5 + 74 =
 
             Show your thinking using drawings, numbers,
             or words.
@@ -325,7 +325,7 @@ Student Response
       b. 81
  3.   a. 77
       b. 95
- 4. 99. Sample response: I know that
+ 4. 99. Sample response: I know that 3 + 6 = 9
  5. 88. Sample response: I added 6 tens and 2 tens
     which is 8 tens.
  6. 79. Sample response: I started at 74 and counted on
@@ -342,9 +342,9 @@ If students fill in both equations with the same number, consider asking:
 
 
 Lesson Synthesis
-Display:
+Display: 4 + 45
 
-“Today we added tens or ones to two-digit numbers. Mai and Andre added           . Mai says the sum is 85. Andre says
+“Today we added tens or ones to two-digit numbers. Mai and Andre added 4 + 45. Mai says the sum is 85. Andre says
 the sum is 49. Who do you agree with? Why?” (Mai added the 4 to the 4 tens in 45 to get 85. Andre added the 4 to the 5
 ones in 45 to get 49. I agree with Andre, because 4 means 4 ones. You have to add the 4 to the ones. Mai added 4 tens
 which is 40.)
@@ -357,7 +357,7 @@ Cool-down                                                                       
 Add a 1-digit and a 2-digit Number
 
       Standards
-Addressing     1.NBT.C.4
+Addressing        1.NBT.C.4
 
 
       Student Task Statement
@@ -365,10 +365,10 @@ Addressing     1.NBT.C.4
       Show your thinking using drawings, numbers, or words.
 
 
-       1.
+       1. 5 + 52 =
 
 
-       2.
+       2. 50 + 29 =
 
 
 
@@ -380,7 +380,7 @@ Addressing     1.NBT.C.4
 Student Response
  1. 57. Sample response: Draws 5 tens and circles them. Writes 50. Draws 2 ones and 5 more ones. Counts on, 52...53,
     54, 55, 56, 57.
- 2. 79. Sample response: Draws 5 tens and 2 tens and circles them. Writes 70. Draws 9 ones and writes 9.               .
+ 2. 79. Sample response: Draws 5 tens and 2 tens and circles them. Writes 70. Draws 9 ones and writes 9. 70 + 9 = 79.
 
 
 Responding to Student Thinking
@@ -394,6 +394,6 @@ equations true.                                             Before the Warm-up, 
                                           Grade 1                                 CC BY NC 2024
                                            Unit 5
                                                           Lesson 1
-                                                                           Illustrative Mathematics®            8
+                                                                           Illustrative Mathematics®             8
 ```
 

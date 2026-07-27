@@ -73,46 +73,46 @@ Lesson Timeline                                                 Teacher Reflecti
 
 
 
-Warm-up                                                                                                        10 min
+Warm-up                                                                                                       10 min
 
 How Many Do You See: Blocks
 
-     Standards                                                      Instructional Routines
-Addressing     2.NBT.A.1                                        • How Many Do You See?
+     Standards                                                     Instructional Routines
+Addressing     2.NBT.A.1                                       • How Many Do You See?
 
 
 The purpose of this How Many Do You See? is for students to use the structure of base-ten blocks to determine the
 value of images (MP7). Students may name the quantity of the blocks they see by the unit each block represents (3
-hundreds, 2 tens, and 4 ones), use an addition expression to name the value of each group of blocks (             ), or
+hundreds, 2 tens, and 4 ones), use an addition expression to name the value of each group of blocks (300 + 20 + 4), or
 name the number that represents the value of the blocks (324).
 
 
-     Student Task Statement                                   Launch
-      How many do you see? How do you see them?                 • Groups of 2
-                                                                • “How many do you see? How do you see them?”
-                                                                • Flash the image.
-                                                                • 30 seconds: quiet think time
+     Student Task Statement                                  Launch
+      How many do you see? How do you see them?                • Groups of 2
+                                                               • “How many do you see? How do you see them?”
+                                                               • Flash the image.
+                                                               • 30 seconds: quiet think time
 
 
-                                                              Activity
-                                                                • Display the image in the student book.
-                                                                • “Discuss your thinking with your partner.”
-                                                                • 1 minute: partner discussion
-                                                                • Record responses as an expression using hundreds,
-                                                                  tens, and ones.
-                                                                • Repeat for each image.
+                                                             Activity
+                                                               • Display the image in the student book.
+                                                               • “Discuss your thinking with your partner.”
+                                                               • 1 minute: partner discussion
+                                                               • Record responses as an expression using hundreds,
+                                                                 tens, and ones.
+                                                               • Repeat for each image.
 
 
-                                                              Activity Synthesis
-                                                                • “What did you notice about the order of the blocks
-Student Response                                                  and the value the blocks represent?” (Even though
-                                                                  the blocks were in different orders, the first two
+                                                             Activity Synthesis
+                                                               • “What did you notice about the order of the blocks
+Student Response                                                 and the value the blocks represent?” (Even though
+                                                                 the blocks were in different orders, the first two
 Sample responses:
-                                                                  images had the same value. The order of the blocks
-  • 324: I saw the 3 hundreds then the 2 tens and the 4           doesn’t change the value of the blocks.)
-    ones. That makes 324.                                       • “Today we are going to be reading and writing three-
-  • 324: It’s the same blocks in a different order.               digit numbers. Pay attention to how the order, or
-                                                                  place, of each digit shows the value.”
+                                                                 images had the same value. The order of the blocks
+  • 324: I saw the 3 hundreds then the 2 tens and the 4          doesn’t change the value of the blocks.)
+    ones. That makes 324.                                      • “Today we are going to be reading and writing three-
+  • 324: It’s the same blocks in a different order.              digit numbers. Pay attention to how the order, or
+                                                                 place, of each digit shows the value.”
   • 127: There’s 1 hundred, 2 tens, and 7 ones.
 
 
@@ -120,8 +120,8 @@ Sample responses:
 
                                              Grade 2                                CC BY NC 2024
                                               Unit 5
-                                                            Lesson 4
-                                                                             Illustrative Mathematics®                  2
+                                                           Lesson 4
+                                                                             Illustrative Mathematics®                 2
 Activity 1                                                                                                   20 min
 
 Place Value Riddles
@@ -230,31 +230,31 @@ Materials to Gather
      Student Task Statement                                   Launch
       Find the number that makes each equation true.            • Groups of 2
       Use base-ten blocks or diagrams if they help.             • Give students access to base-ten blocks.
-       1. 4 hundreds     6 tens   2 ones       __________
-       2. 7 ones    2 hundreds    6 tens       __________     Activity
-       3. 3 tens   5 hundreds     __________
+       1. 4 hundreds + 6 tens + 2 ones = __________
+       2. 7 ones + 2 hundreds + 6 tens = __________           Activity
+       3. 3 tens + 5 hundreds = __________
                                                                 • “Find the number that makes each equation true.”
                                                                 • 6 minutes: partner work time
 
 
-                                               Grade 2                               CC BY NC 2024
-                                                Unit 5
+                                             Grade 2                                 CC BY NC 2024
+                                              Unit 5
                                                             Lesson 4
                                                                               Illustrative Mathematics®               4
-       4. 325 __________ hundreds          __________ ones       • Monitor for students who agree with Elena because:
+       4. 325 = __________ hundreds + __________ ones +          • Monitor for students who agree with Elena because:
           __________ tens                                            ◦ 37 would mean 3 tens and 7 ones
-       5. 70    300     2   __________                               ◦ If there are 3 hundreds, you need 3 digits.
-       6. 836    6    800    __________
+       5. 70 + 300 + 2 = __________                                  ◦ If there are 3 hundreds, you need 3 digits.
+       6. 836 = 6 + 800 + __________
        7. Clare and Elena try to find the number that          Activity Synthesis
           makes the equation true.
                                                                  • Share and record responses for each equation.
-           7 ones     3 hundreds    __________.
+           7 ones + 3 hundreds = __________.
                                                                  • Consider asking:
            They wrote different answers.
                                                                      ◦ “How do you know your equation is true?”
-            ◦ Clare wrote 7 ones         3 hundreds   37.
+            ◦ Clare wrote 7 ones + 3 hundreds = 37.
                                                                      ◦ “How is each side of the equation the same?
-            ◦ Elena wrote 7 ones         3 hundreds   307.             How is it different?”
+            ◦ Elena wrote 7 ones + 3 hundreds = 307.                   How is it different?”
 
            Who is correct? Explain how you know.                 • Invite previously identified students to share whether
                                                                    they agree with Clare or Elena and why.
@@ -294,43 +294,43 @@ Suggested Centers
 
 
 
-                                               Grade 2                                CC BY NC 2024
-                                                Unit 5
+                                            Grade 2                                   CC BY NC 2024
+                                             Unit 5
                                                              Lesson 4
                                                                                Illustrative Mathematics®              5
-Cool-down                                                                                                        5 min
+Cool-down                                                                                                      5 min
 
 Order of Digits
 
      Standards
-Addressing      2.NBT.A.1, 2.NBT.A.3
+Addressing     2.NBT.A.1, 2.NBT.A.3
 
 
      Student Task Statement
       Find the numbers that make each equation true.
 
-       1. 638      ____________ ones   ____________ hundreds
+       1. 638 = ____________ ones + ____________ hundreds
 
-             ____________ tens
-       2. 7 tens     2 ones    4 hundreds    ____________
+           + ____________ tens
+       2. 7 tens + 2 ones + 4 hundreds = ____________
 
 
 Student Response
- 1. 8 ones    6 hundreds      3 tens
+ 1. 8 ones + 6 hundreds + 3 tens
  2. 472
 
 
 Responding to Student Thinking
-Students write numbers in the blanks that match the             Next Day Supports
-order of the digits on the other side of the equation, but      Launch the first activity in the next lesson with a
-do not create true equations.                                   discussion about this Cool-down.
+Students write numbers in the blanks that match the           Next Day Supports
+order of the digits on the other side of the equation, but    Launch the first activity in the next lesson with a
+do not create true equations.                                 discussion about this Cool-down.
 
 
 
 
-                                             Grade 2                                   CC BY NC 2024
+                                             Grade 2                                 CC BY NC 2024
                                               Unit 5
-                                                               Lesson 4
-                                                                                Illustrative Mathematics®                6
+                                                             Lesson 4
+                                                                              Illustrative Mathematics®                6
 ```
 

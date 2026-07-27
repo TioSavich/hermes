@@ -66,26 +66,26 @@ Lesson Timeline                                               Teacher Reflection
                                            Unit 5
                                                            Lesson 13
                                                                               Illustrative Mathematics®              1
- Activity 2                                       20 min
+ Activity 2                                         20 min
 
- Activity 3                                       20 min
+ Activity 3                                         20 min
 
- Synthesis Estimate                               10 min
+ Synthesis Estimate                                 10 min
 
- Cool-down                                        5 min
+ Cool-down                                          5 min
 
 
 
-Warm-up                                                                                                                10 min
+Warm-up                                                                                                             10 min
 
 True or False: Some Number Times a Fraction
 
-      Standards                                                              Instructional Routines
-Building On      4.NF.B.4.b                                               • True or False?
+      Standards                                                          Instructional Routines
+Building On        4.NF.B.4.b                                         • True or False?
 
 
 The purpose of this True or False? is to activate what students know about multiplying a fraction by a whole number
-(     , in particular fractions with denominators 4, 8, and 12) and about fractions that are equivalent to whole numbers.
+(n × a/b, in particular fractions with denominators 4, 8, and 12) and about fractions that are equivalent to whole numbers.
 The reasoning students do here will be helpful later when they solve problems involving fractional units of
 measurement in pounds, ounces, hours, and minutes.
 
@@ -93,39 +93,39 @@ The whole numbers and the denominators in the equations are multiples or factors
 opportunity to look for and make use of structure (MP7) to determine whether the equations are true.
 
 
-      Student Task Statement                                            Launch
-      Decide whether each statement is true or false. Be                  • Display one statement.
-      prepared to explain your reasoning.                                 • “Give me a signal when you know whether the
-        •                                                                   statement is true and can explain how you know.”
-                                                                          • 1 minute: quiet think time
+      Student Task Statement                                        Launch
+      Decide whether each statement is true or false. Be              • Display one statement.
+      prepared to explain your reasoning.                             • “Give me a signal when you know whether the
+        • 16 × 1/4 = 4                                                  statement is true and can explain how you know.”
+              8 × 3/4 = 12                                            • 1 minute: quiet think time
         •
 
-        •
-                                                                        Activity
-        •
-                                                                          • Share and record answers and strategies.
-                                                                          • Repeat with each statement.
+        • 32 × 2/8 = 8
+                                                                    Activity
+        • 60 × 1/12 = 10
+                                                                      • Share and record answers and strategies.
+                                                                      • Repeat with each statement.
 Student Response
-  • True: 4 groups of     make 1, so 16 groups of          is 4         Activity Synthesis
+  • True: 4 groups of 1/4 make 1, so 16 groups of 1/4 is 4          Activity Synthesis
      times as much, which is 4.
-                                                                          • “Can you tell whether an equation is true by looking
-  • False:                 , so           would have to be 3                at the sizes of the whole numbers and the fractions,
-     times 2, which is 6, not 12.                                           without performing computation? For instance,
-  • True:     is equivalent to    , and                           .         without multiplying          , can we say that
-                                                                            can’t be 10? How?” (Yes, we know that 12 groups of
-     I know from the first equation that                  , so
-                                                                               make 1, which means 120, not 60, groups of
-                         , which is 8.
-                                                                            are needed to make 10.)
-  • False:                , which is 5, not 10.
+                                                                      • “Can you tell whether an equation is true by looking
+  • False: 8 × 1/4 = 8/4 = 2, so 8 × 3/4 would have to be 3             at the sizes of the whole numbers and the fractions,
+     times 2, which is 6, not 12.                                       without performing computation? For instance,
+  • True: 2/8 is equivalent to 1/4, and 32 × 1/4 = 2 × 16 × 14.         without multiplying 60 × 1/12, can we say that 60 × 1/12
+                                                                        can’t be 10? How?” (Yes, we know that 12 groups of
+     I know from the first equation that 16 × 1/4 = 4, so
+                                                                        1/12 make 1, which means 120, not 60, groups of 1/12
+     2 × 16 × 1/4 = 2 × 4, which is 8.
+                                                                        are needed to make 10.)
+  • False: 60 × 1/12 = 60/12, which is 5, not 10.
 
 
 
 
-                                               Grade 4                                        CC BY NC 2024
+                                               Grade 4                                    CC BY NC 2024
                                                 Unit 5
-                                                                      Lesson 13
-                                                                                       Illustrative Mathematics®                2
+                                                                  Lesson 13
+                                                                                   Illustrative Mathematics®                 2
 Activity 1                                                                                                     15 min
 
 Info Gap: Noah’s School Day (Part 1)
@@ -189,7 +189,7 @@ need (MP1).
 Student Response                                                  for how they will use the information before the
                                                                   information is revealed.
  1. Noah’s morning routine takes more time. Sample
-    response:    hour is 30 minutes, and 40 minutes is          • Answer questions, using only information on
+    response: 1/2 hour is 30 minutes, and 40 minutes is         • Answer questions, using only information on
                                                                   the data card in the Activity Narrative (do not reveal).
     more than 30 minutes.
                                                                 • Record information that is shared on the display.
@@ -198,7 +198,7 @@ Student Response                                                  for how they w
     Sample response: Four-fourths of an hour is 60
                                                                   enough information to solve the problem.
     minutes, and one more fourth is another 15 minutes,
-    so    hours is        or 75 minutes.                        • Repeat until students decide they have enough
+    so 5/4 hours is 60 + 15 or 75 minutes.                      • Repeat until students decide they have enough
                                                                   information to solve.
                                                                 • 2–4 minutes: independent work time
 
@@ -219,7 +219,7 @@ Activity 2                                                                      
 Info Gap: Noah’s School Day (Part 2)
 
      Standards                                                     Instructional Routines
-Addressing      4.MD.A.2, 4.OA.A.3                              • MLR4 Information Gap
+Addressing     4.MD.A.2, 4.OA.A.3                               • MLR4 Information Gap
 
 
 The Info Gap routine in this activity, prompts students to compare lengths of time given in different units. To make
@@ -228,8 +228,8 @@ need to relate quantities in multiplicative terms—to think of a quantity as a 
 
 
 
-                                           Grade 4                                  CC BY NC 2024
-                                            Unit 5
+                                             Grade 4                                CC BY NC 2024
+                                              Unit 5
                                                           Lesson 13
                                                                              Illustrative Mathematics®                 4
 quantity.
@@ -294,15 +294,15 @@ Student Response
                                                                      next set of cards. Students switch roles and repeat
 Problem Card 1:                                                      the process with Problem Card 2 and Data Card 2.
 
-Agree. Sample response: Nine hours are        or 540
+Agree. Sample response: Nine hours are 9 × 60 or 540
 minutes. This number is 6 times as much as 90 minutes            Activity Synthesis
-(             ).
+(6 × 90 = 540).
                                                                    • “What were the important quantities to know to
 Problem Card 2:                                                      solve the first problem? What about in the second
-More than 4 hours. Sample response:               .I                 problem?”
+More than 4 hours. Sample response: 3 × 90 = 270. I                  problem?”
 know that 240 minutes are equal to 4 hours, and 30                 • “Did anyone solve the problem in a different way
-minutes are equal to    hour, so 270 minutes are equal to            than their partner?”
-   hours.                                                          • “How did you compare 9 hours and 90 minutes?”
+minutes are equal to 1/2 hour, so 270 minutes are equal to           than their partner?”
+41/2 hours.                                                        • “How did you compare 9 hours and 90 minutes?”
                                                                    • “How did you find out if Noah spends more than or
                                                                      less than 4 hours with his family on a weekend day?”
 
@@ -313,7 +313,7 @@ Activity 3: Optional                                                            
 
 Shopping List
 
-     Standards
+      Standards
 Addressing     4.MD.A.2, 4.OA.A.3
 
 
@@ -325,7 +325,7 @@ As they work to eliminate possibilities, draw conclusions, and explain their thi
 constructing logical arguments (MP3).
 
 
-     Student Task Statement                                      Launch
+      Student Task Statement                                     Launch
       Here are 6 ingredients that a shopper bought and             • Groups of 2–4
       some clues about each quantity.                              • Read aloud the opening paragraph and the list of
       The items are listed in order of weight, from least to         ingredients. Invite students to ask any clarifying
@@ -358,7 +358,7 @@ constructing logical arguments (MP3).
                                                                 ◦ “Which was the first ingredient amount you
          tofu                                                     figured out? Was there a reason you started with
                                                                   that item?” Rice noodles, because it is lightest
-        carrots                                                      and   pound is very light.)
+        carrots                                                      and 1/2 pound is very light.)
 
         brown                                                   ◦ “Which ingredient amount did you figure out
          rice                                                     next?” (Brown rice, because it is 20 times the
@@ -367,9 +367,9 @@ constructing logical arguments (MP3).
                                                                 ◦ “Was there a point at which you saw multiple
        tofu.
                                                                   possibilities? How did you decide what to do?”
-     • One ingredient weighs         pound.                          (Any of the items could have been   pound, but
+     • One ingredient weighs 1/2 pound.                              (Any of the items could have been 1/2 pound, but
 
-     • The item that weighs 10 pounds is 10 times the                if the heaviest amount was    pound, the other
+     • The item that weighs 10 pounds is 10 times the                if the heaviest amount was 1/2 pound, the other
        weight of shrimp.                                             ingredients would be very small and not make
                                                                      much sense.)
      • The carrots are 3 times as heavy as the shrimp.
@@ -377,7 +377,7 @@ constructing logical arguments (MP3).
      • The carrots are 2 times as heavy as the tapioca
                                                                   item? How did you know which it was?” (I found
        flour.
-                                                                           .)
+                                                                     20 × 1/2.)
      • Brown rice weighs 20 times as much as the
        weight of noodles.
    Use the clues to find out the weight of each
@@ -388,13 +388,13 @@ Student Response
 
         ingredient       pounds         ounces
 
-       rice noodles                           8
+       rice noodles         1/2              8
 
           shrimp               1            16
 
-       tapioca flour                        24
+       tapioca flour       1 1/2            24
 
-           tofu                             40
+           tofu            21/2             40
 
           carrots              3            48
 
@@ -403,10 +403,10 @@ Student Response
 
 
 
-                                            Grade 4                               CC BY NC 2024
+                                            Grade 4                                CC BY NC 2024
                                              Unit 5
                                                          Lesson 13
-                                                                           Illustrative Mathematics®            7
+                                                                            Illustrative Mathematics®            7
 Lesson Synthesis
 “Today we solved measurement problems in which not all of the necessary information was provided.”
 
@@ -443,8 +443,8 @@ Addressing     4.MD.A.2, 4.OA.A.3
 
 
 Student Response
-12 ounces. Sample response: One pound is 16 ounces, and 3 pounds is           , which is 48 ounces, so she needs 48
-ounces of sand.           , so she has 12 ounces of rocks.
+12 ounces. Sample response: One pound is 16 ounces, and 3 pounds is 3 × 16, which is 48 ounces, so she needs 48
+ounces of sand. 48 ÷ 4 = 12, so she has 12 ounces of rocks.
 
 
 Responding to Student Thinking
@@ -462,7 +462,7 @@ sand.                                                          organize students
                                           Grade 4                                    CC BY NC 2024
                                            Unit 5
                                                           Lesson 13
-                                                                              Illustrative Mathematics®               8
+                                                                              Illustrative Mathematics®             8
 Here are the relationships we saw:
 
   • One meter (m) is 100 times as long as 1 centimeter (cm).
@@ -474,8 +474,8 @@ sand.                                                          organize students
   • One minute is 60 times as long as 1 second.
 
 When given a measurement in one unit, we can find the value in another unit by reasoning and writing equations.
-For example, to express 5 kilograms in grams, we can write                  . To express 4 pounds in ounces, we
-can write            .
+For example, to express 5 kilograms in grams, we can write 5 × 1,000 = 5,000. To express 4 pounds in ounces, we
+can write 4 × 16 = 64.
 
 Throughout the section, we used these relationships to convert measurements from one unit to another, to
 compare and order measurements, and to solve problems in different situations.

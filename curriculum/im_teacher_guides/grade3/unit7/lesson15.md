@@ -245,7 +245,7 @@ Sample responses:                                                  • 10–15 m
                                                                  Activity Synthesis
     fence so it would be connected to the fenced area for          • Invite previously selected students to display their
     the chickens. This gives enough space for 7 chickens             posters for all to see.
-    since             .
+    since 56 ÷ 8 = 7.
                                                                    • Invite 2–3 groups to share how they decided on how
                                                                      many chickens Maya should get.
 

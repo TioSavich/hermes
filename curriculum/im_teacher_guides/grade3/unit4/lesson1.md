@@ -83,7 +83,7 @@ Warm-up                                                                         
 How Many Do You See: Apples
 
       Standards                                                     Instructional Routines
-Building Toward        3.OA.A.3                                  • How Many Do You See?
+Building Toward       3.OA.A.3                                   • How Many Do You See?
 
 
 The purpose of this How Many Do You See? is for students to subitize or use grouping strategies to describe the images
@@ -109,8 +109,8 @@ Student Response
                                                                  • “How did the organization of the apples help you see
 Sample responses:                                                  how many there were?” (I saw 2 rows of 4, which I
   • 16: 4 rows (or columns) of 4.                                  knew was 8, and then I doubled 8 to find how many
-  • 16: I multiplied       .                                       apples were in the crate. I saw groups of 4 so I
-                                                                   multiplied      then added the other apples.)
+  • 16: I multiplied 8 × 2.                                        apples were in the crate. I saw groups of 4 so I
+                                                                   multiplied 4 × 4 then added the other apples.)
   • 23: I see 4 groups of 4, and I see 7 more apples in the
     other crate, which makes 23.                                 • Consider asking:
                                                                     ◦ “Who can restate the way ___ saw the apples in

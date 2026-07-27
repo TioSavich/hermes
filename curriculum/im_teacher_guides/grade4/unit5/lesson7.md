@@ -239,8 +239,8 @@ place value (MP3).
      also left out 1 measurement.
 
                                                              Activity
-                         measurement     measurement
-                           (meters)      (centimeters)         • “Take 5 quiet minutes to spot and correct Priya’s
+                       measurement       measurement
+                         (meters)        (centimeters)         • “Take 5 quiet minutes to spot and correct Priya’s
                                                                  errors and find the missing measurement.
         a. height of                                             Then share your thinking with your partner.”
                               2               200
@@ -280,7 +280,7 @@ Student Response
     response: One meter is 100 centimeters, so each
     measurement in meters should be multiplied by 100
     to get the measurement in centimeters.
- 2. 5,000 centimeters.
+ 2. 5,000 centimeters. 50 × 100 = 5,000
 
 
 
@@ -309,7 +309,7 @@ as long as 1 centimeter”).
 Display the table showing Priya’s measurements. Invite students to share their responses to the last activity.
 
 Reiterate the multiplicative relationship of the values in the two columns, revoicing students’ responses as needed. (For
-instance, “If 1 meter is 100 times 1 centimeter, then 3 meters must be           centimeters or 300 centimeters, rather
+instance, “If 1 meter is 100 times 1 centimeter, then 3 meters must be 3 × 100 centimeters or 300 centimeters, rather
 than 30 centimeters.”)
 
 
@@ -337,7 +337,7 @@ Addressing      4.MD.A.1
 
 Student Response
  1. Shorter than 1 meter, because 1 meter is 100 centimeters, and 62 is less than 100.
- 2. 900 centimeters long, because                   .
+ 2. 900 centimeters long, because 9 × 100 = 900.
 
 
 Responding to Student Thinking

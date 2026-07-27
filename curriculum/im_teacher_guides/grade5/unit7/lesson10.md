@@ -80,22 +80,22 @@ relationships between patterns.
      Student Task Statement                                      Launch
       Decide if each statement is true or false. Be                • Display one statement.
       prepared to explain your reasoning.                          • “Give me a signal when you know whether the
-        •                                                            statement is true and can explain how you know.”
+        • 276 ÷ 3 = 1/3 × 276                                        statement is true and can explain how you know.”
                                                                    • 1 minute: quiet think time
-        •
+        • 276 ÷ 3 = 276/6
 
-        •
+        • (276 ÷ 3) × 2 = 2/3 × 276
                                                                  Activity
                                                                    • Share and record answers and strategy.
 Student Response
                                                                    • Repeat with each problem.
-  • True:
+  • True: 276 ÷ 3 = 276/3 = 1/3 × 276
 
   • False: It's 276 thirds not sixths.                           Activity Synthesis
   • True: I just multiplied the right hand side of the first       • “How can the relationship between multiplication
     equation by 2.                                                   and division help you justify your reasoning?” (I used
                                                                      the fact that dividing by 3 is the same as multiplying
-                                                                     by    .)
+                                                                     by 1/3.)
 
 
 
@@ -203,17 +203,17 @@ Student Response                                               there was no mult
     Set B: Each number with Rule 2 is 1 more than
     double the corresponding number with Rule 1.
     Each number with Rule 1 is half of the corresponding
-    number with Rule 2 minus      .
+    number with Rule 2 minus 1/2.
 
     Set C: The difference between the numbers in Rule 1
     and the corresponding numbers in Rule 2 goes up by
     2 each time. Each number in Rule 1 is the number in
-    Rule 2 multiplied by     .
+    Rule 2 multiplied by 1 2/3.
 
 
 
 
-Activity 2                                                                                                     15 min
+Activity 2                                                                                                      15 min
 
 Generate Patterns
 
@@ -223,10 +223,10 @@ Addressing      5.OA.B.3
 
 The purpose of this activity is for students to interpret more complex relationships in corresponding terms from
 patterns generated from two different rules. Both sets of rules generate patterns that have the same relationships
-between corresponding terms. Each of the terms in Rule 2 is     times greater than each of the corresponding terms in
-Rule 1 and each of the terms in Rule 1 is   the corresponding term in Rule 2. Some students may state these
+between corresponding terms. Each of the terms in Rule 2 is 3/2 times greater than each of the corresponding terms in
+Rule 1 and each of the terms in Rule 1 is 2/3 the corresponding term in Rule 2. Some students may state these
 relationships in different ways. The relationships between these patterns build directly on the third pair of rules from
-the previous activity where the terms for Rule 1 were    the corresponding terms in Rule 2.
+the previous activity where the terms for Rule 1 were 5/3 the corresponding terms in Rule 2.
 
 
 
@@ -246,48 +246,48 @@ the previous activity where the terms for Rule 1 were    the corresponding terms
            adding 4.”
 
 
-                                            Grade 5                                   CC BY NC 2024
-                                             Unit 7
+                                           Grade 5                                    CC BY NC 2024
+                                            Unit 7
                                                             Lesson 10
-                                                                               Illustrative Mathematics®                4
-                                                            Activity
-            Pattern 2: Start with 0. Use the rule “Keep       • 5–7 minutes: independent work time
+                                                                               Illustrative Mathematics®                 4
+                                                               Activity
+            Pattern 2: Start with 0. Use the rule “Keep          • 5–7 minutes: independent work time
             adding 6.”
-                                                              • 3–5 minutes: partner discussion
-                                                              • “Look back at your work and make any revisions
-                                                                based on what you learned from your discussion.”
+                                                                 • 3–5 minutes: partner discussion
+                                                                 • “Look back at your work and make any revisions
+                                                                   based on what you learned from your discussion.”
        2. Compare the patterns. What relationships do
-          you notice?                                         • 1–2 minutes: independent work time
+          you notice?                                            • 1–2 minutes: independent work time
 
-       3. What number will be in Pattern 2 when the           • Monitor for students who:
-          number in Pattern 1 is 40?                             ◦ Recognize that each term in Pattern 2 is
-       4. What number will be in Pattern 1 when the                      times the corresponding term in Pattern 1.
+       3. What number will be in Pattern 2 when the              • Monitor for students who:
+          number in Pattern 1 is 40?                                ◦ Recognize that each term in Pattern 2 is
+       4. What number will be in Pattern 1 when the                      1 1/2   times the corresponding term in Pattern 1.
           number in Pattern 2 is 120?
-                                                                 ◦ Recognize that each term in Pattern 1 is       the
-      Partner B                                                       corresponding term in Pattern 2.
+                                                                    ◦ Recognize that each term in Pattern 1 is 2/3 the
+      Partner B                                                          corresponding term in Pattern 2.
        1. Complete each table with the first 10 numbers
           of the pattern.
-                                                            Activity Synthesis
+                                                               Activity Synthesis
             Pattern 1: Start with 0. Use the rule “Keep
-                                                              • Ask previously selected students to share their
+                                                                 • Ask previously selected students to share their
             adding 2.”
-                                                                thinking.
-                                                              • Display or write the numbers in the patterns for
-            Pattern 2: Start with 0. Use the rule “Keep         Partner A.
-            adding 3.”                                        • “How can we represent the relationship between the
-                                                                numbers in the patterns with multiplication
-                                                                equations?” (Each number in Rule 2 is    the
-       2. Compare the patterns. What relationships do           corresponding number in Rule 1. Each number in
-          you notice?                                           Rule 1 is   the corresponding number in Rule
+                                                                   thinking.
+                                                                 • Display or write the numbers in the patterns for
+            Pattern 2: Start with 0. Use the rule “Keep            Partner A.
+            adding 3.”                                           • “How can we represent the relationship between the
+                                                                   numbers in the patterns with multiplication
+                                                                   equations?” (Each number in Rule 2 is 3/2 the
+       2. Compare the patterns. What relationships do              corresponding number in Rule 1. Each number in
+          you notice?                                              Rule 1 is 2/3 the corresponding number in Rule
 
-       3. What number will be in Pattern 2 when the             2:              ,        .)
+       3. What number will be in Pattern 2 when the                2: 6 = 3/2 × 4, 4 = 2/3 × 6.)
           number in Pattern 1 is 30?
-                                                              • Display or write the numbers in the patterns for
-       4. What number will be in Pattern 1 when the             Partner B.
+                                                                 • Display or write the numbers in the patterns for
+       4. What number will be in Pattern 1 when the                Partner B.
           number in Pattern 2 is 60?
-                                                              • “How can we represent the relationships between
-                                                                the numbers in the patterns with multiplication
-Student Response                                                equations?” (            ,          .)
+                                                                 • “How can we represent the relationships between
+                                                                   the numbers in the patterns with multiplication
+Student Response                                                   equations?” (3 = 1 1/2 × 2 , 2 = 2/3 × 3.)
 
 Partner A
  1. 0, 4, 8, 12, 16, 20, 24, 28, 32, 36
@@ -295,9 +295,9 @@ Partner A
      0, 6, 12, 18, 24, 30, 36, 42, 48, 54
 
  2. Sample responses: Some of the same numbers are in
-     both patterns. Each number in Pattern 2 will be
+     both patterns. Each number in Pattern 2 will be 1 1/2
      times greater than the corresponding number in
-     Pattern 1. Each number in Pattern 1 is     the
+     Pattern 1. Each number in Pattern 1 is 2/3 the
      corresponding number in Pattern 2.
  3. 60
  4. 80
@@ -307,16 +307,16 @@ Partner B
 
 
 
-                                            Grade 5                                CC BY NC 2024
+                                            Grade 5                                       CC BY NC 2024
                                              Unit 7
-                                                          Lesson 10
-                                                                            Illustrative Mathematics®              5
+                                                             Lesson 10
+                                                                                   Illustrative Mathematics®             5
     0, 3, 6, 9, 12, 15, 18, 21, 24, 27
 
  2. Sample responses: Some of the same numbers are in
-    both patterns, each number in Pattern 2 will be
+    both patterns, each number in Pattern 2 will be 1 1/2
     times greater than the corresponding number in
-    Pattern 1. Each number in Pattern 1 is        the
+    Pattern 1. Each number in Pattern 1 is 2/3 the
     corresponding number in Pattern 2.
  3. 45
  4. 40
@@ -366,7 +366,7 @@ Addressing      5.OA.B.3
 
                                            Grade 5                                  CC BY NC 2024
                                             Unit 7
-                                                          Lesson 10
+                                                            Lesson 10
                                                                              Illustrative Mathematics®                 6
        2. Kiran says that when Jada’s number is 45, Priya’s corresponding number will be 90. Do you agree? Why or
           why not?

@@ -98,7 +98,7 @@ Warm-up                                                                         
 Number Talk: Add and Subtract 1
 
       Standards                                                    Instructional Routines
-Addressing      K.CC.B.4.c, K.OA.A.1                           • Number Talk
+Addressing       K.CC.B.4.c, K.OA.A.1                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies and understandings students have for adding and subtracting
@@ -109,13 +109,13 @@ sequence, they look for and make use of structure (MP7).
       Student Task Statement                                 Launch
       Find the value of each expression.                       • Display one expression.
 
-        •                                                      • “Give me a signal when you have an answer and can
+        • 4 + 1                                                • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-        •
+        • 5 + 1
                                                                • 1 minute: quiet think time
-        •
+        • 8 - 1
 
-        •                                                    Activity
+        • 7- 1                                               Activity
                                                                • Record answers and strategy.
 Student Response
                                                                • Keep expressions and work displayed.

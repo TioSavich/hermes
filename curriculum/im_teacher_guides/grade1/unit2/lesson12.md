@@ -264,7 +264,7 @@ many more or fewer. For example, students may think about determining the differ
 come up with a different way of thinking about the difference.
 
                                          Count on from the smaller quantity to the larger quantity.
-                                         (             )
+                                         (5 + 3 = 8 )
 
 
 
@@ -285,9 +285,9 @@ Students are not expected to produce equations at this point in the unit.
 
 
 
-                                             Grade 1                                 CC BY NC 2024
-                                              Unit 2
-                                                           Lesson 12
+                                          Grade 1                                    CC BY NC 2024
+                                           Unit 2
+                                                          Lesson 12
                                                                               Illustrative Mathematics®               5
 Required Materials
 Materials to Gather

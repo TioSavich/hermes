@@ -97,29 +97,29 @@ in this lesson and in upcoming lessons when students add and subtract within 20.
       Student Task Statement                                   Launch
       Find the value of each sum mentally.                       • Display one expression.
 
-          •                                                      • “Give me a signal when you have an answer and can
+        • 3 + 7                                                  • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-          •
+        • 3 + 7 + 2
                                                                  • 1 minute: quiet think time
-          •
-          •
+        • 5 + 7
+        • 2 + 4 + 8
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
                                                                  • Keep expressions and work displayed.
-  • 10:
+  • 10: 3 + 7 = 10
                                                                  • Repeat with each expression.
-  • 12:               and 2 more is 12.
-  • 12: I broke apart the 5 into 3 and 2.             and
-                 .                                             Activity Synthesis
-  • 14:               and             .                          • “How does looking for ways to make a ten make it
+  • 12: 3 + 7 = 10 and 2 more is 12.
+  • 12: I broke apart the 5 into 3 and 2. 3 + 7 = 10 and
+    10 + 2 = 12.                                               Activity Synthesis
+  • 14: 2 + 8 = 10 and 10 + 4 = 14.                              • “How does looking for ways to make a ten make it
                                                                    easier to find the values of these expressions?”
 
 
 
 
-                                            Grade 2                                   CC BY NC 2024
-                                             Unit 1
+                                           Grade 2                                    CC BY NC 2024
+                                            Unit 1
                                                             Lesson 11
                                                                                Illustrative Mathematics®                2
 Activity 1                                                                                                    15 min

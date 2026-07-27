@@ -69,12 +69,12 @@ Lesson Timeline                                                  Teacher Reflect
                                              Unit 6
                                                              Lesson 10
                                                                                  Illustrative Mathematics®               1
-Warm-up                                                                                                          10 min
+Warm-up                                                                                                       10 min
 
 How Many Do You See: Base-Ten Blocks
 
-     Standards                                                       Instructional Routines
-Addressing     2.NBT.A.1                                          • How Many Do You See?
+     Standards                                                    Instructional Routines
+Addressing     2.NBT.A.1                                       • How Many Do You See?
 
 
 The purpose of this How Many Do You See? is to build on what students know about place value to make 100, using tens
@@ -82,45 +82,45 @@ and ones in groups of 25. The progression of the four images demonstrates counti
 in upcoming lessons, where students combine coins to make 100 cents or 1 dollar.
 
 
-     Student Task Statement                                     Launch
-     How many do you see? How do you see them?                    • Groups of 2
-                                                                  • “How many do you see? How do you see them?”
-                                                                  • Flash the image.
-                                                                  • 30 seconds: quiet think time
+     Student Task Statement                                  Launch
+     How many do you see? How do you see them?                 • Groups of 2
+                                                               • “How many do you see? How do you see them?”
+                                                               • Flash the image.
+                                                               • 30 seconds: quiet think time
 
 
-                                                                Activity
-                                                                  • Display the image.
-                                                                  • “Discuss your thinking with your partner.”
-                                                                  • 1 minute: partner discussion
-                                                                  • Record responses as an expression, using hundreds,
-                                                                    tens, and ones.
-                                                                  • Repeat for each image.
+                                                             Activity
+                                                               • Display the image.
+                                                               • “Discuss your thinking with your partner.”
+                                                               • 1 minute: partner discussion
+                                                               • Record responses as an expression, using hundreds,
+                                                                 tens, and ones.
+                                                               • Repeat for each image.
 
 
-                                                                Activity Synthesis
-                                                                  • “Let’s say the value represented by the images in
-                                                                    order.” (25, 50, 75, 100)
-                                                                  • “What pattern did you notice when combining the
-                                                                    groups of the blocks and the value the blocks
-Student Response                                                    represent?” (When there were 2 groups of 25, the
-                                                                    ones made a new ten, with no ones left over. When
+                                                             Activity Synthesis
+                                                               • “Let’s say the value represented by the images in
+                                                                 order.” (25, 50, 75, 100)
+                                                               • “What pattern did you notice when combining the
+                                                                 groups of the blocks and the value the blocks
+Student Response                                                 represent?” (When there were 2 groups of 25, the
+                                                                 ones made a new ten, with no ones left over. When
 Sample responses:
-                                                                    there were 3 groups of 25, the ones made a new ten,
- 1. 25: I saw 2 tens and 5 ones.                                    with 5 ones left over. When there were 4 groups of
-                                                                    25, the ones made 2 new tens, with no ones left
+                                                                 there were 3 groups of 25, the ones made a new ten,
+ 1. 25: I saw 2 tens and 5 ones.                                 with 5 ones left over. When there were 4 groups of
+                                                                 25, the ones made 2 new tens, with no ones left
  2. 50: I saw 25 and 25, and I knew that was 50.
-                                                                    over.)
- 3. 75: I saw 50 and 25 more, so I did                    .
+                                                                 over.)
+ 3. 75: I saw 50 and 25 more, so I did 50 + 20 + 5 = 75.
  4. 100: I knew it was 50 and 50, so I knew it was 100.
 
 
 
 
-                                          Grade 2                                     CC BY NC 2024
+                                          Grade 2                                  CC BY NC 2024
                                            Unit 6
-                                                              Lesson 10
-                                                                               Illustrative Mathematics®                  2
+                                                           Lesson 10
+                                                                            Illustrative Mathematics®                  2
 Activity 1                                                                                                    15 min
 
 Introduce How Are They the Same—Grade 2 Shapes

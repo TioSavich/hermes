@@ -96,12 +96,12 @@ routine from a previous grade. However, they may benefit from a brief review of 
       Student Task Statement                                      Launch
       Find the value of each expression mentally.                   • Display the first expression.
 
-        •                                                           • “Give me a signal when you have an answer and can
+        • 50 + 10                                                   • “Give me a signal when you have an answer and can
                                                                       explain how you got it.”
-        •
+        • 50 + 12
                                                                     • 1 minute: quiet think time
-        •
-        •
+        • 60 + 13
+        • 65 + 13
                                                                   Activity
 
 Student Response                                                    • Record answers and strategies.

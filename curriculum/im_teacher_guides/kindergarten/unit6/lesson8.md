@@ -198,7 +198,7 @@ each number.                                                  • Give each grou
                                                                 they made 15.
                                                               • “What are the 2 parts that you put together to make
                                                                 15?” (10 and 5.)
-                                                              • “10 and 5 is 15. We can also say        is 15.”
+                                                              • “10 and 5 is 15. We can also say 10 + 5 is 15.”
                                                               • “Tell your partner the 2 parts you put together to
                                                                 make each number.”
 
@@ -274,7 +274,7 @@ Materials to Gather
                                                                              Illustrative Mathematics®                5
                                                                 • “How many dots did you draw to make 17?” (7)
          17
-                                                                • “10 dots and 7 dots is 17.        is 17.”
+                                                                • “10 dots and 7 dots is 17. 10 + 7 is 17.”
 
 
 

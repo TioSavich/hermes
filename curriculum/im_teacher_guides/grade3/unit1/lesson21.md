@@ -245,11 +245,11 @@ Sample response:                                                  people.
                                                          Lesson 21
                                                                           Illustrative Mathematics®              4
                                                                      number of people that can play Game A? B? C? D?”
-                                                                     (For Game A,        because there are 4 tables and
-                                                                     each table has 2 players.       represents Game B
+                                                                     (For Game A, 4 × 2 because there are 4 tables and
+                                                                     each table has 2 players. 4 × 4 represents Game B
                                                                      because there are 4 tables with 4 players at each
-                                                                     table. For Game C,        because there are 2 tables
-                                                                     with 5 players at each table. Game D would be
+                                                                     table. For Game C, 2 × 5 because there are 2 tables
+                                                                     with 5 players at each table. Game D would be 1 × 10
                                                                      because there's 1 table with 10 players.)
 
 
@@ -260,7 +260,7 @@ used 4 tables for Game D, which left us 12 tables. We
 decided to use 4 tables for each of the other games. So, 8
 people could play Game A, 16 people could play game B,
 10 people could play Game C, and 10 people could play
-Game D. We added                      to find out that 44
+Game D. We added 8 + 16 + 10 + 10 to find out that 44
 people could play games in the room if we used this
 seating chart.
 

@@ -101,8 +101,8 @@ images they see.
 
                                                              Activity Synthesis
                                                                 • “What equations could we write to represent the last
-                                                                  image?” (           ,               ,
-                                                                                 )
+                                                                  image?” (10 + 7 = 17, 8 + 2 + 7 = 17,
+                                                                  10 + 5 + 2 = 17)
 
 
 
@@ -114,7 +114,7 @@ images they see.
 Student Response
 Sample responses:
   • 15: I see 10 and 5, so it is 15.
-  • 13: I see 2 less than the first one,          .
+  • 13: I see 2 less than the first one, 15 - 2 = 13.
   • 17: I see 10, 5, and 2.
 
 
@@ -163,8 +163,8 @@ Materials to Gather
                                                                 • 1 minute: partner discussion
 
 
-                                           Grade 1                                 CC BY NC 2024
-                                            Unit 8
+                                             Grade 1                               CC BY NC 2024
+                                              Unit 8
                                                              Lesson 4
                                                                             Illustrative Mathematics®               3
        2. 17 penguins sit on the rocks.                         • Share responses.
@@ -190,27 +190,27 @@ Student Response
  1. 7 turtles. Sample responses:
                                                                     ◦ Add or count on from 5 to 17.
       ◦ Student draws 8 shapes to represent 8 turtles.
-        Student draws more shapes until they have 15                ◦ Subtract         .
+        Student draws more shapes until they have 15                ◦ Subtract 17- 5 .
         total shapes. Labels on the drawing show that 7
         turtles joined the group.
                                                               Activity Synthesis
-      ◦                 , I know that         .
+      ◦               , I know that 8 + 7 = 15.
                                                                 • Invite previously identified students to share.
  2. 12 penguins. Sample responses:
-                                                                • “How does             help us find the number of
+                                                                • “How does 17- 5 help us find the number of
       ◦ Student draws 17 shapes to represent the                  penguins that went back into the water?” (If you start
         penguins. Student crosses out shapes until only           with all the penguins and take away the 5 that are
         5 are left. Labels on the drawing show that 12            still sitting on the rock, you will find out how many
         penguins went back in the water.                          went back into the water.)
-      ◦ I know                .
+      ◦ I know 17- 5 = 12 .
  3. 17 fish. Sample responses:
 
-      ◦                 ,               ,
+      ◦               , 20- 10 = 10 , 10- 7 = 3
 
-      ◦                 ,           ,
+      ◦               , 3 + 7 = 10, 10 + 10 = 20
 
  4. 8 sea stars. Sample response:                 ,
-                    ,
+    6 + 4 + 4 = 14, 4 + 4 = 8
 
 
 
@@ -270,18 +270,18 @@ Materials to Gather
 Student Response                                                      subtraction to add.
 
 Sample responses:                                                   ◦ Make 10 when adding on from 9
-                                                                      (            ).
+                                                                      (9 + 1 + 6 = 16).
   • You could draw 16 circles to be the bullfrogs. Then
                                                                     ◦ Use the relationship between the numbers of
     circle the 9 bullfrogs Clare can see. Count the other
-                                                                      frogs to explain why they can use          to
+                                                                      frogs to explain why they can use 16- 9 = 7 to
     circles. The circles are the bullfrogs that swam away.
                                                                       find the unknown number.
   • I would subtract 9 from 16 to find the number of
-    frogs that swam away.              .
+    frogs that swam away. 16- 9 = 7 .
   • You could start with 9 and think about how much to
                                                               Activity Synthesis
-    add to get to 16, like             .                         • Invite previously identified students to share.
+    add to get to 16, like             . 9 + 7 = 16              • Invite previously identified students to share.
                                                                  • “How do you decide if you are going to add or
                                                                    subtract to find the unknown number in an
                                                                    equation?” (I usually subtract because I know what
@@ -332,7 +332,7 @@ Addressing     1.OA.A.1, 1.OA.C.6
 
 
 Student Response
-5 sharks. Sample response:                 ,
+5 sharks. Sample response: 8 + 2 + 3 = 13, 2 + 3 = 5
 
 
 Responding to Student Thinking
@@ -348,8 +348,8 @@ of story problem that began in a prior unit.                   Grade 1, Unit 2, 
 
 
 
-                                               Grade 1                               CC BY NC 2024
-                                                Unit 8
+                                            Grade 1                                  CC BY NC 2024
+                                             Unit 8
                                                               Lesson 4
                                                                               Illustrative Mathematics®             6
 ```

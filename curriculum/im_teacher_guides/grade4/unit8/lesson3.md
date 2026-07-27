@@ -470,7 +470,7 @@ specificity of an attribute affects the guessing process.
                                                                    attributes from examples and non-examples.
      Switch roles after the attribute is guessed correctly.
                                                                  • “Was there an attribute that was particularly tricky to
-       • Partner A’s                                               figure out? What about the examples and non-
+       • Partner A’s        ___                                    figure out? What about the examples and non-
          attribute:                                                examples might have made it hard to guess?” (The
                                                                    examples and non-examples had many attributes in
                                       do not have the              common. There are not enough examples in the set.
@@ -481,7 +481,7 @@ specificity of an attribute affects the guessing process.
 
 
 
-       • Partner B’s
+       • Partner B’s        ___
          attribute:
 
 

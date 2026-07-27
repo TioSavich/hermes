@@ -329,7 +329,7 @@ Sample responses:
                                                                        can no longer fit a liter.
                                                                      • “What is the volume of the container?” (It fit 9 liters,
                                                                        but there was space for a little more. The volume is
-                                                                       almost 10 liters. The volume is about       liters.)
+                                                                       almost 10 liters. The volume is about 91/2 liters.)
 
 
 
@@ -342,7 +342,7 @@ Sample responses:
                                              Grade 3                                      CC BY NC 2024
                                               Unit 6
                                                                Lesson 7
-                                                                                   Illustrative Mathematics®                  6
+                                                                                   Illustrative Mathematics®                 6
                                                                       and keep labeling up to the top mark. The bottom of
                                                                       the container would be 0 liters.)
                                                                   • Label the marks with numbers.

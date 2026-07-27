@@ -81,23 +81,23 @@ Warm-up                                                                         
 
 Choral Count: One-fourths
 
-      Standards                                                     Instructional Routines
+      Standards                                                      Instructional Routines
 Building Toward       3.NF.A.2                                   • Choral Count
 
 
-The purpose of this Choral Count is for students to practice counting by   and to notice patterns in the count. These
+The purpose of this Choral Count is for students to practice counting by 1/4 and to notice patterns in the count. These
 understandings help students develop fluency and will be helpful later in this lesson when students will locate fractions
 on the number line, using their knowledge of unit fractions. Save the recorded count to compare to a count in an
 upcoming lesson.
 
 
 Student Response                                               Launch
-Sample responses:                                                • “Count by    , starting at   .”
+Sample responses:                                                • “Count by 1/4, starting at 1/4.”
 
   • The top part of the fraction goes up by 1.                   • Record as students count. Record 4 fractions in each
   • The bottom part of the fraction doesn’t change.                row, and then start a new row. There will be 4 rows.
 
-  • The rows end at counts of 4 in the top, like 4, 8, 12,       • Stop counting and recording at      .
+  • The rows end at counts of 4 in the top, like 4, 8, 12,       • Stop counting and recording at 16/4.
     16.
 
                                                                Activity
@@ -121,10 +121,10 @@ Sample responses:                                                • “Count by
                                                                    part of the fraction and the bottom part of the
 
 
-                                             Grade 3                                  CC BY NC 2024
+                                             Grade 3                                   CC BY NC 2024
                                               Unit 5
                                                              Lesson 7
-                                                                               Illustrative Mathematics®                2
+                                                                                Illustrative Mathematics®               2
                                                                       fraction. We have words for those parts. The bottom
                                                                       part of a fraction is called the denominator. It tells
                                                                       how many equal parts into which the whole is
@@ -209,13 +209,13 @@ Required Preparation
 
 
                                                           Activity Synthesis
-                                                            • Display a gameboard with a marker on       .
+                                                            • Display a gameboard with a marker on 3/4.
 
-                                                            • “If I rolled a 4, and chose to move   , how would you
+                                                            • “If I rolled a 4, and chose to move 4/4, how would you
                                                                count the move?” (I would count 1, 2, 3, 4.)
 
-                                                            • “How did you know you have moved         ?” (Because
-                                                               each space is   , so I need to move 4 times.)
+                                                            • “How did you know you have moved 4/4?” (Because
+                                                               each space is 1/4, so I need to move 4 times.)
 
                                                             • Display a number line marked with only 0, 1, 2, 3, 4.
                                                             • “How is counting along this number line the same as
@@ -229,10 +229,10 @@ Required Preparation
 
 
 
-                                        Grade 3                                 CC BY NC 2024
+                                        Grade 3                                  CC BY NC 2024
                                          Unit 5
                                                         Lesson 7
-                                                                         Illustrative Mathematics®              4
+                                                                          Illustrative Mathematics®             4
 Activity 2                                                                                                      10 min
                                                                                                                 PLC Activity
 Fractions on the Number Line
@@ -255,26 +255,26 @@ understanding of the meanings of the numerator and the denominator of a fraction
 
 
       Student Task Statement                                    Launch
-       1. Locate and label     and   .                            • Groups of 2
+       1. Locate and label 3/4 and 6/4.                           • Groups of 2
                                                                   • Display the number line for fourths from Number
                                                                     Line Scoot.
-       2. Locate and label     and       .                        • “What do you know about        and   ?” (Both have 4 on
+       2. Locate and label 7/8 and 12/8.                          • “What do you know about 3/4 and 6/4?” (Both have 4 on
                                                                      the bottom. 3 is less than 4 and 6 is greater than 4.
                                                                      Both are some number of fourths.)
-       3. Locate and label     and   .                            • Share and record responses.
+       3. Locate and label 2/3 and 4/3.                           • Share and record responses.
 
 
                                                                 Activity
-       4. Locate and label     and
+       4. Locate and label 2/6 and 7/6
                                                                   • “Work with your partner to locate the fractions on
                                                                     each number line and answer the questions about
                                                                     your work.”
        5. How did you partition the number line when              • 4–6 minutes: partner work time
-           you were locating the numbers      and    ?
+           you were locating the numbers 7/8 and 12/8?
                                                                   • Monitor for students who locate non-unit fractions
            Explain your reasoning.
                                                                     on the number line, by partitioning into equal parts
-       6. What patterns did you notice in the fractions              of size   , and then count the number of those parts.
+       6. What patterns did you notice in the fractions              of size 1/b, and then count the number of those parts.
           you located?
 
                                                                 Activity Synthesis
@@ -295,9 +295,9 @@ Student Response
                                                                           than 1?”
  2.                                                                 • “How did counting by unit fractions help you locate
                                                                       the other fractions on the number line?” (I counted
-                                                                       by     three times to find   . I counted by        as I moved
- 3.                                                                    along the number line, like    ,   ,   ,   ,   ,    ,   to
-                                                                       find   .)
+                                                                       by 1/4 three times to find 3/4. I counted by 1/6 as I moved
+ 3.                                                                    along the number line, like 1/6, 2/6, 3/6, 4/6, 5/6, 6/6, 7/6 to
+                                                                       find 7/6.)
 
  4.
  5. Into eighths. Sample response: The 8 on the bottom
@@ -314,14 +314,14 @@ Student Response
 Advancing Student Thinking
 If students partition the interval from 0 to 2 into fourths instead of the interval from 0 to 1 (or a similar error with
 another fraction), consider asking:
-  • “Tell me how you found       on the number line?”
+  • “Tell me how you found 3/4 on the number line?”
 
   • “How does the denominator help us partition the number line?”
 
 
 
 
-Activity 3                                                                                                                10 min
+Activity 3                                                                                                                   10 min
 
 What’s the Fraction?
 
@@ -344,69 +344,69 @@ number line.
                                                                       how you are partitioning or what number you are
 
 
-                                              Grade 3                                     CC BY NC 2024
+                                              Grade 3                                      CC BY NC 2024
                                                Unit 5
                                                                Lesson 7
-                                                                                   Illustrative Mathematics®                       6
-       2. Trade number lines with a partner.                         marking.”
+                                                                                    Illustrative Mathematics®                         6
+       2. Trade number lines with a partner.                             marking.”
 
-           a. How did your partner partition their                 • 2 minutes: independent work time
-              number line?
-           b. What number did your partner mark on              Activity
-              their number line? Explain your reasoning.
-                                                                   • “Now trade number lines with your partner, and
+            a. How did your partner partition their                   • 2 minutes: independent work time
+               number line?
+            b. What number did your partner mark on                 Activity
+               their number line? Explain your reasoning.
+                                                                      • “Now trade number lines with your partner, and
       If you have time, use the number lines to repeat the
-                                                                     answer the questions about their number line. When
+                                                                        answer the questions about their number line. When
       activity.
-                                                                     you both are finished, share your reasoning”
-                                                                   • 1–2 minutes: independent work time
-                                                                   • 1–2 minutes: partner work time
+                                                                        you both are finished, share your reasoning”
+                                                                      • 1–2 minutes: independent work time
+                                                                      • 1–2 minutes: partner work time
 
 
-                                                                Activity Synthesis
-                                                                   • Display a number line partitioned by a student.
-Student Response                                                   • “Talk to your partner about what fraction is
-                                                                     represented.”
+                                                                    Activity Synthesis
+                                                                      • Display a number line partitioned by a student.
+Student Response                                                      • “Talk to your partner about what fraction is
+                                                                        represented.”
  1. Answers vary.
-                                                                   • Share and record responses.
+                                                                      • Share and record responses.
  2. Answers vary.
-                                                                   • Consider asking:
-                                                                      ◦ “How did you decide to partition your number
-                                                                        line and what fraction to mark?”
-                                                                      ◦ “How did you decide your partner’s number line
-                                                                        was partitioned and what fraction was marked?”
+                                                                      • Consider asking:
+                                                                          ◦ “How did you decide to partition your number
+                                                                            line and what fraction to mark?”
+                                                                          ◦ “How did you decide your partner’s number line
+                                                                            was partitioned and what fraction was marked?”
 
 
 
 
 Lesson Synthesis
 “Today we located more fractions on the number line. In an earlier lesson, we learned how fractions are built from unit
-fractions. How do we see this on the number line?” (I count the unit fractions, like 3 one-fourths to get to   . I partition
+fractions. How do we see this on the number line?” (I count the unit fractions, like 3 one-fourths to get to 3/4. I partition
 the number line into unit fractions, and then I can count parts up to the fraction I am locating.)
 
-Draw, or have students draw, a number line with      marked, such as:
+Draw, or have students draw, a number line with 3/4 marked, such as:
 
 
 
 
-Trace, or have them trace, and count the 3 one-fourths to get to    , such as:
+Trace, or have them trace, and count the 3 one-fourths to get to 3/4, such as:
 
 
 
 
 “Remember, when we are locating a fraction on the number line, it might be helpful to think about or show the 3 one-
-fourth parts, and then we mark and label the number       at the end of those parts. When you locate and label fractions,
+fourth parts, and then we mark and label the number 3/4 at the end of those parts. When you locate and label fractions,
 you don’t have to mark the length. You can just count the unit fractions, and then mark and label the point at the end.”
 
-Point to the location of each fraction on the number line, and count: “ ,   ,    .”
+Point to the location of each fraction on the number line, and count: “1/4, 2/4, 3/4.”
 
 
 
 
-                                             Grade 3                                    CC BY NC 2024
-                                              Unit 5
-                                                              Lesson 7
-                                                                                 Illustrative Mathematics®                7
+                                                Grade 3                                     CC BY NC 2024
+                                                 Unit 5
+                                                                  Lesson 7
+                                                                                     Illustrative Mathematics®             7
 Suggested Centers
   • Secret Fraction (3–4), Stage 1: Building Non-unit Fractions (Addressing)
   • Number Line Scoot (2–4), Stage 2: Halves, Thirds, and Fourths (Addressing)
@@ -416,14 +416,14 @@ Point to the location of each fraction on the number line, and count: “ ,   , 
 Cool-down                                                                                                    5 min
 
 
-Where is      ?
+Where is 5/3?
 
-     Standards
-Addressing     3.NF.A.2.b
+      Standards
+Addressing       3.NF.A.2.b
 
 
-     Student Task Statement
-      Locate and label   and     on the number line. Explain your reasoning.
+      Student Task Statement
+      Locate and label 2/3 and 5/3 on the number line. Explain your reasoning.
 
 
 
@@ -436,7 +436,7 @@ Sample response: I partitioned the number line into thirds, and then I counted 2
 
 
 Responding to Student Thinking
-Students locate   , but don't locate   .                       Next Day Supports
+Students locate 2/3, but don't locate 5/3.                     Next Day Supports
                                                                During the Launch of the next day's activity, invite
                                                                students to discuss how they would locate a fraction
                                                                greater than 1 on the number line.
@@ -449,9 +449,9 @@ developed in a prior unit.                                     Grade 2, Unit 4, 
 
 
 
-                                            Grade 3                                   CC BY NC 2024
-                                             Unit 5
-                                                            Lesson 7
-                                                                               Illustrative Mathematics®              8
+                                             Grade 3                                    CC BY NC 2024
+                                              Unit 5
+                                                             Lesson 7
+                                                                                 Illustrative Mathematics®            8
 ```
 

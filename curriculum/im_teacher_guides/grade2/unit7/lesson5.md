@@ -67,12 +67,12 @@ Lesson Timeline                                                  Teacher Reflect
                                               Unit 7
                                                                Lesson 5
                                                                                  Illustrative Mathematics®               1
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                        10 min
 
 How Many Do You See: Hundreds, Tens, and Ones
 
-     Standards                                                      Instructional Routines
-Building On         2.NBT.A.1                                    • How Many Do You See?
+     Standards                                                     Instructional Routines
+Building On         2.NBT.A.1                                   • How Many Do You See?
 Building Toward     2.NBT.B.7
 
 
@@ -80,31 +80,31 @@ The purpose of this How Many Do You See? is to allow students to use subitizing 
 images they see.
 
 Record the ways students see the blocks, using equations. For example, if a student said they saw the first image as 2
-hundreds, then 5 tens, and then the 4 ones, record this as                     . If a student said they saw the image as 2
-hundreds, 3 tens and 2 tens, and then 4 ones, record this as                             .
+hundreds, then 5 tens, and then the 4 ones, record this as 200 + 50 + 4 = 254. If a student said they saw the image as 2
+hundreds, 3 tens and 2 tens, and then 4 ones, record this as 200 + 30 + 20 + 4 = 254.
 
 
-     Student Task Statement                                    Launch
-      How many do you see? How do you see them?                  • Groups of 2
-                                                                 • “How many do you see? How do you see them?”
-                                                                 • Flash the image.
-                                                                 • 30 seconds: quiet think time
+     Student Task Statement                                   Launch
+      How many do you see? How do you see them?                 • Groups of 2
+                                                                • “How many do you see? How do you see them?”
+                                                                • Flash the image.
+                                                                • 30 seconds: quiet think time
 
 
-                                                               Activity
-                                                                 • Display the image.
-                                                                 • “Discuss your thinking with your partner.”
-                                                                 • 1 minute: partner discussion
-                                                                 • Record responses using equations. (For example, I
-                                                                   saw 234 and 2 tens more.                 )
-                                                                 • Repeat for each image.
+                                                              Activity
+                                                                • Display the image.
+                                                                • “Discuss your thinking with your partner.”
+                                                                • 1 minute: partner discussion
+                                                                • Record responses using equations. (For example, I
+                                                                  saw 234 and 2 tens more. 234 + 20 = 254)
+                                                                • Repeat for each image.
 
 
-                                                               Activity Synthesis
-                                                                 • “How did the groups help you to know the values of
-                                                                   the blocks?” (We described seeing the same kinds of
-                                                                   blocks together. People saw hundreds with
-                                                                   hundreds, tens with tens, and ones with ones.)
+                                                              Activity Synthesis
+                                                                • “How did the groups help you to know the values of
+                                                                  the blocks?” (We described seeing the same kinds of
+                                                                  blocks together. People saw hundreds with
+                                                                  hundreds, tens with tens, and ones with ones.)
 
 
 
@@ -116,10 +116,10 @@ Sample responses:
   • 474: I saw 4 hundreds and 7 tens and 4 ones.
 
 
-                                            Grade 2                                  CC BY NC 2024
-                                             Unit 7
-                                                             Lesson 5
-                                                                              Illustrative Mathematics®                  2
+                                           Grade 2                                  CC BY NC 2024
+                                            Unit 7
+                                                            Lesson 5
+                                                                             Illustrative Mathematics®                  2
   • 676: I saw 4 hundreds and 2 hundreds, 5 tens and 2
     tens, and 4 ones and 2 ones. I put them together for
     6 hundreds, 7 tens, and 6 ones.

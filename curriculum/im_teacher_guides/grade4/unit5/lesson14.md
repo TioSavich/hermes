@@ -68,16 +68,16 @@ Lesson Timeline                                                  Teacher Reflect
                                              Unit 5
                                                              Lesson 14
                                                                                  Illustrative Mathematics®                1
- Cool-down                                     5 min
+ Cool-down                                    5 min
 
 
 
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: A Lot of Thousands
 
-     Standards                                                        Instructional Routines
-Addressing     4.NBT.B                                             • Number Talk
+     Standards                                                      Instructional Routines
+Addressing     4.NBT.B                                          • Number Talk
 
 
 This Number Talk encourages students to rely on the structure of numbers in base-ten and what they know about the
@@ -87,38 +87,38 @@ sums, their responses focus on using the relationship between the expressions to
 valid and should be accepted.
 
 
-     Student Task Statement                                      Launch
-      Find the value of each expression mentally.                  • Display one expression.
+     Student Task Statement                                   Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
-                                                                     explain how you got it.”
-        •
-                                                                   • 1 minute: quiet think time
-        •
-        •
-                                                                 Activity
+        • 1,200 + 900                                           • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 12,500 + 9,000
+                                                                • 1 minute: quiet think time
+        • 13,000 + 9,900
+        • 130,000 + 99,000
+                                                              Activity
 
-Student Response                                                   • Record answers and strategies.
-                                                                   • Keep expressions and work displayed.
-  • 2,100:                        , and 100 more makes
-    2,100.                                                         • Repeat with each expression.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
+  • 2,100: 1,200 + 800 = 2,000, and 100 more makes
+    2,100.                                                      • Repeat with each expression.
 
-  • 21,500:                    is 21,000, and another 500 is
-    21,500.                                                      Activity Synthesis
-  • 22,900:                              , and 9,900 is 100
-                                                                   • “How was finding the first sum like finding the last
-    less than 10,000, so                    is 100 less than
-                                                                     sum?” (Each could be done by adding a multiple of
+  • 21,500: 12,000 + 9,000 is 21,000, and another 500 is
+    21,500.                                                   Activity Synthesis
+  • 22,900: 13,000 + 10,000 = 23,000, and 9,900 is 100
+                                                                • “How was finding the first sum like finding the last
+    less than 10,000, so 13,000 + 9,900 is 100 less than
+                                                                  sum?” (Each could be done by adding a multiple of
     23,000, which is 22,900.
-                                                                     1,000 or 10,000 to the first number in the
-  • 229,000: 99,000 is 1,000 less than 100,000, and                  expression—instead of the second number—and
-                                    . One thousand less              then subtracting a value.)
+                                                                  1,000 or 10,000 to the first number in the
+  • 229,000: 99,000 is 1,000 less than 100,000, and               expression—instead of the second number—and
+    130,000 + 100,000 = 230,000 . One thousand less               then subtracting a value.)
     than 230,000 is 229,000.
 
 
 
 
-Activity 1                                                                                                      20 min
+Activity 1                                                                                                   20 min
 
 Milk and Mango Lassi
 
@@ -127,10 +127,10 @@ Addressing     4.MD.A.1, 4.MD.A.2, 4.OA.A.2
 
 
 
-                                            Grade 4                                    CC BY NC 2024
-                                             Unit 5
-                                                               Lesson 14
-                                                                                Illustrative Mathematics®                2
+                                          Grade 4                                    CC BY NC 2024
+                                           Unit 5
+                                                           Lesson 14
+                                                                              Illustrative Mathematics®               2
 In this activity, students work with customary units of capacity for liquids (gallon, quart, and cup). The task prompts
 them to discern the relationship between the units, express the relationships with multiplicative comparison
 statements, and perform conversions to solve problems. When they identify the relationship between gallons, quarts,
@@ -228,16 +228,16 @@ Student Response
                                                                   questions about lassi and their reasoning,
 2.   a. Grandma. Sample response: Priya’s uncle made
                                                                   completing the table along the way.
-        12 cups (           ), which is more than what
+        12 cups (3 × 4 = 12), which is more than what
         Priya or her cousin each made. Her grandma
-        made 32 cups (              ).                                               amount of      amount of lassi
+        made 32 cups (2 × 16 = 32).                                                  amount of      amount of lassi
                                                                         guest
                                                                                        lassi           (cups)
      b. 62 cups. Sample response:
-                                                                        Priya         10 cups              10
+        12 + 10 + 8 + 32 = 62                                           Priya         10 cups              10
      c. 4 times. Sample response: 2 gallons is 32 cups,
                                                                         Uncle         3 quarts             12
-        and           .
+        and 8 × 4 = 32.
 
                                                                       Cousin          8 cups                8
 
@@ -304,72 +304,72 @@ This activity uses MLR6 Three Reads. Advances: reading, listening, representing.
                                             Unit 5
                                                             Lesson 14
                                                                                Illustrative Mathematics®                5
-     of clay for her class.                                            used for making shapes and objects.
-      1. Would she have enough clay if she bought                  MLR6 Three Reads
-         each of the following combinations? Explain or             • Display only the problem stem, without revealing the
-         show your reasoning.                                         question(s).
-                                                                     • “We are going to read this problem 3 times.”
-                    1-pound   24-ounce     3-pound      5-pound
-                                                                     • 1st Read: “At a craft store, clay is sold in packs of
-                      pack      pack         pack         pack
-                                                                       different sizes: 1 pound, 24 ounces, 3 pounds, and 5
-              A                                                        pounds. An art teacher needs 120 ounces of clay for
-                       1                       1
-                                                                       her class.”
-              B        1          1            1            1        • “What is this situation about?”
+     of clay for her class.                                           used for making shapes and objects.
+      1. Would she have enough clay if she bought                 MLR6 Three Reads
+         each of the following combinations? Explain or            • Display only the problem stem, without revealing the
+         show your reasoning.                                        question(s).
+                                                                    • “We are going to read this problem 3 times.”
+                    1-pound   24-ounce    3-pound     5-pound
+                                                                    • 1st Read: “At a craft store, clay is sold in packs of
+                      pack      pack        pack        pack
+                                                                      different sizes: 1 pound, 24 ounces, 3 pounds, and 5
+              A                                                       pounds. An art teacher needs 120 ounces of clay for
+                       1                      1
+                                                                      her class.”
+              B        1          1           1             1       • “What is this situation about?”
 
-              C                   1            2                     • 1 minute: partner discussion
-                                                                     • Listen for and clarify any questions about the
-      2. Decide if each statement is true or false.                    context.
-         Explain or show your reasoning.                             • 2nd Read: “At a craft store, modeling clay is sold in
-                                                                       packages of . . . .”
+              C                   1           2                     • 1 minute: partner discussion
+                                                                    • Listen for and clarify any questions about the
+      2. Decide if each statement is true or false.                   context.
+         Explain or show your reasoning.                            • 2nd Read: “At a craft store, modeling clay is sold in
+                                                                      packages of . . . .”
             a. A 3-pound pack weighs 2 times as much as
-               a 24-ounce pack.                                      • “Name the quantities. What can we count or
-                                                                       measure in this situation?”
+               a 24-ounce pack.                                     • “Name the quantities. What can we count or
+                                                                      measure in this situation?”
             b. If we combine a 1-pound pack, a 3-pound
-               pack, and a 5-pound pack, we’d have 6                 • 30 seconds: quiet think time
-               times as much clay as what’s in a 24-ounce            • 1 minute: partner discussion
+               pack, and a 5-pound pack, we’d have 6                • 30 seconds: quiet think time
+               times as much clay as what’s in a 24-ounce           • 1 minute: partner discussion
                pack.
-                                                                     • Share and record all quantities.
-                                                                     • Reveal the question(s).
+                                                                    • Share and record all quantities.
+                                                                    • Reveal the question(s).
 Student Response
-                                                                     • 3rd Read: Read the entire problem aloud, including
-1.   a. No. Sample response:                                           the questions.
-                                               , which is less
-                                                                     • “What are some strategies we can use to solve this
+                                                                    • 3rd Read: Read the entire problem aloud, including
+1.   a. No. Sample response:                                          the questions.
+          (1 × 16) + (3 × 16) = 16 + 48 = 64, which is less
+                                                                    • “What are some strategies we can use to solve this
           than 120 ounces.
-                                                                       problem?”
+                                                                      problem?”
      b. Yes. Sample response:
-                                                                     • 30 seconds: quiet think time
-                                      or 168 ounces.
-                                                                     • 1 minute: partner discussion
+                                                                    • 30 seconds: quiet think time
+          16 + 24 + 48 + 80 = 168 or 168 ounces.
+                                                                    • 1 minute: partner discussion
      c. Yes. Sample response:
-                                               or 120                • “Who can remind us of the relationship between
-          ounces.                                                      pounds and ounces?” (One pound is equivalent to 16
-                                                                       ounces. One pound is 16 times as heavy as 1 ounce.)
-2.   a. True. Sample response:                 , which is
+          (2 × 3 × 16) + 24 = 96 + 24 = 120 or 120                  • “Who can remind us of the relationship between
+          ounces.                                                     pounds and ounces?” (One pound is equivalent to 16
+                                                                      ounces. One pound is 16 times as heavy as 1 ounce.)
+2.   a. True. Sample response: 3 × 16 = 48, which is
         twice 24 ounces.
-     b.   True. Sample response:                  and              Activity
-                       , so the combination of the three
-                                                                     • 5 minutes: independent work time
+     b.    True. Sample response: 1 + 3 + 5 = 9 and               Activity
+          9 × 16 = 144, so the combination of the three
+                                                                    • 5 minutes: independent work time
           packs gives 144 ounces. 6 times 24 is also 144.
-                                                                     • 3 minutes: partner discussion
-                                                                     • Monitor for students who use ounces to solve the
-                                                                       first set of problems and those who use pounds (by
-                                                                       first finding out that 120 ounces is 7 pounds and 8
-                                                                       ounces or      pounds).
+                                                                    • 3 minutes: partner discussion
+                                                                    • Monitor for students who use ounces to solve the
+                                                                      first set of problems and those who use pounds (by
+                                                                      first finding out that 120 ounces is 7 pounds and 8
+                                                                      ounces or 71/2 pounds).
 
 
 
-                                                                   Activity Synthesis
-                                                                     • Select students to briefly share their responses and
+                                                                  Activity Synthesis
+                                                                    • Select students to briefly share their responses and
 
 
 
-                                            Grade 4                                       CC BY NC 2024
-                                             Unit 5
-                                                                 Lesson 14
-                                                                                   Illustrative Mathematics®              6
+                                           Grade 4                                      CC BY NC 2024
+                                            Unit 5
+                                                                Lesson 14
+                                                                                 Illustrative Mathematics®               6
                                                                     their reasoning.
                                                                   • “Did anyone reach the same conclusion but reasoned
                                                                     in a different way?”
@@ -394,7 +394,7 @@ is not true? What correction would you offer?” (The units are not the same for
 compare the numbers. One gallon is 4 times as much as 1 quart, so we are comparing 8 quarts and 3 quarts.)
 
 “If someone claimed that 24 ounces is 8 times as much as 3 pounds, would you agree? Why or why not?” (Disagree. One
-pound is 16 ounces, so 24 ounces is 1 pound and 8 ounces or        pounds, which is half as much as 3 pounds, not 8
+pound is 16 ounces, so 24 ounces is 1 pound and 8 ounces or 1 1/2 pounds, which is half as much as 3 pounds, not 8
 times as much. Or we could say 3 pounds is 48 ounces or 2 times as much as 24 ounces.)
 
 
@@ -426,20 +426,20 @@ Addressing      4.MD.A.1, 4.MD.A.2, 4.OA.A.2
                                             Grade 4                                    CC BY NC 2024
                                              Unit 5
                                                               Lesson 14
-                                                                                Illustrative Mathematics®             7
+                                                                                Illustrative Mathematics®            7
 Student Response
 120 ounces. Sample responses:
-  • The art teacher buys 96 ounces, because 1 pound is 16 ounces and               . The kindergarten teacher buys 24
-    ounces, because             . In total, they buy       or 120 ounces.
+  • The art teacher buys 96 ounces, because 1 pound is 16 ounces and 6 × 16 = 96. The kindergarten teacher buys 24
+    ounces, because 4 × 24 = 96. In total, they buy 96 + 24 or 120 ounces.
 
-  • The kindergarten teacher buys    or    pounds of clay, because             . In total, they buy   pounds of clay. In
-    ounces, that amount is:                                      .
+  • The kindergarten teacher buys 6/4 or 1 1/2 pounds of clay, because 4 × 1 1/2 = 6. In total, they buy 71/2 pounds of clay. In
+    ounces, that amount is: (7 × 16) + (1/2 × 16) = 112 + 8 = 120.
 
 
 
 Responding to Student Thinking
-Students may misinterpret the statement “the art teacher     Next Day Supports
-buys 6 pounds of clay, which is 4 times as much clay as      Launch Activity 1, with a discussion about this statement.
+Students may misinterpret the statement “the art teacher          Next Day Supports
+buys 6 pounds of clay, which is 4 times as much clay as           Launch Activity 1, with a discussion about this statement.
 what the kindergarten teacher buys” to mean that the
 latter buys 4 times 6 pounds. Or they may interpret the
 statement correctly but miss that the question is asking
@@ -448,9 +448,9 @@ for a quantity in ounces.
 
 
 
-                                          Grade 4                                  CC BY NC 2024
-                                           Unit 5
-                                                           Lesson 14
-                                                                            Illustrative Mathematics®              8
+                                            Grade 4                                      CC BY NC 2024
+                                             Unit 5
+                                                              Lesson 14
+                                                                                  Illustrative Mathematics®                8
 ```
 

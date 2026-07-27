@@ -35,8 +35,8 @@ have a value of 10.
 Narrative
 In a previous lesson, students found different expressions with the same value. In this lesson, students write different
 expressions that equal 10. They try to find all of the ways to decompose 10. Knowing all decompositions of 10 will be
-helpful later when students add and subtract within 20. For example, when students find the sum of         , they can
-decompose 5 into 1 and 4 to make a ten (                              .)
+helpful later when students add and subtract within 20. For example, when students find the sum of 9 + 5, they can
+decompose 5 into 1 and 4 to make a ten (9 + 5 = 9 + 1 + 4 = 10 + 4.)
 
 In the first activity, students play Shake and Spill to identify expressions that equal 10. In the second activity, students
 find all the ways to make 10 and share how they know they found all of the ways.
@@ -93,23 +93,23 @@ commutative property to determine whether the equations are true or false.
       Student Task Statement                                     Launch
       Decide if each statement is true or false.                   • Display one statement.
       Be prepared to explain your reasoning.                       • “Give me a signal when you know whether the
-        •                                                            statement is true and can explain how you know.”
+        • 3 + 5 = 8                                                  statement is true and can explain how you know.”
 
-        •                                                          • 1 minute: quiet think time
+        • 6 + 3 = 8                                                • 1 minute: quiet think time
 
-        •
+        • 3 + 5 = 5 + 3
                                                                  Activity
 Student Response                                                   • Share and record answers and strategy.
 
   • True: I can count on. 5… 6, 7, 8                               • Repeat with each equation.
 
   • False: The first equation was true, so the second
-    can't be true because        is 1 more than       .          Activity Synthesis
+    can't be true because 6 + 3 is 1 more than 5 + 3.            Activity Synthesis
   • True: Both sides add the same 2 numbers, so they
                                                                    • “How can you justify your answer without finding
     have the same value.
-                                                                     each sum?” (If          , then I know      can't be
-                                                                     8. I know              because changing the order
+                                                                     each sum?” (If 3 + 5 = 8, then I know 6 + 3 can't be
+                                                                     8. I know 3 + 5 = 5 + 3 because changing the order
                                                                      of the numbers doesn’t change the total when you
                                                                      add.)
 
@@ -161,7 +161,7 @@ Materials to Gather                                             Materials to Cop
                                                                   • “Here are the counters from a round of Shake and
                                                                     Spill. There are 6 red counters and 4 yellow counters.
                                                                     What equations can I write to represent the
-                                                                    counters?” (             and            )
+                                                                    counters?” (6 + 4 = 10 and 4 + 6 = 10)
                                                                   • “Why do both equations represent the counters?”
                                                                     (You can start with the red or start with the yellow
                                                                     and there are still 10 total counters.)
@@ -212,7 +212,7 @@ Materials to Gather
   • Two-color counters: Activity 2
 
 
-      Student Task Statement                                     Launch
+     Student Task Statement                                      Launch
        1. Show all the ways to make 10.                            • Groups of 2
                                                                    • Give students access to 10-frames, two-color
        2. How do you know that you have found all the                counters, and yellow and red crayons.
@@ -222,8 +222,8 @@ Materials to Gather
                                                                    • Read the Task Statement.
 Student Response
                                                                    • “You will have some time to work on this problem on
- 1.           ,       ,   ,    ,      ,      ,      ,      ,         your own, and then share your thinking with a
-          ,       ,                                                  partner.”
+ 1. 0 + 10, 1 + 9, 2 + 8, 3 + 7, 4 + 6, 5 + 5, 6 + 4, 7 + 3,         your own, and then share your thinking with a
+    8 + 2, 9 + 1, 10 + 0                                             partner.”
  2. Sample response: I have an expression that shows 10            • 5 minutes: independent work time
     reds, then 9 reds, then 8 reds, then 7 reds, all the
                                                                    • “Each of you will have 2 minutes to prove to your
@@ -251,7 +251,7 @@ Student Response
                                                                   • “How do you know that you found all of the ways?” (I
                                                                     started by filling my 10-frame with red counters and
                                                                     then flipped over the first red counter to make it
-                                                                    yellow. That was        . I kept flipping over a one red
+                                                                    yellow. That was 1 + 9. I kept flipping over a one red
                                                                     counter at a time to make it yellow and kept writing
                                                                     expressions.)
 
@@ -323,7 +323,7 @@ Lesson Synthesis
 “Today we found all the ways to make 10.”
 
 
-Display                                         .
+Display 2 + 8 = 10,3 + 7 = 10,                  .
 
 “What is the value that makes this equation true? How do you know?” (6, because the 4 is 1 more than the 3 in the other
 equation, so the 7 needs to be 1 less.)

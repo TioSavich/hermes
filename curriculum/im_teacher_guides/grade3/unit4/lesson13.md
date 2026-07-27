@@ -90,7 +90,7 @@ and known information.
 
 
       Student Task Statement                                 Launch
-                                                                  • Groups of 2
+                             4 × 18                               • Groups of 2
 
       Record an estimate that is:                                 • Display the expression.
                                                                   • “What is an estimate that’s too high? Too low? About
@@ -245,30 +245,30 @@ see a variety of ways to represent and solve the problem.
       Supports accessibility for: Social-Emotional Functioning
 
 
-      Student Task Statement                                      Launch
-      As you visit the posters with your partner, discuss           • Groups of 2
-      what is similar and what is different about the               • “Before you begin the Gallery Walk, what are some
-      thinking shown on the posters.                                  things you could look for as you look at other
-                                                                      students’ work?” (ways they showed their thinking,
-Student Response                                                      how they found the solution to the problem)
-                                                                    • Share responses.
-Sample responses: They all showed            , even if it was
+     Student Task Statement                                      Launch
+      As you visit the posters with your partner, discuss          • Groups of 2
+      what is similar and what is different about the              • “Before you begin the Gallery Walk, what are some
+      thinking shown on the posters.                                 things you could look for as you look at other
+                                                                     students’ work?” (ways they showed their thinking,
+Student Response                                                     how they found the solution to the problem)
+                                                                   • Share responses.
+Sample responses: They all showed 5 × 15, even if it was
 in different ways. They all found a total of 75 chairs. Some
-students showed the problem with base-ten blocks, some            Activity
+students showed the problem with base-ten blocks, some           Activity
 drew groups, and some made arrays. The numbers were
-grouped in different ways to make the total easier to find.         • “Visit the posters. Discuss with your partner what is
-Some groups used 5 and some groups used 10.                           the same and what is different about the thinking on
-                                                                      each poster.”
-                                                                    • 8–10 minutes: Gallery Walk
+grouped in different ways to make the total easier to find.        • “Visit the posters. Discuss with your partner what is
+Some groups used 5 and some groups used 10.                          the same and what is different about the thinking on
+                                                                     each poster.”
+                                                                   • 8–10 minutes: Gallery Walk
 
 
-                                                                  Activity Synthesis
-                                                                    • Give students a chance to ask questions they have
-                                                                      about any posters.
-                                                                    • “What is the same about the thinking shown on the
-                                                                      posters?”
-                                                                    • “What is different about the thinking shown on the
-                                                                      posters?”
+                                                                 Activity Synthesis
+                                                                   • Give students a chance to ask questions they have
+                                                                     about any posters.
+                                                                   • “What is the same about the thinking shown on the
+                                                                     posters?”
+                                                                   • “What is different about the thinking shown on the
+                                                                     posters?”
 
 
 
@@ -281,10 +281,10 @@ problem. One of the groups used base-ten blocks to represent the problem.)
 
 
 
-                                            Grade 3                                     CC BY NC 2024
-                                             Unit 4
-                                                                Lesson 13
-                                                                                 Illustrative Mathematics®             5
+                                           Grade 3                                     CC BY NC 2024
+                                            Unit 4
+                                                               Lesson 13
+                                                                                Illustrative Mathematics®             5
 “How did your work multiplying one-digit numbers help you multiply teen numbers?” (I broke the teen numbers apart
 like I did with one-digit numbers that are challenging to multiply.)
 

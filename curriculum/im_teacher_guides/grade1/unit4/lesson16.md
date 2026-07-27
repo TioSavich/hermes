@@ -29,13 +29,13 @@ Addressing     1.NBT.B.2, 1.NBT.B.3                              • Notice and 
 
 Lesson Purpose
 The purpose of this lesson is for students to compare numbers based on the value of the tens and ones digits. Students
-also read and write comparisons using , , or .
+also read and write comparisons using < , > , or = .
 
 
 Narrative
 In this lesson, students use the symbols they learned in the previous lesson to write comparison statements. In the first
 activity, students play a game in which they make the greatest number possible by strategically placing digits in the tens
-place or ones place. In the second activity, students make comparison statements true using , , or . Students are
+place or ones place. In the second activity, students make comparison statements true using < , > , or = . Students are
 encouraged to read each comparison statement. As students create and compare two-digit numbers and use symbols
 to record the results of their comparisons, they look for and make use of the structure of two-digit numbers and attend
 to precision (MP6, MP7).
@@ -83,15 +83,15 @@ Addressing     1.NBT.B.3                                        • Notice and W
 
 
 The purpose of this Warm-up is to elicit the idea that two true comparison statements can be used to describe the
-relationship between two values, which will be useful when students write statements using , , and in a later
+relationship between two values, which will be useful when students write statements using < , > , and = in a later
 activity.
 
 
      Student Task Statement                                   Launch
       What do you notice?                                       • Groups of 2
       What do you wonder?                                       • Display the inequalities.
-        •                                                       • “What do you notice? What do you wonder?”
-        •                                                       • 1 minute: quiet think time
+        • 49 > 45                                               • “What do you notice? What do you wonder?”
+        • 45 < 49                                               • 1 minute: quiet think time
 
 
 Student Response                                              Activity
@@ -123,11 +123,11 @@ digit cards to create the greatest possible two-digit number. Each student draws
 on the recording sheet. Each student does this twice, to make a two-digit number. Once a digit is placed, it can’t be
 
 
-                                             Grade 1                                CC BY NC 2024
+                                             Grade 1                                 CC BY NC 2024
                                               Unit 4
-                                                          Lesson 16
-                                                                             Illustrative Mathematics®                  2
-moved. Students compare their numbers using , , or . The player with the greater two-digit number wins the round.
+                                                           Lesson 16
+                                                                              Illustrative Mathematics®                 2
+moved. Students compare their numbers using > , < , or = . The player with the greater two-digit number wins the round.
 Students think strategically about place value when they decide how to use the first of the two cards they draw (MP7).
 
 Students should remove cards that show 10 from their deck.
@@ -178,12 +178,12 @@ Materials to Gather                                          Materials to Copy
 
                                          Grade 1                                   CC BY NC 2024
                                           Unit 4
-                                                         Lesson 16
+                                                          Lesson 16
                                                                             Illustrative Mathematics®              3
                                                                • Repeat until you both have a 2-digit number.
                                                                • “Now we compare our numbers. Who has the greater
                                                                  number? How do you know?”
-                                                               • “Finally, we write a comparison using   ,   , or   .”
+                                                               • “Finally, we write a comparison using > , < , or = .”
                                                                • Demonstrate writing the comparison statement on
                                                                  the recording sheets.
                                                                • “The player with the greater number gets a point.
@@ -207,8 +207,8 @@ Materials to Gather                                          Materials to Copy
 
 
 
-Activity 2                                                                                                   15 min
-                                                                                                             PLC Activity
+Activity 2                                                                                                    15 min
+                                                                                                              PLC Activity
 Make the Statement True
 
      Standards
@@ -231,10 +231,10 @@ make the comparison true.
      Advances: Speaking, Conversing
 
 
-                                         Grade 1                                   CC BY NC 2024
+                                         Grade 1                                    CC BY NC 2024
                                           Unit 4
                                                          Lesson 16
-                                                                            Illustrative Mathematics®                 4
+                                                                             Illustrative Mathematics®                 4
 Required Materials
 Materials to Gather
   • Connecting cubes in towers of 10 and singles: Activity
@@ -246,39 +246,39 @@ Materials to Gather
           Write <, >, or = in each blank.                        • Give students access to connecting cubes in towers
           Then read the comparison statement.                      of 10 and singles.
 
-             a.
+             a.    56___26
 
-             b.
+             b.    72___78
                                                                Activity
 
-              c.                                                 • Read the Task Statement.
+              c.   6___55                                        • Read the Task Statement.
                                                                  • 8 minutes: partner work time
-             d.
+             d.    92___29
 
-             e.
+             e.    23___23
                                                                Activity Synthesis
        2. Fill in each box with a number to make each
-                                                                 • Display          .
+                                                                 • Display > 78      .
           statement true.
                                                                  • “How did you know what number would make the
-             a.                                                    statement true?” (I knew it had to be greater than 78
+             a.    > 78                                            statement true?” (I knew it had to be greater than 78
                                                                    because I read the statement ‘blank is greater than
                                                                    78’. I put in a number and read the statement out
-             b.
+             b.    39 <
                                                                    loud to see if it was true. I chose a number with more
                                                                    than 7 tens so I knew it would be greater than 78.)
-              c.
-                                                                 • Display              .
+              c.   13 =
+                                                                 • Display 39 <          .
 
                                                                  • “How did you know what number would make the
-             d.                                                    statement true?” (I knew it had to be greater than 39
+             d.    <                                               statement true?” (I knew it had to be greater than 39
                                                                    because I read the statement ‘39 is less than blank’. I
-             e.                                                    put in a number and read the statement out loud to
+             e.    >                                               put in a number and read the statement out loud to
                                                                    see if it was true. I chose a number with more than 3
                                                                    tens so I knew that it would be greater than 39.)
 
 Student Response                                                 • Invite students to share comparisons they made for
-                                                                             and            . For each comparison shared,
+                                                                   <         and >           . For each comparison shared,
  1.   a. >
                                                                    have the class decide if it is true or not.
       b. <
@@ -307,7 +307,7 @@ If students create statements that are not true, consider asking:
 
 
 Lesson Synthesis
-Display        .
+Display < 35   .
 
 “Today we used symbols to make comparison statements true. We also filled in numbers to make true statements. What
 is the greatest number that would make this statement true? What other numbers would make it true?” (34 is the
@@ -328,10 +328,10 @@ Addressing     1.NBT.B.3
      Student Task Statement
      Compare each number. Write <, >, or = in each blank.
 
-        1.
-        2.
-        3.
-        4.
+        1. 35___38
+        2. 67___67
+        3. 52___42
+        4. 8___28
 
 
 Student Response

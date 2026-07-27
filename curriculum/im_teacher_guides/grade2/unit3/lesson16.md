@@ -74,7 +74,7 @@ Lesson Timeline                                                   Teacher Reflec
 Number Talk: Addition within 50
 
      Standards                                                       Instructional Routines
-Addressing       2.NBT.B.5                                       • Number Talk
+Addressing     2.NBT.B.5                                         • Number Talk
 
 
 The purpose of this Number Talk is to activate students’ previous experiences with addition methods involving
@@ -86,24 +86,24 @@ these methods.
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-          •                                                      • “Give me a signal when you have an answer and can
+        • 15 + 5 + 1                                             • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-          •
+        • 25 + 6
                                                                  • 1 minute: quiet think time
-          •
-          •
+        • 16 + 7
+        • 37 + 6
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
                                                                  • Keep expressions and work displayed.
-  • 21:               plus 1 more is 21.
+  • 21: 15 + 5 = 20 plus 1 more is 21.
                                                                  • Repeat with each expression.
-  • 31:               plus 1 more is 31.
+  • 31: 25 + 5 = 30 plus 1 more is 31.
   • 23: I took 4 from the 7 to make 20, and there were 3
     left, so I knew it was 23.                                 Activity Synthesis
-  • 43: I know               , so its           .                • "How do you think the third expression could help
+  • 43: I know 7 + 6 = 13 , so its 30 + 13 = 43.                 • "How do you think the third expression could help
                                                                    with finding the value of the fourth one?" (In the ones
-                                                                   place there was a 6 and 7, so I knew that
+                                                                   place there was a 6 and 7, so I knew that 6 + 4 = 10
                                                                    and there were 3 left over. In the fourth expression
                                                                    the ones were switched, but it was still 10 with 3 left
                                                                    over.)
@@ -116,7 +116,7 @@ Activity 1                                                                      
 The Plant Project
 
      Standards
-Addressing       2.MD.D.9
+Addressing     2.MD.D.9
 
 
 The purpose of this activity is for students to create a line plot from data presented in a table. The table includes data
@@ -268,7 +268,7 @@ the line plot helps to show differences (MP7).
 Student Response
  1. The shortest plant was 25 cm.
  2. The tallest plant was 35 cm.
- 3. The difference is 10 cm.
+ 3. The difference is 10 cm. 35 - 25 = 10
  4. No. Sample response: 29 cm is the most common
     plant height, but the tallest plant is 32 cm. The tallest
     plant is 32 because it is the last plant height on the

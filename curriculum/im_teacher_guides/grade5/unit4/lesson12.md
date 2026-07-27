@@ -71,7 +71,7 @@ Lesson Timeline                                                  Teacher Reflect
 Number Talk: Divide
 
      Standards                                                        Instructional Routines
-Addressing       5.NBT.B.6                                        • Number Talk
+Addressing      5.NBT.B.6                                         • Number Talk
 
 
 The purpose of this Number Talk is for students to demonstrate the strategies and understandings they have for
@@ -83,25 +83,25 @@ digit numbers.
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 110 ÷ 10                                                • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 121 ÷ 11
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 132 ÷ 12
+        • 154 ÷ 14
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
                                                                   • Keep expressions and work displayed.
   • 11: I just knew it.
                                                                   • Repeat with each expression.
-  • 11: I know                 ,                ,
-    and               .
-  • 11: I know                 ,                ,               Activity Synthesis
-    and               .
+  • 11: I know 10 × 11 = 110, 1 × 11 = 11,
+    and 10 + 1 = 11.
+  • 11: I know 10 × 12 = 120, 1 × 12 = 12,                      Activity Synthesis
+    and 10 + 1 = 11.
                                                                   • “What stays the same with each problem? What
-  • 11: I know                 ,            ,                       changes?” (The quotient is always 11. There are
-    and               .                                             always 11 groups of the divisor. The dividend and the
+  • 11: I know 10 × 14 = 140, 1 × 14 = 14,                          changes?” (The quotient is always 11. There are
+    and 10 + 1 = 11.                                                always 11 groups of the divisor. The dividend and the
                                                                     divisor change.)
 
 
@@ -112,7 +112,7 @@ Activity 1                                                                      
 Compare Solutions
 
      Standards
-Addressing       5.NBT.B.6
+Addressing      5.NBT.B.6
 
 
 The purpose of this activity is for students to explain the steps for using a partial-quotients algorithm to divide a three-
@@ -160,7 +160,7 @@ Student Response
                                                              • “What questions do you have about partial-quotients
     Sample responses for Partner B:                            algorithms?”
                                                              • Consider displaying sample responses from Student
-                                                               Responses for the quotient        .
+                                                               Responses for the quotient 589 ÷ 19.
                                                                 ◦ “How are the strategies the same? How are they
                                                                   different?” (All subtract 1 group of 19 at the end.
                                                                   Before that, all subtract multiples of 10.)
@@ -182,18 +182,18 @@ Student Response
                                            Unit 4
                                                          Lesson 12
                                                                           Illustrative Mathematics®              3
-Activity 2                                                                                                        15 min
+Activity 2                                                                                                       15 min
 
 Estimate and Solve
 
-      Standards
+     Standards
 Addressing      5.NBT.B.6
 
 
 The purpose of this activity is for students to practice using a partial-quotients algorithm to divide multi-digit numbers
 by two-digit divisors. Before finding the quotient, students estimate the value of the quotient, which helps students both
 decide which partial quotients to use and evaluate the reasonableness of their solution (MP8). For example, if students
-estimate that the value of            is a little more than 20, that means that a good choice for the first partial quotient is
+estimate that the value of 536 ÷ 23 is a little more than 20, that means that a good choice for the first partial quotient is
 20. Whenever possible, ask students to explain the steps they are taking.
 
 To add movement to the activity, after students have solved each problem, they can partner with other students who
@@ -215,33 +215,33 @@ to one another and make adjustments to their work, as needed.
       Supports accessibility for: Social-Emotional Functioning
 
 
-      Student Task Statement                                     Launch
-      Estimate the value of each quotient. Then use a              • Groups of 2
+     Student Task Statement                                     Launch
+      Estimate the value of each quotient. Then use a             • Groups of 2
       partial-quotients algorithm to find the value.
 
-       1. A reasonable estimate for              is:             Activity
-       2. A reasonable estimate for              is:               • 5 minutes: independent work time
-       3. A reasonable estimate for                is:             • 5 minutes: partner work time
-                                                                   • Monitor for students who use different sets of partial
-                                                                     quotients for the same problem.
+       1. A reasonable estimate for 612 ÷ 34 is:                Activity
+       2. A reasonable estimate for 536 ÷ 23 is:                  • 5 minutes: independent work time
+       3. A reasonable estimate for 1,044 ÷ 29 is:                • 5 minutes: partner work time
+                                                                  • Monitor for students who use different sets of partial
+                                                                    quotients for the same problem.
 
 Student Response
-                                                                 Activity Synthesis
- 1. Sample response: It's about 20, since                  .
-                                                                   • Ask 2–3 students to share their work showing
+                                                                Activity Synthesis
+ 1. Sample response: It's about 20, since 600 ÷ 30 = 20.
+                                                                  • Ask 2–3 students to share their work showing
  2. Sample response: It's close to 25, since
-                                                                     different partial quotients for the same problem.
-                 .
-                                                                   • “How can you make sure that the whole-number
+                                                                    different partial quotients for the same problem.
+    500 ÷ 20 = 25.
+                                                                  • “How can you make sure that the whole-number
  3. Sample response: It's close to 40, since
-                                                                     quotient you got at the end is reasonable?” (It should
+                                                                    quotient you got at the end is reasonable?” (It should
 
 
-                                            Grade 5                                     CC BY NC 2024
-                                             Unit 4
-                                                               Lesson 12
-                                                                                 Illustrative Mathematics®                 4
-                     .                                              be close to my estimate. I can multiply the quotient
+                                           Grade 5                                     CC BY NC 2024
+                                            Unit 4
+                                                            Lesson 12
+                                                                                Illustrative Mathematics®                 4
+    1,000 ÷ 25 = 40.                                                be close to my estimate. I can multiply the quotient
                                                                     and divisor and that should give me the dividend.)
                                                                  • If students share with other partners, ask: “How did
                                                                    explaining your work to others help you today?” or

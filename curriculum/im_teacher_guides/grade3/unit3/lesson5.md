@@ -73,7 +73,7 @@ Addressing      3.OA.D.9                                         • Notice and 
 
 The purpose of this Warm-up is to elicit observations about patterns in the sums of two- and three-digit addends in an
 addition table. The table is partially completed to highlight some properties of operations. For example, the sums in the
-table can illustrate the commutative property (                 and                ). The numbers also prompt students
+table can illustrate the commutative property (99 + 98 = 197 and 98 + 99 = 197). The numbers also prompt students
 to notice patterns in the sums of odd and even numbers. For example, the sum of an odd number and an even number
 is always odd.
 
@@ -168,7 +168,7 @@ single digits can be used to represent the sum in each place-value position beca
 
 
      Student Task Statement                                    Launch
-      Here are 2 algorithms for adding            .              • Groups of 2
+      Here are 2 algorithms for adding 367 + 231.                • Groups of 2
 
       Han’s algorithm                                            • Display the algorithms.
                                                                  • “Han and Elena used two different algorithms to
@@ -251,7 +251,7 @@ Synthesis focuses on clarifying how to record newly composed units when adding t
 
 
      Student Task Statement                                  Launch
-     Here are 2 algorithms for adding            .             • Groups of 2
+     Here are 2 algorithms for adding 365 + 182.               • Groups of 2
 
      Han’s algorithm                                           • Display Elena’s algorithm.
                                                                • “What do you notice? What do you wonder?” (Elena is
@@ -268,12 +268,12 @@ Synthesis focuses on clarifying how to record newly composed units when adding t
 
       2. Try using Elena’s algorithm to find the value of
          each sum.                                           Activity
-          a.                                                   • “Work with your partner to answer the first question.
-          b.                                                     Then pause before moving on to the second set of
+          a. 174 + 352                                         • “Work with your partner to answer the first question.
+          b. 273 + 619                                           Then pause before moving on to the second set of
                                                                  problems.”
-          c.
+          c. 354 + 198
                                                                • 2 minutes: partner discussion
-          d.
+          d. 525 + 376
                                                                • Invite students to share how 14 tens are recorded
                                                                  differently in the 2 algorithms.
 Student Response
@@ -290,12 +290,12 @@ Student Response
 2.   a. 526
                                                                • Monitor for how students record multiple
      b. 892                                                      compositions of tens or hundreds when finding the
-     c. 552                                                      value of          .
+     c. 552                                                      value of 354 + 198.
 
 
                                                              Activity Synthesis
                                                                • Select students to display their work for finding the
-                                                                 value of           .
+                                                                 value of 354 + 198.
                                                                • “How did you decide where to record the new ten
                                                                  and the new hundred?” (It made the most sense to
                                                                  me to stack the hundred on the ten since the ten was
@@ -305,11 +305,11 @@ Student Response
                                             Unit 3
                                                             Lesson 5
                                                                             Illustrative Mathematics®              5
-                                                                       already there.)
-                                                                     • “In this algorithm, we typically stack the newly
-                                                                       composed tens or hundreds in the order they
-                                                                       happen as we add from right to left, or from the ones
-                                                                       place to the tens place to the hundreds place.”
+                                                                      already there.)
+                                                                    • “In this algorithm, we typically stack the newly
+                                                                      composed tens or hundreds in the order they
+                                                                      happen as we add from right to left, or from the ones
+                                                                      place to the tens place to the hundreds place.”
 
 
 
@@ -323,7 +323,7 @@ If students do not record the newly composed tens or hundreds in the second and 
 
 
 Lesson Synthesis
-Display an expression from the last activity, such as,           .
+Display an expression from the last activity, such as, 174 + 352.
 
 “In this lesson, we have been adding from right to left, starting with the ones place. Let’s look at this expression again.
 Let’s consider what would happen if we started adding from the left, at the hundreds place.”
@@ -353,15 +353,15 @@ Addressing      3.NBT.A.2
 
 
       Student Task Statement
-      Use an algorithm of your choice to find the value of              .
+      Use an algorithm of your choice to find the value of 365 + 182.
 
 
 
 
-                                             Grade 3                                     CC BY NC 2024
+                                             Grade 3                                    CC BY NC 2024
                                               Unit 3
                                                                Lesson 5
-                                                                                  Illustrative Mathematics®              6
+                                                                                 Illustrative Mathematics®               6
 Student Response
 547. Students use any of the three addition algorithms learned so far.
 

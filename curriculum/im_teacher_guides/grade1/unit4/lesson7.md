@@ -170,9 +170,9 @@ Materials to Gather
 
      Student Task Statement                                   Launch
                                                                 • Groups of 2
-        2-digit                                  tens
-                        drawing                                 • Give each group a set of number cards and
-       number                                    ones
+        2-digit                                 tens
+                        drawing             ___                 • Give each group a set of number cards and
+       number                               ___ ones
                                                                   connecting cubes in towers of 10 and singles.
                                                                 • Ask students to take out the cards with 10 on them.
                                                                 • “We are going to play a game called Make It. You will
@@ -187,9 +187,9 @@ Materials to Gather
                                                              Lesson 7
                                                                              Illustrative Mathematics®               3
                                                                   the student book.
-        2-digit                                      tens
-                         drawing
-       number                                        ones       • “First, one partner picks 2 number cards and makes a
+        2-digit                                  tens
+                         drawing             ___
+       number                                ___ ones           • “First, one partner picks 2 number cards and makes a
                                                                   2-digit number. I picked a [3] and a [5]. How could I
                                                                   arrange these numbers to make a 2-digit number?”
                                                                   (You could put the 3 on the left and 5 on the right.
@@ -245,7 +245,7 @@ If students build the numbers with single connecting cubes, consider asking:
 
                                             Grade 1                                   CC BY NC 2024
                                              Unit 4
-                                                            Lesson 7
+                                                           Lesson 7
                                                                                Illustrative Mathematics®            4
 Activity 2                                                                                                     10 min
 

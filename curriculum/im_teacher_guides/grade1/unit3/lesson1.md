@@ -130,29 +130,29 @@ Student might wonder:
 
 My Favorite Sum
 
-      Standards
-Addressing      1.OA.C.6
+     Standards
+Addressing     1.OA.C.6
 
 
 The purpose of this activity is for students to explore sums within 10. Students pick their favorite sum as an entry point
 to the next activity in which students sort the sums into those they know and those they don’t yet know.
 
 
-       Access for English Language Learners
-       MLR8 Discussion Supports. During group work, invite students to take turns sharing their responses. Ask students
-       to restate what they heard using precise mathematical language and their own words. Display the sentence
-       frame: “I heard you say . . .” Original speakers can agree or clarify for their partner.
-       Advances: Listening, Speaking
+      Access for English Language Learners
+      MLR8 Discussion Supports. During group work, invite students to take turns sharing their responses. Ask students
+      to restate what they heard using precise mathematical language and their own words. Display the sentence
+      frame: “I heard you say . . .” Original speakers can agree or clarify for their partner.
+      Advances: Listening, Speaking
 
 
-      Student Task Statement                                   Launch
-       Pick your favorite sum.                                    • Groups of 4
+     Student Task Statement                                    Launch
+      Pick your favorite sum.                                     • Groups of 4
 
-       Write an equation to show the value of your sum:           • Display the addition chart from the Warm-up.
+      Write an equation to show the value of your sum:            • Display the addition chart from the Warm-up.
                                                                   • “You are going to choose your favorite sum from the
-       Show why it is your favorite using drawings,
-                                                                    addition chart. For example, my favorite sum is
-       numbers, or words.
+      Show why it is your favorite using drawings,
+                                                                    addition chart. For example, my favorite sum is 8 + 2
+      numbers, or words.
                                                                     because I like sums of 10.”
 
 
@@ -163,14 +163,14 @@ to the next activity in which students sort the sums into those they know and th
 Student Response
                                                                   • 4 minutes: independent work time
 Sample responses:
-  •           . I love the sums because they are quick.           • “Share your favorite sums with the other students in
-    I can count on 1 more quickly. I would say   .                  your small group.”
+  • 3 + 1 = 4. I love the + 1 sums because they are quick.        • “Share your favorite sums with the other students in
+    I can count on 1 more quickly. I would say 3...4 .              your small group.”
 
-  •            . The     sums are my favorite because             • 4 minutes: small-group discussion
-      they add nothing, so the answer is just the number.         • Monitor for students who wrote equations with
-  •              . I know that     is 10. I can see a               addends of 0 or 1, equations with the same addend
-      10-frame in my head with 5 red counters and 5                 twice, or sums of 10.
-      yellow counters.
+  • 8 + 0 = 8. The + 0 sums are my favorite because               • 4 minutes: small-group discussion
+    they add nothing, so the answer is just the number.           • Monitor for students who wrote equations with
+  • 5 + 5 = 10. I know that 5 + 5 is 10. I can see a                addends of 0 or 1, equations with the same addend
+    10-frame in my head with 5 red counters and 5                   twice, or sums of 10.
+    yellow counters.
                                                                Activity Synthesis
                                                                   • Invite previously identified students to share their
                                                                     favorite sums.
@@ -179,8 +179,8 @@ Sample responses:
 
 
 
-                                             Grade 1                                  CC BY NC 2024
-                                              Unit 3
+                                            Grade 1                                   CC BY NC 2024
+                                             Unit 3
                                                              Lesson 1
                                                                                Illustrative Mathematics®                3
 Activity 2                                                                                                   25 min
@@ -201,7 +201,7 @@ discretion in asking students to explain their answers, as some students will si
 quickly in their head that they may not be able to explain how they got it. These students should not be required to
 draw a picture to represent the sum.
 
-Look for students who know sums such as        ,      ,      , and       , as these tend to be the most challenging for
+Look for students who know sums such as 3 + 4, 3 + 5, 6 + 3, and 4 + 5, as these tend to be the most challenging for
 students and will be discussed during the Lesson Synthesis. After that Synthesis, collect the student workbook page to
 formatively assess sums students did not know.
 
@@ -231,7 +231,7 @@ Materials to Gather                                           Materials to Copy
           place it under “not yet.”                               sums. Let’s try a few together. Give me a thumbs up
                                                                   when you know the value of the sum.”
                      got it                 not yet
-                                                                • Display       .
+                                                                • Display 4 + 1.
                                                                 • “How do you know this one?” (Adding 1 is quick. It’s
 
 
@@ -240,49 +240,49 @@ Materials to Gather                                           Materials to Copy
                                               Unit 3
                                                             Lesson 1
                                                                               Illustrative Mathematics®                4
-Student Response                                                  just 1 more than the number.)
-                                                                • “This is a sum that many of us know right away. Any
-  • Students will likely know all   ,   ,   , sums of 5,
-                                                                  sum that you know the value of quickly is placed in
+Student Response                                                   just 1 more than the number.)
+                                                                 • “This is a sum that many of us know right away. Any
+  • Students will likely know all + 0, + 1, + 2, sums of 5,
+                                                                   sum that you know the value of quickly is placed in
     and sums of 10.
-                                                                  the ‘got it’ pile.”
+                                                                   the ‘got it’ pile.”
   • Students will likely need support with learning the
-                                                                • Display        .
-    value of such sums as        ,     ,      ,      , and
-         .                                                      • “For this sum, I might have to count on my fingers
-                                                                  from 5. This is a sum that I can figure out, but it takes
-                                                                  just a bit longer. When it takes you a little longer to
-                                                                  find the value of the sum, place that card in the ‘not
-                                                                  yet’ pile.”
+                                                                 • Display 5 + 3.
+    value of such sums as 3 + 4, 4 + 3, 4 + 4, 4 + 5, and
+    5 + 4.                                                       • “For this sum, I might have to count on my fingers
+                                                                   from 5. This is a sum that I can figure out, but it takes
+                                                                   just a bit longer. When it takes you a little longer to
+                                                                   find the value of the sum, place that card in the ‘not
+                                                                   yet’ pile.”
 
 
-                                                              Activity
-                                                                • “Start with your cards in a pile, facedown. Flip 1 card
-                                                                  at a time and decide which pile it belongs in.”
-                                                                • 10 minutes: independent work time
-                                                                • “Record the sums that you are still working on.”
-                                                                • 3 minutes: independent work time
-                                                                • Monitor for sums that many students have sorted
-                                                                  under “not yet” for the Lesson Synthesis.
+                                                               Activity
+                                                                 • “Start with your cards in a pile, facedown. Flip 1 card
+                                                                   at a time and decide which pile it belongs in.”
+                                                                 • 10 minutes: independent work time
+                                                                 • “Record the sums that you are still working on.”
+                                                                 • 3 minutes: independent work time
+                                                                 • Monitor for sums that many students have sorted
+                                                                   under “not yet” for the Lesson Synthesis.
 
 
-                                                              Activity Synthesis
-                                                                • “What patterns do you see in the sums you know? (I
-                                                                  know all the +1 sums. I know all the sums of 10.)
-                                                                • “Which sums are more difficult to find?” (The sums
-                                                                  that are + 4 or + 5 that do not make a 10 are harder.)
-                                                                • “By the end of the year, you are going to be able to
-                                                                  quickly tell the value of the sum for all the addition
-                                                                  expressions within 10.”
+                                                               Activity Synthesis
+                                                                 • “What patterns do you see in the sums you know? (I
+                                                                   know all the +1 sums. I know all the sums of 10.)
+                                                                 • “Which sums are more difficult to find?” (The sums
+                                                                   that are + 4 or + 5 that do not make a 10 are harder.)
+                                                                 • “By the end of the year, you are going to be able to
+                                                                   quickly tell the value of the sum for all the addition
+                                                                   expressions within 10.”
 
 
 
 
 Lesson Synthesis
-Display three common “not yet” expressions. Consider showing expressions such as          ,      , and       .
+Display three common “not yet” expressions. Consider showing expressions such as 3 + 5, 4 + 5, and 6 + 3.
 
-“Today we looked for sums we know, so we know which sums to continue practicing. Some students know                   .
-What is a method you can use to help a friend who doesn’t know the value of this sum yet?” ( is the same as                .
+“Today we looked for sums we know, so we know which sums to continue practicing. Some students know 3 + 5 = 8.
+What is a method you can use to help a friend who doesn’t know the value of this sum yet?” (3 + 5 is the same as 5 + 3.
 They can start at 5 and count on 3 quickly, 5...6, 7, 8.)
 
 Highlight and record 2–3 student methods for more challenging sums. These methods can be displayed in the
@@ -291,10 +291,10 @@ classroom for students to refer to later in this section and unit.
 
 
 
-                                            Grade 1                                  CC BY NC 2024
-                                             Unit 3
-                                                             Lesson 1
-                                                                              Illustrative Mathematics®               5
+                                              Grade 1                                 CC BY NC 2024
+                                               Unit 3
+                                                              Lesson 1
+                                                                               Illustrative Mathematics®               5
 Observation
 Lesson Observations for Unit 3, Section A
 

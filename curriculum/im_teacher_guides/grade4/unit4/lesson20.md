@@ -156,13 +156,13 @@ Materials to Gather
           each sum and difference. If you get stuck, try        • Give students access to grid paper.
           writing the numbers in expanded form.
 
-           a.
+           a. 7,106 + 2,835
                                                               Activity
-           b.
+           b. 8,179- 3,599
                                                                 • 5–7 minutes: independent work time
-           c.
+           c. 142,571 + 10,909
                                                                 • “Check your responses to the first problem with your
-           d.
+           d. 268,322- 72,145
                                                                   partner and make any adjustments you need to
        2. Find the unknown value that would make each             make. Then work on the second problem together.”
           computation true.
@@ -171,11 +171,11 @@ Materials to Gather
                                                                   students who:
                                                                    ◦ Find the missing addend by adding up from
                                                                      67,182 to 129,400, or by subtracting
-                                                                                       .
+                                                                     129,400- 67,182 .
 Student Response
                                                                    ◦ Find the missing subtrahend by adding up from
  1.   a. 9,941                                                       193,710 to 234,650, or by subtracting
-      b. 4,580                                                                          .
+      b. 4,580                                                       234,650- 193,710 .
 
       c. 153,480
       d. 196,177                                              Activity Synthesis

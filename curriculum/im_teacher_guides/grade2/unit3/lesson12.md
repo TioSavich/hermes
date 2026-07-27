@@ -83,12 +83,12 @@ the base-ten structure of numbers and the properties of operations (MP7).
      Student Task Statement                                    Launch
       Decide if each statement is true or false. Be              •   Display one statement.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 24 = 10 + 14                                             statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time.
+        • 15 + 12 = 27                                           • 1 minute: quiet think time.
 
-        •
-        •                                                      Activity
+        • 26 = 10 + 6 + 10
+        • 58 = 20 + 20 + 8                                     Activity
                                                                  • Share and record answers and strategy.
 Student Response                                                 • Repeat with each statement.
 
@@ -97,7 +97,7 @@ Student Response                                                 • Repeat with
     equivalent.
                                                                  • “How can you explain your answer for the last
   • True: 26 has 2 tens and 6 ones.                                equation using what you know about tens and ones?”
-  • False: 58 has 5 tens, and          is only 4 tens.             (There are only 4 tens on the right.)
+  • False: 58 has 5 tens, and 20 + 20 is only 4 tens.              (There are only 4 tens on the right.)
 
 
 
@@ -124,9 +124,9 @@ Monitor for and select students with the following approaches to share in the Sy
                                                            Lesson 12
                                                                               Illustrative Mathematics®                2
   • Represent the initial length of ribbon and the actions in the story with base-ten diagrams or a series of equations to
-    show subtraction. (                ,            )
+    show subtraction. (92- 35 = 57 , 57- 28 = 29 )
   • Represent the total length of ribbon that was cut off before subtracting it from the initial length of ribbon using
-    diagrams or equations. (              ,               )
+    diagrams or equations. (35 + 28 = 63, 92- 63 = 29 )
 The approaches are sequenced from more concrete to more abstract ways to represent the quantities and actions in
 the story problem to help students make connections between different ways to make sense of and solve a two-step
 problem. Some students may use a combination of different representations (for example, a tape diagram to make
@@ -167,8 +167,8 @@ Lin has 29 cm of ribbon left. Sample responses:                      compare to 
 
 
                                                                  Activity Synthesis
-  •              ,                 ,                               • Invite previously selected students to share in the
-                 ,             ,                                     given order. Record or display their work for all to
+  • 92- 35 = ? , 92- 30 = 62 , 62- 5 = 57                          • Invite previously selected students to share in the
+    57- 28 = ? , 57- 7 = 50 , 50- 21 = 29                            given order. Record or display their work for all to
                                                                      see.
                                                                    • Connect students’ approaches by asking:
 
@@ -183,7 +183,7 @@ Lin has 29 cm of ribbon left. Sample responses:                      compare to 
                                                                        see how they used Lin's length of ribbon and the
                                                                        parts she cut off. In the equations, I can see the
   •                                                                    same numbers, but it's a little harder to tell what
-                      ,              ,                                 each part means. I can make sense of them by
+      92- 35 - 28 = ? , 35 + 28 = 63, 92- 63 = 29                      each part means. I can make sense of them by
                                                                        looking at the other diagrams people made.)
                                                                  • Connect students’ approaches to the learning goal by
                                                                    asking:
@@ -225,14 +225,14 @@ This activity uses MLR6 Three Reads. Advances: reading, listening, representing.
 
 
       Student Task Statement                                  Launch
-      Solve. Show your thinking using                            • Groups of 2
-      drawings, numbers, or words. Write                         • Give students access to base-ten blocks.
-      the units.
+       Solve. Show your thinking using                           • Groups of 2
+       drawings, numbers, or words. Write                        • Give students access to base-ten blocks.
+       the units.
                                                               MLR6 Three Reads
 
 
-                                           Grade 2                                   CC BY NC 2024
-                                            Unit 3
+                                            Grade 2                                  CC BY NC 2024
+                                             Unit 3
                                                            Lesson 12
                                                                               Illustrative Mathematics®                4
      1. Andre’s ribbon is 50 inches long. He cuts off 26       • Display only the problem stem, without revealing the

@@ -84,12 +84,12 @@ quotient and to rely on the structure of division expressions to mentally find q
      Student Task Statement                                       Launch
       Find the value of each expression mentally.                   • Display one expression.
 
-        •                                                           • “Give me a signal when you have an answer and can
+        • 120 ÷ 12                                                  • “Give me a signal when you have an answer and can
                                                                       explain how you got it.”
-        •
+        • 120 ÷ 6
                                                                     • 1 minute: quiet think time
-        •
-        •
+        • 120 ÷ 3
+        • 120 ÷ 2
                                                                   Activity
 
 Student Response                                                    • Record answers and strategy.
@@ -209,12 +209,12 @@ If students only order some of the situations correctly, consider asking:
 
 
 
-Activity 2                                                                                                   15 min
+Activity 2                                                                                                     15 min
 
 Division Patterns
 
      Standards
-Building Toward      5.NF.B.7
+Building Toward        5.NF.B.7
 
 
 The purpose of this activity is for students to look for patterns in division by the same divisor. The numbers in these
@@ -233,59 +233,59 @@ number which will be the focus of upcoming lessons.
      Student Task Statement                                    Launch
        1. Find the value of each expression.                      • Groups of 2
 
-           a.
-           b.                                                  Activity
-            c.                                                    • 5 minutes: independent work time
-           d.                                                     • Monitor for students who:
-           e.                                                         ◦ Can explain why the quotient gets smaller when
-            f.                                                          the dividend gets smaller.
+           a. 36 ÷ 3
+           b. 12 ÷ 3                                           Activity
+            c. 9 ÷ 3                                              • 5 minutes: independent work time
+           d. 6 ÷ 3                                               • Monitor for students who:
+           e. 3 ÷ 3                                                   ◦ Can explain why the quotient gets smaller when
+            f. 1 ÷ 3                                                    the dividend gets smaller.
 
-       2. What patterns do you notice?                                ◦ Describe the quotient of       as being smaller
-
-
+       2. What patterns do you notice?                                ◦ Describe the quotient of 1/3 ÷ 3 as being smaller
 
 
-                                           Grade 5                                   CC BY NC 2024
+
+
+                                           Grade 5                                    CC BY NC 2024
                                             Unit 3
                                                             Lesson 10
-                                                                              Illustrative Mathematics®               4
-       3. Why is the quotient getting smaller?                                 than   .
-       4. What do you know about this expression:                         ◦ Draw a diagram to show          divided into 3 equal
-                 ?
-                                                                               sections.
-       5. Draw a diagram to represent           .
+                                                                               Illustrative Mathematics®                4
+            3. Why is the quotient getting smaller?                        than 1/3.
+            4. What do you know about this expression:                 ◦ Draw a diagram to show 1/3 divided into 3 equal
+                 1/3 ÷ 3?
+                                                                           sections.
+            5. Draw a diagram to represent 1/3 ÷ 3.
 
-                                                                     Activity Synthesis
-Student Response                                                       • Ask previously identified students to share their
-                                                                         solutions.
- 1.   a. 12
-                                                                       • “Why does the quotient get smaller as the dividend
+                                                                 Activity Synthesis
+Student Response                                                   • Ask previously identified students to share their
+                                                                     solutions.
+ 1.    a. 12
+                                                                   • “Why does the quotient get smaller as the dividend
       b. 4
-                                                                         gets smaller?” (There are a smaller number of things
-      c. 3                                                               being split into the same number of groups, so there
-      d. 2                                                               will be fewer in each group.)
+                                                                     gets smaller?” (There are a smaller number of things
+       c. 3                                                          being split into the same number of groups, so there
+      d. 2                                                           will be fewer in each group.)
 
-      e. 1                                                             • “Why is           going to be smaller than   ?” (   is being
+       e. 1                                                        • “Why is 1/3 ÷ 3 going to be smaller than 1/3?” (1/3 is being
 
-      f.                                                                 divided into 3 equal pieces.)
-                                                                       • Display student diagrams like the ones in student
+       f.     1/3                                                     divided into 3 equal pieces.)
+                                                                   • Display student diagrams like the ones in student
  2. Sample responses: All the problems are about
-                                                                         responses.
+                                                                     responses.
     dividing by 3. The number that is being divided gets
-    smaller, so does the quotient.                                     • “How do the diagrams show             ?” (They show a
- 3. Sample response: It is getting smaller because the                   third divided into 3 equal pieces.)
+    smaller, so does the quotient.                                 • “How do the diagrams show 1/3 ÷ 3?” (They show a
+ 3. Sample response: It is getting smaller because the                third divided into 3 equal pieces.)
     number of things being shared is smaller, so there
     will be fewer in each group.
 
- 4. Sample response: It will be smaller than        , it will be
-       of    .
+ 4. Sample response: It will be smaller than 1/3, it will be
+      1/3   of 1/3.
 
- 5. Sample responses:               ◦
-
-
+ 5. Sample responses:                  ◦
 
 
-                                    ◦
+
+
+                                       ◦
 
 
 
@@ -302,10 +302,10 @@ Record student responses for all to see. Keep the display visible. Refer back to
 
 
 
-                                            Grade 5                                          CC BY NC 2024
-                                             Unit 3
-                                                                   Lesson 10
-                                                                                      Illustrative Mathematics®                 5
+                                              Grade 5                                    CC BY NC 2024
+                                               Unit 3
+                                                               Lesson 10
+                                                                                  Illustrative Mathematics®                5
 Suggested Centers
   • Rolling for Fractions (3–5), Stage 4: Multiply Fractions (Addressing)
   • Compare (1–5), Stage 4: Divide within 100 with One-Digit Divisors (Supporting)
@@ -331,7 +331,7 @@ Sample responses:
 
  1. There is a pattern that when the dividend remains the same and the divisor gets smaller, the quotient gets larger.
 
- 2. Is dividing fractions the same as dividing whole numbers? How do you divide something by         ?
+ 2. Is dividing fractions the same as dividing whole numbers? How do you divide something by 1/2?
 
 
 

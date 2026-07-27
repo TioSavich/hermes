@@ -360,10 +360,10 @@ Required Preparation
                                                       • “I’m going to put a counter on this group of 3 dots
                                                         and a counter on this group of 2 dots. 3 dots and 2
                                                         dots is 5 dots. What expression should I write on my
-                                                        recording sheet?” (     )
+                                                        recording sheet?” (3 + 2)
                                                       • 30 seconds: quiet think time
                                                       • Share responses.
-                                                      • Demonstrate writing         .
+                                                      • Demonstrate writing 3 + 2.
                                                       • “Now that my partner and I have written our
                                                         expression, we can look to see if there are 2 more
                                                         groups of dots that go together to make 5 dots. If we

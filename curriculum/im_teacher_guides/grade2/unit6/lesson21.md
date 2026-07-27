@@ -84,26 +84,26 @@ and will be helpful later in this lesson when students find and compare the valu
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 20 + 25 + 5 + 5                                        • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 15 + 25 + 25
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 25 + 15 + 25 + 6
+        • 20 + 15 + 30 + 7
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
                                                                  • Keep expressions and work displayed.
-  • 55: I added             . Then I added              .
-    Then I added                 .                               • Repeat with each expression.
+  • 55: I added 5 + 5 = 10. Then I added 10 + 20 = 30.
+    Then I added 30 + 25 = 55.                                   • Repeat with each expression.
 
-  • 65: I knew             , like two quarters is 50
+  • 65: I knew 25 + 25 = 50, like two quarters is 50
     cents. Then I added 15 more to get 65.                     Activity Synthesis
-  • 71: I knew             . I added 15 more to get 65.
+  • 71: I knew 25 + 25 = 50. I added 15 more to get 65.
                                                                  • “How could the third problem help us think about
     Then I added 5 more to get 70, and 1 more to get 71.
-                                                                   the last one?” (             and               , and
-  • 72: I added                . Then I added 30 more to           they both had 15, so the only difference was the 6
+                                                                   the last one?” (25 + 25 = 50 and 20 + 30 = 50, and
+  • 72: I added 20 + 15 = 35. Then I added 30 more to              they both had 15, so the only difference was the 6
     get 65. I thought of 7 as 5 and 2. I added 5 to 65 to          and the 7.)
     get 70, and then I added 2 more to get 72.
 
@@ -125,8 +125,8 @@ would rather have and explains why in terms of the units.
 
 
 
-                                             Grade 2                                  CC BY NC 2024
-                                              Unit 6
+                                           Grade 2                                    CC BY NC 2024
+                                            Unit 6
                                                             Lesson 21
                                                                                Illustrative Mathematics®                2
 Required Materials

@@ -279,15 +279,15 @@ printer paper                   choices:
 Student Response
  1. Sample response
     Estimate: $1,000 .
+    30 + 20 + 50 + 400 + 150 + 350 = 1,000
 
-
-      ◦ 6 boxes of markers:              , so 6 boxes of
+      ◦ 6 boxes of markers: 6 × 5 = 30, so 6 boxes of
         markers cost $30.
       ◦ 1 package of pads of lined paper: $15
-      ◦ 6 boxes of crayons:              , so 6 boxes of
+      ◦ 6 boxes of crayons: 6 × 8 = 48, so 6 boxes of
         crayons cost $48.
       ◦ set of nature books: $400
-      ◦ 10 board games:                   , so 10 board
+      ◦ 10 board games: 10 × 15 = 150, so 10 board
         games cost $150.
       ◦ field trip to the zoo: $350
  2. Sample responses:

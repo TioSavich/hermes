@@ -154,9 +154,9 @@ Required Preparation
 
 Student Response                                              Launch
 Sample responses:                                               • Groups of 2
-                                                                • Give each group 2 recording sheets, 10 connecting
-                                                                  cubes, and access to 10-frames and two-color
-                                                                  counters.
+2 + 8 = 10                                                      • Give each group 2 recording sheets, 10 connecting
+6 + 4 = 10                                                        cubes, and access to 10-frames and two-color
+5 + 5 = 10                                                        counters.
                                                                 • “We are going to learn a new way to play a game that
                                                                   you may have learned in kindergarten called What’s
                                                                   Behind My Back? Let’s play the first round together.”

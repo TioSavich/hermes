@@ -108,12 +108,12 @@ Student Response
 Sample responses:                                              Activity Synthesis
   • A, B, and C go together because they have a column           • “How is it that A and C both show 111?” (If a small
     with just a single square.                                     square represents 1, then a rectangle is 10 and a
-  • A, B, and D go together because they have tens.                large square is 100. In A:                     . In C:
-                                                                                    .)
+  • A, B, and D go together because they have tens.                large square is 100. In A: 100 + 10 + 1 = 111. In C:
+                                                                   100 + 11 = 111.)
   • A, C, and D go together because they show 111.
                                                                  • “How do we know that D also shows 111?” (Each
   • B, C, and D go together because they have 10 blocks.
-                                                                   group in D represents        + 7 or 37. Three
+                                                                   group in D represents (3 × 10) + 7 or 37. Three
                                                                    groups of 37 makes 111.)
                                                                  • “Suppose we don’t know what a small square
                                                                    represents except that it represents the same value
@@ -162,7 +162,7 @@ Materials to Gather
 
      Student Task Statement                                     Launch
        1. Priya draws a base-ten diagram to find the              • Groups of 4
-          value of       . A rectangle represents 10. A           • Give students access to base-ten blocks.
+          value of 64 ÷ 4. A rectangle represents 10. A           • Give students access to base-ten blocks.
           small square represents 1.
                                                                   • Display the first diagram. Make sure students can
            Use the diagram (or actual blocks) to help Priya         explain why it represents 64.
@@ -183,12 +183,12 @@ Materials to Gather
                                             Unit 6
                                                               Lesson 16
                                                                                Illustrative Mathematics®                3
-          find the value of       .                          Activity Synthesis
+          find the value of 117 ÷ 3.                         Activity Synthesis
                                                                • Invite students to share their responses and
                                                                  reasoning.
                                                                • Make sure students see that:
-                                                                   ◦ We can think of       as putting 6 tens and 4
-                                                                     ones into 4 equal groups, and         as putting
+                                                                   ◦ We can think of 64 ÷ 4 as putting 6 tens and 4
+                                                                     ones into 4 equal groups, and 117 ÷ 3 as putting
                                                                      1 hundred 1 ten and 7 ones into 3 equal groups.
                                                                    ◦ To divide the base-ten pieces, we can
                                                                      decompose a piece representing a larger place
@@ -250,7 +250,7 @@ Materials to Gather
       1. This diagram                                          • Groups of 2
          represents 235.                                       • Give students access to base-ten blocks.
                                                                • Display the first diagram.
-          Noah draws this diagram to find         and
+          Noah draws this diagram to find 235 ÷ 5 and
                                                                • “How does the diagram represent 235?” (A large
           then gets stuck.
                                                                  square represents 100. A rectangle represents 10. A
@@ -262,10 +262,10 @@ Materials to Gather
           hundreds or the tens pieces to put into 5            • 4–5 minutes: independent work time on the first
           groups.”                                               question
 
-          Explain or show how Noah could find                  • Monitor for students who see the 2 hundreds as 20
+          Explain or show how Noah could find 235 ÷ 5          • Monitor for students who see the 2 hundreds as 20
           with his diagram.                                      tens and those who see them as 200 ones.
                                                                • Pause after the first question. Make sure students
-      2. Find the value of        . Show your thinking
+      2. Find the value of 432 ÷ 6. Show your thinking
                                                                  see that the 2 hundreds can be decomposed into 20
          using diagrams, symbols, or other
                                                                  tens (or 200 ones) and split into 5 equal groups, and
@@ -303,12 +303,12 @@ Student Response                                               • 5 minutes: pa
 
 
 Lesson Synthesis
-“Today we used base-ten diagrams and blocks to find quotients such as           . Here is a student’s unfinished work for
-finding       . How would you complete it?”
+“Today we used base-ten diagrams and blocks to find quotients such as 712 ÷ 4. Here is a student’s unfinished work for
+finding 712 ÷ 4. How would you complete it?”
 
 Display:
 
-                       “        means putting 7 hundreds + 1 ten + 2 ones into 4 equal groups.”
+                       “712 ÷ 4 means putting 7 hundreds + 1 ten + 2 ones into 4 equal groups.”
 
 
 
@@ -317,9 +317,9 @@ Invite student volunteers to share their reasoning. (178. After putting 1 hundre
 ten, and 2 ones left. The hundreds can be decomposed into tens and the tens can be decomposed into ones so that
 there’s enough to put into 4 groups.
 
-                                                                                     , so 7 tens in each group.
+                                                                          28 ÷ 4 = 7, so 7 tens in each group.
 
-                                                                                     , so 8 ones in each group.)
+                                                                         32 ÷ 4 = 8, so 8 ones in each group.)
 
 
 
@@ -330,7 +330,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                     5 min
+Cool-down                                                                                                    5 min
 
 Find the Value of a Quotient
 
@@ -343,9 +343,9 @@ Addressing     4.NBT.B.6
                                           Grade 4                                    CC BY NC 2024
                                            Unit 6
                                                            Lesson 16
-                                                                              Illustrative Mathematics®               6
+                                                                              Illustrative Mathematics®              6
      Student Task Statement
-     Find the value of        . Show your thinking using diagrams, symbols, or other representations.
+     Find the value of 132 ÷ 4. Show your thinking using diagrams, symbols, or other representations.
 
      The base-ten diagram represents 132. Use the diagram if you find it helpful.
 
@@ -354,12 +354,12 @@ Addressing     4.NBT.B.6
 
 Student Response
 33. Sample responses:
-  • I know that                 . I also know that                and         , so         is the sum of 25 and 8, which
+  • I know that 132 = 100 + 32. I also know that 100 ÷ 4 = 25 and 32 ÷ 4 = 8, so 132 ÷ 4 is the sum of 25 and 8, which
      is 33.
   • The large square represents 1 hundred and can be decomposed into 10 tens. Now, we have 13 tens. Twelve of the
     tens can be put into 4 groups of 3 tens. The last ten can be decomposed into 10 ones. There are now 12 ones, or 4
     groups of 3 ones. Three tens and 3 ones is 33.
-  • I know that              and             , so             .
+  • I know that 120 ÷ 4 = 30 and 12 ÷ 4 = 3, so 132 ÷ 4 = 33.
 
 
 Responding to Student Thinking
@@ -374,8 +374,8 @@ errors.                                                       During the Activit
 
 
 
-                                          Grade 4                                   CC BY NC 2024
-                                           Unit 6
+                                         Grade 4                                    CC BY NC 2024
+                                          Unit 6
                                                             Lesson 16
                                                                              Illustrative Mathematics®                7
 ```

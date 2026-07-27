@@ -91,7 +91,7 @@ discussion points.
      Student Task Statement                                    Launch
       What do you notice?                                         • Groups of 2
       What do you wonder?                                         • Display the equations.
-                                                                  • “What do you notice? What do you wonder?”
+      4 + 5 = 9                                                   • “What do you notice? What do you wonder?”
                                                                   • 1 minute: quiet think time
 
 
@@ -261,7 +261,7 @@ Sample responses:                                               • Groups of 2
   • I crossed out "5 pencils and" in the problem: Priya         • Give students a set of cards from the previous
     had 5 pencils and 4 erasers. She buys some more               activity.
     erasers. Now she has 7 erasers. How many more
-    erasers did Priya buy?            She bought 3 more         • Display the story problem from Card D.
+    erasers did Priya buy? 4 + 3 = 7 She bought 3 more          • Display the story problem from Card D.
     erasers.                                                    • “We decided that this story has some extra
                                                                   information that we do not need. Let’s cross out that
                                                                   information.”

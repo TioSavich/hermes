@@ -305,7 +305,7 @@ Materials to Gather
  3. Andre and his sister would each get 10 marbles.
     There would be 0 left over.
                                                                    ◦
-                                                                   ◦
+                                                                   ◦ 17 = 8 + 8 + 1
                                                                 • “How does the equation represent this diagram?” (17
                                                                   is the total amount. Each 8 shows the group of 8 on
                                                                   top and the group of 8 on the bottom–the number of
@@ -335,7 +335,7 @@ Materials to Gather
                                                                   draw to show adding 1 marble to each group to the
                                                                   drawing of 18 marbles.
                                                                 • “What equation can we write to represent the
-                                                                  diagram?” (            )
+                                                                  diagram?” (10 + 10 = 20)
 
 
 
@@ -372,11 +372,11 @@ Cool-down                                                                       
 
 Share with Your Partner
 
-      Standards
+     Standards
 Addressing     2.OA.C
 
 
-      Student Task Statement
+     Student Task Statement
       Noah and Lin want to share 11 connecting cubes equally. How many will each student get? Will there be any
       leftovers?
 
@@ -386,7 +386,7 @@ Addressing     2.OA.C
 Student Response
 5 cubes and 1 cube left over. Sample responses:
   • Student draws and labels to show 2 equal groups of 5 and 1 left over.
-  •                 . Noah and Lin get 5 cubes each and 1 cube is left over.
+  • 11 = 5 + 5 + 1. Noah and Lin get 5 cubes each and 1 cube is left over.
 
 
 Responding to Student Thinking
@@ -397,9 +397,9 @@ equal.                                                         discuss a correct
 
 
 
-                                              Grade 2                                 CC BY NC 2024
+                                              Grade 2                                CC BY NC 2024
                                                Unit 8
                                                              Lesson 1
-                                                                               Illustrative Mathematics®                7
+                                                                              Illustrative Mathematics®                 7
 ```
 

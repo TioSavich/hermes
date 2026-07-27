@@ -73,7 +73,7 @@ Lesson Timeline                                                Teacher Reflectio
 Number Talk: Subtraction Methods
 
      Standards                                                       Instructional Routines
-Addressing     1.OA.C.6                                          • Number Talk
+Addressing       1.OA.C.6                                        • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for adding or subtracting 1 or 2
@@ -83,12 +83,12 @@ to a given number. Students may use what they know about the count sequence to f
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 7- 2                                                   • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 8 - 2
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 7- 5
+        • 8 - 6
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
@@ -99,7 +99,7 @@ another 1 less is 6.
 2: I know because I showed 5 on my fingers and counted
                                                                Activity Synthesis
 up 6, 7.
-2: I know because I know       is 8.                             • “How are problems 2 and 4 the same? How are they
+2: I know because I know 6 + 2 is 8.                             • “How are problems 2 and 4 the same? How are they
                                                                    different?” (They both start with 8. They subtract
                                                                    different numbers. They use the same 3 numbers.)
 
@@ -111,7 +111,7 @@ Activity 1                                                                      
 Introduce Capture Squares—Add within 10
 
      Standards
-Addressing     1.OA.C.6
+Addressing       1.OA.C.6
 
 
 The purpose of this activity is for students to learn a new center called Capture Squares. Students roll two number

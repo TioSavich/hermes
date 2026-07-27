@@ -197,7 +197,7 @@ Materials to Gather
 
                                                              Activity Synthesis
         • Kiran wrote 3 ones and 7 tens.                       • Invite previously identified students to share.
-        • Priya wrote        .                                 • “What connections do you see between the
+        • Priya wrote 70 + 3.                                  • “What connections do you see between the
      Did the students count the same number of                   representations?” (Each representation shows the
      objects?                                                    same amount. Each representation shows tens and
      How do you know?                                            ones.)

@@ -88,12 +88,12 @@ lesson when students add and subtract within 100 to solve problems.
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 25 - 10                                                • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 35 - 10
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 35 - 20
+        • 35 - 19
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
@@ -106,9 +106,9 @@ Student Response                                                 • Record answ
   • 16: I took away 2 tens and gave 1 one back since it
     was only subtracting 19, not 20.                             • Highlight in the first three problems that the tens can
                                                                    be subtracted while the ones are left alone.
-                                                                 • Highlight how the result of          can be used to
-                                                                   calculate        . Record this with the equation:
-                                                                                          .
+                                                                 • Highlight how the result of 35 - 20 can be used to
+                                                                   calculate 35 - 19. Record this with the equation:
+                                                                   35 - 19 = 35 - 20 + 1.
 
 
 

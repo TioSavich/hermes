@@ -201,8 +201,8 @@ Sample response:
     longest snake is about 30 feet long. The longest
     snake is 90 times as long as the shortest snake.
 
-  • True: A typical Chihuahua weighs        kg. A typical
-     miniature poodle weighs       kg. The poodle weighs
+  • True: A typical Chihuahua weighs 21/2 kg. A typical
+     miniature poodle weighs 71/2 kg. The poodle weighs
      three times as much as the Chihuahua.
   • False: An elephant seal can hold its breath for 2
     hours, twice as long as a sperm whale can hold its

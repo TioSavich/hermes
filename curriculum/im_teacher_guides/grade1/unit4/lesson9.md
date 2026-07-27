@@ -256,7 +256,7 @@ Materials to Gather
 Student Response
                                                                 Activity Synthesis
 Sample response:
-  •       , 6 ones and 4 tens, 46, draws 4 tens and 6           MLR7 Compare and Connect
+  • 40 + 6, 6 ones and 4 tens, 46, draws 4 tens and 6           MLR7 Compare and Connect
     ones
                                                                     • Find a new partner and share the representations
                                                                       you made.
@@ -335,7 +335,7 @@ Lesson Synthesis
 Display 7 towers of 10 and 3 single cubes.
 
 “Today we represented collections in different ways. What are all the ways I can represent this collection?” (draw 7 tens
-and 3 ones, 7 tens 3 ones,      , 73)
+and 3 ones, 7 tens 3 ones, 70 + 3, 73)
 
 “Where do you see 70 in each representation? How does the 7 in 73 represent 70?”
 

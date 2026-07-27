@@ -152,17 +152,17 @@ ends in zero and each digit in the original number is shifted one place to the l
        2. Select the equations that could be represented
           by the diagram.                                         • “Work with a partner on the rest of the activity.”
 
-             A.                                                   • Monitor for students who:
+             A.    15 × 10 = 150                                  • Monitor for students who:
                                                                       ◦ Use the tape diagram to reason about the
-             B.
+             B.    16 × 100 = 1,600
                                                                         equations.
-             C.
+             C.    30 ÷ 3 = 10
                                                                       ◦ Rely on numerical patterns in multiples of 10 to
-           D.                                                           reason about 10 times as many.
+           D.      5,000 ÷ 5 = 1,000                                    reason about 10 times as many.
 
-             E.
+             E.    80 × 10 = 800
                                                                Activity Synthesis
-             F.
+             F.    12,000 ÷ 10 = 1,200
                                                                Display possible values for A, and corresponding values
        3. For the equations that can't be represented by
                                                                for B, in a table such as this:
@@ -192,11 +192,11 @@ ends in zero and each digit in the original number is shifted one place to the l
                                                                     the equations, consider asking, “How might you label
  3. B and D
                                                                     the diagram to show that it represents the equations
-     a. Sample response: B is 100 times as much, not 10             you selected?” (For the equation                , I would
+     a. Sample response: B is 100 times as much, not 10             you selected?” (For the equation 30 ÷ 3 = 10, I would
         times as much, and D is 1,000 times as much.                label A “3” and B “30.” I know that 30 is 10 times as
-     b. Sample response: B:                         or              much as 3, so the diagram represents the equation.)
-                     . D:                     or                  • For students who used their understanding of
-                                                                    numerical patterns to support their reasoning,
+     b. Sample response: B: 160 × 10 = 1,600 or                     much as 3, so the diagram represents the equation.)
+        16 × 10 = 160. D: 5,000 ÷ 500 = 10 or                     • For students who used their understanding of
+         50 ÷ 5 = 10                                                numerical patterns to support their reasoning,
      c. Students may notice it is possible to come up               consider asking, “How did you know that the
         with many different equations.                              equation could be represented as a comparison
                                                                     involving ten times as many?” (I know that when we
@@ -217,7 +217,7 @@ Consider repeating, with another number, to reinforce the idea.
 
 
 
-Activity 2                                                                                                       15 min
+Activity 2                                                                                                     15 min
 
 What Remains the Same?
 
@@ -237,10 +237,10 @@ lesson prepares students to consider, in the next section, quantities that are 1
 
 
 
-                                            Grade 4                                    CC BY NC 2024
+                                            Grade 4                                   CC BY NC 2024
                                              Unit 5
                                                             Lesson 6
-                                                                                Illustrative Mathematics®                 4
+                                                                               Illustrative Mathematics®                4
      Advances: Speaking, Representing
 
 
@@ -262,7 +262,7 @@ lesson prepares students to consider, in the next section, quantities that are 1
 
                        14                                          ◦ Use multiplication expressions to represent the
                                                                      relationships between values of A and B, for
-                                        1,000                        example,          to represent the first pair of
+                                        1,000                        example, 14 × 10 to represent the first pair of
                                                                      quantities.
                        160
                                                                    ◦ Use place-value relationships to determine the
@@ -285,7 +285,7 @@ lesson prepares students to consider, in the next section, quantities that are 1
                                                                      the same order, but not in the same places?”
                                                                      (Because they are multiplying 10 by A.)
 Student Response
-                                                                   ◦ “Could we represent both         and          ,
+                                                                   ◦ “Could we represent both 4 × 10 and 10 × 10,
 1.                                                                   using the same diagram of A and B? Why or why
                                                                      not?” (Yes, because A could represent 4 or 10,
                                                                      and B represents 10 times that value.)
@@ -408,7 +408,7 @@ Students write true statements that relate the values 3,        Next Day Support
                                              Unit 5
                                                             Lesson 6
                                                                               Illustrative Mathematics®             7
-  • Writing an equation, such as           .
+  • Writing an equation, such as 4 × 3 = 12.
 
 Drawing every unit became less convenient as the numbers became greater, so we used simpler diagrams, with
 numbers to represent the sizes of these quantities.

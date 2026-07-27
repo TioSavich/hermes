@@ -152,8 +152,8 @@ Sample responses:
                                                                     you see that are multiples of both 2 and 5?” (I think
                                                                     40 would be the next common multiple because the
                                                                     multiples are going up by 10. I think 100 would be a
-                                                                    common multiple because                   and
-                                                                                  .)
+                                                                    common multiple because 2 × 50 = 100 and
+                                                                    5 × 20 = 100.)
 
 
 
@@ -256,11 +256,11 @@ Student Response
      Sample response: A and E go together because they              some areas and not others?” (Some of the numbers
      both have an area of 24 square units. I know A has             had more factor pairs. For some numbers, there was
      an area of 24 square units because I know                      only one possible factor pair.)
-                . I can also see that E has 24 square units
+     8 × 3 = 24. I can also see that E has 24 square units
                                                                   • Repeat student reasoning. “Only one rectangle can
      by counting all the squares or because I know
                                                                     be made for the area of 7. Numbers like 7 are called
-                .
+     4 × 6 = 24.
                                                                     prime numbers. Prime numbers have only one
  3. Sample responses:                                               factor pair: 1 and itself.”
       ◦ Rectangles with an area of 24 square units: 1 by          • “Numbers like 15 that have more than one factor
@@ -305,7 +305,7 @@ Materials to Gather
 
                                              Grade 4                                  CC BY NC 2024
                                               Unit 1
-                                                              Lesson 3
+                                                             Lesson 3
                                                                                Illustrative Mathematics®                 5
 Rectangles with the same pair of side lengths              many rectangles with that area can be made?” (Test it
 should be counted only once. For example, if you           out with tiles. Think about factor pairs for the

@@ -37,7 +37,7 @@ Narrative
 Throughout the unit, students have made sense of the ways equations, including those with symbols for an unknown,
 represent story problems or ways to solve them. In previous lessons of this unit, students matched equations to story
 problems and wrote their own equations. Although lesson activities as early as kindergarten introduce equations in
-which the total or difference is on the left side of the equal sign (for example            or            ), students are
+which the total or difference is on the left side of the equal sign (for example 10 = 7 + 3 or 7 = 10- 3 ), students are
 most familiar with equations in which the total or difference is on the right side. This can lead to misconceptions about
 what the equal sign or equations themselves mean.
 
@@ -105,11 +105,11 @@ to Put Together/Take Apart, Both Addends unknown problems with equations.
       Student Task Statement                                    Launch
       Find the unknown value mentally.                            • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 6 + 4 =                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
         •
                                                                   • 1 minute: quiet think time
-        •
+        • 10 = 4 +
 
         •                                                       Activity
                                                                   • Record answers and strategy.
@@ -154,7 +154,7 @@ decomposition. In addition to opportunities to look for the ways student strateg
 Synthesis provides an opportunity for students to continue to make sense of the meaning of the equal sign.
 
 During this activity, the teacher collects and displays different equations that students write for the first round. This
-includes equations where the total is before the equal sign, such as               . During the Synthesis, students are
+includes equations where the total is before the equal sign, such as 10 = 7 + 3. During the Synthesis, students are
 encouraged to think about how an equation with the total before the equal sign relates back to the context of playing
 the game (MP2).
 
@@ -239,7 +239,7 @@ Grade 1                           CC BY NC 2024
                                                                     in the equations. They all equal ten. Sometimes the
                                                                     total is before the equation and sometimes it is
                                                                     after.)
-                                                                  • “What does the equation             mean?” (The 10
+                                                                  • “What does the equation 10 = 7 + 3 mean?” (The 10
                                                                     counter total is the same amount as 7 red counters
                                                                     and 3 yellow counters or 7 yellow and 3 red.)
                                                                   • Highlight student responses to emphasize:
@@ -322,12 +322,12 @@ Required Preparation
                                                        • Write an equation that represents the total (10) and
                                                          the red counters with a box for the unknown. For
                                                          example, if there were 6 red visible, display:
-
+                                                         10 = 6 +
 
                                                        • “Or you could write an equation after you say how
                                                          many are under the cup.”
                                                        • Write another addition equation to match the round.
-                                                         For example,                .
+                                                         For example, 6 + 4 = 10 .
 
 
                                                      Activity
@@ -443,24 +443,24 @@ Required Preparation
                                            Unit 2
                                                           Lesson 21
                                                                                  Illustrative Mathematics®         8
-                                                                   number in the right place?"
+                                                                     number in the right place?"
                                                                 • “How do you know your equations are true?”
 
 
 
 
 Lesson Synthesis
-Display:                 and
+Display:                 and 3 + 7 = 10
 
 “Today we wrote equations to match the red and yellow counters in the game Shake and Spill. For one round, a student
 wrote these equations. How could these equations represent the game? How are they the same? How are they
-different?” (They are the same because they both show that        equals 10. It means the same thing. There are either 3
+different?” (They are the same because they both show that 3 + 7 equals 10. It means the same thing. There are either 3
 red and 7 yellow or 7 red and 3 yellow. They are different because the total is before the equal sign in one equation and
 after the equal sign in the other equation.)
 
 “We also saw today that you can use addition facts that you know to determine an unknown addend.”
 
-Display:
+Display: 10 = 3 +
 
 “What number makes this equation true? How do you know?”
 
@@ -491,16 +491,16 @@ Look Fors
              All together she has 9 bingo chips.
              How many chips does Lin have on the table?
 
-
+                                                            9- 5 =
                                                                 and
 
 
 
 
-                                          Grade 1                                    CC BY NC 2024
+                                          Grade 1                                     CC BY NC 2024
                                            Unit 2
                                                            Lesson 21
-                                                                              Illustrative Mathematics®             9
+                                                                               Illustrative Mathematics®            9
 • We thought about how addition and subtraction are related.
 
   We used both to solve a story problem.
@@ -510,15 +510,15 @@ Look Fors
   The other students use yellow chips.
   How many students use yellow chips?
 
-                                             Clare writes       .
-                                             Jada writes        .
+                                             Clare writes          .
+                                             Jada writes 9- 3 =    .
 
 
 
 
-                               Grade 1                                CC BY NC 2024
+                               Grade 1                                   CC BY NC 2024
                                 Unit 2
                                                Lesson 21
-                                                               Illustrative Mathematics®   10
+                                                                  Illustrative Mathematics®   10
 ```
 

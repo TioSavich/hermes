@@ -73,8 +73,8 @@ Lesson Timeline                                                Teacher Reflectio
 
 Notice and Wonder: Incomplete Solution
 
-      Standards                                                      Instructional Routines
-Addressing      5.NBT.B.6                                        • Notice and Wonder
+     Standards                                                       Instructional Routines
+Addressing     5.NBT.B.6                                         • Notice and Wonder
 
 
 The purpose of this Warm-up is for students to analyze the structure of a partial-quotients algorithm, which will be
@@ -84,7 +84,7 @@ number. While students may notice and wonder many things about this image, the p
 relationship between multiplication and division are the important discussion points.
 
 
-      Student Task Statement                                   Launch
+     Student Task Statement                                    Launch
       What do you notice? What do you wonder?                    • Groups of 2
                                                                  • Display the image.
                                                                  • “What do you notice? What do you wonder?”
@@ -99,12 +99,12 @@ Student Response
 Students may notice:
   • There are multiplication expressions on the side.
                                                                Activity Synthesis
-  •          doesn’t have anything written next to it.
+  • 5 × 16 doesn’t have anything written next to it.
                                                                  • “This is an algorithm used to divide whole numbers.
   • They multiplied 16 by 20 and then wrote the 20
                                                                    The algorithm is not complete. What might you do
     above the 448.
-                                                                   next?” (Find        , and then subtract it from 128.)
+                                                                   next?” (Find 5 × 16, and then subtract it from 128.)
   • This looks like how we divided in grade 4.
 Students may wonder:
   • Are they finished solving the problem?
@@ -117,14 +117,14 @@ Activity 1                                                                      
 
 Elena’s Work
 
-      Standards                                                      Instructional Routines
-Addressing      5.NBT.B.6                                        • MLR1 Stronger and Clearer Each Time
+     Standards                                                       Instructional Routines
+Addressing     5.NBT.B.6                                         • MLR1 Stronger and Clearer Each Time
 
 
 
 
-                                            Grade 5                                   CC BY NC 2024
-                                             Unit 4
+                                           Grade 5                                    CC BY NC 2024
+                                            Unit 4
                                                            Lesson 11
                                                                                Illustrative Mathematics®                 2
 The purpose of this activity is for students to interpret a partial-quotients calculation with a two-digit divisor. Before
@@ -144,35 +144,35 @@ This activity uses MLR1 Stronger and Clearer Each Time. Advances: writing, speak
       Supports accessibility for: Memory, Organization
 
 
-     Student Task Statement                                     Launch
-       1. Find the value of           . Show your thinking.       • Groups of 2
-          Organize it so it can be followed by others.            • “Pause your work after you find the value of
-                                                                            .”
+     Student Task Statement                                    Launch
+       1. Find the value of 448 ÷ 16. Show your thinking.        • Groups of 2
+          Organize it so it can be followed by others.           • “Pause your work after you find the value of
+                                                                   448 ÷ 16.”
            (Pause for teacher directions.)
 
        2. Describe Elena’s strategy for finding the value
-          of         .                                          Activity
-                                                                  • 3–5 minutes: independent work time
-                                                                  • “Discuss how you found the value of            with
-                                                                    your partner.”
-                                                                  • 1–2 minutes: partner discussion
-                                                                  • “Describe the steps Elena took to find the value of
-                                                                            .”
-                                                                  • 3–5 minutes: independent work time
+          of 448 ÷ 16.                                         Activity
+                                                                 • 3–5 minutes: independent work time
+                                                                 • “Discuss how you found the value of 448 ÷ 16 with
+                                                                   your partner.”
+                                                                 • 1–2 minutes: partner discussion
+                                                                 • “Describe the steps Elena took to find the value of
+                                                                   448 ÷ 16.”
+                                                                 • 3–5 minutes: independent work time
 
 Student Response
-                                                                Activity Synthesis
-                                                                MLR1 Stronger and Clearer Each Time
- 1. 28. Sample response:                                         • “Share your description of how Elena found the value
-                                                                   of          , with your partner. Take turns being the
-                                                                   speaker and the listener. If you are the speaker,
- 2. Sample response: Elena records all of the operations.          share your ideas and writing so far. If you are the
-    She shows the multiples of 16 she found and then               listener, ask questions and give feedback to help
-    subtracts them from the total. Then she adds up the            your partner improve their work.”
-    multiples.                                                    • 3–5 minutes: structured partner discussion
-                                                                  • Repeat with 2–3 different partners.
-                                                                  • (Optional) If needed, display question starters and
-                                                                    prompts for feedback.
+                                                               Activity Synthesis
+                                                               MLR1 Stronger and Clearer Each Time
+ 1. 28. Sample response:                                        • “Share your description of how Elena found the value
+                                                                  of 448 ÷ 16, with your partner. Take turns being the
+                                                                  speaker and the listener. If you are the speaker,
+ 2. Sample response: Elena records all of the operations.         share your ideas and writing so far. If you are the
+    She shows the multiples of 16 she found and then              listener, ask questions and give feedback to help
+    subtracts them from the total. Then she adds up the           your partner improve their work.”
+    multiples.                                                   • 3–5 minutes: structured partner discussion
+                                                                 • Repeat with 2–3 different partners.
+                                                                 • (Optional) If needed, display question starters and
+                                                                   prompts for feedback.
                                                                      ◦ “Can you give an example to help show . . . ?”
                                                                      ◦ “Can you use the word _____ in your
                                                                        explanation?”
@@ -180,7 +180,7 @@ Student Response
 
                                              Grade 5                                  CC BY NC 2024
                                               Unit 4
-                                                              Lesson 11
+                                                            Lesson 11
                                                                                Illustrative Mathematics®              3
                                                                    • “Revise your initial draft, based on the feedback you
                                                                      got from your partners.”
@@ -196,7 +196,7 @@ Student Response
 
 Advancing Student Thinking
 If students find a value that is different from 28, consider asking:
-   • “Can you explain how you found the value of              ?”
+   • “Can you explain how you found the value of 448 ÷ 16?”
   • Refer to Elena's work. “What is the same and what is different about your work and Elena's work?”
 
 
@@ -227,9 +227,9 @@ remains of the dividend.
                                                                    • 8–10 minutes: independent work time
                                                                    • 1–2 minutes: partner discussion
                                                                    • Monitor for students who:
-                                                                       ◦ Multiply by 10 to find the value of          .
+                                                                       ◦ Multiply by 10 to find the value of 368 ÷ 14.
                                                                        ◦ Multiply by multiples of 10 to find the value of
-      3.                                                                          .
+      3.                                                                 368 ÷ 14.
 
 
 
@@ -237,16 +237,16 @@ remains of the dividend.
                                             Grade 5                                    CC BY NC 2024
                                              Unit 4
                                                              Lesson 11
-                                                                                Illustrative Mathematics®                 4
+                                                                                Illustrative Mathematics®                4
 Student Response                                                  Activity Synthesis
 Sample responses:                                                   • Ask previously identified students to share their work
-                                                                      for         .
+                                                                      for 368 ÷ 14.
 1.                                2.
                                                                     • “Is 368 a multiple of 14? How do you know?” (No,
                                                                       because there is a remainder of 4, and we cannot
                                                                       make another group of 14 with only 4 left).
-                                                                    • Display the expression                . “How does the
-                                                                      expression represent            ? (It shows that there
+                                                                    • Display the expression 26 × 14 + 4. “How does the
+                                                                      expression represent 368 ÷ 14? (It shows that there
                                                                       are 26 groups of 14, with 4 left over. Dividing 368 by
                                                                       14 gives 26 and a remainder of 4.)
                                                                     • “This problem had a remainder. When we divide and
@@ -261,7 +261,7 @@ Sample responses:                                                   • Ask prev
 
 
 Lesson Synthesis
-Display students’ work for the quotient             in the last activity, or use the work in the Student Responses.
+Display students’ work for the quotient 368 ÷ 14 in the last activity, or use the work in the Student Responses.
 
 “What was the first multiple of 14 that you subtracted from 368? How did you choose that multiple?” (I started with 10
 because I knew that’s 140 and that I could subtract 140 from 368. I started with 20 because I knew that’s 280, which is
@@ -287,11 +287,11 @@ Suggested Centers
 
 What’s Next?
 
-      Standards
+     Standards
 Addressing     5.NBT.B.6
 
 
-      Student Task Statement
+     Student Task Statement
       Han started finding the value of a quotient.
 
        1. Write the division expression that represents the
@@ -302,7 +302,7 @@ Addressing     5.NBT.B.6
 
 
 Student Response
- 1.
+ 1. 5,400 ÷ 15
  2. Sample response:
 
 

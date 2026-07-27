@@ -82,22 +82,22 @@ be able to add 2 two-digit numbers within 50, and throughout the year as student
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-          •                                                       • “Give me a signal when you have an answer and can
+        • 14 + 22                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-          •
+        • 19 + 22
                                                                   • 1 minute: quiet think time
-          •
-          •
+        • 15 + 25
+        • 17 + 25
                                                                Activity
 
 Student Response                                                  • Record answers and strategy.
                                                                   • Keep expressions and work displayed.
-  • 36:                  ,
+  • 36: 14 + 20 = 34, 34 + 2 = 36
                                                                   • Repeat with each expression.
-  • 41:              ,
-  • 40:                          ,
+  • 41: 19 + 1 = 20, 20 + 21 = 41
+  • 40: 15 + 25 = 25 + 10 = 35, 35 + 5 = 40
                                                                Activity Synthesis
-  • 42:              ,
+  • 42: 17 + 3 = 20, 20 + 22 = 42
                                                                   • “We have seen lots of different ways to find the sum
                                                                     of 2 two-digit numbers. There will be more
                                                                     opportunities to try out different methods as we

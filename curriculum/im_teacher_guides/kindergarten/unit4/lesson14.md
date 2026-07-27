@@ -145,7 +145,7 @@ Materials to Gather
                                                                • Monitor for students who accurately retell the story.
                                                                  Choose at least one student to share with the class.
 
-Student Response                                               • Write the expression         .
+Student Response                                               • Write the expression 10- 6 .
                                                                • “How does this expression show what happens in the
 4 people. Sample responses:
                                                                  story problem?”
@@ -165,10 +165,10 @@ Student Response                                               • Write the exp
 
 
                                                             Activity Synthesis
-                                                               • Write “       .”
+                                                               • Write “10- 6 .”
                                                                • “What does the 10 represent in the story problem?
                                                                  What does the 6 represent?”
-                                                               • “10 take away 6 is 4. We can write that as        is 4.”
+                                                               • “10 take away 6 is 4. We can write that as 10- 6 is 4.”
 
 
 
@@ -177,11 +177,11 @@ Student Response                                               • Write the exp
                                       Unit 4
                                                           Lesson 14
                                                                             Illustrative Mathematics®              3
-Activity 2                                                                                                   10 min
+Activity 2                                                                                                 10 min
 
 Which Expression?
 
-      Standards
+     Standards
 Addressing     K.OA.A.1, K.OA.A.2
 
 
@@ -201,11 +201,11 @@ Materials to Gather
   • Connecting cubes or counters: Activity 2
 
 
-      Student Task Statement                                  Launch
+     Student Task Statement                                   Launch
        1. 2 rocks in Lin’s jar                                  • Groups of 2
           Lin put in 4 more.                                    • Give students access to connecting cubes or
           How many rocks now?                                     counters.
-                                                                • Read and display the Task Statement and the
+              3 + 3             6- 2             2 + 4          • Read and display the Task Statement and the
                                                                   expressions.
        2. 8 kids play.
                                                                 • “Which expression shows what happened in the story
@@ -213,17 +213,17 @@ Materials to Gather
                                                                   problem? Tell your partner how you know.”
           How many now?
 
-
+              8 + 3             3 - 3            8 - 3
                                                               Activity
                                                                 • 30 seconds: quiet think time
                                                                 • 2 minutes: partner discussion
                                                                 • Share responses.
 Student Response                                                • Repeat the steps with the second story problem and
                                                                   expressions.
- 1.
- 2.
+ 1. 2 + 4
+ 2. 8 - 3
                                                               Activity Synthesis
-                                                                • Display      and         . If needed, reread the second
+                                                                • Display 8 + 3 and 8 - 3. If needed, reread the second
                                                                   story problem.
                                                                 • “Which expression did you choose? How did you
 
@@ -232,17 +232,17 @@ Student Response                                                • Repeat the s
                                     Kindergarten                                     CC BY NC 2024
                                        Unit 4
                                                           Lesson 14
-                                                                              Illustrative Mathematics®               4
-                                                                     know which expression to choose?” (         . Some of
+                                                                              Illustrative Mathematics®             4
+                                                                     know which expression to choose?” (8 - 3. Some of
                                                                      the kids left, so I chose the one with the minus sign.)
-                                                                  • Display       .
+                                                                  • Display 8 - 3.
                                                                   • “Use this expression to tell your partner what
                                                                     happened in the story.”
 
 
 
 Advancing Student Thinking
-If students match the second story problem with an expression other than           , consider asking:
+If students match the second story problem with an expression other than 8 - 3, consider asking:
    • “Can you tell me what is happening in the story problem?”
   • “Is something being added or taken away in the story problem? How can that help you figure out which expression
     matches the story problem?”
@@ -310,10 +310,10 @@ Read and display the Task Statement from the first activity.
 6 people stop.
 How many now?
 
-Display       .
+Display 10 + 6.
 
-“Han says that         matches this story problem because there are 10 people first and then there are 6 people. What
-do you think?” (It doesn't match. 6 people stop riding bikes, so you need to use      .)
+“Han says that 10 + 6 matches this story problem because there are 10 people first and then there are 6 people. What
+do you think?” (It doesn't match. 6 people stop riding bikes, so you need to use 10- 6 .)
 
 
 

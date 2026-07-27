@@ -65,63 +65,63 @@ Lesson Timeline                                                Teacher Reflectio
                                               Unit 7
                                                              Lesson 5
                                                                                Illustrative Mathematics®                 1
-Warm-up                                                                                                           10 min
+Warm-up                                                                                                        10 min
 
 Number Talk: Divide by 7
 
-     Standards                                                          Instructional Routines
-Addressing       3.OA.C.7, 3.OA.D.9                                  • Number Talk
+     Standards                                                       Instructional Routines
+Addressing      3.OA.C.7, 3.OA.D.9                                • Number Talk
 
 
 This Number Talk prompts students to rely on properties of operations and the relationship between multiplication and
 division to divide within 100. The reasoning helps students develop fluency in division.
 
 
-     Student Task Statement                                        Launch
-      Find the value of each expression mentally.                    • Display one expression.
+     Student Task Statement                                     Launch
+      Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                            • “Give me a signal when you have an answer and can
-                                                                       explain how you got it.”
-        •
-                                                                     • 1 minute: quiet think time
-        •
-        •
-                                                                   Activity
+        • 70 ÷ 7                                                  • “Give me a signal when you have an answer and can
+                                                                    explain how you got it.”
+        • 77 ÷ 7
+                                                                  • 1 minute: quiet think time
+        • 63 ÷ 7
+        • 56 ÷ 7
+                                                                Activity
 
-Student Response                                                     • Record answers and strategy.
-                                                                     • Keep expressions and work displayed.
-  • 10: I know               , so 70 divided by 7 is 10. I just
-    know it.                                                         • Repeat with each expression.
+Student Response                                                  • Record answers and strategy.
+                                                                  • Keep expressions and work displayed.
+  • 10: I know 7 × 10 = 70, so 70 divided by 7 is 10. I just
+    know it.                                                      • Repeat with each expression.
 
-  • 11: Because          is 10, then it is just one more
-    group of 7, so         is 11.                                  Activity Synthesis
+  • 11: Because 70 ÷ 7 is 10, then it is just one more
+    group of 7, so 77 ÷ 7 is 11.                                Activity Synthesis
   • 9: 63 is 7 less than 70, so it is 1 fewer group of 7,
-                                                                     • “What pattern do you see as you look at the
+                                                                  • “What pattern do you see as you look at the
     which is 9 groups.
-                                                                       expressions and their values? Why is that
-  • 8: It is 1 fewer group of 7 than the previous problem              happening?” (I noticed that the first number in the
-    since               . I know that           , so 56                first expression increased by 7 for the second
-    divided by 7 is 8.                                                 expression, so there would be 1 more group of 7.
-                                                                       The first number in the third expression is 7 less than
-                                                                       70, so there’s 1 less group of 7. The first number in
-                                                                       the last expression is 7 less than 63, so there’s 1 less
-                                                                       group of 7.)
-                                                                     • As needed, record student thinking with expressions
-                                                                       or equations. Consider using smaller numbers to
-                                                                       help test any generalizations students make about
-                                                                       the pattern.
-                                                                     • Consider asking:
-                                                                        ◦ “Did anyone notice a different pattern”?
-                                                                        ◦ “Did anyone notice the same pattern but would
-                                                                          explain it differently?”
+                                                                    expressions and their values? Why is that
+  • 8: It is 1 fewer group of 7 than the previous problem           happening?” (I noticed that the first number in the
+    since 63 - 56 = 7. I know that 8 × 7 = 56, so 56                first expression increased by 7 for the second
+    divided by 7 is 8.                                              expression, so there would be 1 more group of 7.
+                                                                    The first number in the third expression is 7 less than
+                                                                    70, so there’s 1 less group of 7. The first number in
+                                                                    the last expression is 7 less than 63, so there’s 1 less
+                                                                    group of 7.)
+                                                                  • As needed, record student thinking with expressions
+                                                                    or equations. Consider using smaller numbers to
+                                                                    help test any generalizations students make about
+                                                                    the pattern.
+                                                                  • Consider asking:
+                                                                     ◦ “Did anyone notice a different pattern”?
+                                                                     ◦ “Did anyone notice the same pattern but would
+                                                                       explain it differently?”
 
 
 
 
-                                               Grade 3                                   CC BY NC 2024
-                                                Unit 7
-                                                                  Lesson 5
-                                                                                  Illustrative Mathematics®                2
+                                              Grade 3                                 CC BY NC 2024
+                                               Unit 7
+                                                               Lesson 5
+                                                                               Illustrative Mathematics®                2
 Activity 1                                                                                                  20 min
 
 All the Ways

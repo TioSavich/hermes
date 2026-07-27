@@ -368,24 +368,24 @@ Addressing     2.OA.A.1
 14 seeds. Sample response:
 
   • Student labels a drawing, diagram, or equation to show Tyler’s seeds and the seeds the birds ate.
-  • Student uses a base-ten diagram to show                      .
+  • Student uses a base-ten diagram to show 42- 28 = 14 .
 
 
 Responding to Student Thinking
-Students show they know that              will find the value        Next Day Supports
-of Tyler’s seeds, but find a value other than 14.                    Before the Warm-up, have students work in partners to
-                                                                     share their methods for how to find the value of      .
+Students show they know that 42- 28 will find the value      Next Day Supports
+of Tyler’s seeds, but find a value other than 14.            Before the Warm-up, have students work in partners to
+                                                             share their methods for how to find the value of 42- 28 .
 
 
-The work in this lesson builds from the problem-solving              Prior-Unit Support
-concepts developed in a prior unit.                                  Grade 1, Unit 2, Section D All Kinds of Story Problems
+The work in this lesson builds from the problem-solving      Prior-Unit Support
+concepts developed in a prior unit.                          Grade 1, Unit 2, Section D All Kinds of Story Problems
 
 
 
 
-                                             Grade 2                                       CC BY NC 2024
-                                              Unit 2
-                                                                Lesson 11
-                                                                                    Illustrative Mathematics®                 7
+                                         Grade 2                                   CC BY NC 2024
+                                          Unit 2
+                                                          Lesson 11
+                                                                            Illustrative Mathematics®                 7
 ```
 

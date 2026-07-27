@@ -76,15 +76,15 @@ Materials to Gather                                               Materials to C
 
 Lesson Timeline                                                Teacher Reflection Questions
                                                                Which question asked during the Activity Synthesis gave
- Warm-up                                         10 min
+ Warm-up                                       10 min
                                                                the most information about students' understanding of
- Activity 1                                      20 min        the learning goal for the lesson? What did you hear or see
+ Activity 1                                    20 min          the learning goal for the lesson? What did you hear or see
                                                                that made you feel this way?
- Activity 2                                      15 min
+ Activity 2                                    15 min
 
- Synthesis Estimate                              10 min
+ Synthesis Estimate                            10 min
 
- Cool-down                                        5 min
+ Cool-down                                      5 min
 
 
 
@@ -110,33 +110,33 @@ from a previous grade. However, they may benefit from a brief review of the step
       Student Task Statement                                   Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 2 × 7                                                  • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 4 × 7
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 3 × 7
+        • 7 × 7
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
                                                                  • Keep expressions and work displayed.
   • 14: I just know it. It’s 2 groups of 7.
                                                                  • Repeat with each expression.
-  • 28: Four is double 2, so         is double       or
+  • 28: Four is double 2, so 4 × 7 is double 2 × 7 or
     double 14, which is 28.
 
 
 
-                                                 Grade 4                              CC BY NC 2024
-                                                  Unit 1
+                                               Grade 4                                CC BY NC 2024
+                                                Unit 1
                                                              Lesson 2
                                                                                Illustrative Mathematics®               2
-  • 21: It’s one less group of 7 than      , or 7 less than     Activity Synthesis
+  • 21: It’s one less group of 7 than 4 × 7, or 7 less than     Activity Synthesis
     28.
                                                                    • “How did the first three expressions help you find
-  • 49: Seven is    , so I could add the answers to the
-                                                                          ?” (The 7 breaks apart into 3 and 4, so I could
-    previous two problems:               .
+  • 49: Seven is 4 + 3, so I could add the answers to the
+                                                                     7 × 7?” (The 7 breaks apart into 3 and 4, so I could
+    previous two problems: 28 + 21 = 49.
                                                                      multiply in parts and then add them.)
                                                                    • Consider asking:
                                                                        ◦ “Who can restate _____’s reasoning in a different
@@ -166,7 +166,7 @@ are an even number of rows then the number of tiles in the rectangle is an even 
 
 Areas to assign (in square units):
 
-Group A:   11, 27               Group B:   25, 5                Group C:    16, 8                Group D:    9, 18
+Group A:   11, 27               Group B:    25, 5               Group C:    16, 8                Group D:    9, 18
 Group E:   24, 12               Group F:   14, 28               Group G:    15, 30               Group H:    19, 20
 This activity uses MLR7 Compare and Connect. Advances: representing, conversing.
 

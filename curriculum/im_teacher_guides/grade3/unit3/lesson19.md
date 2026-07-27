@@ -96,14 +96,14 @@ Student Response
 Students may notice:                                           • 1 minute: partner discussion
   • The total in each diagram is 128.                          • Share and record responses.
   • There are 3 parts that have 8. This could be
-    expressed as       .                                     Activity Synthesis
+    expressed as 3 × 8.                                      Activity Synthesis
   • There’s a question mark in the large section in one
                                                                • “These diagrams show us that we can use a letter to
     diagram, but a letter in the other.
                                                                  represent an unknown quantity, the way we have
 Students may wonder:                                             used a question mark, a line, or a box in previous
   • Why does one have a question mark and one has the            lessons. We will explore this idea further during
-    letter ?                                                     today’s lesson.”
+    letter b?                                                    today’s lesson.”
 
   • What problem could each diagram represent?
 
@@ -159,25 +159,25 @@ they reason quantitatively and abstractly (MP2).
           packs of beads. Each pack has 10 beads in it.
           How many beads does Mai have now?                    • Display the 3 diagrams together.
                                                                • “Turn and talk with your group. How are the
-            A
+          A
                                                                  diagrams alike? How are they different?” (They have
                                                                  the same numbers. They have the same structure,
                                                                  with a long rectangle and 2 smaller parts. A different
-            B
-                                                                 number is missing in each diagram. The moves
+          B
+                                                                 number is missing in each diagram. The n moves
                                                                  around.)
 
-            C                                                  • 2–3 minutes: small-group discussion
+          C                                                    • 2–3 minutes: small-group discussion
                                                                • Share responses.
                                                                • “How did you connect the diagrams to the
      Part B                                                      situations?” (The location of the unknown shows
                                                                  what we are missing in the situation. The first
      Match each equation with a situation in Part A.
                                                                  diagram matches the situation in which we don’t
-       1.                                                        know Mai's starting number of beads. The second
-       2.                                                        diagram matches the situation in which we are
+       1. 104 + 2 × 10 = n                                       know Mai's starting number of beads. The second
+       2. 104 + (2 × n) = 124                                    diagram matches the situation in which we are
                                                                  missing the total number of beads. The last diagram
-       3.
+       3. n + 10 + 10 = 124
                                                                  matches the situation in which we don’t know how
                                                                  many beads are in the 2 packs Mai bought.)
 Student Response                                               • 2–3 minutes: small-group discussion
@@ -252,59 +252,59 @@ also practice making sense of a problem and its solution in terms of the context
     Supports accessibility for: Social-Emotional Functioning, Conceptual Processing
 
 
-    Student Task Statement                                  Launch
-    Kiran is setting up a game of mancala                     • Groups of 2
-    (mahn-KAH-lah). He has a jar of                           • “Stones are sometimes used to play games. One of
-    122 stones.                                                 the games that can be played with stones is mancala
-    From the jar, he takes 3 stones to put                      (mahn-KAH-lah). In mancala, stones are moved from
-    in each of the 6 pits on his side of the                    pit to pit, and each player tries to capture the other
-    board.                                                      player's stones. The picture shows a game of
-                                                                mancala in progress.”
+    Student Task Statement                                 Launch
+    Kiran is setting up a game of mancala                    • Groups of 2
+    (mahn-KAH-lah). He has a jar of                          • “Stones are sometimes used to play games. One of
+    122 stones.                                                the games that can be played with stones is mancala
+    From the jar, he takes 3 stones to put                     (mahn-KAH-lah). In mancala, stones are moved from
+    in each of the 6 pits on his side of the                   pit to pit, and each player tries to capture the other
+    board.                                                     player's stones. The picture shows a game of
+                                                               mancala in progress.”
     How many stones are in the jar now?
-                                                              • “Now we're going to solve a problem about the
-     1. Write an equation to represent the                      stones in a game of mancala.”
+                                                             • “Now we're going to solve a problem about the
+     1. Write an equation to represent the                     stones in a game of mancala.”
         situation. Use a letter for the unknown
-                                                              • “What are some ways you will be able to determine if
+                                                             • “What are some ways you will be able to determine if
         quantity.
-                                                                your answer, makes sense?” (I can estimate an
-     2. Solve the problem. Explain or show your                 answer using rounding. I can think about the size of
-        reasoning.                                              the numbers in the problem.)
-     3. Explain how you know your answer makes                • Share and record responses.
+                                                               your answer, makes sense?” (I can estimate an
+     2. Solve the problem. Explain or show your                answer using rounding. I can think about the size of
+        reasoning.                                             the numbers in the problem.)
+     3. Explain how you know your answer makes               • Share and record responses.
         sense.
 
-                                                            Activity
+                                                           Activity
 Student Response
-                                                              • “Take some independent time to work on this
-1. Sample response:                                             problem. You can choose to solve the problem first
-2. 104 stones. Sample response:                                 or write the equation first.”
-                                                              • 5–7 minutes: independent work time
-                                                              • Monitor for different ways students:
+                                                             • “Take some independent time to work on this
+1. Sample response: 122- (6 × 3) = b                           problem. You can choose to solve the problem first
+2. 104 stones. Sample response:                                or write the equation first.”
+                                                             • 5–7 minutes: independent work time
+                                                             • Monitor for different ways students:
 3. Sample responses:                                             ◦ Write an equation.
    When Kiran takes the stones from the jar the amount
                                                                  ◦ Represent the problem, such as by using a tape
    should get smaller, and 86 is less than 104.
                                                                    diagram.
-   The problem is            . If I round both of these          ◦ Decide their answer makes sense, such as by
-   numbers, that’s            , which is 100. My answer            thinking about the situation or by rounding.
+   The problem is 122- 18 . If I round both of these             ◦ Decide their answer makes sense, such as by
+   numbers, that’s 120- 20 , which is 100. My answer               thinking about the situation or by rounding.
    is close to 100, so it makes sense.
 
-                                                            Activity Synthesis
-                                                              • Invite students to share the equations they wrote.
-                                                              • Discuss differences in equations students wrote.
-                                                                Consider asking: “_____ wrote _____, and _____ wrote
-                                                                _____. How are their equations alike and different?” (I
-                                                                used a different letter for my unknown. I wrote
-                                                                instead of      .)
-                                                              • Invite several students to share different strategies
-                                                                used to solve the problem. Feature a student-drawn
-                                                                tape diagram, if possible.
-                                                              • Consider asking:
+                                                           Activity Synthesis
+                                                             • Invite students to share the equations they wrote.
+                                                             • Discuss differences in equations students wrote.
+                                                               Consider asking: “_____ wrote _____, and _____ wrote
+                                                               _____. How are their equations alike and different?” (I
+                                                               used a different letter for my unknown. I wrote 3 × 6
+                                                               instead of 6 × 3.)
+                                                             • Invite several students to share different strategies
+                                                               used to solve the problem. Feature a student-drawn
+                                                               tape diagram, if possible.
+                                                             • Consider asking:
 
 
-                                          Grade 3                                 CC BY NC 2024
+                                          Grade 3                                CC BY NC 2024
                                            Unit 3
-                                                          Lesson 19
-                                                                           Illustrative Mathematics®               5
+                                                         Lesson 19
+                                                                          Illustrative Mathematics®                5
                                                                       ◦ “Did anyone solve the problem in a different
                                                                         way?”
                                                                       ◦ “Did anyone use a tape diagram to solve the
@@ -363,7 +363,7 @@ Addressing     3.OA.D.8
                                                             Lesson 19
                                                                                Illustrative Mathematics®               6
 Student Response
- 1.
+ 1. 196- 48 - 30 = b
  2. 118 beads. Sample response:
 
 

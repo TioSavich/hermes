@@ -95,12 +95,12 @@ When students use their knowledge of the count sequence to add or subtract 1, th
       Student Task Statement                                Launch
       Find the value of each expression.                      • Display one expression.
 
-        •                                                     • “Give me a signal when you have an answer and can
+        • 3 + 0                                               • “Give me a signal when you have an answer and can
                                                                 explain how you got it.”
-        •
+        • 3 + 1
                                                               • 1 minute: quiet think time
-        •
-        •
+        • 3 - 1
+        • 2- 0
                                                             Activity
 
 Student Response                                              • Record answers and strategy.
@@ -111,7 +111,7 @@ Student Response                                              • Record answers
   • 2: 2 comes before 3 when we count.
                                                             Activity Synthesis
   • 2: If you have 2 and take away 0, it is still 2.
-                                                              • Display       and       .
+                                                              • Display 3 + 0 and 2- 0 .
                                                               • “What is the same about these expressions? What is
                                                                 different about them?” (They both have 0 as the
                                                                 second number. One is addition and one is

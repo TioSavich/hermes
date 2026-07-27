@@ -150,7 +150,7 @@ add them together.
                                                                   • Demonstrate how to record using words and an
                                                                     expression. For example, “7 students chose gray and
                                                                     9 students chose orange. We can write that as ‘7 and
-                                                                    9’ or ‘   ’."
+                                                                    9’ or ‘7 + 9’."
 
 
 
@@ -440,7 +440,7 @@ Math Stories         Counting Collections
                                                   about the same mat.
                                                 • As each student shares, record the action with words
                                                   and numbers and an expression. For example: “3 and
-                                                  6” and “    .”
+                                                  6” and “3 + 6.”
                                                 • “What was the same about the stories? What was
                                                   different?”
 

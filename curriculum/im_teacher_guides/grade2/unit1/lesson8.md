@@ -105,7 +105,7 @@ routine from a previous grade, however, they may benefit from a brief review of 
                                                               Activity Synthesis
                                                                 • “How did your method stay the same or change in
                                                                   each image?” (For the first image, I counted on 5, 6, 7.
-                                                                  For the second image, I knew              . For the last
+                                                                  For the second image, I knew 5 + 5 = 10. For the last
                                                                   image, I took 1 away from 10.)
                                                                 • Make connections between the visual
                                                                   representations and the equations that could
@@ -121,9 +121,9 @@ routine from a previous grade, however, they may benefit from a brief review of 
 Student Response
   • 7 dots: I see 5 at the bottom and 2 more at the top.
   • 10 dots: I see the 5 at the top and then there’s 5
-    more at the bottom (              ).
+    more at the bottom (5 + 5 = 10).
   • 9 dots: I saw 9 because there was a 5 and a 4
-    (           ).
+    (5 + 4 = 9).
 
 
 
@@ -193,7 +193,7 @@ categories. This phrasing may be new for students.
                                                                   • “How many more adults like football than basketball?
                                                                     Explain how you know.” (6 more adults like football
        1. How many adults like basketball?                          than basketball. I saw there were 2 for basketball, so
-                                                                    I counted the footballs above 2. I did         ,
+                                                                    I counted the footballs above 2. I did 8 - 2 = 6,
        2. How many like football or baseball? Show your
                                                                     because there were 8 votes for football and 2 for
           thinking using drawings, numbers, or words.
@@ -206,7 +206,7 @@ categories. This phrasing may be new for students.
 Student Response
  1. 2 adults like basketball.
  2. 13 adults like football or baseball. Sample response:
-
+    8 + 5 = 13
 
  3. Sample responses: Only 5 adults like baseball. 3
     adults like soccer. 8 adults like football.
@@ -297,12 +297,12 @@ Student Response
  1. a, b, d, and e
  2.   a. 4 children chose markers
       b. 6 children chose crayons or clay. Sample
-         response:
+         response: 2 + 4 = 6
       c. We don’t know why they like paint so much.
       d. 2 more children chose markers than crayons.
-         Sample response:
+         Sample response: 4- 2 = 2
       e. 10 children chose paint or markers. Sample
-         response:
+         response: 6 + 4 = 10
 
 
 

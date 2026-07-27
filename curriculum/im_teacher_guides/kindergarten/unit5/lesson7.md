@@ -245,7 +245,7 @@ Sample responses:                                             Activity
                                                                   one answer. Let’s see what each answer would look
                                                                   like with numbers.”
                                                                 • Record each student’s solution with an equation that
-                                                                  begins with the total, for example         . Say,
+                                                                  begins with the total, for example 6 = 3 + 3. Say,
                                                                   “There were 6 paletas. 3 of them were coconut
                                                                   paletas and 3 of them were lime paletas. We can
                                                                   write that as 6 is 3 plus 3.”
@@ -312,17 +312,17 @@ drawings.                                                  • “Show your thin
                                                              numbers, or words.”
 Sample responses:
 
-  • 6 on the shelf, 1 in the basket,
+  • 6 on the shelf, 1 in the basket, 6 + 1
                                                          Activity
-  • 5 on the shelf, 2 in the basket,
+  • 5 on the shelf, 2 in the basket, 5 + 2
                                                            • 2 minutes: independent work time
-  • 4 on the shelf, 3 in the basket,
+  • 4 on the shelf, 3 in the basket, 4 + 3
                                                            • 2 minutes: partner discussion
-  • 3 on the shelf, 4 in the basket,
+  • 3 on the shelf, 4 in the basket, 3 + 4
                                                            • “Write an expression to show how many of the
-  • 2 on the shelf, 5 in the basket,
+  • 2 on the shelf, 5 in the basket, 2 + 5
                                                              pomegranates were on the shelf and how many were
-  • 1 on the shelf, 6 in the basket,                         in the basket.”
+  • 1 on the shelf, 6 in the basket, 1 + 6                   in the basket.”
                                                            • 1 minute: independent work time
                                                            • Monitor for a student who creates a drawing that
                                                              clearly shows which pomegranates are on the shelf
@@ -341,15 +341,15 @@ Sample responses:
                                                              with "sh" are the pomegranates on the shelf.)
                                                            • Record each student’s solution with an equation that
                                                              begins with the total. For example:
-                                                               ◦ Write              and say, “There were 7
+                                                               ◦ Write 7 = 3 + 4 and say, “There were 7
                                                                  pomegranates. 3 of them were on the shelf and
                                                                  4 of them were in the basket. We can write that
                                                                  as 7 is 3 plus 4.”
 
 
 
-                                       Kindergarten                            CC BY NC 2024
-                                          Unit 5
+                                      Kindergarten                             CC BY NC 2024
+                                         Unit 5
                                                         Lesson 7
                                                                         Illustrative Mathematics®                6
 Advancing Student Thinking

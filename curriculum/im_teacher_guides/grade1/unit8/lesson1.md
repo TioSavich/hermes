@@ -109,7 +109,7 @@ Student Response                                                • “How can t
                                                                   two numbers?” (When I look at a 10-frame I can tell
 Sample responses:                                                 how many are there without counting. When I see
   • 10: I see 5 on top and 5 on the bottom,                       two numbers in the 10-frame, I can tell what the sum
-    so             .                                              is by looking at how many empty spaces there are
+    so 5 + 5 = 10.                                                is by looking at how many empty spaces there are
   • 9: I see 1 empty space and 1 less than 10 is 9.               and subtracting from 10.)
 
   • 8: You need 2 more to make 10, so it must be 8.

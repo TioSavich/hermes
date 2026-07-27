@@ -130,7 +130,7 @@ Students may notice:
   • The strip looks like a number line that goes from 0 to      Activity Synthesis
     2.
                                                                   • “Priya and Kiran were playing a paper clip tossing
-  •   0,   , 1,   , and 2 are labeled on the strip.
+  •   0, 1/2, 1, 3/2, and 2 are labeled on the strip.
                                                                     game that uses fractions and a number line. The
   • Some labels have a whole number and a fraction on               image shows the result of one game.”
     them.                                                         • “Priya’s paper clips are blue. What could be a rule for
@@ -138,12 +138,12 @@ Students may notice:
                                                                     (The winner is the player with the most paper clips
   • Black paper clips are closer to 1.
                                                                     on numbers greater than 1. The player with the most
-Students may wonder:                                                 paper clips on the 0,        and 2 wins.)
+Students may wonder:                                                 paper clips on the 0, 1/2,1, 3/2, and 2 wins.)
   • Why are the paper clips on a strip with fractions like        • “What if it was a win for Kiran, whose paper clips are
     this?                                                           black?”(The winner is the player with the most paper
   • What do the paper clips represent?                              clips on numbers between 0 and 1. You have to get
-  • Were the paper clips scattered randomly, or placed               the fewest paper clips on the 0,         and 2 to win.)
-    in specific locations?                                        • As needed, point out the 0 and      labels on the
+  • Were the paper clips scattered randomly, or placed               the fewest paper clips on the 0, 1/2,1, 3/2, and 2 to win.)
+    in specific locations?                                        • As needed, point out the 0 and 0/2 labels on the
   • Is this a picture of a game with paper clips?                    number line and clarify that 0 can be represented as
                                                                      a fraction with 0 as the numerator, but that 0 can
                                                                      never be the denominator.
@@ -151,12 +151,12 @@ Students may wonder:                                                 paper clips
 
 
 
-Activity 1                                                                                                       10 min
+Activity 1                                                                                                            10 min
 
 Paper Clip Tossing Game
 
       Standards
-Building On        4.NF.A
+Building On       4.NF.A
 
 
 The purpose of this activity is for students to use their understanding of benchmark fractions and equivalent fractions to
@@ -180,10 +180,10 @@ Materials to Gather
 
 
 
-                                               Grade 4                                CC BY NC 2024
-                                                Unit 2
+                                                Grade 4                                CC BY NC 2024
+                                                 Unit 2
                                                              Lesson 17
-                                                                               Illustrative Mathematics®                  3
+                                                                                Illustrative Mathematics®                      3
  • Tape (painter's or masking): Activity 1
 
 
@@ -191,62 +191,62 @@ Required Preparation
  • Each group of 2 needs 1-inch paper strips and 10–12 paper clips.
 
 
-    Student Task Statement                                      Launch
-     Let’s prepare a gameboard and figure out how to              • Groups of 2
-     toss paper clips and record the results.                     • Give each group strips of paper, markers, paper clips,
-      1. Make your gameboard:                                       and tape.
-                                                                  • “Work with your group to make the game board. Fold
+    Student Task Statement                                     Launch
+     Let’s prepare a gameboard and figure out how to             • Groups of 2
+     toss paper clips and record the results.                    • Give each group strips of paper, markers, paper clips,
+      1. Make your gameboard:                                      and tape.
+                                                                 • “Work with your group to make the game board. Fold
            ◦ Fold your paper strip in half, then in half
-                                                                    your paper strip in half and then in half again.
+                                                                   your paper strip in half and then in half again.
              again.
-                                                                    Carefully tape it down to your workspace (desk or
-           ◦ Tape the paper strip to your workspace                 floor can work) and label the benchmark fractions.”
-              and label the benchmark fractions 0,     , 1,
-                                                                  • 5 minutes: partner work time
-                , and 2.
+                                                                   Carefully tape it down to your workspace (desk or
+           ◦ Tape the paper strip to your workspace                floor can work) and label the benchmark fractions.”
+              and label the benchmark fractions 0, 1/2, 1,
+                                                                 • 5 minutes: partner work time
+              3/2   , and 2.
 
       2. Play the game:
-                                                                Activity
+                                                               Activity
            ◦ Decide on which benchmark fraction you'll
-                                                                  • “Work with your group to play the paper clip tossing
+                                                                 • “Work with your group to play the paper clip tossing
              try to land. This is the target fraction.
-                                                                    game. To play the game, you will decide on a target
-           ◦ Take turns tossing the paper clips.                    fraction, toss some paper clips, and use fractions to
-           ◦ Label the fraction where each paper clip               label where they land. As you are playing, determine
-             lands.                                                 the best spot to stand and how to toss the paper
-                                                                    clips.”
+                                                                   game. To play the game, you will decide on a target
+           ◦ Take turns tossing the paper clips.                   fraction, toss some paper clips, and use fractions to
+           ◦ Label the fraction where each paper clip              label where they land. As you are playing, determine
+             lands.                                                the best spot to stand and how to toss the paper
+                                                                   clips.”
            ◦ If you land on the target fraction, name an
-             equivalent fraction to get a point.                  • Monitor for students who:
+             equivalent fraction to get a point.                 • Monitor for students who:
 
-           ◦ The player with the most points at the end              ◦ Use benchmark fraction strategies and
-             of the game wins.                                         numerical strategies for finding equivalent
-                                                                       fractions to label the fractions.
+           ◦ The player with the most points at the end             ◦ Use benchmark fraction strategies and
+             of the game wins.                                        numerical strategies for finding equivalent
+                                                                      fractions to label the fractions.
      Be prepared to share your strategies for:
-                                                                     ◦ Consider what to do with paper clips that do not
-       • tossing the paper clips                                       land on the strip.
-       • finding out the fraction for each clip’s location        • 5 minutes: partner work time
+                                                                    ◦ Consider what to do with paper clips that do not
+       • tossing the paper clips                                      land on the strip.
+       • finding out the fraction for each clip’s location       • 5 minutes: partner work time
          on the gameboard
        • naming equivalent fractions for the target
-                                                                Activity Synthesis
+                                                               Activity Synthesis
          fractions
-                                                                  • Invite previously selected students to share their
-                                                                    strategies for tossing and labeling the locations of
-                                                                    the paper clips.
-                                                                  • “Where was the best spot to stand? What did you
-                                                                    think about when you tossed?”
-                                                                  • “Take a look at all the fractions you recorded on your
-                                                                    number line. What do you notice?” (They are ordered
-                                                                    from least to greatest. We used lots of sixths and
-                                                                    eighths. There are lots of different denominators.)
-                                                                  • “What did you do if a paper clip landed in a location
-                                                                    where it was difficult to name the fraction?” (I found
+                                                                 • Invite previously selected students to share their
+                                                                   strategies for tossing and labeling the locations of
+                                                                   the paper clips.
+                                                                 • “Where was the best spot to stand? What did you
+                                                                   think about when you tossed?”
+                                                                 • “Take a look at all the fractions you recorded on your
+                                                                   number line. What do you notice?” (They are ordered
+                                                                   from least to greatest. We used lots of sixths and
+                                                                   eighths. There are lots of different denominators.)
+                                                                 • “What did you do if a paper clip landed in a location
+                                                                   where it was difficult to name the fraction?” (I found
 
 
 
-                                             Grade 4                                  CC BY NC 2024
+                                             Grade 4                                 CC BY NC 2024
                                               Unit 2
-                                                              Lesson 17
-                                                                               Illustrative Mathematics®               4
+                                                             Lesson 17
+                                                                              Illustrative Mathematics®               4
                                                                    the closest fraction that was easy to find and used
                                                                    that to help. I used equivalent fractions.)
 
@@ -290,7 +290,7 @@ Each group of 2 needs 1-inch paper strips and 10–12 paper clips.
              ◦ finding equivalent fractions
                                                                  (The game had a clear way to win. I would change it
              ◦ using common denominators                         so there were clear rules about where you are
-             ◦ using benchmark fractions like      or            supposed to stand when you toss the paper clips.)
+             ◦ using benchmark fractions like 1/2or 2/2          supposed to stand when you toss the paper clips.)
                                                                • 1 minute: quiet think time
        2. Play your game, paying close attention to the
           rules.                                               • Share responses.
@@ -308,13 +308,13 @@ Each group of 2 needs 1-inch paper strips and 10–12 paper clips.
 Student Response                                                    think about when you’re making up the rules for the
                                                                     game?” (How someone wins the game. How you get
  1. Sample response: The goal of the game is to land on             points in the game. Rules for the game.)
-    the least fraction that’s greater than   . To play the
+    the least fraction that’s greater than 1/2. To play the
                                                                   • Share and record responses for all to see.
     game, you have to stand 3 feet from the game board
     and take turns tossing the paper clips. The player
-    who lands on the least fraction that’s greater than         Activity
+    who lands on the least fraction that’s greater than 1/2     Activity
     has to use a common denominator to explain how                • 10 minutes: partner work time
-    they know their fraction is greater than    to win the
+    they know their fraction is greater than 1/2 to win the
                                                                   • Monitor for groups that:
     game.
                                                                       ◦ Use one of the listed constraints.
@@ -362,8 +362,8 @@ consider how they would revise their directions.
        3. After playing the game, give feedback to each
 
 
-                                             Grade 4                                   CC BY NC 2024
-                                              Unit 2
+                                            Grade 4                                    CC BY NC 2024
+                                             Unit 2
                                                               Lesson 17
                                                                                 Illustrative Mathematics®                 6
           other about the rules.                                   better. That’s what we’re going to do.”

@@ -38,7 +38,7 @@ Students see the two types of division situations side-by-side in this lesson. T
 number in each group or the size of each group and can match division situations to drawings. Students learn that the
 same drawing can match either type of division situation. This is because the drawings represent the end result after
 division has occurred. From the drawing, we cannot tell whether the number of groups or the number of objects in each
-group was known. The division symbol, , is introduced in the Lesson Synthesis.
+group was known. The division symbol, ÷ , is introduced in the Lesson Synthesis.
 
 
       Access for Students with Disabilities                          Access for English Learners
@@ -85,12 +85,12 @@ the sum does not change, they look for and make use of structure (MP7).
      Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 120 + 120                                             • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 121 + 119
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 125 + 115
+        • 129 + 111
                                                              Activity
 
 Student Response                                                • Record answers and strategy.
@@ -99,13 +99,13 @@ Student Response                                                • Record answe
                                                                 • Repeat with each expression.
   • 240: I noticed that 121 is 1 more than 120 and 119 is
     one less than 120, so the value is the same as for
-               .                                             Activity Synthesis
+    120 + 120.                                               Activity Synthesis
   • 240: I took 5 from 125 and added it to 115. Then it’s
                                                                 • “What pattern do you see as you look at the
-                again.
+    120 + 120 again.
                                                                   expressions and their values? Why is that
   • 240: I took 9 from 129 and added it to 111. Then it’s         happening?” (The values are all the same. This
-                again.                                            happens because you add an amount to one
+    120 + 120 again.                                              happens because you add an amount to one
                                                                   addend, but subtract the same amount from the
                                                                   other addend. Addition and subtraction are
                                                                   opposites, so the value will stay the same.)
@@ -360,12 +360,12 @@ We know there are 2 bags, but we don’t know how many colored pencils will be i
 
 “Now that we are dividing, we need a new symbol to write division expressions.”
 
-Display:
+Display: 8 ÷ 4
 
 “The symbol in the middle of this expression is the division symbol. This expression can be read as ‘8 divided into groups
 of 4.’” Record the meaning below the expression. Discuss how both relate to Mia’s situation.
 
-Display:
+Display: 8 ÷ 2
 
 “This expression can be read as ‘8 divided into 2 equal groups.’” Record the meaning below the expression. Discuss how
 both relate to Lin’s situation.
@@ -384,7 +384,7 @@ Cool-down                                                                       
 Party Favors
 
      Standards
-Addressing     3.OA.A.2
+Addressing       3.OA.A.2
 
 
      Student Task Statement

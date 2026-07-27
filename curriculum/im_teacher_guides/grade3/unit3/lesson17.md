@@ -82,21 +82,21 @@ students determine a reasonable estimate.
      Student Task Statement                                     Launch
       Decide if each statement is true or false. Be               • Display one statement.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+        • 132 + 115 > 200                                           statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 228 + 195 > 400                                         • 1 minute: quiet think time
 
-        •
+        • 217 + 151 > 400
                                                                 Activity
 Student Response                                                  • Share and record answers and strategies.
 
-  • True:            is 200, but we still have to add 32          • Repeat with each statement.
+  • True: 100 + 100 is 200, but we still have to add 32           • Repeat with each statement.
     and 15, so it would be more than 200.
-  • True:           is 300. When we add 28 and 95, it’s         Activity Synthesis
+  • True: 200 + 100 is 300. When we add 28 and 95, it’s         Activity Synthesis
     going to be more than 100, so it would be more than
     400.                                                          • “How can you explain your answer without finding
                                                                     the value of each side?”
-  • False:           is 300. When we add 51 and 17, it’s
+  • False: 200 + 100 is 300. When we add 51 and 17, it’s
     only about 70, so it wouldn’t go over 400.                    • Consider asking:
                                                                       ◦ “Who can restate ___ 's reasoning in a different
                                                                         way?”
@@ -292,13 +292,13 @@ Student Response                                                   them to refer
         tens, and ones to ones to get 756. Then I
                                                              Activity Synthesis
         counted on another 48 beads for the beads he           • “What was helpful about having someone look at
-        used Wednesday.             is 796. Then I added         your work for each problem?” (They thought my
+        used Wednesday. 756 + 40 is 796. Then I added            your work for each problem?” (They thought my
         8 more to get 804.                                       answer made sense, which helped me know that I
  2. Sample responses: Your answer makes sense                    had answered correctly. They caught a mistake that I
-    because            would be about 300, and                   made that I didn’t notice.)
+    because 326- 32 would be about 300, and                      made that I didn’t notice.)
     subtracting about 80 gives about 220 and your              • “What was helpful about looking at someone else’s
     answer was 210. Your answer does not make sense              work for each problem?” (I was able to see a different
-    because             is 700, and the other numbers            strategy that they used for the problem. I was able to
+    because 600 + 100 is 700, and the other numbers              strategy that they used for the problem. I was able to
     add up to close to another 100, which makes about            help them catch a mistake they made.)
     800. Your answer was a lot less than 800, so I think
     there was a mistake somewhere.

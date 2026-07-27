@@ -81,12 +81,12 @@ reasoning (MP7, MP8).
      Student Task Statement                                  Launch
       Find the value of each expression mentally.              • Display one expression.
 
-        •                                                      • “Give me a signal when you have an answer and can
+        • 9 + 6                                                • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-        •
+        • 29 + 6
                                                                • 1 minute: quiet think time
-        •
-        •
+        • 39 + 7
+        • 39 + 9
                                                              Activity
 
 Student Response                                               • Record answers and strategies.
@@ -95,7 +95,7 @@ Student Response                                               • Record answer
                                                                • Repeat with each expression.
   • 35: I used the same method as before. 29 and 1 is 30,
     and then 5 more is 35.
-  • 46: 39 and 1 is 40.             .                        Activity Synthesis
+  • 46: 39 and 1 is 40. 40 + 6 = 46.                         Activity Synthesis
   • 48: It's just 2 more than the last one.                    • “Did anyone use the same method but would explain
                                                                  it differently?”
                                                                • “Did anyone approach the problem in a different

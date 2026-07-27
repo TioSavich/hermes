@@ -142,7 +142,7 @@ The purpose of this activity is for students to use fingers to represent numbers
 numbers 5–10 to recall the structure of 5 ones and some more ones for these numbers. Students then work with a
 partner to represent numbers 11–19, which highlights that these numbers are 10 ones and some more ones. The
 purpose of the Activity Synthesis is to describe numbers 11–19 as “10 and _____.” In future lessons, numbers 11–19 will
-also be represented as expressions:           and equations:              .
+also be represented as expressions: 10 + 4 and equations: 10 + 4 = 14.
 
 
 Student Response                                              Launch

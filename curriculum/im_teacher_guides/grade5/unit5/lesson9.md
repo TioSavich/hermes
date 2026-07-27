@@ -78,11 +78,11 @@ and justify their decisions, they share a mathematical claim and the thinking be
      Student Task Statement                                   Launch
       Decide if each statement is true or false. Be             • Display one statement.
       prepared to explain your reasoning.                       • “Give me a signal when you know whether the
-        •                                                         statement is true and can explain how you know.”
+        • 0.909 > 0.91                                            statement is true and can explain how you know.”
 
-        •                                                       • 1 minute: quiet think time
+        • 4.1 < 4.100                                           • 1 minute: quiet think time
 
-        •
+        • 0.99 < 0.999
                                                               Activity
 Student Response                                                • Share and record answers and strategy.
 
@@ -90,7 +90,7 @@ Student Response                                                • Share and re
     tenths place.
   • False: 4.1 is equal to 4.100.                             Activity Synthesis
   • True: 0.99 is equal to 0.990 which is less than 0.999.
-                                                                • “Is the statement              true or false? How do
+                                                                • “Is the statement 0.909 > 0.91 true or false? How do
                                                                   you know?” (False, because 0.909 has 9 tenths and 9
                                                                   thousandths and 0.91 is 9 tenths and 1 hundredth. 1
                                                                   hundredth is greater than 9 thousandths.)
@@ -138,23 +138,23 @@ for example (MP1).
       1. Fill in the blank to make each statement true.         • Groups of 2
          Use the number lines if they are helpful.
 
-          a.                                                  Activity
+          a. 786.2 < ___ < 786.3                              Activity
                                                                 • 10 minutes: independent work
 
-          b.                                                    • 5 minutes: partner discussion
+          b. 9.99 < ___ < 10                                    • 5 minutes: partner discussion
                                                                 • Monitor for students who:
                                                                    ◦ Use a number line.
-          c.
+          c. 0.46 > ___ > 0.45
                                                                    ◦ Count up by hundredths or thousandths
                                                                      between the intervals to find a number in the
                                                                      middle.
-          d.
+          d. 0.5 < ___ < 0.51
                                                                    ◦ Use place value understanding to introduce new
                                                                      places in the decimals when needed.
 
-          e.
+          e. 0.99 < ___ < 0.999
                                                               Activity Synthesis
-                                                                • Display the inequality:
+                                                                • Display the inequality: 0.99 < ___ < 0.999
       2. Kiran says that there is no number between
          1.731 and 1.732. Do you agree? Use the                 • “What are some possible numbers that will make this
          number line if it is helpful.                            true?” (0.995, 0.991, 0.997)
@@ -164,14 +164,14 @@ for example (MP1).
 Student Response                                                • “Why does this make sense?” (They need 9 tenths
                                                                   and 9 hundredths to be as big as 0.99 and some
 1. Sample responses:                                              thousandths to be bigger. There can be at most
-    a.                                                            8 thousandths so the number will be less than 0.999.)
-    b.                                                          • Display the number line from the Student Responses
+    a. 786.2 < 786.21 < 786.3                                     8 thousandths so the number will be less than 0.999.)
+    b. 9.99 < 9.991 < 10                                        • Display the number line from the Student Responses
                                                                   or use a student generated image.
-    c.
+    c. 0.46 > 0.455 > 0.45
                                                                 • “Do you think there are numbers between 1.731 and
-    d.
+    d. 0.5 < 0.509 < 0.51
                                                                   1.732?” (Yes, it looks like there are lots of them but
-    e.                                                            we don’t know what any of those numbers are.)
+    e. 0.99 < 0.994 < 0.999                                       we don’t know what any of those numbers are.)
 2. Sample response: It looks like there are lots of points
    on the number line between 1.731 and 1.732. But
    there are no decimal numbers to the

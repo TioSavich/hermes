@@ -86,12 +86,12 @@ and subtracted in parts.
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-         •                                                        • “Give me a signal when you have an answer and can
+        • 20- 10                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-         •
+        • 20- 10- 1
                                                                   • 1 minute: quiet think time
-         •
-         •
+        • 18 - 10- 4
+        • 18 - 14
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
@@ -101,13 +101,13 @@ Student Response                                                  • Record ans
 
   • 9: I know 20 minus 10 is 10, and take away 1 more is
     9.                                                          Activity Synthesis
-  • 4:              and            .
-                                                                  • Display             .
+  • 4: 18 - 10 = 8 and 8 - 4 = 4.
+                                                                  • Display 20- 10- 1 .
   • 4: It is the same as the one before, but the 14 is
                                                                   • “How much did we subtract from 20 in this
     together instead of 10 and 4.
                                                                     expression? What other expression can we write to
-                                                                    show this?” (      )
+                                                                    show this?” (20- 11 )
 
 
 
@@ -263,7 +263,7 @@ Required Preparation
 
 
                                                               Activity Synthesis
-                                                                • Display       and         .
+                                                                • Display 9 + 6 and 19- 6 .
                                                                 • “Which card has the greater value? How do you
                                                                   know?”
 

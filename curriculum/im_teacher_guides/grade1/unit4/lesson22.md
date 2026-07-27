@@ -81,11 +81,11 @@ different ways using tens and ones.
      Student Task Statement                                    Launch
       Decide if each statement is true or false.                 • Display 1 statement.
       Be prepared to explain your reasoning.                     • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 92 = 90 + 2                                              statement is true and can explain how you know.”
                                                                  • 1 minute: quiet think time
-        •
+        • 90 + 2 > 80 + 12
 
-        •
+        • 20 + 13 < 30 + 13
                                                                Activity
 
 Student Response                                                 • Share and record answers and strategies.
@@ -95,8 +95,8 @@ Student Response                                                 • Share and r
   • False: 92 has 9 tens 2 ones and 80 + 12 also has 9         Activity Synthesis
     tens 2 ones. They are equal.
                                                                  • “How can you determine whether each is true or
-  • True: The left side is       and the right side is             false without finding the value of each side?”
-           .                 .
+  • True: The left side is 30 + 3 and the right side is            false without finding the value of each side?”
+    40 + 3. 30 + 3 < 40 + 3.
                                                                  • If needed, ask “How can you use what you know
                                                                    about tens and ones to help you know if it is true or
                                                                    false?” (I can compare the number of tens first, then
@@ -121,8 +121,8 @@ each clue they get to help them identify the mystery number. The player with the
 
 
 
-                                           Grade 1                                   CC BY NC 2024
-                                            Unit 4
+                                            Grade 1                                  CC BY NC 2024
+                                             Unit 4
                                                              Lesson 22
                                                                               Illustrative Mathematics®                2
 Required Materials

@@ -214,7 +214,7 @@ Required Preparation
                                                                    count, and represent your collection. You may decide
                                                                    to count the collection in different ways.”
 Student Response
-Sample responses: 107,          , 10 tens + 7 ones, 10 tens
+Sample responses: 107, 100 + 7, 10 tens + 7 ones, 10 tens
 7 ones, base-ten drawing of 10 tens and 7 ones.
                                                                Activity
                                                                  • 10 minutes: partner work time
@@ -223,7 +223,7 @@ Sample responses: 107,          , 10 tens + 7 ones, 10 tens
 
                                              Grade 1                                  CC BY NC 2024
                                               Unit 8
-                                                              Lesson 7
+                                                             Lesson 7
                                                                                Illustrative Mathematics®               4
                                                                 • Monitor for students who represent their collection
                                                                   in different ways, including:
@@ -306,7 +306,7 @@ Student Response                                                   different way
 108. Sample responses:
                                                                    figure out how many there were?” (They circled 5
   • There are 10 in each row and 8 in the bottom row.              rows for 50 and another 5 rows, and knew that
-    That’s 10 tens and 8 ones.                                                   . Then there are 8 more, which is 108.)
+    That’s 10 tens and 8 ones.                                     50 + 50 = 100. Then there are 8 more, which is 108.)
   • 10, 20, 30, 40, 50, 60, 70. 80. 90, 100, 101, 102, 103,
     104, 105, 106, 107, 108.
 

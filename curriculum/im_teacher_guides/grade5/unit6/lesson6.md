@@ -65,7 +65,7 @@ Lesson Timeline                                                Teacher Reflectio
                                              Unit 6
                                                              Lesson 6
                                                                                Illustrative Mathematics®               1
-Warm-up                                                                                                              10 min
+Warm-up                                                                                                                10 min
 
 Number Talk: Divide by Powers of 10
 
@@ -81,32 +81,32 @@ students look for and make use of place-value structure (MP7).
      Student Task Statement                                       Launch
       Find the value of each expression mentally.                   • Display the first problem.
 
-        •                                                           • “Give me a signal when you have an answer and can
+        • 1,400 ÷ 10                                                • “Give me a signal when you have an answer and can
                                                                       explain how you got it.”
-        •
+        • 1,400 ÷ 100
                                                                     • 1 minute: quiet think time
-        •
-        •
+        • 1,400 ÷ 1,000
+        • 1,401 ÷ 1,000
                                                                   Activity
 
 Student Response                                                    • Record students’ answers and strategies.
                                                                     • Keep the problems and the work displayed.
-  • 140: The value of each digit in 140 is      the value of
+  • 140: The value of each digit in 140 is 1/10 the value of
                                                                     • Repeat with each problem.
      the corresponding digit in 1,400.
   • 14: I divided 140 by 10 since dividing 1,400 by 100 is
     the same as dividing by 10 and dividing by 10 again.          Activity Synthesis
   • 1.4.: I divided the last product by 10.                         • Display: 1,401 and 1.401
-  • 1.401: The value of each digit is         the value of the      • “How are these numbers the same?” (They both have
+  • 1.401: The value of each digit is 1/1,000 the value of the      • “How are these numbers the same?” (They both have
      corresponding digit in 1,401.                                    a 1, then a 4, then a 0, then a 1.)
                                                                     • “How are they different?” (The place values of the
                                                                       digits are different. The value of each digit in 1.401 is
-                                                                            the value of the same digit in 1,401.)
+                                                                      1/1,000 the value of the same digit in 1,401.)
 
 
 
 
-Activity 1                                                                                                           20 min
+Activity 1                                                                                                             20 min
 
 Liquid-Volume Conversions
 
@@ -120,10 +120,10 @@ fractions, and numbers in exponential form.
 
 
 
-                                               Grade 5                                   CC BY NC 2024
-                                                Unit 6
+                                              Grade 5                                    CC BY NC 2024
+                                               Unit 6
                                                                  Lesson 6
-                                                                                  Illustrative Mathematics®                   2
+                                                                                  Illustrative Mathematics®                     2
 Access for Students with Disabilities
 Engagement: Internalize Self-Regulation. Synthesis: Provide students an opportunity to self-assess and reflect on
 their own progress. For example, provide students with a partially completed chart so they can compare their
@@ -146,13 +146,13 @@ Student Task Statement                                  Launch
 
                                                                                   1       1,000
  1. Complete
-    the table.               L             mL                                    10
+    the table.                L            mL                                    10
 
-                             5                                                   0.1
+                              5                                                  0.1
 
                              6.3                                                         100,000
 
-                            0.95                                                            10
+                             0.95                                                           10
 
 
                                                           • “What numbers go in the empty boxes in the table?”
@@ -169,9 +169,9 @@ Student Task Statement                                  Launch
                                                                                  10       10,000
      b. 2,500 mL and 2.5 L
                                                                                  0.1       100
-     c. 200 mL and     L
+     c. 200 mL and 1/4 L
                                                                                  100     100,000
-     d. 1 mL and        L
+     d. 1 mL and 1/1,000 L
                                                                                  0.01       10
      e. 15,600 mL and 15.5 L
 
@@ -184,31 +184,31 @@ Student Task Statement                                  Launch
                                                                         Illustrative Mathematics®               3
 Student Response                                               Activity
                                                                   • 3–5 minutes: independent work time
-                      L                        mL
+                         L                   mL
  1.                                                               • 1–2 minutes: partner discussion
-                      5                       5,000               • Monitor for students who compare the quantities by
+                         5                  5,000                 • Monitor for students who compare the quantities by
                                                                     converting:
-                     6.3                      6,300
+                        6.3                 6,300
                                                                       ◦ Milliliters to liters.
-                    0.95                       950
+                       0.95                  950
                                                                       ◦ Liters to milliliters.
-                                            or equivalent
+                                           or equivalent
                                                                Activity Synthesis
-                     800                     800,000
+                        800                800,000
                                                                   • Invite selected students to share how they compared
-                  or equivalent                                     the measurements.
+                     or equivalent                                  the measurements.
 
-                    0.065                       65                • Display: 15,600 mL and 15.5L
+                       0.065                  65                  • Display: 15,600 mL and 15.5L
                                                                   • “How many liters are 15,600 milliliters? How do you
  2.   a. 0.15 L is greater than mL. Sample response: 0.15           know?” (15.6 liters, because I divide by 1,000)
          L is 150 mL.
                                                                   • “How many milliliters are 15.5 liters? How do you
       b. 2,500 mL is equal to 2.5 L.                                know?” (15,500 milliliters, because there are 1,000
-      c.     L is greater than 200 mL. Sample response:             milliliters in each liter so that’s 15,000 and half of 1
+      c.   1/4   L is greater than 200 mL. Sample response:         milliliters in each liter so that’s 15,000 and half of 1
                                                                     thousand, which is 500.)
-           Since 1 L is 1,000 mL,       L is 250 mL.
+           Since 1 L is 1,000 mL, 1/4 L is 250 mL.
                                                                   • “Which is greater? 15,600 milliliters or 15.5 liters?
-      d. 1 mL is equal to           L                               How do you know?” (15,600 milliliters, because I can
+      d. 1 mL is equal to 1/1,000 L                                 How do you know?” (15,600 milliliters, because I can
       e. 15,600 mL is greater than 15.5 L. Sample                   compare them, using either liters or milliliters.)
          response: 15,600 mL is the same as 15.6 L.               • “When you solved this problem, did you convert from
                                                                     milliliters to liters or from liters to milliliters? Why?” (I
@@ -232,17 +232,17 @@ Activity 2                                                                      
 Hydrating Dancers
 
       Standards
-Building On       5.MD.A.1, 5.NBT.A.2
+Building On          5.MD.A.1, 5.NBT.A.2
 
 
 The purpose of this activity is for students to solve multi-step problems involving metric units of liquid volume (MP2).
 
 
-                                                  Grade 5                              CC BY NC 2024
-                                                   Unit 6
-                                                             Lesson 6
+                                                Grade 5                                CC BY NC 2024
+                                                 Unit 6
+                                                              Lesson 6
                                                                                 Illustrative Mathematics®                   4
-The given quantities involve fractions. One of the quantities involves the fraction   , which students may convert to a
+The given quantities involve fractions. One of the quantities involves the fraction 1/2, which students may convert to a
 decimal, or they may perform the needed arithmetic with fractions. Students also have a choice of converting to
 milliliters or liters, and there are different points in the calculations when they may choose to make the conversion.
 
@@ -275,7 +275,7 @@ The purpose of the Lesson Synthesis is to compare some of these different approa
                                                                      water. We are going to solve some problems about
                                                                      the water in the cooler.”
       There are 25 dancers in the performance group.
-      During practice, each dancer drinks      bottles of
+      During practice, each dancer drinks 1 1/2 bottles of
                                                                 Activity
       water.
                                                                    • 5–8 minutes partner work time
@@ -306,7 +306,7 @@ Student Response                                                 • “How did 
                                                                    the dancers drink?” (I multiplied 750 by 25.)
  1. 18.75 L. Sample response: Each dancer drinks 750
                                                                  • “How did you find how many coolers the dancers
-    mL of water. The 25 dancers will drink         mL
+    mL of water. The 25 dancers will drink 25 × 750 mL
                                                                    need?” (I multiplied the number of liters in the cooler
     or 18,750 mL. There are 1,000 mL in one L so that is
                                                                    by 1,000.)
@@ -316,14 +316,14 @@ Student Response                                                 • “How did 
                                                                    the dancers drank, to share their reasoning.
     response: One cooler of water is not enough. Two
     coolers are enough, and if they are full, that leaves        • “How are the methods different?” (One method
-                or 11.25 liters of water.                          calculates in milliliters and the other method
+    30- 18.75 or 11.25 liters of water.                            calculates in milliliters and the other method
                                                                    calculates in liters. The numbers with milliliters are
  3. 1.125 L. Sample response. Each dancer needs 45 mL
                                                                    much bigger. The numbers with liters are smaller.
-    of drink mix to dissolve into 750 mL,    L, or
+    of drink mix to dissolve into 750 mL, 3/4 L, or 1 1/2
                                                                    They are decimals or fractions.)
     bottles of water. There are 25 dancers so that’s
-             or 1,125 mL.
+    25 × 45 or 1,125 mL.
 
 
 
@@ -362,25 +362,25 @@ Addressing     5.MD.A.1
 
 
 
-                                            Grade 5                                   CC BY NC 2024
-                                             Unit 6
+                                               Grade 5                                CC BY NC 2024
+                                                Unit 6
                                                              Lesson 6
                                                                                Illustrative Mathematics®               6
 Student Response
-45 liters. Sample response: First I found how many mL are in 60 bottles. That’s        or 45,000 mL. That’s the same
+45 liters. Sample response: First I found how many mL are in 60 bottles. That’s 60 × 750 or 45,000 mL. That’s the same
 as 45 liters.
 
 
 Responding to Student Thinking
-This lesson builds on liquid-capacity concepts addressed       Prior-Unit Support
-in an earlier unit.                                            Grade 4, Unit 5, Section B Measurement Conversion
+This lesson builds on liquid-capacity concepts addressed      Prior-Unit Support
+in an earlier unit.                                           Grade 4, Unit 5, Section B Measurement Conversion
 
 
 
 
-                                            Grade 5                                  CC BY NC 2024
-                                             Unit 6
+                                           Grade 5                                  CC BY NC 2024
+                                            Unit 6
                                                             Lesson 6
-                                                                              Illustrative Mathematics®            7
+                                                                             Illustrative Mathematics®             7
 ```
 

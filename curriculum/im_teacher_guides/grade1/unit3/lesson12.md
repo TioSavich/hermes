@@ -38,7 +38,7 @@ The purpose of this lesson is for students to add and subtract within 20 without
 
 
 Narrative
-In previous lessons, students learned the 1      structure of teen numbers and considered the relationship between
+In previous lessons, students learned the 10 + n structure of teen numbers and considered the relationship between
 addition and subtraction. The purpose of this lesson is for students to use their understanding of the structure of teen
 numbers to add and subtract from a teen number, without composing or decomposing a ten (MP7). Students solve
 problems in ways that make sense to them including approaches from a previous section, such as counting on, taking
@@ -129,7 +129,7 @@ Monitor for and select students with the following approaches to share in the sy
 
   • Cross off or remove 8 objects from the incomplete 10-frame (last 2 rows of bin) and count the remaining objects.
   • Cross off or remove 8 objects from the incomplete 10-frame and recognize the remaining objects as 10 and 1.
-  • Know the ten stays the same, and subtract         .
+  • Know the ten stays the same, and subtract 9- 8 .
 The approaches are sequenced from more concrete to more abstract to help students understand different approaches
 to finding the solution that do not require decomposing a ten. This sequence also helps students begin to notice ways to
 think about subtracting ones from ones. Aim to elicit both key mathematical ideas and a variety of student voices,
@@ -240,20 +240,20 @@ Materials to Gather
 
       Be ready to explain your thinking.                         • Give students access to double 10-frames and
                                                                    connecting cubes or two-colors counters.
-        1.
+        1. 13 + 4 =
                                                                Activity
         2.
                                                                  • Read the Task Statement.
                                                                  • “You will work on your own at first, then you will
-        3.                                                         share with a partner.”
+        3. 19- 8 =                                                 share with a partner.”
                                                                  • 5 minutes: independent work time
-        4.
+        4. 14- 2 =
                                                                  • 3 minutes: partner discussion
                                                                  • Monitor for students who find the value that makes
         5.
-                                                                    the equation               true by taking away 8 or
+                                                                    the equation 19- 8 =       true by taking away 8 or
                                                                     counting on from 8 to 19 using double 10-frames and
-        6.                                                          counters or drawings. These methods will be
+        6. + 1 = 18                                                 counters or drawings. These methods will be
                                                                     discussed in the Lesson Synthesis.
 
 
@@ -345,7 +345,7 @@ Required Preparation
 Lesson Synthesis
 “Today we added and subtracted with teen numbers.”
 
-Display              .
+Display 19- 8 =      .
 
 Invite previously identified students to share.
 
@@ -368,7 +368,7 @@ Look Fors
   • Count on to find the value of the sum or difference.
   • Identify teen numbers as a ten and some ones.
   • Take away to find the value of the difference.
-  • Use the          structure of teen numbers to add and subtract.
+  • Use the 10 + n structure of teen numbers to add and subtract.
 
 
 

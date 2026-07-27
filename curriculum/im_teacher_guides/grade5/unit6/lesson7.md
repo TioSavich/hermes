@@ -88,12 +88,12 @@ distributive property. This work prepares students for converting measurements i
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display the first expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 45 × 2                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 45 × 10
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 45 × 12
+        • 46 × 12
                                                                Activity
 
 Student Response                                                 • Record students’ answers and strategies.
@@ -103,8 +103,8 @@ Student Response                                                 • Record stud
   • 450: Every digit shifts one place to the left because I
     multiplied by 10.
   • 540: I added the previous two products.                    Activity Synthesis
-  • 552: I just added another 12.                                • “How are the values of the products          and
-                                                                          related?” (There is one more 12 in           .)
+  • 552: I just added another 12.                                • “How are the values of the products 45 × 12 and
+                                                                   46 × 12 related?” (There is one more 12 in 46 × 12.)
 
 
 
@@ -193,9 +193,9 @@ Student Response                                                  • 2 minutes:
       Sample response: I know C matches F because there
       are 12 inches in 1 foot and half of 12 is 6. I know they      • Monitor for students who:
       both match D because there are 3 feet in a yard, so 1            ◦ Use the yardstick to check or explain their
-      foot is      yard.         .                                       reasoning.
+      foot is 1/3 yard. 1/2 × 1/3 = 1/6.                                 reasoning.
  3.    ◦ inches: C, B, I, A                                            ◦ Use equivalent lengths they know (1 yard is the
-       ◦ feet: F, G, K, E                                                same length as 3 feet, so 50 yards is       feet).
+       ◦ feet: F, G, K, E                                                same length as 3 feet, so 50 yards is 50 × 3 feet).
 
        ◦ yards: D, L, J, H                                             ◦ Group measurements that use the same unit
                                                                          before ordering them from shortest to longest.
@@ -226,7 +226,7 @@ Activity 2                                                                      
 Run a Mile or Two
 
        Standards
-Addressing          5.MD.A.1
+Addressing         5.MD.A.1
 
 
 The goal of this activity is to solve multi-step conversion problems, using customary length units. The given information
@@ -253,65 +253,65 @@ Required Preparation
     You will share this location in the Launch to help students understand the length of 1 mile.
 
 
-      Student Task Statement                                         Launch
-       1. A rectangular field is                                       • Groups of 2
-          90 yards long and                                            • “About how far is a mile?”
-                    yards wide. Priya
-                                                                       • 1–2 minutes: quiet think time
+      Student Task Statement                                        Launch
+       1. A rectangular field is                                      • Groups of 2
+          90 yards long and                                           • “About how far is a mile?”
+           421/4 yards wide. Priya
+                                                                      • 1–2 minutes: quiet think time
            says that 6 laps
-           around the field is a                                       • Record responses for all to see.
-           greater distance than                                       • Describe to students a location that is about a mile
-           a mile. Do you agree?                                         away from the school.
+           around the field is a                                      • Record responses for all to see.
+           greater distance than                                      • Describe to students a location that is about a mile
+           a mile. Do you agree?                                        away from the school.
            Explain or show your
-                                                                       • “About how many feet are in a mile?”
+                                                                      • “About how many feet are in a mile?”
            reasoning.
-                                                                       • “What is an estimate that is too low? Too high? About
-       2. A different rectangular field is            feet long
-                                                                         right?”
-           and           feet wide. How many laps around
-                                                                       • Record students’ responses in the table:
+                                                                      • “What is an estimate that is too low? Too high? About
+       2. A different rectangular field is 4081/2 feet long
+                                                                        right?”
+           and 2401/4 feet wide. How many laps around
+                                                                      • Record students’ responses in the table:
            this field does Priya run if she runs at least 2
            miles?
-                                                                                    too low    about right    too high
+                                                                                   too low    about right    too high
 
 Student Response
- 1. No. Sample response: The perimeter of the field is                 • Display: There are 5,280 feet in one mile.
-                    yards. That's       yards. If Priya runs 6
-                                                                       • Leave the display up throughout the lesson.
-     laps, that's             yards. That's
-                                                                       • “We are going to solve some problems about miles.”
+ 1. No. Sample response: The perimeter of the field is                • Display: There are 5,280 feet in one mile.
+     180 + 841/2 yards. That's 2641/2 yards. If Priya runs 6
+                                                                      • Leave the display up throughout the lesson.
+     laps, that's 6 × 2641/2 yards. That's 1,200 + 360 + 27
+                                                                      • “We are going to solve some problems about miles.”
      or 1,587 yards. There are 3 feet in a yard so that's
      4,761 feet. That's less than a mile.
- 2. 9 laps. Sample response: The perimeter of this field is          Activity
-     twice the length, 817 feet, and twice the width,
-                                                                       • 7–10 minutes: partner work time
-     feet. That’s           feet. Four laps is a little less than
-                                                                       • Monitor for students who:
-                feet or 5,200 feet. So 8 full laps is a little
-     less than 2 miles, and 9 laps is more than 2 miles.                   ◦ Find the number of yards in a mile.
-                                                                           ◦ Convert yards to feet for the first problem.
+ 2. 9 laps. Sample response: The perimeter of this field is         Activity
+     twice the length, 817 feet, and twice the width, 4801/2
+                                                                      • 7–10 minutes: partner work time
+     feet. That’s 1,2971/2 feet. Four laps is a little less than
+                                                                      • Monitor for students who:
+     4 × 1,300 feet or 5,200 feet. So 8 full laps is a little
+     less than 2 miles, and 9 laps is more than 2 miles.                  ◦ Find the number of yards in a mile.
+                                                                          ◦ Convert yards to feet for the first problem.
 
 
-                                                                     Activity Synthesis
-                                                                       • Invite students to share their solutions to the first
-                                                                         problem.
-                                                                       • “How did you find how far 1 lap around the field is?”
-                                                                         (I multiplied the length and the width by 2 and added
-                                                                         them.)
+                                                                    Activity Synthesis
+                                                                      • Invite students to share their solutions to the first
+                                                                        problem.
+                                                                      • “How did you find how far 1 lap around the field is?”
+                                                                        (I multiplied the length and the width by 2 and added
+                                                                        them.)
 
 
 
-                                                  Grade 5                                  CC BY NC 2024
-                                                   Unit 6
-                                                                    Lesson 7
-                                                                                    Illustrative Mathematics®                5
-                                                                  • “How far is one lap?” (      yards)
+                                                 Grade 5                                  CC BY NC 2024
+                                                  Unit 6
+                                                                   Lesson 7
+                                                                                   Illustrative Mathematics®                5
+                                                                  • “How far is one lap?” (2641/2 yards)
 
                                                                   • “How far is 6 laps? How do you know?” (1,587 yards, I
-                                                                     multiplied       by 6.)
+                                                                     multiplied 2641/2 by 6.)
 
-                                                                  • “How did you find the product            ?” (I
-                                                                     multiplied 264 by 6. I know that      is 3 so I added
+                                                                  • “How did you find the product 6 × 2641/2?” (I
+                                                                     multiplied 264 by 6. I know that 6 × 1/2 is 3 so I added
                                                                      that.)
                                                                   • “Is 6 laps more than or less than a mile?” (Less,
                                                                     because it’s less than 5,000 feet. Less, because a mile
@@ -332,7 +332,7 @@ Lesson Synthesis
 
 Display: 10 feet
 
-“How many inches are in 10 feet? How many yards?” (120 inches,         yards)
+“How many inches are in 10 feet? How many yards?” (120 inches, 31/3 yards)
 
 Display: 10 meters
 
@@ -357,10 +357,10 @@ Suggested Centers
 
 
 
-                                             Grade 5                                     CC BY NC 2024
+                                             Grade 5                                    CC BY NC 2024
                                               Unit 6
                                                               Lesson 7
-                                                                                  Illustrative Mathematics®           6
+                                                                                 Illustrative Mathematics®              6
 Cool-down                                                                                                    5 min
 
 Whiteboard Width
@@ -377,8 +377,8 @@ Addressing        5.MD.A.1
 
 
 Student Response
- 1. 54 inches. Sample response:
- 2. 1.5 yards (or equivalent). Sample response:
+ 1. 54 inches. Sample response: 4.5 × 12 = 54
+ 2. 1.5 yards (or equivalent). Sample response: 4.5 ÷ 3 = 1.5
 
 
 Responding to Student Thinking
@@ -389,22 +389,22 @@ equivalent).                                                    Before the Warm-
 
      Section A Summary
       We studied powers of 10 and conversions between units. We learned that we can write a product of 10s, such as
-                           , as a power of 10, such as   . The number 4 is an exponent and it means that there are 4
+      10 × 10 × 10 × 10, as a power of 10, such as       . The number 4 is an exponent and it means that there are 4
       factors of 10.
 
       We also converted between different units of measure. There are 1,000 millimeters in a meter and 1,000 meters in
-      a kilometer. This means that there are             or            millimeters in a kilometer. We also can say
+      a kilometer. This means that there are 1,000 × 1,000 or 1,000,000 millimeters in a kilometer. We also can say
       there are        millimeters in a kilometer.
 
       We used our understanding of decimals to make conversions. There are 1,000 meters in a kilometer. Each meter
-      is      or 0.001 kilometer. So, 853 meters can also be written as 0.853 kilometer.
+      is 1/1,000 or 0.001 kilometer. So, 853 meters can also be written as 0.853 kilometer.
 
 
 
 
-                                               Grade 5                                CC BY NC 2024
+                                               Grade 5                                  CC BY NC 2024
                                                 Unit 6
                                                               Lesson 7
-                                                                               Illustrative Mathematics®               7
+                                                                                 Illustrative Mathematics®             7
 ```
 

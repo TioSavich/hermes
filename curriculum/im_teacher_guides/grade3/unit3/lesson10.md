@@ -136,11 +136,11 @@ Students may wonder:
 
 
 
-Activity 1                                                                                                       20 min
-                                                                                                                 PLC Activity
+Activity 1                                                                                                    20 min
+                                                                                                              PLC Activity
 A New Subtraction Algorithm
 
-      Standards
+     Standards
 Addressing     3.NBT.A.2
 
 
@@ -150,45 +150,45 @@ and as two digits in the tens place. Students carefully analyze and discuss two 
 similarities and differences, and explaining how and why they work (MP6).
 
 
-      Student Task Statement                                     Launch
-      Andre and Clare found the value of               . How       • Groups of 2
-      they started their work is shown.                            • Display Andre and Clare’s work.
-      Andre's algorithm           Clare's algorithm                • “How are the two algorithms alike?” (Both are stacked
-                                                                     vertically. They show the same two numbers, 528
-                                                                     and 271. Both show a hundred decomposed into 10
-                                                                     tens.)
-                                                                   • “How are they different?” (One pair of numbers is
-                                                                     written in expanded form, but the other pair is not.
-                                                                     In Andre’s case, the decomposition of a hundred is
-       1. Complete both algorithms to find the                       recorded as 400 and 120. In Clare’s case, it is written
-          difference.                                                as 4 in the hundreds place and 12 in the tens place.)
-       2. Andre and Clare started their subtraction in             • 1 minute: quiet think time
+     Student Task Statement                                   Launch
+      Andre and Clare found the value of 528 - 271. How         • Groups of 2
+      they started their work is shown.                         • Display Andre and Clare’s work.
+      Andre's algorithm           Clare's algorithm             • “How are the two algorithms alike?” (Both are stacked
+                                                                  vertically. They show the same two numbers, 528
+                                                                  and 271. Both show a hundred decomposed into 10
+                                                                  tens.)
+                                                                • “How are they different?” (One pair of numbers is
+                                                                  written in expanded form, but the other pair is not.
+                                                                  In Andre’s case, the decomposition of a hundred is
+       1. Complete both algorithms to find the                    recorded as 400 and 120. In Clare’s case, it is written
+          difference.                                             as 4 in the hundreds place and 12 in the tens place.)
+       2. Andre and Clare started their subtraction in          • 1 minute: quiet think time
           different ways. How did their way of starting
-                                                                   • 2 minutes: partner discussion
+                                                                • 2 minutes: partner discussion
           affect the steps needed to find the difference?
-                                                                   • Share and record responses. Emphasize the different
-                                                                     ways of recording the decompositions.
+                                                                • Share and record responses. Emphasize the different
+                                                                  ways of recording the decompositions.
 Student Response
-                                                                   • “We noticed that this new algorithm uses fewer digits
- 1.               and 257                                            by not writing out the value of each digit. We just
-                                                                     record up to 2 digits in each place to tell how many
+                                                                • “We noticed that this new algorithm uses fewer digits
+ 1. 200 + 50 + 7 and 257                                          by not writing out the value of each digit. We just
+                                                                  record up to 2 digits in each place to tell how many
  2. Sample responses:
-                                                                     hundreds, tens, or ones there are.”
-      ◦ For Andre’s way of getting started, I had to write
-        part of the expanded form for each step. For
-        Clare’s way of getting started, I only recorded          Activity
-        one digit for each place value.
-                                                                   • “Take a few quiet minutes to work on the activity.
-      ◦ For Andre’s way of getting started, I had to add             Afterward, discuss your responses with your
+                                                                  hundreds, tens, or ones there are.”
+     ◦ For Andre’s way of getting started, I had to write
+       part of the expanded form for each step. For
+       Clare’s way of getting started, I only recorded        Activity
+       one digit for each place value.
+                                                                • “Take a few quiet minutes to work on the activity.
+     ◦ For Andre’s way of getting started, I had to add           Afterward, discuss your responses with your
 
 
-                                           Grade 3                                     CC BY NC 2024
+                                           Grade 3                                  CC BY NC 2024
                                             Unit 3
-                                                               Lesson 10
-                                                                                Illustrative Mathematics®                 3
-            up the parts of the number at the end, but for           partner.”
-            Clare’s way, the number was already made from          • 3–5 minutes: independent work time
-            the digits.
+                                                            Lesson 10
+                                                                             Illustrative Mathematics®                 3
+         up the parts of the number at the end, but for              partner.”
+         Clare’s way, the number was already made from             • 3–5 minutes: independent work time
+         the digits.
                                                                    • 2–3 minutes: partner discussion
 
 
@@ -209,7 +209,7 @@ Activity 2                                                                      
 Try Clare’s Algorithm
 
      Standards
-Addressing        3.NBT.A.2
+Addressing      3.NBT.A.2
 
 
 The purpose of this activity is for students to practice using the algorithm they learned in the previous activity, in which
@@ -228,14 +228,14 @@ recorded with one or two digits.
 
      Student Task Statement                                     Launch
       Clare used an algorithm to find                              • Groups of 2
-      the value of          .                                      • “Now let's try using the algorithm you learned in the
+      the value of 644- 283 .                                      • “Now let's try using the algorithm you learned in the
       Try using her algorithm to find                                last activity to subtract some numbers. You can use
       the value of each difference.                                  the steps you recorded from our last activity, or use
                                                                      Clare’s work as an example.”
-       1.
+       1. 691 - 358
 
-       2.                                                       Activity
-       3.                                                          • 3–5 minutes: independent work time
+       2. 926- 584                                              Activity
+       3. 317- 182                                                 • 3–5 minutes: independent work time
 
 
 
@@ -243,7 +243,7 @@ recorded with one or two digits.
                                              Unit 3
                                                              Lesson 10
                                                                                  Illustrative Mathematics®                4
-       4.                                                         • “Share your work and solutions with your partner.”
+       4. 492- 325                                                • “Share your work and solutions with your partner.”
                                                                   • 2–3 minutes: partner discussion
 Student Response
  1. 333                                                         Activity Synthesis
@@ -281,7 +281,7 @@ Addressing      3.NBT.A.2
 
 
       Student Task Statement
-      Use an algorithm of your choice to find the value of            .
+      Use an algorithm of your choice to find the value of 419- 267 .
 
 
 Student Response
@@ -297,7 +297,7 @@ from the lesson.                                                During the Launc
 
                                             Grade 3                                   CC BY NC 2024
                                              Unit 3
-                                                             Lesson 10
+                                                            Lesson 10
                                                                                Illustrative Mathematics®              5
 ```
 

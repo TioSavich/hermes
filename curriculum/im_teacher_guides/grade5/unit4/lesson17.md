@@ -267,7 +267,7 @@ centimeters of milk?” (In 2 days, we drink twice as much milk, and in 3 days, 
 estimate what to multiply by the amount for one day to get about 10,000,000.)
 
 “Could you also make this estimate, using division?” (Yes, our school drinks about 100,000 cubic centimeters of milk each
-day, so I can find how many 100,000s there are in 10,000,000. That's                        .)
+day, so I can find how many 100,000s there are in 10,000,000. That's 10,000,000 ÷ 100,000.)
 
 
 
@@ -282,7 +282,7 @@ Suggested Centers
                                            Unit 4
                                                            Lesson 17
                                                                               Illustrative Mathematics®              5
-Cool-down                                                                                                      5 min
+Cool-down                                                                                                     5 min
 
 So Much Milk
 
@@ -298,8 +298,8 @@ Addressing     5.NBT.B
 
 Student Response
 Sample responses:
-  • About 4,800,000 cubic centimeters, because                       and there are close to 20,000 students.
-  • About 4,200,000 cubic centimeters, because                      and                     , so I took the number in
+  • About 4,800,000 cubic centimeters, because 240 × 20 = 5,000 and there are close to 20,000 students.
+  • About 4,200,000 cubic centimeters, because 17 × 240 = 4,080 and 18 × 240 = 4,320, so I took the number in
     between and multiplied it by 1,000, since it's between 17,000 and 18,000.
 
 
@@ -319,6 +319,6 @@ multiples of 10, developed in a prior unit.                    Grade 4, Unit 4, 
                                           Grade 5                                    CC BY NC 2024
                                            Unit 4
                                                            Lesson 17
-                                                                              Illustrative Mathematics®                 6
+                                                                              Illustrative Mathematics®               6
 ```
 

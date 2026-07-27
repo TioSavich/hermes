@@ -94,25 +94,25 @@ from a previous grade, however, they may benefit from a brief review of the step
      Student Task Statement                                       Launch
       Decide if each statement is true or false. Be                 • Display one statement.
       prepared to explain your reasoning.                           • “Give me a signal when you know whether the
-        •                                                             statement is true and can explain how you know.”
+        • 9 + 4 = 9 + 1 + 3                                           statement is true and can explain how you know.”
 
-        •                                                           • 1 minute: quiet think time
+        • 9 + 4 = 10 + 3                                            • 1 minute: quiet think time
 
-        •
+        • 9 + 5 = 10 + 6
                                                                   Activity
 Student Response                                                    • Share and record answers and strategy.
 
   • True: Both sides have 9 and 4, because 4 can be                 • Repeat with each statement.
-    broken into       .
+    broken into 1 + 3.
   • True: If I take 1 from the 4 and give it to the 9, then I     Activity Synthesis
     have 10 and 3, which is what is on the other side.
                                                                     • “How can you justify your answer without adding?” (I
   • False: If I want to make a 10, I need to take 1 from
-                                                                      see that      and           are the same because
+                                                                      see that 9 + 4 and 9 + 1 + 3 are the same because
     the 5 and give it to the 9. That would make a 10, but
-                                                                               .)
-    then there would only be 4 left. So it would be
-    and          , and they aren’t the same.
+                                                                      1 + 3 = 4.)
+    then there would only be 4 left. So it would be 10 + 4
+    and 10 + 6, and they aren’t the same.
 
 
 
@@ -185,9 +185,9 @@ responses:                                                        rabbits. Your 
                                            Unit 1
                                                           Lesson 13
                                                                              Illustrative Mathematics®             3
-    on the graph (           ,           ).                        them.”
+    on the graph (8 + ? = 17, 8 + 9 = 17).                         them.”
   • Students show or describe counting back from 17 to          • 3–4 minutes: independent work time
-    8 on the graph (         ,           ).                     • 2–3 minutes: partner discussion
+    8 on the graph (17- ? = 8 , 17- 9 = 8 ).                    • 2–3 minutes: partner discussion
                                                                 • Monitor for a student who uses a counting on
                                                                   method and a student who uses a counting back
                                                                   method.
@@ -201,7 +201,7 @@ responses:                                                        rabbits. Your 
                                                                   count back) to find how many more?”
                                                                 • Record student methods with an equation. For
                                                                   example, for students who describe counting on,
-                                                                  write “          ’.”
+                                                                  write “8 + 9 = 17’.”
                                                                 • “How are their methods similar? How are their
                                                                   methods different?” (One method starts with the
                                                                   smaller number of pets and counts on to the larger
@@ -278,11 +278,11 @@ Student Response
                                                                    • Invite 1–2 previously identified students to share
  1. Sample response: There are more bulldogs than                    their statements using fewer and one equation.
     huskies.                                                         (There are fewer pugs than bulldogs. There are 12
- 2. Sample response: 6 more.                   ,                     fewer.             )
+ 2. Sample response: 6 more. 20- 14 = 6 , 14 + 6 = 20                fewer. 8 + 12 = 20)
 
  3. Sample response: There are fewer poodles than                  • Record equation.
     pugs.                                                          • “What other equations could we write to show how
- 4. Sample response:              ,                                  many fewer for _____’s statement?” (We could use
+ 4. Sample response: 8 - 6 = 2, 6 + 2 = 8                            many fewer for _____’s statement?” (We could use
                                                                      subtraction.             shows you can count back 12
                                                                      from 20 to get to 8.)
                                                                    • Record equations.
@@ -371,12 +371,12 @@ Addressing     2.MD.D.10
 
 Student Response
  1. 9 fewer students were absent in October than November. Sample responses:
-      ◦ First break apart 8 into 7 and 1. Then subtract           and            .
+      ◦ First break apart 8 into 7 and 1. Then subtract 17- 7 = 10 and 10- 1 = 9 .
       ◦ Student shows counting on from 8 to 17 and labels 9 fewer students.
  2. Sample responses:
-      ◦
-      ◦
-      ◦
+      ◦ 17- 8 = 9
+      ◦ 8 + 9 = 17
+      ◦ 8 + ? = 17
 
 
 Responding to Student Thinking
@@ -390,7 +390,7 @@ Students can write 1 equation, but not yet 2.               Next Day Supports
 
                                           Grade 2                                 CC BY NC 2024
                                            Unit 1
-                                                          Lesson 13
+                                                         Lesson 13
                                                                            Illustrative Mathematics®               7
 ```
 

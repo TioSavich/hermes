@@ -193,12 +193,12 @@ Required Preparation
  2. Sample response: Students may choose to solve                 • “What are some questions we can ask about the
     using a diagram or write an expression to find the              mosaics?” (Which color rectangle did we use the most
     product.                                                        of? What are some other ways we can arrange the
-    Partner A:                                                      same pieces? What are some other pieces that can
+    Partner A: 1 × 41/4 = 41/4                                      same pieces? What are some other pieces that can
                                                                     make the same pattern? How much would this cost if
-    Partner B:
+    Partner B: 4 × 1 1/2 = 4 × 1 + 4 × 1/2 = 4 + 2 = 6
                                                                     we actually made this using hard materials?)
-    Partner C:
-    Partner D:
+    Partner C: 1 × 1 1/8 = 1 1/8
+    Partner D: 3 × 21/4 = 21/4 + 21/4 + 21/4 = 63/4
 
  3. Sample response:
 
@@ -210,7 +210,7 @@ Activity 2                                                                      
 Cost of Mosaic
 
      Standards                                                       Instructional Routines
-Addressing       5.NF.B.4                                         • MLR1 Stronger and Clearer Each Time
+Addressing      5.NF.B.4                                          • MLR1 Stronger and Clearer Each Time
 
 
 The purpose of this activity is for students to apply their understanding of multiplying whole numbers by fractions
@@ -218,76 +218,76 @@ greater than 1 to determine the cost of making a mosaic with different materials
 decimals or fractions with unlike denominators, it is not necessary for students to find the exact cost for the mosaic.
 
 
-                                           Grade 5                                    CC BY NC 2024
-                                            Unit 2
+                                              Grade 5                                 CC BY NC 2024
+                                               Unit 2
                                                             Lesson 17
                                                                                Illustrative Mathematics®                4
 Encourage students to use estimation strategies. Some students may find the exact cost as a fraction of a dollar, for
-example            dollars. Encourage students to make sense of the fraction with respect to money to estimate the cost.
+example 131 3/5 dollars. Encourage students to make sense of the fraction with respect to money to estimate the cost.
 
 This activity uses MLR1 Stronger and Clearer Each Time. Advances: Reading, Writing.
 
 
-        Student Task Statement                                            Launch
-        Choose one material in the table. About how much                    • Group of 4
-        would it cost to create your mosaic with that                       • Display table from student task.
-        material? Explain or show your reasoning.
-                                                                            • “Traditionally mosaics are made of stone, tile, or
-                                                                              glass pieces. Imagine you are making your mosaic as
-                        cost per                                              art for the school. In this activity, you will estimate
-         material        square                                               the cost of your mosaic.”
-                          inch
+     Student Task Statement                                         Launch
+      Choose one material in the table. About how much                • Group of 4
+      would it cost to create your mosaic with that                   • Display table from student task.
+      material? Explain or show your reasoning.
+                                                                      • “Traditionally mosaics are made of stone, tile, or
+                                                                        glass pieces. Imagine you are making your mosaic as
+                    cost per                                            art for the school. In this activity, you will estimate
+       material      square                                             the cost of your mosaic.”
+                      inch
 
-          Stone            $5                                             Activity
-                                                                            • 8-10 minutes: small-group work time
-           Tile            $3
-                                                                            • Monitor for students who:
-           Glass           $2
-                                                                               ◦ Determine the cost for each color rectangle
-                                                                                 needed and then determine the total cost.
-                                                                               ◦ Find the approximate total area of the materials
+         Stone          $5                                          Activity
+                                                                      • 8-10 minutes: small-group work time
+           Tile         $3
+                                                                      • Monitor for students who:
+           Glass        $2
+                                                                         ◦ Determine the cost for each color rectangle
+                                                                           needed and then determine the total cost.
+                                                                         ◦ Find the approximate total area of the materials
 Student Response
-                                                                                 needed for the mosaic and then determine the
-Sample response:                                                                 cost.
+                                                                           needed for the mosaic and then determine the
+Sample response:                                                           cost.
 
-We will use stone. In our mosaic we used:                                      ◦ Write clear expressions that show multiplication
-                                                                                 of whole numbers by fractions greater than 1.
-  • 3 rectangles with an area of              square inches. So,
-    that’s a total area of           square inches
-                                                                          Activity Synthesis
-    (                   ). To find            , we multiplied
-              and          . This is 60 and      , and     is equal       MLR1 Stronger and Clearer Each Time
+We will use stone. In our mosaic we used:                                ◦ Write clear expressions that show multiplication
+                                                                           of whole numbers by fractions greater than 1.
+  • 3 rectangles with an area of 41/4 square inches. So,
+    that’s a total area of 123/4 square inches
+                                                                    Activity Synthesis
+    (3 × 41/4 = 123/4). To find 5 × 123/4, we multiplied
+    5 × 12 and 5 × 3/4. This is 60 and 15/4, and 15/4 is equal      MLR1 Stronger and Clearer Each Time
 
-    to      . 60 plus       is       , so we rounded this up to             • “Share your response with a partner. Take turns
-    $64.                                                                      being the speaker and the listener. If you are the
-                                                                              speaker, share your ideas and writing so far. If you
+    to 33/4. 60 plus 33/4 is 633/4, so we rounded this up to          • “Share your response with a partner. Take turns
+    $64.                                                                being the speaker and the listener. If you are the
+                                                                        speaker, share your ideas and writing so far. If you
   • 1 rectangle with an area of 6 square inches. This will
-                                                                              are the listener, ask questions and give feedback to
+                                                                        are the listener, ask questions and give feedback to
     cost 5 times that which is $30.
-                                                                              help your partner improve their work.”
-  • 1 rectangle with an area of              square inches. This
-                                                                            • 3–5 minutes: structured partner discussion.
-    will cost 5 times that so the cost is           dollars. That is
-                                                                            • Repeat with 2–3 different partners.
-    a little more than           , so we rounded this to $6.
-                                                                            • If needed, display question starters and prompts for
-  • 1 rectangle with an area of              inches. To find out              feedback.
-    how much this will cost we multiplied                  .       is          ◦ “Can you add an expression to show . . .?”
-    30 and            is    .           is      . We rounded this              ◦ “The part I understood best was . . .”
+                                                                        help your partner improve their work.”
+  • 1 rectangle with an area of 1 1/8 square inches. This
+                                                                      • 3–5 minutes: structured partner discussion.
+    will cost 5 times that so the cost is 55/8 dollars. That is
+                                                                      • Repeat with 2–3 different partners.
+    a little more than 51/2, so we rounded this to $6.
+                                                                      • If needed, display question starters and prompts for
+  • 1 rectangle with an area of 63/4 inches. To find out                feedback.
+    how much this will cost we multiplied 5 × 63/4. 5 × 6 is             ◦ “Can you add an expression to show . . .?”
+    30 and 5 × 3/4 is 15/4. 30 + 15/4 is 333/4. We rounded this          ◦ “The part I understood best was . . .”
     to $34.
-                                                                               ◦ “I liked how you . . .”
+                                                                         ◦ “I liked how you . . .”
 The total cost is around $134.
-                                                                            • “Revise your initial draft based on the feedback you
-                                                                              got from your partners.”
-                                                                            • 2–3 minutes: independent work time
+                                                                      • “Revise your initial draft based on the feedback you
+                                                                        got from your partners.”
+                                                                      • 2–3 minutes: independent work time
 
 
 
 
-                                                   Grade 5                                      CC BY NC 2024
-                                                    Unit 2
-                                                                        Lesson 17
-                                                                                         Illustrative Mathematics®               5
+                                              Grade 5                                     CC BY NC 2024
+                                               Unit 2
+                                                                  Lesson 17
+                                                                                   Illustrative Mathematics®               5
 Lesson Synthesis
 “Today, we made mosaics with rectangles and multiplied fractions to estimate the cost of the mosaics.”
 

@@ -113,7 +113,7 @@ Students may notice:
                                                                    change the result of the multiplication.)
   • All the partial products are different.
                                                                  • "Which way would you prefer to find the value of
-  • One product has 2 partial products, and the other                      ?" (I like the one with two partial products
+  • One product has 2 partial products, and the other              417 × 28?" (I like the one with two partial products
     one has 3 partial products.                                    because there is less adding up to do.)
 Students may wonder:                                             • "Today you will get to choose how to find the
                                                                    products of a three-digit number and a two-digit
@@ -318,7 +318,7 @@ Addressing      5.NBT.B.5
 
 
       Student Task Statement
-      Use the standard algorithm to find the product             .
+      Use the standard algorithm to find the product 372 × 83.
 
 
 Student Response

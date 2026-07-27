@@ -228,70 +228,70 @@ rates and solving rate problems in grade 6.
                                             Unit 6
                                                            Lesson 26
                                                                                Illustrative Mathematics®                4
-     Student Task Statement                                     Launch
-                                                                  • Groups of 4
-                                                                  • Display the image.
-                                                                  • “The paper flowers are strung together to make a
-                                                                    garland.”
-      Create a plan for creating paper flower garlands for
-      a quinceañera. In your plan include:                        • “You are going to work with your group to come up
-                                                                    with a plan for how many garlands your team could
-        • A pattern for the paper flower garlands you will          create in 3 hours. Take a minute to read the task and
-          create.                                                   think about some of the choices you’ll have to make
-        • How many paper flower garlands you can                    to develop your plan.”
-          make in 3 hours.                                        • 1 minute: independent work time
-        • How much tissue paper and string you will               • Share responses.
-          need to complete the paper flower garlands.
-                                                                  • If it doesn’t come up, remind students that they have
-      Explain or show your reasoning.                               information from the previous activity that they
-                                                                    could use as they develop their plan, such as how
-Student Response                                                    many sheets of tissue paper it takes to make a paper
-                                                                    flower and how many paper flowers groups were
-Sample response:                                                    able to make in 10 minutes.
+     Student Task Statement                                   Launch
+                                                                • Groups of 4
+                                                                • Display the image.
+                                                                • “The paper flowers are strung together to make a
+                                                                  garland.”
+     Create a plan for creating paper flower garlands for
+     a quinceañera. In your plan include:                       • “You are going to work with your group to come up
+                                                                  with a plan for how many garlands your team could
+       • A pattern for the paper flower garlands you will         create in 3 hours. Take a minute to read the task and
+         create.                                                  think about some of the choices you’ll have to make
+       • How many paper flower garlands you can                   to develop your plan.”
+         make in 3 hours.                                       • 1 minute: independent work time
+       • How much tissue paper and string you will              • Share responses.
+         need to complete the paper flower garlands.
+                                                                • If it doesn’t come up, remind students that they have
+     Explain or show your reasoning.                              information from the previous activity that they
+                                                                  could use as they develop their plan, such as how
+Student Response                                                  many sheets of tissue paper it takes to make a paper
+                                                                  flower and how many paper flowers groups were
+Sample response:                                                  able to make in 10 minutes.
 
  • We decided on a repeating pattern of 2 small yellow
-   flowers, then 1 large orange flower for each garland.        Activity
+   flowers, then 1 large orange flower for each garland.      Activity
  • In ten minutes we made 12 paper flowers, but we
-                                                                  • 15–20 minutes: small-group work time
+                                                                • 15–20 minutes: small-group work time
    were just learning how to make them, so we thought
-   our group could make 16 paper flowers in 10                    • Consider asking:
-   minutes. We went with 12 in ten minutes, so one                   ◦ “What do you need to decide first? What will 1 of
-   person could attach the flowers to the garland. Three               your garlands look like?”
+   our group could make 16 paper flowers in 10                  • Consider asking:
+   minutes. We went with 12 in ten minutes, so one                 ◦ “What do you need to decide first? What will 1 of
+   person could attach the flowers to the garland. Three             your garlands look like?”
    hours is 180 minutes which is 18 chunks of ten
-                                                                     ◦ “How long will take to make 1 of your garlands?”
+                                                                   ◦ “How long will take to make 1 of your garlands?”
    minutes. We only planned to use 16 of the chunks to
-   give us 20 minutes to take a few short breaks.                    ◦ “How much string and paper will you need to
-            is 192, so this is how many paper garlands                 make 1 of your garlands?”
-   we could make in 3 hours. We’re going to space the             • Monitor for students who:
+   give us 20 minutes to take a few short breaks.                  ◦ “How much string and paper will you need to
+   16 × 12 is 192, so this is how many paper garlands                make 1 of your garlands?”
+   we could make in 3 hours. We’re going to space the           • Monitor for students who:
    flowers every 6 inches, so a 20 foot garland needs 41
-                                                                     ◦ Use information from the previous activity to
-   flowers.         is 164 which is less than how many
-                                                                       find how many flowers they can make and how
+                                                                   ◦ Use information from the previous activity to
+   flowers. 4 × 41 is 164 which is less than how many
+                                                                     find how many flowers they can make and how
    flowers we thought we could make in 3 hours. So, we
-                                                                       much tissue paper they will need.
+                                                                     much tissue paper they will need.
    decided to make one 10-foot garland, which would
-   need 21 paper flowers. This brought our total up to               ◦ Make decisions about information not in the task
-   185 flowers which is really close to how many we                    such as how to space the paper flowers on the
-   thought we could make in 3 hours. This means we                     garland and details about how to use the time.
-   could make four 20-foot garlands and one 10-foot                  ◦ Use equations to show their thinking.
+   need 21 paper flowers. This brought our total up to             ◦ Make decisions about information not in the task
+   185 flowers which is really close to how many we                  such as how to space the paper flowers on the
+   thought we could make in 3 hours. This means we                   garland and details about how to use the time.
+   could make four 20-foot garlands and one 10-foot                ◦ Use equations to show their thinking.
    garland in 3 hours.
-                                                                     ◦ Organize the multi-step process.
- •                     , so we would need 90 feet of string
-     for the garlands. We rounded this up to 100 to make
-     sure we had enough string to attach the garlands to        Activity Synthesis
-     the wall. Each flower takes 6 pieces of paper, so we
-                                                                  • Invite previously selected groups to share their plans
-     multiplied          to get 1,152 sheets of tissue
-                                                                    and their reasoning.
-     paper. This gives us a little more than what we need
-     for 185 flowers in case we need to remake some of            • “What specific part of the work makes their
-     them.                                                          explanation clear?” (Their explanation helps me
+                                                                   ◦ Organize the multi-step process.
+ • 4 × 20 + 10 = 90, so we would need 90 feet of string
+   for the garlands. We rounded this up to 100 to make
+   sure we had enough string to attach the garlands to        Activity Synthesis
+   the wall. Each flower takes 6 pieces of paper, so we
+                                                                • Invite previously selected groups to share their plans
+   multiplied 6 × 192 to get 1,152 sheets of tissue
+                                                                  and their reasoning.
+   paper. This gives us a little more than what we need
+   for 185 flowers in case we need to remake some of            • “What specific part of the work makes their
+   them.                                                          explanation clear?” (Their explanation helps me
 
 
-                                           Grade 4                                    CC BY NC 2024
-                                            Unit 6
-                                                              Lesson 26
-                                                                               Illustrative Mathematics®              5
+                                         Grade 4                                    CC BY NC 2024
+                                          Unit 6
+                                                            Lesson 26
+                                                                             Illustrative Mathematics®              5
                                                                     understand why they chose certain numbers. The
                                                                     equations show me how they got to certain solutions
                                                                     for the problem.)

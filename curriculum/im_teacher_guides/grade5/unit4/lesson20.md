@@ -171,9 +171,9 @@ Student Response
                                                               Activity
 Sample responses:
 
- 1.   a. 4 pounds. We estimated about      pound of food        • 2–3 minutes: independent work time
+ 1.   a. 4 pounds. We estimated about 1/2 pound of food         • 2–3 minutes: independent work time
 
-         waste each day. That makes       pounds in a           • 7–10 minutes: partner work time
+         waste each day. That makes 31/2 pounds in a            • 7–10 minutes: partner work time
          week. We just rounded this up to 4 to make it an       • Monitor for students who:
          easier number to work with.
                                                                     ◦ Make reasonable estimates, based on
@@ -184,13 +184,13 @@ Sample responses:
                                             Unit 4
                                                             Lesson 20
                                                                              Illustrative Mathematics®               3
-         a month, so we multiplied         to get 16                  ◦ Estimate the number of pounds of food waste
+         a month, so we multiplied 4 × 4 to get 16                    ◦ Estimate the number of pounds of food waste
          pounds.                                                        produced in a day to estimate the number of
                                                                         pounds produced in a week.
-     c. 768 pounds. I multiplied          and got 192.
+     c. 768 pounds. I multiplied 16 × 12 and got 192.
         This is about how many pounds of food waste                   ◦ Use their estimate for the week to make other
         each person produces in one year. We have four                  estimates.
-        people in my family. I multiplied        and got
+        people in my family. I multiplied 4 × 192 and got
         768 pounds of food waste for my family in one
         year.
                                                                 Activity Synthesis
@@ -311,8 +311,8 @@ Sample response:
                                            Unit 4
                                                            Lesson 20
                                                                             Illustrative Mathematics®              5
- 1. About     pound. 11 ounces is less than a pound,
-    about    of a pound.
+ 1. About 3/4 pound. 11 ounces is less than a pound,
+    about 3/4 of a pound.
 
  2. About 7 pounds. I divided 349 by 52 and got 6, with a
     remainder of 37. So it's about 7.
@@ -364,14 +364,14 @@ Sample responses:                                                  average.
                                                                    much food we threw out. I was surprised that a lot of
  2. In a month, my family will produce 104 pounds of
                                                                    the food waste was from packaging.)
-    food waste (      ). In a year, my family will produce
+    food waste (4 × 26). In a year, my family will produce
 
 
                                            Grade 5                                    CC BY NC 2024
                                             Unit 4
                                                              Lesson 20
                                                                                Illustrative Mathematics®                6
-    1,352 pounds of food waste (        ).
+    1,352 pounds of food waste (52 × 26).
  3. There are 4 people in my family. This means each of
     us produces about 338 pounds per year, which is
     less than the national average of 349 pounds. It is
@@ -403,8 +403,8 @@ Suggested Centers
 
 
 
-                                         Grade 5                                  CC BY NC 2024
-                                          Unit 4
+                                        Grade 5                                   CC BY NC 2024
+                                         Unit 4
                                                           Lesson 20
                                                                            Illustrative Mathematics®           7
 ```

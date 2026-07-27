@@ -89,27 +89,27 @@ know about the value of the digits to condense the number of steps to multiply b
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 5 × 101                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 5 × 102
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 5 × 203
+        • 5 × 404
                                                                 Activity
 
 Student Response                                                  • Record answers and strategy.
                                                                   • Keep expression and work displayed.
-  • 505:                 and           , and
-                    .                                             • Repeat with each expression.
+  • 505: 5 × 100 = 500 and 5 × 1 = 5, and
+    500 + 5 = 505.                                                • Repeat with each expression.
 
-  • 510:        is 5 more than           , so it is 5 more
+  • 510: 5 × 102 is 5 more than 5 × 101, so it is 5 more
     than 505, which is 510.                                     Activity Synthesis
-  • 1,015:          is 1,000 and       is 15, so        is
+  • 1,015: 5 × 200 is 1,000 and 5 × 3 is 15, so 5 × 203 is
                                                                   • “What connections or relationships do you see
     1,015.
                                                                     between each expression?” (Each problem involves
-  • 2,020: 404 is 4 times 101,         is 4 times                   one more group of 5 or sets or 100 more.)
-    or        , which is 2,020.
+  • 2,020: 404 is 4 times 101, 5 × 404 is 4 times 5 × 101           one more group of 5 or sets or 100 more.)
+    or 4 × 505, which is 2,020.
 
 
 
@@ -144,7 +144,7 @@ opportunity to make use of the structure they notice to compute the value of oth
 
       Student Task Statement                                   Launch
        1. Here are two algorithms for finding the value           • Groups of 2
-          of        .
+          of 3 × 713.
 
            Kiran                     Diego                     Activity
                                                                   • “Make sense of Kiran and Diego’s algorithms. Talk to
@@ -161,10 +161,10 @@ opportunity to make use of the structure they notice to compute the value of oth
                                                                     polling students on which one might be closest to
            b. How do you think Kiran found the product              their conjecture, if any. For example:
               2,139?
-                                                                      ◦ A: Kiran found                        mentally and
-       2. Find the value of each product.                               wrote down the result of              .
+                                                                      ◦ A: Kiran found (3 × 700) + (3 × 13) mentally and
+       2. Find the value of each product.                               wrote down the result of 2,100 + 39.
 
-            ◦                           ◦                             ◦ B: Kiran used the same method as Diego but
+            ◦ 212 × 4                   ◦ 3 × 4,132                   ◦ B: Kiran used the same method as Diego but
                                                                         added the 9, 30, and 2,100 mentally, without
                                                                         writing them down.
 Student Response                                                      ◦ C: Kiran drew a diagram and did the
@@ -180,15 +180,15 @@ Student Response                                                      ◦ C: Kir
       b. Kiran was doing the same process as Diego in
                                                                   • Explain that Kiran had multiplied 3 by each digit in
          terms of finding partial products, but he added
-                                                                    713, but instead of reasoning about         ,       ,
+                                                                    713, but instead of reasoning about 3 × 3, 3 × 10,
          the products in his head after finding each
-                                                                    and          , Kiran reasoned about       ,      , and
+                                                                    and 3 × 700, Kiran reasoned about 3 × 3, 3 × 1, and
          partial product.
-                                                                         , while paying attention to the place value of
+                                                                    3 × 7, while paying attention to the place value of
  2.   ◦ 848                                                         each digit.
       ◦ 12,396                                                    • Demonstrate Kiran’s process:
                                                                       ◦ Because the 3 in 713 means 3 ones, he wrote the
-                                                                        result of     or 9 in the ones place.
+                                                                        result of 3 × 3 or 9 in the ones place.
                                                                       ◦ Because the 1 means 1 ten, he wrote the result
 
 
@@ -196,9 +196,9 @@ Student Response                                                      ◦ C: Kir
                                              Unit 6
                                                             Lesson 11
                                                                                Illustrative Mathematics®               3
-                                                                       of       in the tens place.
+                                                                       of 3 × 1 in the tens place.
                                                                    ◦ Because the 7 means 7 hundreds, he wrote the
-                                                                     result of     in the hundreds place.
+                                                                     result of 3 × 7 in the hundreds place.
                                                                 • “Try using Kiran’s algorithm to find the value of the
                                                                   last two products.”
                                                                 • 3 minutes: independent work time
@@ -209,7 +209,7 @@ Student Response                                                      ◦ C: Kir
                                                                 • Select students to share and explain their
                                                                   calculations of the last two products.
                                                                 • Consider demonstrating the process of Kiran’s
-                                                                  strategy to find        .
+                                                                  strategy to find 3 × 4,132.
                                                                 • “Kiran’s strategy is called the ‘standard algorithm for
                                                                   multiplication.’ We’ll take a closer look at this
                                                                   algorithm in the next activity.”
@@ -240,7 +240,7 @@ connects to their work with the standard algorithm for addition.
 
      Student Task Statement                                   Launch
        1. Analyze the two algorithms used to find the           • Groups of 2
-          value of        .
+          value of 4 × 223.
 
                                                               Activity
                                                                 • “Work with your partner on the first problem.”
@@ -266,10 +266,10 @@ connects to their work with the standard algorithm for addition.
             b. Where is the 12 in Kiran's algorithm?
                                                                      we add using the standard algorithm, we use this
        2.   a. Try using Kiran's algorithm to find the               notation to show that we have more than 9 ones,
-               value of         .                                    tens or hundreds, and so on, in a given place, we add
+               value of 512 × 3.                                     tens or hundreds, and so on, in a given place, we add
             b. Check your work using a different method.             each group of 10 units to the place value to the left.)
                                                                    • “Kiran's used the standard algorithm for
-Student Response                                                     multiplication. Try using it to find     .”
+Student Response                                                     multiplication. Try using it to find 512 × 3.”
                                                                    • 3 minutes: independent work time
  1. Sample response:
                                                                    • 1–2 minutes: partner discussion
@@ -278,7 +278,7 @@ Student Response                                                     multiplicat
          Different: One shows all the place values and the       Activity Synthesis
          other has a small one on top.
                                                                    • “In the Lesson Synthesis, let’s compare ways we kept
-      b. The 12 is decomposed into         . The 2 is in the         track of the partial products.”
+      b. The 12 is decomposed into 10 + 2. The 2 is in the           track of the partial products.”
          ones place and the 10 is a 1 added to the tens
          place.
  2.   a. 1,536
@@ -290,7 +290,7 @@ Student Response                                                     multiplicat
 
 Lesson Synthesis
 “Today we compared the standard algorithm for multiplication to an algorithm that uses partial-products. Let’s see how
-we’d find      .”
+we’d find 3 × 512.”
 
 Display:
 
@@ -309,7 +309,7 @@ work through lessons.
 
                                             Grade 4                                     CC BY NC 2024
                                              Unit 6
-                                                               Lesson 11
+                                                             Lesson 11
                                                                                  Illustrative Mathematics®               5
 Suggested Centers
   • Five in a Row: Multiplication (3–5), Stage 3: Two-Digit Factors (Addressing)
@@ -317,7 +317,7 @@ work through lessons.
 
 
 
-Cool-down                                                                                                    5 min
+Cool-down                                                                                                     5 min
 
 Choose a Way to Multiply
 
@@ -328,17 +328,17 @@ Addressing     4.NBT.B.5
      Student Task Statement
       Find the value of each product. Explain or show your reasoning.
 
-       1.
-       2.
+       1. 4 × 798
+       2. 8 × 2,864
 
 
 Student Response
  1. 3,192. Sample responses:
-     ◦
-     ◦ I know that 798 is 2 less than 800. So 4 groups of 798 is        less than       or 8 less than 3,200, which is
+     ◦ (4 × 700) + (4 × 90) + (4 × 8) = 2,800 + 360 + 32 = 3,192
+     ◦ I know that 798 is 2 less than 800. So 4 groups of 798 is 4 × 2 less than 4 × 800 or 8 less than 3,200, which is
        3,192.
  2. 22,912. Sample response:
-     ◦
+     ◦ (8 × 2,000) + (8 × 800) + (8 × 60) + (8 × 4) = 16,000 + 6,400 + 480 + 32 = 22,912
 
 
 Responding to Student Thinking
@@ -352,6 +352,6 @@ computation errors when adding them.                           groups to discuss
                                            Grade 4                                    CC BY NC 2024
                                             Unit 6
                                                             Lesson 11
-                                                                               Illustrative Mathematics®             6
+                                                                               Illustrative Mathematics®              6
 ```
 

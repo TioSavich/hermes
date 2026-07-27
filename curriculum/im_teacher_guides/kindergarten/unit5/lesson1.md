@@ -232,9 +232,9 @@ Sample response:                                               • Invite previo
                                         Unit 5
                                                            Lesson 1
                                                                              Illustrative Mathematics®               4
-    broke them up in different ways. 2 and 2 is 4 and 3         • Write       .
+    broke them up in different ways. 2 and 2 is 4 and 3         • Write 3 + 1.
     and 1 is 4.                                                 • “What parts did Lin break 4 into?” (2 and 2)
-                                                                • Write       .
+                                                                • Write 2 + 2.
                                                                 • “Diego and Lin showed us that we can break
                                                                   numbers apart in different ways.”
 
@@ -326,9 +326,9 @@ Separate the connecting cubes into a group of 1 and a group of 4.
 
 “How many cubes are in each part?” (1 and 4)
 
-Write “      ”.
+Write “1 + 4”.
 
-“There are 5 cubes. 5 is      .”
+“There are 5 cubes. 5 is 1 + 4.”
 
 
 
@@ -337,7 +337,7 @@ Observation
 Lesson Observations for Unit 5, Section A
 
       Standards
-Addressing        K.OA.A.3
+Addressing       K.OA.A.3
 
 
 

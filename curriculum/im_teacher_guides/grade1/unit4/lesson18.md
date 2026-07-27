@@ -78,13 +78,13 @@ multiples of ten.
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display 1 expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 32 + 10                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 32 + 10 + 10
                                                                   • 1 minute: quiet think time
-        •
+        • 32 + 20
 
-        •                                                       Activity
+        • 32- 20                                                Activity
                                                                   • Record answers and strategies.
 Student Response
                                                                   • Keep expressions and work displayed.
@@ -93,7 +93,7 @@ Student Response
   • 52: I added 10 more to 42. 42 was the answer in the
     last one when I just added 1 ten.
                                                                 Activity Synthesis
-  • 52: I knew it was 52 because in the last one, I added         • “How are                and          alike? How are
+  • 52: I knew it was 52 because in the last one, I added         • “How are 32 + 10 + 10 and 32 + 20 alike? How are
     ten 2 times, which is the same as 20.                           they different?” (Both equal 52. Both expressions
                                                                     have 32 as an addend. In one expression, the tens
   • 12: 32 has three tens. When I subtract 20, I take 2

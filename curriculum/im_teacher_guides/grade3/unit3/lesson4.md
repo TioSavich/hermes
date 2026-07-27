@@ -85,9 +85,9 @@ number 247.
      Student Task Statement                                   Launch
       Which 3 go together?                                      • Groups of 2
 
-      A.                           B. 247                       • Display the expressions and the number.
+      A. 200 + 30 + 17             B. 247                       • Display the expressions and the number.
                                                                 • “Pick 3 representations that go together. Be ready to
-      C.                           D.                             share why they go together.”
+      C. 200 + 47 + 10             D. 100 + 140 + 7               share why they go together.”
                                                                 • 1 minute: quiet think time
 Student Response
 Sample responses:                                             Activity
@@ -143,11 +143,11 @@ Materials to Gather
 
 
      Student Task Statement                                     Launch
-      Three students found the value of        . Their            • Groups of 2
+      Three students found the value of 362 + 354. Their          • Groups of 2
       work is shown. Explain how each method works.               • Give students access to base-ten blocks.
        1. Tyler’s drawing                                         • “In an earlier lesson, we saw many ways to find the
                                                                     value of a sum. Take a minute to look at how these 3
-                                                                    students added              .”
+                                                                    students added 362 + 354.”
                                                                   • 1 minute: quiet think time
 
 
@@ -255,10 +255,10 @@ Materials to Gather
      sum. Show your thinking. Organize it so it can be       • Give students access to base-ten blocks.
      followed by others.
                                                              • “Now you are going to have a chance to try the
-       1.                                                      algorithms that Lin and Han used in the last activity.
-       2.                                                      Take a minute to think about which algorithm you
+       1. 475 + 231                                            algorithms that Lin and Han used in the last activity.
+       2. 136 + 389                                            Take a minute to think about which algorithm you
                                                                want to use for each problem.”
-       3.
+       3. 670 + 257
                                                              • 1 minute: quiet think time
 
 Student Response
@@ -362,7 +362,7 @@ Addressing     3.NBT.A.2
 
 
      Student Task Statement
-     A diagram of the base-ten blocks that represent             is shown.
+     A diagram of the base-ten blocks that represent 138 + 425 is shown.
 
 
 

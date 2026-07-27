@@ -83,23 +83,23 @@ make use of the structure of whole numbers and the properties of operations (MP7
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 17- 7                                                   • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 17- 9
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 15 - 5
+        • 15 - 8
                                                                 Activity
 
 Student Response                                                  • Record answers and strategy.
                                                                   • Keep expressions and work displayed.
   • 10: 17 is 1 ten and 7 ones, so I took away the ones.
                                                                   • Repeat with each expression.
-  • 8: I knew that             , and then I took away 2
+  • 8: I knew that 17- 7 = 10 , and then I took away 2
     more.
-  • 10: I know that         is 15, so I took away the 5.        Activity Synthesis
+  • 10: I know that 10 + 5 is 15, so I took away the 5.         Activity Synthesis
   • 7: I took 5 away and counted back 3 more.                     • “How can we use the first expression to find the
-                                                                    value of the second one?” (I knew that               ,
+                                                                    value of the second one?” (I knew that 17- 7 = 10 ,
                                                                     and then I took away 2 more.)
 
 

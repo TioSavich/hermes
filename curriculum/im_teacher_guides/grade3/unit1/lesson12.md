@@ -148,7 +148,7 @@ Student Response                                                  • 2 minutes:
                                                                   • “What do these questions have in common? How are
   •                                                                 they different?”
   • Tyler has 15 baseballs because I counted by 5.                • Reveal the task (students open books), and invite
-  • Tyler has 15 baseballs.       or                                additional connections.
+  • Tyler has 15 baseballs. 3 × 5 or 5 × 3                          additional connections.
 
 
                                                                 Activity
@@ -163,8 +163,8 @@ Student Response                                                  • 2 minutes:
 
 
 
-                                           Grade 3                                     CC BY NC 2024
-                                            Unit 1
+                                             Grade 3                                   CC BY NC 2024
+                                              Unit 1
                                                             Lesson 12
                                                                                 Illustrative Mathematics®                3
                                                                    of the problem one at a time (drawings of equal
@@ -240,7 +240,7 @@ Student Response
     I used the groups to count the dots. Each dot                  such as drawings of equal groups or tape diagrams,
     represents a team.                                             as they solve the problems.
 
- 2. 14 pieces of glass. Sample response:   . I counted
+ 2. 14 pieces of glass. Sample response: 7 × 2. I counted
     by 2 seven times because each window had 2 pieces          Activity Synthesis
     of glass.
                                                                  • For each problem, display different representations,
@@ -294,20 +294,20 @@ Cool-down                                                                       
 
 Ducks in a Pond
 
-      Standards
+     Standards
 Addressing     3.OA.A.3
 
 
-      Student Task Statement
-      There are 4 ponds. Each pond has 5 ducks. How many ducks are there altogether?
+     Student Task Statement
+     There are 4 ponds. Each pond has 5 ducks. How many ducks are there altogether?
 
-      Use diagrams, symbols, or other ways to show your thinking.
+     Use diagrams, symbols, or other ways to show your thinking.
 
 
 Student Response
 20 ducks. Sample responses:
 
-  •
+  • 4 × 5
   • 5, 10, 15, 20
 
 

@@ -111,9 +111,9 @@ Students may notice:                                          Activity
                                                                   The second set shows ‘multiples of 10,000,’ and the
                                                                   third set shows ‘multiples of 100,000’.”
                                                                 • “How do we know that 85,000 is a multiple of 1,000?”
-                                                                  (                  )
+                                                                  (85 × 1,000 = 85,000)
                                                                 • “How do we know that 90,000 is a multiple of
-                                                                  10,000?” (                  )
+                                                                  10,000?” (9 × 10,000 = 90,000)
                                                                 • “Can a multiple of 1,000 also be a multiple of 10,000?
                                                                   If you think so, show some examples.” (Yes, for
 

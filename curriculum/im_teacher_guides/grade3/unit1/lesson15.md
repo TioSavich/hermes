@@ -81,12 +81,12 @@ regularity in the expressions (MP8).
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display the first expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 1 × 10                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 2 × 10
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 3 × 10
+        • 4 × 10
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
@@ -94,7 +94,7 @@ Student Response                                                  • Record ans
   • 10: It’s only 1 group of 10.
                                                                   • Repeat with each expression
   • 20: I added 10 more to the first answer.
-  • 30: I added                .
+  • 30: I added 10 + 10 + 10.
                                                                 Activity Synthesis
   • 40: I counted by 10 four times.
                                                                   • “What pattern do you see as you look at the
@@ -149,39 +149,39 @@ group is done, they can do a Gallery Walk to look for things that are the same o
       Student Task Statement                                      Launch
        For each problem:                                            • Groups of 2
 
-           • Write a multiplication equation with a symbol          • “We are going to solve some problems about equal
-             for the unknown to represent the situation.              groups that you may see when you are preparing to
+         • Write a multiplication equation with a symbol            • “We are going to solve some problems about equal
+           for the unknown to represent the situation.                groups that you may see when you are preparing to
                                                                       do an art project with your class.”
-           • Find the number that makes the equation true.
-             Show your reasoning.                                   • “What are some equal groups that you might see
+         • Find the number that makes the equation true.
+           Show your reasoning.                                     • “What are some equal groups that you might see
                                                                       when a class is working on an art project?”
         1. There are 15 bottles of paint. Han placed 5
                                                                     • Share responses.
            bottles of paint on each table. How many
            tables have paint on them?                               • “Think about how you could represent these
                                                                       problems in a way that could help you write an
-              a. equation:
+            a. equation:
                                                                       equation with an unknown number for each
-              b. solution:                                            problem.”
+            b. solution:                                              problem.”
         2. Lin’s class has 6 tables. Each table has 2 bags of       • 1 minute: quiet think time
            clay. How many bags of clay does the
                                                                     • 1 minute: partner discussion
            class have?
 
-              a. equation:
+            a. equation:
                                                                   Activity
-              b. solution:
+            b. solution:
                                                                     • “Now, independently work on these problems.”
         3. Han’s class has 60 markers. There are 10
            markers in a pack. How many packs of markers             • 5–7 minutes: independent work time
            does the class have?                                     • As you circulate, consider asking:
-              a. equation:                                             ◦ “How could you represent this situation?”
-              b. solution:                                             ◦ “What information is missing from the situation?”
+            a. equation:                                               ◦ “How could you represent this situation?”
+            b. solution:                                               ◦ “What information is missing from the situation?”
 
 
 Student Response                                                  Activity Synthesis
- 1.   a.              or                                            • Display samples of student work for each problem
-      b.               or                                             next to each other, including a drawing of equal
+ 1.   a. ? × 5 = 15 or 5 × ? = 15                                   • Display samples of student work for each problem
+      b. 3 × 5 = 15 or 5 × 3 = 15                                     next to each other, including a drawing of equal
                                                                       groups and a tape diagram.
       Sample response:
                                                                     • “Where do we see the parts of the problem in the
@@ -198,13 +198,13 @@ Student Response                                                  Activity Synth
                                                                     the product?” (The factors told me how many groups
                                                                     there were and how many were in each group.)
                                                                   • “How are drawings and diagrams useful for finding
- 2.   a.                    or
+ 2.   a. 6 × 2 = ___ or 2 × 6 = ___
                                                                     the solution to the problem?” (You can count the dots
-      b.              or                                            in the drawing. The diagram can be used to count by
+      b. 6 × 2 = 12 or 2 × 6 = 12                                   in the drawing. The diagram can be used to count by
       Sample response: I counted 2, 4, 6, 8, 10, 12.                10.)
 
- 3.   a.               or
-      b.               or
+ 3.   a. ? × 10 = 60 or 10 × ? = 60
+      b. 6 × 10 = 60 or 10 × 6 = 60
       Sample response:
 
 
@@ -273,10 +273,10 @@ Student Response
                                                                      ◦ “What do you notice is the same about the
                                                                        representations and strategies that we are using
                                                                        to solve these problems?”
- 4. 45 shirts. Sample response:             ,
-                  ,             . That’s 8 boxes. One
-    more is             .
- 5. 10 piles. Sample response:            . I know
+ 4. 45 shirts. Sample response: 5 + 5 = 10,
+    10 + 10 = 20, 20 + 20 = 40. That’s 8 boxes. One
+    more is 40 + 5 = 45.
+ 5. 10 piles. Sample response: 80 = ? × 8. I know 10 × 8
     is 80. So, 10 groups of 8 must be 80.
 
 
@@ -328,14 +328,14 @@ Student Response
 
 
 
- 2. 5 piles. Sample response:             . I know that      is 10.
+ 2. 5 piles. Sample response: 10 = ? × 2. I know that 5 × 2 is 10.
 
 
 Responding to Student Thinking
-Students find solutions other than 40 toys and 5 piles.        Next Day Supports
-                                                               Before the Warm-up, pass back the Cool-down and invite
+Students find solutions other than 40 toys and 5 piles.       Next Day Supports
+                                                              Before the Warm-up, pass back the Cool-down and invite
 Students do not clearly show how they found the solution
-                                                               students to work in small groups to make corrections.
+                                                              students to work in small groups to make corrections.
 or do not show a solution.
 
 
@@ -355,7 +355,7 @@ or do not show a solution.
 
                             Expression                                                  Equation
 
-
+                                 8 × 2                                                 8 × 2 = 16
 
 
                                            Grade 3                                    CC BY NC 2024
@@ -363,15 +363,15 @@ or do not show a solution.
                                                             Lesson 15
                                                                                Illustrative Mathematics®             6
 We learned that the numbers that are multiplied are called factors and the number that is the result of
-multiplying is called a product. In the equation          , the numbers 8 and 2 are the factors and 16 is the
+multiplying is called a product. In the equation 8 × 2 = 16, the numbers 8 and 2 are the factors and 16 is the
 product.
 
 
 
 
-                                    Grade 3                                   CC BY NC 2024
+                                    Grade 3                                    CC BY NC 2024
                                      Unit 1
-                                                    Lesson 15
-                                                                       Illustrative Mathematics®                7
+                                                     Lesson 15
+                                                                        Illustrative Mathematics®                7
 ```
 

@@ -112,10 +112,10 @@ measurements.
                                                                   angle?” (They look like   ,   , and     angles.)
 Student Response
                                                                 • “How do you know?” (If the paper is a rectangle, then
-Students may notice:                                              the corner pieces are right angles or     each. Two of
-                                                                  the corner pieces would be          . Three pieces
+Students may notice:                                              the corner pieces are right angles or    each. Two of
+                                                                  the corner pieces would be 90 + 90. Three pieces
   • The rectangle looks like a piece of paper with 3
-                                                                  would be                .)
+                                                                  would be 90 + 90 + 90.)
     corners torn out.
                                                                 • “What angle would we get if we add the last corner
   • There are 3 angles.
@@ -326,18 +326,18 @@ Materials to Gather
 
 Student Response                                                    • “The shapes that result from the second and third
                                                                       folds are not the same. Do those folds produce
-Angles A and B each measure        . Angles C and D each              equal-size angles as well?” (Yes. The edges of the
-measure       . Angle E measures       .                              resulting angles match up exactly and meet at the
+Angles A and B each measure          . Angles C and D each            equal-size angles as well?” (Yes. The edges of the
+measure        . Angle E measures         .                           resulting angles match up exactly and meet at the
                                                                       same starting point, so the angles are the same size.)
 Sample reasoning:
                                                                     • “Which angle is greater, B or E?” (They are the same,
-  • Angles A and B are each half of        .                          both are    . Angle B is half of 90. Angle E is twice
+  • Angles A and B are each half of           .                       both are    . Angle B is half of 90. Angle E is twice
   • Angles C and D are the results of folding a right angle                .)
     in half and then folding each half in half again. This
     means the four angles at the bottom of the paper
-    are all equal. Each one is      , which is       .
+    are all equal. Each one is 90 ÷ 4, which is      .
   • The measure of Angle E is the sum of the measures
-    of C and D, so it is     +     .
+    of C and D, so it is 221/2 + 221/2.
 
 
 
@@ -350,8 +350,8 @@ Display:
 
 
 
-                                               Grade 4                                  CC BY NC 2024
-                                                Unit 7
+                                                  Grade 4                               CC BY NC 2024
+                                                   Unit 7
                                                                 Lesson 13
                                                                                  Illustrative Mathematics®              6
 “Here are some angles whose measurements we tried to find: Angle P, Angle S, and some angles composed of smaller
@@ -361,13 +361,13 @@ angles. We used different operations to find the unknown measurements.”
   , then dividing    by 2 gives us the measure of P.)
 
 “Which unknown angle can we find by multiplication?” (The angle made up of four         angles has a measurement of
-      .)
+4 × 30.)
 
 “Which unknown angle can we find by subtracting one angle from another?” (Angle S: We can subtract          from
 and divide by 2 to find the measure of S, which is .)
 
 “Which unknown angle can we find by adding known angles?” (Once we know the measure of Angle S, we can find the
-last angle:          , which is    .)
+last angle: 15 + 75 + 15, which is .)
 
 
 
@@ -416,8 +416,8 @@ Addressing     4.MD.C.7
 
 Student Response
  1.    .Sample response: Three times the measure of P is     , so P must measure    .
- 2.    . Sample response:            .
- 3.    . Sample response:                .
+ 2.    . Sample response: 90 ÷ 3 = 30.
+ 3.    . Sample response: 60 + 30 = 90.
 
 
 Responding to Student Thinking

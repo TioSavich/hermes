@@ -180,7 +180,7 @@ Materials to Gather
                                             Unit 4
                                                              Lesson 20
                                                                              Illustrative Mathematics®                  3
-      Student Task Statement                                  Launch
+     Student Task Statement                                   Launch
       How many ways can you make 94 using tens and              • Groups of 2
       ones?                                                     • Give each group access to connecting cubes in
       Show your thinking using drawings, numbers, or              towers of 10 and singles.
@@ -194,8 +194,8 @@ Sample response:                                                  to make 94 usi
     34 ones, 5 tens 44 ones, 4 tens 54 ones, 3 tens 64            have a different number of tens.”
     ones, 2 tens 74 ones, 1 ten 84 ones, 94 ones
                                                                 • 10 minutes: independent work time
-  •        ,        ,        ,        ,        ,        ,
-               ,        ,        ,                              • 4 minutes: partner discussion
+  • 90 + 4, 80 + 14, 70 + 24, 60 + 34, 50 + 44, 40 + 54,
+    30 + 64, 20 + 74, 10 + 84, 0 + 94                           • 4 minutes: partner discussion
                                                                 • Monitor for students who:
                                                                     ◦ Use connecting cubes to physically break apart a
                                                                       ten at a time to move between representations.

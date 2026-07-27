@@ -79,12 +79,12 @@ students will need to be able to find the difference between the estimate and ac
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 37- 20                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 37- 21
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 37- 17
+        • 37- 16
                                                                Activity
 
 Student Response                                                  • Record answers and strategy.
@@ -94,8 +94,8 @@ Student Response                                                  • Record ans
   • 16: I took 1 more away from the first problem.
   • 20: I took away 7 ones and got 30. Then I took away 1
     ten and got 20.                                            Activity Synthesis
-  • 21: I took away 10 and got 27. Then I took away 6             • “How could you use            to help you with
-    more.                                                                  ?”
+  • 21: I took away 10 and got 27. Then I took away 6             • “How could you use 37- 20 to help you with
+    more.                                                           37- 21 ?”
 
 
 

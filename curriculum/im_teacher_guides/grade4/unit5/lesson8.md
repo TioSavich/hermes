@@ -69,8 +69,8 @@ Lesson Timeline                                               Teacher Reflection
                                             Unit 5
                                                             Lesson 8
                                                                               Illustrative Mathematics®             1
- Activity 1                                  20 min             its relationship to 1 meter? What part of the task
-                                                                supported this reasoning?
+ Activity 1                                  20 min            its relationship to 1 meter? What part of the task
+                                                               supported this reasoning?
  Activity 2                                  15 min
 
  Synthesis Estimate                          10 min
@@ -79,12 +79,12 @@ Lesson Timeline                                               Teacher Reflection
 
 
 
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                        10 min
 
 Number Talk: Times Hundreds and Thousands
 
-      Standards                                                      Instructional Routines
-Building Toward       4.NBT.B.5                                   • Number Talk
+      Standards                                                     Instructional Routines
+Building Toward       4.NBT.B.5                                  • Number Talk
 
 
 This Number Talk encourages students to use what they know about multiples of 100, the relationship between
@@ -93,37 +93,37 @@ be helpful later in the lesson when students explore the relationship between ki
 measurements from the former to the latter.
 
 
-      Student Task Statement                                    Launch
-      Find the value of each expression mentally.                 • Display one expression.
+      Student Task Statement                                   Launch
+      Find the value of each expression mentally.                • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
-                                                                    explain how you got it.”
-        •
-                                                                  • 1 minute: quiet think time
-        •
+        • 3 × 100                                                • “Give me a signal when you have an answer and can
+                                                                   explain how you got it.”
+        • 40 × 100
+                                                                 • 1 minute: quiet think time
+        • 43 × 100
 
-        •                                                       Activity
-                                                                  • Record answers and strategies.
+        • 43 × 1,000                                           Activity
+                                                                 • Record answers and strategies.
 Student Response
-                                                                  • Keep expressions and work displayed.
-  • 300: 3 groups of 100 make 300.                                • Repeat with each expression.
-  • 4,000:            is 1,000, so         is 4 times 1,000.
-  • 4,300: It is the sum of          and         , which is     Activity Synthesis
-                   .
-                                                                  • “How does knowing            help you find
-  • 43,000: 1,000 is 10 times 100, so             is 10
-                                                                             ?” (1,000 is 10 times 100, so if we know
-    times as much as           .
-                                                                           , we can multiply that by 10 to find
-                                                                             .)
+                                                                 • Keep expressions and work displayed.
+  • 300: 3 groups of 100 make 300.                               • Repeat with each expression.
+  • 4,000: 10 × 100 is 1,000, so 40 × 100 is 4 times 1,000.
+  • 4,300: It is the sum of 40 × 100 and 3 × 100, which is     Activity Synthesis
+    4,000 + 300.
+                                                                 • “How does knowing 43 × 100 help you find
+  • 43,000: 1,000 is 10 times 100, so 43 × 1,000 is 10
+                                                                   43 × 1,000?” (1,000 is 10 times 100, so if we know
+    times as much as 43 × 100.
+                                                                   43 × 100, we can multiply that by 10 to find
+                                                                   43 × 1,000.)
 
 
 
 
-                                            Grade 4                                   CC BY NC 2024
+                                            Grade 4                                  CC BY NC 2024
                                              Unit 5
-                                                               Lesson 8
-                                                                               Illustrative Mathematics®                 2
+                                                              Lesson 8
+                                                                              Illustrative Mathematics®                 2
 Activity 1                                                                                                      20 min
                                                                                                                 PLC Activity
 How Long Is 1 Kilometer?
@@ -188,18 +188,18 @@ Materials to Gather                                             Materials to Cop
            c. One kilometer is the length of (about,               other objects to represent 1 kilometer: a soccer field,
               exactly) __________ Olympic-size swimming            the Statue of Liberty, an Olympic-size pool, and a
               pools.                                               basketball court.”
-           d. One kilometer is the length of (about,             • “Work with your group to complete the rest of the
-              exactly) __________ basketball courts.               activity.”
+          d. One kilometer is the length of (about,              • “Work with your group to complete the rest of the
+             exactly) __________ basketball courts.                activity.”
       4. Estimate where you might end up if you travel           • “Each group member should choose a different
          1 kilometer from your school’s front door.                object and think about how many of them are
                                                                    needed to represent exactly or approximately 1
                                                                    kilometer.”
 Student Response
                                                                  • “Think about how many more of your chosen object
-1. 10 races, because                     .                         you’ll need to reach 1 kilometer.”
+1. 10 races, because 10 × 100 = 1,000.                             you’ll need to reach 1 kilometer.”
 2. Sample responses for the soccer field:                        • 10–12 minutes: group work time
-     ◦           is 990, and 1,000 is just 10 away from
-         990.
+     ◦ 9 × 110 is 990, and 1,000 is just 10 away from
+       990.
                                                                Activity Synthesis
      ◦ If we put five soccer fields in a row, edge to edge,
                                                                  • Select students to share their work on how the four
@@ -234,22 +234,22 @@ Student Response
 
 
 
-                                             Grade 4                                 CC BY NC 2024
-                                              Unit 5
+                                            Grade 4                                  CC BY NC 2024
+                                             Unit 5
                                                               Lesson 8
                                                                               Illustrative Mathematics®              4
 Activity 2                                                                                                         15 min
 
 Meters and Kilometers
 
-     Standards
+      Standards
 Addressing      4.MD.A.1, 4.MD.A.2
 
 
 The purpose of this activity is for students to convert measurements from kilometers into meters and to reason the
 other way around. When the given measurement is a whole number of kilometers, students likely will multiply the whole
-number by 1,000 to find its equivalent in meters. For     kilometer, they likely will reason that half of 1,000 is 500, or that
-1,000 divided by 2 is 500. Students are not expected to reason multiplicatively or to know that                is 500. The
+number by 1,000 to find its equivalent in meters. For 1/2 kilometer, they likely will reason that half of 1,000 is 500, or that
+1,000 divided by 2 is 500. Students are not expected to reason multiplicatively or to know that 1/2 × 1,000 is 500. The
 Lesson Synthesis focuses on discussing Andre's reasoning from the task.
 
 MLR7 Compare and Connect. Synthesis: After all strategies have been presented, lead a discussion comparing,
@@ -263,26 +263,26 @@ share with you or a partner.
 Supports accessibility for: Conceptual Processing, Language, Organization
 
 
-     Student Task Statement                                       Launch
+      Student Task Statement                                      Launch
        1. Complete the table                                        • Groups of 2
-          with the unknown            kilometers     meters         • Display the table for all to see.
-          lengths in meters or            (km)        (m)
+          with the unknown              kilometers     meters       • Display the table for all to see.
+          lengths in meters or              (km)        (m)
           in kilometers.                                            • “What do you notice? What do you wonder?”
-                                                                    • 30 seconds: quiet think time
+                                             1/2                    • 30 seconds: quiet think time
                                                                     • 30 seconds: partner discussion
-                                           1            1,000
+                                             1          1,000
                                                                     • Students may have noticed and wondered about the
-                                           5                          “km” and the “m” in the table. Clarify that these are
+                                             5                        “km” and the “m” in the table. Clarify that these are
                                                                       abbreviations for kilometers and meters,
                                                         6,000         respectively.
-
+                                            81/2
 
                                                                   Activity
-                                           10
+                                             10
                                                                     • 6–7 minutes: independent work time
                                                         12,000      • 2–3 minutes: partner discussion
 
-                                           27                       • Monitor for the different ways students reason about
+                                             27                     • Monitor for the different ways students reason about
                                                                       27 kilometers. For instance, they may:
        2. Andre says 100 meters is longer than 10
                                                                         ◦ Count by 1,000 twenty-seven times.
@@ -293,14 +293,14 @@ Supports accessibility for: Conceptual Processing, Language, Organization
              a. 2,000 meters or 3 kilometers                            ◦ Use the previous values in the table, reasoning
 
 
-                                            Grade 4                                      CC BY NC 2024
-                                             Unit 5
+                                              Grade 4                                    CC BY NC 2024
+                                               Unit 5
                                                                  Lesson 8
-                                                                                  Illustrative Mathematics®                  5
-           b. 500 meters or 1 kilometer                             that                  and adding the
-                                                                    corresponding values in meters
+                                                                                  Illustrative Mathematics®                 5
+           b. 500 meters or 1 kilometer                                 that 27 = 12 + 10 + 5 and adding the
+                                                                        corresponding values in meters
             c. 14 kilometers or 14,000 meters
-                                                                    (                        ).
+                                                                        (12,000 + 10,000 + 5,000).
            d. 8 kilometers or 80,000 meters
                                                                  ◦ Multiply 27 by 1,000.
 
@@ -309,7 +309,7 @@ Student Response
                  kilometer (km)   meter (m)                  • Display the table.
  1.
                                                              • Invite selected students to share their reasoning on
-                                     500
+                          1/2        500
                                                                how they converted each whole-number
                                                                measurement. Start with students who reasoned by
                            1        1,000
@@ -317,9 +317,9 @@ Student Response
                            5        5,000                      multiplicatively.
                                                              • Discuss how students found the number of meters in
                            6        6,000
-                                                                  kilometer and     kilometers. Record their
+                                                                1/2   kilometer and 81/2 kilometers. Record their
 
-                                    8,500                       reasoning.
+                         81/2       8,500                       reasoning.
 
 
                          10         10,000
@@ -357,10 +357,10 @@ considering the units in which they were measured.
 
 
 
-                                            Grade 4                                 CC BY NC 2024
+                                            Grade 4                                  CC BY NC 2024
                                              Unit 5
                                                          Lesson 8
-                                                                             Illustrative Mathematics®         6
+                                                                              Illustrative Mathematics®             6
 Suggested Centers
   • How Close? (1–5), Stage 6: Multiply to 3,000 (Addressing)
   • Compare (1–5), Stage 3: Multiply within 100 (Supporting)
@@ -383,7 +383,7 @@ Addressing     4.MD.A.1, 4.MD.A.2
 
 
 Student Response
- 1. 7,000 meters. Sample reasoning: 1 kilometer is 1,000 meters, so 7 kilometers is            , which is 7,000.
+ 1. 7,000 meters. Sample reasoning: 1 kilometer is 1,000 meters, so 7 kilometers is 7 × 1,000, which is 7,000.
  2. Clare lives closer to school. Sample reasoning: One kilometer is 1,000 meters, and 800 meters is not even 1
     kilometer, so it is much less than 7 kilometers.
 

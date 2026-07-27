@@ -319,7 +319,7 @@ Addressing     5.NF.B.3
 
 Student Response
 Sample response: I understand how a fraction can be understood as the numerator divided by the denominator.
-(        )
+(a ÷ b = a/b)
 
 
 

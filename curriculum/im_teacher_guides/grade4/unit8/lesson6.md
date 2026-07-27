@@ -103,16 +103,16 @@ Student Response
   • A vertical stack of 6 in the middle, 2 vertical groups of
                                                                  Activity Synthesis
     4 on either side of it, and 2 triangular groups of 3 on
-    either end:                                                    • “How does the arrangement of dots help you find the
+    either end: 6 + (2 × 4) + (2 × 3) = 20                         • “How does the arrangement of dots help you find the
   • A 6-dot line of symmetry separating 2 sets of 7 dots:            number?” (It has lines of symmetry. We can count the
-                                                                     dots on one side of the line and double it, without
+    7 + 6 + 7 = 20                                                   dots on one side of the line and double it, without
                                                                      counting one by one.)
   • 3 groups of 7 is 21, so 2 groups of 7 and a group of 6
     is 20.                                                         • Consider asking:
 
   • A 3-by-4 array in the middle, plus 2 groups of 3 on               ◦ “Who can restate the way _____ saw the dots in
     the left and right sides, plus 2 dots at the top and                different words?”
-    bottom:                                                           ◦ “Did anyone see the dots the same way but
+    bottom: (3 × 4) + (2 × 3) + 2 = 12 + 6 + 2 = 20                   ◦ “Did anyone see the dots the same way but
                                                                         would explain it differently?”
                                                                       ◦ “Does anyone want to add an observation to the
                                                                         way _____ saw the dots?”

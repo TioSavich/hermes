@@ -78,7 +78,7 @@ Warm-up                                                                         
 
 Number Talk: Unknown Values
 
-     Standards                                                     Instructional Routines
+      Standards                                                    Instructional Routines
 Addressing      1.OA.B.4, 1.OA.D.8                             • Number Talk
 
 
@@ -88,14 +88,14 @@ These understandings help students develop fluency and will be helpful later in 
 addend problems.
 
 
-     Student Task Statement                                  Launch
+      Student Task Statement                                 Launch
       Find the unknown value mentally.                         • Display one expression.
 
         •                                                      • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-        •
+        • 5 - 4 =
                                                                • 1 minute: quiet think time
-        •
+        • 8 - 6 =
 
         •                                                    Activity
                                                                • Record answers and strategy.
@@ -104,7 +104,7 @@ Student Response
   • 1: 4 and 1 more is 5.                                      • Repeat with each expression.
   • 1: It’s like the first equation, 4 and 1 more is 5.
   • 2: 6 and 2 more is 8.                                    Activity Synthesis
-  • 2: If       is 2, then      is 8.
+  • 2: If 8 - 6 is 2, then 6 + 2 is 8.
                                                                • “How can finding the unknown value in the first
                                                                  equation help you with the second equation?” (I
                                                                  know that 1 more than 4 is 5, so 5 minus 4 is also 1.)
@@ -120,7 +120,7 @@ Activity 1                                                                      
 
 Revisit Math Stories—Add and Subtract
 
-     Standards
+      Standards
 Addressing      1.OA.A.1
 
 

@@ -253,7 +253,7 @@ Student Response                                              Launch
 Sample response:                                                • Groups of 2
 
 They planted 7 more tomato plants than cucumber
-plants.          or           .                               Activity
+plants. 12- 5 = 7 or 5 + 7 = 12.                              Activity
                                                                 • “Find another group to work with. Trade story
                                                                   problems and solve each other’s problems. Be sure
                                                                   to answer their question and make sure they agree

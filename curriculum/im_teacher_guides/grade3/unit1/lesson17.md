@@ -358,7 +358,7 @@ Addressing     3.OA.A.1
                                                            Lesson 17
                                                                                Illustrative Mathematics®            6
 Student Response
- 1. Students create a      ,     ,       , or         array.
+ 1. Students create a 4 × 5, 5 × 4, 2 × 10, or 10 × 2 array.
  2. Sample response: There are 5 dots in each group and there are 5 dots in each row. There are 4 groups and there
     are 4 rows. They both have 20 dots.
 
@@ -375,8 +375,8 @@ concepts developed in a prior unit.                            Grade 2, Unit 8, 
 
 
 
-                                         Grade 3                                     CC BY NC 2024
-                                          Unit 1
+                                           Grade 3                                   CC BY NC 2024
+                                            Unit 1
                                                            Lesson 17
                                                                               Illustrative Mathematics®          7
 ```

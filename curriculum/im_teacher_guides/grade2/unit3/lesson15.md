@@ -78,7 +78,7 @@ Warm-up                                                                         
 Number Talk: Subtraction within 50
 
      Standards                                                      Instructional Routines
-Addressing       2.NBT.B.5                                       • Number Talk
+Addressing     2.NBT.B.5                                         • Number Talk
 
 
 The purpose of this Number Talk is to activate students’ previous experiences with subtracting multiples of ten and
@@ -90,24 +90,24 @@ expressions to find their values helps students build fluency (MP7).
      Student Task Statement                                   Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 47- 20                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 47- 24
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 36- 10
+        • 36- 15
                                                               Activity
 
 Student Response                                                 • Record answers and strategy.
                                                                  • Keep expressions and work displayed.
   • 27: I counted back by ten.
                                                                  • Repeat with each expression.
-  • 23: I knew               , so I took away 4 more.
+  • 23: I knew 47- 20 = 27 , so I took away 4 more.
   • 26: I just subtracted 1 ten from 3 tens. The ones
     didn't change.                                            Activity Synthesis
-  • 21: I knew               , then          .                   • “How did the first expression help you find the value
+  • 21: I knew 30- 10 = 20 , then 6- 5 = 1 .                     • “How did the first expression help you find the value
                                                                    of the second expression?” (I already knew that
-                                                                                , so I just took away 4 more.)
+                                                                   47- 20 = 27 , so I just took away 4 more.)
                                                                  • Consider asking:
                                                                     ◦ “Did anyone approach the problem in a different
                                                                       way?”
@@ -121,7 +121,7 @@ Activity 1                                                                      
 Measure and Plot Pencil Lengths
 
      Standards
-Addressing       2.MD.A.1, 2.MD.D.9
+Addressing     2.MD.A.1, 2.MD.D.9
 
 
                                           Grade 2                                    CC BY NC 2024

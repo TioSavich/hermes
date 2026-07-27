@@ -191,7 +191,7 @@ Student Response
                                                                  share.
                                                                • “There were 5 ducks in the pond and then 4 more
                                                                  ducks came to swim in the pond. We can write that
-                                                                 as ‘5 and 4’ or ‘  ’. When we write      , it is called
+                                                                 as ‘5 and 4’ or ‘5 + 4’. When we write 5 + 4, it is called
                                                                  an expression.”
 
 
@@ -204,7 +204,7 @@ If students draw very detailed drawings, consider asking:
 
 
 
-Activity 2                                                                                                  10 min
+Activity 2                                                                                                    10 min
 
 Ducks Swim Ashore
 
@@ -223,10 +223,10 @@ What has changed is the action—instead of 4 ducks joining a group of 5, 4 duck
 
 
 
-                                   Kindergarten                                    CC BY NC 2024
+                                   Kindergarten                                     CC BY NC 2024
                                       Unit 4
                                                          Lesson 12
-                                                                            Illustrative Mathematics®                4
+                                                                             Illustrative Mathematics®                 4
      Advances: Speaking, Representing
 
 
@@ -268,7 +268,7 @@ Student Response
                                                               • Invite a student to share their representations.
                                                               • “There were 9 ducks swimming in the pond and then
                                                                 4 of the ducks left. We can write that as ‘9 take away
-                                                                4’ or ‘    ’. When we write        , it is called an
+                                                                4’ or ‘9- 4 ’. When we write 9- 4 , it is called an
                                                                 expression.”
 
 
@@ -341,7 +341,7 @@ Required Preparation
 
 
                                                                Activity Synthesis
-        Math Stories               Counting Collections
+      Math Stories                 Counting Collections
                                                                   • “What are your favorite materials to use during
                                                                     center time?”
 
@@ -369,13 +369,13 @@ Read the story problem from the second activity and draw this representation (or
 
 “How are the drawings different?” (In the second drawing, the group of 4 circles is crossed out.)
 
-Write       .
+Write 5 + 4.
 
 “There were 5 ducks in the pond and then 4 more ducks came to swim in the pond. The first drawing shows 5 plus 4.”
 
 Invite students to chorally repeat “5 plus 4” 1–2 times.
 
-Write “         .”
+Write “9- 4 .”
 
 “There were 9 ducks swimming in the pond and then 4 of the ducks waddle onto the grass. The second drawing shows 9
 minus 4.”

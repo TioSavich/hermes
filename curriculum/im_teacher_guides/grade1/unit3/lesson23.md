@@ -69,62 +69,62 @@ Materials to Gather
   • Number Cards 0–10: Activity 1
 
 
-Lesson Timeline                                                        Teacher Reflection Questions
-                                                                       Check in with your norms and routines. Are they
- Warm-up                                           10 min
-                                                                       promoting engagement from all of your students? Are
- Activity 1                                        15 min              there any adjustments you might make so that all
-                                                                       students do math tomorrow?
- Activity 2                                        20 min
+Lesson Timeline                                                   Teacher Reflection Questions
+                                                                  Check in with your norms and routines. Are they
+ Warm-up                                       10 min
+                                                                  promoting engagement from all of your students? Are
+ Activity 1                                    15 min             there any adjustments you might make so that all
+                                                                  students do math tomorrow?
+ Activity 2                                    20 min
 
- Synthesis Estimate                                10 min
+ Synthesis Estimate                            10 min
 
- Cool-down                                         5 min
+ Cool-down                                     5 min
 
 
 
-Warm-up                                                                                                            10 min
+Warm-up                                                                                                       10 min
 
 Number Talk: Subtract to Make 10
 
-      Standards                                                             Instructional Routines
-Addressing        1.OA.C.6                                               • Number Talk
+      Standards                                                        Instructional Routines
+Addressing        1.OA.C.6                                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for subtracting. The
-expressions are explicitly chosen to encourage students to use their understanding of the          structure of teen
+expressions are explicitly chosen to encourage students to use their understanding of the 10 + n structure of teen
 numbers to subtract (MP7). This method will be discussed in more depth in this lesson’s activities.
 
 
-      Student Task Statement                                           Launch
-      Find the value of each expression mentally.                        • Display one expression.
+      Student Task Statement                                      Launch
+      Find the value of each expression mentally.                   • Display one expression.
 
-          •                                                              • “Give me a signal when you have an answer and can
-                                                                           explain how you got it.”
-          •
-                                                                         • 1 minute: quiet think time
-          •
-          •
-                                                                       Activity
+        • 17- 7                                                     • “Give me a signal when you have an answer and can
+                                                                      explain how you got it.”
+        • 17- 7- 1
+                                                                    • 1 minute: quiet think time
+        • 17- 8
+        • 17- 9
+                                                                  Activity
 
-Student Response                                                         • Record answers and strategies.
-                                                                         • Keep expressions and work displayed.
-  • 10:           is 17, so        is 10.
-                                                                         • Repeat with each expression.
-  • 9: In the last problem I did            , and this is taking 1
+Student Response                                                    • Record answers and strategies.
+                                                                    • Keep expressions and work displayed.
+  • 10: 7 + 10 is 17, so 17- 7 is 10.
+                                                                    • Repeat with each expression.
+  • 9: In the last problem I did 17- 7 , and this is taking 1
     more away so, it’s 9.
-  • 9:      would get me to 10, and then subtract 1                    Activity Synthesis
+  • 9: 17- 7 would get me to 10, and then subtract 1              Activity Synthesis
     more and get 9.
-                                                                         • “Did anyone approach the problem in a different
-  • 8: I thought about it like addition           makes 10 and             way?”
+                                                                    • “Did anyone approach the problem in a different
+  • 8: I thought about it like addition 9 + 1 makes 10 and            way?”
     then I add 7 more to get to 17.
 
 
 
-                                                Grade 1                                     CC BY NC 2024
-                                                 Unit 3
-                                                                     Lesson 23
-                                                                                     Illustrative Mathematics®               2
+                                            Grade 1                                    CC BY NC 2024
+                                             Unit 3
+                                                                Lesson 23
+                                                                                Illustrative Mathematics®               2
 Activity 1                                                                                                    15 min
 
 Number Card Subtraction with 10-frames
@@ -186,8 +186,8 @@ Required Preparation
        Use drawings, numbers, or words.
                                                                  • 7 minutes: partner work time
                                                                  • Monitor for students who:
-                                                                    ◦ Take away to 10, then take away some more.
-                                                                    ◦ Take away from the 10, then count what is left.
+                                                                     ◦ Take away to 10, then take away some more.
+                                                                     ◦ Take away from the 10, then count what is left.
                                                                  • “On your own, pick your favorite round. Show how
                                                                    you found the value of the difference using drawings,
 Student Response
@@ -224,10 +224,10 @@ using one of the methods they discussed. Given the first step toward a calculati
 complete the calculation (MP3).
 
 During the Activity Synthesis, the teacher records equations to match the method shared. It is important that each step
-is written as its own equation. For example, when solving              , the teacher records:
+is written as its own equation. For example, when solving 13 - 6 =     , the teacher records:
 
-  •
-  •
+  • 13 - 3 = 10
+  • 10- 3 = 7
 
 
        Access for English Language Learners
@@ -258,10 +258,10 @@ Materials to Gather
                                                                  and suggest ways they could finish.”
                                                                • Display the first problem with Diego’s work.
                                                                • “Diego needs to find the value of the difference
-                                                                       .”
+                                                                 15 - 8.”
                                                                • “What did Diego do?” (He put 15 on his 10-frames
      What can Diego do next to find the difference?              and crossed out 5 to get to 10.)
-     Andre also finds the value of       .                     • 1 minute: quiet think time
+     Andre also finds the value of 15 - 8.                     • 1 minute: quiet think time
      He starts out by doing this:
                                                                • 1 minute: partner discussion
                                                                • “What could Diego do next to find the difference?”
@@ -277,13 +277,13 @@ Materials to Gather
      Show your thinking using drawings, numbers, or              10-frame to find the difference.)
      words.
 
-       1.                                                    Activity
-       2.                                                      • Read the Task Statement.
+       1. 14- 5                                              Activity
+       2. 13 - 6                                               • Read the Task Statement.
                                                                • 4 minutes: independent work time
                                                                • 2 minutes: partner discussion
 Student Response
                                                                • Monitor for a student who uses and can explain each
- 1. 9. Sample response: I put 14 counters on my                  way to subtract       .
+ 1. 9. Sample response: I put 14 counters on my                  way to subtract 14- 5 .
     10-frames. I took away 4 to get to 10. Then I took
     away 1 more to make 5. My answer is 9.
  2. 7. Sample response: I put 13 counters on my
@@ -313,7 +313,7 @@ If students take away without using the ten, consider asking:
 Lesson Synthesis
 “Today we used a ten to subtract from teen numbers.”
 
-Display       .
+Display 13 - 7.
 
 “How can we use a ten to help us find the value of the difference?” (I know that 13 is 10 and 3. I can take away the 3 and
 then I just have to take 4 more from 10. I know that is 6.)
@@ -330,7 +330,7 @@ Addressing        1.OA.C.6
 
 
      Student Task Statement
-      Find the value of       .
+      Find the value of 14- 6 .
 
       Show your thinking using drawings, words, or numbers.
 
@@ -339,7 +339,7 @@ Student Response
 8. Sample responses:
 
   • I put 14 on my double 10-frame. I took away 4 to get 10 and then another 2 to get 8.
-  • I took away 6 from the full 10-frame and saw that there were           left.
+  • I took away 6 from the full 10-frame and saw that there were 4 + 4 left.
 
 
 Responding to Student Thinking
@@ -347,10 +347,10 @@ Students take away 6 and count all that are left to find the     Next Day Suppor
 difference.                                                      Launch the lesson by highlighting the subtraction
 
 
-                                           Grade 1                                        CC BY NC 2024
+                                           Grade 1                                     CC BY NC 2024
                                             Unit 3
                                                                Lesson 23
-                                                                                   Illustrative Mathematics®            6
+                                                                                Illustrative Mathematics®               6
             methods discussed in the previous lesson.
 
 

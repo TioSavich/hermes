@@ -165,21 +165,21 @@ Student Response
     larger amount.
                                                                   • Monitor for students who consider the profit per
  2. $140.00 and $171.50. Sample response: School A                  book in their justifications for the third problem.
-    raises $4 for each book (                  ) so they
+    raises $4 for each book (12.00- 8.00 = 4 ) so they
     raise $140.00 for 35 books.
     School B raises $4.90 for each book                         Activity Synthesis
-    (                   ) so they raise $171.50 for 35
+    (12.90- 8.00 = 4.9 ) so they raise $171.50 for 35
                                                                   • “What is a reasonable mark-up price?” (I think 2 is
     books.
                                                                     reasonable because that would keep the price lower
  3. 12 or 13 books. Sample response: School B raises                and you would sell more books. I think 5 is
-    $49.00 from 10 books. (                    ) School A           reasonable because then you would make more
+    $49.00 from 10 books. (10 × 4.90 = 49.00) School A              reasonable because then you would make more
     would have to sell 12 or 13 books to raise about the            money from each book.)
     same amount of money since the profit for each
                                                                   • “What do you need to consider when deciding a
-    book for School A is $4 per book and
+    book for School A is $4 per book and 12 × 4 = 48
                                                                     mark-up price?” (You have to mark it up enough to
-    and             .
+    and 13 × 4 = 51.
                                                                     make a profit, but not so much that it's too expensive
                                                                     for people to buy.)
 
@@ -249,25 +249,25 @@ information not given in a situation, they model with mathematics (MP4).
                                            Unit 5
                                                           Lesson 26
                                                                               Illustrative Mathematics®                   4
-          book you chose.                                                 and chapter books which are preferred by
-                                                                          students.
+          book you chose.                                              and chapter books which are preferred by
+                                                                       students.
        3. Estimate how much money your school will
-          raise as a profit with your book fair.                     ◦ Make assumptions about the number of
-                                                                       attendees and the number of each type of book
+          raise as a profit with your book fair.                  ◦ Make assumptions about the number of
+                                                                    attendees and the number of each type of book
           Record an estimate that is:
-                                                                       sold.
+                                                                    sold.
 
-               too low       about right      too high
-                                                                Activity Synthesis
-                                                                  • Invite students to share their book fair plans.
+              too low       about right     too high
+                                                             Activity Synthesis
+                                                               • Invite students to share their book fair plans.
 
-       4. Explain or show your reasoning for the                  • Invite students to share their assumptions.
-          estimate. Include the assumptions you made.             • “Why did you make these assumptions?” (There are
-                                                                    600 students, so I thought that maybe only half
-Student Response                                                    would come since that is usually what happens. Since
-                                                                    the school wants to make a profit, but also make the
-Sample responses:                                                   books affordable, the mark-up price is only one more
-                                                                    dollar than the list price.)
+       4. Explain or show your reasoning for the               • Invite students to share their assumptions.
+          estimate. Include the assumptions you made.          • “Why did you make these assumptions?” (There are
+                                                                 600 students, so I thought that maybe only half
+Student Response                                                 would come since that is usually what happens. Since
+                                                                 the school wants to make a profit, but also make the
+Sample responses:                                                books affordable, the mark-up price is only one more
+                                                                 dollar than the list price.)
  1. Book choices:
       ◦ comic books $2.60
       ◦ history books $14.49
@@ -287,24 +287,24 @@ Sample responses:                                                   books afford
         people. If each group buys 1 book, the school
         makes at a minimum $600.
       ◦ About right: Maybe every family buys one history
-        book. This is a profit of $1,350 (          ) In
+        book. This is a profit of $1,350 (300 × 4.50) In
         addition, half of the families buy comic books,
         and the other half buys biographies. This means
-        a profit of almost $750. (                       ).
+        a profit of almost $750. (150 × 2 + 150 × 2.90).
         Let’s say there are another 100 attendees and
         they all buy one book. Half buy history books,
         one fourth buy comic books, and one fourth buy
         biographies. This is another $350 in profit.
-        (                                          ) So,
+        (50 × 4.50 + 25 × 2 + 25 × 2.90 = 347.50) So,
         the total is about $2,450.
 
 
 
 
-                                           Grade 5                                    CC BY NC 2024
-                                            Unit 5
-                                                              Lesson 26
-                                                                               Illustrative Mathematics®              5
+                                          Grade 5                                  CC BY NC 2024
+                                           Unit 5
+                                                           Lesson 26
+                                                                            Illustrative Mathematics®              5
 Lesson Synthesis
 “Today, you planned a book fair and made assumptions to make decisions about the book fair.”
 

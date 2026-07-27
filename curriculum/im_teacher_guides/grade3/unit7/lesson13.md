@@ -226,7 +226,7 @@ Student Response
                                            Unit 7
                                                             Lesson 13
                                                                              Illustrative Mathematics®              4
-Activity 2                                                                                                      15 min
+Activity 2                                                                                                     15 min
 
 Park Problems
 
@@ -244,50 +244,50 @@ students solve involve features that could be present in a park.
       Processing, Visual-Spatial Processing.
 
 
-      Student Task Statement                                      Launch
-      Solve each problem. Explain or show your                      • Groups of 2
+      Student Task Statement                                  Launch
+      Solve each problem. Explain or show your                  • Groups of 2
       reasoning.
 
-       1. A rectangular playground is 6 yards by 14               Activity
+       1. A rectangular playground is 6 yards by 14           Activity
           yards.
-                                                                    • “Work independently to solve the problems.”
+                                                                • “Work independently to solve the problems.”
              a. How much fencing is needed to fence in
-                the playground?                                     • 5–7 minutes: independent work time
+                the playground?                                 • 5–7 minutes: independent work time
 
-             b. What is the area of the playground?                 • Monitor for drawings of different dimensions that
-                                                                      students create for the last problem to share during
+             b. What is the area of the playground?             • Monitor for drawings of different dimensions that
+                                                                  students create for the last problem to share during
              c. Give another pair of side lengths for the
-                                                                      the Activity Synthesis.
+                                                                  the Activity Synthesis.
                 playground that would have the same
-                perimeter, but a different area.                    • “Discuss your solutions to the problems and how you
-                                                                      solved them with your partner.”
+                perimeter, but a different area.                • “Discuss your solutions to the problems and how you
+                                                                  solved them with your partner.”
        2. A planned rectangular field in a park will have
-          an area of 48 square yards. Give 2 possible               • 2–3 minutes: partner discussion
+          an area of 48 square yards. Give 2 possible           • 2–3 minutes: partner discussion
           perimeters for the field.
-                                                                  Activity Synthesis
-Student Response                                                    • For the last problem, display 3–4 different sets of
- 1.   a. 40 yards. Sample response:                .                  dimensions that students used to find the possible
-                     .                                                perimeters, one at a time.
+                                                              Activity Synthesis
+Student Response                                                • For the last problem, display 3–4 different sets of
+ 1.   a. 40 yards. Sample response: 6 + 14 = 20.                  dimensions that students used to find the possible
+         2 × 20 = 40.                                             perimeters, one at a time.
 
-      b. 84 square yards. Sample response:                  .       • For each set of dimensions, ask:
-                   .             .                                     ◦ “How do we know this rectangle has an area of
-      c. Sample response: 15 yards by 5 yards                            48 square yards?” (If you multiply   , it’s 48. I
-                                                                         multiplied       by multiplying      , then
+      b. 84 square yards. Sample response: 6 × 10 = 60.         • For each set of dimensions, ask:
+         6 × 4 = 24. 60 + 24 = 84.                                  ◦ “How do we know this rectangle has an area of
+      c. Sample response: 15 yards by 5 yards                         48 square yards?” (If you multiply 6 × 8, it’s 48. I
+                                                                      multiplied 2 × 24 by multiplying 2 × 20, then
  2. Sample response: A rectangle that is 3 yards by 16
-                                                                              and adding the products together to get
+                                                                      2 × 4 and adding the products together to get
     yards would have a perimeter of 38 yards. A
-                                                                         48.)
+                                                                      48.)
     rectangle that is 4 yards by 12 yards would have a
-    perimeter of 32 yards.                                             ◦ “What’s the perimeter of this rectangle? Explain
-                                                                         your reasoning.” (I doubled the short sides, then
-                                                                         doubled the long sides and added them
-                                                                         together. I added the short side and the long
+    perimeter of 32 yards.                                          ◦ “What’s the perimeter of this rectangle? Explain
+                                                                      your reasoning.” (I doubled the short sides, then
+                                                                      doubled the long sides and added them
+                                                                      together. I added the short side and the long
 
 
-                                           Grade 3                                      CC BY NC 2024
+                                           Grade 3                                   CC BY NC 2024
                                             Unit 7
-                                                                Lesson 13
-                                                                                 Illustrative Mathematics®               5
+                                                            Lesson 13
+                                                                              Illustrative Mathematics®                 5
                                                                         side, then doubled the amount.)
 
 
@@ -325,7 +325,7 @@ Student Response
 Sample responses:
 
 40 feet. A 4 foot by 16 foot rectangle would have an area of 64 square feet and a perimeter of 40 feet. 68 feet because I
-can multiply         to get 64, but                     .
+can multiply 2 × 32 to get 64, but 2 + 2 + 32 + 32 = 68.
 
 
 Responding to Student Thinking

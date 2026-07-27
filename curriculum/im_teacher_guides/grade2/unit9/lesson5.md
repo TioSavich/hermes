@@ -95,7 +95,7 @@ Student Response                                            Activity
 Sample responses:                                             • “What do you know about 308?”
   • 308 is 3 hundreds and 8 ones.                             • 1 minute: quiet think time
   • 308 is 30 tens and 8 ones.                                • Record responses.
-  • 308 is        .
+  • 308 is 300 + 8.
   • 308 is a three-digit number.                            Activity Synthesis
                                                               • “What are different ways we could represent 308?”
                                                               • If it doesn’t come up in student responses, consider
@@ -146,7 +146,7 @@ Materials to Gather
           tens and of ones.                                      • Give base-ten blocks to each group.
            a. What number do your base-ten blocks
               represent?
-                                                              Activity
+                         ___                                  Activity
            b. Represent the same number in another
               way. Show your thinking using drawings,            • “We are going to represent numbers in different
               numbers, or words.                                   ways. Start with base-ten blocks, but you may use
@@ -159,7 +159,7 @@ Materials to Gather
                                                                  • Take a picture or make a drawing of a groups’ blocks
               blocks represent?
                                                                    before and after they compose or decompose units
-                                                                   for use in the Synthesis.
+               ___                                                 for use in the Synthesis.
 
            b. Represent the same number in another
               way. Show your thinking using drawings,         Activity Synthesis
@@ -191,7 +191,7 @@ Student Response
                                                                 uses the fewest number of blocks, such as:
  2. Sample response:
      a. 587
-     b.
+     b. 500 + 80 + 7 = 587
  3. Sample response:
      a. 58 tens 7 ones
      b. 5 hundreds 87 ones
@@ -260,12 +260,12 @@ Sample responses:                                              you have time, yo
                                                              • 5 minutes: group work time
  • three hundred fifty-six
                                                              • “You are going to rotate to see other group’s posters.
- •                                                             One person from your group should place a
- •                                                             checkmark next to any representation your team
+ • 300 + 56                                                    One person from your group should place a
+ • 300 + 50 + 6                                                checkmark next to any representation your team
                                                                also used to show 356.”
- •
+ • 300 + 40 + 16
                                                              • Prompt groups to rotate to the next chart every 1
- •
+ • 200 + 150 + 6
                                                                minute.
 
 
@@ -349,7 +349,7 @@ Addressing        2.NBT.A
  1. Students circle B and C.
  2. Sample responses:
      ◦ 1 hundred + 16 tens + 3 ones
-     ◦
+     ◦ 200 + 60 + 3
      ◦ Students draw a base-ten diagram that shows 2 hundreds, 6 tens, and 3 ones.
 
 

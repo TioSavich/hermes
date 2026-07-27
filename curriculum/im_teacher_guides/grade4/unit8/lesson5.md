@@ -69,15 +69,15 @@ Required Preparation
                                                                                  Illustrative Mathematics®           1
 Lesson Timeline                                              Teacher Reflection Questions
                                                              What connections did students make between the
- Warm-up                                     10 min
+ Warm-up                                    10 min
                                                              different strategies shared? What questions did you ask to
- Activity 1                                  15 min          help make the connections more visible?
+ Activity 1                                 15 min           help make the connections more visible?
 
- Activity 2                                  20 min
+ Activity 2                                 20 min
 
- Activity 3                                  10 min
+ Activity 3                                 10 min
 
- Synthesis Estimate                          10 min
+ Synthesis Estimate                         10 min
 
  Cool-down                                   5 min
 
@@ -88,7 +88,7 @@ Warm-up                                                                         
 Number Talk: Keeping Track
 
       Standards                                                    Instructional Routines
-Addressing      4.NBT.B                                        • Number Talk
+Addressing     4.NBT.B                                         • Number Talk
 
 
 This Number Talk encourages students to think about place value and to rely on the structure of multi-digit numbers
@@ -100,52 +100,52 @@ line-symmetric figures.
       Student Task Statement                                 Launch
       Find the value of each expression mentally.              • Display one expression.
 
-        •                                                      • “Give me a signal when you have an answer and can
+        • 43 + 57 + 50 + 7 + 3 + 40                            • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-        •
+        • 243 + 57 + 43 + 257
                                                                • 1 minute: quiet think time
-        •
-        •
+        • 1,043 + 257 + 57 + 200 + 43 + 1,000
+        • 1,943 + 257 + 1 + 257 + 1,000 + 943
                                                              Activity
 
 Student Response                                               • Record answers and strategy.
                                                                • Keep expressions and work displayed.
-  • 200: There are two sets of         , one of them is
-    written in expanded form.                 , because        • Repeat with each expression.
-                  ,          , and                 . Two
+  • 200: There are two sets of 43 + 57, one of them is
+    written in expanded form. 43 + 57 = 100, because           • Repeat with each expression.
+    40 + 50 = 90, 7 + 3 = 10, and 90 + 10 = 100. Two
     times 100 gives 200.
                                                              Activity Synthesis
-  • 600:                 , so           is
-                      , which is 500. Adding another           • “How did you use the first expression to help solve
-              to 500 makes 600.                                  the expressions that follow?” (              , so
+  • 600: 43 + 57 = 100, so 243 + 257 is
+    200 + 200 + 100, which is 500. Adding another              • “How did you use the first expression to help solve
+    43 + 57 to 500 makes 600.                                    the expressions that follow?” (43 + 57 = 100, so
                                                                  anywhere we see numbers with that combination
   • 2,600:
                                                                  being added, we can add 100 instead.)
-      ◦ The expression has two sets of            (just
+      ◦ The expression has two sets of 257 + 43 (just
                                                                • Consider asking:
         written differently), plus two 1,000s.
-                        , and twice 300 is 600. Adding             ◦ “Who can restate _____’s reasoning in a different
+        257 + 43 = 300, and twice 300 is 600. Adding               ◦ “Who can restate _____’s reasoning in a different
                                                                      way?”
 
 
-                                            Grade 4                                CC BY NC 2024
-                                             Unit 8
+                                           Grade 4                                 CC BY NC 2024
+                                            Unit 8
                                                            Lesson 5
                                                                             Illustrative Mathematics®               2
           the 2,000 and 600 makes 2,600.                                 ◦ “Did anyone have the same strategy but would
                                                                            explain it differently?”
-      ◦                       ,               , and
-                                   , so                                  ◦ “Did anyone approach the expression in a
-                                          .                                different way?”
+      ◦   257 + 243 = 500, 57 + 43 = 100, and
+          1,000 + 1,000 = 2,000, so                                      ◦ “Did anyone approach the expression in a
+          2,000 + 500 + 100 = 2,600.                                       different way?”
   • 4,401:                                                               ◦ “Does anyone want to add on to _____’s strategy?”
       ◦ The expression is symmetrical, with 1 in the
-        middle and               (written in different
+        middle and 1,943 + 257 (written in different
         forms) on either side. We know that
-                         , and                      . Twice
+        43 + 257 = 300, and 1,900 + 300 = 2,200. Twice
         2,200 is 4,400. Adding the middle 1 gives 4,401.
-      ◦                      , and                        .
-          Adding 1,200 and 2,200 gives 3,400. Adding
-                    to 3,400 makes 4,401.
+      ◦ 943 + 257 = 1,200, and 1,943 + 257 = 2,200.
+        Adding 1,200 and 2,200 gives 3,400. Adding
+        1,000 + 1 to 3,400 makes 4,401.
 
 
 

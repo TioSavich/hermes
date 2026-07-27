@@ -81,12 +81,12 @@ reasoning on number lines.
      Student Task Statement                                   Launch
       Find the value that makes each equation true              • Display one equation.
       mentally.                                                 • “Give me a signal when you have an answer and can
-        •                                                         explain how you got it.”
+        • 421 + ___ = 500                                         explain how you got it.”
 
-        •                                                       • 1 minute: quiet think time
+        • 421 + ___ = 1,000                                     • 1 minute: quiet think time
 
-        •
-        •                                                     Activity
+        • 6,421 + ___ = 7,000
+        • 6,421 + ___ = 10,000                                Activity
                                                                 • Record answers and strategy.
 Student Response                                                • Keep equations and work displayed.
 

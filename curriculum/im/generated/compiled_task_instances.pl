@@ -8,8 +8,24 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(151, 821).
+compiled_task_instance_summary(186, 968).
 
+compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
+compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("7 + 2"))).
+compiled_lesson_task_instance('IM-G1-U1-L14', productive-add(4, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson14.md', lines(86, 86)), position(student_task_statement(1)/expression(1)), excerpt("4 + 2"))).
+compiled_lesson_task_instance('IM-G1-U1-L14', productive-add(8, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson14.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("8 + 2"))).
+compiled_lesson_task_instance('IM-G1-U1-L4', productive-add(6, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson4.md', lines(101, 101)), position(student_task_statement(1)/expression(1)), excerpt("6 + 1"))).
+compiled_lesson_task_instance('IM-G1-U1-L4', productive-add(6, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson4.md', lines(103, 103)), position(student_task_statement(1)/expression(2)), excerpt("6 + 2"))).
+compiled_lesson_task_instance('IM-G1-U1-L4', productive-add(8, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson4.md', lines(105, 105)), position(student_task_statement(1)/expression(3)), excerpt("8 + 1"))).
+compiled_lesson_task_instance('IM-G1-U1-L4', productive-add(8, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson4.md', lines(106, 106)), position(student_task_statement(1)/expression(4)), excerpt("8 + 2"))).
 compiled_lesson_task_instance('IM-G1-U2-L1', deformation(count_all_when_count_on_available)-add(5, 2),
                               task_evidence(rule(g1_books_count_all_response), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', lines(293, 295)), position(activity_2_item(1)), excerpt("They count all the counters"))).
 compiled_lesson_task_instance('IM-G1-U2-L1', productive-add(5, 2),
@@ -72,16 +88,32 @@ compiled_lesson_task_instance('IM-G1-U3-L17', deformation(count_all_when_count_o
                               task_evidence(rule(g1_birds_count_all_response), source('curriculum/im_teacher_guides/grade1/unit3/lesson17.md', lines(355, 355)), position(cool_down_item(1)), excerpt("Students count all to find the sum."))).
 compiled_lesson_task_instance('IM-G1-U3-L17', productive-add(8, 6),
                               task_evidence(rule(g1_sitting_birds), source('curriculum/im_teacher_guides/grade1/unit3/lesson17.md', lines(337, 340)), position(cool_down_item(1)), excerpt("8 birds sit in a tree."))).
+compiled_lesson_task_instance('IM-G1-U3-L19', productive-add(5, 8),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson19.md', lines(96, 96)), position(student_task_statement(1)/expression(1)), excerpt("5 + 8"))).
+compiled_lesson_task_instance('IM-G1-U3-L19', productive-add(6, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson19.md', lines(98, 98)), position(student_task_statement(1)/expression(2)), excerpt("6 + 7"))).
+compiled_lesson_task_instance('IM-G1-U3-L19', productive-add(6, 9),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson19.md', lines(101, 101)), position(student_task_statement(1)/expression(4)), excerpt("6 + 9"))).
+compiled_lesson_task_instance('IM-G1-U3-L19', productive-add(8, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson19.md', lines(100, 100)), position(student_task_statement(1)/expression(3)), excerpt("8 + 7"))).
 compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(2, 8),
                               task_evidence(rule(story_join_result_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(196, 203)), position(student_task_statement(2)/item(4)), excerpt("3. Clare spills 2 red counters and 8 yellow counters. How many counters did she spill in all?"))).
 compiled_lesson_task_instance('IM-G1-U3-L2', deformation(count_all_when_count_on_available)-add(3, 6),
                               task_evidence(rule(g1_han_spills_3_6_error), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(206, 206)), position(activity_1_item(4)), excerpt("Counting all."))).
 compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(3, 6),
                               task_evidence(rule(g1_han_spills_3_6), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(205, 207)), position(activity_1_item(4)), excerpt("Han spills 3 red counters and 6 yellow"))).
+compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(4, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(101, 101)), position(student_task_statement(1)/expression(1)), excerpt("4 + 2"))).
+compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(5, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(103, 103)), position(student_task_statement(1)/expression(2)), excerpt("5 + 2"))).
 compiled_lesson_task_instance('IM-G1-U3-L2', deformation(count_all_when_count_on_available)-add(5, 3),
                               task_evidence(rule(g1_shake_spill_tyler_count_all), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(222, 222)), position(activity_2_item(2)), excerpt("Draws 5 circles and 3 circles and counts all"))).
 compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(5, 3),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(105, 105)), position(student_task_statement(1)/expression(3)), excerpt("5 + 3"))).
+compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(5, 3),
                               task_evidence(rule(g1_shake_spill_tyler), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(184, 184)), position(activity_2_item(2)), excerpt("Tyler spills 5 red counters and 3 yellow"))).
+compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(6, 3),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(106, 106)), position(student_task_statement(1)/expression(4)), excerpt("6 + 3"))).
 compiled_lesson_task_instance('IM-G1-U3-L2', productive-add(7, 2),
                               task_evidence(rule(story_join_result_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(169, 182)), position(student_task_statement(2)/item(2)), excerpt("1. Priya spills 7 red counters and 2 yellow counters. How many counters did she spill in all?"))).
 compiled_lesson_task_instance('IM-G1-U3-L22', productive-subtract(16, 7),
@@ -94,16 +126,108 @@ compiled_lesson_task_instance('IM-G1-U3-L6', productive-subtract(10, 3),
                               task_evidence(rule(g1_shake_spill_10_3), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(164, 165)), position(activity_1), excerpt("Now he has 10 counters in his cup."))).
 compiled_lesson_task_instance('IM-G1-U3-L6', productive-subtract(7, 4),
                               task_evidence(rule(story_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(272, 277)), position(student_task_statement(3)/item(3)), excerpt("2. Kiran has 4 counters in a cup. He puts more counters in. Now he has 7 counters in his cup. How many more counters did Kiran put in his cup?"))).
+compiled_lesson_task_instance('IM-G1-U4-L13', productive-add(10, 4),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(80, 80)), position(student_task_statement(1)/expression(1)), excerpt("10 + 4"))).
+compiled_lesson_task_instance('IM-G1-U4-L13', productive-add(9, 4),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(82, 82)), position(student_task_statement(1)/expression(2)), excerpt("9 + 4"))).
+compiled_lesson_task_instance('IM-G1-U4-L13', productive-add(9, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(84, 84)), position(student_task_statement(1)/expression(3)), excerpt("9 + 6"))).
 compiled_lesson_task_instance('IM-G1-U4-L14', deformation(ones_digit_substituted_for_place_value_comparison)-compare_numerals_by_place_value(39, 41, 10),
                               task_evidence(rule(g1_compare_ones_digits_only), source(e343_pdf('1st/Number Operations/1st_CountCompare_AddW20_teacherguide.pdf', pages("6-7"))), position(activity_2(elena_and_noah_compare_numbers)), excerpt("Noah says 39 is greater than 41 because it has a 9 and 9 is the greatest number."))).
 compiled_lesson_task_instance('IM-G1-U4-L14', productive-compare_numerals_by_place_value(39, 41, 10),
                               task_evidence(rule(g1_place_value_compare_noah), source(e343_pdf('1st/Number Operations/1st_CountCompare_AddW20_teacherguide.pdf', pages("6-7"))), position(activity_2(elena_and_noah_compare_numbers)), excerpt("Noah says 39 is greater than 41 because it has a 9 and 9 is the greatest number."))).
 compiled_lesson_task_instance('IM-G1-U4-L14', productive-compare_numerals_by_place_value(75, 65, 10),
                               task_evidence(rule(g1_place_value_compare_elena), source(e343_pdf('1st/Number Operations/1st_CountCompare_AddW20_teacherguide.pdf', pages("6-7"))), position(activity_2(elena_and_noah_compare_numbers)), excerpt("Elena says 75 is greater than 65 because 7 is greater than 6."))).
+compiled_lesson_task_instance('IM-G1-U4-L18', productive-add(32, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson18.md', lines(81, 81)), position(student_task_statement(1)/expression(1)), excerpt("32 + 10"))).
+compiled_lesson_task_instance('IM-G1-U4-L18', productive-add(32, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson18.md', lines(83, 83)), position(student_task_statement(1)/expression(2)), excerpt("32 + 10"))).
+compiled_lesson_task_instance('IM-G1-U4-L18', productive-add(32, 20),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson18.md', lines(85, 85)), position(student_task_statement(1)/expression(3)), excerpt("32 + 20"))).
+compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(3, 68),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(89, 89)), position(student_task_statement(1)/expression(2)), excerpt("3 + 68"))).
+compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(45, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(92, 92)), position(student_task_statement(1)/expression(4)), excerpt("45 + 7"))).
+compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(5, 45),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(91, 91)), position(student_task_statement(1)/expression(3)), excerpt("5 + 45"))).
+compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(68, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("68 + 2"))).
+compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(94, 94)), position(student_task_statement(1)/expression(4)), excerpt("38 + 15"))).
+compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("38 + 2"))).
+compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(93, 93)), position(student_task_statement(1)/expression(3)), excerpt("38 + 5"))).
+compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(40, 3),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("40 + 3"))).
 compiled_lesson_task_instance('IM-G1-U6-L14', productive-subtract(16, 6),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade1/unit6/lesson14.md', lines(302, 311)), position(student_task_statement(2)/item(6)), excerpt("5. Noah has 6 stamps. Tyler has 16 stamps. How many fewer stamps does Noah have than Tyler?"))).
 compiled_lesson_task_instance('IM-G1-U6-L15', productive-subtract(17, 8),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade1/unit6/lesson15.md', lines(165, 170)), position(student_task_statement(2)/item(5)), excerpt("4. Mai made 8 frogs. Diego made 17 frogs. How many more frogs did Diego make than Mai?"))).
+compiled_lesson_task_instance('IM-G1-U6-L16', productive-add(65, 20),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson16.md', lines(88, 88)), position(student_task_statement(1)/expression(1)), excerpt("65 + 20"))).
+compiled_lesson_task_instance('IM-G1-U6-L16', productive-add(65, 20),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson16.md', lines(92, 92)), position(student_task_statement(1)/expression(3)), excerpt("65 + 20"))).
+compiled_lesson_task_instance('IM-G1-U6-L16', productive-add(65, 21),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson16.md', lines(93, 93)), position(student_task_statement(1)/expression(4)), excerpt("65 + 21"))).
+compiled_lesson_task_instance('IM-G1-U6-L16', productive-add(85, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson16.md', lines(90, 90)), position(student_task_statement(1)/expression(2)), excerpt("85 + 1"))).
+compiled_lesson_task_instance('IM-G1-U6-L2', productive-add(30, 45),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson2.md', lines(101, 101)), position(student_task_statement(1)/expression(3)), excerpt("30 + 45"))).
+compiled_lesson_task_instance('IM-G1-U6-L2', productive-add(35, 20),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson2.md', lines(97, 97)), position(student_task_statement(1)/expression(1)), excerpt("35 + 20"))).
+compiled_lesson_task_instance('IM-G1-U6-L2', productive-add(35, 25),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson2.md', lines(99, 99)), position(student_task_statement(1)/expression(2)), excerpt("35 + 25"))).
+compiled_lesson_task_instance('IM-G1-U6-L2', productive-add(37, 45),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson2.md', lines(102, 102)), position(student_task_statement(1)/expression(4)), excerpt("37 + 45"))).
+compiled_lesson_task_instance('IM-G1-U6-L4', productive-add(29, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson4.md', lines(86, 86)), position(student_task_statement(1)/expression(2)), excerpt("29 + 6"))).
+compiled_lesson_task_instance('IM-G1-U6-L4', productive-add(39, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson4.md', lines(88, 88)), position(student_task_statement(1)/expression(3)), excerpt("39 + 7"))).
+compiled_lesson_task_instance('IM-G1-U6-L4', productive-add(39, 9),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson4.md', lines(89, 89)), position(student_task_statement(1)/expression(4)), excerpt("39 + 9"))).
+compiled_lesson_task_instance('IM-G1-U6-L4', productive-add(9, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson4.md', lines(84, 84)), position(student_task_statement(1)/expression(1)), excerpt("9 + 6"))).
+compiled_lesson_task_instance('IM-G1-U7-L14', productive-add(30, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson14.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("30 + 10"))).
+compiled_lesson_task_instance('IM-G1-U7-L14', productive-add(30, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson14.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("30 + 15"))).
+compiled_lesson_task_instance('IM-G1-U7-L14', productive-add(30, 30),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson14.md', lines(102, 102)), position(student_task_statement(1)/expression(3)), excerpt("30 + 30"))).
+compiled_lesson_task_instance('IM-G1-U7-L14', productive-add(30, 35),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson14.md', lines(103, 103)), position(student_task_statement(1)/expression(4)), excerpt("30 + 35"))).
+compiled_lesson_task_instance('IM-G1-U7-L16', productive-add(8, 32),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson16.md', lines(95, 95)), position(student_task_statement(1)/expression(1)), excerpt("8 + 32"))).
+compiled_lesson_task_instance('IM-G1-U7-L16', productive-add(8, 33),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson16.md', lines(97, 97)), position(student_task_statement(1)/expression(2)), excerpt("8 + 33"))).
+compiled_lesson_task_instance('IM-G1-U7-L16', productive-add(8, 38),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson16.md', lines(99, 99)), position(student_task_statement(1)/expression(3)), excerpt("8 + 38"))).
+compiled_lesson_task_instance('IM-G1-U7-L16', productive-add(8, 48),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson16.md', lines(100, 100)), position(student_task_statement(1)/expression(4)), excerpt("8 + 48"))).
+compiled_lesson_task_instance('IM-G1-U7-L6', productive-add(57, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson6.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("57 + 10"))).
+compiled_lesson_task_instance('IM-G1-U7-L6', productive-add(57, 11),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson6.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("57 + 11"))).
+compiled_lesson_task_instance('IM-G1-U7-L6', productive-add(57, 21),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson6.md', lines(102, 102)), position(student_task_statement(1)/expression(3)), excerpt("57 + 21"))).
+compiled_lesson_task_instance('IM-G1-U7-L6', productive-add(57, 42),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson6.md', lines(103, 103)), position(student_task_statement(1)/expression(4)), excerpt("57 + 42"))).
+compiled_lesson_task_instance('IM-G1-U7-L8', productive-add(6, 4),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson8.md', lines(86, 86)), position(student_task_statement(1)/expression(1)), excerpt("6 + 4"))).
+compiled_lesson_task_instance('IM-G1-U7-L8', productive-add(6, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson8.md', lines(91, 91)), position(student_task_statement(1)/expression(4)), excerpt("6 + 5"))).
+compiled_lesson_task_instance('IM-G1-U7-L8', productive-add(6, 8),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson8.md', lines(88, 88)), position(student_task_statement(1)/expression(2)), excerpt("6 + 8"))).
+compiled_lesson_task_instance('IM-G1-U7-L8', productive-add(6, 8),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit7/lesson8.md', lines(90, 90)), position(student_task_statement(1)/expression(3)), excerpt("6 + 8"))).
+compiled_lesson_task_instance('IM-G1-U8-L2', productive-add(4, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("4 + 5"))).
+compiled_lesson_task_instance('IM-G1-U8-L2', productive-add(5, 4),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("5 + 4"))).
+compiled_lesson_task_instance('IM-G1-U8-L3', productive-add(6, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit8/lesson3.md', lines(90, 90)), position(student_task_statement(1)/expression(1)), excerpt("6 + 7"))).
+compiled_lesson_task_instance('IM-G1-U8-L3', productive-add(7, 8),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit8/lesson3.md', lines(94, 94)), position(student_task_statement(1)/expression(2)), excerpt("7 + 8"))).
 compiled_lesson_task_instance('IM-G1-U8-L4', productive-subtract(13, 8),
                               task_evidence(rule(story_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit8/lesson4.md', lines(327, 331)), position(student_task_statement(4)/item(1)), excerpt("Clare counts 8 sharks swimming. Then some more sharks swim by. Clare counts 13 sharks all together. How many more sharks swim by?"))).
 compiled_lesson_task_instance('IM-G1-U8-L6', productive-subtract(12, 7),
@@ -116,6 +240,24 @@ compiled_lesson_task_instance('IM-G1-U8-L6', productive-subtract(20, 14),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade1/unit8/lesson6.md', lines(175, 180)), position(student_task_statement(2)/item(5)), excerpt("4. The Ferris wheel holds 20 people. The swings hold 14 people. How many fewer people do the swings hold than the Ferris wheel?"))).
 compiled_lesson_task_instance('IM-G2-U1-L16', productive-subtract(47, 20),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade2/unit1/lesson16.md', lines(250, 251)), position(student_task_statement(3)/item(3)), excerpt("3. Jada reads 47 pages. Noah reads 20 pages. How many fewer pages does Noah read?"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(14, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(246, 246)), position(student_task_statement(3)/expression(3)), excerpt("14 + 5"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(4, 9),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(232, 232)), position(student_task_statement(3)/expression(1)), excerpt("4 + 9"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(6, 12),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(251, 251)), position(student_task_statement(3)/expression(4)), excerpt("6 + 12"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(7, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(242, 242)), position(student_task_statement(3)/expression(2)), excerpt("7 + 6"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(8, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(312, 312)), position(student_task_statement(4)/expression(1)), excerpt("8 + 6"))).
+compiled_lesson_task_instance('IM-G2-U1-L6', productive-add(14, 22),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson6.md', lines(85, 85)), position(student_task_statement(1)/expression(1)), excerpt("14 + 22"))).
+compiled_lesson_task_instance('IM-G2-U1-L6', productive-add(15, 25),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson6.md', lines(89, 89)), position(student_task_statement(1)/expression(3)), excerpt("15 + 25"))).
+compiled_lesson_task_instance('IM-G2-U1-L6', productive-add(17, 25),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson6.md', lines(90, 90)), position(student_task_statement(1)/expression(4)), excerpt("17 + 25"))).
+compiled_lesson_task_instance('IM-G2-U1-L6', productive-add(19, 22),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson6.md', lines(87, 87)), position(student_task_statement(1)/expression(2)), excerpt("19 + 22"))).
 compiled_lesson_task_instance('IM-G2-U2-L1', deformation(operation_direction_reversal)-subtract(36, 23),
                               task_evidence(rule(g2_compare_trains_error), source('curriculum/im_teacher_guides/grade2/unit2/lesson1.md', lines(409, 409)), position(cool_down_item(1)), excerpt("Students find the sum of the cubes rather than the"))).
 compiled_lesson_task_instance('IM-G2-U2-L1', productive-subtract(36, 23),
@@ -148,6 +290,22 @@ compiled_lesson_task_instance('IM-G2-U3-L11', deformation(operation_direction_re
                               task_evidence(rule(g2_saree_ribbon_error), source('curriculum/im_teacher_guides/grade2/unit3/lesson11.md', lines(204, 204)), position(activity_1_item(3)), excerpt("If students add the known values instead of subtract"))).
 compiled_lesson_task_instance('IM-G2-U3-L11', productive-subtract(44, 18),
                               task_evidence(rule(g2_saree_ribbon), source('curriculum/im_teacher_guides/grade2/unit3/lesson11.md', lines(194, 194)), position(activity_1_item(3)), excerpt("so I decided to subtract 18 from 44"))).
+compiled_lesson_task_instance('IM-G2-U3-L13', productive-add(58, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("58 + 10"))).
+compiled_lesson_task_instance('IM-G2-U3-L13', productive-add(58, 12),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson13.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("58 + 12"))).
+compiled_lesson_task_instance('IM-G2-U3-L13', productive-add(58, 13),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson13.md', lines(93, 93)), position(student_task_statement(1)/expression(3)), excerpt("58 + 13"))).
+compiled_lesson_task_instance('IM-G2-U3-L13', productive-add(67, 14),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson13.md', lines(94, 94)), position(student_task_statement(1)/expression(4)), excerpt("67 + 14"))).
+compiled_lesson_task_instance('IM-G2-U3-L16', productive-add(15, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson16.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("15 + 5"))).
+compiled_lesson_task_instance('IM-G2-U3-L16', productive-add(16, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson16.md', lines(93, 93)), position(student_task_statement(1)/expression(3)), excerpt("16 + 7"))).
+compiled_lesson_task_instance('IM-G2-U3-L16', productive-add(25, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson16.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("25 + 6"))).
+compiled_lesson_task_instance('IM-G2-U3-L16', productive-add(37, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson16.md', lines(94, 94)), position(student_task_statement(1)/expression(4)), excerpt("37 + 6"))).
 compiled_lesson_task_instance('IM-G2-U5-L9', productive-compare_numerals_by_place_value(371, 317, 10),
                               task_evidence(rule(direct_place_value_numeral_comparison), source('curriculum/im_teacher_guides/grade2/unit5/lesson9.md', lines(174, 185)), position(student_task_statement(2)/item(1)), excerpt("Compare 371 and 317"))).
 compiled_lesson_task_instance('IM-G2-U5-L9', productive-compare_numerals_by_place_value(378, 387, 10),
@@ -156,6 +314,54 @@ compiled_lesson_task_instance('IM-G2-U5-L9', productive-compare_numerals_by_plac
                               task_evidence(rule(direct_place_value_numeral_comparison), source('curriculum/im_teacher_guides/grade2/unit5/lesson9.md', lines(273, 279)), position(student_task_statement(3)/item(1)), excerpt("compare 420 and 590"))).
 compiled_lesson_task_instance('IM-G2-U5-L9', productive-compare_numerals_by_place_value(681, 618, 10),
                               task_evidence(rule(direct_place_value_numeral_comparison), source('curriculum/im_teacher_guides/grade2/unit5/lesson9.md', lines(377, 379)), position(student_task_statement(4)/item(2)), excerpt("compare 681 and 618"))).
+compiled_lesson_task_instance('IM-G2-U6-L14', productive-add(10, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson14.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("10 + 15"))).
+compiled_lesson_task_instance('IM-G2-U6-L14', productive-add(15, 20),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson14.md', lines(91, 91)), position(student_task_statement(1)/expression(4)), excerpt("15 + 20"))).
+compiled_lesson_task_instance('IM-G2-U6-L14', productive-add(20, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson14.md', lines(87, 87)), position(student_task_statement(1)/expression(2)), excerpt("20 + 10"))).
+compiled_lesson_task_instance('IM-G2-U6-L14', productive-add(25, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson14.md', lines(92, 92)), position(student_task_statement(1)/expression(5)), excerpt("25 + 15"))).
+compiled_lesson_task_instance('IM-G2-U6-L14', productive-add(5, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson14.md', lines(92, 92)), position(student_task_statement(1)/expression(6)), excerpt("5 + 15"))).
+compiled_lesson_task_instance('IM-G2-U6-L14', productive-add(5, 30),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson14.md', lines(89, 89)), position(student_task_statement(1)/expression(3)), excerpt("5 + 30"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(15, 25),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(89, 89)), position(student_task_statement(1)/expression(3)), excerpt("15 + 25"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(20, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(92, 92)), position(student_task_statement(1)/expression(6)), excerpt("20 + 15"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(20, 25),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("20 + 25"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(25, 15),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(91, 91)), position(student_task_statement(1)/expression(4)), excerpt("25 + 15"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(25, 6),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(91, 91)), position(student_task_statement(1)/expression(5)), excerpt("25 + 6"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(30, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(92, 92)), position(student_task_statement(1)/expression(7)), excerpt("30 + 7"))).
+compiled_lesson_task_instance('IM-G2-U6-L21', productive-add(5, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson21.md', lines(87, 87)), position(student_task_statement(1)/expression(2)), excerpt("5 + 5"))).
+compiled_lesson_task_instance('IM-G2-U6-L5', productive-add(30, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson5.md', lines(93, 93)), position(student_task_statement(1)/expression(4)), excerpt("30 + 5"))).
+compiled_lesson_task_instance('IM-G2-U6-L5', productive-add(5, 30),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson5.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("5 + 30"))).
+compiled_lesson_task_instance('IM-G2-U6-L5', productive-add(50, 30),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson5.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("50 + 30"))).
+compiled_lesson_task_instance('IM-G2-U6-L5', productive-add(50, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson5.md', lines(93, 93)), position(student_task_statement(1)/expression(3)), excerpt("50 + 5"))).
+compiled_lesson_task_instance('IM-G2-U6-L5', productive-add(500, 30),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit6/lesson5.md', lines(94, 94)), position(student_task_statement(1)/expression(5)), excerpt("500 + 30"))).
+compiled_lesson_task_instance('IM-G2-U9-L11', productive-add(27, 13),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit9/lesson11.md', lines(98, 98)), position(student_task_statement(1)/expression(2)), excerpt("27 + 13"))).
+compiled_lesson_task_instance('IM-G2-U9-L11', productive-add(7, 13),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit9/lesson11.md', lines(96, 96)), position(student_task_statement(1)/expression(1)), excerpt("7 + 13"))).
+compiled_lesson_task_instance('IM-G2-U9-L8', productive-add(20, 30),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit9/lesson8.md', lines(99, 99)), position(student_task_statement(1)/expression(2)), excerpt("20 + 30"))).
+compiled_lesson_task_instance('IM-G2-U9-L8', productive-add(229, 435),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit9/lesson8.md', lines(102, 102)), position(student_task_statement(1)/expression(4)), excerpt("229 + 435"))).
+compiled_lesson_task_instance('IM-G2-U9-L8', productive-add(29, 35),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit9/lesson8.md', lines(101, 101)), position(student_task_statement(1)/expression(3)), excerpt("29 + 35"))).
+compiled_lesson_task_instance('IM-G2-U9-L8', productive-add(9, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit9/lesson8.md', lines(97, 97)), position(student_task_statement(1)/expression(1)), excerpt("9 + 5"))).
 compiled_lesson_task_instance('IM-G3-U1-L10', productive-multiply(4, 10),
                               task_evidence(rule(equal_groups_each_has), source('curriculum/im_teacher_guides/grade3/unit1/lesson10.md', lines(379, 381)), position(student_task_statement(4)/item(1)), excerpt("store has 4 boxes. Each box has 10"))).
 compiled_lesson_task_instance('IM-G3-U1-L10', productive-multiply(4, 2),
@@ -220,6 +426,30 @@ compiled_lesson_task_instance('IM-G3-U1-L19', productive-multiply(5, 9),
                               task_evidence(rule(equal_groups_each_has), source('curriculum/im_teacher_guides/grade3/unit1/lesson19.md', lines(246, 249)), position(student_task_statement(3)/item(2)), excerpt("Mexico has 5 rows of trees. Each row has 9"))).
 compiled_lesson_task_instance('IM-G3-U1-L19', productive-multiply(7, 5),
                               task_evidence(rule(equal_groups_each_has), source('curriculum/im_teacher_guides/grade3/unit1/lesson19.md', lines(141, 142)), position(student_task_statement(2)/item(1)), excerpt("There are 7 rows. Each row has 5"))).
+compiled_lesson_task_instance('IM-G3-U1-L3', productive-add(50, 10),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson3.md', lines(99, 99)), position(student_task_statement(1)/expression(1)), excerpt("50 + 10"))).
+compiled_lesson_task_instance('IM-G3-U1-L3', productive-add(50, 12),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson3.md', lines(101, 101)), position(student_task_statement(1)/expression(2)), excerpt("50 + 12"))).
+compiled_lesson_task_instance('IM-G3-U1-L3', productive-add(60, 13),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson3.md', lines(103, 103)), position(student_task_statement(1)/expression(3)), excerpt("60 + 13"))).
+compiled_lesson_task_instance('IM-G3-U1-L3', productive-add(65, 13),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson3.md', lines(104, 104)), position(student_task_statement(1)/expression(4)), excerpt("65 + 13"))).
+compiled_lesson_task_instance('IM-G3-U1-L5', productive-add(2, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson5.md', lines(103, 103)), position(student_task_statement(1)/expression(1)), excerpt("2 + 2"))).
+compiled_lesson_task_instance('IM-G3-U1-L5', productive-add(2, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson5.md', lines(105, 105)), position(student_task_statement(1)/expression(3)), excerpt("2 + 2"))).
+compiled_lesson_task_instance('IM-G3-U1-L5', productive-add(5, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson5.md', lines(107, 107)), position(student_task_statement(1)/expression(7)), excerpt("5 + 5"))).
+compiled_lesson_task_instance('IM-G3-U1-L5', productive-add(5, 5),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson5.md', lines(108, 108)), position(student_task_statement(1)/expression(10)), excerpt("5 + 5"))).
+compiled_lesson_task_instance('IM-G3-U1-L9', productive-add(34, 58),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson9.md', lines(101, 101)), position(student_task_statement(1)/expression(4)), excerpt("34 + 58"))).
+compiled_lesson_task_instance('IM-G3-U1-L9', productive-add(40, 35),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson9.md', lines(96, 96)), position(student_task_statement(1)/expression(1)), excerpt("40 + 35"))).
+compiled_lesson_task_instance('IM-G3-U1-L9', productive-add(45, 35),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson9.md', lines(98, 98)), position(student_task_statement(1)/expression(2)), excerpt("45 + 35"))).
+compiled_lesson_task_instance('IM-G3-U1-L9', productive-add(45, 36),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit1/lesson9.md', lines(100, 100)), position(student_task_statement(1)/expression(3)), excerpt("45 + 36"))).
 compiled_lesson_task_instance('IM-G3-U1-L9', productive-multiply(2, 10),
                               task_evidence(rule(equal_groups_each_has), source('curriculum/im_teacher_guides/grade3/unit1/lesson9.md', lines(290, 291)), position(student_task_statement(3)/item(3)), excerpt("There are 2 boxes of markers. Each box has 10"))).
 compiled_lesson_task_instance('IM-G3-U1-L9', productive-multiply(3, 5),
@@ -240,6 +470,14 @@ compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(30, 6),
                               task_evidence(rule(g3_apples_measurement_division), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(313, 314)), position(cool_down_item(1)), excerpt("Lin has 30 apples to share with her friends."))).
 compiled_lesson_task_instance('IM-G3-U4-L15', productive-multiply(6, 15),
                               task_evidence(rule(g3_area_additive_count_composite_units), source('curriculum/im_teacher_guides/grade3/unit4/lesson15.md', lines(351, 351)), position(cool_down(find_the_area)), excerpt("A rectangle is 6 feet by 15 feet."))).
+compiled_lesson_task_instance('IM-G3-U4-L3', productive-add(120, 120),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson3.md', lines(88, 88)), position(student_task_statement(1)/expression(1)), excerpt("120 + 120"))).
+compiled_lesson_task_instance('IM-G3-U4-L3', productive-add(121, 119),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson3.md', lines(90, 90)), position(student_task_statement(1)/expression(2)), excerpt("121 + 119"))).
+compiled_lesson_task_instance('IM-G3-U4-L3', productive-add(125, 115),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson3.md', lines(92, 92)), position(student_task_statement(1)/expression(3)), excerpt("125 + 115"))).
+compiled_lesson_task_instance('IM-G3-U4-L3', productive-add(129, 111),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson3.md', lines(93, 93)), position(student_task_statement(1)/expression(4)), excerpt("129 + 111"))).
 compiled_lesson_task_instance('IM-G3-U4-L3', productive-divide(12, 2),
                               task_evidence(rule(partitive_division_same_number_each), source('curriculum/im_teacher_guides/grade3/unit4/lesson3.md', lines(197, 204)), position(student_task_statement(3)/item(1)), excerpt("Elena has 12 colored pencils. She has 2 boxes and wants to put the same number of colored pencils in each box"))).
 compiled_lesson_task_instance('IM-G3-U4-L6', productive-divide(30, 6),
@@ -260,6 +498,14 @@ compiled_lesson_task_instance('IM-G3-U7-L14', productive-rectangle_perimeter(9, 
                               task_evidence(rule(rectangle_dimensions_perimeter), source('curriculum/im_teacher_guides/grade3/unit7/lesson14.md', lines(362, 363)), position(student_task_statement(4)/item(2)), excerpt("a rectangle with side lengths of 9 inches by 6 inches, what is the perimeter?"))).
 compiled_lesson_task_instance('IM-G3-U7-L9', productive-rectangle_missing_side_from_perimeter(32, 12, foot),
                               task_evidence(rule(rectangle_missing_side_from_perimeter), source('curriculum/im_teacher_guides/grade3/unit7/lesson9.md', lines(224, 230)), position(student_task_statement(3)/item(4)), excerpt("A rectangular flower bed has a fence that measures 32 feet around. One side of the flower bed measures 12 feet. What are the lengths of the other sides?"))).
+compiled_lesson_task_instance('IM-G3-U8-L15', productive-add(300, 400),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', lines(97, 97)), position(student_task_statement(1)/expression(1)), excerpt("300 + 400"))).
+compiled_lesson_task_instance('IM-G3-U8-L15', productive-add(300, 437),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', lines(99, 99)), position(student_task_statement(1)/expression(2)), excerpt("300 + 437"))).
+compiled_lesson_task_instance('IM-G3-U8-L15', productive-add(321, 437),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', lines(101, 101)), position(student_task_statement(1)/expression(3)), excerpt("321 + 437"))).
+compiled_lesson_task_instance('IM-G3-U8-L15', productive-add(425, 514),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', lines(102, 102)), position(student_task_statement(1)/expression(4)), excerpt("425 + 514"))).
 compiled_lesson_task_instance('IM-G4-U1-L2', productive-rectangle_side_lengths_for_area(21),
                               task_evidence(rule(rectangle_factor_pair_prompt), source('curriculum/im_teacher_guides/grade4/unit1/lesson2.md', lines(354, 354)), position(task_item(1)), excerpt("1. What are all of the possible side lengths of a rectangle with an area of 21 square units?"))).
 compiled_lesson_task_instance('IM-G4-U1-L2', productive-rectangle_side_lengths_for_area(50),
@@ -272,6 +518,14 @@ compiled_lesson_task_instance('IM-G4-U3-L8', deformation(improper_fraction_reset
                               task_evidence(rule(g4_improper_fraction_chain_loss), source(e343_pdf('4th/Fractions/4th_FracCompareAdd_student.pdf', pages("10-11"))), position(activity(what_is_the_sum)), excerpt("a. 5/8 + 2/8  b. 1/8 + 9/8  c. 11/8 + 9/8"))).
 compiled_lesson_task_instance('IM-G4-U3-L8', productive-iterate_improper_fraction(11, 8),
                               task_evidence(rule(g4_improper_fraction_iteration), source(e343_pdf('4th/Fractions/4th_FracCompareAdd_student.pdf', pages("10-11"))), position(activity(what_is_the_sum)), excerpt("a. 5/8 + 2/8  b. 1/8 + 9/8  c. 11/8 + 9/8"))).
+compiled_lesson_task_instance('IM-G4-U5-L14', productive-add(0, 9),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit5/lesson14.md', lines(97, 97)), position(student_task_statement(1)/expression(3)), excerpt("000 + 9"))).
+compiled_lesson_task_instance('IM-G4-U5-L14', productive-add(0, 99),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit5/lesson14.md', lines(98, 98)), position(student_task_statement(1)/expression(4)), excerpt("000 + 99"))).
+compiled_lesson_task_instance('IM-G4-U5-L14', productive-add(200, 900),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit5/lesson14.md', lines(93, 93)), position(student_task_statement(1)/expression(1)), excerpt("200 + 900"))).
+compiled_lesson_task_instance('IM-G4-U5-L14', productive-add(500, 9),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit5/lesson14.md', lines(95, 95)), position(student_task_statement(1)/expression(2)), excerpt("500 + 9"))).
 compiled_lesson_task_instance('IM-G4-U5-L16', productive-construct_rectangle_with_perimeter(20, inch),
                               task_evidence(rule(rectangle_fixed_perimeter_side_pairs), source('curriculum/im_teacher_guides/grade4/unit5/lesson16.md', lines(471, 471)), position(student_task_statement(5)/item(1)), excerpt("Rectangle Y has a perimeter of 20 inches. Name a possible pair of side lengths"))).
 compiled_lesson_task_instance('IM-G4-U5-L16', productive-rectangle_missing_side_from_perimeter(180, 70, inch),
@@ -286,6 +540,28 @@ compiled_lesson_task_instance('IM-G4-U6-L14', productive-rectangle_missing_side_
                               task_evidence(rule(rectangle_area_known_width_missing_length), source('curriculum/im_teacher_guides/grade4/unit6/lesson14.md', lines(342, 350)), position(student_task_statement(4)/item(1)), excerpt("used 234 square sticky notes to cover their classroom door completely, leaving no gaps or overlaps between the notes. It takes 9 square notes to cover the width of the door. How many square notes does it take to cover the full height"))).
 compiled_lesson_task_instance('IM-G4-U6-L5', productive-multiply(8, 27),
                               task_evidence(rule(g4_theater_equal_rows), source('curriculum/im_teacher_guides/grade4/unit6/lesson5.md', lines(369, 369)), position(cool_down_item(1)), excerpt("A theater has 8 rows of seats and 27 seats in each row."))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(0, 943),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(108, 108)), position(student_task_statement(1)/expression(11)), excerpt("000 + 943"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(1, 257),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(108, 108)), position(student_task_statement(1)/expression(10)), excerpt("1 + 257"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(243, 57),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(105, 105)), position(student_task_statement(1)/expression(4)), excerpt("243 + 57"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(3, 40),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(103, 103)), position(student_task_statement(1)/expression(3)), excerpt("3 + 40"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(43, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(107, 107)), position(student_task_statement(1)/expression(8)), excerpt("43 + 1"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(43, 257),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(105, 105)), position(student_task_statement(1)/expression(5)), excerpt("43 + 257"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(43, 257),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(107, 107)), position(student_task_statement(1)/expression(6)), excerpt("043 + 257"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(43, 57),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(103, 103)), position(student_task_statement(1)/expression(1)), excerpt("43 + 57"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(50, 7),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(103, 103)), position(student_task_statement(1)/expression(2)), excerpt("50 + 7"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(57, 200),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(107, 107)), position(student_task_statement(1)/expression(7)), excerpt("57 + 200"))).
+compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(943, 257),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(108, 108)), position(student_task_statement(1)/expression(9)), excerpt("943 + 257"))).
 compiled_lesson_task_instance('IM-G5-U1-L11', productive-unit_cube_volume(9, 4, 5, foot),
                               task_evidence(rule(rectangular_prism_dimensions_volume), source('curriculum/im_teacher_guides/grade5/unit1/lesson11.md', lines(166, 169)), position(student_task_statement(2)/item(3)), excerpt("The storage container is 4 feet wide, 9 feet long, and 5 feet high. What is the volume"))).
 compiled_lesson_task_instance('IM-G5-U2-L1', productive-unit_fraction(2, 3),
@@ -1638,6 +1914,16 @@ compiled_lesson_task_instance('IM-GK-U5-L7', deformation(spatial_extent_substitu
                               task_evidence(rule(gk_spatial_extent_as_cardinality), source(e343_pdf('K/Number Operations/K_student_AddW10.pdf', pages("19"))), position(warm_up(which_one_doesnt_belong)), excerpt("Counters. Red, 5. Yellow, 1."))).
 compiled_lesson_task_instance('IM-GK-U5-L7', productive-compare_cardinalities(5, 1, 5, 5),
                               task_evidence(rule(gk_compare_cardinalities_counters), source(e343_pdf('K/Number Operations/K_student_AddW10.pdf', pages("19"))), position(warm_up(which_one_doesnt_belong)), excerpt("Counters. Red, 5. Yellow, 1."))).
+compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(1, 3),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("1 + 3"))).
+compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(3, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("3 + 1"))).
+compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(4, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(103, 103)), position(student_task_statement(1)/expression(3)), excerpt("4 + 1"))).
+compiled_lesson_task_instance('IM-GK-U6-L2', productive-add(3, 0),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("3 + 0"))).
+compiled_lesson_task_instance('IM-GK-U6-L2', productive-add(3, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("3 + 1"))).
 compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(2, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', lines(95, 95)), position(student_task_statement(1)/expression(1)), excerpt("2+3"))).
 compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(3, 2),
@@ -1646,6 +1932,14 @@ compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(4, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', lines(99, 99)), position(student_task_statement(1)/expression(3)), excerpt("4+1"))).
 compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(5, 0),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', lines(100, 100)), position(student_task_statement(1)/expression(4)), excerpt("5+0"))).
+compiled_lesson_task_instance('IM-GK-U8-L11', productive-add(3, 2),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("3 + 2"))).
+compiled_lesson_task_instance('IM-GK-U8-L15', productive-add(2, 3),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md', lines(373, 373)), position(student_task_statement(3)/expression(1)), excerpt("2 + 3"))).
+compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(4, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(112, 112)), position(student_task_statement(1)/expression(1)), excerpt("4 + 1"))).
+compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(5, 1),
+                              task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(114, 114)), position(student_task_statement(1)/expression(2)), excerpt("5 + 1"))).
 compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(6, 4),
                               task_evidence(rule(gk_pigeons_compose_ten), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(173, 176)), position(activity_1_item(1)), excerpt("There are 6 pigeons in water."))).
 compiled_lesson_task_instance('IM-GK-U8-L3', productive-add(7, 1),

@@ -177,11 +177,11 @@ Required Preparation
                                                              Lesson 14
                                                                              Illustrative Mathematics®               3
                                                                the last problem:
-                                                                 ◦ Use the image provided to count the difference.
-                                                                 ◦ Add 7 cubes to a tower of 3 cubes to make them
-                                                                   the same length.
-                                                                 ◦ Remove the 3 cubes from a tower of 10 cubes
-                                                                   physically (or by crossing out on the image).
+                                                                ◦ Use the image provided to count the difference.
+                                                                ◦ Add 7 cubes to a tower of 3 cubes to make them
+                                                                  the same length.
+                                                                ◦ Remove the 3 cubes from a tower of 10 cubes
+                                                                  physically (or by crossing out on the image).
 Student Response
 1. 4 more cubes. Sample response: The towers are
    lined up, so I counted how many more Diego had.
@@ -190,12 +190,12 @@ Student Response
 2. 5 more cubes. Sample response: Student makes 2              they found how many fewer cubes Diego had.
    towers to match, breaks off 3 cubes from Diego's          • Annotate strategies that show adding on cubes to
    tower, and counts the 5 remaining cubes.                    the smaller quantity or counting without explicitly
-3. 7 fewer cubes. Sample response: Student crosses out         removing blocks with               .
+3. 7 fewer cubes. Sample response: Student crosses out         removing blocks with                   .
    the cubes in Jada’s tower that match Diego’s tower
                                                              • Annotate strategies that show removing cubes
    and then counts the remaining cubes.
                                                                (physically or by crossing out) and counting what’s
-                                                               left with              .
+                                                               left with 10- 3 =      .
 
                                                              • “What do you notice about all these methods?” (They
                                                                all got the same answer, even if they added cubes or
@@ -217,18 +217,18 @@ Student Response
                                                              • Demonstrate matching the towers and removing 3
                                                                cubes as you count back.
 
-                                                             • “How is what I just did like            ?”
+                                                             • “How is what I just did like 10- 3 =       ?”
 
-                                                             • “How does             represent the bigger tower,
+                                                             • “How does 10- 3 = 7 represent the bigger tower,
                                                                the smaller tower, and the difference?”
 
 
 
 
-                                       Grade 1                                    CC BY NC 2024
+                                       Grade 1                                   CC BY NC 2024
                                         Unit 2
                                                          Lesson 14
-                                                                           Illustrative Mathematics®             4
+                                                                          Illustrative Mathematics®              4
 Activity 2                                                                                                    20 min
 
 Cube Tower Problems
@@ -299,7 +299,7 @@ Required Preparation
                           cubes from 9?”
                                                                 • Annotate Lin’s strategy with              and Kiran’s
        2. Lin’s tower has 7 cubes.
-          Kiran’s tower has 3 cubes.                              strategy with             .
+          Kiran’s tower has 3 cubes.                              strategy with 9- 3 =      .
           How many more cubes are in Lin’s tower?               • “We just showed you can think about finding a
        3. Lin’s tower has 2 cubes.                                difference by thinking about finding the value of an
           Kiran’s tower has 9 cubes.                              unknown addend. We showed you can find the
@@ -373,15 +373,15 @@ Display:
 
   •
 
-  •
+  • 7- 2 =
 
-“How do these equations represent these two towers of cubes?” (        shows we could think of how many to add to
-the yellow tower to make it the same as the red tower.      shows we could think about taking off the number of
+“How do these equations represent these two towers of cubes?” (2 +     shows we could think of how many to add to
+the yellow tower to make it the same as the red tower. 7- 2 shows we could think about taking off the number of
 yellow cubes, and what’s left is how many more cubes are in the red tower.)
 
 “How do these equations show that you can find the number that makes               true by using subtraction?”
 
-“How do these equations show that you can find the number that makes               true by thinking about adding on?”
+“How do these equations show that you can find the number that makes 7- 2 =        true by thinking about adding on?”
 
 “Addition and subtraction are related. We can think about subtraction as taking away or as an unknown addend
 problem.”

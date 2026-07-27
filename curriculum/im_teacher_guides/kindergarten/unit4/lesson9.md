@@ -100,7 +100,7 @@ images they see.
                                                                 • Display the image with 4 fingers held up.
                                                                 • “How many fingers are on each hand?” (2 fingers)
                                                                 • “How many fingers are there together?” (4 fingers)
-                                                                • “2 and 2 is 4. We can also write that as       .”
+                                                                • “2 and 2 is 4. We can also write that as 2 + 2.”
 
 
 Student Response
@@ -180,7 +180,7 @@ Student Response                                                • Monitor for 
                                                                      Elena brought to school.)
                                                                    • “There were 4 markers and Elena brought 3 more
                                                                      markers. 4 markers and 3 markers is 7 markers. We
-                                                                     can write that as ‘4 and 3’ or ‘ ’.”
+                                                                     can write that as ‘4 and 3’ or ‘4 + 3’.”
 
 
 
@@ -268,7 +268,7 @@ Student Response
                                                                zero.)
                                                              • “There were 5 balls on the playground and Diego
                                                                brought 5 of the balls inside. We can write that as ‘5
-                                                               take away 5’ or ‘     ’. There are zero balls on the
+                                                               take away 5’ or ‘5 - 5’. There are zero balls on the
                                                                playground now. 5 take away 5 is 0.”
                                                              • Demonstrate writing “0.”
                                                              • “This is the number 0. I start at the top and draw a

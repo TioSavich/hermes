@@ -280,11 +280,11 @@ Materials to Gather
            Show that each expression could represent the
            perimeter of Kiran’s unfolded paper.                  ◦ “What do you notice about the rectangles you
                                                                    created?”
-           a.
+           a. (4 × 182) + (4 × 105)
                                                                  ◦ “What do the numbers in each expression
-           b.
+           b. (2 × 182) + (8 × 105)
                                                                    represent? Use your folded paper to help you if
-            c.                                                     needed.”
+            c. (8 × 182) + (2 × 105)                               needed.”
                                                               • 2–3 minutes: group discussion
 Student Response                                              • Monitor for students who use the drawings or
                                                                 expressions from the first question to help them
@@ -304,20 +304,20 @@ Student Response                                              • Monitor for st
                                              Unit 8
                                                            Lesson 9
                                                                            Illustrative Mathematics®              5
-                                         possible figures that the original piece of paper could
-                                         have?” (No)
-                                       • “How do you know?” (The folded rectangle has two
-                                         pairs of sides of the same length. There are only
-                                         three possible pairs of lines of symmetry: both along
-                                         the 182 mm side, both along the 105 mm side, and
+                                                      possible figures that the original piece of paper could
+                                                      have?” (No)
+                                                    • “How do you know?” (The folded rectangle has two
+                                                      pairs of sides of the same length. There are only
+                                                      three possible pairs of lines of symmetry: both along
+                                                      the 182 mm side, both along the 105 mm side, and
    b. Sample responses:
-                                         once along each 182 and 105 mm side. All three are
-        ▪                                already represented by the given expressions.)
-        ▪                              • “If different original figures can be folded into the
-        ▪                                same figure, does that mean the original figures have
-                                         the same perimeter?” (No)
-        ▪
-        ▪
+                                                      once along each 182 and 105 mm side. All three are
+        ▪ 210 + 210 + 182 + 182                       already represented by the given expressions.)
+        ▪ 364 + 364 + 105 + 105                     • “If different original figures can be folded into the
+        ▪ (2 × 105) + (2 × 105) + (2 × 182)           same figure, does that mean the original figures have
+                                                      the same perimeter?” (No)
+        ▪ (4 × 105) + (2 × 182)
+        ▪ (4 × 182) + (2 × 105)
 2. Sample responses:
 
    a.
@@ -335,10 +335,10 @@ Student Response                                              • Monitor for st
 
 
 
-                          Grade 4                          CC BY NC 2024
-                           Unit 8
-                                    Lesson 9
-                                                    Illustrative Mathematics®              6
+                                       Grade 4                          CC BY NC 2024
+                                        Unit 8
+                                                 Lesson 9
+                                                                 Illustrative Mathematics®              6
 Lesson Synthesis
 “Today we practiced visualizing shapes that have been folded along a line of
 symmetry and reasoning about the perimeter of the original shapes.“
@@ -355,8 +355,8 @@ tracing paper, or cutting out two copies of the triangle and arranging them so t
 (No, because there is one side—along the folding line—that is not part of the perimeter of the original shape.)
 
 “What could be the perimeters of the original shapes that fold into this triangle?” (If folded along the longest side: it will
-be 28, or                    . If folded along the side that is 8 units long, it will be 32, or             . If folded along
-the shortest side, it will be 36, or                    .)
+be 28, or (2 × 8) + (2 × 6). If folded along the side that is 8 units long, it will be 32, or (2 × 6) + (2 × 10). If folded along
+the shortest side, it will be 36, or (2 × 8) + (2 × 10).)
 
 
 
@@ -369,7 +369,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                          5 min
+Cool-down                                                                                                             5 min
 
 Fold It Once
 
@@ -394,31 +394,31 @@ Addressing      4.G.A.3
 
 
 
-                                              Grade 4                                    CC BY NC 2024
-                                               Unit 8
-                                                               Lesson 9
-                                                                                  Illustrative Mathematics®                7
+                                               Grade 4                                     CC BY NC 2024
+                                                Unit 8
+                                                                 Lesson 9
+                                                                                    Illustrative Mathematics®                 7
 Student Response
  1. Sample responses:
 
 
 
 
- 2. Sample responses:                        or
+ 2. Sample responses: 51/2 + 51/2 + 51/2 + 51/2 or 4 × 51/2
 
 
 
 Responding to Student Thinking
-Students provide a perimeter for the given triangle and    Next Day Supports
-not the pre-folded shape.                                  Before the Warm-up, have students work in partners to
-                                                           discuss a correct response to this Cool-down.
+Students provide a perimeter for the given triangle and        Next Day Supports
+not the pre-folded shape.                                      Before the Warm-up, have students work in partners to
+                                                               discuss a correct response to this Cool-down.
 
 
 
 
-                                           Grade 4                              CC BY NC 2024
-                                            Unit 8
-                                                          Lesson 9
-                                                                         Illustrative Mathematics®            8
+                                              Grade 4                               CC BY NC 2024
+                                               Unit 8
+                                                              Lesson 9
+                                                                             Illustrative Mathematics®            8
 ```
 

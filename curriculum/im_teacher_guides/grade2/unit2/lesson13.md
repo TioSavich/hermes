@@ -115,7 +115,7 @@ A, B, and C go together because:
     make 40 (part-part-whole).
                                                                • “Why do all 4 go together?” (They all are related to
   • They can represent composing 40 or decomposing
-                                                                               . They all represent a relationship
+                                                                 27 + 13 = 40. They all represent a relationship
     40 into 2 parts (part-part-whole).
                                                                  between 27, 13, and 40.)
 A, B, and D go together because:
@@ -214,20 +214,20 @@ Required Preparation
      number of apple seeds is 39 more than the number
      of orange seeds. There are 52 orange seeds and 39
                                                            Activity Synthesis
-     more is the same as
+     more is the same as 52 + 39 = ?
 2.                                                           • Invite 2–3 previously selected students to share how
                                                                they decided which cards go together.
  • F: 93 seeds. Sample responses:
                                                              • Consider asking:
       ◦ Students draw a base-ten diagram to show
-        composing a new ten to find        .                    ◦ “How does the equation match the story
+        composing a new ten to find 65 + 28.                    ◦ “How does the equation match the story
                                                                   problem?”
       ◦
                                                                 ◦ “Is there another equation that could match the
                                                                   story problem? Explain why or why not.”
  • G: 58 seeds. Sample response:
       ◦ Students draw a base-ten diagram to show
-        decomposing a ten to find       .
+        decomposing a ten to find 77- 19 .
       ◦
 
 
@@ -317,8 +317,8 @@ Materials to Gather
                                                               • Invite a previously identified student to share the
           b. Write an equation. Use a ? for the                 way they used subtraction to find how many seeds
              unknown value.                                     Andre won.
-          c. Solve the equation. Show your thinking           • “How are _____’s equation and _____’s method the
-             using drawings, numbers, or words.                 same? How are they different?” (They both use the
+           c. Solve the equation. Show your thinking          • “How are _____’s equation and _____’s method the
+              using drawings, numbers, or words.                same? How are they different?” (They both use the
                                                                 same numbers. _____’s method is a way to find the
       3. Diego gathers 22 seeds from yellow flowers. He
                                                                 unknown value in the equation. They are different
@@ -336,8 +336,8 @@ Materials to Gather
                                                               • “Sometimes it might be better to use addition or
              unknown value.
                                                                 subtraction equations to represent the actions that
-          c. Solve the equation. Show your thinking             are happening in a story. But you can always use
-             using drawings, numbers, or words.                 addition or subtraction to find an unknown addend.”
+           c. Solve the equation. Show your thinking            are happening in a story. But you can always use
+              using drawings, numbers, or words.                addition or subtraction to find an unknown addend.”
 
 
 
@@ -351,15 +351,15 @@ Materials to Gather
           b. Write an equation. Use a ? for the
              unknown value.
 
-          c. Solve the equation. Show your thinking
-             using drawings, numbers, or words.
+           c. Solve the equation. Show your thinking
+              using drawings, numbers, or words.
 
 
 Student Response
-1.   a.             (or equivalent)
+1.   a. ? + 36 = 64 (or equivalent)
      b. 28 seeds. Sample response: Students draw
         a base-ten diagram to show decomposing a ten
-        to find        .
+        to find 64- 36 .
 
 
 
@@ -373,7 +373,7 @@ Student Response
 
 
 
-      b.             (or equivalent)
+      b. 32 + ? = 57 (or equivalent)
       c. 25 seeds. Sample response: Students draw a
          base-ten diagram to show adding on 2 more
          tens and 5 more ones to 3 tens and 2 ones.
@@ -382,7 +382,7 @@ Student Response
 
 
 
-      b.             (or equivalent)
+      b. 22 + 48 = ? (or equivalent)
       c. 70 seeds. Sample
          response
          :
@@ -394,7 +394,7 @@ Student Response
 
 
 
-      b.             (or equivalent)
+      b. 53 + ? = 92 (or equivalent)
       c. 39 seeds Sample
          response
          :
@@ -439,7 +439,7 @@ Cool-down                                                                       
 Match the Equation
 
      Standards
-Addressing        2.OA.A.1
+Addressing      2.OA.A.1
 
 
      Student Task Statement
@@ -448,10 +448,10 @@ Addressing        2.OA.A.1
 
           Circle the 2 equations that match this story problem.
 
-             A.
-             B.
-             C.
-           D.
+             A. 25 + ? = 72
+             B. 72 + 25 = ?
+             C. 72- 25 = ?
+           D. ? + 72 = 25
        2. Solve the problem. Show your thinking. Draw a diagram if it helps.
 
 

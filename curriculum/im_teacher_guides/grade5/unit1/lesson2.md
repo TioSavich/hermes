@@ -383,7 +383,7 @@ Addressing     5.MD.C.4
 
 
 Student Response
-  • 30 unit cubes. Sample responses:             ,            and             , or           and
+  • 30 unit cubes. Sample responses: 5 × 6 = 30, 5 × 3 = 15 and 15 × 2 = 30, or 3 × 2 = 6 and 6 × 5 = 30
 
 
 Responding to Student Thinking

@@ -35,7 +35,7 @@ The purpose of this lesson is for students to count groups of multiples of 10 ob
 Narrative
 In the previous unit, students learned that a ten is a unit made up of 10 ones. Students learned that teen numbers are
 made up of 1 ten and some more ones. They represented teen numbers using 10-frames, drawings, and expressions
-(       ). In kindergarten, students learned the counting sequence by ones and tens up to 100.
+(10 + n). In kindergarten, students learned the counting sequence by ones and tens up to 100.
 
 The purpose of this lesson is for teachers to formatively assess how students count objects up to 60. In the first activity,
 students count objects and represent how many in a way that makes sense to them. Then they compare the ways they

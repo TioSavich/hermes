@@ -121,7 +121,7 @@ A, B, and D go together because:                                • “Why doesn
                                                                   greater than 28. The part of the side labeled 10
 A, C, and D go together because:
                                                                   should be longer than the part labeled 4.)
-  • They represent         .
+  • They represent 7 × 14.
 
 
 
@@ -195,19 +195,19 @@ Student Response                                                Activity
     rectangle and a 7 by 4 rectangle, adding 40 and 28 to
     find the product.                                             • 6–8 minutes: independent work time
 
- 2. 96 square inches. Sample response:                  ,         • As students work, consider asking:
-               , and            .                                     ◦ “How can you represent your thinking about the
- 3. 84 square feet. Sample response:                ,                   problem?”
-              , and             .                                     ◦ “Where can you see _____ in your work?”
+ 2. 96 square inches. Sample response: 10 × 8 = 80,               • As students work, consider asking:
+    2 × 8 = 16, and 80 + 16 = 96.                                     ◦ “How can you represent your thinking about the
+ 3. 84 square feet. Sample response: 6 × 10 = 60,                       problem?”
+    6 × 4 = 24, and 60 + 24 = 84.                                     ◦ “Where can you see _____ in your work?”
                                                                   • Monitor for:
                                                                       ◦ Different ways that students use an area
                                                                         diagram in the third problem.
                                                                       ◦ Pairs of students who represent the third
                                                                         problem in the same way to create a poster
  4. 80 stickers. Sample response: Students make 5                       together.
-    groups of 16 using base-ten blocks, multiplies
+    groups of 16 using base-ten blocks, multiplies 5 × 10
                                                                   • “Now you are going to create a poster to show your
-    and       , and then adds 50 and 30 to find the
+    and 5 × 6, and then adds 50 and 30 to find the
                                                                     thinking on the third problem. You are going to work
     product.
                                                                     with a partner who solved the problem in the same
@@ -298,18 +298,18 @@ is broken into parts.
                                                               Lesson 15
                                                                                Illustrative Mathematics®              5
                                                                Activity Synthesis
-                                                                  • Select 2–3 posters that used a diagram to represent
-                                                                    the problem. Discuss them in the order shown
-                                                                    above.
-                                                                  • For each poster, ask:
-                                                                     ◦ “How are the factors shown in the diagram?”
-                                                                     ◦ “How is the product shown in the diagram?”
-                                                                     ◦ “How could we represent this strategy with
-                                                                       expressions?”
-                                                                  • If no students use one of the listed representations,
-                                                                    create one to share. For example, if no students use
-                                                                    an ungridded diagram, display one that represents
-                                                                    the problems and ask the same questions.
+                                                                • Select 2–3 posters that used a diagram to represent
+                                                                  the problem. Discuss them in the order shown
+                                                                  above.
+                                                                • For each poster, ask:
+                                                                    ◦ “How are the factors shown in the diagram?”
+                                                                    ◦ “How is the product shown in the diagram?”
+                                                                    ◦ “How could we represent this strategy with
+                                                                      expressions?”
+                                                                • If no students use one of the listed representations,
+                                                                  create one to share. For example, if no students use
+                                                                  an ungridded diagram, display one that represents
+                                                                  the problems and ask the same questions.
 
 
 
@@ -321,7 +321,7 @@ Display the image from the Warm-up.
 disadvantages of using each of these diagrams?” (A is nice because you can see all the squares, but it would take a long
 time to draw and you can’t see easier multiplication facts to find the total. D is fast to draw, but it just shows the
 numbers you’re multiplying which doesn’t help you find the product. B and C are fast to draw and both help you
-because you just add the two smaller products to find the value of            and         . B is better than C because the
+because you just add the two smaller products to find the value of 7 × 13 and 7 × 14. B is better than C because the
 sizes of the parts match the sizes of the numbers they represent.)
 
 
@@ -333,7 +333,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                      5 min
+Cool-down                                                                                                    5 min
 
 Find the Area
 
@@ -343,30 +343,30 @@ Addressing     3.OA.A.3
 
 
 
-                                           Grade 3                                    CC BY NC 2024
-                                            Unit 4
-                                                            Lesson 15
-                                                                               Illustrative Mathematics®               6
+                                          Grade 3                                    CC BY NC 2024
+                                           Unit 4
+                                                           Lesson 15
+                                                                              Illustrative Mathematics®              6
      Student Task Statement
      A rectangle is 6 feet by 15 feet. What is the area of the rectangle? Explain or show your reasoning.
 
 
 Student Response
-90 square feet. Sample response:              ,            , and             .
+90 square feet. Sample response: 6 × 10 = 60, 6 × 5 = 30, and 60 + 30 = 90.
 
 
 Responding to Student Thinking
-Students use an inefficient method that results in an          Next Day Supports
-error, such as drawing 6 groups of 15 and miscounting or       Before the Warm-up, pass back the Cool-down, and have
-skip-counting by 6 and making a mistake in the count.          students discuss strategies they could use to find the
-                                                               product.
+Students use an inefficient method that results in an         Next Day Supports
+error, such as drawing 6 groups of 15 and miscounting or      Before the Warm-up, pass back the Cool-down, and have
+skip-counting by 6 and making a mistake in the count.         students discuss strategies they could use to find the
+                                                              product.
 
 
 
 
-                                          Grade 3                                       CC BY NC 2024
+                                          Grade 3                                    CC BY NC 2024
                                            Unit 4
                                                            Lesson 15
-                                                                                 Illustrative Mathematics®       7
+                                                                              Illustrative Mathematics®         7
 ```
 

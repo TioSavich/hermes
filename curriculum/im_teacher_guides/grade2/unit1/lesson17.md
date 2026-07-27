@@ -87,12 +87,12 @@ when they observe that the sums have the same digit in the ones place but the di
      Student Task Statement                                      Launch
       Find the value of each sum mentally.                         • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
+        • 27 + 10                                                  • “Give me a signal when you have an answer and can
                                                                      explain how you got it.”
-        •
+        • 27 + 10 + 10
                                                                    • 1 minute: quiet think time
-        •
-        •
+        • 27 + 30
+        • 37 + 30
                                                                  Activity
 
 Student Response                                                   • Record answers and strategy.

@@ -71,7 +71,7 @@ Lesson Timeline                                                 Teacher Reflecti
 
 
 
-Warm-up                                                                                                        10 min
+Warm-up                                                                                                         10 min
 
 True or False: Powers of 10
 
@@ -87,30 +87,30 @@ different metric length units.
      Student Task Statement                                    Launch
       Decide if each statement is true or false. Be              • Display one statement.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 5,423 × 10 = 50,423                                      statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 5,423 ÷ 10 = 542.3                                     • 1 minute: quiet think time
 
-        •
+        • 5,423 ÷ 100 = 54.23
                                                                Activity
 Student Response                                                 • Share and record answers and strategies.
 
   • False: All of the digits need to shift one place to the      • Repeat with each statement.
     left, so it should be 54,230.
 
-  • True: Each digit in 542.3 has     the value of the         Activity Synthesis
+  • True: Each digit in 542.3 has 1/10 the value of the        Activity Synthesis
     corresponding digit in 5,423.
                                                                  • “How did you decide if the equation
-  • True: Each digit in 54.23 has      the value of the                                is true?” (It's like dividing by 10
-    corresponding digit in 5,423.                                  twice.                    and                         .
+  • True: Each digit in 54.23 has 1/100 the value of the           5,423 ÷ 100 = 54.23 is true?” (It's like dividing by 10
+    corresponding digit in 5,423.                                  twice. 5,423 ÷ 10 = 542.3 and 542.3 ÷ 10 = 54.23.
                                                                    Each number has digits 5, 4, 2, 3 in the same order.
-                                                                   The values of the digits' places in 54.23 are     the
+                                                                   The values of the digits' places in 54.23 are 1/100 the
                                                                    values of the corresponding digits' places in 5,423.)
 
 
 
 
-Activity 1                                                                                                     15 min
+Activity 1                                                                                                      15 min
 
 Walk All Day
 
@@ -126,7 +126,7 @@ kilometers. This gives students an opportunity to think about which units are mo
                                               Grade 5                                CC BY NC 2024
                                                Unit 6
                                                               Lesson 5
-                                                                              Illustrative Mathematics®                 2
+                                                                              Illustrative Mathematics®                  2
 (MP6). When the distance is short, such as the length of a single footstep, centimeters or meters both work well. For a
 longer distance, such as the distance a person walks in a day, it is reasonable to use meters or kilometers, but the
 number of centimeters is very large and more difficult to visualize.
@@ -203,13 +203,13 @@ Materials to Gather
             from her
                              250                                all to see:
            classroom
-           to the bus                                            ◦
-                                                                 ◦
+           to the bus                                            ◦ 8,500 × 50 = 425,000
+                                                                 ◦ 8,500 × 0.5 = 4,250
             ran twice
            around the      1,000                              • “How does each equation represent the situation?”
-           playground                                           (                      represents 8,500 steps, each
+           playground                                           (8,500 × 50 = 425,000 represents 8,500 steps, each
                                                                 of which is 50 centimeters long, so that would be a
-                                                                total of 425,000 centimeters.
+                                                                total of 425,000 centimeters. 8,500 × 0.5 = 4,250
      3. At the end of the day, Lin’s watch displayed
                                                                 represents 8,500 steps, each of which is 0.5 meter
         8,500 steps. Should her watch record the
@@ -228,9 +228,9 @@ Student Response                                                than 425,000 bec
 1. Sample responses:
                                                               • Display:
     ◦ centimeters or meters
-                                                                 ◦
+                                                                 ◦ 425,000 ÷ 100,000 = 4.25
     ◦ centimeters or meters
-                                                                 ◦
+                                                                 ◦ 4,250 ÷ 1,000 = 4.25
     ◦ meters
                                                               • “How does each equation represent the situation?”
     ◦ meters or kilometers                                      (Both represent the number of kilometers that Lin
@@ -275,10 +275,10 @@ Student Response                                                than 425,000 bec
  3. Meters or kilometers. Sample response: Centimeters
     would be too big of a number.
  4. 4.25 km. Sample response: 1 step is 50 cm long so
-    8,500 steps is going to be           and
-                            and 425,000 cm is 4,250 m
-    because                          and 4,250 m is 4.25
-    km because                        .
+    8,500 steps is going to be 8,500 × 50 and
+    8,500 × 50 = 425,000 and 425,000 cm is 4,250 m
+    because 425,000 ÷ 100 = 4,250 and 4,250 m is 4.25
+    km because 4,250 ÷ 1,000 = 4.25.
 
 
 
@@ -362,7 +362,7 @@ Student Response
    numbers and added the digits in each place.
 3. Tyler ran 4.9 km farther. Sample response: Clare ran
    35,150 meters, which is the same as 35.15
-   kilometers.                     .
+   kilometers. 40.05 - 35.15 = 4.9.
 
 
 
@@ -406,7 +406,7 @@ Addressing     5.MD.A.1
 
 
 Student Response
-Jada ran 6.75 kilometers farther. Sample response: 8,500 meters is 8.5 kilometers. So Jada ran             kilometers
+Jada ran 6.75 kilometers farther. Sample response: 8,500 meters is 8.5 kilometers. So Jada ran 15.25 - 8.5 kilometers
 farther and that’s 6.75 kilometers.
 
 

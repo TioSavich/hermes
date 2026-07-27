@@ -234,7 +234,7 @@ Student Response                                                  • “Many of
 
 
  3. Sample response: The unlabeled angle is       . The
-    sum of the three known angles is                ,
+    sum of the three known angles is 20 + 40 + 95,
     which is     . Subtracting 155 from 360 gives 205.
 
 
@@ -387,7 +387,7 @@ required.                                                        Before the Warm
 We learned ways to describe and measure the size of an angle.
 
 We described angles as a turn of one ray away from the other. We learned that a degree is a measure of the turn
-around a circle and that 1 degree is     of a full turn of a ray through a circle.
+around a circle and that 1 degree is 1/360 of a full turn of a ray through a circle.
 
 Finally, we learned that a protractor is a tool used to measure angles that also can be used to create angles of a
 certain measure.
@@ -401,9 +401,9 @@ measure and draw different angles.
 
 
 
-                                       Grade 4                                    CC BY NC 2024
+                                       Grade 4                                      CC BY NC 2024
                                         Unit 7
-                                                      Lesson 11
-                                                                           Illustrative Mathematics®            8
+                                                         Lesson 11
+                                                                             Illustrative Mathematics®          8
 ```
 

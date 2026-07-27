@@ -186,20 +186,20 @@ they make use of structure to find the unknown angle measures (MP7).
                                                               Lesson 15
                                                                                    Illustrative Mathematics®                 3
 Student Response                                                Activity Synthesis
- A.     . Adding this angle and 62 makes 90, or                   • Display the angles. Select students to share their
-                 .                                                  responses. Record and display their reasoning.
- B.     . The sum of 71, 90, and this angle gives 180, or         • Highlight equations that illuminate the relationship
-                       . This means the ? is                        between the known angle, the unknown angle, and
-                     or                  .                          the reference angle (   ,     , or     ). For instance:
-                                                                                ,                    ,                 ,
- C. The smaller angle is     because                     .
+ A.      . Adding this angle and 62 makes 90, or                  • Display the angles. Select students to share their
+      62 + ? = 90.                                                  responses. Record and display their reasoning.
+ B.      . The sum of 71, 90, and this angle gives 180, or        • Highlight equations that illuminate the relationship
+      71 + 90 + ? = 180. This means the ? is                        between the known angle, the unknown angle, and
+      180- (71 + 90) or 180- 161 = 19 .                             the reference angle (   ,     , or     ). For instance:
+                                                                    62 + P = 90,                     ,                 ,
+ C. The smaller angle is      because 26 + 154 = 180.
                                                                     and so on.
-    The larger angle is     because                  .
+    The larger angle is      because 72 + 108 = 180.
                                                                   • Label the diagrams with letters or symbols, as
-D. The larger angle at the bottom is      because
+D. The larger angle at the bottom is    because
                                                                     needed, to facilitate equation writing.
-                   . The smaller angle on the left is
-   because                  .                                     • When discussing the last question, highlight that
+   137 + 43 = 180. The smaller angle on the left is
+   because 43 + 137 = 180.                                        • When discussing the last question, highlight that
                                                                     finding unknown values sometimes involves multiple
                                                                     steps, and some steps may need to happen before
                                                                     others.
@@ -220,7 +220,7 @@ Activity 2                                                                      
 Info Gap: A Whole Bunch of Angles
 
       Standards                                                      Instructional Routines
-Addressing     4.MD.C.7                                           • MLR4 Information Gap
+Addressing      4.MD.C.7                                          • MLR4 Information Gap
 
 
 This activity features an Information Gap (Info Gap) routine in which students solve abstract multi-step problems
@@ -240,72 +240,72 @@ Materials to Copy
 
 
 
-                                           Grade 4                                    CC BY NC 2024
-                                            Unit 7
+                                            Grade 4                                   CC BY NC 2024
+                                             Unit 7
                                                              Lesson 15
                                                                                Illustrative Mathematics®                 4
 Required Preparation
  • Create a set of cards from the blackline master for each group of 2 students.
 
 
-     Student Task Statement                                      Launch
-     Your teacher will give you either a problem card or           • Groups of 2
-     a data card. Do not show or read your card to your          MLR4 Information Gap
+     Student Task Statement                                  Launch
+     Your teacher will give you either a problem card or       • Groups of 2
+     a data card. Do not show or read your card to your      MLR4 Information Gap
      partner.
-                                                                   • Display the Task Statement, which shows a diagram
-                                                                     of the Info Gap structure.
-                                                                   • 1–2 minutes: quiet think time
-                                                                   • Read the steps of the routine aloud.
-                                                                   • “I will give you either a problem card or a data card.
-                                                                     Silently read your card. Do not read or show your
-                                                                     card to your partner.”
-                                                                   • Distribute the cards.
-                                                                   • “The diagram is not drawn accurately, so using a
-                                                                     protractor to measure is not recommended.”
-                                                                   • 1–2 minutes: quiet think time
-                                                                   • Remind students that after the person with the
-     Pause here so your teacher can review your work.                problem card asks for a piece of information, the
-     Ask your teacher for a new set of cards and repeat              person with the data card should respond with: “Why
-     the activity. Switch roles with your partner.                   do you need to know _____ [that piece of
-                                                                     information]?”
+                                                               • Display the Task Statement, which shows a diagram
+                                                                 of the Info Gap structure.
+                                                               • 1–2 minutes: quiet think time
+                                                               • Read the steps of the routine aloud.
+                                                               • “I will give you either a problem card or a data card.
+                                                                 Silently read your card. Do not read or show your
+                                                                 card to your partner.”
+                                                               • Distribute the cards.
+                                                               • “The diagram is not drawn accurately, so using a
+                                                                 protractor to measure is not recommended.”
+                                                               • 1–2 minutes: quiet think time
+                                                               • Remind students that after the person with the
+     Pause here so your teacher can review your work.            problem card asks for a piece of information, the
+     Ask your teacher for a new set of cards and repeat          person with the data card should respond with: “Why
+     the activity. Switch roles with your partner.               do you need to know _____ [that piece of
+                                                                 information]?”
 
 Student Response
-                                                                 Activity
+                                                             Activity
 Problem Card 1:
-                                                                   • 5 minutes: partner work time
- 1. Angle P measures      . Sample reasoning:
-                                                                   • After students solve the first problem, distribute the
-                 , so                 , which is      .
-                                                                     next set of cards. Students switch roles and repeat
- 2. Angle P is greater. Sample reasoning:                  ,         the process with Problem Card 2 and Data Card 2.
-    so                 , which is  .
+                                                               • 5 minutes: partner work time
+ 1. Angle P measures    . Sample reasoning:
+                                                               • After students solve the first problem, distribute the
+    128 + P = 180, so P = 180- 128 , which is      .
+                                                                 next set of cards. Students switch roles and repeat
+ 2. Angle P is greater. Sample reasoning: D + 143 = 180,         the process with Problem Card 2 and Data Card 2.
+    so D = 180- 143 , which is     .
 Problem Card 2:
-                                                                 Activity Synthesis
+                                                             Activity Synthesis
  1. Angle Q measures    . Sample reasoning:
-                                                                   • Select students to share how they found each angle
+                                                               • Select students to share how they found each angle
                . We know U is   , so Q is
-                                                                     measure. Record their reasoning, and highlight
-                  .
-                                                                     equations that clearly show the relationships
- 2. Angle T is greater. Sample reasoning:              ,             between angles.
+                                                                 measure. Record their reasoning, and highlight
+    180- 79 = 101 .
+                                                                 equations that clearly show the relationships
+ 2. Angle T is greater. Sample reasoning:              ,         between angles.
     so T is    . We know that                   and that
-                                                                   • “Which angle measurements were easy to find? What
+                                                               • “Which angle measurements were easy to find? What
     D is    , so                   , which means E is
-                                                                     made them easy?” (P and D, because it was fairly
-                   , which is   .
-                                                                     easy to see that each of them and a neighboring
-                                                                     angle make a straight angle.)
-                                                                   • “Which ones were a bit more involved? Why?” (E,
-                                                                     because there are 5 angles that meet at that point.
-                                                                     We needed to find A or D before finding E.)
+                                                                 made them easy?” (P and D, because it was fairly
+    180- 90- 37 , which is      .
+                                                                 easy to see that each of them and a neighboring
+                                                                 angle make a straight angle.)
+                                                               • “Which ones were a bit more involved? Why?” (E,
+                                                                 because there are 5 angles that meet at that point.
+                                                                 We needed to find A or D before finding E.)
 
 
 
 
-                                            Grade 4                                    CC BY NC 2024
-                                             Unit 7
-                                                               Lesson 15
-                                                                                Illustrative Mathematics®               5
+                                         Grade 4                                   CC BY NC 2024
+                                          Unit 7
+                                                           Lesson 15
+                                                                            Illustrative Mathematics®               5
 Lesson Synthesis
 “Today we solved angle problems involving multiple steps, all without measuring with a protractor.”
 
@@ -351,21 +351,21 @@ Addressing     4.G.A.1, 4.MD.C.7
 Student Response
 The measure of Angle C is       and that of Angle D is       . Sample response:
 
-  • Angle C and the         angle together make a straight angle, which is         , so the measure of C is          , which
+  • Angle C and the         angle together make a straight angle, which is        , so the measure of C is 180- 135 , which
     is   .
-  • Angle D, the right angle, and the       angle make           .                 and                  , which is    .
+  • Angle D, the right angle, and the       angle make           . 90 + 135 = 225 and 360- 225 = 135 , which is      .
 
 
 Responding to Student Thinking
-Students may not find the values of C or D if they don’t             Next Day Supports
-recall that a full turn around a point makes a      angle.           Before the Warm-up, organize students into groups of 2
-                                                                     to discuss a correct response to this Cool-down.
+Students may not find the values of C or D if they don’t           Next Day Supports
+recall that a full turn around a point makes a      angle.         Before the Warm-up, organize students into groups of 2
+                                                                   to discuss a correct response to this Cool-down.
 
 
      Section C Summary
       We learned ways to name angles based on their measurements.
 
-        • Acute angles are angles that measure less than             .
+        • Acute angles are angles that measure less than            .
 
 
 
@@ -375,7 +375,7 @@ recall that a full turn around a point makes a      angle.           Before the 
 
 
 
-        • Obtuse angles are angles that measure greater than              .
+        • Obtuse angles are angles that measure greater than             .
 
 
 
@@ -394,10 +394,10 @@ recall that a full turn around a point makes a      angle.           Before the 
 
 
 
-                                            Grade 4                                       CC BY NC 2024
+                                            Grade 4                                      CC BY NC 2024
                                              Unit 7
                                                                  Lesson 15
-                                                                                   Illustrative Mathematics®              7
+                                                                                  Illustrative Mathematics®              7
 We know that the full turn of a clock measures   , so we determined
 that the long hand makes:
 

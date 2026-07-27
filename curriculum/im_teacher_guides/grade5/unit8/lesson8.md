@@ -148,19 +148,19 @@ similarities and differences in the strategies used to multiply and divide.
 Student Response                                                     because it would take fewer of them.)
 
  1. 78 bags. Sample response: I first found the volume of
-    the wagon which is about                cubic feet.          Activity
+    the wagon which is about 27 × 13 × 2 cubic feet.             Activity
     That's 702 cubic feet. Then I divided by 9 since each
-    bag of sand can fill 9 cubic feet:             .               • 2–3 minutes: quiet think time
+    bag of sand can fill 9 cubic feet: 702 ÷ 9 = 78.               • 2–3 minutes: quiet think time
 
  2. $5,616. Sample response: Each bag of sand costs $72            • 7-8 minutes: partner work time
-    and we need 78 bags, so I found the product        ,
+    and we need 78 bags, so I found the product 78 × 12,
     and that's 5,616.
                                                                  Activity Synthesis
- 3. 78,000 pounds. Sample response: I found
+ 3. 78,000 pounds. Sample response: I found 78 × 1,000
     since each bag of sand weighs 1,000 pounds and                 • Invite students to share their responses for the
     there are 78 of them.                                            number of bags of sand it takes to fill the big red
                                                                      wagon.
-                                                                   • Display expression:
+                                                                   • Display expression: (27 × 13 × 2) ÷ 9
                                                                    • “How does this expression represent the number of
                                                                      bags of sand it takes to fill the wagon?”(The product
                                                                      is the number of cubic feet the wagon holds, and
@@ -168,7 +168,7 @@ Student Response                                                     because it 
                                                                      gives the number of bags of sand needed to fill the
                                                                      wagon.)
                                                                    • “Jada says that she can find the value of the
-                                                                     expression quickly by first finding the value of       .
+                                                                     expression quickly by first finding the value of 27 × 9.
                                                                      Will her strategy work? How do you know?” (Yes, it
                                                                      will work. Rather than finding the product of all 3
                                                                      numbers and then dividing by 9, Jada notices that
@@ -239,7 +239,7 @@ side and I can fit 6 of those rows. That’s a total of 78
                                              Unit 8
                                                              Lesson 8
                                                                                Illustrative Mathematics®                4
-boxes. So, I need to find            , which is 51 with a      Activity Synthesis
+boxes. So, I need to find 4,000 ÷ 78, which is 51 with a       Activity Synthesis
 remainder of 22 boxes. That means it takes 52 trips
 altogether to deliver all of the boxes.                          • Invite students to share their responses for the
                                                                    number of trips.
@@ -271,11 +271,11 @@ Cool-down                                                                       
 
 Multiplication and Division
 
-      Standards
+     Standards
 Addressing      5.MD.C.5, 5.NBT.B.5
 
 
-      Student Task Statement
+     Student Task Statement
       How did you use multiplication and division to solve problems about volume?
 
 
@@ -291,8 +291,8 @@ both, in their response.                                       Create a poster w
 
 
 
-                                              Grade 5                                CC BY NC 2024
-                                               Unit 8
+                                             Grade 5                                 CC BY NC 2024
+                                              Unit 8
                                                              Lesson 8
                                                                               Illustrative Mathematics®                 5
            this Cool-down.

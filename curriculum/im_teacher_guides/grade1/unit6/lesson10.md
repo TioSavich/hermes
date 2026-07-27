@@ -84,21 +84,21 @@ helpful later when students add within 100.
      Student Task Statement                                    Launch
       Is each statement true or false?                           • Display one statement.
       Be prepared to explain your reasoning.                     • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 24 + 30 = 44                                             statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 24 + 40 = 64                                           • 1 minute: quiet think time
 
-        •
-        •                                                      Activity
+        • 30 + 45 = 75
+        • 32 + 45 = 76                                         Activity
                                                                  • Share and record answers and strategies.
 Student Response                                                 • Repeat with each equation.
 
   • False: 2 tens and 3 tens would be 5 tens. That's more
     than 44.                                                   Activity Synthesis
-  • True:               ,          , and              .
+  • True: 20 + 40 = 60, 4 + 0 = 4, and 60 + 4 = 64.
                                                                  • “Some students said they added the tens to the tens
-  • True:               ,          , and              .            and the ones to the ones. Think about using this
-  • False:               ,          , and             .            method when you add during center time today.”
+  • True: 30 + 40 = 70, 0 + 5 = 5, and 70 + 5 = 75.                and the ones to the ones. Think about using this
+  • False: 30 + 40 = 70, 2 + 5 = 7, and 70 + 7 = 77.               method when you add during center time today.”
 
 
 
@@ -121,8 +121,8 @@ Materials to Gather                                            Materials to Copy
   • Centimeter cubes: Activity 1                                 • Estimate and Measure Stage 1 Recording Sheet (1
 
 
-                                            Grade 1                                   CC BY NC 2024
-                                             Unit 6
+                                           Grade 1                                    CC BY NC 2024
+                                            Unit 6
                                                             Lesson 10
                                                                                Illustrative Mathematics®                2
  • Connecting cubes: Activity 1                                   copy for every 1 students): Activity 1

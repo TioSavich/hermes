@@ -112,10 +112,10 @@ be used to represent addition.
 
 Student Response                                             Activity Synthesis
 Students may notice:                                           • “What equation do you think best matches these
-  • I can see all the numbers on the number line but not         diagrams?” (        )
+  • I can see all the numbers on the number line but not         diagrams?” (5 + 4 = 9)
     on the diagram.
                                                                • “Where do we see the 5 in both diagrams?” (The 5 on
-  • They both show               .                               the number line is the distance from 0 to the point at
+  • They both show 5 + 4 = 9.                                    the number line is the distance from 0 to the point at
   • The top shows one jump and the bottom shows 2                5. The arrow on the number line starts at 5. The first
     rectangles.                                                  part of the tape diagram is labeled 5.)
 
@@ -283,7 +283,7 @@ that make sense to them.
 
 Student Response
 1. 18 cubes. Sample responses:
-    ◦
+    ◦ 24 + 18 = 42
 
 
 
@@ -299,7 +299,7 @@ Student Response
                                                                          Illustrative Mathematics®               5
       ◦
  2. 76 cubes. Sample responses:
-      ◦
+      ◦ 37 + 39 = 76
 
 
 
@@ -310,7 +310,7 @@ Student Response
 
       ◦
  3. 47 cubes. Sample responses:
-      ◦               or
+      ◦ 55 - 8 = 47 or 8 + 47 = 55
 
 
 
@@ -363,7 +363,7 @@ Addressing     2.MD.B.5, 2.OA.A.1
 
 
 Student Response
- 1. 13 cubes. Sample response:                or
+ 1. 13 cubes. Sample response: 15 + ? = 28 or 15 + 13 = 28
 
 
 Responding to Student Thinking

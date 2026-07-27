@@ -95,12 +95,12 @@ looking for and making use of structure (MP7).
       Student Task Statement                                  Launch
       Find the value of each expression.                        • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 3 + 1                                                 • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 1 + 3
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 4- 1
+        • 4 + 1
                                                               Activity
 
 Student Response                                                • Record answers and strategy.
@@ -117,7 +117,7 @@ Student Response                                                • Record answe
 
                                                                 • Display the expressions.
                                                                 • “Which expression goes with these counters? Why do
-                                                                  you think that?” (   , because there are 4 yellow
+                                                                  you think that?” (4 + 1, because there are 4 yellow
                                                                   and 1 red.)
 
 
@@ -207,13 +207,13 @@ Sample responses:                                                  problem.”
   • Clare’s drawing matches the story because there are            numbers.)
     9 pieces of fruit—some satsumas and some
                                                                  • “Diego wrote numbers to show how many satsumas
-    grapefruits.      or
+    grapefruits. 3 + 6 or 6 + 3
                                                                    and how many grapefruits Han has.”
   • Diego’s drawing matches the story, because he
                                                                  • “Work with your partner to show another solution for
     showed 7 satsumas and 2 grapefruits, which is 9
                                                                    the story problem. Be sure to include numbers to
-    pieces of fruit total.  or
+    pieces of fruit total. 7 + 2 or 2 + 7
                                                                    show how many satsumas and how many
                                                                    grapefruits.”
                                                                  • Reread the Task Statement.
@@ -313,24 +313,24 @@ drawings.
 Sample responses:
                                                                  • 2 minutes: quiet work time
   • 7 dates stuffed with cheese, 1 date stuffed with
-    almonds,                                                     • 2 minutes: partner discussion
+    almonds, 7 + 1                                               • 2 minutes: partner discussion
 
   • 6 dates stuffed with cheese, 2 dates stuffed with            • “Write an expression to show how many of the dates
-    almonds,                                                       were stuffed with cheese and how many were
+    almonds, 6 + 2                                                 were stuffed with cheese and how many were
                                                                    stuffed with almonds.”
   • 5 dates stuffed with cheese, 3 dates stuffed with
-    almonds,                                                     • 1 minute: independent work time
+    almonds, 5 + 3                                               • 1 minute: independent work time
 
   • 4 dates stuffed with cheese, 4 dates stuffed with            • “As you walk around, look to see if you can find other
-    almonds,                                                       ways to solve the story problem.”
+    almonds, 4 + 4                                                 ways to solve the story problem.”
 
   • 3 dates stuffed with cheese, 5 dates stuffed with            • 5 minutes: gallery walk
-    almonds,
+    almonds, 3 + 5
   • 2 dates stuffed with cheese, 6 dates stuffed with          Activity Synthesis
-    almonds,
+    almonds, 2 + 6
                                                                  • Invite students to share their solution or solutions
   • 1 date stuffed with cheese, 7 dates stuffed with               they found during the Gallery Walk. Record student
-    almonds,                                                       solutions as explained in the activity narrative.
+    almonds, 1 + 7                                                 solutions as explained in the activity narrative.
                                                                  • “What do you notice? What do you wonder?” (2 and 6
                                                                    are there but not 6 and 2. When it’s 4 and 4, there
                                                                    are the same number of cheese dates and almond
@@ -436,7 +436,7 @@ didn't find the same answer, because one showed more dates with cheese and one s
 
 Write an equation for both Diego and Priya’s solutions. For example:
 
-  • Write              .
+  • Write 8 = 3 + 5.
   • “Andre and his brother have 8 dates. They stuff 3 of them with cheese and 5 of them with almonds. We can write
     that as 8 is 3 plus 5.”
 

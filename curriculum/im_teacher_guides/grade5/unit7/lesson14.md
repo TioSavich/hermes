@@ -100,8 +100,8 @@ with an ordered pair are the important discussion points.
                                                                     layouts and websites. What are some other places
                                                                     you’ve seen grids used?” (games, maps, art)
                                                                   • “What points on the grid could help make a copy of
-Student Response                                                    this design? Why would they be helpful?” (      ,
-                                                                          , and     ) would be helpful because it shows
+Student Response                                                    this design? Why would they be helpful?” ((5,0) ,
+                                                                    (5,4) , and (5,8) ) would be helpful because it shows
 Students may notice:
                                                                     the middle of the design where the parallelograms
   • There’s a design made with shapes.
@@ -181,26 +181,26 @@ Sample responses:                                                   marks on the
                                             Unit 7
                                                             Lesson 14
                                                                                Illustrative Mathematics®                 3
-                                                                 Activity
-                                                                   • “As you work together, you can share ideas, but you
-                                                                     and your partner can also make different choices as
-                                                                     you plan how to make a copy of the figure.”
-                                                                   • 12–15 minutes: partner work time
+                                                                  Activity
+                                                                    • “As you work together, you can share ideas, but you
+                                                                      and your partner can also make different choices as
+                                                                      you plan how to make a copy of the figure.”
+                                                                    • 12–15 minutes: partner work time
 
 
-                                                                 Activity Synthesis
-                                                                   • Invite students to share their plans for how they will
-                                                                     copy the figure using a coordinate grid.
+                                                                  Activity Synthesis
+                                                                    • Invite students to share their plans for how they will
+                                                                      copy the figure using a coordinate grid.
 
 
 
 
  1.
- 2.                                  These ordered pairs
-      show the middle and the corners of the big square.
-
-      These ordered pairs show the corners of the big
-      octagon.
+ 2. (6,6),(6,12),(12,6),(6,0),(0,6)       These ordered pairs
+    show the middle and the corners of the big square.
+    (0,3),(0,9),(3,12),(9,12),(12,9),(12,3),(9,0),(3,0)
+    These ordered pairs show the corners of the big
+    octagon.
 
 
 
@@ -217,7 +217,7 @@ The purpose of this activity is for students to use the plan from the previous a
 use the points they chose to copy the figure. In the Activity Synthesis, encourage students to describe what details were
 important for ensuring their figure was as close to the original as possible. Students may describe the points they chose
 (or didn’t choose) or they may discuss the effects of the scale they chose to create the coordinate grid. For example, if
-students use    inches to draw the grid over the original figure, the copy they create will be larger because the squares
+students use 1/4 inches to draw the grid over the original figure, the copy they create will be larger because the squares
 on the grid paper are larger. If they choose to use inches to create the grid over the original figure, the copy will be
 smaller because the squares on the grid paper are smaller.
 
@@ -232,7 +232,7 @@ Materials to Gather
 
                                             Grade 5                                     CC BY NC 2024
                                              Unit 7
-                                                             Lesson 14
+                                                                Lesson 14
                                                                                  Illustrative Mathematics®                 4
      Student Task Statement                                      Launch
       Create a coordinate grid on grid paper. Use the              • Groups of 2

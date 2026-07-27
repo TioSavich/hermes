@@ -98,11 +98,11 @@ Students may notice:                                             • 1 minute: q
   • The 8 and the 6 switch places.
 Students may wonder:                                             • “Without finding the values, which product do you
   • What are the values of the products?                           think will be greater? Explain your reasoning.” (I think
-                                                                            will be greater because 841 is a lot more
+                                                                   841 × 6 will be greater because 841 is a lot more
   • Are they equal?
-                                                                   than 641. I think          will be greater because both
-  • Which one is greater?                                          products are 4,800 plus some 41s.             has more
-                                                                   41s than           .)
+                                                                   than 641. I think 641 × 8 will be greater because both
+  • Which one is greater?                                          products are 4,800 plus some 41s. 641 × 8 has more
+                                                                   41s than 841 × 6.)
                                                                  • “We are going to revisit these problems in the Lesson
                                                                    Synthesis.”
 
@@ -180,73 +180,73 @@ with several partners (MP3).
                                              Unit 8
                                                              Lesson 1
                                                                                Illustrative Mathematics®              3
-                                                               • 1–2 minutes: partner discussion
-                              agree    disagree    unsure
-                                                               • “Now, use what you learned to complete the second
-             Round 1:                                            problem.”
-             The greatest
-                                                               • 1–2 minutes: independent work time
-             product
-             using the
-             digits 7, 5,                                    Activity Synthesis
-             and 2 is
-                                                               • Display:
+                                                              • 1–2 minutes: partner discussion
+                            agree    disagree   unsure
+                                                              • “Now, use what you learned to complete the second
+            Round 1:                                            problem.”
+            The greatest
+                                                              • 1–2 minutes: independent work time
+            product
+            using the
+            digits 7, 5,                                    Activity Synthesis
+            and 2 is
+            75 × 2                                            • Display:      72 × 5 = (70 × 5) + (2 × 5)
 
-             because 75
-             is the
-                                                               • “Why is        greater than         ?” (Both have the
-             greatest
-                                                                 same first partial product of 350 from multiplying
-             number you
-                                                                 ones by tens. But        has a greater second partial
-             can make.
-                                                                 product from multiplying ones by ones:          is
-             Round 2:                                            greater than        )
-             The greatest                                      • “What did you learn about placement of digits when
-             product                                             multiplying a two-digit number by a one-digit
-             using the                                           number?”
-             digits 7, 5,
-             and 2 is
+            because 75                                                        52 × 7 = (50 × 7) + (2 × 7)
+            is the
+                                                              • “Why is 52 × 7 greater than 72 × 5?” (Both have the
+            greatest
+                                                                same first partial product of 350 from multiplying
+            number you
+                                                                ones by tens. But 52 × 7 has a greater second partial
+            can make.
+                                                                product from multiplying ones by ones: 2 × 7 is
+            Round 2:                                            greater than 5 × 2)
+            The greatest                                      • “What did you learn about placement of digits when
+            product                                             multiplying a two-digit number by a one-digit
+            using the                                           number?”
+            digits 7, 5,
+            and 2 is
+            75 × 2
+            because 75
+            is the
+            greatest
+            number you
+            can make.
 
-             because 75
-             is the
-             greatest
-             number you
-             can make.
 
+         Write about something new that you learned
+         from your group or something you still wonder
+         about:
 
-           Write about something new that you learned
-           from your group or something you still wonder
-           about:
-
-       2. Use the digits 6, 3, and 1 to make the greatest
-          product. (Use each digit only once.) Explain
-          your reasoning.
+      2. Use the digits 6, 3, and 1 to make the greatest
+         product. (Use each digit only once.) Explain
+         your reasoning.
 
 
 Student Response
-1. Disagree. Sample response:           is the greatest
+1. Disagree. Sample response: 52 × 7 is the greatest
    product you can make with the digits 5, 2, and 7. I
-   learned that         is greater than         because
+   learned that 52 × 7 is greater than 72 × 5 because
    both products have 350 as one partial product, but
    the other partial product is greater when the second
    factor is 7.
-2.         . Sample response:                 , but
-                  . Putting the 1 in the tens place or
-     multiplying by 1 gives a much smaller product.
+2. 31 × 6. Sample response: 61 × 3 = 183, but
+   31 × 6 = 186. Putting the 1 in the tens place or
+   multiplying by 1 gives a much smaller product.
 
 
 
 
-                                             Grade 5                               CC BY NC 2024
-                                              Unit 8
-                                                            Lesson 1
-                                                                            Illustrative Mathematics®             4
+                                          Grade 5                                 CC BY NC 2024
+                                           Unit 8
+                                                           Lesson 1
+                                                                           Illustrative Mathematics®             4
 Activity 2                                                                                                     20 min
 
 More Digits
 
-      Standards
+     Standards
 Addressing     5.NBT.B.5
 
 
@@ -254,15 +254,15 @@ The purpose of this activity is for students to practice using the standard algo
 explain how the placement of the digits in factors impacts the value of the product when multiplying (MP7).
 
 
-      Student Task Statement                                   Launch
+     Student Task Statement                                    Launch
        1. Use the digits 7, 3, 2, and 5 to make the              • Groups of 2
           greatest product. Use each digit only once.            • Display:
        2. Explain your reasoning.
                                                                                            7, 3, 2, 5
 
                                                                  • “Using only these digits, what are some multiplication
-Student Response                                                   expressions we could write?” (        ,        ,
- 1.                                                                             ,            , and many others)
+Student Response                                                   expressions we could write?” (723 × 5, 32 × 57,
+ 1. 72 × 53                                                        7 × 3 × 2 × 5, 73 × 5 × 2, and many others)
 
  2. Sample response: I figured out through testing               • 1 minute: quiet think time
     different combinations that the two-digit by two-digit       • Record answers for all to see.
@@ -303,9 +303,9 @@ Student Response                                                   expressions w
                                              Unit 8
                                                              Lesson 1
                                                                               Illustrative Mathematics®                 5
-                                                                  7 increase the value of the product?” (Both products
-                                                                  have 35 hundreds, but when 7 is the second factor,
-                                                                  the product has 7 groups of 32 instead of 5 groups.)
+                                                                   7 increase the value of the product?” (Both products
+                                                                   have 35 hundreds, but when 7 is the second factor,
+                                                                   the product has 7 groups of 32 instead of 5 groups.)
                                                                 • Display or write these problems for all to see:
 
 
@@ -313,9 +313,9 @@ Student Response                                                   expressions w
 
                                                                 • “Why does switching the placement of the digits 2
                                                                   and 3 increase the value of the product?” (Both
-                                                                  problems have partial products            and      ,
+                                                                  problems have partial products 50 × 70 and 2 × 3,
                                                                   but the total of the other two partial products is
-                                                                  greater in          than in        .)
+                                                                  greater in 72 × 53 than in 73 × 52.)
 
 
 
@@ -334,12 +334,12 @@ Display:
 
 
 “Here are the problems from the Warm-up. Does anyone want to revise their thinking about which one is the greater
-product?” (        is greater because both products will have 4,800, but there will be two more groups of 41 in          .)
+product?” (641 × 8 is greater because both products will have 4,800, but there will be two more groups of 41 in 641 × 8.)
 
 “Today we explored ways to arrange digits to make the greatest product. We had to solve a lot of multiplication
 problems. What is something new that you learned about multiplication today?” (I never realized how many different
-problems you could create with the same digits. I was surprised by some of the greatest products. I thought
-would be greater than        .)
+problems you could create with the same digits. I was surprised by some of the greatest products. I thought 841 × 6
+would be greater than 641 × 8.)
 
 
 
@@ -354,17 +354,17 @@ Addressing     5.NBT.B.5
 
 
 
-                                            Grade 5                                 CC BY NC 2024
+                                            Grade 5                                  CC BY NC 2024
                                              Unit 8
                                                              Lesson 1
-                                                                             Illustrative Mathematics®               6
-      Student Task Statement
+                                                                              Illustrative Mathematics®              6
+     Student Task Statement
        1. Use the digits 3, 4, 6, and 8 to make the greatest product. Use each digit only once.
        2. Explain your reasoning.
 
 
 Student Response
- 1.
+ 1. 83 × 64
 
  2. Sample response: I figured out through trial and error that the two-digit by two-digit multiplication problems made
     greater products. To get the greatest product, the two digits with the greatest value should go in the greatest place,

@@ -141,7 +141,7 @@ Sample responses:                                                       way ____
 
   • 8: I saw the group of 6 dots and counted on. 6 . . . 7,
     8.
-  • 6: I see 4 red and 2 yellow.       is .
+  • 6: I see 4 red and 2 yellow. 4 + 2 is 6.
   • 7: I see 5 . . . 6, 7.
 
 
@@ -173,8 +173,8 @@ where students can easily access them.
 
 
 
-                                              Grade 1                                 CC BY NC 2024
-                                               Unit 1
+                                               Grade 1                                CC BY NC 2024
+                                                Unit 1
                                                               Lesson 9
                                                                                Illustrative Mathematics®                3
 Required Materials

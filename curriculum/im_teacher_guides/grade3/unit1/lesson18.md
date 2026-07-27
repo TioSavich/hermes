@@ -16,14 +16,14 @@ The purpose of this lesson is for students to represent multiplication situation
 Unit 1, Lesson 18
 
 Represent Arrays with Expressions
-      Standards                                                       Instructional Routines
-Addressing      3.OA.A.1                                          • How Many Do You See?
+      Standards                                                      Instructional Routines
+Addressing     3.OA.A.1                                          • How Many Do You See?
 
 
 
-      Goals                                                           Student Facing Learning Goals
-  • Represent multiplication situations using arrays and               Let’s represent situations with arrays and
-    multiplication expressions.                                        expressions.
+      Goals                                                          Student Facing Learning Goals
+  • Represent multiplication situations using arrays and             Let’s represent situations with arrays and
+    multiplication expressions.                                      expressions.
 
 
 
@@ -37,13 +37,13 @@ Narrative
 In a previous lesson, students arranged objects into arrays and described the arrays in terms of equal groups. In this
 lesson, students write expressions to represent arrays to further connect arrays and multiplication (MP2).
 
-As students connect arrays to expressions, they may write        or        to represent 3 rows of 5 chairs. This is fine as
+As students connect arrays to expressions, they may write 3 × 5 or 5 × 3 to represent 3 rows of 5 chairs. This is fine as
 long as students can correctly describe where the “3 rows of 5 chairs” is represented in their array or expression. Keep
 collecting ideas that arise about commutativity.
 
 
-      Access for Students with Disabilities                           Access for English Learners
-  • Representation                                                • MLR2
+      Access for Students with Disabilities                          Access for English Learners
+  • Representation                                               • MLR2
 
 
 Required Materials
@@ -51,25 +51,25 @@ Materials to Gather
   • Connecting cubes or counters: Activity 1
 
 
-Lesson Timeline                                                 Teacher Reflection Questions
-                                                                In an upcoming lesson, students will learn about the
- Warm-up                                      10 min
-                                                                commutative property of multiplication. What do you
- Activity 1                                   20 min            notice in their work from today’s lesson that you might
-                                                                leverage in that future lesson?
- Activity 2                                   15 min
+Lesson Timeline                                                Teacher Reflection Questions
+                                                               In an upcoming lesson, students will learn about the
+ Warm-up                                     10 min
+                                                               commutative property of multiplication. What do you
+ Activity 1                                  20 min            notice in their work from today’s lesson that you might
+                                                               leverage in that future lesson?
+ Activity 2                                  15 min
 
- Synthesis Estimate                           10 min
+ Synthesis Estimate                          10 min
 
  Cool-down                                     5 min
 
 
 
 
-                                           Grade 3                                     CC BY NC 2024
+                                           Grade 3                                    CC BY NC 2024
                                             Unit 1
-                                                             Lesson 18
-                                                                                Illustrative Mathematics®               1
+                                                            Lesson 18
+                                                                               Illustrative Mathematics®              1
 Warm-up                                                                                                         10 min
 
 How Many Do You See: An Array of Shapes
@@ -135,7 +135,7 @@ be used to express the total number of objects in equal groups (MP2).
 
       Access for English Language Learners
       MLR2 Collect and Display. Amplify language used to describe arrays. On a visible display, record words, phrases
-      and expressions, such as “row,” “column,” “each,” “for every,” “3 by 5,” “5 by 3,” “ ,” and “    .” Include
+      and expressions, such as “row,” “column,” “each,” “for every,” “3 by 5,” “5 by 3,” “5 × 3,” and “3 × 5.” Include
       diagrams and annotations. Invite students to borrow language from the display as needed, and update it
       throughout the lesson.
       Advances: Representing, Reading, Speaking
@@ -144,7 +144,7 @@ be used to express the total number of objects in equal groups (MP2).
       Access for Students with Disabilities
       Representation: Internalize Comprehension. Make connections between representations visible. Invite students to
       use gestures or drawings as they verbally describe correspondences between their arrays and expressions. For
-      example, “The 4 in my expression        , shows the number of rows, and the 5 shows that there are 5 cars in each
+      example, “The 4 in my expression 4 × 5, shows the number of rows, and the 5 shows that there are 5 cars in each
       row.”
       Supports accessibility for: Conceptual Processing, Memory
 
@@ -172,81 +172,81 @@ Required Preparation
                                                                  • Share responses. Emphasize ways students used
        2. Write a multiplication expression to represent           equal groups to create their arrays.
           each situation.
-           a.                                                 Activity
+           a. ___                                             Activity
            b.
-                                                                 • “Work with your partner to represent the next three
-           c.
+              ___                                                • “Work with your partner to represent the next three
+           c. ___
 
 
                                           Grade 3                                    CC BY NC 2024
                                            Unit 1
                                                            Lesson 18
                                                                               Illustrative Mathematics®             3
-             d.                                                       situations with an array. Be prepared to share how
-                                                                      you see equal groups in your array.”
+             d. ___                                                 situations with an array. Be prepared to share how
+                                                                    you see equal groups in your array.”
 
-Student Response                                                   • If students build an array, tell them to also draw it in
-                                                                     the space provided so they can refer to the array
- 1.   a. 3 by 5 or 5 by 3 array drawn or built                       when they write their expressions.
-      b. 4 by 5 or 5 by 4 array drawn or built                     • 5 minutes: partner work time
-      c. 2 by 6 or 6 by 2 array drawn or built                     • Have students share an array for problems 2–4. Try
-      d. 2 by 10 or 10 by 2 array drawn or built                     to show both drawings and arrays made of objects.
+Student Response                                                 • If students build an array, tell them to also draw it in
+                                                                   the space provided so they can refer to the array
+ 1.   a. 3 by 5 or 5 by 3 array drawn or built                     when they write their expressions.
+      b. 4 by 5 or 5 by 4 array drawn or built                   • 5 minutes: partner work time
+      c. 2 by 6 or 6 by 2 array drawn or built                   • Have students share an array for problems 2–4. Try
+      d. 2 by 10 or 10 by 2 array drawn or built                   to show both drawings and arrays made of objects.
 
- 2.   a.          or                                               • “How do you see equal groups in your arrays?” (The
-                                                                     rows can show the number of groups, and the
-      b.          or
-                                                                     number in each group is the number in each row.)
-      c.          or
-                                                                   • Display the first situation again.
-      d.           or
-                                                                   • “Let’s revisit the first situation. What multiplication
-                                                                     expression would represent this situation?”
-                                                                   • 30 seconds: quiet think time
-                                                                   • Share responses. Emphasize how students use equal
-                                                                     groups to write the expression.
-                                                                   • “Work with your partner to write multiplication
-                                                                     expressions for the other three situations.”
-                                                                   • 2 minutes: partner work time
-
-
-                                                                 Activity Synthesis
-                                                                   • “How did you use equal groups to write your
-                                                                     multiplication expression?” (I thought about how
-                                                                     many groups were in the situation and then how
-                                                                     many things were in each group. For example, I know
-                                                                     that 2 teams of 10 students is 2 groups of 10, so I can
-                                                                     write        .)
+ 2.   a. 3 × 5 or 5 × 3                                          • “How do you see equal groups in your arrays?” (The
+                                                                   rows can show the number of groups, and the
+      b. 4 × 5 or 5 × 4
+                                                                   number in each group is the number in each row.)
+      c. 2 × 6 or 6 × 2
+                                                                 • Display the first situation again.
+      d. 2 × 10 or 10 × 2
+                                                                 • “Let’s revisit the first situation. What multiplication
+                                                                   expression would represent this situation?”
+                                                                 • 30 seconds: quiet think time
+                                                                 • Share responses. Emphasize how students use equal
+                                                                   groups to write the expression.
+                                                                 • “Work with your partner to write multiplication
+                                                                   expressions for the other three situations.”
+                                                                 • 2 minutes: partner work time
 
 
+                                                               Activity Synthesis
+                                                                 • “How did you use equal groups to write your
+                                                                   multiplication expression?” (I thought about how
+                                                                   many groups were in the situation and then how
+                                                                   many things were in each group. For example, I know
+                                                                   that 2 teams of 10 students is 2 groups of 10, so I can
+                                                                   write 2 × 10.)
 
 
-Activity 2                                                                                                        15 min
+
+
+Activity 2                                                                                                      15 min
 
 Connect Arrays to Expressions
 
       Standards
-Addressing        3.OA.A.1
+Addressing      3.OA.A.1
 
 
 The purpose of this activity is for students to apply their knowledge from previous activities to draw arrays that match
 multiplication expressions. Have connecting cubes or counters available for students who need them. In the Launch,
-students use themselves to make an array for the expression          . Feel free to adjust this expression to better fit the
+students use themselves to make an array for the expression 4 × 6. Feel free to adjust this expression to better fit the
 number of students in your class.
 
 
 
 
-                                            Grade 3                                     CC BY NC 2024
-                                             Unit 1
-                                                             Lesson 18
-                                                                                 Illustrative Mathematics®                 4
+                                           Grade 3                                    CC BY NC 2024
+                                            Unit 1
+                                                           Lesson 18
+                                                                               Illustrative Mathematics®                 4
      Student Task Statement                                     Launch
       Draw an array for each multiplication expression.           • Groups of 2
-      Be prepared to share your reasoning.                        • Display       .
-       1.                                                         • “Work together as a class to use yourselves to create
-       2.                                                           an array for this multiplication expression.”
+      Be prepared to share your reasoning.                        • Display 4 × 6.
+       1. 2 × 3                                                   • “Work together as a class to use yourselves to create
+       2. 5 × 2                                                     an array for this multiplication expression.”
 
-       3.                                                         • If the number of students does not exactly match the
+       3. 4 × 4                                                   • If the number of students does not exactly match the
                                                                     product, ask extra students to monitor the array and
                                                                     be prepared to explain where they see parts of the
 Student Response                                                    expression in the array.
@@ -267,9 +267,9 @@ Student Response                                                    expression i
                                                                   • “What connections did you and your partner see
                                                                     between the multiplication expressions and arrays?”
                                                                     (The factors tell us how many things are in each row
-                                                                    and column. For        , we drew an array with 2
+                                                                    and column. For 2 × 3, we drew an array with 2
                                                                     columns that have 3 things in each column. For
-                                                                         , we drew an array with 2 rows that have 3
+                                                                    2 × 3, we drew an array with 2 rows that have 3
                                                                     things in each row.)
 
 
@@ -312,11 +312,11 @@ Cool-down                                                                       
 
 Array Situation
 
-      Standards
+     Standards
 Addressing      3.OA.A.1
 
 
-      Student Task Statement
+     Student Task Statement
       There are 2 rows of plants. Each row has 5 plants.
 
        1. Draw an array to represent the situation.
@@ -330,7 +330,7 @@ Student Response
 
 
 
- 2.       or
+ 2. 2 × 5 or 5 × 2
 
 
 Responding to Student Thinking

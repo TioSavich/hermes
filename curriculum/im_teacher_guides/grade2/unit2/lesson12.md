@@ -393,13 +393,13 @@ Student Response                                               • “You are go
  • A: 91 apple seeds. Sample responses:
                                                               Activity Synthesis
     ◦ Students draw a base-ten diagram to show
-      composing a new ten to find        .                     • Invite students to share how they decided which
+      composing a new ten to find 52 + 39.                     • Invite students to share how they decided which
     ◦                                                            diagrams go with Cards A, B, and C.
                                                                • Consider asking:
                                                                    ◦ “How do you know the diagram matches the
  • B: 13 seeds. Sample response:                                     story problem?”
     ◦ Students draw a base-ten diagram to show                     ◦ “What did you do to solve the problem?”
-      decomposing a ten to find       .
+      decomposing a ten to find 52- 39 .
                                                                • If time, select previously identified student(s) to
 
 

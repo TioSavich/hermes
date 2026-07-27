@@ -71,7 +71,7 @@ Lesson Timeline                                                Teacher Reflectio
 
 
 
-Warm-up                                                                                                        10 min
+Warm-up                                                                                                       10 min
 
 Number Talk: Use Known Sums
 
@@ -87,32 +87,32 @@ problems. The methods elicited here will be helpful as students add and subtract
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-          •                                                      • “Give me a signal when you have an answer and can
+        • 6 + 7                                                  • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-          •
+        • 13 - 7
                                                                  • 1 minute: quiet think time
-          •
-          •
+        • 7 + 8
+        • 15 - 7
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
                                                                  • Keep expressions and work displayed.
-  • 13:            ,
+  • 13: 6 + 6 = 12, 12 + 1 = 13
                                                                  • Repeat with each expression.
-  • 6:            , so
-  • 15:
+  • 6: 6 + 7 = 13, so 13 - 7 = 6
+  • 15: 7 + 3 + 5 = 15
                                                                Activity Synthesis
-  • 8: Since             , then
-                                                                 • “Some of us used           to help with       . What
-                                                                   other subtraction expression does           help with?”
-                                                                   (      . It’s like the other subtraction equation, you
+  • 8: Since 7 + 8 = 15, then 15 - 7 = 8
+                                                                 • “Some of us used 7 + 8 to help with 15 - 7. What
+                                                                   other subtraction expression does 7 + 8 help with?”
+                                                                   (15 - 8. It’s like the other subtraction equation, you
                                                                    just have to find a different unknown addend.)
 
 
 
 
-Activity 1                                                                                                     20 min
-                                                                                                               PLC Activity
+Activity 1                                                                                                    20 min
+                                                                                                              PLC Activity
 Many Ways to Add and Subtract
 
      Standards                                                       Instructional Routines
@@ -128,7 +128,7 @@ classmates’ work. Set-up for the Gallery Walk by putting all the posters for a
                                             Grade 1                                  CC BY NC 2024
                                              Unit 8
                                                              Lesson 3
-                                                                              Illustrative Mathematics®                 2
+                                                                              Illustrative Mathematics®                2
 Synthesis focuses on how decomposing a number to lead to a ten can be a helpful method when subtracting within 20
 (MP7).
 This activity uses MLR7 Compare and Connect. Advances: representing, conversing.
@@ -144,11 +144,11 @@ Materials to Gather
      Student Task Statement                                   Launch
       Circle 1 addition expression and 1 subtraction            • Groups of 2
       expression.                                               • Give each group tools for creating a visual display
-                                                                  and access to connecting cubes in towers of 10 and
+      5 + 9                        14- 8                          and access to connecting cubes in towers of 10 and
                                                                   singles.
+      4 + 7                        15 - 9
 
-
-                                                              Activity
+      6 + 4 + 4                    13 - 6                     Activity
       Find the value of the expressions in as many            MLR7 Compare and Connect
       different ways as you can.                               • Read the Task Statement.
 
@@ -170,7 +170,7 @@ can.                                                              is the same an
                                                                   (Some of us wrote equations. Some of us made 10
                                                                   for the addition and subtraction expressions.)
 
-                                                                • Display               ,           ,           .
+                                                                • Display 13 - 6 =      , 13 - 3 - 3, 10- 3 = 7 .
 
                                                                 • “How did this student find the difference between 13
                                                                   and 6?” (They broke 6 into 3 and 3. They took 3 from
@@ -248,9 +248,9 @@ Materials to Gather
                                                                   • Demonstrate writing an equation to show how you
 Sample responses:
                                                                     found the sum of the two numbers.
-  •               ,
+  • 8 + 5 = 13 ,
                                                                   • Ask students how they would find the number on
-  •               ,                                                 each player's head and record the equations.
+  •               , 5 + 9 = 14                                      each player's head and record the equations.
                                                                   • “After each round, switch roles and play again.”
 
 
@@ -263,11 +263,11 @@ Sample responses:
                                                                     a 3 on their card. Diego was told that the sum of their
                                                                     numbers was 12. What equations can Diego use to
                                                                     figure out what number is on his card?”
-                                                                    (                  or                 )
+                                                                    (12- 3 = ___       or 3 + ___ = 12 )
                                                                   • “Explain which of these equations you would use to
-                                                                    find the unknown number.” (I would use
+                                                                    find the unknown number.” (I would use 12- 3
                                                                     because it is really easy to count back 3. I would
-                                                                    choose                    , because I prefer adding. I
+                                                                    choose 3 + ___ = 12 , because I prefer adding. I
                                                                     would add 7 to get to 10 and then 2 more.)
 
 

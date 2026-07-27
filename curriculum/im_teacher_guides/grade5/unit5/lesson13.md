@@ -90,7 +90,7 @@ valuable skill to help confirm the reasonableness of a solution.
 
 
      Student Task Statement                                   Launch
-                                                                • Groups of 2
+                       1,987.89 + 658.54                        • Groups of 2
 
       Record an estimate that is:                               • Display the expression.
                                                                 • “What is an estimate that’s too high? Too low? About
@@ -125,8 +125,8 @@ Addressing     5.NBT.B.7                                        • MLR3 Critiqu
 
 
 
-                                          Grade 5                                    CC BY NC 2024
-                                           Unit 5
+                                           Grade 5                                   CC BY NC 2024
+                                            Unit 5
                                                            Lesson 13
                                                                               Illustrative Mathematics®                 2
 The purpose of this activity is for students to analyze a common error when using the standard algorithm to add
@@ -139,10 +139,10 @@ This activity uses MLR3 Critique, Correct, Clarify. Advances: reading, writing, 
 
 
      Student Task Statement                                     Launch
-       1. Find the value of                . Explain or           • Groups of 2
+       1. Find the value of 621.45 + 72.3. Explain or             • Groups of 2
           show your reasoning.                                    • “Solve the first problem on your own.”
        2. Elena and Andre try to find the value of                • 2–3 minutes: independent work time
-                       . Who do you agree with? Explain
+          621.45 + 72.3. Who do you agree with? Explain
           or show your reasoning.                                 • “Now, work on the second problem on your own for
                                                                     a few minutes, and then talk to your partner about
                                                                     it.”
@@ -226,11 +226,11 @@ calculations, making sure to align place values correctly (MP6).
       Find the value of each expression. Explain or show          • Groups of 2
       your reasoning.
 
-       1.                                                       Activity
-       2.                                                         • 5 minutes: independent work time
-       3.                                                         • 2 minutes: partner discussion
+       1. 2.63 + 7.74                                           Activity
+       2. 26.3 + 774                                              • 5 minutes: independent work time
+       3. 46.3 + 31.42                                            • 2 minutes: partner discussion
 
-       4.                                                         • Monitor for students who:
+       4. 463 + 3.14                                              • Monitor for students who:
                                                                       ◦ Use the standard algorithm.
                                                                       ◦ Use place value understanding but do not
                                                                         organize their calculations vertically.
@@ -242,7 +242,7 @@ calculations, making sure to align place values correctly (MP6).
                                                                                Illustrative Mathematics®                 4
 Student Response                                                Activity Synthesis
  1. 10.37. Sample response:                                       • Invite previously selected students to share.
-                                                                  • Display:
+                                                                  • Display: 463 + 3.14
                                                                   • “How do you add these using the standard
                                                                     algorithm?” (I made sure that the 3 in 463 lines up
                                                                     with the 3 in 3.14 so I am adding numbers with the
@@ -251,7 +251,7 @@ calculations, making sure to align place values correctly (MP6).
     and then there is 0.3 more.
                                                                   • “Did anyone use a different strategy to add these
  3. 77.72. Sample response: I added 46 and 31 to get 77             numbers?” (I knew that 463 and 3 is 466. Then I also
-    and then                   .                                    have 14 hundredths so it's 466.14.)
+    and then 0.3 + 0.42 = 0.72.                                     have 14 hundredths so it's 466.14.)
  4. 466.14 Sample response:
 
 
@@ -302,7 +302,7 @@ Addressing     5.NBT.B.7
 
 
        1. Explain the error.
-       2. Find the correct value of             .
+       2. Find the correct value of 38.7 + 9.46.
 
 
 Student Response

@@ -275,7 +275,7 @@ Required Preparation
                                                                    • “We can use this block to represent a hundred.”
              ____________      ____________      ____________
 
-       2. Represent               with blocks or a diagram.
+       2. Represent 100 + 11 with blocks or a diagram.
                                                                  Activity
                                                                    • “In this activity, think about the different ways to
 
@@ -294,7 +294,7 @@ Required Preparation
     hundred and 11 ones.
                                                                    how you knew.”
                                                                  • 3 minutes: partner discussion
-                                                                 • “Now use your blocks to show            .”
+                                                                 • “Now use your blocks to show 100 + 11.”
                                                                  • 2 minutes: partner work time
                                                                  • Monitor for students who represent 100 with 1
                                                                    hundred block and students who represent 100 with
@@ -306,7 +306,7 @@ Required Preparation
                                                                    Lin saw the blocks?” (Lin said she saw 1 hundred, so
                                                                    she was thinking about the whole thing as a unit.)
                                                                  • Invite previously identified students to share how
-                                                                   they represented             .
+                                                                   they represented 100 + 11.
                                                                  • “How could you represent the 100 in the expression
                                                                    with the fewest blocks?” (I could use 1 hundred
                                                                    block.)

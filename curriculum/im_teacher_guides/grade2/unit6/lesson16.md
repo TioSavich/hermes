@@ -286,70 +286,70 @@ cents (MP7).
                                             Unit 6
                                                             Lesson 16
                                                                                   Illustrative Mathematics®             5
-                            quarters                           Activity
-                            dimes
-                                                                 • “Now, you will find the values of 2 sets of coins that
-                            nickels                                include quarters. Then you'll make your own sets of
-                                                                   coins that have a given value.”
-                            pennies
-                                                                 • “Circle the coins used in each set and show the
-          How many cents? Show your thinking, using                value.”
-          drawings, numbers, or words.
-                                                                 • 8 minutes: independent work time
-      2. Tyler's coins      Tyler has:
-                                                                 • Monitor for students who:
-                            quarters                                 ◦ Count on from the coin with the greatest value.
-                            dimes                                    ◦ Group like coins and add the values of the
-                                                                       groups.
-                            nickels
-                                                                     ◦ Use equations or clear labels to keep track of
-                            pennies
-                                                                       their thinking.
-          How many cents? Show your thinking, using
-                                                                 • “Compare your set of coins with a partner to see how
-          drawings, numbers, or words.
-                                                                   they are alike or different.”
-      3. Make your own set of coins with a value of 97¢.         • 2 minutes: partner discussion
-          I used:                                                • Monitor for different ways students made a set of
-                                                                   coins with a value of 97 cents, to share in the Lesson
-          quarters
-                                                                   Synthesis, including:
-          dimes
-                                                                     ◦ Using dimes and pennies to match the tens and
-          nickels                                                      the ones.
+                           quarters                           Activity
+                           dimes
+                                                                • “Now, you will find the values of 2 sets of coins that
+                           nickels                                include quarters. Then you'll make your own sets of
+                                                                  coins that have a given value.”
+                           pennies
+                                                                • “Circle the coins used in each set and show the
+         How many cents? Show your thinking, using                value.”
+         drawings, numbers, or words.
+                                                                • 8 minutes: independent work time
+      2. Tyler's coins     Tyler has:
+                                                                • Monitor for students who:
+                           quarters                                 ◦ Count on from the coin with the greatest value.
+                           dimes                                    ◦ Group like coins and add the values of the
+                                                                      groups.
+                           nickels
+                                                                    ◦ Use equations or clear labels to keep track of
+                           pennies
+                                                                      their thinking.
+         How many cents? Show your thinking, using
+                                                                • “Compare your set of coins with a partner to see how
+         drawings, numbers, or words.
+                                                                  they are alike or different.”
+      3. Make your own set of coins with a value of 97¢.        • 2 minutes: partner discussion
+         I used:                                                • Monitor for different ways students made a set of
+                                                                  coins with a value of 97 cents, to share in the Lesson
+         quarters
+                                                                  Synthesis, including:
+         dimes
+                                                                    ◦ Using dimes and pennies to match the tens and
+         nickels                                                      the ones.
 
-          pennies                                                    ◦ Using quarters, then dimes, and then pennies to
-                                                                       use the fewest amount of coins.
+         pennies                                                    ◦ Using quarters, then dimes, and then pennies to
+                                                                      use the fewest amount of coins.
       4. Make your own set of coins with a value of 66¢.
          Use the fewest coins possible.
-                                                               Activity Synthesis
-          I used:
-                                                                 • Invite previously identified students to share how
-          quarters
-                                                                   they found the value of Elena’s coins.
-          dimes                                                  • “When we have a group of coins with different
-          nickels                                                  values, what are some ways you use to find the
-                                                                   total?” (Grouping like coins, starting with the greatest
-          pennies                                                  value first, counting on by 5 or by 10.)
-                                                                 • As time permits, invite students to share how they
-Student Response                                                   counted Tyler’s coins.
+                                                              Activity Synthesis
+         I used:
+                                                                • Invite previously identified students to share how
+         quarters
+                                                                  they found the value of Elena’s coins.
+         dimes                                                  • “When we have a group of coins with different
+         nickels                                                  values, what are some ways you use to find the
+                                                                  total?” (Grouping like coins, starting with the greatest
+         pennies                                                  value first, counting on by 5 or by 10.)
+                                                                • As time permits, invite students to share how they
+Student Response                                                  counted Tyler’s coins.
 
 1. Students circle quarters, dimes, nickels, and pennies.
    Elena’s collection has 83¢. Sample
-   response:                , 60, 70, 75, 80, 81, 82, 83
+   response: 25 + 25 = 50, 60, 70, 75, 80, 81, 82, 83
 2. Students circle quarters, dimes, nickels, and pennies.
    Tyler’s collection has 47¢. Sample
-   response:                , 40, 45, 46, 47
-3. Sample response:                  , 60, 70, 80, 90, 95,
+   response: 25 + 5 = 30, 40, 45, 46, 47
+3. Sample response: 25 + 25 = 50, 60, 70, 80, 90, 95,
    96, 97. 2 quarters, 4 dimes, 1 nickel, and 2 pennies.
-4. Sample response:                    , 60, 65, 66. 2
+4. Sample response: 25 + 25 = 50, 60, 65, 66. 2
 
 
 
-                                             Grade 2                                 CC BY NC 2024
-                                              Unit 6
-                                                             Lesson 16
-                                                                              Illustrative Mathematics®               6
+                                          Grade 2                                   CC BY NC 2024
+                                           Unit 6
+                                                            Lesson 16
+                                                                             Illustrative Mathematics®               6
     quarters, 1 dime, 1 nickel, and 1 penny.
 
 
@@ -405,21 +405,21 @@ Addressing     2.MD.C.8, 2.NBT.B.5
 Student Response
 Tyler has 86¢. Sample responses:
 
-  •               , 50, 60, 70, 75, 80, 81, 82, 83, 84, 85, 86
-  •               ,               ,            , and 6 pennies, so
+  • 25 + 25 = 50, 50, 60, 70, 75, 80, 81, 82, 83, 84, 85, 86
+  • 25 + 25 = 50, 10 + 10 = 20, 5 + 5 = 10, and 6 pennies, so 50 + 20 + 10 + 6 = 86
 
 
 Responding to Student Thinking
-Students write a value other than 86¢.                             Next Day Supports
-                                                                   Before the Warm-up, students practice counting coin
-                                                                   values, using quarters, dimes, nickels, and pennies.
+Students write a value other than 86¢.                           Next Day Supports
+                                                                 Before the Warm-up, students practice counting coin
+                                                                 values, using quarters, dimes, nickels, and pennies.
 
 
 
 
-                                            Grade 2                                      CC BY NC 2024
-                                             Unit 6
-                                                                 Lesson 16
-                                                                                  Illustrative Mathematics®               8
+                                           Grade 2                                     CC BY NC 2024
+                                            Unit 6
+                                                               Lesson 16
+                                                                                Illustrative Mathematics®               8
 ```
 

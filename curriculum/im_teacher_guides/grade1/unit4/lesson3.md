@@ -225,13 +225,13 @@ Materials to Gather
 
 Student Response
 1.   a. 20. Sample response: 1 ten and 1 ten is 2 tens.
-     b. 30. Sample response:
+     b. 30. Sample response: 20 + 10 = 30
      c. 40. Sample response: 4 tens is 40
      d. 50. Sample response: Drawing of 5 towers of 10,
         labeled 10, 20, 30, 40, 50
      e. 60. Sample response: 6 tens is 60
      f. 70. Sample response: 6 tens and 1 ten is 7 tens.
-     g. 80. Sample response:
+     g. 80. Sample response: 70 + 10 = 80
      h. 90. Sample response: 9 tens is 90
 2.   a. 80. Sample response: 9 tens take away 1 ten is 8
         tens.
@@ -242,7 +242,7 @@ Student Response
                                              Unit 4
                                                            Lesson 3
                                                                            Illustrative Mathematics®            4
-     b. 70. Sample response:
+     b. 70. Sample response: 80- 10 = 70
      c. 60. Sample response: 6 tens is 60
      d. 50. Sample response: 6 tens take away 1 ten is 5
         tens
@@ -250,7 +250,7 @@ Student Response
         drawing labeled 10, 20, 30, 40
      f. 30. Sample response: 4 tens take away 1 ten is 3
         tens.
-     g. 20. Sample response:
+     g. 20. Sample response: 30- 10 = 20
      h. 10. Sample response: 1 ten is 10
 
 
@@ -321,7 +321,7 @@ Student Response
                                                                  number. I am going to choose to add 10. What is the
 Sample responses:                                                sum? How do you know?”
 
- •                                                             • 30 seconds: quiet think time
+ • 40 + 10 = 50                                                • 30 seconds: quiet think time
 
  • I counted by tens. 10, 20, 30, 40, 50.                      • Share responses.
 

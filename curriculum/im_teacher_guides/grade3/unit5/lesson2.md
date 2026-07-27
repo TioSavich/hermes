@@ -18,16 +18,16 @@ Unit 5, Lesson 2
 
 Name Parts as Fractions
       Standards                                                       Instructional Routines
-Building On          2.G.A.3                                      • Which Three Go Together?
-Addressing           3.G.A.2, 3.NF.A.1
-Building Toward      3.NF.A.1
+Building On             2.G.A.3                                   • Which Three Go Together?
+Addressing              3.G.A.2, 3.NF.A.1
+Building Toward         3.NF.A.1
 
 
 
       Goals                                                           Student Facing Learning Goals
   • Comprehend (in spoken and written language) the                   Let’s use fractions to describe parts.
     meaning of the term “fraction,” and that the notation
-       can be used to represent unit fractions.
+     1/b   can be used to represent unit fractions.
 
   • Draw and label to partition shapes into halves, thirds,
     fourths, sixths, and eighths. Express the size of each
@@ -58,14 +58,14 @@ Materials to Copy
 
 Lesson Timeline                                                 Teacher Reflection Questions
                                                                 What student strategies surprised you in today’s lesson?
- Warm-up                                      10 min
+ Warm-up                                         10 min
                                                                 How will you build on those strategies as students
- Activity 1                                   15 min            develop ideas about fractions?
+ Activity 1                                      15 min         develop ideas about fractions?
 
 
 
-                                             Grade 3                                   CC BY NC 2024
-                                              Unit 5
+                                                Grade 3                                CC BY NC 2024
+                                                 Unit 5
                                                               Lesson 2
                                                                                 Illustrative Mathematics®               1
  Activity 2                                     20 min
@@ -124,14 +124,14 @@ A, B, and D go together because:
 A, C, and D go together because:
                                                                  • “What fractions do we use to label the parts in A, B,
   • They have two parts.
-                                                                    and D?” (   in A and D, and   in B.)
+                                                                    and D?” (1/2 in A and D, and 1/3 in B.)
 B, C, and D go together because:
 
 
-                                              Grade 3                                  CC BY NC 2024
+                                              Grade 3                                 CC BY NC 2024
                                                Unit 5
                                                               Lesson 2
-                                                                                Illustrative Mathematics®                2
+                                                                               Illustrative Mathematics®                 2
   • They are partitioned into rectangles.
   • They are partitioned with a straight cut.
 
@@ -189,8 +189,8 @@ Required Preparation
                                                Unit 5
                                                                Lesson 2
                                                                                   Illustrative Mathematics®                 3
-        • thirds                                                     Activity
-        • sixths
+         • thirds                                                    Activity
+         • sixths
                                                                         • “Take a few minutes to fold each strip so that the
       When you finish folding, trace your folding lines                   parts represent halves, thirds, fourths, sixths, or
       with a pencil, and then label each part with the                    eighths. Use one strip for each fraction.”
@@ -219,17 +219,17 @@ Student Response                                                        • 5–
 
 
 
-Activity 2                                                                                                            20 min
+Activity 2                                                                                                                20 min
 
 Partition, Shade, Trade
 
-     Standards
-Addressing          3.NF.A.1
+      Standards
+Addressing       3.NF.A.1
 
 
 Previously, students partitioned rectangular pieces of paper into 2, 3, 4, 6, and 8 equal parts by folding. The purpose of
 this activity is for students to partition rectangles by drawing, and to continue to practice naming the parts with the unit
-fractions   ,   ,    ,   , and   . It’s important that students try to make the parts as close to equal in size as they can, but
+fractions 1/2, 1/3, 1/4, 1/6, and 1/8. It’s important that students try to make the parts as close to equal in size as they can, but
 students’ drawings do not need to be exact. After they practice partitioning, students partition and shade—but do not
 label—a fraction on a rectangle, and then they trade with a partner to determine the fraction their partner has shaded.
 The Activity Synthesis focuses on how to name a single equal part, such as “one-sixth,” rather than talking about all the
@@ -241,10 +241,10 @@ parts in the next lesson.
       MLR8 Discussion Supports. At the appropriate time, give students 2–3 minutes to make sure that everyone in their
 
 
-                                                  Grade 3                                    CC BY NC 2024
-                                                   Unit 5
+                                                 Grade 3                                      CC BY NC 2024
+                                                  Unit 5
                                                                    Lesson 2
-                                                                                      Illustrative Mathematics®                  4
+                                                                                       Illustrative Mathematics®                   4
      group can explain their process for partitioning their rectangles and for determining how to label each part. Invite
      groups to rehearse what they will say when they share with the whole class.
      Advances: Speaking, Representing
@@ -304,7 +304,7 @@ Student Response                                                   counted the e
                                                                               Illustrative Mathematics®                5
      a.
 
-     b. The shaded part represents       because there are
+     b. The shaded part represents 1/6 because there are
           6 equal parts and 1 of them is shaded.
 
 
@@ -316,7 +316,7 @@ Display a rectangle with each part labeled as a unit fraction and a rectangle sh
 
 
 
-                           sixths                                                       one-sixth or
+                           sixths                                                       one-sixth or 1/6
 
 “How do you know the first diagram shows sixths?” (It has 6 equal parts.)
 
@@ -356,13 +356,13 @@ Addressing      3.G.A.2, 3.NF.A.1
 
 
 
-       2. Partition and shade the rectangle to show       .
+       2. Partition and shade the rectangle to show 1/4.
 
 
 
 
 Student Response
- 1. Students label each part with     .
+ 1. Students label each part with 1/8.
 
  2. Any drawing that shows 4 equal parts, with 1 shaded part, is acceptable. Sample responses:
 

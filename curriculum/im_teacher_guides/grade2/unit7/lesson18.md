@@ -81,22 +81,22 @@ an expression to make it easier to find the value. These understandings help stu
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-          •                                                     • “Give me a signal when you have an answer and can
+        • 34- 9                                                 • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-          •
+        • 434- 99
                                                                 • 1 minute: quiet think time
-          •
-          •
+        • 367- 98
+        • 635 - 298
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
                                                                 • Keep expressions and work displayed.
-  • 25:               ,
+  • 25: 34- 10 = 24 , 24 + 1 = 25
                                                                 • Repeat with each expression.
-  • 335:                   ,
-  • 269:                   ,
+  • 335: 434- 100 = 334 , 334 + 1 = 335
+  • 269: 367- 100 = 267 , 267 + 2 = 269
                                                               Activity Synthesis
-  • 337:                   ,
+  • 337: 635 - 300 = 335, 335 + 2 = 337
                                                                 • “When you change one number in an expression to
                                                                   make it easier, how do you remember to adjust other
                                                                   numbers in the expression?”

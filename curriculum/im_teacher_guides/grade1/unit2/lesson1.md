@@ -301,7 +301,7 @@ Student Response                                                  • “Solve t
                                               Unit 2
                                                               Lesson 1
                                                                                 Illustrative Mathematics®              5
-         more counters, saying “6, 7.” They write 7 as the          ◦ With an expression (        ).
+         more counters, saying “6, 7.” They write 7 as the          ◦ With an expression (5 + 2).
          total.                                                 • “Share your thinking with your partner. Be sure that
  2. 3 books. Sample responses:                                    you both agree on the answer.”
      ◦ Students count out 5 counters, then remove 2.            • 2 minutes: partner discussion
@@ -311,7 +311,7 @@ Student Response                                                  • “Solve t
      ◦ Students draw 5 rectangles and cross out 2. They
        recognize 3 left and write 3.                                ◦ Using cubes or counters.
                                                                     ◦ With drawings of each object.
-                                                                    ◦ With an expression (        ).
+                                                                    ◦ With an expression (5 - 2).
 
 
                                                               Activity Synthesis
@@ -321,9 +321,9 @@ Student Response                                                  • “Solve t
                                                                   happened in each story?”
                                                                 • As needed, “we can also represent each story with an
                                                                   expression. I know the first story matches 5 and 2
-                                                                  more or        .”
+                                                                  more or 5 + 2.”
                                                                 • “How could we represent the second story with an
-                                                                  expression?” (It matches 5 take away 2, so    .)
+                                                                  expression?” (It matches 5 take away 2, so 5 - 2.)
 
 
 
@@ -344,7 +344,7 @@ puppets do they have now?”
 “Tell your partner what happened in the story.”
 
 “What are ways we could show what is happening in this problem?” (Act it out, draw pictures, write “10 take away 5”,
-      )
+10- 5 )
 
 Record student responses on chart paper for reference in future lessons.
 

@@ -68,7 +68,7 @@ Lesson Timeline                                                 Teacher Reflecti
                                               Unit 1
                                                               Lesson 4
                                                                                  Illustrative Mathematics®              1
- Cool-down                                        5 min
+ Cool-down                                      5 min
 
 
 
@@ -91,12 +91,12 @@ products of smaller factors to find products of larger factors.
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-          •                                                       • “Give me a signal when you have an answer and can
+        • 10 × 6                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-          •
+        • 3 × 6
                                                                   • 1 minute: quiet think time
-          •
-          •
+        • 13 × 6
+        • 12 × 4
                                                                 Activity
 
 Student Response                                                  • Record answers and strategy.
@@ -104,10 +104,10 @@ Student Response                                                  • Record ans
   • 60: I just know it. It’s 10 groups of 6.
                                                                   • Repeat with each expression.
   • 18: I just know it.
-  • 78:                and             . So, I can just add
-                   , since that’s 13 groups of 6.               Activity Synthesis
-  • 48: I know that                and             , so it’s      • “How can knowing the value of the first two
-                 . I know that                 and I can            expressions help you find the value of the third
+  • 78: 10 × 6 = 60 and 3 × 6 = 18. So, I can just add
+    60 + 18 = 78, since that’s 13 groups of 6.                  Activity Synthesis
+  • 48: I know that 10 × 4 = 40 and 2 × 4 = 8, so it’s            • “How can knowing the value of the first two
+    40 + 8 = 48. I know that 12 × 2 = 24 and I can                  expressions help you find the value of the third
     double that.                                                    expression?” (I can multiply in parts and add the
                                                                     smaller parts together to find a larger product.)
 
@@ -125,9 +125,9 @@ Building On      3.OA.C.7
 The purpose of this activity is for students to self-assess their own fluency with multiplication facts and practice the ones
 
 
-                                                Grade 4                                CC BY NC 2024
-                                                 Unit 1
-                                                               Lesson 4
+                                               Grade 4                                 CC BY NC 2024
+                                                Unit 1
+                                                              Lesson 4
                                                                                 Illustrative Mathematics®                2
 that are less familiar. Students are given a set of expressions. They sort them into categories of “know it right away,”
 “can find it quickly,” or “don’t know it yet.” Then they identify products they don’t know (or don’t know well) yet,

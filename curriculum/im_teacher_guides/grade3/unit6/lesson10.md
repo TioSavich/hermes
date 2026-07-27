@@ -182,51 +182,51 @@ who haven't shared recently.
                                             Unit 6
                                                              Lesson 10
                                                                                 Illustrative Mathematics®               3
-Student Response                                                  • As you monitor for the approaches listed in the
-                                                                    Activity Narrative, consider asking:
+Student Response                                              • As you monitor for the approaches listed in the
+                                                                Activity Narrative, consider asking:
  1. 3:51 p.m. Sample responses:
-                                                                     ◦ “How does your work show the 24 minutes Kiran
-     ◦ It’s 3 minutes to from 3:27 to 3:30, then 20                    or Elena waited?”
+                                                                  ◦ “How does your work show the 24 minutes Kiran
+     ◦ It’s 3 minutes to from 3:27 to 3:30, then 20                 or Elena waited?”
        minutes to 3:50, and then 1 more minute to 3:51.
-                                                                     ◦ “How does your work show the time the bus
-     ◦                 , so 24 minutes after 3:27 is 3:51.             arrived?”
-     ◦ If he waited 30 minutes, then it would be 3:57.               ◦ “How did you know it would be before or after
-       Twenty-four is 6 less than 30, and 6 minutes                    4:00 when the bus arrived?”
+                                                                  ◦ “How does your work show the time the bus
+     ◦ 27 + 24 = 51, so 24 minutes after 3:27 is 3:51.              arrived?”
+     ◦ If he waited 30 minutes, then it would be 3:57.            ◦ “How did you know it would be before or after
+       Twenty-four is 6 less than 30, and 6 minutes                 4:00 when the bus arrived?”
        before 3:57 is 3:51.
  2. 4:09 p.m. Sample responses:
-                                                                Activity Synthesis
-                                                                  • Invite previously selected students to share in the
-                                                                    given order. Record or display their work for all to
-                                                                    see. If no students use one of more of the given
-                                                                    strategies, consider demonstrating them.
-                                                                  • Connect students’ approaches by asking:
-                                                                     ◦ “How is this way of finding the time the bus
-                                                                       arrived the same as the other ways? How is it
-                                                                       different?”
-                                                                     ◦ “How do we see that a total of 24 minutes has
-                                                                       passed? How do we see the time the bus
-     ◦                                                                 arrives?”
-     ◦ It’s 10 minutes to 3:55, then 5 minutes to 4:00,           • Connect students’ approaches to the learning goal by
-       and then 9 minutes to 4:09. That’s a total of 24             asking:
+                                                            Activity Synthesis
+                                                              • Invite previously selected students to share in the
+                                                                given order. Record or display their work for all to
+                                                                see. If no students use one of more of the given
+                                                                strategies, consider demonstrating them.
+                                                              • Connect students’ approaches by asking:
+                                                                  ◦ “How is this way of finding the time the bus
+                                                                    arrived the same as the other ways? How is it
+                                                                    different?”
+                                                                  ◦ “How do we see that a total of 24 minutes has
+                                                                    passed? How do we see the time the bus
+     ◦                                                              arrives?”
+     ◦ It’s 10 minutes to 3:55, then 5 minutes to 4:00,       • Connect students’ approaches to the learning goal by
+       and then 9 minutes to 4:09. That’s a total of 24         asking:
        minutes.
-                                                                     ◦ “In Elena’s problem, how does each of the ways
-     ◦                  and              . That’s 4:00, and            we shared help us see that the bus would come
-         then it’s 9 more minutes. So, the bus arrived at              after 4:00?” (If we add the minutes and get a sum
-         4:09.                                                         that is more than 60, we know that it’s a new
-                                                                       hour. On the clock, we can see that there are
-                                                                       only 15 minutes until 4:00, so 24 minutes would
-     ◦                                                                 be past 4:00.)
+                                                                  ◦ “In Elena’s problem, how does each of the ways
+     ◦ 45 + 10 = 55 and 55 + 5 = 60. That’s 4:00, and               we shared help us see that the bus would come
+       then it’s 9 more minutes. So, the bus arrived at             after 4:00?” (If we add the minutes and get a sum
+       4:09.                                                        that is more than 60, we know that it’s a new
+                                                                    hour. On the clock, we can see that there are
+                                                                    only 15 minutes until 4:00, so 24 minutes would
+     ◦                                                              be past 4:00.)
 
 
-                          time     minutes
+                         time     minutes
      ◦
-                          3:45         0
+                         3:45       0
 
-                          4:00        15
+                         4:00       15
 
-                          4:05        20
+                         4:05       20
 
-                          4:09        24
+                         4:09       24
 
 
 
@@ -237,10 +237,10 @@ next hour, consider asking:
    • “How did you find the time the bus would arrive?”
 
 
-                                           Grade 3                                    CC BY NC 2024
-                                            Unit 6
-                                                              Lesson 10
-                                                                               Illustrative Mathematics®               4
+                                         Grade 3                                  CC BY NC 2024
+                                          Unit 6
+                                                          Lesson 10
+                                                                           Illustrative Mathematics®               4
   • “How many minutes pass from the time Elena arrives at the bus stop until the next hour? How many more minutes
     pass until the bus arrives?”
 
@@ -281,14 +281,14 @@ Sample responses:
 
   • I would add up from 6:32 until I reach 7:10. It’s 8       Activity
     minutes from 6:32 to get to 6:40 and 3 groups of 10
-    minutes to 7:10, or                  .                      • “How would you solve this problem? Explain which
+    minutes to 7:10, or 8 + 10 + 10 + 10.                       • “How would you solve this problem? Explain which
                                                                   strategies or representations you saw earlier that
   • I would show 6:32 on a clock, draw jumps to reach
                                                                   would be useful for solving a problem like this.”
     7:10, and add the minutes for all the jumps. For
     example, it’s a jump of 3 minutes from 6:32 to 6:35,        • 5–7 minutes: independent work time
-    then 7 jumps of 5 minutes to 7:10. That’s
-    or       , which is 38.
+    then 7 jumps of 5 minutes to 7:10. That’s 3 + (7 × 5)
+    or 3 + 35, which is 38.
                                                               Activity Synthesis
   • I would find the difference between 32 and 60 (which
     is 28) and between 0 and 10 (which is 10), and add          • Invite students to share their reasoning and

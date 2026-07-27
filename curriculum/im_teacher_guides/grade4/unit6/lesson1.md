@@ -210,7 +210,7 @@ Student Response                                                 display and upd
                                                                      each pattern.
                                                                    ◦ Ways to describe the change in each term using
                                                                      multiplication or addition.
-         ▪       ,      , and                                      ◦ Informal ways students describe the differences
+         ▪ 3 × 5, 4 × 5, and 5 × 5                                 ◦ Informal ways students describe the differences
          ▪ 5, 10, 15, 20, 25, 30                                     in how “fast” Han and Lin’s patterns grow.
 
      b. Sample responses:
@@ -224,9 +224,9 @@ Student Response                                                 display and upd
          ▪ Even though it’s adding 5 each time, it’s also        later lessons.
            like multiplication because you’re adding a
                                                                • Invite previously selected students to share what
-           group of 5. Step 3 will be     , Step 4 will
+           group of 5. Step 3 will be 3 × 5, Step 4 will
                                                                  they noticed, including any numbers they wrote to
-           be       , and so on.
+           be 4 × 5, and so on.
                                                                  represent their visual patterns.
          ▪ On even steps you’ll make a ten and on odd
                                                                • Display the collection of students’ words and
@@ -302,7 +302,7 @@ a step will have 25 square blocks or 25 total blocks, including:
   • Attempt to continue the pattern with blocks first, before adjusting their approach to count on by 2 with a list of
     numbers.
   • Reason about even and odd numbers of blocks using words or lists of numbers.
-  • Add by 2 or add on multiples of 2 using expressions and operations (such as informally explaining              ).
+  • Add by 2 or add on multiples of 2 using expressions and operations (such as informally explaining 4 + n × 2).
 The approaches are sequenced from more concrete to more abstract to help students identify and explain features of
 the visual pattern that weren’t explicit in the given rule. Not having enough blocks to continue the pattern beyond step 3
 prompts students to adjust their strategy based on their observations. Aim to elicit both key mathematical ideas and a
@@ -376,65 +376,65 @@ Required Preparation
                                                 Unit 6
                                                                Lesson 1
                                                                                Illustrative Mathematics®              6
-                                                                  and Partner B for how they determined whether
-                                                                  there would be 25 square blocks or 25 total blocks in
-                                                                  the pattern. Record or display their work for all to
-                                                                  see.
-                                                                • Connect students’ approaches by asking:
-                                                                   ◦ “How are the different ways of explaining
-      Partner B:
-                                                                     whether a step will have 25 square blocks or 25
-       1. Create the next 3 steps of Jada’s pattern. Use             total blocks related?” (They all show a list of
-          pattern blocks or draw to continue Jada’s                  numbers and were based on observations. Some
-          pattern.                                                   explained using words and some used
-                                                                     expressions.)
+                                                                 and Partner B for how they determined whether
+                                                                 there would be 25 square blocks or 25 total blocks in
+                                                                 the pattern. Record or display their work for all to
+                                                                 see.
+                                                               • Connect students’ approaches by asking:
+                                                                  ◦ “How are the different ways of explaining
+     Partner B:
+                                                                    whether a step will have 25 square blocks or 25
+       1. Create the next 3 steps of Jada’s pattern. Use            total blocks related?” (They all show a list of
+          pattern blocks or draw to continue Jada’s                 numbers and were based on observations. Some
+          pattern.                                                  explained using words and some used
+                                                                    expressions.)
        2. List the total number of blocks in each of the
-          first 5 steps. Write 2 observations about the         • Connect students’ approaches to the learning goal by
-          numbers in the pattern.                                 asking:
+          first 5 steps. Write 2 observations about the        • Connect students’ approaches to the learning goal by
+          numbers in the pattern.                                asking:
 
-       3. Will a step ever have a total of 25 blocks?              ◦ “How are the list of numbers that Partner A
-          Explain or show your reasoning.                            wrote and the list of numbers that Partner B
-                                                                     wrote the same? (They’re both showing counts of
-                                                                     something from the same pattern. They both
-Student Response                                                     show numbers that increase by 2.)
+       3. Will a step ever have a total of 25 blocks?             ◦ “How are the list of numbers that Partner A
+          Explain or show your reasoning.                           wrote and the list of numbers that Partner B
+                                                                    wrote the same? (They’re both showing counts of
+                                                                    something from the same pattern. They both
+Student Response                                                    show numbers that increase by 2.)
 
-Partner A:                                                         ◦ How are they different?” (They start at different
- 1. The giraffe’s neck has 2 more square blocks with                 numbers. They are showing counts of different
-     each step.                                                      things from the pattern. One has even numbers
-                                                                     and the other has odd numbers.)
+Partner A:                                                        ◦ How are they different?” (They start at different
+ 1. The giraffe’s neck has 2 more square blocks with                numbers. They are showing counts of different
+     each step.                                                     things from the pattern. One has even numbers
+                                                                    and the other has odd numbers.)
  2. 6, 8, 10, 12, 14. Sample response: They are all even
-    numbers. Each number is found by adding 2 to the               ◦ “How did noticing even or odd numbers or what
-    previous number. The starting number is 6. There                 you know about counting on by 2 help you
-    are 4 squares plus 2 for each step:      ,           ,           predict whether there would be 25 square blocks
-    and                 and so on.                                   or 25 total blocks?” (You didn’t have to build it
-                                                                     with blocks or list all the numbers to know if 25
+    numbers. Each number is found by adding 2 to the              ◦ “How did noticing even or odd numbers or what
+    previous number. The starting number is 6. There                you know about counting on by 2 help you
+    are 4 squares plus 2 for each step: 4 + 2, 4 + 2 + 2,           predict whether there would be 25 square blocks
+    and 4 + 2 + 2 + 2 and so on.                                    or 25 total blocks?” (You didn’t have to build it
+                                                                    with blocks or list all the numbers to know if 25
  3. No. Sample responses:
-                                                                     was in the pattern.)
-      ◦ Continue counting on by 2: 16, 18, 20, and we
-        can’t count on by 2 to get 25.
-      ◦ The number of square blocks is always even.
-      ◦ Add 2 to 14 five more times,
-                               , or           gives 24
-        square blocks. Then 2 more gives 26 square
-        blocks.
+                                                                    was in the pattern.)
+     ◦ Continue counting on by 2: 16, 18, 20, and we
+       can’t count on by 2 to get 25.
+     ◦ The number of square blocks is always even.
+     ◦ Add 2 to 14 five more times,
+       14 + 2 + 2 + 2 + 2 + 2, or 14 + (5 × 2) gives 24
+       square blocks. Then 2 more gives 26 square
+       blocks.
 Partner B:
  1. The giraffe’s neck has 2 more square blocks with
      each step so 2 more total blocks.
  2. 11, 13, 15, 17, 19. Sample response: They are all odd
     numbers. The numbers are increasing by 2.
  3. Yes. Sample responses:
-      ◦ Continue counting on by 2 to get to 25 total
-        blocks: 21, 23, 25.
-      ◦ The list includes all of the odd numbers starting
-        with 11, so 25 will be included.
-      ◦ Adding 2 to 19 three more times gives 25 total
+     ◦ Continue counting on by 2 to get to 25 total
+       blocks: 21, 23, 25.
+     ◦ The list includes all of the odd numbers starting
+       with 11, so 25 will be included.
+     ◦ Adding 2 to 19 three more times gives 25 total
 
 
-                                             Grade 4                               CC BY NC 2024
-                                              Unit 6
-                                                             Lesson 1
-                                                                            Illustrative Mathematics®             7
-           blocks,              , or            .
+                                            Grade 4                               CC BY NC 2024
+                                             Unit 6
+                                                            Lesson 1
+                                                                           Illustrative Mathematics®             7
+           blocks, 19 + 2 + 2 + 2, or 19 + (3 × 2).
 
 
 
@@ -458,12 +458,12 @@ repeat. We noticed that you can count different parts of a shape pattern and fin
 
 Display:
 
-                                                    5, 10, 15, 20, 25, 30
+                                                      5, 10, 15, 20, 25, 30
 
 “These numbers represent the total number of bottle caps in the first 6 steps of Han’s pattern from the first activity.”
 
-“How might we find the number of caps in the eighth step?” (Add 5 to 30 two times,               , or            . Multiply
-5 by 8 or    .)
+“How might we find the number of caps in the eighth step?” (Add 5 to 30 two times, 30 + 5 + 5, or 30 + (2 × 5). Multiply
+5 by 8 or 8 × 5.)
 
 “Could 72 be a number of bottle caps in a step in the pattern? Why or why not?” (No, because the numbers in the
 patterns are all multiples of 5, and 72 is not a multiple of 5.)
@@ -491,9 +491,9 @@ Addressing       4.OA.C.5
 
 
 
-                                             Grade 4                                   CC BY NC 2024
-                                              Unit 6
-                                                              Lesson 1
+                                              Grade 4                                  CC BY NC 2024
+                                               Unit 6
+                                                                Lesson 1
                                                                                 Illustrative Mathematics®               8
        1. Draw the next step in Andre’s pattern.
        2. What do you notice about Andre’s pattern each time he adds a new “floor”? Explain why this happens.

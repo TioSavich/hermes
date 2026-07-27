@@ -241,34 +241,34 @@ Materials to Gather
                                                 Unit 3
                                                            Lesson 18
                                                                                Illustrative Mathematics®                4
-          group. Work together to solve your assigned            • Assign each group a situation from the previous
-          problem.                                                 activity.
-       2. Create a poster of your group’s solution.              • Give each group sticky notes and tools for creating a
-          Organize your work so that it can be followed            display.
+          group. Work together to solve your assigned           • Assign each group a situation from the previous
+          problem.                                                activity.
+       2. Create a poster of your group’s solution.             • Give each group sticky notes and tools for creating a
+          Organize your work so that it can be followed           display.
           by others.
-       3. As you visit other groups' posters, consider         Activity
+       3. As you visit other groups' posters, consider        Activity
           how each answer makes sense.
-                                                                 • “Now you are going to solve a problem from the card
+                                                                • “Now you are going to solve a problem from the card
           Choose 1 poster and make a comment on the
-                                                                   sort with your group.”
+                                                                  sort with your group.”
           solution. Write on your sticky note how you
-          know the answer makes sense.                           • “After you’ve solved the problem together, create a
-                                                                   poster that shows your solution strategy.”
-                                                                 • 8–10 minutes: small-group work time
+          know the answer makes sense.                          • “After you’ve solved the problem together, create a
+                                                                  poster that shows your solution strategy.”
+                                                                • 8–10 minutes: small-group work time
 Student Response
  1. Situation A: 203 beads
-                                                               Activity Synthesis
+                                                              Activity Synthesis
     Situation B: 285 crayons
-    Situation F: 332 baseball cards                              • Display posters around the room. If more than one
- 2. Situation G: 295 paper clips                                   group solved the same problem, consider displaying
-    Situation H: 165 beads                                         their posters together.
+    Situation F: 332 baseball cards                             • Display posters around the room. If more than one
+ 2. Situation G: 295 paper clips                                  group solved the same problem, consider displaying
+    Situation H: 165 beads                                        their posters together.
 
- 3. No response required.                                        • Give each student a sticky note.
+ 3. No response required.                                       • Give each student a sticky note.
 
- 4. Sample response: For situation F, I estimated the            • “As you visit the posters, leave a comment on one
-    answer to be about 325 since                         ,         poster that explains how you know the answer
-    so your answer makes sense.                                    makes sense. Choose a poster that shows a problem
-                                                                   different from the problem you solved."
+ 4. Sample response: For situation F, I estimated the           • “As you visit the posters, leave a comment on one
+    answer to be about 325 since 225 + 30 + 70 = 325,             poster that explains how you know the answer
+    so your answer makes sense.                                   makes sense. Choose a poster that shows a problem
+                                                                  different from the problem you solved."
 
 
 
@@ -283,7 +283,7 @@ If students try to find exact answers to determine if their peers’ solutions m
 Lesson Synthesis
 Display a corresponding set of cards that show a diagram, a situation, and an equation that match, such as C, G, and L:
 
-Elena has 7 notebooks. Each notebook has 10 paper clips
+Elena has 7 notebooks. Each notebook has 10 paper clips                           ? = (7 × 10) + 225
 in it. Elena also has a box of 225 paper clips. How many
 paper clips does Elena have?
 
@@ -296,10 +296,10 @@ equation helps me understand how the quantities in the situation are related to 
 multiplication.)
 
 
-                                          Grade 3                                    CC BY NC 2024
+                                          Grade 3                                   CC BY NC 2024
                                            Unit 3
-                                                             Lesson 18
-                                                                              Illustrative Mathematics®              5
+                                                           Lesson 18
+                                                                             Illustrative Mathematics®              5
 Suggested Centers
   • Tic Tac Round (3–5), Stage 1: Nearest Ten or Hundred (Addressing)
   • Number Puzzles: Addition and Subtraction (1–5), Stage 5: Within 1,000 (Addressing)
@@ -321,9 +321,9 @@ Addressing     3.OA.D.8
 
       Which equation matches this situation? Explain your reasoning.
 
-       A.
-       B.
-       C.
+       A. 451 + 125 + 223 = ?
+       B. ? + 125 + 223 = 451
+       C. 451 = 125 + 223-?
 
 
 Student Response

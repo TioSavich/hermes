@@ -85,12 +85,12 @@ expressions and explain why some of the expressions have the same value (MP7).
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 65 + 20                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 85 + 1
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 65 + 20 + 1
+        • 65 + 21
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
@@ -99,11 +99,11 @@ Student Response                                                  • Record ans
     tens and 5 ones.                                              • Repeat with each expression.
 
   • 86: 1 more than 85 is 86.
-  • 86: I know from the first expression that          is       Activity Synthesis
+  • 86: I know from the first expression that 65 + 20 is        Activity Synthesis
     85. 1 more than 85 is 86.
                                                                   • “Why do the last three expressions all have the same
-  • 86: 21 is the same amount as           , so       is            value?” (They are all adding             in different
-    the same amount as                . I know                      ways.)
+  • 86: 21 is the same amount as 20 + 1, so 65 + 21 is              value?” (They are all adding 65 + 20 + 1 in different
+    the same amount as 65 + 20 + 1. I know 65 + 20 + 1              ways.)
     is 86.
 
 

@@ -71,7 +71,7 @@ Lesson Timeline                                               Teacher Reflection
 Number Talk: Find the Unknown Factor
 
      Standards                                                       Instructional Routines
-Addressing      4.OA.A.1                                         • Number Talk
+Addressing      4.OA.A.1                                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies and understandings students have for finding an unknown
@@ -80,29 +80,29 @@ helpful later in this lesson when students represent and solve multiplicative co
 factors.
 
 
-     Student Task Statement                                    Launch
-      Find the value of each unknown mentally.                   • Display one expression.
+     Student Task Statement                                     Launch
+      Find the value of each unknown mentally.                    • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
-                                                                   explain how you got it.”
-        •
-                                                                 • 1 minute: quiet think time
-        •
-        •
-                                                               Activity
+        • 8 × ? = 16                                              • “Give me a signal when you have an answer and can
+                                                                    explain how you got it.”
+        • 3 × ? = 24
+                                                                  • 1 minute: quiet think time
+        • ? × 8 = 32
+        • 40 ÷ 8 = ?
+                                                                Activity
 
-Student Response                                                 • Record answers and strategies.
-                                                                 • Keep expressions and work displayed.
+Student Response                                                  • Record answers and strategies.
+                                                                  • Keep expressions and work displayed.
 Sample responses:
-                                                                 • Repeat with each expression.
+                                                                  • Repeat with each expression.
   • 2: I know my facts. Two groups of 8 is 16.
   • 8: I know my facts. If 2 groups of 8 is 16, then 1 more
     group of 8 would make 24.
-                                                               Activity Synthesis
-  • 4: I know my facts. To make 32, you would need 1             • “Does         belong in this Number Talk? Why or why
-    more group of 8.                                               not?” (It does belong because division is like finding
-                                                                   an unknown factor.)
-  • 5: I know my facts. It’s like the other equations,
+                                                                Activity Synthesis
+  • 4: I know my facts. To make 32, you would need 1              • “Does 40 ÷ 8 belong in this Number Talk? Why or why
+    more group of 8.                                                not?” (It does belong because division is like finding
+                                                                    an unknown factor.)
+  • 5: I know my facts. It’s like the other equations, ? × 8
     is 40. 40 is 5 groups of 8.
 
 
@@ -113,11 +113,11 @@ Activity 1                                                                      
 A Book Drive
 
      Standards                                                       Instructional Routines
-Addressing      4.OA.A.2                                         • 5 Practices
+Addressing      4.OA.A.2                                          • 5 Practices
 
 
 The purpose of this activity is for students to interpret and represent multiplicative comparison situations in which the
-multiplier (the factor indicating times as many) is unknown. Students rely on what they know about the relationship
+multiplier (the factor indicating n times as many) is unknown. Students rely on what they know about the relationship
 between multiplication and division to represent and solve each problem.
 
 When students create their representations for the books, whether a diagram or an equation, they reason abstractly
@@ -126,7 +126,7 @@ When students create their representations for the books, whether a diagram or a
 
                                              Grade 4                                  CC BY NC 2024
                                               Unit 5
-                                                              Lesson 3
+                                                               Lesson 3
                                                                                Illustrative Mathematics®                2
 and quantitatively (MP2).
 
@@ -135,8 +135,8 @@ Monitor for and select to share in the Activity Synthesis students with the foll
   • Draw 3 books at a time for Noah, and stop at 21.
   • Draw all of Noah’s books, and circle groups of 3.
   • Draw a discrete tape diagram, such as in the Student Responses.
-  • Write a multiplication equation, with a    symbol for the unknown,             .
-  • Write a division equation:            .
+  • Write a multiplication equation, with a ? symbol for the unknown, 3 × ? = 21.
+  • Write a division equation: 21 ÷ 3 = ?.
 The approaches are sequenced from more concrete to more abstract to connect different ways students may represent
 multiplicative comparison situations. Aim to elicit both key mathematical ideas and a variety of student voices, especially
 students who haven't shared recently.
@@ -179,18 +179,18 @@ Student Response                                               Activity Synthesi
                                                                  • If no students created an equation, ask: “How could
 
 
-                                              Grade 4                                 CC BY NC 2024
-                                               Unit 5
+                                             Grade 4                                  CC BY NC 2024
+                                              Unit 5
                                                              Lesson 3
                                                                                Illustrative Mathematics®              3
                                                                    we represent Priya's and Noah’s books with an
                                                                    equation, with a symbol for the unknown?”
-                                                                   (          or            )
+                                                                   (? × 3 = 21 or 7 × ? = 21)
  3. Mai has 9 times as many books in a stack as Tyler.          • Connect students’ approaches by asking:
     Sample responses:
                                                                     ◦ “How are these ways of representing the
      ◦ a discrete tape diagram                                        problem the same, and how are they different?”
-     ◦                                                                (They all showed 21, with groups of 3. In all of
+     ◦ 9 × 3 = 27                                                     (They all showed 21, with groups of 3. In all of
                                                                       them, we reasoned about how many times the
                                                                       number of books. They are different because
                                                                       some ways show drawings or diagrams, and
@@ -202,7 +202,7 @@ Student Response                                               Activity Synthesi
                                                                       about how to solve the problem?” (Some
                                                                       drawings or diagrams kept including more and
                                                                       more groups of 3 to get to 21. That’s like the
-                                                                      equation            .)
+                                                                      equation 3 × ? = 21.)
                                                                     ◦ “How did some ways use division?” (Some
                                                                       drawings partitioned 21 into groups of 3. That’s
                                                                       like 21 divided by 3.)
@@ -306,12 +306,12 @@ Student Response
            would have 8 books. So Andre must have
            donated 8 books.
  2. Sample response:
-      a. I think Han is right, because           is the same
-         as             .
-      b.             or
-      c.
- 3.             ,          , and               Diego
-      donates 9 books, because             .
+     a. I think Han is right, because 48 ÷ 6 is the same
+        as 6 × ? = 48.
+     b. 6 × ? = 48 or 6 × 8 = 48
+     c. 48 ÷ 6 = ?
+ 3. 9 × ? = 81, 9 × 9 = 81, and 81 ÷ 9 = ? Diego
+    donates 9 books, because 81 ÷ 9 = 9.
 
 
 
@@ -329,7 +329,7 @@ missing.”
 
 Display:
 
-
+                         32 = ? × 8                                                    ? = 7 × 5
 
                32 is _____ times as much as 8.                               _____ is 7 times as much as 5.
 
@@ -350,15 +350,15 @@ Cool-down                                                                       
 
 Back at the Book Drive
 
-      Standards
+     Standards
 Addressing      4.OA.A.1, 4.OA.A.2
 
 
 
 
-                                               Grade 4                              CC BY NC 2024
-                                                Unit 5
-                                                               Lesson 3
+                                             Grade 4                                CC BY NC 2024
+                                              Unit 5
+                                                             Lesson 3
                                                                              Illustrative Mathematics®                6
       Student Task Statement
       Kiran donated 28 books to the book drive. Jada donated some books, too. Kiran donated 4 times as many books
@@ -374,7 +374,7 @@ Student Response
 
 
   •
-  •             or
+  • ? × 4 = 28 or 4 × ? = 28
 
 
 Responding to Student Thinking

@@ -92,18 +92,18 @@ The purpose of this True or False is to elicit strategies and understandings stu
 
       Be prepared to explain your reasoning.                     • “Give me a signal when you know whether the
                                                                    statement is true and can explain how you know.”
-        •
+        • 60 = 25 + 45
                                                                  • 1 minute: quiet think time
-        •
+        • 70 = 24 + 46
 
-        •                                                      Activity
+        • 80 = 32 + 37                                         Activity
                                                                  • Share and record answers and strategies.
 Student Response
                                                                  • Repeat with each equation.
-  • False:               , so         has to be more than
+  • False: 20 + 40 = 60, so 25 + 45 has to be more than
     60.
                                                                Activity Synthesis
-  • True:       makes 10, which I added to the 60.
+  • True: 4 + 6 makes 10, which I added to the 60.
                                                                  • “How can you explain your answer without finding
   • False: There are only 6 tens in the expression, not 8
                                                                    the value of the sums on the right side?”
@@ -146,7 +146,7 @@ Materials to Gather
 
 
      Student Task Statement                                    Launch
-      Our secret number:                                         • Groups of 2
+      Our secret number: ___                                     • Groups of 2
       Our 4 clues:                                               • Give each group 4 index cards, a bag or envelope,
        • Write each clue on an index card.                         and access to connecting cubes in towers of 10 and
         • Make sure the last clue is an addition                   singles.
@@ -160,7 +160,7 @@ Sample response:                                                 • 1 minute: p
 My number is less than 100.                                      • Record responses.
 My number is more than 60.
 My number has 3 ones.
-My number is                                                   Activity
+My number is 3 + 70                                            Activity
                                                                  • “Now you will write a number riddle with your
                                                                    partner. You will write 4 clues. One clue should be an
                                                                    addition expression that will be the last clue. Write

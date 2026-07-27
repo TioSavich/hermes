@@ -89,30 +89,30 @@ unit, using the standard algorithm.
 
 
      Student Task Statement                                 Launch
-     Find the value of each product mentally.                 • Display one problem.
+      Find the value of each product mentally.                • Display one problem.
 
-          •                                                   • “Give me a signal when you have an answer and can
+        • 20 × 3                                              • “Give me a signal when you have an answer and can
                                                                 explain how you got it.”
-          •
+        • 24 × 3
                                                               • 1 minute: quiet think time
-          •
-          •
+        • 120 × 3
+        • 140 × 3
                                                             Activity
 
 Student Response                                              • Record answers and strategies.
                                                               • Keep expressions and work displayed.
-  • 60:       is 6, and then I multiplied by 10.
+  • 60: 3 × 2 is 6, and then I multiplied by 10.
                                                               • Repeat with each expression.
-  • 72:       is 12, and then I added that to the 60.
-  • 360:          is 300 and        is 60.
+  • 72: 4 × 3 is 12, and then I added that to the 60.
+  • 360: 3 × 100 is 300 and 3 × 20 is 60.
                                                             Activity Synthesis
-  • 420:        is 300 and          is 120, and then I
-    added 300 and 120.                                        • “How do the tens in        compare to the tens in
-                                                                     ?” (There is 1 more ten in      that came
-                                                                from      .)
-                                                              • “How do the hundreds in           compare to the
-                                                                hundreds in        ?” (There is 1 more hundred in
-                                                                       that came from          .)
+  • 420: 3 × 100 is 300 and 3 × 40 is 120, and then I
+    added 300 and 120.                                        • “How do the tens in 20 × 3 compare to the tens in
+                                                                24 × 3?” (There is 1 more ten in 24 × 3 that came
+                                                                from 3 × 4.)
+                                                              • “How do the hundreds in 120 × 3 compare to the
+                                                                hundreds in 140 × 3?” (There is 1 more hundred in
+                                                                140 × 3 that came from 40 × 3.)
 
 
 
@@ -148,7 +148,7 @@ use it themselves in the next activity.
 
      Student Task Statement                                    Launch
       Here are two algorithms that represent finding the         • Groups of 2
-      value of         .                                         • Display the algorithms.
+      value of 413 × 21.                                         • Display the algorithms.
                               step 1     step 2     step 3       • “We are going to learn about a new algorithm today.”
 
 
@@ -188,12 +188,12 @@ Sample responses:                                                      end.
                                                               Lesson 5
                                                                                Illustrative Mathematics®              3
  2. In the second algorithm, each digit in 21 is multiplied      • “What does the first partial product 413 represent?”
-    by each digit in 413, the same as in the first                 (It's      .)
+    by each digit in 413, the same as in the first                 (It's 1 × 413.)
     algorithm, but instead of recording these numbers            • Circle the second partial product (8,260) in the
     on separate lines, all the multiples of 1 are recorded         standard algorithm.
     on a line and all the multiples of 20 are recorded on
     a line. When 200 is recorded in step 5, that is              • “What does the second partial product 8,260
-             , but it is put with the 60 from the      .           represent?” (It's      .)
+    20 × 10, but it is put with the 60 from the 20 × 3.            represent?” (It's 20 × 413.)
 
  3. Both algorithms have partial products that need to
     be added. There are 6 different products that have to
@@ -203,7 +203,7 @@ Sample responses:                                                      end.
 
 
 
-Activity 2                                                                                                       15 min
+Activity 2                                                                                                    15 min
 
 Use the Standard Algorithm
 
@@ -229,16 +229,16 @@ estimation to assess the reasonableness of their answers and is the focus of the
       Use the standard algorithm to find the value of each       • Groups of 2
       expression.
 
-       1.                                                      Activity
-       2.
+       1. 202 × 12                                             Activity
+       2. 122 × 33
                                                                  • 8-10 minutes: independent work time
-       3.
+       3. 321 × 24
                                                                  • 2-3 minutes: partner discussion
        4. Diego finds the value of
-                   . Why doesn’t Diego’s
+          301 × 24. Why doesn’t Diego’s
           answer make sense? Explain
                                                                Activity Synthesis
-          your reasoning.                                        • Invite students to share their solution for            .
+          your reasoning.                                        • Invite students to share their solution for 122 × 33.
                                                                  • “How is multiplying 122 by the 3 in the ones place of
                                                                    33 the same as multiplying 122 by the 3 in the tens
 
@@ -246,13 +246,13 @@ estimation to assess the reasonableness of their answers and is the focus of the
                                             Grade 5                                  CC BY NC 2024
                                              Unit 4
                                                               Lesson 5
-                                                                              Illustrative Mathematics®                   4
-Student Response                                                     place?” (In both cases I get 366.)
-                                                                   • “How is it different?” (The 3 in the tens place
+                                                                              Illustrative Mathematics®                4
+Student Response                                                   place?” (In both cases I get 366.)
+                                                                • “How is it different?” (The 3 in the tens place
  1. 2,424. Sample response:
-                                                                     represents 30 and so the 366 needs to shift one
-                                                                     place to the left because it is really 366 tens or
-                                                                     3,660.)
+                                                                  represents 30 and so the 366 needs to shift one
+                                                                  place to the left because it is really 366 tens or
+                                                                  3,660.)
 
 
 
@@ -268,11 +268,11 @@ estimation to assess the reasonableness of their answers and is the focus of the
 
 
  4. Sample response: It's too small, because
-                        and Diego's answer is smaller than
+    10 × 300 = 3,000 and Diego's answer is smaller than
     that. To find the second partial product, Diego
     multiplied by 2, instead of by 20. The second partial
-    product is                   , and adding the partial
-    products,                          . The correct value is
+    product is 301 × 20 = 6,020, and adding the partial
+    products, 1,204 + 6,020 = 7,224. The correct value is
     7,224.
 
 
@@ -290,7 +290,7 @@ Lesson Synthesis
 
 Display Diego’s work from the last problem.
 
-“Why doesn’t Diego’s answer make sense?” (The product is too small.              is 6,000, so the product is greater than
+“Why doesn’t Diego’s answer make sense?” (The product is too small. 300 × 20 is 6,000, so the product is greater than
 that.)
 
 “What advice would you give Diego to revise his thinking?” (Remember that the 2 in 24 is 2 tens. Two tens times 1 should
@@ -299,10 +299,10 @@ be 20, so write the 2 in the tens place.)
 
 
 
-                                              Grade 5                                  CC BY NC 2024
+                                              Grade 5                                CC BY NC 2024
                                                Unit 4
-                                                                Lesson 5
-                                                                                Illustrative Mathematics®                 5
+                                                            Lesson 5
+                                                                              Illustrative Mathematics®                5
 Suggested Centers
   • Number Puzzles: Multiplication (4–5) , Stage 2: Multi-Digit Factors (Addressing)
 
@@ -317,7 +317,7 @@ Addressing     5.NBT.B.5
 
 
      Student Task Statement
-     Use the standard algorithm to find the value of           .
+     Use the standard algorithm to find the value of 203 × 23.
 
 
 Student Response

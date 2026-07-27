@@ -94,26 +94,26 @@ and this encourages students to think flexibly about how to find products of a w
       Student Task Statement                                 Launch
       Find the value of each expression mentally.               • Display one expression.
 
-         •                                                      • “Give me a signal when you have an answer and can
+        • 40 × 2 × 0.1                                          • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-         •
+        • 20 × 0.1 × 4
                                                                 • 1 minute: quiet think time
-         •
-         •
+        • 0.1 × 80
+        • 0.01 × 20 × 40
                                                              Activity
 
 Student Response                                                • Record answers and strategy.
                                                                 • Keep expressions and work displayed.
-  • 8:                and
+  • 8: 40 × 2 = 80 and 80 × 0.1 = 8.0
                                                                 • Repeat with each expression.
-  • 8:       is the same as         so the value of the
+  • 8: 20 × 4 is the same as 40 × 2 so the value of the
     expression is the same as the first one.
   • 8: 80 tenths is equal to 8 ones.                         Activity Synthesis
-  • 8: It is the same as           .                            • “How is the last expression different from the
+  • 8: It is the same as 800 × 0.01.                            • “How is the last expression different from the
                                                                   others?” (It has a hundredth in the product instead of
                                                                   a tenth.)
                                                                 • “How did you find the value of this expression?” (I
-                                                                  knew                 and then 800 hundredths is 8.)
+                                                                  knew 40 × 20 = 800 and then 800 hundredths is 8.)
 
 
 
@@ -180,62 +180,62 @@ Student Response                                                   students use 
                                             Unit 5
                                                             Lesson 19
                                                                                 Illustrative Mathematics®                3
-     ◦ Only multiplication, multiplication and addition,               apart." For example, students may say:
-       multiplication and subtraction                                   ◦ 4 groups of 39 tenths is the same as 4 groups of
-     ◦ Parentheses, no parentheses                                        3 and 9 tenths.
-     ◦ 0.1 or 0.01, no 0.1 or 0.01                                      ◦ 4 times 3 tenths plus 4 times 5 hundredths is the
-                                                                          same as 4 times 35 hundredths.
+     ◦ Only multiplication, multiplication and addition,             apart." For example, students may say:
+       multiplication and subtraction                                 ◦ 4 groups of 39 tenths is the same as 4 groups of
+     ◦ Parentheses, no parentheses                                      3 and 9 tenths.
+     ◦ 0.1 or 0.01, no 0.1 or 0.01                                    ◦ 4 times 3 tenths plus 4 times 5 hundredths is the
+                                                                        same as 4 times 35 hundredths.
  2. Matches:
-                                                                        ◦ 2 groups of 2 groups of three and 5 tenths is the
+                                                                      ◦ 2 groups of 2 groups of three and 5 tenths is the
      ◦ Expression A: F, H, J, K
-                                                                          same as 4 groups of 3 and 5 tenths.
+                                                                        same as 4 groups of 3 and 5 tenths.
      ◦ Expression B: E, G
-                                                                     • Record students’ words and phrases on a visual
-     ◦ Expression C: D, I, L                                           display and update it throughout the lesson.
-    Sample response: F goes with A because I know
-    is the same as 4 so              is the same as          .
-    H goes with A because             is the same as 3.5. K
-                                                                   Activity Synthesis
-    goes with A because it's showing that you can                    • Invite previously selected students to share and
-    decompose 3.5 into 3 and 0.5 and multiply each of                  explain how they know those cards go together.
+                                                                   • Record students’ words and phrases on a visual
+     ◦ Expression C: D, I, L                                         display and update it throughout the lesson.
+    Sample response: F goes with A because I know 2 × 2
+    is the same as 4 so 2 × 2 × 3.5 is the same as 4 × 3.5.
+    H goes with A because 35 × 0.1 is the same as 3.5. K
+                                                                 Activity Synthesis
+    goes with A because it's showing that you can                  • Invite previously selected students to share and
+    decompose 3.5 into 3 and 0.5 and multiply each of                explain how they know those cards go together.
     those parts by 4. I think J goes with A too because it's
-                                                                     • Refer to the language on the display as students
-    showing that you could think about multiplying
-                                                                       describe their justification for a match, giving them
-    to find         , but you'd need to subtract        .
-                                                                       opportunities to describe the relationship more
-             is the same as 3.5.
-                                                                       precisely.
+                                                                   • Refer to the language on the display as students
+    showing that you could think about multiplying 4 × 4
+                                                                     describe their justification for a match, giving them
+    to find 4 × 3.5, but you'd need to subtract 4 × 0.5.
+                                                                     opportunities to describe the relationship more
+    4- 0.5 is the same as 3.5.
+                                                                     precisely.
  3. Sample responses:
-                                                                     • “Are there any other words or phrases that are
-     ◦ Expression A: I chose                        because            important to include on our display?”
-       I know that           and                   and
-                                                                     • As students share responses, update the display, by
-                   .
-                                                                       adding (or replacing) language, diagrams, or
-     ◦ Expression B: I chose              because I                    annotations.
-       know that              and one hundred forty
-                                                                     • Remind students to borrow language from the
+                                                                   • “Are there any other words or phrases that are
+     ◦ Expression A: I chose (4 × 3) + (4 × 0.5) because             important to include on our display?”
+       I know that 4 × 3 = 12 and 4 × 0.5 = 2 and
+                                                                   • As students share responses, update the display, by
+       12 + 2 = 14.
+                                                                     adding (or replacing) language, diagrams, or
+     ◦ Expression B: I chose 35 × 4 × 0.01 because I                 annotations.
+       know that 35 × 4 = 140 and one hundred forty
+                                                                   • Remind students to borrow language from the
        times one hundredth is one hundred forty
-                                                                       display as needed.
+                                                                     display as needed.
        hundredths which is equal to 1 and 4 tenths or
-       1.4.                                                          • Invite selected students to share their strategies for
-                                                                       calculating        .
-     ◦ Expression C: I chose                     because
-                   and then I just had to subtract 0.4               • “Why is                     a useful expression for
-       which is 15.6.                                                  finding the value of        ?” (I can find those
-                                                                       products in my head.)
+       1.4.                                                        • Invite selected students to share their strategies for
+                                                                     calculating 4 × 3.9.
+     ◦ Expression C: I chose (4 × 4)- (4 × 0.1) because
+       4 × 4 = 16 and then I just had to subtract 0.4              • “Why is (4 × 4)- (4 × 0.1) a useful expression for
+       which is 15.6.                                                finding the value of 4 × 3.9?” (I can find those
+                                                                     products in my head.)
  4. Sample responses:
-                                                                     • “Why is                a useful expression for finding
-     ◦ Expression A:
-                                                                       the value of       ?” (I know how to find products of
-     ◦ Expression B:                                                   whole numbers like          and then multiplying by
-     ◦ Expression C:                                                   0.1 changes place values.)
+                                                                   • “Why is (4 × 39) × 0.1 a useful expression for finding
+     ◦ Expression A: (4 × 35) ÷ 10
+                                                                     the value of 4 × 3.9?” (I know how to find products of
+     ◦ Expression B: (4 × 0.4)- (4 × 0.05)                           whole numbers like 4 × 39 and then multiplying by
+     ◦ Expression C: (4 × 39) ÷ 10                                   0.1 changes place values.)
 
 
 
 
-Activity 2                                                                                                        15 min
+Activity 2                                                                                                      15 min
 
 Choose a Strategy
 
@@ -247,10 +247,10 @@ The purpose of this activity is for students to find products of a whole number 
 more than one place value, either a whole number and some tenths or some tenths and some hundredths. Monitor for
 
 
-                                            Grade 5                                      CC BY NC 2024
-                                             Unit 5
-                                                                 Lesson 19
-                                                                                  Illustrative Mathematics®                4
+                                           Grade 5                                     CC BY NC 2024
+                                            Unit 5
+                                                               Lesson 19
+                                                                                Illustrative Mathematics®                4
 these strategies which students saw in the previous activity:
 
   • Multiplying whole numbers and then multiplying the result by 0.1 or 0.01.
@@ -264,50 +264,50 @@ more than one place value, either a whole number and some tenths or some tenths 
       Supports accessibility for: Language, Social-Emotional Functioning
 
 
-     Student Task Statement                                        Launch
-      Find the value of each expression. Explain or show             • Groups of 2
+     Student Task Statement                                     Launch
+      Find the value of each expression. Explain or show         • Groups of 2
       your reasoning.
 
-       1.                                                          Activity
-       2.                                                            • 1–2 minutes: quiet think time
-       3.                                                            • 6–8 minutes: partner work time
+       1. 6 × 0.12                                              Activity
+       2. 4 × 1.4                                                • 1–2 minutes: quiet think time
+       3. 5 × 3.9                                                • 6–8 minutes: partner work time
 
-       4.                                                            • Monitor for students who find the products using:
-                                                                         ◦ Whole number products and place value
-                                                                           understanding
+       4. 25 × 0.41                                              • Monitor for students who find the products using:
+                                                                      ◦ Whole number products and place value
+                                                                        understanding
 Student Response
-                                                                         ◦ The distributive property
- 1. 0.72. Sample response:                   ,
+                                                                      ◦ The distributive property
+ 1. 0.72. Sample response: 6 × 12 = 72,
+    72 × 0.01 = 0.72
+
+ 2. 5.6. Sample response: 4 × 1 = 4 , 4 × 0.4 = 1.6 and
+                                                                Activity Synthesis
+    4 + 1.6 = 5.6 or 4 × 14 = 56 and 56 × 0.1 = 5.6              • Invite selected students to share their reasoning for
+ 3. 19.5. Sample response: 5 × 4 = 20, 5 × 0.1 = 0.5,              the value of 4 × 1.4.
+    and 20- 0.5 = 19.5                                           • Display expression: (4 × 14) × 0.1
+ 4. 10.25. Sample response: 25 × 0.4 = 10 and                    • “Why is this expression helpful to find the value of
+    25 × 0.01 = 0.25 so 25 × 0.41 = 10.25                          4 × 1.4?” (I know 4 × 14 is 56. I can do that with
+                                                                   whole number multiplication. Then it’s that many
+                                                                   tenths so 5.6.)
+                                                                 • Display expression: (4 × 1) + (4 × 0.4)
+                                                                 • “Why is this expression helpful to find the value of
+                                                                   4 × 1.4?” (It breaks it up by place value. I first find 4
+                                                                   ones and then 4 times 4 tenths. That’s 4 and 16
+                                                                   tenths or 5 and 6 tenths. So, it’s 5.6.)
+                                                                 • “How did you choose a strategy for each problem?” (I
+                                                                   like to multiply whole numbers so I always thought of
+                                                                   products of whole numbers and then took that many
+                                                                   tenths or hundredths. I noticed 3.9 is really close to 4
+                                                                   and I know 5 × 4 so I started there and figured out
+                                                                   what I needed to subtract.)
 
 
- 2. 5.6. Sample response:            ,                     and
-                                                                   Activity Synthesis
-                  or              and                                • Invite selected students to share their reasoning for
- 3. 19.5. Sample response:               ,                  ,          the value of        .
-    and                                                              • Display expression:
- 4. 10.25. Sample response:                       and                • “Why is this expression helpful to find the value of
-                     so                                                       ?” (I know       is 56. I can do that with
-                                                                       whole number multiplication. Then it’s that many
-                                                                       tenths so 5.6.)
-                                                                     • Display expression:
-                                                                     • “Why is this expression helpful to find the value of
-                                                                              ?” (It breaks it up by place value. I first find 4
-                                                                       ones and then 4 times 4 tenths. That’s 4 and 16
-                                                                       tenths or 5 and 6 tenths. So, it’s 5.6.)
-                                                                     • “How did you choose a strategy for each problem?” (I
-                                                                       like to multiply whole numbers so I always thought of
-                                                                       products of whole numbers and then took that many
-                                                                       tenths or hundredths. I noticed 3.9 is really close to 4
-                                                                       and I know        so I started there and figured out
-                                                                       what I needed to subtract.)
 
 
-
-
-                                                 Grade 5                                  CC BY NC 2024
-                                                  Unit 5
-                                                                 Lesson 19
-                                                                                   Illustrative Mathematics®                 5
+                                           Grade 5                                    CC BY NC 2024
+                                            Unit 5
+                                                           Lesson 19
+                                                                               Illustrative Mathematics®                 5
 Advancing Student Thinking
 If students find values that are partially correct, consider asking:
    • “How did you solve the problem?”
@@ -331,35 +331,35 @@ is still an effective tool but a product of 2 two-digit numbers gives 4 single d
 that students can use their answers for the first two problems to find the answer to the third.
 
 
-      Student Task Statement                                       Launch
+      Student Task Statement                                      Launch
       Find the value of each expression.                               • Groups of 2
 
-       1.
+       1. 35 × 0.08
 
-       2.
-                                                                   Activity
+       2. 35 × 0.7
+                                                                  Activity
 
-       3.                                                              • 5 minutes: independent work time
+       3. 35 × 0.78                                                    • 5 minutes: independent work time
                                                                        • Monitor for students who use the first two
-       4.
+       4. 42 × 0.66
                                                                          calculations for the third and who use place value
                                                                          understanding for the last calculation.
 Student Response
- 1. 2.8. Sample response: I know            is 280 and it's        Activity Synthesis
+ 1. 2.8. Sample response: I know 35 × 8 is 280 and it's           Activity Synthesis
     280 hundredths or 2.8.
                                                                        • Invite students to share their calculations.
- 2. 24.5. Sample response: I know              is 245 and it's
-                                                                       • “How did you use the values of              and
+ 2. 24.5. Sample response: I know 35 × 0.7 is 245 and it's
+                                                                       • “How did you use the values of 35 × 0.08 and
     245 tenths or 24.5.
-                                                                                 to find the value of           ?” (I added
+                                                                         35 × 0.7 to find the value of 35 × 0.78?” (I added
  3. 27.3. Sample response: I added the two previous                      them.)
     products.
                                                                        • Display equation:
- 4. 27.72. Sample response: I found             and then
+ 4. 27.72. Sample response: I found 42 × 66 and then                     35 × 0.78 = (35 × 0.7) + (35 × 0.08)
     multiplied that by 0.01.
                                                                        • “How do you know this equation is true?” (It’s the
                                                                          distributive property.)
-                                                                       • “How did you calculate         ?” (I found
+                                                                       • “How did you calculate 42 × 0.66?” (I found 42 × 66
                                                                          and then knew I had that many hundredths.)
 
 
@@ -367,7 +367,7 @@ Student Response
 
                                             Grade 5                                        CC BY NC 2024
                                              Unit 5
-                                                                 Lesson 19
+                                                              Lesson 19
                                                                                     Illustrative Mathematics®                 6
 Lesson Synthesis
 “Today we used different strategies to multiply whole numbers by decimals.”
@@ -392,38 +392,38 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                   5 min
+Cool-down                                                                                                  5 min
 
 Interpret Expressions
 
      Standards
-Addressing        5.NBT.B.7
+Addressing       5.NBT.B.7
 
 
      Student Task Statement
-       1. Select all the expressions that are equivalent to           .
+       1. Select all the expressions that are equivalent to 15 × 0.19.
 
-             A.
-             B.
-             C.
-           D.
-       2. Choose one expression to find the value of             .
+             A. 15 × 19 × 0.01
+             B. (15 × 0.1) + (15 × 0.09)
+             C. 15 × 19 × 0.1
+           D. (15 × 0.2)- (15 × 0.01)
+       2. Choose one expression to find the value of 15 × 0.19.
 
 
 Student Response
  1. A, B, and D
- 2. Sample response:            is 30 tenths or 3 and            is 15 hundredths or 0.15. Then               .
+ 2. Sample response: 15 × 0.2 is 30 tenths or 3 and 15 × 0.01 is 15 hundredths or 0.15. Then 3 - 0.15 = 2.85.
 
 
 Responding to Student Thinking
-Students do not yet choose expressions that are not             Next Day Supports
-equivalent to          .                                        Launch the Warm-up of the next lesson by discussing a
-                                                                correct response to the Cool-down from this lesson.
+Students do not yet choose expressions that are not           Next Day Supports
+equivalent to 15 × 0.19.                                      Launch the Warm-up of the next lesson by discussing a
+                                                              correct response to the Cool-down from this lesson.
 
 
-                                          Grade 5                                    CC BY NC 2024
-                                           Unit 5
-                                                              Lesson 19
-                                                                              Illustrative Mathematics®             7
+                                           Grade 5                                   CC BY NC 2024
+                                            Unit 5
+                                                           Lesson 19
+                                                                              Illustrative Mathematics®            7
 ```
 

@@ -85,12 +85,12 @@ numbers. This will be helpful later when students compare three-digit numbers wi
      Student Task Statement                                      Launch
       Decide if each statement is true or false. Be                • Display one statement in the student book.
       prepared to explain your reasoning.                          • “Give me a signal when you know whether the
-        •                                                            statement is true and can explain how you know.”
+        • 86 > 80 + 4                                                statement is true and can explain how you know.”
 
-        •                                                          • 1 minute: quiet think time
+        • 400 + 40 + 6 < 846                                       • 1 minute: quiet think time
 
-        •
-        •                                                        Activity
+        • 330 < 300 + 3
+        • 500 + 50 > 505                                         Activity
                                                                    • Share and record answers and strategy.
 Student Response                                                   • Repeat with each statement.
 
@@ -99,7 +99,7 @@ Student Response                                                   • Repeat wi
     more ones than 84.
                                                                    • “How could expanded form help you decide whether
   • True: 800 is the value of the 8 in 846, and on the left
-                                                                     the expression                  is true or false?” (I
+                                                                     the expression 330 < 300 + 3 is true or false?” (I
     side, there are only 4 hundreds. So, I know 846 is
                                                                      knew that 30 is 3 tens and 3 is only 3 ones. So, 330 is
     more.
@@ -150,13 +150,13 @@ fourth inequality but it needs to be used in the fourth because it is the only n
       Student Task Statement                                      Launch
       Compare the numbers.                                          • Groups of 2
 
-                                 ,   , or                           • “In the Warm-up, you saw that different forms of
+                               < , > , or =                         • “In the Warm-up, you saw that different forms of
        1.                                                             writing a number can help you think about the value
                   521                                523              of each digit.”
 
-            Show your thinking using drawings, numbers,             • Write                    on the board.
+            Show your thinking using drawings, numbers,             • Write                  on the board.
             or words.                                               • “What symbol would make this expression true?
-                                 ,   , or                             Explain your reasoning.” (>, because they both have
+                               < , > , or =                           Explain your reasoning.” (>, because they both have
        2.                                                             500. The first number has 6 tens or 60 and the
                   889                                878              second number has 0 tens.)
 
@@ -164,17 +164,17 @@ fourth inequality but it needs to be used in the fourth because it is the only n
           true. Use each number only once.                        Activity
             810          529            752         495             • “Today you will be comparing three-digit numbers by
                                                                       looking at place value.”
-            a.
+            a. ___ > 519
                                                                     • “If it helps, you can use base-ten diagrams or
             b.
-                                                                      expanded form to help you think about place value.”
+                  687 < ___                                           expanded form to help you think about place value.”
             c.
-                                                                    • “Try it on your own and then compare with your
-            d.                                                        partner.”
+               ___ < 501                                            • “Try it on your own and then compare with your
+            d. ___ > 793                                              partner.”
                                                                     • 5 minutes: independent work time
 Student Response                                                    • 5 minutes: partner work time
 
- 1.               Sample responses:                                 • Monitor for students who compare the numbers
+ 1. 521 < 523 Sample responses:                                     • Monitor for students who compare the numbers
                                                                       without drawing base-ten diagrams or using a
       ◦ They have the same number of hundreds and
                                                                       number line.
@@ -182,9 +182,9 @@ Student Response                                                    • 5 minute
       ◦ Students use a base-ten diagram to show 5
         hundreds 2 tens and 1 one compared to 5                   Activity Synthesis
         hundreds 2 tens and 3 ones.
-                                                                    • Display              .
- 2.               Sample responses:
-                                                                    • Display                             .
+                                                                    • Display 564 > 504.
+ 2. 889 > 878 Sample responses:
+                                                                    • Display 500 + 60 + 4 > 500 + 4.
       ◦ They have the same number of hundreds, but
 
 
@@ -192,7 +192,7 @@ Student Response                                                    • 5 minute
                                                Unit 5
                                                               Lesson 11
                                                                                    Illustrative Mathematics®                3
-           889 has more tens. So, 889 is greater.                 • “We decided that this was a true statement. How
+         889 has more tens. So, 889 is greater.                   • “We decided that this was a true statement. How
                                                                     does the expanded form of these numbers help
       ◦ Students represent both numbers on the
                                                                     justify our thinking?” (We can see the value of each
@@ -200,13 +200,13 @@ Student Response                                                    • 5 minute
                                                                     place, so we can compare each digit.)
         is farther to the right.
                                                                   • Invite previously selected students to share how they
- 3.   a.
+ 3.   a. 529 > 519
                                                                     compared numbers without drawing diagrams or
-      b.                                                            using the number line.
+      b. 687 < 752                                                  using the number line.
 
-      c.
+      c. 495 < 501
 
-      d.
+      d. 810 > 793
 
 
 
@@ -224,7 +224,7 @@ Activity 2                                                                      
 Introduce Greatest of Them All—3-Digit Numbers
 
       Standards
-Addressing       2.NBT.A.1, 2.NBT.A.4
+Addressing      2.NBT.A.1, 2.NBT.A.4
 
 
 The purpose of this activity is for students to learn Stage 2 of the Greatest of Them All center. Students use digit cards to
@@ -250,8 +250,8 @@ Materials to Gather                                             Materials to Cop
 
 
 
-                                            Grade 2                                    CC BY NC 2024
-                                             Unit 5
+                                           Grade 2                                     CC BY NC 2024
+                                            Unit 5
                                                             Lesson 11
                                                                                 Illustrative Mathematics®                 4
             Launch
@@ -293,7 +293,7 @@ Materials to Gather                                             Materials to Cop
 
             Activity Synthesis
               • Select a group to share a comparison statement. For
-                example:             and           .
+                example: 654 > 349 and 349 < 654.
               • “I noticed that partners had different comparison
                 statements for the same numbers. How can they
                 both be true?”
@@ -347,15 +347,15 @@ Addressing       2.NBT.A.4
 
                          112                                   701                                   398
 
-        1.
-        2.
-        3.
+        1. ___ > 671
+        2. 393 < ___
+        3. ___ < 127
 
 
 Student Response
- 1.
- 2.
- 3.
+ 1. 701 > 671
+ 2. 393 < 398
+ 3. 112 < 127
 
 
 

@@ -45,7 +45,7 @@ if they subtract by place. When subtracting a one-digit number from a two-digit 
 to a ten and then count back from there. Although subtracting or counting back in this way is an effective way to
 subtract a single-digit number, it becomes less practical with greater numbers. For this reason, students are encouraged
 to use cubes and base-ten blocks to help make decomposing a ten visible to all students and prepare students to
-consider decomposing the minuend in order to subtract by place. For example,                  , so decomposing 26 into 1
+consider decomposing the minuend in order to subtract by place. For example, 26 = 10 + 16, so decomposing 26 into 1
 ten and 16 ones will be helpful when representing subtraction using base-ten blocks later in this lesson.
 
 
@@ -65,26 +65,26 @@ Materials to Gather
                                                Unit 2
                                                             Lesson 5
                                                                              Illustrative Mathematics®             1
-Lesson Timeline                                                       Teacher Reflection Questions
-                                                                      In grade 1, students learn that the two digits of a two-digit
- Warm-up                                          10 min
-                                                                      number represent amounts of tens and ones. How did
- Activity 1                                       20 min              the work of today’s lesson build on that understanding?
+Lesson Timeline                                               Teacher Reflection Questions
+                                                              In grade 1, students learn that the two digits of a two-digit
+ Warm-up                                     10 min
+                                                              number represent amounts of tens and ones. How did
+ Activity 1                                  20 min           the work of today’s lesson build on that understanding?
 
- Activity 2                                       15 min
+ Activity 2                                  15 min
 
- Synthesis Estimate                               10 min
+ Synthesis Estimate                          10 min
 
- Cool-down                                        5 min
+ Cool-down                                    5 min
 
 
 
-Warm-up                                                                                                                10 min
+Warm-up                                                                                                        10 min
 
 Number Talk: Subtract a Little More
 
-      Standards                                                             Instructional Routines
-Addressing         2.NBT.B.5, 2.OA.B.2                                  • Number Talk
+      Standards                                                     Instructional Routines
+Addressing     2.NBT.B.5, 2.OA.B.2                              • Number Talk
 
 
 This Number Talk encourages students to think about subtraction with expressions that may require decomposing and
@@ -93,39 +93,39 @@ elicited here will be helpful later in the lesson when students subtract one-dig
 
 When students notice that they can use the value of previously found expressions to find new values, they look for and
 make use of structure (MP7). This Number Talk provides opportunities for students to notice then they can subtract to
-get to a ten, then subtract the rest                                  .
+get to a ten, then subtract the rest (17- 8 = 17- 7- 1 = 10- 1 = 9) .
 
 
-      Student Task Statement                                          Launch
-      Find the value of each expression mentally.                       • Display one expression.
+      Student Task Statement                                  Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-         •                                                              • “Give me a signal when you have an answer and can
-                                                                          explain how you got it.”
-         •
-                                                                        • 1 minute: quiet think time
-         •
-         •
-                                                                      Activity
+        • 17- 7                                                 • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 17- 8
+                                                                • 1 minute: quiet think time
+        • 26- 6
+        • 26- 8
+                                                              Activity
 
-Student Response                                                        • Record answers and strategy.
-                                                                        • Keep expressions and work displayed.
-  • 10: 7 ones       7 ones is 0 ones. So              .
-                                                                        • Repeat with each expression.
-  • 9: It’s like        , but take away 1 more.                  .
+Student Response                                                • Record answers and strategy.
+                                                                • Keep expressions and work displayed.
+  • 10: 7 ones - 7 ones is 0 ones. So 17- 7 = 10 .
+                                                                • Repeat with each expression.
+  • 9: It’s like 17- 7 , but take away 1 more. 10- 1 = 9 .
   • 20: I took away the ones first. 6 ones minus 6 ones is
-    0 ones. So,            .                                          Activity Synthesis
-  • 18: First I took away 6 ones.                 . Then I              • “How could you use the third expression to help you
-    counted back two more: 20, 19, 18.                       .            find the value of the last expression?” (I know that
-                                                                          taking away 6 gets me to 20, then I just need to take
-                                                                          away 2 more.)
+    0 ones. So, 26- 6 = 20 .                                  Activity Synthesis
+  • 18: First I took away 6 ones. 26- 6 = 20 . Then I           • “How could you use the third expression to help you
+    counted back two more: 20, 19, 18. 26- 8 = 18 .               find the value of the last expression?” (I know that
+                                                                  taking away 6 gets me to 20, then I just need to take
+                                                                  away 2 more.)
 
 
 
 
-                                              Grade 2                                        CC BY NC 2024
-                                               Unit 2
-                                                                     Lesson 5
-                                                                                      Illustrative Mathematics®                 2
+                                            Grade 2                                  CC BY NC 2024
+                                             Unit 2
+                                                             Lesson 5
+                                                                              Illustrative Mathematics®                 2
 Activity 1                                                                                                  20 min
 
 How Do You Find the Value?
@@ -161,7 +161,7 @@ Materials to Gather
 
 
      Student Task Statement                                  Launch
-     Find the value of        .                                • Groups of 2
+     Find the value of 82- 9 .                                 • Groups of 2
 
      Show your thinking using objects, drawings,               • Give students access to connecting cubes and base-
      numbers, or words.                                          ten blocks.
@@ -169,7 +169,7 @@ Materials to Gather
 
 
 Student Response                                             Activity
-73. Sample responses:                                          • “Find the difference for       .”
+73. Sample responses:                                          • “Find the difference for 82- 9 .”
                                                                • “Show your thinking using drawings, numbers, or
   • Students show 82 with 8 towers of 10 and 2 single
                                                                  words.”
@@ -197,7 +197,7 @@ Student Response                                             Activity
                                                                    see.
                                                                  • Connect students’ approaches by asking:
                                                                      ◦ “How are these ways for finding the value
-                                                                       of         the same? How are they different?”
+                                                                       of 82- 9 the same? How are they different?”
                                                                        (They all started by showing 82. They all took
                                                                        away 9. They used different ways to represent
                                                                        82. They counted differently. Some counted
@@ -215,7 +215,7 @@ Student Response                                             Activity
 
 Advancing Student Thinking
 If students begin to represent 82 by drawing 82 objects (or representing with 82 individual cubes), consider asking:
-   • “How are you planning to find the value of       ?”
+   • “How are you planning to find the value of 82- 9 ?”
   • “How could you use what you know about place value to represent 82?”
 
 
@@ -286,12 +286,12 @@ Student Response                                                     Activity Sy
  2.   a. Sample response: Students draw 5 tens and 5                      took away 8 ones?”
          ones and crosses out 2 tens.
                                                                         • Select previously identified students to share.
-      b.
+      b. 55 - 20 = 35
                                                                         • “What is different about using base-ten blocks
  3.   a. Sample response: Students draw 3 tens and 5                      compared to the towers of 10?” (With the towers we
          ones. They draw to show decomposing 1 ten into                   could break it apart into ones, but with the base-ten
          10 ones and cross out 8 ones.                                    blocks we had to trade a ten to get 10 ones.)
-      b.                                                                • “When you subtract by place, sometimes you need to
+      b. 35 - 8 = 27                                                    • “When you subtract by place, sometimes you need to
                                                                           decompose a ten to subtract ones. When we use
 
 
@@ -320,11 +320,11 @@ Lesson Synthesis
 “In this lesson, we learned that we can decompose a ten into 10 ones to subtract. We used towers of 10 and base-ten
 blocks and drew base-ten diagrams to represent decomposing a ten.”
 
-Display       .
+Display 35 - 8.
 
 Display 35 using blocks to represent 35 as 3 tens and 5 ones and 2 tens and 15 ones.
 
-Display                .
+Display 35 = 20 + 15.
 
 “How could representing 35 the second way help us find the difference?” (We have enough ones to take away 8.)
 
@@ -346,7 +346,7 @@ Addressing        2.NBT.B.5
 
 
      Student Task Statement
-     Find the value of        . Show your thinking.
+      Find the value of 75 - 9. Show your thinking.
 
 
 Student Response
@@ -359,8 +359,8 @@ Student Response
                                             Unit 2
                                                            Lesson 5
                                                                               Illustrative Mathematics®              6
- •             ,
- •                 ,        ,
+ • 75 - 5 = 70, 70- 4 = 66
+ • 60 + 15 = 75, 15 - 9 = 6, 60 + 6 = 66
  • Students draw 7 tens and 5 ones. They draw to show decomposing one ten as 10 ones. Then they cross out 9 ones
    and label to show the value as 66.
 
@@ -368,18 +368,18 @@ Student Response
 Responding to Student Thinking
 Students use base-ten blocks and show they know they     Next Day Supports
 need to decompose a ten to subtract enough ones, but     During the Launch of the first activity in the next lesson,
-find a value other than 66 (for example, 76).            use base-ten blocks to show           by starting with 7 tens
+find a value other than 66 (for example, 76).            use base-ten blocks to show 75 - 9 by starting with 7 tens
                                                          and 5 ones. Add 10 ones to your blocks (without removing
                                                          a ten) and then subtract 9 ones. Invite students to agree
                                                          or disagree with your method and whether your blocks
-                                                         show the value of        .
+                                                         show the value of 75 - 9.
 
 
 
 
-                                         Grade 2                                CC BY NC 2024
-                                          Unit 2
+                                           Grade 2                             CC BY NC 2024
+                                            Unit 2
                                                        Lesson 5
-                                                                         Illustrative Mathematics®               7
+                                                                        Illustrative Mathematics®              7
 ```
 

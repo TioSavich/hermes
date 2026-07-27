@@ -63,26 +63,26 @@ Materials to Gather                                           Materials to Copy
                                               Unit 7
                                                             Lesson 2
                                                                               Illustrative Mathematics®                1
-Lesson Timeline                                                       Teacher Reflection Questions
-                                                                      Today students sorted shapes for different attributes.
- Warm-up                                           10 min
-                                                                      What strategies for sorting the shapes did you anticipate?
- Activity 1                                        15 min             Which did you not anticipate?
+Lesson Timeline                                                  Teacher Reflection Questions
+                                                                 Today students sorted shapes for different attributes.
+ Warm-up                                       10 min
+                                                                 What strategies for sorting the shapes did you anticipate?
+ Activity 1                                    15 min            Which did you not anticipate?
 
- Activity 2                                        20 min
+ Activity 2                                    20 min
 
- Synthesis Estimate                                10 min
+ Synthesis Estimate                            10 min
 
- Cool-down                                          5 min
+ Cool-down                                      5 min
 
 
 
-Warm-up                                                                                                             10 min
+Warm-up                                                                                                         10 min
 
 True or False: Multiples of Ten
 
-      Standards                                                            Instructional Routines
-Addressing       3.NBT.A.3                                              • True or False?
+      Standards                                                       Instructional Routines
+Addressing      3.NBT.A.3                                          • True or False?
 
 
 The purpose of this True or False is to elicit strategies students have for multiplying a one-digit number by a multiple of
@@ -92,40 +92,40 @@ When students use place value or properties of operations as strategies to divid
 structure (MP7).
 
 
-      Student Task Statement                                          Launch
-      Decide if each statement is true or false. Be                     • Display one equation.
-      prepared to explain your reasoning.                               • “Give me a signal when you know whether the
-        •                                                                 equation is true and can explain how you know.”
+      Student Task Statement                                     Launch
+      Decide if each statement is true or false. Be                • Display one equation.
+      prepared to explain your reasoning.                          • “Give me a signal when you know whether the
+        • 3 × 60 = 9 × 10                                            equation is true and can explain how you know.”
 
-        •                                                               • 1 minute: quiet think time
+        • 180 = 3 × 60                                             • 1 minute: quiet think time
 
-        •
-        •                                                             Activity
-                                                                        • Share and record answers and strategy.
-Student Response                                                        • Repeat with each equation.
+        • 6 × 40 = 24 × 10
+        • 24 × 10 = 240                                          Activity
+                                                                   • Share and record answers and strategy.
+Student Response                                                   • Repeat with each equation.
 
-  • False:                .          is 120, which is more than
-    90, so this is false.                                             Activity Synthesis
-  • True: I could think of             as         , which is 180.
-                                                                        • “How can you explain your answer without finding
-  • True: If I decompose 40 into          , then I can                    the value of both sides?”
-    multiply the      to get 24. I still have to multiply by
-                                                                        • Consider asking:
-    the 10 so it’s       .
-                                                                            ◦ “Who can restate _____’s reasoning in a different
-  • True: I know that               is 100. If I double 10, then I
-                                                                              way?”
-    have                      . Four more tens is 40.
-                                                                            ◦ “Does anyone want to add on to _____’s
-                                                                              reasoning?”
-
-
+  • False: 9 × 10 = 90. 2 × 60 is 120, which is more than
+    90, so this is false.                                        Activity Synthesis
+  • True: I could think of 3 × 60 as 18 × 10, which is 180.
+                                                                   • “How can you explain your answer without finding
+  • True: If I decompose 40 into 4 × 10, then I can                  the value of both sides?”
+    multiply the 6 × 4 to get 24. I still have to multiply by
+                                                                   • Consider asking:
+    the 10 so it’s 24 × 10.
+                                                                       ◦ “Who can restate _____’s reasoning in a different
+  • True: I know that 10 × 10 is 100. If I double 10, then I
+                                                                         way?”
+    have 20 × 10 = 200. Four more tens is 40.
+     200 + 40 = 240                                                    ◦ “Does anyone want to add on to _____’s
+                                                                         reasoning?”
 
 
-                                                  Grade 3                                   CC BY NC 2024
-                                                   Unit 7
-                                                                     Lesson 2
-                                                                                     Illustrative Mathematics®               2
+
+
+                                              Grade 3                                  CC BY NC 2024
+                                               Unit 7
+                                                                Lesson 2
+                                                                                Illustrative Mathematics®                2
 Activity 1                                                                                                   15 min
 
 Card Sort: Triangles

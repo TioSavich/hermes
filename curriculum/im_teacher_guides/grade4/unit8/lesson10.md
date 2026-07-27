@@ -372,7 +372,7 @@ Angle P is    . Angles S and Q are both        . Angles R is   . Sample response
   • Angle P matches the        angle on the other side of the line of symmetry.
   • Angle S matches up with the right angle on the other side of the triangle.
   • Angle Q matches up with the right angle next to it.
-  • Angles P, Q, R, and S add up to       .                                    , so R is         , which is 60.
+  • Angles P, Q, R, and S add up to       .                                    , so R is 360- 300 , which is 60.
 
 
 Responding to Student Thinking

@@ -213,7 +213,7 @@ part and the available space, they model with mathematics (MP4).
                                                       Activity Synthesis
                                                         • Display the student designs around the room.
                                                         • Ask half of the students to stand with their designs
-    8 feet 20        8 feet 10         7 feet 14          and share their ideas or answer questions as the
+    8 feet × 20      8 feet × 10       7 feet × 14        and share their ideas or answer questions as the
         feet             feet              feet           other half of the class visits them.
                      downstairs
                                                         • 2–4 minutes: students visit designs
@@ -223,7 +223,7 @@ part and the available space, they model with mathematics (MP4).
                                                         • Switch student roles and repeat.
 
 
-                       8 feet 8
+                       8 feet × 8
                      feet upstairs
 
 
@@ -357,9 +357,9 @@ Student Response
  1. 50 square feet. Sample response: The hallway is 3 feet by 6 feet, so it has an area of 18 square feet. The bedroom is
     4 feet by 8 feet, so it has an area of 32 square feet. I added 32 and 18 to get 50.
  2. 36 feet. (The perimeter is the same whether students include the sink and stove or not.) Sample responses:
-     ◦ I found         and       , and then I added 20 and 16 to get 36.
+     ◦ I found 2 × 10 and 2 × 8, and then I added 20 and 16 to get 36.
      ◦ I added the lengths of the two sides of the living room and the sides around the sink and stove, and the width
-       of the hallway:                                  and got 36.
+       of the hallway: 10 + 8 + 6 + 2 + 2 + 3 + 2 + 3 and got 36.
 
 
 Responding to Student Thinking

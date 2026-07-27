@@ -299,13 +299,13 @@ Required Preparation
                                                                             Illustrative Mathematics®              5
                                                                   expressions in each row show more groups of 40.)
                       multiplication
-         height                             volume
-                      expression to                            • Display the expression:
-         (units)                          (unit cubes)
-                    represent volume                           • “How does the expression represent the volume of
-                                                                 the prism?” (There are 40 unit cubes in the base layer
-           1                                                     of the prism or 4 rows of 10 unit cubes. Then there
-                                                                 are 3 of these layers.)
+         height                                volume
+                      expression to                             • Display the expression: 3 × 40
+         (units)                             (unit cubes)
+                    represent volume                            • “How does the expression represent the volume of
+                                                                  the prism?” (There are 40 unit cubes in the base layer
+           1                                                      of the prism or 4 rows of 10 unit cubes. Then there
+                                                                  are 3 of these layers.)
 
            2
 
@@ -323,22 +323,22 @@ Required Preparation
 Student Response
 Sample responses:
 
-                                                  volume
+                                                    volume
  height         multiplication expression to
-                                                   (unit
+                                                     (unit
  (units)             represent volume
-                                                  cubes)
+                                                    cubes)
 
-    1                           or                  40
-    2                           or                  80
-    3                           or                 120
-   10                           or                 400
-   25                           or                 1,000
-
-
+    1                4 × 10 × 1 or 40 × 1             40
+    2                4 × 10 × 2 or 40 × 2             80
+    3                4 × 10 × 3 or 40 × 3             120
+   10               4 × 10 × 10 or 40 × 10            400
+   25               4 × 10 × 25 or 40 × 25           1,000
 
 
-Activity 3                                                                                                 10 min
+
+
+Activity 3                                                                                                  10 min
 
 What Is the Question?
 
@@ -354,39 +354,39 @@ rectangular prisms.
 
 
 
-                                               Grade 5                             CC BY NC 2024
+                                               Grade 5                              CC BY NC 2024
                                                 Unit 1
-                                                           Lesson 5
-                                                                            Illustrative Mathematics®               6
-     Student Task Statement                                     Launch
-      This is the base of a rectangular prism                     • groups of 2
+                                                             Lesson 5
+                                                                             Illustrative Mathematics®               6
+     Student Task Statement                                   Launch
+      This is the base of a rectangular prism                    • groups of 2
       that has a height of 5 units.
 
-                                                                Activity
+                                                              Activity
       These are answers to questions about the prism.
-      Determine the question for each answer.                     • 2 minutes: quiet think time
-       1. 3 is the answer. What is the question?                  • 4 minutes: partner work time
+      Determine the question for each answer.                    • 2 minutes: quiet think time
+       1. 3 is the answer. What is the question?                 • 4 minutes: partner work time
 
-       2. 5 is the answer. What is the question?                  • Monitor for students who:
-                                                                     ◦ Use informal language, such as “layer.”
-       3.               . The answer is 12. What is the
-            question?                                                ◦ Use the terms “length,” “width,” “height,” and
-                                                                       “base” in their questions.
-       4.                . The answer is 60 unit cubes. What
-            is the question?
-                                                                Activity Synthesis
+       2. 5 is the answer. What is the question?                 • Monitor for students who:
+                                                                    ◦ Use informal language, such as “layer.”
+       3. 3 × 4 = 12. The answer is 12. What is the
+          question?                                                 ◦ Use the terms “length,” “width,” “height,” and
+                                                                      “base” in their questions.
+       4. 12 × 5 = 60. The answer is 60 unit cubes. What
+          is the question?
+                                                              Activity Synthesis
        5. 3 units by 4 units by 5 units is the answer.
-          What is the question?                                   • Ask previously selected students to share their
-                                                                    solutions.
+          What is the question?                                  • Ask previously selected students to share their
+                                                                   solutions.
 
-Student Response                                                  • Connect the informal language to the math terms
-                                                                    “length,” “width,” “height,” and “area of a base.”
+Student Response                                                 • Connect the informal language to the math terms
+                                                                   “length,” “width,” “height,” and “area of a base.”
  1. How many units is the width of the prism?
-                                                                  • “How does the expression             represent the
- 2. How many units is the height of the prism?                      prism described in the fourth question?” (The area of
- 3. Sample responses: How many cubes is the volume of               the base is      or 12 square units, and the height is
-    one layer? How many square units is the area of the             5 units, so          represents the product of the
-    base?                                                           length, the width, and the height.)
+                                                                 • “How does the expression 3 × 4 × 5 represent the
+ 2. How many units is the height of the prism?                     prism described in the fourth question?” (The area of
+ 3. Sample responses: How many cubes is the volume of              the base is 3 × 4 or 12 square units, and the height is
+    one layer? How many square units is the area of the            5 units, so 3 × 4 × 5 represents the product of the
+    base?                                                          length, the width, and the height.)
 
  4. What is the volume of the entire prism?
  5. What are the length, the width, and the height of the
@@ -416,10 +416,10 @@ as a whole group and record any revisions.
 
 
 
-                                              Grade 5                                 CC BY NC 2024
-                                               Unit 1
-                                                               Lesson 5
-                                                                               Illustrative Mathematics®              7
+                                            Grade 5                                  CC BY NC 2024
+                                             Unit 1
+                                                            Lesson 5
+                                                                              Illustrative Mathematics®              7
 Suggested Centers
   • Can You Build It? (3–5), Stage 3: Rectangular Prisms (Addressing)
   • Five in a Row: Multiplication (3–5), Stage 4: Three Factors (Addressing)

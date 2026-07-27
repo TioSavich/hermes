@@ -77,12 +77,12 @@ The purpose of this Number Talk is to elicit understandings students have for ad
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 10 + 4                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 9 + 4
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 9 + 6
+        • 15 - 6
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
@@ -91,12 +91,12 @@ Student Response                                                  • Record ans
                                                                   • Repeat with each expression.
   • 13: It’s like the last one except it’s 9 instead of 10.
     Since 9 is one less than 10, then the answer must be
-    1 less          .                                           Activity Synthesis
+    1 less 10 + 4.                                              Activity Synthesis
   • 15: I can give 1 from the 6 to the 9 to make a 10.
                                                                   • “Did anyone approach the problem in a different
-    Then I can add         .
+    Then I can add 10 + 5.
                                                                     way?”
-  • 9: I know that       is 15, so       is 9.
+  • 9: I know that 9 + 6 is 15, so 15 - 6 is 9.
 
 
 
@@ -127,8 +127,8 @@ Required Preparation
 
 
 
-                                           Grade 1                                   CC BY NC 2024
-                                            Unit 4
+                                            Grade 1                                  CC BY NC 2024
+                                             Unit 4
                                                               Lesson 13
                                                                               Illustrative Mathematics®               2
       ◦ Counting Collections, Stages 1 and 2

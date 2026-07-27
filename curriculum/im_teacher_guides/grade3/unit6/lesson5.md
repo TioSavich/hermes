@@ -66,26 +66,26 @@ Materials to Gather                                           Materials to Copy
                                                 Unit 6
                                                             Lesson 5
                                                                               Illustrative Mathematics®             1
-Lesson Timeline                                                 Teacher Reflection Questions
-                                                                If you were to teach this lesson again, what would you do
- Warm-up                                      10 min
-                                                                differently? How would your proposed changes support
- Activity 1                                   20 min            student learning?
+Lesson Timeline                                               Teacher Reflection Questions
+                                                              If you were to teach this lesson again, what would you do
+ Warm-up                                    10 min
+                                                              differently? How would your proposed changes support
+ Activity 1                                 20 min            student learning?
 
- Activity 2                                   20 min
+ Activity 2                                 20 min
 
- Synthesis Estimate                           5 min
+ Synthesis Estimate                          5 min
 
- Cool-down                                    5 min
+ Cool-down                                   5 min
 
 
 
-Warm-up                                                                                                       10 min
+Warm-up                                                                                                     10 min
 
 Number Talk: Multiply Teen Numbers
 
-      Standards                                                      Instructional Routines
-Addressing      3.OA.C.7                                          • Number Talk
+      Standards                                                    Instructional Routines
+Addressing      3.OA.C.7                                        • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for multiplying within 100 and
@@ -95,39 +95,39 @@ When students use known multiplication facts to multiply greater numbers, they l
 (MP7).
 
 
-      Student Task Statement                                    Launch
-      Find the value of each expression mentally.                 • Display the first expression.
+      Student Task Statement                                  Launch
+      Find the value of each expression mentally.               • Display the first expression.
 
-          •                                                       • “Give me a signal when you have an answer and can
-                                                                    explain how you got it.”
-          •
-                                                                  • 1 minute: quiet think time
-          •
-          •
-                                                                Activity
+        • 3 × 10                                                • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 3 × 13
+                                                                • 1 minute: quiet think time
+        • 6 × 13
+        • 3 × 26
+                                                              Activity
 
-Student Response                                                  • Record answers and strategies.
-                                                                  • Keep expressions and work displayed.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
   • 30: I counted by 10. I just knew it.
-                                                                  • Repeat with each expression.
-  • 39:             . I just added 3, more groups of 3
+                                                                • Repeat with each expression.
+  • 39: 3 × 10 = 30. I just added 3, more groups of 3
     which is 9, to make 39.
-  • 78: I knew              , so I doubled 39 to get       ,    Activity Synthesis
+  • 78: I knew 3 × 13 = 39, so I doubled 39 to get 6 × 13,    Activity Synthesis
     which is 78.
-                                                                  • “How did you use multiplication facts that you
-  • 78:               ,           , and                .            already know to find some of the other products?” (I
-                                                                    knew that          is 30, so      would be 3 groups
-                                                                    of 10 and 3 groups of 3, which is 39. Once I knew
-                                                                           , I was able to find      by doubling 39,
-                                                                    which is 78.)
+                                                                • “How did you use multiplication facts that you
+  • 78: 3 × 20 = 60, 3 × 6 = 18, and 60 + 18 = 78.                already know to find some of the other products?” (I
+                                                                  knew that 3 × 10 is 30, so 3 × 13 would be 3 groups
+                                                                  of 10 and 3 groups of 3, which is 39. Once I knew
+                                                                  3 × 13, I was able to find 6 × 13 by doubling 39,
+                                                                  which is 78.)
 
 
 
 
-                                             Grade 3                                  CC BY NC 2024
-                                              Unit 6
-                                                               Lesson 5
-                                                                               Illustrative Mathematics®               2
+                                           Grade 3                                  CC BY NC 2024
+                                            Unit 6
+                                                             Lesson 5
+                                                                             Illustrative Mathematics®               2
 Activity 1                                                                                                      20 min
 
 Go for a Measurement Walk
@@ -297,18 +297,18 @@ Answers vary.                                                  • “Work with 
                                                Unit 6
                                                            Lesson 5
                                                                              Illustrative Mathematics®               5
-                                                                   • 12–15 minutes: group work time
+                                                                    • 12–15 minutes: group work time
 
 
                                                                  Activity Synthesis
-                                                                   • Ask students to display their posters.
+                                                                    • Ask students to display their posters.
                                                                  MLR7 Compare and Connect
 
-                                                                   • “As you visit the posters with your group, think about
-                                                                     how the line plots are alike and how they are
-                                                                     different. Be prepared to share your observations.”
-                                                                   • 5 minute: Gallery Walk
-                                                                   • See Lesson Synthesis.
+                                                                    • “As you visit the posters with your group, think about
+                                                                      how the line plots are alike and how they are
+                                                                      different. Be prepared to share your observations.”
+                                                                    • 5 minute: Gallery Walk
+                                                                    • See Lesson Synthesis.
 
 
 
@@ -321,7 +321,7 @@ that is taller.)
 
 “How are they different?” (They represent lengths of different objects. Some line plots show more or fewer Xs than
 others. The numbers on the ends of the lines are different. The locations of Xs and how they are spread out are
-different. On some line plots, each space represents     inch. On others, it represents    inch.)
+different. On some line plots, each space represents 1/2 inch. On others, it represents 1/4 inch.)
 
 “Why did the line plots have different scales?” (The scale depends on the data the group collected. Some types of objects
 are usually longer than others. For example, twigs are usually longer than leaves. Some data include only lengths in half
@@ -351,14 +351,14 @@ Addressing      3.MD.B.4
 
 
 
-                                             Grade 3                                    CC BY NC 2024
-                                              Unit 6
-                                                              Lesson 5
-                                                                                 Illustrative Mathematics®               6
+                                              Grade 3                                    CC BY NC 2024
+                                               Unit 6
+                                                               Lesson 5
+                                                                                  Illustrative Mathematics®              6
      Student Task Statement
       The list shows lengths of leaves in inches. Use the measurements to complete the line plot.
 
-                3   2
+          23/4   3   2   31/4   41/2   31/4   23/4   21/2
 
 
 
@@ -385,8 +385,8 @@ that correspond to the given lengths.                         Before the Warm-up
 
 
 
-                                             Grade 3                                CC BY NC 2024
-                                              Unit 6
+                                                 Grade 3                            CC BY NC 2024
+                                                  Unit 6
                                                             Lesson 5
                                                                              Illustrative Mathematics®             7
 ```

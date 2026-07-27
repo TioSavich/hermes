@@ -286,26 +286,26 @@ or structure (MP7).
       Switch roles after the category is guessed correctly.
                                                                    • Consider playing a round with the entire class to
         • Partner A’s
-                                                                     demonstrate the game.
+                                ___                                  demonstrate the game.
           category:
                                                                    • If time permits, encourage students to play another
                                                                      round.
-             fit the category      do not fit the category
+             fit the category         do not fit the category
 
 
                                                                  Activity Synthesis
                                                                    • “Who used a brand new category while playing? What
                                                                      was it?”
-        • Partner B’s
+        • Partner B’s           ___
           category:                                                • Add any new categories to the list from the first
                                                                      activity, again organizing by attribute.
 
 
 
 
-                                             Grade 4                                    CC BY NC 2024
-                                              Unit 8
-                                                               Lesson 1
+                                                Grade 4                                 CC BY NC 2024
+                                                 Unit 8
+                                                                Lesson 1
                                                                                  Illustrative Mathematics®                 5
            fit the category         do not fit the category
 

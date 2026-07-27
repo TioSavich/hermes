@@ -68,11 +68,11 @@ Lesson Timeline                                               Teacher Reflection
                                            Unit 9
                                                            Lesson 11
                                                                               Illustrative Mathematics®             1
- Activity 2                                       15 min      the connections students make between story problems,
+ Activity 2                                  15 min           the connections students make between story problems,
                                                               diagrams, and equations when they solve problems in
- Synthesis Estimate                               10 min      upcoming lessons?
+ Synthesis Estimate                          10 min           upcoming lessons?
 
- Cool-down                                         5 min
+ Cool-down                                   5 min
 
 
 
@@ -81,11 +81,11 @@ Warm-up                                                                         
 Number Talk: Addition and Subtraction
 
       Standards                                                     Instructional Routines
-Addressing       2.NBT.B.5                                      • Number Talk
+Addressing      2.NBT.B.5                                       • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for relating the operations of
-addition and subtraction. The equations                 ,            , and              each show the same
+addition and subtraction. The equations 27 + 13 = 40, 40- 13 = 27 , and 40- 27 = 13 each show the same
 relationship between numbers. Students will use this idea during the lesson when they discuss why an addition or
 subtraction equation might match a given tape diagram.
 
@@ -93,34 +93,34 @@ subtraction equation might match a given tape diagram.
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 7 + 13                                                • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 27 + 13
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 40- 13
+        • 40- 27
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
                                                                 • Keep expressions and work displayed.
   • 20: I just knew it.
                                                                 • Repeat with each expression.
-  • 40: I added                  to get 40.
-  • 27: I know            is 40, so           is 27.
+  • 40: I added 20 + 10 + 10 to get 40.
+  • 27: I know 27 + 13 is 40, so 40- 13 is 27.
                                                               Activity Synthesis
-  • 13: I know            is 40, so           is 13.
-                                                                • “How can you use your answer for             to find
-                                                                  the value of       ?” (      is 40, so             is
+  • 13: I know 27 + 13 is 40, so 40- 27 is 13.
+                                                                • “How can you use your answer for 27 + 13 to find
+                                                                  the value of 40- 13 ?” (27 + 13 is 40, so 40- 13 is
                                                                   27.)
-                                                                • “How can you use your answer for             to find
-                                                                  the value of       ?” (      is 40, so             is
+                                                                • “How can you use your answer for 27 + 13 to find
+                                                                  the value of 40- 27 ?” (27 + 13 is 40, so 40- 27 is
                                                                   13.)
 
 
 
 
-                                               Grade 2                               CC BY NC 2024
-                                                Unit 9
+                                          Grade 2                                    CC BY NC 2024
+                                           Unit 9
                                                            Lesson 11
                                                                               Illustrative Mathematics®               2
 Activity 1                                                                                                        20 min
@@ -297,7 +297,7 @@ Sample responses:
                                                                      discussing the student work.
     carnival. Noah has 37 tickets, and Mai has 24 tickets.
     How many tickets does Andre have?                              • “How did you know that the second diagram
-    Solution:                ,              . Andre has 35           represents a comparison?” (It has two different
+    Solution: 37 + 24 = 61, 96- 61 = 35 . Andre has 35               represents a comparison?” (It has two different
     tickets.                                                         rectangles. We know the larger amount and the
     Tyler has 37 carnival tickets, Lin has 24 carnival               difference, but it shows a question mark for the
     tickets, and Diego has 96 carnival tickets. How many             smaller amount.)
@@ -306,13 +306,13 @@ Sample responses:
     Solution: Diego has 35 more tickets.                             make 30, then added 30, and then added 3 more.)
  2. Elena has 63 cents. She has 26 cents more than
     Kiran. How many cents does Kiran have?
-    Solution:              ,            ,          .
+    Solution: 63 - 20 = 43, 43 - 3 = 40, 40- 3 = 37 .
     Kiran has 37 cents.
  3. Jada has 48 songs on her playlist. She adds 35 more
     songs to her playlist. Han has 27 songs on his playlist.
     How many more songs does Jada have on her playlist
     than Han?
-    Solution:               ,             . Jada has 56
+    Solution: 48 - 27 = 21, 21 + 35 = 56. Jada has 56
     more songs.
 
 

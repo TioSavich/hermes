@@ -100,29 +100,29 @@ student thinking shared in the Activity Synthesis on a measuring tape in prepara
       Student Task Statement                                     Launch
       Decide if each statement is true or false. Be                • Display one statement.
       prepared to explain your reasoning.                          • “Give me a signal when you know whether the
-        •                                                            statement is true and can explain how you know.”
+        • 10- 0 = 12- 2                                              statement is true and can explain how you know.”
 
-        •                                                          • 1 minute: quiet think time
+        • 8 - 4 = 10- 6                                            • 1 minute: quiet think time
 
-        •
-        •                                                        Activity
+        • 12- 4 = 10- 3
+        • 15 - 2 = 13 - 0                                        Activity
                                                                    • Share and record answers and strategy.
 Student Response                                                   • Repeat with each statement.
 
-  • True:               and               .
-  • True:     and          are the same, because 10 is 2         Activity Synthesis
+  • True: 10- 0 = 10 and 12- 2 = 10 .
+  • True: 8 - 4 and 10- 6 are the same, because 10 is 2          Activity Synthesis
     more than 8 and 6 is two more than 4.
                                                                    • “How could we change the third equation to make it
   • False: the numbers don't change by the same                      true?” (We could change the 3 to a 2 because the 12
-    amount.             , but      is not 3.                         went down by 2 and 4 also went down by 2. The
+    amount. 12- 2 = 10 , but 4- 2 is not 3.                          went down by 2 and 4 also went down by 2. The
   • True: if I start at 0 and count up to 13, it is the same         difference would stay the same.)
     as starting at 2 and counting up to 15.
 
 
 
 
-                                              Grade 2                                 CC BY NC 2024
-                                               Unit 3
+                                            Grade 2                                   CC BY NC 2024
+                                             Unit 3
                                                                Lesson 10
                                                                                Illustrative Mathematics®                2
 Activity 1                                                                                                     15 min
@@ -180,67 +180,67 @@ Required Preparation
                                               Unit 3
                                                             Lesson 10
                                                                                Illustrative Mathematics®                3
-                                                                Activity
-                                                                  • “Han measured the same notebook as Jada. Jada’s
-                                                                    measuring tape was torn, but she got the same
-                                                                    answer. How did that happen?”
-                                                                  • 1 minute: quiet think time
-                                                                  • “Work with a partner to figure out how Jada got the
-        Han says 8 inches.           Jada says 8 inches.            same answer as Han.”
-      1. How did Han and Jada get the same                        • 3–4 minutes: partner discussion
-         measurement?                                             • Monitor for a student who explains the problem as
-      2. Write an equation that shows Jada’s thinking.                         and one who explains the problem as
-                                                                              .
-      3. Measure an object using Jada’s method.
-                                                                  • Share responses.
-           ◦ I measured a ________________________________.
-                                                                  • “Now, using your ruler, you and your partner should
-           ◦ I started with the number ____________.                find 1 thing in the classroom to measure without
-           ◦ I ended with the number ____________.                  starting at 0. Each of you should start at a different
-                                                                    number and compare your measurements.”
-           ◦ Equation: ________________________________.
-                                                                  • “Don’t forget to include the unit with your
-           ◦ The length of my object is ____________.
-                                                                    measurement and to use a question mark for the
-      4. Compare measurements with a partner.                       unknown in your equation.”
-                                                                  • 5 minutes: partner work time
-Student Response                                                  • Monitor for students who discuss:
-1. Sample responses:                                                 ◦ The length must be the same because the object
-     ◦ Her tape is missing 0–2, so she starts at 2 and                 doesn’t change.
-       goes to 10. How did she get 8?                                ◦ The equations they write have the same value or
-     ◦ She started at 2, not 0, so she had to take 2 away              show the same relationship.
-       from 10.                                                      ◦ The relationship between the numbers in their
-     ◦ If you count from 0 up to 8, it is 8, and if you                different expressions. For example, “the
-       count from 2 up to 10, it is also 8.                            numbers I subtracted are two more than yours
-                                                                       because I moved the object 2 inches over on the
-2.             or             .
-                                                                       ruler. The difference is the same.”
+                                                               Activity
+                                                                 • “Han measured the same notebook as Jada. Jada’s
+                                                                   measuring tape was torn, but she got the same
+                                                                   answer. How did that happen?”
+                                                                 • 1 minute: quiet think time
+                                                                 • “Work with a partner to figure out how Jada got the
+       Han says 8 inches.           Jada says 8 inches.            same answer as Han.”
+     1. How did Han and Jada get the same                        • 3–4 minutes: partner discussion
+        measurement?                                             • Monitor for a student who explains the problem as
+     2. Write an equation that shows Jada’s thinking.              10- 2 = ? and one who explains the problem as
+                                                                   2 + ? = 10.
+     3. Measure an object using Jada’s method.
+                                                                 • Share responses.
+          ◦ I measured a ________________________________.
+                                                                 • “Now, using your ruler, you and your partner should
+          ◦ I started with the number ____________.                find 1 thing in the classroom to measure without
+          ◦ I ended with the number ____________.                  starting at 0. Each of you should start at a different
+                                                                   number and compare your measurements.”
+          ◦ Equation: ________________________________.
+                                                                 • “Don’t forget to include the unit with your
+          ◦ The length of my object is ____________.
+                                                                   measurement and to use a question mark for the
+     4. Compare measurements with a partner.                       unknown in your equation.”
+                                                                 • 5 minutes: partner work time
+Student Response                                                 • Monitor for students who discuss:
+1. Sample responses:                                                ◦ The length must be the same because the object
+    ◦ Her tape is missing 0–2, so she starts at 2 and                 doesn’t change.
+      goes to 10. How did she get 8?                                ◦ The equations they write have the same value or
+    ◦ She started at 2, not 0, so she had to take 2 away              show the same relationship.
+      from 10.                                                      ◦ The relationship between the numbers in their
+    ◦ If you count from 0 up to 8, it is 8, and if you                different expressions. For example, “the
+      count from 2 up to 10, it is also 8.                            numbers I subtracted are two more than yours
+                                                                      because I moved the object 2 inches over on the
+2. 10- 2 = 8 or 2 + 8 = 10.
+                                                                      ruler. The difference is the same.”
 3. I measured a marker. I started with the number 3. I
-   ended with the number 10.              or           .
+   ended with the number 10. 3 + ? = 10 or 10- 3 = 7 .
    The length of my object is 7.
-                                                                Activity Synthesis
-4. The measurements are the same. We both got 7                   • Invite selected students to share their measurements
-   inches because          and           .                          and their reasoning.
-                                                                  • Write equations that correspond to the students’
-                                                                    thinking using a question mark to represent the
-                                                                    unknown value.
-                                                                  • “Why do you think you get the same measurement
-                                                                    each time, even if you measure starting from a
-                                                                    different place?” (The object didn't change, so the
-                                                                    length has to stay the same. The total length in
-                                                                    inches is still the same between the number that you
-                                                                    start with and end with.)
+                                                               Activity Synthesis
+4. The measurements are the same. We both got 7                  • Invite selected students to share their measurements
+   inches because 3 + 7 = 10 and 5 + 7 = 12.                       and their reasoning.
+                                                                 • Write equations that correspond to the students’
+                                                                   thinking using a question mark to represent the
+                                                                   unknown value.
+                                                                 • “Why do you think you get the same measurement
+                                                                   each time, even if you measure starting from a
+                                                                   different place?” (The object didn't change, so the
+                                                                   length has to stay the same. The total length in
+                                                                   inches is still the same between the number that you
+                                                                   start with and end with.)
 
 
 
-                                           Grade 2                                    CC BY NC 2024
-                                            Unit 3
-                                                              Lesson 10
-                                                                               Illustrative Mathematics®              4
+                                          Grade 2                                    CC BY NC 2024
+                                           Unit 3
+                                                             Lesson 10
+                                                                              Illustrative Mathematics®              4
 Advancing Student Thinking
 If students count the correct number of length units when counting on the measuring tool, but identify the length as the
 last number they reach on the tool (for example, they count on from 2 inches to 10 inches on the ruler and write
-            , but say the length of the object is 10), consider asking:
+2 + 8 = 10, but say the length of the object is 10), consider asking:
    • “How did you measure the ___?”
   • “What do the numbers in your equation represent?”
 
@@ -305,8 +305,8 @@ students compare 2 different equations that could represent the problem.
                                                                 • Invite previously selected students to share the
                                                                   equations they used to find the length of the short
                                                                   side of the desk or display:
-                                                                   ◦
-                                                                   ◦
+                                                                   ◦ 34- 16 = ?
+                                                                   ◦ 16 + ? = 34
                                                                 • “Do both of these equations represent how Lin could
                                                                   find the length of the short side of her desk? How do
                                                                   you know?”
@@ -321,9 +321,9 @@ students compare 2 different equations that could represent the problem.
 
 Student Response
  1. The long side of the desktop is 24 inches. Sample
-    response:              or
+    response: 40- 16 = ? or 16 + ? = 40
  2. The short side of the desktop is 18 inches. Sample
-    response:              or
+    response: 34- 16 = ? or 16 + ? = 34
 
 
 
@@ -379,7 +379,7 @@ Student Response
                                            Unit 3
                                                            Lesson 10
                                                                              Illustrative Mathematics®              7
- 2.              or
+ 2. 27- 13 = ? or 13 + ? = 27
 
 
 Responding to Student Thinking

@@ -273,35 +273,35 @@ Required Preparation
      new expression that represents the same value.
                                                                • “This set of cards shows expressions. Find the cards
       1. letters for matching expressions:
-                                                                 with expressions that have the same value. Work
+                                             ___                 with expressions that have the same value. Work
           new expression:                                        with your partner to explain your reasoning.”
 
-      2. letters for matching expressions:                     • “Record the letters of the matching cards and write
+      2. letters for matching expressions: ___                 • “Record the letters of the matching cards and write
                                                                  your own expression that has the same value.”
           new expression:
                                                                • 10 minutes: partner work time
       3. letters for matching expressions:
-                                                               • Monitor for students who use “hundreds,” “tens,” and
+                                             ___               • Monitor for students who use “hundreds,” “tens,” and
           new expression:                                        “ones” when explaining how they know the cards
                                                                  match.
-      4. letters for matching expressions:
+      4. letters for matching expressions: ___
 
           new expression:
                                                              Activity Synthesis
                                                                • Invite 1–2 previously selected students to share a set
 Student Response
                                                                  of matching cards.
- 1. A, F, K. Sample response:                                  • Consider asking:
- 2. B, G, L. Sample response:                                      ◦ “Do you agree that these expressions match?
- 3. C, H, J. Sample response:                                        Explain.”
+ 1. A, F, K. Sample response: 300 + 60 + 5                     • Consider asking:
+ 2. B, G, L. Sample response: 600 + 10 + 11                        ◦ “Do you agree that these expressions match?
+ 3. C, H, J. Sample response: 300 + 40 + 15                          Explain.”
 
 
 
-                                           Grade 2                                 CC BY NC 2024
-                                            Unit 9
+                                             Grade 2                               CC BY NC 2024
+                                              Unit 9
                                                            Lesson 6
                                                                             Illustrative Mathematics®              5
- 4. D, E, I. Sample response:                                          ◦ “What other expressions did you write that
+ 4. D, E, I. Sample response: 700 + 40 + 1                             ◦ “What other expressions did you write that
                                                                          match these expressions?”
 
 

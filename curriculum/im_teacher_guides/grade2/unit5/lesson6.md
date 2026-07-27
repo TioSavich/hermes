@@ -175,7 +175,7 @@ Required Preparation
 
        4. Represent 627 with words.                            • “These other forms can help us think about writing a
                                                                  number using number names.”
-       5. Represent                 with words.
+       5. Represent 900 + 50 + 1 with words.
                                                                • “What is this number?” (two hundred fifty-three)
        6. Represent three hundred eighteen in 2
                                                                • Write the number name as the students say two
@@ -195,7 +195,7 @@ Required Preparation
  4. Six hundred twenty-seven                                  • “For each question, work with your partner to figure
  5. Nine hundred fifty-one                                      out the names of each number. Think about when
                                                                 you need to use a hyphen.”
- 6. Sample responses: 318,               .
+ 6. Sample responses: 318, 300 + 10 + 8.
                                                               • 8 minutes: partner work time
                                                               • Monitor for the different ways students represent
                                                                 318. Look for examples of:
@@ -237,8 +237,8 @@ ten system (MP7)
 
 
 
-                                             Grade 2                              CC BY NC 2024
-                                              Unit 5
+                                           Grade 2                                CC BY NC 2024
+                                            Unit 5
                                                           Lesson 6
                                                                            Illustrative Mathematics®                 4
      Access for English Language Learners
@@ -303,7 +303,7 @@ Sample response:
                                                                 • Display the chart paper from each group.
                 words              expanded form
                                                                 • “Now you will walk around and see other numbers
-        eight hundred sixty-five                                  and how they were represented in different ways.”
+        eight hundred sixty-five    800 + 60 + 5                  and how they were represented in different ways.”
                                                                 • “Think about which representations most clearly
                                                                   show you the value of the number.”
                                                                 • “Then check that all of the representations show the
@@ -361,7 +361,7 @@ Addressing     2.NBT.A.3
 Student Response
  1. one hundred forty-seven
  2. Sample responses:
-     ◦
+     ◦ 100 + 40 + 7
      ◦ 1 hundred, 4 tens, and 7 ones
      ◦ base-ten diagram that shows 1 hundred, 4 tens, and 7 ones
 
@@ -385,7 +385,7 @@ seven.                                                    Before the Warm-up, ha
 
      357
 
-
+     300 + 50 + 7
 
      three hundred fifty-seven
 

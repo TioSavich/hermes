@@ -77,21 +77,21 @@ operations, and gain fluency within 20. These practices will also help students 
      Student Task Statement                                    Launch
       Decide if each statement is true or false. Be              • Display one statement.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 2 + 2 + 2 + 2 = 4 + 4                                    statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 2 + 2 + 2 = 3 + 3                                      • 1 minute: quiet think time
 
-        •
+        • 2 + 2 + 2 + 2 + 2 + 2 = 5 + 5
                                                                Activity
 Student Response                                                 • Share and record answers and strategies.
 
-  • True: I can do       two times to make        .              • Repeat with each statement.
+  • True: I can do 2 + 2 two times to make 4 + 4.                • Repeat with each statement.
 
-  • True: I can split one 2 into      and add 1 to each
-    other 2.                                                   Activity Synthesis
-  • False: I saw I could do       three times to make
+  • True: I can split one 2 into 1 + 1 and add 1 to each
+    other 2. 2 + 1 + 2 + 1 = 3 + 3                             Activity Synthesis
+  • False: I saw I could do 2 + 2 three times to make
                                                                  • “How can you explain your answer without finding
-               and I know this is more than       .
+    4 + 4 + 4 and I know this is more than 5 + 5.
                                                                    the value of both sides?”
 
 

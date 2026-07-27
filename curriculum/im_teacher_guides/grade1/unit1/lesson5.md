@@ -84,7 +84,7 @@ Warm-up                                                                         
 Number Talk: Subtract 1 or 2
 
       Standards                                                   Instructional Routines
-Addressing      1.OA.C.5, 1.OA.C.6                             • Number Talk
+Addressing       1.OA.C.5, 1.OA.C.6                            • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for subtracting 1 or 2 from a
@@ -96,12 +96,12 @@ be able to subtract other numbers within 10.
       Student Task Statement                                Launch
       Find the value of each expression mentally.              • Display one expression.
 
-        •                                                      • “Give me a signal when you have an answer and can
+        • 6- 1                                                 • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-        •
+        • 6- 2
                                                                • 1 minute: quiet think time
-        •
-        •
+        • 8 - 1
+        • 8 - 2
                                                             Activity
 
 Student Response                                               • Share and record responses.
@@ -138,7 +138,7 @@ those two numbers in any way that makes sense to them. Students may count all an
 again, count back, or use a known fact. Students check off the difference on their recording sheet and fill in the
 subtraction expression that represents the value of the difference. The partner who checks off the most numbers wins.
 
-If students write an expression with the minuend and subtrahend in reversed order, for example          instead of      ,
+If students write an expression with the minuend and subtrahend in reversed order, for example 4- 7 instead of 7- 4 ,
 ask them to represent the expression with cubes or two-color counters. Students will see that if they have 4 cubes, they
 are not able to take away 7. Allow students to think about how they can write an expression that represents beginning
 with one of the numbers and taking away the other to find the difference. Avoid telling students that the greater
@@ -185,24 +185,24 @@ Sample response:                                                 • Groups of 2
                                                                     sheets, and access to two-color counters and
             0                                                       10-frames.
                                                                   • “We are going to learn a new way to play Check It Off.
-            1           √
+            1           √             6- 5
                                                                     This time, instead of adding to find each number on
                                                                     the recording sheet, you will subtract.”
-            2           √
+            2           √          6- 4,7- 5
                                                                   • Demonstrate choosing 2 number cards and display
-            3           √                                           the numbers.
+            3           √             6- 3                          the numbers.
 
-            4           √                                         • “Now I find the difference between the 2 numbers.
+            4           √          8 - 4,6- 2                     • “Now I find the difference between the 2 numbers.
                                                                     The difference is the result when 1 number is
-            5           √                                           subtracted from another. What is the difference
+            5           √          7- 2,8 - 3                       subtracted from another. What is the difference
                                                                     between these 2 numbers? How do you know?”
-            6           √
+            6           √          8 - 2,7- 1
                                                                   • Demonstrate checking off the difference on the
-            7           √                                           recording sheet.
+            7           √             9- 2                          recording sheet.
                                                                   • “After you check off the number, write a subtraction
-            8           √
+            8           √         10- 2,9- 1
                                                                     expression to show the difference.”
-            9           √                                         • Demonstrate writing the subtraction expression.
+            9           √             10- 1                       • Demonstrate writing the subtraction expression.
                                                                   • “Continue taking turns with your partner. The person
            10
                                                                     who checks off the most numbers wins.”
@@ -236,8 +236,8 @@ Centers: Choice Time
 The purpose of this activity is for students to choose from activities that focus on counting up to 20 objects or adding
 
 
-                                            Grade 1                                   CC BY NC 2024
-                                             Unit 1
+                                              Grade 1                                 CC BY NC 2024
+                                               Unit 1
                                                              Lesson 5
                                                                                Illustrative Mathematics®                4
 and subtracting within 10. Students choose from any of the previously introduced stages of the listed centers. They are
@@ -321,26 +321,26 @@ Look Fors
 
       We added 1 or 2 by counting on.
 
-                                                       4 . . . 5, 6                             The sum is 6.
+                     4 + 2                             4 . . . 5, 6                             The sum is 6.
       We subtracted 1 or 2 by counting back.
 
-                                                       6 . . . 5, 4                          The difference is 4.
+                     6- 2                              6 . . . 5, 4                          The difference is 4.
 
 
       We played games with addition and subtraction within 10.
 
-                                                                                                The sum is 7.
+                                           4 + 3                                                The sum is 7.
 
 
 
 
-                                                                                             The difference is 3.
+                                           5 - 2                                             The difference is 3.
 
 
 
 
-                                            Grade 1                                     CC BY NC 2024
-                                             Unit 1
+                                             Grade 1                                    CC BY NC 2024
+                                              Unit 1
                                                                Lesson 5
                                                                                  Illustrative Mathematics®          6
 ```

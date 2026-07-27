@@ -95,12 +95,12 @@ mentally, such as adding by place value.
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-          •                                                     • “Give me a signal when you have an answer and can
+        • 57 + 10                                               • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-          •
+        • 57 + 11
                                                                 • 1 minute: quiet think time
-          •
-          •
+        • 57 + 21
+        • 57 + 42
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
@@ -110,7 +110,7 @@ Student Response                                                • Record answe
 
   • 68: It’s 1 more than the last problem.
   • 78: It’s 10 more than the last problem.                   Activity Synthesis
-  • 99:               ,         ,                               • “Did anyone approach the problem in a different
+  • 99: 50 + 40 = 90, 7 + 2 = 9, 90 + 9 = 99                    • “Did anyone approach the problem in a different
                                                                   way?”
                                                                 • “How can you use the problem before to help you
                                                                   solve this one?”

@@ -86,24 +86,24 @@ look for and make use of the base-ten structure of numbers and the properties of
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-          •                                                       • “Give me a signal when you have an answer and can
+        • 58 + 10                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-          •
+        • 58 + 12
                                                                   • 1 minute: quiet think time
-          •
-          •
+        • 58 + 13
+        • 67 + 14
                                                                 Activity
 
 Student Response                                                  • Record answers and strategy.
                                                                   • Keep expressions and work displayed.
   • 68: I just added 1 more ten.
                                                                   • Repeat with each expression.
-  • 70:                   and 2 more is 70
-  • 71:                   and 2 more is 70 and 1 more is 71
+  • 70: 58 + 10 = 68 and 2 more is 70
+  • 71: 58 + 10 = 68 and 2 more is 70 and 1 more is 71
                                                                 Activity Synthesis
-  • 81:               ,               ,
+  • 81: 67 + 10 = 77, 77 + 3 = 80, 80 + 1 = 81
                                                                   • “How can you make a ten to find the value of
-                                                                           ?” (67 needs 3 more to make 10. That 3 can
+                                                                    67 + 14?” (67 needs 3 more to make 10. That 3 can
                                                                     come from the 4 ones in 14.)
 
 
@@ -125,9 +125,9 @@ find the difference between their estimate and their measurement for extra pract
 
 
 
-                                             Grade 2                                   CC BY NC 2024
-                                              Unit 3
-                                                              Lesson 13
+                                           Grade 2                                     CC BY NC 2024
+                                            Unit 3
+                                                            Lesson 13
                                                                                 Illustrative Mathematics®                2
 Required Materials
 Materials to Gather                                           Materials to Copy

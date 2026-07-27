@@ -85,19 +85,19 @@ number line.
      Student Task Statement                                     Launch
       Decide if each statement is true or false. Be                • Display one statement.
       prepared to explain your reasoning.                          • “Give me a signal when you know whether the
-        •                                                            statement is true and can explain how you know.”
+        • 28 + 2 + 20 = 50                                           statement is true and can explain how you know.”
                                                                    • 1 minute: quiet think time
-        •
+        • 16 + 3 + 30 = 50
 
-        •
+        • 36 + 4 + 20 = 50
                                                                 Activity
 
 Student Response                                                   • Share and record answers and strategy.
                                                                    • Repeat with each statement.
-  • True: I know               . I know               .
-  • False: I know              . I know adding 3 tens to 19
+  • True: I know 28 + 2 = 30. I know 30 + 20 = 50.
+  • False: I know 16 + 3 = 19. I know adding 3 tens to 19
     will not make 50.                                           Activity Synthesis
-  • False: I know                . It will be more than 50.        • “How can you explain your answer to the last
+  • False: I know 36 + 20 = 56. It will be more than 50.           • “How can you explain your answer to the last
                                                                      statement without finding the sum of all three
                                                                      addends?” (I could add 36 and 20 and see that it’s
                                                                      more than 56. I could add 36 and 4 to get 40. I know I
@@ -124,7 +124,7 @@ land directly on 2 target numbers wins.
 
                                             Grade 2                                     CC BY NC 2024
                                              Unit 4
-                                                              Lesson 14
+                                                             Lesson 14
                                                                                  Illustrative Mathematics®                2
 Consider laminating blackline masters or placing them in sheet protectors so they can be used multiple times.
 

@@ -291,31 +291,31 @@ Required Preparation
                                               Unit 7
                                                             Lesson 14
                                                                                 Illustrative Mathematics®              5
-      Pause here so your teacher can review your work.           Activity
+      Pause here so your teacher can review your work.          Activity
       Ask your teacher for a new set of cards and repeat
-      the activity, trading roles with your partner.               • 3–5 minutes: partner work time
-                                                                   • After students solve the first problem, distribute the
-                                                                     next set of cards. Students switch roles and repeat
+      the activity, trading roles with your partner.              • 3–5 minutes: partner work time
+                                                                  • After students solve the first problem, distribute the
+                                                                    next set of cards. Students switch roles and repeat
 Student Response
-                                                                     the process with Problem Card 2 and Data Card 2.
+                                                                    the process with Problem Card 2 and Data Card 2.
 Problem Card 1:
 
-32 square feet. Sample response: I multiplied         to         Activity Synthesis
+32 square feet. Sample response: I multiplied 4 × 18 to         Activity Synthesis
 get the area of the fabric in the bundle. This was 72
-square feet. Next, I subtracted 12 square feet from 72 for         • “What kinds of questions were the most useful to
-the head wraps. This gave me 60 square feet. Then I                  ask?”
-subtracted 28 square feet for the lapa. This left me with          • “Were there any questions you weren’t sure how to
-32 square feet to go to the tailor.                                  answer?”
+square feet. Next, I subtracted 12 square feet from 72 for        • “What kinds of questions were the most useful to
+the head wraps. This gave me 60 square feet. Then I                 ask?”
+subtracted 28 square feet for the lapa. This left me with         • “Were there any questions you weren’t sure how to
+32 square feet to go to the tailor.                                 answer?”
 
-Problem Card 2:                                                    • “What were the important quantities to know to
-                                                                     solve this problem?”
+Problem Card 2:                                                   • “What were the important quantities to know to
+                                                                    solve this problem?”
 25 feet. Sample response: The lapa is 7 feet by 4 feet so I
-knew to go around it I would need to double 7, then                • For each problem, ask, “Was this problem related to
-double 4 and add them together. So, I added           to get         perimeter or area? How do you know?” (I knew the
-22 feet, then added 3 to get 25.                                     first problem was area because it was asking about
-                                                                     square units, which is how we measure area. I knew
-                                                                     the last problem was perimeter because it was about
-                                                                     the ribbon going around the edge of the lapa.)
+knew to go around it I would need to double 7, then               • For each problem, ask, “Was this problem related to
+double 4 and add them together. So, I added 14 + 8 to get           perimeter or area? How do you know?” (I knew the
+22 feet, then added 3 to get 25.                                    first problem was area because it was asking about
+                                                                    square units, which is how we measure area. I knew
+                                                                    the last problem was perimeter because it was about
+                                                                    the ribbon going around the edge of the lapa.)
 
 
 
@@ -341,10 +341,10 @@ Suggested Centers
 
 
 
-                                           Grade 3                                     CC BY NC 2024
-                                            Unit 7
-                                                               Lesson 14
-                                                                                Illustrative Mathematics®              6
+                                          Grade 3                                     CC BY NC 2024
+                                           Unit 7
+                                                              Lesson 14
+                                                                               Illustrative Mathematics®              6
 Cool-down                                                                                                      5 min
 
 Quadrilaterals in a Pattern

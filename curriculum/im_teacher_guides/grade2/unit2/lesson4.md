@@ -72,7 +72,7 @@ Lesson Timeline                                                 Teacher Reflecti
                                               Unit 2
                                                               Lesson 4
                                                                                 Illustrative Mathematics®              1
-Warm-up                                                                                                        10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: Subtract 2 Digits
 
@@ -84,46 +84,46 @@ This Number Talk encourages students to think about how to use the addition and 
 understanding of place value to mentally find values of expressions. The strategies elicited here will be helpful as
 students use the facts they know to develop fluency with addition and subtraction within 100.
 
-Students may notice that calculating       is repeated in each expression, and they use this pattern to mentally find the
+Students may notice that calculating 6- 3 is repeated in each expression, and they use this pattern to mentally find the
 values (MP8). Students must also attend to precision when they describe how they use known facts or other methods
 (MP6), especially when they describe subtracting by place. Encourage students to tell more about their strategy if they
 use unclear language and to reflect on how their description could be interpreted differently without more precise
-language. For example, if students say they knew                because they know        , ask students to explain how
+language. For example, if students say they knew 66- 30 = 36 because they know 6- 3 , ask students to explain how
 that fact helped them subtract the two-digit numbers.
 
 
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 6- 3                                                    • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 66- 3
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 66- 30
+        • 66- 33
                                                                 Activity
 
 Student Response                                                  • Record answers and strategy.
                                                                   • Keep expressions and work displayed.
-  • 3: I know           .
+  • 3: I know 6- 3 = 3 .
                                                                   • Repeat with each expression.
-  • 63: I know              .             .
-  • 36: I know              . 6 tens – 3 tens = 3 tens.
-                  .                                             Activity Synthesis
-  • 33: It’s like the last two expressions together. I did 6      • “How is each expression like        ? How are the
+  • 63: I know 6- 3 = 3 . 60 + 3 = 63.
+  • 36: I know 6- 3 = 3 . 6 tens – 3 tens = 3 tens.
+    30 + 6 = 36.                                                Activity Synthesis
+  • 33: It’s like the last two expressions together. I did 6      • “How is each expression like 6- 3 ? How are the
     tens – 3 tens = 3 tens and 6 ones – 3 ones = 3 ones. 3          expressions different?” (Each expression has the
     tens and 3 ones is 33.                                          digits 6 and 3. In each expression, we can use what
-                                                                    we know about          . In some expressions, we find 6
-                                                                    ones 3 ones. In some expressions, we find 6
-                                                                    tens 3 tens.)
+                                                                    we know about 6- 3 . In some expressions, we find 6
+                                                                    ones - 3 ones. In some expressions, we find 6
+                                                                    tens - 3 tens.)
 
 
 
 
-                                                Grade 2                               CC BY NC 2024
-                                                 Unit 2
+                                             Grade 2                                 CC BY NC 2024
+                                              Unit 2
                                                                Lesson 4
-                                                                               Illustrative Mathematics®                2
+                                                                              Illustrative Mathematics®               2
 Activity 1                                                                                                    20 min
 
 Introduce Capture Squares—Add within 20
@@ -275,7 +275,7 @@ Required Preparation
              • Show that one paper clip is on 8.
              • “This is my gameboard. Where would you put the
                other paper clip? (I would put it on 25 since
-                            and then you could cover the last
+               25 + 8 = 33 and then you could cover the last
                number in the column and have five in a row.)
 
 

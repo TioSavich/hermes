@@ -179,10 +179,10 @@ Required Preparation
 
 
                                                                Activity Synthesis
-                                                                 • Display cards with        and       .
+                                                                 • Display cards with 7- 2 and 2 + 3.
                                                                  • “Which card’s expression has the greater value?”
                                                                    (They have the same value. They are both 5.)
-                                                                 • “We could write              because these
+                                                                 • “We could write 7- 2 = 2 + 3 because these
                                                                    expressions have the same value.”
 
 

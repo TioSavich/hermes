@@ -79,24 +79,24 @@ This True or False prompts students to look carefully at the sum and difference 
 remember to compose units when needed. It also prompts students to make use of structure (MP7). For example, the
 last expression would be cumbersome to calculate with the standard algorithm. Recognizing that 99,999 is 1 less than
 100,000 would enable students to find the difference much more quickly. Likewise, students who notice that
-                   is only 1 away from 400,000 would know that 311,111 is far too high and cannot be the difference
+300,000 + 99,999 is only 1 away from 400,000 would know that 311,111 is far too high and cannot be the difference
 between 400,000 and 99,999.
 
 
      Student Task Statement                                    Launch
       Decide if each statement is true or false. Explain         • Display one statement.
       your reasoning.                                            • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 7,000 + 3,000 = 10,000                                   statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 7,180 + 3,920 = 10,100                                 • 1 minute: quiet think time
 
-        •
-        •                                                      Activity
+        • 423,450- 42,345 = 105
+        • 400,000- 99,999 = 311,111                            Activity
                                                                  • Share and record answers and strategy.
 Student Response                                                 • Repeat with each statement.
 
-  • True:
-  • False:                          so                 has     Activity Synthesis
+  • True: 7,000 + 3,000 = 10,000
+  • False: 7,000 + 3,000 = 10,000 so 7,180 + 3,920 has         Activity Synthesis
     to be more than 10,100.
                                                                  • “How can you explain your answer without finding
   • False: the difference between 420,000 and 42,000 is            the value of both sides?”
@@ -123,7 +123,7 @@ In this activity, students perform multi-digit addition and subtraction to solve
 
                                            Grade 4                                    CC BY NC 2024
                                             Unit 4
-                                                             Lesson 22
+                                                           Lesson 22
                                                                                Illustrative Mathematics®               2
 reasonableness of answers. The situation can be approached in many different ways, such as:
 
@@ -285,28 +285,28 @@ Materials to Gather                                           Materials to Copy
                                     Unit 4
                                                   Lesson 22
                                                                    Illustrative Mathematics®               5
-             c. the greatest possible difference
+           c. the greatest possible difference
 
 
 
 
-             d. the least possible difference
+           d. the least possible difference
 
 
 
 
 Student Response
  1. Sample response for the numbers 2, 5, and 8:
-     a.
-     b.
-     c.
-     d.
+     a. 852 + 825 = 1,677
+     b. 258 + 285 = 543
+     c. 852- 258 = 594
+     d. 285 - 258 = 27
  2. Sample response for the numbers 0, 1, 3, and 7:
-     a.
-     b.                     (the 0 is used in the thousands
-           place)
-     c.
-     d.
+     a. 7,310 + 7,301 = 14,611
+     b. 137 + 173 = 310 (the 0 is used in the thousands
+        place)
+     c. 7,310- 137 = 7,173
+     d. 173 - 137 = 36
 
 
 
@@ -322,15 +322,15 @@ If students use a guess-and-check method to place numbers, consider asking:
 Lesson Synthesis
 Display:
 
-    732     3,005   8,401   12,475    218,699
+    732    3,005   8,401   12,475   218,699
 
 
 “In this lesson, you added and subtracted lots of large numbers to solve problems. Suppose we’re working with these
 
 
-                                           Grade 4                                 CC BY NC 2024
-                                            Unit 4
-                                                              Lesson 22
+                                         Grade 4                                   CC BY NC 2024
+                                          Unit 4
+                                                          Lesson 22
                                                                             Illustrative Mathematics®            6
 large numbers.”
 
@@ -380,8 +380,8 @@ Student Response
  1. No. Sample response: Milwaukee had about 600,000 people. Madison had about 255,000 people. Green Bay had
     about 105,000 people. The sum of the three estimates is 960,000 people.
  2. 44,319 people below one million. Sample response:
-     ◦ The sum of populations of Milwaukee and Madison is                   , which is 850,565 people. Adding the
-       population of Green Bay,                  gives 955,681 people. Subtracting 955,681 people from 1,000,000
+     ◦ The sum of populations of Milwaukee and Madison is 595,351 + 255,214, which is 850,565 people. Adding the
+       population of Green Bay, 850,565 + 105,116 gives 955,681 people. Subtracting 955,681 people from 1,000,000
        people gives 44,319 people.
      ◦ The total population of the three cities is 955,681 people. I kept adding numbers to that total until reaching
        1,000,000 people. I first added 40,000 people and then 4,000 people, which gives 999,681 people. Adding 319
@@ -392,8 +392,8 @@ Student Response
                                            Unit 4
                                                             Lesson 22
                                                                                Illustrative Mathematics®             7
-         people more gives 1,000,000 people. Then I added these numbers:                                      .
-      ◦ Subtracting the population of Milwaukee from one million,                    gives 404,649 people.
+         people more gives 1,000,000 people. Then I added these numbers: 40,000 + 4,000 + 319 = 44,319.
+      ◦ Subtracting the population of Milwaukee from one million, 1,000,000- 595,351 gives 404,649 people.
         Subtracting the population of Madison from 404,649 people gives 149,435 people. Subtracting the population
         of Green Bay from 149,435 people gives 44,319 people.
 
@@ -429,7 +429,7 @@ a difference other than 44,319.                                After the Warm-up
 
       Sometimes it is necessary to look two or more places to the left to find a
       unit to decompose. For example, here is one way to decompose a ten and
-      a thousand to find               .
+      a thousand to find 2,050- 1,436 .
 
 
 

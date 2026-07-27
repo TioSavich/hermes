@@ -117,7 +117,7 @@ Student Response
 Sample responses:                                               • Consider asking, “How do the equations change if we
   • 8: I counted 4 dots in each row and there are 2 rows,         think about the rows as the groups or the columns as
     which is 8. There are 2 dots in each column and there         the groups?” (For the image with 12 dots, if we think
-    are 4 columns.                                                about the rows as the groups, we write              ,
+    are 4 columns.                                                about the rows as the groups, we write 4 × 3 = 12,
                                                                   but if we think about the columns as the groups, we
   • 12: I saw 3 dots in each row and there are 4 rows. I
 
@@ -126,7 +126,7 @@ Sample responses:                                               • Consider ask
                                              Unit 2
                                                             Lesson 1
                                                                              Illustrative Mathematics®                  2
-    saw 4 dots in each column and there are 3 columns.             write           . The order of the factors is reversed,
+    saw 4 dots in each column and there are 3 columns.             write 3 × 4 = 12. The order of the factors is reversed,
                                                                    but the product stays the same.)
   • 20: I saw two 10-frames, and 10 plus 10 is 20. I saw 4
     rows of 5, which is 20. I saw 5 columns of 4, which is

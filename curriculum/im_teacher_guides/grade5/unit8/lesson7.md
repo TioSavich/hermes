@@ -306,7 +306,7 @@ Sample responses:                                                   estimate how
     the end of the wagon. I estimate that the wagon is
     about 30 feet long. The width is hard to estimate
     because the angle of the photo makes it look small. It
-    looks like no more than     of the length, so I used 10
+    looks like no more than 1/3 of the length, so I used 10
     feet for an estimate. The height is also hard to
     estimate because of the angle of the photo. The
     height is below the waist of most of the people, so I
@@ -314,7 +314,7 @@ Sample responses:                                                   estimate how
     reasonable, but the length and width could easily be
     off by a several feet.
  2. My overall estimate for the volume of the wagon bed
-    is            , or 600 cubic feet.
+    is 30 × 10 × 2, or 600 cubic feet.
 
 
 

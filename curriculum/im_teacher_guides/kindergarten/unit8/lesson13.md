@@ -193,8 +193,8 @@ is 2.
                                                                  total? What parts do you see?” (The total is 4 dots.
                                                                  The parts are 3 dots and 1 dot)
                                                                • “What expression did you write for this domino?”
-                                                                 (     or     )
-                                                               • “    and           both show the parts on this
+                                                                 (3 + 1 or 1 + 3)
+                                                               • “3 + 1 and 1 + 3 both show the parts on this
                                                                  domino.”
 
 
@@ -339,13 +339,13 @@ Required Preparation
                                        Unit 8
                                                            Lesson 13
                                                                               Illustrative Mathematics®                6
-      Find the Value of                                              • “Choose what you would like to do next.”
-      Expressions                                                    • 8 minutes: center work time
+      Find the Value of                                          • “Choose what you would like to do next.”
+      Expressions                                                • 8 minutes: center work time
 
 
-                                                                Activity Synthesis
-                                                                     • “What can you do when you’re not sure about a math
-                                                                       problem or a center?”
+                                                               Activity Synthesis
+                                                                 • “What can you do when you’re not sure about a math
+                                                                   problem or a center?”
 
 
 
@@ -362,9 +362,9 @@ blank. I wonder why they only used 1 part instead of 2.)
 
 
 
-“What expression can we write for this domino? How do you know?” (            . There are 4 dots and 0 dots.)
+“What expression can we write for this domino? How do you know?” (4 + 0. There are 4 dots and 0 dots.)
 
-“Tell your partner an expression for each domino.” (      ,      ,        )
+“Tell your partner an expression for each domino.” (3 + 0, 4 + 0, 5 + 0)
 
 
 
@@ -389,7 +389,7 @@ Look Fors
 
                                     Kindergarten                                        CC BY NC 2024
                                        Unit 8
-                                                              Lesson 13
+                                                           Lesson 13
                                                                                  Illustrative Mathematics®          7
 ```
 

@@ -64,47 +64,47 @@ Lesson Timeline                                                Teacher Reflectio
                                              Unit 8
                                                              Lesson 3
                                                                                 Illustrative Mathematics®                 1
-Warm-up                                                                                                          10 min
+Warm-up                                                                                                             10 min
 
-What Do You Know about                  ?
+What Do You Know about 1/8?
 
-      Standards                                                       Instructional Routines
-Building On      3.NF.A.1, 3.NF.A.2, 3.NF.A.3                      • What Do You Know about _____?
+       Standards                                                          Instructional Routines
+Building On           3.NF.A.1, 3.NF.A.2, 3.NF.A.3                     • What Do You Know about _____?
 
 
 The purpose of this What Do You Know about _____? is to invite students to share what they know about, and how they
-can represent, the number      .
+can represent, the number 1/8.
 
 
 
-      Student Task Statement                                     Launch
-       What do you know about       ?                              • Display the number.
+       Student Task Statement                                        Launch
+       What do you know about 1/8?                                     • Display the number.
 
-                                                                   • “What do you know about      ?”
+                                                                       • “What do you know about 1/8?”
 
-Student Response                                                   • 1 minute: quiet think time
+Student Response                                                       • 1 minute: quiet think time
 
-Sample responses:                                                Activity
-  •     is 1 part when the whole is split into 8 equal parts.      • Record responses.
+Sample responses:                                                    Activity
+  •   1/8   is 1 part when the whole is split into 8 equal parts.      • Record responses.
 
-                                                                   • “How could we represent the number     ?”
-  •     is smaller than   .
+                                                                       • “How could we represent the number 1/8?”
+  •   1/8   is smaller than 1/2.
 
-  • Students may represent         on a number line or with a
-                                                                 Activity Synthesis
+  • Students may represent 1/8 on a number line or with a
+                                                                     Activity Synthesis
       diagram.
-                                                                   • “What connections do you see between different
-                                                                     answers?”
+                                                                       • “What connections do you see between different
+                                                                         answers?”
 
 
 
 
-Activity 1                                                                                                       35 min
-                                                                                                                 PLC Activity
+Activity 1                                                                                                          35 min
+                                                                                                                    PLC Activity
 Fractions Round Table
 
-      Standards
-Addressing       3.NF.A.1, 3.NF.A.2, 3.NF.A.3
+       Standards
+Addressing           3.NF.A.1, 3.NF.A.2, 3.NF.A.3
 
 
 The purpose of this activity is for students to think about and discuss statements that address their understanding of
@@ -122,10 +122,10 @@ language, such as “whole” and “equal-size piece,” precisely (MP6).
 
 
 
-                                                Grade 3                               CC BY NC 2024
-                                                 Unit 8
-                                                                Lesson 3
-                                                                               Illustrative Mathematics®                  2
+                                                    Grade 3                               CC BY NC 2024
+                                                     Unit 8
+                                                                    Lesson 3
+                                                                                   Illustrative Mathematics®                 2
 Advances: Speaking
 
 
@@ -169,7 +169,7 @@ can.                                                    • Consider asking:
                                                                      Illustrative Mathematics®                3
 Student Response
 Sample responses:
-A. Disagree, fractions can be greater than 1, like   .
+A. Disagree, fractions can be greater than 1, like 4/3.
 
 B. Agree, a fraction can be placed on the number line
    just like whole numbers. Fractions are in between
@@ -179,26 +179,26 @@ C. Disagree, the denominator tells the size of the parts
 D. Disagree, the numerator tells the number of parts in
    the fraction.
  E. Agree, all whole numbers are fractions if they are
-    written with a 1 in the bottom, like   .
+    written with a 1 in the bottom, like 3/1.
 
  F. Disagree, not all fractions are whole numbers, but
-    some are. For example,       is not a whole number, but
-       is the same as 3.
+    some are. For example, 1/2 is not a whole number, but
+    6/2   is the same as 3.
 
 G. Disagree, if the wholes are not the same I could draw
    a square that is really big and a square that is really
    small so that one-third of the big square is bigger
    than one-half of the small square.
 H. Agree, we measured things in fractions. I could say I
-    ran    of the length of the field.
+    ran 1/2 of the length of the field.
 
 
 
 
-                                               Grade 3                          CC BY NC 2024
-                                                Unit 8
-                                                              Lesson 3
-                                                                         Illustrative Mathematics®   4
+                                                Grade 3                        CC BY NC 2024
+                                                 Unit 8
+                                                             Lesson 3
+                                                                        Illustrative Mathematics®   4
 Lesson Synthesis
 “Which statement did your group have the most discussion about and why?” (We discussed the idea that one-half is
 always greater than one-third the most because some people agreed and some disagreed.)

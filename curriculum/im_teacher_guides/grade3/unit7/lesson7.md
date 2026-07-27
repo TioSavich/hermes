@@ -74,37 +74,37 @@ It prompts students to rely on their understanding of the properties of operatio
 here will be helpful as students find the perimeter of shapes with repeated side lengths later in the lesson.
 
 
-     Student Task Statement                                     Launch
-      Decide whether each statement is true or false. Be          • Display one equation.
-      prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           equation is true and can explain how you know.”
+     Student Task Statement                                              Launch
+      Decide whether each statement is true or false. Be                   • Display one equation.
+      prepared to explain your reasoning.                                  • “Give me a signal when you know whether the
+        •   123 + 75 + 123 + 75 = 100 + 100 + 70 + 70 + 5 + 5 + 3 + 3        equation is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 123 + 75 + 123 + 75 = (2 × 123) + (2 × 75)                       • 1 minute: quiet think time
 
-        •
-        •                                                       Activity
-                                                                  • Share and record answers and strategy.
-Student Response                                                  • Repeat with each equation.
+        • 123 + 75 + 123 + 75 = 208 + 208
+        • 123 + 75 + 123 + 75 = 246 + 150                                Activity
+                                                                           • Share and record answers and strategy.
+Student Response                                                           • Repeat with each equation.
 
   • False: The expression on the right side is missing 2
-    twenties.                                                   Activity Synthesis
+    twenties.                                                            Activity Synthesis
   • True: On both sides there are 2 groups of 123 and 2
-                                                                  • “How can you explain your answer without finding
+                                                                           • “How can you explain your answer without finding
     groups of 75.
-                                                                    the value of both sides?”
-  • False: I know that                 , so          is less
+                                                                             the value of both sides?”
+  • False: I know that 125 + 75 = 200, so 123 + 75 is less
     than 200.
-  • True:                 and
+  • True: 75 + 75 = 150 and 123 + 123 = 246
 
 
 
 
-Activity 1                                                                                                    15 min
+Activity 1                                                                                                            15 min
 
 All Kinds of Figures
 
      Standards
-Addressing     3.MD.D.8
+Addressing       3.MD.D.8
 
 
 The purpose of this activity is for students to understand that many different shapes can have the same perimeter.
@@ -123,10 +123,10 @@ addition strategies elicited in the Warm-up (MP7).
       Action and Expression: Develop Expression and Communication. Synthesis: Identify connections between
 
 
-                                              Grade 3                                CC BY NC 2024
-                                               Unit 7
-                                                               Lesson 7
-                                                                              Illustrative Mathematics®                2
+                                                   Grade 3                                    CC BY NC 2024
+                                                    Unit 7
+                                                                        Lesson 7
+                                                                                       Illustrative Mathematics®               2
       strategies that result in the same outcomes but use differing approaches.
       Supports accessibility for: Memory, Visual-Spatial Processing
 
@@ -151,11 +151,11 @@ addition strategies elicited in the Warm-up (MP7).
 Student Response
                                                                  • 5 minutes: partner work time
  1. Sample responses:                                            • 2–3 minutes: independent work time
-     ◦ Shape E:                 then                             • Monitor for students who use sides of the same
+     ◦ Shape E: 7 + 7 = 14 then 14 + 2 = 16                      • Monitor for students who use sides of the same
      ◦ Shape F: There are 2 sides that are 3 units, 2              length or symmetry of the shape to find the
        sides that are 1 unit, 3 sides that are 2 units, and        perimeter in efficient ways.
        1 side that is 8 units.
-                                        is               ,
+       (2 × 3) + (2 × 1) + (3 × 2) + 8 is 6 + 2 + 6 + 8,
                                                                Activity Synthesis
        which is 22.
  2. Shapes and their perimeter:                                  • Invite students to share a variety of methods for

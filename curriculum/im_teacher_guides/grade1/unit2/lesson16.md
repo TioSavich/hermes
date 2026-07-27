@@ -71,7 +71,7 @@ Lesson Timeline                                                Teacher Reflectio
 Number Talk: Subtraction
 
      Standards                                                       Instructional Routines
-Addressing      1.OA.C.6                                          • Number Talk
+Addressing       1.OA.C.6                                         • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for subtracting within 10.
@@ -82,12 +82,12 @@ subtract numbers within 10.
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 9- 7                                                    • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 9- 2
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 8 - 6
+        • 8 - 2
                                                                Activity
 
 Student Response                                                  • Record answers and strategy.
@@ -98,7 +98,7 @@ Student Response                                                  • Record ans
     minus 2. 9…8, 7.
   • 2: I counted on from 6. 6…7, 8.                            Activity Synthesis
   • 6: I know it is 6 because in the last problem it was          • “How can the first equation help you with the second
-              , and this one is the opposite.                       equation?” (If I know that 9 – 7 is 2, then I know that 9
+    8 - 6 = 2, and this one is the opposite.                        equation?” (If I know that 9 – 7 is 2, then I know that 9
                                                                     – 2 is 7.)
                                                                   • “How can the third equation help you with the fourth
                                                                     equation?” (If I know that 8 – 6 is 2, then I know that 8
@@ -114,7 +114,7 @@ Activity 1                                                                      
 Introduce Capture Squares—Subtract within 10
 
      Standards
-Addressing      1.OA.C.6
+Addressing       1.OA.C.6
 
 
 The purpose of this activity is for students to learn Stage 2 of the Capture Squares center. In this stage, students choose

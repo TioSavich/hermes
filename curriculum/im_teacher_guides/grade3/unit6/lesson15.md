@@ -96,12 +96,12 @@ familiar with, they look for and make use of structure (MP7).
       Student Task Statement                                   Launch
       Find the value of each expression mentally.                • Display the first expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 80 ÷ 8                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 72 ÷ 8
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 96 ÷ 8
+        • 96 ÷ 4
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
@@ -111,7 +111,7 @@ Student Response                                                 • Record answ
   • 9: 72 is 8 less than 80, so it’s 1 less group of 8.
   • 12: 96 is 16 more than 80, which is 2 more groups of
     8.                                                         Activity Synthesis
-  • 24: Since there are 12 groups of 8 in 96, I know there       • “How did knowing          help you find the other
+  • 24: Since there are 12 groups of 8 in 96, I know there       • “How did knowing 80 ÷ 8 help you find the other
     are twice as many groups of 4 in 96.                           values?”
                                                                  • Consider asking:
                                                                     ◦ “Who can restate _____’s reasoning in a different
@@ -126,7 +126,7 @@ Student Response                                                 • Record answ
                                              Grade 3                                 CC BY NC 2024
                                               Unit 6
                                                              Lesson 15
-                                                                              Illustrative Mathematics®                2
+                                                                              Illustrative Mathematics®               2
                                                                       ◦ “Does anyone want to add on to _____’s strategy?”
 
 

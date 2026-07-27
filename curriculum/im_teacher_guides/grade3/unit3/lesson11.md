@@ -81,12 +81,12 @@ students use strategies flexibly to subtract within 1,000.
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 400- 200                                                • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 450- 200
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 450- 205
+        • 450- 215
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
@@ -95,17 +95,17 @@ Student Response                                                  • Record ans
     hundreds is 2 hundreds.                                       • Repeat with each expression.
 
   • 250: This problem is just like the first one, but there
-    are 5 tens left over. So             is 200, plus 50 is     Activity Synthesis
+    are 5 tens left over. So 400- 200 is 200, plus 50 is        Activity Synthesis
     250.
                                                                   • “How did place value help as you subtracted these
   • 245: I subtracted the 2 hundreds first, and
                                                                     numbers?” (I subtracted hundreds from hundreds,
-                      . Then I subtracted the ones, and
+    450- 200 = 250 . Then I subtracted the ones, and
                                                                     tens from tens, and ones from ones. I was able to
-             is 245.
+    250- 5 is 245.
                                                                     think about each place-value position separately,
   • 235: This is just like the third problem, but I had to          which helped me find the difference.)
-    subtract 10 more, and                     .
+    subtract 10 more, and 245 - 10 = 135.
                                                                   • Consider asking:
                                                                      ◦ “Who can restate _____'s reasoning in a different
                                                                        way?”
@@ -165,7 +165,7 @@ them, how they are the same, and how they are different (MP3, MP6).
                                                                 Activity
        2. Use each algorithm to find the value of
                                                                   • “Discuss how the steps are different in each
-                    .
+          824- 541 .
                                                                     algorithm with your partner.”
                                                                   • 2 minutes: partner discussion
 Student Response
@@ -187,7 +187,7 @@ Student Response
 
                                                              Activity Synthesis
                                                                • Select students to share how they used each
-                                                                 algorithm to find the value of         .
+                                                                 algorithm to find the value of 824- 541 .
                                                                • Keep algorithms from the first problem displayed.
                                                                • “Even though the algorithms may look the same after
                                                                  a few steps, they started out differently. Think about
@@ -227,7 +227,7 @@ When students make sense of Elena’s reasoning, they construct viable arguments
 
 
      Student Task Statement                                  Launch
-     Noah wanted to find the value of             and          • Groups of 2
+     Noah wanted to find the value of 301 - 167 and            • Groups of 2
      wrote:                                                    • “Take a minute and look over Noah’s work and what
                                                                  Elena says about it.”
                                                                • 1 minute: quiet think time

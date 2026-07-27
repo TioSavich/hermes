@@ -336,7 +336,7 @@ Student Response
      d. Sample responses:
          ▪ The angles look the same size. One clock
            hand has to turn two and a half numbers
-            over (or    hours or 12 minutes) to meet
+            over (or 21/2 hours or 12 minutes) to meet
             the other hand.
          ▪ The 8:58 angle is greater. The minute hand
            has to turn almost all the way around to

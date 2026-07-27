@@ -241,7 +241,7 @@ Sample response:                                              • Groups of 2
                                                                  • Display the number card 6.
                                                                  • “This is my gameboard. I just picked the number 6.
                                                                    Should I add 1 or 2 to the number 6? Why?” (You
-                                                                   should add 2 because         is 8, and then you could
+                                                                   should add 2 because 6 + 2 is 8, and then you could
                                                                    cover the last number in the column and have 5 in a
                                                                    row to win.)
 

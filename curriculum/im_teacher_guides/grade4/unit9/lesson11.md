@@ -312,9 +312,9 @@ Sample response:                                               • As each group
 
 
   • A, B, and C go together because:
-     ◦ They have         .
+     ◦ They have 4 + 3.
   • A, B, and D go together because:
-     ◦ They have         .
+     ◦ They have 2- 1 .
   • A, C, and D go together because:
      ◦ They have a multiplication symbol.
   • B, C, and D go together because:

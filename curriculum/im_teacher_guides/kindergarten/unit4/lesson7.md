@@ -113,7 +113,7 @@ Students may notice:                                           • Share and rec
 
 Students may wonder:                                           • “We can use counters to show what is happening in a
   • How many balls are there?                                    picture or story. There are 3 basketballs and 2 soccer
-                                                                 balls. We can write that as ‘3 and 2’ or ‘   ’.”
+                                                                 balls. We can write that as ‘3 and 2’ or ‘3 + 2’.”
   • Are there any baseballs?
                                                                • “Soccer balls and basketballs are things that some
   • What do the counters mean?
@@ -229,7 +229,7 @@ counters and show students expressions that represent these actions (MP2).
       Access for English Language Learners
       MLR8 Discussion Supports. Synthesis: Provide all students with an opportunity to produce these words and
       numbers by inviting students to chorally repeat the expression in unison 1-2 times. For example: “7 take away 3”
-      and “     .”
+      and “7- 3 .”
       Advances: Listening, Speaking
 
 
@@ -305,7 +305,7 @@ Materials to Gather
                                                                     story and demonstrate what happens with their
                                                                     counters. Record the action with words and numbers
                                                                     and an expression. For example: “7 take away 3” and
-                                                                    “     .”
+                                                                    “7- 3 .”
 Student Response                                                  • As each student shares, ask: “What do the counters
                                                                     represent?”
 Students move their counters to represent what happens
@@ -417,7 +417,7 @@ Required Preparation
                                                                    subtraction.
                                                                  • As each student shares, record the action with words
                                                                    and numbers and an expression. For example:
-                                                                   “5 take away 2” and “     .”
+                                                                   “5 take away 2” and “5 - 2.”
 
 
 

@@ -228,8 +228,8 @@ Student Response                                                     Bermuda.
 1.
 2. Yes (though there won’t be much left for other
    expenses). Sample response: Rent in Bermuda costs
-            or $3,276. Utilities cost       or $130. The
-   combined cost is                or $3,406, which is less
+   18 × 182 or $3,276. Utilities cost 2 × 65 or $130. The
+   combined cost is 3,276 + 130 or $3,406, which is less
 
 
 
@@ -238,7 +238,7 @@ Student Response                                                     Bermuda.
                                                                 Lesson 7
                                                                                 Illustrative Mathematics®              4
     than $3,500. By estimation, the sum of rent and
-    utilities is           or $3,450.
+    utilities is 3,300 + 150 or $3,450.
 
 
 
@@ -257,9 +257,9 @@ addition to using multiplicative comparison to find a greater or lesser unknown 
 multiplier.
 
 Students also work with greater numbers. Some questions (about the costs of utilities, for instance) could be answered
-by dividing one multi-digit number by another (for instance,          ), but students are not expected to do this in grade
+by dividing one multi-digit number by another (for instance, 191 ÷ 47), but students are not expected to do this in grade
 4. Instead, they may reason in terms of multiplication and by using estimation. For example, they may reason that
-        is 188 or that       is 200, so the unknown multiplier must be close to 4. Encourage students to use the Three
+47 × 4 is 188 or that 50 × 4 is 200, so the unknown multiplier must be close to 4. Encourage students to use the Three
 Reads routine, as needed, to solve problems.
 
 
@@ -367,8 +367,8 @@ Addressing      4.NBT.B.5, 4.NBT.B.6, 4.OA.A.2,
 Student Response
  1. Sample response: A meal at a restaurant in the United States costs about 2 times (or twice) as much as a meal in
     Ghana.
- 2. 3 more times. Sample response: In the United States:                 , which is less than 350. They could eat at a
-    restaurant 4 times. There will be $50 extra. In Ghana:               . They could eat out 9 times and have $17 left.
+ 2. 3 more times. Sample response: In the United States: 4 × 75 = 300, which is less than 350. They could eat at a
+    restaurant 4 times. There will be $50 extra. In Ghana: 9 × 37 = 333. They could eat out 9 times and have $17 left.
 
 
 Responding to Student Thinking
@@ -383,6 +383,6 @@ visit a restaurant.
                                             Grade 4                                    CC BY NC 2024
                                              Unit 9
                                                               Lesson 7
-                                                                                Illustrative Mathematics®             7
+                                                                                Illustrative Mathematics®           7
 ```
 

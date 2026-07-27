@@ -68,12 +68,12 @@ Lesson Timeline                                                 Teacher Reflecti
                                               Unit 5
                                                               Lesson 7
                                                                                 Illustrative Mathematics®               1
-Warm-up                                                                                                      10 min
+Warm-up                                                                                                     10 min
 
 True or False: Compare to 100
 
-     Standards                                                       Instructional Routines
-Addressing           2.NBT.A.1.a, 2.NBT.B.5                       • True or False?
+     Standards                                                     Instructional Routines
+Addressing           2.NBT.A.1.a, 2.NBT.B.5                     • True or False?
 Building Toward      2.NBT.A.4
 
 
@@ -83,33 +83,33 @@ reasoning about the position of 100 on the number line. These ideas will also be
 place numbers within 1,000 on the number line and compare three-digit numbers based on place value.
 
 
-     Student Task Statement                                     Launch
-      Decide if each statement is true or false. Be               • Display one statement in the student book.
-      prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+     Student Task Statement                                   Launch
+      Decide if each statement is true or false. Be             • Display one statement in the student book.
+      prepared to explain your reasoning.                       • “Give me a signal when you know whether the
+        • 100 > 99                                                statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 100 < 99 + 1                                          • 1 minute: quiet think time
 
-        •
-        •                                                       Activity
-                                                                  • Share and record answers and strategy.
-Student Response                                                  • Repeat with each statement.
+        • 98 + 3 > 100
+        • 50 + 50 + 50 > 100                                  Activity
+                                                                • Share and record answers and strategy.
+Student Response                                                • Repeat with each statement.
 
   • True: When you count, 100 comes after 99, 100 has 3
-    digits, 100 is 10 tens and 99 is 9 tens and 9 ones.         Activity Synthesis
+    digits, 100 is 10 tens and 99 is 9 tens and 9 ones.       Activity Synthesis
   • False: 100 comes after 99, so one more than 99 is
-                                                                  • “How did you know that               was false?” (99
+                                                                • “How did you know that 100 < 99 + 1 was false?” (99
     100.
-                                                                    plus 1 more is 100. When we count, 100 is the next
-  • True: 98 is 2 away from 100, so if you add 3 it has to          number. They are equal.)
+                                                                  plus 1 more is 100. When we count, 100 is the next
+  • True: 98 is 2 away from 100, so if you add 3 it has to        number. They are equal.)
     be more than 100.
-  • True: I know                 , so it has to be more with
+  • True: I know 50 + 50 = 100, so it has to be more with
     another 50.
 
 
 
 
-Activity 1                                                                                                   15 min
+Activity 1                                                                                                  15 min
 
 Introduce Mystery Number—3-Digit Numbers
 
@@ -123,10 +123,10 @@ their number. Students should remove cards that show 10 from their deck. When th
 
 
 
-                                              Grade 2                                CC BY NC 2024
+                                              Grade 2                               CC BY NC 2024
                                                Unit 5
-                                                               Lesson 7
-                                                                              Illustrative Mathematics®               2
+                                                             Lesson 7
+                                                                             Illustrative Mathematics®               2
 students demonstrate understanding of the base-ten system, both the meaning of each digit in a number and the order
 of the numbers (MP7).
 

@@ -75,7 +75,7 @@ Lesson Timeline                                               Teacher Reflection
 
 
 
-Warm-up                                                                                                          10 min
+Warm-up                                                                                                         10 min
 
 Number Talk: More Groups, Fewer Groups
 
@@ -95,12 +95,12 @@ object in each group, they look for and make use of structure (MP7).
       Student Task Statement                                       Launch
       Find the value of each expression mentally.                    • Display one expression.
 
-        •                                                            • “Give me a signal when you have an answer and can
+        • 5 × 7                                                      • “Give me a signal when you have an answer and can
                                                                        explain how you got it.”
-        •
+        • 4 × 7
                                                                      • 1 minute: quiet think time
-        •
-        •
+        • 6 × 7
+        • 4 × 8
                                                                    Activity
 
 Student Response                                                     • Record answers and strategies.
@@ -111,10 +111,10 @@ Student Response                                                     • Record 
   • 28: There would be 4 groups of 7 instead of 5. So 35
     minus 7 would be 28.                                           Activity Synthesis
   • 42: There would be 1 more group of 7 than in the
-                                                                     • “How does knowing          help you find some of the
+                                                                     • “How does knowing 5 × 7 help you find some of the
     first problem. So, 35 plus 7 would be 42.
                                                                        other products?” (I can remove a group of 7 to find
-  • 32: There would be 1 less group of 8 than             . So               or add a group of 7 to find      .)
+  • 32: There would be 1 less group of 8 than 5 × 8. So                4 × 7 or add a group of 7 to find 6 × 7.)
     40 minus 8 would be 32.
                                                                      • Consider asking:
                                                                         ◦ “Who can restate _____’s reasoning in a different
@@ -127,10 +127,10 @@ Student Response                                                     • Record 
 
 
 
-                                              Grade 3                                    CC BY NC 2024
+                                              Grade 3                                   CC BY NC 2024
                                                Unit 3
                                                                  Lesson 16
-                                                                                  Illustrative Mathematics®               2
+                                                                                 Illustrative Mathematics®               2
 Activity 1                                                                                                     15 min
 
 All the Numbers

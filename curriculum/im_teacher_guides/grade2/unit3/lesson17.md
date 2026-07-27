@@ -85,12 +85,12 @@ subtraction within 100.
       Student Task Statement                                     Launch
       Find the value of each expression mentally.                  • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
+        • 60- 10                                                   • “Give me a signal when you have an answer and can
                                                                      explain how you got it.”
-        •
+        • 60- 11
                                                                    • 1 minute: quiet think time
-        •
-        •
+        • 60- 21
+        • 70- 32
                                                                  Activity
 
 Student Response                                                   • Record answers and strategy.

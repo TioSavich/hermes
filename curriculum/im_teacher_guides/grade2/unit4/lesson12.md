@@ -73,15 +73,15 @@ Materials to Copy
 
 Lesson Timeline                                                 Teacher Reflection Questions
                                                                 Reflect on how students work together during partner
- Warm-up                                           10 min
+ Warm-up                                        10 min
                                                                 work. How are students supporting one another when
- Activity 1                                        20 min       reasoning together and sharing mathematical ideas?
+ Activity 1                                     20 min          reasoning together and sharing mathematical ideas?
 
- Activity 2                                        15 min
+ Activity 2                                     15 min
 
- Synthesis Estimate                                10 min
+ Synthesis Estimate                             10 min
 
- Cool-down                                         5 min
+ Cool-down                                      5 min
 
 
 
@@ -89,8 +89,8 @@ Warm-up                                                                         
 
 True or False: Making Tens
 
-         Standards                                                    Instructional Routines
-Addressing        2.NBT.B.5                                       • True or False?
+      Standards                                                       Instructional Routines
+Addressing      2.NBT.B.5                                         • True or False?
 
 
 The purpose of this True or False? is to elicit strategies and understandings students have for making it easier to find the
@@ -98,33 +98,33 @@ value of expressions by making a ten. These understandings help students deepen 
 properties of operations and will be helpful later when students need to fluently add within 100.
 
 
-         Student Task Statement                                 Launch
-         Decide if each statement is true or false. Be            • Display one statement.
-         prepared to explain your reasoning.                      • “Give me a signal when you know whether the
-           •                                                        statement is true and can explain how you know.”
+      Student Task Statement                                    Launch
+      Decide if each statement is true or false. Be               • Display one statement.
+      prepared to explain your reasoning.                         • “Give me a signal when you know whether the
+        • 40 = 10 + 27 + 3                                          statement is true and can explain how you know.”
                                                                   • 1 minute: quiet think time
-           •
+        • 47 = 20 + 7 + 3 + 10
 
-           •
+        • 60 = 3 + 47 + 10
                                                                 Activity
 
 Student Response                                                  • Share and record answers and strategies.
                                                                   • Repeat with each statement.
-True: I knew                , and 10 more is 40.
+True: I knew 3 + 27 = 30, and 10 more is 40.
 
-False:              , so there isn’t an extra 7.
-                      .
+False: 7 + 3 = 10, so there isn’t an extra 7.
+20 + 10 + 10 = 40.
                                                                 Activity Synthesis
 
-True:                , and 10 more is 60.                         • “How could we change the second equation to make
+True: 47 + 3 = 50, and 10 more is 60.                             • “How could we change the second equation to make
                                                                     it true?” (We could change the 10 to 17 or the 20 to
                                                                     27 because we need 7 more.)
 
 
 
 
-                                               Grade 2                                CC BY NC 2024
-                                                Unit 4
+                                            Grade 2                                   CC BY NC 2024
+                                             Unit 4
                                                             Lesson 12
                                                                                Illustrative Mathematics®                 2
 Activity 1                                                                                                     20 min
@@ -180,7 +180,7 @@ Materials to Copy
                                                                    jump ended at 42. Where did I start?”
            Mystery number: _______________________
                                                                  • “What equation could I write with a ? for the
-       3. I started at 42 and ended at 80. How far did I           unknown?” (             )
+       3. I started at 42 and ended at 80. How far did I           unknown?” (? - 10 = 42)
           jump?                                                  • “How could I find the value of the mystery number?”
            Equation: _______________________________               (Do the opposite. Start at 42 and move 10 to the
 
@@ -219,12 +219,12 @@ Student Response
 Students complete the number lines to represent the
 following equations.
 
- 1. Equation:              Mystery number: 32
- 2. Equation:              Mystery number: 53
- 3. Equation:              Mystery number: 38
- 4. Equation:              Mystery number: 49
- 5. Equation:              Mystery number: 48
- 6. Equation:              Mystery number: 59
+ 1. Equation: 15 + 17 = ? Mystery number: 32
+ 2. Equation: ? - 20 = 33 Mystery number: 53
+ 3. Equation: 42 + ? = 80 Mystery number: 38
+ 4. Equation: 76- 27 = ? Mystery number: 49
+ 5. Equation: ? + 19 = 67 Mystery number: 48
+ 6. Equation: 92- ? = 33 Mystery number: 59
 
 
 
@@ -241,7 +241,7 @@ Activity 2                                                                      
 Make the Equations True
 
      Standards
-Addressing      2.MD.B.6, 2.NBT.B.5
+Addressing     2.MD.B.6, 2.NBT.B.5
 
 
                                           Grade 2                                   CC BY NC 2024
@@ -272,16 +272,16 @@ Materials to Copy
 
      Show your thinking using a number line.                  • Give each student a copy of the blackline master.
 
-      1.
+      1. ? - 48 = 19
                                                             Activity
-      2.
+      2. 86- ? = 39
                                                               • “Find the number that makes each equation true in a
-      3.
+      3. ? + 57 = 72
                                                                 way that makes sense to you.”
-      4.
+      4. 73 + ? = 91
                                                               • “Represent your thinking on the number line.”
                                                               • Monitor for a student who finds the value for
-Student Response                                                            by:
+Student Response                                                ? + 57 = 72 by:
 
  1. 67. Sample response:                                          ◦ Starting at 57, drawing a jump to 72, and
                                                                     counting each length unit in between.
@@ -294,7 +294,7 @@ Student Response                                                            by:
 
      ◦                                                      Activity Synthesis
                                                               • Invite previously selected students to share how they
-                                                                found the number that makes                 true.
+                                                                found the number that makes ? + 57 = 72 true.
      ◦
                                                               • Consider asking:
  3. 15. Sample responses:
@@ -330,7 +330,7 @@ Lesson Synthesis
 addition and subtraction. You used equations with a symbol for the unknown and found the number that made them
 true.”
 
-Display              and              .
+Display ? + 14 = 24 and ? - 14 = 24.
 
 “How could I find the number that makes each of these equations true?” (For the addition equation, start at 24 and go to
 the left 14 on the number line. For the subtraction equation, start at 24 and go to the right 14.)
@@ -370,7 +370,7 @@ Addressing      2.MD.B.6, 2.NBT.B.5
                                                            Lesson 12
                                                                               Illustrative Mathematics®               6
 Student Response
- 1.   a.
+ 1.   a. 59 + ? = 68
       b. 9
       c.
 
@@ -378,16 +378,16 @@ Addressing      2.MD.B.6, 2.NBT.B.5
 
 
 Responding to Student Thinking
-Students write something other than        .      Next Day Supports
-                                                  Launch the first activity by highlighting important notation
-                                                  from previous lessons.
+Students write something other than 59 + ? = 68.     Next Day Supports
+                                                     Launch the first activity by highlighting important notation
+                                                     from previous lessons.
 
 
 
 
-                                      Grade 2                           CC BY NC 2024
-                                       Unit 4
-                                                Lesson 12
-                                                                 Illustrative Mathematics®               7
+                                       Grade 2                             CC BY NC 2024
+                                        Unit 4
+                                                   Lesson 12
+                                                                    Illustrative Mathematics®               7
 ```
 

@@ -85,20 +85,20 @@ in the lesson when students need to be able to add decimals.
      Student Task Statement                                    Launch
       Decide if each statement is true or false. Be              • Display one equation.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
-        •                                                          equation is true and can explain how you know.”
+        • 0.99 + 0.1 = 0.9 + 0.1 + 0.09                            equation is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 0.99 + 0.01 = 0.9 + 0.1                                • 1 minute: quiet think time
 
-        •
+        • 0.99 + 0.1 = 1.99
                                                                Activity
 Student Response                                                 • Share and record answers and strategies.
 
   • True                                                         • Repeat with each equation.
-    :
-  • True:                                                      Activity Synthesis
+    : 0.99 + 0.1 = 0.9 + (0.09 + 0.1) = 0.9 + (0.1 + 0.09)
+  • True: 0.99 + 0.01 = 0.9 + (0.09 + 0.01) = 0.9 + 0.1        Activity Synthesis
   • False
                                                                  • Display the first and third equations.
-    :
+    : (0.9 + 0.09) + 0.1 = (0.9 + 0.1) + 0.09 = 1 + 0.09
                                                                  • “How can you justify your answer without evaluating
                                                                    both sides?” (For the first problem, I noticed that
                                                                    there are 9 tenths on the right and left and also 10
@@ -126,7 +126,7 @@ Consider playing a round of the game with students during the Launch to demonstr
 
                                            Grade 5                                   CC BY NC 2024
                                             Unit 8
-                                                           Lesson 12
+                                                             Lesson 12
                                                                               Illustrative Mathematics®                 2
      Access for Students with Disabilities
      Action and Expression: Internalize Executive Functions. Check for understanding by inviting students to rephrase

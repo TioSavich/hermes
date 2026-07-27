@@ -128,11 +128,11 @@ Sample responses:                                              • 2–3 minutes
                                             Unit 5
                                                            Lesson 9
                                                                             Illustrative Mathematics®                  2
-Activity 1                                                                                                      15 min
+Activity 1                                                                                                         15 min
 
 A Whole Lot of Paper Clips
 
-     Standards
+      Standards
 Addressing      4.MD.A.1
 
 
@@ -151,7 +151,7 @@ assuming that it is measured at sea level on Earth.
 If students wonder about the meaning of “mass,” consider explaining that it measures how much matter is in an object
 and is usually measured in grams or kilograms. Clarify that these concepts will be studied in a future science course.
 
-As in earlier lessons, when an amount given in kilograms is a fraction (   or   ), students are not expected to find its
+As in earlier lessons, when an amount given in kilograms is a fraction (1/2 or 1/10), students are not expected to find its
 equivalent in grams by multiplying the fraction by 1,000. Instead they are to reason about the conversion, based on
 what they know about fractions and the number 1,000.
 
@@ -180,10 +180,10 @@ Required Preparation
 
 
 
-                                            Grade 4                                    CC BY NC 2024
-                                             Unit 5
-                                                             Lesson 9
-                                                                                Illustrative Mathematics®                  3
+                                              Grade 4                                    CC BY NC 2024
+                                               Unit 5
+                                                               Lesson 9
+                                                                                  Illustrative Mathematics®                   3
      Student Task Statement                                 Launch
      One paper clip weighs 1 gram.                            • Groups of 2
                                                               • Survey the class on their familiarity with the units
@@ -191,7 +191,7 @@ Required Preparation
       1. How many grams are the paper clips in each
          image?                                               • “For those who are familiar with them, where might
                                                                 you have heard, seen, or used these units?”
-         a.               b.             c.
+         a.                  b.             c.
                                                               • If possible, give students access to paper clips for
                                                                 reference.
                                                               • Explain that while pounds and ounces are more
@@ -209,16 +209,16 @@ Required Preparation
          amounts in grams.                                       ◦ Describe the relationship between kilograms and
                                                                    grams.
 
-               kilograms (kg)            grams (g)               ◦ Reason about fractional amounts in kilograms,
+               kilograms (kg)               grams (g)            ◦ Reason about fractional amounts in kilograms,
                                                                    and express them in grams.
-                      2
+                         2
                                                                  ◦ Compare quantities given in different units.
-                      7
+                         7
                                                             Activity Synthesis
-                      15
+                         15
                                                               • “Which unit is heavier, a kilogram or a gram?”
-                                                                (kilogram)
-                                                              • “Do you think your book bag is lighter than or heavier
+                         1/2                                    (kilogram)
+                        91/2                                  • “Do you think your book bag is lighter than or heavier
                                                                 than 1 kilogram?” (Heavier, because I have a lot of
                                                                 books in it. Lighter, because it’s empty.)
       4. Which weighs more?
@@ -230,7 +230,7 @@ Required Preparation
           c. 500 grams or 2 boxes of 250 paper clips
              each
 
-          d.      kilogram or 500 paper clips
+          d.   1/2   kilogram or 500 paper clips
 
 
 
@@ -241,8 +241,8 @@ Student Response
 
 
 
-                                              Grade 4                             CC BY NC 2024
-                                               Unit 5
+                                                 Grade 4                          CC BY NC 2024
+                                                  Unit 5
                                                            Lesson 9
                                                                            Illustrative Mathematics®               4
  2. Sample responses:
@@ -259,9 +259,9 @@ Student Response
 
                          15           15,000
 
-                                        500
+                         1/2            500
 
-                                       9,500
+                         91/2          9,500
 
 
  4.   a. 8 kilograms
@@ -323,7 +323,7 @@ Required Preparation
                100-milliliter glass to get 1 liter of liquid?
                                                                       liquid is filled to the 20-milliliter line.” (5 times,
                (Assume that each time the liquid is filled
-                                                                      because                   , or show the video
+                                                                      because 5 × 20 = 100, or show the video
                to the 100-milliliter line.)
                                                                       at: vimeo.com/450153736.)
             b. Write a sentence to describe the
@@ -374,8 +374,8 @@ Student Response                                                      20 millili
             milliliter.
                                                                      • If no students use equations to show their reasoning
  2.   a. 1,000 times                                                   for the second set of problems, consider writing
-      b. 4 times                                                       them:                    ,                , and
-                                                                                        .
+      b. 4 times                                                       them: 1,000 × 1 = 1,000, 4 × 250 = 1,000, and
+                                                                       50 × 20 = 1,000.
       c. 50 times
                                                                      • Display and complete the table as students discuss
                                                                        their responses and their reasoning for the last
@@ -389,7 +389,7 @@ Student Response                                                      20 millili
 
                        16            16,000
 
-                                       500
+                       1/2             500
 
                        20            20,000
 

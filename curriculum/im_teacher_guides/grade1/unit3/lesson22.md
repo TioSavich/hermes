@@ -65,24 +65,24 @@ Materials to Gather
                                                 Unit 3
                                                            Lesson 22
                                                                              Illustrative Mathematics®            1
-Lesson Timeline                                             Teacher Reflection Questions
-                                                            As you move into a section that focuses on different
+Lesson Timeline                                               Teacher Reflection Questions
+                                                              As you move into a section that focuses on different
  Warm-up                                     10 min
-                                                            subtraction methods, how can you continue to develop
- Activity 1                                  20 min         students' understanding of the relationship between
-                                                            addition and subtraction and encourage students to work
+                                                              subtraction methods, how can you continue to develop
+ Activity 1                                  20 min           students' understanding of the relationship between
+                                                              addition and subtraction and encourage students to work
  Activity 2                                  20 min
-                                                            flexibly with both operations?
+                                                              flexibly with both operations?
  Synthesis Estimate                          10 min
 
 
 
-Warm-up                                                                                                       10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: Subtract from a Teen Number
 
-      Standards                                                   Instructional Routines
-Addressing       1.OA.C.6                                      • Number Talk
+      Standards                                                    Instructional Routines
+Addressing     1.OA.C.6                                         • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for finding the difference of
@@ -90,40 +90,40 @@ two numbers. These understandings develop fluency and will be helpful later in t
 teen numbers.
 
 
-      Student Task Statement                                Launch
-      Find the value of each expression mentally.              • Display one expression.
+      Student Task Statement                                  Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-        •                                                      • “Give me a signal when you have an answer and can
-                                                                 explain how you got it.”
-        •
-                                                               • 1 minute: quiet think time
-        •
-        •
-                                                            Activity
+        • 14- 4                                                 • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 14- 5
+                                                                • 1 minute: quiet think time
+        • 17- 7
+        • 17- 9
+                                                              Activity
 
-Student Response                                               • Record answers and strategies.
-                                                               • Keep expressions and work displayed.
-  • 10: I know              .
-                                                               • Repeat with each expression.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
+  • 10: I know 14- 4 = 10 .
+                                                                • Repeat with each expression.
   • 9: I am subtracting 1 more than in the first
     expression. So, the answer is 1 less than 10.
-  • 10: 17 is 10 and 7. When you subtract the 7, you’re     Activity Synthesis
+  • 10: 17 is 10 and 7. When you subtract the 7, you’re       Activity Synthesis
     left with the 10.
-                                                               • “How can you use                   to find the difference
-  • 8: The last problem was      , this one is       .I          in      ?” (I know           is 10, so if I subtract 1
-    am subtracting 2 more, so my answer is 2 less than           more, the answer is 9.)
+                                                                • “How can you use 14- 4 = 10 to find the difference
+  • 8: The last problem was 17- 7 , this one is 17- 9 . I         in 14- 5 ?” (I know 14- 4 is 10, so if I subtract 1
+    am subtracting 2 more, so my answer is 2 less than            more, the answer is 9.)
     10.
-                                                               • “How can you use                  to find the difference
-                                                                 in      ?” (        is 10, so I am subtracting 2 more
-                                                                 in      . So, I can take 2 from 10 to get the answer.)
+                                                                • “How can you use 17- 7 = 10 to find the difference
+                                                                  in 17- 9 ?” (17- 7 is 10, so I am subtracting 2 more
+                                                                  in 17- 9 . So, I can take 2 from 10 to get the answer.)
 
 
 
 
-                                          Grade 1                                  CC BY NC 2024
+                                          Grade 1                                   CC BY NC 2024
                                            Unit 3
-                                                          Lesson 22
-                                                                            Illustrative Mathematics®                  2
+                                                            Lesson 22
+                                                                             Illustrative Mathematics®                2
 Activity 1                                                                                                  20 min
 
 Subtraction Methods
@@ -240,43 +240,43 @@ Required Preparation
                                            Unit 3
                                                              Lesson 22
                                                                               Illustrative Mathematics®              4
-      Student Task Statement                                     Launch
-        1. Choose a teen number card.                              • Groups of 2
-        2. Choose a number card 0–9 to subtract.                   • Give each group a set of number cards 0–9, a set of
-                                                                     number cards 11–19, and access to double
+      Student Task Statement                                  Launch
+        1. Choose a teen number card.                           • Groups of 2
+        2. Choose a number card 0–9 to subtract.                • Give each group a set of number cards 0–9, a set of
+                                                                  number cards 11–19, and access to double
         3. Find the difference.
-                                                                     10-frames and connecting cubes or two-color
-        4. Write an equation.                                        counters.
-       My equations:                                               • “We’re going to play a game to practice subtracting.
-       Pick your favorite equation.                                  To play this game you pick a teen number card. Then
-       Show how you found the value of the difference.               you pick a number card 0–9 and subtract that
-       Use drawings, numbers, or words.                              number from your teen number. Write an equation
-                                                                     to show the difference.”
-                                                                   • “At the end of the game, you are going to pick one
+                                                                  10-frames and connecting cubes or two-color
+        4. Write an equation.                                     counters.
+       My equations:                                            • “We’re going to play a game to practice subtracting.
+       Pick your favorite equation.                               To play this game you pick a teen number card. Then
+       Show how you found the value of the difference.            you pick a number card 0–9 and subtract that
+       Use drawings, numbers, or words.                           number from your teen number. Write an equation
+                                                                  to show the difference.”
+                                                                • “At the end of the game, you are going to pick one
 Student Response
-                                                                     turn and show how you found the difference.”
+                                                                  turn and show how you found the difference.”
 Sample responses:
 
-  •                . I showed 13 on my 10-frames. I took         Activity
+  •                . I showed 13 on my 10-frames. I took      Activity
       away 5 counters and saw I had 8 counters left.
-                                                                   • 10 minutes: partner work time
-  •                . I put 6 counters on my 10-frames. I saw       • Monitor for students who:
+                                                                • 10 minutes: partner work time
+  • 6 + 8 = 14 . I put 6 counters on my 10-frames. I saw        • Monitor for students who:
       that I needed 4 more to get to 10. I know I need to
-                                                                      ◦ Take away.
+                                                                   ◦ Take away.
       add 4 more to 10 to get to 14. So I added 4 and 4
-      more which is 8.                                                ◦ Count on.
-                                                                      ◦ Take away to get to 10, then take away some
-                                                                        more.
-                                                                   • “On your own, pick your favorite round. Show how
-                                                                     you found the value of the difference using drawings,
-                                                                     numbers, or words.”
-                                                                   • 3 minutes: independent work time
+      more which is 8.                                             ◦ Count on.
+                                                                   ◦ Take away to get to 10, then take away some
+                                                                     more.
+                                                                • “On your own, pick your favorite round. Show how
+                                                                  you found the value of the difference using drawings,
+                                                                  numbers, or words.”
+                                                                • 3 minutes: independent work time
 
 
-                                                                 Activity Synthesis
-                                                                   • Invite previously identified students to share.
-                                                                   • “What method did you see today that you would like
-                                                                     to try?”
+                                                              Activity Synthesis
+                                                                • Invite previously identified students to share.
+                                                                • “What method did you see today that you would like
+                                                                  to try?”
 
 
 
@@ -289,10 +289,10 @@ Show 14 on the double 10-frame and the number card 6.
 
 
 
-                                            Grade 1                                    CC BY NC 2024
+                                            Grade 1                                 CC BY NC 2024
                                              Unit 3
-                                                               Lesson 22
-                                                                                Illustrative Mathematics®              5
+                                                            Lesson 22
+                                                                             Illustrative Mathematics®              5
 Observation
 Lesson Observations for Unit 3, Section D
 

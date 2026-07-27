@@ -174,20 +174,20 @@ Student Response
                                                             Activity Synthesis
                                                               • “What expression can we use to show what
                                                                 happened in the story problem? How do you know?”
-                                                                (      or      . Mai collected 3 rocks and Diego
+                                                                (3 + 6 or 6 + 3. Mai collected 3 rocks and Diego
                                                                 collected 6 rocks.)
-                                                              • “We can use the expressions         to show what
+                                                              • “We can use the expressions 3 + 6 to show what
 
 
                                     Kindergarten                                  CC BY NC 2024
                                        Unit 4
                                                          Lesson 18
-                                                                           Illustrative Mathematics®               3
-                                                                    happened in the story problem. Mai collected 3 rocks
-                                                                    and Diego collected 6 rocks. They collected 9 rocks
-                                                                    together.”
-                                                                 • “      is 9. We can write that as      is 9.”
-                                                                 • Write “       is 9.”
+                                                                           Illustrative Mathematics®              3
+                                                                  happened in the story problem. Mai collected 3 rocks
+                                                                  and Diego collected 6 rocks. They collected 9 rocks
+                                                                  together.”
+                                                               • “3 + 6 is 9. We can write that as 3 + 6 is 9.”
+                                                               • Write “3 + 6 is 9.”
 
 
 
@@ -196,8 +196,8 @@ Activity 2                                                                      
 
 Tell a Story Problem to Match an Expression
 
-      Standards
-Addressing      K.OA.A.1, K.OA.A.2
+     Standards
+Addressing     K.OA.A.1, K.OA.A.2
 
 
 The purpose of this activity is for students to tell a story problem that matches a given expression. Students make
@@ -207,10 +207,10 @@ assumptions about information not given in a situation and identify information 
 know to answer a question, they model with mathematics (MP4).
 
 
-       Access for English Language Learners
-       MLR8 Discussion Supports. Invite students to use gestures with verbal descriptions and drawings to tell the story
-       problem.
-       Advances: Listening, Representing, Speaking, Conversing
+     Access for English Language Learners
+     MLR8 Discussion Supports. Invite students to use gestures with verbal descriptions and drawings to tell the story
+     problem.
+     Advances: Listening, Representing, Speaking, Conversing
 
 
 Required Materials
@@ -218,31 +218,31 @@ Materials to Gather
   • Connecting cubes or two-color counters: Activity 2
 
 
-      Student Task Statement                                   Launch
-       Write an addition or subtraction expression.              • Groups of 2
-                                                                 • Give students access to connecting cubes or
-                                                                   counters.
-                                                                 • “Think of one expression. You can think of an
-                                                                   addition expression or a subtraction expression.
-                                                                   Write the expression in the box.”
-                                                                 • 1 minute: independent work time
+     Student Task Statement                                  Launch
+     Write an addition or subtraction expression.              • Groups of 2
+                                                               • Give students access to connecting cubes or
+                                                                 counters.
+                                                               • “Think of one expression. You can think of an
+                                                                 addition expression or a subtraction expression.
+                                                                 Write the expression in the box.”
+                                                               • 1 minute: independent work time
 
 Student Response
 Sample responses:
-                                                               Activity
+                                                             Activity
 
-  •        . Lin was playing jump rope. She jumped 3             • “Think of a story problem that goes with the
-      times. Then she jumped 4 more times. How many                expression that you wrote. Think of the information
-                                                                   that you should include in the story problem. You
+  • 3 + 4. Lin was playing jump rope. She jumped 3             • “Think of a story problem that goes with the
+    times. Then she jumped 4 more times. How many                expression that you wrote. Think of the information
+                                                                 that you should include in the story problem. You
 
 
-                                     Kindergarten                                    CC BY NC 2024
-                                        Unit 4
-                                                           Lesson 18
-                                                                              Illustrative Mathematics®                4
+                                    Kindergarten                                    CC BY NC 2024
+                                       Unit 4
+                                                         Lesson 18
+                                                                             Illustrative Mathematics®                 4
       times did Lin jump?                                           can draw pictures or write words and numbers in
                                                                     your book to help you remember what happens in
-  •         . There were 7 crackers at the picnic. Jada and
+  •   7- 5 . There were 7 crackers at the picnic. Jada and
                                                                     your story problem.”
       Tyler ate 5 of the crackers. How many of the crackers
       were left?                                                  • 3 minutes: independent work time

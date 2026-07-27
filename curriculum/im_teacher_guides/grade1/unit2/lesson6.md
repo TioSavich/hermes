@@ -114,7 +114,7 @@ Student Response
                                                                 • "How are the last two images the same? How are
 Sample responses:
                                                                   they different?" (Both images show 8 and 2. One has
-  • 10: 5 red and 5 yellow.                                       8 yellow and 2 red and one has 8 red and 2 yellow.)
+  • 10: 5 red and 5 yellow. 5 + 5 = 10                            8 yellow and 2 red and one has 8 red and 2 yellow.)
 
 
 
@@ -126,7 +126,7 @@ Sample responses:
   • 10: The whole 10-frame is filled, but there are 2 red
     and 8 yellow.
   • 10: It’s just like the image above, but the colors are
-    switched. It’s             .
+    switched. It’s 8 + 2 = 10.
 
 
 
@@ -265,8 +265,8 @@ Materials to Gather
      Tyler has 2 turtles.                                        cubes or two-color counters.
      Clare has 4 dogs.
                                                                • “We just solved a problem about pet fish. What else
-     Tyler writes      .                                         do you know about pets?”
-     Clare writes       .
+     Tyler writes 2 + 4.                                         do you know about pets?”
+     Clare writes 4 + 2.
                                                                • 30 seconds: quiet think time
      Who do you agree with?                                    • 1 minute: partner discussion
      Show your thinking using objects, drawings,               • If needed ask, “What other kinds of pets are there?”
@@ -285,18 +285,18 @@ Sample responses:
                                             Unit 2
                                                            Lesson 6
                                                                              Illustrative Mathematics®              5
-    the story and you need to add them together.               • Monitor for the different ways students organize
-                                                                 their objects or drawings to justify that each
+    the story and you need to add them together.                • Monitor for the different ways students organize
+                                                                  their objects or drawings to justify that each
   • Clare because I would start with the number that is
-                                                                 expression matches the story.
+                                                                  expression matches the story.
     bigger and then add the smaller number.
-  • They both can be right because        is 6 and
+  • They both can be right because 2 + 4 is 6 and 4 + 2
     is 6. The order doesn’t matter.                          Activity Synthesis
-                                                               • Invite previously identified students to share.
-                                                               • “How does their work show us that          matches
-                                                                 this story?”
-                                                               • “How does their work show us that          matches
-                                                                 this story?”
+                                                                • Invite previously identified students to share.
+                                                                • “How does their work show us that 4 + 2 matches
+                                                                  this story?”
+                                                                • “How does their work show us that 2 + 4 matches
+                                                                  this story?”
 
 
 
@@ -309,10 +309,10 @@ If students explain that both expressions match the story using only numbers, co
 
 
 Lesson Synthesis
-Display the story about the turtles and dogs and the expressions      and       .
+Display the story about the turtles and dogs and the expressions 2 + 4 and 4 + 2.
 
 “Today we read stories like this where there were two different things we could count and we needed to know how
-many there were altogether. We saw that we could think about this story as        or as     . We saw that either way
+many there were altogether. We saw that we could think about this story as 2 + 4 or as 4 + 2. We saw that either way
 we count, we get the same value.”
 
 Invite previously identified students to share how they counted by starting at 2 and another student so show how they
@@ -338,10 +338,10 @@ Look Fors
   • Represent the story with objects or drawings.
 
 
-                                           Grade 1                                 CC BY NC 2024
+                                           Grade 1                                  CC BY NC 2024
                                             Unit 2
                                                            Lesson 6
-                                                                            Illustrative Mathematics®               6
+                                                                             Illustrative Mathematics®               6
 • Retell the story.
 
 

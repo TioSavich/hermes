@@ -66,11 +66,11 @@ Lesson Timeline                                                Teacher Reflectio
                                             Unit 8
                                                             Lesson 14
                                                                                Illustrative Mathematics®                  1
- Activity 2                                   15 min
+ Activity 2                                    15 min
 
- Synthesis Estimate                           10 min
+ Synthesis Estimate                            10 min
 
- Cool-down                                     5 min
+ Cool-down                                      5 min
 
 
 
@@ -98,7 +98,7 @@ and what they need to think about to create a routine like the example.
 
       Record an estimate that is:                             Activity
                                                                 • “Discuss your thinking with your partner.”
-              too low        about right       too high
+              too low        about right        too high
                                                                 • 1 minute: partner discussion
                                                                 • Record responses.
 
@@ -109,7 +109,7 @@ Student Response                                              Activity Synthesis
 Sample responses                                                • “What do you know about the Estimation Exploration
   • Too low: 3 inches or less                                     routine?” (It's not about finding the exact answer. We
                                                                   make estimates that are too low, too high, and about
-  • About right:        inches to   inches                        right. The estimates could be the value of an
+  • About right: 31/2 inches to 33/4 inches                       right. The estimates could be the value of an
   • Too high: 4 inches or more                                    expression, the number of items in an image, or a
                                                                   measurement.)
                                                                 • Consider asking: “What would you have to think
@@ -121,9 +121,9 @@ Sample responses                                                • “What do y
                                                                 • Record and display responses for all to see.
 
 
-                                             Grade 3                                CC BY NC 2024
-                                              Unit 8
-                                                          Lesson 14
+                                              Grade 3                               CC BY NC 2024
+                                               Unit 8
+                                                           Lesson 14
                                                                              Illustrative Mathematics®                  2
 Activity 1                                                                                                    20 min
 

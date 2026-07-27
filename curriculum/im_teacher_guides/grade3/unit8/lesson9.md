@@ -93,12 +93,12 @@ multiplying within 100.
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-          •                                                     • “Give me a signal when you have an answer and can
+        • 4 × 10                                                • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-          •
+        • 4 × 20
                                                                 • 1 minute: quiet think time
-          •
-          •
+        • 4 × 21
+        • 4 × 24
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
@@ -107,11 +107,11 @@ Student Response                                                • Record answe
                                                                 • Repeat with each expression.
   • 80: It's twice the previous product because the 10
     doubled to 20. I just knew it.
-  • 84: It would be 4 more than        , so it would be 80    Activity Synthesis
+  • 84: It would be 4 more than 4 × 20, so it would be 80     Activity Synthesis
     plus 4.
                                                                 • “How did you figure out the more challenging
-  • 96:               .         .              .                  products?” (Once I knew         , I was able to build on
-                                                                  it to find      and         by just adding more
+  • 96: 4 × 20 = 80. 4 × 4 = 16. 80 + 16 = 96.                    products?” (Once I knew 4 × 20, I was able to build on
+                                                                  it to find 4 × 21 and 4 × 24 by just adding more
                                                                   fours. I knew that 4 groups of 25 make 100, so I took
                                                                   away 4 to find 4 groups of 24.)
 
@@ -120,7 +120,7 @@ Student Response                                                • Record answe
 
                                             Grade 3                                  CC BY NC 2024
                                              Unit 8
-                                                             Lesson 9
+                                                            Lesson 9
                                                                               Illustrative Mathematics®               2
 Activity 1                                                                                                   20 min
 

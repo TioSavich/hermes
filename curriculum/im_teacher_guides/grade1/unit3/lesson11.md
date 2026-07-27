@@ -66,15 +66,15 @@ Materials to Gather
                                                                              Illustrative Mathematics®             1
 Lesson Timeline                                              Teacher Reflection Questions
                                                              What aspects of today’s lesson allowed each of your
- Warm-up                                     10 min
+ Warm-up                                    10 min
                                                              students to see themselves as productive mathematical
- Activity 1                                  10 min          reasoners?
+ Activity 1                                 10 min           reasoners?
 
- Activity 2                                  10 min
+ Activity 2                                 10 min
 
- Activity 3                                  20 min
+ Activity 3                                 20 min
 
- Synthesis Estimate                          10 min
+ Synthesis Estimate                         10 min
 
 
 
@@ -93,21 +93,21 @@ ones. This will be helpful later in the lesson when students add a single-digit 
       Student Task Statement                                 Launch
       Decide whether each equation is true or false.           • Display one equation.
       Be prepared to explain your reasoning.                   • “Give me a signal when you know whether the
-        •                                                        statement is true and can explain how you know.”
+        • 10 + 4 = 10 + 5                                        statement is true and can explain how you know.”
 
-        •                                                      • 1 minute: quiet think time
+        • 10 + 3 = 2 + 1 + 10                                  • 1 minute: quiet think time
 
-        •
+        • 14 = 10 + 4 + 5
                                                              Activity
 Student Response                                               • Share and record answers and strategy.
 
-  • False:     can’t be the same as        because             • Repeat with each equation.
+  • False: 10 + 4 can’t be the same as 10 + 5 because          • Repeat with each equation.
     the two numbers being added to 10 are not the
     same.
                                                              Activity Synthesis
-  • True:             , so both sides are     .
+  • True: 2 + 1 = 3, so both sides are 10 + 3.
                                                                • “Does anyone want to add on to _____ ’s reasoning?”
-  • False:      is 14. Adding 5 more would make it
+  • False: 10 + 4 is 14. Adding 5 more would make it
     more than 14.                                              • “Did you determine if any of these were true or false
                                                                  without solving? How?” (I knew the first one without
                                                                  solving. Both had 10 + something, and one had a 4
@@ -116,8 +116,8 @@ Student Response                                               • Share and rec
 
 
 
-                                            Grade 1                                CC BY NC 2024
-                                             Unit 3
+                                          Grade 1                                  CC BY NC 2024
+                                           Unit 3
                                                          Lesson 11
                                                                             Illustrative Mathematics®               2
 Activity 1                                                                                                    10 min
@@ -154,7 +154,7 @@ Materials to Gather
       words.                                                       rocks. We are going to solve a problem about a rock
                                                                    collection.”
       Equation:
-                                                              Activity
+      ___                                                     Activity
                                                                  • Read the Task Statement.
                                                                  • 3 minutes: independent work time
 Student Response                                                 • “Share your thinking with your partner.”
@@ -196,7 +196,7 @@ The purpose of this activity is for students to add a one-digit number to a teen
 Students are provided 10-frames and two-color counters which they may choose to use to represent the sums. Using
 10-frames encourages students to see that the unit of ten stays the same and the ones are combined.
 
-During the Activity Synthesis, the teacher records how students found the value of the sum of      . It’s important that
+During the Activity Synthesis, the teacher records how students found the value of the sum of 17 + 2. It’s important that
 the teacher write the equation the way that students think about the answer to the problem. For example, the equation
                represents students who show 17 counters and count on as they add 2 more. The equation
                    or                    represents students who see that the ten stays the same and they can add the
@@ -231,48 +231,48 @@ Materials to Gather
                                             Unit 3
                                                             Lesson 11
                                                                                 Illustrative Mathematics®                4
-      words.                                                         • Give students access to double 10-frames and
-                                                                       connecting cubes or two-color counters.
-       1.
+      words.                                                      • Give students access to double 10-frames and
+                                                                    connecting cubes or two-color counters.
+       1. 12 + 5 =
 
-                                                                   Activity
-                                                                     • Read the Task Statement.
-                                                                     • 5 minutes: independent work time
+                                                                Activity
+                                                                  • Read the Task Statement.
+                                                                  • 5 minutes: independent work time
 
-       2.                                                            • 2 minutes: partner discussion
-                                                                     • Monitor for students who find the value of the
-                                                                       sum         in these ways:
-       3.
-                                                                        ◦
+       2. 6 + 11 =                                                • 2 minutes: partner discussion
+                                                                  • Monitor for students who find the value of the
+                                                                    sum 17 + 2 in these ways:
+       3. = 17 + 2
+                                                                      ◦
 
-       4.                                                               ◦
+       4. 4 + 14 =                                                    ◦
 
 
 
-       5.                                                          Activity Synthesis
-                                                                     • Display each equation with its unknown number.
-       6.                                                            • Invite previously identified students to share.
+       5. = 15 + 4                                              Activity Synthesis
+                                                                  • Display each equation with its unknown number.
+       6. 16 + 2 =                                                • Invite previously identified students to share.
 
-                                                                     • “How does                  match _____’s work?” (They
-                                                                       put 17 on and then counted 2 more—18, 19—to get
-Student Response                                                       the value.)
- 1. 17. Sample response: The picture shows 12 red                    • “How does                       match _____’s work?”
-    counters and 5 yellow counters on the 10-frames. I                 (They added the ones and got 9 and then added 10
-    counted all the counters.                                          to get 19.)
+                                                                  • “How does                   match _____’s work?” (They
+                                                                     put 17 on and then counted 2 more—18, 19—to get
+Student Response                                                     the value.)
+ 1. 17. Sample response: The picture shows 12 red                 • “How does                       match _____’s work?”
+    counters and 5 yellow counters on the 10-frames. I               (They added the ones and got 9 and then added 10
+    counted all the counters.                                        to get 19.)
  2. 17. Sample response: I started with 11 and counted
     on 6 more. 12, 13, 14, 15, 16, 17
  3. 19. Sample response: I said 18, 19.
- 4. 18. Sample response: I know              , so I know it is
+ 4. 18. Sample response: I know 4 + 4 = 8, so I know it is
     18.
- 5. 19. Sample response: I know              and 10 more
+ 5. 19. Sample response: I know 5 + 4 = 9 and 10 more
     is 19.
- 6. 18. Sample response:              and then there
+ 6. 18. Sample response: 6 + 2 = 8 and then there
     are 10 more, so it is 18.
 
 
 
 
-Activity 3                                                                                                        20 min
+Activity 3                                                                                                      20 min
 
 Centers: Choice Time
 
@@ -284,10 +284,10 @@ Students choose from previously introduced centers.
   • Number Puzzles
 
 
-                                           Grade 1                                       CC BY NC 2024
+                                           Grade 1                                     CC BY NC 2024
                                             Unit 3
-                                                                 Lesson 11
-                                                                                  Illustrative Mathematics®                5
+                                                             Lesson 11
+                                                                                Illustrative Mathematics®                5
   • Find the Pair
 
 
@@ -305,33 +305,33 @@ Required Preparation
      ◦ Find the Pair, Stage 2
 
 
-     Student Task Statement                                     Launch
-     Choose a center.                                            • Groups of 2
+     Student Task Statement                                   Launch
+     Choose a center.                                          • Groups of 2
 
-     Compare                                                     • “Now you are going to choose from centers we have
-                                                                   already learned.”
-                                                                 • Display the center choices in the student book.
-                                                                 • “Think about what you would like to do first.”
-                                                                 • 30 seconds: quiet think time
+     Compare                                                   • “Now you are going to choose from centers we have
+                                                                 already learned.”
+                                                               • Display the center choices in the student book.
+                                                               • “Think about what you would like to do first.”
+                                                               • 30 seconds: quiet think time
 
      Number Puzzles
-                                                                Activity
-                                                                 • Invite students to work at the center of their choice.
+                                                              Activity
+                                                               • Invite students to work at the center of their choice.
      Find the Pair
-                                                                 • 8 minutes: center work time
-                                                                 • “Choose what you would like to do next.”
-                                                                 • 8 minutes: center work time
+                                                               • 8 minutes: center work time
+                                                               • “Choose what you would like to do next.”
+                                                               • 8 minutes: center work time
 
 
-                                                                Activity Synthesis
-                                                                 • “How do you choose which center will be most
-                                                                   helpful for you?”
+                                                              Activity Synthesis
+                                                               • “How do you choose which center will be most
+                                                                 helpful for you?”
 
 
 
 
 Lesson Synthesis
-Display               and its double 10-frame representation.
+Display 20 = 18 + 2 and its double 10-frame representation.
 
 “Today we added to teen numbers. What are different ways to find the value that makes the equation true?” (I can count
 up 19, 20. I can add the ones, so 8+2=10 and then 10+10=20. I can put 2 more in my 10-frames and see that both are
@@ -339,10 +339,10 @@ filled, which is 20.)
 
 
 
-                                          Grade 1                                    CC BY NC 2024
+                                          Grade 1                                  CC BY NC 2024
                                            Unit 3
                                                          Lesson 11
-                                                                              Illustrative Mathematics®              6
+                                                                            Illustrative Mathematics®              6
 Write equations to represent each student’s thinking.
 
 
@@ -360,7 +360,7 @@ Look Fors
   • Count on to find the value of the sum or difference.
   • Identify teen numbers as a ten and some ones.
   • Take away to find the value of the difference.
-  • Use the         structure of teen numbers to add and subtract.
+  • Use the 10 + n structure of teen numbers to add and subtract.
 
 
 

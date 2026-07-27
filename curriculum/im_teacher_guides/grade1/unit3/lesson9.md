@@ -193,8 +193,8 @@ Required Preparation
                                                                • Demonstrate building the teen number.
                                                                • “Now we write an equation to show how we built the
                                                                  number.”
-                                                               • Write the equation               .
-                                                               • Show that you could also write             .
+                                                               • Write the equation 10 + 4 = 14.
+                                                               • Show that you could also write 4 + 10 = 14.
 
 
 
@@ -210,14 +210,14 @@ Sample responses:
 
              teen number       equation                           ◦ Build a new ten each time.
                                                                   ◦ Count the 10 each time.
-                    11
+                    11        10 + 1 = 11
                                                                   ◦ Change the ones only.
-                    14
+                    14        10 + 4 = 14
 
-                    16                                       Activity Synthesis
+                    16        10 + 6 = 16                    Activity Synthesis
                                                                • “What was the same about the way you built the teen
 If you have time: Sample                                         numbers? What was different?” (There was always
-responses:             ,            ,                            one 10-frame that was full and some more in the
+responses: 1 + 10 = 11, 4 + 10 = 14, 6 + 10 = 16                 one 10-frame that was full and some more in the
                                                                  next 10-frame. There was a ten. The amount in the
                                                                  second 10-frame was different.)
                                                                • “What is the same about the equations you wrote?
@@ -233,8 +233,8 @@ If students remove all counters from the 10-frames and build a new ten for each 
    • “Can you explain how you built this number?”
 
 
-                                          Grade 1                                  CC BY NC 2024
-                                           Unit 3
+                                            Grade 1                                CC BY NC 2024
+                                             Unit 3
                                                             Lesson 9
                                                                             Illustrative Mathematics®            4
   • “How can you keep some of the counters here to help you build your next number?”
@@ -273,16 +273,16 @@ Materials to Gather
       Show your thinking using drawings, numbers, or            • Give students access to double 10-frames and
       words.                                                      connecting cubes or two-color counters.
 
-       1.
+       1. 14 = 10 +
                                                               Activity
-       2.                                                       • Read the Task Statement.
+       2. 10 + 5 =                                              • Read the Task Statement.
                                                                 • 6 minutes: independent work time
        3.                                                       • “Discuss your thinking with your partner.”
                                                                 • 4 minutes: partner discussion
        4.
 
                                                               Activity Synthesis
-       5.
+       5. + 3 = 13
                                                                 • “How are the last two problems related?” (They both
                                                                   show that 13 is the same as 10 and 3. 13 is the sum
        6.                                                         but they have different unknown values.)
@@ -317,9 +317,9 @@ Lesson Synthesis
 Display 18 using double 10-frames.
 
 “Today we showed teen numbers on double 10-frames and wrote equations to match. What teen number is shown
-here?” ( )
+here?” (18 )
 
-“What equations can you write to represent this number?”
+“What equations can you write to represent this number?” (10 + 8 = 18,18 = 8 + 10)
 
 “How do these equations help you understand teen numbers?” (Teen numbers can be made up of a ten and some
 number of ones. This can be represented as 10 plus something.)
@@ -340,15 +340,15 @@ Addressing     1.NBT.B.2.b, 1.OA.D.8
       Show your thinking using drawings, numbers, or words.
 
 
-       1.
+       1. 10 + 9 =
 
 
 
 
-                                            Grade 1                            CC BY NC 2024
+                                            Grade 1                              CC BY NC 2024
                                              Unit 3
                                                              Lesson 9
-                                                                        Illustrative Mathematics®           6
+                                                                          Illustrative Mathematics®         6
        2.
 
 
@@ -361,7 +361,7 @@ Student Response
 Responding to Student Thinking
 Students write numbers other than 19 and 2 for the            Next Day Supports
 unknown values.                                               After the Warm-up in the next day's lesson, display 14 on
-                                                              a double 10-frame and the equations                 and
+                                                              a double 10-frame and the equations 10 + 4 =        and
                                                                               Use the 10-frames to show where we see
                                                               the unknown value in each equation.
 

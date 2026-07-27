@@ -86,21 +86,21 @@ students subtract more complex decimals and need to pay close attention to place
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 1.50- 0.51                                            • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 1.50- 0.52
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 1.50- 0.60
+        • 1.50- 0.62
                                                               Activity
 
 Student Response                                                • Record answers and strategy.
                                                                 • Keep expressions and work displayed.
-  • 0.99:                  ,
+  • 0.99: 1.50- 0.50 = 1 , 1 - 0.01 = 0.99
                                                                 • Repeat with each expression.
   • 0.98: I subtracted one more hundredth from the first
     problem.
-  • 0.90:                  ,                                  Activity Synthesis
+  • 0.90: 1.50- 0.50 = 1 , 1 - 0.10 = 0.90                    Activity Synthesis
   • 0.88: I subtracted 2 more hundredths from the third         • “How did you use the value of the third expression to
     problem.                                                      find the value of the last expression?” (I know 0.62 is
                                                                   two hundredths more than 0.60 so I subtracted 2
@@ -136,7 +136,7 @@ This activity uses MLR1 Stronger and Clearer Each Time. Advances: Conversing.
 
 
      Student Task Statement                                     Launch
-       1. Find the value of           . Explain or show           • Groups of 2
+       1. Find the value of 8.53 - 2.7. Explain or show           • Groups of 2
           your reasoning.                                         • “Work on the first two problems on your own.”
        2. Han uses the standard algorithm to subtract
           decimals. Describe what he does in each step.
@@ -146,13 +146,13 @@ This activity uses MLR1 Stronger and Clearer Each Time. Advances: Conversing.
                                                                  • “Share your description of Han’s work with your
                                                                    partner. Take turns being the speaker and the
        3. Use the standard algorithm to find the value of          listener. If you are the speaker, share your ideas and
-                     .                                             writing so far. If you are the listener, ask questions
+          6.62- 3.71 .                                             writing so far. If you are the listener, ask questions
                                                                    and give feedback to help your partner improve their
                                                                    work.”
 Student Response
                                                                   • 3–5 minutes: structured partner discussion
- 1. 5.83. Sample response:                   and
-                                                                  • Repeat with 2–3 different partners.
+ 1. 5.83. Sample response: 8.53 - 2 = 6.53 and
+    6.53 - 0.7 = 5.83                                             • Repeat with 2–3 different partners.
                                                                   • “Revise your initial draft based on the feedback you
  2. Sample response: In step 1, Han had no hundredths
                                                                     got from your partners.”
@@ -207,48 +207,48 @@ require close attention to place value and this is the focus of the Activity Syn
 
      Student Task Statement                                   Launch
        1. Which whole number is the difference                  • Groups of 2
-                     closest to? Explain or show your
+          15.27- 4.3 closest to? Explain or show your
           reasoning.
                                                               Activity
-       2. What is the value of             ? Explain or
+       2. What is the value of 15.27- 4.3 ? Explain or
           show your reasoning.                                  • 8 minutes: independent work time
 
        3. Which whole number is the                             • 2 minutes: partner work time
-          difference           closest to? Explain or           • Monitor for students who:
+          difference 16.14- 9.8 closest to? Explain or          • Monitor for students who:
           show your reasoning.
                                                                     ◦ Use place value understanding to subtract by
-       4. What is the value of             ? Explain or               place.
+       4. What is the value of 16.14- 9.8 ? Explain or                place.
           show your reasoning.
                                                                     ◦ Use the standard algorithm.
                                                                     ◦ Use a compensation strategy to subtract 9.8.
 Student Response
- 1. 11. Sample response:             and the decimal          Activity Synthesis
+ 1. 11. Sample response: 15 - 4 = 11 and the decimal          Activity Synthesis
     parts of the two numbers are both close to 0.3 so the
     difference is very small.                                   • Invite students to share their strategies for finding
-                                                                  the difference             .
+                                                                  the difference 15.27- 4.3 .
  2. 10.97. Sample responses:
                                                                 • “How are the strategies the same? How are they
-      ◦                    ,                   ,
-                                                                  different?” (They both broke up 4.3 into pieces and
+      ◦ 15.27- 4 = 11.27 , 11.27- 0.27 = 11 ,
+        11 - 0.03 = 10.97                                         different?” (They both broke up 4.3 into pieces and
                                                                   then subtracted each piece. Some students used the
       ◦                                                           standard algorithm and some subtracted by place
                                                                   value. The standard algorithm works in one way.
                                                                   There are different ways to subtract 4.3 by place
                                                                   value.)
                                                                 • Invite students to share their estimate for
-                                                                              .
+                                                                  16.14- 9.8 .
 
 
                                           Grade 5                                    CC BY NC 2024
                                            Unit 5
                                                             Lesson 15
                                                                               Illustrative Mathematics®                  4
- 3. 6. Sample response:                and 16.14 is very        • “How did you know that the value would be close to
+ 3. 6. Sample response: 16- 10 = 6 and 16.14 is very            • “How did you know that the value would be close to
     close to 16 and 9.8 is very close to 10.                      6?” (16.14 is just a little more than 16 and 9.8 is
                                                                   almost 10. So, I used whole number subtraction to
  4. 6.34. Sample responses:
-                                                                  estimate,                 .)
-     ◦                     ,
+                                                                  estimate, 16- 10 = 6 .)
+     ◦ 16.14- 10 = 6.14 , 6.14 + 0.2 = 6.34
                                                                 • “Did the estimate help you with the calculation?” (Yes,
      ◦                                                            I used the standard algorithm and got an answer that
                                                                   was just a little more than 6 and that agreed with my
@@ -279,10 +279,10 @@ When students identify and correct Elena's error they construct viable arguments
 
 
      Student Task Statement                                  Launch
-       1. Find the value of               . Explain or          • Groups of 2
+       1. Find the value of 622.35 - 71.4 . Explain or          • Groups of 2
           show your reasoning.
        2. Elena and Andre try to find the value of           Activity
-                       . Who do you agree with? Explain
+          622.35 - 71.4 . Who do you agree with? Explain
           or show your reasoning.                               • 1–2 minutes: quiet think time
                                                                 • 6–8 minutes: partner work time
 
@@ -303,7 +303,7 @@ When students identify and correct Elena's error they construct viable arguments
                                                                              Illustrative Mathematics®                 5
 Student Response                                                    • “How can you see without finding the difference that
                                                                       Elena’s answer is not correct?” (Taking 71 away from
- 1. 550.95. Sample response:                                          622 is a lot less than 615.                 so the
+ 1. 550.95. Sample response:                                          622 is a lot less than 615. 620- 70 = 550 so the
                                                                       answer should be around 550.)
 
 
@@ -350,7 +350,7 @@ Addressing      5.NBT.B.7
 Student Response
 301.47. Sample responses:
 
-  •                  ,                ,                 ,
+  • 321 - 20 = 301, 0.8 - 0.4 = 0.4, 0.07- 0 = 0.07 , 301 + 0.4 + 0.07 = 301.47
   •
 
 

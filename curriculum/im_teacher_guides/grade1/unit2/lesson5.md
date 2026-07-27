@@ -83,16 +83,16 @@ Synthesis, students are asked to reword another student’s thinking and justify
      Student Task Statement                                    Launch
       Decide if each statement is true or false.                 • Display one statement.
       Be prepared to explain your reasoning.                     • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
-        •                                                        • 1 minute: quiet think time
-        •
+        • 10 = 10                                                  statement is true and can explain how you know.”
+        • 4 + 6 = 10                                             • 1 minute: quiet think time
+        • 2 + 7 = 10
 
                                                                Activity
 Student Response
                                                                  • Share and record answers and strategy.
   • True: A number equals a number. The equal sign               • Repeat with each equation.
     means “the same as.”
-  • True:       is the same amount as 10.
+  • True: 4 + 6 is the same amount as 10.
                                                                Activity Synthesis
   • False: 9 is the same amount as 2 + 7.
                                                                  •   “Who can restate _____'s reasoning in a different

@@ -197,14 +197,14 @@ Student Response                                                • 7 minutes: g
                                                                 • Switch groups.
 Sample responses:
                                                                 • 7 minutes: gallery walk
-  • 4 apples and 3 plums,
-  • 7 pineapples and 2 strawberries,                          Activity Synthesis
-  • 1 pear and 9 peaches,
+  • 4 apples and 3 plums, 4 + 3
+  • 7 pineapples and 2 strawberries, 7 + 2                    Activity Synthesis
+  • 1 pear and 9 peaches, 1 + 9
                                                                 • Choose one student’s display to share with the class.
                                                                   Do not show the display, but write an expression that
                                                                   shows how they packed the box. For example, if the
                                                                   student put 1 apple and 6 pears in their box, display
-                                                                  and write      .
+                                                                  and write 1 + 6.
                                                                 • “I wrote this expression about the box of fruit that
                                                                   _____ packed. What do we know about how _____
                                                                   packed the box?” (We know that they packed the box

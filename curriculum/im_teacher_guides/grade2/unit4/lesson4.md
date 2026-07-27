@@ -103,13 +103,13 @@ sums and differences on number lines.
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 35 - 5                                                • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 35 - 10
                                                                 • 1 minute: quiet think time
-        •
+        • 35 - 15
 
-        •                                                     Activity
+        • 35 - 25                                             Activity
                                                                 • Record answers and strategy. Use a number line
 Student Response                                                  diagram when possible.
 
@@ -118,11 +118,11 @@ Student Response                                                  diagram when p
   • 25: I took away 1 ten from 35.                              • Repeat with each expression.
 
   • 20: I took away 1 ten from 35, and then I took away 5
-    ones.               ,            .                        Activity Synthesis
-  • 10: I thought of adding 10 to 25.               , so
+    ones. 35 - 10 = 25, 25 - 5 = 20.                          Activity Synthesis
+  • 10: I thought of adding 10 to 25. 25 + 10 = 35, so
                                                                 • “How did the first 2 expressions help you think about
-                  .
-                                                                  the last 2?” (I know that         because all of the
+    35 - 25 = 10.
+                                                                  the last 2?” (I know that 5 - 5 = 0 because all of the
                                                                   ones are being taken away. Then I just take the tens
                                                                   from the tens.)
 
@@ -177,7 +177,7 @@ Required Preparation
                on the same number line.                            with a partner. Decide with your partner whose
         • Decide which number is greater. Explain your             number line you will use.”
           reasoning.                                             • As needed, demonstrate the task with a student.
-        • Use    ,   , or   to compare the 2 numbers             • “I am Partner A. I am going to roll the 3 number
+        • Use < , > , or = to compare the 2 numbers              • “I am Partner A. I am going to roll the 3 number
 
 
                                             Grade 2                                  CC BY NC 2024
@@ -186,13 +186,13 @@ Required Preparation
                                                                               Illustrative Mathematics®               3
            represented on your number line.                          cubes and find the sum.”
                                                                   • “Then I take a counter and place it on the number
-                  Partner A   ,   , or   Partner B                  line to represent the sum.”
+               Partner A   < , > , or =   Partner B                 line to represent the sum.”
                                                                   • “Now it’s my partner’s turn. They do the same thing
                                                                     and put their counter on the same number line to
                                                                     represent the sum of their numbers.”
                                                                   • “Then we decide which number is greater and
                                                                     explain how we know.”
-                                                                  • “Last, we use the      ,   , or   symbols to record our
+                                                                  • “Last, we use the < , > , or = symbols to record our
                                                                     comparison.”
                                                                 MLR8 Discussion Supports
                                                                  • If needed, remind students to use comparison
@@ -204,13 +204,13 @@ Student Response
                                                                   • 10 minutes: partner work time
 Sample responses:
                                                                   • Monitor for students who explain comparisons:
-  •               . Place a counter on 14. My number is
+  • 3 + 5 + 6 = 14. Place a counter on 14. My number is
     greater because it is farther from 0. It is more to the           ◦ Based on lengths from 0.
     right.                                                            ◦ Using the language “to the left” and “to the right.”
-  •                . Place a counter on 6. Your number is
-      greater because my number is closer to 0.
+  • 1 + 1 + 4 = 6. Place a counter on 6. Your number is
+    greater because my number is closer to 0.
                                                                 Activity Synthesis
-  •          or
+  • 6 < 14 or 14 > 6
                                                                   • Invite 2–3 previously identified groups to share
                                                                     comparisons and their explanations.
                                                                   • “What do you notice about the numbers that are
@@ -221,18 +221,18 @@ Sample responses:
 
 Advancing Student Thinking
 If students write comparison statements that are not true, consider asking:
-   • “Read me your comparison statement. How do you decide whether to use          ,    , or   ?”
+   • “Read me your comparison statement. How do you decide whether to use < , > , or = ?”
   • “How can you use the number line to show that ___ is greater than or less than ___?”
 
 
 
 
-Activity 2                                                                                                        15 min
+Activity 2                                                                                                      15 min
 
 Compare Larger Numbers
 
-      Standards
-Addressing        2.MD.B.6
+     Standards
+Addressing     2.MD.B.6
 
 
 The purpose of this activity is for students to use a number line to compare greater numbers. In the first activity,
@@ -241,7 +241,7 @@ The purpose of this activity is for students to use a number line to compare gre
                                              Grade 2                                   CC BY NC 2024
                                               Unit 4
                                                               Lesson 4
-                                                                                Illustrative Mathematics®                  4
+                                                                                Illustrative Mathematics®                4
 students compared numbers on a number line with all of the tick marks labeled. In this activity, only the multiples of 5
 are labeled. Students locate and label numbers on the number line and compare them. Listen for the language students
 use to explain how they know a number is greater than or less than another number, including those based on the
@@ -264,17 +264,17 @@ Required Preparation
           a 2-digit number.                                     • Give each group copies of the number line recording
         • Locate and label your numbers on the number             sheet and 2 number cubes.
           line.
-        • Use    ,   , or   to compare the numbers.           Activity
+        • Use < , > , or = to compare the numbers.            Activity
         • Explain why your comparison is true.
                                                                 • “You are going to do some more work comparing
                                                                   numbers on a number line with a new partner.”
-              Partner A       ,   , or   Partner B
+              Partner A    < , > , or =   Partner B
                                                                 • “This time you will use a number line that goes from
                                                                   0 to 100.”
                                                                 • “Each of you will roll 2 number cubes and create a
                                                                   two-digit number.”
                                                                 • “Locate and label both numbers on the number line.”
-                                                                • “Then compare the numbers using , , or .
+                                                                • “Then compare the numbers using < , > , or = .
                                                                   Explain how you know your comparison is true.”
                                                                 • 10 minutes: partner work time
                                                                 • Monitor for student comparisons where both
@@ -286,7 +286,7 @@ Sample response: Students label 32 and 14.                        30).
 
                                                               Activity Synthesis
 My number is 32. I know 32 is greater than 14 because it’s
-farther to the right.       or                                  • Invite a previously identified group to share a
+farther to the right. 14 < 32 or 32 > 14                        • Invite a previously identified group to share a
                                                                   comparison where the numbers are close.
                                                                 • Display the number line from the activity to record
                                                                   student comparisons or have students display their
@@ -357,7 +357,7 @@ Addressing      2.MD.B.6
                                                                Lesson 4
                                                                                   Illustrative Mathematics®                6
             b. Locate and label a number that is less than 31 on the number line.
-            c. Use     and    to compare the 2 numbers represented on your number line.
+            c. Use < and > to compare the 2 numbers represented on your number line.
             d. Explain how you know your comparison is true.
 
 
@@ -368,7 +368,7 @@ Student Response
 
 
 
-      c. Sample response:
+      c. Sample response: 26 < 31
       d. Sample response: My point is on 26. I know it is less than 31 because it is farther to the left.
 
 

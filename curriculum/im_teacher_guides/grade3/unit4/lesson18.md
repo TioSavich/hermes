@@ -17,8 +17,8 @@ Unit 4, Lesson 18
 
 Greater Numbers in Equal Groups
      Standards                                                       Instructional Routines
-Addressing            3.OA.A.3                                   • 5 Practices
-Building Toward       3.OA.A.2                                   • What Do You Know about _____?
+Addressing           3.OA.A.3                                    • 5 Practices
+Building Toward      3.OA.A.2                                    • What Do You Know about _____?
 
 
 
@@ -41,7 +41,7 @@ The problems in this lesson help teachers see how students apply their learning 
 example, some students may use what they learned about the relationship between multiplication and division to
 “multiply up” as a strategy for dividing greater numbers.
 
-Multiply up to find              .
+Multiply up to find 78 ÷ 3 = 26.
 
 
 
@@ -105,7 +105,7 @@ Sample responses:
     situation with equal groups.                                 • “How could we represent division?” (with a drawing
                                                                    or diagram, with connecting cubes, with an equation
   • I can write division equations or expressions with the         or expression)
-    symbol .
+    symbol ÷ .
   • Division is related to multiplication.
                                                                Activity Synthesis
   • I can multiply to find the answer to a division
@@ -138,7 +138,7 @@ Monitor for and select students with the following approaches to share in the Ac
 
   • Make groups of 4 with objects, drawings, arrays, or base-ten blocks. Add groups of 4 until they reach 48, and count
     to see how many groups they make.
-  • Multiply up starting with        .
+  • Multiply up starting with 4 × 10.
   • Decompose the dividend into tens and ones and divide each part (using drawings or known facts).
 The approaches are sequenced from more concrete to more abstract to help all students make sense of ways to find
 the quotient by multiplying or dividing in parts, especially by using what they know about place value. Aim to elicit both
@@ -178,62 +178,62 @@ Materials to Gather                                              Materials to Co
                                              Unit 4
                                                              Lesson 18
                                                                                  Illustrative Mathematics®                3
- • Connecting cubes or counters: Activity 1                           students): Activity 1
+ • Connecting cubes or counters: Activity 1                       students): Activity 1
 
 
-     Student Task Statement                                       Launch
-     There are 48 students going on a field trip to the             • Display the statement: “On a field trip to the
-     aquarium. They visit the exhibits in groups of 4                 aquarium, a class of students is splitting into groups.”
-     students. How many groups will there be?                       • “What do you notice? What do you wonder?” (They
-     Show your thinking using diagrams, symbols, or                   are going to the aquarium in groups. They can’t go in
-     other representations.                                           one big group. How many kids are in the class? How
-                                                                      many kids are in each group? Are the groups the
-                                                                      same size?)
-                                                                    • 1 minute: quiet think time
-                                                                    • Share and record responses.
-                                                                    • Give students access to connecting cubes or
-                                                                      counters, base-ten blocks, and grid paper.
+     Student Task Statement                                   Launch
+     There are 48 students going on a field trip to the         • Display the statement: “On a field trip to the
+     aquarium. They visit the exhibits in groups of 4             aquarium, a class of students is splitting into groups.”
+     students. How many groups will there be?                   • “What do you notice? What do you wonder?” (They
+     Show your thinking using diagrams, symbols, or               are going to the aquarium in groups. They can’t go in
+     other representations.                                       one big group. How many kids are in the class? How
+                                                                  many kids are in each group? Are the groups the
+                                                                  same size?)
+                                                                • 1 minute: quiet think time
+                                                                • Share and record responses.
+                                                                • Give students access to connecting cubes or
+                                                                  counters, base-ten blocks, and grid paper.
 
 
-                                                                  Activity
-                                                                    • “Solve this problem. Use whatever strategy or
+                                                              Activity
+                                                                • “Solve this problem. Use whatever strategy or
 Student Response
-                                                                      representation that works best for you.”
-12 groups. Sample responses:                                        • 5 minutes: independent work time
- • Students continue to draw groups of 4 and keep                   • As you monitor for the approaches listed in the
-   track of the total amount until they reach 48. They                Activity Narrative, consider asking:
-   count the number of groups to find 12 groups.                       ◦ “Where are the groups of 4 in your work?”
- • I know that        is 40 and then           is 8, so there          ◦ “Where is the number of groups in your work?”
-   are              groups of 4 in 48.
-                                                                       ◦ “How did you start? Did you change your
- • I know that 5 groups of 4 is 20, so 10 groups of 4 is                 approach while you were working?”
+                                                                  representation that works best for you.”
+12 groups. Sample responses:                                    • 5 minutes: independent work time
+ • Students continue to draw groups of 4 and keep               • As you monitor for the approaches listed in the
+   track of the total amount until they reach 48. They            Activity Narrative, consider asking:
+   count the number of groups to find 12 groups.                   ◦ “Where are the groups of 4 in your work?”
+ • I know that 4 × 10 is 40 and then 4 × 2 is 8, so there          ◦ “Where is the number of groups in your work?”
+   are 10 + 2 = 12 groups of 4 in 48.
+                                                                   ◦ “How did you start? Did you change your
+ • I know that 5 groups of 4 is 20, so 10 groups of 4 is             approach while you were working?”
    40. There are 8 students left, which make 2 groups of
-   4. Adding 10 and 2 gives 12.                                     • “Share your answer and the way you found it with
-                                                                      your partner. Talk about how the ways are alike and
- • I know 48 is 40 and 8.                and            . So,         how they are different.”
-               .
-                                                                    • 3 minutes: partner discussion
+   4. Adding 10 and 2 gives 12.                                 • “Share your answer and the way you found it with
+                                                                  your partner. Talk about how the ways are alike and
+ • I know 48 is 40 and 8. 40 ÷ 4 = 10 and 8 ÷ 4 = 2. So,          how they are different.”
+   48 ÷ 4 = 12.
+                                                                • 3 minutes: partner discussion
 
 
-                                                                  Activity Synthesis
-                                                                    • Invite previously selected students to share in the
-                                                                      given order. Record or display their work for all to
-                                                                      see.
-                                                                    • As each approach is presented, invite the class to ask
-                                                                      questions.
-                                                                    • Keep all the approaches displayed.
-                                                                    • Connect students’ approaches by asking:
-                                                                       ◦ “How are these ways of solving the
-                                                                         problem alike?” (All the approaches
-                                                                         used              to help break the problem into
-                                                                         smaller parts. The approaches with division and
+                                                              Activity Synthesis
+                                                                • Invite previously selected students to share in the
+                                                                  given order. Record or display their work for all to
+                                                                  see.
+                                                                • As each approach is presented, invite the class to ask
+                                                                  questions.
+                                                                • Keep all the approaches displayed.
+                                                                • Connect students’ approaches by asking:
+                                                                   ◦ “How are these ways of solving the
+                                                                     problem alike?” (All the approaches
+                                                                     used 4 × 10 = 40 to help break the problem into
+                                                                     smaller parts. The approaches with division and
 
 
-                                           Grade 3                                      CC BY NC 2024
-                                            Unit 4
-                                                                Lesson 18
-                                                                                 Illustrative Mathematics®               4
-                                                                        multiplication equations both had            .)
+                                          Grade 3                                   CC BY NC 2024
+                                           Unit 4
+                                                            Lesson 18
+                                                                             Illustrative Mathematics®               4
+                                                                        multiplication equations both had 10 + 2 = 12.)
                                                                      ◦ “How are they different?” (In some, students
                                                                        drew a representation. In others, students wrote
                                                                        multiplication or division expressions or
@@ -245,7 +245,7 @@ Student Response
                                                                        into smaller parts? Why was that approach
                                                                        helpful for this problem?” (They thought about
                                                                        multiplying by 10 first because they know
-                                                                                    , and that's close to the total. It
+                                                                       4 × 10 = 40, and that's close to the total. It
                                                                        helped because they didn't have to add or skip-
                                                                        count by 4 as many times or draw as many
                                                                        things.)
@@ -316,7 +316,7 @@ Student Response
         If we put 10 more people in each bus, that’s 60
         people, and there are 12 more people who are              • 3 minutes: partner discussion
         not yet on a bus. Putting 4 more on each bus              • Monitor for students who use different
-        takes care of the 12 people.                  .             representations (drew different diagrams or wrote
+        takes care of the 12 people. 10 + 10 + 4 = 24.              representations (drew different diagrams or wrote
       ◦ I know that 3 groups of 20 is 60 and 3 groups of            different types of expressions or equations) for the
         4 is 12, so 3 groups of 24 is 72.                           two problems.
 

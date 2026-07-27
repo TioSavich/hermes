@@ -89,20 +89,20 @@ statement.
      Student Task Statement                                   Launch
       Decide if each statement is true or false. Be              • Display one statement.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 20 + 20 + 20 > 100                                       statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 41 + 30 + 23 > 100                                     • 1 minute: quiet think time
 
-        •
+        • 46 + 33 + 24 > 100
                                                               Activity
 Student Response                                                 • Share and record answers and strategies.
 
-  • False:              , and I know you would need at           • Repeat with each statement.
+  • False: 20 + 20 = 40, and I know you would need at            • Repeat with each statement.
     least 6 more tens to make 100, so it’s less.
-  • False:          is 70, and I know there’s not enough      Activity Synthesis
+  • False: 40 + 30 is 70, and I know there’s not enough       Activity Synthesis
     left to add to make it more than 100.
                                                                  • “How can you explain your answer without finding
-  • True:                   , and I know I can make a ten
+  • True: 40 + 30 + 20 = 90, and I know I can make a ten
                                                                    the value of each side?”
     with the 6 from 46 and the 4 from 24.
                                                                  • Consider asking:
@@ -126,7 +126,7 @@ Student Response                                                 • Share and r
 
                                            Grade 2                                   CC BY NC 2024
                                             Unit 6
-                                                            Lesson 20
+                                                           Lesson 20
                                                                               Illustrative Mathematics®                2
 Activity 1                                                                                                    15 min
 
@@ -196,22 +196,22 @@ Encourage students to try a variety of strategies and to explain their reasoning
                                                                    • Consider asking:
 1. No. Sample responses:
                                                                       ◦ “It says Noah makes an estimate. How could you
-     ◦                ,             . That’s only the tens
+     ◦ 40 + 30 = 70, 70 + 20 = 90. That’s only the tens
                                                                         decide if Noah’s estimate makes sense without
-         and there’s more than 10 ones left, so it will be
+       and there’s more than 10 ones left, so it will be
                                                                         solving the problem exactly?”
-         more than a dollar.
+       more than a dollar.
                                                                       ◦ “What strategies do you have for estimating
      ◦ The pencil box and glue stick are about 40 cents
                                                                         without solving?”
-       each.               , and that doesn’t include the
+       each. 40 + 40 = 80, and that doesn’t include the
        notebook. It’ll be more than $1.                            • Monitor for students who:
 
-2.   a. Less than $1. Sample response:                 ,              ◦ Add the tens.
-                      . There are more ones to subtract,              ◦ Estimate the value of the ones.
+2.   a. Less than $1. Sample response: 100- 40 = 60 ,                 ◦ Add the tens.
+        60- 40 = 20 . There are more ones to subtract,                ◦ Estimate the value of the ones.
         but less than 20 ones.
                                                                       ◦ Use compatible numbers (for example, they add
-     b. Less than $1. Sample response:                    .                     for the glue stick and the pencil box and
+     b. Less than $1. Sample response: 40 + 40 = 80.                    40 + 40 for the glue stick and the pencil box and
         The pencil is less than 20 cents, so it will be less            reason that the total will be more than a dollar if
         than $1.                                                        a notebook is added).
      c. More than $1. Sample response: 4 tens + 4 tens             • Invite previously selected students to share their
@@ -294,15 +294,15 @@ logical arguments and critique the reasoning of others (MP3).
 
 Student Response                                                  • 5 minutes: partner work time
 
- 1.   ◦ 85 cents. Sample response:             ,
-                      ,         ,                  ,
+ 1.   ◦ 85 cents. Sample response: 44 + 26,
+        40 + 20 = 60, 4 + 6 = 10, 60 + 10 = 70,
                                                                 Activity Synthesis
-                    ,                                             • “What was helpful about having someone look at
+        ? - 70 = 15, 70 + 15 = 85                                 • “What was helpful about having someone look at
       ◦ Lin spent 13 cents more. Sample                             your work for each problem?” (They thought my
-        response:                   . The numbers are               answer made sense, which helped me know that I
+        response: 40 + 20 + 20 = 80. The numbers are                answer made sense, which helped me know that I
         1¢, 2¢, and 2¢ more than Jada’s costs, so Jada              had answered correctly. They caught a mistake that I
         spent                                                       made didn’t notice.)
-                            cents.                 . The          • “What was helpful about looking at someone else’s
+        80- 1 - 2- 2 = 75 cents. 40 + 40 = 80. The                • “What was helpful about looking at someone else’s
         numbers are 4 ¢ and 4¢ less than Lin’s costs, so
 
 
@@ -310,7 +310,7 @@ Student Response                                                  • 5 minutes:
                                             Unit 6
                                                               Lesson 20
                                                                                Illustrative Mathematics®               5
-         Lin spent                 cents.              .          work for each problem?” (I was able to see a different
+         Lin spent 80 + 4 + 4 = 88 cents. 88 - 75 = 13.           work for each problem?” (I was able to see a different
                                                                   strategy that they used for the problem. I was able to
  2. Sample response:
                                                                   help them catch a mistake they made.)
@@ -362,9 +362,9 @@ Addressing     2.MD.C, 2.NBT.B.5, 2.OA.A.1
 
 
 
-                                            Grade 2                                CC BY NC 2024
-                                             Unit 6
-                                                           Lesson 20
+                                          Grade 2                                  CC BY NC 2024
+                                           Unit 6
+                                                          Lesson 20
                                                                             Illustrative Mathematics®               6
      Student Task Statement
 
@@ -381,7 +381,7 @@ Addressing     2.MD.C, 2.NBT.B.5, 2.OA.A.1
 
       Tyler has $1 to spend at the school store. He wants to buy 2 glue sticks and a colored pencil.
 
-      Tyler says he will spend under $1 because                is under a dollar.
+      Tyler says he will spend under $1 because 40 + 40 + 10 is under a dollar.
 
       Explain why Tyler’s statement doesn’t make sense.
 
@@ -390,7 +390,7 @@ Student Response
 Sample responses:
   • Tyler’s statement doesn’t make sense because he added the tens, but there will be a lot of ones left. There will be
     enough ones to make at least 1 more ten.
-  • Tyler’s statement doesn’t make sense because 18 is really close to 20.                is a dollar and there’s still some
+  • Tyler’s statement doesn’t make sense because 18 is really close to 20. 20 + 40 + 40 is a dollar and there’s still some
     more ones, so it will be more than a dollar.
 
 
@@ -411,6 +411,6 @@ concepts developed in a prior unit.                            Grade 2, Unit 2, 
                                           Grade 2                                     CC BY NC 2024
                                            Unit 6
                                                            Lesson 20
-                                                                               Illustrative Mathematics®               7
+                                                                               Illustrative Mathematics®              7
 ```
 

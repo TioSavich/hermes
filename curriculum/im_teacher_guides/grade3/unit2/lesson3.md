@@ -229,12 +229,12 @@ Student Response                                                  have the same 
 
     c. Move the 7 tiles to the edges of the rectangle           • 2 minutes: structured partner discussion.
        and make sure they line up. The rectangle can fit        • Repeat with 1 or 2 different partners.
-            or 24 square tiles.
+       4 × 6 or 24 square tiles.
                                                                 • “Revise your initial draft, based on the feedback you
     d. Arrange the tiles at the top so that there are no          got from your partners.”
        overlaps. The rectangle can fit 4 rows with 3
                                                                 • 2–3 minutes: independent work time
-       square tiles in each row.
+       square tiles in each row. 4 × 3 = 12
                                                                 • “We just found the areas of rectangles, and learned
 2. Sample response: Cover the whole rectangle with
                                                                   that when we cover a rectangle with square tiles, the

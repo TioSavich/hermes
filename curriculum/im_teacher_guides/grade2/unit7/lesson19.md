@@ -178,28 +178,28 @@ Sample responses:
                                            Unit 7
                                                           Lesson 19
                                                                              Illustrative Mathematics®                3
-                    starting                           ending
-        month                    collected   donated
-                    number                             number
+                   starting                            ending
+        month                 collected   donated
+                   number                              number
   •
-       January         0           216          0       216
+       January        0           216        0          216
 
-       February       216          309         275      250
+       February      216          309       275         250
 
        March/
-                      250          462         275      437
+                     250          462       275         437
        April
 
-       May            437            ?         275       ?
+       May           437           ?        275          ?
 
 
   • Jan 216
 
-      Feb                    ,
+      Feb 216 + 309 = 525, 525 - 275 = 250
 
-      Mar and Apr                        ,
+      Mar and Apr 250 + 462 = 712, 712- 275 = 437
 
-      May
+      May 437 + ? - 275 = ?
 
 
 
@@ -236,8 +236,8 @@ Materials to Gather
 
 
 
-                                             Grade 2                                 CC BY NC 2024
-                                              Unit 7
+                                          Grade 2                                    CC BY NC 2024
+                                           Unit 7
                                                               Lesson 19
                                                                               Illustrative Mathematics®                 4
        2. What information do you need to find the              • 10 minutes: partner work time
@@ -255,13 +255,13 @@ Materials to Gather
                                                                   other months, the school collected about 200—300
 Student Response
                                                                   books, and this is in that range.)
- 1. 825. Sample response:                   ,                   • Invite students to share different ideas for what the
-                                                                  school could do with the leftover books.
+ 1. 825. Sample response: 275 + 275 = 550,                      • Invite students to share different ideas for what the
+    550 + 275 = 825                                               school could do with the leftover books.
  2. I need to know the number of books collected in
     May.
  3. Sample response: I think they could have collected
     212 books in May. They would have 374 books left,
-    because                   and                   .
+    because 437 + 212 = 649 and 649- 275 = 374 .
  4. Sample response:The school could keep the books,
     give 275 books to fourth place, split up the extra
     books and give some to each of the three places, or

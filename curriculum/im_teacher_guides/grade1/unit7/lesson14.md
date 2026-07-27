@@ -95,12 +95,12 @@ The purpose of this Number Talk is to elicit the strategies and understandings t
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 30 + 10                                               • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 30 + 15
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 30 + 30
+        • 30 + 35
                                                               Activity
 
 Student Response                                                • Record answers and strategies.

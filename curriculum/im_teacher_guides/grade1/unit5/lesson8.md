@@ -73,36 +73,36 @@ Lesson Timeline                                                Teacher Reflectio
 Number Talk: Add within 100
 
      Standards                                                      Instructional Routines
-Addressing       1.NBT.C.4                                       • Number Talk
+Addressing      1.NBT.C.4                                        • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for adding one-digit and two-
 digit numbers. When recording students’ thinking, record using expressions that match student methods. For example,
-as a student is explaining     , you may write              .
+as a student is explaining 45 + 7, you may write 45 + 5 + 2.
 
 
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display 1 expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 68 + 2                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 3 + 68
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 5 + 45
+        • 45 + 7
                                                                Activity
                                                                  • Record answers and strategy.
 Student Response
                                                                  • Keep expressions and work displayed.
   • 70: I counted on, 68...69, 70.
                                                                  • Repeat with each expression.
-  • 71:          is 70. I still have 1 more to add, so
+  • 71: 68 + 2 is 70. I still have 1 more to add, so 70 + 1
     is 71.
                                                                Activity Synthesis
-  • 50: I know         is 10. If I add        , I get 50.
-  • 52:          is 50. I still have 2 more to add, so           • “How are         and          alike?” (They both have a
+  • 50: I know 5 + 5 is 10. If I add 40 + 10, I get 50.
+  • 52: 45 + 5 is 50. I still have 2 more to add, so 50 + 2      • “How are 68 + 2 and 45 + 5 alike?” (They both have a
     is 52.                                                         value that is a multiple of 10.)
-                                                                 • “How are        and        alike?” (The ones in both
+                                                                 • “How are 68 + 3 and 45 + 7 alike?” (The ones in both
                                                                    expressions make more than ten, so we can
                                                                    compose a ten to help us add.)
 
@@ -114,7 +114,7 @@ Activity 1                                                                      
 Introduce Target Numbers—Add Tens or Ones
 
      Standards
-Addressing       1.NBT.C.4
+Addressing      1.NBT.C.4
 
 
 The purpose of this activity is for students to learn Stage 2 of the Target Numbers center. Students add tens or ones to
@@ -124,9 +124,9 @@ sum becomes the first addend in the next round. The player who gets closest to 9
 the winner.
 
 
-                                               Grade 1                               CC BY NC 2024
-                                                Unit 5
-                                                            Lesson 8
+                                              Grade 1                                CC BY NC 2024
+                                               Unit 5
+                                                              Lesson 8
                                                                               Illustrative Mathematics®                2
      Access for English Language Learners
      MLR8 Discussion Supports. Prior to playing the game, invite students to make sense of the directions and take
@@ -312,7 +312,7 @@ Materials to Gather
 Student Response
  1. 41 points. Sample response: I added 35 and 5 to
     make 40. Then I added 1 more.
- 2. 54 fans. Sample response:
+ 2. 54 fans. Sample response: 45 + 5 + 4 = 54
 
 
 

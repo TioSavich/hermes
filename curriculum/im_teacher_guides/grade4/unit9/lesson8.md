@@ -69,54 +69,54 @@ Lesson Timeline                                                Teacher Reflectio
                                               Unit 9
                                                               Lesson 8
                                                                                Illustrative Mathematics®              1
- Cool-down                                    5 min
+ Cool-down                                  5 min
 
 
 
-Warm-up                                                                                                      10 min
+Warm-up                                                                                                    10 min
 
 Number Talk: Divide by 8
 
-     Standards                                                       Instructional Routines
-Addressing     4.NBT.B.6                                          • Number Talk
+     Standards                                                     Instructional Routines
+Addressing     4.NBT.B.6                                       • Number Talk
 
 
 This Number Talk encourages students to think flexibly about numbers to divide. The understandings elicited here will
 be helpful throughout this unit as students divide whole numbers and build toward fluent multiplication and division.
 
 
-     Student Task Statement                                     Launch
-     Find the value of each expression mentally.                  • Display one expression.
+     Student Task Statement                                  Launch
+     Find the value of each expression mentally.               • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
-                                                                    explain how you got it.”
-        •
-        •
-                                                                Activity
-        •
-                                                                  • 1 minute: quiet think time
+        • 848 ÷ 8                                              • “Give me a signal when you have an answer and can
+                                                                 explain how you got it.”
+        • 4,848 ÷ 8
+        • 4,852 ÷ 8
+                                                             Activity
+        • 5,848 ÷ 8
+                                                               • 1 minute: quiet think time
 
-Student Response                                                  • Record answers and strategies.
-                                                                  • Keep expressions and work displayed.
-  • 106:           is 100 and         , and then
-    is 106.                                                       • Repeat with each expression.
+Student Response                                               • Record answers and strategies.
+                                                               • Keep expressions and work displayed.
+  • 106: 800 ÷ 8 is 100 and 48 ÷ 8 = 6, and then 100 + 6
+    is 106.                                                    • Repeat with each expression.
 
-  • 606:       ◦                    and            , and
-                   then         is 606.                         Activity Synthesis
-               ◦                   and                ,           • “How did you use the first few expressions to help
-                   and then           is 606.                       you find the value of the last expression?”
+  • 606:       ◦ 4,800 ÷ 8 = 600 and 48 ÷ 8 = 6, and
+                 then 600 + 6 is 606.                        Activity Synthesis
+               ◦ 4,000 ÷ 8 = 500 and 848 ÷ 8 = 106,            • “How did you use the first few expressions to help
+                 and then 500 + 106 is 606.                      you find the value of the last expression?”
 
-  • 606 with a remainder of 4: 4,852 is only 4 more than          • “How might you use multiplication to find the value
-    4,848, so it’s not enough to make another group of 8.           of each quotient?”
+  • 606 with a remainder of 4: 4,852 is only 4 more than       • “How might you use multiplication to find the value
+    4,848, so it’s not enough to make another group of 8.        of each quotient?”
 
   • 731: 5,848 is 1,000 more than 4,848 and
-                     .(              and                  .)
-                      .
+    1,000 ÷ 8 = 125. (800 ÷ 8 = 100 and 200 ÷ 8 = 25.)
+    606 + 125 = 731.
 
 
 
 
-Activity 1                                                                                                   15 min
+Activity 1                                                                                                 15 min
 
 Two Truths and a Lie, or Two Lies and a Truth?
 
@@ -126,10 +126,10 @@ Addressing     4.NBT.B.5, 4.NBT.B.6, 4.OA.A.3
 
 
 
-                                           Grade 4                                    CC BY NC 2024
+                                           Grade 4                                 CC BY NC 2024
                                             Unit 9
-                                                               Lesson 8
-                                                                               Illustrative Mathematics®              2
+                                                            Lesson 8
+                                                                            Illustrative Mathematics®               2
 In this activity, students are given three situations and asked to determine which situations are true and which are not.
 To do so, they need to carefully make sense of the quantities in each story and how they are related (MP2). Students
 may explain why a situation is true by writing one or more expressions or equations to represent the relationships and
@@ -146,57 +146,57 @@ why a situation must be false.
       Supports accessibility for: Conceptual Processing, Organization, Social-Emotional Functioning
 
 
-     Student Task Statement                                          Launch
-      Here are 3 situations. Which                                     • Groups of 2–4
-      situations are true? Which                                       • 5 minutes: independent work time
+     Student Task Statement                                         Launch
+      Here are 3 situations. Which                                    • Groups of 2–4
+      situations are true? Which                                      • 5 minutes: independent work time
       situations are not true?
 
       Show how you know.
-                                                                     Activity
-         • Situation A: A high-rise building has 53 stories.
-           The first floor is 17 feet tall. All other stories are      • 5 minutes: group discussion
-           each 11 feet tall. The building is 589 feet tall.           • Monitor for different ways students represent and
-         • Situation B: A window washer has 600 seconds                  prove how each situation could be true or false,
-           to wash 17 windows of a building. It takes 54                 including the use of reasoning based on estimation
-           seconds to wash each window. The washer                       and mental math.
-           finishes washing all the windows and has 11
-           seconds to spare.                                         Activity Synthesis
-         • Situation C: There are 11 students who set a
-                                                                       • Select students to share their responses and
-           goal to raise at least $600 for charity. Each
-                                                                         reasoning.
-           student raises $17 each day. After 3 days of
-           fundraising, the group needs $54 to meet their              • Record the expressions or equations they wrote to
-           goal.                                                         represent the situations. Highlight different ways of
-                                                                         representing the same situation.
+                                                                    Activity
+        • Situation A: A high-rise building has 53 stories.
+          The first floor is 17 feet tall. All other stories are      • 5 minutes: group discussion
+          each 11 feet tall. The building is 589 feet tall.           • Monitor for different ways students represent and
+        • Situation B: A window washer has 600 seconds                  prove how each situation could be true or false,
+          to wash 17 windows of a building. It takes 54                 including the use of reasoning based on estimation
+          seconds to wash each window. The washer                       and mental math.
+          finishes washing all the windows and has 11
+          seconds to spare.                                         Activity Synthesis
+        • Situation C: There are 11 students who set a
+                                                                      • Select students to share their responses and
+          goal to raise at least $600 for charity. Each
+                                                                        reasoning.
+          student raises $17 each day. After 3 days of
+          fundraising, the group needs $54 to meet their              • Record the expressions or equations they wrote to
+          goal.                                                         represent the situations. Highlight different ways of
+                                                                        representing the same situation.
 
-Student Response                                                       • “For which situations did you need to find the actual
-                                                                         values in order to tell if they were true or not true?
-Situation A is the only one that is true. Sample responses:              Why is that?” (I tried to estimate for Situation A and I
-                                                                         knew it would be close, so I did the multiplication and
-  • A:
-                                                                         added to find out if the total height was really 610
-  • B:              . The window washer will need at
-                                                                         feet. I needed to write equations to make sense of
+Student Response                                                      • “For which situations did you need to find the actual
+                                                                        values in order to tell if they were true or not true?
+Situation A is the only one that is true. Sample responses:             Why is that?” (I tried to estimate for Situation A and I
+                                                                        knew it would be close, so I did the multiplication and
+  • A: (52 × 11) + 17 = 572 + 17 = 589
+                                                                        added to find out if the total height was really 610
+  • B: 17 × 54 = 918. The window washer will need at
+                                                                        feet. I needed to write equations to make sense of
     least 918 seconds to wash all the windows.
-                                                                         Situation C. I just did the multiplication and the
-  • B: 600 seconds is 10 minutes. Each window takes                      subtraction to check if it really could be $54.)
+                                                                        Situation C. I just did the multiplication and the
+  • B: 600 seconds is 10 minutes. Each window takes                     subtraction to check if it really could be $54.)
     almost 1 minute to wash, so the window washer will
-                                                                       • “For which stories was it possible to tell by estimation
+                                                                      • “For which stories was it possible to tell by estimation
     need close to 17 minutes, not 10 minutes.
-                                                                         and mental math?” (I could do some estimation for
-  • C:                                   , and
-                                                                         all of them, but for Situation B I could tell that even if
-                       . The group will be short by only $39
-                                                                         he washed only 10 windows, the window washer
+                                                                        and mental math?” (I could do some estimation for
+  • C: (17 × 11) × 3 = 187 × 3 = 561, and
+                                                                        all of them, but for Situation B I could tell that even if
+    600- 561 = 39 . The group will be short by only $39
+                                                                        he washed only 10 windows, the window washer
     after 3 days.
-                                                                         would be almost out of time and couldn’t do 17.)
+                                                                        would be almost out of time and couldn’t do 17.)
 
 
-                                                Grade 4                                     CC BY NC 2024
-                                                 Unit 9
-                                                                    Lesson 8
-                                                                                     Illustrative Mathematics®                3
+                                               Grade 4                                     CC BY NC 2024
+                                                Unit 9
+                                                                   Lesson 8
+                                                                                    Illustrative Mathematics®                3
 Activity 2                                                                                                    20 min
 
 Buses for a Field Trip
@@ -260,20 +260,20 @@ Encourage students to use the Three Reads routine as needed to solve problems.
                                                               Lesson 8
                                                                               Illustrative Mathematics®                4
 Student Response
- 1.   a. 14 buses. Sample response:                  .
-                      . Fourteen small buses can fit
-                    or 378 people, which is more than
+ 1.   a. 14 buses. Sample response: 27 × 10 = 270.
+         27 × 4 = 108. Fourteen small buses can fit
+         270 + 108 or 378 people, which is more than
          375.
-      b. 8 buses. Sample response:                , and
+      b. 8 buses. Sample response: 48 × 8 = 384, and
          384 is more than 375.
  2. Sample response: Company A, because there will be
-    fewer empty seats.                 and 378 is 3 more
+    fewer empty seats. 27 × 14 = 378 and 378 is 3 more
     than 375, so there will be 3 empty seats.
-                  and 384 is 9 more than 375, so there
+    48 × 8 = 384 and 384 is 9 more than 375, so there
     will be 9 empty seats.
  3. Agree. Sample response:
-      ◦                , which is 57 more than 375. There
-          will be almost 60 empty seats.
+      ◦ 6 × 72 = 432, which is 57 more than 375. There
+        will be almost 60 empty seats.
       ◦ 375 divided by 6 is 62 with a remainder of 3. This
         means each bus will have about 9 or 10 open
         seats.
@@ -301,7 +301,7 @@ Cool-down                                                                       
 To and Fro
 
       Standards
-Addressing      4.NBT.B.5, 4.NBT.B.6, 4.OA.A.3
+Addressing     4.NBT.B.5, 4.NBT.B.6, 4.OA.A.3
 
 
       Student Task Statement
@@ -326,13 +326,13 @@ Addressing      4.NBT.B.5, 4.NBT.B.6, 4.OA.A.3
 
 Student Response
  1. D. Sample responses:
-     ◦                       ,
-     ◦                   ,
+     ◦ 1,560- 4 = 1,560 , 1,560 ÷ 8 = 195
+     ◦ 195 × 8 = 1,560, 1,560 + 4 = 1,564
  2. Sample responses:
-     ◦ I know A could not be true because I know                      and that’s more than the total distance the train
+     ◦ I know A could not be true because I know 200 × 8 = 1,600 and that’s more than the total distance the train
        traveled.
      ◦ I know C could not be true because the situation says it's just a few more miles to the repair center. 1,500 miles
-       is not a few more miles.                does match the total distance, but it doesn’t match the situation.
+       is not a few more miles. (8 × 8) + 1,500 does match the total distance, but it doesn’t match the situation.
 
 
 Responding to Student Thinking

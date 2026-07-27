@@ -66,17 +66,17 @@ Required Preparation
                                                                             Illustrative Mathematics®               1
 Lesson Timeline                                              Teacher Reflection Questions
                                                              How does understanding the commutative property
- Warm-up                                        10 min
+ Warm-up                                      10 min
                                                              benefit students as they build fluency with addition within
- Activity 1                                     15 min       10?
+ Activity 1                                   15 min         10?
 
- Activity 2                                     10 min
+ Activity 2                                   10 min
 
- Activity 3                                     10 min
+ Activity 3                                   10 min
 
- Synthesis Estimate                             10 min
+ Synthesis Estimate                           10 min
 
- Cool-down                                       5 min
+ Cool-down                                    5 min
 
 
 
@@ -98,12 +98,12 @@ expressions by noticing that when an addend changes by 1 the sum changes by 1.
       Student Task Statement                                 Launch
       Find the value of each expression mentally.              • Display one expression.
 
-         •                                                     • “Give me a signal when you have an answer and can
+        • 4 + 2                                                • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-         •
+        • 5 + 2
                                                                • 1 minute: quiet think time
-         •
-         •
+        • 5 + 3
+        • 6 + 3
                                                              Activity
 
 Student Response                                               • Record answers and strategy.
@@ -111,17 +111,17 @@ Student Response                                               • Record answer
   • 6: It’s 2 more than 4.
                                                                • Repeat with each expression.
   • 7: I counted on, 5...6, 7
-  • 8: The last expression was         , this one is like
-              , which is 8.                                  Activity Synthesis
-  • 9:        is 8, so       is one more.                      • “Did anyone approach the problem in a different
+  • 8: The last expression was 5 + 2, this one is like
+    5 + 2 + 1, which is 8.                                   Activity Synthesis
+  • 9: 5 + 3 is 8, so 6 + 3 is one more.                       • “Did anyone approach the problem in a different
                                                                  way?”
 
 
 
 
-                                               Grade 1                              CC BY NC 2024
-                                                Unit 3
-                                                            Lesson 2
+                                             Grade 1                                CC BY NC 2024
+                                              Unit 3
+                                                           Lesson 2
                                                                              Illustrative Mathematics®               2
 Activity 1                                                                                                     15 min
 
@@ -179,7 +179,7 @@ Required Preparation
                                              Unit 3
                                                             Lesson 2
                                                                               Illustrative Mathematics®                 3
-          Equation:                                              • “What addition equation can I write to represent the
+          Equation: ___                                          • “What addition equation can I write to represent the
                                                                    total number of counters?”
       2. Tyler spills 5 red counters and 3 yellow
          counters.                                               • 30 seconds: quiet think time
@@ -191,7 +191,7 @@ Required Preparation
 
           Equation:                                              • Draw a box around the total in the equation.
 
-
+          ___
                                                                Activity
       3. Clare spills 2 red counters and 8 yellow
          counters.                                               • Read each problem.
@@ -200,7 +200,7 @@ Required Preparation
          Show your thinking using drawings, numbers,
          or words.                                               • “Share your thinking with your partner.”
                                                                  • 4 minutes: partner discussion
-          Equation:
+          Equation: ___
                                                                  • Monitor for students who find the sum of 3 and 6 by:
       4. Han spills 3 red counters and 6 yellow
          counters.                                                  ◦ Counting all.
@@ -210,7 +210,7 @@ Required Preparation
          or words.
 
           Equation:
-                                                               Activity Synthesis
+                      ___                                      Activity Synthesis
                                                                  • Invite previously identified students to share in the
 Student Response
                                                                    sequence shown in the list.
@@ -222,8 +222,8 @@ Student Response
     response: Draws 5 circles and 3 circles and counts all.
                                                                    counters, the second counted 6 counters, and the
  3. 10 counters,                 or            . Sample            third counted 3 counters.)
-    response: I know that          is the same amount as
-         , and that is 10. I already know it.
+    response: I know that 2 + 8 is the same amount as
+    8 + 2, and that is 10. I already know it.
 
  4. 9 counters,             or             . Sample
     response: Writes a 6, then makes 3 tallies. Counts
@@ -237,7 +237,7 @@ Activity 2                                                                      
 Are They Both Right?
 
      Standards
-Addressing    1.OA.B.3, 1.OA.C.5
+Addressing      1.OA.B.3, 1.OA.C.5
 
 
 
@@ -258,7 +258,7 @@ Materials to Gather
 
 
       Student Task Statement                                     Launch
-      Kiran and Clare find the value of       .                    • Groups of 2
+      Kiran and Clare find the value of 2 + 7.                     • Groups of 2
 
       Kiran counts on from 2.                                      • Give students access to two-color counters.
 
@@ -311,7 +311,7 @@ Addressing     1.OA.C.5, 1.OA.C.6, 1.OA.D.8
 
 
 The purpose of this activity is for students to find the value of sums within 10. Students may apply what they learned
-about the commutative property and counting on. They may count on for certain equations, such as            or    since they
+about the commutative property and counting on. They may count on for certain equations, such as + 1 or + 2 since they
 can keep track easily, but count all for others. In the Lesson Synthesis, students return to the addition expression cards
 they used in a previous lesson.
 
@@ -328,36 +328,36 @@ Materials to Gather
   • Connecting cubes or two-color counters: Activity 3
 
 
-     Student Task Statement                                     Launch
+     Student Task Statement                                    Launch
       Find the value of each sum.                                 • Groups of 2
                                                                   • Give students access to 10-frames and connecting
-       1.                                                           cubes or two-color counters.
+       1. 7 + 2 =                                                   cubes or two-color counters.
 
 
-       2.                                                       Activity
+       2. 3 + 5 =                                              Activity
                                                                   • Read the Task Statement.
-       3.
+       3. = 8 + 2
                                                                   • 5 minutes: independent work time
                                                                   • “Discuss your thinking with your partner.”
-       4.
+       4. 3 + 6 =
                                                                   • 3 minutes: partner discussion
 
-       5.                                                         • Monitor for the different ways students add,
+       5. 5 + 2 =                                                 • Monitor for the different ways students add,
                                                                     including counting on from the first addend and
                                                                     counting on from the greater addend.
-       6.
+       6. = 4 + 4
 
-                                                                Activity Synthesis
-       7.
+                                                               Activity Synthesis
+       7. 2 + 6 =
                                                                   • Invite previously selected students to share.
 
-       8.
+       8. = 1 + 9
 
 
 
 
-                                             Grade 1                                  CC BY NC 2024
-                                              Unit 3
+                                            Grade 1                                   CC BY NC 2024
+                                             Unit 3
                                                              Lesson 2
                                                                                Illustrative Mathematics®                  6
 Student Response
@@ -374,8 +374,8 @@ Materials to Gather
 
 
 Lesson Synthesis
-“Today we saw different ways we can add numbers. Mai is practicing her sums within 10. She has       in her ‘got it’ pile
-and        in her ‘not yet’ pile. What would you tell Mai?” (If you know , you also know     . You can change the
+“Today we saw different ways we can add numbers. Mai is practicing her sums within 10. She has 7 + 2 in her ‘got it’ pile
+and 2 + 7 in her ‘not yet’ pile. What would you tell Mai?” (If you know 7 + 2, you also know 2 + 7. You can change the
 order of the numbers you add and get the same value.)
 
 Give students access to their addition cards sorted into ‘got it’ and ‘not yet.’
@@ -396,7 +396,7 @@ Addressing      1.OA.B.3
 
       Student Task Statement
 
-      How does knowing                help you with                   ?
+      How does knowing 7 + 2 = 9 help you with 2 + 7 =                ?
 
       Show your thinking using drawings, numbers, or words.
 

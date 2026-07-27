@@ -308,7 +308,7 @@ Required Preparation
       Student Task Statement                                    Launch
       Choose a center.                                            • “Today we are going to choose from centers we have
                                                                     already learned.”
-      Number Race                  Tower Build
+      Number Race                    Tower Build
                                                                   • Display the center choices in the student book.
                                                                   • “Think about what you would like to do first.”
                                                                   • 30 seconds: quiet think time
@@ -335,13 +335,13 @@ Display the cards from the first activity that have 6 dots, 10 dots on a 10-fram
 “Today we put groups together to make numbers from 11 to 19. Which two groups of dots can we put together to make
 12? How do you know?” (We can put together the full 10-frame and 2 more dots.)
 
-“12 dots is 10 dots plus 2 dots. Another way we could write that is 12 is       .”
+“12 dots is 10 dots plus 2 dots. Another way we could write that is 12 is 10 + 2.”
 
-Record for all to see: “12 is      .”
+Record for all to see: “12 is 10 + 2 .”
 
 
-                                        Kindergarten                                   CC BY NC 2024
-                                           Unit 6
+                                          Kindergarten                                 CC BY NC 2024
+                                             Unit 6
                                                               Lesson 7
                                                                                 Illustrative Mathematics®             6
 Observation

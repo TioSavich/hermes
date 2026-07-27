@@ -340,7 +340,7 @@ If you have time: The lockers that are open are 1, 4, 9, and
   • These numbers have an odd number of factors,
     so the lockers changed an odd number of times.
     When we list their factor pairs, one pair is the same
-    number twice. For example,                 and         ,
+    number twice. For example, 4 = 1 × 4 and 4 = 2 × 2,
     so 4 has three factors: 1, 2, 4. So the first, second,
     and fourth students touch locker number 4, and the
     pattern is open-close-open. For 16, which has five

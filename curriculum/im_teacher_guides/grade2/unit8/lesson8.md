@@ -270,7 +270,7 @@ Student Response
      a. 4 columns                                           • “How can we prove there are 10 counters in this
                                                               array?” (We can skip-count by 2. We can add
      b. 2 counters in each column
-                                                                                . We can add      .)
+                                                              2 + 2 + 2 + 2 + 2. We can add 5 + 5.)
      c. 8 counters
 3.
      a. 5 in each column

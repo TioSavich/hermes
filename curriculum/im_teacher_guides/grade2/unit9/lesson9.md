@@ -71,7 +71,7 @@ Lesson Timeline                                               Teacher Reflection
                                                                               Illustrative Mathematics®             1
  Synthesis Estimate                           10 min
 
- Cool-down                                     5 min
+ Cool-down                                    5 min
 
 
 
@@ -79,48 +79,48 @@ Warm-up                                                                         
 
 Number Talk: Use Place Value to Subtract
 
-      Standards                                                  Instructional Routines
+      Standards                                                 Instructional Routines
 Addressing      2.NBT.B.5, 2.OA.B.2                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for finding the values of
 differences when they may need to decompose a ten. When students consider how they can use known differences, like
-       or        , to find the values of the other expressions, they look for and make use of structure and express
+10- 6 or 14- 6 , to find the values of the other expressions, they look for and make use of structure and express
 regularity in repeated reasoning (MP7, MP8).
 
 
       Student Task Statement                               Launch
       Find the value of each expression mentally.            • Display one expression.
 
-        •                                                    • “Give me a signal when you have an answer and can
+        • 10- 6                                              • “Give me a signal when you have an answer and can
                                                                explain how you got it.”
-        •
+        • 14- 6
                                                              • 1 minute: quiet think time
-        •
-        •
+        • 54- 6
+        • 54- 26
                                                            Activity
 
 Student Response                                             • Record answers and strategy.
                                                              • Keep expressions and work displayed.
   • 4: I just know that it’s 4.
                                                              • Repeat with each expression.
-  • 8: I added 4 to the result of         .
-  • 48: I added 4 tens to the result of        .
+  • 8: I added 4 to the result of 10- 6 .
+  • 48: I added 4 tens to the result of 14- 6 .
                                                            Activity Synthesis
-  • 28: I subtracted 20 from the result of         .
-                                                             • “How can you use the result of          to find the
-                                                               value of        ?” (54 has 4 more tens than 14, so add
-                                                               4 tens or 40 to the result of       .)
-                                                             • “How can you use the result of       to find the
-                                                               value of       ?” (26 has 2 more tens than 6, so that
+  • 28: I subtracted 20 from the result of 54- 6 .
+                                                             • “How can you use the result of 14- 6 to find the
+                                                               value of 54- 6 ?” (54 has 4 more tens than 14, so add
+                                                               4 tens or 40 to the result of 14- 6 .)
+                                                             • “How can you use the result of 54- 6 to find the
+                                                               value of 54- 26 ?” (26 has 2 more tens than 6, so that
                                                                means 2 tens need to be taken away from the result
-                                                               of       .)
+                                                               of54- 6 .)
 
 
 
 
-                                              Grade 2                            CC BY NC 2024
-                                               Unit 9
+                                            Grade 2                              CC BY NC 2024
+                                             Unit 9
                                                          Lesson 9
                                                                           Illustrative Mathematics®               2
 Activity 1                                                                                                   20 min
@@ -232,10 +232,10 @@ Students may sort by:                                  to give away.”
                                          Unit 9
                                                   Lesson 9
                                                                   Illustrative Mathematics®               4
-                                                                       cards.)
-                                                                     • If students do not sort in any of the ways suggested
-                                                                       in the Student Responses, propose these categories
-                                                                       and ask students to use them to sort.
+                                                                     cards.)
+                                                                   • If students do not sort in any of the ways suggested
+                                                                     in the Student Responses, propose these categories
+                                                                     and ask students to use them to sort.
 
 
 
@@ -248,7 +248,7 @@ asking:
 
 
 
-Activity 2                                                                                                        15 min
+Activity 2                                                                                                       15 min
 
 Solve Story Problems
 
@@ -267,48 +267,48 @@ The goal of the Activity Synthesis is to share the different methods students us
 problems (MP2).
 
 
-     Student Task Statement                                        Launch
-      Choose 1 of the story problems from the first                  • Groups of 2
+     Student Task Statement                                     Launch
+      Choose 1 of the story problems from the first                • Groups of 2
       activity. Solve it. Show your thinking using drawings,
       numbers, or words.
-                                                                   Activity
-                                                                     • “Choose one of the story problems from the first
+                                                                Activity
+                                                                   • “Choose one of the story problems from the first
 Student Response
-                                                                       activity to solve. Pick a different problem than your
-Sample responses:                                                      partner.”
- 1. Jada has 57 books now.                       ,                   • 5 minutes: independent work time
-                 ,              .
-                                                                     • “Share the method you used and the solution to your
- 2. Lin and Tyler put 33 books on the cart,                   .        problem with your partner.”
-    Noah took 7 books off the cart,                  . So there
-    are 26 books on the cart.                                        • 5 minutes: partner discussion
-                                                                     • Monitor for students who solved the story with Jada’s
-                                                                       stacks of books in different ways.
+                                                                     activity to solve. Pick a different problem than your
+Sample responses:                                                    partner.”
+ 1. Jada has 57 books now. 10 + 10 + 10 = 30,                      • 5 minutes: independent work time
+    92- 30 = 62 , 62- 5 = 57 .
+                                                                   • “Share the method you used and the solution to your
+ 2. Lin and Tyler put 33 books on the cart, 15 + 18 = 33.            problem with your partner.”
+    Noah took 7 books off the cart, 33 - 7 = 26. So there
+    are 26 books on the cart.                                      • 5 minutes: partner discussion
+                                                                   • Monitor for students who solved the story with Jada’s
+                                                                     stacks of books in different ways.
 
 
 
-                                              Grade 2                                    CC BY NC 2024
-                                               Unit 9
-                                                                  Lesson 9
-                                                                                  Illustrative Mathematics®                5
-                                                                Activity Synthesis
-                                                                  • Invite selected students to share their solutions for
-                                                                    the story with Jada’s books in stacks of 10.
-                                                                  • “How are their methods the same? How are they
-                                                                    different?”
+                                             Grade 2                                   CC BY NC 2024
+                                              Unit 9
+                                                               Lesson 9
+                                                                                Illustrative Mathematics®                 5
+                                                             Activity Synthesis
+                                                               • Invite selected students to share their solutions for
+                                                                 the story with Jada’s books in stacks of 10.
+                                                               • “How are their methods the same? How are they
+                                                                 different?”
  3. The total number of books sorted is
-    80.             , because          is 33 and
+    80. 47 + 15 + 18, because 15 + 18 is 33 and 47 + 33
     is 80.
 
 
 
 
- 4. Lin takes 28 books and Tyler takes 17.                 .
-    Since              , there are 28 books left.
- 5. Lin read 19 books because         is 19. Together
-    they read        , or 33 books last summer.
+ 4. Lin takes 28 books and Tyler takes 17. 17 + 28 = 45.
+    Since 73 - 45 = 28, there are 28 books left.
+ 5. Lin read 19 books because 14 + 5 is 19. Together
+    they read 14 + 19, or 33 books last summer.
  6. There were 51 books on the shelf at the
-    start.           .
+    start. 33 + 18 = 51.
 
 
 
@@ -332,10 +332,10 @@ add the numbers in any order.)
 
 
 
-                                            Grade 2                                   CC BY NC 2024
-                                             Unit 9
-                                                               Lesson 9
-                                                                               Illustrative Mathematics®              6
+                                           Grade 2                                 CC BY NC 2024
+                                            Unit 9
+                                                           Lesson 9
+                                                                            Illustrative Mathematics®              6
 Cool-down                                                                                                5 min
 
 Book Donations
@@ -352,12 +352,12 @@ Addressing     2.NBT.B.5, 2.OA.A.1
 
 
 Student Response
-  • Diego’s class gave away 24 books. Sample response:
+  • Diego’s class gave away 24 books. Sample response: 19 + 5 = 24
 
 
 Responding to Student Thinking
 Students write that Diego’s class gave away 14 books        Next Day Supports
-because              .                                      Launch the Warm-up or activities by highlighting
+because 19- 5 = 14 .                                        Launch the Warm-up or activities by highlighting
                                                             important representations from previous lessons.
 
 

@@ -97,25 +97,25 @@ lessons.
      Student Task Statement                              Launch
      Find the value of each expression mentally.           • Display one expression.
 
-         •                                                 • “Give me a signal when you have an answer and can
+       • 90- 45                                            • “Give me a signal when you have an answer and can
                                                              explain how you got it.”
-         •
+       • 270- 45
                                                            • 1 minute: quiet think time
-         •
-         •
+       • 270- 135
+       • 360- 135
                                                          Activity
 
 Student Response                                           • Record answers and strategies.
                                                            • Keep expressions and work displayed.
- • 45:
+ • 45: 90 = 45 + 45
                                                            • Repeat with each expression.
- • 225: 270 is 180 more than 90, so           is 180
-   more than         .
- • 135: 135 is 90 more than 45, so            means      Activity Synthesis
-   subtracting an additional 90 from          .
+ • 225: 270 is 180 more than 90, so 270- 45 is 180
+   more than 90- 45 .
+ • 135: 135 is 90 more than 45, so 270- 135 means        Activity Synthesis
+   subtracting an additional 90 from 270- 45 .
                                                            • “What do these expressions have in common?” (The
- • 225: 360 is 90 more than 270, so            is 90         first number in each sequence is a multiple of 90.)
-   more than            .
+ • 225: 360 is 90 more than 270, so 360- 135 is 90           first number in each sequence is a multiple of 90.)
+   more than 270- 135 .
                                                            • “How did this observation—that the first numbers
                                                              are all multiples of 90—help you find the values of
                                                              the differences?”

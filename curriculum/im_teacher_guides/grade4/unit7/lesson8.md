@@ -69,12 +69,12 @@ Materials to Gather                                             Materials to Cop
                                               Unit 7
                                                               Lesson 8
                                                                                 Illustrative Mathematics®              1
-Lesson Timeline                                                  Teacher Reflection Questions
-                                                                 How did students connect the angles they created in the
+Lesson Timeline                                                 Teacher Reflection Questions
+                                                                How did students connect the angles they created in the
  Warm-up                                        10 min
-                                                                 second activity to the fractions of a circle? How can you
- Activity 1                                     15 min           help students make connections between degrees and a
-                                                                 fraction of a circle in upcoming lessons?
+                                                                second activity to the fractions of a circle? How can you
+ Activity 1                                     15 min          help students make connections between degrees and a
+                                                                fraction of a circle in upcoming lessons?
  Activity 2                                     20 min
 
  Synthesis Estimate                             10 min
@@ -83,12 +83,12 @@ Materials to Gather                                             Materials to Cop
 
 
 
-Warm-up                                                                                                        10 min
+Warm-up                                                                                                       10 min
 
 What Do You Know about 360?
 
-      Standards                                                       Instructional Routines
-Building On           4.NBT.A.1                                    • What Do You Know about _____?
+      Standards                                                      Instructional Routines
+Building On           4.NBT.A.1                                   • What Do You Know about _____?
 Building Toward       4.MD.C.5, 4.MD.C.7
 
 
@@ -98,33 +98,33 @@ into a sum of       or decompose a         angle into smaller angles, particular
 and      .
 
 
-      Student Task Statement                                     Launch
-      What do you know about 360?                                  • Display the number.
-                                                                   • “What do you know about 360?”
+      Student Task Statement                                    Launch
+      What do you know about 360?                                 • Display the number.
+                                                                  • “What do you know about 360?”
 Student Response
-Sample responses:                                                Activity
-  • It is 40 less than 400, and 60 more than 300.                  • 1 minute: quiet think time
-  • It is 10 times 36, twice 180, and half of 720.                 • Record responses.
-  • It is a multiple of 10, 20, 30, 40, 60, 90, 120, 180.          • If no students mentioned different ways to express
-  • It is         ,        ,        ,      ,         ,      ,        360, ask: “How could we express the number 360?”
-              ,        ,        .                                    and “What do you know about the factors of 360?”
+Sample responses:                                               Activity
+  • It is 40 less than 400, and 60 more than 300.                 • 1 minute: quiet think time
+  • It is 10 times 36, twice 180, and half of 720.                • Record responses.
+  • It is a multiple of 10, 20, 30, 40, 60, 90, 120, 180.         • If no students mentioned different ways to express
+  • It is 2 × 180, 3 × 120, 4 × 90, 6 × 60, 9 × 40, 10 × 36,        360, ask: “How could we express the number 360?”
+    12 × 30, 15 × 24, 18 × 20.                                      and “What do you know about the factors of 360?”
 
 
-                                                                 Activity Synthesis
-                                                                   • Draw students’ attention to the factors of 360. “What
-                                                                     are the factors of 360? How many are there?”
-                                                                   • “The number 360 and its factors are important when
-                                                                     describing angles. Let’s find out why they show up
-                                                                     again and again as we look at a new way to describe
-                                                                     and measure the size of an angle.”
+                                                                Activity Synthesis
+                                                                  • Draw students’ attention to the factors of 360. “What
+                                                                    are the factors of 360? How many are there?”
+                                                                  • “The number 360 and its factors are important when
+                                                                    describing angles. Let’s find out why they show up
+                                                                    again and again as we look at a new way to describe
+                                                                    and measure the size of an angle.”
 
 
 
 
-                                               Grade 4                                 CC BY NC 2024
+                                               Grade 4                                CC BY NC 2024
                                                 Unit 7
-                                                                Lesson 8
-                                                                                Illustrative Mathematics®               2
+                                                               Lesson 8
+                                                                               Illustrative Mathematics®               2
 Activity 1                                                                                                     15 min
 
 A Full Turn
@@ -177,8 +177,8 @@ Student Response                                                 • 2–3 minut
     50-degree angle and between 120 degrees and 140
                                                                        estimate the 270-degree angle, by adding
     degrees for 130-degree angle.
-                                                                       (              or          ) or by subtracting
-                                                                       (         ).
+                                                                       (90 + 90 + 90 or 180 + 90) or by subtracting
+                                                                       (360- 90 ).
 
 
                                             Grade 4                                   CC BY NC 2024
@@ -193,7 +193,7 @@ Student Response                                                 • 2–3 minut
                                                                     how much of a turn. Some of us used one measure
                                                                     to find the next measure. Some of us thought about
                                                                     addition and some thought about division).
-                                                                  • Consider displaying the equation
+                                                                  • Consider displaying the equation 90 + 90 + 90 = 270
                                                                     and discussing:
                                                                       ◦ “How does this match a way to estimate the third
                                                                         angle?”
@@ -210,7 +210,7 @@ Student Response                                                 • 2–3 minut
 
 
 
-Activity 2                                                                                                      20 min
+Activity 2                                                                                                       20 min
 
 Make a Measuring Tool
 
@@ -225,7 +225,7 @@ identified along the way.
 
 The activity serves several goals. The first is to familiarize students with the structure of a protractor, using tactile
 processes (folding paper and aligning lines or edges). The second goal is to develop students’ intuition for thinking of a
-larger angle as composed of smaller angles, preparing them to see (in future lessons) that a     angle is     of a full turn.
+larger angle as composed of smaller angles, preparing them to see (in future lessons) that a     angle is 1/360 of a full turn.
 A final goal is to motivate the need for a tool that can measure angles more precisely.
 
 Some students may use a square corner of a sheet of paper to find a          angle on their semicircle and others may
@@ -240,7 +240,7 @@ Materials to Gather                                             Materials to Cop
                                              Grade 4                                   CC BY NC 2024
                                               Unit 7
                                                               Lesson 8
-                                                                                Illustrative Mathematics®                4
+                                                                                Illustrative Mathematics®                 4
  • Rulers or straightedges: Activity 2                            3 students): Activity 2
 
 

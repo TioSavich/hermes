@@ -95,11 +95,11 @@ from a previous grade, however, they may benefit from a brief review of the step
      Student Task Statement                                     Launch
       Decide if each statement is true or false. Be               • Display one equation.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           equation is true and can explain how you know.”
+        • 4 × 5 = 5 × 4                                             equation is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 125 + 200 = 200 + 125                                   • 1 minute: quiet think time
 
-        •
+        • 300- 100 = 100- 300
                                                                 Activity
 Student Response                                                  • Share and record answers and strategies.
 
@@ -153,7 +153,7 @@ Materials to Gather
 
 
      Student Task Statement                                     Launch
-      Lin’s work for finding the value of           is            • Groups of 2
+      Lin’s work for finding the value of 428 - 156 is            • Groups of 2
       shown.                                                      • Give students access to base-ten blocks.
                                                                   • Display the image of Lin’s work.
                                                                   • “Now let’s look at how Lin subtracted 156 from 428.
@@ -169,9 +169,9 @@ Student Response
                                                                     work.”
 Sample responses:                                                 • 5 minutes: partner work time
  1. She didn’t really take away 50 from 428. She didn’t           • Monitor for students who:
-    have enough tens so she subtracted           instead
+    have enough tens so she subtracted 50- 20 instead
                                                                       ◦ Use base-ten blocks or an algorithm to make
-    of          which isn’t the same thing.
+    of 20- 50, which isn’t the same thing.
                                                                         sense of Lin’s mistake.
  2. I would cross out the 400 and write 300 over it to
                                                                       ◦ Decompose a hundred into 10 tens before
@@ -180,7 +180,7 @@ Sample responses:                                                 • 5 minutes:
     tens. Then I would record 120 above the 20 to show
                                                                         exchanging base-ten blocks or rewriting 400
     that I had 12 tens. Then subtract.
-                                                                        as           and combining the 100 with 20.
+                                                                        as 300 + 100and combining the 100 with 20.
                                                                   • Identify students who used these strategies, and
                                                                     select them to share during the Activity Synthesis.
 
@@ -263,26 +263,26 @@ Materials to Gather
                                                                 • Share responses.
      work so it can be followed by others.
                                                                 • Give students access to base-ten blocks.
-      1.
-      2.
+      1. 283 - 159
+      2. 425 - 192
                                                               Activity
-      3.
+      3. 639- 465
                                                                 • “Take some quiet time to try this algorithm. Check in
-      4.
+      4. 591 - 128
                                                                   with your partner if you have questions.”
-      5.
+      5. 832- 575
                                                                 • 5–7 minutes: independent work time
                                                                 • If students have questions about the notation used
 Student Response                                                  to record the decomposition of a hundred or a ten
- 1. 124 or                                                        into more tens or ones, consider asking:
+ 1. 124 or 100 + 20 + 4                                           into more tens or ones, consider asking:
 
- 2. 233 or                                                         ◦ “Is there any place in the problem where you
+ 2. 233 or 200 + 30 + 3                                            ◦ “Is there any place in the problem where you
                                                                      don’t have enough tens or ones?”
- 3. 174 or
+ 3. 174 or 100 + 70 + 4
                                                                    ◦ “How could you get more tens (or ones)?”
- 4. 463 or
+ 4. 463 or 400 + 60 + 3
                                                                    ◦ “How could you record a hundred being
- 5. 257, or an algorithm showing                . Sample
+ 5. 257, or an algorithm showing 200 + 50 + 7. Sample
                                                                      decomposed into 10 tens (or a ten decomposed
     response:
                                                                      into 10 ones)?”
@@ -363,12 +363,12 @@ Addressing    3.NBT.A.2
 
 
      Student Task Statement
-     Andre found the value of          . His work is shown.
+     Andre found the value of 739- 255 . His work is shown.
 
 
 
 
-     Explain how he subtracted and the value he found for            .
+     Explain how he subtracted and the value he found for 739- 255 .
 
 
 Student Response
@@ -388,7 +388,7 @@ into 10 tens.                                                 Use the Warm-up of
 
                                          Grade 3                                   CC BY NC 2024
                                           Unit 3
-                                                            Lesson 9
+                                                         Lesson 9
                                                                             Illustrative Mathematics®           7
 ```
 

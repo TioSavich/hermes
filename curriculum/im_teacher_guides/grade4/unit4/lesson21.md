@@ -110,7 +110,7 @@ Sample responses:
     as a digit.                                                  • “What if we subtracted 44 from each whole number?”
   • B, C, and D go together because they have 5 in the             Record “– 44” under each whole number.
     ones place.                                                  • “Which number would it be easiest to subtract 44?”
-                                                                             because you don’t have to decompose
+                                                                   (2,055 - 44 because you don’t have to decompose
                                                                    units.)
                                                                  • “How could we subtract 44 from the other whole
                                                                    numbers?” (We would have to decompose other
@@ -317,7 +317,7 @@ three 0s. Finding each difference requires multiple regroupings.)
 unit needs to be decomposed before 2 ones could be subtracted from it. In the second expression, two units need to be
 decomposed. In the third expression, three units need to be decomposed before 2 ones could be subtracted.)
 
-“For the second expression,                   , a friend is unsure how to use the standard algorithm to find the value of
+“For the second expression, 505,500- 2,222 , a friend is unsure how to use the standard algorithm to find the value of
 the difference. Explain to a partner what you’d say to your friend.”
 
 2 minutes: partner discussion

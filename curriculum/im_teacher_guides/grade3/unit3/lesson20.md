@@ -68,12 +68,12 @@ Lesson Timeline                                                 Teacher Reflecti
                                             Unit 3
                                                             Lesson 20
                                                                                 Illustrative Mathematics®              1
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                        10 min
 
 Number Talk: Two Steps
 
-     Standards                                                         Instructional Routines
-Addressing      3.OA.C.7                                            • Number Talk
+     Standards                                                        Instructional Routines
+Addressing     3.OA.C.7                                            • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies students have for multiplying single-digit factors and then
@@ -82,45 +82,45 @@ of structure as they use their understanding of equal-size groups and properties
 sums (MP7). The reasoning here will be helpful later when students solve two-step word problems.
 
 
-     Student Task Statement                                       Launch
-      Find the value of each expression mentally.                   • Display one expression.
+     Student Task Statement                                      Launch
+      Find the value of each expression mentally.                  • Display one expression.
 
-        •                                                           • “Give me a signal when you have an answer and can
-                                                                      explain how you got it.”
-        •
-                                                                    • 1 minute: quiet think time
-        •
-        •
-                                                                  Activity
+        • 20 + (2 × 3)                                             • “Give me a signal when you have an answer and can
+                                                                     explain how you got it.”
+        • 30 + (4 × 3)
+                                                                   • 1 minute: quiet think time
+        • 50 + (8 × 3)
+        • 99 + (8 × 3)
+                                                                 Activity
 
-Student Response                                                    • Record answers and strategies.
-                                                                    • Keep expressions and work displayed.
-  • 26: Two groups of 3 is 6, and                .
-                                                                    • Repeat with each expression.
-  • 42: I know that        is 2 times       or       , which
-    is 12, and                .
-  • 74: I know        is twice     , so it is         , which     Activity Synthesis
+Student Response                                                   • Record answers and strategies.
+                                                                   • Keep expressions and work displayed.
+  • 26: Two groups of 3 is 6, and 20 + 6 = 26.
+                                                                   • Repeat with each expression.
+  • 42: I know that 4 × 3 is 2 times 2 × 3 or 2 × 6, which
+    is 12, and 30 + 12 = 42.
+  • 74: I know 8 × 3 is twice 4 × 3, so it is 12 + 12, which     Activity Synthesis
     is 24. Adding 50 and 24 gives 74.
-                                                                    • “How did the first two expressions help you find the
-  • 123: It's like the problem right before it, but you have          values of the last two expressions?”
+                                                                   • “How did the first two expressions help you find the
+  • 123: It's like the problem right before it, but you have         values of the last two expressions?”
     to add 99 and 24 instead of 50 and 24. Adding 24 to
-                                                                    • Consider asking:
+                                                                   • Consider asking:
     100 gives 124, so adding 24 to 99 gives 123.
-                                                                       ◦ “Who can restate ___ 's reasoning in a different
-                                                                         way?”
-                                                                       ◦ “Did anyone have the same strategy but would
-                                                                         explain it differently?”
-                                                                       ◦ “Did anyone approach the problem in a different
-                                                                         way?”
-                                                                       ◦ “Does anyone want to add on to _____’s strategy?”
+                                                                      ◦ “Who can restate ___ 's reasoning in a different
+                                                                        way?”
+                                                                      ◦ “Did anyone have the same strategy but would
+                                                                        explain it differently?”
+                                                                      ◦ “Did anyone approach the problem in a different
+                                                                        way?”
+                                                                      ◦ “Does anyone want to add on to _____’s strategy?”
 
 
 
 
-                                            Grade 3                                     CC BY NC 2024
-                                             Unit 3
-                                                                Lesson 20
-                                                                                 Illustrative Mathematics®               2
+                                           Grade 3                                     CC BY NC 2024
+                                            Unit 3
+                                                               Lesson 20
+                                                                                Illustrative Mathematics®               2
 Activity 1                                                                                                      15 min
 
 Info Gap: Introduction
@@ -170,52 +170,52 @@ do not yield the information they need (MP1).
                                             Unit 3
                                                             Lesson 20
                                                                                 Illustrative Mathematics®                3
-Student Response                            • Read the problem aloud.
-                                            • Listen for and clarify any questions about the
-72 chairs. Sample response:
-                                              context.
-                                            • “Some of the information you need to solve this
-                                              problem is missing, and I have it here. What specific
-                                              information do you need?”
-                                            • 1–2 minutes: quiet think time
-                                            • “With your partner, decide what information you
-                                              need to solve the problem, and create a list of
-                                              questions you can ask to find out.”
-                                            • 2–3 minutes: partner discussion
-                                            • Invite students to share 1 question at a time.
-                                            • Record each question on a display, and respond
-                                              with: “Why do you need to know _____ [that piece of
-                                              information]?” Students should provide a justification
-                                              for how they will use the information before the
-                                              information is revealed.
-                                            • Answer questions, using only information stated on
-                                              the Sample Data Card (do not reveal).
-                                            • Record information that is shared on the display.
-                                              Give students time to decide whether they have
-                                              enough information to solve the problem.
-                                            • Repeat until students decide they have enough
-                                              information to solve, and then ask students to solve
-                                              independently.
-                                            • 2–4 minutes: independent work time
+Student Response                                      • Read the problem aloud.
+                                                      • Listen for and clarify any questions about the
+72 chairs. Sample response: 40 + (4 × 8) = 72
+                                                        context.
+                                                      • “Some of the information you need to solve this
+                                                        problem is missing, and I have it here. What specific
+                                                        information do you need?”
+                                                      • 1–2 minutes: quiet think time
+                                                      • “With your partner, decide what information you
+                                                        need to solve the problem, and create a list of
+                                                        questions you can ask to find out.”
+                                                      • 2–3 minutes: partner discussion
+                                                      • Invite students to share 1 question at a time.
+                                                      • Record each question on a display, and respond
+                                                        with: “Why do you need to know _____ [that piece of
+                                                        information]?” Students should provide a justification
+                                                        for how they will use the information before the
+                                                        information is revealed.
+                                                      • Answer questions, using only information stated on
+                                                        the Sample Data Card (do not reveal).
+                                                      • Record information that is shared on the display.
+                                                        Give students time to decide whether they have
+                                                        enough information to solve the problem.
+                                                      • Repeat until students decide they have enough
+                                                        information to solve, and then ask students to solve
+                                                        independently.
+                                                      • 2–4 minutes: independent work time
 
 
-                                          Activity Synthesis
-                                            • Invite 1 or 2 students to share how they solved the
-                                              problem.
-                                            • “Which questions helped you find out how many
-                                              chairs were in the room?” (How many chairs were in
-                                              the corner? How many chairs were in each row? How
-                                              many rows were there?)
-                                            • If there were any questions that the data card cannot
-                                              answer, discuss them here.
+                                                    Activity Synthesis
+                                                      • Invite 1 or 2 students to share how they solved the
+                                                        problem.
+                                                      • “Which questions helped you find out how many
+                                                        chairs were in the room?” (How many chairs were in
+                                                        the corner? How many chairs were in each row? How
+                                                        many rows were there?)
+                                                      • If there were any questions that the data card cannot
+                                                        answer, discuss them here.
 
 
 
 
-                              Grade 3                           CC BY NC 2024
-                               Unit 3
-                                        Lesson 20
-                                                         Illustrative Mathematics®              4
+                                        Grade 3                           CC BY NC 2024
+                                         Unit 3
+                                                  Lesson 20
+                                                                   Illustrative Mathematics®              4
 Activity 2                                                                                                     20 min
 
 Info Gap: Bake Sale
@@ -309,7 +309,7 @@ Student Response
                                                                       ◦ “How did you know if your answer made sense?”
                                                                       ◦ “How could we represent the second problem
                                                                         with an equation, using a letter for the unknown
-                                                                        quantity?” (                  )
+                                                                        quantity?” (175 + (6 × 3) = m)
 
 
 
@@ -373,7 +373,7 @@ Diagram with an unknown:
 
 
 
-Equation with an unknown:
+Equation with an unknown:                                       104 + (2 × 10) = n
 
 
 

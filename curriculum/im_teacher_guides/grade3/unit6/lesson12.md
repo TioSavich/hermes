@@ -295,7 +295,7 @@ don’t know how many groups (or seedlings) there are.                 pack of s
                                                                                 Illustrative Mathematics®            5
                                                                    seed packs there are.)
                                                                  • “What equations could we write to match this
-                                                                   diagram?” (          or           )
+                                                                   diagram?” (? × 7 = 84 or 84 ÷ 7 = ?)
                                                                  • Discuss how students know that Diagram B and
                                                                    Situation E match and how the situation could be
                                                                    represented with equations.

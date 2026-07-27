@@ -43,7 +43,7 @@ Narrative
 In grade 2, students learned to represent whole numbers within 1,000, and make sense of their relative sizes on a
 number line. They also used number lines to represent addition and subtraction, and they often and intuitively relied on
 multiples of 10 and multiples of 100 as benchmarks to reason about sums and differences. (For example, to find
-         , they may start at 105, move 5 to the left to 100, move 10 more to the left to 90, and then move 2 more to land
+105 - 17, they may start at 105, move 5 to the left to 100, move 10 more to the left to 90, and then move 2 more to land
 at 88.)
 
 In this lesson, students take a closer look at the relationship between numbers within 1,000 and multiples of 100. The
@@ -61,15 +61,15 @@ to reason numerically when rounding to the nearest multiple of 100 in upcoming l
 
 Lesson Timeline                                               Teacher Reflection Questions
                                                               In grade 2, students were introduced to the number line.
- Warm-up                                     10 min
+ Warm-up                                    10 min
                                                               What previous understandings are students leveraging as
 
 
 
-                                          Grade 3                                    CC BY NC 2024
+                                          Grade 3                                   CC BY NC 2024
                                            Unit 3
                                                             Lesson 13
-                                                                              Illustrative Mathematics®             1
+                                                                             Illustrative Mathematics®              1
  Activity 1                                   10 min            they use the number line to find the nearest multiple of
                                                                 100?
  Activity 2                                   25 min

@@ -152,7 +152,7 @@ Monitor for and select students with the following approaches to share in the Ac
   • Count the tiles in either the first column or the first row, and count on by whichever number they find first.
   • Count the tiles in the first row and in the first column, and choose to count on by 10 for each row because it's an
     easier count.
-  • Count the tiles in the first column and in the first row, and multiply         .
+  • Count the tiles in the first column and in the first row, and multiply 9 × 10.
 The approaches are sequenced from more concrete to more abstract to help students make connections between their
 understanding of area measurement, counting methods, and multiplication. It is likely that students will switch their
 approach as they work on the problem. Students may not yet use multiplication to find the area or represent their
@@ -227,7 +227,7 @@ Student Response                                                         How do 
     nine times, which gave me 90.                                        found the same number in each row or column.)
   • I counted the number of tiles on the top row and the               ◦ “How are they different?” (Some just counted
     number of tiles in the column. Then I multiplied                     what was in 1 row or 1 column and then counted
-          .                                                              on. Some found how many were in a row and in
+    9 × 10.                                                              on. Some found how many were in a row and in
 
 
                                              Grade 3                                    CC BY NC 2024
@@ -413,7 +413,7 @@ Addressing     3.MD.C.7.b
 
 
 Student Response
-35 square feet. Sample response:
+35 square feet. Sample response: 7 × 5 = 35
 
 
 Responding to Student Thinking

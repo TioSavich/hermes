@@ -99,12 +99,12 @@ Sample Responses:
   • A, B, and D go together because they have tenths.
                                                              Activity Synthesis
   • A, C, and D go together because they are equivalent
-    to   .                                                     • “How might we revise one or more of the options so
+    to 8/10.                                                   • “How might we revise one or more of the options so
                                                                  that they all represent the same value?” (Sample
   • B, C, and D go together because they are expressed
                                                                  responses:
     in numerals instead of words.
-                                                                   ◦ Change the       to     or    .
+                                                                   ◦ Change the 80/10 to 8/10 or 80/100.
 
                                                                    ◦ Change Option A to say “eight,” Option C to say
                                                                      “8” or “8.0,” and the label for the first tick mark in
@@ -123,10 +123,10 @@ Addressing     4.NF.C.7
 
 
 
-                                           Grade 4                                  CC BY NC 2024
+                                           Grade 4                                   CC BY NC 2024
                                             Unit 4
                                                            Lesson 3
-                                                                             Illustrative Mathematics®                 2
+                                                                              Illustrative Mathematics®                2
 In this activity, students reason about the relative size of decimals by locating them on a number line. Students rely on
 their experience of locating fractions on a number line and the relationship of the decimal values relative to 0 and 1.
 
@@ -248,33 +248,33 @@ place value is a standard for grade 5 and is not expected at this point.
 
 
                                                                Activity
-           a. Name the decimal located at point A.               • “Take a few quiet minutes to work on the activity.
-           b. Is the decimal at point A less than or               Then share your thinking with your partner.”
-              greater than 0.50? Explain or show your            • 7–8 minutes: independent work time
-              reasoning.
+            a. Name the decimal located at point A.              • “Take a few quiet minutes to work on the activity.
+            b. Is the decimal at point A less than or              Then share your thinking with your partner.”
+               greater than 0.50? Explain or show your           • 7–8 minutes: independent work time
+               reasoning.
                                                                  • 3–4 minutes: partner discussion
-           c. Is the decimal at point B greater or less
-              than 0.06? Explain your reasoning.                 • For the comparisons in the second problem, monitor
+            c. Is the decimal at point B greater or less
+               than 0.06? Explain your reasoning.                • For the comparisons in the second problem, monitor
                                                                    for students who:
-           d. Estimate the decimal at point B.
+            d. Estimate the decimal at point B.
                                                                     ◦ Name the decimal in words and compare the
-      2. Compare the numbers using , , or . Can                       number of hundredths (for example, 62
+      2. Compare the numbers using > , < , or = . Can                 number of hundredths (for example, 62
          you think of a way to make comparisons                       hundredths and 26 hundredths).
          without using a number line?
                                                                     ◦ Relate the decimals to benchmarks such as 0,
-           a.                                                         0.5, and 1.
+            a. 0.51___0.09                                            0.5, and 1.
 
-           b.
+            b. 0.19___0.91
                                                                Activity Synthesis
-           c.
+            c. 0.45___0.54
 
-           d.                                                    • See Lesson Synthesis.
+            d. 0.62___0.26                                       • See Lesson Synthesis.
 
-           e.
+            e. 1.02___0.95
 
-            f.
+            f. 0.3___0.30
 
-           g.
+            g. 4.01___4.10
 
 
 Student Response
@@ -289,12 +289,12 @@ Student Response
         the number line, close to 0.
      d. 0.57 or 0.58
 
-2.   a.
-     b.
-     c.
-     d.
-     e.
-     f.
+2.   a. >
+     b. <
+     c. <
+     d. >
+     e. >
+     f. =
 
 
 
@@ -304,7 +304,7 @@ Student Response
                                                               Lesson 3
                                                                               Illustrative Mathematics®             5
 Lesson
-  g.
+  g. <
        Synthesis
 “Today we compared decimals in tenths and hundredths.”
 
@@ -334,41 +334,41 @@ Cool-down                                                                       
 
 More to Compare
 
-      Standards
-Addressing        4.NF.C.7
+     Standards
+Addressing     4.NF.C.7
 
 
-      Student Task Statement
-      Write   ,   , or   to make each comparison statement true. Use a number line if it is helpful.
+     Student Task Statement
+      Write < , > , or = to make each comparison statement true. Use a number line if it is helpful.
 
-       1.
+        1.   1.1___1.10
 
-       2.
+        2.   0.9___0.19
 
-       3.
+        3.   0.03___0.32
 
-       4.
+        4.   5.91___5.01
 
-       5.
+        5.   4.60___4.6
 
-       6.
+        6.   3.73___3.83
 
 
 
 
 Student Response
- 1.
- 2.
+ 1. =
+ 2. >
 
 
-                                              Grade 4                                  CC BY NC 2024
-                                               Unit 4
-                                                              Lesson 3
-                                                                                Illustrative Mathematics®            6
- 3.
- 4.
- 5.
- 6.
+                                            Grade 4                                   CC BY NC 2024
+                                             Unit 4
+                                                             Lesson 3
+                                                                               Illustrative Mathematics®             6
+ 3. <
+ 4. >
+ 5. =
+ 6. <
 
 
 Responding to Student Thinking

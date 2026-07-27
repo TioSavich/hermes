@@ -371,10 +371,10 @@ Then he put 2 hexagon pattern blocks on the car to make the wheels.”
 “What question can Lin ask at the end of the story?” (How many pattern blocks did he use to make the car and the
 wheels? How many more squares did he use than hexagons?)
 
-Write           .
+Write 4 + 2 = 6.
 
 “Andre used 4 square pattern blocks and 2 hexagon pattern blocks to make a car. He used 6 pattern blocks. We can
-write          to show what happened in the story. We can read it as 4 plus 2 is 6 or 4 plus 2 equals 6.”
+write 4 + 2 = 6 to show what happened in the story. We can read it as 4 plus 2 is 6 or 4 plus 2 equals 6.”
 
 
 
@@ -382,7 +382,7 @@ write          to show what happened in the story. We can read it as 4 plus 2 is
 Observation
 Lesson Observations for Unit 7, Section A
 
-        Standards
+     Standards
 Addressing      K.OA.A.1, K.OA.A.2
 
 

@@ -69,67 +69,67 @@ Lesson Timeline                                                 Teacher Reflecti
                                               Unit 7
                                                                Lesson 3
                                                                                Illustrative Mathematics®              1
-Warm-up                                                                                                            10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: Multiply Multiples of Ten
 
-     Standards                                                          Instructional Routines
-Addressing      3.NBT.A.3                                            • Number Talk
+     Standards                                                      Instructional Routines
+Addressing     3.NBT.A.3                                        • Number Talk
 
 
 This Number Talk prompts students to use place value and properties of operations to multiply single-digit numbers by
 multiples of ten. The strategies elicited here help students develop fluency.
 
 
-     Student Task Statement                                        Launch
-      Find the value of each expression mentally.                    • Display one expression.
+     Student Task Statement                                   Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-        •                                                            • “Give me a signal when you have an answer and can
-                                                                       explain how you got it.”
-        •
-                                                                     • 1 minute: quiet think time
-        •
-        •
-                                                                   Activity
+        • 4 × 40                                                • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 8 × 40
+                                                                • 1 minute: quiet think time
+        • 7 × 40
+        • 9 × 40
+                                                              Activity
 
-Student Response                                                     • Record answers and strategy.
-                                                                     • Keep expressions and work displayed.
-  • 160: I know        is 16, so         is 16 tens or
-            , which is 160.                                          • Repeat with each expression.
+Student Response                                                • Record answers and strategy.
+                                                                • Keep expressions and work displayed.
+  • 160: I know 4 × 4 is 16, so 4 × 40 is 16 tens or
+    16 × 10, which is 160.                                      • Repeat with each expression.
 
-  • 320: I know        is double           , so it’s double
-    160, which is 320.                                             Activity Synthesis
-  • 280: I know that               , so this would be 28 tens,
-                                                                     • “How were you able to use            to find the other
+  • 320: I know 8 × 40 is double 4 × 40, so it’s double
+    160, which is 320.                                        Activity Synthesis
+  • 280: I know that 7 × 4 = 28, so this would be 28 tens,
+                                                                • “How were you able to use 4 × 40 to find the other
     which is 280.
-                                                                       products.” (I doubled          to find        . Once I
-  • 360: This would be two more forties than             , so I        knew          , I could count up or down by 40 to get
-    just counted 280, 320, 360.                                        the other products.)
-                                                                     • Consider asking: “Why might it be helpful to first
-                                                                       think of each expression as multiplying a number
-                                                                       and 4 instead of 40?” (We know many multiplication
-                                                                       facts for 4, and that 40 is 4 tens. We can think of each
-                                                                       problem as groups of 4 tens instead of groups of 40.)
+                                                                  products.” (I doubled 4 × 40 to find 8 × 40. Once I
+  • 360: This would be two more forties than 7 × 40, so I         knew 4 × 40, I could count up or down by 40 to get
+    just counted 280, 320, 360.                                   the other products.)
+                                                                • Consider asking: “Why might it be helpful to first
+                                                                  think of each expression as multiplying a number
+                                                                  and 4 instead of 40?” (We know many multiplication
+                                                                  facts for 4, and that 40 is 4 tens. We can think of each
+                                                                  problem as groups of 4 tens instead of groups of 40.)
 
 
 
 
-Activity 1                                                                                                         10 min
+Activity 1                                                                                                   10 min
 
 Learn How to Play Mystery Quadrilateral
 
      Standards
-Addressing      3.G.A.1
+Addressing     3.G.A.1
 
 
 The purpose of this activity is to introduce the game Mystery Quadrilateral and strategically consider the questions that
 could be asked next to determine a mystery quadrilateral. Students play a round of this game against the teacher. In the
 
 
-                                               Grade 3                                   CC BY NC 2024
-                                                Unit 7
-                                                                  Lesson 3
-                                                                                  Illustrative Mathematics®                 2
+                                             Grade 3                                 CC BY NC 2024
+                                              Unit 7
+                                                             Lesson 3
+                                                                              Illustrative Mathematics®               2
 next activity, students will play this game in groups of 2.
 
 

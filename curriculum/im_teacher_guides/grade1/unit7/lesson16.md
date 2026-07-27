@@ -81,7 +81,7 @@ Warm-up                                                                         
 Number Talk: Tens and Ones
 
      Standards                                                      Instructional Routines
-Addressing       1.NBT.C.4                                      • Number Talk
+Addressing      1.NBT.C.4                                       • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies and understandings that students have for adding a one-digit
@@ -92,12 +92,12 @@ they look for ways to find the sums (MP7, MP8).
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-          •                                                     • “Give me a signal when you have an answer and can
+        • 8 + 32                                                • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-          •
+        • 8 + 33
                                                                 • 1 minute: quiet think time
-          •
-          •
+        • 8 + 38
+        • 8 + 48
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
@@ -106,8 +106,8 @@ Student Response                                                • Record answe
     ten makes 4 tens.                                           • Repeat with each expression.
 
   • 41: It is 1 more than the first value.
-  • 46:                                                       Activity Synthesis
-  • 56: I know               , and I added 10 more.             • “Who can restate _______ 's reasoning in a different
+  • 46: 38 + 2 + 6 = 46                                       Activity Synthesis
+  • 56: I know 8 + 38 = 46, and I added 10 more.                • “Who can restate _______ 's reasoning in a different
                                                                   way?”
 
 
@@ -118,7 +118,7 @@ Activity 1                                                                      
 What’s the Time?
 
      Standards
-Addressing       1.MD.B.3
+Addressing      1.MD.B.3
 
 
 The purpose of this activity is for students to analyze times that can be challenging due to the orientations of the hour

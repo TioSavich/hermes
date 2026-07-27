@@ -69,12 +69,12 @@ Lesson Timeline                                                Teacher Reflectio
                                             Unit 8
                                                             Lesson 13
                                                                                Illustrative Mathematics®                  1
-Warm-up                                                                                                            10 min
+Warm-up                                                                                                          10 min
 
 How Many Do You See: Equal Groups
 
-     Standards                                                         Instructional Routines
-Addressing     3.OA.A.1                                             • How Many Do You See?
+     Standards                                                       Instructional Routines
+Addressing     3.OA.A.1                                           • How Many Do You See?
 
 
 The purpose of this How Many Do You See? is to allow students to use subitizing or grouping strategies to describe the
@@ -82,42 +82,42 @@ images they see. In the Activity Synthesis, discuss what students know about the
 what they need to think about to create a routine like the example.
 
 
-     Student Task Statement                                       Launch
-      How many do you see? How do you see them?                     • Groups of 2
-                                                                    • “How many do you see? How do you see them?”
-                                                                    • Flash the image.
-                                                                    • 30 seconds: quiet think time
+     Student Task Statement                                     Launch
+      How many do you see? How do you see them?                   • Groups of 2
+                                                                  • “How many do you see? How do you see them?”
+                                                                  • Flash the image.
+                                                                  • 30 seconds: quiet think time
 
 
-                                                                  Activity
-                                                                    • Display the image.
-Student Response                                                    • “Discuss your thinking with your partner.”
+                                                                Activity
+                                                                  • Display the image.
+Student Response                                                  • “Discuss your thinking with your partner.”
 
-36. Sample responses:                                               • 1 minute: partner discussion
-  • I see 9 groups of 4 dots. I see 4 groups on each side           • Record responses.
+36. Sample responses:                                             • 1 minute: partner discussion
+  • I see 9 groups of 4 dots. I see 4 groups on each side         • Record responses.
      and 1 group in the middle.
   • I counted 2 groups in the upper left corner as 2, 4, 6,
-                                                                  Activity Synthesis
+                                                                Activity Synthesis
     8, and saw that there were 4 groups like that, plus 1
-    extra 4, so               .                                     • “What do you know about the How Many Do You
-  • I saw       in the top half and another       in the              See? routine?" (They have dots arranged in groups
-    bottom half, plus 4 in the middle. That's               ,         that make the dots easier to count. There are many
-    which is 36.                                                      different ways to count the dots.)
-                                                                    • Consider asking: “What would you have to think
-                                                                      about if you were going to design a How Many Do
-                                                                      You See? like this one?” (How the dots are
-                                                                      organized. How to create groups of dots that are
-                                                                      easy to count. Different ways that the dots could be
-                                                                      seen.)
-                                                                    • Record and display responses for all to see.
+    extra 4, so 4 × 8 + 4 = 36.                                   • “What do you know about the How Many Do You
+  • I saw 4 × 4 in the top half and another 4 × 4 in the            See? routine?" (They have dots arranged in groups
+    bottom half, plus 4 in the middle. That's 16 + 16 + 4,          that make the dots easier to count. There are many
+    which is 36.                                                    different ways to count the dots.)
+                                                                  • Consider asking: “What would you have to think
+                                                                    about if you were going to design a How Many Do
+                                                                    You See? like this one?” (How the dots are
+                                                                    organized. How to create groups of dots that are
+                                                                    easy to count. Different ways that the dots could be
+                                                                    seen.)
+                                                                  • Record and display responses for all to see.
 
 
 
 
-                                           Grade 3                                      CC BY NC 2024
+                                           Grade 3                                    CC BY NC 2024
                                             Unit 8
-                                                                Lesson 13
-                                                                                 Illustrative Mathematics®                  2
+                                                              Lesson 13
+                                                                               Illustrative Mathematics®                  2
 Activity 1                                                                                                      20 min
                                                                                                                 PLC Activity
 Design Your "How Many Do You See?"

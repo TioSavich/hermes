@@ -193,20 +193,20 @@ and regular volume units (cubic centimeters) are naturally connected.
 Student Response                                                     convert cubic centimeters to liters.)
 
  1. 150 square m. Sample                                           • “How did you make the calculations for the
-    response:                                                        conversions?” (The conversions required multiplying
+    response: (8 × 15) + (3 × 10) = 120 + 30                         conversions?” (The conversions required multiplying
                                                                      or dividing by powers of 10. I multiplied by 100 to
  2. 7,500,000 cubic cm. Sample response: Since there
                                                                      convert meters to centimeters, and I divided by 1,000
     are 100 centimeters in a meter, 150 square meters is
                                                                      to convert cubic centimeters to liters.)
-                     or 1,500,000 square centimeters. To
+    150 × 100 × 100 or 1,500,000 square centimeters. To
     get the volume, that needs to be multiplied by the             • “Do you think that you could make a container to
     height or depth of the water which is 5                          capture all of the rainfall?” (Yes, I think that a 2-meter
-    cm,                            .                                 cube is big, but it's not so big that it would not fit
+    cm, 5 × 1,500,000 = 7,500,000.                                   cube is big, but it's not so big that it would not fit
                                                                      near the house. Or we could use several reservoirs
  3. 7,500 liters. Sample response: There are 1,000 cubic
                                                                      that are smaller.)
-    centimeters in 1 liter, so that’s                , or
+    centimeters in 1 liter, so that’s 7,500,000 ÷ 1,000 , or
     7,500 liters of water.
  4. Sample response: I would use a cube with an edge
     length of 2 meters. That would be 200 cm by 200 cm
@@ -244,7 +244,7 @@ how much water is used, they model with mathematics (MP4).
 
                                              Grade 5                                    CC BY NC 2024
                                               Unit 8
-                                                              Lesson 9
+                                                               Lesson 9
                                                                                  Illustrative Mathematics®                 4
 Consider inviting students to check their estimates by looking at one of their monthly water bills. The bill will usually give
 the number of gallons of water used and there are almost 4 liters in a gallon.

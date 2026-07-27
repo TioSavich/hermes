@@ -100,12 +100,12 @@ the pattern to find the value of the sum, they are also looking for and expressi
       Student Task Statement                                     Launch
       Find the value of each expression mentally.                  • Display the first expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
+        • 2 + 2 + 2 + 2                                            • “Give me a signal when you have an answer and can
                                                                      explain how you got it.”
-        •
+        • 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2
                                                                    • 1 minute: quiet think time
-        •
-        •
+        • 5 + 5 + 5 + 5
+        • 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5
                                                                  Activity
 
 Student Response                                                   • Record answers and strategies.

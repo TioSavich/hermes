@@ -209,8 +209,8 @@ Required Preparation
 
                                                              Activity Synthesis
                                                                • Display the expressions:
-                                                                  ◦
-                                                                  ◦
+                                                                  ◦ 2 × 12
+                                                                  ◦ 3 × 8
                                                                • “How do these expressions represent the volume of
                                                                  Prism A?” (There are two layers of 12. We also can
                                                                  see 3 layers of 8.)
@@ -262,14 +262,14 @@ Student Response
                                        2        cubes
 
 
-2. Prism E: 10 unit cubes. Sample response:
+2. Prism E: 10 unit cubes. Sample response: 2 × 5 = 10
    Prism F: 84 unit cubes. Sample responses:
      ◦ There are 2 columns of 6 (or 6 rows of 2) in one
-       vertical layer. There are 7 layers so         .
+       vertical layer. There are 7 layers so 2 × 6 × 7.
      ◦ There are 14 cubes in one horizontal layer. There
-       are 6 total layers so     .
+       are 6 total layers so 6 × 14.
      ◦ There are 7 columns of 6 in one layer and I can
-       multiply that by the 2 layers, so        .
+       multiply that by the 2 layers, so 7 × 6 × 2.
 3. Sample response: Multiply the number of cubes in
    the base layer by the height.
 
@@ -316,7 +316,7 @@ Required Preparation
 
 
      Student Task Statement                                    Launch
-       1. How does the expression         represent the          • Groups of 2
+       1. How does the expression 5 × 24 represent the           • Groups of 2
           volume of this rectangular prism? Explain or           • “You are going to analyze different ways to find the
           show your reasoning.                                     volume of a rectangular prism.”
                                                                  • Give students access to connecting cubes.
@@ -334,34 +334,34 @@ Required Preparation
                                              Unit 1
                                                              Lesson 4
                                                                                Illustrative Mathematics®               6
-        2. How does the expression         represent the             the number of cubes in each layer.
-           volume of this rectangular prism? Explain or
-           show your reasoning.
-                                                                Activity Synthesis
-                                                                  • “How does          represent the volume of the
-                                                                    prism?” (There are 5 layers if I cut the prism
-                                                                    horizontally, and each layer has 24 cubes.)
-        3. Find a different way to calculate the volume of        • Display the expression:
-           this rectangular prism. Write an expression to
-                                                                  • “How does this expression represent the volume of
-           represent the way that you calculated the
-                                                                    the prism?” (It shows the 5 layers and the 24 cubes as
-           volume. Explain or show your reasoning.
-                                                                    4 rows of 6 cubes in each layer.)
-                                                                  • “How does          represent the volume of the
-Student Response                                                    prism?” (There are 6 layers if I cut vertically along the
-                                                                    front face. Each layer has 5 rows of 4 or 20 cubes.)
+       2. How does the expression 6 × 20 represent the            the number of cubes in each layer.
+          volume of this rectangular prism? Explain or
+          show your reasoning.
+                                                              Activity Synthesis
+                                                                • “How does 5 × 24 represent the volume of the
+                                                                  prism?” (There are 5 layers if I cut the prism
+                                                                  horizontally, and each layer has 24 cubes.)
+       3. Find a different way to calculate the volume of       • Display the expression: 5 × (4 × 6)
+          this rectangular prism. Write an expression to
+                                                                • “How does this expression represent the volume of
+          represent the way that you calculated the
+                                                                  the prism?” (It shows the 5 layers and the 24 cubes as
+          volume. Explain or show your reasoning.
+                                                                  4 rows of 6 cubes in each layer.)
+                                                                • “How does 6 × 20 represent the volume of the
+Student Response                                                  prism?” (There are 6 layers if I cut vertically along the
+                                                                  front face. Each layer has 5 rows of 4 or 20 cubes.)
 Sample responses:
-                                                                  • Display the expression:              .
+                                                                • Display the expression: 6 × (4 × 5).
  1. The expression shows 5 horizontal layers of cubes in
-    the prism. There are 24 or       cubes in each layer,         • “How does this expression represent the volume of
-    so that makes         cubes in the prism.                       the prism?” (It shows the 6 layers and 4 columns of 5
-                                                                    cubes in each layer.)
+    the prism. There are 24 or 6 × 4 cubes in each layer,       • “How does this expression represent the volume of
+    so that makes 5 × 24 cubes in the prism.                      the prism?” (It shows the 6 layers and 4 columns of 5
+                                                                  cubes in each layer.)
  2. The expression shows 6 vertical layers of cubes in
-    the prism. Each layer has      or 20 cubes, so that
-    makes         cubes in the prism.
- 3.         . There are 4 layers and each layer has 30
-      cubes.
+    the prism. Each layer has 4 × 5 or 20 cubes, so that
+    makes 6 × 20 cubes in the prism.
+ 3. 4 × 30. There are 4 layers and each layer has 30
+    cubes.
 
 
 
@@ -377,7 +377,7 @@ Lesson Synthesis
 Display the image from the Warm-up, showing all the layers of the prism.
 
 “Describe the layers in the prism to a partner. What is a multiplication expression that would represent the volume of
-the prism? How does the expression represent the volume of the prism?” (           , there are 9 cubes in each layer and I
+the prism? How does the expression represent the volume of the prism?” (10 × 9, there are 9 cubes in each layer and I
 can see 10 layers.)
 
 Math Community
@@ -389,10 +389,10 @@ Record and display their responses under the “Norms” header.
 
 
 
-                                             Grade 5                                   CC BY NC 2024
-                                              Unit 1
-                                                              Lesson 4
-                                                                                Illustrative Mathematics®               7
+                                           Grade 5                                   CC BY NC 2024
+                                            Unit 1
+                                                            Lesson 4
+                                                                              Illustrative Mathematics®               7
 Suggested Centers
   • Can You Build It? (3–5), Stage 3: Rectangular Prisms (Addressing)
   • Five in a Row: Multiplication (3–5), Stage 3: Two-Digit Factors (Supporting)
@@ -414,7 +414,7 @@ Addressing     5.MD.C.5.a
 
 
 
-       2. Explain or show how the expression          represents the volume of the
+       2. Explain or show how the expression 3 × 8 represents the volume of the
           prism.
 
 
@@ -453,11 +453,11 @@ We learned to calculate the volume of any prism by finding the number of cubes i
 number by the number of layers. We can describe this rectangular prism as having 6 layers of 20 cubes, 4 layers
 of 30 cubes, or 5 layers of 24 cubes. All of these expressions represent the volume of the prism:
 
-                                                     or
+                                              5 × 24 or 5 × (6 × 4)
 
-                                                     or
+                                              6 × 20 or 6 × (5 × 4)
 
-                                                     or
+                                              4 × 30 or 4 × (5 × 6)
 
 
 

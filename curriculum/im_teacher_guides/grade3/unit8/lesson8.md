@@ -68,30 +68,30 @@ Materials to Gather                                             Materials to Cop
                                               Unit 8
                                                               Lesson 8
                                                                                 Illustrative Mathematics®                 1
-                                                                     • Compare Stages 3–9 Directions (1 copy for every 2
-                                                                       students): Activity 2
+                                                                • Compare Stages 3–9 Directions (1 copy for every 2
+                                                                  students): Activity 2
 
 
-Lesson Timeline                                                    Teacher Reflection Questions
-                                                                   Reflect on the development of students’ fluency with
+Lesson Timeline                                               Teacher Reflection Questions
+                                                              Reflect on the development of students’ fluency with
  Warm-up                                       10 min
-                                                                   multiplication and division. What activities or discussions
- Activity 1                                    20 min              particularly helped students during the year? What will
-                                                                   you do differently next year to foster your students’
+                                                              multiplication and division. What activities or discussions
+ Activity 1                                    20 min         particularly helped students during the year? What will
+                                                              you do differently next year to foster your students’
  Activity 2                                    15 min
-                                                                   fluency with multiplication and division?
+                                                              fluency with multiplication and division?
  Synthesis Estimate                            10 min
 
  Cool-down                                      5 min
 
 
 
-Warm-up                                                                                                            10 min
+Warm-up                                                                                                       10 min
 
 Number Talk: Products
 
-      Standards                                                         Instructional Routines
-Addressing      3.OA.C.7                                             • Number Talk
+      Standards                                                    Instructional Routines
+Addressing      3.OA.C.7                                        • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies and understandings students have for multiplying one- and
@@ -101,36 +101,36 @@ When students use products they know to find a product they don’t know, they l
 (MP7).
 
 
-      Student Task Statement                                       Launch
-      Find the value of each expression mentally.                    • Display one expression.
+      Student Task Statement                                  Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-        •                                                            • “Give me a signal when you have an answer and can
-                                                                       explain how you got it.”
-        •
-                                                                     • 1 minute: quiet think time
-        •
-        •
-                                                                   Activity
+        • 2 × 4                                                 • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 5 × 4
+                                                                • 1 minute: quiet think time
+        • 10 × 4
+        • 17 × 4
+                                                              Activity
 
-Student Response                                                     • Record answers and strategies.
-                                                                     • Keep expressions and work displayed.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
   • 8: I counted by 4 twice. I just knew it.
-                                                                     • Repeat with each expression.
+                                                                • Repeat with each expression.
   • 20: I know 5 groups of 4 is 20. I just knew it.
-  • 40: It's double        . I just knew it.
-                                                                   Activity Synthesis
+  • 40: It's double 5 × 4. I just knew it.
+                                                              Activity Synthesis
   • 68: It's the sum of the first three products.
-                     , so                               or           • “How did the first 3 expressions help you find the
-                                   , which is                or        value of the last expression?” (The last expression is
-    68.                                                                17 groups of 4, which is like 10 groups, 5 groups, and
-                                                                       2 groups of 4 combined. Adding up the value of the
-                                                                       first 3 expressions gives you the value of the last
+    17 = 10 + 5 + 2, so 17 × 4 = (10 + 5 + 2) × 4 or            • “How did the first 3 expressions help you find the
+    (10 × 4) + (5 × 4) + (2 × 4), which is 40 + 20 + 8 or         value of the last expression?” (The last expression is
+    68.                                                           17 groups of 4, which is like 10 groups, 5 groups, and
+                                                                  2 groups of 4 combined. Adding up the value of the
+                                                                  first 3 expressions gives you the value of the last
 
 
-                                               Grade 3                                    CC BY NC 2024
+                                               Grade 3                               CC BY NC 2024
                                                 Unit 8
-                                                                  Lesson 8
-                                                                                   Illustrative Mathematics®                2
+                                                            Lesson 8
+                                                                              Illustrative Mathematics®                2
                                                                       expression.)
 
 
@@ -145,7 +145,7 @@ Addressing      3.OA.C.7
 
 
 In this activity, students check their progress toward fluent multiplication within 100. They do this by revisiting an activity
-from a previous unit, in which they sort multiplication expressions, from         to        , into groups: those that they
+from a previous unit, in which they sort multiplication expressions, from 1 × 1 to 10 × 10, into groups: those that they
 know right away, those they can find quickly, or those they don’t know yet. Here, students sort the same set of
 expressions, share strategies for finding products they don’t know yet, and then practice finding five products of their
 choice.
@@ -154,7 +154,7 @@ choice.
       Access for English Language Learners
       MLR8 Discussion Supports. Synthesis: Create a display of multiplication facts students do not yet know. As
       students share their strategies for finding a product, annotate the display to illustrate connections. For example,
-      next to “    ,” write “10 groups of 8 minus 1 group of 8.”
+      next to “9 × 8,” write “10 groups of 8 minus 1 group of 8.”
       Advances: Speaking, Representing
 
 
@@ -241,7 +241,7 @@ If students share they are not sure what strategy could help them find the value
                                              Unit 8
                                                              Lesson 8
                                                                                Illustrative Mathematics®               4
-Activity 2                                                                                                     15 min
+Activity 2                                                                                                  15 min
 
 Introduce Compare—Multiply within 100
 
@@ -251,8 +251,8 @@ Addressing     3.OA.C.7
 
 The purpose of this activity is for students to learn Stage 3 of the Compare center to practice multiplying within 100.
 Students may compare expressions by finding the value of each or by reasoning about the features of the expressions
-(MP7). (For example, when comparing              and       , they see that both involve 12 groups, but in       there are 2
-more in each group than in           .)
+(MP7). (For example, when comparing 12 × 7 and 12 × 5, they see that both involve 12 groups, but in 12 × 7 there are 2
+more in each group than in 12 × 5.)
 
 When students multiply 2 one-digit numbers, they should know these products from memory. When students multiply a
 one-digit number and a two-digit number, they should have an efficient method for finding the product, but do not need
@@ -278,27 +278,27 @@ Required Preparation
   • Create a set of cards from the blackline master for each group of 2 students.
 
 
-     Student Task Statement                                     Launch
-      Play Compare with 2 players.                                • Groups of 2
+     Student Task Statement                                   Launch
+      Play Compare with 2 players.                              • Groups of 2
 
-       1. Split the deck between the players.                     • Give each group of 2 students a set of pre-cut cards.
+       1. Split the deck between the players.                   • Give each group of 2 students a set of pre-cut cards.
 
-       2. Each player turns over 1 card.                          • “Take a minute to read the directions for Compare.”
+       2. Each player turns over 1 card.                        • “Take a minute to read the directions for Compare.”
 
-       3. Compare the values. The player with the                 • 1 minute: quiet think time
-          greater value keeps both cards.                         • Play a round of Compare against the class.
+       3. Compare the values. The player with the               • 1 minute: quiet think time
+          greater value keeps both cards.                       • Play a round of Compare against the class.
        4. If the values are the same, each player turns
           over 1 more card. The player with the greater
-                                                                Activity
+                                                              Activity
           value keeps all 4 cards.
-       5. Play until you run out of cards. The player with        • “Play Compare with your partner.”
+       5. Play until you run out of cards. The player with      • “Play Compare with your partner.”
 
 
 
-                                             Grade 3                                  CC BY NC 2024
-                                              Unit 8
+                                            Grade 3                                 CC BY NC 2024
+                                             Unit 8
                                                              Lesson 8
-                                                                               Illustrative Mathematics®                5
+                                                                             Illustrative Mathematics®               5
            the most cards at the end of the game wins.             • 10–12 minutes: partner work time
 
 
@@ -306,8 +306,8 @@ Student Response                                                Activity Synthes
 Answers vary.                                                      • “What were some useful strategies for comparing the
                                                                      expressions on the cards?” (Comparing by thinking
                                                                      about what the expressions mean, instead of by
-                                                                     multiplying. For example,        was greater than
-                                                                            because it's 1 more group of 6. Breaking apart
+                                                                     multiplying. For example, 16 × 6 was greater than
+                                                                     15 × 6 because it's 1 more group of 6. Breaking apart
                                                                      some of the large factors into smaller factors to
                                                                      make multiplying easier.)
 

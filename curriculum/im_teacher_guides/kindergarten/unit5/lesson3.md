@@ -220,7 +220,7 @@ Required Preparation
              Expression: _________________________
                                                         • Display a tower of 2 and a tower of 6.
                                                         • “What expression can we write to represent the 2
-                                                          parts of this tower?” (  )
+                                                          parts of this tower?” (2 + 6)
              Expression: _________________________
 
 
@@ -228,9 +228,9 @@ Required Preparation
 Student Response
 Sample responses:
   • Student breaks the tower into 3 and 5 and
-    writes     .
+    writes 3 + 5.
   • Student breaks the tower into 7 and 1 and
-    writes     .
+    writes 7 + 1.
   • Student breaks the tower into 4 and 4 and
 
 
@@ -238,7 +238,7 @@ Sample responses:
                                         Unit 5
                                                      Lesson 3
                                                                      Illustrative Mathematics®            4
-    writes       .
+    writes 4 + 4.
 
 
 
@@ -449,13 +449,13 @@ Students only show one way to decompose 6 into 2 parts.    Next Day Supports
                                                           Lesson 3
                                                                           Illustrative Mathematics®              8
 6 connecting cubes
-6 is    .
+6 is 4 + 2.
 
 
 
 
 6 connecting cubes
-6 is    .
+6 is 1 + 5.
 
 
 

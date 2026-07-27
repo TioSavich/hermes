@@ -71,7 +71,7 @@ Lesson Timeline                                               Teacher Reflection
 Number Talk: Plus or Minus 2
 
      Standards                                                       Instructional Routines
-Addressing     1.OA.C.5, 1.OA.C.6                                 • Number Talk
+Addressing       1.OA.C.5, 1.OA.C.6                               • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for adding or subtracting 2.
@@ -83,12 +83,12 @@ lesson when students will need to be able to add and subtract within 10 in cente
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 4 + 2                                                   • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 7- 2
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 9- 2
+        • 8 + 2
                                                                Activity
 
 Student Response                                                  • Record answers and strategy.
@@ -112,7 +112,7 @@ Activity 1                                                                      
 Introduce Sort and Display—Any Way
 
      Standards
-Addressing     1.MD.C.4
+Addressing       1.MD.C.4
 
 
 The purpose of this activity is for students to learn Stage 2 of the Sort and Display center. Students work together with a

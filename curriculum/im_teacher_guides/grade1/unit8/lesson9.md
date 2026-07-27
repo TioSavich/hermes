@@ -57,7 +57,7 @@ only the first clue is showing.
   • My number has more than 6 tens.
   • My number is less than 100.
   • My number has 8 tens.
-  • My number is the sum of            .
+  • My number is the sum of 51 + 32.
 
 
 
@@ -98,17 +98,17 @@ than a given number.
 
       Be prepared to explain your reasoning.                   • “Give me a signal when you know whether the
                                                                  statement is true and can explain how you know.”
-        •
+        • 65 > 35
                                                                • 1 minute: quiet think time
-        •
+        • 65 = 75 - 10
 
-        •                                                    Activity
+        • 65 > 35 + 30                                       Activity
                                                                • Share and record answers and strategies.
 Student Response
                                                                • Repeat with each equation.
   • True: 6 tens is greater than 3 tens.
   • True: Both have 6 tens and 5 ones, so they are equal.    Activity Synthesis
-  • False:        is the same as 65, because they both
+  • False: 35 + 30 is the same as 65, because they both
                                                                • “How can you explain your answers by describing the
     have 6 tens and 5 ones.
                                                                  number of tens and ones on each side?”
@@ -239,19 +239,19 @@ Required Preparation
                                                Unit 8
                                                              Lesson 9
                                                                               Illustrative Mathematics®               4
-      I: __________                 J: __________                  together to figure out which numbers fit the clues.
-                                                                   Once you agree on what numbers fit all the clues,
-                                                                   read the shaded, folded clue. Work together to find
-                                                                   the answer and write your answer in your book. Then
-                                                                   put all the clues back in the envelope and get ready
-                                                                   to move on to the next riddle. I will let you know
-                                                                   when to move.”
-Student Response                                                 • 20 minutes: partner work time
+      I: __________                 J: __________                 together to figure out which numbers fit the clues.
+                                                                  Once you agree on what numbers fit all the clues,
+                                                                  read the shaded, folded clue. Work together to find
+                                                                  the answer and write your answer in your book. Then
+                                                                  put all the clues back in the envelope and get ready
+                                                                  to move on to the next riddle. I will let you know
+                                                                  when to move.”
+Student Response                                                • 20 minutes: partner work time
 A: 62
-B: 45                                                          Activity Synthesis
+B: 45                                                         Activity Synthesis
 C: 30
-D: 113                                                           • Invite students to share the secret number for each
-E: 40                                                              riddle.
+D: 113                                                          • Invite students to share the secret number for each
+E: 40                                                             riddle.
 F: 57
 G: 79
 H: 36
@@ -279,14 +279,14 @@ don’t have 8 tens.)
 
 “What could my number be now?” (80–89)
 
-Display the last clue: “My number is the sum of          .”
+Display the last clue: “My number is the sum of 51 + 32.”
 
 “What is my secret number? Explain your thinking.”
 
 
 
 
-Cool-down                                                                                                   5 min
+Cool-down                                                                                                  5 min
 
 Which Clues Fit?
 
@@ -298,8 +298,8 @@ Addressing       1.NBT.B, 1.NBT.C
 
                                                Grade 1                              CC BY NC 2024
                                                 Unit 8
-                                                              Lesson 9
-                                                                             Illustrative Mathematics®              5
+                                                            Lesson 9
+                                                                             Illustrative Mathematics®             5
       Student Task Statement
       The secret number is 95.
 
@@ -309,7 +309,7 @@ Addressing       1.NBT.B, 1.NBT.C
 
         2. My number is greater than 100.
 
-        3. My number is          .
+        3. My number is 90 + 5.
 
         4. My number has 9 ones.
 

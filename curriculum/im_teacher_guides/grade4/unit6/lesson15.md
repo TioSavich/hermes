@@ -155,9 +155,9 @@ Required Preparation
      Student Task Statement                                    Launch
       Use the base-ten blocks to represent each                  • Groups of 3–4
       expression. Then find the value of each expression.        • Give each group at least 4 hundreds blocks, 10 tens
-       1.                                                          blocks, and 25 ones blocks.
+       1. 488 ÷ 4                                                  blocks, and 25 ones blocks.
 
-       2.                                                        • “Work with your group to represent each expression
+       2. 104 ÷ 8                                                • “Work with your group to represent each expression
                                                                    with base-ten blocks, then find the quotient.”
 
 Student Response
@@ -237,10 +237,10 @@ Materials to Gather
      Student Task Statement                                    Launch
       Find the value of each expression. Explain or show          • Groups of 2
       your reasoning. Use base-ten blocks if it helps.            • Give students access to base-ten blocks.
-       1.                                                         • “You are going to solve some problems on your own.
-       2.                                                           Use base-ten blocks and represent your thinking in
+       1. 96 ÷ 4                                                  • “You are going to solve some problems on your own.
+       2. 86 ÷ 2                                                    Use base-ten blocks and represent your thinking in
                                                                     your book.”
-       3.
+       3. 108 ÷ 9
 
 
                                                                Activity
@@ -269,7 +269,7 @@ If students use mental math to solve problems, consider asking:
 
 
 Lesson Synthesis
-Display student work showing base-ten representations for the last expression (          ).
+Display student work showing base-ten representations for the last expression (108 ÷ 9).
 
 “How did this student represent their reasoning?” (They drew 10 tens and then crossed out 2 tens and drew 20.)
 

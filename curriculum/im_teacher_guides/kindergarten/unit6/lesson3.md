@@ -375,7 +375,7 @@ Materials to Gather                                           Materials to Copy
                                                                will put the 4 card and 1 card down as a match and
                                                                write an expression.”
                                                              • “If I have a 4 card and a 1 card, what expression
-                                                               should I write?” (      or       )
+                                                               should I write?” (4 + 1 or 1 + 4)
                                                              • “If my partner doesn’t have the card that I asked for, I
                                                                draw 1 more card from the middle. We will keep
                                                                playing until we run out of cards. The player with the

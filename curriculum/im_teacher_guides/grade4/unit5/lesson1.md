@@ -41,7 +41,7 @@ diagrams, and addition and subtraction equations that use symbols to represent a
 representations to find differences.
 
 In this lesson, students interpret the language of “times as many” in multiplicative comparison situations, and connect
-this language to representations. They learn to recognize the difference between " times as many" and " more." As
+this language to representations. They learn to recognize the difference between "n times as many" and "n more." As
 they create representations, using discrete diagrams in which each piece represents one item, students have
 opportunities to examine any errors in the representations they create and make necessary revisions. Although
 students may write equations to represent multiplicative comparisons, it is not required here, as they will have an
@@ -272,7 +272,7 @@ Student Response                                           • “What does it m
                                                              expressions or equations, ask: “How does this
                                                              equation show ‘times as many’? What does each
                                                              number represent?” (In the example of Priya and
-                                                             Jada, the equation            represents 6 times as
+                                                             Jada, the equation 6 × 3 = 18 represents 6 times as
                                                              many as 3. The 3 is the number of cubes Priya has,
                                                              18 represents the number of cubes that Jada has,
                                                              which is 6 times as many as Priya.)
@@ -292,14 +292,14 @@ Student Response                                           • “What does it m
                                           Unit 5
                                                         Lesson 1
                                                                         Illustrative Mathematics®              5
-     ◦ A drawing or a tape diagram showing 6 groups
-       of 3
+      ◦ A drawing or a tape diagram showing 6 groups
+        of 3
  3. 16 cubes. Sample response:
 
 
 
 
- 4. 16. Sample responses:        ,
+ 4. 16. Sample responses: 2 × 8, 8 × 2
 
 
 
@@ -311,15 +311,15 @@ If students write addition expressions to reason about the number of cubes in ea
 
 
 
-Activity 3: Optional                                                                                         15 min
+Activity 3: Optional                                                                                          15 min
 
-Make      Times as Many
+Make n Times as Many
 
      Standards
 Building Toward     4.OA.A.1, 4.OA.A.2
 
 
-The purpose of this optional activity is for students to practice representing “ times as many,” with cubes and diagrams.
+The purpose of this optional activity is for students to practice representing “n times as many,” with cubes and diagrams.
 Students may not have enough cubes to build each comparison. This gives students an opportunity to make sense of
 each quantity and how it relates to their corresponding cubes or diagram (MP2). Encourage them to draw a diagram to
 represent the cubes.
@@ -332,10 +332,10 @@ represent the cubes.
       Supports accessibility for: Language, Organization, Attention
 
 
-                                           Grade 4                                   CC BY NC 2024
-                                            Unit 5
+                                            Grade 4                                  CC BY NC 2024
+                                             Unit 5
                                                             Lesson 1
-                                                                              Illustrative Mathematics®               6
+                                                                              Illustrative Mathematics®                6
 Required Materials
 Materials to Gather                                          Materials to Copy
   • Connecting cubes: Activity 3                               • Times as Many Recording Mat (1 copy for every 1
@@ -354,16 +354,16 @@ Required Preparation
           cubes, and show it to Partner B.                       partner.
                                                                • Give each group a copy of the recording mat from
           Partner B: Roll a number cube. Let’s call the
-          number rolled .                                        the blackline master, a number cube, and 6
+          number rolled n.                                       the blackline master, a number cube, and 6
                                                                  connecting cubes.
        2. Partner A: Use connecting cubes or a diagram
-          to show times as many as the original set of
+          to show n times as many as the original set of
           cubes. Show your reasoning.                        Activity
           Partner B: Check your partner’s work and             • “What questions do you have about the activity?”
           discuss any disagreements.                           • 8 minutes: partner work time
        3. Switch roles and repeat.
                                                              Activity Synthesis
-Student Response                                               • “What was your method for representing ' times as
+Student Response                                               • “What was your method for representing 'n times as
 No response required.                                            many'?” (I built that many groups of the original
                                                                  group size. I multiplied the original number by the
                                                                  number rolled and counted out that many cubes.)

@@ -94,12 +94,12 @@ to create a routine like the example.
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 300 + 400                                             • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 300 + 437
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 321 + 437
+        • 425 + 514
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
@@ -150,19 +150,19 @@ first three expressions, to find.
       Access for English Language Learners
       MLR8 Discussion Supports. Synthesis: Create a display of the task. As students share their expression, annotate
       the display with the expression and its connection to the third expression in the Number Talk. For example, if
-      students share            , write “100 less than 399” next to the expression.
+      students share 500- 299 , write “100 less than 399” next to the expression.
       Advances: Reading, Representing
 
 
      Student Task Statement                                    Launch
       Here are 3 subtraction expressions.                        • Groups of 2–4
 
-        •                                                        • “Here are three expressions like the kinds you might
+        • 600- 400                                               • “Here are three expressions like the kinds you might
                                                                    see in a Number Talk.”
-        •
-        •
+        • 600- 399
+        • 500- 399
                                                                Activity
-        •
+        • ___
        1. Think of at least 2 different strategies you can       • “How would you find the value of each expression,
           use to find the value of each difference                 without writing? For each expression, think of at least
           mentally.                                                two ways. Then share your thinking with your group.”
@@ -212,7 +212,7 @@ Activity 2                                                                      
 Number Talk: Design 2
 
      Standards                                                       Instructional Routines
-Addressing     3.NBT.A.2                                         • Number Talk
+Addressing      3.NBT.A.2                                        • Number Talk
 
 
 The purpose of this activity is for students to reason about addition and apply their reasoning to complete a partially-
@@ -229,12 +229,12 @@ the values of the sums could be found mentally. They then write two new addition
      Student Task Statement                                    Launch
       Here are 2 addition expressions.                           • Groups of 2–4
 
-        •                                                        • “Here are two expressions like the kinds you might
+        • 500 + 199                                              • “Here are two expressions like the kinds you might
                                                                    see in a Number Talk.”
+        • 504 + 199
         •
-        •
-                                                               Activity
-        •
+          ___                                                  Activity
+        • ___
        1. Think of at least 2 different strategies you can       • “How would you find the value of each expression,
           use to find the value of each sum mentally.              without writing? For each expression, think of at least
                                                                    two ways. Then share your thinking with your group.”
@@ -293,10 +293,10 @@ mentally subtract numbers within 1,000.
      Student Task Statement                                     Launch
       Write 3 subtraction expressions to complete the             • Groups of 2–4
       "Number Talk."                                              • “Work with your group to complete a Number Talk
-        •                                                           with three expressions missing. Write them in the
+        • 900- 400                                                  with three expressions missing. Write them in the
                                                                     blank lines.”
-        •
-        •
+        • ___
+        • ___
 
 
 
@@ -305,7 +305,7 @@ mentally subtract numbers within 1,000.
                                             Unit 8
                                                             Lesson 15
                                                                                 Illustrative Mathematics®                5
-        •                                                      Activity
+        • ___                                                  Activity
                                                                  • 10 minutes: small-group work time
 Student Response
                                                                  • Monitor for groups who:
@@ -342,12 +342,12 @@ mentally. If there is time, allow students to facilitate their Number Talk with 
      Student Task Statement                                    Launch
       Write 4 addition or subtraction expressions to             • Groups of 1–4
       create a "Number Talk."                                    • “Work independently or with your partner or group
-        •                                                          to create a Number Talk. You can decide whether to
+        • ___                                                      to create a Number Talk. You can decide whether to
                                                                    write addition or subtraction expressions.”
+        • ___
         •
-        •
-                                                               Activity
-        •
+          ___                                                  Activity
+        • ___
                                                                  • 10 minutes: independent or small-group work time
 
 Student Response                                                 • Monitor for groups who design their expressions,

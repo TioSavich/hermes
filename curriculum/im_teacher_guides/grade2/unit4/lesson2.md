@@ -110,7 +110,7 @@ Sample responses:                                               • Stop countin
     when you go down the column.
                                                                 • “Does anyone want to add an observation about why
   • Numbers in a row have the same amount of tens.
-                                                                  that pattern is happening here?” (        , so
+                                                                  that pattern is happening here?” (5 + 5 = 10, so
                                                                   when you count by 5 two times you make a new ten.)
 
 

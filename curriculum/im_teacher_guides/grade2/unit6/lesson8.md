@@ -97,22 +97,22 @@ both numbers have a 5 in the ones place or look for ways to count on by 5 and by
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-          •                                                     • “Give me a signal when you have an answer and can
+        • 25 - 15                                               • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-          •
+        • 40- 15
                                                                 • 1 minute: quiet think time
-          •
-          •
+        • 65 - 25
+        • 60- 35
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
                                                                 • Keep expressions and work displayed.
-  • 10:
+  • 10: 15 + 10 = 25
                                                                 • Repeat with each expression.
-  • 25:                   ,
-  • 40:           ,
+  • 25: 40- 10 = 30 , 30- 5 = 25
+  • 40: 5 - 5 = 0, 60- 20 = 40
                                                               Activity Synthesis
-  • 25:               ,            ,
+  • 25: 35 + 5 = 40, 40 + 20 = 60, 5 + 20 = 25
                                                                 • “What patterns did you notice when finding the
                                                                   values of these expressions?” (All the expressions
                                                                   were subtracting a number that had a 5 in the ones

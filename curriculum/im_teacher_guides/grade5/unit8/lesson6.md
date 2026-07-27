@@ -240,47 +240,47 @@ definitive conclusion (MP1).
                                               Unit 8
                                                                Lesson 6
                                                                                  Illustrative Mathematics®                 4
-           of the Empire State Building.                        Activity
-                                                                  • 5 minutes: independent work time
-                                                                  • 5 minutes: partner work time
-                                                                  • Monitor for students who:
-                                                                     ◦ Use the standard algorithm for multiplication.
+          of the Empire State Building.                       Activity
+                                                                • 5 minutes: independent work time
+                                                                • 5 minutes: partner work time
+                                                                • Monitor for students who:
+                                                                    ◦ Use the standard algorithm for multiplication.
        3. Which do you think is larger, the Great Pyramid
-          or the Empire State Building? Explain or show              ◦ Make estimates rather than using the standard
-          your reasoning.                                              algorithm for multiplication.
-                                                                     ◦ Identify that it is not possible with the given
-                                                                       information to find the exact volume of either
+          or the Empire State Building? Explain or show             ◦ Make estimates rather than using the standard
+          your reasoning.                                             algorithm for multiplication.
+                                                                    ◦ Identify that it is not possible with the given
+                                                                      information to find the exact volume of either
 Student Response
-                                                                       structure.
+                                                                      structure.
  1. 7,247,300 cubic meters. Sample response: The area
-    of the base is           or 52,900 square meters.
-                                                                Activity Synthesis
+    of the base is 230 × 230 or 52,900 square meters.
+                                                              Activity Synthesis
     Multiplying by the height gives 7,247,300 cubic
-    meters.                                                       • Invite students to share their calculations for the
- 2. Sample response: The volume is about 3,000,000                  volumes of the two structures.
-    cubic meters, because I first found             to            • “Why is it hard to find the exact volume of the Great
-    estimate the area of the base, and it is 7,800 square           Pyramid?” (It’s not a rectangular prism. It has slanted
-    meters. Then I found                and it is 3,120,000.        sides.)
+    meters.                                                     • Invite students to share their calculations for the
+ 2. Sample response: The volume is about 3,000,000                volumes of the two structures.
+    cubic meters, because I first found 130 × 60 to             • “Why is it hard to find the exact volume of the Great
+    estimate the area of the base, and it is 7,800 square         Pyramid?” (It’s not a rectangular prism. It has slanted
+    meters. Then I found 7,800 × 400 and it is 3,120,000.         sides.)
     So, the volume of the Empire State Building is close
-                                                                  • “Is the product of the area of the base and the height
+                                                                • “Is the product of the area of the base and the height
     to 3,000,000 cubic meters.
-                                                                    larger than the volume of the pyramid or smaller?
- 3. Sample response: I'm not sure, because both                     How do you know?” (It is larger, because the pyramid
-    volumes I found are estimates. The 7,406,000 cubic              does not fill all of that space. It gets more and more
-    meters for the Great Pyramid is too much because it             narrow toward the top.)
+                                                                  larger than the volume of the pyramid or smaller?
+ 3. Sample response: I'm not sure, because both                   How do you know?” (It is larger, because the pyramid
+    volumes I found are estimates. The 7,406,000 cubic            does not fill all of that space. It gets more and more
+    meters for the Great Pyramid is too much because it           narrow toward the top.)
     is shaped like a pyramid, not a rectangular prism. Its
-                                                                  • “Why is it hard to find the exact volume of the Empire
+                                                                • “Why is it hard to find the exact volume of the Empire
     top takes up much less space than its bottom. The
-                                                                    State Building?” (It’s also not a rectangular prism. It
+                                                                  State Building?” (It’s also not a rectangular prism. It
     3,000,000 cubic meters for the Empire State Building
-                                                                    also gets narrower toward the top.)
+                                                                  also gets narrower toward the top.)
     is too much because I rounded 374 meters to 400
-    meters to make the calculation simpler. The Empire            • “Which do you think has greater volume?” (I think it’s
-    State Building is not exactly a rectangular prism               too close to tell. I think the Great Pyramid is bigger
-    either since it gets skinnier the farther up you go.            because it looks like the base of the Empire State
-                                                                    Building does not go up very far. It gets a lot
-                                                                    narrower quickly. The Great Pyramid gets narrower
-                                                                    more gradually.)
+    meters to make the calculation simpler. The Empire          • “Which do you think has greater volume?” (I think it’s
+    State Building is not exactly a rectangular prism             too close to tell. I think the Great Pyramid is bigger
+    either since it gets skinnier the farther up you go.          because it looks like the base of the Empire State
+                                                                  Building does not go up very far. It gets a lot
+                                                                  narrower quickly. The Great Pyramid gets narrower
+                                                                  more gradually.)
 
 
 
@@ -296,10 +296,10 @@ formulas to calculate volumes of different rectangular prisms.)
 
 
 
-                                             Grade 5                                  CC BY NC 2024
-                                              Unit 8
-                                                               Lesson 6
-                                                                               Illustrative Mathematics®                  5
+                                            Grade 5                                  CC BY NC 2024
+                                             Unit 8
+                                                             Lesson 6
+                                                                              Illustrative Mathematics®                 5
 Cool-down                                                                                                 5 min
 
 Reflection: Volume

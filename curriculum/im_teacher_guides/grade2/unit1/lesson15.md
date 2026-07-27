@@ -65,20 +65,20 @@ Lesson Timeline                                              Teacher Reflection 
                                           Unit 1
                                                          Lesson 15
                                                                              Illustrative Mathematics®               1
- Activity 2                                     20 min
+ Activity 2                                    20 min
 
- Synthesis Estimate                             10 min
+ Synthesis Estimate                            10 min
 
- Cool-down                                      5 min
+ Cool-down                                     5 min
 
 
 
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: 10 and Some More
 
-      Standards                                                           Instructional Routines
-Addressing     2.OA.B.2                                                • Number Talk
+      Standards                                                        Instructional Routines
+Addressing      2.OA.B.2                                            • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for making 10 when adding.
@@ -87,46 +87,46 @@ When students look for ways to rearrange and decompose numbers to make 10, they 
 structure of expressions and whole numbers (MP7).
 
 
-      Student Task Statement                                         Launch
-      Find the value of each sum mentally.                             • Display one expression.
+      Student Task Statement                                      Launch
+      Find the value of each sum mentally.                          • Display one expression.
 
-          •                                                            • “Give me a signal when you have an answer and can
-                                                                         explain how you got it.”
-          •
-                                                                       • 1 minute: think time
-          •
-          •
-                                                                     Activity
+        • 4 + 8 + 2                                                 • “Give me a signal when you have an answer and can
+                                                                      explain how you got it.”
+        • 4 + 5 + 3 + 2
+                                                                    • 1 minute: think time
+        • 9 + 3 + 1
+        • 9 + 5
+                                                                  Activity
 
-Student Response                                                       • Record answers and strategies.
-                                                                       • Keep expressions and work displayed.
-  • 14:               and             .
-                                                                       • Repeat for each expression.
-  • 14:           and              , so it’s like the first one.
+Student Response                                                    • Record answers and strategies.
+                                                                    • Keep expressions and work displayed.
+  • 14: 8 + 2 = 10 and 10 + 4 = 14.
+                                                                    • Repeat for each expression.
+  • 14: 5 + 3 = 8 and 8 + 2 = 10, so it’s like the first one.
+     10 + 4 = 14
 
-
-  • 13:               and             .                              Activity Synthesis
-  • 14: I know 5 is         , so          and                 .        • “How did making a ten help when finding the sums?”
-
-
+  • 13: 9 + 1 = 10 and 10 + 3 = 13.                               Activity Synthesis
+  • 14: I know 5 is 1 + 4, so 9 + 1 = 10 and 10 + 4 = 14.           • “How did making a ten help when finding the sums?”
 
 
-Activity 1                                                                                                      15 min
+
+
+Activity 1                                                                                                   15 min
 
 Shell Collections
 
       Standards
-Addressing     2.OA.A.1
+Addressing      2.OA.A.1
 
 
 The purpose of this activity is for students to interpret a Compare problem with the smaller value unknown and connect
 the problem to a tape diagram. The Launch of the activity is an opportunity for students to share their experiences and
 
 
-                                            Grade 2                                       CC BY NC 2024
+                                            Grade 2                                    CC BY NC 2024
                                              Unit 1
-                                                                   Lesson 15
-                                                                                   Illustrative Mathematics®             2
+                                                                Lesson 15
+                                                                                Illustrative Mathematics®             2
 ask questions about a beach to ensure each student has access into the context. If it is helpful, display a few images of
 beaches from different areas around the world. The story problem is introduced without numbers in order to allow
 students to consider the relationship between quantities. Students consider who has more or less, which supports their
@@ -173,7 +173,7 @@ Student Response                                                 • “Diego ha
                                                                    equation to show how you could find the unknown
  1.
                                                                    part. Use a question mark to show the unknown.”
- 2. Sample responses:               or
+ 2. Sample responses:               or ? + 20 = 55
                                                                  • 2 minutes: independent work time
                                                                  • 3 minutes: partner discussion
 
@@ -283,7 +283,7 @@ shows Diego’s shells on top and it shows that Lin’s shells
                                                                  • “If it helps, you may label the diagrams to explain
 would be 32 and 28 more. Q matches too because Lin has
                                                                    your matches.”
-       shells.
+32 + 28 shells.
                                                                  • As needed, demonstrate the activity with a student
                                                                    volunteer.
                                                                  • 8 minutes: partner work time

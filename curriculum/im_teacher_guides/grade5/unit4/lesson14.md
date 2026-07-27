@@ -139,7 +139,7 @@ are given and students find their product, which is the area.
                                                                     ◦ One side length: 105 feet
                                    23              253
                                                                 • “What is a reasonable estimate for the width?” (40
-              5,796                                  36           because                    and                   .)
+              5,796                                  36           because 105 × 40 = 4,200 and 4,200 ÷ 105 = 40.)
                                                                 • 2 minutes: partner discussion
                                                                 • “How can we find the exact width of the garden?”
 Student Response                                                  (Divide the area by the length.)
@@ -232,7 +232,7 @@ side lengths and the volume are given. Monitor for students who:
                   882           6             7
                                                                      ◦ Notice there are multiple possible lengths and
                                                                        widths for the last rectangular prism in the third
-             a. First, Clare finds the quotient      .
+             a. First, Clare finds the quotient 882 ÷ 6.
                                                                        table.
                 What could she do next to find the height?
 
@@ -295,7 +295,7 @@ Lesson Synthesis
 
 Invite students to share different responses for the width and the height.
 
-"What is the value of            ?" (28)
+"What is the value of 1,008 ÷ 36?" (28)
 
 "Why is there more than one solution for the width and the height of this rectangular prism?" (I only know that the
 product of the width and the height is 28. But there are different factors that have a product of 28.)

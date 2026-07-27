@@ -74,28 +74,28 @@ terms of place value. It also reinforces the idea that the same digit has differ
 compare and order numbers within 1,000,000.
 
 
-      Student Task Statement                                       Launch
-      Decide if each statement is true or false. Explain             • Display one statement.
-      your reasoning.                                                • “Give me a signal when you know whether the
-        •                                                              statement is true and can explain how you know.”
+      Student Task Statement                                      Launch
+      Decide if each statement is true or false. Explain            • Display one statement.
+      your reasoning.                                               • “Give me a signal when you know whether the
+        • 1,923 = 1 + 90 + 200 + 3,000                                statement is true and can explain how you know.”
 
-        •                                                            • 1 minute: quiet think time
+        • 1,923 = 1,000 + 90 + 20 + 3                               • 1 minute: quiet think time
 
-        •
-        •                                                          Activity
-                                                                     • Share and record answers and strategy.
-Student Response                                                     • Repeat with each statement.
+        • 19,203 = 10,000 + 9,000 + 200 + 3
+        • 190,023 = 10,000 + 90,000 + 20 + 3                      Activity
+                                                                    • Share and record answers and strategy.
+Student Response                                                    • Repeat with each statement.
 
   • False: the sum on the right is 3,291, which is not
-    equal to 1,923.                                                Activity Synthesis
+    equal to 1,923.                                               Activity Synthesis
   • False: the numbers on the right add up to 1,113, not
-                                                                     • “How would you correct the false statements so that
+                                                                    • “How would you correct the false statements so that
     1,923.
-                                                                       they become true?”
+                                                                      they become true?”
   • True: the sum on the right, 19,203, is equal to the
-                                                                        ◦
+                                                                       ◦ 3,291 = 1 + 90 + 200 + 3,000
     number on the left. The sum on the right is the
-    expanded form of 19,203.                                            ◦
+    expanded form of 19,203.                                           ◦ 190,023 = 100,000 + 90,000 + 20 + 3
 
   • False: the sum on the right is 100,023, not 190,023.
 
@@ -106,8 +106,8 @@ Activity 1                                                                      
 
 Ways to Compare
 
-      Standards                                                         Instructional Routines
-Addressing      4.NBT.A.2                                            • MLR1 Stronger and Clearer Each Time
+      Standards                                                        Instructional Routines
+Addressing      4.NBT.A.2                                           • MLR1 Stronger and Clearer Each Time
 
 
 This activity prompts students to examine more closely how multi-digit numbers can be compared, and to use their
@@ -120,16 +120,16 @@ to precision in the language they use (MP6).
 This activity uses MLR1 Stronger and Clearer Each Time. Advances: reading, writing
 
 
-      Student Task Statement                                       Launch
-       1. Tyler compares large numbers by looking at                 • Groups of 2
-          the first digit from the left.                             • Read the first problem as a class.
-            He says, “The greater the first digit, the greater       • Ask 1–2 students to restate Tyler’s claim in their own
+      Student Task Statement                                      Launch
+       1. Tyler compares large numbers by looking at                • Groups of 2
+          the first digit from the left.                            • Read the first problem as a class.
+           He says, “The greater the first digit, the greater       • Ask 1–2 students to restate Tyler’s claim in their own
 
 
-                                             Grade 4                                     CC BY NC 2024
-                                              Unit 4
-                                                                 Lesson 13
-                                                                                  Illustrative Mathematics®                2
+                                            Grade 4                                     CC BY NC 2024
+                                             Unit 4
+                                                                Lesson 13
+                                                                                 Illustrative Mathematics®                 2
          the number. If the first digit is the same, then          words.
          we compare the second digit.”
 

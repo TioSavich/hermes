@@ -194,11 +194,11 @@ Student Response                                                   estimation qu
                                                                    situation. “How might you make those estimates?”
  1. Sample response: Assuming 80 years of brushing, 4
     toothbrushes a year, and $2 per toothbrush:
-     a. 320 toothbrushes in a lifetime (                )
-     b. $640 (                )
+     a. 320 toothbrushes in a lifetime (80 × 4 = 320)
+     b. $640 (320 × 2 = 640)
  2. Sample response:
-     a. 1,460 minutes in a year (                       )
-     b. 116,800 a lifetime (                    ),
+     a. 1,460 minutes in a year (365 × 2 × 2 = 1,460)
+     b. 116,800 a lifetime (1,460 × 80 = 116,800),
         assuming 80 years of having teeth that need
         brushing
  3. Sample responses:
@@ -217,7 +217,7 @@ Activity 2                                                                      
 Get Your Classmates to Estimate
 
      Standards                                                       Instructional Routines
-Addressing       4.OA.A, 4.OA.A.3                                • Estimation Exploration
+Addressing     4.OA.A, 4.OA.A.3                                  • Estimation Exploration
 
 
 In this activity, students create an Estimation Exploration that focuses on multi-digit multiplication. Students may choose
@@ -241,7 +241,7 @@ Required Preparation
 
                                              Grade 4                                  CC BY NC 2024
                                               Unit 9
-                                                            Lesson 10
+                                                           Lesson 10
                                                                                Illustrative Mathematics®                4
        2. Choose your favorite idea.                             Activity
              ◦ Write an estimation question that would

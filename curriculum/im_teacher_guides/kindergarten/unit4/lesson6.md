@@ -118,7 +118,7 @@ When students notice that dots are being added on with each image, they look for
                                                                  third group of dots.” (2 more dots were added.)
 Student Response
                                                                • “The third group has 4 dots and 2 more dots. We can
-Sample responses:                                                write that as ‘4 and 2’ or ‘  ’.”
+Sample responses:                                                write that as ‘4 and 2’ or ‘4 + 2’.”
   • 4: That looks like 4 on a dot cube.
 
 
@@ -182,7 +182,7 @@ Sample responses:                                                   is happening
                                                                                 Illustrative Mathematics®                3
                                                                   • “We can use numbers and symbols to show what
                                                                     happened in the story. We can write ‘5 take away 2’
-                                                                    or ‘    ’.”
+                                                                    or ‘5 - 2’.”
                                                                   • “In the next activity, you will hear and act out a story
                                                                     like the one we just wrote.”
 
@@ -267,7 +267,7 @@ Students act out the stories.                                          the story
                                                                      • “The words in a story help us figure out what is
                                                                        happening. We can use numbers and symbols to
                                                                        show what happened in the story. We can write ‘6
-                                                                       take away 3’ or ‘    ’.”
+                                                                       take away 3’ or ‘6- 3 ’.”
 
 
 

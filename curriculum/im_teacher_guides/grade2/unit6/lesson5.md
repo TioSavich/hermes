@@ -75,7 +75,7 @@ Lesson Timeline                                                  Teacher Reflect
 Number Talk: Add 5
 
      Standards                                                       Instructional Routines
-Addressing       2.NBT.A.3, 2.NBT.B.5                            • Number Talk
+Addressing     2.NBT.A.3, 2.NBT.B.5                              • Number Talk
 
 
 This Number Talk encourages students to think about place value and use the properties of operations to mentally find
@@ -86,22 +86,22 @@ within 1,000.
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 5 + 30 + 5                                             • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 50 + 30 + 5
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 50 + 5 + 30 + 5
+        • 500 + 30 + 5
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
                                                                  • Keep expressions and work displayed.
-  • 40: I know             and               .
+  • 40: I know 5 + 5 = 10 and 10 + 30 = 40.
                                                                  • Repeat with each expression.
   • 85: I added 5 tens and 3 tens to get 8 tens. Then I
     added 5 ones. 8 tens and 5 ones is 85.
   • 90: I added 50 and 30 first to get 80. Then I know         Activity Synthesis
-                and                .
+    5 + 5 = 10 and 80 + 10 = 90.
                                                                  • Consider asking:
   • 535: It is the expanded form of 535.
                                                                      ◦ “Did anyone approach the problem in a different
@@ -119,7 +119,7 @@ Activity 1                                                                      
 Introduce Which One—Grade 2 Shapes
 
      Standards
-Addressing       2.G.A.1
+Addressing     2.G.A.1
 
 
 The purpose of this activity is for students to learn Stage 3 of the Which One? center. Students lay the shape cards face

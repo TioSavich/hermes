@@ -1,0 +1,394 @@
+{
+ "027a7f13711a": {
+  "kind": "rule",
+  "character": ""
+ },
+ "06b13bc09377": {
+  "kind": "rule",
+  "character": ""
+ },
+ "083e49e58d53": {
+  "kind": "char",
+  "character": "t"
+ },
+ "092139c79280": {
+  "kind": "char",
+  "character": "b"
+ },
+ "0b28ebc89ba9": {
+  "kind": "char",
+  "character": "6"
+ },
+ "1402d0ea07e0": {
+  "kind": "rule",
+  "character": ""
+ },
+ "1426e2c1343f": {
+  "kind": "rule",
+  "character": ""
+ },
+ "1639e1341aea": {
+  "kind": "char",
+  "character": "f"
+ },
+ "164b78a533b5": {
+  "kind": "char",
+  "character": ">"
+ },
+ "1817b2e608c2": {
+  "kind": "rule",
+  "character": ""
+ },
+ "1b02a71bdaca": {
+  "kind": "char",
+  "character": "o"
+ },
+ "1b0f82d263fc": {
+  "kind": "char",
+  "character": "E"
+ },
+ "1d48ae42ead5": {
+  "kind": "char",
+  "character": "="
+ },
+ "2133d9a789b2": {
+  "kind": "char",
+  "character": "m"
+ },
+ "3069077eac40": {
+  "kind": "rule",
+  "character": ""
+ },
+ "429b65e94812": {
+  "kind": "char",
+  "character": "F"
+ },
+ "439924c21d87": {
+  "kind": "char",
+  "character": "e"
+ },
+ "44390334f053": {
+  "kind": "char",
+  "character": "t"
+ },
+ "4a1993876a41": {
+  "kind": "rule",
+  "character": ""
+ },
+ "4aae661043c9": {
+  "kind": "char",
+  "character": "9"
+ },
+ "4cc783a8d234": {
+  "kind": "char",
+  "character": "0"
+ },
+ "4f355cf6824b": {
+  "kind": "char",
+  "character": "B"
+ },
+ "526fb07a0985": {
+  "kind": "rule",
+  "character": ""
+ },
+ "53e25f3cbda9": {
+  "kind": "rule",
+  "character": ""
+ },
+ "596b72dec2d6": {
+  "kind": "char",
+  "character": "l"
+ },
+ "5a8a0ae6421a": {
+  "kind": "char",
+  "character": "a"
+ },
+ "5ab6e1b18031": {
+  "kind": "char",
+  "character": "¢"
+ },
+ "5d866402f0b6": {
+  "kind": "char",
+  "character": "p"
+ },
+ "5fdf052ace7d": {
+  "kind": "rule",
+  "character": ""
+ },
+ "623a5f96b155": {
+  "kind": "rule",
+  "character": ""
+ },
+ "65a20dead5eb": {
+  "kind": "char",
+  "character": "<"
+ },
+ "67392dfe65ce": {
+  "kind": "rule",
+  "character": ""
+ },
+ "689c5977c9e2": {
+  "kind": "char",
+  "character": "8"
+ },
+ "6a164ba848e2": {
+  "kind": "char",
+  "character": "5"
+ },
+ "6b49acd87edb": {
+  "kind": "rule",
+  "character": ""
+ },
+ "6c3bad938b35": {
+  "kind": "rule",
+  "character": ""
+ },
+ "71024dcb8d67": {
+  "kind": "char",
+  "character": "+"
+ },
+ "75e7c4f5632f": {
+  "kind": "rule",
+  "character": ""
+ },
+ "7a8651d1784f": {
+  "kind": "char",
+  "character": "D"
+ },
+ "7aa70297889b": {
+  "kind": "char",
+  "character": "D"
+ },
+ "7d1f14610f54": {
+  "kind": "rule",
+  "character": ""
+ },
+ "7fca40e4eb36": {
+  "kind": "char",
+  "character": "P"
+ },
+ "8074a1bd858c": {
+  "kind": "rule",
+  "character": ""
+ },
+ "876307602ed4": {
+  "kind": "char",
+  "character": "f"
+ },
+ "8783771b3e4c": {
+  "kind": "rule",
+  "character": ""
+ },
+ "8af1c7286a28": {
+  "kind": "rule",
+  "character": ""
+ },
+ "8d4634015052": {
+  "kind": "char",
+  "character": "a"
+ },
+ "8df48bf3ecb9": {
+  "kind": "rule",
+  "character": ""
+ },
+ "9378879fcdba": {
+  "kind": "char",
+  "character": "."
+ },
+ "93eacbbed951": {
+  "kind": "char",
+  "character": "("
+ },
+ "9a61c0013055": {
+  "kind": "char",
+  "character": "−"
+ },
+ "9d8d5d1c9007": {
+  "kind": "char",
+  "character": "u"
+ },
+ "9ed5466fe06a": {
+  "kind": "rule",
+  "character": ""
+ },
+ "a0821c226c8f": {
+  "kind": "rule",
+  "character": ""
+ },
+ "a1fef0eb92df": {
+  "kind": "char",
+  "character": "A"
+ },
+ "a2eeeea8a686": {
+  "kind": "rule",
+  "character": ""
+ },
+ "a3f702f5736b": {
+  "kind": "rule",
+  "character": ""
+ },
+ "a7e1ce107142": {
+  "kind": "char",
+  "character": "m"
+ },
+ "ae2d44a1f7af": {
+  "kind": "rule",
+  "character": ""
+ },
+ "afa897ae33df": {
+  "kind": "char",
+  "character": "7"
+ },
+ "b1152dc3ff8b": {
+  "kind": "rule",
+  "character": ""
+ },
+ "b26c0f3f7ea4": {
+  "kind": "char",
+  "character": "i"
+ },
+ "b29a994afe5d": {
+  "kind": "char",
+  "character": ","
+ },
+ "b736ae4e3d52": {
+  "kind": "char",
+  "character": "?"
+ },
+ "b7f1ac1f8241": {
+  "kind": "rule",
+  "character": ""
+ },
+ "b8f7b2364447": {
+  "kind": "char",
+  "character": ")"
+ },
+ "b9033db3ae92": {
+  "kind": "rule",
+  "character": ""
+ },
+ "bf237256c93d": {
+  "kind": "rule",
+  "character": ""
+ },
+ "c0fadd1f77ba": {
+  "kind": "rule",
+  "character": ""
+ },
+ "c12ca4cc31bf": {
+  "kind": "char",
+  "character": "s"
+ },
+ "c38c79bd464d": {
+  "kind": "char",
+  "character": "n"
+ },
+ "c558f44c62c3": {
+  "kind": "rule",
+  "character": ""
+ },
+ "c6128bba3db7": {
+  "kind": "char",
+  "character": "("
+ },
+ "cc73c2110dce": {
+  "kind": "char",
+  "character": "C"
+ },
+ "cde3e748d31c": {
+  "kind": "rule",
+  "character": ""
+ },
+ "d1c312fa7ded": {
+  "kind": "rule",
+  "character": ""
+ },
+ "d270f7ef2bcc": {
+  "kind": "rule",
+  "character": ""
+ },
+ "d2d3943d54c6": {
+  "kind": "char",
+  "character": "g"
+ },
+ "d477bdf2ffbe": {
+  "kind": "rule",
+  "character": ""
+ },
+ "d4db64a0b1a2": {
+  "kind": "char",
+  "character": "w"
+ },
+ "d7e9c909c6ca": {
+  "kind": "char",
+  "character": "÷"
+ },
+ "dcd5691a7830": {
+  "kind": "char",
+  "character": "3"
+ },
+ "dd9cc850add6": {
+  "kind": "char",
+  "character": "n"
+ },
+ "dd9f2c036bd2": {
+  "kind": "char",
+  "character": "d"
+ },
+ "de62f3adc216": {
+  "kind": "rule",
+  "character": ""
+ },
+ "e16eee2c2741": {
+  "kind": "rule",
+  "character": ""
+ },
+ "e1d8fb6519b6": {
+  "kind": "char",
+  "character": "×"
+ },
+ "e3c412fafd8c": {
+  "kind": "rule",
+  "character": ""
+ },
+ "e5153a5ad13d": {
+  "kind": "char",
+  "character": "1"
+ },
+ "e7da1671e1ed": {
+  "kind": "rule",
+  "character": ""
+ },
+ "e8ae190a6def": {
+  "kind": "char",
+  "character": "2"
+ },
+ "efe86df5716c": {
+  "kind": "char",
+  "character": ")"
+ },
+ "f19e108212c8": {
+  "kind": "char",
+  "character": "r"
+ },
+ "f1f499e265ed": {
+  "kind": "char",
+  "character": "4"
+ },
+ "f3a7e6b81ccf": {
+  "kind": "rule",
+  "character": ""
+ },
+ "f4930f50ba99": {
+  "kind": "char",
+  "character": ":"
+ },
+ "f4ec7b0f15b8": {
+  "kind": "blank",
+  "character": ""
+ },
+ "fec4ed648ad6": {
+  "kind": "char",
+  "character": "l"
+ }
+}

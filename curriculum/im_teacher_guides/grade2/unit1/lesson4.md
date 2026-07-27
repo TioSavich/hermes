@@ -94,25 +94,25 @@ helpful later in this lesson when students will need to be able to add within 20
       Student Task Statement                                 Launch
       Find the value of each sum mentally.                     • Display one expression.
 
-          •                                                    • “Give me a signal when you have an answer and can
+        • 8 + 2                                                • “Give me a signal when you have an answer and can
                                                                  explain how you got it.”
-          •
+        • 8 + 3
                                                                • 1 minute: quiet think time
-          •
+        • 8 + 5
 
-          •                                                  Activity
+        • 7 + 6                                              Activity
                                                                • Record answers and strategy.
 Student Response
                                                                • Keep expressions and work displayed.
   • 10: I just know it.                                        • Repeat with each expression.
-  • 11:               and    is just 1 more.
-  • 13: 5 can be broken into 2 and 3.              and       Activity Synthesis
-                .
+  • 11: 8 + 2 = 10 and 8 + 3 is just 1 more.
+  • 13: 5 can be broken into 2 and 3. 8 + 2 = 10 and         Activity Synthesis
+    10 + 3 = 13.
                                                                • “How does making 10 help in finding the value of the
-  • 13:               and           .
+  • 13: 7 + 3 = 10 and 10 + 3 = 13.
                                                                  sums?” (It helped me because I was able to use facts I
-                                                                 already know. I know            and I know
-                                                                              .)
+                                                                 already know. I know 7 + 3 = 10 and I know
+                                                                 10 + 3 = 13.)
 
 
 
@@ -229,9 +229,9 @@ Materials to Gather
       Show your thinking using drawings, numbers, or            • Give students access to connecting cubes.
       words.                                                    • “Now we are going to add and subtract within 20.
                                                                   Think about how you can show your thinking so
-       1.
+       1. 4 + 9
                                                                   others can understand.”
-       2.
+       2. 15 - 3
                                                                 • “You have time to work independently before sharing
 
 
@@ -239,34 +239,34 @@ Materials to Gather
                                              Unit 1
                                                             Lesson 4
                                                                               Illustrative Mathematics®                4
-       3.                                                           your thinking with a partner.”
+       3. 7 + 6                                                     your thinking with a partner.”
 
-       4.
+       4. 17- 9
 
-       5.
+       5. 14 + 5
                                                                Activity
 
-       6.                                                        • 5 minutes: independent work time
+       6. 12- 4                                                  • 5 minutes: independent work time
                                                                  • 5 minutes: partner discussion
-       7.
+       7. 6 + 12
                                                                  • Monitor for different methods used to find the value
-       8.
-                                                                   of       . For example:
-                                                                     ◦ Add on to make 10 (             ,             ,
-Student Response                                                                ).
+       8. 16- 5
+                                                                   of 17- 9 . For example:
+                                                                     ◦ Add on to make 10 (9 + 1 = 10, 10 + 7 = 17,
+Student Response                                                       1 + 7 = 8).
 
- 1. 13. Sample response:                 ,                           ◦ Decompose one number to get to 10 first
-                                                                       (         ,         ).
+ 1. 13. Sample response: 9 + 1 = 10, 10 + 3 = 13                     ◦ Decompose one number to get to 10 first
+                                                                       (17- 7 = 10 , 10- 2 = 8 ).
  2. 12. Sample response: I counted back. 14, 13, 12
- 3. 13. Sample response:                 ,
+ 3. 13. Sample response: 7 + 7 = 14, 14- 1 = 13
                                                                Activity Synthesis
- 4. 8. Sample response:              ,            ,
-                                                                 • Display         .
- 5. 19. Sample response:             so               .          • Select previously identified students to share their
- 6. 8. Sample response: I know               .                     strategies.
+ 4. 8. Sample response: 9 + 1 = 10, 10 + 7 = 17,
+    1 + 7 = 8                                                    • Display 17- 9 .
+ 5. 19. Sample response: 4 + 5 = 9 so 14 + 5 = 19.               • Select previously identified students to share their
+ 6. 8. Sample response: I know 8 + 4 = 12.                         strategies.
 
- 7. 18. Sample response:             so               .
- 8. 11. Sample response:             so               .
+ 7. 18. Sample response: 6 + 2 = 8 so 6 + 12 = 18.
+ 8. 11. Sample response: 6- 5 = 1 so 16- 5 = 11 .
 
 
 
@@ -294,11 +294,11 @@ Suggested Centers
 
 
 
-                                             Grade 2                                  CC BY NC 2024
-                                              Unit 1
+                                            Grade 2                                   CC BY NC 2024
+                                             Unit 1
                                                              Lesson 4
                                                                                Illustrative Mathematics®             5
-Cool-down                                                                                               5 min
+Cool-down                                                                                                5 min
 
 Sums and Differences
 
@@ -309,30 +309,30 @@ Addressing     2.OA.B.2
      Student Task Statement
      Find the value of each expression. Show your thinking using drawings, numbers, or words.
 
-      1.
+      1. 8 + 6
 
-      2.
+      2. 13 - 5
 
-      3.
+      3. 16- 4
 
 
 Student Response
- 1. 14. Sample response:            ,
- 2. 8. Sample response:             ,
- 3. 12. Sample response: I just subtracted the ones         .
+ 1. 14. Sample response: 8 + 2 = 10, 10 + 4 = 14
+ 2. 8. Sample response: 13 - 3 = 10, 10- 2 = 8
+ 3. 12. Sample response: I just subtracted the ones 6- 4 = 2 .
 
 
 Responding to Student Thinking
-Students show evidence in their explanations or drawings    Next Day Supports
-that they count on by ones to find the value of sums and    Encourage students to use connecting cubes in towers of
-differences within 20.                                      10 and singles.
+Students show evidence in their explanations or drawings     Next Day Supports
+that they count on by ones to find the value of sums and     Encourage students to use connecting cubes in towers of
+differences within 20.                                       10 and singles.
 
 
 
 
-                                          Grade 2                                CC BY NC 2024
+                                          Grade 2                                 CC BY NC 2024
                                            Unit 1
                                                            Lesson 4
-                                                                          Illustrative Mathematics®             6
+                                                                           Illustrative Mathematics®             6
 ```
 

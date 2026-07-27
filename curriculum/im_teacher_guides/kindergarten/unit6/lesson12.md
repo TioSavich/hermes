@@ -490,7 +490,7 @@ Required Preparation
                                                            will put the 9 card and 1 card down as a match and
                                                            fill in an equation.”
                                                          • “If I have a 9 card and a 1 card, what equation should
-                                                           I write?” (           or            )
+                                                           I write?” (9 + 1 = 10 or 1 + 9 = 10)
                                                          • “If my partner doesn’t have the card that I asked for, I
                                                            draw 1 more card from the middle.”
                                                          • “We will keep playing until we run out of cards. The

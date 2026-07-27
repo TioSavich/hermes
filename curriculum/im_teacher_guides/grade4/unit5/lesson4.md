@@ -214,7 +214,7 @@ situations.
              how you know.                                   • “How do the diagrams show ‘times as many’?” (‘Times
                                                                as many’ is represented by the number of times each
       4. Elena reads 72 pages. Clare reads 9 pages.            rectangle in the diagram is repeated.)
-                                                             • Display:
+                                                             • Display: 3 × ? = 60
                                                              • “How does this equation help us find the number of
                                                                pages Jada read?” (We know that Han read 60 pages,
                                                                which is 3 times as many as Jada, because the
@@ -235,24 +235,24 @@ Student Response
 2.   a. Kiran read 6 times as many pages as Lin. Sample
         response: The diagram for Kiran shows 6
         sections of 9.
-     b.
+     b. 6 × 9 = 54
      c. Kiran read 54 pages.
 3. Sample response:
 
 
 
-                                         Grade 4                                 CC BY NC 2024
+                                         Grade 4                                CC BY NC 2024
                                           Unit 5
                                                           Lesson 4
-                                                                          Illustrative Mathematics®               4
+                                                                         Illustrative Mathematics®                4
      a. Han read 3 times as many pages as Jada.
-     b.
-     c. Jada read 20 pages, because                .
+     b. ? × 3 = 60
+     c. Jada read 20 pages, because 20 × 3 = 60.
  4. Sample response:
      a. This diagram does not show as separate boxes
         how many times the number of pages Elena
         reads.
-     b.
+     b. 9 × ? = 72
      c. Elena reads 8 times as many pages as Clare.
 
 
@@ -270,7 +270,7 @@ Activity 2                                                                      
 Who Read More?
 
      Standards
-Addressing       4.OA.A.2
+Addressing     4.OA.A.2
 
 
 The purpose of this activity is for students to represent multiplicative comparison situations and solve for an unknown
@@ -290,17 +290,17 @@ equations that represent the situation (MP2).
      Student Task Statement                                    Launch
       For each situation:                                        • Groups of 2
 
-          • Write an equation to represent the situation.        • Read directions for the activity aloud.
-            Use a symbol to represent the unknown.               • “What will we do with each problem in this task?”
-          • Draw a diagram to show the comparison.                 (Write an equation, with the unknown represented
+        • Write an equation to represent the situation.          • Read directions for the activity aloud.
+          Use a symbol to represent the unknown.                 • “What will we do with each problem in this task?”
+        • Draw a diagram to show the comparison.                   (Write an equation, with the unknown represented
                                                                    by a symbol, draw a diagram to show comparison,
-          • Answer the question about the situation.
+        • Answer the question about the situation.
                                                                    and answer the question.)
 
 
 
-                                             Grade 4                                 CC BY NC 2024
-                                              Unit 5
+                                            Grade 4                                  CC BY NC 2024
+                                             Unit 5
                                                             Lesson 4
                                                                               Illustrative Mathematics®                5
      1. Lin read 7 books. Diego read 8 times as many      Activity
@@ -334,7 +334,7 @@ Student Response                                              diagram, and answe
 
 1. Sample response:
                                                           Activity Synthesis
-   a.
+   a. 8 × 7 = ?
                                                             • “What information did you use in each situation to
                                                               know how to draw each diagram?”
                                                                ◦ The number of repeating rectangles in the
@@ -342,7 +342,7 @@ Student Response                                              diagram, and answe
    c. Diego read 56 books.                                     ◦ The row with one rectangle is the amount being
 2. Sample response:                                              multiplied.
 
-   a.            or                                            ◦ The row with multiple rectangles represents the
+   a. 12 × ? = 72 or 72 ÷ 12 = ?                               ◦ The row with multiple rectangles represents the
                                                                  greater quantity in the comparison.
                                                             • “How is the last problem different from the first
                                                               two?” (The unknown value is how many “times as
@@ -350,7 +350,7 @@ Student Response                                              diagram, and answe
 
    c. Tyler read 6 books.
 3. Sample response:
-   a.
+   a. ? × 13 = 130
 
 
 
@@ -368,7 +368,7 @@ Student Response                                              diagram, and answe
 Lesson Synthesis
 “Today we used diagrams to compare two large quantities.”
 
-Display some diagrams students created to represent
+Display some diagrams students created to represent ___ × 12 = 72
 
 “What do you notice about the different diagrams we used to represent this equation?” (6 sets of 12 or 12 sections, with
 6 in each)
@@ -404,7 +404,7 @@ Addressing     4.OA.A.2
 
 
 Student Response
- 1. Sample response:
+ 1. Sample response: 7 × ? = 63
  2. Priya read 9 pages.
 
 

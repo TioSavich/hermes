@@ -86,28 +86,28 @@ using dollars, cents, or a combination of the two units. These understandings he
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 80¢ + 20¢ + 37¢                                        • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 80¢ + 20¢ + 37¢ + 42¢
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 75¢ + 37¢ + 25¢
+        • 75¢ + 80¢ + 25¢ + 20¢
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
                                                                  • Keep expressions and work displayed.
-  • 137¢ or 1 dollar and 37¢:                    ,
-                                                                 • Repeat with each expression.
+  • 137¢ or 1 dollar and 37¢: 80¢ + 20¢ = 100¢,
+    100¢ + 37¢ = 137¢                                            • Repeat with each expression.
 
-  • 179¢ or 1 dollar and 79¢:                    ,
-                      ,                                        Activity Synthesis
+  • 179¢ or 1 dollar and 79¢: 80¢ + 20¢ = 100¢,
+    37¢ + 42¢ = 79¢, 100¢ + 79¢ = 179¢                         Activity Synthesis
   • 137¢ or 1 dollar and 37¢: 75¢ and 25¢ make $1. It’s
                                                                  • Revisit a student strategy that shows a way to make
     $1 and 37¢
                                                                    100, and expresses the total in cents.
-  • 200¢ or 2 dollars:                   ,
+  • 200¢ or 2 dollars: 75¢ + 25¢ = 100¢,
                                                                  • Consider asking:
-                         ,
+    80¢ + 20¢ = 100¢, 100¢ + 100¢ = 200¢
                                                                      ◦ “Who can restate _____’s reasoning in a different
                                                                        way?”
                                                                      ◦ “Who can restate _____’s reasoning, using dollars
@@ -129,8 +129,8 @@ the cards that show 10 and set them aside. Each student picks 8 cards and choose
 
 
 
-                                             Grade 2                                 CC BY NC 2024
-                                              Unit 7
+                                          Grade 2                                    CC BY NC 2024
+                                           Unit 7
                                                            Lesson 11
                                                                               Illustrative Mathematics®                2
 numbers. Each student adds the numbers and writes an equation. The score for the round is the difference between

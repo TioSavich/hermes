@@ -357,7 +357,7 @@ Display and read:
   • 5 and something is 9.
 “Match each of these statements to one of the stories we solved. Explain how they match.”
 
-Display             .
+Display 5 + 4 =     .
 
 “We can represent ‘5 and 4 is something’ with this equation. The box shows that we do not know the total, The total is
 unknown.”

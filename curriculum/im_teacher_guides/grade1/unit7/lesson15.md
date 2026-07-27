@@ -87,10 +87,10 @@ their values, by using the properties of operations or their understanding of pl
 
       Be prepared to explain your reasoning.                      • “Give me a signal when you know whether the
                                                                     statement is true and can explain how you know.”
-        •
+        • 30 = 30
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 10 + 15 = 15 + 10
+        • 10 + 10 + 10 = 3
                                                                 Activity
                                                                   • Share and record students’ answers and strategies.
                                                                   • Repeat with each statement.

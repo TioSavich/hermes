@@ -44,9 +44,9 @@ make sense of and solve story problems. In this lesson, students build on their 
 by considering ways they might estimate an answer before finding the actual answer. Although students may informally
 round numbers, the concept and skill of rounding numbers is not expected of students until grade 3. At this point,
 students may use any strategy that makes sense to them to justify why an estimate is or is not reasonable. This may
-include simple front-end estimation (for example, students describe their strategy as just adding the tens in        and
-say it is about 70). Others may think about replacing numbers with friendly numbers (for example, they may say
-is about          or 80).
+include simple front-end estimation (for example, students describe their strategy as just adding the tens in 23 + 55 and
+say it is about 70). Others may think about replacing numbers with friendly numbers (for example, they may say 23 + 55
+is about 25 + 55 or 80).
 
 Throughout the lesson, it is important to emphasize the ways students reason about the reasonableness of estimates
 and not how close an estimate is to the actual answer. Emphasizing the latter can frustrate students and encourage
@@ -75,11 +75,11 @@ Lesson Timeline                                                Teacher Reflectio
 
 
 
-Warm-up                                                                                                               10 min
+Warm-up                                                                                                         10 min
 
 True or False: Is It Equal?
 
-     Standards                                                          Instructional Routines
+     Standards                                                         Instructional Routines
 Addressing      2.NBT.B.5                                           • True or False?
 
 
@@ -92,11 +92,11 @@ later when students determine whether an estimate is reasonable or not.
      Student Task Statement                                       Launch
       Decide if each statement is true or false. Be                 • Display one statement.
       prepared to explain your reasoning.                           • “Give me a signal when you know whether the
-        •                                                             statement is true and can explain how you know.”
+        • 32- 21 = 50                                                 statement is true and can explain how you know.”
 
-        •                                                           • 1 minute: quiet think time
+        • 43 + 48 = 50                                              • 1 minute: quiet think time
 
-        •
+        • 24 + 29 = 50
                                                                   Activity
 Student Response                                                    • Share and record answers and strategy.
 
@@ -104,30 +104,30 @@ Student Response                                                    • Share an
 
   • False: 48 is close to 50 already and you are adding
     much more, so it can’t be 50.                                 Activity Synthesis
-  • False: I know       is 50. 29 is close to 30 and
+  • False: I know 25 + 25 is 50. 29 is close to 30 and
                                                                     • “We looked at three statements that are all false.
     you’re adding 24 more, so it will be a little more than
                                                                       Which expression is much greater than 50? Explain
     50.
                                                                       how you know without finding the actual value of the
-                                                                      expression.” (       . 48 is already close to 50 and
+                                                                      expression.” (43 + 48. 48 is already close to 50 and
                                                                       then you add over 40 more.)
                                                                     • “Which expression is much less than 50? Explain how
                                                                       you know.” (      . We start with 32 which is less
                                                                       than 50. Then we subtract 21, so it’s going to be even
                                                                       less.)
                                                                     • “Which expression is the closest to 50? Explain.”
-                                                                      (        because I know                is 50. 24 is close to
-                                                                      25 and 29 is close to 25, so              should be close
+                                                                      (24 + 29 because I know 25 + 25 is 50. 24 is close to
+                                                                      25 and 29 is close to 25, so 24 + 29 should be close
                                                                       to 50, but I think it’ll be a little more than 50.)
 
 
 
 
-                                            Grade 2                                       CC BY NC 2024
+                                            Grade 2                                     CC BY NC 2024
                                              Unit 2
                                                                 Lesson 15
-                                                                                   Illustrative Mathematics®                   2
+                                                                                 Illustrative Mathematics®               2
 Activity 1                                                                                                     15 min
 
 Make an Estimate

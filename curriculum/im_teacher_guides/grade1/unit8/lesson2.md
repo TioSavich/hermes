@@ -84,7 +84,7 @@ Warm-up                                                                         
 Number Talk: Connect Addition and Subtraction
 
       Standards                                                       Instructional Routines
-Addressing      1.OA.C.6                                           • Number Talk
+Addressing       1.OA.C.6                                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for the relationship between
@@ -95,12 +95,12 @@ lesson when students identify sums they know that can help them find the values 
       Student Task Statement                                     Launch
       Find the value of each expression mentally.                  • Display one expression.
 
-        •                                                          • “Give me a signal when you have an answer and can
+        • 5 + 4                                                    • “Give me a signal when you have an answer and can
                                                                      explain how you got it.”
-        •
+        • 4 + 5
                                                                    • 1 minute: quiet think time
-        •
-        •
+        • 9- 4
+        • 9- 5
                                                                  Activity
 
 Student Response                                                   • Record answers and strategies.
@@ -189,14 +189,14 @@ Required Preparation
                                                               Activity Synthesis
 Student Response
                                                                 • Invite previously identified students to share.
- 1.            or           and            or
+ 1. 4 + 2 = 6 or 2 + 4 = 6 and 6- 2 = 4 or 6- 4 = 2
                                                                 • “How are the addition and subtraction equations that
- 2.            or           and            or                     match this cube tower the same? How are they
- 3.            or           and            or                     different?” (They have the same total and the same
+ 2. 3 + 5 = 8 or 5 + 3 = 8 and 8 - 5 = 3 or 8 - 3 = 5             match this cube tower the same? How are they
+ 3. 4 + 5 = 9 or 5 + 4 = 9 and 9- 4 = 5 or 9- 5 = 4               different?” (They have the same total and the same
                                                                   parts. The addition equation shows that the two
- 4.            or           and            or
+ 4. 4 + 3 = 7 or 3 + 4 = 7 and 7- 4 = 3 or 7- 3 = 4
                                                                   parts are put together to get the total. The
- 5.            or           and            or                     subtraction equation starts with the total and one
+ 5. 6 + 3 = 9 or 3 + 6 = 9 and 9- 3 = 6 or 9- 6 = 3               subtraction equation starts with the total and one
                                                                   part is taken away and the other part is left.)
 
 
@@ -206,14 +206,14 @@ Activity 2                                                                      
 
 Find the Unknown Number
 
-      Standards
+     Standards
 Addressing     1.OA.C.6, 1.OA.D.8
 
 
 The purpose of this activity is for students to find the number that makes an addition or subtraction equation true. The
 equations encourage students to use methods based on the relationship between addition and subtraction (MP7). For
-example, after finding the number that makes                     true, students can use this understanding to find the
-number that makes                      true.
+example, after finding the number that makes 4 + ___ = 9 true, students can use this understanding to find the
+number that makes 9- ___ = 5           true.
 
 
       Access for Students with Disabilities
@@ -222,7 +222,7 @@ number that makes                      true.
       Supports accessibility for: Conceptual Processing, Organization
 
 
-      Student Task Statement                                  Launch
+     Student Task Statement                                   Launch
       Find the number that makes each equation true.            • Groups of 2
       Explain to your partner how you found it.
 
@@ -230,10 +230,10 @@ number that makes                      true.
        1.
                                                                 • Read the Task Statement.
 
-       2.                                                       • 5 minutes: partner work time
+       2. 9- 5 =                                                • 5 minutes: partner work time
                                                                 • Monitor for students who discuss using a known
                                                                   addition fact to find the unknown number in a
-       3.
+       3. + 5 = 8
                                                                   subtraction equation.
 
 
@@ -243,13 +243,13 @@ number that makes                      true.
                                              Unit 8
                                                             Lesson 2
                                                                               Illustrative Mathematics®               4
-       4.                                                       Activity Synthesis
+       4. 8 - 3 =                                               Activity Synthesis
                                                                   • Invite previously identified students to share.
 
-       5.
+       5. 7- 4 =
 
 
-       6.
+       6. 8 = 2 +
 
 
        7.
@@ -259,16 +259,16 @@ number that makes                      true.
 Student Response
  1. 5. Sample response. I started at 4 and counted on 5
     numbers. 4...5, 6, 7, 8, 9
- 2. 4. Sample response: If            , then             .
- 3. 3. Sample response: I know             , because I
+ 2. 4. Sample response: If 4 + 5 = 9, then 9- 4 = 5 .
+ 3. 3. Sample response: I know 3 + 5 = 8, because I
     thought of 5 fingers and 3 fingers.
  4. 5. Sample response: The parts of 8 are 3 and 5. If you
     take away from 8 and have 3 left, you took away 5.
- 5. 3. Sample response: I thought about           .I
-    know           , so the missing number must be 3.
- 6. 6. Sample response: I just know               .
- 7. 4. Sample response: I know             , so
-                .
+ 5. 3. Sample response: I thought about 4 + ___ = 7. I
+    know 4 + 3 = 7, so the missing number must be 3.
+ 6. 6. Sample response: I just know 6 + 2 = 8.
+ 7. 4. Sample response: I know 4 + 4 = 8, so
+     8 - 4 = 4 .
 
 
 
@@ -295,15 +295,15 @@ Materials to Gather
 
 
 
-                                               Grade 1                                 CC BY NC 2024
-                                                Unit 8
+                                             Grade 1                                   CC BY NC 2024
+                                              Unit 8
                                                               Lesson 2
                                                                                 Illustrative Mathematics®                5
   • Index cards: Activity 3
 
 
-     Student Task Statement                                     Launch
-      Color the differences you know.                             • Give students colored pencils and index cards.
+      Student Task Statement                                    Launch
+       Color the differences you know.                            • Give students colored pencils and index cards.
                                                                   • “Now we will revisit differences with values within 10.
                                                                     We will identify the differences we know the value of
                                                                     from memory and the ones we are still working on.
@@ -311,12 +311,12 @@ Materials to Gather
                                                                     that you know the value of from memory, just like
                                                                     you did on the addition chart. When you are done,
                                                                     you may have some boxes that are not colored in.
-      Write each difference that isn’t colored on an index          These are the differences you are still working on.
-      card.                                                         Write each of these differences on a card. On the
+       Write each difference that isn’t colored on an index         These are the differences you are still working on.
+       card.                                                        Write each of these differences on a card. On the
                                                                     back of the card, write an addition equation that can
-      Write an addition equation on the card that can
+       Write an addition equation on the card that can
                                                                     help you find the difference. Then you can use the
-      help you find the value of the difference.
+       help you find the value of the difference.
                                                                     cards to practice.”
 
 
@@ -336,8 +336,8 @@ from memory and write the others on index cards.
 
 Lesson Synthesis
 “Today we identified the differences within 10 that we are still working on. We thought about using sums we know to
-help us find the value of differences. What sum is helpful in finding the value of            ? How is that sum helpful?” (
-           if you know you get 7 when you put together 3 and 4, then you know if you start with 7 and take away 3 you
+help us find the value of differences. What sum is helpful in finding the value of 7- 3 =     ? How is that sum helpful?” (
+3 + 4 = 7 if you know you get 7 when you put together 3 and 4, then you know if you start with 7 and take away 3 you
 will have 4 left. )
 
 
@@ -347,26 +347,26 @@ Cool-down                                                                       
 
 Use Related Facts
 
-     Standards
-Addressing      1.OA.C.6
+      Standards
+Addressing        1.OA.C.6
 
 
 
 
-                                             Grade 1                                   CC BY NC 2024
+                                             Grade 1                                  CC BY NC 2024
                                               Unit 8
                                                               Lesson 2
-                                                                                Illustrative Mathematics®              6
+                                                                               Illustrative Mathematics®               6
      Student Task Statement
-      Mai is still working on           .
+      Mai is still working on 9- 6 =    .
 
       Write an addition equation she can use to help figure out the difference.
 
-      Addition equation:
+      Addition equation: ___
 
 
 Student Response
-Sample responses:               ,       ,            , or
+Sample responses: 6 + 3 = 9, 3 + 6 = 9, 9 = 3 + 6, or 9 = 6 + 3
 
 
 Responding to Student Thinking

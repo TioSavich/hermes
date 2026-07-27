@@ -187,7 +187,7 @@ Sample response:
                                                                   something was added or taken away. We can also
                                                                   write an expression to show the parts that we see.
                                                                   This design has 7 pattern blocks, 5 green triangles
-                                                                  and 2 orange squares. I can write that as      .”
+                                                                  and 2 orange squares. I can write that as 5 + 2.”
                                                                 • “What is the same about each design? What is
                                                                   different?” (They each have 7 pattern blocks. They
                                                                   each have only squares and triangles. The designs
@@ -230,10 +230,10 @@ Materials to Gather
                                         Unit 5
                                                             Lesson 2
                                                                              Illustrative Mathematics®                4
-     Student Task Statement                           Launch
-     8 pattern blocks                                   • Groups of 2
+    Student Task Statement                            Launch
+    8 pattern blocks                                    • Groups of 2
 
-      1.                                                • Give students pattern blocks.
+     1.                                                 • Give students pattern blocks.
                                                         • “Make another design with 7 pattern blocks, using
                                                           only green triangles and orange squares. Use a
                                                           different number of orange squares and green
@@ -241,7 +241,7 @@ Materials to Gather
 
            Expression: ___________________________      • 2 minutes: independent work time
 
-      2.                                                • “Share your design with your partner. Tell your
+     2.                                                 • “Share your design with your partner. Tell your
                                                           partner how many pattern blocks you used
                                                           altogether, and how many green triangles and
                                                           orange squares you used.”
@@ -251,7 +251,7 @@ Materials to Gather
                                                           how many green triangles and red trapezoids he
            Expression: ___________________________        used in each design.”
 
-      3.
+     3.
                                                       Activity
                                                         • 3 minutes: partner work time
 
@@ -261,7 +261,7 @@ Materials to Gather
                                                           found in the designs?” (5 and 3, 4 and 4, 6 and 2)
            Expression: ___________________________      • Display the first and third designs.
 
-      4.                                                • “What is the same about these designs? What is
+     4.                                                 • “What is the same about these designs? What is
                                                           different?” (They both show 5 and 3. They both have
                                                           8 pattern blocks. One used more red trapezoids and
                                                           one used more green triangles.)
@@ -273,10 +273,10 @@ Materials to Gather
 
 
 Student Response
-1.
-2.
-3.
-4.
+1. 5 + 3
+2. 6 + 2
+3. 5 + 3
+4. 4 + 4
 
 
 
@@ -359,7 +359,7 @@ Display this pattern block design from Activity 2:
 
 “What parts do you see in this design?” (6 green triangles, 2 red trapezoids)
 
-“One way that we can break apart 8 is 6 and 2. 8 is      .”
+“One way that we can break apart 8 is 6 and 2. 8 is 6 + 2.”
 
 “What can we change about the design to show a different way to break apart 8?” (You could take away one red
 trapezoid and add one green triangle. Then it would show 7 and 1.)

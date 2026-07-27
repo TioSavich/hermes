@@ -171,23 +171,23 @@ Required Preparation
 
 
      Student Task Statement                                   Launch
-      Compare 371 and 317. Use      ,   , or   .                • Groups of 2
+      Compare 371 and 317. Use < , > , or = .                   • Groups of 2
 
                   ______________________________
 
 
 
-                                               Grade 2                               CC BY NC 2024
-                                                Unit 5
+                                             Grade 2                                 CC BY NC 2024
+                                              Unit 5
                                                             Lesson 9
                                                                               Illustrative Mathematics®               3
-    Show your thinking using drawings, numbers, or         Activity
-    words.
+     Show your thinking using drawings, numbers, or        Activity
+     words.
                                                              • “Compare 371 and 317. Use <, >, or =. Show your
                                                                thinking using drawings, numbers, or words.”
 Student Response
                                                              • 3–4 minutes: independent work time
-         or           . Sample responses:                    • “Share your thinking with your partner. Discuss how
+371 > 317 or 317 > 371. Sample responses:                    • “Share your thinking with your partner. Discuss how
  • Students draw a base-ten diagram and label it to            your representations are the same and different.”
    show that 371 is greater because it has the same          • 2–3 minutes: partner discussion
    number of hundreds as 317, but more tens.
@@ -220,7 +220,7 @@ Student Response
                                                                   show thinking about hundreds and tens. One
                                                                   way shows thinking about which number is
                                                                   further from 0.)
-                                                             • Display            and            or highlight these
+                                                             • Display 371 > 317 and 317 < 371 or highlight these
                                                                statements in the displayed student work.
                                                              • Connect students' approaches to the learning goal by
                                                                asking:
@@ -252,7 +252,7 @@ Activity 2                                                                      
 Compare in Different Ways
 
      Standards
-Addressing      2.MD.B.6, 2.NBT.A.1, 2.NBT.A.4
+Addressing     2.MD.B.6, 2.NBT.A.1, 2.NBT.A.4
 
 
 The purpose of this activity is for students to compare three-digit numbers based on different representations. Students
@@ -274,27 +274,27 @@ upcoming lessons when students choose their own ways to compare three-digit numb
 
 
                                                               Activity
-          Use    ,   , or   to compare 420 and 590.
+          Use < , > , or = to compare 420 and 590.
                                                                 • “In the last activity, we saw a way to use the number
-                     ______________________________               line to explain that 371 is greater than 317.”
+                    ______________________________                line to explain that 371 is greater than 317.”
 
        2. Estimate the location of 378 and 387. Mark            • “In this activity, you will compare three-digit numbers
           each number with a point. Label the point with          and explain your thinking using the number line.”
           the number it represents.                             • 6 minutes: independent work time
                                                                 • “Compare your answers with a partner and use the
                                                                   number line to explain your reasoning.”
-          Use    ,   , or   to compare 378 and 387.             • 4 minutes: partner discussion
+          Use < , > , or = to compare 378 and 387.              • 4 minutes: partner discussion
 
-                     ______________________________
+                    ______________________________
 
        3. Diego and Jada compare 2 numbers. Use their         Activity Synthesis
           work to find out what numbers they compared.          • Display the images for 432 and 423.
-          Then use , , or to compare the numbers.
+          Then use < , > , or = to compare the numbers.
 
 
 
-                                             Grade 2                                CC BY NC 2024
-                                              Unit 5
+                                            Grade 2                                 CC BY NC 2024
+                                             Unit 5
                                                             Lesson 9
                                                                              Illustrative Mathematics®                5
                                                                   • “What is the same about seeing these numbers on
@@ -305,25 +305,25 @@ upcoming lessons when students choose their own ways to compare three-digit numb
                                                                     hundreds or tens is farther to the right on the
                      ______________________________                 number line.)
 
-       4. Which representation helped you the most?
-          Explain your reasoning?
+        4. Which representation helped you the most?
+           Explain your reasoning?
 
 
 Student Response
 
 
  1.
-                or
+      420 < 590 or 590 > 420
 
 
 
  2.
-                or
+      387 > 378 or 378 < 387
 
 
 
  3.
-                or
+      432 > 423 or 423 < 432
  4. Sample response: I liked using the number line
     because when I see the points, it’s easy to know
     which number is greater because it is farther to the
@@ -362,19 +362,19 @@ Cool-down                                                                       
 
 Compare Numbers on the Number Line
 
-      Standards
-Addressing            2.MD.B.6
-Building Toward       2.NBT.A.4
+     Standards
+Addressing          2.MD.B.6
+Building Toward     2.NBT.A.4
 
 
-      Student Task Statement
+     Student Task Statement
        1. Estimate the location of 681 and 618. Mark each number with a point. Label the point with the number it
           represents.
 
 
 
 
-       2. Use     ,   , or   to compare 681 and 618.
+       2. Use < , > , or = to compare 681 and 618.
 
           _________________________________
 
@@ -387,7 +387,7 @@ Student Response
 
 
 
- 2.             or
+ 2. 618 < 681 or 681 > 618
  3. Sample response: I know that 681 is greater than 618, because 681 is closer to 700 and 618 is very close to 600.
 
 

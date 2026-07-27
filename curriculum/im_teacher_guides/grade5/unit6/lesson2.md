@@ -110,10 +110,10 @@ Sample responses:                                                  (I can count 
     which are made of little snowflakes.                           medium-size segment. Then I multiply those
   • 10: Medium snowflakes, long spokes, medium                     numbers.)
     spokes on the end of each long spoke.                        • Invite students to count, and then display the
-  • 100: Little snowflakes, medium spokes because there            expression:               .
+  • 100: Little snowflakes, medium spokes because there            expression: 10 × 10 × 10.
     are 10 at the end of each long spoke.                        • “How does the expression relate to the diagram?” (It’s
   • 1,000: Little spokes because there are 10 little spokes        the total number of tiny segments.)
-    that make up each little snowflake, there are 10 little      • “Another way to write               is    . This is
+    that make up each little snowflake, there are 10 little      • “Another way to write 10 × 10 × 10 is     . This is
 
 
                                             Grade 5                                  CC BY NC 2024
@@ -182,31 +182,31 @@ structure (MP7).
                                             Unit 6
                                                            Lesson 2
                                                                              Illustrative Mathematics®                3
-             b. How many millions is 1,000,000,000? How            names for 1,000,000,000 in the given order.
-                many thousands is it? Explain or show            • “How many millions are in this number? How do you
-                your reasoning.                                    know?” (1 thousand, because there are 3 more zeros
-             c. Write the number, using powers of 10.              and that means multiplying by 10 three times.)
-             d. Look at the diagram in the Warm-up. If           • “How do you write this number, using powers of 10?
-                each snowflake is made up of smaller               Why?” (     , because there are 9 factors of 10.)
+             b. How many millions is 1,000,000,000? How           names for 1,000,000,000 in the given order.
+                many thousands is it? Explain or show           • “How many millions are in this number? How do you
+                your reasoning.                                   know?” (1 thousand, because there are 3 more zeros
+             c. Write the number, using powers of 10.             and that means multiplying by 10 three times.)
+             d. Look at the diagram in the Warm-up. If          • “How do you write this number, using powers of 10?
+                each snowflake is made up of smaller              Why?” (     , because there are 9 factors of 10.)
                 snowflakes, how many times do you
-                                                                 • “This number is called ‘one billion.’”
+                                                                • “This number is called ‘one billion.’”
                 expand the focus of the diagram to see
-                1,000,000,000 tiny segments? Explain or          • “Using powers of 10, can you write a number that is
-                show your reasoning.                               bigger than 1 billion?” (Yes,     ,      ,     .)
-                                                                 • “Why are powers of 10 useful for representing really
-                                                                   big numbers?” (I would not want to write 100 zeros. I
+                1,000,000,000 tiny segments? Explain or         • “Using powers of 10, can you write a number that is
+                show your reasoning.                              bigger than 1 billion?” (Yes,     ,      ,     .)
+                                                                • “Why are powers of 10 useful for representing really
+                                                                  big numbers?” (I would not want to write 100 zeros. I
 Student Response
-                                                                   also would have to count all those zeros to find out
- 1.   a. one million                                               the number.)
+                                                                  also would have to count all those zeros to find out
+ 1.   a. one million                                              the number.)
 
       b. 1,000 thousands. Sample response: Because
-                              ,                      ,
-         and                          . I multiplied
+         10 × 1,000 = 10,000, 10 × 10,000 = 100,000,
+         and 10 × 100,000 = 1,000,000. I multiplied
          1,000 by 10 three times and
-                                .
+         10 × 10 × 10 = 1,000.
 
       c.       . Sample response: Because 1 thousand is
-                        , and then we multiplied by another
+           10 × 10 × 10, and then we multiplied by another
            3 tens.
       d. 3 more than in the picture. Sample response:
          Each new set of segments multiplies the
@@ -228,7 +228,7 @@ Student Response
 
 
 
-Activity 2                                                                                                      15 min
+Activity 2                                                                                                     15 min
 
 Powers of 10
 
@@ -237,10 +237,10 @@ Addressing       5.NBT.A.1, 5.NBT.A.2
 
 
 
-                                             Grade 5                                  CC BY NC 2024
-                                              Unit 6
-                                                              Lesson 2
-                                                                               Illustrative Mathematics®                 4
+                                            Grade 5                                  CC BY NC 2024
+                                             Unit 6
+                                                             Lesson 2
+                                                                              Illustrative Mathematics®                 4
 The purpose of this activity is for students to find the unknown number that makes multiplication equations true when
 that value is a power of 10. The numbers in this activity were chosen to build toward numbers greater than those with
 which students have worked before.
@@ -259,26 +259,26 @@ The Activity Synthesis highlights that these powers of 10 are represented by a 1
        1. Find the unknown number that makes each                • Groups of 2
           equation true. Explain your reasoning.
 
-            a.                                                 Activity
-            b.
+            a. 2,000 = ___ × 20                                Activity
+            b. 20 × 10 × ___ = 20,000
                                                                  • 1–2 minutes: quiet think time
-            c.
+            c. ___ × 10 = 100,000
                                                                  • 6–8 minutes: partner work time
             d.
-                                                                 • Monitor for students who:
+              1,000 × 10,000 = ___                               • Monitor for students who:
        2. How are products of 10 useful in solving these
                                                                     ◦ Use multiplication equations, such as
           problems?
-                                                                                     ,                  , and
-       3. Write each power of 10 as a number.                                              , to help them find the
-                                                                      solution to                                  .
+                                                                      10 × 10 = 100, 10 × 100 = 1,000, and
+       3. Write each power of 10 as a number.                         10 × 1,000 = 10,000, to help them find the
+                                                                      solution to ___ × 10 = 100,000             .
             a.
                                                                     ◦ Name or write the number 10,000,000, in a way
             b.
                                                                       that makes sense to them, to represent the
-            c.                                                        product of               . For example, they
+            c.                                                        product of 1,000 × 10,000. For example, they
                                                                       may write “one hundred one hundred
-                                                                      thousands,” “100 100,000,” or “              .”
+                                                                      thousands,” “100 100,000,” or “100 × 100,000.”
 Student Response
                                                                     ◦ Write the number 10,000,000.
  1.   a. 100. Sample response: Because 10 twenties is
@@ -287,7 +287,7 @@ Student Response
       b. 100. Sample response: Because 10 twenties is
          200 and then 100 twenties is 2,000 and 1,000            • Ask selected students to share how they found the
          twenties is 20,000, so I need two more factors of         unknown number that makes the equation
-         10.                                                                                        true.
+         10.                                                       ___ × 10 = 100,000               true.
       c. 10,000. Sample response: Because 10 ten                 • “How did thinking about factors of 10 help to find the
          thousands is 1 hundred thousand.                          missing number that makes the equation true?” (I
       d. 10,000,000. Sample response: because I know               started with 1,000, and 10 times that is 10,000, and
@@ -295,9 +295,9 @@ Student Response
          10 times as much, so that’s 10 million.                   100,000.)
 
  2. Sample response: Products of 10 were helpful                 • Ask selected students to share their responses for
-    because I can solve each of these problems by taking           the value of                in the given order.
+    because I can solve each of these problems by taking           the value of 1,000 × 10,000 in the given order.
     successive products of 10 and keeping track of how           • “How did you find the value?” (I know 1,000 is
-    many factors of 10 I used.                                                 , so I started multiplying by 10. I got
+    many factors of 10 I used.                                     10 × 10 × 10, so I started multiplying by 10. I got
 
 
 
@@ -405,9 +405,9 @@ Lesson Synthesis
 Display the image from the Warm-up.
 
 “How many of the medium-size segments are there?” (100) “What expression could you write to represent the number
-of these segments?” (     )
+of these segments?” (10 × 10)
 
-“How does the image represent the expression           ?” (There are 10 groups of these segments and 10 segments in
+“How does the image represent the expression 10 × 10?” (There are 10 groups of these segments and 10 segments in
 each group.)
 
 Display               .
@@ -421,10 +421,10 @@ Refer to the smallest line segments in the Warm-up image.
                                             Unit 6
                                                               Lesson 2
                                                                               Illustrative Mathematics®               7
-“What expression could you write to represent the number of small segments? How do you know?” (                    or
-        because there are 10 more of these for each of the medium-size segments.)
+“What expression could you write to represent the number of small segments? How do you know?” (10 × 10 × 10 or
+100 × 10 because there are 10 more of these for each of the medium-size segments.)
 
-Display                        .
+Display 10 × 10 × 10 = ___ .
 
 “What power of 10 can we write to make this equation true?” (      )
 
@@ -458,7 +458,7 @@ Addressing      5.NBT.A.2
 
 
 Student Response
- 1.       and     . Sample response: 10,000 is                   , and 100,000 has one more factor of 10.
+ 1.      and      . Sample response: 10,000 is 10 × 10 × 10 × 10, and 100,000 has one more factor of 10.
  2. 1,000,000
 
 
@@ -478,6 +478,6 @@ concepts developed in a prior unit.                             Grade 4, Unit 4,
                                             Grade 5                                   CC BY NC 2024
                                              Unit 6
                                                              Lesson 2
-                                                                               Illustrative Mathematics®                8
+                                                                               Illustrative Mathematics®               8
 ```
 

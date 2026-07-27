@@ -73,7 +73,7 @@ Lesson Timeline                                                Teacher Reflectio
 Number Talk: Decreasing Dividend
 
       Standards                                                      Instructional Routines
-Addressing       3.OA.C.7                                         • Number Talk
+Addressing      3.OA.C.7                                          • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for dividing within 100. These
@@ -84,12 +84,12 @@ perimeter.
       Student Task Statement                                    Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-         •                                                        • “Give me a signal when you have an answer and can
+        • 90 ÷ 9                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-         •
+        • 81 ÷ 9
                                                                   • 1 minute: quiet think time
-         •
-         •
+        • 45 ÷ 9
+        • 54 ÷ 9
                                                                 Activity
 
 Student Response                                                  • Record answers and strategy.
@@ -97,13 +97,13 @@ Student Response                                                  • Record ans
   • 10: I just know it.
                                                                   • Repeat with each expression.
   • 9: 81 is 9 less than 90, so it is 1 fewer group of 9.
-  • 5: It is half of        since 45 is half of 90.
+  • 5: It is half of 90 ÷ 9 since 45 is half of 90.
                                                                 Activity Synthesis
   • 6: 54 is 9 more than 45, so it’s 1 more group of 9 than
-    the previous expression.                                      • “How could knowing           help you find the value of
-                                                                    the other expressions?” (Once I knew         , I was
-                                                                    able to take away a group of 9 to find       . I was
-                                                                    able to find       by splitting the value of
+    the previous expression.                                      • “How could knowing 90 ÷ 9 help you find the value of
+                                                                    the other expressions?” (Once I knew 90 ÷ 9, I was
+                                                                    able to take away a group of 9 to find 81 ÷ 9. I was
+                                                                    able to find 45 ÷ 9 by splitting the value of 90 ÷ 9
                                                                     because 45 is half of 90.)
 
 
@@ -114,7 +114,7 @@ Activity 1                                                                      
 Ways to Find Perimeter
 
       Standards                                                      Instructional Routines
-Addressing       3.MD.D.8                                         • 5 Practices
+Addressing      3.MD.D.8                                          • 5 Practices
 
 
 The purpose of this activity is for students to practice finding the perimeter of shapes that have labeled side lengths. The
@@ -134,9 +134,9 @@ Monitor for and select students with the following approaches for finding the pe
   • Add the individual side lengths around the shape.
   • Add the two 8–inch side lengths together, add the four 4–inch side lengths together, and then add those sums
     together.
-  • Multiply like side lengths, then add, such as       for the long sides and        for the short sides, and then add
+  • Multiply like side lengths, then add, such as 2 × 8 for the long sides and 4 × 4 for the short sides, and then add
     those products together.
-  • Use symmetry to split the shape in half horizontally, add                    for the top half of the shape, and then
+  • Use symmetry to split the shape in half horizontally, add 4 + 8 + 4 = 16 for the top half of the shape, and then
     double that for the sides on the bottom half of the shape.
 The approaches are sequenced from more concrete to more abstract to encourage students to make sense of
 approaches that connect the properties of the shapes (for example, same side lengths) to operations that help them
@@ -180,10 +180,10 @@ student voices, especially students who haven't shared recently.
                                                                      ◦ “What other operation(s) could you use to find
 
 
-                                            Grade 3                                     CC BY NC 2024
+                                            Grade 3                                   CC BY NC 2024
                                              Unit 7
                                                              Lesson 8
-                                                                                 Illustrative Mathematics®                 3
+                                                                               Illustrative Mathematics®                 3
                                                                         the perimeter of this shape?”
 
 
@@ -204,24 +204,24 @@ student voices, especially students who haven't shared recently.
                                                                    asking:
 Student Response
                                                                      ◦ “Was it easier to find the perimeter of some
- 1. 30 cm. Sample response:                 and then 10                shapes in this activity than others? Why?” (Yes,
+ 1. 30 cm. Sample response: 12 + 8 = 20 and then 10                    shapes in this activity than others? Why?” (Yes,
     more is 30.                                                        some of the shapes had several sides that are
                                                                        the same length, so we could multiply. In a
- 2. 80 inches. Sample response:               for one
+ 2. 80 inches. Sample response: 24 + 16 = 40 for one
                                                                        rectangle, we can add two sides and then double
-    short side and one long side, then
+    short side and one long side, then 40 + 40 = 80
                                                                        the result to find the whole perimeter.)
     because the other two sides are the same length as
     the ones I just added.                                           ◦ “How does having sides of the same length help
                                                                        us find the perimeter?” (You can look for ways to
- 3. 36 cm. Sample response:
+ 3. 36 cm. Sample response: 2 + 13 + 5 + 5 + 11 = 36
                                                                        use multiplication instead of having to add many
- 4. 32 feet. Sample response: I multiplied       for the               different lengths.)
-    long sides. This gave me 16. Then I multiplied
+ 4. 32 feet. Sample response: I multiplied 2 × 8 for the               different lengths.)
+    long sides. This gave me 16. Then I multiplied 4 × 4
     for the short sides and this gave me 16. I added the
     short sides and the long sides to get 32.
  5. 36 cm. Sample response: There were 4 sides that
-    were 9 cm, so I multiplied    to get 36.
+    were 9 cm, so I multiplied 4 × 9 to get 36.
 
 
 
@@ -309,16 +309,16 @@ Student Response                                                  to help others
                                                                 • 5 minutes: gallery walk
     which is another 30.
  2. 640 units. Sample response: There are 11 short side
-    lengths, so that’s         plus       , which is 440.     Activity Synthesis
+    lengths, so that’s 10 × 40 plus 1 × 40, which is 440.     Activity Synthesis
     The longer side is the same length as 5 of the shorter
                                                                 • “We had to find a lot of missing side lengths in this
-    sides, so it's       or 200. Adding 440 and 200 gives
+    sides, so it's 5 × 40 or 200. Adding 440 and 200 gives
                                                                   shape before we could find the perimeter.”
     640.
                                                                 • “As you visited the displays, what did you notice
  3. 240 in. Sample response: There are 8 sides, so it’s 8
                                                                   about how others found the missing side lengths?” (I
-    thirties or         , which is 240.
+    thirties or 8 × 3 × 10, which is 240.
                                                                   noticed some groups counted the number of short
                                                                   sides and multiplied by 40. I noticed some put the
                                                                   short side lengths into smaller groups before finding
@@ -345,7 +345,7 @@ side labeled 7 inches, such as:
 
 
 “How can we find the perimeter of this rhombus if only one side is labeled?” (We know that a rhombus has four equal
-sides, so we can find    , which is 28.)
+sides, so we can find 4 × 7, which is 28.)
 
 
 
@@ -361,7 +361,7 @@ sides, so we can find    , which is 28.)
 
 
 
-Cool-down                                                                                                5 min
+Cool-down                                                                                                 5 min
 
 A Triangle and a Square
 
@@ -372,29 +372,29 @@ Addressing     3.MD.D.8
      Student Task Statement
       Find the perimeter of the triangle and the square. Explain or show your reasoning.
 
-      A                                                          B
+      A                                                           B
 
 
 
 
 Student Response
-A: 24 in. Sample response:
+A: 24 in. Sample response: 6 + 8 + 10 = 24
 
-B: 32 in. Sample response: I multiplied     since there are 4 sides that are the same length.
+B: 32 in. Sample response: I multiplied 4 × 8 since there are 4 sides that are the same length.
 
 
 Responding to Student Thinking
-Students find the perimeter of the second shape, but they     Next Day Supports
-add each side length individually to find the sum.            Before the next day’s Warm-up, pass back the Cool-down
-                                                              and have students brainstorm strategies they could use
-                                                              to find the perimeter of the second shape.
+Students find the perimeter of the second shape, but they      Next Day Supports
+add each side length individually to find the sum.             Before the next day’s Warm-up, pass back the Cool-down
+                                                               and have students brainstorm strategies they could use
+                                                               to find the perimeter of the second shape.
 
 
 
 
-                                           Grade 3                                  CC BY NC 2024
-                                            Unit 7
-                                                            Lesson 8
-                                                                             Illustrative Mathematics®           7
+                                             Grade 3                                  CC BY NC 2024
+                                              Unit 7
+                                                             Lesson 8
+                                                                               Illustrative Mathematics®          7
 ```
 

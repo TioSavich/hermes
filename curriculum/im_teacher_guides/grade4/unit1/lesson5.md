@@ -155,7 +155,7 @@ when the number of people is not a multiple of the number of seats at a table.
       Access for English Language Learners
       MLR2 Collect and Display. Collect the language students use as they discuss the different options for tables.
       Display words and phrases such as: no empty seats, 6 times a number, 8 times a number, multiplied by, multiples
-      of 6 or 8, and          added to          for combinations of table sizes. During the Activity Synthesis, solicit ways
+      of 6 or 8, and ___ × 6 added to ___ × 8 for combinations of table sizes. During the Activity Synthesis, solicit ways
       to update the display: “What are some other words or phrases we should include?” etc. Invite students to borrow
       language from the display as needed.
       Advances: Conversing
@@ -170,18 +170,18 @@ when the number of people is not a multiple of the number of seats at a table.
 
 
      Student Task Statement                                    Launch
-      Students are preparing for a                                • Groups of 2
-      party. The school has tables                                • “Work with your partner to choose a type of table to
-      where 6 people can sit and                                    seat different groups of students.”
+      Students are preparing for a                               • Groups of 2
+      party. The school has tables                               • “Work with your partner to choose a type of table to
+      where 6 people can sit and                                   seat different groups of students.”
       tables where 8 people can
       sit.
                                                                Activity
       The students can only
-      choose one type of table                                    • 8–10 minutes: partner work time
+      choose one type of table                                   • 8–10 minutes: partner work time
       and they want to avoid
-                                                                  • Monitor for students who:
+                                                                 • Monitor for students who:
       having empty seats.
-                                                                      ◦ Draw pictures to highlight why the number of
+                                                                     ◦ Draw pictures to highlight why the number of
 
 
                                             Grade 4                                   CC BY NC 2024
@@ -203,15 +203,15 @@ when the number of people is not a multiple of the number of seats at a table.
           Jada’s teacher to sit, which table would you           multiples, or multiplication facts to share while
           choose? Explain or show your reasoning.                discussing the following questions.
                                                                • “Can Noah’s class fit exactly in tables for 6? How do
-                                                                 you know?” (Yes.              , so Noah’s class will fill 5
+                                                                 you know?” (Yes. 30 = 5 × 6, so Noah’s class will fill 5
 Student Response
                                                                  tables exactly.)
- 1. 3 tables that seat 6 students, because              .      • “Can Noah’s class fit exactly in tables for 8? How do
- 2. 5 tables that seat 6 students, because              .        you know?” (No, 30 is not a multiple of 8. They would
+ 1. 3 tables that seat 6 students, because 3 × 6 = 18.         • “Can Noah’s class fit exactly in tables for 8? How do
+ 2. 5 tables that seat 6 students, because 5 × 6 = 30.           you know?” (No, 30 is not a multiple of 8. They would
                                                                  need at least 4 tables but that’s too many seats, so 2
  3. 6 tables that seat 8, or 8 tables that seat 6,
                                                                  of the seats would be empty.)
-    because               and both 6 and 8 are factors of
+    because 8 × 6 = 48 and both 6 and 8 are factors of
     48.                                                        • “How do multiplication facts or the idea of multiples
                                                                  help us think about this problem?” (We know that 24
  4. Neither set of tables would have exactly enough
@@ -232,7 +232,7 @@ Student Response
 
 
 
-Activity 2                                                                                                     15 min
+Activity 2                                                                                                    15 min
 
 Party Hats and Noisemakers
 
@@ -246,10 +246,10 @@ package to get so that a certain number of children receive one party hat and on
 be expected, the focus is on explaining why the solutions make sense (MP3).
 
 
-                                             Grade 4                                CC BY NC 2024
-                                              Unit 1
+                                           Grade 4                                  CC BY NC 2024
+                                            Unit 1
                                                             Lesson 5
-                                                                             Illustrative Mathematics®                  4
+                                                                             Illustrative Mathematics®                 4
 To solve the problems, students may decontextualize the situation and reason about factors and multiples, and then
 recontextualize the solutions in terms of each person receiving a party hat and noise-maker. As they do so, they practice
 reasoning quantitatively and abstractly (MP2). During the Activity Synthesis, analyze different solutions and discuss why
@@ -294,7 +294,7 @@ Student Response                                                      people to 
         hats.
                                                                 • Invite students to share their responses to the
      b. No, because 50 is not a multiple of 8. If she gets        problem about 72 party hats, including those who
-        7 packages of noise-makers that is         or 56          get 70 party hats and 72 noise-makers or 80 party
+        7 packages of noise-makers that is 7 × 8 or 56            get 70 party hats and 72 noise-makers or 80 party
         noise-makers. So, if she needs 50 noise-makers,           hats and 80 noise-makers. Encourage students to
         she will have enough.                                     highlight how they are using multiples in their
  2. Sample responses:                                             reasoning.
@@ -376,9 +376,9 @@ Addressing     4.OA.B.4
 Student Response
 Sample responses:
 
-  • I would choose the tables that seat 8 because 72 is a multiple of 8 and             .
+  • I would choose the tables that seat 8 because 72 is a multiple of 8 and 8 × 9 = 72.
   • I would choose the tables that seat 8 because 72 is a number I say when I skip count by 8.
-  • I would choose 12 tables that seat 6 because               .
+  • I would choose 12 tables that seat 6 because 12 × 6 = 72.
   • I would choose the tables that seat 6 because 72 is a number I say when I skip count by 6.
 
 

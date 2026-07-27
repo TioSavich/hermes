@@ -214,12 +214,12 @@ Materials to Gather
 Student Response
                                                                 ◦ “What equations could you use to find the
 1. 3 pictures. Sample response:                                   unknown addend?”
-    ◦               ,                                        • Monitor for students who:
+    ◦ 7 + 3 = 10 ,                                           • Monitor for students who:
     ◦ I used my fingers to show the 7 that were on her          ◦ Use objects (including fingers) or drawings to
       board and there were 3 left.                                keep track of counting on from the known
 2. 8 beans. Sample response:                                      addend to the total or bigger quantity.
                                                                 ◦ Use objects or drawings to remove the known
-    ◦
+    ◦ 10- 2 =
                                                                   amount from the total or bigger quantity.
                                                                 ◦ Use known facts to determine the unknown
                                                                   addend.
@@ -227,7 +227,7 @@ Student Response
     ◦                                                          equations with your partner. Explain how they match
 3. 6 fewer pictures. Sample response:                          the stories.”
                                                              • 1–2 minutes: partner discussion
-    ◦               ,
+    ◦               , 10- 4 =
                                                              • Repeat for the next two problems.
 
 
@@ -309,17 +309,17 @@ Materials to Gather
 Student Response                                                     • Read the questions collected.
                                                                      • “Are there any other questions we could ask?”
  1. Sample response: How many more pictures does
-    Clare cover?                                                     • Display:
-    I counted on from 3 to 9. 4, 5, 6, 7, 8, 9. That is 6. She
+    Clare cover?                                                     • Display: 3 + 9 =         9 + 3 =
+    I counted on from 3 to 9. 4, 5, 6, 7, 8, 9. That is 6. She         9- 3 =
     covered 6 more pictures.
                                                                      • “Which equation best matches what happens in this
                                                                        story? Explain.” (            because it shows Clare
  2. Sample response: How many more beans does Noah                     had 3 covered, then she covered some more, and
-    have than Diego?                . Noah has 7 more                  now she has 9 covered.)
+    have than Diego? 9- 2 =         . Noah has 7 more                  now she has 9 covered.)
     beans.
                                                                      • Invite 1–2 students to share their strategy.
                                                                      • “What is another equation you can use to find the
-                                                                       unknown addend? Explain.” (               . You can
+                                                                       unknown addend? Explain.” (9- 3 =         . You can
                                                                        subtract to find an unknown addend.)
                                                                      • Read the second problem.
                                                                      • “What question could you ask for this story? Write
@@ -335,9 +335,9 @@ Materials to Gather
                                                                    Activity Synthesis
                                                                      • Display the equations:
 
-                                                                        ◦
+                                                                        ◦ 2 + 9 =
 
-                                                                        ◦
+                                                                        ◦ 9- 2 =
 
                                                                         ◦
 
@@ -368,7 +368,7 @@ Display:
 
 “Today we solved story problems and wrote equations to match them. We wrote some equations with an unknown
 addend. How could you find the unknown value in this equation?” (I could count on from 3 until I got to 10. I could
-subtract       .)
+subtract 10- 3 .)
 
 
 
@@ -391,9 +391,9 @@ Addressing     1.OA.A.1
 
 Student Response
 3 more students. Sample responses:
-  • I counted on from 5 to 8. 5 … 6, 7, 8.
+  • I counted on from 5 to 8. 5 … 6, 7, 8. 5 + 3 = 8
 
-  • I thought about        . I know           .
+  • I thought about 8 - 5. I know 8 - 5 = 3.
 
 
 Responding to Student Thinking
@@ -406,8 +406,8 @@ Students find a difference other than 3.                      Next Day Supports
 
 
 
-                                             Grade 1                                CC BY NC 2024
-                                              Unit 2
+                                           Grade 1                                  CC BY NC 2024
+                                            Unit 2
                                                           Lesson 20
                                                                              Illustrative Mathematics®                7
 ```

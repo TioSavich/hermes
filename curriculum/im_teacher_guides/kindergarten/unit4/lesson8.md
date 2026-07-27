@@ -171,7 +171,7 @@ Sample responses:
                                                                     now?”
                                                                   • For each story, record the action with words and
                                                                     numbers and an expression. For example: “6 and 3”
-                                                                    and “     .”
+                                                                    and “6 + 3.”
                                                                   • “There are questions at the end of our stories. In the
 
 
@@ -279,7 +279,7 @@ Materials to Gather
                                                                   of the objects they drew.)
                                                              • “Noah had 5 crayons and then Jada gave him 4 more
                                                                crayons. Each student figured out Noah has 9
-                                                               crayons now. We can write that as ‘5 and 4’ or ‘ ’.
+                                                               crayons now. We can write that as ‘5 and 4’ or ‘5 + 4’.
                                                                5 and 4 is 9.”
 
 

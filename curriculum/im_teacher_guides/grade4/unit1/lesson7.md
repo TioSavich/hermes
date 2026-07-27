@@ -96,12 +96,12 @@ numbers.
       Student Task Statement                                  Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 12 ÷ 3                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 30 ÷ 3
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 60 ÷ 3
+        • 72 ÷ 3
                                                               Activity
 
 Student Response                                                 • Record answers and strategy.
@@ -109,11 +109,11 @@ Student Response                                                 • Record answ
   • 4: I know 4 groups of 3 is 12.
                                                                  • Repeat for each expression.
   • 10: I know that 10 groups of 3 is 30.
-  • 20: I know that              .
+  • 20: I know that 20 × 3 = 60.
                                                               Activity Synthesis
   • 24: 72 is 60 and 12 so that’s 20 and 4 groups or 24
     groups of 3.                                                 • “How does knowing the first and third quotients help
-                                                                   you find the last quotient?” (Since             , we
+                                                                   you find the last quotient?” (Since 12 + 60 = 72 , we
                                                                    can add the answers to those quotients to get the
                                                                    answer to the last problem.)
                                                                  • Consider asking:
@@ -192,7 +192,7 @@ sense. As they do so, students practice constructing viable arguments and attend
                                               Unit 1
                                                                 Lesson 7
                                                                                 Illustrative Mathematics®             3
-          number           factor              multiple
+          number           factor            multiple
 
 
                           _____ is a        _____ is a
@@ -225,11 +225,11 @@ sense. As they do so, students practice constructing viable arguments and attend
 
 Student Response
 1. Sample responses:
-    ◦ 10 is a factor of 20 because           . 10 is a
+    ◦ 10 is a factor of 20 because 10 × 2 = 20. 10 is a
       multiple of 5 because we can count by 5 and say
       10.
-    ◦ 5 is a factor of 10 because              . 30 is a
-      multiple of 10 because               .
+    ◦ 5 is a factor of 10 because 5 × 2 = 10. 30 is a
+      multiple of 10 because 10 × 3 = 30.
 2. Student may notice:
     ◦ If a number was larger, we could think about
       what we could divide it by to find factors of the
@@ -380,7 +380,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                                     5 min
+Cool-down                                                                                                               5 min
 
 Complete the Statements
 
@@ -392,14 +392,14 @@ Addressing        4.OA.B.4
       Complete the statements for each number.
 
 
-        number                                factor                                                  multiple
+        number                                factor                                               multiple
 
 
-             11              ______ is a factor of ______ because . . .              ______ is a multiple of ______ because . . .
+             11              ______ is a factor of ______ because . . .           ______ is a multiple of ______ because . . .
 
 
 
-             24              ______ is a factor of ______ because . . .              ______ is a multiple of ______ because . . .
+             24              ______ is a factor of ______ because . . .           ______ is a multiple of ______ because . . .
 
 
 
@@ -408,18 +408,18 @@ Student Response
 Sample responses:
 
 
-          number                             factor                                            multiple
+          number                             factor                                         multiple
 
-              11        11 is a factor of 55 because                      .   11 is a multiple of 1 because                   .
+              11        11 is a factor of 55 because 11 × 5 = 55.          11 is a multiple of 1 because 11 × 1 = 11.
 
-              24         8 is a factor of 24 because                 .        24 is a multiple of 8 because               .
+              24         8 is a factor of 24 because 8 × 3 = 24.           24 is a multiple of 8 because 8 × 3 = 24.
 
 
 
 Responding to Student Thinking
-Students confuse the terms “factor” and “multiple.”                      Next Day Supports
-                                                                         Launch Warm-up or activities by highlighting important
-                                                                         vocabulary from previous lessons.
+Students confuse the terms “factor” and “multiple.”                   Next Day Supports
+                                                                      Launch Warm-up or activities by highlighting important
+                                                                      vocabulary from previous lessons.
 
 
      Section B Summary
@@ -427,10 +427,10 @@ Students confuse the terms “factor” and “multiple.”                     
 
 
 
-                                                 Grade 4                                       CC BY NC 2024
+                                                 Grade 4                                    CC BY NC 2024
                                                   Unit 1
                                                                     Lesson 7
-                                                                                        Illustrative Mathematics®                     7
+                                                                                     Illustrative Mathematics®                   7
 games and solve problems.
 
 We learned that numbers can share factors and multiples. Example:

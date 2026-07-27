@@ -152,7 +152,7 @@ Monitor for and select students with the following approaches to share in the Sy
 
   • Represent the story with counters and count all.
   • Represent the story with drawings and count all or count on from 6.
-  • Represent the story with        and count on from 6.
+  • Represent the story with 6 + 3 and count on from 6.
 The approaches are sequenced from more concrete to more abstract in order to invite all students to make sense of
 ways to represent addition. Aim to elicit both key mathematical ideas and a variety of student voices, especially students
 who haven’t shared recently.
@@ -194,7 +194,7 @@ Student Response                                                student to share
     then counts all of them.                                  • Reread the story.
  • Student draws 6 counters and counts on (“6 …7, 8, 9”)      • “Solve the problem on your own. Show your thinking
    for the last 3 counters.                                     using drawings, numbers, words, or objects.”
- • Student writes       and counts on from 6.                 • 4–5 minutes: independent work time
+ • Student writes 6 + 3 and counts on from 6.                 • 4–5 minutes: independent work time
                                                               • As you monitor for the approaches listed in the
                                                                 Activity Narrative, consider asking:
                                                                  ◦ “What did you do to represent the story?”
@@ -216,7 +216,7 @@ Student Response                                                student to share
                                                                    the same? How are they different?”
                                                               • If no students use expressions to represent the story,
                                                                 say: “Yesterday we looked at using expressions like
-                                                                       or      to represent stories. What expression
+                                                                5 + 2 or 5 - 2 to represent stories. What expression
                                                                 would we write to represent this story?”
                                                               • Connect students’ approaches to the learning goal by
                                                                 asking:
@@ -356,7 +356,7 @@ added. We solved other problems where we started with some things and then some 
 
 Display the problem about the art project and collected samples of student work.
 
-Display      .
+Display 7 + 2.
 
 “What are some of the different ways we showed what happened in this story? (We drew pictures, wrote expressions,
 and showed how to count.)

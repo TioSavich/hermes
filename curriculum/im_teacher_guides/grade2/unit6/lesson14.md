@@ -68,12 +68,12 @@ Lesson Timeline                                                  Teacher Reflect
                                              Unit 6
                                                              Lesson 14
                                                                                  Illustrative Mathematics®               1
-Warm-up                                                                                                       10 min
+Warm-up                                                                                                      10 min
 
 Number Talk: Adding Up to 4 Two-digit Numbers
 
-     Standards                                                         Instructional Routines
-Addressing     2.NBT.B.5, 2.NBT.B.6                                 • Number Talk
+     Standards                                                      Instructional Routines
+Addressing     2.NBT.B.5, 2.NBT.B.6                             • Number Talk
 
 
 This Number Talk encourages students to think about adding multiples of 5 to other multiples of 5 and to look for ways
@@ -81,33 +81,33 @@ to use the structure of the base-ten system and the properties of operations to 
 strategies elicited here help students develop fluency with addition within 1,000.
 
 
-     Student Task Statement                                       Launch
-      Find the value of each expression mentally.                   • Display one expression.
+     Student Task Statement                                   Launch
+      Find the value of each expression mentally.               • Display one expression.
 
-        •                                                           • “Give me a signal when you have an answer and can
-                                                                      explain how you got it.”
-        •
-                                                                    • 1 minute: quiet think time
-        •
-        •
-                                                                  Activity
+        • 10 + 15 + 20 + 10                                     • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 5 + 30 + 20
+                                                                • 1 minute: quiet think time
+        • 15 + 20 + 30
+        • 25 + 15 + 5 + 15
+                                                              Activity
 
-Student Response                                                    • Record answers and strategies.
-                                                                    • Keep expressions and work displayed.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
   • 55. Sample response: I counted on all the tens first
-    10, 20, 40, 50, then I added the 5 ones and got 55.             • Repeat with each expression.
+    10, 20, 40, 50, then I added the 5 ones and got 55.         • Repeat with each expression.
 
-  • 55. Sample response:                 and                .
-  • 65. Sample response: It is just 10 more than the last         Activity Synthesis
+  • 55. Sample response: 30 + 20 = 50 and 50 + 5 = 55.
+  • 65. Sample response: It is just 10 more than the last     Activity Synthesis
     sum.
-                                                                    • “How can you tell which sums will have 0 ones and
-  • 60. Sample response:                 and                          which sums will have 5 ones?”
-    and             .
+                                                                • “How can you tell which sums will have 0 ones and
+  • 60. Sample response: 25 + 15 = 40 and 5 + 15 = 20             which sums will have 5 ones?”
+    and 40 + 20 = 60.
 
 
 
 
-Activity 1                                                                                                    15 min
+Activity 1                                                                                                   15 min
 
 Revisit Picture Books—Find Shapes
 
@@ -122,10 +122,10 @@ in the pictures. Students describe, name, and draw a picture of the shapes they 
 
 
 
-                                          Grade 2                                      CC BY NC 2024
+                                          Grade 2                                    CC BY NC 2024
                                            Unit 6
-                                                                Lesson 14
-                                                                                Illustrative Mathematics®              2
+                                                            Lesson 14
+                                                                              Illustrative Mathematics®               2
 Required Materials
 Materials to Gather                                            Materials to Copy
   • Picture books: Activity 1                                     • Picture Books Stage 3 Recording Sheet (1 copy for

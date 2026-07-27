@@ -297,7 +297,7 @@ approximately equal to the area of the Great Pacific Garbage Patch (MP4).
                                                                                 Illustrative Mathematics®               5
 Student Response                                               Activity Synthesis
  1. The garbage patch. Sample response: The area                 • Invite students to share their calculations for
-    of Rhode Island is        or about 4,620 square km,            Delaware.
+    of Rhode Island is 77 × 60 or about 4,620 square km,           Delaware.
     so the garbage patch is much larger.                         • “Is Delaware close in size to the garbage patch? How
                                                                    do you know?” (No, it is not close at all. 1,600,000
                                                                    square kilometers is a lot more than 7,392 square
@@ -305,7 +305,7 @@ approximately equal to the area of the Great Pacific Garbage Patch (MP4).
                                                                  • “Is the garbage patch greater than or less than 10
                                                                    times as large as Delaware?” (Much greater, because
  2. The garbage patch. Sample response: The area of                that’s only about 70,000 square kilometers, which is
-    Delaware is           or about 7,392 square km, so             way less than a million.)
+    Delaware is 154 × 48 or about 7,392 square km, so              way less than a million.)
     the garbage patch is much larger.
                                                                  • “Is the garbage patch greater than or less than 100
                                                                    times as large as Delaware?” (Greater, because that’s
@@ -314,7 +314,7 @@ approximately equal to the area of the Great Pacific Garbage Patch (MP4).
                                                                  • “How could you estimate the area of New
                                                                    Mexico?”(596 is close to 600, which is a nice number.
                                                                    552 is harder, but if I say that’s about 500, then I get
-                                                                   an estimate of               or 300,000.)
+                                                                   an estimate of 600 × 500 or 300,000.)
                                                                  • “How did you decide which area to circle on the
  3. The garbage patch. Sample response: The area of
                                                                    map?”(5 New Mexicos would make about 1,600,000
@@ -370,9 +370,9 @@ Addressing     5.NBT.B.5
 
 
 Student Response
-271,200 square km. Sample response: I found                   . Then since the
+271,200 square km. Sample response: I found 452 × 6 = 2,712. Then since the
 6 is 6 hundreds, that means I need to multiply 2,712 by 100 and
-                        .
+2,712 × 100 = 271,200 .
 
 
 

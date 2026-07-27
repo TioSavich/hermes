@@ -74,7 +74,7 @@ Lesson Timeline                                               Teacher Reflection
 Number Talk: Plus or Minus 1 or 2
 
      Standards                                                      Instructional Routines
-Addressing      1.OA.C.5, 1.OA.C.6                              • Number Talk
+Addressing       1.OA.C.5, 1.OA.C.6                             • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for adding or subtracting 1 or 2
@@ -86,12 +86,12 @@ be helpful later in this lesson when students will need to be able to answer “
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 7 + 1                                                 • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 7 + 2
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 9- 1
+        • 9- 2
                                                               Activity
 
 Student Response                                                • Record answers and strategy.
@@ -101,9 +101,9 @@ Student Response                                                • Record answe
   • 9: I counted on 7... 8, 9.
   • 8: I knew it was 1 less than 9.
                                                               Activity Synthesis
-  • 7: I know            .
+  • 7: I know 7 + 2 = 9.
                                                                 • “How can we add or subtract 1 or 2 quickly?” (It’s like
-                                                                  counting.   is the number right after,    is two
+                                                                  counting. + 1 is the number right after, -2 is two
                                                                   numbers before.)
                                                                 • Consider asking:
                                                                     ◦ “Who can restate _______ ’s reasoning in a

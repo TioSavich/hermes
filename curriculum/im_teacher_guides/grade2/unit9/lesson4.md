@@ -308,8 +308,8 @@ Sample response:                                                  known facts.
  2. 9 cm
  3. 6 cm
  4. 9 pencils
- 5. 9 cm,
- 6. 12 cm,
+ 5. 9 cm, 15 - 6 = 9
+ 6. 12 cm, 18 - 6 = 12
 
 
 
@@ -320,16 +320,16 @@ we know and ways to make 10 to make sums and differences easier to find.”
 
 Display:
 
-
-
+                                                          14- 8
+                                                       14- 4 = 10
 
 “Mai is finding the difference between 14 and 8.”
 
-“First, she thinks, ‘I know     is 10.’”
+“First, she thinks, ‘I know 14- 4 is 10.’”
 
-“What should she do next?” (Take away 4 more because you have to take away 8. Find                ,)
+“What should she do next?” (Take away 4 more because you have to take away 8. Find 10- 4 = 6 ,)
 
-If time allows, ask, “What is another way you could use a fact you know to find the value of      ?” (          )
+If time allows, ask, “What is another way you could use a fact you know to find the value of 14- 8 ?” (8 + 6 = 14)
 
 
 
@@ -339,7 +339,7 @@ Cool-down                                                                       
 Supply Request
 
       Standards
-Addressing       2.MD.D, 2.OA.B.2
+Addressing      2.MD.D, 2.OA.B.2
 
 
       Student Task Statement
@@ -348,8 +348,8 @@ Addressing       2.MD.D, 2.OA.B.2
 
 
 
-                                            Grade 2                                   CC BY NC 2024
-                                             Unit 9
+                                             Grade 2                                  CC BY NC 2024
+                                              Unit 9
                                                              Lesson 4
                                                                                Illustrative Mathematics®              6
            Write an equation to represent the difference.
@@ -363,8 +363,8 @@ Addressing       2.MD.D, 2.OA.B.2
 
 
 Student Response
- 1. 9 cm. Sample response:
- 2. 5 cm. Sample response:
+ 1. 9 cm. Sample response: 16- 7 = 9
+ 2. 5 cm. Sample response: 11 - 6 = 5
 
 
 Responding to Student Thinking

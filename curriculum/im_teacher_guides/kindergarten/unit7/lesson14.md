@@ -87,19 +87,19 @@ understandings help students develop fluency with adding and subtracting within 
      Student Task Statement                                      Launch
       Find the value of each expression.                           • Display one expression.
 
-         •                                                         • “Give me a signal when you have an answer and can
+        • 3 - 1                                                    • “Give me a signal when you have an answer and can
                                                                      explain how you got it.”
-         •
+        • 3 - 2
                                                                    • 1 minute: quiet think time
-         •
+        • 4- 2
 
-         •                                                       Activity
+        • 5 - 1                                                  Activity
                                                                    • Record answers and strategy.
 Student Response
                                                                    • Keep expressions and work displayed.
   • 2: I know that if there are 3 and you take away 1,             • Repeat with each expression.
     there are 2.
-  • 1:       is 2. If you take away 1 more, there will be 1.
+  • 1: 3 - 1 is 2. If you take away 1 more, there will be 1.
                                                                  Activity Synthesis
   • 2: I put up 4 fingers and then put down 2 of them.
     There are 2 left.                                              • “What is your favorite way to subtract 2?”
@@ -114,7 +114,7 @@ Activity 1                                                                      
 Build with Solid Shapes
 
      Standards
-Addressing      K.G.A.1, K.G.B.6
+Addressing       K.G.A.1, K.G.B.6
 
 
 The purpose of this activity is for students to explore building objects with solid shapes. Students work with the solid

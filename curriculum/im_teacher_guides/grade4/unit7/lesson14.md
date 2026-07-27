@@ -197,7 +197,7 @@ Materials to Gather
           complete the clock drawing. Make sure each
           number is placed in the correct location on the         • “Is the angle formed by rays that point at any two
           clock.                                                    consecutive numbers always       ? How do you
-                                                                    know?” (Yes, because the angle is always     of 360.)
+                                                                    know?” (Yes, because the angle is always 1/12 of 360.)
 
 Student Response
  1.        , because he drew a pair of perpendicular lines.
@@ -382,9 +382,9 @@ Addressing     4.MD.C.6, 4.MD.C.7
                                                                                 Illustrative Mathematics®             7
 Student Response
 A.      . Sample response: Every time the minute hand moves from one number to the next, it turns     . The angle
-     between the hands is 2 numbers apart, so it is    , which is 60.
-B.        . Sample responses:
-      ◦
+     between the hands is 2 numbers apart, so it is 2 × 30, which is 60.
+B.       . Sample responses:
+      ◦ 5 × 30 = 150
       ◦ If it was 6 o'clock, the angle would be   . The angle for 5 o'clock is      less than   .
 
 
