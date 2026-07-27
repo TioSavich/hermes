@@ -1,6 +1,6 @@
 {
-  "schema": "lesson_negative_receipts_v2",
-  "register": "Reviewed lesson-source excerpts establish a specific counterpossibility for the named lesson action. A registry-derived candidate does not enter this file until a local source excerpt supports the lesson-level attribution. Mapping reviews distinguish an absent compiled extraction from an extraction that names a different action.",
+  "schema": "lesson_negative_receipts_v3",
+  "register": "Reviewed lesson-source excerpts establish a specific counterpossibility for the named lesson action. A file-backed source fragment identifies a physical line and quotes it verbatim. A fact-backed source fragment identifies an allowlisted generated vision-digest predicate and quotes that fact value verbatim. A registry-derived candidate does not enter this file until a local source excerpt supports the lesson-level attribution. Mapping reviews distinguish an absent compiled extraction from an extraction that names a different action.",
   "receipts": [
     {
       "lesson": "IM-G5-U2-L1",

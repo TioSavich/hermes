@@ -29,6 +29,7 @@ CATALOG = DERIVED / "im_ccss_action_catalog.json"
 PAIR_CATALOG = DERIVED / "im_productive_deformation_catalog.json"
 OUTPUT = DERIVED / "im_lesson_evidence.json"
 NEGATIVE_RECEIPTS = ROOT / "scripts" / "curriculum" / "lesson_negative_receipts.json"
+VISION_DIGEST = ROOT / "curriculum" / "im" / "generated" / "vision_lesson_digest.pl"
 NODES = ROOT / "data" / "learningcommons" / "nodes.jsonl"
 COMPILED_MAPPINGS = ROOT / "curriculum" / "im" / "generated" / "compiled_action_mappings.pl"
 COMPILED_TASKS = ROOT / "curriculum" / "im" / "generated" / "compiled_task_instances.pl"
@@ -53,6 +54,32 @@ PRODUCTIVE_TASK_RE = re.compile(
 )
 DEFORMATION_TASK_RE = re.compile(
     r"compiled_lesson_task_instance\('([^']+)'\s*,\s*deformation\("
+)
+PROLOG_STRING_PATTERN = r'"(?:\\.|[^"\\])*"'
+VISION_FACT_PREDICATES = (
+    "vision_lesson_goal",
+    "vision_lesson_purpose",
+    "vision_lesson_boundary",
+    "vision_lesson_standard",
+)
+VISION_GOAL_RE = re.compile(
+    rf"^vision_lesson_goal\('([^']+)',\s*(?:teacher|student),\s*"
+    rf"({PROLOG_STRING_PATTERN})\)\.$",
+    re.MULTILINE,
+)
+VISION_PURPOSE_RE = re.compile(
+    rf"^vision_lesson_purpose\('([^']+)',\s*"
+    rf"({PROLOG_STRING_PATTERN})\)\.$",
+    re.MULTILINE,
+)
+VISION_BOUNDARY_RE = re.compile(
+    rf"^vision_lesson_boundary\('([^']+)',\s*"
+    rf"({PROLOG_STRING_PATTERN})\)\.$",
+    re.MULTILINE,
+)
+VISION_STANDARD_RE = re.compile(
+    r"^vision_lesson_standard\('([^']+)',\s*[a-z_]+,\s*'([^']+)'\)\.$",
+    re.MULTILINE,
 )
 
 # These are lexical actions stated by standards, not mappings to executable
@@ -249,13 +276,47 @@ def _merge_mappings(*groups: dict) -> dict:
     return merged
 
 
+def _vision_fact_index() -> dict[str, dict[str, list[str]]]:
+    """Read the allowlisted quotable values directly from generated facts."""
+    text = VISION_DIGEST.read_text(encoding="utf-8", errors="strict")
+    index: dict[str, dict[str, list[str]]] = {}
+    string_fact_patterns = (
+        ("vision_lesson_goal", VISION_GOAL_RE),
+        ("vision_lesson_purpose", VISION_PURPOSE_RE),
+        ("vision_lesson_boundary", VISION_BOUNDARY_RE),
+    )
+    for predicate, pattern in string_fact_patterns:
+        for lesson, quoted_text in pattern.findall(text):
+            value = json.loads(quoted_text)
+            index.setdefault(lesson, {}).setdefault(predicate, []).append(value)
+    for lesson, standard in VISION_STANDARD_RE.findall(text):
+        index.setdefault(lesson, {}).setdefault(
+            "vision_lesson_standard", []
+        ).append(standard)
+    return index
+
+
 def _validated_negative_receipts(
-    lesson_ids: set[str], strategy_mappings: dict
+    lesson_ids: set[str],
+    strategy_mappings: dict,
+    *,
+    receipts_payload: dict | None = None,
 ) -> dict[str, list[dict]]:
-    payload = json.loads(NEGATIVE_RECEIPTS.read_text(encoding="utf-8"))
+    payload = (
+        receipts_payload
+        if receipts_payload is not None
+        else json.loads(NEGATIVE_RECEIPTS.read_text(encoding="utf-8"))
+    )
     by_lesson: dict[str, list[dict]] = {}
     seen = set()
     faults: list[str] = []
+    schema = payload.get("schema")
+    if schema not in {
+        "lesson_negative_receipts_v2",
+        "lesson_negative_receipts_v3",
+    }:
+        faults.append(f"unsupported negative receipt schema: {schema!r}")
+    fact_index: dict[str, dict[str, list[str]]] | None = None
     for receipt in payload["receipts"]:
         lesson = receipt["lesson"]
         if lesson not in lesson_ids:
@@ -274,26 +335,113 @@ def _validated_negative_receipts(
             faults.append(
                 f"negative receipt intended action is not mapped for {lesson}: {intended_key}"
             )
-        source = ROOT / receipt["source"]["path"]
-        if not source.is_file():
-            faults.append(f"negative receipt source is missing for {lesson}: {source}")
+        source_spec = receipt.get("source")
+        if not isinstance(source_spec, dict):
+            faults.append(f"negative receipt source is not an object for {lesson}")
             by_lesson.setdefault(lesson, []).append(receipt)
             continue
-        # Preserve the file's physical line numbering. ``splitlines()`` also
-        # treats form-feed page markers as line breaks, which would drift from
-        # the line numbers shown by editors and the existing compiler.
-        lines = source.read_text(encoding="utf-8", errors="replace").split("\n")
-        for fragment in receipt["source"]["fragments"]:
-            line_number = fragment["line"]
-            if (
-                line_number < 1
-                or line_number > len(lines)
-                or fragment["text"] not in lines[line_number - 1]
-            ):
+        provenance_kind = source_spec.get("kind", "file")
+        fragments = source_spec.get("fragments")
+        if not isinstance(fragments, list) or not fragments:
+            faults.append(f"negative receipt source has no fragments for {lesson}")
+            by_lesson.setdefault(lesson, []).append(receipt)
+            continue
+        if provenance_kind == "file":
+            if receipt.get("source_kind") not in {
+                "responding_to_student_thinking",
+                "activity_guidance",
+            }:
                 faults.append(
-                    f"negative receipt excerpt drifted at {source}:{line_number}: "
-                    f"{fragment['text']!r}"
+                    f"negative receipt file source_kind is invalid for {lesson}: "
+                    f"{receipt.get('source_kind')!r}"
                 )
+            source_path = source_spec.get("path")
+            if not isinstance(source_path, str):
+                faults.append(f"negative receipt file source has no path for {lesson}")
+                by_lesson.setdefault(lesson, []).append(receipt)
+                continue
+            source = ROOT / source_path
+            if not source.is_file():
+                faults.append(f"negative receipt source is missing for {lesson}: {source}")
+                by_lesson.setdefault(lesson, []).append(receipt)
+                continue
+            # Preserve the file's physical line numbering. ``splitlines()`` also
+            # treats form-feed page markers as line breaks, which would drift from
+            # the line numbers shown by editors and the existing compiler.
+            lines = source.read_text(encoding="utf-8", errors="replace").split("\n")
+            for fragment in fragments:
+                line_number = fragment.get("line") if isinstance(fragment, dict) else None
+                fragment_text = fragment.get("text") if isinstance(fragment, dict) else None
+                if (
+                    not isinstance(line_number, int)
+                    or isinstance(line_number, bool)
+                    or not isinstance(fragment_text, str)
+                    or line_number < 1
+                    or line_number > len(lines)
+                    or fragment_text not in lines[line_number - 1]
+                ):
+                    faults.append(
+                        f"negative receipt excerpt drifted at {source}:{line_number}: "
+                        f"{fragment_text!r}"
+                    )
+        elif provenance_kind == "fact":
+            if schema != "lesson_negative_receipts_v3":
+                faults.append(
+                    f"negative receipt fact source requires v3 schema for {lesson}"
+                )
+            if receipt.get("source_kind") != "vision_digest":
+                faults.append(
+                    f"negative receipt fact source_kind must be vision_digest for "
+                    f"{lesson}"
+                )
+            digest_relative = str(VISION_DIGEST.relative_to(ROOT))
+            if source_spec.get("path") != digest_relative:
+                faults.append(
+                    f"negative receipt fact source must be {digest_relative} for {lesson}"
+                )
+                by_lesson.setdefault(lesson, []).append(receipt)
+                continue
+            if fact_index is None:
+                fact_index = _vision_fact_index()
+            lesson_facts = fact_index.get(lesson)
+            if lesson_facts is None:
+                faults.append(f"negative receipt fact lesson is absent from digest: {lesson}")
+                by_lesson.setdefault(lesson, []).append(receipt)
+                continue
+            for fragment in fragments:
+                predicate = (
+                    fragment.get("predicate") if isinstance(fragment, dict) else None
+                )
+                fragment_text = (
+                    fragment.get("text") if isinstance(fragment, dict) else None
+                )
+                if predicate not in VISION_FACT_PREDICATES:
+                    faults.append(
+                        f"negative receipt fact predicate is not allowlisted for "
+                        f"{lesson}: {predicate!r}"
+                    )
+                    continue
+                fact_values = lesson_facts.get(predicate)
+                if not fact_values:
+                    faults.append(
+                        f"negative receipt fact predicate has no entry for "
+                        f"{lesson}: {predicate}"
+                    )
+                    continue
+                if (
+                    not isinstance(fragment_text, str)
+                    or not fragment_text
+                    or not any(fragment_text in value for value in fact_values)
+                ):
+                    faults.append(
+                        f"negative receipt fact excerpt drifted for {lesson} in "
+                        f"{predicate}: {fragment_text!r}"
+                    )
+        else:
+            faults.append(
+                f"negative receipt source kind is not file or fact for "
+                f"{lesson}: {provenance_kind!r}"
+            )
         by_lesson.setdefault(lesson, []).append(receipt)
     if faults:
         raise SystemExit(
