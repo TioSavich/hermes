@@ -62,9 +62,13 @@ TOOLS = [
             "name": "pedagogical_questions",
             "description": (
                 "Find authored assessing and advancing questions for the "
-                "student's mathematics. Use a concise topic phrase, an exact "
-                "automaton state, or an exact standard. An empty match is an "
-                "abstention; do not claim that it supplied a question."
+                "student's mathematics. Use a topic phrase, an exact automaton "
+                "state, an exact standard, or kind=all to receive every "
+                "cluster. A topic phrase matches on any word it shares with a "
+                "cluster and the strongest match comes first, so naming the "
+                "mathematics precisely helps rather than narrows. An empty "
+                "match is an abstention; do not claim that it supplied a "
+                "question."
             ),
             "parameters": {
                 "type": "object",
@@ -78,8 +82,8 @@ TOOLS = [
                     },
                     "kind": {
                         "type": "string",
-                        "enum": ["topic", "automaton_state", "standard"],
-                        "description": "The admission rule to use.",
+                        "enum": ["topic", "automaton_state", "standard", "all"],
+                        "description": "The admission rule; all ignores the query.",
                     },
                 },
                 "required": ["query"],
@@ -317,7 +321,7 @@ class AgentTutorResponder:
         if (
             not isinstance(query, str)
             or not query.strip()
-            or kind not in {"topic", "automaton_state", "standard"}
+            or kind not in {"topic", "automaton_state", "standard", "all"}
         ):
             item["pedagogical_questions_abstentions"] += 1
             self.stats["pedagogical_questions_abstentions"] += 1

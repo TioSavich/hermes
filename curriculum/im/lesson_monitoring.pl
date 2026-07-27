@@ -266,22 +266,28 @@ monitoring_chart_cluster(Code, Source, ClusterId, Info) :-
 %!  pedagogical_question_clusters(+Kind, +Query, -Result) is det.
 %
 %   Find authored monitoring-chart questions without requiring an IM lesson
-%   code. Kind is topic, automaton_state, or standard. State and standard
-%   queries use exact normalized token sequences. Topic queries are admitted
-%   only when every substantive whole-word token occurs in the cluster's
-%   authored source, id, title, or productive core. The result carries the
-%   match basis and returns status=abstained with [] when no row is admitted;
-%   no similarity score or nearest row is manufactured.
+%   code. Kind is topic, automaton_state, standard, or all. State and standard
+%   queries use exact normalized token sequences. Kind `all` serves every
+%   cluster, which the whole corpus is small enough to allow.
+%
+%   Topic queries admit a cluster when any substantive whole-word token occurs
+%   in its authored source, id, title, or productive core, and order the
+%   matches by how many tokens hit. This replaces a conjunction over every
+%   token, which abstained the moment a query grew precise: `area` matched six
+%   clusters and `area of a rectangle` matched none, so recall ran opposite to
+%   how well the asker had named the mathematics. The overlap count is a count
+%   of tokens present and not a similarity score; no nearest row is
+%   manufactured, and a query sharing no token still abstains.
 pedagogical_question_clusters(Kind0, Query0, Result) :-
     lookup_kind(Kind0, Kind),
     text_string(Query0, Query),
     lookup_query_parts(Kind, Query, QueryParts),
-    findall(ClusterId-Match,
+    findall(Rank-ClusterId-Match,
             pedagogical_question_cluster_match(
-                Kind, Query, QueryParts, ClusterId, Match),
+                Kind, Query, QueryParts, ClusterId, Match, Rank),
             Matches0),
-    sort(Matches0, Matches1),
-    findall(Match, member(_-Match, Matches1), Matches),
+    sort(0, @>=, Matches0, Matches1),
+    findall(Match, member(_-_-Match, Matches1), Matches),
     length(Matches, MatchCount),
     ( Matches == [] -> Status = abstained ; Status = matched ),
     Result = _{
@@ -295,7 +301,7 @@ lookup_kind(Kind0, Kind) :-
     text_string(Kind0, KindText),
     string_lower(KindText, Lower),
     atom_string(Normalized, Lower),
-    ( memberchk(Normalized, [topic, automaton_state, standard])
+    ( memberchk(Normalized, [topic, automaton_state, standard, all])
     -> Kind = Normalized
     ;  Kind = invalid
     ).
@@ -304,34 +310,45 @@ lookup_query_parts(topic, Query, Parts) :-
     !,
     lookup_raw_words(Query, RawParts),
     exclude(topic_stop_word, RawParts, Parts).
+lookup_query_parts(all, _Query, [all]) :- !.
 lookup_query_parts(_Kind, Query, Parts) :-
     lookup_raw_words(Query, Parts).
 
 pedagogical_question_cluster_match(
-        Kind, Query, QueryParts, ClusterId, Match) :-
+        Kind, Query, QueryParts, ClusterId, Match, Rank) :-
     QueryParts \== [],
     monitoring_cluster_source(Source, RelativePath),
     monitoring_cluster_dict(RelativePath, Cluster),
-    cluster_lookup_match(Kind, QueryParts, Source, Cluster, MatchBasis),
+    cluster_lookup_match(Kind, QueryParts, Source, Cluster, MatchBasis,
+                         Rank, Asked),
     cluster_question_lookup_row(
-        Source, Cluster, Query, MatchBasis, ClusterId, Match).
+        Source, Cluster, Query, MatchBasis, Rank, Asked, ClusterId, Match).
 
+% The basis stays an atom and the counts ride beside it as integers, because
+% the row is written straight to JSON.
+cluster_lookup_match(all, _QueryParts, _Source, _Cluster, whole_corpus, 0, 0) :- !.
 cluster_lookup_match(automaton_state, QueryParts, _Source, Cluster,
-                     automaton_state_exact) :-
+                     automaton_state_exact, 0, 0) :-
     dict_value(Cluster, automaton_states, States),
     member(State, States),
     lookup_raw_words(State, QueryParts),
     !.
-cluster_lookup_match(standard, QueryParts, _Source, Cluster, standard_exact) :-
+cluster_lookup_match(standard, QueryParts, _Source, Cluster, standard_exact,
+                     0, 0) :-
     dict_value(Cluster, standards, Standards),
     member(Standard, Standards),
     lookup_raw_words(Standard, QueryParts),
     !.
 cluster_lookup_match(topic, QueryParts, Source, Cluster,
-                     topic_phrase_all_tokens_present) :-
+                     topic_tokens_present, Hits, Asked) :-
     cluster_topic_words(Source, Cluster, SurfaceWords),
-    forall(member(QueryPart, QueryParts),
-           lookup_part_present(QueryPart, SurfaceWords)).
+    include(lookup_part_present_in(SurfaceWords), QueryParts, Present),
+    length(Present, Hits),
+    Hits > 0,
+    length(QueryParts, Asked).
+
+lookup_part_present_in(SurfaceWords, QueryPart) :-
+    lookup_part_present(QueryPart, SurfaceWords).
 
 cluster_topic_words(Source, Cluster, Words) :-
     dict_value(Cluster, id, Id),
@@ -393,7 +410,7 @@ topic_stop_word(with).
 topic_stop_word(without).
 
 cluster_question_lookup_row(
-        Source, Cluster, Query, MatchBasis, ClusterId, Row) :-
+        Source, Cluster, Query, MatchBasis, Hits, Asked, ClusterId, Row) :-
     dict_value(Cluster, id, ClusterId0),
     dict_value(Cluster, title, Title0),
     dict_value(Cluster, productive_core, ProductiveCore0),
@@ -425,6 +442,8 @@ cluster_question_lookup_row(
         im_anchors: IMAnchors,
         automaton_states: AutomatonStates,
         match_basis: MatchBasis,
+        tokens_matched: Hits,
+        tokens_asked: Asked,
         matched_query: Query
     }.
 

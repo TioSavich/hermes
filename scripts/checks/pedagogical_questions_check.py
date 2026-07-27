@@ -60,9 +60,24 @@ def main() -> int:
     state_row = only_match(by_state, "equal_partitioning")
     assert state_row["match_basis"] == "automaton_state_exact"
 
+    # A topic query admits every cluster sharing a token and orders them by
+    # how many hit, so the cluster named by the phrase leads rather than being
+    # the only row. The conjunction this replaced abstained as soon as a query
+    # grew precise, which ran recall opposite to how well the asker had named
+    # the mathematics.
     by_topic = direct_lookup("topic", "equal partitioning")
-    topic_row = only_match(by_topic, "equal_partitioning")
-    assert topic_row["match_basis"] == "topic_phrase_all_tokens_present"
+    topic_row = by_topic["matches"][0]
+    assert topic_row["cluster_id"] == "equal_partitioning", by_topic
+    assert topic_row["match_basis"] == "topic_tokens_present"
+    assert topic_row["tokens_matched"] == 2
+    assert topic_row["tokens_asked"] == 2
+    ranks = [row["tokens_matched"] for row in by_topic["matches"]]
+    assert ranks == sorted(ranks, reverse=True), by_topic
+
+    every = direct_lookup("all", "ignored")
+    assert every["status"] == "matched"
+    assert every["match_count"] == 42, every["match_count"]
+    assert all(row["match_basis"] == "whole_corpus" for row in every["matches"])
 
     by_standard = direct_lookup("standard", "CCSS 3.NF.A.1")
     assert {
@@ -103,8 +118,9 @@ def main() -> int:
     assert malformed["ok"] is False, malformed
     assert malformed["error"]["type"] == "malformed_pedagogical_questions"
     print(
-        "PASS state, standard, and whole-word topic admission; explicit "
-        "abstention; verbatim questions; worker round trip"
+        "PASS state, standard, ranked topic overlap, and whole-corpus "
+        "admission; abstention on zero overlap; verbatim questions; "
+        "worker round trip"
     )
     return 0
 
