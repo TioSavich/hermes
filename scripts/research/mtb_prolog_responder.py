@@ -71,6 +71,10 @@ class RunResult:
     outcome: str
     value: str | None = None
     detail: str | None = None
+    error_class: str | None = None
+    stdout: str = ""
+    stderr: str = ""
+    seconds: float = 0.0
     pid: int | None = None
 
 
@@ -210,12 +214,19 @@ def _answer_goal(goal_timeout_seconds: float) -> str:
     timeout = f"{goal_timeout_seconds:g}"
     return (
         "catch("
-        f"(call_with_time_limit({timeout}, once(solve(Answer))) -> "
+        f"(call_with_time_limit({timeout}, (once(solve(Answer)), "
         "(integer(Answer) -> format('__MTB_ANSWER__~d~n', [Answer]) ; "
         "(number(Answer) -> format('__MTB_ANSWER__~15f~n', [Answer]) ; "
-        "writeln('__MTB_NONNUMERIC__'))) ; "
+        "((get_attr(Answer, clpqr_itf, Attr), arg(1, Attr, clpq), "
+        "once(bb_inf([Answer], -Answer, _, [Grounded])), number(Grounded)) -> "
+        "(integer(Grounded) -> "
+        "format('__MTB_ANSWER_GROUNDED__~d~n', [Grounded]) ; "
+        "format('__MTB_ANSWER_GROUNDED__~15f~n', [Grounded])) ; "
+        "writeln('__MTB_NONNUMERIC__')))))) -> true ; "
         "writeln('__MTB_NO_SOLUTION__')), "
-        "time_limit_exceeded, writeln('__MTB_TIMEOUT__'))"
+        "Error, (Error == time_limit_exceeded -> "
+        "writeln('__MTB_TIMEOUT__') ; "
+        "(write('__MTB_ERROR__'), write_canonical(Error), nl)))"
     )
 
 
@@ -225,6 +236,23 @@ def _kill_process_group(process: subprocess.Popen[str]) -> None:
         os.killpg(process.pid, signal.SIGKILL)
     except ProcessLookupError:
         pass
+
+
+def _runtime_error_class(detail: str) -> str:
+    """Classify the canonical SWI error term emitted by the answer wrapper."""
+    if (
+        "existence_error(procedure,/(solve,1))" in detail
+        or re.search(r"existence_error\(procedure,(?:[^)]*:)?solve/1\)", detail)
+    ):
+        return "undefined_solve"
+    for name in (
+        "instantiation_error", "type_error", "domain_error",
+        "evaluation_error", "permission_error", "representation_error",
+        "resource_error",
+    ):
+        if name in detail:
+            return name
+    return "other"
 
 
 def run_program(
@@ -245,6 +273,7 @@ def run_program(
     if not (0 < wall_timeout_seconds <= WALL_TIMEOUT_SECONDS):
         raise ValueError("wall timeout must be positive and at most twenty seconds")
 
+    started = time.monotonic()
     temp_path: Path | None = None
     process: subprocess.Popen[str] | None = None
     try:
@@ -273,21 +302,56 @@ def run_program(
         except subprocess.TimeoutExpired:
             _kill_process_group(process)
             stdout, stderr = process.communicate()
-            return RunResult("timeout", detail="wall_clock", pid=process.pid)
+            return RunResult(
+                "timeout", detail="wall_clock", stdout=stdout, stderr=stderr,
+                seconds=round(time.monotonic() - started, 3), pid=process.pid,
+            )
 
         lines = stdout.splitlines()
         answer_lines = [line for line in lines if line.startswith("__MTB_ANSWER__")]
+        grounded_lines = [
+            line for line in lines
+            if line.startswith("__MTB_ANSWER_GROUNDED__")
+        ]
+        error_lines = [line for line in lines if line.startswith("__MTB_ERROR__")]
+        common = {
+            "stdout": stdout,
+            "stderr": stderr,
+            "seconds": round(time.monotonic() - started, 3),
+            "pid": process.pid,
+        }
         if "__MTB_TIMEOUT__" in lines:
-            return RunResult("timeout", detail="goal_limit", pid=process.pid)
+            return RunResult("timeout", detail="goal_limit", **common)
+        if process.returncode and (
+            "Syntax error" in stderr or "operator expected" in stderr
+        ):
+            detail = stderr.strip().splitlines()[-1] if stderr.strip() else None
+            return RunResult("syntax_error", detail=detail, **common)
+        if error_lines:
+            detail = error_lines[-1].removeprefix("__MTB_ERROR__").strip()
+            return RunResult(
+                "runtime_error", detail=detail,
+                error_class=_runtime_error_class(detail), **common,
+            )
         if "__MTB_NONNUMERIC__" in lines:
-            return RunResult("nonnumeric", pid=process.pid)
+            return RunResult("nonnumeric", **common)
         if "__MTB_NO_SOLUTION__" in lines:
-            return RunResult("no_solution", pid=process.pid)
+            return RunResult("no_solution", **common)
+        if grounded_lines:
+            value = grounded_lines[-1].removeprefix(
+                "__MTB_ANSWER_GROUNDED__").strip()
+            if re.fullmatch(r"-?\d+(?:\.\d+)?", value):
+                return RunResult("ran_grounded", value=value, **common)
+            return RunResult(
+                "nonnumeric", detail="unparseable_grounded_number", **common,
+            )
         if answer_lines:
             value = answer_lines[-1].removeprefix("__MTB_ANSWER__").strip()
             if re.fullmatch(r"-?\d+(?:\.\d+)?", value):
-                return RunResult("ran", value=value, pid=process.pid)
-            return RunResult("nonnumeric", detail="unparseable_number", pid=process.pid)
+                return RunResult("ran", value=value, **common)
+            return RunResult(
+                "nonnumeric", detail="unparseable_number", **common,
+            )
         if process.returncode:
             detail = stderr.strip().splitlines()[-1] if stderr.strip() else None
             # A program that will not load and a program whose goal raised are
@@ -297,9 +361,13 @@ def run_program(
             # land here, not in syntax.
             text = stderr or ""
             if "Syntax error" in text or "operator expected" in text:
-                return RunResult("syntax_error", detail=detail, pid=process.pid)
-            return RunResult("runtime_error", detail=detail, pid=process.pid)
-        return RunResult("no_solution", detail="no_result_marker", pid=process.pid)
+                return RunResult("syntax_error", detail=detail, **common)
+            error_class = _runtime_error_class(detail or "")
+            return RunResult(
+                "runtime_error", detail=detail, error_class=error_class,
+                **common,
+            )
+        return RunResult("no_solution", detail="no_result_marker", **common)
     except FileNotFoundError as exc:
         raise RuntimeError("swipl is required for the Prolog responder") from exc
     finally:
@@ -374,6 +442,15 @@ class PrologResponder:
         self.backend = options.get("backend", "ollama")
         self.endpoint = options.get("endpoint")
         self.num_predict = int(options.get("num_predict", mtb_responders.DEFAULT_NUM_PREDICT))
+        transcript_value = options.get("transcript_dir")
+        self.transcript_path: Path | None = None
+        self._transcript_handle = None
+        if transcript_value:
+            transcript_dir = Path(transcript_value).expanduser().resolve()
+            transcript_dir.mkdir(parents=True, exist_ok=True)
+            self.transcript_path = transcript_dir / f"{self.arm}.jsonl"
+            self._transcript_handle = self.transcript_path.open(
+                "w", encoding="utf-8")
         self.stats: Counter[str] = Counter()
         self._closed = False
 
@@ -381,7 +458,9 @@ class PrologResponder:
     def arm(self) -> str:
         return "prolog_solve_guarded" if self.guarded else "prolog_solve"
 
-    def _record(self, outcome: str, **extra: Any) -> None:
+    def _record(
+        self, outcome: str, *, transcript: dict[str, Any], **extra: Any,
+    ) -> None:
         position = self.stats["items"]
         self.stats["items"] += 1
         self.stats[outcome] += 1
@@ -391,6 +470,18 @@ class PrologResponder:
             file=sys.stderr,
             flush=True,
         )
+        if self._transcript_handle is not None:
+            transcript_record = {
+                "position": position,
+                **transcript,
+                "outcome": outcome,
+                **extra,
+            }
+            self._transcript_handle.write(
+                json.dumps(transcript_record, ensure_ascii=False, sort_keys=True)
+                + "\n"
+            )
+            self._transcript_handle.flush()
 
     def _fallback(self, prompt: str, stop: list[str] | None) -> str:
         self.stats["fallbacks"] += 1
@@ -412,6 +503,11 @@ class PrologResponder:
         outcome = "no_program"
         record_extra: dict[str, Any] = {}
         answer = ""
+        reply = ""
+        program: str | None = None
+        screened: ScreenResult | None = None
+        swipl_stdout = ""
+        swipl_stderr = ""
         try:
             if task_name != "problem_solving":
                 raise ValueError("prolog responders support only problem_solving")
@@ -427,7 +523,6 @@ class PrologResponder:
                 )
             except RuntimeError as exc:
                 record_extra["detail"] = f"completion_error:{type(exc).__name__}"
-                reply = ""
             program = extract_program(reply)
             if program is None:
                 return self._fallback(prompt, stop) if self.guarded else ""
@@ -438,9 +533,19 @@ class PrologResponder:
                 return self._fallback(prompt, stop) if self.guarded else ""
             result = run_program(program, self.scratch_dir)
             outcome = result.outcome
+            swipl_stdout = result.stdout
+            swipl_stderr = result.stderr
             if result.detail:
                 record_extra["detail"] = result.detail
-            if result.outcome == "ran" and result.value is not None:
+            if result.error_class:
+                record_extra["error_class"] = result.error_class
+            if result.value is not None:
+                record_extra["value"] = result.value
+            if result.outcome == "ran":
+                record_extra["grounding"] = "direct"
+            elif result.outcome == "ran_grounded":
+                record_extra["grounding"] = "clpq_bb_inf_integer_maximum"
+            if result.outcome in {"ran", "ran_grounded"} and result.value is not None:
                 answer = f"Final answer: {result.value}"
                 return answer
             return self._fallback(prompt, stop) if self.guarded else ""
@@ -449,13 +554,25 @@ class PrologResponder:
             return self._fallback(prompt, stop) if self.guarded else ""
         finally:
             record_extra["seconds"] = round(time.monotonic() - started, 3)
-            self._record(outcome, **record_extra)
+            transcript = {
+                "raw_reply": reply,
+                "program": program,
+                "screen": (
+                    None if screened is None
+                    else {"allowed": screened.allowed, "reason": screened.reason}
+                ),
+                "swipl_stdout": swipl_stdout,
+                "swipl_stderr": swipl_stderr,
+            }
+            self._record(outcome, transcript=transcript, **record_extra)
 
     def close(self) -> None:
         """Emit the arm's failure taxonomy after the runner has called it."""
         if self._closed:
             return
         self._closed = True
+        if self._transcript_handle is not None:
+            self._transcript_handle.close()
         items = self.stats["items"]
         summary = {
             "arm": self.arm,
@@ -467,7 +584,7 @@ class PrologResponder:
             **{name: self.stats[name] for name in (
                 "no_program", "rejected_unsafe", "syntax_error", "runtime_error",
                 "no_solution",
-                "timeout", "nonnumeric", "ran",
+                "timeout", "nonnumeric", "ran", "ran_grounded",
             )},
         }
         print("MTB_PROLOG_STATS " + json.dumps(summary, sort_keys=True), file=sys.stderr)

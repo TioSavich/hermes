@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import os
+import json
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
@@ -107,6 +109,73 @@ class RunnerTests(unittest.TestCase):
         with self.assertRaises(ProcessLookupError):
             os.kill(result.pid or -1, 0)
 
+    def test_clpq_variable_is_grounded_to_integer_maximum(self) -> None:
+        program = """\
+:- use_module(library(clpq)).
+solve(Answer) :- {Answer >= 0, Answer =< 13}.
+"""
+        result = responder.run_program(program, self.scratch)
+        self.assertEqual(
+            (result.outcome, result.value), ("ran_grounded", "13"))
+
+    def test_clpq_variable_without_finite_maximum_stays_nonnumeric(self) -> None:
+        program = """\
+:- use_module(library(clpq)).
+solve(Answer) :- {Answer >= 0}.
+"""
+        result = responder.run_program(program, self.scratch)
+        self.assertEqual(result.outcome, "nonnumeric")
+
+    def test_undefined_solve_has_specific_runtime_class(self) -> None:
+        result = responder.run_program("quantity(1).", self.scratch)
+        self.assertEqual(result.outcome, "runtime_error")
+        self.assertEqual(result.error_class, "undefined_solve")
+
+    def test_instantiation_error_has_specific_runtime_class(self) -> None:
+        result = responder.run_program(
+            "solve(Answer) :- Unknown > 1, Answer = Unknown.", self.scratch)
+        self.assertEqual(result.outcome, "runtime_error")
+        self.assertEqual(result.error_class, "instantiation_error")
+
+    def test_type_error_has_specific_runtime_class(self) -> None:
+        result = responder.run_program(
+            "solve(Answer) :- Answer is not_a_number + 1.", self.scratch)
+        self.assertEqual(result.outcome, "runtime_error")
+        self.assertEqual(result.error_class, "type_error")
+
+    def test_transcript_keeps_program_and_process_record(self) -> None:
+        transcript_dir = self.scratch / "transcripts"
+        arm = responder.PrologResponder(
+            "test-model", guarded=False, scratch_dir=str(self.scratch),
+            transcript_dir=str(transcript_dir),
+        )
+        reply = f"```prolog\n{BENIGN}```"
+        with mock.patch.object(
+                responder.mtb_responders, "complete", return_value=reply):
+            answer = arm.respond(
+                prompt="benchmark prompt", stop=None,
+                example={"question": "How many apples remain?"},
+                task_name="problem_solving",
+            )
+        arm.close()
+
+        self.assertEqual(answer, "Final answer: 13")
+        self.assertIsNotNone(arm.transcript_path)
+        records = [
+            json.loads(line)
+            for line in (arm.transcript_path or Path()).read_text(
+                encoding="utf-8").splitlines()
+        ]
+        self.assertEqual(len(records), 1)
+        record = records[0]
+        self.assertEqual(record["program"], BENIGN.strip())
+        self.assertEqual(record["raw_reply"], reply)
+        self.assertEqual(record["screen"], {"allowed": True, "reason": None})
+        self.assertEqual(record["outcome"], "ran")
+        self.assertIn("__MTB_ANSWER__13", record["swipl_stdout"])
+        self.assertEqual(record["swipl_stderr"], "")
+        self.assertIsInstance(record["seconds"], float)
+
 
 class ReportTests(unittest.TestCase):
     def test_report_crosses_outcomes_with_correctness(self) -> None:
@@ -123,6 +192,20 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(built["ran_rate"], 0.5)
         self.assertEqual(built["outcomes"]["ran"]["correct"], 1)
         self.assertEqual(built["outcomes"]["no_program"]["incorrect"], 1)
+
+    def test_report_counts_grounded_runs_in_overall_ran_rate(self) -> None:
+        built = report.build_report(
+            {
+                0: {"position": 0, "prediction": "13", "target": "13"},
+                1: {"position": 1, "prediction": None, "target": "2"},
+            },
+            {
+                0: {"position": 0, "outcome": "ran_grounded"},
+                1: {"position": 1, "outcome": "nonnumeric"},
+            },
+        )
+        self.assertEqual(built["ran_rate"], 0.5)
+        self.assertEqual(built["outcomes"]["ran_grounded"]["correct"], 1)
 
     def test_report_rejects_partial_join(self) -> None:
         with self.assertRaisesRegex(ValueError, "position mismatch"):

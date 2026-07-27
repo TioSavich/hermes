@@ -90,7 +90,10 @@ def build_report(
         correctness = "correct" if _is_correct(runner["prediction"], runner["target"]) else "incorrect"
         crossed[str(item["outcome"])][correctness] += 1
     items = len(runner_positions)
-    ran = crossed["ran"]["correct"] + crossed["ran"]["incorrect"]
+    ran = sum(
+        crossed[outcome]["correct"] + crossed[outcome]["incorrect"]
+        for outcome in ("ran", "ran_grounded")
+    )
     return {
         "items": items,
         "ran_rate": ran / items if items else 0.0,
