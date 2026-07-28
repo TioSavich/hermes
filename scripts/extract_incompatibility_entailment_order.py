@@ -297,11 +297,21 @@ def calculate(hyperedges: list[Hyperedge]) -> dict[str, object]:
 
 
 def positive_control() -> None:
-    """A hand-worked dog/mammal fixture guards the indexed replacement logic."""
+    """A hand-worked dog/mammal fixture guards the indexed replacement logic.
+
+    Every set here is materially true, which the fixture did not manage until
+    2026-07-28. It declared ``{mammal, feline}`` — false, since a cat is both —
+    and so derived a true conclusion from a false premise. The structure it
+    tests is unchanged: ``cold_blooded`` is incompatible with dog and with
+    mammal alike, ``feline`` with dog alone, so mammal's partners sit properly
+    inside dog's and the entailment runs one way only. A control that asserts
+    something false about the world cannot be read as evidence that the relation
+    tracks the world, and this one is quoted as the canonical illustration.
+    """
     rows = [
         (Source("fixture", "positive_control", "declared"), frozenset({"dog", "feline"})),
         (Source("fixture", "positive_control", "declared"), frozenset({"dog", "cold_blooded"})),
-        (Source("fixture", "positive_control", "declared"), frozenset({"mammal", "feline"})),
+        (Source("fixture", "positive_control", "declared"), frozenset({"mammal", "cold_blooded"})),
     ]
     result = calculate(build_hyperedges(rows))
     earned = result["earned"]

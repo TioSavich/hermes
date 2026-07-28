@@ -2,7 +2,7 @@
  "by_grade": {
   "1": {
    "diagnostic_ready": 43,
-   "executable_task": 46,
+   "executable_task": 47,
    "measured_transition": 44,
    "negative_candidate": 128,
    "published": 148,
@@ -12,7 +12,7 @@
   },
   "2": {
    "diagnostic_ready": 28,
-   "executable_task": 32,
+   "executable_task": 33,
    "measured_transition": 31,
    "negative_candidate": 125,
    "published": 150,
@@ -22,7 +22,7 @@
   },
   "3": {
    "diagnostic_ready": 34,
-   "executable_task": 40,
+   "executable_task": 42,
    "measured_transition": 36,
    "negative_candidate": 112,
    "published": 143,
@@ -32,7 +32,7 @@
   },
   "4": {
    "diagnostic_ready": 14,
-   "executable_task": 18,
+   "executable_task": 19,
    "measured_transition": 16,
    "negative_candidate": 105,
    "published": 151,
@@ -42,7 +42,7 @@
   },
   "5": {
    "diagnostic_ready": 11,
-   "executable_task": 13,
+   "executable_task": 16,
    "measured_transition": 13,
    "negative_candidate": 106,
    "published": 148,
@@ -4504,7 +4504,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -4514,7 +4514,6 @@
    "grade": "2",
    "lesson": "IM-G2-U4-L10",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -4583,10 +4582,18 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "decompose_base_for_ones"
+    },
+    {
+     "deformation": "drop_ones_after_base_takeaway",
+     "family": "dropped_subtrahend_remainder",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "subtraction",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "take_away_base_ones"
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.MD.B.6": [
      "represent"
@@ -4631,6 +4638,14 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "base_ones_chunking"
+    },
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
     },
     {
      "deformation": "make_ten_drop_leftover",
@@ -15479,7 +15494,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -15489,7 +15504,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L12",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Multiply Multiples of 10",
@@ -15501,6 +15515,22 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "base_ones_chunking"
+    },
+    {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
     },
     {
      "deformation": "add_instead_of_subtract_column",
@@ -15536,7 +15566,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.3": [
      "multiply",
@@ -16153,7 +16183,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -16163,7 +16193,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L19",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Ways to Divide Greater Numbers",
@@ -16183,6 +16212,14 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "fair_share_equal_groups"
+    },
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
     },
     {
      "deformation": "add_instead_of_multiply",
@@ -16234,7 +16271,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.3": [
      "multiply",
@@ -25996,7 +26033,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -26006,7 +26043,6 @@
    "grade": "4",
    "lesson": "IM-G4-U6-L16",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Base-Ten Diagrams to Represent Division",
@@ -26026,6 +26062,14 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "fair_share_equal_groups"
+    },
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
     },
     {
      "deformation": "add_instead_of_multiply",
@@ -26077,7 +26121,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.NBT.B.6": [
      "explain",
@@ -63827,7 +63871,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -63837,7 +63881,6 @@
    "grade": "1",
    "lesson": "IM-G1-U5-L5",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -63909,7 +63952,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.NBT.C.4": [
      "add",
@@ -70072,7 +70115,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -70082,7 +70125,6 @@
    "grade": "5",
    "lesson": "IM-G5-U4-L2",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -70135,10 +70177,26 @@
      "operation": "multiplication",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "distribute_group_size_split"
+    },
+    {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.NBT.B": [
      "perform"
@@ -70374,7 +70432,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -70384,7 +70442,6 @@
    "grade": "5",
    "lesson": "IM-G5-U4-L6",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Standard Algorithm: Multi-digit Numbers, with Composing",
@@ -70428,10 +70485,26 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "round_then_adjust"
+    },
+    {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.NBT.B.5": [
      "multiply",
@@ -70725,7 +70798,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -70735,7 +70808,6 @@
    "grade": "5",
    "lesson": "IM-G5-U4-L11",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "A Partial-Quotients Algorithm",
@@ -70755,6 +70827,14 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "fair_share_equal_groups"
+    },
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
     },
     {
      "deformation": "stop_after_first_partial_quotient",
@@ -70782,7 +70862,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.NBT.B.6": [
      "explain",
@@ -75671,7 +75751,7 @@
  },
  "summary": {
   "diagnostic_ready": 181,
-  "executable_task": 236,
+  "executable_task": 244,
   "measured_transition": 227,
   "negative_candidate": 797,
   "published": 1308,

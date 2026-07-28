@@ -371,6 +371,20 @@ def extract_task_candidates(
 ) -> list[TaskCandidate]:
     """Extract exact operand-bearing prompts for review, never direct promotion."""
     number = NUMBER_TOKEN
+    direct_binary_prompt = re.compile(
+        r"^\s*(?:\d+\.\s*)?(?P<excerpt>Find the value of (?P<a>\d+)\s*"
+        r"(?P<symbol>[+\-−×·÷])\s*(?P<b>\d+)\."
+        r")(?:\s+.*)?$",
+        re.IGNORECASE,
+    )
+    direct_operations = {
+        "+": ("addition", "add"),
+        "-": ("subtraction", "subtract"),
+        "−": ("subtraction", "subtract"),
+        "×": ("multiplication", "multiply"),
+        "·": ("multiplication", "multiply"),
+        "÷": ("division", "divide"),
+    }
     patterns = [
         (
             "equal_groups_pronoun_each",
@@ -403,6 +417,31 @@ def extract_task_candidates(
     candidates = set()
     for span in spans:
         for line, end_line, position, text in _task_chunks(span):
+            direct_binary = direct_binary_prompt.fullmatch(text)
+            if direct_binary:
+                operation, task_name = direct_operations[direct_binary.group("symbol")]
+                has_route = any(
+                    attached_operation == operation
+                    for attached_operation, _ in attachments.get(span.code, set())
+                )
+                candidates.add(
+                    TaskCandidate(
+                        span.code,
+                        f"{task_name}({int(direct_binary.group('a'))}, "
+                        f"{int(direct_binary.group('b'))})",
+                        operation,
+                        "direct_binary_expression_prompt",
+                        span.source,
+                        line,
+                        end_line,
+                        position,
+                        direct_binary.group("excerpt"),
+                        "reviewable" if has_route else "rejected",
+                        "exact_standalone_binary_expression_and_operation_route"
+                        if has_route
+                        else f"lesson_has_no_{operation}_attachment",
+                    )
+                )
             for parser_id, pattern in patterns:
                 match = pattern.search(text)
                 if not match:
@@ -1168,6 +1207,12 @@ def extract_task_candidates(
 
 
 TASK_GRAMMAR_ACTIONS = {
+    "direct_binary_expression_prompt": {
+        "addition": "count_on_from_larger",
+        "subtraction": "take_away_base_ones",
+        "multiplication": "repeat_equal_groups",
+        "division": "measure_groups_of_size",
+    },
     "direct_addition_expression_list": ("addition", "count_on_from_larger"),
     "direct_subtraction_expression_list": ("subtraction", "take_away_base_ones"),
     "direct_multiplication_expression_list": ("multiplication", "repeat_equal_groups"),
@@ -1243,13 +1288,21 @@ def compile_task_derived_mappings(
     derived = set()
     for candidate in candidates:
         action = TASK_GRAMMAR_ACTIONS.get(candidate.parser_id)
-        if not action or candidate.operation != action[0]:
+        if isinstance(action, dict):
+            operation = candidate.operation
+            kind = action.get(operation)
+            if kind is None:
+                continue
+        elif action:
+            operation, kind = action
+            if candidate.operation != operation:
+                continue
+        else:
             continue
         if candidate.status != "reviewable" and not candidate.reason.startswith(
             "lesson_has_no_"
         ):
             continue
-        operation, kind = action
         if (operation, kind) in attached.get(candidate.code, set()):
             continue
         mapping = Mapping(

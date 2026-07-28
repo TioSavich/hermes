@@ -450,15 +450,15 @@ measurement_receipt(measurement(424), 'docs/research/2026-07-28-why-entailment-d
 measurement_receipt(measurement(425), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(171)', '- *"Each rule occurs in exactly one set"* — measured true, 90 of 90, and it', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(426), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(312)', 'deep: my census over the Prolog tree counts 1,962 of 2,137 mode-operator', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(427), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(316)', 'identical signature `s(comp_nec(unlicensed(_)))` (820 of 820, measured). And', none_recorded, ['knowledge/misconceptions/pml_wire.pl'], data_method_unrecorded).
-measurement_receipt(measurement(428), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(447)', 'dominant cell at 1,782 of 1,957 with the same shape. The', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(428), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(449)', 'dominant cell at 1,782 of 1,957 with the same shape. The', live_script('scripts/checks/a_fortiori_context_closure_automaton_battery.pl'), none_recorded, resolved_live_method).
 
 measurement_denominator(explicit_quantitative_result_statement, 428).
-measurement_resolution_count(resolved_live_method, 77).
+measurement_resolution_count(resolved_live_method, 78).
 measurement_resolution_count(resolved_method_data_missing, 1).
 measurement_resolution_count(method_ambiguous, 23).
 measurement_resolution_count(method_path_and_cited_data_missing, 1).
 measurement_resolution_count(data_method_unrecorded, 31).
-measurement_resolution_count(method_not_recorded, 295).
+measurement_resolution_count(method_not_recorded, 294).
 
 measurement_control(coverage_absence_registry, 'scripts/extract_coverage_absence_registry.py', resolved_live_method).
 measurement_control(self_description_census, 'scripts/research/build_self_description_census.py', resolved_live_method).

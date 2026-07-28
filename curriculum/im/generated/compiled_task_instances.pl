@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(236, 1186).
+compiled_task_instance_summary(244, 1206).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -206,6 +206,8 @@ compiled_lesson_task_instance('IM-G1-U4-L18', productive-add(32, 20),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson18.md', lines(85, 85)), position(student_task_statement(1)/expression(3)), excerpt("32 + 20"))).
 compiled_lesson_task_instance('IM-G1-U4-L18', productive-subtract(32, 20),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson18.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("32- 20"))).
+compiled_lesson_task_instance('IM-G1-U5-L5', productive-add(8, 47),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade1/unit5/lesson5.md', lines(171, 173)), position(student_task_statement(2)/item(1)), excerpt("Find the value of 8 + 47."))).
 compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(3, 68),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(89, 89)), position(student_task_statement(1)/expression(2)), excerpt("3 + 68"))).
 compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(45, 7),
@@ -214,6 +216,10 @@ compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(5, 45),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(91, 91)), position(student_task_statement(1)/expression(3)), excerpt("5 + 45"))).
 compiled_lesson_task_instance('IM-G1-U5-L8', productive-add(68, 2),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("68 + 2"))).
+compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(17, 36),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(163, 165)), position(student_task_statement(2)/item(1)), excerpt("Find the value of 17 + 36."))).
+compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(18, 55),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(357, 358)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 18 + 55."))).
 compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 15),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(94, 94)), position(student_task_statement(1)/expression(4)), excerpt("38 + 15"))).
 compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 2),
@@ -392,6 +398,8 @@ compiled_lesson_task_instance('IM-G2-U2-L5', productive-subtract(26, 6),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit2/lesson5.md', lines(106, 106)), position(student_task_statement(1)/expression(3)), excerpt("26- 6"))).
 compiled_lesson_task_instance('IM-G2-U2-L5', productive-subtract(26, 8),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit2/lesson5.md', lines(107, 107)), position(student_task_statement(1)/expression(4)), excerpt("26- 8"))).
+compiled_lesson_task_instance('IM-G2-U2-L5', productive-subtract(75, 9),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit2/lesson5.md', lines(349, 349)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 75 - 9."))).
 compiled_lesson_task_instance('IM-G2-U3-L10', deformation(endpoint_as_difference)-subtract(27, 13),
                               task_evidence(rule(g2_torn_tape_error), source('curriculum/im_teacher_guides/grade2/unit3/lesson10.md', lines(386, 386)), position(cool_down_item(1)), excerpt("Students say the length is 27 inches"))).
 compiled_lesson_task_instance('IM-G2-U3-L10', productive-subtract(27, 13),
@@ -440,6 +448,16 @@ compiled_lesson_task_instance('IM-G2-U3-L7', productive-subtract(37, 20),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson7.md', lines(82, 82)), position(student_task_statement(1)/expression(1)), excerpt("37- 20"))).
 compiled_lesson_task_instance('IM-G2-U3-L7', productive-subtract(37, 21),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson7.md', lines(84, 84)), position(student_task_statement(1)/expression(2)), excerpt("37- 21"))).
+compiled_lesson_task_instance('IM-G2-U4-L10', productive-add(23, 24),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson10.md', lines(274, 276)), position(student_task_statement(3)/item(3)), excerpt("Find the value of 23 + 24."))).
+compiled_lesson_task_instance('IM-G2-U4-L10', productive-subtract(58, 24),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson10.md', lines(166, 168)), position(student_task_statement(2)/item(4)), excerpt("Find the value of 58 - 24."))).
+compiled_lesson_task_instance('IM-G2-U4-L11', productive-add(22, 49),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(266, 266)), position(student_task_statement(3)/item(5)), excerpt("Find the value of 22 + 49."))).
+compiled_lesson_task_instance('IM-G2-U4-L11', productive-add(38, 28),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(369, 370)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 38 + 28."))).
+compiled_lesson_task_instance('IM-G2-U4-L11', productive-add(59, 27),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(259, 259)), position(student_task_statement(3)/item(2)), excerpt("Find the value of 59 + 27."))).
 compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(32, 6),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(105, 105)), position(student_task_statement(1)/expression(1)), excerpt("32- 6"))).
 compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(43, 8),
@@ -448,6 +466,10 @@ compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(51, 5),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(109, 109)), position(student_task_statement(1)/expression(3)), excerpt("51 - 5"))).
 compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(52, 7),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(111, 111)), position(student_task_statement(1)/expression(4)), excerpt("52- 7"))).
+compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(65, 18),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(261, 263)), position(student_task_statement(3)/item(3)), excerpt("Find the value of 65 - 18."))).
+compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(68, 39),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(265, 265)), position(student_task_statement(3)/item(4)), excerpt("Find the value of 68 - 39."))).
 compiled_lesson_task_instance('IM-G2-U4-L4', productive-subtract(35, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit4/lesson4.md', lines(108, 108)), position(student_task_statement(1)/expression(2)), excerpt("35 - 10"))).
 compiled_lesson_task_instance('IM-G2-U4-L4', productive-subtract(35, 15),
@@ -718,10 +740,16 @@ compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(428, 156),
                               task_evidence(rule(g3_lin_subtract_smaller_from_larger), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(159, 159)), position(activity_1(revise_subtraction_work_lin)), excerpt("Lin subtracted 156 from 428"))).
 compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(30, 6),
                               task_evidence(rule(g3_apples_measurement_division), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(313, 314)), position(cool_down_item(1)), excerpt("Lin has 30 apples to share with her friends."))).
+compiled_lesson_task_instance('IM-G3-U4-L12', productive-multiply(6, 40),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade3/unit4/lesson12.md', lines(480, 480)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 6 \u00d7 40."))).
 compiled_lesson_task_instance('IM-G3-U4-L15', productive-multiply(6, 15),
                               task_evidence(rule(g3_area_additive_count_composite_units), source('curriculum/im_teacher_guides/grade3/unit4/lesson15.md', lines(351, 351)), position(cool_down(find_the_area)), excerpt("A rectangle is 6 feet by 15 feet."))).
+compiled_lesson_task_instance('IM-G3-U4-L19', productive-divide(51, 3),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade3/unit4/lesson19.md', lines(367, 367)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 51 \u00f7 3."))).
 compiled_lesson_task_instance('IM-G3-U4-L20', productive-divide(65, 5),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson20.md', lines(100, 100)), position(student_task_statement(1)/expression(1)), excerpt("65 \u00f7 5"))).
+compiled_lesson_task_instance('IM-G3-U4-L20', productive-divide(96, 6),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade3/unit4/lesson20.md', lines(380, 380)), position(student_task_statement(5)/item(1)), excerpt("Find the value of 96 \u00f7 6."))).
 compiled_lesson_task_instance('IM-G3-U4-L20', productive-multiply(10, 5),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson20.md', lines(99, 99)), position(student_task_statement(1)/expression(3)), excerpt("10 \u00d7 5"))).
 compiled_lesson_task_instance('IM-G3-U4-L20', productive-multiply(3, 5),
@@ -914,6 +942,10 @@ compiled_lesson_task_instance('IM-G4-U6-L11', productive-multiply(5, 404),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson11.md', lines(97, 97)), position(student_task_statement(1)/expression(4)), excerpt("5 \u00d7 404"))).
 compiled_lesson_task_instance('IM-G4-U6-L14', productive-rectangle_missing_side_from_area(234, 9, tile),
                               task_evidence(rule(rectangle_area_known_width_missing_length), source('curriculum/im_teacher_guides/grade4/unit6/lesson14.md', lines(342, 350)), position(student_task_statement(4)/item(1)), excerpt("used 234 square sticky notes to cover their classroom door completely, leaving no gaps or overlaps between the notes. It takes 9 square notes to cover the width of the door. How many square notes does it take to cover the full height"))).
+compiled_lesson_task_instance('IM-G4-U6-L16', productive-divide(132, 4),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade4/unit6/lesson16.md', lines(348, 350)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 132 \u00f7 4."))).
+compiled_lesson_task_instance('IM-G4-U6-L16', productive-divide(432, 6),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade4/unit6/lesson16.md', lines(268, 274)), position(student_task_statement(3)/item(2)), excerpt("Find the value of 432 \u00f7 6."))).
 compiled_lesson_task_instance('IM-G4-U6-L18', productive-divide(5, 5),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson18.md', lines(89, 89)), position(student_task_statement(1)/expression(3)), excerpt("5 \u00f7 5"))).
 compiled_lesson_task_instance('IM-G4-U6-L18', productive-divide(500, 5),
@@ -980,6 +1012,8 @@ compiled_lesson_task_instance('IM-G5-U3-L10', productive-divide(120, 3),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit3/lesson10.md', lines(91, 91)), position(student_task_statement(1)/expression(3)), excerpt("120 \u00f7 3"))).
 compiled_lesson_task_instance('IM-G5-U3-L10', productive-divide(120, 6),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit3/lesson10.md', lines(89, 89)), position(student_task_statement(1)/expression(2)), excerpt("120 \u00f7 6"))).
+compiled_lesson_task_instance('IM-G5-U4-L11', productive-divide(448, 16),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson11.md', lines(148, 151)), position(student_task_statement(2)/item(1)), excerpt("Find the value of 448 \u00f7 16."))).
 compiled_lesson_task_instance('IM-G5-U4-L12', productive-divide(110, 10),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson12.md', lines(86, 86)), position(student_task_statement(1)/expression(1)), excerpt("110 \u00f7 10"))).
 compiled_lesson_task_instance('IM-G5-U4-L12', productive-divide(121, 11),
@@ -994,6 +1028,12 @@ compiled_lesson_task_instance('IM-G5-U4-L19', productive-multiply(8, 8),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson19.md', lines(96, 96)), position(student_task_statement(1)/expression(2)), excerpt("8 \u00d7 8"))).
 compiled_lesson_task_instance('IM-G5-U4-L19', productive-unit_cube_volume(20, 8, 8, foot),
                               task_evidence(rule(ordered_prism_dimensions_volume), source('curriculum/im_teacher_guides/grade5/unit4/lesson19.md', lines(256, 259)), position(student_task_statement(3)/item(2)), excerpt("A standard cargo container for a ship measures 20 feet long, 8 feet wide, and 8 feet tall. What is the volume"))).
+compiled_lesson_task_instance('IM-G5-U4-L2', productive-multiply(162, 35),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson2.md', lines(173, 173)), position(student_task_statement(2)/item(4)), excerpt("Find the value of 162 \u00d7 35."))).
+compiled_lesson_task_instance('IM-G5-U4-L2', productive-multiply(62, 35),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson2.md', lines(164, 164)), position(student_task_statement(2)/item(2)), excerpt("Find the value of 62 \u00d7 35."))).
+compiled_lesson_task_instance('IM-G5-U4-L6', productive-multiply(241, 23),
+                              task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson6.md', lines(154, 154)), position(student_task_statement(2)/item(1)), excerpt("Find the value of 241 \u00d7 23."))).
 compiled_lesson_task_instance('IM-G5-U4-L9', productive-divide(4632, 8),
                               task_evidence(rule(g5_dance_measurement_division), source('curriculum/im_teacher_guides/grade5/unit4/lesson9.md', lines(362, 366)), position(cool_down_item(1)), excerpt("A different group of 4,632 dancers make groups of 8."))).
 compiled_lesson_task_instance('IM-G5-U5-L11', deformation(decimal_add_unaligned_numerals)-decimal_add(12, 10, 13, 100),

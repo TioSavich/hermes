@@ -1164,6 +1164,7 @@
   }
  ],
  "promoted_task_parsers": [
+  "direct_binary_expression_prompt",
   "direct_addition_expression_list",
   "direct_subtraction_expression_list",
   "direct_multiplication_expression_list",
