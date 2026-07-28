@@ -199,6 +199,40 @@ def _student_column(line: str, right_column: int | None) -> str:
     return clean.strip()
 
 
+TASK_SPAN_STOP_HEADINGS = (
+    "Lesson Synthesis",
+    "Cool-down",
+    "Required Materials",
+    "Materials to Gather",
+    "Materials to Copy",
+    "Required Preparation",
+    "Suggested Centers",
+    "Observation",
+)
+TASK_SPAN_STOP_HEADING = re.compile(
+    r"^(?:"
+    + "|".join(re.escape(heading) for heading in TASK_SPAN_STOP_HEADINGS)
+    + r")(?:\s*$|[.:\s])"
+)
+# The right-column heading sometimes begins a few characters left of the
+# "Launch" header. Keep a gutter so such a heading never truncates a student
+# prompt that continues down the left column.
+TASK_SPAN_RIGHT_COLUMN_GUTTER = 10
+
+
+def _student_task_span_stop(
+    raw_line: str, student_text: str, right_column: int | None
+) -> bool:
+    """Whether a teacher-facing heading ends the left-column prompt."""
+    if not TASK_SPAN_STOP_HEADING.match(student_text):
+        return False
+    indent = len(raw_line) - len(raw_line.lstrip("\f "))
+    return (
+        right_column is None
+        or indent <= right_column - TASK_SPAN_RIGHT_COLUMN_GUTTER
+    )
+
+
 def extract_student_task_spans(docs: list[LessonDoc]) -> list[StudentTaskSpan]:
     """Recover left-column student prompts without teacher launch commentary."""
     spans = []
@@ -227,6 +261,9 @@ def extract_student_task_spans(docs: list[LessonDoc]) -> list[StudentTaskSpan]:
                     end_line = next_index
                     break
                 text = _student_column(raw_line, right_column)
+                if _student_task_span_stop(raw_line, text, right_column):
+                    end_line = next_index
+                    break
                 if text and not footer.match(text):
                     lines.append((next_index + 1, text))
                 end_line = next_index + 1

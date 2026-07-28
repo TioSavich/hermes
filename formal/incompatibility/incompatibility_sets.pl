@@ -22,7 +22,8 @@
 :- module(incompatibility_sets,
           [ incompatibility_set/2,
             incompatibility_entails/2,
-            incompatibility_entailment_witness/3
+            incompatibility_entailment_witness/3,
+            error_rule_crosstalk_defeat_count/3
           ]).
 
 :- use_module(library(lists)).
@@ -44,8 +45,17 @@
 % and the Big Red rows would leave without a word.
 :- dynamic discovered_set_fact/2.
 :- dynamic discovered_set_kind/3.   % Context, Set, Kind (emergent/defeated/...)
+:- dynamic error_rule_crosstalk_defeat_count/3.
 :- multifile discovered_set_fact/2.
 :- multifile discovered_set_kind/3.
+:- multifile error_rule_crosstalk_defeat_count/3.
+
+%!  error_rule_crosstalk_defeat_count(?Context, ?InferenceId, ?Count) is nondet.
+%
+%   A compact census for binary breaks wholly inside an error-rule candidate's
+%   defeater pair. The rule premise is absent, so these defeated candidates do
+%   not state an incompatibility of that coded rule and are not hyperedges in
+%   the finite entailment inventory.
 
 %!  discovered_cache_file(-Cache) is semidet.
 %

@@ -80,7 +80,7 @@ before replacing it; the default work tree is `scripts/bigred/atlas/work/`.
 |---|---|---|
 | `ATLAS_STAGES` | `1,2,3` | learner stages swept |
 | `ATLAS_POLICY` | `accept_efficiency` | the reorganization policy |
-| `ATLAS_CELL_SECONDS` | `20` | per-transition wall limit; timeouts are recorded |
+| `ATLAS_CELL_SECONDS` | `20` | per-transition wall limit; timeouts are recorded. The default is too small for the 227-cell alphabet: it returned 657 timeouts on 2026-07-28, where 300 returned 6. A ladder on `IM-G2-U1-L12` timed out 4/4 at 20s and solved 4/4 at 60, 180 and 600 alike, so those transitions take about 40 seconds and any limit above them costs nothing extra. |
 | `ATLAS_GRADE_MAX` | `6` | audit ceiling for the coverage record |
 | `ATLAS_CELL_WALL` | `4800` | whole-cell shell backstop (needs Linux `timeout`) |
 | `ATLAS_STACK_LIMIT` | `4g` | Prolog stack bound; `run_cell.sh` records why the default is 4g |
@@ -131,7 +131,7 @@ prefix that the first row describes:
 | 432 | `provenance` names `curriculum/im_teacher_guides/` where the vendored record names `geometry/corpus/im_teacher_guides/` | the corpus directory moved when the curriculum was vendored into Hermes. The sweep copies the compiled instance's provenance through; it does not construct it. |
 | 96 | vendored `status:timeout`, every one of them `solved` here (108 timeouts there, 12 here) | the 20-second per-transition wall is wall-clock. This laptop finishes inside it where a Big Red general-partition core did not. No record moves the other way: nothing that resolved on the cluster times out here. |
 | 27 | `crisis: dead_end(addition_instead_of_multiplication)` there, `impasse(deformation_route_not_executable)` here, on `IM-G3-U1-L12`, `IM-G3-U1-L13`, `IM-G4-U3-L1` | a missing input in this checkout, named below. |
-| 27 | `grade: 0` there, `grade: "unknown"` here, on the four `IM-GK-*` cells | `grade_of/2` (carried over verbatim) parses the grade out of the lesson code with `number_string(G, "K")`, which fails under SWI-Prolog 9.2.9 and falls to the predicate's own `unknown`. The cluster's interpreter returned 0. Nothing downstream reads `grade` from the landscape. |
+| 27 | `grade: 0` there, `grade: "unknown"` here, on the four `IM-GK-*` cells | `grade_of/2` (carried over verbatim) parses the grade out of the lesson code with `number_string(G, "K")` and falls to the predicate's own `unknown` when that fails. It fails on both interpreters this port has been run against: SWI-Prolog 9.2.9 locally and 10.0.0 on Big Red, each tested directly, and the 2026-07-28 cluster sweep returned `unknown` for all 54 `IM-GK-*` records. An earlier version of this row attributed the vendored `0` to the cluster's interpreter; that does not hold, and where the `0` came from is not known. Nothing downstream reads `grade` from the landscape. |
 
 ### The missing input behind the 27 deformation records
 

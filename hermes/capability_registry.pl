@@ -266,6 +266,7 @@ capability('knowledge/index/im_lesson_identity.pl', 'im_lesson_identity', 'uncla
 capability('knowledge/index/machine_block_decomposition.pl', 'machine_block_decomposition', 'unclassified', [], orphan_module).
 capability('knowledge/index/research_measurement_registry.pl', 'research_measurement_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/task_span_absence_registry.pl', 'task_span_absence_registry', 'unclassified', [], orphan_module).
+capability('knowledge/index/vision_lesson_digest_audit.pl', 'vision_lesson_digest_audit', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).

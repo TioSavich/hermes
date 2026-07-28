@@ -1,5 +1,5 @@
-% PURPOSE: Proves the coded gap-thinking hyperedge and the gap-thinking automaton name the same
-% divergence class, by running the automaton and looking the atom it returns up in the break set.
+% PURPOSE: Proves the coded error-rule hyperedges and the automata that compute their domains name
+% the same divergence classes, by running each automaton and looking the atom it returns up in the break set.
 /** <module> The join between a coded error rule and the automaton that computes its domain
  *
  * `smr_frac_benchmark_compare:gap_viability/3` decides, per input pair, whether
@@ -15,10 +15,14 @@
  * break. It fails if the automaton stops returning that atom, if the generated
  * breaks stop carrying it, or if either side is renamed without the other.
  *
- * Decimal error rows are not coded yet.  Their contexts therefore have no
- * generated break to join to.  The lower half of this check instead asserts
- * named coinciding and diverging inputs for every new decimal context, including
- * both action rules that share the operation context.
+ * The decimal half runs the same join for the two viability contexts the decimal
+ * automata share. `smr_decimal_fraction_compare:decimal_order_viability/3`
+ * decides whether the written numerals order a pair the way its values do, and
+ * `decimal_action_pairs:decimal_operation_viability/3` decides the same for
+ * operating on the numerals before their scales are aligned. Two automata name
+ * each context; one coded rule aims at each, so the automata's sharing is wider
+ * than the corpus's. The check runs the automata on named coinciding and
+ * diverging inputs and then requires each diverging atom in a generated break.
  *
  * Run: swipl -q -l paths.pl -s scripts/checks/error_rule_automaton_join.pl -g main -t halt
  */
@@ -37,20 +41,27 @@ main :-
     decimal_order_contexts(DecimalOrderCoinciding, DecimalOrderDiverging),
     decimal_operation_contexts(DecimalOperationCoinciding,
                                DecimalOperationDiverging),
-    length(Breaks, Count),
+    join_holds(DecimalOrderDiverging, OrderBreaks),
+    join_holds(DecimalOperationDiverging, OperationBreaks),
     format("PASS gap automaton and coded rules share a divergence class~n"),
-    format("  coinciding input returns ~w~n", [Coinciding]),
-    format("  diverging input returns ~w~n", [Diverging]),
-    format("  coded error-rule breaks carrying o(context(~w)): ~w~n", [Diverging, Count]),
-    forall(member(BreakId, Breaks), report_break(BreakId)),
-    format("PASS decimal contexts return on named inputs (no decimal rows are coded)~n"),
-    format("  written-numeral order: ~w / ~w~n",
-           [DecimalOrderCoinciding, DecimalOrderDiverging]),
-    format("  unaligned decimal operation: ~w / ~w~n",
-           [DecimalOperationCoinciding, DecimalOperationDiverging]).
+    report_join("gap order", Coinciding, Diverging, Breaks),
+    format("PASS decimal automata and coded rules share two divergence classes~n"),
+    report_join("written-numeral order",
+                DecimalOrderCoinciding, DecimalOrderDiverging, OrderBreaks),
+    report_join("unaligned decimal operation",
+                DecimalOperationCoinciding, DecimalOperationDiverging,
+                OperationBreaks).
 main :-
-    format("FAIL the gap automaton and the coded gap rules no longer name one divergence class~n"),
+    format("FAIL an automaton and the coded rules that name its divergence class have parted~n"),
     halt(1).
+
+%!  report_join(+Label, +Coinciding, +Diverging, +Breaks) is det.
+report_join(Label, Coinciding, Diverging, Breaks) :-
+    length(Breaks, Count),
+    format("  ~w: coinciding input returns ~w~n", [Label, Coinciding]),
+    format("  ~w: diverging input returns ~w~n", [Label, Diverging]),
+    format("  coded error-rule breaks carrying o(context(~w)): ~w~n", [Diverging, Count]),
+    forall(member(BreakId, Breaks), report_break(BreakId)).
 
 %!  coinciding_case(-Condition) is semidet.
 %

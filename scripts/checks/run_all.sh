@@ -46,6 +46,7 @@ run extract_machine_block_decomposition python3 "$CHECKS_DIR/../extract_machine_
 run extract_coverage_absence_registry python3 "$CHECKS_DIR/../extract_coverage_absence_registry.py" --check
 run extract_research_corpus_misconceptions python3 "$CHECKS_DIR/../extract_research_corpus_misconceptions.py" --check
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
+run extract_vision_lesson_digest_audit python3 "$CHECKS_DIR/../extract_vision_lesson_digest_audit.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 # After the census: the census writes a docs/research report, and the measurement
 # registry indexes every report. Checking the registry first reports a staleness

@@ -417,13 +417,13 @@
       "sequent": 14,
       "standards": 22,
       "synthesis": 34,
-      "unclassified": 7,
+      "unclassified": 8,
       "workflow": 5,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 9,
-      "orphan_module": 67,
+      "orphan_module": 68,
       "routed_paged": 195,
       "unrouted": 6
     },
@@ -434,9 +434,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 31
+      "undetermined": 32
     },
-    "total": 277,
+    "total": 278,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1216,6 +1216,20 @@
       "module": "task_span_absence_registry",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/index/task_span_absence_registry.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "unclassified",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated audit of the IM 6-8 vision lesson digest",
+          "path": "knowledge/index/vision_lesson_digest_audit.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "vision_lesson_digest_audit",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/index/vision_lesson_digest_audit.pl",
       "verdict": "undetermined"
     },
     {

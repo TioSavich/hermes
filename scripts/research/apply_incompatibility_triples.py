@@ -70,7 +70,10 @@ def main() -> int:
     payload = load_reviewed(Path(arguments.reviewed))
     codings = payload["codings"]
     statuses = Counter(coding["valid_domain_status"] for coding in codings)
-    print(f"reviewed slice: {payload['slice']}; codings: {len(codings)}")
+    slices = ", ".join(
+        f"{entry['slice']} ({entry['rows_in_slice']} rows)" for entry in payload["slices"]
+    )
+    print(f"reviewed slices: {slices}; codings: {len(codings)}")
     print(f"valid_domain_status: {dict(statuses)}")
 
     connection = sqlite3.connect(DB)

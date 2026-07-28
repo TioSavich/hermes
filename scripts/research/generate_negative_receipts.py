@@ -188,6 +188,45 @@ def lesson_input(
     )
 
 
+_DRAFTING_RULES_HEAD = """A receipt earns its place only when the quoted text carries the lesson's own
+material: a quantity, a referent, a relation, or what the task asks students to
+do, named closely enough that the alternative would have to discard it.
+
+These quotations disqualify a receipt. Each one produced a rejected receipt in
+the previous review round:
+- Text reporting how this pipeline tagged, mapped, or corrected the lesson.
+  Wording such as "maps to", "is tagged", "the first pass mistagged them",
+  "correctly keep op", or an automaton name standing on its own describes a
+  classification of the lesson, not the lesson. A fragment naming concrete
+  quantities or student work stays quotable when a tag rides along with it.
+- A phrase taken out of the negation that governs it. A clause saying the
+  tasks map to neither X nor Y does not assert Y.
+- Text saying the lesson works in an operation other than the candidate's. If
+  the source says the lesson is entirely multiplication, no division candidate
+  survives it."""
+
+
+_DRAFTING_RULES_TAIL = """Abstain rather than select a candidate whose incompatibility reduces to one
+operation not being another with no quantity named.
+
+material_incompatibility runs one or two sentences of present-tense prose that
+name the quantity or relation the lesson supplies and the one the alternative
+would have to ignore. Do not restate the identifiers, do not hedge, and do not
+reach for metaphors of sight for what students come to know."""
+
+
+_FILE_DISQUALIFIER = """- A sample student response performing the alternative. A guide that prints a
+  move as an acceptable answer shows the lesson admits it, which is the
+  inverse of a counterpossibility. A sample response performing the intended
+  action remains quotable."""
+
+
+def drafting_rules(*, file_backed: bool) -> str:
+    """Return the review-derived rules, with the guide-only disqualifier when apt."""
+    bullets = f"{_DRAFTING_RULES_HEAD}\n{_FILE_DISQUALIFIER}" if file_backed else _DRAFTING_RULES_HEAD
+    return f"{bullets}\n\n{_DRAFTING_RULES_TAIL}"
+
+
 def build_messages(
     item: LessonInput,
     schema: str,
@@ -199,7 +238,7 @@ def build_messages(
             for predicate in VISION_FACT_PREDICATES
             for text in item.digest_facts.get(predicate, [])
         ]
-        system = """You draft one review-pending lesson_negative_receipts_v3 record.
+        system = f"""You draft one review-pending lesson_negative_receipts_v3 record.
 Use only the supplied lesson facts. Select exactly one supplied candidate,
 copy its operation and productive action into intended_action, and copy its
 deformation into alternative. Quote only verbatim text from a supplied fact
@@ -208,7 +247,9 @@ selected counterpossibility, not merely name a standard or lesson topic.
 Explain that specific incompatibility in material_incompatibility. If the
 facts do not establish any supplied candidate, answer exactly ABSTAIN:
 followed by a short reason. Use vision_digest as source_kind. Answer with one
-JSON object and no Markdown or surrounding prose."""
+JSON object and no Markdown or surrounding prose.
+
+{drafting_rules(file_backed=False)}"""
         user = f"""Lesson id: {item.lesson}
 Lesson title: {item.title}
 
@@ -248,7 +289,7 @@ Quotable lesson facts:
         f"{number:04d}: {line}"
         for number, line in enumerate(item.guide_text.split("\n"), 1)
     )
-    system = """You draft one review-pending lesson_negative_receipts_v3 record.
+    system = f"""You draft one review-pending lesson_negative_receipts_v3 record.
 Use only the supplied lesson guide. Select exactly one supplied candidate,
 copy its operation and productive action into intended_action, and copy its
 deformation into alternative. Quote only text that appears on the cited
@@ -258,7 +299,9 @@ incompatibility in material_incompatibility. If the guide does not establish
 any supplied candidate, answer exactly ABSTAIN: followed by a short reason.
 Use responding_to_student_thinking only for a passage under that heading;
 otherwise use activity_guidance. Answer with one JSON object and no Markdown
-or surrounding prose."""
+or surrounding prose.
+
+{drafting_rules(file_backed=True)}"""
     user = f"""Lesson id: {item.lesson}
 Lesson title: {item.title}
 

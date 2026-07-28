@@ -38,8 +38,12 @@ DB = ROOT / "data" / "research" / "research_shared.db"
 LLM_PATH = ROOT / "hermes" / "app" / "llm.py"
 DEFAULT_OUTPUT = ROOT / "scripts" / "research" / "incompatibility_triples_out"
 
-# Bumped whenever SYSTEM_PROMPT or the gate changes, so a checkpoint written under
-# an older standard is never silently mixed with a newer one.
+# Bumped whenever SYSTEM_PROMPT or the slice-independent part of the gate changes,
+# so a checkpoint written under an older standard is never silently mixed with a
+# newer one. The per-slice gate data below is carried in the slice spec instead,
+# because adding a slice must not restate the standard the earlier slices were
+# coded under: fraction_comparison's checkpoints still answer to exactly the gate
+# that accepted them.
 PROMPT_VERSION = 2
 
 STATUS_VALUES = {"stated", "inferred", "none_found"}
@@ -72,16 +76,34 @@ DEFICIENCY_WORDS = (
 HEDGE_WORDS = ("sometimes", "often", "tend to", "may ", "might ", "usually", "some students")
 
 SLUG_RE = re.compile(r"^[a-z][a-z0-9_]{2,63}$")
+# A numeral pair written out is an instance where the standard asks for a class.
 FRACTION_LITERAL_RE = re.compile(r"\d+\s*/\s*\d+")
+DECIMAL_LITERAL_RE = re.compile(r"\d*\.\d+")
 
 # A divergence class naming the whole input class says the rule fails
 # everywhere, which contradicts having a valid domain. Refusing these keeps the
-# two halves of the coding answerable to each other.
-UNRESTRICTED_CLASSES = frozenset(
+# two halves of the coding answerable to each other. The names are per slice
+# because the whole input class is a different class in each.
+FRACTION_UNRESTRICTED = frozenset(
     {
         "fractions", "pairs of fractions", "all pairs of fractions", "all fractions",
         "fraction comparison", "comparing fractions", "any pair of fractions",
         "fraction pairs", "all fraction pairs",
+    }
+)
+# Only whole-domain names are listed. An operation-scoped name such as "decimal
+# addition" is the whole input class for an addition rule and a proper subclass
+# for a comparison rule, and the gate reads one row at a time without knowing
+# which; those go to review rather than to a mechanical refusal.
+DECIMAL_UNRESTRICTED = frozenset(
+    {
+        "decimals", "all decimals", "any decimal", "decimal numbers",
+        "all decimal numbers", "decimal numerals", "all decimal numerals",
+        "pairs of decimals", "all pairs of decimals", "any pair of decimals",
+        "decimal pairs", "all decimal pairs", "decimal comparison",
+        "comparing decimals", "decimal arithmetic", "decimal operations",
+        "all decimal operations", "operations with decimals",
+        "operations on decimals",
     }
 )
 
@@ -90,11 +112,30 @@ SLICES: dict[str, dict[str, Any]] = {
         "domain": "fraction",
         "topics": ("fraction comparison", "comparing fractions"),
         "label": "fraction comparison",
+        "unrestricted": FRACTION_UNRESTRICTED,
+        "instance_patterns": (FRACTION_LITERAL_RE,),
+    },
+    # The decimal slice is the whole domain rather than a topic list. Topic
+    # spelling in this corpus is unreliable — twenty decimal topics carry two
+    # capitalisations of one name, and `mathematical_topic LIKE '%decimal%'`
+    # reads 143 rows across six domains, which is a different set again. The
+    # domain column carries one spelling and is the only stable handle.
+    "decimal": {
+        "domain": "decimal",
+        "topics": None,
+        "label": "decimal (whole domain)",
+        "unrestricted": DECIMAL_UNRESTRICTED,
+        "instance_patterns": (FRACTION_LITERAL_RE, DECIMAL_LITERAL_RE),
     },
     "whole_number_subtraction": {
         "domain": "whole_number",
         "topics": ("subtraction",),
         "label": "whole-number subtraction",
+        "unrestricted": frozenset(
+            {"whole numbers", "all whole numbers", "whole-number subtraction",
+             "subtraction", "any subtraction", "all subtractions"}
+        ),
+        "instance_patterns": (),
     },
 }
 
@@ -216,9 +257,25 @@ def load_llm_module() -> Any:
     return module
 
 
+def slice_sql(spec: dict[str, Any]) -> tuple[str, tuple[Any, ...]]:
+    """Return the WHERE clause and parameters that define a slice.
+
+    Topic matching is case-insensitive and trimmed. The fraction pilot lost a
+    fourth spelling of one topic to a case-sensitive comparison, so the
+    comparison is folded here rather than at each call site.
+    """
+    clause = "lower(trim(e.mathematical_domain)) = ?"
+    parameters: list[Any] = [spec["domain"]]
+    if spec["topics"] is not None:
+        placeholders = ", ".join("?" for _ in spec["topics"])
+        clause += f" AND lower(trim(e.mathematical_topic)) IN ({placeholders})"
+        parameters.extend(spec["topics"])
+    return clause, tuple(parameters)
+
+
 def fetch_rows(slice_name: str) -> list[Row]:
     spec = SLICES[slice_name]
-    placeholders = ", ".join("?" for _ in spec["topics"])
+    clause, parameters = slice_sql(spec)
     connection = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
     connection.row_factory = sqlite3.Row
     try:
@@ -230,11 +287,10 @@ def fetch_rows(slice_name: str) -> list[Row]:
                    a.title, a.authors, a.year
               FROM error_instances e
               JOIN articles a ON a.id = e.article_id
-             WHERE e.mathematical_domain = ?
-               AND lower(e.mathematical_topic) IN ({placeholders})
+             WHERE {clause}
              ORDER BY e.id
             """,
-            (spec["domain"], *spec["topics"]),
+            parameters,
         )
         return [
             Row(
@@ -364,8 +420,13 @@ def _text_field(payload: dict[str, Any], name: str) -> str | None:
     return stripped or None
 
 
-def gate(row: Row, payload: dict[str, Any]) -> tuple[bool, str]:
-    """Refuse anything the row's own text does not carry. Reasons are named."""
+def gate(row: Row, payload: dict[str, Any], spec: dict[str, Any]) -> tuple[bool, str]:
+    """Refuse anything the row's own text does not carry. Reasons are named.
+
+    `spec` supplies the two checks whose content is a fact about the slice's
+    input class rather than about the standard: which names denote the whole
+    class, and what an instance looks like written out.
+    """
     missing = sorted(REQUIRED_FIELDS - payload.keys())
     if missing:
         return False, f"missing_field: {', '.join(missing)}"
@@ -389,8 +450,8 @@ def gate(row: Row, payload: dict[str, Any]) -> tuple[bool, str]:
         return False, "status_domain_mismatch: none_found carries a valid_domain"
     if status != "none_found" and domain is None:
         return False, f"status_domain_mismatch: {status} carries no valid_domain"
-    if domain is not None and FRACTION_LITERAL_RE.search(domain):
-        return False, "valid_domain_names_an_instance: a numeral pair appears where a class belongs"
+    if domain is not None and any(pattern.search(domain) for pattern in spec["instance_patterns"]):
+        return False, "valid_domain_names_an_instance: a numeral appears where a class belongs"
 
     divergence = _text_field(payload, "divergence_context")
     divergence_slug = _text_field(payload, "divergence_slug")
@@ -428,7 +489,7 @@ def gate(row: Row, payload: dict[str, Any]) -> tuple[bool, str]:
         # licenses and the class where it diverges carry one name, sorting
         # collapses them and the triple is a pair.
         return False, "degenerate_triple: consequence and divergence carry one name"
-    if divergence is not None and normalize(divergence) in UNRESTRICTED_CLASSES:
+    if divergence is not None and normalize(divergence) in spec["unrestricted"]:
         return False, f"divergence_is_the_whole_input_class: {divergence!r}"
 
     evidence = payload.get("evidence")
@@ -479,6 +540,7 @@ def reallms_transport(llm: Any, client: dict[str, Any], timeout: int) -> Transpo
 
 
 def run(arguments: argparse.Namespace) -> int:
+    spec = SLICES[arguments.slice]
     rows = fetch_rows(arguments.slice)
     if arguments.limit:
         rows = rows[: arguments.limit]
@@ -516,7 +578,7 @@ def run(arguments: argparse.Namespace) -> int:
                     # The gate can gain a check after a batch has run. Re-running
                     # it over the stored proposal costs nothing and keeps the
                     # reported pass rate a rate under the gate as it now stands.
-                    accepted, verdict = gate(row, record["proposal"])
+                    accepted, verdict = gate(row, record["proposal"], spec)
                     if (accepted, verdict) != (record["accepted"], record["verdict"]):
                         record["accepted"] = accepted
                         record["verdict"] = verdict
@@ -547,7 +609,7 @@ def run(arguments: argparse.Namespace) -> int:
             if payload is None:
                 accepted, verdict = False, parse_fault or "unparsed"
             else:
-                accepted, verdict = gate(row, payload)
+                accepted, verdict = gate(row, payload, spec)
         record = {
             "row_id": row.row_id,
             "slice": arguments.slice,
