@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Compute the runtime file manifest for the Hermes application.
 
-The manifest is the curated answer to "which tracked files does the running
+The manifest is the curated answer to "which runtime files does the running
 app need": the Python console (hermes/app/), the Prolog knowledge base the
-worker loads, the public web surfaces, and nothing else — no test suites, no
-research documents, no manuscript chapters, no HPC packaging. Both the Docker
-image and the flash-drive bundle are built from this one list, so the two
-distributions cannot drift apart.
+worker loads, the public web surfaces, and their generated static assets —
+nothing else, such as test suites, research documents, manuscript chapters,
+or HPC packaging. Both the Docker image and the flash-drive bundle are built
+from this one list, so the two distributions cannot drift apart.
 
 The list is rule-based (keep-trees minus named exclusions) with one safety
 net: the worker's actual load closure. `--verify` starts SWI-Prolog, runs the
@@ -128,6 +128,11 @@ KEEP_FILES = [
     "formal/incompatibility/defeasible_inference.pl",
     "formal/incompatibility/find_emergent_hyperedges.pl",
     "formal/incompatibility/incompatibility_sets_discovered.pl",
+    # Two more generated files: the error-rule material inferences that
+    # defeasible_inference.pl includes at compile time, and the discovered-set
+    # cache incompatibility_sets.pl consults beside the Big Red one.
+    "formal/incompatibility/error_rule_inferences.pl",
+    "formal/incompatibility/incompatibility_sets_error_rules.pl",
     "formal/dialectic/dialectical_engine.pl",
     "formal/dialectic/critique.pl",
     "formal/juncture/differance_juncture.pl",
@@ -287,8 +292,19 @@ def keep(path: str, with_figures: bool) -> bool:
     return True
 
 
+def generated_static_files() -> set[str]:
+    """Include every served generated asset, including a pre-staging refresh."""
+    root = REPO / "hermes" / "app" / "web" / "generated"
+    return {
+        path.relative_to(REPO).as_posix()
+        for path in root.rglob("*")
+        if path.is_file()
+    }
+
+
 def build_manifest(with_figures: bool) -> list[str]:
     candidates = set(tracked_files())
+    candidates |= generated_static_files()
     candidates |= {p for p in KEEP_FILES if (REPO / p).is_file()}
     candidates |= {p for p in KEEP_MD if (REPO / p).is_file()}
     return sorted(p for p in candidates if keep(p, with_figures))

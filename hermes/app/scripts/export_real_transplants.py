@@ -139,10 +139,11 @@ def write_frames(out_dir: Path, code: str, doc: dict) -> list[Path]:
     return demo.export_frame_svgs(out_dir, code, doc)
 
 
-def repo_relative(path: str | Path) -> str:
+def manifest_path(path: str | Path, out_dir: Path) -> str:
+    """Return a path stable across the default and explicit export roots."""
     p = Path(path)
     try:
-        generated_rel = p.resolve().relative_to(DEFAULT_OUT.resolve())
+        generated_rel = p.resolve().relative_to(out_dir.resolve())
         return (TRACKED_OUT / generated_rel).relative_to(REPO_ROOT).as_posix()
     except ValueError:
         pass
@@ -288,9 +289,9 @@ def main() -> int:
                 "scene_kind": transplant["scene_kind"],
                 "foreign_primitive": details.get("foreign_primitive", ""),
                 "illicit_host": details.get("illicit_host", ""),
-                "image_path": repo_relative(image_path),
-                "filmstrip_file": repo_relative(filmstrip),
-                "frame_files": [repo_relative(p) for p in frames],
+                "image_path": manifest_path(image_path, out_dir),
+                "filmstrip_file": manifest_path(filmstrip, out_dir),
+                "frame_files": [manifest_path(p, out_dir) for p in frames],
             }
         )
         written.append(doc_path)

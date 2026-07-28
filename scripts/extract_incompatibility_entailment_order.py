@@ -314,12 +314,20 @@ def positive_control() -> None:
 REGISTER = r"""/** <module> Generated finite incompatibility-entailment register
  *
  * This register models Brandomian incompatibility-entailment over a bounded,
- * declared corpus.  Its source is exactly the tracked Big Red discovered-set
- * cache plus the five declared seed hyperedges in
- * brandomian_incompatibility.pl.  The cache's one nonterminating candidate is
+ * declared corpus.  Its source is exactly the two tracked discovered-set caches
+ * that incompatibility_sets.pl consults — the Big Red iteration7 harvest and
+ * the locally computed error-rule cache — plus the five declared seed
+ * hyperedges in brandomian_incompatibility.pl.  The nonterminating candidate is
  * counted by incompatibility_discovered_kind_count/2 but is not a declared
  * incompatible hyperedge: it has no incompatibility verdict.  It does not load optional registry adapters,
  * live discovery, geometry, learner servers, or literature mappings.
+ *
+ * The two caches carry different warrants.  A Lakoff-Nunez break is jointly
+ * incoherent as mathematics; an error-rule triple coded from the research
+ * corpus is incoherent relative to a community's sanction, and the corpus names
+ * that community in its incompatible_with column.  This register does not
+ * distinguish them — defeasible_inference:error_rule_warrant/2 does — so a
+ * claim resting on a hyperedge here should say which kind it rests on.
  *
  * A hyperedge is incoherent with every superset.  The generator removes
  * nonminimal hyperedges for the replacement test only: that reduction

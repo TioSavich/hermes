@@ -1499,6 +1499,10 @@ action_maps(decimal, decimal_point_rule_misapplication, take_max_of_place_counts
             confidence(high),
             evidence("decimal/decimal_point_rule_misapplication, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, witnessed. takes the maximum of the two place counts where the rule sums them"),
             status(review_pending)).
+action_maps(decimal, decimal_scale_loss_comparison, viability, record_viability,
+            confidence(high),
+            evidence("decimal/decimal_scale_loss_comparison, q_observed_5 -> q_observed_6: 1 of the machine's 13 distinct edges, witnessed. record whether the strategy is contextually correct for this input."),
+            status(review_pending)).
 action_maps(decimal, decimal_scale_loss_comparison, compare, compare_magnitudes,
             confidence(high),
             evidence("decimal/decimal_scale_loss_comparison, q_compare_decimal_magnitudes -> q_emit: 1 of the machine's 6 distinct edges, witnessed. decide the order relation between two quantities."),

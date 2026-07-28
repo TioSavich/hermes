@@ -44,6 +44,8 @@
               [ material_inference/3,
                 classify_defeat/3,
                 compiled_break/2,
+                error_rule_break/2,
+                error_rule_source/2,
                 ctx_incoherent/1
               ]).
 :- use_module(incompat(incompatibility_discovery),
@@ -111,13 +113,11 @@ registry_report :-
 
 discovery_report :-
     format("Source 2 — bounded-discovery layer (cache + live re-check)~n"),
-    ( cache_path(Path)
-    ->  format("  cache found at ~w~n", [Path]),
-        cache_emergent_rows(Path, Rows),
-        length(Rows, NRows),
-        format("  cached discovered_set_kind(..., emergent) rows: ~w~n", [NRows]),
-        forall(member(Ctx-Set, Rows), report_cached_row(Ctx, Set))
-    ;   format("  no discovery cache found at either known path; cache step skipped~n")
+    findall(Path, cache_path(Path), Paths0),
+    sort(Paths0, Paths),
+    (   Paths == []
+    ->  format("  no discovery cache found at any known path; cache step skipped~n")
+    ;   forall(member(Path, Paths), report_cache_file(Path))
     ),
     findall(C, emergent_in_discovery_layer(C), Live0),
     sort(Live0, Live),
@@ -125,6 +125,13 @@ discovery_report :-
     format("  live sweep over the CURRENT compiled catalogue: ~w emergent content set(s)~n",
            [NLive]),
     forall(member(Set, Live), report_live_set(Set)).
+
+report_cache_file(Path) :-
+    format("  cache found at ~w~n", [Path]),
+    cache_emergent_rows(Path, Rows),
+    length(Rows, NRows),
+    format("  cached discovered_set_kind(..., emergent) rows: ~w~n", [NRows]),
+    forall(member(Ctx-Set, Rows), report_cached_row(Ctx, Set)).
 
 report_cached_row(Ctx, Set) :-
     ( Ctx == defeasible_inference,
@@ -140,10 +147,14 @@ report_cached_row(Ctx, Set) :-
     ).
 
 report_live_set(Set) :-
-    ( compiled_break(BreakId, Conds), sort(Conds, Set)
-    ->  format("    ~w~n      = compiled_break(~w) [Lakoff & Nunez catalogue row]~n",
+    (   compiled_break(BreakId, Conds), sort(Conds, Set)
+    ->  format("    ~w~n      = compiled_break(~w) [Lakoff & Nunez catalogue row, warrant mathematically_forced]~n",
                [Set, BreakId])
-    ;   format("    ~w (no single compiled break matches; inspect by hand)~n", [Set])
+    ;   error_rule_break(BreakId, Conds), sort(Conds, Set)
+    ->  ( error_rule_source(BreakId, Rows) -> true ; Rows = [] ),
+        format("    ~w~n      = error_rule_break(~w) [coded from error_instances ~w, warrant community_sanctioned]~n",
+               [Set, BreakId, Rows])
+    ;   format("    ~w (no single break matches; inspect by hand)~n", [Set])
     ).
 
 %!  emergent_in_discovery_layer(-SortedContentSet) is nondet.
@@ -174,13 +185,20 @@ verified_emergent(Set) :-
     ctx_incoherent(Set),
     forall(select(_, Set, Smaller), \+ ctx_incoherent(Smaller)).
 
+% The alias form carries no extension, so the lookup has to supply one. Without
+% file_type(prolog) this searched for a file literally named
+% `incompatibility_sets_discovered`, never found the tracked cache, and reported
+% "no discovery cache found" on every run since the cache moved under the alias.
+% Both tracked caches are reported: the Big Red harvest and the locally computed
+% error-rule rows.
 cache_path(Path) :-
     member(Candidate,
            [ incompat(incompatibility_sets_discovered),
+             incompat(incompatibility_sets_error_rules),
              incompat('../../scripts/bigred/iteration7/work/incompatibility_sets_discovered.pl')
            ]),
-    absolute_file_name(Candidate, Path, [access(read), file_errors(fail)]),
-    !.
+    absolute_file_name(Candidate, Path,
+                       [ file_type(prolog), access(read), file_errors(fail) ]).
 
 cache_emergent_rows(Path, Rows) :-
     setup_call_cleanup(

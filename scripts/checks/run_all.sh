@@ -65,6 +65,8 @@ run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.
 run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
 
 run incompatibility_entailment_order python3 "$CHECKS_DIR/../extract_incompatibility_entailment_order.py" --check
+run error_rule_incompatibility python3 "$CHECKS_DIR/../extract_error_rule_incompatibility.py" --check
+run error_rule_automaton_join.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/error_rule_automaton_join.pl" -g main -t halt
 
 # Last: the manifest indexes every data artifact and the readers that open it, so
 # it describes the settled state after every other generator has run.

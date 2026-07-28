@@ -1,12 +1,20 @@
 /** <module> Generated finite incompatibility-entailment register
  *
  * This register models Brandomian incompatibility-entailment over a bounded,
- * declared corpus.  Its source is exactly the tracked Big Red discovered-set
- * cache plus the five declared seed hyperedges in
- * brandomian_incompatibility.pl.  The cache's one nonterminating candidate is
+ * declared corpus.  Its source is exactly the two tracked discovered-set caches
+ * that incompatibility_sets.pl consults — the Big Red iteration7 harvest and
+ * the locally computed error-rule cache — plus the five declared seed
+ * hyperedges in brandomian_incompatibility.pl.  The nonterminating candidate is
  * counted by incompatibility_discovered_kind_count/2 but is not a declared
  * incompatible hyperedge: it has no incompatibility verdict.  It does not load optional registry adapters,
  * live discovery, geometry, learner servers, or literature mappings.
+ *
+ * The two caches carry different warrants.  A Lakoff-Nunez break is jointly
+ * incoherent as mathematics; an error-rule triple coded from the research
+ * corpus is incoherent relative to a community's sanction, and the corpus names
+ * that community in its incompatible_with column.  This register does not
+ * distinguish them — defeasible_inference:error_rule_warrant/2 does — so a
+ * claim resting on a hyperedge here should say which kind it rests on.
  *
  * A hyperedge is incoherent with every superset.  The generator removes
  * nonminimal hyperedges for the replacement test only: that reduction
@@ -577,62 +585,287 @@ input_hyperedge(519, [inference(points_on_line_grounds_number), o(infinity_as_po
 input_hyperedge(520, [inference(points_on_line_grounds_number), o(infinity_as_point_demanded), o(two_rules_same_extension)], [source(discovered, defeasible_inference, defeated)], false).
 input_hyperedge(521, [inference(points_on_line_grounds_number), o(infinity_as_point_demanded), o(unrelated_control)], [source(discovered, defeasible_inference, defeated)], false).
 input_hyperedge(522, [inference(points_on_line_grounds_number), o(infinity_as_point_demanded), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(523, [inference(spaces_are_point_sets_grounds_space), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(524, [inference(spaces_are_point_sets_grounds_space), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(525, [inference(spaces_are_point_sets_grounds_space), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(526, [inference(spaces_are_point_sets_grounds_space), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(527, [inference(spaces_are_point_sets_grounds_space), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(528, [inference(spaces_are_point_sets_grounds_space), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(529, [inference(spaces_are_point_sets_grounds_space), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(530, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(531, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(532, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(533, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(534, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(535, [inference(spaces_are_point_sets_grounds_space), o(points_inherent_to_space), o(space_constituted_by_points)], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(536, [inference(weierstrass_continuity_grounds_continuity), neg(o(p)), o(continuous_trajectory_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(537, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(diagonal_of_unit_square_measured)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(538, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(everyday_same_number_comparison)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(539, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(fractional_unit_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(540, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(cantors_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(541, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(classes_are_containers))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(542, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_curves))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(543, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_sets_of_ordered_pairs))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(544, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(measuring_stick))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(545, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(motion_along_a_path))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(546, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(numbers_are_points_on_a_line))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(547, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(548, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_construction))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(549, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(spaces_are_sets_of_points))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(550, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(551, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinite_collection_compared)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(552, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(553, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(554, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(length_is_count_of_units)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(555, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(556, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(557, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(558, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(points_inherent_to_space)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(559, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(rules_conceptually_distinct)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(560, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(561, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(space_constituted_by_points)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(562, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(563, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(two_rules_same_extension)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(564, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(unrelated_control)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(565, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(566, [inference(weierstrass_continuity_grounds_continuity), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(567, [inference(weierstrass_continuity_grounds_continuity), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(568, [inference(weierstrass_continuity_grounds_continuity), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(569, [inference(weierstrass_continuity_grounds_continuity), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(570, [inference(weierstrass_continuity_grounds_continuity), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(571, [inference(weierstrass_continuity_grounds_continuity), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(572, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(573, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(574, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(575, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(576, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(577, [o(diagonal_of_unit_square_measured), o(grounded(measuring_stick)), o(length_is_count_of_units)], [source(seed, brandomian_engine, declared_seed)], true).
-input_hyperedge(578, [rule(a_forbids_c), rule(a_requires_b), rule(b_requires_c)], [source(discovered, finite_three_rule_program, incoherent)], true).
+input_hyperedge(523, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(context(wholes_of_unequal_size)), o(licensed_consequence(equal_fraction_names_are_equal_quantities))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(524, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(525, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(526, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(527, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(528, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(529, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(530, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(531, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(532, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(533, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(534, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(535, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(536, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(537, [inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(538, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(context(halves_cut_in_different_orientations)), o(licensed_consequence(cut_orientation_preserves_half_size))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(539, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(540, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(541, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(542, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(543, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(544, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(545, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(546, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(547, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(548, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(549, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(550, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(551, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(552, [inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(553, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(context(distinct_fractions_share_a_digit_set)), o(licensed_consequence(same_digits_name_the_same_fraction))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(554, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(555, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(556, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(557, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(558, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(559, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(560, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(561, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(562, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(563, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(564, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(565, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(566, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(567, [inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(568, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(context(gap_order_diverges_from_fraction_order)), o(licensed_consequence(equal_gap_is_fraction_equivalence))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(569, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(570, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(571, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(572, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(573, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(574, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(575, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(576, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(577, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(578, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(579, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(580, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(581, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(582, [inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(583, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(context(gap_order_diverges_from_fraction_order)), o(licensed_consequence(equal_gap_is_equal_proximity_to_one))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(584, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(585, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(586, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(587, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(588, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(589, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(590, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(591, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(592, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(593, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(594, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(595, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(596, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(597, [inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(598, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(context(neither_operand_is_the_unit_whole)), o(licensed_consequence(operand_relative_naming_is_unit_relative_naming))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(599, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(600, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(601, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(602, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(603, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(604, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(605, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(606, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(607, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(608, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(609, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(610, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(611, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(612, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(613, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(context(component_order_inverts_for_equal_numerators)), o(licensed_consequence(component_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(614, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(615, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(616, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(617, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(618, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(619, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(620, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(621, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(622, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(623, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(624, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(625, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(626, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(627, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(628, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(context(component_sum_inverts_for_equal_numerators)), o(licensed_consequence(component_sum_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(629, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(630, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(631, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(632, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(633, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(634, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(635, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(636, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(637, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(638, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(639, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(640, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(641, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(642, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(643, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(context(denominator_order_inverts_for_equal_numerators)), o(licensed_consequence(larger_numeral_names_larger_quantity))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(644, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(645, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(646, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(647, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(648, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(649, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(650, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(651, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(652, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(653, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(654, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(655, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(656, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(657, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(658, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(context(inverse_component_order_diverges_for_equal_denominators)), o(licensed_consequence(inverse_component_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(659, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(660, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(661, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(662, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(663, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(664, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(665, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(666, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(667, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(668, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(669, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(670, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(671, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(672, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(673, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(licensed_consequence(inverse_denominator_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(674, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(675, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(676, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(677, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(678, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(679, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(680, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(681, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(682, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(683, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(684, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(685, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(686, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(687, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(688, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(context(gap_order_diverges_from_fraction_order)), o(licensed_consequence(gap_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(689, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(690, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(691, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(692, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(693, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(694, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(695, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(696, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(697, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(698, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(699, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(700, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(701, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(702, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(703, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(context(numerator_order_diverges_for_unequal_denominators)), o(licensed_consequence(numerator_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(704, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(705, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(706, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(707, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(708, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(709, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(710, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(711, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(712, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(713, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(714, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(715, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(716, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(717, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(718, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(context(numerator_sum_diverges_for_unequal_denominators)), o(licensed_consequence(numerator_sum_is_quantity_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(719, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(720, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(721, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(722, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(723, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(724, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(725, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(726, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(727, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(728, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(729, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(730, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(731, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(732, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(733, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(context(group_size_is_not_twice_the_item_count)), o(licensed_consequence(halving_yields_one_piece_per_sharer))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(734, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(735, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(736, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(737, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(738, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(739, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(measuring_stick)), o(negative_product_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(740, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(motion_along_a_path)), o(irrational_destination_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(741, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(742, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(743, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(744, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(745, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(746, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(747, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(748, [inference(spaces_are_point_sets_grounds_space), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(749, [inference(spaces_are_point_sets_grounds_space), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(750, [inference(spaces_are_point_sets_grounds_space), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(751, [inference(spaces_are_point_sets_grounds_space), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(752, [inference(spaces_are_point_sets_grounds_space), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(753, [inference(spaces_are_point_sets_grounds_space), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(754, [inference(spaces_are_point_sets_grounds_space), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(755, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(756, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(757, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(758, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(759, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(760, [inference(spaces_are_point_sets_grounds_space), o(points_inherent_to_space), o(space_constituted_by_points)], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(761, [inference(weierstrass_continuity_grounds_continuity), neg(o(p)), o(continuous_trajectory_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(762, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(diagonal_of_unit_square_measured)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(763, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(everyday_same_number_comparison)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(764, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(fractional_unit_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(765, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(cantors_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(766, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(classes_are_containers))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(767, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_curves))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(768, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_sets_of_ordered_pairs))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(769, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(measuring_stick))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(770, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(motion_along_a_path))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(771, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(numbers_are_points_on_a_line))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(772, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(773, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_construction))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(774, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(spaces_are_sets_of_points))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(775, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(776, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinite_collection_compared)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(777, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(778, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(779, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(length_is_count_of_units)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(780, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(781, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(782, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(783, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(points_inherent_to_space)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(784, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(rules_conceptually_distinct)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(785, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(786, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(space_constituted_by_points)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(787, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(788, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(two_rules_same_extension)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(789, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(unrelated_control)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(790, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(791, [inference(weierstrass_continuity_grounds_continuity), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(792, [inference(weierstrass_continuity_grounds_continuity), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(793, [inference(weierstrass_continuity_grounds_continuity), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(794, [inference(weierstrass_continuity_grounds_continuity), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(795, [inference(weierstrass_continuity_grounds_continuity), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(796, [inference(weierstrass_continuity_grounds_continuity), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(797, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(798, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(799, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(800, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(801, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(802, [o(diagonal_of_unit_square_measured), o(grounded(measuring_stick)), o(length_is_count_of_units)], [source(seed, brandomian_engine, declared_seed)], true).
+input_hyperedge(803, [rule(a_forbids_c), rule(a_requires_b), rule(b_requires_c)], [source(discovered, finite_three_rule_program, incoherent)], true).
 
 incompatibility_content(add_counts_without_composite_unit, 1, 1).
 incompatibility_content(add_instead_of_subtract_column, 1, 1).
@@ -670,6 +903,21 @@ incompatibility_content(inference(motion_along_path_grounds_arithmetic), 42, 12)
 incompatibility_content(inference(object_collection_grounds_subtraction), 124, 10).
 incompatibility_content(inference(object_construction_grounds_arithmetic), 69, 10).
 incompatibility_content(inference(points_on_line_grounds_number), 42, 12).
+incompatibility_content(inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), 15, 15).
+incompatibility_content(inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), 15, 15).
+incompatibility_content(inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), 15, 15).
+incompatibility_content(inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), 15, 15).
+incompatibility_content(inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), 15, 15).
+incompatibility_content(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), 15, 15).
+incompatibility_content(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), 15, 15).
+incompatibility_content(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), 15, 15).
+incompatibility_content(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), 15, 15).
+incompatibility_content(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), 15, 15).
+incompatibility_content(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), 15, 15).
+incompatibility_content(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), 15, 15).
+incompatibility_content(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), 15, 15).
+incompatibility_content(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), 15, 15).
+incompatibility_content(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), 15, 15).
 incompatibility_content(inference(spaces_are_point_sets_grounds_space), 13, 13).
 incompatibility_content(inference(weierstrass_continuity_grounds_continuity), 42, 12).
 incompatibility_content(known_product_without_adjustment, 1, 1).
@@ -677,36 +925,66 @@ incompatibility_content(make_ten_drop_leftover, 1, 1).
 incompatibility_content(name_group_count_as_share_size, 1, 1).
 incompatibility_content(name_reached_total_as_quotient, 1, 1).
 incompatibility_content(neg(o(p)), 43, 1).
-incompatibility_content(o(continuous_trajectory_demanded), 54, 12).
+incompatibility_content(o(context(component_order_inverts_for_equal_numerators)), 1, 1).
+incompatibility_content(o(context(component_sum_inverts_for_equal_numerators)), 1, 1).
+incompatibility_content(o(context(denominator_order_inverts_for_equal_numerators)), 1, 1).
+incompatibility_content(o(context(distinct_fractions_share_a_digit_set)), 1, 1).
+incompatibility_content(o(context(gap_order_diverges_from_fraction_order)), 3, 3).
+incompatibility_content(o(context(group_size_is_not_twice_the_item_count)), 1, 1).
+incompatibility_content(o(context(halves_cut_in_different_orientations)), 1, 1).
+incompatibility_content(o(context(inverse_component_order_diverges_for_equal_denominators)), 1, 1).
+incompatibility_content(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 1, 1).
+incompatibility_content(o(context(neither_operand_is_the_unit_whole)), 1, 1).
+incompatibility_content(o(context(numerator_order_diverges_for_unequal_denominators)), 1, 1).
+incompatibility_content(o(context(numerator_sum_diverges_for_unequal_denominators)), 1, 1).
+incompatibility_content(o(context(wholes_of_unequal_size)), 1, 1).
+incompatibility_content(o(continuous_trajectory_demanded), 69, 27).
 incompatibility_content(o(diagonal_of_unit_square_measured), 15, 2).
 incompatibility_content(o(everyday_same_number_comparison), 14, 1).
-incompatibility_content(o(fractional_unit_demanded), 51, 12).
+incompatibility_content(o(fractional_unit_demanded), 66, 27).
 incompatibility_content(o(grounded(cantors_metaphor)), 13, 0).
-incompatibility_content(o(grounded(classes_are_containers)), 24, 11).
-incompatibility_content(o(grounded(functions_are_curves)), 24, 11).
+incompatibility_content(o(grounded(classes_are_containers)), 39, 26).
+incompatibility_content(o(grounded(functions_are_curves)), 39, 26).
 incompatibility_content(o(grounded(functions_are_sets_of_ordered_pairs)), 13, 0).
-incompatibility_content(o(grounded(measuring_stick)), 25, 12).
-incompatibility_content(o(grounded(motion_along_a_path)), 24, 11).
-incompatibility_content(o(grounded(numbers_are_points_on_a_line)), 24, 11).
-incompatibility_content(o(grounded(object_collection)), 55, 42).
-incompatibility_content(o(grounded(object_construction)), 33, 20).
+incompatibility_content(o(grounded(measuring_stick)), 55, 42).
+incompatibility_content(o(grounded(motion_along_a_path)), 54, 41).
+incompatibility_content(o(grounded(numbers_are_points_on_a_line)), 39, 26).
+incompatibility_content(o(grounded(object_collection)), 115, 102).
+incompatibility_content(o(grounded(object_construction)), 63, 50).
 incompatibility_content(o(grounded(spaces_are_sets_of_points)), 13, 0).
-incompatibility_content(o(grounded(weierstrass_continuity_metaphor)), 24, 11).
+incompatibility_content(o(grounded(weierstrass_continuity_metaphor)), 39, 26).
 incompatibility_content(o(infinite_collection_compared), 14, 1).
-incompatibility_content(o(infinity_as_point_demanded), 54, 12).
-incompatibility_content(o(irrational_demanded), 89, 22).
+incompatibility_content(o(infinity_as_point_demanded), 69, 27).
+incompatibility_content(o(irrational_demanded), 119, 52).
+incompatibility_content(o(irrational_destination_demanded), 15, 15).
 incompatibility_content(o(length_is_count_of_units), 15, 2).
-incompatibility_content(o(negative_demanded), 54, 12).
-incompatibility_content(o(negative_multiplier_demanded), 54, 12).
-incompatibility_content(o(pathological_function_demanded), 54, 12).
+incompatibility_content(o(licensed_consequence(component_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(component_sum_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(cut_orientation_preserves_half_size)), 1, 1).
+incompatibility_content(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), 1, 1).
+incompatibility_content(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), 1, 1).
+incompatibility_content(o(licensed_consequence(equal_gap_is_fraction_equivalence)), 1, 1).
+incompatibility_content(o(licensed_consequence(gap_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(halving_yields_one_piece_per_sharer)), 1, 1).
+incompatibility_content(o(licensed_consequence(inverse_component_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(larger_numeral_names_larger_quantity)), 1, 1).
+incompatibility_content(o(licensed_consequence(numerator_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(numerator_sum_is_quantity_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), 1, 1).
+incompatibility_content(o(licensed_consequence(same_digits_name_the_same_fraction)), 1, 1).
+incompatibility_content(o(negative_demanded), 69, 27).
+incompatibility_content(o(negative_multiplier_demanded), 69, 27).
+incompatibility_content(o(negative_product_demanded), 15, 15).
+incompatibility_content(o(pathological_function_demanded), 69, 27).
 incompatibility_content(o(points_inherent_to_space), 14, 1).
 incompatibility_content(o(rules_conceptually_distinct), 14, 1).
-incompatibility_content(o(set_contains_itself), 54, 12).
+incompatibility_content(o(set_contains_itself), 69, 27).
 incompatibility_content(o(space_constituted_by_points), 14, 1).
-incompatibility_content(o(subtract_larger_from_smaller), 51, 12).
+incompatibility_content(o(subtract_larger_from_smaller), 66, 27).
 incompatibility_content(o(two_rules_same_extension), 14, 1).
 incompatibility_content(o(unrelated_control), 13, 0).
-incompatibility_content(o(zero_demanded), 89, 22).
+incompatibility_content(o(zero_demanded), 119, 52).
 incompatibility_content(odd, 1, 1).
 incompatibility_content(prime_greater_than_2, 2, 2).
 incompatibility_content(red, 1, 1).
@@ -800,43 +1078,88 @@ incompatibility_profile(inference(motion_along_path_grounds_arithmetic), [33, 25
 incompatibility_profile(inference(object_collection_grounds_subtraction), [34, 35, 36, 37, 300, 342, 346, 353, 357, 360]).
 incompatibility_profile(inference(object_construction_grounds_arithmetic), [38, 39, 417, 424, 430, 433, 438, 441, 443, 447]).
 incompatibility_profile(inference(points_on_line_grounds_number), [40, 483, 487, 491, 493, 496, 498, 501, 502, 503, 505, 506]).
-incompatibility_profile(inference(spaces_are_point_sets_grounds_space), [523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535]).
-incompatibility_profile(inference(weierstrass_continuity_grounds_continuity), [41, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576]).
+incompatibility_profile(inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), [523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537]).
+incompatibility_profile(inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), [538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552]).
+incompatibility_profile(inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), [553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567]).
+incompatibility_profile(inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), [568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582]).
+incompatibility_profile(inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), [583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597]).
+incompatibility_profile(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), [598, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612]).
+incompatibility_profile(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), [613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627]).
+incompatibility_profile(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), [628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642]).
+incompatibility_profile(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), [643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657]).
+incompatibility_profile(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), [658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672]).
+incompatibility_profile(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), [673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687]).
+incompatibility_profile(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), [688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702]).
+incompatibility_profile(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), [703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717]).
+incompatibility_profile(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), [718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732]).
+incompatibility_profile(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), [733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747]).
+incompatibility_profile(inference(spaces_are_point_sets_grounds_space), [748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760]).
+incompatibility_profile(inference(weierstrass_continuity_grounds_continuity), [41, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801]).
 incompatibility_profile(known_product_without_adjustment, [42]).
 incompatibility_profile(make_ten_drop_leftover, [43]).
 incompatibility_profile(name_group_count_as_share_size, [44]).
 incompatibility_profile(name_reached_total_as_quotient, [45]).
 incompatibility_profile(neg(o(p)), [30]).
-incompatibility_profile(o(continuous_trajectory_demanded), [41, 62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 523]).
-incompatibility_profile(o(diagonal_of_unit_square_measured), [215, 577]).
+incompatibility_profile(o(context(component_order_inverts_for_equal_numerators)), [613]).
+incompatibility_profile(o(context(component_sum_inverts_for_equal_numerators)), [628]).
+incompatibility_profile(o(context(denominator_order_inverts_for_equal_numerators)), [643]).
+incompatibility_profile(o(context(distinct_fractions_share_a_digit_set)), [553]).
+incompatibility_profile(o(context(gap_order_diverges_from_fraction_order)), [568, 583, 688]).
+incompatibility_profile(o(context(group_size_is_not_twice_the_item_count)), [733]).
+incompatibility_profile(o(context(halves_cut_in_different_orientations)), [538]).
+incompatibility_profile(o(context(inverse_component_order_diverges_for_equal_denominators)), [658]).
+incompatibility_profile(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), [673]).
+incompatibility_profile(o(context(neither_operand_is_the_unit_whole)), [598]).
+incompatibility_profile(o(context(numerator_order_diverges_for_unequal_denominators)), [703]).
+incompatibility_profile(o(context(numerator_sum_diverges_for_unequal_denominators)), [718]).
+incompatibility_profile(o(context(wholes_of_unequal_size)), [523]).
+incompatibility_profile(o(continuous_trajectory_demanded), [41, 62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 524, 539, 554, 569, 584, 599, 614, 629, 644, 659, 674, 689, 704, 719, 734, 748]).
+incompatibility_profile(o(diagonal_of_unit_square_measured), [215, 802]).
 incompatibility_profile(o(everyday_same_number_comparison), [63]).
-incompatibility_profile(o(fractional_unit_demanded), [34, 64, 80, 147, 163, 200, 218, 259, 424, 487, 524, 566]).
+incompatibility_profile(o(fractional_unit_demanded), [34, 64, 80, 147, 163, 200, 218, 259, 424, 487, 525, 540, 555, 570, 585, 600, 615, 630, 645, 660, 675, 690, 705, 720, 735, 749, 791]).
 incompatibility_profile(o(grounded(cantors_metaphor)), []).
-incompatibility_profile(o(grounded(classes_are_containers)), [65, 148, 167, 201, 222, 263, 342, 430, 491, 525, 567]).
-incompatibility_profile(o(grounded(functions_are_curves)), [66, 84, 149, 202, 224, 265, 346, 433, 493, 526, 568]).
+incompatibility_profile(o(grounded(classes_are_containers)), [65, 148, 167, 201, 222, 263, 342, 430, 491, 526, 541, 556, 571, 586, 601, 616, 631, 646, 661, 676, 691, 706, 721, 736, 750, 792]).
+incompatibility_profile(o(grounded(functions_are_curves)), [66, 84, 149, 202, 224, 265, 346, 433, 493, 527, 542, 557, 572, 587, 602, 617, 632, 647, 662, 677, 692, 707, 722, 737, 751, 793]).
 incompatibility_profile(o(grounded(functions_are_sets_of_ordered_pairs)), []).
-incompatibility_profile(o(grounded(measuring_stick)), [67, 87, 150, 170, 203, 267, 353, 438, 496, 527, 569, 577]).
-incompatibility_profile(o(grounded(motion_along_a_path)), [68, 89, 151, 172, 204, 228, 357, 441, 498, 528, 570]).
-incompatibility_profile(o(grounded(numbers_are_points_on_a_line)), [69, 91, 152, 174, 205, 229, 270, 360, 443, 529, 571]).
-incompatibility_profile(o(grounded(object_collection)), [64, 70, 71, 72, 80, 93, 95, 96, 147, 153, 154, 155, 163, 176, 178, 179, 200, 206, 207, 208, 218, 231, 233, 234, 259, 272, 274, 275, 424, 447, 487, 501, 502, 503, 524, 530, 531, 532, 566, 572, 573, 574]).
-incompatibility_profile(o(grounded(object_construction)), [73, 74, 97, 99, 156, 157, 180, 182, 209, 210, 235, 237, 276, 278, 505, 506, 533, 534, 575, 576]).
+incompatibility_profile(o(grounded(measuring_stick)), [67, 87, 150, 170, 203, 267, 353, 438, 496, 528, 529, 543, 544, 558, 559, 573, 574, 588, 589, 603, 604, 618, 619, 633, 634, 648, 649, 663, 664, 678, 679, 693, 694, 708, 709, 723, 724, 738, 739, 752, 794, 802]).
+incompatibility_profile(o(grounded(motion_along_a_path)), [68, 89, 151, 172, 204, 228, 357, 441, 498, 530, 531, 545, 546, 560, 561, 575, 576, 590, 591, 605, 606, 620, 621, 635, 636, 650, 651, 665, 666, 680, 681, 695, 696, 710, 711, 725, 726, 740, 741, 753, 795]).
+incompatibility_profile(o(grounded(numbers_are_points_on_a_line)), [69, 91, 152, 174, 205, 229, 270, 360, 443, 532, 547, 562, 577, 592, 607, 622, 637, 652, 667, 682, 697, 712, 727, 742, 754, 796]).
+incompatibility_profile(o(grounded(object_collection)), [64, 70, 71, 72, 80, 93, 95, 96, 147, 153, 154, 155, 163, 176, 178, 179, 200, 206, 207, 208, 218, 231, 233, 234, 259, 272, 274, 275, 424, 447, 487, 501, 502, 503, 525, 533, 534, 535, 540, 548, 549, 550, 555, 563, 564, 565, 570, 578, 579, 580, 585, 593, 594, 595, 600, 608, 609, 610, 615, 623, 624, 625, 630, 638, 639, 640, 645, 653, 654, 655, 660, 668, 669, 670, 675, 683, 684, 685, 690, 698, 699, 700, 705, 713, 714, 715, 720, 728, 729, 730, 735, 743, 744, 745, 749, 755, 756, 757, 791, 797, 798, 799]).
+incompatibility_profile(o(grounded(object_construction)), [73, 74, 97, 99, 156, 157, 180, 182, 209, 210, 235, 237, 276, 278, 505, 506, 536, 537, 551, 552, 566, 567, 581, 582, 596, 597, 611, 612, 626, 627, 641, 642, 656, 657, 671, 672, 686, 687, 701, 702, 716, 717, 731, 732, 746, 747, 758, 759, 800, 801]).
 incompatibility_profile(o(grounded(spaces_are_sets_of_points)), []).
-incompatibility_profile(o(grounded(weierstrass_continuity_metaphor)), [62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 523]).
+incompatibility_profile(o(grounded(weierstrass_continuity_metaphor)), [62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 524, 539, 554, 569, 584, 599, 614, 629, 644, 659, 674, 689, 704, 719, 734, 748]).
 incompatibility_profile(o(infinite_collection_compared), [63]).
-incompatibility_profile(o(infinity_as_point_demanded), [40, 69, 91, 152, 174, 205, 229, 270, 360, 443, 529, 571]).
-incompatibility_profile(o(irrational_demanded), [35, 38, 70, 73, 93, 97, 153, 156, 176, 180, 206, 209, 231, 235, 272, 276, 501, 505, 530, 533, 572, 575]).
-incompatibility_profile(o(length_is_count_of_units), [215, 577]).
-incompatibility_profile(o(negative_demanded), [32, 67, 87, 150, 170, 203, 267, 353, 438, 496, 527, 569]).
-incompatibility_profile(o(negative_multiplier_demanded), [33, 68, 89, 151, 172, 204, 228, 357, 441, 498, 528, 570]).
-incompatibility_profile(o(pathological_function_demanded), [31, 66, 84, 149, 202, 224, 265, 346, 433, 493, 526, 568]).
-incompatibility_profile(o(points_inherent_to_space), [535]).
+incompatibility_profile(o(infinity_as_point_demanded), [40, 69, 91, 152, 174, 205, 229, 270, 360, 443, 532, 547, 562, 577, 592, 607, 622, 637, 652, 667, 682, 697, 712, 727, 742, 754, 796]).
+incompatibility_profile(o(irrational_demanded), [35, 38, 70, 73, 93, 97, 153, 156, 176, 180, 206, 209, 231, 235, 272, 276, 501, 505, 533, 536, 548, 551, 563, 566, 578, 581, 593, 596, 608, 611, 623, 626, 638, 641, 653, 656, 668, 671, 683, 686, 698, 701, 713, 716, 728, 731, 743, 746, 755, 758, 797, 800]).
+incompatibility_profile(o(irrational_destination_demanded), [530, 545, 560, 575, 590, 605, 620, 635, 650, 665, 680, 695, 710, 725, 740]).
+incompatibility_profile(o(length_is_count_of_units), [215, 802]).
+incompatibility_profile(o(licensed_consequence(component_order_is_fraction_order)), [613]).
+incompatibility_profile(o(licensed_consequence(component_sum_is_fraction_order)), [628]).
+incompatibility_profile(o(licensed_consequence(cut_orientation_preserves_half_size)), [538]).
+incompatibility_profile(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), [523]).
+incompatibility_profile(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), [583]).
+incompatibility_profile(o(licensed_consequence(equal_gap_is_fraction_equivalence)), [568]).
+incompatibility_profile(o(licensed_consequence(gap_order_is_fraction_order)), [688]).
+incompatibility_profile(o(licensed_consequence(halving_yields_one_piece_per_sharer)), [733]).
+incompatibility_profile(o(licensed_consequence(inverse_component_order_is_fraction_order)), [658]).
+incompatibility_profile(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), [673]).
+incompatibility_profile(o(licensed_consequence(larger_numeral_names_larger_quantity)), [643]).
+incompatibility_profile(o(licensed_consequence(numerator_order_is_fraction_order)), [703]).
+incompatibility_profile(o(licensed_consequence(numerator_sum_is_quantity_order)), [718]).
+incompatibility_profile(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), [598]).
+incompatibility_profile(o(licensed_consequence(same_digits_name_the_same_fraction)), [553]).
+incompatibility_profile(o(negative_demanded), [32, 67, 87, 150, 170, 203, 267, 353, 438, 496, 528, 543, 558, 573, 588, 603, 618, 633, 648, 663, 678, 693, 708, 723, 738, 752, 794]).
+incompatibility_profile(o(negative_multiplier_demanded), [33, 68, 89, 151, 172, 204, 228, 357, 441, 498, 531, 546, 561, 576, 591, 606, 621, 636, 651, 666, 681, 696, 711, 726, 741, 753, 795]).
+incompatibility_profile(o(negative_product_demanded), [529, 544, 559, 574, 589, 604, 619, 634, 649, 664, 679, 694, 709, 724, 739]).
+incompatibility_profile(o(pathological_function_demanded), [31, 66, 84, 149, 202, 224, 265, 346, 433, 493, 527, 542, 557, 572, 587, 602, 617, 632, 647, 662, 677, 692, 707, 722, 737, 751, 793]).
+incompatibility_profile(o(points_inherent_to_space), [760]).
 incompatibility_profile(o(rules_conceptually_distinct), [211]).
-incompatibility_profile(o(set_contains_itself), [29, 65, 148, 167, 201, 222, 263, 342, 430, 491, 525, 567]).
-incompatibility_profile(o(space_constituted_by_points), [535]).
-incompatibility_profile(o(subtract_larger_from_smaller), [36, 71, 95, 154, 178, 207, 233, 274, 447, 502, 531, 573]).
+incompatibility_profile(o(set_contains_itself), [29, 65, 148, 167, 201, 222, 263, 342, 430, 491, 526, 541, 556, 571, 586, 601, 616, 631, 646, 661, 676, 691, 706, 721, 736, 750, 792]).
+incompatibility_profile(o(space_constituted_by_points), [760]).
+incompatibility_profile(o(subtract_larger_from_smaller), [36, 71, 95, 154, 178, 207, 233, 274, 447, 502, 534, 549, 564, 579, 594, 609, 624, 639, 654, 669, 684, 699, 714, 729, 744, 756, 798]).
 incompatibility_profile(o(two_rules_same_extension), [211]).
 incompatibility_profile(o(unrelated_control), []).
-incompatibility_profile(o(zero_demanded), [37, 39, 72, 74, 96, 99, 155, 157, 179, 182, 208, 210, 234, 237, 275, 278, 503, 506, 532, 534, 574, 576]).
+incompatibility_profile(o(zero_demanded), [37, 39, 72, 74, 96, 99, 155, 157, 179, 182, 208, 210, 234, 237, 275, 278, 503, 506, 535, 537, 550, 552, 565, 567, 580, 582, 595, 597, 610, 612, 625, 627, 640, 642, 655, 657, 670, 672, 685, 687, 700, 702, 715, 717, 730, 732, 745, 747, 757, 759, 799, 801]).
 incompatibility_profile(odd, [25]).
 incompatibility_profile(prime_greater_than_2, [11, 26]).
 incompatibility_profile(red, [59]).
@@ -847,9 +1170,9 @@ incompatibility_profile(rigid_factor_order_roles, [48]).
 incompatibility_profile(ripe, [59]).
 incompatibility_profile(rote_derived_fact_rule_misfire, [49]).
 incompatibility_profile(round_without_adjusting, [50]).
-incompatibility_profile(rule(a_forbids_c), [578]).
-incompatibility_profile(rule(a_requires_b), [578]).
-incompatibility_profile(rule(b_requires_c), [578]).
+incompatibility_profile(rule(a_forbids_c), [803]).
+incompatibility_profile(rule(a_requires_b), [803]).
+incompatibility_profile(rule(b_requires_c), [803]).
 incompatibility_profile(sequential_recompute_commuted_products, [51]).
 incompatibility_profile(share_into_divisor_groups, [52]).
 incompatibility_profile(slide_subtrahend_only, [53]).
@@ -898,21 +1221,21 @@ incompatibility_earned_entails(borrow_across_zero_no_cascade, add_instead_of_sub
 incompatibility_earned_entails(borrow_across_zero_no_cascade, borrow_without_reducing_bases, 1).
 incompatibility_earned_entails(borrow_across_zero_no_cascade, smaller_from_larger_in_column, 1).
 incompatibility_earned_entails(even, composite, 1).
-incompatibility_earned_entails(inference(classes_are_containers_grounds_sets), o(grounded(classes_are_containers)), 11).
-incompatibility_earned_entails(inference(functions_are_curves_grounds_functions), o(grounded(functions_are_curves)), 11).
-incompatibility_earned_entails(inference(measuring_stick_grounds_length), o(grounded(measuring_stick)), 12).
-incompatibility_earned_entails(inference(motion_along_path_grounds_arithmetic), o(grounded(motion_along_a_path)), 11).
+incompatibility_earned_entails(inference(classes_are_containers_grounds_sets), o(grounded(classes_are_containers)), 26).
+incompatibility_earned_entails(inference(functions_are_curves_grounds_functions), o(grounded(functions_are_curves)), 26).
 incompatibility_earned_entails(inference(object_collection_grounds_subtraction), inference(object_construction_grounds_arithmetic), 10).
-incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_collection)), 42).
-incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_construction)), 20).
-incompatibility_earned_entails(inference(object_construction_grounds_arithmetic), o(grounded(object_construction)), 20).
-incompatibility_earned_entails(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), 11).
-incompatibility_earned_entails(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), 11).
-incompatibility_earned_entails(o(grounded(object_collection)), o(grounded(object_construction)), 20).
-incompatibility_earned_entails(o(irrational_demanded), o(fractional_unit_demanded), 12).
-incompatibility_earned_entails(o(irrational_demanded), o(subtract_larger_from_smaller), 12).
-incompatibility_earned_entails(o(zero_demanded), o(fractional_unit_demanded), 12).
-incompatibility_earned_entails(o(zero_demanded), o(subtract_larger_from_smaller), 12).
+incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_collection)), 102).
+incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_construction)), 50).
+incompatibility_earned_entails(inference(object_construction_grounds_arithmetic), o(grounded(object_construction)), 50).
+incompatibility_earned_entails(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), 26).
+incompatibility_earned_entails(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), 26).
+incompatibility_earned_entails(o(grounded(object_collection)), o(grounded(object_construction)), 50).
+incompatibility_earned_entails(o(irrational_demanded), o(fractional_unit_demanded), 27).
+incompatibility_earned_entails(o(irrational_demanded), o(subtract_larger_from_smaller), 27).
+incompatibility_earned_entails(o(negative_demanded), o(negative_product_demanded), 15).
+incompatibility_earned_entails(o(negative_multiplier_demanded), o(irrational_destination_demanded), 15).
+incompatibility_earned_entails(o(zero_demanded), o(fractional_unit_demanded), 27).
+incompatibility_earned_entails(o(zero_demanded), o(subtract_larger_from_smaller), 27).
 incompatibility_earned_entails(prime_greater_than_2, odd, 1).
 incompatibility_earned_entails(strategy(subtraction,decompose_base_for_ones), strategy(subtraction,borrow_across_zero_cascade), 1).
 
@@ -1060,6 +1383,66 @@ incompatibility_vacuously_entails(inference(points_on_line_grounds_number), o(gr
 incompatibility_vacuously_entails(inference(points_on_line_grounds_number), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(inference(points_on_line_grounds_number), o(grounded(spaces_are_sets_of_points))).
 incompatibility_vacuously_entails(inference(points_on_line_grounds_number), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_compare_fraction_names_ignoring_referent_unit_licenses_equal_fraction_names_are_equal_quantities), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_compare_halves_by_cut_orientation_licenses_cut_orientation_preserves_half_size), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_equate_by_digit_set_licenses_same_digits_name_the_same_fraction), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_equate_by_numerator_denominator_gap_licenses_equal_gap_is_fraction_equivalence), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_equate_proximity_to_one_by_gap_licenses_equal_gap_is_equal_proximity_to_one), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(unrelated_control)).
+incompatibility_vacuously_entails(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(unrelated_control)).
 incompatibility_vacuously_entails(inference(spaces_are_point_sets_grounds_space), o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(inference(spaces_are_point_sets_grounds_space), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(inference(spaces_are_point_sets_grounds_space), o(grounded(spaces_are_sets_of_points))).
@@ -1088,6 +1471,58 @@ incompatibility_vacuously_entails(neg(o(p)), o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(neg(o(p)), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(neg(o(p)), o(grounded(spaces_are_sets_of_points))).
 incompatibility_vacuously_entails(neg(o(p)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(component_order_inverts_for_equal_numerators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(component_order_inverts_for_equal_numerators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(component_order_inverts_for_equal_numerators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(component_order_inverts_for_equal_numerators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(component_sum_inverts_for_equal_numerators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(component_sum_inverts_for_equal_numerators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(component_sum_inverts_for_equal_numerators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(component_sum_inverts_for_equal_numerators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(distinct_fractions_share_a_digit_set)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(distinct_fractions_share_a_digit_set)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(distinct_fractions_share_a_digit_set)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(distinct_fractions_share_a_digit_set)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(gap_order_diverges_from_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(gap_order_diverges_from_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(gap_order_diverges_from_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(gap_order_diverges_from_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(group_size_is_not_twice_the_item_count)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(group_size_is_not_twice_the_item_count)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(group_size_is_not_twice_the_item_count)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(group_size_is_not_twice_the_item_count)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(halves_cut_in_different_orientations)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(halves_cut_in_different_orientations)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(halves_cut_in_different_orientations)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(halves_cut_in_different_orientations)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(neither_operand_is_the_unit_whole)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(neither_operand_is_the_unit_whole)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(neither_operand_is_the_unit_whole)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(neither_operand_is_the_unit_whole)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(numerator_order_diverges_for_unequal_denominators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(numerator_order_diverges_for_unequal_denominators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(numerator_order_diverges_for_unequal_denominators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(numerator_order_diverges_for_unequal_denominators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(numerator_sum_diverges_for_unequal_denominators)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(numerator_sum_diverges_for_unequal_denominators)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(numerator_sum_diverges_for_unequal_denominators)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(numerator_sum_diverges_for_unequal_denominators)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(context(wholes_of_unequal_size)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(context(wholes_of_unequal_size)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(context(wholes_of_unequal_size)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(context(wholes_of_unequal_size)), o(unrelated_control)).
 incompatibility_vacuously_entails(o(continuous_trajectory_demanded), o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(o(continuous_trajectory_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(o(continuous_trajectory_demanded), o(grounded(spaces_are_sets_of_points))).
@@ -1157,10 +1592,74 @@ incompatibility_vacuously_entails(o(irrational_demanded), o(grounded(cantors_met
 incompatibility_vacuously_entails(o(irrational_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(o(irrational_demanded), o(grounded(spaces_are_sets_of_points))).
 incompatibility_vacuously_entails(o(irrational_demanded), o(unrelated_control)).
+incompatibility_vacuously_entails(o(irrational_destination_demanded), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(irrational_destination_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(irrational_destination_demanded), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(irrational_destination_demanded), o(unrelated_control)).
 incompatibility_vacuously_entails(o(length_is_count_of_units), o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(o(length_is_count_of_units), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(o(length_is_count_of_units), o(grounded(spaces_are_sets_of_points))).
 incompatibility_vacuously_entails(o(length_is_count_of_units), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(component_order_is_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(component_order_is_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(component_order_is_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(component_order_is_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(component_sum_is_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(component_sum_is_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(component_sum_is_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(component_sum_is_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(cut_orientation_preserves_half_size)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(cut_orientation_preserves_half_size)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(cut_orientation_preserves_half_size)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(cut_orientation_preserves_half_size)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_fraction_equivalence)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_fraction_equivalence)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_fraction_equivalence)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(equal_gap_is_fraction_equivalence)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(gap_order_is_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(gap_order_is_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(gap_order_is_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(gap_order_is_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(halving_yields_one_piece_per_sharer)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(halving_yields_one_piece_per_sharer)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(halving_yields_one_piece_per_sharer)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(halving_yields_one_piece_per_sharer)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_component_order_is_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_component_order_is_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_component_order_is_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_component_order_is_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(larger_numeral_names_larger_quantity)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(larger_numeral_names_larger_quantity)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(larger_numeral_names_larger_quantity)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(larger_numeral_names_larger_quantity)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_order_is_fraction_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_order_is_fraction_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_order_is_fraction_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_order_is_fraction_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_sum_is_quantity_order)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_sum_is_quantity_order)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_sum_is_quantity_order)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(numerator_sum_is_quantity_order)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), o(unrelated_control)).
+incompatibility_vacuously_entails(o(licensed_consequence(same_digits_name_the_same_fraction)), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(licensed_consequence(same_digits_name_the_same_fraction)), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(licensed_consequence(same_digits_name_the_same_fraction)), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(licensed_consequence(same_digits_name_the_same_fraction)), o(unrelated_control)).
 incompatibility_vacuously_entails(o(negative_demanded), o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(o(negative_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(o(negative_demanded), o(grounded(spaces_are_sets_of_points))).
@@ -1169,6 +1668,10 @@ incompatibility_vacuously_entails(o(negative_multiplier_demanded), o(grounded(ca
 incompatibility_vacuously_entails(o(negative_multiplier_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(o(negative_multiplier_demanded), o(grounded(spaces_are_sets_of_points))).
 incompatibility_vacuously_entails(o(negative_multiplier_demanded), o(unrelated_control)).
+incompatibility_vacuously_entails(o(negative_product_demanded), o(grounded(cantors_metaphor))).
+incompatibility_vacuously_entails(o(negative_product_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
+incompatibility_vacuously_entails(o(negative_product_demanded), o(grounded(spaces_are_sets_of_points))).
+incompatibility_vacuously_entails(o(negative_product_demanded), o(unrelated_control)).
 incompatibility_vacuously_entails(o(pathological_function_demanded), o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(o(pathological_function_demanded), o(grounded(functions_are_sets_of_ordered_pairs))).
 incompatibility_vacuously_entails(o(pathological_function_demanded), o(grounded(spaces_are_sets_of_points))).
@@ -1440,44 +1943,59 @@ incompatibility_equivalent(result_of(compare_returns_larger_count,db_row(40167),
 incompatibility_equivalent(rigid_factor_order_roles, sequential_recompute_commuted_products).
 
 
-incompatibility_data_density(1, 75).
+incompatibility_data_density(1, 102).
 incompatibility_data_density(2, 8).
-incompatibility_data_density(3, 2).
+incompatibility_data_density(3, 3).
 incompatibility_data_density(5, 1).
 incompatibility_data_density(13, 7).
 incompatibility_data_density(14, 6).
-incompatibility_data_density(15, 2).
-incompatibility_data_density(24, 5).
-incompatibility_data_density(25, 1).
-incompatibility_data_density(33, 1).
+incompatibility_data_density(15, 19).
+incompatibility_data_density(39, 4).
 incompatibility_data_density(42, 5).
 incompatibility_data_density(43, 3).
-incompatibility_data_density(51, 2).
-incompatibility_data_density(54, 6).
+incompatibility_data_density(54, 1).
 incompatibility_data_density(55, 1).
-incompatibility_data_density(69, 1).
-incompatibility_data_density(89, 2).
+incompatibility_data_density(63, 1).
+incompatibility_data_density(66, 2).
+incompatibility_data_density(69, 7).
+incompatibility_data_density(115, 1).
+incompatibility_data_density(119, 2).
 incompatibility_data_density(124, 1).
 
-incompatibility_order_count(declared_input_hyperedges, 578).
-incompatibility_order_count(minimal_hyperedges, 193).
-incompatibility_order_count(contents, 129).
+incompatibility_order_count(declared_input_hyperedges, 803).
+incompatibility_order_count(minimal_hyperedges, 418).
+incompatibility_order_count(contents, 174).
 incompatibility_order_count(earned_entailments, 21).
-incompatibility_order_count(vacuous_entailments, 512).
+incompatibility_order_count(vacuous_entailments, 692).
 incompatibility_order_count(equivalent_pairs, 9).
 incompatibility_order_count(mutual_nonidentical_pairs, 0).
-incompatibility_order_count(cache_input_rows, 573).
+incompatibility_order_count(cache_input_rows, 798).
 incompatibility_order_count(seed_input_rows, 5).
 incompatibility_order_count(nonterminating_candidates_excluded, 1).
 
-incompatibility_discovered_kind_count(defeated, 524).
-incompatibility_discovered_kind_count(emergent, 4).
+incompatibility_discovered_kind_count(defeated, 734).
+incompatibility_discovered_kind_count(emergent, 19).
 incompatibility_discovered_kind_count(incoherent, 45).
 incompatibility_discovered_kind_count(nonterminating, 1).
 
 incompatibility_emergent_hyperedge(63).
 incompatibility_emergent_hyperedge(211).
 incompatibility_emergent_hyperedge(215).
-incompatibility_emergent_hyperedge(535).
+incompatibility_emergent_hyperedge(523).
+incompatibility_emergent_hyperedge(538).
+incompatibility_emergent_hyperedge(553).
+incompatibility_emergent_hyperedge(568).
+incompatibility_emergent_hyperedge(583).
+incompatibility_emergent_hyperedge(598).
+incompatibility_emergent_hyperedge(613).
+incompatibility_emergent_hyperedge(628).
+incompatibility_emergent_hyperedge(643).
+incompatibility_emergent_hyperedge(658).
+incompatibility_emergent_hyperedge(673).
+incompatibility_emergent_hyperedge(688).
+incompatibility_emergent_hyperedge(703).
+incompatibility_emergent_hyperedge(718).
+incompatibility_emergent_hyperedge(733).
+incompatibility_emergent_hyperedge(760).
 
 incompatibility_positive_control(dog_entails_mammal, passed).

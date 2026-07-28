@@ -56,7 +56,8 @@
 :- use_module(math(sar_add_decimal_columnar), [run_decimal_column_add/4]).
 :- use_module(math(smr_decimal_fraction_compare),
               [ run_decimal_fraction_compare/6,
-                run_decimal_scale_loss_compare/6
+                run_decimal_scale_loss_compare/7,
+                decimal_order_viability/3
               ]).
 :- use_module(math(integer_helpers),
               [ add_ints/3,
@@ -158,6 +159,7 @@ run_decimal_action(decimal_numeral_comparison_without_scale_alignment, Pair,
                                                 Expected),
     comparison_relation(N1, N2, Result),
     comparison_validity(Expected, Result, Validity),
+    decimal_order_viability(Expected, Result, Viability),
     Outcome = action_outcome(
                   decimal_numeral_comparison_without_scale_alignment,
                   [ classification(deformation),
@@ -171,6 +173,7 @@ run_decimal_action(decimal_numeral_comparison_without_scale_alignment, Pair,
                     validity(Validity),
                     operands(decimal_pair(N1, S1, N2, S2)),
                     components(Components),
+                    viability(Viability),
                     deformation_of(decimal_comparison_by_aligned_units),
                     misconception_family(
                         decimal_numeral_comparison_without_scale_alignment)
@@ -202,7 +205,7 @@ run_decimal_action(decimal_fraction_place_value_comparison,
 run_decimal_action(decimal_scale_loss_comparison,
                    decimal_pair(N1, S1, N2, S2), ignored, Outcome, Trace) :-
     run_decimal_fraction_compare(N1, S1, N2, S2, Expected, _),
-    run_decimal_scale_loss_compare(N1, S1, N2, S2, Result, Trace),
+    run_decimal_scale_loss_compare(N1, S1, N2, S2, Result, Viability, Trace),
     comparison_validity(Expected, Result, Validity),
     Outcome = action_outcome(
                   decimal_scale_loss_comparison,
@@ -215,10 +218,11 @@ run_decimal_action(decimal_scale_loss_comparison,
                                 q_compare_decimal_magnitudes]),
                     result(Result), expected(Expected), validity(Validity),
                     operands(decimal_pair(N1, S1, N2, S2)),
+                    viability(Viability),
                     deformation_of(decimal_fraction_place_value_comparison),
                     misconception_family(decimal_scale_loss_comparison),
                     violated_invariant(compare_only_after_common_unit_alignment),
-                    elaborates(smr_decimal_fraction_compare:run_decimal_scale_loss_compare/6)
+                    elaborates(smr_decimal_fraction_compare:run_decimal_scale_loss_compare/7)
                   ]).
 run_decimal_action(decimal_addition_by_aligned_units, Pair, ignored,
                    Outcome, Trace) :-
@@ -262,6 +266,7 @@ run_decimal_action(decimal_add_unaligned_numerals, Pair, ignored,
     decimal_components(ExpectedNumeral, CommonScale, _, _, _, _, Expected),
     decimal_components(ResultNumeral, CommonScale, _, _, _, _, Result),
     decimal_result_validity(Expected, Result, Validity),
+    decimal_operation_viability(Expected, Result, Viability),
     Outcome = action_outcome(
                   decimal_add_unaligned_numerals,
                   [ classification(deformation),
@@ -271,6 +276,7 @@ run_decimal_action(decimal_add_unaligned_numerals, Pair, ignored,
                                 integer_addition, scale_unit_loss]),
                     result(Result), expected(Expected), validity(Validity),
                     operands(decimal_pair(N1, S1, N2, S2)),
+                    viability(Viability),
                     deformation_of(decimal_addition_by_aligned_units),
                     misconception_family(decimal_add_unaligned_numerals)
                   ]),
@@ -324,6 +330,7 @@ run_decimal_action(decimal_subtract_unaligned_numerals, Pair, ignored,
     decimal_components(ExpectedNumeral, CommonScale, _, _, _, _, Expected),
     decimal_components(ResultNumeral, CommonScale, _, _, _, _, Result),
     decimal_result_validity(Expected, Result, Validity),
+    decimal_operation_viability(Expected, Result, Viability),
     Outcome = action_outcome(
                   decimal_subtract_unaligned_numerals,
                   [ classification(deformation),
@@ -333,6 +340,7 @@ run_decimal_action(decimal_subtract_unaligned_numerals, Pair, ignored,
                                 integer_subtraction, scale_unit_loss]),
                     result(Result), expected(Expected), validity(Validity),
                     operands(decimal_pair(N1, S1, N2, S2)),
+                    viability(Viability),
                     deformation_of(decimal_subtraction_by_aligned_units),
                     misconception_family(decimal_subtract_unaligned_numerals)
                   ]),
@@ -724,6 +732,20 @@ comparison_validity(_, _, incorrect).
 
 decimal_result_validity(Expected, Expected, accidentally_correct) :- !.
 decimal_result_validity(_, _, incorrect).
+
+
+% The addition and subtraction deformations share this domain: treating written
+% numerals as like units is viable exactly when it yields the same decimal value
+% as operating after alignment.
+decimal_operation_viability(Expected, Expected,
+                            viability(contextual_success,
+                                      condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),
+                                      validity(contextually_correct))) :- !.
+decimal_operation_viability(Expected, Produced,
+                            viability(fails_in_context,
+                                      condition(unaligned_decimal_operation_diverges_from_decimal_value_operation),
+                                      expected(Expected), produced(Produced),
+                                      validity(incorrect))).
 
 
 decimal_scale(Scale, Places, PlaceUnit) :-

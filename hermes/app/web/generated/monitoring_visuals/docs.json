@@ -3,7 +3,7 @@
     "lesson_code": "IM-G1-U3-L17",
     "visuals": [
       {
-        "expression": "6 + 8",
+        "expression": "9 + 5",
         "family": "make_ten",
         "source": "generated_from_teacher_guide_and_monitoring_chart",
         "correct": {
@@ -12,8 +12,8 @@
           "request": {
             "op": "set_grouping_render",
             "kind": "make_ten",
-            "a": 8,
-            "b": 6
+            "a": 9,
+            "b": 5
           },
           "doc": {
             "canvas": {
@@ -22,7 +22,7 @@
             },
             "frames": [
               {
-                "caption": "Start with 8 in the ten-frame.",
+                "caption": "Start with 9 in the ten-frame.",
                 "scene": {
                   "bins": [],
                   "dots": [
@@ -88,6 +88,14 @@
                       "role": "unit",
                       "tag": "filled",
                       "x": 200,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
                       "y": 136
                     }
                   ],
@@ -159,10 +167,10 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "make_ten(8,6)"
+                "verb": "make_ten(9,5)"
               },
               {
-                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give.",
+                "caption": "Add 1 to make ten: 9 needs 1 more, and 5 has it to give.",
                 "scene": {
                   "bins": [],
                   "dots": [
@@ -233,7 +241,7 @@
                     {
                       "group": 0,
                       "r": 20,
-                      "role": "highlight",
+                      "role": "unit",
                       "tag": "filled",
                       "x": 264,
                       "y": 136
@@ -315,10 +323,10 @@
                 },
                 "sceneChanged": true,
                 "step": 2,
-                "verb": "make_ten(8,6)"
+                "verb": "make_ten(9,5)"
               },
               {
-                "caption": "8 + 6 = 14: split 6 into 2 and 4, make ten, then 4 left.",
+                "caption": "9 + 5 = 14: split 5 into 1 and 4, make ten, then 4 left.",
                 "scene": {
                   "bins": [],
                   "dots": [
@@ -389,7 +397,7 @@
                     {
                       "group": 0,
                       "r": 20,
-                      "role": "highlight",
+                      "role": "unit",
                       "tag": "filled",
                       "x": 264,
                       "y": 136
@@ -503,7 +511,7 @@
                 },
                 "sceneChanged": true,
                 "step": 3,
-                "verb": "make_ten(8,6)"
+                "verb": "make_ten(9,5)"
               }
             ],
             "grounding": {
@@ -515,8 +523,8 @@
             },
             "kind": "make_ten",
             "request": {
-              "a": 8,
-              "b": 6
+              "a": 9,
+              "b": 5
             },
             "result": "14",
             "teacher": {
@@ -551,7 +559,7 @@
                 "source": "teacher_layer_composition_over_existing_witnesses"
               }
             },
-            "tuple": "make_ten(8,6)"
+            "tuple": "make_ten(9,5)"
           }
         },
         "incorrect": {
@@ -560,8 +568,8 @@
           "request": {
             "op": "set_grouping_render",
             "kind": "make_ten_drop_leftover",
-            "a": 8,
-            "b": 6
+            "a": 9,
+            "b": 5
           },
           "doc": {
             "canvas": {
@@ -570,7 +578,7 @@
             },
             "frames": [
               {
-                "caption": "Start with 8 in the ten-frame.",
+                "caption": "Start with 9 in the ten-frame.",
                 "scene": {
                   "bins": [],
                   "dots": [
@@ -636,6 +644,14 @@
                       "role": "unit",
                       "tag": "filled",
                       "x": 200,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
                       "y": 136
                     }
                   ],
@@ -707,10 +723,10 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "make_ten_drop_leftover(8,6)"
+                "verb": "make_ten_drop_leftover(9,5)"
               },
               {
-                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give.",
+                "caption": "Add 1 to make ten: 9 needs 1 more, and 5 has it to give.",
                 "scene": {
                   "bins": [],
                   "dots": [
@@ -781,7 +797,7 @@
                     {
                       "group": 0,
                       "r": 20,
-                      "role": "highlight",
+                      "role": "unit",
                       "tag": "filled",
                       "x": 264,
                       "y": 136
@@ -863,10 +879,10 @@
                 },
                 "sceneChanged": true,
                 "step": 2,
-                "verb": "make_ten_drop_leftover(8,6)"
+                "verb": "make_ten_drop_leftover(9,5)"
               },
               {
-                "caption": "The ten is full, but the leftover 4 from 6 is dropped. The student keeps 10 instead of preserving the full sum 14.",
+                "caption": "The ten is full, but the leftover 4 from 5 is dropped. The student keeps 10 instead of preserving the full sum 14.",
                 "scene": {
                   "bins": [],
                   "dots": [
@@ -937,7 +953,7 @@
                     {
                       "group": 0,
                       "r": 20,
-                      "role": "highlight",
+                      "role": "unit",
                       "tag": "filled",
                       "x": 264,
                       "y": 136
@@ -1051,16 +1067,16 @@
                 },
                 "sceneChanged": true,
                 "step": 3,
-                "verb": "make_ten_drop_leftover(8,6)"
+                "verb": "make_ten_drop_leftover(9,5)"
               }
             ],
             "kind": "make_ten_drop_leftover",
             "request": {
-              "a": 8,
-              "b": 6
+              "a": 9,
+              "b": 5
             },
             "result": "10 (leftover 4 dropped; correct sum 14)",
-            "tuple": "make_ten_drop_leftover(8,6)"
+            "tuple": "make_ten_drop_leftover(9,5)"
           }
         },
         "proof": {
@@ -1071,32 +1087,32 @@
               "op": "representation_spec_check",
               "representation": "set_grouping",
               "kind": "make_ten",
-              "a": 8,
-              "b": 6
+              "a": 9,
+              "b": 5
             },
             "grammar": {
-              "denoted_task": "whole_number_addition(8,6)",
+              "denoted_task": "whole_number_addition(9,5)",
               "preserves": true,
               "representation": "set_grouping",
-              "spec": "make_ten(8,6)"
+              "spec": "make_ten(9,5)"
             },
             "frame_count": 3,
             "temporal": true,
             "frame_sequence": [
               {
                 "step": 1,
-                "verb": "make_ten(8,6)",
-                "caption": "Start with 8 in the ten-frame."
+                "verb": "make_ten(9,5)",
+                "caption": "Start with 9 in the ten-frame."
               },
               {
                 "step": 2,
-                "verb": "make_ten(8,6)",
-                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give."
+                "verb": "make_ten(9,5)",
+                "caption": "Add 1 to make ten: 9 needs 1 more, and 5 has it to give."
               },
               {
                 "step": 3,
-                "verb": "make_ten(8,6)",
-                "caption": "8 + 6 = 14: split 6 into 2 and 4, make ten, then 4 left."
+                "verb": "make_ten(9,5)",
+                "caption": "9 + 5 = 14: split 5 into 1 and 4, make ten, then 4 left."
               }
             ]
           },
@@ -1106,14 +1122,14 @@
               "op": "representation_spec_check",
               "representation": "set_grouping",
               "kind": "make_ten_drop_leftover",
-              "a": 8,
-              "b": 6,
+              "a": 9,
+              "b": 5,
               "task": "whole_number_addition"
             },
             "grammar": {
               "deformation": {
                 "correct_answer": 14,
-                "correct_task": "whole_number_addition(8,6)",
+                "correct_task": "whole_number_addition(9,5)",
                 "misconception": "make_ten_drop_leftover",
                 "mode": "misconception",
                 "representation": "set_grouping",
@@ -1122,26 +1138,26 @@
               },
               "preserves": false,
               "representation": "set_grouping",
-              "spec": "make_ten_drop_leftover(8,6)",
-              "target_task": "whole_number_addition(8,6)"
+              "spec": "make_ten_drop_leftover(9,5)",
+              "target_task": "whole_number_addition(9,5)"
             },
             "frame_count": 3,
             "temporal": true,
             "frame_sequence": [
               {
                 "step": 1,
-                "verb": "make_ten_drop_leftover(8,6)",
-                "caption": "Start with 8 in the ten-frame."
+                "verb": "make_ten_drop_leftover(9,5)",
+                "caption": "Start with 9 in the ten-frame."
               },
               {
                 "step": 2,
-                "verb": "make_ten_drop_leftover(8,6)",
-                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give."
+                "verb": "make_ten_drop_leftover(9,5)",
+                "caption": "Add 1 to make ten: 9 needs 1 more, and 5 has it to give."
               },
               {
                 "step": 3,
-                "verb": "make_ten_drop_leftover(8,6)",
-                "caption": "The ten is full, but the leftover 4 from 6 is dropped. The student keeps 10 instead of preserving the full sum 14."
+                "verb": "make_ten_drop_leftover(9,5)",
+                "caption": "The ten is full, but the leftover 4 from 5 is dropped. The student keeps 10 instead of preserving the full sum 14."
               }
             ]
           },
@@ -1591,7 +1607,90 @@
     "lesson_code": "IM-G4-U4-L20",
     "visuals": [
       {
-        "expression": "204,500 + 695",
+        "expression": "268,322 - 72,145",
+        "family": "base_ten_subtraction_refused_large_number",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "correct": {
+          "label": "No productive scene is registered",
+          "description": "Base-ten blocks do not provide a productive physical vocabulary for this magnitude.",
+          "request": {
+            "op": "representation_check",
+            "mode": "productive",
+            "representation": "base_ten_blocks",
+            "task": "whole_number_subtraction",
+            "a": 268322,
+            "b": 72145
+          },
+          "doc": {
+            "error": "reason(no_physical_block_for_required_place_value(268322))",
+            "frames": []
+          }
+        },
+        "incorrect": {
+          "label": "No misconception scene is rendered",
+          "description": "Base-ten blocks do not provide a productive physical vocabulary for this magnitude.",
+          "request": {
+            "op": "representation_check",
+            "mode": "productive",
+            "representation": "base_ten_blocks",
+            "task": "whole_number_subtraction",
+            "a": 268322,
+            "b": 72145
+          },
+          "doc": {
+            "error": "reason(no_physical_block_for_required_place_value(268322))",
+            "frames": []
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "refused_by_representation_grammar",
+            "refusal": "reason(no_physical_block_for_required_place_value(268322))",
+            "grammar": {
+              "allowed": false,
+              "mode": "productive",
+              "preferred": {},
+              "refusal": "reason(no_physical_block_for_required_place_value(268322))",
+              "representation": "base_ten_blocks",
+              "task": "whole_number_subtraction(268322,72145)"
+            },
+            "frame_count": 0,
+            "temporal": false,
+            "frame_sequence": []
+          },
+          "incorrect": {
+            "status": "refused_by_representation_grammar",
+            "refusal": "reason(no_physical_block_for_required_place_value(268322))",
+            "grammar": {
+              "allowed": false,
+              "mode": "productive",
+              "preferred": {},
+              "refusal": "reason(no_physical_block_for_required_place_value(268322))",
+              "representation": "base_ten_blocks",
+              "task": "whole_number_subtraction(268322,72145)"
+            },
+            "frame_count": 0,
+            "temporal": false,
+            "frame_sequence": []
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      },
+      {
+        "expression": "142,571 + 10,909",
         "family": "base_ten_addition_carry_refused_large_number",
         "source": "generated_from_teacher_guide_and_monitoring_chart",
         "status": "refused_by_representation_grammar",
@@ -2039,27 +2138,35 @@
               "representation": "base_ten_blocks"
             },
             {
+              "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
+              "representation": "base_ten_blocks"
+            },
+            {
               "reason": "reason(large_multi_digit_operands_exceed_physical_block_vocabulary)",
               "representation": "base_ten_blocks"
             },
             {
-              "reason": "reason(no_physical_block_for_required_place_value(205195))",
+              "reason": "reason(no_physical_block_for_required_place_value(153480))",
               "representation": "base_ten_blocks"
             },
             {
-              "reason": "reason(no_physical_block_for_required_place_value(204500))",
+              "reason": "reason(no_physical_block_for_required_place_value(10909))",
               "representation": "base_ten_blocks"
             },
             {
-              "reason": "reason(exceeds_set_grouping_scope(205195))",
+              "reason": "reason(no_physical_block_for_required_place_value(142571))",
+              "representation": "base_ten_blocks"
+            },
+            {
+              "reason": "reason(exceeds_set_grouping_scope(153480))",
               "representation": "set_grouping"
             },
             {
-              "reason": "reason(exceeds_set_grouping_scope(695))",
+              "reason": "reason(exceeds_set_grouping_scope(10909))",
               "representation": "set_grouping"
             },
             {
-              "reason": "reason(exceeds_set_grouping_scope(204500))",
+              "reason": "reason(exceeds_set_grouping_scope(142571))",
               "representation": "set_grouping"
             }
           ],
@@ -2068,13 +2175,13 @@
             "im-g4-u4-l20"
           ],
           "strategy": "column_addition_with_carrying",
-          "task": "whole_number_addition(204500,695)",
+          "task": "whole_number_addition(142571,10909)",
           "allowed": false,
-          "refusal": "reason(no_physical_block_for_required_place_value(204500))",
+          "refusal": "reason(no_physical_block_for_required_place_value(10909))",
           "alternative_search": {
             "failed": {
               "representation": "base_ten_blocks",
-              "reason": "reason(no_physical_block_for_required_place_value(204500))"
+              "reason": "reason(no_physical_block_for_required_place_value(10909))"
             },
             "attempts": [
               {
@@ -2135,8 +2242,8 @@
             "op": "number_line_render",
             "mode": "magnitude",
             "operation": "addition",
-            "a": 204500,
-            "b": 695
+            "a": 142571,
+            "b": 10909
           },
           "doc": {
             "canvas": {
@@ -2145,25 +2252,25 @@
             },
             "frames": [
               {
-                "caption": "Start at 204,500 on a scale-broken number line.",
+                "caption": "Start at 142,571 on a scale-broken number line.",
                 "scene": {
                   "axis": {
-                    "breakEnd": 204500,
-                    "max": 205195,
+                    "breakEnd": 142571,
+                    "max": 153480,
                     "min": 0,
                     "scaleBreak": true,
                     "ticks": [
                       0,
-                      204500,
-                      205195
+                      142571,
+                      153480
                     ]
                   },
                   "format": "number-line",
                   "jumps": [],
                   "marks": [
                     {
-                      "at": 204500,
-                      "label": "204,500"
+                      "at": 142571,
+                      "label": "142,571"
                     }
                   ],
                   "mode": "magnitude-addition",
@@ -2174,37 +2281,37 @@
                 "verb": "locate_start"
               },
               {
-                "caption": "Append one jump of +695 to land at 205,195.",
+                "caption": "Append one jump of +10,909 to land at 153,480.",
                 "scene": {
                   "axis": {
-                    "breakEnd": 204500,
-                    "max": 205195,
+                    "breakEnd": 142571,
+                    "max": 153480,
                     "min": 0,
                     "scaleBreak": true,
                     "ticks": [
                       0,
-                      204500,
-                      205195
+                      142571,
+                      153480
                     ]
                   },
                   "format": "number-line",
                   "jumps": [
                     {
-                      "by": 695,
-                      "from": 204500,
+                      "by": 10909,
+                      "from": 142571,
                       "role": "jump-add",
                       "tier": "magnitude",
-                      "to": 205195
+                      "to": 153480
                     }
                   ],
                   "marks": [
                     {
-                      "at": 204500,
-                      "label": "204,500"
+                      "at": 142571,
+                      "label": "142,571"
                     },
                     {
-                      "at": 205195,
-                      "label": "205,195"
+                      "at": 153480,
+                      "label": "153,480"
                     }
                   ],
                   "mode": "magnitude-addition",
@@ -2215,37 +2322,37 @@
                 "verb": "append_addend"
               },
               {
-                "caption": "204,500 + 695 = 205,195.",
+                "caption": "142,571 + 10,909 = 153,480.",
                 "scene": {
                   "axis": {
-                    "breakEnd": 204500,
-                    "max": 205195,
+                    "breakEnd": 142571,
+                    "max": 153480,
                     "min": 0,
                     "scaleBreak": true,
                     "ticks": [
                       0,
-                      204500,
-                      205195
+                      142571,
+                      153480
                     ]
                   },
                   "format": "number-line",
                   "jumps": [
                     {
-                      "by": 695,
-                      "from": 204500,
+                      "by": 10909,
+                      "from": 142571,
                       "role": "jump-add",
                       "tier": "magnitude",
-                      "to": 205195
+                      "to": 153480
                     }
                   ],
                   "marks": [
                     {
-                      "at": 204500,
-                      "label": "204,500"
+                      "at": 142571,
+                      "label": "142,571"
                     },
                     {
-                      "at": 205195,
-                      "label": "205,195"
+                      "at": 153480,
+                      "label": "153,480"
                     }
                   ],
                   "mode": "magnitude-addition",
@@ -2266,11 +2373,11 @@
             "kind": "magnitude_addition",
             "note": "A bounded number-line length model: the second addend is appended to the first without unrolling unit jumps.",
             "request": {
-              "a": 204500,
-              "b": 695,
+              "a": 142571,
+              "b": 10909,
               "op": "addition"
             },
-            "result": "205195",
+            "result": "153480",
             "teacher": {
               "breaks_at": [
                 {
@@ -2295,7 +2402,7 @@
                 "source": "teacher_layer_composition_over_existing_witnesses"
               }
             },
-            "tuple": "magnitude_addition(204500,695)"
+            "tuple": "magnitude_addition(142571,10909)"
           }
         },
         "incorrect": {
@@ -2306,11 +2413,11 @@
             "mode": "productive",
             "representation": "base_ten_blocks",
             "task": "whole_number_addition",
-            "a": 204500,
-            "b": 695
+            "a": 142571,
+            "b": 10909
           },
           "doc": {
-            "error": "Representation grammar refused this base-ten picture: reason(no_physical_block_for_required_place_value(204500))",
+            "error": "Representation grammar refused this base-ten picture: reason(no_physical_block_for_required_place_value(10909))",
             "frames": []
           }
         },
@@ -2323,14 +2430,14 @@
               "representation": "number_line",
               "mode": "magnitude",
               "operation": "addition",
-              "a": 204500,
-              "b": 695
+              "a": 142571,
+              "b": 10909
             },
             "grammar": {
-              "denoted_task": "whole_number_addition(204500,695)",
+              "denoted_task": "whole_number_addition(142571,10909)",
               "preserves": true,
               "representation": "number_line",
-              "spec": "magnitude_addition(204500,695)"
+              "spec": "magnitude_addition(142571,10909)"
             },
             "frame_count": 3,
             "temporal": true,
@@ -2338,23 +2445,23 @@
               {
                 "step": 1,
                 "verb": "locate_start",
-                "caption": "Start at 204,500 on a scale-broken number line."
+                "caption": "Start at 142,571 on a scale-broken number line."
               },
               {
                 "step": 2,
                 "verb": "append_addend",
-                "caption": "Append one jump of +695 to land at 205,195."
+                "caption": "Append one jump of +10,909 to land at 153,480."
               },
               {
                 "step": 3,
                 "verb": "read_sum",
-                "caption": "204,500 + 695 = 205,195."
+                "caption": "142,571 + 10,909 = 153,480."
               }
             ]
           },
           "incorrect": {
             "status": "refused_by_representation_grammar",
-            "refusal": "reason(no_physical_block_for_required_place_value(204500))",
+            "refusal": "reason(no_physical_block_for_required_place_value(10909))",
             "grammar": {
               "candidates": [
                 {
@@ -2799,27 +2906,35 @@
                   "representation": "base_ten_blocks"
                 },
                 {
+                  "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
+                  "representation": "base_ten_blocks"
+                },
+                {
                   "reason": "reason(large_multi_digit_operands_exceed_physical_block_vocabulary)",
                   "representation": "base_ten_blocks"
                 },
                 {
-                  "reason": "reason(no_physical_block_for_required_place_value(205195))",
+                  "reason": "reason(no_physical_block_for_required_place_value(153480))",
                   "representation": "base_ten_blocks"
                 },
                 {
-                  "reason": "reason(no_physical_block_for_required_place_value(204500))",
+                  "reason": "reason(no_physical_block_for_required_place_value(10909))",
                   "representation": "base_ten_blocks"
                 },
                 {
-                  "reason": "reason(exceeds_set_grouping_scope(205195))",
+                  "reason": "reason(no_physical_block_for_required_place_value(142571))",
+                  "representation": "base_ten_blocks"
+                },
+                {
+                  "reason": "reason(exceeds_set_grouping_scope(153480))",
                   "representation": "set_grouping"
                 },
                 {
-                  "reason": "reason(exceeds_set_grouping_scope(695))",
+                  "reason": "reason(exceeds_set_grouping_scope(10909))",
                   "representation": "set_grouping"
                 },
                 {
-                  "reason": "reason(exceeds_set_grouping_scope(204500))",
+                  "reason": "reason(exceeds_set_grouping_scope(142571))",
                   "representation": "set_grouping"
                 }
               ],
@@ -2828,13 +2943,13 @@
                 "im-g4-u4-l20"
               ],
               "strategy": "column_addition_with_carrying",
-              "task": "whole_number_addition(204500,695)",
+              "task": "whole_number_addition(142571,10909)",
               "allowed": false,
-              "refusal": "reason(no_physical_block_for_required_place_value(204500))",
+              "refusal": "reason(no_physical_block_for_required_place_value(10909))",
               "alternative_search": {
                 "failed": {
                   "representation": "base_ten_blocks",
-                  "reason": "reason(no_physical_block_for_required_place_value(204500))"
+                  "reason": "reason(no_physical_block_for_required_place_value(10909))"
                 },
                 "attempts": [
                   {

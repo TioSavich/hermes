@@ -38,8 +38,14 @@
 % Stable tracked home: formal/incompatibility/incompatibility_sets_discovered.pl
 % (provenance header inside the file; regeneration steps in
 % docs/bigred-incompatibility-RUNBOOK.md).
+% Multifile because more than one cache file contributes rows: the Big Red
+% iteration7 harvest and the locally computed error-rule cache. Without it the
+% second consult would REPLACE the first file's clauses rather than add to them,
+% and the Big Red rows would leave without a word.
 :- dynamic discovered_set_fact/2.
 :- dynamic discovered_set_kind/3.   % Context, Set, Kind (emergent/defeated/...)
+:- multifile discovered_set_fact/2.
+:- multifile discovered_set_kind/3.
 
 %!  discovered_cache_file(-Cache) is semidet.
 %
@@ -90,6 +96,19 @@ warn_missing_discovery_cache :-
    ->  discovered_cache_load_action(Cache, Action),
        load_discovered_cache_action(Action)
    ;   warn_missing_discovery_cache
+   ).
+
+% The error-rule cache is a second discovered-set source, computed locally over
+% the material inferences generated from the reviewed research-corpus codings
+% (scripts/extract_error_rule_incompatibility.py). It is kept beside the Big Red
+% cache rather than merged into it: that file is the harvest of a named SLURM
+% job and editing it would break its provenance. Its absence is not a
+% degradation, so it is consulted quietly when present.
+:- (   absolute_file_name(incompat(incompatibility_sets_error_rules),
+                         ErrorRuleCache,
+                         [ extensions([pl]), access(read), file_errors(fail) ])
+   ->  consult(ErrorRuleCache)
+   ;   true
    ).
 
 %!  incompatibility_set(?Context, ?Set) is nondet.

@@ -249,7 +249,10 @@ def _check_side(
     sequence = side_proof.get("frame_sequence")
     expected_sequence = _frame_sequence(frames)
 
-    if side == "correct" and status != "productive_preserves_denoted_task":
+    if side == "correct" and status not in {
+        "productive_preserves_denoted_task",
+        "refused_by_representation_grammar",
+    }:
         issues.append(f"{path}.{side}: correct proof must be productive_preserves_denoted_task")
 
     if status == "refused_by_representation_grammar":

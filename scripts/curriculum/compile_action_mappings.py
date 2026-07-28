@@ -1069,11 +1069,72 @@ def extract_task_candidates(
                             else "lesson_has_no_addition_attachment",
                         )
                     )
+        # A bullet item is deliberately required here.  It keeps a binary
+        # expression distinct from a subexpression inside a longer chain, so
+        # the emitted operands remain exactly the task the guide prints.
+        if re.search(
+            r"\bFind the value of each expression mentally\b", span.text, re.IGNORECASE
+        ):
+            for parser_id, operation, symbol, task_name in (
+                (
+                    "direct_subtraction_expression_list",
+                    "subtraction",
+                    r"-",
+                    "subtract",
+                ),
+                (
+                    "direct_multiplication_expression_list",
+                    "multiplication",
+                    r"[×·]",
+                    "multiply",
+                ),
+                (
+                    "direct_division_expression_list",
+                    "division",
+                    r"÷",
+                    "divide",
+                ),
+            ):
+                expression_number = 0
+                pattern = re.compile(
+                    rf"\s*(?P<a>\d+)\s*{symbol}\s*(?P<b>\d+)\s*"
+                )
+                for line, text in span.lines:
+                    for item in text.split("•")[1:]:
+                        match = pattern.fullmatch(item)
+                        if not match:
+                            continue
+                        expression_number += 1
+                        has_route = any(
+                            attached_operation == operation
+                            for attached_operation, _ in attachments.get(span.code, set())
+                        )
+                        candidates.add(
+                            TaskCandidate(
+                                span.code,
+                                f"{task_name}({int(match.group('a'))}, "
+                                f"{int(match.group('b'))})",
+                                operation,
+                                parser_id,
+                                span.source,
+                                line,
+                                line,
+                                f"{span.position}/expression({expression_number})",
+                                match.group(0).strip(),
+                                "reviewable" if has_route else "rejected",
+                                "exact_standalone_binary_expression_and_operation_route"
+                                if has_route
+                                else f"lesson_has_no_{operation}_attachment",
+                            )
+                        )
     return sorted(candidates)
 
 
 TASK_GRAMMAR_ACTIONS = {
     "direct_addition_expression_list": ("addition", "count_on_from_larger"),
+    "direct_subtraction_expression_list": ("subtraction", "take_away_base_ones"),
+    "direct_multiplication_expression_list": ("multiplication", "repeat_equal_groups"),
+    "direct_division_expression_list": ("division", "measure_groups_of_size"),
     "equal_groups_pronoun_each": ("multiplication", "repeat_equal_groups"),
     "equal_groups_each_has": ("multiplication", "repeat_equal_groups"),
     "equal_groups_each_contains": ("multiplication", "repeat_equal_groups"),

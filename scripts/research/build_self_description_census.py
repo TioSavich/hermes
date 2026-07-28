@@ -844,8 +844,12 @@ def build() -> dict[str, object]:
     # to a method that still runs here.
     # knowledge/index/data_consumption_manifest.pl is the 275th: it indexes every
     # data artifact in the checkout and the readers that open it.
-    if len(registry_rows) != 276:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 276")
+    # formal/incompatibility/error_rule_inferences.pl is the 277th: the generated
+    # error-rule material inferences that defeasible_inference.pl includes. The
+    # registry reads it as a source file with no op routing to it, which is what
+    # an included clause file looks like from the outside.
+    if len(registry_rows) != 277:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 277")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -853,8 +857,11 @@ def build() -> dict[str, object]:
     # 63 until machine_block_decomposition.pl, the 64th: a generated index
     # declaring a module, queryable from Prolog, with no worker op routing to
     # it. Same reason as the coverage-absence and lesson-identity indexes.
-    if len(orphan_records) != 66:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 66")
+    # error_rule_inferences.pl is the 67th, on narrower grounds: it is an
+    # included clause file rather than a module, so nothing routes to it and
+    # nothing ever will. The registry has no separate reading for an include.
+    if len(orphan_records) != 67:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 67")
     if len(unrouted) != 6:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 

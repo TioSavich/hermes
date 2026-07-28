@@ -15,7 +15,7 @@
  *     which source made the context incoherent, and for emergent defeats, every
  *     one-element removal that was checked to prove minimality.
  *
- * Two incoherence sources, both run (nothing is hand-listed as "incompatible"):
+ * Three incoherence sources, all run (nothing is hand-listed as "incompatible"):
  *   1. The sequent engine's own incoherence (sequent_engine:incoherent/1):
  *      structural P/neg(P), modal D(P)/D(neg(P)), the Robinson succ(x)=0 rule,
  *      and anything derivable to falsum. This is sparse but genuine.
@@ -24,17 +24,31 @@
  *      semantics: the break fires when all its conditions are present). The
  *      metaphor break-points are catalogued as data in grounding_metaphors*.pl;
  *      this turns a handful into something the consequence relation can run.
+ *   3. error_rule_break/2: the same contains-semantics over student rules coded
+ *      from the research corpus — a rule, what it licenses on the input class
+ *      where it agrees with the sanctioned operation, and the class where that
+ *      licensed result diverges. Generated into error_rule_inferences.pl and
+ *      included below.
+ *
+ * WHY SOURCES 2 AND 3 ARE SEPARATE PREDICATES. A metaphor break is jointly
+ * incoherent as mathematics: the diagonal is incommensurable with the side and
+ * anyone can check it. An error triple is incoherent relative to a community's
+ * sanction, and the corpus names the community in its `incompatible_with`
+ * column. The consequence relation treats both alike, so the distinction has to
+ * be carried in the data: error_rule_warrant/2 records it, and a claim built on
+ * the relation can then say which kind it rests on.
  *
  * HONEST SCOPE. The richness of discovery is bounded by how many incoherence
- * conditions exist. Source 1 is sparse; source 2 now compiles the FULL
- * catalogue: every metaphor_breaks_at/2 row in grounding_metaphors.pl and
- * every ln_metaphor_breaks_at/3 row in grounding_metaphors_extended.pl has a
- * compiled form (18 breaks, 4 of them emergent triples). The remaining lever
- * for growing emergent hyperedges is authoring CROSS-METAPHOR triples — sets
- * incoherent only across two metaphors' commitments. Those are not catalogued
- * data; they are philosophical judgment work (the lakoff-nunez steward's
- * brief), one candidate at a time, and belong beside the catalogue in
- * grounding_metaphors*.pl before they are compiled here.
+ * conditions exist. Source 1 is sparse; source 2 compiles the FULL catalogue:
+ * every metaphor_breaks_at/2 row in grounding_metaphors.pl and every
+ * ln_metaphor_breaks_at/3 row in grounding_metaphors_extended.pl has a compiled
+ * form (18 breaks, 4 of them emergent triples). Authoring CROSS-METAPHOR
+ * triples — sets incoherent only across two metaphors' commitments — remains
+ * philosophical judgment work (the lakoff-nunez steward's brief), one candidate
+ * at a time, and belongs beside the catalogue in grounding_metaphors*.pl before
+ * being compiled here. Source 3 grows by coding more of the corpus, and its
+ * bound is aggregation rather than row count: a rule coded once yields an atom
+ * nothing else mentions.
  */
 :- module(defeasible_inference,
           [ material_inference/3,        % Id, Premises, Conclusion
@@ -43,6 +57,9 @@
             classify_defeat_witness/4,   % +Id, +DefeaterSet, -Outcome, -Witness
             discover_defeat/2,           % ?Id, -DefeaterSet (defeated or emergent)
             compiled_break/2,            % BreakId, ConditionSet  (compiled L&N break)
+            error_rule_break/2,          % BreakId, ConditionSet  (coded student rule)
+            error_rule_warrant/2,        % BreakId, Warrant
+            error_rule_source/2,         % BreakId, ErrorInstanceRowIds
             ctx_incoherent/1,            % +Context
             ctx_incoherent_witness/2     % +Context, -Witness
           ]).
@@ -52,6 +69,10 @@
               [ incoherent_witness/2,
                 incoherent_base/1
               ]).
+
+% material_inference/3 is authored below for the catalogued metaphors and
+% generated for the coded student rules, so its clauses arrive in two places.
+:- discontiguous material_inference/3.
 
 
 %!  material_inference(?Id, ?Premises, ?Conclusion) is nondet.
@@ -199,11 +220,13 @@ compiled_break(cantor_same_number_reassignment,
 %!  defeater_vocabulary(-Vocabulary) is det.
 %
 %   The pool of candidate commitments the hotswap can add to an inference's
-%   context. Drawn from the compiled-break conditions plus a structural negation,
-%   so the sweep covers both genuine domain defeaters and a control.
+%   context. Drawn from every break's conditions plus a structural negation, so
+%   the sweep covers genuine domain defeaters and a control alike. The pool
+%   grows with the data: each coded student rule adds its own conditions, which
+%   is why the sweep's cost is quadratic in how much of the corpus is coded.
 defeater_vocabulary(Vocabulary) :-
     findall(Term,
-            ( compiled_break(_, Conditions), member(Term, Conditions) ),
+            ( break_conditions(_, Conditions), member(Term, Conditions) ),
             BreakTerms0),
     sort(BreakTerms0, BreakTerms),
     % a structural defeater (negation of a premise) and a neutral control
@@ -233,13 +256,32 @@ ctx_incoherent_witness(Context,
     sequent_engine:incoherent_witness(Context, EngineWitness),
     !.
 ctx_incoherent_witness(Context,
-                       _{source: compiled_break,
+                       _{source: Source,
                          break_id: BreakId,
+                         warrant: Warrant,
                          conditions_present: Conditions,
                          context: Context}) :-
-    compiled_break(BreakId, Conditions),
+    break_conditions(BreakId, Conditions),
     subset_present(Conditions, Context),
+    !,
+    break_source(BreakId, Source, Warrant).
+
+
+%!  break_conditions(?BreakId, ?Conditions) is nondet.
+%
+%   Every runnable break, whichever catalogue it came from. The consequence
+%   relation asks only whether the conditions are present; which catalogue
+%   supplied them is recorded by break_source/3 and read off the witness.
+break_conditions(BreakId, Conditions) :-
+    compiled_break(BreakId, Conditions).
+break_conditions(BreakId, Conditions) :-
+    error_rule_break(BreakId, Conditions).
+
+
+break_source(BreakId, error_rule_break, Warrant) :-
+    error_rule_warrant(BreakId, Warrant),
     !.
+break_source(_BreakId, compiled_break, mathematically_forced).
 
 subset_present([], _).
 subset_present([T|Ts], Context) :-
@@ -349,3 +391,30 @@ n_subset(N, [X|Xs], [X|Rest]) :-
 n_subset(N, [_|Xs], Rest) :-
     N > 0,
     n_subset(N, Xs, Rest).
+
+
+% =================================================================
+% Coded student rules (source 3)
+% =================================================================
+%
+% material_inference/3, error_rule_break/2, error_rule_warrant/2 and
+% error_rule_source/2 rows generated from the reviewed research-corpus codings.
+% Included rather than use_module'd because these clauses extend predicates this
+% module already defines.
+%
+% The generated file is derived data and the module loads without it, the way
+% the discovery cache's absence degrades rather than breaks. With no coded rules
+% the three predicates below have no clauses and source 3 contributes nothing.
+% The generated file keeps each family's inference, break, warrant and source
+% rows together so a reader sees one coded rule at a time, which interleaves the
+% four predicates.
+:- dynamic error_rule_break/2.
+:- dynamic error_rule_warrant/2.
+:- dynamic error_rule_source/2.
+:- discontiguous error_rule_break/2.
+:- discontiguous error_rule_warrant/2.
+:- discontiguous error_rule_source/2.
+
+:- if(exists_source(error_rule_inferences)).
+:- include(error_rule_inferences).
+:- endif.

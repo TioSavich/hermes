@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate a bounded provenance registry for quantitative research claims.
 
-The denominator is every explicit quantitative-result statement in the 57
+The denominator is every explicit quantitative-result statement in the 60
 top-level Markdown reports in docs/research/: a non-code prose line carrying a
 percentage or cohort ratio, or a Markdown table data row under a header that
 names a quantitative field.  A table row is one measurement vector; its metric
@@ -285,9 +285,11 @@ def render_registry() -> str:
     # The count is asserted rather than inferred so that a report entering or
     # leaving the corpus is a decision someone makes, not a silent change in a
     # denominator. Raise it when a report is added, in the same commit.
-    # 56 until 2026-07-27, when the no-saying vocabularies report was written.
-    if len(reports) != 57:
-        raise RuntimeError(f"expected 57 top-level research reports, found {len(reports)}")
+    # 56 until 2026-07-27; that day added the no-saying vocabularies report, the
+    # singleton-tail analysis, and the non-emergent-sets analysis, and vendored
+    # the 2026-07-02 emergent-hyperedge search record three modules cite.
+    if len(reports) != 60:
+        raise RuntimeError(f"expected 60 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
@@ -316,7 +318,7 @@ def render_registry() -> str:
     lines = [
         "/** <module> Generated research-measurement provenance registry",
         " *",
-        " * The denominator is every explicit quantitative-result statement in the 57",
+        " * The denominator is every explicit quantitative-result statement in the 60",
         " * top-level Markdown reports in docs/research/: a non-code prose line with",
         " * a percentage or cohort ratio, or a Markdown table data row under a header",
         " * that names a quantitative field. A table row is one measurement vector;",

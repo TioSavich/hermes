@@ -1165,6 +1165,9 @@
  ],
  "promoted_task_parsers": [
   "direct_addition_expression_list",
+  "direct_subtraction_expression_list",
+  "direct_multiplication_expression_list",
+  "direct_division_expression_list",
   "equal_groups_pronoun_each",
   "equal_groups_each_has",
   "equal_groups_each_contains",

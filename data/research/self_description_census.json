@@ -406,7 +406,7 @@
       "crosswalk": 38,
       "dialectic": 1,
       "geometry_witness": 35,
-      "incompatibility": 8,
+      "incompatibility": 9,
       "infrastructure": 20,
       "juncture": 1,
       "learner": 25,
@@ -423,7 +423,7 @@
     },
     "by_status": {
       "lazy_reachable": 9,
-      "orphan_module": 66,
+      "orphan_module": 67,
       "routed_paged": 195,
       "unrouted": 6
     },
@@ -434,9 +434,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 30
+      "undetermined": 31
     },
-    "total": 276,
+    "total": 277,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -618,6 +618,20 @@
       "module": "synth_lazy",
       "note": "Only the unconsumed run_add.pl and run_lazy.pl entry points import this module. No stronger verdict is supported.",
       "path": "formal/formalization/synthesis/synth_lazy.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "incompatibility",
+      "evidence": [
+        {
+          "locator": "% PURPOSE: Error-rule material inferences and their break points, generated from the",
+          "path": "formal/incompatibility/error_rule_inferences.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "error_rule_inferences",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "formal/incompatibility/error_rule_inferences.pl",
       "verdict": "undetermined"
     },
     {

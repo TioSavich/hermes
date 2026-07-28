@@ -1,0 +1,1519 @@
+{
+  "slice": "fraction_comparison",
+  "slice_definition": "error_instances where mathematical_domain = 'fraction' and lower(mathematical_topic) in ('fraction comparison', 'comparing fractions')",
+  "rows_in_slice": 81,
+  "coded_at": "2026-07-27",
+  "model": "gemma-4-31B-it via REALLMS",
+  "standard": "docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md §5",
+  "method": "One REALLMS call per row against the §5 standard, gated mechanically on verbatim source spans, on the rule being an operation rather than a deficiency, on the domain being a class rather than an instance, on the commitment naming a holder and a context, and on the triple having three distinct elements. Every proposal the gate accepted was then read. The family map is the reviewer's consolidation: rules that are one operation carry one atom, so the same atoms recur across rows and the emergence criterion has something to find.",
+  "review": {
+    "rows_coded": 81,
+    "gate_accepted": 60,
+    "review_kept": 58,
+    "review_rejected": 2,
+    "triples": 57,
+    "families": 15
+  },
+  "families": {
+    "order_by_denominator_magnitude": {
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators",
+      "gloss": "Whole-number order read off the denominator: the larger denominator names the larger fraction.",
+      "rows": [
+        44147,
+        44383,
+        44389,
+        44873,
+        45520,
+        46374,
+        46396,
+        46684,
+        46824,
+        46924,
+        47016,
+        47040,
+        47112,
+        47285
+      ]
+    },
+    "order_by_inverse_denominator_magnitude": {
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators",
+      "gloss": "The denominator read alone and inverted: more pieces means smaller, whatever the numerator.",
+      "rows": [
+        44146,
+        44433,
+        45354,
+        45458,
+        45473,
+        46509,
+        46663,
+        46735,
+        46757,
+        47017
+      ]
+    },
+    "order_by_component_magnitude": {
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators",
+      "gloss": "Both numerals read as magnitudes: larger components name the larger fraction.",
+      "rows": [
+        44481,
+        44687,
+        44707,
+        45292,
+        45313,
+        45650,
+        46964,
+        47009
+      ]
+    },
+    "order_by_inverse_component_magnitude": {
+      "consequence_atom": "inverse_component_order_is_fraction_order",
+      "divergence_atom": "inverse_component_order_diverges_for_equal_denominators",
+      "gloss": "The same componential reading inverted: the smaller numerals name the larger fraction.",
+      "rows": [
+        47012
+      ]
+    },
+    "order_by_numerator_magnitude": {
+      "consequence_atom": "numerator_order_is_fraction_order",
+      "divergence_atom": "numerator_order_diverges_for_unequal_denominators",
+      "gloss": "The numerator read alone as a count.",
+      "rows": [
+        44629,
+        44875,
+        44965
+      ]
+    },
+    "order_by_numerator_denominator_gap": {
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order",
+      "gloss": "Gap thinking as an ordering: the smaller denominator-minus-numerator gap names the larger fraction. The two atoms are the condition terms smr_frac_benchmark_compare:gap_viability/3 already computes.",
+      "rows": [
+        44728,
+        45649,
+        46451,
+        46823,
+        47001,
+        47011,
+        47267
+      ]
+    },
+    "equate_by_numerator_denominator_gap": {
+      "consequence_atom": "equal_gap_is_fraction_equivalence",
+      "divergence_atom": "gap_order_diverges_from_fraction_order",
+      "gloss": "Gap thinking as an equivalence: equal gaps name equivalent fractions. Shares the ordering family's divergence class because it is the same class, computed by the same automaton.",
+      "rows": [
+        44628,
+        44803,
+        46683,
+        46920,
+        46965
+      ]
+    },
+    "equate_proximity_to_one_by_gap": {
+      "consequence_atom": "equal_gap_is_equal_proximity_to_one",
+      "divergence_atom": "gap_order_diverges_from_fraction_order",
+      "gloss": "Gap thinking about distance rather than order: equal gaps name equal proximity to one.",
+      "rows": [
+        46424
+      ]
+    },
+    "compare_fraction_names_ignoring_referent_unit": {
+      "consequence_atom": "equal_fraction_names_are_equal_quantities",
+      "divergence_atom": "wholes_of_unequal_size",
+      "gloss": "The fraction name compared without its referent unit.",
+      "rows": [
+        44861
+      ]
+    },
+    "name_difference_relative_to_an_operand": {
+      "consequence_atom": "operand_relative_naming_is_unit_relative_naming",
+      "divergence_atom": "neither_operand_is_the_unit_whole",
+      "gloss": "The difference between two fractions named as a fraction of one operand rather than of the whole.",
+      "rows": [
+        44774,
+        44991
+      ]
+    },
+    "order_by_numerator_sum": {
+      "consequence_atom": "numerator_sum_is_quantity_order",
+      "divergence_atom": "numerator_sum_diverges_for_unequal_denominators",
+      "gloss": "Numerators summed across fractions with the denominators dropped.",
+      "rows": [
+        45599
+      ]
+    },
+    "order_by_component_sum": {
+      "consequence_atom": "component_sum_is_fraction_order",
+      "divergence_atom": "component_sum_inverts_for_equal_numerators",
+      "gloss": "Numerator and denominator added together and the sums compared.",
+      "rows": [
+        46879
+      ]
+    },
+    "equate_by_digit_set": {
+      "consequence_atom": "same_digits_name_the_same_fraction",
+      "divergence_atom": "distinct_fractions_share_a_digit_set",
+      "gloss": "Two fractions treated as equivalent when the same digits appear in both.",
+      "rows": [
+        45651
+      ]
+    },
+    "compare_halves_by_cut_orientation": {
+      "consequence_atom": "cut_orientation_preserves_half_size",
+      "divergence_atom": "halves_cut_in_different_orientations",
+      "gloss": "Halves of one whole compared by how the whole was cut.",
+      "rows": [
+        45614
+      ]
+    },
+    "share_by_repeated_halving": {
+      "consequence_atom": "halving_yields_one_piece_per_sharer",
+      "divergence_atom": "group_size_is_not_twice_the_item_count",
+      "gloss": "A sharing situation handled by halving each item once, whatever the group size.",
+      "rows": [
+        47270
+      ]
+    }
+  },
+  "codings": [
+    {
+      "row_id": 44146,
+      "student_rule": "Compare two fractions by comparing their denominators; the fraction with the smaller denominator is the larger fraction.",
+      "valid_domain": "pairs with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that magnitude is determined by the ratio of numerator to denominator rather than by the magnitude of the denominator alone.",
+      "licensed_consequence": "denominator order inverts fraction order",
+      "divergence_context": "pairs with different numerators",
+      "evidence": {
+        "description_span": "The student judges the magnitude of a fraction based solely on the denominator using an inverse relationship.",
+        "example_span": "The student incorrectly argued that 1/2 was larger than 4/5 because halves are larger than fifths."
+      },
+      "proposed_slugs": {
+        "rule": "inverse_denominator_comparison",
+        "consequence": "denominator_order_inverts_fraction_order",
+        "divergence": "fraction_magnitude_on_differing_numerators"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 44147,
+      "student_rule": "Compare two fractions by their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for a constant numerator, a larger denominator results in a smaller fraction.",
+      "licensed_consequence": "denominator order is fraction order",
+      "divergence_context": "unit fractions",
+      "evidence": {
+        "description_span": "The student compares fractions by attending to the total number of pieces in the whole rather than the size of the piece.",
+        "example_span": "The student would argue that 1/4 is larger than 1/3 because 1/4 has more total pieces."
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_determines_fraction_magnitude",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "denominator_order_inverts_on_unit_fractions"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44383,
+      "student_rule": "Order two fractions by the magnitude of their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that a fraction's magnitude is determined by the ratio of its numerator to its denominator rather than the magnitude of the denominator alone.",
+      "licensed_consequence": "natural number order is fraction order",
+      "divergence_context": "unit fractions",
+      "evidence": {
+        "description_span": "assuming that a fraction with a larger denominator is larger",
+        "example_span": "one-eighth was larger than one-third because eight is bigger than three"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_order",
+        "consequence": "natural_number_order",
+        "divergence": "denominator_order_inverts_on_unit_fractions"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44389,
+      "student_rule": "Compare two unit fractions by comparing their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a unit fraction is inversely proportional to the magnitude of its denominator.",
+      "licensed_consequence": "larger numeral is larger quantity",
+      "divergence_context": "pairs of distinct unit fractions",
+      "evidence": {
+        "description_span": "revert to whole-number reasoning when presented with the same task outside the activity context",
+        "example_span": "1/7 is larger because 7 is larger than 5"
+      },
+      "proposed_slugs": {
+        "rule": "compare_unit_fractions_by_denominator_magnitude",
+        "consequence": "larger_numeral_is_larger_quantity",
+        "divergence": "unit_fraction_magnitude"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44433,
+      "student_rule": "Compare two fractions by identifying the larger denominator; the fraction with the larger denominator is the smaller fraction.",
+      "valid_domain": "pairs with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that fraction magnitude is determined by the ratio of the numerator to the denominator rather than by the magnitude of the denominator alone.",
+      "licensed_consequence": "For fractions with equal numerators, the larger denominator indicates the smaller fraction.",
+      "divergence_context": "pairs with different numerators",
+      "evidence": {
+        "description_span": "Students rely exclusively on the size of the denominator to compare fractions, assuming that more pieces automatically means a smaller fraction regardless of the numerator.",
+        "example_span": "When you use sevenths, there are more pieces, so they are smaller."
+      },
+      "proposed_slugs": {
+        "rule": "larger_denominator_is_smaller_fraction",
+        "consequence": "denominator_order_inverts_fraction_order",
+        "divergence": "fraction_size_diverges_from_denominator_size"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 44481,
+      "student_rule": "Order two fractions by the magnitude of their natural number components; the fraction with the larger components is the larger fraction.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than the absolute magnitude of the components.",
+      "licensed_consequence": "numerator order is fraction order",
+      "divergence_context": "inconsistent fraction pairs",
+      "evidence": {
+        "description_span": "relying on the magnitudes of their natural number components",
+        "example_span": "the two greater natural number components (8 and 19) are found in the lesser fraction (8/19)"
+      },
+      "proposed_slugs": {
+        "rule": "component_magnitude_comparison",
+        "consequence": "numerator_order_is_fraction_order",
+        "divergence": "component_magnitude_inverts_fraction_magnitude"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44628,
+      "student_rule": "Determine if two fractions are equivalent by calculating the absolute difference between the numerator and denominator for each; if the differences are equal, the fractions are equivalent.",
+      "valid_domain": "pairs of fractions with equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number equivalence, that two fractions are equivalent if and only if they represent the same proportional relationship between numerator and denominator rather than the same additive difference between them.",
+      "licensed_consequence": "fractions with the same absolute difference between numerator and denominator are equivalent",
+      "divergence_context": "pairs of fractions with the same absolute difference between their numerator and denominator",
+      "evidence": {
+        "description_span": "assuming fractions are equivalent if the absolute difference between their numerator and denominator is the same",
+        "example_span": "5/6 and 7/8 are equivalent because they both require one 'bit' to make a whole"
+      },
+      "proposed_slugs": {
+        "rule": "gap_equivalence",
+        "consequence": "gap_equivalence_is_fraction_equivalence",
+        "divergence": "fraction_equivalence_divergence"
+      },
+      "rule_atom": "equate_by_numerator_denominator_gap",
+      "consequence_atom": "equal_gap_is_fraction_equivalence",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 44629,
+      "student_rule": "Order two fractions by the magnitude of their numerators; the fraction with the larger numerator is the larger fraction.",
+      "valid_domain": "pairs of fractions with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is fixed by the ratio of numerator to denominator rather than by the magnitude of the numerator alone.",
+      "licensed_consequence": "numerator order is fraction order",
+      "divergence_context": "pairs of fractions with unequal denominators",
+      "evidence": {
+        "description_span": "incorrectly relies on a learned rule about numerators without considering the denominators",
+        "example_span": "the bigger the numerator, the greater the portion"
+      },
+      "proposed_slugs": {
+        "rule": "numerator_magnitude_determines_order",
+        "consequence": "numerator_order_is_fraction_order",
+        "divergence": "numerator_order_on_unequal_denominators"
+      },
+      "rule_atom": "order_by_numerator_magnitude",
+      "consequence_atom": "numerator_order_is_fraction_order",
+      "divergence_atom": "numerator_order_diverges_for_unequal_denominators"
+    },
+    {
+      "row_id": 44687,
+      "student_rule": "Compare two fractions by comparing their numerators and denominators; the fraction with the larger numerator and larger denominator is the larger fraction.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the absolute magnitude of the numerical components.",
+      "licensed_consequence": "component magnitude is fraction magnitude",
+      "divergence_context": "equivalent fractions",
+      "evidence": {
+        "description_span": "the fraction with the largest numerical components (numerator and denominator) represents the greatest quantity",
+        "example_span": "a student chooses 3/6 because 3 is bigger than 2 and 1, and 6 is bigger than 4 and 2"
+      },
+      "proposed_slugs": {
+        "rule": "component_magnitude_determines_fraction_magnitude",
+        "consequence": "component_magnitude_is_fraction_magnitude",
+        "divergence": "fraction_magnitude_on_equivalent_fractions"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44707,
+      "student_rule": "Order two fractions by the magnitude of their components; the fraction with the larger numerator or larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the value of a fraction is determined by the ratio of numerator to denominator, meaning that for a fixed numerator, an increase in the denominator results in a decrease in the fraction's value.",
+      "licensed_consequence": "numeral order is value order",
+      "divergence_context": "pairs of fractions with equal numerators",
+      "evidence": {
+        "description_span": "when a fraction's denominator, numerator, or both increase, the numerical value of the total fraction also increases",
+        "example_span": null
+      },
+      "proposed_slugs": {
+        "rule": "component_magnitude_is_fraction_order",
+        "consequence": "numeral_order_is_value_order",
+        "divergence": "denominator_order_inverts_fraction_order"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44728,
+      "student_rule": "Compare two fractions by taking the difference between the denominator and numerator; the fraction with the larger difference is the smaller fraction.",
+      "valid_domain": "pairs of fractions with either equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is fixed by the ratio of the numerator to the denominator rather than by the additive difference between the two numerals.",
+      "licensed_consequence": "the fraction with the larger difference is the smaller fraction",
+      "divergence_context": "pairs of fractions where the fraction with the smaller difference is the smaller fraction",
+      "evidence": {
+        "description_span": "taking the difference between the numerator and denominator and assuming the fraction with the larger difference is smaller",
+        "example_span": "Claiming that 2/7 is smaller than 3/7 because the difference between 7 and 2 is 5, which is greater than the difference between 7 and 3"
+      },
+      "proposed_slugs": {
+        "rule": "difference_magnitude_comparison",
+        "consequence": "difference_magnitude_inverts_fraction_order",
+        "divergence": "fraction_order_matches_difference_order"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 44774,
+      "student_rule": "Name the difference between two fractions as the unit fraction 1/n, where n is the number of times that difference fits into one of the compared fractions.",
+      "valid_domain": "pairs of fractions where one fraction is the whole",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in naming the difference between fractions, that the difference is measured relative to the original whole rather than relative to one of the compared fractions.",
+      "licensed_consequence": "the difference is correctly named as a fraction of the whole",
+      "divergence_context": "pairs of fractions where neither is the whole",
+      "evidence": {
+        "description_span": "Students named the difference between two fractions based on its relationship to one of the fractions rather than the original whole.",
+        "example_span": "Students measured the difference between 1/2 and 1/3 as a red rod and incorrectly named it 'one third' because it took three red rods to make the 1/2 rod."
+      },
+      "proposed_slugs": {
+        "rule": "relative_difference_naming",
+        "consequence": "difference_magnitude_correct",
+        "divergence": "difference_magnitude_relative_to_whole"
+      },
+      "rule_atom": "name_difference_relative_to_an_operand",
+      "consequence_atom": "operand_relative_naming_is_unit_relative_naming",
+      "divergence_atom": "neither_operand_is_the_unit_whole"
+    },
+    {
+      "row_id": 44803,
+      "student_rule": "Compare two fractions by the number of pieces needed to reach a whole; if the number of pieces is the same for both, the fractions are equal.",
+      "valid_domain": "pairs of fractions with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the equality of two fractions is determined by the ratio of numerator to denominator rather than by the absolute number of pieces missing to reach a whole.",
+      "licensed_consequence": "fractions that require the same number of pieces to reach a whole are equal",
+      "divergence_context": "pairs of fractions with different denominators but the same number of missing pieces",
+      "evidence": {
+        "description_span": "incorrectly conclude that two fractions are equal if they both require the same absolute number of missing pieces to make a whole",
+        "example_span": "two fractions (3/4 and 5/6) are equal because both need one more piece to get to a whole"
+      },
+      "proposed_slugs": {
+        "rule": "missing_pieces_equality",
+        "consequence": "missing_piece_count_is_fraction_equality",
+        "divergence": "fraction_equality"
+      },
+      "rule_atom": "equate_by_numerator_denominator_gap",
+      "consequence_atom": "equal_gap_is_fraction_equivalence",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 44861,
+      "student_rule": "Compare two fractional amounts by comparing the numerical values of the fractions and ignoring the size of the referent units.",
+      "valid_domain": "fractions of identical wholes",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction comparison, that the magnitude of a fractional part is determined by both the numerical value of the fraction and the size of the referent unit.",
+      "licensed_consequence": "The amount with the larger fraction is the larger amount.",
+      "divergence_context": "fractions of different-sized wholes",
+      "evidence": {
+        "description_span": "incorrectly assuming that fractions of different wholes can be directly compared without considering the size of the original unit",
+        "example_span": "When told two people each ate 1/2 of their respective chocolate bars and asked how one could have eaten more, students drew two identical rectangles and concluded it was impossible for them to have eaten different amounts."
+      },
+      "proposed_slugs": {
+        "rule": "compare_amounts_by_fraction_value",
+        "consequence": "amount_order_is_fraction_order",
+        "divergence": "amount_order_diverges_from_fraction_order"
+      },
+      "rule_atom": "compare_fraction_names_ignoring_referent_unit",
+      "consequence_atom": "equal_fraction_names_are_equal_quantities",
+      "divergence_atom": "wholes_of_unequal_size"
+    },
+    {
+      "row_id": 44873,
+      "student_rule": "Order two fractions by the magnitude of their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for fractions with a common numerator, a larger denominator results in a smaller fraction.",
+      "licensed_consequence": "denominator order is fraction order",
+      "divergence_context": "pairs of fractions with equal numerators",
+      "evidence": {
+        "description_span": "Students inappropriately apply whole number logic to fraction denominators, incorrectly concluding that a larger denominator makes the fraction larger.",
+        "example_span": "The bigger the denominator the bigger the fraction"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_determines_fraction_order",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "fraction_order_on_equal_numerators"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 44875,
+      "student_rule": "Compare two fractions by the order of their numerators; the fraction with the larger numerator is the larger fraction.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is determined by the value of the fraction as a ratio of numerator to denominator rather than by the magnitude of the numerator alone.",
+      "licensed_consequence": "numerator order is fraction order",
+      "divergence_context": "pairs with different denominators",
+      "evidence": {
+        "description_span": "focusing on the number of parts (numerator) and judging that the fraction with the biggest number of parts is larger, regardless of the denominator",
+        "example_span": "The biggest fraction is the one that has the biggest number of parts"
+      },
+      "proposed_slugs": {
+        "rule": "compare_by_numerator",
+        "consequence": "numerator_order_is_fraction_order",
+        "divergence": "fraction_order_diverges_from_numerator_order"
+      },
+      "rule_atom": "order_by_numerator_magnitude",
+      "consequence_atom": "numerator_order_is_fraction_order",
+      "divergence_atom": "numerator_order_diverges_for_unequal_denominators"
+    },
+    {
+      "row_id": 44965,
+      "student_rule": "Compare two fractions by comparing their numerators as whole numbers; the fraction with the larger numerator is the larger fraction.",
+      "valid_domain": "fractions with the same denominator",
+      "valid_domain_status": "stated",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the numerator's value as an isolated whole number.",
+      "licensed_consequence": "numerator order is fraction order",
+      "divergence_context": "fractions with different denominators",
+      "evidence": {
+        "description_span": "treat the numerators as isolated whole numbers rather than as quantities representing a specific number of fractional pieces",
+        "example_span": "7/8 is larger than 3/8 simply because 'one is seven and one is three,'"
+      },
+      "proposed_slugs": {
+        "rule": "numerator_order_determines_fraction_order",
+        "consequence": "numerator_order_is_fraction_order",
+        "divergence": "numerator_order_diverges_on_different_denominators"
+      },
+      "rule_atom": "order_by_numerator_magnitude",
+      "consequence_atom": "numerator_order_is_fraction_order",
+      "divergence_atom": "numerator_order_diverges_for_unequal_denominators"
+    },
+    {
+      "row_id": 44991,
+      "student_rule": "Determine the difference between two fraction lengths by calculating what fraction the gap represents of the larger length being compared.",
+      "valid_domain": "pairs where the larger fraction is the unit whole",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction subtraction, that the difference between two fractions is the length of the gap relative to the same referent unit used to define the fractions.",
+      "licensed_consequence": "the ratio of the gap to the larger fraction is the fraction difference",
+      "divergence_context": "pairs of fractions where the larger fraction is not the unit whole",
+      "evidence": {
+        "description_span": "spontaneously switching the referent unit mid-problem, leading to incorrect calculations of differences between fractions",
+        "example_span": "claimed that 1/2 is greater than 1/3 by 1/3 because the difference (a red rod) is one-third of the dark green 1/2 rod, forgetting that the original unit was the orange and red rod train"
+      },
+      "proposed_slugs": {
+        "rule": "difference_as_ratio_of_larger_operand",
+        "consequence": "larger_operand_ratio_is_fraction_difference",
+        "divergence": "larger_operand_ratio_diverges_from_fraction_difference"
+      },
+      "rule_atom": "name_difference_relative_to_an_operand",
+      "consequence_atom": "operand_relative_naming_is_unit_relative_naming",
+      "divergence_atom": "neither_operand_is_the_unit_whole"
+    },
+    {
+      "row_id": 45292,
+      "student_rule": "Compare two fractions; the one with the larger numerator and larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that magnitude is determined by the ratio of numerator to denominator rather than the absolute magnitude of the components.",
+      "licensed_consequence": "component magnitude order is fraction order",
+      "divergence_context": "pairs of fractions where the fraction with larger components is smaller",
+      "evidence": {
+        "description_span": "assuming that fractions with larger numerators and denominators are inherently larger",
+        "example_span": "Rachel chose 2/5 to be larger than 1/2 because 'for a start off the top number's larger, and the bottom is as well.'"
+      },
+      "proposed_slugs": {
+        "rule": "larger_components_is_larger_fraction",
+        "consequence": "component_order_is_fraction_order",
+        "divergence": "component_order_inverts_fraction_order"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 45313,
+      "student_rule": "Compare two fractions by the magnitude of their numerators and denominators; the fraction with the larger numerator and larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the value of a fraction is determined by the ratio of the numerator to the denominator rather than by the absolute magnitude of the individual components.",
+      "licensed_consequence": "fraction order is determined by component magnitude",
+      "divergence_context": "fractions with larger components that are not larger than fractions with smaller components",
+      "evidence": {
+        "description_span": "a fraction with larger numbers in the numerator and denominator represents a larger overall quantity because there are more pieces",
+        "example_span": "8/10 is bigger both in the nominator and the denominator from 4/5"
+      },
+      "proposed_slugs": {
+        "rule": "component_magnitude_comparison",
+        "consequence": "fraction_order_follows_component_magnitude",
+        "divergence": "fraction_order_diverges_from_component_magnitude"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 45354,
+      "student_rule": "Compare two fractions by comparing their denominators; the fraction with the smaller denominator is the larger fraction.",
+      "valid_domain": "fractions with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the magnitude of the denominator alone.",
+      "licensed_consequence": "the fraction with the smaller denominator is the larger fraction",
+      "divergence_context": "fractions with unequal numerators",
+      "evidence": {
+        "description_span": "assuming that a larger denominator inherently means a smaller fraction regardless of the numerator",
+        "example_span": "Audrey thinks that 2 1/3 is taller because she concentrates on the denominator, reasoning that pieces of a third are bigger than pieces of a sixth"
+      },
+      "proposed_slugs": {
+        "rule": "compare_fractions_by_denominator",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "denominator_order_diverges_from_fraction_order"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 45458,
+      "student_rule": "Order two fractions by their denominators; the fraction with the larger denominator is the smaller fraction.",
+      "valid_domain": "pairs of fractions with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the value of a fraction is determined by the ratio of the numerator to the denominator rather than by the magnitude of the denominator alone.",
+      "licensed_consequence": "inverse denominator order is fraction order",
+      "divergence_context": "pairs of fractions with unequal numerators",
+      "evidence": {
+        "description_span": "the student incorrectly assumes that a larger denominator inherently makes the fraction smaller, misapplying the rule that more parts in a whole means smaller pieces",
+        "example_span": "A student initially thinks 99/100 is smaller than 15/16 because she cannot get past the core idea that 'the more parts in the whole, the smaller the parts'."
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_determines_fraction_size",
+        "consequence": "inverse_denominator_order_is_fraction_order",
+        "divergence": "denominator_size_ignores_numerator_value"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 45473,
+      "student_rule": "Order two fractions by their denominators; the fraction with the smaller denominator is the larger fraction.",
+      "valid_domain": "unit fractions or fractions with common numerators",
+      "valid_domain_status": "stated",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that fraction magnitude is determined by the ratio of numerator to denominator rather than the magnitude of the denominator alone.",
+      "licensed_consequence": "denominator order inverts fraction order",
+      "divergence_context": "fractions with different numerators",
+      "evidence": {
+        "description_span": "the fraction with the lowest 'bottom number' is always the greatest",
+        "example_span": "looked at the 'bottom number' and the one with the lowest bottom number was the greatest"
+      },
+      "proposed_slugs": {
+        "rule": "lowest_denominator_is_greatest",
+        "consequence": "denominator_order_inverts_fraction_order",
+        "divergence": "denominator_order_diverges_from_fraction_order"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 45520,
+      "student_rule": "Order two fractions by comparing their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the order of fractions is determined by the relation of numerator to denominator rather than by the magnitude of the denominator alone.",
+      "licensed_consequence": "numeral order is magnitude order",
+      "divergence_context": "pairs of fractions with equal numerators",
+      "evidence": {
+        "description_span": "reason based solely on the magnitude of the denominators",
+        "example_span": "'8 is greater than 5'"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_orders_fractions",
+        "consequence": "numeral_order_is_magnitude_order",
+        "divergence": "denominator_order_inverts_on_equal_numerators"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 45599,
+      "student_rule": "Compare the magnitude of fraction-based quantities by summing the numerators and ignoring the denominators.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction comparison, that the magnitude of a fraction is determined by the ratio of its numerator to its denominator rather than the sum of its numerators.",
+      "licensed_consequence": "the sum of the numbers determines the larger quantity",
+      "divergence_context": "fractions with unequal denominators",
+      "evidence": {
+        "description_span": "reverting to inappropriate additive strategies like summing the numerators or raw scores",
+        "example_span": "simply added up the penalty scores and did not take account of denominators"
+      },
+      "proposed_slugs": {
+        "rule": "sum_numerators_ignore_denominators",
+        "consequence": "numerator_sum_is_magnitude_order",
+        "divergence": "numerator_sum_diverges_on_unequal_denominators"
+      },
+      "rule_atom": "order_by_numerator_sum",
+      "consequence_atom": "numerator_sum_is_quantity_order",
+      "divergence_atom": "numerator_sum_diverges_for_unequal_denominators"
+    },
+    {
+      "row_id": 45614,
+      "student_rule": "Compare the sizes of two halves of a whole by the orientation of the cuts; the sizes differ if and only if the orientations differ.",
+      "valid_domain": "pairs of halves created by identical cut orientations",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in the geometry of area, that the quantity of a half of a whole is invariant under changes to the orientation of the cut.",
+      "licensed_consequence": "halves created by the same cut orientation are the same size",
+      "divergence_context": "pairs of halves created by different cut orientations",
+      "evidence": {
+        "description_span": "the area or quantity of a half varies depending on the physical orientation of the cut",
+        "example_span": "depending on how a pizza was cut, either side-to-side or top-to-bottom, one amount was more than the other"
+      },
+      "proposed_slugs": {
+        "rule": "compare_by_cut_orientation",
+        "consequence": "area_equivalence_on_identical_cuts",
+        "divergence": "area_variation_by_cut_orientation"
+      },
+      "rule_atom": "compare_halves_by_cut_orientation",
+      "consequence_atom": "cut_orientation_preserves_half_size",
+      "divergence_atom": "halves_cut_in_different_orientations"
+    },
+    {
+      "row_id": 45649,
+      "student_rule": "Order two fractions by the absolute difference between the numerator and denominator; the fraction with the smaller difference is larger.",
+      "valid_domain": "pairs of fractions with equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is fixed by the multiplicative relation of part to whole rather than by the additive distance between the two numerals.",
+      "licensed_consequence": "gap order is fraction order",
+      "divergence_context": "pairs of fractions with unequal numerators and unequal denominators",
+      "evidence": {
+        "description_span": "focusing on the absolute difference between the numerator and denominator rather than the proportional ratio or size of the parts",
+        "example_span": "For the pair 3/4 and 7/9, a student chooses 3/4 because it has a 'smaller gap' or claims 5/6 and 7/8 are the 'same because each has one left'"
+      },
+      "proposed_slugs": {
+        "rule": "compare_fractions_by_numerator_denominator_gap",
+        "consequence": "gap_order_is_fraction_order",
+        "divergence": "gap_order_diverges_from_fraction_order"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 45650,
+      "student_rule": "Order two fractions by the numerical magnitude of their components; the fraction with the larger component is the larger fraction.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the absolute magnitude of the individual components.",
+      "licensed_consequence": "component order is fraction order",
+      "divergence_context": "pairs with equal numerators",
+      "evidence": {
+        "description_span": "asserting that a fraction with numerically larger components is always larger",
+        "example_span": "choose 4/7 as larger because of 'larger numbers'"
+      },
+      "proposed_slugs": {
+        "rule": "component_magnitude_is_fraction_magnitude",
+        "consequence": "component_order_is_fraction_order",
+        "divergence": "component_order_inverts_on_equal_numerators"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 45651,
+      "student_rule": "Two fractions are equivalent if they consist of the same set of digits.",
+      "valid_domain": "identical fractions",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction equivalence, that equivalence is determined by the ratio of numerator to denominator rather than by the set of digits present in the numerals.",
+      "licensed_consequence": "identical fractions are equivalent",
+      "divergence_context": "distinct fractions consisting of the same set of digits",
+      "evidence": {
+        "description_span": "treating them as equivalent to proper fractions that share the same digits",
+        "example_span": "claimed they were 'the same', presumably because both fractions contain the digits 2 and 4"
+      },
+      "proposed_slugs": {
+        "rule": "compare_by_digit_set",
+        "consequence": "identical_fractions_are_equivalent",
+        "divergence": "digit_set_equivalence_is_fraction_equivalence"
+      },
+      "rule_atom": "equate_by_digit_set",
+      "consequence_atom": "same_digits_name_the_same_fraction",
+      "divergence_atom": "distinct_fractions_share_a_digit_set"
+    },
+    {
+      "row_id": 46374,
+      "student_rule": "Compare two fractions by the magnitude of their denominators; the fraction with the larger denominator is the larger quantity.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for fractions with equal numerators, a larger denominator represents a smaller quantity.",
+      "licensed_consequence": "the fraction with the larger denominator is the larger fraction",
+      "divergence_context": "unit fractions",
+      "evidence": {
+        "description_span": "erroneously concluding that a fraction with a larger denominator represents a larger quantity",
+        "example_span": "one-tenth full packets have more sweets than one-fifth full packets"
+      },
+      "proposed_slugs": {
+        "rule": "larger_denominator_is_larger_fraction",
+        "consequence": "denominator_magnitude_is_fraction_magnitude",
+        "divergence": "unit_fraction_magnitude"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46396,
+      "student_rule": "Order two fractions by their denominators; the fraction with the smaller denominator is the smaller fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that among fractions with equal numerators, a larger denominator indicates a smaller value.",
+      "licensed_consequence": "denominator order is fraction order",
+      "divergence_context": "unit fractions",
+      "evidence": {
+        "description_span": "assume a fraction with a smaller denominator is smaller in value",
+        "example_span": "the fraction 1/5 is smaller than 1/10 because 1/5 has a smaller denominator"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_is_fraction_magnitude",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "component_order_inverts_on_unit_fractions"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46424,
+      "student_rule": "Assess proximity to 1 by calculating the absolute difference between the denominator and numerator; equal differences imply equal proximity.",
+      "valid_domain": "pairs of fractions with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction comparison, that proximity to 1 is determined by the ratio of the difference between the denominator and numerator to the denominator rather than by the absolute difference alone.",
+      "licensed_consequence": "equal differences imply equal proximity to 1",
+      "divergence_context": "pairs of fractions with different denominators",
+      "evidence": {
+        "description_span": "calculating the absolute difference between the denominator and numerator, assuming equal differences imply equal proximity",
+        "example_span": "Subtracting 15 from 16 and 8 from 9 to get 1, and concluding that 15/16 and 8/9 are equally close to 1"
+      },
+      "proposed_slugs": {
+        "rule": "difference_based_proximity_to_one",
+        "consequence": "difference_equality_is_proximity_equality",
+        "divergence": "proximity_to_one_equality"
+      },
+      "rule_atom": "equate_proximity_to_one_by_gap",
+      "consequence_atom": "equal_gap_is_equal_proximity_to_one",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 46451,
+      "student_rule": "Order two fractions by the difference between the denominator and numerator; the smaller the difference, the larger the fraction.",
+      "valid_domain": "pairs with equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is fixed by the multiplicative relation of part to whole rather than by the additive distance between the two numerals.",
+      "licensed_consequence": "gap order is inverse fraction order",
+      "divergence_context": "pairs with unequal numerators and unequal denominators",
+      "evidence": {
+        "description_span": "relying on the smallest difference between the two numbers",
+        "example_span": "S23 selected 5/6 because the difference (6-5=1) is the smallest"
+      },
+      "proposed_slugs": {
+        "rule": "fraction_difference_comparison",
+        "consequence": "gap_order_inverts_fraction_order",
+        "divergence": "fraction_order"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 46509,
+      "student_rule": "Compare two fractions by comparing their denominators; the fraction with the smaller denominator is the larger fraction.",
+      "valid_domain": "pairs of fractions with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that magnitude is determined by the ratio of numerator to denominator rather than by the denominator alone.",
+      "licensed_consequence": "the fraction with the smaller denominator is the larger fraction",
+      "divergence_context": "pairs of fractions with different numerators",
+      "evidence": {
+        "description_span": "repeating memorized rules without understanding",
+        "example_span": "1/3 is bigger because 4 is more than 3"
+      },
+      "proposed_slugs": {
+        "rule": "smaller_denominator_is_larger_fraction",
+        "consequence": "denominator_order_inverts_fraction_order",
+        "divergence": "denominator_order_diverges_on_different_numerators"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 46663,
+      "student_rule": "Order two fractions by comparing their denominators; the fraction with the smaller denominator is the larger fraction.",
+      "valid_domain": "pairs with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the magnitude of the denominator alone.",
+      "licensed_consequence": "For pairs with equal numerators, the smaller denominator indicates the larger fraction.",
+      "divergence_context": "pairs with unequal numerators",
+      "evidence": {
+        "description_span": "students incorrectly assume that a fraction with a smaller denominator is always larger",
+        "example_span": "The smaller numbers the biger"
+      },
+      "proposed_slugs": {
+        "rule": "smaller_denominator_is_larger",
+        "consequence": "denominator_order_inverts_fraction_order",
+        "divergence": "fraction_order"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 46678,
+      "student_rule": "Swap the middle two terms of an inequality chain to produce a new valid inequality chain.",
+      "valid_domain": null,
+      "valid_domain_status": "none_found",
+      "incompatible_with": "the mathematical community's commitment, in the ordering of real numbers, that the validity of an inequality chain is dependent on the relative order of its elements and is not preserved by swapping terms.",
+      "licensed_consequence": "the validity of the inequality chain is preserved after swapping the middle two terms",
+      "divergence_context": null,
+      "evidence": {
+        "description_span": "claiming one could simply switch the middle two terms of valid inequalities",
+        "example_span": "could switch the middle two terms"
+      },
+      "proposed_slugs": {
+        "rule": "swap_middle_terms_inequality_chain",
+        "consequence": "chain_validity_is_preserved",
+        "divergence": null
+      },
+      "rule_atom": null,
+      "consequence_atom": null,
+      "divergence_atom": null,
+      "note": "none_found: swapping the middle terms of an inequality chain preserves validity nowhere"
+    },
+    {
+      "row_id": 46683,
+      "student_rule": "Compare two fractions for equivalence by calculating the difference between the denominator and the numerator for each; if the differences are equal, the fractions are equivalent.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction equivalence, that equivalence is determined by the multiplicative ratio of numerator to denominator rather than the additive difference between the two",
+      "licensed_consequence": "equal gaps imply fraction equivalence",
+      "divergence_context": "pairs with different denominators and equal gaps",
+      "evidence": {
+        "description_span": "concluding that two fractions are equivalent if they are missing the same number of pieces to make a whole, regardless of the pieces' sizes",
+        "example_span": "incorrectly concluding that the fractions 8/9 and 12/13 were equivalent because they were both one piece away from 1"
+      },
+      "proposed_slugs": {
+        "rule": "equal_gap_implies_equivalence",
+        "consequence": "gap_equivalence_is_fraction_equivalence",
+        "divergence": "gap_equivalence_diverges_on_different_denominators"
+      },
+      "rule_atom": "equate_by_numerator_denominator_gap",
+      "consequence_atom": "equal_gap_is_fraction_equivalence",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 46684,
+      "student_rule": "Compare two fractions by comparing their denominators; the fraction with the smaller denominator is the smaller fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for fractions with equal numerators, the fraction with the smaller denominator is the larger fraction.",
+      "licensed_consequence": "denominator order is fraction order",
+      "divergence_context": "pairs with equal numerators",
+      "evidence": {
+        "description_span": "concluding that a fraction is smaller simply because its denominator is a smaller number",
+        "example_span": "25/99 < 25/100, presumably because 99 < 100"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_order_determines_fraction_order",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "fraction_order_inverts_on_equal_numerators"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46735,
+      "student_rule": "Order two fractions by their denominators; the fraction with the larger denominator is the smaller fraction.",
+      "valid_domain": "pairs of fractions with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the denominator alone.",
+      "licensed_consequence": "for pairs with equal numerators, the fraction with the larger denominator is the smaller fraction",
+      "divergence_context": "pairs of fractions with different numerators",
+      "evidence": {
+        "description_span": "focusing exclusively on the size of the fractional parts (the denominator) while ignoring the number of parts (the numerator), incorrectly concluding that the fraction with the smaller pieces is always smaller",
+        "example_span": "'The 39 is larger, and so it's gonna make the pieces really small.' She concluded that 8/24 was greater without explicitly accounting for the numerators in any way."
+      },
+      "proposed_slugs": {
+        "rule": "denominator_inverse_order",
+        "consequence": "inverse_denominator_order_is_fraction_order",
+        "divergence": "inverse_denominator_order_diverges_from_fraction_order"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 46757,
+      "student_rule": "Order two fractions by the magnitude of their denominators; the fraction with the smaller denominator is the larger fraction.",
+      "valid_domain": "fractions with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the relative size of two fractions is determined by the ratio of numerator to denominator rather than the denominator alone.",
+      "licensed_consequence": "Inverse denominator order is fraction order.",
+      "divergence_context": "fractions with different numerators",
+      "evidence": {
+        "description_span": "concluding that a fraction with a smaller denominator is larger because its pieces are larger, ignoring the numerator",
+        "example_span": "The larger fraction is 5/6 because as a whole, the block that is divided 6 times is larger... The pieces that are in the six-piece block are larger... So when the five blocks are colored in, a greater area is consumed than if six blocks of seven were shaded in."
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_order",
+        "consequence": "inverse_denominator_order_is_fraction_order",
+        "divergence": "fraction_order_divergence"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 46823,
+      "student_rule": "Compare two fractions by calculating the additive difference between the denominator and numerator; the fraction with the smaller difference is the larger fraction.",
+      "valid_domain": "pairs of fractions with equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is determined by the ratio of the numerator to the denominator rather than by the additive difference between them.",
+      "licensed_consequence": "gap order is fraction order",
+      "divergence_context": "pairs of fractions with different numerators and different denominators",
+      "evidence": {
+        "description_span": "concluding that the fraction requiring fewer additional pieces to make a whole is larger while failing to account for the size of those pieces",
+        "example_span": "Because it's closer to four than six"
+      },
+      "proposed_slugs": {
+        "rule": "gap_distance_comparison",
+        "consequence": "gap_order_is_fraction_order",
+        "divergence": "gap_order_diverges_on_mixed_components"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 46824,
+      "student_rule": "Order two fractions by their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for fractions with a common numerator, the fraction with the larger denominator is the smaller fraction.",
+      "licensed_consequence": "larger denominator is larger fraction",
+      "divergence_context": "fractions with common numerators",
+      "evidence": {
+        "description_span": "concludes that the fraction with the larger denominator is the greater fraction",
+        "example_span": "6/15 is larger 'Because 15 is greater than 14.'"
+      },
+      "proposed_slugs": {
+        "rule": "compare_fractions_by_denominator_magnitude",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "fraction_order_with_common_numerators"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46879,
+      "student_rule": "Compare two fractions by adding the numerator and denominator of each; the fraction with the larger sum is the larger fraction.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is fixed by the multiplicative relation of part to whole rather than by the additive sum of the numerator and denominator.",
+      "licensed_consequence": "sum order is fraction order",
+      "divergence_context": "pairs with equal numerators",
+      "evidence": {
+        "description_span": "adding the numerator and denominator of each fraction to compare their sums",
+        "example_span": "18/19 is larger than 15/16 because 37 is larger than 31"
+      },
+      "proposed_slugs": {
+        "rule": "sum_of_components_comparison",
+        "consequence": "sum_order_is_fraction_order",
+        "divergence": "sum_order_inverts_on_equal_numerators"
+      },
+      "rule_atom": "order_by_component_sum",
+      "consequence_atom": "component_sum_is_fraction_order",
+      "divergence_atom": "component_sum_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46920,
+      "student_rule": "Compare two fractions by calculating the difference between the denominator and numerator for each; if the differences are equal, the fractions are equal.",
+      "valid_domain": "identical fractions",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number equality, that two fractions are equal if and only if they represent the same ratio, regardless of the additive difference between their numerators and denominators.",
+      "licensed_consequence": "fractions with equal denominator-numerator differences are equal",
+      "divergence_context": "distinct proper fractions with the same difference between denominator and numerator",
+      "evidence": {
+        "description_span": "if the difference between the numerator and the denominator of two proper fractions is the same, then the two fractions must be equal",
+        "example_span": "the difference between the denominators and numerators of 30/31 and 36/37 are the same (31–30=1, 37–36=1), so the fractions are equal"
+      },
+      "proposed_slugs": {
+        "rule": "equal_difference_means_equal_fractions",
+        "consequence": "difference_equality_is_fraction_equality",
+        "divergence": "fraction_equality_diverges_on_equal_difference"
+      },
+      "rule_atom": "equate_by_numerator_denominator_gap",
+      "consequence_atom": "equal_gap_is_fraction_equivalence",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 46924,
+      "student_rule": "Compare two fractions by their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in unit-fraction comparison, that a larger denominator indicates a smaller fraction.",
+      "licensed_consequence": "numeral order is quantity order",
+      "divergence_context": "pairs of unit fractions",
+      "evidence": {
+        "description_span": "concluding that a fraction with a larger denominator must be larger",
+        "example_span": "1/7 is larger because 7 is larger than 5"
+      },
+      "proposed_slugs": {
+        "rule": "compare_fractions_by_denominator_magnitude",
+        "consequence": "numeral_order_is_quantity_order",
+        "divergence": "unit_fraction_order"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46964,
+      "student_rule": "Compare two fractions by declaring the one with the larger numerator and larger denominator to be the larger fraction.",
+      "valid_domain": "pairs of fractions with the same difference between denominator and numerator",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the absolute magnitude of the individual components",
+      "licensed_consequence": "the fraction with the larger numerator and larger denominator is the larger fraction",
+      "divergence_context": "pairs of fractions where both the numerator and denominator increase but the ratio decreases",
+      "evidence": {
+        "description_span": "assuming that a fraction with a larger numerator and larger denominator must be the larger fraction",
+        "example_span": "8/9 is larger. Because the denominator 9 is larger than 6 and 8 is larger than 5"
+      },
+      "proposed_slugs": {
+        "rule": "larger_components_is_larger_fraction",
+        "consequence": "component_magnitude_is_fraction_magnitude",
+        "divergence": "component_magnitude_diverges_from_fraction_magnitude"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 46965,
+      "student_rule": "Compare two fractions by calculating the difference between the denominator and numerator for each; the fractions are equal if the differences are the same.",
+      "valid_domain": "pairs with equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the equality of fractions is determined by the ratio of numerator to denominator rather than the additive difference between the two numerals.",
+      "licensed_consequence": "fractions with equal differences between denominator and numerator are equal",
+      "divergence_context": "pairs with equal differences between denominator and numerator",
+      "evidence": {
+        "description_span": "compare fractions by subtracting the numerator from the denominator, believing that if the differences are the same, the fractions are equal",
+        "example_span": "5/6 is equal to 8/9. ... Since 6 - 5 = 1 and 9 - 8 = 1, I think they are equal."
+      },
+      "proposed_slugs": {
+        "rule": "compare_by_denominator_numerator_difference",
+        "consequence": "gap_equality_is_fraction_equality",
+        "divergence": "fraction_equality_diverges_on_equal_gaps"
+      },
+      "rule_atom": "equate_by_numerator_denominator_gap",
+      "consequence_atom": "equal_gap_is_fraction_equivalence",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 47001,
+      "student_rule": "Order two fractions by the difference between the numerator and denominator; the fraction with the larger difference is the smaller fraction.",
+      "valid_domain": "pairs of fractions with equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that order is determined by the multiplicative relation of part to whole rather than by the additive difference between the numerator and denominator.",
+      "licensed_consequence": "inverse difference order is fraction order",
+      "divergence_context": "pairs of fractions with different numerators and different denominators",
+      "evidence": {
+        "description_span": "sort fractions by comparing the distance (difference) between the numerator and denominator, assuming a larger difference means a smaller fraction",
+        "example_span": "I sort them by the distance between the numerator and denominator. When the difference is larger, the number is smaller."
+      },
+      "proposed_slugs": {
+        "rule": "fraction_order_by_inverse_difference",
+        "consequence": "difference_order_is_fraction_order",
+        "divergence": "fraction_order_divergence"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 47009,
+      "student_rule": "Compare two fractions by comparing the magnitudes of their numerators and denominators; the fraction with the larger components is the larger fraction.",
+      "valid_domain": "pairs with equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the magnitude of a fraction is determined by the ratio of the numerator to the denominator rather than by the absolute magnitude of the components.",
+      "licensed_consequence": "component order is fraction order",
+      "divergence_context": "pairs with equal numerators",
+      "evidence": {
+        "description_span": "believing that a fraction with larger components (numerator and denominator) must represent a larger magnitude",
+        "example_span": "Claims that 5/9 > 5/7 because 9 > 7"
+      },
+      "proposed_slugs": {
+        "rule": "component_magnitude_determines_fraction_order",
+        "consequence": "component_order_is_fraction_order",
+        "divergence": "component_order_inverts_fraction_order"
+      },
+      "rule_atom": "order_by_component_magnitude",
+      "consequence_atom": "component_order_is_fraction_order",
+      "divergence_atom": "component_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 47011,
+      "student_rule": "Compare two fractions by calculating the absolute difference between the numerator and denominator of each; the fraction with the smaller difference is the larger fraction.",
+      "valid_domain": "pairs of fractions with either equal numerators or equal denominators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the relative magnitude of two fractions is determined by the proportional relationship between numerator and denominator rather than the additive difference between them",
+      "licensed_consequence": "gap order is fraction order",
+      "divergence_context": "pairs of fractions with different numerators and denominators",
+      "evidence": {
+        "description_span": "evaluate the absolute difference between a fraction's numerator and denominator",
+        "example_span": "3/5 is larger than 5/8 because there is 'less of a gap' between 3 and 5 than between 5 and 8"
+      },
+      "proposed_slugs": {
+        "rule": "smaller_gap_is_larger_fraction",
+        "consequence": "gap_order_is_fraction_order",
+        "divergence": "fraction_value_diverges_from_gap_size"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 47012,
+      "student_rule": "Compare two fractions by comparing their components; the fraction composed of the smaller natural numbers is the larger fraction.",
+      "valid_domain": "pairs with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that fraction magnitude is determined by the ratio of numerator to denominator rather than by the absolute magnitude of the components.",
+      "licensed_consequence": "on pairs with equal numerators, the fraction with the smaller denominator is larger",
+      "divergence_context": "pairs with equal denominators",
+      "evidence": {
+        "description_span": "consistently selecting the fraction composed of the smaller natural numbers as the larger fraction",
+        "example_span": "consistently selected as the larger fraction the one with the smaller components"
+      },
+      "proposed_slugs": {
+        "rule": "smaller_components_larger_fraction",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "numerator_order_is_fraction_order"
+      },
+      "rule_atom": "order_by_inverse_component_magnitude",
+      "consequence_atom": "inverse_component_order_is_fraction_order",
+      "divergence_atom": "inverse_component_order_diverges_for_equal_denominators"
+    },
+    {
+      "row_id": 47016,
+      "student_rule": "Compare two fractions by comparing their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for fractions with the same numerator, the fraction with the smaller denominator is larger",
+      "licensed_consequence": "denominator order is fraction order",
+      "divergence_context": "fractions with the same numerator",
+      "evidence": {
+        "description_span": "concluding that the fraction with the larger denominator is the larger fraction",
+        "example_span": "The 12 is larger than 10, hence 7/12 > 7/10"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_determines_fraction_magnitude",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "fraction_order_inverts_on_denominator_magnitude"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 47017,
+      "student_rule": "Order fractions by the inverse of the denominator size; the smaller denominator is the larger fraction.",
+      "valid_domain": "pairs with equal numerators",
+      "valid_domain_status": "stated",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the relative size of fractions is determined by the ratio of part to whole rather than by the size of the denominator alone.",
+      "licensed_consequence": "denominator order inverts fraction order",
+      "divergence_context": "pairs with unequal numerators",
+      "evidence": {
+        "description_span": "Students blindly memorize and apply procedural rules for comparing fractions or performing operations without conceptual understanding",
+        "example_span": "Since the numerators are the same, and one of the denominators is smaller, then that fraction is larger"
+      },
+      "proposed_slugs": {
+        "rule": "smaller_denominator_is_larger",
+        "consequence": "denominator_order_inverts_fraction_order",
+        "divergence": "fraction_order_on_unequal_numerators"
+      },
+      "rule_atom": "order_by_inverse_denominator_magnitude",
+      "consequence_atom": "inverse_denominator_order_is_fraction_order",
+      "divergence_atom": "inverse_denominator_order_diverges_for_unequal_numerators"
+    },
+    {
+      "row_id": 47040,
+      "student_rule": "Compare two fractions by identifying the fraction with the larger denominator as the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that for fractions with identical numerators, the fraction with the larger denominator is the smaller fraction.",
+      "licensed_consequence": "numeral order is quantity order",
+      "divergence_context": "fractions with identical numerators",
+      "evidence": {
+        "description_span": "assuming the fraction with the larger denominator is the larger fraction",
+        "example_span": "The denominator of 7/11 is 11, which is larger than 10; therefore, 7/11 is larger."
+      },
+      "proposed_slugs": {
+        "rule": "larger_denominator_is_larger_fraction",
+        "consequence": "numeral_order_is_quantity_order",
+        "divergence": "fraction_order_on_same_numerators"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 47112,
+      "student_rule": "Compare two fractions by comparing their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number comparison",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in fraction comparison, that the magnitude of a fraction is determined by the ratio of its components rather than the absolute magnitude of its denominator.",
+      "licensed_consequence": "The fraction with the larger denominator is the larger fraction.",
+      "divergence_context": "unit fractions",
+      "evidence": {
+        "description_span": "Students judge the magnitude of fractions by treating the fraction as two independent natural numbers and comparing their respective parts, erroneously concluding that larger components imply a larger fraction.",
+        "example_span": "1/4 is assumed to be larger than 1/2, because 4 is bigger than 2."
+      },
+      "proposed_slugs": {
+        "rule": "denominator_magnitude_determines_fraction_magnitude",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "denominator_order_inverts_on_unit_fractions"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    },
+    {
+      "row_id": 47267,
+      "student_rule": "Order two fractions by the difference between the denominator and the numerator; the larger difference is the smaller fraction.",
+      "valid_domain": "pairs with equal numerators",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the relative size of fractions is determined by the ratio of numerator to denominator rather than by the additive difference between them.",
+      "licensed_consequence": "the fraction with the larger difference is the smaller fraction",
+      "divergence_context": "pairs with different numerators and denominators",
+      "evidence": {
+        "description_span": "Comparing fractions by subtracting the numerator from the denominator and assuming that a smaller difference implies a smaller fraction.",
+        "example_span": "A student stating that 4/15 is smaller than 4/10 because 'if you take 4 from 15 it's 11; if you take 4 from 10 that's 6. 6 is way smaller than 11.'"
+      },
+      "proposed_slugs": {
+        "rule": "difference_order_inverts_fraction_order",
+        "consequence": "gap_order_inverts_fraction_order",
+        "divergence": "component_order_divergence"
+      },
+      "rule_atom": "order_by_numerator_denominator_gap",
+      "consequence_atom": "gap_order_is_fraction_order",
+      "divergence_atom": "gap_order_diverges_from_fraction_order"
+    },
+    {
+      "row_id": 47270,
+      "student_rule": "Divide a set of items among a group by cutting each item in half and giving one piece to each person.",
+      "valid_domain": "pairs of item counts and group sizes where the group size is twice the item count",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in partitioning, that the share is the quotient of the number of items and the number of people.",
+      "licensed_consequence": "the share is half an item",
+      "divergence_context": "pairs of item counts and group sizes where the group size is not twice the item count",
+      "evidence": {
+        "description_span": "Applying an ineffective halving action to a situation where it doesn't easily work (sharing 9 items among 6 people) due to an over-reliance on a previously successful halving strategy.",
+        "example_span": "Students attempted to cut 9 pizzas in half to distribute to 6 people, but their drawn diagrams became hopelessly confused and they could not immediately comprehend the dividing-up situation."
+      },
+      "proposed_slugs": {
+        "rule": "halve_items_one_piece_per_person",
+        "consequence": "share_is_half_item",
+        "divergence": "share_is_not_half_item"
+      },
+      "rule_atom": "share_by_repeated_halving",
+      "consequence_atom": "halving_yields_one_piece_per_sharer",
+      "divergence_atom": "group_size_is_not_twice_the_item_count"
+    },
+    {
+      "row_id": 47285,
+      "student_rule": "Order two fractions by the size of their denominators; the fraction with the larger denominator is the larger fraction.",
+      "valid_domain": "natural-number numerals",
+      "valid_domain_status": "inferred",
+      "incompatible_with": "the mathematical community's commitment, in rational-number comparison, that the size of a fraction's denominator is inversely related to the size of the fractional piece.",
+      "licensed_consequence": "denominator order is fraction order",
+      "divergence_context": "fractions with equal numerators",
+      "evidence": {
+        "description_span": "Rejecting the inverse relationship between the size of a fraction's denominator and the size of the fractional piece.",
+        "example_span": "the bigger the bottom number is, the smaller [the shape] is"
+      },
+      "proposed_slugs": {
+        "rule": "denominator_size_is_fraction_size",
+        "consequence": "denominator_order_is_fraction_order",
+        "divergence": "denominator_order_inverts_on_unit_fractions"
+      },
+      "rule_atom": "order_by_denominator_magnitude",
+      "consequence_atom": "larger_numeral_names_larger_quantity",
+      "divergence_atom": "denominator_order_inverts_for_equal_numerators"
+    }
+  ],
+  "rejected": [
+    {
+      "row_id": 44073,
+      "stage": "review",
+      "reason": "valid_domain names fractions between 0 and 1 and divergence names fractions greater than 1; the record's operator-context additive reading turns on neither, so the domain is invented"
+    },
+    {
+      "row_id": 44074,
+      "stage": "review",
+      "reason": "valid_domain names collections of same-sized objects for a rule that inverts the sanctioned answer on every pair, and the divergence does not follow from it"
+    },
+    {
+      "row_id": 44339,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 44430,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 44688,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 44797,
+      "stage": "gate",
+      "reason": "abstained: The record describes a belief about the permissibility of certain mathematical methods rather than a specific operational rule the student uses to derive an answer."
+    },
+    {
+      "row_id": 44966,
+      "stage": "gate",
+      "reason": "abstained: The record describes a student's inability to decide and a lack of strategy rather than a specific operation the student used to reach a conclusion."
+    },
+    {
+      "row_id": 45428,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 45533,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 46131,
+      "stage": "gate",
+      "reason": "divergence_is_the_whole_input_class: 'pairs of fractions'"
+    },
+    {
+      "row_id": 46199,
+      "stage": "gate",
+      "reason": "abstained: The record describes a general tendency to focus on additive relations rather than specifying a concrete, runnable operation."
+    },
+    {
+      "row_id": 46587,
+      "stage": "gate",
+      "reason": "divergence_is_the_whole_input_class: 'fractions'"
+    },
+    {
+      "row_id": 46686,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 46734,
+      "stage": "gate",
+      "reason": "abstained: The record reports a student's struggle with the mental computation of the sanctioned algorithm and a lack of flexibility, rather than a divergent rule."
+    },
+    {
+      "row_id": 46754,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 46755,
+      "stage": "gate",
+      "reason": "abstained: The record reports a teacher's judgement about how to identify conceptual understanding rather than a runnable mathematical operation."
+    },
+    {
+      "row_id": 46756,
+      "stage": "gate",
+      "reason": "abstained: The record describes a prospective teacher's judgment regarding a student's conceptual understanding rather than a mathematical operation performed by a student."
+    },
+    {
+      "row_id": 46758,
+      "stage": "gate",
+      "reason": "slug_malformed: consequence_slug=None"
+    },
+    {
+      "row_id": 46760,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    },
+    {
+      "row_id": 46775,
+      "stage": "gate",
+      "reason": "abstained: The record describes prospective teachers' evaluative judgments regarding student understanding rather than a specific student mathematical rule or misconception."
+    },
+    {
+      "row_id": 46776,
+      "stage": "gate",
+      "reason": "abstained: The record describes prospective teachers' judgements regarding pedagogical evidence rather than a student's mathematical operation."
+    },
+    {
+      "row_id": 47004,
+      "stage": "gate",
+      "reason": "divergence_missing: a valid domain needs a context where it diverges"
+    },
+    {
+      "row_id": 47266,
+      "stage": "gate",
+      "reason": "degenerate_triple: consequence and divergence carry one name"
+    }
+  ]
+}

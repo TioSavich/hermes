@@ -380,6 +380,49 @@ class _VisualBuilder:
             "proof": self._proof_for_refusal(correct, correct_doc, decision),
         }
 
+    def _unrenderable_refusal_card(
+        self,
+        expression: str,
+        request: dict[str, Any],
+        refusal_label: str,
+        family: str,
+        decision: dict,
+    ) -> dict:
+        """Record a grammar refusal without mislabeling either scene as correct."""
+        reason = str(decision.get("refusal") or "representation grammar refused this visual")
+        refusal_doc = {"error": reason, "frames": []}
+        refusal_proof = {
+            "status": "refused_by_representation_grammar",
+            "refusal": reason,
+            "grammar": decision,
+            "frame_count": 0,
+            "temporal": False,
+            "frame_sequence": [],
+        }
+        return {
+            "expression": expression,
+            "family": family,
+            "source": "generated_from_teacher_guide_and_monitoring_chart",
+            "correct": {
+                "label": "No productive scene is registered",
+                "description": refusal_label,
+                "request": request,
+                "doc": refusal_doc,
+            },
+            "incorrect": {
+                "label": "No misconception scene is rendered",
+                "description": refusal_label,
+                "request": request,
+                "doc": refusal_doc,
+            },
+            "proof": {
+                "source": "representation_grammar_and_render_contract",
+                "correct": dict(refusal_proof),
+                "incorrect": dict(refusal_proof),
+                "interpretive_residue": self._interpretive_residue(),
+            },
+        }
+
     def _monitoring_visuals_for_chart(self, code: str, chart: dict) -> dict:
         text = self._lesson_teacher_guide_text(code)
         strategies = self._chart_names(chart, "anticipated_strategies")
@@ -413,14 +456,35 @@ class _VisualBuilder:
             )
             if subtraction:
                 a, b = subtraction
-                visuals.append(self._visual_card(
-                    f"{self._format_int(a)} - {self._format_int(b)}",
-                    {"op": "base_ten_render", "kind": "subtract_with_borrow", "a": a, "b": b, "base": 10},
-                    {"op": "base_ten_render", "kind": "subtract_without_reducing_borrow", "a": a, "b": b, "base": 10},
-                    "Decompose one ten and reduce the tens place.",
-                    "Add ten ones but leave the tens place unchanged.",
-                    "base_ten_subtraction_borrow",
-                ))
+                expression = f"{self._format_int(a)} - {self._format_int(b)}"
+                refusal_request = {
+                    "op": "representation_check",
+                    "mode": "productive",
+                    "representation": "base_ten_blocks",
+                    "task": "whole_number_subtraction",
+                    "a": a,
+                    "b": b,
+                }
+                decision = self._representation_check(
+                    "base_ten_blocks", "whole_number_subtraction", a=a, b=b
+                )
+                if decision.get("allowed") is False:
+                    visuals.append(self._unrenderable_refusal_card(
+                        expression,
+                        refusal_request,
+                        "Base-ten blocks do not provide a productive physical vocabulary for this magnitude.",
+                        "base_ten_subtraction_refused_large_number",
+                        decision,
+                    ))
+                else:
+                    visuals.append(self._visual_card(
+                        expression,
+                        {"op": "base_ten_render", "kind": "subtract_with_borrow", "a": a, "b": b, "base": 10},
+                        {"op": "base_ten_render", "kind": "subtract_without_reducing_borrow", "a": a, "b": b, "base": 10},
+                        "Decompose one ten and reduce the tens place.",
+                        "Add ten ones but leave the tens place unchanged.",
+                        "base_ten_subtraction_borrow",
+                    ))
     
         addition_with_carry = "column_addition_with_carrying" in strategies or "add_with_dropped_carry" in misconceptions
         if addition_with_carry:

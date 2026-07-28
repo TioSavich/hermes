@@ -20,102 +20,102 @@ automaton_tuple(decimal, ecuadorian_decimal_long_division, states([q_start, q_st
 automaton_tuple(decimal, positional_decimal_reading, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([read_decimal_mark, split_whole_and_fractional_parts, assign_fractional_place_value, compose_decimal_value]), start(q_start), accepting([q_accept])).
 automaton_tuple(decimal, recalled_result_scaling, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([recall_base_division_fact, identify_dividend_scale_factor, propagate_scale_factor_through_quotient, name_decimal_quotient]), start(q_start), accepting([q_accept])).
 
-automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_start, identify_nested_decimal_units, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:375'))).
-automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_1, change_decimal_unit_name, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:375'))).
-automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_2, retain_original_count, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:375'))).
-automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_3, omit_regrouping_factor, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:375'))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_start, identify_nested_decimal_units, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:383'))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_1, change_decimal_unit_name, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:383'))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_2, retain_original_count, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:383'))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_3, omit_regrouping_factor, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:383'))).
 
-automaton_transition(decimal, decimal_add_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:256'))).
-automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:256'))).
-automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_2, add_unaligned_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:256'))).
-automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_3, reinscribe_at_larger_scale, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:256'))).
-automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_4, lose_decimal_scale_relation, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:256'))).
+automaton_transition(decimal, decimal_add_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:260'))).
+automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:260'))).
+automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_2, add_unaligned_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:260'))).
+automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_3, reinscribe_at_larger_scale, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:260'))).
+automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_4, lose_decimal_scale_relation, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:260'))).
 
-automaton_transition(decimal, decimal_addition_by_aligned_units, q_start, identify_operand_scales, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:223'))).
-automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_1, choose_common_decimal_scale, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:223'))).
-automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_2, align_decimal_units, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:223'))).
-automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:223'))).
-automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_4, add_grounded_aligned_units, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:223'))).
-automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_5, reinscribe_decimal_result, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:223'))).
+automaton_transition(decimal, decimal_addition_by_aligned_units, q_start, identify_operand_scales, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:227'))).
+automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_1, choose_common_decimal_scale, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:227'))).
+automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_2, align_decimal_units, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:227'))).
+automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:227'))).
+automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_4, add_grounded_aligned_units, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:227'))).
+automaton_transition(decimal, decimal_addition_by_aligned_units, q_step_5, reinscribe_decimal_result, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:227'))).
 
-automaton_transition(decimal, decimal_comparison_by_aligned_units, q_start, identify_operand_scales, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:120'))).
-automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_1, choose_common_decimal_scale, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:120'))).
-automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_2, align_decimal_units, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:120'))).
-automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:120'))).
-automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_4, compare_aligned_decimal_units, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:120'))).
+automaton_transition(decimal, decimal_comparison_by_aligned_units, q_start, identify_operand_scales, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:121'))).
+automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_1, choose_common_decimal_scale, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:121'))).
+automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_2, align_decimal_units, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:121'))).
+automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:121'))).
+automaton_transition(decimal, decimal_comparison_by_aligned_units, q_step_4, compare_aligned_decimal_units, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:121'))).
 
-automaton_transition(decimal, decimal_fraction_place_value_comparison, q_init, init, q_identify_decimal_units, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:10'))).
-automaton_transition(decimal, decimal_fraction_place_value_comparison, q_identify_decimal_units, scales, q_express_as_fraction, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:10'))).
-automaton_transition(decimal, decimal_fraction_place_value_comparison, q_express_as_fraction, fractions, q_align_place_value_units, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:10'))).
-automaton_transition(decimal, decimal_fraction_place_value_comparison, q_align_place_value_units, common_scale, q_compare_decimal_magnitudes, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:10'))).
-automaton_transition(decimal, decimal_fraction_place_value_comparison, q_compare_decimal_magnitudes, compare, q_emit, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:10'))).
-automaton_transition(decimal, decimal_fraction_place_value_comparison, q_emit, emit, q_accept, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:10'))).
+automaton_transition(decimal, decimal_fraction_place_value_comparison, q_init, init, q_identify_decimal_units, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:11'))).
+automaton_transition(decimal, decimal_fraction_place_value_comparison, q_identify_decimal_units, scales, q_express_as_fraction, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:11'))).
+automaton_transition(decimal, decimal_fraction_place_value_comparison, q_express_as_fraction, fractions, q_align_place_value_units, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:11'))).
+automaton_transition(decimal, decimal_fraction_place_value_comparison, q_align_place_value_units, common_scale, q_compare_decimal_magnitudes, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:11'))).
+automaton_transition(decimal, decimal_fraction_place_value_comparison, q_compare_decimal_magnitudes, compare, q_emit, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:11'))).
+automaton_transition(decimal, decimal_fraction_place_value_comparison, q_emit, emit, q_accept, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:11'))).
 
-automaton_transition(decimal, decimal_multiplication_rule, q_start, identify_operand_place_counts, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:401'))).
-automaton_transition(decimal, decimal_multiplication_rule, q_step_1, ignore_decimal_marks_momentarily, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:401'))).
-automaton_transition(decimal, decimal_multiplication_rule, q_step_2, multiply_integer_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:401'))).
-automaton_transition(decimal, decimal_multiplication_rule, q_step_3, sum_fractional_place_counts, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:401'))).
-automaton_transition(decimal, decimal_multiplication_rule, q_step_4, place_decimal_point, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:401'))).
-automaton_transition(decimal, decimal_multiplication_rule, q_step_5, compose_decimal_product, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:401'))).
+automaton_transition(decimal, decimal_multiplication_rule, q_start, identify_operand_place_counts, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:409'))).
+automaton_transition(decimal, decimal_multiplication_rule, q_step_1, ignore_decimal_marks_momentarily, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:409'))).
+automaton_transition(decimal, decimal_multiplication_rule, q_step_2, multiply_integer_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:409'))).
+automaton_transition(decimal, decimal_multiplication_rule, q_step_3, sum_fractional_place_counts, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:409'))).
+automaton_transition(decimal, decimal_multiplication_rule, q_step_4, place_decimal_point, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:409'))).
+automaton_transition(decimal, decimal_multiplication_rule, q_step_5, compose_decimal_product, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:409'))).
 
-automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_start, read_written_integer_numerals, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:152'))).
-automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:152'))).
-automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_2, compare_unaligned_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:152'))).
-automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_3, lose_decimal_scale_relation, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:152'))).
+automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_start, read_written_integer_numerals, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:153'))).
+automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:153'))).
+automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_2, compare_unaligned_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:153'))).
+automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_3, lose_decimal_scale_relation, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:153'))).
 
-automaton_transition(decimal, decimal_place_unit_regrouping, q_start, identify_nested_decimal_units, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:345'))).
-automaton_transition(decimal, decimal_place_unit_regrouping, q_step_1, derive_regrouping_factor, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:345'))).
-automaton_transition(decimal, decimal_place_unit_regrouping, q_step_2, iterate_finer_unit, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:345'))).
-automaton_transition(decimal, decimal_place_unit_regrouping, q_step_3, preserve_decimal_quantity, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:345'))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_start, identify_nested_decimal_units, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:353'))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_step_1, derive_regrouping_factor, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:353'))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_step_2, iterate_finer_unit, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:353'))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_step_3, preserve_decimal_quantity, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:353'))).
 
-automaton_transition(decimal, decimal_point_rule_misapplication, q_start, identify_operand_place_counts, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:431'))).
-automaton_transition(decimal, decimal_point_rule_misapplication, q_step_1, multiply_integer_numerals, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:431'))).
-automaton_transition(decimal, decimal_point_rule_misapplication, q_step_2, take_max_of_place_counts_instead_of_summing, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:431'))).
-automaton_transition(decimal, decimal_point_rule_misapplication, q_step_3, place_decimal_point, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:431'))).
-automaton_transition(decimal, decimal_point_rule_misapplication, q_step_4, lose_fractional_place_count, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:431'))).
+automaton_transition(decimal, decimal_point_rule_misapplication, q_start, identify_operand_place_counts, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:439'))).
+automaton_transition(decimal, decimal_point_rule_misapplication, q_step_1, multiply_integer_numerals, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:439'))).
+automaton_transition(decimal, decimal_point_rule_misapplication, q_step_2, take_max_of_place_counts_instead_of_summing, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:439'))).
+automaton_transition(decimal, decimal_point_rule_misapplication, q_step_3, place_decimal_point, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:439'))).
+automaton_transition(decimal, decimal_point_rule_misapplication, q_step_4, lose_fractional_place_count, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:439'))).
 
-automaton_transition(decimal, decimal_scale_loss_comparison, q_init, init, q_identify_decimal_units, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:28'))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_identify_decimal_units, scales_seen_but_not_coordinated, q_express_as_fraction, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:28'))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_express_as_fraction, omitted, q_scale_loss, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:28'))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_scale_loss, compare_written_numerals, q_compare_decimal_magnitudes, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:28'))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_compare_decimal_magnitudes, compare, q_emit, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:28'))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_emit, emit, q_accept, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:28'))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_init, init, q_identify_decimal_units, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:48'))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_identify_decimal_units, scales_seen_but_not_coordinated, q_express_as_fraction, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:48'))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_express_as_fraction, omitted, q_scale_loss, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:48'))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_scale_loss, compare_written_numerals, q_compare_decimal_magnitudes, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:48'))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_compare_decimal_magnitudes, compare, q_emit, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:48'))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_emit, emit, q_accept, provenance(static('knowledge/strategies/math/smr_decimal_fraction_compare.pl:48'))).
 
-automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:318'))).
-automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:318'))).
-automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_2, subtract_unaligned_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:318'))).
-automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_3, reinscribe_at_larger_scale, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:318'))).
-automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_4, lose_decimal_scale_relation, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:318'))).
+automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:324'))).
+automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:324'))).
+automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_2, subtract_unaligned_numerals, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:324'))).
+automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_3, reinscribe_at_larger_scale, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:324'))).
+automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_4, lose_decimal_scale_relation, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:324'))).
 
-automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_start, identify_operand_scales, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:283'))).
-automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_1, choose_common_decimal_scale, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:283'))).
-automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_2, align_decimal_units, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:283'))).
-automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:283'))).
-automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_4, subtract_grounded_aligned_units, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:283'))).
-automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_5, reinscribe_decimal_result, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:283'))).
+automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_start, identify_operand_scales, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:289'))).
+automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_1, choose_common_decimal_scale, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:289'))).
+automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_2, align_decimal_units, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:289'))).
+automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:289'))).
+automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_4, subtract_grounded_aligned_units, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:289'))).
+automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_5, reinscribe_decimal_result, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:289'))).
 
-automaton_transition(decimal, decimal_whole_number_reading, q_start, see_digits_as_whole_number_string, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:96'))).
-automaton_transition(decimal, decimal_whole_number_reading, q_step_1, ignore_decimal_mark, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:96'))).
-automaton_transition(decimal, decimal_whole_number_reading, q_step_2, ignore_fractional_place_value, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:96'))).
-automaton_transition(decimal, decimal_whole_number_reading, q_step_3, name_decimal_as_whole_number, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:96'))).
-automaton_transition(decimal, decimal_whole_number_reading, q_step_4, lose_decimal_scale, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:96'))).
+automaton_transition(decimal, decimal_whole_number_reading, q_start, see_digits_as_whole_number_string, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:97'))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_1, ignore_decimal_mark, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:97'))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_2, ignore_fractional_place_value, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:97'))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_3, name_decimal_as_whole_number, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:97'))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_4, lose_decimal_scale, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:97'))).
 
-automaton_transition(decimal, ecuadorian_decimal_long_division, q_start, identify_operand_place_counts, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:470'))).
-automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_1, choose_maximum_place_count, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:470'))).
-automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_2, scale_both_operands_by_shared_power_of_ten, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:470'))).
-automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_3, clear_decimal_points, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:470'))).
-automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_4, divide_as_integers, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:470'))).
-automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_5, name_decimal_quotient, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:470'))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_start, identify_operand_place_counts, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:478'))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_1, choose_maximum_place_count, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:478'))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_2, scale_both_operands_by_shared_power_of_ten, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:478'))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_3, clear_decimal_points, q_step_4, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:478'))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_4, divide_as_integers, q_step_5, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:478'))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_5, name_decimal_quotient, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:478'))).
 
-automaton_transition(decimal, positional_decimal_reading, q_start, read_decimal_mark, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:76'))).
-automaton_transition(decimal, positional_decimal_reading, q_step_1, split_whole_and_fractional_parts, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:76'))).
-automaton_transition(decimal, positional_decimal_reading, q_step_2, assign_fractional_place_value, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:76'))).
-automaton_transition(decimal, positional_decimal_reading, q_step_3, compose_decimal_value, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:76'))).
+automaton_transition(decimal, positional_decimal_reading, q_start, read_decimal_mark, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:77'))).
+automaton_transition(decimal, positional_decimal_reading, q_step_1, split_whole_and_fractional_parts, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:77'))).
+automaton_transition(decimal, positional_decimal_reading, q_step_2, assign_fractional_place_value, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:77'))).
+automaton_transition(decimal, positional_decimal_reading, q_step_3, compose_decimal_value, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:77'))).
 
-automaton_transition(decimal, recalled_result_scaling, q_start, recall_base_division_fact, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:502'))).
-automaton_transition(decimal, recalled_result_scaling, q_step_1, identify_dividend_scale_factor, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:502'))).
-automaton_transition(decimal, recalled_result_scaling, q_step_2, propagate_scale_factor_through_quotient, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:502'))).
-automaton_transition(decimal, recalled_result_scaling, q_step_3, name_decimal_quotient, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:502'))).
+automaton_transition(decimal, recalled_result_scaling, q_start, recall_base_division_fact, q_step_1, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:510'))).
+automaton_transition(decimal, recalled_result_scaling, q_step_1, identify_dividend_scale_factor, q_step_2, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:510'))).
+automaton_transition(decimal, recalled_result_scaling, q_step_2, propagate_scale_factor_through_quotient, q_step_3, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:510'))).
+automaton_transition(decimal, recalled_result_scaling, q_step_3, name_decimal_quotient, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:510'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(decimal, decimal_add_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(observed(contract_example))).
@@ -206,19 +206,21 @@ automaton_transition(decimal, decimal_point_rule_misapplication, q_step_2, take_
 automaton_transition(decimal, decimal_point_rule_misapplication, q_step_3, place_decimal_point, q_step_4, provenance(observed(derived_template))).
 automaton_transition(decimal, decimal_point_rule_misapplication, q_step_4, lose_fractional_place_count, q_accept, provenance(observed(derived_template))).
 
-automaton_transition(decimal, decimal_scale_loss_comparison, q_init, init, q_identify_decimal_units, provenance(observed(contract_example))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_identify_decimal_units, scales_seen_but_not_coordinated, q_express_as_fraction, provenance(observed(contract_example))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_express_as_fraction, omitted, q_scale_loss, provenance(observed(contract_example))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_scale_loss, compare_written_numerals, q_compare_decimal_magnitudes, provenance(observed(contract_example))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_compare_decimal_magnitudes, compare, q_emit, provenance(observed(contract_example))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_emit, emit, q_accept, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_init, init, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_1, scales_seen_but_not_coordinated, q_observed_2, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_2, omitted, q_observed_3, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_3, compare_written_numerals, q_observed_4, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_4, compare, q_observed_5, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_5, viability, q_observed_6, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_6, emit, q_accept, provenance(observed(contract_example))).
 
-automaton_transition(decimal, decimal_scale_loss_comparison, q_init, init, q_identify_decimal_units, provenance(observed(derived_template))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_identify_decimal_units, scales_seen_but_not_coordinated, q_express_as_fraction, provenance(observed(derived_template))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_express_as_fraction, omitted, q_scale_loss, provenance(observed(derived_template))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_scale_loss, compare_written_numerals, q_compare_decimal_magnitudes, provenance(observed(derived_template))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_compare_decimal_magnitudes, compare, q_emit, provenance(observed(derived_template))).
-automaton_transition(decimal, decimal_scale_loss_comparison, q_emit, emit, q_accept, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_init, init, q_observed_1, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_1, scales_seen_but_not_coordinated, q_observed_2, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_2, omitted, q_observed_3, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_3, compare_written_numerals, q_observed_4, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_4, compare, q_observed_5, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_5, viability, q_observed_6, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_scale_loss_comparison, q_observed_6, emit, q_accept, provenance(observed(derived_template))).
 
 automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(observed(contract_example))).
 automaton_transition(decimal, decimal_subtract_unaligned_numerals, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(observed(contract_example))).

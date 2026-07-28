@@ -34,9 +34,11 @@ from __future__ import annotations
 import argparse
 import ast
 import difflib
+import functools
 import hashlib
 import os
 import re
+import subprocess
 import sys
 import tempfile
 from collections import Counter, defaultdict
@@ -110,11 +112,37 @@ def digest_file(path: Path) -> tuple[str, int]:
     return digest.hexdigest(), size
 
 
+@functools.lru_cache(maxsize=1)
+def _ignored_paths() -> frozenset[str]:
+    """Repo-relative paths git is told not to carry.
+
+    The manifest indexes what this repository ships. Without this filter it also
+    indexed process-local files — SQLite's ``-shm`` and ``-wal`` companions
+    appear and vanish whenever the database is opened, so the ``--check`` mode
+    could not stay green across a run that touched the corpus, and 374 rows
+    described gitignored run outputs as though they were unconsumed artifacts.
+    A check that cannot hold is worse than no check, and an inflated remainder
+    is worse than an honest one.
+    """
+    result = subprocess.run(
+        ["git", "ls-files", "--others", "--ignored", "--exclude-standard", "-z"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    return frozenset(name for name in result.stdout.split("\0") if name)
+
+
+def carried(path: Path) -> bool:
+    return relative(path) not in _ignored_paths()
+
+
 def digest_tree(path: Path) -> tuple[str, int, int, tuple[str, ...]]:
     digest = hashlib.sha256()
     byte_count = 0
     members: list[str] = []
-    for member in sorted(item for item in path.rglob("*") if item.is_file()):
+    for member in sorted(item for item in path.rglob("*") if item.is_file() and carried(item)):
         member_digest, member_size = digest_file(member)
         member_name = member.relative_to(path).as_posix()
         digest.update(member_name.encode("utf-8"))
@@ -138,7 +166,9 @@ def collect_artifacts() -> tuple[list[Artifact], Counter[str]]:
         artifacts.append(Artifact(corpus, "directory_corpus", files, bytes_, digest, members))
         accounted.update(members)
 
-    all_data_files = sorted(path for path in (ROOT / "data").rglob("*") if path.is_file())
+    all_data_files = sorted(
+        path for path in (ROOT / "data").rglob("*") if path.is_file() and carried(path)
+    )
     for path in all_data_files:
         name = relative(path)
         if name in accounted:
@@ -153,6 +183,8 @@ def collect_artifacts() -> tuple[list[Artifact], Counter[str]]:
         source_root = ROOT / root_name
         for path in sorted(source_root.rglob("*")):
             if not path.is_file() or has_skipped_parent(path) or not is_data_file(path):
+                continue
+            if not carried(path):
                 continue
             name = relative(path)
             digest, bytes_ = digest_file(path)
