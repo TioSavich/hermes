@@ -488,17 +488,31 @@ def _lesson_ids(paths: list[Path], pattern: re.Pattern) -> set[str]:
 
 
 def _measured_lessons() -> set[str]:
-    found = set()
+    """Lessons the Atlas sweep ran at least one transition to completion for.
+
+    A record whose status is ``timeout`` is the sweep saying it did not finish
+    that transition inside its wall limit, so it is not a measurement. Counting
+    the lesson anyway let a row that measured nothing license the evidence kind:
+    a 227-lesson sweep returned 657 timeouts, 16 lessons produced nothing else,
+    and 5 of those were being called diagnostic-ready on the strength of it.
+    A lesson keeps the kind when any one of its transitions resolved.
+    """
+    attempted: set[str] = set()
+    resolved: set[str] = set()
     if not ATLAS.exists():
-        return found
+        return resolved
     for line in ATLAS.read_text(encoding="utf-8").splitlines():
         try:
-            lesson = json.loads(line).get("lesson")
+            record = json.loads(line)
         except json.JSONDecodeError:
             continue
-        if lesson:
-            found.add(lesson)
-    return found
+        lesson = record.get("lesson")
+        if not lesson:
+            continue
+        attempted.add(lesson)
+        if record.get("status") != "timeout":
+            resolved.add(lesson)
+    return resolved
 
 
 def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
