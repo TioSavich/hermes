@@ -34,6 +34,7 @@ GENERATED_ROOT = LESSON_FACT_ROOT / "generated"
 DEFAULT_RULES = ROOT / "scripts/curriculum/action_mapping_rules.json"
 DEFAULT_OUTPUT = GENERATED_ROOT / "compiled_action_mappings.pl"
 DEFAULT_TASK_OUTPUT = GENERATED_ROOT / "compiled_task_instances.pl"
+RECOVERED_TASK_SPANS = GENERATED_ROOT / "recovered_task_spans.json"
 
 CODE_RE = re.compile(r"IM-G([K0-8])-U(\d+)-L(\d+)")
 EXPLICIT_RE = re.compile(
@@ -108,6 +109,10 @@ class StudentTaskSpan:
     @property
     def text(self) -> str:
         return " ".join(text for _, text in self.lines).strip()
+
+    @property
+    def recovered(self) -> bool:
+        return self.source == str(RECOVERED_TASK_SPANS.relative_to(ROOT))
 
 
 @dataclass(frozen=True, order=True)
@@ -280,6 +285,57 @@ def extract_student_task_spans(docs: list[LessonDoc]) -> list[StudentTaskSpan]:
     return spans
 
 
+def read_recovered_task_spans(
+    root: pathlib.Path, tracked_spans: list[StudentTaskSpan]
+) -> list[StudentTaskSpan]:
+    """Read sidecar-only task text after checking its tracked-span join.
+
+    The sidecar records expressions that the line-addressable markdown omits.
+    Its ``tracked_text`` is retained as a join guard: a recovered row is usable
+    only when it names one existing student-task span and repeats that span's
+    words.  The returned pseudo-spans deliberately carry the sidecar path and
+    line zero, so no downstream instance can cite a blank markdown line.
+    """
+    path = root / RECOVERED_TASK_SPANS.relative_to(ROOT)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema") != "recovered_task_spans_v1":
+        raise SystemExit(
+            f"unexpected recovered task span schema in {path.relative_to(root)}: "
+            f"{payload.get('schema')!r}"
+        )
+    rows = payload.get("spans")
+    if not isinstance(rows, list):
+        raise SystemExit(f"{path.relative_to(root)} carries no spans list")
+    tracked_by_key = {(span.code, span.position): span for span in tracked_spans}
+    recovered_by_key = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            raise SystemExit(f"non-object recovered task span in {path.relative_to(root)}")
+        code = row.get("lesson")
+        position = row.get("position")
+        recovered_text = row.get("recovered_text")
+        tracked_text = row.get("tracked_text")
+        if not all(isinstance(value, str) for value in (code, position, recovered_text, tracked_text)):
+            raise SystemExit(f"malformed recovered task span in {path.relative_to(root)}: {row!r}")
+        key = (code, position)
+        if key in recovered_by_key:
+            raise SystemExit(f"duplicate recovered task span key: {code}/{position}")
+        tracked = tracked_by_key.get(key)
+        if tracked is None:
+            raise SystemExit(f"recovered task span does not join a tracked span: {code}/{position}")
+        if " ".join(tracked.text.split()) != " ".join(tracked_text.split()):
+            raise SystemExit(f"recovered task span tracked-text drift: {code}/{position}")
+        recovered_by_key[key] = StudentTaskSpan(
+            code,
+            str(RECOVERED_TASK_SPANS.relative_to(ROOT)),
+            0,
+            0,
+            position,
+            ((0, recovered_text),),
+        )
+    return [recovered_by_key[key] for key in sorted(recovered_by_key)]
+
+
 NUMBER_WORDS = {
     "one": 1,
     "two": 2,
@@ -364,6 +420,58 @@ def _whole_numbers_in_text(text: str) -> list[int]:
 def _through_how_many_question(text: str) -> str:
     match = re.search(r"^.*?\bHow many\b[^?]*\?", text, re.IGNORECASE)
     return match.group(0) if match else text
+
+
+def _recovered_equation_items(span: StudentTaskSpan) -> list[tuple[str, str, str, str]]:
+    """Segment complete binary equations restored by the sidecar.
+
+    This is not a new task grammar.  It supplies item boundaries that the
+    markdown reader normally obtains from physical lines, then delegates each
+    shape to the existing printed-equation parser identities below.  A total on
+    the left of addition stays a missing-addend relation, even when the sidecar
+    also restored the difference on the right.
+    """
+    if not span.recovered or not re.search(r"\bWhich 3 go together\?", span.text, re.IGNORECASE):
+        return []
+    items = []
+    patterns = (
+        (
+            "printed_equation_list_direct_addition",
+            "addition",
+            re.compile(r"(?<!\d)(?P<a>\d+)\s*\+\s*(?P<b>\d+)\s*=\s*(?P<result>\d+)(?!\d)"),
+        ),
+        (
+            "printed_equation_list_direct_subtraction",
+            "subtraction",
+            re.compile(r"(?<!\d)(?P<a>\d+)\s*[-−]\s*(?P<b>\d+)\s*=\s*(?P<result>\d+)(?!\d)"),
+        ),
+        (
+            "printed_equation_list_missing_addend",
+            "subtraction",
+            re.compile(r"(?<!\d)(?P<total>\d+)\s*=\s*(?P<known>\d+)\s*\+\s*(?P<difference>\d+)(?!\d)"),
+        ),
+    )
+    for parser_id, operation, pattern in patterns:
+        for match in pattern.finditer(span.text):
+            if parser_id == "printed_equation_list_missing_addend":
+                total = int(match.group("total"))
+                known = int(match.group("known"))
+                difference = int(match.group("difference"))
+                if total - known != difference:
+                    continue
+                task = f"subtract({total}, {known})"
+            else:
+                task_name = "add" if operation == "addition" else "subtract"
+                left = int(match.group("a"))
+                right = int(match.group("b"))
+                result = int(match.group("result"))
+                if (operation == "addition" and left + right != result) or (
+                    operation == "subtraction" and left - right != result
+                ):
+                    continue
+                task = f"{task_name}({left}, {right})"
+            items.append((parser_id, operation, task, match.group(0)))
+    return sorted(items, key=lambda item: span.text.index(item[3]))
 
 
 def extract_task_candidates(
@@ -1232,6 +1340,34 @@ def extract_task_candidates(
                             else "lesson_has_no_subtraction_attachment",
                         )
                     )
+        # Recovered text has no physical line breaks: its printed equations are
+        # contiguous text where the markdown parser would otherwise see one
+        # unmatchable line.  These are the same three printed-equation shapes
+        # above, identified after sidecar-only segmentation.
+        for equation_number, (parser_id, operation, task, excerpt) in enumerate(
+            _recovered_equation_items(span), 1
+        ):
+            has_route = any(
+                attached_operation == operation
+                for attached_operation, _ in attachments.get(span.code, set())
+            )
+            candidates.add(
+                TaskCandidate(
+                    span.code,
+                    task,
+                    operation,
+                    parser_id,
+                    span.source,
+                    0,
+                    0,
+                    f"{span.position}/recovered_equation({equation_number})",
+                    excerpt,
+                    "reviewable" if has_route else "rejected",
+                    "exact_recovered_binary_equation_and_operation_route"
+                    if has_route
+                    else f"lesson_has_no_{operation}_attachment",
+                )
+            )
         if re.search(r"\bFind the value of each expression\b", span.text, re.IGNORECASE):
             expression_number = 0
             for line, text in span.lines:
@@ -1453,7 +1589,10 @@ def promote_task_candidates(
     promoted_parsers = set(rules.get("promoted_task_parsers", []))
     result = set(instances)
     decisions = []
-    for candidate in candidates:
+    recovered_source = str(RECOVERED_TASK_SPANS.relative_to(ROOT))
+    for candidate in sorted(
+        candidates, key=lambda row: (row.source == recovered_source, row)
+    ):
         if candidate.status != "reviewable":
             decision = "rejected"
         elif candidate.parser_id not in promoted_parsers:
@@ -1462,9 +1601,7 @@ def promote_task_candidates(
             instance.code == candidate.code
             and instance.role == "productive"
             and instance.task == candidate.task
-            and instance.source == candidate.source
-            and instance.line <= candidate.end_line
-            and candidate.line <= instance.end_line
+            and instance.position == candidate.position
             for instance in result
         ):
             decision = "duplicate_existing"
@@ -1971,11 +2108,19 @@ def render_task_prolog(instances: list[TaskInstance]) -> str:
         f"compiled_task_instance_summary({lesson_count}, {len(instances)}).",
         "",
     ]
+    recovered_source = str(RECOVERED_TASK_SPANS.relative_to(ROOT))
     for instance in instances:
         if instance.pages:
             source_term = (
                 f"source(e343_pdf({_prolog_atom(instance.source)}, "
                 f"pages({_prolog_string(instance.pages)})))"
+            )
+        elif instance.source == recovered_source:
+            span_position = instance.position.split("/", 1)[0]
+            source_term = (
+                f"source(recovered_task_spans({_prolog_atom(instance.source)}, "
+                f"lesson({_prolog_atom(instance.code)}), "
+                f"position({_prolog_atom(span_position)})))"
             )
         else:
             source_term = (
@@ -2007,12 +2152,14 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     mappings += compile_scope_batches(rules, explicit, scope_titles)
     mappings = sorted(set(mappings))
     task_spans = extract_student_task_spans(docs)
+    recovered_task_spans = read_recovered_task_spans(root, task_spans)
+    parser_spans = task_spans + recovered_task_spans
     initial_attachments = {code: set(rows) for code, rows in explicit.items()}
     for mapping in mappings:
         initial_attachments.setdefault(mapping.code, set()).add(
             (mapping.operation, mapping.kind)
         )
-    initial_task_candidates = extract_task_candidates(task_spans, initial_attachments)
+    initial_task_candidates = extract_task_candidates(parser_spans, initial_attachments)
     task_derived_mappings = compile_task_derived_mappings(
         initial_task_candidates, explicit, mappings
     )
@@ -2024,7 +2171,7 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     attachments = {code: set(rows) for code, rows in explicit.items()}
     for mapping in mappings:
         attachments.setdefault(mapping.code, set()).add((mapping.operation, mapping.kind))
-    task_candidates = extract_task_candidates(task_spans, attachments)
+    task_candidates = extract_task_candidates(parser_spans, attachments)
     task_covered = covered | set(explicit)
     task_instances = compile_task_instances(docs, rules, task_covered)
     task_instances, task_candidate_decisions = promote_task_candidates(
@@ -2056,6 +2203,11 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
         ),
         "accepted_task_instances": [instance.__dict__ for instance in task_instances],
         "student_task_spans": len(task_spans),
+        "recovered_task_spans": len(recovered_task_spans),
+        "accepted_recovered_task_instances": sum(
+            instance.source == str(RECOVERED_TASK_SPANS.relative_to(ROOT))
+            for instance in task_instances
+        ),
         "task_candidate_summary": dict(
             sorted(Counter(row["promotion"] for row in task_candidate_decisions).items())
         ),
