@@ -1,21 +1,21 @@
 {
-  "atlas_facts_written": 3321,
+  "atlas_facts_written": 4608,
   "atlas_quotient": {
     "class_sizes": [
-      793,
+      1087,
       16,
-      16,
+      15,
       7,
       5,
       4,
       3,
-      1,
+      2,
       1,
       1
     ],
     "classes": 10,
-    "largest_class": 793,
-    "nontrivial_classes": 7,
+    "largest_class": 1087,
+    "nontrivial_classes": 8,
     "observable_congruence_violations": [
       {
         "observation_class": "reorganized(accommodation)",
@@ -109,6 +109,7 @@
           "learner_state(1,[strategy(divide,1)])"
         ],
         "tasks": [
+          "divide(1,7)",
           "divide(9,12)"
         ]
       },
@@ -120,6 +121,7 @@
           "learner_state(2,[strategy(divide,2)])"
         ],
         "tasks": [
+          "divide(1,7)",
           "divide(9,12)"
         ]
       },
@@ -131,34 +133,35 @@
           "learner_state(3,[strategy(divide,3)])"
         ],
         "tasks": [
+          "divide(1,7)",
           "divide(9,12)"
         ]
       }
     ],
-    "tasks": 847
+    "tasks": 1141
   },
-  "cells_covered": 244,
+  "cells_covered": 344,
   "certifies": "formal_closure_only",
   "commit": "dff031d04242bf667317f46536ccff5eec8b45db",
   "counts_by_crisis": {
     "dead_end": 102,
     "impasse": 90,
-    "solved": 3420
+    "solved": 4875
   },
   "counts_by_exec_kind": {
-    "candidate_path": 3522,
+    "candidate_path": 4977,
     "unsupported": 90
   },
   "counts_by_role_kind": {
     "deformation": 102,
-    "productive": 3516
+    "productive": 4971
   },
   "counts_by_status": {
     "needs_oracle": 33,
     "no_reorganization_domain": 48,
     "reorganized_accommodation": 16,
     "reorganized_efficiency": 95,
-    "solved": 3420,
+    "solved": 4875,
     "timeout": 6
   },
   "coverage_vs_audit": {
@@ -173,10 +176,10 @@
   "policies": [
     "accept_efficiency"
   ],
-  "records_resolved": 3612,
-  "records_total": 3618,
+  "records_resolved": 5067,
+  "records_total": 5073,
   "records_unresolved": 6,
-  "shards_read": 244,
+  "shards_read": 344,
   "stages_swept": [
     1,
     2,
