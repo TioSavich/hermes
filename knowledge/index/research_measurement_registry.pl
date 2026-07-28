@@ -1,6 +1,6 @@
 /** <module> Generated research-measurement provenance registry
  *
- * The denominator is every explicit quantitative-result statement in the 56
+ * The denominator is every explicit quantitative-result statement in the 57
  * top-level Markdown reports in docs/research/: a non-code prose line with
  * a percentage or cohort ratio, or a Markdown table data row under a header
  * that names a quantitative field. A table row is one measurement vector;
@@ -361,13 +361,19 @@ measurement_receipt(measurement(335), 'docs/research/2026-07-26-mathtutorbench-n
 measurement_receipt(measurement(336), 'docs/research/2026-07-26-mathtutorbench-nine-columns.md', 'table_lines(198,202)', 'table header: | framing | items calling a tool |; row: | "before replying, check … do not rely on memory" | 6/6 |', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(337), 'docs/research/2026-07-26-mathtutorbench-nine-columns.md', 'table_lines(29,31)', 'table header: | stop enforcement | empty rate | f1_micro |; row: | decode-time, the naive run | **0.900** | 0.475 |', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(338), 'docs/research/2026-07-26-mathtutorbench-nine-columns.md', 'table_lines(29,32)', 'table header: | stop enforcement | empty rate | f1_micro |; row: | applied to the reply afterwards | 0.000 | **0.575** |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(339), 'docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md', 'line(104)', 'On the draft''s distributional claims (objective ≈ 64%, perturbation ≈ 4%, ~470', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(340), 'docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md', 'line(108)', 'gives the objective family at 15.1%, the normative family at 4.4%, the', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(341), 'docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md', 'line(109)', 'experiential family at 1.3%, and *perturbation* alone at 0.3%. These measure a', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(342), 'docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md', 'line(198)', 'Two cells of twelve carry 97% of the usage. Ten cells share the remaining 53', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(343), 'docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md', 'line(595)', '3, and 1/3 > 1/4, correct). `valid_domain_status`: `inferred`.', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(344), 'docs/research/2026-07-27-no-saying-vocabularies-and-incompatibility.md', 'line(661)', '- 3,183 of 3,621 rows have a populated `example`, which is the minimum needed to', none_recorded, none_recorded, method_not_recorded).
 
-measurement_denominator(explicit_quantitative_result_statement, 338).
+measurement_denominator(explicit_quantitative_result_statement, 344).
 measurement_resolution_count(resolved_live_method, 67).
 measurement_resolution_count(method_ambiguous, 23).
 measurement_resolution_count(method_path_and_cited_data_missing, 1).
 measurement_resolution_count(data_method_unrecorded, 19).
-measurement_resolution_count(method_not_recorded, 228).
+measurement_resolution_count(method_not_recorded, 234).
 
 measurement_control(coverage_absence_registry, 'scripts/extract_coverage_absence_registry.py', resolved_live_method).
 measurement_control(self_description_census, 'scripts/research/build_self_description_census.py', resolved_live_method).

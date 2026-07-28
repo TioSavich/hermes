@@ -1,0 +1,357 @@
+#!/usr/bin/env python3
+"""Merge the Atlas shards into the landscape, fact store, and summary.
+
+Consumes the per-lesson JSONL shards written by export_atlas.pl (one shard per
+cell) and produces the three durable artifacts the sweep ships:
+
+  (a) work/atlas_landscape.jsonl  the full merged record stream, sorted
+      deterministically. One line per (task instance x learner stage): the raw
+      Atlas. This is the file scripts/curriculum/build_lesson_evidence.py reads
+      to decide which lessons carry measured_transition evidence.
+
+  (b) work/atlas_facts.pl  a generated fact module, atlas_transition/6, with a
+      provenance header (generator, commit, date, model version = the (s, I)
+      state abstraction and policy). It certifies formal closure of each model
+      step, nothing about a child.
+
+  (c) work/atlas_summary.json  counts by status/crisis, the atlas quotient-class
+      census (grouped by the complete transition signature), the task_quotient
+      basis certificate where that module is present, and coverage vs the
+      traversal audit -- including lessons WITHOUT compiled events, named as
+      explicit gaps rather than silently skipped.
+
+Timeouts are never dropped: a transition that exceeded its wall limit is written
+by the export driver with status:timeout and is counted and listed here.
+
+Ported from scripts/bigred/iteration14/aggregate.py in umedcta-formalization
+(read-only there). The merge, the sort key, and the serialization are carried
+over unchanged, so a landscape produced here is comparable line-for-line against
+the vendored scripts/bigred/iteration15/work/atlas/atlas_landscape.jsonl. What
+moved is the path vocabulary, named once in the block below.
+"""
+from __future__ import annotations
+
+import argparse
+import collections
+import datetime
+import glob
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+# ---- path vocabulary, named once -------------------------------------------
+#
+# Every repo-relative path this aggregator touches is named here and nowhere
+# else. The sweep was authored against a checkout whose trees were called
+# lessons/ and learner/; Hermes calls them curriculum/ and formal/learner/, and
+# a path stated in two vocabularies is exactly what stalls a port. Rerouting
+# means editing one line below.
+REPO_ROOT = Path(__file__).resolve().parents[3]
+WORK_DEFAULT = Path("scripts/bigred/atlas/work")
+PATHS_PL = "paths.pl"
+GENERATOR = "scripts/bigred/atlas/aggregate.py"
+# The task-equivalence quotient module and the alias a Prolog goal reaches it by.
+# It is absent from this checkout; basis_certificate/3 names that absence rather
+# than substituting a number for it.
+QUOTIENT_FILE = Path("formal/learner/atlas/task_quotient.pl")
+QUOTIENT_ALIAS = "learner('atlas/task_quotient')"
+QUOTIENT_SUBSTRATE = "formal/learner/atlas/basis_transitions.pl (mini-Atlas basis)"
+
+
+def read_shards(shard_dir: Path) -> tuple[list[dict], int]:
+    records: list[dict] = []
+    files = sorted(glob.glob(str(shard_dir / "*.jsonl")))
+    for f in files:
+        with open(f, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                records.append(json.loads(line))
+    return records, len(files)
+
+
+def sort_key(r: dict):
+    return (
+        str(r.get("lesson", "")),
+        r.get("stage0", -1) if isinstance(r.get("stage0"), int) else -1,
+        str(r.get("role", "")),
+        str(r.get("task", "")),
+    )
+
+
+def resolve_commit(work: Path, repo: Path) -> str:
+    cells = work / "cells.json"
+    if cells.exists():
+        try:
+            c = json.load(open(cells, encoding="utf-8")).get("commit")
+            if c and c != "unknown":
+                return c
+        except Exception:
+            pass
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=repo,
+            stderr=subprocess.DEVNULL).decode().strip()
+    except Exception:
+        return "unknown"
+
+
+def write_landscape(records: list[dict], out: Path) -> None:
+    with open(out, "w", encoding="utf-8") as fh:
+        for r in sorted(records, key=sort_key):
+            fh.write(json.dumps(r, sort_keys=True) + "\n")
+
+
+MODEL_VERSION = (
+    "state=(s,I)=learner_state(Stage,Inventory), Inventory a sorted set of "
+    "strategy(Op,Stage); every transition starts from Inventory=[]. "
+    "policy per-record. stages are the units-coordination ladder the "
+    "whole-number reorganization domain licenses (model-given, capped at 3)."
+)
+
+
+def write_facts(records: list[dict], out: Path, commit: str, date: str,
+                policies: list[str], stages: list[int]) -> int:
+    facts = sorted({r["atlas_fact"] for r in records
+                    if r.get("atlas_fact") and r.get("status_group") == "resolved"})
+    header = [
+        "/** <module> atlas_facts - GENERATED Atlas transition fact store.",
+        " *",
+        " * Do not edit by hand. Regenerated by",
+        f" * {GENERATOR} from the shard JSONL.",
+        " *",
+        " * atlas_transition(Lesson, Stage0, Role, Task, State1, Observation): one",
+        " * resolved step of f_{t,c} (formal/learner/task_transition.pl). Each fact",
+        " * certifies formal closure of that model step under the stated (s, I)",
+        " * state and policy; it says nothing about a child.",
+        " *",
+        f" * generator:     {GENERATOR}",
+        f" * commit:        {commit}",
+        f" * date:          {date}",
+        f" * policy:        {', '.join(policies) if policies else 'accept_efficiency'}",
+        f" * stages swept:  {stages}",
+        f" * model version: {MODEL_VERSION}",
+        " */",
+        ":- module(atlas_facts, [atlas_transition/6]).",
+        "",
+    ]
+    with open(out, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(header) + "\n")
+        for fact in facts:
+            fh.write(fact + ".\n")
+    return len(facts)
+
+
+def atlas_quotient(records: list[dict]) -> dict:
+    """Group tasks by their complete transition signature; check congruence.
+
+    A task's complete signature is the sorted set of its per-appearance sig(...)
+    tuples; the quotient groups tasks by that set. State-update congruence: a
+    class + stage0 + role_kind must map to one successor state. Observable
+    congruence (the coarser projection) is not in general a congruence; each
+    violation is a named finding, never widened away.
+    """
+    resolved = [r for r in records if r.get("status_group") == "resolved"
+                and r.get("signature") and r.get("task")]
+    sig_by_task: dict[str, set[str]] = collections.defaultdict(set)
+    for r in resolved:
+        sig_by_task[r["task"]].add(r["signature"])
+    complete = {t: frozenset(s) for t, s in sig_by_task.items()}
+
+    classes: dict[frozenset, list[str]] = collections.defaultdict(list)
+    for task, sig in complete.items():
+        classes[sig].append(task)
+    class_list = [sorted(tasks) for tasks in classes.values()]
+    class_list.sort(key=lambda ts: (-len(ts), ts))
+
+    # state-update congruence: per class, per (stage0, role_kind) -> successor set
+    state_violations = []
+    for sig, tasks in classes.items():
+        recs = [r for r in resolved if r["task"] in set(tasks)]
+        by_key: dict[tuple, set] = collections.defaultdict(set)
+        for r in recs:
+            by_key[(r.get("stage0"), r.get("role_kind"))].add(r.get("result_state"))
+        for (stage0, rk), states in by_key.items():
+            if len(states) > 1:
+                state_violations.append({
+                    "stage0": stage0, "role_kind": rk,
+                    "tasks": sorted(tasks), "successor_states": sorted(states),
+                })
+
+    # observable congruence (coarser projection)
+    obs_key: dict[tuple, set] = collections.defaultdict(set)
+    for r in resolved:
+        obs_key[(r.get("stage0"), r.get("role_kind"),
+                 r.get("observation_class"))].add(r.get("result_state"))
+    obs_violations = [
+        {"stage0": s, "role_kind": rk, "observation_class": oc,
+         "successor_states": sorted(states)}
+        for (s, rk, oc), states in sorted(obs_key.items(), key=lambda kv: str(kv[0]))
+        if len(states) > 1
+    ]
+
+    sizes = [len(ts) for ts in class_list]
+    return {
+        "tasks": len(complete),
+        "classes": len(class_list),
+        "nontrivial_classes": sum(1 for n in sizes if n >= 2),
+        "largest_class": max(sizes) if sizes else 0,
+        "state_update_congruence": "holds" if not state_violations else "violated",
+        "state_update_violations": state_violations,
+        "observable_congruence_violations": obs_violations,
+        "class_sizes": sizes,
+    }
+
+
+def basis_certificate(repo: Path, work: Path, timeout: int) -> dict:
+    """Run the task-equivalence quotient over its own basis substrate.
+
+    That module has not been ported into this checkout. When it is absent the
+    certificate says so by name; the atlas-wide census above is computed from the
+    per-record signatures either way, so nothing here is filled in by guess.
+    """
+    if not (repo / QUOTIENT_FILE).exists():
+        return {"available": False,
+                "reason": f"{QUOTIENT_FILE.as_posix()} is not present in this "
+                          "checkout; the atlas-wide census is computed from the "
+                          "per-record signatures instead"}
+    out = work / "basis_quotient.json"
+    goal = (
+        "use_module(library(http/json)), "
+        f"use_module({QUOTIENT_ALIAS}), "
+        "quotient_summary(S), "
+        f"open('{out.as_posix()}', write, St), "
+        "json_write_dict(St, S, [width(0)]), nl(St), close(St), halt"
+    )
+    try:
+        rc = subprocess.run(
+            ["swipl", "-q", "-l", PATHS_PL, "-g", goal, "-t", "halt(1)"],
+            cwd=repo, timeout=timeout,
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
+        if rc == 0 and out.exists():
+            cert = json.load(open(out, encoding="utf-8"))
+            cert["available"] = True
+            cert["substrate"] = QUOTIENT_SUBSTRATE
+            return cert
+        return {"available": False, "reason": f"swipl rc={rc}"}
+    except Exception as e:  # noqa: BLE001
+        return {"available": False, "reason": str(e)}
+
+
+def coverage_vs_audit(work: Path) -> dict:
+    path = work / "audit_coverage.json"
+    if not path.exists():
+        return {"available": False,
+                "reason": "audit_coverage.json absent; run atlas_export:coverage/1"}
+    cov = json.load(open(path, encoding="utf-8"))
+    lessons = cov.get("lessons", [])
+    gaps = [r["lesson"] for r in lessons if not r.get("has_instances")]
+    with_events = [r["lesson"] for r in lessons if r.get("has_instances")]
+    return {
+        "available": True,
+        "through_grade": cov.get("through_grade"),
+        "audit_lesson_count": cov.get("lesson_count"),
+        "audit_traversable": cov.get("traversable"),
+        "audit_missing_task_instance": cov.get("missing_task_instance"),
+        "audit_unexercised_dead_end": cov.get("unexercised_dead_end"),
+        "lessons_with_compiled_events": len(with_events),
+        "gap_lessons_no_compiled_events": len(gaps),
+        "gap_lessons_sample": sorted(gaps)[:25],
+        "note": ("gap lessons carry no source-backed task event through the audit "
+                 "grade ceiling; they are explicit gaps, not silently skipped."),
+    }
+
+
+def counts(records: list[dict], field: str) -> dict:
+    c = collections.Counter(
+        r.get(field) for r in records if r.get(field) is not None)
+    return dict(sorted(c.items(), key=lambda kv: (-kv[1], str(kv[0]))))
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--repo", type=Path, default=REPO_ROOT)
+    p.add_argument("--work", type=Path, default=WORK_DEFAULT)
+    p.add_argument("--timeout", type=int, default=600)
+    args = p.parse_args()
+
+    repo = args.repo.resolve()
+    work = (repo / args.work) if not args.work.is_absolute() else args.work
+    shard_dir = work / "shards"
+    work.mkdir(parents=True, exist_ok=True)
+
+    records, shard_files = read_shards(shard_dir)
+    if not records:
+        print(f"[atlas] no shard records under {shard_dir}", file=sys.stderr)
+        return 1
+
+    commit = resolve_commit(work, repo)
+    date = datetime.date.today().isoformat()
+    policies = sorted({r["policy"] for r in records if r.get("policy")})
+    stages = sorted({r["stage0"] for r in records if isinstance(r.get("stage0"), int)})
+
+    write_landscape(records, work / "atlas_landscape.jsonl")
+    n_facts = write_facts(records, work / "atlas_facts.pl", commit, date,
+                          policies, stages)
+
+    cells_covered = sorted({r["lesson"] for r in records if r.get("lesson")})
+    timeouts = [r for r in records if r.get("status") == "timeout"]
+    empties = [r for r in records if r.get("status") == "empty_cell"]
+
+    summary = {
+        "kind": "atlas_summary_v1",
+        "generator": GENERATOR,
+        "commit": commit,
+        "date": date,
+        "model_version": MODEL_VERSION,
+        "policies": policies,
+        "stages_swept": stages,
+        "certifies": "formal_closure_only",
+        "shards_read": shard_files,
+        "cells_covered": len(cells_covered),
+        "records_total": len(records),
+        "records_resolved": sum(1 for r in records
+                                if r.get("status_group") == "resolved"),
+        "records_unresolved": sum(1 for r in records
+                                  if r.get("status_group") == "unresolved"),
+        "empty_cells": len(empties),
+        "atlas_facts_written": n_facts,
+        "counts_by_status": counts(records, "status"),
+        "counts_by_crisis": counts(records, "crisis"),
+        "counts_by_exec_kind": counts(records, "exec_kind"),
+        "counts_by_role_kind": counts(records, "role_kind"),
+        "timeouts": {
+            "count": len(timeouts),
+            "cells": sorted({f"{r.get('lesson')}@s{r.get('stage0')}:{r.get('task')}"
+                             for r in timeouts}),
+            "note": "timeouts are logged, never dropped; raise ATLAS_CELL_SECONDS to close.",
+        },
+        "atlas_quotient": atlas_quotient(records),
+        "task_quotient_basis_certificate": basis_certificate(repo, work, args.timeout),
+        "coverage_vs_audit": coverage_vs_audit(work),
+    }
+
+    with open(work / "atlas_summary.json", "w", encoding="utf-8") as fh:
+        json.dump(summary, fh, indent=2, sort_keys=True)
+
+    q = summary["atlas_quotient"]
+    print(f"[atlas] shards={shard_files} records={len(records)} "
+          f"resolved={summary['records_resolved']} "
+          f"facts={n_facts} timeouts={len(timeouts)}")
+    print(f"[atlas] quotient: {q['tasks']} tasks -> {q['classes']} classes "
+          f"(state-update congruence {q['state_update_congruence']}, "
+          f"{len(q['observable_congruence_violations'])} observable violation(s))")
+    cov = summary["coverage_vs_audit"]
+    if cov.get("available"):
+        print(f"[atlas] coverage: {cov['lessons_with_compiled_events']} lessons "
+              f"with events / {cov['audit_lesson_count']} audited through grade "
+              f"{cov['through_grade']}; {cov['gap_lessons_no_compiled_events']} gaps")
+    print(f"[atlas] wrote {work/'atlas_landscape.jsonl'}, "
+          f"{work/'atlas_facts.pl'}, {work/'atlas_summary.json'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

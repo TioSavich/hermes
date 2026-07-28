@@ -41,3 +41,9 @@ scripts/research/vision_excerpt_verification_out/
 # SQLite write-ahead log and shared-memory files: process-local, never shipped
 data/research/*.db-wal
 data/research/*.db-shm
+
+# Atlas sweep intermediates. The landscape, the fact store, and the summary are
+# the durable outputs; the per-lesson shards and the cell list are rebuilt by
+# every run and carry nothing the merged landscape does not.
+scripts/bigred/iteration15/work/atlas/shards/
+scripts/bigred/iteration15/work/atlas/cells.json

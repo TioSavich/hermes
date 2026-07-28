@@ -1,9 +1,9 @@
 {
  "by_grade": {
   "1": {
-   "diagnostic_ready": 18,
+   "diagnostic_ready": 25,
    "executable_task": 39,
-   "measured_transition": 22,
+   "measured_transition": 39,
    "negative_candidate": 127,
    "published": 148,
    "standard_action_candidate": 148,
@@ -11,9 +11,9 @@
    "structured_negative": 66
   },
   "2": {
-   "diagnostic_ready": 9,
+   "diagnostic_ready": 11,
    "executable_task": 18,
-   "measured_transition": 9,
+   "measured_transition": 18,
    "negative_candidate": 123,
    "published": 150,
    "standard_action_candidate": 149,
@@ -23,7 +23,7 @@
   "3": {
    "diagnostic_ready": 17,
    "executable_task": 24,
-   "measured_transition": 21,
+   "measured_transition": 24,
    "negative_candidate": 110,
    "published": 143,
    "standard_action_candidate": 139,
@@ -31,9 +31,9 @@
    "structured_negative": 50
   },
   "4": {
-   "diagnostic_ready": 8,
+   "diagnostic_ready": 9,
    "executable_task": 10,
-   "measured_transition": 8,
+   "measured_transition": 10,
    "negative_candidate": 103,
    "published": 151,
    "standard_action_candidate": 147,
@@ -75,9 +75,9 @@
    "standard_action_candidate": 130
   },
   "K": {
-   "diagnostic_ready": 3,
+   "diagnostic_ready": 4,
    "executable_task": 8,
-   "measured_transition": 4,
+   "measured_transition": 8,
    "negative_candidate": 86,
    "published": 139,
    "standard_action_candidate": 131,
@@ -260,7 +260,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -268,9 +268,7 @@
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L4",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add and Subtract Your Way",
    "negative_candidates": [
     {
@@ -299,7 +297,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.OA.B.2": [
      "add",
@@ -401,7 +399,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -410,8 +408,7 @@
    "grade": "2",
    "lesson": "IM-G2-U1-L6",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 1",
    "negative_candidates": [
@@ -3494,7 +3491,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -3503,8 +3500,7 @@
    "grade": "2",
    "lesson": "IM-G2-U3-L13",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 2",
    "negative_candidates": [
@@ -3695,7 +3691,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -3704,8 +3700,7 @@
    "grade": "2",
    "lesson": "IM-G2-U3-L16",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Interpret Measurement Data",
    "negative_candidates": [
@@ -5942,7 +5937,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -5951,8 +5946,7 @@
    "grade": "2",
    "lesson": "IM-G2-U6-L5",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 1",
    "negative_candidates": [
@@ -6381,7 +6375,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -6390,8 +6384,7 @@
    "grade": "2",
    "lesson": "IM-G2-U6-L14",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 3",
    "negative_candidates": [
@@ -6834,7 +6827,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -6843,8 +6836,7 @@
    "grade": "2",
    "lesson": "IM-G2-U6-L21",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 4",
    "negative_candidates": [
@@ -9937,7 +9929,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -9946,8 +9938,7 @@
    "grade": "2",
    "lesson": "IM-G2-U9-L8",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Add and Subtract within 100",
    "negative_candidates": [
@@ -10208,7 +10199,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -10216,9 +10207,7 @@
    },
    "grade": "2",
    "lesson": "IM-G2-U9-L11",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "All about Tape Diagrams",
    "negative_candidates": [
     {
@@ -10255,7 +10244,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -10465,7 +10454,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -10474,8 +10463,7 @@
    "grade": "3",
    "lesson": "IM-G3-U1-L3",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Scaled Picture Graphs",
    "negative_candidates": [
@@ -10571,7 +10559,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -10580,8 +10568,7 @@
    "grade": "3",
    "lesson": "IM-G3-U1-L5",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Represent Data in Scaled Bar Graphs",
    "negative_candidates": [
@@ -19213,7 +19200,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -19222,8 +19209,7 @@
    "grade": "3",
    "lesson": "IM-G3-U8-L15",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Number Talk",
    "negative_candidates": [
@@ -23738,7 +23724,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -23746,9 +23732,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U5-L14",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Weight and Capacity Measurements",
    "negative_candidates": [
     {
@@ -23777,7 +23761,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.MD.A.1": [
      "generate",
@@ -27215,7 +27199,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -27224,8 +27208,7 @@
    "grade": "4",
    "lesson": "IM-G4-U8-L5",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Symmetry in Figures (Part 2)",
    "negative_candidates": [
@@ -52863,7 +52846,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -52872,8 +52855,7 @@
    "grade": "K",
    "lesson": "IM-GK-U5-L8",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "More than One Way",
    "negative_candidates": [
@@ -53326,7 +53308,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -53334,9 +53316,7 @@
    },
    "grade": "K",
    "lesson": "IM-GK-U6-L2",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Keep Track of Objects",
    "negative_candidates": [
     {
@@ -53349,7 +53329,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "K.CC.B.4": [
      "count",
@@ -55473,7 +55453,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -55482,8 +55462,7 @@
    "grade": "K",
    "lesson": "IM-GK-U8-L11",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Share Story Problems",
    "negative_candidates": [
@@ -55689,7 +55668,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -55698,8 +55677,7 @@
    "grade": "K",
    "lesson": "IM-GK-U8-L15",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Addition and Subtraction Expressions within 5",
    "negative_candidates": [
@@ -56346,7 +56324,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -56354,9 +56332,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U1-L4",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "More Work with 1 and 2",
    "negative_candidates": [
     {
@@ -56377,7 +56353,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.C.5": [
      "add",
@@ -56813,7 +56789,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -56821,9 +56797,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U1-L13",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Questions about Data",
    "negative_candidates": [
     {
@@ -56836,7 +56810,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.MD.C.4": [
      "interpret",
@@ -56869,7 +56843,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -56877,9 +56851,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U1-L14",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -56900,7 +56872,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.MD.C.4": [
      "interpret",
@@ -59978,7 +59950,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -59986,9 +59958,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U3-L19",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Methods for Addition within 20",
    "negative_candidates": [
     {
@@ -60025,7 +59995,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.B.3": [
      "add",
@@ -61614,7 +61584,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -61622,9 +61592,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U4-L13",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 2",
    "negative_candidates": [
     {
@@ -61653,7 +61621,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.C.6": [
      "add",
@@ -61968,7 +61936,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -61977,8 +61945,7 @@
    "grade": "1",
    "lesson": "IM-G1-U4-L18",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 3",
    "negative_candidates": [
@@ -63061,7 +63028,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -63070,8 +63037,7 @@
    "grade": "1",
    "lesson": "IM-G1-U5-L8",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 2",
    "negative_candidates": [
@@ -63114,7 +63080,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -63122,9 +63088,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U5-L9",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add 2 Two-Digit Numbers",
    "negative_candidates": [
     {
@@ -63193,7 +63157,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.NBT.C.4": [
      "add",
@@ -63660,7 +63624,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -63669,8 +63633,7 @@
    "grade": "1",
    "lesson": "IM-G1-U6-L2",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Compare the Lengths of Objects Indirectly",
    "negative_candidates": [
@@ -63761,7 +63724,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -63770,8 +63733,7 @@
    "grade": "1",
    "lesson": "IM-G1-U6-L4",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 1",
    "negative_candidates": [
@@ -64483,7 +64445,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -64492,8 +64454,7 @@
    "grade": "1",
    "lesson": "IM-G1-U6-L16",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 3",
    "negative_candidates": [
@@ -64784,7 +64745,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -64793,8 +64754,7 @@
    "grade": "1",
    "lesson": "IM-G1-U7-L6",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Rectangles and Squares",
    "negative_candidates": [
@@ -64909,7 +64869,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -64918,8 +64878,7 @@
    "grade": "1",
    "lesson": "IM-G1-U7-L8",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 1",
    "negative_candidates": [
@@ -65209,7 +65168,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -65217,9 +65176,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U7-L14",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Half of the Clock",
    "negative_candidates": [
     {
@@ -65256,7 +65213,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.MD.B.3": [
      "use",
@@ -65335,7 +65292,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -65344,8 +65301,7 @@
    "grade": "1",
    "lesson": "IM-G1-U7-L16",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Hard Times",
    "negative_candidates": [
@@ -65549,7 +65505,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -65558,8 +65514,7 @@
    "grade": "1",
    "lesson": "IM-G1-U8-L2",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Relate Addition and Subtraction",
    "negative_candidates": [
@@ -65600,7 +65555,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -65609,8 +65564,7 @@
    "grade": "1",
    "lesson": "IM-G1-U8-L3",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Add and Subtract within 20",
    "negative_candidates": [
@@ -74283,9 +74237,9 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 98,
+  "diagnostic_ready": 109,
   "executable_task": 186,
-  "measured_transition": 151,
+  "measured_transition": 186,
   "negative_candidate": 788,
   "published": 1308,
   "standard_action_candidate": 1272,

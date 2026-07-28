@@ -1,0 +1,210 @@
+{
+  "atlas_facts_written": 2601,
+  "atlas_quotient": {
+    "class_sizes": [
+      615,
+      16,
+      16,
+      7,
+      5,
+      4,
+      3,
+      1,
+      1,
+      1
+    ],
+    "classes": 10,
+    "largest_class": 615,
+    "nontrivial_classes": 7,
+    "observable_congruence_violations": [
+      {
+        "observation_class": "reorganized(accommodation)",
+        "role_kind": "deformation",
+        "stage0": 1,
+        "successor_states": [
+          "learner_state(2,[strategy(divide,2)])",
+          "learner_state(2,[strategy(multiply,2)])",
+          "learner_state(2,[strategy(subtract,2)])"
+        ]
+      },
+      {
+        "observation_class": "reorganized(efficiency)",
+        "role_kind": "deformation",
+        "stage0": 2,
+        "successor_states": [
+          "learner_state(2,[strategy(divide,2)])",
+          "learner_state(2,[strategy(multiply,2)])",
+          "learner_state(2,[strategy(subtract,2)])"
+        ]
+      },
+      {
+        "observation_class": "reorganized(efficiency)",
+        "role_kind": "productive",
+        "stage0": 2,
+        "successor_states": [
+          "learner_state(2,[strategy(divide,2)])",
+          "learner_state(2,[strategy(multiply,2)])"
+        ]
+      },
+      {
+        "observation_class": "reorganized(efficiency)",
+        "role_kind": "deformation",
+        "stage0": 3,
+        "successor_states": [
+          "learner_state(3,[strategy(divide,3)])",
+          "learner_state(3,[strategy(multiply,3)])",
+          "learner_state(3,[strategy(subtract,3)])"
+        ]
+      },
+      {
+        "observation_class": "reorganized(efficiency)",
+        "role_kind": "productive",
+        "stage0": 3,
+        "successor_states": [
+          "learner_state(3,[strategy(divide,3)])",
+          "learner_state(3,[strategy(multiply,3)])"
+        ]
+      }
+    ],
+    "state_update_congruence": "violated",
+    "state_update_violations": [
+      {
+        "role_kind": "productive",
+        "stage0": 1,
+        "successor_states": [
+          "learner_state(1,[])",
+          "learner_state(2,[strategy(multiply,2)])"
+        ],
+        "tasks": [
+          "multiply(3,4)"
+        ]
+      },
+      {
+        "role_kind": "productive",
+        "stage0": 2,
+        "successor_states": [
+          "learner_state(2,[])",
+          "learner_state(2,[strategy(multiply,2)])"
+        ],
+        "tasks": [
+          "multiply(3,4)"
+        ]
+      },
+      {
+        "role_kind": "productive",
+        "stage0": 3,
+        "successor_states": [
+          "learner_state(3,[])",
+          "learner_state(3,[strategy(multiply,3)])"
+        ],
+        "tasks": [
+          "multiply(3,4)"
+        ]
+      },
+      {
+        "role_kind": "productive",
+        "stage0": 1,
+        "successor_states": [
+          "learner_state(1,[])",
+          "learner_state(1,[strategy(divide,1)])"
+        ],
+        "tasks": [
+          "divide(9,12)"
+        ]
+      },
+      {
+        "role_kind": "productive",
+        "stage0": 2,
+        "successor_states": [
+          "learner_state(2,[])",
+          "learner_state(2,[strategy(divide,2)])"
+        ],
+        "tasks": [
+          "divide(9,12)"
+        ]
+      },
+      {
+        "role_kind": "productive",
+        "stage0": 3,
+        "successor_states": [
+          "learner_state(3,[])",
+          "learner_state(3,[strategy(divide,3)])"
+        ],
+        "tasks": [
+          "divide(9,12)"
+        ]
+      }
+    ],
+    "tasks": 669
+  },
+  "cells_covered": 186,
+  "certifies": "formal_closure_only",
+  "commit": "7403406083a6a634200548e75303549509af0cb7",
+  "counts_by_crisis": {
+    "dead_end": 102,
+    "impasse": 90,
+    "solved": 2694
+  },
+  "counts_by_exec_kind": {
+    "candidate_path": 2796,
+    "unsupported": 90
+  },
+  "counts_by_role_kind": {
+    "deformation": 102,
+    "productive": 2802
+  },
+  "counts_by_status": {
+    "needs_oracle": 33,
+    "no_reorganization_domain": 48,
+    "reorganized_accommodation": 16,
+    "reorganized_efficiency": 95,
+    "solved": 2694,
+    "timeout": 18
+  },
+  "coverage_vs_audit": {
+    "available": false,
+    "reason": "audit_coverage.json absent; run atlas_export:coverage/1"
+  },
+  "date": "2026-07-27",
+  "empty_cells": 0,
+  "generator": "scripts/bigred/atlas/aggregate.py",
+  "kind": "atlas_summary_v1",
+  "model_version": "state=(s,I)=learner_state(Stage,Inventory), Inventory a sorted set of strategy(Op,Stage); every transition starts from Inventory=[]. policy per-record. stages are the units-coordination ladder the whole-number reorganization domain licenses (model-given, capped at 3).",
+  "policies": [
+    "accept_efficiency"
+  ],
+  "records_resolved": 2886,
+  "records_total": 2904,
+  "records_unresolved": 18,
+  "shards_read": 186,
+  "stages_swept": [
+    1,
+    2,
+    3
+  ],
+  "task_quotient_basis_certificate": {
+    "available": false,
+    "reason": "formal/learner/atlas/task_quotient.pl is not present in this checkout; the atlas-wide census is computed from the per-record signatures instead"
+  },
+  "timeouts": {
+    "cells": [
+      "IM-G6-U3-L4@s1:multiply(2100,110)",
+      "IM-G6-U3-L4@s2:multiply(2100,110)",
+      "IM-G6-U3-L4@s3:multiply(2100,110)",
+      "IM-G6-U3-L9@s1:multiply(9,2000)",
+      "IM-G6-U3-L9@s2:multiply(9,2000)",
+      "IM-G6-U3-L9@s3:multiply(9,2000)",
+      "IM-G7-U2-L8@s1:multiply(1500,30000)",
+      "IM-G7-U2-L8@s2:multiply(1500,30000)",
+      "IM-G7-U2-L8@s3:multiply(1500,30000)",
+      "IM-G7-U2-L9@s1:divide(50000,210)",
+      "IM-G7-U2-L9@s2:divide(50000,210)",
+      "IM-G7-U2-L9@s3:divide(50000,210)",
+      "IM-G7-U5-L12@s1:multiply(7,3600)",
+      "IM-G7-U5-L12@s2:multiply(7,3600)",
+      "IM-G7-U5-L12@s3:multiply(7,3600)"
+    ],
+    "count": 18,
+    "note": "timeouts are logged, never dropped; raise ATLAS_CELL_SECONDS to close."
+  }
+}

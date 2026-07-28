@@ -3318,12 +3318,12 @@ lesson_task_span_rollup('IM-G1-U1-L1', '1', 1, 0, strategy_attached, prompt_stat
 lesson_task_span_rollup('IM-G1-U1-L10', '1', 1, 0, strategy_attached, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U1-L11', '1', 5, 0, standard_action_candidate, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U1-L12', '1', 3, 0, standard_action_candidate, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U1-L13', '1', 3, 1, event_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U1-L14', '1', 2, 1, event_ready, extract_runs_past_prompt).
+lesson_task_span_rollup('IM-G1-U1-L13', '1', 3, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U1-L14', '1', 2, 1, diagnostic_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U1-L15', '1', 2, 0, standard_action_candidate, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U1-L2', '1', 1, 0, strategy_attached, imperative_without_quantity).
 lesson_task_span_rollup('IM-G1-U1-L3', '1', 2, 0, strategy_attached, extract_runs_past_prompt).
-lesson_task_span_rollup('IM-G1-U1-L4', '1', 2, 1, event_ready, extract_runs_past_prompt).
+lesson_task_span_rollup('IM-G1-U1-L4', '1', 2, 1, diagnostic_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U1-L5', '1', 2, 0, strategy_attached, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U1-L6', '1', 2, 0, strategy_attached, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U1-L7', '1', 2, 0, standard_action_candidate, extract_runs_past_prompt).
@@ -3362,7 +3362,7 @@ lesson_task_span_rollup('IM-G1-U3-L15', '1', 3, 0, strategy_attached, no_task_gr
 lesson_task_span_rollup('IM-G1-U3-L16', '1', 5, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U3-L17', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L18', '1', 2, 0, strategy_attached, extract_runs_past_prompt).
-lesson_task_span_rollup('IM-G1-U3-L19', '1', 3, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U3-L19', '1', 3, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L2', '1', 5, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L20', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L21', '1', 1, 0, strategy_attached, no_task_grammar_for_single_quantity).
@@ -3384,7 +3384,7 @@ lesson_task_span_rollup('IM-G1-U4-L1', '1', 1, 0, strategy_attached, empty_extra
 lesson_task_span_rollup('IM-G1-U4-L10', '1', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U4-L11', '1', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U4-L12', '1', 2, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G1-U4-L13', '1', 3, 1, event_ready, extract_runs_past_prompt).
+lesson_task_span_rollup('IM-G1-U4-L13', '1', 3, 1, diagnostic_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U4-L14', '1', 3, 0, diagnostic_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U4-L15', '1', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U4-L16', '1', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3416,7 +3416,7 @@ lesson_task_span_rollup('IM-G1-U5-L5', '1', 4, 0, strategy_attached, no_task_gra
 lesson_task_span_rollup('IM-G1-U5-L6', '1', 3, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U5-L7', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U5-L8', '1', 3, 1, event_ready, extract_runs_past_prompt).
-lesson_task_span_rollup('IM-G1-U5-L9', '1', 4, 1, event_ready, no_task_grammar_for_single_quantity).
+lesson_task_span_rollup('IM-G1-U5-L9', '1', 4, 1, diagnostic_ready, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U6-L1', '1', 4, 0, standard_action_candidate, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U6-L10', '1', 2, 0, strategy_attached, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U6-L11', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3439,7 +3439,7 @@ lesson_task_span_rollup('IM-G1-U7-L10', '1', 5, 0, strategy_attached, no_task_gr
 lesson_task_span_rollup('IM-G1-U7-L11', '1', 2, 0, strategy_attached, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U7-L12', '1', 2, 0, standard_action_candidate, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G1-U7-L13', '1', 5, 0, standard_action_candidate, prompt_states_no_computation).
-lesson_task_span_rollup('IM-G1-U7-L14', '1', 5, 1, event_ready, prompt_states_no_computation).
+lesson_task_span_rollup('IM-G1-U7-L14', '1', 5, 1, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U7-L15', '1', 4, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U7-L16', '1', 4, 1, event_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U7-L17', '1', 2, 0, standard_action_candidate, extract_runs_past_prompt).
@@ -3474,7 +3474,7 @@ lesson_task_span_rollup('IM-G2-U1-L17', '2', 2, 0, strategy_attached, extract_ru
 lesson_task_span_rollup('IM-G2-U1-L18', '2', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G2-U1-L2', '2', 3, 0, strategy_attached, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G2-U1-L3', '2', 3, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G2-U1-L4', '2', 4, 2, event_ready, extract_runs_past_prompt).
+lesson_task_span_rollup('IM-G2-U1-L4', '2', 4, 2, diagnostic_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G2-U1-L5', '2', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G2-U1-L6', '2', 2, 1, event_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-G2-U1-L7', '2', 4, 0, strategy_attached, prompt_states_no_computation).
@@ -3601,7 +3601,7 @@ lesson_task_span_rollup('IM-G2-U8-L8', '2', 4, 0, strategy_attached, no_task_gra
 lesson_task_span_rollup('IM-G2-U8-L9', '2', 5, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G2-U9-L1', '2', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G2-U9-L10', '2', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G2-U9-L11', '2', 4, 1, event_ready, void_operand_slots).
+lesson_task_span_rollup('IM-G2-U9-L11', '2', 4, 1, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G2-U9-L12', '2', 4, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G2-U9-L13', '2', 3, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G2-U9-L2', '2', 3, 0, strategy_attached, void_operand_slots).
@@ -3828,7 +3828,7 @@ lesson_task_span_rollup('IM-G4-U5-L10', '4', 4, 0, standard_action_candidate, no
 lesson_task_span_rollup('IM-G4-U5-L11', '4', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U5-L12', '4', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U5-L13', '4', 5, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G4-U5-L14', '4', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G4-U5-L14', '4', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U5-L15', '4', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U5-L16', '4', 5, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U5-L17', '4', 4, 0, strategy_attached, no_task_grammar_for_single_quantity).
@@ -4148,7 +4148,7 @@ lesson_task_span_rollup('IM-GK-U6-L10', 'K', 4, 0, strategy_attached, empty_extr
 lesson_task_span_rollup('IM-GK-U6-L11', 'K', 3, 0, strategy_attached, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-GK-U6-L12', 'K', 5, 0, strategy_attached, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-GK-U6-L13', 'K', 3, 0, strategy_attached, empty_extract).
-lesson_task_span_rollup('IM-GK-U6-L2', 'K', 2, 1, event_ready, extract_runs_past_prompt).
+lesson_task_span_rollup('IM-GK-U6-L2', 'K', 2, 1, diagnostic_ready, extract_runs_past_prompt).
 lesson_task_span_rollup('IM-GK-U6-L3', 'K', 3, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-GK-U6-L4', 'K', 3, 0, strategy_attached, empty_extract).
 lesson_task_span_rollup('IM-GK-U6-L5', 'K', 5, 0, strategy_attached, no_task_grammar_for_quantity_pair).
