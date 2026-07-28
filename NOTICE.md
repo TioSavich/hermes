@@ -51,13 +51,14 @@ this repository's license:
   works remain © their authors and publishers; the encodings are
   descriptions of published findings, not reproductions of the works.
 
-  The `*_batch_*.csv` files in `knowledge/misconceptions/` carry that corpus in
-  tabular form: 1,452 rows, each an error description and an illustrative
-  example written for this project, keyed to the article it summarizes by
-  `bibtex_key`, `authors`, `journal`, `year`, and `page_refs`. The descriptions
-  and examples paraphrase published findings rather than quoting them, and the
-  `local_pdf_path` column records where a source sat during coding, not a file
-  this repository carries.
+  `data/research/research_shared.db` carries the research-corpus records. The
+  checked generated registry in `knowledge/misconceptions/` admits records with
+  a mathematical domain, an error description, and a resolvable article
+  `bibtex_key`; its rows retain the article metadata and the project-facing row
+  keys used by the misconception predicates. The descriptions and examples
+  paraphrase published findings rather than quoting them, and source-path
+  metadata records where a source sat during coding, not a file this repository
+  carries.
 
 - **Grounding metaphors.** The metaphor inventory in `formal/formalization/` and
   `knowledge/geometry/` encodes analyses from Lakoff & Núñez, *Where Mathematics

@@ -221,6 +221,7 @@ capability('formal/formalization/synthesis/run_lazy.pl', 'run_lazy', 'synthesis'
 capability('formal/formalization/synthesis/run_synth.pl', 'run_synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth.pl', 'synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth_lazy.pl', 'synth_lazy', 'synthesis', [], orphan_module).
+capability('formal/incompatibility/incompatibility_entailment_order.pl', 'incompatibility_entailment_order', 'incompatibility', [], orphan_module).
 capability('formal/incompatibility/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'incompatibility', [], lazy_reachable).
 capability('formal/juncture/differance_juncture.pl', 'differance_juncture', 'juncture', [], orphan_module).
 capability('formal/learner/activity_contract.pl', 'activity_contract', 'learner', [], orphan_module).
@@ -259,6 +260,7 @@ capability('knowledge/crosswalk/vocabulary_licenses.pl', 'vocabulary_licenses', 
 capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 'pml', [], orphan_module).
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('knowledge/index/coverage_absence_registry.pl', 'coverage_absence_registry', 'unclassified', [], orphan_module).
+capability('knowledge/index/data_consumption_manifest.pl', 'data_consumption_manifest', 'unclassified', [], orphan_module).
 capability('knowledge/index/im_lesson_identity.pl', 'im_lesson_identity', 'unclassified', [], orphan_module).
 capability('knowledge/index/machine_block_decomposition.pl', 'machine_block_decomposition', 'unclassified', [], orphan_module).
 capability('knowledge/index/research_measurement_registry.pl', 'research_measurement_registry', 'unclassified', [], orphan_module).

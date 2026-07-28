@@ -16,6 +16,10 @@
           ]).
 
 :- use_module(library(csv)).
+:- use_module(misconceptions(research_corpus_misconceptions),
+              [ research_corpus_misconception_row/1,
+                canonical_database_id/2
+              ]).
 :- use_module(math(action_automata_registry),
               [ action_automaton_pair/4,
                 action_automaton_vocabulary/3
@@ -42,8 +46,6 @@
 
 :- dynamic cached_action_corpus_binding_row/1.
 :- dynamic cached_action_corpus_binding_row_source/2.
-:- dynamic cached_batch_row/1.
-:- dynamic cached_batch_row_source/2.
 :- multifile deontic_scorekeeper:incompatible/2.
 
 
@@ -689,29 +691,14 @@ misconception_batch_row(Row) :-
 
 
 misconception_batch_row_witness(Row, Witness) :-
-    ensure_batch_rows_loaded,
-    cached_batch_row(Row),
-    (   cached_batch_row_source(Row, Path)
-    ->  true
-    ;   Path = unknown_misconception_batch_csv
-    ),
-    csv_row_witness(misconception_batch, Path, 16, Row, Witness).
-
-
-ensure_batch_rows_loaded :-
-    cached_batch_row(_),
-    !.
-ensure_batch_rows_loaded :-
-    forall(misconception_batch_path(Path),
-           load_batch_rows(Path)).
-
-
-load_batch_rows(Path) :-
-    csv_rows_with_arity(Path, 16, Rows),
-    forall(member(Row, Rows),
-           ( assertz(cached_batch_row(Row)),
-             assertz(cached_batch_row_source(Row, Path))
-           )).
+    research_corpus_misconception_row(Row),
+    Row = row(PublicId, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _),
+    canonical_database_id(PublicId, DatabaseId),
+    Witness = _{ kind: misconception_registry_database_row,
+                 source_kind: research_shared_db,
+                 database_id: DatabaseId,
+                 public_id: PublicId,
+                 row: Row }.
 
 
 csv_rows_with_arity(Path, ExpectedArity, Rows) :-
@@ -738,14 +725,6 @@ csv_row_witness(SourceKind, Path, ExpectedArity, Row, Witness) :-
                  expected_arity: ExpectedArity,
                  row_arity: RowArity,
                  row: Row }.
-
-
-misconception_batch_path(Path) :-
-    absolute_file_name(misconceptions('.'), Dir,
-                       [file_type(directory), access(read)]),
-    directory_file_path(Dir, '*_batch_*.csv', Pattern),
-    expand_file_name(Pattern, Paths),
-    member(Path, Paths).
 
 
 row_id_matches(RowId, Id) :-

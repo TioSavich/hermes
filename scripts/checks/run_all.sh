@@ -44,6 +44,7 @@ run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_regis
 run extract_im_lesson_identity python3 "$CHECKS_DIR/../extract_im_lesson_identity.py" --check
 run extract_machine_block_decomposition python3 "$CHECKS_DIR/../extract_machine_block_decomposition.py" --check
 run extract_coverage_absence_registry python3 "$CHECKS_DIR/../extract_coverage_absence_registry.py" --check
+run extract_research_corpus_misconceptions python3 "$CHECKS_DIR/../extract_research_corpus_misconceptions.py" --check
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 # After the census: the census writes a docs/research report, and the measurement
@@ -62,5 +63,11 @@ run zeeman_bifurcation.sh   bash "$CHECKS_DIR/zeeman_bifurcation.sh"
 run route_behavior.py       python3 "$CHECKS_DIR/route_behavior.py"
 run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.py"
 run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
+
+run incompatibility_entailment_order python3 "$CHECKS_DIR/../extract_incompatibility_entailment_order.py" --check
+
+# Last: the manifest indexes every data artifact and the readers that open it, so
+# it describes the settled state after every other generator has run.
+run extract_data_consumption_manifest python3 "$CHECKS_DIR/../extract_data_consumption_manifest.py" --check
 
 echo "all checks passed"
