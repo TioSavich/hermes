@@ -1,6 +1,6 @@
 /** <module> Generated research-measurement provenance registry
  *
- * The denominator is every explicit quantitative-result statement in the 60
+ * The denominator is every explicit quantitative-result statement in the 61
  * top-level Markdown reports in docs/research/: a non-code prose line with
  * a percentage or cohort ratio, or a Markdown table data row under a header
  * that names a quantitative field. A table row is one measurement vector;
@@ -435,13 +435,18 @@ measurement_receipt(measurement(409), 'docs/research/2026-07-27-what-the-569-non
 measurement_receipt(measurement(410), 'docs/research/2026-07-27-what-the-569-non-emergent-sets-show.md', 'line(221)', 'all 15 of 15, with no proper subset of any of them a break. Each pair is', none_recorded, ['data/research/incompatibility_triples.json', 'formal/incompatibility/incompatibility_sets_error_rules.pl'], data_method_unrecorded).
 measurement_receipt(measurement(411), 'docs/research/2026-07-27-what-the-569-non-emergent-sets-show.md', 'line(235)', '2,926 = 43,890 cells, of which 43,665 (99.49%) are coherent.', none_recorded, ['data/research/incompatibility_triples.json', 'formal/incompatibility/incompatibility_sets_error_rules.pl'], data_method_unrecorded).
 measurement_receipt(measurement(412), 'docs/research/2026-07-27-what-the-569-non-emergent-sets-show.md', 'line(71)', '**5,424 of 5,952 cells (91.1%) are coherent.** The inference survived; there was', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(413), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(119)', 'construction, 90 of 90 measured) and the licensed-consequence atom (90 of 90', live_script('scripts/extract_incompatibility_entailment_order.py'), none_recorded, resolved_live_method).
+measurement_receipt(measurement(414), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(171)', '- *"Each rule occurs in exactly one set"* — measured true, 90 of 90, and it', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(415), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(312)', 'deep: my census over the Prolog tree counts 1,962 of 2,137 mode-operator', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(416), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(316)', 'identical signature `s(comp_nec(unlicensed(_)))` (820 of 820, measured). And', none_recorded, ['knowledge/misconceptions/pml_wire.pl'], data_method_unrecorded).
+measurement_receipt(measurement(417), 'docs/research/2026-07-28-why-entailment-does-not-move.md', 'line(447)', 'dominant cell at 1,782 of 1,957 with the same shape. The', none_recorded, none_recorded, method_not_recorded).
 
-measurement_denominator(explicit_quantitative_result_statement, 412).
-measurement_resolution_count(resolved_live_method, 67).
+measurement_denominator(explicit_quantitative_result_statement, 417).
+measurement_resolution_count(resolved_live_method, 68).
 measurement_resolution_count(method_ambiguous, 23).
 measurement_resolution_count(method_path_and_cited_data_missing, 1).
-measurement_resolution_count(data_method_unrecorded, 29).
-measurement_resolution_count(method_not_recorded, 292).
+measurement_resolution_count(data_method_unrecorded, 30).
+measurement_resolution_count(method_not_recorded, 295).
 
 measurement_control(coverage_absence_registry, 'scripts/extract_coverage_absence_registry.py', resolved_live_method).
 measurement_control(self_description_census, 'scripts/research/build_self_description_census.py', resolved_live_method).

@@ -11,24 +11,24 @@
    "structured_negative": 81
   },
   "2": {
-   "diagnostic_ready": 27,
+   "diagnostic_ready": 28,
    "executable_task": 31,
    "measured_transition": 31,
    "negative_candidate": 125,
    "published": 150,
    "standard_action_candidate": 149,
    "strategy_evidence": 132,
-   "structured_negative": 52
+   "structured_negative": 53
   },
   "3": {
-   "diagnostic_ready": 31,
+   "diagnostic_ready": 34,
    "executable_task": 36,
    "measured_transition": 36,
    "negative_candidate": 112,
    "published": 143,
    "standard_action_candidate": 139,
    "strategy_evidence": 123,
-   "structured_negative": 58
+   "structured_negative": 61
   },
   "4": {
    "diagnostic_ready": 14,
@@ -51,24 +51,24 @@
    "structured_negative": 58
   },
   "6": {
-   "diagnostic_ready": 32,
+   "diagnostic_ready": 33,
    "executable_task": 51,
    "measured_transition": 51,
    "negative_candidate": 107,
    "published": 152,
    "standard_action_candidate": 143,
    "strategy_evidence": 134,
-   "structured_negative": 33
+   "structured_negative": 34
   },
   "7": {
-   "diagnostic_ready": 13,
+   "diagnostic_ready": 14,
    "executable_task": 28,
    "measured_transition": 28,
    "negative_candidate": 28,
    "published": 143,
    "standard_action_candidate": 140,
    "strategy_evidence": 28,
-   "structured_negative": 13
+   "structured_negative": 14
   },
   "8": {
    "published": 134,
@@ -10230,13 +10230,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U9-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add and Subtract within 100",
    "negative_candidates": [
     {
@@ -10312,8 +10310,32 @@
      "productive": "decompose_base_for_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U9-L8",
+     "material_incompatibility": "The number talk works 29 + 35 by naming the ones, 9 and 5, and the tens, 20 and 30, before putting them back together as 64. Dropping the ones chunk stops the count once the tens are in and loses the part the routine asks students to hold onto.",
+     "source": {
+      "fragments": [
+       {
+        "line": 110,
+        "text": "First I added the ones, 9 + 5 = 14"
+       },
+       {
+        "line": 111,
+        "text": "14 and 50 to get 64"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit9/lesson8.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -11536,13 +11558,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U1-L15",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "More Factors, More Problems",
    "negative_candidates": [
     {
@@ -11602,8 +11622,28 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U1-L15",
+     "material_incompatibility": "The problem gives 9 boxes holding 5 shirts each and asks how many shirts there are. Adding 9 to 5 puts a count of boxes into the same total as a count of shirts, so the 9 stops saying how many times the 5 repeats.",
+     "source": {
+      "fragments": [
+       {
+        "line": 254,
+        "text": "A store has 9 boxes. Each box has 5 shirts."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit1/lesson15.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.OA.A.3": [
      "represent",
@@ -12651,13 +12691,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U2-L10",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solve Area Problems",
    "negative_candidates": [
     {
@@ -12693,8 +12731,36 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "area_as_perimeter_count",
+     "intended_action": {
+      "kind": "rectangle_area_unit_iteration",
+      "operation": "geometry"
+     },
+     "lesson": "IM-G3-U2-L10",
+     "material_incompatibility": "Noah's wall holds 3 square meters in each of 6 columns, so the 18 interior squares are what a container of paint has to cover. Counting the units along the boundary measures the wall's edge and leaves that interior uncounted.",
+     "source": {
+      "fragments": [
+       {
+        "line": 181,
+        "text": "I counted by 3 six times since I pictured 3"
+       },
+       {
+        "line": 182,
+        "text": "squares in each column and 6 columns. I multiplied 3"
+       },
+       {
+        "line": 183,
+        "text": "by 6 and got 18."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.MD.C.7.b": [
      "find",
@@ -19445,13 +19511,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U8-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Multiplication Game Day",
    "negative_candidates": [
     {
@@ -19487,8 +19551,28 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U8-L9",
+     "material_incompatibility": "The number talk asks for the total in 4 groups of 24, which students reach from the 4 groups of 25 they already know. Adding 4 to 24 treats a count of groups as more of the thing being grouped, and 24 stops saying how much one group holds.",
+     "source": {
+      "fragments": [
+       {
+        "line": 116,
+        "text": "4 groups of 24"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit8/lesson9.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.MD.C.7": [
      "relate"
@@ -30817,13 +30901,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L13",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Tables and Double Number Line Diagrams",
    "negative_candidates": [
     {
@@ -30859,8 +30941,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U2-L13",
+     "material_incompatibility": "The lesson shares 2 cloves across 3 tablespoons to reach 2/3 of a clove in each tablespoon. The 3 counts the tablespoons the cloves are spread over, so it cannot also say how much garlic one tablespoon holds.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "2 cloves shared over 3 tablespoons = 2/3 clove per tablespoon"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -38669,13 +38772,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U2-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solving Problems about Proportional Relationships",
    "negative_candidates": [
     {
@@ -38711,8 +38812,33 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G7-U2-L9",
+     "material_incompatibility": "The Info Gap cards give a total of 9000 or 8000 meters and a speed covering 300 or 250 meters in a minute, and the division asks how many of those minute-sized lengths the total holds. Reading the 300 as a number of shares returns meters per share, a quantity the card already states.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "the Info Gap time divisions (9000/300, 8000/250)"
+       },
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "how many minute-sized meter-chunks fit"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.RP.A": [
      "analyze",
@@ -75489,13 +75615,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 175,
+  "diagnostic_ready": 181,
   "executable_task": 227,
   "measured_transition": 227,
   "negative_candidate": 796,
   "published": 1308,
   "standard_action_candidate": 1272,
   "strategy_evidence": 900,
-  "structured_negative": 399
+  "structured_negative": 405
  }
 }

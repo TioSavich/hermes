@@ -2015,6 +2015,138 @@
           }
         ]
       }
+    },
+    {
+      "lesson": "IM-G2-U9-L8",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "base_ones_chunking"
+      },
+      "alternative": "dropped_ones_chunk",
+      "material_incompatibility": "The number talk works 29 + 35 by naming the ones, 9 and 5, and the tens, 20 and 30, before putting them back together as 64. Dropping the ones chunk stops the count once the tens are in and loses the part the routine asks students to hold onto.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit9/lesson8.md",
+        "fragments": [
+          {
+            "line": 110,
+            "text": "First I added the ones, 9 + 5 = 14"
+          },
+          {
+            "line": 111,
+            "text": "14 and 50 to get 64"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U1-L15",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The problem gives 9 boxes holding 5 shirts each and asks how many shirts there are. Adding 9 to 5 puts a count of boxes into the same total as a count of shirts, so the 9 stops saying how many times the 5 repeats.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson15.md",
+        "fragments": [
+          {
+            "line": 254,
+            "text": "A store has 9 boxes. Each box has 5 shirts."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U2-L10",
+      "intended_action": {
+        "operation": "geometry",
+        "kind": "rectangle_area_unit_iteration"
+      },
+      "alternative": "area_as_perimeter_count",
+      "material_incompatibility": "Noah's wall holds 3 square meters in each of 6 columns, so the 18 interior squares are what a container of paint has to cover. Counting the units along the boundary measures the wall's edge and leaves that interior uncounted.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md",
+        "fragments": [
+          {
+            "line": 181,
+            "text": "I counted by 3 six times since I pictured 3"
+          },
+          {
+            "line": 182,
+            "text": "squares in each column and 6 columns. I multiplied 3"
+          },
+          {
+            "line": 183,
+            "text": "by 6 and got 18."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U8-L9",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The number talk asks for the total in 4 groups of 24, which students reach from the 4 groups of 25 they already know. Adding 4 to 24 treats a count of groups as more of the thing being grouped, and 24 stops saying how much one group holds.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit8/lesson9.md",
+        "fragments": [
+          {
+            "line": 116,
+            "text": "4 groups of 24"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G6-U2-L13",
+      "intended_action": {
+        "operation": "division",
+        "kind": "fair_share_equal_groups"
+      },
+      "alternative": "name_group_count_as_share_size",
+      "material_incompatibility": "The lesson shares 2 cloves across 3 tablespoons to reach 2/3 of a clove in each tablespoon. The 3 counts the tablespoons the cloves are spread over, so it cannot also say how much garlic one tablespoon holds.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_boundary",
+            "text": "2 cloves shared over 3 tablespoons = 2/3 clove per tablespoon"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G7-U2-L9",
+      "intended_action": {
+        "operation": "division",
+        "kind": "measure_groups_of_size"
+      },
+      "alternative": "share_into_divisor_groups",
+      "material_incompatibility": "The Info Gap cards give a total of 9000 or 8000 meters and a speed covering 300 or 250 meters in a minute, and the division asks how many of those minute-sized lengths the total holds. Reading the 300 as a number of shares returns meters per share, a quantity the card already states.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_boundary",
+            "text": "the Info Gap time divisions (9000/300, 8000/250)"
+          },
+          {
+            "predicate": "vision_lesson_boundary",
+            "text": "how many minute-sized meter-chunks fit"
+          }
+        ]
+      }
     }
   ]
 }

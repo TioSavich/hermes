@@ -203,7 +203,13 @@ the previous review round:
   tasks map to neither X nor Y does not assert Y.
 - Text saying the lesson works in an operation other than the candidate's. If
   the source says the lesson is entirely multiplication, no division candidate
-  survives it."""
+  survives it.
+- Text reporting what the reading itself could not find or could not model. A
+  fact saying a goal is not present on the pages, or that a step has no fitting
+  automaton and falls outside the controlled arithmetic vocabulary, records a
+  limit of the reading. It cannot establish that the lesson asks students to
+  carry out the action the candidate names, and a receipt built on it asserts
+  what its own source denies."""
 
 
 _DRAFTING_RULES_TAIL = """Abstain rather than select a candidate whose incompatibility reduces to one
@@ -212,7 +218,17 @@ operation not being another with no quantity named.
 material_incompatibility runs one or two sentences of present-tense prose that
 name the quantity or relation the lesson supplies and the one the alternative
 would have to ignore. Do not restate the identifiers, do not hedge, and do not
-reach for metaphors of sight for what students come to know."""
+reach for metaphors of sight for what students come to know.
+
+Test the sentence this way: could it have been written without reading this
+lesson? A sentence of the form "the lesson requires <operation> and the
+alternative <deformation>" names the two identifiers over again and fits every
+lesson in the curriculum that shares the operation. Sentences of that form were
+rejected on review. Write instead what the source puts in play — the amounts,
+the units, what is counted, shared, measured, or compared, what a diagram is
+built to carry — and then say which of those the alternative discards. A
+quotation naming only the lesson topic will not support such a sentence, so
+abstain rather than write around it."""
 
 
 _FILE_DISQUALIFIER = """- A sample student response performing the alternative. A guide that prints a
