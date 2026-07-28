@@ -154,13 +154,13 @@ Materials to Gather
 Required Preparation
   • Each group of 2 students needs a bag with at least 6 straws of each size:
 
-      ◦     inches
+      ◦   23/4 inches
 
-      ◦     inches
+      ◦   1 1/2   inches
 
       ◦ 1 inch
 
-      ◦    inch
+      ◦   1/2   inch
 
 
 

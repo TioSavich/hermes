@@ -172,11 +172,11 @@ and known information. In this activity, students estimate what fraction of a sq
                                                                               Illustrative Mathematics®                  3
 Student Response                                               Activity Synthesis
 Sample responses:                                                • Consider asking:
-  • Too low: between      and                                        ◦ “Is anyone’s estimate less than _____? Is anyone’s
+  • Too low: between 1/3 and 1/2                                     ◦ “Is anyone’s estimate less than _____? Is anyone’s
                                                                        estimate greater than _____?”
-  • About right: between     and
+  • About right: between 2/3 and 5/8
                                                                      ◦ “Based on this discussion, does anyone want to
-  • Too high: between      and 1
+  • Too high: between 3/4 and 1
                                                                        revise their estimate?”
                                                                  • “If you wanted to find out exactly what fraction of the
                                                                    square is shaded, how would you go about doing
@@ -185,7 +185,7 @@ Sample responses:                                                • Consider as
                                                                  • 2 minutes: partner discussion
                                                                  • Share and record responses.
                                                                  • Optional: Have students find the exact fraction
-                                                                    shaded. ( )
+                                                                    shaded. (5/8)
 
 
 
@@ -229,11 +229,11 @@ what fraction of a strip is shaded.
 Student Response                                                  • 1 minute: partner discussion
                                                                   • Record responses.
 Sample responses:
-  • Too low: between       and
+  • Too low: between 1/8 and 1/4
                                                                 Activity Synthesis
-  • About right: between     and
+  • About right: between 1/4 and 3/8
                                                                   • “If you wanted to find out exactly what fraction of the
-  • Too high: between      and
+  • Too high: between 1/2 and 2/3
                                                                     strip is shaded, how would you go about doing that?”
                                                                     (See how many copies of the shaded part can fit into
                                                                     the whole strip. Partition the strip into fractions we
@@ -242,7 +242,7 @@ Sample responses:
                                                                   • 2 minutes: partner discussion
                                                                   • Share and record responses.
                                                                   • Optional: Have students find the exact fraction
-                                                                     shaded. ( )
+                                                                     shaded. (1/3)
 
 
 
@@ -274,7 +274,7 @@ locations of the points on a number line.
                                                                   • Record responses.
 Student Response
 Sample responses:                                               Activity Synthesis
-  • Too low: between 1 and
+  • Too low: between 1 and 1 1/4
                                                                   • “If you wanted to find out exactly what fraction is at
 
 
@@ -283,15 +283,15 @@ Sample responses:                                               Activity Synthes
                                               Unit 8
                                                               Lesson 1
                                                                                 Illustrative Mathematics®                 5
-  • About right: between       and                                that point on the number line, how would you go
-                                                                  about doing that?” (Partition the number line into
-  • Too high: between       and 2
-                                                                  fractions we know and see what fraction the point
-                                                                  lines up with.)
+  • About right: between 1 1/4 and 1 3/8                           that point on the number line, how would you go
+                                                                   about doing that?” (Partition the number line into
+  • Too high: between            and 2
+                         1 1/2                                     fractions we know and see what fraction the point
+                                                                   lines up with.)
                                                                 • 2 minutes: partner discussion
                                                                 • Share and record responses.
                                                                 • Optional: Have students find the exact location
-                                                                  marked on the number line. ( )
+                                                                   marked on the number line. (4/3)
 
 
 
@@ -305,7 +305,7 @@ and less than 2. The numerator had to be larger than the denominator. I could wr
 closer to 1 than to 2.)
 
 “What did you have to work a little harder to figure out?” (What denominator to use in my estimate because no parts are
-marked on the number line. What fraction would be greater than 1 but less than     .)
+marked on the number line. What fraction would be greater than 1 but less than 1 1/2.)
 
 
 
@@ -328,27 +328,27 @@ Addressing      3.NF.A.1, 3.NF.A.2
 
 
 
-                                             Grade 3                                CC BY NC 2024
+                                             Grade 3                                 CC BY NC 2024
                                               Unit 8
                                                             Lesson 1
-                                                                             Illustrative Mathematics®              6
+                                                                              Illustrative Mathematics®             6
 Student Response
-No. Sample response: The shaded part of the shape is    . The point on the number line is greater than   but less than 1.
-The shaded part of the diagram is less than    .
+No. Sample response: The shaded part of the shape is 1/2. The point on the number line is greater than 1/2 but less than 1.
+The shaded part of the diagram is less than 1/2.
 
 
 
 Responding to Student Thinking
-Students have reflections to discuss with a partner.         Next Day Supports
-                                                             Organize students into groups of 2 to discuss their
-                                                             responses.
+Students have reflections to discuss with a partner.           Next Day Supports
+                                                               Organize students into groups of 2 to discuss their
+                                                               responses.
 
 
 
 
-                                              Grade 3                               CC BY NC 2024
-                                               Unit 8
-                                                           Lesson 1
-                                                                             Illustrative Mathematics®              7
+                                             Grade 3                                  CC BY NC 2024
+                                              Unit 8
+                                                             Lesson 1
+                                                                               Illustrative Mathematics®              7
 ```
 

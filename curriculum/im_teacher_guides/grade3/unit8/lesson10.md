@@ -115,12 +115,12 @@ Student Response
                                                               Activity Synthesis
 Sample responses:
                                                                 • “What equation can each diagram represent?” (The
-A, B, and C go together because:                                  array represents              because there are 4
+A, B, and C go together because:                                  array represents 4 × 6 = 24 because there are 4
   • They are diagrams.                                            rows of 6 dots, and there are 24 dots in the array.
-A, B, and D go together because:                                  The area diagram could represent                or
-  • They show the number 4 (number of circles in a                            since the sides are 4 and 7, and the area
-      column, side length, value of the expression).              is 28. The tape diagram could represent
-                                                                  or             because we know the total is 24 and
+A, B, and D go together because:                                  The area diagram could represent 4 × 7 = 28 or
+  • They show the number 4 (number of circles in a                28 ÷ 4 = 7 since the sides are 4 and 7, and the area
+      column, side length, value of the expression).              is 28. The tape diagram could represent 24 ÷ 3 = ?
+                                                                  or 3 × ? = 24 because we know the total is 24 and
   • They are related to a multiplication equation with a
 
 
@@ -335,7 +335,7 @@ Addressing      3.OA.B.6
 
 Student Response
 Sample responses:
-  • We can think of              as           .
+  • We can think of 24 ÷ 4 = ? as 4 × ? = 24.
   • If I’m dividing, it’s like multiplying, but instead of not knowing the total number of objects, I’m missing the number
     of equal groups or the number in each group.
   • This diagram shows                                             This diagram shows

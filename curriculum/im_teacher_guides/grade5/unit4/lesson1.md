@@ -84,33 +84,33 @@ also prepares them for the work of the standard algorithm for multiplication, in
 single-digit multiples of powers of 10.
 
 In this activity, students have an opportunity to look for and make use of structure (MP7) because the basic fact they are
-using is              , and each successive product is 10 times larger.
+using is 5 × 6 = 30, and each successive product is 10 times larger.
 
 
      Student Task Statement                                    Launch
       Find the value of each product mentally.                   • Display the first expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 50 × 6                                                 • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 50 × 60
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 50 × 600
+        • 600 × 500
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
                                                                  • Keep expressions and work displayed.
-  • 300:
+  • 300: (5 × 6) × 10 = 300
                                                                  • Repeat with each expression.
-  • 3,000:
-  • 30,000:
+  • 3,000: (50 × 6) × 10 = 3,000
+  • 30,000: (50 × 60) × 10 = 30,000
                                                                Activity Synthesis
-  • 300,000:
-                                                                 • “How can we use         to find the value of each
-                                                                   product?” (                      ,
-                                                                                               ,
-                                                                                                 ,
-                                                                                                      )
+  • 300,000: (50 × 600) × 10 = 300,000
+                                                                 • “How can we use 5 × 6 to find the value of each
+                                                                   product?” (50 × 6 = 5 × 6 × 10,
+                                                                   50 × 60 = 5 × 6 × 10 × 10,
+                                                                   50 × 600 = 5 × 6 × 10 × 100,
+                                                                   600 × 500 = 6 × 5 × 100 × 100)
                                                                  • “Why does each product in the Number Talk have
                                                                    one more 0 in it than the previous product?” (One of
                                                                    the factors has an additional 0.)
@@ -122,12 +122,12 @@ Student Response                                                 • Record answ
                                              Unit 4
                                                              Lesson 1
                                                                               Illustrative Mathematics®                2
-Activity 1                                                                                                       15 min
+Activity 1                                                                                                    15 min
 
 Reasonable Estimates
 
      Standards
-Addressing        5.NBT
+Addressing      5.NBT
 
 
 The purpose of this activity is for students to make a reasonable estimate for a given product. In addition to estimating
@@ -145,75 +145,75 @@ product (MP3).
       Supports accessibility for: Social Emotional Functioning, Language
 
 
-     Student Task Statement                                       Launch
-       1. Which estimate for the product        is                  • Groups of 2
+     Student Task Statement                                    Launch
+       1. Which estimate for the product 18 × 149 is             • Groups of 2
           most reasonable? Explain or show your
           reasoning.
-                                                                  Activity
-             A.
-                                                                    • 5–7 minutes: independent work time
-             B.
-                                                                    • 2–3 minutes: partner discussion
-             C.
-                                                                    • Monitor for students who:
-           D.
-                                                                       ◦ Relate the given expression to each proposed
+                                                               Activity
+             A. 2,000
+                                                                 • 5–7 minutes: independent work time
+             B. 4,000
+                                                                 • 2–3 minutes: partner discussion
+             C. 3,000
+                                                                 • Monitor for students who:
+           D. 1,500
+                                                                     ◦ Relate the given expression to each proposed
        2. Are any of the estimates unreasonable? Explain
-                                                                         answer by rounding or changing one or both
+                                                                       answer by rounding or changing one or both
           or show your reasoning.
-                                                                         factors.
+                                                                       factors.
        3. Do you think the actual product is greater than
-                                                                       ◦ Estimate by rounding the factors.
+                                                                     ◦ Estimate by rounding the factors.
           or less than your estimate? Explain or show
-          your reasoning.                                              ◦ Use benchmark numbers.
-                                                                       ◦ Use place-value reasoning or the properties of
-                                                                         operations to explain why their estimate is
+          your reasoning.                                            ◦ Use benchmark numbers.
+                                                                     ◦ Use place-value reasoning or the properties of
+                                                                       operations to explain why their estimate is
 Student Response
-                                                                         reasonable.
+                                                                       reasonable.
  1. 3,000. Sample response: 3,000 is a little too large
-    because                       and both factors in that
-                                                                  Activity Synthesis
-    product are greater than the factors of             . This
-    means 4,000 is definitely too big. 1,500 is too small           • Invite students to share their estimates for the
-    as           is 1,500. The actual answer is between               product and their reasoning.
+    because 3,000 = 20 × 150 and both factors in that
+                                                               Activity Synthesis
+    product are greater than the factors of 18 × 149. This
+    means 4,000 is definitely too big. 1,500 is too small        • Invite students to share their estimates for the
+    as 10 × 150 is 1,500. The actual answer is between             product and their reasoning.
     2,000 and 3,000. Since neither factor was rounded
-                                                                    • “Why do you think         is a good estimate?” (18 is
-    very far to get          , I think the real answer is
-                                                                      close to 20 and 149 is very close to 150, and I know
+                                                                 • “Why do you think 3,000 is a good estimate?” (18 is
+    very far to get 20 × 150, I think the real answer is
+                                                                   close to 20 and 149 is very close to 150, and I know
     closer to 3,000 than to 2,000.
-                                                                                        .)
+                                                                   20 × 150 = 3,000.)
  2. 1,500 and 4,000. Sample response: 1,500 is definitely
 
 
-                                              Grade 5                                   CC BY NC 2024
-                                               Unit 4
-                                                                 Lesson 1
-                                                                                 Illustrative Mathematics®                3
-     too small as it is            , and 4,000 is definitely too      • “Is the value of          greater than or less than
-     big as it is         .                                                    ? How do you know?” (Less, because 18 is less
-                                                                        than 20 and 149 is less than 150.)
+                                            Grade 5                                   CC BY NC 2024
+                                             Unit 4
+                                                             Lesson 1
+                                                                               Illustrative Mathematics®               3
+     too small as it is 10 × 150, and 4,000 is definitely too       • “Is the value of 18 × 149 greater than or less than
+     big as it is 20 × 200.                                           3,000 ? How do you know?” (Less, because 18 is less
+                                                                      than 20 and 149 is less than 150.)
  3. Less. Sample response: The actual product is less
-    than 3,000 because                    and both                    • “Can you estimate how much less?” (About 300,
-    factors are smaller in       , so the product has to                because I added 2 to 18 to get 20 and       is
-    be less.                                                            about 300.)
-                                                                      • Display the sentence “           is about      .”
-                                                                      • “In the next activity, we’ll check to see how good our
-                                                                        estimate is.”
+    than 3,000 because 150 × 20 = 3,000 and both                    • “Can you estimate how much less?” (About 300,
+    factors are smaller in 18 × 149, so the product has to            because I added 2 to 18 to get 20 and 2 × 149 is
+    be less.                                                          about 300.)
+                                                                    • Display the sentence “18 × 149 is about 2,700 .”
+                                                                    • “In the next activity, we’ll check to see how good our
+                                                                      estimate is.”
 
 
 
 
-Activity 2                                                                                                          20 min
+Activity 2                                                                                                         20 min
 
 Multiply by 18
 
-      Standards                                                          Instructional Routines
-Building Toward       5.NBT.B.5                                       • MLR7 Compare and Connect
+      Standards                                                        Instructional Routines
+Building Toward      5.NBT.B.5                                      • MLR7 Compare and Connect
 
 
 The purpose of this activity is for students to multiply a three-digit number by a two-digit number, using a strategy that
 makes sense to them. The expressions are scaffolded so that students can use one calculation to help with the next,
-particularly when they look for the final product, which is            .
+particularly when they look for the final product, which is 18 × 149.
 
 Students may:
 
@@ -228,60 +228,60 @@ understanding were used in each strategy.
 This activity uses MLR7 Compare and Connect. Advances: representing, conversing.
 
 
-      Student Task Statement                                        Launch
-      Find the value of each expression. Explain or show              • Groups of 2
+      Student Task Statement                                     Launch
+      Find the value of each expression. Explain or show            • Groups of 2
       your reasoning.
 
-       1.                                                           Activity
-       2.
-                                                                      • 1–2 minutes: quiet think time
-       3.
-                                                                      • 5–8 minutes: partner work time
-                                                                    MLR7: Compare and Connect
-Student Response                                                     • “Create a display that shows your thinking about
-                                                                       each problem. You may want to include details such
+       1. 18 × 9                                                 Activity
+       2. 18 × 49
+                                                                    • 1–2 minutes: quiet think time
+       3. 18 × 149
+                                                                    • 5–8 minutes: partner work time
+                                                                 MLR7: Compare and Connect
+Student Response                                                  • “Create a display that shows your thinking about
+                                                                    each problem. You may want to include details such
  1. 162. Sample responses:
-                                                                       as notes, diagrams, drawings, and so on, to help
-      ◦     I found           , and then took away 18.                 others understand your work.”
+                                                                    as notes, diagrams, drawings, and so on, to help
+      ◦   I found 18 × 10, and then took away 18.                   others understand your work.”
 
 
-                                                 Grade 5                                  CC BY NC 2024
-                                                  Unit 4
-                                                                   Lesson 1
-                                                                                   Illustrative Mathematics®                 4
-      ◦ I drew a diagram.                                        • 2–5 minutes: independent or group work
-                                                                 • Monitor for students who:
+                                              Grade 5                                    CC BY NC 2024
+                                               Unit 4
+                                                                Lesson 1
+                                                                                  Illustrative Mathematics®                 4
+      ◦ I drew a diagram.                                         • 2–5 minutes: independent or group work
+                                                                  • Monitor for students who:
                                                                      ◦ Use diagrams to show and keep track of their
                                                                        calculations.
                                                                      ◦ Use their solution from one problem to solve a
                                                                        different problem.
- 2. 882. Sample response: I found            and took
-                                                                     ◦ Find a related product, such as           or
+ 2. 882. Sample response: I found 18 × 50 and took
+                                                                     ◦ Find a related product, such as 18 × 10 or
     away 18.
-                                                                               , and use that to find the value of
- 3. 2,682. Sample response: I added             to the                 or         .
-    result of       .
+                                                                       18 × 50, and use that to find the value of 18 × 9
+ 3. 2,682. Sample response: I added 18 × 100 to the                    or 18 × 49.
+    result of 18 × 49.
 
                                                                Activity Synthesis
-                                                                 • 5–7 minutes: Gallery Walk
-                                                                 • “What is the same and what is different between the
-                                                                   approaches used to find the values of the
-                                                                   expressions?”
-                                                                 • 30 seconds: quiet think time
-                                                                 • 1 minute: partner discussion
-                                                                 • Invite students to share their diagrams.
-                                                                 • Highlight at least one diagram, or use the diagram
-                                                                   from the student solutions. “How does the diagram
-                                                                   help keep track of the calculations?” (For       ,I
-                                                                   know I need to find         and       , and then add
-                                                                   them.)
+                                                                  • 5–7 minutes: Gallery Walk
+                                                                  • “What is the same and what is different between the
+                                                                    approaches used to find the values of the
+                                                                    expressions?”
+                                                                  • 30 seconds: quiet think time
+                                                                  • 1 minute: partner discussion
+                                                                  • Invite students to share their diagrams.
+                                                                  • Highlight at least one diagram, or use the diagram
+                                                                    from the student solutions. “How does the diagram
+                                                                    help keep track of the calculations?” (For 18 × 9, I
+                                                                    know I need to find 10 × 9 and 8 × 9, and then add
+                                                                    them.)
 
 
 
 Advancing Student Thinking
-If students use repeated addition to find the value of      , consider asking:
-   • “How did you decide to find the value of        ”?
-  • “How could you use the value of the product           to help you find the value of        ?”
+If students use repeated addition to find the value of 18 × 9, consider asking:
+   • “How did you decide to find the value of 18 × 9”?
+  • “How could you use the value of the product 10 × 9 to help you find the value of 18 × 49?”
 
 
 
@@ -302,44 +302,44 @@ Suggested Centers
   • Number Puzzles: Multiplication (4–5) , Stage 1: Two-Digit Factors (Supporting)
 
 
-                                            Grade 5                                     CC BY NC 2024
+                                            Grade 5                                      CC BY NC 2024
                                              Unit 4
                                                              Lesson 1
-                                                                                 Illustrative Mathematics®            5
-Cool-down                                                                                                   5 min
+                                                                                  Illustrative Mathematics®          5
+Cool-down                                                                                                 5 min
 
 Fifteen
 
      Standards
-Building Toward     5.NBT.B.5
+Building Toward      5.NBT.B.5
 
 
      Student Task Statement
       Find the value of each expression. Explain or show your reasoning.
 
-       1.
-       2.
-       3.
+       1. 15 × 20
+       2. 15 × 120
+       3. 15 × 121
 
 
 Student Response
- 1. 300. Sample response:               , and I did 10 times that.
- 2. 1,800. Sample response:                    , and I added that to 300.
+ 1. 300. Sample response: 2 × 15 = 30, and I did 10 times that.
+ 2. 1,800. Sample response: 100 × 15 = 1,500, and I added that to 300.
  3. 1,815. Sample response: There is 1 more in each of the 15 groups.
 
 
 Responding to Student Thinking
-Students find values for the expressions other than 300,       Next Day Supports
-1,800, and 1,815.                                              After the next lesson, refer to the completed Cool-down
-                                                               from today's lesson and ask, “What diagram would be
-                                                               helpful to make sense of these problems?”
+Students find values for the expressions other than 300,     Next Day Supports
+1,800, and 1,815.                                            After the next lesson, refer to the completed Cool-down
+                                                             from today's lesson and ask, “What diagram would be
+                                                             helpful to make sense of these problems?”
 
 
 
 
-                                           Grade 5                                   CC BY NC 2024
+                                           Grade 5                                 CC BY NC 2024
                                             Unit 4
-                                                             Lesson 1
-                                                                              Illustrative Mathematics®             6
+                                                           Lesson 1
+                                                                            Illustrative Mathematics®             6
 ```
 

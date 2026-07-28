@@ -92,22 +92,22 @@ look for and make use of structure (MP7).
       Student Task Statement                                    Launch
       Decide if each statement is true or false. Be               • Display one statement.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+        • 60 ÷ 6 = 10                                               statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 72 ÷ 6 = (60 ÷ 6) + (12 ÷ 6)                            • 1 minute: quiet think time
 
-        •
-        •                                                       Activity
+        • 78 ÷ 6 = (60 ÷ 10) + (18 ÷ 6)
+        • 96 ÷ 8 = (80 ÷ 8)- (16 ÷ 8)                           Activity
                                                                   • Share and record answers and strategy.
 Student Response                                                  • Repeat with each statement.
 
   • True: I just know it.
-  • True: 72 is         , so I can divide in parts and add      Activity Synthesis
+  • True: 72 is 60 + 12, so I can divide in parts and add       Activity Synthesis
     the quotients.
                                                                   • “How can you explain your answer without finding
-  • False: 78 is       , but we need to divide each part            the value of both sides?”
+  • False: 78 is 60 + 18, but we need to divide each part           the value of both sides?”
     of the dividend by 6, not by 10.
-  • False: 96 is       and we can divide each part by 8,
+  • False: 96 is 80 + 16 and we can divide each part by 8,
     but then we need to add the parts together, not
     subtract.
 
@@ -123,7 +123,7 @@ Student Response                                                  • Repeat wit
 Rope Off the Garden
 
      Standards
-Addressing      3.MD.D.8
+Addressing     3.MD.D.8
 
 
 The purpose of this activity is for students to differentiate methods for finding perimeter from those for finding area.
@@ -164,22 +164,22 @@ Sample responses:                                                   and answer t
                                                                   • 3–5 minutes: partner work time
   • I agree with Diego. To find the length of rope you find
     the perimeter by adding up the side lengths of the
-    garden. Multiplying         would give the area.            Activity Synthesis
+    garden. Multiplying 8 × 30 would give the area.             Activity Synthesis
   • I agree with Clare. If we add the side lengths,
                                                                   • Invite students to share who they agreed with and
-                 , and then find        , we will get the
+    30 + 8 = 38, and then find 38 × 2, we will get the
                                                                     why. Record their reasoning for all to see.
     perimeter of the garden.
-                                                                  • “How did you know that multiplying          would not
+                                                                  • “How did you know that multiplying 8 × 30 would not
 
 
 
-                                            Grade 3                                   CC BY NC 2024
-                                             Unit 7
+                                          Grade 3                                     CC BY NC 2024
+                                           Unit 7
                                                               Lesson 10
                                                                                Illustrative Mathematics®               3
                                                                      give you the total amount of rope needed?”
-                                                                     (Multiplying        would give us the area of the
+                                                                     (Multiplying 8 × 30 would give us the area of the
                                                                      rectangle, not the distance around the rectangle.)
                                                                   • “How did you know that Diego’s strategy would
                                                                     work?” (Diego is finding the perimeter by adding the
@@ -235,46 +235,46 @@ Required Preparation
                                             Unit 7
                                                             Lesson 10
                                                                                 Illustrative Mathematics®                4
-     Student Task Statement                                      Launch
-      Your teacher will give you either a Problem Card or          • Groups of 2
-      a Data Card. Do not show or read your card to your         MLR4 Information Gap
+     Student Task Statement                                     Launch
+      Your teacher will give you either a Problem Card or         • Groups of 2
+      a Data Card. Do not show or read your card to your        MLR4 Information Gap
       partner.
-                                                                   • Display the Task Statement, which shows a diagram
-                                                                     of the Information Gap structure.
-                                                                   • 1 minute: quiet think time
-                                                                   • Read the steps of the routine aloud.
-                                                                   • “I will give you either a problem card or a data card.
-                                                                     Silently read your card. Do not read or show your
-                                                                     card to your partner.”
-                                                                   • Distribute cards.
-                                                                   • 1–2 minutes: quiet think time
-                                                                   • Remind students that after the person with the
-                                                                     problem card asks for a piece of information the
-                                                                     person with the data card should respond with “Why
-                                                                     do you need to know _____ [that piece of
-      Pause here so your teacher can review your work.               information]?”
+                                                                  • Display the Task Statement, which shows a diagram
+                                                                    of the Information Gap structure.
+                                                                  • 1 minute: quiet think time
+                                                                  • Read the steps of the routine aloud.
+                                                                  • “I will give you either a problem card or a data card.
+                                                                    Silently read your card. Do not read or show your
+                                                                    card to your partner.”
+                                                                  • Distribute cards.
+                                                                  • 1–2 minutes: quiet think time
+                                                                  • Remind students that after the person with the
+                                                                    problem card asks for a piece of information the
+                                                                    person with the data card should respond with “Why
+                                                                    do you need to know _____ [that piece of
+      Pause here so your teacher can review your work.              information]?”
 
       Ask your teacher for a new set of cards and repeat
-      the activity, trading roles with your partner.             Activity
-                                                                   • 3–5 minutes: partner work time
+      the activity, trading roles with your partner.            Activity
+                                                                  • 3–5 minutes: partner work time
 Student Response
-                                                                   • After students solve the first problem, distribute the
-Problem Card 1: 28 meters. Sample response: Since I had              next set of cards. Students switch roles and repeat
-the area and was missing a side length, I divided 48 by 8            the process with Problem Card 2 and Data Card 2.
+                                                                  • After students solve the first problem, distribute the
+Problem Card 1: 28 meters. Sample response: Since I had             next set of cards. Students switch roles and repeat
+the area and was missing a side length, I divided 48 by 8           the process with Problem Card 2 and Data Card 2.
 and got 6. Then I added up all the side lengths and got 28.
 
-Problem Card 2: 84 square meters. Sample response:               Activity Synthesis
+Problem Card 2: 84 square meters. Sample response:              Activity Synthesis
 Since two of the sides are 7 meters, I can subtract 14 from
-                                                                   • Share and record responses.
+                                                                  • Share and record responses.
 38 to get 24. The other two sides are the same length, and
-            . So        is the area of the playground.             • Display the Info Gap cards.
-             and              , so the area is       , which       • “What do you need to know in order to find the
-is 84.                                                               perimeter or area of these rectangles?” (The missing
-                                                                     side length.)
-                                                                   • “How did you use the area and one side you knew to
-                                                                     find the missing side length?”
-                                                                   • “How did you use the perimeter and one side to find
-                                                                     the missing side length?”
+24 ÷ 2 = 12. So 12 × 7 is the area of the playground.             • Display the Info Gap cards.
+10 × 7 = 70 and 2 × 7 = 14 , so the area is 70 + 14, which        • “What do you need to know in order to find the
+is 84.                                                              perimeter or area of these rectangles?” (The missing
+                                                                    side length.)
+                                                                  • “How did you use the area and one side you knew to
+                                                                    find the missing side length?”
+                                                                  • “How did you use the perimeter and one side to find
+                                                                    the missing side length?”
 
 
 
@@ -286,10 +286,10 @@ Lesson Synthesis
 area and perimeter of rectangles.)
 
 
-                                           Grade 3                                     CC BY NC 2024
+                                           Grade 3                                    CC BY NC 2024
                                             Unit 7
-                                                               Lesson 10
-                                                                                Illustrative Mathematics®               5
+                                                              Lesson 10
+                                                                               Illustrative Mathematics®               5
 “How are they different?” (Perimeter is about distance, so it is measured in length units. Area is about the amount of
 space within a shape, so it is measured in square units.)
 
@@ -308,15 +308,15 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                        5 min
+Cool-down                                                                                                      5 min
 
 Lin’s Garden Fence
 
-      Standards
-Addressing      3.MD.D.8
+     Standards
+Addressing     3.MD.D.8
 
 
-      Student Task Statement
+     Student Task Statement
       Lin is building a fence around her rectangular garden. A diagram is shown. The area of the garden is 36 square
       feet. How many feet of fencing material will she need to enclose the whole garden?
 
@@ -325,21 +325,21 @@ Addressing      3.MD.D.8
 
 Student Response
 30 feet. Sample response: If the area is 36 square feet and one side is 3, I can divide 36 by 3 to find the missing side.
-Since             , the missing side is 12 feet long. The perimeter can be found by adding            and      , which is 24
-and 6.              .
+Since 3 × 12 = 36, the missing side is 12 feet long. The perimeter can be found by adding 2 × 12 and 2 × 3, which is 24
+and 6. 24 + 6 = 30.
 
 
 Responding to Student Thinking
-Students do not determine the amount of fencing Lin will         Next Day Supports
-need for her rectangular garden.                                 Before the Warm-up, pass back the Cool-down and have
-                                                                 students work in small groups to make corrections.
+Students do not determine the amount of fencing Lin will       Next Day Supports
+need for her rectangular garden.                               Before the Warm-up, pass back the Cool-down and have
+                                                               students work in small groups to make corrections.
 
 
 
 
-                                            Grade 3                                     CC BY NC 2024
-                                             Unit 7
-                                                             Lesson 10
-                                                                                 Illustrative Mathematics®               6
+                                           Grade 3                                    CC BY NC 2024
+                                            Unit 7
+                                                           Lesson 10
+                                                                               Illustrative Mathematics®               6
 ```
 

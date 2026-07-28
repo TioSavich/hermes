@@ -71,7 +71,7 @@ Lesson Timeline                                               Teacher Reflection
 Number Talk: Partial Quotients
 
      Standards                                                       Instructional Routines
-Addressing      4.NBT.B.6                                        • Number Talk
+Addressing     4.NBT.B.6                                         • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for division using partial
@@ -82,22 +82,22 @@ interpret algorithm notation that shows partial quotients.
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-          •                                                      • “Give me a signal when you have an answer and can
+        • 500 ÷ 5                                                • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-          •
+        • 60 ÷ 5
                                                                  • 1 minute: quiet think time
-          •
-          •
+        • 5 ÷ 5
+        • 565 ÷ 5
                                                                Activity
 
 Student Response                                                 • Record answers and strategy.
                                                                  • Keep expressions and work displayed.
-  • 100:
+  • 100: 5 × 100 = 500
                                                                  • Repeat with each expression.
-  • 12:
-  • 1:
+  • 12: 5 × 12 = 60
+  • 1: 5 × 1 = 5
                                                                Activity Synthesis
-  • 113: Since                       , I can add all the
+  • 113: Since 500 + 60 + 5 = 565, I can add all the
     partial quotients from the first 3 problems.               Consider asking:
                                                                  • “Who can restate ______’s reasoning in a different
                                                                    way?”
@@ -115,15 +115,15 @@ Activity 1                                                                      
 A Stack of Partial Quotients
 
      Standards
-Addressing      4.NBT.B.6, 4.OA.A.3
+Addressing     4.NBT.B.6, 4.OA.A.3
 
 
 The purpose of this activity is for students to develop an understanding of the vertical method of recording partial
 
 
 
-                                             Grade 4                                  CC BY NC 2024
-                                              Unit 6
+                                          Grade 4                                     CC BY NC 2024
+                                           Unit 6
                                                            Lesson 18
                                                                                Illustrative Mathematics®                2
 quotients and use it to divide. In the Launch, students look at an algorithm that uses partial quotients and annotate it to
@@ -153,11 +153,11 @@ show the multiplication that takes place. Then students find the value of severa
                                                                     subtracted represents, write a multiplication
                                                                     expression to represent each partial
        2. Show another way you can decompose 392 to
-                                                                    quotient. (      ,      , and     )
+                                                                    quotient. (7 × 40, 7 × 7, and 7 × 9)
           divide by 7.
                                                                   • “Complete the rest of the problems on your own.”
        3. Use a partial-quotients algorithm to find the
-          value of        .                                       • 5–6 minutes: independent work time
+          value of 702 ÷ 3.                                       • 5–6 minutes: independent work time
 
 
 
@@ -173,7 +173,7 @@ Student Response                                                Activity Synthes
         the dividend, 392, leaving 112. Then we subtract            350 once, instead of removing 70 five times.
         7 groups of 7 (or 49) from the 109, leaving 60.             Removing smaller groups is just as valid.)
         Finally we subtract 9 groups of 7 (or 63) leaving
-        4. The quotient is           , which is 56.               • Invite students to share their answers and reasoning
+        4. The quotient is 40 + 7 + 9, which is 56.               • Invite students to share their answers and reasoning
                                                                     for the last problem. To help students see the
                                                                     relationship between corresponding partial products
                                                                     and partial quotients, consider illustrating them
@@ -244,18 +244,18 @@ viable arguments (MP3).
                                                                      avoid the mistakes Andre and Elena made? For
                                                                      example, how can we tell if dividing 2,315 by 5 gives a
                                                                      result in the 100s or in the 400s?” (We can estimate
-                                                                     by multiplying the result by 5:         is a little over
-                                                                     500, and          is 2,000.)
+                                                                     by multiplying the result by 5: 5 × 103 is a little over
+                                                                     500, and 5 × 400 is 2,000.)
                                                                    • To reinforce the importance of keeping track of the
 Student Response                                                     partial quotients during division, consider annotating
                                                                      a corrected version of Elena’s algorithm. Record the
 Sample responses:                                                    product that corresponds to each number being
- 1. Yes, I agree with Andre.              and that is                subtracted from the dividend (1,500, 500, 300, and
+ 1. Yes, I agree with Andre. 500 × 5 = 2500 and that is              subtracted from the dividend (1,500, 500, 300, and
     more than the number we are dividing.                            15).
 
  2.   ◦ Andre subtracted 2,000, which should’ve been
-               , but he wrote 40 instead. The quotient
-        should’ve been               , or 463.
+        5 × 400, but he wrote 40 instead. The quotient
+        should’ve been 400 + 60 + 3, or 463.
       ◦ Elena didn’t finish the division. She stopped at
         15, which can still be divided by 5 to get a partial
         quotient of 3.
@@ -285,7 +285,7 @@ Students also see that some strategies are more practical or efficient than othe
                                                                                 Illustrative Mathematics®                5
     Student Task Statement                                  Launch
     Here are 4 calculations to find the value of              • Groups of 2–4
-             , but each one is unfinished.                    • “Choose at least two calculations to finish. Make sure
+    3,294 ÷ 3, but each one is unfinished.                    • “Choose at least two calculations to finish. Make sure
     Complete at least 2 of the unfinished calculations.         each calculation is completed by someone in your
                                                                 group.”
     A                             B
@@ -328,9 +328,9 @@ A                             B
 
 Lesson Synthesis
 “Today we looked at different ways to divide multi-digit numbers by one-digit divisors. We saw estimating as a rather
-efficient way to find a quotient. How might we use estimation to find          or           ?” (For           , notice that
-       is 30 less than      , which is        . Thirty is     , so     is            . For          , notice that        is
-close to        , which is         , and     is 14 or      less than      . So        is        .)
+efficient way to find a quotient. How might we use estimation to find 5,970 ÷ 3 or 6,986 ÷ 7?” (For 5,970 ÷ 3, notice that
+5,970 is 30 less than 6,000 , which is 3 × 2,000. Thirty is 3 × 10, so 5,970 is 3 × 1,990. For 6,986 ÷ 7, notice that 6,986 is
+close to 7,000 , which is 7 × 1,000, and 6,986 is 14 or 7 × 2 less than 7,000 . So 6,986 is 7 × 998.)
 
 “How can we check the result of our division to make sure it’s not off?” (We can multiply the result by the divisor, adding
 the remainder if there is one, and see if it gives the dividend.)
@@ -344,7 +344,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                       5 min
+Cool-down                                                                                                          5 min
 
 Find a Quotient
 
@@ -353,7 +353,7 @@ Addressing       4.NBT.B.6
 
 
        Student Task Statement
-       Find the value of          . Use partial quotients to show your reasoning.
+       Find the value of 2,023 ÷ 7. Use partial quotients to show your reasoning.
 
 
 Student Response
@@ -361,14 +361,14 @@ Student Response
 
 
 Responding to Student Thinking
-Students make computation errors resulting from                 Next Day Supports
-addition, subtraction, or multiplication fluency.               Before the Warm-up, invite students to work in small
-                                                                groups to discuss a correct response to this Cool-down.
+Students make computation errors resulting from                  Next Day Supports
+addition, subtraction, or multiplication fluency.                Before the Warm-up, invite students to work in small
+                                                                 groups to discuss a correct response to this Cool-down.
 
 
-                                            Grade 4                                    CC BY NC 2024
+                                            Grade 4                                      CC BY NC 2024
                                              Unit 6
-                                                            Lesson 18
-                                                                                Illustrative Mathematics®               7
+                                                              Lesson 18
+                                                                                  Illustrative Mathematics®                7
 ```
 

@@ -93,11 +93,11 @@ problems using addition or subtraction.
 
        A.                                                       • Display the equations.
                                                                 • “Pick 3 that go together. Be ready to share why they
-      B.
+      B. 20 + 5 = 25
                                                                   go together.”
-       C.
+       C. 35 - 10 = 25
                                                                 • 1 minute: quiet think time
-      D.
+      D. 25 + 10 = 35
 
                                                               Activity
 Student Response
@@ -190,17 +190,17 @@ Materials to Gather
                                              Unit 8
                                                              Lesson 6
                                                                               Illustrative Mathematics®             3
-Student Response                                                     • “How do these representations match the story?”
-                                                                     • If needed, “Where do you see how many fewer
+Student Response                                                 • “How do these representations match the story?”
+                                                                 • If needed, “Where do you see how many fewer
  1. 5 tickets. Sample response: I counted on, 7...8, 9, 10,
-                                                                       stuffed animals there are than toys?”
+                                                                   stuffed animals there are than toys?”
     11, 12.
-                                                                     • If needed, “What equations can we write to represent
- 2. 10 more bags. Sample response: I know                     .
-                                                                       this problem?”
+                                                                 • If needed, “What equations can we write to represent
+ 2. 10 more bags. Sample response: I know 7 + 10 = 17.
+                                                                   this problem?”
  3. 4 fewer stuffed animals. Sample response:
-                ,
- 4. 6 fewer people. Sample response:
+    13 - 3 = 10, 10- 6 = 4
+ 4. 6 fewer people. Sample response: 14 + 6 = 20
 
 
 
@@ -212,7 +212,7 @@ If students add both quantities in the problems, consider asking:
 
 
 
-Activity 2                                                                                                     20 min
+Activity 2                                                                                                   20 min
 
 How Many Rides?
 
@@ -245,10 +245,10 @@ Materials to Gather
 
 
 
-                                             Grade 1                                    CC BY NC 2024
+                                             Grade 1                                 CC BY NC 2024
                                               Unit 8
-                                                                  Lesson 6
-                                                                                 Illustrative Mathematics®              4
+                                                              Lesson 6
+                                                                              Illustrative Mathematics®               4
      Student Task Statement                                  Launch
       Write and answer 2 questions using the                   • Groups of 2
       information.                                             • Give each group access to connecting cubes in

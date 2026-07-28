@@ -42,7 +42,7 @@ operations to multiply within 100. Now, students extend this work and consider p
 numbers by multiples of 10. Students complete a problem in context in which they explore how 180 can be grouped into
 multiples of ten in different ways. Students analyze two strategies for multiplying a single-digit number by a multiple of
 ten, then complete similar problems using the strategy of their choice. Throughout the lesson, the associative property
-is used as a strategy to think of problems like       as      , or 18 tens, or        .
+is used as a strategy to think of problems like 3 × 60 as 3 × 6, or 18 tens, or 18 × 10.
 
 When students decompose multiples of ten in different ways as a strategy to multiply, they are looking for and making
 use of structure (MP7).
@@ -120,7 +120,7 @@ Students may notice:
 Students may wonder:                                               total. We know 12 tens would be 120.)
   • How many squares (or ones) are in each section?
                                                                  • Record equations that reflect student thinking, such
-  • How many squares are in each row?                              as                      and                   .
+  • How many squares are in each row?                              as 3 × 4 × 10 = 12 × 10 and 4 × 30 = 12 × 10.
 
 
                                            Grade 3                                   CC BY NC 2024
@@ -132,7 +132,7 @@ Students may wonder:                                               total. We kno
 
 
 
-Activity 1                                                                                                      15 min
+Activity 1                                                                                                    15 min
 
 A Whole Lot of Dollars
 
@@ -142,9 +142,9 @@ Addressing     3.NBT.A.3
 
 The purpose of this activity is for students to work with products of whole numbers and multiples of 10 in a concrete
 and familiar context before reasoning more abstractly about them. Given some numbers of dollar bills (for instance,
-four $20 bills), students write expressions to represent the amount (        ) and then find its value using strategies that
+four $20 bills), students write expressions to represent the amount (4 × 20) and then find its value using strategies that
 make sense to them. For example, students may count by 20 four times or think of $20 in terms of two $10 bills and find
-           (or        ). Consider giving students access to play money, if available, to help them visualize the quantities
+4 × 2 × 10 (or 8 × 10). Consider giving students access to play money, if available, to help them visualize the quantities
 and support their reasoning.
 
 The reasoning here prompts students to use strategies based on place value and properties of operations (especially
@@ -166,23 +166,23 @@ in which the product is greater than 100.
 
 
 Required Materials
-Materials to Gather                                             Materials to Copy
-  • Base-ten blocks: Activity 1                                   • Centimeter Grid Paper - Standard (1 copy for every 2
-                                                                    students): Activity 1
+Materials to Gather                                            Materials to Copy
+  • Base-ten blocks: Activity 1                                  • Centimeter Grid Paper - Standard (1 copy for every 2
+                                                                   students): Activity 1
 
 
-     Student Task Statement                                     Launch
-      Six friends played a board game that uses play              • Groups of 2
-      money. The paper bills come in $5, $10, $20, $50,           • “We’re going to solve a problem about a game that
-      and $100.                                                     involves play money. What do you know about
-       1. Every player starts with $100. Which of the               games that involve play money?”
-          following could be the bills that a player              • 1 minute: quiet think time
+     Student Task Statement                                    Launch
+      Six friends played a board game that uses play             • Groups of 2
+      money. The paper bills come in $5, $10, $20, $50,          • “We’re going to solve a problem about a game that
+      and $100.                                                    involves play money. What do you know about
+       1. Every player starts with $100. Which of the              games that involve play money?”
+          following could be the bills that a player             • 1 minute: quiet think time
 
 
-                                           Grade 3                                    CC BY NC 2024
-                                            Unit 4
-                                                            Lesson 12
-                                                                               Illustrative Mathematics®                 3
+                                          Grade 3                                    CC BY NC 2024
+                                           Unit 4
+                                                           Lesson 12
+                                                                              Illustrative Mathematics®                3
    started with?                                         • Share responses.
 
    Write an expression to represent the play bills       • Give students access to base-ten blocks, grid paper,
@@ -243,73 +243,73 @@ Materials to Gather                                             Materials to Cop
                                    Unit 4
                                                      Lesson 12
                                                                       Illustrative Mathematics®             4
-                                                         dollar
-               player          bills      expression
-                                                        amount
+                                                        dollar
+             player         bills        expression
+                                                       amount
 
-                             nine $10
-                             bills and
-               Andre
-                              ten $5
-                                bills
+                          nine $10
+                          bills and
+             Andre
+                           ten $5
+                             bills
 
-                             fourteen
-               Clare
-                             $10 bills
+                          fourteen
+             Clare
+                          $10 bills
 
-                              ten $10
-                              bills and
-                Jada
-                             three $50
-                                 bills
+                           ten $10
+                           bills and
+              Jada
+                          three $50
+                              bills
 
-                             eight $20
-                Lin
-                                bills
+                          eight $20
+               Lin
+                             bills
 
-                              six $50
-               Noah
-                                bills
+                           six $50
+             Noah
+                             bills
 
-                             twenty-
-                Tyler        one $10
-                               bills
+                          twenty-
+              Tyler       one $10
+                            bills
 
 
 
 Student Response
-1. A player could start with one                 10 bills, five
+1. A player could start with one                10 bills, five
               5 bills, or two $50 bills.
 
 
-               bills            expression   dollar amount
+             bills           expression     dollar amount
 
-           one $100 bill                          100
+         one $100 bill         1 × 100           100
 
-           four $20 bills                          80
+         four $20 bills        4 × 20             80
 
-           ten $10 bills                          100
+         ten $10 bills         10 × 10           100
 
-            ten $5 bills                           50
+          ten $5 bills         10 × 5             50
 
-           five $20 bills                         100
+         five $20 bills        5 × 20            100
 
-          twenty $10 bills                        200
+       twenty $10 bills        20 × 10           200
 
-          twenty $5 bills                         100
+        twenty $5 bills        20 × 5            100
 
-           two $50 bills                          100
+         two $50 bills         2 × 50            100
 
 
 2.   a. Three $50 bills, fifteen $10 bills, and thirty $5
         bills
-     b.          ,           , and
+     b. 3 × 50, 15 × 10, and 30 × 5
 
 
-                                              Grade 3                                CC BY NC 2024
-                                               Unit 4
-                                                                  Lesson 12
-                                                                              Illustrative Mathematics®   5
+                                             Grade 3                                CC BY NC 2024
+                                              Unit 4
+                                                                 Lesson 12
+                                                                             Illustrative Mathematics®   5
  3. Noah won the game.
 
 
@@ -319,30 +319,30 @@ Student Response
 
                   nine $10
                   bills and
-       Andre                                               140
+       Andre                     (9 × 10) + (10 × 5)       140
                    ten $5
                      bills
 
                   fourteen
-       Clare                                               140
+       Clare                           14 × 10             140
                   $10 bills
 
                    ten $10
                    bills and
-        Jada                                               250
+        Jada                    (10 × 10) + (3 × 50)       250
                   three $50
                       bills
 
                   eight $20
-         Lin                                               160
+         Lin                           8 × 20              160
                      bills
 
                    six $50
-       Noah                                                300
+       Noah                            6 × 50              300
                      bills
 
                    twenty-
-        Tyler      one $10                                 210
+        Tyler      one $10             21 × 10             210
                      bills
 
 
@@ -367,7 +367,7 @@ Addressing      3.NBT.A.3
 The purpose of this activity is for students to continue to reason about products of a whole number and a multiple of
 10, this time using base-ten blocks or base-ten diagrams to support their thinking. Students analyze two strategies for
 multiplying. Both strategies are based on place value, but the second strategy also uses the associative property to think
-about         as            or          .
+about 8 × 30 as 8 × 3 × 10 or 24 × 10.
 
 
 
@@ -384,8 +384,8 @@ Materials to Gather                                            Materials to Copy
 
       Student Task Statement                                   Launch
        1. Two students used base-ten blocks to find the          • Groups of 2
-          value of       .                                       • “Take some time to look at Jada and Kiran’s strategies
-          They drew this diagram to show the blocks.               for multiplying      .”
+          value of 8 × 30.                                       • “Take some time to look at Jada and Kiran’s strategies
+          They drew this diagram to show the blocks.               for multiplying 8 × 30.”
                                                                  • 30 seconds: quiet think time
                                                                  • “Talk to your partner about how we can see Jada and
                                                                    Kiran’s strategies in the diagram.” (We can see
@@ -397,8 +397,8 @@ Materials to Gather                                            Materials to Copy
             ◦ Jada counted: 30, 60, 90, 120, 150, 180,
               210, 240, and said the product is 240.             • Give students access to grid paper and base-ten
                                                                    blocks.
-            ◦ Kiran said he knew        is 24, then found
-                      to get 240.
+            ◦ Kiran said he knew 8 × 3 is 24, then found
+              24 × 10 to get 240.
            How are Jada and Kiran’s strategies alike? How      Activity
            are they different?
                                                                  • “Work with your partner on the first problem.”
@@ -406,26 +406,26 @@ Materials to Gather                                            Materials to Copy
                                                                  • 2–3 minutes: partner discussion
           show your reasoning.
                                                                  • Invite students to share how the strategies are alike
-            a.                                                     and how they’re different.
-           b.                                                    • “How was Kiran able to turn          into          ?”
-                                                                   (       is 8 groups of 3 tens, so that’s 24 tens. You
-            c.
-                                                                   can see         and          in the same diagram, so
-           d.                                                      they are the same amount.)
+            a. 5 × 60                                              and how they’re different.
+           b. 8 × 50                                             • “How was Kiran able to turn 8 × 30 into 24 × 10?”
+                                                                   (8 × 30 is 8 groups of 3 tens, so that’s 24 tens. You
+            c. 4 × 30
+                                                                   can see 8 × 30 and 24 × 10 in the same diagram, so
+           d. 7 × 40                                               they are the same amount.)
 
-            e.                                                   • “Now, work with your partner to find the value of
+            e. 9 × 20                                            • “Now, work with your partner to find the value of
                                                                    other products.”
                                                                  • 5–7 minutes: partner work time
 Student Response
                                                                  • Monitor for students who use the associative
  1. Sample responses: They are alike because they both             property as a strategy to highlight during the Activity
     get 240. Kiran’s strategy decomposes the 30 into               Synthesis.
-          , then multiplies the       before multiplying
-            . Jada just counts by 30 without decomposing
+    3 × 10, then multiplies the 3 × 8 before multiplying
+    24 × 10. Jada just counts by 30 without decomposing
     anything.                                                  Activity Synthesis
- 2.   a. 300. Sample response:             .                     • Select 2–3 students who used a strategy based on
-                       .                                           the associative property (for example, thinking of
-      b. 400. Sample response: Students create 8 groups                   as 28 tens) to share their responses.
+ 2.   a. 300. Sample response: 5 × 6 = 30.                       • Select 2–3 students who used a strategy based on
+         30 × 10 = 300.                                            the associative property (for example, thinking of
+      b. 400. Sample response: Students create 8 groups            7 × 40 as 28 tens) to share their responses.
          of 50 with base-ten blocks and count by 50 to get       • Consider asking:
 
 
@@ -437,10 +437,10 @@ Student Response
          to 400.                                                      ◦ “Where do we see the original expression in
                                                                         _____’s work?”
      c. 120. Sample response: Students create a 4 by 30
-        rectangle and see 12 tens.              .                     ◦ “How did _____ change the original expression to
+        rectangle and see 12 tens. 12 × 10 = 120.                     ◦ “How did _____ change the original expression to
                                                                         make it easier to find the total?”
-     d. 280. Sample response:                     .
-                      .                                               ◦ “How does _____’s strategy for multiplying work?”
+     d. 280. Sample response: 7 × 40 = 28 × 10.
+        28 × 10 = 280.                                                ◦ “How does _____’s strategy for multiplying work?”
      e. 180. Sample response: Students count by 20
         nine times: 20, 40, 60, 80, 100, 120, 140, 160,
         180.
@@ -452,7 +452,7 @@ Lesson Synthesis
 “Today we multiplied one-digit whole numbers by multiples of 10.”
 
 “How did thinking about tens help us find the value of products that were greater than we had found before?” (Using
-tens helped us count or multiply a lot faster. If we know    , we can think of that many tens to find     . We can use
+tens helped us count or multiply a lot faster. If we know 5 × 6, we can think of that many tens to find 5 × 60. We can use
 what we already know to find other products.)
 
 “What were some strategies that were helpful as you multiplied one-digit whole numbers by multiples of 10?”
@@ -468,7 +468,7 @@ Suggested Centers
 
 
 
-Cool-down                                                                                                         5 min
+Cool-down                                                                                                      5 min
 
 What’s the Value?
 
@@ -477,24 +477,24 @@ Addressing     3.NBT.A.3
 
 
      Student Task Statement
-     Find the value of        . Explain or show your reasoning.
+      Find the value of 6 × 40. Explain or show your reasoning.
 
 
 Student Response
-240. Sample response: I decomposed 40 into            , then multiplied     to get 24. Twenty-four tens is 240.
+240. Sample response: I decomposed 40 into 4 × 10, then multiplied 6 × 4 to get 24. Twenty-four tens is 240.
 
 
 Responding to Student Thinking
-Students give the correct product of    , but they don’t        Next Day Supports
+Students give the correct product of 6 × 40, but they don’t     Next Day Supports
 provide any reasoning around how they found the                 During the Launch of the next day’s activity, have students
 
 
                                            Grade 3                                    CC BY NC 2024
                                             Unit 4
-                                                            Lesson 12
-                                                                               Illustrative Mathematics®                  8
+                                                              Lesson 12
+                                                                               Illustrative Mathematics®               8
 product.               discuss their reasoning about how they know
-                                     .
+                       6 × 40 = 240.
 
 
 

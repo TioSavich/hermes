@@ -43,7 +43,7 @@ blocks to the value of the digits in three-digit numbers.
 
 In this lesson, students extend their understanding of ways to express the value of the digits in three-digit numbers to
 include expanded form. They represent three-digit numbers as the sum of the values of their digits (for example,
-                     ).
+357 = 300 + 50 + 7).
 
 
       Access for Students with Disabilities                          Access for English Learners
@@ -96,12 +96,12 @@ look for and make use of the base-ten structure when they look for the value of 
       Student Task Statement                                    Launch
       Decide if each statement is true or false. Be               • Display one statement in the student book.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+        • 800 + 90 + 7 = 897                                        statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 156 = 50 + 100 + 6                                      • 1 minute: quiet think time
 
-        •
-        •                                                       Activity
+        • 407 = 70 + 400
+        • 632 = 22 + 10 + 600                                   Activity
                                                                   • Share and record answers and strategy.
 Student Response                                                  • Repeat with each statement.
 
@@ -110,7 +110,7 @@ Student Response                                                  • Repeat wit
   • True: They are out of order, but it is still 156.
                                                                   • “What is different about the last equation?” (It’s not
   • False: 407 is 400 and 7, not 70.                                decomposed into hundreds, tens, and ones. 22
-  • True:                 and                                       shows some tens and some ones and 10 shows
+  • True: 22 + 10 = 32 and 32 + 600 = 632                           shows some tens and some ones and 10 shows
                                                                     another ten.)
 
 
@@ -155,7 +155,7 @@ Materials to Gather
                                                                 • 1 minutes: partner discussion
             Write an expression to represent the sum of
             their values.                                       • Share responses.
-                                                                • Display 357 and                .
+                                                                • Display 357 and 300 + 50 + 7.
             __________ + __________ + __________
                                                                 • “We can represent the value of the blocks by writing
             Write the total value as a 3-digit number.
@@ -188,7 +188,7 @@ Materials to Gather
 
                                                             Activity Synthesis
            Expanded form: _________________________
-                                                              • “What is the value of              ? Explain how you
+                                                              • “What is the value of 40 + 100 + 3? Explain how you
            3-digit number: _________________________
                                                                 know.” (143, because I saw there were 1 hundred, 4
       4.                                                        tens, and 3 ones. I just rearranged it in my head like
@@ -199,7 +199,7 @@ Materials to Gather
                                                                 written in place value order.”
            3-digit number: _________________________
                                                               • “How would we write 143 in expanded form?”
-      5.                                                        (           )
+      5.                                                        (100 + 40 + 3)
 
 
 
@@ -210,11 +210,11 @@ Materials to Gather
 
 
 Student Response
- 1.               . 357
- 2.               . 192
- 3.               . 238
- 4.               . 316
- 5.               . 421
+ 1. 300 + 50 + 7. 357
+ 2. 100 + 90 + 2. 192
+ 3. 200 + 30 + 8. 238
+ 4. 300 + 10 + 6. 316
+ 5. 400 + 20 + 1. 421
 
 
 
@@ -223,7 +223,7 @@ Activity 2                                                                      
 
 Make It and Expand It
 
-      Standards
+     Standards
 Addressing           2.NBT.A.1, 2.NBT.A.3
 Building Toward      2.NBT.A.4
 
@@ -298,16 +298,16 @@ Student Response                                                • 7 minutes: p
                                                             Lesson 5
                                                                               Illustrative Mathematics®                5
      ◦ 421                                                             make the smallest or largest number?”
-     ◦                                                         • Monitor for students who recognize that in order to
+     ◦ 400 + 20 + 1                                            • Monitor for students who recognize that in order to
                                                                  make the largest number possible they need to order
  2. Sample response: Student rolls 2, 4, and 1.
                                                                  the number cubes from greatest to least.
      ◦ 124
-     ◦
+     ◦ 100 + 20 + 4
                                                              Activity Synthesis
  3. Sample response: If students roll 3, 2, and 6. One
-    student writes              and 326. The other             • Invite 2–3 previously selected students to share the
-    student writes              and 632.                         largest numbers they made.
+    student writes 300 + 20 + 6 and 326. The other             • Invite 2–3 previously selected students to share the
+    student writes 600 + 30 + 2 and 632.                         largest numbers they made.
                                                                • “How did you know if you were making the largest
                                                                  number possible?” (The largest digit rolled needed to
                                                                  be the hundreds. The next largest digit needed to be
@@ -320,10 +320,10 @@ Student Response                                                • 7 minutes: p
 Lesson Synthesis
 “Today you represented numbers in expanded form and as three-digit numbers.”
 
-Display 426 and              .
+Display 426 and 400 + 20 + 6.
 
 “Explain how you know these represent the same value.” (The digits in 426 represent 4 hundreds, 2 tens, and 6 ones.
-That is the same as            .)
+That is the same as 400 + 20 + 6.)
 
 
 
@@ -347,7 +347,7 @@ Addressing     2.NBT.A.1, 2.NBT.A.3
 
           Expanded form: ________________________________
 
-       2. Represent                as a 3-digit number.
+       2. Represent 200 + 40 + 7 as a 3-digit number.
 
           3-digit number: ____________
 
@@ -359,7 +359,7 @@ Addressing     2.NBT.A.1, 2.NBT.A.3
                                                             Lesson 5
                                                                             Illustrative Mathematics®              6
 Student Response
- 1.
+ 1. 300 + 70 + 5
  2. 247
 
 

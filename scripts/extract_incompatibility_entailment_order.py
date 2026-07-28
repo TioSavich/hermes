@@ -340,7 +340,11 @@ REGISTER = r"""/** <module> Generated finite incompatibility-entailment register
  * entailment: B has a nonempty minimal profile; replacing B by A preserves
  * every profile context; and B does not preserve every profile context for A.
  * It is not classical consequence.  WitnessCount records the number of B's
- * minimal profile edges checked.
+ * minimal profile edges checked. incompatibility_earned_entailment_support/3
+ * marks the evidential boundary without changing the relation: a one-edge
+ * target profile is sparse_witness because one shared remainder alone can
+ * establish replacement; two or more independently checked profile edges are
+ * multi_profile_witness.
  *
  * incompatibility_vacuously_entails/2 records the otherwise-free containment
  * case separately: B has an empty minimal profile.  The content universe is
@@ -362,6 +366,7 @@ REGISTER = r"""/** <module> Generated finite incompatibility-entailment register
             incompatibility_content/3,                 % ?Content, ?DeclaredMentions, ?MinimalProfileEdges
             incompatibility_profile/2,                 % ?Content, ?MinimalHyperedgeIds
             incompatibility_earned_entails/3,          % ?A, ?B, ?WitnessCount
+            incompatibility_earned_entailment_support/3, % ?A, ?B, ?SupportClass
             incompatibility_vacuously_entails/2,       % ?A, ?B
             incompatibility_equivalent/2,              % ?A, ?B
             mutual_nonidentical_profile/2,             % ?A, ?B
@@ -418,6 +423,12 @@ def render_register(hyperedges: list[Hyperedge], result: dict[str, object]) -> s
             f"incompatibility_earned_entails({prolog_term(replacement)}, {prolog_term(replaced)}, {len(witnesses)})."
         )
     lines.append("")
+    for (replacement, replaced), witnesses in sorted(earned.items(), key=lambda item: (term_key(item[0][0]), term_key(item[0][1]))):
+        support = "sparse_witness" if len(witnesses) == 1 else "multi_profile_witness"
+        lines.append(
+            f"incompatibility_earned_entailment_support({prolog_term(replacement)}, {prolog_term(replaced)}, {support})."
+        )
+    lines.append("")
     for replacement, replaced in vacuous:
         lines.append(f"incompatibility_vacuously_entails({prolog_term(replacement)}, {prolog_term(replaced)}).")
     lines.append("")
@@ -435,6 +446,8 @@ def render_register(hyperedges: list[Hyperedge], result: dict[str, object]) -> s
         "minimal_hyperedges": sum(edge.minimal for edge in hyperedges),
         "contents": len(contents),
         "earned_entailments": len(earned),
+        "sparse_witness_earned_entailments": sum(len(witnesses) == 1 for witnesses in earned.values()),
+        "multi_profile_witness_earned_entailments": sum(len(witnesses) >= 2 for witnesses in earned.values()),
         "vacuous_entailments": len(vacuous),
         "equivalent_pairs": len(equivalent),
         "mutual_nonidentical_pairs": len(mutual),
@@ -479,8 +492,24 @@ def view_payload(hyperedges: list[Hyperedge], result: dict[str, object]) -> dict
             "declaredMentions": mentions[content],
             "minimalProfileEdges": len(membership[content]),
             "profileClass": "vacuous" if content in all_vacuous_targets else "informed",
-            "earnedOut": [target for source, target in earned if source == content],
-            "earnedIn": [source for source, target in earned if target == content],
+            "earnedOut": [
+                {
+                    "term": target,
+                    "witnessCount": len(witnesses),
+                    "support": "sparse_witness" if len(witnesses) == 1 else "multi_profile_witness",
+                }
+                for (source, target), witnesses in earned.items()
+                if source == content
+            ],
+            "earnedIn": [
+                {
+                    "term": source,
+                    "witnessCount": len(witnesses),
+                    "support": "sparse_witness" if len(witnesses) == 1 else "multi_profile_witness",
+                }
+                for (source, target), witnesses in earned.items()
+                if target == content
+            ],
             "equivalent": [
                 right if left == content else left
                 for left, right in equivalent
@@ -553,11 +582,12 @@ def render_view(hyperedges: list[Hyperedge], result: dict[str, object]) -> str:
   function metric(value,label) {{ const box=node("div",undefined,"metric"); box.append(node("b",String(value))); box.append(node("span",label)); return box; }}
   function termButton(value) {{ const b=node("button",value,"term"); b.type="button"; b.addEventListener("click",()=>select(value)); return b; }}
   function list(values, empty) {{ const out=node("ul"); if(!values.length) {{ out.append(node("li",empty,"empty")); return out; }} values.forEach(value=>{{const li=node("li");li.append(termButton(value));out.append(li);}}); return out; }}
+  function earnedList(values, empty) {{ const out=node("ul"); if(!values.length) {{ out.append(node("li",empty,"empty")); return out; }} values.forEach(value=>{{const li=node("li");li.append(termButton(value.term)); li.append(node("span",value.support.replaceAll("_"," ")+"; "+value.witnessCount+" profile edge"+(value.witnessCount===1?"":"s"),"badge"));out.append(li);}}); return out; }}
   function panel(title, body) {{ const section=node("section",undefined,"panel"); section.append(node("h2",title)); section.append(body); return section; }}
   function select(value) {{ $("content").value=value; render(value); }}
   function populate(filter="") {{ const selected=$("content").value; const match=filter.toLowerCase(); const values=Object.keys(data.contents).filter(v=>v.toLowerCase().includes(match)).sort(); $("content").textContent=""; values.forEach(value=>{{const option=node("option",value);option.value=value;$("content").append(option);}}); if(values.includes(selected)) $("content").value=selected; else if(values.length) $("content").value=values[0]; if(values.length) render($("content").value); else $("detail").textContent="No content matches this filter."; }}
   function edgeCard(edge) {{ const box=node("article",undefined,"edge"); const heading=node("div"); heading.append(node("span","#"+edge.id+" ","term")); edge.terms.forEach((value,index)=>{{if(index) heading.append(document.createTextNode(", "));heading.append(termButton(value));}}); if(edge.minimal) heading.append(node("span","minimal","badge minimal")); if(edge.emergent) heading.append(node("span","emergent","badge emergent")); box.append(heading); box.append(node("p",edge.sources.join("; "),"limit")); return box; }}
-  function render(value) {{ const item=data.contents[value]; if(!item) return; const root=$("detail");root.textContent=""; const title=node("h2",value,"term"); const density=node("p","Declared hyperedges mentioning this content: "+item.declaredMentions+". Minimal profile edges: "+item.minimalProfileEdges+".","limit"); root.append(title,density); if(item.profileClass==="vacuous") root.append(node("p","This content has an empty minimal profile. Any containment into it is listed as vacuous, not earned.","limit")); const grid=node("div",undefined,"grid"); grid.append(panel("Earned entailments from this content",list(item.earnedOut,"No strict earned entailments in this finite register."))); grid.append(panel("Contents that earn this content",list(item.earnedIn,"No strict earned entailments into this content in this finite register."))); grid.append(panel("Equivalent profile",list(item.equivalent,"No distinct content has an identical minimal partner-context profile."))); if(item.mutualNonidentical.length) grid.append(panel("Mutual replacement, nonidentical profile",list(item.mutualNonidentical,""))); root.append(grid); const hyper=node("section");hyper.style.marginTop="1rem";hyper.append(node("h2","Declared incompatible hyperedges containing this content")); item.hyperedges.forEach(id=>hyper.append(edgeCard(byId.get(id))));root.append(hyper); }}
+  function render(value) {{ const item=data.contents[value]; if(!item) return; const root=$("detail");root.textContent=""; const title=node("h2",value,"term"); const density=node("p","Declared hyperedges mentioning this content: "+item.declaredMentions+". Minimal profile edges: "+item.minimalProfileEdges+".","limit"); root.append(title,density); if(item.profileClass==="vacuous") root.append(node("p","This content has an empty minimal profile. Any containment into it is listed as vacuous, not earned.","limit")); const grid=node("div",undefined,"grid"); grid.append(panel("Earned entailments from this content",earnedList(item.earnedOut,"No strict earned entailments in this finite register."))); grid.append(panel("Contents that earn this content",earnedList(item.earnedIn,"No strict earned entailments into this content in this finite register."))); grid.append(panel("Equivalent profile",list(item.equivalent,"No distinct content has an identical minimal partner-context profile."))); if(item.mutualNonidentical.length) grid.append(panel("Mutual replacement, nonidentical profile",list(item.mutualNonidentical,""))); root.append(grid); const hyper=node("section");hyper.style.marginTop="1rem";hyper.append(node("h2","Declared incompatible hyperedges containing this content")); item.hyperedges.forEach(id=>hyper.append(edgeCard(byId.get(id))));root.append(hyper); }}
   const s=data.summary; $("summary").append(metric(s.declaredHyperedges,"distinct declared hyperedges"),metric(s.minimalHyperedges,"minimal hyperedges"),metric(s.contents,"contents"),metric(s.earned,"earned strict entailments"),metric(s.vacuous,"vacuous ordered pairs"),metric(s.equivalent,"equivalent pairs"));
   const emergent=$("emergent"); data.hyperedges.filter(e=>e.emergent).forEach(edge=>emergent.append(edgeCard(edge)));
   $("filter").addEventListener("input",event=>populate(event.target.value)); $("content").addEventListener("change",event=>render(event.target.value)); populate();

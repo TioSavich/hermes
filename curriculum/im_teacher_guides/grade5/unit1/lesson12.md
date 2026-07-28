@@ -196,9 +196,9 @@ Required Preparation
                                                                  like Malaysia? Where else does our trash go?)
 Student Response                                               • If needed, show students Malaysia on a map.
 
-1. Sample responses:           ,          ,            ,       • “The trash fits in 60 shipping containers and will be
-            ,          ,           ,          ,                  returned in a large cargo ship over water.”
-            ,        ,                                         • Refer students to the image of the shipping container
+1. Sample responses: 1 × 1 × 60, 1 × 2 × 30, 1 × 3 × 20,       • “The trash fits in 60 shipping containers and will be
+   1 × 4 × 15, 1 × 5 × 12, 1 × 6 × 10, 2 × 15 × 2,               returned in a large cargo ship over water.”
+   2 × 3 × 10, 2 × 5 × 6, 3 × 4 × 5                            • Refer students to the image of the shipping container
 2. Students may make any visual model that makes                 in the activity.
    sense to them.                                              • "How would you describe the shape of a shipping
                                                                  container?" (It looks like a rectangular prism. The
@@ -232,8 +232,8 @@ Student Response                                               • If needed, sh
 
 
 
-                                       Grade 5                                      CC BY NC 2024
-                                        Unit 1
+                                        Grade 5                                     CC BY NC 2024
+                                         Unit 1
                                                            Lesson 12
                                                                              Illustrative Mathematics®                 4
                                                                     each container?”

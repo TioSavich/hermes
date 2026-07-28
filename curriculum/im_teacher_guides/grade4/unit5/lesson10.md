@@ -209,8 +209,8 @@ Student Response                                                  • If no stud
                                                                     last problem with your partner. Take turns being the
          tortoise can travel.
                                                                     speaker and the listener. If you are the speaker,
-      b. Agree. Sample responses:                   , so            share your ideas and writing so far. If you are the
-                   is 10 times as much as 2,400, which is           listener, ask questions and give feedback to help
+      b. Agree. Sample responses: 8 × 300 = 2,400, so               share your ideas and writing so far. If you are the
+         80 × 300 is 10 times as much as 2,400, which is            listener, ask questions and give feedback to help
          24,000 meters or 24 kilometers. A dromedary                your partner improve their work.”
          can travel even further than that.
                                                                   • 2–3 minutes: structured partner discussion
@@ -256,40 +256,40 @@ practice constructing logical arguments (MP3).
       Advances: Representing, Conversing
 
 
-     Student Task Statement                                     Launch
-      Here are 6 water bottles arranged from largest to           • Groups of 2–4
+     Student Task Statement                                    Launch
+      Here are 6 water bottles arranged from largest to          • Groups of 2–4
       smallest size.
 
-                                                                Activity
-                                                                  • “Take a few quiet minutes to read the clues and to
-                                                                    work on the activity. Then discuss your thinking with
-                                                                    your group.”
-                                                                  • 5–7 minutes: independent work time
-                                                                  • 5 minutes: group discussion
+                                                               Activity
+                                                                 • “Take a few quiet minutes to read the clues and to
+                                                                   work on the activity. Then discuss your thinking with
+                                                                   your group.”
+                                                                 • 5–7 minutes: independent work time
+                                                                 • 5 minutes: group discussion
 
 
       Here are four clues about the amount of water each
-                                                                Activity Synthesis
+                                                               Activity Synthesis
       bottle holds.
-                                                                  • Discuss the order in which students completed the
+                                                                 • Discuss the order in which students completed the
         • One bottle holds 350 mL.
-                                                                    unknown values. Ask questions such as::
+                                                                   unknown values. Ask questions such as::
         • A bottle in size B holds 5 times as much water
-                                                                     ◦ “Which was the first bottle whose amount you
+                                                                    ◦ “Which was the first bottle whose amount you
           as the bottle that holds 1 L.
-                                                                       figured out? Was there a reason you started with
-        • The largest bottle holds 20 times the amount                 that bottle?” (E, because             and
-          of water in the smallest bottle.                                                )
-        • One bottle holds 1,500 mL, which is 3 times as             ◦ “Which bottle and amount did you figure out
-          much water as a bottle in size E.                            next?” (F is 350 mL because 350 mL is less than
-      Use the clues to find out the amount of water, in                500 mL and Bottle F is the only bottle with less
-      milliliters, that each bottle size holds.                        than Bottle E)
+                                                                      figured out? Was there a reason you started with
+        • The largest bottle holds 20 times the amount                that bottle?” (E, because 3 × n = 1,500 and
+          of water in the smallest bottle.                            3 × 500 = 1,500)
+        • One bottle holds 1,500 mL, which is 3 times as            ◦ “Which bottle and amount did you figure out
+          much water as a bottle in size E.                           next?” (F is 350 mL because 350 mL is less than
+      Use the clues to find out the amount of water, in               500 mL and Bottle F is the only bottle with less
+      milliliters, that each bottle size holds.                       than Bottle E)
 
-      A: ___________________ mL                                      ◦ “How did you find the amount that the largest
-                                                                       bottle holds? How did you find 20 times a
-      B: ___________________ mL                                        number in the hundreds?” (3,500 is ten times as
-      C: ___________________ mL                                        much as 350, so 20 times as much is
-                                                                                     , or 7,000)
+      A: ___________________ mL                                     ◦ “How did you find the amount that the largest
+                                                                      bottle holds? How did you find 20 times a
+      B: ___________________ mL                                       number in the hundreds?” (3,500 is ten times as
+      C: ___________________ mL                                       much as 350, so 20 times as much is
+                                                                      3,500 + 3,500, or 7,000)
       D: ___________________ mL
 
       E: ___________________ mL
@@ -301,18 +301,18 @@ Student Response
 A: 7,000 mL, B: 5,000 mL, C: 1,500 mL, D: 1,000 mL, E: 500
 mL, F: 350 mL. Sample responses:
 
-  • Size E holds 500 mL, because                   .
+  • Size E holds 500 mL, because 3 × 500 = 1,500.
   • The size that holds 350 mL is size F, because 350 is
     less than 500.
-  • Size A holds 7,000 mL, because                     , so
+  • Size A holds 7,000 mL, because 10 × 350 = 3,500, so
 
 
-                                          Grade 4                                     CC BY NC 2024
+                                          Grade 4                                    CC BY NC 2024
                                            Unit 5
-                                                              Lesson 10
-                                                                               Illustrative Mathematics®             5
-              is twice 3,500, which is 7,000.
-  • Size B is 5,000 mL because                     .
+                                                             Lesson 10
+                                                                              Illustrative Mathematics®             5
+    20 × 350 is twice 3,500, which is 7,000.
+  • Size B is 5,000 mL because 5 × 1,000 = 5,000.
   • One liter is 1,000 mL, which is less than 1,500 mL, so
     C must be 1,500 mL and D must be the 1-L bottle.
 
@@ -360,14 +360,14 @@ Addressing     4.MD.A.2, 4.OA.A.3
 
 
 Student Response
-More than 1 L. Sample response: One liter is 1,000 mL. At the end of the game, Han drank           or 840 mL. Combined
-with the 210 mL from halftime, that is           or 1,050 mL. This is 50 mL more than 1 L.
+More than 1 L. Sample response: One liter is 1,000 mL. At the end of the game, Han drank 4 × 210 or 840 mL. Combined
+with the 210 mL from halftime, that is 840 + 210 or 1,050 mL. This is 50 mL more than 1 L.
 
 
 
 
-                                           Grade 4                                   CC BY NC 2024
-                                            Unit 5
+                                          Grade 4                                    CC BY NC 2024
+                                           Unit 5
                                                              Lesson 10
                                                                               Illustrative Mathematics®              6
 Responding to Student Thinking

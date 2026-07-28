@@ -99,9 +99,9 @@ Student Response                                                  • 30 seconds
                                                                 Activity
   • I see the colors (or symbols) repeating every four
     tiles. It repeats 6 times and there are 2 extra tiles.        • Display image.
-            is 20, and 2 more makes 22.                           • “Discuss your thinking with your partner.”
+    5 × 4 is 20, and 2 more makes 22.                             • “Discuss your thinking with your partner.”
   • I see 6 reds (*) and 6 blues (?), and 5 greens (!) and 5      • 1 minute: partner discussion
-    yellows (#).                      .
+    yellows (#). 6 + 6 + 5 + 5 = 22.
                                                                   • Record responses.
   • I see multiple sets of red, blue, green, and yellow.
     Each set always starts with red and ends with yellow.
@@ -182,7 +182,7 @@ Student Response                                                      increase b
          by 3 each time.
                                                                     ◦ “Is it possible to predict the 31st shape with the
  4. Triangle. Sample response: The 30th tile would be a               numbers that represent the position of the
-    square because              . The next tile would be a            triangles?” (Yes. The numbers would be 1, 4, 7, . .
+    square because 3 × 10 = 30. The next tile would be a              triangles?” (Yes. The numbers would be 1, 4, 7, . .
     triangle.                                                         . We could keep adding 3 or multiples of 3 to one
 
 
@@ -265,7 +265,7 @@ division to predict terms without generating the complete pattern.
            b. What is the 12th shape?
                                                                         ◦ Using the number of shapes that repeat (the size
            c. Then he draws the first 24 shapes in the                    of the repeating unit) to predict the 25th shape.
-              pattern. What would the 24th shape be?                      For example,              and 1 more shape from
+              pattern. What would the 24th shape be?                      For example, 3 × 8 = 24 and 1 more shape from
                                                                           Pattern B would be a triangle.
 Student Response                                                     • Monitor for any students who use what they’ve
                                                                        noticed about repeating patterns to predict Kiran’s
@@ -279,7 +279,7 @@ Student Response                                                     • Monitor
 2. Sample responses:                                                 • Consider asking:
      a. Pattern A repeats 6 times, Pattern B repeats 4                  ◦ “How did you use what you noticed to predict
         times, and Pattern C repeats 3 times because                      the 25th shape?”
-                   ,           , and           .                     • “Some of you answered the questions about Kiran’s
+        6 × 2 = 12, 4 × 3 = 12, and 3 × 4 = 12.                      • “Some of you answered the questions about Kiran’s
      b. When I numbered the shapes, the number on                      shape pattern without drawing it. How did you
         the squares are multiples of 2 in Pattern A,                   predict the 12th shape? The 24th shape?” (I noticed
         multiples of 3 in Pattern B, and multiples of 54 in            there are 5 shapes that repeat, so I know it will only
@@ -294,7 +294,7 @@ Student Response                                                     • Monitor
         number of shapes in the pattern is even in
         Pattern A and C, but odd in Pattern B.
 3. Sample responses:
-     a. Circle because                 . The next shape
+     a. Circle because 2 × 12 = 24. The next shape
         would be a circle.
      b. Triangle because if we add 12 more shapes, it
         will still end with square and the next shape will
@@ -307,9 +307,9 @@ Student Response                                                     • Monitor
                                                                   Lesson 2
                                                                                   Illustrative Mathematics®               5
       c. Circle because there’s not a whole number that
-         makes                   true, but          .
+         makes 4 × ___ = 25 true, but 4 × 6 = 24.
          That means the next shape would be a circle.
- 4.   a. 2 times because              .
+ 4.   a. 2 times because 5 × 2 = 10.
       b. Circle because the pattern would finish 2 times,
          and then would use the next two shapes.
       c. I know the 25th shape would be square because
@@ -334,7 +334,7 @@ shape.
 “Here is a pattern we looked at in the previous activity and the list of numbers that show where each shape would be.
 How would you find the 50th shape in the pattern, without drawing all 50 shapes?” (I know it can’t be a circle because 50
 is even and all the numbers for circles are odd. I also know it can’t be a square because I know 50 is not a multiple of 4.
-So, it has to be a triangle. My reasoning that it’s a triangle: There are 4 shapes and           . To get to 50, the pattern
+So, it has to be a triangle. My reasoning that it’s a triangle: There are 4 shapes and 4 × 10 = 40. To get to 50, the pattern
 would repeat 2 more times, and I would need 2 more shapes: circle, triangle.)
 
 

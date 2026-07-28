@@ -226,8 +226,17 @@ def text_baselines(content: bytes) -> list[float]:
 # prompt that does not carry it.
 SNAP = 5.5
 
+# ``pdftotext -layout`` treats the exact coordinate of an existing row as a
+# row boundary in a few guide layouts.  An overlay placed there can make an
+# extra output row even though it is intended for that row.  These small
+# downward offsets are tried only after the ordinary placement refuses a guide,
+# and the ordinary line-preservation check still decides whether either one is
+# usable.  They are not a tolerance expansion: an offset that moves a line is
+# still refused.
+ROW_NUDGES = (0.75, 1.50)
 
-def snap(run, baselines: list[float]) -> float:
+
+def snap(run, baselines: list[float], row_nudge: float = 0.0) -> float:
     """The baseline of the text row this expression reads on.
 
     A run whose glyphs include one sitting on a text baseline reads on that row,
@@ -241,9 +250,9 @@ def snap(run, baselines: list[float]) -> float:
     for candidate in {round(glyph.y, 2) for glyph in run}:
         nearest = min(baselines, key=lambda base: abs(base - candidate))
         if abs(nearest - candidate) <= 1.0:
-            return nearest
+            return nearest - row_nudge
     nearest = min(baselines, key=lambda base: abs(base - highest))
-    return nearest if abs(nearest - highest) <= SNAP else highest
+    return nearest - row_nudge if abs(nearest - highest) <= SNAP else highest
 
 
 def clip_runs(glyphs: list[Glyph]) -> list[list[Glyph]]:
@@ -423,7 +432,7 @@ def _escape(text: str) -> bytes:
             .replace(b"\\", b"\\\\").replace(b"(", b"\\(").replace(b")", b"\\)"))
 
 
-def extract_with_math(source: Path) -> tuple[str, int]:
+def extract_with_math(source: Path, row_nudge: float = 0.0) -> tuple[str, int]:
     """``pdftotext -layout`` over a copy of the guide carrying its expressions
     as invisible text. The copy is temporary; the source directory is read-only.
     """
@@ -461,7 +470,7 @@ def extract_with_math(source: Path) -> tuple[str, int]:
             size = min((x1 - x0) / span, 9.0)
             operations.append(
                 b"/HZM %.2f Tf 1 0 0 1 %.3f %.3f Tm (%s) Tj"
-                % (size, x0, snap(run, baselines), _escape(text))
+                % (size, x0, snap(run, baselines, row_nudge), _escape(text))
             )
             recovered += 1
         if len(operations) == 1:
@@ -558,9 +567,27 @@ def run_one(job: tuple[str, str, str]) -> dict:
                 return {"lesson": code, "status": "source_absent"}
             fresh, recovered = extract_with_math(Path(pdf))
             status, changed, detail = compare(match.group(2), fresh)
+            # The ordinary coordinate remains the default.  Only a refusal is
+            # retried at the two measured row-boundary offsets, and an offset
+            # is accepted only when it preserves every existing physical line.
+            nudge = 0.0
+            if status in ("line_count_changed", "line_lost_characters"):
+                for candidate in ROW_NUDGES:
+                    nudged, nudged_recovered = extract_with_math(
+                        Path(pdf), row_nudge=candidate
+                    )
+                    nudged_status, nudged_changed, nudged_detail = compare(
+                        match.group(2), nudged
+                    )
+                    if nudged_status in ("recovered", "unchanged"):
+                        fresh, recovered = nudged, nudged_recovered
+                        status, changed, detail, nudge = (
+                            nudged_status, nudged_changed, nudged_detail, candidate
+                        )
+                        break
             return {"lesson": code, "path": markdown, "status": status,
                     "runs_recovered": recovered, "lines_changed": len(changed),
-                    "detail": detail,
+                    "detail": detail, "row_nudge": nudge,
                     "body": fresh if status == "recovered" else None}
         except Exception as failure:  # noqa: BLE001
             if attempt == 3:
@@ -577,6 +604,10 @@ def main() -> int:
     parser.add_argument("--check", action="store_true",
                         help="report what would change and write nothing")
     parser.add_argument("--only", help="a single lesson code, for example IM-G1-U7-L6")
+    parser.add_argument("--band", choices=sorted(BANDS),
+                        help="read one published grade band")
+    parser.add_argument("--unit", type=int,
+                        help="read one unit (optionally within --band)")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--report", type=Path,
                         help="write a per-lesson JSON receipt of this pass")
@@ -588,14 +619,25 @@ def main() -> int:
         return 0
 
     jobs = lesson_jobs(arguments.sources)
+    if arguments.band:
+        prefix = f"IM-G{GRADE_TOKEN[arguments.band]}-"
+        jobs = [job for job in jobs if job[0].startswith(prefix)]
+    if arguments.unit is not None:
+        marker = f"-U{arguments.unit}-"
+        jobs = [job for job in jobs if marker in job[0]]
     if arguments.only:
         jobs = [job for job in jobs if job[0] == arguments.only]
         if not jobs:
             print(f"no guide for {arguments.only}", file=sys.stderr)
             return 1
 
-    with ProcessPoolExecutor(arguments.workers) as pool:
-        results = list(pool.map(run_one, jobs, chunksize=4))
+    if arguments.workers == 1:
+        # A serial mode also makes the read-only check usable in constrained
+        # environments that prohibit the semaphores ProcessPoolExecutor uses.
+        results = [run_one(job) for job in jobs]
+    else:
+        with ProcessPoolExecutor(arguments.workers) as pool:
+            results = list(pool.map(run_one, jobs, chunksize=4))
 
     counts = Counter(result["status"] for result in results)
     written = 0

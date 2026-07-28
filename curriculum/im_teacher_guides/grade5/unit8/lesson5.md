@@ -82,7 +82,7 @@ thinking behind it (MP3).
 
 
      Student Task Statement                                   Launch
-                                                                • Groups of 2
+      9,953 ÷ 37                                                • Groups of 2
 
       Record an estimate that is:                               • Display the expression.
                                                                 • “What is an estimate that’s too high? Too low? About
@@ -101,10 +101,10 @@ Sample responses:
   • Too high: 300–400
                                                               Activity Synthesis
                                                                 • “How do you know 100 is too low?” (Because
-                                                                                  and that’s much less than 9,953.)
-                                                                • “How can you use the value of the product
-                                                                  to estimate the value of           ?” (I know that
-                                                                  9,953 is more than           but less than
+                                                                  100 × 37 = 3,700 and that’s much less than 9,953.)
+                                                                • “How can you use the value of the product 100 × 37
+                                                                  to estimate the value of 9,953 ÷ 37?” (I know that
+                                                                  9,953 is more than 2 × 3,700 but less than 3 × 3,700
                                                                   so the quotient is more than 200 but less than 300.)
 
 
@@ -168,10 +168,10 @@ Student Response                                                    solutions in
 
 
 
- 2. No. Sample response:                      , so the
+ 2. No. Sample response: 1,300 ÷ 13 = 100, so the
     quotient must be greater than 100.
  3. Sample response: She found the products of 13
-    correctly, like           .
+    correctly, like 50 × 13 = 650.
 
 
 

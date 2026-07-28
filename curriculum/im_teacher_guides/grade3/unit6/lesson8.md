@@ -84,17 +84,17 @@ structure (MP7).
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display the first expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 30 ÷ 3                                                  • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 60 ÷ 3
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 63 ÷ 3
+        • 54 ÷ 3
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
                                                                   • Keep expressions and work displayed.
-  • 10: I counted by 10. I knew that         is 30.
+  • 10: I counted by 10. I knew that 3 × 10 is 30.
                                                                   • Repeat with each expression.
   • 20: I knew that 10 groups of 3 makes 30, so I would
     need 10 more groups of 3 to make 60. That
@@ -103,9 +103,9 @@ Student Response                                                  • Record ans
                                                                   • “How did you use division facts that you already
     of 3 would make 63, so it would be 21 groups.
                                                                     know to find some of the other quotients?” (I knew
-  • 18: I knew that 20 groups of 3 is 60. So, 19 groups of          that       is double the answer of          . Once I
-    3 would be 57 and 18 groups of 3 would be 54.                   knew        , I was able to find        by adding
-                                                                    another group of 3 and           by taking away groups
+  • 18: I knew that 20 groups of 3 is 60. So, 19 groups of          that 60 ÷ 3 is double the answer of 30 ÷ 3. Once I
+    3 would be 57 and 18 groups of 3 would be 54.                   knew 60 ÷ 3, I was able to find 63 ÷ 3 by adding
+                                                                    another group of 3 and 54 ÷ 3 by taking away groups
                                                                     of 3.)
 
 
@@ -300,7 +300,7 @@ What do you notice? What do you wonder?                   • Groups of 2
                                                           • “If the level of the liquid was between two numbers,
                                                             how did you figure out what the marks represented?”
                                                             (I thought about what was between the numbers. I
-                                                            knew that 7 was between 6 and 8, but      is between
+                                                            knew that 7 was between 6 and 8, but 31/2 is between
                                                             3 and 4. For the last one, I saw that the numbers
       2. Shade the images of the empty containers to
                                                             went up by 5, so I thought each mark would be
@@ -311,7 +311,7 @@ What do you notice? What do you wonder?                   • Groups of 2
 
 
 
-          R: 7 liters             S:    liters
+          R: 7 liters             S: 21/2 liters
 
 
 
@@ -336,25 +336,25 @@ Student Response
 
 
 
-                                         Grade 3                              CC BY NC 2024
-                                          Unit 6
+                                          Grade 3                             CC BY NC 2024
+                                           Unit 6
                                                        Lesson 8
                                                                        Illustrative Mathematics®                6
      C. 2 liters
      D. 7 liters
 
-     E.      liters (or equivalent)
+     E.   31/2 liters (or equivalent)
 
      F. 10 liters
      G. 18 liters
 
-     H.      liters (or equivalent)
+     H.   1 3/4   liters (or equivalent)
 
  2. Students shade each container up to the specified
     mark.
 If you have time: G and T have the most liquids: 18 liters
 and 23 liters. Combining them would give 41 liters,
-because               .
+because 18 + 23 = 41.
 
 
 Advancing Student Thinking
@@ -388,7 +388,7 @@ Cool-down                                                                       
 Measure in Liters
 
      Standards
-Addressing      3.MD.A.2, 3.NF.A
+Addressing           3.MD.A.2, 3.NF.A
 
 
 
@@ -397,50 +397,50 @@ Addressing      3.MD.A.2, 3.NF.A
                                               Unit 6
                                                              Lesson 8
                                                                               Illustrative Mathematics®             7
-      Student Task Statement
-      What is the volume of the liquid shown in each image?
+       Student Task Statement
+       What is the volume of the liquid shown in each image?
 
-                 1                                                          2
-
-
+                      1                                                      2
 
 
-                          ____________________                                       ____________________
+
+
+                               ____________________                                   ____________________
 
 
 Student Response
  1. 3 liters
- 2.      liters (or equivalent)
+ 2.   1 1/2   liters (or equivalent)
 
 
 
 Responding to Student Thinking
-Students say the volume is 2 liters or 4 liters in the first    Next Day Supports
-container and 1 liter or 2 liters in the second container.      Before the Warm-up, invite students to work in small
-                                                                groups to discuss a correct response to this Cool-down.
+Students say the volume is 2 liters or 4 liters in the first     Next Day Supports
+container and 1 liter or 2 liters in the second container.       Before the Warm-up, invite students to work in small
+                                                                 groups to discuss a correct response to this Cool-down.
 
 
-      Section B Summary
-      We learned how to measure and estimate weight in grams and kilograms.
+       Section B Summary
+       We learned how to measure and estimate weight in grams and kilograms.
 
-           This paper clip weighs about 1 gram.                   This basket of apples weighs about 1 kilogram.
-
-
-
-
-      We also learned how to measure and estimate the volume of liquids and
-      the volume of containers in liters.
-
-      The volume of liquid in this container is 5 liters.
-
-      The volume of the container is about 10 liters.
+                This paper clip weighs about 1 gram.               This basket of apples weighs about 1 kilogram.
 
 
 
 
-                                                 Grade 3                               CC BY NC 2024
-                                                  Unit 6
-                                                               Lesson 8
-                                                                                Illustrative Mathematics®            8
+       We also learned how to measure and estimate the volume of liquids and
+       the volume of containers in liters.
+
+       The volume of liquid in this container is 5 liters.
+
+       The volume of the container is about 10 liters.
+
+
+
+
+                                                      Grade 3                           CC BY NC 2024
+                                                       Unit 6
+                                                                Lesson 8
+                                                                                 Illustrative Mathematics®            8
 ```
 

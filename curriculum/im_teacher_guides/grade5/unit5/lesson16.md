@@ -88,12 +88,12 @@ and subtract decimals.
      Student Task Statement                                   Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 2.57- 2.55                                            • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 2.57- 2.49
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 2.57- 0.99
+        • 2.57- 0.59
                                                               Activity
 
 Student Response                                                • Record answers and strategy.
@@ -106,7 +106,7 @@ Student Response                                                • Record answe
   • 1.58: I added 0.01 to get 1 and then 1.57 more to get
                                                                 • “What strategy did you use to find the value of
     2.57.
-                                                                              ?” (I subtracted 1.57 to get 1 and then one
+                                                                  2.57- 0.99 ?” (I subtracted 1.57 to get 1 and then one
   • 1.98: I added 4 tenths to the previous answer. I              more hundredth to get 0.99. I added 0.01 to 0.99 to
     added 2 and then took away 2 hundredths.                      get 1 and then added 1.57 more to get 2.57.)
 
@@ -142,11 +142,11 @@ technique. Some of the differences are designed to bring out other techniques su
      Find the value of each expression. Explain or show          • Groups of 2
      your reasoning.
 
-      1.                                                      Activity
-      2.                                                         • 5 minutes: independent work time
-      3.                                                         • 2 minutes: partner discussion
+      1. 7.35 - 2.6                                           Activity
+      2. 100.8 - 6.03                                            • 5 minutes: independent work time
+      3. 26.5 - 13.62                                            • 2 minutes: partner discussion
 
-      4.                                                         • Monitor for students who:
+      4. 465 - 463.14                                            • Monitor for students who:
                                                                     ◦ Use the standard algorithm correctly for each
                                                                       calculation.
 Student Response
@@ -156,12 +156,12 @@ Student Response
 
                                                               Activity Synthesis
  2. 94.77. Sample responses:
-                                                                 • Display expression:
+                                                                 • Display expression: 100.8 - 6.03
 
-     ◦                ,                                          • “How did you find the value of the difference?” (I
-                                                                   used the standard algorithm. I first took the 6 from
+     ◦ 100- 6 = 94 ,                                             • “How did you find the value of the difference?” (I
+       0.80- 0.03 = 0.77                                           used the standard algorithm. I first took the 6 from
                                                                    100 and then the 0.03 from 0.8.)
-                                                                 • Display expression:
+                                                                 • Display expression: 465 - 463.14
  3. 12.88. Sample response:
                                                                  • “How did you find the value of this difference?” (I
                                                                    used the standard algorithm. I added on to 463.14
@@ -206,29 +206,29 @@ behind it (MP3).
       Find the value of each expression. Explain or show          • Groups of 2
       your reasoning.
 
-       1.                                                       Activity Synthesis
-       2.                                                         • Invite students to share how they found the value of
-       3.                                                           the expression             .
+       1. 36.51 - 4.3                                           Activity Synthesis
+       2. 100 + 31.05                                             • Invite students to share how they found the value of
+       3. 100- 31.05                                                the expression 36.51 - 4.3 .
                                                                   • “Why is subtracting by place value a good strategy for
-       4.
+       4. 266.43 + 75.9
                                                                     this expression?” (I can take 4 from 6 and 3 tenths
                                                                     from 5 tenths. That gives me 32.21.)
 Student Response                                                  • “Does the standard algorithm also work?” (Yes, you
                                                                     subtract ones from ones and tenths from tenths.)
  1. 32.21. Sample responses:
-                                                                  • Display image of calculation of           with the
+                                                                  • Display image of calculation of 36.51 - 4.3 with the
      a. I subtracted by place, taking 4 from 6 and then 3
                                                                     standard algorithm from a student solution.
         tenths from 5 tenths.
                                                                   • Invite students to share how they found the value of
      b.
-                                                                    the expression             .
+                                                                    the expression 100- 31.05 .
                                                                   • “Did anyone use the standard algorithm?” (I tried but
                                                                     there was a lot of borrowing so I decided to use a
  2. 131.05. Sample response: I added by place which
                                                                     different strategy.)
     meant adding a hundred to 31.05.
-                                                                  • Display image of calculation of            with the
+                                                                  • Display image of calculation of 100- 31.05 with the
  3. 68.95. Sample responses:
                                                                     standard algorithm from a student solution.
      a. I added on to 31.05 to get 100. First, I added 0.95
@@ -238,7 +238,7 @@ Student Response                                                  • “Does th
         So, that gives me 32. Then I added 8 more to get
                                                                     other methods more efficient.”
         40 and 60 more to get 100. Altogether, that's
-                       or 68.95.
+        0.95 + 8 + 60 or 68.95.
      b.
 
 
@@ -273,19 +273,19 @@ attention to place value as several of the differences have one decimal with onl
      Student Task Statement                                    Launch
       Find the value of each expression.                          • Groups of 2
 
-       1.
+       1. 43.14- 18.6
 
-       2.
+       2. 73.3 - 52.99
                                                                Activity
 
-       3.                                                         • 10 minutes: independent work time
+       3. 128.44- 62.57                                           • 10 minutes: independent work time
                                                                   • 5 minutes: partner discussion
-       4.
+       4. 261.25 - 260.7
 
 
                                                                Activity Synthesis
 Student Response
-                                                                  • Display expression
+                                                                  • Display expression 43.14- 18.6
  1. 24.54. Sample response:
                                                                   • “What estimate would you make for the value of this
                                                                     expression?” (about 20, about 25)
@@ -299,7 +299,7 @@ Student Response
                                                                   • “Did your solution make sense, based on your
                                                                     estimate?” (Yes, it is between 24 and 25.)
 
- 4. 0.55. Sample response: I took away 260 and that left          • Display expression:
+ 4. 0.55. Sample response: I took away 260 and that left          • Display expression: 261.25 - 260.7
     1.25. Then I took away 7 tenths which left 5 tenths           • Invite students to share their strategies and
     and 5 hundredths.                                               solutions.
                                                                   • “Can you find this difference mentally? How?” (Yes, I
@@ -319,7 +319,7 @@ Student Response
 Lesson Synthesis
 “We found sums and differences of decimals using many techniques.”
 
-Display              .
+Display 36.51 - 4.3 .
 
 “What are some different methods that you can use to find this difference?” (I can subtract 4 ones from 6 ones and 4
 tenths from 5 tenths. I can add on to 4.3. First, I added 32, then 2 tenths, and then 1 hundredth. I can use the algorithm.)
@@ -340,15 +340,15 @@ Cool-down                                                                       
 
 Add and Subtract Decimals
 
-     Standards
-Addressing        5.NBT.B.7
+      Standards
+Addressing      5.NBT.B.7
 
 
-     Student Task Statement
+      Student Task Statement
        1. Find the value of each expression. Explain or show your reasoning.
 
-             a.
-             b.
+             a. 75.2- 4.37
+             b. 236.87 + 5.15
 
 
 Student Response
@@ -357,7 +357,7 @@ Student Response
 
 
 
- 2. 242.02. Sample response:                          ,
+ 2. 242.02. Sample response: 236.87 + 0.13 = 237, 237 + 5.02 = 242.02
 
 
 
@@ -367,16 +367,16 @@ Student Response
                                                             Lesson 16
                                                                                 Illustrative Mathematics®               6
 Responding to Student Thinking
-Students find a value other than 70.83 and 242.02 for the       Next Day Supports
-expressions.                                                    Create a poster with a diagram that represents the Cool-
-                                                                down from this lesson.
+Students find a value other than 70.83 and 242.02 for the      Next Day Supports
+expressions.                                                   Create a poster with a diagram that represents the Cool-
+                                                               down from this lesson.
 
 
      Section B Summary
       We learned that we can use the same strategies and algorithms for adding and subtracting whole numbers to add
       and subtract decimals.
 
-      We learned that it is helpful to estimate a sum before calculating it. For example, this sum will be close to
+      We learned that it is helpful to estimate a sum before calculating it. For example, this sum will be close to 620 + 70
       or 690.
 
 
@@ -387,14 +387,14 @@ expressions.                                                    Create a poster 
 
 
 
-      We estimated that the value of the difference will be about            or 550.
+      We estimated that the value of the difference will be about 620- 70 or 550.
 
 
 
 
-                                           Grade 5                                     CC BY NC 2024
+                                           Grade 5                                    CC BY NC 2024
                                             Unit 5
                                                             Lesson 16
-                                                                                Illustrative Mathematics®             7
+                                                                               Illustrative Mathematics®               7
 ```
 

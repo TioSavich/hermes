@@ -41,7 +41,7 @@ in which each unit is visible. These diagrams are precursors for more abstract t
 lessons.
 
 Students also make connections between the multiplicative comparison language and multiplication equations. For
-example, they interpret “15 is 3 times as many as 5” as        or           .
+example, they interpret “15 is 3 times as many as 5” as 15 = 3 × 5 or 15 = 5 × 3.
 
 In this unit, the convention of representing the multiplier as the first factor in equations is used. Students may write the
 factors in any order. In later lessons, students write division equations to represent multiplicative comparisons, using
@@ -115,7 +115,7 @@ Sample responses:
       ◦ I see 6, like in the second image, 2 times.            • “How does this show that the second rectangle has 2
                                                                  times as many as the first rectangle?”
                                                                • “How could we write an equation that shows this
-                                                                 comparison?” (          or          or          )
+                                                                 comparison?” (6 = 2 × 3 or 2 × 3 = 6 or 3 × 2 = 6)
 
 
 
@@ -124,15 +124,15 @@ Sample responses:
                                               Unit 5
                                                            Lesson 2
                                                                              Illustrative Mathematics®                 2
-Activity 1                                                                                                20 min
+Activity 1                                                                                                 20 min
 
 Represent “Times as Many”
 
-      Standards                                                   Instructional Routines
+      Standards                                                    Instructional Routines
 Addressing     4.OA.A.1, 4.OA.A.2                              • MLR7 Compare and Connect
 
 
-The purpose of this activity is for students to analyze and describe how images and diagrams can show “ times as
+The purpose of this activity is for students to analyze and describe how images and diagrams can show “n times as
 many.” Students generate ideas for how to use a multiplication equation to represent the comparison.
 
 Students begin by interpreting an image in which the multiplier (3) and the numbers are given. They explain how some
@@ -148,7 +148,7 @@ Materials to Gather
   • Connecting cubes: Activity 1
 
 
-      Student Task Statement                                Launch
+      Student Task Statement                                 Launch
                                                                • Groups of 2
                                                                • Give students access to connecting cubes.
                                                                • Display the image of Mai's cubes and Kiran's cubes.
@@ -164,12 +164,12 @@ Materials to Gather
 
 
 Student Response
-                                                            Activity
+                                                             Activity
  1.
-                                                            MLR7 Compare and Connect
-                                                             • “Create a display that shows your thinking about the
-                                                               cubes in each problem and include details to help
-                                                               others understand your thinking.”
+                                                             MLR7 Compare and Connect
+                                                              • “Create a display that shows your thinking about the
+                                                                cubes in each problem and include details to help
+                                                                others understand your thinking.”
  2.
                                                                • 6–8 minutes: independent or group work
                                                                • 3 minutes: Gallery Walk
@@ -178,10 +178,10 @@ Student Response
 
 
 
-                                          Grade 4                                  CC BY NC 2024
-                                           Unit 5
-                                                          Lesson 2
-                                                                            Illustrative Mathematics®              3
+                                           Grade 4                                 CC BY NC 2024
+                                            Unit 5
+                                                           Lesson 2
+                                                                            Illustrative Mathematics®               3
                                                                  • 30 seconds quiet think time
                                                                  • 1 minute: partner discussion
                                                                  • Monitor for students who create diagrams that are
@@ -220,7 +220,7 @@ Addressing     4.OA.A.1, 4.OA.A.2
 
 
 The purpose of this activity is for students to deepen their understanding of how diagrams and multiplication equations
-can represent “ times as many.” Students explain how the diagrams and equations represent the situation. In order to
+can represent “n times as many.” Students explain how the diagrams and equations represent the situation. In order to
 match situations, diagrams, and equations, students reason abstractly and quantitatively (MP2).
 
 
@@ -261,12 +261,12 @@ equation that represent the same situation.                  situation. Explain 
                              D
   C                                                        • If students finish early, give them blank index cards.
                                   Priya had 5 cubes.         Ask them to make several sets of matching
-                                 Noah had 3 times as         representations, shuffle the cards, and trade them
+          2 × 3 = 6              Noah had 3 times as         representations, shuffle the cards, and trade them
                                         many.                with another group that is also creating their own
                                                              representations.
   E                          F
 
-                                                         Activity Synthesis
+          3 × 5 = 15                 4 × 4 = 16          Activity Synthesis
                                                            • Select students to share their matches.
   G                          H
                                                            • Record students’ explanations to show how they
@@ -275,7 +275,7 @@ equation that represent the same situation.                  situation. Explain 
                              J                               annotate).
   I
                                    Mai has 4 cubes.
-                                 Diego has 4 times as
+          3 × 3 = 9              Diego has 4 times as
                                         many.
 
 
@@ -326,7 +326,7 @@ they also represent multiplicative comparison.”
 
 Display a student's representation of Kiran's cubes and Jada's cubes from the first activity.
 
-“Explain how you see               in this diagram.” (There are 4 groups of 2 cubes each or Jada has 4 times as many as
+“Explain how you see 4 × 2 = 8 in this diagram.” (There are 4 groups of 2 cubes each or Jada has 4 times as many as
 Kiran does.)
 
 “In this case, the value of the product is 8. How is one of the factors being compared to 8 in this diagram?”
@@ -348,10 +348,10 @@ Suggested Centers
 
 
 
-                                              Grade 4                                  CC BY NC 2024
-                                               Unit 5
-                                                               Lesson 2
-                                                                                Illustrative Mathematics®                 6
+                                             Grade 4                                   CC BY NC 2024
+                                              Unit 5
+                                                              Lesson 2
+                                                                                Illustrative Mathematics®             6
 Cool-down                                                                                                  5 min
 
 Comparing Cubes
@@ -366,38 +366,38 @@ Addressing     4.OA.A.1
 
 
 
-          Tyler has 4 more cubes than Elena.
+          Tyler has 4 more cubes than Elena.                                           6 × 4 = 24
 
-          Elena has 5 times as many cubes as Tyler.
+          Elena has 5 times as many cubes as Tyler.                                    2 × 10 = 20
 
-          Tyler has 5 times as many cubes as Elena.
+          Tyler has 5 times as many cubes as Elena.                                    4 × 4 = 16
 
-          Tyler has 4 times as many cubes as Elena.
+          Tyler has 4 times as many cubes as Elena.                                    5 × 4 = 20
 
        2. Explain your choices.
 
 
 Student Response
- 1. Tyler has 5 times as many cubes as Elena.
+ 1. Tyler has 5 times as many cubes as Elena. 5 × 4 = 20
  2. Sample responses:
      ◦ We can see Elena has 4 and Tyler has 20. The diagram shows that Tyler has 5 groups of 4 cubes, so he has 5
        times as many as Elena, who has 4 cubes.
-     ◦ The equation               shows that the number of cubes that Tyler has, 20, is 5 times 4, the number of cubes
+     ◦ The equation 5 × 4 = 20 shows that the number of cubes that Tyler has, 20, is 5 times 4, the number of cubes
        that Elena has.
 
 
 Responding to Student Thinking
-Students select the statement that Elena has more cubes      Next Day Supports
-or an equation that shows a relationship other than     .    Launch the Warm-up or Activity 1 by highlighting how
-                                                             diagrams show “times as many” and how equations
-                                                             represent this comparison.
+Students select the statement that Elena has more cubes       Next Day Supports
+or an equation that shows a relationship other than 5 × 4.    Launch the Warm-up or Activity 1 by highlighting how
+                                                              diagrams show “times as many” and how equations
+                                                              represent this comparison.
 
 
 
 
                                            Grade 4                                 CC BY NC 2024
                                             Unit 5
-                                                            Lesson 2
-                                                                            Illustrative Mathematics®               7
+                                                             Lesson 2
+                                                                            Illustrative Mathematics®                7
 ```
 

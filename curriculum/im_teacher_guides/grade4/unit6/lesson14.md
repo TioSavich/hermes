@@ -114,7 +114,7 @@ of multiples of 10 to divide beyond 100.
                                                                 • “How did you make your estimate? How did you
                                                                   know it’s reasonable?” (I know that the area is about
 Student Response                                                  2,300 and one of the side lengths is 40. I know that
-                                                                                   and                   , so the
+                                                                  40 × 60 = 2,400 and 40 × 50 = 2,000, so the
   • Too low: 40–50 meters                                         estimate is between 50 and 60, but closer to 60.)
 
 
@@ -181,30 +181,30 @@ Student Response                                                   • Select st
                                              Unit 6
                                                              Lesson 14
                                                                                  Illustrative Mathematics®                 3
-      ◦ If the length is 20 tiles, the mural would need                • Highlight strategies that use multiples of 10 and 7 to
-        140 tiles, leaving 49 tiles. Seven times 7 is 49, so             find the side length of the rectangle by dividing or
-        the length must be             or 27 tiles.                      multiplying in parts. If no students use an area
-                                                                         diagram in their reasoning, display an example for all
-                                                                         to see (as shown in Student Responses).
-                                                                       • Invite students to write the equations they wrote. If
-                                                                         no division equations are included, display division
-                                                                         equations and ask students if they could be used to
-      ◦                                                                  answer the question. (For instance,                and
-          I know that        is 70. I marked off two                                , so              .)
+      ◦ If the length is 20 tiles, the mural would need            • Highlight strategies that use multiples of 10 and 7 to
+        140 tiles, leaving 49 tiles. Seven times 7 is 49, so         find the side length of the rectangle by dividing or
+        the length must be 20 + 7 or 27 tiles.                       multiplying in parts. If no students use an area
+                                                                     diagram in their reasoning, display an example for all
+                                                                     to see (as shown in Student Responses).
+                                                                   • Invite students to write the equations they wrote. If
+                                                                     no division equations are included, display division
+                                                                     equations and ask students if they could be used to
+      ◦                                                              answer the question. (For instance, 140 ÷ 7 = 20 and
+          I know that 10 × 7 is 70. I marked off two 10 × 7          49 ÷ 7 = 7, so 189 ÷ 7 = 27.)
           rectangles, which are equal to 140 tiles.
-          is 49 and            , so I marked off a
-          rectangle. The length of the mural is                ,
+          is 49 and 7 × 7 = 49, so I marked off a 7 × 7
+          rectangle. The length of the mural is 10 + 10 + 7,
           which is 27.
 
  2. Sample responses:
-      ◦
-      ◦                ,           , and
+      ◦ (7 × 10) + (7 × 10) + (7 × 7) = 189
+      ◦ 140 ÷ 7 = 20, 49 ÷ 7 = 7, and 20 + 7 = 27
       ◦               , or
 
 
 
 
-Activity 2                                                                                                         20 min
+Activity 2                                                                                                      20 min
 
 Tyler’s Mural
 
@@ -233,10 +233,10 @@ This activity uses MLR7 Compare and Connect. Advances: representing, conversing
 
 
 
-                                            Grade 4                                        CC BY NC 2024
+                                            Grade 4                                    CC BY NC 2024
                                              Unit 6
-                                                                   Lesson 14
-                                                                                    Illustrative Mathematics®               4
+                                                               Lesson 14
+                                                                                Illustrative Mathematics®                4
 Required Materials
 Materials to Gather
  • Grid paper: Activity 2
@@ -248,56 +248,56 @@ Required Preparation
    students are likely to use to solve the problem.
 
 
-     Student Task Statement                                          Launch
-     Tyler is also creating a rectangular mural for the art            • Groups of 2
-     club. He has 197 tiles for his mural. He wants the                • Give access to grid paper, in case students wish to
-     mural to be 6 tiles wide with no gaps or overlaps                   use it to create an area diagram.
+     Student Task Statement                                     Launch
+     Tyler is also creating a rectangular mural for the art       • Groups of 2
+     club. He has 197 tiles for his mural. He wants the           • Give access to grid paper, in case students wish to
+     mural to be 6 tiles wide with no gaps or overlaps              use it to create an area diagram.
      between the tiles.
 
       1. Will Tyler use all of his tiles in the mural?
-                                                                     Activity
+                                                                Activity
          Explain your reasoning.
-      2. How many tiles long will Tyler’s mural be? Show             MLR7 Compare and Connect
-         your thinking using diagrams, symbols, or                     • 2–5 minutes: independent or group work
+      2. How many tiles long will Tyler’s mural be? Show        MLR7 Compare and Connect
+         your thinking using diagrams, symbols, or                • 2–5 minutes: independent or group work
          other other representations.
-                                                                       • Give each student a sticky note.
-                                                                       • “Make one round to visit each poster. Place your
-Student Response                                                         sticky note on the poster with a strategy that
- 1. No. Sample response:                                                 matches your strategy or that makes the most sense
-                                                                         to you.”
+                                                                  • Give each student a sticky note.
+                                                                  • “Make one round to visit each poster. Place your
+Student Response                                                    sticky note on the poster with a strategy that
+ 1. No. Sample response:                                            matches your strategy or that makes the most sense
+                                                                    to you.”
      ◦ 30 times 6 is 180, and 3 times 6 is 18. Adding the
-       two gives 198, not 197.                                         • “After your first round, make another round to visit
-                                                                         1–2 other posters that you didn’t select. Make sense
- 2. 32 tiles long. Sample responses:                                     of the strategy of the poster and be prepared to
-     ◦                ,              ,                  ,                explain how it is different from yours.”
-                            . Tyler will not use 5 of his tiles.       • 5–7 minutes: Gallery Walk
-     ◦                 and              , so                 .
-         There will be 5 extra tiles remaining.
-                                                                     Activity Synthesis
-     ◦
-                                                                       • Discuss the results of the Gallery Walk: “Which
-                                                                         strategy seems to be most common? The least
-                                                                         common? Why might the strategy be the most or
-                                                                         least common?”
-                                                                       • “How many tiles did Tyler use for his mural? How do
-                                                                         you know?” (Tyler uses 192 tiles because the mural is
-                                                                         rectangular and there are 6 rows of tiles. 192 is the
-                                                                         greatest multiple of 6 within 197.)
-                                                                       • “How many tiles were not used?”                     .
-                                                                         Five tiles were not used.)
-                                                                       • Consider asking: “How was dividing (or multiplying) in
-                                                                         parts a helpful strategy for finding the side length?” (I
+       two gives 198, not 197.                                    • “After your first round, make another round to visit
+                                                                    1–2 other posters that you didn’t select. Make sense
+ 2. 32 tiles long. Sample responses:                                of the strategy of the poster and be prepared to
+     ◦ 180 ÷ 6 = 30, 12 ÷ 6 = 2, 180 + 12 = 192,                    explain how it is different from yours.”
+       197 = 6 × 32 + 5. Tyler will not use 5 of his tiles.       • 5–7 minutes: Gallery Walk
+     ◦ 30 × 6 = 180 and 2 × 6 = 12, so 32 × 6 = 192.
+       There will be 5 extra tiles remaining.
+                                                                Activity Synthesis
+     ◦ 197 = 60 + 60 + 60 + 12 + 5
+                                                                  • Discuss the results of the Gallery Walk: “Which
+                                                                    strategy seems to be most common? The least
+                                                                    common? Why might the strategy be the most or
+                                                                    least common?”
+                                                                  • “How many tiles did Tyler use for his mural? How do
+                                                                    you know?” (Tyler uses 192 tiles because the mural is
+                                                                    rectangular and there are 6 rows of tiles. 192 is the
+                                                                    greatest multiple of 6 within 197.)
+                                                                  • “How many tiles were not used?” (197- 192 = 5 .
+                                                                    Five tiles were not used.)
+                                                                  • Consider asking: “How was dividing (or multiplying) in
+                                                                    parts a helpful strategy for finding the side length?” (I
 
 
-                                              Grade 4                                      CC BY NC 2024
-                                               Unit 6
-                                                                   Lesson 14
-                                                                                    Illustrative Mathematics®                5
+                                            Grade 4                                   CC BY NC 2024
+                                             Unit 6
+                                                              Lesson 14
+                                                                               Illustrative Mathematics®                5
                                                                      can use multiples of 10, which are easy to divide in
                                                                      my head. For example, the greatest multiple of 10
                                                                      that is also a multiple of 6 within 197 is 180. I try to
                                                                      choose the greatest number so that I can keep track
-                                                                     of the dividend.                   . 17 is left from the
+                                                                     of the dividend. 197- 180 = 17 . 17 is left from the
                                                                      dividend to divide by 6, but 17 is not a multiple of 6,
                                                                      so I repeat the strategy. The greatest multiple of 6
                                                                      within 17 is 12, and 5 is remaining.)
@@ -353,7 +353,7 @@ Addressing     4.MD.A.3, 4.NBT.B.6, 4.OA.A.3
 
 
 Student Response
-26 square notes. Sample response: I know that                 and             .               , so it takes      or 26
+26 square notes. Sample response: I know that 9 × 20 = 180 and 9 × 6 = 54. 180 + 54 = 234, so it takes 20 + 6 or 26
 notes to cover the height of the door.
 
 
@@ -369,9 +369,9 @@ developed in a prior unit.                                     Grade 3, Unit 2, 
 
 
 
-                                          Grade 4                                        CC BY NC 2024
+                                          Grade 4                                     CC BY NC 2024
                                            Unit 6
                                                             Lesson 14
-                                                                                  Illustrative Mathematics®         7
+                                                                               Illustrative Mathematics®            7
 ```
 

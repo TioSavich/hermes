@@ -188,23 +188,23 @@ Sample responses:
                                             Unit 3
                                                            Lesson 20
                                                                               Illustrative Mathematics®               3
-                                                              Activity Synthesis
-                                                                • Invite previously selected students to share the kinds
-                                                                  of information they found in recipes.
-                                                                • If available display examples of a measuring cup, a
-                                                                  teaspoon, and a tablespoon for student reference.
-                                                                • Invite students to share mathematical questions that
-                                                                  could be asked about a recipe.
+                                                                 Activity Synthesis
+                                                                   • Invite previously selected students to share the kinds
+                                                                     of information they found in recipes.
+                                                                   • If available display examples of a measuring cup, a
+                                                                     teaspoon, and a tablespoon for student reference.
+                                                                   • Invite students to share mathematical questions that
+                                                                     could be asked about a recipe.
 
 
 
 
-Activity 2                                                                                                  20 min
+Activity 2                                                                                                     20 min
 
 Noah’s Recipe Challenge
 
      Standards
-Addressing     5.NF.B.6, 5.NF.B.7.c
+Addressing              5.NF.B.6, 5.NF.B.7.c
 
 
 The purpose of this activity is for students to use what they have learned about multiplying and dividing fractions to
@@ -214,48 +214,48 @@ the tools that are available. When students model a situation using a representa
 model with mathematics (MP4).
 
 
-     Student Task Statement                                   Launch
-      Noah wants to make banana bread using                     • Groups of 4
-      this recipe. He only has a   cup measuring cup and        • “Take a moment to read about Noah’s recipe
-        tsp. How can Noah make this recipe using these 2          challenge. Think about how you might solve the
-      measuring tools? Show your thinking using                   problem.”
-      drawings or equations.                                    • 1–2 minutes: quiet think time
-                                                                • “Work with your group to help Noah figure out how
-        • 2–3 bananas
-                                                                  he could make this recipe with just the measuring
-        •    cup butter                                           tools he has.”
-        •    teaspoon baking soda
+     Student Task Statement                                      Launch
+      Noah wants to make banana bread using                        • Groups of 4
+      this recipe. He only has a 1/4 cup measuring cup and         • “Take a moment to read about Noah’s recipe
+      1/2   tsp. How can Noah make this recipe using these 2         challenge. Think about how you might solve the
+      measuring tools? Show your thinking using                      problem.”
+      drawings or equations.                                       • 1–2 minutes: quiet think time
+                                                                   • “Work with your group to help Noah figure out how
+            • 2–3 bananas
+                                                                     he could make this recipe with just the measuring
+            •   1/2   cup butter                                     tools he has.”
+            •   1/2   teaspoon baking soda
 
-        •    teaspoon salt                                    Activity
+            •   1/4   teaspoon salt                              Activity
 
-        •    cup brown sugar                                    • 10–12 minutes: small-group work time
-                                                                • Monitor for students who:
-        • 2 eggs
-                                                                    ◦ Recognize that he won’t need the measuring
-        • 1 teaspoon vanilla
-                                                                      tools for some of the ingredients because they
-        • 2 cups flour                                                are counted.
-                                                                    ◦ Represent part of the problem with the
-Student Response                                                      multiplication of fractions.
-                                                                    ◦ Represent part of the problem with the division
-Sample response: He needs to count the bananas and                    of a unit fraction by a whole number or vice
-eggs. For the butter he could use two of the   cups                   versa.
+            •   3/4   cup brown sugar                              • 10–12 minutes: small-group work time
+                                                                   • Monitor for students who:
+            • 2 eggs
+                                                                      ◦ Recognize that he won’t need the measuring
+            • 1 teaspoon vanilla
+                                                                        tools for some of the ingredients because they
+            • 2 cups flour                                              are counted.
+                                                                      ◦ Represent part of the problem with the
+Student Response                                                        multiplication of fractions.
+                                                                      ◦ Represent part of the problem with the division
+Sample response: He needs to count the bananas and                      of a unit fraction by a whole number or vice
+eggs. For the butter he could use two of the 1/4 cups                   versa.
 
 
 
-                                          Grade 5                                   CC BY NC 2024
-                                           Unit 3
-                                                           Lesson 20
-                                                                             Illustrative Mathematics®               4
-because         is   or   . He can use the   teaspoon for          Activity Synthesis
-the baking soda. For the salt, he can fill the        teaspoon
+                                               Grade 5                                 CC BY NC 2024
+                                                Unit 3
+                                                               Lesson 20
+                                                                                Illustrative Mathematics®               4
+because 2 × 1/4 is 2/4 or 1/2. He can use the 1/2teaspoon for       Activity Synthesis
+the baking soda. For the salt, he can fill the 1/2 teaspoon
                                                                      • Invite previously selected students to share how they
-about half full because             . He needs three of the
+about half full because 1/2 ÷ 2 = 1/4. He needs three of the
                                                                        solved part of the problem.
- cups of brown sugar because            is   . For the 1
-teaspoon of vanilla he needs four of the         teaspoons,
-because              . To measure the 2 cups of flour, he
-needs eight of the     cups because               .
+1/4   cups of brown sugar because 3 × 1/4 is 3/4. For the 1
+teaspoon of vanilla he needs four of the 1/4 teaspoons,
+because 1 ÷ 1/4 = 4. To measure the 2 cups of flour, he
+needs eight of the 1/4 cups because 2 ÷ 1/4 = 8.
 
 
 
@@ -265,8 +265,8 @@ Lesson Synthesis
 problem about a recipe.”
 
 “How were some of the relationships between the measuring tools and the amounts in the recipe helpful as you solved
-the problem today?” (I knew that I could make 2 out of groups of       , which helped me think to divide 2 by   to find how
-many quarter cups he needed to measure the flour. I knew that I could multiply        by a whole number to get     which
+the problem today?” (I knew that I could make 2 out of groups of 1/4, which helped me think to divide 2 by 1/4 to find how
+many quarter cups he needed to measure the flour. I knew that I could multiply 1/4 by a whole number to get 3/4 which
 helped me figure out how Noah could measure the brown sugar.)
 
 Consider having students respond to the previous question as a journal prompt.
@@ -275,15 +275,15 @@ Consider having students respond to the previous question as a journal prompt.
 
 
 Suggested Centers
-  • How Close? (1–5), Stage 6: Multiply to 3,000 (Addressing)
-  • Rolling for Fractions (3–5), Stage 5: Divide Unit Fractions and Whole Numbers (Addressing)
+      • How Close? (1–5), Stage 6: Multiply to 3,000 (Addressing)
+      • Rolling for Fractions (3–5), Stage 5: Divide Unit Fractions and Whole Numbers (Addressing)
 
 
 
 
-                                             Grade 5                                     CC BY NC 2024
-                                              Unit 3
-                                                                 Lesson 20
-                                                                                  Illustrative Mathematics®             5
+                                                Grade 5                                  CC BY NC 2024
+                                                 Unit 3
+                                                                Lesson 20
+                                                                                  Illustrative Mathematics®            5
 ```
 

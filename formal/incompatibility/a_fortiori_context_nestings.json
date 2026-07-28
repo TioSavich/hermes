@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "purpose": "Reviewed strict subclass claims over error-rule divergence contexts. A generated closure adds a broad-context rule break to each narrower input class.",
+  "nestings": [
+    {
+      "narrow": "the_divisor_lies_between_zero_and_one",
+      "broad": "the_divisor_is_not_a_whole_number",
+      "status": "asserted",
+      "warrant": "arithmetic_interval_exclusion",
+      "basis": "For the positive-divisor inputs named by the narrow class, 0 < divisor < 1 excludes every whole number.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "the_expansion_repeats_periodically",
+      "broad": "the_expansion_does_not_terminate",
+      "status": "asserted",
+      "warrant": "decimal_expansion_definition",
+      "basis": "The narrow class is periodic infinite decimal expansions; periodicity here entails that the expansion does not terminate.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "the_expansion_repeats_nines_without_end",
+      "broad": "the_expansion_repeats_periodically",
+      "status": "asserted",
+      "warrant": "decimal_expansion_definition",
+      "basis": "The narrow class consists of infinite decimal expansions ending in repeating nines, which are periodic infinite expansions.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "the_expansion_repeats_nines_without_end",
+      "broad": "the_expansion_does_not_terminate",
+      "status": "asserted",
+      "warrant": "decimal_expansion_definition",
+      "basis": "An expansion with repeating nines without end is non-terminating; this direct row makes the transitive closure inspectable without relying on an unstated graph traversal.",
+      "automaton": "unavailable"
+    }
+  ]
+}

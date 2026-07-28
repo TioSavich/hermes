@@ -104,8 +104,8 @@ rectangular diagrams. A genuine area diagram would be difficult to read, so the 
 
                                                               Activity Synthesis
                                                                 • “How might Diagram C be helpful for calculating the
-                                                                  product        ?” (I can add those numbers to get
-                                                                  the value of         .)
+                                                                  product 42 × 33?” (I can add those numbers to get
+                                                                  the value of 42 × 33.)
 Student Response
                                                                 • Highlight that this is the type of Diagram C that will
 Sample responses:                                                 be used throughout the next several lessons. The
@@ -156,50 +156,50 @@ of the individual products gives the full product (MP7).
 
      Student Task Statement                                   Launch
        1. This diagram                                           • Groups of 2
-          represents          .                                  • Display the image from the student book.
+          represents 62 × 35.                                    • Display the image from the student book.
            Write the value of                                    • “In these problems, write each product inside the
            each product inside                                     part of the diagram that represents that product.”
            the rectangles.
                                                                  • Demonstrate by writing 1,800 inside the rectangle
-       2. Find the value of            .                           with sides labeled “30” and “60.”
+       2. Find the value of 62 × 35.                               with sides labeled “30” and “60.”
        3. This diagram
-          represents              .
+          represents 162 × 35.
                                                               Activity
            Write the value of
                                                                  • 1–2 minutes: quiet think time
            each product inside
            the rectangles.                                       • 6–8 minutes: partner work time
 
-       4. Find the value of                .                     • Monitor for students who use their work for the first
+       4. Find the value of 162 × 35.                            • Monitor for students who use their work for the first
                                                                    product to find the second product.
 
 
                                                               Activity Synthesis
                                                                  • Invite students to share their work for finding the
-                                                                   product          .
-                                                                 • Display:
+                                                                   product 62 × 35.
+                                                                 • Display: 62 × 35 = (60 + 2) × (30 + 5)
 
 
 
-                                               Grade 5                               CC BY NC 2024
-                                                Unit 4
+                                            Grade 5                                  CC BY NC 2024
+                                             Unit 4
                                                             Lesson 2
                                                                               Illustrative Mathematics®                3
 Student Response                                               • “How does the diagram represent this equation?” (It
                                                                  shows 62 broken into 60 and 2 and 35 broken into 30
                                                                  and 5.)
-                                                               • Display:
-
+                                                               • Display: (60 + 2) × (30 + 5) =
+                                                                  (60 × 30) + (2 × 30) + (60 × 5) + (2 × 5)
 
                                                                • “How do you know this equation is true?” (The
-                                                                 diagram shows         broken into those 4 partial
+                                                                 diagram shows 62 × 35 broken into those 4 partial
                                                                  products.)
 
- 1.                                                            • “How is finding the product           related to
-                                                                 finding the product         ?” (The products and
+ 1.                                                            • “How is finding the product 162 × 35 related to
+                                                                 finding the product 62 × 35?” (The products and
                                                                  partial products are the same, except that I also have
  2. 2,170
-                                                                           in          .)
+                                                                 100 × 35 in 162 × 35.)
 
 
 
@@ -212,7 +212,7 @@ of the individual products gives the full product (MP7).
 
 
 
-Activity 2                                                                                                  20 min
+Activity 2                                                                                                    20 min
 
 Calculate in Many Ways
 
@@ -234,7 +234,7 @@ the partial-products and standard algorithm methods, which students will learn i
 
       Student Task Statement                                 Launch
       Here are some different diagrams that represent          • Groups of 2
-              . For each diagram, write a multiplication       • Give students time to read the Task Statement.
+      315 × 24. For each diagram, write a multiplication       • Give students time to read the Task Statement.
       expression inside each rectangle to represent the
       products.                                                • “This time, you will write an expression in each piece
 
@@ -243,7 +243,7 @@ the partial-products and standard algorithm methods, which students will learn i
                                            Grade 5                                 CC BY NC 2024
                                             Unit 4
                                                            Lesson 2
-                                                                            Illustrative Mathematics®                4
+                                                                            Illustrative Mathematics®                  4
      1.                                                       of the diagram, rather than a number.”
 
 
@@ -258,9 +258,9 @@ the partial-products and standard algorithm methods, which students will learn i
 
 
                                                           Activity Synthesis
-                                                            • Display:
+                                                            • Display: 20 × 300
                                                             • “How does this expression relate to the product
-                                                                        ?” (It represents one of the products in the
+                                                              315 × 24?” (It represents one of the products in the
                                                               first diagram.)
                                                             • “Why isn’t this expression written in any of the other
                                                               diagrams?” (The other diagrams are decomposed
@@ -270,12 +270,12 @@ the partial-products and standard algorithm methods, which students will learn i
                                                               share, record equations to represent each partial
                                                               product.
                                                             • “What are the advantages or disadvantages of this
-                                                              way to calculate           ?” (For completely broken
+                                                              way to calculate 315 × 24?” (For completely broken
                                                               apart partial products, each product is simple to
                                                               calculate, but I do have 6 different numbers to add
                                                               up at the end. When I broke the full product into two
      4. Use one of the diagrams to find the value of          products, the calculations I used to find each product
-                .                                             were harder, but once I had them, there were only
+        315 × 24.                                             were harder, but once I had them, there were only
      5. Explain why you chose that diagram to find the        two products to add. When I broke the full product
         product.                                              into 3 products, this was a good compromise. The
                                                               products were not too hard to calculate, and there
@@ -292,15 +292,15 @@ Student Response
                                          Grade 5                                CC BY NC 2024
                                           Unit 4
                                                          Lesson 2
-                                                                         Illustrative Mathematics®               5
+                                                                         Illustrative Mathematics®              5
  3.
 
 
 
 
- 4. 7,560. Sample response:                       ,
-                  ,                   ,
-                                  .
+ 4. 7,560. Sample response: 24 × 300 = 7,200,
+    24 × 10 = 240, 24 × 5 = 120,
+    7,200 + 240 + 120 = 7,560.
  5. Sample response: The first diagram has 6 products to
     find, but they are all products of one-digit numbers,
     with some factors of 10. In the second diagram, there
@@ -311,9 +311,9 @@ Student Response
 
 
 Advancing Student Thinking
-If students find the value of        , without using a diagram, consider asking:
-   • “How did you decide to find the value of          ?”
-  • “Where do you see the strategy you used to find the value of           represented in the diagrams?”
+If students find the value of 315 × 24, without using a diagram, consider asking:
+   • “How did you decide to find the value of 315 × 24?”
+  • “Where do you see the strategy you used to find the value of 315 × 24 represented in the diagrams?”
 
 
 
@@ -323,7 +323,7 @@ Lesson Synthesis
 
 Display the first image from the last activity.
 
-“How can the diagram help us find the value of the product        ?” (It helps me break up the product by place value.
+“How can the diagram help us find the value of the product 315 × 24?” (It helps me break up the product by place value.
 I take the hundreds, tens, and ones of one number and multiply them by the tens and ones of the other number.)
 
 “Tomorrow we are going to work with partial products and organize them in a different way.”
@@ -331,18 +331,18 @@ I take the hundreds, tens, and ones of one number and multiply them by the tens 
 
 
 
-                                              Grade 5                                CC BY NC 2024
+                                              Grade 5                                 CC BY NC 2024
                                                Unit 4
                                                              Lesson 2
-                                                                              Illustrative Mathematics®           6
+                                                                               Illustrative Mathematics®           6
 Suggested Centers
   • Number Puzzles: Multiplication (4–5) , Stage 1: Two-Digit Factors (Supporting)
 
 
 
-Cool-down                                                                                                     5 min
+Cool-down                                                                                                   5 min
 
-
+222 × 14
 
 
      Standards
@@ -350,12 +350,12 @@ Building Toward     5.NBT.B.5
 
 
      Student Task Statement
-     Here is a diagram that represents                .
+      Here is a diagram that represents 222 × 14.
 
 
 
 
-     Find the value of            . Use the diagram if it is helpful. Explain or show your reasoning.
+      Find the value of 222 × 14. Use the diagram if it is helpful. Explain or show your reasoning.
 
 
 Student Response
@@ -364,21 +364,21 @@ Student Response
 
 
 
-The product is                    , which is      .
+The product is 2,800 + 280 + 28, which is 3,108 .
 
 
 Responding to Student Thinking
-Students find values other then                           or     Next Day Supports
-     for the product.                                            Launch the Warm-up by drawing a diagram to represent
-                                                                 the product in the Estimation Exploration. Ask, “How does
-                                                                 the diagram represent the product?”
+Students find values other then 2,800 + 280 + 28 or            Next Day Supports
+3,108 for the product.                                         Launch the Warm-up by drawing a diagram to represent
+                                                               the product in the Estimation Exploration. Ask, “How does
+                                                               the diagram represent the product?”
 
 
 
 
-                                               Grade 5                                  CC BY NC 2024
-                                                Unit 4
-                                                               Lesson 2
-                                                                                 Illustrative Mathematics®            7
+                                            Grade 5                                   CC BY NC 2024
+                                             Unit 4
+                                                             Lesson 2
+                                                                               Illustrative Mathematics®            7
 ```
 

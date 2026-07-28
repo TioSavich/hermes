@@ -2,17 +2,17 @@
  "by_grade": {
   "1": {
    "diagnostic_ready": 43,
-   "executable_task": 44,
+   "executable_task": 46,
    "measured_transition": 44,
-   "negative_candidate": 127,
+   "negative_candidate": 128,
    "published": 148,
    "standard_action_candidate": 148,
-   "strategy_evidence": 130,
+   "strategy_evidence": 131,
    "structured_negative": 81
   },
   "2": {
    "diagnostic_ready": 28,
-   "executable_task": 31,
+   "executable_task": 32,
    "measured_transition": 31,
    "negative_candidate": 125,
    "published": 150,
@@ -22,7 +22,7 @@
   },
   "3": {
    "diagnostic_ready": 34,
-   "executable_task": 36,
+   "executable_task": 40,
    "measured_transition": 36,
    "negative_candidate": 112,
    "published": 143,
@@ -32,7 +32,7 @@
   },
   "4": {
    "diagnostic_ready": 14,
-   "executable_task": 16,
+   "executable_task": 18,
    "measured_transition": 16,
    "negative_candidate": 105,
    "published": 151,
@@ -5107,7 +5107,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -5117,7 +5117,6 @@
    "grade": "2",
    "lesson": "IM-G2-U5-L3",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Compose 3-Digit Numbers",
@@ -5129,6 +5128,14 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "base_ones_chunking"
+    },
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
     },
     {
      "deformation": "omit_highest_place_regrouping",
@@ -5172,7 +5179,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.A.1": [
      "represent",
@@ -12874,7 +12881,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -12884,7 +12891,6 @@
    "grade": "3",
    "lesson": "IM-G3-U2-L12",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Area and Addition",
@@ -12963,7 +12969,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.MD.C.7.d": [
      "add",
@@ -13538,7 +13544,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -13548,7 +13554,6 @@
    "grade": "3",
    "lesson": "IM-G3-U3-L6",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Use Strategies and Algorithms to Add",
@@ -13562,6 +13567,14 @@
      "productive": "base_ones_chunking"
     },
     {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
+    {
      "deformation": "drop_ones_after_base_takeaway",
      "family": "dropped_subtrahend_remainder",
      "mapping_origin": "direct_lesson_fact",
@@ -13571,7 +13584,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -13693,7 +13706,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -13703,7 +13716,6 @@
    "grade": "3",
    "lesson": "IM-G3-U3-L8",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -13767,7 +13779,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -16255,7 +16267,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -16265,7 +16277,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L20",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Strategies for Dividing",
@@ -16287,6 +16298,14 @@
      "productive": "fair_share_equal_groups"
     },
     {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
+    },
+    {
      "deformation": "add_instead_of_multiply",
      "family": "addition_instead_of_multiplication",
      "mapping_origin": "direct_lesson_fact",
@@ -16304,7 +16323,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.B.5": [
      "apply",
@@ -17725,6 +17744,14 @@
    "missing_for_diagnosis": [],
    "name": "Estimate and Measure Liquid Volume",
    "negative_candidates": [
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
+    },
     {
      "deformation": "liquid_volume_count_marks_not_intervals",
      "family": "liquid_volume_count_marks_not_intervals",
@@ -24938,7 +24965,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -24948,7 +24975,6 @@
    "grade": "4",
    "lesson": "IM-G4-U6-L4",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "More Numerical Patterns",
@@ -25003,7 +25029,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.OA.C.5": [
      "add",
@@ -26175,7 +26201,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -26185,11 +26211,18 @@
    "grade": "4",
    "lesson": "IM-G4-U6-L18",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Use an Algorithm with Partial Quotients",
    "negative_candidates": [
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
+    },
     {
      "deformation": "stop_after_first_partial_quotient",
      "family": "stops_after_first_partial_quotient",
@@ -26200,7 +26233,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.NBT.B.6": [
      "explain",
@@ -60210,24 +60243,39 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U3-L10",
    "missing_for_diagnosis": [
-    "strategy_evidence",
-    "executable_task",
     "measured_transition"
    ],
    "name": "Addition and Subtraction with a Ten",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
+    {
+     "deformation": "drop_ones_after_base_takeaway",
+     "family": "dropped_subtrahend_remainder",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "subtraction",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "take_away_base_ones"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.NBT.B.2.b": [
      "represent",
@@ -65352,7 +65400,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -65362,11 +65410,18 @@
    "grade": "1",
    "lesson": "IM-G1-U6-L13",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Solve Take From Story Problems",
    "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
     {
      "deformation": "drop_ones_after_base_takeaway",
      "family": "dropped_subtrahend_remainder",
@@ -65377,7 +65432,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.OA.A.1": [
      "add",
@@ -75616,12 +75671,12 @@
  },
  "summary": {
   "diagnostic_ready": 181,
-  "executable_task": 227,
+  "executable_task": 236,
   "measured_transition": 227,
-  "negative_candidate": 796,
+  "negative_candidate": 797,
   "published": 1308,
   "standard_action_candidate": 1272,
-  "strategy_evidence": 900,
+  "strategy_evidence": 901,
   "structured_negative": 405
  }
 }

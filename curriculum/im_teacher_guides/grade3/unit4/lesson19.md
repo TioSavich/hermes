@@ -41,7 +41,7 @@ Prior to this lesson, students have interpreted and represented division in term
 lesson, they revisit the two interpretations of division and recall that the divisor can be seen as either the number of
 groups or the size of each group.
 
-Students use base-ten blocks and diagrams to analyze and represent division expressions such as        and        .
+Students use base-ten blocks and diagrams to analyze and represent division expressions such as 55 ÷ 5 and 84 ÷ 7.
 They see that, depending on the numbers involved, one interpretation of division may be more useful or productive
 than the other.
 
@@ -75,7 +75,7 @@ Lesson Timeline                                                 Teacher Reflecti
 
  Synthesis Estimate                            10 min
 
- Cool-down                                      5 min
+ Cool-down                                     5 min
 
 
 
@@ -84,7 +84,7 @@ Warm-up                                                                         
 True or False: Ones, Tens, Twenties
 
       Standards                                                       Instructional Routines
-Addressing        3.NBT.A.3                                       • True or False?
+Addressing      3.NBT.A.3                                         • True or False?
 
 
 The purpose of this True or False? is to reinforce the relationship between tens and ones (that 1 ten is equal to 10 ones,
@@ -96,25 +96,25 @@ one-digit whole number and a multiple of 10.
       Student Task Statement                                    Launch
       Decide if each statement is true or false. Be               • Display one statement.
       prepared to explain your reasoning.                         • “Give me a signal when you know whether the
-        •                                                           statement is true and can explain how you know.”
+        • 4 × 10 = 40 × 1                                           statement is true and can explain how you know.”
 
-        •                                                         • 1 minute: quiet think time
+        • 4 × 20 = 4 × 2 × 10                                     • 1 minute: quiet think time
 
-        •
-        •                                                       Activity
+        • 8 × 20 = 8 × 2 × 1
+        • 8 × 20 = 16 × 10                                      Activity
                                                                   • Share and record answers and strategy.
 Student Response                                                  • Repeat with each statement.
 
   • True: 4 tens is 40 ones. Both sides are equal to 40.
-  • True: The            is 20, so both sides show 4 groups     Activity Synthesis
+  • True: The 2 × 10 is 20, so both sides show 4 groups         Activity Synthesis
     of 20.
                                                                   • “How can you justify your answer without finding the
   • False: On the left is 8 groups of 20. On the right is 8         value of both sides?”
-    groups of 2, since        is 2.
+    groups of 2, since 2 × 1 is 2.
                                                                   • Consider asking:
-  • True: 20 is          , so       is the same as
+  • True: 20 is 2 × 10, so 8 × 20 is the same as
                                                                       ◦ “Who can restate _____’s reasoning in a different
-                  , which is       .
+    8 × 2 × 10, which is 16 × 10.
                                                                         way?”
                                                                       ◦ “Does anyone want to add on to _____’s
                                                                         reasoning?”
@@ -122,8 +122,8 @@ Student Response                                                  • Repeat wit
 
 
 
-                                             Grade 3                                   CC BY NC 2024
-                                              Unit 4
+                                            Grade 3                                    CC BY NC 2024
+                                             Unit 4
                                                               Lesson 19
                                                                                 Illustrative Mathematics®                2
 Activity 1                                                                                                      20 min
@@ -131,7 +131,7 @@ Student Response                                                  • Repeat wit
 Divide with Base-Ten Blocks
 
      Standards
-Addressing        3.OA.B.5, 3.OA.C.7
+Addressing      3.OA.B.5, 3.OA.C.7
 
 
 The purpose of this activity is for students to use strategies based on place value to find quotients greater than 10.
@@ -165,13 +165,13 @@ Materials to Gather
      Student Task Statement                                     Launch
        1. Use base-ten blocks to represent each                   • Groups of 2
           expression. Then, find its value.                       • Give each group base-ten blocks.
-             a.                                                   • “Use base-ten blocks to represent          .”
-             b.                                                   • 1–2 minutes: independent work time
+             a. 55 ÷ 5                                            • “Use base-ten blocks to represent 39 ÷ 3.”
+             b. 45 ÷ 3                                            • 1–2 minutes: independent work time
        2. Find the value of each expression. Use base-            • Select a student who divided the blocks into 3 groups
           ten blocks if you find them helpful.                      of 13 to share their final representation, such as:
-             a.
-             b.
-             c.
+             a. 63 ÷ 3
+             b. 84 ÷ 7
+             c. 100 ÷ 5
 
 
 
@@ -201,11 +201,11 @@ Materials to Gather
         of 1 ten and 2 ones
                                                               • “What was different about using the blocks to find
      c. 20. Sample response: 5 groups of 20 ones or 5
-                                                                       and using them to find        ?” (For      , it
+                                                                45 ÷ 3 and using them to find 55 ÷ 5?” (For 45 ÷ 3, it
         groups of 2 tens
                                                                 was necessary to decompose 1 ten to finish putting
                                                                 45 into 3 equal groups. That’s not necessary for
-                                                                       because there was already the right number
+                                                                55 ÷ 5 because there was already the right number
                                                                 of tens and ones to make the 5 groups.)
                                                               • “Now, work independently to find the value of
                                                                 quotients in the second problem.”
@@ -218,9 +218,9 @@ Materials to Gather
                                                               • Ask students who used base-ten blocks or drew
                                                                 diagrams, “Was it necessary to decompose any of the
                                                                 tens into ones to divide?” (It wasn’t necessary for
-                                                                       because there was already the right number
+                                                                63 ÷ 3 because there was already the right number
                                                                 of tens and ones to put into 3 groups. It wasn’t
-                                                                necessary for          because I started with 10 tens
+                                                                necessary for 100 ÷ 5 because I started with 10 tens
                                                                 and there was already the right number of tens to
                                                                 put into 5 groups.)
                                                               • “Why was it necessary or helpful to decompose the
@@ -235,18 +235,18 @@ Materials to Gather
                                          Unit 4
                                                           Lesson 19
                                                                             Illustrative Mathematics®               4
-Activity 2                                                                                                    15 min
+Activity 2                                                                                                   15 min
 
 Different Ways to Show Division
 
      Standards
-Addressing        3.OA.A.2, 3.OA.C.7
+Addressing      3.OA.A.2, 3.OA.C.7
 
 
 The purpose of this activity is to show that the two meanings of division still apply when dividing greater numbers and
 that, in some cases, one interpretation may be more helpful than the other.
 
-Students first analyze two ways of using base-ten blocks to represent       and see that the divisor, 5, can be
+Students first analyze two ways of using base-ten blocks to represent 65 ÷ 5 and see that the divisor, 5, can be
 interpreted to mean the number of groups or the size of one group. Students then consider how they might interpret
 and represent the divisor in other quotients. The reasoning here prepares students to reason more strategically as they
 divide greater numbers.
@@ -259,9 +259,9 @@ Materials to Gather
 
      Student Task Statement                                   Launch
       Jada and Han used base-ten blocks to represent            • Groups or 2–4
-            .                                                   • Give base-ten blocks to each group.
+      60 ÷ 5.                                                   • Give base-ten blocks to each group.
       Here is Jada’s work:                                      • Ask students to keep their books closed.
-                                                                • “Use base-ten blocks to find the value of        .”
+                                                                • “Use base-ten blocks to find the value of 60 ÷ 5.”
                                                                 • 1–2 minutes: independent work time
 
 
@@ -275,30 +275,30 @@ Materials to Gather
                                                                 • Pause for a brief discussion.
              a. What did they do differently?
                                                                 • “How were Jada’s and Han’s representations
-             b. Where do you see the value of         in
+             b. Where do you see the value of 60 ÷ 5 in
                                                                   different? How did each of them interpret
                 each person’s work?
-                                                                         ?” (Jada saw the 5 as the number of groups.
+                                                                  60 ÷ 5?” (Jada saw the 5 as the number of groups.
        2. How would you use base-ten blocks to                    Han saw the 5 as the number in each group.)
           represent these expressions and find their
-                                                                • Poll the class on how they interpreted         when
+                                                                • Poll the class on how they interpreted 60 ÷ 5 when
           value? Be prepared to explain your reasoning.
                                                                   they represented it during the Launch.
-             a.        : Would you make 4 groups or
+             a. 64 ÷ 4: Would you make 4 groups or
                                                                 • “Now, work independently on the second set of
-                  groups of 4?
+                groups of 4?
                                                                   problems.”
-             b.        : Would you make 6 groups or
+             b. 72 ÷ 6: Would you make 6 groups or
                                                                 • 5 minutes: independent work time
-                  groups of 6?
+                groups of 6?
 
 
                                            Grade 3                                   CC BY NC 2024
                                             Unit 4
                                                            Lesson 19
-                                                                              Illustrative Mathematics®                 5
-           c.          : Would you make 15 groups or          Activity Synthesis
-                groups of 15?
+                                                                              Illustrative Mathematics®                5
+           c. 75 ÷ 15: Would you make 15 groups or            Activity Synthesis
+              groups of 15?
                                                                  • Invite students to share their responses and
                                                                    reasoning for the last set of problems.
 Student Response
@@ -333,7 +333,7 @@ Lesson Synthesis
 “Today, we recalled that the divisor in a division expression can be seen as the number of groups or the size of each
 group.”
 
-Display:
+Display: 96 ÷ 8
 
 “If you are representing this quotient with base-ten blocks, would you put 9 tens and 6 ones in 8 groups, or would you
 put them into groups of 8?” (I would put them into 8 groups. Eight of the tens can go into 8 groups easily. The 1
@@ -355,16 +355,16 @@ Suggested Centers
                                            Unit 4
                                                            Lesson 19
                                                                               Illustrative Mathematics®                 6
-Cool-down                                                                                                    5 min
+Cool-down                                                                                                     5 min
 
 Find the Value
 
      Standards
-Addressing    3.OA.B.5, 3.OA.C.7
+Addressing     3.OA.B.5, 3.OA.C.7
 
 
      Student Task Statement
-     Find the value of      . Use base-ten blocks if they are helpful. Explain or show your reasoning.
+     Find the value of 51 ÷ 3. Use base-ten blocks if they are helpful. Explain or show your reasoning.
 
 
 Student Response
@@ -374,16 +374,16 @@ shapes placed into groups of 3.
 
 
 Responding to Student Thinking
-Students do not determine the quotient of       .            Next Day Supports
-                                                             During the Launch of the next day’s activity, highlight
-                                                             important ideas from the previous lesson.
+Students do not determine the quotient of 51 ÷ 3.             Next Day Supports
+                                                              During the Launch of the next day’s activity, highlight
+                                                              important ideas from the previous lesson.
 
 
 
 
-                                        Grade 3                                     CC BY NC 2024
-                                         Unit 4
-                                                         Lesson 19
-                                                                             Illustrative Mathematics®                 7
+                                         Grade 3                                     CC BY NC 2024
+                                          Unit 4
+                                                          Lesson 19
+                                                                              Illustrative Mathematics®                 7
 ```
 

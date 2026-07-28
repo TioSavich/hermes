@@ -193,7 +193,7 @@ expression.
                                                                     problem?” (The diagrams helped me see how the
  1.   a. 7 rows. Sample response: Students draw a 7 by 8            plants were arranged and the space they would need
          array.                                                     to grow.)
-                ,         ,    ,      , or          .
+         56 ÷ 8, 56 ÷ 8 = 7, 7 × 8, 8 × 7, or 8 × 7 = 56.
                                                                   • “Where do you see the numbers from the equation
       b. Sample responses: 24 feet and 14 feet or 28 feet           in the diagram?” (I see the 8 because there are 8 dots
          and 16 feet. Students draw a diagram of a                  in each row. I see the 7 in the number of rows. The
@@ -203,13 +203,13 @@ expression.
          between the plants or rows resulting in
          expressions or equations with values greater
          than 24 or 14.)
-                    ,           ,               ,
-                             .
+         6 × 4 = 24, 7 × 2 = 14, (6 × 4) + 2 + 2,
+         7 × 2 + 1 + 1 = 16.
 
       c. 96 strawberries. Sample response: Students
          draw 8 groups with 1 ten and 2 ones in each
          group.
-                                     ,             .
+         (8 × 10) + (8 × 2) = 80 + 16, 12 × 8 = 96.
 
  2. No written response is required.
 
@@ -313,38 +313,38 @@ Materials to Copy
                                            Unit 4
                                                            Lesson 22
                                                                                Illustrative Mathematics®                5
-           feet apart                   foot apart
-        • Each plant                 • Each plant
-          produces about 12            produces about 8
-          strawberries.                cantaloupes.
+           feet apart                 foot apart
+        • Each plant                • Each plant
+          produces about 12           produces about 8
+          strawberries.               cantaloupes.
 
 
 
 
-      zucchini                     tomatoes
+      zucchini                    tomatoes
 
-        • Grow on vines.             • Grow on vines.
-        • Space rows: 5 feet         • Space rows: 4 feet
-          apart                        apart
-        • Space plants: 1            • Space plants: 2
-          foot apart                   feet apart
-        • Each plant                 • Each plant
-          produces about 8             produces about 20
-          zucchini.                    tomatoes.
-
-
+        • Grow on vines.            • Grow on vines.
+        • Space rows: 5 feet        • Space rows: 4 feet
+          apart                       apart
+        • Space plants: 1           • Space plants: 2
+          foot apart                  feet apart
+        • Each plant                • Each plant
+          produces about 8            produces about 20
+          zucchini.                   tomatoes.
 
 
-      pinto beans                  potatoes
 
-        • Grow on bushes in          • Grow in rows.
-          pods.                      • Space rows: 2–3
-        • Space rows: 2 feet           feet apart
-          apart                      • Space plants: 1
-        • Space plants: 1              foot apart
-          foot apart                 • Each plant
-        • Each plant                   produces 5–10
-          produces 20–25               potatoes.
+
+      pinto beans                 potatoes
+
+        • Grow on bushes in         • Grow in rows.
+          pods.                     • Space rows: 2–3
+        • Space rows: 2 feet          feet apart
+          apart                     • Space plants: 1
+        • Space plants: 1             foot apart
+          foot apart                • Each plant
+        • Each plant                  produces 5–10
+          produces 20–25              potatoes.
           pods, and each
           pod produces
           about 5 beans.
@@ -355,16 +355,16 @@ Student Response
 Sample responses:
  1. strawberries and cantaloupes.
  2.   a. 6 strawberry plants and 8 cantaloupe plants
-                    ,
-      b. About 136 fruits.             and             , so
+         72 ÷ 12 = 6, 64 ÷ 8 = 8
+      b. About 136 fruits. 6 × 12 = 72 and 8 × 8 = 64, so
          there would be about 72 strawberries and 64
-         cantaloupes.               . I will harvest about
+         cantaloupes. 72 + 64 = 136. I will harvest about
 
 
-                                           Grade 3                               CC BY NC 2024
-                                            Unit 4
-                                                              Lesson 22
-                                                                          Illustrative Mathematics®   6
+                                         Grade 3                               CC BY NC 2024
+                                          Unit 4
+                                                            Lesson 22
+                                                                        Illustrative Mathematics®   6
          136 fruits from this part of the garden. The
          amount isn't exact though, because some plants
          may grow more fruits than I predicted, and some

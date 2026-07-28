@@ -88,12 +88,12 @@ algorithm or another strategy to subtract.
      Student Task Statement                                     Launch
       Find the value of each expression mentally.                 • Display one expression.
 
-        •                                                         • “Give me a signal when you have an answer and can
+        • 100- 98                                                 • “Give me a signal when you have an answer and can
                                                                     explain how you got it.”
-        •
+        • 101 - 99
                                                                   • 1 minute: quiet think time
-        •
-        •
+        • 200- 98
+        • 204- 98
                                                                 Activity
 
 Student Response                                                  • Record answers and strategies.
@@ -156,9 +156,9 @@ build foundations for the properties of operations.
 
 
      Student Task Statement                                   Launch
-      Jada and Kiran each found the value of           .        • Groups of 2
+      Jada and Kiran each found the value of 391 - 215.         • Groups of 2
       Their work is shown.                                      • Display Jada’s drawing.
-      Jada’s drawing                                            • “Jada and Kiran each found the value of              .
+      Jada’s drawing                                            • “Jada and Kiran each found the value of 391 - 215.
                                                                   Take a minute to make sense of Jada’s drawing.”
                                                                 • 1–2 minutes: quiet think time
                                                                 • Share responses.
@@ -181,8 +181,8 @@ build foundations for the properties of operations.
                                                                   enough, so he needs to decompose a ten into 10
 Student Response                                                  ones.)
 
- 1. Sample response: Kiran wrote the numbers he was             • “Why is he able to rewrite             as
-    subtracting as a sum of hundreds, tens, and ones.                           ?” (Both expressions add up to 391.
+ 1. Sample response: Kiran wrote the numbers he was             • “Why is he able to rewrite 300 + 90 + 1 as
+    subtracting as a sum of hundreds, tens, and ones.             300 + 80 + 11?” (Both expressions add up to 391.
     Then he saw he needed more ones, so he                        Each shows 391 in a different way.)
 
 
@@ -200,7 +200,7 @@ Student Response                                                  ones.)
     wrote 11 above that because he had 10 more ones
     after he decomposed a ten.                                      • “How is their reasoning different?” (Jada used base-
                                                                       ten drawings to represent the numbers, and Kiran
- 3. 176. Sample response:
+ 3. 176. Sample response: 100 + 70 + 6
                                                                       wrote them in expanded form.)
                                                                     • “How did you finish Kiran’s work?” (I subtracted the
                                                                       ones, the tens, and then the hundreds. I subtracted
@@ -260,7 +260,7 @@ algorithms, using more precise language and mathematical terms (MP6).
 
      Access for English Language Learners
      MLR8 Discussion Supports. Students should take turns finding a match and explaining their reasoning to their
-     partner. Display the following sentence frame for all to see: “I noticed   , so I matched          .” Encourage
+     partner. Display the following sentence frame for all to see: “I noticed ___ , so I matched ___    .” Encourage
      students to challenge each other when they disagree.
      Advances: Listening, Speaking, Representing
 
@@ -364,7 +364,7 @@ Addressing     3.NBT.A.2
 Student Response
 Sample response: I can see that there are 3 hundreds, 8 tens, and 2 ones, but 1 ten has been moved over to get more
 ones. In the algorithm, the 80 and the 2 are crossed out to show this. The blocks that are not crossed out show the
-              in the algorithm.
+100 + 10 + 5 in the algorithm.
 
 
 Responding to Student Thinking

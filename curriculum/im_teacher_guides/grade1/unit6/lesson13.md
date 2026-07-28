@@ -69,16 +69,16 @@ Lesson Timeline                                                Teacher Reflectio
                                             Unit 6
                                                              Lesson 13
                                                                               Illustrative Mathematics®             1
- Cool-down                                         5 min
+ Cool-down                                  5 min
 
 
 
-Warm-up                                                                                                           10 min
+Warm-up                                                                                                    10 min
 
 Number Talk: Add 2 Two-digit Numbers
 
-     Standards                                                          Instructional Routines
-Building Toward       1.NBT.C.4                                      • Number Talk
+     Standards                                                     Instructional Routines
+Building Toward     1.NBT.C.4                                  • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for adding 2 two-digit
@@ -86,49 +86,49 @@ numbers. When students add ones and ones and tens and tens and describe how they
 for and make sense of the base-ten structure of numbers (MP7).
 
 
-     Student Task Statement                                        Launch
-     Find the value of each expression mentally.                     • Display one expression.
+     Student Task Statement                                  Launch
+     Find the value of each expression mentally.               • Display one expression.
 
-          •                                                          • “Give me a signal when you have an answer and can
-                                                                       explain how you got it.”
-          •
-                                                                     • 1 minute: quiet think time
-          •
-          •
-                                                                   Activity
+        • 15 + 10                                              • “Give me a signal when you have an answer and can
+                                                                 explain how you got it.”
+        • 15 + 15
+                                                               • 1 minute: quiet think time
+        • 25 + 25
+        • 25 + 28
+                                                             Activity
 
-Student Response                                                     • Record answers and strategies.
-                                                                     • Keep expressions and work displayed.
+Student Response                                               • Record answers and strategies.
+                                                               • Keep expressions and work displayed.
   • 25: 1 more ten would be 2 tens and 5 ones.
-                                                                     • Repeat with each expression.
-  • 30:                                  ,               ,
-               ,               .
-  • 50:            is 20 more than           ,               .     Activity Synthesis
-  • 53:                ,             ,               .               • “How did knowing           help you solve         ?” (I
-                                                                       already knew          is 30. I added 20 more to 30,
-                                                                       since each 25 is 10 more than 15.)
-                                                                     • “How did knowing           help you solve         ?” (I
-                                                                       knew          is 50, and 28 is 3 more than 25, so
-                                                                                  .)
+                                                               • Repeat with each expression.
+  • 30: 15 + 15 = 10 + 10 + 5 + 5, 10 + 10 = 20,
+    5 + 5 = 10, 20 + 10 = 30.
+  • 50: 25 + 25 is 20 more than 15 + 15, 20 + 30 = 50.       Activity Synthesis
+  • 53: 20 + 20 = 40, 5 + 8 = 13, 40 + 13 = 53.                • “How did knowing 15 + 15 help you solve 25 + 25?” (I
+                                                                 already knew 15 + 15 is 30. I added 20 more to 30,
+                                                                 since each 25 is 10 more than 15.)
+                                                               • “How did knowing 25 + 25 help you solve 25 + 28?” (I
+                                                                 knew 25 + 25 is 50, and 28 is 3 more than 25, so
+                                                                 50 + 3 = 53.)
 
 
 
 
-Activity 1                                                                                                        20 min
+Activity 1                                                                                                 20 min
 
 How Many to Start?
 
-     Standards                                                          Instructional Routines
-Addressing     1.OA.A.1, 1.OA.C.6                                    • MLR6 Three Reads
+     Standards                                                     Instructional Routines
+Addressing     1.OA.A.1, 1.OA.C.6                              • MLR6 Three Reads
 
 
 The purpose of this activity is for students to make sense of and solve a new type of story problem—Take From, Start
 
 
-                                                 Grade 1                                 CC BY NC 2024
-                                                  Unit 6
-                                                                 Lesson 13
-                                                                                  Illustrative Mathematics®                2
+                                         Grade 1                                   CC BY NC 2024
+                                          Unit 6
+                                                          Lesson 13
+                                                                            Illustrative Mathematics®               2
 Unknown, using the Three Reads routine. As students discuss, represent, and solve the problem, they see that even
 though the actions in the story problem can be represented with subtraction, they solve it using addition. The Three
 Reads routine encourages students to make sense of the quantities in the story and their relationship before mapping
@@ -143,7 +143,7 @@ Materials to Gather
     1
 
 
-      Student Task Statement                                   Launch
+     Student Task Statement                                    Launch
       Elena has a bag of beads.                                  • Groups of 2
       She takes out 9 beads.                                     • Give students access to connecting cubes in towers
       11 beads are left in the bag.                                of 10 and singles.
@@ -162,15 +162,15 @@ Student Response                                                 • “We are g
   • To find out how many beads are in the bag to start         MLR6 Three Reads
     with, I need to add these 9 beads back into the bag. I       • Display only the problem stem, without revealing the
     combine 9 beads with the 11 beads already in the               question.
-    bag. That’s       .
+    bag. That’s 9 + 11.
                                                                  • “We are going to read this problem three times.”
   • Draws a square marked “bag” and labels 11. Writes 9
                                                                  • 1st Read: “Elena has a bag of beads. She takes out 9
     to the side of it to show beads taken out. Adds
                                                                    beads. 11 beads are left in the bag.”
-           .
+    11 + 9.
                                                                  • “What is this story about?”
-  •                                       .
+  • 11 + 9 = 10 + 1 + 9 = 10 + 10 = 20.
                                                                  • 1 minute: partner discussion
                                                                  • Listen for and clarify any questions about the
                                                                    context.
@@ -207,7 +207,7 @@ Student Response                                                 • “We are g
                                                                      beads in the bag.
                                                                    ◦ Draw bag and write 11 in it, write or draw 9 next
                                                                      to it.
-                                                                   ◦ Write               .
+                                                                   ◦ Write 9 + 11 = 20.
 
 
                                                                Activity Synthesis

@@ -23,7 +23,8 @@
           [ incompatibility_set/2,
             incompatibility_entails/2,
             incompatibility_entailment_witness/3,
-            error_rule_crosstalk_defeat_count/3
+            error_rule_crosstalk_defeat_count/3,
+            a_fortiori_context_nesting/4
           ]).
 
 :- use_module(library(lists)).
@@ -46,9 +47,11 @@
 :- dynamic discovered_set_fact/2.
 :- dynamic discovered_set_kind/3.   % Context, Set, Kind (emergent/defeated/...)
 :- dynamic error_rule_crosstalk_defeat_count/3.
+:- dynamic a_fortiori_context_nesting/4.
 :- multifile discovered_set_fact/2.
 :- multifile discovered_set_kind/3.
 :- multifile error_rule_crosstalk_defeat_count/3.
+:- multifile a_fortiori_context_nesting/4.
 
 %!  error_rule_crosstalk_defeat_count(?Context, ?InferenceId, ?Count) is nondet.
 %
@@ -118,6 +121,17 @@ warn_missing_discovery_cache :-
                          ErrorRuleCache,
                          [ extensions([pl]), access(read), file_errors(fail) ])
    ->  consult(ErrorRuleCache)
+   ;   true
+   ).
+
+% A separate generated cache carries only reviewed a-fortiori closure rows.
+% Its provenance distinguishes an asserted context nesting from one an
+% automaton can decide; absence simply means the context taxonomy adds no
+% closure to this finite register.
+:- (   absolute_file_name(incompat(incompatibility_sets_a_fortiori_context_closure),
+                         ContextClosureCache,
+                         [ extensions([pl]), access(read), file_errors(fail) ])
+   ->  consult(ContextClosureCache)
    ;   true
    ).
 

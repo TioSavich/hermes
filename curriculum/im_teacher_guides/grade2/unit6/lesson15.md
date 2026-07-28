@@ -236,7 +236,7 @@ The purpose of this activity is for students to find the total value of a set of
 value of each coin before doing the calculations, so it’s okay if they need to refer to the chart. Students find the value of
 a mixed set of coins by counting on, adding, or grouping like coins, and then adding their values. For example, a student
 might explain their thinking by saying, “I put all the dimes together, nickels together, and pennies together first, and
-then added                .” When students group the coins in order to find their value efficiently, they strategically use
+then added 30 + 20 + 6.” When students group the coins in order to find their value efficiently, they strategically use
 base-ten structure (MP7).
 
 
@@ -354,12 +354,12 @@ Required Preparation
  5. Sample responses:
       ◦ Clare has nickels and dimes. I counted the first
         row and got 40 and the second row and got 35.
-                      . She has 75 cents.
+        40 + 35 = 75. She has 75 cents.
       ◦ Clare has nickels and dimes. I got 75 cents, too,
         but I counted the coins in a different way. I
         counted all the dimes by 10 first, and got 50
         cents. Then I counted the nickels by 5, and got
-        25 cents.
+        25 cents. 50 + 25 = 75
  6. Mai’s coins have the least value.
  7. Priya has the most coins. Her coins do not have the
     greatest value. Sample response: Priya's coins have a
@@ -439,7 +439,7 @@ Student Response
  1. 7 pennies
  2. 3 nickels
  3. 4 dimes
- 4. Jada has 62¢. Sample response:
+ 4. Jada has 62¢. Sample response: 40 + 15 + 7 = 55 + 5 + 2 = 60 + 2 = 62
 
 
 Responding to Student Thinking

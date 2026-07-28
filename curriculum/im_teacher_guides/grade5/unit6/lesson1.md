@@ -16,14 +16,14 @@ The purpose of this lesson is for students to observe place-value patterns when 
 Unit 6, Lesson 1
 
 Place-Value Patterns
-      Standards                                                        Instructional Routines
-Addressing      5.NBT.A, 5.NBT.A.1                                  • MLR7 Compare and Connect
-                                                                    • Notice and Wonder
+      Standards                                                       Instructional Routines
+Addressing      5.NBT.A, 5.NBT.A.1                                 • MLR7 Compare and Connect
+                                                                   • Notice and Wonder
 
-      Goals                                                            Student Facing Learning Goals
-  • Generalize (orally) that in a multi-digit number, a digit           Let's observe place-value patterns.
+      Goals                                                           Student Facing Learning Goals
+  • Generalize (orally) that in a multi-digit number, a digit          Let's observe place-value patterns.
     in one place represents 10 times as much as it
-     represents in the place to its right and       of what it
+     represents in the place to its right and 1/10 of what it
      represents in the place to its left.
 
 
@@ -35,7 +35,7 @@ Narrative
 In previous grades, students recognized that in a multi-digit whole number, a digit in one place represents 10 times
 what it represents in the place to its right. In the previous unit, students saw that this same pattern continues to the
 right of the decimal. In this lesson, students apply what they know about multiplication, division, and place value to
-express that each digit in a decimal represents 10 times as much as it represents in the place to its right and    as much
+express that each digit in a decimal represents 10 times as much as it represents in the place to its right and 1/10 as much
 as it represents in the place to its left (MP7).
 
 
@@ -48,11 +48,11 @@ Materials to Gather
   • Tools for creating a display: Activity 1
 
 
-Lesson Timeline                                                   Teacher Reflection Questions
-                                                                  Describe the relationships between place value,
+Lesson Timeline                                                  Teacher Reflection Questions
+                                                                 Describe the relationships between place value,
  Warm-up                                           10 min
-                                                                  multiplication, and division that your students made
- Activity 1                                        20 min         sense of today.
+                                                                 multiplication, and division that your students made
+ Activity 1                                        20 min        sense of today.
 
  Activity 2                                        15 min
 
@@ -63,10 +63,10 @@ Lesson Timeline                                                   Teacher Reflec
 
 
 
-                                                Grade 5                                 CC BY NC 2024
-                                                 Unit 6
-                                                                 Lesson 1
-                                                                                 Illustrative Mathematics®                 1
+                                               Grade 5                                 CC BY NC 2024
+                                                Unit 6
+                                                                Lesson 1
+                                                                                Illustrative Mathematics®                  1
 Warm-up                                                                                                         10 min
 
 Notice and Wonder: Same Digits
@@ -105,7 +105,7 @@ Students may notice:                                          Activity Synthesis
   • The digits are in different places.                            of 820?” (It’s 10 times as much.)
   • The numbers are getting smaller.                             • “How does the value of 0.82 compare with the value
                                                                    of 0.082? How do you know?” (It’s also 10 times as
-  • The value of each number is       the value of the
+  • The value of each number is 1/10 the value of the
                                                                    much since there are 10 thousandths in 1
     number above.
                                                                    hundredth.)
@@ -118,15 +118,15 @@ Students may wonder:
 
 
 
-                                             Grade 5                                 CC BY NC 2024
-                                              Unit 6
+                                            Grade 5                                  CC BY NC 2024
+                                             Unit 6
                                                             Lesson 1
                                                                               Illustrative Mathematics®                  2
 Activity 1                                                                                                     20 min
 
 Many True Equations
 
-      Standards                                                   Instructional Routines
+     Standards                                                    Instructional Routines
 Addressing         5.NBT.A                                     • MLR7 Compare and Connect
 
 
@@ -144,29 +144,29 @@ Materials to Gather
   • Tools for creating a display: Activity 1
 
 
-      Student Task Statement                                 Launch
+     Student Task Statement                                  Launch
       Use these numbers and symbols to write as many           • Groups of 2
       true equations as you can. You may use each              • Display the numbers: 60 and 6
       number and symbol more than once.
                                                                • “How many times the value of 6 is 60? How do you
              600               0.06               100            know?” (10 times, because it’s 6 tens.)
-                                                               • Display the equation:              .
-             60                                    10
+                                                               • Display the equation: 60 = 10 × 6.
+             60                  ×                 10
                                                                • “What division equation shows that 60 is ten times
-              6                                    0.1           the value of 6?” (             is another way of saying
+              6                  ÷                 0.1           the value of 6?” (60 ÷ 6 = 10 is another way of saying
                                                                  that 60 is ten 6s or ten times 6.)
              0.6                 =                0.01
-                                                               • Display the equation:              .
+                                                               • Display the equation: 60 ÷ 6 = 10.
                                                                • “You are going to write equations such as these,
 Student Response                                                 relating different numbers.”
 Sample responses:
 
-  •                                                          Activity
-  •                                                            • 5 minutes: partner work time
-  •                                                          MLR7 Compare and Connect
-  •                                                           • “Create a display that shows your equations. You
+  • 600 ÷ 100 = 6                                            Activity
+  • 600 ÷ 10 = 60                                              • 5 minutes: partner work time
+  • 6 × 10 = 60                                              MLR7 Compare and Connect
+  • 6 × 0.1 = 0.6                                             • “Create a display that shows your equations. You
                                                                 may want to include details, such as notes, diagrams
-  •
+  • 6 × 0.01 = 0.06
                                                                 or drawings, to help others understand your
                                                                 thinking.”
                                                                • Monitor for students who, during the Gallery Walk:
@@ -179,30 +179,30 @@ Sample responses:
                                                 Unit 6
                                                            Lesson 1
                                                                             Illustrative Mathematics®                   3
-                                                                   • 2–5 minutes: independent or group work
-                                                                   • 5–7 minutes: Gallery Walk
+                                                                    • 2–5 minutes: independent or group work
+                                                                    • 5–7 minutes: Gallery Walk
 
 
-                                                                 Activity Synthesis
-                                                                   • Invite students to share the equations they made.
-                                                                   • Display the equation:
-                                                                   • “How do you know this equation is true?” (When I
-                                                                     divide tenths into 10 equal pieces, I get hundredths,
-                                                                     so if I divide 6 tenths into 10 equal pieces, that's 6
-                                                                     hundredths.)
-                                                                   • “Can you express the relationship between 0.6 and
-                                                                     0.06, using multiplication?” (Yes,             )
-                                                                   • Display the equation:
-                                                                   • “How do you know this equation is true?” (I know 100
-                                                                     hundredths is 1, so 600 hundredths is 6.)
-                                                                   • “Can you express the relationship between 600 and
-                                                                     6, using division?” (Yes,            )
-                                                                   • Invite students to describe any patterns they noticed.
+                                                                  Activity Synthesis
+                                                                    • Invite students to share the equations they made.
+                                                                    • Display the equation: 0.6 ÷ 10 = 0.06
+                                                                    • “How do you know this equation is true?” (When I
+                                                                      divide tenths into 10 equal pieces, I get hundredths,
+                                                                      so if I divide 6 tenths into 10 equal pieces, that's 6
+                                                                      hundredths.)
+                                                                    • “Can you express the relationship between 0.6 and
+                                                                      0.06, using multiplication?” (Yes, 0.6 = 10 × 0.06)
+                                                                    • Display the equation: 600 × 0.01 = 6
+                                                                    • “How do you know this equation is true?” (I know 100
+                                                                      hundredths is 1, so 600 hundredths is 6.)
+                                                                    • “Can you express the relationship between 600 and
+                                                                      6, using division?” (Yes, 600 ÷ 100 = 6)
+                                                                    • Invite students to describe any patterns they noticed.
 
 
 
 
-Activity 2                                                                                                      15 min
+Activity 2                                                                                                       15 min
 
 Describe Multiplicative Relationships
 
@@ -217,7 +217,7 @@ patterns that came out in some of the equations of the previous activity:
 
   • The value of a digit is multiplied by 10 when it shifts one place to the left (MP7).
 
-  • The value of a digit is multiplied by 0.1 or   when it shifts one place to the right (MP7).
+  • The value of a digit is multiplied by 0.1 or 1/10 when it shifts one place to the right (MP7).
 
 The former idea will be further developed in the next lesson, in which students examine large numbers and exponential
 notation, and the latter idea will be developed when students examine conversions from a smaller metric unit to a
@@ -232,10 +232,10 @@ larger metric unit.
 
 
 
-                                             Grade 5                                    CC BY NC 2024
-                                              Unit 6
-                                                               Lesson 1
-                                                                                 Illustrative Mathematics®               4
+                                              Grade 5                                    CC BY NC 2024
+                                               Unit 6
+                                                                Lesson 1
+                                                                                  Illustrative Mathematics®               4
      Student Task Statement                                    Launch
                                                                  • Groups of 2
                                                                  • “We are going to continue to work with the numbers
@@ -243,20 +243,20 @@ larger metric unit.
 
 
 
-         1. Explain or show how the value of the 6             Activity
-            changes in each of the numbers.                      • 5 minutes: individual work time
-         2. Which numbers come above 600 if the list             • 5 minutes: partner work time
-            continues? Explain your reasoning.
-         3. Which numbers come below 0.06 if the list
-            continues? Explain your reasoning.
+       1. Explain or show how the value of the 6               Activity
+          changes in each of the numbers.                        • 5 minutes: individual work time
+       2. Which numbers come above 600 if the list               • 5 minutes: partner work time
+          continues? Explain your reasoning.
+       3. Which numbers come below 0.06 if the list
+          continues? Explain your reasoning.
                                                                Activity Synthesis
                                                                  • “What happens to the value of the 6 when it shifts
                                                                    one place to the left?” (It is multiplied by 10.)
 Student Response
                                                                  • “What happens to the value of the 6 when it shifts
  1. Sample response: The value of the 6 in each number
-                                                                   one place to the right?” (It is multiplied by   or 0.1. It
-    is     the value of the number above it. The value of
+                                                                   one place to the right?” (It is multiplied by 1/10 or 0.1. It
+    is 1/10 the value of the number above it. The value of
                                                                    is divided by 10.)
     the 6 is 10 times greater in each number than it is in
     the number below it.                                         • Invite students to share the numbers that they listed
@@ -280,24 +280,24 @@ Lesson Synthesis
 Display 0.1 and 0.01.
 
 “What multiplication equation can I write to describe the relationship between 1 tenth and 1 hundredth?”
-(               ,                )
+(0.1 = 10 × 0.01, 0.01 = 0.1 × 0.1)
 
-“What division equation can I write to describe the relationship between 1 tenth and 1 hundredth?” (                   .)
+“What division equation can I write to describe the relationship between 1 tenth and 1 hundredth?” (0.1 ÷ 10 = 0.01.)
 
 Display 10,000 and 1,000.
 
 “Can you also compare the values of these two numbers, using multiplication and division?” (Yes, I know
-                   and                       .)
+1,000 = 10,000 ÷ 10 and 10,000 = 10 × 1,000.)
 
 “In the next several lessons, we will multiply and divide whole numbers and decimals by 10.”
 
 
 
 
-                                            Grade 5                                  CC BY NC 2024
+                                            Grade 5                                   CC BY NC 2024
                                              Unit 6
                                                               Lesson 1
-                                                                              Illustrative Mathematics®                5
+                                                                               Illustrative Mathematics®                  5
 Suggested Centers
   • Number Puzzles: Multiplication (4–5) , Stage 2: Multi-Digit Factors (Supporting)
   • Five in a Row: Multiplication (3–5), Stage 3: Two-Digit Factors (Supporting)
@@ -315,9 +315,9 @@ Addressing     5.NBT.A.1
      Student Task Statement
       Fill in the blank to make each equation true.
 
-       1.
-       2.
-       3.
+       1. 0.06 × 10 = ___
+       2. 60 = ___ × 0.6
+       3. ___ = 6 ÷ 100
 
 
 Student Response

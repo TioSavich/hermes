@@ -17,14 +17,14 @@ The purpose of this lesson is for students to relate equal shares of objects to 
 Unit 2, Lesson 1
 
 Share Sandwiches
-      Standards                                                       Instructional Routines
-Building On          3.NF.A.1, 3.OA.A.2                            • 5 Practices
-Addressing           5.NF.B.3                                      • MLR2 Collect and Display
-Building Toward      5.NF.B.3                                      • Which Three Go Together?
+      Standards                                                         Instructional Routines
+Building On           3.NF.A.1, 3.OA.A.2                             • 5 Practices
+Addressing            5.NF.B.3                                       • MLR2 Collect and Display
+Building Toward       5.NF.B.3                                       • Which Three Go Together?
 
 
-      Goals                                                           Student Facing Learning Goals
-  • Explain (orally and in writing) a strategy for solving a           Let’s share sandwiches.
+      Goals                                                             Student Facing Learning Goals
+  • Explain (orally and in writing) a strategy for solving a             Let’s share sandwiches.
     whole-number division story problem with a solution
     that is a fraction.
   • Interpret (orally and in writing) a diagram that
@@ -37,13 +37,13 @@ The purpose of this lesson is for students to relate equal shares of objects to 
 
 
 Narrative
-In previous grades, students learned to interpret products of whole numbers, such as        , as the total number of
-objects in 3 groups each containing 5 objects. They interpreted division, such as     , to be either the number of
+In previous grades, students learned to interpret products of whole numbers, such as 3 × 5, as the total number of
+objects in 3 groups each containing 5 objects. They interpreted division, such as 15 ÷ 3, to be either the number of
 groups when 15 things are put in groups of 3 or as the number of things in each group when 15 things are put in 3 equal
 groups. They also solve word problems with whole numbers and having whole-number answers, including problems in
 which remainders must be interpreted. The goal of the next several lessons is to extend this understanding of division
-to quotients like       where the result is not a whole number. Students learned to interpret fractions such as     in a
-previous grade, and this unit will establish that   is the value of the quotient        .
+to quotients like 15 ÷ 6 where the result is not a whole number. Students learned to interpret fractions such as 15/6 in a
+previous grade, and this unit will establish that 15/6 is the value of the quotient 15 ÷ 6.
 
 In this lesson, students use what they know about division to make sense of situations where people equally share
 sandwiches. This lesson is meant to be an invitation to explore the relationships between division and fractions. The
@@ -54,16 +54,16 @@ formally explain them, as that will be the focus of upcoming lessons. Throughout
 is always equal sharing, whether explicitly stated or not.
 
 
-      Access for Students with Disabilities                           Access for English Learners
-  • Representation                                                 • MLR1
+      Access for Students with Disabilities                             Access for English Learners
+  • Representation                                                   • MLR1
 
 
 
 
-                                             Grade 5                                      CC BY NC 2024
-                                              Unit 2
-                                                               Lesson 1
-                                                                                   Illustrative Mathematics®         1
+                                              Grade 5                                     CC BY NC 2024
+                                               Unit 2
+                                                                Lesson 1
+                                                                                   Illustrative Mathematics®           1
 Lesson Timeline                                              Teacher Reflection Questions
                                                              What evidence did you see that each student felt they
  Warm-up                                    10 min
@@ -181,8 +181,8 @@ shared recently. For an example for each approach, look at the Student Responses
                                                              Lesson 1
                                                                                Illustrative Mathematics®                 3
       Student Task Statement                                   Launch
-            __________ sandwiches are shared equally by          • Groups of 2
-                          __________ people.                     • Display the prompt without the questions.
+           __________ sandwiches are shared equally by           • Groups of 2
+                         __________ people.                      • Display the prompt without the questions.
         1. Choose numbers 2, 3, or 5 to fill in the blanks.        __________ sandwiches are shared equally by
            You can use each number only once.                      __________ people.
 
@@ -223,7 +223,7 @@ Sample responses:
     sandwiches are shared by 5 people, each sandwich
                                                                Activity Synthesis
     will be cut into 5 equal pieces and each person will         • Invite previously selected students to display their
-      get   of each sandwich.                                      work side by side without sharing their thinking.
+      get 1/5 of each sandwich.                                    work side by side without sharing their thinking.
                                                                  • “Take a minute to look at each of these diagrams.”
                                                                  • Connect students’ approaches by asking:
                                                                     ◦ “Does each person get more than a full sandwich
@@ -243,8 +243,8 @@ Sample responses:
                                                                       represent equal sharing situations with division
                                                                       expressions. What division expressions can we
                                                                       write to represent each of the situations we
-                                                                      represented?” (       ,     ,     ,     ,     ,
-                                                                           )
+                                                                      represented?” (2 ÷ 3, 3 ÷ 2, 2 ÷ 5, 5 ÷ 2, 3 ÷ 5,
+                                                                      5 ÷ 3)
 
 
 
@@ -326,7 +326,7 @@ Student Response
        equal pieces
                                                                 • Remind students to borrow language from the
      ◦ Diagrams shows different shaped sandwiches.                display as needed.
-                                                                • Display:
+                                                                • Display: 2 ÷ 3
                                                                 • “How does this expression represent the situation
                                                                   that Han drew?” (There are 2 sandwiches being
                                                                   shared by 3 people.)
@@ -398,7 +398,7 @@ Student Response
      ◦ Each person gets one fourth of each sandwich.
      ◦ Each person gets one half plus one fourth of a sandwich.
 
-     ◦ Each person gets     of a sandwich.
+     ◦ Each person gets 3/4 of a sandwich.
 
 
 

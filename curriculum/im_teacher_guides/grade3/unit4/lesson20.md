@@ -81,7 +81,7 @@ Warm-up                                                                         
 Number Talk: Multiplication and Division
 
       Standards                                                     Instructional Routines
-Addressing      3.OA.B.5, 3.OA.C.7                               • Number Talk
+Addressing      3.OA.B.5, 3.OA.C.7                              • Number Talk
 
 
 The purpose of this Number Talk is to elicit strategies and understandings students have for using multiplication to help
@@ -89,30 +89,30 @@ them divide. These understandings help students develop fluency and will be help
 need to find the value of quotients.
 
 
-      Student Task Statement                                   Launch
-      Find the value of each expression mentally.                • Display the first expression.
+      Student Task Statement                                  Launch
+      Find the value of each expression mentally.               • Display the first expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
-                                                                   explain how you got it.”
-        •
-                                                                 • 1 minute: quiet think time
-        •
-        •
-                                                               Activity
+        • 3 × 5                                                 • “Give me a signal when you have an answer and can
+                                                                  explain how you got it.”
+        • 6 × 5
+                                                                • 1 minute: quiet think time
+        • 10 × 5
+        • 65 ÷ 5
+                                                              Activity
 
-Student Response                                                 • Record answers and strategies.
-                                                                 • Keep expressions and work displayed.
+Student Response                                                • Record answers and strategies.
+                                                                • Keep expressions and work displayed.
   • 15: I just know it.
-                                                                 • Repeat with each expression.
+                                                                • Repeat with each expression.
   • 30: It’s double 15, since 6 is double 3.
   • 50: I just know it.
-                                                               Activity Synthesis
-  • 13: I know that 65 is         . There are 10 groups of
-    5 in 50 since              and 3 groups of 5 in 15           • “How does thinking about multiplication help you
-    since            . That’s 13 groups of 5 in 65.                divide?” (I can think about what number multiplied by
-                                                                   5 will be 65. I can break that into smaller products I
-                                                                   know.)
-                                                                 • Consider asking:
+                                                              Activity Synthesis
+  • 13: I know that 65 is 50 + 15. There are 10 groups of
+    5 in 50 since 5 × 10 = 50 and 3 groups of 5 in 15           • “How does thinking about multiplication help you
+    since 5 × 3 = 15. That’s 13 groups of 5 in 65.                divide?” (I can think about what number multiplied by
+                                                                  5 will be 65. I can break that into smaller products I
+                                                                  know.)
+                                                                • Consider asking:
                                                                     ◦ “Who can restate _____’s reasoning in a different
                                                                       way?”
                                                                     ◦ “Did anyone use the same strategy but would
@@ -126,7 +126,7 @@ Student Response                                                 • Record answ
 
                                                Grade 3                               CC BY NC 2024
                                                 Unit 4
-                                                             Lesson 20
+                                                            Lesson 20
                                                                               Illustrative Mathematics®               2
 Activity 1                                                                                                      15 min
 
@@ -156,7 +156,7 @@ During the Activity Synthesis, discuss how place-value units play a role in all 
 
       Student Task Statement                                     Launch
        1. Lin, Priya, and Tyler used different strategies to       • Groups of 2
-          find the value of        . Their work is shown.          • “Take a couple minutes to make sense of Lin, Priya,
+          find the value of 78 ÷ 3. Their work is shown.           • “Take a couple minutes to make sense of Lin, Priya,
            Lin                                                       and Tyler’s work.”
                                                                    • 2 minutes: quiet think time
 
@@ -201,10 +201,10 @@ Student Response
                                                                    • Consider asking: “What new ideas about dividing
         1 of the tens into 10 ones.
                                                                      numbers did you learn and would like to try? Talk to
-      ◦ Priya knew that              and another                     a new partner about why you’d like to try them.”
+      ◦ Priya knew that 3 × 10 = 30 and another 3 × 10               a new partner about why you’d like to try them.”
         is another 30, which makes 60. To get to 78, 18 is
-        needed, and 18 is      . Each group has
-                    .
+        needed, and 18 is 3 × 6. Each group has
+        10 + 10 + 6.
       ◦ Tyler knew that 3 groups of 20 make 60, and that
         adding another 3 groups of 6 gives 18 more to
         get to 78. He added 20 and 6.
@@ -250,10 +250,10 @@ Materials to Gather                                             Materials to Cop
       Find the value of each quotient. Explain or show            • Groups of 2
       your reasoning. Organize your work so it can be             • Give students access to base-ten blocks and grid
       followed by others.                                           paper.
-       1.
+       1. 80 ÷ 5
 
-       2.                                                       Activity
-       3.                                                         • “Find the value of each quotient. You can use
+       2. 68 ÷ 4                                                Activity
+       3. 91 ÷ 7                                                  • “Find the value of each quotient. You can use
                                                                     whatever strategy or representation you prefer.”
       If you have time: The 84 students on a field trip are
       put into groups. Each group has 14 students. How            • 8–10 minutes: independent work time
@@ -264,7 +264,7 @@ Student Response
                                                                   • “Share your favorite way to divide with your partner.”
  1. 16. Sample response: 5 groups of 10 is 50. 5 groups
                                                                   • 2–3 minutes: partner discussion
-    of 6 is 30.          .
+    of 6 is 30. 10 + 6 = 16.
  2. 17. Sample response:
                                                                 Activity Synthesis
                                                                   • Have previously selected students share their
@@ -272,13 +272,13 @@ Student Response
                                                                     representations students use.
  3. 13. Sample response: If I put 70 in 7 groups, that's 10       • For each problem, consider polling the class on the
     in each group. If I put the remaining 21 into the 7             strategy they used.
-    groups, that's 3 more in each group.               .
+    groups, that's 3 more in each group. 10 + 3 = 13.
 If you have time: 6 groups. Sample responses:
 
   • A base-ten drawing showing 6 tens and 24 ones
     arranged into 6 groups of 1 ten and 4 ones each.
-  • I know             and       is twice 28, which is
-    56. Adding another 28 makes 84, so             .
+  • I know 2 × 14 = 28 and 4 × 14 is twice 28, which is
+    56. Adding another 28 makes 84, so 6 × 14 = 84.
 
 
 
@@ -340,7 +340,7 @@ No response required.                                              • If time p
 
 
                                                                 Activity Synthesis
-                                                                   • Display:        and        .
+                                                                   • Display: 92 ÷ 4 and 72 ÷ 3.
                                                                    • “Suppose these are the two cards you draw. How
                                                                      would you decide which expression has the greatest
                                                                      value?”
@@ -368,7 +368,7 @@ putting them into equal groups because I can use tens and ones to divide.)
 
 
 
-Cool-down                                                                                                    5 min
+Cool-down                                                                                                   5 min
 
 One More Division
 
@@ -377,26 +377,26 @@ Addressing     3.OA.B.5, 3.OA.C.7
 
 
      Student Task Statement
-      Find the value of        . Explain or show your reasoning.
+      Find the value of 96 ÷ 6. Explain or show your reasoning.
 
 
 Student Response
 16. Sample responses:
   • Students make a drawing of 6 groups with 1 ten and 6 ones in each group.
-  • I know that           is 60 and     is 36, and             .            .
+  • I know that 10 × 6 is 60 and 6 × 6 is 36, and 60 + 36 = 96. 10 + 6 = 16.
 
 
 Responding to Student Thinking
-Students do not find the value of        .                     Next Day Supports
-                                                               Before the Warm-up, invite students to work in small
-                                                               groups to discuss a correct response to this Cool-down.
+Students do not find the value of 96 ÷ 6.                     Next Day Supports
+                                                              Before the Warm-up, invite students to work in small
+                                                              groups to discuss a correct response to this Cool-down.
 
 
 
 
-                                             Grade 3                                   CC BY NC 2024
-                                              Unit 4
-                                                           Lesson 20
-                                                                                Illustrative Mathematics®            7
+                                            Grade 3                                   CC BY NC 2024
+                                             Unit 4
+                                                          Lesson 20
+                                                                               Illustrative Mathematics®            7
 ```
 

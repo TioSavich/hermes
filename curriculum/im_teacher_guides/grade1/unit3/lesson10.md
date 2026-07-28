@@ -92,12 +92,12 @@ lesson when students will need to be able to solve story problems with 10 and so
       Student Task Statement                                  Launch
       Find the value of each expression mentally.               • Display one expression.
 
-        •                                                       • “Give me a signal when you have an answer and can
+        • 10 + 4                                                • “Give me a signal when you have an answer and can
                                                                   explain how you got it.”
-        •
+        • 14- 4
                                                                 • 1 minute: quiet think time
-        •
-        •
+        • 5 + 10
+        • 15 - 5
                                                               Activity
 
 Student Response                                                • Record answers and strategies.
@@ -107,9 +107,9 @@ Student Response                                                • Record answe
 
   • 10: I counted back from 14...13, 12, 11, 10.
   • 15: 10 and 5 is 15.                                       Activity Synthesis
-  • 10: I know that             , so               .            • “How can you use the first problem to help you find
+  • 10: I know that 10 + 5 = 15, so 15 - 5 = 10.                • “How can you use the first problem to help you find
                                                                   the difference in the second problem?” (If
-                                                                              , then I know that             .)
+                                                                  10 + 4 = 14, then I know that 14- 4 = 10 .)
                                                                 • “Did anyone approach the problem in a different
                                                                   way?”
 
@@ -133,7 +133,7 @@ subtraction with teen numbers. Students are presented with story problem types t
 discussion about methods they used to find the answer.
 
 Students solve the problems in any way that makes sense to them. They may build values and add-on or take-away, or
-use what they have learned about the        structure of teen numbers. Students can write many different equations to
+use what they have learned about the 10 + n structure of teen numbers. Students can write many different equations to
 represent each problem or how they solved it. It’s important that students are able to relate their equations to the story
 problem and explain their work (MP2, MP4).
 
@@ -166,9 +166,9 @@ Materials to Gather
           Show your thinking using drawings, numbers,              or that you might like to collect?” (baseball cards,
           or words.                                                marbles, rocks)
                                                                  • 30 seconds: quiet think time
-           Equation:
+           Equation: ___
                                                                  • 1 minute: partner discussion
-           Equation:
+           Equation: ___
                                                                  • Share responses.
        2. Priya collects comic books.
                                                                  • “Let’s solve some story problems about collections.”
@@ -178,50 +178,50 @@ Materials to Gather
           Show your thinking using drawings, numbers,
           or words.                                              • Read the Task Statement.
 
-           Equation:                                             • “Write 2 equations to match each of these stories.”
+           Equation: ___                                         • “Write 2 equations to match each of these stories.”
                                                                  • 6 minutes: independent work time
-           Equation:
+           Equation: ___
 
 
                                           Grade 1                                    CC BY NC 2024
                                            Unit 3
                                                            Lesson 10
                                                                               Illustrative Mathematics®              3
-Student Response                                                  • 4 minutes: partner discussion
-                                                                  • Monitor for a student who wrote an addition
- 1. 10 baseball caps. Sample response:                    ,
-                                                                    equation and one who wrote a subtraction equation
-                  : I know that        is 15, so I knew             for the problem about Priya.
+Student Response                                                • 4 minutes: partner discussion
+                                                                • Monitor for a student who wrote an addition
+ 1. 10 baseball caps. Sample response: 5 + 10 = 15 ,
+                                                                  equation and one who wrote a subtraction equation
+                  : I know that 10 + 5 is 15, so I knew           for the problem about Priya.
     that if he started with 5 and had 15 at the end, then
     he must have gotten 10.
-                                                                Activity Synthesis
- 2. 10 comic books. Sample response:                  ,
-                                                                  • Invite previously identified students to share their
+                                                              Activity Synthesis
+ 2. 10 comic books. Sample response: 10 + 3 = 13 ,
+                                                                • Invite previously identified students to share their
                   . I used my 10-frame to make 13. I took
-                                                                    equations for Priya’s problem.
+                                                                  equations for Priya’s problem.
     away the 3 that she got, and saw that there were 10
-    left. She started with 10 comic books.                        • If no student writes a subtraction equation, display
-                                                                                   .
+    left. She started with 10 comic books.                      • If no student writes a subtraction equation, display
+                                                                  13 - 3 =       .
 
-                                                                  • “How do the equations match the story problem?
-                                                                    How are they related to each other?” (They show that
-                                                                    the total number of comic books is 13 and that 3 is
-                                                                    one part and 10 is the other part. They all show that
-                                                                    10 is the unknown number. The subtraction
-                                                                    equation takes 3 away from the 13 to find the other
-                                                                    part. The addition equation adds 3 to some number
-                                                                    to get 13.)
-                                                                  • “Which equation makes more sense to you? Why?”
-                                                                    (Addition, because I know that to get from 3 to 13, I
-                                                                    have to add 10. Subtraction, because I know what
-                                                                    number to start with and how many to take away. I
-                                                                    don't know both numbers to add in the addition
-                                                                    equation.)
-
-
+                                                                • “How do the equations match the story problem?
+                                                                  How are they related to each other?” (They show that
+                                                                  the total number of comic books is 13 and that 3 is
+                                                                  one part and 10 is the other part. They all show that
+                                                                  10 is the unknown number. The subtraction
+                                                                  equation takes 3 away from the 13 to find the other
+                                                                  part. The addition equation adds 3 to some number
+                                                                  to get 13.)
+                                                                • “Which equation makes more sense to you? Why?”
+                                                                  (Addition, because I know that to get from 3 to 13, I
+                                                                  have to add 10. Subtraction, because I know what
+                                                                  number to start with and how many to take away. I
+                                                                  don't know both numbers to add in the addition
+                                                                  equation.)
 
 
-Activity 2                                                                                                     15 min
+
+
+Activity 2                                                                                                   15 min
 
 Related Equations
 
@@ -244,10 +244,10 @@ the equation true (MP5).
 
 
 
-                                          Grade 1                                     CC BY NC 2024
+                                          Grade 1                                   CC BY NC 2024
                                            Unit 3
-                                                              Lesson 10
-                                                                               Illustrative Mathematics®                4
+                                                            Lesson 10
+                                                                             Illustrative Mathematics®                4
 Required Materials
 Materials to Gather
   • Connecting cubes or two-color counters: Activity 2
@@ -257,7 +257,7 @@ Materials to Gather
      Student Task Statement                                  Launch
      Mai is finding the unknown number                         • Groups of 2
 
-     in                   .                                    • Give students access to double 10-frames and
+     in 16- 10 =          .                                    • Give students access to double 10-frames and
                                                                  connecting cubes or two-color counters.
      She says, “I can use what I know about 10 and some        • Read the problem about Mai.
      ones to help.”                                            • “What does Mai mean?” (16 is 10 and some more
@@ -267,30 +267,30 @@ Materials to Gather
      Show your thinking using drawings, numbers, or            • 1 minute: partner discussion
      words.                                                    • Share responses.
 
-       1.
+       1. 15 - 10 =
                                                              Activity
-       2.                                                      • Read the Task Statement.
+       2. = 13 - 3                                             • Read the Task Statement.
                                                                • 4 minutes: independent work time
-       3.                                                      • 4 minutes: partner discussion
+       3. 8 = 18 -                                             • 4 minutes: partner discussion
 
 
        4.                                                    Activity Synthesis
                                                                • Share solutions for each problem.
 
-Student Response                                               • “How are                 and                related?”
+Student Response                                               • “How are = 13 - 3        and                related?”
                                                                   (One is an addition problem and one is a subtraction
- 1. 5. Sample response: I know that         is 15, so I
+ 1. 5. Sample response: I know that 10 + 5 is 15, so I
                                                                   problem, but you can use addition or subtraction for
-    know          is 5.
-                                                                  either one. For               , you can subtract or
+    know 15 - 10 is 5.
+                                                                  either one. For = 13 - 3      , you can subtract or
  2. 10. Sample response: I put 13 on my 10-frames. I
-                                                                  change it to              . For              , you can
+                                                                  change it to               . For             , you can
     took away 3 and saw that one 10-frame was filled.
-                                                                  add or change it to               . Both have an
+                                                                  add or change it to 12- 2 =        . Both have an
  3. 10. Sample response: I put 18 on my 10-frames. I
                                                                   unknown value of 10.)
     took away 8 and saw that one 10-frame was filled.
- 4. 10. Sample response: I know         is 12.
+ 4. 10. Sample response: I know 10 + 2 is 12.
 
 
 
@@ -302,16 +302,16 @@ If students take away using drawings for each equation, consider asking:
 
 
 
-                                         Grade 1                                   CC BY NC 2024
-                                          Unit 3
+                                          Grade 1                                  CC BY NC 2024
+                                           Unit 3
                                                           Lesson 10
                                                                             Illustrative Mathematics®                   5
 Lesson Synthesis
 Display 17 on a double 10-frame.
 
-Display               . “Today we solved problems and completed equations with 10 and some more. We saw that
+Display - 10 = 7      . “Today we solved problems and completed equations with 10 and some more. We saw that
 sometimes we can use addition to help us with subtraction. How can using addition help you find the number that
-makes this equation true?” (I know that           , so the unknown number is 17.)
+makes this equation true?” (I know that 7 + 10 = 17, so the unknown number is 17.)
 
 Display               . “How can using subtraction help you find the number that makes this equation true?” (I show 17
 on the 10-frames and see that there’s 10 and 7 more. If I take away the 10, there’s 7 left.)
@@ -319,7 +319,7 @@ on the 10-frames and see that there’s 10 and 7 more. If I take away the 10, th
 
 
 
-Cool-down                                                                                                        5 min
+Cool-down                                                                                                       5 min
 
 What's the Unknown?
 
@@ -331,10 +331,10 @@ Addressing      1.NBT.B.2.b, 1.OA.D.8
       Find the number that makes each equation true.
 
 
-       1.
+       1. 16- 10 =
 
 
-       2.
+       2. 19 = 10 +
 
 
        3.
@@ -345,22 +345,22 @@ Addressing      1.NBT.B.2.b, 1.OA.D.8
 
 
 Student Response
- 1. 6. Sample response: I know 16 is          . If I subtract 10 from 16, then I have 6 left.
+ 1. 6. Sample response: I know 16 is 10 + 6. If I subtract 10 from 16, then I have 6 left.
  2. 9. Sample response: I know that 19 is made of a ten and 9 ones.
- 3. 10. Sample response: I know 17 is          . So I know if I have 17, I have to take away 10 to get 7.
+ 3. 10. Sample response: I know 17 is 10 + 7. So I know if I have 17, I have to take away 10 to get 7.
 
 
 Responding to Student Thinking
-Students write numbers other than 6, 9, and 10 for the           Next Day Supports
-unknown values.                                                  During the activities, ask students to draw a picture or use
-                                                                 counters to represent a problem before solving.
+Students write numbers other than 6, 9, and 10 for the          Next Day Supports
+unknown values.                                                 During the activities, ask students to draw a picture or use
+                                                                counters to represent a problem before solving.
 
 
 
 
-                                           Grade 1                                       CC BY NC 2024
+                                           Grade 1                                     CC BY NC 2024
                                             Unit 3
-                                                             Lesson 10
-                                                                                  Illustrative Mathematics®              6
+                                                            Lesson 10
+                                                                                Illustrative Mathematics®               6
 ```
 

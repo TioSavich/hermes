@@ -70,17 +70,17 @@ Lesson Timeline                                               Teacher Reflection
                                              Unit 6
                                                             Lesson 4
                                                                               Illustrative Mathematics®               1
- Cool-down                                           5 min
+ Cool-down                                     5 min
 
 
 
-Warm-up                                                                                                          10 min
+Warm-up                                                                                                        10 min
 
 Number Talk: Patterns in Multiplication
 
-     Standards                                                             Instructional Routines
-Building On              4.NBT.A.1                                      • Number Talk
-Building Toward          4.NBT.B.5
+     Standards                                                       Instructional Routines
+Building On          4.NBT.A.1                                   • Number Talk
+Building Toward      4.NBT.B.5
 
 
 This Number Talk encourages students to rely on what they know about their place value and properties of operations
@@ -89,41 +89,41 @@ understanding of multiplication to generate patterns and explain features of pat
 rules.
 
 
-     Student Task Statement                                           Launch
-      Find the value of each expression mentally.                       • Display one expression.
+     Student Task Statement                                    Launch
+      Find the value of each expression mentally.                • Display one expression.
 
-          •                                                             • “Give me a signal when you have an answer and can
-                                                                          explain how you got it.”
-          •
-                                                                        • 1 minute: quiet think time
-          •
-          •
-                                                                      Activity
+        • 20 × 3                                                 • “Give me a signal when you have an answer and can
+                                                                   explain how you got it.”
+        • 21 × 3
+                                                                 • 1 minute: quiet think time
+        • 40 × 3
+        • 42 × 3
+                                                               Activity
 
-Student Response                                                        • Record answers and strategy.
-                                                                        • Keep expressions and work displayed.
-  • 60: 20 is             and              is        or 60.
-                                                                        • Repeat with each expression.
-  • 63:              is one more group of 3 than           , or is
-                            .
-  • 120:                                                              Activity Synthesis
-      ◦                                                                 • “How can one of the previous expressions help us
-      ◦              is twice        , so it is twice 60, which is        find the value of      ?” (We can take      and
-              120.                                                        double it to get     . We can take       and add 2
-                                                                          threes.)
+Student Response                                                 • Record answers and strategy.
+                                                                 • Keep expressions and work displayed.
+  • 60: 20 is 2 × 10 and 3 × 2 × 10 is 6 × 10 or 60.
+                                                                 • Repeat with each expression.
+  • 63: 21 × 3 is one more group of 3 than 20 × 3, or is
+    (20 × 3) + (1 × 3).
+  • 120:                                                       Activity Synthesis
+      ◦ (4 × 3) × 10 = 12 × 10 = 120                             • “How can one of the previous expressions help us
+      ◦ 40 × 3 is twice 20 × 3, so it is twice 60, which is        find the value of 42 × 3?” (We can take 21 × 3 and
+        120.                                                       double it to get 42 × 3. We can take 40 × 3 and add 2
+                                                                   threes.)
   • 126:
-      ◦               is 2 more groups of 3 (or 6 more) than
-                     .
-      ◦ 42 is twice 21, so       is two times as much as
-                or two times 63, which is 126.
+      ◦ 42 × 3 is 2 more groups of 3 (or 6 more) than
+        40 × 3.
+      ◦ 42 is twice 21, so 42 × 3 is two times as much as
+        21 × 3 or two times 63, which is 126.
 
 
 
 
-                                                    Grade 4                                CC BY NC 2024
-                                                     Unit 6
-                                                                     Lesson 4
-                                                                                    Illustrative Mathematics®             2
+                                              Grade 4                                 CC BY NC 2024
+                                               Unit 6
+                                                              Lesson 4
+                                                                               Illustrative Mathematics®                2
 Activity 1                                                                                                     20 min
 
 A Rule with Two Digits

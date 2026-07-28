@@ -85,11 +85,11 @@ understanding. This will be helpful later in this lesson when students add a two
      Student Task Statement                                    Launch
       Decide if each statement is true or false.                 • Display 1 statement.
       Be prepared to explain your reasoning.                     • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 80 + 5 = 5 + 80                                          statement is true and can explain how you know.”
                                                                  • 1 minute: quiet think time
-        •
+        • 70 + 1 = 80 + 1
                                                                Activity
-        •
+        • 20 + 6 = 6 + 30
                                                                  • Share and record answers and strategy.
                                                                  • Repeat with each equation.
 Student Response
@@ -140,16 +140,16 @@ Materials to Gather
      Find the number that makes each equation true.               • Groups of 2
      Show your thinking using drawings, numbers, or               • Give students access to connecting cubes in towers
      words.                                                         of 10 and singles.
-       1.
+       1. 37 + 20 =
 
                                                                 Activity
-       2.                                                         • Read the Task Statement.
+       2. 60 + 23 =                                               • Read the Task Statement.
                                                                   • 10 minutes: partner work time
-       3.                                                         • Monitor for students who find the sum of          by:
+       3. 48 + 50 =                                               • Monitor for students who find the sum of 30 + 65 by:
                                                                      ◦ Drawing and counting by ten, then one.
-       4.                                                            ◦ Counting on from 65 by ten: 75, 85, 95.
+       4. = 54 + 20                                                  ◦ Counting on from 65 by ten: 75, 85, 95.
                                                                      ◦ Combining 3 tens and 6 tens, then adding 5
-       5.                                                              ones.
+       5. 30 + 65 =                                                    ones.
 
 
                                                                 Activity Synthesis
@@ -166,8 +166,8 @@ Student Response                                                    students sta
     6 tens = 8 tens. 8 tens + 3 ones is 83.
  3. 98. Sample response: I showed 48 then counted on
     by tens: 58, 68, 78, 98.
- 4. 74. Sample response: I thought of 54 as         .
-                 .            .
+ 4. 74. Sample response: I thought of 54 as 50 + 4.
+    50 + 20 = 70. 70 + 4 = 74.
  5. 95. Sample response: I started with 65 and then
     counted on 3 tens.
 
@@ -248,7 +248,7 @@ Materials to Gather
 
 
 Lesson Synthesis
-Display        .
+Display 34 + 40.
 
 “Today we added tens to two-digit numbers. What do we know about adding these numbers?” (It’s like counting on by
 tens. You can think of it as 34 and 4 more tens. You can just add the number of tens in each number. For example, 3
@@ -268,9 +268,9 @@ Addressing     1.NBT.C.4
      Student Task Statement
       Find the value of each sum.
 
-       1.
-       2.
-       3.
+       1. 34 + 40
+       2. 50 + 41
+       3. 62 + 20
        4. Pick 1 expression from above.
           Show your thinking using drawings, numbers, or words.
 
@@ -308,7 +308,7 @@ We represented 2-digit numbers in many different ways.
 
                                               6 tens and 5 ones
 
-
+                                                   60 + 5
 
                                                      65
 

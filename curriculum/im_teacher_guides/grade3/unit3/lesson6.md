@@ -89,17 +89,17 @@ use of structure (MP7).
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 300 + 156                                              • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 299 + 156
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 303 + 156
+        • 204 + 376
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
                                                                  • Keep expressions and work displayed.
-  • 456:             . I added hundreds to 156 to make it
+  • 456: 300 + 156. I added hundreds to 156 to make it
     456.                                                         • Repeat with each expression.
 
   • 455: I noticed that it was just like the first problem,
@@ -133,7 +133,7 @@ Student Response                                                 • Record answ
 Just Ones
 
      Standards
-Addressing        3.NBT.A.2
+Addressing      3.NBT.A.2
 
 
 The purpose of this activity is for students to compare two methods to record a newly composed ten or hundred when
@@ -154,7 +154,7 @@ methods, and discuss the similarities and differences (MP3).
 
      Student Task Statement                                     Launch
       Two methods of recording the addition of                    • Groups of 2
-               are shown.                                         • “Here are two methods of recording the sum of 657
+      657 + 286 are shown.                                        • “Here are two methods of recording the sum of 657
       Method 1                     Method 2                         and 286. Take a minute and think about how the
                                                                     addition is recorded differently in each example.”
                                                                   • 1 minute: quiet think time
@@ -168,13 +168,13 @@ methods, and discuss the similarities and differences (MP3).
        2. Try using the second method of recording to             • 2–3 minutes: partner discussion
           add these numbers:                                      • Share student responses.
 
-             a.                                                   • “Now work with your partner to try the second
+             a. 602 + 179                                         • “Now work with your partner to try the second
                                                                     method of recording to find each sum in the second
-             b.
+             b. 493 + 161
                                                                     set of problems.”
-             c.
+             c. 438 + 364
                                                                   • 5–7 minutes: partner work time
-             d.
+             d. 329 + 381
                                                                   • Monitor for students’ work, in which the second
                                                                     method of recording is used, to share during the
 Student Response                                                    Activity Synthesis.
@@ -236,11 +236,11 @@ efficiently and accurately for the given problem.
        Use a strategy of your choice to find the value of         • Groups of 2
        each sum. Show your reasoning. Organize your               • “We’ve been learning about addition algorithms for
        work so it can be followed by others.                        the last few lessons. Recall that an algorithm is a set
-        1.                                                          of steps that works every time as long as the steps
+        1. 199 + 348                                                of steps that works every time as long as the steps
                                                                     are carried out correctly. But you know a lot of ways
-        2.
+        2. 264 + 359
                                                                     to add numbers and a lot of representations for
-        3.                                                          showing your work, such as base-ten diagrams,
+        3. 203 + 75                                                 showing your work, such as base-ten diagrams,
 
 
 
@@ -248,47 +248,47 @@ efficiently and accurately for the given problem.
                                               Unit 3
                                                              Lesson 6
                                                                                 Illustrative Mathematics®                4
-                                                                   number lines, and writing words or equations. If it’s
-                                                                   not a set of steps that works every time, we call it a
-                                                                   ‘strategy.’”
-                                                                 • “In this activity, you’re going to have an opportunity
-       4.                                                          to find the value of each of these sums, using an
-       5.                                                          algorithm or other strategy of your choice.”
+                                                                 number lines, and writing words or equations. If it’s
+                                                                 not a set of steps that works every time, we call it a
+                                                                 ‘strategy.’”
+                                                               • “In this activity, you’re going to have an opportunity
+      4. 316 + 198                                               to find the value of each of these sums, using an
+      5. 399 + 499                                               algorithm or other strategy of your choice.”
 
 
-Student Response                                               Activity
- 1. 547. Sample response: I changed 199 to 200 since it          • “Find the value of each sum. Later, you’ll have a
-    was so close to 200. Then I found            , which is        chance to share your work.”
-    548. Then I subtracted the 1 I added to 199 to get           • 7–10 minutes: independent work time
+Student Response                                             Activity
+ 1. 547. Sample response: I changed 199 to 200 since it        • “Find the value of each sum. Later, you’ll have a
+    was so close to 200. Then I found 200 + 348, which is        chance to share your work.”
+    548. Then I subtracted the 1 I added to 199 to get         • 7–10 minutes: independent work time
     547.
-                                                                 • Identify students who used the same strategy to add
- 2. 623. Sample response:                                          and those who used different strategies.
-                                                                 • Choose a few problems for students to discuss.
-                                                                   Consider selecting           (the second
-                                                                   expression) and           (the last expression),
-                                                                   which lend themselves to be evaluated with an
-                                                                   algorithm and another strategy, respectively.
+                                                               • Identify students who used the same strategy to add
+ 2. 623. Sample response:                                        and those who used different strategies.
+                                                               • Choose a few problems for students to discuss.
+                                                                 Consider selecting 264 + 359 (the second
+                                                                 expression) and 399 + 499 (the last expression),
+                                                                 which lend themselves to be evaluated with an
+                                                                 algorithm and another strategy, respectively.
  3. 278. Sample response: I thought of the 3 with the 75,
-                                                                 • “Find a partner that added the same way you did.
+                                                               • “Find a partner that added the same way you did.
     which made 78. Then I put the 78 with the 200 to
-                                                                   Discuss your reasoning.”
+                                                                 Discuss your reasoning.”
     make 278.
-                                                                 • 1–2 minutes: partner discussion
+                                                               • 1–2 minutes: partner discussion
  4. 514. Sample response:
-                                                                 • “Now find a partner who found the sum in a different
-                                                                   way than you. Discuss your reasoning.”
-                                                                 • 2–3 minutes: partner discussion
-                                                                 • Repeat the discussion with 1 or 2 expressions, or as
-                                                                   many as time permits.
+                                                               • “Now find a partner who found the sum in a different
+                                                                 way than you. Discuss your reasoning.”
+                                                               • 2–3 minutes: partner discussion
+                                                               • Repeat the discussion with 1 or 2 expressions, or as
+                                                                 many as time permits.
 
 
-                                                               Activity Synthesis
+                                                             Activity Synthesis
  5. 898. Sample response: I made the 399 a 400 and the
-    499 a 500 to make them easier to add. I added 400            • Invite 4 or 5 students to share a strategy or an
-    and 500 and got 900. Then I subtracted the 1 I added           algorithm that someone they talked to used.
+    499 a 500 to make them easier to add. I added 400          • Invite 4 or 5 students to share a strategy or an
+    and 500 and got 900. Then I subtracted the 1 I added         algorithm that someone they talked to used.
     to 399 and the 1 I added to 499. This makes 898.
-                                                                 • “What strategies or algorithms do you want to
-                                                                   practice more?”
+                                                               • “What strategies or algorithms do you want to
+                                                                 practice more?”
 
 
 
@@ -302,10 +302,10 @@ relationship that makes it easy to use a strategy, then I’ll use one. But if n
 
 
 
-                                            Grade 3                                  CC BY NC 2024
-                                             Unit 3
-                                                              Lesson 6
-                                                                              Illustrative Mathematics®                5
+                                           Grade 3                                 CC BY NC 2024
+                                            Unit 3
+                                                            Lesson 6
+                                                                            Illustrative Mathematics®                5
 Suggested Centers
   • Target Numbers (1–5), Stage 6: Add Hundreds, Tens, and Ones (Addressing)
   • Five in a Row: Addition and Subtraction (1–3) , Stage 8: Add within 1,000, with Composing (Addressing)
@@ -322,14 +322,14 @@ Addressing     3.NBT.A.2
 
 
      Student Task Statement
-      Would you use an algorithm or another strategy to find the value of            ?
+      Would you use an algorithm or another strategy to find the value of 299 + 179?
 
       Explain your reasoning.
 
 
 Student Response
 Sample response: Instead of using an algorithm, I would take away 1 from 179 and add it to the 299. Then I can find
-         , which is 478.
+300 + 178, which is 478.
 
 
 Responding to Student Thinking

@@ -68,12 +68,12 @@ Lesson Timeline                                               Teacher Reflection
                                             Unit 4
                                                             Lesson 6
                                                                              Illustrative Mathematics®               1
-Warm-up                                                                                                         10 min
+Warm-up                                                                                                       10 min
 
 Number Talk: Three Factors
 
-     Standards                                                      Instructional Routines
-Addressing       5.NBT.B.5                                       • Number Talk
+     Standards                                                     Instructional Routines
+Addressing     5.NBT.B.5                                       • Number Talk
 
 
 The purpose of this Number Talk is to elicit the strategies and understandings students have for multiplying three
@@ -84,43 +84,43 @@ Students have an opportunity to look for and make use of structure (MP7) because
 and the distributive property to find a product.
 
 
-     Student Task Statement                                    Launch
-     Find the value of each product mentally.                    • Display one expression.
+     Student Task Statement                                  Launch
+     Find the value of each product mentally.                  • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
-                                                                   explain how you got it.”
-        •
-                                                                 • 1 minute: quiet think time
-        •
-        •
-                                                               Activity
+        • (2 × 3) × 10                                         • “Give me a signal when you have an answer and can
+                                                                 explain how you got it.”
+        • (2 × 40) × 10
+                                                               • 1 minute: quiet think time
+        • (2 × 200) × 10
+        • (2 × 243) × 10
+                                                             Activity
 
-Student Response                                                 • Record answers and strategies.
-                                                                 • Keep expressions and work displayed.
-  • 60: I know               and 10 times as much is 60.
-                                                                 • Repeat with each expression.
-  • 800: I know               and 100 times as much is 800.
-  • 4,000: I know              and 1,000 times as much is
-    4,000.                                                     Activity Synthesis
-  • 4,860: I added up the three numbers from the other           • “How did multiplying all the products by 10 influence
-    calculations.                                                  the result?” (It made the result ten times as big, so
-                                                                   the digits all shift one place to the left and it has a
-                                                                   zero at the end.)
-                                                                 • “How are the products              and
-                                                                   related?” (The second one is ten times as big, so the
-                                                                   digits shift one place to the left and it has a 0 at the
-                                                                   end.)
-                                                                 • “You can use this idea today when we apply the
-                                                                   standard algorithm to find the products of a three-
-                                                                   digit number and a two-digit number.”
-
-
+Student Response                                               • Record answers and strategies.
+                                                               • Keep expressions and work displayed.
+  • 60: I know 2 × 3 = 6 and 10 times as much is 60.
+                                                               • Repeat with each expression.
+  • 800: I know 2 × 4 = 8 and 100 times as much is 800.
+  • 4,000: I know 2 × 2 = 4 and 1,000 times as much is
+    4,000.                                                   Activity Synthesis
+  • 4,860: I added up the three numbers from the other         • “How did multiplying all the products by 10 influence
+    calculations.                                                the result?” (It made the result ten times as big, so
+                                                                 the digits all shift one place to the left and it has a
+                                                                 zero at the end.)
+                                                               • “How are the products 2 × 243 and 20 × 243
+                                                                 related?” (The second one is ten times as big, so the
+                                                                 digits shift one place to the left and it has a 0 at the
+                                                                 end.)
+                                                               • “You can use this idea today when we apply the
+                                                                 standard algorithm to find the products of a three-
+                                                                 digit number and a two-digit number.”
 
 
-                                              Grade 5                                 CC BY NC 2024
-                                               Unit 4
-                                                              Lesson 6
-                                                                               Illustrative Mathematics®                 2
+
+
+                                           Grade 5                                  CC BY NC 2024
+                                            Unit 4
+                                                           Lesson 6
+                                                                             Illustrative Mathematics®                 2
 Activity 1                                                                                                    25 min
                                                                                                               PLC Activity
 Compose a New Unit
@@ -135,7 +135,7 @@ choice, and then analyze the same example, with the composition recorded above t
 different strategies when they try on their own including:
 
   • Partial products.
-  • Mentally accounting for the hundred that is composed when finding the product           .
+  • Mentally accounting for the hundred that is composed when finding the product 3 × 40.
 After students discuss how composing new units is recorded in the algorithm, they find the value of two multiplication
 expressions, using the standard algorithm.
 
@@ -151,25 +151,25 @@ understanding of place value to make sense of the method (MP7).
 
 
      Student Task Statement                                   Launch
-       1. Find the value of          .                          • Groups of 2
+       1. Find the value of 241 × 23.                           • Groups of 2
 
        2. Lin uses the standard                                 • “Now you are going to learn how to compose and
           algorithm to find the                                   record new units for a three-digit-number-by-two-
-          value of          .                                     digit-number product.”
+          value of 241 × 23.                                      digit-number product.”
 
 
                                                               Activity
-             a. Where do you see          in Lin’s work?
+             a. Where do you see 241 × 3 in Lin’s work?
                                                                 • “Work with your partner on the first 2 problems.”
-             b. Where do you see           in Lin’s work?
+             b. Where do you see 241 × 20 in Lin’s work?
                                                                 • 2-3 minutes: independent work time
              c. What does the 1 above 241 represent in
                                                                 • 5-7 minutes: partner work time
                 Lin’s calculation?
        3. Use the standard algorithm to find the value
-          of         .                                        Activity Synthesis
+          of 182 × 41.                                        Activity Synthesis
        4. Use the standard algorithm to find the value of       • Invite students to share how they interpret Lin’s work
-                   .                                              of finding          .
+          304 × 23.                                               of finding 241 × 23.
                                                                 • Display the image of Lin’s calculation.
                                                                 • Circle the 2 in the number 723 in Lin’s calculation.
                                                                 • “What does the 2 in the tens place represent?” (It’s 2
@@ -179,7 +179,7 @@ understanding of place value to make sense of the method (MP7).
                                             Unit 4
                                                             Lesson 6
                                                                              Illustrative Mathematics®                 3
-Student Response                                                   of the tens from        .)
+Student Response                                                   of the tens from 3 × 40.)
                                                                  • “What does Lin do with the other 10 tens?” (She
  1. 5,543. Sample response:
                                                                    makes 1 hundred out of them and puts them
@@ -187,11 +187,11 @@ understanding of place value to make sense of the method (MP7).
                                                                    multiplies 200 by 3.)
                                                                  • Circle the 1 above 241 in Lin's work.
                                                                  • "What does this 1 represent?" (It’s the hundred from
-                                                                         .)
+                                                                   3 × 40.)
                                                                  • Circle the partial product 4,820.
                                                                  • “What does 4,820 represent in the calculation?”
  2.   a. This is the number 723 that Lin wrote.
-                                                                   (        . The 2 from the factor 23 is in the tens
+                                                                   (20 × 241. The 2 from the factor 23 is in the tens
       b. This is the number 4,820 that Lin wrote.                  place and so it represents 20.)
       c. 1 hundred. Sample response: When she                    • “Now take a few minutes to solve the last two
          multiplies 40 and 3, this is 120. She writes the 2        problems.”
@@ -232,18 +232,18 @@ precisely (MP6).
                                               Unit 4
                                                               Lesson 6
                                                                               Illustrative Mathematics®                 4
-      Access for Students with Disabilities
-      Engagement: Develop Effort and Persistence. Chunk this task into more manageable parts. Check in with students
-      to provide feedback and encouragement after each chunk.
-      Supports accessibility for: Organization, Conceptual Processing
+     Access for Students with Disabilities
+     Engagement: Develop Effort and Persistence. Chunk this task into more manageable parts. Check in with students
+     to provide feedback and encouragement after each chunk.
+     Supports accessibility for: Organization, Conceptual Processing
 
 
      Student Task Statement                                  Launch
-      Find the value of each product, using the standard       • Groups of 2
-      algorithm.                                               • “You are going to find products with many new
-                                                                 composed units. As you work, think carefully about
+     Find the value of each product, using the standard        • Groups of 2
+     algorithm.                                                • “You are going to find products with many new
+     647 × 9                     647 × 50                        composed units. As you work, think carefully about
                                                                  where you place these values.”
-
+     647 × 59                    264 × 38
 
                                                              Activity
 Student Response
@@ -257,10 +257,10 @@ Student Response
 
                                                              Activity Synthesis
 38,173. Sample response:      10,032. Sample response:
-                                                               • Display the expression:           .
+                                                               • Display the expression: 647 × 59.
                                                                • “How did you use the first two calculations to help
                                                                  with the third problem?” (They gave me the two
-                                                                 partial products for the product          , so I just
+                                                                 partial products for the product 647 × 59, so I just
                                                                  had to add them up.)
                                                                • Invite students to share their responses for the last
                                                                  product, focusing on the newly composed units.
@@ -274,13 +274,13 @@ Lesson Synthesis
 “What do you have to think about when you are multiplying and a lot of new units are composed?” (I have to keep track
 of how I record the units. I can make an estimate to see if my answer is reasonable.)
 
-Display students’ work for         , from Activity 2, or use the example from the Student Responses:
+Display students’ work for 264 × 38, from Activity 2, or use the example from the Student Responses:
 
 
 
 
-                                           Grade 5                                 CC BY NC 2024
-                                            Unit 4
+                                            Grade 5                                CC BY NC 2024
+                                             Unit 4
                                                            Lesson 6
                                                                             Illustrative Mathematics®               5
                                "Where did we compose new units when we solved this problem?" (When we multiplied
@@ -315,7 +315,7 @@ Addressing     5.NBT.B.5
 
 
      Student Task Statement
-      Use the standard algorithm to find the product           .
+      Use the standard algorithm to find the product 251 × 34.
 
 
 Student Response

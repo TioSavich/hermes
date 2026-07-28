@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arity and absorption</title>
+<style>
+  :root { --bg:#110f08; --surface:#1a1710; --raised:#242016; --text:#d4cfc0; --muted:#9a927e;
+          --border:#4a4233; --chipline:#5a5140; --accent:#e8a84c; --danger:#d4634a; --good:#89b77a;
+          --mono:ui-monospace,Menlo,Monaco,Consolas,monospace; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 Georgia,serif; }
+  main { max-width:880px; margin:auto; padding:2.25rem 1.25rem 4rem; }
+  h1 { margin:0 0 .3rem; font-size:1.8rem; font-weight:normal; }
+  h2 { font-size:1.12rem; margin:2.4rem 0 .6rem; color:var(--accent); font-weight:normal; }
+  p { max-width:76ch; margin:.75rem 0; }
+  .lede, .limit { color:var(--muted); }
+  .limit { font-size:.9rem; }
+  code { font:.82em var(--mono); background:var(--raised); padding:.1rem .32rem; border-radius:4px; }
+  figure { margin:1.6rem 0; background:var(--surface); border:1px solid var(--border);
+           border-radius:8px; padding:1.1rem 1.1rem .9rem; }
+  figcaption { color:var(--muted); font-size:.86rem; margin-top:.7rem; max-width:82ch; line-height:1.5; }
+  svg { max-width:100%; height:auto; display:block; margin:auto; }
+  svg text { fill:var(--text); }
+  svg .m   { font:12px var(--mono); }
+  svg .m11 { font:11px var(--mono); }
+  svg .s   { font:12.5px Georgia,serif; }
+  svg .s11 { font:11px Georgia,serif; }
+  svg .s10 { font:10.5px Georgia,serif; }
+  svg .lab { font:12.5px Georgia,serif; fill:var(--muted); }
+  svg .lab11 { font:11.5px Georgia,serif; fill:var(--muted); }
+  svg .head { font:10.5px var(--mono); fill:var(--muted); letter-spacing:.09em; }
+  svg .good { fill:var(--good); font:13px Georgia,serif; }
+  svg .bad  { fill:var(--danger); font:13px Georgia,serif; }
+  svg .acc  { fill:var(--accent); }
+  svg .cap  { fill:var(--bg); stroke:var(--border); }
+  svg .chip { fill:var(--raised); stroke:var(--chipline); }
+  svg .chip-a { fill:var(--raised); stroke:var(--accent); }
+  svg .slot { fill:none; stroke:var(--muted); stroke-dasharray:5 4; }
+  svg .wire { stroke:var(--border); fill:none; }
+  svg .tie  { stroke:var(--accent); stroke-dasharray:4 4; fill:none; }
+  svg .flow { stroke:var(--muted); fill:none; }
+  svg .flow-good { stroke:var(--good); fill:none; }
+  table { border-collapse:collapse; margin:1.2rem 0; font-size:.95rem; }
+  th, td { border:1px solid var(--border); padding:.45rem .8rem; text-align:left; }
+  th { color:var(--muted); font-weight:normal; }
+  td.n { font-family:var(--mono); text-align:right; }
+  footer { margin-top:3rem; border-top:1px solid var(--border); padding-top:1rem; }
+  footer p { font-size:.85rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Arity and absorption</h1>
+<p class="lede">Why the error-rule corpus cannot earn an incompatibility entailment, and what
+it yields instead. Written for a reader who follows the dog-and-mammal example and stops
+there; the argument runs in five pictures.</p>
+<p class="limit">Every count on this page was recomputed on 2026-07-28 from the tracked
+artifacts listed at the foot. The register quantifies over declared sets only, so it is
+exactly as strong as the closed world it ranges over.</p>
+
+<h2>The number that would not move</h2>
+
+<p>Hermes keeps a finite register
+(<code>formal/incompatibility/incompatibility_entailment_order.pl</code>) that models
+Brandom's incompatibility-entailment over declared data. Two coding waves put student
+error rules into it as incompatible triples: a fraction-comparison pilot (15 rule
+families), then a decimal slice (75 more). The register's emergent incompatible sets went
+from 4 to 94. Its earned strict entailments were 21 before, 21 after the pilot, and 21
+after the decimal slice.</p>
+
+<p>A flat count beside a twentyfold rise ordinarily asks for more data. More data was the
+first diagnosis, and the decimal slice was chosen to supply exactly what that diagnosis
+asked for. The count still did not move, and the reason is structural: coded in this
+shape, the corpus cannot earn an entailment, and further coding in the same shape cannot
+change that. The rest of this page is that argument.</p>
+
+<h2>The machine, run on dog and mammal</h2>
+
+<p>The register's primitive is the declared incompatible set: a list of contents that
+cannot be held together. <code>{dog, feline}</code> is such a set, and a larger collection
+counts as incoherent when it contains a declared set. (The register keeps each declared
+set in smallest form, and it files contents that have no declared set at all under a
+separate, weaker heading, "vacuous"; nothing below concerns those.)</p>
+
+<p>Entailment is defined the way Brandom defines it: dog entails mammal when everything
+incompatible with mammal is incompatible with dog. Over finite data that becomes a
+replacement test, which Figure 1 runs in full. Take each declared set through
+<code>mammal</code>, remove <code>mammal</code>, put <code>dog</code> in its place, and
+check whether the result still contains a declared set. If every replacement stays
+incoherent, and some replacement in the reverse direction does not, the register records
+that dog earns mammal, strictly.</p>
+
+<figure>
+<svg viewBox="0 0 760 380" role="img" aria-label="The dog and mammal replacement test drawn in full">
+  <defs>
+    <marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L8,5 L0,9" fill="none" stroke="var(--muted)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+
+  <text class="head" x="30" y="22">THE DECLARED CORPUS &#8212; THE REGISTER'S POSITIVE-CONTROL FIXTURE</text>
+
+  <rect class="cap" x="30" y="36" width="168" height="46" rx="12"/>
+  <rect class="chip" x="40" y="46" width="56" height="26" rx="6"/>
+  <text class="m" x="68" y="63" text-anchor="middle">dog</text>
+  <rect class="chip" x="104" y="46" width="84" height="26" rx="6"/>
+  <text class="m" x="146" y="63" text-anchor="middle">feline</text>
+
+  <rect class="cap" x="236" y="36" width="188" height="46" rx="12"/>
+  <rect class="chip" x="246" y="46" width="56" height="26" rx="6"/>
+  <text class="m" x="274" y="63" text-anchor="middle">dog</text>
+  <rect class="chip" x="310" y="46" width="104" height="26" rx="6"/>
+  <text class="m11" x="362" y="63" text-anchor="middle">cold_blooded</text>
+
+  <rect class="cap" x="462" y="36" width="190" height="46" rx="12"/>
+  <rect class="chip" x="472" y="46" width="78" height="26" rx="6"/>
+  <text class="m" x="511" y="63" text-anchor="middle">mammal</text>
+  <rect class="chip" x="558" y="46" width="84" height="26" rx="6"/>
+  <text class="m" x="600" y="63" text-anchor="middle">feline</text>
+
+  <path class="tie" d="M146,76 C 200,108 546,108 600,76"/>
+  <text class="s" x="373" y="122" text-anchor="middle" fill="var(--accent)">feline: the one shared partner</text>
+
+  <text class="head" x="30" y="156">DOES DOG ENTAIL MAMMAL?  REPLACE MAMMAL IN EACH SET THROUGH IT (THERE IS ONE)</text>
+
+  <rect class="cap" x="30" y="170" width="190" height="46" rx="12"/>
+  <rect class="chip" x="40" y="180" width="78" height="26" rx="6"/>
+  <text class="m" x="79" y="197" text-anchor="middle">mammal</text>
+  <rect class="chip" x="126" y="180" width="84" height="26" rx="6"/>
+  <text class="m" x="168" y="197" text-anchor="middle">feline</text>
+
+  <line class="flow" x1="230" y1="193" x2="292" y2="193" marker-end="url(#ar1)"/>
+  <text class="lab11" x="262" y="182" text-anchor="middle">replace</text>
+
+  <rect class="cap" x="302" y="170" width="168" height="46" rx="12"/>
+  <rect class="chip-a" x="312" y="180" width="56" height="26" rx="6"/>
+  <text class="m" x="340" y="197" text-anchor="middle">dog</text>
+  <rect class="chip" x="376" y="180" width="84" height="26" rx="6"/>
+  <text class="m" x="418" y="197" text-anchor="middle">feline</text>
+
+  <text class="good" x="490" y="188">&#10003; {dog, feline} is declared</text>
+  <text class="lab" x="490" y="208">the set stays incoherent</text>
+
+  <text class="head" x="30" y="252">DOES MAMMAL ENTAIL DOG?  THE SET {DOG, COLD_BLOODED} RESISTS</text>
+
+  <rect class="cap" x="30" y="266" width="188" height="46" rx="12"/>
+  <rect class="chip" x="40" y="276" width="56" height="26" rx="6"/>
+  <text class="m" x="68" y="293" text-anchor="middle">dog</text>
+  <rect class="chip" x="104" y="276" width="104" height="26" rx="6"/>
+  <text class="m11" x="156" y="293" text-anchor="middle">cold_blooded</text>
+
+  <line class="flow" x1="228" y1="289" x2="290" y2="289" marker-end="url(#ar1)"/>
+  <text class="lab11" x="259" y="278" text-anchor="middle">replace</text>
+
+  <rect class="cap" x="300" y="266" width="210" height="46" rx="12"/>
+  <rect class="chip-a" x="310" y="276" width="78" height="26" rx="6"/>
+  <text class="m" x="349" y="293" text-anchor="middle">mammal</text>
+  <rect class="chip" x="396" y="276" width="104" height="26" rx="6"/>
+  <text class="m11" x="448" y="293" text-anchor="middle">cold_blooded</text>
+
+  <text class="bad" x="524" y="284">&#10007; declared nowhere</text>
+  <text class="lab" x="524" y="304">the result contains</text>
+  <text class="lab" x="524" y="320">no declared set</text>
+
+  <text class="lab" x="380" y="356" text-anchor="middle">One shared partner carries the entailment; one unshared partner makes it strict.</text>
+  <text class="lab" x="380" y="374" text-anchor="middle">The size of dog's incompatibility range never enters the test.</text>
+</svg>
+<figcaption>Figure 1. The hand-worked control fixture inside the register's generator
+(<code>scripts/extract_incompatibility_entailment_order.py</code>): three declared
+two-member sets. From them the test earns "dog entails mammal" and refuses the reverse;
+the control runs on every regeneration and the register records it as
+<code>incompatibility_positive_control(dog_entails_mammal, passed)</code>.</figcaption>
+</figure>
+
+<p>It is tempting to credit the result to dog's excluding so much: everything mammal
+excludes and more. But the test does not run on amount. It runs on recurrence. The
+replacement in Figure 1 stays incoherent because <code>feline</code>, the partner that
+<code>mammal</code> left behind, also has a declared set with <code>dog</code>. A corpus
+in which dog stood in ten thousand declared sets, none of them sharing a partner with
+mammal's, would earn nothing at all.</p>
+
+<h2>What a third member changes</h2>
+
+<p>Call what is left of a set, once the tested content is removed, its
+<em>remainder</em>. In Figure 1 every set had two members, so each remainder was a single
+content, and a candidate passed by having a declared set whose one other member was that
+content. Figure 2 puts a two-member set and a three-member set side by side and runs the
+same step on each.</p>
+
+<figure>
+<svg viewBox="0 0 760 340" role="img" aria-label="Absorption at two members versus three members">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L8,5 L0,9" fill="none" stroke="var(--good)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+  <line class="wire" x1="378" y1="16" x2="378" y2="326" opacity=".6"/>
+
+  <text class="head" x="24" y="22">TWO MEMBERS: THE REMAINDER IS ONE CONTENT</text>
+
+  <rect class="cap" x="24" y="36" width="92" height="42" rx="11"/>
+  <rect class="chip" x="34" y="44" width="34" height="26" rx="6"/>
+  <text class="m" x="51" y="61" text-anchor="middle">B</text>
+  <rect class="chip" x="76" y="44" width="30" height="26" rx="6"/>
+  <text class="m" x="91" y="61" text-anchor="middle">x</text>
+  <text class="lab" x="130" y="62">a declared set {B, x}</text>
+
+  <rect class="cap" x="24" y="104" width="92" height="42" rx="11"/>
+  <rect class="slot" x="34" y="112" width="34" height="26" rx="6"/>
+  <rect class="chip" x="76" y="112" width="30" height="26" rx="6"/>
+  <text class="m" x="91" y="129" text-anchor="middle">x</text>
+  <text class="lab" x="130" y="123">remove B;</text>
+  <text class="lab" x="130" y="139">the remainder is { x }</text>
+
+  <rect class="cap" x="24" y="182" width="92" height="42" rx="11"/>
+  <rect class="chip-a" x="34" y="190" width="34" height="26" rx="6"/>
+  <text class="m" x="51" y="207" text-anchor="middle">A</text>
+  <rect class="chip" x="76" y="190" width="30" height="26" rx="6"/>
+  <text class="m" x="91" y="207" text-anchor="middle">x</text>
+  <text class="lab" x="130" y="207">a set through A: {A, x}</text>
+
+  <line class="flow-good" x1="51" y1="178" x2="51" y2="146" marker-end="url(#ar2)"/>
+
+  <text class="good" x="24" y="262">&#10003; absorbs</text>
+  <text class="lab" x="24" y="282">A's one other member, x,</text>
+  <text class="lab" x="24" y="298">sits in the remainder.</text>
+  <text class="s" x="24" y="326">One shared partner suffices.</text>
+
+  <text class="head" x="398" y="22">THREE MEMBERS: THE REMAINDER IS A PAIR</text>
+
+  <rect class="cap" x="398" y="36" width="130" height="42" rx="11"/>
+  <rect class="chip" x="408" y="44" width="34" height="26" rx="6"/>
+  <text class="m" x="425" y="61" text-anchor="middle">B</text>
+  <rect class="chip" x="450" y="44" width="30" height="26" rx="6"/>
+  <text class="m" x="465" y="61" text-anchor="middle">x</text>
+  <rect class="chip" x="488" y="44" width="30" height="26" rx="6"/>
+  <text class="m" x="503" y="61" text-anchor="middle">y</text>
+  <text class="lab" x="544" y="62">a declared set {B, x, y}</text>
+
+  <rect class="cap" x="398" y="104" width="130" height="42" rx="11"/>
+  <rect class="slot" x="408" y="112" width="34" height="26" rx="6"/>
+  <rect class="chip" x="450" y="112" width="30" height="26" rx="6"/>
+  <text class="m" x="465" y="129" text-anchor="middle">x</text>
+  <rect class="chip" x="488" y="112" width="30" height="26" rx="6"/>
+  <text class="m" x="503" y="129" text-anchor="middle">y</text>
+  <text class="lab" x="544" y="123">remove B; the remainder</text>
+  <text class="lab" x="544" y="139">is the pair { x, y }</text>
+
+  <rect class="cap" x="398" y="178" width="130" height="42" rx="11"/>
+  <rect class="chip-a" x="408" y="186" width="34" height="26" rx="6"/>
+  <text class="m" x="425" y="203" text-anchor="middle">A</text>
+  <rect class="chip" x="450" y="186" width="30" height="26" rx="6"/>
+  <text class="m" x="465" y="203" text-anchor="middle">x</text>
+  <rect class="chip" x="488" y="186" width="30" height="26" rx="6"/>
+  <text class="m" x="503" y="203" text-anchor="middle">z</text>
+  <text class="bad" x="544" y="196">&#10007; fails</text>
+  <text class="lab" x="544" y="214">x fits; z finds no place</text>
+
+  <rect class="cap" x="398" y="240" width="130" height="42" rx="11"/>
+  <rect class="chip-a" x="408" y="248" width="34" height="26" rx="6"/>
+  <text class="m" x="425" y="265" text-anchor="middle">A</text>
+  <rect class="chip" x="450" y="248" width="30" height="26" rx="6"/>
+  <text class="m" x="465" y="265" text-anchor="middle">x</text>
+  <rect class="chip" x="488" y="248" width="30" height="26" rx="6"/>
+  <text class="m" x="503" y="265" text-anchor="middle">y</text>
+  <text class="good" x="544" y="258">&#10003; absorbs</text>
+  <text class="lab" x="544" y="276">the whole pair recurs</text>
+
+  <text class="s" x="398" y="326">Sharing one content of the pair absorbs nothing.</text>
+</svg>
+<figcaption>Figure 2. The same step at two members and at three. With two members, one
+other content must land in a one-content remainder: a shared partner. With three, two
+other contents must land in a two-content remainder, which they can only do by being
+exactly that pair.</figcaption>
+</figure>
+
+<p>The word for what Figure 2 draws is <em>absorption</em>: a set through the candidate
+absorbs a remainder when all its other members sit inside that remainder. The whole test
+reduces to this. A earns B exactly when, for every declared set through B, some set
+through A absorbs the remainder. At two members, absorption needs one shared partner. At
+three members, it needs a recurring pair.</p>
+
+<h2>Every coded triple carries a private pair</h2>
+
+<p>Each student error rule enters the register as one three-member set: the rule, the
+consequence it licenses, and the context where the licence fails. For instance,
+"partition the dividend into divisor-many whole groups" licenses "the group size is the
+quotient" and fails where "the divisor is not a whole number". Measured over the corpus:
+90 triples; 90 distinct rule contents, each in exactly one triple; 90 distinct licensed
+consequences, none in two; 76 distinct contexts, 8 of them shared by two to four triples.
+So every triple carries two contents that occur nowhere else in the entire relation.
+Figure 3 runs the test on one.</p>
+
+<figure>
+<svg viewBox="0 0 760 432" role="img" aria-label="Two coded triples and the failed absorption test">
+  <text class="head" x="14" y="20">TWO CODED TRIPLES FROM THE DECIMAL SLICE, SHARING THEIR CONTEXT</text>
+
+  <rect class="cap" x="14" y="32" width="732" height="76" rx="12"/>
+  <rect class="chip" x="24" y="42" width="228" height="40" rx="6"/>
+  <text class="s11" x="138" y="59" text-anchor="middle">rule: partition the dividend into</text>
+  <text class="s11" x="138" y="73" text-anchor="middle">divisor-many whole groups</text>
+  <rect class="chip" x="262" y="42" width="228" height="40" rx="6"/>
+  <text class="s11" x="376" y="59" text-anchor="middle">licenses: the group size</text>
+  <text class="s11" x="376" y="73" text-anchor="middle">is the quotient</text>
+  <rect class="chip-a" x="500" y="42" width="228" height="40" rx="6"/>
+  <text class="s11" x="614" y="59" text-anchor="middle">context: the divisor is not</text>
+  <text class="s11" x="614" y="73" text-anchor="middle">a whole number</text>
+  <text class="head" x="138" y="99" text-anchor="middle">IN 1 DECLARED SET</text>
+  <text class="head" x="376" y="99" text-anchor="middle">IN 1 DECLARED SET</text>
+  <text class="head" x="614" y="99" text-anchor="middle" fill="var(--accent)">IN 4 DECLARED SETS</text>
+
+  <rect class="cap" x="14" y="120" width="732" height="76" rx="12"/>
+  <rect class="chip" x="24" y="130" width="228" height="40" rx="6"/>
+  <text class="s11" x="138" y="147" text-anchor="middle">rule: swap the operands when</text>
+  <text class="s11" x="138" y="161" text-anchor="middle">the divisor is a decimal</text>
+  <rect class="chip" x="262" y="130" width="228" height="40" rx="6"/>
+  <text class="s11" x="376" y="147" text-anchor="middle">licenses: the written operand</text>
+  <text class="s11" x="376" y="161" text-anchor="middle">order gives the quotient</text>
+  <rect class="chip-a" x="500" y="130" width="228" height="40" rx="6"/>
+  <text class="s11" x="614" y="147" text-anchor="middle">context: the divisor is not</text>
+  <text class="s11" x="614" y="161" text-anchor="middle">a whole number</text>
+  <text class="head" x="138" y="187" text-anchor="middle">IN 1 DECLARED SET</text>
+  <text class="head" x="376" y="187" text-anchor="middle">IN 1 DECLARED SET</text>
+  <text class="head" x="614" y="187" text-anchor="middle" fill="var(--accent)">IN 4 DECLARED SETS</text>
+
+  <path class="tie" d="M716,82 C 740,100 740,114 716,130"/>
+  <text class="s11" x="744" y="110" text-anchor="end" fill="var(--accent)">shared</text>
+
+  <text class="head" x="14" y="226">THE TEST, RUN ON THE FIRST TRIPLE: REMOVE THE RULE</text>
+
+  <rect class="cap" x="14" y="238" width="732" height="60" rx="12"/>
+  <rect class="slot" x="24" y="248" width="228" height="40" rx="6"/>
+  <text class="lab11" x="138" y="272" text-anchor="middle">the rule, removed</text>
+  <rect class="chip" x="262" y="248" width="228" height="40" rx="6"/>
+  <text class="s11" x="376" y="265" text-anchor="middle">the group size</text>
+  <text class="s11" x="376" y="279" text-anchor="middle">is the quotient</text>
+  <rect class="chip-a" x="500" y="248" width="228" height="40" rx="6"/>
+  <text class="s11" x="614" y="265" text-anchor="middle">the divisor is not</text>
+  <text class="s11" x="614" y="279" text-anchor="middle">a whole number</text>
+
+  <path class="wire" d="M262,306 v7 h466 v-7"/>
+  <text class="lab" x="495" y="330" text-anchor="middle">the remainder pair</text>
+
+  <text class="s" x="14" y="362">To absorb this pair, some declared set must hold both of its members beside a new content.</text>
+  <text class="s" x="14" y="382">But &#8220;the group size is the quotient&#8221; occurs in exactly one declared set: the one just punctured.</text>
+  <text class="bad" x="14" y="412">&#10007; Nothing absorbs. Nothing is earned, in either direction.</text>
+</svg>
+<figcaption>Figure 3. Two triples from the decimal slice
+(<code>formal/incompatibility/incompatibility_sets_error_rules.pl</code>). Their contexts
+recur; their rules and licensed consequences occur once each in the whole relation. A
+remainder that contains a once-occurring content can be absorbed by no set except the one
+it came from.</figcaption>
+</figure>
+
+<p>Puncture any triple at its rule and the remainder is the pair {its consequence, its
+context}. The consequence sits in one declared set only, the set just punctured, so no
+candidate has a set that absorbs, and the rule can neither earn nor be earned. Punctured
+at the consequence, the same holds by symmetry. Punctured at the context, the remainder
+is the private pair itself, which only its own triple contains. The measured result over
+all 256 error-rule contents: zero earned, zero equivalent. And since any triple coded in
+this shape brings its own private pair with it, the zero is invariant under corpus
+growth. Aggregation was never the lever.</p>
+
+<h2>The experiment that confirmed it</h2>
+
+<p>The pilot's diagnosis had said: the new contents are not shared; choose a slice where
+contexts recur. The decimal slice supplied what was asked. Of its 213 new contents, 7
+occur in more than one minimal declared set, against the pilot's one &#8212; and all
+seven are contexts, one content of a two-content remainder. Earned entailments: 21
+before, 21 after.</p>
+
+<table>
+  <tr><th></th><th>fraction pilot</th><th>decimal slice</th></tr>
+  <tr><td>rule families coded</td><td class="n">15</td><td class="n">75</td></tr>
+  <tr><td>new contents in more than one minimal set</td><td class="n">1</td><td class="n">7</td></tr>
+  <tr><td>earned entailments after the slice</td><td class="n">21</td><td class="n">21</td></tr>
+</table>
+
+<p>That the sharing arrived and the count stood still is the confirmation: the block sits
+in the shape of the coded sets, not in the sparseness of the corpus.</p>
+
+<h2>The earned entailment that is false</h2>
+
+<p>The register's 21 earned pairs all come from its older, denser corpora, and one of
+them deserves a picture of its own.
+<code>incompatibility_earned_entails(even, composite, 1)</code> is in the checked
+artifact today, and it is materially false: 2 is even and prime. Figure 4 places it
+beside dog and mammal.</p>
+
+<figure>
+<svg viewBox="0 0 760 256" role="img" aria-label="Dog-mammal and even-composite have the same declared shape">
+  <text class="s" x="40" y="24" font-size="13.5">dog earns mammal</text>
+  <text class="lab" x="40" y="42">materially true</text>
+
+  <rect class="cap" x="40" y="56" width="168" height="46" rx="12"/>
+  <rect class="chip" x="50" y="66" width="56" height="26" rx="6"/>
+  <text class="m" x="78" y="83" text-anchor="middle">dog</text>
+  <rect class="chip" x="114" y="66" width="84" height="26" rx="6"/>
+  <text class="m" x="156" y="83" text-anchor="middle">feline</text>
+
+  <rect class="cap" x="40" y="112" width="188" height="46" rx="12"/>
+  <rect class="chip" x="50" y="122" width="56" height="26" rx="6"/>
+  <text class="m" x="78" y="139" text-anchor="middle">dog</text>
+  <rect class="chip" x="114" y="122" width="104" height="26" rx="6"/>
+  <text class="m11" x="166" y="139" text-anchor="middle">cold_blooded</text>
+
+  <rect class="cap" x="40" y="168" width="190" height="46" rx="12"/>
+  <rect class="chip" x="50" y="178" width="78" height="26" rx="6"/>
+  <text class="m" x="89" y="195" text-anchor="middle">mammal</text>
+  <rect class="chip" x="136" y="178" width="84" height="26" rx="6"/>
+  <text class="m" x="178" y="195" text-anchor="middle">feline</text>
+
+  <text class="s" x="430" y="24" font-size="13.5">even earns composite</text>
+  <text class="bad" x="430" y="42" font-size="12.5">materially false: 2 is even and prime</text>
+
+  <rect class="cap" x="430" y="56" width="244" height="46" rx="12"/>
+  <rect class="chip" x="440" y="66" width="56" height="26" rx="6"/>
+  <text class="m" x="468" y="83" text-anchor="middle">even</text>
+  <rect class="chip" x="504" y="66" width="160" height="26" rx="6"/>
+  <text class="m11" x="584" y="83" text-anchor="middle">prime_greater_than_2</text>
+
+  <rect class="cap" x="430" y="112" width="130" height="46" rx="12"/>
+  <rect class="chip" x="440" y="122" width="56" height="26" rx="6"/>
+  <text class="m" x="468" y="139" text-anchor="middle">even</text>
+  <rect class="chip" x="504" y="122" width="46" height="26" rx="6"/>
+  <text class="m" x="527" y="139" text-anchor="middle">odd</text>
+
+  <rect class="cap" x="430" y="168" width="268" height="46" rx="12"/>
+  <rect class="chip" x="440" y="178" width="80" height="26" rx="6"/>
+  <text class="m11" x="480" y="195" text-anchor="middle">composite</text>
+  <rect class="chip" x="528" y="178" width="160" height="26" rx="6"/>
+  <text class="m11" x="608" y="195" text-anchor="middle">prime_greater_than_2</text>
+
+  <line class="wire" x1="212" y1="79" x2="426" y2="79" stroke-dasharray="3 5" opacity=".7"/>
+  <line class="wire" x1="232" y1="135" x2="426" y2="135" stroke-dasharray="3 5" opacity=".7"/>
+  <line class="wire" x1="234" y1="191" x2="426" y2="191" stroke-dasharray="3 5" opacity=".7"/>
+
+  <text class="lab" x="380" y="240" text-anchor="middle">the same shape, relabeled: feline &#8596; prime_greater_than_2, cold_blooded &#8596; odd</text>
+</svg>
+<figcaption>Figure 4. The left sets are the generator's control fixture from Figure 1;
+the right are declared seed sets in the register, and the pair they earn is a register
+fact. Composite's one declared set is <code>{composite, prime_greater_than_2}</code>;
+even shares that partner and holds <code>{even, odd}</code> besides, which is exactly
+dog's position. The declared corpus nowhere mentions 2, and the relation consults nothing
+outside its declarations.</figcaption>
+</figure>
+
+<p>The module comment over the relation
+(<code>formal/incompatibility/brandomian_incompatibility.pl</code>) predicts this in its
+own words: sparse data yields too-strong entailments, as a property of the data. The
+moral runs against the repair nearest to hand. Thin sharing buys false entailments before
+it buys true ones, so a push that nudged the 90 triples toward earning by light sharing
+would mint pairs of this kind first. The corpus's zero is the honest value of data one
+incompatibility fact deep.</p>
+
+<h2>What the corpus yields instead</h2>
+
+<p>A great deal of careful coding aimed at a count that could not move. Those two facts
+together are the finding. The expansions were the experiment that located the block, and
+the location is now proven where it was only suspected. There is a genuine tension
+underneath: the coding spec that maximizes emergent sets keeps every set minimal at three
+members, sharing nothing the mathematics does not force, and that is precisely the spec
+that ships a private pair in every set. Emergence and earned entailment cannot be climbed
+by the same coding act in this shape. The boundary deserves its name in this project's
+vocabulary, a vanishing point: the place where the formalization honestly stops. What
+stops it here is the depth of the declared data, one incompatibility fact per rule,
+rather than the relation or the corpus's subject matter.</p>
+
+<p>What the register holds natively from the same work: 94 emergent minimal incompatible
+sets, 90 of them coded error-rule triples, each carrying the name of the community whose
+sanction warrants it (<code>error_rule_warrant/2</code>). And the shared contexts, inert
+for entailment, land as a different result: hubs. "The divisor is not a whole number"
+defeats four distinct student rules; "the expansion does not terminate" defeats three. An
+input family that confronts four rules at once is a cross-rule finding the entailment
+order cannot state, and for teaching it marks the high-leverage counterexample class.</p>
+
+<figure>
+<svg viewBox="0 0 760 404" role="img" aria-label="The divisor context hub and the nesting below it">
+  <defs>
+    <marker id="ar5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L8,5 L0,9" fill="none" stroke="var(--muted)" stroke-width="1.6"/>
+    </marker>
+    <marker id="ar5a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,1 L8,5 L0,9" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+  <text class="head" x="14" y="20">A CONTEXT HUB, AND THE NESTING THE CORPUS ALREADY HOLDS</text>
+
+  <rect class="slot" x="8" y="28" width="746" height="64" rx="10" opacity=".8"/>
+
+  <rect class="chip" x="14" y="34" width="176" height="52" rx="6"/>
+  <text class="s10" x="102" y="49" text-anchor="middle">partition the dividend</text>
+  <text class="s10" x="102" y="62" text-anchor="middle">into divisor-many</text>
+  <text class="s10" x="102" y="75" text-anchor="middle">whole groups</text>
+
+  <rect class="chip" x="200" y="34" width="176" height="52" rx="6"/>
+  <text class="s10" x="288" y="49" text-anchor="middle">reverse the quotient</text>
+  <text class="s10" x="288" y="62" text-anchor="middle">shift after clearing</text>
+  <text class="s10" x="288" y="75" text-anchor="middle">the divisor</text>
+
+  <rect class="chip" x="386" y="34" width="176" height="52" rx="6"/>
+  <text class="s10" x="474" y="49" text-anchor="middle">select the operation</text>
+  <text class="s10" x="474" y="62" text-anchor="middle">by whether the</text>
+  <text class="s10" x="474" y="75" text-anchor="middle">divisor is whole</text>
+
+  <rect class="chip" x="572" y="34" width="176" height="52" rx="6"/>
+  <text class="s10" x="660" y="49" text-anchor="middle">swap the operands</text>
+  <text class="s10" x="660" y="62" text-anchor="middle">when the divisor</text>
+  <text class="s10" x="660" y="75" text-anchor="middle">is a decimal</text>
+
+  <line class="wire" x1="102" y1="92" x2="300" y2="124"/>
+  <line class="wire" x1="288" y1="92" x2="353" y2="124"/>
+  <line class="wire" x1="474" y1="92" x2="407" y2="124"/>
+  <line class="wire" x1="660" y1="92" x2="460" y2="124"/>
+
+  <rect class="chip-a" x="250" y="124" width="260" height="34" rx="8"/>
+  <text class="s" x="380" y="145" text-anchor="middle">the divisor is not a whole number</text>
+  <text class="head" x="380" y="176" text-anchor="middle" fill="var(--accent)">DEFEATS 4 RULES</text>
+
+  <line class="flow" x1="452" y1="230" x2="452" y2="164" marker-end="url(#ar5)"/>
+  <text class="lab11" x="464" y="200">every divisor in (0,1)</text>
+  <text class="lab11" x="464" y="214">is not a whole number</text>
+
+  <rect class="chip" x="250" y="232" width="260" height="34" rx="8"/>
+  <text class="s" x="380" y="253" text-anchor="middle">the divisor lies between zero and one</text>
+
+  <path class="tie" d="M250,249 C 120,249 40,206 40,98" marker-end="url(#ar5a)"/>
+  <text class="lab11" x="84" y="156">the closure the corpus licenses:</text>
+  <text class="lab11" x="84" y="170">each of the four rules is also</text>
+  <text class="lab11" x="84" y="184">defeated down here</text>
+
+  <rect class="chip" x="105" y="316" width="250" height="44" rx="6"/>
+  <text class="s10" x="230" y="334" text-anchor="middle">predict a quotient smaller</text>
+  <text class="s10" x="230" y="348" text-anchor="middle">than the dividend</text>
+  <rect class="chip" x="405" y="316" width="250" height="44" rx="6"/>
+  <text class="s10" x="530" y="334" text-anchor="middle">reinterpret the quotient unit</text>
+  <text class="s10" x="530" y="348" text-anchor="middle">when it exceeds the dividend</text>
+  <line class="wire" x1="230" y1="316" x2="330" y2="266"/>
+  <line class="wire" x1="530" y1="316" x2="430" y2="266"/>
+  <text class="head" x="380" y="392" text-anchor="middle">DEFEATS 2 RULES OF ITS OWN</text>
+</svg>
+<figcaption>Figure 5. The largest hub in the corpus, with the narrower context nested
+inside it. "The expansion does not terminate" is the second hub (three rules), with "the
+expansion repeats periodically" nested the same way, reading that coded content as
+excluding repetends that end in zeros &#8212; a human judgment, recorded as one.</figcaption>
+</figure>
+
+<p>The nesting is the honest route to earned entailment, because a rule defeated on a
+class is defeated on its subclasses. Declaring those closure triples &#8212; each of the
+four rules, defeated also on the narrow context &#8212; would give "the divisor lies
+between zero and one" the dog-and-mammal shape against "the divisor is not a whole
+number": every set through the broad context would survive the replacement through its
+closure triple, and the reverse would fail on the narrow context's two native rules,
+which the broad class does not defeat. Those earned pairs would be materially true, and
+each closure judgment would need the same receipt discipline the codings already keep.
+More declared sets of a new shape, then, and never more triples of the old one.</p>
+
+<h2>Limits</h2>
+
+<p class="limit">The impossibility argument quantifies over declared sets only, like the
+relation itself. New set shapes (closure triples, shared licences, mixed sizes) void it
+by design; that is what the route above uses. Material judgments on this page &#8212; the
+falsity of even-entails-composite, the two context nestings, the reading of "repeats
+periodically" &#8212; are checkable human judgments; the register asserts none of them.
+The earned count of 21 was recomputed today for the current register and, from git
+history, for the register as it stood before the decimal slice; the pre-pilot 21 is
+carried by the session records and was not independently recomputed here.</p>
+
+<footer>
+<p>Artifacts, all in this repository:
+<code>formal/incompatibility/incompatibility_entailment_order.pl</code> (the register;
+regenerate with <code>python3 scripts/extract_incompatibility_entailment_order.py --check</code>),
+<code>formal/incompatibility/incompatibility_sets_error_rules.pl</code> (the 90 triples),
+<code>formal/incompatibility/brandomian_incompatibility.pl</code> (the relation the
+register models), <code>data/research/incompatibility_triples.json</code> (families and
+slices). The full derivation, including the ranked routes and the equivalence subtleties
+this page omits, is <code>docs/research/2026-07-28-why-entailment-does-not-move.md</code>.
+Counts verified against the live tree, 2026-07-28.</p>
+</footer>
+
+</main>
+</body>
+</html>

@@ -184,7 +184,7 @@ Materials to Gather                                           Materials to Copy
                                                                • “Now we need to fill in an equation to show how
                                                                  many fingers are up and how many more fingers are
                                                                  needed to make 10. How should I fill in an equation?”
-                                                                 (    )
+                                                                 (7 + 3)
                                                                • 30 seconds: quiet think time
                                                                • Share responses.
                                                                • “Take turns with your partner rolling to find a
@@ -247,38 +247,38 @@ Materials to Gather                                           Materials to Copy
 
 
      Student Task Statement                                   Launch
-      3        _______________                                  • Groups of 2
+      3        _______________             10 = ___ + ___       • Groups of 2
                                                                 • Give students access to two-color counters and
-      9        _______________
+      9        _______________             10 = ___ + ___
                                                                   10-frames.
 
-      2        _______________                                  • “Work with your partner to figure out which number
+      2        _______________             10 = ___ + ___       • “Work with your partner to figure out which number
                                                                   you need to make 10 with each number. Once you
-      5        _______________                                    both agree, write a number on the line. Then fill in an
+      5        _______________             10 = ___ + ___         both agree, write a number on the line. Then fill in an
                                                                   equation to show the parts to make 10.”
-      7        _______________
+      7        _______________             10 = ___ + ___
 
-      6        _______________                                Activity
-      8        _______________                                  • 10 minutes: partner work time
+      6        _______________             10 = ___ + ___     Activity
+      8        _______________             10 = ___ + ___       • 10 minutes: partner work time
                                                                 • Monitor for students who use a 10-frame and
-      4        _______________
+      4        _______________             10 = ___ + ___
                                                                   counters or fingers.
 
 Student Response
                                                               Activity Synthesis
- 1. 7,
+ 1. 7, 10 = 3 + 7
                                                                 • Invite a student who used a 10-frame and counters
- 2. 1,                                                            to share how they figured out how to make 10 with 2.
- 3. 8,                                                          • “What are the 2 parts that they used to make 10?” (2
- 4. 5,                                                            and 8)
+ 2. 1, 10 = 9 + 1                                                 to share how they figured out how to make 10 with 2.
+ 3. 8, 10 = 2 + 8                                               • “What are the 2 parts that they used to make 10?” (2
+ 4. 5, 10 = 5 + 5                                                 and 8)
 
- 5. 3,                                                          • Invite a student who used fingers to share how they
+ 5. 3, 10 = 7 + 3                                               • Invite a student who used fingers to share how they
                                                                   figured out how to make 10 with 6.
- 6. 4,
+ 6. 4, 10 = 6 + 4
                                                                 • “What equation should they write? How do you
- 7. 2,
-                                                                  know?” (They should write           , because 6 and
- 8. 6,                                                            4 go together to make 10.)
+ 7. 2, 10 = 8 + 2
+                                                                  know?” (They should write 10 = 6 + 4, because 6 and
+ 8. 6, 10 = 4 + 6                                                 4 go together to make 10.)
                                                                 • “Were there any numbers that you just knew how
                                                                   many more you needed to make 10?” (I knew that 5
                                                                   and 5 is 10. I knew that if there are 9, you only need 1
@@ -293,7 +293,7 @@ If students find a number other than 7 to make 10 with 3, consider asking:
 
                                      Kindergarten                                   CC BY NC 2024
                                         Unit 5
-                                                          Lesson 13
+                                                            Lesson 13
                                                                              Illustrative Mathematics®                 5
   • “What are you trying to figure out?”
   • “How can a 10-frame or your fingers help you figure out what number you need to make 10?”
@@ -356,7 +356,7 @@ Required Preparation
 
 
                                                                 Activity Synthesis
-                                                                     • Write
+                                                                     • Write 10 = 1 + 9
                                                                      • “This is the equation that Clare wrote. What did
                                                                        Clare’s fingers look like? How do you know?” (She
                                                                        held up 1 finger. She figured out that she needed
@@ -373,7 +373,7 @@ Write 3.
 
 “Show your partner how you can use your fingers to figure out what number goes with 3 to make 10.”
 
-Write
+Write 10 = 3 + 7
 
 “10 is 3 plus 7. 3 and 7 are 2 parts that go together to make 10.”
 
@@ -384,12 +384,12 @@ Cool-down                                                                       
 
 Make 10
 
-        Standards
+     Standards
 Addressing      K.OA.A.4
 
 
-        Student Task Statement
-        Write the number that makes 10 when added to each number.
+     Student Task Statement
+      Write the number that makes 10 when added to each number.
 
                         5                                 _______________
 

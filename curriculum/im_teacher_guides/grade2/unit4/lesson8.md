@@ -146,19 +146,19 @@ they draw their arrow, and how they connect the length of the jump to the equati
       Student Task Statement                                 Launch
       Represent each equation on the number line.              • Groups of 2
 
-       1.                                                      • “We have seen addition and subtraction equations
+       1. 15 + 7 = 22                                          • “We have seen addition and subtraction equations
                                                                  represented on a number line. How can you tell
                                                                  whether a number line is representing addition or
                                                                  subtraction?” (Look at the direction of the arrow.)
-       2.
+       2. 18 - 6 = 12
                                                                • 30 seconds: quiet think time
                                                                • Share responses.
 
-       3.
+       3. 46 + 7 = 53
                                                              Activity
                                                                • “Now you are going to represent some equations on
                                                                  number lines. Be sure others will be able to tell from
-       4.
+       4. 33 - 9 = 24
                                                                  looking at your number line whether you are
                                                                  representing addition or subtraction.”
                                                                • 8 minutes: independent work time
@@ -185,7 +185,7 @@ Student Response                                                   ◦ Locate th
 
                                                                 Activity Synthesis
  3.                                                               • Display the equation and blank number line for
-                                                                                .
+                                                                    15 + 7 = 22.
                                                                   • Invite previously selected students to share how they
  4.                                                                 represented the equation on the number line.
                                                                   • Consider asking:
@@ -263,14 +263,14 @@ understanding of the relationship between addition and subtraction (MP3, MP7).
                                                                     ◦ Discuss how number lines are alike because the
 Student Response                                                      length of the jump is the same.
 
- 1. Sample responses:               ,
+ 1. Sample responses: 3 + 12 = 15, 3 + ? = 15
                                                                Activity Synthesis
- 2. Sample responses:               ,
- 3. Sample responses:               ,                            • Invite previously identified students to share their
+ 2. Sample responses: 15 - 3 = 12, 15 - ? = 12
+ 3. Sample responses: 15 - 12 = 3, 15 - ? = 3                    • Invite previously identified students to share their
                                                                    equations for each number line.
- 4. Sample responses:               ,
+ 4. Sample responses: 12 + 3 = 15, 12 + ? = 15
                                                                  • Consider asking:
- 5. Sample response: I wrote                 because the
+ 5. Sample response: I wrote 3 + 12 = 15 because the
     number line has an arrow starting at 3 that moves 12            ◦ “Do you agree or disagree? Explain.”
     length units to the right. The arrow is pointing to 15.         ◦ “Can anyone explain in another way why _____’s
  6. Sample response: I think number lines 2 and 4 are                 equation matches the number line?”
@@ -322,7 +322,7 @@ Addressing      2.MD.B.6
 
 
       Student Task Statement
-        1. Represent              on the number line.
+        1. Represent 22- 5 = 17 on the number line.
 
 
 
@@ -345,20 +345,20 @@ Student Response
                                             Unit 4
                                                           Lesson 8
                                                                               Illustrative Mathematics®          6
- 2.
+ 2. 22- 17 = 5
 
 
 Responding to Student Thinking
-Students write an equation other than        .     Next Day Supports
-                                                   Use the next day’s Warm-up to have students discuss
-                                                   representing equations on a number line.
+Students write an equation other than 22- 17 = 5 .    Next Day Supports
+                                                      Use the next day’s Warm-up to have students discuss
+                                                      representing equations on a number line.
 
 
 
 
-                                        Grade 2                         CC BY NC 2024
-                                         Unit 4
-                                                  Lesson 8
-                                                                 Illustrative Mathematics®               7
+                                          Grade 2                          CC BY NC 2024
+                                           Unit 4
+                                                     Lesson 8
+                                                                    Illustrative Mathematics®               7
 ```
 

@@ -209,8 +209,8 @@ Student Response                                                       ◦ “Ho
                                                                          one. This makes sense because the sum needs
                                                                          to say the same or else the perimeter changes.)
                                                                        ◦ “How does the table show this relationship?” (If
-                                                                         you compare values in the table such as
-                                                                         and       , the length goes up 1 and the width
+                                                                         you compare values in the table such as (1,5)
+                                                                         and (2,4) , the length goes up 1 and the width
                                                                          goes down 1. It makes sense because the sum
                                                                          needs to stay the same or else the perimeter
                                                                          changes.)
@@ -270,13 +270,13 @@ Activity Synthesis (MP7, MP8):
                                                                    • Invite students to share their responses for the width
                                                                      of a rectangle that is 5 cm long.
                                                                    • “How did you calculate the value?” (I knew that 5
-       1. Jada draws a rectangle with an area of 16                  times the width was 16 so the width is        or
+       1. Jada draws a rectangle with an area of 16                  times the width was 16 so the width is 16 ÷ 5 or
           square centimeters. What could be the length
-                                                                         cm.)
+                                                                     16/5 cm.)
           and width of the rectangle if all the side lengths
           are whole numbers? Use the table to record 5             • “How did you know where to plot that length and
           possible answers.                                          width pair?” (I looked for 5 on the horizontal axis and
-       2. Represent the length and width of each                     then I had to estimate where         was on the vertical
+       2. Represent the length and width of each                     then I had to estimate where 31/3 was on the vertical
           rectangle as a point on the coordinate grid.               axis. I put it a little above 3 but closer to 3 than to 4.)
 
        3. If Jada’s rectangle is 5 cm long, how wide is it?        • “How was determining the possible lengths and
@@ -295,25 +295,25 @@ Activity Synthesis (MP7, MP8):
                                                                      with area 16 different from the length and width
 
 
-                                            Grade 5                                    CC BY NC 2024
+                                            Grade 5                                     CC BY NC 2024
                                              Unit 7
                                                                Lesson 13
-                                                                                Illustrative Mathematics®                    5
+                                                                                 Illustrative Mathematics®                   5
 Student Response                                                    pairs for rectangles with perimeter 12?” (I was
                                                                     looking for a total of 16 instead of a total of 12. I have
  1. Sample response:                                                to multiply the side lengths rather than add them.
                                                                     When the length decreases by 1 for the perimeter,
-                   length (cm)   width (cm)                         the width increases by 1. For area, when the length
+                    length (cm)   width (cm)                        the width increases by 1. For area, when the length
                                                                     decreases, the width increases but the relationship is
-                        1             16                            more complex.)
+                         1             16                           more complex.)
 
-                        2             8                          • Consider drawing some rectangles with an of area 16
+                         2             8                         • Consider drawing some rectangles with an of area 16
                                                                    on the coordinate grid with the lower left corner of
-                        4             4                            each rectangle at      . Ask students what they
+                         4             4                           each rectangle at (0,0) . Ask students what they
                                                                    notice about the coordinates of the upper right
-                        8             2                            corners of each rectangle. (They represent the length
+                         8             2                           corners of each rectangle. (They represent the length
                                                                    and width of the corresponding rectangle.)
-                        16            1
+                         16            1
 
 
  2.
@@ -321,11 +321,11 @@ Activity Synthesis (MP7, MP8):
 
 
 
- 3. 3   or    cm (or equivalent) (point graphed above)
+ 3. 31/5 or 16/5 cm (or equivalent) (point graphed above)
 
- 4.     cm (or equivalent) (point graphed above)
+ 4.   51/3 cm (or equivalent) (point graphed above)
 
- 5. 4 cm. Sample response:
+ 5. 4 cm. Sample response: 4 × 4 = 16
 
 
 
@@ -342,9 +342,9 @@ decreases. When the length decreases, the width increases.)
 increases by 1, the width decreases by 1. The length and width pairs with area 16 don't follow a clear pattern. I would
 
 
-                                           Grade 5                                     CC BY NC 2024
-                                            Unit 7
-                                                           Lesson 13
+                                            Grade 5                                    CC BY NC 2024
+                                             Unit 7
+                                                            Lesson 13
                                                                                 Illustrative Mathematics®                6
 not be able to guess any other values. I would have to calculate.)
 
@@ -362,7 +362,7 @@ Cool-down                                                                       
 Area and Perimeter of a Rectangle
 
      Standards
-Addressing     5.G.A.2, 5.NBT.B.7
+Addressing      5.G.A.2, 5.NBT.B.7
 
 
      Student Task Statement
@@ -376,17 +376,17 @@ Addressing     5.G.A.2, 5.NBT.B.7
 
 
 Student Response
- 1. Area: 20 square centimeters. Sample response:
+ 1. Area: 20 square centimeters. Sample response: 4 × 5 = 20
 
-    Perimeter: 18 centimeters. Sample response:
+    Perimeter: 18 centimeters. Sample response: (2 × 4) + (2 × 5) = 18
 
- 2. Sample responses:          ,       ,       ,
-
-
+ 2. Sample responses: (2,10) , (10,2) , (2.5,8) , (8,2.5)
 
 
-                                           Grade 5                                 CC BY NC 2024
-                                            Unit 7
+
+
+                                            Grade 5                                CC BY NC 2024
+                                             Unit 7
                                                             Lesson 13
                                                                             Illustrative Mathematics®              7
 Responding to Student Thinking
@@ -400,7 +400,7 @@ developed in a prior unit.                                    Grade 4, Unit 6, S
       Example: Both patterns start with 0.
 
 
-
+                              A                B              C                D                E               F
 
          rule 1: Add
                               0                 8             16              24                32              40
@@ -412,7 +412,7 @@ developed in a prior unit.                                    Grade 4, Unit 6, S
 
 
       Each number in Rule 1’s pattern is 4 times the value of the corresponding number in Rule 2’s pattern. Each
-      number in Rule 2’s pattern is   times the value of the corresponding number in Rule 1’s pattern. We represented
+      number in Rule 2’s pattern is 1/4 times the value of the corresponding number in Rule 1’s pattern. We represented
       2 patterns together as points on a coordinate grid.
 
 

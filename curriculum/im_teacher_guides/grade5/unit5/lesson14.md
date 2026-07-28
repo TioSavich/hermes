@@ -87,7 +87,7 @@ Addressing     5.NBT.B.7                                         • True or Fal
 
 The purpose of this True or False is for students to apply their understanding of place value to subtraction equations
 with decimals. The names of the decimals will likely suggest a strategy using whole number subtraction. For example
-                     can be read as “61 hundredths minus 2 hundredths equals 59 hundredths,” which students will
+0.61 - 0.02 = 0.59 can be read as “61 hundredths minus 2 hundredths equals 59 hundredths,” which students will
 recognize is true. Alternatively, they can think about place value. For example, 0.5 is 5 tenths or 50 hundredths and 50
 hundredths minus 1 hundredth is 49 hundredths.
 
@@ -95,11 +95,11 @@ hundredths minus 1 hundredth is 49 hundredths.
       Student Task Statement                                   Launch
       Decide if each statement is true or false. Be              • Display one statement.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
-        •                                                          statement is true and can explain how you know.”
+        • 0.5 - 0.01 = 0.4                                         statement is true and can explain how you know.”
 
-        •                                                        • 1 minute: quiet think time
+        • 0.61 - 0.02 = 0.59                                     • 1 minute: quiet think time
 
-        •
+        • 1 - 0.07 = 0.93
                                                                Activity
 Student Response                                                 • Share and record answers and strategy.
 
@@ -152,30 +152,30 @@ Materials to Gather                                           Materials to Copy
 
 
      Student Task Statement                                   Launch
-       1. Find the value of             . Explain or show       • Groups of 2
+       1. Find the value of 2.26- 1.32 . Explain or show        • Groups of 2
           your reasoning.                                       • Give each group of students a piece of chart paper,
        2. What questions do you have about subtracting            colored pencils, crayons or markers, and access to
           decimals?                                               grids.
                                                                 • 5 minutes: independent work time
 Student Response
  1. 0.94. Sample responses:                                   Activity
-     ◦                   ,                ,                   MLR7 Compare and Connect
-                                                               • “Create a visual display that shows your thinking. You
+     ◦ 2.26- 1 = 1.26 , 1.26- 0.26 = 1 ,                      MLR7 Compare and Connect
+       1 - 0.06 = 0.94                                         • “Create a visual display that shows your thinking. You
                                                                  may want to include details such as notes, diagrams,
-     ◦                        ,                ,
-                                                                 and drawings to help others understand your
+     ◦ 2.26 + 0.06 = 2.32, 2.32- 1.32 = 1 ,
+       1.00- 0.06 = 0.94                                         and drawings to help others understand your
                                                                  thinking.”
-     ◦                        ,                    ,
+     ◦ 1.32 + 0.08 = 1.40, 1.40 + 0.60 = 2.00,
                                                                 • 2–5 minutes: partner work time
-                              , and
-                                                                • 5–7 minutes: gallery walk
+       2.00 + 0.26 = 2.26, and
+         0.08 + 0.60 + 0.26 = 0.94                              • 5–7 minutes: gallery walk
      ◦ There are 9 tenths and 4 hundredths left or 0.94.        • Monitor for students who:
 
 
 
                                           Grade 5                                   CC BY NC 2024
                                            Unit 5
-                                                            Lesson 14
+                                                           Lesson 14
                                                                              Illustrative Mathematics®                3
                                                                      ◦ Use strategies like the ones listed in Student
                                                                        Responses.
@@ -193,7 +193,7 @@ Student Response
                                                                    have diagrams and some don’t.)
                                                                  • Display an image from a student's solution.
                                                                  • “How does the diagram show the difference
-                                                                               ?” (It shows 2.26 and then it takes away
+                                                                   2.26- 1.32 ?” (It shows 2.26 and then it takes away
                                                                    1.32. What’s left is the difference.)
                                                                  • “How is the diagram different from using equations?”
                                                                    (The 1 and 32 hundredths can be crossed out
@@ -229,17 +229,17 @@ example, here is a sample record of a game.
                                                                                Illustrative Mathematics®                4
                          number card      0.1     0.01      equation to represent the difference
 
-                               4          0.4
+                               4          0.4                          2- 0.4 = 1.6
 
-                               1          0.1
+                               1          0.1                         1.6- 0.1 = 1.5
 
-                               3          0.3
+                               3          0.3                         1.5 - 0.3 = 1.2
 
-                               5                  0.05
+                               5                  0.05               1.2- 0.05 = 1.15
 
-                               2                  0.02
+                               2                  0.02              1.15 - 0.02 = 1.13
 
-                               5                  0.05
+                               5                  0.05              1.13 - 0.05 = 1.08
 
 
 Some students may notice that the strategy of this game is identical to the addition game they played in an earlier
@@ -365,11 +365,11 @@ Addressing     5.NBT.B.7
 
 
      Student Task Statement
-      Find the value of           . Explain or show your reasoning.
+      Find the value of 3.57- 1.4 . Explain or show your reasoning.
 
 
 Student Response
-2.17. Sample response:            ,                   ,
+2.17. Sample response: 3 - 1 = 2, 0.57- 0.40 = 0.17 , 2.00 + 0.17 = 2.17
 
 
 Responding to Student Thinking

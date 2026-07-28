@@ -113,9 +113,9 @@ Sample responses:
 
   • 40: I see three 10-frames filled, so that is 30. Then I
     see 5 red counters and 5 yellow counters.
-                     .
+    30 + 5 + 5 = 40.
   • 50: I see one more 10-frame filled, so that is
-                  .
+    40 + 10 = 50.
   • 53: I see four 10-frames filled with red and that is 40.
 
 
@@ -124,8 +124,8 @@ Sample responses:
                                                                Lesson 5
                                                                                Illustrative Mathematics®                  2
     I see one 10-frame filled with 5 red and 5 yellow, so
-    that is another 10.               . There are 3 left so
-                 .
+    that is another 10. 40 + 10 = 50. There are 3 left so
+    50 + 3 = 53.
 
 
 
@@ -168,30 +168,30 @@ Materials to Gather
 
 
      Student Task Statement                                    Launch
-      Find the value of      .                                    • Groups of 2
+      Find the value of 8 + 47.                                   • Groups of 2
       Show your thinking using drawings, numbers, or              • Give students access to connecting cubes in towers
       words.                                                        of 10 and singles.
 
 
 
 
-                                             Grade 1                                  CC BY NC 2024
-                                              Unit 5
-                                                              Lesson 5
+                                            Grade 1                                   CC BY NC 2024
+                                             Unit 5
+                                                             Lesson 5
                                                                                Illustrative Mathematics®                3
 Student Response                                              Activity
 55. Sample responses:                                           • Read the Task Statement.
 
   • Starts with 47 and counts on 8 ones. 48, 49, 50, 51,        • 3–5 minutes: independent work time
-    52, 53, 54, 55.                                             • “Share your thinking with your partner.”
+    52, 53, 54, 55. 47 + 8 = 55                                 • “Share your thinking with your partner.”
   • Shows 4 tens 7 ones, adds 3 ones to 7 ones to make          • 3 minutes: partner discussion
     a new ten, then adds the remaining 5 ones.
                                                                 • As you monitor for the approaches listed in the
-                ,
+    47 + 3 = 50, 50 + 5 = 55
                                                                   activity narrative, consider asking:
   • Breaks 47 into tens and ones, adds the 8 ones and 7
-                                                                    ◦ “How did you find the value of         ?”
-    ones, then adds the 4 tens.           ,
+                                                                    ◦ “How did you find the value of 8 + 47?”
+    ones, then adds the 4 tens. 8 + 7 = 15, 40 + 15 = 55
                                                                     ◦ “Where is the 47 in your work? Where is the 8?”
                                                                     ◦ "How can you use connecting cubes to show
                                                                       your thinking?"
@@ -224,7 +224,7 @@ Materials to Gather
 
 Advancing Student Thinking
 If students count on from 8 by ones to find the sum, consider asking:
-   • “How did you find the value of       ?”
+   • “How did you find the value of 8 + 47?”
   • “How could you use 10-frames or connecting cubes to find the sum without counting by one?”
 
 
@@ -291,28 +291,28 @@ Required Preparation
                                              Unit 5
                                                              Lesson 5
                                                                               Illustrative Mathematics®               5
-       Round 3                                                    • Invite 1 student with each kind of card to share their
+      Round 3                                                     • Invite 1 student with each kind of card to share their
                                                                     number.
-       Equation: __________________________________
+      Equation: __________________________________
                                                                   • “Find the value of the sum of the numbers. Show
-       Round 4                                                      your thinking using drawings, numbers, or words.
-       Equation: __________________________________                 Then write an equation that shows the value you
+      Round 4                                                       your thinking using drawings, numbers, or words.
+      Equation: __________________________________                  Then write an equation that shows the value you
                                                                     found.”
-       Round 5
+      Round 5
                                                                   • 2 minutes: independent work time
-       Equation: __________________________________
+      Equation: __________________________________
                                                                   • Share an equation that could be used.
                                                                   • “Now we will all play a few rounds.”
 Student Response
 Sample responses:                                               Activity
-  •              . Draws 6 tens, 7 ones, and 8 ones.
+  • 67 + 8 = 75. Draws 6 tens, 7 ones, and 8 ones.
     Combines 7 ones and 3 ones to make 10. Counts to              • “Find a partner and find the value of the sum of your
     find the total: 60, 70, 71, 72, 73, 74, 75.                     numbers.”
 
-  •               . Counts on 25, 26, 27.                         • 5 minutes: partner work time
+  • 24 + 3 = 27. Counts on 25, 26, 27.                            • 5 minutes: partner work time
 
-  •                . Adds 5 ones and 4 ones using known           • “Switch cards with your partner and find a new
-      facts. Adds 9 and 70.                                         partner.”
+  • 75 + 4 = 79. Adds 5 ones and 4 ones using known               • “Switch cards with your partner and find a new
+    facts. Adds 9 and 70.                                           partner.”
                                                                   • Repeat as time allows.
                                                                   • Monitor for students whose sum:
                                                                       ◦ Does not require composing a new ten.
@@ -335,8 +335,8 @@ Activity 3: Optional                                                            
 
 Tyler’s Teacher
 
-      Standards
-Addressing       1.NBT.C.4
+     Standards
+Addressing      1.NBT.C.4
 
 
 The purpose of this activity is for students to solve story problems that require adding a two-digit number and a one-
@@ -346,8 +346,8 @@ others add quantities like those they have been adding. This activity is optiona
 
 
 
-                                              Grade 1                                 CC BY NC 2024
-                                               Unit 5
+                                             Grade 1                                  CC BY NC 2024
+                                              Unit 5
                                                              Lesson 5
                                                                                Illustrative Mathematics®                 6
 problems with numbers larger than 20, which is not an expectation of students in grade 1.
@@ -368,7 +368,7 @@ Materials to Gather
           or words.                                               • “What is this story about? How can we find out how
                                                                     much money Tyler’s teacher collected?” (It is about
        2. Tyler’s teacher wants to know how many
-                                                                    money for a field trip. We can add       .)
+                                                                    money for a field trip. We can add 37 + 7.)
           students are in the classroom.
           There are 8 students sitting at tables.                 • “We need to add some more ones to a 2-digit
           There are 26 students on the rug.                         number in order to find out how much money Tyler’s
@@ -381,8 +381,8 @@ Student Response                                                Activity
  1. 44 dollars. Sample response: I added 37 and 3 to              • “Solve the problem to find out how much money
     make 40. Then I added 4 more.                                   Tyler’s teacher collected. Then solve the next
                                                                     problem.”
- 2. 34 students. Sample response:                and
-                                                                  • 3 minutes: independent work time
+ 2. 34 students. Sample response: 8 + 6 = 14 and
+    14 + 20 = 34                                                  • 3 minutes: independent work time
                                                                   • 2 minutes: partner discussion
                                                                   • Monitor for students who use connecting cubes or
                                                                     base-ten drawings to solve.
@@ -396,7 +396,7 @@ Student Response                                                Activity
 
 
 Lesson Synthesis
-Display              and
+Display 45 + 3 = 48 and 45 + 8 = 53.
 
 “What do you notice about these equations?” (Both equations start with 45. One equation shows the sum is 48, and the
 other shows the sum is 53. The first equation shows 4 tens and some ones on both sides. The other equation shows 4

@@ -84,26 +84,26 @@ associative property of multiplication.
       Decide if each statement is true or false. Be              • Display one equation.
       prepared to explain your reasoning.                        • “Give me a signal when you know whether the
                                                                    equation is true and can explain how you know.”
-        •
+        • 30 × 2 × 10 = 6 × 10
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 30 × 2 × 10 = 20 × 3 × 10
+        • 60 × 10 = 30 × 20
                                                                Activity
 
 Student Response                                                 • Share and record answers and strategy.
                                                                  • Repeat with each equation.
-  • False:        doesn't equal 6.
-  • True:
+  • False: 30 × 2 doesn't equal 6.
+  • True: 30 × 2 = 20 × 3
                                                                Activity Synthesis
   • True: They both equal 600.
                                                                  • Display the first equation.
                                                                  • “How can you show this is false without finding the
-                                                                   value of both sides?” (I know        is not 6 and
+                                                                   value of both sides?” (I know 30 × 2 is not 6 and
                                                                    multiplying both sides by 10 will not make them
                                                                    equal.)
                                                                  • Display second equation.
                                                                  • “How can you show this is true without finding the
-                                                                   value of both sides?” (I know      and          are
+                                                                   value of both sides?” (I know 30 × 2 and 20 × 3 are
                                                                    equal and then they are both multiplied by 10.)
 
 
@@ -141,54 +141,54 @@ that makes equations true, they think about place value and the associative prop
        1. Decide if each equation is true or false. Explain       • Groups of 2
           or show your reasoning.
 
-            a.                                                  Activity
-           b.
+           a. 4 × 0.7 = 28                                      Activity
+           b. 5 × 0.8 = 0.40
                                                                   • 4 minutes: independent work time
-            c.
+           c. 6 × 0.03 = (6 × 3) × 0.01
                                                                   • 4 minutes: partner discussion
-           d.
+           d. 8 × 0.07 = (8 × 7) × 0.1
                                                                   • Monitor for students who:
        2. Fill in the blank to make each equation true.
                                                                       ◦ Compare the size of the product to the size of
-            a.                                                          the factors to determine reasonableness. For
-                                                                        example, explain that        is not equal to 28
-           b.
+           a. 3 × 0.7 = 3 × 7 × ___                                     the factors to determine reasonableness. For
+                                                                        example, explain that 4 × 0.7 is not equal to 28
+           b. 3 × 0.07 = 3 × 7 × ___
                                                                         because the product should be less than 4.
-            c.
+           c. 5 × ___ = (5 × 4) × 0.1
                                                                       ◦ Use the associative property to represent the
                                                                         product of a whole number and a decimal as a
 Student Response                                                        product of two whole numbers and a decimal
-                                                                        such as                        .
- 1.   a. False. Sample response:                  because
+                                                                        such as 3 × 0.7 = (3 × 7) × 0.1.
+ 1.   a. False. Sample response: 4 × 0.7 = 2.8 because
          it's 28 tenths not 28.
                                                                 Activity Synthesis
-      b. False. Sample response:                  because
-         it's 40 tenths not 40 hundredths.                        • Display the equation                         from
-      c. True. Sample response:                                     the first problem.
-         because 0.03 is 3 hundredths or            .             • “Is the equation true or false?” (false)
-      d. False. Sample                                            • Display expression:
-         response:                               because          • “How could we revise this expression to make the
-              is 7 hundredths or           .                        equation true?” (Change it to read         ,
- 2.   a. 0.1                                                                    , or    .)
-                                                                  • Display equation:
+      b. False. Sample response: 5 × 0.8 = 4.0 because
+         it's 40 tenths not 40 hundredths.                        • Display the equation 8 × 0.07 = (8 × 7) × 0.1 from
+      c. True. Sample response: 6 × 0.03 = 6 × 3 × 0.01             the first problem.
+         because 0.03 is 3 hundredths or 3 × 0.01.                • “Is the equation true or false?” (false)
+      d. False. Sample                                            • Display expression: (8 × 7) × 0.1
+         response: 8 × 0.07 = (8 × 7) × 0.01 because              • “How could we revise this expression to make the
+         0.07 is 7 hundredths or 7 × 0.01.                          equation true?” (Change it to read 56 × 0.01,
+ 2.   a. 0.1                                                        8 × 7 × 0.01, or 0.56 .)
+                                                                  • Display equation: 8 × ___ = (8 × 7) × 0.1
       b. 0.01
                                                                   • “What can I write in the blank to make the equation
       c. 0.4                                                        true?” (0.7 since that’s 8 groups of 7 tenths or
-                                                                                .)
+                                                                    8 × 7 × 0.1.)
 
 
 
 
-                                               Grade 5                                 CC BY NC 2024
-                                                Unit 5
+                                           Grade 5                                     CC BY NC 2024
+                                            Unit 5
                                                               Lesson 18
-                                                                                Illustrative Mathematics®           3
+                                                                                Illustrative Mathematics®            3
 Activity 2                                                                                                      20 min
 
 Interpret Diagrams and Expressions
 
      Standards
-Addressing        5.NBT.B.7
+Addressing      5.NBT.B.7
 
 
 The purpose of this activity is for students to use a diagram to support understanding two different ways to calculate the
@@ -200,50 +200,50 @@ and the hundredths and combine these (MP7). In the next several activities, stud
 they build their understanding of how to find the product of a whole number and a decimal.
 
 
-     Student Task Statement                                      Launch
-                                                                   • Groups of 2
+     Student Task Statement                                     Launch
+                                                                  • Groups of 2
 
 
-                                                                 Activity
-                                                                   • 2 minutes: quiet think time
-                                                                   • 10 minutes: partner work time
+                                                                Activity
+                                                                  • 2 minutes: quiet think time
+                                                                  • 10 minutes: partner work time
 
        1. Explain or show how the diagram represents
-          each expression.                                       Activity Synthesis
-             a.
-                                                                   • Invite students to share their calculations of the
-             b.                                                      value of          using different expressions.
-             c.                                                    • “How did the expression                   help to find
-                                                                     the value of       ?” (I was able to just multiply
-       2. Find the value of                  . Explain or
-                                                                     whole numbers and then notice that the product is
+          each expression.                                      Activity Synthesis
+             a. 3 × 0.12
+                                                                  • Invite students to share their calculations of the
+             b. (3 × 12) × 0.01                                     value of 3 × 0.12 using different expressions.
+             c. (3 × 0.1) + (3 × 0.02)                            • “How did the expression (3 × 12) × 0.01 help to find
+                                                                    the value of 3 × 0.12?” (I was able to just multiply
+       2. Find the value of (3 × 12) × 0.01. Explain or
+                                                                    whole numbers and then notice that the product is
           show your reasoning.
-                                                                     that many hundredths.)
-       3. Find the value of                        . Explain       • “How did the expression                          help
-          or show your reasoning.                                    to find the value of       ?” (I multiplied the tenths
-                                                                     and then the hundredths. I added them together.)
+                                                                    that many hundredths.)
+       3. Find the value of (3 × 0.1) + (3 × 0.02). Explain       • “How did the expression (3 × 0.1) + (3 × 0.02) help
+          or show your reasoning.                                   to find the value of 3 × 0.12?” (I multiplied the tenths
+                                                                    and then the hundredths. I added them together.)
 
-Student Response                                                   • “Which strategy do you prefer?” (I like the first
-                                                                     strategy because I can just use what I know about
- 1. Sample responses:                                                whole number products and it will always work.)
+Student Response                                                  • “Which strategy do you prefer?” (I like the first
+                                                                    strategy because I can just use what I know about
+ 1. Sample responses:                                               whole number products and it will always work.)
      a. There are 3 squares. Each square is 0.12 shaded
-        so that's        total.
-     b.          is the number of shaded pieces and each
-          one is 0.01 of the whole. So, that's
-                          .
-     c.          is the 3 tenths or full columns of little
-          squares and           is the 3 groups of 2 pieces.
+        so that's 3 × 0.12 total.
+     b. 3 × 12 is the number of shaded pieces and each
+        one is 0.01 of the whole. So, that's
+        (3 × 12) × 0.01.
+     c. 3 × 0.1 is the 3 tenths or full columns of little
+        squares and 3 × 0.02 is the 3 groups of 2 pieces.
 
- 2. 0.36. Sample response:         is 36 and then when I
+ 2. 0.36. Sample response: 3 × 12 is 36 and then when I
     multiply by 0.01 it becomes 36 hundredths or 0.36.
 
 
-                                            Grade 5                                    CC BY NC 2024
-                                             Unit 5
-                                                               Lesson 18
-                                                                                Illustrative Mathematics®                 4
- 3. 0.36. Sample response:         is 3 tenths or 0.3 and
-             is 6 hundredths or 0.06. Then 3 tenths and 6
+                                          Grade 5                                     CC BY NC 2024
+                                           Unit 5
+                                                              Lesson 18
+                                                                               Illustrative Mathematics®                 4
+ 3. 0.36. Sample response: 3 × 0.1 is 3 tenths or 0.3 and
+    3 × 0.02 is 6 hundredths or 0.06. Then 3 tenths and 6
     hundredths is 0.36.
 
 
@@ -252,9 +252,9 @@ Student Response                                                   • “Which 
 Lesson Synthesis
 “Today we used our understanding of place value to multiply decimals.”
 
-Display          and           .
+Display 25 × 0.3 and 25 × 0.03.
 
-“Describe the process you would use to find the value of these expressions.” (Find             and then multiply that by
+“Describe the process you would use to find the value of these expressions.” (Find 25 × 3 = 75 and then multiply that by
 0.1 or 0.01. The first one is 75 tenths or 7.5 and the second one is 75 hundredths or 0.75.)
 
 “How can we multiply any whole number by an amount of tenths or hundredths?” (Find the whole number multiplied by
@@ -280,9 +280,9 @@ Addressing     5.NBT.B.7
      Student Task Statement
       Fill in the blank to make each equation true.
 
-        1.
-        2.
-        3.
+        1.   5 × 0.3 = 5 × 3 × ___
+        2.   5 × 0.03 = 5 × ___ × 0.01
+        3.   5 × 0.03 = ___
 
 
 Student Response
@@ -293,10 +293,10 @@ Student Response
 
 
 
-                                           Grade 5                                    CC BY NC 2024
+                                           Grade 5                                  CC BY NC 2024
                                             Unit 5
                                                             Lesson 18
-                                                                               Illustrative Mathematics®            5
+                                                                             Illustrative Mathematics®              5
 Responding to Student Thinking
 Students use values other than 0.1, 3, and 0.15 to     Next Day Supports
 complete the equations.                                Launch the first activity of the next lesson by discussing a

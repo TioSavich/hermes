@@ -105,16 +105,16 @@ Student Response                                                  • Record res
 27 squares. Sample responses:
                                                                 Activity Synthesis
   • I see a 2-by-2 square, a 7-by-3 rectangle, and a 2-by-1
-    square.                                                       • “We’ve seen how helpful it is to decompose the figure
+    square. (2 × 2) + (7 × 3) + (2 × 1) = 27                      • “We’ve seen how helpful it is to decompose the figure
                                                                     into rectangles. In how many ways could we do that
   • I see a 2-by-5 rectangle, a 3-by-3 square, and a 2-by-4
                                                                     here?” (Many ways)
-    rectangle.
+    rectangle. (2 × 5) + (3 × 3) + (2 × 4) = 27
                                                                   • As students share each way, record the thinking for
   • I see a 6-by-7 rectangle with two corners cut out. The
                                                                     all to see.
     corners are rectangles, 5 by 1 and 5 by 2.
-                                                                  • “Are there ways to partition that are more helpful
+    (6 × 7)- (5 × 1)- (5 × 2) = 42- 5 - 10 = 27                   • “Are there ways to partition that are more helpful
                                                                     than others?” (Partitioning into larger rectangles is
                                                                     more efficient than smaller ones. The latter would
                                                                     mean more multiplication and more partial areas to
@@ -197,7 +197,7 @@ Student Response                                                • Select stude
        inches by 8 inches each. If she puts them side by
        side (along the short end), she will have 108            • Consider discussing any benefits or potential
        inches for the banner, which only needs to be 96           challenges of the different approaches. “Are some
-       inches                  .                                  strategies more efficient or more prone to error than
+       inches (3 × 36 = 108).                                     strategies more efficient or more prone to error than
                                                                   others?” (When cutting the paper into more pieces,
      ◦ Jada’s teacher can cut the poster paper into four
                                                                   there are more measurements to account for,
@@ -208,15 +208,15 @@ Student Response                                                • Select stude
        she puts the four rectangles side by side (along
                                                                   teacher, as it means more taping as well.)
        the shorter end), the banner will be 96 inches
-                     .
+       (4 × 24 = 96).
  2. The area of the poster paper is 864 square inches.
     Sample responses:
-     ◦
-     ◦
-     ◦
+     ◦ 36 × 24 = 864
+     ◦ 108 × 8 = 864
+     ◦ (36 × 8) × 3 = 288 × 3 = 864
      ◦ 36 inches by 24 inches is 3 feet by 2 feet, so the
        area is 6 square feet. There are 144 square
-       inches in 1 square foot.
+       inches in 1 square foot. 6 × 144 = 864
 
 
 
@@ -246,7 +246,7 @@ use operations to convert units of measurements along the way. Converting inches
                                                             Lesson 23
                                                                              Illustrative Mathematics®                 4
 12, but this is not an expectation at this point. Students could perform the conversion with multiplicative reasoning. To
-convert 180 inches into feet, they could reason                , or              and              .
+convert 180 inches into feet, they could reason 12 × ? = 180, or 12 × 10 = 120 and 12 × 5 = 60.
 
 In IM Grade 3, students learned that area is additive, and that the area of rectilinear figures can be found by
 decomposing them into non-overlapping rectangles. Students apply that understanding in this activity, after converting
@@ -298,19 +298,19 @@ Student Response                                                     ◦ Choose 
                                                                  • As students work on the last question, monitor for:
       ◦ 204 inches, which is 17 feet
                                                                      ◦ Different ways students decompose the diagram
-                                    , so the perimeter is              of the room to find its area.
+    15 + 8 + 3 + 9 + 12 + 17 = 64, so the perimeter is                 of the room to find its area.
     64 feet.
                                                                      ◦ Equations that show how the area is computed.
 
 
                                            Grade 4                                    CC BY NC 2024
                                             Unit 6
-                                                            Lesson 23
+                                                           Lesson 23
                                                                                Illustrative Mathematics®              5
-                   , so the perimeter is 768 inches.            Activity Synthesis
+    64 × 12 = 768, so the perimeter is 768 inches.              Activity Synthesis
   • Yes, that’s enough. That’s 468 inches more than
                                                                   • Select students to share how they reasoned about
-    needed                        . Yes, it is enough
+    needed (1,200- 732 = 468) . Yes, it is enough
                                                                     the area of the room. Record and display their
     because 1,200 is more than 768.
                                                                     reasoning.
@@ -319,13 +319,13 @@ Student Response                                                     ◦ Choose 
       ◦ The room can be decomposed into two                         ask how they would find out if the two answers
         rectangles: 8 feet by 3 feet and 17 feet by 12 feet         represent the same amount.
         (204 inches by 4 yards). The combined area is
-                             or          , which is 228
+        (8 × 3) + (17 × 12) or 24 + 204, which is 228
         square feet.
       ◦ The room can be decomposed into two
         rectangles: 8 feet by 15 feet (8 feet by 180
         inches) and 9 feet by 12 feet (3 yards by 4 yards).
-        The combined area is                        or
-                   or 228 square feet.
+        The combined area is (8 × 15) + (9 × 12) or
+        120 + 108 or 228 square feet.
 
 
 
@@ -373,10 +373,10 @@ Addressing     4.MD.A.2, 4.MD.A.3, 4.NBT.B.5
 
 Student Response
  1. No. Sample response:
-     ◦ The paper for this year’s banner has an area of 3,456 square inches, because                   . Last year’s
-       banner had an area of 2,304 square inches, because                    , so Han will need a bigger space to hang
+     ◦ The paper for this year’s banner has an area of 3,456 square inches, because 96 × 36 = 3,456. Last year’s
+       banner had an area of 2,304 square inches, because 48 × 48 = 2,304, so Han will need a bigger space to hang
        the new banner.
- 2. The difference is 1,152.
+ 2. The difference is 1,152. 3,456- 2,304 = 1,152
 
 
 Responding to Student Thinking

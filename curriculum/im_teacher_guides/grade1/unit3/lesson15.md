@@ -115,7 +115,7 @@ Sample responses:
   • 16: I see 5 and 5 is 10, and 6 more is 16.                 • If needed, “How can I write an equation that shows
                                                                  the number of each color of counters?”
   • 17: I see a group of 10 and 7 more.
-                                                                 (               ,                ,              )
+                                                                 ( 5 + 5 + 5 = 15, 5 + 5 + 6 = 16, 5 + 5 + 7 = 17)
 
 
 
@@ -191,8 +191,8 @@ Materials to Gather
     baby birds next. Then I added the 8 brown birds that        • “We are going to solve some problems about birds.”
     were left.
 
-  • I switched the order of the numbers to           so I     Activity
-    could make a 10 first.          ,
+  • I switched the order of the numbers to 7 + 3 + 8 so I     Activity
+    could make a 10 first. 3 + 7 = 10, 10 + 8 = 18
                                                                 • Display and read the Task Statement.
                                                                 • 3 minutes: independent work time
                                                                 • “Share your thinking with your partner.”
@@ -267,11 +267,11 @@ when adding (MP7). Students should have access to double 10-frames and connectin
 use if they choose.
 
 When recording student thinking, it is important that the teacher write each part of the equation on a separate line. For
-example, when representing student thinking for                   record:
+example, when representing student thinking for 4 + 2 + 8 =       record:
 
-  •
+  • 4 + 2 + 8 =
 
-  •
+  • 8 + 2 = 10
 
   •
 
@@ -322,12 +322,12 @@ Materials to Gather
                                                                 work.
 Student Response                                              • “Who can restate _____’s method?”
                                                               • Repeat for each student’s work.
- 1. 14 cards. Sample response:                        I
+ 1. 14 cards. Sample response:                       I
     showed all the numbers with counters and counted          • “What connections do you see between the different
     them all.                                                   methods?” (There are two tens in each method. Each
                                                                 method is addition.)
- 2. 14 birds. Sample response:                    .
-               ,           .
+ 2. 14 birds. Sample response: 4 + 2 + 8 = 14.
+    2 + 8 = 10, 10 + 4 = 14.
  3. 18 birds. Sample response: I know 9 and 1 is 10. I
     used my fingers to count on 8
     more.                     .
@@ -345,7 +345,7 @@ solve a problem with three numbers?”
 
                                             Grade 1                               CC BY NC 2024
                                              Unit 3
-                                                          Lesson 15
+                                                         Lesson 15
                                                                            Illustrative Mathematics®              6
 Observation
 Lesson Observations for Unit 3, Section C

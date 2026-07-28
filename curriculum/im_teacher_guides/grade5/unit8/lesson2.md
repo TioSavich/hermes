@@ -37,7 +37,7 @@ Narrative
 In previous units, students learned how to use the standard algorithm to multiply multi-digit whole numbers. In this
 lesson, they practice using the standard algorithm when one or more of the factors includes several zeros. The zeros are
 at the end of the number so students may identify each zero as representing a factor of 10 and work with smaller
-numbers to find the product. For example, they may interpret              as               . They may also use the standard
+numbers to find the product. For example, they may interpret 350 × 74 as 10 × 35 × 74. They may also use the standard
 algorithm for multiplication and pay close attention to the place value of each digit in the product.
 
 If students need additional support with the concepts in this lesson, refer back to Unit 4, Section A in the curriculum
@@ -81,7 +81,7 @@ thinking behind it (MP3).
 
 
      Student Task Statement                                  Launch
-                                                               • Groups of 2
+     9,999 × 896                                               • Groups of 2
 
      Record an estimate that is:                               • Display the expression.
                                                                • “What is an estimate that’s too high? Too low? About
@@ -96,15 +96,15 @@ Sample responses:
                                                                • 1 minute: partner discussion
   • too low: 7,000,000–8,000,000                               • Record responses.
   • about right: 8,000,000–10,000,000                          • Monitor for students who estimate by
-  • too high: 10,000,000–11,000,000                              using             .
+  • too high: 10,000,000–11,000,000                              using 10,000 × 900.
 
 
                                                              Activity Synthesis
                                                                • Invite students to share estimates.
-                                                               • “Why is                a good estimate for the
+                                                               • “Why is 10,000 × 900 a good estimate for the
                                                                  product?” (10,000 is just 1 more than 9,999 and 896
                                                                  is close to 900.)
-                                                               • “What is the value of            ? How do you
+                                                               • “What is the value of 10,000 × 900? How do you
                                                                  know?” (9,000,000, because the two numbers have 6
                                                                  factors of 10 combined.)
 
@@ -127,9 +127,9 @@ Addressing     5.NBT.B.5
 The purpose of this activity is for students to consider possible mistakes when multiplying greater numbers. Monitor for
 students who:
   • Revise their answer after examining Kiran’s mistake.
-  • Recognize that                     so          must be greater than 5,850.
-  • Can explain why Kiran should be multiplying                 .
-  • Recognize that                   , so there should be three zeros in the second partial product.
+  • Recognize that 650 × 10 = 6,500 so 650 × 27 must be greater than 5,850.
+  • Can explain why Kiran should be multiplying 650 × 2 × 10.
+  • Recognize that 20 × 50 = 1,000, so there should be three zeros in the second partial product.
 When students determine Kiran's error and make sense of his work, they interpret and critique the work of others
 (MP3).
 
@@ -144,55 +144,55 @@ When students determine Kiran's error and make sense of his work, they interpret
 
 
      Student Task Statement                                    Launch
-       1. Find the                                                  • Groups of 2
-          value of                                                  • Display or write for all to see:
+       1. Find the                                               • Groups of 2
+          value of                                               • Display or write for all to see: 650 × 27
           the
-          product.                                                  • Display each number in a different corner of the
-          Explain                                                     room:
-          or show                                                     14,000
-          your                                                        18,000
-          reasonin                                                    13,000
-          g.                                                          19,000
+          product.                                               • Display each number in a different corner of the
+          Explain                                                  room:
+          or show                                                  14,000
+          your                                                     18,000
+          reasonin                                                 13,000
+          g.                                                       19,000
 
-       2. Here is how Kiran found the product. Is his               • “When I say go, stand in the corner with the number
-          answer reasonable? Explain your reasoning.                  that you think is the most reasonable estimate for
-                                                                               . Be prepared to explain your reasoning.”
-                                                                    • 1 minute: quiet think time
-                                                                    • Ask a student in each corner to explain their
-                                                                      reasoning.
-                                                                    • “Does anyone want to switch corners?”
-                                                                    • Ask a student who switched corners to explain their
-                                                                      reasoning.
-                                                                    • “Now you are going to find this product and analyze
-       3. What parts of the work do you agree with?                   some work.”
+       2. Here is how Kiran found the product. Is his            • “When I say go, stand in the corner with the number
+          answer reasonable? Explain your reasoning.               that you think is the most reasonable estimate for
+                                                                   650 × 27. Be prepared to explain your reasoning.”
+                                                                 • 1 minute: quiet think time
+                                                                 • Ask a student in each corner to explain their
+                                                                   reasoning.
+                                                                 • “Does anyone want to switch corners?”
+                                                                 • Ask a student who switched corners to explain their
+                                                                   reasoning.
+                                                                 • “Now you are going to find this product and analyze
+       3. What parts of the work do you agree with?                some work.”
        4. What parts of the work do you disagree with?
-       5. Look at the value you found for          . Is        Activity
+       5. Look at the value you found for 650 × 27. Is         Activity
           there anything you want to revise? Explain or
-                                                                    • 5–7 minutes: partner work time
+                                                                 • 5–7 minutes: partner work time
           show your reasoning.
 
 
 
 
-                                            Grade 5                                      CC BY NC 2024
+                                            Grade 5                                   CC BY NC 2024
                                              Unit 8
                                                              Lesson 2
-                                                                                  Illustrative Mathematics®              3
+                                                                               Illustrative Mathematics®              3
 Student Response                                                Activity Synthesis
- 1. 17,550. Sample response:                                         • Ask previously identified students, as described in
-                                                                       the Activity Narrative, to share their thinking.
-                                                                     • Display Kiran's work.
-                                                                     • “Why doesn’t 5,850 make sense?” (
-                                                                       so         should be greater than 6,500.)
-                                                                     • “What makes sense about Kiran’s work?”
-                                                                       (              .                 , but he needs to
-                                                                       multiply           .)
+ 1. 17,550. Sample response:                                      • Ask previously identified students, as described in
+                                                                    the Activity Narrative, to share their thinking.
+                                                                  • Display Kiran's work.
+                                                                  • “Why doesn’t 5,850 make sense?” (650 × 10 = 6,500
+                                                                    so 650 × 27 should be greater than 6,500.)
+                                                                  • “What makes sense about Kiran’s work?”
+                                                                    (650 × 7 = 4,550. 650 × 2 = 1,300, but he needs to
+                                                                    multiply 650 × 2 × 10.)
  2. No. Sample response: The second partial product
-    should be greater because we are multiplying                     • Display a student's correct solution or the image
-                .                                                      from Student Responses.
+    should be greater because we are multiplying                  • Display a student's correct solution or the image
+    650 × 10 × 2.                                                   from Student Responses.
 
- 3. Sample response: I agree that                    .               • “How do we know that 17,550 is a reasonable value
-                                                                       for the product?” (because                  )
+ 3. Sample response: I agree that 650 × 7 = 4,550.                • “How do we know that 17,550 is a reasonable value
+                                                                    for the product?” (because 600 × 30 = 18,000)
  4. Sample response: I agree with the digits in the
     second partial product, but they should be moved
     over one place to the left. The second partial product
@@ -202,7 +202,7 @@ When students determine Kiran's error and make sense of his work, they interpret
 
 
 
-Activity 2                                                                                                       15 min
+Activity 2                                                                                                      15 min
 
 Zero the Hero
 
@@ -213,10 +213,10 @@ Addressing     5.NBT.B.5
 The purpose of this activity is for students to practice multiplying multi-digit numbers that have one or more digits of 0
 at the end. Monitor for students who:
 
-  • Use the standard algorithm to find the value of              .
-  • Multiply the product           by 10 to find the value of the product            .
-  • Multiply the product of            by 10 to find the value of the product              .
-Students who observe that                  and                  and use these relationships to find the values of the
+  • Use the standard algorithm to find the value of 6,700 × 89.
+  • Multiply the product 67 × 89 by 10 to find the value of the product 670 × 89.
+  • Multiply the product of 670 × 89 by 10 to find the value of the product 6,700 × 89.
+Students who observe that 670 = 10 × 67 and 6,700 = 10 × 670 and use these relationships to find the values of the
 products are observing regularity in repeated reasoning and using their knowledge of how to multiply a whole number
 by 10 (MP7, MP8).
 
@@ -230,10 +230,10 @@ by 10 (MP7, MP8).
 
 
 
-                                             Grade 5                                     CC BY NC 2024
+                                             Grade 5                                  CC BY NC 2024
                                               Unit 8
                                                              Lesson 2
-                                                                                  Illustrative Mathematics®                4
+                                                                               Illustrative Mathematics®                 4
      Student Task Statement                                   Launch
       Find the value of each product.                           • Groups of 2
 
@@ -246,12 +246,12 @@ by 10 (MP7, MP8).
                                                                 • 5–7 minutes: independent work time
                                                                 • 5–7 minutes: partner discussion
 Student Response
- 1. 9,100. Sample response: I found                 and       Activity Synthesis
+ 1. 9,100. Sample response: I found 26 × 35 = 910 and         Activity Synthesis
     then multiplied that by 10.
-                                                                • Display the product              .
+                                                                • Display the product 6,700 × 89.
  2. 91,000. Sample response: I multiplied 9,100 by 10.
                                                                 • Ask previously identified students to share their
- 3. 59,630. Sample response: I found
+ 3. 59,630. Sample response: I found 67 × 89 = 5,963
                                                                   solutions.
     and then multiplied that by 10.
                                                                 • Display correct student work or the image from
@@ -261,13 +261,13 @@ Student Response
 
 
 
-                                                                • “What is the relationship between            and
-                                                                             ?” (The product            is 10 times as
-                                                                  great as           because one of the factors is 10
+                                                                • “What is the relationship between 670 × 89 and
+                                                                  6,700 × 89?” (The product 6,700 × 89 is 10 times as
+                                                                  great as 670 × 89 because one of the factors is 10
                                                                   times greater.)
-                                                                • “What is the relationship between            and
-                                                                             ?” (The product              is 100 times as
-                                                                  great as          since 6,700 is          .)
+                                                                • “What is the relationship between 67 × 89 and
+                                                                  6,700 × 89?” (The product 6,700 × 89 is 100 times as
+                                                                  great as 67 × 89 since 6,700 is 100 × 67.)
 
 
 
@@ -277,7 +277,7 @@ Lesson Synthesis
 solved today?” (It was hard to keep track of the numbers as we multiplied. I wasn’t sure how many zeroes to write in the
 second partial product.)
 
-“What is important to remember when using a standard algorithm to multiply              ?” (Estimate first so you know if
+“What is important to remember when using a standard algorithm to multiply 350 × 74?” (Estimate first so you know if
 your answer is reasonable. Pay attention to which place each digit is in.)
 
 Display:
@@ -289,7 +289,7 @@ Display:
                                               Unit 8
                                                             Lesson 2
                                                                              Illustrative Mathematics®                5
-“What is a reasonable estimate for           ?” (21,000, 24,000, 28,000.)
+“What is a reasonable estimate for 350 × 74?” (21,000, 24,000, 28,000.)
 
 Ask students to describe to a partner how they would use the standard algorithm to find the value of the product.
 

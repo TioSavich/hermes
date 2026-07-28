@@ -96,28 +96,28 @@ number.
       Student Task Statement                                Launch
       Find the value of each expression mentally.             • Display one expression in the student book.
 
-        •                                                     • “Give me a signal when you have an answer and can
+        • 42 + 42                                             • “Give me a signal when you have an answer and can
                                                                 explain how you got it.”
-        •
+        • 21 + 63
                                                               • 1 minute: quiet think time
-        •
-        •
+        • 50 + 34
+        • 48 + 36
                                                             Activity
 
 Student Response                                              • Record answers and strategies.
                                                               • Keep expressions and work displayed.
-  • 84: I added       and           .              .
+  • 84: I added 2 + 2 and 40 + 40. 80 + 4 = 84.
                                                               • Repeat with each expression.
-  • 84: I added               and              .
-  • 84: I added 5 more tens to 34.
+  • 84: I added 63 + 20 = 83 and 83 + 1 = 84.
+  • 84: I added 5 more tens to 34. 34 + 50 = 84
                                                             Activity Synthesis
   • 84: I took 2 from 36 and added it to 48 to get to 50
-                   ). Then I added        like the last       • “What did you notice about the sums?” (The
+    (48 + 2) + 34). Then I added 50 + 34 like the last        • “What did you notice about the sums?” (The
     expression.                                                 expressions were all different, but all of them had a
                                                                 value of 84.)
                                                               • “How could you explain why the third and fourth
                                                                 expressions have the same value?” (You could take 2
-                                                                ones from 36 and add it to 48 to make        .)
+                                                                ones from 36 and add it to 48 to make 50 + 34.)
 
 
 
@@ -203,13 +203,13 @@ Student Response                                                Which ways are d
                                                               • 1–2 minutes: small-group work time
      ◦ 400, 90, 5
                                                               • Monitor for students who:
-     ◦
+     ◦ 400 + 90 + 5
                                                                  ◦ Create a base-ten diagram with the fewest
      ◦ 4 hundreds, 9 tens, 5 ones                                  amount of blocks represented.
                                                                  ◦ Write 4 hundreds, 9 tens, 5 ones.
                                                                  ◦ Write 495.
-                                                                 ◦ Use an expression such as               or
-                                                                               .
+                                                                 ◦ Use an expression such as 400 + 95 or
+                                                                   400 + 90 + 5.
 
 
                                                             Activity Synthesis
@@ -319,13 +319,13 @@ Student Response
  3. Sample responses:
      ◦ 188
      ◦ 1 hundred 8 tens 8 ones
-     ◦
+     ◦ 100 + 88
  4. Diego has 1 hundred, 17 tens, and 13 ones.
  5. Students draw 2 hundreds, 8 tens, and 3 ones.
  6. Sample responses:
      ◦ 283
      ◦ 2 hundreds 8 tens 3 ones
-     ◦
+     ◦ 200 + 80 + 3
 
 
 

@@ -109,7 +109,7 @@ A, B, and C go together because:
                                                               Activity Synthesis
   • They use numbers or digits.                                 • Display Images A and C.
 A, B, and D go together because:                                • “How can these represent the same number when
-  • They show the tens first.                                     the 3 and 5 are in different places?” (      is 53 and
+  • They show the tens first.                                     the 3 and 5 are in different places?” (3 + 50 is 53 and
 A, C, and D go together because:                                  so is 5 tens 3 ones. It doesn’t matter which order the
   • They show 53.                                                 tens and ones are written in unless you are writing
                                                                   the 2-digit number. The tens are first and then the
@@ -183,7 +183,7 @@ Sample responses:
                                                                  • Monitor for students who represent the count as 5
   • 5 tens, 10 ones circled, and 5 ones, labeled
                                                                    tens and 15 ones in different ways.
-                .
+    50 + 10 + 5.
 If you have time: Sample response: 4 tens and 25 ones.
                                                                Activity Synthesis
                                                                  • Invite previously identified students to share.
@@ -218,7 +218,7 @@ students find all the ways to represent 37. Students should see that the number 
 amounts of tens and ones. Students are given connecting cubes in towers of 10 and singles, and they represent their
 thinking on paper using drawings, numbers, or words. Some students may initially represent 37 using 3 tens and 7 ones.
 Then they notice that they can decompose a tower of 10 into 10 singles and have 2 tens and 17 ones and use this
-structure to find other ways. Students may represent 37 as           ,      , etc., which are all ways to represent the
+structure to find other ways. Students may represent 37 as 36 + 1, 35 + 2, etc., which are all ways to represent the
 number. The Lesson Synthesis focuses on representing 37 with different groups of tens and ones.
 
 

@@ -89,12 +89,12 @@ When students use the fact that one number is close to 10 to find the sum, they 
      Student Task Statement                                    Launch
       Find the value of each expression mentally.                • Display one expression.
 
-        •                                                        • “Give me a signal when you have an answer and can
+        • 9 + 6                                                  • “Give me a signal when you have an answer and can
                                                                    explain how you got it.”
-        •
+        • 29 + 6
                                                                  • 1 minute: quiet think time
-        •
-        •
+        • 59 + 6
+        • 49 + 8
                                                                Activity
 
 Student Response                                                 • Record answers and strategies.
@@ -168,10 +168,10 @@ an area, they look for and make use of structure (MP7).
                                                                   • 2–3 minutes: partner work time
 Student Response
                                                                   • Monitor for students who found the area by:
- 1. 42 square feet. Sample responses: I multiplied
+ 1. 42 square feet. Sample responses: I multiplied 7 × 6
                                                                       ◦ Using counting strategies.
-    or I multiplied          and             from the
-    parts and then added         .                                    ◦ Multiplying the side lengths of the entire
+    or I multiplied 5 × 6 = 30 and 2 × 6 = 12 from the
+    parts and then added 30 + 12.                                     ◦ Multiplying the side lengths of the entire
                                                                         rectangle.
  2. Sample response: Students draw a 5-foot-by-10-foot
     rectangular garden. They decide a 5-foot-by-7-foot                ◦ Adding the areas of the smaller rectangles.
@@ -274,18 +274,18 @@ Student Response                                                  work with it i
     on bottom. I added the areas of both rectangles
                                                                 • 1 minute: partner discussion
     together.
+                                 5 × 4 = 20
 
-
-                                                              Activity
-                                                                • “There are many ways to find the area of this figure.
+                                 5 × 10 = 50                  Activity
+                                 20 + 50 = 70                   • “There are many ways to find the area of this figure.
                                                                   Take some time to find the area. We are going to
                                                                   share these with the class, so you may want to
                                                                   include details such as shading, notes, and labels to
   • I saw a rectangle and a square off to the side and            help others understand your thinking.”
     added their areas.
                                                                 • 5 minutes: independent work time
-                                                is
-                                         , which is 70.
+                                9 × 5 + 5 × 5 is
+                                45 + 25, which is 70.
                                                               Activity Synthesis
                                                               MLR7 Compare and Connect
 
@@ -310,21 +310,21 @@ Student Response                                                  work with it i
                                                                               Illustrative Mathematics®                   5
                                                                   • Display an expression that reflects how students
                                                                     found the area, such as:
-
+                                                                                        4 × 5 + 5 × 10
 
                                                                   • “How does this expression show how to find the
-                                                                    area?” (The        represents the rectangle on the top
+                                                                    area?” (The 4 × 5 represents the rectangle on the top
                                                                     of the figure if we break it into 2 rectangles. The
-                                                                            represents the bottom rectangle.)
+                                                                    5 × 10 represents the bottom rectangle.)
                                                                   • Add parentheses to create the expression:
-
+                                                                                      (4 × 5) + (5 × 10)
 
                                                                   • “Parentheses are grouping symbols that can be
                                                                     used in expressions or equations. To show how you
                                                                     saw the figure we can show the first rectangle with
-                                                                          and the second rectangle with         .
+                                                                    4 × 5 and the second rectangle with 5 × 10.
                                                                     Parentheses let us put both rectangles in the same
-                                                                    expression like                   and see which part
+                                                                    expression like (4 × 5) + (5 × 10) and see which part
                                                                     of the expression represents each rectangle.”
                                                                   • Reinforce the meaning of parentheses in a way
                                                                     similar to other ways that students decompose the
@@ -362,7 +362,7 @@ Suggested Centers
                                               Unit 2
                                                             Lesson 12
                                                                                Illustrative Mathematics®               6
-Cool-down                                                                                                      5 min
+Cool-down                                                                                                     5 min
 
 Where Are the Rectangles?
 
@@ -378,8 +378,8 @@ Addressing     3.MD.C.7.d
 
 Student Response
 54 square units. Sample response: I split the figure into 2 rectangles, 1 across the top and 1 below. I found the area of
-the rectangle across the top by multiplying        , which is 30 square units. I found the area of the bottom rectangle by
-multiplying      , which is 24 square units. Then, I added the area of both rectangles to get 54 square units.
+the rectangle across the top by multiplying 3 × 10, which is 30 square units. I found the area of the bottom rectangle by
+multiplying 4 × 6, which is 24 square units. Then, I added the area of both rectangles to get 54 square units.
 
 
 Responding to Student Thinking
@@ -389,9 +389,9 @@ developed in a prior unit.                                     Grade 2, Unit 2, 
 
 
 
-                                           Grade 3                                    CC BY NC 2024
+                                           Grade 3                                   CC BY NC 2024
                                             Unit 2
                                                             Lesson 12
-                                                                               Illustrative Mathematics®               7
+                                                                              Illustrative Mathematics®               7
 ```
 
