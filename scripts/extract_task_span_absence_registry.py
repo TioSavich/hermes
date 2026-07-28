@@ -167,17 +167,26 @@ REGISTER = """/** <module> Generated student-task-span absence registry
  *   - imperative_without_quantity: the prompt asks for a computed result and
  *     the extract carries no quantity to compute with.
  *   - quantities_carry_no_operand_pair: two or more quantities survive, and
- *     the extract carries no operator printed between two numerals, no
- *     question mark, no demand for a computed result, and no void slot. The
- *     quantities are set members handed out for sorting, number-card decks,
- *     data-table cells, price lists, clock times, figure labels, category
- *     numbers, or page fragments, so no pair of them stands in an arithmetic
- *     relation the text states. Retyping a span here is not a coverage claim
- *     in either direction. It records that the span was never reachable,
- *     which is a different fact from having failed to reach it.
+ *     the extract carries no operator printed between two numerals, no demand
+ *     for a computed result, and no void slot. The quantities are set members
+ *     handed out for sorting, number-card decks, data-table cells, price
+ *     lists, clock times, figure labels, category numbers, or page fragments,
+ *     so no pair of them stands in an arithmetic relation the text states.
+ *     Retyping a span here is not a coverage claim in either direction. It
+ *     records that the span was never reachable, which is a different fact
+ *     from having failed to reach it.
+ *
+ *     A question mark used to divert a span out of this reason and into the
+ *     coverage gap below. It no longer does, because asking something is not
+ *     stating an arithmetic relation: the diverted spans read "What do you
+ *     notice? What do you wonder?", "How can you act out this story?", "Who do
+ *     you agree with? Explain your reasoning", "Sort the pictures into these 3
+ *     categories". No task grammar can reach any of them, and 225 of the 818
+ *     spans in the gap were there on a question mark alone.
  *   - no_task_grammar_for_quantity_pair: two or more quantities survive, the
- *     extract states a computation over them, and no task grammar matches the
- *     sentence shape. A parser would act here.
+ *     extract states a computation over them — a demand phrase, printed
+ *     arithmetic, or a void operand slot, never a bare question mark — and no
+ *     task grammar matches the sentence shape. A parser would act here.
  *   - no_task_grammar_for_single_quantity: one quantity survives, so no
  *     operand pair can be formed from the text alone.
  *   - prompt_states_no_computation: no quantity and no computational demand.
@@ -355,7 +364,7 @@ def classify(text: str, decisions: list[dict]) -> tuple[str, list[str]]:
         return "extract_runs_past_prompt", evidence
     if demand_meets_void(text):
         return "void_operand_slots", evidence
-    if len(quantities) >= 2 and not (arithmetic or question or demand or voids):
+    if len(quantities) >= 2 and not (arithmetic or demand or voids):
         return "quantities_carry_no_operand_pair", evidence
     if len(quantities) >= 2:
         return "no_task_grammar_for_quantity_pair", evidence
