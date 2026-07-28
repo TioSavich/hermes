@@ -3671,9 +3671,9 @@ query_and_format(Domain, Description, Source, SafeMatch) :-
 %
 %   Which side of the union verdict fired, mirroring b_incoherent/1's own
 %   order: a declared hyperedge contained in Set (that edge is the witness),
-%   else the classical neg-pair floor (the clashing pair is the witness). The
-%   final clause covers any other incoherent_base/1 case without a pair-shaped
-%   witness.
+%   else the classical neg-pair floor (the clashing pair is the witness), then
+%   enabled axiom-pack incoherence (the engine witness is preserved). The final
+%   clause covers any remaining engine incoherence without a pair-shaped witness.
 brandomian_incoherence_source(Set, "brandomian_hyperedge", EdgeTexts) :-
     findall(Bad,
             ( brandomian_incompatibility:incompatible_set(Bad),
@@ -3687,6 +3687,12 @@ brandomian_incoherence_source(Set, "classical_negation_pair", PairTexts) :-
     bc_member_eq(neg(P), Set),
     !,
     maplist(term_to_text, [P, neg(P)], PairTexts).
+brandomian_incoherence_source(Set, "classical_axiom_pack_incoherence", [WitnessText]) :-
+    sequent_engine:incoherent_witness(Set, Witness),
+    get_dict(source, Witness, Source),
+    memberchk(Source, [axiom_pack_witness, axiom_pack_incoherence]),
+    !,
+    term_to_text(Witness, WitnessText).
 brandomian_incoherence_source(_, "classical_incoherence_base", null).
 
 bc_subset_eq([], _).

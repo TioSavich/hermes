@@ -179,6 +179,41 @@ public_discovery_context(defeasible_inference).
 public_discovery_context(registry_neighborhood).
 public_discovery_context(finite_three_rule_program).
 public_discovery_context(finite_loop_program).
+% The a-fortiori closure was consulted above but left off this list, so its
+% rows loaded and nothing served them: the four entailments the closure earns
+% answered NO on every live surface (incompatibility_set/2,
+% incompatibility_entails/2, the worker's witness op, and
+% canonical_vocabulary:incompatible/3) while the generated register carried
+% them. The rows are reviewed and their nestings are settled against inputs,
+% which is the same standard the other four contexts meet.
+public_discovery_context(a_fortiori_context_closure).
+
+
+%!  discovery_context_refines(?Narrow, ?Base) is nondet.
+%
+%   Narrow's rows are derived from Base's rows rather than drawn from a separate
+%   closed world, so a witness taken from Narrow answers a profile stated in
+%   Base. Context does two jobs in this module and only one of them is a sealed
+%   universe: the finite fixture programs and the registry neighbourhood each
+%   name their own world, and letting a toy program's edges witness a claim
+%   about the error-rule corpus would be unsound. The a-fortiori closure is not
+%   a sibling world — every row is an error-rule triple with one broad
+%   divergence context replaced by a reviewed narrower one — so it is a
+%   provenance partition of `defeasible_inference`, held apart to keep an
+%   asserted nesting distinguishable from a machine-decided one.
+%
+%   Declaring the refinement is what lets the runtime relation reach the four
+%   entailments the generated register already earns. A context that declares no
+%   refinement stays sealed, which is the default.
+discovery_context_refines(a_fortiori_context_closure, defeasible_inference).
+
+%!  witness_context(+Profile, -Source) is nondet.
+%
+%   The contexts a witness for a profile stated in Profile may come from: the
+%   profile's own context, and any context refining it.
+witness_context(Context, Context).
+witness_context(Context, Refining) :-
+    discovery_context_refines(Refining, Context).
 
 
 %!  incompatibility_entails(+A, +B) is semidet.
@@ -237,11 +272,13 @@ set_incompatible_witness(Context, CandidateSet, KnownSet,
                          _{ kind: known_incompatible_subset,
                             scope: closed_world_finite_incompatibility_table,
                             context: Context,
+                            witness_context: Source,
                             provenance: Provenance,
                             known_set: KnownSet,
                             candidate_set: CandidateSet,
                             subset_relation: all_known_terms_member_of_candidate }) :-
-    incompatibility_set(Context, set(Provenance, KnownSet)),
+    witness_context(Context, Source),
+    incompatibility_set(Source, set(Provenance, KnownSet)),
     subset_terms(KnownSet, CandidateSet).
 
 

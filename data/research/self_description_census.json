@@ -406,7 +406,7 @@
       "crosswalk": 38,
       "dialectic": 1,
       "geometry_witness": 35,
-      "incompatibility": 9,
+      "incompatibility": 10,
       "infrastructure": 20,
       "juncture": 1,
       "learner": 25,
@@ -422,7 +422,7 @@
       "zeeman": 4
     },
     "by_status": {
-      "lazy_reachable": 9,
+      "lazy_reachable": 10,
       "orphan_module": 68,
       "routed_paged": 195,
       "unrouted": 6
@@ -436,7 +436,7 @@
       "superseded": 0,
       "undetermined": 32
     },
-    "total": 278,
+    "total": 279,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",

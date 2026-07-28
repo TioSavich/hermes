@@ -2147,6 +2147,108 @@
           }
         ]
       }
+    },
+    {
+      "lesson": "IM-G2-U1-L12",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "take_away_base_ones"
+      },
+      "alternative": "drop_ones_after_base_takeaway",
+      "material_incompatibility": "The lesson requires subtracting the ones (7) from 17 to reach 10 and then subtracting the remaining ones (2) to find the difference. The alternative discards the second subtraction.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit1/lesson12.md",
+        "fragments": [
+          {
+            "line": 98,
+            "text": "8: I knew that 17- 7 = 10 , and then I took away 2 more."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G6-U2-L7",
+      "intended_action": {
+        "operation": "ratio",
+        "kind": "scale_ratio_unit"
+      },
+      "alternative": "additive_extension_of_ratio",
+      "material_incompatibility": "The lesson defines the relationship between quantities as how much exists for every single unit of another, which the alternative would treat as a constant additive difference.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_purpose",
+            "text": "how much of one quantity there is for every one unit of the other quantity"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G6-U3-L3",
+      "intended_action": {
+        "operation": "ratio",
+        "kind": "scale_ratio_unit"
+      },
+      "alternative": "additive_extension_of_ratio",
+      "material_incompatibility": "Students relate measurements in different units as equivalent ratios. The alternative would treat the relationship between these units as a constant difference, ignoring the multiplicative scaling.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_goal",
+            "text": "the pairs of measurements are equivalent ratios"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G7-U4-L8",
+      "intended_action": {
+        "operation": "division",
+        "kind": "missing_factor_known_product_search"
+      },
+      "alternative": "reject_known_product_match",
+      "material_incompatibility": "Students divide the new amount to determine the original amount, but the alternative fails to recognize the new amount as the target product.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_boundary",
+            "text": "divide to find the unknown factor"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-GK-U8-L15",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "The lesson identifies 1 more than 4 as 5, which the alternative would ignore by counting all items from 1.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md",
+        "fragments": [
+          {
+            "line": 256,
+            "text": "4 and"
+          },
+          {
+            "line": 257,
+            "text": "1 more is 5"
+          }
+        ]
+      }
     }
   ]
 }

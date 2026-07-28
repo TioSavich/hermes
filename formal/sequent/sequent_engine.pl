@@ -82,7 +82,6 @@
 
 :- use_module(formalization(grounded_arithmetic), [incur_cost/1]).
 :- use_module(library(time), [call_with_time_limit/2]).
-:- use_module(pml(mua_relations), [lx_for/3, grounding_metaphor/2]).
 :- use_module(pml(utils), [match_antecedents/2, select/3]).
 :- use_module(learner(deontic_scorekeeper),
               [ commitment/2,

@@ -159,6 +159,7 @@ canonical_concept('incompatibility_sets:incompatibility_set/2', incompatible).
 canonical_concept('sequent_engine:incoherent/1',               incoherent).
 canonical_concept('sequent_engine:is_incoherent/1',            incoherent).
 canonical_concept('sequent_engine:incoherent_base/1',          incoherent).
+canonical_concept('robinson_q:incoherent/1',                    incoherent).
 canonical_concept('defeasible_inference:ctx_incoherent/1',     incoherent).
 % deontic_incoherent/3 is deliberately NOT registered as a canonical_concept
 % merge. The merge gate blocks it for principled reasons the union view does
@@ -180,6 +181,7 @@ vocabulary_source(incoherent,
     [ 'sequent_engine:incoherent/1',
       'sequent_engine:is_incoherent/1',
       'sequent_engine:incoherent_base/1',
+      'robinson_q:incoherent/1',
       'defeasible_inference:ctx_incoherent/1' ]).
 vocabulary_source(deontic_incoherent,
     [ 'deontic_scorekeeper:deontic_incoherent/2',

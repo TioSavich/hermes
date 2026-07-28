@@ -123,16 +123,26 @@ KEEP_FILES = [
     "formal/incompatibility/brandomian_incompatibility.pl",
     "formal/incompatibility/sequent_brandom_bridge.pl",
     "formal/incompatibility/registry_incompatibility_adapter.pl",
+    # The second feeder. axiom_toggle.pl imports it to register the
+    # error_rule_hyperedges pack, and the worker lazy-loads axiom_toggle on the
+    # first /api/axiom_toggle call, so leaving this out of the bundle turns that
+    # op into a 500 in the shipped app while dev stays green.
+    "formal/incompatibility/error_rule_incompatibility_adapter.pl",
     "formal/incompatibility/incompatibility_discovery.pl",
     "formal/incompatibility/incompatibility_sets.pl",
     "formal/incompatibility/defeasible_inference.pl",
     "formal/incompatibility/find_emergent_hyperedges.pl",
     "formal/incompatibility/incompatibility_sets_discovered.pl",
-    # Two more generated files: the error-rule material inferences that
-    # defeasible_inference.pl includes at compile time, and the discovered-set
-    # cache incompatibility_sets.pl consults beside the Big Red one.
+    # Three more generated files: the error-rule material inferences that
+    # defeasible_inference.pl includes at compile time, the discovered-set
+    # cache incompatibility_sets.pl consults beside the Big Red one, and the
+    # a-fortiori closure cache. That last consult is guarded by
+    # file_errors(fail), so an unshipped cache is not an error — the bundle
+    # simply serves none of its 11 rows while dev serves all of them, and
+    # nothing reports the difference.
     "formal/incompatibility/error_rule_inferences.pl",
     "formal/incompatibility/incompatibility_sets_error_rules.pl",
+    "formal/incompatibility/incompatibility_sets_a_fortiori_context_closure.pl",
     "formal/dialectic/dialectical_engine.pl",
     "formal/dialectic/critique.pl",
     "formal/juncture/differance_juncture.pl",

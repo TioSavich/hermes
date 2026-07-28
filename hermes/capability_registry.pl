@@ -221,6 +221,7 @@ capability('formal/formalization/synthesis/run_lazy.pl', 'run_lazy', 'synthesis'
 capability('formal/formalization/synthesis/run_synth.pl', 'run_synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth.pl', 'synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth_lazy.pl', 'synth_lazy', 'synthesis', [], orphan_module).
+capability('formal/incompatibility/error_rule_incompatibility_adapter.pl', 'error_rule_incompatibility_adapter', 'incompatibility', [], lazy_reachable).
 capability('formal/incompatibility/error_rule_inferences.pl', 'error_rule_inferences', 'incompatibility', [], orphan_module).
 capability('formal/incompatibility/incompatibility_entailment_order.pl', 'incompatibility_entailment_order', 'incompatibility', [], orphan_module).
 capability('formal/incompatibility/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'incompatibility', [], lazy_reachable).
@@ -1136,6 +1137,7 @@ capability_page('knowledge/misconceptions/literature_canonical_mappings.pl', '/h
 capability_page('knowledge/strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
 capability_page('knowledge/strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
 
+capability_lazy_via('formal/incompatibility/error_rule_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/incompatibility/registry_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'compute').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'learner_reset').

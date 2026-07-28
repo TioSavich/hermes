@@ -63,6 +63,8 @@
  * exists in the relation is never claimed by a second feeder. Current
  * feeders: `registry_incompatibility_adapter:load_registry_hyperedges/0`
  * (misconception-registry pairs),
+ * `error_rule_incompatibility_adapter:load_error_rule_hyperedges/0`
+ * (reviewed error-rule and a-fortiori closure triples),
  * `incompatibility_discovery:install_discovered_hyperedges/2` (bounded
  * finite discovery — the discovery engine proposes classified sets, this
  * relation records them), and

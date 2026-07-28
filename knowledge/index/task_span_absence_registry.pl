@@ -143,8 +143,8 @@ task_span_receipt('IM-G1-U2-L2', student_task_statement(4), coverage_gap(no_task
 task_span_receipt('IM-G1-U2-L20', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit2/lesson20.md', lines(161, 213)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(1)/item(3), rule(story_compare_difference_unknown), subtract(10, 4), promoted, exact_story_operands_question_and_operation_route)]).
 task_span_receipt('IM-G1-U2-L20', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit2/lesson20.md', lines(280, 308)), column_cut(launch_header), page_boundary_crossings(2), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U2-L20', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit2/lesson20.md', lines(384, 391)), column_cut(none), page_boundary_crossings(0), task_candidate(student_task_statement(3)/item(1), rule(story_compare_difference_unknown), subtract(8, 5), promoted, exact_story_operands_question_and_operation_route)]).
-task_span_receipt('IM-G1-U2-L21', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit2/lesson21.md', lines(105, 115)), column_cut(launch_header), page_boundary_crossings(0), quantities(4), void_slots(2), computational_demand(false), printed_arithmetic(true), question_mark(false)]).
-task_span_receipt('IM-G1-U2-L22', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit2/lesson22.md', lines(91, 101)), column_cut(launch_header), page_boundary_crossings(0), quantities(4), void_slots(2), computational_demand(false), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U2-L21', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit2/lesson21.md', lines(105, 115)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/printed_equation(108), rule(printed_equation_list_direct_addition), add(6, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(1)/printed_equation(112), rule(printed_equation_list_missing_addend), subtract(10, 4), promoted, exact_total_known_addend_equation_with_blank_addend)]).
+task_span_receipt('IM-G1-U2-L22', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit2/lesson22.md', lines(91, 101)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/printed_equation(96), rule(printed_equation_list_direct_subtraction), subtract(5, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(1)/printed_equation(98), rule(printed_equation_list_direct_subtraction), subtract(8, 6), promoted, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U2-L22', student_task_statement(2), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit2/lesson22.md', lines(259, 283)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U2-L23', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit2/lesson23.md', lines(91, 99)), column_cut(launch_header), page_boundary_crossings(0), quantities(3), void_slots(0), computational_demand(false), printed_arithmetic(true), question_mark(true)]).
 task_span_receipt('IM-G1-U2-L3', student_task_statement(1), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit2/lesson3.md', lines(98, 108)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
@@ -173,14 +173,14 @@ task_span_receipt('IM-G1-U3-L1', student_task_statement(2), broken_pipeline(impe
 task_span_receipt('IM-G1-U3-L1', student_task_statement(3), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit3/lesson1.md', lines(225, 242)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L10', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', lines(92, 102)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(10, 4), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(1), rule(direct_subtraction_expression_list), subtract(14, 4), promoted, exact_standalone_binary_expression_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(5, 10), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_subtraction_expression_list), subtract(15, 5), promoted, exact_standalone_binary_expression_and_operation_route)]).
 task_span_receipt('IM-G1-U3-L10', student_task_statement(2), coverage_gap(no_task_grammar_for_single_quantity), [source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', lines(156, 189)), column_cut(launch_header), page_boundary_crossings(2), quantities(1), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
-task_span_receipt('IM-G1-U3-L10', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', lines(257, 279)), column_cut(launch_header), page_boundary_crossings(0), quantities(9), void_slots(1), computational_demand(true), printed_arithmetic(true), question_mark(true)]).
-task_span_receipt('IM-G1-U3-L10', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', lines(330, 346)), column_cut(none), page_boundary_crossings(0), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U3-L10', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', lines(257, 279)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(3)/printed_equation(270), rule(printed_equation_list_direct_subtraction), subtract(15, 10), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(272), rule(printed_equation_list_direct_subtraction), subtract(13, 3), promoted, exact_two_known_operand_equation_with_blank_result)]).
+task_span_receipt('IM-G1-U3-L10', student_task_statement(4), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', lines(330, 346)), column_cut(none), page_boundary_crossings(0), task_candidate(student_task_statement(4)/printed_equation(334), rule(printed_equation_list_direct_subtraction), subtract(16, 10), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(337), rule(printed_equation_list_missing_addend), subtract(19, 10), promoted, exact_total_known_addend_equation_with_blank_addend)]).
 task_span_receipt('IM-G1-U3-L11', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(93, 101)), column_cut(launch_header), page_boundary_crossings(0), quantities(13), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L11', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(148, 159)), column_cut(launch_header), page_boundary_crossings(0), quantities(2), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
-task_span_receipt('IM-G1-U3-L11', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(225, 257)), column_cut(launch_header), page_boundary_crossings(2), quantities(12), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U3-L11', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(225, 257)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(3)/printed_equation(236), rule(printed_equation_list_direct_addition), add(12, 5), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(242), rule(printed_equation_list_direct_addition), add(6, 11), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(245), rule(printed_equation_list_direct_addition), add(17, 2), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(248), rule(printed_equation_list_direct_addition), add(4, 14), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(252), rule(printed_equation_list_direct_addition), add(15, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(254), rule(printed_equation_list_direct_addition), add(16, 2), promoted, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U3-L11', student_task_statement(4), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(308, 332)), column_cut(launch_header), page_boundary_crossings(4), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L12', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson12.md', lines(151, 187)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(1)/item(1), rule(story_take_from_result_unknown), subtract(19, 8), promoted, exact_story_operands_question_and_operation_route)]).
-task_span_receipt('IM-G1-U3-L12', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson12.md', lines(238, 259)), column_cut(launch_header), page_boundary_crossings(0), quantities(8), void_slots(2), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U3-L12', student_task_statement(2), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson12.md', lines(238, 259)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(2)/printed_equation(243), rule(printed_equation_list_direct_addition), add(13, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(248), rule(printed_equation_list_direct_subtraction), subtract(19, 8), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(250), rule(printed_equation_list_direct_subtraction), subtract(14, 2), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(256), rule(printed_equation_list_missing_addend), subtract(18, 1), promoted, exact_total_known_addend_equation_with_blank_addend)]).
 task_span_receipt('IM-G1-U3-L13', student_task_statement(1), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit3/lesson13.md', lines(92, 102)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(4), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L13', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson13.md', lines(148, 169)), column_cut(launch_header), page_boundary_crossings(0), quantities(2), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U3-L13', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson13.md', lines(238, 259)), column_cut(launch_header), page_boundary_crossings(2), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
@@ -207,7 +207,7 @@ task_span_receipt('IM-G1-U3-L19', student_task_statement(3), not_applicable(prom
 task_span_receipt('IM-G1-U3-L2', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(98, 108)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(4, 2), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(5, 2), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(3), rule(direct_addition_expression_list), add(5, 3), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(4), rule(direct_addition_expression_list), add(6, 3), promoted, exact_operands_and_operation_route)]).
 task_span_receipt('IM-G1-U3-L2', student_task_statement(2), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(166, 214)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(2)/item(2), rule(story_join_result_unknown), add(7, 2), promoted, exact_story_operands_question_and_operation_route), task_candidate(student_task_statement(2)/item(3), rule(story_join_result_unknown), add(5, 3), duplicate_existing, exact_story_operands_question_and_operation_route), task_candidate(student_task_statement(2)/item(4), rule(story_join_result_unknown), add(2, 8), promoted, exact_story_operands_question_and_operation_route), task_candidate(student_task_statement(2)/item(5), rule(story_join_result_unknown), add(3, 6), duplicate_existing, exact_story_operands_question_and_operation_route)]).
 task_span_receipt('IM-G1-U3-L2', student_task_statement(3), coverage_gap(no_task_grammar_for_single_quantity), [source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(260, 280)), column_cut(launch_header), page_boundary_crossings(0), quantities(1), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
-task_span_receipt('IM-G1-U3-L2', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(331, 362)), column_cut(launch_header), page_boundary_crossings(2), quantities(16), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U3-L2', student_task_statement(4), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(331, 362)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(4)/printed_equation(334), rule(printed_equation_list_direct_addition), add(7, 2), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(337), rule(printed_equation_list_direct_addition), add(3, 5), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(339), rule(printed_equation_list_direct_addition), add(8, 2), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(342), rule(printed_equation_list_direct_addition), add(3, 6), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(345), rule(printed_equation_list_direct_addition), add(5, 2), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(348), rule(printed_equation_list_direct_addition), add(4, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(351), rule(printed_equation_list_direct_addition), add(2, 6), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(354), rule(printed_equation_list_direct_addition), add(1, 9), promoted, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U3-L2', student_task_statement(5), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson2.md', lines(397, 403)), column_cut(none), page_boundary_crossings(0), quantities(5), void_slots(0), computational_demand(false), printed_arithmetic(true), question_mark(true)]).
 task_span_receipt('IM-G1-U3-L20', student_task_statement(1), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit3/lesson20.md', lines(86, 96)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(4), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L20', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson20.md', lines(153, 168)), column_cut(launch_header), page_boundary_crossings(0), quantities(3), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
@@ -222,7 +222,7 @@ task_span_receipt('IM-G1-U3-L23', student_task_statement(2), coverage_gap(no_tas
 task_span_receipt('IM-G1-U3-L23', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', lines(251, 283)), column_cut(launch_header), page_boundary_crossings(0), quantities(6), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(true)]).
 task_span_receipt('IM-G1-U3-L23', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', lines(332, 337)), column_cut(none), page_boundary_crossings(0), quantities(2), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L24', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(139, 170)), column_cut(launch_header), page_boundary_crossings(2), quantities(8), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
-task_span_receipt('IM-G1-U3-L24', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(254, 288)), column_cut(launch_header), page_boundary_crossings(2), quantities(12), void_slots(2), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U3-L24', student_task_statement(2), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(254, 288)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(2)/printed_equation(259), rule(printed_equation_list_direct_subtraction), subtract(12, 7), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(261), rule(printed_equation_list_direct_subtraction), subtract(18, 5), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(264), rule(printed_equation_list_direct_subtraction), subtract(14, 6), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(266), rule(printed_equation_list_direct_subtraction), subtract(15, 12), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(269), rule(printed_equation_list_direct_subtraction), subtract(13, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(279), rule(printed_equation_list_missing_addend), subtract(20, 15), promoted, exact_total_known_addend_equation_with_blank_addend)]).
 task_span_receipt('IM-G1-U3-L25', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(149, 171)), column_cut(launch_header), page_boundary_crossings(0), quantities(10), void_slots(0), computational_demand(false), printed_arithmetic(true), question_mark(false)]).
 task_span_receipt('IM-G1-U3-L25', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(222, 252)), column_cut(launch_header), page_boundary_crossings(2), quantities(5), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U3-L25', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(283, 291)), column_cut(none), page_boundary_crossings(0), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
@@ -256,14 +256,14 @@ task_span_receipt('IM-G1-U3-L8', student_task_statement(3), coverage_gap(no_task
 task_span_receipt('IM-G1-U3-L8', student_task_statement(4), broken_pipeline(imperative_without_quantity), [source('curriculum/im_teacher_guides/grade1/unit3/lesson8.md', lines(359, 370)), column_cut(none), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U3-L9', student_task_statement(1), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(96, 111)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U3-L9', student_task_statement(2), coverage_gap(no_task_grammar_for_single_quantity), [source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(181, 205)), column_cut(launch_header), page_boundary_crossings(0), quantities(1), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
-task_span_receipt('IM-G1-U3-L9', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(271, 295)), column_cut(launch_header), page_boundary_crossings(2), quantities(6), void_slots(3), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
-task_span_receipt('IM-G1-U3-L9', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(338, 355)), column_cut(none), page_boundary_crossings(4), quantities(2), void_slots(1), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U3-L9', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(271, 295)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(3)/printed_equation(276), rule(printed_equation_list_missing_addend), subtract(14, 10), promoted, exact_total_known_addend_equation_with_blank_addend), task_candidate(student_task_statement(3)/printed_equation(278), rule(printed_equation_list_direct_addition), add(10, 5), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(285), rule(printed_equation_list_missing_addend), subtract(13, 3), promoted, exact_total_known_addend_equation_with_blank_addend)]).
+task_span_receipt('IM-G1-U3-L9', student_task_statement(4), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(338, 355)), column_cut(none), page_boundary_crossings(4), task_candidate(student_task_statement(4)/printed_equation(343), rule(printed_equation_list_direct_addition), add(10, 9), promoted, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U4-L1', student_task_statement(1), broken_pipeline(empty_extract), [source('curriculum/im_teacher_guides/grade1/unit4/lesson1.md', lines(99, 105)), column_cut(launch_header), page_boundary_crossings(0)]).
 task_span_receipt('IM-G1-U4-L10', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit4/lesson10.md', lines(83, 99)), column_cut(launch_header), page_boundary_crossings(0), quantities(4), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U4-L10', student_task_statement(2), not_applicable(quantities_carry_no_operand_pair), [source('curriculum/im_teacher_guides/grade1/unit4/lesson10.md', lines(146, 200)), column_cut(launch_header), page_boundary_crossings(2), quantities(5), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U4-L10', student_task_statement(3), not_applicable(quantities_carry_no_operand_pair), [source('curriculum/im_teacher_guides/grade1/unit4/lesson10.md', lines(304, 325)), column_cut(none), page_boundary_crossings(4), quantities(2), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U4-L11', student_task_statement(1), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(85, 94)), column_cut(launch_header), page_boundary_crossings(0), quantities(12), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
-task_span_receipt('IM-G1-U4-L11', student_task_statement(2), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(139, 159)), column_cut(launch_header), page_boundary_crossings(0), quantities(10), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U4-L11', student_task_statement(2), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(139, 159)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(2)/printed_equation(143), rule(printed_equation_list_direct_addition), add(37, 20), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(146), rule(printed_equation_list_direct_addition), add(60, 23), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(148), rule(printed_equation_list_direct_addition), add(48, 50), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(150), rule(printed_equation_list_direct_addition), add(54, 20), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/printed_equation(152), rule(printed_equation_list_direct_addition), add(30, 65), promoted, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U4-L11', student_task_statement(3), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(212, 238)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U4-L11', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(268, 277)), column_cut(none), page_boundary_crossings(0), quantities(7), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
 task_span_receipt('IM-G1-U4-L12', student_task_statement(1), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit4/lesson12.md', lines(89, 98)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(4), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
@@ -331,8 +331,8 @@ task_span_receipt('IM-G1-U4-L9', student_task_statement(3), not_applicable(quant
 task_span_receipt('IM-G1-U4-L9', student_task_statement(4), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit4/lesson9.md', lines(311, 333)), column_cut(launch_header), page_boundary_crossings(4), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U5-L1', student_task_statement(1), broken_pipeline(imperative_without_quantity), [source('curriculum/im_teacher_guides/grade1/unit5/lesson1.md', lines(97, 131)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U5-L1', student_task_statement(2), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit5/lesson1.md', lines(186, 231)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
-task_span_receipt('IM-G1-U5-L1', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit5/lesson1.md', lines(278, 314)), column_cut(launch_header), page_boundary_crossings(0), quantities(18), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
-task_span_receipt('IM-G1-U5-L1', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit5/lesson1.md', lines(363, 379)), column_cut(none), page_boundary_crossings(4), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U5-L1', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson1.md', lines(278, 314)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(3)/printed_equation(281), rule(printed_equation_list_direct_addition), add(43, 5), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(284), rule(printed_equation_list_direct_addition), add(43, 50), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(286), rule(printed_equation_list_direct_addition), add(51, 3), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(289), rule(printed_equation_list_direct_addition), add(51, 30), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(292), rule(printed_equation_list_direct_addition), add(2, 75), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(294), rule(printed_equation_list_direct_addition), add(20, 75), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(297), rule(printed_equation_list_direct_addition), add(93, 6), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(303), rule(printed_equation_list_direct_addition), add(60, 28), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(309), rule(printed_equation_list_direct_addition), add(5, 74), promoted, exact_two_known_operand_equation_with_blank_result)]).
+task_span_receipt('IM-G1-U5-L1', student_task_statement(4), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson1.md', lines(363, 379)), column_cut(none), page_boundary_crossings(4), task_candidate(student_task_statement(4)/printed_equation(368), rule(printed_equation_list_direct_addition), add(5, 52), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(4)/printed_equation(371), rule(printed_equation_list_direct_addition), add(50, 29), promoted, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U5-L10', student_task_statement(1), broken_pipeline(imperative_without_quantity), [source('curriculum/im_teacher_guides/grade1/unit5/lesson10.md', lines(85, 97)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U5-L10', student_task_statement(2), broken_pipeline(imperative_without_quantity), [source('curriculum/im_teacher_guides/grade1/unit5/lesson10.md', lines(147, 164)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U5-L10', student_task_statement(3), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit5/lesson10.md', lines(222, 267)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(2), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
@@ -343,7 +343,7 @@ task_span_receipt('IM-G1-U5-L11', student_task_statement(4), broken_pipeline(voi
 task_span_receipt('IM-G1-U5-L12', student_task_statement(1), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit5/lesson12.md', lines(94, 104)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(4), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U5-L12', student_task_statement(2), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit5/lesson12.md', lines(151, 161)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(2), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U5-L12', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit5/lesson12.md', lines(237, 274)), column_cut(launch_header), page_boundary_crossings(0), quantities(8), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
-task_span_receipt('IM-G1-U5-L12', student_task_statement(4), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit5/lesson12.md', lines(322, 352)), column_cut(launch_header), page_boundary_crossings(2), quantities(6), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
+task_span_receipt('IM-G1-U5-L12', student_task_statement(4), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson12.md', lines(322, 352)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(4)/item(1), rule(story_spaced_all_together_join_result_unknown), add(48, 27), promoted, exact_story_operands_question_and_operation_route), task_candidate(student_task_statement(4)/item(2), rule(story_spaced_all_together_join_result_unknown), add(35, 56), promoted, exact_story_operands_question_and_operation_route), task_candidate(student_task_statement(4)/item(3), rule(story_spaced_all_together_join_result_unknown), add(18, 24), promoted, exact_story_operands_question_and_operation_route)]).
 task_span_receipt('IM-G1-U5-L12', student_task_statement(5), broken_pipeline(imperative_without_quantity), [source('curriculum/im_teacher_guides/grade1/unit5/lesson12.md', lines(381, 392)), column_cut(none), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U5-L13', student_task_statement(1), coverage_gap(no_task_grammar_for_single_quantity), [source('curriculum/im_teacher_guides/grade1/unit5/lesson13.md', lines(145, 199)), column_cut(launch_header), page_boundary_crossings(2), quantities(1), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U5-L13', student_task_statement(2), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit5/lesson13.md', lines(216, 248)), column_cut(launch_header), page_boundary_crossings(4), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
@@ -370,7 +370,7 @@ task_span_receipt('IM-G1-U5-L7', student_task_statement(3), coverage_gap(no_task
 task_span_receipt('IM-G1-U5-L7', student_task_statement(4), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit5/lesson7.md', lines(403, 407)), column_cut(none), page_boundary_crossings(0), quantities(0), void_slots(1), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U5-L8', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(84, 94)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(68, 2), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(3, 68), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(3), rule(direct_addition_expression_list), add(5, 45), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(4), rule(direct_addition_expression_list), add(45, 7), promoted, exact_operands_and_operation_route)]).
 task_span_receipt('IM-G1-U5-L8', student_task_statement(2), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(241, 282)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
-task_span_receipt('IM-G1-U5-L8', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(294, 311)), column_cut(launch_header), page_boundary_crossings(0), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
+task_span_receipt('IM-G1-U5-L8', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson8.md', lines(294, 311)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(3)/item(1), rule(story_spaced_all_together_join_result_unknown), add(35, 6), promoted, exact_story_operands_question_and_operation_route), task_candidate(student_task_statement(3)/item(2), rule(story_spaced_all_together_join_result_unknown), add(9, 45), promoted, exact_story_operands_question_and_operation_route)]).
 task_span_receipt('IM-G1-U5-L9', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(86, 96)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(38, 2), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(40, 3), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(3), rule(direct_addition_expression_list), add(38, 5), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(4), rule(direct_addition_expression_list), add(38, 15), promoted, exact_operands_and_operation_route)]).
 task_span_receipt('IM-G1-U5-L9', student_task_statement(2), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(162, 167)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(2)/item(1), rule(direct_binary_expression_prompt), add(17, 36), promoted, exact_standalone_binary_expression_and_operation_route)]).
 task_span_receipt('IM-G1-U5-L9', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(273, 327)), column_cut(launch_header), page_boundary_crossings(2), quantities(4), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
@@ -495,7 +495,7 @@ task_span_receipt('IM-G1-U8-L10', student_task_statement(3), broken_pipeline(imp
 task_span_receipt('IM-G1-U8-L10', student_task_statement(4), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit8/lesson10.md', lines(277, 280)), column_cut(none), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U8-L2', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(95, 105)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(5, 4), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(1), rule(direct_subtraction_expression_list), subtract(9, 4), promoted, exact_standalone_binary_expression_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(4, 5), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_subtraction_expression_list), subtract(9, 5), promoted, exact_standalone_binary_expression_and_operation_route)]).
 task_span_receipt('IM-G1-U8-L2', student_task_statement(2), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(160, 189)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(5), computational_demand(false), printed_arithmetic(false), question_mark(false)]).
-task_span_receipt('IM-G1-U8-L2', student_task_statement(3), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(225, 258)), column_cut(launch_header), page_boundary_crossings(2), quantities(10), void_slots(2), computational_demand(true), printed_arithmetic(true), question_mark(false)]).
+task_span_receipt('IM-G1-U8-L2', student_task_statement(3), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(225, 258)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(3)/printed_equation(233), rule(printed_equation_list_direct_subtraction), subtract(9, 5), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(236), rule(printed_equation_list_missing_addend), subtract(8, 5), promoted, exact_total_known_addend_equation_with_blank_addend), task_candidate(student_task_statement(3)/printed_equation(246), rule(printed_equation_list_direct_subtraction), subtract(8, 3), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(249), rule(printed_equation_list_direct_subtraction), subtract(7, 4), promoted, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(3)/printed_equation(252), rule(printed_equation_list_missing_addend), subtract(8, 2), promoted, exact_total_known_addend_equation_with_blank_addend)]).
 task_span_receipt('IM-G1-U8-L2', student_task_statement(4), broken_pipeline(imperative_without_quantity), [source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(305, 328)), column_cut(launch_header), page_boundary_crossings(0), quantities(0), void_slots(0), computational_demand(true), printed_arithmetic(false), question_mark(false)]).
 task_span_receipt('IM-G1-U8-L2', student_task_statement(5), coverage_gap(no_task_grammar_for_quantity_pair), [source('curriculum/im_teacher_guides/grade1/unit8/lesson2.md', lines(360, 367)), column_cut(none), page_boundary_crossings(0), quantities(2), void_slots(0), computational_demand(false), printed_arithmetic(true), question_mark(false)]).
 task_span_receipt('IM-G1-U8-L3', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit8/lesson3.md', lines(87, 97)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(6, 7), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(1), rule(direct_subtraction_expression_list), subtract(13, 7), promoted, exact_standalone_binary_expression_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(7, 8), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_subtraction_expression_list), subtract(15, 7), promoted, exact_standalone_binary_expression_and_operation_route)]).
@@ -3237,11 +3237,11 @@ task_span_receipt('IM-GK-U8-L9', student_task_statement(3), not_applicable(promp
 task_span_denominator(spans, 3163).
 task_span_denominator(lessons, 879).
 task_span_denominator(teacher_guides, 879).
-task_span_denominator(compiler_task_candidates, 491).
-task_span_denominator(compiled_task_instance_lessons, 244).
+task_span_denominator(compiler_task_candidates, 553).
+task_span_denominator(compiled_task_instance_lessons, 251).
 
-task_span_status_count(present, 177).
-task_span_status_count(coverage_gap, 1164).
+task_span_status_count(present, 193).
+task_span_status_count(coverage_gap, 1148).
 task_span_status_count(broken_pipeline, 830).
 task_span_status_count(not_applicable, 970).
 task_span_status_count(unknown, 22).
@@ -3259,7 +3259,7 @@ task_span_reason_kind(imperative_without_quantity, broken_pipeline).
 task_span_reason_kind(no_task_grammar_for_single_quantity, coverage_gap).
 task_span_reason_kind(prompt_states_no_computation, not_applicable).
 
-task_span_reason_count(compiled_task_instance, 168).
+task_span_reason_count(compiled_task_instance, 184).
 task_span_reason_count(existing_task_instance, 9).
 task_span_reason_count(parser_quarantined, 0).
 task_span_reason_count(candidate_rejected, 0).
@@ -3267,20 +3267,20 @@ task_span_reason_count(empty_extract, 29).
 task_span_reason_count(extract_runs_past_prompt, 22).
 task_span_reason_count(void_operand_slots, 558).
 task_span_reason_count(quantities_carry_no_operand_pair, 176).
-task_span_reason_count(no_task_grammar_for_quantity_pair, 820).
+task_span_reason_count(no_task_grammar_for_quantity_pair, 804).
 task_span_reason_count(imperative_without_quantity, 243).
 task_span_reason_count(no_task_grammar_for_single_quantity, 344).
 task_span_reason_count(prompt_states_no_computation, 794).
 
 task_span_grade_count('K', 401, 6, 395).
-task_span_grade_count('1', 451, 49, 402).
+task_span_grade_count('1', 451, 65, 386).
 task_span_grade_count('2', 530, 40, 490).
 task_span_grade_count('3', 567, 52, 515).
 task_span_grade_count('4', 613, 16, 597).
 task_span_grade_count('5', 601, 14, 587).
 
 task_span_reason_grade_count(compiled_task_instance, 'K', 6).
-task_span_reason_grade_count(compiled_task_instance, '1', 46).
+task_span_reason_grade_count(compiled_task_instance, '1', 62).
 task_span_reason_grade_count(compiled_task_instance, '2', 38).
 task_span_reason_grade_count(compiled_task_instance, '3', 48).
 task_span_reason_grade_count(compiled_task_instance, '4', 16).
@@ -3310,7 +3310,7 @@ task_span_reason_grade_count(quantities_carry_no_operand_pair, '3', 42).
 task_span_reason_grade_count(quantities_carry_no_operand_pair, '4', 34).
 task_span_reason_grade_count(quantities_carry_no_operand_pair, '5', 20).
 task_span_reason_grade_count(no_task_grammar_for_quantity_pair, 'K', 41).
-task_span_reason_grade_count(no_task_grammar_for_quantity_pair, '1', 129).
+task_span_reason_grade_count(no_task_grammar_for_quantity_pair, '1', 113).
 task_span_reason_grade_count(no_task_grammar_for_quantity_pair, '2', 139).
 task_span_reason_grade_count(no_task_grammar_for_quantity_pair, '3', 144).
 task_span_reason_grade_count(no_task_grammar_for_quantity_pair, '4', 200).
@@ -3362,8 +3362,8 @@ lesson_task_span_rollup('IM-G1-U2-L18', '1', 2, 1, diagnostic_ready, void_operan
 lesson_task_span_rollup('IM-G1-U2-L19', '1', 3, 1, diagnostic_ready, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U2-L2', '1', 4, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U2-L20', '1', 3, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U2-L21', '1', 1, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U2-L22', '1', 2, 0, strategy_attached, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U2-L21', '1', 1, 1, event_ready, none).
+lesson_task_span_rollup('IM-G1-U2-L22', '1', 2, 1, event_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U2-L23', '1', 1, 0, standard_action_candidate, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U2-L3', '1', 3, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U2-L4', '1', 4, 0, strategy_attached, void_operand_slots).
@@ -3373,9 +3373,9 @@ lesson_task_span_rollup('IM-G1-U2-L7', '1', 3, 0, strategy_attached, quantities_
 lesson_task_span_rollup('IM-G1-U2-L8', '1', 2, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U2-L9', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L1', '1', 3, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G1-U3-L10', '1', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U3-L11', '1', 4, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U3-L12', '1', 2, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U3-L10', '1', 4, 3, diagnostic_ready, no_task_grammar_for_single_quantity).
+lesson_task_span_rollup('IM-G1-U3-L11', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U3-L12', '1', 2, 2, diagnostic_ready, none).
 lesson_task_span_rollup('IM-G1-U3-L13', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L14', '1', 2, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L15', '1', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3383,12 +3383,12 @@ lesson_task_span_rollup('IM-G1-U3-L16', '1', 5, 0, strategy_attached, void_opera
 lesson_task_span_rollup('IM-G1-U3-L17', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L18', '1', 2, 0, strategy_attached, imperative_without_quantity).
 lesson_task_span_rollup('IM-G1-U3-L19', '1', 3, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U3-L2', '1', 5, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U3-L2', '1', 5, 3, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L20', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L21', '1', 1, 0, strategy_attached, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U3-L22', '1', 3, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L23', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U3-L24', '1', 2, 0, strategy_attached, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U3-L24', '1', 2, 1, event_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L25', '1', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L26', '1', 3, 1, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U3-L27', '1', 2, 1, diagnostic_ready, prompt_states_no_computation).
@@ -3399,10 +3399,10 @@ lesson_task_span_rollup('IM-G1-U3-L5', '1', 5, 0, strategy_attached, void_operan
 lesson_task_span_rollup('IM-G1-U3-L6', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U3-L7', '1', 1, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U3-L8', '1', 4, 0, strategy_attached, imperative_without_quantity).
-lesson_task_span_rollup('IM-G1-U3-L9', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U3-L9', '1', 4, 2, event_ready, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U4-L1', '1', 1, 0, strategy_attached, empty_extract).
 lesson_task_span_rollup('IM-G1-U4-L10', '1', 3, 0, strategy_attached, quantities_carry_no_operand_pair).
-lesson_task_span_rollup('IM-G1-U4-L11', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U4-L11', '1', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U4-L12', '1', 2, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U4-L13', '1', 3, 1, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U4-L14', '1', 3, 0, diagnostic_ready, prompt_states_no_computation).
@@ -3423,10 +3423,10 @@ lesson_task_span_rollup('IM-G1-U4-L6', '1', 2, 0, strategy_attached, no_task_gra
 lesson_task_span_rollup('IM-G1-U4-L7', '1', 4, 0, strategy_attached, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G1-U4-L8', '1', 3, 0, strategy_attached, empty_extract).
 lesson_task_span_rollup('IM-G1-U4-L9', '1', 4, 0, strategy_attached, prompt_states_no_computation).
-lesson_task_span_rollup('IM-G1-U5-L1', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U5-L1', '1', 4, 2, event_ready, imperative_without_quantity).
 lesson_task_span_rollup('IM-G1-U5-L10', '1', 3, 0, strategy_attached, imperative_without_quantity).
 lesson_task_span_rollup('IM-G1-U5-L11', '1', 4, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G1-U5-L12', '1', 5, 0, strategy_attached, void_operand_slots).
+lesson_task_span_rollup('IM-G1-U5-L12', '1', 5, 1, event_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U5-L13', '1', 2, 0, strategy_attached, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-G1-U5-L14', '1', 2, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U5-L2', '1', 2, 0, strategy_attached, void_operand_slots).
@@ -3435,13 +3435,13 @@ lesson_task_span_rollup('IM-G1-U5-L4', '1', 2, 0, standard_action_candidate, no_
 lesson_task_span_rollup('IM-G1-U5-L5', '1', 4, 1, event_ready, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G1-U5-L6', '1', 3, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U5-L7', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U5-L8', '1', 3, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U5-L8', '1', 3, 2, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U5-L9', '1', 4, 3, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U6-L1', '1', 4, 0, standard_action_candidate, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U6-L10', '1', 2, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U6-L11', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U6-L12', '1', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U6-L13', '1', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U6-L13', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U6-L14', '1', 3, 1, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U6-L15', '1', 4, 1, diagnostic_ready, imperative_without_quantity).
 lesson_task_span_rollup('IM-G1-U6-L16', '1', 2, 1, diagnostic_ready, prompt_states_no_computation).
@@ -3474,7 +3474,7 @@ lesson_task_span_rollup('IM-G1-U7-L8', '1', 2, 1, diagnostic_ready, prompt_state
 lesson_task_span_rollup('IM-G1-U7-L9', '1', 5, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U8-L1', '1', 3, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U8-L10', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U8-L2', '1', 5, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G1-U8-L2', '1', 5, 2, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G1-U8-L3', '1', 3, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U8-L4', '1', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G1-U8-L5', '1', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3485,7 +3485,7 @@ lesson_task_span_rollup('IM-G1-U8-L9', '1', 4, 0, strategy_attached, no_task_gra
 lesson_task_span_rollup('IM-G2-U1-L1', '2', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G2-U1-L10', '2', 4, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G2-U1-L11', '2', 4, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G2-U1-L12', '2', 2, 1, event_ready, prompt_states_no_computation).
+lesson_task_span_rollup('IM-G2-U1-L12', '2', 2, 1, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G2-U1-L13', '2', 4, 0, strategy_attached, imperative_without_quantity).
 lesson_task_span_rollup('IM-G2-U1-L14', '2', 4, 0, standard_action_candidate, void_operand_slots).
 lesson_task_span_rollup('IM-G2-U1-L15', '2', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3557,7 +3557,7 @@ lesson_task_span_rollup('IM-G2-U5-L12', '2', 4, 0, strategy_attached, void_opera
 lesson_task_span_rollup('IM-G2-U5-L13', '2', 2, 0, strategy_attached, imperative_without_quantity).
 lesson_task_span_rollup('IM-G2-U5-L14', '2', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G2-U5-L2', '2', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G2-U5-L3', '2', 4, 1, event_ready, imperative_without_quantity).
+lesson_task_span_rollup('IM-G2-U5-L3', '2', 4, 1, diagnostic_ready, imperative_without_quantity).
 lesson_task_span_rollup('IM-G2-U5-L4', '2', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G2-U5-L5', '2', 4, 0, strategy_attached, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G2-U5-L6', '2', 4, 0, strategy_attached, no_task_grammar_for_single_quantity).
@@ -3656,7 +3656,7 @@ lesson_task_span_rollup('IM-G3-U1-L9', '3', 4, 3, diagnostic_ready, no_task_gram
 lesson_task_span_rollup('IM-G3-U2-L1', '3', 4, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G3-U2-L10', '3', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U2-L11', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G3-U2-L12', '3', 4, 1, event_ready, prompt_states_no_computation).
+lesson_task_span_rollup('IM-G3-U2-L12', '3', 4, 1, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G3-U2-L13', '3', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G3-U2-L14', '3', 4, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G3-U2-L15', '3', 3, 0, strategy_attached, prompt_states_no_computation).
@@ -3685,23 +3685,23 @@ lesson_task_span_rollup('IM-G3-U3-L21', '3', 3, 0, strategy_attached, no_task_gr
 lesson_task_span_rollup('IM-G3-U3-L3', '3', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G3-U3-L4', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U3-L5', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G3-U3-L6', '3', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G3-U3-L6', '3', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U3-L7', '3', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G3-U3-L8', '3', 4, 1, event_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G3-U3-L9', '3', 4, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L1', '3', 4, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L10', '3', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G3-U4-L11', '3', 4, 0, strategy_attached, no_task_grammar_for_single_quantity).
-lesson_task_span_rollup('IM-G3-U4-L12', '3', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G3-U4-L12', '3', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L13', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L14', '3', 4, 0, strategy_attached, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G3-U4-L15', '3', 4, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L16', '3', 5, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G3-U4-L17', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L18', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G3-U4-L19', '3', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G3-U4-L19', '3', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L2', '3', 5, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G3-U4-L20', '3', 5, 2, event_ready, quantities_carry_no_operand_pair).
+lesson_task_span_rollup('IM-G3-U4-L20', '3', 5, 2, diagnostic_ready, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G3-U4-L21', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L22', '3', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U4-L3', '3', 5, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
@@ -3868,9 +3868,9 @@ lesson_task_span_rollup('IM-G4-U6-L12', '4', 4, 0, strategy_attached, no_task_gr
 lesson_task_span_rollup('IM-G4-U6-L13', '4', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U6-L14', '4', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U6-L15', '4', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G4-U6-L16', '4', 4, 2, event_ready, void_operand_slots).
+lesson_task_span_rollup('IM-G4-U6-L16', '4', 4, 2, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G4-U6-L17', '4', 4, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G4-U6-L18', '4', 5, 1, event_ready, void_operand_slots).
+lesson_task_span_rollup('IM-G4-U6-L18', '4', 5, 1, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G4-U6-L19', '4', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G4-U6-L2', '4', 4, 0, standard_action_candidate, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U6-L20', '4', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3881,7 +3881,7 @@ lesson_task_span_rollup('IM-G4-U6-L24', '4', 4, 0, strategy_attached, no_task_gr
 lesson_task_span_rollup('IM-G4-U6-L25', '4', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U6-L26', '4', 3, 0, strategy_attached, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G4-U6-L3', '4', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G4-U6-L4', '4', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G4-U6-L4', '4', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U6-L5', '4', 4, 0, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G4-U6-L6', '4', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G4-U6-L7', '4', 4, 0, strategy_attached, void_operand_slots).
@@ -3977,7 +3977,7 @@ lesson_task_span_rollup('IM-G5-U3-L8', '5', 4, 0, standard_action_candidate, voi
 lesson_task_span_rollup('IM-G5-U3-L9', '5', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G5-U4-L1', '5', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G5-U4-L10', '5', 4, 0, strategy_attached, void_operand_slots).
-lesson_task_span_rollup('IM-G5-U4-L11', '5', 4, 1, event_ready, void_operand_slots).
+lesson_task_span_rollup('IM-G5-U4-L11', '5', 4, 1, diagnostic_ready, void_operand_slots).
 lesson_task_span_rollup('IM-G5-U4-L12', '5', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G5-U4-L13', '5', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G5-U4-L14', '5', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
@@ -3991,7 +3991,7 @@ lesson_task_span_rollup('IM-G5-U4-L20', '5', 4, 0, standard_action_candidate, vo
 lesson_task_span_rollup('IM-G5-U4-L3', '5', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G5-U4-L4', '5', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G5-U4-L5', '5', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G5-U4-L6', '5', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G5-U4-L6', '5', 4, 1, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G5-U4-L7', '5', 4, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-G5-U4-L8', '5', 4, 0, strategy_attached, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G5-U4-L9', '5', 4, 0, event_ready, void_operand_slots).
@@ -4198,7 +4198,7 @@ lesson_task_span_rollup('IM-GK-U8-L11', 'K', 1, 1, event_ready, none).
 lesson_task_span_rollup('IM-GK-U8-L12', 'K', 2, 0, strategy_attached, imperative_without_quantity).
 lesson_task_span_rollup('IM-GK-U8-L13', 'K', 4, 0, strategy_attached, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-GK-U8-L14', 'K', 2, 0, strategy_attached, empty_extract).
-lesson_task_span_rollup('IM-GK-U8-L15', 'K', 3, 1, event_ready, no_task_grammar_for_single_quantity).
+lesson_task_span_rollup('IM-GK-U8-L15', 'K', 3, 1, diagnostic_ready, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-GK-U8-L16', 'K', 4, 0, strategy_attached, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-GK-U8-L17', 'K', 3, 0, strategy_attached, void_operand_slots).
 lesson_task_span_rollup('IM-GK-U8-L18', 'K', 5, 1, diagnostic_ready, void_operand_slots).
@@ -4271,8 +4271,8 @@ lesson_task_span_reason_count('IM-G1-U2-L19', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U2-L2', no_task_grammar_for_quantity_pair, 4).
 lesson_task_span_reason_count('IM-G1-U2-L20', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U2-L20', no_task_grammar_for_quantity_pair, 1).
-lesson_task_span_reason_count('IM-G1-U2-L21', no_task_grammar_for_quantity_pair, 1).
-lesson_task_span_reason_count('IM-G1-U2-L22', no_task_grammar_for_quantity_pair, 1).
+lesson_task_span_reason_count('IM-G1-U2-L21', compiled_task_instance, 1).
+lesson_task_span_reason_count('IM-G1-U2-L22', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U2-L22', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U2-L23', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U2-L3', no_task_grammar_for_quantity_pair, 2).
@@ -4296,13 +4296,12 @@ lesson_task_span_reason_count('IM-G1-U2-L9', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U3-L1', void_operand_slots, 1).
 lesson_task_span_reason_count('IM-G1-U3-L1', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U3-L1', prompt_states_no_computation, 1).
-lesson_task_span_reason_count('IM-G1-U3-L10', compiled_task_instance, 1).
-lesson_task_span_reason_count('IM-G1-U3-L10', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U3-L10', compiled_task_instance, 3).
 lesson_task_span_reason_count('IM-G1-U3-L10', no_task_grammar_for_single_quantity, 1).
-lesson_task_span_reason_count('IM-G1-U3-L11', no_task_grammar_for_quantity_pair, 3).
+lesson_task_span_reason_count('IM-G1-U3-L11', compiled_task_instance, 1).
+lesson_task_span_reason_count('IM-G1-U3-L11', no_task_grammar_for_quantity_pair, 2).
 lesson_task_span_reason_count('IM-G1-U3-L11', prompt_states_no_computation, 1).
-lesson_task_span_reason_count('IM-G1-U3-L12', compiled_task_instance, 1).
-lesson_task_span_reason_count('IM-G1-U3-L12', no_task_grammar_for_quantity_pair, 1).
+lesson_task_span_reason_count('IM-G1-U3-L12', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U3-L13', void_operand_slots, 1).
 lesson_task_span_reason_count('IM-G1-U3-L13', no_task_grammar_for_quantity_pair, 2).
 lesson_task_span_reason_count('IM-G1-U3-L13', prompt_states_no_computation, 1).
@@ -4321,8 +4320,8 @@ lesson_task_span_reason_count('IM-G1-U3-L18', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U3-L19', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U3-L19', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U3-L19', prompt_states_no_computation, 1).
-lesson_task_span_reason_count('IM-G1-U3-L2', compiled_task_instance, 2).
-lesson_task_span_reason_count('IM-G1-U3-L2', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U3-L2', compiled_task_instance, 3).
+lesson_task_span_reason_count('IM-G1-U3-L2', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U3-L2', no_task_grammar_for_single_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U3-L20', void_operand_slots, 1).
 lesson_task_span_reason_count('IM-G1-U3-L20', no_task_grammar_for_quantity_pair, 3).
@@ -4332,7 +4331,8 @@ lesson_task_span_reason_count('IM-G1-U3-L22', existing_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U3-L22', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U3-L23', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U3-L23', no_task_grammar_for_quantity_pair, 3).
-lesson_task_span_reason_count('IM-G1-U3-L24', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U3-L24', compiled_task_instance, 1).
+lesson_task_span_reason_count('IM-G1-U3-L24', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U3-L25', no_task_grammar_for_quantity_pair, 3).
 lesson_task_span_reason_count('IM-G1-U3-L26', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U3-L26', void_operand_slots, 1).
@@ -4355,13 +4355,14 @@ lesson_task_span_reason_count('IM-G1-U3-L7', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U3-L8', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U3-L8', imperative_without_quantity, 2).
 lesson_task_span_reason_count('IM-G1-U3-L8', no_task_grammar_for_single_quantity, 1).
-lesson_task_span_reason_count('IM-G1-U3-L9', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U3-L9', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U3-L9', no_task_grammar_for_single_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U3-L9', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U4-L1', empty_extract, 1).
 lesson_task_span_reason_count('IM-G1-U4-L10', quantities_carry_no_operand_pair, 2).
 lesson_task_span_reason_count('IM-G1-U4-L10', no_task_grammar_for_quantity_pair, 1).
-lesson_task_span_reason_count('IM-G1-U4-L11', no_task_grammar_for_quantity_pair, 3).
+lesson_task_span_reason_count('IM-G1-U4-L11', compiled_task_instance, 1).
+lesson_task_span_reason_count('IM-G1-U4-L11', no_task_grammar_for_quantity_pair, 2).
 lesson_task_span_reason_count('IM-G1-U4-L11', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U4-L12', void_operand_slots, 2).
 lesson_task_span_reason_count('IM-G1-U4-L13', compiled_task_instance, 1).
@@ -4411,14 +4412,15 @@ lesson_task_span_reason_count('IM-G1-U4-L8', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U4-L9', quantities_carry_no_operand_pair, 1).
 lesson_task_span_reason_count('IM-G1-U4-L9', no_task_grammar_for_single_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U4-L9', prompt_states_no_computation, 2).
-lesson_task_span_reason_count('IM-G1-U5-L1', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U5-L1', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U5-L1', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U5-L1', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U5-L10', void_operand_slots, 1).
 lesson_task_span_reason_count('IM-G1-U5-L10', imperative_without_quantity, 2).
 lesson_task_span_reason_count('IM-G1-U5-L11', void_operand_slots, 4).
+lesson_task_span_reason_count('IM-G1-U5-L12', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U5-L12', void_operand_slots, 2).
-lesson_task_span_reason_count('IM-G1-U5-L12', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U5-L12', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U5-L12', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U5-L13', no_task_grammar_for_single_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U5-L13', prompt_states_no_computation, 1).
@@ -4439,8 +4441,7 @@ lesson_task_span_reason_count('IM-G1-U5-L6', no_task_grammar_for_quantity_pair, 
 lesson_task_span_reason_count('IM-G1-U5-L7', void_operand_slots, 1).
 lesson_task_span_reason_count('IM-G1-U5-L7', no_task_grammar_for_quantity_pair, 2).
 lesson_task_span_reason_count('IM-G1-U5-L7', no_task_grammar_for_single_quantity, 1).
-lesson_task_span_reason_count('IM-G1-U5-L8', compiled_task_instance, 1).
-lesson_task_span_reason_count('IM-G1-U5-L8', no_task_grammar_for_quantity_pair, 1).
+lesson_task_span_reason_count('IM-G1-U5-L8', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U5-L8', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U5-L9', compiled_task_instance, 3).
 lesson_task_span_reason_count('IM-G1-U5-L9', no_task_grammar_for_quantity_pair, 1).
@@ -4532,9 +4533,9 @@ lesson_task_span_reason_count('IM-G1-U8-L10', no_task_grammar_for_quantity_pair,
 lesson_task_span_reason_count('IM-G1-U8-L10', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U8-L10', no_task_grammar_for_single_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U8-L10', prompt_states_no_computation, 1).
-lesson_task_span_reason_count('IM-G1-U8-L2', compiled_task_instance, 1).
+lesson_task_span_reason_count('IM-G1-U8-L2', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U8-L2', void_operand_slots, 1).
-lesson_task_span_reason_count('IM-G1-U8-L2', no_task_grammar_for_quantity_pair, 2).
+lesson_task_span_reason_count('IM-G1-U8-L2', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U8-L2', imperative_without_quantity, 1).
 lesson_task_span_reason_count('IM-G1-U8-L3', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U8-L3', no_task_grammar_for_quantity_pair, 2).
@@ -6405,7 +6406,6 @@ lesson_missing_only_task_evidence('IM-G1-U1-L2').
 lesson_missing_only_task_evidence('IM-G1-U1-L3').
 lesson_missing_only_task_evidence('IM-G1-U1-L6').
 lesson_missing_only_task_evidence('IM-G1-U1-L9').
-lesson_missing_only_task_evidence('IM-G1-U2-L22').
 lesson_missing_only_task_evidence('IM-G1-U2-L4').
 lesson_missing_only_task_evidence('IM-G1-U2-L7').
 lesson_missing_only_task_evidence('IM-G1-U2-L8').
@@ -6418,9 +6418,7 @@ lesson_missing_only_task_evidence('IM-G1-U3-L20').
 lesson_missing_only_task_evidence('IM-G1-U3-L25').
 lesson_missing_only_task_evidence('IM-G1-U3-L4').
 lesson_missing_only_task_evidence('IM-G1-U3-L8').
-lesson_missing_only_task_evidence('IM-G1-U3-L9').
 lesson_missing_only_task_evidence('IM-G1-U4-L10').
-lesson_missing_only_task_evidence('IM-G1-U4-L11').
 lesson_missing_only_task_evidence('IM-G1-U4-L12').
 lesson_missing_only_task_evidence('IM-G1-U4-L15').
 lesson_missing_only_task_evidence('IM-G1-U4-L4').
@@ -6598,10 +6596,10 @@ lesson_missing_only_task_evidence('IM-GK-U8-L16').
 lesson_missing_only_task_evidence('IM-GK-U8-L21').
 lesson_missing_only_task_evidence('IM-GK-U8-L4').
 
-task_span_reason_queue(1, no_task_grammar_for_quantity_pair, 107).
-task_span_reason_queue(2, prompt_states_no_computation, 105).
+task_span_reason_queue(1, no_task_grammar_for_quantity_pair, 104).
+task_span_reason_queue(2, prompt_states_no_computation, 102).
 task_span_reason_queue(3, void_operand_slots, 89).
-task_span_reason_queue(4, no_task_grammar_for_single_quantity, 67).
+task_span_reason_queue(4, no_task_grammar_for_single_quantity, 66).
 task_span_reason_queue(5, imperative_without_quantity, 54).
 task_span_reason_queue(6, quantities_carry_no_operand_pair, 33).
 task_span_reason_queue(7, empty_extract, 6).

@@ -10,10 +10,12 @@
  * 1. UNION INCOHERENCE (`b_incoherent/1`, `b_proves/1`). Material incoherence is
  *    judged Brandom-first: a set is incoherent if it contains a declared
  *    incompatible set (a hyperedge the classical engine cannot represent), OR if
- *    it is a classical negation-pair clash. So the bridge catches strictly more
- *    than either engine alone. `b_proves/1` is the incoherence-aware sequent
- *    front end: it adds earned explosion over `b_incoherent/1` to the classical
- *    prover.
+ *    the engine's no-proof-search incoherence surface answers. The two orders
+ *    of explanation stay distinct: relational incompatibility is arity >= 2,
+ *    while a single content can be self-untenable through an enabled axiom pack
+ *    and explosion. The bridge is where they meet. `b_proves/1` is the
+ *    incoherence-aware sequent front end: it adds earned explosion over
+ *    `b_incoherent/1` to the classical prover.
  *
  * 2. THE BACKSTOP (`brandom_backstop/1`, `brandom_backstop_ok/0`). The reason
  *    the classical engine stays in the loop. A data-driven incompatibility
@@ -39,7 +41,7 @@
           ]).
 
 :- use_module(library(lists)).
-:- use_module(sequent(sequent_engine), [ incoherent_base/1, safe_proves/2 ]).
+:- use_module(sequent(sequent_engine), [ safe_proves/2 ]).
 :- use_module(incompat(brandomian_incompatibility),
               [ incompatible_set/1,
                 brandomian_incoherent/1,
@@ -57,14 +59,15 @@
 %!  b_incoherent(+Set) is semidet.
 %
 %   Brandom-first union incoherence. Brandomian hyperedge incoherence, falling
-%   back to the classical law-of-non-contradiction over neg/1 pairs. The
-%   fallback is what guarantees the bridge is never WEAKER than the classical
-%   floor (see the classical_floor backstop check).
+%   back to the classical engine's no-proof-search incoherence surface,
+%   including enabled axiom packs. The fallback is what guarantees the bridge is
+%   never weaker than the classical floor (see the classical_floor backstop
+%   check).
 b_incoherent(Set) :-
     is_list(Set),
     ( brandomian_incoherent(Set)
     -> true
-    ;  incoherent_base(Set)
+    ;  sequent_engine:is_incoherent(Set)
     ).
 
 %!  b_proves(+Sequent) is semidet.
@@ -72,8 +75,9 @@ b_incoherent(Set) :-
 %   Sequent is `Premises => Conclusions`. Succeeds when:
 %     - identity: some premise also appears among the conclusions; or
 %     - earned explosion: the premises are b_incoherent (contain a declared
-%       hyperedge or a neg-pair) — ex falso, but only from incoherence that had
-%       to be earned through declared incompatibility data; or
+%       hyperedge or meet the engine's no-proof-search incoherence surface) —
+%       ex falso, but only from incoherence that had to be earned through
+%       declared incompatibility data or enabled axiom packs; or
 %     - the classical engine proves it (time-limited via safe_proves/2, so the
 %       classical engine's known non-termination on some false goals cannot hang
 %       the bridge).

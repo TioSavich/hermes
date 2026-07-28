@@ -13,8 +13,9 @@
  * representation (list_toggles/1 shows all of them):
  *
  *   - `pack(Pack)` — one of the five sequent-engine axiom packs
- *     (robinson, geometry, number_theory, rhythm, domains), or the opt-in
- *     registry_incompatibility adapter. A sequent pack is a family of
+ *     (robinson, geometry, number_theory, rhythm, domains), or either opt-in
+ *     adapter: registry_incompatibility or error_rule_hyperedges. A sequent
+ *     pack is a family of
  *     `proves_impl/2` / `is_incoherent/1` clauses include-compiled into
  *     `formal/sequent/sequent_engine.pl`, each clause gated by the dynamic fact
  *     `sequent_engine:axiom_pack_enabled/1`. The adapter pack delegates to
@@ -114,6 +115,7 @@
 :- use_module(library(lists), [member/2]).
 :- use_module(library(apply), [maplist/2, include/3]).
 :- use_module(incompat(registry_incompatibility_adapter), []).
+:- use_module(incompat(error_rule_incompatibility_adapter), []).
 
 %!  disabled_axiom(?Id) is nondet.
 %
@@ -159,6 +161,7 @@ known_toggle(Id) :-
 known_pack(Pack) :-
     sequent_engine:default_axiom_pack(Pack).
 known_pack(registry_incompatibility).
+known_pack(error_rule_hyperedges).
 
 % =================================================================
 % Public surface
@@ -284,18 +287,28 @@ pack_enabled(registry_incompatibility) :-
     !,
     registry_incompatibility_adapter:registry_hyperedge_count(Count),
     Count > 0.
+pack_enabled(error_rule_hyperedges) :-
+    !,
+    error_rule_incompatibility_adapter:error_rule_hyperedge_count(Count),
+    Count > 0.
 pack_enabled(Pack) :-
     sequent_engine:enabled_axiom_pack(Pack).
 
 disable_pack(registry_incompatibility) :-
     !,
     registry_incompatibility_adapter:unload_registry_hyperedges.
+disable_pack(error_rule_hyperedges) :-
+    !,
+    error_rule_incompatibility_adapter:unload_error_rule_hyperedges.
 disable_pack(Pack) :-
     sequent_engine:disable_axiom_pack(Pack).
 
 enable_pack(registry_incompatibility) :-
     !,
     registry_incompatibility_adapter:load_registry_hyperedges.
+enable_pack(error_rule_hyperedges) :-
+    !,
+    error_rule_incompatibility_adapter:load_error_rule_hyperedges.
 enable_pack(Pack) :-
     sequent_engine:enable_axiom_pack(Pack).
 

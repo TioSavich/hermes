@@ -1048,6 +1048,17 @@ def extract_task_candidates(
                         lowered,
                     )
                 )
+                spaced_all_together_join_result_unknown = (
+                    re.fullmatch(
+                        r".*\bhow many[^?.]{0,100}\ball together\?"
+                        r"(?:\s+show your thinking using drawings, numbers, or words\.)?",
+                        lowered,
+                    )
+                    and not re.search(
+                        r"\beach\b|\btimes\b|equal groups|\babout\b|estimat",
+                        lowered,
+                    )
+                )
                 comparison_question = bool(
                     re.search(r"how many (?:more|fewer)[^?]*\?", lowered)
                 )
@@ -1070,6 +1081,14 @@ def extract_task_candidates(
                 if join_result_unknown:
                     story_specs.append(
                         ("story_join_result_unknown", "addition", f"add({left}, {right})")
+                    )
+                if spaced_all_together_join_result_unknown:
+                    story_specs.append(
+                        (
+                            "story_spaced_all_together_join_result_unknown",
+                            "addition",
+                            f"add({left}, {right})",
+                        )
                     )
                 if compare_difference_unknown:
                     larger, smaller = max(operands), min(operands)
@@ -1117,6 +1136,100 @@ def extract_task_candidates(
                             "exact_story_operands_question_and_operation_route"
                             if has_route
                             else f"lesson_has_no_{operation}_attachment",
+                        )
+                    )
+        equation_list_prompt = re.search(
+            r"\bFind (?:the unknown value|the number that makes each equation true|"
+            r"the value of each sum)\b",
+            span.text,
+            re.IGNORECASE,
+        )
+        if equation_list_prompt:
+            # The guide export omits the printed box.  An anchored line can
+            # still distinguish a completed-result blank from a missing
+            # addend: the latter is an inverse subtraction task.
+            direct_patterns = (
+                (
+                    "printed_equation_list_direct_addition",
+                    "addition",
+                    "add",
+                    re.compile(r"(?P<a>\d+)\s*\+\s*(?P<b>\d+)\s*=\s*$"),
+                ),
+                (
+                    "printed_equation_list_direct_addition",
+                    "addition",
+                    "add",
+                    re.compile(r"=\s*(?P<a>\d+)\s*\+\s*(?P<b>\d+)\s*$"),
+                ),
+                (
+                    "printed_equation_list_direct_subtraction",
+                    "subtraction",
+                    "subtract",
+                    re.compile(r"(?P<a>\d+)\s*-\s*(?P<b>\d+)\s*=\s*$"),
+                ),
+                (
+                    "printed_equation_list_direct_subtraction",
+                    "subtraction",
+                    "subtract",
+                    re.compile(r"=\s*(?P<a>\d+)\s*-\s*(?P<b>\d+)\s*$"),
+                ),
+            )
+            missing_addend_patterns = (
+                re.compile(r"(?P<total>\d+)\s*=\s*(?P<known>\d+)\s*\+\s*$"),
+                re.compile(r"\+\s*(?P<known>\d+)\s*=\s*(?P<total>\d+)\s*$"),
+            )
+            for line, text in span.lines:
+                equation = re.sub(r"^(?:•|\d+\.)\s*", "", text.strip())
+                equation = re.sub(r"^[a-z]\.?\s*", "", equation)
+                for parser_id, operation, task_name, pattern in direct_patterns:
+                    match = pattern.fullmatch(equation)
+                    if not match:
+                        continue
+                    has_route = any(
+                        attached_operation == operation
+                        for attached_operation, _ in attachments.get(span.code, set())
+                    )
+                    candidates.add(
+                        TaskCandidate(
+                            span.code,
+                            f"{task_name}({int(match.group('a'))}, {int(match.group('b'))})",
+                            operation,
+                            parser_id,
+                            span.source,
+                            line,
+                            line,
+                            f"{span.position}/printed_equation({line})",
+                            text.strip(),
+                            "reviewable" if has_route else "rejected",
+                            "exact_two_known_operand_equation_with_blank_result"
+                            if has_route
+                            else f"lesson_has_no_{operation}_attachment",
+                        )
+                    )
+                for pattern in missing_addend_patterns:
+                    match = pattern.fullmatch(equation)
+                    if not match:
+                        continue
+                    has_route = any(
+                        attached_operation == "subtraction"
+                        for attached_operation, _ in attachments.get(span.code, set())
+                    )
+                    candidates.add(
+                        TaskCandidate(
+                            span.code,
+                            f"subtract({int(match.group('total'))}, "
+                            f"{int(match.group('known'))})",
+                            "subtraction",
+                            "printed_equation_list_missing_addend",
+                            span.source,
+                            line,
+                            line,
+                            f"{span.position}/printed_equation({line})",
+                            text.strip(),
+                            "reviewable" if has_route else "rejected",
+                            "exact_total_known_addend_equation_with_blank_addend"
+                            if has_route
+                            else "lesson_has_no_subtraction_attachment",
                         )
                     )
         if re.search(r"\bFind the value of each expression\b", span.text, re.IGNORECASE):
@@ -1215,6 +1328,15 @@ TASK_GRAMMAR_ACTIONS = {
     },
     "direct_addition_expression_list": ("addition", "count_on_from_larger"),
     "direct_subtraction_expression_list": ("subtraction", "take_away_base_ones"),
+    "printed_equation_list_direct_addition": ("addition", "count_on_from_larger"),
+    "printed_equation_list_direct_subtraction": (
+        "subtraction",
+        "take_away_base_ones",
+    ),
+    "printed_equation_list_missing_addend": (
+        "subtraction",
+        "count_up_missing_addend",
+    ),
     "direct_multiplication_expression_list": ("multiplication", "repeat_equal_groups"),
     "direct_division_expression_list": ("division", "measure_groups_of_size"),
     "equal_groups_pronoun_each": ("multiplication", "repeat_equal_groups"),
@@ -1228,6 +1350,10 @@ TASK_GRAMMAR_ACTIONS = {
         "compare_by_matching_difference",
     ),
     "story_join_result_unknown": ("addition", "count_on_from_larger"),
+    "story_spaced_all_together_join_result_unknown": (
+        "addition",
+        "count_on_from_larger",
+    ),
     "story_take_from_result_unknown": ("subtraction", "take_away_base_ones"),
     "rectangle_dimensions_perimeter": (
         "geometry",
