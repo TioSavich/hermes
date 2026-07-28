@@ -62,6 +62,7 @@
           ]).
 
 :- use_module(library(lists)).
+:- use_module(library(apply), [include/3]).
 :- use_module(formalization(grounded_arithmetic),
               [ integer_to_recollection/2,
                 recollection_to_integer/2,

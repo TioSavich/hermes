@@ -38,7 +38,11 @@
 :- module(smr_div_long,
           [ run_long_division/5,
             run_long_division_string/5,
-            max_decimal_digits/1
+            max_decimal_digits/1,
+            % Digit-list rendering, shared with smr_div_remainder_cycle so the
+            % two division automata print their digits the same way.
+            trim_leading_zero_digits/2,
+            digit_list_string/2
           ]).
 
 :- use_module(library(lists)).

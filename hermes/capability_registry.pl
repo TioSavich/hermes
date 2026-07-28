@@ -271,6 +271,7 @@ capability('knowledge/index/vision_lesson_digest_audit.pl', 'vision_lesson_diges
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/addition.pl', 'addition', 'synthesis', [], orphan_module).
