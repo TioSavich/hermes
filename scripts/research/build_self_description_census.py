@@ -851,8 +851,13 @@ def build() -> dict[str, object]:
     # formal/incompatibility/error_rule_incompatibility_adapter.pl is the 279th:
     # the second feeder into the canonical Brandomian relation, reachable only
     # lazily through axiom_toggle, which is how the registry records it.
-    if len(registry_rows) != 279:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 279")
+    # knowledge/strategies/math/smr_div_remainder_cycle.pl is the 280th: the
+    # division automaton that decides termination by remainder recurrence. It is
+    # unregistered on purpose — registering it needs a canonical action naming a
+    # halt on state recurrence, which extends a closed alphabet — so the registry
+    # reads it as an orphan module, which is what it is.
+    if len(registry_rows) != 280:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 280")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -863,8 +868,12 @@ def build() -> dict[str, object]:
     # error_rule_inferences.pl is the 67th, on narrower grounds: it is an
     # included clause file rather than a module, so nothing routes to it and
     # nothing ever will. The registry has no separate reading for an include.
-    if len(orphan_records) != 68:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 68")
+    # smr_div_remainder_cycle.pl is the 69th, and its orphanhood is a decision
+    # rather than an oversight: it decides what its sibling smr_div_long cannot,
+    # and wiring it in waits on a canonical action for halting on a state
+    # recurrence. Stalled pipeline input with a named reason, never vestige.
+    if len(orphan_records) != 69:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 69")
     if len(unrouted) != 6:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 

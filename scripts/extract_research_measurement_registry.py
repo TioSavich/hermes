@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate a bounded provenance registry for quantitative research claims.
 
-The denominator is every explicit quantitative-result statement in the 63
+The denominator is every explicit quantitative-result statement in the 64
 top-level Markdown reports in docs/research/: a non-code prose line carrying a
 percentage or cohort ratio, or a Markdown table data row under a header that
 names a quantitative field.  A table row is one measurement vector; its metric
@@ -292,8 +292,11 @@ def render_registry() -> str:
     # report.
     # 62 until 2026-07-28 evening, which added the incompatibility / LX /
     # diagonalization / vanishing-points report.
-    if len(reports) != 63:
-        raise RuntimeError(f"expected 63 top-level research reports, found {len(reports)}")
+    # 63 until 2026-07-28 evening, which added the account of what refusals are
+    # for: the carving of refused spans into kinds that differ in what should
+    # happen to them.
+    if len(reports) != 64:
+        raise RuntimeError(f"expected 64 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
@@ -322,7 +325,7 @@ def render_registry() -> str:
     lines = [
         "/** <module> Generated research-measurement provenance registry",
         " *",
-        " * The denominator is every explicit quantitative-result statement in the 63",
+        " * The denominator is every explicit quantitative-result statement in the 64",
         " * top-level Markdown reports in docs/research/: a non-code prose line with",
         " * a percentage or cohort ratio, or a Markdown table data row under a header",
         " * that names a quantitative field. A table row is one measurement vector;",

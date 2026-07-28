@@ -416,14 +416,14 @@
       "render": 28,
       "sequent": 14,
       "standards": 22,
-      "synthesis": 34,
+      "synthesis": 35,
       "unclassified": 8,
       "workflow": 5,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 68,
+      "orphan_module": 69,
       "routed_paged": 195,
       "unrouted": 6
     },
@@ -434,9 +434,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 32
+      "undetermined": 33
     },
-    "total": 279,
+    "total": 280,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1288,6 +1288,20 @@
       "note": "The transition-table builder reads the checked input contracts.",
       "path": "knowledge/strategies/automaton_input_contracts.pl",
       "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "/** <module> Decimal expansion decided by the remainder cycle",
+          "path": "knowledge/strategies/math/smr_div_remainder_cycle.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "smr_div_remainder_cycle",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/math/smr_div_remainder_cycle.pl",
+      "verdict": "undetermined"
     },
     {
       "capability_class": "synthesis",

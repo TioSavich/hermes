@@ -69,7 +69,7 @@ data_artifact('data/research/registry_op_embedding_payloads.json', file, 1, 2239
 data_artifact('data/research/registry_op_embeddings.json', file, 1, 129373, 'a051416255c9f52922c46fccbf9bfd5f3747c062cdecda8f092ee321de83ed3a', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/registry_op_embeddings.npz', file, 1, 1718833, '9c5ecaf8971bc99fedf36790b0151dcd1571d6ab65a9a82ffacf021281121ddc', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/research_shared.db', file, 1, 13881344, 'bc3609b8fba19d84264bfb87e776458867fac2f9f38323e1509a1e3c030f8f00', reader_and_writer, static_reader_and_writer, [reader('hermes/app/routes/logic.py', 177, sqlite_connect), reader('hermes/app/routes/logic.py', 270, sqlite_connect), reader('scripts/checks/attested_phrases.py', 111, sqlite_connect), reader('scripts/checks/recognition_benchmark.py', 141, sqlite_connect), reader('scripts/checks/review_surface.py', 77, sqlite_connect), reader('scripts/extract_research_corpus_misconceptions.py', 83, sqlite_connect), reader('scripts/research/ask_the_window.py', 93, sqlite_connect), reader('scripts/research/build_attested_phrases.py', 188, sqlite_connect), reader('scripts/research/code_incompatibility_triples.py', 279, sqlite_connect), reader('scripts/research/export_mua_for_mud.py', 233, sqlite_connect), reader('scripts/research/map_corpus_to_automata.py', 204, sqlite_connect)], [writer('scripts/research/apply_incompatibility_triples.py', 79, sqlite_connect)]).
-data_artifact('data/research/self_description_census.json', file, 1, 63692, '5e6d2fea97bad56f90182f41544ca8b67823cff670c98f5b2d49add7cbbbdf3b', reader_and_writer, static_reader_and_writer, [reader('scripts/checks/self_description_census.py', 54, read_bytes)], [writer('scripts/research/build_self_description_census.py', 920, write_text)]).
+data_artifact('data/research/self_description_census.json', file, 1, 64362, 'fb1201144a0cbb7a64da46f9ae1424594c8bd35fb63ea377918d6392b9102c42', reader_and_writer, static_reader_and_writer, [reader('scripts/checks/self_description_census.py', 54, read_bytes)], [writer('scripts/research/build_self_description_census.py', 929, write_text)]).
 data_artifact('data/research/strategy_embedding_payloads.json', file, 1, 202985, '8585b8de9dc7792bdc2edec63fd37465c38c418afe7315347b95319185f35fbf', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/strategy_embeddings.json', file, 1, 103986, 'cf85ec98773800fd00937892998d6d3b050e0e286f09dab95989f0975b91beeb', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/strategy_embeddings.npz', file, 1, 1507895, '4af9d6e6b08f5aa3d26aa68360b6c4864f4e9a88d08cc755152818ff50c7af48', unconsumed_file, no_static_reader_or_writer, [], []).
@@ -93,7 +93,7 @@ data_artifact('scripts/research/mobius_band_lexicons.json', file, 1, 1655, 'a78d
 data_artifact_denominator(data_tree_regular_file, 8183).
 data_artifact_denominator(manifest_artifact, 49).
 data_root_denominator(curriculum, 5, 5, 19788084).
-data_root_denominator(data, 32, 8183, 951693764).
+data_root_denominator(data, 32, 8183, 951694434).
 data_root_denominator(scripts, 12, 12, 8958675).
 
 data_status_count(live_reader, 14).
