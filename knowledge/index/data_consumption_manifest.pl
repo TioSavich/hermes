@@ -44,6 +44,7 @@ data_artifact('curriculum/im/coverage/im_coverage.json', file, 1, 828282, '55144
 data_artifact('curriculum/im/coverage/lesson_evidence_ratchet.json', file, 1, 1987, '41ca66870d2025a04c1f566c6cdd4bbd68957cb57b4233b0883916fc7270eb0b', reader_and_writer, static_reader_and_writer, [reader('scripts/curriculum/build_lesson_evidence.py', 519, glob), reader('scripts/extract_coverage_absence_registry.py', 246, read_text), reader('scripts/research/build_im_coverage.py', 54, read_text), reader('scripts/research/build_im_coverage.py', 102, glob)], [writer('scripts/curriculum/ingest_vision.py', 192, open)]).
 data_artifact('curriculum/im/docling_figures_interpreted.json', file, 1, 1269904, '3fb9ff749f50efbaa949f74c2e0c68bb2bc0b494a161e8d5d45f2001d9f01cba', reader_and_writer, static_reader_and_writer, [reader('scripts/curriculum/build_lesson_evidence.py', 519, glob), reader('scripts/extract_coverage_absence_registry.py', 246, read_text), reader('scripts/research/build_im_coverage.py', 102, glob)], [writer('scripts/curriculum/ingest_vision.py', 192, open)]).
 data_artifact('curriculum/im/generated/field_context_cache.json', file, 1, 17240426, '53ba92cfce0c418614d11105c5c991f3463a72ae6842b0dad65724d1145f40ef', reader_and_writer, static_reader_and_writer, [reader('hermes/app/field_context_cache.py', 12, read_text), reader('hermes/review_queue.pl', 172, text_reader_call), reader('scripts/checks/field_context_cache.py', 49, read_text), reader('scripts/checks/relevance_negation.py', 217, read_text), reader('scripts/checks/review_surface.py', 50, read_text), reader('scripts/curriculum/build_lesson_evidence.py', 519, glob), reader('scripts/extract_coverage_absence_registry.py', 246, read_text), reader('scripts/research/build_field_context_cache.py', 522, read_text), reader('scripts/research/build_im_coverage.py', 102, glob), reader('scripts/research/build_relevance_negation.py', 329, read_text), reader('scripts/research/misconception_embedding.py', 279, read_text), reader('scripts/research/propose_middle_school_pairings.py', 173, read_text)], [writer('scripts/curriculum/ingest_vision.py', 192, open)]).
+data_artifact('curriculum/im/generated/recovered_task_spans.json', file, 1, 447485, '17014707519f19f167920907c9374d6236cb3df186dd7f284ffe8a79d16817e4', reader_and_writer, static_reader_and_writer, [reader('scripts/curriculum/build_lesson_evidence.py', 519, glob), reader('scripts/extract_coverage_absence_registry.py', 246, read_text), reader('scripts/research/build_im_coverage.py', 102, glob)], [writer('scripts/curriculum/ingest_vision.py', 192, open)]).
 data_artifact('data/asktm', directory_corpus, 6543, 685669439, 'a1a1ae279e70292ae47df69c4b913c10737afc63f563d2daff7dbabc5133e3c6', unconsumed_corpus, no_static_reader_or_writer, [], []).
 data_artifact('data/learningcommons/derived/im_ccss_action_catalog.json', file, 1, 156240, '10d40fff1b20ea6265144336e30c2d64b5711330f9765615b8b834f886c322ab', reader_and_writer, static_reader_and_writer, [reader('scripts/curriculum/build_lesson_evidence.py', 668, read_text), reader('scripts/curriculum/build_lesson_evidence.py', 674, read_text)], [writer('scripts/curriculum/build_lesson_evidence.py', 672, write_text)]).
 data_artifact('data/learningcommons/derived/im_k8_spine.json', file, 1, 543320, '5d5cb6c3181c377710eeb3195c37502dcc0ba8c219b013996d47bd7d45797209', live_reader, static_reader, [reader('scripts/curriculum/build_lesson_evidence.py', 663, read_text), reader('scripts/extract_im_lesson_identity.py', 109, read_text), reader('scripts/extract_vision_lesson_digest_audit.py', 155, read_text), reader('scripts/research/verify_vision_excerpts.py', 600, read_text)], []).
@@ -90,13 +91,13 @@ data_artifact('scripts/research/churn_out/pilot_summary.json', file, 1, 1032364,
 data_artifact('scripts/research/mobius_band_lexicons.json', file, 1, 1655, 'a78d7498123eec35241b8e56cee9e4ffcbeec41aff3385537fc8532bb0fbc830', live_reader, static_reader, [reader('scripts/checks/vocabulary_licenses.py', 462, read_text), reader('scripts/research/mobius_adversarial_loop.py', 372, read_text)], []).
 
 data_artifact_denominator(data_tree_regular_file, 8183).
-data_artifact_denominator(manifest_artifact, 48).
-data_root_denominator(curriculum, 4, 4, 19340599).
+data_artifact_denominator(manifest_artifact, 49).
+data_root_denominator(curriculum, 5, 5, 19788084).
 data_root_denominator(data, 32, 8183, 951667237).
 data_root_denominator(scripts, 12, 12, 8958675).
 
 data_status_count(live_reader, 14).
-data_status_count(reader_and_writer, 11).
+data_status_count(reader_and_writer, 12).
 data_status_count(writer_without_reader, 0).
 data_status_count(unconsumed_file, 22).
 data_status_count(unconsumed_corpus, 1).
