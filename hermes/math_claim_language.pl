@@ -4,7 +4,9 @@
  * math_claim_checker terms with a DCG.  This reader does not resolve pronouns,
  * supply omitted operands, or infer an operation from a sequence of numbers.
  * A parse therefore expands the syntactic surface accepted by Hermes without
- * weakening the checker's domain boundary.
+ * weakening the checker's domain boundary.  Each accepted relation is
+ * complete through its list-item boundary; incomplete or unsupported
+ * arithmetic syntax abstains rather than emitting a fragment.
  */
 :- module(math_claim_language,
           [ math_readings_in_text/2,     % +Text, -Readings
@@ -23,8 +25,7 @@
 %   an atom, string, or character/code list accepted by tokenize_atom/2.
 math_claims_in_text(Text, ClaimTerms) :-
     must_be(text, Text),
-    tokenize_atom(Text, RawTokens),
-    normalize_tokens(RawTokens, Tokens),
+    claim_text_tokens(Text, Tokens),
     math_claim_tokens(Tokens, ClaimTerms).
 
 
@@ -35,9 +36,65 @@ math_claims_in_text(Text, ClaimTerms) :-
 %   speaker's mental state or entitlement.
 math_readings_in_text(Text, Readings) :-
     must_be(text, Text),
-    tokenize_atom(Text, RawTokens),
-    normalize_tokens(RawTokens, Tokens),
+    claim_text_tokens(Text, Tokens),
     readings_from_tokens(Tokens, Readings).
+
+
+% Keep line boundaries that tokenize_atom/2 would otherwise discard.  A
+% complete claim may end at a newline just as it may end at a bullet or a
+% semicolon; without the marker, the next item's first number looks like a
+% continuation of the preceding expression.
+claim_text_tokens(Text, Tokens) :-
+    claim_text_string(Text, String),
+    split_string(String, "\n", "\r", Lines),
+    tokenize_claim_lines(Lines, RawTokens),
+    normalize_tokens(RawTokens, Tokens).
+
+claim_text_string(Text, Text) :-
+    string(Text),
+    !.
+claim_text_string(Text, String) :-
+    atom(Text),
+    !,
+    atom_string(Text, String).
+claim_text_string(Text, String) :-
+    string_codes(String, Text),
+    !.
+claim_text_string(Text, String) :-
+    string_chars(String, Text).
+
+tokenize_claim_lines([], []).
+tokenize_claim_lines([Line], Tokens) :-
+    !,
+    tokenize_claim_line(Line, Tokens).
+tokenize_claim_lines([Line|Lines], Tokens) :-
+    tokenize_claim_line(Line, Head),
+    tokenize_claim_lines(Lines, Tail),
+    append(Head, [math_claim_line_boundary|Tail], Tokens).
+
+tokenize_claim_line(Line, Tokens) :-
+    tokenize_atom(Line, RawTokens),
+    ( numbered_item_line(Line),
+      RawTokens = [Number,'.'|Rest],
+      number(Number)
+    -> Tokens = [math_claim_item_boundary|Rest]
+    ;  Tokens = RawTokens
+    ).
+
+numbered_item_line(Line) :-
+    string_codes(Line, Codes),
+    phrase(numbered_item_prefix, Codes, _).
+
+numbered_item_prefix -->
+    [First], { code_type(First, digit) },
+    numbered_item_digits,
+    [46, Space], { code_type(Space, space) }.
+
+numbered_item_digits -->
+    [Code], { code_type(Code, digit) },
+    !,
+    numbered_item_digits.
+numbered_item_digits --> [].
 
 
 %!  math_claim_tokens(+Tokens, -ClaimTerms) is det.
@@ -104,6 +161,11 @@ truncated_left_context(Prefix) :-
     numeric_continuation_separator(Separator),
     !.
 truncated_left_context(Prefix) :-
+    append(_, [Previous, Dash], Prefix),
+    number(Previous),
+    range_or_prose_dash(Dash),
+    !.
+truncated_left_context(Prefix) :-
     last(Prefix, '.'),
     !.
 truncated_left_context(Prefix) :-
@@ -113,7 +175,7 @@ candidate_right_boundary(Rest) :-
     \+ truncated_right_context(Rest).
 
 truncated_right_context([Next|_]) :-
-    ( arithmetic_operator_token(Next)
+    ( arithmetic_continuation_token(Next)
     ; relation_continuation_token(Next)
     ),
     !.
@@ -125,17 +187,58 @@ truncated_expression_token(Token) :-
     number(Token),
     !.
 truncated_expression_token(Token) :-
+    arithmetic_continuation_token(Token).
+
+% An unsupported operator is evidence that the reader is in the middle of an
+% expression.  Treat it as a refusal boundary rather than starting a second
+% scan after it and adjudicating that suffix as though it were the full claim.
+arithmetic_continuation_token(Token) :-
     arithmetic_operator_token(Token).
+arithmetic_continuation_token(Token) :-
+    unsupported_arithmetic_operator_token(Token).
 
 arithmetic_operator_token(Token) :-
     memberchk(Token,
               ['+', '-', '*', '/', x, plus, minus, times, divided]).
+
+unsupported_arithmetic_operator_token(Token) :-
+    atom(Token),
+    \+ memberchk(Token, ['–', '—']),
+    atom_chars(Token, Characters),
+    Characters \== [],
+    maplist(arithmetic_operator_character, Characters),
+    \+ arithmetic_operator_token(Token).
+
+arithmetic_operator_character(Character) :-
+    char_type(Character, prolog_symbol),
+    \+ claim_boundary_symbol(Character).
+
+% Sentence and item punctuation is a boundary, never an arithmetic operator.
+% The en and em dashes are deliberately excluded above: curriculum prose and
+% ranges retain their existing non-arithmetic treatment.
+claim_boundary_symbol('.').
+claim_boundary_symbol(',').
+claim_boundary_symbol(';').
+claim_boundary_symbol('?').
+claim_boundary_symbol('!').
+claim_boundary_symbol('(').
+claim_boundary_symbol(')').
+claim_boundary_symbol('[').
+claim_boundary_symbol(']').
+claim_boundary_symbol('{').
+claim_boundary_symbol('}').
+claim_boundary_symbol('•').
 
 relation_continuation_token(Token) :-
     memberchk(Token, [is, equals, equal, '=']).
 
 numeric_continuation_separator(',').
 numeric_continuation_separator(':').
+
+% These dashes remain non-arithmetic.  A numeric range cannot donate its
+% trailing endpoint to a following relation as an independent claim.
+range_or_prose_dash('–').
+range_or_prose_dash('—').
 
 approximation_token(about).
 approximation_token(approximately).
@@ -577,6 +680,15 @@ positive_math_claim(Term) --> expression_equation(Term).
 
 
 normalize_tokens([], []).
+normalize_tokens(['×'|Rest], [x|Tokens]) :-
+    !,
+    normalize_tokens(Rest, Tokens).
+normalize_tokens(['÷'|Rest], ['/'|Tokens]) :-
+    !,
+    normalize_tokens(Rest, Tokens).
+normalize_tokens(['−'|Rest], ['-'|Tokens]) :-
+    !,
+    normalize_tokens(Rest, Tokens).
 normalize_tokens([Word, '\'', s|Rest], [Contracted|Tokens]) :-
     atom(Word),
     !,
@@ -681,7 +793,7 @@ equality_claim(Term) -->
     { compose_equality(A, B, Term) }.
 
 expression_equation(arithmetic_equation(Left, Right)) -->
-    arithmetic_expression(Left), expression_result_link, arithmetic_side(Right).
+    arithmetic_expression(Left), expression_result_link, arithmetic_expression(Right).
 
 ratio_claim(ratio_statement(ratio(A, B))) -->
     [the,ratio,is], value(Left), [to], value(Right),

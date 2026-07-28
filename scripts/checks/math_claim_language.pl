@@ -30,6 +30,26 @@ main :-
                       arithmetic_equation((2+3)*4,20)),
     expect_only_claim("2 * (3 + 4) = 14",
                       arithmetic_equation(2*(3+4),14)),
+    expect_only_claim("300 - 100 = 100 - 300",
+                      arithmetic_equation(300-100,100-300)),
+    expect_verdict("300 - 100 = 100 - 300", "refuted"),
+    expect_only_claim("2 × 40 = 2 × 4 × 10",
+                      arithmetic_equation(2*40,2*4*10)),
+    expect_verdict("2 × 40 = 2 × 4 × 10", "holds"),
+    expect_claims("Decide if each statement is true or false.\n24 + 3 = 54\n42 + 5 = 47",
+                  [sum(24,3,54), sum(42,5,47)]),
+    expect_verdicts("Decide if each statement is true or false.\n24 + 3 = 54\n42 + 5 = 47",
+                    ["refuted", "holds"]),
+    expect_claims("1. 24 + 3 = 54\n2. 42 + 5 = 47",
+                  [sum(24,3,54), sum(42,5,47)]),
+    expect_no_claim("Sort the pictures into these 3 categories"),
+    expect_no_claim("What do you notice? What do you wonder?"),
+    expect_no_claim("20–50 = 30"),
+    expect_no_claim_term("2 × 40 = 2 × 4 × 10",
+                         arithmetic_equation(40,2)),
+    expect_no_claim("2 ⊗ 3 = 6"),
+    expect_only_claim("4 ÷ 2 = 2", arithmetic_equation(4/2,2)),
+    expect_only_claim("4 − 2 = 2", subtraction(4,2,2)),
     expect_claims("3 + 4 = 7 = 7 + 0",
                   [arithmetic_equation(3+4,7),
                    arithmetic_equation(7,7+0)]),
@@ -122,6 +142,13 @@ expect_no_claim(Text) :-
     math_claim_language:math_claims_in_text(Text, Claims),
     expect_equal(Claims, [], expected_abstention(Text)).
 
+expect_no_claim_term(Text, Forbidden) :-
+    math_claim_language:math_claims_in_text(Text, Claims),
+    ( memberchk(Forbidden, Claims)
+    -> throw(error(assertion_failed(fragment_emitted(Text, Forbidden)), _))
+    ;  true
+    ).
+
 expect_reading(Text, Mode, Commitment, Polarity) :-
     math_claim_language:math_readings_in_text(Text, Readings),
     ( Readings = [Reading|_]
@@ -182,6 +209,13 @@ expect_verdict(Text, Expected) :-
     -> expect_equal(Claim.verdict, Expected, claim_verdict(Text))
     ;  throw(error(assertion_failed(expected_one_checked_claim(Text, Grounded.math_claims)), _))
     ).
+
+expect_verdicts(Text, Expected) :-
+    hermes_encyclopedia:ground_query_dict(Text, Grounded),
+    maplist(claim_verdict, Grounded.math_claims, Actual),
+    expect_equal(Actual, Expected, claim_verdicts(Text)).
+
+claim_verdict(Claim, Claim.verdict).
 
 expect_equal(Actual, Expected, Label) :-
     ( Actual == Expected
