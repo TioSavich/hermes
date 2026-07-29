@@ -1,0 +1,30 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Legitimate control: one expression in a marker-less arithmetic grid remains citable on its own.",
+  "expected_result": "single_expression_compiles",
+  "readings": [
+    {
+      "lesson": "IM-G1-U8-L3",
+      "id": "control_g1_u8_l3_single_expression",
+      "position": "student_task_statement(2)",
+      "task": "add(5, 9)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit8/lesson3.md",
+        "line": 145,
+        "end_line": 146,
+        "excerpt": "Circle 1 addition expression and 1 subtraction expression."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade1/unit8/lesson3.md",
+        "line": 147,
+        "excerpt": "5 + 9"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "Fixture-only scope control; it does not claim the guide lacks a response."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

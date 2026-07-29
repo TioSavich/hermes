@@ -1,0 +1,29 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Legitimate control: a complete expression remains citable with prose before and sentence punctuation after.",
+  "expected_result": "complete_expression_compiles",
+  "readings": [
+    {
+      "lesson": "IM-G5-U4-L13",
+      "id": "control_g5_u4_l13_complete_expression",
+      "position": "student_task_statement(4)",
+      "task": "divide(1736, 28)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson13.md",
+        "line": 300,
+        "excerpt": "Find the value of 1,736 ÷ 28."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson13.md",
+        "line": 300,
+        "excerpt": "Find the value of 1,736 ÷ 28."
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "Fixture-only maximality control; it does not claim the guide lacks a response."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

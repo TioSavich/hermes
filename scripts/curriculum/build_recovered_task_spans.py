@@ -64,7 +64,7 @@ def word_signature(text: str) -> tuple[str, ...]:
     recovered and in how the page reflowed around them. They must not differ in
     the words, and this is what says so.
     """
-    stripped = re.sub(r"[0-9+\-−x×÷*/=.,:;()\[\]•·]", " ", text.lower())
+    stripped = re.sub(r"[0-9+\-−x×÷*/=.,:;()\[\]•·_]", " ", text.lower())
     return tuple(token for token in stripped.split() if token)
 
 

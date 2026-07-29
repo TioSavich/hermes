@@ -1,0 +1,30 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Deliberately fabricated: operands from two sibling items cannot be paired into a new task.",
+  "expected_error": "item-scope failed: operands cite multiple items",
+  "readings": [
+    {
+      "lesson": "IM-G5-U4-L5",
+      "id": "manufactured_g5_u4_l5_cross_pair",
+      "position": "student_task_statement(1)/item(3)",
+      "task": "multiply(120, 140)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 92,
+        "excerpt": "Find the value of each product mentally."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 98,
+        "end_line": 99,
+        "excerpt": "120 × 3 • 140 × 3"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "This control must fail before an absent witness can be admitted."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

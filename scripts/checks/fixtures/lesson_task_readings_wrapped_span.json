@@ -1,0 +1,12 @@
+{
+  "schema": "lesson_task_readings_span_binding_control_v1",
+  "expected_result": "span_bound_markdown_passes",
+  "lesson": "IM-G3-U2-L8",
+  "position": "student_task_statement(2)",
+  "citation": {
+    "source": "curriculum/im_teacher_guides/grade3/unit2/lesson8.md",
+    "line": 194,
+    "end_line": 197,
+    "excerpt": "After learning about azulejos (ah-soo-LAY-hohs) in Portugal, Elena is making her own tile artwork. This rectangle shows the project Elena is tiling. Each square tile has a side length of 1 inch."
+  }
+}

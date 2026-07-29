@@ -9,6 +9,7 @@ report. The generated Prolog is deterministic and supports ``--check``.
 from __future__ import annotations
 
 import argparse
+from fractions import Fraction
 import json
 import math
 import pathlib
@@ -35,6 +36,7 @@ DEFAULT_RULES = ROOT / "scripts/curriculum/action_mapping_rules.json"
 DEFAULT_OUTPUT = GENERATED_ROOT / "compiled_action_mappings.pl"
 DEFAULT_TASK_OUTPUT = GENERATED_ROOT / "compiled_task_instances.pl"
 RECOVERED_TASK_SPANS = GENERATED_ROOT / "recovered_task_spans.json"
+TASK_READINGS = ROOT / "scripts" / "curriculum" / "lesson_task_readings.json"
 
 CODE_RE = re.compile(r"IM-G([K0-8])-U(\d+)-L(\d+)")
 EXPLICIT_RE = re.compile(
@@ -49,6 +51,18 @@ VISION_RE = re.compile(
     re.MULTILINE,
 )
 TOKEN_RE = re.compile(r"[a-z0-9]+")
+TASK_TERM_RE = re.compile(
+    r"^(?P<operator>add|subtract|multiply|divide)\(\s*(?P<left>-?\d+)\s*,\s*"
+    r"(?P<right>-?\d+)\s*\)$"
+)
+# Keep the lane's content scope on the same comma-aware whole-number spelling
+# accepted by the candidate extractor.  The lookahead deliberately retains
+# overlapping pairs: ``6 + 4 + 4`` contains both ``6 + 4`` and ``4 + 4``.
+ARITHMETIC_NUMERAL = r"(?:\d{1,3}(?:,\d{3})+|\d+)"
+ARITHMETIC_EXPRESSION_RE = re.compile(
+    rf"(?=(?<![\d.,])(?P<left>{ARITHMETIC_NUMERAL})\s*"
+    rf"(?P<symbol>[+\-−×·÷/=])\s*(?P<right>{ARITHMETIC_NUMERAL})(?![\d,]|\.\d))"
+)
 
 
 @dataclass(frozen=True)
@@ -95,6 +109,9 @@ class TaskInstance:
     # records the page reference verbatim but cannot line-check it. Verifying the
     # excerpt against the cited PDF pages is a human step, not a compiler gate.
     pages: str = ""
+    # Authored task readings carry whether a printed answer independently
+    # witnesses the task. Legacy and parser-derived instances keep this empty.
+    witness_class: str = ""
 
 
 @dataclass(frozen=True)
@@ -336,6 +353,490 @@ def read_recovered_task_spans(
     return [recovered_by_key[key] for key in sorted(recovered_by_key)]
 
 
+def _task_reading_task(task: object, reading_id: str) -> tuple[str, int, int]:
+    """Parse the deliberately small arithmetic term accepted by task readings."""
+    if not isinstance(task, str):
+        raise SystemExit(f"lesson task reading {reading_id} task is not a string")
+    match = TASK_TERM_RE.fullmatch(task)
+    if match is None:
+        raise SystemExit(
+            f"lesson task reading {reading_id} has unsupported task term: {task!r}"
+        )
+    return match.group("operator"), int(match.group("left")), int(match.group("right"))
+
+
+def _task_reading_value(operator: str, left: int, right: int) -> Fraction:
+    if operator == "add":
+        return Fraction(left + right)
+    if operator == "subtract":
+        return Fraction(left - right)
+    if operator == "multiply":
+        return Fraction(left * right)
+    if right == 0:
+        raise SystemExit("lesson task reading divides by zero")
+    return Fraction(left, right)
+
+
+def _task_reading_operand_present(operand: int, excerpt: str) -> bool:
+    """Match a whole numeral after removing only thousands separators."""
+    normalized = re.sub(r"(?<=\d),(?=\d)", "", excerpt)
+    return re.search(rf"(?<!\d){re.escape(str(operand))}(?!\d)", normalized) is not None
+
+
+ITEM_MARKER_RE = re.compile(r"•|(?<!\w)\d+\.(?=\s)")
+
+
+def _span_bound_markdown_provenance(
+    citation: dict, span: StudentTaskSpan
+) -> tuple[str, int, int, str] | None:
+    """Resolve a markdown citation from the column-aware task span itself.
+
+    Raw guide lines interleave the teacher column. Once a citation is bound to
+    this span, the span's extracted text and its physical line membership are
+    the stronger verbatim check; the raw-line join remains for unbound legacy
+    provenance.
+    """
+    source = citation.get("source")
+    line = citation.get("line")
+    end_line = citation.get("end_line", line)
+    excerpt = citation.get("excerpt")
+    if not (
+        isinstance(source, str)
+        and isinstance(line, int)
+        and isinstance(end_line, int)
+        and isinstance(excerpt, str)
+        and source == span.source
+        and span.heading_line <= line <= end_line <= span.end_line
+        and excerpt in span.text
+    ):
+        return None
+    return source, line, end_line, ""
+
+
+def _operands_scope_one_item(span: StudentTaskSpan, excerpt: str) -> bool:
+    """Additional marker guard: keep an operand citation inside one list item."""
+    markers = list(ITEM_MARKER_RE.finditer(span.text))
+    if len(markers) < 2:
+        return True
+    items = []
+    for index, marker in enumerate(markers):
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(span.text)
+        items.append(span.text[marker.end():end])
+    matches = 0
+    for item in items:
+        start = item.find(excerpt)
+        if start < 0:
+            continue
+        end = start + len(excerpt)
+        if (
+            excerpt[:1].isdigit()
+            and start > 0
+            and item[start - 1].isdigit()
+        ) or (
+            excerpt[-1:].isdigit()
+            and end < len(item)
+            and item[end].isdigit()
+        ):
+            continue
+        matches += 1
+    return matches == 1
+
+
+def _operand_enclosing_texts(
+    span: StudentTaskSpan, excerpt: str
+) -> list[tuple[str, int]]:
+    """Return the item text that contains an already item-scoped citation."""
+    markers = list(ITEM_MARKER_RE.finditer(span.text))
+    if len(markers) < 2:
+        return [(span.text, 0)]
+    items = []
+    for index, marker in enumerate(markers):
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(span.text)
+        item = span.text[marker.end():end]
+        start = item.find(excerpt)
+        if start < 0:
+            continue
+        excerpt_end = start + len(excerpt)
+        if (
+            excerpt[:1].isdigit()
+            and start > 0
+            and item[start - 1].isdigit()
+        ) or (
+            excerpt[-1:].isdigit()
+            and excerpt_end < len(item)
+            and item[excerpt_end].isdigit()
+        ):
+            continue
+        items.append((item, marker.end()))
+    return items
+
+
+def _operands_content_scope_matches(
+    operator: str, left: int, right: int, excerpt: str
+) -> bool:
+    """Require exactly the binary expression claimed by an authored task.
+
+    Marker-less grids do not provide reliable item boundaries.  A cited operand
+    excerpt therefore has to contain one, and only one, compiler-shaped
+    arithmetic pair, and that pair has to be the task term itself.  ``finditer``
+    sees overlapping pairs so a three-term expression cannot quietly serve as
+    a binary task citation.
+    """
+    symbols = {
+        "add": {"+"},
+        "subtract": {"-", "−"},
+        "multiply": {"×", "·"},
+        "divide": {"÷"},
+    }[operator]
+    expressions = [
+        (
+            _arithmetic_number(match.group("left")),
+            match.group("symbol"),
+            _arithmetic_number(match.group("right")),
+        )
+        for match in ARITHMETIC_EXPRESSION_RE.finditer(excerpt)
+    ]
+    return (
+        len(expressions) == 1
+        and expressions[0][0] == left
+        and expressions[0][1] in symbols
+        and expressions[0][2] == right
+    )
+
+
+def _operands_expression_is_maximal(
+    span: StudentTaskSpan, excerpt: str, line: int | None = None, end_line: int | None = None
+) -> bool:
+    """Refuse an operand citation that slices a longer stated expression.
+
+    A complete binary pair may be only a prefix or a middle of a displayed
+    equation.  Check both a containing compiler-shaped pair and the immediate
+    mathematical continuation that the pair scanner cannot itself consume (for
+    example ``104 + 2 × 10 = n``).  Ordinary prose and sentence punctuation
+    remain outside those continuation tokens.
+    """
+    cited_matches = list(ARITHMETIC_EXPRESSION_RE.finditer(excerpt))
+    if len(cited_matches) != 1:
+        return False
+    cited = cited_matches[0]
+    cited_start = cited.start("left")
+    cited_end = cited.end("right")
+    extension_tokens = "+-−×xX*÷/="
+    cited_starts = set()
+    offset = 0
+    for index, (line_number, text) in enumerate(span.lines):
+        if line is not None and line <= line_number <= (end_line if end_line is not None else line):
+            occurrence = text.find(excerpt)
+            while occurrence >= 0:
+                cited_starts.add(offset + occurrence + cited_start)
+                occurrence = text.find(excerpt, occurrence + 1)
+        offset += len(text)
+        if index + 1 < len(span.lines):
+            offset += 1
+    considered = False
+    for enclosing, enclosing_offset in _operand_enclosing_texts(span, excerpt):
+        occurrence = enclosing.find(excerpt)
+        while occurrence >= 0:
+            expression_start = occurrence + cited_start
+            expression_end = occurrence + cited_end
+            absolute_start = enclosing_offset + expression_start
+            if cited_starts and absolute_start not in cited_starts:
+                occurrence = enclosing.find(excerpt, occurrence + 1)
+                continue
+            considered = True
+            candidates = list(ARITHMETIC_EXPRESSION_RE.finditer(enclosing))
+            # Adjacent binary matches share an operand in a chain such as
+            # ``104 + 2 × 10``.  Their union is a strictly longer
+            # compiler-shaped expression even though each pair is found by a
+            # separate overlapping regex match.
+            containing_start = expression_start
+            containing_end = expression_end
+            changed = True
+            while changed:
+                changed = False
+                for candidate in candidates:
+                    candidate_start = candidate.start("left")
+                    candidate_end = candidate.end("right")
+                    if candidate_start < containing_end and containing_start < candidate_end:
+                        new_start = min(containing_start, candidate_start)
+                        new_end = max(containing_end, candidate_end)
+                        if (new_start, new_end) != (containing_start, containing_end):
+                            containing_start, containing_end = new_start, new_end
+                            changed = True
+            if (containing_start, containing_end) != (expression_start, expression_end):
+                return False
+            for candidate in candidates:
+                candidate_start = candidate.start("left")
+                candidate_end = candidate.end("right")
+                if (
+                    candidate_start <= expression_start
+                    and expression_end <= candidate_end
+                    and (candidate_start < expression_start or expression_end < candidate_end)
+                ):
+                    return False
+            before = enclosing[:expression_start].rstrip()
+            raw_after = enclosing[expression_end:]
+            after = raw_after.lstrip()
+            if before and before[-1] in extension_tokens:
+                return False
+            if after and after[0] in extension_tokens:
+                return False
+            # A bare following letter is a variable continuation even across
+            # whitespace (``2 n``); a numeral must be lexically attached so
+            # whitespace-separated grid entries remain independent.
+            if (raw_after and raw_after[0].isdigit()) or (
+                after and re.match(r"[A-Za-z_](?![A-Za-z_])", after)
+            ):
+                return False
+            occurrence = enclosing.find(excerpt, occurrence + 1)
+    return considered
+
+
+def _next_response_range(path: pathlib.Path, heading_line: int) -> tuple[int, int] | None:
+    """The first Student Response block after a task statement, in document order."""
+    lines = path.read_text(encoding="utf-8", errors="replace").split("\n")
+    for index in range(heading_line, len(lines)):
+        heading = lines[index].lstrip("\f ")
+        if heading.startswith("Student Task Statement"):
+            return None
+        if heading.startswith("Student Response"):
+            start = index + 1
+            break
+    else:
+        return None
+    for index in range(start, len(lines)):
+        heading = lines[index].lstrip("\f ")
+        if heading.startswith("Student Response") or heading.startswith("Student Task Statement"):
+            return start, index
+    return start, len(lines)
+
+
+def _task_reading_uses_e343(citation: object) -> bool:
+    """Whether a lane citation names the legacy uncheckable provenance form."""
+    if not isinstance(citation, dict):
+        return False
+    source = citation.get("source")
+    return "e343_pdf" in citation or (
+        isinstance(source, dict) and "e343_pdf" in source
+    )
+
+
+def validate_lesson_task_readings(
+    root: pathlib.Path,
+    docs: list[LessonDoc],
+    covered: set[str],
+    attachments: dict[str, set[tuple[str, str]]],
+    readings_path: pathlib.Path = TASK_READINGS,
+) -> list[dict]:
+    """Load the authored readings and refuse every unverifiable task claim.
+
+    The legacy reviewed-task register admits an E343 PDF provenance form for
+    figure-bound grade 6--8 work. This is a separate lane: every one of its
+    citations is line-addressable markdown or a checked recovered-span join.
+    """
+    path = readings_path if readings_path.is_absolute() else root / readings_path
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema") != "lesson_task_readings_v1":
+        raise SystemExit(f"unexpected lesson task readings schema in {path}: {payload.get('schema')!r}")
+    if not isinstance(payload.get("register"), str):
+        raise SystemExit(f"lesson task readings lacks a register paragraph: {path}")
+    readings = payload.get("readings")
+    if not isinstance(readings, list):
+        raise SystemExit(f"lesson task readings lacks a readings list: {path}")
+
+    tracked = extract_student_task_spans(docs)
+    tracked_by_key = {(span.code, span.position): span for span in tracked}
+    recovered_by_key = {
+        (span.code, span.position): span
+        for span in read_recovered_task_spans(root, tracked)
+    }
+    seen = set()
+    validated = []
+    for reading in readings:
+        if not isinstance(reading, dict):
+            raise SystemExit(f"non-object lesson task reading in {path}: {reading!r}")
+        reading_id = reading.get("id")
+        lesson = reading.get("lesson")
+        position = reading.get("position")
+        if not all(isinstance(value, str) and value for value in (reading_id, lesson, position)):
+            raise SystemExit(f"malformed lesson task reading identity: {reading!r}")
+        operator, left, right = _task_reading_task(reading.get("task"), reading_id)
+        expected_operation = {
+            "add": "addition",
+            "subtract": "subtraction",
+            "multiply": "multiplication",
+            "divide": "division",
+        }[operator]
+        if reading.get("operation") != expected_operation:
+            raise SystemExit(
+                f"lesson task reading {reading_id} operation disagrees with task: "
+                f"{reading.get('operation')!r} != {expected_operation!r}"
+            )
+        key = (lesson, position, reading["task"])
+        if key in seen:
+            raise SystemExit(
+                f"duplicate lesson task reading for {lesson}/{position}/{reading['task']}"
+            )
+        seen.add(key)
+
+        span_position = position.split("/", 1)[0]
+        span = tracked_by_key.get((lesson, span_position))
+        if span is None:
+            raise SystemExit(
+                f"lesson task reading {reading_id} names no student task span: "
+                f"{lesson}/{span_position}"
+            )
+
+        for field in ("prompt", "operands", "printed_answer"):
+            if _task_reading_uses_e343(reading.get(field)):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} e343_pdf provenance form is banned: {field}"
+                )
+
+        if "printed_answer" not in reading:
+            raise SystemExit(
+                f"lesson task reading {reading_id} printed-answer witness missing"
+            )
+        answer = reading["printed_answer"]
+        absent_witness = isinstance(answer, dict) and answer.get("absent") is True
+        if absent_witness:
+            if not isinstance(answer.get("reason"), str) or not answer["reason"].strip():
+                raise SystemExit(
+                    f"lesson task reading {reading_id} absent-witness declaration lacks a reason"
+                )
+            if any(key in answer for key in ("source", "recovered_span", "excerpt", "value")):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} absent-witness declaration mixes witness evidence"
+                )
+
+        citations = {}
+        for field in ("prompt", "operands"):
+            citation = reading.get(field)
+            if not isinstance(citation, dict) or not isinstance(citation.get("excerpt"), str):
+                raise SystemExit(f"lesson task reading {reading_id} lacks {field} provenance")
+            bound = _span_bound_markdown_provenance(citation, span)
+            if bound is not None:
+                source, line, end_line, pages = bound
+            else:
+                source, line, end_line, pages = _reviewed_provenance(
+                    citation,
+                    citation["excerpt"],
+                    "",
+                    f"lesson task reading {reading_id} {field}",
+                    recovered_spans=recovered_by_key,
+                )
+            if pages:
+                raise SystemExit(
+                    f"lesson task reading {reading_id} {field} uses banned e343_pdf provenance"
+                )
+            recovered = citation.get("recovered_span")
+            if recovered is not None:
+                recovered_key = (recovered.get("lesson"), recovered.get("position"))
+                if recovered_key != (lesson, span_position):
+                    raise SystemExit(
+                        f"lesson task reading {reading_id} span-binding failed: {field} "
+                        f"names {recovered_key[0]}/{recovered_key[1]}"
+                    )
+            elif (
+                source != span.source
+                or not (span.heading_line <= line <= end_line <= span.end_line)
+                or citation["excerpt"] not in span.text
+            ):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} span-binding failed: {field}"
+                )
+            citations[field] = (citation, source, line, end_line)
+
+        operands_excerpt = citations["operands"][0]["excerpt"]
+        for operand in (left, right):
+            if not _task_reading_operand_present(operand, operands_excerpt):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} operands missing from excerpt: {operand}"
+                )
+        if not _operands_scope_one_item(span, operands_excerpt):
+            raise SystemExit(
+                f"lesson task reading {reading_id} item-scope failed: operands cite multiple items"
+            )
+        if not _operands_content_scope_matches(operator, left, right, operands_excerpt):
+            raise SystemExit(
+                f"lesson task reading {reading_id} content-scope failed: operands do not cite exactly the task expression"
+            )
+        if not _operands_expression_is_maximal(
+            span, operands_excerpt, citations["operands"][2], citations["operands"][3]
+        ):
+            raise SystemExit(
+                f"lesson task reading {reading_id} maximality failed: operands cite a truncated expression"
+            )
+
+        witness_class = "declared_absent" if absent_witness else "printed_answer"
+        if not absent_witness:
+            if not isinstance(answer, dict) or not isinstance(answer.get("excerpt"), str):
+                raise SystemExit(f"lesson task reading {reading_id} has malformed printed_answer")
+            source, line, end_line, pages = _reviewed_provenance(
+                answer,
+                answer["excerpt"],
+                "",
+                f"lesson task reading {reading_id} printed_answer",
+                recovered_spans=recovered_by_key,
+            )
+            if pages:
+                raise SystemExit(
+                    f"lesson task reading {reading_id} printed_answer uses banned e343_pdf provenance"
+                )
+            value = answer.get("value")
+            try:
+                witness = Fraction(str(value))
+            except (TypeError, ValueError, ZeroDivisionError):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} has non-exact printed answer: {value!r}"
+                ) from None
+            computed = _task_reading_value(operator, left, right)
+            if computed != witness:
+                raise SystemExit(
+                    f"lesson task reading {reading_id} printed answer disagrees: "
+                    f"task={computed} witness={value}"
+                )
+            # A printed answer is a witness only when it is in the first response
+            # block after the cited task span. This deliberately follows document
+            # order rather than matching task and response ordinals.
+            if source != span.source:
+                raise SystemExit(
+                    f"lesson task reading {reading_id} printed answer must cite the "
+                    f"teacher guide for {lesson}/{span_position}"
+                )
+            response_range = _next_response_range(root / source, span.heading_line)
+            if response_range is None or not (response_range[0] < line <= response_range[1]):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} printed answer is not in the "
+                    f"next Student Response block after {lesson}/{span_position}"
+                )
+
+        if lesson not in covered:
+            raise SystemExit(
+                f"lesson task reading {reading_id} references lesson without accepted mapping: {lesson}"
+            )
+        operation = expected_operation
+        # The covered set grants a lesson an attachment; this operation check is
+        # deliberately explicit so an authored task cannot borrow an unrelated route.
+        if not any(attached_operation == operation for attached_operation, _ in attachments.get(lesson, set())):
+            raise SystemExit(
+                f"lesson task reading {reading_id} has no {operation} route: {lesson}"
+            )
+        operand_citation, source, line, end_line = citations["operands"]
+        validated.append({
+            "id": reading_id,
+            "lesson": lesson,
+            "task": reading["task"],
+            "position": position,
+            "excerpt": operand_citation["excerpt"],
+            "source": source,
+            "line": line,
+            "end_line": end_line,
+            "witness_class": witness_class,
+        })
+    return validated
+
+
 NUMBER_WORDS = {
     "one": 1,
     "two": 2,
@@ -351,7 +852,6 @@ NUMBER_WORDS = {
     "twelve": 12,
 }
 NUMBER_TOKEN = r"(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)"
-
 CONVERSION_FACTORS = {
     ("kilometer", "meter"): 1000,
     ("meter", "centimeter"): 100,
@@ -364,6 +864,11 @@ CONVERSION_FACTORS = {
 
 def _number(token: str) -> int:
     return int(token) if token.isdigit() else NUMBER_WORDS[token.lower()]
+
+
+def _arithmetic_number(token: str) -> int:
+    """Parse a whole-number operand while retaining its cited comma spelling."""
+    return int(token.replace(",", ""))
 
 
 def _decimal_parts(token: str) -> tuple[int, int]:
@@ -438,33 +943,33 @@ def _recovered_equation_items(span: StudentTaskSpan) -> list[tuple[str, str, str
         (
             "printed_equation_list_direct_addition",
             "addition",
-            re.compile(r"(?<!\d)(?P<a>\d+)\s*\+\s*(?P<b>\d+)\s*=\s*(?P<result>\d+)(?!\d)"),
+            re.compile(rf"(?<![\d,])(?P<a>{ARITHMETIC_NUMERAL})\s*\+\s*(?P<b>{ARITHMETIC_NUMERAL})\s*=\s*(?P<result>{ARITHMETIC_NUMERAL})(?![\d,])"),
         ),
         (
             "printed_equation_list_direct_subtraction",
             "subtraction",
-            re.compile(r"(?<!\d)(?P<a>\d+)\s*[-−]\s*(?P<b>\d+)\s*=\s*(?P<result>\d+)(?!\d)"),
+            re.compile(rf"(?<![\d,])(?P<a>{ARITHMETIC_NUMERAL})\s*[-−]\s*(?P<b>{ARITHMETIC_NUMERAL})\s*=\s*(?P<result>{ARITHMETIC_NUMERAL})(?![\d,])"),
         ),
         (
             "printed_equation_list_missing_addend",
             "subtraction",
-            re.compile(r"(?<!\d)(?P<total>\d+)\s*=\s*(?P<known>\d+)\s*\+\s*(?P<difference>\d+)(?!\d)"),
+            re.compile(rf"(?<![\d,])(?P<total>{ARITHMETIC_NUMERAL})\s*=\s*(?P<known>{ARITHMETIC_NUMERAL})\s*\+\s*(?P<difference>{ARITHMETIC_NUMERAL})(?![\d,])"),
         ),
     )
     for parser_id, operation, pattern in patterns:
         for match in pattern.finditer(span.text):
             if parser_id == "printed_equation_list_missing_addend":
-                total = int(match.group("total"))
-                known = int(match.group("known"))
-                difference = int(match.group("difference"))
+                total = _arithmetic_number(match.group("total"))
+                known = _arithmetic_number(match.group("known"))
+                difference = _arithmetic_number(match.group("difference"))
                 if total - known != difference:
                     continue
                 task = f"subtract({total}, {known})"
             else:
                 task_name = "add" if operation == "addition" else "subtract"
-                left = int(match.group("a"))
-                right = int(match.group("b"))
-                result = int(match.group("result"))
+                left = _arithmetic_number(match.group("a"))
+                right = _arithmetic_number(match.group("b"))
+                result = _arithmetic_number(match.group("result"))
                 if (operation == "addition" and left + right != result) or (
                     operation == "subtraction" and left - right != result
                 ):
@@ -480,8 +985,8 @@ def extract_task_candidates(
     """Extract exact operand-bearing prompts for review, never direct promotion."""
     number = NUMBER_TOKEN
     direct_binary_prompt = re.compile(
-        r"^\s*(?:\d+\.\s*)?(?P<excerpt>Find the value of (?P<a>\d+)\s*"
-        r"(?P<symbol>[+\-−×·÷])\s*(?P<b>\d+)\."
+        rf"^\s*(?:\d+\.\s*)?(?P<excerpt>Find the value of (?P<a>{ARITHMETIC_NUMERAL})\s*"
+        rf"(?P<symbol>[+\-−×·÷])\s*(?P<b>{ARITHMETIC_NUMERAL})\."
         r")(?:\s+.*)?$",
         re.IGNORECASE,
     )
@@ -535,8 +1040,8 @@ def extract_task_candidates(
                 candidates.add(
                     TaskCandidate(
                         span.code,
-                        f"{task_name}({int(direct_binary.group('a'))}, "
-                        f"{int(direct_binary.group('b'))})",
+                        f"{task_name}({_arithmetic_number(direct_binary.group('a'))}, "
+                        f"{_arithmetic_number(direct_binary.group('b'))})",
                         operation,
                         "direct_binary_expression_prompt",
                         span.source,
@@ -1368,10 +1873,17 @@ def extract_task_candidates(
                     else f"lesson_has_no_{operation}_attachment",
                 )
             )
-        if re.search(r"\bFind the value of each expression\b", span.text, re.IGNORECASE):
+        if re.search(
+            r"\bFind the value of each (?:expression|sum|difference|product|quotient)\b",
+            span.text,
+            re.IGNORECASE,
+        ):
             expression_number = 0
             for line, text in span.lines:
-                for match in re.finditer(r"(?<![\d.])(\d+)\s*\+\s*(\d+)(?![\d.])", text):
+                for match in re.finditer(
+                    rf"(?<![\d.,])({ARITHMETIC_NUMERAL})\s*\+\s*({ARITHMETIC_NUMERAL})(?![\d.,])",
+                    text,
+                ):
                     expression_number += 1
                     has_route = any(
                         operation == "addition"
@@ -1380,7 +1892,8 @@ def extract_task_candidates(
                     candidates.add(
                         TaskCandidate(
                             span.code,
-                            f"add({int(match.group(1))}, {int(match.group(2))})",
+                            f"add({_arithmetic_number(match.group(1))}, "
+                            f"{_arithmetic_number(match.group(2))})",
                             "addition",
                             "direct_addition_expression_list",
                             span.source,
@@ -1398,7 +1911,9 @@ def extract_task_candidates(
         # expression distinct from a subexpression inside a longer chain, so
         # the emitted operands remain exactly the task the guide prints.
         if re.search(
-            r"\bFind the value of each expression mentally\b", span.text, re.IGNORECASE
+            r"\bFind the value of each (?:expression|difference|sum|product|quotient) mentally\b",
+            span.text,
+            re.IGNORECASE,
         ):
             for parser_id, operation, symbol, task_name in (
                 (
@@ -1422,7 +1937,7 @@ def extract_task_candidates(
             ):
                 expression_number = 0
                 pattern = re.compile(
-                    rf"\s*(?P<a>\d+)\s*{symbol}\s*(?P<b>\d+)\s*"
+                    rf"\s*(?P<a>{ARITHMETIC_NUMERAL})\s*{symbol}\s*(?P<b>{ARITHMETIC_NUMERAL})\s*"
                 )
                 for line, text in span.lines:
                     for item in text.split("•")[1:]:
@@ -1437,8 +1952,8 @@ def extract_task_candidates(
                         candidates.add(
                             TaskCandidate(
                                 span.code,
-                                f"{task_name}({int(match.group('a'))}, "
-                                f"{int(match.group('b'))})",
+                                f"{task_name}({_arithmetic_number(match.group('a'))}, "
+                                f"{_arithmetic_number(match.group('b'))})",
                                 operation,
                                 parser_id,
                                 span.source,
@@ -1757,7 +2272,8 @@ def compile_scope_batches(
 
 
 def compile_task_instances(
-    docs: list[LessonDoc], rules: dict, covered: set[str]
+    docs: list[LessonDoc], rules: dict, covered: set[str],
+    attachments: dict[str, set[tuple[str, str]]],
 ) -> list[TaskInstance]:
     """Compile only task statements whose quantities and action are explicit."""
     instances = set()
@@ -1856,21 +2372,52 @@ def compile_task_instances(
                     d_pages,
                 )
             )
+    for reading in validate_lesson_task_readings(ROOT, docs, covered, attachments):
+        instances.add(
+            TaskInstance(
+                reading["lesson"],
+                reading["task"],
+                "productive",
+                reading["id"],
+                reading["source"],
+                reading["line"],
+                reading["end_line"],
+                reading["position"],
+                reading["excerpt"],
+                witness_class=reading["witness_class"],
+            )
+        )
     return sorted(instances)
 
 
-def _reviewed_provenance(entry, excerpt, default_source, label, inherited_pages=""):
+def _reviewed_provenance(
+    entry, excerpt, default_source, label, inherited_pages="", recovered_spans=None
+):
     """Resolve a reviewed instance's source provenance.
 
-    Two provenance forms are accepted. A markdown ``source`` string keeps the
-    teacher-guide line-drift check: the excerpt must appear verbatim in the
-    cited line range. An ``{"e343_pdf": {"file": ..., "pages": ...}}`` source
-    records an E343 PDF page reference for a quantity the markdown extract lost
-    to a figure; the PDF is not line-addressable and lives outside the repo, so
-    the compiler records the reference and the excerpt without a drift check.
+    A markdown ``source`` string keeps the teacher-guide line-drift check: the
+    excerpt must appear verbatim in the cited line range. A recovered-span
+    source checks the excerpt against the already joined sidecar text. The
+    legacy ``e343_pdf`` form remains for existing reviewed rows only; callers
+    for the authored-readings lane reject it after this resolver returns.
     Returns ``(source, line, end_line, pages)``.
     """
     raw = entry.get("source")
+    recovered = entry.get("recovered_span")
+    if recovered is not None:
+        if raw is not None:
+            raise SystemExit(f"{label} mixes markdown and recovered-span provenance")
+        if not isinstance(recovered, dict):
+            raise SystemExit(f"{label} recovered_span is not an object: {recovered!r}")
+        key = (recovered.get("lesson"), recovered.get("position"))
+        span = recovered_spans.get(key) if recovered_spans is not None else None
+        if span is None:
+            raise SystemExit(f"{label} names no recovered task span: {key[0]}/{key[1]}")
+        if excerpt not in span.text:
+            raise SystemExit(
+                f"{label} excerpt drifted in recovered span {key[0]}/{key[1]}: {excerpt!r}"
+            )
+        return str(RECOVERED_TASK_SPANS.relative_to(ROOT)), 0, 0, ""
     if raw is None and inherited_pages:
         # A deformation with no explicit source inherits the row's PDF provenance.
         return default_source, 0, 0, inherited_pages
@@ -2127,11 +2674,16 @@ def render_task_prolog(instances: list[TaskInstance]) -> str:
                 f"source({_prolog_atom(instance.source)}, "
                 f"lines({instance.line}, {instance.end_line}))"
             )
+        witness = (
+            f", witness_class({instance.witness_class})"
+            if instance.witness_class
+            else ""
+        )
         evidence = (
             f"task_evidence(rule({_prolog_atom(instance.rule_id)}), "
             f"{source_term}, "
             f"position({instance.position}), "
-            f"excerpt({_prolog_string(instance.excerpt)}))"
+            f"excerpt({_prolog_string(instance.excerpt)}){witness})"
         )
         lines.append(
             "compiled_lesson_task_instance("
@@ -2173,7 +2725,7 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
         attachments.setdefault(mapping.code, set()).add((mapping.operation, mapping.kind))
     task_candidates = extract_task_candidates(parser_spans, attachments)
     task_covered = covered | set(explicit)
-    task_instances = compile_task_instances(docs, rules, task_covered)
+    task_instances = compile_task_instances(docs, rules, task_covered, attachments)
     task_instances, task_candidate_decisions = promote_task_candidates(
         task_instances, task_candidates, rules
     )

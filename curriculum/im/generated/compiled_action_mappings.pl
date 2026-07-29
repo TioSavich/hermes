@@ -8,7 +8,7 @@
             compiled_mapping_summary/2
           ]).
 
-compiled_mapping_summary(530, 643).
+compiled_mapping_summary(540, 660).
 
 compiled_lesson_strategy('IM-G1-U1-L13', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', line(89)), confidence(high), input_domain(whole_number), excerpt("7 + 1"))).
@@ -192,12 +192,16 @@ compiled_lesson_strategy('IM-G1-U8-L9', counting, recursive_place_value_inscript
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade1/unit8/lesson9.md', line(5)), confidence(high), input_domain(discrete_collection), excerpt("Use clues based on place value to determine (orally) unknown two-digit numbers."))).
 compiled_lesson_strategy('IM-G2-U1-L10', statistics, categorical_frequency_bar_representation,
                          mapping_evidence(rule(categorical_frequency_bar_representation), source('curriculum/im_teacher_guides/grade2/unit1/lesson10.md', line(5)), confidence(high), input_domain(data_set), excerpt("Represent given data using a picture graph and a bar graph."))).
+compiled_lesson_strategy('IM-G2-U1-L11', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson11.md', line(105)), confidence(high), input_domain(whole_number), excerpt("2 + 4"))).
 compiled_lesson_strategy('IM-G2-U1-L12', statistics, categorical_frequency_bar_representation,
                          mapping_evidence(rule(categorical_frequency_bar_representation), source('curriculum/im_teacher_guides/grade2/unit1/lesson12.md', line(6)), confidence(high), input_domain(data_set), excerpt("Represent data using picture graphs and bar graphs."))).
 compiled_lesson_strategy('IM-G2-U1-L12', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson12.md', line(90)), confidence(high), input_domain(whole_number), excerpt("15 - 5"))).
 compiled_lesson_strategy('IM-G2-U1-L16', subtraction, compare_by_matching_difference,
                          mapping_evidence(rule(task_grammar_story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade2/unit1/lesson16.md', line(250)), confidence(high), input_domain(whole_number), excerpt("3. Jada reads 47 pages. Noah reads 20 pages. How many fewer pages does Noah read?"))).
+compiled_lesson_strategy('IM-G2-U1-L17', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson17.md', line(90)), confidence(high), input_domain(whole_number), excerpt("27 + 10"))).
 compiled_lesson_strategy('IM-G2-U1-L3', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("7 + 3"))).
 compiled_lesson_strategy('IM-G2-U1-L3', subtraction, take_away_base_ones,
@@ -361,7 +365,7 @@ compiled_lesson_strategy('IM-G2-U7-L18', subtraction, take_away_base_ones,
 compiled_lesson_strategy('IM-G2-U7-L3', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade2/unit7/lesson3.md', line(6)), confidence(high), input_domain(discrete_collection), excerpt("Interpret (orally) representations of subtraction strategies that show taking away tens and ones and those that show counting by place value."))).
 compiled_lesson_strategy('IM-G2-U7-L8', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("Find the value of 278 + 65."))).
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("273 + 18"))).
 compiled_lesson_strategy('IM-G2-U7-L8', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade2/unit7/lesson8.md', line(12)), confidence(high), input_domain(discrete_collection), excerpt("The purpose of this lesson is for students to add within 1,000, using place value-based strategies, by composing both a ten and a hundred."))).
 compiled_lesson_strategy('IM-G2-U7-L9', addition, count_on_from_larger,
@@ -373,7 +377,7 @@ compiled_lesson_strategy('IM-G2-U8-L4', addition, count_on_from_larger,
 compiled_lesson_strategy('IM-G2-U8-L6', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("2 + 2"))).
 compiled_lesson_strategy('IM-G2-U9-L1', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("8 + 8"))).
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("2 + 9"))).
 compiled_lesson_strategy('IM-G2-U9-L1', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10- 5"))).
 compiled_lesson_strategy('IM-G2-U9-L11', subtraction, take_away_base_ones,
@@ -454,10 +458,14 @@ compiled_lesson_strategy('IM-G3-U3-L3', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("100 + 30"))).
 compiled_lesson_strategy('IM-G3-U3-L3', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade3/unit3/lesson3.md', line(5)), confidence(high), input_domain(discrete_collection), excerpt("Compare and contrast (orally) addition strategies based on place value."))).
+compiled_lesson_strategy('IM-G3-U3-L4', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson4.md', line(259)), confidence(high), input_domain(whole_number), excerpt("136 + 389"))).
+compiled_lesson_strategy('IM-G3-U3-L5', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson5.md', line(271)), confidence(high), input_domain(whole_number), excerpt("174 + 352"))).
 compiled_lesson_strategy('IM-G3-U3-L5', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade3/unit3/lesson5.md', line(5)), confidence(high), input_domain(discrete_collection), excerpt("Compare and contrast (orally) addition algorithms and explain how they work using place value understanding."))).
 compiled_lesson_strategy('IM-G3-U3-L6', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson6.md', line(97)), confidence(high), input_domain(whole_number), excerpt("204 + 376"))).
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson6.md', line(239)), confidence(high), input_domain(whole_number), excerpt("199 + 348"))).
 compiled_lesson_strategy('IM-G3-U4-L1', division, measure_groups_of_size,
                          mapping_evidence(rule(measurement_division), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', line(1)), confidence(high), input_domain(whole_number), excerpt("How Many Groups?"))).
 compiled_lesson_strategy('IM-G3-U4-L10', geometry, rectangle_area_unit_iteration,
@@ -487,7 +495,7 @@ compiled_lesson_strategy('IM-G3-U4-L5', division, measure_groups_of_size,
 compiled_lesson_strategy('IM-G3-U4-L5', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("220- 95"))).
 compiled_lesson_strategy('IM-G3-U4-L6', division, measure_groups_of_size,
-                         mapping_evidence(rule(task_grammar_measurement_division_each_group_has), source('curriculum/im_teacher_guides/grade3/unit4/lesson6.md', line(313)), confidence(high), input_domain(whole_number), excerpt("There are 30 muffins for the bake sale. Each box has 6 muffins. How many boxes"))).
+                         mapping_evidence(rule(task_grammar_measurement_division_each_group_has), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("There are 30 muffins for the bake sale. Each box has 6 muffins. How many boxes"))).
 compiled_lesson_strategy('IM-G3-U4-L8', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("40 \u00f7 10"))).
 compiled_lesson_strategy('IM-G3-U5-L8', division, measure_groups_of_size,
@@ -558,6 +566,8 @@ compiled_lesson_strategy('IM-G3-U8-L11', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("48 \u00f7 2"))).
 compiled_lesson_strategy('IM-G3-U8-L15', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', line(97)), confidence(high), input_domain(whole_number), excerpt("300 + 400"))).
+compiled_lesson_strategy('IM-G3-U8-L15', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', line(163)), confidence(high), input_domain(whole_number), excerpt("500- 399"))).
 compiled_lesson_strategy('IM-G3-U8-L4', geometry, rectangle_area_perimeter_constraint_search,
                          mapping_evidence(rule(rectangle_area_perimeter_constraint_search), source('curriculum/im_teacher_guides/grade3/unit8/lesson4.md', line(6)), confidence(high), input_domain(spatial_measurement), excerpt("Present (in words and other representations) a design for a rectangular floor plan that follows given constraints."))).
 compiled_lesson_strategy('IM-G3-U8-L8', multiplication, repeat_equal_groups,
@@ -588,6 +598,8 @@ compiled_lesson_strategy('IM-G4-U2-L9', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 \u00d7 12"))).
 compiled_lesson_strategy('IM-G4-U3-L12', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade4/unit3/lesson12.md', line(5)), confidence(high), input_domain(rational), excerpt("Explain (orally and in writing) strategies for adding and subtracting fractions, including mixed numbers."))).
+compiled_lesson_strategy('IM-G4-U3-L16', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 + 3"))).
 compiled_lesson_strategy('IM-G4-U3-L18', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("19 + 101"))).
 compiled_lesson_strategy('IM-G4-U3-L2', multiplication, repeat_equal_groups,
@@ -595,7 +607,7 @@ compiled_lesson_strategy('IM-G4-U3-L2', multiplication, repeat_equal_groups,
 compiled_lesson_strategy('IM-G4-U4-L1', decimal, positional_decimal_reading,
                          mapping_evidence(rule(decimal_positional_notation), source('curriculum/im_teacher_guides/grade4/unit4/lesson1.md', line(5)), confidence(high), input_domain(decimal), excerpt("Comprehend (in spoken and written language) the meaning of the term \u201cdecimal notation.\u201d"))).
 compiled_lesson_strategy('IM-G4-U4-L10', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("650 + 75"))).
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("500,650 + 75"))).
 compiled_lesson_strategy('IM-G4-U4-L10', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade4/unit4/lesson10.md', line(5)), confidence(high), input_domain(discrete_collection), excerpt("Use equations to express the relationship between the value of a digit and its value in the place to its right."))).
 compiled_lesson_strategy('IM-G4-U4-L11', counting, recursive_place_value_inscription,
@@ -612,6 +624,8 @@ compiled_lesson_strategy('IM-G4-U4-L18', subtraction, decompose_base_for_ones,
                          mapping_evidence(rule(column_subtraction), source('curriculum/im_teacher_guides/grade4/unit4/lesson18.md', line(13)), confidence(high), input_domain(whole_number), excerpt("The purpose of this lesson is to add and subtract large numbers within 100,000 using the standard algorithm."))).
 compiled_lesson_strategy('IM-G4-U4-L2', decimal, positional_decimal_reading,
                          mapping_evidence(rule(decimal_positional_notation), source('curriculum/im_teacher_guides/grade4/unit4/lesson2.md', line(12)), confidence(high), input_domain(decimal), excerpt("The purpose of this lesson is for students to reason about equivalent tenths and hundredths in decimal notation."))).
+compiled_lesson_strategy('IM-G4-U4-L20', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit4/lesson20.md', line(163)), confidence(high), input_domain(whole_number), excerpt("142,571 + 10,909"))).
 compiled_lesson_strategy('IM-G4-U4-L5', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 + 50"))).
 compiled_lesson_strategy('IM-G4-U4-L7', counting, recursive_place_value_inscription,
@@ -673,9 +687,11 @@ compiled_lesson_strategy('IM-G4-U6-L16', division, measure_groups_of_size,
 compiled_lesson_strategy('IM-G4-U6-L17', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("Find the value of 465 \u00f7 5."))).
 compiled_lesson_strategy('IM-G4-U6-L18', division, measure_groups_of_size,
-                         mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson18.md', line(89)), confidence(high), input_domain(whole_number), excerpt("5 \u00f7 5"))).
+                         mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade4/unit6/lesson18.md', line(356)), confidence(high), input_domain(whole_number), excerpt("Find the value of 2,023 \u00f7 7."))).
 compiled_lesson_strategy('IM-G4-U6-L18', division, partial_quotient_chunking,
                          mapping_evidence(rule(partial_quotients), source('curriculum/im_teacher_guides/grade4/unit6/lesson18.md', line(1)), confidence(high), input_domain(whole_number), excerpt("Use an Algorithm with Partial Quotients"))).
+compiled_lesson_strategy('IM-G4-U6-L19', division, measure_groups_of_size,
+                         mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("Find the value of 1,865 \u00f7 4."))).
 compiled_lesson_strategy('IM-G4-U6-L21', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("140 \u00f7 7"))).
 compiled_lesson_strategy('IM-G4-U6-L23', geometry, polygon_perimeter_boundary_accumulation,
@@ -704,6 +720,8 @@ compiled_lesson_strategy('IM-G4-U6-L8', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("19 \u00d7 60"))).
 compiled_lesson_strategy('IM-G4-U6-L9', multiplication, distribute_group_size_split,
                          mapping_evidence(rule(multiplication_distribute_groups), source('curriculum/im_teacher_guides/grade4/unit6/lesson9.md', line(1)), confidence(high), input_domain(whole_number), excerpt("Recording Partial Products: One-Digit and Three- or Four-Digit Factors"))).
+compiled_lesson_strategy('IM-G4-U6-L9', multiplication, repeat_equal_groups,
+                         mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("Find the value of 5 \u00d7 1,023."))).
 compiled_lesson_strategy('IM-G4-U7-L10', geometry, angle_turn_measurement,
                          mapping_evidence(rule(angle_turn_measurement), source('curriculum/im_teacher_guides/grade4/unit7/lesson10.md', line(1)), confidence(high), input_domain(spatial_measurement), excerpt("Angle Measurement and Perpendicular Lines"))).
 compiled_lesson_strategy('IM-G4-U7-L11', geometry, angle_turn_measurement,
@@ -745,7 +763,7 @@ compiled_lesson_strategy('IM-G4-U8-L2', geometry, shape_classification_by_defini
 compiled_lesson_strategy('IM-G4-U8-L3', geometry, shape_classification_by_defining_attributes,
                          mapping_evidence(rule(shape_classification_by_defining_attributes), source('curriculum/im_teacher_guides/grade4/unit8/lesson3.md', line(5)), confidence(high), input_domain(spatial_measurement), excerpt("Describe (orally and in writing) the attributes of squares, rectangles, parallelograms, and rhombuses."))).
 compiled_lesson_strategy('IM-G4-U8-L5', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', line(108)), confidence(high), input_domain(whole_number), excerpt("000 + 943"))).
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', line(108)), confidence(high), input_domain(whole_number), excerpt("1 + 257"))).
 compiled_lesson_strategy('IM-G4-U8-L7', geometry, polygon_perimeter_boundary_accumulation,
                          mapping_evidence(rule(polygon_perimeter_boundary_accumulation), source('curriculum/im_teacher_guides/grade4/unit8/lesson7.md', line(6)), confidence(high), input_domain(spatial_measurement), excerpt("Explain (orally) how to determine a perimeter of a figure with unknown side lengths using its properties."))).
 compiled_lesson_strategy('IM-G4-U8-L8', geometry, polygon_perimeter_boundary_accumulation,
@@ -757,17 +775,23 @@ compiled_lesson_strategy('IM-G4-U8-L9', geometry, polygon_perimeter_boundary_acc
 compiled_lesson_strategy('IM-G4-U8-L9', geometry, symmetry_constrained_side_reconstruction,
                          mapping_evidence(rule(symmetry_constrained_side_reconstruction), source('curriculum/im_teacher_guides/grade4/unit8/lesson9.md', line(5)), confidence(high), input_domain(spatial_measurement), excerpt("Solve problems involving symmetry, side lengths, and perimeter of two-dimensional figures."))).
 compiled_lesson_strategy('IM-G4-U9-L12', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("75 + 30"))).
+                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("15 + 29"))).
 compiled_lesson_strategy('IM-G4-U9-L2', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("38 + 62"))).
+compiled_lesson_strategy('IM-G4-U9-L4', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("387- 124"))).
 compiled_lesson_strategy('IM-G4-U9-L5', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade4/unit9/lesson5.md', line(6)), confidence(high), input_domain(discrete_collection), excerpt("Use strategies based on place value and the properties of operations to multiply multi-digit numbers."))).
+compiled_lesson_strategy('IM-G4-U9-L5', multiplication, repeat_equal_groups,
+                         mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("Find the value of 2,617 \u00d7 4."))).
 compiled_lesson_strategy('IM-G4-U9-L6', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("48 \u00f7 3"))).
 compiled_lesson_strategy('IM-G4-U9-L7', multiplication, commute_factors_preserve_product,
                          mapping_evidence(rule(multiplicative_comparison_factor_relation), source('curriculum/im_teacher_guides/grade4/unit9/lesson7.md', line(5)), confidence(high), input_domain(whole_number), excerpt("Explain (orally and in writing) strategies for solving multi-step problems involving multiplicative comparison."))).
 compiled_lesson_strategy('IM-G4-U9-L8', division, measure_groups_of_size,
-                         mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade4/unit9/lesson8.md', line(91)), confidence(high), input_domain(whole_number), excerpt("848 \u00f7 8"))).
+                         mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade4/unit9/lesson8.md', line(93)), confidence(high), input_domain(whole_number), excerpt("4,848 \u00f7 8"))).
+compiled_lesson_strategy('IM-G4-U9-L9', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("25,300- 493"))).
 compiled_lesson_strategy('IM-G5-U1-L1', geometry, compare_solid_volume_by_cube_count,
                          mapping_evidence(rule(solid_volume_cube_count_comparison), source('curriculum/im_teacher_guides/grade5/unit1/lesson1.md', line(12)), confidence(high), input_domain(spatial_measurement), excerpt("The purpose of this lesson is for students to understand that solid objects have measurable attributes. One of these attributes is volume, which is defined as the amount of space taken up by an object."))).
 compiled_lesson_strategy('IM-G5-U1-L10', geometry, composite_prism_volume_sum,
@@ -838,12 +862,16 @@ compiled_lesson_strategy('IM-G5-U3-L14', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("6 \u00f7 1"))).
 compiled_lesson_strategy('IM-G5-U3-L15', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("6 \u00f7 3"))).
+compiled_lesson_strategy('IM-G5-U4-L1', multiplication, repeat_equal_groups,
+                         mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson1.md', line(93)), confidence(high), input_domain(whole_number), excerpt("50 \u00d7 6"))).
 compiled_lesson_strategy('IM-G5-U4-L10', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("Find the value of 465 \u00f7 15."))).
 compiled_lesson_strategy('IM-G5-U4-L11', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson11.md', line(148)), confidence(high), input_domain(whole_number), excerpt("Find the value of 448 \u00f7 16."))).
 compiled_lesson_strategy('IM-G5-U4-L12', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson12.md', line(86)), confidence(high), input_domain(whole_number), excerpt("110 \u00f7 10"))).
+compiled_lesson_strategy('IM-G5-U4-L13', division, measure_groups_of_size,
+                         mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson13.md', line(300)), confidence(high), input_domain(whole_number), excerpt("Find the value of 1,736 \u00f7 28."))).
 compiled_lesson_strategy('IM-G5-U4-L13', division, partial_quotient_chunking,
                          mapping_evidence(rule(partial_quotients), source('curriculum/im_teacher_guides/grade5/unit4/lesson13.md', line(5)), confidence(high), input_domain(whole_number), excerpt("Describe (orally and in writing) the errors in a division calculation, using partial quotients."))).
 compiled_lesson_strategy('IM-G5-U4-L14', geometry, rectangle_missing_side_from_area,
@@ -868,8 +896,12 @@ compiled_lesson_strategy('IM-G5-U4-L2', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson2.md', line(173)), confidence(high), input_domain(whole_number), excerpt("Find the value of 162 \u00d7 35."))).
 compiled_lesson_strategy('IM-G5-U4-L3', multiplication, distribute_group_size_split,
                          mapping_evidence(rule(multiplication_distribute_groups), source('curriculum/im_teacher_guides/grade5/unit4/lesson3.md', line(1)), confidence(high), input_domain(whole_number), excerpt("Partial Products in Algorithms"))).
+compiled_lesson_strategy('IM-G5-U4-L4', multiplication, repeat_equal_groups,
+                         mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("3 \u00d7 20"))).
 compiled_lesson_strategy('IM-G5-U4-L5', multiplication, distribute_group_size_split,
                          mapping_evidence(rule(multiplication_distribute_groups), source('curriculum/im_teacher_guides/grade5/unit4/lesson5.md', line(5)), confidence(high), input_domain(whole_number), excerpt("Explain (orally and in writing) how using partial products relates to using the standard algorithm when multiplying a three-digit number by a two-digit number."))).
+compiled_lesson_strategy('IM-G5-U4-L5', multiplication, repeat_equal_groups,
+                         mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson5.md', line(98)), confidence(high), input_domain(whole_number), excerpt("120 \u00d7 3"))).
 compiled_lesson_strategy('IM-G5-U4-L6', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson6.md', line(154)), confidence(high), input_domain(whole_number), excerpt("Find the value of 241 \u00d7 23."))).
 compiled_lesson_strategy('IM-G5-U4-L9', division, long_division,
@@ -928,6 +960,8 @@ compiled_lesson_strategy('IM-G5-U6-L13', fraction, co_denominator_make_base_tran
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson13.md', line(6)), confidence(high), input_domain(rational), excerpt("Explain (orally and in writing) strategies for adding and subtracting fractions and mixed numbers."))).
 compiled_lesson_strategy('IM-G5-U6-L3', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson3.md', line(95)), confidence(high), input_domain(whole_number), excerpt("15 \u00f7 10"))).
+compiled_lesson_strategy('IM-G5-U6-L6', division, measure_groups_of_size,
+                         mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson6.md', line(84)), confidence(high), input_domain(whole_number), excerpt("1,400 \u00f7 10"))).
 compiled_lesson_strategy('IM-G5-U6-L6', measurement, unit_conversion_by_iteration,
                          mapping_evidence(rule(measurement_unit_conversion_by_iteration), source('curriculum/im_teacher_guides/grade5/unit6/lesson6.md', line(11)), confidence(high), input_domain(measured_quantity), excerpt("The purpose of this lesson is for students to solve conversion problems, using metric volume units."))).
 compiled_lesson_strategy('IM-G5-U6-L7', multiplication, repeat_equal_groups,

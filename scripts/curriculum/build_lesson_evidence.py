@@ -49,8 +49,10 @@ COMPILED_STRATEGY_MAPPING_RE = re.compile(
     r"\s*([a-z_]+)\s*,"
 )
 EXPLICIT_NEGATIVE_RE = re.compile(r"explicit_lesson_misconception\('([^']+)'\s*,")
-PRODUCTIVE_TASK_RE = re.compile(
-    r"compiled_lesson_task_instance\('([^']+)'\s*,\s*productive-"
+PRODUCTIVE_TASK_FACT_RE = re.compile(
+    r"^compiled_lesson_task_instance\('([^']+)'\s*,\s*productive-[^\n]*\n"
+    r"\s*task_evidence\([^\n]*\)\.$",
+    re.MULTILINE,
 )
 DEFORMATION_TASK_RE = re.compile(
     r"compiled_lesson_task_instance\('([^']+)'\s*,\s*deformation\("
@@ -487,6 +489,26 @@ def _lesson_ids(paths: list[Path], pattern: re.Pattern) -> set[str]:
     return found
 
 
+def _productive_task_ids(paths: list[Path]) -> set[str]:
+    """Lessons with a productive task that has executable task evidence.
+
+    An authored reading with ``declared_absent`` provenance remains visible in
+    the compiled artifact, but it is awaiting review rather than an independent
+    numeric witness. It cannot grant executable_task by itself. Legacy and
+    parser-derived facts retain their existing counting behavior.
+    """
+    found: set[str] = set()
+    for path in paths:
+        if not path.exists():
+            continue
+        for fact in PRODUCTIVE_TASK_FACT_RE.finditer(
+            path.read_text(encoding="utf-8", errors="replace")
+        ):
+            if "witness_class(declared_absent)" not in fact.group(0):
+                found.add(fact.group(1))
+    return found
+
+
 def _measured_lessons() -> set[str]:
     """Lessons the Atlas sweep ran at least one transition to completion for.
 
@@ -520,7 +542,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
     direct_strategy = _lesson_ids(grade_sources, DIRECT_STRATEGY_RE)
     compiled_strategy = _lesson_ids([COMPILED_MAPPINGS], COMPILED_STRATEGY_RE)
     explicit_negative = _lesson_ids(grade_sources, EXPLICIT_NEGATIVE_RE)
-    productive_task = _lesson_ids([COMPILED_TASKS], PRODUCTIVE_TASK_RE)
+    productive_task = _productive_task_ids([COMPILED_TASKS])
     deformation_task = _lesson_ids([COMPILED_TASKS], DEFORMATION_TASK_RE)
     measured = _measured_lessons()
     standards = catalog["standards"]

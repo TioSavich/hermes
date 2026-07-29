@@ -1,0 +1,106 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Student task statements an analyst read into executable arithmetic. Each row names one lesson span, quotes the text it read the operands from, and cites where that text stands: a physical line in the tracked teacher-guide markdown, or a lesson-and-position key in the recovered-expressions sidecar. A row that names the value the guide prints for the item carries a second, independent witness; a row whose witness disagrees with the automaton is refused, never corrected.",
+  "readings": [
+    {
+      "lesson": "IM-G5-U4-L5",
+      "id": "g5_u4_l5_product_warmup_1",
+      "position": "student_task_statement(1)/item(1)",
+      "task": "multiply(20, 3)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 92,
+        "excerpt": "Find the value of each product mentally."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 94,
+        "excerpt": "20 × 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 104,
+        "excerpt": "60:",
+        "value": "60"
+      },
+      "read_by": "opus-analyst",
+      "note": "Warm-up item list; the guide's Student Response block prints the four values in document order."
+    },
+    {
+      "lesson": "IM-G5-U4-L5",
+      "id": "g5_u4_l5_product_warmup_2",
+      "position": "student_task_statement(1)/item(2)",
+      "task": "multiply(24, 3)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 92,
+        "excerpt": "Find the value of each product mentally."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 96,
+        "excerpt": "24 × 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 106,
+        "excerpt": "72:",
+        "value": "72"
+      },
+      "read_by": "opus-analyst",
+      "note": "Warm-up item list; the guide's Student Response block prints the four values in document order."
+    },
+    {
+      "lesson": "IM-G5-U4-L5",
+      "id": "g5_u4_l5_product_warmup_3",
+      "position": "student_task_statement(1)/item(3)",
+      "task": "multiply(120, 3)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 92,
+        "excerpt": "Find the value of each product mentally."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 98,
+        "excerpt": "120 × 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 107,
+        "excerpt": "360:",
+        "value": "360"
+      },
+      "read_by": "opus-analyst",
+      "note": "Warm-up item list; the guide's Student Response block prints the four values in document order."
+    },
+    {
+      "lesson": "IM-G5-U4-L5",
+      "id": "g5_u4_l5_product_warmup_4",
+      "position": "student_task_statement(1)/item(4)",
+      "task": "multiply(140, 3)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 92,
+        "excerpt": "Find the value of each product mentally."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 99,
+        "excerpt": "140 × 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 109,
+        "excerpt": "420:",
+        "value": "420"
+      },
+      "read_by": "opus-analyst",
+      "note": "Warm-up item list; the guide's Student Response block prints the four values in document order."
+    }
+  ]
+}

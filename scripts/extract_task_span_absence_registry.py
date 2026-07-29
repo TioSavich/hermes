@@ -162,8 +162,9 @@ REGISTER = """/** <module> Generated student-task-span absence registry
  *     so quantities in it cannot be attributed to the student prompt.
  *   - void_operand_slots: list markers or sentence-closing blanks stand where
  *     operands belong. The markdown conversion kept the frame of the item
- *     list and carries nothing inside it. The K-5 source PDFs are outside
- *     this checkout, so what stood there cannot be recovered here.
+ *     list and carries nothing inside it. Some K-5 expressions have been
+ *     recovered into the checked sidecar, but this registry classifies the
+ *     tracked markdown text only and does not yet consult that sidecar.
  *   - imperative_without_quantity: the prompt asks for a computed result and
  *     the extract carries no quantity to compute with.
  *   - quantities_carry_no_operand_pair: two or more quantities survive, and

@@ -1,0 +1,33 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Deliberately fabricated: the legacy PDF form is banned even with an empty pages field.",
+  "expected_error": "e343_pdf provenance form is banned: prompt",
+  "readings": [
+    {
+      "lesson": "IM-G3-U2-L8",
+      "id": "manufactured_g3_u2_l8_e343",
+      "position": "student_task_statement(1)/item(1)",
+      "task": "multiply(4, 5)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": {
+          "e343_pdf": {
+            "file": "does-not-exist.pdf",
+            "pages": ""
+          }
+        },
+        "excerpt": "4 times 5"
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade3/unit2/lesson8.md",
+        "line": 94,
+        "excerpt": "How many do you see? How do you see them?"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "This fixture must fail on the banned provenance form."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

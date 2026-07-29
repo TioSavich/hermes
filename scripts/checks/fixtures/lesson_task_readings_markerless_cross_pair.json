@@ -1,0 +1,31 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Deliberately fabricated: a marker-less grid cannot recombine operands from separate arithmetic expressions.",
+  "expected_error": "content-scope failed: operands do not cite exactly the task expression",
+  "readings": [
+    {
+      "lesson": "IM-G1-U8-L3",
+      "id": "manufactured_g1_u8_l3_markerless_cross_pair",
+      "position": "student_task_statement(2)",
+      "task": "add(5, 7)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit8/lesson3.md",
+        "line": 145,
+        "end_line": 146,
+        "excerpt": "Circle 1 addition expression and 1 subtraction expression."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade1/unit8/lesson3.md",
+        "line": 147,
+        "end_line": 149,
+        "excerpt": "5 + 9                        14- 8 4 + 7"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "This control must fail on content scope before an absent witness can be admitted."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

@@ -2951,6 +2951,23 @@ registered_task_instance_export(
     term_to_text(Source, SourceText),
     term_to_text(Position, PositionText).
 
+registered_task_instance_export(
+        Task,
+        task_evidence(rule(Rule), source(Source), position(Position), excerpt(Excerpt),
+                      witness_class(WitnessClass)),
+        _{registered: true,
+          task: TaskText,
+          rule: RuleText,
+          source: SourceText,
+          position: PositionText,
+          excerpt: Excerpt,
+          witness_class: WitnessText}) :-
+    term_to_text(Task, TaskText),
+    term_to_text(Rule, RuleText),
+    term_to_text(Source, SourceText),
+    term_to_text(Position, PositionText),
+    term_to_text(WitnessClass, WitnessText).
+
 % One flat gap pair. "Licensed" here means registry coverage (moves the
 % action automata can run), not normative entitlement; an empty list on a
 % lesson whose operations have no registry source marks an absent source,

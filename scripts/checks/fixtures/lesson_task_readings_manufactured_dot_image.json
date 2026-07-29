@@ -1,0 +1,29 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Deliberately manufactured control: the dot image has no operand-bearing text.",
+  "expected_error": "operands missing from excerpt: 4",
+  "readings": [
+    {
+      "lesson": "IM-G3-U2-L8",
+      "id": "manufactured_g3_u2_l8_dot_image",
+      "position": "student_task_statement(1)/item(1)",
+      "task": "multiply(4, 5)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade3/unit2/lesson8.md",
+        "line": 94,
+        "excerpt": "How many do you see? How do you see them?"
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade3/unit2/lesson8.md",
+        "line": 94,
+        "excerpt": "How many do you see? How do you see them?"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "The only quantities are drawn in the image, so this is a deliberate refusal control."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

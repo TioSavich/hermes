@@ -1,0 +1,29 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Isolated class control: a declared-absent reading compiles visibly but cannot grant executable-task evidence alone.",
+  "expected_result": "declared_absent_compiles",
+  "readings": [
+    {
+      "lesson": "IM-G5-U4-L5",
+      "id": "fixture_g5_u4_l5_declared_absent",
+      "position": "student_task_statement(1)/item(1)",
+      "task": "multiply(20, 3)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 92,
+        "excerpt": "Find the value of each product mentally."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 94,
+        "excerpt": "20 × 3"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "Fixture-only isolated class control; it does not claim the guide lacks a response."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

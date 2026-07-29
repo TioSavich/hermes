@@ -1,0 +1,7 @@
+{
+  "schema": "lesson_task_readings_maximality_unit_v1",
+  "expected_result": "known_hyphen_range_passes",
+  "comment": "Known latent boundary: this unit-level range remains parser-shaped as subtract(1,3); no routed corpus lesson currently exploits it.",
+  "task": "subtract(1, 3)",
+  "excerpt": "Repeat Steps 1-3"
+}

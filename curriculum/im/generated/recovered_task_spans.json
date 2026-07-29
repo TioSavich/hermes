@@ -3,12 +3,11 @@
   "generated_by": "scripts/curriculum/build_recovered_task_spans.py",
   "register": "Student task statements re-extracted from the per-lesson teacher-guide PDFs with their drawn expressions decoded back into text. The tracked markdown is not modified: these rows are keyed by lesson and span position, so every physical-line citation into the guides stays valid. A lesson contributes only when its recovered extraction yields the same span positions as the tracked markdown and every span carries the same words; a span contributes only when it gains arithmetic the tracked text lacks.",
   "counts": {
-    "contributed": 255,
+    "contributed": 262,
     "held_back": 1,
-    "no_additive_span": 421,
+    "no_additive_span": 417,
     "nothing_to_recover": 199,
-    "prose_drifted": 3,
-    "spans_dropped_to_drift": 124
+    "spans_dropped_to_drift": 80
   },
   "lessons": [
     {
@@ -233,9 +232,7 @@
       "lesson": "IM-G1-U3-L20",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(4)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G1-U3-L21",
@@ -310,10 +307,8 @@
     {
       "lesson": "IM-G1-U4-L10",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G1-U4-L11",
@@ -322,10 +317,8 @@
     {
       "lesson": "IM-G1-U4-L12",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G1-U4-L13",
@@ -372,11 +365,8 @@
     {
       "lesson": "IM-G1-U4-L21",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(3)",
-        "student_task_statement(4)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G1-U4-L22",
@@ -561,8 +551,7 @@
     },
     {
       "lesson": "IM-G1-U6-L9",
-      "status": "prose_drifted",
-      "detail": "all 3 span(s) drifted"
+      "status": "no_additive_span"
     },
     {
       "lesson": "IM-G1-U7-L1",
@@ -679,10 +668,8 @@
     {
       "lesson": "IM-G2-U1-L1",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(4)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U1-L10",
@@ -724,16 +711,15 @@
     },
     {
       "lesson": "IM-G2-U1-L2",
-      "status": "no_additive_span"
+      "status": "contributed",
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U1-L3",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(3)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U1-L4",
@@ -803,8 +789,7 @@
     },
     {
       "lesson": "IM-G2-U2-L2",
-      "status": "prose_drifted",
-      "detail": "all 3 span(s) drifted"
+      "status": "no_additive_span"
     },
     {
       "lesson": "IM-G2-U2-L3",
@@ -827,10 +812,8 @@
     {
       "lesson": "IM-G2-U2-L7",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U2-L8",
@@ -1215,9 +1198,7 @@
       "lesson": "IM-G2-U7-L2",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U7-L3",
@@ -1269,10 +1250,7 @@
       "lesson": "IM-G2-U8-L10",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(4)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U8-L11",
@@ -1302,11 +1280,7 @@
       "lesson": "IM-G2-U8-L4",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(3)",
-        "student_task_statement(4)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U8-L5",
@@ -1354,9 +1328,7 @@
       "lesson": "IM-G2-U9-L12",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G2-U9-L13",
@@ -1423,17 +1395,14 @@
       "status": "contributed",
       "spans": 2,
       "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(3)"
+        "student_task_statement(2)"
       ]
     },
     {
       "lesson": "IM-G3-U1-L14",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G3-U1-L15",
@@ -1465,9 +1434,7 @@
       "lesson": "IM-G3-U1-L20",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G3-U1-L21",
@@ -1744,10 +1711,9 @@
     {
       "lesson": "IM-G3-U4-L6",
       "status": "contributed",
-      "spans": 1,
+      "spans": 2,
       "spans_refused_drifted": [
-        "student_task_statement(1)",
-        "student_task_statement(4)"
+        "student_task_statement(1)"
       ]
     },
     {
@@ -1785,10 +1751,8 @@
     {
       "lesson": "IM-G3-U5-L12",
       "status": "contributed",
-      "spans": 2,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G3-U5-L13",
@@ -1808,25 +1772,24 @@
     },
     {
       "lesson": "IM-G3-U5-L15",
-      "status": "no_additive_span"
+      "status": "contributed",
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G3-U5-L16",
       "status": "contributed",
-      "spans": 1,
+      "spans": 3,
       "spans_refused_drifted": [
-        "student_task_statement(1)",
-        "student_task_statement(3)",
-        "student_task_statement(4)"
+        "student_task_statement(1)"
       ]
     },
     {
       "lesson": "IM-G3-U5-L17",
       "status": "contributed",
-      "spans": 2,
+      "spans": 3,
       "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(5)"
+        "student_task_statement(2)"
       ]
     },
     {
@@ -1901,9 +1864,7 @@
       "lesson": "IM-G3-U6-L14",
       "status": "contributed",
       "spans": 2,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G3-U6-L15",
@@ -2253,10 +2214,8 @@
     {
       "lesson": "IM-G4-U3-L12",
       "status": "contributed",
-      "spans": 3,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 4,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G4-U3-L13",
@@ -2289,11 +2248,9 @@
     {
       "lesson": "IM-G4-U3-L17",
       "status": "contributed",
-      "spans": 1,
+      "spans": 3,
       "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(3)",
-        "student_task_statement(5)"
+        "student_task_statement(2)"
       ]
     },
     {
@@ -2322,8 +2279,12 @@
     },
     {
       "lesson": "IM-G4-U3-L3",
-      "status": "prose_drifted",
-      "detail": "all 3 span(s) drifted"
+      "status": "contributed",
+      "spans": 1,
+      "spans_refused_drifted": [
+        "student_task_statement(1)",
+        "student_task_statement(2)"
+      ]
     },
     {
       "lesson": "IM-G4-U3-L4",
@@ -2336,9 +2297,8 @@
     {
       "lesson": "IM-G4-U3-L5",
       "status": "contributed",
-      "spans": 1,
+      "spans": 2,
       "spans_refused_drifted": [
-        "student_task_statement(2)",
         "student_task_statement(3)"
       ]
     },
@@ -2353,10 +2313,8 @@
     {
       "lesson": "IM-G4-U3-L7",
       "status": "contributed",
-      "spans": 2,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G4-U3-L8",
@@ -2855,10 +2813,8 @@
     {
       "lesson": "IM-G4-U9-L3",
       "status": "contributed",
-      "spans": 3,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans": 4,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G4-U9-L4",
@@ -2889,10 +2845,8 @@
     {
       "lesson": "IM-G4-U9-L9",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U1-L1",
@@ -2981,10 +2935,8 @@
     {
       "lesson": "IM-G5-U2-L14",
       "status": "contributed",
-      "spans": 2,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U2-L15",
@@ -2997,10 +2949,8 @@
     {
       "lesson": "IM-G5-U2-L16",
       "status": "contributed",
-      "spans": 2,
-      "spans_refused_drifted": [
-        "student_task_statement(4)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U2-L17",
@@ -3075,11 +3025,8 @@
     {
       "lesson": "IM-G5-U3-L12",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(4)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U3-L13",
@@ -3090,10 +3037,8 @@
     {
       "lesson": "IM-G5-U3-L14",
       "status": "contributed",
-      "spans": 3,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans": 4,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U3-L15",
@@ -3137,7 +3082,11 @@
     },
     {
       "lesson": "IM-G5-U3-L3",
-      "status": "no_additive_span"
+      "status": "contributed",
+      "spans": 1,
+      "spans_refused_drifted": [
+        "student_task_statement(3)"
+      ]
     },
     {
       "lesson": "IM-G5-U3-L4",
@@ -3162,11 +3111,8 @@
     {
       "lesson": "IM-G5-U3-L7",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(3)",
-        "student_task_statement(4)"
-      ]
+      "spans": 3,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U3-L8",
@@ -3217,10 +3163,8 @@
     {
       "lesson": "IM-G5-U4-L16",
       "status": "contributed",
-      "spans": 3,
-      "spans_refused_drifted": [
-        "student_task_statement(4)"
-      ]
+      "spans": 4,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U4-L17",
@@ -3443,20 +3387,18 @@
     {
       "lesson": "IM-G5-U6-L16",
       "status": "contributed",
-      "spans": 1,
+      "spans": 2,
       "spans_refused_drifted": [
         "student_task_statement(1)",
-        "student_task_statement(2)",
         "student_task_statement(3)"
       ]
     },
     {
       "lesson": "IM-G5-U6-L17",
       "status": "contributed",
-      "spans": 2,
+      "spans": 3,
       "spans_refused_drifted": [
-        "student_task_statement(2)",
-        "student_task_statement(3)"
+        "student_task_statement(2)"
       ]
     },
     {
@@ -3650,10 +3592,7 @@
       "lesson": "IM-G5-U8-L4",
       "status": "contributed",
       "spans": 2,
-      "spans_refused_drifted": [
-        "student_task_statement(1)",
-        "student_task_statement(3)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-G5-U8-L5",
@@ -3926,10 +3865,8 @@
     {
       "lesson": "IM-GK-U4-L15",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-GK-U4-L16",
@@ -3941,9 +3878,7 @@
       "lesson": "IM-GK-U4-L17",
       "status": "contributed",
       "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(2)"
-      ]
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-GK-U4-L18",
@@ -4055,11 +3990,15 @@
     },
     {
       "lesson": "IM-GK-U6-L10",
-      "status": "no_additive_span"
+      "status": "contributed",
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-GK-U6-L11",
-      "status": "no_additive_span"
+      "status": "contributed",
+      "spans": 1,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-GK-U6-L12",
@@ -4152,10 +4091,8 @@
     {
       "lesson": "IM-GK-U7-L5",
       "status": "contributed",
-      "spans": 1,
-      "spans_refused_drifted": [
-        "student_task_statement(3)"
-      ]
+      "spans": 2,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-GK-U7-L6",
@@ -4207,7 +4144,9 @@
     },
     {
       "lesson": "IM-GK-U8-L17",
-      "status": "no_additive_span"
+      "status": "contributed",
+      "spans": 1,
+      "spans_refused_drifted": []
     },
     {
       "lesson": "IM-GK-U8-L18",
@@ -4429,6 +4368,13 @@
     },
     {
       "lesson": "IM-G1-U4-L10",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 3,
+      "recovered_text": "Write the number that matches each representation. 1. 1 ten 4 ones                  Number: ___ 2. Number: ___ 3. 9 tens                        Number: ___ 4. 20 + 5                        Number: ___ 5. Number: ___ 6. 7 + 40          Number: ___ 7. 2 ones 8 tens   Number: ___ 8. Number: ___ 9. 1 + 40          Number: ___ 10. Number: ___",
+      "tracked_text": "Write the number that matches each representation. 1. 1 ten 4 ones                  Number: 2. Number: 3. 9 tens                        Number: 4.                               Number: 5. Number: 6.                 Number: 7. 2 ones 8 tens   Number: 8. Number: 9.                 Number: 10. Number:"
+    },
+    {
+      "lesson": "IM-G1-U4-L10",
       "position": "student_task_statement(3)",
       "expressions_gained": 1,
       "recovered_text": "Write the number that matches each representation. 1. 30 + 9                            ___________________ 2. ___________________ 3. 7 ones 9 tens                         ___________________",
@@ -4440,6 +4386,13 @@
       "expressions_gained": 4,
       "recovered_text": "Find the value of each expression mentally. • 3 + 10 • 10 + 5 • 13 - 10 • 15 - 10",
       "tracked_text": "Find the value of each expression mentally. • • • •"
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 19,
+      "recovered_text": "1. Find the number that makes each equation true. Then tell what you notice. a. 67 + 10 =               67- 10 = b. 39 + 10 =               39- 10 = c. 52 + 10 =               52- 10 = d. 75 + 10 =               75 - 10 = e. Talk to your partner. What patterns do you notice? I notice that when I add 10, I notice that when I subtract 10, 2. Find the number that makes each equation true. Then tell what you notice. a. 67 + 10 = 67 + 10 + 10 = 67 + 10 + 10 + 10 = I notice that ___ b. 99- 10 = 99- 10- 10 = 99- 10- 10- 10 = I notice that ___ c. 45 + 10 + 10 = 45 - 10- 10 = 45 + 10- 10 = I notice that ___",
+      "tracked_text": "1. Find the number that makes each equation true. Then tell what you notice. a. b. c. d. e. Talk to your partner. What patterns do you notice? I notice that when I add 10, I notice that when I subtract 10, 2. Find the number that makes each equation true. Then tell what you notice. a. I notice that b. I notice that c. I notice that"
     },
     {
       "lesson": "IM-G1-U4-L15",
@@ -4454,6 +4407,20 @@
       "expressions_gained": 4,
       "recovered_text": "Find the value of each expression mentally. • 10 + 6 • 9 + 6 • 10 + 7 • 8 + 7",
       "tracked_text": "Find the value of each expression mentally. • • • •"
+    },
+    {
+      "lesson": "IM-G1-U4-L21",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 1,
+      "recovered_text": "1. What do you notice? has othe • Shar • “You 2-di grea ___                                     writ 2. Circle the representation that shows the • “Whi greater number. is g Write a number to match each representation. have Then write a comparison statement using <, >, 28.) or =. • 30 s a. • Shar • “Sin that belo • Demo writ ___ b. Activity • “Fir work • 6 mi • 6 mi ___ c.   5 tens 2                     12 ones 3 ones                         tens         Activity • Disp ___                                 ten d.   1 ten 25 ones                                 • “How each more That 3 te • Disp • “How ___                                 each e.   7 tens 29                     50 + 39           tens ones                                          are the that ___                                 tens grea",
+      "tracked_text": "1. What do you notice? has othe • Shar • “You 2-di grea writ 2. Circle the representation that shows the • “Whi greater number. is g Write a number to match each representation. have Then write a comparison statement using <, >, 28.) or =. • 30 s a. • Shar • “Sin that belo • Demo writ b. Activity • “Fir work • 6 mi • 6 mi c.   5 tens 2                     12 ones 3 ones                         tens         Activity • Disp ten d.   1 ten 25 ones                                 • “How each more That 3 te • Disp • “How each e.   7 tens 29                                       tens ones                                          are the that tens grea"
+    },
+    {
+      "lesson": "IM-G1-U4-L21",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 1,
+      "recovered_text": "1. Circle the number that is less: 4 tens 14 ones                                            20 + 24 2. Write the numbers above as two-digit numbers and use <, >, or = to write a comparison statement. ___",
+      "tracked_text": "1. Circle the number that is less: 4 tens 14 ones 2. Write the numbers above as two-digit numbers and use <, >, or = to write a comparison statement."
     },
     {
       "lesson": "IM-G1-U4-L4",
@@ -4638,6 +4605,13 @@
       "tracked_text": "1. Match each expression to the value of the sum or difference. ◦                           ◦ 9 ◦                       ◦ 3 ◦                       ◦ 8 ◦                       ◦ 7 ◦                       ◦ 1 ◦                       ◦ 4 ◦                       ◦ 2 ◦ ◦ ◦ 2. Circle the addition expressions with a value of 10. 3. What patterns do you notice in the expressions with a value of 10?"
     },
     {
+      "lesson": "IM-G2-U1-L1",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 7,
+      "recovered_text": "1. 4 + 2 = ___ 2. 9- 3 = ___ 3. Circle the expressions that have a value of 10. 4 + 6                2 + 7              8 + 1              5 + 5                7 + 3",
+      "tracked_text": "1. 2. 3. Circle the expressions that have a value of 10."
+    },
+    {
       "lesson": "IM-G2-U1-L16",
       "position": "student_task_statement(1)",
       "expressions_gained": 6,
@@ -4645,11 +4619,39 @@
       "tracked_text": "Decide if each statement is true or false. Be prepared to explain your reasoning. • • •"
     },
     {
+      "lesson": "IM-G2-U1-L2",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 4,
+      "recovered_text": "1. Write as many equations as you can to represent the cube towers. A B C D E 2. Find the number that makes each equation true. Then write the letter of the cube tower that represents the equation. 3 + ___ = 10             Letter: ___ 10- 7 = ___              Letter: ___ 10- 5 = ___              Letter: ___ 2 + ___ = 10             Letter: ___ 10- 1 = ___              Letter: ___ 10- 2 = ___              Letter: ___ ___ + 6 = 10             Letter: ___ ___ + 9 = 10             Letter: ___ 5 + ___ = 10            Letter: ___ 10- ___ = 4             Letter: ___",
+      "tracked_text": "1. Write as many equations as you can to represent the cube towers. A B C D E 2. Find the number that makes each equation true. Then write the letter of the cube tower that represents the equation. Letter: ___ Letter: ___ Letter: ___ Letter: ___ Letter: ___ Letter: ___ Letter: ___ Letter: ___ Letter: ___ Letter: ___"
+    },
+    {
+      "lesson": "IM-G2-U1-L2",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 2,
+      "recovered_text": "Circle the 2 equations that represent the cubes. 7 + ___ = 10 10 + 3 = ___ 3 + ___ = 7 10- 3 = ___",
+      "tracked_text": "Circle the 2 equations that represent the cubes."
+    },
+    {
       "lesson": "IM-G2-U1-L3",
       "position": "student_task_statement(1)",
       "expressions_gained": 4,
       "recovered_text": "Find the value of each expression mentally. • 7 + 3 • 10- 7 • 10- 2 • 10- 4",
       "tracked_text": "Find the value of each expression mentally. • • • •"
+    },
+    {
+      "lesson": "IM-G2-U1-L3",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 1,
+      "recovered_text": "Find the number that makes each equation true. 1. 4 + ___ = 20 2. 20- ___ = 4 3. 6 + ___ = 20 4. 20- ___ = 10 5. ___ + 3 = 20 6. 20- 15 = ___ 7. 20- ___ = 18 8. If you have time: ___- 5 = 20",
+      "tracked_text": "Find the number that makes each equation true. 1. 2. 3. 4. 5. 6. 7. 8. If you have time:"
+    },
+    {
+      "lesson": "IM-G2-U1-L3",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 1,
+      "recovered_text": "Find the number that makes each equation true. 1. ___ + 17 = 20 2. 20- 9 = ___ 3. ___ + 5 = 20 4. 20- ___ = 8",
+      "tracked_text": "Find the number that makes each equation true. 1. 2. 3. 4."
     },
     {
       "lesson": "IM-G2-U1-L5",
@@ -4706,6 +4708,13 @@
       "expressions_gained": 1,
       "recovered_text": "Mai was asked to find the difference for 52- 7 . She started, but she got stuck. Finish Mai’s method.",
       "tracked_text": "Mai was asked to find the difference for    . She started, but she got stuck. Finish Mai’s method."
+    },
+    {
+      "lesson": "IM-G2-U2-L7",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 2,
+      "recovered_text": "Find the value of each difference. Show your thinking using objects, drawings, numbers, or words. 1. 46- 28 = ___ 2. 93 - 54 = ___",
+      "tracked_text": "Find the value of each difference. Show your thinking using objects, drawings, numbers, or words. 1. 2."
     },
     {
       "lesson": "IM-G2-U2-L7",
@@ -5464,6 +5473,13 @@
       "tracked_text": "A farmer puts 14 onions into 2 bags. She puts the same number of onions in each bag. Lin says the situation should be represented by this equation: Mai says the situation should be represented by this equation: Whose equation do you agree with? Be ready to explain your reasoning."
     },
     {
+      "lesson": "IM-G3-U4-L6",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 1,
+      "recovered_text": "There are 30 muffins for the bake sale. Each box has 6 muffins. How many boxes are there? Tyler wrote two equations for this problem.                                                ___ × 6 = 30 30 ÷ 6 = ___ He says the same number goes in each blank even though one equation is a multiplication equation and the other equation is a division equation. Is he correct? Explain or show your reasoning.",
+      "tracked_text": "There are 30 muffins for the bake sale. Each box has 6 muffins. How many boxes are there? Tyler wrote two equations for this problem. He says the same number goes in each blank even though one equation is a multiplication equation and the other equation is a division equation. Is he correct? Explain or show your reasoning."
+    },
+    {
       "lesson": "IM-G3-U4-L8",
       "position": "student_task_statement(1)",
       "expressions_gained": 4,
@@ -5528,6 +5544,13 @@
     },
     {
       "lesson": "IM-G3-U5-L12",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 11,
+      "recovered_text": "1. Locate and label the following numbers on a number line. You can use more than 1 number line if you wish. ,       ,       , 1/2 1/3 1/4 2/3 2/6 3/8    ,       ,   , ,       , 3/4 4/6 4/8 6/8 7/8 ,       , 2. Use your labels to find 4 pairs of fractions that are equivalent. Write equations to represent them. ___ = ___                      ___ = ___   ___ = ___   ___ = ___ If you have time: Use the number lines to generate as many equivalent fractions as you can.",
+      "tracked_text": "1. Locate and label the following numbers on a number line. You can use more than 1 number line if you wish. ,       ,       ,       ,       ,   , ,       ,       ,       , 2. Use your labels to find 4 pairs of fractions that are equivalent. Write equations to represent them. If you have time: Use the number lines to generate as many equivalent fractions as you can."
+    },
+    {
+      "lesson": "IM-G3-U5-L12",
       "position": "student_task_statement(5)",
       "expressions_gained": 2,
       "recovered_text": "Use the number line(s) to decide whether 3/4 and 6/8 are equivalent. Explain your reasoning.",
@@ -5569,11 +5592,39 @@
       "tracked_text": "How would you decide if    is equivalent to   ? Explain or show your reasoning."
     },
     {
+      "lesson": "IM-G3-U5-L15",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 12,
+      "recovered_text": "1. For each pair of fractions, circle the fraction that is greater. Explain or show your reasoning. a.   1/2   and 3/2 b.         and 3/8         2/8 2. Use the symbol > or < to make each statement true. Explain or show your reasoning. a. 1/6___4/6 b. 4/4___5/4 c. 2/3___1/3 d. 4/8___6/8 If you have time: Write a number for the unknown numerator of the fraction to make each statement true. Explain or show your reasoning. 1. 2. 3. 4.",
+      "tracked_text": "1. For each pair of fractions, circle the fraction that is greater. Explain or show your reasoning. a.    and b.    and 2. Use the symbol > or < to make each statement true. Explain or show your reasoning. a. b. c. d. If you have time: Write a number for the unknown numerator of the fraction to make each statement true. Explain or show your reasoning. 1. 2. 3. 4."
+    },
+    {
+      "lesson": "IM-G3-U5-L15",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 4,
+      "recovered_text": "1. Which is the greater fraction: 7/8 or 6/8? Explain or show your reasoning. 2. Use the symbol > or < to make the statement true. 7/8___6/8",
+      "tracked_text": "1. Which is the greater fraction:   or   ? Explain or show your reasoning. 2. Use the symbol > or < to make the statement true."
+    },
+    {
       "lesson": "IM-G3-U5-L16",
       "position": "student_task_statement(2)",
       "expressions_gained": 15,
       "recovered_text": "1. Priya says that 5/6 is greater than 5/8. Tyler says that               is greater than         . 5/8                     5/6 Who do you agree with? Show your thinking, using diagrams or number lines. 2. For each pair of fractions, which fraction do you think is greater? a.   5/3   or 5/4 b.   5/8 or 5/2 c.   5/6   or 5/4 3. Locate and label each fraction on a number line: 5/2, 5/3, 5/4, 5/6, 5/8. What do you notice about the points? Make 1 or 2 observations.",
       "tracked_text": "1. Priya says that             is greater than   . Tyler says that            is greater than   . Who do you agree with? Show your thinking, using diagrams or number lines. 2. For each pair of fractions, which fraction do you think is greater? a.      or b.      or c.     or 3. Locate and label each fraction on a number line:   ,    ,     ,   ,   . What do you notice about the points? Make 1 or 2 observations."
+    },
+    {
+      "lesson": "IM-G3-U5-L16",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 16,
+      "recovered_text": "1. For each pair of fractions, circle the fraction that is greater. Explain or show your reasoning. a.   1/4   and 1/3 b.   3/4   and 3/8 c.   5/3   and 5/6 d.         and 9/6 9/8 2. Use the symbol > or < to make each statement true. Be prepared to explain your reasoning. a. 2/2___2/6 b. 4/3___4/8 c. 8/8___8/4 d. 5/4___5/3 3. Write a number for the unknown denominator of the fraction to make each statement true. Be prepared to explain your reasoning. a. b. c. d.",
+      "tracked_text": "1. For each pair of fractions, circle the fraction that is greater. Explain or show your reasoning. a.    and b.    and c.    and d.    and 2. Use the symbol > or < to make each statement true. Be prepared to explain your reasoning. a. b. c. d. 3. Write a number for the unknown denominator of the fraction to make each statement true. Be prepared to explain your reasoning. a. b. c. d."
+    },
+    {
+      "lesson": "IM-G3-U5-L16",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 2,
+      "recovered_text": "Use the symbol > or < to make the statement true. Explain or show your reasoning. 4/3___4/6",
+      "tracked_text": "Use the symbol > or < to make the statement true. Explain or show your reasoning."
     },
     {
       "lesson": "IM-G3-U5-L17",
@@ -5588,6 +5639,13 @@
       "expressions_gained": 11,
       "recovered_text": "Locate and label each fraction on the number line. Be prepared to share your reasoning. 1/2, 3/8, 13/8, 2/4, 3/4, 9/8, 5/4, 12/6, 5/2, 9/3, 20/8",
       "tracked_text": "Locate and label each fraction on the number line. Be prepared to share your reasoning."
+    },
+    {
+      "lesson": "IM-G3-U5-L17",
+      "position": "student_task_statement(5)",
+      "expressions_gained": 6,
+      "recovered_text": "1. Use the symbol >, <, or = to make each statement true. a. 4/6___2/6 b. 8/8___4/4 2. An ant crawled 3/6 of the length of a bench. A spider crawled 3/4 of the length of the same bench. a. Which animal crawled farther? Explain or show your reasoning. b. Write a statement, using the symbol >, <, or = to represent your answer.",
+      "tracked_text": "1. Use the symbol >, <, or = to make each statement true. a. b. 2. An ant crawled      of the length of a bench. A spider crawled   of the length of the same bench. a. Which animal crawled farther? Explain or show your reasoning. b. Write a statement, using the symbol >, <, or = to represent your answer."
     },
     {
       "lesson": "IM-G3-U5-L4",
@@ -6060,6 +6118,13 @@
     },
     {
       "lesson": "IM-G4-U3-L12",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 7,
+      "recovered_text": "1. Find the number that makes each equation true. Show your reasoning. a. ___ + 2/6 = 1 1/6 b. 24/5 + ___ = 71/5 c. 3 - 21/3 = ___ d. 41/12 - 25/12 = ___ 2. Write a sentence to describe your first step for finding the unknown value in each equation in the first problem. a. First step: b. First step: c. First step: d. First step: 3. Compare and reflect on your first steps with your group. Did you make the same moves? Discuss why you might have chosen the same way or a different way to start finding the missing values.",
+      "tracked_text": "1. Find the number that makes each equation true. Show your reasoning. a. b. c. d. 2. Write a sentence to describe your first step for finding the unknown value in each equation in the first problem. a. First step: b. First step: c. First step: d. First step: 3. Compare and reflect on your first steps with your group. Did you make the same moves? Discuss why you might have chosen the same way or a different way to start finding the missing values."
+    },
+    {
+      "lesson": "IM-G4-U3-L12",
       "position": "student_task_statement(3)",
       "expressions_gained": 19,
       "recovered_text": "1. Here are some addition and subtraction expressions. Sort them into two groups, based on whether you think it would be helpful to decompose a number to find the value of the expression. A.       18/5 - 7/5 B.       1/6 + 9/6 C. 7- 1 3/8 D.       102/100 + 527/100 E.       25/12 + 6/12 F.       61/10 - 6/10 G.       38/100 + 493/100 H. 5 - 17/12 I.   1 3/10 + 6/10 J.   17/8 - 1 7/8 ◦ Not necessary or       ◦ Necessary or not helpful to           helpful to decompose any            decompose one number:                  or more numbers: 2. Choose at least one expression from each group and find their values. Show your reasoning.",
@@ -6171,6 +6236,20 @@
       "tracked_text": "Which 3 go together? A. B. C. D."
     },
     {
+      "lesson": "IM-G4-U3-L17",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 24,
+      "recovered_text": "1. Each equation has an unknown fraction in hundredths. Find the fraction that makes each equation true. a. 10/100 + ___ = 30/100 b. ___ + 2/10 = 80/100 c. 7/10 + ___ = 94/100 d. 9/100 + ___ = 8/10 e. 16/100 + 4/10 = ___ f. ___ + 14/10 = 172/100 2. Each equation has an unknown fraction in tenths or hundredths. Find the fraction that makes each equation true. a. 20/100 + ___ = 28/100 L b. 110/100 + ___ = 15/10 c. 61/100 + 3/10 = ___ d. 9/10 + ___ = 170/100 e. ___ + 72/100 = 102/100 f. 15/100 + ___ = 1 55/100",
+      "tracked_text": "1. Each equation has an unknown fraction in hundredths. Find the fraction that makes each equation true. a. b. c. d. e. f. 2. Each equation has an unknown fraction in tenths or hundredths. Find the fraction that makes each equation true. a. L b. c. d. e. f."
+    },
+    {
+      "lesson": "IM-G4-U3-L17",
+      "position": "student_task_statement(5)",
+      "expressions_gained": 8,
+      "recovered_text": "Each equation is missing a fraction in tenths or hundredths. Find the fraction that makes each equation true. 1. 26/100 + 8/10 = ___ 2. 7/10 + ___ = 92/100 3. ___ + 8/100 = 128/100 4. 12/100 + 12/10 = ___",
+      "tracked_text": "Each equation is missing a fraction in tenths or hundredths. Find the fraction that makes each equation true. 1. 2. 3. 4."
+    },
+    {
       "lesson": "IM-G4-U3-L18",
       "position": "student_task_statement(1)",
       "expressions_gained": 6,
@@ -6234,6 +6313,13 @@
       "tracked_text": "Your teacher will give you a set of cards. 1. Match each expression to a diagram that represents the same quantity. 2. Record each expression without a match. 3. Han starts drawing a diagram to represent and does not finish. Complete his diagram. Be prepared to explain your reasoning. 4. Choose one expression that you recorded earlier that didn’t have a match. Draw a diagram that can be represented by the expression. What value do the shaded parts of your diagram represent?"
     },
     {
+      "lesson": "IM-G4-U3-L3",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 5,
+      "recovered_text": "1. Complete each equation to make it true. Show your thinking, using words or diagrams. a. 5 × 1/8 = ___ b. ___ × 1/3 = 7/3 2. Write each fraction as the product of a whole number and a unit fraction. a. 8/9 = ___ × ___ b. 6/5 = ___ × ___",
+      "tracked_text": "1. Complete each equation to make it true. Show your thinking, using words or diagrams. a. b. 2. Write each fraction as the product of a whole number and a unit fraction. a. b."
+    },
+    {
       "lesson": "IM-G4-U3-L4",
       "position": "student_task_statement(3)",
       "expressions_gained": 8,
@@ -6246,6 +6332,13 @@
       "expressions_gained": 2,
       "recovered_text": "Find the value of each expression. Explain or show your reasoning. Use a diagram if it is helpful. 1.   6 × 2/5 2.   5 × 3/10",
       "tracked_text": "Find the value of each expression. Explain or show your reasoning. Use a diagram if it is helpful. 1. 2."
+    },
+    {
+      "lesson": "IM-G4-U3-L5",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 15,
+      "recovered_text": "1. Find the number that makes each equation true. Draw a diagram if it is helpful. 12/5 = 12 × ___               12/5 = 3 × ___ 12/5 = 6 × ___                12/5 = 2 × ___ 12/5 = 4 × ___                12/5 = 1 × ___ 2. Here are two sets of numbers: Set A:                        Set B: 1/7, 2/7, 3/7, 4/7, 5/7, 6/7, 7/7 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 a. Choose a number from Set A and a number from Set B to complete this equation and make it true: 6/7 = ___ × ___ b. Choose a different number from Set A and from Set B to complete the equation to make it true. 6/7 = ___ × ___ 3. Explain or show how you know that the two equations you wrote are both true.",
+      "tracked_text": "1. Find the number that makes each equation true. Draw a diagram if it is helpful. 2. Here are two sets of numbers: Set A:                         Set B: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 a. Choose a number from Set A and a number from Set B to complete this equation and make it true: b. Choose a different number from Set A and from Set B to complete the equation to make it true. 3. Explain or show how you know that the two equations you wrote are both true."
     },
     {
       "lesson": "IM-G4-U3-L5",
@@ -6281,6 +6374,13 @@
       "expressions_gained": 8,
       "recovered_text": "Lin is learning to make barley soup, using a family recipe. Here are some ingredients in the recipe: •   3/4   cup barley •   5/4   cups chopped celery •   6/4   cups chopped carrots • 1 cup chopped onions •   21/4 cups vegetable broth 1. Lin only has one measuring cup that measures 1/4   cup. Show how Lin could use the cup to measure the ingredients in the recipe. ◦ Barley:                     ◦ Onions: ◦ Celery:                     ◦ Vegetable broth: ◦ Carrots: 2. Lin finds a 3/4-cup. She can now measure the ingredients, using both a 3/4-cup and a 1/4-cup. Show how she could use the cups to measure the ingredients in the recipe. ◦ Barley:                        ◦ Onions: ◦ Celery:                        ◦ Vegetable broth: ◦ Carrots:",
       "tracked_text": "Lin is learning to make barley soup, using a family recipe. Here are some ingredients in the recipe: •     cup barley •     cups chopped celery •     cups chopped carrots • 1 cup chopped onions •      cups vegetable broth 1. Lin only has one measuring cup that measures cup. Show how Lin could use the cup to measure the ingredients in the recipe. ◦ Barley:                   ◦ Onions: ◦ Celery:                   ◦ Vegetable broth: ◦ Carrots: 2. Lin finds a     -cup. She can now measure the ingredients, using both a    -cup and a   -cup. Show how she could use the cups to measure the ingredients in the recipe. ◦ Barley:                   ◦ Onions: ◦ Celery:                   ◦ Vegetable broth: ◦ Carrots:"
+    },
+    {
+      "lesson": "IM-G4-U3-L7",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 6,
+      "recovered_text": "1. Use different combinations of fifths to make a sum of 9/5. a. 9/5 = ___ + ___ + ___ + ___ + ___ b. 9/5 = ___ + ___ + ___ + ___ c. 9/5 = ___ + ___ + ___ d. 9/5 = ___ + ___ 2. Write different ways to use thirds to make a sum of 4/3. How many can you find? Write an equation for each combination. 3. Is it possible to write any fraction with a denominator of 5 as a sum of other fifths? Explain or show your reasoning.",
+      "tracked_text": "1. Use different combinations of fifths to make a sum of      . a. b. c. d. 2. Write different ways to use thirds to make a sum of      . How many can you find? Write an equation for each combination. 3. Is it possible to write any fraction with a denominator of 5 as a sum of other fifths? Explain or show your reasoning."
     },
     {
       "lesson": "IM-G4-U3-L7",
@@ -6802,6 +6902,13 @@
     },
     {
       "lesson": "IM-G4-U9-L3",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 3,
+      "recovered_text": "Write a problem that represents each of these situations. After each problem is written, trade papers with a partner to compare your problems and check your solutions. 1. A problem that can be solved by addition and has 92/5 as an answer 2. A problem that can be solved by subtraction and has 32/100 as an answer 3. A problem that can be solved by writing the equation: 9- ___ = 33/5",
+      "tracked_text": "Write a problem that represents each of these situations. After each problem is written, trade papers with a partner to compare your problems and check your solutions. 1. A problem that can be solved by addition and has      as an answer 2. A problem that can be solved by subtraction and has      as an answer 3. A problem that can be solved by writing the equation:"
+    },
+    {
+      "lesson": "IM-G4-U9-L3",
       "position": "student_task_statement(4)",
       "expressions_gained": 1,
       "recovered_text": "There were 7 cups of milk before Mai made breakfast. Now there are 22/8 cups of milk. How much milk did Mai use for breakfast?",
@@ -6883,6 +6990,13 @@
       "expressions_gained": 4,
       "recovered_text": "Find the value of each expression mentally. • 5,000- 403 • 5,300- 473 • 25,300- 493 • 26,000- 1,493",
       "tracked_text": "Find the value of each expression mentally. • • • •"
+    },
+    {
+      "lesson": "IM-G4-U9-L9",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 10,
+      "recovered_text": "George Meegan walked 19,019 miles between 1977 and 1983. He finished at age 31. He wore out 12 pairs of hiking boots. Jean Beliveau walked 46,900 miles between 2000 and 2011. He finished at age 56. Here are the responses Kiran gave to answer some questions about the situation. In each row, write a question that Kiran could answer, using the given information. In the last row, write a new question about the situation. Show your answer and explain your reasoning. question          response and reasoning 1983 - 1977 = 6 1.                        12 ÷ 6 = 2 2 pairs of hiking boots 56- 31 = 25 2. 25 years 2011 - 2000 = 11 11 years 11 × ___ = 46,900 11 × 4,000 = 44,000 3.                   11 × 200 = 2,200 11 × 70 = 770 44,000 + 2,200 + 770 = 46,970 4,000 + 200 + 70 = 4,270 4,270 miles 4.",
+      "tracked_text": "George Meegan walked 19,019 miles between 1977 and 1983. He finished at age 31. He wore out 12 pairs of hiking boots. Jean Beliveau walked 46,900 miles between 2000 and 2011. He finished at age 56. Here are the responses Kiran gave to answer some questions about the situation. In each row, write a question that Kiran could answer, using the given information. In the last row, write a new question about the situation. Show your answer and explain your reasoning. question          response and reasoning 1. 2 pairs of hiking boots 2. 25 years 11 years 3. 4,270 miles 4."
     },
     {
       "lesson": "IM-G5-U1-L10",
@@ -6970,6 +7084,13 @@
     },
     {
       "lesson": "IM-G5-U2-L14",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 8,
+      "recovered_text": "Fill in the blanks to make each equation true. 1. 1/3 × 18 = ___ 2. 7/9 × ___ = 21/9 3. 1/15 × ___ = 2 4. 9 × 62/3 = ___ 5. 1499/100 × 10 = ___ 6. 73/5 × 6 = ___ 7. 4 × 69/10 = ___",
+      "tracked_text": "Fill in the blanks to make each equation true. 1. 2. 3. 4. 5. 6. 7."
+    },
+    {
+      "lesson": "IM-G5-U2-L14",
       "position": "student_task_statement(4)",
       "expressions_gained": 3,
       "recovered_text": "Find the value of each product. Show your thinking. Organize it so it can be followed by others. 1.     5/3 × 15 2. 13/4 × 8 3.     10/25 × 10",
@@ -7009,6 +7130,13 @@
       "expressions_gained": 2,
       "recovered_text": "1. Write a multiplication expression with whole numbers whose value is slightly less than, slightly greater than, or about equal to the value of 7 × 128/9. a. slightly less: b. slightly greater: c. about equal to: 2. Write a multiplication expression with whole numbers whose value is slightly less than, slightly greater than, or about equal to the value of 9 × 42/29. a. slightly less: b. slightly greater: c. about equal to: 3. Without calculating, use the numbers 2, 3, 5, 6,       • and 7, to complete the expression so it has a value close to 20. 4. Explain how you know your expression represents a value close to 20.",
       "tracked_text": "1. Write a multiplication expression with whole numbers whose value is slightly less than, slightly greater than, or about equal to the value of               . a. slightly less: b. slightly greater: c. about equal to: 2. Write a multiplication expression with whole numbers whose value is slightly less than, slightly greater than, or about equal to the value of               . a. slightly less: b. slightly greater: c. about equal to: 3. Without calculating, use the numbers 2, 3, 5, 6, and 7, to complete the expression so it has a value close to 20. 4. Explain how you know your expression represents a value close to 20."
+    },
+    {
+      "lesson": "IM-G5-U2-L16",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 2,
+      "recovered_text": "Jada says the value of each product is about 20. For each problem, explain why Jada’s estimate is too high, just right, or too low. 1. 55/6 × 4 = ___ 20 is…                        too low                        too high                      about right 2. 3 × 65/8 = ___ 20 is…                        too low                        too high                      about right",
+      "tracked_text": "Jada says the value of each product is about 20. For each problem, explain why Jada’s estimate is too high, just right, or too low. 1. 20 is…                     too low                        too high                         about right 2. 20 is…                     too low                        too high                         about right"
     },
     {
       "lesson": "IM-G5-U2-L3",
@@ -7166,10 +7294,24 @@
     },
     {
       "lesson": "IM-G5-U3-L12",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 5,
+      "recovered_text": "Priya and Mai use these diagrams to find the value of 1/3 ÷ 4. Priya’s diagram              Mai’s diagram 1. How are the diagrams alike? 2. How are they different? 3. Find the value that makes       1/3 ÷ 4 = ___ Le the equation true. 4. Han draws this diagram to represent 1/3 ÷ 3. How does his diagram show 1/3 ÷ 3? Explain or show your reasoning. 1/3 ÷ 3 = ___ 5. Find the value that makes the equation true. Explain or show your reasoning.",
+      "tracked_text": "Priya and Mai use these diagrams to find the value of        . Priya’s diagram              Mai’s diagram 1. How are the diagrams alike? 2. How are they different? 3. Find the value that makes Le the equation true. 4. Han draws this diagram to represent . How does his diagram show          ? Explain or show your reasoning. 5. Find the value that makes the equation true. Explain or show your reasoning."
+    },
+    {
+      "lesson": "IM-G5-U3-L12",
       "position": "student_task_statement(3)",
       "expressions_gained": 6,
       "recovered_text": "1. Find the value of 1/3 ÷ 2. Explain or show your reasoning. 2. Noah is trying out Mai’s diagram for this problem. Here is his work. 1/3 ÷ 2 = 1/2, because I divided 1/3 into 2 equal parts and 1/2 of 1/3 is shaded in. a. What questions do you have for Noah? b. Noah’s equation is incorrect. How can Noah revise his explanation?",
       "tracked_text": "1. Find the value of         . Explain or show your reasoning. 2. Noah is trying out Mai’s diagram for this problem. Here is his work. , because I divided     into 2 equal parts and     of    is shaded in. a. What questions do you have for Noah? b. Noah’s equation is incorrect. How can Noah revise his explanation?"
+    },
+    {
+      "lesson": "IM-G5-U3-L12",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 4,
+      "recovered_text": "1. Find the value that makes each equation true. Use a diagram if it is helpful. a. 1/4 ÷ 2 = ___ b. 1/4 ÷ 3 = ___ c. 1/4 ÷ 4 = ___ 2. What patterns do you notice? 3. How would you find the value of 1/4 divided by any whole number? Explain or show your reasoning. Le",
+      "tracked_text": "1. Find the value that makes each equation true. Use a diagram if it is helpful. a. b. c. 2. What patterns do you notice? 3. How would you find the value of       divided by any whole number? Explain or show your reasoning. Le"
     },
     {
       "lesson": "IM-G5-U3-L13",
@@ -7198,6 +7340,13 @@
       "expressions_gained": 4,
       "recovered_text": "Find the value of each expression mentally. • 6 ÷ 1 •   6 ÷ 1/2 •   6 ÷ 1/3 •   6 ÷ 1/6",
       "tracked_text": "Find the value of each expression mentally. • • • •"
+    },
+    {
+      "lesson": "IM-G5-U3-L14",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 8,
+      "recovered_text": "Set A: Find the value that makes each equation true. Draw a diagram if it is helpful. What patterns do you notice? • 3 ÷ 1/4 = ___ • 4 ÷ 1/4 = ___ • 5 ÷ 1/4 = ___ • 6 ÷ 1/4 = ___ Set B: Find the value that makes each equation true. Draw a diagram if it is helpful. What patterns do you notice? • 3 ÷ 1/2 = ___ • 3 ÷ 1/3 = ___ • 3 ÷ 1/4 = ___ • 3 ÷ 1/5 = ___ How are problem sets A and B alike? How are they different?",
+      "tracked_text": "Set A: Find the value that makes each equation true. Draw a diagram if it is helpful. What patterns do you notice? • • • • Set B: Find the value that makes each equation true. Draw a diagram if it is helpful. What patterns do you notice? • • • • How are problem sets A and B alike? How are they different?"
     },
     {
       "lesson": "IM-G5-U3-L14",
@@ -7319,6 +7468,13 @@
       "tracked_text": "Priya shaded part of a square. 1. How does the expression represent the area of the shaded part? Explain or show your reasoning. 2. How does the expression represent the area of the shaded part? Explain or show your reasoning. 3. Write a multiplication expression to represent the area of the shaded piece. Explain or show your reasoning. 4. How much of the whole square is shaded?"
     },
     {
+      "lesson": "IM-G5-U3-L3",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 4,
+      "recovered_text": "1. Write a multiplication equation to represent the shaded piece in the figure. Explain or show your reasoning. 2. Complete each equation. Draw a diagram if it helps you. a. 1/5 × 1/4 = ___ b. 1/2 × 1/6 = ___",
+      "tracked_text": "1. Write a multiplication equation to represent the shaded piece in the figure. Explain or show your reasoning. 2. Complete each equation. Draw a diagram if it helps you. a. b."
+    },
+    {
       "lesson": "IM-G5-U3-L4",
       "position": "student_task_statement(1)",
       "expressions_gained": 8,
@@ -7366,6 +7522,20 @@
       "expressions_gained": 10,
       "recovered_text": "1. Find the value of each product. Draw a diagram if it is helpful. a.   2/5 × 3/4 b.   3/7 × 4/5 c.   9/11 × 5/8 2. How did you decide whether or not to draw a diagram? How did the diagrams help you find the products? 3. Diego drew this diagram to represent the product 9/11 × 5/8. How can the diagram help Diego find the value of 9/11 × 5/8? Explain or show your reasoning.",
       "tracked_text": "1. Find the value of each product. Draw a diagram if it is helpful. a. b. c. 2. How did you decide whether or not to draw a diagram? How did the diagrams help you find the products? 3. Diego drew this diagram to represent the product         . How can the diagram help Diego find the value of       ? Explain or show your reasoning."
+    },
+    {
+      "lesson": "IM-G5-U3-L7",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 9,
+      "recovered_text": "Find the value that makes each equation true. Draw a diagram if it is helpful. 1. 3/8 × 2/5 = ___ 2. 3/4 × 9/5 = ___ 3. 10/5 × 6/5 = ___ 4. 8/9 × ___ = 56/36 5. 5 × ___ = 15/8",
+      "tracked_text": "Find the value that makes each equation true. Draw a diagram if it is helpful. 1. 2. 3. 4. 5."
+    },
+    {
+      "lesson": "IM-G5-U3-L7",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 4,
+      "recovered_text": "Find the value that makes each equation true. 1. 3/4 × 10/12 = ___ 2. 7/5 × ___ = 42/15",
+      "tracked_text": "Find the value that makes each equation true. 1. 2."
     },
     {
       "lesson": "IM-G5-U3-L8",
@@ -7457,6 +7627,13 @@
       "expressions_gained": 19,
       "recovered_text": "1. Use each expression to find the value of 165 ÷ 15. Show your thinking. Organize your work so it can be followed by others. a.   75/15 + 80/15 + 10/15 b.   30/15 + 30/15 + 30/15 + 60/15 + 15/15 c.   150/15 + 15/15 2. Choose one of these expressions to find the value of 540 ÷ 18. Show your thinking. Organize your work so it can be followed by others. a.   180/18 + 180/18 + 180/18 b.   500/18 + 40/18 c.   360/18 + 180/18 3. Which expressions are most helpful? Which expressions are least helpful? Explain or show your reasoning.",
       "tracked_text": "1. Use each expression to find the value of . Show your thinking. Organize your work so it can be followed by others. a. b. c. 2. Choose one of these expressions to find the value of        . Show your thinking. Organize your work so it can be followed by others. a. b. c. 3. Which expressions are most helpful? Which expressions are least helpful? Explain or show your reasoning."
+    },
+    {
+      "lesson": "IM-G5-U4-L16",
+      "position": "student_task_statement(4)",
+      "expressions_gained": 9,
+      "recovered_text": "Choose one expression, and use it to find the value of 154 ÷ 14. Explain or show your thinking. 154 ÷ 14 = ___ •   140/14 + 14/14 •   150/14 + 4/14 •   70/14 + 70/14 + 14/14",
+      "tracked_text": "Choose one expression, and use it to find the value of         . Explain or show your thinking. • • •"
     },
     {
       "lesson": "IM-G5-U4-L3",
@@ -7789,6 +7966,13 @@
     },
     {
       "lesson": "IM-G5-U6-L16",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 3,
+      "recovered_text": "Kiran, Noah, and Elena each ran as far as they could in 1 hour. • Elena ran 3/4 of a 5-mile trail. • Noah ran 1/2 of a 5-mile trail. • Kiran ran 1 1/4 of a 5-mile trail. 1. List the distances the students ran, in increasing order. Explain your reasoning. 2. Find a number that makes each statement true. Explain your reasoning. a. Diego ran farther than Noah, but not as far as Kiran. Diego ran ___                 of a 5-mile trail. b. Lin ran farther than Kiran, but not twice as far as Kiran. Lin ran                    of a 5-mile trail. ___ c. Tyler ran farther than Noah, but not as far as Elena. Tyler ran ___                of a 5-mile trail.",
+      "tracked_text": "Kiran, Noah, and Elena each ran as far as they could in 1 hour. • Elena ran        of a 5-mile trail. • Noah ran         of a 5-mile trail. • Kiran ran          of a 5-mile trail. 1. List the distances the students ran, in increasing order. Explain your reasoning. 2. Find a number that makes each statement true. Explain your reasoning. a. Diego ran farther than Noah, but not as far as Kiran. Diego ran                of a 5-mile trail. b. Lin ran farther than Kiran, but not twice as far as Kiran. Lin ran               of a 5-mile trail. c. Tyler ran farther than Noah, but not as far as Elena. Tyler ran               of a 5-mile trail."
+    },
+    {
+      "lesson": "IM-G5-U6-L16",
       "position": "student_task_statement(4)",
       "expressions_gained": 2,
       "recovered_text": "1. Is 1/8 × 20 greater than or less than 20? Explain or show your reasoning. 2. Is 10/8 × 20 greater than or less than 20? Explain or show your reasoning.",
@@ -7800,6 +7984,13 @@
       "expressions_gained": 1,
       "recovered_text": "5/3 × 9,625 Record an estimate that is: too low           about right       too high",
       "tracked_text": "Record an estimate that is: too low           about right       too high"
+    },
+    {
+      "lesson": "IM-G5-U6-L17",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 3,
+      "recovered_text": "• Priya ran to her grandmother’s house. • Jada ran twice as far as Priya. • Han ran 6/7 as far as Priya. • Clare ran 14/8 as far as Priya. • Mai ran 3/5 times as far as Priya. 1. Which students ran farther than Priya? ___ 2. Which students did not run as far as Priya? ___ Le 3. List the runners in order, from the shortest distance to the longest distance. Explain or show your reasoning. 4. Point P represents how far Priya ran. Find the distance of each runner on the number line. Write the runner’s initial in the blank. One runner does not have a point on the number line. 5. Label the distance for the missing runner on the number line.",
+      "tracked_text": "• Priya ran to her grandmother’s house. • Jada ran twice as far as Priya. • Han ran      as far as Priya. • Clare ran      as far as Priya. • Mai ran     times as far as Priya. 1. Which students ran farther than Priya? 2. Which students did not run as far as Priya? Le 3. List the runners in order, from the shortest distance to the longest distance. Explain or show your reasoning. 4. Point P represents how far Priya ran. Find the distance of each runner on the number line. Write the runner’s initial in the blank. One runner does not have a point on the number line. 5. Label the distance for the missing runner on the number line."
     },
     {
       "lesson": "IM-G5-U6-L17",
@@ -8026,6 +8217,13 @@
       "tracked_text": ""
     },
     {
+      "lesson": "IM-GK-U4-L15",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 5,
+      "recovered_text": "Fill in what’s missing. 4 + 3 4- 0 ___- ___ 5 + 3 Fill in what’s missing. 8 - 2 ___ + ___ 1 + 6 ___- ___",
+      "tracked_text": "Fill in what’s missing. Fill in what’s missing."
+    },
+    {
       "lesson": "IM-GK-U4-L16",
       "position": "student_task_statement(1)",
       "expressions_gained": 1,
@@ -8082,6 +8280,27 @@
       "tracked_text": ""
     },
     {
+      "lesson": "IM-GK-U6-L10",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 3,
+      "recovered_text": "10 + 8 = ___ 10 + 3 = ___ 10 + 4 = ___ ___ + ___ = 16 ___ + ___ = 19 ___ + ___ = 12",
+      "tracked_text": ""
+    },
+    {
+      "lesson": "IM-GK-U6-L10",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 2,
+      "recovered_text": "1.                 10 + 5 = ___ 2.            ___ + ___ = 16 3.            ___ + ___ = 19 4.            ___ + ___ = 13 5.            ___ + ___ = 17 6.               10 + 1 = ___ Kindergarten Le",
+      "tracked_text": "1. 2. 3. 4. 5. 6. Kindergarten Le"
+    },
+    {
+      "lesson": "IM-GK-U6-L11",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 8,
+      "recovered_text": "1. Color the squares to show 10 + 2. 10 + 2 = ___ 2. Color the triangles to show 10 + 8. 10 + 8 = ___ 3. Color the hexagons to show 10 + 4. 10 + 4 = ___ 4. Color the circles to show 10 + 9. Kindergarten L 10 + 9 = ___",
+      "tracked_text": "1. Color the squares to show           . 2. Color the triangles to show             . 3. Color the hexagons to show                  . 4. Color the circles to show       . Kindergarten L"
+    },
+    {
       "lesson": "IM-GK-U6-L9",
       "position": "student_task_statement(1)",
       "expressions_gained": 6,
@@ -8115,6 +8334,20 @@
       "expressions_gained": 6,
       "recovered_text": "1. Clare has 7 pattern blocks. Her brother takes 3. How many now? 7 = 4 + 3 7- 3 = 4 7 + 3 = 10 2. Kiran has 2 pattern blocks. Jada adds 5 more. How many pattern blocks? 5 - 2 = 3 4 = 2 + 2 2 + 5 = 7",
       "tracked_text": "1. Clare has 7 pattern blocks. Her brother takes 3. How many now? 2. Kiran has 2 pattern blocks. Jada adds 5 more. How many pattern blocks?"
+    },
+    {
+      "lesson": "IM-GK-U7-L5",
+      "position": "student_task_statement(3)",
+      "expressions_gained": 1,
+      "recovered_text": "1. Andre has 4 pattern blocks. He adds 4 more. How many pattern blocks? _______________ Equation: 8 = ___ + ___ 2. Elena makes a train with 9 pattern blocks. She takes away 3 pattern blocks. How many pattern blocks make up the train? _______________ Equation: 9- 3 = ___",
+      "tracked_text": "1. Andre has 4 pattern blocks. He adds 4 more. How many pattern blocks? _______________ Equation: 2. Elena makes a train with 9 pattern blocks. She takes away 3 pattern blocks. How many pattern blocks make up the train? _______________ Equation:"
+    },
+    {
+      "lesson": "IM-GK-U8-L17",
+      "position": "student_task_statement(2)",
+      "expressions_gained": 4,
+      "recovered_text": "• 7 + 3 = 10 • 10 = 4 + 6 • 9 + 1 = 10 • 10 = 2 + 8 • ___ + ___ = 10 • 10 = ___ + ___ • ___ + ___ = 10 • ___ + ___ = 10 Kindergarten Le",
+      "tracked_text": "• • • • • • • • Kindergarten Le"
     }
   ]
 }
