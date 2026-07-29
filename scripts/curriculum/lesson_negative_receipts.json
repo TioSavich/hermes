@@ -1,2254 +1,2977 @@
 {
-  "schema": "lesson_negative_receipts_v3",
-  "register": "Reviewed lesson-source excerpts establish a specific counterpossibility for the named lesson action. A file-backed source fragment identifies a physical line and quotes it verbatim. A fact-backed source fragment identifies an allowlisted generated vision-digest predicate and quotes that fact value verbatim. A registry-derived candidate does not enter this file until a local source excerpt supports the lesson-level attribution. Mapping reviews distinguish an absent compiled extraction from an extraction that names a different action.",
-  "receipts": [
-    {
-      "lesson": "IM-G1-U2-L12",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "This activity's Compare, Difference Unknown problems ask how many more or how many fewer, and the guide names matching the two sets and counting the items left without a partner. The unpaired count answers the question; the size of the larger set is a quantity the problem already supplies.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit2/lesson12.md",
-        "fragments": [
-          {
-            "line": 271,
-            "text": "Match the sets and then count how many don’t have a partner."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U2-L18",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "count_up_missing_addend"
-      },
-      "alternative": "answer_as_endpoint_count_up",
-      "material_incompatibility": "The teacher guide suggests counting on from 6 to 9 to determine the missing addend (the difference), which is incompatible with the error of identifying the endpoint (9) as the final answer.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit2/lesson18.md",
-        "fragments": [
-          {
-            "line": 318,
-            "text": "We could count on from 6 to 9"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U6-L14",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "The problem supplies both quantities, Noah's 6 stamps and Tyler's 16, and asks how many fewer Noah has. The answer is the 10 that separates them, so reporting Tyler's 16 returns a count the problem already states.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit6/lesson14.md",
-        "fragments": [
-          {
-            "line": 304,
-            "text": "How many fewer stamps does Noah have than"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U8-L6",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "The lesson's purpose is to solve 'Difference Unknown' problems, meaning the required answer is the difference between two quantities; answering with the larger count fails to identify this difference.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit8/lesson6.md",
-        "fragments": [
-          {
-            "line": 34,
-            "text": "The purpose of this lesson is for students to solve Compare, Difference Unknown story problems."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U1-L16",
-      "mapping_review": {
-        "finding": "compiled_extraction_disagreed_with_receipt",
-        "decision": "receipt_supported",
-        "compiled_actions": [
-          {
-            "operation": "subtraction",
-            "kind": "compare_by_matching_difference"
-          }
-        ],
-        "support": "source.fragments"
-      },
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "solve_difference_unknown_for_greater_unknown",
-      "material_incompatibility": "A difference-unknown calculation answers how many more, while the task asks for the greater quantity produced by combining the smaller quantity and the difference.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit1/lesson16.md",
-        "fragments": [
-          {
-            "line": 360,
-            "text": "Students find the value of the difference between 17 and"
-          },
-          {
-            "line": 361,
-            "text": "rather than the value of the sum"
-          },
-          {
-            "line": 362,
-            "text": "of 17 and 9 (greater unknown)."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U2-L13",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The sample response describes the process of \"adding on... to 3 tens and 2 ones,\" which identifies the known quantity as the starting point for counting; counting all from one would ignore this provided starting value.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit2/lesson13.md",
-        "fragments": [
-          {
-            "line": 378,
-            "text": "adding on 2 more tens and 5 more ones to 3 tens and 2 ones"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U2-L14",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "add_change_to_only_one_prior_addend",
-      "material_incompatibility": "Adding the new seeds to one earlier addend omits the other part of the prior total and therefore does not preserve the composed quantity being updated.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit2/lesson14.md",
-        "fragments": [
-          {
-            "line": 388,
-            "text": "Students add the 38 new seeds in the second problem to"
-          },
-          {
-            "line": 389,
-            "text": "only one addend from the first problem."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U1-L18",
-      "mapping_review": {
-        "finding": "absent_from_compiled_extraction",
-        "decision": "receipt_supported",
-        "compiled_actions": [],
-        "support": "source.fragments"
-      },
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "array_expression_role_mismatch",
-      "material_incompatibility": "An expression whose factors do not represent the array's rows and objects per row fails to preserve the represented equal-groups structure.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson18.md",
-        "fragments": [
-          {
-            "line": 337,
-            "text": "Students write a multiplication expression that does not"
-          },
-          {
-            "line": 338,
-            "text": "match the array they created"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U1-L19",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The task supplies 7 rows with 5 crayons in each and asks for the total number of crayons, so the 7 counts rows and the 5 counts crayons inside one row. Adding the two numbers treats a row count as a crayon count, and the printed response reaches 35 by skip-counting 5 across the seven rows.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson19.md",
-        "fragments": [
-          {
-            "line": 141,
-            "text": "There are 7 rows. Each row has 5 crayons."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U1-L9",
-      "mapping_review": {
-        "finding": "absent_from_compiled_extraction",
-        "decision": "receipt_supported",
-        "compiled_actions": [],
-        "support": "source.fragments"
-      },
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "reverse_group_count_and_group_size",
-      "material_incompatibility": "The response exchanges the number of groups with the number in each group, so the representation no longer preserves the roles named in the situation.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson9.md",
-        "fragments": [
-          {
-            "line": 401,
-            "text": "Students indicate that they mixed up the number of"
-          },
-          {
-            "line": 402,
-            "text": "groups and the number of objects in each group by"
-          },
-          {
-            "line": 403,
-            "text": "making 5 groups of 3."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U2-L3",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "rectangle_area_unit_iteration"
-      },
-      "alternative": "area_as_perimeter_count",
-      "material_incompatibility": "The lesson defines area as the number of square units that 'cover a flat figure', which is incompatible with counting only the perimeter (the boundary) of the shape.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit2/lesson3.md",
-        "fragments": [
-          {
-            "line": 5,
-            "text": "the number of square units that cover a flat figure with no gaps or overlaps"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U4-L1",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "represent_group_count_as_group_size",
-      "material_incompatibility": "Representing six bags rather than six apples in each bag exchanges the sought number of groups with the divisor that fixes each group size.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit4/lesson1.md",
-        "fragments": [
-          {
-            "line": 324,
-            "text": "Students represent 6 bags of apples instead of 6 apples in"
-          },
-          {
-            "line": 325,
-            "text": "each bag."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U4-L6",
-      "mapping_review": {
-        "finding": "compiled_extraction_disagreed_with_receipt",
-        "decision": "receipt_corrected_to_compiled_action",
-        "compiled_actions": [
-          {
-            "operation": "division",
-            "kind": "measure_groups_of_size"
-          }
-        ],
-        "support": "source.fragments"
-      },
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "different_unknowns_in_inverse_equations",
-      "material_incompatibility": "Assigning different unknown values to equations that represent the same situation breaks the multiplication-division relation the paired equations retain.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit4/lesson6.md",
-        "fragments": [
-          {
-            "line": 329,
-            "text": "Students say that different numbers should be used to"
-          },
-          {
-            "line": 330,
-            "text": "complete each equation."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U7-L13",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "rectangle_perimeter_boundary_traversal"
-      },
-      "alternative": "perimeter_two_sides_only",
-      "material_incompatibility": "The Activity Synthesis asks students to explain the perimeter of a rectangle, and the printed reasoning doubles the short sides and the long sides before adding them, so all four sides enter the total. Summing one short side and one long side leaves the second pair of sides out of the measure.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit7/lesson13.md",
-        "fragments": [
-          {
-            "line": 282,
-            "text": "I doubled the short sides, then"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U7-L14",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "rectangle_perimeter_boundary_traversal"
-      },
-      "alternative": "perimeter_two_sides_only",
-      "material_incompatibility": "The sample response for the cool-down justifies multiplying the sum of two sides by 2 by noting that there is 'another set of sides,' which contradicts the mistake of calculating perimeter using only two sides.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit7/lesson14.md",
-        "fragments": [
-          {
-            "line": 371,
-            "text": "multiplied by 2 since there would be another set of sides that were 9 inches and 6 inches"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U7-L9",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "polygon_perimeter_boundary_accumulation"
-      },
-      "alternative": "omit_unlabeled_rectangle_sides",
-      "material_incompatibility": "Naming only the opposite equal side leaves two boundary segments unaccounted for, so it cannot determine the rectangle's complete perimeter.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit7/lesson9.md",
-        "fragments": [
-          {
-            "line": 328,
-            "text": "Students identify the side that is 32 feet long"
-          },
-          {
-            "line": 329,
-            "text": "but not the other two sides of the"
-          },
-          {
-            "line": 330,
-            "text": "swimming pool."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G4-U5-L7",
-      "intended_action": {
-        "operation": "measurement",
-        "kind": "unit_conversion_by_iteration"
-      },
-      "alternative": "compare_raw_numerals_ignore_unit_scale",
-      "material_incompatibility": "Comparing 62 with 1 without coordinating centimeters and meters conflicts with the conversion relation that one meter is one hundred centimeters.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade4/unit5/lesson7.md",
-        "fragments": [
-          {
-            "line": 344,
-            "text": "Students may say that 62 centimeters is longer than 1"
-          },
-          {
-            "line": 345,
-            "text": "meter because 62 is greater than 1."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G5-U1-L11",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "composite_prism_volume_sum"
-      },
-      "alternative": "sum_overlapping_prism_volumes",
-      "material_incompatibility": "The lesson specifies calculating the volume of composite figures by summing the volumes of 'non-overlapping' parts, which is incompatible with the alternative of summing volumes of 'overlapping' prisms that would result in double-counting.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade5/unit1/lesson11.md",
-        "fragments": [
-          {
-            "line": 41,
-            "text": "non-overlapping right rectangular prisms"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G5-U2-L1",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "discard_unshared_remainder",
-      "material_incompatibility": "The response leaves part of the available sandwich undistributed, while equal sharing requires the full available quantity to be partitioned among the people.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade5/unit2/lesson1.md",
-        "fragments": [
-          {
-            "line": 215,
-            "text": "There may be fewer people than sandwiches"
-          },
-          {
-            "line": 216,
-            "text": "students only share whole sandwiches"
-          },
-          {
-            "line": 217,
-            "text": "people share 5 sandwiches and each gets 2"
-          },
-          {
-            "line": 218,
-            "text": "If students ignore the extra sandwich"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G5-U4-L19",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The question asks for the number of days required to fill a cargo container, which requires determining how many groups of a specific size (daily production) fit into a total volume, making it incompatible with the action of sharing a total into a fixed number of groups.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade5/unit4/lesson19.md",
-        "fragments": [
-          {
-            "line": 262,
-            "text": "does it take for a school to fill one cargo"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G5-U5-L6",
-      "intended_action": {
-        "operation": "decimal",
-        "kind": "decimal_comparison_by_aligned_units"
-      },
-      "alternative": "decimal_numeral_comparison_without_scale_alignment",
-      "material_incompatibility": "The lesson requires students to determine the relative magnitude of decimals by identifying which number is 'farther to the right' on a scale with specific tick marks, which is incompatible with comparing the numerals without utilizing a scale alignment.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade5/unit5/lesson6.md",
-        "fragments": [
-          {
-            "line": 265,
-            "text": "see which number is farther to the right.)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L11",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "The lesson builds each new row of a table by multiplying both entries of an equivalent ratio by a single factor, and the factors it supplies include 0.5 and 0.25 alongside whole numbers. Adding a fixed amount to each entry instead produces a pair the lesson's own rule for filling rows does not admit.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "multiplying both parts of an equivalent ratio by a whole-number, unit-fraction, or decimal factor to produce a table or double-number-line entry"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L12",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "Practice 4 shares 3,600 seconds across 72 quarter-dollars and requires the 50 seconds that fall to each quarter. The 72 counts how many shares the total breaks into, so it cannot also name the size of one share.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "the extracted functor divide(3600,72)=50 is a partitive fair-share division (3,600 seconds shared across 72 quarter-dollars = 50 seconds each)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L15",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The lesson requires calculating 'N parts x value-per-part' products using repeat_equal_groups; adding the number of parts and the value per part instead of multiplying them is mathematically incompatible with finding the total quantity.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "repeat_equal_groups for the \"N parts x value-per-part\" products"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L16",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "Each of these divisions counts how many equal groups a total holds, 91 in groups of 7 and 72 in groups of 9, and the divisor names the size of one group. Reading that divisor as a count of groups returns a share size where the task requires a group count.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "finding either the number of equal groups (measure_groups_of_size: 72/9, 8/2, 91/7, 12/3)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L2",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "construct_referent_ratio_diagram"
-      },
-      "alternative": "reverse_ratio_referent_order",
-      "material_incompatibility": "The lesson has students read and write ratio sentences on the frame \"The ratio of these to those is a : b. For every a of these, there are b of those,\" which binds the first referent to a and the second to b. Naming the referents in reverse order while keeping a : b attaches b to the quantity the sentence counts a of.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "The ratio of these to those is a : b. The ratio of these to those is a to b. For every a of these, there are b of those."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L5",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "The lesson purpose specifies that equivalent ratios are generated by \"multiplying both a and b by the same number,\" which is mathematically incompatible with an additive extension of the ratio.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_purpose",
-            "text": "all ratios that are equivalent to a : b can be generated by multiplying both a and b by the same number"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L8",
-      "intended_action": {
-        "operation": "division",
-        "kind": "missing_factor_known_product_search"
-      },
-      "alternative": "stop_at_nearby_product_in_search",
-      "material_incompatibility": "The warm-up is a mental Math Talk closing on 246 divided by 12, and its printed reasoning names 20.5 x 12 = 246. A search that halts at 20 x 12 = 240 leaves 6 of the 246 outside the quotient, where the material requires that remainder to become half a group of 12.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "the warm-up is a mental Math Talk whose sample reasoning is 20½·12=246 (missing_factor_known_product_search, matching the other three warm-up items)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L2",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The lesson employs \"measurement division to count teaspoons for a target volume\", which identifies how many units of a specific size fit into a total, whereas the alternative incorrectly interprets the divisor as the number of groups to be filled.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "measurement division to count teaspoons for a target volume"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L4",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "The lesson decides which speed or price is better by dividing one quantity in a ratio by the other and comparing the value per 1: 4,200 meters in 30 minutes and 6,300 meters in 45 minutes both give 140 meters per minute. Adding the same amount to each term of a ratio changes that quotient, so it cannot produce the pairs this lesson counts as equivalent.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_purpose",
-            "text": "dividing one quantity in a ratio by the other is an efficient way to find a rate per 1"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L6",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The lesson's rate divisions share a total over a count of units and require the amount one unit carries: 14 over 2 yields the 7 that then multiplies to 28 and 70 in the same table. Naming the count of units as that amount leaves the remaining entries without the factor they are built from.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "partitive rate-finding (total shared over N units to get a per-unit rate: $/binder, tomatoes/onion, $/oz, m/s speed, lb/kg) reads as fair_share_equal_groups"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L8",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The lesson requires partitioning a total into equal parts to find unit rates (classified as fair_share_equal_groups), such as determining meters per third of a climb; the error name_group_count_as_share_size occurs when a student mistakenly identifies the number of parts as the size of the resulting share.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "Divisions that find a rate per 1 (or per equal part of a whole) are partitive and classified fair_share_equal_groups"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U4-L10",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The divisor in each non-unit-fraction division names the size of one group, so 6 divided by 3/4 asks how many three-quarters fit in 6. Sharing a total into a number of groups needs a count in that position, and the lesson supplies a fraction there instead.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "how many a/b fit in n"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U4-L17",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The lesson tasks involve determining the number of shipping boxes required to hold a set number of necklaces, which the facts explicitly identify as 'quotitive measurement division (measure_groups_of_size)', a process incompatible with sharing a total into a fixed number of divisor groups.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "The four \"shipping boxes needed\" events are quotitive measurement division (measure_groups_of_size)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U4-L6",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The lesson is strictly limited to quotitive division, where the goal is to determine how many groups of a specific size fit in a total, which is incompatible with the partitive action of sharing into a set number of groups.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "Every task event is quotitive (\"how many groups of a given size fit in a total\") division"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U5-L7",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "distribute_group_size_split"
-      },
-      "alternative": "drop_second_partial_product",
-      "material_incompatibility": "The lesson requires students to calculate products by decomposing factors and finding all partial products; omitting the second partial product is a direct failure of this decomposition process.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Calculate the product of two decimals by decomposing each factor by place value and finding partial products."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U5-L9",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The lesson boundary specifies that tasks are 'partitive fair-share division' where 'an amount is split into a stated number of equal-size groups,' establishing that the divisor is the number of groups, which is incompatible with misidentifying the group count as the share size.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "All six retained tasks are partitive fair-share division: an amount is split into a stated number of equal-size groups"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L1",
-      "intended_action": {
-        "operation": "integer",
-        "kind": "signed_number_location_and_order"
-      },
-      "alternative": "order_by_magnitude_ignore_sign",
-      "material_incompatibility": "The lesson's focus on number-line location requires students to understand how negative signs determine a number's value and position relative to zero, which is incompatible with the deformation of ordering numbers by magnitude while ignoring the sign.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "This lesson's on-target demand is number-line location"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L13",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "The lesson asks for the vertical distance between two plotted points and states those distances: 28 and 26 give 2, and 21 and 11 give 10. An answer that returns the larger coordinate names a position on the axis rather than the gap between the points.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "its own activities demand only subtraction, which the vocabulary covers via compare_by_matching_difference"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L14",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "axis_aligned_coordinate_distance"
-      },
-      "alternative": "directed_difference_as_coordinate_distance",
-      "material_incompatibility": "Practice problem 2 asks for distances between points that share an x-coordinate, two of the pairs at negative y-values, and the lesson records the lengths as 1, 3, and 2. Subtracting those coordinates in one of the two orders returns a negative change, which the recorded lengths rule out as a distance.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "returns abs(DirectedDifference)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L15",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The practice set asks for a square's side length from its perimeter and records 20 divided by 4 as 5. Naming the four sides as the length reports how many parts the perimeter splits into instead of the size of one part.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "square-side-from-perimeter as fair_share_equal_groups division"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L16",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "common_factor_intersection"
-      },
-      "alternative": "factors_of_first_number_only",
-      "material_incompatibility": "The lesson defines common factors as those that 'both numbers share', which is incompatible with only identifying the factors of the first number.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_purpose",
-            "text": "common factors of two whole numbers as factors that both numbers share"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L5",
-      "intended_action": {
-        "operation": "integer",
-        "kind": "signed_number_location_and_order"
-      },
-      "alternative": "order_by_magnitude_ignore_sign",
-      "material_incompatibility": "The lesson requires students to 'represent changes in a quantity in opposite directions' (such as money received vs. paid), a task that is incompatible with the deformation of ignoring the sign and ordering or interpreting based only on magnitude, which would treat opposite directions as identical.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Recognize that signed numbers can be useful to represent changes in a quantity in opposite directions, e.g., money received and money paid, inventory bought and inventory sold, etc."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U7-L6",
-      "intended_action": {
-        "operation": "integer",
-        "kind": "signed_number_location_and_order"
-      },
-      "alternative": "order_by_magnitude_ignore_sign",
-      "material_incompatibility": "The lesson requires students to 'Compare rational numbers and their absolute values', which necessitates distinguishing between a number's actual value (location/order) and its distance from zero; ordering by magnitude while ignoring the sign incorrectly treats the signed number as its absolute value.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Compare rational numbers and their absolute values, and explain (orally and in writing) the reasoning."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U2-L4",
-      "intended_action": {
-        "operation": "division",
-        "kind": "inverse_fact_decomposition"
-      },
-      "alternative": "stop_after_one_known_fact",
-      "material_incompatibility": "The table for y = 16/x records the completions 16, 8, 4, and 2, each an exact quotient with nothing left over. A decomposition halted after its first known multiple names a partial count and leaves part of the 16 undivided, which the recorded completions rule out.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "The y = 16 divided by x completions (page 139 part a: 16, 8, 4, 2) were reclassified from long_division to inverse_fact_decomposition"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U4-L4",
-      "intended_action": {
-        "operation": "division",
-        "kind": "long_division"
-      },
-      "alternative": "sum_dividend_and_divisor",
-      "material_incompatibility": "The lesson's one task divides 5 by 12 and records 0.41666..., a repeating decimal below 1. Adding the dividend to the divisor returns 17 and no decimal expansion, which the recorded quotient rules out.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Use long division to generate a decimal representation of a fraction."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U4-L5",
-      "intended_action": {
-        "operation": "division",
-        "kind": "long_division"
-      },
-      "alternative": "sum_dividend_and_divisor",
-      "material_incompatibility": "The lesson purpose describes the iterative process of finding a quotient, stating that 'Long division finds the quotient one digit at a time, from left to right,' which is incompatible with an operation that simply sums the dividend and divisor.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_purpose",
-            "text": "Long division finds the quotient one digit at a time, from left to right."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U5-L1",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "The lesson requires students to determine 'how far apart' signed integers are using a 'difference-by-comparison', which is incompatible with simply returning the larger count of the two values.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "each item asks \"how far apart\" or \"how does X compare to Y,\" which is a difference-by-comparison"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-GK-U8-L18",
-      "mapping_review": {
-        "finding": "absent_from_compiled_extraction",
-        "decision": "receipt_supported",
-        "compiled_actions": [],
-        "support": "source.fragments"
-      },
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "single_decomposition_treated_as_exhaustive",
-      "material_incompatibility": "Stopping after one pair of addends does not satisfy the lesson's demand to find multiple compositions of ten and test whether the set is complete.",
-      "source_kind": "responding_to_student_thinking",
-      "source": {
-        "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md",
-        "fragments": [
-          {
-            "line": 480,
-            "text": "Students do not yet find more than one solution to the"
-          },
-          {
-            "line": 481,
-            "text": "problem."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U2-L4",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The printed reasoning takes 3 tens from 6 tens and 3 ones from 6 ones and names the result 33. Dropping the ones subtraction returns 30.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit2/lesson4.md",
-        "fragments": [
-          {
-            "line": 114,
-            "text": "tens – 3 tens = 3 tens and 6 ones – 3 ones = 3 ones"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U3-L7",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "decompose_base_for_ones"
-      },
-      "alternative": "smaller_from_larger_in_column",
-      "material_incompatibility": "The launch tells students the puzzles may require composing or decomposing a ten to make an equation true. Taking the smaller ones digit from the larger avoids that decomposition and makes the equation false.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson7.md",
-        "fragments": [
-          {
-            "line": 142,
-            "text": "composing or decomposing a ten"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U3-L13",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "make_ten_drop_leftover",
-      "material_incompatibility": "The synthesis takes 3 of the 4 ones in 14 to carry 67 to 70. The remaining 1 still belongs to the sum, so a total that stops at 70 falls short by it.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson13.md",
-        "fragments": [
-          {
-            "line": 107,
-            "text": "come from the 4 ones in 14."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U3-L16",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "make_ten_drop_leftover",
-      "material_incompatibility": "The synthesis makes a ten from 6 and 4 and names the 3 that stay behind. Those 3 belong to the total, so a sum that stops at the ten falls short by them.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson16.md",
-        "fragments": [
-          {
-            "line": 107,
-            "text": "and there were 3 left over."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U3-L17",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The printed reasoning takes 30 away, lands on 40, and then takes the remaining 2. Stopping after the tens returns 40 rather than 38.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson17.md",
-        "fragments": [
-          {
-            "line": 103,
-            "text": "   • 38: I took away 30 and then I had 40. I took 2 away"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U4-L4",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The printed reasoning takes 1 ten from 35 to reach 25 and then takes the 5 ones to reach 20. Stopping after the ten returns 25.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit4/lesson4.md",
-        "fragments": [
-          {
-            "line": 120,
-            "text": "I took away 1 ten from 35, and then I took away 5"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U4-L6",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The printed reasoning subtracts 25 from 65 and then takes the 2 that remain of the 27. Stopping at 40 leaves those 2 unsubtracted.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit4/lesson6.md",
-        "fragments": [
-          {
-            "line": 104,
-            "text": "took away 2 more because I need to take away 27"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U4-L11",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "decompose_base_for_ones"
-      },
-      "alternative": "smaller_from_larger_in_column",
-      "material_incompatibility": "The activity works 53 minus 29 by decomposing the ones to reach a multiple of ten. Taking the smaller ones digit from the larger reverses 3 and 9 and returns 36 where the difference is 24.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit4/lesson11.md",
-        "fragments": [
-          {
-            "line": 147,
-            "text": "decompose the ones to reach a multiple of 10"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U6-L5",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "base_ones_chunking"
-      },
-      "alternative": "dropped_ones_chunk",
-      "material_incompatibility": "The printed reasoning gathers the two 5s into a ten before adding the 30. A sum that drops the ones chunk keeps only the 30.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit6/lesson5.md",
-        "fragments": [
-          {
-            "line": 99,
-            "text": "I know 5 + 5 = 10"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U6-L8",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The printed reasoning takes 10 from 40 and then the 5 that remain of the 15. Stopping after the ten returns 30 rather than 25.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit6/lesson8.md",
-        "fragments": [
-          {
-            "line": 112,
-            "text": "40- 10 = 30 , 30- 5 = 25"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U6-L14",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "shape_classification_by_defining_attributes"
-      },
-      "alternative": "orientation_bound_shape_classification",
-      "material_incompatibility": "The lesson has students name the shapes they find in picture books by their attributes. An illustration sets a shape at whatever angle suits the page, so naming by orientation names the page rather than the shape.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit6/lesson14.md",
-        "fragments": [
-          {
-            "line": 5,
-            "text": "Name (orally and in writing) shapes found in picture books, based on their attributes."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U6-L21",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The Number Talk builds on grouping like coins and counting on from the value already gathered. Counting every coin from one throws away the group total the routine asks students to hold.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit6/lesson21.md",
-        "fragments": [
-          {
-            "line": 79,
-            "text": "used skip-counting or counting on to find the amount of money represented"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U7-L18",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "base_ones_chunking"
-      },
-      "alternative": "dropped_ones_chunk",
-      "material_incompatibility": "The center has students add hundreds, tens, and ones to land as near 1,000 as they can. A total that drops the ones chunk misses the target by that much.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit7/lesson18.md",
-        "fragments": [
-          {
-            "line": 139,
-            "text": "you add hundreds, tens, and ones to get as close to 1,000 as possible."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U9-L9",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "decompose_base_for_ones"
-      },
-      "alternative": "smaller_from_larger_in_column",
-      "material_incompatibility": "The Number Talk collects differences that need a ten decomposed into ones, anchored on known facts like 14 minus 6. Taking the smaller ones digit from the larger avoids the decomposition and returns 12 where the difference is 8.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit9/lesson9.md",
-        "fragments": [
-          {
-            "line": 87,
-            "text": "differences when they may need to decompose a ten"
-          },
-          {
-            "line": 88,
-            "text": "10- 6 or 14- 6"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U1-L3",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "base_ones_chunking"
-      },
-      "alternative": "dropped_ones_chunk",
-      "material_incompatibility": "The printed reasoning reads the sum as 7 tens and 8 ones and names it 78. A total that drops the ones chunk returns 70.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson3.md",
-        "fragments": [
-          {
-            "line": 118,
-            "text": "There are 7 tens and 8 ones, so it’s 78."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U1-L10",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "repeat_group_size_by_itself",
-      "material_incompatibility": "The synthesis reads the tape diagram as 4 parts with 5 in each, so the 4 counts groups and the 5 counts what sits inside one. Repeating the 5 by itself counts a group size where the diagram supplies a group count.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson10.md",
-        "fragments": [
-          {
-            "line": 341,
-            "text": "diagram can show the number of groups, and the same number written in each part shows how many in each group."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U3-L11",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "decompose_base_for_ones"
-      },
-      "alternative": "borrow_across_zero_no_cascade",
-      "material_incompatibility": "Finding 301 minus 167 asks for a hundred decomposed into tens and then a ten decomposed into ones, because the tens place holds 0. Taking ones straight from the hundred skips the tens and leaves that column unaccounted.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit3/lesson11.md",
-        "fragments": [
-          {
-            "line": 255,
-            "text": "decomposed into tens, and then a ten decomposed"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U3-L12",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "count_up_missing_addend"
-      },
-      "alternative": "answer_as_endpoint_count_up",
-      "material_incompatibility": "The printed reasoning counts up from 478 to 600 and reports the 122 covered on the way. The 600 is the endpoint the problem already names.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit3/lesson12.md",
-        "fragments": [
-          {
-            "line": 213,
-            "text": "count up 122 to get to 600."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U4-L7",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The task supplies 6 boxes with 8 erasers in each and asks for the total erasers, so the 6 counts boxes and the 8 counts erasers in one box. Adding them treats a box count as an eraser count and returns 14 where the situation holds 48.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit4/lesson7.md",
-        "fragments": [
-          {
-            "line": 275,
-            "text": "There are 6 boxes. Each box has 8 erasers."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U6-L5",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The warm-up asks for 3 times 13, and the printed reasoning builds 39 from 3 tens plus three more groups of 3. Adding 3 and 13 returns 16, which counts neither the groups nor what fills them.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit6/lesson5.md",
-        "fragments": [
-          {
-            "line": 113,
-            "text": "39: 3 × 10 = 30. I just added 3, more groups of 3"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U6-L15",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The barn shares 91 liters of water across 7 sheep and asks how much each sheep gets. The 7 counts how many shares the total breaks into, so it cannot also name the size of one share.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit6/lesson15.md",
-        "fragments": [
-          {
-            "line": 194,
-            "text": "You visited a barn with 7 sheep."
-          },
-          {
-            "line": 195,
-            "text": "Together, the sheep are given 91"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U7-L5",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "shape_classification_by_defining_attributes"
-      },
-      "alternative": "orientation_bound_shape_classification",
-      "material_incompatibility": "The synthesis calls a shape a rhombus by its 4 sides of equal length and a rectangle by its 4 right angles. Orientation enters none of these descriptions, so a shape resting on a vertex keeps every name it had.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit7/lesson5.md",
-        "fragments": [
-          {
-            "line": 211,
-            "text": "4 sides that are the same length."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G4-U5-L8",
-      "intended_action": {
-        "operation": "measurement",
-        "kind": "unit_conversion_by_iteration"
-      },
-      "alternative": "change_unit_label_without_scaling",
-      "material_incompatibility": "The lesson has students describe a kilometer as 1,000 times the length of a meter. Relabeling a measurement from kilometers to meters without carrying that factor leaves the number unchanged where the conversion has to multiply it.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade4/unit5/lesson8.md",
-        "fragments": [
-          {
-            "line": 5,
-            "text": "1,000 times the length of a meter"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L3",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "coordinate_groups_items"
-      },
-      "alternative": "add_counts_without_composite_unit",
-      "material_incompatibility": "The lesson has students draw circled groups so that one circle holds one batch of the recipe. Adding the ingredient counts across batches loses the batch as a unit, and the batch is what the diagram is built to carry.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Draw and label a discrete diagram with circled groups to represent multiple batches of a recipe."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L9",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The lesson asks for the distance an object covers in one unit of time, which shares a measured distance across the seconds it took. The count of seconds says how many shares there are, so it cannot also name the distance in one of them.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Calculate the distance that an object travels in 1 unit of time"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L5",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "The lesson reads a ratio a : b through its unit rates a/b and b/a. Adding the same amount to both terms leaves a pair whose quotient is no longer a/b, so it does not carry the rate the lesson holds fixed.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Calculate and interpret the two unit rates associated with a ratio, i.e., a/b and b/a for the ratio a:b"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L10",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "The lesson reads a percentage as a rate per 100 and lines coin values up against a dollar's 100 cents. Adding a fixed amount to both the coin value and the 100 changes the quotient, so the pair no longer names the same percentage.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_purpose",
-            "text": "expressing coin values as percentages of a dollar (100 cents)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U4-L4",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The lesson's How many groups? problems hand students the size of one group and ask how many such groups the total holds. Sharing the total into as many groups as the divisor names reads that size as a count.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Create a diagram to represent and solve a problem asking \"How many groups?\" in which the size of a group is a fraction and the answer is a whole number"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U4-L7",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The lesson asks how many groups of a given size fit inside a total, and here the answer is a fraction of one group. Treating the given size as a number of groups to share into reverses which quantity is known and which is asked for.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "Create a tape diagram to represent and solve a problem asking \"How many groups?\" in which the number of groups is a fraction less than 1"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U2-L7",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The tables ask for quotients like cost per person and dollars per pound, each sharing a row's total across the count beside it. That count says how many shares there are, so it cannot also name the size of one.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "cost per person, minutes per lap, dollars per pound, dollars per ounce, meters per minute"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U2-L12",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The warm-up's printed reasoning divides 3 wholes into 6 groups and reports what falls to one group. The 6 counts the groups, so reading it as the share size returns a number the item already supplies.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "divide 3 wholes into 6 groups"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U2-L14",
-      "intended_action": {
-        "operation": "division",
-        "kind": "missing_factor_known_product_search"
-      },
-      "alternative": "reject_known_product_match",
-      "material_incompatibility": "Problem 2 divides 48 tablespoons by 3 cups to reach 16 tablespoons per cup, the factor that pairs with 3 to make the known product 48. Turning that pairing down leaves the constant of proportionality unfound.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "a unit-rate division to find the constant of proportionality (48 tablespoons / 3 cups = 16 tablespoons per cup, Problem 2, operands stated in running text on page 263)"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U2-L10",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The guide has teachers monitor for counting on from the greater addend, so that addend is already counted when the rest is added. Counting every object from one starts the count over and discards it.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit2/lesson10.md",
-        "fragments": [
-          {
-            "line": 175,
-            "text": "counting on from the greater addend"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U2-L15",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "The printed response matches a row of 4 shapes against a row of 6 and labels the 2 that stay unmatched. The 6 is a count the problem already supplies, so returning it answers a question the task has not asked.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit2/lesson15.md",
-        "fragments": [
-          {
-            "line": 270,
-            "text": "labels the 2 unmatched shapes"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U2-L19",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "count_up_missing_addend"
-      },
-      "alternative": "answer_as_endpoint_count_up",
-      "material_incompatibility": "The problem names 9 students looking for bugs and 5 of them looking in the grass, then asks about the rest. The 9 is the total the problem already states, so reporting it leaves the 4 in the trees uncounted.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit2/lesson19.md",
-        "fragments": [
-          {
-            "line": 199,
-            "text": "How many students look in the trees?"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U4-L18",
-      "intended_action": {
-        "operation": "counting",
-        "kind": "place_value_comparison"
-      },
-      "alternative": "compare_ones_digits_only",
-      "material_incompatibility": "The center has students place two-digit numbers so the board reads from least to greatest. Ordering by the ones digit alone drops the tens, which is where the relative magnitude of two-digit numbers is settled.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit4/lesson18.md",
-        "fragments": [
-          {
-            "line": 116,
-            "text": "the numbers across the board go from least to greatest."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U5-L8",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The warm-up's printed reasoning starts at 68 and counts on two more. Counting every unit from one abandons the 68 the expression already names.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit5/lesson8.md",
-        "fragments": [
-          {
-            "line": 97,
-            "text": "I counted on, 68...69, 70."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U6-L2",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The warm-up's printed reasoning holds 45 and counts on by tens from there. Counting every unit from one drops the 45 the expression already names.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit6/lesson2.md",
-        "fragments": [
-          {
-            "line": 107,
-            "text": "Add 2 tens. 45, 55"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U6-L4",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "make_ten_drop_leftover",
-      "material_incompatibility": "The printed reasoning splits the 6 into the 1 that completes a ten and the 5 that remains, reaching 15. Stopping at the ten leaves those 5 out of the sum.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit6/lesson4.md",
-        "fragments": [
-          {
-            "line": 94,
-            "text": "15: 9 and 1 is 10, and then 5 more is 15."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U6-L15",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "compare_by_matching_difference"
-      },
-      "alternative": "compare_returns_larger_count",
-      "material_incompatibility": "Mai made 8 frogs and Diego made 17, and the problem asks how many more Diego made. The 17 is a count the problem already states, so the answer is the 9 that separates them.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit6/lesson15.md",
-        "fragments": [
-          {
-            "line": 165,
-            "text": "Mai made 8 frogs."
-          },
-          {
-            "line": 166,
-            "text": "Diego made 17 frogs."
-          },
-          {
-            "line": 168,
-            "text": "How many more frogs did"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U6-L16",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "base_ones_chunking"
-      },
-      "alternative": "dropped_ones_chunk",
-      "material_incompatibility": "The printed reasoning reads 65 as 6 tens and 5 ones and adds 20 to the tens, carrying the 5 ones through to 85. Dropping the ones chunk returns 80.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit6/lesson16.md",
-        "fragments": [
-          {
-            "line": 98,
-            "text": "65 has 6 tens and 5 ones. If I add 20 then I have 8 tens and 5 ones."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U7-L6",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "shape_classification_by_defining_attributes"
-      },
-      "alternative": "orientation_bound_shape_classification",
-      "material_incompatibility": "The lesson sorts defining from nondefining attributes of rectangles and squares, and the defining ones are four straight sides and four square corners. Orientation sits among the attributes the lesson sets aside.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit7/lesson6.md",
-        "fragments": [
-          {
-            "line": 36,
-            "text": "The purpose of this lesson is for students to identify defining and nondefining attributes of rectangles and squares."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U7-L8",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "make_ten_drop_leftover",
-      "material_incompatibility": "The Number Talk asks students to decompose an addend to make a ten and then add what remains. Stopping at the ten leaves the remaining addends out of the sum.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit7/lesson8.md",
-        "fragments": [
-          {
-            "line": 79,
-            "text": "and add the remaining addends to find the sum"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U7-L16",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "make_ten_split_leftover"
-      },
-      "alternative": "make_ten_drop_leftover",
-      "material_incompatibility": "The printed reasoning splits the 8 into the 2 that carries 38 to 40 and the 6 that remains, reaching 46. Stopping at 40 leaves those 6 out.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit7/lesson16.md",
-        "fragments": [
-          {
-            "line": 109,
-            "text": "46: 38 + 2 + 6 = 46"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U8-L2",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The printed reasoning holds 4 and counts on five numbers to reach 9. Counting every object from one discards the 4 the equation already supplies.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit8/lesson2.md",
-        "fragments": [
-          {
-            "line": 260,
-            "text": "I started at 4 and counted on 5"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U8-L3",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The synthesis breaks 6 into 3 and 3, takes the first 3 from 13 to land on 10, and then takes the second 3. Stopping at 10 leaves that second 3 unsubtracted.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit8/lesson3.md",
-        "fragments": [
-          {
-            "line": 177,
-            "text": "13 to get to 10, and then took the other 3 away."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G1-U8-L4",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "count_up_missing_addend"
-      },
-      "alternative": "answer_as_endpoint_count_up",
-      "material_incompatibility": "The synthesis says the unknown is the amount added on, not the total it reaches. Reporting the endpoint returns a number the story already gives.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade1/unit8/lesson4.md",
-        "fragments": [
-          {
-            "line": 311,
-            "text": "The number you added on is the unknown number."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G5-U1-L9",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "composite_prism_volume_sum"
-      },
-      "alternative": "sum_overlapping_prism_volumes",
-      "material_incompatibility": "The lesson finds the volume of a figure built from two non-overlapping prisms by adding the volumes of the parts. Parts that overlap would count the shared region twice.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade5/unit1/lesson9.md",
-        "fragments": [
-          {
-            "line": 12,
-            "text": "non-overlapping right rectangular prisms"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G5-U6-L7",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The printed reasoning takes 6 laps of a 264 1/2 yard perimeter and multiplies to reach 1,587 yards. Adding the lap count to the lap length treats a count of laps as a length.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade5/unit6/lesson7.md",
-        "fragments": [
-          {
-            "line": 281,
-            "text": "6 × 2641/2 yards"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U9-L8",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "base_ones_chunking"
-      },
-      "alternative": "dropped_ones_chunk",
-      "material_incompatibility": "The number talk works 29 + 35 by naming the ones, 9 and 5, and the tens, 20 and 30, before putting them back together as 64. Dropping the ones chunk stops the count once the tens are in and loses the part the routine asks students to hold onto.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit9/lesson8.md",
-        "fragments": [
-          {
-            "line": 110,
-            "text": "First I added the ones, 9 + 5 = 14"
-          },
-          {
-            "line": 111,
-            "text": "14 and 50 to get 64"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U1-L15",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The problem gives 9 boxes holding 5 shirts each and asks how many shirts there are. Adding 9 to 5 puts a count of boxes into the same total as a count of shirts, so the 9 stops saying how many times the 5 repeats.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson15.md",
-        "fragments": [
-          {
-            "line": 254,
-            "text": "A store has 9 boxes. Each box has 5 shirts."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U2-L10",
-      "intended_action": {
-        "operation": "geometry",
-        "kind": "rectangle_area_unit_iteration"
-      },
-      "alternative": "area_as_perimeter_count",
-      "material_incompatibility": "Noah's wall holds 3 square meters in each of 6 columns, so the 18 interior squares are what a container of paint has to cover. Counting the units along the boundary measures the wall's edge and leaves that interior uncounted.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md",
-        "fragments": [
-          {
-            "line": 181,
-            "text": "I counted by 3 six times since I pictured 3"
-          },
-          {
-            "line": 182,
-            "text": "squares in each column and 6 columns. I multiplied 3"
-          },
-          {
-            "line": 183,
-            "text": "by 6 and got 18."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G3-U8-L9",
-      "intended_action": {
-        "operation": "multiplication",
-        "kind": "repeat_equal_groups"
-      },
-      "alternative": "add_instead_of_multiply",
-      "material_incompatibility": "The number talk asks for the total in 4 groups of 24, which students reach from the 4 groups of 25 they already know. Adding 4 to 24 treats a count of groups as more of the thing being grouped, and 24 stops saying how much one group holds.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade3/unit8/lesson9.md",
-        "fragments": [
-          {
-            "line": 116,
-            "text": "4 groups of 24"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L13",
-      "intended_action": {
-        "operation": "division",
-        "kind": "fair_share_equal_groups"
-      },
-      "alternative": "name_group_count_as_share_size",
-      "material_incompatibility": "The lesson shares 2 cloves across 3 tablespoons to reach 2/3 of a clove in each tablespoon. The 3 counts the tablespoons the cloves are spread over, so it cannot also say how much garlic one tablespoon holds.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "2 cloves shared over 3 tablespoons = 2/3 clove per tablespoon"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U2-L9",
-      "intended_action": {
-        "operation": "division",
-        "kind": "measure_groups_of_size"
-      },
-      "alternative": "share_into_divisor_groups",
-      "material_incompatibility": "The Info Gap cards give a total of 9000 or 8000 meters and a speed covering 300 or 250 meters in a minute, and the division asks how many of those minute-sized lengths the total holds. Reading the 300 as a number of shares returns meters per share, a quantity the card already states.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "the Info Gap time divisions (9000/300, 8000/250)"
-          },
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "how many minute-sized meter-chunks fit"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G2-U1-L12",
-      "intended_action": {
-        "operation": "subtraction",
-        "kind": "take_away_base_ones"
-      },
-      "alternative": "drop_ones_after_base_takeaway",
-      "material_incompatibility": "The lesson requires subtracting the ones (7) from 17 to reach 10 and then subtracting the remaining ones (2) to find the difference. The alternative discards the second subtraction.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/grade2/unit1/lesson12.md",
-        "fragments": [
-          {
-            "line": 98,
-            "text": "8: I knew that 17- 7 = 10 , and then I took away 2 more."
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U2-L7",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "The lesson defines the relationship between quantities as how much exists for every single unit of another, which the alternative would treat as a constant additive difference.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_purpose",
-            "text": "how much of one quantity there is for every one unit of the other quantity"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G6-U3-L3",
-      "intended_action": {
-        "operation": "ratio",
-        "kind": "scale_ratio_unit"
-      },
-      "alternative": "additive_extension_of_ratio",
-      "material_incompatibility": "Students relate measurements in different units as equivalent ratios. The alternative would treat the relationship between these units as a constant difference, ignoring the multiplicative scaling.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_goal",
-            "text": "the pairs of measurements are equivalent ratios"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-G7-U4-L8",
-      "intended_action": {
-        "operation": "division",
-        "kind": "missing_factor_known_product_search"
-      },
-      "alternative": "reject_known_product_match",
-      "material_incompatibility": "Students divide the new amount to determine the original amount, but the alternative fails to recognize the new amount as the target product.",
-      "source_kind": "vision_digest",
-      "source": {
-        "kind": "fact",
-        "path": "curriculum/im/generated/vision_lesson_digest.pl",
-        "fragments": [
-          {
-            "predicate": "vision_lesson_boundary",
-            "text": "divide to find the unknown factor"
-          }
-        ]
-      }
-    },
-    {
-      "lesson": "IM-GK-U8-L15",
-      "intended_action": {
-        "operation": "addition",
-        "kind": "count_on_from_larger"
-      },
-      "alternative": "count_all_when_count_on_available",
-      "material_incompatibility": "The lesson identifies 1 more than 4 as 5, which the alternative would ignore by counting all items from 1.",
-      "source_kind": "activity_guidance",
-      "source": {
-        "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md",
-        "fragments": [
-          {
-            "line": 256,
-            "text": "4 and"
-          },
-          {
-            "line": 257,
-            "text": "1 more is 5"
-          }
-        ]
-      }
-    }
-  ]
+ "schema": "lesson_negative_receipts_v3",
+ "register": "Reviewed lesson-source excerpts establish a specific counterpossibility for the named lesson action. A file-backed source fragment identifies a physical line and quotes it verbatim. A fact-backed source fragment identifies an allowlisted generated vision-digest predicate and quotes that fact value verbatim. A registry-derived candidate does not enter this file until a local source excerpt supports the lesson-level attribution. Mapping reviews distinguish an absent compiled extraction from an extraction that names a different action.",
+ "receipts": [
+  {
+   "lesson": "IM-G1-U2-L12",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "This activity's Compare, Difference Unknown problems ask how many more or how many fewer, and the guide names matching the two sets and counting the items left without a partner. The unpaired count answers the question; the size of the larger set is a quantity the problem already supplies.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit2/lesson12.md",
+    "fragments": [
+     {
+      "line": 271,
+      "text": "Match the sets and then count how many don’t have a partner."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U2-L18",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "The teacher guide suggests counting on from 6 to 9 to determine the missing addend (the difference), which is incompatible with the error of identifying the endpoint (9) as the final answer.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit2/lesson18.md",
+    "fragments": [
+     {
+      "line": 318,
+      "text": "We could count on from 6 to 9"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U6-L14",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "The problem supplies both quantities, Noah's 6 stamps and Tyler's 16, and asks how many fewer Noah has. The answer is the 10 that separates them, so reporting Tyler's 16 returns a count the problem already states.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit6/lesson14.md",
+    "fragments": [
+     {
+      "line": 304,
+      "text": "How many fewer stamps does Noah have than"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U8-L6",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "The lesson's purpose is to solve 'Difference Unknown' problems, meaning the required answer is the difference between two quantities; answering with the larger count fails to identify this difference.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit8/lesson6.md",
+    "fragments": [
+     {
+      "line": 34,
+      "text": "The purpose of this lesson is for students to solve Compare, Difference Unknown story problems."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U1-L16",
+   "mapping_review": {
+    "finding": "compiled_extraction_disagreed_with_receipt",
+    "decision": "receipt_supported",
+    "compiled_actions": [
+     {
+      "operation": "subtraction",
+      "kind": "compare_by_matching_difference"
+     }
+    ],
+    "support": "source.fragments"
+   },
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "solve_difference_unknown_for_greater_unknown",
+   "material_incompatibility": "A difference-unknown calculation answers how many more, while the task asks for the greater quantity produced by combining the smaller quantity and the difference.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit1/lesson16.md",
+    "fragments": [
+     {
+      "line": 360,
+      "text": "Students find the value of the difference between 17 and"
+     },
+     {
+      "line": 361,
+      "text": "rather than the value of the sum"
+     },
+     {
+      "line": 362,
+      "text": "of 17 and 9 (greater unknown)."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U2-L13",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The sample response describes the process of \"adding on... to 3 tens and 2 ones,\" which identifies the known quantity as the starting point for counting; counting all from one would ignore this provided starting value.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit2/lesson13.md",
+    "fragments": [
+     {
+      "line": 378,
+      "text": "adding on 2 more tens and 5 more ones to 3 tens and 2 ones"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U2-L14",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "add_change_to_only_one_prior_addend",
+   "material_incompatibility": "Adding the new seeds to one earlier addend omits the other part of the prior total and therefore does not preserve the composed quantity being updated.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit2/lesson14.md",
+    "fragments": [
+     {
+      "line": 388,
+      "text": "Students add the 38 new seeds in the second problem to"
+     },
+     {
+      "line": 389,
+      "text": "only one addend from the first problem."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L18",
+   "mapping_review": {
+    "finding": "absent_from_compiled_extraction",
+    "decision": "receipt_supported",
+    "compiled_actions": [],
+    "support": "source.fragments"
+   },
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "array_expression_role_mismatch",
+   "material_incompatibility": "An expression whose factors do not represent the array's rows and objects per row fails to preserve the represented equal-groups structure.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson18.md",
+    "fragments": [
+     {
+      "line": 337,
+      "text": "Students write a multiplication expression that does not"
+     },
+     {
+      "line": 338,
+      "text": "match the array they created"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L19",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The task supplies 7 rows with 5 crayons in each and asks for the total number of crayons, so the 7 counts rows and the 5 counts crayons inside one row. Adding the two numbers treats a row count as a crayon count, and the printed response reaches 35 by skip-counting 5 across the seven rows.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson19.md",
+    "fragments": [
+     {
+      "line": 141,
+      "text": "There are 7 rows. Each row has 5 crayons."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L9",
+   "mapping_review": {
+    "finding": "absent_from_compiled_extraction",
+    "decision": "receipt_supported",
+    "compiled_actions": [],
+    "support": "source.fragments"
+   },
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "reverse_group_count_and_group_size",
+   "material_incompatibility": "The response exchanges the number of groups with the number in each group, so the representation no longer preserves the roles named in the situation.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson9.md",
+    "fragments": [
+     {
+      "line": 401,
+      "text": "Students indicate that they mixed up the number of"
+     },
+     {
+      "line": 402,
+      "text": "groups and the number of objects in each group by"
+     },
+     {
+      "line": 403,
+      "text": "making 5 groups of 3."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U2-L3",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "rectangle_area_unit_iteration"
+   },
+   "alternative": "area_as_perimeter_count",
+   "material_incompatibility": "The lesson defines area as the number of square units that 'cover a flat figure', which is incompatible with counting only the perimeter (the boundary) of the shape.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit2/lesson3.md",
+    "fragments": [
+     {
+      "line": 5,
+      "text": "the number of square units that cover a flat figure with no gaps or overlaps"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U4-L1",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "represent_group_count_as_group_size",
+   "material_incompatibility": "Representing six bags rather than six apples in each bag exchanges the sought number of groups with the divisor that fixes each group size.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit4/lesson1.md",
+    "fragments": [
+     {
+      "line": 324,
+      "text": "Students represent 6 bags of apples instead of 6 apples in"
+     },
+     {
+      "line": 325,
+      "text": "each bag."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U4-L6",
+   "mapping_review": {
+    "finding": "compiled_extraction_disagreed_with_receipt",
+    "decision": "receipt_corrected_to_compiled_action",
+    "compiled_actions": [
+     {
+      "operation": "division",
+      "kind": "measure_groups_of_size"
+     }
+    ],
+    "support": "source.fragments"
+   },
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "different_unknowns_in_inverse_equations",
+   "material_incompatibility": "Assigning different unknown values to equations that represent the same situation breaks the multiplication-division relation the paired equations retain.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit4/lesson6.md",
+    "fragments": [
+     {
+      "line": 329,
+      "text": "Students say that different numbers should be used to"
+     },
+     {
+      "line": 330,
+      "text": "complete each equation."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U7-L13",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "rectangle_perimeter_boundary_traversal"
+   },
+   "alternative": "perimeter_two_sides_only",
+   "material_incompatibility": "The Activity Synthesis asks students to explain the perimeter of a rectangle, and the printed reasoning doubles the short sides and the long sides before adding them, so all four sides enter the total. Summing one short side and one long side leaves the second pair of sides out of the measure.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit7/lesson13.md",
+    "fragments": [
+     {
+      "line": 282,
+      "text": "I doubled the short sides, then"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U7-L14",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "rectangle_perimeter_boundary_traversal"
+   },
+   "alternative": "perimeter_two_sides_only",
+   "material_incompatibility": "The sample response for the cool-down justifies multiplying the sum of two sides by 2 by noting that there is 'another set of sides,' which contradicts the mistake of calculating perimeter using only two sides.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit7/lesson14.md",
+    "fragments": [
+     {
+      "line": 371,
+      "text": "multiplied by 2 since there would be another set of sides that were 9 inches and 6 inches"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U7-L9",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "polygon_perimeter_boundary_accumulation"
+   },
+   "alternative": "omit_unlabeled_rectangle_sides",
+   "material_incompatibility": "Naming only the opposite equal side leaves two boundary segments unaccounted for, so it cannot determine the rectangle's complete perimeter.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit7/lesson9.md",
+    "fragments": [
+     {
+      "line": 328,
+      "text": "Students identify the side that is 32 feet long"
+     },
+     {
+      "line": 329,
+      "text": "but not the other two sides of the"
+     },
+     {
+      "line": 330,
+      "text": "swimming pool."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U5-L7",
+   "intended_action": {
+    "operation": "measurement",
+    "kind": "unit_conversion_by_iteration"
+   },
+   "alternative": "compare_raw_numerals_ignore_unit_scale",
+   "material_incompatibility": "Comparing 62 with 1 without coordinating centimeters and meters conflicts with the conversion relation that one meter is one hundred centimeters.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit5/lesson7.md",
+    "fragments": [
+     {
+      "line": 344,
+      "text": "Students may say that 62 centimeters is longer than 1"
+     },
+     {
+      "line": 345,
+      "text": "meter because 62 is greater than 1."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U1-L11",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "composite_prism_volume_sum"
+   },
+   "alternative": "sum_overlapping_prism_volumes",
+   "material_incompatibility": "The lesson specifies calculating the volume of composite figures by summing the volumes of 'non-overlapping' parts, which is incompatible with the alternative of summing volumes of 'overlapping' prisms that would result in double-counting.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit1/lesson11.md",
+    "fragments": [
+     {
+      "line": 41,
+      "text": "non-overlapping right rectangular prisms"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U2-L1",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "discard_unshared_remainder",
+   "material_incompatibility": "The response leaves part of the available sandwich undistributed, while equal sharing requires the full available quantity to be partitioned among the people.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit2/lesson1.md",
+    "fragments": [
+     {
+      "line": 215,
+      "text": "There may be fewer people than sandwiches"
+     },
+     {
+      "line": 216,
+      "text": "students only share whole sandwiches"
+     },
+     {
+      "line": 217,
+      "text": "people share 5 sandwiches and each gets 2"
+     },
+     {
+      "line": 218,
+      "text": "If students ignore the extra sandwich"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U4-L19",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The question asks for the number of days required to fill a cargo container, which requires determining how many groups of a specific size (daily production) fit into a total volume, making it incompatible with the action of sharing a total into a fixed number of groups.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit4/lesson19.md",
+    "fragments": [
+     {
+      "line": 262,
+      "text": "does it take for a school to fill one cargo"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U5-L6",
+   "intended_action": {
+    "operation": "decimal",
+    "kind": "decimal_comparison_by_aligned_units"
+   },
+   "alternative": "decimal_numeral_comparison_without_scale_alignment",
+   "material_incompatibility": "The lesson requires students to determine the relative magnitude of decimals by identifying which number is 'farther to the right' on a scale with specific tick marks, which is incompatible with comparing the numerals without utilizing a scale alignment.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit5/lesson6.md",
+    "fragments": [
+     {
+      "line": 265,
+      "text": "see which number is farther to the right.)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L11",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "The lesson builds each new row of a table by multiplying both entries of an equivalent ratio by a single factor, and the factors it supplies include 0.5 and 0.25 alongside whole numbers. Adding a fixed amount to each entry instead produces a pair the lesson's own rule for filling rows does not admit.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "multiplying both parts of an equivalent ratio by a whole-number, unit-fraction, or decimal factor to produce a table or double-number-line entry"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L12",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "Practice 4 shares 3,600 seconds across 72 quarter-dollars and requires the 50 seconds that fall to each quarter. The 72 counts how many shares the total breaks into, so it cannot also name the size of one share.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "the extracted functor divide(3600,72)=50 is a partitive fair-share division (3,600 seconds shared across 72 quarter-dollars = 50 seconds each)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L15",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The lesson requires calculating 'N parts x value-per-part' products using repeat_equal_groups; adding the number of parts and the value per part instead of multiplying them is mathematically incompatible with finding the total quantity.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "repeat_equal_groups for the \"N parts x value-per-part\" products"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L16",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "Each of these divisions counts how many equal groups a total holds, 91 in groups of 7 and 72 in groups of 9, and the divisor names the size of one group. Reading that divisor as a count of groups returns a share size where the task requires a group count.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "finding either the number of equal groups (measure_groups_of_size: 72/9, 8/2, 91/7, 12/3)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L2",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "construct_referent_ratio_diagram"
+   },
+   "alternative": "reverse_ratio_referent_order",
+   "material_incompatibility": "The lesson has students read and write ratio sentences on the frame \"The ratio of these to those is a : b. For every a of these, there are b of those,\" which binds the first referent to a and the second to b. Naming the referents in reverse order while keeping a : b attaches b to the quantity the sentence counts a of.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "The ratio of these to those is a : b. The ratio of these to those is a to b. For every a of these, there are b of those."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L5",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "The lesson purpose specifies that equivalent ratios are generated by \"multiplying both a and b by the same number,\" which is mathematically incompatible with an additive extension of the ratio.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_purpose",
+      "text": "all ratios that are equivalent to a : b can be generated by multiplying both a and b by the same number"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L8",
+   "intended_action": {
+    "operation": "division",
+    "kind": "missing_factor_known_product_search"
+   },
+   "alternative": "stop_at_nearby_product_in_search",
+   "material_incompatibility": "The warm-up is a mental Math Talk closing on 246 divided by 12, and its printed reasoning names 20.5 x 12 = 246. A search that halts at 20 x 12 = 240 leaves 6 of the 246 outside the quotient, where the material requires that remainder to become half a group of 12.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "the warm-up is a mental Math Talk whose sample reasoning is 20½·12=246 (missing_factor_known_product_search, matching the other three warm-up items)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L2",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The lesson employs \"measurement division to count teaspoons for a target volume\", which identifies how many units of a specific size fit into a total, whereas the alternative incorrectly interprets the divisor as the number of groups to be filled.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "measurement division to count teaspoons for a target volume"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L4",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "The lesson decides which speed or price is better by dividing one quantity in a ratio by the other and comparing the value per 1: 4,200 meters in 30 minutes and 6,300 meters in 45 minutes both give 140 meters per minute. Adding the same amount to each term of a ratio changes that quotient, so it cannot produce the pairs this lesson counts as equivalent.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_purpose",
+      "text": "dividing one quantity in a ratio by the other is an efficient way to find a rate per 1"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L6",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The lesson's rate divisions share a total over a count of units and require the amount one unit carries: 14 over 2 yields the 7 that then multiplies to 28 and 70 in the same table. Naming the count of units as that amount leaves the remaining entries without the factor they are built from.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "partitive rate-finding (total shared over N units to get a per-unit rate: $/binder, tomatoes/onion, $/oz, m/s speed, lb/kg) reads as fair_share_equal_groups"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L8",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The lesson requires partitioning a total into equal parts to find unit rates (classified as fair_share_equal_groups), such as determining meters per third of a climb; the error name_group_count_as_share_size occurs when a student mistakenly identifies the number of parts as the size of the resulting share.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "Divisions that find a rate per 1 (or per equal part of a whole) are partitive and classified fair_share_equal_groups"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U4-L10",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The divisor in each non-unit-fraction division names the size of one group, so 6 divided by 3/4 asks how many three-quarters fit in 6. Sharing a total into a number of groups needs a count in that position, and the lesson supplies a fraction there instead.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "how many a/b fit in n"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U4-L17",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The lesson tasks involve determining the number of shipping boxes required to hold a set number of necklaces, which the facts explicitly identify as 'quotitive measurement division (measure_groups_of_size)', a process incompatible with sharing a total into a fixed number of divisor groups.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "The four \"shipping boxes needed\" events are quotitive measurement division (measure_groups_of_size)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U4-L6",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The lesson is strictly limited to quotitive division, where the goal is to determine how many groups of a specific size fit in a total, which is incompatible with the partitive action of sharing into a set number of groups.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "Every task event is quotitive (\"how many groups of a given size fit in a total\") division"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U5-L7",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "distribute_group_size_split"
+   },
+   "alternative": "drop_second_partial_product",
+   "material_incompatibility": "The lesson requires students to calculate products by decomposing factors and finding all partial products; omitting the second partial product is a direct failure of this decomposition process.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Calculate the product of two decimals by decomposing each factor by place value and finding partial products."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U5-L9",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The lesson boundary specifies that tasks are 'partitive fair-share division' where 'an amount is split into a stated number of equal-size groups,' establishing that the divisor is the number of groups, which is incompatible with misidentifying the group count as the share size.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "All six retained tasks are partitive fair-share division: an amount is split into a stated number of equal-size groups"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L1",
+   "intended_action": {
+    "operation": "integer",
+    "kind": "signed_number_location_and_order"
+   },
+   "alternative": "order_by_magnitude_ignore_sign",
+   "material_incompatibility": "The lesson's focus on number-line location requires students to understand how negative signs determine a number's value and position relative to zero, which is incompatible with the deformation of ordering numbers by magnitude while ignoring the sign.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "This lesson's on-target demand is number-line location"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L13",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "The lesson asks for the vertical distance between two plotted points and states those distances: 28 and 26 give 2, and 21 and 11 give 10. An answer that returns the larger coordinate names a position on the axis rather than the gap between the points.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "its own activities demand only subtraction, which the vocabulary covers via compare_by_matching_difference"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L14",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "axis_aligned_coordinate_distance"
+   },
+   "alternative": "directed_difference_as_coordinate_distance",
+   "material_incompatibility": "Practice problem 2 asks for distances between points that share an x-coordinate, two of the pairs at negative y-values, and the lesson records the lengths as 1, 3, and 2. Subtracting those coordinates in one of the two orders returns a negative change, which the recorded lengths rule out as a distance.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "returns abs(DirectedDifference)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L15",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The practice set asks for a square's side length from its perimeter and records 20 divided by 4 as 5. Naming the four sides as the length reports how many parts the perimeter splits into instead of the size of one part.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "square-side-from-perimeter as fair_share_equal_groups division"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L16",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "common_factor_intersection"
+   },
+   "alternative": "factors_of_first_number_only",
+   "material_incompatibility": "The lesson defines common factors as those that 'both numbers share', which is incompatible with only identifying the factors of the first number.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_purpose",
+      "text": "common factors of two whole numbers as factors that both numbers share"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L5",
+   "intended_action": {
+    "operation": "integer",
+    "kind": "signed_number_location_and_order"
+   },
+   "alternative": "order_by_magnitude_ignore_sign",
+   "material_incompatibility": "The lesson requires students to 'represent changes in a quantity in opposite directions' (such as money received vs. paid), a task that is incompatible with the deformation of ignoring the sign and ordering or interpreting based only on magnitude, which would treat opposite directions as identical.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Recognize that signed numbers can be useful to represent changes in a quantity in opposite directions, e.g., money received and money paid, inventory bought and inventory sold, etc."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U7-L6",
+   "intended_action": {
+    "operation": "integer",
+    "kind": "signed_number_location_and_order"
+   },
+   "alternative": "order_by_magnitude_ignore_sign",
+   "material_incompatibility": "The lesson requires students to 'Compare rational numbers and their absolute values', which necessitates distinguishing between a number's actual value (location/order) and its distance from zero; ordering by magnitude while ignoring the sign incorrectly treats the signed number as its absolute value.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Compare rational numbers and their absolute values, and explain (orally and in writing) the reasoning."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U2-L4",
+   "intended_action": {
+    "operation": "division",
+    "kind": "inverse_fact_decomposition"
+   },
+   "alternative": "stop_after_one_known_fact",
+   "material_incompatibility": "The table for y = 16/x records the completions 16, 8, 4, and 2, each an exact quotient with nothing left over. A decomposition halted after its first known multiple names a partial count and leaves part of the 16 undivided, which the recorded completions rule out.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "The y = 16 divided by x completions (page 139 part a: 16, 8, 4, 2) were reclassified from long_division to inverse_fact_decomposition"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U4-L4",
+   "intended_action": {
+    "operation": "division",
+    "kind": "long_division"
+   },
+   "alternative": "sum_dividend_and_divisor",
+   "material_incompatibility": "The lesson's one task divides 5 by 12 and records 0.41666..., a repeating decimal below 1. Adding the dividend to the divisor returns 17 and no decimal expansion, which the recorded quotient rules out.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Use long division to generate a decimal representation of a fraction."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U4-L5",
+   "intended_action": {
+    "operation": "division",
+    "kind": "long_division"
+   },
+   "alternative": "sum_dividend_and_divisor",
+   "material_incompatibility": "The lesson purpose describes the iterative process of finding a quotient, stating that 'Long division finds the quotient one digit at a time, from left to right,' which is incompatible with an operation that simply sums the dividend and divisor.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_purpose",
+      "text": "Long division finds the quotient one digit at a time, from left to right."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U5-L1",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "The lesson requires students to determine 'how far apart' signed integers are using a 'difference-by-comparison', which is incompatible with simply returning the larger count of the two values.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "each item asks \"how far apart\" or \"how does X compare to Y,\" which is a difference-by-comparison"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-GK-U8-L18",
+   "mapping_review": {
+    "finding": "absent_from_compiled_extraction",
+    "decision": "receipt_supported",
+    "compiled_actions": [],
+    "support": "source.fragments"
+   },
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "single_decomposition_treated_as_exhaustive",
+   "material_incompatibility": "Stopping after one pair of addends does not satisfy the lesson's demand to find multiple compositions of ten and test whether the set is complete.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md",
+    "fragments": [
+     {
+      "line": 480,
+      "text": "Students do not yet find more than one solution to the"
+     },
+     {
+      "line": 481,
+      "text": "problem."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U2-L4",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The printed reasoning takes 3 tens from 6 tens and 3 ones from 6 ones and names the result 33. Dropping the ones subtraction returns 30.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit2/lesson4.md",
+    "fragments": [
+     {
+      "line": 114,
+      "text": "tens – 3 tens = 3 tens and 6 ones – 3 ones = 3 ones"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U3-L7",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "smaller_from_larger_in_column",
+   "material_incompatibility": "The launch tells students the puzzles may require composing or decomposing a ten to make an equation true. Taking the smaller ones digit from the larger avoids that decomposition and makes the equation false.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit3/lesson7.md",
+    "fragments": [
+     {
+      "line": 142,
+      "text": "composing or decomposing a ten"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U3-L13",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The synthesis takes 3 of the 4 ones in 14 to carry 67 to 70. The remaining 1 still belongs to the sum, so a total that stops at 70 falls short by it.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit3/lesson13.md",
+    "fragments": [
+     {
+      "line": 107,
+      "text": "come from the 4 ones in 14."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U3-L16",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The synthesis makes a ten from 6 and 4 and names the 3 that stay behind. Those 3 belong to the total, so a sum that stops at the ten falls short by them.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit3/lesson16.md",
+    "fragments": [
+     {
+      "line": 107,
+      "text": "and there were 3 left over."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U3-L17",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The printed reasoning takes 30 away, lands on 40, and then takes the remaining 2. Stopping after the tens returns 40 rather than 38.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit3/lesson17.md",
+    "fragments": [
+     {
+      "line": 103,
+      "text": "   • 38: I took away 30 and then I had 40. I took 2 away"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U4-L4",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The printed reasoning takes 1 ten from 35 to reach 25 and then takes the 5 ones to reach 20. Stopping after the ten returns 25.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit4/lesson4.md",
+    "fragments": [
+     {
+      "line": 120,
+      "text": "I took away 1 ten from 35, and then I took away 5"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U4-L6",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The printed reasoning subtracts 25 from 65 and then takes the 2 that remain of the 27. Stopping at 40 leaves those 2 unsubtracted.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit4/lesson6.md",
+    "fragments": [
+     {
+      "line": 104,
+      "text": "took away 2 more because I need to take away 27"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U4-L11",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "smaller_from_larger_in_column",
+   "material_incompatibility": "The activity works 53 minus 29 by decomposing the ones to reach a multiple of ten. Taking the smaller ones digit from the larger reverses 3 and 9 and returns 36 where the difference is 24.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit4/lesson11.md",
+    "fragments": [
+     {
+      "line": 147,
+      "text": "decompose the ones to reach a multiple of 10"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U6-L5",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "The printed reasoning gathers the two 5s into a ten before adding the 30. A sum that drops the ones chunk keeps only the 30.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit6/lesson5.md",
+    "fragments": [
+     {
+      "line": 99,
+      "text": "I know 5 + 5 = 10"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U6-L8",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The printed reasoning takes 10 from 40 and then the 5 that remain of the 15. Stopping after the ten returns 30 rather than 25.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit6/lesson8.md",
+    "fragments": [
+     {
+      "line": 112,
+      "text": "40- 10 = 30 , 30- 5 = 25"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U6-L14",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "shape_classification_by_defining_attributes"
+   },
+   "alternative": "orientation_bound_shape_classification",
+   "material_incompatibility": "The lesson has students name the shapes they find in picture books by their attributes. An illustration sets a shape at whatever angle suits the page, so naming by orientation names the page rather than the shape.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit6/lesson14.md",
+    "fragments": [
+     {
+      "line": 5,
+      "text": "Name (orally and in writing) shapes found in picture books, based on their attributes."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U6-L21",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The Number Talk builds on grouping like coins and counting on from the value already gathered. Counting every coin from one throws away the group total the routine asks students to hold.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit6/lesson21.md",
+    "fragments": [
+     {
+      "line": 79,
+      "text": "used skip-counting or counting on to find the amount of money represented"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L18",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "The center has students add hundreds, tens, and ones to land as near 1,000 as they can. A total that drops the ones chunk misses the target by that much.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson18.md",
+    "fragments": [
+     {
+      "line": 139,
+      "text": "you add hundreds, tens, and ones to get as close to 1,000 as possible."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U9-L9",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "smaller_from_larger_in_column",
+   "material_incompatibility": "The Number Talk collects differences that need a ten decomposed into ones, anchored on known facts like 14 minus 6. Taking the smaller ones digit from the larger avoids the decomposition and returns 12 where the difference is 8.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit9/lesson9.md",
+    "fragments": [
+     {
+      "line": 87,
+      "text": "differences when they may need to decompose a ten"
+     },
+     {
+      "line": 88,
+      "text": "10- 6 or 14- 6"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L3",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "The printed reasoning reads the sum as 7 tens and 8 ones and names it 78. A total that drops the ones chunk returns 70.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson3.md",
+    "fragments": [
+     {
+      "line": 118,
+      "text": "There are 7 tens and 8 ones, so it’s 78."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L10",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "repeat_group_size_by_itself",
+   "material_incompatibility": "The synthesis reads the tape diagram as 4 parts with 5 in each, so the 4 counts groups and the 5 counts what sits inside one. Repeating the 5 by itself counts a group size where the diagram supplies a group count.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson10.md",
+    "fragments": [
+     {
+      "line": 341,
+      "text": "diagram can show the number of groups, and the same number written in each part shows how many in each group."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U3-L11",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "borrow_across_zero_no_cascade",
+   "material_incompatibility": "Finding 301 minus 167 asks for a hundred decomposed into tens and then a ten decomposed into ones, because the tens place holds 0. Taking ones straight from the hundred skips the tens and leaves that column unaccounted.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit3/lesson11.md",
+    "fragments": [
+     {
+      "line": 255,
+      "text": "decomposed into tens, and then a ten decomposed"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U3-L12",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "The printed reasoning counts up from 478 to 600 and reports the 122 covered on the way. The 600 is the endpoint the problem already names.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit3/lesson12.md",
+    "fragments": [
+     {
+      "line": 213,
+      "text": "count up 122 to get to 600."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U4-L7",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The task supplies 6 boxes with 8 erasers in each and asks for the total erasers, so the 6 counts boxes and the 8 counts erasers in one box. Adding them treats a box count as an eraser count and returns 14 where the situation holds 48.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit4/lesson7.md",
+    "fragments": [
+     {
+      "line": 275,
+      "text": "There are 6 boxes. Each box has 8 erasers."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U6-L5",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The warm-up asks for 3 times 13, and the printed reasoning builds 39 from 3 tens plus three more groups of 3. Adding 3 and 13 returns 16, which counts neither the groups nor what fills them.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit6/lesson5.md",
+    "fragments": [
+     {
+      "line": 113,
+      "text": "39: 3 × 10 = 30. I just added 3, more groups of 3"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U6-L15",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The barn shares 91 liters of water across 7 sheep and asks how much each sheep gets. The 7 counts how many shares the total breaks into, so it cannot also name the size of one share.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit6/lesson15.md",
+    "fragments": [
+     {
+      "line": 194,
+      "text": "You visited a barn with 7 sheep."
+     },
+     {
+      "line": 195,
+      "text": "Together, the sheep are given 91"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U7-L5",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "shape_classification_by_defining_attributes"
+   },
+   "alternative": "orientation_bound_shape_classification",
+   "material_incompatibility": "The synthesis calls a shape a rhombus by its 4 sides of equal length and a rectangle by its 4 right angles. Orientation enters none of these descriptions, so a shape resting on a vertex keeps every name it had.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit7/lesson5.md",
+    "fragments": [
+     {
+      "line": 211,
+      "text": "4 sides that are the same length."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U5-L8",
+   "intended_action": {
+    "operation": "measurement",
+    "kind": "unit_conversion_by_iteration"
+   },
+   "alternative": "change_unit_label_without_scaling",
+   "material_incompatibility": "The lesson has students describe a kilometer as 1,000 times the length of a meter. Relabeling a measurement from kilometers to meters without carrying that factor leaves the number unchanged where the conversion has to multiply it.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit5/lesson8.md",
+    "fragments": [
+     {
+      "line": 5,
+      "text": "1,000 times the length of a meter"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L3",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "coordinate_groups_items"
+   },
+   "alternative": "add_counts_without_composite_unit",
+   "material_incompatibility": "The lesson has students draw circled groups so that one circle holds one batch of the recipe. Adding the ingredient counts across batches loses the batch as a unit, and the batch is what the diagram is built to carry.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Draw and label a discrete diagram with circled groups to represent multiple batches of a recipe."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L9",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The lesson asks for the distance an object covers in one unit of time, which shares a measured distance across the seconds it took. The count of seconds says how many shares there are, so it cannot also name the distance in one of them.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Calculate the distance that an object travels in 1 unit of time"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L5",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "The lesson reads a ratio a : b through its unit rates a/b and b/a. Adding the same amount to both terms leaves a pair whose quotient is no longer a/b, so it does not carry the rate the lesson holds fixed.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Calculate and interpret the two unit rates associated with a ratio, i.e., a/b and b/a for the ratio a:b"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L10",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "The lesson reads a percentage as a rate per 100 and lines coin values up against a dollar's 100 cents. Adding a fixed amount to both the coin value and the 100 changes the quotient, so the pair no longer names the same percentage.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_purpose",
+      "text": "expressing coin values as percentages of a dollar (100 cents)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U4-L4",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The lesson's How many groups? problems hand students the size of one group and ask how many such groups the total holds. Sharing the total into as many groups as the divisor names reads that size as a count.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Create a diagram to represent and solve a problem asking \"How many groups?\" in which the size of a group is a fraction and the answer is a whole number"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U4-L7",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The lesson asks how many groups of a given size fit inside a total, and here the answer is a fraction of one group. Treating the given size as a number of groups to share into reverses which quantity is known and which is asked for.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Create a tape diagram to represent and solve a problem asking \"How many groups?\" in which the number of groups is a fraction less than 1"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U2-L7",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The tables ask for quotients like cost per person and dollars per pound, each sharing a row's total across the count beside it. That count says how many shares there are, so it cannot also name the size of one.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "cost per person, minutes per lap, dollars per pound, dollars per ounce, meters per minute"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U2-L12",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The warm-up's printed reasoning divides 3 wholes into 6 groups and reports what falls to one group. The 6 counts the groups, so reading it as the share size returns a number the item already supplies.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "divide 3 wholes into 6 groups"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U2-L14",
+   "intended_action": {
+    "operation": "division",
+    "kind": "missing_factor_known_product_search"
+   },
+   "alternative": "reject_known_product_match",
+   "material_incompatibility": "Problem 2 divides 48 tablespoons by 3 cups to reach 16 tablespoons per cup, the factor that pairs with 3 to make the known product 48. Turning that pairing down leaves the constant of proportionality unfound.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "a unit-rate division to find the constant of proportionality (48 tablespoons / 3 cups = 16 tablespoons per cup, Problem 2, operands stated in running text on page 263)"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U2-L10",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The guide has teachers monitor for counting on from the greater addend, so that addend is already counted when the rest is added. Counting every object from one starts the count over and discards it.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit2/lesson10.md",
+    "fragments": [
+     {
+      "line": 175,
+      "text": "counting on from the greater addend"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U2-L15",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "The printed response matches a row of 4 shapes against a row of 6 and labels the 2 that stay unmatched. The 6 is a count the problem already supplies, so returning it answers a question the task has not asked.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit2/lesson15.md",
+    "fragments": [
+     {
+      "line": 270,
+      "text": "labels the 2 unmatched shapes"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U2-L19",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "The problem names 9 students looking for bugs and 5 of them looking in the grass, then asks about the rest. The 9 is the total the problem already states, so reporting it leaves the 4 in the trees uncounted.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit2/lesson19.md",
+    "fragments": [
+     {
+      "line": 199,
+      "text": "How many students look in the trees?"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U4-L18",
+   "intended_action": {
+    "operation": "counting",
+    "kind": "place_value_comparison"
+   },
+   "alternative": "compare_ones_digits_only",
+   "material_incompatibility": "The center has students place two-digit numbers so the board reads from least to greatest. Ordering by the ones digit alone drops the tens, which is where the relative magnitude of two-digit numbers is settled.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit4/lesson18.md",
+    "fragments": [
+     {
+      "line": 116,
+      "text": "the numbers across the board go from least to greatest."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L8",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The warm-up's printed reasoning starts at 68 and counts on two more. Counting every unit from one abandons the 68 the expression already names.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson8.md",
+    "fragments": [
+     {
+      "line": 97,
+      "text": "I counted on, 68...69, 70."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U6-L2",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The warm-up's printed reasoning holds 45 and counts on by tens from there. Counting every unit from one drops the 45 the expression already names.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit6/lesson2.md",
+    "fragments": [
+     {
+      "line": 107,
+      "text": "Add 2 tens. 45, 55"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U6-L4",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The printed reasoning splits the 6 into the 1 that completes a ten and the 5 that remains, reaching 15. Stopping at the ten leaves those 5 out of the sum.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit6/lesson4.md",
+    "fragments": [
+     {
+      "line": 94,
+      "text": "15: 9 and 1 is 10, and then 5 more is 15."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U6-L15",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "compare_by_matching_difference"
+   },
+   "alternative": "compare_returns_larger_count",
+   "material_incompatibility": "Mai made 8 frogs and Diego made 17, and the problem asks how many more Diego made. The 17 is a count the problem already states, so the answer is the 9 that separates them.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit6/lesson15.md",
+    "fragments": [
+     {
+      "line": 165,
+      "text": "Mai made 8 frogs."
+     },
+     {
+      "line": 166,
+      "text": "Diego made 17 frogs."
+     },
+     {
+      "line": 168,
+      "text": "How many more frogs did"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U6-L16",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "The printed reasoning reads 65 as 6 tens and 5 ones and adds 20 to the tens, carrying the 5 ones through to 85. Dropping the ones chunk returns 80.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit6/lesson16.md",
+    "fragments": [
+     {
+      "line": 98,
+      "text": "65 has 6 tens and 5 ones. If I add 20 then I have 8 tens and 5 ones."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U7-L6",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "shape_classification_by_defining_attributes"
+   },
+   "alternative": "orientation_bound_shape_classification",
+   "material_incompatibility": "The lesson sorts defining from nondefining attributes of rectangles and squares, and the defining ones are four straight sides and four square corners. Orientation sits among the attributes the lesson sets aside.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit7/lesson6.md",
+    "fragments": [
+     {
+      "line": 36,
+      "text": "The purpose of this lesson is for students to identify defining and nondefining attributes of rectangles and squares."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U7-L8",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The Number Talk asks students to decompose an addend to make a ten and then add what remains. Stopping at the ten leaves the remaining addends out of the sum.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit7/lesson8.md",
+    "fragments": [
+     {
+      "line": 79,
+      "text": "and add the remaining addends to find the sum"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U7-L16",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The printed reasoning splits the 8 into the 2 that carries 38 to 40 and the 6 that remains, reaching 46. Stopping at 40 leaves those 6 out.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit7/lesson16.md",
+    "fragments": [
+     {
+      "line": 109,
+      "text": "46: 38 + 2 + 6 = 46"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U8-L2",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The printed reasoning holds 4 and counts on five numbers to reach 9. Counting every object from one discards the 4 the equation already supplies.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit8/lesson2.md",
+    "fragments": [
+     {
+      "line": 260,
+      "text": "I started at 4 and counted on 5"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U8-L3",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The synthesis breaks 6 into 3 and 3, takes the first 3 from 13 to land on 10, and then takes the second 3. Stopping at 10 leaves that second 3 unsubtracted.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit8/lesson3.md",
+    "fragments": [
+     {
+      "line": 177,
+      "text": "13 to get to 10, and then took the other 3 away."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U8-L4",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "The synthesis says the unknown is the amount added on, not the total it reaches. Reporting the endpoint returns a number the story already gives.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit8/lesson4.md",
+    "fragments": [
+     {
+      "line": 311,
+      "text": "The number you added on is the unknown number."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U1-L9",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "composite_prism_volume_sum"
+   },
+   "alternative": "sum_overlapping_prism_volumes",
+   "material_incompatibility": "The lesson finds the volume of a figure built from two non-overlapping prisms by adding the volumes of the parts. Parts that overlap would count the shared region twice.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit1/lesson9.md",
+    "fragments": [
+     {
+      "line": 12,
+      "text": "non-overlapping right rectangular prisms"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U6-L7",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The printed reasoning takes 6 laps of a 264 1/2 yard perimeter and multiplies to reach 1,587 yards. Adding the lap count to the lap length treats a count of laps as a length.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit6/lesson7.md",
+    "fragments": [
+     {
+      "line": 281,
+      "text": "6 × 2641/2 yards"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U9-L8",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "The number talk works 29 + 35 by naming the ones, 9 and 5, and the tens, 20 and 30, before putting them back together as 64. Dropping the ones chunk stops the count once the tens are in and loses the part the routine asks students to hold onto.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit9/lesson8.md",
+    "fragments": [
+     {
+      "line": 110,
+      "text": "First I added the ones, 9 + 5 = 14"
+     },
+     {
+      "line": 111,
+      "text": "14 and 50 to get 64"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L15",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The problem gives 9 boxes holding 5 shirts each and asks how many shirts there are. Adding 9 to 5 puts a count of boxes into the same total as a count of shirts, so the 9 stops saying how many times the 5 repeats.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson15.md",
+    "fragments": [
+     {
+      "line": 254,
+      "text": "A store has 9 boxes. Each box has 5 shirts."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U2-L10",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "rectangle_area_unit_iteration"
+   },
+   "alternative": "area_as_perimeter_count",
+   "material_incompatibility": "Noah's wall holds 3 square meters in each of 6 columns, so the 18 interior squares are what a container of paint has to cover. Counting the units along the boundary measures the wall's edge and leaves that interior uncounted.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md",
+    "fragments": [
+     {
+      "line": 181,
+      "text": "I counted by 3 six times since I pictured 3"
+     },
+     {
+      "line": 182,
+      "text": "squares in each column and 6 columns. I multiplied 3"
+     },
+     {
+      "line": 183,
+      "text": "by 6 and got 18."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U8-L9",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The number talk asks for the total in 4 groups of 24, which students reach from the 4 groups of 25 they already know. Adding 4 to 24 treats a count of groups as more of the thing being grouped, and 24 stops saying how much one group holds.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit8/lesson9.md",
+    "fragments": [
+     {
+      "line": 116,
+      "text": "4 groups of 24"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L13",
+   "intended_action": {
+    "operation": "division",
+    "kind": "fair_share_equal_groups"
+   },
+   "alternative": "name_group_count_as_share_size",
+   "material_incompatibility": "The lesson shares 2 cloves across 3 tablespoons to reach 2/3 of a clove in each tablespoon. The 3 counts the tablespoons the cloves are spread over, so it cannot also say how much garlic one tablespoon holds.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "2 cloves shared over 3 tablespoons = 2/3 clove per tablespoon"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U2-L9",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The Info Gap cards give a total of 9000 or 8000 meters and a speed covering 300 or 250 meters in a minute, and the division asks how many of those minute-sized lengths the total holds. Reading the 300 as a number of shares returns meters per share, a quantity the card already states.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "the Info Gap time divisions (9000/300, 8000/250)"
+     },
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "how many minute-sized meter-chunks fit"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U1-L12",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The lesson requires subtracting the ones (7) from 17 to reach 10 and then subtracting the remaining ones (2) to find the difference. The alternative discards the second subtraction.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit1/lesson12.md",
+    "fragments": [
+     {
+      "line": 98,
+      "text": "8: I knew that 17- 7 = 10 , and then I took away 2 more."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U2-L7",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "The lesson defines the relationship between quantities as how much exists for every single unit of another, which the alternative would treat as a constant additive difference.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_purpose",
+      "text": "how much of one quantity there is for every one unit of the other quantity"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G6-U3-L3",
+   "intended_action": {
+    "operation": "ratio",
+    "kind": "scale_ratio_unit"
+   },
+   "alternative": "additive_extension_of_ratio",
+   "material_incompatibility": "Students relate measurements in different units as equivalent ratios. The alternative would treat the relationship between these units as a constant difference, ignoring the multiplicative scaling.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "the pairs of measurements are equivalent ratios"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G7-U4-L8",
+   "intended_action": {
+    "operation": "division",
+    "kind": "missing_factor_known_product_search"
+   },
+   "alternative": "reject_known_product_match",
+   "material_incompatibility": "Students divide the new amount to determine the original amount, but the alternative fails to recognize the new amount as the target product.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_boundary",
+      "text": "divide to find the unknown factor"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-GK-U8-L15",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The lesson identifies 1 more than 4 as 5, which the alternative would ignore by counting all items from 1.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md",
+    "fragments": [
+     {
+      "line": 256,
+      "text": "4 and"
+     },
+     {
+      "line": 257,
+      "text": "1 more is 5"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U1-L3",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The student subtracts 1 ten and 5 cubes from 2 tens, whereas the alternative would ignore the subtraction of the 5 cubes.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit1/lesson3.md",
+    "fragments": [
+     {
+      "line": 280,
+      "text": "1 ten and 5 cubes from the other tower"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U2-L9",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "borrow_without_reducing_bases",
+   "material_incompatibility": "The lesson requires breaking 1 ten into 10 ones, which the alternative ignores by failing to reduce the count of tens.",
+   "source_kind": "responding_to_student_thinking",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit2/lesson9.md",
+    "fragments": [
+     {
+      "line": 368,
+      "text": "We decomposed 1 ten by breaking it apart into 10 ones."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U3-L3",
+   "intended_action": {
+    "operation": "measurement",
+    "kind": "linear_unit_iteration"
+   },
+   "alternative": "count_marks_not_intervals",
+   "material_incompatibility": "The lesson defines a centimeter as the length between two tick marks, which the alternative ignores by counting the marks themselves.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit3/lesson3.md",
+    "fragments": [
+     {
+      "line": 43,
+      "text": "a centimeter is represented by the length between two tick-marks on a ruler"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U3-L18",
+   "intended_action": {
+    "operation": "division",
+    "kind": "measure_groups_of_size"
+   },
+   "alternative": "share_into_divisor_groups",
+   "material_incompatibility": "The students mark a yardstick using tools with fixed lengths of 3 and 5 inches. Sharing into groups would ignore the fixed size of these tools.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit3/lesson18.md",
+    "fragments": [
+     {
+      "line": 195,
+      "text": "Students use the 5 inch side of the index card to"
+     },
+     {
+      "line": 196,
+      "text": "mark multiples of 5"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U4-L10",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The lesson requires subtracting 35 from 46; the alternative removes only the tens and discards the 5 ones.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit4/lesson10.md",
+    "fragments": [
+     {
+      "line": 158,
+      "text": "She took away 35"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U5-L10",
+   "intended_action": {
+    "operation": "counting",
+    "kind": "place_value_comparison"
+   },
+   "alternative": "compare_ones_digits_only",
+   "material_incompatibility": "Students compare the hundreds, tens, and ones of three-digit numbers to determine which is greater; the alternative discards the hundreds and tens.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit5/lesson10.md",
+    "fragments": [
+     {
+      "line": 6,
+      "text": "comparing the value of the hundreds, followed by the tens, and then ones"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U6-L17",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "Students count coins to reach 100 cents and then determine the value of the coins that are left over, which the alternative would discard.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit6/lesson17.md",
+    "fragments": [
+     {
+      "line": 53,
+      "text": "then count the value of the coins that are left over"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U6-L19",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The lesson requires decomposing a second addend to compose a ten for mental addition. The alternative would discard the leftover part of that decomposed addend.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit6/lesson19.md",
+    "fragments": [
+     {
+      "line": 80,
+      "text": "decomposing the second addend to make the numbers more friendly for mental calculations"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L1",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "Students count up from 79 to 81 to determine the difference, but the alternative treats the endpoint 81 as the result.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson1.md",
+    "fragments": [
+     {
+      "line": 158,
+      "text": "Why did Elena put a point on 79 and count up instead of subtracting 79?"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L2",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The student starts at 34 and counts on by 10, while counting all would require starting from 1.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson2.md",
+    "fragments": [
+     {
+      "line": 107,
+      "text": "I started at 34 and counted on by 10 two times."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L3",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The lesson requires taking both tens from tens and ones from ones, while the alternative ignores the subtraction of ones.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson3.md",
+    "fragments": [
+     {
+      "line": 180,
+      "text": "taking ones from ones and tens from tens"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L4",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "The lesson asks students to determine the distance between two numbers by treating the subtraction as an unknown addend equation. The alternative treats the final number reached during the count as the difference.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson4.md",
+    "fragments": [
+     {
+      "line": 141,
+      "text": "expression as an unknown addend equation"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L6",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "Adding a two-digit number to a three-digit number requires composing a ten. The alternative ignores this composed ten.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson6.md",
+    "fragments": [
+     {
+      "line": 12,
+      "text": "add a two-digit number to a three-digit number that requires composing a ten when adding by place"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L7",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "Students exchange 10 ones for 1 ten; the alternative discards the resulting ten.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson7.md",
+    "fragments": [
+     {
+      "line": 188,
+      "text": "exchanged 10 ones for 1 ten"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U7-L9",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The lesson records a student counting on from 528 to reach 530, which the alternative would discard by counting all from one.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit7/lesson9.md",
+    "fragments": [
+     {
+      "line": 102,
+      "text": "530: I counted on 2 more. 528, 529, 530."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U9-L1",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "count_up_missing_addend"
+   },
+   "alternative": "answer_as_endpoint_count_up",
+   "material_incompatibility": "The lesson involves counting up to a total such as 11 to find an unknown addend, while the alternative identifies that total as the answer.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit9/lesson1.md",
+    "fragments": [
+     {
+      "line": 103,
+      "text": "add 1 more to get to 11."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G2-U9-L7",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The lesson requires adding 6 and 7 by making a ten and including the remaining units, which the alternative would omit.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade2/unit9/lesson7.md",
+    "fragments": [
+     {
+      "line": 344,
+      "text": "C is most challenging because when I add 6 and 7, it makes a ten."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U1-L8",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "Students use groups of 2 or 5 to count on from a previous known value, a starting point the alternative ignores.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit1/lesson8.md",
+    "fragments": [
+     {
+      "line": 86,
+      "text": "counting on 2 or 5 from a previous known value"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U3-L3",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "base_ones_chunking"
+   },
+   "alternative": "dropped_ones_chunk",
+   "material_incompatibility": "Adding ones to get 13 creates a new ten that the alternative would ignore.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit3/lesson3.md",
+    "fragments": [
+     {
+      "line": 182,
+      "text": "Then I added the ones to get 13."
+     },
+     {
+      "line": 183,
+      "text": "This made a new ten"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U3-L7",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "smaller_from_larger_in_column",
+   "material_incompatibility": "The lesson requires trading a ten for more ones to subtract 8 ones from 2. The alternative ignores this decomposition to subtract 2 ones from 8 ones.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit3/lesson7.md",
+    "fragments": [
+     {
+      "line": 337,
+      "text": "I had to trade a ten for some more ones"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G3-U3-L8",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "decompose_base_for_ones"
+   },
+   "alternative": "borrow_without_reducing_bases",
+   "material_incompatibility": "Kiran reduces 90 tens to 80 tens when he increases 1 one to 11 ones; the alternative would maintain 90 tens.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade3/unit3/lesson8.md",
+    "fragments": [
+     {
+      "line": 196,
+      "text": "Kiran crossed out the 90 and"
+     },
+     {
+      "line": 197,
+      "text": "wrote 80 above it. Then he crossed out the 1 and"
+     },
+     {
+      "line": 198,
+      "text": "wrote 11 above that"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U2-L3",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The lesson establishes that 506 is 70 more than 436, a relation that the alternative discards by counting from one.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit2/lesson3.md",
+    "fragments": [
+     {
+      "line": 110,
+      "text": "506: This is 70 more than 436"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U2-L9",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The lesson requires combining 3 groups of 20 hundredths to reach 60 hundredths, a relation the alternative would replace with a sum.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit2/lesson9.md",
+    "fragments": [
+     {
+      "line": 206,
+      "text": "have 20 hundredths, and 3 groups would mean 60"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U6-L7",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "distribute_group_size_split"
+   },
+   "alternative": "drop_second_partial_product",
+   "material_incompatibility": "The lesson requires calculating four partial products for a four-digit factor. The alternative would omit one of these products.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit6/lesson7.md",
+    "fragments": [
+     {
+      "line": 301,
+      "text": "The diagram shows 4 partial products."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U8-L2",
+   "intended_action": {
+    "operation": "geometry",
+    "kind": "shape_classification_by_defining_attributes"
+   },
+   "alternative": "orientation_bound_shape_classification",
+   "material_incompatibility": "The lesson uses right angles and perpendicular sides to identify right triangles, which the alternative discards in favor of the orientation of Triangle G.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit8/lesson2.md",
+    "fragments": [
+     {
+      "line": 336,
+      "text": "identify Triangle G as a right triangle because of its orientation"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G4-U9-L6",
+   "intended_action": {
+    "operation": "division",
+    "kind": "partial_quotient_chunking"
+   },
+   "alternative": "stop_after_first_partial_quotient",
+   "material_incompatibility": "The lesson requires students to determine a next chunk to divide and remove from the dividend. The alternative discards the need for any chunk after the first.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade4/unit9/lesson6.md",
+    "fragments": [
+     {
+      "line": 320,
+      "text": "the next chunk to divide and remove"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U2-L21",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "A student counts on from 6 to reach a total of 10, a starting value that the alternative would discard by counting every item from one.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit2/lesson21.md",
+    "fragments": [
+     {
+      "line": 117,
+      "text": "I counted on from 6. 6 … 7, 8, 9, 10."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U3-L24",
+   "intended_action": {
+    "operation": "subtraction",
+    "kind": "take_away_base_ones"
+   },
+   "alternative": "drop_ones_after_base_takeaway",
+   "material_incompatibility": "The lesson requires subtracting 10 and 2 from 15, but the alternative discards the 2.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit3/lesson24.md",
+    "fragments": [
+     {
+      "line": 274,
+      "text": "Taking away 10 and then 2 from 15."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U4-L21",
+   "intended_action": {
+    "operation": "counting",
+    "kind": "place_value_comparison"
+   },
+   "alternative": "compare_ones_digits_only",
+   "material_incompatibility": "The lesson requires comparing the number of tens in two-digit numbers to determine which is larger, and the alternative ignores the tens.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit4/lesson21.md",
+    "fragments": [
+     {
+      "line": 314,
+      "text": "compare 2-digit numbers by comparing the tens, but if they have the same number of tens then you need to look at the ones"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L1",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The lesson has students start at 34 and count on by tens to 84. The alternative ignores the starting amount and counts every ten starting from ten.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson1.md",
+    "fragments": [
+     {
+      "line": 242,
+      "text": "She could count on by tens: 44, 54, 64, 74, 84."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L2",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "count_on_from_larger"
+   },
+   "alternative": "count_all_when_count_on_available",
+   "material_incompatibility": "The lesson requires starting with a specific value like 63 to add further increments, while the alternative counts all units from 1.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson2.md",
+    "fragments": [
+     {
+      "line": 299,
+      "text": "started with 63 and added the tens"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L5",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The lesson requires adding the remaining 5 ones after making a ten from 47 and 3, which the alternative would discard.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson5.md",
+    "fragments": [
+     {
+      "line": 147,
+      "text": "decompose the 8 into 3 and 5, make a new ten with 47 and 3, and then add the remaining 5."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L6",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The lesson requires adding the remaining 3 ones after using 6 to reach 40. The alternative ignores these remaining ones.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson6.md",
+    "fragments": [
+     {
+      "line": 312,
+      "text": "She added 6"
+     },
+     {
+      "line": 313,
+      "text": "add 3 more to 40"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L11",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The lesson requires adding the remaining 2 ones after using 3 ones to make a ten. The alternative would discard those 2 ones.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson11.md",
+    "fragments": [
+     {
+      "line": 193,
+      "text": "added the other 2 ones to get 42"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G1-U5-L12",
+   "intended_action": {
+    "operation": "addition",
+    "kind": "make_ten_split_leftover"
+   },
+   "alternative": "make_ten_drop_leftover",
+   "material_incompatibility": "The lesson specifies a new ten and 4 more ones when adding 8 and 6, which the alternative discards.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade1/unit5/lesson12.md",
+    "fragments": [
+     {
+      "line": 283,
+      "text": "8 and 6 makes 14, so there is a new ten and 4 more ones."
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U1-L3",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "repeat_equal_groups"
+   },
+   "alternative": "add_instead_of_multiply",
+   "material_incompatibility": "The prism consists of 4 layers of 9 unit cubes, and the alternative ignores this grouped structure by combining the counts of layers and cubes per layer.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit1/lesson3.md",
+    "fragments": [
+     {
+      "line": 372,
+      "text": "There are 4 layers with 9 unit cubes in each layer so there are 36 unit cubes"
+     }
+    ]
+   }
+  },
+  {
+   "lesson": "IM-G5-U4-L2",
+   "intended_action": {
+    "operation": "multiplication",
+    "kind": "distribute_group_size_split"
+   },
+   "alternative": "drop_second_partial_product",
+   "material_incompatibility": "The lesson specifies four partial products for the calculation of 62 × 35, while the alternative would omit one of these products.",
+   "source_kind": "activity_guidance",
+   "source": {
+    "path": "curriculum/im_teacher_guides/grade5/unit4/lesson2.md",
+    "fragments": [
+     {
+      "line": 192,
+      "text": "(60 × 30) + (2 × 30) + (60 × 5) + (2 × 5)"
+     }
+    ]
+   }
+  }
+ ]
 }
