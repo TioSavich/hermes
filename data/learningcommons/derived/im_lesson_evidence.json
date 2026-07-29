@@ -1,44 +1,44 @@
 {
  "by_grade": {
   "1": {
-   "diagnostic_ready": 69,
-   "executable_task": 72,
+   "diagnostic_ready": 71,
+   "executable_task": 73,
    "measured_transition": 72,
    "negative_candidate": 128,
    "published": 148,
    "standard_action_candidate": 148,
    "strategy_evidence": 131,
-   "structured_negative": 90
+   "structured_negative": 92
   },
   "2": {
-   "diagnostic_ready": 54,
-   "executable_task": 66,
+   "diagnostic_ready": 61,
+   "executable_task": 69,
    "measured_transition": 66,
    "negative_candidate": 127,
    "published": 150,
    "standard_action_candidate": 149,
    "strategy_evidence": 134,
-   "structured_negative": 71
+   "structured_negative": 78
   },
   "3": {
-   "diagnostic_ready": 53,
-   "executable_task": 58,
+   "diagnostic_ready": 55,
+   "executable_task": 61,
    "measured_transition": 58,
    "negative_candidate": 113,
    "published": 143,
    "standard_action_candidate": 139,
    "strategy_evidence": 125,
-   "structured_negative": 65
+   "structured_negative": 67
   },
   "4": {
-   "diagnostic_ready": 37,
+   "diagnostic_ready": 42,
    "executable_task": 49,
    "measured_transition": 49,
    "negative_candidate": 115,
    "published": 151,
    "standard_action_candidate": 147,
    "strategy_evidence": 132,
-   "structured_negative": 64
+   "structured_negative": 69
   },
   "5": {
    "diagnostic_ready": 25,
@@ -351,13 +351,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L5",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add within 50",
    "negative_candidates": [
     {
@@ -401,8 +399,28 @@
      "productive": "count_up_missing_addend"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U1-L5",
+     "material_incompatibility": "The lesson requires adding both the tens and the ones. The alternative ignores the ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 39,
+        "text": "add tens to tens and ones to ones"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit1/lesson5.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -633,13 +651,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L11",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Questions about Data",
    "negative_candidates": [
     {
@@ -659,8 +675,32 @@
      "productive": "make_ten_split_leftover"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "make_ten_drop_leftover",
+     "intended_action": {
+      "kind": "make_ten_split_leftover",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U1-L11",
+     "material_incompatibility": "The lesson requires students to break apart the 5 into 3 and 2 to make a ten and then add the 2, which the alternative would discard.",
+     "source": {
+      "fragments": [
+       {
+        "line": 113,
+        "text": "I broke apart the 5 into 3 and 2"
+       },
+       {
+        "line": 114,
+        "text": "10 + 2 = 12"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit1/lesson11.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.MD.D.10": [
      "compare",
@@ -1035,13 +1075,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L17",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -1069,8 +1107,28 @@
      "productive": "count_up_missing_addend"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U1-L17",
+     "material_incompatibility": "The lesson provides the starting value of 27 to count on by tens, which the alternative discards in favor of counting every unit.",
+     "source": {
+      "fragments": [
+       {
+        "line": 102,
+        "text": "I started at 27 and counted on by ten"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit1/lesson17.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.A.2": [
      "count"
@@ -1916,13 +1974,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Different Ways to Decompose",
    "negative_candidates": [
     {
@@ -1990,8 +2046,32 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "smaller_from_larger_in_column",
+     "intended_action": {
+      "kind": "decompose_base_for_ones",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G2-U2-L8",
+     "material_incompatibility": "The subtraction of 18 from 63 requires decomposing a ten to subtract 8 ones from 3 ones. The alternative ignores this decomposition and instead subtracts the smaller digit from the larger.",
+     "source": {
+      "fragments": [
+       {
+        "line": 341,
+        "text": "show 63 and crossed out 18"
+       },
+       {
+        "line": 342,
+        "text": "Lin decomposed a ten while solving"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit2/lesson8.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -8115,13 +8195,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Compose Tens and Hundreds to Add",
    "negative_candidates": [
     {
@@ -8157,8 +8235,32 @@
      "productive": "recursive_place_value_inscription"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U7-L8",
+     "material_incompatibility": "The lesson identifies 15 ones as 1 ten and 5 ones; the alternative would discard the 5 ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 266,
+        "text": "15 ones is the same as 1"
+       },
+       {
+        "line": 267,
+        "text": "ten and 5 ones."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit7/lesson8.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -8432,7 +8534,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -8442,7 +8544,6 @@
    "grade": "2",
    "lesson": "IM-G2-U7-L12",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -8514,7 +8615,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -8538,7 +8639,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -8548,7 +8649,6 @@
    "grade": "2",
    "lesson": "IM-G2-U7-L13",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -8628,7 +8728,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -8877,7 +8977,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -8887,7 +8987,6 @@
    "grade": "2",
    "lesson": "IM-G2-U7-L16",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -8967,7 +9066,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.A.1": [
      "represent",
@@ -9375,13 +9474,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U8-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Decompose Even and Odd Numbers",
    "negative_candidates": [
     {
@@ -9417,8 +9514,32 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G2-U8-L4",
+     "material_incompatibility": "The lesson requires students to determine the equal number of stickers each friend receives when sharing 12, which the alternative would replace with the number of friends.",
+     "source": {
+      "fragments": [
+       {
+        "line": 166,
+        "text": "Kiran has 12 stickers."
+       },
+       {
+        "line": 167,
+        "text": "to 2 friends."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit8/lesson4.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.OA.B.2": [
      "add",
@@ -11127,13 +11248,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U9-L13",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Let’s Solve Our Story Problems",
    "negative_candidates": [
     {
@@ -11153,8 +11272,32 @@
      "productive": "make_ten_split_leftover"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "make_ten_drop_leftover",
+     "intended_action": {
+      "kind": "make_ten_split_leftover",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U9-L13",
+     "material_incompatibility": "The student uses 2 to make 40 from 38 and finds the sum is 45, which requires adding the leftover 5; the alternative would drop this leftover.",
+     "source": {
+      "fragments": [
+       {
+        "line": 98,
+        "text": "38 and 2 make 40 so 32 and"
+       },
+       {
+        "line": 99,
+        "text": "7 make 45"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit9/lesson13.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -13961,13 +14104,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Introduction to Addition Algorithms",
    "negative_candidates": [
     {
@@ -13987,8 +14128,28 @@
      "productive": "count_on_from_larger"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G3-U3-L4",
+     "material_incompatibility": "The algorithm requires combining ones with ones after combining tens with tens; the alternative stops at the tens and never adds the ones chunk.",
+     "source": {
+      "fragments": [
+       {
+        "line": 225,
+        "text": "they combine hundreds and hundreds, tens and tens, and ones and ones"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit3/lesson4.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -14457,7 +14618,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -14467,7 +14628,6 @@
    "grade": "3",
    "lesson": "IM-G3-U3-L10",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -14523,7 +14683,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -15815,13 +15975,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U4-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Relate Quotients to Familiar Products",
    "negative_candidates": [
     {
@@ -15865,8 +16023,36 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "context_free_fact_family_guess",
+     "intended_action": {
+      "kind": "multiplication_fact_retrieval",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U4-L8",
+     "material_incompatibility": "The lesson binds 60 to the factor pair 6 and 10 so that 60 divided by 6 names 10 as the unknown factor, while the alternative answers from any pair with that product and so loses the binding the division depends on.",
+     "source": {
+      "fragments": [
+       {
+        "line": 111,
+        "text": "Since I know that 6 times 10 is 60, I know that 60"
+       },
+       {
+        "line": 112,
+        "text": "divided by 6 would be 10, because 10 is the unknown"
+       },
+       {
+        "line": 113,
+        "text": "factor."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit4/lesson8.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.OA.B.6": [
      "find",
@@ -15937,7 +16123,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -15947,7 +16133,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L10",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -15979,7 +16164,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.MD.C.7.c": [
      "reason",
@@ -16248,7 +16433,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -16258,7 +16443,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L14",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -16330,7 +16514,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.B.5": [
      "apply",
@@ -21119,13 +21303,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U2-L5",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Fractions on Number Lines",
    "negative_candidates": [
     {
@@ -21145,8 +21327,32 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G4-U2-L5",
+     "material_incompatibility": "The response takes 2 groups of 24 to reach 48; the alternative sums the group count and the group size and answers 26.",
+     "source": {
+      "fragments": [
+       {
+        "line": 106,
+        "text": "I doubled"
+       },
+       {
+        "line": 107,
+        "text": "24 to get 48"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit2/lesson5.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NF.A.1": [
      "explain",
@@ -21657,13 +21863,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U2-L16",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Compare and Order Fractions",
    "negative_candidates": [
     {
@@ -21683,8 +21887,28 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G4-U2-L16",
+     "material_incompatibility": "The lesson requires calculating the product of 6 and 12, while the alternative would instead calculate the sum of those two numbers.",
+     "source": {
+      "fragments": [
+       {
+        "line": 109,
+        "text": "Six times 12"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit2/lesson16.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NF.A": [
      "extend",
@@ -21814,13 +22038,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U3-L2",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Representations of Equal Groups of Fractions",
    "negative_candidates": [
     {
@@ -21848,8 +22070,28 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "whole_number_grab",
+     "intended_action": {
+      "kind": "unit_fraction_iteration",
+      "operation": "fraction"
+     },
+     "lesson": "IM-G4-U3-L2",
+     "material_incompatibility": "The lesson specifies 3 strips split into fourths, which the alternative ignores by focusing only on the number of strips.",
+     "source": {
+      "fragments": [
+       {
+        "line": 216,
+        "text": "H shows 3 strips split into fourths"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit3/lesson2.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NF.B.4": [
      "apply",
@@ -26103,13 +26345,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U6-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Multiply 2 Two-Digit Numbers",
    "negative_candidates": [
     {
@@ -26177,8 +26417,28 @@
      "productive": "decompose_base_for_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G4-U6-L8",
+     "material_incompatibility": "The lesson requires finding the total of 19 groups of 60, but the alternative would simply add 19 and 60.",
+     "source": {
+      "fragments": [
+       {
+        "line": 106,
+        "text": "19 groups of 60"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit6/lesson8.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.5": [
      "explain",
@@ -29781,13 +30041,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U9-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Create Word Problems",
    "negative_candidates": [
     {
@@ -29799,8 +30057,32 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "intended_action": {
+      "kind": "take_away_base_ones",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G4-U9-L9",
+     "material_incompatibility": "The subtraction of $1,436 from the $3,000 total raised must result in the exact value of $1,564. The alternative would discard the ones digit from this result.",
+     "source": {
+      "fragments": [
+       {
+        "line": 250,
+        "text": "an answer of 1,564."
+       },
+       {
+        "line": 305,
+        "text": "The school donated $1,436 to a local charity."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit9/lesson9.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B": [
      "perform",
@@ -59493,13 +59775,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U2-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "What Is the Unknown?",
    "negative_candidates": [
     {
@@ -59527,8 +59807,36 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "answer_as_endpoint_count_up",
+     "intended_action": {
+      "kind": "count_up_missing_addend",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G1-U2-L9",
+     "material_incompatibility": "The lesson asks for the number of snakes given a total of 8 pets and 5 lizards. The alternative identifies the total of 8 pets as the number of snakes.",
+     "source": {
+      "fragments": [
+       {
+        "line": 186,
+        "text": "Han has 8 pets."
+       },
+       {
+        "line": 187,
+        "text": "5 of his pets are lizards."
+       },
+       {
+        "line": 189,
+        "text": "How many snakes does Han have?"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit2/lesson9.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.A.1": [
      "add",
@@ -60982,7 +61290,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -60992,7 +61300,6 @@
    "grade": "1",
    "lesson": "IM-G1-U3-L5",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -61008,7 +61315,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.OA.B.4": [
      "find",
@@ -64915,13 +65222,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U5-L3",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add It, Explain It",
    "negative_candidates": [
     {
@@ -64949,8 +65254,36 @@
      "productive": "recursive_place_value_inscription"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G1-U5-L3",
+     "material_incompatibility": "Adding tens with tens and ones with ones reaches 79, while dropping the ones chunk reaches 71.",
+     "source": {
+      "fragments": [
+       {
+        "line": 269,
+        "text": "Display: 31 + 48"
+       },
+       {
+        "line": 270,
+        "text": "48 + 30 = 78"
+       },
+       {
+        "line": 271,
+        "text": "78 + 1 = 79"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit5/lesson3.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.NBT.C.4": [
      "add",
@@ -77202,13 +77535,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 294,
-  "executable_task": 372,
+  "diagnostic_ready": 310,
+  "executable_task": 379,
   "measured_transition": 372,
   "negative_candidate": 820,
   "published": 1308,
   "standard_action_candidate": 1272,
   "strategy_evidence": 915,
-  "structured_negative": 448
+  "structured_negative": 464
  }
 }
