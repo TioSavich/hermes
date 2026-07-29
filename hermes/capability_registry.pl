@@ -112,6 +112,7 @@ capability('hybridization_render', 'hybridization_scene', 'render', [], routed_p
 capability('hyperedges', 'hermes_worker', 'incompatibility', ['kind'], routed_paged).
 capability('image_schema', 'user', 'render', ['practice'], routed_paged).
 capability('incoherent_witness', 'sequent_engine', 'sequent', ['context'], routed_paged).
+capability('incompatibility_contexts', 'incompatibility_sets', 'incompatibility', ['context'], unrouted).
 capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'incompatibility', ['context', 'set'], routed_paged).
 capability('incompatibility_entailment_witness', 'incompatibility_sets', 'incompatibility', ['replaced', 'replacement'], routed_paged).
 capability('index_topic_subtraction', 'index_query', 'unclassified', ['topic'], unrouted).
@@ -269,6 +270,7 @@ capability('knowledge/index/research_measurement_registry.pl', 'research_measure
 capability('knowledge/index/task_span_absence_registry.pl', 'task_span_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/vision_lesson_digest_audit.pl', 'vision_lesson_digest_audit', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
+capability('knowledge/misconceptions/research_corpus_automaton_bindings.pl', 'research_corpus_automaton_bindings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
@@ -405,6 +407,7 @@ capability_parameter('grounding_metaphor_witness', 'anchor', null, true, null).
 capability_parameter('grounding_metaphor_witness', 'source', null, true, null).
 capability_parameter('image_schema', 'practice', 'string', true, null).
 capability_parameter('incoherent_witness', 'context', null, true, null).
+capability_parameter('incompatibility_contexts', 'context', 'string', false, null).
 capability_parameter('incompatibility_discovery_witness', 'context', null, true, null).
 capability_parameter('incompatibility_discovery_witness', 'set', null, true, null).
 capability_parameter('incompatibility_entailment_witness', 'replacement', null, true, null).

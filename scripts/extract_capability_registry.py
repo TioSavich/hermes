@@ -605,6 +605,40 @@ def route_map() -> dict[str, set[tuple[str, str]]]:
             node.name: node for node in tree.body
             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
         }
+        # A module-level helper "forwards" when it calls worker_request/request
+        # with a variable op: the op literal then lives at the helper's call
+        # sites (the _forward_op idiom, here with ctx threaded ahead of the op),
+        # and crediting the handler's empty direct set would hide those ops.
+        module_forwarders = {
+            name
+            for name, node in functions.items()
+            if not function_worker_ops(node)
+            and any(
+                isinstance(child, ast.Call)
+                and isinstance(child.func, ast.Attribute)
+                and child.func.attr in {"worker_request", "request"}
+                and child.args
+                and not isinstance(child.args[0], ast.Constant)
+                for child in ast.walk(node)
+            )
+        }
+
+        def forwarded_ops(node: ast.AST) -> set[str]:
+            ops: set[str] = set()
+            for call in ast.walk(node):
+                if (
+                    isinstance(call, ast.Call)
+                    and isinstance(call.func, ast.Name)
+                    and call.func.id in module_forwarders
+                ):
+                    ops.update(
+                        arg.value
+                        for arg in call.args
+                        if isinstance(arg, ast.Constant)
+                        and isinstance(arg.value, str)
+                        and re.fullmatch(r"[a-z][a-z0-9_]*", arg.value)
+                    )
+            return ops
 
         if path.name == "worker.py":
             for match in re.finditer(
@@ -633,6 +667,7 @@ def route_map() -> dict[str, set[tuple[str, str]]]:
                     ops |= methods.get(logic_method, set())
                 if handler.id in functions:
                     ops |= function_worker_ops(functions[handler.id])
+                    ops |= forwarded_ops(functions[handler.id])
             elif isinstance(handler, ast.Call) and handler.args:
                 arg = handler.args[0]
                 if isinstance(arg, ast.Constant) and isinstance(arg.value, str):

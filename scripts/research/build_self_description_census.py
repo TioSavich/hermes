@@ -551,6 +551,21 @@ UNROUTED = {
             ),
         ],
     },
+    "incompatibility_contexts": {
+        "does": "Returns the reviewed a-fortiori context-nesting inventory, optionally "
+        "filtered to nestings that touch one named context.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The MCP server exposes it for research callers, and the entailment "
+        "page presents the same inventory from its generated register rather than a "
+        "live route.",
+        "evidence": [
+            evidence(
+                "hermes/mcp/server.py",
+                '"incompatibility_contexts": "incompatibility_contexts"',
+                "MCP exposure",
+            )
+        ],
+    },
     "pedagogical_questions": {
         "does": "Finds the authored monitoring clusters for a topic, automaton state, or "
         "standard, and returns their assessing and advancing questions with the "
@@ -856,8 +871,12 @@ def build() -> dict[str, object]:
     # unregistered on purpose — registering it needs a canonical action naming a
     # halt on state recurrence, which extends a closed alphabet — so the registry
     # reads it as an orphan module, which is what it is.
-    if len(registry_rows) != 280:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 280")
+    # 280 until 2026-07-29 night: incompatibility_contexts is the 281st (the
+    # reviewed nesting inventory, MCP-exposed, judged unrouted above), and
+    # knowledge/misconceptions/research_corpus_automaton_bindings.pl the 282nd,
+    # an orphan module in the registry's own reading.
+    if len(registry_rows) != 282:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 282")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -872,10 +891,13 @@ def build() -> dict[str, object]:
     # rather than an oversight: it decides what its sibling smr_div_long cannot,
     # and wiring it in waits on a canonical action for halting on a state
     # recurrence. Stalled pipeline input with a named reason, never vestige.
-    if len(orphan_records) != 69:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 69")
-    if len(unrouted) != 6:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
+    # research_corpus_automaton_bindings.pl is the 70th (2026-07-29): a
+    # generated registry from research_shared.db with no Prolog loader yet —
+    # stalled pipeline input awaiting its first reader, undetermined by default.
+    if len(orphan_records) != 70:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 70")
+    if len(unrouted) != 7:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 7")
 
     return {
         "schema": "self_description_census_v1",

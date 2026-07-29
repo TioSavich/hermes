@@ -406,11 +406,11 @@
       "crosswalk": 38,
       "dialectic": 1,
       "geometry_witness": 35,
-      "incompatibility": 10,
+      "incompatibility": 11,
       "infrastructure": 20,
       "juncture": 1,
       "learner": 25,
-      "misconceptions": 12,
+      "misconceptions": 13,
       "monitoring": 5,
       "pml": 15,
       "render": 28,
@@ -423,9 +423,9 @@
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 69,
+      "orphan_module": 70,
       "routed_paged": 195,
-      "unrouted": 6
+      "unrouted": 7
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -434,10 +434,10 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 33
+      "undetermined": 34
     },
-    "total": 280,
-    "unrouted": 6
+    "total": 282,
+    "unrouted": 7
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1252,6 +1252,20 @@
       "verdict": "include_active"
     },
     {
+      "capability_class": "misconceptions",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated research-corpus automaton bindings",
+          "path": "knowledge/misconceptions/research_corpus_automaton_bindings.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "research_corpus_automaton_bindings",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/misconceptions/research_corpus_automaton_bindings.pl",
+      "verdict": "undetermined"
+    },
+    {
       "capability_class": "synthesis",
       "evidence": [
         {
@@ -1662,6 +1676,19 @@
       "judgement": "Being unrouted from a web page is correct, for now.",
       "name": "check_solution_steps",
       "reason": "Its consumer is the MathTutorBench measurement path, which calls the worker directly. A tutor-facing page would want the narrated trace rather than the step table, and no such page has been designed."
+    },
+    {
+      "does": "Returns the reviewed a-fortiori context-nesting inventory, optionally filtered to nestings that touch one named context.",
+      "evidence": [
+        {
+          "locator": "\"incompatibility_contexts\": \"incompatibility_contexts\"",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "incompatibility_contexts",
+      "reason": "The MCP server exposes it for research callers, and the entailment page presents the same inventory from its generated register rather than a live route."
     },
     {
       "does": "Returns counts and evidence samples after topic exclusions remove index rows.",
