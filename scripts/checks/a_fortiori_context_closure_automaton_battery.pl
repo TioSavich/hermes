@@ -78,6 +78,14 @@ closure_status(written_numeral_order_diverges_from_decimal_value_order,
     \+ memberchk(the_numerals_carry_different_place_counts, Observed),
     format("  written-numeral subset different-place-count: asserted (~w); narrow endpoint reimplementation certified only~n",
            [Warrant]).
+closure_status(gap_order_diverges_from_fraction_order,
+               inverse_denominator_order_diverges_for_unequal_numerators,
+               asserted, Warrant, Observed) :-
+    !,
+    memberchk(gap_order_diverges_from_fraction_order, Observed),
+    \+ memberchk(inverse_denominator_order_diverges_for_unequal_numerators, Observed),
+    format("  equal-gap subset inverse-denominator: asserted (~w); automaton probes the 974-member condition, while R1 fixes the 440-member input class~n",
+           [Warrant]).
 closure_status(Narrow, Broad, Status, Warrant, Observed) :-
     Status == asserted,
     \+ memberchk(Narrow, Observed),

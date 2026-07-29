@@ -649,113 +649,120 @@ input_hyperedge(578, [inference(rule_multiply_written_numerals_ignoring_the_poin
 input_hyperedge(579, [inference(rule_multiply_written_numerals_ignoring_the_points_licenses_the_whole_number_product_is_the_decimal_product), o(context(a_factor_lies_between_zero_and_one)), o(licensed_consequence(the_whole_number_product_is_the_decimal_product))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
 input_hyperedge(580, [inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), o(context(neither_operand_is_the_unit_whole)), o(licensed_consequence(operand_relative_naming_is_unit_relative_naming))], [source(discovered, defeasible_inference, emergent)], true).
 input_hyperedge(581, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(context(component_order_inverts_for_equal_numerators)), o(licensed_consequence(component_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(582, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(context(component_sum_inverts_for_equal_numerators)), o(licensed_consequence(component_sum_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(583, [inference(rule_order_by_decimal_place_count_fewer_is_larger_licenses_shorter_numeral_names_the_larger_value), o(context(numeral_length_order_tracks_decimal_value_order)), o(licensed_consequence(shorter_numeral_names_the_larger_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(584, [inference(rule_order_by_decimal_place_count_more_is_larger_licenses_longer_numeral_names_the_larger_value), o(context(numeral_length_order_inverts_decimal_value_order)), o(licensed_consequence(longer_numeral_names_the_larger_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(585, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(context(denominator_order_inverts_for_equal_numerators)), o(licensed_consequence(larger_numeral_names_larger_quantity))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(586, [inference(rule_order_by_distance_of_the_farthest_nonzero_digit_licenses_greater_digit_distance_names_the_larger_number), o(context(the_numerals_lie_between_zero_and_one)), o(licensed_consequence(greater_digit_distance_names_the_larger_number))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(587, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(context(inverse_component_order_diverges_for_equal_denominators)), o(licensed_consequence(inverse_component_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(588, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(licensed_consequence(inverse_denominator_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(589, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(context(gap_order_diverges_from_fraction_order)), o(licensed_consequence(gap_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(590, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(context(numerator_order_diverges_for_unequal_denominators)), o(licensed_consequence(numerator_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(591, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(context(numerator_sum_diverges_for_unequal_denominators)), o(licensed_consequence(numerator_sum_is_quantity_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(592, [inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(the_group_size_is_the_quotient))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(593, [inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_group_size_is_the_quotient))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
-input_hyperedge(594, [inference(rule_pick_the_largest_product_by_the_longest_factor_licenses_the_longest_factor_names_the_largest_product), o(context(the_factors_include_a_decimal_fraction)), o(licensed_consequence(the_longest_factor_names_the_largest_product))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(595, [inference(rule_place_the_point_by_crossing_the_factor_digit_counts_licenses_the_crossed_digit_counts_locate_the_point), o(context(the_second_factor_digit_counts_are_unequal)), o(licensed_consequence(the_crossed_digit_counts_locate_the_point))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(596, [inference(rule_place_the_point_by_summing_factor_decimal_places_licenses_the_summed_place_count_locates_the_point), o(context(the_digit_product_ends_in_zero)), o(licensed_consequence(the_summed_place_count_locates_the_point))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(597, [inference(rule_place_the_point_in_each_partial_product_licenses_the_partial_placement_is_the_final_placement), o(context(the_multiplication_yields_several_partial_products)), o(licensed_consequence(the_partial_placement_is_the_final_placement))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(598, [inference(rule_predict_a_quotient_smaller_than_the_dividend_licenses_the_quotient_falls_below_the_dividend), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_quotient_falls_below_the_dividend))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(599, [inference(rule_read_a_point_as_the_nearest_tick_licenses_the_nearest_tick_names_the_point_value), o(context(the_point_lies_between_ticks)), o(licensed_consequence(the_nearest_tick_names_the_point_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(600, [inference(rule_read_a_zero_tenths_digit_as_the_smaller_licenses_zero_tenths_digit_names_the_smaller_decimal), o(context(zero_tenths_numeral_carries_the_larger_integer_part)), o(licensed_consequence(zero_tenths_digit_names_the_smaller_decimal))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(601, [inference(rule_read_digits_right_of_the_point_by_whole_number_place_value_licenses_whole_number_place_value_fixes_each_digit_value), o(context(the_digits_stand_right_of_the_decimal_point)), o(licensed_consequence(whole_number_place_value_fixes_each_digit_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(602, [inference(rule_read_each_tick_as_one_tenth_licenses_a_tick_advances_the_value_by_a_tenth), o(context(the_scale_is_not_calibrated_in_tenths)), o(licensed_consequence(a_tick_advances_the_value_by_a_tenth))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(603, [inference(rule_read_only_the_first_two_decimal_places_licenses_two_decimal_places_fix_the_value), o(context(the_numerals_differ_beyond_the_second_place)), o(licensed_consequence(two_decimal_places_fix_the_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(604, [inference(rule_read_tenths_as_tens_licenses_the_place_name_denotes_a_whole_number_place), o(context(the_description_names_a_nonzero_tenths_digit)), o(licensed_consequence(the_place_name_denotes_a_whole_number_place))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(605, [inference(rule_read_the_division_bar_right_to_left_licenses_the_second_operand_is_the_dividend), o(context(the_two_operands_are_unequal)), o(licensed_consequence(the_second_operand_is_the_dividend))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(606, [inference(rule_read_the_fraction_part_as_a_count_of_subordinate_units_licenses_the_fraction_part_counts_subordinate_units), o(context(the_unit_system_is_not_base_ten)), o(licensed_consequence(the_fraction_part_counts_subordinate_units))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(607, [inference(rule_read_the_remainder_as_a_count_of_tenths_licenses_the_remainder_is_the_tenths_digit), o(context(the_divisor_is_a_power_of_five)), o(licensed_consequence(the_remainder_is_the_tenths_digit))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
-input_hyperedge(608, [inference(rule_read_the_remainder_as_a_count_of_tenths_licenses_the_remainder_is_the_tenths_digit), o(context(the_divisor_is_not_ten)), o(licensed_consequence(the_remainder_is_the_tenths_digit))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(609, [inference(rule_read_zero_tenths_then_fall_back_to_numeral_length_licenses_zero_tenths_then_length_fixes_decimal_order), o(context(neither_numeral_carries_a_zero_tenths_digit)), o(licensed_consequence(zero_tenths_then_length_fixes_decimal_order))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(610, [inference(rule_reinterpret_the_quotient_unit_when_it_exceeds_the_dividend_licenses_a_large_quotient_marks_a_change_of_unit), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(a_large_quotient_marks_a_change_of_unit))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(611, [inference(rule_report_the_computed_decimal_as_the_contextual_answer_licenses_the_computed_value_answers_the_problem), o(context(the_context_counts_discrete_entities)), o(licensed_consequence(the_computed_value_answers_the_problem))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(612, [inference(rule_reverse_the_quotient_shift_after_clearing_the_divisor_licenses_the_reversed_shift_restores_the_quotient), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(the_reversed_shift_restores_the_quotient))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(613, [inference(rule_reverse_the_quotient_shift_after_clearing_the_divisor_licenses_the_reversed_shift_restores_the_quotient), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_reversed_shift_restores_the_quotient))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
-input_hyperedge(614, [inference(rule_select_division_to_obtain_a_smaller_result_licenses_division_is_the_operation_that_decreases), o(context(a_factor_lies_between_zero_and_one)), o(licensed_consequence(division_is_the_operation_that_decreases))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(615, [inference(rule_select_multiplication_only_for_whole_number_multipliers_licenses_multiplication_is_the_operation_for_whole_multipliers), o(context(the_multiplier_is_not_a_whole_number)), o(licensed_consequence(multiplication_is_the_operation_for_whole_multipliers))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(616, [inference(rule_select_the_operation_by_whether_the_divisor_is_whole_licenses_division_is_the_operation_for_whole_divisors), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(division_is_the_operation_for_whole_divisors))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(617, [inference(rule_select_the_operation_by_whether_the_divisor_is_whole_licenses_division_is_the_operation_for_whole_divisors), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(division_is_the_operation_for_whole_divisors))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
-input_hyperedge(618, [inference(rule_select_the_operation_by_whether_the_quantity_is_a_decimal_licenses_multiplication_is_the_operation_for_whole_quantities), o(context(the_quantity_in_the_problem_is_a_decimal)), o(licensed_consequence(multiplication_is_the_operation_for_whole_quantities))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(619, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(context(group_size_is_not_twice_the_item_count)), o(licensed_consequence(halving_yields_one_piece_per_sharer))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(620, [inference(rule_step_back_by_one_to_find_the_preceding_value_licenses_subtracting_one_names_the_preceding_value), o(context(the_values_lie_dense_along_the_line)), o(licensed_consequence(subtracting_one_names_the_preceding_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(621, [inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), o(context(the_numeral_carries_a_nonzero_fraction_part)), o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(622, [inference(rule_subtract_the_smaller_from_the_larger_licenses_the_difference_answers_the_problem), o(context(the_problem_asks_for_a_quotient)), o(licensed_consequence(the_difference_answers_the_problem))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(623, [inference(rule_subtract_the_whole_parts_and_carry_the_fraction_part_over_licenses_the_whole_part_difference_is_the_decimal_difference), o(context(the_subtrahend_carries_a_nonzero_fraction_part)), o(licensed_consequence(the_whole_part_difference_is_the_decimal_difference))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(624, [inference(rule_subtract_written_numerals_and_restore_the_visual_point_licenses_the_whole_number_difference_is_the_decimal_difference), o(context(the_difference_leaves_the_operands_visual_pattern)), o(licensed_consequence(the_whole_number_difference_is_the_decimal_difference))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(625, [inference(rule_sum_the_digit_strings_and_prepend_a_point_licenses_the_prepended_digit_sum_is_the_decimal_sum), o(context(the_operands_are_not_both_tenths_summing_below_one)), o(licensed_consequence(the_prepended_digit_sum_is_the_decimal_sum))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(626, [inference(rule_swap_the_operands_when_the_divisor_is_a_decimal_licenses_the_written_operand_order_gives_the_quotient), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(the_written_operand_order_gives_the_quotient))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(627, [inference(rule_swap_the_operands_when_the_divisor_is_a_decimal_licenses_the_written_operand_order_gives_the_quotient), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_written_operand_order_gives_the_quotient))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
-input_hyperedge(628, [inference(rule_translate_by_encoding_the_denominator_licenses_the_denominator_after_the_point_is_the_value), o(context(the_value_is_not_the_denominator_over_ten)), o(licensed_consequence(the_denominator_after_the_point_is_the_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(629, [inference(rule_translate_by_encoding_the_numerator_licenses_the_numerator_after_the_point_is_the_value), o(context(the_denominator_is_not_ten)), o(licensed_consequence(the_numerator_after_the_point_is_the_value))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(630, [inference(rule_treat_distinct_numerals_as_distinct_numbers_licenses_distinct_numerals_name_distinct_numbers), o(context(the_two_numerals_are_dual_representations_of_one_value)), o(licensed_consequence(distinct_numerals_name_distinct_numbers))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(631, [inference(rule_write_every_decimal_to_two_places_licenses_two_place_notation_names_the_same_quantity), o(context(the_quantity_needs_fewer_than_two_places)), o(licensed_consequence(two_place_notation_names_the_same_quantity))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(632, [inference(rule_write_whole_units_then_fractional_units_licenses_the_unit_separated_numeral_is_the_decimal_numeral), o(context(the_fractional_unit_count_reaches_the_next_whole)), o(licensed_consequence(the_unit_separated_numeral_is_the_decimal_numeral))], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(633, [inference(spaces_are_point_sets_grounds_space), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(634, [inference(spaces_are_point_sets_grounds_space), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(635, [inference(spaces_are_point_sets_grounds_space), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(636, [inference(spaces_are_point_sets_grounds_space), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(637, [inference(spaces_are_point_sets_grounds_space), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(638, [inference(spaces_are_point_sets_grounds_space), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(639, [inference(spaces_are_point_sets_grounds_space), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(640, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(641, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(642, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(643, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(644, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(645, [inference(spaces_are_point_sets_grounds_space), o(points_inherent_to_space), o(space_constituted_by_points)], [source(discovered, defeasible_inference, emergent)], true).
-input_hyperedge(646, [inference(weierstrass_continuity_grounds_continuity), neg(o(p)), o(continuous_trajectory_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(647, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(diagonal_of_unit_square_measured)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(648, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(everyday_same_number_comparison)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(649, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(fractional_unit_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(650, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(cantors_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(651, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(classes_are_containers))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(652, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_curves))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(653, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_sets_of_ordered_pairs))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(654, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(measuring_stick))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(655, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(motion_along_a_path))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(656, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(numbers_are_points_on_a_line))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(657, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(658, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_construction))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(659, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(spaces_are_sets_of_points))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(660, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(661, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinite_collection_compared)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(662, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(663, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(664, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(length_is_count_of_units)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(665, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(666, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(667, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(668, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(points_inherent_to_space)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(669, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(rules_conceptually_distinct)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(670, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(671, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(space_constituted_by_points)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(672, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(673, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(two_rules_same_extension)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(674, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(unrelated_control)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(675, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], false).
-input_hyperedge(676, [inference(weierstrass_continuity_grounds_continuity), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(677, [inference(weierstrass_continuity_grounds_continuity), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(678, [inference(weierstrass_continuity_grounds_continuity), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(679, [inference(weierstrass_continuity_grounds_continuity), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(680, [inference(weierstrass_continuity_grounds_continuity), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(681, [inference(weierstrass_continuity_grounds_continuity), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(682, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(683, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(684, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(685, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(686, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
-input_hyperedge(687, [o(diagonal_of_unit_square_measured), o(grounded(measuring_stick)), o(length_is_count_of_units)], [source(seed, brandomian_engine, declared_seed)], true).
-input_hyperedge(688, [rule(a_forbids_c), rule(a_requires_b), rule(b_requires_c)], [source(discovered, finite_three_rule_program, incoherent)], true).
+input_hyperedge(582, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(context(component_sum_inverts_for_equal_numerators)), o(licensed_consequence(component_order_is_fraction_order))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(583, [inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), o(context(denominator_order_inverts_for_equal_numerators)), o(licensed_consequence(component_order_is_fraction_order))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(584, [inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), o(context(component_sum_inverts_for_equal_numerators)), o(licensed_consequence(component_sum_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(585, [inference(rule_order_by_decimal_place_count_fewer_is_larger_licenses_shorter_numeral_names_the_larger_value), o(context(numeral_length_order_tracks_decimal_value_order)), o(licensed_consequence(shorter_numeral_names_the_larger_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(586, [inference(rule_order_by_decimal_place_count_more_is_larger_licenses_longer_numeral_names_the_larger_value), o(context(numeral_length_order_inverts_decimal_value_order)), o(licensed_consequence(longer_numeral_names_the_larger_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(587, [inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), o(context(denominator_order_inverts_for_equal_numerators)), o(licensed_consequence(larger_numeral_names_larger_quantity))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(588, [inference(rule_order_by_distance_of_the_farthest_nonzero_digit_licenses_greater_digit_distance_names_the_larger_number), o(context(the_numerals_lie_between_zero_and_one)), o(licensed_consequence(greater_digit_distance_names_the_larger_number))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(589, [inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), o(context(inverse_component_order_diverges_for_equal_denominators)), o(licensed_consequence(inverse_component_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(590, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(context(gap_order_diverges_from_fraction_order)), o(licensed_consequence(inverse_denominator_order_is_fraction_order))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(591, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(context(inverse_component_order_diverges_for_equal_denominators)), o(licensed_consequence(inverse_denominator_order_is_fraction_order))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(592, [inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), o(licensed_consequence(inverse_denominator_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(593, [inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), o(context(gap_order_diverges_from_fraction_order)), o(licensed_consequence(gap_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(594, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(context(component_sum_inverts_for_equal_numerators)), o(licensed_consequence(numerator_order_is_fraction_order))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(595, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(context(denominator_order_inverts_for_equal_numerators)), o(licensed_consequence(numerator_order_is_fraction_order))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(596, [inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), o(context(numerator_order_diverges_for_unequal_denominators)), o(licensed_consequence(numerator_order_is_fraction_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(597, [inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), o(context(numerator_sum_diverges_for_unequal_denominators)), o(licensed_consequence(numerator_sum_is_quantity_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(598, [inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(the_group_size_is_the_quotient))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(599, [inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_group_size_is_the_quotient))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(600, [inference(rule_pick_the_largest_product_by_the_longest_factor_licenses_the_longest_factor_names_the_largest_product), o(context(the_factors_include_a_decimal_fraction)), o(licensed_consequence(the_longest_factor_names_the_largest_product))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(601, [inference(rule_place_the_point_by_crossing_the_factor_digit_counts_licenses_the_crossed_digit_counts_locate_the_point), o(context(the_second_factor_digit_counts_are_unequal)), o(licensed_consequence(the_crossed_digit_counts_locate_the_point))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(602, [inference(rule_place_the_point_by_summing_factor_decimal_places_licenses_the_summed_place_count_locates_the_point), o(context(the_digit_product_ends_in_zero)), o(licensed_consequence(the_summed_place_count_locates_the_point))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(603, [inference(rule_place_the_point_in_each_partial_product_licenses_the_partial_placement_is_the_final_placement), o(context(the_multiplication_yields_several_partial_products)), o(licensed_consequence(the_partial_placement_is_the_final_placement))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(604, [inference(rule_predict_a_quotient_smaller_than_the_dividend_licenses_the_quotient_falls_below_the_dividend), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_quotient_falls_below_the_dividend))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(605, [inference(rule_read_a_point_as_the_nearest_tick_licenses_the_nearest_tick_names_the_point_value), o(context(the_point_lies_between_ticks)), o(licensed_consequence(the_nearest_tick_names_the_point_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(606, [inference(rule_read_a_zero_tenths_digit_as_the_smaller_licenses_zero_tenths_digit_names_the_smaller_decimal), o(context(zero_tenths_numeral_carries_the_larger_integer_part)), o(licensed_consequence(zero_tenths_digit_names_the_smaller_decimal))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(607, [inference(rule_read_digits_right_of_the_point_by_whole_number_place_value_licenses_whole_number_place_value_fixes_each_digit_value), o(context(the_digits_stand_right_of_the_decimal_point)), o(licensed_consequence(whole_number_place_value_fixes_each_digit_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(608, [inference(rule_read_each_tick_as_one_tenth_licenses_a_tick_advances_the_value_by_a_tenth), o(context(the_scale_is_not_calibrated_in_tenths)), o(licensed_consequence(a_tick_advances_the_value_by_a_tenth))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(609, [inference(rule_read_only_the_first_two_decimal_places_licenses_two_decimal_places_fix_the_value), o(context(the_numerals_differ_beyond_the_second_place)), o(licensed_consequence(two_decimal_places_fix_the_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(610, [inference(rule_read_tenths_as_tens_licenses_the_place_name_denotes_a_whole_number_place), o(context(the_description_names_a_nonzero_tenths_digit)), o(licensed_consequence(the_place_name_denotes_a_whole_number_place))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(611, [inference(rule_read_the_division_bar_right_to_left_licenses_the_second_operand_is_the_dividend), o(context(the_two_operands_are_unequal)), o(licensed_consequence(the_second_operand_is_the_dividend))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(612, [inference(rule_read_the_fraction_part_as_a_count_of_subordinate_units_licenses_the_fraction_part_counts_subordinate_units), o(context(the_unit_system_is_not_base_ten)), o(licensed_consequence(the_fraction_part_counts_subordinate_units))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(613, [inference(rule_read_the_remainder_as_a_count_of_tenths_licenses_the_remainder_is_the_tenths_digit), o(context(the_divisor_is_a_power_of_five)), o(licensed_consequence(the_remainder_is_the_tenths_digit))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(614, [inference(rule_read_the_remainder_as_a_count_of_tenths_licenses_the_remainder_is_the_tenths_digit), o(context(the_divisor_is_not_ten)), o(licensed_consequence(the_remainder_is_the_tenths_digit))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(615, [inference(rule_read_zero_tenths_then_fall_back_to_numeral_length_licenses_zero_tenths_then_length_fixes_decimal_order), o(context(neither_numeral_carries_a_zero_tenths_digit)), o(licensed_consequence(zero_tenths_then_length_fixes_decimal_order))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(616, [inference(rule_reinterpret_the_quotient_unit_when_it_exceeds_the_dividend_licenses_a_large_quotient_marks_a_change_of_unit), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(a_large_quotient_marks_a_change_of_unit))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(617, [inference(rule_report_the_computed_decimal_as_the_contextual_answer_licenses_the_computed_value_answers_the_problem), o(context(the_context_counts_discrete_entities)), o(licensed_consequence(the_computed_value_answers_the_problem))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(618, [inference(rule_reverse_the_quotient_shift_after_clearing_the_divisor_licenses_the_reversed_shift_restores_the_quotient), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(the_reversed_shift_restores_the_quotient))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(619, [inference(rule_reverse_the_quotient_shift_after_clearing_the_divisor_licenses_the_reversed_shift_restores_the_quotient), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_reversed_shift_restores_the_quotient))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(620, [inference(rule_select_division_to_obtain_a_smaller_result_licenses_division_is_the_operation_that_decreases), o(context(a_factor_lies_between_zero_and_one)), o(licensed_consequence(division_is_the_operation_that_decreases))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(621, [inference(rule_select_multiplication_only_for_whole_number_multipliers_licenses_multiplication_is_the_operation_for_whole_multipliers), o(context(the_multiplier_is_not_a_whole_number)), o(licensed_consequence(multiplication_is_the_operation_for_whole_multipliers))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(622, [inference(rule_select_the_operation_by_whether_the_divisor_is_whole_licenses_division_is_the_operation_for_whole_divisors), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(division_is_the_operation_for_whole_divisors))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(623, [inference(rule_select_the_operation_by_whether_the_divisor_is_whole_licenses_division_is_the_operation_for_whole_divisors), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(division_is_the_operation_for_whole_divisors))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(624, [inference(rule_select_the_operation_by_whether_the_quantity_is_a_decimal_licenses_multiplication_is_the_operation_for_whole_quantities), o(context(the_quantity_in_the_problem_is_a_decimal)), o(licensed_consequence(multiplication_is_the_operation_for_whole_quantities))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(625, [inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), o(context(group_size_is_not_twice_the_item_count)), o(licensed_consequence(halving_yields_one_piece_per_sharer))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(626, [inference(rule_step_back_by_one_to_find_the_preceding_value_licenses_subtracting_one_names_the_preceding_value), o(context(the_values_lie_dense_along_the_line)), o(licensed_consequence(subtracting_one_names_the_preceding_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(627, [inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), o(context(the_numeral_carries_a_nonzero_fraction_part)), o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(628, [inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), o(context(the_tenths_digit_is_nine)), o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(629, [inference(rule_subtract_the_smaller_from_the_larger_licenses_the_difference_answers_the_problem), o(context(the_problem_asks_for_a_quotient)), o(licensed_consequence(the_difference_answers_the_problem))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(630, [inference(rule_subtract_the_whole_parts_and_carry_the_fraction_part_over_licenses_the_whole_part_difference_is_the_decimal_difference), o(context(the_subtrahend_carries_a_nonzero_fraction_part)), o(licensed_consequence(the_whole_part_difference_is_the_decimal_difference))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(631, [inference(rule_subtract_written_numerals_and_restore_the_visual_point_licenses_the_whole_number_difference_is_the_decimal_difference), o(context(the_difference_leaves_the_operands_visual_pattern)), o(licensed_consequence(the_whole_number_difference_is_the_decimal_difference))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(632, [inference(rule_sum_the_digit_strings_and_prepend_a_point_licenses_the_prepended_digit_sum_is_the_decimal_sum), o(context(the_operands_are_not_both_tenths_summing_below_one)), o(licensed_consequence(the_prepended_digit_sum_is_the_decimal_sum))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(633, [inference(rule_swap_the_operands_when_the_divisor_is_a_decimal_licenses_the_written_operand_order_gives_the_quotient), o(context(the_divisor_is_not_a_whole_number)), o(licensed_consequence(the_written_operand_order_gives_the_quotient))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(634, [inference(rule_swap_the_operands_when_the_divisor_is_a_decimal_licenses_the_written_operand_order_gives_the_quotient), o(context(the_divisor_lies_between_zero_and_one)), o(licensed_consequence(the_written_operand_order_gives_the_quotient))], [source(discovered, a_fortiori_context_closure, a_fortiori_closure)], true).
+input_hyperedge(635, [inference(rule_translate_by_encoding_the_denominator_licenses_the_denominator_after_the_point_is_the_value), o(context(the_value_is_not_the_denominator_over_ten)), o(licensed_consequence(the_denominator_after_the_point_is_the_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(636, [inference(rule_translate_by_encoding_the_numerator_licenses_the_numerator_after_the_point_is_the_value), o(context(the_denominator_is_not_ten)), o(licensed_consequence(the_numerator_after_the_point_is_the_value))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(637, [inference(rule_treat_distinct_numerals_as_distinct_numbers_licenses_distinct_numerals_name_distinct_numbers), o(context(the_two_numerals_are_dual_representations_of_one_value)), o(licensed_consequence(distinct_numerals_name_distinct_numbers))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(638, [inference(rule_write_every_decimal_to_two_places_licenses_two_place_notation_names_the_same_quantity), o(context(the_quantity_needs_fewer_than_two_places)), o(licensed_consequence(two_place_notation_names_the_same_quantity))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(639, [inference(rule_write_whole_units_then_fractional_units_licenses_the_unit_separated_numeral_is_the_decimal_numeral), o(context(the_fractional_unit_count_reaches_the_next_whole)), o(licensed_consequence(the_unit_separated_numeral_is_the_decimal_numeral))], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(640, [inference(spaces_are_point_sets_grounds_space), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(641, [inference(spaces_are_point_sets_grounds_space), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(642, [inference(spaces_are_point_sets_grounds_space), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(643, [inference(spaces_are_point_sets_grounds_space), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(644, [inference(spaces_are_point_sets_grounds_space), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(645, [inference(spaces_are_point_sets_grounds_space), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(646, [inference(spaces_are_point_sets_grounds_space), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(647, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(648, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(649, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(650, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(651, [inference(spaces_are_point_sets_grounds_space), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(652, [inference(spaces_are_point_sets_grounds_space), o(points_inherent_to_space), o(space_constituted_by_points)], [source(discovered, defeasible_inference, emergent)], true).
+input_hyperedge(653, [inference(weierstrass_continuity_grounds_continuity), neg(o(p)), o(continuous_trajectory_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(654, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(diagonal_of_unit_square_measured)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(655, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(everyday_same_number_comparison)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(656, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(fractional_unit_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(657, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(cantors_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(658, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(classes_are_containers))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(659, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_curves))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(660, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(functions_are_sets_of_ordered_pairs))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(661, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(measuring_stick))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(662, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(motion_along_a_path))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(663, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(numbers_are_points_on_a_line))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(664, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(665, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(object_construction))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(666, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(spaces_are_sets_of_points))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(667, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(grounded(weierstrass_continuity_metaphor))], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(668, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinite_collection_compared)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(669, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(670, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(671, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(length_is_count_of_units)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(672, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(673, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(674, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(675, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(points_inherent_to_space)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(676, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(rules_conceptually_distinct)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(677, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(678, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(space_constituted_by_points)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(679, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(680, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(two_rules_same_extension)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(681, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(unrelated_control)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(682, [inference(weierstrass_continuity_grounds_continuity), o(continuous_trajectory_demanded), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], false).
+input_hyperedge(683, [inference(weierstrass_continuity_grounds_continuity), o(fractional_unit_demanded), o(grounded(object_collection))], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(684, [inference(weierstrass_continuity_grounds_continuity), o(grounded(classes_are_containers)), o(set_contains_itself)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(685, [inference(weierstrass_continuity_grounds_continuity), o(grounded(functions_are_curves)), o(pathological_function_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(686, [inference(weierstrass_continuity_grounds_continuity), o(grounded(measuring_stick)), o(negative_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(687, [inference(weierstrass_continuity_grounds_continuity), o(grounded(motion_along_a_path)), o(negative_multiplier_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(688, [inference(weierstrass_continuity_grounds_continuity), o(grounded(numbers_are_points_on_a_line)), o(infinity_as_point_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(689, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(690, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(subtract_larger_from_smaller)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(691, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_collection)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(692, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(irrational_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(693, [inference(weierstrass_continuity_grounds_continuity), o(grounded(object_construction)), o(zero_demanded)], [source(discovered, defeasible_inference, defeated)], true).
+input_hyperedge(694, [o(diagonal_of_unit_square_measured), o(grounded(measuring_stick)), o(length_is_count_of_units)], [source(seed, brandomian_engine, declared_seed)], true).
+input_hyperedge(695, [rule(a_forbids_c), rule(a_requires_b), rule(b_requires_c)], [source(discovered, finite_three_rule_program, incoherent)], true).
 
 incompatibility_content(add_counts_without_composite_unit, 1, 1).
 incompatibility_content(add_instead_of_subtract_column, 1, 1).
@@ -836,16 +843,16 @@ incompatibility_content(inference(rule_multiply_by_forming_equal_groups_licenses
 incompatibility_content(inference(rule_multiply_by_repeated_addition_licenses_repeated_addition_yields_the_product), 1, 1).
 incompatibility_content(inference(rule_multiply_written_numerals_ignoring_the_points_licenses_the_whole_number_product_is_the_decimal_product), 2, 2).
 incompatibility_content(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), 1, 1).
-incompatibility_content(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), 1, 1).
+incompatibility_content(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), 3, 3).
 incompatibility_content(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), 1, 1).
 incompatibility_content(inference(rule_order_by_decimal_place_count_fewer_is_larger_licenses_shorter_numeral_names_the_larger_value), 1, 1).
 incompatibility_content(inference(rule_order_by_decimal_place_count_more_is_larger_licenses_longer_numeral_names_the_larger_value), 1, 1).
 incompatibility_content(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), 1, 1).
 incompatibility_content(inference(rule_order_by_distance_of_the_farthest_nonzero_digit_licenses_greater_digit_distance_names_the_larger_number), 1, 1).
 incompatibility_content(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), 1, 1).
-incompatibility_content(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), 1, 1).
+incompatibility_content(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), 3, 3).
 incompatibility_content(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), 1, 1).
-incompatibility_content(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), 1, 1).
+incompatibility_content(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), 3, 3).
 incompatibility_content(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), 1, 1).
 incompatibility_content(inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), 2, 2).
 incompatibility_content(inference(rule_pick_the_largest_product_by_the_longest_factor_licenses_the_longest_factor_names_the_largest_product), 1, 1).
@@ -872,7 +879,7 @@ incompatibility_content(inference(rule_select_the_operation_by_whether_the_divis
 incompatibility_content(inference(rule_select_the_operation_by_whether_the_quantity_is_a_decimal_licenses_multiplication_is_the_operation_for_whole_quantities), 1, 1).
 incompatibility_content(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), 1, 1).
 incompatibility_content(inference(rule_step_back_by_one_to_find_the_preceding_value_licenses_subtracting_one_names_the_preceding_value), 1, 1).
-incompatibility_content(inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), 1, 1).
+incompatibility_content(inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), 2, 2).
 incompatibility_content(inference(rule_subtract_the_smaller_from_the_larger_licenses_the_difference_answers_the_problem), 1, 1).
 incompatibility_content(inference(rule_subtract_the_whole_parts_and_carry_the_fraction_part_over_licenses_the_whole_part_difference_is_the_decimal_difference), 1, 1).
 incompatibility_content(inference(rule_subtract_written_numerals_and_restore_the_visual_point_licenses_the_whole_number_difference_is_the_decimal_difference), 1, 1).
@@ -894,15 +901,15 @@ incompatibility_content(o(context(a_dividend_digit_is_not_divisible_by_the_divis
 incompatibility_content(o(context(a_factor_is_a_non_integer_decimal)), 1, 1).
 incompatibility_content(o(context(a_factor_lies_between_zero_and_one)), 3, 3).
 incompatibility_content(o(context(component_order_inverts_for_equal_numerators)), 1, 1).
-incompatibility_content(o(context(component_sum_inverts_for_equal_numerators)), 1, 1).
-incompatibility_content(o(context(denominator_order_inverts_for_equal_numerators)), 1, 1).
+incompatibility_content(o(context(component_sum_inverts_for_equal_numerators)), 3, 3).
+incompatibility_content(o(context(denominator_order_inverts_for_equal_numerators)), 3, 3).
 incompatibility_content(o(context(distinct_fractions_share_a_digit_set)), 1, 1).
 incompatibility_content(o(context(fraction_part_numeral_order_diverges_from_value_order)), 1, 1).
 incompatibility_content(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), 2, 2).
-incompatibility_content(o(context(gap_order_diverges_from_fraction_order)), 3, 3).
+incompatibility_content(o(context(gap_order_diverges_from_fraction_order)), 4, 4).
 incompatibility_content(o(context(group_size_is_not_twice_the_item_count)), 1, 1).
 incompatibility_content(o(context(halves_cut_in_different_orientations)), 1, 1).
-incompatibility_content(o(context(inverse_component_order_diverges_for_equal_denominators)), 1, 1).
+incompatibility_content(o(context(inverse_component_order_diverges_for_equal_denominators)), 2, 2).
 incompatibility_content(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 1, 1).
 incompatibility_content(o(context(neither_numeral_carries_a_zero_tenths_digit)), 1, 1).
 incompatibility_content(o(context(neither_operand_is_the_unit_whole)), 1, 1).
@@ -955,7 +962,7 @@ incompatibility_content(o(context(the_sanctioned_dividend_is_the_smaller_operand
 incompatibility_content(o(context(the_scale_is_not_calibrated_in_tenths)), 1, 1).
 incompatibility_content(o(context(the_second_factor_digit_counts_are_unequal)), 1, 1).
 incompatibility_content(o(context(the_subtrahend_carries_a_nonzero_fraction_part)), 1, 1).
-incompatibility_content(o(context(the_tenths_digit_is_nine)), 1, 1).
+incompatibility_content(o(context(the_tenths_digit_is_nine)), 2, 2).
 incompatibility_content(o(context(the_two_numerals_are_dual_representations_of_one_value)), 3, 3).
 incompatibility_content(o(context(the_two_operands_are_unequal)), 1, 1).
 incompatibility_content(o(context(the_unit_system_is_not_base_ten)), 1, 1).
@@ -993,7 +1000,7 @@ incompatibility_content(o(licensed_consequence(a_terminating_representation_is_t
 incompatibility_content(o(licensed_consequence(a_tick_advances_the_value_by_a_tenth)), 1, 1).
 incompatibility_content(o(licensed_consequence(an_infinite_expansion_names_an_irrational)), 2, 2).
 incompatibility_content(o(licensed_consequence(appended_zeros_leave_the_value_unchanged)), 1, 1).
-incompatibility_content(o(licensed_consequence(component_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(component_order_is_fraction_order)), 3, 3).
 incompatibility_content(o(licensed_consequence(component_sum_is_fraction_order)), 1, 1).
 incompatibility_content(o(licensed_consequence(consecutive_naturals_name_the_ticks)), 1, 1).
 incompatibility_content(o(licensed_consequence(cut_orientation_preserves_half_size)), 1, 1).
@@ -1012,13 +1019,13 @@ incompatibility_content(o(licensed_consequence(halving_yields_one_piece_per_shar
 incompatibility_content(o(licensed_consequence(highest_differing_digit_fixes_the_order)), 1, 1).
 incompatibility_content(o(licensed_consequence(integer_then_fraction_numeral_order_is_decimal_value_order)), 1, 1).
 incompatibility_content(o(licensed_consequence(inverse_component_order_is_fraction_order)), 1, 1).
-incompatibility_content(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), 3, 3).
 incompatibility_content(o(licensed_consequence(larger_fraction_part_numeral_names_the_smaller_decimal)), 1, 1).
 incompatibility_content(o(licensed_consequence(larger_numeral_names_larger_quantity)), 1, 1).
 incompatibility_content(o(licensed_consequence(longer_numeral_names_the_larger_value)), 1, 1).
 incompatibility_content(o(licensed_consequence(multiplication_is_the_operation_for_whole_multipliers)), 1, 1).
 incompatibility_content(o(licensed_consequence(multiplication_is_the_operation_for_whole_quantities)), 1, 1).
-incompatibility_content(o(licensed_consequence(numerator_order_is_fraction_order)), 1, 1).
+incompatibility_content(o(licensed_consequence(numerator_order_is_fraction_order)), 3, 3).
 incompatibility_content(o(licensed_consequence(numerator_sum_is_quantity_order)), 1, 1).
 incompatibility_content(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), 1, 1).
 incompatibility_content(o(licensed_consequence(repeated_addition_yields_the_product)), 1, 1).
@@ -1062,7 +1069,7 @@ incompatibility_content(o(licensed_consequence(the_truncated_value_answers_the_d
 incompatibility_content(o(licensed_consequence(the_truncations_relation_holds_of_the_limit)), 3, 3).
 incompatibility_content(o(licensed_consequence(the_unit_separated_numeral_is_the_decimal_numeral)), 1, 1).
 incompatibility_content(o(licensed_consequence(the_values_count_discrete_objects)), 1, 1).
-incompatibility_content(o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value)), 1, 1).
+incompatibility_content(o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value)), 2, 2).
 incompatibility_content(o(licensed_consequence(the_whole_number_difference_is_the_decimal_difference)), 1, 1).
 incompatibility_content(o(licensed_consequence(the_whole_number_product_is_the_decimal_product)), 2, 2).
 incompatibility_content(o(licensed_consequence(the_whole_part_difference_is_the_decimal_difference)), 1, 1).
@@ -1222,55 +1229,55 @@ incompatibility_profile(inference(rule_multiply_by_forming_equal_groups_licenses
 incompatibility_profile(inference(rule_multiply_by_repeated_addition_licenses_repeated_addition_yields_the_product), [577]).
 incompatibility_profile(inference(rule_multiply_written_numerals_ignoring_the_points_licenses_the_whole_number_product_is_the_decimal_product), [578, 579]).
 incompatibility_profile(inference(rule_name_difference_relative_to_an_operand_licenses_operand_relative_naming_is_unit_relative_naming), [580]).
-incompatibility_profile(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), [581]).
-incompatibility_profile(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), [582]).
-incompatibility_profile(inference(rule_order_by_decimal_place_count_fewer_is_larger_licenses_shorter_numeral_names_the_larger_value), [583]).
-incompatibility_profile(inference(rule_order_by_decimal_place_count_more_is_larger_licenses_longer_numeral_names_the_larger_value), [584]).
-incompatibility_profile(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), [585]).
-incompatibility_profile(inference(rule_order_by_distance_of_the_farthest_nonzero_digit_licenses_greater_digit_distance_names_the_larger_number), [586]).
-incompatibility_profile(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), [587]).
-incompatibility_profile(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), [588]).
-incompatibility_profile(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), [589]).
-incompatibility_profile(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), [590]).
-incompatibility_profile(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), [591]).
-incompatibility_profile(inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), [592, 593]).
-incompatibility_profile(inference(rule_pick_the_largest_product_by_the_longest_factor_licenses_the_longest_factor_names_the_largest_product), [594]).
-incompatibility_profile(inference(rule_place_the_point_by_crossing_the_factor_digit_counts_licenses_the_crossed_digit_counts_locate_the_point), [595]).
-incompatibility_profile(inference(rule_place_the_point_by_summing_factor_decimal_places_licenses_the_summed_place_count_locates_the_point), [596]).
-incompatibility_profile(inference(rule_place_the_point_in_each_partial_product_licenses_the_partial_placement_is_the_final_placement), [597]).
-incompatibility_profile(inference(rule_predict_a_quotient_smaller_than_the_dividend_licenses_the_quotient_falls_below_the_dividend), [598]).
-incompatibility_profile(inference(rule_read_a_point_as_the_nearest_tick_licenses_the_nearest_tick_names_the_point_value), [599]).
-incompatibility_profile(inference(rule_read_a_zero_tenths_digit_as_the_smaller_licenses_zero_tenths_digit_names_the_smaller_decimal), [600]).
-incompatibility_profile(inference(rule_read_digits_right_of_the_point_by_whole_number_place_value_licenses_whole_number_place_value_fixes_each_digit_value), [601]).
-incompatibility_profile(inference(rule_read_each_tick_as_one_tenth_licenses_a_tick_advances_the_value_by_a_tenth), [602]).
-incompatibility_profile(inference(rule_read_only_the_first_two_decimal_places_licenses_two_decimal_places_fix_the_value), [603]).
-incompatibility_profile(inference(rule_read_tenths_as_tens_licenses_the_place_name_denotes_a_whole_number_place), [604]).
-incompatibility_profile(inference(rule_read_the_division_bar_right_to_left_licenses_the_second_operand_is_the_dividend), [605]).
-incompatibility_profile(inference(rule_read_the_fraction_part_as_a_count_of_subordinate_units_licenses_the_fraction_part_counts_subordinate_units), [606]).
-incompatibility_profile(inference(rule_read_the_remainder_as_a_count_of_tenths_licenses_the_remainder_is_the_tenths_digit), [607, 608]).
-incompatibility_profile(inference(rule_read_zero_tenths_then_fall_back_to_numeral_length_licenses_zero_tenths_then_length_fixes_decimal_order), [609]).
-incompatibility_profile(inference(rule_reinterpret_the_quotient_unit_when_it_exceeds_the_dividend_licenses_a_large_quotient_marks_a_change_of_unit), [610]).
-incompatibility_profile(inference(rule_report_the_computed_decimal_as_the_contextual_answer_licenses_the_computed_value_answers_the_problem), [611]).
-incompatibility_profile(inference(rule_reverse_the_quotient_shift_after_clearing_the_divisor_licenses_the_reversed_shift_restores_the_quotient), [612, 613]).
-incompatibility_profile(inference(rule_select_division_to_obtain_a_smaller_result_licenses_division_is_the_operation_that_decreases), [614]).
-incompatibility_profile(inference(rule_select_multiplication_only_for_whole_number_multipliers_licenses_multiplication_is_the_operation_for_whole_multipliers), [615]).
-incompatibility_profile(inference(rule_select_the_operation_by_whether_the_divisor_is_whole_licenses_division_is_the_operation_for_whole_divisors), [616, 617]).
-incompatibility_profile(inference(rule_select_the_operation_by_whether_the_quantity_is_a_decimal_licenses_multiplication_is_the_operation_for_whole_quantities), [618]).
-incompatibility_profile(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), [619]).
-incompatibility_profile(inference(rule_step_back_by_one_to_find_the_preceding_value_licenses_subtracting_one_names_the_preceding_value), [620]).
-incompatibility_profile(inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), [621]).
-incompatibility_profile(inference(rule_subtract_the_smaller_from_the_larger_licenses_the_difference_answers_the_problem), [622]).
-incompatibility_profile(inference(rule_subtract_the_whole_parts_and_carry_the_fraction_part_over_licenses_the_whole_part_difference_is_the_decimal_difference), [623]).
-incompatibility_profile(inference(rule_subtract_written_numerals_and_restore_the_visual_point_licenses_the_whole_number_difference_is_the_decimal_difference), [624]).
-incompatibility_profile(inference(rule_sum_the_digit_strings_and_prepend_a_point_licenses_the_prepended_digit_sum_is_the_decimal_sum), [625]).
-incompatibility_profile(inference(rule_swap_the_operands_when_the_divisor_is_a_decimal_licenses_the_written_operand_order_gives_the_quotient), [626, 627]).
-incompatibility_profile(inference(rule_translate_by_encoding_the_denominator_licenses_the_denominator_after_the_point_is_the_value), [628]).
-incompatibility_profile(inference(rule_translate_by_encoding_the_numerator_licenses_the_numerator_after_the_point_is_the_value), [629]).
-incompatibility_profile(inference(rule_treat_distinct_numerals_as_distinct_numbers_licenses_distinct_numerals_name_distinct_numbers), [630]).
-incompatibility_profile(inference(rule_write_every_decimal_to_two_places_licenses_two_place_notation_names_the_same_quantity), [631]).
-incompatibility_profile(inference(rule_write_whole_units_then_fractional_units_licenses_the_unit_separated_numeral_is_the_decimal_numeral), [632]).
-incompatibility_profile(inference(spaces_are_point_sets_grounds_space), [633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645]).
-incompatibility_profile(inference(weierstrass_continuity_grounds_continuity), [41, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686]).
+incompatibility_profile(inference(rule_order_by_component_magnitude_licenses_component_order_is_fraction_order), [581, 582, 583]).
+incompatibility_profile(inference(rule_order_by_component_sum_licenses_component_sum_is_fraction_order), [584]).
+incompatibility_profile(inference(rule_order_by_decimal_place_count_fewer_is_larger_licenses_shorter_numeral_names_the_larger_value), [585]).
+incompatibility_profile(inference(rule_order_by_decimal_place_count_more_is_larger_licenses_longer_numeral_names_the_larger_value), [586]).
+incompatibility_profile(inference(rule_order_by_denominator_magnitude_licenses_larger_numeral_names_larger_quantity), [587]).
+incompatibility_profile(inference(rule_order_by_distance_of_the_farthest_nonzero_digit_licenses_greater_digit_distance_names_the_larger_number), [588]).
+incompatibility_profile(inference(rule_order_by_inverse_component_magnitude_licenses_inverse_component_order_is_fraction_order), [589]).
+incompatibility_profile(inference(rule_order_by_inverse_denominator_magnitude_licenses_inverse_denominator_order_is_fraction_order), [590, 591, 592]).
+incompatibility_profile(inference(rule_order_by_numerator_denominator_gap_licenses_gap_order_is_fraction_order), [593]).
+incompatibility_profile(inference(rule_order_by_numerator_magnitude_licenses_numerator_order_is_fraction_order), [594, 595, 596]).
+incompatibility_profile(inference(rule_order_by_numerator_sum_licenses_numerator_sum_is_quantity_order), [597]).
+incompatibility_profile(inference(rule_partition_the_dividend_into_divisor_many_whole_groups_licenses_the_group_size_is_the_quotient), [598, 599]).
+incompatibility_profile(inference(rule_pick_the_largest_product_by_the_longest_factor_licenses_the_longest_factor_names_the_largest_product), [600]).
+incompatibility_profile(inference(rule_place_the_point_by_crossing_the_factor_digit_counts_licenses_the_crossed_digit_counts_locate_the_point), [601]).
+incompatibility_profile(inference(rule_place_the_point_by_summing_factor_decimal_places_licenses_the_summed_place_count_locates_the_point), [602]).
+incompatibility_profile(inference(rule_place_the_point_in_each_partial_product_licenses_the_partial_placement_is_the_final_placement), [603]).
+incompatibility_profile(inference(rule_predict_a_quotient_smaller_than_the_dividend_licenses_the_quotient_falls_below_the_dividend), [604]).
+incompatibility_profile(inference(rule_read_a_point_as_the_nearest_tick_licenses_the_nearest_tick_names_the_point_value), [605]).
+incompatibility_profile(inference(rule_read_a_zero_tenths_digit_as_the_smaller_licenses_zero_tenths_digit_names_the_smaller_decimal), [606]).
+incompatibility_profile(inference(rule_read_digits_right_of_the_point_by_whole_number_place_value_licenses_whole_number_place_value_fixes_each_digit_value), [607]).
+incompatibility_profile(inference(rule_read_each_tick_as_one_tenth_licenses_a_tick_advances_the_value_by_a_tenth), [608]).
+incompatibility_profile(inference(rule_read_only_the_first_two_decimal_places_licenses_two_decimal_places_fix_the_value), [609]).
+incompatibility_profile(inference(rule_read_tenths_as_tens_licenses_the_place_name_denotes_a_whole_number_place), [610]).
+incompatibility_profile(inference(rule_read_the_division_bar_right_to_left_licenses_the_second_operand_is_the_dividend), [611]).
+incompatibility_profile(inference(rule_read_the_fraction_part_as_a_count_of_subordinate_units_licenses_the_fraction_part_counts_subordinate_units), [612]).
+incompatibility_profile(inference(rule_read_the_remainder_as_a_count_of_tenths_licenses_the_remainder_is_the_tenths_digit), [613, 614]).
+incompatibility_profile(inference(rule_read_zero_tenths_then_fall_back_to_numeral_length_licenses_zero_tenths_then_length_fixes_decimal_order), [615]).
+incompatibility_profile(inference(rule_reinterpret_the_quotient_unit_when_it_exceeds_the_dividend_licenses_a_large_quotient_marks_a_change_of_unit), [616]).
+incompatibility_profile(inference(rule_report_the_computed_decimal_as_the_contextual_answer_licenses_the_computed_value_answers_the_problem), [617]).
+incompatibility_profile(inference(rule_reverse_the_quotient_shift_after_clearing_the_divisor_licenses_the_reversed_shift_restores_the_quotient), [618, 619]).
+incompatibility_profile(inference(rule_select_division_to_obtain_a_smaller_result_licenses_division_is_the_operation_that_decreases), [620]).
+incompatibility_profile(inference(rule_select_multiplication_only_for_whole_number_multipliers_licenses_multiplication_is_the_operation_for_whole_multipliers), [621]).
+incompatibility_profile(inference(rule_select_the_operation_by_whether_the_divisor_is_whole_licenses_division_is_the_operation_for_whole_divisors), [622, 623]).
+incompatibility_profile(inference(rule_select_the_operation_by_whether_the_quantity_is_a_decimal_licenses_multiplication_is_the_operation_for_whole_quantities), [624]).
+incompatibility_profile(inference(rule_share_by_repeated_halving_licenses_halving_yields_one_piece_per_sharer), [625]).
+incompatibility_profile(inference(rule_step_back_by_one_to_find_the_preceding_value_licenses_subtracting_one_names_the_preceding_value), [626]).
+incompatibility_profile(inference(rule_subtract_the_fraction_part_from_the_whole_part_licenses_the_whole_minus_fraction_difference_is_the_value), [627, 628]).
+incompatibility_profile(inference(rule_subtract_the_smaller_from_the_larger_licenses_the_difference_answers_the_problem), [629]).
+incompatibility_profile(inference(rule_subtract_the_whole_parts_and_carry_the_fraction_part_over_licenses_the_whole_part_difference_is_the_decimal_difference), [630]).
+incompatibility_profile(inference(rule_subtract_written_numerals_and_restore_the_visual_point_licenses_the_whole_number_difference_is_the_decimal_difference), [631]).
+incompatibility_profile(inference(rule_sum_the_digit_strings_and_prepend_a_point_licenses_the_prepended_digit_sum_is_the_decimal_sum), [632]).
+incompatibility_profile(inference(rule_swap_the_operands_when_the_divisor_is_a_decimal_licenses_the_written_operand_order_gives_the_quotient), [633, 634]).
+incompatibility_profile(inference(rule_translate_by_encoding_the_denominator_licenses_the_denominator_after_the_point_is_the_value), [635]).
+incompatibility_profile(inference(rule_translate_by_encoding_the_numerator_licenses_the_numerator_after_the_point_is_the_value), [636]).
+incompatibility_profile(inference(rule_treat_distinct_numerals_as_distinct_numbers_licenses_distinct_numerals_name_distinct_numbers), [637]).
+incompatibility_profile(inference(rule_write_every_decimal_to_two_places_licenses_two_place_notation_names_the_same_quantity), [638]).
+incompatibility_profile(inference(rule_write_whole_units_then_fractional_units_licenses_the_unit_separated_numeral_is_the_decimal_numeral), [639]).
+incompatibility_profile(inference(spaces_are_point_sets_grounds_space), [640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652]).
+incompatibility_profile(inference(weierstrass_continuity_grounds_continuity), [41, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693]).
 incompatibility_profile(known_product_without_adjustment, [42]).
 incompatibility_profile(make_ten_drop_leftover, [43]).
 incompatibility_profile(name_group_count_as_share_size, [44]).
@@ -1278,200 +1285,200 @@ incompatibility_profile(name_reached_total_as_quotient, [45]).
 incompatibility_profile(neg(o(p)), [30]).
 incompatibility_profile(o(context(a_dividend_digit_is_not_divisible_by_the_divisor)), [554]).
 incompatibility_profile(o(context(a_factor_is_a_non_integer_decimal)), [578]).
-incompatibility_profile(o(context(a_factor_lies_between_zero_and_one)), [575, 579, 614]).
+incompatibility_profile(o(context(a_factor_lies_between_zero_and_one)), [575, 579, 620]).
 incompatibility_profile(o(context(component_order_inverts_for_equal_numerators)), [581]).
-incompatibility_profile(o(context(component_sum_inverts_for_equal_numerators)), [582]).
-incompatibility_profile(o(context(denominator_order_inverts_for_equal_numerators)), [585]).
+incompatibility_profile(o(context(component_sum_inverts_for_equal_numerators)), [582, 584, 594]).
+incompatibility_profile(o(context(denominator_order_inverts_for_equal_numerators)), [583, 587, 595]).
 incompatibility_profile(o(context(distinct_fractions_share_a_digit_set)), [560]).
 incompatibility_profile(o(context(fraction_part_numeral_order_diverges_from_value_order)), [543]).
 incompatibility_profile(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), [544, 547]).
-incompatibility_profile(o(context(gap_order_diverges_from_fraction_order)), [561, 563, 589]).
-incompatibility_profile(o(context(group_size_is_not_twice_the_item_count)), [619]).
+incompatibility_profile(o(context(gap_order_diverges_from_fraction_order)), [561, 563, 590, 593]).
+incompatibility_profile(o(context(group_size_is_not_twice_the_item_count)), [625]).
 incompatibility_profile(o(context(halves_cut_in_different_orientations)), [546]).
-incompatibility_profile(o(context(inverse_component_order_diverges_for_equal_denominators)), [587]).
-incompatibility_profile(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), [588]).
-incompatibility_profile(o(context(neither_numeral_carries_a_zero_tenths_digit)), [609]).
+incompatibility_profile(o(context(inverse_component_order_diverges_for_equal_denominators)), [589, 591]).
+incompatibility_profile(o(context(inverse_denominator_order_diverges_for_unequal_numerators)), [592]).
+incompatibility_profile(o(context(neither_numeral_carries_a_zero_tenths_digit)), [615]).
 incompatibility_profile(o(context(neither_operand_is_the_unit_whole)), [580]).
-incompatibility_profile(o(context(numeral_length_order_inverts_decimal_value_order)), [531, 584]).
-incompatibility_profile(o(context(numeral_length_order_tracks_decimal_value_order)), [583]).
-incompatibility_profile(o(context(numerator_order_diverges_for_unequal_denominators)), [590]).
-incompatibility_profile(o(context(numerator_sum_diverges_for_unequal_denominators)), [591]).
+incompatibility_profile(o(context(numeral_length_order_inverts_decimal_value_order)), [531, 586]).
+incompatibility_profile(o(context(numeral_length_order_tracks_decimal_value_order)), [585]).
+incompatibility_profile(o(context(numerator_order_diverges_for_unequal_denominators)), [596]).
+incompatibility_profile(o(context(numerator_sum_diverges_for_unequal_denominators)), [597]).
 incompatibility_profile(o(context(smaller_fraction_part_numeral_names_the_smaller_decimal)), [545]).
 incompatibility_profile(o(context(the_block_is_a_flat_or_a_long)), [528]).
-incompatibility_profile(o(context(the_context_counts_discrete_entities)), [611]).
-incompatibility_profile(o(context(the_denominator_is_not_ten)), [629]).
-incompatibility_profile(o(context(the_description_names_a_nonzero_tenths_digit)), [604]).
-incompatibility_profile(o(context(the_difference_leaves_the_operands_visual_pattern)), [624]).
-incompatibility_profile(o(context(the_digit_product_ends_in_zero)), [596]).
-incompatibility_profile(o(context(the_digits_stand_right_of_the_decimal_point)), [601]).
-incompatibility_profile(o(context(the_divisor_is_a_power_of_five)), [524, 540, 549, 607]).
-incompatibility_profile(o(context(the_divisor_is_not_a_whole_number)), [550, 592, 612, 616, 626]).
+incompatibility_profile(o(context(the_context_counts_discrete_entities)), [617]).
+incompatibility_profile(o(context(the_denominator_is_not_ten)), [636]).
+incompatibility_profile(o(context(the_description_names_a_nonzero_tenths_digit)), [610]).
+incompatibility_profile(o(context(the_difference_leaves_the_operands_visual_pattern)), [631]).
+incompatibility_profile(o(context(the_digit_product_ends_in_zero)), [602]).
+incompatibility_profile(o(context(the_digits_stand_right_of_the_decimal_point)), [607]).
+incompatibility_profile(o(context(the_divisor_is_a_power_of_five)), [524, 540, 549, 613]).
+incompatibility_profile(o(context(the_divisor_is_not_a_whole_number)), [550, 598, 618, 622, 633]).
 incompatibility_profile(o(context(the_divisor_is_not_one)), [551]).
-incompatibility_profile(o(context(the_divisor_is_not_ten)), [525, 608]).
-incompatibility_profile(o(context(the_divisor_lies_between_zero_and_one)), [552, 593, 598, 610, 613, 617, 627]).
+incompatibility_profile(o(context(the_divisor_is_not_ten)), [525, 614]).
+incompatibility_profile(o(context(the_divisor_lies_between_zero_and_one)), [552, 599, 604, 616, 619, 623, 634]).
 incompatibility_profile(o(context(the_drawing_is_not_to_scale)), [574]).
 incompatibility_profile(o(context(the_expansion_does_not_terminate)), [535, 557, 564]).
 incompatibility_profile(o(context(the_expansion_repeats_nines_without_end)), [527, 536, 538, 558, 565]).
 incompatibility_profile(o(context(the_expansion_repeats_periodically)), [537, 539, 559, 566]).
 incompatibility_profile(o(context(the_expression_carries_a_non_integer_value)), [571]).
-incompatibility_profile(o(context(the_factors_include_a_decimal_fraction)), [594]).
-incompatibility_profile(o(context(the_fractional_unit_count_reaches_the_next_whole)), [632]).
+incompatibility_profile(o(context(the_factors_include_a_decimal_fraction)), [600]).
+incompatibility_profile(o(context(the_fractional_unit_count_reaches_the_next_whole)), [639]).
 incompatibility_profile(o(context(the_interval_between_ticks_is_not_one_unit)), [569]).
 incompatibility_profile(o(context(the_interval_holds_values_of_finer_precision)), [553]).
-incompatibility_profile(o(context(the_multiplication_yields_several_partial_products)), [597]).
-incompatibility_profile(o(context(the_multiplier_is_not_a_whole_number)), [576, 577, 615]).
+incompatibility_profile(o(context(the_multiplication_yields_several_partial_products)), [603]).
+incompatibility_profile(o(context(the_multiplier_is_not_a_whole_number)), [576, 577, 621]).
 incompatibility_profile(o(context(the_negative_numeral_carries_a_nonzero_fraction_part)), [570]).
-incompatibility_profile(o(context(the_numeral_carries_a_nonzero_fraction_part)), [621]).
+incompatibility_profile(o(context(the_numeral_carries_a_nonzero_fraction_part)), [627]).
 incompatibility_profile(o(context(the_numeral_carries_no_decimal_point)), [526]).
 incompatibility_profile(o(context(the_numeral_carries_several_digits)), [529]).
 incompatibility_profile(o(context(the_numerals_carry_different_place_counts)), [532]).
-incompatibility_profile(o(context(the_numerals_differ_beyond_the_second_place)), [603]).
-incompatibility_profile(o(context(the_numerals_lie_between_zero_and_one)), [586]).
-incompatibility_profile(o(context(the_operands_are_not_both_tenths_summing_below_one)), [625]).
+incompatibility_profile(o(context(the_numerals_differ_beyond_the_second_place)), [609]).
+incompatibility_profile(o(context(the_numerals_lie_between_zero_and_one)), [588]).
+incompatibility_profile(o(context(the_operands_are_not_both_tenths_summing_below_one)), [632]).
 incompatibility_profile(o(context(the_part_is_a_decimal_rather_than_a_unit_fraction)), [567]).
-incompatibility_profile(o(context(the_point_lies_between_ticks)), [599]).
-incompatibility_profile(o(context(the_problem_asks_for_a_quotient)), [622]).
+incompatibility_profile(o(context(the_point_lies_between_ticks)), [605]).
+incompatibility_profile(o(context(the_problem_asks_for_a_quotient)), [629]).
 incompatibility_profile(o(context(the_product_whole_digit_count_differs_from_the_factor)), [572]).
-incompatibility_profile(o(context(the_quantity_in_the_problem_is_a_decimal)), [618]).
+incompatibility_profile(o(context(the_quantity_in_the_problem_is_a_decimal)), [624]).
 incompatibility_profile(o(context(the_quantity_is_a_rate_or_an_average)), [556]).
-incompatibility_profile(o(context(the_quantity_needs_fewer_than_two_places)), [631]).
+incompatibility_profile(o(context(the_quantity_needs_fewer_than_two_places)), [638]).
 incompatibility_profile(o(context(the_quotient_itself_carries_a_fraction_part)), [530]).
 incompatibility_profile(o(context(the_quotient_place_count_differs_from_the_dividend)), [573]).
 incompatibility_profile(o(context(the_sanctioned_dividend_is_the_smaller_operand)), [555]).
-incompatibility_profile(o(context(the_scale_is_not_calibrated_in_tenths)), [602]).
-incompatibility_profile(o(context(the_second_factor_digit_counts_are_unequal)), [595]).
-incompatibility_profile(o(context(the_subtrahend_carries_a_nonzero_fraction_part)), [623]).
-incompatibility_profile(o(context(the_tenths_digit_is_nine)), [568]).
-incompatibility_profile(o(context(the_two_numerals_are_dual_representations_of_one_value)), [541, 562, 630]).
-incompatibility_profile(o(context(the_two_operands_are_unequal)), [605]).
-incompatibility_profile(o(context(the_unit_system_is_not_base_ten)), [606]).
-incompatibility_profile(o(context(the_value_is_not_the_denominator_over_ten)), [628]).
+incompatibility_profile(o(context(the_scale_is_not_calibrated_in_tenths)), [608]).
+incompatibility_profile(o(context(the_second_factor_digit_counts_are_unequal)), [601]).
+incompatibility_profile(o(context(the_subtrahend_carries_a_nonzero_fraction_part)), [630]).
+incompatibility_profile(o(context(the_tenths_digit_is_nine)), [568, 628]).
+incompatibility_profile(o(context(the_two_numerals_are_dual_representations_of_one_value)), [541, 562, 637]).
+incompatibility_profile(o(context(the_two_operands_are_unequal)), [611]).
+incompatibility_profile(o(context(the_unit_system_is_not_base_ten)), [612]).
+incompatibility_profile(o(context(the_value_is_not_the_denominator_over_ten)), [635]).
 incompatibility_profile(o(context(the_value_is_written_without_a_point)), [534]).
-incompatibility_profile(o(context(the_values_lie_dense_along_the_line)), [620]).
+incompatibility_profile(o(context(the_values_lie_dense_along_the_line)), [626]).
 incompatibility_profile(o(context(unaligned_decimal_operation_diverges_from_decimal_value_operation)), [523]).
 incompatibility_profile(o(context(wholes_of_unequal_size)), [542]).
 incompatibility_profile(o(context(written_numeral_order_diverges_from_decimal_value_order)), [533, 548]).
-incompatibility_profile(o(context(zero_tenths_numeral_carries_the_larger_integer_part)), [600]).
-incompatibility_profile(o(continuous_trajectory_demanded), [41, 62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 633]).
-incompatibility_profile(o(diagonal_of_unit_square_measured), [215, 687]).
+incompatibility_profile(o(context(zero_tenths_numeral_carries_the_larger_integer_part)), [606]).
+incompatibility_profile(o(continuous_trajectory_demanded), [41, 62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 640]).
+incompatibility_profile(o(diagonal_of_unit_square_measured), [215, 694]).
 incompatibility_profile(o(everyday_same_number_comparison), [63]).
-incompatibility_profile(o(fractional_unit_demanded), [34, 64, 80, 147, 163, 200, 218, 259, 424, 487, 634, 676]).
+incompatibility_profile(o(fractional_unit_demanded), [34, 64, 80, 147, 163, 200, 218, 259, 424, 487, 641, 683]).
 incompatibility_profile(o(grounded(cantors_metaphor)), []).
-incompatibility_profile(o(grounded(classes_are_containers)), [65, 148, 167, 201, 222, 263, 342, 430, 491, 635, 677]).
-incompatibility_profile(o(grounded(functions_are_curves)), [66, 84, 149, 202, 224, 265, 346, 433, 493, 636, 678]).
+incompatibility_profile(o(grounded(classes_are_containers)), [65, 148, 167, 201, 222, 263, 342, 430, 491, 642, 684]).
+incompatibility_profile(o(grounded(functions_are_curves)), [66, 84, 149, 202, 224, 265, 346, 433, 493, 643, 685]).
 incompatibility_profile(o(grounded(functions_are_sets_of_ordered_pairs)), []).
-incompatibility_profile(o(grounded(measuring_stick)), [67, 87, 150, 170, 203, 267, 353, 438, 496, 637, 679, 687]).
-incompatibility_profile(o(grounded(motion_along_a_path)), [68, 89, 151, 172, 204, 228, 357, 441, 498, 638, 680]).
-incompatibility_profile(o(grounded(numbers_are_points_on_a_line)), [69, 91, 152, 174, 205, 229, 270, 360, 443, 639, 681]).
-incompatibility_profile(o(grounded(object_collection)), [64, 70, 71, 72, 80, 93, 95, 96, 147, 153, 154, 155, 163, 176, 178, 179, 200, 206, 207, 208, 218, 231, 233, 234, 259, 272, 274, 275, 424, 447, 487, 501, 502, 503, 634, 640, 641, 642, 676, 682, 683, 684]).
-incompatibility_profile(o(grounded(object_construction)), [73, 74, 97, 99, 156, 157, 180, 182, 209, 210, 235, 237, 276, 278, 505, 506, 643, 644, 685, 686]).
+incompatibility_profile(o(grounded(measuring_stick)), [67, 87, 150, 170, 203, 267, 353, 438, 496, 644, 686, 694]).
+incompatibility_profile(o(grounded(motion_along_a_path)), [68, 89, 151, 172, 204, 228, 357, 441, 498, 645, 687]).
+incompatibility_profile(o(grounded(numbers_are_points_on_a_line)), [69, 91, 152, 174, 205, 229, 270, 360, 443, 646, 688]).
+incompatibility_profile(o(grounded(object_collection)), [64, 70, 71, 72, 80, 93, 95, 96, 147, 153, 154, 155, 163, 176, 178, 179, 200, 206, 207, 208, 218, 231, 233, 234, 259, 272, 274, 275, 424, 447, 487, 501, 502, 503, 641, 647, 648, 649, 683, 689, 690, 691]).
+incompatibility_profile(o(grounded(object_construction)), [73, 74, 97, 99, 156, 157, 180, 182, 209, 210, 235, 237, 276, 278, 505, 506, 650, 651, 692, 693]).
 incompatibility_profile(o(grounded(spaces_are_sets_of_points)), []).
-incompatibility_profile(o(grounded(weierstrass_continuity_metaphor)), [62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 633]).
+incompatibility_profile(o(grounded(weierstrass_continuity_metaphor)), [62, 76, 146, 159, 199, 213, 255, 300, 417, 483, 640]).
 incompatibility_profile(o(infinite_collection_compared), [63]).
-incompatibility_profile(o(infinity_as_point_demanded), [40, 69, 91, 152, 174, 205, 229, 270, 360, 443, 639, 681]).
-incompatibility_profile(o(irrational_demanded), [35, 38, 70, 73, 93, 97, 153, 156, 176, 180, 206, 209, 231, 235, 272, 276, 501, 505, 640, 643, 682, 685]).
-incompatibility_profile(o(length_is_count_of_units), [215, 687]).
-incompatibility_profile(o(licensed_consequence(a_large_quotient_marks_a_change_of_unit)), [610]).
+incompatibility_profile(o(infinity_as_point_demanded), [40, 69, 91, 152, 174, 205, 229, 270, 360, 443, 646, 688]).
+incompatibility_profile(o(irrational_demanded), [35, 38, 70, 73, 93, 97, 153, 156, 176, 180, 206, 209, 231, 235, 272, 276, 501, 505, 647, 650, 689, 692]).
+incompatibility_profile(o(length_is_count_of_units), [215, 694]).
+incompatibility_profile(o(licensed_consequence(a_large_quotient_marks_a_change_of_unit)), [616]).
 incompatibility_profile(o(licensed_consequence(a_nonzero_fraction_part_bars_equality_with_the_integer)), [527]).
 incompatibility_profile(o(licensed_consequence(a_power_of_two_divisor_terminates)), [540]).
 incompatibility_profile(o(licensed_consequence(a_terminating_expansion_equals_its_fraction)), [557, 558, 559]).
 incompatibility_profile(o(licensed_consequence(a_terminating_representation_is_the_legitimate_one)), [535, 536, 537]).
-incompatibility_profile(o(licensed_consequence(a_tick_advances_the_value_by_a_tenth)), [602]).
+incompatibility_profile(o(licensed_consequence(a_tick_advances_the_value_by_a_tenth)), [608]).
 incompatibility_profile(o(licensed_consequence(an_infinite_expansion_names_an_irrational)), [538, 539]).
 incompatibility_profile(o(licensed_consequence(appended_zeros_leave_the_value_unchanged)), [526]).
-incompatibility_profile(o(licensed_consequence(component_order_is_fraction_order)), [581]).
-incompatibility_profile(o(licensed_consequence(component_sum_is_fraction_order)), [582]).
+incompatibility_profile(o(licensed_consequence(component_order_is_fraction_order)), [581, 582, 583]).
+incompatibility_profile(o(licensed_consequence(component_sum_is_fraction_order)), [584]).
 incompatibility_profile(o(licensed_consequence(consecutive_naturals_name_the_ticks)), [569]).
 incompatibility_profile(o(licensed_consequence(cut_orientation_preserves_half_size)), [546]).
-incompatibility_profile(o(licensed_consequence(distinct_numerals_name_distinct_numbers)), [630]).
+incompatibility_profile(o(licensed_consequence(distinct_numerals_name_distinct_numbers)), [637]).
 incompatibility_profile(o(licensed_consequence(dividing_by_the_part_value_yields_the_part)), [567]).
-incompatibility_profile(o(licensed_consequence(division_is_the_operation_for_whole_divisors)), [616, 617]).
-incompatibility_profile(o(licensed_consequence(division_is_the_operation_that_decreases)), [614]).
+incompatibility_profile(o(licensed_consequence(division_is_the_operation_for_whole_divisors)), [622, 623]).
+incompatibility_profile(o(licensed_consequence(division_is_the_operation_that_decreases)), [620]).
 incompatibility_profile(o(licensed_consequence(equal_fraction_names_are_equal_quantities)), [542]).
 incompatibility_profile(o(licensed_consequence(equal_gap_is_equal_proximity_to_one)), [563]).
 incompatibility_profile(o(licensed_consequence(equal_gap_is_fraction_equivalence)), [561]).
 incompatibility_profile(o(licensed_consequence(fraction_part_numeral_distance_is_decimal_distance)), [531, 532, 533]).
 incompatibility_profile(o(licensed_consequence(fraction_part_numeral_order_is_decimal_value_order)), [543, 544]).
-incompatibility_profile(o(licensed_consequence(gap_order_is_fraction_order)), [589]).
-incompatibility_profile(o(licensed_consequence(greater_digit_distance_names_the_larger_number)), [586]).
-incompatibility_profile(o(licensed_consequence(halving_yields_one_piece_per_sharer)), [619]).
+incompatibility_profile(o(licensed_consequence(gap_order_is_fraction_order)), [593]).
+incompatibility_profile(o(licensed_consequence(greater_digit_distance_names_the_larger_number)), [588]).
+incompatibility_profile(o(licensed_consequence(halving_yields_one_piece_per_sharer)), [625]).
 incompatibility_profile(o(licensed_consequence(highest_differing_digit_fixes_the_order)), [541]).
 incompatibility_profile(o(licensed_consequence(integer_then_fraction_numeral_order_is_decimal_value_order)), [547]).
-incompatibility_profile(o(licensed_consequence(inverse_component_order_is_fraction_order)), [587]).
-incompatibility_profile(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), [588]).
+incompatibility_profile(o(licensed_consequence(inverse_component_order_is_fraction_order)), [589]).
+incompatibility_profile(o(licensed_consequence(inverse_denominator_order_is_fraction_order)), [590, 591, 592]).
 incompatibility_profile(o(licensed_consequence(larger_fraction_part_numeral_names_the_smaller_decimal)), [545]).
-incompatibility_profile(o(licensed_consequence(larger_numeral_names_larger_quantity)), [585]).
-incompatibility_profile(o(licensed_consequence(longer_numeral_names_the_larger_value)), [584]).
-incompatibility_profile(o(licensed_consequence(multiplication_is_the_operation_for_whole_multipliers)), [615]).
-incompatibility_profile(o(licensed_consequence(multiplication_is_the_operation_for_whole_quantities)), [618]).
-incompatibility_profile(o(licensed_consequence(numerator_order_is_fraction_order)), [590]).
-incompatibility_profile(o(licensed_consequence(numerator_sum_is_quantity_order)), [591]).
+incompatibility_profile(o(licensed_consequence(larger_numeral_names_larger_quantity)), [587]).
+incompatibility_profile(o(licensed_consequence(longer_numeral_names_the_larger_value)), [586]).
+incompatibility_profile(o(licensed_consequence(multiplication_is_the_operation_for_whole_multipliers)), [621]).
+incompatibility_profile(o(licensed_consequence(multiplication_is_the_operation_for_whole_quantities)), [624]).
+incompatibility_profile(o(licensed_consequence(numerator_order_is_fraction_order)), [594, 595, 596]).
+incompatibility_profile(o(licensed_consequence(numerator_sum_is_quantity_order)), [597]).
 incompatibility_profile(o(licensed_consequence(operand_relative_naming_is_unit_relative_naming)), [580]).
 incompatibility_profile(o(licensed_consequence(repeated_addition_yields_the_product)), [577]).
 incompatibility_profile(o(licensed_consequence(same_digits_name_the_same_fraction)), [560]).
-incompatibility_profile(o(licensed_consequence(shorter_numeral_names_the_larger_value)), [583]).
-incompatibility_profile(o(licensed_consequence(subtracting_one_names_the_preceding_value)), [620]).
+incompatibility_profile(o(licensed_consequence(shorter_numeral_names_the_larger_value)), [585]).
+incompatibility_profile(o(licensed_consequence(subtracting_one_names_the_preceding_value)), [626]).
 incompatibility_profile(o(licensed_consequence(the_algorithm_expansion_is_the_only_equal_one)), [562]).
 incompatibility_profile(o(licensed_consequence(the_appended_remainder_is_the_decimal_quotient)), [524, 525]).
 incompatibility_profile(o(licensed_consequence(the_block_appearance_fixes_its_dimension)), [528]).
 incompatibility_profile(o(licensed_consequence(the_carried_digits_are_the_remainder)), [530]).
-incompatibility_profile(o(licensed_consequence(the_computed_value_answers_the_problem)), [611]).
-incompatibility_profile(o(licensed_consequence(the_crossed_digit_counts_locate_the_point)), [595]).
-incompatibility_profile(o(licensed_consequence(the_denominator_after_the_point_is_the_value)), [628]).
-incompatibility_profile(o(licensed_consequence(the_difference_answers_the_problem)), [622]).
+incompatibility_profile(o(licensed_consequence(the_computed_value_answers_the_problem)), [617]).
+incompatibility_profile(o(licensed_consequence(the_crossed_digit_counts_locate_the_point)), [601]).
+incompatibility_profile(o(licensed_consequence(the_denominator_after_the_point_is_the_value)), [635]).
+incompatibility_profile(o(licensed_consequence(the_difference_answers_the_problem)), [629]).
 incompatibility_profile(o(licensed_consequence(the_digitwise_quotients_compose_the_quotient)), [554]).
 incompatibility_profile(o(licensed_consequence(the_dividend_place_count_fixes_the_quotient)), [573]).
 incompatibility_profile(o(licensed_consequence(the_equal_group_total_is_the_product)), [576]).
 incompatibility_profile(o(licensed_consequence(the_first_factor_fixes_the_product_whole_digits)), [572]).
-incompatibility_profile(o(licensed_consequence(the_fraction_part_counts_subordinate_units)), [606]).
-incompatibility_profile(o(licensed_consequence(the_group_size_is_the_quotient)), [592, 593]).
+incompatibility_profile(o(licensed_consequence(the_fraction_part_counts_subordinate_units)), [612]).
+incompatibility_profile(o(licensed_consequence(the_group_size_is_the_quotient)), [598, 599]).
 incompatibility_profile(o(licensed_consequence(the_incremented_fraction_part_is_the_successor)), [568]).
 incompatibility_profile(o(licensed_consequence(the_integer_part_fixes_the_location)), [570]).
 incompatibility_profile(o(licensed_consequence(the_larger_operand_is_the_dividend)), [555]).
-incompatibility_profile(o(licensed_consequence(the_longest_factor_names_the_largest_product)), [594]).
+incompatibility_profile(o(licensed_consequence(the_longest_factor_names_the_largest_product)), [600]).
 incompatibility_profile(o(licensed_consequence(the_measured_length_is_the_quantity)), [574]).
-incompatibility_profile(o(licensed_consequence(the_nearest_tick_names_the_point_value)), [599]).
-incompatibility_profile(o(licensed_consequence(the_numerator_after_the_point_is_the_value)), [629]).
-incompatibility_profile(o(licensed_consequence(the_partial_placement_is_the_final_placement)), [597]).
+incompatibility_profile(o(licensed_consequence(the_nearest_tick_names_the_point_value)), [605]).
+incompatibility_profile(o(licensed_consequence(the_numerator_after_the_point_is_the_value)), [636]).
+incompatibility_profile(o(licensed_consequence(the_partial_placement_is_the_final_placement)), [603]).
 incompatibility_profile(o(licensed_consequence(the_piece_count_is_the_remainder)), [549, 550, 551, 552]).
-incompatibility_profile(o(licensed_consequence(the_place_name_denotes_a_whole_number_place)), [604]).
+incompatibility_profile(o(licensed_consequence(the_place_name_denotes_a_whole_number_place)), [610]).
 incompatibility_profile(o(licensed_consequence(the_precision_bounded_count_is_the_count_between)), [553]).
-incompatibility_profile(o(licensed_consequence(the_prepended_digit_sum_is_the_decimal_sum)), [625]).
+incompatibility_profile(o(licensed_consequence(the_prepended_digit_sum_is_the_decimal_sum)), [632]).
 incompatibility_profile(o(licensed_consequence(the_product_exceeds_its_factors)), [575]).
-incompatibility_profile(o(licensed_consequence(the_quotient_falls_below_the_dividend)), [598]).
-incompatibility_profile(o(licensed_consequence(the_remainder_is_the_tenths_digit)), [607, 608]).
-incompatibility_profile(o(licensed_consequence(the_reversed_shift_restores_the_quotient)), [612, 613]).
+incompatibility_profile(o(licensed_consequence(the_quotient_falls_below_the_dividend)), [604]).
+incompatibility_profile(o(licensed_consequence(the_remainder_is_the_tenths_digit)), [613, 614]).
+incompatibility_profile(o(licensed_consequence(the_reversed_shift_restores_the_quotient)), [618, 619]).
 incompatibility_profile(o(licensed_consequence(the_rightmost_digit_holds_the_ones_place)), [529]).
-incompatibility_profile(o(licensed_consequence(the_second_operand_is_the_dividend)), [605]).
-incompatibility_profile(o(licensed_consequence(the_summed_place_count_locates_the_point)), [596]).
+incompatibility_profile(o(licensed_consequence(the_second_operand_is_the_dividend)), [611]).
+incompatibility_profile(o(licensed_consequence(the_summed_place_count_locates_the_point)), [602]).
 incompatibility_profile(o(licensed_consequence(the_truncated_value_answers_the_discrete_count)), [556]).
 incompatibility_profile(o(licensed_consequence(the_truncations_relation_holds_of_the_limit)), [564, 565, 566]).
-incompatibility_profile(o(licensed_consequence(the_unit_separated_numeral_is_the_decimal_numeral)), [632]).
+incompatibility_profile(o(licensed_consequence(the_unit_separated_numeral_is_the_decimal_numeral)), [639]).
 incompatibility_profile(o(licensed_consequence(the_values_count_discrete_objects)), [571]).
-incompatibility_profile(o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value)), [621]).
-incompatibility_profile(o(licensed_consequence(the_whole_number_difference_is_the_decimal_difference)), [624]).
+incompatibility_profile(o(licensed_consequence(the_whole_minus_fraction_difference_is_the_value)), [627, 628]).
+incompatibility_profile(o(licensed_consequence(the_whole_number_difference_is_the_decimal_difference)), [631]).
 incompatibility_profile(o(licensed_consequence(the_whole_number_product_is_the_decimal_product)), [578, 579]).
-incompatibility_profile(o(licensed_consequence(the_whole_part_difference_is_the_decimal_difference)), [623]).
-incompatibility_profile(o(licensed_consequence(the_written_operand_order_gives_the_quotient)), [626, 627]).
+incompatibility_profile(o(licensed_consequence(the_whole_part_difference_is_the_decimal_difference)), [630]).
+incompatibility_profile(o(licensed_consequence(the_written_operand_order_gives_the_quotient)), [633, 634]).
 incompatibility_profile(o(licensed_consequence(the_written_point_marks_a_decimal)), [534]).
-incompatibility_profile(o(licensed_consequence(two_decimal_places_fix_the_value)), [603]).
-incompatibility_profile(o(licensed_consequence(two_place_notation_names_the_same_quantity)), [631]).
+incompatibility_profile(o(licensed_consequence(two_decimal_places_fix_the_value)), [609]).
+incompatibility_profile(o(licensed_consequence(two_place_notation_names_the_same_quantity)), [638]).
 incompatibility_profile(o(licensed_consequence(unaligned_decimal_operation_is_decimal_value_operation)), [523]).
-incompatibility_profile(o(licensed_consequence(whole_number_place_value_fixes_each_digit_value)), [601]).
+incompatibility_profile(o(licensed_consequence(whole_number_place_value_fixes_each_digit_value)), [607]).
 incompatibility_profile(o(licensed_consequence(written_numeral_order_is_decimal_value_order)), [548]).
-incompatibility_profile(o(licensed_consequence(zero_tenths_digit_names_the_smaller_decimal)), [600]).
-incompatibility_profile(o(licensed_consequence(zero_tenths_then_length_fixes_decimal_order)), [609]).
-incompatibility_profile(o(negative_demanded), [32, 67, 87, 150, 170, 203, 267, 353, 438, 496, 637, 679]).
-incompatibility_profile(o(negative_multiplier_demanded), [33, 68, 89, 151, 172, 204, 228, 357, 441, 498, 638, 680]).
-incompatibility_profile(o(pathological_function_demanded), [31, 66, 84, 149, 202, 224, 265, 346, 433, 493, 636, 678]).
-incompatibility_profile(o(points_inherent_to_space), [645]).
+incompatibility_profile(o(licensed_consequence(zero_tenths_digit_names_the_smaller_decimal)), [606]).
+incompatibility_profile(o(licensed_consequence(zero_tenths_then_length_fixes_decimal_order)), [615]).
+incompatibility_profile(o(negative_demanded), [32, 67, 87, 150, 170, 203, 267, 353, 438, 496, 644, 686]).
+incompatibility_profile(o(negative_multiplier_demanded), [33, 68, 89, 151, 172, 204, 228, 357, 441, 498, 645, 687]).
+incompatibility_profile(o(pathological_function_demanded), [31, 66, 84, 149, 202, 224, 265, 346, 433, 493, 643, 685]).
+incompatibility_profile(o(points_inherent_to_space), [652]).
 incompatibility_profile(o(rules_conceptually_distinct), [211]).
-incompatibility_profile(o(set_contains_itself), [29, 65, 148, 167, 201, 222, 263, 342, 430, 491, 635, 677]).
-incompatibility_profile(o(space_constituted_by_points), [645]).
-incompatibility_profile(o(subtract_larger_from_smaller), [36, 71, 95, 154, 178, 207, 233, 274, 447, 502, 641, 683]).
+incompatibility_profile(o(set_contains_itself), [29, 65, 148, 167, 201, 222, 263, 342, 430, 491, 642, 684]).
+incompatibility_profile(o(space_constituted_by_points), [652]).
+incompatibility_profile(o(subtract_larger_from_smaller), [36, 71, 95, 154, 178, 207, 233, 274, 447, 502, 648, 690]).
 incompatibility_profile(o(two_rules_same_extension), [211]).
 incompatibility_profile(o(unrelated_control), []).
-incompatibility_profile(o(zero_demanded), [37, 39, 72, 74, 96, 99, 155, 157, 179, 182, 208, 210, 234, 237, 275, 278, 503, 506, 642, 644, 684, 686]).
+incompatibility_profile(o(zero_demanded), [37, 39, 72, 74, 96, 99, 155, 157, 179, 182, 208, 210, 234, 237, 275, 278, 503, 506, 649, 651, 691, 693]).
 incompatibility_profile(odd, [25]).
 incompatibility_profile(prime_greater_than_2, [11, 26]).
 incompatibility_profile(red, [59]).
@@ -1482,9 +1489,9 @@ incompatibility_profile(rigid_factor_order_roles, [48]).
 incompatibility_profile(ripe, [59]).
 incompatibility_profile(rote_derived_fact_rule_misfire, [49]).
 incompatibility_profile(round_without_adjusting, [50]).
-incompatibility_profile(rule(a_forbids_c), [688]).
-incompatibility_profile(rule(a_requires_b), [688]).
-incompatibility_profile(rule(b_requires_c), [688]).
+incompatibility_profile(rule(a_forbids_c), [695]).
+incompatibility_profile(rule(a_requires_b), [695]).
+incompatibility_profile(rule(b_requires_c), [695]).
 incompatibility_profile(sequential_recompute_commuted_products, [51]).
 incompatibility_profile(share_into_divisor_groups, [52]).
 incompatibility_profile(slide_subtrahend_only, [53]).
@@ -1544,7 +1551,13 @@ incompatibility_earned_entails(inference(object_construction_grounds_arithmetic)
 incompatibility_earned_entails(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), 11).
 incompatibility_earned_entails(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), 11).
 incompatibility_earned_entails(o(context(a_factor_lies_between_zero_and_one)), o(context(a_factor_is_a_non_integer_decimal)), 1).
+incompatibility_earned_entails(o(context(component_sum_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), 1).
+incompatibility_earned_entails(o(context(component_sum_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), 1).
+incompatibility_earned_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), 1).
+incompatibility_earned_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), 1).
 incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(fraction_part_numeral_order_diverges_from_value_order)), 1).
+incompatibility_earned_entails(o(context(gap_order_diverges_from_fraction_order)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 1).
+incompatibility_earned_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 1).
 incompatibility_earned_entails(o(context(numeral_length_order_inverts_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 1).
 incompatibility_earned_entails(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_one)), 1).
 incompatibility_earned_entails(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_ten)), 2).
@@ -1554,6 +1567,7 @@ incompatibility_earned_entails(o(context(the_divisor_lies_between_zero_and_one))
 incompatibility_earned_entails(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_does_not_terminate)), 3).
 incompatibility_earned_entails(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_repeats_periodically)), 4).
 incompatibility_earned_entails(o(context(the_expansion_repeats_periodically)), o(context(the_expansion_does_not_terminate)), 3).
+incompatibility_earned_entails(o(context(the_tenths_digit_is_nine)), o(context(the_numeral_carries_a_nonzero_fraction_part)), 1).
 incompatibility_earned_entails(o(context(written_numeral_order_diverges_from_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 1).
 incompatibility_earned_entails(o(grounded(object_collection)), o(grounded(object_construction)), 20).
 incompatibility_earned_entails(o(irrational_demanded), o(fractional_unit_demanded), 12).
@@ -1578,7 +1592,13 @@ incompatibility_earned_entailment_support(inference(object_construction_grounds_
 incompatibility_earned_entailment_support(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), multi_profile_witness).
 incompatibility_earned_entailment_support(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(a_factor_lies_between_zero_and_one)), o(context(a_factor_is_a_non_integer_decimal)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(component_sum_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(component_sum_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(denominator_order_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(denominator_order_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), sparse_witness).
 incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(fraction_part_numeral_order_diverges_from_value_order)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(gap_order_diverges_from_fraction_order)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(inverse_component_order_diverges_for_equal_denominators)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), sparse_witness).
 incompatibility_earned_entailment_support(o(context(numeral_length_order_inverts_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), sparse_witness).
 incompatibility_earned_entailment_support(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_one)), sparse_witness).
 incompatibility_earned_entailment_support(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_ten)), multi_profile_witness).
@@ -1588,6 +1608,7 @@ incompatibility_earned_entailment_support(o(context(the_divisor_lies_between_zer
 incompatibility_earned_entailment_support(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_does_not_terminate)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_repeats_periodically)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_expansion_repeats_periodically)), o(context(the_expansion_does_not_terminate)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(the_tenths_digit_is_nine)), o(context(the_numeral_carries_a_nonzero_fraction_part)), sparse_witness).
 incompatibility_earned_entailment_support(o(context(written_numeral_order_diverges_from_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), sparse_witness).
 incompatibility_earned_entailment_support(o(grounded(object_collection)), o(grounded(object_construction)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(irrational_demanded), o(fractional_unit_demanded), multi_profile_witness).
@@ -3145,10 +3166,10 @@ incompatibility_equivalent(result_of(compare_returns_larger_count,db_row(40167),
 incompatibility_equivalent(rigid_factor_order_roles, sequential_recompute_commuted_products).
 
 
-incompatibility_data_density(1, 289).
-incompatibility_data_density(2, 30).
-incompatibility_data_density(3, 15).
-incompatibility_data_density(4, 4).
+incompatibility_data_density(1, 277).
+incompatibility_data_density(2, 34).
+incompatibility_data_density(3, 22).
+incompatibility_data_density(4, 5).
 incompatibility_data_density(5, 3).
 incompatibility_data_density(7, 1).
 incompatibility_data_density(13, 7).
@@ -3166,20 +3187,20 @@ incompatibility_data_density(69, 1).
 incompatibility_data_density(89, 2).
 incompatibility_data_density(124, 1).
 
-incompatibility_order_count(declared_input_hyperedges, 688).
-incompatibility_order_count(minimal_hyperedges, 303).
+incompatibility_order_count(declared_input_hyperedges, 695).
+incompatibility_order_count(minimal_hyperedges, 310).
 incompatibility_order_count(contents, 385).
-incompatibility_order_count(earned_entailments, 33).
-incompatibility_order_count(sparse_witness_earned_entailments, 13).
+incompatibility_order_count(earned_entailments, 40).
+incompatibility_order_count(sparse_witness_earned_entailments, 20).
 incompatibility_order_count(multi_profile_witness_earned_entailments, 20).
 incompatibility_order_count(vacuous_entailments, 1536).
 incompatibility_order_count(equivalent_pairs, 9).
 incompatibility_order_count(mutual_nonidentical_pairs, 0).
-incompatibility_order_count(cache_input_rows, 683).
+incompatibility_order_count(cache_input_rows, 690).
 incompatibility_order_count(seed_input_rows, 5).
 incompatibility_order_count(nonterminating_candidates_excluded, 1).
 
-incompatibility_discovered_kind_count(a_fortiori_closure, 20).
+incompatibility_discovered_kind_count(a_fortiori_closure, 27).
 incompatibility_discovered_kind_count(defeated, 524).
 incompatibility_discovered_kind_count(emergent, 94).
 incompatibility_discovered_kind_count(incoherent, 45).
@@ -3232,23 +3253,17 @@ incompatibility_emergent_hyperedge(577).
 incompatibility_emergent_hyperedge(578).
 incompatibility_emergent_hyperedge(580).
 incompatibility_emergent_hyperedge(581).
-incompatibility_emergent_hyperedge(582).
-incompatibility_emergent_hyperedge(583).
 incompatibility_emergent_hyperedge(584).
 incompatibility_emergent_hyperedge(585).
 incompatibility_emergent_hyperedge(586).
 incompatibility_emergent_hyperedge(587).
 incompatibility_emergent_hyperedge(588).
 incompatibility_emergent_hyperedge(589).
-incompatibility_emergent_hyperedge(590).
-incompatibility_emergent_hyperedge(591).
 incompatibility_emergent_hyperedge(592).
-incompatibility_emergent_hyperedge(594).
-incompatibility_emergent_hyperedge(595).
+incompatibility_emergent_hyperedge(593).
 incompatibility_emergent_hyperedge(596).
 incompatibility_emergent_hyperedge(597).
 incompatibility_emergent_hyperedge(598).
-incompatibility_emergent_hyperedge(599).
 incompatibility_emergent_hyperedge(600).
 incompatibility_emergent_hyperedge(601).
 incompatibility_emergent_hyperedge(602).
@@ -3256,6 +3271,7 @@ incompatibility_emergent_hyperedge(603).
 incompatibility_emergent_hyperedge(604).
 incompatibility_emergent_hyperedge(605).
 incompatibility_emergent_hyperedge(606).
+incompatibility_emergent_hyperedge(607).
 incompatibility_emergent_hyperedge(608).
 incompatibility_emergent_hyperedge(609).
 incompatibility_emergent_hyperedge(610).
@@ -3264,20 +3280,25 @@ incompatibility_emergent_hyperedge(612).
 incompatibility_emergent_hyperedge(614).
 incompatibility_emergent_hyperedge(615).
 incompatibility_emergent_hyperedge(616).
+incompatibility_emergent_hyperedge(617).
 incompatibility_emergent_hyperedge(618).
-incompatibility_emergent_hyperedge(619).
 incompatibility_emergent_hyperedge(620).
 incompatibility_emergent_hyperedge(621).
 incompatibility_emergent_hyperedge(622).
-incompatibility_emergent_hyperedge(623).
 incompatibility_emergent_hyperedge(624).
 incompatibility_emergent_hyperedge(625).
 incompatibility_emergent_hyperedge(626).
-incompatibility_emergent_hyperedge(628).
+incompatibility_emergent_hyperedge(627).
 incompatibility_emergent_hyperedge(629).
 incompatibility_emergent_hyperedge(630).
 incompatibility_emergent_hyperedge(631).
 incompatibility_emergent_hyperedge(632).
-incompatibility_emergent_hyperedge(645).
+incompatibility_emergent_hyperedge(633).
+incompatibility_emergent_hyperedge(635).
+incompatibility_emergent_hyperedge(636).
+incompatibility_emergent_hyperedge(637).
+incompatibility_emergent_hyperedge(638).
+incompatibility_emergent_hyperedge(639).
+incompatibility_emergent_hyperedge(652).
 
 incompatibility_positive_control(dog_entails_mammal, passed).

@@ -74,11 +74,96 @@
       "predicate": "multiplication(decimal_factor(A), decimal_factor(B)), (0 < A, A < 1 ; 0 < B, B < 1)",
       "prose": "Finite written-decimal multiplication inputs with at least one factor strictly between zero and one."
     },
-    "a_factor_is_a_non_integer_decimal": {
-      "input_type": "multiplication",
-      "feature": "factor_magnitude",
-      "predicate": "multiplication(decimal_factor(A), decimal_factor(B)), (finite_noninteger_decimal(A) ; finite_noninteger_decimal(B))",
-      "prose": "Finite written-decimal multiplication inputs with at least one non-whole decimal factor."
-    }
+        "a_factor_is_a_non_integer_decimal": {
+            "input_type": "multiplication",
+            "feature": "factor_magnitude",
+            "predicate": "multiplication(decimal_factor(A), decimal_factor(B)), (finite_noninteger_decimal(A) ; finite_noninteger_decimal(B))",
+            "prose": "Finite written-decimal multiplication inputs with at least one non-whole decimal factor."
+        },
+        "denominator_order_inverts_for_equal_numerators": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(frac(N, D1), frac(N, D2)), D1 =\\= D2",
+            "prose": "Distinct written proper fractions with equal numerators. The denominator-order verdict is the exact inversion of fraction order throughout this class. Ground: 14 codings of order_by_denominator_magnitude, including equal/common/same/identical-numerator rows 44873, 45520, 46684, 46824, 47016, 47040, 47285 and seven unit-fraction rows. Dissent: the unit-fractions-only reading shrinks this 440-member class to N = 1 (110); it changes DEN versus CSUM to strict but changes none of the declared DEN rows. The equal-numerator majority reading, matching the atom name, is adopted."
+        },
+        "component_sum_inverts_for_equal_numerators": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(frac(N, D1), frac(N, D2)), D1 =\\= D2",
+            "prose": "Distinct proper-fraction pairs with equal numerators. Comparing N+D then reduces to comparing denominators and inverts fraction order. Ground: coding 46879 names equal numerators as divergence and gives a valid equal-denominator domain. Dissent: an unattested full-defeat-set reading (1,564 grid pairs) would make CSUM strictly contain CORD; it is recorded but not adopted."
+        },
+        "component_order_inverts_for_equal_numerators": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(F1, F2), component_dominance(F1, F2, Side), exact_fraction_order(F1, F2, Exact), Side \\= Exact",
+            "prose": "Pairs where one fraction componentwise dominates the other at >= with at least one strict and is not strictly larger in value: the dominance rule's full 974-member defeat set. Ground: eight order_by_component_magnitude codings; rows 44707, 45650, and 47009 include equal-numerator divergence, which requires the reviewed >=-one-strict firing condition. Dissent: strict-AND yields 534 and removes every equal-numerator pair; vague row 44481 abstains. Row 46964 states equal-gap pairs as this rule's valid domain."
+        },
+        "inverse_component_order_diverges_for_equal_denominators": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(frac(N1, D), frac(N2, D)), N1 =\\= N2",
+            "prose": "Distinct proper-fraction pairs with equal denominators, on which the smaller-components rule inverts exact order. Ground: coding 47012 names equal denominators as divergence and equal numerators as valid. Dissent: an unattested full reversed-dominance defeat-set reading is set-identical to IDEN (2,404) and would turn ICOMP subset IDEN into equality."
+        },
+        "numerator_order_diverges_for_unequal_denominators": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(frac(N1, D1), frac(N2, D2)), natural_order(N1, N2, ByNum), exact_fraction_order(N1, D1, N2, D2, Exact), ByNum \\= Exact",
+            "prose": "Pairs where total whole-number numerator order differs from exact fraction order (974 on the reviewed grid). Ground: codings 44629, 44875, and 44965 name unequal denominators as the divergence superset and equal denominators as valid; the predicate is the sound divergence-defined repair. R2 rules ties equal, grounded by the loaded gap automaton and the rows' natural-number wording. Dissent: abstain on numerator ties leaves 534 and makes the equal-numerator shipped rows disjoint."
+        },
+        "inverse_denominator_order_diverges_for_unequal_numerators": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(frac(N1, D1), frac(N2, D2)), natural_order(D2, D1, ByInvDen), exact_fraction_order(N1, D1, N2, D2, Exact), ByInvDen \\= Exact",
+            "prose": "Pairs where the smaller-denominator-is-larger verdict differs from exact order (2,404 on the reviewed grid). Ground: ten codings, 44146, 44433, 45354, 45458, 45473, 46509, 46663, 46735, 46757, and 47017, uniformly record equal numerators as valid and unequal numerators as divergence. R2 makes tie verdicts equal. Dissent: abstain on equal-denominator ties leaves 1,964 and makes ICOMP subset IDEN disjoint; GAP subset IDEN survives."
+        },
+        "gap_order_diverges_from_fraction_order": {
+            "input_type": "frac_pair",
+            "feature": "comparison_heuristic_defeat",
+            "predicate": "fraction_pair(frac(N1, D1), frac(N2, D2)), D1 - N1 =:= D2 - N2",
+            "prose": "Distinct written proper-fraction pairs with equal denominator-minus-numerator gaps (440 on the reviewed grid). R1 requires the intersection for this multi-rule atom: its order rule defeats 974 pairs but its equate and proximity rules each defeat exactly the equal-gap class, so 440 is the only class that keeps all three native triples true. Coding 46920 states the class verbatim. Dissent: the order rows' broader literal or 974 divergence reading makes the two equate triples false on 534 members and is barred by closure soundness. The gap automaton is only a one-sided probe: its condition class is 974, while every 440 member carries that condition."
+        },
+        "numerator_sum_diverges_for_unequal_denominators": {
+            "input_type": "unspecified_fraction_quantity",
+            "feature": "numerator_sum_shape",
+            "predicate": "unavailable: coding 45599 does not fix the collection of fraction terms being summed",
+            "prose": "REFUSED-UNSPECIFIABLE. Coding 45599 says: Compare the magnitude of fraction-based quantities by summing the numerators and ignoring the denominators; it calls unequal denominators divergent but does not state whether the compared inputs are two sums or a sum against one fraction. No fraction_pair predicate is sound, so all 14 ordered pairs involving this context remain refused until a second coding fixes the input shape.",
+            "refused": true
+        },
+        "the_multiplier_is_not_a_whole_number": {
+            "input_type": "multiplication_rolemarked",
+            "feature": "multiplier_integrality",
+            "predicate": "multiplication(multiplier(M), multiplicand(_)), \\+ integer(M)",
+            "prose": "Role-marked multiplication tasks whose multiplier is not whole. Ground: rows 45157 and 46052 fix opposite operand positions while 45609 and 47257 state the multiplier role without position. Dissent: a positional reading could make B01 subset MNW sweepable, but it contradicts a coder row; all MNW cross-type pairings are refused."
+        },
+        "the_factors_include_a_decimal_fraction": {
+            "input_type": "product_selection_set",
+            "feature": "candidate_factor_shape",
+            "predicate": "product_selection(Candidates), member(multiplication(decimal_factor(A), decimal_factor(B)), Candidates), (\\+ integer(A) ; \\+ integer(B))",
+            "prose": "Selection tasks containing a candidate multiplication with a non-whole decimal factor. Ground: coding 47041 asks for the largest product among a set of multiplications and names decimal fractions as divergence. It is not a single multiplication input, so all FDF pairings with B01 or NID are refused_type_mismatch."
+        },
+        "smaller_fraction_part_numeral_names_the_smaller_decimal": {
+            "input_type": "dec_pair",
+            "feature": "fraction_part_order",
+            "predicate": "decimal_pair(decimal(W1, Digits1), decimal(W2, Digits2)), fraction_digit_order(Digits1, Digits2, Raw), Raw \\= equal, exact_decimal_order(W1, Digits1, W2, Digits2, Raw)",
+            "prose": "Pairs where strict fraction-digit numeral order agrees with exact decimal order: the defeat class of the coded inverted rule. Ground: row 46493 says the decimal whose portion is the larger whole number is the smaller decimal. This class is the complement of FPD inside strict-raw-order pairs, so both SFN pairings are refused_disjoint."
+        },
+        "the_tenths_digit_is_nine": {
+            "input_type": "numeral",
+            "feature": "fraction_part_shape",
+            "predicate": "written_decimal(decimal(_, [9]))",
+            "prose": "One-place written decimals with tenths digit 9. The increment-the-fraction-numeral rule crosses a place boundary and is defeated. Ground: row 47062 gives tenths less than 9 as valid and tenths equal to 9 as divergence. Dissent: allowing any length with a tenths 9 is unsound (3.95 to 3.96 succeeds); the one-place reading is required."
+        },
+        "the_numeral_carries_a_nonzero_fraction_part": {
+            "input_type": "numeral",
+            "feature": "fraction_part_shape",
+            "predicate": "written_decimal(decimal(_, Digits)), Digits \\= [], \\+ all_zero(Digits)",
+            "prose": "Written decimals with a nonzero fraction part. Ground: row 47296 has a student subtract the decimal part from the whole part to determine one decimal's value; that subtraction is the student's move, not an input operand structure. Dissent: treating it as a subtraction operand would make T9 subset NNF refused_type_mismatch."
+        },
+        "the_subtrahend_carries_a_nonzero_fraction_part": {
+            "input_type": "subtraction",
+            "feature": "subtrahend_fraction_part",
+            "predicate": "subtraction(minuend(M), subtrahend(decimal(SW, SD))), integer(M), SD \\= [], \\+ all_zero(SD)",
+            "prose": "Whole-number-minus-decimal subtraction problems whose subtrahend has a nonzero fraction part. Ground: row 44544 specifies a genuine two-operand input. Its pairings with T9 and NNF are refused_type_mismatch."
+        }
   }
 }

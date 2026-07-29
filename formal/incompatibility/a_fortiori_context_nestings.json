@@ -90,13 +90,69 @@
       "basis": "The narrow class consists of infinite decimal expansions ending in repeating nines, which are periodic infinite expansions.",
       "automaton": "unavailable"
     },
-    {
-      "narrow": "the_expansion_repeats_nines_without_end",
-      "broad": "the_expansion_does_not_terminate",
+        {
+            "narrow": "the_expansion_repeats_nines_without_end",
+            "broad": "the_expansion_does_not_terminate",
       "status": "asserted",
       "warrant": "decimal_expansion_definition",
-      "basis": "An expansion with repeating nines without end is non-terminating; this direct row makes the transitive closure inspectable without relying on an unstated graph traversal.",
-      "automaton": "unavailable"
-    }
+            "basis": "An expansion with repeating nines without end is non-terminating; this direct row makes the transitive closure inspectable without relying on an unstated graph traversal.",
+            "automaton": "unavailable"
+        },
+        {
+            "narrow": "gap_order_diverges_from_fraction_order",
+            "broad": "inverse_denominator_order_diverges_for_unequal_numerators",
+            "status": "asserted",
+            "warrant": "equal_gap_forces_inverse_denominator_defeat",
+            "basis": "R1 fixes this multi-rule narrow class at the 440 equal-gap reading: the three native rules require the intersection of their defeat sets. Equal gaps in a written-distinct proper-fraction pair force unequal numerators and denominators, and fixed-gap monotonicity makes the smaller-denominator-is-larger verdict wrong throughout. Sweep: 440 of 4,290 pairs, zero outside the 2,404-member broad class under either tie reading; the narrow retains three native rules. The loaded automaton probes the narrow endpoint only: its 974-member condition class over-covers the reviewed input class.",
+            "automaton": "probed_narrow_endpoint_only"
+        },
+        {
+            "narrow": "denominator_order_inverts_for_equal_numerators",
+            "broad": "component_order_inverts_for_equal_numerators",
+            "status": "asserted",
+            "warrant": "equal_numerator_pairs_inside_dominance_defeat",
+            "basis": "With equal numerators and distinct denominators, one fraction componentwise dominates at the reviewed >=-one-strict R3 reading and is strictly smaller in value. Sweep: 440 subset of 974 with boundary witness 1/2 vs 2/4; the narrow retains one native rule. The strict-AND dissent makes the classes disjoint and is printed in the receipt.",
+            "automaton": "unavailable"
+        },
+        {
+            "narrow": "component_sum_inverts_for_equal_numerators",
+            "broad": "component_order_inverts_for_equal_numerators",
+            "status": "asserted",
+            "warrant": "equal_numerator_pairs_inside_dominance_defeat",
+            "basis": "Coding 46879 fixes the component-sum class as the equal-numerator class; under reviewed R3 it has the same 440 subset of the 974-member dominance defeat set and the same boundary witnesses as the denominator row. The strict-AND dissent makes the classes disjoint and is printed in the receipt.",
+            "automaton": "unavailable"
+        },
+        {
+            "narrow": "denominator_order_inverts_for_equal_numerators",
+            "broad": "numerator_order_diverges_for_unequal_denominators",
+            "status": "asserted",
+            "warrant": "equal_numerator_tie_defeats_numerator_order",
+            "basis": "Under R2's total natural-number verdict, equal numerators yield equal against a strict fraction order throughout the class. Sweep: 440 subset of 974; the narrow retains one native rule. The abstain-on-ties dissent makes the classes disjoint and is printed in the receipt.",
+            "automaton": "unavailable"
+        },
+        {
+            "narrow": "component_sum_inverts_for_equal_numerators",
+            "broad": "numerator_order_diverges_for_unequal_denominators",
+            "status": "asserted",
+            "warrant": "equal_numerator_tie_defeats_numerator_order",
+            "basis": "Coding 46879 grounds the same equal-numerator narrow class as DEN. Under R2 it is the same 440 subset of the 974-member numerator-order defeat class; the abstain-on-ties dissent makes the classes disjoint and is printed in the receipt.",
+            "automaton": "unavailable"
+        },
+        {
+            "narrow": "inverse_component_order_diverges_for_equal_denominators",
+            "broad": "inverse_denominator_order_diverges_for_unequal_numerators",
+            "status": "asserted",
+            "warrant": "equal_denominator_tie_defeats_inverse_denominator_order",
+            "basis": "Under R2's total natural-number verdict, equal denominators yield equal against a strict fraction order throughout the class. Sweep: 440 subset of 2,404; the narrow retains one native rule. The abstain-on-ties dissent makes the classes disjoint and is printed in the receipt.",
+            "automaton": "unavailable"
+        },
+        {
+            "narrow": "the_tenths_digit_is_nine",
+            "broad": "the_numeral_carries_a_nonzero_fraction_part",
+            "status": "asserted",
+            "warrant": "tenths_nine_has_nonzero_fraction_part",
+            "basis": "Both contexts range over single written decimals: coding 47296's subtraction is the student's move, not an operand structure. Every one-place decimal ending in 9 has fraction part 0.9; 3.1 is broad-only. Each endpoint retains one native rule. The subtraction-operand dissent would instead refuse this pair as a type mismatch.",
+            "automaton": "unavailable"
+        }
   ]
 }
