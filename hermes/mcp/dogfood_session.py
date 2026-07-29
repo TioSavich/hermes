@@ -76,7 +76,7 @@ def exercise_monitoring_views() -> dict[str, Any]:
 
 def main() -> int:
     messages = [
-        {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-03-26", "capabilities": {}}},
+        {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-06-18", "capabilities": {}}},
         {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}},
         request(3, "lesson_deformation_chart", {"code": "IM-G3-U5-L1"}),
         request(4, "lesson_deformation_chart_detail", {"code": "IM-G3-U5-L1", "id": "$.cells[0].productive"}),
@@ -85,12 +85,31 @@ def main() -> int:
         request(7, "lesson_deformation_chart", {"code": "IM-G3-U5-L99"}),
         request(8, "misconception_search_rows", {"query": "arrangement", "k": 2}),
         request(9, "resonance_neighbors", {"name": "arrangement_as_combination_sum", "k": 2}),
+        request(10, "incompatibility_entailments", {"replacement": "o(context(the_expansion_repeats_periodically))", "replaced": "o(context(the_expansion_does_not_terminate))"}),
+        request(11, "incompatibility_profile", {"content": "o(context(the_expansion_repeats_periodically))"}),
+        request(12, "misconception_lookup", {"domain": "fraction", "limit": 2, "offset": 1}),
+        request(13, "resonance_neighbors", {"name": "arrangement_as_combination_sum", "unexpected": True}),
+        {"jsonrpc": "2.0", "id": 14, "method": "initialize", "params": {"protocolVersion": "2099-01-01", "capabilities": {}}},
+        request(15, "misconception_lookup", {"limit": "2"}),
+        request(16, "strategy_recognize", {"content": "The student used count on from larger."}),
+        request(17, "resonance_neighbors", {"name": "arrangement_as_combination_sum", "k": "5"}),
+        request(18, "deontic_scorecard", {"agent": "student", "commitments": [1], "entitlements": []}),
+        request(19, "incompatibility_profile", {}),
+        request(20, "incompatibility_entailments", {"replacement": "o(context(the_expansion_repeats_periodically))"}),
+        request(21, "misconception_lookup", {"limit": 5.5}),
     ]
     responses = run("core", messages)
     by_id = {response.get("id"): response for response in responses}
     listed = by_id[2]["result"]["tools"]
+    assert by_id[1]["result"]["protocolVersion"] == "2025-06-18"
+    assert by_id[14]["result"]["protocolVersion"] == "2025-03-26"
+    assert all(tool["annotations"] == {"readOnlyHint": True, "idempotentHint": True} and tool["title"] for tool in listed)
     trace_schema = next(tool for tool in listed if tool["name"] == "strategy_trace")["inputSchema"]
     assert len(trace_schema["properties"]["strategy"]["oneOf"]) > 100
+    assert next(tool for tool in listed if tool["name"] == "resonance_neighbors")["outputSchema"]
+    assert next(tool for tool in listed if tool["name"] == "misconception_search_rows")["outputSchema"]
+    assert next(tool for tool in listed if tool["name"] == "incompatibility_entailments")["outputSchema"]
+    assert next(tool for tool in listed if tool["name"] == "incompatibility_profile")["outputSchema"]
     assert tool_value(by_id[3])["inventory"]
     assert tool_value(by_id[4])["id"] == "$.cells[0].productive"
     assert "cells" in tool_value(by_id[5])
@@ -99,6 +118,22 @@ def main() -> int:
     assert by_id[7]["error"]["data"] == {"kind": "not_covered", "worker_type": "no_deformation_chart"}
     assert tool_value(by_id[8])["rows"][0]["name"] == "arrangement_as_combination_sum"
     assert tool_value(by_id[9])["neighbors"]
+    assert tool_value(by_id[10])["status"] in {"entailed", "equivalent"}
+    assert tool_value(by_id[10])["witnessing_contexts"]
+    assert tool_value(by_id[11])["minimal_sets"]
+    lookup = tool_value(by_id[12])
+    assert lookup["total"] >= 3 and lookup["limit"] == 2 and lookup["offset"] == 1 and len(lookup["rows"]) == 2
+    assert by_id[13]["error"]["code"] == -32602 and "unexpected" in by_id[13]["error"]["message"]
+    assert tool_value(by_id[15])["limit"] == 2
+    assert by_id[10]["result"]["structuredContent"] == tool_value(by_id[10])
+    recognized = tool_value(by_id[16])
+    assert isinstance(recognized, list) and recognized
+    assert by_id[16]["result"]["structuredContent"] == {"items": recognized}
+    assert len(tool_value(by_id[17])["neighbors"]) == 5
+    assert by_id[18]["error"]["code"] == -32602 and "commitments" in by_id[18]["error"]["message"]
+    assert by_id[19]["error"]["data"]["kind"] == "malformed_input" and "requires a content term string" in by_id[19]["error"]["message"]
+    assert by_id[20]["error"]["data"]["kind"] == "malformed_input" and "requires replacement and replaced term strings" in by_id[20]["error"]["message"]
+    assert by_id[21]["error"]["code"] == -32602 and "limit" in by_id[21]["error"]["message"]
     monitoring_views = exercise_monitoring_views()
 
     bundle_results: dict[str, list[str]] = {}
@@ -107,7 +142,7 @@ def main() -> int:
         bundle_results[bundle] = [tool["name"] for tool in listed_bundle["result"]["tools"]]
     assert bundle_results["transcript-analysis"] == [
         "deontic_scorecard", "deontic_consequences", "deontic_up_level", "commitment_match",
-        "strategy_trace", "misconception_lookup", "misconception_search_rows", "resonance_neighbors",
+        "strategy_recognize", "strategy_trace", "misconception_lookup", "misconception_search_rows", "resonance_neighbors",
     ]
     assert bundle_results["curriculum-reading"] == [
         "monitoring_chart", "monitoring_chart_detail", "lesson_deformation_chart",

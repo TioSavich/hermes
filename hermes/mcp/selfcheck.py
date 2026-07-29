@@ -3,7 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
+import sys
 from typing import Any, Callable
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from hermes.app.root import resolve_hermes_root
 from hermes.mcp.server import HermesMCPServer, ToolCallError
@@ -41,6 +47,23 @@ CHECKS = (
         arguments={"strategy": "count_on_from_larger", "input": {"a": 47, "b": 28}},
         accepts=lambda value: isinstance(value, dict) and value.get("ok") is not False,
         fix="Use a strategy name and worked input from the strategy_trace tool schema; its contracts are specific to each strategy.",
+    ),
+    Check(
+        label="incompatibility_entailments for a reviewed a-fortiori replacement",
+        tool="incompatibility_entailments",
+        arguments={
+            "replacement": "o(context(the_expansion_repeats_periodically))",
+            "replaced": "o(context(the_expansion_does_not_terminate))",
+        },
+        accepts=lambda value: isinstance(value, dict) and value.get("status") in {"entailed", "equivalent"} and bool(value.get("witnessing_contexts")),
+        fix="Use a replacement/replaced pair that the finite live profile relation can witness; this surface is not an unrestricted consequence relation.",
+    ),
+    Check(
+        label="incompatibility_profile for a reviewed closure context",
+        tool="incompatibility_profile",
+        arguments={"content": "o(context(the_expansion_repeats_periodically))"},
+        accepts=lambda value: isinstance(value, dict) and bool(value.get("minimal_sets")),
+        fix="Pass the exact content-term text recorded in a size-3-or-more hyperedge; binary declared seed pairs are not in this inventory.",
     ),
 )
 

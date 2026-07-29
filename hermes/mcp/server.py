@@ -25,6 +25,7 @@ from hermes.app.worker import PersistentPrologError, PersistentPrologWorker
 
 
 PROTOCOL_VERSION = "2025-03-26"
+SUPPORTED_PROTOCOL_VERSIONS = {"2025-03-26", "2025-06-18"}
 REGISTRY_ROW = re.compile(
     r"^capability\('([^']+)', '([^']+)', '([^']+)', \[(.*?)\], ([^)]+)\)\.$"
 )
@@ -48,7 +49,6 @@ CORE_TO_WORKER = {
     "commitment_match": "commitment_match",
     "strategy_trace": "strategy_trace",
     "strategy_recognize": "strategy_recognize",
-    "misconception_lookup": "query_misconception",
 }
 
 TOOL_BUNDLES = {
@@ -76,9 +76,11 @@ CORE_TOOLS = (
     ("commitment_match", "Match reading content through the strategy/misconception and literature-canonical vocabularies. Each match labels its matcher; it abstains when neither complete-name gate admits a term.", ("content",)),
     ("strategy_recognize", "Align ordinary classroom language to five execution-observed strategy traces. Results are candidates with token spans, missing evidence, trace frontier, order conflicts, and observed-transition provenance; an empty list is an abstention.", ("content",)),
     ("strategy_trace", "Run one registered strategy with an optional input object. The schema lists the registry-backed names, operation pairing, and worked inputs. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
-    ("misconception_lookup", "Look up encoded misconceptions by optional domain, description, or source filters.", ("domain", "description", "source")),
+    ("misconception_lookup", "Look up encoded misconceptions by optional domain, description, or source filters. Results are paged; use limit and offset to move through the matched rows.", ("domain", "description", "source", "limit", "offset")),
     ("misconception_search_rows", "Search stored misconception rows offline by whole query words in their name, domain, description, or citation. All query words must be present. Use a returned name with resonance_neighbors.", ("query", "k")),
     ("resonance_neighbors", "Find neighbors of a named stored misconception vector. This uses only the stored row vector; it never makes a query-embedding network call.", ("name", "k")),
+    ("incompatibility_entailments", "Check one proposed replacement/replaced pair against the live finite incompatibility profiles. It reports entailment, equivalence when both directions hold, or an honest unresolved status, with its witnessing contexts. This is earned over a thin corpus and is distinct from the strict generated register; see docs/research/2026-07-28-why-entailment-does-not-move.md.", ("replacement", "replaced")),
+    ("incompatibility_profile", "Return the size-3-or-more minimal incompatible sets containing one content term, with its partners and provenance. Declared binary seed pairs are outside this inventory; use incompatibility_entailments for a specified replacement/replaced pair.", ("content",)),
 )
 
 
@@ -90,6 +92,10 @@ class ToolCallError(ValueError):
         self.kind = kind
         self.worker_type = worker_type
         self.extra = extra or {}
+
+
+class InvalidArguments(ValueError):
+    """A JSON-RPC invalid-params error that names the rejected argument."""
 
 
 def error(request_id: Any, code: int, message: str, data: Any = None) -> dict[str, Any]:
@@ -115,13 +121,50 @@ def schema(parameters: tuple[str, ...] | list[str]) -> dict[str, Any]:
     }
 
 
+def tool_metadata(name: str) -> dict[str, Any]:
+    return {
+        "title": name.replace("_", " ").title(),
+        "annotations": {"readOnlyHint": True, "idempotentHint": True},
+    }
+
+
+def output_schema(name: str) -> dict[str, Any] | None:
+    """Stable result contracts only; renderer-facing payloads remain open-ended."""
+    schemas: dict[str, dict[str, Any]] = {
+        "resonance_neighbors": {
+            "type": "object",
+            "required": ["retrieval", "query_name", "model", "neighbors"],
+            "properties": {"retrieval": {"type": "string"}, "query_name": {"type": "string"}, "model": {"type": "string"}, "neighbors": {"type": "array"}},
+        },
+        "misconception_search_rows": {
+            "type": "object",
+            "required": ["retrieval", "query", "count", "rows"],
+            "properties": {"retrieval": {"type": "string"}, "query": {"type": "string"}, "count": {"type": "integer"}, "rows": {"type": "array"}},
+        },
+        "incompatibility_entailments": {
+            "type": "object",
+            "required": ["relation", "contents", "status", "witnessing_contexts"],
+            "properties": {"relation": {"type": "string"}, "contents": {"type": "object"}, "status": {"type": "string"}, "witnessing_contexts": {"type": "array", "items": {"type": "string"}}},
+        },
+        "incompatibility_profile": {
+            "type": "object",
+            "required": ["content", "status", "minimal_sets", "partners"],
+            "properties": {"content": {"type": "string"}, "status": {"type": "string"}, "minimal_sets": {"type": "array"}, "partners": {"type": "array", "items": {"type": "string"}}},
+        },
+    }
+    return schemas.get(name)
+
+
 def tool(name: str, description: str, parameters: tuple[str, ...] | list[str]) -> dict[str, Any]:
-    return {"name": name, "description": description, "inputSchema": schema(parameters)}
+    entry = {"name": name, "description": description, "inputSchema": schema(parameters), **tool_metadata(name)}
+    if stable := output_schema(name):
+        entry["outputSchema"] = stable
+    return entry
 
 
 def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy_contracts: list[dict[str, Any]]) -> dict[str, Any]:
     """Hand-authored tools can state the few JSON shapes their worker accepts."""
-    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "full": "boolean"}
+    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean"}
     properties: dict[str, dict[str, Any]] = {}
     for parameter in parameters:
         kind = kinds.get(parameter, "string")
@@ -147,7 +190,10 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "type": "object",
             "description": "Optional override for the worked input shown with the selected strategy.",
         }
-    return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "additionalProperties": False}}
+    entry = {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "additionalProperties": False}, **tool_metadata(name)}
+    if stable := output_schema(name):
+        entry["outputSchema"] = stable
+    return entry
 
 
 def registry_tools(root: Path) -> list[dict[str, Any]]:
@@ -277,7 +323,7 @@ class HermesMCPServer:
             if not isinstance(params, dict):
                 return error(request_id, -32602, "initialize params must be an object")
             return result(request_id, {
-                "protocolVersion": PROTOCOL_VERSION,
+                "protocolVersion": params.get("protocolVersion") if params.get("protocolVersion") in SUPPORTED_PROTOCOL_VERSIONS else PROTOCOL_VERSION,
                 "capabilities": {"tools": {}},
                 "serverInfo": {"name": "hermes-mcp", "version": "0.1.0"},
             })
@@ -294,7 +340,10 @@ class HermesMCPServer:
             if params["name"] not in self._tool_names:
                 return error(request_id, -32602, f"unknown tool: {params['name']}")
             try:
+                self.validate_arguments(params["name"], arguments)
                 value = self.call(params["name"], arguments)
+            except InvalidArguments as exc:
+                return error(request_id, -32602, str(exc))
             except ToolCallError as exc:
                 data: dict[str, Any] = {"kind": exc.kind}
                 if exc.worker_type is not None:
@@ -307,8 +356,64 @@ class HermesMCPServer:
                 return error(request_id, -32000, str(exc), {"kind": "malformed_input"})
             except Exception as exc:  # Preserve a valid protocol response on unexpected worker failure.
                 return error(request_id, -32000, "Hermes tool failed", {"kind": "worker_failure", "detail": str(exc)})
-            return result(request_id, {"content": [{"type": "text", "text": json.dumps(value, ensure_ascii=False, sort_keys=True)}]})
+            structured_content = value if isinstance(value, dict) else {"items": value}
+            return result(request_id, {"content": [{"type": "text", "text": json.dumps(value, ensure_ascii=False, sort_keys=True)}], "structuredContent": structured_content})
         return error(request_id, -32601, "Method not found")
+
+    def validate_arguments(self, name: str, arguments: dict[str, Any]) -> None:
+        """Enforce the declared input schema before any worker request."""
+        entry = next(tool for tool in self._tools if tool["name"] == name)
+        input_schema = entry["inputSchema"]
+        properties = input_schema.get("properties", {})
+        if input_schema.get("additionalProperties") is False:
+            for key in arguments:
+                if key not in properties:
+                    raise InvalidArguments(f"invalid argument key: {key}")
+        for key, value in arguments.items():
+            property_schema = properties[key]
+            kind = property_schema.get("type")
+            if kind == "integer":
+                normalized = self._coerce_integer(value)
+                if normalized is None:
+                    raise InvalidArguments(f"invalid argument {key}: expected integer")
+                arguments[key] = normalized
+            elif kind is not None and not self._matches_json_type(value, kind):
+                raise InvalidArguments(f"invalid argument {key}: expected {kind}")
+            item_kind = property_schema.get("items", {}).get("type")
+            if kind == "array" and item_kind is not None:
+                for item in value:
+                    if not self._matches_json_type(item, item_kind):
+                        raise InvalidArguments(f"invalid argument {key}: expected {item_kind} items")
+
+    @staticmethod
+    def _coerce_integer(value: Any) -> int | None:
+        """Preserve historical numeric-string and integral-float acceptance."""
+        if isinstance(value, int) and not isinstance(value, bool):
+            return value
+        if isinstance(value, float) and value.is_integer():
+            return int(value)
+        if isinstance(value, str):
+            try:
+                return int(value)
+            except ValueError:
+                return None
+        return None
+
+    @staticmethod
+    def _matches_json_type(value: Any, kind: str) -> bool:
+        if kind == "string":
+            return isinstance(value, str)
+        if kind == "array":
+            return isinstance(value, list)
+        if kind == "object":
+            return isinstance(value, dict)
+        if kind == "boolean":
+            return isinstance(value, bool)
+        if kind == "integer":
+            return isinstance(value, int) and not isinstance(value, bool)
+        if kind == "number":
+            return isinstance(value, (int, float)) and not isinstance(value, bool)
+        return True
 
     def call(self, name: str, arguments: dict[str, Any]) -> Any:
         if self.mode == "registry":
@@ -326,6 +431,12 @@ class HermesMCPServer:
             return self.resonance_neighbors(arguments)
         if name == "misconception_search_rows":
             return self.misconception_search_rows(arguments)
+        if name == "incompatibility_profile":
+            return self.incompatibility_profile(arguments)
+        if name == "incompatibility_entailments":
+            return self.incompatibility_entailments(arguments)
+        if name == "misconception_lookup":
+            return self.misconception_lookup(arguments)
         if name == "monitoring_chart":
             return self.monitoring_chart(arguments)
         if name == "monitoring_chart_detail":
@@ -370,8 +481,6 @@ class HermesMCPServer:
 
     def monitoring_chart(self, arguments: dict[str, Any]) -> dict[str, Any]:
         code = self._code(arguments, "monitoring_chart")
-        if "full" in arguments and not isinstance(arguments["full"], bool):
-            raise ToolCallError("monitoring_chart full must be boolean.", kind="malformed_input")
         chart = self._monitoring_full(code)
         if arguments.get("full"):
             return chart
@@ -433,8 +542,6 @@ class HermesMCPServer:
 
     def lesson_deformation_chart(self, arguments: dict[str, Any]) -> dict[str, Any]:
         code = self._code(arguments, "lesson_deformation_chart")
-        if "full" in arguments and not isinstance(arguments["full"], bool):
-            raise ToolCallError("lesson_deformation_chart full must be boolean.", kind="malformed_input")
         chart = self._deformation_full(code)
         if arguments.get("full"):
             return chart
@@ -501,6 +608,61 @@ class HermesMCPServer:
         rows = [entry for entry in index.entries if row_matches_query(query, entry)]
         rows.sort(key=lambda entry: (entry["domain"], entry["name"]))
         return {"retrieval": "offline_row_search", "query": query, "count": len(rows), "rows": list(rows[:limit])}
+
+    def misconception_lookup(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        limit = arguments.get("limit", 20)
+        offset = arguments.get("offset", 0)
+        if not 1 <= limit <= 100:
+            raise ToolCallError("misconception_lookup limit must be between 1 and 100.", kind="malformed_input")
+        if offset < 0:
+            raise ToolCallError("misconception_lookup offset must be non-negative.", kind="malformed_input")
+        filters = {key: value for key, value in arguments.items() if key in {"domain", "description", "source"}}
+        matches = self._worker_request("query_misconception", **filters)
+        if not isinstance(matches, list):
+            raise ToolCallError("misconception_lookup returned an invalid result.", kind="worker_failure")
+        return {"total": len(matches), "limit": limit, "offset": offset, "rows": matches[offset:offset + limit]}
+
+    def incompatibility_profile(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        content = arguments.get("content")
+        if not isinstance(content, str) or not content.strip():
+            raise ToolCallError("incompatibility_profile requires a content term string.", kind="malformed_input")
+        inventory = self._worker_request("hyperedges")
+        rows = inventory.get("hyperedges") if isinstance(inventory, dict) else None
+        if not isinstance(rows, list):
+            raise ToolCallError("incompatibility_profile returned an invalid hyperedge inventory.", kind="worker_failure")
+        minimal_sets = [row for row in rows if isinstance(row, dict) and content in row.get("set", [])]
+        partners = sorted({term for row in minimal_sets for term in row["set"] if term != content})
+        return {"content": content, "status": "matched" if minimal_sets else "no_size_3_or_more_profile", "minimal_sets": minimal_sets, "partners": partners}
+
+    def incompatibility_entailments(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        replacement = arguments.get("replacement")
+        replaced = arguments.get("replaced")
+        if not isinstance(replacement, str) or not replacement.strip() or not isinstance(replaced, str) or not replaced.strip():
+            raise ToolCallError("incompatibility_entailments requires replacement and replaced term strings.", kind="malformed_input")
+        contents = {"replacement": replacement, "replaced": replaced}
+        try:
+            witness = self._worker_request("incompatibility_entailment_witness", **contents)
+        except ToolCallError as exc:
+            if exc.kind == "not_covered":
+                return {"relation": "live_finite_profile_non_strict", "contents": contents,
+                        "status": "not_entailed_or_uncovered", "witnessing_contexts": []}
+            raise
+        if not isinstance(witness, dict):
+            raise ToolCallError("incompatibility_entailments returned an invalid witness.", kind="worker_failure")
+        reverse_contents = {"replacement": replaced, "replaced": replacement}
+        try:
+            reverse_witness = self._worker_request("incompatibility_entailment_witness", **reverse_contents)
+        except ToolCallError as exc:
+            if exc.kind != "not_covered":
+                raise
+            reverse_witness = None
+        contexts = sorted({profile["context"] for profile in witness.get("profiles_checked", []) if isinstance(profile, dict) and isinstance(profile.get("context"), str)})
+        response = {"relation": "live_finite_profile_non_strict", "contents": contents,
+                    "status": "equivalent" if isinstance(reverse_witness, dict) else "entailed",
+                    "witnessing_contexts": contexts, "witness": witness}
+        if isinstance(reverse_witness, dict):
+            response["reverse_witness"] = reverse_witness
+        return response
 
 
 def serve(mode: str) -> int:
