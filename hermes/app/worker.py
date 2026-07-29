@@ -31,6 +31,9 @@ class PersistentPrologError(RuntimeError):
     pass
 
 
+REQUEST_TIMEOUT_MESSAGE = "worker request timed out"
+
+
 class PersistentPrologWorker:
     def __init__(
         self,
@@ -221,4 +224,4 @@ class PersistentPrologWorker:
         if not restart_on_timeout:
             raise TimeoutError("worker boot handshake timed out")
         self.restart()
-        raise PersistentPrologError("worker request timed out")
+        raise PersistentPrologError(REQUEST_TIMEOUT_MESSAGE)
