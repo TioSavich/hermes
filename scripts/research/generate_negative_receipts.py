@@ -17,6 +17,7 @@ import ssl
 import sys
 from collections import Counter
 from dataclasses import dataclass
+from fractions import Fraction
 from pathlib import Path
 from typing import Any, Callable
 
@@ -31,15 +32,30 @@ from scripts.curriculum.build_lesson_evidence import (  # noqa: E402
     _validated_negative_receipts,
     _vision_fact_index,
 )
+from scripts.checks.automaton_input_contracts import contracts, shape_errors  # noqa: E402
 
 
 LEDGER = ROOT / "data" / "learningcommons" / "derived" / "im_lesson_evidence.json"
 CURATED_RECEIPTS = ROOT / "scripts" / "curriculum" / "lesson_negative_receipts.json"
 GUIDE_ROOT = ROOT / "curriculum" / "im_teacher_guides"
 LLM_PATH = ROOT / "hermes" / "app" / "llm.py"
+COMPILED_TASKS = ROOT / "curriculum" / "im" / "generated" / "compiled_task_instances.pl"
+CONTRACTS = ROOT / "knowledge" / "strategies" / "automaton_input_contracts.pl"
+CONTRACT_FILTER_FIXTURE = ROOT / "scripts" / "checks" / "fixtures" / "negative_receipt_candidate_contract_whole_domain.json"
 DEFAULT_OUTPUT = ROOT / "scripts" / "research" / "negative_receipts_out"
 DEFAULT_LIMIT = 3
+RUN_VERSION = "candidate_contract_filter_v2"
+CONTRACT_FILTER_OPERATIONS = frozenset({"addition", "subtraction", "multiplication", "division"})
 LESSON_RE = re.compile(r"IM-G(K|[1-8])-U(\d+)-L(\d+)")
+COMPILED_TASK_RE = re.compile(
+    r"^compiled_lesson_task_instance\('([^']+)',\s*productive-([a-z_]+)\(([^)]*)\),",
+    re.MULTILINE,
+)
+VISION_COMPUTATION_RE = re.compile(
+    r"^vision_lesson_computation\('([^']+)',\s*(\"(?:\\.|[^\"\\])*\")\s*,",
+    re.MULTILINE,
+)
+COMPUTATION_TERM_RE = re.compile(r"([a-z_]+)\(([^()]*)\)$")
 RECEIPT_FIELDS = {
     "lesson",
     "intended_action",
@@ -55,7 +71,7 @@ class LessonInput:
     lesson: str
     title: str
     grade: str
-    candidates: list[dict[str, str]]
+    candidates: list[dict[str, Any]]
     provenance_kind: str
     guide_path: Path | None
     guide_relative: str | None
@@ -64,6 +80,204 @@ class LessonInput:
 
 
 Transport = Callable[[LessonInput, list[dict[str, str]], int], str]
+
+
+def _candidate_operation(task_operation: str) -> str | None:
+    # The computation-term grammar currently covers add/subtract/multiply/divide.
+    # Registry candidates outside the corresponding four operation labels pass
+    # unfiltered and are counted in the run-report disclosure below.
+    return {
+        "add": "addition",
+        "subtract": "subtraction",
+        "multiply": "multiplication",
+        "divide": "division",
+    }.get(task_operation)
+
+
+def _numeric_operands(term: str) -> tuple[str, tuple[int | float, int | float], tuple[str, str]] | None:
+    """Parse the binary numeric vocabulary shared by compiled and digest facts."""
+    match = COMPUTATION_TERM_RE.fullmatch(term)
+    if match is None:
+        return None
+    operation = _candidate_operation(match.group(1))
+    values = [value.strip() for value in match.group(2).split(",")]
+    if operation is None or len(values) != 2:
+        return None
+    try:
+        fractions = [Fraction(value) for value in values]
+    except (ValueError, ZeroDivisionError):
+        return None
+    normalized: list[int | float] = []
+    for value in fractions:
+        normalized.append(value.numerator if value.denominator == 1 else float(value))
+    return operation, (normalized[0], normalized[1]), (values[0], values[1])
+
+
+def _compiled_operand_domains() -> dict[str, dict[str, list[tuple[tuple[int | float, int | float], tuple[str, str]]]]]:
+    domains: dict[str, dict[str, list[tuple[tuple[int | float, int | float], tuple[str, str]]]]] = {}
+    for lesson, task_operation, raw_operands in COMPILED_TASK_RE.findall(
+        COMPILED_TASKS.read_text(encoding="utf-8", errors="strict")
+    ):
+        parsed = _numeric_operands(f"{task_operation}({raw_operands})")
+        if parsed is None:
+            continue
+        operation, operands, display = parsed
+        domains.setdefault(lesson, {}).setdefault(operation, []).append((operands, display))
+    return domains
+
+
+def _digest_operand_domains() -> dict[str, dict[str, list[tuple[tuple[int | float, int | float], tuple[str, str]]]]]:
+    domains: dict[str, dict[str, list[tuple[tuple[int | float, int | float], tuple[str, str]]]]] = {}
+    for lesson, quoted_term in VISION_COMPUTATION_RE.findall(
+        VISION_DIGEST.read_text(encoding="utf-8", errors="strict")
+    ):
+        parsed = _numeric_operands(json.loads(quoted_term))
+        if parsed is None:
+            continue
+        operation, operands, display = parsed
+        domains.setdefault(lesson, {}).setdefault(operation, []).append((operands, display))
+    return domains
+
+
+def _contract_index() -> dict[tuple[str, str], dict[str, Any]]:
+    return {(row["operation"], row["kind"]): row for row in contracts()}
+
+
+def drafting_provenance_kind(lesson: str) -> str:
+    """Use the same source-mode decision for controls and production drafting."""
+    return "file" if guide_path(lesson).is_file() else "fact"
+
+
+def filter_candidate_contracts(
+    row: dict[str, Any],
+    *,
+    provenance_kind: str,
+    compiled_domains: dict[str, dict[str, list[tuple[tuple[int | float, int | float], tuple[str, str]]]]],
+    digest_domains: dict[str, dict[str, list[tuple[tuple[int | float, int | float], tuple[str, str]]]]],
+    contract_index: dict[tuple[str, str], dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Annotate, without deleting, candidates whose live operands miss a contract.
+
+    File-backed drafting uses the compiler's task instances. Fact-backed drafting
+    uses the digest computations that are actually supplied to the drafter; if
+    that source has no computation facts, compiled instances remain the fallback.
+    Thus a missing domain never becomes a reason to remove a registry row.
+    """
+    lesson = row["lesson"]
+    selected_source = "compiled_task_instances"
+    domains = compiled_domains.get(lesson, {})
+    if provenance_kind == "fact" and digest_domains.get(lesson):
+        selected_source = "vision_digest"
+        domains = digest_domains[lesson]
+    elif not domains and digest_domains.get(lesson):
+        selected_source = "vision_digest"
+        domains = digest_domains[lesson]
+
+    usable: list[dict[str, Any]] = []
+    annotated: list[dict[str, Any]] = []
+    for candidate in row["negative_candidates"]:
+        candidate_copy = dict(candidate)
+        contract = contract_index.get((candidate["operation"], candidate["productive"]))
+        candidates = domains.get(candidate["operation"], [])
+        checks: list[tuple[tuple[str, str], list[str]]] = []
+        if contract is not None:
+            for operands, display in candidates:
+                errors = shape_errors(contract["shape"], {"a": operands[0], "b": operands[1]})
+                checks.append((display, errors))
+        compatible = [display for display, errors in checks if not errors]
+        # A partial mismatch is usable evidence for the same candidate, not a
+        # reason to remove it. Only a nonempty operation bucket with no
+        # contract-compatible pair is a cannot-run candidate.
+        if not checks or compatible:
+            usable.append(candidate_copy)
+            annotated.append(candidate_copy)
+            continue
+        candidate_copy["annotation"] = "contract_mismatch"
+        candidate_copy["contract_evidence"] = {
+            "source": selected_source,
+            "incompatible_operands": [
+                {"operands": list(display), "errors": errors}
+                for display, errors in checks
+            ],
+            "contract": contract["shape"],
+        }
+        annotated.append(candidate_copy)
+    return usable, annotated
+
+
+def contract_filter_controls() -> str:
+    """Exercise production provenance, partial compatibility, and whole-domain refusal."""
+    ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    eligible = {row["lesson"]: row for row in eligible_lessons(ledger)}
+    compiled_domains = _compiled_operand_domains()
+    digest_domains = _digest_operand_domains()
+    index = _contract_index()
+    reclassified = {
+        "IM-G6-U2-L4": ("multiplication_fact_retrieval", ("7", "7")),
+        "IM-G6-U5-L13": ("long_division", ("1097", "5")),
+        "IM-G7-U4-L6": ("measure_groups_of_size", ("78", "4")),
+    }
+    for lesson, (productive, compatible_pair) in reclassified.items():
+        _, annotated = filter_candidate_contracts(
+            eligible[lesson],
+            provenance_kind=drafting_provenance_kind(lesson),
+            compiled_domains=compiled_domains,
+            digest_domains=digest_domains,
+            contract_index=index,
+        )
+        matched = next(
+            (
+                candidate for candidate in annotated
+                if candidate["productive"] == productive
+                and candidate.get("annotation") != "contract_mismatch"
+            ),
+            None,
+        )
+        if matched is None:
+            raise RuntimeError(f"partial-domain control incorrectly excluded {lesson}/{productive}")
+        domains = digest_domains[lesson] if drafting_provenance_kind(lesson) == "fact" else compiled_domains[lesson]
+        contract = index[(matched["operation"], matched["productive"])]
+        if compatible_pair not in [
+            display
+            for operands, display in domains[matched["operation"]]
+            if not shape_errors(contract["shape"], {"a": operands[0], "b": operands[1]})
+        ]:
+            raise RuntimeError(f"partial-domain control lost compatible pair {lesson}/{compatible_pair}")
+
+    merged_keep = next(row for row in ledger["lessons"] if row["lesson"] == "IM-G6-U5-L12")
+    if merged_keep["lesson"] in eligible:
+        raise RuntimeError("merged integer keep unexpectedly entered the drafter pool")
+    _, annotated = filter_candidate_contracts(
+        merged_keep,
+        provenance_kind=drafting_provenance_kind(merged_keep["lesson"]),
+        compiled_domains=compiled_domains,
+        digest_domains=digest_domains,
+        contract_index=index,
+    )
+    if any(candidate.get("annotation") == "contract_mismatch" for candidate in annotated):
+        raise RuntimeError("IM-G6-U5-L12 integer control was incorrectly flagged")
+    fixture = json.loads(CONTRACT_FILTER_FIXTURE.read_text(encoding="utf-8"))
+    synthetic_domains = {
+        fixture["lesson"]: {
+            fixture["operation"]: [
+                ((int(fixture["operands"][0]), float(Fraction(fixture["operands"][1]))), tuple(fixture["operands"]))
+            ]
+        }
+    }
+    _, annotated = filter_candidate_contracts(
+        fixture,
+        provenance_kind=fixture["provenance_kind"],
+        compiled_domains={},
+        digest_domains=synthetic_domains,
+        contract_index=index,
+    )
+    if annotated[0].get("annotation") != "contract_mismatch":
+        raise RuntimeError("synthetic whole-domain mismatch control did not refuse")
+    return (
+        "gold controls reclassified through compatible pairs; "
+        "IM-G6-U5-L12 production-provenance keep unflagged; "
+        "synthetic whole-domain mismatch refused"
+    )
 
 
 def load_llm_module() -> Any:
@@ -191,6 +405,13 @@ def lesson_input(
 _DRAFTING_RULES_HEAD = """A receipt earns its place only when the quoted text carries the lesson's own
 material: a quantity, a referent, a relation, or what the task asks students to
 do, named closely enough that the alternative would have to discard it.
+
+Boundary revision-log disqualifying-vocabulary rule: a fragment containing
+"first pass", "reclassif", "re-tagged", "mis-tagged", "DELETED",
+"CORRECTION", "no automaton", or "kind NONE", or a fragment opening
+"None.", is a record of the reading or its revision rather than lesson
+evidence. Do not quote it. Abstain when it would be needed, and name the
+Boundary revision-log disqualifying-vocabulary rule in the abstention reason.
 
 These quotations disqualify a receipt. Each one produced a rejected receipt in
 the previous review round:
@@ -646,6 +867,29 @@ def summarize(
     )
     denominator = len(records)
     projected = census["diagnostic_ready"] + len(accepted)
+    pool_effect_by_grade: dict[str, dict[str, int]] = {}
+    for record in records:
+        grade = record["grade"]
+        effect = pool_effect_by_grade.setdefault(
+            grade,
+            {"lessons": 0, "candidates_before": 0, "candidates_after": 0, "contract_mismatch": 0},
+        )
+        effect["lessons"] += 1
+        effect["candidates_before"] += record.get("candidate_count_before", 0)
+        effect["candidates_after"] += record.get("candidate_count_after", 0)
+        effect["contract_mismatch"] += sum(
+            candidate.get("annotation") == "contract_mismatch"
+            for candidate in record.get("candidate_annotations", [])
+        )
+    needs_vocabulary = [
+        record["lesson"] for record in records if record["status"] == "needs_vocabulary"
+    ]
+    uncovered_operations = Counter(
+        candidate["operation"]
+        for record in records
+        for candidate in record.get("candidate_annotations", [])
+        if candidate["operation"] not in CONTRACT_FILTER_OPERATIONS
+    )
     accepted_payload = {
         "schema": schema,
         "register": register,
@@ -673,6 +917,24 @@ def summarize(
             "value": len(accepted) / proposed if proposed else 0.0,
         },
         "refusal_reasons": dict(reasons.most_common()),
+        "candidate_contract_filter": {
+            "version": RUN_VERSION,
+            "mismatch_annotations": sum(
+                candidate.get("annotation") == "contract_mismatch"
+                for record in records
+                for candidate in record.get("candidate_annotations", [])
+            ),
+            "needs_vocabulary": needs_vocabulary,
+            "pool_effect_by_grade": dict(sorted(pool_effect_by_grade.items())),
+            "covered_candidate_operations": sorted(CONTRACT_FILTER_OPERATIONS),
+            "uncovered_candidate_operations": dict(sorted(uncovered_operations.items())),
+            "uncovered_candidate_count": sum(uncovered_operations.values()),
+            "disclosure": (
+                "The contract filter currently evaluates only addition, subtraction, "
+                "multiplication, and division computation domains. Candidates in other "
+                "registry operation categories pass unfiltered."
+            ),
+        },
         "ratchet_if_accepted_merged": projected,
         "records": records,
         "gate_scope": {
@@ -729,6 +991,25 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
         f"ratchet={census['all_receipts_projection']}/{census['published']} "
         "if every source-backed target yields an accepted receipt"
     )
+    contract_filter = report["candidate_contract_filter"]
+    print(
+        "Candidate-contract filter: "
+        f"mismatches={contract_filter['mismatch_annotations']} "
+        f"needs_vocabulary={', '.join(contract_filter['needs_vocabulary']) or 'none'}"
+    )
+    print("Candidate pool effect by grade:")
+    for grade, effect in contract_filter["pool_effect_by_grade"].items():
+        print(
+            f"  grade {grade}: candidates={effect['candidates_before']}"
+            f"->{effect['candidates_after']} mismatches={effect['contract_mismatch']}"
+            f" lessons={effect['lessons']}"
+        )
+    print(
+        "Candidate-contract coverage: "
+        f"covered={','.join(contract_filter['covered_candidate_operations'])} "
+        f"uncovered={contract_filter['uncovered_candidate_count']} "
+        f"operations={contract_filter['uncovered_candidate_operations'] or 'none'}"
+    )
     print("Per lesson:")
     for record in report["records"]:
         proposed = "proposed" if record["proposed"] else "not-proposed"
@@ -773,6 +1054,8 @@ def run(args: argparse.Namespace) -> int:
     eligible = eligible_lessons(ledger)
     fact_index = _vision_fact_index()
     census = ledger_census(ledger, eligible, fact_index)
+    contract_controls = contract_filter_controls()
+    print(f"Candidate-contract controls: {contract_controls}")
     if args.limit < 1:
         raise ValueError("--limit must be at least 1")
     selected_pool = eligible
@@ -789,6 +1072,9 @@ def run(args: argparse.Namespace) -> int:
             row for row in eligible if row["grade"] in wanted_grades
         ]
     selected = selected_pool[: args.limit]
+    compiled_domains = _compiled_operand_domains()
+    digest_domains = _digest_operand_domains()
+    input_contracts = _contract_index()
     lesson_ids = {row["lesson"] for row in ledger["lessons"]}
     strategy_mappings = {
         row["lesson"]: {
@@ -830,15 +1116,44 @@ def run(args: argparse.Namespace) -> int:
     for index, row in enumerate(selected, 1):
         checkpoint = checkpoint_path(args.output_dir, row["lesson"])
         existing = load_checkpoint(checkpoint)
-        if existing is not None:
+        if existing is not None and existing.get("run_version") == RUN_VERSION:
             print(f"[{index}/{len(selected)}] {row['lesson']}: resumed checkpoint")
             records.append(existing)
             continue
         path = guide_path(row["lesson"])
+        provenance_kind = drafting_provenance_kind(row["lesson"])
+        filtered_candidates, candidate_annotations = filter_candidate_contracts(
+            row,
+            provenance_kind=provenance_kind,
+            compiled_domains=compiled_domains,
+            digest_domains=digest_domains,
+            contract_index=input_contracts,
+        )
+        record_fields = {
+            "run_version": RUN_VERSION,
+            "lesson": row["lesson"],
+            "title": row["name"],
+            "grade": row["grade"],
+            "candidate_count_before": len(row["negative_candidates"]),
+            "candidate_count_after": len(filtered_candidates),
+            "candidate_annotations": candidate_annotations,
+        }
+        if row["negative_candidates"] and not filtered_candidates:
+            record = {
+                **record_fields,
+                "proposed": False,
+                "status": "needs_vocabulary",
+                "reason": "all registry candidates are contract_mismatch for the lesson operand domain",
+                "receipt": None,
+                "raw_response": None,
+            }
+            atomic_write_json(checkpoint, record)
+            records.append(record)
+            print(f"[{index}/{len(selected)}] {row['lesson']}: needs_vocabulary before transport")
+            continue
         if not path.is_file() and not fact_index.get(row["lesson"]):
             record = {
-                "lesson": row["lesson"],
-                "title": row["name"],
+                **record_fields,
                 "proposed": False,
                 "status": "refused",
                 "reason": (
@@ -852,7 +1167,9 @@ def run(args: argparse.Namespace) -> int:
             records.append(record)
             print(f"[{index}/{len(selected)}] {row['lesson']}: refused before transport")
             continue
-        item = lesson_input(row, fact_index)
+        filtered_row = dict(row)
+        filtered_row["negative_candidates"] = filtered_candidates
+        item = lesson_input(filtered_row, fact_index)
         messages = build_messages(
             item,
             curated["schema"],
@@ -864,6 +1181,7 @@ def run(args: argparse.Namespace) -> int:
             response = transport(item, messages, index)
         except RuntimeError as exc:
             record = {
+                **record_fields,
                 "lesson": item.lesson,
                 "title": item.title,
                 "proposed": False,
@@ -876,6 +1194,7 @@ def run(args: argparse.Namespace) -> int:
             payload, parse_fault = parse_proposal(response)
             if payload is None:
                 record = {
+                    **record_fields,
                     "lesson": item.lesson,
                     "title": item.title,
                     "proposed": False,
@@ -894,6 +1213,7 @@ def run(args: argparse.Namespace) -> int:
                     register=curated["register"],
                 )
                 record = {
+                    **record_fields,
                     "lesson": item.lesson,
                     "title": item.title,
                     "proposed": True,

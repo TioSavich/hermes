@@ -73,6 +73,21 @@ def declared_absent_ledger_control(
     return row["lesson"]
 
 
+def recovered_span_declared_absent_control(
+    fixture_path: pathlib.Path,
+    docs: list[compiler.LessonDoc],
+    covered: set[str],
+    attachments: dict[str, set[tuple[str, str]]],
+) -> str:
+    """A sidecar-only complete expression remains citable but non-counting."""
+    rows = compiler.validate_lesson_task_readings(ROOT, docs, covered, attachments, fixture_path)
+    if len(rows) != 1 or rows[0]["witness_class"] != "declared_absent":
+        raise SystemExit("recovered-span fixture did not compile as declared-absent")
+    if rows[0]["source"] != str(compiler.RECOVERED_TASK_SPANS.relative_to(ROOT)):
+        raise SystemExit("recovered-span fixture did not retain sidecar provenance")
+    return f"{rows[0]['lesson']}/{rows[0]['task']}"
+
+
 def wrapped_span_control(fixture: dict, docs: list[compiler.LessonDoc]) -> str:
     """Column-aware span text accepts a true wrapped left-column sentence."""
     spans = {
@@ -247,6 +262,7 @@ def main() -> int:
         return 1
     refusals = []
     declared_absent_lesson = ""
+    recovered_span_lesson = ""
     wrapped_control = ""
     single_expression = ""
     complete_expression = ""
@@ -256,6 +272,11 @@ def main() -> int:
         fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
         if fixture.get("expected_result") == "declared_absent_compiles":
             declared_absent_lesson = declared_absent_ledger_control(
+                fixture_path, docs, covered, attachments
+            )
+            continue
+        if fixture.get("expected_result") == "recovered_span_declared_absent_compiles":
+            recovered_span_lesson = recovered_span_declared_absent_control(
                 fixture_path, docs, covered, attachments
             )
             continue
@@ -304,6 +325,10 @@ def main() -> int:
     print("adjacent-task response-boundary control passed")
     print(
         f"declared-absent control compiled for {declared_absent_lesson}; "
+        "ledger executable_task=false"
+    )
+    print(
+        f"recovered-span declared-absent control compiled for {recovered_span_lesson}; "
         "ledger executable_task=false"
     )
     print(f"wrapped-span column-aware control passed: {wrapped_control}")

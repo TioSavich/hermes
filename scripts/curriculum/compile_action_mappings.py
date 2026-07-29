@@ -89,6 +89,11 @@ class Mapping:
     source: str
     line: int
     excerpt: str
+    # Legacy rows retain their exact rendered evidence. Task-span rows carry
+    # the field discriminator and the extractor's student-facing position.
+    matched_field: str = ""
+    span_position: str = ""
+    end_line: int = 0
 
 
 @dataclass(frozen=True, order=True)
@@ -753,7 +758,11 @@ def validate_lesson_task_readings(
                 raise SystemExit(
                     f"lesson task reading {reading_id} operands missing from excerpt: {operand}"
                 )
-        if not _operands_scope_one_item(span, operands_excerpt):
+        operands_span = span
+        if citations["operands"][0].get("recovered_span") is not None:
+            recovered_key = (lesson, span_position)
+            operands_span = recovered_by_key[recovered_key]
+        if not _operands_scope_one_item(operands_span, operands_excerpt):
             raise SystemExit(
                 f"lesson task reading {reading_id} item-scope failed: operands cite multiple items"
             )
@@ -762,7 +771,10 @@ def validate_lesson_task_readings(
                 f"lesson task reading {reading_id} content-scope failed: operands do not cite exactly the task expression"
             )
         if not _operands_expression_is_maximal(
-            span, operands_excerpt, citations["operands"][2], citations["operands"][3]
+            operands_span,
+            operands_excerpt,
+            citations["operands"][2],
+            citations["operands"][3],
         ):
             raise SystemExit(
                 f"lesson task reading {reading_id} maximality failed: operands cite a truncated expression"
@@ -2184,6 +2196,45 @@ def _first_match(doc: LessonDoc, patterns: list[str]) -> tuple[int, str] | None:
     return None
 
 
+def _first_task_span_match(
+    spans: list[StudentTaskSpan], patterns: list[str]
+) -> tuple[str, int, int, str, str] | None:
+    """Return the first quoted, line-addressable student-task match.
+
+    A text rule is still tried in its legacy title/goals/purpose fields first.
+    This sibling entry point searches the extractor's complete task-span text,
+    but returns the physical source-line range overlapping the quoted match.
+    A new attachment can therefore cite a wrapped student prompt without
+    citing concatenated text or any teacher-column text.
+    """
+    for pattern in patterns:
+        regex = re.compile(pattern, re.IGNORECASE)
+        for span in spans:
+            match = regex.search(span.text)
+            if match:
+                offset = 0
+                match_lines = []
+                for line, text in span.lines:
+                    text_end = offset + len(text)
+                    if offset < match.end() and text_end > match.start():
+                        match_lines.append(line)
+                    # StudentTaskSpan.text joins physical lines with one space.
+                    offset = text_end + 1
+                if not match_lines:
+                    raise SystemExit(
+                        "task-span match has no physical source line: "
+                        f"{span.code}/{span.position}/{pattern!r}"
+                    )
+                return (
+                    span.source,
+                    match_lines[0],
+                    match_lines[-1],
+                    span.position,
+                    match.group(0),
+                )
+    return None
+
+
 def _rule_match(doc: LessonDoc, rule: dict) -> tuple[int, str] | None:
     for pattern in rule.get("exclude_patterns", []):
         if re.search(pattern, doc.concise_text, re.IGNORECASE):
@@ -2230,6 +2281,56 @@ def compile_rule_mappings(
                         excerpt,
                     )
                 )
+    return sorted(mappings)
+
+
+def compile_task_span_rule_mappings(
+    docs: list[LessonDoc],
+    rules: dict,
+    baseline_attached: set[str],
+    task_spans: list[StudentTaskSpan],
+) -> list[Mapping]:
+    """Attach only strategy-empty lessons from their student task statements.
+
+    ``baseline_attached`` is built before this pass. It prevents the widening
+    from changing any attachment belonging to a lesson that already had one;
+    task-span evidence is therefore strictly additive at the lesson level.
+    """
+    spans_by_code: dict[str, list[StudentTaskSpan]] = defaultdict(list)
+    for span in task_spans:
+        spans_by_code[span.code].append(span)
+    mappings = set()
+    for doc in docs:
+        if doc.code in baseline_attached:
+            continue
+        for rule in rules["text_rules"]:
+            # Keep the rule's existing exclusion surface unchanged. The task
+            # statement widens positive evidence only; it does not make a
+            # teacher-facing exclusion newly true.
+            if any(
+                re.search(pattern, doc.concise_text, re.IGNORECASE)
+                for pattern in rule.get("exclude_patterns", [])
+            ):
+                continue
+            match = _first_task_span_match(spans_by_code[doc.code], rule["patterns"])
+            if not match:
+                continue
+            source, line, end_line, span_position, excerpt = match
+            mappings.add(
+                Mapping(
+                    doc.code,
+                    rule["operation"],
+                    rule["kind"],
+                    rule.get("input_domain", _input_domain(rule["operation"])),
+                    rule["id"],
+                    source,
+                    line,
+                    excerpt,
+                    "task_span",
+                    span_position,
+                    end_line,
+                )
+            )
     return sorted(mappings)
 
 
@@ -2624,9 +2725,20 @@ def render_prolog(mappings: list[Mapping]) -> str:
         "",
     ]
     for mapping in mappings:
+        task_span_provenance = (
+            f", matched_field(task_span), span_position({_prolog_atom(mapping.span_position)})"
+            if mapping.matched_field == "task_span"
+            else ""
+        )
+        source = (
+            f"source({_prolog_atom(mapping.source)}, lines({mapping.line}, {mapping.end_line}))"
+            if mapping.matched_field == "task_span"
+            else f"source({_prolog_atom(mapping.source)}, line({mapping.line}))"
+        )
         evidence = (
-            f"mapping_evidence(rule({_prolog_atom(mapping.rule_id)}), "
-            f"source({_prolog_atom(mapping.source)}, line({mapping.line})), "
+            f"mapping_evidence(rule({_prolog_atom(mapping.rule_id)})"
+            f"{task_span_provenance}, "
+            f"{source}, "
             f"confidence(high), input_domain({mapping.input_domain}), "
             f"excerpt({_prolog_string(mapping.excerpt)}))"
         )
@@ -2700,22 +2812,31 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     explicit = read_explicit_mappings(root)
     productive = _registry_rows(root)
     scope_titles = read_scope_titles(root)
-    mappings = compile_rule_mappings(docs, rules, explicit)
-    mappings += compile_scope_batches(rules, explicit, scope_titles)
-    mappings = sorted(set(mappings))
     task_spans = extract_student_task_spans(docs)
     recovered_task_spans = read_recovered_task_spans(root, task_spans)
     parser_spans = task_spans + recovered_task_spans
+    # Establish the pre-widening attachment set first. The task-span pass may
+    # attach only a lesson absent from this set, preserving all existing
+    # lesson-level strategy attachments byte-for-byte.
+    legacy_mappings = compile_rule_mappings(docs, rules, explicit)
+    baseline_mappings = sorted(
+        set(legacy_mappings + compile_scope_batches(rules, explicit, scope_titles))
+    )
     initial_attachments = {code: set(rows) for code, rows in explicit.items()}
-    for mapping in mappings:
+    for mapping in baseline_mappings:
         initial_attachments.setdefault(mapping.code, set()).add(
             (mapping.operation, mapping.kind)
         )
     initial_task_candidates = extract_task_candidates(parser_spans, initial_attachments)
     task_derived_mappings = compile_task_derived_mappings(
-        initial_task_candidates, explicit, mappings
+        initial_task_candidates, explicit, baseline_mappings
     )
-    mappings = sorted(set(mappings + task_derived_mappings))
+    baseline_mappings = sorted(set(baseline_mappings + task_derived_mappings))
+    baseline_attached = set(explicit) | {mapping.code for mapping in baseline_mappings}
+    task_span_mappings = compile_task_span_rule_mappings(
+        docs, rules, baseline_attached, task_spans
+    )
+    mappings = sorted(set(baseline_mappings + task_span_mappings))
     invalid = sorted({(m.operation, m.kind) for m in mappings} - productive)
     if invalid:
         raise SystemExit(f"mapping rules reference non-productive registry kinds: {invalid}")

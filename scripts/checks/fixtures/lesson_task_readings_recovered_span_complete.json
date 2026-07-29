@@ -1,0 +1,31 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Legitimate sidecar control: a recovered complete expression is citable and remains declared-absent until a guide answer is reviewed.",
+  "expected_result": "recovered_span_declared_absent_compiles",
+  "readings": [
+    {
+      "lesson": "IM-G4-U9-L4",
+      "id": "control_g4_u9_l4_recovered_span_complete",
+      "position": "student_task_statement(1)/item(1)",
+      "task": "subtract(87, 24)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit9/lesson4.md",
+        "line": 96,
+        "excerpt": "Find the value of each difference mentally."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G4-U9-L4",
+          "position": "student_task_statement(1)"
+        },
+        "excerpt": "87- 24"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "Fixture-only recovered-sidecar control; it does not claim the guide lacks a response."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

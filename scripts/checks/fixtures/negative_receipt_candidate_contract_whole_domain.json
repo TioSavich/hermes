@@ -1,0 +1,17 @@
+{
+  "fixture": "synthetic whole-domain contract mismatch; not a curriculum lesson",
+  "lesson": "FIXTURE-WHOLE-DOMAIN",
+  "provenance_kind": "fact",
+  "operation": "multiplication",
+  "operands": ["11", "1/4"],
+  "negative_candidates": [
+    {
+      "operation": "multiplication",
+      "productive": "multiplication_fact_retrieval",
+      "deformation": "context_free_fact_family_guess",
+      "family": "synthetic_control",
+      "mapping_origin": "fixture",
+      "pair_source": "fixture"
+    }
+  ]
+}

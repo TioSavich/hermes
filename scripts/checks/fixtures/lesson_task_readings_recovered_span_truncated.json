@@ -1,0 +1,31 @@
+{
+  "schema": "lesson_task_readings_v1",
+  "register": "Deliberately fabricated: a recovered binary prefix cannot cite a longer recovered item expression.",
+  "expected_error": "maximality failed: operands cite a truncated expression",
+  "readings": [
+    {
+      "lesson": "IM-G1-U3-L16",
+      "id": "manufactured_g1_u3_l16_recovered_span_truncated",
+      "position": "student_task_statement(1)/item(1)",
+      "task": "add(7, 2)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson16.md",
+        "line": 97,
+        "excerpt": "Find the value of each expression mentally."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L16",
+          "position": "student_task_statement(1)"
+        },
+        "excerpt": "7 + 2"
+      },
+      "printed_answer": {
+        "absent": true,
+        "reason": "This control must refuse a term cut from a recovered expression."
+      },
+      "read_by": "fixture"
+    }
+  ]
+}

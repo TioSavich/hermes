@@ -50,6 +50,7 @@ run a_fortiori_context_closure_selftest python3 "$CHECKS_DIR/../extract_a_fortio
 run a_fortiori_context_nesting_sweep python3 "$CHECKS_DIR/a_fortiori_context_nesting_sweep.py" --check
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
 run lesson_task_readings.py python3 "$CHECKS_DIR/lesson_task_readings.py"
+run strategy_task_span_refusal.py python3 "$CHECKS_DIR/strategy_task_span_refusal.py"
 run extract_vision_lesson_digest_audit python3 "$CHECKS_DIR/../extract_vision_lesson_digest_audit.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 # After the census: the census writes a docs/research report, and the measurement
