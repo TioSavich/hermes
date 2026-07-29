@@ -21,6 +21,7 @@ run route_registry.py       python3 "$CHECKS_DIR/route_registry.py"
 run witness_registry.py     python3 "$CHECKS_DIR/witness_registry.py"
 run witness_defaults.py     python3 "$CHECKS_DIR/witness_defaults.py"
 run static_route_containment.py python3 "$CHECKS_DIR/static_route_containment.py"
+run hermes_shell_page_context.py python3 "$CHECKS_DIR/hermes_shell_page_context.py"
 run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run mcp_search_rows.py      python3 "$CHECKS_DIR/mcp_search_rows.py"
 run math_claim_language.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/math_claim_language.pl" -g main -t halt
@@ -60,6 +61,8 @@ run extract_research_measurement_registry python3 "$CHECKS_DIR/../extract_resear
 run render_contract.py      python3 "$CHECKS_DIR/render_contract.py"
 run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
 run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
+run monitoring_route_budget.py python3 "$CHECKS_DIR/monitoring_route_budget.py"
+run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_client_guard.py"
 run crosswalk_load.sh       bash "$CHECKS_DIR/crosswalk_load.sh"
 run geometry_load.sh        bash "$CHECKS_DIR/geometry_load.sh"
 run strict_gate_failures.py python3 "$CHECKS_DIR/strict_gate_failures.py"
@@ -69,6 +72,7 @@ run zeeman_bifurcation.sh   bash "$CHECKS_DIR/zeeman_bifurcation.sh"
 run route_behavior.py       python3 "$CHECKS_DIR/route_behavior.py"
 run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.py"
 run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
+run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
 
 run incompatibility_entailment_order python3 "$CHECKS_DIR/../extract_incompatibility_entailment_order.py" --check
 run error_rule_incompatibility python3 "$CHECKS_DIR/../extract_error_rule_incompatibility.py" --check
