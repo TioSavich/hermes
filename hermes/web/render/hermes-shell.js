@@ -72,6 +72,7 @@
     landing:        { theme: "recollection", lede: "Choose a door into Hermes or follow the theory journey from its shared entry." },
     no:             { theme: "negation",     lede: "Being wrong has structure: a rule, its domain, and the collision beyond that domain." },
     breaks:         { theme: "negation",     lede: "Run where a grounding metaphor or incompatibility relation reaches its boundary." },
+    "incompatibility-entailment": { theme: "negation", lede: "Inspect the finite register of declared incompatibility hyperedges and its earned entailment relation." },
     snap:           { theme: "body",         lede: "Drag the disc until accumulated tension produces a snap into another strategy." },
     counting:       { theme: "objects",      lede: "Counting by ones is correct and, past a point, unaffordable; follow the cost tally by tally." },
     crisis:         { theme: "body",         lede: "Work 38 + 55 by counting and mark the point where that method stops paying." },
@@ -111,6 +112,7 @@
       ["landing",    "The journey — overview", mz("landing.html")],
       ["no",         "Two ways to say no",   app("no.html")],
       ["breaks",     "Where it breaks",      app("breaks.html")],
+      ["incompatibility-entailment", "Entailment order", mz("incompatibility-entailment.html")],
       ["snap",       "The Snap",    mz("index.html")],
       ["counting",   "Counting",    mz("counting.html")],
       ["crisis",     "Crisis",      mz("crisis.html")],
@@ -146,7 +148,7 @@
       "coordination.html": "coordination", "reorg_demo.html": "reorganization",
       "fractal.html": "fractal", "boundary.html": "boundary", "matrix.html": "matrix",
       "no.html": "no", "breaks.html": "breaks", "muds.html": "muds",
-      "scoreboard.html": "scoreboard",
+      "scoreboard.html": "scoreboard", "incompatibility-entailment.html": "incompatibility-entailment",
     };
     return byFile[file] || "";
   }

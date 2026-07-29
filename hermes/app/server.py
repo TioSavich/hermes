@@ -50,6 +50,9 @@ INITIAL_GATE_ENABLED = gate.gate_enabled_for_launch(
 
 _WORKER_TRANSPORT_MARKERS = ("pipe closed", "malformed json", "worker exited")
 _WORKER_TIMEOUT = 300.0
+# Chart exports can traverse the whole lesson-monitoring surface. Keep their
+# wall below the shared worker ceiling and isolate them from other routes.
+_MONITORING_EXPORT_TIMEOUT = 90.0
 
 
 @dataclass(slots=True)
@@ -118,6 +121,7 @@ class AppServices:
     """All mutable process state retained by the transport shell."""
 
     worker: WorkerService
+    monitoring_export_worker: WorkerService
     gate: GateService
     field_context_cache: dict[str, dict[str, Any]] = field(default_factory=dict)
     misconception_embedding_index: EmbeddingIndex | None = None
@@ -143,6 +147,7 @@ class AppServices:
 SYSTEM_PROMPTS = MappingProxyType(load_required_system_prompts())
 SERVICES = AppServices(
     WorkerService(),
+    WorkerService(timeout=_MONITORING_EXPORT_TIMEOUT),
     GateService(RUNTIME),
     field_context_cache=load_field_context_cache(REPO_ROOT),
     misconception_embedding_index=load_misconception_embedding_index(REPO_ROOT),
@@ -362,6 +367,7 @@ def main(argv: list[str] | None = None) -> int:
     finally:
         httpd.server_close()
         SERVICES.worker.close()
+        SERVICES.monitoring_export_worker.close()
     return 0
 
 

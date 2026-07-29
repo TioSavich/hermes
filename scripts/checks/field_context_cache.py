@@ -29,9 +29,19 @@ SAMPLE_LESSON = "IM-GK-U1-L1"
 class RouteProbe:
     def __init__(self, cache: dict[str, dict[str, Any]]) -> None:
         self.payload = {"lesson_code": SAMPLE_LESSON}
-        self.services = SimpleNamespace(field_context_cache=cache)
+        self.bounded_calls: list[tuple[str, dict[str, Any]]] = []
+        self.services = SimpleNamespace(
+            field_context_cache=cache,
+            monitoring_export_worker=SimpleNamespace(
+                timeout=90.0, request=self.bounded_request
+            ),
+        )
         self.worker_calls = 0
         self.response: dict[str, Any] | None = None
+
+    def bounded_request(self, op: str, **payload: Any) -> dict[str, Any]:
+        self.bounded_calls.append((op, payload))
+        return {"lesson_code": SAMPLE_LESSON}
 
     def worker_request(self, _op: str, **_payload: Any) -> dict[str, Any]:
         self.worker_calls += 1
@@ -62,14 +72,23 @@ def main() -> int:
     hit = RouteProbe({SAMPLE_LESSON: cached})
     monitoring.field_context(hit)
     assert hit.worker_calls == 0
+    assert hit.bounded_calls == []
     assert hit.response is not None
     assert hit.response["payload"]["result"]["served_from"] == "cache"
 
     miss = RouteProbe({})
     monitoring.field_context(miss)
-    assert miss.worker_calls == 1
+    assert miss.worker_calls == 0
+    assert miss.bounded_calls == [("field_context", {"lesson_code": SAMPLE_LESSON})]
     assert miss.response is not None
     assert miss.response["payload"]["result"]["served_from"] == "live"
+
+    error = RouteProbe({SAMPLE_LESSON: {"error": "stale cache failure"}})
+    monitoring.field_context(error)
+    assert error.worker_calls == 0
+    assert error.bounded_calls == [("field_context", {"lesson_code": SAMPLE_LESSON})]
+    assert error.response is not None
+    assert error.response["payload"]["result"]["served_from"] == "live"
 
     worker = PersistentPrologWorker(timeout=120)
     try:
@@ -79,7 +98,7 @@ def main() -> int:
     if without_served_from(live) != without_served_from(cached):
         raise SystemExit(f"field-context cache drift for {SAMPLE_LESSON}")
     print(
-        f"PASS field-context cache: {len(contexts)} entries, route hit/miss provenance, "
+        f"PASS field-context cache: {len(contexts)} entries, bounded route hit/error-fallthrough/miss provenance, "
         f"live equality for {SAMPLE_LESSON}"
     )
     return 0

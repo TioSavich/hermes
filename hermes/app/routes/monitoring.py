@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from hermes.app import worker
 from hermes.app.monitoring import visuals
 from hermes.app.routes.registry import Route
 from hermes.app.scripts import verify_monitoring_visuals
@@ -12,18 +13,51 @@ def _lesson_code(ctx: Any) -> str:
     return str(ctx.payload.get("lesson_code") or ctx.payload.get("lesson") or "").strip()
 
 
+def _bounded_monitoring_request(
+    ctx: Any, operation: str, lesson_code: str, surface: str
+) -> tuple[bool, Any]:
+    """Use the isolated chart worker and turn its wall into a route refusal."""
+    budget = ctx.services.monitoring_export_worker.timeout
+    try:
+        return True, ctx.services.monitoring_export_worker.request(
+            operation, lesson_code=lesson_code
+        )
+    except worker.PersistentPrologError as exc:
+        if "timed out" not in str(exc).lower():
+            raise
+        ctx._send_json(
+            {
+                "ok": False,
+                "error": (
+                    f"{surface} for {lesson_code} exceeded the {budget:.0f}-second "
+                    "budget. The live result remains unavailable for this lesson; try "
+                    "another lesson or return after the lesson data has been revised."
+                ),
+                "error_type": "budget_exceeded",
+                "lesson_code": lesson_code,
+                "budget_seconds": budget,
+            },
+            status=503,
+        )
+        return False, None
+
+
 def field_context(ctx: Any) -> None:
     lesson_code = _lesson_code(ctx)
     if not lesson_code:
         ctx._send_json({"error": "lesson_code is required"}, status=400)
         return
     cached = ctx.services.field_context_cache.get(lesson_code)
-    if cached is not None:
+    if cached is not None and "error" not in cached:
         result = dict(cached)
         result["served_from"] = "cache"
         ctx._send_json({"ok": True, "result": result})
         return
-    result = ctx.worker_request("field_context", lesson_code=lesson_code)
+    completed, result = _bounded_monitoring_request(
+        ctx, "field_context", lesson_code, "Field context"
+    )
+    if not completed:
+        return
     result = dict(result)
     result["served_from"] = "live"
     ctx._send_json({"ok": True, "result": result})
@@ -34,7 +68,12 @@ def monitoring_chart_export(ctx: Any) -> None:
     if not lesson_code:
         ctx._send_json({"error": "lesson_code is required"}, status=400)
         return
-    ctx._send_json({"ok": True, "result": ctx.worker_request("monitoring_chart_export", lesson_code=lesson_code)})
+    completed, result = _bounded_monitoring_request(
+        ctx, "monitoring_chart_export", lesson_code, "Monitoring chart export"
+    )
+    if not completed:
+        return
+    ctx._send_json({"ok": True, "result": result})
 
 
 def ranked_figures(ctx: Any) -> None:
@@ -50,7 +89,11 @@ def monitoring_visuals(ctx: Any) -> None:
     if not lesson_code:
         ctx._send_json({"error": "lesson_code is required"}, status=400)
         return
-    chart = ctx.worker_request("monitoring_chart_export", lesson_code=lesson_code)
+    completed, chart = _bounded_monitoring_request(
+        ctx, "monitoring_chart_export", lesson_code, "Monitoring visuals"
+    )
+    if not completed:
+        return
     if not isinstance(chart, dict):
         ctx._send_json({"error": "monitoring_chart_export returned a non-object payload"}, status=500)
         return
