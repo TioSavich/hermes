@@ -1,9 +1,9 @@
 {
  "by_grade": {
   "1": {
-   "diagnostic_ready": 67,
-   "executable_task": 70,
-   "measured_transition": 70,
+   "diagnostic_ready": 69,
+   "executable_task": 72,
+   "measured_transition": 72,
    "negative_candidate": 128,
    "published": 148,
    "standard_action_candidate": 148,
@@ -11,29 +11,29 @@
    "structured_negative": 90
   },
   "2": {
-   "diagnostic_ready": 50,
-   "executable_task": 63,
-   "measured_transition": 59,
-   "negative_candidate": 125,
+   "diagnostic_ready": 54,
+   "executable_task": 66,
+   "measured_transition": 66,
+   "negative_candidate": 127,
    "published": 150,
    "standard_action_candidate": 149,
-   "strategy_evidence": 132,
+   "strategy_evidence": 134,
    "structured_negative": 71
   },
   "3": {
    "diagnostic_ready": 53,
    "executable_task": 58,
-   "measured_transition": 56,
+   "measured_transition": 58,
    "negative_candidate": 113,
    "published": 143,
    "standard_action_candidate": 139,
-   "strategy_evidence": 124,
+   "strategy_evidence": 125,
    "structured_negative": 65
   },
   "4": {
-   "diagnostic_ready": 29,
-   "executable_task": 46,
-   "measured_transition": 39,
+   "diagnostic_ready": 37,
+   "executable_task": 49,
+   "measured_transition": 49,
    "negative_candidate": 115,
    "published": 151,
    "standard_action_candidate": 147,
@@ -41,24 +41,24 @@
    "structured_negative": 64
   },
   "5": {
-   "diagnostic_ready": 20,
-   "executable_task": 37,
-   "measured_transition": 32,
-   "negative_candidate": 113,
+   "diagnostic_ready": 25,
+   "executable_task": 39,
+   "measured_transition": 39,
+   "negative_candidate": 114,
    "published": 148,
    "standard_action_candidate": 145,
-   "strategy_evidence": 127,
+   "strategy_evidence": 128,
    "structured_negative": 60
   },
   "6": {
-   "diagnostic_ready": 35,
+   "diagnostic_ready": 36,
    "executable_task": 51,
    "measured_transition": 51,
    "negative_candidate": 107,
    "published": 152,
    "standard_action_candidate": 143,
    "strategy_evidence": 134,
-   "structured_negative": 36
+   "structured_negative": 37
   },
   "7": {
    "diagnostic_ready": 15,
@@ -78,10 +78,10 @@
    "diagnostic_ready": 5,
    "executable_task": 9,
    "measured_transition": 9,
-   "negative_candidate": 87,
+   "negative_candidate": 88,
    "published": 139,
    "standard_action_candidate": 131,
-   "strategy_evidence": 102,
+   "strategy_evidence": 103,
    "structured_negative": 46
   }
  },
@@ -347,7 +347,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -356,8 +356,7 @@
    "grade": "2",
    "lesson": "IM-G2-U1-L5",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Add within 50",
    "negative_candidates": [
@@ -630,7 +629,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -639,8 +638,7 @@
    "grade": "2",
    "lesson": "IM-G2-U1-L11",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Questions about Data",
    "negative_candidates": [
@@ -862,7 +860,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -870,9 +868,7 @@
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L15",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Diagrams with All Kinds of Compare Problems",
    "negative_candidates": [
     {
@@ -901,7 +897,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.OA.A.1": [
      "add",
@@ -1035,7 +1031,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -1044,8 +1040,7 @@
    "grade": "2",
    "lesson": "IM-G2-U1-L17",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Center Day 3",
    "negative_candidates": [
@@ -3415,23 +3410,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L9",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "From Feet to Inches",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_marks_not_intervals",
+     "family": "count_marks_not_intervals",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "linear_unit_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "2.MD.A.1": [
      "measure",
@@ -3790,23 +3793,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L14",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "What Is a Line Plot?",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_marks_not_intervals",
+     "family": "count_marks_not_intervals",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "linear_unit_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "2.MD.A.1": [
      "measure",
@@ -8649,8 +8660,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -8658,10 +8669,7 @@
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L14",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Think Before You Subtract",
    "negative_candidates": [
     {
@@ -8730,7 +8738,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.A.1": [
      "represent",
@@ -8761,8 +8769,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -8770,10 +8778,7 @@
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L15",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Decompose a Ten and a Hundred to Subtract",
    "negative_candidates": [
     {
@@ -8842,7 +8847,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.A.2": [
      "count"
@@ -8999,8 +9004,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -9008,10 +9013,7 @@
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L17",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Does It Make Sense?",
    "negative_candidates": [
     {
@@ -9048,7 +9050,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -13955,7 +13957,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -13964,8 +13966,7 @@
    "grade": "3",
    "lesson": "IM-G3-U3-L4",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Introduction to Addition Algorithms",
    "negative_candidates": [
@@ -14004,7 +14005,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -14013,8 +14014,7 @@
    "grade": "3",
    "lesson": "IM-G3-U3-L5",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Another Addition Algorithm",
    "negative_candidates": [
@@ -20030,13 +20030,12 @@
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U8-L7",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
@@ -20044,7 +20043,7 @@
    "name": "Graph and Answer",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "3.MD.B.3": [
      "draw",
@@ -22530,7 +22529,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -22539,8 +22538,7 @@
    "grade": "4",
    "lesson": "IM-G4-U3-L16",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Add Tenths and Hundredths Together",
    "negative_candidates": [
@@ -23899,8 +23897,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -23908,10 +23906,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U4-L19",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Compose and Decompose to Add and Subtract",
    "negative_candidates": [
     {
@@ -23988,7 +23983,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.4": [
      "add",
@@ -24011,7 +24006,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -24019,9 +24014,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U4-L20",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add and Subtract within 1,000,000",
    "negative_candidates": [
     {
@@ -24114,7 +24107,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.4": [
      "add",
@@ -26205,7 +26198,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -26213,9 +26206,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U6-L9",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Recording Partial Products: One-Digit and Three- or Four-Digit Factors",
    "negative_candidates": [
     {
@@ -26316,7 +26307,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.5": [
      "explain",
@@ -26719,8 +26710,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -26728,10 +26719,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U6-L15",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Base-Ten Blocks to Divide",
    "negative_candidates": [
     {
@@ -26808,7 +26796,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.6": [
      "explain",
@@ -27095,7 +27083,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -27103,9 +27091,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U6-L19",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Divide with Remainders",
    "negative_candidates": [
     {
@@ -27150,7 +27136,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B": [
      "perform",
@@ -27188,8 +27174,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -27197,10 +27183,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U6-L20",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Interpret Remainders in Division Situations",
    "negative_candidates": [
     {
@@ -27229,7 +27212,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.6": [
      "explain",
@@ -29359,7 +29342,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -29367,9 +29350,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U9-L4",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Another Look at the Standard Algorithm",
    "negative_candidates": [
     {
@@ -29462,7 +29443,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B": [
      "perform",
@@ -29485,7 +29466,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -29493,9 +29474,7 @@
    },
    "grade": "4",
    "lesson": "IM-G4-U9-L5",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Multiplication of Multi-digit Numbers",
    "negative_candidates": [
     {
@@ -29548,7 +29527,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.NBT.B.5": [
      "explain",
@@ -29798,7 +29777,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -29807,8 +29786,7 @@
    "grade": "4",
    "lesson": "IM-G4-U9-L9",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Create Word Problems",
    "negative_candidates": [
@@ -35107,13 +35085,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U5-L12",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Dividing Numbers that Result in a Decimal",
    "negative_candidates": [
     {
@@ -35141,8 +35117,29 @@
      "productive": "measure_groups_of_size"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "sum_dividend_and_divisor",
+     "intended_action": {
+      "kind": "long_division",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U5-L12",
+     "material_incompatibility": "The lesson requires using long division to find a quotient, while the alternative replaces this process with a sum of the dividend and divisor.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_goal",
+        "text": "Use long division to divide whole numbers that result in a quotient with a decimal"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.B.2": [
      "divide",
@@ -57257,23 +57254,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "K",
    "lesson": "IM-GK-U8-L8",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Find Someone Who, Find Something That",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "make_ten_drop_leftover",
+     "family": "dropped_leftover_after_make_ten",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "make_ten_split_leftover"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "K.CC.A.1": [
      "count"
@@ -62647,8 +62652,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -62656,10 +62661,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U3-L25",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "How Do You Want to Subtract?",
    "negative_candidates": [
     {
@@ -62672,7 +62674,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.NBT.A.1": [
      "count",
@@ -63542,8 +63544,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -63551,10 +63553,7 @@
    },
    "grade": "1",
    "lesson": "IM-G1-U4-L10",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Write 2-Digit Numbers",
    "negative_candidates": [
     {
@@ -63583,7 +63582,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.NBT.A.1": [
      "count",
@@ -69713,23 +69712,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "5",
    "lesson": "IM-G5-U2-L5",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Relate Division and Fractions",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "name_group_count_as_share_size",
+     "family": "group_count_as_share_size",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "fair_share_equal_groups"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "5.NF.B.3": [
      "divide",
@@ -71368,7 +71375,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": false,
     "strategy_evidence": true,
@@ -71378,8 +71385,7 @@
    "lesson": "IM-G5-U4-L1",
    "missing_for_diagnosis": [
     "standard_action_candidate",
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Estimate and Find Products",
    "negative_candidates": [
@@ -71643,7 +71649,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -71652,8 +71658,7 @@
    "grade": "5",
    "lesson": "IM-G5-U4-L4",
    "missing_for_diagnosis": [
-    "structured_negative",
-    "measured_transition"
+    "structured_negative"
    ],
    "name": "Standard Algorithm: One-digit and Multi-digit Numbers, with Composing",
    "negative_candidates": [
@@ -71729,7 +71734,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -71737,9 +71742,7 @@
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L5",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Standard Algorithm: Multi-digit Numbers, without Composing",
    "negative_candidates": [
     {
@@ -71800,7 +71803,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.NBT.B.5": [
      "multiply",
@@ -72312,7 +72315,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -72320,9 +72323,7 @@
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L13",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Practice a Partial-Quotients Algorithm",
    "negative_candidates": [
     {
@@ -72343,7 +72344,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.NBT.B.6": [
      "explain",
@@ -72468,8 +72469,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -72477,10 +72478,7 @@
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L16",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Fractions as Partial Quotients",
    "negative_candidates": [
     {
@@ -72509,7 +72507,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.OA.A.2": [
      "add",
@@ -74932,7 +74930,7 @@
   {
    "evidence": {
     "executable_task": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -74940,9 +74938,7 @@
    },
    "grade": "5",
    "lesson": "IM-G5-U6-L6",
-   "missing_for_diagnosis": [
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Multi-step Conversion Problems: Metric Liquid Volumes",
    "negative_candidates": [
     {
@@ -74979,7 +74975,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.MD.A.1": [
      "convert",
@@ -76506,8 +76502,8 @@
   },
   {
    "evidence": {
-    "executable_task": false,
-    "measured_transition": false,
+    "executable_task": true,
+    "measured_transition": true,
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
@@ -76515,10 +76511,7 @@
    },
    "grade": "5",
    "lesson": "IM-G5-U8-L4",
-   "missing_for_diagnosis": [
-    "executable_task",
-    "measured_transition"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Dive Back into Division",
    "negative_candidates": [
     {
@@ -76531,7 +76524,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.G.B.3": [
      "understand"
@@ -77209,13 +77202,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 274,
-  "executable_task": 362,
-  "measured_transition": 344,
-  "negative_candidate": 816,
+  "diagnostic_ready": 294,
+  "executable_task": 372,
+  "measured_transition": 372,
+  "negative_candidate": 820,
   "published": 1308,
   "standard_action_candidate": 1272,
-  "strategy_evidence": 910,
-  "structured_negative": 447
+  "strategy_evidence": 915,
+  "structured_negative": 448
  }
 }

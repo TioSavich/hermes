@@ -101,6 +101,652 @@
       },
       "read_by": "opus-analyst",
       "note": "Warm-up item list; the guide's Student Response block prints the four values in document order."
+    },
+    {
+      "lesson": "IM-G4-U6-L15",
+      "id": "g4_u6_l15_blocks_quotient_1",
+      "position": "student_task_statement(2)/item(1)",
+      "task": "divide(488, 4)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 156,
+        "end_line": 157,
+        "excerpt": "Use the base-ten blocks to represent each expression. Then find the value of each expression."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 158,
+        "excerpt": "488 ÷ 4"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 165,
+        "excerpt": "1. 122.",
+        "value": "122"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 1 expression list; the response block numbers its quotients to match the prompt's numbered items."
+    },
+    {
+      "lesson": "IM-G4-U6-L15",
+      "id": "g4_u6_l15_blocks_quotient_2",
+      "position": "student_task_statement(2)/item(2)",
+      "task": "divide(104, 8)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 156,
+        "end_line": 157,
+        "excerpt": "Use the base-ten blocks to represent each expression. Then find the value of each expression."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 160,
+        "excerpt": "104 ÷ 8"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 169,
+        "excerpt": "2. 13.",
+        "value": "13"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 1 expression list; the response block numbers its quotients to match the prompt's numbered items."
+    },
+    {
+      "lesson": "IM-G4-U6-L15",
+      "id": "g4_u6_l15_reasoned_quotient_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "divide(96, 4)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 238,
+        "end_line": 239,
+        "excerpt": "Find the value of each expression. Explain or show your reasoning."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 240,
+        "excerpt": "96 ÷ 4"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 249,
+        "excerpt": "1. 24.",
+        "value": "24"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 expression list; the reasoning that follows each printed quotient is a sample, the quotient itself is not."
+    },
+    {
+      "lesson": "IM-G4-U6-L15",
+      "id": "g4_u6_l15_reasoned_quotient_2",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "divide(86, 2)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 238,
+        "end_line": 239,
+        "excerpt": "Find the value of each expression. Explain or show your reasoning."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 241,
+        "excerpt": "86 ÷ 2"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 252,
+        "excerpt": "2. 43.",
+        "value": "43"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 expression list; the reasoning that follows each printed quotient is a sample, the quotient itself is not."
+    },
+    {
+      "lesson": "IM-G4-U6-L15",
+      "id": "g4_u6_l15_reasoned_quotient_3",
+      "position": "student_task_statement(3)/item(3)",
+      "task": "divide(108, 9)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 238,
+        "end_line": 239,
+        "excerpt": "Find the value of each expression. Explain or show your reasoning."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 243,
+        "excerpt": "108 ÷ 9"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson15.md",
+        "line": 255,
+        "excerpt": "3. 12.",
+        "value": "12"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 expression list; the reasoning that follows each printed quotient is a sample, the quotient itself is not."
+    },
+    {
+      "lesson": "IM-G4-U6-L20",
+      "id": "g4_u6_l20_chosen_quotient_1",
+      "position": "student_task_statement(2)/item(2)/choice(1)",
+      "task": "divide(711, 3)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson20.md",
+        "line": 257,
+        "end_line": 259,
+        "excerpt": "b. Find the value of the quotient. Explain or show your reasoning."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson20.md",
+        "line": 251,
+        "excerpt": "711 ÷ 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit6/lesson20.md",
+        "line": 280,
+        "excerpt": "b. 711 ÷ 3 = 237",
+        "value": "237"
+      },
+      "read_by": "opus-analyst",
+      "note": "The prompt offers two division expressions and the response block prints a worked sample for each; the printed equation repeats the expression, so the witness names its own operands."
+    },
+    {
+      "lesson": "IM-G5-U8-L4",
+      "id": "g5_u8_l4_quotient_a",
+      "position": "student_task_statement(2)/item(2)/a",
+      "task": "divide(364, 13)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson4.md",
+        "line": 150,
+        "excerpt": "Find the value of each quotient."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G5-U8-L4",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "364 ÷ 13"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson4.md",
+        "line": 170,
+        "excerpt": "a. 28",
+        "value": "28"
+      },
+      "read_by": "opus-analyst",
+      "note": "The markdown dropped the three quotients; the sidecar restores them beside problem 1, which asks for an estimate of each. Problem 2 of the same span asks for the exact value of the same three quotients, and the response block prints 28 / 45 / 72 in that order."
+    },
+    {
+      "lesson": "IM-G5-U8-L4",
+      "id": "g5_u8_l4_quotient_b",
+      "position": "student_task_statement(2)/item(2)/b",
+      "task": "divide(540, 12)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson4.md",
+        "line": 150,
+        "excerpt": "Find the value of each quotient."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G5-U8-L4",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "540 ÷ 12"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson4.md",
+        "line": 171,
+        "excerpt": "b. 45",
+        "value": "45"
+      },
+      "read_by": "opus-analyst",
+      "note": "The markdown dropped the three quotients; the sidecar restores them beside problem 1, which asks for an estimate of each. Problem 2 of the same span asks for the exact value of the same three quotients, and the response block prints 28 / 45 / 72 in that order."
+    },
+    {
+      "lesson": "IM-G5-U8-L4",
+      "id": "g5_u8_l4_quotient_c",
+      "position": "student_task_statement(2)/item(2)/c",
+      "task": "divide(1008, 14)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson4.md",
+        "line": 150,
+        "excerpt": "Find the value of each quotient."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G5-U8-L4",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "1,008 ÷ 14"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson4.md",
+        "line": 172,
+        "excerpt": "c. 72",
+        "value": "72"
+      },
+      "read_by": "opus-analyst",
+      "note": "The markdown dropped the three quotients; the sidecar restores them beside problem 1, which asks for an estimate of each. Problem 2 of the same span asks for the exact value of the same three quotients, and the response block prints 28 / 45 / 72 in that order."
+    },
+    {
+      "lesson": "IM-G2-U7-L17",
+      "id": "g2_u7_l17_chosen_difference",
+      "position": "student_task_statement(3)/item(3)/b",
+      "task": "subtract(702, 244)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson17.md",
+        "line": 277,
+        "end_line": 278,
+        "excerpt": "Find the value of 1 of the expressions. Explain or show your reasoning."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L17",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "702- 244"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson17.md",
+        "line": 307,
+        "excerpt": "b. 458.",
+        "value": "458"
+      },
+      "read_by": "opus-analyst",
+      "note": "The markdown dropped both expressions of problem 3; the sidecar restores them. The companion sum 324 + 478 is refused by the maximality gate because the item label 'b.' that follows it reads as a variable continuation."
+    },
+    {
+      "lesson": "IM-G5-U4-L16",
+      "id": "g5_u4_l16_quotient_value",
+      "position": "student_task_statement(2)/item(2)",
+      "task": "divide(78, 6)",
+      "operation": "division",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G5-U4-L16",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "2. What is the value of 78 ÷ 6?"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G5-U4-L16",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "78 ÷ 6?"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson16.md",
+        "line": 173,
+        "excerpt": "2. 13.",
+        "value": "13"
+      },
+      "read_by": "opus-analyst",
+      "note": "The question mark is part of the cited excerpt because problem 1 lists the same quotient as option A, and the item-scope gate needs the citation pinned to problem 2, which is the item the printed 13 answers."
+    },
+    {
+      "lesson": "IM-G1-U3-L25",
+      "id": "g1_u3_l25_difference_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "subtract(13, 7)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
+        "line": 284,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
+        "line": 288,
+        "excerpt": "13 - 7"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
+        "line": 293,
+        "excerpt": "1. 6.",
+        "value": "6"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down difference list; the response block numbers its two values to match the prompt's items. The warm-up list in span 1 states the same shape with a trailing equals sign, which the maximality gate refuses."
+    },
+    {
+      "lesson": "IM-G1-U3-L25",
+      "id": "g1_u3_l25_difference_2",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "subtract(19, 14)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
+        "line": 284,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
+        "line": 289,
+        "excerpt": "19- 14"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
+        "line": 300,
+        "excerpt": "2. 5.",
+        "value": "5"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down difference list; the response block numbers its two values to match the prompt's items. The warm-up list in span 1 states the same shape with a trailing equals sign, which the maximality gate refuses."
+    },
+    {
+      "lesson": "IM-G1-U4-L10",
+      "id": "g1_u4_l10_representation_4",
+      "position": "student_task_statement(2)/item(4)",
+      "task": "add(20, 5)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 147,
+        "end_line": 148,
+        "excerpt": "Write the number that matches each representation."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "20 + 5"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 205,
+        "excerpt": "4. 25",
+        "value": "25"
+      },
+      "read_by": "opus-analyst",
+      "note": "The representation is an expanded-form sum and the number asked for is its value; the response block prints all ten numbers against the prompt's item numbers. The lane claims the arithmetic, not the place-value reading the lesson is teaching."
+    },
+    {
+      "lesson": "IM-G1-U4-L10",
+      "id": "g1_u4_l10_representation_6",
+      "position": "student_task_statement(2)/item(6)",
+      "task": "add(7, 40)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 147,
+        "end_line": 148,
+        "excerpt": "Write the number that matches each representation."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "7 + 40"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 207,
+        "excerpt": "6. 47",
+        "value": "47"
+      },
+      "read_by": "opus-analyst",
+      "note": "The representation is an expanded-form sum and the number asked for is its value; the response block prints all ten numbers against the prompt's item numbers. The lane claims the arithmetic, not the place-value reading the lesson is teaching."
+    },
+    {
+      "lesson": "IM-G1-U4-L10",
+      "id": "g1_u4_l10_representation_9",
+      "position": "student_task_statement(2)/item(9)",
+      "task": "add(1, 40)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 147,
+        "end_line": 148,
+        "excerpt": "Write the number that matches each representation."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "1 + 40"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 210,
+        "excerpt": "9. 41",
+        "value": "41"
+      },
+      "read_by": "opus-analyst",
+      "note": "The representation is an expanded-form sum and the number asked for is its value; the response block prints all ten numbers against the prompt's item numbers. The lane claims the arithmetic, not the place-value reading the lesson is teaching."
+    },
+    {
+      "lesson": "IM-G1-U4-L10",
+      "id": "g1_u4_l10_cooldown_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "add(30, 9)",
+      "operation": "addition",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 305,
+        "excerpt": "Write the number that matches each representation."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L10",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "30 + 9"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson10.md",
+        "line": 327,
+        "excerpt": "1. 39",
+        "value": "39"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the sidecar restores the first representation the markdown dropped, and the response block prints 39 against item 1."
+    },
+    {
+      "lesson": "IM-G2-U7-L14",
+      "id": "g2_u7_l14_diagram_difference",
+      "position": "student_task_statement(2)/item(2)",
+      "task": "subtract(244, 67)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 185,
+        "excerpt": "Complete their diagrams to find the value"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L14",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "244- 67"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 202,
+        "excerpt": "2. 177.",
+        "value": "177"
+      },
+      "read_by": "opus-analyst",
+      "note": "The markdown dropped the expression from both the stem and problem 2; the sidecar restores it, and 177 is printed against problem 2."
+    },
+    {
+      "lesson": "IM-G2-U7-L14",
+      "id": "g2_u7_l14_sorted_difference_346",
+      "position": "student_task_statement(3)/item(2)/first",
+      "task": "subtract(346, 78)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 298,
+        "end_line": 300,
+        "excerpt": "Find the value of 1 expression from each group."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L14",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "346- 78"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 327,
+        "excerpt": "difference as 268.",
+        "value": "268"
+      },
+      "read_by": "opus-analyst",
+      "note": "The sorting grid the markdown dropped holds fifteen expressions; the response block works two of them and labels each difference, so only those two carry a witness."
+    },
+    {
+      "lesson": "IM-G2-U7-L14",
+      "id": "g2_u7_l14_sorted_difference_449",
+      "position": "student_task_statement(3)/item(2)/second",
+      "task": "subtract(449, 88)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 298,
+        "end_line": 300,
+        "excerpt": "Find the value of 1 expression from each group."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L14",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "449- 88"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 340,
+        "excerpt": "difference as 361.",
+        "value": "361"
+      },
+      "read_by": "opus-analyst",
+      "note": "The sorting grid the markdown dropped holds fifteen expressions; the response block works two of them and labels each difference, so only those two carry a witness."
+    },
+    {
+      "lesson": "IM-G2-U7-L14",
+      "id": "g2_u7_l14_cooldown_no_decompose",
+      "position": "student_task_statement(4)/item(1)/b",
+      "task": "subtract(463, 52)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 380,
+        "excerpt": "b. Find the value of the expression. Show your thinking."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L14",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "463 - 52"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson14.md",
+        "line": 397,
+        "excerpt": "b. 411.",
+        "value": "411"
+      },
+      "read_by": "opus-analyst",
+      "note": "The cool-down offers the same three expressions twice; problem 1 asks for the one needing no decomposition, and 411 is printed against 1b. The sidecar's second copy of the row is the one inside a marked item, which is where the citation binds."
+    },
+    {
+      "lesson": "IM-G2-U7-L15",
+      "id": "g2_u7_l15_corrected_difference",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "subtract(532, 358)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson15.md",
+        "line": 358,
+        "excerpt": "Show Noah a way to find the value of"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L15",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "532- 358"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson15.md",
+        "line": 364,
+        "excerpt": "2. 174.",
+        "value": "174"
+      },
+      "read_by": "opus-analyst",
+      "note": "Noah's printed work in the stem subtracts each place in the wrong order; the task the guide answers is problem 2, and 174 is printed against it."
+    },
+    {
+      "lesson": "IM-G4-U4-L19",
+      "id": "g4_u4_l19_necklace_year",
+      "position": "student_task_statement(3)/item(2)/b",
+      "task": "subtract(1972, 63)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit4/lesson19.md",
+        "line": 287,
+        "excerpt": "Use the standard algorithm to subtract"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G4-U4-L19",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "1972- 63"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit4/lesson19.md",
+        "line": 321,
+        "excerpt": "The necklace was made in 1909.",
+        "value": "1909"
+      },
+      "read_by": "opus-analyst",
+      "note": "The printed answer names the year rather than the difference, and the year is the difference; 1972 - 63 = 1909."
+    },
+    {
+      "lesson": "IM-G4-U4-L19",
+      "id": "g4_u4_l19_cooldown_difference_b",
+      "position": "student_task_statement(4)/item(1)/b",
+      "task": "subtract(1897, 116)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade4/unit4/lesson19.md",
+        "line": 371,
+        "excerpt": "Use the standard algorithm to find the difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G4-U4-L19",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "1,897- 116"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade4/unit4/lesson19.md",
+        "line": 382,
+        "excerpt": "b. 1,781",
+        "value": "1781"
+      },
+      "read_by": "opus-analyst",
+      "note": "Item a of the same cool-down, 1,993 - 118, is refused by the maximality gate: the item label 'b.' immediately follows it and reads as a variable continuation."
     }
   ]
 }

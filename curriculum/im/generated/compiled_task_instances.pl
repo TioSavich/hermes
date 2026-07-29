@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(362, 1852).
+compiled_task_instance_summary(372, 1876).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -318,6 +318,10 @@ compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(18, 5),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(261, 261)), position(student_task_statement(2)/printed_equation(261)), excerpt("2. 18 - 5 ="))).
 compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(20, 15),
                               task_evidence(rule(printed_equation_list_missing_addend), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(279, 279)), position(student_task_statement(2)/printed_equation(279)), excerpt("3. 20 = 15 +"))).
+compiled_lesson_task_instance('IM-G1-U3-L25', productive-subtract(13, 7),
+                              task_evidence(rule(g1_u3_l25_difference_1), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(288, 288)), position(student_task_statement(3)/item(1)), excerpt("13 - 7"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L25', productive-subtract(19, 14),
+                              task_evidence(rule(g1_u3_l25_difference_2), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(289, 289)), position(student_task_statement(3)/item(2)), excerpt("19- 14"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G1-U3-L26', productive-subtract(15, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L26'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("15 - 10"))).
 compiled_lesson_task_instance('IM-G1-U3-L26', productive-subtract(15, 12),
@@ -346,6 +350,14 @@ compiled_lesson_task_instance('IM-G1-U3-L9', productive-subtract(13, 3),
                               task_evidence(rule(printed_equation_list_missing_addend), source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(285, 285)), position(student_task_statement(3)/printed_equation(285)), excerpt("5. + 3 = 13"))).
 compiled_lesson_task_instance('IM-G1-U3-L9', productive-subtract(14, 10),
                               task_evidence(rule(printed_equation_list_missing_addend), source('curriculum/im_teacher_guides/grade1/unit3/lesson9.md', lines(276, 276)), position(student_task_statement(3)/printed_equation(276)), excerpt("1. 14 = 10 +"))).
+compiled_lesson_task_instance('IM-G1-U4-L10', productive-add(1, 40),
+                              task_evidence(rule(g1_u4_l10_representation_9), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(9)), excerpt("1 + 40"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L10', productive-add(20, 5),
+                              task_evidence(rule(g1_u4_l10_representation_4), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(4)), excerpt("20 + 5"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L10', productive-add(30, 9),
+                              task_evidence(rule(g1_u4_l10_cooldown_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(1)), excerpt("30 + 9"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L10', productive-add(7, 40),
+                              task_evidence(rule(g1_u4_l10_representation_6), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(6)), excerpt("7 + 40"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G1-U4-L11', productive-add(30, 65),
                               task_evidence(rule(printed_equation_list_direct_addition), source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(152, 152)), position(student_task_statement(2)/printed_equation(152)), excerpt("5. 30 + 65 ="))).
 compiled_lesson_task_instance('IM-G1-U4-L11', productive-add(34, 40),
@@ -1042,6 +1054,18 @@ compiled_lesson_task_instance('IM-G2-U7-L10', productive-add(297, 25),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("297 + 25"))).
 compiled_lesson_task_instance('IM-G2-U7-L10', productive-add(395, 27),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("395 + 27"))).
+compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(244, 67),
+                              task_evidence(rule(g2_u7_l14_diagram_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L14'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)), excerpt("244- 67"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(346, 78),
+                              task_evidence(rule(g2_u7_l14_sorted_difference_346), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L14'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)/first), excerpt("346- 78"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(449, 88),
+                              task_evidence(rule(g2_u7_l14_sorted_difference_449), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L14'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)/second), excerpt("449- 88"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(463, 52),
+                              task_evidence(rule(g2_u7_l14_cooldown_no_decompose), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L14'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)/b), excerpt("463 - 52"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L15', productive-subtract(532, 358),
+                              task_evidence(rule(g2_u7_l15_corrected_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L15'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)), excerpt("532- 358"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L17', productive-subtract(702, 244),
+                              task_evidence(rule(g2_u7_l17_chosen_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L17'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(3)/b), excerpt("702- 244"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L18', productive-subtract(34, 9),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit7/lesson18.md', lines(84, 84)), position(student_task_statement(1)/expression(1)), excerpt("34- 9"))).
 compiled_lesson_task_instance('IM-G2-U7-L18', productive-subtract(367, 98),
@@ -1912,6 +1936,10 @@ compiled_lesson_task_instance('IM-G4-U4-L10', productive-add(5650, 75),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("5,650 + 75"))).
 compiled_lesson_task_instance('IM-G4-U4-L10', productive-add(650, 75),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("650 + 75"))).
+compiled_lesson_task_instance('IM-G4-U4-L19', productive-subtract(1897, 116),
+                              task_evidence(rule(g4_u4_l19_cooldown_difference_b), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L19'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)/b), excerpt("1,897- 116"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G4-U4-L19', productive-subtract(1972, 63),
+                              task_evidence(rule(g4_u4_l19_necklace_year), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L19'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)/b), excerpt("1972- 63"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G4-U4-L20', productive-add(142571, 10909),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit4/lesson20.md', lines(163, 163)), position(student_task_statement(2)/expression(2)), excerpt("142,571 + 10,909"))).
 compiled_lesson_task_instance('IM-G4-U4-L20', productive-add(7106, 2835),
@@ -1962,6 +1990,16 @@ compiled_lesson_task_instance('IM-G4-U6-L11', productive-multiply(5, 404),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson11.md', lines(97, 97)), position(student_task_statement(1)/expression(4)), excerpt("5 \u00d7 404"))).
 compiled_lesson_task_instance('IM-G4-U6-L14', productive-rectangle_missing_side_from_area(234, 9, tile),
                               task_evidence(rule(rectangle_area_known_width_missing_length), source('curriculum/im_teacher_guides/grade4/unit6/lesson14.md', lines(342, 350)), position(student_task_statement(4)/item(1)), excerpt("used 234 square sticky notes to cover their classroom door completely, leaving no gaps or overlaps between the notes. It takes 9 square notes to cover the width of the door. How many square notes does it take to cover the full height"))).
+compiled_lesson_task_instance('IM-G4-U6-L15', productive-divide(104, 8),
+                              task_evidence(rule(g4_u6_l15_blocks_quotient_2), source('curriculum/im_teacher_guides/grade4/unit6/lesson15.md', lines(160, 160)), position(student_task_statement(2)/item(2)), excerpt("104 \u00f7 8"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G4-U6-L15', productive-divide(108, 9),
+                              task_evidence(rule(g4_u6_l15_reasoned_quotient_3), source('curriculum/im_teacher_guides/grade4/unit6/lesson15.md', lines(243, 243)), position(student_task_statement(3)/item(3)), excerpt("108 \u00f7 9"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G4-U6-L15', productive-divide(488, 4),
+                              task_evidence(rule(g4_u6_l15_blocks_quotient_1), source('curriculum/im_teacher_guides/grade4/unit6/lesson15.md', lines(158, 158)), position(student_task_statement(2)/item(1)), excerpt("488 \u00f7 4"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G4-U6-L15', productive-divide(86, 2),
+                              task_evidence(rule(g4_u6_l15_reasoned_quotient_2), source('curriculum/im_teacher_guides/grade4/unit6/lesson15.md', lines(241, 241)), position(student_task_statement(3)/item(2)), excerpt("86 \u00f7 2"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G4-U6-L15', productive-divide(96, 4),
+                              task_evidence(rule(g4_u6_l15_reasoned_quotient_1), source('curriculum/im_teacher_guides/grade4/unit6/lesson15.md', lines(240, 240)), position(student_task_statement(3)/item(1)), excerpt("96 \u00f7 4"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G4-U6-L16', productive-divide(132, 4),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade4/unit6/lesson16.md', lines(348, 350)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 132 \u00f7 4."))).
 compiled_lesson_task_instance('IM-G4-U6-L16', productive-divide(432, 6),
@@ -1988,6 +2026,8 @@ compiled_lesson_task_instance('IM-G4-U6-L18', productive-divide(60, 5),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson18.md', lines(87, 87)), position(student_task_statement(1)/expression(2)), excerpt("60 \u00f7 5"))).
 compiled_lesson_task_instance('IM-G4-U6-L19', productive-divide(1865, 4),
                               task_evidence(rule(direct_binary_expression_prompt), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U6-L19'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)), excerpt("Find the value of 1,865 \u00f7 4."))).
+compiled_lesson_task_instance('IM-G4-U6-L20', productive-divide(711, 3),
+                              task_evidence(rule(g4_u6_l20_chosen_quotient_1), source('curriculum/im_teacher_guides/grade4/unit6/lesson20.md', lines(251, 251)), position(student_task_statement(2)/item(2)/choice(1)), excerpt("711 \u00f7 3"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G4-U6-L21', productive-divide(140, 7),
                               task_evidence(rule(direct_division_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U6-L21'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("140 \u00f7 7"))).
 compiled_lesson_task_instance('IM-G4-U6-L21', productive-divide(196, 7),
@@ -2194,6 +2234,8 @@ compiled_lesson_task_instance('IM-G5-U4-L12', productive-divide(154, 14),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson12.md', lines(91, 91)), position(student_task_statement(1)/expression(4)), excerpt("154 \u00f7 14"))).
 compiled_lesson_task_instance('IM-G5-U4-L13', productive-divide(1736, 28),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson13.md', lines(300, 300)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 1,736 \u00f7 28."))).
+compiled_lesson_task_instance('IM-G5-U4-L16', productive-divide(78, 6),
+                              task_evidence(rule(g5_u4_l16_quotient_value), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U4-L16'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)), excerpt("78 \u00f7 6?"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G5-U4-L19', productive-multiply(8, 4),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson19.md', lines(94, 94)), position(student_task_statement(1)/expression(1)), excerpt("8 \u00d7 4"))).
 compiled_lesson_task_instance('IM-G5-U4-L19', productive-multiply(8, 8),
@@ -2344,6 +2386,12 @@ compiled_lesson_task_instance('IM-G5-U8-L3', productive-multiply(230, 15),
                               task_evidence(rule(direct_multiplication_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L3'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("230 \u00d7 15"))).
 compiled_lesson_task_instance('IM-G5-U8-L3', productive-multiply(232, 15),
                               task_evidence(rule(direct_multiplication_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L3'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("232 \u00d7 15"))).
+compiled_lesson_task_instance('IM-G5-U8-L4', productive-divide(1008, 14),
+                              task_evidence(rule(g5_u8_l4_quotient_c), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L4'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)/c), excerpt("1,008 \u00f7 14"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G5-U8-L4', productive-divide(364, 13),
+                              task_evidence(rule(g5_u8_l4_quotient_a), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L4'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)/a), excerpt("364 \u00f7 13"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G5-U8-L4', productive-divide(540, 12),
+                              task_evidence(rule(g5_u8_l4_quotient_b), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L4'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)/b), excerpt("540 \u00f7 12"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G5-U8-L7', productive-unit_cube_volume(27, 13, 2, foot),
                               task_evidence(rule(ordered_prism_dimensions_volume), source('curriculum/im_teacher_guides/grade5/unit8/lesson7.md', lines(342, 342)), position(student_task_statement(4)/item(1)), excerpt("If the big red wagon is 27 feet long, 13 feet wide, and 2 feet deep, what is the volume"))).
 compiled_lesson_task_instance('IM-G6-U2-L11', productive-divide(36, 4),

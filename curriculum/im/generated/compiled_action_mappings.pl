@@ -8,7 +8,7 @@
             compiled_mapping_summary/2
           ]).
 
-compiled_mapping_summary(540, 660).
+compiled_mapping_summary(545, 665).
 
 compiled_lesson_strategy('IM-G1-U1-L13', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', line(89)), confidence(high), input_domain(whole_number), excerpt("7 + 1"))).
@@ -248,6 +248,8 @@ compiled_lesson_strategy('IM-G2-U3-L10', measurement, linear_unit_iteration,
                          mapping_evidence(rule(linear_measurement_unit_iteration), source('curriculum/im_teacher_guides/grade2/unit3/lesson10.md', line(6)), confidence(high), input_domain(measured_quantity), excerpt("Explain (orally) how to measure an object when starting from a non-zero tick mark on a ruler."))).
 compiled_lesson_strategy('IM-G2-U3-L13', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson13.md', line(89)), confidence(high), input_domain(whole_number), excerpt("58 + 10"))).
+compiled_lesson_strategy('IM-G2-U3-L14', measurement, linear_unit_iteration,
+                         mapping_evidence(rule(linear_measurement_unit_iteration), matched_field(task_span), span_position('student_task_statement(2)'), source('curriculum/im_teacher_guides/grade2/unit3/lesson14.md', lines(175, 176)), confidence(high), input_domain(measured_quantity), excerpt("Measure the length of your hand span in inch"))).
 compiled_lesson_strategy('IM-G2-U3-L15', statistics, dot_plot_frequency_representation,
                          mapping_evidence(rule(dot_plot_frequency_representation), source('curriculum/im_teacher_guides/grade2/unit3/lesson15.md', line(6)), confidence(high), input_domain(data_set), excerpt("Create a line plot to represent measurement data."))).
 compiled_lesson_strategy('IM-G2-U3-L15', subtraction, take_away_base_ones,
@@ -276,6 +278,8 @@ compiled_lesson_strategy('IM-G2-U3-L7', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit3/lesson7.md', line(87)), confidence(high), input_domain(whole_number), excerpt("37- 16"))).
 compiled_lesson_strategy('IM-G2-U3-L8', measurement, linear_unit_iteration,
                          mapping_evidence(rule(linear_measurement_unit_iteration), source('curriculum/im_teacher_guides/grade2/unit3/lesson8.md', line(6)), confidence(high), input_domain(measured_quantity), excerpt("Use a ruler to measure length in inches."))).
+compiled_lesson_strategy('IM-G2-U3-L9', measurement, linear_unit_iteration,
+                         mapping_evidence(rule(linear_measurement_unit_iteration), matched_field(task_span), span_position('student_task_statement(2)'), source('curriculum/im_teacher_guides/grade2/unit3/lesson9.md', lines(210, 211)), confidence(high), input_domain(measured_quantity), excerpt("measure the length in inch"))).
 compiled_lesson_strategy('IM-G2-U4-L10', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade2/unit4/lesson10.md', line(1)), confidence(high), input_domain(discrete_collection), excerpt("Place Value and the Number Line"))).
 compiled_lesson_strategy('IM-G2-U4-L10', subtraction, take_away_base_ones,
@@ -570,6 +574,8 @@ compiled_lesson_strategy('IM-G3-U8-L15', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson15.md', line(163)), confidence(high), input_domain(whole_number), excerpt("500- 399"))).
 compiled_lesson_strategy('IM-G3-U8-L4', geometry, rectangle_area_perimeter_constraint_search,
                          mapping_evidence(rule(rectangle_area_perimeter_constraint_search), source('curriculum/im_teacher_guides/grade3/unit8/lesson4.md', line(6)), confidence(high), input_domain(spatial_measurement), excerpt("Present (in words and other representations) a design for a rectangular floor plan that follows given constraints."))).
+compiled_lesson_strategy('IM-G3-U8-L7', statistics, categorical_frequency_bar_representation,
+                         mapping_evidence(rule(categorical_frequency_bar_representation), matched_field(task_span), span_position('student_task_statement(2)'), source('curriculum/im_teacher_guides/grade3/unit8/lesson7.md', lines(167, 167)), confidence(high), input_domain(data_set), excerpt("create a bar graph"))).
 compiled_lesson_strategy('IM-G3-U8-L8', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit8/lesson8.md', line(111)), confidence(high), input_domain(whole_number), excerpt("10 \u00d7 4"))).
 compiled_lesson_strategy('IM-G4-U1-L1', geometry, rectangle_area_unit_iteration,
@@ -852,6 +858,8 @@ compiled_lesson_strategy('IM-G5-U2-L4', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("1 \u00f7 7"))).
 compiled_lesson_strategy('IM-G5-U2-L4', fraction, unit_fraction_iteration,
                          mapping_evidence(rule(whole_number_division_as_fraction), source('curriculum/im_teacher_guides/grade5/unit2/lesson4.md', line(5)), confidence(high), input_domain(rational), excerpt("Create and match (orally and in writing) diagrams, equations, and story problems that represent a whole-number division problem with a solution that is a fraction."))).
+compiled_lesson_strategy('IM-G5-U2-L5', division, fair_share_equal_groups,
+                         mapping_evidence(rule(fair_share_division), matched_field(task_span), span_position('student_task_statement(2)'), source('curriculum/im_teacher_guides/grade5/unit2/lesson5.md', lines(148, 152)), confidence(high), input_domain(whole_number), excerpt("share 7 pounds of blueberries equally"))).
 compiled_lesson_strategy('IM-G5-U3-L1', fraction, area_model_part_of_part,
                          mapping_evidence(rule(fraction_part_of_part), source('curriculum/im_teacher_guides/grade5/unit3/lesson1.md', line(5)), confidence(high), input_domain(rational), excerpt("Represent a unit fraction of a unit fraction of a whole with a diagram and interpret (orally and in writing) the diagram."))).
 compiled_lesson_strategy('IM-G5-U3-L10', division, measure_groups_of_size,
@@ -1330,3 +1338,5 @@ compiled_lesson_strategy('IM-GK-U8-L3', subtraction, take_away_base_ones,
                          mapping_evidence(rule(take_from_result_unknown_story), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', line(5)), confidence(high), input_domain(whole_number), excerpt("Explain (orally) strategies for solving story problems about adding or taking away 1 within 10, including strategies based on the count sequence."))).
 compiled_lesson_strategy('IM-GK-U8-L4', subtraction, take_away_base_ones,
                          mapping_evidence(rule(take_from_result_unknown_story), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson4.md', line(6)), confidence(high), input_domain(whole_number), excerpt("Generalize (orally) that adding 1 more results in the next number in the count sequence and taking away 1 results in the previous number in the count sequence."))).
+compiled_lesson_strategy('IM-GK-U8-L8', addition, make_ten_split_leftover,
+                         mapping_evidence(rule(make_ten_decomposition), matched_field(task_span), span_position('student_task_statement(2)'), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson8.md', lines(230, 230)), confidence(high), input_domain(whole_number), excerpt("make 10"))).

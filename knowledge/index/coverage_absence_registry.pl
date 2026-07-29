@@ -87,10 +87,12 @@ coverage_receipt(lesson('IM-G1-U3-L20'), structured_negative, present, [source_f
 coverage_receipt(lesson('IM-G1-U3-L22'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U3-L23'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U3-L24'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G1-U3-L25'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U3-L26'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U3-L27'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U3-L6'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U3-L9'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G1-U4-L10'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U4-L11'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U4-L12'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U4-L13'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
@@ -171,6 +173,9 @@ coverage_receipt(lesson('IM-G2-U6-L5'), structured_negative, present, [source_fa
 coverage_receipt(lesson('IM-G2-U6-L8'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G2-U7-L1'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G2-U7-L10'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G2-U7-L14'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G2-U7-L15'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G2-U7-L17'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G2-U7-L18'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G2-U7-L2'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G2-U7-L3'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
@@ -259,6 +264,7 @@ coverage_receipt(lesson('IM-G4-U3-L18'), structured_negative, coverage_gap(no_st
 coverage_receipt(lesson('IM-G4-U3-L2'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G4-U3-L8'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
 coverage_receipt(lesson('IM-G4-U4-L10'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G4-U4-L19'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U4-L20'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U4-L5'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G4-U5-L14'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
@@ -269,10 +275,12 @@ coverage_receipt(lesson('IM-G4-U5-L8'), structured_negative, present, [source_fa
 coverage_receipt(lesson('IM-G4-U6-L10'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L11'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L14'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G4-U6-L15'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L16'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L17'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L18'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L19'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G4-U6-L20'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L21'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L4'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L5'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
@@ -307,6 +315,7 @@ coverage_receipt(lesson('IM-G5-U4-L10'), structured_negative, present, [source_f
 coverage_receipt(lesson('IM-G5-U4-L11'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G5-U4-L12'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G5-U4-L13'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G5-U4-L16'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G5-U4-L19'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G5-U4-L2'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G5-U4-L4'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
@@ -327,6 +336,7 @@ coverage_receipt(lesson('IM-G5-U6-L8'), structured_negative, coverage_gap(no_str
 coverage_receipt(lesson('IM-G5-U8-L10'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G5-U8-L16'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G5-U8-L3'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
+coverage_receipt(lesson('IM-G5-U8-L4'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G5-U8-L7'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G6-U2-L11'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G6-U2-L12'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
@@ -365,7 +375,7 @@ coverage_receipt(lesson('IM-G6-U4-L8'), structured_negative, coverage_gap(no_str
 coverage_receipt(lesson('IM-G6-U5-L1'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G6-U5-L10'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G6-U5-L11'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
-coverage_receipt(lesson('IM-G6-U5-L12'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
+coverage_receipt(lesson('IM-G6-U5-L12'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G6-U5-L13'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G6-U5-L5'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G6-U5-L7'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
@@ -1727,14 +1737,14 @@ coverage_receipt(lesson('IM-GK-U8-L9'), standard_anchor, present(atom_spelling),
 coverage_receipt(pipeline(build_lesson_evidence), input(spine), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(standard_action_catalog), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(productive_deformation_catalog), present, [source_file]).
-coverage_receipt(pipeline(build_lesson_evidence), input(negative_receipts), present, [parsed_receipt_records(146)]).
+coverage_receipt(pipeline(build_lesson_evidence), input(negative_receipts), present, [parsed_receipt_records(147)]).
 coverage_receipt(pipeline(build_lesson_evidence), input(compiled_action_mappings), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(compiled_task_instances), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(atlas_landscape), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(refresh_catalog_nodes), not_applicable(refresh_catalog_only), [reader_path('data/learningcommons/nodes.jsonl')]).
 
 receipt_denominator(metaphor_renderer, 19).
-receipt_denominator(productive_lesson_structured_negative, 362).
+receipt_denominator(productive_lesson_structured_negative, 372).
 receipt_denominator(im_lesson_standard_anchor, 1308).
 receipt_denominator(lesson_evidence_pipeline, 8).
 
@@ -1744,8 +1754,8 @@ receipt_status_count(metaphor_renderer, broken_pipeline, 0).
 receipt_status_count(metaphor_renderer, path_drift, 0).
 receipt_status_count(metaphor_renderer, not_applicable, 0).
 receipt_status_count(metaphor_renderer, unknown, 0).
-receipt_status_count(productive_lesson_structured_negative, present, 284).
-receipt_status_count(productive_lesson_structured_negative, coverage_gap, 78).
+receipt_status_count(productive_lesson_structured_negative, present, 295).
+receipt_status_count(productive_lesson_structured_negative, coverage_gap, 77).
 receipt_status_count(productive_lesson_structured_negative, broken_pipeline, 0).
 receipt_status_count(productive_lesson_structured_negative, path_drift, 0).
 receipt_status_count(productive_lesson_structured_negative, not_applicable, 0).
