@@ -140,7 +140,10 @@ def misconception_search(ctx: Any) -> None:
     try: matches = cosine_matches(index, embed_query(utterance, index=index, repo_root=ctx.repo_root), limit=k)
     except PermissionError as exc: ctx._send_json({"error": str(exc)}, status=503); return
     except (RuntimeError, ValueError) as exc: ctx._send_json({"error": str(exc)}, status=502); return
-    ctx._send_json({"ok": True, "retrieval": "embedding", "model": index.model, "results": matches})
+    withheld = sum(match.get("diagnosable") == "false" for match in matches)
+    results = [match for match in matches if match.get("diagnosable") != "false"]
+    ctx._send_json({"ok": True, "retrieval": "embedding", "model": index.model,
+                    "results": results, "withheld": withheld})
 
 
 ROUTES = (Route("POST", "/api/misconception_search", misconception_search),)

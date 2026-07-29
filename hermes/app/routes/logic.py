@@ -310,7 +310,27 @@ class RouteLogic:
         """Retrieve symbolic facts relevant to a chat question. Best-effort: returns
         None if the worker/swipl is unavailable, so chat still works ungrounded."""
         try:
-            return self.ctx.worker_request("ground", query=message)
+            grounded = self.ctx.worker_request("ground", query=message)
+            if not isinstance(grounded, dict):
+                return grounded
+            misconceptions = grounded.get("misconceptions")
+            if not isinstance(misconceptions, list):
+                return grounded
+            withheld = sum(
+                isinstance(row, dict) and row.get("name") == "too_vague"
+                for row in misconceptions
+            )
+            if not withheld:
+                return grounded
+            visible = [
+                row for row in misconceptions
+                if not (isinstance(row, dict) and row.get("name") == "too_vague")
+            ]
+            result = dict(grounded)
+            result["misconceptions"] = visible
+            result["misconceptions_withheld"] = withheld
+            result["total"] = max(0, int(result.get("total", 0)) - withheld)
+            return result
         except Exception:
             return None
 
@@ -413,6 +433,7 @@ class RouteLogic:
             "total": g.get("total", 0),
             "strategies": [s["kind"] for s in (g.get("strategies") or [])],
             "misconceptions": [m["name"] for m in (g.get("misconceptions") or [])],
+            "misconceptions_withheld": g.get("misconceptions_withheld", 0),
             "standards": [f"{s['framework']} {s['code']}" for s in (g.get("standards") or [])],
             "metaphors": [m["short_name"] for m in (g.get("metaphors") or [])],
             "geometry": [f"{c.get('concept')} ({c.get('topic')})" for c in (g.get("geometry") or [])],
@@ -1511,7 +1532,19 @@ class RouteLogic:
         domain = str(payload.get("domain") or "").strip()
         if domain:
             kwargs["domain"] = domain
-        self._send_json({"ok": True, "result": self.ctx.worker_request("list_misconceptions", **kwargs)})
+        result = self.ctx.worker_request("list_misconceptions", **kwargs)
+        if not isinstance(result, dict):
+            self._send_json({"ok": True, "result": result})
+            return
+        rows = result.get("misconceptions")
+        if not isinstance(rows, list):
+            self._send_json({"ok": True, "result": result})
+            return
+        withheld = sum(isinstance(row, dict) and row.get("name") == "too_vague" for row in rows)
+        visible = [row for row in rows if not (isinstance(row, dict) and row.get("name") == "too_vague")]
+        self._send_json({"ok": True, "result": {
+            **result, "count": len(visible), "misconceptions": visible, "withheld": withheld,
+        }})
 
     def _handle_standards(self, payload: dict) -> None:
         kwargs = {}
@@ -1571,7 +1604,13 @@ class RouteLogic:
             val = str(payload.get(key) or "").strip()
             if val:
                 kwargs[key] = val
-        self._send_json({"ok": True, "result": self.ctx.worker_request("query_misconception", **kwargs)})
+        rows = self.ctx.worker_request("query_misconception", **kwargs)
+        if not isinstance(rows, list):
+            self._send_json({"ok": True, "result": rows})
+            return
+        withheld = sum(isinstance(row, dict) and row.get("description") == "too_vague" for row in rows)
+        visible = [row for row in rows if not (isinstance(row, dict) and row.get("description") == "too_vague")]
+        self._send_json({"ok": True, "result": {"rows": visible, "withheld": withheld}})
 
     def _handle_event_score(self, payload: dict) -> None:
         from hermes.app.analysis import event_importer

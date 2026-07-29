@@ -374,7 +374,9 @@ trace.</p>
         timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
       }).then(HermesFetch.requireOK).then(function (j) {
         if (j && j.error) throw new Error(j.error);
-        return j && j.result ? j.result : j;
+        var context = j && j.result ? j.result : j;
+        if (context && context.error) throw new Error(context.error);
+        return context;
       });
     }
 
@@ -628,7 +630,11 @@ trace.</p>
       var miscs = chart.teacher_misconceptions || [];
       var resonantMiscs = Array.isArray(chart.resonant_misconceptions)
         ? chart.resonant_misconceptions : [];
-      if (miscs.length === 0 && resonantMiscs.length === 0) {
+      var nonDiagnosable = resonantMiscs.filter(function (m) { return m && m.diagnosable === false; });
+      var renderedResonantMiscs = resonantMiscs.filter(function (m) { return !m || m.diagnosable !== false; });
+      var declaredWithheld = Number(chart.resonance_withheld || 0);
+      var resonanceWithheld = Math.max(Number.isFinite(declaredWithheld) ? declaredWithheld : 0, nonDiagnosable.length);
+      if (miscs.length === 0 && renderedResonantMiscs.length === 0 && resonanceWithheld === 0) {
         box.appendChild(noteP('No misconceptions are documented for this lesson or returned by resonance.'));
       }
       miscs.forEach(function (m) {
@@ -661,12 +667,12 @@ trace.</p>
         });
         box.appendChild(card);
       });
-      if (resonantMiscs.length) {
+      if (renderedResonantMiscs.length) {
         var heading = document.createElement('h3');
         heading.textContent = 'Documented misconceptions near this content (retrieved by resonance, not lesson-encoded)';
         box.appendChild(heading);
       }
-      resonantMiscs.forEach(function (m) {
+      renderedResonantMiscs.forEach(function (m) {
         var card = document.createElement('div');
         card.className = 'misc';
         var head = document.createElement('div');
@@ -676,21 +682,20 @@ trace.</p>
         domain.textContent = m.domain || '';
         head.appendChild(domain);
         head.appendChild(document.createTextNode(' '));
-        var documentedOnly = m.diagnosable === false;
         var name = document.createElement('b');
-        name.textContent = documentedOnly ? (m.gloss || m.citation || 'Documented error') : (m.name || 'Documented error');
+        name.textContent = m.name || 'Documented error';
         head.appendChild(name);
-        if (!documentedOnly && m.citation) {
+        if (m.citation) {
           var cite = document.createElement('span');
           cite.className = 'cite';
           cite.textContent = ' ' + m.citation;
           head.appendChild(cite);
         }
         card.appendChild(head);
-        if (documentedOnly) card.appendChild(noteP((m.status || 'documented in the research corpus') + ' · registry label: ' + (m.name || 'too_vague')));
         if (typeof m.score === 'number') card.appendChild(noteP('resonance score: ' + m.score));
         box.appendChild(card);
       });
+      if (resonanceWithheld > 0) box.appendChild(noteP(resonanceWithheld + ' documented-but-thin rows withheld; queued for articulation.'));
 
       renderFigureCoverage(chart.figures);
       var deformationChart = chart.deformation_chart && chart.deformation_chart.chart;
@@ -768,8 +773,8 @@ trace.</p>
           var chart = results[0], context = results[1];
           renderLiveChart(chart, context);
           setSource('live', 'Chart for ' + chart.lesson_code + ' from the live '
-            + 'app (/api/monitoring_chart_export). All lesson-fed sections were '
-            + 'replaced together from that one payload.');
+            + 'app (/api/monitoring_chart_export). Chart data and field context '
+            + 'were replaced from their live responses.');
         })
         .catch(function (err) { showChartError(code, err); })
         .finally(stopElapsed);

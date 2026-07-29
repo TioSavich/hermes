@@ -2814,6 +2814,11 @@ monitoring_chart_export_dict(Code, Dict) :-
     maplist(misconception_export_dict, Misconceptions, MisconceptionDicts),
     maplist(resonant_misconception_export_dict, ResonantMisconceptions,
             ResonantMisconceptionDicts),
+    (   current_predicate(lesson_monitoring:lesson_resonance_withheld/2),
+        lesson_monitoring:lesson_resonance_withheld(Code, ResonanceWithheld)
+    ->  true
+    ;   ResonanceWithheld = 0
+    ),
     lesson_inferential_strength_for(Code, InferentialStrengthReport),
     inferential_strength_export_dict(InferentialStrengthReport, InferentialStrengthDict),
     findall(PMLDict,
@@ -2845,6 +2850,7 @@ monitoring_chart_export_dict(Code, Dict) :-
         anticipated_strategies: StrategyDicts,
         teacher_misconceptions: MisconceptionDicts,
         resonant_misconceptions: ResonantMisconceptionDicts,
+        resonance_withheld: ResonanceWithheld,
         licensed_but_unanticipated: OperationGapDicts,
         unanticipated_strategies: GapMoveDicts,
         figures: FigureDict,

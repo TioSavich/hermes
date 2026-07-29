@@ -1503,11 +1503,13 @@ async function sendAsk() {
   ans.innerHTML = scene + groundedHtml(data.grounded) + `<div class="ask-prose">${esc(body)}</div>`;
 }
 function groundedHtml(g) {
-  if (!g || !g.total) return '';
+  if (!g || (!g.total && !g.misconceptions_withheld)) return '';
   const row = (label, arr, cls) => (arr && arr.length)
     ? `<div class="g-row"><span class="g-lab">${label}</span>${arr.slice(0, 6).map(x => `<span class="stance-chip ${cls || ''}">${esc(x)}</span>`).join('')}</div>` : '';
+  const withheld = Number(g.misconceptions_withheld || 0);
+  const withheldLine = withheld > 0 ? `<div class="muted-inline">${withheld} documented-but-thin rows withheld; queued for articulation.</div>` : '';
   return `<div class="grounded"><div class="g-head">⛓ grounded in ${g.total} symbolic fact${g.total === 1 ? '' : 's'} the app retrieved</div>
-    ${row('strategies', g.strategies)}${row('misconceptions', g.misconceptions, 'comp')}${row('standards', g.standards)}${row('metaphors', g.metaphors, 'exp')}</div>`;
+    ${row('strategies', g.strategies)}${row('misconceptions', g.misconceptions, 'comp')}${row('standards', g.standards)}${row('metaphors', g.metaphors, 'exp')}${withheldLine}</div>`;
 }
 $("#ask-send").addEventListener('click', sendAsk);
 const askDrop = $("#ask-drop");
@@ -1726,17 +1728,16 @@ function renderEncStats(section, r) {
   else if (section === 'benny') el.innerHTML = `<b>${(r.comparisons || []).length}</b> side-by-side comparisons (Benny's deformed rules vs their correct counterparts)`;
 }
 
-function renderMisconceptionResonance(results) {
-  if (!results.length) return "<p class='muted-inline'>No indexed rows were returned.</p>";
-  return results.map(result => {
-    const documentedOnly = result.diagnosable === "false" || result.diagnosable === false;
-    const heading = documentedOnly ? (result.gloss || result.citation || 'Documented error') : result.name;
-    const detail = documentedOnly
-      ? `${result.status || 'documented in the research corpus'} · registry label: ${result.name}`
-      : result.description;
-    const citation = documentedOnly ? '' : result.citation;
-    return `<div class="enc-group"><b>${esc(heading)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(detail)}<br><span class="muted-inline">${esc(citation)}</span></div>`;
-  }).join('');
+function withheldMisconceptionLine(withheld) {
+  return withheld > 0 ? `<div class="muted-inline">${withheld} documented-but-thin rows withheld; queued for articulation.</div>` : '';
+}
+
+function renderMisconceptionResonance(results, withheld) {
+  const documentedOnly = results.filter(result => result && (result.diagnosable === "false" || result.diagnosable === false));
+  const visible = results.filter(result => result && result.diagnosable !== "false" && result.diagnosable !== false);
+  const effectiveWithheld = Math.max(Number(withheld || 0), documentedOnly.length);
+  const cards = visible.map(result => `<div class="enc-group"><b>${esc(result.name)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(result.description)}<br><span class="muted-inline">${esc(result.citation)}</span></div>`).join('');
+  return cards || withheldMisconceptionLine(effectiveWithheld) || "<p class='muted-inline'>No indexed rows were returned.</p>";
 }
 
 async function searchMisconceptionResonance() {
@@ -1747,7 +1748,7 @@ async function searchMisconceptionResonance() {
   try {
     const { data } = await postJSON('/api/misconception_search', { utterance, k: 8 });
     if (!data || data.retrieval !== 'embedding') throw new Error((data && data.error) || 'The embedding search returned no provenance marker.');
-    out.innerHTML = renderMisconceptionResonance(data.results || []);
+    out.innerHTML = renderMisconceptionResonance(data.results || [], Number(data.withheld || 0));
   } catch (error) { setRequestFailure(out, error); }
 }
 if ($("#misconception-resonance-search")) $("#misconception-resonance-search").addEventListener('click', searchMisconceptionResonance);
@@ -1810,10 +1811,23 @@ async function runRegistryQuery(path, body) {
     out.textContent = JSON.stringify(response.data, null, 2) || "The route returned an empty reply.";
   } catch (e) { out.textContent = e.message || "! The app returned a broken reply."; }
 }
-if ($("#misconception-query-btn")) $("#misconception-query-btn").addEventListener('click', () => runRegistryQuery('/api/query_misconception', {
-  domain: $("#misconception-domain").value.trim(),
-  description: $("#misconception-description").value.trim()
-}));
+async function runMisconceptionRegistryQuery() {
+  const out = $("#registry-query-out");
+  out.hidden = false;
+  out.textContent = "requesting…";
+  try {
+    const response = await postJSON('/api/query_misconception', {
+      domain: $("#misconception-domain").value.trim(),
+      description: $("#misconception-description").value.trim()
+    });
+    const result = response.data && response.data.result;
+    const rows = result && Array.isArray(result.rows) ? result.rows : result;
+    out.textContent = JSON.stringify(rows, null, 2) || "The route returned an empty reply.";
+    const withheld = result && Number(result.withheld || 0);
+    if (withheld > 0) out.textContent += `\n\n${withheld} documented-but-thin rows withheld; queued for articulation.`;
+  } catch (e) { out.textContent = e.message || "! The app returned a broken reply."; }
+}
+if ($("#misconception-query-btn")) $("#misconception-query-btn").addEventListener('click', runMisconceptionRegistryQuery);
 if ($("#geometry-query-btn")) $("#geometry-query-btn").addEventListener('click', () => {
   const out = $("#registry-query-out");
   let args;
@@ -1884,6 +1898,7 @@ function renderEncList(section, q = '') {
     const rows = (r.misconceptions || []).filter(m => !q || (`${m.domain} ${m.name} ${m.rule}`).toLowerCase().includes(q)).slice(0, 400);
     html = rows.map(m => encItemBtn(`m::${m.domain}::${m.name}`, m.name, `${m.domain} · ${m.diagnosable ? 'diagnosable' : 'placeholder'}`)).join('');
     if ((r.misconceptions || []).length > rows.length) html += `<div class="enc-group">showing ${rows.length} of ${(r.misconceptions || []).length} — filter to narrow</div>`;
+    html += withheldMisconceptionLine(Number(r.withheld || 0));
   } else if (section === 'standards') {
     const rows = (r.standards || []).filter(s => !q || (`${s.framework} ${s.code} ${s.statement}`).toLowerCase().includes(q));
     const byFw = {};
