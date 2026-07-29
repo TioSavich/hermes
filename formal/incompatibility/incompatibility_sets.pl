@@ -24,7 +24,8 @@
             incompatibility_entails/2,
             incompatibility_entailment_witness/3,
             error_rule_crosstalk_defeat_count/3,
-            a_fortiori_context_nesting/4
+            a_fortiori_context_nesting/4,
+            a_fortiori_context_nesting_inventory/2
           ]).
 
 :- use_module(library(lists)).
@@ -52,6 +53,51 @@
 :- multifile discovered_set_kind/3.
 :- multifile error_rule_crosstalk_defeat_count/3.
 :- multifile a_fortiori_context_nesting/4.
+
+%!  a_fortiori_context_nesting_inventory(+ContextFilter, -Inventory) is semidet.
+%
+%   Inventory of reviewed strict input-class nestings. ContextFilter is `all`
+%   or one context atom; a filtered call keeps rows whose narrow or broad end
+%   names the atom, and fails when nothing matches so callers are not handed
+%   the whole inventory for an unmatched filter.
+a_fortiori_context_nesting_inventory(ContextFilter, Inventory) :-
+    findall(Row,
+            ( a_fortiori_context_nesting(Narrow, Broad, Status, Warrant),
+              nesting_filter_matches(ContextFilter, Narrow, Broad),
+              context_native_triple_count(Narrow, NarrowNativeTriples),
+              context_native_triple_count(Broad, BroadNativeTriples),
+              Row = _{narrow: Narrow,
+                      broad: Broad,
+                      status: Status,
+                      warrant: Warrant,
+                      broad_native_triples: BroadNativeTriples,
+                      narrow_native_triples: NarrowNativeTriples}
+            ),
+            UnsortedRows),
+    sort(UnsortedRows, Rows),
+    Rows = [_|_],
+    length(Rows, Count),
+    Inventory = _{count: Count,
+                  context_filter: ContextFilter,
+                  nestings: Rows,
+                  register_note: "Basis prose and automaton status live in formal/incompatibility/a_fortiori_context_nestings.json and the settlement receipt. These reviewed rows source the generated register's context-earned pairs and are distinct from the live finite-profile relation served by incompatibility_entailments."}.
+
+nesting_filter_matches(all, _Narrow, _Broad).
+nesting_filter_matches(Context, Narrow, _Broad) :-
+    Context == Narrow.
+nesting_filter_matches(Context, _Narrow, Broad) :-
+    Context == Broad.
+
+context_native_triple_count(Context, Count) :-
+    findall(Triple,
+            discovered_set_fact(defeasible_inference,
+                                Triple),
+            Triples),
+    include(native_context(Context), Triples, ContextTriples),
+    length(ContextTriples, Count).
+
+native_context(Context,
+               [_Inference, o(context(Context)), _Consequence]).
 
 %!  error_rule_crosstalk_defeat_count(?Context, ?InferenceId, ?Count) is nondet.
 %

@@ -129,7 +129,7 @@ def decimal_exact_order(left: DecimalNumeral, right: DecimalNumeral) -> int:
     return sign(left_written * right_scale - right_written * left_scale)
 
 
-def old_divisor_and_decimal_rows() -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+def old_divisor_rows() -> list[dict[str, object]]:
     divisors = [Fraction(value) for value in (-5, -1, 1, 2, 3, 5, 10, 25)] + [Fraction(1, 4), Fraction(1, 3), Fraction(1, 2), Fraction(3, 4), Fraction(125), Fraction(625), Fraction(3125), Fraction(15625)]
     display_divisor = lambda value: str(value.numerator) if value.denominator == 1 else f"{value.numerator}/{value.denominator}"
     powers = {Fraction(5 ** exponent) for exponent in range(1, 7)}
@@ -140,16 +140,31 @@ def old_divisor_and_decimal_rows() -> tuple[list[dict[str, object]], list[dict[s
         set_row("the_divisor_is_a_power_of_five subset the_divisor_is_not_one", divisors, powers, {x for x in divisors if x != 0 and x != 1}, display_divisor),
         set_row("CONTROL the_divisor_is_not_a_whole_number subset the_divisor_is_not_ten", divisors, {x for x in divisors if x.denominator != 1}, {x for x in divisors if x.denominator == 1 and x != 10}, display_divisor),
     ]
-    decimals = decimal_numerals(1)
+    return old
+
+
+def decimal_context_rows() -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+    """Measure B-1998 and B-2004 together, without a second pair sweep."""
+    decimals = decimal_numerals(1, include_zero_fraction=True)
     names = [
         "fraction_part_numeral_order_diverges_within_equal_integer_parts subset fraction_part_numeral_order_diverges_from_value_order",
         "numeral_length_order_inverts_decimal_value_order subset the_numerals_carry_different_place_counts",
         "written_numeral_order_diverges_from_decimal_value_order subset the_numerals_carry_different_place_counts",
         "CONTROL numeral_length_order_inverts_decimal_value_order subset numeral_length_order_tracks_decimal_value_order",
+        "W3-1 fraction_part_numeral_order_diverges_within_equal_integer_parts subset the_numerals_carry_different_place_counts",
+        "W3-2 fraction_part_numeral_order_diverges_within_equal_integer_parts subset written_numeral_order_diverges_from_decimal_value_order",
+        "W3-3 fraction_part_numeral_order_diverges_within_equal_integer_parts subset numeral_length_order_inverts_decimal_value_order",
+        "W3-4 numeral_length_order_tracks_decimal_value_order subset the_numerals_carry_different_place_counts",
+        "CONTROL written_numeral_order_diverges_from_decimal_value_order subset numeral_length_order_inverts_decimal_value_order",
+        "CONTROL fraction_part_numeral_order_diverges_from_value_order subset the_numerals_carry_different_place_counts",
+        "CONTROL fraction_part_numeral_order_diverges_within_equal_integer_parts subset numeral_length_order_tracks_decimal_value_order",
     ]
-    counts = [[0, 0, 0, 0] for _ in names]
-    narrow_witnesses = [[] for _ in names]
-    broad_witnesses = [[] for _ in names]
+    base_counts = [[0, 0, 0, 0] for _ in names]
+    base_narrow_witnesses = [[] for _ in names]
+    base_broad_witnesses = [[] for _ in names]
+    extended_counts = [[0, 0, 0, 0] for _ in names]
+    extended_narrow_witnesses = [[] for _ in names]
+    extended_broad_witnesses = [[] for _ in names]
     for left in decimals:
         for right in decimals:
             if left == right:
@@ -161,30 +176,54 @@ def old_divisor_and_decimal_rows() -> tuple[list[dict[str, object]], list[dict[s
             length_inverts = different_places and length_order == -exact_order
             written_diverges = sign(int(f"{left.whole}{left.digits}") - int(f"{right.whole}{right.digits}")) != exact_order
             length_tracks = different_places and length_order == exact_order
-            cases = ((left.whole == right.whole and raw_disagrees, raw_disagrees),
+            fpe = left.whole == right.whole and raw_disagrees
+            cases = ((fpe, raw_disagrees),
                      (length_inverts, different_places),
                      (written_diverges, different_places),
-                     (length_inverts, length_tracks))
+                     (length_inverts, length_tracks),
+                     (fpe, different_places),
+                     (fpe, written_diverges),
+                     (fpe, length_inverts),
+                     (length_tracks, different_places),
+                     (written_diverges, length_inverts),
+                     (raw_disagrees, different_places),
+                     (fpe, length_tracks))
             label = f"{left.display()} vs {right.display()}"
+            is_base_pair = left.digits not in {"0", "00", "000"} and right.digits not in {"0", "00", "000"}
             for index, (in_narrow, in_broad) in enumerate(cases):
-                counts[index][0] += in_narrow
-                counts[index][1] += in_broad
+                extended_counts[index][0] += in_narrow
+                extended_counts[index][1] += in_broad
                 if in_narrow and not in_broad:
-                    counts[index][2] += 1
-                    if len(narrow_witnesses[index]) < 2:
-                        narrow_witnesses[index].append(label)
+                    extended_counts[index][2] += 1
+                    if len(extended_narrow_witnesses[index]) < 2:
+                        extended_narrow_witnesses[index].append(label)
                 if in_broad and not in_narrow:
-                    counts[index][3] += 1
-                    if len(broad_witnesses[index]) < 2:
-                        broad_witnesses[index].append(label)
-    decimal_sets = [
-        {"name": name, "narrow": count[0], "broad": count[1],
-         "narrow_minus_broad": count[2], "broad_minus_narrow": count[3],
-         "narrow_witnesses": "; ".join(narrow_witnesses[index]) or "none",
-         "broad_witnesses": "; ".join(broad_witnesses[index]) or "none"}
-        for index, (name, count) in enumerate(zip(names, counts))
-    ]
-    return old, decimal_sets
+                    extended_counts[index][3] += 1
+                    if len(extended_broad_witnesses[index]) < 2:
+                        extended_broad_witnesses[index].append(label)
+                if is_base_pair:
+                    base_counts[index][0] += in_narrow
+                    base_counts[index][1] += in_broad
+                    if in_narrow and not in_broad:
+                        base_counts[index][2] += 1
+                        if len(base_narrow_witnesses[index]) < 2:
+                            base_narrow_witnesses[index].append(label)
+                    if in_broad and not in_narrow:
+                        base_counts[index][3] += 1
+                        if len(base_broad_witnesses[index]) < 2:
+                            base_broad_witnesses[index].append(label)
+
+    def rows_for(counts, narrow_witnesses, broad_witnesses):
+        return [
+            {"name": name, "narrow": count[0], "broad": count[1],
+             "narrow_minus_broad": count[2], "broad_minus_narrow": count[3],
+             "narrow_witnesses": "; ".join(narrow_witnesses[index]) or "none",
+             "broad_witnesses": "; ".join(broad_witnesses[index]) or "none"}
+            for index, (name, count) in enumerate(zip(names, counts))
+        ]
+
+    return (rows_for(base_counts, base_narrow_witnesses, base_broad_witnesses),
+            rows_for(extended_counts, extended_narrow_witnesses, extended_broad_witnesses))
 
 
 def multiplication_row() -> dict[str, object]:
@@ -207,7 +246,7 @@ def scale_loss_condition(numerator_one: int, scale_one: int,
     )
 
 
-def automaton_probes(pairs, gap: set) -> tuple[int, str, int, tuple[str, str]]:
+def automaton_probes(pairs, gap: set) -> tuple[int, str, int, tuple[str, str], int]:
     """Check GAP and scale-loss probes in one SWI-Prolog invocation."""
     query = " ".join([
         "use_module(math(smr_frac_benchmark_compare)),",
@@ -220,13 +259,27 @@ def automaton_probes(pairs, gap: set) -> tuple[int, str, int, tuple[str, str]]:
         "forall((member(S1,[10,100,1000]), between(1,29,N1),",
         "member(S2,[10,100,1000]), between(1,29,N2), N1*S2 =\\= N2*S1),",
         "(run_decimal_scale_loss_compare(N1,S1,N2,S2,_,V,_), arg(2,V,condition(C)),",
-        "format('scale\\t~d\\t~d\\t~d\\t~d\\t~w~n',[N1,S1,N2,S2,C]))), halt",
+        "format('scale\\t~d\\t~d\\t~d\\t~d\\t~w~n',[N1,S1,N2,S2,C]))),",
+        "forall((between(0,1,W), member(S1,[10,100]), U1 is S1-1, between(1,U1,D1), D1 mod 10 =\\= 0,",
+        "member(S2,[10,100]), U2 is S2-1, between(1,U2,D2), D2 mod 10 =\\= 0,",
+        "N1 is W*S1+D1, N2 is W*S2+D2, \\+ (N1 =:= N2, S1 =:= S2),",
+        "R is sign(D1-D2), E is sign(N1*S2-N2*S1), R =\\= E),",
+        "(run_decimal_scale_loss_compare(N1,S1,N2,S2,_,V,_), arg(2,V,condition(C)),",
+        "format('fpe\\t~d\\t~d\\t~d\\t~d\\t~w~n',[N1,S1,N2,S2,C]))),",
+        "forall(member(probe(N1,S1,N2,S2),[probe(105,100,15,10),probe(11,100,11,10)]),",
+        "(run_decimal_scale_loss_compare(N1,S1,N2,S2,_,V,_), arg(2,V,condition(C)),",
+        "format('spot\\t~d\\t~d\\t~d\\t~d\\t~w~n',[N1,S1,N2,S2,C]))),",
+        "run_decimal_scale_loss_compare(10,10,100,100,_,EqualV,_), arg(2,EqualV,condition(EqualC)),",
+        "format('equal\\t10\\t10\\t100\\t100\\t~w~n',[EqualC]), halt",
     ])
     completed = subprocess.run(["swipl", "-q", "-l", str(ROOT / "paths.pl"), "-g", query], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     if completed.returncode or completed.stderr.strip():
         raise RuntimeError(completed.stderr.strip() or "gap automaton probe failed")
     gap_conditions = {}
     scale_conditions = {}
+    fpe_conditions = {}
+    spot_conditions = {}
+    equal_condition = None
     for row in completed.stdout.splitlines():
         probe, n1, d1, n2, d2, condition = row.split("\t")
         key = (int(n1), int(d1), int(n2), int(d2))
@@ -234,6 +287,12 @@ def automaton_probes(pairs, gap: set) -> tuple[int, str, int, tuple[str, str]]:
             gap_conditions[((key[0], key[1]), (key[2], key[3]))] = condition
         elif probe == "scale":
             scale_conditions[key] = condition
+        elif probe == "fpe":
+            fpe_conditions[key] = condition
+        elif probe == "spot":
+            spot_conditions[key] = condition
+        elif probe == "equal":
+            equal_condition = condition
         else:
             raise RuntimeError(f"unknown automaton probe prefix: {probe!r}")
     if len(gap_conditions) != len(pairs):
@@ -257,7 +316,20 @@ def automaton_probes(pairs, gap: set) -> tuple[int, str, int, tuple[str, str]]:
         "written_numeral_order_diverges_from_decimal_value_order",
     ):
         raise RuntimeError(f"unexpected scale-loss sample conditions: {scale_samples!r}")
-    return 974, separating, len(scale_conditions), scale_samples
+    small_decimals = [value for value in decimal_numerals(1) if len(value.digits) <= 2]
+    expected_fpe = sum(
+        left.whole == right.whole
+        and sign(int(left.digits) - int(right.digits)) != decimal_exact_order(left, right)
+        for left in small_decimals for right in small_decimals if left != right
+    )
+    divergence = "written_numeral_order_diverges_from_decimal_value_order"
+    if len(fpe_conditions) != expected_fpe or any(condition != divergence for condition in fpe_conditions.values()):
+        raise RuntimeError("a W3-2 broad-endpoint probe missed an FPE member or lost its divergence condition")
+    if set(spot_conditions) != {(105, 100, 15, 10), (11, 100, 11, 10)} or any(condition != divergence for condition in spot_conditions.values()):
+        raise RuntimeError("W3-2 three-place spot probes no longer return the scale-loss divergence condition")
+    if equal_condition != divergence:
+        raise RuntimeError("WND subset LIV control lost the equal-value scale-loss divergence condition")
+    return 974, separating, len(scale_conditions), scale_samples, len(fpe_conditions)
 
 
 def validate_source() -> None:
@@ -338,18 +410,40 @@ def receipt() -> str:
     large_rows, _ = required_fraction_rows(large_classes, large_pairs)
     if [(r["narrow_minus_broad"], r["broad_minus_narrow"]) for r in large_rows] != [(0, 16960), (0, 4990), (0, 4990), (0, 4990), (0, 4990), (0, 16960)]:
         raise RuntimeError("D <= 20 robustness sweep differs from the predicted algebraic pattern")
-    condition_count, separating, scale_case_count, scale_samples = automaton_probes(pairs, classes["GAP"])
+    condition_count, separating, scale_case_count, scale_samples, fpe_probe_count = automaton_probes(pairs, classes["GAP"])
     numeral = numeral_row()
-    old_divisors, old_decimals = old_divisor_and_decimal_rows()
-    existing_controls = [old_divisors[-1], old_decimals[-1]]
-    retained_rows = old_divisors[:4] + old_decimals[:3] + [multiplication_row()]
+    old_divisors = old_divisor_rows()
+    decimals, decimal_robustness = decimal_context_rows()
+    expected_wave3 = [
+        (163512, 719280, 0, 555768),
+        (163512, 326808, 0, 163296),
+        (163512, 359640, 0, 196128),
+        (359640, 719280, 0, 359640),
+    ]
+    expected_wave3_robustness = [
+        (163512, 735288, 0, 571776),
+        (163512, 330594, 0, 167082),
+        (163512, 364074, 0, 200562),
+        (371202, 735288, 0, 364086),
+    ]
+    measure = lambda rows: [(row["narrow"], row["broad"], row["narrow_minus_broad"], row["broad_minus_narrow"]) for row in rows]
+    if measure(decimals[4:8]) != expected_wave3 or measure(decimal_robustness[4:8]) != expected_wave3_robustness:
+        raise RuntimeError("Wave 3 decimal containment counts differ from the reviewed batteries")
+    if (verdict(decimal_robustness[8]) != "refused_counterexample"
+            or decimal_robustness[8]["narrow_minus_broad"] != 6
+            or "1.0 vs 1.00" not in decimal_robustness[8]["narrow_witnesses"]):
+        raise RuntimeError("WND subset LIV control stopped biting on equal-value written numerals")
+    if verdict(decimals[9]) != "refused_counterexample" or verdict(decimals[10]) != "refused_disjoint":
+        raise RuntimeError("a mandated Wave 3 decimal refusal control stopped refusing")
+    existing_controls = [old_divisors[-1], decimals[3]]
+    retained_rows = old_divisors[:4] + decimals[:3] + [multiplication_row()]
     for row in retained_rows:
         if verdict(row) != "contained_strict":
             raise RuntimeError(f"existing settled row drifted: {row['name']}")
     if any(verdict(row) != "refused_disjoint" for row in existing_controls):
         raise RuntimeError("an existing refusal control stopped refusing")
 
-    all_controls = existing_controls + fraction_controls
+    all_controls = existing_controls + fraction_controls + [decimal_robustness[8], decimals[9], decimals[10]]
     identities = [
         set_row("DEN subset CSUM", pairs, classes["DEN"], classes["CSUM"], fraction_display),
         set_row("CSUM subset DEN", pairs, classes["CSUM"], classes["DEN"], fraction_display),
@@ -380,6 +474,7 @@ def receipt() -> str:
         "- R2: whole-number comparison heuristics are total and a tie yields equal. The loaded gap automaton attests this behavior; abstain-on-ties branches are retained below.",
         "- R3: component dominance uses >= with one strict. Rows 44707, 45650, and 47009 require it; strict-AND branches are retained below.", "",
         "The fraction battery contains ordered written-distinct proper fractions with 1 <= N < D <= 12: 66 fractions and 4,290 pairs. The independent D <= 20 rerun has 35,910 pairs. The numeral battery contains 4,008 canonical one-to-three-place decimals with whole parts 0..3, including 0/00/000 fraction parts.", "",
+        "B-2004 comprises 1,998 canonical one-to-three-place numerals with whole parts 0..1 and no trailing zeros, extended to 2,004 by the six zero-fraction forms; W3-3 therefore applies only to canonical numerals, while W3-2 held with no canonical-numeral restriction across the mandated batteries.", "",
         "## Settled Task 171 rows", "",
         "| row | narrow count | broad count | narrow-minus-broad count | broad-minus-narrow count | verdict | procedure and dissent |",
         "| --- | ---: | ---: | ---: | ---: | --- | --- |",
@@ -393,15 +488,21 @@ def receipt() -> str:
         "| --- | ---: | ---: | ---: | ---: | --- | --- |",
         *(render_row(row) for row in retained_rows),
         "",
+        "## Wave 3 leaked decimal rows",
+        "",
+        "| narrow subset broad | narrow count | broad count | narrow-minus-broad count | broad-minus-narrow count | verdict | boundary witnesses |",
+        "| --- | ---: | ---: | ---: | ---: | --- | --- |",
+        *(render_row(row, f"; B-2004: {decimal_robustness[index + 4]['narrow']} / {decimal_robustness[index + 4]['broad']} / {decimal_robustness[index + 4]['narrow_minus_broad']} / {decimal_robustness[index + 4]['broad_minus_narrow']}") for index, row in enumerate(decimals[4:8])),
+        "",
         f"The D <= 20 robustness rerun keeps all six fraction rows strict: each has narrow-minus-broad 0. Its broad-only counts are {', '.join(str(row['broad_minus_narrow']) for row in large_rows)} in S1..S6 order.",
         f"Gap automaton probe: all 440 GAP members carry `gap_order_diverges_from_fraction_order`; the automaton condition class has {condition_count} of 4,290 members. `1/2 vs 2/4` returns `{separating}`, so the probe is `probed_narrow_endpoint_only`, not a decider for R1's 440 boundary.",
-        f"Scale-loss reimplementation probe: `smr_decimal_fraction_compare:run_decimal_scale_loss_compare/7` agrees with the Python predicate on all {scale_case_count} ordered unequal-value inputs at scales 10, 100, and 1000. `1/10` vs `2/10` returns `{scale_samples[0]}`; `8/10` vs `14/100` returns `{scale_samples[1]}`. This certifies the narrow endpoint only; the broad different-place class has no decider.",
+        f"Scale-loss reimplementation probe: `smr_decimal_fraction_compare:run_decimal_scale_loss_compare/7` agrees with the Python predicate on all {scale_case_count} ordered unequal-value inputs at scales 10, 100, and 1000. `1/10` vs `2/10` returns `{scale_samples[0]}`; `8/10` vs `14/100` returns `{scale_samples[1]}`. The W3-2 broad-endpoint probe ran every one of the {fpe_probe_count} FPE members on the canonical one-to-two-place sub-battery plus `1.05` vs `1.5` and `0.11` vs `1.1`; every probe returned the divergence condition. This attests broad membership, not the boundary.",
         "",
         "## Refusal controls", "",
         "| proposed narrow subset broad | narrow count | broad count | narrow-minus-broad count | broad-minus-narrow count | verdict | boundary witnesses |",
         "| --- | ---: | ---: | ---: | ---: | --- | --- |",
         *(render_row(row) for row in all_controls), "",
-        "The first two controls preserve the Task 163 whole-divisor and decimal complement refusals. DEN is IDEN's coder-recorded valid equal-numerator domain, and GAP is CORD's coder-recorded equal-gap success domain (46964); both proposed Task 171 containments must therefore refuse.", "",
+        "The first two controls preserve the Task 163 whole-divisor and decimal complement refusals. DEN is IDEN's coder-recorded valid equal-numerator domain, and GAP is CORD's coder-recorded equal-gap success domain (46964); both proposed Task 171 containments must therefore refuse. WND subset LIV is measured on B-2004 so equal-value dual written numerals remain in scope: `1.0` vs `1.00` and `1.0` vs `1.000` are narrow-only counterexamples, and the loaded scale-loss automaton emits its divergence condition on 1.0 versus 1.00.", "",
         "## Refusal scope", "",
         "### Fraction matrix", "",
         "The 56 ordered fraction pairs resolve to six declared strict rows, four true identities the directed cycle guard refuses, fourteen NSUM refusals, and 32 disjoint/counterexample refusals. This is the complete same-type matrix, not an atom-name shortlist.", "",
@@ -426,7 +527,7 @@ def receipt() -> str:
         "| `SFN subset FPD`; `SFN subset FPE` | refused_disjoint | Row 46493's inverted fraction-part rule makes SFN the complement of FPD on strict raw-digit-order pairs; FPE is within FPD. |",
         "| `T9 subset SNF`; `NNF subset SNF`; `SNF subset NNF` | refused_type_mismatch | T9 and NNF are single numerals; SNF is a two-operand subtraction input (row 44544). |", "",
         "## Executable limit", "",
-        "Predicate prose is reviewed source. The Python sweep is executable for every row above. The single SWI-Prolog invocation checks both the one-sided GAP probe and the 7,474-case scale-loss reimplementation agreement. GAP remains asserted because its condition over-covers the reviewed 440 boundary; scale loss remains asserted because its broad different-place endpoint has no decider.",
+        "Predicate prose is reviewed source. The Python sweep is executable for every row above. The single SWI-Prolog invocation checks the one-sided GAP probe, the 7,474-case scale-loss reimplementation agreement, the W3-2 broad-endpoint membership probe, and the equal-value WND control. GAP remains asserted because its condition over-covers the reviewed 440 boundary; W3-2's probe attests membership rather than a class boundary.",
         "",
     ])
     return "\n".join(lines)
@@ -452,10 +553,10 @@ def main() -> int:
     if arguments.check:
         status = compare(artifact)
         if not status:
-            print("a-fortiori input-nesting receipt current: settled=15; task171=7; controls=4; fraction_pairs=4290")
+            print("a-fortiori input-nesting receipt current: settled=19; task171=7; controls=7; fraction_pairs=4290")
         return status
     RECEIPT.write_text(artifact, encoding="utf-8")
-    print("a-fortiori input-nesting receipt written: settled=15; task171=7; controls=4; fraction_pairs=4290")
+    print("a-fortiori input-nesting receipt written: settled=19; task171=7; controls=7; fraction_pairs=4290")
     return 0
 
 

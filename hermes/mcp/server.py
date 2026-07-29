@@ -49,6 +49,7 @@ CORE_TO_WORKER = {
     "commitment_match": "commitment_match",
     "strategy_trace": "strategy_trace",
     "strategy_recognize": "strategy_recognize",
+    "incompatibility_contexts": "incompatibility_contexts",
 }
 
 TOOL_BUNDLES = {
@@ -81,6 +82,7 @@ CORE_TOOLS = (
     ("resonance_neighbors", "Find neighbors of one stored misconception vector. Prefer the returned db_row identity; name remains a display label and is accepted only when unambiguous. This uses only stored row vectors; it never makes a query-embedding network call.", ("db_row", "name", "k")),
     ("incompatibility_entailments", "Check one proposed replacement/replaced pair against the live finite incompatibility profiles. It reports entailment, equivalence when both directions hold, or an honest unresolved status, with its witnessing contexts. This is earned over a thin corpus and is distinct from the strict generated register; see docs/research/2026-07-28-why-entailment-does-not-move.md.", ("replacement", "replaced")),
     ("incompatibility_profile", "Return the size-3-or-more minimal incompatible sets containing one content term, with its partners and provenance. Declared binary seed pairs are outside this inventory; use incompatibility_entailments for a specified replacement/replaced pair.", ("content",)),
+    ("incompatibility_contexts", "Enumerate the reviewed a-fortiori context nestings: strict input-class inclusions (narrow, broad, status, warrant) with native-triple counts at each end. These rows generate the strict register's context-earned entailments; basis prose and automaton status live in formal/incompatibility/a_fortiori_context_nestings.json. Optional context filters to rows touching one atom and reports not_covered when the atom touches none. This bounded reviewed inventory has no pagination; add limit and offset if it grows past about 100 rows. Distinct from incompatibility_entailments, which checks one replacement/replaced pair against live finite profiles.", ("context",)),
 )
 
 
@@ -150,6 +152,11 @@ def output_schema(name: str) -> dict[str, Any] | None:
             "type": "object",
             "required": ["content", "status", "minimal_sets", "partners"],
             "properties": {"content": {"type": "string"}, "status": {"type": "string"}, "minimal_sets": {"type": "array"}, "partners": {"type": "array", "items": {"type": "string"}}},
+        },
+        "incompatibility_contexts": {
+            "type": "object",
+            "required": ["count", "context_filter", "nestings", "register_note"],
+            "properties": {"count": {"type": "integer"}, "context_filter": {"type": "string"}, "nestings": {"type": "array"}, "register_note": {"type": "string"}},
         },
     }
     return schemas.get(name)

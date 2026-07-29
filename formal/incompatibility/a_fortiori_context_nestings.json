@@ -51,6 +51,38 @@
       "automaton": "unavailable"
     },
     {
+      "narrow": "fraction_part_numeral_order_diverges_within_equal_integer_parts",
+      "broad": "the_numerals_carry_different_place_counts",
+      "status": "asserted",
+      "warrant": "equal_integer_part_divergence_forces_unequal_place_counts",
+      "basis": "With equal integer parts and equal place counts, exact decimal order is the fraction digits' whole-number order at one scale, ties included, so divergence forces unequal counts. Sweep: 163,512 of 719,280 battery pairs, zero outside the broad class on both batteries; the narrow class retains one native rule.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "fraction_part_numeral_order_diverges_within_equal_integer_parts",
+      "broad": "written_numeral_order_diverges_from_decimal_value_order",
+      "status": "asserted",
+      "warrant": "equal_integer_part_divergence_inside_scale_loss_defeat",
+      "basis": "Equal integer parts force unequal place counts inside the narrow class; the longer written numeral then concatenates strictly larger for nonzero integer parts while exact order runs first, and for zero integer parts concatenated order equals the diverging fraction-digit order. Sweep: 163,512 of 326,808, zero outside the broad class on both batteries; every probed narrow member returns the automaton's divergence condition; the narrow class retains one native rule.",
+      "automaton": "probed_broad_endpoint_membership"
+    },
+    {
+      "narrow": "fraction_part_numeral_order_diverges_within_equal_integer_parts",
+      "broad": "numeral_length_order_inverts_decimal_value_order",
+      "status": "asserted",
+      "warrant": "equal_integer_part_divergence_forces_length_inversion",
+      "basis": "For canonical numerals with no trailing zeros, the narrow class has unequal place counts and strict exact order, and the longer-count numeral always names the strictly smaller value, which is the inversion the broad atom states. Sweep: 163,512 of 359,640, zero outside the broad class on both canonical batteries; the narrow class retains one native rule.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "numeral_length_order_tracks_decimal_value_order",
+      "broad": "the_numerals_carry_different_place_counts",
+      "status": "asserted",
+      "warrant": "strict_place_count_order_requires_unequal_place_counts",
+      "basis": "The reviewed class demands a strict fractional-place-count order, which only unequal counts yield; the same construction carried the shipped length-inversion row. Sweep: 359,640 of 719,280 on the shipped battery, zero outside the broad class on both batteries; the narrow class retains one native rule.",
+      "automaton": "unavailable"
+    },
+    {
       "narrow": "numeral_length_order_inverts_decimal_value_order",
       "broad": "the_numerals_carry_different_place_counts",
       "status": "asserted",

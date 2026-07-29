@@ -66,6 +66,16 @@ CHECKS = (
         fix="Pass the exact content-term text recorded in a size-3-or-more hyperedge; binary declared seed pairs are not in this inventory.",
     ),
     Check(
+        label="incompatibility_contexts returns the reviewed nesting inventory",
+        tool="incompatibility_contexts",
+        arguments={"context": "fraction_part_numeral_order_diverges_within_equal_integer_parts"},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("context_filter") == "fraction_part_numeral_order_diverges_within_equal_integer_parts"
+        and value.get("count") == len(value.get("nestings", []))
+        and bool(value.get("nestings")),
+        fix="Use no context for the bounded full inventory or an atom named by a reviewed nesting endpoint.",
+    ),
+    Check(
         label="misconception_lookup retains the documented-only row gloss and status",
         tool="misconception_lookup",
         arguments={"domain": "whole_number", "source": "db_row(37492)", "limit": 1},

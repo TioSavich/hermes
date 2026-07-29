@@ -28,6 +28,7 @@ OUTPUT = ROOT / "formal" / "incompatibility" / "incompatibility_sets_a_fortiori_
 AUTOMATON_STATUSES = {
     "unavailable",
     "probed_narrow_endpoint_only",
+    "probed_broad_endpoint_membership",
     "certified_narrow_endpoint_reimplementation",
     "certified_nesting",
 }
@@ -218,7 +219,10 @@ def compare(expected: str) -> int:
 def automaton_counts(nestings: list[dict[str, str]]) -> tuple[int, int, int]:
     certified_nestings = sum(row["automaton"] == "certified_nesting" for row in nestings)
     certified_endpoints = sum(row["automaton"] == "certified_narrow_endpoint_reimplementation" for row in nestings)
-    probed_endpoints = sum(row["automaton"] == "probed_narrow_endpoint_only" for row in nestings)
+    probed_endpoints = sum(
+        row["automaton"] in {"probed_narrow_endpoint_only", "probed_broad_endpoint_membership"}
+        for row in nestings
+    )
     return certified_nestings, certified_endpoints, probed_endpoints
 
 

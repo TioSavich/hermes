@@ -28,6 +28,12 @@ dispatch_spec(index_topic_subtraction,
     [topic-atom],
     call(index_query:topic_subtraction_dict, [topic, out(dict)]),
     raw(no_index_topic, malformed_index_topic_request)).
+dispatch_spec(incompatibility_contexts,
+    [context-default(atom, all)],
+    call(incompatibility_sets:a_fortiori_context_nesting_inventory,
+         [context, out(dict)]),
+    raw(no_a_fortiori_context_nesting,
+        malformed_incompatibility_contexts_request)).
 dispatch_spec(axiom_pack_witness,
     [pack-atom, source-atom],
     call(cw_driver:family_witness,
@@ -751,6 +757,8 @@ dispatch_spec(benny_demo,
     raw_safe(no_benny_demo, _)).
 
 dispatch_message(event_score, malformed, "event_score requires event").
+dispatch_message(incompatibility_contexts, no_result,
+    "incompatibility_contexts found no nesting touching that context; pass no context for the full inventory").
 dispatch_message(batch_event_score, malformed, "batch_event_score requires events list").
 dispatch_message(pair_score, malformed, "pair_score requires events list").
 dispatch_message(pair_graph, malformed, "pair_graph requires events list").
