@@ -747,6 +747,1050 @@
       },
       "read_by": "opus-analyst",
       "note": "Item a of the same cool-down, 1,993 - 118, is refused by the maximality gate: the item label 'b.' immediately follows it and reads as a variable continuation."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_subtract_from_354_1",
+      "position": "student_task_statement(2)/item(1)",
+      "task": "subtract(354, 7)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 161,
+        "end_line": 162,
+        "excerpt": "Find the value of each expression in any way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "354- 7"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 171,
+        "excerpt": "1. 347.",
+        "value": "347"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 1 expression list; the markdown dropped all three expressions and the sidecar restores them. The response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_subtract_from_354_2",
+      "position": "student_task_statement(2)/item(2)",
+      "task": "subtract(354, 36)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 161,
+        "end_line": 162,
+        "excerpt": "Find the value of each expression in any way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "354- 36"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 174,
+        "excerpt": "2. 318.",
+        "value": "318"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 1 expression list; the markdown dropped all three expressions and the sidecar restores them. The response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_subtract_from_354_3",
+      "position": "student_task_statement(2)/item(3)",
+      "task": "subtract(354, 48)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 161,
+        "end_line": 162,
+        "excerpt": "Find the value of each expression in any way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "354- 48"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 194,
+        "excerpt": "3. 306.",
+        "value": "306"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 1 expression list; the markdown dropped all three expressions and the sidecar restores them. The response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_blocks_difference_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "subtract(264, 38)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 259,
+        "end_line": 260,
+        "excerpt": "Work with your partner. Find the value of each expression."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "264- 38"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 287,
+        "excerpt": "1. 226.",
+        "value": "226"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 partner list; the sidecar restores the six expressions the markdown dropped, and the response block numbers each difference to match."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_blocks_difference_2",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "subtract(274, 41)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 259,
+        "end_line": 260,
+        "excerpt": "Work with your partner. Find the value of each expression."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "274- 41"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 295,
+        "excerpt": "2. 233.",
+        "value": "233"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 partner list; the sidecar restores the six expressions the markdown dropped, and the response block numbers each difference to match."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_blocks_difference_3",
+      "position": "student_task_statement(3)/item(3)",
+      "task": "subtract(336, 115)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 259,
+        "end_line": 260,
+        "excerpt": "Work with your partner. Find the value of each expression."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "336- 115"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 310,
+        "excerpt": "3. 221.",
+        "value": "221"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 partner list; the sidecar restores the six expressions the markdown dropped, and the response block numbers each difference to match."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_blocks_difference_4",
+      "position": "student_task_statement(3)/item(4)",
+      "task": "subtract(343, 127)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 259,
+        "end_line": 260,
+        "excerpt": "Work with your partner. Find the value of each expression."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "343 - 127"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 318,
+        "excerpt": "4. 216.",
+        "value": "216"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 partner list; the sidecar restores the six expressions the markdown dropped, and the response block numbers each difference to match."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_blocks_difference_5",
+      "position": "student_task_statement(3)/item(5)",
+      "task": "subtract(485, 266)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 259,
+        "end_line": 260,
+        "excerpt": "Work with your partner. Find the value of each expression."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "485 - 266"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 328,
+        "excerpt": "5. 219.",
+        "value": "219"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 partner list; the sidecar restores the six expressions the markdown dropped, and the response block numbers each difference to match."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_blocks_difference_6",
+      "position": "student_task_statement(3)/item(6)",
+      "task": "subtract(451, 315)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 259,
+        "end_line": 260,
+        "excerpt": "Work with your partner. Find the value of each expression."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "451 - 315"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 337,
+        "excerpt": "6. 136.",
+        "value": "136"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 partner list; the sidecar restores the six expressions the markdown dropped, and the response block numbers each difference to match."
+    },
+    {
+      "lesson": "IM-G2-U7-L12",
+      "id": "g2_u7_l12_cooldown_difference",
+      "position": "student_task_statement(4)/item(1)",
+      "task": "subtract(652, 24)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "Find the value of 652- 24 . Show your thinking."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L12",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "652- 24"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson12.md",
+        "line": 392,
+        "excerpt": "628.",
+        "value": "628"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the markdown kept the sentence and dropped the expression, the sidecar restores it, and the response block opens with the difference."
+    },
+    {
+      "lesson": "IM-G2-U7-L13",
+      "id": "g2_u7_l13_diagram_difference_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "subtract(155, 26)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 283,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L13",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "155 - 26"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 313,
+        "excerpt": "1. 129.",
+        "value": "129"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 list; the sidecar restores the four expressions and each printed difference carries the prompt's item number. Item 5 asks students to share their reasoning, so it states no arithmetic."
+    },
+    {
+      "lesson": "IM-G2-U7-L13",
+      "id": "g2_u7_l13_diagram_difference_2",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "subtract(352, 71)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 283,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L13",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "352- 71"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 318,
+        "excerpt": "2. 281.",
+        "value": "281"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 list; the sidecar restores the four expressions and each printed difference carries the prompt's item number. Item 5 asks students to share their reasoning, so it states no arithmetic."
+    },
+    {
+      "lesson": "IM-G2-U7-L13",
+      "id": "g2_u7_l13_diagram_difference_3",
+      "position": "student_task_statement(3)/item(3)",
+      "task": "subtract(364, 182)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 283,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L13",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "364- 182"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 323,
+        "excerpt": "3. 182.",
+        "value": "182"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 list; the sidecar restores the four expressions and each printed difference carries the prompt's item number. Item 5 asks students to share their reasoning, so it states no arithmetic."
+    },
+    {
+      "lesson": "IM-G2-U7-L13",
+      "id": "g2_u7_l13_diagram_difference_4",
+      "position": "student_task_statement(3)/item(4)",
+      "task": "subtract(293, 147)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 283,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L13",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "293 - 147"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 329,
+        "excerpt": "4. 146.",
+        "value": "146"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 2 list; the sidecar restores the four expressions and each printed difference carries the prompt's item number. Item 5 asks students to share their reasoning, so it states no arithmetic."
+    },
+    {
+      "lesson": "IM-G2-U7-L13",
+      "id": "g2_u7_l13_cooldown_difference",
+      "position": "student_task_statement(4)/item(1)",
+      "task": "subtract(519, 236)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L13",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "Find the value of 519- 236 . Show your thinking."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L13",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "519- 236"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
+        "line": 389,
+        "excerpt": "283.",
+        "value": "283"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the sidecar restores the expression and the response block opens with the difference."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_own_way_difference_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "subtract(535, 214)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 262,
+        "end_line": 263,
+        "excerpt": "Find the value of each expression in a way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "535 - 214"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 280,
+        "excerpt": "1. 321.",
+        "value": "321"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the sidecar restores the six expressions and the response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_own_way_difference_2",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "subtract(700, 589)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 262,
+        "end_line": 263,
+        "excerpt": "Find the value of each expression in a way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "700- 589"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 287,
+        "excerpt": "2. 111.",
+        "value": "111"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the sidecar restores the six expressions and the response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_own_way_difference_3",
+      "position": "student_task_statement(3)/item(3)",
+      "task": "subtract(683, 398)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 262,
+        "end_line": 263,
+        "excerpt": "Find the value of each expression in a way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "683 - 398"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 301,
+        "excerpt": "3. 285.",
+        "value": "285"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the sidecar restores the six expressions and the response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_own_way_difference_4",
+      "position": "student_task_statement(3)/item(4)",
+      "task": "subtract(918, 608)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 262,
+        "end_line": 263,
+        "excerpt": "Find the value of each expression in a way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "918 - 608"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 310,
+        "excerpt": "4. 310.",
+        "value": "310"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the sidecar restores the six expressions and the response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_own_way_difference_5",
+      "position": "student_task_statement(3)/item(5)",
+      "task": "subtract(735, 457)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 262,
+        "end_line": 263,
+        "excerpt": "Find the value of each expression in a way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "735 - 457"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 315,
+        "excerpt": "5. 278.",
+        "value": "278"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the sidecar restores the six expressions and the response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_own_way_difference_6",
+      "position": "student_task_statement(3)/item(6)",
+      "task": "subtract(602, 487)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 262,
+        "end_line": 263,
+        "excerpt": "Find the value of each expression in a way that makes sense to you."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "602- 487"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 321,
+        "excerpt": "6. 115.",
+        "value": "115"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the sidecar restores the six expressions and the response block numbers each difference to match the prompt's items."
+    },
+    {
+      "lesson": "IM-G2-U7-L16",
+      "id": "g2_u7_l16_cooldown_chosen_difference",
+      "position": "student_task_statement(4)/item(1)/a",
+      "task": "subtract(324, 157)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 364,
+        "excerpt": "a. Choose one expression and find the value by subtracting by place. Show your thinking."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U7-L16",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "324- 157"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit7/lesson16.md",
+        "line": 381,
+        "excerpt": "difference as 167.",
+        "value": "167"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; students choose 1 of 4 expressions and the printed sample works 324 - 157 and labels its difference, so only the worked expression carries a witness. The sidecar's second copy of the grid is the one inside a marked item, which is where the citation binds."
+    },
+    {
+      "lesson": "IM-G3-U3-L10",
+      "id": "g3_u3_l10_algorithm_difference_1",
+      "position": "student_task_statement(3)/item(1)",
+      "task": "subtract(691, 358)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 232,
+        "end_line": 233,
+        "excerpt": "Try using her algorithm to find the value of each difference."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 235,
+        "excerpt": "691 - 358"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 249,
+        "excerpt": "1. 333",
+        "value": "333"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the response block prints one difference per item number. Clare's 644 - 283 in the stem is her worked example and the guide prints no value for it."
+    },
+    {
+      "lesson": "IM-G3-U3-L10",
+      "id": "g3_u3_l10_algorithm_difference_2",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "subtract(926, 584)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 232,
+        "end_line": 233,
+        "excerpt": "Try using her algorithm to find the value of each difference."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 237,
+        "excerpt": "926- 584"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 250,
+        "excerpt": "2. 342",
+        "value": "342"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity list; the response block prints one difference per item number. Clare's 644 - 283 in the stem is her worked example and the guide prints no value for it."
+    },
+    {
+      "lesson": "IM-G3-U3-L10",
+      "id": "g3_u3_l10_algorithm_difference_4",
+      "position": "student_task_statement(3)/item(4)",
+      "task": "subtract(492, 325)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 232,
+        "end_line": 233,
+        "excerpt": "Try using her algorithm to find the value of each difference."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 246,
+        "excerpt": "492- 325"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 253,
+        "excerpt": "4. 167",
+        "value": "167"
+      },
+      "read_by": "opus-analyst",
+      "note": "Item 3 of the same list, 317 - 182, is refused by the maximality gate: the page footer 'Lesson 10' is cut by the right column to a bare 'L' that lands inside item 3 and reads as a variable continuation."
+    },
+    {
+      "lesson": "IM-G3-U3-L10",
+      "id": "g3_u3_l10_cooldown_difference",
+      "position": "student_task_statement(4)/item(1)",
+      "task": "subtract(419, 267)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 284,
+        "excerpt": "Use an algorithm of your choice to find the value of"
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 284,
+        "excerpt": "419- 267"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
+        "line": 288,
+        "excerpt": "152.",
+        "value": "152"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the prompt states the expression on one markdown line and the response block opens with the difference."
+    },
+    {
+      "lesson": "IM-G3-U4-L10",
+      "id": "g3_u4_l10_cooldown_product",
+      "position": "student_task_statement(4)/item(2)",
+      "task": "multiply(6, 7)",
+      "operation": "multiplication",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G3-U4-L10",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "2. What is the value of 6 × 7?"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G3-U4-L10",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "6 × 7?"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade3/unit4/lesson10.md",
+        "line": 388,
+        "excerpt": "2. 42.",
+        "value": "42"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the markdown dropped every expression and the sidecar restores them. The citation keeps the question mark so it pins to problem 2, which is the item the printed 42 answers; problem 1's decompositions of the same product are compound expressions and are not claimed."
+    },
+    {
+      "lesson": "IM-G3-U4-L14",
+      "id": "g3_u4_l14_cooldown_product",
+      "position": "student_task_statement(4)/item(1)",
+      "task": "multiply(5, 15)",
+      "operation": "multiplication",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G3-U4-L14",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "Find the value of 5 × 15"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G3-U4-L14",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "5 × 15"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade3/unit4/lesson14.md",
+        "line": 331,
+        "excerpt": "75.",
+        "value": "75"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the sidecar restores the expression the markdown dropped and the response block opens with the product. The second half of the prompt asks how a diagram represents it, which the lane does not claim."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_1",
+      "position": "student_task_statement(4)/item(1)",
+      "task": "subtract(9, 6)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "9- 6"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 321,
+        "excerpt": "1. 3",
+        "value": "3"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_2",
+      "position": "student_task_statement(4)/item(2)",
+      "task": "subtract(10, 3)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "10- 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 323,
+        "excerpt": "2. 7",
+        "value": "7"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_3",
+      "position": "student_task_statement(4)/item(3)",
+      "task": "subtract(7, 3)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "7- 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 324,
+        "excerpt": "3. 4",
+        "value": "4"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_4",
+      "position": "student_task_statement(4)/item(4)",
+      "task": "subtract(9, 5)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "9- 5"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 326,
+        "excerpt": "4. 4",
+        "value": "4"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_5",
+      "position": "student_task_statement(4)/item(5)",
+      "task": "subtract(8, 6)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "8 - 6"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 328,
+        "excerpt": "5. 2",
+        "value": "2"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_6",
+      "position": "student_task_statement(4)/item(6)",
+      "task": "subtract(6, 5)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "6- 5"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 329,
+        "excerpt": "6. 1",
+        "value": "1"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_7",
+      "position": "student_task_statement(4)/item(7)",
+      "task": "subtract(9, 4)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "9- 4"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 330,
+        "excerpt": "7. 5",
+        "value": "5"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_activity_difference_8",
+      "position": "student_task_statement(4)/item(8)",
+      "task": "subtract(10, 7)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 300,
+        "excerpt": "Find the value of each difference."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "10- 7"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 331,
+        "excerpt": "8. 3",
+        "value": "3"
+      },
+      "read_by": "opus-analyst",
+      "note": "Activity 3 list; the sidecar restores the eight differences the markdown dropped, and the response block prints one value per item number."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_cooldown_difference_1",
+      "position": "student_task_statement(5)/item(1)",
+      "task": "subtract(9, 6)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 363,
+        "excerpt": "Find the value of the differences."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(5)"
+        },
+        "excerpt": "9- 6"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 371,
+        "excerpt": "1. 3.",
+        "value": "3"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the sidecar restores both differences and the response block prints a value per item. Span 3's two subtraction strings are not claimed: the guide prints their four values as one comma list, so keying a value to an item would be an ordering inference."
+    },
+    {
+      "lesson": "IM-G1-U3-L5",
+      "id": "g1_u3_l5_cooldown_difference_2",
+      "position": "student_task_statement(5)/item(2)",
+      "task": "subtract(10, 3)",
+      "operation": "subtraction",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 363,
+        "excerpt": "Find the value of the differences."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U3-L5",
+          "position": "student_task_statement(5)"
+        },
+        "excerpt": "10- 3"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit3/lesson5.md",
+        "line": 372,
+        "excerpt": "2. 7.",
+        "value": "7"
+      },
+      "read_by": "opus-analyst",
+      "note": "Cool-down; the sidecar restores both differences and the response block prints a value per item. Span 3's two subtraction strings are not claimed: the guide prints their four values as one comma list, so keying a value to an item would be an ordering inference."
     }
   ]
 }

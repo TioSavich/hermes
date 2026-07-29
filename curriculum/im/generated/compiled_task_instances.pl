@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(372, 1876).
+compiled_task_instance_summary(379, 1914).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -336,6 +336,26 @@ compiled_lesson_task_instance('IM-G1-U3-L27', productive-subtract(18, 14),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson27.md', lines(94, 94)), position(student_task_statement(1)/expression(2)), excerpt("18 - 14"))).
 compiled_lesson_task_instance('IM-G1-U3-L27', productive-subtract(20, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson27.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("20- 10"))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(10, 3),
+                              task_evidence(rule(g1_u3_l5_activity_difference_2), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(2)), excerpt("10- 3"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(10, 3),
+                              task_evidence(rule(g1_u3_l5_cooldown_difference_2), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(5)'))), position(student_task_statement(5)/item(2)), excerpt("10- 3"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(10, 7),
+                              task_evidence(rule(g1_u3_l5_activity_difference_8), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(8)), excerpt("10- 7"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(6, 5),
+                              task_evidence(rule(g1_u3_l5_activity_difference_6), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(6)), excerpt("6- 5"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(7, 3),
+                              task_evidence(rule(g1_u3_l5_activity_difference_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(3)), excerpt("7- 3"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(8, 6),
+                              task_evidence(rule(g1_u3_l5_activity_difference_5), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(5)), excerpt("8 - 6"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(9, 4),
+                              task_evidence(rule(g1_u3_l5_activity_difference_7), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(7)), excerpt("9- 4"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(9, 5),
+                              task_evidence(rule(g1_u3_l5_activity_difference_4), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(4)), excerpt("9- 5"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(9, 6),
+                              task_evidence(rule(g1_u3_l5_activity_difference_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)), excerpt("9- 6"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L5', productive-subtract(9, 6),
+                              task_evidence(rule(g1_u3_l5_cooldown_difference_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L5'), position('student_task_statement(5)'))), position(student_task_statement(5)/item(1)), excerpt("9- 6"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G1-U3-L6', deformation(operation_direction_reversal)-subtract(10, 3),
                               task_evidence(rule(g1_shake_spill_10_3_error), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(224, 224)), position(activity_1), excerpt("If students add 3 and 10, consider asking:"))).
 compiled_lesson_task_instance('IM-G1-U3-L6', productive-subtract(10, 3),
@@ -1054,6 +1074,36 @@ compiled_lesson_task_instance('IM-G2-U7-L10', productive-add(297, 25),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("297 + 25"))).
 compiled_lesson_task_instance('IM-G2-U7-L10', productive-add(395, 27),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("395 + 27"))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(264, 38),
+                              task_evidence(rule(g2_u7_l12_blocks_difference_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(1)), excerpt("264- 38"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(274, 41),
+                              task_evidence(rule(g2_u7_l12_blocks_difference_2), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)), excerpt("274- 41"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(336, 115),
+                              task_evidence(rule(g2_u7_l12_blocks_difference_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(3)), excerpt("336- 115"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(343, 127),
+                              task_evidence(rule(g2_u7_l12_blocks_difference_4), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(4)), excerpt("343 - 127"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(354, 36),
+                              task_evidence(rule(g2_u7_l12_subtract_from_354_2), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)), excerpt("354- 36"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(354, 48),
+                              task_evidence(rule(g2_u7_l12_subtract_from_354_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(3)), excerpt("354- 48"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(354, 7),
+                              task_evidence(rule(g2_u7_l12_subtract_from_354_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(1)), excerpt("354- 7"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(451, 315),
+                              task_evidence(rule(g2_u7_l12_blocks_difference_6), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(6)), excerpt("451 - 315"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(485, 266),
+                              task_evidence(rule(g2_u7_l12_blocks_difference_5), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(5)), excerpt("485 - 266"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(652, 24),
+                              task_evidence(rule(g2_u7_l12_cooldown_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)), excerpt("652- 24"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(155, 26),
+                              task_evidence(rule(g2_u7_l13_diagram_difference_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(1)), excerpt("155 - 26"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(293, 147),
+                              task_evidence(rule(g2_u7_l13_diagram_difference_4), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(4)), excerpt("293 - 147"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(352, 71),
+                              task_evidence(rule(g2_u7_l13_diagram_difference_2), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)), excerpt("352- 71"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(364, 182),
+                              task_evidence(rule(g2_u7_l13_diagram_difference_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(3)), excerpt("364- 182"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(519, 236),
+                              task_evidence(rule(g2_u7_l13_cooldown_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)), excerpt("519- 236"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(244, 67),
                               task_evidence(rule(g2_u7_l14_diagram_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L14'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(2)), excerpt("244- 67"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(346, 78),
@@ -1064,6 +1114,20 @@ compiled_lesson_task_instance('IM-G2-U7-L14', productive-subtract(463, 52),
                               task_evidence(rule(g2_u7_l14_cooldown_no_decompose), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L14'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)/b), excerpt("463 - 52"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L15', productive-subtract(532, 358),
                               task_evidence(rule(g2_u7_l15_corrected_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L15'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)), excerpt("532- 358"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(324, 157),
+                              task_evidence(rule(g2_u7_l16_cooldown_chosen_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)/a), excerpt("324- 157"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(535, 214),
+                              task_evidence(rule(g2_u7_l16_own_way_difference_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(1)), excerpt("535 - 214"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(602, 487),
+                              task_evidence(rule(g2_u7_l16_own_way_difference_6), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(6)), excerpt("602- 487"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(683, 398),
+                              task_evidence(rule(g2_u7_l16_own_way_difference_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(3)), excerpt("683 - 398"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(700, 589),
+                              task_evidence(rule(g2_u7_l16_own_way_difference_2), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)), excerpt("700- 589"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(735, 457),
+                              task_evidence(rule(g2_u7_l16_own_way_difference_5), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(5)), excerpt("735 - 457"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L16', productive-subtract(918, 608),
+                              task_evidence(rule(g2_u7_l16_own_way_difference_4), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(4)), excerpt("918 - 608"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L17', productive-subtract(702, 244),
                               task_evidence(rule(g2_u7_l17_chosen_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L17'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(3)/b), excerpt("702- 244"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L18', productive-subtract(34, 9),
@@ -1512,6 +1576,14 @@ compiled_lesson_task_instance('IM-G3-U2-L13', productive-add(219, 34),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U2-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("219 + 34"))).
 compiled_lesson_task_instance('IM-G3-U2-L3', productive-construct_rectangle_with_area(8),
                               task_evidence(rule(rectangle_area_construction_prompt), source('curriculum/im_teacher_guides/grade3/unit2/lesson3.md', lines(317, 319)), position(source_sequence(line(317))), excerpt("Draw a rectangle with an area of 8 square units on"))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(419, 267),
+                              task_evidence(rule(g3_u3_l10_cooldown_difference), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(284, 284)), position(student_task_statement(4)/item(1)), excerpt("419- 267"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(492, 325),
+                              task_evidence(rule(g3_u3_l10_algorithm_difference_4), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(246, 246)), position(student_task_statement(3)/item(4)), excerpt("492- 325"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(691, 358),
+                              task_evidence(rule(g3_u3_l10_algorithm_difference_1), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(235, 235)), position(student_task_statement(3)/item(1)), excerpt("691 - 358"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(926, 584),
+                              task_evidence(rule(g3_u3_l10_algorithm_difference_2), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(237, 237)), position(student_task_statement(3)/item(2)), excerpt("926- 584"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G3-U3-L11', productive-subtract(400, 200),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson11.md', lines(84, 84)), position(student_task_statement(1)/expression(1)), excerpt("400- 200"))).
 compiled_lesson_task_instance('IM-G3-U3-L11', productive-subtract(450, 200),
@@ -1610,8 +1682,12 @@ compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(428, 156),
                               task_evidence(rule(g3_lin_subtract_smaller_from_larger), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(159, 159)), position(activity_1(revise_subtraction_work_lin)), excerpt("Lin subtracted 156 from 428"))).
 compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(30, 6),
                               task_evidence(rule(g3_apples_measurement_division), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(313, 314)), position(cool_down_item(1)), excerpt("Lin has 30 apples to share with her friends."))).
+compiled_lesson_task_instance('IM-G3-U4-L10', productive-multiply(6, 7),
+                              task_evidence(rule(g3_u4_l10_cooldown_product), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U4-L10'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(2)), excerpt("6 \u00d7 7?"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G3-U4-L12', productive-multiply(6, 40),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade3/unit4/lesson12.md', lines(480, 480)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 6 \u00d7 40."))).
+compiled_lesson_task_instance('IM-G3-U4-L14', productive-multiply(5, 15),
+                              task_evidence(rule(g3_u4_l14_cooldown_product), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U4-L14'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)), excerpt("5 \u00d7 15"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G3-U4-L15', productive-multiply(6, 15),
                               task_evidence(rule(g3_area_additive_count_composite_units), source('curriculum/im_teacher_guides/grade3/unit4/lesson15.md', lines(351, 351)), position(cool_down(find_the_area)), excerpt("A rectangle is 6 feet by 15 feet."))).
 compiled_lesson_task_instance('IM-G3-U4-L16', productive-multiply(3, 10),
