@@ -2972,6 +2972,26 @@
      }
     ]
    }
+  },
+  {
+   "lesson": "IM-G6-U5-L12",
+   "intended_action": {
+    "operation": "division",
+    "kind": "long_division"
+   },
+   "alternative": "sum_dividend_and_divisor",
+   "material_incompatibility": "The lesson requires using long division to find a quotient, while the alternative replaces this process with a sum of the dividend and divisor.",
+   "source_kind": "vision_digest",
+   "source": {
+    "kind": "fact",
+    "path": "curriculum/im/generated/vision_lesson_digest.pl",
+    "fragments": [
+     {
+      "predicate": "vision_lesson_goal",
+      "text": "Use long division to divide whole numbers that result in a quotient with a decimal"
+     }
+    ]
+   }
   }
  ]
 }

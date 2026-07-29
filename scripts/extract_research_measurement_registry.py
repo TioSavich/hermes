@@ -295,8 +295,8 @@ def render_registry() -> str:
     # 63 until 2026-07-28 evening, which added the account of what refusals are
     # for: the carving of refused spans into kinds that differ in what should
     # happen to them.
-    if len(reports) != 67:
-        raise RuntimeError(f"expected 67 top-level research reports, found {len(reports)}")
+    if len(reports) != 68:
+        raise RuntimeError(f"expected 68 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
