@@ -121,8 +121,9 @@ def enumerate_misconceptions() -> list[dict[str, Any]]:
         name = str(row["name"]).strip()
         domain = str(row["domain"]).strip()
         citation = str(row.get("citation", "")).strip()
+        db_row = str(row.get("source", "")).strip()
         identity_text = json.dumps(
-            [domain, name, citation], ensure_ascii=False, separators=(",", ":")
+            [db_row, domain, name, citation], ensure_ascii=False, separators=(",", ":")
         )
         entries.append(
             {
@@ -130,6 +131,7 @@ def enumerate_misconceptions() -> list[dict[str, Any]]:
                     f"{domain}:{name}:"
                     f"{hashlib.sha256(identity_text.encode('utf-8')).hexdigest()[:12]}"
                 ),
+                "db_row": db_row if db_row.startswith("db_row(") else "",
                 "name": name,
                 "domain": domain,
                 "description": name,

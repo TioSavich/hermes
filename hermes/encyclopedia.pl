@@ -38,6 +38,9 @@
        strategy_catalog_dict/1,         % -Dict
        strategy_trace_dict/3,           % +StrategyName, +InputDict, -Dict
        misconception_catalog_dict/2,    % +Filter, -Dict
+       misconception_rule/2,            % +Match, -Rule
+       misconception_diagnosable/1,     % +Rule
+       source_citation_text/2,          % +Source, -CitationGloss
        standards_catalog_dict/2,        % +Filter, -Dict
        grounding_catalog_dict/1,        % -Dict
        grounding_for_operation_dict/2,  % +Operation, -Dict
@@ -592,6 +595,7 @@ query_misconception_safe(Filter, Filter, Desc, Source, Match) :-
 misconception_entry_dict(Domain, Desc, Source, Match, _{
         domain: DomStr,
         name: NameStr,
+        source: SourceStr,
         rule: RuleStr,
         diagnosable: Diagnosable,
         citation: CitationStr,
@@ -599,6 +603,7 @@ misconception_entry_dict(Domain, Desc, Source, Match, _{
     }) :-
     term_text_string(Domain, DomStr),
     term_text_string(Desc, NameStr),
+    term_text_string(Source, SourceStr),
     misconception_rule(Match, Rule),
     term_text_string(Rule, RuleStr),
     ( misconception_diagnosable(Rule) -> Diagnosable = true ; Diagnosable = false ),

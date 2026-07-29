@@ -2860,10 +2860,18 @@ monitoring_chart_export_dict(Code, Dict) :-
 
 resonant_misconception_export_dict(
         resonant_misconception(Name, Domain, Citation, Score),
-        _{name: NameText, domain: DomainText, citation: CitationText, score: Score}) :-
+        _{name: NameText, domain: DomainText, citation: CitationText,
+          gloss: CitationText, diagnosable: Diagnosable, status: Status,
+          score: Score}) :-
     term_to_text(Name, NameText),
     term_to_text(Domain, DomainText),
-    term_to_text(Citation, CitationText).
+    term_to_text(Citation, CitationText),
+    (   Name == too_vague
+    ->  Diagnosable = false,
+        Status = "documented in the research corpus; not yet reconstructible as a runnable case model"
+    ;   Diagnosable = true,
+        Status = "runnable case model registered"
+    ).
 
 %! state_vocabulary_dispatch_dict(+State, -Dict) is det.
 %
@@ -3678,7 +3686,16 @@ diagnose_and_format(Domain, Input, Got, SafeMatch) :-
 
 query_and_format(Domain, Description, Source, SafeMatch) :-
     test_harness:query_misconception(Domain, Description, Source, Match),
-    json_safe(Match, SafeMatch).
+    encyclopedia:source_citation_text(Source, Gloss),
+    encyclopedia:misconception_rule(Match, Rule),
+    (   encyclopedia:misconception_diagnosable(Rule)
+    ->  Diagnosable = true,
+        Status = "runnable case model registered"
+    ;   Diagnosable = false,
+        Status = "documented in the research corpus; not yet reconstructible as a runnable case model"
+    ),
+    Enriched = _{gloss: Gloss, status: Status, diagnosable: Diagnosable}.put(Match),
+    json_safe(Enriched, SafeMatch).
 
 % =============================================================================
 % Gate-G op support: brandomian_check, hyperedges, axiom_toggle helpers.

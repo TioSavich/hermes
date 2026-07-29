@@ -1728,7 +1728,15 @@ function renderEncStats(section, r) {
 
 function renderMisconceptionResonance(results) {
   if (!results.length) return "<p class='muted-inline'>No indexed rows were returned.</p>";
-  return results.map(result => `<div class="enc-group"><b>${esc(result.name)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(result.description)}<br><span class="muted-inline">${esc(result.citation)}</span></div>`).join('');
+  return results.map(result => {
+    const documentedOnly = result.diagnosable === "false" || result.diagnosable === false;
+    const heading = documentedOnly ? (result.gloss || result.citation || 'Documented error') : result.name;
+    const detail = documentedOnly
+      ? `${result.status || 'documented in the research corpus'} · registry label: ${result.name}`
+      : result.description;
+    const citation = documentedOnly ? '' : result.citation;
+    return `<div class="enc-group"><b>${esc(heading)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(detail)}<br><span class="muted-inline">${esc(citation)}</span></div>`;
+  }).join('');
 }
 
 async function searchMisconceptionResonance() {

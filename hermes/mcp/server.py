@@ -77,8 +77,8 @@ CORE_TOOLS = (
     ("strategy_recognize", "Align ordinary classroom language to five execution-observed strategy traces. Results are candidates with token spans, missing evidence, trace frontier, order conflicts, and observed-transition provenance; an empty list is an abstention.", ("content",)),
     ("strategy_trace", "Run one registered strategy with an optional input object. The schema lists the registry-backed names, operation pairing, and worked inputs. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
     ("misconception_lookup", "Look up encoded misconceptions by optional domain, description, or source filters. Results are paged; use limit and offset to move through the matched rows.", ("domain", "description", "source", "limit", "offset")),
-    ("misconception_search_rows", "Search stored misconception rows offline by whole query words in their name, domain, description, or citation. All query words must be present. Use a returned name with resonance_neighbors.", ("query", "k")),
-    ("resonance_neighbors", "Find neighbors of a named stored misconception vector. This uses only the stored row vector; it never makes a query-embedding network call.", ("name", "k")),
+    ("misconception_search_rows", "Search stored misconception rows offline by whole query words in their name, domain, description, or citation. All query words must be present. Returned rows carry a db_row identity for resonance_neighbors.", ("query", "k")),
+    ("resonance_neighbors", "Find neighbors of one stored misconception vector. Prefer the returned db_row identity; name remains a display label and is accepted only when unambiguous. This uses only stored row vectors; it never makes a query-embedding network call.", ("db_row", "name", "k")),
     ("incompatibility_entailments", "Check one proposed replacement/replaced pair against the live finite incompatibility profiles. It reports entailment, equivalence when both directions hold, or an honest unresolved status, with its witnessing contexts. This is earned over a thin corpus and is distinct from the strict generated register; see docs/research/2026-07-28-why-entailment-does-not-move.md.", ("replacement", "replaced")),
     ("incompatibility_profile", "Return the size-3-or-more minimal incompatible sets containing one content term, with its partners and provenance. Declared binary seed pairs are outside this inventory; use incompatibility_entailments for a specified replacement/replaced pair.", ("content",)),
 )
@@ -567,9 +567,12 @@ class HermesMCPServer:
         return {"lesson_code": chart.get("lesson_code", chart.get("code", code)), "id": identifier, "data": item}
 
     def resonance_neighbors(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        db_row = arguments.get("db_row")
         name = arguments.get("name")
-        if not isinstance(name, str) or not name.strip():
-            raise ValueError("resonance_neighbors requires a stored misconception name")
+        if db_row is not None and (not isinstance(db_row, str) or not db_row.strip()):
+            raise ValueError("resonance_neighbors db_row must be a non-empty stored row identity")
+        if db_row is None and (not isinstance(name, str) or not name.strip()):
+            raise ValueError("resonance_neighbors requires a stored misconception db_row identity or an unambiguous name")
         try:
             limit = int(arguments.get("k", 5))
         except (TypeError, ValueError) as exc:
@@ -582,12 +585,25 @@ class HermesMCPServer:
                 f"Offline artifacts {', '.join(EMBEDDING_ARTIFACTS)} are unavailable or invalid; run {EMBEDDING_REBUILD}",
                 kind="worker_failure",
             )
-        source_index = next((i for i, entry in enumerate(index.entries) if entry["name"] == name), None)
+        if isinstance(db_row, str):
+            source_index = next((i for i, entry in enumerate(index.entries) if entry["db_row"] == db_row), None)
+            query_identity = db_row
+        else:
+            named = [i for i, entry in enumerate(index.entries) if entry["name"] == name]
+            if len(named) != 1:
+                raise ValueError(f"stored misconception name {name!r} is ambiguous; pass a db_row returned by misconception_search_rows")
+            source_index = named[0]
+            query_identity = index.entries[source_index]["db_row"] or index.entries[source_index]["misconception_id"]
         if source_index is None:
-            raise ValueError(f"no stored misconception vector named {name!r}")
+            raise ValueError(f"no stored misconception vector has db_row {db_row!r}")
         matches = cosine_matches(index, list(index.vectors[source_index]), limit=min(limit + 1, len(index.entries)))
-        neighbors = [row for row in matches if row["name"] != name][:limit]
-        return {"retrieval": "stored_vector", "query_name": name, "model": index.model, "neighbors": neighbors}
+        neighbors = [
+            row for row in matches
+            if (row["db_row"] or row["misconception_id"]) != query_identity
+        ][:limit]
+        return {"retrieval": "stored_vector", "query_name": index.entries[source_index]["name"],
+                "query_db_row": index.entries[source_index]["db_row"],
+                "model": index.model, "neighbors": neighbors}
 
     def misconception_search_rows(self, arguments: dict[str, Any]) -> dict[str, Any]:
         query = arguments.get("query")

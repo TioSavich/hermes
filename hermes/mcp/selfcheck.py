@@ -65,6 +65,26 @@ CHECKS = (
         accepts=lambda value: isinstance(value, dict) and bool(value.get("minimal_sets")),
         fix="Pass the exact content-term text recorded in a size-3-or-more hyperedge; binary declared seed pairs are not in this inventory.",
     ),
+    Check(
+        label="misconception_lookup retains the documented-only row gloss and status",
+        tool="misconception_lookup",
+        arguments={"domain": "whole_number", "source": "db_row(37492)", "limit": 1},
+        accepts=lambda value: isinstance(value, dict)
+        and bool(value.get("rows"))
+        and bool(value["rows"][0].get("gloss"))
+        and bool(value["rows"][0].get("status")),
+        fix="Confirm that the worker loaded the encyclopedia citation join and that db_row(37492) remains in the registry.",
+    ),
+    Check(
+        label="resonance_neighbors keeps distinct db_row identities",
+        tool="resonance_neighbors",
+        arguments={"db_row": "db_row(37492)", "k": 5},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("query_db_row") == "db_row(37492)"
+        and len({row.get("db_row") for row in value.get("neighbors", [])}) == len(value.get("neighbors", []))
+        and all(row.get("db_row") != "db_row(37492)" for row in value.get("neighbors", [])),
+        fix="Use the db_row identity returned by misconception_search_rows; row names are not unique.",
+    ),
 )
 
 

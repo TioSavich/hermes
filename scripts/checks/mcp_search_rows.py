@@ -46,6 +46,10 @@ def main() -> int:
         present = server.misconception_search_rows({"query": "ratio", "k": 3})
         assert present["count"] > 0 and present["rows"]
         assert all(row_matches_query("ratio", row) for row in present["rows"])
+        documented = server.misconception_search_rows({"query": "zero exempt", "k": 3})
+        assert documented["rows"]
+        assert all(row["gloss"] and row["status"] and row["db_row"] for row in documented["rows"])
+        assert documented["rows"][0]["name"] == "too_vague"
     finally:
         server.close()
     print("mcp search rows: empty-token and whole-word fixtures PASS")

@@ -676,16 +676,18 @@ trace.</p>
         domain.textContent = m.domain || '';
         head.appendChild(domain);
         head.appendChild(document.createTextNode(' '));
+        var documentedOnly = m.diagnosable === false;
         var name = document.createElement('b');
-        name.textContent = m.name || 'Documented error';
+        name.textContent = documentedOnly ? (m.gloss || m.citation || 'Documented error') : (m.name || 'Documented error');
         head.appendChild(name);
-        if (m.citation) {
+        if (!documentedOnly && m.citation) {
           var cite = document.createElement('span');
           cite.className = 'cite';
           cite.textContent = ' ' + m.citation;
           head.appendChild(cite);
         }
         card.appendChild(head);
+        if (documentedOnly) card.appendChild(noteP((m.status || 'documented in the research corpus') + ' · registry label: ' + (m.name || 'too_vague')));
         if (typeof m.score === 'number') card.appendChild(noteP('resonance score: ' + m.score));
         box.appendChild(card);
       });

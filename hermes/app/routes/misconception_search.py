@@ -5,6 +5,7 @@ import array
 import json
 import math
 import os
+import re
 import struct
 import sys
 import urllib.error
@@ -28,6 +29,36 @@ class EmbeddingIndex:
     model: str
 
 
+DB_ROW = re.compile(r"(?:\(db row |literature DB row )(\d+)\)?$")
+
+
+def indexed_entry(entry: dict[str, Any]) -> dict[str, str]:
+    """Normalize a stored row without changing its frozen embedding vector."""
+    citation = str(entry.get("citation", ""))
+    db_row = str(entry.get("db_row", ""))
+    if not db_row:
+        match = DB_ROW.search(citation)
+        db_row = f"db_row({match.group(1)})" if match else ""
+    name = str(entry.get("name", ""))
+    diagnosable = "false" if name == "too_vague" else "true"
+    status = (
+        "documented in the research corpus; not yet reconstructible as a runnable case model"
+        if diagnosable == "false"
+        else "runnable case model registered"
+    )
+    return {
+        "misconception_id": str(entry.get("misconception_id", "")),
+        "db_row": db_row,
+        "name": name,
+        "domain": str(entry.get("domain", "")),
+        "description": str(entry.get("description", "")),
+        "citation": citation,
+        "gloss": str(entry.get("gloss", citation)),
+        "diagnosable": diagnosable,
+        "status": status,
+    }
+
+
 def _read_npy(raw: bytes) -> tuple[tuple[float, ...], ...]:
     if raw[:8] != b"\x93NUMPY\x01\x00": raise ValueError("vectors.npy is not a supported NumPy v1 file")
     header_length = struct.unpack("<H", raw[8:10])[0]
@@ -48,7 +79,7 @@ def load_index(repo_root: Path) -> EmbeddingIndex | None:
         with zipfile.ZipFile(repo_root / "data/research/misconception_embeddings.npz") as archive: vectors = _read_npy(archive.read("vectors.npy"))
         entries = artifact["entries"]
         if not isinstance(entries, list) or not entries or len(entries) != len(vectors): return None
-        cleaned = tuple({key: str(entry.get(key, "")) for key in ("name", "domain", "description", "citation")} for entry in entries if isinstance(entry, dict))
+        cleaned = tuple(indexed_entry(entry) for entry in entries if isinstance(entry, dict))
         norms = tuple(math.sqrt(sum(value * value for value in vector)) for vector in vectors)
         if len(cleaned) != len(vectors) or any(norm == 0 for norm in norms): return None
         return EmbeddingIndex(cleaned, vectors, norms, str(artifact["model"]))

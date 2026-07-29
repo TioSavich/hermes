@@ -97,6 +97,8 @@ def main() -> int:
         request(19, "incompatibility_profile", {}),
         request(20, "incompatibility_entailments", {"replacement": "o(context(the_expansion_repeats_periodically))"}),
         request(21, "misconception_lookup", {"limit": 5.5}),
+        request(22, "misconception_lookup", {"domain": "whole_number", "source": "db_row(37492)", "limit": 1}),
+        request(23, "resonance_neighbors", {"db_row": "db_row(37492)", "k": 5}),
     ]
     responses = run("core", messages)
     by_id = {response.get("id"): response for response in responses}
@@ -134,6 +136,14 @@ def main() -> int:
     assert by_id[19]["error"]["data"]["kind"] == "malformed_input" and "requires a content term string" in by_id[19]["error"]["message"]
     assert by_id[20]["error"]["data"]["kind"] == "malformed_input" and "requires replacement and replaced term strings" in by_id[20]["error"]["message"]
     assert by_id[21]["error"]["code"] == -32602 and "limit" in by_id[21]["error"]["message"]
+    documented = tool_value(by_id[22])
+    assert documented["rows"] and documented["rows"][0]["description"] == "too_vague"
+    assert documented["rows"][0]["gloss"] and documented["rows"][0]["status"]
+    assert by_id[22]["result"]["structuredContent"] == documented
+    neighbors = tool_value(by_id[23])
+    identities = [row["db_row"] for row in neighbors["neighbors"]]
+    assert neighbors["query_db_row"] == "db_row(37492)"
+    assert len(identities) == len(set(identities)) and "db_row(37492)" not in identities
     monitoring_views = exercise_monitoring_views()
 
     bundle_results: dict[str, list[str]] = {}
