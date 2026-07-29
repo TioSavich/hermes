@@ -3,13 +3,11 @@
 % claim is made.
 /** <module> A-fortiori context-closure automaton boundary
  *
- * The closure source records two strict input-class inclusions.  They concern
- * divisor magnitude and decimal-expansion periodicity.  The loaded gap and
- * decimal viability automata decide different classes: their output contexts
- * are checked here on a coinciding and a diverging input each.  The check then
- * proves that neither endpoint of a shipped closure nesting is emitted by
- * those automata.  Consequently this battery does not upgrade either asserted
- * warrant to an automaton certificate.
+ * The closure source records reviewed strict input-class inclusions. The loaded
+ * gap and decimal viability automata decide different classes. Their output
+ * contexts are checked here on a coinciding and a diverging input each. The
+ * scale-loss row is explicit: its narrow endpoint is automaton-checked while
+ * its broad endpoint has no decider, so the inclusion remains asserted.
  *
  * Run: swipl -q -l paths.pl -s scripts/checks/a_fortiori_context_closure_automaton_battery.pl -g main -t halt
  */
@@ -26,7 +24,7 @@ main :-
                 DecimalCoinciding, DecimalDiverging,
                 OperationCoinciding, OperationDiverging],
     closure_statuses(Observed),
-    format("PASS a-fortiori automaton battery: no shipped nesting is automaton-certified~n"),
+    format("PASS a-fortiori automaton battery: no shipped nesting has a certified inclusion~n"),
     format("  gap inputs 1/3 vs 1/4, then 5/6 vs 7/8: ~w, ~w~n",
            [GapCoinciding, GapDiverging]),
     format("  decimal-order inputs 0.1 vs 0.2, then 0.8 vs 0.14: ~w, ~w~n",
@@ -70,9 +68,19 @@ outcome_viability(action_outcome(_, Fields), Viability) :-
 
 closure_statuses(Observed) :-
     forall(a_fortiori_context_nesting(Narrow, Broad, Status, Warrant),
-           ( Status == asserted,
-             \+ memberchk(Narrow, Observed),
-             \+ memberchk(Broad, Observed),
-             format("  ~w subset ~w: ~w (~w); no deciding automaton loaded~n",
-                    [Narrow, Broad, Status, Warrant])
-           )).
+           closure_status(Narrow, Broad, Status, Warrant, Observed)).
+
+closure_status(written_numeral_order_diverges_from_decimal_value_order,
+               the_numerals_carry_different_place_counts, asserted, Warrant,
+               Observed) :-
+    !,
+    memberchk(written_numeral_order_diverges_from_decimal_value_order, Observed),
+    \+ memberchk(the_numerals_carry_different_place_counts, Observed),
+    format("  written-numeral subset different-place-count: asserted (~w); narrow endpoint reimplementation certified only~n",
+           [Warrant]).
+closure_status(Narrow, Broad, Status, Warrant, Observed) :-
+    Status == asserted,
+    \+ memberchk(Narrow, Observed),
+    \+ memberchk(Broad, Observed),
+    format("  ~w subset ~w: ~w (~w); no deciding automaton loaded~n",
+           [Narrow, Broad, Status, Warrant]).

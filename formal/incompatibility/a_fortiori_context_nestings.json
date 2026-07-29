@@ -11,6 +11,70 @@
       "automaton": "unavailable"
     },
     {
+      "narrow": "the_divisor_is_not_a_whole_number",
+      "broad": "the_divisor_is_not_one",
+      "status": "asserted",
+      "warrant": "arithmetic_integer_exclusion",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md: every nonzero non-whole divisor differs from 1; the narrow class retains four native rules.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "the_divisor_lies_between_zero_and_one",
+      "broad": "the_divisor_is_not_one",
+      "status": "asserted",
+      "warrant": "arithmetic_open_interval_exclusion",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md under the reviewed open-interval reading: 0 < divisor < 1 excludes divisor = 1; the narrow class retains two native rules.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "the_divisor_is_a_power_of_five",
+      "broad": "the_divisor_is_not_ten",
+      "status": "asserted",
+      "warrant": "power_of_five_excludes_ten",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md: for k >= 1, 5^k is a whole divisor and is never 10; the narrow class retains one native rule.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "the_divisor_is_a_power_of_five",
+      "broad": "the_divisor_is_not_one",
+      "status": "asserted",
+      "warrant": "positive_power_of_five_excludes_one",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md: the reviewed class begins at 5^1, so no member equals 1; the narrow class retains one native rule.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "fraction_part_numeral_order_diverges_within_equal_integer_parts",
+      "broad": "fraction_part_numeral_order_diverges_from_value_order",
+      "status": "asserted",
+      "warrant": "equal_integer_part_fraction_order_sweep",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md: with equal integer parts, every disagreement between fractional-digit numeral order and value order is already a disagreement for the plain fractional-digit rule; the narrow class retains one native rule.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "numeral_length_order_inverts_decimal_value_order",
+      "broad": "the_numerals_carry_different_place_counts",
+      "status": "asserted",
+      "warrant": "decimal_place_count_inversion_sweep",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md: a strict reversal by fractional-place count requires unequal place counts; the narrow class retains one native triple, deduplicated from three codings.",
+      "automaton": "unavailable"
+    },
+    {
+      "narrow": "written_numeral_order_diverges_from_decimal_value_order",
+      "broad": "the_numerals_carry_different_place_counts",
+      "status": "asserted",
+      "warrant": "decimal_scale_loss_reimplementation_agreement",
+      "basis": "The Python reimplementation agrees with smr_decimal_fraction_compare:run_decimal_scale_loss_compare/7 on all 7,474 ordered unequal-value inputs with scales 10, 100, and 1000 and numerators 1..29; equal scales make written-numeral and exact value order coincide. The broad endpoint has no decider, so the inclusion remains asserted; the narrow class retains one native rule.",
+      "automaton": "certified_narrow_endpoint_reimplementation"
+    },
+    {
+      "narrow": "a_factor_lies_between_zero_and_one",
+      "broad": "a_factor_is_a_non_integer_decimal",
+      "status": "asserted",
+      "warrant": "finite_decimal_interval_exclusion",
+      "basis": "Measured in docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md over finite written decimal multiplication inputs: a factor strictly between 0 and 1 is a non-whole decimal factor; the narrow class retains two native rules.",
+      "automaton": "unavailable"
+    },
+    {
       "narrow": "the_expansion_repeats_periodically",
       "broad": "the_expansion_does_not_terminate",
       "status": "asserted",

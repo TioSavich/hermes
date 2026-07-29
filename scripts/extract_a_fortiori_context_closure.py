@@ -25,6 +25,12 @@ ROOT = Path(__file__).resolve().parents[1]
 NESTINGS = ROOT / "formal" / "incompatibility" / "a_fortiori_context_nestings.json"
 ERROR_CACHE = ROOT / "formal" / "incompatibility" / "incompatibility_sets_error_rules.pl"
 OUTPUT = ROOT / "formal" / "incompatibility" / "incompatibility_sets_a_fortiori_context_closure.pl"
+AUTOMATON_STATUSES = {
+    "unavailable",
+    "probed_narrow_endpoint_only",
+    "certified_narrow_endpoint_reimplementation",
+    "certified_nesting",
+}
 
 FACT = re.compile(
     r"incompatibility_sets:discovered_set_fact\(defeasible_inference, "
@@ -43,8 +49,40 @@ def load_error_triples() -> list[dict[str, str]]:
     return triples
 
 
-def load_nestings(contexts: set[str]) -> list[dict[str, str]]:
-    payload = json.loads(NESTINGS.read_text(encoding="utf-8"))
+def nesting_cycle(rows: list[dict[str, str]]) -> list[str] | None:
+    """Return one declared directed cycle, if the nesting graph has one."""
+    adjacency: dict[str, list[str]] = {}
+    for row in rows:
+        adjacency.setdefault(row["narrow"], []).append(row["broad"])
+        adjacency.setdefault(row["broad"], [])
+    for neighbours in adjacency.values():
+        neighbours.sort()
+
+    active: list[str] = []
+    seen: set[str] = set()
+
+    def visit(node: str) -> list[str] | None:
+        if node in active:
+            return active[active.index(node):] + [node]
+        if node in seen:
+            return None
+        seen.add(node)
+        active.append(node)
+        for neighbour in adjacency[node]:
+            cycle = visit(neighbour)
+            if cycle:
+                return cycle
+        active.pop()
+        return None
+
+    for start in sorted(adjacency):
+        cycle = visit(start)
+        if cycle:
+            return cycle
+    return None
+
+
+def load_nestings_payload(payload: dict[str, object], contexts: set[str]) -> list[dict[str, str]]:
     if payload.get("schema_version") != 1:
         raise SystemExit("unsupported a-fortiori nesting schema")
     rows = payload.get("nestings")
@@ -63,19 +101,50 @@ def load_nestings(contexts: set[str]) -> list[dict[str, str]]:
             raise SystemExit(f"nesting is reflexive or duplicated: {pair!r}")
         if pair[0] not in contexts or pair[1] not in contexts:
             raise SystemExit(f"nesting names a context absent from the generated error-rule cache: {pair!r}")
-        if row["status"] != "asserted" or row["automaton"] != "unavailable":
-            raise SystemExit("only reviewed asserted nestings without a deciding automaton may be emitted here")
+        if row["status"] != "asserted":
+            raise SystemExit("only reviewed asserted nestings may be emitted here")
+        if row["automaton"] not in AUTOMATON_STATUSES:
+            raise SystemExit(f"unsupported a-fortiori automaton status: {row['automaton']!r}")
         seen.add(pair)
         checked.append({field: row[field] for field in required})
+    cycle = nesting_cycle(checked)
+    if cycle:
+        raise SystemExit(f"a-fortiori nesting graph contains directed cycle: {' -> '.join(cycle)}")
     return sorted(checked, key=lambda row: (row["narrow"], row["broad"]))
+
+
+def load_nestings(contexts: set[str]) -> list[dict[str, str]]:
+    return load_nestings_payload(json.loads(NESTINGS.read_text(encoding="utf-8")), contexts)
+
+
+def strictness_guard(triples: list[dict[str, str]], nestings: list[dict[str, str]]) -> None:
+    """Require the native narrow edge that keeps each closure entailment strict."""
+    # load_nestings_payload already requires both endpoints to occur in the
+    # source cache. Keep this independent check at the semantic boundary: if
+    # endpoint validation changes, a narrow class with no native edge must not
+    # turn a strict nesting into a false equivalence.
+    native_counts: dict[str, int] = {}
+    for triple in triples:
+        native_counts[triple["context"]] = native_counts.get(triple["context"], 0) + 1
+    for nesting in nestings:
+        narrow = nesting["narrow"]
+        broad = nesting["broad"]
+        if native_counts.get(narrow, 0) < 1:
+            raise SystemExit(
+                "strictness guard: narrow context retains no native error-rule triple "
+                f"for declared nesting {narrow} -> {broad}"
+            )
+        if native_counts.get(broad, 0) < 1:
+            raise SystemExit(
+                "strictness guard: broad context has no native error-rule triple "
+                f"for declared nesting {narrow} -> {broad}"
+            )
 
 
 def closure_rows(triples: list[dict[str, str]], nestings: list[dict[str, str]]) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for nesting in nestings:
         broad_rows = [row for row in triples if row["context"] == nesting["broad"]]
-        if not broad_rows:
-            raise SystemExit(f"broad context has no error-rule triples: {nesting['broad']}")
         for source in broad_rows:
             rows.append({
                 "inference": source["inference"],
@@ -101,8 +170,10 @@ HEADER = """% PURPOSE: Checked a-fortiori closure triples for reviewed strict co
 % subclass. The accompanying nesting facts retain their epistemic status.
 %
 % PROVENANCE: formal/incompatibility/a_fortiori_context_nestings.json and the generated
-% error-rule cache. The source rows are asserted with named mathematical
-% warrants because no loaded automaton decides either side of these inclusions.
+% error-rule cache. The source rows are asserted with named input-class
+% warrants. A narrow-endpoint reimplementation can be checked against an
+% automaton without certifying the inclusion; certification of a nesting still
+% requires a decider for both endpoints and their input-class relation.
 %
 % Generated by scripts/extract_a_fortiori_context_closure.py -- do not hand-edit.
 """
@@ -144,21 +215,49 @@ def compare(expected: str) -> int:
     return 1
 
 
+def automaton_counts(nestings: list[dict[str, str]]) -> tuple[int, int, int]:
+    certified_nestings = sum(row["automaton"] == "certified_nesting" for row in nestings)
+    certified_endpoints = sum(row["automaton"] == "certified_narrow_endpoint_reimplementation" for row in nestings)
+    probed_endpoints = sum(row["automaton"] == "probed_narrow_endpoint_only" for row in nestings)
+    return certified_nestings, certified_endpoints, probed_endpoints
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the generated closure cache is stale")
+    parser.add_argument("--selftest", action="store_true", help="exercise sealed negative validation fixtures")
     arguments = parser.parse_args()
+    if arguments.selftest:
+        fixture = {
+            "schema_version": 1,
+            "nestings": [
+                {"narrow": "alpha", "broad": "beta", "status": "asserted", "warrant": "fixture", "basis": "fixture", "automaton": "unavailable"},
+                {"narrow": "beta", "broad": "alpha", "status": "asserted", "warrant": "fixture", "basis": "fixture", "automaton": "unavailable"},
+            ],
+        }
+        try:
+            load_nestings_payload(fixture, {"alpha", "beta"})
+        except SystemExit as error:
+            expected = "a-fortiori nesting graph contains directed cycle: alpha -> beta -> alpha"
+            if str(error) != expected:
+                raise
+            print(f"PASS a-fortiori closure selftest: {error}")
+            return 0
+        raise SystemExit("a-fortiori closure selftest failed: synthetic cycle was accepted")
     triples = load_error_triples()
     nestings = load_nestings({row["context"] for row in triples})
+    strictness_guard(triples, nestings)
     rows = closure_rows(triples, nestings)
     artifact = render(nestings, rows)
     if arguments.check:
         status = compare(artifact)
         if not status:
-            print(f"a-fortiori context closure current: nestings={len(nestings)}; closure_triples={len(rows)}; asserted={len(nestings)}; automaton_certified=0")
+            certified, endpoint_certified, probed = automaton_counts(nestings)
+            print(f"a-fortiori context closure current: nestings={len(nestings)}; closure_triples={len(rows)}; asserted={len(nestings)}; automaton_certified={certified}; automaton_endpoint_certified={endpoint_certified}; automaton_probed={probed}")
         return status
     OUTPUT.write_text(artifact, encoding="utf-8")
-    print(f"a-fortiori context closure written: nestings={len(nestings)}; closure_triples={len(rows)}; asserted={len(nestings)}; automaton_certified=0")
+    certified, endpoint_certified, probed = automaton_counts(nestings)
+    print(f"a-fortiori context closure written: nestings={len(nestings)}; closure_triples={len(rows)}; asserted={len(nestings)}; automaton_certified={certified}; automaton_endpoint_certified={endpoint_certified}; automaton_probed={probed}")
     return 0
 
 
