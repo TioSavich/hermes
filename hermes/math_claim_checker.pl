@@ -574,6 +574,71 @@ checked_dict(Claim, Checker, Verdict, Trace,
              _{ status: "domain_checked", claim: Claim, checker: Checker,
                 verdict: Verdict, adjudication: Verdict, trace: Trace }).
 
+%!  exactly_equal(+Left, +Right) is semidet.
+%
+%   Whether two arithmetic expressions denote the same number.
+%
+%   Floating-point =:=/2 answers this question wrongly for the decimals and
+%   unit fractions the curriculum is written in. `1 - 0.07` evaluates to
+%   0.9299999999999999 and `8/12 + 3/12 + 9/12 + 4/12` to 1.9999999999999998,
+%   so a checker comparing floats refutes true statements and reports a
+%   confident trace while doing it. Nothing internal to the pipeline can catch
+%   that: the reader and the check evaluate the same expression the same way.
+%   The teacher guides caught it from outside — every disagreement between the
+%   guides' printed True/False and this checker was one of these.
+%
+%   The repair evaluates the leaves exactly and computes upward. Rationalizing
+%   the *result* would not do: 1.9999999999999998 is not near a simple
+%   fraction, and only the literals carry the decimal the author wrote.
+%   Expressions this cannot evaluate exactly — anything outside +, -, *, / over
+%   numbers — fall back to the float comparison rather than abstaining, so the
+%   accepted domain is unchanged and only its precision moves.
+exactly_equal(Left, Right) :-
+    (   exact_value(Left, LeftValue),
+        exact_value(Right, RightValue)
+    ->  LeftValue =:= RightValue
+    ;   catch(Left =:= Right, _, fail)
+    ).
+
+%!  exact_value(+Expression, -Value) is semidet.
+%
+%   Value is Expression as an integer or rational. A float literal becomes the
+%   simplest rational sharing its representation, which is the decimal the
+%   author wrote: rationalize(0.07) is 7/100, where rational(0.07) is the
+%   binary artefact 1261007895663739/18014398509481984.
+exact_value(Expression, Expression) :-
+    rational(Expression),
+    !.
+exact_value(Expression, Value) :-
+    float(Expression),
+    !,
+    Value is rationalize(Expression).
+exact_value(Left + Right, Value) :-
+    !,
+    exact_value(Left, LeftValue),
+    exact_value(Right, RightValue),
+    Value is LeftValue + RightValue.
+exact_value(Left - Right, Value) :-
+    !,
+    exact_value(Left, LeftValue),
+    exact_value(Right, RightValue),
+    Value is LeftValue - RightValue.
+exact_value(Left * Right, Value) :-
+    !,
+    exact_value(Left, LeftValue),
+    exact_value(Right, RightValue),
+    Value is LeftValue * RightValue.
+exact_value(Left / Right, Value) :-
+    !,
+    exact_value(Left, LeftValue),
+    exact_value(Right, RightValue),
+    RightValue =\= 0,
+    Value is LeftValue rdiv RightValue.
+exact_value(-Expression, Value) :-
+    !,
+    exact_value(Expression, Inner),
+    Value is -Inner.
+
 swi_arithmetic_profile(Left, Right, Dict) :-
     format(string(ClaimStr), "~w = ~w", [Left, Right]),
     (   \+ ground(arithmetic_equation(Left, Right))
@@ -583,7 +648,7 @@ swi_arithmetic_profile(Left, Right, Dict) :-
                   verdict: "not_checked",
                   adjudication: "underdetermined",
                   reason: "arithmetic equation contains unbound variables" }
-    ;   catch(Left =:= Right, _, fail)
+    ;   exactly_equal(Left, Right)
     ->  format(string(T), "SWI arithmetic confirms ~w", [ClaimStr]),
         Dict = _{ status: "domain_checked",
                   claim: "arithmetic_equation",

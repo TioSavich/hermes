@@ -114,6 +114,37 @@ main :-
     expect_unresolved_referent("45 divided by one, which would be 45", which),
     expect_no_claim("I got 18 for that"),
     expect_no_claim("We have 1/3 block left over, which is half a pizza"),
+    % A place-value unit carries the quantity of the numeral before it. One
+    % control per shape the teacher guides actually print; the last of these
+    % read as arithmetic_equation(6, 6) and adjudicated "holds", so the
+    % refusal replaces a manufactured agreement, not only a manufactured error.
+    expect_no_claim("99 is 9 tens and 9 ones"),
+    expect_no_claim("0.5 is 50 hundredths"),
+    expect_no_claim("235 = 2 hundreds + 3 tens"),
+    expect_no_claim("0.385 is 385 thousandths"),
+    expect_no_claim("6 is 6 hundreds"),
+    expect_no_claim_term("I know 4 × 4 is 16, so 4 × 40 is 16 tens",
+                         arithmetic_equation(4*40,16)),
+    % The refusal reaches the unit and stops there. A relation that merely
+    % shares a line with one still reads, and "tenths" keeps its denominator
+    % grammar rather than being refused along with the units that lack one.
+    expect_only_claim("0.3 is 3 tenths", arithmetic_equation(0.3,3/10)),
+    expect_claim("7 ones - 7 ones is 0 ones. So 17- 7 = 10 .",
+                 subtraction(17,7,10)),
+    expect_claim("28 divided by 4 = 7, so 7 tens in each group",
+                 arithmetic_equation(28/4,7)),
+    % Equality over the decimals and unit fractions the curriculum is written
+    % in. Comparing these as floats refutes every one of them: 1 - 0.07 is
+    % 0.9299999999999999 and 8/12 + 3/12 + 9/12 + 4/12 is 1.9999999999999998.
+    % The guides print "True" beside all four, which is how the defect was
+    % found — no internal check could have shown it.
+    expect_verdict("10/12 = 5 × 2/12", "holds"),
+    expect_verdict("8/12 + 3/12 + 9/12 + 4/12 = 2", "holds"),
+    expect_verdict("10 ÷ 3 = 10 × 1/3", "holds"),
+    expect_verdict("1 - 0.07 = 0.93", "holds"),
+    expect_verdict("0.1 + 0.2 = 0.3", "holds"),
+    % Exactness is not leniency: a claim false in the rationals stays refuted.
+    expect_verdict("1/3 = 0.5", "refuted"),
     hermes_encyclopedia:ground_query_dict("4 plus 2 is not 6", Grounded),
     Grounded.math_claims = [Negative],
     expect_equal(Negative.base_verdict, "holds", negative_base_verdict),

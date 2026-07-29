@@ -177,11 +177,34 @@ candidate_right_boundary(Rest) :-
 truncated_right_context([Next|_]) :-
     ( arithmetic_continuation_token(Next)
     ; relation_continuation_token(Next)
+    ; place_value_unit_token(Next)
     ),
     !.
 truncated_right_context([Separator, Next|_]) :-
     numeric_continuation_separator(Separator),
     number(Next).
+
+% A place-value unit carries the quantity of the numeral before it: "99 is 9
+% tens and 9 ones" states a composition, not that 99 is 9. The reader has no
+% grammar for these units, so a relation ending immediately before one is
+% incomplete and abstains rather than dropping the unit and emitting the bare
+% numeral. Over the 4,005 distinct teacher-guide lines carrying one of these
+% units, this boundary changes 28 and changes no reading's shape: 25 become
+% abstentions and 3 drop one member of a claim list. Every claim it removes is
+% false — arithmetic_equation(99, 9) from "99 is 9 tens and 9 ones",
+% arithmetic_equation(4*40, 16) from "4 x 40 is 16 tens". "6 is 6 hundreds"
+% read as arithmetic_equation(6, 6), which is worse: a manufactured agreement.
+%
+% `tenths` is deliberately absent. It is a denominator word, so "3 tenths"
+% already composes as 3/10 and needs no refusal.
+place_value_unit_token(tens).
+place_value_unit_token(ones).
+place_value_unit_token(hundreds).
+place_value_unit_token(thousands).
+place_value_unit_token(hundredth).
+place_value_unit_token(hundredths).
+place_value_unit_token(thousandth).
+place_value_unit_token(thousandths).
 
 truncated_expression_token(Token) :-
     number(Token),
