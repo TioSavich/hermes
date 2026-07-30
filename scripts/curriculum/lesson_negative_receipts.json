@@ -4046,6 +4046,105 @@
           }
         ]
       }
+    },
+    {
+      "lesson": "IM-G5-U6-L8",
+      "intended_action": {
+        "operation": "fraction",
+        "kind": "common_denominator_fraction_addition"
+      },
+      "alternative": "add_numerator_denominator_sum",
+      "material_incompatibility": "The lesson requires converting thirds and halves to a common denominator of sixths, but the alternative would add the denominators together.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit6/lesson8.md",
+        "fragments": [
+          {
+            "line": 296,
+            "text": "change both the thirds and"
+          },
+          {
+            "line": 297,
+            "text": "the half to sixths"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U6-L10",
+      "intended_action": {
+        "operation": "fraction",
+        "kind": "common_denominator_fraction_addition"
+      },
+      "alternative": "add_numerator_denominator_sum",
+      "material_incompatibility": "The lesson requires converting fractions with denominators of 4 and 6 to a common denominator like 12 or 24. The alternative ignores this and adds the numerators and denominators.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit6/lesson10.md",
+        "fragments": [
+          {
+            "line": 169,
+            "text": "I found equivalent expressions with 12 or 24 as a denominator, and then I could add the"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U6-L13",
+      "intended_action": {
+        "operation": "fraction",
+        "kind": "common_denominator_fraction_addition"
+      },
+      "alternative": "add_numerator_denominator_sum",
+      "material_incompatibility": "The lesson requires replacing unlike fractions with equivalent fractions that have the same denominator. The alternative would instead sum the original numerators and denominators, ignoring the shared denominator.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit6/lesson13.md",
+        "fragments": [
+          {
+            "line": 283,
+            "text": "fractions with equivalent fractions that have the same denominator"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U8-L10",
+      "intended_action": {
+        "operation": "fraction",
+        "kind": "common_denominator_fraction_addition"
+      },
+      "alternative": "add_numerator_denominator_sum",
+      "material_incompatibility": "Students must find a common denominator to sum the fractions, a step the alternative replaces by adding the denominators together.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit8/lesson10.md",
+        "fragments": [
+          {
+            "line": 325,
+            "text": "I need to find a common denominator and then I can add the numerators."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G4-U3-L16",
+      "intended_action": {
+        "operation": "fraction",
+        "kind": "common_denominator_fraction_addition"
+      },
+      "alternative": "add_numerator_denominator_sum",
+      "material_incompatibility": "The lesson requires converting tenths to hundredths to establish a common denominator of 100, while the alternative would instead sum the denominators 10 and 100.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade4/unit3/lesson16.md",
+        "fragments": [
+          {
+            "line": 33,
+            "text": "write equivalent fractions to add tenths and hundredths"
+          }
+        ]
+      }
     }
   ]
 }

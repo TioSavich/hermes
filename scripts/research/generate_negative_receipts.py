@@ -35,10 +35,17 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.curriculum.build_lesson_evidence import (  # noqa: E402
+    COMPILED_STRATEGY_MAPPING_RE,
+    COMPILED_MAPPINGS,
+    DIRECT_STRATEGY_MAPPING_RE,
+    PAIR_CATALOG,
     VISION_DIGEST,
     VISION_FACT_PREDICATES,
+    _merge_mappings,
+    _strategy_mappings,
     _validated_negative_receipts,
     _vision_fact_index,
+    refresh_pair_catalog,
 )
 from scripts.checks.automaton_input_contracts import contracts, shape_errors  # noqa: E402
 
@@ -52,7 +59,7 @@ CONTRACTS = ROOT / "knowledge" / "strategies" / "automaton_input_contracts.pl"
 CONTRACT_FILTER_FIXTURE = ROOT / "scripts" / "checks" / "fixtures" / "negative_receipt_candidate_contract_whole_domain.json"
 DEFAULT_OUTPUT = ROOT / "scripts" / "research" / "negative_receipts_out"
 DEFAULT_LIMIT = 3
-RUN_VERSION = "alternative_execution_filter_v4"
+RUN_VERSION = "both_halves_execution_filter_v5"
 CONTRACT_FILTER_OPERATIONS = frozenset({"addition", "subtraction", "multiplication", "division"})
 # Per-call budget for one run_action_automaton execution inside the draft-time
 # batch; matches the task-179 batch check that classified the curated register.
@@ -81,6 +88,8 @@ TASK_HEAD_OPERATIONS = {
     "divide": "division",
     "unit_fraction": "fraction",
     "iterate_improper_fraction": "fraction",
+    "add_fractions": "fraction",
+    "subtract_fractions": "fraction",
     "decimal_value": "decimal",
     "decimal_multiply": "decimal",
     "decimal_compare": "decimal",
@@ -219,6 +228,92 @@ def _contract_index() -> dict[tuple[str, str], dict[str, Any]]:
     return {(row["operation"], row["kind"]): row for row in contracts()}
 
 
+def _source_strategy_mappings() -> dict[str, set[tuple[str, str, str]]]:
+    """The lesson-to-action mappings the evidence builder reads, from its sources."""
+    grade_sources = sorted((ROOT / "curriculum" / "im").glob("grade_*.pl"))
+    return _merge_mappings(
+        _strategy_mappings(grade_sources, DIRECT_STRATEGY_MAPPING_RE, "direct_lesson_fact"),
+        _strategy_mappings(
+            [COMPILED_MAPPINGS], COMPILED_STRATEGY_MAPPING_RE, "compiled_source_mapping"
+        ),
+    )
+
+
+def reconcile_candidates_with_registry(ledger: dict[str, Any]) -> dict[str, Any]:
+    """Give every lesson the candidates the LIVE pair registry supplies.
+
+    The ledger's candidates come from a generated snapshot of
+    action_automaton_pair/4. When a wave publishes new pairs before the
+    snapshot is regenerated, lessons whose only candidate would be a new pair
+    read as having no candidate at all, and the drafter has nothing to offer
+    for them -- not because the registry is silent but because the derived file
+    is behind it. This asks the registry directly, adds what the snapshot
+    lacks, and reports the difference. Every added candidate is marked with its
+    provenance so nothing arrives unannounced.
+    """
+    live_pairs = refresh_pair_catalog()["pairs"]
+    snapshot = json.loads(PAIR_CATALOG.read_text(encoding="utf-8"))["pairs"]
+    live_keys = {
+        (pair["operation"], pair["productive"], pair["deformation"]) for pair in live_pairs
+    }
+    snapshot_keys = {
+        (pair["operation"], pair["productive"], pair["deformation"]) for pair in snapshot
+    }
+    pair_index: dict[tuple[str, str], list[dict[str, str]]] = {}
+    for pair in live_pairs:
+        pair_index.setdefault((pair["operation"], pair["productive"]), []).append(pair)
+    mappings = _source_strategy_mappings()
+    added: dict[str, list[tuple[str, str, str]]] = {}
+    snapshot_only: dict[str, list[tuple[str, str, str]]] = {}
+    for row in ledger["lessons"]:
+        held = {
+            (candidate["operation"], candidate["productive"], candidate["deformation"])
+            for candidate in row["negative_candidates"]
+        }
+        for operation, kind, origin in sorted(mappings.get(row["lesson"], set())):
+            for pair in pair_index.get((operation, kind), []):
+                key = (operation, kind, pair["deformation"])
+                if key in held:
+                    continue
+                held.add(key)
+                row["negative_candidates"].append({
+                    "operation": operation,
+                    "productive": kind,
+                    "deformation": pair["deformation"],
+                    "family": pair["family"],
+                    "mapping_origin": origin,
+                    "pair_source": pair["source"],
+                    "candidate_provenance": "live_action_automaton_pair_registry",
+                })
+                added.setdefault(row["lesson"], []).append(key)
+        stale = sorted(key for key in held if key not in live_keys)
+        if stale:
+            snapshot_only[row["lesson"]] = stale
+    return {
+        "live_pairs": len(live_keys),
+        "snapshot_pairs": len(snapshot_keys),
+        "snapshot_path": str(PAIR_CATALOG.relative_to(ROOT)),
+        "snapshot_is_current": live_keys == snapshot_keys,
+        "pairs_live_only": sorted(live_keys - snapshot_keys),
+        "pairs_snapshot_only": sorted(snapshot_keys - live_keys),
+        "lessons_gaining_candidates": {
+            lesson: keys for lesson, keys in sorted(added.items())
+        },
+        "candidates_added": sum(len(keys) for keys in added.values()),
+        "lessons_holding_unregistered_candidates": {
+            lesson: keys for lesson, keys in sorted(snapshot_only.items())
+        },
+        "disclosure": (
+            "Candidates are derived from the live action_automaton_pair/4 "
+            "registry joined through the lesson's own strategy mappings, so a "
+            "snapshot that has not caught up cannot silently hide a candidate. "
+            "Added candidates carry candidate_provenance; a candidate the live "
+            "registry no longer supplies stays in the pool and is withheld by "
+            "the execution filter under no_registry_pair."
+        ),
+    }
+
+
 def _drafting_facts(
     fact_index: dict[str, dict[str, list[str]]], lesson: str
 ) -> dict[str, list[str]]:
@@ -244,6 +339,40 @@ def _compiled_operation_index() -> dict[str, dict[str, set[str]]]:
         else:
             entry["operations"].add(operation)
     return index
+
+
+def _operation_unmatched_reason(
+    operation: str,
+    *,
+    operations: set[str],
+    unmapped_heads: set[str],
+    join_range: set[str],
+) -> str:
+    """Say which of the three withholding situations actually obtains.
+
+    Task-192's review caught this reason claiming the join recognizes no
+    operation of the lesson while the record's own `operation_in_join_range`
+    field said `true` beside it. The two statements contradicted each other
+    because the head-map mirror was short `add_fractions` and
+    `subtract_fractions`: the lesson's tasks were unmapped, the candidate's
+    operation was not. The mirror is repaired above; this reason now names
+    which of the two situations holds rather than collapsing them.
+    """
+    if operations:
+        return f"no compiled productive task of the lesson carries {operation}"
+    in_range = "is" if operation in join_range else "is not"
+    if unmapped_heads:
+        heads = ", ".join(sorted(unmapped_heads))
+        return (
+            "task_action_operands/4 maps none of the lesson's compiled "
+            f"productive task heads ({heads}) to an operation, so the lesson "
+            f"supplies no operand pair at all; {operation} itself {in_range} "
+            "in the join's range"
+        )
+    return (
+        "the lesson has no compiled productive task rows, so it supplies no "
+        f"operand pair; {operation} itself {in_range} in the join's range"
+    )
 
 
 def filter_candidate_operations(
@@ -279,10 +408,11 @@ def filter_candidate_operations(
             "compiled_operations": sorted(operations),
             "unmapped_task_heads": sorted(entry["unmapped_heads"]),
             "operation_in_join_range": candidate["operation"] in join_range,
-            "reason": (
-                "the lesson's compiled productive tasks carry no operation the join recognizes"
-                if not operations
-                else f"no compiled productive task of the lesson carries {candidate['operation']}"
+            "reason": _operation_unmatched_reason(
+                candidate["operation"],
+                operations=operations,
+                unmapped_heads=entry["unmapped_heads"],
+                join_range=join_range,
             ),
         }
         annotated.append(candidate_copy)
@@ -326,11 +456,61 @@ def operation_filter_controls() -> str:
     usable, annotated = filter_candidate_operations(synthetic, operation_index=operation_index)
     if usable or annotated[0].get("annotation") != "operation_unmatched":
         raise RuntimeError("empty-domain control was not flagged operation_unmatched")
-    if "no operation the join recognizes" not in annotated[0]["operation_evidence"]["reason"]:
-        raise RuntimeError("empty-domain control does not say the lesson carries no mappable operation")
+    if "no compiled productive task rows" not in annotated[0]["operation_evidence"]["reason"]:
+        raise RuntimeError("empty-domain control does not say the lesson has no compiled task rows")
+    # The repaired mirror: IM-G5-U6-L8's compiled tasks are add_fractions and
+    # subtract_fractions only. Before task-198 the mirror mapped neither head,
+    # so a fraction candidate on this lesson was withheld under a reason that
+    # denied what the record's own join-range field asserted.
+    fraction_row = {
+        "lesson": "IM-G5-U6-L8",
+        "negative_candidates": [
+            {
+                "operation": "fraction",
+                "productive": "common_denominator_fraction_addition",
+                "deformation": "add_numerator_denominator_sum",
+            }
+        ],
+    }
+    fraction_usable, _ = filter_candidate_operations(
+        fraction_row, operation_index=operation_index
+    )
+    if not fraction_usable:
+        raise RuntimeError(
+            "IM-G5-U6-L8 compiles add_fractions rows and its fraction candidate "
+            "must survive the operation filter once the mirror maps that head"
+        )
+    # A lesson whose only compiled head the join maps to nothing at all: the
+    # reason has to name the head rather than claim the operation is unknown.
+    unmapped_row = {
+        "lesson": "IM-G3-U2-L3",
+        "negative_candidates": [
+            {
+                "operation": "addition",
+                "productive": "count_on_from_larger",
+                "deformation": "count_all_when_count_on_available",
+            }
+        ],
+    }
+    unmapped_usable, unmapped_annotated = filter_candidate_operations(
+        unmapped_row, operation_index=operation_index
+    )
+    unmapped_evidence = unmapped_annotated[0].get("operation_evidence", {})
+    if unmapped_usable or "construct_rectangle_with_area" not in unmapped_evidence.get("reason", ""):
+        raise RuntimeError(
+            "IM-G3-U2-L3's flag must name construct_rectangle_with_area as the "
+            "head the join does not map"
+        )
+    if "addition itself is in the join's range" not in unmapped_evidence["reason"]:
+        raise RuntimeError(
+            "the unmapped-head reason must not deny that the candidate's own "
+            "operation is in the join's range"
+        )
     return (
         "IM-G2-U5-L12 keeps its subtraction candidate and flags counting "
-        "(no counting task on this lesson); empty-domain synthetic flags with its own reason"
+        "(no counting task on this lesson); IM-G5-U6-L8's fraction candidate "
+        "survives on add_fractions rows; IM-G3-U2-L3's flag names its unmapped "
+        "head; empty-domain synthetic flags with its own reason"
     )
 
 
@@ -406,9 +586,11 @@ def register_dedup_controls(register_keys: set[tuple[str, str]]) -> str:
 
 # One swipl batch per run resolves each candidate's registry pair, joins the
 # lesson's compiled productive tasks through task_action_operands/4, and runs
-# the alternative on every op-matching operand pair under a per-call time
-# limit -- the same probe the task-179 batch check ran over the curated
-# register. The driver also emits the live head-to-operation map so the
+# BOTH halves of the pair on every op-matching operand pair under a per-call
+# time limit -- the task-179 batch check ran the alternative alone, and
+# task-194 found what that misses: a receipt whose intended action refuses on
+# every operand pair its own lesson supplies, so those tasks can never exhibit
+# the contrast. The driver also emits the live head-to-operation map so the
 # static mirror above is verified on every run.
 _EXECUTION_DRIVER = rf"""% Draft-time executability probe for negative-receipt candidates.
 :- use_module(formal(learner/activity_contract)).
@@ -416,15 +598,19 @@ _EXECUTION_DRIVER = rf"""% Draft-time executability probe for negative-receipt c
 :- use_module(library(lists)).
 :- use_module(library(aggregate)).
 
-pair_status(Op, Alt, L, R, Status) :-
+half_status(Op, Kind, L, R, Status) :-
     catch(call_with_time_limit({EXECUTION_TIME_LIMIT_SECONDS},
-              ( action_automata_registry:run_action_automaton(Op, Alt, L, R, Outcome, _)
+              ( action_automata_registry:run_action_automaton(Op, Kind, L, R, Outcome, _)
               -> ( Outcome = action_outcome(_, Fields), member(result(Res), Fields)
                  -> Status = ran(Res)
                  ;  Status = ran(no_result_field) )
               ;  Status = refused )),
           Err,
           ( Err = time_limit_exceeded -> Status = timeout ; Status = error )).
+
+pair_status(Op, Intended, Alt, L, R, ProdStatus-AltStatus) :-
+    half_status(Op, Intended, L, R, ProdStatus),
+    half_status(Op, Alt, L, R, AltStatus).
 
 probe_one(Lesson, Op, Intended, Alt) :-
     ( action_automata_registry:action_automaton_pair(Op, Intended, Alt, Family)
@@ -440,15 +626,17 @@ probe_one(Lesson, Op, Intended, Alt) :-
     ( PairStatus = no_registry_pair
     -> Statuses = []
     ;  findall(L-R-Status,
-               ( member(L-R, Pairs), pair_status(Op, Alt, L, R, Status) ),
+               ( member(L-R, Pairs), pair_status(Op, Intended, Alt, L, R, Status) ),
                Statuses)
     ),
-    aggregate_all(count, member(_-_-ran(_), Statuses), Ran),
-    format('CHECK\t~w\t~w\t~w\t~w\t~w\t~q\t~d\t~d~n',
-           [Lesson, Op, Intended, Alt, PairStatus, Family, NPairs, Ran]),
-    forall(member(L-R-Status, Statuses),
-           format('PAIRRUN\t~w\t~w\t~w\t~w\t~q\t~q\t~q~n',
-                  [Lesson, Op, Intended, Alt, L, R, Status])).
+    aggregate_all(count, member(_-_-(ran(_)-_), Statuses), ProdRan),
+    aggregate_all(count, member(_-_-(_-ran(_)), Statuses), AltRan),
+    aggregate_all(count, member(_-_-(ran(_)-ran(_)), Statuses), BothRan),
+    format('CHECK\t~w\t~w\t~w\t~w\t~w\t~q\t~d\t~d\t~d\t~d~n',
+           [Lesson, Op, Intended, Alt, PairStatus, Family, NPairs, ProdRan, AltRan, BothRan]),
+    forall(member(L-R-(ProdStatus-AltStatus), Statuses),
+           format('PAIRRUN\t~w\t~w\t~w\t~w\t~q\t~q\t~q\t~q~n',
+                  [Lesson, Op, Intended, Alt, L, R, ProdStatus, AltStatus])).
 
 probe_main(FactsFile) :-
     consult(FactsFile),
@@ -514,19 +702,48 @@ def run_execution_probes(
         parts = line.split("\t")
         if parts[0] == "HEADOP" and len(parts) == 3:
             head_map[parts[1]] = parts[2]
-        elif parts[0] == "CHECK" and len(parts) == 9:
-            _, lesson, operation, intended, alternative, pair_status, family, npairs, ran = parts
+        elif parts[0] == "CHECK" and len(parts) == 11:
+            (
+                _,
+                lesson,
+                operation,
+                intended,
+                alternative,
+                pair_status,
+                family,
+                npairs,
+                prod_ran,
+                alt_ran,
+                both_ran,
+            ) = parts
             catalog[(lesson, operation, intended, alternative)] = {
                 "pair_registered": pair_status == "pair",
                 "family": None if family == "none" else family,
                 "operand_pair_count": int(npairs),
-                "ran_count": int(ran),
+                "productive_ran_count": int(prod_ran),
+                "ran_count": int(alt_ran),
+                "both_ran_count": int(both_ran),
                 "operand_pairs": [],
             }
-        elif parts[0] == "PAIRRUN" and len(parts) == 8:
-            _, lesson, operation, intended, alternative, left, right, status = parts
+        elif parts[0] == "PAIRRUN" and len(parts) == 9:
+            (
+                _,
+                lesson,
+                operation,
+                intended,
+                alternative,
+                left,
+                right,
+                productive_outcome,
+                alternative_outcome,
+            ) = parts
             catalog[(lesson, operation, intended, alternative)]["operand_pairs"].append(
-                {"left": left, "right": right, "outcome": status}
+                {
+                    "left": left,
+                    "right": right,
+                    "productive_outcome": productive_outcome,
+                    "outcome": alternative_outcome,
+                }
             )
     if head_map != TASK_HEAD_OPERATIONS:
         static_only = sorted(set(TASK_HEAD_OPERATIONS.items()) - set(head_map.items()))
@@ -540,14 +757,20 @@ def run_execution_probes(
     if unanswered:
         raise RuntimeError(f"execution probes came back unanswered: {unanswered[:5]}")
     for verdict in catalog.values():
+        # Task-194's productive-half finding: a candidate is executable only
+        # where one operand pair runs BOTH halves, because the contrast a
+        # receipt claims is between two results on the same quantities.
         verdict["executable"] = (
             verdict["pair_registered"]
             and verdict["operand_pair_count"] > 0
-            and verdict["ran_count"] > 0
+            and verdict["both_ran_count"] > 0
         )
     stats = {
         "probed_candidates": len(catalog),
         "pair_runs": sum(len(verdict["operand_pairs"]) for verdict in catalog.values()),
+        "half_runs": sum(
+            2 * len(verdict["operand_pairs"]) for verdict in catalog.values()
+        ),
         "head_map_verified": True,
     }
     return catalog, stats
@@ -559,15 +782,17 @@ def filter_candidate_executability(
     lesson: str,
     execution_catalog: dict[tuple[str, str, str, str], dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    """Annotate, without deleting, candidates whose alternative cannot execute.
+    """Annotate, without deleting, candidates whose pair cannot execute.
 
     Task-179 found 19 curated receipts naming alternatives that either lack a
     registry pair or refuse every operand pair their lesson supplies; nothing
-    ran them at drafting time. Here each candidate's alternative has been
-    executed on the lesson's own op-matching compiled operand pairs before the
-    prompt is built. A candidate whose alternative cannot execute on any pair
-    is withheld with the attempted runs recorded -- a visible annotation,
-    never a silent drop.
+    ran them at drafting time. Task-194 then found the other half of the same
+    hole: a receipt whose *intended* action refuses on every operand pair the
+    lesson supplies, so the lesson's own tasks can never exhibit the contrast
+    the receipt claims. Both halves now run on every op-matching compiled
+    operand pair before the prompt is built, and a candidate with no pair
+    where both halves run is withheld with every attempted run recorded -- a
+    visible annotation, never a silent drop.
     """
     usable: list[dict[str, Any]] = []
     annotated: list[dict[str, Any]] = []
@@ -595,21 +820,52 @@ def filter_candidate_executability(
                 f"lesson supplies a {candidate['operation']} operand pair"
             )
         else:
-            reason_class = "automaton_refuses_all_operands"
             timeouts = sum(
-                run["outcome"] == "timeout" for run in verdict["operand_pairs"]
+                run["outcome"] == "timeout"
+                or run["productive_outcome"] == "timeout"
+                for run in verdict["operand_pairs"]
             )
-            reason = (
-                "the automaton refuses every op-matching operand pair the lesson supplies"
-                + (f" ({timeouts} at the {EXECUTION_TIME_LIMIT_SECONDS}s limit)" if timeouts else "")
+            limit_note = (
+                f" ({timeouts} at the {EXECUTION_TIME_LIMIT_SECONDS}s limit)"
+                if timeouts
+                else ""
             )
-        candidate_copy["annotation"] = "alternative_not_executable"
+            if verdict["ran_count"] == 0 and verdict["productive_ran_count"] == 0:
+                reason_class = "pair_refuses_all_operands"
+                reason = (
+                    "neither half of the pair runs on any op-matching operand "
+                    "pair the lesson supplies" + limit_note
+                )
+            elif verdict["ran_count"] == 0:
+                reason_class = "automaton_refuses_all_operands"
+                reason = (
+                    "the alternative refuses every op-matching operand pair the "
+                    "lesson supplies" + limit_note
+                )
+            elif verdict["productive_ran_count"] == 0:
+                reason_class = "productive_refuses_all_operands"
+                reason = (
+                    f"the intended action {candidate['productive']} refuses every "
+                    "op-matching operand pair the lesson supplies, so these tasks "
+                    "cannot exhibit the contrast the receipt would claim" + limit_note
+                )
+            else:
+                reason_class = "no_operand_pair_runs_both_halves"
+                reason = (
+                    "each half runs somewhere, but no single operand pair of the "
+                    "lesson runs both, so there is no shared quantity on which "
+                    "the two results differ" + limit_note
+                )
+        candidate_copy["annotation"] = "pair_not_executable"
         candidate_copy["execution_evidence"] = {
-            "source": "run_action_automaton/6 batch over op-matching compiled productive operand pairs",
+            "source": "run_action_automaton/6 batch running BOTH halves over op-matching compiled productive operand pairs",
             "join": "task_action_operands/4 (formal/learner/activity_contract.pl)",
             "pair_registered": verdict["pair_registered"],
             "family": verdict["family"],
             "attempted_pairs": verdict["operand_pairs"],
+            "productive_ran_count": verdict["productive_ran_count"],
+            "alternative_ran_count": verdict["ran_count"],
+            "both_ran_count": verdict["both_ran_count"],
             "time_limit_seconds": EXECUTION_TIME_LIMIT_SECONDS,
             "reason_class": reason_class,
             "reason": reason,
@@ -634,6 +890,15 @@ def execution_filter_controls() -> str:
         if candidate["deformation"] == "drop_ones_after_base_takeaway"
     )
     whole_row = rows["IM-G3-U4-L1"]
+    # The live productive-half control: task-194 REJECT #2. Both of this
+    # lesson's compiled subtraction pairs (38-20, 48-30) need no decomposition,
+    # so decompose_base_for_ones refuses both while the alternative runs on both.
+    productive_row = rows["IM-G2-U2-L8"]
+    productive_refusing = next(
+        candidate
+        for candidate in productive_row["negative_candidates"]
+        if candidate["deformation"] == "add_instead_of_subtract_column"
+    )
     probes = [
         (split_row["lesson"], c["operation"], c["productive"], c["deformation"])
         for c in (runnable, refusing)
@@ -642,6 +907,14 @@ def execution_filter_controls() -> str:
         (whole_row["lesson"], c["operation"], c["productive"], c["deformation"])
         for c in whole_row["negative_candidates"]
     ]
+    probes.append(
+        (
+            productive_row["lesson"],
+            productive_refusing["operation"],
+            productive_refusing["productive"],
+            productive_refusing["deformation"],
+        )
+    )
     probes.append(
         (split_row["lesson"], "addition", "count_on_from_larger", "alternative_never_registered")
     )
@@ -656,7 +929,7 @@ def execution_filter_controls() -> str:
     flagged = next(
         candidate
         for candidate in annotated
-        if candidate.get("annotation") == "alternative_not_executable"
+        if candidate.get("annotation") == "pair_not_executable"
     )
     evidence = flagged["execution_evidence"]
     if (
@@ -673,12 +946,28 @@ def execution_filter_controls() -> str:
         execution_catalog=catalog,
     )
     if whole_usable or not all(
-        candidate.get("annotation") == "alternative_not_executable"
+        candidate.get("annotation") == "pair_not_executable"
         for candidate in whole_annotated
     ):
         raise RuntimeError(
             "execution control expected IM-G3-U4-L1's whole pool withheld "
             "(share_into_divisor_groups refuses its exact-quotient operands)"
+        )
+    productive_usable, productive_annotated = filter_candidate_executability(
+        [productive_refusing],
+        lesson=productive_row["lesson"],
+        execution_catalog=catalog,
+    )
+    productive_evidence = productive_annotated[0].get("execution_evidence", {})
+    if (
+        productive_usable
+        or productive_evidence.get("reason_class") != "productive_refuses_all_operands"
+        or productive_evidence.get("alternative_ran_count", 0) < 1
+    ):
+        raise RuntimeError(
+            "IM-G2-U2-L8's decompose_base_for_ones candidate must be withheld "
+            "for a refusing intended action while its alternative still runs "
+            "(the pass-8 filter passed this one through)"
         )
     synthetic = {
         "operation": "addition",
@@ -690,7 +979,7 @@ def execution_filter_controls() -> str:
     )
     synthetic_evidence = synthetic_annotated[0].get("execution_evidence", {})
     if (
-        synthetic_annotated[0].get("annotation") != "alternative_not_executable"
+        synthetic_annotated[0].get("annotation") != "pair_not_executable"
         or synthetic_evidence.get("reason_class") != "no_registry_pair"
         or synthetic_evidence.get("pair_registered")
     ):
@@ -698,8 +987,9 @@ def execution_filter_controls() -> str:
     return (
         "IM-G2-U3-L18 keeps its runnable addition candidate and flags its "
         "refusing subtraction candidate with attempted pairs; IM-G3-U4-L1's "
-        "whole pool withheld; unregistered synthetic flags no_registry_pair; "
-        "head map verified live"
+        "whole pool withheld; IM-G2-U2-L8 withheld for a refusing intended "
+        "action; unregistered synthetic flags no_registry_pair; head map "
+        "verified live"
     )
 
 
@@ -768,21 +1058,29 @@ def filter_candidate_contracts(
 def contract_filter_controls() -> str:
     """Exercise production provenance, partial compatibility, and whole-domain refusal."""
     ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    published = {row["lesson"]: row for row in ledger["lessons"]}
     eligible = {row["lesson"]: row for row in eligible_lessons(ledger)}
     compiled_domains = _compiled_operand_domains()
     digest_domains = _digest_operand_domains()
     index = _contract_index()
-    # Control lessons must sit in the current eligible pool; IM-G6-U5-L13
-    # left it when its pass-7 receipt was merged, so IM-G6-U3-L9 carries the
-    # long_division partial-domain class in its place.
+    # These controls exercise the contract filter, which reads a lesson's
+    # compiled or digest operand domains and never consults eligibility. Keying
+    # them to the eligible pool made them rot every time a receipt merged
+    # (IM-G6-U5-L13 in pass 8, IM-G7-U4-L6 in pass 9, each stopping the run
+    # before any drafting code executed), so they are keyed to the published
+    # spine instead and the class each one carries stays put.
     reclassified = {
         "IM-G6-U2-L4": ("multiplication_fact_retrieval", ("7", "7")),
         "IM-G6-U3-L9": ("long_division", ("308", "11")),
         "IM-G7-U4-L6": ("measure_groups_of_size", ("78", "4")),
     }
     for lesson, (productive, compatible_pair) in reclassified.items():
+        if lesson not in published:
+            raise RuntimeError(
+                f"contract control names a lesson outside the published spine: {lesson}"
+            )
         _, annotated = filter_candidate_contracts(
-            eligible[lesson],
+            published[lesson],
             provenance_kind=drafting_provenance_kind(lesson),
             compiled_domains=compiled_domains,
             digest_domains=digest_domains,
@@ -1010,6 +1308,34 @@ _CANDIDATE_SELECTION_GUIDANCE = """Two candidate-selection rules from the previo
   select another candidate instead."""
 
 
+_EXECUTED_CONTRAST_RULES = """Two rules from the previous review round, both about the machine behind the
+alternative. Each names a receipt that read well and was rejected once the
+automaton ran.
+
+- Do not predict the number the alternative lands on. The alternative is a
+  registered automaton with fixed behaviour, and prose asserting a result it
+  does not compute was rejected even where the quotation was verbatim. One
+  receipt said the alternative discards the two ones of 32 in 32 + 10 and
+  returns 40; the registered dropped_ones_chunk drops the ones of the SECOND
+  addend, 10 has none, and it returns 42. Another said the alternative reports
+  the benchmark 10 as the difference for 13 - 7; the registered
+  answer_as_endpoint_count_up reports the endpoint, 13. Write what the
+  alternative fails to carry forward, not the answer you expect it to give.
+
+- Do not describe a deformation the lesson's own work does not run into. One
+  receipt quoted a compensation strategy (34 - 10 = 24, then 24 + 1 = 25) and
+  named a take-away-by-place pair, whose deformation drops the subtrahend's
+  ones and has nothing to do with an omitted adjustment. Where the quoted
+  strategy and the named pair describe different doings, abstain or select the
+  candidate whose intended action the quoted work actually performs.
+
+Select a candidate whose intended action the lesson's own quantities can carry
+out. A receipt naming decomposition was rejected because both of its lesson's
+subtraction tasks, 38 - 20 and 48 - 30, need no decomposing: nothing the
+students do there can exhibit the contrast. Prefer the candidate whose intended
+action the quoted work performs on the numbers the lesson supplies."""
+
+
 _DRAFTING_RULES_TAIL = """Abstain rather than select a candidate whose incompatibility reduces to one
 operation not being another with no quantity named.
 
@@ -1038,7 +1364,10 @@ _FILE_DISQUALIFIER = """- A sample student response performing the alternative. 
 def drafting_rules(*, file_backed: bool) -> str:
     """Return the review-derived rules, with the guide-only disqualifier when apt."""
     bullets = f"{_DRAFTING_RULES_HEAD}\n{_FILE_DISQUALIFIER}" if file_backed else _DRAFTING_RULES_HEAD
-    return f"{bullets}\n\n{_CANDIDATE_SELECTION_GUIDANCE}\n\n{_DRAFTING_RULES_TAIL}"
+    return (
+        f"{bullets}\n\n{_CANDIDATE_SELECTION_GUIDANCE}\n\n"
+        f"{_EXECUTED_CONTRAST_RULES}\n\n{_DRAFTING_RULES_TAIL}"
+    )
 
 
 def build_messages(
@@ -1445,6 +1774,7 @@ def summarize(
     schema: str,
     register: str,
     execution_stats: dict[str, Any],
+    reconciliation: dict[str, Any],
 ) -> dict[str, Any]:
     accepted = [record["receipt"] for record in records if record["status"] == "accepted"]
     proposed = sum(record["proposed"] for record in records)
@@ -1465,7 +1795,7 @@ def summarize(
                 "contract_mismatch": 0,
                 "operation_unmatched": 0,
                 "register_duplicate": 0,
-                "alternative_not_executable": 0,
+                "pair_not_executable": 0,
             },
         )
         effect["lessons"] += 1
@@ -1477,8 +1807,8 @@ def summarize(
         )
         effect["operation_unmatched"] += len(record.get("operation_unmatched", []))
         effect["register_duplicate"] += len(record.get("register_duplicates", []))
-        effect["alternative_not_executable"] += len(
-            record.get("alternative_not_executable", [])
+        effect["pair_not_executable"] += len(
+            record.get("pair_not_executable", [])
         )
     needs_vocabulary = [
         record["lesson"] for record in records if record["status"] == "needs_vocabulary"
@@ -1495,13 +1825,13 @@ def summarize(
         len(record.get("register_duplicates", [])) for record in records
     )
     execution_annotations = sum(
-        len(record.get("alternative_not_executable", [])) for record in records
+        len(record.get("pair_not_executable", [])) for record in records
     )
     execution_withheld_reasons = Counter(
         candidate["execution_evidence"]["reason_class"]
         for record in records
         for candidate in record.get("candidate_annotations", [])
-        if candidate.get("annotation") == "alternative_not_executable"
+        if candidate.get("annotation") == "pair_not_executable"
     )
     register_exhausted_lessons = [
         record["lesson"] for record in records if record["status"] == "register_exhausted"
@@ -1509,7 +1839,7 @@ def summarize(
     execution_refusal_lessons = [
         record["lesson"]
         for record in records
-        if record["status"] == "alternative_not_executable"
+        if record["status"] == "pair_not_executable"
     ]
     uncovered_operations = Counter(
         candidate["operation"]
@@ -1580,7 +1910,7 @@ def summarize(
                 "drafting prompt, never silently dropped."
             ),
         },
-        "alternative_execution_filter": {
+        "pair_execution_filter": {
             "version": RUN_VERSION,
             "engine": "run_action_automaton/6 (knowledge/strategies/math/action_automata_registry.pl)",
             "join": (
@@ -1590,12 +1920,12 @@ def summarize(
             ),
             "time_limit_seconds": EXECUTION_TIME_LIMIT_SECONDS,
             "batch": execution_stats,
-            "alternative_not_executable_annotations": execution_annotations,
+            "pair_not_executable_annotations": execution_annotations,
             "withheld_reason_classes": dict(execution_withheld_reasons.most_common()),
             "lessons_with_flags": sum(
-                bool(record.get("alternative_not_executable")) for record in records
+                bool(record.get("pair_not_executable")) for record in records
             ),
-            "pre_transport_alternative_not_executable": execution_refusal_lessons,
+            "pre_transport_pair_not_executable": execution_refusal_lessons,
             "disclosure": (
                 "Every candidate that reaches the drafting prompt has had its "
                 "alternative executed on at least one of the lesson's own "
@@ -1625,6 +1955,7 @@ def summarize(
                 "registry operation categories pass unfiltered."
             ),
         },
+        "registry_reconciliation": reconciliation,
         "ratchet_if_accepted_merged": projected,
         "records": records,
         "gate_scope": {
@@ -1695,12 +2026,12 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
         f"lessons_with_duplicates={register_filter['lessons_with_duplicates']} "
         f"pre_transport={', '.join(register_filter['pre_transport_register_exhausted']) or 'none'}"
     )
-    execution_filter = report["alternative_execution_filter"]
+    execution_filter = report["pair_execution_filter"]
     print(
         "Alternative-execution filter: "
-        f"flags={execution_filter['alternative_not_executable_annotations']} "
+        f"flags={execution_filter['pair_not_executable_annotations']} "
         f"reasons={execution_filter['withheld_reason_classes'] or 'none'} "
-        f"pre_transport={', '.join(execution_filter['pre_transport_alternative_not_executable']) or 'none'}"
+        f"pre_transport={', '.join(execution_filter['pre_transport_pair_not_executable']) or 'none'}"
     )
     contract_filter = report["candidate_contract_filter"]
     print(
@@ -1715,7 +2046,7 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
             f"->{effect['candidates_after']} contract={effect['contract_mismatch']}"
             f" operation={effect['operation_unmatched']}"
             f" register={effect['register_duplicate']}"
-            f" execution={effect['alternative_not_executable']}"
+            f" execution={effect['pair_not_executable']}"
             f" lessons={effect['lessons']}"
         )
     print(
@@ -1764,6 +2095,21 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
 
 def run(args: argparse.Namespace) -> int:
     ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    reconciliation = reconcile_candidates_with_registry(ledger)
+    print(
+        "Registry reconciliation: "
+        f"live_pairs={reconciliation['live_pairs']} "
+        f"snapshot_pairs={reconciliation['snapshot_pairs']} "
+        f"candidates_added={reconciliation['candidates_added']} "
+        f"lessons={len(reconciliation['lessons_gaining_candidates'])}"
+    )
+    if not reconciliation["snapshot_is_current"]:
+        print(
+            "  the derived pair snapshot is behind the registry: "
+            + ", ".join(
+                "/".join(key) for key in reconciliation["pairs_live_only"]
+            )
+        )
     curated = json.loads(CURATED_RECEIPTS.read_text(encoding="utf-8"))
     eligible = eligible_lessons(ledger)
     fact_index = _vision_fact_index()
@@ -1783,6 +2129,18 @@ def run(args: argparse.Namespace) -> int:
     if args.limit < 1:
         raise ValueError("--limit must be at least 1")
     selected_pool = eligible
+    if args.lessons:
+        wanted_lessons = [
+            lesson.strip() for lesson in args.lessons.split(",") if lesson.strip()
+        ]
+        by_lesson = {row["lesson"]: row for row in eligible}
+        unknown = [lesson for lesson in wanted_lessons if lesson not in by_lesson]
+        if unknown:
+            raise ValueError(
+                "--lessons names lessons outside the eligible pool "
+                f"(lacking only structured_negative): {unknown}"
+            )
+        selected_pool = [by_lesson[lesson] for lesson in wanted_lessons]
     if args.grades:
         wanted_grades = {
             grade.strip()
@@ -1826,13 +2184,14 @@ def run(args: argparse.Namespace) -> int:
         print(
             f"Execution batch: {execution_stats['probed_candidates']} candidates "
             f"probed, {execution_stats['pair_runs']} operand-pair runs, "
-            "head map verified"
+            f"{execution_stats['half_runs']} half runs, head map verified"
         )
     else:
         execution_catalog = {}
         execution_stats = {
             "probed_candidates": 0,
             "pair_runs": 0,
+            "half_runs": 0,
             "head_map_verified": True,
             "note": (
                 "no pending candidates required probing (checkpoints resumed); "
@@ -1924,7 +2283,7 @@ def run(args: argparse.Namespace) -> int:
                 candidate_annotations.append(operation_candidate)
                 continue
             execution_candidate = next(execution_iterator)
-            if execution_candidate.get("annotation") == "alternative_not_executable":
+            if execution_candidate.get("annotation") == "pair_not_executable":
                 candidate_annotations.append(execution_candidate)
                 continue
             candidate_annotations.append(next(contract_iterator))
@@ -1948,7 +2307,7 @@ def run(args: argparse.Namespace) -> int:
             for candidate in candidate_annotations
             if candidate.get("annotation") == "register_duplicate"
         ]
-        alternative_not_executable = [
+        pair_not_executable = [
             {
                 "operation": candidate["operation"],
                 "productive": candidate["productive"],
@@ -1957,7 +2316,7 @@ def run(args: argparse.Namespace) -> int:
                 "reason": candidate["execution_evidence"]["reason"],
             }
             for candidate in candidate_annotations
-            if candidate.get("annotation") == "alternative_not_executable"
+            if candidate.get("annotation") == "pair_not_executable"
         ]
         record_fields = {
             "run_version": RUN_VERSION,
@@ -1969,12 +2328,12 @@ def run(args: argparse.Namespace) -> int:
             "candidate_annotations": candidate_annotations,
             "operation_unmatched": operation_unmatched,
             "register_duplicates": register_duplicates,
-            "alternative_not_executable": alternative_not_executable,
+            "pair_not_executable": pair_not_executable,
         }
         if row["negative_candidates"] and not filtered_candidates:
             operation_flags = len(operation_unmatched)
             register_flags = len(register_duplicates)
-            execution_flags = len(alternative_not_executable)
+            execution_flags = len(pair_not_executable)
             contract_flags = sum(
                 candidate.get("annotation") == "contract_mismatch"
                 for candidate in candidate_annotations
@@ -1982,7 +2341,7 @@ def run(args: argparse.Namespace) -> int:
             flag_parts = ", ".join(
                 f"{count} {name}"
                 for name, count in (
-                    ("alternative_not_executable", execution_flags),
+                    ("pair_not_executable", execution_flags),
                     ("register_duplicate", register_flags),
                     ("operation_unmatched", operation_flags),
                     ("contract_mismatch", contract_flags),
@@ -1990,7 +2349,7 @@ def run(args: argparse.Namespace) -> int:
                 if count
             )
             if execution_flags:
-                status = "alternative_not_executable"
+                status = "pair_not_executable"
                 reason = (
                     f"no candidate survives the draft-time filters ({flag_parts}); "
                     "drafting would mint a receipt no automaton run can bind"
@@ -2115,6 +2474,7 @@ def run(args: argparse.Namespace) -> int:
         schema=curated["schema"],
         register=curated["register"],
         execution_stats=execution_stats,
+        reconciliation=reconciliation,
     )
     print_report(report, args.output_dir)
     return 0
@@ -2141,6 +2501,13 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--grades",
         help="optional comma-separated grade filter applied before --limit",
+    )
+    parser.add_argument(
+        "--lessons",
+        help=(
+            "optional comma-separated lesson ids, processed in the order given; "
+            "every id must be in the eligible pool"
+        ),
     )
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument(
