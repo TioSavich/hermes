@@ -1,6 +1,12 @@
 {
   "kind": "lesson_deformation_charts",
   "lean": false,
+  "provenance_census": {
+    "hand_authored": 3,
+    "default_fill": 74,
+    "total": 77,
+    "note": "default_fill lessons carry the chart's fixed default hosts and fractions, not quantities read from the lesson. No coverage number may cite this manifest."
+  },
   "lessons": [
     {
       "code": "IM-G1-U7-L10",

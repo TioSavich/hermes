@@ -220,7 +220,7 @@ trace.</p>
     // backend). Served by the app they reach the worker; on a static host or
     // a direct file open the preflight fails and the page says so.
     var STATIC_LESSON = 'IM-G2-U2-L2';
-    // Mirrors OP_FOR_STRAND in formal/tools/phase0_monitoring_chart.py.
+    // Which render op each arithmetic strand draws with. Defined here only.
     var OP_FOR_STRAND = { addition: 'base_ten_render', subtraction: 'base_ten_render',
       multiplication: 'area_render', division: 'set_grouping_render' };
     var STRAND_ORDER = ['addition', 'subtraction', 'multiplication', 'division', 'fraction'];
@@ -257,6 +257,16 @@ trace.</p>
       return text ? text.charAt(0).toUpperCase() + text.slice(1) : 'Unnamed strategy';
     }
 
+    // A deformation chart's quantities are read from the teacher guide for a
+    // handful of lessons and are a fixed default for the rest. Any copy that
+    // attributes a scene to a lesson carries which one it is.
+    function deformationQuantitySource(chart) {
+      if (!chart) return '';
+      return chart.provenance === 'hand_authored'
+        ? ' Its fractions are read from the teacher guide.'
+        : ' Its fractions are the chart’s fixed default set, not this lesson’s own.';
+    }
+
     function renderDeformationProductiveScene(box, code, chart) {
       var doc = chart && chart.productive_scene;
       if (!doc || !Array.isArray(doc.frames) || !doc.frames.length || !window.HermesDrawer) return false;
@@ -266,7 +276,8 @@ trace.</p>
       row.className = 'visual-pair';
       var figure = document.createElement('figure');
       var cap = document.createElement('figcaption');
-      cap.textContent = 'Productive strategy from this lesson’s deformation chart.';
+      cap.textContent = 'Productive strategy from this lesson’s deformation chart.'
+        + deformationQuantitySource(chart);
       figure.appendChild(cap);
       figure.appendChild(HermesDrawer._internal.buildSvg(frame, bounds));
       row.appendChild(figure);
@@ -702,8 +713,8 @@ trace.</p>
       renderMonitoringVisuals(code, deformationChart);
       renderTomorrowCard(chart, context);
 
-      // Point the visualizer at the live lesson's leading strand, mirroring
-      // lead_strand() in the generator.
+      // Point the drawer at the live lesson's leading strand: the first
+      // operation in STRAND_ORDER that any of its strategies carries.
       var present = {};
       strategies.forEach(function (s) { if (s.operation) present[s.operation] = true; });
       var strand = null;
@@ -716,7 +727,8 @@ trace.</p>
       var productiveScene = deformationChart && deformationChart.productive_scene;
       if (productiveScene && Array.isArray(productiveScene.frames) && productiveScene.frames.length) {
         drawingNote.hidden = false;
-        drawingNote.textContent = 'This productive scene comes from the lesson’s deformation chart.';
+        drawingNote.textContent = 'This productive scene comes from the lesson’s deformation chart.'
+          + deformationQuantitySource(deformationChart);
         viz.hidden = false;
         unavailable.hidden = true;
         var calcBar = viz.querySelector('.calc-bar');
@@ -861,13 +873,23 @@ trace.</p>
       return chartedLessons;
     }
 
+    // A charted lesson is not a lesson that was read. The section note spells
+    // the default set out, where the figure captions above only name it.
+    function quantitySource(provenance) {
+      return provenance === 'hand_authored'
+        ? ' Its fractions are read from the teacher guide.'
+        : ' Its fractions are the chart’s fixed default set (1/2, 1/3, 1/4, 1/6, 1/8'
+          + ' on a circle, a rectangle and a bar), not quantities read from this lesson.';
+    }
+
     window.bindDeformationLesson = async function (monitoringCode, liveChart) {
       const context = document.getElementById('deformation-context');
       const input = document.getElementById('deformation-code');
       if (liveChart && typeof liveChart === 'object') {
         window.activeDeformationChart = liveChart;
         input.value = monitoringCode;
-        context.textContent = 'This wrong-answer chart belongs to ' + monitoringCode + '.';
+        context.textContent = 'This wrong-answer chart belongs to ' + monitoringCode + '.'
+          + quantitySource(liveChart.provenance);
         return;
       }
       window.activeDeformationChart = null;
@@ -876,7 +898,8 @@ trace.</p>
         const matching = lessons.find(function (lesson) { return lesson.code === monitoringCode; });
         if (matching) {
           input.value = matching.code;
-          context.textContent = 'This wrong-answer chart belongs to ' + matching.code + '.';
+          context.textContent = 'This wrong-answer chart belongs to ' + matching.code + '.'
+            + quantitySource(matching.provenance);
         } else {
           input.value = '';
           context.textContent = 'No wrong-answer chart is available for this lesson.';
@@ -915,9 +938,10 @@ trace.</p>
       They are described here as monitoring inputs and audits; the console worker does not load them.</p>
   </details>
 </details>
-<hr><p class="register">Generated by formal/tools/phase0_monitoring_chart.py.
-Live picture: hermes/web/render/drawer.js via /api/render. Misconception join:
-curriculum/im/lesson_monitoring_figures.pl. <span id='manifest-line'>Corpus figures:
-representation/asset_manifest.json (the gallery's source).</span></p>
+<hr><p class="register">Lesson data: /api/monitoring_chart_export, from
+curriculum/im/lesson_monitoring.pl. Live picture: hermes/web/render/drawer.js via
+/api/render. Misconception join: curriculum/im/lesson_monitoring_figures.pl.
+<span id='manifest-line'>Corpus figures: representation/asset_manifest.json (the
+gallery's source).</span></p>
 </div>
 </body></html>

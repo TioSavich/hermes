@@ -1,26 +1,41 @@
 /** <module> Lesson-specific deformation monitoring charts
  *
- * The usefulness payoff for the parametric-deformation layer. Given a real
- * Illustrative Mathematics fraction lesson, this assembles the monitoring chart
- * a teacher would want before the lesson runs: the PRODUCTIVE model for the
- * lesson's own fraction, beside the LIKELY student-work deformations to watch
- * for on that representation, every deformation drawn on the lesson's fraction.
- *
- * "Given a lesson on 1/4 modeled with a circle, here are the botches to expect,
- * rendered on 1/4" -- and because the deformations are parametric (the layers in
+ * Given an Illustrative Mathematics lesson code, this assembles a monitoring
+ * chart: the PRODUCTIVE model for a unit fraction on a host representation,
+ * beside the LIKELY student-work deformations to watch for on that
+ * representation, every deformation drawn on the same fraction. Because the
+ * deformations are parametric (the layers in
  * knowledge/strategies/render/parametric_partition_deformation.pl and
  * parametric_fraction_errors.pl are functions of the fraction), the same chart
- * regenerates for any fraction the lesson names.
+ * regenerates for any fraction handed to it.
+ *
+ * WHERE THE QUANTITIES COME FROM, AND WHERE THEY DO NOT.
+ * 78 lesson codes are charted. Three of them carry hosts and fractions read off
+ * the teacher-guide markdown in curriculum/im_teacher_guides/grade3/unit5/
+ * (IM-G3-U5-L1, IM-G3-U5-L2, IM-G3-U5-L15), and a fourth, IM-G6-U4-L10, is
+ * charted as division from its own guide's compiled task instances. The other
+ * 74 come from default_fill_chart_lesson/5, which hands every lesson the SAME
+ * fixed set: hosts [circle, rectangle, bar] and fractions 1/2, 1/3, 1/4, 1/6,
+ * 1/8. Default fill is a default, not a reading: it says nothing about which
+ * quantities the lesson actually asks children to model. Two of the three
+ * hand-authored fraction rows happen to name that same fraction list, so exactly
+ * one row (IM-G3-U5-L15) carries a fraction set the guide chose and the default
+ * would not have.
+ *
+ * chart_provenance/2 records the distinction per lesson and every assembled
+ * chart carries it, together with a provenance_note that says in words what the
+ * value means. NO COVERAGE NUMBER MAY CITE THIS CHART: a row's existence is
+ * evidence that the default fill ran, not that the lesson was read.
  *
  * Three layers, all read-only over the grammar, the parametric deformation
  * generators, and the corpus-attested evidence:
  *
  *   1. lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions)
- *      The encoded lessons. Each row is a REAL grade-3 IM fractions lesson, its
- *      addressed standards, the host representations it partitions in
- *      (circle / rectangle / bar), and the unit fractions it has students model.
- *      The fractions and hosts are read off the teacher-guide markdown in
- *      curriculum/im_teacher_guides/grade3/unit5/.
+ *      The charted lessons: the IM lesson code, its title, its addressed
+ *      standards, the host representations the chart partitions in
+ *      (circle / rectangle / bar), and the unit fractions it models. Read off
+ *      the teacher guide for the 3 hand-authored rows; the fixed default set
+ *      for the other 74 (see chart_provenance/2).
  *
  *   2. lesson_likely_deformation(Code, Host, frac(M,N), Deformation)
  *      For a lesson host and fraction, the deformations LIKELY on that
@@ -51,9 +66,13 @@
 
 :- module(lesson_deformation_chart,
           [ lesson_chart_lesson/5,           % ?Code, ?Title, ?Standards, ?Hosts, ?Fractions
+            chart_provenance/2,               % ?Code, ?Provenance
+            chart_provenance_note/2,          % ?Provenance, ?Note
+            chart_provenance_census/1,        % -Dict
             lesson_fraction_task/2,           % ?Code, ?frac(M,N)
             lesson_host_representation/2,      % ?Code, ?Host
             lesson_likely_deformation/4,       % ?Code, ?Host, ?frac(M,N), ?Deformation
+            division_chart_lesson/1,          % ?Code
             lesson_division_deformation_chart/2, % +Code, -Chart
             gated_as_misconception/2,          % +Deformation, -Evidence
             productive_scene_for_lesson/4,     % +Code, +Host, +frac(M,N), -Dict
@@ -85,12 +104,15 @@
 %   Code      : the IM lesson code, matching curriculum/im/grade_3.pl.
 %   Title     : the lesson's own title.
 %   Standards : the standards the teacher guide lists as "Addressing".
-%   Hosts     : the host representations the lesson partitions in. circle and
-%               rectangle are area shapes; bar is the fraction-strip the lesson
-%               folds. Read off the teacher-guide markdown.
-%   Fractions : the unit fractions the lesson has students model, as frac(M,N).
+%   Hosts     : the host representations the chart partitions in. circle and
+%               rectangle are area shapes; bar is the fraction strip.
+%   Fractions : the unit fractions the chart models, as frac(M,N).
 %
-% Three real grade-3 IM fractions lessons (unit 5):
+% Hosts and Fractions are read off the teacher-guide markdown ONLY for the three
+% hand_authored_chart_lesson/5 rows below. Every other charted lesson takes the
+% fixed default set; chart_provenance/2 is the predicate that tells them apart.
+%
+% Three grade-3 IM fractions lessons (unit 5), read off their teacher guides:
 %
 %   IM-G3-U5-L1  "Name the Parts"            3.G.A.2, 3.NF.A.1
 %       partitions rectangles and circles into 2,3,4,6,8 equal parts.
@@ -123,20 +145,65 @@ lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
     default_fill_chart_lesson(Code, Title, Standards, Hosts, Fractions),
     \+ hand_authored_chart_lesson(Code, _, _, _, _).
 
-default_fill_chart_lesson(Code, Title, Standards,
-        [circle, rectangle, bar],
-        [frac(1,2), frac(1,3), frac(1,4), frac(1,6), frac(1,8)]) :-
+default_fill_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
     % Everything here is a generated fact lookup (see
     % generated/default_fill_lessons.pl and its builder). The strategy
     % union, lesson titles, and standards are all rule-backed in the
     % full worker image and cost minutes to walk at request time; the
     % build step walks them once and serves facts.
-    default_fill_lessons:default_fill_lesson(Code, Title, Standards).
+    %
+    % Hosts and Fractions are NOT looked up. They are the one fixed default set
+    % below, handed unchanged to every lesson this clause admits.
+    default_fill_lessons:default_fill_lesson(Code, Title, Standards),
+    default_fill_hosts(Hosts),
+    default_fill_fractions(Fractions).
 
+% The fixed default set. One definition so no surface can quote a different one.
+default_fill_hosts([circle, rectangle, bar]).
+default_fill_fractions([frac(1,2), frac(1,3), frac(1,4), frac(1,6), frac(1,8)]).
+
+%!  chart_provenance(?Code, ?Provenance) is det.
+%
+%   hand_authored when the chart's quantities were read off the lesson's teacher
+%   guide; default_fill when they are the fixed default set. Every assembled
+%   chart carries this value and a note saying what it means.
 chart_provenance(Code, hand_authored) :-
     hand_authored_chart_lesson(Code, _, _, _, _),
     !.
+chart_provenance(Code, hand_authored) :-
+    division_chart_lesson(Code),
+    !.
 chart_provenance(_Code, default_fill).
+
+%!  chart_provenance_note(?Provenance, ?Note) is det.
+%
+%   What the provenance value means, in the words a reader of the payload needs.
+chart_provenance_note(hand_authored,
+    "Hosts and unit fractions are read off this lesson's teacher guide.").
+chart_provenance_note(default_fill,
+    "Hosts and unit fractions are the chart's fixed default set (circle, \c
+     rectangle, bar; 1/2, 1/3, 1/4, 1/6, 1/8), not quantities read from this \c
+     lesson's teacher guide. The chart still runs, and the deformations it \c
+     draws are still gated misconceptions, but nothing here reports what this \c
+     lesson asks children to model. Do not read a coverage number off it.").
+
+%!  chart_provenance_census(-Census) is det.
+%
+%   How many charted lesson codes carry quantities read from a teacher guide and
+%   how many carry the default set. Counted from the rows, so a surface never
+%   has to quote a number the data could move underneath it.
+chart_provenance_census(_{ hand_authored: HandAuthored,
+                           default_fill: DefaultFill,
+                           total: Total }) :-
+    findall(Provenance,
+            ( ( lesson_chart_lesson(Code, _, _, _, _)
+              ; division_chart_lesson(Code)
+              ),
+              chart_provenance(Code, Provenance) ),
+            Provenances),
+    aggregate_all(count, member(hand_authored, Provenances), HandAuthored),
+    aggregate_all(count, member(default_fill, Provenances), DefaultFill),
+    length(Provenances, Total).
 
 % lesson_fraction_task(Code, frac(M,N)): each fraction the lesson models.
 lesson_fraction_task(Code, Frac) :-
@@ -301,11 +368,17 @@ deformation_scene_for_lesson(Code, Host, Frac, equipartition_failure(ErrorType),
 % than forced through the grade-3 fraction-scene renderer.  The cited referent
 % shift is a likely deformation: its corpus row is not presently admitted by
 % misconception_registry_entry/5, so this chart does not label it a registered
-% misconception.
-lesson_division_deformation_chart('IM-G6-U4-L10', Chart) :-
+% misconception. Named as a fact as well as a clause head so a caller can
+% enumerate coverage without building the chart.
+division_chart_lesson('IM-G6-U4-L10').
+
+lesson_division_deformation_chart(Code, Chart) :-
+    division_chart_lesson(Code),
     % This warm-up instance is a registered task, so its equal-share scene can
     % be drawn without inventing a fraction-partition prompt the payload lacks.
     set_grouping_scene:set_grouping_render_json(fair_share(12, 3), ProductiveScene),
+    ProvenanceNote = "The division expressions are compiled task instances read \c
+        off this lesson's teacher guide; no default fill supplied them.",
     Chart = _{
         kind: lesson_deformation_chart,
         lesson_code: 'IM-G6-U4-L10',
@@ -324,7 +397,8 @@ lesson_division_deformation_chart('IM-G6-U4-L10', Chart) :-
               citation: "Mi Yeon Lee (2017), ESM_Lee_2017_Pre-service",
               note: "The dividend bar is treated as the unit whole and repartitioned by the divisor."}
         ],
-        provenance: hand_authored
+        provenance: hand_authored,
+        provenance_note: ProvenanceNote
     }.
 
 monitoring_chart('IM-G6-U4-L10', Chart) :-
@@ -341,6 +415,7 @@ monitoring_chart(Code, Chart) :-
     fractions_strings(Fractions, FractionStrings),
     maplist(atom_string, Hosts, HostStrings),
     chart_provenance(Code, Provenance),
+    chart_provenance_note(Provenance, ProvenanceNote),
     Chart = _{
         kind: lesson_deformation_chart,
         lesson_code: Code,
@@ -349,7 +424,8 @@ monitoring_chart(Code, Chart) :-
         hosts: HostStrings,
         fractions: FractionStrings,
         cells: Cells,
-        provenance: Provenance
+        provenance: Provenance,
+        provenance_note: ProvenanceNote
     }.
 
 % chart_cell(Code, Host, frac(M,N), CellDict): the productive scene and the

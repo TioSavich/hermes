@@ -8815,6 +8815,7 @@
   "kind": "lesson_deformation_chart",
   "lesson_code": "IM-G5-U2-L4",
   "provenance": "default_fill",
+  "provenance_note": "Hosts and unit fractions are the chart's fixed default set (circle, rectangle, bar; 1/2, 1/3, 1/4, 1/6, 1/8), not quantities read from this lesson's teacher guide. The chart still runs, and the deformations it draws are still gated misconceptions, but nothing here reports what this lesson asks children to model. Do not read a coverage number off it.",
   "standards": [
     "5.NF.B.3",
     "IM-G5-U2-L4"

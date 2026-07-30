@@ -74,9 +74,10 @@
           <code>formal/pml/rhythm_axioms.pl</code> records the toggle-gated rhythm transition axioms.
           <code>formal/pml/mua_conjectures.pl</code> is the intentionally empty register for relations not yet demonstrated.
           These modules remain outside the startup closure.</p>
-        <p><code>knowledge/misconceptions/pml_wire.pl</code> is wired into the worker and the console's
-          misconception area. It reports the recorded source-tag-to-modal-posture connections generated from
-          CONNECTS-TO annotations in the misconception registry.</p>
+        <p><code>knowledge/misconceptions/pml_wire.pl</code> is wired into the worker and answers on
+          <code>/api/witness/misconception</code>. It reports the recorded source-tag-to-modal-posture
+          connections generated from CONNECTS-TO annotations in the misconception registry. No page
+          reaches that route today; the connections are readable through the worker and the MCP tools.</p>
       </details>
     </section>
 

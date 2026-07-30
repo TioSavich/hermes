@@ -167,10 +167,19 @@ def render_ids() -> dict[str, set[str]]:
         for path in (generated / "notation_lesson_charts").glob("IM-*")
         if path.is_dir() and LESSON_RE.fullmatch(path.name)
     }
+    # The deformation-chart manifest carries per-lesson provenance, and 74 of
+    # its 77 fraction lessons are default fill — the chart's fixed hosts and
+    # fractions, not quantities read from the lesson. Counting a directory as
+    # coverage would cite exactly what the manifest says may not be cited, so
+    # only hand_authored lessons count here.
+    manifest_path = generated / "lesson_deformation_charts" / "manifest.json"
+    with manifest_path.open() as handle:
+        chart_manifest = json.load(handle)
     deformation = {
-        path.name
-        for path in (generated / "lesson_deformation_charts").glob("IM-*")
-        if path.is_dir() and LESSON_RE.fullmatch(path.name)
+        entry["code"]
+        for entry in chart_manifest["lessons"]
+        if entry.get("provenance") == "hand_authored"
+        and LESSON_RE.fullmatch(entry["code"])
     }
     filmstrip: set[str] = set()
     for directory in sorted(generated.glob("monitoring_visuals*")):

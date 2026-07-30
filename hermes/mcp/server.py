@@ -68,8 +68,8 @@ TOOL_BUNDLES = {
 CORE_TOOLS = (
     ("monitoring_chart", "Return a compact monitoring-chart inventory for an IM lesson code. Use monitoring_chart_detail for one named section; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
     ("monitoring_chart_detail", "Return one named section from a monitoring chart. Call monitoring_chart first to obtain the section inventory. Expected time: a few seconds.", ("code", "section")),
-    ("lesson_deformation_chart", "Return a compact deformation-chart inventory for an IM lesson code. Use lesson_deformation_chart_detail for one scene or frame; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
-    ("lesson_deformation_chart_detail", "Return one identified scene or frame from a deformation chart. Call lesson_deformation_chart first to obtain its inventory. Expected time: a few seconds.", ("code", "id")),
+    ("lesson_deformation_chart", "Return a compact deformation-chart inventory for an IM lesson code. Read provenance before reading the chart: of the 78 lesson codes this tool serves, 4 take their hosts and fractions from a teacher guide (hand_authored) and the other 74 take one fixed default set of circle/rectangle/bar and 1/2, 1/3, 1/4, 1/6, 1/8 (default_fill), which reports nothing about what that lesson asks children to model. Every reply carries provenance and provenance_note. No coverage number may cite this chart. Use lesson_deformation_chart_detail for one scene or frame; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
+    ("lesson_deformation_chart_detail", "Return one identified scene or frame from a deformation chart, with the chart's provenance and provenance_note attached. Call lesson_deformation_chart first to obtain its inventory. A default_fill scene is drawn on the fixed default fraction set, not on the lesson's own quantities. Expected time: a few seconds.", ("code", "id")),
     ("check_math_claim", "Parse and check an explicit mathematical claim in symbolic or ordinary classroom language. The reader covers registered arithmetic, fraction, comparison, and same-unit total forms; it preserves modality, polarity, reports, questions, and quotation separately and abstains on implied operations.", ("term",)),
     ("deontic_scorecard", "Return the ephemeral scorecard for stated commitment and entitlement terms.", ("agent", "commitments", "entitlements")),
     ("deontic_consequences", "Return consequences licensed by stated commitment terms.", ("agent", "commitments")),
@@ -556,6 +556,11 @@ class HermesMCPServer:
             "lesson_code": chart.get("lesson_code", chart.get("code", code)),
             "title": chart.get("title"),
             "standards": chart.get("standards", []),
+            # The compact form drops the scenes, never the provenance: a caller
+            # who cannot tell a read lesson from a default fill cannot read the
+            # chart at all.
+            "provenance": chart.get("provenance"),
+            "provenance_note": chart.get("provenance_note"),
             "inventory": [
                 {**row, "detail_tool": "lesson_deformation_chart_detail"}
                 for row in self._deformation_items(chart)
@@ -571,7 +576,13 @@ class HermesMCPServer:
         item = self._find_deformation_item(chart, identifier)
         if item is None:
             raise ToolCallError(f"lesson_deformation_chart has no scene or frame id {identifier!r}.", kind="not_covered")
-        return {"lesson_code": chart.get("lesson_code", chart.get("code", code)), "id": identifier, "data": item}
+        return {
+            "lesson_code": chart.get("lesson_code", chart.get("code", code)),
+            "id": identifier,
+            "provenance": chart.get("provenance"),
+            "provenance_note": chart.get("provenance_note"),
+            "data": item,
+        }
 
     def resonance_neighbors(self, arguments: dict[str, Any]) -> dict[str, Any]:
         db_row = arguments.get("db_row")

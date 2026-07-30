@@ -197,10 +197,6 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 .badge.ready { color: var(--ok); border-color: var(--ok); }
 .badge.thin { color: var(--thin); border-color: var(--thin); }
 .lesson-detail { margin-top: 1rem; }
-.statgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.55rem; margin: 0.6rem 0; }
-.stat { border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.7rem; }
-.stat b { display: block; font: 1.5rem/1.1 var(--serif); }
-.stat span { display: block; margin-top: 0.2rem; font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
 
 /* field-context render */
 .fc { display: grid; gap: 0.8rem; }
@@ -292,7 +288,6 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
 .misc-card { border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.75rem; margin-bottom: 0.6rem; }
 .misc-card .mn { font-weight: 600; }
-.incompat { font: 0.84rem var(--mono); background: rgba(185,82,56,0.07); border: 1px solid rgba(185,82,56,0.25); border-radius: 6px; padding: 0.3rem 0.5rem; margin-top: 0.35rem; }
 .incompat .perp { color: var(--rust); font-weight: 700; margin: 0 0.3rem; }
 .ce-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.3rem; font-size: 0.82rem; }
 .ce { flex: 1; min-width: 140px; border-radius: 6px; padding: 0.3rem 0.5rem; }
@@ -370,54 +365,12 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 .mc-bar-input { flex: 1; min-width: 13rem; padding: 0.42rem 0.6rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper-cool); font: 0.9rem var(--mono); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .chart { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); padding: 1rem 1.1rem; margin-top: 0.85rem; }
-.chart-head h3 { margin: 0; font-size: 1.15rem; }
 .chart-head .chip { margin-top: 0.4rem; }
-.chart-core { border-left: 3px solid var(--gold-deep); padding: 0.4rem 0 0.4rem 0.7rem; margin: 0.7rem 0 0.9rem; font: 0.95rem/1.45 var(--serif); }
-.coverage-signal { border: 1px solid var(--line); background: var(--paper-cool); padding: 0.55rem 0.7rem; margin: 0.65rem 0 0.85rem; font: 0.84rem/1.4 var(--sans); }
-.coverage-signal.scope { border-left: 3px solid var(--rust); }
-.coverage-signal .coverage-label { display: block; font: 0.68rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
 .band { border-top: 1px solid var(--line); padding-top: 0.6rem; margin-top: 0.8rem; }
 .band > h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
 .band .band-note { font: 0.74rem var(--mono); color: var(--muted); margin: 0 0 0.55rem; text-transform: uppercase; letter-spacing: 0.04em; }
-.astrat { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.8rem; padding: 0.4rem 0; border-bottom: 1px dashed var(--line); }
-.astrat:last-child { border-bottom: 0; }
-.astrat b { font: 0.92rem var(--mono); }
 .astrat .where { grid-column: 1 / -1; font: 0.74rem var(--mono); color: var(--muted); }
-.chart-visual { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,253,247,0.58); padding: 0.55rem 0.65rem; margin-top: 0.25rem; }
-.chart-visual .visual-kicker { font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal-deep); margin-bottom: 0.35rem; }
-.chart-visual .visual-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
-.chart-visual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; }
-.chart-visual figure { margin: 0; min-width: 0; }
-.chart-visual figcaption { font: 0.72rem var(--mono); color: var(--muted); margin-bottom: 0.25rem; }
-.chart-visual svg { display: block; width: 100%; height: 220px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
-.chart-visual .monitoring-filmstrip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.42rem; }
-.chart-visual .monitoring-filmstrip-panel { min-width: 0; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); padding: 0.35rem; }
-.chart-visual .monitoring-filmstrip-panel svg { height: 140px; border: 0; border-radius: 5px; background: var(--paper); }
-.chart-visual .monitoring-filmstrip-step { margin-top: 0.28rem; font: 0.68rem var(--mono); color: var(--ink); overflow-wrap: anywhere; }
-.chart-visual .monitoring-filmstrip-caption { margin-top: 0.18rem; font-size: 0.7rem; color: var(--muted); overflow-wrap: anywhere; }
-.chart-visual .frame-caption { margin: 0.25rem 0 0; font-size: 0.78rem; color: var(--ink-soft); }
-.chart-visual .visual-proof { margin-top: 0.55rem; border-top: 1px dashed var(--line); padding-top: 0.45rem; font: 0.74rem/1.35 var(--mono); color: var(--ink-soft); }
-.chart-visual .visual-proof b { color: var(--ink); }
-.chart-visual .visual-proof .proof-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 0.65rem; margin-top: 0.3rem; }
-.chart-visual .visual-proof .proof-residue { grid-column: 1 / -1; color: var(--muted); }
-.chart-visual .mv-whole { fill: rgba(212,167,71,0.25); }
-.chart-visual .mv-iterated { fill: rgba(63,127,137,0.34); }
-.chart-visual .mv-deformation { fill: rgba(185,82,56,0.34); }
-.chart-visual .mv-neutral { fill: rgba(102,95,79,0.16); }
-.chart-visual .mv-label { font: 12px var(--mono); fill: var(--ink); }
-.chart-visual .mv-axis { stroke: var(--line); stroke-width: 2; }
 .chart-visual.loading { color: var(--muted); font-size: 0.82rem; }
-@media (max-width: 760px) {
-  .chart-visual-grid { grid-template-columns: 1fr; }
-}
-.student-work-picture { grid-column: 1 / -1; margin-top: 0.85rem; }
-.student-work-picture .visual-kicker { color: var(--rust); }
-.amis { border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.75rem; margin-bottom: 0.6rem; background: var(--paper-cool); }
-.amis .amis-name { font: 0.96rem var(--mono); font-weight: 700; }
-.amis .gap { font: 0.84rem/1.4 var(--mono); margin: 0.35rem 0; }
-.amis .gap .lbl { color: var(--muted); text-transform: uppercase; font-size: 0.66rem; letter-spacing: 0.05em; display: block; }
-.amis .incompat { border-left: 3px solid var(--rust); padding: 0.35rem 0 0.35rem 0.6rem; margin: 0.5rem 0; font: 0.86rem/1.4 var(--mono); }
-.amis .incompat .lbl { display: block; color: var(--rust); text-transform: uppercase; font-size: 0.66rem; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
 .amis .reanchor { font: 0.86rem/1.4 var(--serif); margin-top: 0.4rem; }
 .amis .src { font: 0.7rem var(--mono); color: var(--muted); margin-top: 0.35rem; overflow-wrap: anywhere; }
 .amis .cite { font: 0.74rem/1.4 var(--serif); color: var(--muted); margin-top: 0.3rem; }
@@ -430,26 +383,9 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
   .chart { border: 0; padding: 0; page-break-after: always; }
   .chart:last-child { page-break-after: auto; }
   .amis, .astrat, .band { page-break-inside: avoid; }
-  .chart-core { border-left: 3px solid #000; }
-  .amis { background: #fff; border: 1px solid #000; }
-  .amis .incompat { border-left: 3px solid #000; }
-  .amis .incompat .lbl { color: #000; }
 }
-.deontic-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 0.6rem; }
-.deontic-col h4 { font: 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem; }
-.deontic-list { list-style: none; padding: 0; margin: 0; }
-.deontic-list li { font: 0.82rem var(--mono); padding: 0.25rem 0; border-top: 1px solid var(--line, rgba(127,127,127,.18)); }
-.deontic-list li:first-child { border-top: none; }
 .deontic-list.incoherent li { color: var(--tension, #d4634a); }
 .out-head.locked { color: var(--tension, #d4634a); }
-.deontic-extra { margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid var(--line, rgba(127,127,127,.18)); }
-.deontic-extra h4 { font: 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem; }
-.deontic-list.conseq li { white-space: normal; }
-.conseq-turn { color: var(--muted); font-style: italic; }
-.conseq-rule { color: var(--muted); font-size: 0.72rem; }
-.uplevel-move { margin-top: 0.5rem; font: 0.84rem/1.45 var(--sans, inherit); }
-.uplevel-erasure { color: var(--tension, #d4634a); font-size: 0.78rem; margin-top: 0.3rem; }
-@media (max-width: 640px) { .deontic-cols { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body class="view-freshman" data-hshell-fit="1">
@@ -800,16 +736,13 @@ async function getJSON(path, options) {
 }
 const WORKER_POST_PATHS = new Set([
   '/api/analyze', '/api/pml_score', '/api/field_connectivity_audit',
-  '/api/field_context', '/api/grounding', '/api/render_coverage',
-  '/api/strategy_trace', '/api/deontic_scorecard',
-  '/api/deontic_consequences', '/api/deontic_up_level',
+  '/api/field_context', '/api/grounding',
+  '/api/strategy_trace',
   '/api/chat',
   '/api/strategies', '/api/misconceptions', '/api/standards',
-  '/api/benny_demo', '/api/canonical_contract', '/api/canonical_check',
-  '/api/query_misconception', '/api/geometry', '/api/witness/misconception',
+  '/api/benny_demo',
   '/api/misconception_search',
-  '/api/diagnose_error', '/api/monitoring_visuals',
-  '/api/monitoring_chart_export', '/api/render',
+  '/api/diagnose_error',
 ]);
 const LLM_POST_PATHS = new Set(['/api/chat', '/api/pml_score', '/api/misconception_search']);
 async function postJSON(path, body) {
@@ -1101,89 +1034,6 @@ async function runPmlScore() {
 }
 $("#pml-run").addEventListener('click', runPmlScore);
 
-/* ---------- deontic scorecard: the break, made operable ---------- */
-function _deonticLines(id) { return $("#" + id).value.split("\n").map(s => s.trim()).filter(Boolean); }
-function _deonticBoardHtml(data) {
-  const card = (data && data.result) || {};
-  const incoh = card.incoherences || [];
-  const col = (title, arr, cls) => `<section class="deontic-col"><h4>${title}</h4>` +
-    (arr && arr.length
-      ? `<ul class="deontic-list ${cls}">${arr.map(t => `<li>${esc(glossTerm(t))}</li>`).join("")}</ul>`
-      : `<p class="muted-inline">none</p>`) + `</section>`;
-  const head = incoh.length
-    ? `<div class="out-head locked">⚠ ${incoh.length} incoherence · a commitment, a move made without earning the right to it, has no entitlement to back it (Brandom, <em>Between Saying and Doing</em>)</div>`
-    : `<div class="out-head">✓ coherent · every commitment has an entitlement</div>`;
-  return head +
-    `<div class="deontic-cols">` +
-      col("Commitments", card.commitments, "commit") +
-      col("Entitlements", card.entitlements, "entitle") +
-      col("Incoherences", incoh, "incoherent") +
-    `</div>` +
-    `<details class="out-log"><summary>raw commitment tracker</summary><pre>${esc(JSON.stringify(card, null, 2))}</pre></details>`;
-}
-function _deonticConsequencesHtml(data) {
-  const cons = (data && data.result && data.result.consequences) || [];
-  if (!cons.length) return "";  // no material consequence to read back
-  const rows = cons.map(c => {
-    const rule = (c.witness && (c.witness.rule || c.witness.mechanism)) || "material inference";
-    return `<li><span class="conseq-prem">${esc(glossTerm(c.premise))}</span>` +
-      ` <span class="conseq-turn">commits you to</span> ` +
-      `<span class="conseq-concl">${esc(glossTerm(c.conclusion))}</span>` +
-      ` <span class="conseq-rule">via ${esc(glossTerm(rule))}</span></li>`;
-  }).join("");
-  return `<div class="deontic-extra"><h4>What it commits you to</h4>` +
-    `<ul class="deontic-list conseq">${rows}</ul></div>`;
-}
-function _deonticUpLevelHtml(data) {
-  const ups = (data && data.result && data.result.up_levels) || [];
-  if (!ups.length) return "";  // coherent or within-level-dischargeable: no up-level move
-  const blocks = ups.map(w => {
-    const obj = w.new_object_of_discourse || w.objectivated || "";
-    const erasure = w.erasure ? `<p class="uplevel-erasure">erasure, the commitment withdrawn when the unresolved gap is objectivated at the next level: <code>${esc(w.erasure)}</code></p>` : "";
-    const caveat = w.caveat ? `<details class="out-log"><summary>caveat</summary><p class="muted-inline">${esc(w.caveat)}</p></details>` : "";
-    return `<div class="uplevel-move">` +
-      `<p>The gap <code>${esc(glossTerm(w.objectivated || ""))}</code> will not discharge within its level. ` +
-      `The move is <b>objectivation</b>: name it as a new object of discourse ` +
-      `(<code>${esc(glossTerm(obj))}</code>) one level up.</p>` +
-      erasure + caveat + `</div>`;
-  }).join("");
-  return `<div class="deontic-extra"><h4>When it stays incoherent: name the stuck point as its own new question</h4>` +
-    `<p class="muted-inline">A detector, not a repair. It marks the break and the move past it, and changes no score.</p>` +
-    blocks + `</div>`;
-}
-async function runDeonticScorecard() {
-  const out = $("#deontic-out"); out.hidden = false;
-  const stopElapsed = startElapsed(out, "swipl is keeping score…");
-  const commitments = _deonticLines('deontic-commitments');
-  const entitlements = _deonticLines('deontic-entitlements');
-  let board;
-  try { board = await postJSON('/api/deontic_scorecard', { commitments, entitlements }); }
-  catch (error) { setRequestFailure(out, error); stopElapsed(); return; }
-  if ((board.data.error || board.data.error_type) && board.status >= 400) {
-    out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(board.data.error || 'error')}</div>`; return;
-  }
-  // The scorecard is the headline; consequences and the up-level move complete
-  // the board. Each is its own route; a failure of one must not blank the rest.
-  const [conseq, uplevel] = await Promise.all([
-    postJSON('/api/deontic_consequences', { commitments }).catch(error => ({ data: {}, error })),
-    postJSON('/api/deontic_up_level', { commitments }).catch(error => ({ data: {}, error })),
-  ]);
-  stopElapsed();
-  const unavailable = [conseq, uplevel].filter(x => x.error).map(x =>
-    `<div class="analysis-note">⚠ ${esc(x.error.message)}</div>`).join('');
-  out.innerHTML = _deonticBoardHtml(board.data)
-    + _deonticConsequencesHtml(conseq.data)
-    + _deonticUpLevelHtml(uplevel.data)
-    + unavailable;
-}
-if ($("#deontic-run")) $("#deontic-run").addEventListener('click', runDeonticScorecard);
-if ($("#deontic-discharge")) $("#deontic-discharge").addEventListener('click', () => {
-  const ta = $("#deontic-commitments");
-  if (!/deployed_vocabulary\(\s*v_area_model\s*\)/.test(ta.value))
-    ta.value = (ta.value.trim() + "\ndeployed_vocabulary(v_area_model)").trim();
-  runDeonticScorecard();
-});
-
 /* ---------- pipeline steps ---------- */
 document.querySelectorAll('.step .step-head').forEach(h => h.addEventListener('click', () => {
   h.closest('.step').classList.toggle('open');
@@ -1339,64 +1189,6 @@ $("#catalog-search").addEventListener('input', e => {
   $("#catalog").innerHTML = renderCatalog(hits, `${hits.length} match${hits.length === 1 ? '' : 'es'} for “${q}”`);
   wireCatalogClicks();
 });
-/* ---------- explore: which misconceptions draw ---------- */
-let renderCoverageLoaded = false;
-const COVERAGE_LANE_LABELS = {
-  renders_live: "draws live",
-  parametric_deformation: "computed wrong-answer pattern",
-  evidence_pointer: "corpus evidence pointer",
-  not_covered: "not covered",
-};
-/* English readings for the common why terms; anything unmatched shows as-is. */
-function coverageWhy(why) {
-  const s = String(why || '');
-  let m = /^renders_live\((.*)\)$/.exec(s);
-  if (m) {
-    const args = _splitTop(m[1]);
-    return `draws ${glossTerm(args[1] || '')} on ${glossAtom(args[0] || '')}`;
-  }
-  m = /^parametric_deformation\((.*)\)$/.exec(s);
-  if (m) {
-    const args = _splitTop(m[1]);
-    return `a clause computes the “${glossAtom(args[0] || '')}” wrong-answer pattern live (${args[1] || ''})`;
-  }
-  m = /^evidence_pointer\((.*)\)$/.exec(s);
-  if (m) {
-    const args = _splitTop(m[1]);
-    const lang = args[0] === 'none' ? 'no diagram' : glossAtom(args[0] || '');
-    return `${args[2] || '?'} corpus figure(s) document “${glossAtom(args[1] || '')}” (${lang})`;
-  }
-  if (s === 'no_render_family_mapping') return 'no row in any coverage table yet';
-  m = /^bridge_task_rejected\((.*)\)$/.exec(s);
-  if (m) return `a bridge row exists but the grammar refuses its exemplar (${m[1]})`;
-  return s;
-}
-function renderCoverageReport(r) {
-  const s = (r && r.summary) || {};
-  const lanes = s.lanes || {};
-  const stats = ['renders_live', 'parametric_deformation', 'evidence_pointer', 'not_covered'].map(k =>
-    `<div class="stat"><b>${esc(String(lanes[k] ?? 0))}</b><span>${esc(COVERAGE_LANE_LABELS[k])}</span></div>`).join('');
-  const rows = (r.rows || []).map(row =>
-    `<tr><td>${esc(glossAtom(row.op || ''))}</td><td>${esc(COVERAGE_LANE_LABELS[row.lane] || row.lane || '')}</td><td>${esc(coverageWhy(row.why))}</td></tr>`).join('');
-  return `<div class="statgrid">${stats}</div>
-    <div style="max-height:320px;overflow:auto;border:1px solid var(--line);border-radius:8px"><table class="rtable"><thead><tr><th>topic</th><th>lane</th><th>why</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <p class="analysis-note">${esc(String(s.total_ops ?? 0))} misconception topics in this installation's registry, computed live. The local misconception CSV corpus enlarges the registry where it is present.</p>`;
-}
-async function loadRenderCoverage() {
-  if (renderCoverageLoaded) return;
-  renderCoverageLoaded = true;
-  const el = $("#render-coverage");
-  const stopElapsed = startElapsed(el, "computing coverage from the registry…");
-  try {
-    const { status, data } = await postJSON('/api/render_coverage', {});
-    if (status >= 400 || !data || !data.result) throw new Error((data && data.error) || 'no report');
-    el.innerHTML = renderCoverageReport(data.result);
-  } catch (e) {
-    renderCoverageLoaded = false;
-    el.innerHTML = `<em class="muted-inline">Couldn't load the coverage report: ${esc(e && e.message ? e.message : e)}</em>`;
-  } finally { stopElapsed(); }
-}
-
 function fcList(items, limit = 8) {
   const rows = (Array.isArray(items) ? items : []).filter(Boolean).map(String);
   if (!rows.length) return '<span class="chip">none</span>';
@@ -1476,32 +1268,6 @@ function miscCardsHtml(misconceptions) {
       ? `<div class="muted-inline">${m.literature_links.length} literature link(s): ${m.literature_links.slice(0,3).map(l => esc(l.canonical_commitment_label || l.id || '')).join('; ')}</div>` : '';
     return `<div class="misc-card"><span class="mn">${esc(m.name || '')}</span>${reanchor}${lit}${cite}</div>`;
   }).join('');
-}
-
-async function renderLessonGrounding(ops) {
-  const el = $("#lesson-grounding");
-  if (!el) return;
-  if (!ops.length) { el.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">No strategy operations to ground.</span>`; return; }
-  const stopElapsed = startElapsed(el, "loading grounding…", (node, label) => {
-    node.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">${esc(label)}</span>`;
-  });
-  const results = await Promise.all(ops.map(op =>
-    postJSON('/api/grounding', { operation: op })
-      .then(({ data }) => ({ op, data }))
-      .catch(error => ({ op, error }))
-  ));
-  stopElapsed();
-  const seen = new Set(), metaphors = [];
-  for (const item of results) {
-    const ms = (item.data && item.data.result && item.data.result.metaphors) || [];
-    for (const m of ms) { if (!seen.has(m.id)) { seen.add(m.id); metaphors.push(m); } }
-  }
-  const failures = results.filter(item => item.error).map(item =>
-    `<div class="analysis-note">⚠ ${esc(item.op)}: ${esc(item.error.message)}</div>`).join('');
-  el.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4>` +
-    (metaphors.length ? metaphors.map(metaphorCardHtml).join('')
-      : (failures ? '' : `<span class="muted-inline">No L&N grounding metaphor maps to these operations — absence is meaningful (the source domain does not ground them).</span>`))
-    + failures;
 }
 
 /* ---------- ask ---------- */
@@ -1670,59 +1436,7 @@ function glossTerm(s) {
   return glossAtom(s);
 }
 // A compact node label (no articles) for the graph.
-function termShort(s) {
-  s = String(s || "").trim();
-  const m = /^([a-z][a-zA-Z0-9_]*)\((.*)\)$/.exec(s);
-  if (m) {
-    const fn = m[1], args = _splitTop(m[2]);
-    if (fn === "strategy" && args.length === 2) return glossAtom(args[1]);
-    if (fn === "result_of") return glossAtom(args[0]);
-    if (fn === "misconception") return glossAtom(args[0]);
-    return glossAtom(fn);
-  }
-  return glossAtom(s);
-}
 // English-then-formal: "<gloss> — <code>formal</code>"
-function glossPair(s) {
-  if (!s) return "";
-  return `${esc(glossTerm(s))} <code class="formal">${esc(String(s))}</code>`;
-}
-
-/* ---------- incompatibility graph (lesson-specific A ⊥ B relations) ---------- */
-function incompatGraphSvg(misconceptions) {
-  const edges = [], miscSet = [], tgtSet = [];
-  (misconceptions || []).forEach(m => {
-    if (m.incompatibility) {
-      edges.push([m.name, m.incompatibility]);
-      if (!miscSet.includes(m.name)) miscSet.push(m.name);
-      if (!tgtSet.includes(m.incompatibility)) tgtSet.push(m.incompatibility);
-    }
-  });
-  if (!edges.length) return '<span class="muted-inline">No incompatibility relations attached to this lesson.</span>';
-  const W = 580, rowH = 50, padY = 26, lx = 175, rx = W - 175;
-  const H = padY * 2 + Math.max(miscSet.length, tgtSet.length) * rowH;
-  const yOf = (arr, i) => padY + i * rowH + rowH / 2;
-  const li = {}, ri = {};
-  miscSet.forEach((n, i) => li[n] = yOf(miscSet, i));
-  tgtSet.forEach((n, i) => ri[n] = yOf(tgtSet, i));
-  let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="incompatibility graph">`;
-  edges.forEach(([a, b]) => {
-    const y1 = li[a], y2 = ri[b], mx = (lx + rx) / 2, my = (y1 + y2) / 2;
-    svg += `<line x1="${lx}" y1="${y1}" x2="${rx}" y2="${y2}" stroke="#b95238" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-    svg += `<text x="${mx}" y="${my - 3}" font-size="12" text-anchor="middle" fill="#b95238">⊥</text>`;
-  });
-  const node = (x, y, full, kind, anchor) => {
-    const fill = kind === 'misc' ? '#fbeae6' : '#e6f0f1', stroke = kind === 'misc' ? '#b95238' : '#3f7f89';
-    const tx = anchor === 'end' ? x - 9 : x + 9;
-    return `<circle cx="${x}" cy="${y}" r="6" fill="${fill}" stroke="${stroke}" stroke-width="2"><title>${escAttr(glossTerm(full))}</title></circle>`
-      + `<text x="${tx}" y="${y + 4}" font-size="11.5" text-anchor="${anchor}" font-family="Georgia, serif">${esc(termShort(full))}</text>`;
-  };
-  miscSet.forEach(n => svg += node(lx, li[n], n, 'misc', 'end'));
-  tgtSet.forEach(n => svg += node(rx, ri[n], n, 'tgt', 'start'));
-  svg += `</svg>`;
-  return `<div class="trace-viz">${svg}<div class="muted-inline" style="margin-top:.3rem"><span style="color:#b95238">●</span> misconception &nbsp; <span style="color:#3f7f89">●</span> productive strategy / grounded result &nbsp; · &nbsp; dashed ⊥ = materially incompatible (hover a node for the English reading)</div></div>`;
-}
-
 /* ---------- encyclopedia browser ---------- */
 let encLoaded = false, ENC_SECTION = 'strategies', ENC_DATA = {}, ENC_SEL = null;
 const ENC_PATHS = { strategies: '/api/strategies', misconceptions: '/api/misconceptions', standards: '/api/standards', grounding: '/api/grounding', benny: '/api/benny_demo' };
@@ -1792,118 +1506,6 @@ function encFilter() {
 }
 $("#enc-search").addEventListener('input', encFilter);
 
-function canonicalRows(value) {
-  if (Array.isArray(value)) return value;
-  if (value && typeof value === 'object') {
-    for (const key of ['terms', 'checks', 'predicates', 'contract', 'rows']) {
-      if (Array.isArray(value[key])) return value[key];
-    }
-  }
-  return [];
-}
-
-function renderCanonicalResult(payload) {
-  const rows = canonicalRows(payload);
-  if (rows.length) {
-    const head = Object.keys(rows[0] || {}).slice(0, 5);
-    const table = `<table class="rtable"><thead><tr>${head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>` +
-      rows.slice(0, 80).map(row => `<tr>${head.map(h => `<td>${esc(typeof row[h] === 'object' ? JSON.stringify(row[h]) : row[h])}</td>`).join('')}</tr>`).join('') +
-      `</tbody></table>`;
-    return table + (rows.length > 80 ? `<div class="muted-inline">showing 80 of ${rows.length}</div>` : '');
-  }
-  return `<pre>${esc(JSON.stringify(payload, null, 2))}</pre>`;
-}
-
-async function loadCanonicalContract() {
-  const out = $("#canonical-out");
-  out.hidden = false;
-  out.innerHTML = "<em class='muted-inline'>loading canonical_contract…</em>";
-  let data;
-  try { ({ data } = await postJSON('/api/canonical_contract', {})); }
-  catch (error) { out.textContent = error.message; return; }
-  out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_contract failed')}</span>`;
-}
-
-async function runCanonicalCheck() {
-  const out = $("#canonical-out");
-  const terms = $("#canonical-terms").value.split(/\n+/).map(s => s.trim()).filter(Boolean);
-  out.hidden = false;
-  out.innerHTML = "<em class='muted-inline'>running canonical_check…</em>";
-  let data;
-  try { ({ data } = await postJSON('/api/canonical_check', { terms })); }
-  catch (error) { out.textContent = error.message; return; }
-  out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_check failed')}</span>`;
-}
-
-async function runRegistryQuery(path, body) {
-  const out = $("#registry-query-out");
-  out.hidden = false;
-  out.textContent = "requesting…";
-  try {
-    const response = await postJSON(path, body);
-    out.textContent = JSON.stringify(response.data, null, 2) || "The route returned an empty reply.";
-  } catch (e) { out.textContent = e.message || "! The app returned a broken reply."; }
-}
-async function runMisconceptionRegistryQuery() {
-  const out = $("#registry-query-out");
-  out.hidden = false;
-  out.textContent = "requesting…";
-  try {
-    const response = await postJSON('/api/query_misconception', {
-      domain: $("#misconception-domain").value.trim(),
-      description: $("#misconception-description").value.trim()
-    });
-    const result = response.data && response.data.result;
-    const rows = result && Array.isArray(result.rows) ? result.rows : result;
-    out.textContent = JSON.stringify(rows, null, 2) || "The route returned an empty reply.";
-    const withheld = result && Number(result.withheld || 0);
-    if (withheld > 0) out.textContent += `\n\n${withheld} documented-but-thin rows withheld; queued for articulation.`;
-  } catch (e) { out.textContent = e.message || "! The app returned a broken reply."; }
-}
-if ($("#misconception-query-btn")) $("#misconception-query-btn").addEventListener('click', runMisconceptionRegistryQuery);
-if ($("#geometry-query-btn")) $("#geometry-query-btn").addEventListener('click', () => {
-  const out = $("#registry-query-out");
-  let args;
-  try { args = JSON.parse($("#geometry-args").value); }
-  catch (e) { out.hidden = false; out.textContent = "Geometry args must be a JSON list."; return; }
-  if (!Array.isArray(args)) { out.hidden = false; out.textContent = "Geometry args must be a JSON list."; return; }
-  runRegistryQuery('/api/geometry', {predicate: $("#geometry-predicate").value, args});
-});
-const MISCONCEPTION_WITNESS_DEFAULTS = {
-  misconception_incompatibility_witness: {move:"misconception(count_all_when_count_on_available)", conflict:"strategy(addition,count_on_from_larger)"},
-  lesson_misconception_incompatibility_witness: {lesson_code:"IM-G6-U2-L3", name:"additive_extension_of_ratio", operation:"ratio"},
-  misconception_jumps_witness: {operation:"addition", deformation:"round_without_adjusting", a:28, b:47}
-};
-if ($("#misconception-witness-op")) $("#misconception-witness-op").addEventListener("change", function(){
-  $("#misconception-witness-payload").value=JSON.stringify(MISCONCEPTION_WITNESS_DEFAULTS[this.value],null,2);
-});
-if ($("#misconception-witness-btn")) $("#misconception-witness-btn").addEventListener("click", async function(){
-  const out=$("#misconception-witness-out"); let payload;
-  try { payload=JSON.parse($("#misconception-witness-payload").value); }
-  catch(error) { out.hidden=false; out.textContent="The recorded-example request is not valid JSON: "+error.message; return; }
-  payload.op=$("#misconception-witness-op").value; out.hidden=false; out.textContent="requesting…";
-  try { const response=await postJSON("/api/witness/misconception",payload); out.textContent=JSON.stringify(displayWorkerReply(response.data),null,2)||"The route returned an empty reply."; }
-  catch(error) { out.textContent=error.message||"! The app returned a broken reply."; }
-});
-if ($("#misconception-pml-btn")) $("#misconception-pml-btn").addEventListener("click", async function(){
-  const out=$("#misconception-pml-out");
-  const misconception=$("#misconception-pml-name").value.trim();
-  const payload={op:"misconception_pml_map"};
-  if(misconception) payload.misconception=misconception;
-  out.hidden=false;
-  out.innerHTML="<em class='muted-inline'>loading recorded connections…</em>";
-  try {
-    const response=await postJSON("/api/witness/misconception",payload);
-    const result=response.data&&response.data.result;
-    if(!result){ out.textContent=(response.data&&response.data.error)||"The route returned no recorded connections."; return; }
-    const rows=(result.pairs||[]).map(pair=>`<tr><td><code>${esc(pair.source_tag)}</code></td><td>${esc(pair.misconception)}</td><td><code>${esc(pair.operator)}</code></td></tr>`).join("");
-    out.innerHTML=`<p class="analysis-note"><b>${esc(result.count)}</b> RECORDED connection${result.count===1?"":"s"}. ${esc(result.provenance)}.</p>`+
-      (rows?`<table class="rtable"><thead><tr><th>source tag</th><th>misconception</th><th>modal posture</th></tr></thead><tbody>${rows}</tbody></table>`:"<p class='muted-inline'>No recorded connection matches that name.</p>");
-  } catch(error) { out.textContent=error.message||"! The app returned a broken reply."; }
-});
-if ($("#canonical-contract-btn")) $("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
-if ($("#canonical-check-btn")) $("#canonical-check-btn").addEventListener('click', runCanonicalCheck);
-
 function encItemBtn(key, title, sub, active) {
   return `<button class="enc-item${active ? ' active' : ''}" data-key="${escAttr(key)}"><span class="ti">${esc(title)}</span><span class="sub">${esc(sub)}</span></button>`;
 }
@@ -1929,7 +1531,7 @@ function renderEncList(section, q = '') {
     }
   } else if (section === 'misconceptions') {
     const rows = (r.misconceptions || []).filter(m => !q || (`${m.domain} ${m.name} ${m.rule}`).toLowerCase().includes(q)).slice(0, 400);
-    html = rows.map(m => encItemBtn(`m::${m.domain}::${m.name}`, m.name, `${m.domain} · ${m.diagnosable ? 'diagnosable' : 'placeholder'}`)).join('');
+    html = rows.map(m => encItemBtn(`m::${m.domain}::${m.name}`, m.name, `${m.domain} · ${m.diagnosable ? 'runnable rule' : 'documented, not yet runnable'}`)).join('');
     if ((r.misconceptions || []).length > rows.length) html += `<div class="enc-group">showing ${rows.length} of ${(r.misconceptions || []).length} — filter to narrow</div>`;
     html += withheldMisconceptionLine(Number(r.withheld || 0));
   } else if (section === 'standards') {
@@ -2408,347 +2010,6 @@ document.querySelectorAll('[data-calc-example]').forEach(button => button.addEve
   runCalc();
 }));
 loadCalcStrategies();
-
-/* ---------- Monitoring chart: lesson code → anticipation chart ---------- */
-function renderMonitoringStudentWorkPictures(code) {
-  if (!code) return "";
-  return `<div class="band student-work-picture" data-monitoring-visuals="${escAttr(code)}">
-    <h4>Student-work pictures</h4>
-    <p class="band-note">generated from the monitoring chart, lesson numerals, and reusable renderers</p>
-    <div class="chart-visual loading">
-      <div class="visual-kicker">generated render docs</div>
-      <div>Loading generated pictures...</div>
-    </div>
-  </div>`;
-}
-
-async function hydrateMonitoringStudentWorkPictures(root, code) {
-  const holder = root.querySelector('.student-work-picture .chart-visual');
-  if (!holder || !code) return;
-  try {
-    const { status, data } = await postJSON('/api/monitoring_visuals', { lesson_code: code });
-    if (status >= 400 || !data || !data.ok) throw new Error((data && data.error) || "visual generation failed");
-    const visuals = (data.result && data.result.visuals) || [];
-    holder.classList.remove('loading');
-    holder.innerHTML = visuals.length
-      ? visuals.map(renderMonitoringVisualCard).join('')
-      : `<div class="visual-kicker">generated render docs</div><div class="visual-note">No drawable strategy/misconception pair was found for this chart yet.</div>`;
-  } catch (e) {
-    holder.classList.remove('loading');
-    holder.innerHTML = `<div class="visual-kicker">generated render docs</div>
-      <div class="visual-note">Could not draw the monitoring pictures: ${esc(e && e.message ? e.message : e)}</div>`;
-  }
-}
-
-function renderMonitoringVisualCard(v) {
-  const correct = v.correct || {};
-  const incorrect = v.incorrect || {};
-  const proof = v.proof || {};
-  return `<div class="visual-kicker">${esc(v.expression || "generated picture")} · ${esc(v.source || "generated")}</div>
-    <div class="chart-visual-grid">
-      ${renderMonitoringVisualFigure(correct, proof.correct || {})}
-      ${renderMonitoringVisualFigure(incorrect, proof.incorrect || {})}
-    </div>
-    ${renderMonitoringProofSummary(proof)}`;
-}
-
-function renderMonitoringVisualFigure(side, proof) {
-  const label = side.label || "Strategy";
-  const desc = side.description || "";
-  return `<figure>
-    <figcaption>${esc(label)}</figcaption>
-    ${renderMonitoringVisualDoc(side.doc || {}, proof || {})}
-    <p class="frame-caption">${esc(desc)}</p>
-  </figure>`;
-}
-
-function renderMonitoringFrameSvg(frame, bounds, label) {
-  const svg = HermesDrawer._internal.buildSvg(frame, bounds);
-  svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", label || "monitoring visual frame");
-  return svg.outerHTML;
-}
-
-function renderMonitoringFilmstripDoc(doc, proof) {
-  const frames = Array.isArray(doc.frames) ? doc.frames : [];
-  const bounds = HermesDrawer._internal.documentBounds(frames, doc.canvas || {});
-  const sequence = Array.isArray(proof.frame_sequence) ? proof.frame_sequence : [];
-  const panels = frames.map((frame, index) => {
-    const proofFrame = sequence[index] || {};
-    const step = proofFrame.step != null ? proofFrame.step : (frame.step != null ? frame.step : index + 1);
-    const verb = proofFrame.verb || frame.verb || "frame";
-    const caption = proofFrame.caption || frame.caption || "";
-    return `<div class="monitoring-filmstrip-panel" data-frame-index="${escAttr(String(index))}">
-      ${renderMonitoringFrameSvg(frame, bounds, `step ${step}: ${verb}`)}
-      <div class="monitoring-filmstrip-step">Step ${esc(String(step))}: ${esc(String(verb))}</div>
-      ${caption ? `<div class="monitoring-filmstrip-caption">${esc(String(caption))}</div>` : ""}
-    </div>`;
-  }).join("");
-  return `<div class="monitoring-filmstrip" data-temporal="true">${panels}</div>`;
-}
-
-function renderMonitoringVisualDoc(doc, proof = {}) {
-  const frames = Array.isArray(doc.frames) ? doc.frames : [];
-  if (!frames.length) {
-    return `<div class="visual-note">${esc((doc && doc.error) || "No drawable frames returned.")}</div>`;
-  }
-  if (!window.HermesDrawer || !HermesDrawer._internal || !HermesDrawer._internal.buildSvg) {
-    return `<div class="visual-note">The shared drawer did not load.</div>`;
-  }
-  const bounds = HermesDrawer._internal.documentBounds(frames, doc.canvas || {});
-  if (frames.length > 1 && proof.temporal !== false) {
-    return renderMonitoringFilmstripDoc(doc, proof);
-  }
-  return renderMonitoringFrameSvg(frames[frames.length - 1], bounds, "monitoring visual final frame");
-}
-
-function renderMonitoringProofSummary(proof) {
-  const correct = proof.correct || {};
-  const incorrect = proof.incorrect || {};
-  const residue = proof.interpretive_residue || { status: "human_endorsement_required" };
-  const source = proof.source || "representation_grammar_and_render_contract";
-  return `<div class="visual-proof">
-    <b>Proof status</b> · ${esc(source)}
-    <div class="proof-grid">
-      ${renderMonitoringProofSide("Correct", correct)}
-      ${renderMonitoringProofSide("Misconception", incorrect)}
-      <div class="proof-residue"><b>Residue</b>: ${esc(residue.status || "human_endorsement_required")} — ${esc(residue.claim || "Human endorsement is required for the projective reading from a student work sample to this generated visual.")}</div>
-    </div>
-  </div>`;
-}
-
-function renderMonitoringProofSide(label, proof) {
-  const status = proof.status || "proof_unavailable";
-  const frames = proof.frame_count == null ? "?" : String(proof.frame_count);
-  const temporal = proof.temporal ? "temporal" : "single-frame";
-  return `<div><b>${esc(label)}</b>: ${esc(status)} · ${esc(frames)} frames · ${esc(temporal)}
-    ${renderMonitoringFrameSequence(proof.frame_sequence || [])}
-  </div>`;
-}
-
-function renderMonitoringFrameSequence(sequence) {
-  if (!Array.isArray(sequence) || !sequence.length) return `<div><b>Frame sequence</b>: none</div>`;
-  const steps = sequence.map(frame => {
-    const step = frame && frame.step != null ? String(frame.step) : "?";
-    const verb = frame && frame.verb ? String(frame.verb) : "unnamed_step";
-    return `${esc(step)}. ${esc(verb)}`;
-  }).join(" → ");
-  return `<div><b>Frame sequence</b>: ${steps}</div>`;
-}
-
-function monitoringStrategyVisualSpec(s) {
-  const kind = String(s.kind || s.name || "");
-  const operation = String(s.operation || "");
-  if (kind === "round_then_adjust" && operation === "addition") {
-    return {
-      visualKind: "number-line-compare",
-      operation: "addition",
-      a: 8,
-      b: 7,
-      productive: "round_then_adjust",
-      deformation: "round_without_adjusting"
-    };
-  }
-  return null;
-}
-
-function monitoringVisualPlaceholder(spec) {
-  return `<div class="chart-visual loading" data-visual-kind="number-line-compare" data-operation="${escAttr(spec.operation)}" data-a="${escAttr(String(spec.a))}" data-b="${escAttr(String(spec.b))}" data-productive="${escAttr(spec.productive)}" data-deformation="${escAttr(spec.deformation)}">
-    <div class="visual-kicker">schematic trace, not student work</div>
-    <div>Loading number-line picture for ${esc(spec.productive)} vs its wrong-answer pattern...</div>
-  </div>`;
-}
-
-function lastMonitoringFrame(frames) {
-  return Array.isArray(frames) && frames.length ? frames[frames.length - 1] : null;
-}
-
-function monitoringRoleClass(role) {
-  if (role === "whole") return "mv-whole";
-  if (role === "iterated") return "mv-iterated";
-  if (role === "deformation") return "mv-deformation";
-  return "mv-neutral";
-}
-
-function renderMonitoringLengthFrameSvg(frame) {
-  const scene = (frame && frame.scene) || {};
-  const bars = Array.isArray(scene.bars) ? scene.bars : [];
-  if (!bars.length) return `<div class="muted-inline">No drawable bars returned.</div>`;
-
-  const extents = bars.reduce((acc, b) => {
-    const x = Number(b.x) || 0;
-    const y = Number(b.y) || 0;
-    const w = Number(b.w) || 0;
-    const h = Number(b.h) || 0;
-    acc.minX = Math.min(acc.minX, x);
-    acc.maxX = Math.max(acc.maxX, x + w);
-    acc.minY = Math.min(acc.minY, y);
-    acc.maxY = Math.max(acc.maxY, y + h);
-    return acc;
-  }, { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity });
-
-  const padX = 18;
-  const padY = 18;
-  const minX = extents.minX - padX;
-  const minY = extents.minY - padY;
-  const viewW = Math.max(240, extents.maxX - extents.minX + padX * 2);
-  const viewH = Math.max(118, extents.maxY - extents.minY + padY * 2 + 16);
-  const axisY = extents.maxY + 12;
-
-  const rects = bars.map(b => {
-    const x = Number(b.x) || 0;
-    const y = Number(b.y) || 0;
-    const w = Math.max(1, Number(b.w) || 0);
-    const h = Math.max(1, Number(b.h) || 0);
-    const label = b.label ? String(b.label) : "";
-    const role = b.role ? String(b.role) : "";
-    const textX = x + Math.min(w / 2, Math.max(28, w - 6));
-    const textY = y + h / 2 + 4;
-    return `<g>
-      <rect class="${monitoringRoleClass(role)}" x="${x}" y="${y}" width="${w}" height="${h}" rx="4"><title>${esc(label || role)}</title></rect>
-      ${label ? `<text class="mv-label" x="${textX}" y="${textY}" text-anchor="middle">${esc(label)}</text>` : ''}
-    </g>`;
-  }).join('');
-
-  return `<svg viewBox="${minX} ${minY} ${viewW} ${viewH}" role="img" aria-label="number-line length diagram">
-    <line class="mv-axis" x1="${extents.minX}" y1="${axisY}" x2="${extents.maxX}" y2="${axisY}"></line>
-    ${rects}
-  </svg>`;
-}
-
-function renderMonitoringComparePreview(doc) {
-  const productiveFrame = lastMonitoringFrame(doc && doc.productive && doc.productive.frames);
-  const deformationFrame = lastMonitoringFrame(doc && doc.deformation && doc.deformation.frames);
-  if (!productiveFrame || !deformationFrame) {
-    return `<div class="visual-kicker">schematic trace, not student work</div>
-      <div class="visual-note">${esc((doc && doc.error) || "No drawable comparison returned.")}</div>`;
-  }
-
-  const grounded = doc.grounded_result == null ? "?" : String(doc.grounded_result);
-  const deformed = doc.deformed_result == null ? "?" : String(doc.deformed_result);
-  const omitted = doc.omitted_adjustment == null ? "?" : String(doc.omitted_adjustment);
-  return `<div class="visual-kicker">schematic trace, not student work</div>
-    <div class="chart-visual-grid">
-      <figure>
-        <figcaption>${esc(doc.productiveKind || "productive strategy")}</figcaption>
-        ${renderMonitoringLengthFrameSvg(productiveFrame)}
-        <p class="frame-caption">${esc(productiveFrame.caption || "")}</p>
-      </figure>
-      <figure>
-        <figcaption>${esc(doc.deformationKind || "wrong-answer pattern")}</figcaption>
-        ${renderMonitoringLengthFrameSvg(deformationFrame)}
-        <p class="frame-caption">${esc(deformationFrame.caption || "")}</p>
-      </figure>
-    </div>
-    <div class="visual-note">Grounded result ${esc(grounded)}; deformed result ${esc(deformed)}; omitted adjustment ${esc(omitted)}.</div>`;
-}
-
-async function hydrateMonitoringVisuals(root) {
-  root.querySelectorAll('[data-visual-kind="number-line-compare"]').forEach(async box => {
-    const operation = box.dataset.operation || "addition";
-    const a = Number(box.dataset.a || 8);
-    const b = Number(box.dataset.b || 7);
-    const payload = {"op":"number_line_compare", operation, a, b};
-    try {
-      const { status, data } = await postJSON('/api/render', payload);
-      if (status >= 400 || !data || data.ok === false) throw new Error((data && data.error) || "render failed");
-      box.classList.remove('loading');
-      box.innerHTML = renderMonitoringComparePreview(data);
-    } catch (e) {
-      box.classList.remove('loading');
-      box.innerHTML = `<div class="visual-kicker">schematic trace, not student work</div>
-        <div class="visual-note">Could not draw this number-line compare: ${esc(e && e.message ? e.message : e)}</div>`;
-    }
-  });
-}
-
-function renderMonitoringChart(r) {
-  const code = r.lesson_code || '';
-  const strats = r.anticipated_strategies || [];
-  const mis = r.teacher_misconceptions || [];
-  const studentWorkPictures = renderMonitoringStudentWorkPictures(code);
-
-  const stratRows = strats.map(s => {
-    const where = s.where_to_spot ? `<span class="where">where to spot: ${esc(String(s.where_to_spot))}</span>` : '';
-    const spec = monitoringStrategyVisualSpec(s);
-    const visual = spec ? monitoringVisualPlaceholder(spec) : '';
-    // Gloss then escape, matching the gap-card path: strategy names and
-    // operation atoms arrive as Prolog terms and read as English here.
-    return `<div class="astrat"><b>${esc(glossTerm(s.name || s.kind || ''))}</b><span class="chip">${esc(glossTerm(s.operation || ''))}</span>${where}${visual}</div>`;
-  }).join('') || `<div class="muted-inline">No anticipated strategies encoded for this code.</div>`;
-
-  const misRows = mis.map(m => {
-    const witnessSrc = (m.incompatibility_witness && m.incompatibility_witness.source) || '';
-    const cite = m.citation ? `<div class="cite">${esc(m.citation)}</div>` : '';
-    const src = witnessSrc ? `<div class="src">incompatibility derived by ${esc(witnessSrc)}</div>` : '';
-    return `<div class="amis">
-      <div class="amis-name">${esc(glossTerm(m.name || ''))} <span class="chip">${esc(glossTerm(m.operation || ''))}</span></div>
-      <div class="gap"><span class="lbl">commitment made</span>${m.commitment_made ? esc(glossTerm(m.commitment_made)) : ''}</div>
-      <div class="gap"><span class="lbl">entitlement lacked</span>${m.entitlement_lacked ? esc(glossTerm(m.entitlement_lacked)) : ''}</div>
-      <div class="incompat"><span class="lbl">what this commitment is incompatible with</span>${m.incompatibility ? glossPair(m.incompatibility) : '(none derived)'}</div>
-      ${m.re_anchoring_move ? `<div class="reanchor">${esc(m.re_anchoring_move)}</div>` : ''}
-      ${src}${cite}
-    </div>`;
-  }).join('') || `<div class="muted-inline">No anticipated misconceptions encoded for this code.</div>`;
-
-  const gaps = r.licensed_but_unanticipated || [];
-  const gapRows = gaps.map(g => {
-    const kinds = (g.unanticipated || []).map(k => `<span class="chip">${esc(glossTerm(String(k)))}</span>`).join(' ')
-      || `<span class="muted-inline">none; this chart anticipates every licensed move for this operation</span>`;
-    return `<div class="agap">
-      <div class="agap-head"><b>${esc(glossTerm(g.operation || ''))}</b>
-        <span class="where">${g.unanticipated_count} of ${g.licensed_count} licensed kinds not anticipated (chart anticipates ${g.anticipated_count})</span>
-      </div>
-      <div class="agap-kinds">${kinds}</div>
-    </div>`;
-  }).join('');
-  const gapBand = gaps.length ? `<div class="band">
-      <h4>Licensed but unanticipated</h4>
-      <p class="band-note">moves the practice licenses for these operations that this chart does not anticipate; a student can still make any of them. The gap is the registry's licensed kinds minus the anticipated set, and the incompleteness limit means it never reduces to nothing.</p>
-      ${gapRows}
-    </div>` : '';
-  const coverageSignal = monitoringCoverageSignal(r);
-
-  return `<div class="chart">
-    <div class="chart-head"><h3>Monitoring chart — ${esc(code)}</h3><span class="chip">monitoring chart</span></div>
-    ${coverageSignal}
-    ${r.productive_core ? `<div class="chart-core"><b>Productive core.</b> ${esc(r.productive_core)}</div>` : ''}
-    ${studentWorkPictures}
-    <div class="band">
-      <h4>Anticipated strategies</h4>
-      <p class="band-note">what students are likely to bring; listen for these</p>
-      ${stratRows}
-    </div>
-    <div class="band">
-      <h4>Anticipated misconceptions</h4>
-      <p class="band-note">each carries the commitment / entitlement gap and the computed incompatibility</p>
-      ${misRows}
-    </div>
-    ${gapBand}
-  </div>`;
-}
-
-function monitoringCoverageSignal(r) {
-  const facts = r.pml_facts || [];
-  const coverage = facts.find(f => f && f.id === 'coverage');
-  const conclusion = coverage ? String(coverage.conclusion || '') : '';
-  if (!conclusion) return '';
-  if (conclusion === 'scope_sequence_only') {
-    return `<div class="coverage-signal scope" data-coverage="scope_sequence_only">
-      <span class="coverage-label">coverage: scope sequence only</span>
-      No authored strategy or misconception rows are attached yet. This code is present in the IM scope sequence, so the chart is a boundary marker rather than a full monitoring chart.
-    </div>`;
-  }
-  if (conclusion.startsWith('under_attached')) {
-    return `<div class="coverage-signal scope" data-coverage="under_attached">
-      <span class="coverage-label">coverage: under attached</span>
-      ${esc(conclusion)}
-    </div>`;
-  }
-  return `<div class="coverage-signal" data-coverage="${escAttr(conclusion)}">
-    <span class="coverage-label">coverage: ${esc(conclusion)}</span>
-  </div>`;
-}
 
 async function planLesson() {
   const input = $("#plan-lesson-code"), note = $("#plan-lesson-note");

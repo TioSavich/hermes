@@ -1,20 +1,27 @@
 #!/usr/bin/env python3
 """Render lesson-specific deformation monitoring charts as SVG.
 
-The usefulness payoff: "given a grade-3 IM lesson on 1/N modeled with a circle or
-a fraction strip, here are the student-work errors to watch for, rendered on 1/N."
+"Given a lesson charted on 1/N modeled with a circle or a fraction strip, here
+are the student-work errors to watch for, rendered on 1/N."
 
 The wire (the established render pattern, reusing the node drawer.js harness from
 export_parametric_deformations.py verbatim):
 
   curriculum/im/lesson_deformation_chart.pl
-      decides WHICH deformations to watch for, on WHICH fraction, for each real
-      IM lesson -- every deformation gated through the grammar's misconception
-      lane (representation_grammar:deformation_spec_evidence/4 and
+      decides WHICH deformations to watch for, on WHICH fraction, for each
+      charted IM lesson -- every deformation gated through the grammar's
+      misconception lane (representation_grammar:deformation_spec_evidence/4 and
       parametric_fraction_errors:error_evidence/4), so it is a labeled
       misconception, never an unlabeled productive diagram.
       -> a monitoring-chart dict (swipl -l paths.pl, json_write_dict) -> here
       -> hermes/web/render/drawer.js buildSvg -> SVG filmstrips.
+
+WHICH fraction is where the honesty lives. Only 3 of the 77 lessons this script
+writes take their hosts and fractions from a teacher guide; the other 74 take
+one fixed default set (chart_provenance/2 in the Prolog module records which).
+Every page written here states its lesson's provenance and what the value means,
+and the top index and manifest carry the census, so no reader can mistake a
+default fill for a reading of the lesson.
 
 Logic lives in Prolog; this script is projection plus layout. It does NOT edit
 representation_grammar.pl or drawer.js. Output under
@@ -243,12 +250,69 @@ def export_lesson_lean(lesson_dir: Path, code: str, chart: dict, written: list[P
 
 # --- the per-lesson index page -----------------------------------------------
 
+PROVENANCE_LABEL = {
+    "hand_authored": "read from the teacher guide",
+    "default_fill": "fixed default set, not read from this lesson",
+}
+
+# Default fill covers most of the gallery, so the banner carries the warmer
+# colour and the body copy changes with the provenance rather than describing
+# quantities the chart does not have.
+PROVENANCE_BANNER_STYLE = {
+    "hand_authored": "border-left:4px solid #365f6b;background:#eef3f4",
+    "default_fill": "border-left:4px solid #8b1e16;background:#f7ece9",
+}
+
+
+def provenance_banner(chart: dict) -> str:
+    """A block that states the chart's provenance in the module's own words."""
+    provenance = chart.get("provenance", "default_fill")
+    note = chart.get("provenance_note", "")
+    label = PROVENANCE_LABEL.get(provenance, provenance.replace("_", " "))
+    style = PROVENANCE_BANNER_STYLE.get(provenance, PROVENANCE_BANNER_STYLE["default_fill"])
+    return (
+        f"<div style='{style};max-width:820px;padding:12px 16px;margin:18px 0;"
+        "line-height:1.45'>"
+        f"<strong>Quantities: {html.escape(label)}</strong> "
+        f"(<code>provenance: {html.escape(provenance)}</code>)"
+        f"<br>{html.escape(note)}</div>"
+    )
+
+
+def chart_body_copy(chart: dict) -> str:
+    """What the chart reports, worded to the provenance it actually has."""
+    if chart.get("provenance") == "hand_authored":
+        opening = (
+            "This is the monitoring chart for the lesson: the <em>productive</em> "
+            "model for each fraction the teacher guide names, beside the "
+            "<em>likely student-work deformations</em> to watch for on each "
+            "representation, drawn on that same fraction."
+        )
+    else:
+        opening = (
+            "The hosts and fractions below are the chart's fixed default set, "
+            "handed to every lesson that was not read. Each pair is the "
+            "<em>productive</em> model for a default fraction beside the "
+            "<em>likely student-work deformations</em> on that representation. "
+            "The pairs report the deformation families; they do not report what "
+            "this lesson asks children to model."
+        )
+    return (
+        "<p style='max-width:820px;line-height:1.45'>" + opening +
+        " The deformations are parametric: the same error rule regenerates for "
+        "any fraction handed to it. Each deformation is a labeled misconception, "
+        "gated through the representation grammar's misconception lane &mdash; "
+        "never an unlabeled productive diagram. Logic in "
+        "<code>curriculum/im/lesson_deformation_chart.pl</code>; render "
+        "projected through <code>hermes/web/render/drawer.js</code>.</p>"
+    )
+
+
 def build_lesson_index(chart: dict, cells: list) -> str:
     code = chart["lesson_code"]
     title = chart["title"]
     standards = ", ".join(chart["standards"])
     fractions = ", ".join(chart["fractions"])
-    provenance = chart["provenance"].replace("_", " ")
     rows = []
     rows.append("<!doctype html><meta charset=utf-8>")
     rows.append(f"<title>{html.escape(code)} - deformations to watch for</title>")
@@ -257,18 +321,9 @@ def build_lesson_index(chart: dict, cells: list) -> str:
     rows.append(f"<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
                 f"{html.escape(code)}: {html.escape(title)}</h1>")
     rows.append(f"<p><strong>Standards:</strong> {html.escape(standards)} &nbsp; "
-                f"<strong>Fractions:</strong> {html.escape(fractions)} &nbsp; "
-                f"<strong>Chart source:</strong> {html.escape(provenance)}</p>")
-    rows.append("<p style='max-width:820px;line-height:1.45'>This is the monitoring "
-                "chart for the lesson: the <em>productive</em> model for each of the "
-                "lesson's fractions, beside the <em>likely student-work deformations</em> "
-                "to watch for on each representation, drawn on the lesson's own "
-                "fraction. The deformations are parametric: the same error rule "
-                "regenerates for every fraction the lesson names. Each deformation is "
-                "a labeled misconception, gated through the representation grammar's "
-                "misconception lane &mdash; never an unlabeled productive diagram. "
-                "Logic in <code>curriculum/im/lesson_deformation_chart.pl</code>; render "
-                "projected through <code>hermes/web/render/drawer.js</code>.</p>")
+                f"<strong>Fractions charted:</strong> {html.escape(fractions)}</p>")
+    rows.append(provenance_banner(chart))
+    rows.append(chart_body_copy(chart))
 
     # group cells by host, then fraction
     by_host: dict[str, list] = {}
@@ -308,6 +363,7 @@ def build_lean_lesson_index(chart: dict, productive_cell: dict, productive_file:
         "max-width:1180px;margin:0 auto;padding:28px'>",
         f"<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
         f"{html.escape(code)}: lean deformation chart</h1>",
+        provenance_banner(chart),
         "<p style='max-width:820px;line-height:1.45'>This compact remote-export "
         "layout retains the complete chart in <code>chart.json</code>, one "
         "representative productive filmstrip, and one representative filmstrip "
@@ -345,22 +401,39 @@ def build_top_index(records: list, *, lean: bool = False) -> str:
     rows.append("<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
                 "Lesson deformation monitoring charts</h1>")
     rows.append("<p style='max-width:760px;line-height:1.45'>For each charted "
-                "Illustrative Mathematics fraction lesson, the productive model for "
-                "the lesson's fractions beside the student-work deformations to watch "
-                "for, rendered on the lesson's own fractions. The deformations are "
-                "parametric over the fraction and grounded in the corpus-attested "
-                "transplant and equipartition-failure families.</p>")
+                "Illustrative Mathematics lesson, the productive model for a unit "
+                "fraction beside the student-work deformations to watch for on it. "
+                "The deformations are parametric over the fraction and grounded in "
+                "the corpus-attested transplant and equipartition-failure "
+                "families.</p>")
+    read = sum(1 for r in records if r["provenance"] == "hand_authored")
+    filled = len(records) - read
+    rows.append(
+        "<div style='border-left:4px solid #8b1e16;background:#f7ece9;"
+        "max-width:760px;padding:12px 16px;margin:18px 0;line-height:1.45'>"
+        f"<strong>{read} of these {len(records)} "
+        f"{'chart' if len(records) == 1 else 'charts'} "
+        f"{'takes' if read == 1 else 'take'} their hosts and fractions from a "
+        f"teacher guide. The other {filled} "
+        f"{'takes' if filled == 1 else 'take'} one fixed default set</strong> "
+        "(circle, rectangle, bar; 1/2, 1/3, 1/4, 1/6, 1/8), which reports "
+        "nothing about what those lessons ask children to model. Each chart "
+        "states its own provenance at the top. A lesson appearing on this list "
+        "is not a lesson that was read, so no coverage number may cite it.</div>"
+    )
     if lean:
         rows.append("<p><strong>Lean export:</strong> each lesson has one productive "
                     "filmstrip and one filmstrip for each admitted deformation kind; "
                     "the complete cell data remains in its chart.json.</p>")
     rows.append("<ul>")
     for r in records:
+        marker = PROVENANCE_LABEL.get(r["provenance"], r["provenance"].replace("_", " "))
         rows.append(
             f"<li><a href='{html.escape(r['code'])}/index.html'>"
             f"{html.escape(r['code'])}: {html.escape(r['title'])}</a> "
             f"&mdash; {html.escape(', '.join(r['standards']))}; "
-            f"fractions {html.escape(', '.join(r['fractions']))}; "
+            f"fractions {html.escape(', '.join(r['fractions']))} "
+            f"({html.escape(marker)}); "
             f"{r['cell_count']} cells</li>"
         )
     rows.append("</ul>")
@@ -389,6 +462,14 @@ def main() -> int:
     manifest = {
         "kind": "lesson_deformation_charts",
         "lean": args.lean,
+        "provenance_census": {
+            "hand_authored": sum(1 for r in records if r["provenance"] == "hand_authored"),
+            "default_fill": sum(1 for r in records if r["provenance"] != "hand_authored"),
+            "total": len(records),
+            "note": "default_fill lessons carry the chart's fixed default hosts and "
+                    "fractions, not quantities read from the lesson. No coverage "
+                    "number may cite this manifest.",
+        },
         "lessons": [
             {
                 "code": r["code"],

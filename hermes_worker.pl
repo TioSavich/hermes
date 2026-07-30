@@ -1168,9 +1168,12 @@ dispatch_request(fraction_cgi_addition, Id, Request, Response) :-
             Response)
     ).
 
-% Parametric deformation chart for one IM lesson (covered: the three grade-3
-% fraction lessons IM-G3-U5-L1/L2/L15). A code outside coverage fails the
-% handler, which surfaces honestly as op_failed.
+% Parametric deformation chart for one IM lesson. A code outside coverage fails
+% the handler, which surfaces honestly as op_failed. Coverage is not a reading:
+% only three charted lessons take their hosts and fractions from a teacher guide
+% (IM-G3-U5-L1/L2/L15, plus the division chart IM-G6-U4-L10); the rest take the
+% fixed default set. Every payload carries provenance and provenance_note from
+% lesson_deformation_chart:chart_provenance/2, so no consumer has to guess.
 dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
     (   get_dict(code, Request, Code0)
     ->  atom_string(Code, Code0),
@@ -2915,31 +2918,43 @@ state_label_text(Value, Text) :-
 deformation_chart_scope_export(Code, Dict) :-
     findall(CoveredCode,
             ( lesson_deformation_chart:lesson_chart_lesson(CoveredCode, _, _, _, _)
-            ; lesson_deformation_chart:lesson_division_deformation_chart(CoveredCode, _)
+            ; lesson_deformation_chart:division_chart_lesson(CoveredCode)
             ),
             Codes0),
     sort(Codes0, Codes),
     maplist(atom_string, Codes, CodeStrings),
     atom_string(Code, CodeString),
+    lesson_deformation_chart:chart_provenance_census(Census),
     (   lesson_deformation_chart:monitoring_chart(Code, Chart0)
-    ->  Dict = _{
+    ->  % The chart is the single source for its own provenance; read it there
+        % rather than recomputing it and risking two answers.
+        get_dict(provenance, Chart0, Provenance),
+        get_dict(provenance_note, Chart0, ProvenanceNote),
+        Dict = _{
             available: true,
             coverage: "covered",
             scope: "lesson_deformation_charts",
             lesson_code: CodeString,
             request_op: "lesson_deformation_chart",
             covered_lesson_codes: CodeStrings,
+            provenance: Provenance,
+            provenance_note: ProvenanceNote,
+            provenance_census: Census,
             chart: Chart
         },
         json_safe(Chart0, Chart)
     ;   Dict = _{
             available: false,
             coverage: "scope_limited",
-            scope: "hand_authored_lesson_deformation_charts",
+            scope: "lesson_deformation_charts",
             lesson_code: CodeString,
             request_op: "lesson_deformation_chart",
             covered_lesson_codes: CodeStrings,
-            note: "Deformation charts are currently authored only for the listed lessons."
+            provenance_census: Census,
+            note: "No deformation chart for that code. A code on the covered \c
+                   list is not a lesson that was read: provenance_census counts \c
+                   how many charted lessons take their hosts and fractions from \c
+                   a teacher guide and how many take the fixed default set."
         }
     ).
 

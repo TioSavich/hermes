@@ -916,9 +916,11 @@ capability_page('godel_primes_witness', '/more-zeeman/witnesses.html').
 capability_page('ground', '/hermes/app/web/console.html').
 capability_page('grounded_arith_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_for', '/hermes/app/web/breaks.html').
+capability_page('grounding_for', '/hermes/app/web/console.html').
 capability_page('grounding_inference_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_metaphor_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_metaphors', '/hermes/app/web/breaks.html').
+capability_page('grounding_metaphors', '/hermes/app/web/console.html').
 capability_page('health', '/hermes/app/web/breaks.html').
 capability_page('health', '/hermes/app/web/console.html').
 capability_page('health', '/more-zeeman/atlas.html').
@@ -952,7 +954,6 @@ capability_page('media_alignment', '/hermes/app/web/discussions.html').
 capability_page('metaphor_break_witness', '/more-zeeman/witnesses.html').
 capability_page('misconception_hook_witness', '/more-zeeman/witnesses.html').
 capability_page('modal_context_witness', '/more-zeeman/witnesses.html').
-capability_page('monitoring_chart_export', '/hermes/app/web/console.html').
 capability_page('monitoring_chart_export', '/more-zeeman/monitoring_chart.html').
 capability_page('monitoring_chart_export', '/more-zeeman/scoreboard.html').
 capability_page('mua_coherence_witness', '/more-zeeman/witnesses.html').
