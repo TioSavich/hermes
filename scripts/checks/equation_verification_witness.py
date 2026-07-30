@@ -12,7 +12,9 @@ from __future__ import annotations
 
 import json
 import pathlib
+import subprocess
 import sys
+import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 CURRICULUM = ROOT / "scripts" / "curriculum"
@@ -22,6 +24,11 @@ sys.path.insert(0, str(CURRICULUM))
 
 import compile_action_mappings as compiler  # noqa: E402
 import equation_verification as eqv  # noqa: E402
+
+
+FORMAL_CORE_CONTROLS = (
+    FIXTURES / "equation_verification_formal_core_controls.json"
+)
 
 
 def coverage():
@@ -104,6 +111,194 @@ def ledger_fixtures(docs, covered, attachments) -> list[tuple[str, str]]:
     return refusals
 
 
+def _formal_core_claim(control: dict) -> str:
+    """The literal or compact repeated-step claim carried by one control."""
+    claim = control.get("claim")
+    if isinstance(claim, str):
+        return claim
+    repeat = control.get("repeat_claim")
+    if not isinstance(repeat, dict):
+        raise SystemExit(
+            f"formal-core control {control.get('id')!r} has no claim"
+        )
+    repetitions = repeat.get("left_repetitions")
+    step = repeat.get("left_step")
+    if (
+        not isinstance(repetitions, int)
+        or isinstance(repetitions, bool)
+        or repetitions < 0
+        or not isinstance(step, str)
+    ):
+        raise SystemExit(
+            f"formal-core control {control.get('id')!r} has malformed repetition"
+        )
+    steps = ", ".join([step] * repetitions)
+    return (
+        "equation_sides("
+        f"grounded_counting_bound({int(repeat['bound'])}), "
+        f"side({int(repeat['left_start'])}, [{steps}]), "
+        f"side({int(repeat['right_start'])}, []))"
+    )
+
+
+def formal_core_controls() -> list[tuple[str, str]]:
+    """Run the precedence and resource controls through their standing paths."""
+    fixture = json.loads(FORMAL_CORE_CONTROLS.read_text(encoding="utf-8"))
+    if fixture.get("schema") != "equation_sides_formal_core_controls_v1":
+        raise SystemExit(
+            f"unexpected formal-core fixture schema: {fixture.get('schema')!r}"
+        )
+
+    outcomes: list[tuple[str, str]] = []
+    compiler_claims = []
+    for control in fixture.get("compiler_cases", []):
+        claim, family, route = eqv._claim_term(control["lhs"], control["rhs"])
+        expected = (
+            control["expected_claim"],
+            control["expected_family"],
+            control["expected_route"],
+        )
+        if (claim, family, route) != expected:
+            raise SystemExit(
+                f"formal-core compiler control {control['id']} drifted: "
+                f"{(claim, family, route)!r} != {expected!r}"
+            )
+        compiler_claims.append((control["id"], claim))
+    compiler_results = {
+        row["id"]: row
+        for row in eqv._run_driver(ROOT, compiler_claims, [])
+        if row.get("kind") == "claim"
+    }
+    for control in fixture.get("compiler_cases", []):
+        result = compiler_results.get(control["id"])
+        if result is None or result.get("verdict") != control["expected_verdict"]:
+            raise SystemExit(
+                f"formal-core compiler control {control['id']} returned "
+                f"{result!r}"
+            )
+        outcomes.append(
+            (
+                control["id"],
+                f"licensed {result['verdict']} via {result['checker']}",
+            )
+        )
+
+    checker_refusals = fixture.get("checker_refusals", [])
+    checker_licenses = fixture.get("checker_licenses", [])
+    checker_controls = checker_refusals + checker_licenses
+    driver = r"""
+:- use_module(hermes(math_claim_checker), [ check_math_claim/2 ]).
+
+main :-
+    forall(control(Id, Claim), check_control(Id, Claim)),
+    halt.
+
+check_control(Id, Claim) :-
+    (   catch(check_math_claim(Claim, Dict0), Error,
+              ( message_to_string(Error, Message),
+                Dict0 = _{status:"threw", reason:Message} ))
+    ->  Dict = Dict0
+    ;   Dict = _{status:"failed", reason:"check_math_claim/2 failed"}
+    ),
+    dict_string(Dict, status, Status),
+    dict_string(Dict, reason, Reason),
+    dict_string(Dict, verdict, Verdict),
+    dict_string(Dict, checker, Checker),
+    format("CONTROL\t~s\t~s\t~s\t~s\t~s~n",
+           [Id, Status, Reason, Verdict, Checker]).
+
+dict_string(Dict, Key, Value) :-
+    (   get_dict(Key, Dict, Raw)
+    ->  ( string(Raw) -> Value = Raw ; term_string(Raw, Value) )
+    ;   Value = ""
+    ).
+"""
+    for control in checker_controls:
+        driver += (
+            f"control({json.dumps(control['id'])}, "
+            f"{_formal_core_claim(control)}).\n"
+        )
+    with tempfile.TemporaryDirectory(prefix="equation-sides-controls-") as workspace:
+        driver_path = pathlib.Path(workspace) / "controls.pl"
+        driver_path.write_text(driver, encoding="utf-8")
+        result = subprocess.run(
+            [
+                "swipl", "-q", "-l", "paths.pl", "-s", str(driver_path),
+                "-g", "main", "-t", "halt",
+            ],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+        )
+    if result.returncode:
+        raise SystemExit(
+            "formal-core checker controls failed:\n"
+            + (result.stderr or result.stdout).strip()[-4000:]
+        )
+    checker_results: dict[str, dict[str, str]] = {}
+    for line in result.stdout.splitlines():
+        if not line.startswith("CONTROL\t"):
+            continue
+        _, identifier, status, reason, verdict, checker = line.split("\t", 5)
+        checker_results[identifier] = {
+            "status": status,
+            "reason": reason,
+            "verdict": verdict,
+            "checker": checker,
+        }
+    for control in checker_refusals:
+        outcome = checker_results.get(control["id"])
+        if outcome is None:
+            raise SystemExit(
+                f"formal-core checker control {control['id']} emitted no result"
+            )
+        if outcome["status"] != control["expected_status"]:
+            raise SystemExit(
+                f"formal-core checker control {control['id']} returned status "
+                f"{outcome['status']!r}, expected "
+                f"{control['expected_status']!r}: {outcome['reason']}"
+            )
+        if control["expected_reason_fragment"] not in outcome["reason"]:
+            raise SystemExit(
+                f"formal-core checker control {control['id']} returned the "
+                f"wrong reason: {outcome['reason']!r}"
+            )
+        outcomes.append(
+            (
+                control["id"],
+                f"refused {outcome['status']}: {outcome['reason']}",
+            )
+        )
+    for control in checker_licenses:
+        outcome = checker_results.get(control["id"])
+        if outcome is None:
+            raise SystemExit(
+                f"formal-core checker control {control['id']} emitted no result"
+            )
+        actual = (
+            outcome["status"],
+            outcome["verdict"],
+            outcome["checker"],
+        )
+        expected = (
+            control["expected_status"],
+            control["expected_verdict"],
+            control["expected_checker"],
+        )
+        if actual != expected:
+            raise SystemExit(
+                f"formal-core checker control {control['id']} drifted: "
+                f"{actual!r} != {expected!r}; reason={outcome['reason']!r}"
+            )
+        outcomes.append(
+            (
+                control["id"],
+                f"licensed {outcome['verdict']} via {outcome['checker']}",
+            )
+        )
+    return outcomes
+
+
 def main() -> int:
     docs, covered, attachments = coverage()
     rows = compiler.validate_equation_verifications(ROOT, docs, covered, attachments)
@@ -145,6 +340,8 @@ def main() -> int:
     )
     for identifier, outcome in witness_controls(docs):
         print(f"witness control {identifier}: {outcome}")
+    for identifier, outcome in formal_core_controls():
+        print(f"formal-core control {identifier}: {outcome}")
     for name, message in ledger_fixtures(docs, covered, attachments):
         print(f"manufactured control refused ({name}): {message}")
     return 0

@@ -1,0 +1,88 @@
+{
+  "schema": "equation_sides_formal_core_controls_v1",
+  "compiler_cases": [
+    {
+      "id": "mixed_precedence_add_then_multiply",
+      "lhs": "2 + 3 × 4",
+      "rhs": "14",
+      "expected_claim": "arithmetic_equation(2 + 3 * 4, 14)",
+      "expected_family": "arithmetic_equality",
+      "expected_route": "equation_states_no_single_binary_result",
+      "expected_verdict": "holds"
+    },
+    {
+      "id": "mixed_precedence_subtract_then_multiply",
+      "lhs": "10 - 2 × 3",
+      "rhs": "4",
+      "expected_claim": "arithmetic_equation(10 - 2 * 3, 4)",
+      "expected_family": "arithmetic_equality",
+      "expected_route": "equation_states_no_single_binary_result",
+      "expected_verdict": "holds"
+    }
+  ],
+  "checker_refusals": [
+    {
+      "id": "operand_exceeds_bound_even_when_product_is_zero",
+      "claim": "equation_sides(grounded_counting_bound(10000), side(0, [multiply(200000000)]), side(0, []))",
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "left side uses step operand 200000000; the grounded magnitude limit is 10000"
+    },
+    {
+      "id": "cumulative_multiply_cost_exceeds_bound",
+      "claim": "equation_sides(grounded_counting_bound(10000), side(1, [multiply(10000), subtract(9999), multiply(10000), subtract(9999), multiply(10000), subtract(9999)]), side(1, []))",
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "left side needs 20000 multiplication iterations across its steps; the grounded multiplication-cost limit is 10000"
+    },
+    {
+      "id": "caller_bound_cannot_widen_formal_ceiling",
+      "claim": "equation_sides(grounded_counting_bound(100000000000), side(50000, []), side(50000, []))",
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "checker ceiling"
+    },
+    {
+      "id": "step_count_exceeds_formal_ceiling",
+      "repeat_claim": {
+        "bound": 10000,
+        "left_start": 0,
+        "left_step": "add(0)",
+        "left_repetitions": 1001,
+        "right_start": 0
+      },
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "left side has 1001 steps; the grounded step-count ceiling is 1000"
+    },
+    {
+      "id": "start_magnitude_exceeds_bound",
+      "claim": "equation_sides(grounded_counting_bound(10000), side(10001, []), side(0, []))",
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "left side starts at 10001; the grounded magnitude limit is 10000"
+    },
+    {
+      "id": "intermediate_magnitude_exceeds_bound",
+      "claim": "equation_sides(grounded_counting_bound(10000), side(9000, [add(2000)]), side(0, []))",
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "left side reaches intermediate magnitude 11000; the grounded magnitude limit is 10000"
+    },
+    {
+      "id": "cumulative_add_subtract_work_exceeds_bound",
+      "claim": "equation_sides(grounded_counting_bound(10000), side(10000, [add(0), add(0), add(0), add(0)]), side(10000, []))",
+      "expected_status": "not_covered",
+      "expected_reason_fragment": "left side needs 40000 counting acts across its add/subtract steps; the grounded cumulative-work limit is 30000"
+    }
+  ],
+  "checker_licenses": [
+    {
+      "id": "step_count_at_formal_ceiling",
+      "repeat_claim": {
+        "bound": 10000,
+        "left_start": 0,
+        "left_step": "add(0)",
+        "left_repetitions": 1000,
+        "right_start": 0
+      },
+      "expected_status": "domain_checked",
+      "expected_verdict": "holds",
+      "expected_checker": "grounded_equation_sides"
+    }
+  ]
+}

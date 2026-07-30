@@ -427,6 +427,64 @@ check_math_claim(shape_property(Shape, Property), Dict) :-
                      "geometry:quadrilateral_hierarchy", "refuted", [T], Dict)
     ).
 
+% --- two-sided whole-number equations: fold both sides through counting ---
+% The requested bound is part of the compiled term. It may narrow, but cannot
+% widen beyond grounded_equation_ceiling/1.
+% A side starts from one whole number and applies its printed operations from
+% left to right. Signed magnitudes keep a subtraction such as 100-300 inside
+% grounded add/subtract/order rather than asking SWI arithmetic for its verdict.
+check_math_claim(
+    equation_sides(grounded_counting_bound(Bound),
+                   side(LeftStart, LeftSteps),
+                   side(RightStart, RightSteps)),
+    Dict
+) :-
+    !,
+    (   \+ valid_equation_side_domain(Bound, LeftStart, LeftSteps,
+                                      RightStart, RightSteps)
+    ->  not_covered(
+            "whole_number_equation_sides",
+            "each side must start from a non-negative integer and use only add(N), subtract(N), or multiply(N) steps with non-negative integer operands",
+            Dict)
+    ;   grounded_equation_ceiling(Ceiling),
+        Bound > Ceiling
+    ->  format(
+            string(Reason),
+            "requested grounded counting bound ~w exceeds the checker ceiling of ~w",
+            [Bound, Ceiling]),
+        not_covered("whole_number_equation_sides", Reason, Dict)
+    ;   side_grounded_bound_violation(Bound, LeftStart, LeftSteps,
+                                      LeftViolation)
+    ->  grounded_side_bound_reason(left, LeftViolation, Reason),
+        not_covered("whole_number_equation_sides", Reason, Dict)
+    ;   side_grounded_bound_violation(Bound, RightStart, RightSteps,
+                                      RightViolation)
+    ->  grounded_side_bound_reason(right, RightViolation, Reason),
+        not_covered("whole_number_equation_sides", Reason, Dict)
+    ;   fold_grounded_side(LeftStart, LeftSteps, LeftValue),
+        fold_grounded_side(RightStart, RightSteps, RightValue),
+        signed_value_text(LeftValue, LeftText),
+        signed_value_text(RightValue, RightText),
+        (   signed_equal(LeftValue, RightValue)
+        ->  Verdict = "holds",
+            format(string(Trace),
+                   "left side has ~w; right side has ~w; both sides come to the same count",
+                   [LeftText, RightText])
+        ;   signed_order_gap(LeftValue, RightValue, Larger, Gap),
+            rec_int(Gap, GapCount),
+            Verdict = "refuted",
+            format(string(Trace),
+                   "left side has ~w; right side has ~w; ~w side is larger by a count of ~w",
+                   [LeftText, RightText, Larger, GapCount])
+        ),
+        checked_dict(
+            "whole_number_equation_sides",
+            "grounded_equation_sides",
+            Verdict,
+            [Trace],
+            Dict)
+    ).
+
 % --- SWI arithmetic red pen: numeric expression equality ---
 check_math_claim(arithmetic_equation(Left, Right), Dict) :-
     !,
@@ -553,6 +611,265 @@ quad_property(parallelogram, two_pairs_parallel_sides).
 quad_property(parallelogram, opposite_sides_equal).
 quad_property(rectangle, four_right_angles).
 quad_property(rhombus, four_equal_sides).
+
+% Formal-core ceiling. A caller may request less in the claim term, but cannot
+% authorize a larger recollection or multiplication budget.
+grounded_equation_ceiling(10000).
+
+% The corpus maximum is five. An adversarial 999-step side measured 7.81 seconds;
+% using that side twice in one claim measured 15.96 seconds.
+% This ceiling protects the recursive fold when steps carry little charged work.
+grounded_equation_step_ceiling(1000).
+
+% This is separate from the magnitude ceiling because it totals work across
+% steps. The 30000 boundary admitted both refused grade-4 expanded-form shapes;
+% the current corpus maximum is 3200 counting acts. The adversarial two-side
+% claim measured above uses 29880 counting acts per side.
+grounded_equation_add_subtract_work_ceiling(30000).
+
+valid_equation_side_domain(Bound, LeftStart, LeftSteps,
+                           RightStart, RightSteps) :-
+    integer(Bound),
+    Bound >= 0,
+    valid_equation_side(LeftStart, LeftSteps),
+    valid_equation_side(RightStart, RightSteps).
+
+valid_equation_side(Start, Steps) :-
+    integer(Start),
+    Start >= 0,
+    is_list(Steps),
+    forall(member(Step, Steps), valid_equation_step(Step)).
+
+valid_equation_step(add(N)) :-
+    integer(N),
+    N >= 0.
+valid_equation_step(subtract(N)) :-
+    integer(N),
+    N >= 0.
+valid_equation_step(multiply(N)) :-
+    integer(N),
+    N >= 0.
+
+% This preflight protects the grounded fold from constructing work beyond its
+% declared limits. Built-in arithmetic decides only route eligibility here;
+% the verdict below is grounded. A violation records the first limit that fires
+% so a refusal can name its actual cause.
+side_grounded_bound_violation(Bound, Start, Steps, Violation) :-
+    side_grounded_bound_status(Bound, Start, Steps, Status),
+    Status \== within,
+    Violation = Status.
+
+side_grounded_bound_status(Bound, Start, Steps, Status) :-
+    (   Start > Bound
+    ->  Status = start_magnitude(Start, Bound)
+    ;   side_bound_fold(Steps, Start, Bound, Status)
+    ).
+
+side_bound_fold(Steps, Current, Bound, Status) :-
+    grounded_equation_step_ceiling(FormalStepCeiling),
+    grounded_equation_add_subtract_work_ceiling(AddSubtractWorkCeiling),
+    StepCeiling is min(Bound, FormalStepCeiling),
+    side_bound_fold(Steps, Current, 0, 0, 0, Bound,
+                    AddSubtractWorkCeiling, StepCeiling, Status).
+
+side_bound_fold([], _, StepCount, AddSubtractWork, MultiplyCost,
+                _, _, _, within) :-
+    integer(StepCount),
+    integer(AddSubtractWork),
+    integer(MultiplyCost).
+side_bound_fold([Step|Steps], Current, StepCount, AddSubtractWork,
+                MultiplyCost, Bound, AddSubtractWorkCeiling, StepCeiling,
+                Status) :-
+    NextStepCount is StepCount + 1,
+    (   NextStepCount > StepCeiling
+    ->  Status = step_count(NextStepCount, StepCeiling)
+    ;   equation_step_operand(Step, Operand),
+        (   Operand > Bound
+        ->  Status = step_operand(Operand, Bound)
+        ;   side_bound_step_status(
+                Step, Steps, Current, NextStepCount, AddSubtractWork,
+                MultiplyCost, Bound, AddSubtractWorkCeiling, StepCeiling,
+                Status)
+        )
+    ).
+
+side_bound_step_status(
+    Step, Steps, Current, NextStepCount, AddSubtractWork, MultiplyCost,
+    Bound, AddSubtractWorkCeiling, StepCeiling, Status
+) :-
+    step_multiply_cost(Step, MultiplyCost, NextMultiplyCost),
+    (   NextMultiplyCost > Bound
+    ->  Status = multiply_cost(NextMultiplyCost, Bound)
+    ;   step_add_subtract_work(Step, Current, AddSubtractWork,
+                               NextAddSubtractWork),
+        (   NextAddSubtractWork > AddSubtractWorkCeiling
+        ->  Status = add_subtract_work(NextAddSubtractWork,
+                                       AddSubtractWorkCeiling)
+        ;   step_arithmetic_value(Step, Current, Next),
+            NextMagnitude is abs(Next),
+            (   NextMagnitude > Bound
+            ->  Status = intermediate_magnitude(NextMagnitude, Bound)
+            ;   side_bound_fold(
+                    Steps, Next, NextStepCount, NextAddSubtractWork,
+                    NextMultiplyCost, Bound, AddSubtractWorkCeiling,
+                    StepCeiling, Status)
+            )
+        )
+    ).
+
+equation_step_operand(add(N), N).
+equation_step_operand(subtract(N), N).
+equation_step_operand(multiply(N), N).
+
+step_multiply_cost(add(_), Cost, Cost).
+step_multiply_cost(subtract(_), Cost, Cost).
+step_multiply_cost(multiply(N), Cost, NextCost) :-
+    NextCost is Cost + N.
+
+step_add_subtract_work(add(_), Current, Cost, NextCost) :-
+    NextCost is Cost + abs(Current).
+step_add_subtract_work(subtract(_), Current, Cost, NextCost) :-
+    NextCost is Cost + abs(Current).
+step_add_subtract_work(multiply(_), _, Cost, Cost).
+
+step_arithmetic_value(add(N), Current, Next) :-
+    Next is Current + N.
+step_arithmetic_value(subtract(N), Current, Next) :-
+    Next is Current - N.
+step_arithmetic_value(multiply(N), Current, Next) :-
+    Next is Current * N.
+
+grounded_side_bound_reason(Side, start_magnitude(Value, Limit), Reason) :-
+    format(
+        string(Reason),
+        "~w side starts at ~w; the grounded magnitude limit is ~w",
+        [Side, Value, Limit]).
+grounded_side_bound_reason(Side, step_operand(Value, Limit), Reason) :-
+    format(
+        string(Reason),
+        "~w side uses step operand ~w; the grounded magnitude limit is ~w",
+        [Side, Value, Limit]).
+grounded_side_bound_reason(Side, intermediate_magnitude(Value, Limit),
+                           Reason) :-
+    format(
+        string(Reason),
+        "~w side reaches intermediate magnitude ~w; the grounded magnitude limit is ~w",
+        [Side, Value, Limit]).
+grounded_side_bound_reason(Side, add_subtract_work(Value, Limit), Reason) :-
+    format(
+        string(Reason),
+        "~w side needs ~w counting acts across its add/subtract steps; the grounded cumulative-work limit is ~w",
+        [Side, Value, Limit]).
+grounded_side_bound_reason(Side, multiply_cost(Value, Limit), Reason) :-
+    format(
+        string(Reason),
+        "~w side needs ~w multiplication iterations across its steps; the grounded multiplication-cost limit is ~w",
+        [Side, Value, Limit]).
+grounded_side_bound_reason(Side, step_count(Value, Limit), Reason) :-
+    format(
+        string(Reason),
+        "~w side has ~w steps; the grounded step-count ceiling is ~w",
+        [Side, Value, Limit]).
+
+fold_grounded_side(Start, Steps, Value) :-
+    integer_to_recollection(Start, StartMagnitude),
+    signed_from_positive_magnitude(StartMagnitude, Initial),
+    fold_grounded_steps(Steps, Initial, Value).
+
+fold_grounded_steps([], Value, Value).
+fold_grounded_steps([Step|Steps], Current, Value) :-
+    integer_step_recollection(Step, Operation, Operand),
+    apply_signed_grounded_step(Operation, Current, Operand, Next),
+    fold_grounded_steps(Steps, Next, Value).
+
+integer_step_recollection(add(N), add, Recollection) :-
+    integer_to_recollection(N, Recollection).
+integer_step_recollection(subtract(N), subtract, Recollection) :-
+    integer_to_recollection(N, Recollection).
+integer_step_recollection(multiply(N), multiply, Recollection) :-
+    integer_to_recollection(N, Recollection).
+
+signed_from_positive_magnitude(recollection([]),
+                               signed(zero, recollection([]))) :-
+    !.
+signed_from_positive_magnitude(Magnitude, signed(positive, Magnitude)).
+
+signed_from_negative_magnitude(recollection([]),
+                               signed(zero, recollection([]))) :-
+    !.
+signed_from_negative_magnitude(Magnitude, signed(negative, Magnitude)).
+
+apply_signed_grounded_step(add, signed(zero, _), Operand, Value) :-
+    signed_from_positive_magnitude(Operand, Value).
+apply_signed_grounded_step(add, signed(positive, Magnitude), Operand,
+                           signed(positive, Sum)) :-
+    add_grounded(Magnitude, Operand, Sum).
+apply_signed_grounded_step(add, signed(negative, Magnitude), Operand, Value) :-
+    signed_difference(Operand, Magnitude, Value).
+
+apply_signed_grounded_step(subtract, signed(zero, _), Operand, Value) :-
+    signed_from_negative_magnitude(Operand, Value).
+apply_signed_grounded_step(subtract, signed(positive, Magnitude), Operand,
+                           Value) :-
+    signed_difference(Magnitude, Operand, Value).
+apply_signed_grounded_step(subtract, signed(negative, Magnitude), Operand,
+                           signed(negative, Sum)) :-
+    add_grounded(Magnitude, Operand, Sum).
+
+apply_signed_grounded_step(multiply, signed(zero, Zero), _,
+                           signed(zero, Zero)).
+apply_signed_grounded_step(multiply, signed(positive, Magnitude), Operand,
+                           Value) :-
+    multiply_grounded(Magnitude, Operand, Product),
+    signed_from_positive_magnitude(Product, Value).
+apply_signed_grounded_step(multiply, signed(negative, Magnitude), Operand,
+                           Value) :-
+    multiply_grounded(Magnitude, Operand, Product),
+    signed_from_negative_magnitude(Product, Value).
+
+signed_difference(Left, Right, signed(zero, Zero)) :-
+    equal_to(Left, Right),
+    !,
+    zero(Zero).
+signed_difference(Left, Right, signed(positive, Difference)) :-
+    greater_than(Left, Right),
+    !,
+    subtract_grounded(Left, Right, Difference).
+signed_difference(Left, Right, signed(negative, Difference)) :-
+    subtract_grounded(Right, Left, Difference).
+
+signed_equal(signed(Sign, Left), signed(Sign, Right)) :-
+    equal_to(Left, Right).
+
+signed_order_gap(signed(positive, Left), signed(positive, Right),
+                 Larger, Gap) :-
+    signed_same_sign_gap(Left, Right, Larger, Gap).
+signed_order_gap(signed(negative, Left), signed(negative, Right),
+                 Larger, Gap) :-
+    signed_same_sign_gap(Right, Left, Larger, Gap).
+signed_order_gap(signed(positive, Left), signed(zero, _), left, Left).
+signed_order_gap(signed(positive, Left), signed(negative, Right), left, Gap) :-
+    add_grounded(Left, Right, Gap).
+signed_order_gap(signed(zero, _), signed(positive, Right), right, Right).
+signed_order_gap(signed(zero, _), signed(negative, Right), left, Right).
+signed_order_gap(signed(negative, Left), signed(positive, Right), right, Gap) :-
+    add_grounded(Left, Right, Gap).
+signed_order_gap(signed(negative, Left), signed(zero, _), right, Left).
+
+signed_same_sign_gap(Left, Right, left, Gap) :-
+    greater_than(Left, Right),
+    !,
+    subtract_grounded(Left, Right, Gap).
+signed_same_sign_gap(Left, Right, right, Gap) :-
+    subtract_grounded(Right, Left, Gap).
+
+signed_value_text(signed(zero, _), "a count of 0").
+signed_value_text(signed(positive, Magnitude), Text) :-
+    rec_int(Magnitude, Value),
+    format(string(Text), "a count of ~w", [Value]).
+signed_value_text(signed(negative, Magnitude), Text) :-
+    rec_int(Magnitude, Value),
+    format(string(Text), "a take-away shortfall of ~w", [Value]).
 
 %!  grounded_chain(+Recollections, +Pred) is semidet.
 %   True when each adjacent pair satisfies the grounded relation Pred (strict).

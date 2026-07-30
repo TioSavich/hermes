@@ -32,10 +32,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(10, 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(10, []), side(10, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "10 = 10",
      "equation_end_line": 86,
      "equation_line": 86,
@@ -49,7 +49,7 @@
       94
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 10 = 10"
+      "left side has a count of 10; right side has a count of 10; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 90,
@@ -167,10 +167,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(10 + 4, 10 + 5)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(10, [add(4)]), side(10, [add(5)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "10 + 4 = 10 + 5",
      "equation_end_line": 96,
      "equation_line": 96,
@@ -184,7 +184,7 @@
       107
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 10+4 = 10+5"
+      "left side has a count of 14; right side has a count of 15; right side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 101,
@@ -222,10 +222,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(10 + 3, 2 + 1 + 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(10, [add(3)]), side(2, [add(1), add(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "10 + 3 = 2 + 1 + 10",
      "equation_end_line": 98,
      "equation_line": 98,
@@ -239,7 +239,7 @@
       109
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 10+3 = 2+1+10"
+      "left side has a count of 13; right side has a count of 13; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 101,
@@ -267,10 +267,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(14, 10 + 4 + 5)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(14, []), side(10, [add(4), add(5)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "14 = 10 + 4 + 5",
      "equation_end_line": 100,
      "equation_line": 100,
@@ -284,7 +284,7 @@
       147
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 14 = 10+4+5"
+      "left side has a count of 14; right side has a count of 19; right side is larger by a count of 5"
      ],
      "refusal": "",
      "span_end_line": 101,
@@ -312,10 +312,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 + 2, 3 + 2)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [add(2)]), side(3, [add(2)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 + 2 = 3 + 2",
      "equation_end_line": 83,
      "equation_line": 83,
@@ -329,7 +329,7 @@
       91
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 3+2 = 3+2"
+      "left side has a count of 5; right side has a count of 5; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 88,
@@ -367,10 +367,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(5 + 1, 5 + 2)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(5, [add(1)]), side(5, [add(2)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "5 + 1 = 5 + 2",
      "equation_end_line": 85,
      "equation_line": 85,
@@ -384,7 +384,7 @@
       94
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 5+1 = 5+2"
+      "left side has a count of 6; right side has a count of 7; right side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 88,
@@ -422,10 +422,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 + 6, 3 + 7)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [add(6)]), side(3, [add(7)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 + 6 = 3 + 7",
      "equation_end_line": 86,
      "equation_line": 86,
@@ -439,7 +439,7 @@
       200
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4+6 = 3+7"
+      "left side has a count of 10; right side has a count of 10; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 88,
@@ -498,10 +498,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 + 2, 2 + 4)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [add(2)]), side(2, [add(4)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 + 2 = 2 + 4",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -515,7 +515,7 @@
       274
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4+2 = 2+4"
+      "left side has a count of 6; right side has a count of 6; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 271,
@@ -553,10 +553,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 + 6, 6 + 4)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [add(6)]), side(6, [add(4)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 + 6 = 6 + 4",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -570,7 +570,7 @@
       277
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 3+6 = 6+4"
+      "left side has a count of 9; right side has a count of 10; right side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 271,
@@ -608,10 +608,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(5 + 3, 1 + 7)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(5, [add(3)]), side(1, [add(7)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "5 + 3 = 1 + 7",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -625,7 +625,7 @@
       285
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 5+3 = 1+7"
+      "left side has a count of 8; right side has a count of 8; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 271,
@@ -663,10 +663,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(6 + 4, 5 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(6, [add(4)]), side(5, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "6 + 4 = 5 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -680,7 +680,7 @@
       287
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 6+4 = 5+3"
+      "left side has a count of 10; right side has a count of 8; left side is larger by a count of 2"
      ],
      "refusal": "",
      "span_end_line": 271,
@@ -718,10 +718,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(6 + 2, 8 + 1)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(6, [add(2)]), side(8, [add(1)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "6 + 2 = 8 + 1",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -735,7 +735,7 @@
       322
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 6+2 = 8+1"
+      "left side has a count of 8; right side has a count of 9; right side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 271,
@@ -956,10 +956,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 + 5, 5 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [add(5)]), side(5, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 + 5 = 5 + 3",
      "equation_end_line": 100,
      "equation_line": 100,
@@ -973,7 +973,7 @@
       214
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 3+5 = 5+3"
+      "left side has a count of 8; right side has a count of 8; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 101,
@@ -1022,10 +1022,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(80 + 5, 5 + 80)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(80, [add(5)]), side(5, [add(80)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "80 + 5 = 5 + 80",
      "equation_end_line": 88,
      "equation_line": 88,
@@ -1039,7 +1039,7 @@
       98
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 80+5 = 5+80"
+      "left side has a count of 85; right side has a count of 85; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -1077,10 +1077,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(70 + 1, 80 + 1)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(70, [add(1)]), side(80, [add(1)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "70 + 1 = 80 + 1",
      "equation_end_line": 90,
      "equation_line": 90,
@@ -1094,7 +1094,7 @@
       104
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 70+1 = 80+1"
+      "left side has a count of 71; right side has a count of 81; right side is larger by a count of 10"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -1132,10 +1132,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(20 + 6, 6 + 30)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(20, [add(6)]), side(6, [add(30)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "20 + 6 = 6 + 30",
      "equation_end_line": 92,
      "equation_line": 92,
@@ -1149,7 +1149,7 @@
       138
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 20+6 = 6+30"
+      "left side has a count of 26; right side has a count of 36; right side is larger by a count of 10"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -1447,10 +1447,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(30, 30)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(30, []), side(30, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "30 = 30",
      "equation_end_line": 90,
      "equation_line": 90,
@@ -1464,7 +1464,7 @@
       101
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 30 = 30"
+      "left side has a count of 30; right side has a count of 30; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 97,
@@ -1481,10 +1481,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(10 + 15, 15 + 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(10, [add(15)]), side(15, [add(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "10 + 15 = 15 + 10",
      "equation_end_line": 92,
      "equation_line": 92,
@@ -1498,7 +1498,7 @@
       103
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 10+15 = 15+10"
+      "left side has a count of 25; right side has a count of 25; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 97,
@@ -1536,10 +1536,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(10 + 10 + 10, 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(10, [add(10), add(10)]), side(3, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "10 + 10 + 10 = 3",
      "equation_end_line": 93,
      "equation_line": 93,
@@ -1553,7 +1553,7 @@
       122
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 10+10+10 = 3"
+      "left side has a count of 30; right side has a count of 3; left side is larger by a count of 27"
      ],
      "refusal": "",
      "span_end_line": 97,
@@ -2029,10 +2029,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(9 + 4, 9 + 1 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(9, [add(4)]), side(9, [add(1), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "9 + 4 = 9 + 1 + 3",
      "equation_end_line": 97,
      "equation_line": 97,
@@ -2046,7 +2046,7 @@
       106
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 9+4 = 9+1+3"
+      "left side has a count of 13; right side has a count of 13; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 102,
@@ -2074,10 +2074,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(9 + 4, 10 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(9, [add(4)]), side(10, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "9 + 4 = 10 + 3",
      "equation_end_line": 99,
      "equation_line": 99,
@@ -2091,7 +2091,7 @@
       109
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 9+4 = 10+3"
+      "left side has a count of 13; right side has a count of 13; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 102,
@@ -2129,10 +2129,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(9 + 5, 10 + 6)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(9, [add(5)]), side(10, [add(6)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "9 + 5 = 10 + 6",
      "equation_end_line": 101,
      "equation_line": 101,
@@ -2146,7 +2146,7 @@
       148
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 9+5 = 10+6"
+      "left side has a count of 14; right side has a count of 16; right side is larger by a count of 2"
      ],
      "refusal": "",
      "span_end_line": 102,
@@ -2195,10 +2195,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(18 + 5, 18 + 2 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(18, [add(5)]), side(18, [add(2), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "18 + 5 = 18 + 2 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -2212,7 +2212,7 @@
       92
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 18+5 = 18+2+3"
+      "left side has a count of 23; right side has a count of 23; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 88,
@@ -2240,10 +2240,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(28 + 5, 30 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(28, [add(5)]), side(30, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "28 + 5 = 30 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -2257,7 +2257,7 @@
       95
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 28+5 = 30+3"
+      "left side has a count of 33; right side has a count of 33; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 88,
@@ -2295,10 +2295,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(38 + 4, 40 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(38, [add(4)]), side(40, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "38 + 4 = 40 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -2312,7 +2312,7 @@
       138
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 38+4 = 40+3"
+      "left side has a count of 42; right side has a count of 43; right side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 88,
@@ -2798,10 +2798,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(10 - 0, 12 - 2)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(10, [subtract(0)]), side(12, [subtract(2)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "10- 0 = 12- 2",
      "equation_end_line": 103,
      "equation_line": 103,
@@ -2815,7 +2815,7 @@
       112
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 10-0 = 12-2"
+      "left side has a count of 10; right side has a count of 10; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 109,
@@ -2853,10 +2853,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(8 - 4, 10 - 6)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(8, [subtract(4)]), side(10, [subtract(6)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "8 - 4 = 10- 6",
      "equation_end_line": 105,
      "equation_line": 105,
@@ -2870,7 +2870,7 @@
       115
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 8-4 = 10-6"
+      "left side has a count of 4; right side has a count of 4; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 109,
@@ -2908,10 +2908,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(12 - 4, 10 - 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(12, [subtract(4)]), side(10, [subtract(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "12- 4 = 10- 3",
      "equation_end_line": 107,
      "equation_line": 107,
@@ -2925,7 +2925,7 @@
       117
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 12-4 = 10-3"
+      "left side has a count of 8; right side has a count of 7; left side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 109,
@@ -2963,10 +2963,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(15 - 2, 13 - 0)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(15, [subtract(2)]), side(13, [subtract(0)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "15 - 2 = 13 - 0",
      "equation_end_line": 108,
      "equation_line": 108,
@@ -2980,7 +2980,7 @@
       172
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 15-2 = 13-0"
+      "left side has a count of 13; right side has a count of 13; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 109,
@@ -3149,10 +3149,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(26, 10 + 6 + 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(26, []), side(10, [add(6), add(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "26 = 10 + 6 + 10",
      "equation_end_line": 90,
      "equation_line": 90,
@@ -3166,7 +3166,7 @@
       99
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 26 = 10+6+10"
+      "left side has a count of 26; right side has a count of 26; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 92,
@@ -3183,10 +3183,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(58, 20 + 20 + 8)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(58, []), side(20, [add(20), add(8)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "58 = 20 + 20 + 8",
      "equation_end_line": 91,
      "equation_line": 91,
@@ -3200,7 +3200,7 @@
       143
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 58 = 20+20+8"
+      "left side has a count of 58; right side has a count of 48; left side is larger by a count of 10"
      ],
      "refusal": "",
      "span_end_line": 92,
@@ -3228,10 +3228,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(40, 10 + 27 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(40, []), side(10, [add(27), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "40 = 10 + 27 + 3",
      "equation_end_line": 104,
      "equation_line": 104,
@@ -3245,7 +3245,7 @@
       114
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 40 = 10+27+3"
+      "left side has a count of 40; right side has a count of 40; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 110,
@@ -3262,10 +3262,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(47, 20 + 7 + 3 + 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(47, []), side(20, [add(7), add(3), add(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "47 = 20 + 7 + 3 + 10",
      "equation_end_line": 106,
      "equation_line": 106,
@@ -3279,7 +3279,7 @@
       118
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 47 = 20+7+3+10"
+      "left side has a count of 47; right side has a count of 40; left side is larger by a count of 7"
      ],
      "refusal": "",
      "span_end_line": 110,
@@ -3296,10 +3296,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(60, 3 + 47 + 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(60, []), side(3, [add(47), add(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "60 = 3 + 47 + 10",
      "equation_end_line": 108,
      "equation_line": 108,
@@ -3313,7 +3313,7 @@
       155
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 60 = 3+47+10"
+      "left side has a count of 60; right side has a count of 60; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 110,
@@ -3341,10 +3341,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(28 + 2 + 20, 50)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(28, [add(2), add(20)]), side(50, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "28 + 2 + 20 = 50",
      "equation_end_line": 88,
      "equation_line": 88,
@@ -3358,7 +3358,7 @@
       97
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 28+2+20 = 50"
+      "left side has a count of 50; right side has a count of 50; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -3375,10 +3375,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(16 + 3 + 30, 50)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(16, [add(3), add(30)]), side(50, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "16 + 3 + 30 = 50",
      "equation_end_line": 90,
      "equation_line": 90,
@@ -3392,7 +3392,7 @@
       99
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 16+3+30 = 50"
+      "left side has a count of 49; right side has a count of 50; right side is larger by a count of 1"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -3409,10 +3409,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(36 + 4 + 20, 50)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(36, [add(4), add(20)]), side(50, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "36 + 4 + 20 = 50",
      "equation_end_line": 92,
      "equation_line": 92,
@@ -3426,7 +3426,7 @@
       205
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 36+4+20 = 50"
+      "left side has a count of 60; right side has a count of 50; left side is larger by a count of 10"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -3464,10 +3464,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(800 + 90 + 7, 897)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(800, [add(90), add(7)]), side(897, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "800 + 90 + 7 = 897",
      "equation_end_line": 99,
      "equation_line": 99,
@@ -3481,7 +3481,7 @@
       109
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 800+90+7 = 897"
+      "left side has a count of 897; right side has a count of 897; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -3498,10 +3498,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(156, 50 + 100 + 6)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(156, []), side(50, [add(100), add(6)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "156 = 50 + 100 + 6",
      "equation_end_line": 101,
      "equation_line": 101,
@@ -3515,7 +3515,7 @@
       111
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 156 = 50+100+6"
+      "left side has a count of 156; right side has a count of 156; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -3592,10 +3592,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(632, 22 + 10 + 600)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(632, []), side(22, [add(10), add(600)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "632 = 22 + 10 + 600",
      "equation_end_line": 104,
      "equation_line": 104,
@@ -3609,7 +3609,7 @@
       148
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 632 = 22+10+600"
+      "left side has a count of 632; right side has a count of 632; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -3667,10 +3667,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 + 2 + 2, 3 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [add(2), add(2)]), side(3, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 + 2 + 2 = 3 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -3684,7 +3684,7 @@
       105
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 2+2+2 = 3+3"
+      "left side has a count of 6; right side has a count of 6; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 102,
@@ -3712,10 +3712,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 + 4 + 4, 3 + 3 + 3 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [add(4), add(4)]), side(3, [add(3), add(3), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 + 4 + 4 = 3 + 3 + 3 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -3729,7 +3729,7 @@
       109
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4+4+4 = 3+3+3+3"
+      "left side has a count of 12; right side has a count of 12; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 102,
@@ -3746,10 +3746,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(5 + 5 + 5, 3 + 3 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(5, [add(5), add(5)]), side(3, [add(3), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "5 + 5 + 5 = 3 + 3 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -3763,7 +3763,7 @@
       151
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 5+5+5 = 3+3+3"
+      "left side has a count of 15; right side has a count of 9; left side is larger by a count of 6"
      ],
      "refusal": "",
      "span_end_line": 102,
@@ -3791,10 +3791,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 + 2 + 2 + 2, 4 + 4)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [add(2), add(2), add(2)]), side(4, [add(4)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 + 2 + 2 + 2 = 4 + 4",
      "equation_end_line": 80,
      "equation_line": 80,
@@ -3808,7 +3808,7 @@
       89
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 2+2+2+2 = 4+4"
+      "left side has a count of 8; right side has a count of 8; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 85,
@@ -3836,10 +3836,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 + 2 + 2, 3 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [add(2), add(2)]), side(3, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 + 2 + 2 = 3 + 3",
      "equation_end_line": 82,
      "equation_line": 82,
@@ -3853,7 +3853,7 @@
       91
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 2+2+2 = 3+3"
+      "left side has a count of 6; right side has a count of 6; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 85,
@@ -3881,10 +3881,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 + 2 + 2 + 2 + 2 + 2, 5 + 5)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [add(2), add(2), add(2), add(2), add(2)]), side(5, [add(5)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 + 2 + 2 + 2 + 2 + 2 = 5 + 5",
      "equation_end_line": 84,
      "equation_line": 84,
@@ -3898,7 +3898,7 @@
       128
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 2+2+2+2+2+2 = 5+5"
+      "left side has a count of 12; right side has a count of 10; left side is larger by a count of 2"
      ],
      "refusal": "",
      "span_end_line": 85,
@@ -3937,10 +3937,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(8 + 5, 8 + 2 + 5)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(8, [add(5)]), side(8, [add(2), add(5)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "8 + 5 = 8 + 2 + 5",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -3954,7 +3954,7 @@
       102
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 8+5 = 8+2+5"
+      "left side has a count of 13; right side has a count of 15; right side is larger by a count of 2"
      ],
      "refusal": "",
      "span_end_line": 98,
@@ -3982,10 +3982,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(8 + 5, 8 + 2 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(8, [add(5)]), side(8, [add(2), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "8 + 5 = 8 + 2 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -3999,7 +3999,7 @@
       103
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 8+5 = 8+2+3"
+      "left side has a count of 13; right side has a count of 13; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 98,
@@ -4027,10 +4027,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(8 + 5, 10 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(8, [add(5)]), side(10, [add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "8 + 5 = 10 + 3",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -4044,7 +4044,7 @@
       154
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 8+5 = 10+3"
+      "left side has a count of 13; right side has a count of 13; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 98,
@@ -4123,10 +4123,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 * 5, 5 * 4)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [multiply(5)]), side(5, [multiply(4)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 × 5 = 5 × 4",
      "equation_end_line": 98,
      "equation_line": 98,
@@ -4140,7 +4140,7 @@
       109
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4*5 = 5*4"
+      "left side has a count of 20; right side has a count of 20; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 103,
@@ -4178,10 +4178,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(125 + 200, 200 + 125)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(125, [add(200)]), side(200, [add(125)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "125 + 200 = 200 + 125",
      "equation_end_line": 100,
      "equation_line": 100,
@@ -4195,7 +4195,7 @@
       113
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 125+200 = 200+125"
+      "left side has a count of 325; right side has a count of 325; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 103,
@@ -4233,10 +4233,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(300 - 100, 100 - 300)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(300, [subtract(100)]), side(100, [subtract(300)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "300- 100 = 100- 300",
      "equation_end_line": 102,
      "equation_line": 102,
@@ -4250,7 +4250,7 @@
       154
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 300-100 = 100-300"
+      "left side has a count of 200; right side has a take-away shortfall of 200; left side is larger by a count of 400"
      ],
      "refusal": "",
      "span_end_line": 103,
@@ -4289,10 +4289,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 * 40, 2 * 4 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [multiply(40)]), side(2, [multiply(4), multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 × 40 = 2 × 4 × 10",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -4306,7 +4306,7 @@
       97
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 2*40 = 2*4*10"
+      "left side has a count of 80; right side has a count of 80; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -4334,10 +4334,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 * 40, 8 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [multiply(40)]), side(8, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 × 40 = 8 × 10",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -4351,7 +4351,7 @@
       100
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 2*40 = 8*10"
+      "left side has a count of 80; right side has a count of 80; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -4389,10 +4389,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 * 50, 15 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [multiply(50)]), side(15, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 × 50 = 15 × 10",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -4406,7 +4406,7 @@
       103
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 3*50 = 15*10"
+      "left side has a count of 150; right side has a count of 150; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -4444,10 +4444,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 * 40, 7 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [multiply(40)]), side(7, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 × 40 = 7 × 10",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -4461,7 +4461,7 @@
       137
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 3*40 = 7*10"
+      "left side has a count of 120; right side has a count of 70; left side is larger by a count of 50"
      ],
      "refusal": "",
      "span_end_line": 94,
@@ -4510,10 +4510,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 * 10, 40 * 1)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [multiply(10)]), side(40, [multiply(1)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 × 10 = 40 × 1",
      "equation_end_line": 99,
      "equation_line": 99,
@@ -4527,7 +4527,7 @@
       108
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4*10 = 40*1"
+      "left side has a count of 40; right side has a count of 40; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -4565,10 +4565,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 * 20, 4 * 2 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [multiply(20)]), side(4, [multiply(2), multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 × 20 = 4 × 2 × 10",
      "equation_end_line": 101,
      "equation_line": 101,
@@ -4582,7 +4582,7 @@
       111
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4*20 = 4*2*10"
+      "left side has a count of 80; right side has a count of 80; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -4610,10 +4610,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(8 * 20, 8 * 2 * 1)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(8, [multiply(20)]), side(8, [multiply(2), multiply(1)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "8 × 20 = 8 × 2 × 1",
      "equation_end_line": 103,
      "equation_line": 103,
@@ -4627,7 +4627,7 @@
       114
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 8*20 = 8*2*1"
+      "left side has a count of 160; right side has a count of 16; left side is larger by a count of 144"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -4655,10 +4655,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(8 * 20, 16 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(8, [multiply(20)]), side(16, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "8 × 20 = 16 × 10",
      "equation_end_line": 104,
      "equation_line": 104,
@@ -4672,7 +4672,7 @@
       164
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 8*20 = 16*10"
+      "left side has a count of 160; right side has a count of 160; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -4741,10 +4741,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 * 60, 9 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [multiply(60)]), side(9, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 × 60 = 9 × 10",
      "equation_end_line": 98,
      "equation_line": 98,
@@ -4758,7 +4758,7 @@
       108
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 3*60 = 9*10"
+      "left side has a count of 180; right side has a count of 90; left side is larger by a count of 90"
      ],
      "refusal": "",
      "span_end_line": 104,
@@ -4796,10 +4796,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(180, 3 * 60)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(180, []), side(3, [multiply(60)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "180 = 3 × 60",
      "equation_end_line": 100,
      "equation_line": 100,
@@ -4813,7 +4813,7 @@
       110
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 180 = 3*60"
+      "left side has a count of 180; right side has a count of 180; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 104,
@@ -4841,10 +4841,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(6 * 40, 24 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(6, [multiply(40)]), side(24, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "6 × 40 = 24 × 10",
      "equation_end_line": 102,
      "equation_line": 102,
@@ -4858,7 +4858,7 @@
       115
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 6*40 = 24*10"
+      "left side has a count of 240; right side has a count of 240; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 104,
@@ -4896,10 +4896,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(24 * 10, 240)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(24, [multiply(10)]), side(240, []))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "24 × 10 = 240",
      "equation_end_line": 103,
      "equation_line": 103,
@@ -4913,7 +4913,7 @@
       167
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 24*10 = 240"
+      "left side has a count of 240; right side has a count of 240; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 104,
@@ -5012,10 +5012,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(1923, 1 + 90 + 200 + 3000)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(1923, []), side(1, [add(90), add(200), add(3000)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "1,923 = 1 + 90 + 200 + 3,000",
      "equation_end_line": 80,
      "equation_line": 80,
@@ -5029,7 +5029,7 @@
       90
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 1923 = 1+90+200+3000"
+      "left side has a count of 1923; right side has a count of 3291; right side is larger by a count of 1368"
      ],
      "refusal": "",
      "span_end_line": 86,
@@ -5046,10 +5046,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(1923, 1000 + 90 + 20 + 3)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(1923, []), side(1000, [add(90), add(20), add(3)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "1,923 = 1,000 + 90 + 20 + 3",
      "equation_end_line": 82,
      "equation_line": 82,
@@ -5063,7 +5063,7 @@
       94
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 1923 = 1000+90+20+3"
+      "left side has a count of 1923; right side has a count of 1113; left side is larger by a count of 810"
      ],
      "refusal": "",
      "span_end_line": 86,
@@ -5083,7 +5083,7 @@
      "checker": "swi_builtin_arithmetic:=:=",
      "claim": "arithmetic_equation(19203, 10000 + 9000 + 200 + 3)",
      "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "claim_route": "magnitude_above_grounded_counting_bound",
      "equation": "19,203 = 10,000 + 9,000 + 200 + 3",
      "equation_end_line": 84,
      "equation_line": 84,
@@ -5117,7 +5117,7 @@
      "checker": "swi_builtin_arithmetic:=:=",
      "claim": "arithmetic_equation(190023, 10000 + 90000 + 20 + 3)",
      "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "claim_route": "magnitude_above_grounded_counting_bound",
      "equation": "190,023 = 10,000 + 90,000 + 20 + 3",
      "equation_end_line": 85,
      "equation_line": 85,
@@ -5442,7 +5442,7 @@
      "checker": "swi_builtin_arithmetic:=:=",
      "claim": "arithmetic_equation(4000 + 600 + 70000, 70460)",
      "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "claim_route": "magnitude_above_grounded_counting_bound",
      "equation": "4,000 + 600 + 70,000 = 70,460",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -5476,7 +5476,7 @@
      "checker": "swi_builtin_arithmetic:=:=",
      "claim": "arithmetic_equation(900000 + 20000 + 3000, 920000 + 3000)",
      "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "claim_route": "magnitude_above_grounded_counting_bound",
      "equation": "900,000 + 20,000 + 3,000 = 920,000 + 3,000",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -5521,7 +5521,7 @@
      "checker": "swi_builtin_arithmetic:=:=",
      "claim": "arithmetic_equation(80000 + 800 + 8000, 800000 + 80 + 8)",
      "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "claim_route": "magnitude_above_grounded_counting_bound",
      "equation": "80,000 + 800 + 8,000 = 800,000 + 80 + 8",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -5975,10 +5975,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(2 * 45, 6 * 15)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(2, [multiply(45)]), side(6, [multiply(15)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "2 × 45 = 6 × 15",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -5992,7 +5992,7 @@
       109
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 2*45 = 6*15"
+      "left side has a count of 90; right side has a count of 90; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -6030,10 +6030,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(4 * 45, 2 * 90)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(4, [multiply(45)]), side(2, [multiply(90)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "4 × 45 = 2 × 90",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -6047,7 +6047,7 @@
       111
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 4*45 = 2*90"
+      "left side has a count of 180; right side has a count of 180; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -6085,10 +6085,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(3 * 45, 180 - 90)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(3, [multiply(45)]), side(180, [subtract(90)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "3 × 45 = 180- 90",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -6102,7 +6102,7 @@
       113
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 3*45 = 180-90"
+      "left side has a count of 135; right side has a count of 90; left side is larger by a count of 45"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -6140,10 +6140,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(6 * 45, 45 + 90 + 135)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(6, [multiply(45)]), side(45, [add(90), add(135)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "6 × 45 = 45 + 90 + 135",
      "equation_end_line": 0,
      "equation_line": 0,
@@ -6157,7 +6157,7 @@
       155
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 6*45 = 45+90+135"
+      "left side has a count of 270; right side has a count of 270; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 105,
@@ -6276,10 +6276,10 @@
    "rows": [
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(30 * 2 * 10, 6 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(30, [multiply(2), multiply(10)]), side(6, [multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "30 × 2 × 10 = 6 × 10",
      "equation_end_line": 87,
      "equation_line": 87,
@@ -6293,7 +6293,7 @@
       95
      ],
      "reason_trace": [
-      "SWI arithmetic refutes 30*2*10 = 6*10"
+      "left side has a count of 600; right side has a count of 60; left side is larger by a count of 540"
      ],
      "refusal": "",
      "span_end_line": 92,
@@ -6321,10 +6321,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(30 * 2 * 10, 20 * 3 * 10)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(30, [multiply(2), multiply(10)]), side(20, [multiply(3), multiply(10)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "30 × 2 × 10 = 20 × 3 × 10",
      "equation_end_line": 89,
      "equation_line": 89,
@@ -6338,7 +6338,7 @@
       97
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 30*2*10 = 20*3*10"
+      "left side has a count of 600; right side has a count of 600; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 92,
@@ -6355,10 +6355,10 @@
     },
     {
      "accepted": true,
-     "checker": "swi_builtin_arithmetic:=:=",
-     "claim": "arithmetic_equation(60 * 10, 30 * 20)",
-     "claim_family": "arithmetic_equality",
-     "claim_route": "equation_states_no_single_binary_result",
+     "checker": "grounded_equation_sides",
+     "claim": "equation_sides(grounded_counting_bound(10000), side(60, [multiply(10)]), side(30, [multiply(20)]))",
+     "claim_family": "grounded",
+     "claim_route": "two_sided_within_grounded_counting_bound",
      "equation": "60 × 10 = 30 × 20",
      "equation_end_line": 90,
      "equation_line": 90,
@@ -6372,7 +6372,7 @@
       139
      ],
      "reason_trace": [
-      "SWI arithmetic confirms 60*10 = 30*20"
+      "left side has a count of 600; right side has a count of 600; both sides come to the same count"
      ],
      "refusal": "",
      "span_end_line": 92,
@@ -6577,8 +6577,8 @@
   "accepted_spans": 32,
   "accepted_tasks": 108,
   "agrees_at_input": 35,
-  "arithmetic_equality_claims": 82,
-  "grounded_claims": 26,
+  "arithmetic_equality_claims": 9,
+  "grounded_claims": 99,
   "lessons_with_accepted_task": 25,
   "refused_spans": 52,
   "routine_spans": 84,

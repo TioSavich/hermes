@@ -216,6 +216,56 @@ def _prolog_expression(side_text: str) -> str:
     return " ".join(out)
 
 
+def _grounded_side(side_text: str) -> tuple[str, int] | None:
+    """Compile one printed side to a grounded left-to-right fold and its peak.
+
+    The step representation is left-to-right by construction. A side that
+    mixes multiplication with addition or subtraction therefore stays on the
+    SWI arithmetic route, where standard precedence is preserved.
+
+    The peak is the largest absolute intermediate value or printed operand.
+    It applies ``GROUNDED_MAGNITUDE_BOUND`` per side before Prolog constructs
+    any recollection. Division is outside this whole-number fold; its existing
+    arithmetic route remains explicit.
+    """
+    parts = [
+        part.strip()
+        for part in re.split(rf"({OPERATOR})", side_text)
+        if part.strip()
+    ]
+    symbols = parts[1::2]
+    has_multiplication = any(symbol in {"×", "·"} for symbol in symbols)
+    has_addition_or_subtraction = any(
+        symbol in {"+", "-", "−"} for symbol in symbols
+    )
+    if has_multiplication and has_addition_or_subtraction:
+        return None
+    start = _numeral(parts[0])
+    value = start
+    peak = start
+    steps = []
+    for symbol, raw_operand in zip(parts[1::2], parts[2::2]):
+        operand = _numeral(raw_operand)
+        operation = {
+            "+": "add",
+            "-": "subtract",
+            "−": "subtract",
+            "×": "multiply",
+            "·": "multiply",
+        }.get(symbol)
+        if operation is None:
+            return None
+        steps.append(f"{operation}({operand})")
+        if operation == "add":
+            value += operand
+        elif operation == "subtract":
+            value -= operand
+        else:
+            value *= operand
+        peak = max(peak, operand, abs(value))
+    return f"side({start}, [{', '.join(steps)}])", peak
+
+
 def _equation_is_maximal(text: str, match: re.Match) -> bool:
     """Refuse an equation that is one link of a longer printed chain."""
     before = text[: match.start()].rstrip()
@@ -291,6 +341,25 @@ def _claim_term(lhs: str, rhs: str) -> tuple[str, str, str]:
                 "grounded",
                 "stated_result_within_grounded_counting_bound",
             )
+    left_side = _grounded_side(lhs)
+    right_side = _grounded_side(rhs)
+    if left_side is not None and right_side is not None:
+        left_term, left_peak = left_side
+        right_term, right_peak = right_side
+        if max(left_peak, right_peak) > GROUNDED_MAGNITUDE_BOUND:
+            return (
+                f"arithmetic_equation({_prolog_expression(lhs)}, "
+                f"{_prolog_expression(rhs)})",
+                "arithmetic_equality",
+                "magnitude_above_grounded_counting_bound",
+            )
+        return (
+            "equation_sides("
+            f"grounded_counting_bound({GROUNDED_MAGNITUDE_BOUND}), "
+            f"{left_term}, {right_term})",
+            "grounded",
+            "two_sided_within_grounded_counting_bound",
+        )
     return (
         f"arithmetic_equation({_prolog_expression(lhs)}, {_prolog_expression(rhs)})",
         "arithmetic_equality",
