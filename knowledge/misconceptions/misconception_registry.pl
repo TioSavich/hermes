@@ -647,6 +647,13 @@ ensure_action_corpus_bindings_loaded :-
 
 
 batch_row_for_source(db_row(Id), Domain, Operation, BibtexKey, Note) :-
+    % Corpus row ids are integers.  Binding the row id before enumeration
+    % lets a bound db_row source use first-argument indexing on the
+    % generated corpus facts; the unbound case still enumerates every row.
+    (   integer(Id)
+    ->  RowId = Id
+    ;   true
+    ),
     misconception_batch_row(row(RowId,
                                 ErrorDescription,
                                 _Example,
@@ -727,6 +734,13 @@ csv_row_witness(SourceKind, Path, ExpectedArity, Row, Witness) :-
                  row: Row }.
 
 
+% Generated corpus rows carry integer ids; matching those by unification
+% avoids a string round-trip per candidate row.  Text-shaped ids (CSV rows
+% loaded with convert(false)) keep the parsing clause.
+row_id_matches(RowId, Id) :-
+    integer(RowId),
+    !,
+    Id = RowId.
 row_id_matches(RowId, Id) :-
     text_to_string(RowId, RowIdString),
     number_string(Id, RowIdString).
