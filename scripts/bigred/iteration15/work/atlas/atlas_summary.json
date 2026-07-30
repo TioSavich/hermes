@@ -1,11 +1,11 @@
 {
-  "atlas_facts_written": 5121,
+  "atlas_facts_written": 5562,
   "atlas_quotient": {
     "class_sizes": [
-      1208,
-      16,
+      1325,
       15,
-      9,
+      15,
+      12,
       7,
       5,
       3,
@@ -15,7 +15,7 @@
       1
     ],
     "classes": 11,
-    "largest_class": 1208,
+    "largest_class": 1325,
     "nontrivial_classes": 8,
     "observable_congruence_violations": [
       {
@@ -139,37 +139,71 @@
         ]
       }
     ],
-    "tasks": 1268
+    "tasks": 1387
   },
-  "cells_covered": 372,
+  "cells_covered": 401,
   "certifies": "formal_closure_only",
-  "commit": "dff031d04242bf667317f46536ccff5eec8b45db",
+  "commit": "3bb855768b2c7cefaa56e31a242259518f9a1b81",
   "counts_by_crisis": {
-    "dead_end": 102,
-    "impasse": 108,
-    "solved": 5406
+    "dead_end": 99,
+    "impasse": 117,
+    "solved": 5868
   },
   "counts_by_exec_kind": {
-    "candidate_path": 5508,
-    "unsupported": 108
+    "candidate_path": 5967,
+    "unsupported": 117
   },
   "counts_by_role_kind": {
-    "deformation": 102,
-    "productive": 5526
+    "deformation": 99,
+    "productive": 5991
   },
   "counts_by_status": {
-    "needs_oracle": 51,
-    "no_reorganization_domain": 48,
+    "needs_oracle": 60,
+    "no_reorganization_domain": 45,
     "reorganized_accommodation": 16,
     "reorganized_efficiency": 95,
-    "solved": 5406,
-    "timeout": 12
+    "solved": 5868,
+    "timeout": 6
   },
   "coverage_vs_audit": {
-    "available": false,
-    "reason": "audit_coverage.json absent; run atlas_export:coverage/1"
+    "audit_lesson_count": 1031,
+    "audit_missing_task_instance": 676,
+    "audit_traversable": 20,
+    "audit_unexercised_dead_end": 1010,
+    "available": true,
+    "gap_lessons_no_compiled_events": 676,
+    "gap_lessons_sample": [
+      "IM-G1-U1-L1",
+      "IM-G1-U1-L10",
+      "IM-G1-U1-L11",
+      "IM-G1-U1-L12",
+      "IM-G1-U1-L15",
+      "IM-G1-U1-L2",
+      "IM-G1-U1-L3",
+      "IM-G1-U1-L7",
+      "IM-G1-U1-L8",
+      "IM-G1-U1-L9",
+      "IM-G1-U2-L11",
+      "IM-G1-U2-L13",
+      "IM-G1-U2-L17",
+      "IM-G1-U2-L23",
+      "IM-G1-U2-L5",
+      "IM-G1-U2-L7",
+      "IM-G1-U2-L8",
+      "IM-G1-U3-L1",
+      "IM-G1-U3-L14",
+      "IM-G1-U3-L15",
+      "IM-G1-U3-L18",
+      "IM-G1-U3-L21",
+      "IM-G1-U3-L28",
+      "IM-G1-U3-L3",
+      "IM-G1-U3-L4"
+    ],
+    "lessons_with_compiled_events": 355,
+    "note": "gap lessons carry no source-backed task event through the audit grade ceiling; they are explicit gaps, not silently skipped.",
+    "through_grade": 6
   },
-  "date": "2026-07-29",
+  "date": "2026-07-30",
   "empty_cells": 0,
   "generator": "scripts/bigred/atlas/aggregate.py",
   "kind": "atlas_summary_v1",
@@ -177,10 +211,10 @@
   "policies": [
     "accept_efficiency"
   ],
-  "records_resolved": 5616,
-  "records_total": 5628,
-  "records_unresolved": 12,
-  "shards_read": 372,
+  "records_resolved": 6084,
+  "records_total": 6090,
+  "records_unresolved": 6,
+  "shards_read": 401,
   "stages_swept": [
     1,
     2,
@@ -192,12 +226,6 @@
   },
   "timeouts": {
     "cells": [
-      "IM-G4-U4-L20@s1:add(142571,10909)",
-      "IM-G4-U4-L20@s2:add(142571,10909)",
-      "IM-G4-U4-L20@s3:add(142571,10909)",
-      "IM-G5-U4-L1@s1:multiply(600,500)",
-      "IM-G5-U4-L1@s2:multiply(600,500)",
-      "IM-G5-U4-L1@s3:multiply(600,500)",
       "IM-G6-U3-L4@s1:multiply(2100,110)",
       "IM-G6-U3-L4@s2:multiply(2100,110)",
       "IM-G6-U3-L4@s3:multiply(2100,110)",
@@ -205,7 +233,7 @@
       "IM-G7-U2-L8@s2:multiply(1500,30000)",
       "IM-G7-U2-L8@s3:multiply(1500,30000)"
     ],
-    "count": 12,
+    "count": 6,
     "note": "timeouts are logged, never dropped; raise ATLAS_CELL_SECONDS to close."
   }
 }

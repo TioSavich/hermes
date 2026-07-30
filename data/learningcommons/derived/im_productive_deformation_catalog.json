@@ -148,6 +148,13 @@
    "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
   },
   {
+   "deformation": "decimal_scale_loss_comparison",
+   "family": "decimal_scale_loss_comparison",
+   "operation": "decimal",
+   "productive": "decimal_fraction_place_value_comparison",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
    "deformation": "decimal_point_rule_misapplication",
    "family": "decimal_point_rule_misapplication",
    "operation": "decimal",
@@ -232,6 +239,34 @@
    "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
   },
   {
+   "deformation": "area_model_unequal_partition_piece_count",
+   "family": "unequal_partition_piece_count",
+   "operation": "fraction",
+   "productive": "area_model_fraction_comparison",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "gap_thinking_fraction_comparison",
+   "family": "gap_thinking",
+   "operation": "fraction",
+   "productive": "benchmark_fraction_comparison",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "add_numerator_denominator_sum",
+   "family": "add_numerator_and_denominator",
+   "operation": "fraction",
+   "productive": "common_denominator_fraction_addition",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "add_numerator_denominator_comparison",
+   "family": "add_numerator_and_denominator",
+   "operation": "fraction",
+   "productive": "common_unit_fraction_comparison",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
    "deformation": "cross_multiplication_rule_without_ground",
    "family": "rule_without_grounding",
    "operation": "fraction",
@@ -246,10 +281,24 @@
    "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
   },
   {
+   "deformation": "number_line_count_marks_not_intervals",
+   "family": "count_marks_not_intervals",
+   "operation": "fraction",
+   "productive": "number_line_fraction_comparison",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
    "deformation": "clear_inner_referent",
    "family": "referent_to_inner_whole_not_original",
    "operation": "fraction",
    "productive": "recursive_partition",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "set_model_subset_size_focus",
+   "family": "subset_size_not_equal_sets",
+   "operation": "fraction",
+   "productive": "set_model_fraction_comparison",
    "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
   },
   {
