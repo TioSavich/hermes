@@ -12,7 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HARNESS = ROOT / "scripts/curriculum/pusu_pass.py"
 
-# Re-pinned 2026-07-29 after receipt routes and stage-specific PUSU budgets.
+# Re-pinned 2026-07-29 after material contrast semantics v2.  The G5 anchor
+# now records validated single-digit-multiplier viability rather than treating
+# agreement on x3 as a vacuous attachment.
 # These are capability verdicts, not the hand audit's provenance/attestation
 # judgments.
 BASELINE = {
@@ -21,7 +23,7 @@ BASELINE = {
     # Receipt route now executes answer_as_endpoint_count_up on compiled tasks.
     "IM-G2-U9-L1": "pass",
     "IM-G4-U5-L3": "pass",
-    "IM-G5-U4-L5": "broken(contrast_vacuous)",
+    "IM-G5-U4-L5": "pass",
     "IM-G2-U7-L15": "broken(contrast_cannot_run)",
     # Receipt route now runs after the 60-second productive path clears this casualty.
     "IM-G7-U5-L1": "pass",

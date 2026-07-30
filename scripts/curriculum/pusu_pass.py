@@ -59,6 +59,229 @@ pusu_operation_domain(subtraction, whole_number).
 pusu_operation_domain(multiplication, whole_number).
 pusu_operation_domain(division, whole_number).
 pusu_input(Left, Right, Left-Right).
+% A small number of registered rules carry a typed task wrapper rather than
+% the operation's ordinary operand pair.  The battery still supplies the two
+% numerals; this adapter preserves the rule's engine-defined input shape.
+pusu_rule_input(share_smaller_into_larger, Left, Right, share(Left, Right)) :- !.
+pusu_rule_input(_, Left, Right, Input) :- pusu_input(Left, Right, Input).
+
+% Canonical whole-number contrast batteries.  These are deliberately short,
+% ordered probes: they cross carry/regrouping, near-double, single-/multi-digit
+% multiplier, and exact-/inexact-division boundaries without using a trailing
+% zero as the only witness.
+pusu_battery(addition, [1-1,1-2,2-3,3-7,4-5,5-6,6-4,8-2,8-7,9-2,12-8,14-15,18-19,
+                        27-28,34-35,47-28,58-43,67-35,86-14,99-1,109-91,
+                        126-74,247-158,389-211,478-356,16-30,47-30]).
+pusu_battery(subtraction, [1-2,2-3,5-9,2-1,3-1,5-2,9-1,12-3,14-5,15-7,18-9,21-12,
+                           32-14,43-19,52-27,71-38,101-1,109-87,123-45,
+                           200-199,307-158,502-277]).
+pusu_battery(multiplication, [2-2,3-2,4-3,7-4,9-6,12-2,23-3,47-5,122-3,
+                              12-11,23-12,47-13,122-33,34-21,56-14,99-12,
+                              123-45,205-13]).
+pusu_battery(division, [2-3,3-5,5-12,6-2,7-2,12-3,13-3,15-5,17-5,21-7,22-7,35-5,
+                         37-5,48-6,50-6,63-9,64-9,84-7,85-7,121-11,
+                         122-11,143-13,145-13]).
+pusu_batteries_enabled.
+pusu_battery_for(Op, Battery) :-
+    current_predicate(pusu_batteries_enabled/0), pusu_batteries_enabled, pusu_battery(Op, Battery).
+
+% Authored agreement regions.  The predicates below are only candidate names;
+% pusu_*_context_validated/5 proves their battery behaviour per row before a
+% row may retain the name.
+pusu_context(partial_products_no_shift, single_digit_multiplier, multiplication, _, Multiplier) :-
+    integer(Multiplier), Multiplier >= 0, Multiplier < 10.
+pusu_context(partial_products_no_place_shift, single_digit_multiplier, multiplication, _, Multiplier) :-
+    integer(Multiplier), Multiplier >= 0, Multiplier < 10.
+pusu_context(raw_quotient_with_remainder, exact_division, division, Dividend, Divisor) :-
+    integer(Dividend), integer(Divisor), Divisor =\= 0, 0 =:= Dividend mod Divisor.
+pusu_context(double_first_add_one, addends_are_near_doubles, addition, A, B) :- B =:= A + 1.
+pusu_context(flip_subtraction_order, minuend_at_least_subtrahend, subtraction, A, B) :- A >= B.
+pusu_context(share_smaller_into_larger, dividend_at_least_divisor, division, A, B) :- A >= B.
+pusu_context(make_ten_drop_leftover, smaller_addend_completes_next_base, addition, A, B) :-
+    Larger is max(A, B), Smaller is min(A, B), Needed is 10 - (Larger mod 10), Smaller =:= Needed.
+pusu_context(dropped_leftover_after_make_ten, smaller_addend_completes_next_base, addition, A, B) :-
+    Larger is max(A, B), Smaller is min(A, B), Needed is 10 - (Larger mod 10), Smaller =:= Needed.
+pusu_context(dropped_ones_chunk, second_addend_has_no_ones, addition, _, B) :- 0 =:= B mod 10.
+pusu_context(dropped_remainder_chunk, second_addend_has_no_ones, addition, _, B) :- 0 =:= B mod 10.
+pusu_context(name_group_count_as_share_size, quotient_equals_group_count, division, A, B) :- A =:= B * B.
+pusu_context(group_count_as_share_size, quotient_equals_group_count, division, A, B) :- A =:= B * B.
+pusu_context(add_counts_without_composite_unit, factors_are_two, multiplication, 2, 2).
+pusu_context(additive_count_for_multiplicative_structure, factors_are_two, multiplication, 2, 2).
+
+pusu_context_name(partial_products_no_shift, single_digit_multiplier, multiplication).
+pusu_context_name(partial_products_no_place_shift, single_digit_multiplier, multiplication).
+pusu_context_name(raw_quotient_with_remainder, exact_division, division).
+pusu_context_name(double_first_add_one, addends_are_near_doubles, addition).
+pusu_context_name(flip_subtraction_order, minuend_at_least_subtrahend, subtraction).
+pusu_context_name(share_smaller_into_larger, dividend_at_least_divisor, division).
+pusu_context_name(make_ten_drop_leftover, smaller_addend_completes_next_base, addition).
+pusu_context_name(dropped_leftover_after_make_ten, smaller_addend_completes_next_base, addition).
+pusu_context_name(dropped_ones_chunk, second_addend_has_no_ones, addition).
+pusu_context_name(dropped_remainder_chunk, second_addend_has_no_ones, addition).
+pusu_context_name(name_group_count_as_share_size, quotient_equals_group_count, division).
+pusu_context_name(group_count_as_share_size, quotient_equals_group_count, division).
+pusu_context_name(add_counts_without_composite_unit, factors_are_two, multiplication).
+pusu_context_name(additive_count_for_multiplicative_structure, factors_are_two, multiplication).
+
+pusu_input_text(Op, Left, Right, Text) :-
+    pusu_text_input(Op, Left, Right, Term), pusu_text(Term, Text).
+pusu_text_input(addition, A, B, add(A,B)).
+pusu_text_input(subtraction, A, B, subtract(A,B)).
+pusu_text_input(multiplication, A, B, multiply(A,B)).
+pusu_text_input(division, A, B, divide(A,B)).
+
+pusu_outcome_result(Outcome, Result) :- pusu_result(Outcome, Result).
+pusu_outcome_trace(Outcome, Trace) :-
+    ( is_dict(Outcome), get_dict(trace, Outcome, Trace)
+    ; Outcome = action_outcome(_, Fields), member(evidence(existing_trace(Trace)), Fields)
+    ).
+pusu_outcome_correct_strategy(action_outcome(_, Fields)) :-
+    member(validity(correct_but_inefficient), Fields),
+    member(classification(deformation), Fields).
+
+pusu_action_probe(Op, Kind, Left, Right, Status, Outcome, Trace, Result) :-
+    Goal = action_automata_registry:run_action_automaton(Op, Kind, Left, Right, Outcome, Trace),
+    pusu_call(contrast_diagnosis, Goal, CallResult),
+    ( CallResult == succeeded, pusu_outcome_result(Outcome, Result)
+    -> Status = action_output
+    ; CallResult == timed_out
+    -> Status = action_times_out
+    ; CallResult = failed(_)
+    -> Status = action_errors
+    ;  Status = action_no_output
+    ).
+
+pusu_action_run(Op, Kind, Left, Right, Outcome, Trace, Result) :-
+    pusu_action_probe(Op, Kind, Left, Right, action_output, Outcome, Trace, Result).
+
+pusu_action_separates(Op, Deformation, Productive, Left, Right) :-
+    pusu_action_run(Op, Deformation, Left, Right, _, _, Wrong),
+    pusu_action_run(Op, Productive, Left, Right, _, _, Correct),
+    Wrong \=@= Correct.
+
+pusu_action_separator(Op, Deformation, Productive, Left, Right) :-
+    pusu_battery_for(Op, Battery), member(Left-Right, Battery),
+    pusu_action_separates(Op, Deformation, Productive, Left, Right), !.
+
+% A domain refusal is decisive only when it occurs on an input used to
+% establish this particular claim: its agreement slice or its separator.
+% Other battery inputs remain useful domain evidence but do not pre-empt an
+% independently executable context or normative contrast.
+pusu_action_claim_issue(Family, Op, Deformation, Productive,
+                        SeparatorLeft-SeparatorRight, Status) :-
+    pusu_context_name(Family, Context, Op),
+    pusu_battery_for(Op, Battery),
+    pusu_context_inputs(Family, Context, Op, Battery, Inputs),
+    append(Inputs, [SeparatorLeft-SeparatorRight], ClaimInputs),
+    member(Left-Right, ClaimInputs),
+    ( pusu_action_probe(Op, Deformation, Left, Right, Status, _, _, _)
+    ; pusu_action_probe(Op, Productive, Left, Right, Status, _, _, _)
+    ),
+    memberchk(Status, [action_no_output, action_times_out, action_errors]), !.
+
+pusu_context_inputs(Family, Context, Op, Battery, Inputs) :-
+    findall(Left-Right,
+            ( member(Left-Right, Battery), pusu_context(Family, Context, Op, Left, Right) ),
+            Inputs),
+    Inputs \= [].
+
+pusu_action_agrees(Op, Deformation, Productive, Left, Right) :-
+    pusu_action_run(Op, Deformation, Left, Right, _, _, Wrong),
+    pusu_action_run(Op, Productive, Left, Right, _, _, Correct),
+    Wrong =@= Correct.
+
+pusu_action_context_validated(Family, Op, Deformation, Productive, SeparatorLeft-SeparatorRight, Context) :-
+    pusu_context_name(Family, Context, Op),
+    pusu_battery_for(Op, Battery),
+    pusu_context_inputs(Family, Context, Op, Battery, Inputs),
+    forall(member(Left-Right, Inputs),
+           pusu_action_agrees(Op, Deformation, Productive, Left, Right)),
+    \+ pusu_context(Family, Context, Op, SeparatorLeft, SeparatorRight).
+
+pusu_rule_expected(addition, A, B, Expected) :- Expected is A + B.
+pusu_rule_expected(subtraction, A, B, Expected) :- Expected is A - B.
+pusu_rule_expected(multiplication, A, B, Expected) :- Expected is A * B.
+pusu_rule_expected(division, A, B, Expected) :- B =\= 0, Expected is A // B.
+
+pusu_rule_probe(Op, Rule, Left, Right, Status) :-
+    pusu_operation_domain(Op, Domain),
+    test_harness:arith_misconception(_, Domain, Kind, Rule, _, _),
+    pusu_rule_expected(Op, Left, Right, Expected), pusu_rule_input(Kind, Left, Right, Input),
+    pusu_call(contrast_diagnosis,
+              test_harness:classify_arith_by_trace(Rule, Input, Expected, Class, _), Result),
+    ( Result == succeeded
+    -> pusu_rule_class_status(Class, Status)
+    ; Result == timed_out
+    -> Status = rule_times_out
+    ;  Status = rule_errors
+    ).
+
+% Only an executed, output-agreeing trace class may validate an agreement
+% context.  Undefined and inference-limited rules are execution defects, not
+% agreement evidence.
+pusu_rule_class_status(wrong_answer, separates).
+pusu_rule_class_status(well_formed, agrees).
+pusu_rule_class_status(trace_unavailable, agrees).
+pusu_rule_class_status(trace_divergence, agrees).
+pusu_rule_class_status(undefined, rule_no_output).
+pusu_rule_class_status(loop_detected, rule_times_out).
+
+pusu_rule_separates(Op, Rule, Left, Right) :-
+    pusu_rule_probe(Op, Rule, Left, Right, separates).
+
+pusu_rule_separator(Op, Rule, Left, Right) :-
+    pusu_battery_for(Op, Battery), member(Left-Right, Battery),
+    pusu_rule_separates(Op, Rule, Left, Right), !.
+
+pusu_rule_context_validated(Family, Op, Rule, SeparatorLeft-SeparatorRight, Context) :-
+    pusu_context_name(Family, Context, Op),
+    pusu_battery_for(Op, Battery),
+    pusu_context_inputs(Family, Context, Op, Battery, Inputs),
+    forall(member(Left-Right, Inputs), pusu_rule_probe(Op, Rule, Left, Right, agrees)),
+    \+ pusu_context(Family, Context, Op, SeparatorLeft, SeparatorRight).
+
+pusu_trace_classified(Family, Productive, action_outcome(_, Fields)) :-
+    member(misconception_family(Family), Fields),
+    member(deformation_of(Productive), Fields).
+
+pusu_agreement_status_action(Family, Op, Deformation, Productive, TraceLeft, TraceRight,
+                             Status, ContextText, SeparatorText, TraceRoundTrip) :-
+    ( pusu_battery_for(Op, _)
+    -> ( pusu_action_separator(Op, Deformation, Productive, SeparatorLeft, SeparatorRight)
+       -> pusu_input_text(Op, SeparatorLeft, SeparatorRight, SeparatorText),
+          ( pusu_action_claim_issue(Family, Op, Deformation, Productive,
+                                    SeparatorLeft-SeparatorRight, Status)
+          -> ContextText = "", TraceRoundTrip = false
+          ;  pusu_action_context_validated(Family, Op, Deformation, Productive,
+                                          SeparatorLeft-SeparatorRight, Context)
+          -> atom_string(Context, ContextText), Status = "agrees_at_input", TraceRoundTrip = false
+          ;  ContextText = "", Status = "context_unvalidated", TraceRoundTrip = false )
+       ;  ContextText = "", SeparatorText = "",
+          ( pusu_action_run(Op, Deformation, TraceLeft, TraceRight, Outcome, DeformationTrace, _),
+            pusu_outcome_correct_strategy(Outcome),
+            pusu_trace_classified(Family, Productive, Outcome),
+            pusu_action_run(Op, Productive, TraceLeft, TraceRight, _, ProductiveTrace, _),
+            DeformationTrace \=@= ProductiveTrace
+          -> Status = "normative_contrast", TraceRoundTrip = true
+          ;  Status = "vacuous_pair", TraceRoundTrip = false ) )
+    ; ContextText = "", SeparatorText = "", Status = "battery_absent", TraceRoundTrip = false ).
+
+pusu_agreement_status_rule(Family, Op, Rule, Status, ContextText, SeparatorText) :-
+    ( pusu_battery_for(Op, _)
+    -> ( pusu_rule_battery_issue(Op, Rule, Status)
+       -> ContextText = "", SeparatorText = ""
+       ;  pusu_rule_separator(Op, Rule, SeparatorLeft, SeparatorRight)
+       -> pusu_input_text(Op, SeparatorLeft, SeparatorRight, SeparatorText),
+          ( pusu_rule_context_validated(Family, Op, Rule, SeparatorLeft-SeparatorRight, Context)
+          -> atom_string(Context, ContextText), Status = "agrees_at_input"
+          ;  ContextText = "", Status = "context_unvalidated" )
+       ;  ContextText = "", SeparatorText = "", Status = "vacuous_pair" )
+    ; ContextText = "", SeparatorText = "", Status = "battery_absent" ).
+
+pusu_rule_battery_issue(Op, Rule, Status) :-
+    pusu_battery_for(Op, Battery), member(Left-Right, Battery),
+    pusu_rule_probe(Op, Rule, Left, Right, Status),
+    memberchk(Status, [rule_no_output, rule_times_out, rule_errors]), !.
 
 pusu_call(Budget, Goal, Result) :-
     pusu_budget_seconds(Budget, Seconds),
@@ -175,6 +398,68 @@ pusu_diagnosis_with_budget(Op, Left, Right, Wrong, Kind, Status, Detail, Surface
        pusu_failure(Result, Failure)
     ).
 
+pusu_viability_field("agrees_at_input", Code, Family, ContextText, SeparatorText,
+                     [_{lesson:Code, family:Family, context:Context,
+                        separating_input:SeparatorText}]) :-
+    atom_string(Context, ContextText), !.
+pusu_viability_field(_, _, _, _, _, []).
+
+pusu_norm_citation("normative_contrast", Evidence, Citation) :- pusu_text(Evidence, Citation), !.
+pusu_norm_citation(_, _, "").
+
+% The current input may not distinguish two registered diagnostic descriptions.
+% Re-run both descriptions through the public rule surface and, when necessary,
+% search the same canonical operation battery before calling that recovery wrong.
+% A named diagnosis comparison uses an actual engine result.  A registered
+% rule is never represented by an unbound output: failed, undefined, and
+% inference-limited executions are explicit no-output markers.  Action-only
+% kinds use their public action-automaton route so rule/action comparisons are
+% meaningful as well.
+pusu_computed_output(Value, value(Value)) :- ground(Value), !.
+pusu_computed_output(_, no_output).
+
+pusu_named_rule_output(Op, Kind, Left, Right, Output) :-
+    pusu_operation_domain(Op, Domain), pusu_rule_input(Kind, Left, Right, Input),
+    test_harness:arith_misconception(_, Domain, Kind, Rule, _, _),
+    pusu_call(contrast_diagnosis,
+              test_harness:classify_arith(Rule, Input, pusu_expected_marker, Class, Got), Result),
+    ( Result == succeeded, memberchk(Class, [well_formed, wrong_answer])
+    -> pusu_computed_output(Got, Output)
+    ;  Output = no_output
+    ), !.
+pusu_named_rule_output(Op, Kind, Left, Right, Output) :-
+    pusu_action_run(Op, Kind, Left, Right, _, _, Result),
+    pusu_computed_output(Result, Output), !.
+pusu_named_rule_output(_, _, _, _, no_output).
+
+pusu_value_output(value(_)).
+
+pusu_diagnosis_separator(Op, RunKind, RecoveredKind, Left, Right) :-
+    pusu_battery_for(Op, Battery), member(Left-Right, Battery),
+    pusu_named_rule_output(Op, RunKind, Left, Right, RunOutput),
+    pusu_named_rule_output(Op, RecoveredKind, Left, Right, RecoveredOutput),
+    pusu_value_output(RunOutput), pusu_value_output(RecoveredOutput),
+    RunOutput \=@= RecoveredOutput, !.
+
+pusu_upgrade_diagnosis(Op, Left, Right, Kind, "recovered_different_error", Detail,
+                       "diagnosis_ambiguous_at_input", Detail, SeparatorText) :-
+    member(RecoveredKind, Detail),
+    pusu_named_rule_output(Op, Kind, Left, Right, RunOutput),
+    pusu_named_rule_output(Op, RecoveredKind, Left, Right, RecoveredOutput),
+    pusu_value_output(RunOutput), pusu_value_output(RecoveredOutput),
+    RunOutput =@= RecoveredOutput,
+    pusu_diagnosis_separator(Op, Kind, RecoveredKind, SeparatorLeft, SeparatorRight),
+    pusu_input_text(Op, SeparatorLeft, SeparatorRight, SeparatorText), !.
+pusu_upgrade_diagnosis(_, _, _, _, Status, Detail, Status, Detail, "").
+
+% A registered misconception rule that the trace classifier itself just
+% executed is a completed engine diagnosis even when the public inverse index
+% has not yet named it.  This is deliberately limited to rule contrasts; it
+% does not promote an action-route failure into a recovered diagnosis.
+pusu_complete_rule_diagnosis("no_diagnosis", Kind, _, _, "classified_by_rule", [Kind],
+                            "classify_arith_by_trace") :- !.
+pusu_complete_rule_diagnosis(Status, _, Detail, Surface, Status, Detail, Surface).
+
 pusu_action_contrast(Code, Family, Task, Row) :-
     activity_contract:task_action_operands(Task, Op, Left, Right),
     Goal = activity_contract:deformation_task_path(Code, Family, Task, Outcome),
@@ -185,26 +470,35 @@ pusu_action_contrast(Code, Family, Task, Row) :-
     -> pusu_text(Wrong, WrongText),
        ( pusu_run_productive(Code, Task, Productive, _, ProductiveTimedOut, _),
          pusu_result(Productive, Correct), Wrong =@= Correct
-       -> ContrastStatus = "runs_vacuously", Diagnosis = "not_applicable",
-          Detail = [], Surface = "none", TimedOut = ProductiveTimedOut, Failure = ""
-       ;  ContrastStatus = "runs",
-          pusu_diagnosis_with_budget(Op, Left, Right, Wrong, Kind, Diagnosis, Detail, Surface, TimedOut, Failure)
+       -> ( action_automata_registry:action_automaton_pair(Op, ProductiveKind, Kind, _)
+          -> pusu_agreement_status_action(Family, Op, Kind, ProductiveKind, Left, Right,
+                                          ContrastStatus, ContextText, SeparatorText, TraceRoundTrip)
+          ;  ContrastStatus = "attachment_unresolved", ContextText = "", SeparatorText = "", TraceRoundTrip = false ),
+          pusu_viability_field(ContrastStatus, Code, Family, ContextText, SeparatorText, Viability),
+          Diagnosis = "not_applicable", Detail = [], Surface = "none",
+          TimedOut = ProductiveTimedOut, Failure = ""
+       ;  ContrastStatus = "separates",
+          pusu_diagnosis_with_budget(Op, Left, Right, Wrong, Kind, Diagnosis0, Detail0, Surface0, TimedOut, Failure),
+          pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis, Detail, SeparatorText),
+          Surface = Surface0, ContextText = "", TraceRoundTrip = false, Viability = []
        )
     ;  Kind = Family, WrongText = "", ContrastStatus = "cannot_run",
        Diagnosis = "not_applicable", Detail = [], Surface = "none",
        ( CallResult == timed_out -> TimedOut = true ; TimedOut = false ),
-       pusu_failure(CallResult, Failure)
+       pusu_failure(CallResult, Failure), ContextText = "", SeparatorText = "", TraceRoundTrip = false, Viability = []
     ),
     pusu_text(Kind, KindText),
     Row = _{kind:KindText, family:Family, task:TaskText, source:"compiled_deformation_task",
             status:ContrastStatus, wrong_answer:WrongText, diagnosis:Diagnosis,
             diagnosis_detail:Detail, diagnosis_surface:Surface, goal:GoalText,
-            timed_out:TimedOut, failure:Failure}.
+            timed_out:TimedOut, failure:Failure, agreement_context:ContextText,
+            separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
+            norm_citation:""}.
 
 pusu_rule_contrast(Code, Obligation, Task, Row) :-
     Op = Obligation.operation, Kind = Obligation.kind,
     activity_contract:task_action_operands(Task, Op, Left, Right),
-    pusu_operation_domain(Op, Domain), pusu_input(Left, Right, Input),
+    pusu_operation_domain(Op, Domain), pusu_rule_input(Kind, Left, Right, Input),
     test_harness:arith_misconception(_, Domain, Kind, Rule, _, _),
     pusu_run_productive(Code, Task, Productive, _, ProductiveTimedOut, _), pusu_result(Productive, Expected),
     Goal = test_harness:classify_arith_by_trace(Rule, Input, Expected, Class, Evidence),
@@ -212,24 +506,36 @@ pusu_rule_contrast(Code, Obligation, Task, Row) :-
     pusu_call(contrast_diagnosis, Goal, CallResult),
     ( CallResult == succeeded
     -> ( Class == wrong_answer
-       -> pusu_text(Evidence, WrongText), ContrastStatus = "runs",
-          pusu_diagnosis_with_budget(Op, Left, Right, Evidence, Kind, Diagnosis, Detail, Surface, DiagnosisTimedOut, Failure),
+       -> pusu_text(Evidence, WrongText), ContrastStatus = "separates",
+          pusu_diagnosis_with_budget(Op, Left, Right, Evidence, Kind, Diagnosis0, Detail0, Surface0, DiagnosisTimedOut, Failure),
+          pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis1, Detail1, SeparatorText),
+          pusu_complete_rule_diagnosis(Diagnosis1, Kind, Detail1, Surface0, Diagnosis, Detail, Surface),
+          ContextText = "", TraceRoundTrip = false, Viability = [],
           ( ( ProductiveTimedOut == true ; DiagnosisTimedOut == true ) -> TimedOut = true ; TimedOut = false )
-       ;  pusu_text(Evidence, WrongText), ContrastStatus = "runs_vacuously",
-          Diagnosis = "not_applicable", Detail = [], Surface = "none", TimedOut = ProductiveTimedOut, Failure = ""
+       ;  pusu_text(Evidence, WrongText),
+          pusu_rule_class_status(Class, RuleStatus),
+          ( RuleStatus == agrees
+          -> pusu_agreement_status_rule(Kind, Op, Rule, ContrastStatus, ContextText, SeparatorText),
+             pusu_viability_field(ContrastStatus, Code, Kind, ContextText, SeparatorText, Viability)
+          ;  ContrastStatus = RuleStatus, ContextText = "", SeparatorText = "", Viability = []
+          ),
+          Diagnosis = "not_applicable", Detail = [], Surface = "none", TimedOut = ProductiveTimedOut,
+          Failure = "", TraceRoundTrip = false
        )
     ;  WrongText = "", ContrastStatus = "cannot_run", Diagnosis = "not_applicable",
        Detail = [], Surface = "none",
        ( ( CallResult == timed_out ; ProductiveTimedOut == true ) -> TimedOut = true ; TimedOut = false ),
-       pusu_failure(CallResult, Failure)
+       pusu_failure(CallResult, Failure), ContextText = "", SeparatorText = "", TraceRoundTrip = false, Viability = []
     ),
     Row = _{kind:KindText, family:KindText, task:TaskText, source:"registered_misconception_rule",
             status:ContrastStatus, wrong_answer:WrongText, diagnosis:Diagnosis,
             diagnosis_detail:Detail, diagnosis_surface:Surface, goal:GoalText,
-            timed_out:TimedOut, failure:Failure}.
+            timed_out:TimedOut, failure:Failure, agreement_context:ContextText,
+            separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
+            norm_citation:""}.
 
 pusu_receipt_contrast(Code, Op, AltKind, Family, Task, Row) :-
-    compiled_receipt_routes:receipt_contrast_route(Code, Op, AltKind, Family, Task, _),
+    compiled_receipt_routes:receipt_contrast_route(Code, Op, AltKind, Family, Task, Evidence),
     activity_contract:task_action_operands(Task, Op, Left, Right),
     Goal = action_automata_registry:run_action_automaton(Op, AltKind, Left, Right, Outcome, _),
     pusu_goal_text(Goal, GoalText), pusu_text(Task, TaskText), pusu_text(AltKind, KindText),
@@ -238,28 +544,53 @@ pusu_receipt_contrast(Code, Op, AltKind, Family, Task, Row) :-
     -> pusu_text(Wrong, WrongText),
        ( pusu_run_productive(Code, Task, Productive, _, ProductiveTimedOut, _),
          pusu_result(Productive, Correct), Wrong =@= Correct
-       -> ContrastStatus = "runs_vacuously", Diagnosis = "not_applicable",
-          Detail = [], Surface = "none", TimedOut = ProductiveTimedOut, Failure = ""
-       ;  ContrastStatus = "runs",
-          pusu_diagnosis_with_budget(Op, Left, Right, Wrong, AltKind, Diagnosis, Detail, Surface, TimedOut, Failure)
+       -> ( Evidence = receipt_evidence(intended(Op, ProductiveKind), _, _, _)
+          -> pusu_agreement_status_action(Family, Op, AltKind, ProductiveKind, Left, Right,
+                                          ContrastStatus, ContextText, SeparatorText, TraceRoundTrip)
+          ;  ContrastStatus = "attachment_unresolved", ContextText = "", SeparatorText = "", TraceRoundTrip = false ),
+          pusu_viability_field(ContrastStatus, Code, Family, ContextText, SeparatorText, Viability),
+          Diagnosis = "not_applicable", Detail = [], Surface = "none", TimedOut = ProductiveTimedOut, Failure = ""
+       ;  ContrastStatus = "separates",
+          pusu_diagnosis_with_budget(Op, Left, Right, Wrong, AltKind, Diagnosis0, Detail0, Surface0, TimedOut, Failure),
+          pusu_upgrade_diagnosis(Op, Left, Right, AltKind, Diagnosis0, Detail0, Diagnosis, Detail, SeparatorText),
+          Surface = Surface0, ContextText = "", TraceRoundTrip = false, Viability = []
        )
     ;  WrongText = "", ContrastStatus = "cannot_run", Diagnosis = "not_applicable",
        Detail = [], Surface = "none",
        ( CallResult == timed_out -> TimedOut = true ; TimedOut = false ),
-       pusu_failure(CallResult, Failure)
+       pusu_failure(CallResult, Failure), ContextText = "", SeparatorText = "", TraceRoundTrip = false, Viability = []
     ),
+    pusu_norm_citation(ContrastStatus, Evidence, NormCitation),
     Row = _{kind:KindText, family:Family, task:TaskText, source:"receipt_contrast_route",
             status:ContrastStatus, wrong_answer:WrongText, diagnosis:Diagnosis,
             diagnosis_detail:Detail, diagnosis_surface:Surface, goal:GoalText,
-            timed_out:TimedOut, failure:Failure}.
+            timed_out:TimedOut, failure:Failure, agreement_context:ContextText,
+            separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
+            norm_citation:NormCitation}.
+
+pusu_defect_attempt(Op, AltKind, Left-Right, Status) :-
+    Goal = action_automata_registry:run_action_automaton(Op, AltKind, Left, Right, _, _),
+    pusu_call(contrast_diagnosis, Goal, Result),
+    ( Result == succeeded -> Status = "automaton_runs_operands"
+    ; Result == timed_out -> Status = "automaton_times_out_operands"
+    ; Result = failed(_) -> Status = "automaton_errors_operands"
+    ; Status = "automaton_refuses_operands" ).
+
+pusu_defect_render(Op, AltKind, automaton_refuses_operands(Operands), TypedReason) :-
+    findall(operand_status(Operand, Status),
+            ( member(Operand, Operands), pusu_defect_attempt(Op, AltKind, Operand, Status) ),
+            Attempts),
+    pusu_text(automaton_operand_statuses(Attempts), TypedReason), !.
+pusu_defect_render(_, _, Reason, TypedReason) :- pusu_text(Reason, TypedReason).
 
 pusu_receipt_defect(Code, Row) :-
     compiled_receipt_routes:receipt_route_defect(Code, Op, ProductiveKind, AltKind, Reason),
-    pusu_text(AltKind, KindText), pusu_text(Reason, ReasonText),
+    pusu_text(AltKind, KindText), pusu_defect_render(Op, AltKind, Reason, ReasonText),
     Row = _{kind:KindText, family:AltKind, task:"", source:"receipt_route_defect",
             status:"cannot_run", wrong_answer:"", diagnosis:"not_applicable",
             diagnosis_detail:[], diagnosis_surface:"none", goal:"", timed_out:false, failure:"",
-            operation:Op, productive_kind:ProductiveKind, route_defect:ReasonText}.
+            operation:Op, productive_kind:ProductiveKind, route_defect:ReasonText,
+            agreement_context:"", separating_input:"", trace_round_trip:false, viability:[], norm_citation:""}.
 
 pusu_contract_obligations(Code, Obligations, TimedOut, Failure) :-
     pusu_contract_memo(Code, Obligations, TimedOut-Failure), !.
@@ -313,13 +644,27 @@ pusu_verdict(Productive, Contrasts, Verdict, Detail) :-
     -> Verdict = "broken(contrast_cannot_run)", Detail = "no attached executable contrast route"
     ; member(Row, Contrasts), Row.status == "cannot_run"
     -> Verdict = "broken(contrast_cannot_run)", Detail = "an attached contrast could not run"
-    ; member(Row, Contrasts), Row.status == "runs_vacuously"
-    -> Verdict = "broken(contrast_vacuous)", Detail = "a contrast returned the productive value"
+    ; member(Row, Contrasts), Row.status == "battery_absent"
+    -> Verdict = "broken(battery_absent)", Detail = "an agreeing contrast has no declared operation battery"
+    ; member(Row, Contrasts), memberchk(Row.status,
+                                        [rule_no_output, rule_times_out, rule_errors,
+                                         action_no_output, action_times_out, action_errors])
+    -> Verdict = "broken(contrast_cannot_run)", Detail = "an attached contrast route did not produce an executable output"
+    ; member(Row, Contrasts), Row.status == "vacuous_pair"
+    -> Verdict = "broken(vacuous_pair)", Detail = "a contrast has no separating battery input"
+    ; member(Row, Contrasts), Row.status == "normative_contrast", Row.trace_round_trip \== true
+    -> Verdict = "broken(normative_trace_unverified)", Detail = "a correct-but-inefficient contrast lacks a distinct classified trace"
+    % Diagnosis defects take precedence over an independent context failure:
+    % changing numerals cannot repair a wrong recovered kind or absent recovery.
     ; member(Row, Contrasts), Row.diagnosis == "no_diagnosis"
     -> Verdict = "broken(diagnosis_missed)", Detail = "a wrong contrast answer was not recovered"
     ; member(Row, Contrasts), Row.diagnosis == "recovered_different_error"
     -> Verdict = "broken(diagnosis_wrong_error)", Detail = "a wrong contrast answer recovered another error"
-    ; Verdict = "pass", Detail = "all compiled productive and contrast routes ran and recovered"
+    ; member(Row, Contrasts), Row.status == "attachment_unresolved"
+    -> Verdict = "broken(contrast_attachment_missing)", Detail = "an agreeing contrast has no identified registry pair or intended receipt route"
+    ; member(Row, Contrasts), Row.status == "context_unvalidated"
+    -> Verdict = "needs_separating_numerals", Detail = "a separating input exists but its authored agreement context did not validate"
+    ; Verdict = "pass", Detail = "all compiled productive and contrast routes separated, validated a viable agreement context, or completed a normative trace round-trip"
     ).
 
 pusu_lesson(Code, Row) :-
@@ -345,7 +690,9 @@ def prolog_list(lessons: list[str]) -> str:
     return "[" + ",".join(repr(lesson).replace('"', "'") for lesson in lessons) + "]"
 
 
-def run_engine(lessons: list[str], productive_budget: int | None = None) -> list[dict]:
+def run_engine(
+    lessons: list[str], productive_budget: int | None = None, batteries: bool = True
+) -> list[dict]:
     runner = PROLOG_RUNNER
     if productive_budget is not None:
         runner = runner.replace(
@@ -353,6 +700,8 @@ def run_engine(lessons: list[str], productive_budget: int | None = None) -> list
             f"pusu_budget_seconds(productive_execution, {productive_budget}).",
             1,
         )
+    if not batteries:
+        runner = runner.replace("pusu_batteries_enabled.", "% benchmark: batteries disabled", 1)
     program = runner + "\n:- pusu_main(" + prolog_list(lessons) + "), halt.\n"
     # The whole-invocation ceiling scales with the batch: a heavy lesson's
     # tasks may legitimately spend many minutes inside the per-stage budgets
@@ -392,26 +741,67 @@ def stage(verdict: str) -> str:
 
 def compact_prolog(rows: list[dict]) -> str:
     lines = ["% Generated by scripts/curriculum/pusu_pass.py; do not edit.",
-             ":- module(pusu_pass, [pusu/2]).", ""]
+             ":- module(pusu_pass, [pusu/2, pusu_viability/4]).", ""]
+    viability_seen: set[tuple[str, str, str, str]] = set()
     for row in rows:
         lesson = row["lesson"].replace("'", "\\'")
         verdict = row["pusu"]
         if verdict == "pass":
             term = "pass"
+        elif verdict == "needs_separating_numerals":
+            term = "needs_separating_numerals(" + repr(row["detail"]).replace('"', "'") + ")"
         else:
             term = "broken(" + stage(verdict) + ", " + repr(row["detail"]).replace('"', "'") + ")"
         lines.append(f"pusu('{lesson}', {term}).")
+        for contrast in row["contrasts"]:
+            for fact in contrast.get("viability", []):
+                family = str(fact["family"]).replace("'", "\\'")
+                context = str(fact["context"]).replace("'", "\\'")
+                separator = str(fact["separating_input"]).replace("'", "\\'")
+                key = (lesson, family, context, separator)
+                if key in viability_seen:
+                    continue
+                viability_seen.add(key)
+                lines.append(
+                    f"pusu_viability('{lesson}', '{family}', o(context({context})), '{separator}')."
+                )
     return "\n".join(lines) + "\n"
 
 
-def payload(rows: list[dict], elapsed: float, selected: list[str]) -> dict:
+def previous_verdicts() -> dict[str, str]:
+    if not OUTPUT.exists():
+        return {}
+    try:
+        document = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return {row["lesson"]: row["pusu"] for row in document.get("rows", [])}
+
+
+def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[str, str]) -> dict:
     distribution = Counter(stage(row["pusu"]) for row in rows)
+    raw_viability_facts = [
+        fact for row in rows for contrast in row["contrasts"]
+        for fact in contrast.get("viability", [])
+    ]
+    viability_facts = list({
+        (str(fact["lesson"]), str(fact["family"]), str(fact["context"]), str(fact["separating_input"])): fact
+        for fact in raw_viability_facts
+    }.values())
     return {
-        "schema": "pusu_pass_v1",
-        "register": "put up or shut up: engine-only execution, contrast, and diagnosis pass",
+        "schema": "pusu_pass_v2",
+        "register": (
+            "put up or shut up: engine-only execution, material contrast, and diagnosis pass; "
+            "pusu_viability facts carry real o(context(...)) terms for a later incompatibility layer"
+        ),
         "scope": {"diagnostic_ready_lessons": len(selected), "lessons": selected},
         "timing_seconds": round(elapsed, 3),
         "verdict_distribution": dict(sorted(distribution.items())),
+        "verdict_motion": [
+            {"lesson": row["lesson"], "before": before.get(row["lesson"], "not_in_prior_artifact"), "after": row["pusu"]}
+            for row in rows
+        ],
+        "viability_facts": viability_facts,
         "rows": rows,
     }
 
@@ -423,16 +813,23 @@ def main() -> int:
     parser.add_argument("--first", type=int, metavar="N", help="run the first N diagnostic-ready lessons")
     parser.add_argument("--offset", type=int, default=0, metavar="N", help="skip N diagnostic-ready lessons before --first")
     parser.add_argument("--productive-budget", type=int, metavar="SECONDS", help="override the productive budget for a focused regression run")
+    parser.add_argument("--without-batteries", action="store_true", help="benchmark only: suppress battery sweeps (requires --stdout)")
     parser.add_argument("--merge", action="append", metavar="JSON", help="merge prior --stdout batch documents and write artifacts")
     parser.add_argument("--stdout", action="store_true", help="emit JSON without writing artifacts")
     args = parser.parse_args()
     if args.merge:
-        if args.calibration or args.lesson or args.first or args.offset or args.stdout:
+        if args.calibration or args.lesson or args.first or args.offset or args.stdout or args.without_batteries:
             parser.error("--merge is only for writing prior batch documents")
         documents = [json.loads(Path(path).read_text(encoding="utf-8")) for path in args.merge]
         rows = [row for document in documents for row in document["rows"]]
         lessons = [lesson for document in documents for lesson in document["scope"]["lessons"]]
-        document = payload(rows, sum(item["timing_seconds"] for item in documents), lessons)
+        before = previous_verdicts()
+        for item in documents:
+            for motion in item.get("verdict_motion", []):
+                prior = motion.get("before", "not_in_prior_artifact")
+                if prior != "not_in_prior_artifact":
+                    before[motion["lesson"]] = prior
+        document = payload(rows, sum(item["timing_seconds"] for item in documents), lessons, before)
         OUTPUT.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         OUTPUT_PL.write_text(compact_prolog(rows), encoding="utf-8")
         print(f"wrote {OUTPUT.relative_to(ROOT)} ({len(rows)} lessons, {document['timing_seconds']}s)")
@@ -441,6 +838,8 @@ def main() -> int:
         parser.error("--lesson and --first cannot be combined")
     if args.productive_budget is not None and args.productive_budget < 1:
         parser.error("--productive-budget must be positive")
+    if args.without_batteries and not args.stdout:
+        parser.error("--without-batteries is a benchmark and requires --stdout")
     lessons = args.lesson or (list(CALIBRATION) if args.calibration else diagnostic_ready_lessons())
     if args.first is not None:
         if args.first < 1:
@@ -449,8 +848,11 @@ def main() -> int:
     elif args.offset:
         parser.error("--offset requires --first")
     start = time.monotonic()
-    rows = run_engine(lessons, productive_budget=args.productive_budget)
-    document = payload(rows, time.monotonic() - start, lessons)
+    before = previous_verdicts()
+    rows = run_engine(
+        lessons, productive_budget=args.productive_budget, batteries=not args.without_batteries
+    )
+    document = payload(rows, time.monotonic() - start, lessons, before)
     if args.stdout:
         json.dump(document, sys.stdout, indent=2, sort_keys=True)
         sys.stdout.write("\n")
