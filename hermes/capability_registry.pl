@@ -211,6 +211,7 @@ capability('viability_witness', 'cw_driver', 'crosswalk', ['cost', 'resources', 
 capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_paged).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'crosswalk', ['canonical', 'source'], routed_paged).
+capability('curriculum/im/generated/compiled_receipt_routes.pl', 'compiled_receipt_routes', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'workflow', [], orphan_module).
 capability('curriculum/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
 capability('curriculum/im_harness.pl', 'im_harness', 'workflow', [], orphan_module).

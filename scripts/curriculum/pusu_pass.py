@@ -354,6 +354,11 @@ def run_engine(lessons: list[str], productive_budget: int | None = None) -> list
             1,
         )
     program = runner + "\n:- pusu_main(" + prolog_list(lessons) + "), halt.\n"
+    # The whole-invocation ceiling scales with the batch: a heavy lesson's
+    # tasks may legitimately spend many minutes inside the per-stage budgets
+    # (the 2026-07-29 sweep measured single G4 lessons past twenty minutes),
+    # so a flat ceiling misreads honest work as a hang.  Thirty minutes per
+    # lesson holds a floor of twenty for tiny batches.
     proc = subprocess.run(
         ["swipl", "-q", "-l", str(ROOT / "paths.pl"), "-g", "consult(user),halt"],
         cwd=ROOT,
@@ -361,7 +366,7 @@ def run_engine(lessons: list[str], productive_budget: int | None = None) -> list
         text=True,
         capture_output=True,
         check=False,
-        timeout=20 * 60,
+        timeout=max(20 * 60, 30 * 60 * len(lessons)),
     )
     if proc.returncode:
         raise RuntimeError(f"SWI-Prolog failed ({proc.returncode}):\n{proc.stderr.strip()}")

@@ -418,17 +418,17 @@
       "standards": 22,
       "synthesis": 35,
       "unclassified": 8,
-      "workflow": 5,
+      "workflow": 6,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 70,
+      "orphan_module": 71,
       "routed_paged": 195,
       "unrouted": 7
     },
     "orphan_verdicts": {
-      "consumed_by_builder": 2,
+      "consumed_by_builder": 3,
       "consumed_by_check": 6,
       "deliberately_unloaded": 4,
       "include_active": 21,
@@ -436,11 +436,35 @@
       "superseded": 0,
       "undetermined": 34
     },
-    "total": 282,
+    "total": 283,
     "unrouted": 7
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated verified receipt contrast routes",
+          "path": "curriculum/im/generated/compiled_receipt_routes.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "COMPILED_RECEIPT_ROUTES",
+          "path": "scripts/curriculum/build_lesson_evidence.py",
+          "relation": "ledger licensing reader"
+        },
+        {
+          "locator": "compiled_receipt_routes",
+          "path": "scripts/curriculum/pusu_pass.py",
+          "relation": "runner contrast lane"
+        }
+      ],
+      "module": "compiled_receipt_routes",
+      "note": "The evidence ledger reads its route and defect facts to decide whether a receipt licenses structured_negative, and the PUSU runner loads it for the receipt contrast lane.",
+      "path": "curriculum/im/generated/compiled_receipt_routes.pl",
+      "verdict": "consumed_by_builder"
+    },
     {
       "capability_class": "workflow",
       "evidence": [
