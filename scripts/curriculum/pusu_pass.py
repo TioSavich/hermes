@@ -37,6 +37,7 @@ PROLOG_RUNNER = r'''
 :- use_module(misconceptions(test_harness)).
 :- use_module(lessons('im/generated/compiled_receipt_routes')).
 :- use_module(library(http/json)).
+:- use_module(library(apply)).
 :- use_module(library(lists)).
 :- use_module(library(time)).
 
@@ -58,6 +59,19 @@ pusu_operation_domain(addition, whole_number).
 pusu_operation_domain(subtraction, whole_number).
 pusu_operation_domain(multiplication, whole_number).
 pusu_operation_domain(division, whole_number).
+% The registry files fraction arithmetic under `rational`, so a fraction
+% operation's registered rules and its public diagnosis index are reachable
+% under that name.  No battery is declared for the operation: an agreeing
+% fraction contrast still refuses with battery_absent rather than borrowing
+% a whole-number probe list.
+pusu_operation_domain(fraction, rational).
+% Fraction tasks carry the operation direction in the operand compound and a
+% referent-whole role marker in the second position.  Pairing the two would
+% bury the numerals under a marker that names no input, so the compound
+% itself is the input the diagnosis surfaces are asked about.
+pusu_input(Operands, unit(whole), Operands) :-
+    compound(Operands), functor(Operands, Direction, 2),
+    memberchk(Direction, [fraction_addend_pair, fraction_minuend_subtrahend]), !.
 pusu_input(Left, Right, Left-Right).
 % A small number of registered rules carry a typed task wrapper rather than
 % the operation's ordinary operand pair.  The battery still supplies the two
@@ -348,11 +362,33 @@ pusu_productive(Code, Row) :-
     Row = _{task:TaskText, status:Status, result:ResultText, goal:GoalText,
             timed_out:TimedOut, failure:Failure}.
 
-pusu_public_diagnosis(Domain, Input, Wrong, Kind, Status, Detail) :-
+% too_vague is never served.  Fourteen rows from the 07-21 churn pass still
+% carry that label with an executable rule behind them, so the public index
+% can answer with it; a label that may not be served can neither name a
+% recovery nor contradict one.  It is withheld from candidacy, and the
+% withholding is recorded in the surface field rather than dropped in
+% silence.
+pusu_withheld_diagnosis(too_vague).
+
+pusu_partition_withheld([], [], []).
+pusu_partition_withheld([Name|Rest], Servable, Withheld) :-
+    ( pusu_withheld_diagnosis(Name)
+    -> Withheld = [Name|WithheldRest], Servable = ServableRest
+    ;  Servable = [Name|ServableRest], Withheld = WithheldRest
+    ),
+    pusu_partition_withheld(Rest, ServableRest, WithheldRest).
+
+pusu_surface_with_withheld(Surface, [], Surface) :- !.
+pusu_surface_with_withheld(Surface, Withheld, Annotated) :-
+    atomic_list_concat(Withheld, '+', Names),
+    format(string(Annotated), "~w_after_withheld(~w)", [Surface, Names]).
+
+pusu_public_diagnosis(Domain, Input, Wrong, Kind, Status, Detail, Withheld) :-
     findall(Description,
             ( test_harness:diagnose_error(Domain, Input, Wrong, Match),
               Description = Match.description ), Descriptions0),
-    sort(Descriptions0, Descriptions),
+    sort(Descriptions0, Descriptions1),
+    pusu_partition_withheld(Descriptions1, Descriptions, Withheld),
     ( memberchk(Kind, Descriptions)
     -> Status = "recovered", Detail = Descriptions
     ; Descriptions = []
@@ -379,12 +415,21 @@ pusu_inverse_action_diagnosis(Op, Left, Right, Wrong, Kind, Status, Detail) :-
 
 pusu_diagnosis(Op, Left, Right, Wrong, Kind, Status, Detail, Surface) :-
     pusu_operation_domain(Op, Domain), pusu_input(Left, Right, Input),
-    pusu_public_diagnosis(Domain, Input, Wrong, Kind, PublicStatus, PublicDetail),
+    pusu_public_diagnosis(Domain, Input, Wrong, Kind, PublicStatus, PublicDetail, Withheld),
     ( PublicStatus == "no_diagnosis"
     -> pusu_inverse_action_diagnosis(Op, Left, Right, Wrong, Kind, Status, Detail),
-       Surface = "action_automaton_inverse"
-    ;  Status = PublicStatus, Detail = PublicDetail, Surface = "diagnose_error"
+       pusu_surface_with_withheld("action_automaton_inverse", Withheld, Surface)
+    ;  Status = PublicStatus, Detail = PublicDetail,
+       pusu_surface_with_withheld("diagnose_error", Withheld, Surface)
     ), !.
+% An operation outside the registered rule domains still has a second
+% diagnostic surface: the action registry runs the compiled operands
+% directly.  Asking it here is what keeps measurement, geometry, counting
+% and decimal contrasts from reaching the catch-all with neither surface
+% consulted.
+pusu_diagnosis(Op, Left, Right, Wrong, Kind, Status, Detail, "action_automaton_inverse") :-
+    \+ pusu_operation_domain(Op, _),
+    pusu_inverse_action_diagnosis(Op, Left, Right, Wrong, Kind, Status, Detail), !.
 pusu_diagnosis(_, _, _, _, _, "no_diagnosis", [], "unavailable").
 
 pusu_diagnosis_with_budget(Op, Left, Right, Wrong, Kind, Status, Detail, Surface, TimedOut, Failure) :-
@@ -441,16 +486,85 @@ pusu_diagnosis_separator(Op, RunKind, RecoveredKind, Left, Right) :-
     pusu_value_output(RunOutput), pusu_value_output(RecoveredOutput),
     RunOutput \=@= RecoveredOutput, !.
 
-pusu_upgrade_diagnosis(Op, Left, Right, Kind, "recovered_different_error", Detail,
-                       "diagnosis_ambiguous_at_input", Detail, SeparatorText) :-
-    member(RecoveredKind, Detail),
-    pusu_named_rule_output(Op, Kind, Left, Right, RunOutput),
+% How a recovered name stands to the run kind, decided by execution rather
+% than by reading the two names:
+%   incomparable_at_input    -- the engine produced no value for this kind here
+%   disagrees_at_input       -- it names a different behaviour at this input
+%   separates_on_battery(I)  -- same answer here, different answer at I
+%   no_battery               -- same answer here, and the operation declares
+%                               no probe list, so indistinguishability is
+%                               untested and may not be claimed
+%   agrees_everywhere_tested -- same answer here, and the declared battery
+%                               holds no input where the two differ
+pusu_recovery_relation(Op, Left, Right, Kind, RunOutput, RecoveredKind, Relation) :-
     pusu_named_rule_output(Op, RecoveredKind, Left, Right, RecoveredOutput),
-    pusu_value_output(RunOutput), pusu_value_output(RecoveredOutput),
-    RunOutput =@= RecoveredOutput,
-    pusu_diagnosis_separator(Op, Kind, RecoveredKind, SeparatorLeft, SeparatorRight),
-    pusu_input_text(Op, SeparatorLeft, SeparatorRight, SeparatorText), !.
-pusu_upgrade_diagnosis(_, _, _, _, Status, Detail, Status, Detail, "").
+    ( \+ pusu_value_output(RecoveredOutput)
+    -> Relation = incomparable_at_input
+    ; RecoveredOutput \=@= RunOutput
+    -> Relation = disagrees_at_input
+    ; \+ pusu_battery_for(Op, _)
+    -> Relation = no_battery
+    ; pusu_diagnosis_separator(Op, Kind, RecoveredKind, SeparatorLeft, SeparatorRight)
+    -> Relation = separates_on_battery(SeparatorLeft-SeparatorRight)
+    ;  Relation = agrees_everywhere_tested
+    ).
+
+pusu_recovery_relations(Op, Left, Right, Kind, Detail, Relations) :-
+    pusu_named_rule_output(Op, Kind, Left, Right, RunOutput),
+    pusu_value_output(RunOutput),
+    findall(Relation,
+            ( member(RecoveredKind, Detail),
+              pusu_recovery_relation(Op, Left, Right, Kind, RunOutput, RecoveredKind, Relation) ),
+            Relations),
+    % Every recovered name has to be assessed.  A name the relation predicate
+    % could not classify would otherwise drop out of the list and let the
+    % conjunction below read as unanimous when it is merely short.
+    length(Detail, Assessed), length(Relations, Assessed).
+
+% The reach of an equivalence claim, measured rather than asserted: the
+% battery inputs where both kinds produced a value, out of the whole
+% declared battery.  Where no separator exists those inputs are exactly the
+% inputs where the two agreed.  A small count is not a defect; it is the
+% honest extent of what the battery could test, and it travels with the
+% claim so a reader can weigh it.
+pusu_agreement_extent(Op, Kind, RecoveredKind, Compared, BatterySize) :-
+    pusu_battery_for(Op, Battery),
+    length(Battery, BatterySize),
+    findall(Left-Right,
+            ( member(Left-Right, Battery),
+              pusu_named_rule_output(Op, Kind, Left, Right, RunOutput),
+              pusu_named_rule_output(Op, RecoveredKind, Left, Right, RecoveredOutput),
+              pusu_value_output(RunOutput), pusu_value_output(RecoveredOutput) ),
+            Compared0),
+    length(Compared0, Compared).
+
+pusu_agreement_region(Op, Left, Right, Kind, Detail, RegionText) :-
+    ( pusu_text_input(Op, Left, Right, Queried) -> true ; Queried = operands(Op, Left, Right) ),
+    findall(equivalent_on_battery(RecoveredKind, compared(Compared), battery(BatterySize)),
+            ( member(RecoveredKind, Detail),
+              pusu_agreement_extent(Op, Kind, RecoveredKind, Compared, BatterySize) ),
+            Extents),
+    pusu_text(diagnosis_agreement_region(queried(Queried), run_kind(Kind), Extents), RegionText).
+
+% A recovery that disagrees with the run kind somewhere the battery can see
+% keeps the ambiguity upgrade.  A recovery set the battery cannot tell apart
+% from the run kind anywhere names a behaviour the battery cannot separate,
+% which is not the same as naming the wrong error: the row carries its
+% measured agreement region and stops vetoing the lesson.  A disagreement at
+% the input, an unrunnable kind, or an operation with no declared battery
+% all leave the wrong-error verdict standing.
+pusu_upgrade_diagnosis(Op, Left, Right, Kind, "recovered_different_error", Detail,
+                       Status, Detail, SeparatorText, ContextText) :-
+    Detail \== [],
+    pusu_recovery_relations(Op, Left, Right, Kind, Detail, Relations),
+    ( member(separates_on_battery(SeparatorLeft-SeparatorRight), Relations)
+    -> Status = "diagnosis_ambiguous_at_input", ContextText = "",
+       pusu_input_text(Op, SeparatorLeft, SeparatorRight, SeparatorText)
+    ; forall(member(Relation, Relations), Relation == agrees_everywhere_tested)
+    -> Status = "diagnosis_names_equivalent_error", SeparatorText = "",
+       pusu_agreement_region(Op, Left, Right, Kind, Detail, ContextText)
+    ), !.
+pusu_upgrade_diagnosis(_, _, _, _, Status, Detail, Status, Detail, "", "").
 
 % A registered misconception rule that the trace classifier itself just
 % executed is a completed engine diagnosis even when the public inverse index
@@ -479,8 +593,9 @@ pusu_action_contrast(Code, Family, Task, Row) :-
           TimedOut = ProductiveTimedOut, Failure = ""
        ;  ContrastStatus = "separates",
           pusu_diagnosis_with_budget(Op, Left, Right, Wrong, Kind, Diagnosis0, Detail0, Surface0, TimedOut, Failure),
-          pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis, Detail, SeparatorText),
-          Surface = Surface0, ContextText = "", TraceRoundTrip = false, Viability = []
+          pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis, Detail,
+                                 SeparatorText, ContextText),
+          Surface = Surface0, TraceRoundTrip = false, Viability = []
        )
     ;  Kind = Family, WrongText = "", ContrastStatus = "cannot_run",
        Diagnosis = "not_applicable", Detail = [], Surface = "none",
@@ -508,9 +623,10 @@ pusu_rule_contrast(Code, Obligation, Task, Row) :-
     -> ( Class == wrong_answer
        -> pusu_text(Evidence, WrongText), ContrastStatus = "separates",
           pusu_diagnosis_with_budget(Op, Left, Right, Evidence, Kind, Diagnosis0, Detail0, Surface0, DiagnosisTimedOut, Failure),
-          pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis1, Detail1, SeparatorText),
+          pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis1, Detail1,
+                                 SeparatorText, ContextText),
           pusu_complete_rule_diagnosis(Diagnosis1, Kind, Detail1, Surface0, Diagnosis, Detail, Surface),
-          ContextText = "", TraceRoundTrip = false, Viability = [],
+          TraceRoundTrip = false, Viability = [],
           ( ( ProductiveTimedOut == true ; DiagnosisTimedOut == true ) -> TimedOut = true ; TimedOut = false )
        ;  pusu_text(Evidence, WrongText),
           pusu_rule_class_status(Class, RuleStatus),
@@ -552,8 +668,9 @@ pusu_receipt_contrast(Code, Op, AltKind, Family, Task, Row) :-
           Diagnosis = "not_applicable", Detail = [], Surface = "none", TimedOut = ProductiveTimedOut, Failure = ""
        ;  ContrastStatus = "separates",
           pusu_diagnosis_with_budget(Op, Left, Right, Wrong, AltKind, Diagnosis0, Detail0, Surface0, TimedOut, Failure),
-          pusu_upgrade_diagnosis(Op, Left, Right, AltKind, Diagnosis0, Detail0, Diagnosis, Detail, SeparatorText),
-          Surface = Surface0, ContextText = "", TraceRoundTrip = false, Viability = []
+          pusu_upgrade_diagnosis(Op, Left, Right, AltKind, Diagnosis0, Detail0, Diagnosis, Detail,
+                                 SeparatorText, ContextText),
+          Surface = Surface0, TraceRoundTrip = false, Viability = []
        )
     ;  WrongText = "", ContrastStatus = "cannot_run", Diagnosis = "not_applicable",
        Detail = [], Surface = "none",
@@ -667,10 +784,26 @@ pusu_verdict(Productive, Contrasts, Verdict, Detail) :-
     ; Verdict = "pass", Detail = "all compiled productive and contrast routes separated, validated a viable agreement context, or completed a normative trace round-trip"
     ).
 
+% A receipt whose route cannot bind stays on the books and stays in the
+% artifact: the receipt-executability ruling keeps defect facts visible with
+% the failed warrant named.  It is not, however, a live claim about the
+% lesson, and a superseded defect cannot speak for routes that run and
+% separate.  The verdict follows the active routes.  A lesson whose only
+% receipt is defective has nothing live to follow and keeps its cannot_run
+% verdict.
+pusu_route_defect_row(Row) :- get_dict(source, Row, "receipt_route_defect").
+
+pusu_active_verdict(Productive, Contrasts, Verdict, Detail) :-
+    exclude(pusu_route_defect_row, Contrasts, Active),
+    ( Active == []
+    -> pusu_verdict(Productive, Contrasts, Verdict, Detail)
+    ;  pusu_verdict(Productive, Active, Verdict, Detail)
+    ).
+
 pusu_lesson(Code, Row) :-
     findall(Productive, pusu_productive(Code, Productive), ProductiveRows),
     pusu_contrasts(Code, ContrastRows),
-    pusu_verdict(ProductiveRows, ContrastRows, Verdict, Detail),
+    pusu_active_verdict(ProductiveRows, ContrastRows, Verdict, Detail),
     Row = _{lesson:Code, pusu:Verdict, detail:Detail,
             productive:ProductiveRows, contrasts:ContrastRows}.
 
@@ -792,7 +925,14 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
         "schema": "pusu_pass_v2",
         "register": (
             "put up or shut up: engine-only execution, material contrast, and diagnosis pass; "
-            "pusu_viability facts carry real o(context(...)) terms for a later incompatibility layer"
+            "pusu_viability facts carry real o(context(...)) terms for a later incompatibility layer; "
+            "diagnosis reads recovered, recovered_different_error, diagnosis_ambiguous_at_input, "
+            "diagnosis_names_equivalent_error (the declared battery separates the recovered names "
+            "from the run kind nowhere; agreement_context carries the measured reach), "
+            "classified_by_rule, no_diagnosis, or not_applicable, and a diagnosis_surface may carry "
+            "an _after_withheld(...) annotation naming labels that may not be served; the lesson "
+            "verdict follows the routes that run, so receipt_route_defect rows stay in the artifact "
+            "without deciding it, except where a lesson's only receipt is the defective one"
         ),
         "scope": {"diagnostic_ready_lessons": len(selected), "lessons": selected},
         "timing_seconds": round(elapsed, 3),

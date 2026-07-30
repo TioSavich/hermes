@@ -33,6 +33,15 @@ BASELINE = {
 
 TIMEOUT_REGRESSION_LESSON = "IM-G4-U4-L20"
 
+# The agrees-everywhere rung, pinned by a lesson that exercises it.  Every
+# subtract(42,28) contrast row here recovers add_instead_of_subtract_column,
+# which the subtraction battery separates from the run kind nowhere, so the
+# row names a behaviour the battery cannot tell apart rather than the wrong
+# error.  The pin is the verdict AND the measured agreement region: a rung
+# that fired without recording its reach would be an assertion, not a
+# finding.
+EQUIVALENT_DIAGNOSIS_LESSON = "IM-G2-U2-L11"
+
 
 def main() -> int:
     result = subprocess.run(
@@ -64,6 +73,25 @@ def main() -> int:
     ):
         print("FAIL pusu timeout regression", file=sys.stderr)
         print(json.dumps(timeout_row, indent=2, sort_keys=True), file=sys.stderr)
+        return 1
+    equivalent_result = subprocess.run(
+        [sys.executable, str(HARNESS), "--lesson", EQUIVALENT_DIAGNOSIS_LESSON, "--stdout"],
+        cwd=ROOT, text=True, capture_output=True, check=False, timeout=10 * 60,
+    )
+    if equivalent_result.returncode:
+        print(equivalent_result.stderr, file=sys.stderr)
+        return equivalent_result.returncode
+    equivalent_rows = json.loads(equivalent_result.stdout)["rows"]
+    equivalent_contrasts = [
+        contrast for row in equivalent_rows for contrast in row["contrasts"]
+        if contrast["diagnosis"] == "diagnosis_names_equivalent_error"
+        # Contract rows carry a shorter key set, so read the field defensively
+        # the way the harness payload does.
+        and contrast.get("agreement_context", "").startswith("diagnosis_agreement_region(")
+    ]
+    if len(equivalent_rows) != 1 or equivalent_rows[0]["pusu"] != "pass" or not equivalent_contrasts:
+        print("FAIL pusu equivalent-diagnosis rung", file=sys.stderr)
+        print(json.dumps(equivalent_rows, indent=2, sort_keys=True), file=sys.stderr)
         return 1
     print("PASS pusu calibration")
     return 0
