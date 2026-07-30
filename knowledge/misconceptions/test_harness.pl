@@ -89,6 +89,24 @@ entails(Shape, Target) :-
 %                     This is the typical "misconception confirmed" outcome.
 %    loop_detected  — the rule exceeded the inference limit.
 %    undefined      — the rule predicate does not exist.
+%
+%  The inference limit is a non-termination guard, not a cost budget. It was
+%  10,000 while every registered rule was a one-line integer computation. Rules
+%  that delegate to an action automaton run grounded (successor-counted)
+%  arithmetic instead, so their cost scales with the numerals: 674-327 through
+%  the column-addition deformation takes 19,313 inferences, and the largest
+%  cost any reachable classification needs — measured over the pre-delegate
+%  corpus at its own inputs (8,236), the delegates at their registered inputs
+%  (673,914), their own-operation batteries (467,428), and every active
+%  lesson task (633,612) — is 673,914 (task-196 review transcripts). At
+%  10,000 the guard was refusing terminating work, which the contrast runner
+%  then had to report as a rule that times out. The limit is 1,000,000: the
+%  smallest round value above everything reachable. It is NOT the largest
+%  cost in the rule x battery cross-product — unreachable pairings run to
+%  176,704,649 inferences and one (partial-quotient division at divisor 0)
+%  does not terminate at all, which is exactly what the guard is for. A rule
+%  whose numerals exceed the limit reports honestly rather than silently:
+%  the contrast row says the route did not produce an executable output.
 
 % Special case: RuleName = skip (bare atom) is the convention for
 % "too_vague" registrations. Short-circuit — don't call anything.
@@ -99,7 +117,7 @@ classify_arith(_:skip, _Input, _Expected, undefined, no_output) :- !.
 
 classify_arith(RuleName, Input, Expected, Class, Got) :-
     rule_goal(RuleName, Input, Got, FullGoal, ErrorPI),
-    (   catch(call_with_inference_limit(FullGoal, 10_000, Status),
+    (   catch(call_with_inference_limit(FullGoal, 1_000_000, Status),
               Error,
               handle_classify_error(Error, ErrorPI, Status))
     ->  (   Status == inference_limit_exceeded

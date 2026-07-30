@@ -4588,3 +4588,144 @@ misconceptions_whole_number_churn_2026_07_21:(churn_39748_zero_has_no_value_so_i
 % Citation: Paul M.E. Shutler & Ng Swee Fong (2010)
 % Documented error: a borrowed base unit is written literally as 10 inside one column
 misconceptions_whole_number_churn_2026_07_21:(churn_39929_write_borrowed_base_as_ten_in_column(A-B, Got) :- A >= 10, B < 10, Got is (A // 10) * 10 + (A mod 10 + 10 - B)).
+
+
+% ---- Action-automaton delegates ----
+%
+% Each rule below runs the action automaton that already computes its
+% deformation and reports what that automaton returns. The arithmetic stays in
+% knowledge/strategies/math/; nothing here recomputes it, so an automaton and
+% its rule cannot drift apart. These registrations exist because the rule
+% registry and the action registry held disjoint vocabularies: lesson
+% misconception obligations name these kinds, the action registry can run them,
+% and the contrast route that reads the rule registry found nothing to call.
+%
+% A delegate is partial exactly where its automaton is. An automaton that
+% refuses an input is reporting that the deformation has no form there: a
+% subtraction whose columns need no regrouping gives a regrouping error nothing
+% to deform. The rule refuses with it rather than inventing an answer. A lesson
+% whose compiled numerals fall in such a region gets a contrast row saying the
+% route produced no output, which is honest but not yet precise, because the
+% runner has no rung separating "this misconception has no form at these
+% numerals" from "this rule is broken". Kinds whose obligations sit only at such
+% numerals are recorded in the task-196 report instead of registered here.
+%
+% The source term is action_registry(Operation, Kind) rather than a db_row.
+% misconception_registry.pl already holds a cited entry for each of these names
+% through the action registry, so a db_row-shaped source would claim a second
+% attestation these rows do not carry.
+
+:- use_module(math(action_automata_registry), [run_action_automaton/6]).
+
+% The operand guard is load-bearing. Grounded arithmetic counts by successor, so
+% an automaton handed an unbound operand binds it to zero on the way down and
+% returns an answer for a task nobody posed: without the guard the column
+% deformation answers 0 for an unbound pair, and the chunking deformation
+% returns a variable. A registered rule that answers an ungrounded question
+% would feed the diagnosis surfaces a fabricated wrong answer, so the delegates
+% accept only the integer operands their automaton signatures declare and
+% otherwise report no output.
+misconceptions_whole_number_action_delegates:(
+    delegated_action_result(Operation, Kind, Left, Right, Got) :-
+        integer(Left), integer(Right),
+        action_automata_registry:run_action_automaton(Operation, Kind, Left, Right,
+                                                      action_outcome(_, Fields), _),
+        memberchk(result(Got), Fields),
+        ground(Got)).
+
+% === add_instead_of_subtract_column: the column procedure runs as addition ===
+% Task: any column subtraction. Error: the columns are summed.
+% CONNECTS TO: s(comp_nec(unlicensed(add_instead_of_subtract_column)))
+misconceptions_whole_number_action_delegates:(
+    add_instead_of_subtract_column(Minuend-Subtrahend, Got) :-
+        delegated_action_result(subtraction, add_instead_of_subtract_column,
+                                Minuend, Subtrahend, Got)).
+
+test_harness:arith_misconception(action_registry(subtraction, add_instead_of_subtract_column),
+    whole_number, add_instead_of_subtract_column,
+    misconceptions_whole_number_action_delegates:add_instead_of_subtract_column,
+    10-4, 6).
+
+% answer_as_endpoint_count_up is deliberately not registered here, and the
+% reason names a limit the contrast runner still has. Counting up from the
+% subtrahend and reporting the endpoint gives the correct difference exactly
+% when the subtrahend is zero, and IM-G2-U3-L10 compiles subtract(13,0) and
+% subtract(10,0). A rule that agrees at a lesson's own numerals sends the runner
+% to its battery to look for a separating input, and the subtraction battery
+% opens with pairs whose difference is negative, which every subtraction
+% automaton refuses as outside its domain. The runner reads that refusal as a
+% rule producing no output and calls the lesson broken, so registering this kind
+% costs a passing lesson and unlocks none. Two conditions have to part before it
+% can be registered: a refusal outside an automaton's declared domain has to
+% read differently from a rule that cannot run, and the zero-subtrahend
+% agreement needs an authored viability context in the runner.
+
+% === rigid_factor_order_roles: the factors keep fixed roles ===
+% Task: a product whose factors could be commuted. Error: the commuted reading
+% is refused, so the automaton returns the rejection rather than a product.
+% CONNECTS TO: s(comp_nec(unlicensed(rigid_factor_order_roles)))
+misconceptions_whole_number_action_delegates:(
+    rigid_factor_order_roles(Left-Right, Got) :-
+        delegated_action_result(multiplication, rigid_factor_order_roles,
+                                Left, Right, Got)).
+
+test_harness:arith_misconception(action_registry(multiplication, rigid_factor_order_roles),
+    whole_number, rigid_factor_order_roles,
+    misconceptions_whole_number_action_delegates:rigid_factor_order_roles,
+    1-5, 5).
+
+% === drop_second_partial_product: only the first partial product is kept ===
+% Task: a product found by splitting one factor. Error: the second part is
+% never multiplied, so its partial product never joins the total.
+% CONNECTS TO: s(comp_nec(unlicensed(drop_second_partial_product)))
+misconceptions_whole_number_action_delegates:(
+    drop_second_partial_product(Left-Right, Got) :-
+        delegated_action_result(multiplication, drop_second_partial_product,
+                                Left, Right, Got)).
+
+test_harness:arith_misconception(action_registry(multiplication, drop_second_partial_product),
+    whole_number, drop_second_partial_product,
+    misconceptions_whole_number_action_delegates:drop_second_partial_product,
+    2617-4, 10468).
+
+% === drop_regrouping_remainder: the regrouped leftover is not carried ===
+% Task: a product whose partial results exceed a base unit. Error: the amount
+% regrouped to the next place is dropped instead of added there.
+% CONNECTS TO: s(comp_nec(unlicensed(drop_regrouping_remainder)))
+misconceptions_whole_number_action_delegates:(
+    drop_regrouping_remainder(Left-Right, Got) :-
+        delegated_action_result(multiplication, drop_regrouping_remainder,
+                                Left, Right, Got)).
+
+test_harness:arith_misconception(action_registry(multiplication, drop_regrouping_remainder),
+    whole_number, drop_regrouping_remainder,
+    misconceptions_whole_number_action_delegates:drop_regrouping_remainder,
+    2617-4, 10468).
+
+% === stop_after_first_partial_quotient: the chunking stops at one chunk ===
+% Task: a quotient found by removing chunks of the divisor. Error: the first
+% chunk is taken and the rest of the dividend is reported as the remainder.
+% CONNECTS TO: s(comp_nec(unlicensed(stop_after_first_partial_quotient)))
+misconceptions_whole_number_action_delegates:(
+    stop_after_first_partial_quotient(Dividend-Divisor, Got) :-
+        delegated_action_result(division, stop_after_first_partial_quotient,
+                                Dividend, Divisor, Got)).
+
+test_harness:arith_misconception(action_registry(division, stop_after_first_partial_quotient),
+    whole_number, stop_after_first_partial_quotient,
+    misconceptions_whole_number_action_delegates:stop_after_first_partial_quotient,
+    1032-43, 24).
+
+% === sum_dividend_and_divisor: long division collapses to one addition ===
+% Task: a long division. Error: Benny's Rule 1 core, the divide/multiply/
+% subtract loop replaced by the bare sum of dividend and divisor.
+% CONNECTS TO: s(comp_nec(unlicensed(sum_dividend_and_divisor)))
+misconceptions_whole_number_action_delegates:(
+    sum_dividend_and_divisor(Dividend-Divisor, Got) :-
+        delegated_action_result(division, sum_dividend_and_divisor,
+                                Dividend, Divisor, Got)).
+
+test_harness:arith_misconception(action_registry(division, sum_dividend_and_divisor),
+    whole_number, sum_dividend_and_divisor,
+    misconceptions_whole_number_action_delegates:sum_dividend_and_divisor,
+    1001-7, 143).
