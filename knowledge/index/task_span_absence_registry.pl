@@ -3248,7 +3248,7 @@ task_span_denominator(spans, 3163).
 task_span_denominator(lessons, 879).
 task_span_denominator(teacher_guides, 879).
 task_span_denominator(compiler_task_candidates, 1113).
-task_span_denominator(compiled_task_instance_lessons, 379).
+task_span_denominator(compiled_task_instance_lessons, 378).
 
 task_span_status_count(present, 350).
 task_span_status_count(coverage_gap, 903).
@@ -4167,7 +4167,7 @@ lesson_task_span_rollup('IM-GK-U5-L3', 'K', 5, 0, standard_action_candidate, qua
 lesson_task_span_rollup('IM-GK-U5-L4', 'K', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-GK-U5-L5', 'K', 4, 0, standard_action_candidate, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-GK-U5-L6', 'K', 4, 0, standard_action_candidate, no_task_grammar_for_single_quantity).
-lesson_task_span_rollup('IM-GK-U5-L7', 'K', 4, 0, diagnostic_ready, no_task_grammar_for_single_quantity).
+lesson_task_span_rollup('IM-GK-U5-L7', 'K', 4, 0, standard_action_candidate, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-GK-U5-L8', 'K', 5, 1, event_ready, no_task_grammar_for_single_quantity).
 lesson_task_span_rollup('IM-GK-U5-L9', 'K', 3, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-GK-U6-L1', 'K', 1, 0, strategy_attached, no_task_grammar_for_single_quantity).

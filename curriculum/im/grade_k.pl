@@ -428,15 +428,6 @@ explicit_lesson_misconception('IM-GK-U5-L1', Operation, count_on_off_by_one, Inf
 text_interpreter:explicit_lesson_text_source('IM-GK-U5-L1', Path) :-
     absolute_file_name(lessons('im_teacher_guides/kindergarten/unit5/lesson1.md'), Path, [access(read)]).
 
-% IM-GK-U5-L7 warm-up "Which One Doesn't Belong" (Red 5, Yellow 1): the productive
-% compare_cardinalities_one_to_one contrasts the two collections. The spatial-extent
-% substitution (judging "more" by how far a row reaches, ignoring one-to-one matching)
-% is registry-licensed, not guide-attested for this lesson -- it is the counting-family
-% deformation registered at corpus row 39409. It has no misconception_registry_entry, so
-% it licenses through the strategy route (action_role reclassifies it as role=deformation).
-explicit_lesson_strategy('IM-GK-U5-L7', counting, spatial_extent_as_cardinality, Info) :-
-    strategy_info(counting, spatial_extent_as_cardinality, Info).
-
 explicit_lesson_strategy('IM-GK-U5-L10', addition, count_on_from_larger, Info) :-
     strategy_info(addition, count_on_from_larger, Info).
 text_interpreter:explicit_lesson_text_source('IM-GK-U5-L10', Path) :-
@@ -893,4 +884,3 @@ text_interpreter:explicit_lesson_text_source('IM-GK-U8-L8', Path) :-
 
 text_interpreter:explicit_lesson_text_source('IM-GK-U8-L9', Path) :-
     absolute_file_name(lessons('im_teacher_guides/kindergarten/unit8/lesson9.md'), Path, [access(read)]).
-

@@ -447,10 +447,6 @@ explicit_lesson_strategy('IM-G5-U4-L4', addition, column_addition_with_carrying,
 text_interpreter:explicit_lesson_text_source('IM-G5-U4-L4', Path) :-
     absolute_file_name(lessons('im_teacher_guides/grade5/unit4/lesson4.md'), Path, [access(read)]).
 
-explicit_lesson_strategy('IM-G5-U4-L5', addition, base_ones_chunking, Info) :-
-    strategy_info(addition, base_ones_chunking, Info).
-explicit_lesson_strategy('IM-G5-U4-L5', addition, column_addition_with_carrying, Info) :-
-    strategy_info(addition, column_addition_with_carrying, Info).
 explicit_lesson_misconception('IM-G5-U4-L5', Operation, add_instead_of_multiply, Info) :-
     misconception_registry_entry(add_instead_of_multiply, Operation, Citation, Commitment, EntitlementLacked),
     misconception_info(add_instead_of_multiply, Citation, Commitment, EntitlementLacked, [], Info).

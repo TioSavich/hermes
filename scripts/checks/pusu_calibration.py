@@ -25,7 +25,8 @@ BASELINE = {
     "IM-G2-U7-L15": "broken(contrast_cannot_run)",
     # Receipt route now runs after the 60-second productive path clears this casualty.
     "IM-G7-U5-L1": "pass",
-    "IM-GK-U5-L7": "broken(diagnosis_missed)",
+    # Task 177 removed the manufactured IM-GK-U5-L7 task/deformation pair.
+    "IM-GK-U5-L7": "broken(no_instances)",
 }
 
 TIMEOUT_REGRESSION_LESSON = "IM-G4-U4-L20"

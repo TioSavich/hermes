@@ -93,6 +93,14 @@ VISION_STANDARD_RE = re.compile(
     r"^vision_lesson_standard\('([^']+)',\s*[a-z_]+,\s*'([^']+)'\)\.$",
     re.MULTILINE,
 )
+VISION_COMPUTATION_RE = re.compile(
+    rf"^vision_lesson_computation\('([^']+)',\s*({PROLOG_STRING_PATTERN})\s*,",
+    re.MULTILINE,
+)
+COMPILED_PRODUCTIVE_TASK_RE = re.compile(
+    r"^compiled_lesson_task_instance\('([^']+)',\s*productive-([a-z_]+\([^\n]*?\))\s*,",
+    re.MULTILINE,
+)
 
 # These are lexical actions stated by standards, not mappings to executable
 # automata.  Inflected forms are normalized only where the standard corpus uses
@@ -519,6 +527,33 @@ def _productive_task_ids(paths: list[Path]) -> set[str]:
     return found
 
 
+def _vision_computation_coverage() -> dict[str, tuple[int, int]]:
+    """Count digest-recorded computations and exact productive task matches.
+
+    Digest computations are the attested denominator.  The numerator counts
+    distinct compiled productive task terms that exactly occur in that digest
+    record.  It exposes partial coverage without treating the ratio as a gate.
+    """
+    digest_tasks: dict[str, set[str]] = {}
+    for lesson, raw_task in VISION_COMPUTATION_RE.findall(
+        VISION_DIGEST.read_text(encoding="utf-8", errors="strict")
+    ):
+        task = json.loads(raw_task).replace(" ", "")
+        digest_tasks.setdefault(lesson, set()).add(task)
+    executable: dict[str, set[str]] = {}
+    for lesson, task in COMPILED_PRODUCTIVE_TASK_RE.findall(
+        COMPILED_TASKS.read_text(encoding="utf-8", errors="strict")
+    ):
+        normalized = task.replace(" ", "")
+        if normalized in digest_tasks.get(lesson, set()):
+            executable.setdefault(lesson, set()).add(normalized)
+    return {
+        lesson: (len(executable[lesson]), len(attested))
+        for lesson, attested in digest_tasks.items()
+        if executable.get(lesson)
+    }
+
+
 def _receipt_route_index() -> tuple[set[tuple[str, str]], dict[str, list[dict]]]:
     """Read generated receipt route and defect facts without starting Prolog.
 
@@ -604,6 +639,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
         {row["repo_id"] for row in spine}, strategy_mappings
     )
     receipt_route_keys, receipt_defects = _receipt_route_index()
+    computation_coverage = _vision_computation_coverage()
 
     lessons = []
     for row in spine:
@@ -683,6 +719,10 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             "readiness": readiness,
             "missing_for_diagnosis": missing,
         }
+        if lesson_id in computation_coverage:
+            executable_count, attested_count = computation_coverage[lesson_id]
+            lesson["computations_executable"] = executable_count
+            lesson["computations_attested"] = attested_count
         if negative_receipt_defects:
             lesson["negative_receipt_defects"] = negative_receipt_defects
         lessons.append(lesson)
@@ -709,6 +749,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             "context_only": "building_on/building_toward alignment; no lesson action inferred",
             "negative_candidate": "registry-derived counterpossibility; requires lesson-source review",
             "structured_negative": "runnable lesson-specific receipt route, explicit misconception, or compiled deformation",
+            "computations_executable/computations_attested": "distinct compiled productive task terms matching digest-recorded computations; visibility only, not a readiness gate",
             "diagnostic_ready": list(REQUIRED_FOR_DIAGNOSIS),
         },
         "sources": {

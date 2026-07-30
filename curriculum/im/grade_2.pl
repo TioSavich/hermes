@@ -257,25 +257,12 @@ explicit_lesson_strategy('IM-G2-U2-L2', addition, count_on_from_larger, Info) :-
     strategy_info(addition, count_on_from_larger, Info).
 explicit_lesson_strategy('IM-G2-U2-L2', addition, count_all_when_count_on_available, Info) :-
     strategy_info(addition, count_all_when_count_on_available, Info).
-explicit_lesson_strategy('IM-G2-U2-L2', addition, make_ten_split_leftover, Info) :-
-    strategy_info(addition, make_ten_split_leftover, Info).
-explicit_lesson_strategy('IM-G2-U2-L2', addition, make_ten_drop_leftover, Info) :-
-    strategy_info(addition, make_ten_drop_leftover, Info).
 explicit_lesson_strategy('IM-G2-U2-L2', addition, base_ones_chunking, Info) :-
     strategy_info(addition, base_ones_chunking, Info).
-explicit_lesson_strategy('IM-G2-U2-L2', addition, round_then_adjust, Info) :-
-    strategy_info(addition, round_then_adjust, Info).
 explicit_lesson_strategy('IM-G2-U2-L2', subtraction, take_away_base_ones, Info) :-
     strategy_info(subtraction, take_away_base_ones, Info).
 explicit_lesson_strategy('IM-G2-U2-L2', subtraction, count_up_missing_addend, Info) :-
     strategy_info(subtraction, count_up_missing_addend, Info).
-explicit_lesson_strategy('IM-G2-U2-L2', subtraction, decompose_base_for_ones, Info) :-
-    strategy_info(subtraction, decompose_base_for_ones, Info).
-explicit_lesson_strategy('IM-G2-U2-L2', subtraction, add_instead_of_subtract_column, Info) :-
-    strategy_info(subtraction, add_instead_of_subtract_column, Info).
-explicit_lesson_misconception('IM-G2-U2-L2', Operation, add_instead_of_subtract_column, Info) :-
-    misconception_registry_entry(add_instead_of_subtract_column, Operation, Citation, Commitment, EntitlementLacked),
-    misconception_info(add_instead_of_subtract_column, Citation, Commitment, EntitlementLacked, [], Info).
 explicit_lesson_misconception('IM-G2-U2-L2', Operation, count_all_when_count_on_available, Info) :-
     misconception_registry_entry(count_all_when_count_on_available, Operation, Citation, Commitment, EntitlementLacked),
     misconception_info(count_all_when_count_on_available, Citation, Commitment, EntitlementLacked, [], Info).
@@ -902,19 +889,13 @@ text_interpreter:explicit_lesson_text_source('IM-G2-U7-L14', Path) :-
 
 explicit_lesson_strategy('IM-G2-U7-L15', addition, count_on_from_larger, Info) :-
     strategy_info(addition, count_on_from_larger, Info).
-explicit_lesson_strategy('IM-G2-U7-L15', addition, make_ten_split_leftover, Info) :-
-    strategy_info(addition, make_ten_split_leftover, Info).
-explicit_lesson_strategy('IM-G2-U7-L15', addition, make_ten_drop_leftover, Info) :-
-    strategy_info(addition, make_ten_drop_leftover, Info).
-explicit_lesson_strategy('IM-G2-U7-L15', addition, base_ones_chunking, Info) :-
-    strategy_info(addition, base_ones_chunking, Info).
 explicit_lesson_strategy('IM-G2-U7-L15', subtraction, decompose_base_for_ones, Info) :-
     strategy_info(subtraction, decompose_base_for_ones, Info).
-explicit_lesson_strategy('IM-G2-U7-L15', subtraction, add_instead_of_subtract_column, Info) :-
-    strategy_info(subtraction, add_instead_of_subtract_column, Info).
-explicit_lesson_misconception('IM-G2-U7-L15', Operation, add_instead_of_subtract_column, Info) :-
-    misconception_registry_entry(add_instead_of_subtract_column, Operation, Citation, Commitment, EntitlementLacked),
-    misconception_info(add_instead_of_subtract_column, Citation, Commitment, EntitlementLacked, [], Info).
+% Cool-down response, lesson15.md:362-363: Noah switches digits instead of
+% decomposing, which is the registry's smaller_from_larger_in_column error.
+explicit_lesson_misconception('IM-G2-U7-L15', Operation, smaller_from_larger_in_column, Info) :-
+    misconception_registry_entry(smaller_from_larger_in_column, Operation, Citation, Commitment, EntitlementLacked),
+    misconception_info(smaller_from_larger_in_column, Citation, Commitment, EntitlementLacked, [], Info).
 text_interpreter:explicit_lesson_text_source('IM-G2-U7-L15', Path) :-
     absolute_file_name(lessons('im_teacher_guides/grade2/unit7/lesson15.md'), Path, [access(read)]).
 

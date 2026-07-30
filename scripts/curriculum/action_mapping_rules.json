@@ -1814,26 +1814,6 @@
    ]
   },
   {
-   "id": "gk_compare_cardinalities_counters",
-   "code": "IM-GK-U5-L7",
-   "task": "compare_cardinalities(5, 1, 5, 5)",
-   "source": {
-    "e343_pdf": {
-     "file": "K/Number Operations/K_student_AddW10.pdf",
-     "pages": "19"
-    }
-   },
-   "position": "warm_up(which_one_doesnt_belong)",
-   "excerpt": "Counters. Red, 5. Yellow, 1.",
-   "deformations": [
-    {
-     "id": "gk_spatial_extent_as_cardinality",
-     "family": "spatial_extent_substituted_for_cardinality",
-     "excerpt": "Counters. Red, 5. Yellow, 1."
-    }
-   ]
-  },
-  {
    "id": "g4_improper_fraction_iteration",
    "code": "IM-G4-U3-L8",
    "task": "iterate_improper_fraction(11, 8)",

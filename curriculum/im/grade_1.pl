@@ -1102,10 +1102,6 @@ explicit_lesson_strategy('IM-G1-U5-L5', addition, make_ten_drop_leftover, Info) 
     strategy_info(addition, make_ten_drop_leftover, Info).
 explicit_lesson_strategy('IM-G1-U5-L5', addition, base_ones_chunking, Info) :-
     strategy_info(addition, base_ones_chunking, Info).
-explicit_lesson_strategy('IM-G1-U5-L5', addition, round_then_adjust, Info) :-
-    strategy_info(addition, round_then_adjust, Info).
-explicit_lesson_strategy('IM-G1-U5-L5', subtraction, decompose_base_for_ones, Info) :-
-    strategy_info(subtraction, decompose_base_for_ones, Info).
 text_interpreter:explicit_lesson_text_source('IM-G1-U5-L5', Path) :-
     absolute_file_name(lessons('im_teacher_guides/grade1/unit5/lesson5.md'), Path, [access(read)]).
 
@@ -1117,14 +1113,10 @@ explicit_lesson_strategy('IM-G1-U5-L6', addition, make_ten_drop_leftover, Info) 
     strategy_info(addition, make_ten_drop_leftover, Info).
 explicit_lesson_strategy('IM-G1-U5-L6', addition, base_ones_chunking, Info) :-
     strategy_info(addition, base_ones_chunking, Info).
-explicit_lesson_strategy('IM-G1-U5-L6', addition, round_then_adjust, Info) :-
-    strategy_info(addition, round_then_adjust, Info).
 explicit_lesson_strategy('IM-G1-U5-L6', addition, known_fact_retrieval, Info) :-
     strategy_info(addition, known_fact_retrieval, Info).
 explicit_lesson_strategy('IM-G1-U5-L6', subtraction, count_up_missing_addend, Info) :-
     strategy_info(subtraction, count_up_missing_addend, Info).
-explicit_lesson_strategy('IM-G1-U5-L6', subtraction, decompose_base_for_ones, Info) :-
-    strategy_info(subtraction, decompose_base_for_ones, Info).
 text_interpreter:explicit_lesson_text_source('IM-G1-U5-L6', Path) :-
     absolute_file_name(lessons('im_teacher_guides/grade1/unit5/lesson6.md'), Path, [access(read)]).
 
@@ -1159,10 +1151,6 @@ explicit_lesson_strategy('IM-G1-U5-L9', addition, make_ten_drop_leftover, Info) 
     strategy_info(addition, make_ten_drop_leftover, Info).
 explicit_lesson_strategy('IM-G1-U5-L9', addition, base_ones_chunking, Info) :-
     strategy_info(addition, base_ones_chunking, Info).
-explicit_lesson_strategy('IM-G1-U5-L9', addition, round_then_adjust, Info) :-
-    strategy_info(addition, round_then_adjust, Info).
-explicit_lesson_strategy('IM-G1-U5-L9', subtraction, decompose_base_for_ones, Info) :-
-    strategy_info(subtraction, decompose_base_for_ones, Info).
 explicit_lesson_misconception('IM-G1-U5-L9', Operation, count_all_when_count_on_available, Info) :-
     misconception_registry_entry(count_all_when_count_on_available, Operation, Citation, Commitment, EntitlementLacked),
     misconception_info(count_all_when_count_on_available, Citation, Commitment, EntitlementLacked, [], Info).
@@ -1469,4 +1457,3 @@ explicit_lesson_misconception('IM-G1-U2-L3', Operation, add_instead_of_subtract_
 explicit_lesson_misconception('IM-G1-U3-L6', Operation, add_instead_of_subtract_column, Info) :-
     misconception_registry_entry(add_instead_of_subtract_column, Operation, Citation, Commitment, EntitlementLacked),
     misconception_info(add_instead_of_subtract_column, Citation, Commitment, EntitlementLacked, [], Info).
-

@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(379, 1914).
+compiled_task_instance_summary(378, 1913).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -2334,6 +2334,8 @@ compiled_lesson_task_instance('IM-G5-U4-L5', productive-multiply(120, 3),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson5.md', lines(98, 98)), position(student_task_statement(1)/expression(3)), excerpt("120 \u00d7 3"))).
 compiled_lesson_task_instance('IM-G5-U4-L5', productive-multiply(120, 3),
                               task_evidence(rule(g5_u4_l5_product_warmup_3), source('curriculum/im_teacher_guides/grade5/unit4/lesson5.md', lines(98, 98)), position(student_task_statement(1)/item(3)), excerpt("120 \u00d7 3"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G5-U4-L5', productive-multiply(122, 33),
+                              task_evidence(rule(g5_u4_l5_standard_algorithm_122x33), source('curriculum/im_teacher_guides/grade5/unit4/lesson5.md', lines(233, 233)), position(student_task_statement(3)/item(2)), excerpt("122 \u00d7 33"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G5-U4-L5', productive-multiply(140, 3),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit4/lesson5.md', lines(99, 99)), position(student_task_statement(1)/expression(4)), excerpt("140 \u00d7 3"))).
 compiled_lesson_task_instance('IM-G5-U4-L5', productive-multiply(140, 3),
@@ -3794,10 +3796,6 @@ compiled_lesson_task_instance('IM-G7-U5-L8', productive-multiply(9, 5),
                               task_evidence(rule(im_g7_u5_l8_multiply_4), source(e343_pdf('Grade7-5-Unit-teacher-guide-.pdf', pages("138-139"))), position(activity_2), excerpt("Complete the table to show the position of each vehicle after traveling at a constant velocity for the given amount of time. car C: velocity +9, time +5"))).
 compiled_lesson_task_instance('IM-G7-U5-L8', productive-multiply(9, 5),
                               task_evidence(rule(im_g7_u5_l8_multiply_4_x), source(e343_pdf('Grade7-5-Unit-teacher-guide-.pdf', pages("137-139"))), position(activity_1), excerpt("Complete the table to show the position of each vehicle. (car C: velocity +9 m/s, time +5 s)"))).
-compiled_lesson_task_instance('IM-GK-U5-L7', deformation(spatial_extent_substituted_for_cardinality)-compare_cardinalities(5, 1, 5, 5),
-                              task_evidence(rule(gk_spatial_extent_as_cardinality), source(e343_pdf('K/Number Operations/K_student_AddW10.pdf', pages("19"))), position(warm_up(which_one_doesnt_belong)), excerpt("Counters. Red, 5. Yellow, 1."))).
-compiled_lesson_task_instance('IM-GK-U5-L7', productive-compare_cardinalities(5, 1, 5, 5),
-                              task_evidence(rule(gk_compare_cardinalities_counters), source(e343_pdf('K/Number Operations/K_student_AddW10.pdf', pages("19"))), position(warm_up(which_one_doesnt_belong)), excerpt("Counters. Red, 5. Yellow, 1."))).
 compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(1, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("1 + 3"))).
 compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(3, 1),

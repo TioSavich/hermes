@@ -103,6 +103,32 @@
       "note": "Warm-up item list; the guide's Student Response block prints the four values in document order."
     },
     {
+      "lesson": "IM-G5-U4-L5",
+      "id": "g5_u4_l5_standard_algorithm_122x33",
+      "position": "student_task_statement(3)/item(2)",
+      "task": "multiply(122, 33)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 229,
+        "end_line": 230,
+        "excerpt": "Use the standard algorithm to find the value of each expression."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 233,
+        "excerpt": "122 × 33"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson5.md",
+        "line": 260,
+        "excerpt": "2. 4,026. Sample response:",
+        "value": "4026"
+      },
+      "read_by": "task-177-evidence-repair",
+      "note": "Activity 2 item 2; the response block's 4,026 is the printed product for 122 × 33. Its two-digit multiplier makes the attached no-shift partial-products error discriminating."
+    },
+    {
       "lesson": "IM-G4-U6-L15",
       "id": "g4_u6_l15_blocks_quotient_1",
       "position": "student_task_statement(2)/item(1)",

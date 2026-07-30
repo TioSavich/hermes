@@ -75,14 +75,14 @@
    "standard_action_candidate": 130
   },
   "K": {
-   "diagnostic_ready": 4,
-   "executable_task": 9,
+   "diagnostic_ready": 3,
+   "executable_task": 8,
    "measured_transition": 9,
    "negative_candidate": 88,
    "published": 139,
    "standard_action_candidate": 131,
-   "strategy_evidence": 103,
-   "structured_negative": 45
+   "strategy_evidence": 102,
+   "structured_negative": 44
   }
  },
  "lessons": [
@@ -1382,22 +1382,6 @@
      "productive": "count_on_from_larger"
     },
     {
-     "deformation": "make_ten_drop_leftover",
-     "family": "dropped_leftover_after_make_ten",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "make_ten_split_leftover"
-    },
-    {
-     "deformation": "round_without_adjusting",
-     "family": "rounding_without_compensation",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "round_then_adjust"
-    },
-    {
      "deformation": "omit_highest_place_regrouping",
      "family": "omitted_place_value_regrouping",
      "mapping_origin": "compiled_source_mapping",
@@ -1412,38 +1396,6 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "count_up_missing_addend"
-    },
-    {
-     "deformation": "add_instead_of_subtract_column",
-     "family": "operation_direction_reversal",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_across_zero_no_cascade",
-     "family": "borrow_across_zero",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_without_reducing_bases",
-     "family": "unbalanced_decomposition_exchange",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "smaller_from_larger_in_column",
-     "family": "smaller_from_larger_column",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
     },
     {
      "deformation": "drop_ones_after_base_takeaway",
@@ -9000,28 +8952,12 @@
    "name": "Decompose a Ten and a Hundred to Subtract",
    "negative_candidates": [
     {
-     "deformation": "dropped_ones_chunk",
-     "family": "dropped_remainder_chunk",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "base_ones_chunking"
-    },
-    {
      "deformation": "count_all_when_count_on_available",
      "family": "count_all_when_count_on_available",
      "mapping_origin": "direct_lesson_fact",
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "count_on_from_larger"
-    },
-    {
-     "deformation": "make_ten_drop_leftover",
-     "family": "dropped_leftover_after_make_ten",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "make_ten_split_leftover"
     },
     {
      "deformation": "omit_highest_place_regrouping",
@@ -31613,6 +31549,8 @@
    }
   },
   {
+   "computations_attested": 3,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -31691,6 +31629,8 @@
    }
   },
   {
+   "computations_attested": 17,
+   "computations_executable": 16,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -31774,6 +31714,8 @@
    }
   },
   {
+   "computations_attested": 7,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -31833,6 +31775,8 @@
    }
   },
   {
+   "computations_attested": 15,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -31953,6 +31897,8 @@
    }
   },
   {
+   "computations_attested": 10,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32036,6 +31982,8 @@
    }
   },
   {
+   "computations_attested": 37,
+   "computations_executable": 23,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32145,6 +32093,8 @@
    }
   },
   {
+   "computations_attested": 14,
+   "computations_executable": 12,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32283,6 +32233,8 @@
    }
   },
   {
+   "computations_attested": 28,
+   "computations_executable": 19,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32390,6 +32342,8 @@
    }
   },
   {
+   "computations_attested": 19,
+   "computations_executable": 9,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32465,6 +32419,8 @@
    }
   },
   {
+   "computations_attested": 7,
+   "computations_executable": 6,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32556,6 +32512,8 @@
    }
   },
   {
+   "computations_attested": 9,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32612,6 +32570,8 @@
    }
   },
   {
+   "computations_attested": 39,
+   "computations_executable": 32,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32715,6 +32675,8 @@
    }
   },
   {
+   "computations_attested": 12,
+   "computations_executable": 11,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32822,6 +32784,8 @@
    }
   },
   {
+   "computations_attested": 6,
+   "computations_executable": 6,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -32933,6 +32897,8 @@
    }
   },
   {
+   "computations_attested": 4,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33024,6 +32990,8 @@
    }
   },
   {
+   "computations_attested": 28,
+   "computations_executable": 6,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33120,6 +33088,8 @@
    }
   },
   {
+   "computations_attested": 16,
+   "computations_executable": 12,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33209,6 +33179,8 @@
    }
   },
   {
+   "computations_attested": 23,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33304,6 +33276,8 @@
    }
   },
   {
+   "computations_attested": 38,
+   "computations_executable": 27,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33445,6 +33419,8 @@
    }
   },
   {
+   "computations_attested": 15,
+   "computations_executable": 11,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33543,6 +33519,8 @@
    }
   },
   {
+   "computations_attested": 11,
+   "computations_executable": 9,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33643,6 +33621,8 @@
    }
   },
   {
+   "computations_attested": 11,
+   "computations_executable": 11,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -33842,6 +33822,8 @@
    }
   },
   {
+   "computations_attested": 27,
+   "computations_executable": 19,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34072,6 +34054,8 @@
    }
   },
   {
+   "computations_attested": 33,
+   "computations_executable": 19,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34203,6 +34187,8 @@
    }
   },
   {
+   "computations_attested": 5,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34265,6 +34251,8 @@
    }
   },
   {
+   "computations_attested": 14,
+   "computations_executable": 10,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34312,6 +34300,8 @@
    }
   },
   {
+   "computations_attested": 10,
+   "computations_executable": 9,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34363,6 +34353,8 @@
    }
   },
   {
+   "computations_attested": 15,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34439,6 +34431,8 @@
    }
   },
   {
+   "computations_attested": 4,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34487,6 +34481,8 @@
    }
   },
   {
+   "computations_attested": 14,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34551,6 +34547,8 @@
    }
   },
   {
+   "computations_attested": 21,
+   "computations_executable": 8,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34618,6 +34616,8 @@
    }
   },
   {
+   "computations_attested": 7,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -34713,6 +34713,8 @@
    }
   },
   {
+   "computations_attested": 30,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35042,6 +35044,8 @@
    }
   },
   {
+   "computations_attested": 8,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35114,6 +35118,8 @@
    }
   },
   {
+   "computations_attested": 18,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35339,6 +35345,8 @@
    }
   },
   {
+   "computations_attested": 17,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35431,6 +35439,8 @@
    }
   },
   {
+   "computations_attested": 19,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35504,6 +35514,8 @@
    }
   },
   {
+   "computations_attested": 22,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35566,6 +35578,8 @@
    }
   },
   {
+   "computations_attested": 6,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35636,6 +35650,8 @@
    }
   },
   {
+   "computations_attested": 8,
+   "computations_executable": 8,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35680,6 +35696,8 @@
    }
   },
   {
+   "computations_attested": 14,
+   "computations_executable": 14,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35731,6 +35749,8 @@
    }
   },
   {
+   "computations_attested": 24,
+   "computations_executable": 19,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -35811,6 +35831,8 @@
    }
   },
   {
+   "computations_attested": 12,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -36891,6 +36913,8 @@
    }
   },
   {
+   "computations_attested": 4,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -37151,6 +37175,8 @@
    }
   },
   {
+   "computations_attested": 7,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -37252,6 +37278,8 @@
    }
   },
   {
+   "computations_attested": 6,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -37462,6 +37490,8 @@
    }
   },
   {
+   "computations_attested": 10,
+   "computations_executable": 9,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -37694,6 +37724,8 @@
    }
   },
   {
+   "computations_attested": 4,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -37771,6 +37803,8 @@
    }
   },
   {
+   "computations_attested": 6,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -37858,6 +37892,8 @@
    }
   },
   {
+   "computations_attested": 10,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40043,6 +40079,8 @@
    }
   },
   {
+   "computations_attested": 11,
+   "computations_executable": 7,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40182,6 +40220,8 @@
    }
   },
   {
+   "computations_attested": 23,
+   "computations_executable": 11,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40277,6 +40317,8 @@
    }
   },
   {
+   "computations_attested": 31,
+   "computations_executable": 24,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40366,6 +40408,8 @@
    }
   },
   {
+   "computations_attested": 25,
+   "computations_executable": 19,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40481,6 +40525,8 @@
    }
   },
   {
+   "computations_attested": 8,
+   "computations_executable": 7,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40661,6 +40707,8 @@
    }
   },
   {
+   "computations_attested": 9,
+   "computations_executable": 7,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -40787,6 +40835,8 @@
    }
   },
   {
+   "computations_attested": 5,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41368,6 +41418,8 @@
    }
   },
   {
+   "computations_attested": 14,
+   "computations_executable": 6,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41494,6 +41546,8 @@
    }
   },
   {
+   "computations_attested": 1,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41565,6 +41619,8 @@
    }
   },
   {
+   "computations_attested": 10,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41640,6 +41696,8 @@
    }
   },
   {
+   "computations_attested": 7,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41729,6 +41787,8 @@
    }
   },
   {
+   "computations_attested": 17,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41814,6 +41874,8 @@
    }
   },
   {
+   "computations_attested": 25,
+   "computations_executable": 6,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41859,6 +41921,8 @@
    }
   },
   {
+   "computations_attested": 2,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -41946,6 +42010,8 @@
    }
   },
   {
+   "computations_attested": 21,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42147,6 +42213,8 @@
    }
   },
   {
+   "computations_attested": 9,
+   "computations_executable": 4,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42217,6 +42285,8 @@
    }
   },
   {
+   "computations_attested": 12,
+   "computations_executable": 1,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42271,6 +42341,8 @@
    }
   },
   {
+   "computations_attested": 11,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42347,6 +42419,8 @@
    }
   },
   {
+   "computations_attested": 16,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42435,6 +42509,8 @@
    }
   },
   {
+   "computations_attested": 9,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42487,6 +42563,8 @@
    }
   },
   {
+   "computations_attested": 35,
+   "computations_executable": 6,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42553,6 +42631,8 @@
    }
   },
   {
+   "computations_attested": 16,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42625,6 +42705,8 @@
    }
   },
   {
+   "computations_attested": 20,
+   "computations_executable": 7,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42839,6 +42921,8 @@
    }
   },
   {
+   "computations_attested": 28,
+   "computations_executable": 10,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -42982,6 +43066,8 @@
    }
   },
   {
+   "computations_attested": 23,
+   "computations_executable": 2,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -43059,6 +43145,8 @@
    }
   },
   {
+   "computations_attested": 18,
+   "computations_executable": 5,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -43155,6 +43243,8 @@
    }
   },
   {
+   "computations_attested": 8,
+   "computations_executable": 3,
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
@@ -55498,20 +55588,24 @@
   },
   {
    "evidence": {
-    "executable_task": true,
+    "executable_task": false,
     "measured_transition": true,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": true,
-    "structured_negative": true
+    "strategy_evidence": false,
+    "structured_negative": false
    },
    "grade": "K",
    "lesson": "IM-GK-U5-L7",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "strategy_evidence",
+    "executable_task",
+    "structured_negative"
+   ],
    "name": "Solve Both Addends In Unknown Story Problems",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "diagnostic_ready",
+   "readiness": "standard_action_candidate",
    "standard_action_candidates": {
     "K.OA.A.1": [
      "represent"
@@ -65880,46 +65974,6 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "make_ten_split_leftover"
-    },
-    {
-     "deformation": "round_without_adjusting",
-     "family": "rounding_without_compensation",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "round_then_adjust"
-    },
-    {
-     "deformation": "add_instead_of_subtract_column",
-     "family": "operation_direction_reversal",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_across_zero_no_cascade",
-     "family": "borrow_across_zero",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_without_reducing_bases",
-     "family": "unbalanced_decomposition_exchange",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "smaller_from_larger_in_column",
-     "family": "smaller_from_larger_column",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
     }
    ],
    "negative_receipts": [
@@ -66008,14 +66062,6 @@
      "productive": "make_ten_split_leftover"
     },
     {
-     "deformation": "round_without_adjusting",
-     "family": "rounding_without_compensation",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "round_then_adjust"
-    },
-    {
      "deformation": "omit_highest_place_regrouping",
      "family": "omitted_place_value_regrouping",
      "mapping_origin": "compiled_source_mapping",
@@ -66030,38 +66076,6 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "count_up_missing_addend"
-    },
-    {
-     "deformation": "add_instead_of_subtract_column",
-     "family": "operation_direction_reversal",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_across_zero_no_cascade",
-     "family": "borrow_across_zero",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_without_reducing_bases",
-     "family": "unbalanced_decomposition_exchange",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "smaller_from_larger_in_column",
-     "family": "smaller_from_larger_column",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
     }
    ],
    "negative_receipts": [
@@ -66291,46 +66305,6 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "make_ten_split_leftover"
-    },
-    {
-     "deformation": "round_without_adjusting",
-     "family": "rounding_without_compensation",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "round_then_adjust"
-    },
-    {
-     "deformation": "add_instead_of_subtract_column",
-     "family": "operation_direction_reversal",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_across_zero_no_cascade",
-     "family": "borrow_across_zero",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "borrow_without_reducing_bases",
-     "family": "unbalanced_decomposition_exchange",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
-    },
-    {
-     "deformation": "smaller_from_larger_in_column",
-     "family": "smaller_from_larger_column",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "subtraction",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "decompose_base_for_ones"
     }
    ],
    "negative_receipts": [],
@@ -72659,38 +72633,6 @@
    "name": "Standard Algorithm: Multi-digit Numbers, without Composing",
    "negative_candidates": [
     {
-     "deformation": "dropped_ones_chunk",
-     "family": "dropped_remainder_chunk",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "base_ones_chunking"
-    },
-    {
-     "deformation": "append_column_sum_without_carrying",
-     "family": "append_partial_sums_without_carrying",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "column_addition_with_carrying"
-    },
-    {
-     "deformation": "drop_carry_to_next_column",
-     "family": "omitted_carry_to_next_column",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "column_addition_with_carrying"
-    },
-    {
-     "deformation": "wrong_carry_amount_to_next_column",
-     "family": "incorrect_carry_amount",
-     "mapping_origin": "direct_lesson_fact",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "column_addition_with_carrying"
-    },
-    {
      "deformation": "drop_second_partial_product",
      "family": "dropped_partial_product",
      "mapping_origin": "compiled_source_mapping",
@@ -78101,6 +78043,7 @@
   }
  ],
  "register": {
+  "computations_executable/computations_attested": "distinct compiled productive task terms matching digest-recorded computations; visibility only, not a readiness gate",
   "context_only": "building_on/building_toward alignment; no lesson action inferred",
   "diagnostic_ready": [
    "standard_action_candidate",
@@ -78124,13 +78067,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 261,
-  "executable_task": 379,
+  "diagnostic_ready": 260,
+  "executable_task": 378,
   "measured_transition": 372,
   "negative_candidate": 820,
   "published": 1308,
   "standard_action_candidate": 1272,
-  "strategy_evidence": 915,
-  "structured_negative": 415
+  "strategy_evidence": 914,
+  "structured_negative": 414
  }
 }
