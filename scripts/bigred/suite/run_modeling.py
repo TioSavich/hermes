@@ -14,6 +14,15 @@ sys.path.insert(0, str(ROOT))
 from hermes.mcp.server import HermesMCPServer
 
 ROW = re.compile(r"^automaton_input_contract\(([^,]+), ([^,]+), '(.+)', '(.+)', verified\(([^)]+)\)\)\.$")
+SIGNATURE = re.compile(
+    r"action_automaton_signature\(\s*([a-z][a-z0-9_]*)\s*,\s*([a-z][a-z0-9_]*)\s*,",
+    re.MULTILINE,
+)
+
+
+def signature_count() -> int:
+    registry = ROOT / "knowledge/strategies/math/action_automata_registry.pl"
+    return len(set(SIGNATURE.findall(registry.read_text(encoding="utf-8"))))
 
 
 def contracts() -> list[dict]:
@@ -37,6 +46,11 @@ def neighborhood(contract: dict) -> list[dict]:
         return [example, {"kind": "fraction_pair", "left": {"n": 1, "d": 2}, "right": {"n": 1, "d": 3}}]
     if example.get("kind") == "decimal_pair":
         return [example, {"kind": "decimal_pair", "left": {"numeral": 12, "scale": 10}, "right": {"numeral": 3, "scale": 10}}]
+    if example.get("kind") == "fraction_addend_pair":
+        return [example, {"kind": "fraction_addend_pair", "left": {"n": 1, "d": 2}, "right": {"n": 1, "d": 3}}]
+    if example.get("kind") == "fraction_minuend_subtrahend":
+        # The neighbor stays in the machine's domain: minuend >= subtrahend.
+        return [example, {"kind": "fraction_minuend_subtrahend", "left": {"n": 3, "d": 4}, "right": {"n": 1, "d": 2}}]
     return [example, {"a": 12, "b": 3}, {"a": 7, "b": 2}]
 
 
@@ -63,7 +77,7 @@ def main() -> None:
             (args.output / filename).write_text(json.dumps({**contract, "results": results}, indent=2, sort_keys=True) + "\n", encoding="utf-8")
             index.append({"operation": contract["operation"], "kind": contract["kind"], "file": filename,
                           "runs": len(results), "successful_runs": sum(row["ok"] for row in results)})
-        (args.output / "index.json").write_text(json.dumps({"scenario": "modeling", "contracted": len(rows), "uncontracted": 172 - len(contracts()), "signatures": index}, indent=2) + "\n", encoding="utf-8")
+        (args.output / "index.json").write_text(json.dumps({"scenario": "modeling", "contracted": len(rows), "uncontracted": signature_count() - len(contracts()), "signatures": index}, indent=2) + "\n", encoding="utf-8")
     finally:
         server.close()
 

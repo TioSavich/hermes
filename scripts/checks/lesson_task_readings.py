@@ -181,7 +181,7 @@ def markerless_grid_audit(
         expressions = list(compiler.ARITHMETIC_EXPRESSION_RE.finditer(span.text))
         if grade not in {"K", "1", "2", "3", "4", "5"} or len(expressions) < 2:
             continue
-        if compiler.ITEM_MARKER_RE.search(span.text):
+        if compiler._item_markers(span):
             continue
         markerless.append(span)
         candidate = None
@@ -243,9 +243,14 @@ def markerless_grid_audit(
                     raise
                 continue
         citable += 1
-    if len(markerless) != 14:
+    # 14 -> 15 with the task-186 parser amendments: the fraction-bar guard
+    # removes two spans whose only "expressions" were fraction components,
+    # and the line-anchored item markers admit three spans whose sentence-
+    # final "NN." was prose, not a list marker (IM-G1-U2-L6, IM-G1-U3-L19,
+    # IM-G5-U4-L2).
+    if len(markerless) != 15:
         raise SystemExit(
-            f"marker-less grid audit expected 14 K--5 spans, found {len(markerless)}"
+            f"marker-less grid audit expected 15 K--5 spans, found {len(markerless)}"
         )
     return len(markerless), citable
 

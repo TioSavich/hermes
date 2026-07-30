@@ -58,11 +58,76 @@ TASK_TERM_RE = re.compile(
 # Keep the lane's content scope on the same comma-aware whole-number spelling
 # accepted by the candidate extractor.  The lookahead deliberately retains
 # overlapping pairs: ``6 + 4 + 4`` contains both ``6 + 4`` and ``4 + 4``.
-ARITHMETIC_NUMERAL = r"(?:\d{1,3}(?:,\d{3})+|\d+)"
+# These parsers operate over whole-number tasks.  A digit beside a solidus is
+# a fraction component, not a standalone operand (for example, neither ``10``
+# nor ``50`` in ``1/10 + 50/100`` may produce ``add(10, 50)``).
+ARITHMETIC_NUMERAL = r"(?<!\d/)(?:\d{1,3}(?:,\d{3})+|\d+)(?!/\d)"
 ARITHMETIC_EXPRESSION_RE = re.compile(
     rf"(?=(?<![\d.,])(?P<left>{ARITHMETIC_NUMERAL})\s*"
     rf"(?P<symbol>[+\-−×·÷/=])\s*(?P<right>{ARITHMETIC_NUMERAL})(?![\d,]|\.\d))"
 )
+# Fraction task lane.  An operand is a printed fraction, a space-separated
+# mixed number, or a whole number beside a fraction.  The left lookbehinds
+# refuse a start inside a numeral and refuse slicing the fraction part out
+# of a spaced mixed number ("1 5/8" never yields a "5/8" operand).  Chains
+# keep the whole-number lane's documented overlapping-pair semantics.
+FRACTION_EXPRESSION_RE = re.compile(
+    r"(?=(?<![\d.,/])(?<!\d )(?P<left>(?:\d+ )?\d+/\d+|\d+)\s*"
+    r"(?P<symbol>[+\-−])\s*"
+    r"(?P<right>(?:\d+ )?\d+/\d+|\d+)(?![\d,/]|\.\d))"
+)
+_FRACTION_OPERAND_RE = re.compile(
+    r"(?:(?P<whole>\d+) )?(?P<num>\d+)/(?P<den>\d+)$|(?P<bare>\d+)$"
+)
+
+
+def _flattened_mixed_readings(numerator: str, denominator: int) -> list[tuple[int, int]]:
+    """Whole/numerator splits a docling-flattened mixed number could carry.
+
+    The guides print mixed numbers with a space ("12 1/2"); the markdown
+    extraction drops it, so "121/2" arrives carrying two readings: the
+    fraction 121/2 and the mixed number 12 1/2.  A split whose part would
+    carry a leading zero or reach the denominator is not a printed mixed
+    form and does not count as a reading.
+    """
+    readings = []
+    for cut in range(1, len(numerator)):
+        whole, part = numerator[:cut], numerator[cut:]
+        if whole.startswith("0") or part.startswith("0"):
+            continue
+        if int(whole) >= 1 and 1 <= int(part) < denominator:
+            readings.append((int(whole), int(part)))
+    return readings
+
+
+def _fraction_operand_term(token: str) -> tuple[str, Fraction] | None:
+    """Read one printed addend, refusing every ambiguous flattened form."""
+    match = _FRACTION_OPERAND_RE.fullmatch(token.strip())
+    if match is None:
+        return None
+    if match.group("bare") is not None:
+        value = int(match.group("bare"))
+        return f"whole({value})", Fraction(value)
+    num_str = match.group("num")
+    den_str = match.group("den")
+    if den_str.startswith("0") or (num_str.startswith("0") and num_str != "0"):
+        return None
+    denominator = int(den_str)
+    numerator = int(num_str)
+    if match.group("whole") is not None:
+        whole_str = match.group("whole")
+        if whole_str.startswith("0"):
+            return None
+        whole = int(whole_str)
+        if whole < 1 or numerator < 1 or numerator >= denominator:
+            return None
+        return (
+            f"mixed({whole}, {numerator}, {denominator})",
+            Fraction(whole) + Fraction(numerator, denominator),
+        )
+    if _flattened_mixed_readings(num_str, denominator):
+        return None
+    return f"frac({numerator}, {denominator})", Fraction(numerator, denominator)
 
 
 @dataclass(frozen=True)
@@ -388,7 +453,25 @@ def _task_reading_operand_present(operand: int, excerpt: str) -> bool:
     return re.search(rf"(?<!\d){re.escape(str(operand))}(?!\d)", normalized) is not None
 
 
-ITEM_MARKER_RE = re.compile(r"•|(?<!\w)\d+\.(?=\s)")
+# A one-space predecessor is ordinary sentence punctuation in the extracted
+# column text (for example, ``650 × 27. Is ...``).  Numbered item markers are
+# line-initial or follow a layout whitespace run; _item_markers applies this
+# expression to each physical student-task line before translating offsets to
+# StudentTaskSpan.text.
+ITEM_MARKER_RE = re.compile(r"•|(?:^|(?<=\s{2}))\d+\.(?=\s)")
+
+
+def _item_markers(span: StudentTaskSpan) -> list[tuple[int, int]]:
+    """Return marker ranges in the same offsets used by ``span.text``."""
+    markers = []
+    offset = 0
+    for index, (_, text) in enumerate(span.lines):
+        for marker in ITEM_MARKER_RE.finditer(text):
+            markers.append((offset + marker.start(), offset + marker.end()))
+        offset += len(text)
+        if index + 1 < len(span.lines):
+            offset += 1
+    return markers
 
 
 def _span_bound_markdown_provenance(
@@ -420,13 +503,13 @@ def _span_bound_markdown_provenance(
 
 def _operands_scope_one_item(span: StudentTaskSpan, excerpt: str) -> bool:
     """Additional marker guard: keep an operand citation inside one list item."""
-    markers = list(ITEM_MARKER_RE.finditer(span.text))
+    markers = _item_markers(span)
     if len(markers) < 2:
         return True
     items = []
-    for index, marker in enumerate(markers):
-        end = markers[index + 1].start() if index + 1 < len(markers) else len(span.text)
-        items.append(span.text[marker.end():end])
+    for index, (_, marker_end) in enumerate(markers):
+        end = markers[index + 1][0] if index + 1 < len(markers) else len(span.text)
+        items.append(span.text[marker_end:end])
     matches = 0
     for item in items:
         start = item.find(excerpt)
@@ -451,13 +534,13 @@ def _operand_enclosing_texts(
     span: StudentTaskSpan, excerpt: str
 ) -> list[tuple[str, int]]:
     """Return the item text that contains an already item-scoped citation."""
-    markers = list(ITEM_MARKER_RE.finditer(span.text))
+    markers = _item_markers(span)
     if len(markers) < 2:
         return [(span.text, 0)]
     items = []
-    for index, marker in enumerate(markers):
-        end = markers[index + 1].start() if index + 1 < len(markers) else len(span.text)
-        item = span.text[marker.end():end]
+    for index, (marker_start, marker_end) in enumerate(markers):
+        end = markers[index + 1][0] if index + 1 < len(markers) else len(span.text)
+        item = span.text[marker_end:end]
         start = item.find(excerpt)
         if start < 0:
             continue
@@ -472,7 +555,7 @@ def _operand_enclosing_texts(
             and item[excerpt_end].isdigit()
         ):
             continue
-        items.append((item, marker.end()))
+        items.append((item, marker_end))
     return items
 
 
@@ -584,13 +667,23 @@ def _operands_expression_is_maximal(
             after = raw_after.lstrip()
             if before and before[-1] in extension_tokens:
                 return False
+            # ``=`` followed by a blank answer slot completes the printed
+            # binary expression.  Recovered spans flatten several rows, so a
+            # later row can follow the underscores without making this pair a
+            # prefix of that later row.  A printed result still begins with a
+            # numeral and remains a refusal below.
+            if after == "=" or re.match(r"^=\s*(?:_+(?=\s|$)|$)", after):
+                occurrence = enclosing.find(excerpt, occurrence + 1)
+                continue
             if after and after[0] in extension_tokens:
                 return False
             # A bare following letter is a variable continuation even across
             # whitespace (``2 n``); a numeral must be lexically attached so
             # whitespace-separated grid entries remain independent.
             if (raw_after and raw_after[0].isdigit()) or (
-                after and re.match(r"[A-Za-z_](?![A-Za-z_])", after)
+                after
+                and re.match(r"[A-Za-z_](?![A-Za-z_])", after)
+                and not re.match(r"[a-z]\.\s", after)
             ):
                 return False
             occurrence = enclosing.find(excerpt, occurrence + 1)
@@ -1919,6 +2012,63 @@ def extract_task_candidates(
                             else "lesson_has_no_addition_attachment",
                         )
                     )
+        # Fraction task lane: the same list-prompt idiom, read over printed
+        # fraction addends.  An operand whose numerator admits a flattened
+        # mixed-number split is refused by _fraction_operand_term rather
+        # than promoted under either reading.  A pair with no fraction side
+        # belongs to the whole-number lane and is skipped here.
+        if re.search(
+            r"\bFind the value of each (?:expression|sum|difference)\b",
+            span.text,
+            re.IGNORECASE,
+        ):
+            fraction_expression_number = 0
+            for line, text in span.lines:
+                for match in FRACTION_EXPRESSION_RE.finditer(text):
+                    if "/" not in match.group("left") and "/" not in match.group("right"):
+                        continue
+                    left = _fraction_operand_term(match.group("left"))
+                    right = _fraction_operand_term(match.group("right"))
+                    if left is None or right is None:
+                        continue
+                    left_term, left_value = left
+                    right_term, right_value = right
+                    if match.group("symbol") == "+":
+                        parser_id = "direct_fraction_addition_expression_list"
+                        task = f"add_fractions({left_term}, {right_term})"
+                        route_operations = {"fraction", "addition"}
+                    else:
+                        # The registered subtraction machine's domain is the
+                        # nonnegative differences the K--5 guides print; a
+                        # pair below that domain would compile to a fact no
+                        # automaton can execute.
+                        if left_value < right_value:
+                            continue
+                        parser_id = "direct_fraction_subtraction_expression_list"
+                        task = f"subtract_fractions({left_term}, {right_term})"
+                        route_operations = {"fraction", "subtraction"}
+                    fraction_expression_number += 1
+                    has_route = any(
+                        attached_operation in route_operations
+                        for attached_operation, _ in attachments.get(span.code, set())
+                    )
+                    candidates.add(
+                        TaskCandidate(
+                            span.code,
+                            task,
+                            "fraction",
+                            parser_id,
+                            span.source,
+                            line,
+                            line,
+                            f"{span.position}/fraction_expression({fraction_expression_number})",
+                            text[match.start("left"):match.end("right")],
+                            "reviewable" if has_route else "rejected",
+                            "exact_fraction_operands_and_operation_route"
+                            if has_route
+                            else "lesson_has_no_fraction_attachment",
+                        )
+                    )
         # A bullet item is deliberately required here.  It keeps a binary
         # expression distinct from a subexpression inside a longer chain, so
         # the emitted operands remain exactly the task the guide prints.
@@ -1991,6 +2141,14 @@ TASK_GRAMMAR_ACTIONS = {
     },
     "direct_addition_expression_list": ("addition", "count_on_from_larger"),
     "direct_subtraction_expression_list": ("subtraction", "take_away_base_ones"),
+    "direct_fraction_addition_expression_list": (
+        "fraction",
+        "common_denominator_fraction_addition",
+    ),
+    "direct_fraction_subtraction_expression_list": (
+        "fraction",
+        "common_denominator_fraction_subtraction",
+    ),
     "printed_equation_list_direct_addition": ("addition", "count_on_from_larger"),
     "printed_equation_list_direct_subtraction": (
         "subtraction",

@@ -28,7 +28,12 @@
  * compound `fraction_pair(A,B,C,D)` as the `Count` slot and `unit(whole)` as
  * the `Base` slot. The unit/whole atom carries the referent-whole role; the
  * fraction-pair compound carries the operand structure. The unit-fraction
- * predicates retain their (Count, Base) integer signature.
+ * predicates retain their (Count, Base) integer signature. The
+ * addition/subtraction machines carry printed operands in
+ * direction-bearing Count compounds instead:
+ * `fraction_addend_pair(Left, Right)` for addition and its mediant
+ * deformation, `fraction_minuend_subtrahend(Left, Right)` for
+ * subtraction, each side one of frac(N,D), mixed(W,N,D), or whole(W).
  */
 
 :- module(fraction_action_pairs,
@@ -88,6 +93,11 @@
               [ run_common_unit_compare/6,
                 run_additive_parts_compare/6
               ]).
+:- use_module(math(smr_frac_common_unit_add),
+              [ run_common_unit_add/4,
+                run_common_unit_subtract/4,
+                run_add_numerator_denominator_sum/5
+              ]).
 
 % Text-grounded PFS kernel (Steffe-Hackenberg). Sits alongside the live
 % N101 PFS in divaded_fractional_units as the citable manuscript form.
@@ -106,8 +116,18 @@
 %   Base are integers. For the multiplication and division kinds
 %   (`measurement_division`, `reversible_measurement_division`), Count is the
 %   compound `fraction_pair(A,B,C,D)` -- dividend A/B, divisor C/D for the
-%   division kinds -- and Base is `unit(whole)`.
+%   division kinds -- and Base is `unit(whole)`. The addition and
+%   subtraction kinds carry direction-bearing compounds:
+%   `fraction_addend_pair(Left, Right)` for
+%   `common_denominator_fraction_addition` and
+%   `add_numerator_denominator_sum`,
+%   `fraction_minuend_subtrahend(Left, Right)` for
+%   `common_denominator_fraction_subtraction`.
 run_fraction_action(unit_fraction_partition, Count, Base, Outcome, Trace) :-
+    % The integer guard keeps a compound operand (a fraction_addend_pair
+    % or fraction_minuend_subtrahend from the contract's obligation
+    % loop) a clean refusal instead of an arithmetic type error.
+    integer(Count),
     Count =:= 1,
     positive_integer(Base),
     rec(Count, RecCount),
@@ -901,6 +921,95 @@ run_fraction_action(co_denominator_make_base_transfer,
               cgi_kernel_outcome(CGIOutcome),
               attach_three_level_units_coordination(Annotation)
             ].
+% Fraction addition and subtraction through a common partition
+% (smr_frac_common_unit_add).  Operands arrive as printed -- frac(N, D),
+% mixed(W, N, D), or whole(W) -- with unit(whole) carrying the
+% referent-whole role.  The Count compound itself carries the operation
+% direction: fraction_addend_pair(Left, Right) for addition and
+% fraction_minuend_subtrahend(Left, Right) for subtraction, so the
+% contract's obligation loop can never route a task into the other
+% direction's machine -- head unification refuses the wrong kind.  The
+% deformation partner adds numerators and adds denominators: its result
+% is the mediant, wrong as a sum, with the divergence and the
+% betweenness fact recorded per input.
+run_fraction_action(common_denominator_fraction_addition,
+                    fraction_addend_pair(Left, Right), unit(whole),
+                    Outcome, Trace) :-
+    run_common_unit_add(Left, Right, Result, Trace),
+    Outcome = action_outcome(
+                  common_denominator_fraction_addition,
+                  [ classification(productive),
+                    cluster(fraction_common_unit_addition),
+                    automaton_state(q_combine_counts),
+                    vocabulary([q_rename_addends_as_counts,
+                                q_common_partition,
+                                q_transform_commensurate_1,
+                                q_transform_commensurate_2,
+                                q_measure_with_co_unit, q_combine_counts,
+                                q_emit_sum]),
+                    input(fraction_addend_pair(Left, Right)),
+                    result(Result),
+                    expected(Result),
+                    validity(correct),
+                    components(fraction_addition_components(Left, Right)),
+                    grounded_by(common_unit_co_measurement),
+                    elaborates(smr_frac_common_unit_add:run_common_unit_add/4)
+                  ]).
+run_fraction_action(common_denominator_fraction_subtraction,
+                    fraction_minuend_subtrahend(Left, Right), unit(whole),
+                    Outcome, Trace) :-
+    % Strategy-only: the numerator-and-denominator-wise subtraction
+    % analog is undefined whenever the denominators agree (a zero
+    % denominator count) and sign-reversing whenever the second exceeds
+    % the first, so no canonical deformation is registered for this
+    % Kind.  The refusal is recorded here rather than a partial partner
+    % manufactured to fill the slot.
+    run_common_unit_subtract(Left, Right, Result, Trace),
+    Outcome = action_outcome(
+                  common_denominator_fraction_subtraction,
+                  [ classification(productive),
+                    cluster(fraction_common_unit_subtraction),
+                    automaton_state(q_remove_counts),
+                    vocabulary([q_rename_addends_as_counts,
+                                q_common_partition,
+                                q_transform_commensurate_1,
+                                q_transform_commensurate_2,
+                                q_measure_with_co_unit, q_remove_counts,
+                                q_emit_difference]),
+                    input(fraction_minuend_subtrahend(Left, Right)),
+                    result(Result),
+                    expected(Result),
+                    validity(correct),
+                    components(fraction_subtraction_components(Left, Right)),
+                    grounded_by(common_unit_co_measurement),
+                    elaborates(smr_frac_common_unit_add:run_common_unit_subtract/4)
+                  ]).
+run_fraction_action(add_numerator_denominator_sum,
+                    fraction_addend_pair(Left, Right), unit(whole),
+                    Outcome, Trace) :-
+    run_common_unit_add(Left, Right, Expected, _),
+    run_add_numerator_denominator_sum(Left, Right, Result, Viability, Trace),
+    viability_validity(Viability, Validity),
+    Outcome = action_outcome(
+                  add_numerator_denominator_sum,
+                  [ classification(deformation),
+                    cluster(fraction_common_unit_addition),
+                    automaton_state(q_add_numerator_denominator),
+                    vocabulary([q_rename_addends_as_counts,
+                                q_add_numerator_denominator,
+                                q_between_check, q_viability_context,
+                                q_emit_sum]),
+                    input(fraction_addend_pair(Left, Right)),
+                    result(Result),
+                    expected(Expected),
+                    components(fraction_addition_components(Left, Right)),
+                    deformation_of(common_denominator_fraction_addition),
+                    misconception_family(add_numerator_and_denominator),
+                    violated_invariant(combine_counts_only_after_common_unit),
+                    viability_context(Viability),
+                    validity(Validity),
+                    elaborates(smr_frac_common_unit_add:run_add_numerator_denominator_sum/5)
+                  ]).
 run_fraction_action(measurement_division, fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
     % Fraction division, measurement meaning: how many copies of the divisor
     % (group size) C/D fit in the dividend (total) A/B? Elaborates N101's
@@ -1021,6 +1130,12 @@ fraction_action_cluster(add_numerator_denominator_comparison,
                         fraction_common_unit_comparison).
 fraction_action_cluster(measurement_division, fraction_measurement_division).
 fraction_action_cluster(reversible_measurement_division, fraction_reversible_measurement_division).
+fraction_action_cluster(common_denominator_fraction_addition,
+                        fraction_common_unit_addition).
+fraction_action_cluster(add_numerator_denominator_sum,
+                        fraction_common_unit_addition).
+fraction_action_cluster(common_denominator_fraction_subtraction,
+                        fraction_common_unit_subtraction).
 
 
 %!  fraction_action_vocabulary(+Kind, -Vocabulary) is det.
@@ -1148,6 +1263,22 @@ fraction_action_vocabulary(reversible_measurement_division,
                            [dividend_fraction, divisor_fraction, recovered_generator,
                             generator_scale, measured_total, group_size_in_generator_units,
                             quotient_fraction]).
+fraction_action_vocabulary(common_denominator_fraction_addition,
+                           [q_rename_addends_as_counts, q_common_partition,
+                            q_transform_commensurate_1,
+                            q_transform_commensurate_2,
+                            q_measure_with_co_unit, q_combine_counts,
+                            q_emit_sum]).
+fraction_action_vocabulary(common_denominator_fraction_subtraction,
+                           [q_rename_addends_as_counts, q_common_partition,
+                            q_transform_commensurate_1,
+                            q_transform_commensurate_2,
+                            q_measure_with_co_unit, q_remove_counts,
+                            q_emit_difference]).
+fraction_action_vocabulary(add_numerator_denominator_sum,
+                           [q_rename_addends_as_counts,
+                            q_add_numerator_denominator, q_between_check,
+                            q_viability_context, q_emit_sum]).
 
 
 %!  productive_fraction_deformation(+ProductiveKind, +DeformationKind, -Family) is det.
@@ -1183,6 +1314,9 @@ productive_fraction_deformation(benchmark_fraction_comparison,
                                 gap_thinking).
 productive_fraction_deformation(common_unit_fraction_comparison,
                                 add_numerator_denominator_comparison,
+                                add_numerator_and_denominator).
+productive_fraction_deformation(common_denominator_fraction_addition,
+                                add_numerator_denominator_sum,
                                 add_numerator_and_denominator).
 
 

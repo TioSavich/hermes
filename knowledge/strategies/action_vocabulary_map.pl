@@ -1955,6 +1955,38 @@ action_maps(fraction, add_numerator_denominator_comparison, second, combine_quan
             confidence(medium),
             evidence("fraction/add_numerator_denominator_comparison, q_add_numerator_denominator -> q_measure_with_co_unit: 1 of the machine's 7 distinct edges, witnessed. adds the second pair of terms in the same numerator-and-denominator manner"),
             status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, emit, emit_result,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_emit_sum -> q_accept: 1 of the machine's 8 distinct edges, static only. release the result from the machine."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, init, initiate,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_init -> q_rename_addends_as_counts: 1 of the machine's 8 distinct edges, static only. enter the machine without yet doing mathematical work."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, no_common_unit_constructed, omit_required_step,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_common_partition -> q_add_numerator_denominator: 1 of the machine's 8 distinct edges, static only. skip a step the viable strategy needs: the slot where common_denominator_fraction_addition constructs the shared partition passes with nothing constructed, the same omission the comparison sibling records under this label."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, numerators_and_denominators_added, combine_quantities,
+            confidence(medium),
+            evidence("fraction/add_numerator_denominator_sum, q_add_numerator_denominator -> q_measure_with_co_unit: 1 of the machine's 8 distinct edges, static only. joins numerators into a numerator and denominators into a denominator; the combining itself is a true joining of quantities, and what is wrong -- the absent common unit -- is charged once at the omission edge before it, the same single-charge decision this file records for the comparison sibling's first and second rows."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, omitted, omit_required_step,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_measure_with_co_unit -> q_between_check: 1 of the machine's 8 distinct edges, static only. skip a step the viable strategy needs: the co-measurement slot passes with no shared unit to measure in."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, record_betweenness, verify_invariant,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_between_check -> q_viability_context: 1 of the machine's 8 distinct edges, static only. check that the property the strategy must keep still holds: an intermediate edge certifying the relation the mediant practice conserves, that the result stays inside the two addends' closed interval -- the Position rule's certify-a-relation case, not a terminal keep-or-lose record."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, record_viability, record_viability,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_viability_context -> q_emit_sum: 1 of the machine's 8 distinct edges, static only. record whether the strategy is contextually correct for this input: the same per-input contextual verdict gap_thinking_fraction_comparison and decimal_scale_loss_comparison record under their viability label."),
+            status(review_pending)).
+action_maps(fraction, add_numerator_denominator_sum, renamings, re_express_equivalently,
+            confidence(high),
+            evidence("fraction/add_numerator_denominator_sum, q_rename_addends_as_counts -> q_common_partition: 1 of the machine's 8 distinct edges, static only. rewrite a quantity or relation in a commensurate form without changing what it says: printed mixed and whole addends are renamed as fraction counts before any deforming move fires."),
+            status(review_pending)).
 action_maps(fraction, area_model_fraction_comparison, co_measure, align_to_common_unit,
             confidence(high),
             evidence("fraction/area_model_fraction_comparison, q_compare_relative_size -> q_emit: 1 of the machine's 8 distinct edges, witnessed. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
@@ -2150,6 +2182,62 @@ action_maps(fraction, co_denominator_make_base_transfer, hold_referent_whole_at,
 action_maps(fraction, co_denominator_make_base_transfer, hold_unit_fraction_at, select_unit_scale,
             confidence(high),
             evidence("fraction/co_denominator_make_base_transfer, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. choose which unit, base, or scale to work in from among the available ones."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, co_measure, align_to_common_unit,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_measure_with_co_unit -> q_combine_counts: 1 of the machine's 8 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, combined, combine_quantities,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_combine_counts -> q_emit_sum: 1 of the machine's 8 distinct edges, static only. join two quantities into their sum: the two commensurate counts are joined over the shared unit the partition edge constructed, so the joining itself is the operation and the conservation rides on the alignment before it."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, emit, emit_result,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_emit_sum -> q_accept: 1 of the machine's 8 distinct edges, static only. release the result from the machine."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, init, initiate,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_init -> q_rename_addends_as_counts: 1 of the machine's 8 distinct edges, static only. enter the machine without yet doing mathematical work."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, partition, align_to_common_unit,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_common_partition -> q_transform_commensurate_1: 1 of the machine's 8 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other: the edge constructs the shared partition -- kept, refined, or cross-partitioned -- that both counts will be measured in, the doing align_to_common_unit's own citation already names at q_common_partition."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, renamings, re_express_equivalently,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_rename_addends_as_counts -> q_common_partition: 1 of the machine's 8 distinct edges, static only. rewrite a quantity or relation in a commensurate form without changing what it says: mixed(1,5,8) becomes frac(13,8) and whole(3) becomes frac(3,1), each renaming carried in the trace with its printed form."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_addition, transformed, re_express_equivalently,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_addition, q_transform_commensurate_1 -> q_transform_commensurate_2; q_transform_commensurate_2 -> q_measure_with_co_unit: 2 of the machine's 8 distinct edges, static only. rewrite a quantity or relation in a commensurate form without changing what it says."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, co_measure, align_to_common_unit,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_measure_with_co_unit -> q_remove_counts: 1 of the machine's 8 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, emit, emit_result,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_emit_difference -> q_accept: 1 of the machine's 8 distinct edges, static only. release the result from the machine."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, init, initiate,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_init -> q_rename_addends_as_counts: 1 of the machine's 8 distinct edges, static only. enter the machine without yet doing mathematical work."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, partition, align_to_common_unit,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_common_partition -> q_transform_commensurate_1: 1 of the machine's 8 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other: the same constructed-partition doing as in the addition machine, and the count removed on the later edge is only meaningful inside it."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, removed, remove_quantity,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_remove_counts -> q_emit_difference: 1 of the machine's 8 distinct edges, static only. take one quantity away from another: the subtrahend's commensurate count is taken from the minuend's within the shared unit, the direction-committed counterpart of the addition machine's combining edge."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, renamings, re_express_equivalently,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_rename_addends_as_counts -> q_common_partition: 1 of the machine's 8 distinct edges, static only. rewrite a quantity or relation in a commensurate form without changing what it says: printed mixed and whole operands are renamed as fraction counts, the renaming kept in the trace."),
+            status(review_pending)).
+action_maps(fraction, common_denominator_fraction_subtraction, transformed, re_express_equivalently,
+            confidence(high),
+            evidence("fraction/common_denominator_fraction_subtraction, q_transform_commensurate_1 -> q_transform_commensurate_2; q_transform_commensurate_2 -> q_measure_with_co_unit: 2 of the machine's 8 distinct edges, static only. rewrite a quantity or relation in a commensurate form without changing what it says."),
             status(review_pending)).
 action_maps(fraction, common_unit_fraction_comparison, co_measure, align_to_common_unit,
             confidence(high),

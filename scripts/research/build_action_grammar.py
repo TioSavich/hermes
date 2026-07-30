@@ -185,7 +185,10 @@ ARCS: dict[tuple[str, ...], tuple[str, str]] = {
      "A conservation, a break, something kept again, and a closing break. The longest mixed arc the corpus spells."),
     ("neutral", "deforming", "neutral", "deforming", "neutral", "conserving", "neutral"):
     ("break_twice_then_keep_work_on",
-     "Two breaks, then a conserving step, then more work. The longest arc in the corpus and the only one that records a viability judgment after its breaks."),
+     "Two breaks, then a conserving step, then more work. One of the two arcs that record a viability judgment after their breaks."),
+    ("neutral", "conserving", "deforming", "neutral", "deforming", "conserving", "neutral"):
+    ("keep_break_recover_break_keep",
+     "A conservation early, two breaks with ordinary work between them, and a conserving record before release. The arc of a deformation that renames its operands faithfully, breaks twice where the viable machine aligns and co-measures, and then records the viability of what it made."),
 }
 
 # ---------------------------------------------------------------------------

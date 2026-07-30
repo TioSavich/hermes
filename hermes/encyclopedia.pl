@@ -508,6 +508,17 @@ trace_inputs(Input, A, B) :-
         dict_num(Left, n, 0, N1), dict_num(Left, d, 0, D1),
         dict_num(Right, n, 0, N2), dict_num(Right, d, 0, D2)
     ->  A = fraction_pair(N1, D1, N2, D2), B = unit(whole)
+    ;   get_dict(kind, D, "fraction_addend_pair"),
+        get_dict(left, D, Left), get_dict(right, D, Right),
+        json_fraction_addend(Left, LeftAddend),
+        json_fraction_addend(Right, RightAddend)
+    ->  A = fraction_addend_pair(LeftAddend, RightAddend), B = unit(whole)
+    ;   get_dict(kind, D, "fraction_minuend_subtrahend"),
+        get_dict(left, D, Left), get_dict(right, D, Right),
+        json_fraction_addend(Left, LeftAddend),
+        json_fraction_addend(Right, RightAddend)
+    ->  A = fraction_minuend_subtrahend(LeftAddend, RightAddend),
+        B = unit(whole)
     ;   get_dict(kind, D, "fraction_solve"),
         get_dict(coefficient, D, Coefficient),
         dict_num(Coefficient, n, 0, N), dict_num(Coefficient, d, 0, Denominator),
@@ -537,6 +548,29 @@ trace_inputs(Input, A, B) :-
 
 dict_num(Dict, Key, Default, Value) :-
     ( get_dict(Key, Dict, V0), num_value(V0, V) -> Value = V ; Value = Default ).
+
+%!  json_fraction_addend(+Dict, -Addend) is semidet.
+%
+%   Decode one printed addend: {"whole":W,"n":N,"d":D} is a mixed
+%   number, {"n":N,"d":D} a fraction, and {"whole":W} a whole number.
+json_fraction_addend(Dict, mixed(W, N, D)) :-
+    is_dict(Dict),
+    get_dict(whole, Dict, _),
+    get_dict(n, Dict, _),
+    !,
+    dict_num(Dict, whole, 0, W),
+    dict_num(Dict, n, 0, N),
+    dict_num(Dict, d, 1, D).
+json_fraction_addend(Dict, frac(N, D)) :-
+    is_dict(Dict),
+    get_dict(n, Dict, _),
+    !,
+    dict_num(Dict, n, 0, N),
+    dict_num(Dict, d, 1, D).
+json_fraction_addend(Dict, whole(W)) :-
+    is_dict(Dict),
+    get_dict(whole, Dict, _),
+    dict_num(Dict, whole, 0, W).
 
 dict_integer_list(Dict, Key, Values) :-
     get_dict(Key, Dict, RawValues),

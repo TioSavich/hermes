@@ -47,6 +47,7 @@ modules=(
     smr_frac_set_compare
     smr_frac_benchmark_compare
     smr_frac_common_unit_compare
+    smr_frac_common_unit_add
     smr_decimal_fraction_compare
 )
 
@@ -66,4 +67,4 @@ swipl --on-error=status --on-warning=status -q -l paths.pl -g "
     smr_div_dealing_by_ones:run_dealing_by_ones(12, 3, 4, _),
     halt."
 
-echo "PASS strict worker load, 30 isolated strategy loads, and four execution probes"
+echo "PASS strict worker load, 31 isolated strategy loads, and four execution probes"

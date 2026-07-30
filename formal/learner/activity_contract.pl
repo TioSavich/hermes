@@ -276,6 +276,18 @@ task_descriptor(iterate_improper_fraction(Numerator, Denominator), fraction,
     integer(Numerator), integer(Denominator),
     Denominator > 0, Numerator > Denominator,
     !.
+task_descriptor(add_fractions(Left, Right), fraction,
+                [printed_fraction_addends, common_partition,
+                 commensurate_counts, combine_unit_counts]) :-
+    fraction_addend_term(Left),
+    fraction_addend_term(Right),
+    !.
+task_descriptor(subtract_fractions(Left, Right), fraction,
+                [printed_fraction_addends, common_partition,
+                 commensurate_counts, remove_unit_counts]) :-
+    fraction_addend_term(Left),
+    fraction_addend_term(Right),
+    !.
 task_descriptor(decimal_value(Numeral, Scale), decimal,
                 [integer_numeral, power_of_ten_scale,
                  negative_place_partitioning, positional_inscription]) :-
@@ -1705,12 +1717,33 @@ execute_task_path(mode(Data), Contract, Requirements, Outcome) :-
     },
     !.
 execute_task_path(Task, Contract, Requirements, Outcome) :-
+    (   Task = add_fractions(_, _)
+    ;   Task = subtract_fractions(_, _)
+    ),
+    registered_action_task_path(Task, fraction, Contract, Requirements,
+                                Outcome),
+    !.
+execute_task_path(Task, Contract, Requirements, Outcome) :-
     Outcome = unsupported{
         lesson: Contract.lesson,
         task: Task,
         reason: activity_executor_missing,
         constituent_requirements: Requirements
     }.
+
+%!  fraction_addend_term(+Addend) is semidet.
+%
+%   A printed fraction addend as compiled from a teacher-guide task:
+%   a fraction, a mixed number, or a whole number.
+fraction_addend_term(frac(N, D)) :-
+    integer(N), N >= 0,
+    integer(D), D > 0.
+fraction_addend_term(mixed(W, N, D)) :-
+    integer(W), W >= 1,
+    integer(N), N >= 1,
+    integer(D), D > N.
+fraction_addend_term(whole(W)) :-
+    integer(W), W >= 0.
 
 action_signature(Operation, Kind, signature(Input, Output)) :-
     action_automaton_signature(Operation, Kind, Input, Output),
@@ -2091,6 +2124,15 @@ task_action_operands(divide(A, B), division, A, B).
 task_action_operands(unit_fraction(N, D), fraction, N, D).
 task_action_operands(iterate_improper_fraction(Numerator, Denominator),
                      fraction, Numerator, Denominator).
+% The operand compound carries the operation direction, so the
+% obligation loop in registered_action_task_path/5 -- which selects the
+% automaton kind from the lesson's sorted obligation list -- can never
+% run an addition task through the subtraction machine or the reverse:
+% each machine's head unifies only with its own direction.
+task_action_operands(add_fractions(Left, Right), fraction,
+                     fraction_addend_pair(Left, Right), unit(whole)).
+task_action_operands(subtract_fractions(Left, Right), fraction,
+                     fraction_minuend_subtrahend(Left, Right), unit(whole)).
 task_action_operands(decimal_value(Numeral, Scale), decimal, Numeral, Scale).
 task_action_operands(decimal_multiply(N1, S1, N2, S2), decimal,
                      decimal_pair(N1, S1, N2, S2), ignored).

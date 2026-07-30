@@ -123,6 +123,19 @@ automaton_input_contract(calculus, factor_cancel_without_common_factor, '{\"kind
 automaton_input_contract(probability, equiprobable_endpoint_counting, '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"atom\",\"probability\":{\"n\":\"positive_integer\",\"d\":\"positive_integer\"},\"events\":[\"atom\"]}],\"stake\":\"positive_number\"}', '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"alice\",\"probability\":{\"n\":1,\"d\":2},\"events\":[\"alice_wins_first\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"alice_wins_then_bob\",\"bob_wins\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"bob_wins_then_bob\",\"bob_wins\"]}],\"stake\":60}', verified(strategy_trace_ok)).
 automaton_input_contract(probability, terminal_tree_endpoint_probability_sum, '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"atom\",\"probability\":{\"n\":\"positive_integer\",\"d\":\"positive_integer\"},\"events\":[\"atom\"]}],\"stake\":\"positive_number\"}', '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"alice\",\"probability\":{\"n\":1,\"d\":2},\"events\":[\"alice_wins_first\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"alice_wins_then_bob\",\"bob_wins\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"bob_wins_then_bob\",\"bob_wins\"]}],\"stake\":60}', verified(strategy_trace_ok)).
 
+% Fraction operands arrive as printed.  The published shape below is the
+% fraction/fraction case ({"n","d"} per side, nonnegativity enforced by
+% the machine's valid_fraction guard).  The runtime decoder also accepts
+% {"whole","n","d"} (a mixed number) and {"whole"} (a whole number) per
+% side; the checker's one-example-per-kind grammar has no union form, so
+% those shapes are documented here and witnessed in the task-192 report
+% rather than declared.  Subtraction's kind string names the
+% minuend/subtrahend compound that keeps the two directions from ever
+% routing into each other's machine.
+automaton_input_contract(fraction, common_denominator_fraction_addition, '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":7,\"d\":8}}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, common_denominator_fraction_subtraction, '{\"kind\":\"fraction_minuend_subtrahend\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_minuend_subtrahend\",\"left\":{\"n\":2,\"d\":3},\"right\":{\"n\":1,\"d\":6}}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, add_numerator_denominator_sum, '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":7,\"d\":8}}', verified(strategy_trace_ok)).
+
 % A marked contract has a live strategy_trace witness represented in the
 % generated transition table. It does not change the public contract shape.
 automaton_observed_input_contract(fraction, unit_fraction_partition,

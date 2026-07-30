@@ -1246,7 +1246,7 @@ dispatch_request(brandomian_check, Id, Request, Response) :-
                      witness_hyperedge: WitnessEdge,
                      entailments: Entailments,
                      entailments_checked: Checked,
-                     entailment_scope: "declared incompatible sets only: a finite approximation, complete exactly to the extent the incompatibility data is",
+                     entailment_scope: "declared incompatible sets only: a finite approximation, complete exactly to the extent the incompatibility data is complete",
                      queried_entailment: Queried,
                      backstop: _{ok: BackstopOk, checks: BackstopReport}
                    },

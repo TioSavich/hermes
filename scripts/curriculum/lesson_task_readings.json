@@ -1817,6 +1817,122 @@
       },
       "read_by": "opus-analyst",
       "note": "Cool-down; the sidecar restores both differences and the response block prints a value per item. Span 3's two subtraction strings are not claimed: the guide prints their four values as one comma list, so keying a value to an item would be an ordering inference."
+    },
+    {
+      "lesson": "IM-GK-U6-L10",
+      "id": "task_186_gk_u6_l10_10_plus_8",
+      "position": "student_task_statement(2)",
+      "task": "add(10, 8)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-GK-U6-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "10 + 8 = ___"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-GK-U6-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "10 + 8 = ___"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/kindergarten/unit6/lesson10.md",
+        "line": 157,
+        "excerpt": "• 18",
+        "value": "18"
+      },
+      "read_by": "task-186-parser-gate-lane",
+      "note": "Activity 1 printed equation restored in the sidecar; the first next-response value is 18."
+    },
+    {
+      "lesson": "IM-GK-U6-L10",
+      "id": "task_186_gk_u6_l10_10_plus_3",
+      "position": "student_task_statement(2)",
+      "task": "add(10, 3)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-GK-U6-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "10 + 3 = ___"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-GK-U6-L10",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "10 + 3 = ___"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/kindergarten/unit6/lesson10.md",
+        "line": 158,
+        "excerpt": "• 13",
+        "value": "13"
+      },
+      "read_by": "task-186-parser-gate-lane",
+      "note": "Activity 1 printed equation restored in the sidecar; the second next-response value is 13."
+    },
+    {
+      "lesson": "IM-GK-U6-L10",
+      "id": "task_186_gk_u6_l10_10_plus_5",
+      "position": "student_task_statement(3)",
+      "task": "add(10, 5)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-GK-U6-L10",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "10 + 5 = ___"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-GK-U6-L10",
+          "position": "student_task_statement(3)"
+        },
+        "excerpt": "10 + 5 = ___"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/kindergarten/unit6/lesson10.md",
+        "line": 223,
+        "excerpt": "1. 15",
+        "value": "15"
+      },
+      "read_by": "task-186-parser-gate-lane",
+      "note": "Activity 2 item 1 restored in the sidecar; the first next-response value is 15."
+    },
+    {
+      "lesson": "IM-G2-U1-L1",
+      "id": "task_186_g2_u1_l1_9_minus_3",
+      "position": "student_task_statement(4)",
+      "task": "subtract(9, 3)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G2-U1-L1",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "9- 3 = ___"
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G2-U1-L1",
+          "position": "student_task_statement(4)"
+        },
+        "excerpt": "9- 3 = ___"
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade2/unit1/lesson1.md",
+        "line": 376,
+        "excerpt": "2. 6",
+        "value": "6"
+      },
+      "read_by": "task-186-parser-gate-lane",
+      "note": "Cool-down item 2 restored in the sidecar; the second next-response value is 6."
     }
   ]
 }

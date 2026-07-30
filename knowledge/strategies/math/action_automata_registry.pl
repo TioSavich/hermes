@@ -386,6 +386,18 @@ action_automaton_signature(fraction,
                            add_numerator_denominator_comparison,
                            inputs(two_nonnegative_fractions, unlike_units),
                            incorrect_additive_parts_relation).
+action_automaton_signature(fraction, common_denominator_fraction_addition,
+                           inputs(two_printed_fraction_addends,
+                                  referent_whole),
+                           common_denominator_fraction_sum).
+action_automaton_signature(fraction, common_denominator_fraction_subtraction,
+                           inputs(printed_fraction_minuend_and_subtrahend,
+                                  referent_whole),
+                           common_denominator_fraction_difference).
+action_automaton_signature(fraction, add_numerator_denominator_sum,
+                           inputs(two_printed_fraction_addends,
+                                  referent_whole),
+                           mediant_as_incorrect_sum).
 action_automaton_signature(decimal,
                            decimal_fraction_place_value_comparison,
                            inputs(two_nonnegative_decimal_values,

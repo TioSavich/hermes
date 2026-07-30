@@ -1167,6 +1167,8 @@
   "direct_binary_expression_prompt",
   "direct_addition_expression_list",
   "direct_subtraction_expression_list",
+  "direct_fraction_addition_expression_list",
+  "direct_fraction_subtraction_expression_list",
   "printed_equation_list_direct_addition",
   "printed_equation_list_direct_subtraction",
   "printed_equation_list_missing_addend",
