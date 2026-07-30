@@ -217,6 +217,80 @@ pusu_rule_expected(subtraction, A, B, Expected) :- Expected is A - B.
 pusu_rule_expected(multiplication, A, B, Expected) :- Expected is A * B.
 pusu_rule_expected(division, A, B, Expected) :- B =\= 0, Expected is A // B.
 
+% The action signature is the registry's declared input domain. Type names stay
+% explicit: an unknown type is unavailable evidence, never a cue to infer a
+% domain from its spelling.
+pusu_declared_operand_type(nonnegative_integer_addend, Value) :- integer(Value), Value >= 0.
+pusu_declared_operand_type(nonnegative_integer_minuend, Value) :- integer(Value), Value >= 0.
+pusu_declared_operand_type(nonnegative_integer_subtrahend, Value) :- integer(Value), Value >= 0.
+pusu_declared_operand_type(nonnegative_integer_dividend, Value) :- integer(Value), Value >= 0.
+pusu_declared_operand_type(nonnegative_integer_total, Value) :- integer(Value), Value >= 0.
+pusu_declared_operand_type(positive_integer_factor, Value) :- integer(Value), Value > 0.
+pusu_declared_operand_type(positive_integer_group_count, Value) :- integer(Value), Value > 0.
+pusu_declared_operand_type(positive_integer_group_size, Value) :- integer(Value), Value > 0.
+pusu_declared_operand_type(positive_integer_divisor, Value) :- integer(Value), Value > 0.
+
+pusu_known_declared_operand_type(Type) :-
+    memberchk(Type,
+              [nonnegative_integer_addend,
+               nonnegative_integer_minuend,
+               nonnegative_integer_subtrahend,
+               nonnegative_integer_dividend,
+               nonnegative_integer_total,
+               positive_integer_factor,
+               positive_integer_group_count,
+               positive_integer_group_size,
+               positive_integer_divisor]).
+
+% Subtraction's registered automata uniformly require a nonnegative difference.
+% The other operations have no operation-wide relational bound: in particular,
+% division kinds disagree about whether a dividend below the divisor has a
+% misconception form, so their same-kind action probes decide that case.
+pusu_declared_operation_relation(subtraction, Left, Right) :- Left >= Right.
+pusu_declared_operation_relation(addition, _, _).
+pusu_declared_operation_relation(multiplication, _, _).
+pusu_declared_operation_relation(division, _, _).
+
+pusu_declared_rule_domain_status(Op, Kind, Left, Right, Status) :-
+    ( action_automata_registry:action_automaton_signature(
+          Op, Kind, inputs(LeftType, RightType), _)
+    -> ( pusu_known_declared_operand_type(LeftType),
+         pusu_known_declared_operand_type(RightType)
+       -> ( pusu_declared_operand_type(LeftType, Left),
+            pusu_declared_operand_type(RightType, Right),
+            pusu_declared_operation_relation(Op, Left, Right)
+          -> Status = inside_declared_domain
+          ;  Status = outside_declared_domain )
+       ;  Status = declaration_unavailable )
+    ;  Status = declaration_unavailable
+    ).
+
+pusu_rule_predicate_exists(Module:Name) :-
+    atom(Module), atom(Name), current_predicate(Module:Name/2), !.
+pusu_rule_predicate_exists(Name) :-
+    atom(Name), current_predicate(Name/2).
+
+% An undefined classification is split by executable evidence. A missing rule
+% is a defect. Outside-domain status comes from the registered signature plus
+% the declared operation relation. Inside that domain, refusal by the action
+% automaton for the same kind proves that the misconception has no form at the
+% input. Missing declarations or an errored automaton remain explicitly
+% unavailable rather than being assigned to either refusal class.
+pusu_rule_refusal_status(_, _, Rule, _, _, rule_defect_no_output) :-
+    \+ pusu_rule_predicate_exists(Rule), !.
+pusu_rule_refusal_status(Op, Kind, _, Left, Right, rule_domain_refusal) :-
+    pusu_declared_rule_domain_status(Op, Kind, Left, Right, outside_declared_domain), !.
+pusu_rule_refusal_status(Op, Kind, _, Left, Right, rule_refusal_reason_unavailable) :-
+    pusu_declared_rule_domain_status(Op, Kind, Left, Right, declaration_unavailable), !.
+pusu_rule_refusal_status(Op, Kind, _, Left, Right, Status) :-
+    pusu_action_probe(Op, Kind, Left, Right, ActionStatus, _, _, _),
+    ( ActionStatus == action_output
+    -> Status = rule_defect_no_output
+    ; ActionStatus == action_no_output
+    -> Status = rule_no_form_at_input
+    ;  Status = rule_refusal_reason_unavailable
+    ).
+
 pusu_rule_probe(Op, Rule, Left, Right, Status) :-
     pusu_operation_domain(Op, Domain),
     test_harness:arith_misconception(_, Domain, Kind, Rule, _, _),
@@ -224,21 +298,22 @@ pusu_rule_probe(Op, Rule, Left, Right, Status) :-
     pusu_call(contrast_diagnosis,
               test_harness:classify_arith_by_trace(Rule, Input, Expected, Class, _), Result),
     ( Result == succeeded
-    -> pusu_rule_class_status(Class, Status)
+    -> pusu_rule_class_status(Op, Kind, Rule, Left, Right, Class, Status)
     ; Result == timed_out
     -> Status = rule_times_out
     ;  Status = rule_errors
     ).
 
 % Only an executed, output-agreeing trace class may validate an agreement
-% context.  Undefined and inference-limited rules are execution defects, not
-% agreement evidence.
-pusu_rule_class_status(wrong_answer, separates).
-pusu_rule_class_status(well_formed, agrees).
-pusu_rule_class_status(trace_unavailable, agrees).
-pusu_rule_class_status(trace_divergence, agrees).
-pusu_rule_class_status(undefined, rule_no_output).
-pusu_rule_class_status(loop_detected, rule_times_out).
+% context. Inference-limited rules remain execution defects; an undefined
+% result is classified by declared-domain and same-kind automaton evidence.
+pusu_rule_class_status(_, _, _, _, _, wrong_answer, separates).
+pusu_rule_class_status(_, _, _, _, _, well_formed, agrees).
+pusu_rule_class_status(_, _, _, _, _, trace_unavailable, agrees).
+pusu_rule_class_status(_, _, _, _, _, trace_divergence, agrees).
+pusu_rule_class_status(Op, Kind, Rule, Left, Right, undefined, Status) :-
+    pusu_rule_refusal_status(Op, Kind, Rule, Left, Right, Status).
+pusu_rule_class_status(_, _, _, _, _, loop_detected, rule_times_out).
 
 pusu_rule_separates(Op, Rule, Left, Right) :-
     pusu_rule_probe(Op, Rule, Left, Right, separates).
@@ -280,7 +355,9 @@ pusu_agreement_status_action(Family, Op, Deformation, Productive, TraceLeft, Tra
           ;  Status = "vacuous_pair", TraceRoundTrip = false ) )
     ; ContextText = "", SeparatorText = "", Status = "battery_absent", TraceRoundTrip = false ).
 
-pusu_agreement_status_rule(Family, Op, Rule, Status, ContextText, SeparatorText) :-
+pusu_agreement_status_rule(Family, Op, Rule, Status, ContextText, SeparatorText,
+                           BatteryRefusals) :-
+    pusu_rule_battery_refusals(Op, Rule, BatteryRefusals),
     ( pusu_battery_for(Op, _)
     -> ( pusu_rule_battery_issue(Op, Rule, Status)
        -> ContextText = "", SeparatorText = ""
@@ -295,7 +372,65 @@ pusu_agreement_status_rule(Family, Op, Rule, Status, ContextText, SeparatorText)
 pusu_rule_battery_issue(Op, Rule, Status) :-
     pusu_battery_for(Op, Battery), member(Left-Right, Battery),
     pusu_rule_probe(Op, Rule, Left, Right, Status),
-    memberchk(Status, [rule_no_output, rule_times_out, rule_errors]), !.
+    memberchk(Status, [rule_defect_no_output, rule_times_out, rule_errors]), !.
+
+pusu_rule_battery_refusals(Op, Rule, Refusals) :-
+    ( pusu_battery_for(Op, Battery)
+    -> findall(_{input:InputText, status:Status},
+               ( member(Left-Right, Battery),
+                 pusu_rule_probe(Op, Rule, Left, Right, Status),
+                 memberchk(Status,
+                           [rule_domain_refusal, rule_no_form_at_input,
+                            rule_refusal_reason_unavailable]),
+                 pusu_input_text(Op, Left, Right, InputText)
+               ),
+               Refusals)
+    ;  Refusals = []
+    ).
+
+% Synthetic predicates below are fixture-only. They add no registry rows to a
+% normal pass; --refusal-fixtures calls the classifier directly.
+pusu_fixture_delegated_result(Op, Kind, Left-Right, Got) :-
+    action_automata_registry:run_action_automaton(
+        Op, Kind, Left, Right, action_outcome(_, Fields), _),
+    memberchk(result(Got), Fields).
+
+pusu_fixture_borrow_without_reducing_bases(Input, Got) :-
+    pusu_fixture_delegated_result(
+        subtraction, borrow_without_reducing_bases, Input, Got).
+pusu_fixture_unregistered_rule(_, _) :- fail.
+
+pusu_refusal_fixture(missing_rule, subtraction, add_instead_of_subtract_column,
+                     pusu_fixture_missing_rule, 10, 4, rule_defect_no_output).
+pusu_refusal_fixture(domain_refusal, subtraction, add_instead_of_subtract_column,
+                     misconceptions_whole_number_action_delegates:add_instead_of_subtract_column,
+                     1, 2, rule_domain_refusal).
+pusu_refusal_fixture(no_form, subtraction, borrow_without_reducing_bases,
+                     pusu_fixture_borrow_without_reducing_bases,
+                     25, 10, rule_no_form_at_input).
+pusu_refusal_fixture(reason_unavailable, subtraction, pusu_fixture_unregistered_kind,
+                     pusu_fixture_unregistered_rule,
+                     25, 10, rule_refusal_reason_unavailable).
+pusu_refusal_fixture(division_output_defect, division, measure_groups_of_size,
+                     pusu_fixture_unregistered_rule,
+                     2, 3, rule_defect_no_output).
+
+pusu_refusal_fixture_row(Name, Row) :-
+    pusu_refusal_fixture(Name, Op, Kind, Rule, Left, Right, Expected),
+    pusu_rule_refusal_status(Op, Kind, Rule, Left, Right, Actual),
+    pusu_declared_rule_domain_status(Op, Kind, Left, Right, DomainStatus),
+    ( pusu_rule_predicate_exists(Rule) -> PredicateExists = true ; PredicateExists = false ),
+    pusu_action_probe(Op, Kind, Left, Right, ActionStatus, _, _, _),
+    pusu_input_text(Op, Left, Right, InputText),
+    Row = _{fixture:Name, operation:Op, kind:Kind, input:InputText,
+            expected:Expected, actual:Actual, predicate_exists:PredicateExists,
+            declared_domain:DomainStatus, automaton_status:ActionStatus}.
+
+pusu_refusal_fixture_main :-
+    forall(pusu_refusal_fixture_row(_, Row),
+           ( write('FIXTURE\t'),
+             json_write_dict(current_output, Row, [width(1000000)]), nl )),
+    flush_output.
 
 pusu_call(Budget, Goal, Result) :-
     pusu_budget_seconds(Budget, Seconds),
@@ -610,6 +745,37 @@ pusu_action_contrast(Code, Family, Task, Row) :-
             separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
             norm_citation:""}.
 
+pusu_division_output_value(Value, Left, Right, Quotient, Remainder) :-
+    integer(Value),
+    Quotient = Value,
+    Remainder is Left mod Right.
+pusu_division_output_value(quotient_remainder(Quotient, Remainder), _, _,
+                           Quotient, Remainder) :-
+    integer(Quotient), integer(Remainder).
+pusu_division_output_value(quot_plus_frac(Quotient, Remainder, Divisor),
+                           _, Right, Quotient, Remainder) :-
+    integer(Quotient), integer(Remainder), integer(Divisor),
+    Divisor =:= Right.
+pusu_division_output_value(long_division_result(Text, Remainder), _, _,
+                           Quotient, Remainder) :-
+    string(Text), number_string(Quotient, Text),
+    integer(Quotient), integer(Remainder).
+
+% Keep the expected-output contract unchanged. This classifier only measures
+% wrong-answer rows where unequal terms encode the same quotient and remainder.
+pusu_rule_separation_kind(division, Left, Right, Expected, Evidence,
+                          schema_equivalent_separation) :-
+    integer(Left), integer(Right), Right > 0,
+    Evidence \=@= Expected,
+    pusu_division_output_value(Expected, Left, Right, ExpectedQ, ExpectedR),
+    pusu_division_output_value(Evidence, Left, Right, EvidenceQ, EvidenceR),
+    CorrectQ is Left // Right,
+    CorrectR is Left mod Right,
+    ExpectedQ =:= CorrectQ, ExpectedR =:= CorrectR,
+    EvidenceQ =:= CorrectQ, EvidenceR =:= CorrectR,
+    !.
+pusu_rule_separation_kind(_, _, _, _, _, genuine_separation).
+
 pusu_rule_contrast(Code, Obligation, Task, Row) :-
     Op = Obligation.operation, Kind = Obligation.kind,
     activity_contract:task_action_operands(Task, Op, Left, Right),
@@ -622,33 +788,42 @@ pusu_rule_contrast(Code, Obligation, Task, Row) :-
     ( CallResult == succeeded
     -> ( Class == wrong_answer
        -> pusu_text(Evidence, WrongText), ContrastStatus = "separates",
+          pusu_text(Expected, ExpectedText),
+          pusu_rule_separation_kind(Op, Left, Right, Expected, Evidence, SeparationKind),
           pusu_diagnosis_with_budget(Op, Left, Right, Evidence, Kind, Diagnosis0, Detail0, Surface0, DiagnosisTimedOut, Failure),
           pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis1, Detail1,
                                  SeparatorText, ContextText),
           pusu_complete_rule_diagnosis(Diagnosis1, Kind, Detail1, Surface0, Diagnosis, Detail, Surface),
-          TraceRoundTrip = false, Viability = [],
+          TraceRoundTrip = false, Viability = [], BatteryRefusals = [],
           ( ( ProductiveTimedOut == true ; DiagnosisTimedOut == true ) -> TimedOut = true ; TimedOut = false )
-       ;  pusu_text(Evidence, WrongText),
-          pusu_rule_class_status(Class, RuleStatus),
+       ;  pusu_text(Evidence, WrongText), pusu_text(Expected, ExpectedText),
+          SeparationKind = not_applicable,
+          pusu_rule_class_status(Op, Kind, Rule, Left, Right, Class, RuleStatus),
           ( RuleStatus == agrees
-          -> pusu_agreement_status_rule(Kind, Op, Rule, ContrastStatus, ContextText, SeparatorText),
+          -> pusu_agreement_status_rule(Kind, Op, Rule, ContrastStatus, ContextText,
+                                        SeparatorText, BatteryRefusals),
              pusu_viability_field(ContrastStatus, Code, Kind, ContextText, SeparatorText, Viability)
-          ;  ContrastStatus = RuleStatus, ContextText = "", SeparatorText = "", Viability = []
+          ;  ContrastStatus = RuleStatus, ContextText = "", SeparatorText = "",
+             Viability = [], BatteryRefusals = []
           ),
           Diagnosis = "not_applicable", Detail = [], Surface = "none", TimedOut = ProductiveTimedOut,
           Failure = "", TraceRoundTrip = false
        )
-    ;  WrongText = "", ContrastStatus = "cannot_run", Diagnosis = "not_applicable",
+    ;  WrongText = "", ExpectedText = "", SeparationKind = not_applicable,
+       ContrastStatus = "cannot_run", Diagnosis = "not_applicable",
        Detail = [], Surface = "none",
        ( ( CallResult == timed_out ; ProductiveTimedOut == true ) -> TimedOut = true ; TimedOut = false ),
-       pusu_failure(CallResult, Failure), ContextText = "", SeparatorText = "", TraceRoundTrip = false, Viability = []
+       pusu_failure(CallResult, Failure), ContextText = "", SeparatorText = "",
+       TraceRoundTrip = false, Viability = [], BatteryRefusals = []
     ),
-    Row = _{kind:KindText, family:KindText, task:TaskText, source:"registered_misconception_rule",
-            status:ContrastStatus, wrong_answer:WrongText, diagnosis:Diagnosis,
+    Row = _{kind:KindText, family:KindText, task:TaskText, operation:Op,
+            source:"registered_misconception_rule", status:ContrastStatus,
+            wrong_answer:WrongText, expected_answer:ExpectedText,
+            separation_kind:SeparationKind, diagnosis:Diagnosis,
             diagnosis_detail:Detail, diagnosis_surface:Surface, goal:GoalText,
             timed_out:TimedOut, failure:Failure, agreement_context:ContextText,
             separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
-            norm_citation:""}.
+            battery_refusals:BatteryRefusals, norm_citation:""}.
 
 pusu_receipt_contrast(Code, Op, AltKind, Family, Task, Row) :-
     compiled_receipt_routes:receipt_contrast_route(Code, Op, AltKind, Family, Task, Evidence),
@@ -752,6 +927,17 @@ pusu_contrasts(Code, Rows) :-
     ( ContractFailure \== "" -> pusu_contract_failure_row(ContractFailure, ContractFailureRow), ContractFailureRows = [ContractFailureRow] ; ContractFailureRows = [] ),
     append([ActionRows, RuleRows, ReceiptRows, ReceiptDefectRows, ContractTimeoutRows, ContractFailureRows], All), sort(All, Rows).
 
+pusu_unseparated_rule_refusal(Contrasts, Status) :-
+    member(Row, Contrasts),
+    Row.source == "registered_misconception_rule",
+    Row.status == Status,
+    Kind = Row.kind,
+    \+ ( member(Other, Contrasts),
+         Other.source == "registered_misconception_rule",
+         Other.kind == Kind,
+         Other.status == "separates"
+       ).
+
 pusu_verdict(Productive, Contrasts, Verdict, Detail) :-
     ( Productive = []
     -> Verdict = "broken(no_instances)", Detail = "no compiled productive task instance"
@@ -764,9 +950,15 @@ pusu_verdict(Productive, Contrasts, Verdict, Detail) :-
     ; member(Row, Contrasts), Row.status == "battery_absent"
     -> Verdict = "broken(battery_absent)", Detail = "an agreeing contrast has no declared operation battery"
     ; member(Row, Contrasts), memberchk(Row.status,
-                                        [rule_no_output, rule_times_out, rule_errors,
+                                        [rule_defect_no_output, rule_times_out, rule_errors,
                                          action_no_output, action_times_out, action_errors])
     -> Verdict = "broken(contrast_cannot_run)", Detail = "an attached contrast route did not produce an executable output"
+    ; pusu_unseparated_rule_refusal(Contrasts, rule_domain_refusal)
+    -> Verdict = "rule_domain_refusal", Detail = "the lesson's numerals are outside the rule automaton's declared domain"
+    ; pusu_unseparated_rule_refusal(Contrasts, rule_no_form_at_input)
+    -> Verdict = "needs_rule_exercising_numerals", Detail = "the lesson's numerals do not exercise this misconception"
+    ; pusu_unseparated_rule_refusal(Contrasts, rule_refusal_reason_unavailable)
+    -> Verdict = "rule_refusal_reason_unavailable", Detail = "the available declarations and automaton evidence cannot distinguish this rule refusal"
     ; member(Row, Contrasts), Row.status == "vacuous_pair"
     -> Verdict = "broken(vacuous_pair)", Detail = "a contrast has no separating battery input"
     ; member(Row, Contrasts), Row.status == "normative_contrast", Row.trace_round_trip \== true
@@ -866,6 +1058,31 @@ def run_engine(
     return rows
 
 
+def run_refusal_fixtures() -> list[dict]:
+    program = PROLOG_RUNNER + "\n:- pusu_refusal_fixture_main, halt.\n"
+    proc = subprocess.run(
+        ["swipl", "-q", "-l", str(ROOT / "paths.pl"), "-g", "consult(user),halt"],
+        cwd=ROOT,
+        input=program,
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=5 * 60,
+    )
+    if proc.returncode:
+        raise RuntimeError(f"SWI-Prolog failed ({proc.returncode}):\n{proc.stderr.strip()}")
+    rows = [
+        json.loads(line.split("\t", 1)[1])
+        for line in proc.stdout.splitlines()
+        if line.startswith("FIXTURE\t")
+    ]
+    if len(rows) != 5:
+        raise RuntimeError(
+            f"SWI-Prolog returned {len(rows)} refusal fixtures.\n{proc.stderr.strip()}"
+        )
+    return rows
+
+
 def stage(verdict: str) -> str:
     if verdict == "pass":
         return "pass"
@@ -881,8 +1098,13 @@ def compact_prolog(rows: list[dict]) -> str:
         verdict = row["pusu"]
         if verdict == "pass":
             term = "pass"
-        elif verdict == "needs_separating_numerals":
-            term = "needs_separating_numerals(" + repr(row["detail"]).replace('"', "'") + ")"
+        elif verdict in {
+            "needs_separating_numerals",
+            "needs_rule_exercising_numerals",
+            "rule_domain_refusal",
+            "rule_refusal_reason_unavailable",
+        }:
+            term = verdict + "(" + repr(row["detail"]).replace('"', "'") + ")"
         else:
             term = "broken(" + stage(verdict) + ", " + repr(row["detail"]).replace('"', "'") + ")"
         lines.append(f"pusu('{lesson}', {term}).")
@@ -913,6 +1135,54 @@ def previous_verdicts() -> dict[str, str]:
 
 def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[str, str]) -> dict:
     distribution = Counter(stage(row["pusu"]) for row in rows)
+    refusal_statuses = {
+        "rule_defect_no_output",
+        "rule_domain_refusal",
+        "rule_no_form_at_input",
+        "rule_refusal_reason_unavailable",
+    }
+    rule_refusal_distribution = Counter(
+        contrast["status"]
+        for row in rows
+        for contrast in row["contrasts"]
+        if contrast.get("status") in refusal_statuses
+    )
+    rule_battery_refusal_distribution = Counter(
+        refusal["status"]
+        for row in rows
+        for contrast in row["contrasts"]
+        for refusal in contrast.get("battery_refusals", [])
+    )
+    division_separations = [
+        (row["lesson"], contrast)
+        for row in rows
+        for contrast in row["contrasts"]
+        if contrast.get("source") == "registered_misconception_rule"
+        and contrast.get("operation") == "division"
+        and contrast.get("status") == "separates"
+    ]
+    division_separation_distribution = Counter(
+        contrast.get("separation_kind", "unclassified")
+        for _, contrast in division_separations
+    )
+    division_family_counts: dict[str, Counter[str]] = defaultdict(Counter)
+    for _, contrast in division_separations:
+        division_family_counts[contrast["kind"]][
+            contrast.get("separation_kind", "unclassified")
+        ] += 1
+    schema_examples: dict[str, dict] = {}
+    for lesson, contrast in division_separations:
+        if contrast.get("separation_kind") != "schema_equivalent_separation":
+            continue
+        schema_examples.setdefault(
+            contrast["kind"],
+            {
+                "lesson": lesson,
+                "task": contrast["task"],
+                "expected_answer": contrast["expected_answer"],
+                "rule_answer": contrast["wrong_answer"],
+            },
+        )
     raw_viability_facts = [
         fact for row in rows for contrast in row["contrasts"]
         for fact in contrast.get("viability", [])
@@ -932,11 +1202,31 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
             "classified_by_rule, no_diagnosis, or not_applicable, and a diagnosis_surface may carry "
             "an _after_withheld(...) annotation naming labels that may not be served; the lesson "
             "verdict follows the routes that run, so receipt_route_defect rows stay in the artifact "
-            "without deciding it, except where a lesson's only receipt is the defective one"
+            "without deciding it, except where a lesson's only receipt is the defective one; "
+            "rule battery refusals remain on each registered-rule row as typed input/status records; "
+            "rule_domain_refusal names an input outside the registered signature and operation domain, "
+            "needs_rule_exercising_numerals names an in-domain input where the same-kind automaton "
+            "refuses, and rule_refusal_reason_unavailable preserves an unresolved distinction; "
+            "schema_equivalent_separation keeps the division expected-output contract unchanged while "
+            "counting unequal output terms that encode the same quotient and remainder"
         ),
         "scope": {"diagnostic_ready_lessons": len(selected), "lessons": selected},
         "timing_seconds": round(elapsed, 3),
         "verdict_distribution": dict(sorted(distribution.items())),
+        "rule_refusal_distribution": dict(sorted(rule_refusal_distribution.items())),
+        "rule_battery_refusal_distribution": dict(
+            sorted(rule_battery_refusal_distribution.items())
+        ),
+        "division_rule_separation_distribution": dict(
+            sorted(division_separation_distribution.items())
+        ),
+        "division_rule_separation_families": {
+            family: dict(sorted(counts.items()))
+            for family, counts in sorted(division_family_counts.items())
+        },
+        "division_schema_artifact_examples": [
+            example for _, example in sorted(schema_examples.items())
+        ],
         "verdict_motion": [
             {"lesson": row["lesson"], "before": before.get(row["lesson"], "not_in_prior_artifact"), "after": row["pusu"]}
             for row in rows
@@ -955,10 +1245,18 @@ def main() -> int:
     parser.add_argument("--productive-budget", type=int, metavar="SECONDS", help="override the productive budget for a focused regression run")
     parser.add_argument("--without-batteries", action="store_true", help="benchmark only: suppress battery sweeps (requires --stdout)")
     parser.add_argument("--merge", action="append", metavar="JSON", help="merge prior --stdout batch documents and write artifacts")
+    parser.add_argument("--refusal-fixtures", action="store_true", help="run the five engine-backed rule-refusal fixtures")
     parser.add_argument("--stdout", action="store_true", help="emit JSON without writing artifacts")
     args = parser.parse_args()
+    if args.refusal_fixtures:
+        if args.calibration or args.lesson or args.first or args.offset or args.productive_budget or args.without_batteries or args.merge or args.stdout:
+            parser.error("--refusal-fixtures cannot be combined with sweep options")
+        rows = run_refusal_fixtures()
+        json.dump({"fixtures": rows}, sys.stdout, indent=2, sort_keys=True)
+        sys.stdout.write("\n")
+        return 0 if all(row["actual"] == row["expected"] for row in rows) else 1
     if args.merge:
-        if args.calibration or args.lesson or args.first or args.offset or args.stdout or args.without_batteries:
+        if args.calibration or args.lesson or args.first or args.offset or args.stdout or args.without_batteries or args.refusal_fixtures:
             parser.error("--merge is only for writing prior batch documents")
         documents = [json.loads(Path(path).read_text(encoding="utf-8")) for path in args.merge]
         rows = [row for document in documents for row in document["rows"]]
