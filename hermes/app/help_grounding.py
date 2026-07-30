@@ -37,6 +37,7 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "reorganization": {"theme": "The learner", "lede": "Give the learner a fraction task, then test the strategy it builds after getting stuck.", "path": "/learner/reorg_demo.html", "theory": "/more-zeeman/bridge.html"},
     "unit-echo": {"theme": "Objects", "lede": "Run base regrouping beside fraction iteration at the same arity.", "path": "/more-zeeman/unit-echo/index.html", "theory": "/more-zeeman/coordination.html"},
     "fraction-bars": {"theme": "Objects", "lede": "Draw a fraction operation from its action trace and change the operands.", "path": "/more-zeeman/fraction-bars/calculator.html", "theory": "/more-zeeman/boundary.html"},
+    "fraction-compare": {"theme": "Objects", "lede": "Compare a productive fraction action trace with one altered step and locate where their results diverge.", "path": "/more-zeeman/fraction-bars/compare.html", "theory": "/more-zeeman/boundary.html"},
 }
 
 PAGE_READMES: dict[str, tuple[str, ...]] = {
@@ -67,6 +68,7 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
     "reorganization": ("formal/learner/README.md",),
     "unit-echo": ("knowledge/strategies/render/README.md",),
     "fraction-bars": ("knowledge/strategies/render/README.md",),
+    "fraction-compare": ("knowledge/strategies/render/README.md",),
 }
 
 CAPABILITY_RE = re.compile(

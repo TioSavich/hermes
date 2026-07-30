@@ -104,16 +104,16 @@
 
     <div class="interactive-box">
       <p>Where the metaphor breaks</p>
-      <div class="tally-zone" id="tally-zone">
+      <div class="tally-zone" data-ui="tally-zone">
         <div class="tally-group">
-          <div class="tally-marks" id="tallies-main">| | |</div>
+          <div class="tally-marks" data-ui="tallies-main">| | |</div>
           <div class="tally-label">three ones</div>
         </div>
       </div>
-      <div class="question-mark" id="question-mark">?</div>
-      <div class="status-text" id="status">"Arithmetic is object collection" — works for adding apples, breaks at 1/3.</div>
-      <button class="try-it" id="try-btn" onclick="tryFraction()">Probe the break</button>
-      <div class="hint-zone" id="hint-zone">
+      <div class="question-mark" data-ui="question-mark">?</div>
+      <div class="status-text" data-ui="status">"Arithmetic is object collection" — works for adding apples, breaks at 1/3.</div>
+      <button class="try-it" data-ui="try-btn" onclick="tryFraction()">Probe the break</button>
+      <div class="hint-zone" data-ui="hint-zone">
         <p style="font-size: 0.9rem; color: var(--muted);">The repair: switch to the area-model metaphor. A rectangle, partitioned and re-partitioned.</p>
         <div class="tally-zone">
           <div class="tally-group">
@@ -199,16 +199,16 @@
 
     <div class="interactive-box">
       <p>Two registers: action level (works) and ORR-cycle level (open)</p>
-      <div class="tally-zone" id="tally-zone">
+      <div class="tally-zone" data-ui="tally-zone">
         <div class="tally-group">
-          <div class="tally-marks" id="tallies-main">| | |</div>
+          <div class="tally-marks" data-ui="tallies-main">| | |</div>
           <div class="tally-label">three ones — two levels coordinated</div>
         </div>
       </div>
-      <div class="question-mark" id="question-mark">?</div>
-      <div class="status-text" id="status">Action automaton: area_model_part_of_part — registered and productive</div>
-      <button class="try-it" id="try-btn" onclick="tryFraction()">Inspect the action / ORR boundary</button>
-      <div class="hint-zone" id="hint-zone">
+      <div class="question-mark" data-ui="question-mark">?</div>
+      <div class="status-text" data-ui="status">Action automaton: area_model_part_of_part — registered and productive</div>
+      <button class="try-it" data-ui="try-btn" onclick="tryFraction()">Inspect the action / ORR boundary</button>
+      <div class="hint-zone" data-ui="hint-zone">
       <p style="font-size: 0.9rem; color: var(--muted);">Three levels of units: unit fraction, composite, referent whole (Hackenberg, “Students' reasoning with reversible multiplicative relationships”)</p>
         <div class="tally-zone">
           <div class="tally-group">
@@ -263,16 +263,16 @@
 
     <div class="interactive-box">
       <p>What flat action automata can and cannot synthesise</p>
-      <div class="tally-zone" id="tally-zone">
+      <div class="tally-zone" data-ui="tally-zone">
         <div class="tally-group">
-          <div class="tally-marks" id="tallies-main">| | |</div>
+          <div class="tally-marks" data-ui="tallies-main">| | |</div>
           <div class="tally-label">action level: registered</div>
         </div>
       </div>
-      <div class="question-mark" id="question-mark">?</div>
-      <div class="status-text" id="status">Synthesis path: metamorphic accommodation is not implemented</div>
-      <button class="try-it" id="try-btn" onclick="tryFraction()">Inspect the synthesis gap</button>
-      <div class="hint-zone" id="hint-zone">
+      <div class="question-mark" data-ui="question-mark">?</div>
+      <div class="status-text" data-ui="status">Synthesis path: metamorphic accommodation is not implemented</div>
+      <button class="try-it" data-ui="try-btn" onclick="tryFraction()">Inspect the synthesis gap</button>
+      <div class="hint-zone" data-ui="hint-zone">
         <p style="font-size: 0.9rem; color: var(--muted);">The runnable version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</p>
         <div class="tally-zone">
           <div class="tally-group">
@@ -367,12 +367,18 @@
 <script>
 let fractionState = 0;
 
+function activeControl(name) {
+  const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+  const register = document.querySelector(`[data-discourse="${level}"]`);
+  return register && register.querySelector(`[data-ui="${name}"]`);
+}
+
 function tryFraction() {
-  const tallies = document.getElementById('tallies-main');
-  const question = document.getElementById('question-mark');
-  const status = document.getElementById('status');
-  const hint = document.getElementById('hint-zone');
-  const btn = document.getElementById('try-btn');
+  const tallies = activeControl('tallies-main');
+  const question = activeControl('question-mark');
+  const status = activeControl('status');
+  const hint = activeControl('hint-zone');
+  const btn = activeControl('try-btn');
 
   if (fractionState === 0) {
     // Phase 1: tallies try to subdivide, fail
@@ -424,11 +430,11 @@ function tryFraction() {
 // Reset on discourse change
 window.addEventListener('discourse-change', () => {
   fractionState = 0;
-  const tallies = document.getElementById('tallies-main');
-  const question = document.getElementById('question-mark');
-  const status = document.getElementById('status');
-  const hint = document.getElementById('hint-zone');
-  const btn = document.getElementById('try-btn');
+  const tallies = activeControl('tallies-main');
+  const question = activeControl('question-mark');
+  const status = activeControl('status');
+  const hint = activeControl('hint-zone');
+  const btn = activeControl('try-btn');
 
   if (tallies) {
     tallies.classList.remove('confused', 'grouped');

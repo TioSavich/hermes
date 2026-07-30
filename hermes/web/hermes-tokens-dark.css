@@ -55,3 +55,10 @@
   --ghost-ring:     rgba(58, 52, 40, 0.3);
   --crisis-glow:    rgba(232, 168, 76, 0.15);
 }
+
+.story-recap {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}

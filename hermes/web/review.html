@@ -198,7 +198,7 @@
     }
   </style>
 </head>
-<body data-hshell-doc="1">
+<body>
   <main class="wrap">
     <h1>Proposal review</h1>
     <p class="lede">Review recognition sets by instructional unit and literature
@@ -562,6 +562,9 @@
         }
         renderDecisionControls(item);
         updateNavigation();
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise([content]).catch(function () {});
+        }
       }
 
       function updateNavigation() {

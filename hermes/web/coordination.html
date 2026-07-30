@@ -15,7 +15,6 @@
       --border-highlight: #3b3773;
       --text: #e2e8f0;
       --muted: #7d7c93;
-      --accent: #f43f5e;
       --amber: #f59e0b;
       --emerald: #10b981;
       --blue: #3b82f6;
@@ -434,12 +433,12 @@
       </div>
     </div>
 
-    <!-- Dynamic Prolog SVG card -->
+    <!-- The replay is calculated locally; the recorded SVG below is separate. -->
     <div class="prolog-svg-card">
-      <h2>PROLOG-GENERATED REPRESENTATION</h2>
-      <div class="prolog-svg-display" id="prologSvgDisplay">
+      <h2>CLIENT-SIMULATED REPRESENTATION</h2>
+      <div class="prolog-svg-display">
         <div style="color: var(--muted); font-size: 0.8rem; text-align: center;">
-          Prolog authoritative representation will load here.
+          The synchronized trace above is produced in this page by <code>runLocalSimulation</code>; it does not call the worker.
         </div>
       </div>
     </div>
@@ -457,8 +456,8 @@
     <div class="explanation-card">
       <h3>The Spatial Synapse: Coordinating &amp; Fractalizing</h3>
       <p>
-        This unified canvas demonstrates the exact **structural identity** between base arithmetic and fractions.
-        When you run `7 + 8` alongside `7/10 + 8/10`, the **make-base** move fires simultaneously across both dimensions.
+        This unified canvas compares a shared structural pattern in base arithmetic and fractions.
+        When you run <code>7 + 8</code> alongside <code>7/10 + 8/10</code>, the <strong>make-base</strong> move is traced across both dimensions.
         On the left (Ace of Base), units are grouped into a solid Rod of size $B$. On the right (Fraction Bars), fraction partitions of size $1/D$ flow to complete a Whole unit bar ($1.0$).
         Varying the base to 12 demonstrates how the exact same CGI strategy shape governs the regrouping move, with only the numeral base target changing.
       </p>
@@ -1386,39 +1385,7 @@
 
       const strategyName = (a + b < activeBase) ? 'count_on_from_larger' : (activeBase === 10 ? 'make_ten_split_leftover' : 'make_base_transfer');
 
-      if (isConnected) {
-        // Dispatch to CGI and fetch steps trace
-        fetch('/api/cgi_dispatch', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            operation: 'fraction',
-            kind: strategyName,
-            a: a,
-            b: b,
-            d: d
-          })
-        })
-        .then(res => {
-          if (!res.ok) throw new Error("HTTP error " + res.status);
-          return res.json();
-        })
-        .then(data => {
-          if (data.success) {
-            replay.setSteps(data.trace, data.outcome.functor);
-            replay.play();
-            updatePrologSvg(a, b, d);
-          } else {
-            runLocalSimulation(a, b, d);
-          }
-        })
-        .catch(err => {
-          console.warn("API error, falling back to local simulation.", err);
-          runLocalSimulation(a, b, d);
-        });
-      } else {
-        runLocalSimulation(a, b, d);
-      }
+      runLocalSimulation(a, b, d);
     });
 
     function runLocalSimulation(a, b, d) {
@@ -1447,23 +1414,6 @@
 
       replay.setSteps(trace, strategyName);
       replay.play();
-    }
-
-    // Dynamic Prolog SVG renderer loading
-    const svgDisplay = document.getElementById('prologSvgDisplay');
-
-    function updatePrologSvg(a, b, d) {
-      if (!isConnected) return;
-      const sum = a + b;
-      const fracSumStr = `${sum}/${d}`;
-      const url = `/api/visualize/coordination?base=${activeBase}&val_up=${sum}&val_down=${fracSumStr}`;
-      
-      fetch(url)
-        .then(res => res.text())
-        .then(svgText => {
-          svgDisplay.innerHTML = svgText;
-        })
-        .catch(err => console.error("Error fetching Prolog SVG:", err));
     }
 
     // Playback events

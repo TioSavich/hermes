@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Crect%20width='16'%20height='16'%20fill='%23f4ead6'/%3E%3Crect%20x='1'%20y='5'%20width='6.5'%20height='6'%20fill='%237fb2e6'%20stroke='%230d0c08'%20stroke-width='0.6'/%3E%3Crect%20x='8.5'%20y='5'%20width='6.5'%20height='6'%20fill='%23d99a8a'%20stroke='%230d0c08'%20stroke-width='0.6'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="../hermes-tokens.css">
   <link rel="stylesheet" href="../render/host.css">
-  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/"></script>
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="fraction-compare"></script>
   <style>
     /* Two stages side by side; everything else is host.css. The productive and
        deformation strips share one step index, so the divergence at the last
@@ -85,8 +85,8 @@
           <option value="recursive_partition">part-of-part vs lost referent</option>
         </select>
       </label>
-      <label>a <input data-arg="a" type="number" value="4" min="1"></label>
-      <label>b <input data-arg="b" type="number" value="3" min="1"></label>
+      <label>a <input id="a" data-arg="a" type="number" value="4" min="1"></label>
+      <label>b <input id="b" data-arg="b" type="number" value="3" min="1"></label>
       <button id="calculate">Calculate</button>
       <span class="calc-note">POSTs to the worker; draws both witness strips.</span>
     </section>

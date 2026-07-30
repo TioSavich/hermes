@@ -105,10 +105,9 @@
         var items = Array.isArray(data.capabilities) ? data.capabilities : [];
         var counts = data.counts || {};
         var health = data.health || {};
-        var modules = health.loaded || health.loaded_modules || health.modules || [];
         healthNode.textContent = "Worker status: " + String(health.status || health.mode || "unknown")
-          + "; " + (Array.isArray(modules) ? modules.length : Number(health.loaded_module_count || 0))
-          + " loaded modules.";
+          + "; " + (Array.isArray(health.ops) ? health.ops.length : 0)
+          + " registered operations.";
         var orphans = counts.orphan_module || 0;
         var lazy = counts.lazy_reachable || 0;
         var ops = items.length - orphans - lazy;

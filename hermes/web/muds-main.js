@@ -81,12 +81,6 @@
         PROSE_AREA.innerHTML = ORIGINAL_PROSE;
       } else if (REGISTER_PROSE[reg]) {
         PROSE_AREA.innerHTML = REGISTER_PROSE[reg];
-      } else {
-        PROSE_AREA.innerHTML = `
-          <div class="stub">
-            <b>${reg} register — not yet written</b>
-            This register is not yet written.
-          </div>`;
       }
     });
   });

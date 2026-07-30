@@ -23,6 +23,7 @@
  */
 (function () {
   "use strict";
+  if (window.self !== window.top) return;
   if (window.__hermesAppShell) return;
   window.__hermesAppShell = true;
 
@@ -88,7 +89,8 @@
     coordination:   { theme: "learner",      lede: "Test how units are composed, repeated, and treated as new units." }, // R? objects
     reorganization: { theme: "learner",      lede: "Give the learner a fraction task, then test the strategy it builds after getting stuck." },
     "unit-echo":    { theme: "objects",      lede: "Run base regrouping beside fraction iteration at the same arity." },
-    "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation from its action trace and change the operands." }
+    "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation from its action trace and change the operands." },
+    "fraction-compare": { theme: "objects",  lede: "Compare a productive fraction strategy with its documented deformation." }
   };
 
   // mz(x) -> hermes/web file ; app(x) -> console/server-root file
@@ -107,6 +109,9 @@
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
       ["review",      "Proposal review",  mz("review.html")],
       ["gallery",     "Gallery",          mz("gallery.html")],
+      ["unit-echo",   "Unit echo",        mz("unit-echo/index.html")],
+      ["fraction-bars", "Fraction bars",  mz("fraction-bars/calculator.html")],
+      ["fraction-compare", "Fraction compare", mz("fraction-bars/compare.html")],
     ]},
     { title: "Theory", kind: "theory", base: "dark", items: [
       ["landing",    "The journey — overview", mz("landing.html")],

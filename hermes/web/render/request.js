@@ -2,6 +2,9 @@
   "use strict";
 
   const DEFAULT_TIMEOUT_MS = 8000;
+  // Cold worker startup can load the full symbolic layer. This is an overall
+  // readiness policy, not the default timeout for ordinary page requests.
+  const WORKER_READINESS_TIMEOUT_MS = 90000;
   const WORKER_TIMEOUT_MS = 22000;
   const HEAVY_PROLOG_TIMEOUT_MS = 180000;
   const LLM_TIMEOUT_MS = 300000;
@@ -72,8 +75,8 @@
 
   function setState(element, state, label) {
     if (!element) return;
-    const glyph = { pending: "◌", ready: "✓", offline: "×", broken: "!" }[state] || "";
-    element.classList.remove("pending", "ready", "offline", "broken");
+    const glyph = { pending: "◌", starting: "◌", ready: "✓", offline: "×", broken: "!" }[state] || "";
+    element.classList.remove("pending", "starting", "ready", "offline", "broken");
     element.classList.add(state);
     element.dataset.requestState = state;
     element.textContent = (glyph ? glyph + " " : "") + label;
@@ -102,6 +105,7 @@
 
   global.HermesFetch = {
     DEFAULT_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
+    WORKER_READINESS_TIMEOUT_MS: WORKER_READINESS_TIMEOUT_MS,
     WORKER_TIMEOUT_MS: WORKER_TIMEOUT_MS,
     HEAVY_PROLOG_TIMEOUT_MS: HEAVY_PROLOG_TIMEOUT_MS,
     LLM_TIMEOUT_MS: LLM_TIMEOUT_MS,

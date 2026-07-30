@@ -29,8 +29,8 @@ capability('benny_demo', 'misconceptions_benny_demo', 'misconceptions', [], rout
 capability('brandom_backstop', 'user', 'incompatibility', [], routed_paged).
 capability('brandomian_check', 'sequent_brandom_bridge', 'incompatibility', ['commitments'], routed_paged).
 capability('calculus_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
-capability('canonical_check', 'hermes_worker', 'crosswalk', ['terms'], routed_paged).
-capability('canonical_contract', 'user', 'crosswalk', [], routed_paged).
+capability('canonical_check', 'hermes_worker', 'crosswalk', ['terms'], routed_only).
+capability('canonical_contract', 'user', 'crosswalk', [], routed_only).
 capability('capability_atlas', 'hermes_worker', 'infrastructure', [], routed_paged).
 capability('carving_operation_summary', 'carving_query', 'carving', ['operation'], routed_paged).
 capability('carving_strategy_proof', 'user', 'carving', ['operation', 'x', 'y', 'z'], routed_paged).
@@ -43,11 +43,11 @@ capability('counting_claim_witness', 'cw_counting_claim', 'crosswalk', ['canonic
 capability('critique_bad_infinite', 'critique', 'dialectic', ['proof'], routed_paged).
 capability('decimal_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('defeasible_classify', 'defeasible_inference', 'incompatibility', ['defeater_set', 'inference_id'], routed_paged).
-capability('deontic_consequences', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_paged).
+capability('deontic_consequences', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_only).
 capability('deontic_crisis', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments', 'entitlements'], routed_paged).
 capability('deontic_requires_entitlement', 'deontic_scorekeeper', 'sequent', ['proposition'], routed_paged).
 capability('deontic_scorecard', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments', 'entitlements'], routed_paged).
-capability('deontic_up_level', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_paged).
+capability('deontic_up_level', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_only).
 capability('diagnose_error', 'hermes_worker', 'misconceptions', ['domain', 'got', 'input'], routed_paged).
 capability('discourse_features', 'discourse_features', 'pml', ['utterances'], routed_paged).
 capability('discourse_pragmatics', 'discourse_pragmatics', 'pml', ['utterances'], routed_paged).
@@ -122,7 +122,7 @@ capability('intersubjective_material_witness', 'intersubjective_praxis', 'pml', 
 capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
 capability('learner_reset', 'more_machine_learner', 'learner', [], routed_paged).
 capability('lesson_deformation_chart', 'lesson_deformation_chart', 'workflow', ['code'], routed_paged).
-capability('lesson_misconception_incompatibility_witness', 'user', 'misconceptions', ['lesson_code', 'name', 'operation'], routed_paged).
+capability('lesson_misconception_incompatibility_witness', 'user', 'misconceptions', ['lesson_code', 'name', 'operation'], routed_only).
 capability('list_misconceptions', 'hermes_encyclopedia', 'misconceptions', ['domain'], routed_paged).
 capability('list_standards', 'hermes_encyclopedia', 'infrastructure', ['framework'], routed_paged).
 capability('list_strategies', 'hermes_encyclopedia', 'infrastructure', [], routed_paged).
@@ -132,9 +132,9 @@ capability('material_inference_witness', 'cw_driver', 'crosswalk', ['conclusion'
 capability('media_alignment', 'media_alignment', 'pml', ['segments', 'source'], routed_paged).
 capability('metaphor_break_witness', 'cw_driver', 'crosswalk', ['detail', 'inference', 'metaphor', 'source'], routed_paged).
 capability('misconception_hook_witness', 'cw_driver', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
-capability('misconception_incompatibility_witness', 'misconception_registry', 'misconceptions', ['conflict', 'move'], routed_paged).
-capability('misconception_jumps_witness', 'visualization', 'misconceptions', ['a', 'b', 'deformation', 'operation'], routed_paged).
-capability('misconception_pml_map', 'user', 'misconceptions', ['misconception'], routed_paged).
+capability('misconception_incompatibility_witness', 'misconception_registry', 'misconceptions', ['conflict', 'move'], routed_only).
+capability('misconception_jumps_witness', 'visualization', 'misconceptions', ['a', 'b', 'deformation', 'operation'], routed_only).
+capability('misconception_pml_map', 'user', 'misconceptions', ['misconception'], routed_only).
 capability('modal_context_witness', 'cw_driver', 'crosswalk', ['context', 'source', 'term'], routed_paged).
 capability('monitoring_chart_export', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('mua_coherence_witness', 'cw_driver', 'crosswalk', ['input', 'source', 'subject'], routed_paged).
@@ -159,14 +159,14 @@ capability('pml_score', 'hermes_encyclopedia', 'pml', ['clauses'], routed_paged)
 capability('practice_vocabulary_witness', 'cw_driver', 'crosswalk', ['key', 'source'], routed_paged).
 capability('primitive_for_practice', 'user', 'render', ['practice'], routed_paged).
 capability('productive_deformation_witness', 'cw_driver', 'crosswalk', ['deformation', 'family', 'operation', 'productive', 'source'], routed_paged).
-capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_paged).
+capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_only).
 capability('ranked_figures', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('ratio_proportion_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
-capability('render_coverage', 'misconception_render_coverage', 'monitoring', [], routed_paged).
+capability('render_coverage', 'misconception_render_coverage', 'monitoring', [], routed_only).
 capability('reorganize', 'fraction_band_ladder', 'learner', [], routed_paged).
-capability('representation_candidates', 'hermes_worker', 'crosswalk', ['misconception', 'strategy'], routed_paged).
-capability('representation_check', 'hermes_worker', 'crosswalk', ['mode', 'representation'], routed_paged).
-capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['representation'], routed_paged).
+capability('representation_candidates', 'hermes_worker', 'crosswalk', ['misconception', 'strategy'], routed_only).
+capability('representation_check', 'hermes_worker', 'crosswalk', ['mode', 'representation'], routed_only).
+capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['representation'], routed_only).
 capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], routed_paged).
 capability('review_decide', 'review_queue', 'infrastructure', ['item_id', 'note', 'shown', 'source', 'verdict'], routed_paged).
 capability('review_queue', 'review_queue', 'infrastructure', ['offset', 'source'], routed_paged).
@@ -208,7 +208,7 @@ capability('unit_coordination_witness', 'cw_driver', 'crosswalk', ['detail', 'ke
 capability('unit_echo_render', 'unit_echo_scene', 'render', ['base', 'iterations'], routed_paged).
 capability('validate_reader_axioms', 'hermes_encyclopedia', 'pml', ['clauses', 'lesson_code'], routed_paged).
 capability('viability_witness', 'cw_driver', 'crosswalk', ['cost', 'resources', 'source'], routed_paged).
-capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_paged).
+capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_only).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('curriculum/im/generated/compiled_receipt_routes.pl', 'compiled_receipt_routes', 'workflow', [], orphan_module).
@@ -770,7 +770,6 @@ capability_route('whole_number_addsub_claim_witness', 'POST', '/api/witness/cros
 capability_route('whole_number_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 
 capability_page('accommodation_witness', '/more-zeeman/witnesses.html').
-capability_page('ace_of_bases_render', '/hermes/app/web/console.html').
 capability_page('ace_of_bases_render', '/hermes/app/web/discussions.html').
 capability_page('ace_of_bases_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('ace_of_bases_render', '/more-zeeman/monitoring_chart.html').
@@ -779,7 +778,6 @@ capability_page('ace_of_bases_render', '/more-zeeman/visualizations.html').
 capability_page('ace_of_bases_render', '/more-zeeman/witnesses.html').
 capability_page('action_cluster_witness', '/more-zeeman/witnesses.html').
 capability_page('algebra_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('area_compare', '/hermes/app/web/console.html').
 capability_page('area_compare', '/hermes/app/web/discussions.html').
 capability_page('area_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('area_compare', '/more-zeeman/monitoring_chart.html').
@@ -797,7 +795,6 @@ capability_page('arithmetic_property_witness', '/more-zeeman/witnesses.html').
 capability_page('axiom_hierarchy_witness', '/hermes/app/web/breaks.html').
 capability_page('axiom_pack_witness', '/more-zeeman/witnesses.html').
 capability_page('axiom_toggle', '/hermes/app/web/breaks.html').
-capability_page('balance_compare', '/hermes/app/web/console.html').
 capability_page('balance_compare', '/hermes/app/web/discussions.html').
 capability_page('balance_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('balance_compare', '/more-zeeman/monitoring_chart.html').
@@ -812,7 +809,6 @@ capability_page('balance_render', '/more-zeeman/unit-echo/index.html').
 capability_page('balance_render', '/more-zeeman/visualizations.html').
 capability_page('balance_render', '/more-zeeman/witnesses.html').
 capability_page('balance_solve_witness', '/more-zeeman/visualizations.html').
-capability_page('base_ten_compare', '/hermes/app/web/console.html').
 capability_page('base_ten_compare', '/hermes/app/web/discussions.html').
 capability_page('base_ten_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('base_ten_compare', '/more-zeeman/monitoring_chart.html').
@@ -831,9 +827,8 @@ capability_page('benny_demo', '/hermes/app/web/console.html').
 capability_page('brandom_backstop', '/hermes/app/web/breaks.html').
 capability_page('brandomian_check', '/hermes/app/web/breaks.html').
 capability_page('calculus_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('canonical_check', '/hermes/app/web/console.html').
-capability_page('canonical_contract', '/hermes/app/web/console.html').
 capability_page('capability_atlas', '/hermes/app/web/breaks.html').
+capability_page('capability_atlas', '/hermes/app/web/console.html').
 capability_page('capability_atlas', '/more-zeeman/atlas.html').
 capability_page('capability_atlas', '/more-zeeman/witnesses.html').
 capability_page('carving_operation_summary', '/more-zeeman/strategies.html').
@@ -845,12 +840,9 @@ capability_page('counting_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('critique_bad_infinite', '/hermes/app/web/breaks.html').
 capability_page('decimal_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('defeasible_classify', '/hermes/app/web/breaks.html').
-capability_page('deontic_consequences', '/hermes/app/web/console.html').
 capability_page('deontic_crisis', '/hermes/app/web/breaks.html').
 capability_page('deontic_requires_entitlement', '/hermes/app/web/breaks.html').
 capability_page('deontic_scorecard', '/hermes/app/web/breaks.html').
-capability_page('deontic_scorecard', '/hermes/app/web/console.html').
-capability_page('deontic_up_level', '/hermes/app/web/console.html').
 capability_page('diagnose_error', '/hermes/app/web/console.html').
 capability_page('discourse_features', '/hermes/app/web/discussions.html').
 capability_page('discourse_pragmatics', '/hermes/app/web/discussions.html').
@@ -872,7 +864,6 @@ capability_page('fraction_compare', '/more-zeeman/unit-echo/index.html').
 capability_page('fraction_compare', '/more-zeeman/visualizations.html').
 capability_page('fraction_compare', '/more-zeeman/witnesses.html').
 capability_page('fraction_extra_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('fraction_render', '/hermes/app/web/console.html').
 capability_page('fraction_render', '/hermes/app/web/discussions.html').
 capability_page('fraction_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('fraction_render', '/more-zeeman/monitoring_chart.html').
@@ -880,7 +871,6 @@ capability_page('fraction_render', '/more-zeeman/unit-echo/index.html').
 capability_page('fraction_render', '/more-zeeman/visualizations.html').
 capability_page('fraction_render', '/more-zeeman/witnesses.html').
 capability_page('fsm_engine_witness', '/more-zeeman/witnesses.html').
-capability_page('geometry', '/hermes/app/web/console.html').
 capability_page('geometry', '/hermes/app/web/discussions.html').
 capability_page('geometry', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('geometry', '/more-zeeman/monitoring_chart.html').
@@ -926,15 +916,13 @@ capability_page('godel_primes_witness', '/more-zeeman/witnesses.html').
 capability_page('ground', '/hermes/app/web/console.html').
 capability_page('grounded_arith_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_for', '/hermes/app/web/breaks.html').
-capability_page('grounding_for', '/hermes/app/web/console.html').
 capability_page('grounding_inference_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_metaphor_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_metaphors', '/hermes/app/web/breaks.html').
-capability_page('grounding_metaphors', '/hermes/app/web/console.html').
 capability_page('health', '/hermes/app/web/breaks.html').
+capability_page('health', '/hermes/app/web/console.html').
 capability_page('health', '/more-zeeman/atlas.html').
 capability_page('health', '/more-zeeman/witnesses.html').
-capability_page('hybridization_render', '/hermes/app/web/console.html').
 capability_page('hybridization_render', '/hermes/app/web/discussions.html').
 capability_page('hybridization_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('hybridization_render', '/more-zeeman/monitoring_chart.html').
@@ -952,7 +940,6 @@ capability_page('intersubjective_material_witness', '/more-zeeman/witnesses.html
 capability_page('knowledge', '/more-zeeman/bridge.html').
 capability_page('learner_reset', '/more-zeeman/bridge.html').
 capability_page('lesson_deformation_chart', '/more-zeeman/monitoring_chart.html').
-capability_page('lesson_misconception_incompatibility_witness', '/hermes/app/web/console.html').
 capability_page('list_misconceptions', '/hermes/app/web/console.html').
 capability_page('list_standards', '/hermes/app/web/console.html').
 capability_page('list_strategies', '/hermes/app/web/console.html').
@@ -964,9 +951,6 @@ capability_page('material_inference_witness', '/more-zeeman/witnesses.html').
 capability_page('media_alignment', '/hermes/app/web/discussions.html').
 capability_page('metaphor_break_witness', '/more-zeeman/witnesses.html').
 capability_page('misconception_hook_witness', '/more-zeeman/witnesses.html').
-capability_page('misconception_incompatibility_witness', '/hermes/app/web/console.html').
-capability_page('misconception_jumps_witness', '/hermes/app/web/console.html').
-capability_page('misconception_pml_map', '/hermes/app/web/console.html').
 capability_page('modal_context_witness', '/more-zeeman/witnesses.html').
 capability_page('monitoring_chart_export', '/hermes/app/web/console.html').
 capability_page('monitoring_chart_export', '/more-zeeman/monitoring_chart.html').
@@ -979,14 +963,12 @@ capability_page('multiply_array_witness', '/more-zeeman/witnesses.html').
 capability_page('normative_crisis_witness', '/more-zeeman/witnesses.html').
 capability_page('notation_monitoring_chart', '/more-zeeman/visualizations.html').
 capability_page('notation_render', '/more-zeeman/visualizations.html').
-capability_page('number_line_compare', '/hermes/app/web/console.html').
 capability_page('number_line_compare', '/hermes/app/web/discussions.html').
 capability_page('number_line_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('number_line_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('number_line_compare', '/more-zeeman/unit-echo/index.html').
 capability_page('number_line_compare', '/more-zeeman/visualizations.html').
 capability_page('number_line_compare', '/more-zeeman/witnesses.html').
-capability_page('number_line_render', '/hermes/app/web/console.html').
 capability_page('number_line_render', '/hermes/app/web/discussions.html').
 capability_page('number_line_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('number_line_render', '/more-zeeman/monitoring_chart.html').
@@ -998,7 +980,6 @@ capability_page('orr_entry_witness', '/more-zeeman/witnesses.html').
 capability_page('pair_candidate_witness', '/hermes/app/web/discussions.html').
 capability_page('pair_graph', '/hermes/app/web/discussions.html').
 capability_page('pair_score', '/hermes/app/web/discussions.html').
-capability_page('place_value_chart_render', '/hermes/app/web/console.html').
 capability_page('place_value_chart_render', '/hermes/app/web/discussions.html').
 capability_page('place_value_chart_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('place_value_chart_render', '/more-zeeman/monitoring_chart.html').
@@ -1010,14 +991,9 @@ capability_page('pml_score', '/hermes/app/web/console.html').
 capability_page('practice_vocabulary_witness', '/more-zeeman/witnesses.html').
 capability_page('primitive_for_practice', '/more-zeeman/witnesses.html').
 capability_page('productive_deformation_witness', '/more-zeeman/witnesses.html').
-capability_page('query_misconception', '/hermes/app/web/console.html').
 capability_page('ranked_figures', '/more-zeeman/scoreboard.html').
 capability_page('ratio_proportion_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('render_coverage', '/hermes/app/web/console.html').
 capability_page('reorganize', '/more-zeeman/bridge.html').
-capability_page('representation_candidates', '/hermes/app/web/console.html').
-capability_page('representation_check', '/hermes/app/web/console.html').
-capability_page('representation_spec_check', '/hermes/app/web/console.html').
 capability_page('representation_spine_witness', '/more-zeeman/witnesses.html').
 capability_page('review_decide', '/more-zeeman/review.html').
 capability_page('review_queue', '/more-zeeman/review.html').
@@ -1026,7 +1002,6 @@ capability_page('robinson_axiom_witness', '/hermes/app/web/breaks.html').
 capability_page('semantic_material_witness', '/more-zeeman/witnesses.html').
 capability_page('sequent_proof_witness', '/hermes/app/web/breaks.html').
 capability_page('set_base', '/more-zeeman/coordination.html').
-capability_page('set_grouping_compare', '/hermes/app/web/console.html').
 capability_page('set_grouping_compare', '/hermes/app/web/discussions.html').
 capability_page('set_grouping_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('set_grouping_compare', '/more-zeeman/monitoring_chart.html').
@@ -1069,7 +1044,6 @@ capability_page('strategy_trace', '/more-zeeman/unit-echo/index.html').
 capability_page('strategy_trace', '/more-zeeman/visualizations.html').
 capability_page('strategy_trace', '/more-zeeman/witnesses.html').
 capability_page('target_inferential_strength_witness', '/more-zeeman/witnesses.html').
-capability_page('teacher_layer', '/hermes/app/web/console.html').
 capability_page('teacher_layer', '/hermes/app/web/discussions.html').
 capability_page('teacher_layer', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('teacher_layer', '/more-zeeman/monitoring_chart.html').
@@ -1079,7 +1053,6 @@ capability_page('teacher_layer', '/more-zeeman/witnesses.html').
 capability_page('trace_adjudication', '/hermes/app/web/discussions.html').
 capability_page('unit_coordination_svg', '/more-zeeman/coordination.html').
 capability_page('unit_coordination_witness', '/more-zeeman/witnesses.html').
-capability_page('unit_echo_render', '/hermes/app/web/console.html').
 capability_page('unit_echo_render', '/hermes/app/web/discussions.html').
 capability_page('unit_echo_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('unit_echo_render', '/more-zeeman/monitoring_chart.html').
@@ -1088,7 +1061,6 @@ capability_page('unit_echo_render', '/more-zeeman/visualizations.html').
 capability_page('unit_echo_render', '/more-zeeman/witnesses.html').
 capability_page('validate_reader_axioms', '/more-zeeman/witnesses.html').
 capability_page('viability_witness', '/more-zeeman/witnesses.html').
-capability_page('visualize_coordination', '/more-zeeman/coordination.html').
 capability_page('whole_number_addsub_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('whole_number_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('curriculum/im/generated/vision_lesson_digest.pl', '/more-zeeman/monitoring_chart.html').

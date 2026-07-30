@@ -25,34 +25,13 @@
       padding: 1.5rem 1.5rem 4rem;
     }
 
-    .top-bar {
+    .playground-statusbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
       flex-wrap: wrap;
       gap: 0.5rem;
-    }
-
-    .top-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .back-link {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-decoration: none;
-    }
-    .back-link:hover { color: var(--text); }
-
-    .page-title {
-      font-family: 'IBM Plex Serif', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--snap);
     }
 
     .status-area {
@@ -149,9 +128,10 @@
   </style>
 </head>
 <body data-hshell-doc="1">
-  <div class="top-bar">
+  <div class="playground-statusbar">
     <div class="status-area">
       <span id="zoomReadout">zoom: 1.00x</span>
+      <span id="renderStatus" role="status" aria-live="polite"></span>
     </div>
   </div>
 
@@ -1257,6 +1237,7 @@ function updateHUD() {
 // RENDER LOOP
 // =======================================================================
 let lastTime = performance.now();
+let renderErrorCount = 0;
 
 function frame(now) {
   try {
@@ -1335,6 +1316,11 @@ function frame(now) {
 
   } catch (e) {
     console.error('Frame error:', e);
+    renderErrorCount += 1;
+    if (renderErrorCount >= 3) {
+      const status = document.getElementById('renderStatus');
+      if (status) status.textContent = 'The animation encountered repeated errors. Reload the page to restart it.';
+    }
   }
   requestAnimationFrame(frame);
 }

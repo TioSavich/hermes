@@ -236,6 +236,28 @@
       });
       return;
     }
+    var kind = params.get('kind') || params.get('case');
+    var a = params.get('a');
+    var b = params.get('b');
+    if (kind || a || b) {
+      var kindInput = document.querySelector('[data-arg="kind"]');
+      if (kind && kindInput) {
+        var known = Array.prototype.some.call(kindInput.options, function (option) {
+          return option.value === kind;
+        });
+        if (!known) {
+          var option = document.createElement('option');
+          option.value = kind;
+          option.textContent = kind.replace(/_/g, ' ');
+          kindInput.appendChild(option);
+        }
+        kindInput.value = kind;
+      }
+      if (a && el('a')) el('a').value = a;
+      if (b && el('b')) el('b').value = b;
+      calculate();
+      return;
+    }
     var embedded = el('frames');
     if (embedded) {
       try { ingest(JSON.parse(embedded.textContent)); }

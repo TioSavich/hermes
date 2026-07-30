@@ -693,13 +693,219 @@ def route_map() -> dict[str, set[tuple[str, str]]]:
     return mapping
 
 
+CONTROL_TAG_RE = re.compile(r"<(?:button|input|select|textarea|form|a)\b[^>]*\bid=[\"']([^\"']+)[\"']", re.I)
+INLINE_HANDLER_RE = re.compile(r"\bon[a-z]+=[\"'][^\"']*?\b([A-Za-z_$][\w$]*)\s*\(", re.I)
+FUNCTION_RE = re.compile(r"\bfunction\s+([A-Za-z_$][\w$]*)\s*\([^)]*\)\s*\{")
+CONTROL_LISTENER_RE = re.compile(
+    r"(?:getElementById\(\s*[\"']([^\"']+)[\"']\s*\)|querySelector\(\s*[\"']#([^\"']+)[\"']\s*\))"
+    r"[\s\S]{0,240}?\.addEventListener\(\s*[\"'](?:click|change|input|submit|keydown)[\"']",
+    re.I,
+)
+LIFECYCLE_HANDLER_RE = re.compile(
+    r"(?:document|window)\.addEventListener\(\s*[\"'](?:DOMContentLoaded|load)[\"']\s*,\s*([A-Za-z_$][\w$]*)",
+    re.I,
+)
+CONTROL_HANDLER_RE = re.compile(
+    r"(?:getElementById\(\s*[\"']([^\"']+)[\"']\s*\)|querySelector\(\s*[\"']#([^\"']+)[\"']\s*\)|\$\(\s*[\"']#?([^\"']+)[\"']\s*\))"
+    r"[\s\S]{0,240}?\.addEventListener\(\s*[\"'](?:click|change|input|submit|keydown)[\"']\s*,\s*"
+    r"(?:async\s+)?(?!function\b)([A-Za-z_$][\w$]*)\b(?!\s*=>)",
+    re.I,
+)
+CONTROL_ANONYMOUS_HANDLER_RE = re.compile(
+    r"(?:getElementById\(\s*[\"']([^\"']+)[\"']\s*\)|querySelector\(\s*[\"']#([^\"']+)[\"']\s*\)|\$\(\s*[\"']#?([^\"']+)[\"']\s*\))"
+    r"[\s\S]{0,240}?\.addEventListener\(\s*[\"'](?:click|change|input|submit|keydown)[\"']\s*,\s*"
+    r"(?:async\s+)?(?:(?:\([^)]*\)|[A-Za-z_$][\w$]*)\s*=>|function\s*\([^)]*\))\s*\{",
+    re.I,
+)
+# Controls are also wired by handler-property assignment (el.onclick = fn),
+# which binds exactly like addEventListener for reachability purposes.
+CONTROL_PROPERTY_HANDLER_RE = re.compile(
+    r"(?:getElementById\(\s*[\"']([^\"']+)[\"']\s*\)|querySelector\(\s*[\"']#([^\"']+)[\"']\s*\)|\$\(\s*[\"']#?([^\"']+)[\"']\s*\))"
+    r"[\s\S]{0,240}?\.on(?:click|change|input|submit|keydown)\s*=\s*"
+    r"(?:async\s+)?(?!function\b)([A-Za-z_$][\w$]*)\b(?!\s*=>)",
+    re.I,
+)
+CONTROL_PROPERTY_ANONYMOUS_RE = re.compile(
+    r"(?:getElementById\(\s*[\"']([^\"']+)[\"']\s*\)|querySelector\(\s*[\"']#([^\"']+)[\"']\s*\)|\$\(\s*[\"']#?([^\"']+)[\"']\s*\))"
+    r"[\s\S]{0,240}?\.on(?:click|change|input|submit|keydown)\s*=\s*"
+    r"(?:async\s+)?(?:(?:\([^)]*\)|[A-Za-z_$][\w$]*)\s*=>|function\s*\([^)]*\))\s*\{",
+    re.I,
+)
+# Concise arrow handlers carry their body as one expression, no braces:
+# $("run").onclick = () => runEventRoute("/api/event_score"). The captured
+# expression is a live body for reachability (API literals + called helpers).
+CONTROL_CONCISE_HANDLER_RE = re.compile(
+    r"(?:getElementById\(\s*[\"']([^\"']+)[\"']\s*\)|querySelector\(\s*[\"']#([^\"']+)[\"']\s*\)|\$\(\s*[\"']#?([^\"']+)[\"']\s*\))"
+    r"[\s\S]{0,240}?(?:\.addEventListener\(\s*[\"'](?:click|change|input|submit|keydown)[\"']\s*,\s*|\.on(?:click|change|input|submit|keydown)\s*=\s*)"
+    r"(?:async\s+)?(?:\([^)]*\)|[A-Za-z_$][\w$]*)\s*=>\s*(?!\{)([^\n]+)",
+    re.I,
+)
+LIFECYCLE_ANONYMOUS_HANDLER_RE = re.compile(
+    r"(?:document|window)\.addEventListener\(\s*[\"'](?:DOMContentLoaded|load)[\"']\s*,\s*"
+    r"(?:async\s+)?(?:(?:\([^)]*\)|[A-Za-z_$][\w$]*)\s*=>|function\s*\([^)]*\))\s*\{",
+    re.I,
+)
+ARROW_BODY_RE = re.compile(r"=>\s*\{")
+ANONYMOUS_FUNCTION_BODY_RE = re.compile(r"\bfunction\s*\([^)]*\)\s*\{")
+ANY_FUNCTION_BODY_RE = re.compile(
+    r"\b(?:async\s+)?function(?:\s+[A-Za-z_$][\w$]*)?\s*\([^)]*\)\s*\{"
+)
+
+
+def _braced_body(source: str, open_brace: int) -> str:
+    """Return a JavaScript function body without attempting to parse JavaScript."""
+    depth = 0
+    for index in range(open_brace, len(source)):
+        char = source[index]
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return source[open_brace + 1:index]
+    return ""
+
+
+def _braced_end(source: str, open_brace: int) -> int | None:
+    """Return the closing-brace index for a JavaScript function body."""
+    depth = 0
+    for index in range(open_brace, len(source)):
+        char = source[index]
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return index
+    return None
+
+
+def _called_functions(body: str, functions: dict[str, str]) -> set[str]:
+    return {
+        name for name in functions
+        if re.search(r"\b" + re.escape(name) + r"\s*\(", body)
+    }
+
+
+def _is_iife_tail(tail: str) -> bool:
+    """Recognize both ``(function () {})()`` and ``(function () {}())``."""
+    return bool(re.match(r"\s*(?:\)\s*\(\s*\)|\(\s*\)\s*\))", tail))
+
+
+def reachable_api_literals(source: str) -> set[str]:
+    """Keep API literals reached by a control, lifecycle handler, or form/link.
+
+    A literal inside a dormant helper is not a page capability. This lightweight
+    check covers the shipped HTML idioms without treating every script string as
+    a user-facing route.
+    """
+    controls = set(CONTROL_TAG_RE.findall(source))
+    handlers = set(INLINE_HANDLER_RE.findall(source))
+    handlers.update(LIFECYCLE_HANDLER_RE.findall(source))
+    reachable: set[str] = set()
+    functions: dict[str, str] = {}
+    iifes: set[str] = set()
+    body_spans: list[tuple[int, int]] = []
+    live_anonymous_bodies: list[str] = []
+
+    for match in FUNCTION_RE.finditer(source):
+        open_brace = source.find("{", match.start())
+        body = _braced_body(source, open_brace)
+        name = match.group(1)
+        functions[name] = body
+        close_brace = _braced_end(source, open_brace)
+        if close_brace is not None:
+            body_spans.append((open_brace, close_brace))
+        if close_brace is not None and _is_iife_tail(source[close_brace + 1:]):
+            iifes.add(name)
+
+    # Anonymous callbacks are still functions. Their spans keep a route inside
+    # a dead callback from being mistaken for a top-level page-load route.
+    for pattern in (ARROW_BODY_RE, ANONYMOUS_FUNCTION_BODY_RE):
+        for match in pattern.finditer(source):
+            open_brace = source.find("{", match.start())
+            close_brace = _braced_end(source, open_brace)
+            if close_brace is not None:
+                body_spans.append((open_brace, close_brace))
+
+    # Parenthesized named and anonymous function expressions invoked with
+    # ``()`` are unconditional page-load paths.
+    for match in ANY_FUNCTION_BODY_RE.finditer(source):
+        open_brace = source.find("{", match.start())
+        close_brace = _braced_end(source, open_brace)
+        if close_brace is not None and _is_iife_tail(source[close_brace + 1:]):
+            live_anonymous_bodies.append(_braced_body(source, open_brace))
+
+    # A control handler is live only when its control exists in the page. The
+    # resulting functions seed the graph; arbitrary callers do not.
+    for pattern in (CONTROL_HANDLER_RE, CONTROL_PROPERTY_HANDLER_RE):
+        for first, second, third, handler in pattern.findall(source):
+            if (first or second or third) in controls:
+                handlers.add(handler)
+    for pattern in (
+        CONTROL_ANONYMOUS_HANDLER_RE,
+        CONTROL_PROPERTY_ANONYMOUS_RE,
+        LIFECYCLE_ANONYMOUS_HANDLER_RE,
+    ):
+        for match in pattern.finditer(source):
+            if pattern is not LIFECYCLE_ANONYMOUS_HANDLER_RE:
+                first, second, third = match.group(1), match.group(2), match.group(3)
+                if (first or second or third) not in controls:
+                    continue
+            open_brace = source.rfind("{", match.start(), match.end())
+            body = _braced_body(source, open_brace)
+            live_anonymous_bodies.append(body)
+    for match in CONTROL_CONCISE_HANDLER_RE.finditer(source):
+        first, second, third = match.group(1), match.group(2), match.group(3)
+        if (first or second or third) in controls:
+            live_anonymous_bodies.append(match.group(4))
+
+    # Named controls, lifecycle handlers, and named IIFEs seed a small local
+    # call graph. A helper becomes live only from a function already live.
+    active = (handlers | iifes) & functions.keys()
+    for body in live_anonymous_bodies:
+        reachable.update(API_LITERAL_RE.findall(body))
+        active.update(_called_functions(body, functions))
+
+    # Bare calls at top level are also page-load paths. Calls inside any named
+    # or anonymous function body must first inherit reachability from that
+    # function, so a callback guarded by a missing control cannot seed a path.
+    for name in functions:
+        for call in re.finditer(r"(?m)(?:^|;)\s*" + re.escape(name) + r"\s*\(", source):
+            if not any(start < call.start() < end for start, end in body_spans):
+                active.add(name)
+                break
+    checked: set[str] = set()
+    while active:
+        name = active.pop()
+        if name in checked:
+            continue
+        checked.add(name)
+        body = functions.get(name, "")
+        reachable.update(API_LITERAL_RE.findall(body))
+        active.update(_called_functions(body, functions))
+
+    # A top-level fetch is an unconditional page-load path (Atlas is the
+    # intentional example); it is not dormant helper code.
+    function_bodies = [source[start + 1:end] for start, end in body_spans]
+    for literal in API_LITERAL_RE.findall(source):
+        if not any(literal in body for body in function_bodies):
+            reachable.add(literal)
+
+    # Declarative links/forms and lifecycle callbacks are live paths without a
+    # named control handler; helper bodies are intentionally excluded.
+    for match in re.finditer(r"<(?:a|form)\b[^>]*(?:href|action)=[\"']([^\"']*/api/[^\"']*)", source, re.I):
+        reachable.add(match.group(1))
+    return reachable
+
+
 def page_map() -> dict[str, set[str]]:
     route_pages: dict[str, set[str]] = defaultdict(set)
     pages = iter_html_files([Path(root) for root in DEFAULT_WEB_ROOTS])
     for page in pages:
         source = page.read_text(encoding="utf-8")
         rel = public_page_path(page)
-        for literal in API_LITERAL_RE.findall(source):
+        for literal in reachable_api_literals(source):
             route_pages[normalize_api(literal)].add(rel)
     return route_pages
 

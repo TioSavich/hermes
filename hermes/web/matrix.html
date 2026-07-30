@@ -108,9 +108,9 @@
 
     <div class="interactive-box">
       <p>Each snap adds a row. Watch the diagonal grow.</p>
-      <div class="snap-counter" id="snap-counter">0 snaps</div>
+      <div class="snap-counter" data-ui="snap-counter">0 snaps</div>
       <div class="matrix-container">
-        <div class="matrix-grid" id="matrix-grid"></div>
+        <div class="matrix-grid" data-ui="matrix-grid"></div>
       </div>
       <div style="margin-top: 1rem;">
         <button class="try-it" onclick="addSnap()">Snap</button>
@@ -145,9 +145,9 @@
 
     <div class="interactive-box">
       <p>Cantor's diagonal: each crisis produces a genuinely novel structure</p>
-      <div class="snap-counter" id="snap-counter">0 crisis-resolution pairs</div>
+      <div class="snap-counter" data-ui="snap-counter">0 crisis-resolution pairs</div>
       <div class="matrix-container">
-        <div class="matrix-grid" id="matrix-grid"></div>
+        <div class="matrix-grid" data-ui="matrix-grid"></div>
       </div>
       <div style="margin-top: 1rem;">
         <button class="try-it" onclick="addSnap()">New crisis</button>
@@ -200,9 +200,9 @@
 
     <div class="interactive-box">
       <p>Temporal snaps induce spatial structure: the matrix grows</p>
-      <div class="snap-counter" id="snap-counter">0 compressions</div>
+      <div class="snap-counter" data-ui="snap-counter">0 compressions</div>
       <div class="matrix-container">
-        <div class="matrix-grid" id="matrix-grid"></div>
+        <div class="matrix-grid" data-ui="matrix-grid"></div>
       </div>
       <div style="margin-top: 1rem;">
         <button class="try-it" onclick="addSnap()">Compress (snap)</button>
@@ -306,6 +306,11 @@ let autoInterval = null;
 function glyph(v) { return v === 1 ? 'W' : 'M'; }
 function flip(v) { return 1 - v; }
 function diagonal() { return rows.map((r, i) => r[i]); }
+function activeControl(name) {
+  const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+  const register = document.querySelector(`[data-discourse="${level}"]`);
+  return register && register.querySelector(`[data-ui="${name}"]`);
+}
 
 function seedMatrix() {
   // A small self-consistent field: three assertions, each identical with itself
@@ -316,7 +321,7 @@ function seedMatrix() {
 }
 
 function renderMatrix() {
-  const grid = document.getElementById('matrix-grid');
+  const grid = activeControl('matrix-grid');
   if (!grid) return;
   const n = rows.length;
   if (n === 0) { grid.innerHTML = ''; return; }
@@ -336,7 +341,7 @@ function renderMatrix() {
 }
 
 function updateCounter() {
-  const counter = document.getElementById('snap-counter');
+  const counter = activeControl('snap-counter');
   if (!counter) return;
   const n = rows.length;
   const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';

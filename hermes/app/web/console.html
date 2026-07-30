@@ -472,7 +472,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
   <nav class="tabnav" id="tabnav">
     <button class="tab active" data-tab="workspace"><span class="glyph">01</span>Workspace</button>
-
+    <button class="tab" data-tab="explore"><span class="glyph">02</span>Explore</button>
     <button class="tab adv" data-tab="encyclopedia"><span class="glyph">03</span>Encyclopedia</button>
     <button class="tab adv" data-tab="ask"><span class="glyph">04</span>Ask Hermes</button>
     <span class="spacer"></span>
@@ -693,7 +693,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ ASK ============ -->
     <section class="panel" data-tab="ask">
-      <p class="panel-lede">Ask a plain question. The app first searches its symbolic knowledge base — strategies, misconceptions, standards, grounding metaphors — and grounds Gemma's answer in what it finds (shown above each reply). It never sees student work unless you paste it. For discussion analysis use the Workspace.</p>
+      <p class="panel-lede">Ask a plain question. The app first searches its symbolic knowledge base — strategies, misconceptions, standards, grounding metaphors — and grounds Gemma's answer in what it finds (shown above each reply). It never receives student work unless you paste it. For discussion analysis use the Workspace.</p>
       <div class="card">
         <div id="ask-drop" class="dropzone">
           <textarea id="ask-input" class="data-input" placeholder="Ask Hermes a question about the course, a strategy, a lesson…"></textarea>
@@ -794,8 +794,8 @@ function renderConsoleWorkedExample(example) {
 renderConsoleWorkedExample(CONSOLE_WORKED_DEFAULT);
 
 
-async function getJSON(path) {
-  const result = await HermesFetch.requestJSON(api(path));
+async function getJSON(path, options) {
+  const result = await HermesFetch.requestJSON(api(path), options);
   return { status: result.status, data: HermesFetch.requireOK(result) };
 }
 const WORKER_POST_PATHS = new Set([
@@ -829,6 +829,38 @@ function setRequestFailure(element, error) {
 }
 
 let MODE = { mode: "home", verified: false, gate_enabled: true };
+const WORKER_READINESS_TIMEOUT_MS = HermesFetch.WORKER_READINESS_TIMEOUT_MS;
+const WORKER_READINESS_INITIAL_BACKOFF_MS = 750;
+const WORKER_READINESS_MAX_BACKOFF_MS = 5000;
+
+function wait(ms) {
+  return new Promise(resolve => window.setTimeout(resolve, ms));
+}
+
+async function waitForWorkerReadiness(state) {
+  const startedAt = Date.now();
+  let retryDelay = WORKER_READINESS_INITIAL_BACKOFF_MS;
+  while (Date.now() - startedAt < WORKER_READINESS_TIMEOUT_MS) {
+    const elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+    HermesFetch.setState(state, "starting", `Worker starting… (${elapsedSeconds}s)`);
+    const remaining = WORKER_READINESS_TIMEOUT_MS - (Date.now() - startedAt);
+    try {
+      await getJSON('/api/capabilities', { timeoutMs: Math.min(HermesFetch.DEFAULT_TIMEOUT_MS, remaining) });
+      return true;
+    } catch (_error) {
+      const pause = Math.min(retryDelay, Math.max(0, WORKER_READINESS_TIMEOUT_MS - (Date.now() - startedAt)));
+      if (!pause) break;
+      await wait(pause);
+      retryDelay = Math.min(retryDelay * 2, WORKER_READINESS_MAX_BACKOFF_MS);
+    }
+  }
+  HermesFetch.setState(
+    state,
+    "offline",
+    `Symbolic worker did not become ready within ${WORKER_READINESS_TIMEOUT_MS / 1000} seconds.`
+  );
+  return false;
+}
 
 /* ---------- tabs ---------- */
 function selectTab(name) {
@@ -850,7 +882,8 @@ async function refreshMode() {
     return;
   }
   MODE = data;
-  HermesFetch.setState(state, "ready", "App ready");
+  if (!await waitForWorkerReadiness(state)) return;
+  HermesFetch.setState(state, "ready", "Symbolic worker ready");
   const gateOff = data.gate_enabled === false;
   $("#gate-pill").hidden = false;
   $("#gate-pill").textContent = gateOff ? "FERPA gate: off" : (data.mode === "campus" && data.verified ? "campus · unlocked" : "student data locked");
@@ -1292,7 +1325,7 @@ async function loadCatalog() {
       .sort((a, b) => lessonSubstance(b) - lessonSubstance(a));
     CATALOG_DEFAULT = { rows: usable.slice(0, 24), label: "Lessons with partial notes" };
   }
-  $("#catalog-stats").textContent = `${s.total_lessons || 0} lessons available`;
+  $("#catalog-stats").textContent = `${s.total_lessons || 0} lesson records available`;
   $("#catalog").innerHTML = renderCatalog(CATALOG_DEFAULT.rows, CATALOG_DEFAULT.label);
   wireCatalogClicks();
 }
@@ -1736,7 +1769,7 @@ function renderMisconceptionResonance(results, withheld) {
   const documentedOnly = results.filter(result => result && (result.diagnosable === "false" || result.diagnosable === false));
   const visible = results.filter(result => result && result.diagnosable !== "false" && result.diagnosable !== false);
   const effectiveWithheld = Math.max(Number(withheld || 0), documentedOnly.length);
-  const cards = visible.map(result => `<div class="enc-group"><b>${esc(result.name)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(result.description)}<br><span class="muted-inline">${esc(result.citation)}</span></div>`).join('');
+  const cards = visible.map(result => `<div class="enc-group"><b>${esc(result.name)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(result.gloss || result.description || result.name)}<br><span class="muted-inline">${esc(result.citation)}</span></div>`).join('');
   return cards || withheldMisconceptionLine(effectiveWithheld) || "<p class='muted-inline'>No indexed rows were returned.</p>";
 }
 
