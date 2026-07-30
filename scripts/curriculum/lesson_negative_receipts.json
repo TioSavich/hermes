@@ -3495,6 +3495,557 @@
           }
         ]
       }
+    },
+    {
+      "lesson": "IM-G2-U1-L3",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "make_ten_split_leftover"
+      },
+      "alternative": "make_ten_drop_leftover",
+      "material_incompatibility": "Students find a missing addend for a sum of 20 by making a 10 and identifying one more 10; the alternative would discard the second 10.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit1/lesson3.md",
+        "fragments": [
+          {
+            "line": 217,
+            "text": "making a 10"
+          },
+          {
+            "line": 218,
+            "text": "knowing there is one more 10"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U1-L16",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "compare_by_matching_difference"
+      },
+      "alternative": "compare_returns_larger_count",
+      "material_incompatibility": "The problem asks for the difference between Jada's 47 pages and Noah's 20 pages, which the alternative would ignore to return the larger count of 47 pages.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit1/lesson16.md",
+        "fragments": [
+          {
+            "line": 386,
+            "text": "In this problem, we find the difference."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U2-L9",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "base_ones_chunking"
+      },
+      "alternative": "dropped_ones_chunk",
+      "material_incompatibility": "The lesson requires adding the ones and the tens and combining their sums, but the alternative ignores the ones.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit2/lesson9.md",
+        "fragments": [
+          {
+            "line": 287,
+            "text": "both added the ones and added the tens"
+          },
+          {
+            "line": 288,
+            "text": "and then combined the two sums"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U2-L14",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "make_ten_split_leftover"
+      },
+      "alternative": "make_ten_drop_leftover",
+      "material_incompatibility": "Students compose a ten when joining 29 and 18. The alternative would ignore the leftover ones remaining after that ten is composed.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit2/lesson14.md",
+        "fragments": [
+          {
+            "line": 257,
+            "text": "compose a ten when joining 29 with 18"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U3-L3",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "count_up_missing_addend"
+      },
+      "alternative": "answer_as_endpoint_count_up",
+      "material_incompatibility": "Students count the distance from a shorter line to a longer line to find the difference, but the alternative reports the longer line's length as the result.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson3.md",
+        "fragments": [
+          {
+            "line": 367,
+            "text": "count up"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U3-L6",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "base_ones_chunking"
+      },
+      "alternative": "dropped_ones_chunk",
+      "material_incompatibility": "The lesson asks students to compose a ten by adding fives, and the alternative ignores this regrouping of ones.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson6.md",
+        "fragments": [
+          {
+            "line": 86,
+            "text": "adding fives to compose a ten mentally"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U3-L7",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "take_away_base_ones"
+      },
+      "alternative": "drop_ones_after_base_takeaway",
+      "material_incompatibility": "The student subtracts 7 ones from 37 to reach the friendly number 30; the alternative would omit this subtraction of ones.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit3/lesson7.md",
+        "fragments": [
+          {
+            "line": 95,
+            "text": "I took away 7 ones and got 30"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U5-L10",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "A student reaches 76 by counting on by tens from 46, whereas the alternative discards the starting value to count all units from zero.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit5/lesson10.md",
+        "fragments": [
+          {
+            "line": 103,
+            "text": "I just counted on by 10"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U6-L14",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "The student counts on by tens (10, 20, 40, 50) and then adds 5 ones, which the alternative would discard in favor of counting every unit individually.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit6/lesson14.md",
+        "fragments": [
+          {
+            "line": 97,
+            "text": "Sample response: I counted on all the tens first"
+          },
+          {
+            "line": 98,
+            "text": "10, 20, 40, 50, then I added the 5 ones and got 55."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U7-L3",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "The lesson asks students to find unknown values by counting on in hundreds and tens from a known starting number, a strategy the alternative discards in favor of counting every unit from one.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit7/lesson3.md",
+        "fragments": [
+          {
+            "line": 294,
+            "text": "Counting on by hundreds and then by tens."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U1-L9",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson specifies 4 people each wearing 2 shoes, which the alternative would treat as simple addends rather than 4 groups of 2.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson9.md",
+        "fragments": [
+          {
+            "line": 287,
+            "text": "There are 4 people wearing shoes. Each person"
+          },
+          {
+            "line": 288,
+            "text": "is wearing 2 shoes."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U1-L18",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson specifies 2 rows of 5 plants, and the alternative would treat these as a sum, ignoring that the 5 plants are repeated in 2 rows.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit1/lesson18.md",
+        "fragments": [
+          {
+            "line": 320,
+            "text": "There are 2 rows of plants. Each row has 5 plants."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U2-L10",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson provides fabric dimensions of 9 yards by 2 yards; the alternative would add these lengths instead of multiplying them to find the area.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md",
+        "fragments": [
+          {
+            "line": 367,
+            "text": "The black fabric is 9 yards by 2 yards"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U3-L7",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "take_away_base_ones"
+      },
+      "alternative": "drop_ones_after_base_takeaway",
+      "material_incompatibility": "The lesson requires taking away 3 ones after removing hundreds and tens, while the alternative would omit the subtraction of those ones.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit3/lesson7.md",
+        "fragments": [
+          {
+            "line": 165,
+            "text": "Then I took away 2 hundreds, 1 ten, and 3"
+          },
+          {
+            "line": 166,
+            "text": "ones"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U3-L11",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "decompose_base_for_ones"
+      },
+      "alternative": "borrow_without_reducing_bases",
+      "material_incompatibility": "The lesson requires reducing the tens digit to 9 when decomposing a ten to provide ones; the alternative would fail to decrease the tens digit.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit3/lesson11.md",
+        "fragments": [
+          {
+            "line": 264,
+            "text": "Crossing out the 10 and writing 9 in the tens"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U4-L6",
+      "intended_action": {
+        "operation": "division",
+        "kind": "fair_share_equal_groups"
+      },
+      "alternative": "name_group_count_as_share_size",
+      "material_incompatibility": "The lesson divides 14 onions into 2 bags to find the amount per bag, while the alternative would treat the 2 bags as the amount per bag.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit4/lesson6.md",
+        "fragments": [
+          {
+            "line": 143,
+            "text": "A farmer puts 14 onions into 2 bags"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U8-L15",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "round_then_adjust"
+      },
+      "alternative": "round_without_adjusting",
+      "material_incompatibility": "Adding 199 requires compensating for the 1 difference when rounding the addend to 200, a value the alternative ignores.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit8/lesson15.md",
+        "fragments": [
+          {
+            "line": 263,
+            "text": "Leave the 504, but adjust the 199."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G4-U5-L7",
+      "intended_action": {
+        "operation": "measurement",
+        "kind": "unit_conversion_by_iteration"
+      },
+      "alternative": "change_unit_label_without_scaling",
+      "material_incompatibility": "The lesson relates 1 meter to 100 centimeters, but the alternative treats 1 meter as 1 centimeter when comparing it to 62 centimeters.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade4/unit5/lesson7.md",
+        "fragments": [
+          {
+            "line": 344,
+            "text": "Students may say that 62 centimeters is longer than 1"
+          },
+          {
+            "line": 345,
+            "text": "meter because 62 is greater than 1."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G4-U5-L8",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson calculates the total length of 10 races of 100 meters each, which the alternative would replace by adding 10 and 100.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade4/unit5/lesson8.md",
+        "fragments": [
+          {
+            "line": 199,
+            "text": "10 races, because 10 × 100 = 1,000"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G4-U8-L2",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "The lesson establishes a relation of 1 more, which the alternative would ignore by counting every unit from 1.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade4/unit8/lesson2.md",
+        "fragments": [
+          {
+            "line": 116,
+            "text": "this sum is 1 more than the"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G6-U7-L16",
+      "intended_action": {
+        "operation": "division",
+        "kind": "fair_share_equal_groups"
+      },
+      "alternative": "name_group_count_as_share_size",
+      "material_incompatibility": "The lesson treats the largest number of combination boxes as the number of groups, whereas the alternative treats the number of boxes as the amount of books in each group.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_purpose",
+            "text": "the greatest common factor represents the largest number of combination boxes possible"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G7-U4-L6",
+      "intended_action": {
+        "operation": "division",
+        "kind": "measure_groups_of_size"
+      },
+      "alternative": "share_into_divisor_groups",
+      "material_incompatibility": "The lesson measures the difference between values as a percentage of the correct value, but the alternative would share that difference among a number of groups equal to the correct value.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_purpose",
+            "text": "the difference between a correct value and an incorrect value is expressed as a percentage of the correct value"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-GK-U8-L18",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "The student starts at the quantity 4 and counts on 1 to reach 5, which the alternative discards in favor of counting all 5 units from 1.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md",
+        "fragments": [
+          {
+            "line": 122,
+            "text": "I counted 4, 5"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G1-U7-L6",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "base_ones_chunking"
+      },
+      "alternative": "dropped_ones_chunk",
+      "material_incompatibility": "The lesson decomposes the addition of 57 and 42 into separate tens and ones calculations, which the alternative discards by omitting the ones.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade1/unit7/lesson6.md",
+        "fragments": [
+          {
+            "line": 113,
+            "text": "50 + 40 = 90, 7 + 2 = 9, 90 + 9 = 99"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U1-L9",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson specifies a base area of 6 square inches and a height of 5 inches for a prism. The alternative adds these values, ignoring the multiplicative relationship between them.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit1/lesson9.md",
+        "fragments": [
+          {
+            "line": 291,
+            "text": "One prism has a base area of 6 square inches"
+          },
+          {
+            "line": 292,
+            "text": "and the height for that base is 5 inches."
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U2-L1",
+      "intended_action": {
+        "operation": "fraction",
+        "kind": "unit_fraction_iteration"
+      },
+      "alternative": "whole_number_grab",
+      "material_incompatibility": "Sharing 2 sandwiches among 5 people makes it impossible for anyone to take a whole sandwich.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit2/lesson1.md",
+        "fragments": [
+          {
+            "line": 223,
+            "text": "If 2 sandwiches are shared by 5 people"
+          },
+          {
+            "line": 225,
+            "text": "get 1/5 of each sandwich"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U4-L19",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson combines a daily volume of 100 cubic feet across 5 school days; the alternative would use addition to aggregate these daily totals.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit4/lesson19.md",
+        "fragments": [
+          {
+            "line": 197,
+            "text": "I multiplied 100 cubic feet by 5"
+          },
+          {
+            "line": 198,
+            "text": "school days in a week."
+          }
+        ]
+      }
     }
   ]
 }

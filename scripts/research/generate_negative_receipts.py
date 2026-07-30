@@ -2,9 +2,15 @@
 """Propose and source-gate lesson-specific structured-negative receipts.
 
 REALLMS drafts one v3 receipt from a lesson's registry candidates and either
-its line-numbered teacher guide or its generated vision-digest facts. Each
-completed lesson is checkpointed separately. Accepted proposals remain in a
-generated review file; this script never edits the curated receipt register.
+its line-numbered teacher guide or its generated vision-digest facts. Before
+any candidate reaches the drafting prompt, its alternative is executed through
+run_action_automaton on the lesson's own op-matching compiled operand pairs;
+a candidate whose alternative cannot execute anywhere is withheld with every
+attempted run recorded, and a candidate whose alternative the curated register
+already holds for the lesson is withheld under the register's (lesson,
+alternative) dedup key. Each completed lesson is checkpointed separately.
+Accepted proposals remain in a generated review file; this script never edits
+the curated receipt register.
 """
 
 from __future__ import annotations
@@ -14,7 +20,9 @@ import importlib.util
 import json
 import re
 import ssl
+import subprocess
 import sys
+import tempfile
 from collections import Counter
 from dataclasses import dataclass
 from fractions import Fraction
@@ -44,8 +52,12 @@ CONTRACTS = ROOT / "knowledge" / "strategies" / "automaton_input_contracts.pl"
 CONTRACT_FILTER_FIXTURE = ROOT / "scripts" / "checks" / "fixtures" / "negative_receipt_candidate_contract_whole_domain.json"
 DEFAULT_OUTPUT = ROOT / "scripts" / "research" / "negative_receipts_out"
 DEFAULT_LIMIT = 3
-RUN_VERSION = "operation_match_filter_v3"
+RUN_VERSION = "alternative_execution_filter_v4"
 CONTRACT_FILTER_OPERATIONS = frozenset({"addition", "subtraction", "multiplication", "division"})
+# Per-call budget for one run_action_automaton execution inside the draft-time
+# batch; matches the task-179 batch check that classified the curated register.
+EXECUTION_TIME_LIMIT_SECONDS = 2
+PROLOG_ATOM_RE = re.compile(r"^[a-z][a-z0-9_]*$")
 # Pass-6 standing finding 1: vision_lesson_boundary strings record the
 # pipeline's own mapping narrative, not the lesson, so the drafter neither
 # receives nor may cite them. The curated register's validator keeps the full
@@ -55,10 +67,13 @@ DRAFTING_FACT_PREDICATES = tuple(
     for predicate in VISION_FACT_PREDICATES
     if predicate != "vision_lesson_boundary"
 )
-# Mirror of task_action_operands/4 (formal/learner/activity_contract.pl):
-# a compiled productive task head carries an operation only when that
-# predicate maps it to one. This is the join the task-179 batch check used
-# to find the 25 receipts naming operations their lessons' tasks never carry.
+# Full mirror of the task_action_operands/4 head-to-operation map
+# (formal/learner/activity_contract.pl): a compiled productive task head
+# carries an operation only when that predicate maps it to one. This is the
+# join the task-179 batch check used to find the 25 receipts naming operations
+# their lessons' tasks never carry. The execution batch re-derives this map
+# from the live predicate on every run and raises on any difference, so the
+# mirror cannot drift silently.
 TASK_HEAD_OPERATIONS = {
     "add": "addition",
     "subtract": "subtraction",
@@ -78,6 +93,27 @@ TASK_HEAD_OPERATIONS = {
     "solve_linear": "algebraic",
     "classify_shape": "geometry",
     "angle_measure": "geometry",
+    "rectangle_area": "geometry",
+    "compare_rectangle_areas": "geometry",
+    "rectangle_missing_side_from_area": "geometry",
+    "select_area_unit": "geometry",
+    "unit_cube_volume": "geometry",
+    "compare_solid_volumes": "geometry",
+    "rectangle_perimeter": "geometry",
+    "polygon_perimeter": "geometry",
+    "symmetry_missing_side": "geometry",
+    "rectangle_side_lengths_for_perimeter": "geometry",
+    "construct_rectangle_with_perimeter": "geometry",
+    "rectangle_missing_side_from_perimeter": "geometry",
+    "compare_cardinalities": "counting",
+    "compare_numerals_by_place_value": "counting",
+    "count_collection": "counting",
+    "inscribe_cardinality": "counting",
+    "inscribe_place_value": "counting",
+    "convert_measurement": "measurement",
+    "measure_length": "measurement",
+    "measured_quantity_change": "measurement",
+    "read_liquid_volume": "measurement",
 }
 LESSON_RE = re.compile(r"IM-G(K|[1-8])-U(\d+)-L(\d+)")
 COMPILED_TASK_RE = re.compile(
@@ -274,8 +310,13 @@ def operation_filter_controls() -> str:
         for candidate in annotated
         if candidate["productive"] == "recursive_place_value_inscription"
     )
-    if counting["operation_evidence"]["operation_in_join_range"]:
-        raise RuntimeError("counting is outside the task_action_operands range and must be disclosed as such")
+    # Counting heads (count_collection, inscribe_cardinality, ...) are in the
+    # live task_action_operands range; the flag stands because this lesson's
+    # compiled tasks are subtraction only.
+    if not counting["operation_evidence"]["operation_in_join_range"]:
+        raise RuntimeError("counting has task_action_operands heads and the join-range disclosure must say so")
+    if "no compiled productive task of the lesson carries counting" not in counting["operation_evidence"]["reason"]:
+        raise RuntimeError("counting flag on IM-G2-U5-L12 must name the lesson's own task domain as the reason")
     synthetic = {
         "lesson": "IM-CONTROL-NO-TASKS",
         "negative_candidates": [
@@ -289,7 +330,376 @@ def operation_filter_controls() -> str:
         raise RuntimeError("empty-domain control does not say the lesson carries no mappable operation")
     return (
         "IM-G2-U5-L12 keeps its subtraction candidate and flags counting "
-        "(outside the join range); empty-domain synthetic flags with its own reason"
+        "(no counting task on this lesson); empty-domain synthetic flags with its own reason"
+    )
+
+
+def filter_candidate_register_duplicates(
+    candidates: list[dict[str, Any]],
+    *,
+    lesson: str,
+    register_keys: set[tuple[str, str]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Annotate, without deleting, candidates the curated register already holds.
+
+    The register's uniqueness key is (lesson, alternative), and defective
+    receipts stay on the books with their failed warrant named, so a repair
+    receipt must bind a different candidate. A candidate whose alternative the
+    register already holds for this lesson is withheld from the drafting
+    prompt as a visible annotation, never a silent drop.
+    """
+    usable: list[dict[str, Any]] = []
+    annotated: list[dict[str, Any]] = []
+    for candidate in candidates:
+        candidate_copy = dict(candidate)
+        if (lesson, candidate["deformation"]) not in register_keys:
+            usable.append(candidate_copy)
+            annotated.append(candidate_copy)
+            continue
+        candidate_copy["annotation"] = "register_duplicate"
+        candidate_copy["register_evidence"] = {
+            "dedup_key": [lesson, candidate["deformation"]],
+            "register": str(CURATED_RECEIPTS.relative_to(ROOT)),
+            "reason": (
+                "the curated register already holds a receipt for this lesson "
+                "and alternative; the register dedup key is (lesson, "
+                "alternative), so a repair must bind a different candidate"
+            ),
+        }
+        annotated.append(candidate_copy)
+    return usable, annotated
+
+
+def register_dedup_controls(register_keys: set[tuple[str, str]]) -> str:
+    """Exercise a live register-held withhold and a live pass-through."""
+    ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    held = next(row for row in ledger["lessons"] if row["lesson"] == "IM-G2-U1-L12")
+    usable, annotated = filter_candidate_register_duplicates(
+        held["negative_candidates"], lesson=held["lesson"], register_keys=register_keys
+    )
+    flagged = {
+        candidate["deformation"]
+        for candidate in annotated
+        if candidate.get("annotation") == "register_duplicate"
+    }
+    if "drop_ones_after_base_takeaway" not in flagged:
+        raise RuntimeError(
+            "register control failed: IM-G2-U1-L12's registered alternative was not withheld"
+        )
+    synthetic = [
+        {
+            "operation": "addition",
+            "productive": "count_on_from_larger",
+            "deformation": "alternative_never_registered",
+        }
+    ]
+    kept, _ = filter_candidate_register_duplicates(
+        synthetic, lesson="IM-G2-U1-L12", register_keys=register_keys
+    )
+    if not kept:
+        raise RuntimeError("register control withheld a candidate the register does not hold")
+    return (
+        "IM-G2-U1-L12's register-held alternative withheld under the "
+        "(lesson, alternative) key; unregistered synthetic passes through"
+    )
+
+
+# One swipl batch per run resolves each candidate's registry pair, joins the
+# lesson's compiled productive tasks through task_action_operands/4, and runs
+# the alternative on every op-matching operand pair under a per-call time
+# limit -- the same probe the task-179 batch check ran over the curated
+# register. The driver also emits the live head-to-operation map so the
+# static mirror above is verified on every run.
+_EXECUTION_DRIVER = rf"""% Draft-time executability probe for negative-receipt candidates.
+:- use_module(formal(learner/activity_contract)).
+:- use_module(library(time)).
+:- use_module(library(lists)).
+:- use_module(library(aggregate)).
+
+pair_status(Op, Alt, L, R, Status) :-
+    catch(call_with_time_limit({EXECUTION_TIME_LIMIT_SECONDS},
+              ( action_automata_registry:run_action_automaton(Op, Alt, L, R, Outcome, _)
+              -> ( Outcome = action_outcome(_, Fields), member(result(Res), Fields)
+                 -> Status = ran(Res)
+                 ;  Status = ran(no_result_field) )
+              ;  Status = refused )),
+          Err,
+          ( Err = time_limit_exceeded -> Status = timeout ; Status = error )).
+
+probe_one(Lesson, Op, Intended, Alt) :-
+    ( action_automata_registry:action_automaton_pair(Op, Intended, Alt, Family)
+    -> PairStatus = pair
+    ;  PairStatus = no_registry_pair, Family = none
+    ),
+    findall(L-R,
+            ( compiled_task_instances:compiled_lesson_task_instance(Lesson, productive-Task, _),
+              activity_contract:task_action_operands(Task, Op, L, R) ),
+            Pairs0),
+    sort(Pairs0, Pairs),
+    length(Pairs, NPairs),
+    ( PairStatus = no_registry_pair
+    -> Statuses = []
+    ;  findall(L-R-Status,
+               ( member(L-R, Pairs), pair_status(Op, Alt, L, R, Status) ),
+               Statuses)
+    ),
+    aggregate_all(count, member(_-_-ran(_), Statuses), Ran),
+    format('CHECK\t~w\t~w\t~w\t~w\t~w\t~q\t~d\t~d~n',
+           [Lesson, Op, Intended, Alt, PairStatus, Family, NPairs, Ran]),
+    forall(member(L-R-Status, Statuses),
+           format('PAIRRUN\t~w\t~w\t~w\t~w\t~q\t~q\t~q~n',
+                  [Lesson, Op, Intended, Alt, L, R, Status])).
+
+probe_main(FactsFile) :-
+    consult(FactsFile),
+    forall(activity_contract:task_action_operands(Task, Operation, _, _),
+           ( functor(Task, Head, _),
+             format('HEADOP\t~w\t~w~n', [Head, Operation]) )),
+    forall(probe_triple(Lesson, Op, Intended, Alt),
+           probe_one(Lesson, Op, Intended, Alt)),
+    halt.
+"""
+
+
+def run_execution_probes(
+    probes: list[tuple[str, str, str, str]],
+) -> tuple[dict[tuple[str, str, str, str], dict[str, Any]], dict[str, Any]]:
+    """Execute candidate alternatives on their lessons' operand pairs in one batch.
+
+    Returns a verdict catalog keyed by (lesson, operation, intended,
+    alternative) and batch statistics. Raises when the static
+    TASK_HEAD_OPERATIONS mirror differs from the live task_action_operands
+    map, when the batch fails, or when any probe comes back unanswered.
+    """
+    unique = sorted(set(probes))
+    for lesson, operation, intended, alternative in unique:
+        if "'" in lesson or "\\" in lesson:
+            raise ValueError(f"unquotable lesson id in probe: {lesson!r}")
+        for atom in (operation, intended, alternative):
+            if not PROLOG_ATOM_RE.fullmatch(atom):
+                raise ValueError(f"probe field is not a plain Prolog atom: {atom!r}")
+    with tempfile.TemporaryDirectory(prefix="receipt_exec_probe_") as workdir:
+        facts_path = Path(workdir) / "probe_triples.pl"
+        facts_path.write_text(
+            "".join(
+                f"probe_triple('{lesson}', {operation}, {intended}, {alternative}).\n"
+                for lesson, operation, intended, alternative in unique
+            )
+            or "probe_triple('IM-NONE', none, none, none) :- fail.\n",
+            encoding="utf-8",
+        )
+        driver_path = Path(workdir) / "probe_driver.pl"
+        driver_path.write_text(_EXECUTION_DRIVER, encoding="utf-8")
+        result = subprocess.run(
+            [
+                "swipl",
+                "-q",
+                "-l",
+                str(ROOT / "paths.pl"),
+                "-l",
+                str(driver_path),
+                "-g",
+                f"probe_main('{facts_path}')",
+            ],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+        )
+    if result.returncode != 0:
+        tail = "\n".join(result.stderr.strip().splitlines()[-8:])
+        raise RuntimeError(f"execution probe batch failed (exit {result.returncode}):\n{tail}")
+    head_map: dict[str, str] = {}
+    catalog: dict[tuple[str, str, str, str], dict[str, Any]] = {}
+    for line in result.stdout.splitlines():
+        parts = line.split("\t")
+        if parts[0] == "HEADOP" and len(parts) == 3:
+            head_map[parts[1]] = parts[2]
+        elif parts[0] == "CHECK" and len(parts) == 9:
+            _, lesson, operation, intended, alternative, pair_status, family, npairs, ran = parts
+            catalog[(lesson, operation, intended, alternative)] = {
+                "pair_registered": pair_status == "pair",
+                "family": None if family == "none" else family,
+                "operand_pair_count": int(npairs),
+                "ran_count": int(ran),
+                "operand_pairs": [],
+            }
+        elif parts[0] == "PAIRRUN" and len(parts) == 8:
+            _, lesson, operation, intended, alternative, left, right, status = parts
+            catalog[(lesson, operation, intended, alternative)]["operand_pairs"].append(
+                {"left": left, "right": right, "outcome": status}
+            )
+    if head_map != TASK_HEAD_OPERATIONS:
+        static_only = sorted(set(TASK_HEAD_OPERATIONS.items()) - set(head_map.items()))
+        live_only = sorted(set(head_map.items()) - set(TASK_HEAD_OPERATIONS.items()))
+        raise RuntimeError(
+            "TASK_HEAD_OPERATIONS no longer mirrors task_action_operands/4; "
+            f"static-only={static_only} live-only={live_only}. "
+            "Update the mirror before drafting."
+        )
+    unanswered = sorted(set(unique) - set(catalog))
+    if unanswered:
+        raise RuntimeError(f"execution probes came back unanswered: {unanswered[:5]}")
+    for verdict in catalog.values():
+        verdict["executable"] = (
+            verdict["pair_registered"]
+            and verdict["operand_pair_count"] > 0
+            and verdict["ran_count"] > 0
+        )
+    stats = {
+        "probed_candidates": len(catalog),
+        "pair_runs": sum(len(verdict["operand_pairs"]) for verdict in catalog.values()),
+        "head_map_verified": True,
+    }
+    return catalog, stats
+
+
+def filter_candidate_executability(
+    candidates: list[dict[str, Any]],
+    *,
+    lesson: str,
+    execution_catalog: dict[tuple[str, str, str, str], dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Annotate, without deleting, candidates whose alternative cannot execute.
+
+    Task-179 found 19 curated receipts naming alternatives that either lack a
+    registry pair or refuse every operand pair their lesson supplies; nothing
+    ran them at drafting time. Here each candidate's alternative has been
+    executed on the lesson's own op-matching compiled operand pairs before the
+    prompt is built. A candidate whose alternative cannot execute on any pair
+    is withheld with the attempted runs recorded -- a visible annotation,
+    never a silent drop.
+    """
+    usable: list[dict[str, Any]] = []
+    annotated: list[dict[str, Any]] = []
+    for candidate in candidates:
+        candidate_copy = dict(candidate)
+        key = (lesson, candidate["operation"], candidate["productive"], candidate["deformation"])
+        verdict = execution_catalog.get(key)
+        if verdict is None:
+            raise RuntimeError(f"candidate was never probed for execution: {key}")
+        if verdict["executable"]:
+            usable.append(candidate_copy)
+            annotated.append(candidate_copy)
+            continue
+        if not verdict["pair_registered"]:
+            reason_class = "no_registry_pair"
+            reason = (
+                f"no action_automaton_pair/4 row registers {candidate['deformation']} "
+                f"against {candidate['productive']} for {candidate['operation']}, "
+                "so there is nothing to execute"
+            )
+        elif verdict["operand_pair_count"] == 0:
+            reason_class = "no_operand_pair"
+            reason = (
+                "the pair is registered but no compiled productive task of the "
+                f"lesson supplies a {candidate['operation']} operand pair"
+            )
+        else:
+            reason_class = "automaton_refuses_all_operands"
+            timeouts = sum(
+                run["outcome"] == "timeout" for run in verdict["operand_pairs"]
+            )
+            reason = (
+                "the automaton refuses every op-matching operand pair the lesson supplies"
+                + (f" ({timeouts} at the {EXECUTION_TIME_LIMIT_SECONDS}s limit)" if timeouts else "")
+            )
+        candidate_copy["annotation"] = "alternative_not_executable"
+        candidate_copy["execution_evidence"] = {
+            "source": "run_action_automaton/6 batch over op-matching compiled productive operand pairs",
+            "join": "task_action_operands/4 (formal/learner/activity_contract.pl)",
+            "pair_registered": verdict["pair_registered"],
+            "family": verdict["family"],
+            "attempted_pairs": verdict["operand_pairs"],
+            "time_limit_seconds": EXECUTION_TIME_LIMIT_SECONDS,
+            "reason_class": reason_class,
+            "reason": reason,
+        }
+        annotated.append(candidate_copy)
+    return usable, annotated
+
+
+def execution_filter_controls() -> str:
+    """Exercise a live kept/flagged split, a whole-pool refusal, and an unregistered synthetic."""
+    ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    rows = {row["lesson"]: row for row in ledger["lessons"]}
+    split_row = rows["IM-G2-U3-L18"]
+    runnable = next(
+        candidate
+        for candidate in split_row["negative_candidates"]
+        if candidate["deformation"] == "count_all_when_count_on_available"
+    )
+    refusing = next(
+        candidate
+        for candidate in split_row["negative_candidates"]
+        if candidate["deformation"] == "drop_ones_after_base_takeaway"
+    )
+    whole_row = rows["IM-G3-U4-L1"]
+    probes = [
+        (split_row["lesson"], c["operation"], c["productive"], c["deformation"])
+        for c in (runnable, refusing)
+    ]
+    probes += [
+        (whole_row["lesson"], c["operation"], c["productive"], c["deformation"])
+        for c in whole_row["negative_candidates"]
+    ]
+    probes.append(
+        (split_row["lesson"], "addition", "count_on_from_larger", "alternative_never_registered")
+    )
+    catalog, _ = run_execution_probes(probes)
+    usable, annotated = filter_candidate_executability(
+        [runnable, refusing], lesson=split_row["lesson"], execution_catalog=catalog
+    )
+    if [c["deformation"] for c in usable] != ["count_all_when_count_on_available"]:
+        raise RuntimeError(
+            "execution control lost IM-G2-U3-L18's runnable addition candidate"
+        )
+    flagged = next(
+        candidate
+        for candidate in annotated
+        if candidate.get("annotation") == "alternative_not_executable"
+    )
+    evidence = flagged["execution_evidence"]
+    if (
+        evidence["reason_class"] != "automaton_refuses_all_operands"
+        or not evidence["attempted_pairs"]
+    ):
+        raise RuntimeError(
+            "execution control expected drop_ones_after_base_takeaway to refuse "
+            "with its attempted operand pairs recorded"
+        )
+    whole_usable, whole_annotated = filter_candidate_executability(
+        whole_row["negative_candidates"],
+        lesson=whole_row["lesson"],
+        execution_catalog=catalog,
+    )
+    if whole_usable or not all(
+        candidate.get("annotation") == "alternative_not_executable"
+        for candidate in whole_annotated
+    ):
+        raise RuntimeError(
+            "execution control expected IM-G3-U4-L1's whole pool withheld "
+            "(share_into_divisor_groups refuses its exact-quotient operands)"
+        )
+    synthetic = {
+        "operation": "addition",
+        "productive": "count_on_from_larger",
+        "deformation": "alternative_never_registered",
+    }
+    _, synthetic_annotated = filter_candidate_executability(
+        [synthetic], lesson=split_row["lesson"], execution_catalog=catalog
+    )
+    synthetic_evidence = synthetic_annotated[0].get("execution_evidence", {})
+    if (
+        synthetic_annotated[0].get("annotation") != "alternative_not_executable"
+        or synthetic_evidence.get("reason_class") != "no_registry_pair"
+        or synthetic_evidence.get("pair_registered")
+    ):
+        raise RuntimeError("unregistered synthetic alternative was not flagged no_registry_pair")
+    return (
+        "IM-G2-U3-L18 keeps its runnable addition candidate and flags its "
+        "refusing subtraction candidate with attempted pairs; IM-G3-U4-L1's "
+        "whole pool withheld; unregistered synthetic flags no_registry_pair; "
+        "head map verified live"
     )
 
 
@@ -362,9 +772,12 @@ def contract_filter_controls() -> str:
     compiled_domains = _compiled_operand_domains()
     digest_domains = _digest_operand_domains()
     index = _contract_index()
+    # Control lessons must sit in the current eligible pool; IM-G6-U5-L13
+    # left it when its pass-7 receipt was merged, so IM-G6-U3-L9 carries the
+    # long_division partial-domain class in its place.
     reclassified = {
         "IM-G6-U2-L4": ("multiplication_fact_retrieval", ("7", "7")),
-        "IM-G6-U5-L13": ("long_division", ("1097", "5")),
+        "IM-G6-U3-L9": ("long_division", ("308", "11")),
         "IM-G7-U4-L6": ("measure_groups_of_size", ("78", "4")),
     }
     for lesson, (productive, compatible_pair) in reclassified.items():
@@ -1031,6 +1444,7 @@ def summarize(
     output_dir: Path,
     schema: str,
     register: str,
+    execution_stats: dict[str, Any],
 ) -> dict[str, Any]:
     accepted = [record["receipt"] for record in records if record["status"] == "accepted"]
     proposed = sum(record["proposed"] for record in records)
@@ -1050,6 +1464,8 @@ def summarize(
                 "candidates_after": 0,
                 "contract_mismatch": 0,
                 "operation_unmatched": 0,
+                "register_duplicate": 0,
+                "alternative_not_executable": 0,
             },
         )
         effect["lessons"] += 1
@@ -1060,6 +1476,10 @@ def summarize(
             for candidate in record.get("candidate_annotations", [])
         )
         effect["operation_unmatched"] += len(record.get("operation_unmatched", []))
+        effect["register_duplicate"] += len(record.get("register_duplicates", []))
+        effect["alternative_not_executable"] += len(
+            record.get("alternative_not_executable", [])
+        )
     needs_vocabulary = [
         record["lesson"] for record in records if record["status"] == "needs_vocabulary"
     ]
@@ -1071,6 +1491,26 @@ def summarize(
     operation_unmatched_annotations = sum(
         len(record.get("operation_unmatched", [])) for record in records
     )
+    register_duplicate_annotations = sum(
+        len(record.get("register_duplicates", [])) for record in records
+    )
+    execution_annotations = sum(
+        len(record.get("alternative_not_executable", [])) for record in records
+    )
+    execution_withheld_reasons = Counter(
+        candidate["execution_evidence"]["reason_class"]
+        for record in records
+        for candidate in record.get("candidate_annotations", [])
+        if candidate.get("annotation") == "alternative_not_executable"
+    )
+    register_exhausted_lessons = [
+        record["lesson"] for record in records if record["status"] == "register_exhausted"
+    ]
+    execution_refusal_lessons = [
+        record["lesson"]
+        for record in records
+        if record["status"] == "alternative_not_executable"
+    ]
     uncovered_operations = Counter(
         candidate["operation"]
         for record in records
@@ -1121,6 +1561,50 @@ def summarize(
                 "the named pair on (the task-179 25-receipt defect class). "
                 "Flags are visible annotations; flagged candidates are withheld "
                 "from the drafting prompt, never silently dropped."
+            ),
+        },
+        "register_dedup_filter": {
+            "version": RUN_VERSION,
+            "dedup_key": "(lesson, alternative) -- the curated register's uniqueness key",
+            "register_duplicate_annotations": register_duplicate_annotations,
+            "lessons_with_duplicates": sum(
+                bool(record.get("register_duplicates")) for record in records
+            ),
+            "pre_transport_register_exhausted": register_exhausted_lessons,
+            "disclosure": (
+                "A flagged candidate names an alternative the curated register "
+                "already holds for its lesson. Defective receipts stay on the "
+                "books with their failed warrant named, so a repair receipt "
+                "must bind a different executable candidate. Flags are visible "
+                "annotations; flagged candidates are withheld from the "
+                "drafting prompt, never silently dropped."
+            ),
+        },
+        "alternative_execution_filter": {
+            "version": RUN_VERSION,
+            "engine": "run_action_automaton/6 (knowledge/strategies/math/action_automata_registry.pl)",
+            "join": (
+                "compiled_lesson_task_instance productive rows through "
+                "task_action_operands/4 (formal/learner/activity_contract.pl), "
+                "one swipl batch per run"
+            ),
+            "time_limit_seconds": EXECUTION_TIME_LIMIT_SECONDS,
+            "batch": execution_stats,
+            "alternative_not_executable_annotations": execution_annotations,
+            "withheld_reason_classes": dict(execution_withheld_reasons.most_common()),
+            "lessons_with_flags": sum(
+                bool(record.get("alternative_not_executable")) for record in records
+            ),
+            "pre_transport_alternative_not_executable": execution_refusal_lessons,
+            "disclosure": (
+                "Every candidate that reaches the drafting prompt has had its "
+                "alternative executed on at least one of the lesson's own "
+                "op-matching compiled operand pairs before drafting. A "
+                "candidate whose alternative cannot execute anywhere is "
+                "withheld with the attempted runs recorded -- the task-179 "
+                "unregistered-alternative and automaton-refusal defect "
+                "classes, stopped at draft time. Flags are visible "
+                "annotations, never silent drops."
             ),
         },
         "candidate_contract_filter": {
@@ -1204,6 +1688,20 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
         f"lessons_with_flags={operation_filter['lessons_with_flags']} "
         f"pre_transport={', '.join(operation_filter['pre_transport_operation_unmatched']) or 'none'}"
     )
+    register_filter = report["register_dedup_filter"]
+    print(
+        "Register-dedup filter: "
+        f"flags={register_filter['register_duplicate_annotations']} "
+        f"lessons_with_duplicates={register_filter['lessons_with_duplicates']} "
+        f"pre_transport={', '.join(register_filter['pre_transport_register_exhausted']) or 'none'}"
+    )
+    execution_filter = report["alternative_execution_filter"]
+    print(
+        "Alternative-execution filter: "
+        f"flags={execution_filter['alternative_not_executable_annotations']} "
+        f"reasons={execution_filter['withheld_reason_classes'] or 'none'} "
+        f"pre_transport={', '.join(execution_filter['pre_transport_alternative_not_executable']) or 'none'}"
+    )
     contract_filter = report["candidate_contract_filter"]
     print(
         "Candidate-contract filter: "
@@ -1216,6 +1714,8 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
             f"  grade {grade}: candidates={effect['candidates_before']}"
             f"->{effect['candidates_after']} contract={effect['contract_mismatch']}"
             f" operation={effect['operation_unmatched']}"
+            f" register={effect['register_duplicate']}"
+            f" execution={effect['alternative_not_executable']}"
             f" lessons={effect['lessons']}"
         )
     print(
@@ -1272,6 +1772,14 @@ def run(args: argparse.Namespace) -> int:
     print(f"Candidate-contract controls: {contract_controls}")
     operation_controls = operation_filter_controls()
     print(f"Operation-match controls: {operation_controls}")
+    register_keys = {
+        (receipt["lesson"], receipt["alternative"])
+        for receipt in curated["receipts"]
+    }
+    register_controls = register_dedup_controls(register_keys)
+    print(f"Register-dedup controls: {register_controls}")
+    execution_controls = execution_filter_controls()
+    print(f"Alternative-execution controls: {execution_controls}")
     if args.limit < 1:
         raise ValueError("--limit must be at least 1")
     selected_pool = eligible
@@ -1292,6 +1800,45 @@ def run(args: argparse.Namespace) -> int:
     digest_domains = _digest_operand_domains()
     input_contracts = _contract_index()
     operation_index = _compiled_operation_index()
+    pending_rows = []
+    for row in selected:
+        existing = load_checkpoint(checkpoint_path(args.output_dir, row["lesson"]))
+        if existing is None or existing.get("run_version") != RUN_VERSION:
+            pending_rows.append(row)
+    probe_specs: list[tuple[str, str, str, str]] = []
+    for row in pending_rows:
+        register_usable, _ = filter_candidate_register_duplicates(
+            row["negative_candidates"],
+            lesson=row["lesson"],
+            register_keys=register_keys,
+        )
+        probe_row = dict(row)
+        probe_row["negative_candidates"] = register_usable
+        operation_usable, _ = filter_candidate_operations(
+            probe_row, operation_index=operation_index
+        )
+        probe_specs += [
+            (row["lesson"], c["operation"], c["productive"], c["deformation"])
+            for c in operation_usable
+        ]
+    if probe_specs:
+        execution_catalog, execution_stats = run_execution_probes(probe_specs)
+        print(
+            f"Execution batch: {execution_stats['probed_candidates']} candidates "
+            f"probed, {execution_stats['pair_runs']} operand-pair runs, "
+            "head map verified"
+        )
+    else:
+        execution_catalog = {}
+        execution_stats = {
+            "probed_candidates": 0,
+            "pair_runs": 0,
+            "head_map_verified": True,
+            "note": (
+                "no pending candidates required probing (checkpoints resumed); "
+                "the controls batch verified the head map"
+            ),
+        }
     lesson_ids = {row["lesson"] for row in ledger["lessons"]}
     strategy_mappings = {
         row["lesson"]: {
@@ -1339,26 +1886,48 @@ def run(args: argparse.Namespace) -> int:
             continue
         path = guide_path(row["lesson"])
         provenance_kind = drafting_provenance_kind(row["lesson"])
-        operation_usable, operation_annotated = filter_candidate_operations(
-            row,
-            operation_index=operation_index,
+        register_usable, register_annotated = filter_candidate_register_duplicates(
+            row["negative_candidates"],
+            lesson=row["lesson"],
+            register_keys=register_keys,
         )
         operation_row = dict(row)
-        operation_row["negative_candidates"] = operation_usable
-        filtered_candidates, contract_annotations = filter_candidate_contracts(
+        operation_row["negative_candidates"] = register_usable
+        operation_usable, operation_annotated = filter_candidate_operations(
             operation_row,
+            operation_index=operation_index,
+        )
+        execution_usable, execution_annotated = filter_candidate_executability(
+            operation_usable,
+            lesson=row["lesson"],
+            execution_catalog=execution_catalog,
+        )
+        contract_row = dict(row)
+        contract_row["negative_candidates"] = execution_usable
+        filtered_candidates, contract_annotations = filter_candidate_contracts(
+            contract_row,
             provenance_kind=provenance_kind,
             compiled_domains=compiled_domains,
             digest_domains=digest_domains,
             contract_index=input_contracts,
         )
+        operation_iterator = iter(operation_annotated)
+        execution_iterator = iter(execution_annotated)
         contract_iterator = iter(contract_annotations)
-        candidate_annotations = [
-            candidate
-            if candidate.get("annotation") == "operation_unmatched"
-            else next(contract_iterator)
-            for candidate in operation_annotated
-        ]
+        candidate_annotations = []
+        for candidate in register_annotated:
+            if candidate.get("annotation") == "register_duplicate":
+                candidate_annotations.append(candidate)
+                continue
+            operation_candidate = next(operation_iterator)
+            if operation_candidate.get("annotation") == "operation_unmatched":
+                candidate_annotations.append(operation_candidate)
+                continue
+            execution_candidate = next(execution_iterator)
+            if execution_candidate.get("annotation") == "alternative_not_executable":
+                candidate_annotations.append(execution_candidate)
+                continue
+            candidate_annotations.append(next(contract_iterator))
         operation_unmatched = [
             {
                 "operation": candidate["operation"],
@@ -1369,6 +1938,27 @@ def run(args: argparse.Namespace) -> int:
             for candidate in candidate_annotations
             if candidate.get("annotation") == "operation_unmatched"
         ]
+        register_duplicates = [
+            {
+                "operation": candidate["operation"],
+                "productive": candidate["productive"],
+                "deformation": candidate["deformation"],
+                "reason": candidate["register_evidence"]["reason"],
+            }
+            for candidate in candidate_annotations
+            if candidate.get("annotation") == "register_duplicate"
+        ]
+        alternative_not_executable = [
+            {
+                "operation": candidate["operation"],
+                "productive": candidate["productive"],
+                "deformation": candidate["deformation"],
+                "reason_class": candidate["execution_evidence"]["reason_class"],
+                "reason": candidate["execution_evidence"]["reason"],
+            }
+            for candidate in candidate_annotations
+            if candidate.get("annotation") == "alternative_not_executable"
+        ]
         record_fields = {
             "run_version": RUN_VERSION,
             "lesson": row["lesson"],
@@ -1378,14 +1968,41 @@ def run(args: argparse.Namespace) -> int:
             "candidate_count_after": len(filtered_candidates),
             "candidate_annotations": candidate_annotations,
             "operation_unmatched": operation_unmatched,
+            "register_duplicates": register_duplicates,
+            "alternative_not_executable": alternative_not_executable,
         }
         if row["negative_candidates"] and not filtered_candidates:
             operation_flags = len(operation_unmatched)
+            register_flags = len(register_duplicates)
+            execution_flags = len(alternative_not_executable)
             contract_flags = sum(
                 candidate.get("annotation") == "contract_mismatch"
                 for candidate in candidate_annotations
             )
-            if operation_flags and not contract_flags:
+            flag_parts = ", ".join(
+                f"{count} {name}"
+                for name, count in (
+                    ("alternative_not_executable", execution_flags),
+                    ("register_duplicate", register_flags),
+                    ("operation_unmatched", operation_flags),
+                    ("contract_mismatch", contract_flags),
+                )
+                if count
+            )
+            if execution_flags:
+                status = "alternative_not_executable"
+                reason = (
+                    f"no candidate survives the draft-time filters ({flag_parts}); "
+                    "drafting would mint a receipt no automaton run can bind"
+                )
+            elif register_flags and not operation_flags and not contract_flags:
+                status = "register_exhausted"
+                reason = (
+                    "every candidate's alternative is already held by the curated "
+                    "register for this lesson; a repair needs a new executable "
+                    "candidate the registry does not yet supply"
+                )
+            elif operation_flags and not contract_flags and not register_flags:
                 status = "operation_unmatched"
                 lesson_operations = operation_index.get(
                     row["lesson"], {"operations": set()}
@@ -1396,15 +2013,12 @@ def run(args: argparse.Namespace) -> int:
                     if not lesson_operations
                     else "no compiled productive task of the lesson carries any candidate's operation"
                 )
-            elif contract_flags and not operation_flags:
+            elif contract_flags and not operation_flags and not register_flags:
                 status = "needs_vocabulary"
                 reason = "all registry candidates are contract_mismatch for the lesson operand domain"
             else:
-                status = "operation_unmatched"
-                reason = (
-                    f"no usable candidates: {operation_flags} operation_unmatched, "
-                    f"{contract_flags} contract_mismatch"
-                )
+                status = "no_usable_candidates"
+                reason = f"no usable candidates: {flag_parts}"
             record = {
                 **record_fields,
                 "proposed": False,
@@ -1500,6 +2114,7 @@ def run(args: argparse.Namespace) -> int:
         output_dir=args.output_dir,
         schema=curated["schema"],
         register=curated["register"],
+        execution_stats=execution_stats,
     )
     print_report(report, args.output_dir)
     return 0
