@@ -33,6 +33,7 @@ VISION_DIGEST = ROOT / "curriculum" / "im" / "generated" / "vision_lesson_digest
 NODES = ROOT / "data" / "learningcommons" / "nodes.jsonl"
 COMPILED_MAPPINGS = ROOT / "curriculum" / "im" / "generated" / "compiled_action_mappings.pl"
 COMPILED_TASKS = ROOT / "curriculum" / "im" / "generated" / "compiled_task_instances.pl"
+COMPILED_RECEIPT_ROUTES = ROOT / "curriculum" / "im" / "generated" / "compiled_receipt_routes.pl"
 ATLAS = ROOT / "scripts" / "bigred" / "iteration15" / "work" / "atlas" / "atlas_landscape.jsonl"
 
 LESSON_ID_RE = re.compile(r"IM-G(K|[1-8])-U\d+-L\d+")
@@ -56,6 +57,15 @@ PRODUCTIVE_TASK_FACT_RE = re.compile(
 )
 DEFORMATION_TASK_RE = re.compile(
     r"compiled_lesson_task_instance\('([^']+)'\s*,\s*deformation\("
+)
+RECEIPT_ROUTE_RE = re.compile(
+    r"^receipt_contrast_route\('([^']+)'\s*,\s*[a-z_]+\s*,\s*([a-z_]+)\s*,",
+    re.MULTILINE,
+)
+RECEIPT_DEFECT_RE = re.compile(
+    r"^receipt_route_defect\('([^']+)'\s*,\s*[a-z_]+\s*,\s*[a-z_]+\s*,\s*"
+    r"([a-z_]+)\s*,\s*(.+)\)\.$",
+    re.MULTILINE,
 )
 PROLOG_STRING_PATTERN = r'"(?:\\.|[^"\\])*"'
 VISION_FACT_PREDICATES = (
@@ -509,6 +519,41 @@ def _productive_task_ids(paths: list[Path]) -> set[str]:
     return found
 
 
+def _receipt_route_index() -> tuple[set[tuple[str, str]], dict[str, list[dict]]]:
+    """Read generated receipt route and defect facts without starting Prolog.
+
+    Receipt alternatives are unique per lesson in the reviewed receipt register,
+    so the ``(lesson, alternative)`` pair is the licensing key.  Defects stay
+    indexed separately: they describe an existing receipt even when another
+    receipt for the same lesson supplies a runnable contrast.
+    """
+    text = COMPILED_RECEIPT_ROUTES.read_text(encoding="utf-8", errors="strict")
+    route_keys = set(RECEIPT_ROUTE_RE.findall(text))
+    defects: dict[str, list[dict]] = {}
+    for lesson, alternative, reason in RECEIPT_DEFECT_RE.findall(text):
+        defects.setdefault(lesson, []).append({
+            "alternative": alternative,
+            "reason": reason,
+        })
+    for rows in defects.values():
+        rows.sort(key=lambda row: (row["alternative"], row["reason"]))
+    # Since routes license structured_negative, a partial read here would
+    # silently demote lessons.  The generated file states its own totals;
+    # refuse any disagreement between them and what the regexes recovered.
+    summary = re.search(r"^receipt_route_summary\((\d+),\s*(\d+)\)\.", text, re.M)
+    if summary is None:
+        raise ValueError(f"{COMPILED_RECEIPT_ROUTES} carries no receipt_route_summary/2 fact")
+    declared_routes, declared_defects = (int(group) for group in summary.groups())
+    defect_count = sum(len(rows) for rows in defects.values())
+    if len(route_keys) != declared_routes or defect_count != declared_defects:
+        raise ValueError(
+            f"receipt route reader disagrees with the file's own summary: "
+            f"parsed {len(route_keys)} route keys / {defect_count} defects, "
+            f"declared {declared_routes} / {declared_defects}"
+        )
+    return route_keys, defects
+
+
 def _measured_lessons() -> set[str]:
     """Lessons the Atlas sweep ran at least one transition to completion for.
 
@@ -558,6 +603,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
     receipt_index = _validated_negative_receipts(
         {row["repo_id"] for row in spine}, strategy_mappings
     )
+    receipt_route_keys, receipt_defects = _receipt_route_index()
 
     lessons = []
     for row in spine:
@@ -595,6 +641,11 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             }.values()
         ]
         negative_receipts = receipt_index.get(lesson_id, [])
+        binding_receipt = any(
+            (lesson_id, receipt["alternative"]) in receipt_route_keys
+            for receipt in negative_receipts
+        )
+        negative_receipt_defects = receipt_defects.get(lesson_id, [])
         evidence = {
             "standard_action_candidate": bool(standard_action_candidates),
             "strategy_evidence": lesson_id in direct_strategy or lesson_id in compiled_strategy,
@@ -603,7 +654,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             "structured_negative": (
                 lesson_id in explicit_negative
                 or lesson_id in deformation_task
-                or bool(negative_receipts)
+                or binding_receipt
             ),
             "measured_transition": lesson_id in measured,
         }
@@ -620,7 +671,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             readiness = "standard_action_candidate"
         else:
             readiness = "spine_only"
-        lessons.append({
+        lesson = {
             "lesson": lesson_id,
             "grade": str(row["grade"]),
             "name": row["name"],
@@ -631,7 +682,10 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             "evidence": evidence,
             "readiness": readiness,
             "missing_for_diagnosis": missing,
-        })
+        }
+        if negative_receipt_defects:
+            lesson["negative_receipt_defects"] = negative_receipt_defects
+        lessons.append(lesson)
 
     summary = Counter()
     by_grade: dict[str, Counter] = {}
@@ -654,7 +708,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             "standard_action_candidate": "inferred only from an addressing alignment; not executable",
             "context_only": "building_on/building_toward alignment; no lesson action inferred",
             "negative_candidate": "registry-derived counterpossibility; requires lesson-source review",
-            "structured_negative": "lesson-specific source receipt, explicit misconception, or compiled deformation",
+            "structured_negative": "runnable lesson-specific receipt route, explicit misconception, or compiled deformation",
             "diagnostic_ready": list(REQUIRED_FOR_DIAGNOSIS),
         },
         "sources": {
@@ -662,6 +716,7 @@ def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
             "standard_catalog": str(CATALOG.relative_to(ROOT)),
             "productive_deformation_catalog": str(PAIR_CATALOG.relative_to(ROOT)),
             "negative_receipts": str(NEGATIVE_RECEIPTS.relative_to(ROOT)),
+            "receipt_routes": str(COMPILED_RECEIPT_ROUTES.relative_to(ROOT)),
             "task_events": str(COMPILED_TASKS.relative_to(ROOT)),
             "atlas": str(ATLAS.relative_to(ROOT)),
         },
