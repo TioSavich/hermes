@@ -125,13 +125,15 @@ measured rather than predicted.** Adding
 `public_discovery_context(a_fortiori_context_closure).` serves all 11 rows to
 `incompatibility_set/2`, which previously served none of them — and moves the
 entailment not at all. All four closure pairs still answer NO, at a 300-second
-limit, so these are refusals rather than timeouts. The cause sits one layer
-deeper: `incompatibility_entailment_witness/3` requires
-`set_incompatible_witness(Context, ...)` to find its witness inside the *same*
-context as the profile it answers, and `incompatibility_set/2` is
-context-scoped. Closure rows carry context `a_fortiori_context_closure`; the
-profiles they would have to witness carry `defeasible_inference`. A closure row
-can therefore never witness the replacement it was generated to license.
+limit, so these are refusals rather than timeouts. In the state measured for
+this dated report, `incompatibility_entailment_witness/3` used the default
+same-context route: `set_incompatible_witness(Context, ...)` had to find its
+witness inside the same context as the profile it answered. Later reviewed
+`discovery_context_refines/2` and exact per-edge co-derivation declarations are
+explicit exceptions to that default. At this date, closure rows carried context
+`a_fortiori_context_closure` while the profiles they needed to witness carried
+`defeasible_inference`, so the closure row could not witness the replacement it
+was generated to license.
 
 Measured across the whole register: the runtime relation confirms **20 of the
 25** earned pairs. The five it refuses are the four closure pairs and

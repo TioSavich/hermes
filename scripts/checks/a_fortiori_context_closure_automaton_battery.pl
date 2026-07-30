@@ -70,6 +70,17 @@ closure_statuses(Observed) :-
     forall(a_fortiori_context_nesting(Narrow, Broad, Status, Warrant),
            closure_status(Narrow, Broad, Status, Warrant, Observed)).
 
+closure_status(fraction_part_numeral_order_diverges_within_equal_integer_parts,
+               written_numeral_order_diverges_from_decimal_value_order,
+               asserted, Warrant, Observed) :-
+    !,
+    memberchk(written_numeral_order_diverges_from_decimal_value_order,
+              Observed),
+    \+ memberchk(
+           fraction_part_numeral_order_diverges_within_equal_integer_parts,
+           Observed),
+    format("  equal-integer-part divergence subset written-numeral divergence: asserted (~w); the automaton probes broad-endpoint membership, not either class boundary~n",
+           [Warrant]).
 closure_status(written_numeral_order_diverges_from_decimal_value_order,
                the_numerals_carry_different_place_counts, asserted, Warrant,
                Observed) :-

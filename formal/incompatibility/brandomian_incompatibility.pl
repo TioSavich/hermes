@@ -79,6 +79,7 @@
             incompatibility_profile/2,     % +Content, -MinimalSets
             incompatibility_entails/2,     % +A, +B
             brandomian_neg/2,              % +Content, -MinimalIncompatiblePartners
+            incompatible_set_co_derivation/3, % +ProfileSet, -SourceContext, -WitnessSet
             add_incompatible_set/1,        % +Set
             retract_incompatible_set/1     % +Set
           ]).
@@ -134,6 +135,20 @@ incompatible_set([blackberry, red, ripe]).
 incompatible_set([o(diagonal_of_unit_square_measured),
                   o(length_is_count_of_units),
                   o(grounded(measuring_stick))]).
+
+%!  incompatible_set_co_derivation(+ProfileSet, -SourceContext, -WitnessSet) is nondet.
+%
+%   Per-edge provenance for a declared seed profile and the exact incompatible
+%   edge co-derived in another finite context. This does not make every edge in
+%   SourceContext available to every seed profile.
+incompatible_set_co_derivation(
+    [o(diagonal_of_unit_square_measured),
+     o(length_is_count_of_units),
+     o(grounded(measuring_stick))],
+    defeasible_inference,
+    [inference(measuring_stick_grounds_length),
+     o(diagonal_of_unit_square_measured),
+     o(length_is_count_of_units)]).
 
 % --- Arithmetic incompatibility lattice ----------------------------------
 incompatible_set([even, odd]).

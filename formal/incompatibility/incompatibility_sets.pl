@@ -32,7 +32,9 @@
 :- use_module(incompat(incompatibility_discovery),
               [ discover_incompatibility_set/2
               ]).
-:- use_module(incompat(brandomian_incompatibility), []).
+:- use_module(incompat(brandomian_incompatibility),
+              [ incompatible_set_co_derivation/3
+              ]).
 :- use_module(misconceptions(misconception_registry),
               [ misconception_registry_entry/5 ]).
 
@@ -250,16 +252,29 @@ public_discovery_context(a_fortiori_context_closure).
 %
 %   Declaring the refinement is what lets the runtime relation reach the four
 %   entailments the generated register already earns. A context that declares no
-%   refinement stays sealed, which is the default.
+%   refinement stays sealed from context-wide sharing by default. The third
+%   `witness_context/2` clause admits one exact co-derived edge without declaring
+%   a context refinement.
 discovery_context_refines(a_fortiori_context_closure, defeasible_inference).
 
-%!  witness_context(+Profile, -Source) is nondet.
+%!  witness_context(+Profile, -ScopedSource) is nondet.
 %
-%   The contexts a witness for a profile stated in Profile may come from: the
-%   profile's own context, and any context refining it.
-witness_context(Context, Context).
-witness_context(Context, Refining) :-
+%   The contexts a witness for a profile may come from: the profile's own
+%   context, any context refining it, or an exact co-derived edge declared by
+%   the Brandomian seed. The latter carries an exact-set scope so it cannot
+%   widen every brandomian_engine profile to the defeasible-inference store.
+witness_context(profile(Context, _OriginalSet, _CandidateSet),
+                source(Context, any_known_subset)).
+witness_context(profile(Context, _OriginalSet, _CandidateSet),
+                source(Refining, any_known_subset)) :-
     discovery_context_refines(Refining, Context).
+witness_context(profile(brandomian_engine, OriginalSet, CandidateSet),
+                source(Source, exact_known_set(WitnessSet))) :-
+    incompatible_set_co_derivation(
+        OriginalSet,
+        Source,
+        WitnessSet),
+    CandidateSet == WitnessSet.
 
 
 %!  incompatibility_entails(+A, +B) is semidet.
@@ -300,7 +315,12 @@ profile_replacement_witness(A, B, Context-OriginalSet,
                                support_witness: SupportWitness }) :-
     replace_term(B, A, OriginalSet, CandidateSet0),
     sort(CandidateSet0, CandidateSet),
-    set_incompatible_witness(Context, CandidateSet, SupportSet, SupportWitness).
+    set_incompatible_witness(
+        Context,
+        OriginalSet,
+        CandidateSet,
+        SupportSet,
+        SupportWitness).
 
 
 lesson_incompatibility_target('IM-G1-U3-L17', count_all_when_count_on_available).
@@ -314,7 +334,7 @@ registry_incompatibility_set(Name, [misconception(Name), Commitment, Entitlement
     misconception_registry_entry(Name, _Operation, _Citation, Commitment, Entitlement).
 
 
-set_incompatible_witness(Context, CandidateSet, KnownSet,
+set_incompatible_witness(Context, OriginalSet, CandidateSet, KnownSet,
                          _{ kind: known_incompatible_subset,
                             scope: closed_world_finite_incompatibility_table,
                             context: Context,
@@ -323,9 +343,17 @@ set_incompatible_witness(Context, CandidateSet, KnownSet,
                             known_set: KnownSet,
                             candidate_set: CandidateSet,
                             subset_relation: all_known_terms_member_of_candidate }) :-
-    witness_context(Context, Source),
+    witness_context(
+        profile(Context, OriginalSet, CandidateSet),
+        source(Source, WitnessScope)),
     incompatibility_set(Source, set(Provenance, KnownSet)),
+    witness_scope_accepts(WitnessScope, KnownSet),
     subset_terms(KnownSet, CandidateSet).
+
+
+witness_scope_accepts(any_known_subset, _KnownSet).
+witness_scope_accepts(exact_known_set(ExpectedSet), KnownSet) :-
+    ExpectedSet == KnownSet.
 
 
 incompatibility_terms(Context, Set) :-

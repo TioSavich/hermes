@@ -14,15 +14,28 @@ import json
 import subprocess
 import sys
 import tempfile
+from collections import Counter
 from dataclasses import dataclass
 from fractions import Fraction
+from itertools import permutations
+from operator import attrgetter
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_CLASSES = ROOT / "formal/incompatibility/context_input_classes.json"
+NESTINGS = ROOT / "formal/incompatibility/a_fortiori_context_nestings.json"
 RECEIPT = ROOT / "docs/research/2026-07-29-a-fortiori-input-nesting-settlement.md"
 
+FRACTION_CONTEXT_NAMES = {
+    "GAP": "gap_order_diverges_from_fraction_order",
+    "DEN": "denominator_order_inverts_for_equal_numerators",
+    "CSUM": "component_sum_inverts_for_equal_numerators",
+    "CORD": "component_order_inverts_for_equal_numerators",
+    "NORD": "numerator_order_diverges_for_unequal_denominators",
+    "IDEN": "inverse_denominator_order_diverges_for_unequal_numerators",
+    "ICOMP": "inverse_component_order_diverges_for_equal_denominators",
+}
 
 @dataclass(frozen=True)
 class DecimalNumeral:
@@ -31,6 +44,38 @@ class DecimalNumeral:
 
     def display(self) -> str:
         return f"{self.whole}.{self.digits}"
+
+
+@dataclass(frozen=True)
+class DecimalContextFeatures:
+    raw_disagrees: bool
+    equal_integer_part_diverges: bool
+    length_inverts: bool
+    length_tracks: bool
+    different_places: bool
+    written_diverges: bool
+    smaller_fraction_part_tracks: bool
+
+
+DECIMAL_CONTEXT_SPECS = (
+    ("fraction_part_numeral_order_diverges_from_value_order",
+     attrgetter("raw_disagrees")),
+    ("fraction_part_numeral_order_diverges_within_equal_integer_parts",
+     attrgetter("equal_integer_part_diverges")),
+    ("numeral_length_order_inverts_decimal_value_order",
+     attrgetter("length_inverts")),
+    ("numeral_length_order_tracks_decimal_value_order",
+     attrgetter("length_tracks")),
+    ("the_numerals_carry_different_place_counts",
+     attrgetter("different_places")),
+    ("written_numeral_order_diverges_from_decimal_value_order",
+     attrgetter("written_diverges")),
+    ("smaller_fraction_part_numeral_names_the_smaller_decimal",
+     attrgetter("smaller_fraction_part_tracks")),
+)
+DECIMAL_CONTEXT_NAMES = tuple(
+    name for name, _predicate in DECIMAL_CONTEXT_SPECS
+)
 
 
 def sign(value: int | Fraction) -> int:
@@ -130,20 +175,38 @@ def decimal_exact_order(left: DecimalNumeral, right: DecimalNumeral) -> int:
 
 
 def old_divisor_rows() -> list[dict[str, object]]:
-    divisors = [Fraction(value) for value in (-5, -1, 1, 2, 3, 5, 10, 25)] + [Fraction(1, 4), Fraction(1, 3), Fraction(1, 2), Fraction(3, 4), Fraction(125), Fraction(625), Fraction(3125), Fraction(15625)]
+    divisors, classes = division_classes()
     display_divisor = lambda value: str(value.numerator) if value.denominator == 1 else f"{value.numerator}/{value.denominator}"
-    powers = {Fraction(5 ** exponent) for exponent in range(1, 7)}
     old = [
-        set_row("the_divisor_is_not_a_whole_number subset the_divisor_is_not_one", divisors, {x for x in divisors if x.denominator != 1}, {x for x in divisors if x != 0 and x != 1}, display_divisor),
-        set_row("the_divisor_lies_between_zero_and_one subset the_divisor_is_not_one", divisors, {x for x in divisors if 0 < x < 1}, {x for x in divisors if x != 0 and x != 1}, display_divisor),
-        set_row("the_divisor_is_a_power_of_five subset the_divisor_is_not_ten", divisors, powers, {x for x in divisors if x.denominator == 1 and x != 10}, display_divisor),
-        set_row("the_divisor_is_a_power_of_five subset the_divisor_is_not_one", divisors, powers, {x for x in divisors if x != 0 and x != 1}, display_divisor),
-        set_row("CONTROL the_divisor_is_not_a_whole_number subset the_divisor_is_not_ten", divisors, {x for x in divisors if x.denominator != 1}, {x for x in divisors if x.denominator == 1 and x != 10}, display_divisor),
+        set_row("the_divisor_is_not_a_whole_number subset the_divisor_is_not_one", divisors, classes["the_divisor_is_not_a_whole_number"], classes["the_divisor_is_not_one"], display_divisor),
+        set_row("the_divisor_lies_between_zero_and_one subset the_divisor_is_not_one", divisors, classes["the_divisor_lies_between_zero_and_one"], classes["the_divisor_is_not_one"], display_divisor),
+        set_row("the_divisor_is_a_power_of_five subset the_divisor_is_not_ten", divisors, classes["the_divisor_is_a_power_of_five"], classes["the_divisor_is_not_ten"], display_divisor),
+        set_row("the_divisor_is_a_power_of_five subset the_divisor_is_not_one", divisors, classes["the_divisor_is_a_power_of_five"], classes["the_divisor_is_not_one"], display_divisor),
+        set_row("CONTROL the_divisor_is_not_a_whole_number subset the_divisor_is_not_ten", divisors, classes["the_divisor_is_not_a_whole_number"], classes["the_divisor_is_not_ten"], display_divisor),
     ]
     return old
 
 
-def decimal_context_rows() -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+def division_classes() -> tuple[list[Fraction], dict[str, set[Fraction]]]:
+    divisors = [Fraction(value) for value in (-5, -1, 1, 2, 3, 5, 10, 25)] + [
+        Fraction(1, 4), Fraction(1, 3), Fraction(1, 2), Fraction(3, 4),
+        Fraction(125), Fraction(625), Fraction(3125), Fraction(15625),
+    ]
+    powers = {Fraction(5 ** exponent) for exponent in range(1, 7)}
+    return divisors, {
+        "the_divisor_is_not_a_whole_number": {value for value in divisors if value.denominator != 1},
+        "the_divisor_lies_between_zero_and_one": {value for value in divisors if 0 < value < 1},
+        "the_divisor_is_not_one": {value for value in divisors if value != 0 and value != 1},
+        "the_divisor_is_a_power_of_five": {value for value in divisors if value in powers},
+        "the_divisor_is_not_ten": {value for value in divisors if value.denominator == 1 and value != 0 and value != 10},
+    }
+
+
+def decimal_context_rows() -> tuple[
+    list[dict[str, object]],
+    list[dict[str, object]],
+    Counter[int],
+]:
     """Measure B-1998 and B-2004 together, without a second pair sweep."""
     decimals = decimal_numerals(1, include_zero_fraction=True)
     names = [
@@ -165,6 +228,7 @@ def decimal_context_rows() -> tuple[list[dict[str, object]], list[dict[str, obje
     extended_counts = [[0, 0, 0, 0] for _ in names]
     extended_narrow_witnesses = [[] for _ in names]
     extended_broad_witnesses = [[] for _ in names]
+    frontier_masks: Counter[int] = Counter()
     for left in decimals:
         for right in decimals:
             if left == right:
@@ -177,6 +241,26 @@ def decimal_context_rows() -> tuple[list[dict[str, object]], list[dict[str, obje
             written_diverges = sign(int(f"{left.whole}{left.digits}") - int(f"{right.whole}{right.digits}")) != exact_order
             length_tracks = different_places and length_order == exact_order
             fpe = left.whole == right.whole and raw_disagrees
+            smaller_fraction_part_tracks = (
+                sign(int(left.digits) - int(right.digits)) != 0
+                and sign(int(left.digits) - int(right.digits)) == exact_order
+            )
+            frontier_features = DecimalContextFeatures(
+                raw_disagrees=raw_disagrees,
+                equal_integer_part_diverges=fpe,
+                length_inverts=length_inverts,
+                length_tracks=length_tracks,
+                different_places=different_places,
+                written_diverges=written_diverges,
+                smaller_fraction_part_tracks=smaller_fraction_part_tracks,
+            )
+            frontier_mask = sum(
+                1 << index
+                for index, (_name, predicate)
+                in enumerate(DECIMAL_CONTEXT_SPECS)
+                if predicate(frontier_features)
+            )
+            frontier_masks[frontier_mask] += 1
             cases = ((fpe, raw_disagrees),
                      (length_inverts, different_places),
                      (written_diverges, different_places),
@@ -222,17 +306,40 @@ def decimal_context_rows() -> tuple[list[dict[str, object]], list[dict[str, obje
             for index, (name, count) in enumerate(zip(names, counts))
         ]
 
-    return (rows_for(base_counts, base_narrow_witnesses, base_broad_witnesses),
-            rows_for(extended_counts, extended_narrow_witnesses, extended_broad_witnesses))
+    return (
+        rows_for(base_counts, base_narrow_witnesses, base_broad_witnesses),
+        rows_for(extended_counts, extended_narrow_witnesses, extended_broad_witnesses),
+        frontier_masks,
+    )
 
 
 def multiplication_row() -> dict[str, object]:
+    pairs, classes = multiplication_classes()
+    display = lambda p: f"{float(p[0]):.1f} x {float(p[1]):.1f}"
+    return set_row(
+        "a_factor_lies_between_zero_and_one subset a_factor_is_a_non_integer_decimal",
+        pairs,
+        classes["a_factor_lies_between_zero_and_one"],
+        classes["a_factor_is_a_non_integer_decimal"],
+        display,
+    )
+
+
+def multiplication_classes() -> tuple[
+    list[tuple[Fraction, Fraction]],
+    dict[str, set[tuple[Fraction, Fraction]]],
+]:
     values = [Fraction(number, 10) for number in range(31)]
     pairs = [(left, right) for left in values for right in values]
-    display = lambda p: f"{float(p[0]):.1f} x {float(p[1]):.1f}"
-    return set_row("a_factor_lies_between_zero_and_one subset a_factor_is_a_non_integer_decimal", pairs,
-                   {p for p in pairs if any(0 < x < 1 for x in p)},
-                   {p for p in pairs if any(x.denominator != 1 for x in p)}, display)
+    return pairs, {
+        "a_factor_lies_between_zero_and_one": {
+            pair for pair in pairs if any(0 < factor < 1 for factor in pair)
+        },
+        "a_factor_is_a_non_integer_decimal": {
+            pair for pair in pairs
+            if any(factor.denominator != 1 for factor in pair)
+        },
+    }
 
 
 def scale_loss_condition(numerator_one: int, scale_one: int,
@@ -332,7 +439,7 @@ def automaton_probes(pairs, gap: set) -> tuple[int, str, int, tuple[str, str], i
     return 974, separating, len(scale_conditions), scale_samples, len(fpe_conditions)
 
 
-def validate_source() -> None:
+def validate_source() -> dict[str, object]:
     source = json.loads(INPUT_CLASSES.read_text(encoding="utf-8"))
     if source.get("schema_version") != 1 or not isinstance(source.get("contexts"), dict):
         raise RuntimeError("unsupported context-input-class source")
@@ -356,6 +463,174 @@ def validate_source() -> None:
             raise RuntimeError(f"invalid typed input class: {name}")
     if source["contexts"]["numerator_sum_diverges_for_unequal_denominators"].get("refused") is not True:
         raise RuntimeError("NSUM must remain explicitly refused-unspecifiable")
+    return source
+
+
+def declared_nesting_pairs() -> set[tuple[str, str]]:
+    source = json.loads(NESTINGS.read_text(encoding="utf-8"))
+    if source.get("schema_version") != 1 or not isinstance(source.get("nestings"), list):
+        raise RuntimeError("unsupported a-fortiori context-nesting source")
+    pairs: set[tuple[str, str]] = set()
+    for row in source["nestings"]:
+        if not isinstance(row, dict):
+            raise RuntimeError("invalid a-fortiori context nesting row")
+        narrow = row.get("narrow")
+        broad = row.get("broad")
+        if not isinstance(narrow, str) or not isinstance(broad, str):
+            raise RuntimeError("a-fortiori context nesting lacks named endpoints")
+        pair = (narrow, broad)
+        if pair in pairs:
+            raise RuntimeError(f"duplicate a-fortiori context nesting: {narrow} < {broad}")
+        pairs.add(pair)
+    return pairs
+
+
+def set_frontier_rows(
+    battery: str,
+    classes: dict[str, set],
+) -> list[dict[str, object]]:
+    rows = []
+    for narrow, broad in permutations(sorted(classes), 2):
+        narrow_set = classes[narrow]
+        broad_set = classes[broad]
+        rows.append({
+            "battery": battery,
+            "narrow_name": narrow,
+            "broad_name": broad,
+            "narrow": len(narrow_set),
+            "broad": len(broad_set),
+            "narrow_minus_broad": len(narrow_set - broad_set),
+            "broad_minus_narrow": len(broad_set - narrow_set),
+        })
+    return rows
+
+
+def mask_frontier_rows(
+    battery: str,
+    names: tuple[str, ...],
+    mask_counts: Counter[int],
+) -> list[dict[str, object]]:
+    rows = []
+    for narrow_index, broad_index in permutations(range(len(names)), 2):
+        narrow_bit = 1 << narrow_index
+        broad_bit = 1 << broad_index
+        narrow_count = sum(count for mask, count in mask_counts.items() if mask & narrow_bit)
+        broad_count = sum(count for mask, count in mask_counts.items() if mask & broad_bit)
+        narrow_only = sum(
+            count
+            for mask, count in mask_counts.items()
+            if mask & narrow_bit and not mask & broad_bit
+        )
+        broad_only = sum(
+            count
+            for mask, count in mask_counts.items()
+            if mask & broad_bit and not mask & narrow_bit
+        )
+        rows.append({
+            "battery": battery,
+            "narrow_name": names[narrow_index],
+            "broad_name": names[broad_index],
+            "narrow": narrow_count,
+            "broad": broad_count,
+            "narrow_minus_broad": narrow_only,
+            "broad_minus_narrow": broad_only,
+        })
+    return rows
+
+
+def assert_declared_strict_frontier(
+    rows: list[dict[str, object]],
+    declared_pairs: set[tuple[str, str]],
+) -> list[dict[str, object]]:
+    undeclared = [
+        row for row in rows
+        if verdict(row) == "contained_strict"
+        and (row["narrow_name"], row["broad_name"]) not in declared_pairs
+    ]
+    if undeclared:
+        found = "; ".join(
+            f"{row['narrow_name']} < {row['broad_name']} [{row['battery']}]"
+            for row in undeclared
+        )
+        raise RuntimeError(
+            "undeclared strict same-type context nesting(s): " + found
+        )
+    return undeclared
+
+
+def assert_exhaustive_same_type_frontier(
+    source: dict[str, object],
+    fraction_classes_small: dict[str, set],
+    fraction_classes_large: dict[str, set],
+    decimal_masks: Counter[int],
+) -> dict[str, int]:
+    declared_pairs = declared_nesting_pairs()
+    _, division = division_classes()
+    _, numeral = numeral_classes()
+    _, multiplication = multiplication_classes()
+    fraction_small = {
+        FRACTION_CONTEXT_NAMES[name]: values
+        for name, values in fraction_classes_small.items()
+    }
+    fraction_large = {
+        FRACTION_CONTEXT_NAMES[name]: values
+        for name, values in fraction_classes_large.items()
+    }
+    primary_classes = {
+        "frac_pair": set(fraction_small),
+        "dec_pair": set(DECIMAL_CONTEXT_NAMES),
+        "division": set(division),
+        "numeral": set(numeral),
+        "multiplication": set(multiplication),
+    }
+
+    contexts = source["contexts"]
+    grouped: dict[str, set[str]] = {}
+    for name, row in contexts.items():
+        grouped.setdefault(row["input_type"], set()).add(name)
+    multi_context_groups = {
+        input_type: names
+        for input_type, names in grouped.items()
+        if len(names) > 1
+    }
+    if primary_classes != multi_context_groups:
+        missing = {
+            input_type: sorted(names - primary_classes.get(input_type, set()))
+            for input_type, names in multi_context_groups.items()
+            if names - primary_classes.get(input_type, set())
+        }
+        extra = {
+            input_type: sorted(names - multi_context_groups.get(input_type, set()))
+            for input_type, names in primary_classes.items()
+            if names - multi_context_groups.get(input_type, set())
+        }
+        raise RuntimeError(
+            f"same-type frontier builder coverage drift: missing={missing}; extra={extra}"
+        )
+
+    primary_rows = [
+        *set_frontier_rows("frac_pair D<=12", fraction_small),
+        *mask_frontier_rows("dec_pair", DECIMAL_CONTEXT_NAMES, decimal_masks),
+        *set_frontier_rows("division", division),
+        *set_frontier_rows("numeral", numeral),
+        *set_frontier_rows("multiplication", multiplication),
+    ]
+    robustness_rows = set_frontier_rows("frac_pair D<=20", fraction_large)
+    undeclared = assert_declared_strict_frontier(
+        primary_rows + robustness_rows,
+        declared_pairs,
+    )
+    strict_pairs = {
+        (row["narrow_name"], row["broad_name"])
+        for row in primary_rows
+        if verdict(row) == "contained_strict"
+    }
+    return {
+        "typed_contexts": len(contexts),
+        "ordered_pairs": len(primary_rows),
+        "strict": len(strict_pairs),
+        "undeclared_strict": len(undeclared),
+    }
 
 
 def render_row(row: dict[str, object], extra: str = "") -> str:
@@ -387,11 +662,31 @@ def required_fraction_rows(classes: dict[str, set], pairs) -> tuple[list[dict[st
     return rows, controls
 
 
-def numeral_row() -> dict[str, object]:
+def numeral_classes() -> tuple[
+    list[DecimalNumeral],
+    dict[str, set[DecimalNumeral]],
+]:
     values = decimal_numerals(3, include_zero_fraction=True)
-    t9 = {value for value in values if len(value.digits) == 1 and value.digits == "9"}
-    nnf = {value for value in values if int(value.digits) != 0}
-    row = set_row("S7 T9 subset NNF", values, t9, nnf, lambda value: value.display())
+    return values, {
+        "the_tenths_digit_is_nine": {
+            value for value in values
+            if len(value.digits) == 1 and value.digits == "9"
+        },
+        "the_numeral_carries_a_nonzero_fraction_part": {
+            value for value in values if int(value.digits) != 0
+        },
+    }
+
+
+def numeral_row() -> dict[str, object]:
+    values, classes = numeral_classes()
+    row = set_row(
+        "S7 T9 subset NNF",
+        values,
+        classes["the_tenths_digit_is_nine"],
+        classes["the_numeral_carries_a_nonzero_fraction_part"],
+        lambda value: value.display(),
+    )
     row["procedure"] = "4,008-numeral one-to-three-place battery, including 0/00/000 fraction parts; numeral retype"
     row["dissent"] = "subtraction-operand reading -> refused_type_mismatch"
     if verdict(row) != "contained_strict":
@@ -399,8 +694,8 @@ def numeral_row() -> dict[str, object]:
     return row
 
 
-def receipt() -> str:
-    validate_source()
+def receipt() -> tuple[str, dict[str, int]]:
+    source = validate_source()
     pairs, classes = fraction_classes(12)
     large_pairs, large_classes = fraction_classes(20)
     if len(pairs) != 4290 or len(large_pairs) != 35910:
@@ -413,7 +708,13 @@ def receipt() -> str:
     condition_count, separating, scale_case_count, scale_samples, fpe_probe_count = automaton_probes(pairs, classes["GAP"])
     numeral = numeral_row()
     old_divisors = old_divisor_rows()
-    decimals, decimal_robustness = decimal_context_rows()
+    decimals, decimal_robustness, decimal_masks = decimal_context_rows()
+    frontier = assert_exhaustive_same_type_frontier(
+        source,
+        classes,
+        large_classes,
+        decimal_masks,
+    )
     expected_wave3 = [
         (163512, 719280, 0, 555768),
         (163512, 326808, 0, 163296),
@@ -469,6 +770,9 @@ def receipt() -> str:
     lines = [
         "# A-fortiori context nesting: input settlement receipt", "",
         "Generated by `python3 scripts/checks/a_fortiori_context_nesting_sweep.py`. The JSON predicate column is the reviewed typed specification; this battery is its executable restatement. No containment is inferred from atom names.", "",
+        "## Exhaustive same-type frontier invariant", "",
+        f"`typed_contexts={frontier['typed_contexts']}; ordered_pairs={frontier['ordered_pairs']}; strict={frontier['strict']}; undeclared_strict={frontier['undeclared_strict']}`", "",
+        "These byte-compared fields cover every typed context and every ordered same-input-type pair. A changed strict count or a newly undeclared strict pair makes `--check` report receipt drift. The `undeclared_strict=0` field is emitted only after the undeclared-pair assertion has passed; it records that gate outcome rather than an independent measurement.", "",
         "## Decided readings and procedures", "",
         "- R1: multi-rule atoms use the intersection of every native rule's defeat set. It fixes GAP at equal gaps (440), not the gap automaton's 974-member condition class; coding 46920 states the equal-gap class.",
         "- R2: whole-number comparison heuristics are total and a tie yields equal. The loaded gap automaton attests this behavior; abstain-on-ties branches are retained below.",
@@ -530,7 +834,7 @@ def receipt() -> str:
         "Predicate prose is reviewed source. The Python sweep is executable for every row above. The single SWI-Prolog invocation checks the one-sided GAP probe, the 7,474-case scale-loss reimplementation agreement, the W3-2 broad-endpoint membership probe, and the equal-value WND control. GAP remains asserted because its condition over-covers the reviewed 440 boundary; W3-2's probe attests membership rather than a class boundary.",
         "",
     ])
-    return "\n".join(lines)
+    return "\n".join(lines), frontier
 
 
 def compare(expected: str) -> int:
@@ -549,14 +853,28 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the generated settlement receipt is stale")
     arguments = parser.parse_args()
-    artifact = receipt()
+    artifact, frontier = receipt()
+    frontier_status = (
+        f"typed_contexts={frontier['typed_contexts']}; "
+        f"ordered_pairs={frontier['ordered_pairs']}; "
+        f"strict={frontier['strict']}; "
+        f"undeclared_strict={frontier['undeclared_strict']}"
+    )
     if arguments.check:
         status = compare(artifact)
         if not status:
-            print("a-fortiori input-nesting receipt current: settled=19; task171=7; controls=7; fraction_pairs=4290")
+            print(
+                "a-fortiori input-nesting receipt current: "
+                "settled=19; task171=7; controls=7; fraction_pairs=4290; "
+                + frontier_status
+            )
         return status
     RECEIPT.write_text(artifact, encoding="utf-8")
-    print("a-fortiori input-nesting receipt written: settled=19; task171=7; controls=7; fraction_pairs=4290")
+    print(
+        "a-fortiori input-nesting receipt written: "
+        "settled=19; task171=7; controls=7; fraction_pairs=4290; "
+        + frontier_status
+    )
     return 0
 
 
