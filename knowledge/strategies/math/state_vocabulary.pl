@@ -179,6 +179,12 @@ state_label(q_compare_decimal_magnitudes, asktm_g4q2,
 state_label(q_scale_loss, asktm_g4q2, "misnomer of quantity",
             "ASKTM G4Q2 coded legend, A2/B2").
 
+% Division operand-role ordering.  The state name records the doing; the label
+% is the literature's rule, not a diagnosis of a learner.
+state_label(q_order_division_operands_by_magnitude, bonotto,
+            "larger number as dividend",
+            "Cinzia Bonotto 2005, Mathematical Thinking and Learning, p. 318; research corpus row 40632").
+
 % Display-default policy.  The final atom_name row is deliberately a fallback,
 % including for the three neutral GAP states, which have no state_label fact.
 display_default_tradition(constructivist, 1).

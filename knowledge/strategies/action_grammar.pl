@@ -142,6 +142,8 @@ normative_arc(keep_work_keep, stances([neutral, conserving, neutral, conserving]
               gloss("The conservation is secured, more work follows, and a second conservation closes the machine.")).
 normative_arc(break_keep_break, stances([neutral, deforming, conserving, deforming]),
               gloss("A break, then a step that keeps something locally, then a further break. The local keeping does not repair the earlier break.")).
+normative_arc(break_then_test_what_held, stances([neutral, deforming, neutral, conserving]),
+              gloss("A break, then ordinary work, then a check of what the result still keeps. The check records the agreement region without repairing the earlier role substitution.")).
 normative_arc(break_recover_break, stances([neutral, deforming, neutral, deforming]),
               gloss("A break, then working steps that look ordinary, then a further break. The most common deformation arc in the corpus.")).
 normative_arc(keep_work_keep_work_keep, stances([conserving, neutral, conserving, neutral, conserving]),
@@ -397,6 +399,9 @@ machine_grammar(discursive, discourse, universally_lx_loop, arc(work_then_keep),
 machine_grammar(discursive, discourse, utterance_run_to_its_loss, arc(work_then_break),
                 phrases([attend_then_name_the_token, let_the_utterance_run_on, record_deontic_incoherence]),
                 stances([neutral, neutral, deforming, deforming])).
+machine_grammar(computational, division, divide_larger_by_smaller, arc(break_then_test_what_held),
+                phrases([register_givens, order_by_magnitude, conflate_roles, apply_stored_rule, name_result, verify_invariant]),
+                stances([neutral, neutral, deforming, neutral, neutral, conserving])).
 machine_grammar(computational, division, fair_share_equal_groups, arc(keep_then_work_on),
                 phrases([assign_roles, share_into_known_groups, verify_invariant, name_result]),
                 stances([neutral, neutral, conserving, neutral])).
@@ -1261,6 +1266,9 @@ incompatible_pair(addition, make_ten_split_leftover, make_ten_drop_leftover, def
 incompatible_pair(statistics, mean_absolute_deviation, mean_deviation_without_absolute_value, deforms(signed_deviation_cancellation),
                   divergence(1, register_givens, locate_position),
                   class(register_divergence)).
+incompatible_pair(division, measure_groups_of_size, divide_larger_by_smaller, deforms(divide_larger_by_smaller),
+                  divergence(1, assign_roles, register_givens),
+                  class(same_register_neutral)).
 incompatible_pair(division, measure_groups_of_size, share_into_divisor_groups, deforms(divisor_as_number_of_groups),
                   divergence(2, measure_out_group_size, conflate_roles),
                   class(substantive_break)).
@@ -1654,6 +1662,8 @@ reading_held_open(addition, make_ten_split_leftover, make_ten_drop_leftover, div
                   reason("the two readings part at step 4 and both remain reachable: a trace on the make_ten_drop_leftover reading may still terminate where make_ten_split_leftover does, and the corpus cannot say it will not")).
 reading_held_open(statistics, mean_absolute_deviation, mean_deviation_without_absolute_value, divergence(1),
                   reason("the two readings part at step 1 and both remain reachable: a trace on the mean_deviation_without_absolute_value reading may still terminate where mean_absolute_deviation does, and the corpus cannot say it will not")).
+reading_held_open(division, measure_groups_of_size, divide_larger_by_smaller, divergence(1),
+                  reason("the two readings part at step 1 and both remain reachable: a trace on the divide_larger_by_smaller reading may still terminate where measure_groups_of_size does, and the corpus cannot say it will not")).
 reading_held_open(division, measure_groups_of_size, share_into_divisor_groups, divergence(2),
                   reason("the two readings part at step 2 and both remain reachable: a trace on the share_into_divisor_groups reading may still terminate where measure_groups_of_size does, and the corpus cannot say it will not")).
 reading_held_open(division, missing_factor_known_product_search, reject_known_product_match, divergence(4),
@@ -1745,7 +1755,7 @@ token_loss_rate(computational, accept_without_check, machines(4), ending_deformi
 token_loss_rate(computational, accumulate_total, machines(15), ending_deforming(2)).
 token_loss_rate(discursive, acknowledge_commitment, machines(8), ending_deforming(3)).
 token_loss_rate(computational, align_to_common_unit, machines(18), ending_deforming(3)).
-token_loss_rate(computational, apply_stored_rule, machines(12), ending_deforming(6)).
+token_loss_rate(computational, apply_stored_rule, machines(13), ending_deforming(6)).
 token_loss_rate(computational, assign_roles, machines(37), ending_deforming(10)).
 token_loss_rate(discursive, attend_to_utterance, machines(8), ending_deforming(4)).
 token_loss_rate(discursive, attribute_commitment, machines(4), ending_deforming(2)).
@@ -1754,7 +1764,7 @@ token_loss_rate(computational, compare_magnitudes, machines(17), ending_deformin
 token_loss_rate(computational, compose_expression, machines(6), ending_deforming(1)).
 token_loss_rate(computational, compute_product, machines(17), ending_deforming(7)).
 token_loss_rate(computational, compute_quotient, machines(9), ending_deforming(2)).
-token_loss_rate(computational, conflate_roles, machines(8), ending_deforming(6)).
+token_loss_rate(computational, conflate_roles, machines(9), ending_deforming(6)).
 token_loss_rate(computational, count_units, machines(20), ending_deforming(4)).
 token_loss_rate(computational, count_up_to_target, machines(8), ending_deforming(4)).
 token_loss_rate(computational, decompose_by_place, machines(7), ending_deforming(4)).
@@ -1774,9 +1784,9 @@ token_loss_rate(computational, locate_position, machines(13), ending_deforming(1
 token_loss_rate(computational, measure_out_group_size, machines(4), ending_deforming(1)).
 token_loss_rate(computational, measure_quantity, machines(8), ending_deforming(1)).
 token_loss_rate(computational, misname_result, machines(33), ending_deforming(32)).
-token_loss_rate(computational, name_result, machines(41), ending_deforming(2)).
+token_loss_rate(computational, name_result, machines(42), ending_deforming(2)).
 token_loss_rate(computational, omit_required_step, machines(42), ending_deforming(35)).
-token_loss_rate(computational, order_by_magnitude, machines(5), ending_deforming(1)).
+token_loss_rate(computational, order_by_magnitude, machines(6), ending_deforming(1)).
 token_loss_rate(computational, partition_into_equal_parts, machines(14), ending_deforming(1)).
 token_loss_rate(computational, re_express_equivalently, machines(6), ending_deforming(0)).
 token_loss_rate(computational, read_operand_attribute, machines(45), ending_deforming(14)).
@@ -1786,7 +1796,7 @@ token_loss_rate(computational, record_conservation, machines(19), ending_deformi
 token_loss_rate(discursive, record_deontic_incoherence, machines(7), ending_deforming(7)).
 token_loss_rate(discursive, record_deontic_score, machines(8), ending_deforming(0)).
 token_loss_rate(computational, record_loss, machines(55), ending_deforming(55)).
-token_loss_rate(computational, register_givens, machines(70), ending_deforming(27)).
+token_loss_rate(computational, register_givens, machines(71), ending_deforming(27)).
 token_loss_rate(computational, regroup_to_base, machines(7), ending_deforming(3)).
 token_loss_rate(computational, remove_quantity, machines(19), ending_deforming(8)).
 token_loss_rate(computational, replicate_equal_groups, machines(6), ending_deforming(2)).
@@ -1805,4 +1815,4 @@ token_loss_rate(computational, test_criteria, machines(8), ending_deforming(1)).
 token_loss_rate(computational, traverse_boundary, machines(4), ending_deforming(2)).
 token_loss_rate(computational, treat_relevant_as_irrelevant, machines(21), ending_deforming(16)).
 token_loss_rate(computational, unitize_referent, machines(20), ending_deforming(2)).
-token_loss_rate(computational, verify_invariant, machines(25), ending_deforming(0)).
+token_loss_rate(computational, verify_invariant, machines(26), ending_deforming(0)).

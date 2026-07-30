@@ -3,6 +3,7 @@
 :- multifile automaton_tuple/6.
 :- multifile automaton_transition/6.
 
+automaton_tuple(division, divide_larger_by_smaller, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([read_dividend_and_divisor_as_numerals, identify_larger_and_smaller, replace_dividend_divisor_roles_with_magnitude_order, divide_reordered_operands, name_quotient_and_remainder, record_dividend_divisor_role_viability]), start(q_start), accepting([q_accept])).
 automaton_tuple(division, fair_share_equal_groups, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([set_number_of_groups, deal_one_to_each_group_by_rounds, preserve_equal_shares, name_items_per_group]), start(q_start), accepting([q_accept])).
 automaton_tuple(division, inverse_fact_decomposition, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([load_known_multiples, apply_known_multiple_facts, accumulate_partial_quotients, name_fact_decomposition_result]), start(q_start), accepting([q_accept])).
 automaton_tuple(division, long_division, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([set_dividend_and_divisor, bring_down_dividend_digits_left_to_right, estimate_each_quotient_digit_by_trial_multiplication, subtract_partial_product_with_borrow_then_bring_down, emit_each_quotient_digit_at_its_place_value_column, name_quotient_and_remainder]), start(q_start), accepting([q_accept])).
@@ -19,22 +20,29 @@ automaton_tuple(division, stop_after_one_known_fact, states([q_start, q_step_1, 
 automaton_tuple(division, stop_at_nearby_product_in_search, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([set_division_as_missing_factor, test_candidate_products_until_nearby, stop_before_matching_product, name_nearby_factor_and_remainder, lose_exact_missing_factor]), start(q_start), accepting([q_accept])).
 automaton_tuple(division, sum_dividend_and_divisor, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([read_dividend_and_divisor_as_numerals, replace_coordinated_division_with_a_single_addition, collapse_the_bring_down_and_borrow_loop_to_one_step, name_digit_sum_as_answer, lose_quotient_recomposition]), start(q_start), accepting([q_accept])).
 
-automaton_transition(division, fair_share_equal_groups, q_start, set_number_of_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:120'))).
-automaton_transition(division, fair_share_equal_groups, q_step_1, deal_one_to_each_group_by_rounds, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:120'))).
-automaton_transition(division, fair_share_equal_groups, q_step_2, preserve_equal_shares, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:120'))).
-automaton_transition(division, fair_share_equal_groups, q_step_3, name_items_per_group, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:120'))).
+automaton_transition(division, divide_larger_by_smaller, q_start, read_dividend_and_divisor_as_numerals, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
+automaton_transition(division, divide_larger_by_smaller, q_step_1, identify_larger_and_smaller, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
+automaton_transition(division, divide_larger_by_smaller, q_step_2, replace_dividend_divisor_roles_with_magnitude_order, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
+automaton_transition(division, divide_larger_by_smaller, q_step_3, divide_reordered_operands, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
+automaton_transition(division, divide_larger_by_smaller, q_step_4, name_quotient_and_remainder, q_step_5, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
+automaton_transition(division, divide_larger_by_smaller, q_step_5, record_dividend_divisor_role_viability, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
 
-automaton_transition(division, inverse_fact_decomposition, q_start, load_known_multiples, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:213'))).
-automaton_transition(division, inverse_fact_decomposition, q_step_1, apply_known_multiple_facts, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:213'))).
-automaton_transition(division, inverse_fact_decomposition, q_step_2, accumulate_partial_quotients, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:213'))).
-automaton_transition(division, inverse_fact_decomposition, q_step_3, name_fact_decomposition_result, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:213'))).
+automaton_transition(division, fair_share_equal_groups, q_start, set_number_of_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:158'))).
+automaton_transition(division, fair_share_equal_groups, q_step_1, deal_one_to_each_group_by_rounds, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:158'))).
+automaton_transition(division, fair_share_equal_groups, q_step_2, preserve_equal_shares, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:158'))).
+automaton_transition(division, fair_share_equal_groups, q_step_3, name_items_per_group, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:158'))).
 
-automaton_transition(division, long_division, q_start, set_dividend_and_divisor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:386'))).
-automaton_transition(division, long_division, q_step_1, bring_down_dividend_digits_left_to_right, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:386'))).
-automaton_transition(division, long_division, q_step_2, estimate_each_quotient_digit_by_trial_multiplication, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:386'))).
-automaton_transition(division, long_division, q_step_3, subtract_partial_product_with_borrow_then_bring_down, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:386'))).
-automaton_transition(division, long_division, q_step_4, emit_each_quotient_digit_at_its_place_value_column, q_step_5, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:386'))).
-automaton_transition(division, long_division, q_step_5, name_quotient_and_remainder, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:386'))).
+automaton_transition(division, inverse_fact_decomposition, q_start, load_known_multiples, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:251'))).
+automaton_transition(division, inverse_fact_decomposition, q_step_1, apply_known_multiple_facts, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:251'))).
+automaton_transition(division, inverse_fact_decomposition, q_step_2, accumulate_partial_quotients, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:251'))).
+automaton_transition(division, inverse_fact_decomposition, q_step_3, name_fact_decomposition_result, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:251'))).
+
+automaton_transition(division, long_division, q_start, set_dividend_and_divisor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:424'))).
+automaton_transition(division, long_division, q_step_1, bring_down_dividend_digits_left_to_right, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:424'))).
+automaton_transition(division, long_division, q_step_2, estimate_each_quotient_digit_by_trial_multiplication, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:424'))).
+automaton_transition(division, long_division, q_step_3, subtract_partial_product_with_borrow_then_bring_down, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:424'))).
+automaton_transition(division, long_division, q_step_4, emit_each_quotient_digit_at_its_place_value_column, q_step_5, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:424'))).
+automaton_transition(division, long_division, q_step_5, name_quotient_and_remainder, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:424'))).
 
 automaton_transition(division, measure_groups_of_size, q_start, set_group_size, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:70'))).
 automaton_transition(division, measure_groups_of_size, q_step_1, repeatedly_remove_group_size, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:70'))).
@@ -42,70 +50,84 @@ automaton_transition(division, measure_groups_of_size, q_step_2, count_measured_
 automaton_transition(division, measure_groups_of_size, q_step_3, preserve_leftover_as_remainder, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:70'))).
 automaton_transition(division, measure_groups_of_size, q_step_4, name_quotient_and_remainder, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:70'))).
 
-automaton_transition(division, missing_factor_known_product_search, q_start, set_division_as_missing_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:314'))).
-automaton_transition(division, missing_factor_known_product_search, q_step_1, test_candidate_products, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:314'))).
-automaton_transition(division, missing_factor_known_product_search, q_step_2, locate_matching_product, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:314'))).
-automaton_transition(division, missing_factor_known_product_search, q_step_3, name_missing_factor_as_quotient, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:314'))).
+automaton_transition(division, missing_factor_known_product_search, q_start, set_division_as_missing_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:352'))).
+automaton_transition(division, missing_factor_known_product_search, q_step_1, test_candidate_products, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:352'))).
+automaton_transition(division, missing_factor_known_product_search, q_step_2, locate_matching_product, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:352'))).
+automaton_transition(division, missing_factor_known_product_search, q_step_3, name_missing_factor_as_quotient, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:352'))).
 
-automaton_transition(division, missing_factor_repeated_addition, q_start, set_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:165'))).
-automaton_transition(division, missing_factor_repeated_addition, q_step_1, count_by_factor_until_total, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:165'))).
-automaton_transition(division, missing_factor_repeated_addition, q_step_2, name_iteration_count_as_quotient, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:165'))).
-automaton_transition(division, missing_factor_repeated_addition, q_step_3, preserve_missing_factor_relation, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:165'))).
+automaton_transition(division, missing_factor_repeated_addition, q_start, set_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:203'))).
+automaton_transition(division, missing_factor_repeated_addition, q_step_1, count_by_factor_until_total, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:203'))).
+automaton_transition(division, missing_factor_repeated_addition, q_step_2, name_iteration_count_as_quotient, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:203'))).
+automaton_transition(division, missing_factor_repeated_addition, q_step_3, preserve_missing_factor_relation, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:203'))).
 
-automaton_transition(division, name_group_count_as_share_size, q_start, set_number_of_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:143'))).
-automaton_transition(division, name_group_count_as_share_size, q_step_1, confuse_number_of_groups_with_share_size, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:143'))).
-automaton_transition(division, name_group_count_as_share_size, q_step_2, name_group_count_as_answer, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:143'))).
-automaton_transition(division, name_group_count_as_share_size, q_step_3, lose_items_per_group, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:143'))).
+automaton_transition(division, name_group_count_as_share_size, q_start, set_number_of_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:181'))).
+automaton_transition(division, name_group_count_as_share_size, q_step_1, confuse_number_of_groups_with_share_size, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:181'))).
+automaton_transition(division, name_group_count_as_share_size, q_step_2, name_group_count_as_answer, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:181'))).
+automaton_transition(division, name_group_count_as_share_size, q_step_3, lose_items_per_group, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:181'))).
 
-automaton_transition(division, name_reached_total_as_quotient, q_start, set_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:189'))).
-automaton_transition(division, name_reached_total_as_quotient, q_step_1, count_by_factor_until_total, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:189'))).
-automaton_transition(division, name_reached_total_as_quotient, q_step_2, name_reached_total_as_answer, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:189'))).
-automaton_transition(division, name_reached_total_as_quotient, q_step_3, lose_iteration_count, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:189'))).
+automaton_transition(division, name_reached_total_as_quotient, q_start, set_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:227'))).
+automaton_transition(division, name_reached_total_as_quotient, q_step_1, count_by_factor_until_total, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:227'))).
+automaton_transition(division, name_reached_total_as_quotient, q_step_2, name_reached_total_as_answer, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:227'))).
+automaton_transition(division, name_reached_total_as_quotient, q_step_3, lose_iteration_count, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:227'))).
 
-automaton_transition(division, partial_quotient_chunking, q_start, set_divisor_as_chunk_unit, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:264'))).
-automaton_transition(division, partial_quotient_chunking, q_step_1, choose_partial_quotient_multiples, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:264'))).
-automaton_transition(division, partial_quotient_chunking, q_step_2, subtract_partial_multiples, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:264'))).
-automaton_transition(division, partial_quotient_chunking, q_step_3, accumulate_partial_quotients, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:264'))).
-automaton_transition(division, partial_quotient_chunking, q_step_4, name_partial_quotient_result, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:264'))).
+automaton_transition(division, partial_quotient_chunking, q_start, set_divisor_as_chunk_unit, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:302'))).
+automaton_transition(division, partial_quotient_chunking, q_step_1, choose_partial_quotient_multiples, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:302'))).
+automaton_transition(division, partial_quotient_chunking, q_step_2, subtract_partial_multiples, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:302'))).
+automaton_transition(division, partial_quotient_chunking, q_step_3, accumulate_partial_quotients, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:302'))).
+automaton_transition(division, partial_quotient_chunking, q_step_4, name_partial_quotient_result, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:302'))).
 
-automaton_transition(division, reject_known_product_match, q_start, set_division_as_missing_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:362'))).
-automaton_transition(division, reject_known_product_match, q_step_1, test_candidate_products, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:362'))).
-automaton_transition(division, reject_known_product_match, q_step_2, locate_matching_product, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:362'))).
-automaton_transition(division, reject_known_product_match, q_step_3, reject_product_match_as_not_contextualized, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:362'))).
-automaton_transition(division, reject_known_product_match, q_step_4, lose_known_product_context, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:362'))).
+automaton_transition(division, reject_known_product_match, q_start, set_division_as_missing_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:400'))).
+automaton_transition(division, reject_known_product_match, q_step_1, test_candidate_products, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:400'))).
+automaton_transition(division, reject_known_product_match, q_step_2, locate_matching_product, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:400'))).
+automaton_transition(division, reject_known_product_match, q_step_3, reject_product_match_as_not_contextualized, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:400'))).
+automaton_transition(division, reject_known_product_match, q_step_4, lose_known_product_context, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:400'))).
 
-automaton_transition(division, share_into_divisor_groups, q_start, set_group_size, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
-automaton_transition(division, share_into_divisor_groups, q_step_1, reinterpret_divisor_as_number_of_groups, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
-automaton_transition(division, share_into_divisor_groups, q_step_2, deal_total_into_groups, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
-automaton_transition(division, share_into_divisor_groups, q_step_3, name_items_in_first_group_as_number_of_groups, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
-automaton_transition(division, share_into_divisor_groups, q_step_4, lose_measurement_remainder, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:94'))).
+automaton_transition(division, share_into_divisor_groups, q_start, set_group_size, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:132'))).
+automaton_transition(division, share_into_divisor_groups, q_step_1, reinterpret_divisor_as_number_of_groups, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:132'))).
+automaton_transition(division, share_into_divisor_groups, q_step_2, deal_total_into_groups, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:132'))).
+automaton_transition(division, share_into_divisor_groups, q_step_3, name_items_in_first_group_as_number_of_groups, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:132'))).
+automaton_transition(division, share_into_divisor_groups, q_step_4, lose_measurement_remainder, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:132'))).
 
-automaton_transition(division, stop_after_first_partial_quotient, q_start, set_divisor_as_chunk_unit, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:286'))).
-automaton_transition(division, stop_after_first_partial_quotient, q_step_1, choose_first_partial_multiple, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:286'))).
-automaton_transition(division, stop_after_first_partial_quotient, q_step_2, subtract_first_partial_multiple, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:286'))).
-automaton_transition(division, stop_after_first_partial_quotient, q_step_3, stop_before_recomposing_remaining_total, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:286'))).
-automaton_transition(division, stop_after_first_partial_quotient, q_step_4, name_incomplete_partial_quotient, q_step_5, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:286'))).
-automaton_transition(division, stop_after_first_partial_quotient, q_step_5, lose_partial_quotient_recomposition, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:286'))).
+automaton_transition(division, stop_after_first_partial_quotient, q_start, set_divisor_as_chunk_unit, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:324'))).
+automaton_transition(division, stop_after_first_partial_quotient, q_step_1, choose_first_partial_multiple, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:324'))).
+automaton_transition(division, stop_after_first_partial_quotient, q_step_2, subtract_first_partial_multiple, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:324'))).
+automaton_transition(division, stop_after_first_partial_quotient, q_step_3, stop_before_recomposing_remaining_total, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:324'))).
+automaton_transition(division, stop_after_first_partial_quotient, q_step_4, name_incomplete_partial_quotient, q_step_5, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:324'))).
+automaton_transition(division, stop_after_first_partial_quotient, q_step_5, lose_partial_quotient_recomposition, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:324'))).
 
-automaton_transition(division, stop_after_one_known_fact, q_start, load_known_multiples, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:236'))).
-automaton_transition(division, stop_after_one_known_fact, q_step_1, apply_first_known_multiple_only, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:236'))).
-automaton_transition(division, stop_after_one_known_fact, q_step_2, stop_with_remaining_total, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:236'))).
-automaton_transition(division, stop_after_one_known_fact, q_step_3, name_partial_quotient_and_remainder, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:236'))).
-automaton_transition(division, stop_after_one_known_fact, q_step_4, lose_iterative_fact_decomposition, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:236'))).
+automaton_transition(division, stop_after_one_known_fact, q_start, load_known_multiples, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:274'))).
+automaton_transition(division, stop_after_one_known_fact, q_step_1, apply_first_known_multiple_only, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:274'))).
+automaton_transition(division, stop_after_one_known_fact, q_step_2, stop_with_remaining_total, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:274'))).
+automaton_transition(division, stop_after_one_known_fact, q_step_3, name_partial_quotient_and_remainder, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:274'))).
+automaton_transition(division, stop_after_one_known_fact, q_step_4, lose_iterative_fact_decomposition, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:274'))).
 
-automaton_transition(division, stop_at_nearby_product_in_search, q_start, set_division_as_missing_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:335'))).
-automaton_transition(division, stop_at_nearby_product_in_search, q_step_1, test_candidate_products_until_nearby, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:335'))).
-automaton_transition(division, stop_at_nearby_product_in_search, q_step_2, stop_before_matching_product, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:335'))).
-automaton_transition(division, stop_at_nearby_product_in_search, q_step_3, name_nearby_factor_and_remainder, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:335'))).
-automaton_transition(division, stop_at_nearby_product_in_search, q_step_4, lose_exact_missing_factor, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:335'))).
+automaton_transition(division, stop_at_nearby_product_in_search, q_start, set_division_as_missing_factor, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:373'))).
+automaton_transition(division, stop_at_nearby_product_in_search, q_step_1, test_candidate_products_until_nearby, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:373'))).
+automaton_transition(division, stop_at_nearby_product_in_search, q_step_2, stop_before_matching_product, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:373'))).
+automaton_transition(division, stop_at_nearby_product_in_search, q_step_3, name_nearby_factor_and_remainder, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:373'))).
+automaton_transition(division, stop_at_nearby_product_in_search, q_step_4, lose_exact_missing_factor, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:373'))).
 
-automaton_transition(division, sum_dividend_and_divisor, q_start, read_dividend_and_divisor_as_numerals, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:418'))).
-automaton_transition(division, sum_dividend_and_divisor, q_step_1, replace_coordinated_division_with_a_single_addition, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:418'))).
-automaton_transition(division, sum_dividend_and_divisor, q_step_2, collapse_the_bring_down_and_borrow_loop_to_one_step, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:418'))).
-automaton_transition(division, sum_dividend_and_divisor, q_step_3, name_digit_sum_as_answer, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:418'))).
-automaton_transition(division, sum_dividend_and_divisor, q_step_4, lose_quotient_recomposition, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:418'))).
+automaton_transition(division, sum_dividend_and_divisor, q_start, read_dividend_and_divisor_as_numerals, q_step_1, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:456'))).
+automaton_transition(division, sum_dividend_and_divisor, q_step_1, replace_coordinated_division_with_a_single_addition, q_step_2, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:456'))).
+automaton_transition(division, sum_dividend_and_divisor, q_step_2, collapse_the_bring_down_and_borrow_loop_to_one_step, q_step_3, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:456'))).
+automaton_transition(division, sum_dividend_and_divisor, q_step_3, name_digit_sum_as_answer, q_step_4, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:456'))).
+automaton_transition(division, sum_dividend_and_divisor, q_step_4, lose_quotient_recomposition, q_accept, provenance(static('knowledge/strategies/math/smr_div_action_pairs.pl:456'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(division, divide_larger_by_smaller, q_start, read_dividend_and_divisor_as_numerals, q_step_1, provenance(observed(contract_example))).
+automaton_transition(division, divide_larger_by_smaller, q_step_1, identify_larger_and_smaller, q_step_2, provenance(observed(contract_example))).
+automaton_transition(division, divide_larger_by_smaller, q_step_2, replace_dividend_divisor_roles_with_magnitude_order, q_step_3, provenance(observed(contract_example))).
+automaton_transition(division, divide_larger_by_smaller, q_step_3, divide_reordered_operands, q_step_4, provenance(observed(contract_example))).
+automaton_transition(division, divide_larger_by_smaller, q_step_4, name_quotient_and_remainder, q_step_5, provenance(observed(contract_example))).
+automaton_transition(division, divide_larger_by_smaller, q_step_5, record_dividend_divisor_role_viability, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(division, divide_larger_by_smaller, q_start, read_dividend_and_divisor_as_numerals, q_step_1, provenance(observed(derived_template))).
+automaton_transition(division, divide_larger_by_smaller, q_step_1, identify_larger_and_smaller, q_step_2, provenance(observed(derived_template))).
+automaton_transition(division, divide_larger_by_smaller, q_step_2, replace_dividend_divisor_roles_with_magnitude_order, q_step_3, provenance(observed(derived_template))).
+automaton_transition(division, divide_larger_by_smaller, q_step_3, divide_reordered_operands, q_step_4, provenance(observed(derived_template))).
+automaton_transition(division, divide_larger_by_smaller, q_step_4, name_quotient_and_remainder, q_step_5, provenance(observed(derived_template))).
+automaton_transition(division, divide_larger_by_smaller, q_step_5, record_dividend_divisor_role_viability, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(division, fair_share_equal_groups, q_start, set_number_of_groups, q_step_1, provenance(observed(contract_example))).
 automaton_transition(division, fair_share_equal_groups, q_step_1, deal_one_to_each_group_by_rounds, q_step_2, provenance(observed(contract_example))).
 automaton_transition(division, fair_share_equal_groups, q_step_2, preserve_equal_shares, q_step_3, provenance(observed(contract_example))).

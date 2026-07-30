@@ -696,15 +696,17 @@ def main() -> int:
         raise SystemExit("pair and product bounds must be positive")
     started = time.monotonic()
     observed = read_observed_automata(args.tables.resolve())
-    # 106 since task 131 gave the automata registered on 2026-07-25 input
+    # 107 since task 205 added the execution-observed
+    # divide_larger_by_smaller machine to the 106 task-131 signatures. Task
+    # 131 gave the automata registered on 2026-07-25 input
     # contracts: 43 were added, 6 carry example kinds this extractor cannot encode
     # as probe arguments, and the remaining 37 joined the 69 already witnessed.
     # A guard rather than a preference — the analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.
-    if len(observed) != 106:
+    if len(observed) != 107:
         raise SystemExit(
-            f"expected 106 execution-observed signatures, found {len(observed)}"
+            f"expected 107 execution-observed signatures, found {len(observed)}"
         )
     if args.smoke:
         by_name = {automaton.signature.name: automaton for automaton in observed}

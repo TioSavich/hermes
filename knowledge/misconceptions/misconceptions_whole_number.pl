@@ -4646,6 +4646,21 @@ test_harness:arith_misconception(action_registry(subtraction, add_instead_of_sub
     misconceptions_whole_number_action_delegates:add_instead_of_subtract_column,
     10-4, 6).
 
+% === divide_larger_by_smaller: operand magnitude replaces problem roles ===
+% Task: division where the problem names the smaller operand as dividend.
+% Error: the operands are ordered by magnitude before division, regardless of
+% which quantity the problem names as dividend or divisor.
+% CONNECTS TO: s(comp_nec(unlicensed(divide_larger_by_smaller)))
+misconceptions_whole_number_action_delegates:(
+    divide_larger_by_smaller(Dividend-Divisor, Got) :-
+        delegated_action_result(division, divide_larger_by_smaller,
+                                Dividend, Divisor, Got)).
+
+test_harness:arith_misconception(action_registry(division, divide_larger_by_smaller),
+    whole_number, divide_larger_by_smaller,
+    misconceptions_whole_number_action_delegates:divide_larger_by_smaller,
+    15-100, quotient_remainder(0, 15)).
+
 % answer_as_endpoint_count_up is deliberately not registered here, and the
 % reason names a limit the contrast runner still has. Counting up from the
 % subtrahend and reporting the endpoint gives the correct difference exactly

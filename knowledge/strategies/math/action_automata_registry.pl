@@ -286,6 +286,10 @@ action_automaton_signature(division, measure_groups_of_size,
                            inputs(nonnegative_integer_total,
                                   positive_integer_group_size),
                            integer_quotient_and_remainder).
+action_automaton_signature(division, divide_larger_by_smaller,
+                           inputs(positive_integer_dividend,
+                                  positive_integer_divisor),
+                           magnitude_ordered_quotient_and_remainder).
 action_automaton_signature(division, share_into_divisor_groups,
                            inputs(nonnegative_integer_total,
                                   positive_integer_divisor),

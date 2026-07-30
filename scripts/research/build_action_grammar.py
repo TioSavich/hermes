@@ -146,6 +146,8 @@ ARCS: dict[tuple[str, ...], tuple[str, str]] = {
      "The conservation is secured early and the machine keeps working after it."),
     ("neutral", "deforming", "neutral"): ("break_then_work_on",
      "The break happens early and the machine keeps working after it, on material that no longer carries the relation."),
+    ("neutral", "deforming", "neutral", "conserving"): ("break_then_test_what_held",
+     "A break, then ordinary work, then a check of what the result still keeps. The check records the agreement region without repairing the earlier role substitution."),
     ("neutral", "deforming", "neutral", "deforming"): ("break_recover_break",
      "A break, then working steps that look ordinary, then a further break. The most common deformation arc in the corpus."),
     ("neutral", "conserving", "neutral", "conserving"): ("keep_work_keep",

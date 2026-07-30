@@ -1643,6 +1643,30 @@ action_maps(decimal, recalled_result_scaling, recall_base_division_fact, retriev
             confidence(high),
             evidence("decimal/recalled_result_scaling, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. recall a stored fact instead of reconstructing it."),
             status(review_pending)).
+action_maps(division, divide_larger_by_smaller, read_dividend_and_divisor_as_numerals, register_givens,
+            confidence(high),
+            evidence("division/divide_larger_by_smaller, q_start -> q_step_1: 1 of the machine's 6 distinct edges. holds the problem-named dividend and divisor before the magnitude rule acts."),
+            status(review_pending)).
+action_maps(division, divide_larger_by_smaller, identify_larger_and_smaller, order_by_magnitude,
+            confidence(high),
+            evidence("division/divide_larger_by_smaller, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges. orders the two positive operands by magnitude."),
+            status(review_pending)).
+action_maps(division, divide_larger_by_smaller, replace_dividend_divisor_roles_with_magnitude_order, conflate_roles,
+            confidence(high),
+            evidence("division/divide_larger_by_smaller, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges. replaces the problem's dividend and divisor roles with larger and smaller, the documented deformation."),
+            status(review_pending)).
+action_maps(division, divide_larger_by_smaller, divide_reordered_operands, apply_stored_rule,
+            confidence(high),
+            evidence("division/divide_larger_by_smaller, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges. performs integer quotient-and-remainder division on the reordered operands."),
+            status(review_pending)).
+action_maps(division, divide_larger_by_smaller, name_quotient_and_remainder, name_result,
+            confidence(high),
+            evidence("division/divide_larger_by_smaller, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges. names the quotient and remainder in the productive partner's result schema."),
+            status(review_pending)).
+action_maps(division, divide_larger_by_smaller, record_dividend_divisor_role_viability, verify_invariant,
+            confidence(high),
+            evidence("division/divide_larger_by_smaller, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges. records whether magnitude ordering preserved or replaced the problem-named roles."),
+            status(review_pending)).
 action_maps(division, fair_share_equal_groups, deal_one_to_each_group_by_rounds, share_into_known_groups,
             confidence(high),
             evidence("division/fair_share_equal_groups, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, witnessed. deal the total into a known number of groups to find how much each group holds."),

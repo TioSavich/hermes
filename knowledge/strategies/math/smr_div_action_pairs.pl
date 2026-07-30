@@ -91,6 +91,44 @@ run_division_action(measure_groups_of_size, Total, GroupSize, Outcome, Trace) :-
               preserve_leftover_as_remainder(Remainder),
               name_quotient_and_remainder(Quotient, Remainder)
             ].
+run_division_action(divide_larger_by_smaller, Dividend, Divisor, Outcome, Trace) :-
+    % Domain: both problem-named operands are positive integers.  Zero is
+    % refused because ordering it into the smaller position would manufacture
+    % division by zero; negative and nonground operands are outside this
+    % whole-number magnitude-ordering practice.
+    ordered_division_operands(Dividend, Divisor, Larger, Smaller),
+    division_components(Dividend, Divisor,
+                        division_components(Divisor, ExpectedQuotient, ExpectedRemainder)),
+    division_components(Larger, Smaller,
+                        division_components(Smaller, Quotient, Remainder)),
+    Expected = quotient_remainder(ExpectedQuotient, ExpectedRemainder),
+    Result = quotient_remainder(Quotient, Remainder),
+    division_order_viability(Expected, Result, Viability),
+    division_order_viability_validity(Viability, Validity),
+    Outcome = action_outcome(
+                  divide_larger_by_smaller,
+                  [ classification(deformation),
+                    cluster(division_grouping_structures),
+                    automaton_state(q_order_division_operands_by_magnitude),
+                    vocabulary([dividend, divisor, operand_magnitude, quotient, remainder]),
+                    result(Result),
+                    expected(Expected),
+                    validity(Validity),
+                    operands(dividend_divisor(Dividend, Divisor)),
+                    ordered_operands(larger(Larger), smaller(Smaller)),
+                    domain(positive_integer_operands),
+                    agreement_region(given_dividend_at_least_given_divisor),
+                    viability(Viability),
+                    deformation_of(measure_groups_of_size),
+                    misconception_family(divide_larger_by_smaller)
+                  ]),
+    Trace = [ read_dividend_and_divisor_as_numerals(Dividend, Divisor),
+              identify_larger_and_smaller(Larger, Smaller),
+              replace_dividend_divisor_roles_with_magnitude_order(Larger, Smaller),
+              divide_reordered_operands(Larger, Smaller, Result),
+              name_quotient_and_remainder(Quotient, Remainder),
+              record_dividend_divisor_role_viability(Viability)
+            ].
 run_division_action(share_into_divisor_groups, Total, Divisor, Outcome, Trace) :-
     division_components(Total, Divisor, Components),
     Components = division_components(Divisor, Quotient, Remainder),
@@ -454,6 +492,7 @@ run_division_action(sum_dividend_and_divisor, Total, Divisor, Outcome, Trace) :-
 
 %!  division_action_cluster(+Kind, -Cluster) is det.
 division_action_cluster(measure_groups_of_size, division_grouping_structures).
+division_action_cluster(divide_larger_by_smaller, division_grouping_structures).
 division_action_cluster(share_into_divisor_groups, division_grouping_structures).
 division_action_cluster(fair_share_equal_groups, division_grouping_structures).
 division_action_cluster(name_group_count_as_share_size, division_grouping_structures).
@@ -473,6 +512,8 @@ division_action_cluster(sum_dividend_and_divisor, division_long_division).
 %!  division_action_vocabulary(+Kind, -Vocabulary) is det.
 division_action_vocabulary(measure_groups_of_size,
                            [total, group_size, measured_group, quotient, remainder]).
+division_action_vocabulary(divide_larger_by_smaller,
+                           [dividend, divisor, operand_magnitude, quotient, remainder]).
 division_action_vocabulary(share_into_divisor_groups,
                            [total, group_size, measured_group, quotient, remainder]).
 division_action_vocabulary(fair_share_equal_groups,
@@ -507,6 +548,9 @@ division_action_vocabulary(sum_dividend_and_divisor,
 productive_division_deformation(measure_groups_of_size,
                                 share_into_divisor_groups,
                                 divisor_as_number_of_groups).
+productive_division_deformation(measure_groups_of_size,
+                                divide_larger_by_smaller,
+                                divide_larger_by_smaller).
 productive_division_deformation(fair_share_equal_groups,
                                 name_group_count_as_share_size,
                                 group_count_as_share_size).
@@ -566,6 +610,40 @@ division_components(Total, Divisor, division_components(Divisor, Quotient, Remai
     recollection_to_integer(RecQuotient, Quotient),
     recollection_to_integer(RecRemainder, Remainder),
     incur_cost(action_division_components).
+
+
+ordered_division_operands(Dividend, Divisor, Dividend, Divisor) :-
+    integer(Dividend),
+    integer(Divisor),
+    positive_int(Dividend),
+    positive_int(Divisor),
+    Dividend >= Divisor,
+    !.
+ordered_division_operands(Dividend, Divisor, Divisor, Dividend) :-
+    integer(Dividend),
+    integer(Divisor),
+    positive_int(Dividend),
+    positive_int(Divisor),
+    Dividend < Divisor.
+
+
+division_order_viability(Expected, Expected,
+                         viability(contextual_success,
+                                   condition(given_dividend_at_least_given_divisor),
+                                   validity(contextually_correct))) :-
+    !.
+division_order_viability(Expected, Produced,
+                         viability(fails_in_context,
+                                   condition(magnitude_order_replaces_given_dividend_divisor_roles),
+                                   expected(Expected),
+                                   produced(Produced),
+                                   validity(incorrect))).
+
+
+division_order_viability_validity(
+    viability(contextual_success, _, validity(Validity)), Validity).
+division_order_viability_validity(
+    viability(fails_in_context, _, _, _, validity(Validity)), Validity).
 
 
 measurement_remainders(Total, GroupSize, Remainders) :-
