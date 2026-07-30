@@ -1488,6 +1488,7 @@ slice(family, machine(discourse, pragmatic_metavocabulary_construction)).
 slice(family, machine(discourse, tutorial_interruption_on_incompatible_token)).
 slice(family, machine(discourse, universally_lx_loop)).
 slice(family, machine(discourse, utterance_run_to_its_loss)).
+slice(family, machine(division, divide_larger_by_smaller)).
 slice(family, machine(division, fair_share_equal_groups)).
 slice(family, machine(division, inverse_fact_decomposition)).
 slice(family, machine(division, long_division)).
@@ -4587,6 +4588,7 @@ machine_genre(discourse, pragmatic_metavocabulary_construction, discursive).
 machine_genre(discourse, tutorial_interruption_on_incompatible_token, discursive).
 machine_genre(discourse, universally_lx_loop, discursive).
 machine_genre(discourse, utterance_run_to_its_loss, discursive).
+machine_genre(division, divide_larger_by_smaller, computational).
 machine_genre(division, fair_share_equal_groups, computational).
 machine_genre(division, inverse_fact_decomposition, computational).
 machine_genre(division, long_division, computational).
@@ -5079,6 +5081,7 @@ excludes(addition, family, machine(discourse, pragmatic_metavocabulary_construct
 excludes(addition, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(addition, discourse, discursive)).
 excludes(addition, family, machine(discourse, universally_lx_loop), nonmathematical_genre(addition, discourse, discursive)).
 excludes(addition, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(division, divide_larger_by_smaller), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(division, fair_share_equal_groups), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(division, inverse_fact_decomposition), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(division, long_division), family_mismatch(addition, division, [division])).
@@ -6207,6 +6210,7 @@ excludes(algebraic, family, machine(discourse, pragmatic_metavocabulary_construc
 excludes(algebraic, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(algebraic, discourse, discursive)).
 excludes(algebraic, family, machine(discourse, universally_lx_loop), nonmathematical_genre(algebraic, discourse, discursive)).
 excludes(algebraic, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(division, divide_larger_by_smaller), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(division, fair_share_equal_groups), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(division, inverse_fact_decomposition), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(division, long_division), family_mismatch(algebraic, division, [division])).
@@ -7356,6 +7360,7 @@ excludes(calculus, family, machine(discourse, pragmatic_metavocabulary_construct
 excludes(calculus, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(calculus, discourse, discursive)).
 excludes(calculus, family, machine(discourse, universally_lx_loop), nonmathematical_genre(calculus, discourse, discursive)).
 excludes(calculus, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(division, divide_larger_by_smaller), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(division, fair_share_equal_groups), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(division, inverse_fact_decomposition), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(division, long_division), family_mismatch(calculus, division, [division])).
@@ -8788,6 +8793,7 @@ excludes(cardinality, family, machine(discourse, pragmatic_metavocabulary_constr
 excludes(cardinality, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(cardinality, discourse, discursive)).
 excludes(cardinality, family, machine(discourse, universally_lx_loop), nonmathematical_genre(cardinality, discourse, discursive)).
 excludes(cardinality, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(division, divide_larger_by_smaller), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(division, fair_share_equal_groups), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(division, inverse_fact_decomposition), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(division, long_division), family_mismatch(cardinality, division, [division])).
@@ -10212,6 +10218,7 @@ excludes(counting, family, machine(discourse, pragmatic_metavocabulary_construct
 excludes(counting, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(counting, discourse, discursive)).
 excludes(counting, family, machine(discourse, universally_lx_loop), nonmathematical_genre(counting, discourse, discursive)).
 excludes(counting, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(division, divide_larger_by_smaller), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(division, fair_share_equal_groups), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(division, inverse_fact_decomposition), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(division, long_division), family_mismatch(counting, division, [division])).
@@ -11570,6 +11577,7 @@ excludes(data, family, machine(discourse, pragmatic_metavocabulary_construction)
 excludes(data, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(data, discourse, discursive)).
 excludes(data, family, machine(discourse, universally_lx_loop), nonmathematical_genre(data, discourse, discursive)).
 excludes(data, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(division, divide_larger_by_smaller), family_mismatch(data, division, [division])).
 excludes(data, family, machine(division, fair_share_equal_groups), family_mismatch(data, division, [division])).
 excludes(data, family, machine(division, inverse_fact_decomposition), family_mismatch(data, division, [division])).
 excludes(data, family, machine(division, long_division), family_mismatch(data, division, [division])).
@@ -12886,6 +12894,7 @@ excludes(decimal, family, machine(discourse, pragmatic_metavocabulary_constructi
 excludes(decimal, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(decimal, discourse, discursive)).
 excludes(decimal, family, machine(discourse, universally_lx_loop), nonmathematical_genre(decimal, discourse, discursive)).
 excludes(decimal, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(division, divide_larger_by_smaller), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(division, fair_share_equal_groups), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(division, inverse_fact_decomposition), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(division, long_division), family_mismatch(decimal, division, [division])).
@@ -15716,6 +15725,7 @@ excludes(fraction, family, machine(discourse, pragmatic_metavocabulary_construct
 excludes(fraction, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(fraction, discourse, discursive)).
 excludes(fraction, family, machine(discourse, universally_lx_loop), nonmathematical_genre(fraction, discourse, discursive)).
 excludes(fraction, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(division, divide_larger_by_smaller), family_mismatch(fraction, division, [division])).
 excludes(fraction, family, machine(division, fair_share_equal_groups), family_mismatch(fraction, division, [division])).
 excludes(fraction, family, machine(division, inverse_fact_decomposition), family_mismatch(fraction, division, [division])).
 excludes(fraction, family, machine(division, long_division), family_mismatch(fraction, division, [division])).
@@ -17408,6 +17418,7 @@ excludes(geometry, family, machine(discourse, pragmatic_metavocabulary_construct
 excludes(geometry, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(geometry, discourse, discursive)).
 excludes(geometry, family, machine(discourse, universally_lx_loop), nonmathematical_genre(geometry, discourse, discursive)).
 excludes(geometry, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(division, divide_larger_by_smaller), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(division, fair_share_equal_groups), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(division, inverse_fact_decomposition), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(division, long_division), family_mismatch(geometry, division, [division])).
@@ -18489,6 +18500,7 @@ excludes(integer, family, machine(discourse, pragmatic_metavocabulary_constructi
 excludes(integer, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(integer, discourse, discursive)).
 excludes(integer, family, machine(discourse, universally_lx_loop), nonmathematical_genre(integer, discourse, discursive)).
 excludes(integer, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(division, divide_larger_by_smaller), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(division, fair_share_equal_groups), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(division, inverse_fact_decomposition), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(division, long_division), family_mismatch(integer, division, [division])).
@@ -20107,6 +20119,7 @@ excludes(multiplication, family, machine(discourse, pragmatic_metavocabulary_con
 excludes(multiplication, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(multiplication, discourse, discursive)).
 excludes(multiplication, family, machine(discourse, universally_lx_loop), nonmathematical_genre(multiplication, discourse, discursive)).
 excludes(multiplication, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(division, divide_larger_by_smaller), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(division, fair_share_equal_groups), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(division, inverse_fact_decomposition), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(division, long_division), family_mismatch(multiplication, division, [division])).
@@ -21338,6 +21351,7 @@ excludes(probability, family, machine(discourse, pragmatic_metavocabulary_constr
 excludes(probability, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(probability, discourse, discursive)).
 excludes(probability, family, machine(discourse, universally_lx_loop), nonmathematical_genre(probability, discourse, discursive)).
 excludes(probability, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(division, divide_larger_by_smaller), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(division, fair_share_equal_groups), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(division, inverse_fact_decomposition), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(division, long_division), family_mismatch(probability, division, [division])).
@@ -22955,6 +22969,7 @@ excludes(proportional, family, machine(discourse, pragmatic_metavocabulary_const
 excludes(proportional, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(proportional, discourse, discursive)).
 excludes(proportional, family, machine(discourse, universally_lx_loop), nonmathematical_genre(proportional, discourse, discursive)).
 excludes(proportional, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(division, divide_larger_by_smaller), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(division, fair_share_equal_groups), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(division, inverse_fact_decomposition), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(division, long_division), family_mismatch(proportional, division, [division])).
@@ -24534,6 +24549,7 @@ excludes(ratio, family, machine(discourse, pragmatic_metavocabulary_construction
 excludes(ratio, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(ratio, discourse, discursive)).
 excludes(ratio, family, machine(discourse, universally_lx_loop), nonmathematical_genre(ratio, discourse, discursive)).
 excludes(ratio, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(division, divide_larger_by_smaller), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(division, fair_share_equal_groups), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(division, inverse_fact_decomposition), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(division, long_division), family_mismatch(ratio, division, [division])).
@@ -25485,6 +25501,7 @@ excludes(subtraction, family, machine(discourse, pragmatic_metavocabulary_constr
 excludes(subtraction, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(subtraction, discourse, discursive)).
 excludes(subtraction, family, machine(discourse, universally_lx_loop), nonmathematical_genre(subtraction, discourse, discursive)).
 excludes(subtraction, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(division, divide_larger_by_smaller), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(division, fair_share_equal_groups), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(division, inverse_fact_decomposition), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(division, long_division), family_mismatch(subtraction, division, [division])).

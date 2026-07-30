@@ -147,6 +147,7 @@ window_legend_arc(break_recover_break, 22).
 window_legend_arc(break_recover_break_work_on, 1).
 window_legend_arc(break_then_keep_then_break, 1).
 window_legend_arc(break_then_keep_work_on, 1).
+window_legend_arc(break_then_test_what_held, 1).
 window_legend_arc(break_then_work_on, 10).
 window_legend_arc(break_three_times, 1).
 window_legend_arc(break_twice_then_keep_work_on, 1).
@@ -242,6 +243,7 @@ window_row(discourse, pragmatic_metavocabulary_construction, work_then_keep, [re
 window_row(discourse, tutorial_interruption_on_incompatible_token, work_then_keep, [attend_to_utterance, name_the_incompatible_token, repair_the_commitment], [interrupt_before_completion], [test_compatibility, record_deontic_score], []).
 window_row(discourse, universally_lx_loop, work_then_keep, [register_givens, elaborate_practice_algorithmically, deploy_vocabulary_from_practice, explicate_practice_in_elaborated_vocabulary], [], [certify_meaning_use_relation], []).
 window_row(discourse, utterance_run_to_its_loss, work_then_break, [attend_to_utterance, name_the_incompatible_token], [let_the_utterance_run_on], [record_deontic_incoherence], []).
+window_row(division, divide_larger_by_smaller, break_then_test_what_held, [register_givens, order_by_magnitude, conflate_roles], [apply_stored_rule], [name_result, verify_invariant], []).
 window_row(division, fair_share_equal_groups, keep_then_work_on, [assign_roles], [share_into_known_groups], [verify_invariant, name_result], []).
 window_row(division, inverse_fact_decomposition, unrecorded_run, [], [retrieve_known_fact, measure_out_group_size, accumulate_total], [name_result], []).
 window_row(division, long_division, unrecorded_run, [register_givens], [apply_stored_rule, apply_stored_rule, apply_stored_rule], [inscribe_result, name_result], []).

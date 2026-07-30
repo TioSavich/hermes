@@ -128,6 +128,7 @@ LEGEND - arcs (name, machines)
   break_recover_break_work_on  1
   break_then_keep_then_break  1
   break_then_keep_work_on  1
+  break_then_test_what_held  1
   break_then_work_on  10
   break_three_times  1
   break_twice_then_keep_work_on  1
@@ -298,6 +299,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+elaborate_practice_algorithmically+deploy_vocabulary_from_practice+explicate_practice_in_elaborated_vocabulary core=none closure=certify_meaning_use_relation other=none
   discourse/utterance_run_to_its_loss arc=work_then_break
     shell=attend_to_utterance+name_the_incompatible_token core=let_the_utterance_run_on closure=record_deontic_incoherence other=none
+  division/divide_larger_by_smaller arc=break_then_test_what_held
+    shell=register_givens+order_by_magnitude+conflate_roles core=apply_stored_rule closure=name_result+verify_invariant other=none
   division/fair_share_equal_groups arc=keep_then_work_on
     shell=assign_roles core=share_into_known_groups closure=verify_invariant+name_result other=none
   division/inverse_fact_decomposition arc=unrecorded_run

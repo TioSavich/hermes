@@ -49,9 +49,12 @@ run extract_research_corpus_misconceptions python3 "$CHECKS_DIR/../extract_resea
 run a_fortiori_context_closure python3 "$CHECKS_DIR/../extract_a_fortiori_context_closure.py" --check
 run a_fortiori_context_closure_selftest python3 "$CHECKS_DIR/../extract_a_fortiori_context_closure.py" --selftest
 run a_fortiori_context_nesting_sweep python3 "$CHECKS_DIR/a_fortiori_context_nesting_sweep.py" --check
+run a_fortiori_context_closure_automaton_battery swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/a_fortiori_context_closure_automaton_battery.pl" -g main -t halt
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
 run compile_receipt_routes python3 "$CHECKS_DIR/../curriculum/compile_receipt_routes.py" --check
 run lesson_task_readings.py python3 "$CHECKS_DIR/lesson_task_readings.py"
+run build_sidecar_equation_census python3 "$CHECKS_DIR/../curriculum/build_sidecar_equation_census.py" --check
+run equation_verification_sidecar_segmenter.py python3 "$CHECKS_DIR/equation_verification_sidecar_segmenter.py"
 run build_equation_verifications python3 "$CHECKS_DIR/../curriculum/build_equation_verifications.py" --check
 run equation_verification_witness.py python3 "$CHECKS_DIR/equation_verification_witness.py"
 run strategy_task_span_refusal.py python3 "$CHECKS_DIR/strategy_task_span_refusal.py"
@@ -80,6 +83,7 @@ run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
 run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
 
 run incompatibility_entailment_order python3 "$CHECKS_DIR/../extract_incompatibility_entailment_order.py" --check
+run incompatibility_register_runtime_agreement.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/incompatibility_register_runtime_agreement.pl" -g main -t halt
 run error_rule_incompatibility python3 "$CHECKS_DIR/../extract_error_rule_incompatibility.py" --check
 run error_rule_automaton_join.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/error_rule_automaton_join.pl" -g main -t halt
 

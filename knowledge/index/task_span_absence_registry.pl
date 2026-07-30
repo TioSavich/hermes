@@ -277,7 +277,7 @@ task_span_receipt('IM-G1-U4-L11', student_task_statement(2), present(compiled_ta
 task_span_receipt('IM-G1-U4-L11', student_task_statement(3), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(212, 238)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U4-L11', student_task_statement(4), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit4/lesson11.md', lines(268, 277)), column_cut(none), page_boundary_crossings(0), task_candidate(student_task_statement(4)/expression(1), rule(direct_addition_expression_list), add(34, 40), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(4)/expression(2), rule(direct_addition_expression_list), add(50, 41), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(4)/expression(3), rule(direct_addition_expression_list), add(62, 20), promoted, exact_operands_and_operation_route)]).
 task_span_receipt('IM-G1-U4-L12', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit4/lesson12.md', lines(89, 98)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(3, 10), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(1), rule(direct_subtraction_expression_list), subtract(13, 10), promoted, exact_standalone_binary_expression_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(10, 5), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_subtraction_expression_list), subtract(15, 10), promoted, exact_standalone_binary_expression_and_operation_route)]).
-task_span_receipt('IM-G1-U4-L12', student_task_statement(2), broken_pipeline(void_operand_slots), [source('curriculum/im_teacher_guides/grade1/unit4/lesson12.md', lines(212, 273)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(4), computational_demand(true), printed_arithmetic(false), question_mark(true)]).
+task_span_receipt('IM-G1-U4-L12', student_task_statement(2), present(existing_task_instance), [source('curriculum/im_teacher_guides/grade1/unit4/lesson12.md', lines(212, 273)), column_cut(launch_header), page_boundary_crossings(2), task_candidate(student_task_statement(2)/recovered_equation(1), rule(printed_equation_list_direct_addition), add(67, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(12), rule(printed_equation_list_direct_subtraction), subtract(99, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(2), rule(printed_equation_list_direct_subtraction), subtract(67, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(3), rule(printed_equation_list_direct_addition), add(39, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(4), rule(printed_equation_list_direct_subtraction), subtract(39, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(5), rule(printed_equation_list_direct_addition), add(52, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(6), rule(printed_equation_list_direct_subtraction), subtract(52, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(7), rule(printed_equation_list_direct_addition), add(75, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(8), rule(printed_equation_list_direct_subtraction), subtract(75, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result), task_candidate(student_task_statement(2)/recovered_equation(9), rule(printed_equation_list_direct_addition), add(67, 10), duplicate_existing, exact_two_known_operand_equation_with_blank_result)]).
 task_span_receipt('IM-G1-U4-L13', student_task_statement(1), present(compiled_task_instance), [source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(77, 87)), column_cut(launch_header), page_boundary_crossings(0), task_candidate(student_task_statement(1)/expression(1), rule(direct_addition_expression_list), add(10, 4), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(1), rule(direct_subtraction_expression_list), subtract(15, 6), promoted, exact_standalone_binary_expression_and_operation_route), task_candidate(student_task_statement(1)/expression(2), rule(direct_addition_expression_list), add(9, 4), promoted, exact_operands_and_operation_route), task_candidate(student_task_statement(1)/expression(3), rule(direct_addition_expression_list), add(9, 6), promoted, exact_operands_and_operation_route)]).
 task_span_receipt('IM-G1-U4-L13', student_task_statement(2), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(139, 176)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
 task_span_receipt('IM-G1-U4-L13', student_task_statement(3), not_applicable(prompt_states_no_computation), [source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(195, 221)), column_cut(launch_header), page_boundary_crossings(2), quantities(0), void_slots(0), computational_demand(false), printed_arithmetic(false), question_mark(true)]).
@@ -3247,12 +3247,12 @@ task_span_receipt('IM-GK-U8-L9', student_task_statement(3), not_applicable(promp
 task_span_denominator(spans, 3163).
 task_span_denominator(lessons, 879).
 task_span_denominator(teacher_guides, 879).
-task_span_denominator(compiler_task_candidates, 1118).
+task_span_denominator(compiler_task_candidates, 1128).
 task_span_denominator(compiled_task_instance_lessons, 401).
 
-task_span_status_count(present, 354).
+task_span_status_count(present, 355).
 task_span_status_count(coverage_gap, 903).
-task_span_status_count(broken_pipeline, 689).
+task_span_status_count(broken_pipeline, 688).
 task_span_status_count(not_applicable, 1195).
 task_span_status_count(unknown, 22).
 
@@ -3270,12 +3270,12 @@ task_span_reason_kind(no_task_grammar_for_single_quantity, coverage_gap).
 task_span_reason_kind(prompt_states_no_computation, not_applicable).
 
 task_span_reason_count(compiled_task_instance, 354).
-task_span_reason_count(existing_task_instance, 0).
+task_span_reason_count(existing_task_instance, 1).
 task_span_reason_count(parser_quarantined, 0).
 task_span_reason_count(candidate_rejected, 0).
 task_span_reason_count(empty_extract, 29).
 task_span_reason_count(extract_runs_past_prompt, 22).
-task_span_reason_count(void_operand_slots, 422).
+task_span_reason_count(void_operand_slots, 421).
 task_span_reason_count(quantities_carry_no_operand_pair, 401).
 task_span_reason_count(no_task_grammar_for_quantity_pair, 564).
 task_span_reason_count(imperative_without_quantity, 238).
@@ -3283,7 +3283,7 @@ task_span_reason_count(no_task_grammar_for_single_quantity, 339).
 task_span_reason_count(prompt_states_no_computation, 794).
 
 task_span_grade_count('K', 401, 7, 394).
-task_span_grade_count('1', 451, 91, 360).
+task_span_grade_count('1', 451, 92, 359).
 task_span_grade_count('2', 530, 85, 445).
 task_span_grade_count('3', 567, 77, 490).
 task_span_grade_count('4', 613, 51, 562).
@@ -3295,6 +3295,7 @@ task_span_reason_grade_count(compiled_task_instance, '2', 85).
 task_span_reason_grade_count(compiled_task_instance, '3', 77).
 task_span_reason_grade_count(compiled_task_instance, '4', 51).
 task_span_reason_grade_count(compiled_task_instance, '5', 43).
+task_span_reason_grade_count(existing_task_instance, '1', 1).
 task_span_reason_grade_count(empty_extract, 'K', 25).
 task_span_reason_grade_count(empty_extract, '1', 3).
 task_span_reason_grade_count(empty_extract, '5', 1).
@@ -3305,7 +3306,7 @@ task_span_reason_grade_count(extract_runs_past_prompt, '3', 4).
 task_span_reason_grade_count(extract_runs_past_prompt, '4', 5).
 task_span_reason_grade_count(extract_runs_past_prompt, '5', 1).
 task_span_reason_grade_count(void_operand_slots, 'K', 20).
-task_span_reason_grade_count(void_operand_slots, '1', 28).
+task_span_reason_grade_count(void_operand_slots, '1', 27).
 task_span_reason_grade_count(void_operand_slots, '2', 64).
 task_span_reason_grade_count(void_operand_slots, '3', 49).
 task_span_reason_grade_count(void_operand_slots, '4', 118).
@@ -3410,7 +3411,7 @@ lesson_task_span_rollup('IM-G1-U3-L9', '1', 4, 2, diagnostic_ready, no_task_gram
 lesson_task_span_rollup('IM-G1-U4-L1', '1', 1, 0, strategy_attached, empty_extract).
 lesson_task_span_rollup('IM-G1-U4-L10', '1', 3, 0, diagnostic_ready, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G1-U4-L11', '1', 4, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
-lesson_task_span_rollup('IM-G1-U4-L12', '1', 2, 1, diagnostic_ready, void_operand_slots).
+lesson_task_span_rollup('IM-G1-U4-L12', '1', 2, 2, diagnostic_ready, none).
 lesson_task_span_rollup('IM-G1-U4-L13', '1', 3, 1, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U4-L14', '1', 3, 0, diagnostic_ready, prompt_states_no_computation).
 lesson_task_span_rollup('IM-G1-U4-L15', '1', 4, 1, diagnostic_ready, void_operand_slots).
@@ -4372,7 +4373,7 @@ lesson_task_span_reason_count('IM-G1-U4-L11', compiled_task_instance, 2).
 lesson_task_span_reason_count('IM-G1-U4-L11', no_task_grammar_for_quantity_pair, 1).
 lesson_task_span_reason_count('IM-G1-U4-L11', prompt_states_no_computation, 1).
 lesson_task_span_reason_count('IM-G1-U4-L12', compiled_task_instance, 1).
-lesson_task_span_reason_count('IM-G1-U4-L12', void_operand_slots, 1).
+lesson_task_span_reason_count('IM-G1-U4-L12', existing_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U4-L13', compiled_task_instance, 1).
 lesson_task_span_reason_count('IM-G1-U4-L13', prompt_states_no_computation, 2).
 lesson_task_span_reason_count('IM-G1-U4-L14', quantities_carry_no_operand_pair, 1).
