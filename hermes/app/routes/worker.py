@@ -92,9 +92,14 @@ def base(ctx: Any) -> None:
     RouteLogic(ctx)._handle_get_base()
 
 
+def diagnostics(ctx: Any) -> None:
+    ctx._send_json({"ok": True, "result": ctx.services.worker.diagnostics()})
+
+
 ROUTES = (
     Route("GET", "/api/capabilities", capabilities),
     Route("GET", "/api/base", base),
+    Route("GET", "/api/diagnostics", diagnostics),
     *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
     # Discourse ops are declared student-data in gate.py: transcripts carry
     # utterance text, and client-side speaker blinding cannot strip names

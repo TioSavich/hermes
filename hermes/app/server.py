@@ -14,6 +14,7 @@ import sys
 import threading
 import urllib.parse
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from types import ModuleType
@@ -86,6 +87,12 @@ class WorkerService:
                 self._worker = None
                 raise
 
+    def diagnostics(self) -> dict[str, Any]:
+        with self._lock:
+            if self._worker is None:
+                return {"running": False, "stderr_lines": 0}
+            return self._worker.diagnostics()
+
     def close(self) -> None:
         if self._worker is not None:
             self._worker.close()
@@ -99,6 +106,7 @@ class GateService:
     enabled: bool = INITIAL_GATE_ENABLED
     override_allowed: bool = OVERRIDE_ALLOWED
     state: gate.GateState = field(default_factory=lambda: gate.GateState(override=OVERRIDE_ALLOWED))
+    last_preflight: "PreflightResult | None" = None
 
     def mode_payload(self) -> dict[str, Any]:
         return {
@@ -112,8 +120,23 @@ class GateService:
     def run_preflight(self) -> tuple[bool, str]:
         key = llm.load_key(self.runtime)
         if key is None:
-            return False, "no REALLMS_API_KEY configured (set it in the app or runtime/.env)"
-        return llm.secure_preflight(api_key=key, api_url=llm.resolve_api_url())
+            result = False, "no REALLMS_API_KEY configured (set it in the app or runtime/.env)"
+        else:
+            result = llm.secure_preflight(api_key=key, api_url=llm.resolve_api_url())
+        ok, reason = result
+        self.last_preflight = PreflightResult(
+            ok=bool(ok), reason=reason, checked_at=datetime.now(timezone.utc)
+        )
+        return result
+
+
+@dataclass(frozen=True, slots=True)
+class PreflightResult:
+    """Most recent CA-verified preflight, retained for LLM TLS selection."""
+
+    ok: bool
+    reason: str
+    checked_at: datetime
 
 
 @dataclass(slots=True)

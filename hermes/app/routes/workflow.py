@@ -11,13 +11,18 @@ from hermes.app.workflow import service
 COMMANDS = ("parse", "content", "profile", "draft", "grade", "score", "metrics", "work_read", "work_refine")
 
 
+def _tls_insecure(state: gate.GateState) -> bool:
+    """Only an explicit user debugging opt-in, and never in campus mode."""
+    return llm.insecure_tls_requested() and state.mode != gate.CAMPUS
+
+
 def _workflow(command: str) -> Callable[[Any], None]:
     def handle(ctx: Any) -> None:
         state = ctx.services.gate.state
         workflow_context = service.WorkflowContext(
             pack_root=ctx.app_dir,
             llm_client=service.WorkflowLLMClient(
-                llm, insecure=not (state.mode == gate.CAMPUS and state.verified)
+                llm, insecure=_tls_insecure(state)
             ),
             worker_request=ctx.services.worker.request,
             emit=lambda _text: None,

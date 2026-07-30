@@ -196,6 +196,18 @@ class PersistentPrologWorker:
     def _recent_stderr(self) -> str:
         return "\n".join(self._stderr_tail).strip()
 
+    def diagnostics(self) -> dict[str, Any]:
+        """Return bounded worker state without starting or probing the worker.
+
+        Counts only, never stderr content: the tail can carry speaker ids and
+        utterance text (deontic ops print their arguments on refusal), so its
+        lines must never cross a route boundary.
+        """
+        return {
+            "running": self._proc is not None and self._proc.poll() is None,
+            "stderr_lines": len(self._stderr_tail),
+        }
+
     def _readline(
         self,
         proc: subprocess.Popen[str],

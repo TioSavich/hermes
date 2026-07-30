@@ -67,6 +67,8 @@ run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_clien
 run crosswalk_load.sh       bash "$CHECKS_DIR/crosswalk_load.sh"
 run geometry_load.sh        bash "$CHECKS_DIR/geometry_load.sh"
 run strict_gate_failures.py python3 "$CHECKS_DIR/strict_gate_failures.py"
+run tls_verified_first.py python3 "$CHECKS_DIR/tls_verified_first.py"
+run diagnostics_payload.py python3 "$CHECKS_DIR/diagnostics_payload.py"
 run workflow_service.py     python3 "$CHECKS_DIR/workflow_service.py"
 run drawer_parity.sh        bash "$CHECKS_DIR/drawer_parity.sh"
 run zeeman_bifurcation.sh   bash "$CHECKS_DIR/zeeman_bifurcation.sh"

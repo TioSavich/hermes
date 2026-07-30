@@ -35,7 +35,7 @@ GET /api/reorganize public analysis
 POST /api/compute public analysis
 POST /api/learner/reset public analysis
 POST /api/analyze unlocked analysis
-POST /api/event_score public analysis
+POST /api/event_score verified analysis
 POST /api/pair_graph verified analysis
 POST /api/pair_candidate verified analysis
 POST /api/chat public llm
@@ -52,6 +52,7 @@ POST /api/field_connectivity_audit public monitoring
 POST /api/render_coverage public monitoring
 GET /api/capabilities public worker
 GET /api/base public worker
+GET /api/diagnostics public worker
 POST /api/base public worker
 POST /api/render public worker
 POST /api/inferential_strength public worker

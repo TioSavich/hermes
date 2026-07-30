@@ -524,19 +524,36 @@ class RouteLogic:
             labels.append(label)
         return len(set(labels)) >= 2
 
-    def _run_preflight(self) -> tuple[bool, str]:
-        """Secure preflight using the configured key. Never raises."""
-        key = llm.load_key(self.ctx.runtime)
-        if key is None:
-            return False, "no REALLMS_API_KEY configured (set it in the app or runtime/.env)"
-        return llm.secure_preflight(api_key=key, api_url=llm.resolve_api_url())
-
     def _ssl_ctx_for_mode(self):
-        """campus -> secure (verified); home -> insecure (tinker only)."""
-        os.environ["REALLMS_INSECURE"] = "0" if self.ctx.services.gate.state.mode == gate.CAMPUS else "1"
+        """Prefer a successful verified preflight in either gate mode.
+
+        Campus mode always verifies, whatever the environment says. Without
+        a retained proof, ``build_ssl_context`` honors only an explicit user
+        debugging setting; its normal path still verifies the server.
+        """
         if self.ctx.services.gate.state.mode == gate.CAMPUS:
             return llm.build_secure_ssl_context()
+        last_preflight = self.ctx.services.gate.last_preflight
+        if last_preflight is not None and last_preflight.ok:
+            return llm.build_secure_ssl_context()
         return llm.build_ssl_context()
+
+    def _reallms_error(self, exc: BaseException) -> str:
+        """Name certificate verification limits for an unproven verified route."""
+        last_preflight = self.ctx.services.gate.last_preflight
+        verified_route_unproven = (
+            (last_preflight is None or not last_preflight.ok)
+            and not llm.insecure_tls_requested()
+        )
+        if verified_route_unproven and llm._looks_like_cert_error(exc):
+            return (
+                "Could not verify the REALLMS server's certificate. Set "
+                "SSL_CERT_FILE to a trusted CA bundle such as /etc/ssl/cert.pem, "
+                "install certifi, or ask campus IT for the IU/network CA bundle. "
+                "REALLMS_INSECURE=1 disables server verification and should only "
+                "be used for temporary debugging."
+            )
+        return str(exc)
 
     def _two_pass_module(self):
         return self.ctx.services.two_pass_module()
@@ -808,7 +825,7 @@ class RouteLogic:
                 fail_on_error=False,
             )
         except Exception as exc:  # network / API failure -> clean 502, not 500
-            self._send_json({"error": str(exc), "error_type": "reallms", "grounded": grounded}, status=502)
+            self._send_json({"error": self._reallms_error(exc), "error_type": "reallms", "grounded": grounded}, status=502)
             return
         # Gemma sometimes emits its own model card ("Context length: …") at
         # either end of a reply. The prompt forbids it; this belt removes the
@@ -854,7 +871,7 @@ class RouteLogic:
                 fail_on_error=False,
             )
         except Exception as exc:
-            self._send_json({"error": str(exc), "error_type": "reallms"}, status=502)
+            self._send_json({"error": self._reallms_error(exc), "error_type": "reallms"}, status=502)
             return
         answer = re.sub(r"(?m)^Context length:.*(?:\n+|$)", "", answer.strip()).strip()
         self._send_json({"answer": answer, "page": page, "model": llm.resolve_model()})
@@ -962,7 +979,7 @@ class RouteLogic:
             pml_json = json_after(reply2, "## PML_JSON")
             readings = pml_json.get("readings", [])
         except Exception as exc:  # noqa: BLE001 — surface, don't crash
-            self._send_json({"error": f"report failed: {exc}",
+            self._send_json({"error": f"report failed: {self._reallms_error(exc)}",
                              "error_type": "transcript_report_failed"},
                             status=502)
             return
@@ -1042,11 +1059,11 @@ class RouteLogic:
                     reply = call([content[0]] + media.audio_parts_as_urls(parts))
                     notes.append("audio accepted in audio_url form after input_audio was refused")
                 except Exception as retry_exc:  # noqa: BLE001
-                    self._send_json({"error": str(retry_exc), "error_type": "reallms",
+                    self._send_json({"error": self._reallms_error(retry_exc), "error_type": "reallms",
                                      "notes": notes}, status=502)
                     return
             else:
-                self._send_json({"error": str(exc), "error_type": "reallms",
+                self._send_json({"error": self._reallms_error(exc), "error_type": "reallms",
                                  "notes": notes}, status=502)
                 return
         alignment = None
@@ -1125,7 +1142,7 @@ class RouteLogic:
                 fail_on_error=False,
             )
         except Exception as exc:
-            self._send_json({"error": str(exc), "error_type": "reallms"}, status=502)
+            self._send_json({"error": self._reallms_error(exc), "error_type": "reallms"}, status=502)
             return
         clauses = self._extract_pml_clauses(raw)
         if not clauses:

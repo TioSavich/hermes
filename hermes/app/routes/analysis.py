@@ -44,7 +44,7 @@ ROUTES = (
     Route("POST", "/api/compute", compute),
     Route("POST", "/api/learner/reset", learner_reset),
     Route("POST", "/api/analyze", analyze, access="unlocked"),
-    Route("POST", "/api/event_score", event_score),
+    Route("POST", "/api/event_score", event_score, access="verified"),
     Route("POST", "/api/pair_graph", pair_graph, access="verified"),
     Route("POST", "/api/pair_candidate", pair_candidate, access="verified"),
 )

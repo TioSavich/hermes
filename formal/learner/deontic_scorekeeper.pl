@@ -427,9 +427,12 @@ grant_entitlement(Agent, Proposition) :-
     \+ grounding_evidence_deployed(Evidence, Agent),
     !,
     assertz(ungrounded_grant_attempt(Agent, Proposition, Evidence)),
+    % No ~w interpolation: Agent is a speaker id and this stream's tail can
+    % surface in diagnostics. The full triple is on the books as
+    % ungrounded_grant_attempt/3 for anyone entitled to read it.
     format(user_error,
-           "grant_entitlement/2: refusing ungrounded grant to agent ~w for ~w; required evidence ~w is not deployed (recorded as ungrounded_grant_attempt/3; incoherence stays open)~n",
-           [Agent, Proposition, Evidence]),
+           "grant_entitlement/2: refusing ungrounded grant; required evidence is not deployed (recorded as ungrounded_grant_attempt/3; incoherence stays open)~n",
+           []),
     fail.
 grant_entitlement(Agent, Proposition) :-
     ( commitment(Agent, Proposition)
@@ -438,9 +441,11 @@ grant_entitlement(Agent, Proposition) :-
        ;  assertz(entitlement(Agent, Proposition))
        ),
        propagate_entitlement(Agent, Proposition)
-    ;  format(user_error,
-              "grant_entitlement/2: agent ~w is not committed to ~w; cannot grant entitlement~n",
-              [Agent, Proposition]),
+    ;  % No ~w interpolation here: Agent and Proposition are speaker ids and
+       % utterance text, and this stream's tail is surfaced in diagnostics.
+       format(user_error,
+              "grant_entitlement/2: agent is not committed to the proposition; cannot grant entitlement~n",
+              []),
        fail
     ).
 

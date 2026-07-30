@@ -103,8 +103,13 @@ def _candidate_ca_files() -> list[Path]:
     return candidates
 
 
+def insecure_tls_requested() -> bool:
+    """Whether the user opted into the temporary TLS-debugging escape hatch."""
+    return os.environ.get("REALLMS_INSECURE", "").strip() in ("1", "true", "yes")
+
+
 def build_ssl_context() -> ssl.SSLContext:
-    if os.environ.get("REALLMS_INSECURE", "").strip() in ("1", "true", "yes"):
+    if insecure_tls_requested():
         sys.stderr.write("warning: REALLMS_INSECURE is set; TLS verification disabled.\n")
         ctx = ssl.create_default_context()
         ctx.check_hostname = False
