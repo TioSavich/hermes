@@ -1,88 +1,88 @@
 {
  "by_grade": {
   "1": {
-   "diagnostic_ready": 71,
+   "diagnostic_ready": 66,
    "executable_task": 73,
    "measured_transition": 72,
    "negative_candidate": 128,
    "published": 148,
    "standard_action_candidate": 148,
    "strategy_evidence": 131,
-   "structured_negative": 92
+   "structured_negative": 87
   },
   "2": {
-   "diagnostic_ready": 61,
+   "diagnostic_ready": 49,
    "executable_task": 69,
    "measured_transition": 66,
    "negative_candidate": 127,
    "published": 150,
    "standard_action_candidate": 149,
    "strategy_evidence": 134,
-   "structured_negative": 78
+   "structured_negative": 66
   },
   "3": {
-   "diagnostic_ready": 55,
+   "diagnostic_ready": 45,
    "executable_task": 61,
    "measured_transition": 58,
    "negative_candidate": 113,
    "published": 143,
    "standard_action_candidate": 139,
    "strategy_evidence": 125,
-   "structured_negative": 67
+   "structured_negative": 57
   },
   "4": {
-   "diagnostic_ready": 42,
+   "diagnostic_ready": 38,
    "executable_task": 49,
    "measured_transition": 49,
    "negative_candidate": 115,
    "published": 151,
    "standard_action_candidate": 147,
    "strategy_evidence": 132,
-   "structured_negative": 69
+   "structured_negative": 65
   },
   "5": {
-   "diagnostic_ready": 25,
+   "diagnostic_ready": 23,
    "executable_task": 39,
    "measured_transition": 39,
    "negative_candidate": 114,
    "published": 148,
    "standard_action_candidate": 145,
    "strategy_evidence": 128,
-   "structured_negative": 60
+   "structured_negative": 58
   },
   "6": {
-   "diagnostic_ready": 36,
+   "diagnostic_ready": 22,
    "executable_task": 51,
    "measured_transition": 51,
    "negative_candidate": 107,
    "published": 152,
    "standard_action_candidate": 143,
    "strategy_evidence": 134,
-   "structured_negative": 37
+   "structured_negative": 23
   },
   "7": {
-   "diagnostic_ready": 15,
+   "diagnostic_ready": 14,
    "executable_task": 28,
    "measured_transition": 28,
    "negative_candidate": 28,
    "published": 143,
    "standard_action_candidate": 140,
    "strategy_evidence": 28,
-   "structured_negative": 15
+   "structured_negative": 14
   },
   "8": {
    "published": 134,
    "standard_action_candidate": 130
   },
   "K": {
-   "diagnostic_ready": 5,
+   "diagnostic_ready": 4,
    "executable_task": 9,
    "measured_transition": 9,
    "negative_candidate": 88,
    "published": 139,
    "standard_action_candidate": 131,
    "strategy_evidence": 103,
-   "structured_negative": 46
+   "structured_negative": 45
   }
  },
  "lessons": [
@@ -205,11 +205,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L3",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Relate Addition and Subtraction within 20",
    "negative_candidates": [
     {
@@ -253,6 +255,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "reason": "automaton_refuses_operands([10-2, 10-4, 10-7])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "drop_ones_after_base_takeaway",
@@ -274,7 +282,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.OA.B.2": [
      "add",
@@ -734,11 +742,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L12",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Center Day 2",
    "negative_candidates": [
     {
@@ -748,6 +758,12 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "take_away_base_ones"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "reason": "automaton_refuses_operands([15-5, 15-8, 17-7, 17-9])"
     }
    ],
    "negative_receipts": [
@@ -771,7 +787,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.MD.D.10": [
      "compare",
@@ -967,11 +983,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L16",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Solve All Kinds of Compare Problems",
    "negative_candidates": [
     {
@@ -997,6 +1015,12 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "compare_by_matching_difference"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "solve_difference_unknown_for_greater_unknown",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -1039,7 +1063,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -1974,11 +1998,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L8",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Different Ways to Decompose",
    "negative_candidates": [
     {
@@ -2046,6 +2072,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "smaller_from_larger_in_column",
+     "reason": "automaton_refuses_operands([38-20, 48-30])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "smaller_from_larger_in_column",
@@ -2071,7 +2103,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -2098,11 +2130,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L9",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Add and Subtract within 100",
    "negative_candidates": [
     {
@@ -2178,6 +2212,12 @@
      "productive": "decompose_base_for_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "borrow_without_reducing_bases",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "borrow_without_reducing_bases",
@@ -2199,7 +2239,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -2645,11 +2685,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L14",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Solve It Your Way",
    "negative_candidates": [
     {
@@ -2685,6 +2727,12 @@
      "productive": "round_then_adjust"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "add_change_to_only_one_prior_addend",
+     "reason": "alternative_not_in_registry"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "add_change_to_only_one_prior_addend",
@@ -2710,7 +2758,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -2820,13 +2868,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L16",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -2838,8 +2884,32 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "intended_action": {
+      "kind": "take_away_base_ones",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G2-U2-L16",
+     "material_incompatibility": "Subtracting 19 from 35 takes the ten away and still leaves the subtrahend's 9 ones to remove, which the alternative discards once the base is gone.",
+     "source": {
+      "fragments": [
+       {
+        "line": 108,
+        "text": "be subtracted while the ones are left alone"
+       },
+       {
+        "line": 106,
+        "text": "I took away 2 tens and gave 1 one back since it"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit2/lesson16.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -3015,11 +3085,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L3",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Create and Use a Ruler",
    "negative_candidates": [
     {
@@ -3095,6 +3167,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "count_marks_not_intervals",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "count_marks_not_intervals",
@@ -3116,7 +3194,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.MD.A.1": [
      "measure",
@@ -3346,11 +3424,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L7",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Center Day 1",
    "negative_candidates": [
     {
@@ -3402,6 +3482,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "smaller_from_larger_in_column",
+     "reason": "automaton_refuses_operands([37-16, 37-17, 37-20, 37-21])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "smaller_from_larger_in_column",
@@ -3423,7 +3509,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -4138,11 +4224,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L18",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Make a Yardstick",
    "negative_candidates": [
     {
@@ -4170,6 +4258,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "share_into_divisor_groups",
@@ -4195,7 +4289,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.MD.A.1": [
      "measure",
@@ -5891,11 +5985,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U5-L10",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Place Value Comparisons (Part 1)",
    "negative_candidates": [
     {
@@ -5947,6 +6043,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "compare_ones_digits_only",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "compare_ones_digits_only",
@@ -5968,7 +6070,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.A.4": [
      "compare",
@@ -6918,11 +7020,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U6-L14",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -6940,6 +7044,12 @@
      "operation": "geometry",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "orientation_bound_shape_classification",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -6963,7 +7073,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.G.A": [
      "reason"
@@ -7731,11 +7841,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L3",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Count On or Count Back to Subtract",
    "negative_candidates": [
     {
@@ -7779,6 +7891,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "drop_ones_after_base_takeaway",
@@ -7800,7 +7918,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -9178,11 +9296,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L18",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -9218,6 +9338,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "dropped_ones_chunk",
@@ -9239,7 +9365,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -9474,11 +9600,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U8-L4",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Decompose Even and Odd Numbers",
    "negative_candidates": [
     {
@@ -9514,6 +9642,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "name_group_count_as_share_size",
@@ -9539,7 +9673,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.OA.B.2": [
      "add",
@@ -9648,13 +9782,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U8-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 1",
    "negative_candidates": [
     {
@@ -9674,8 +9806,28 @@
      "productive": "round_then_adjust"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U8-L6",
+     "material_incompatibility": "The lesson presents values as being 2 more than the previous expression, a relation the alternative ignores by counting all units from the start.",
+     "source": {
+      "fragments": [
+       {
+        "line": 101,
+        "text": "I saw that it’s 2 more than the last expression"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit8/lesson6.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.A.2": [
      "count"
@@ -11728,11 +11880,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U1-L9",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Multiplication for Equal Groups",
    "negative_candidates": [
     {
@@ -11776,6 +11930,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "reverse_group_count_and_group_size",
+     "reason": "alternative_not_in_registry"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "reverse_group_count_and_group_size",
@@ -11811,7 +11971,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.A": [
      "represent",
@@ -12439,11 +12599,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U1-L18",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Represent Arrays with Expressions",
    "negative_candidates": [
     {
@@ -12479,6 +12641,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "array_expression_role_mismatch",
+     "reason": "alternative_not_in_registry"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "array_expression_role_mismatch",
@@ -12510,7 +12678,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.A.1": [
      "describe",
@@ -12903,11 +13071,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U2-L3",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Tile Rectangles",
    "negative_candidates": [
     {
@@ -12917,6 +13087,12 @@
      "operation": "geometry",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "rectangle_area_unit_iteration"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "area_as_perimeter_count",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -12940,7 +13116,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.MD.C.5.b": [
      "cover"
@@ -13329,11 +13505,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U2-L10",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Solve Area Problems",
    "negative_candidates": [
     {
@@ -13369,6 +13547,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "area_as_perimeter_count",
+     "reason": "automaton_refuses_operands([rectangles(9,2)-rectangle(4,5)])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "area_as_perimeter_count",
@@ -13398,7 +13582,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.MD.C.7.b": [
      "find",
@@ -14170,13 +14354,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L5",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Another Addition Algorithm",
    "negative_candidates": [
     {
@@ -14204,8 +14386,28 @@
      "productive": "recursive_place_value_inscription"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G3-U3-L5",
+     "material_incompatibility": "The algorithm records a digit for the sum of every place-value position, so the ones are added after the tens and hundreds; the alternative stops at the base chunk and drops the remaining ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 11,
+        "text": "records a single digit for the sum of each place-value position, and “10” or “100” for a newly composed ten or hundred"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit3/lesson5.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -14287,11 +14489,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L7",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Subtract Your Way",
    "negative_candidates": [
     {
@@ -14367,6 +14571,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "smaller_from_larger_in_column",
+     "reason": "automaton_refuses_operands([50-10, 58-10, 258-20, 258-24])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "smaller_from_larger_in_column",
@@ -14388,7 +14598,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -14707,11 +14917,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L11",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Analyze Subtraction Algorithms",
    "negative_candidates": [
     {
@@ -14771,6 +14983,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "borrow_across_zero_no_cascade",
+     "reason": "automaton_refuses_operands([400-200, 450-200, 450-205, 450-215])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "borrow_across_zero_no_cascade",
@@ -14792,7 +15010,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -14813,11 +15031,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L12",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Subtract Strategically",
    "negative_candidates": [
     {
@@ -14869,6 +15089,12 @@
      "productive": "count_up_missing_addend"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "answer_as_endpoint_count_up",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "answer_as_endpoint_count_up",
@@ -14890,7 +15116,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -15412,11 +15638,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U4-L1",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "How Many Groups?",
    "negative_candidates": [
     {
@@ -15426,6 +15654,12 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "measure_groups_of_size"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "represent_group_count_as_group_size",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -15453,7 +15687,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.A.2": [
      "describe",
@@ -15777,11 +16011,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U4-L6",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Division as an Unknown Factor",
    "negative_candidates": [
     {
@@ -15815,6 +16051,12 @@
      "operation": "multiplication",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "repeat_equal_groups"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "different_unknowns_in_inverse_equations",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -15853,7 +16095,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.A.2": [
      "describe",
@@ -19241,11 +19483,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U7-L5",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Attributes of Other Quadrilaterals",
    "negative_candidates": [
     {
@@ -19281,6 +19525,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "orientation_bound_shape_classification",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "orientation_bound_shape_classification",
@@ -19302,7 +19552,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.G.A.1": [
      "draw",
@@ -19518,11 +19768,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "3",
    "lesson": "IM-G3-U7-L9",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Perimeter Problems",
    "negative_candidates": [
     {
@@ -19532,6 +19784,12 @@
      "operation": "geometry",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "polygon_perimeter_boundary_accumulation"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "omit_unlabeled_rectangle_sides",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -19563,7 +19821,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.MD.D.8": [
      "find",
@@ -22038,11 +22296,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "4",
    "lesson": "IM-G4-U3-L2",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Representations of Equal Groups of Fractions",
    "negative_candidates": [
     {
@@ -22070,6 +22330,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "whole_number_grab",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "whole_number_grab",
@@ -22091,7 +22357,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.NF.B.4": [
      "apply",
@@ -24994,11 +25260,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "4",
    "lesson": "IM-G4-U5-L7",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Meters and Centimeters",
    "negative_candidates": [
     {
@@ -25008,6 +25276,12 @@
      "operation": "measurement",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "unit_conversion_by_iteration"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "compare_raw_numerals_ignore_unit_scale",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -25035,7 +25309,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.MD.A.1": [
      "generate",
@@ -25062,11 +25336,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "4",
    "lesson": "IM-G4-U5-L8",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Meters and Kilometers",
    "negative_candidates": [
     {
@@ -25094,6 +25370,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "change_unit_label_without_scaling",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "change_unit_label_without_scaling",
@@ -25115,7 +25397,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.MD.A.1": [
      "generate",
@@ -28890,11 +29172,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "4",
    "lesson": "IM-G4-U8-L2",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Ways to Look at Triangles",
    "negative_candidates": [
     {
@@ -28922,6 +29206,12 @@
      "productive": "shape_classification_by_defining_attributes"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "orientation_bound_shape_classification",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "orientation_bound_shape_classification",
@@ -28943,7 +29233,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.G.A.2": [
      "classify",
@@ -31329,11 +31619,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L2",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Representing Ratios with Diagrams",
    "negative_candidates": [
     {
@@ -31351,6 +31643,12 @@
      "operation": "ratio",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "construct_referent_ratio_diagram"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "reverse_ratio_referent_order",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -31375,7 +31673,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.1": [
      "describe",
@@ -31541,11 +31839,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L5",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Defining Equivalent Ratios",
    "negative_candidates": [
     {
@@ -31563,6 +31863,12 @@
      "operation": "ratio",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "scale_ratio_unit"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -31587,7 +31893,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.1": [
      "describe",
@@ -31653,11 +31959,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L7",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Creating Double Number Line Diagrams",
    "negative_candidates": [
     {
@@ -31685,6 +31993,12 @@
      "productive": "scale_ratio_unit"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "additive_extension_of_ratio",
@@ -31707,7 +32021,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -31975,11 +32289,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L11",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Representing Ratios with Tables",
    "negative_candidates": [
     {
@@ -32023,6 +32339,12 @@
      "productive": "scale_ratio_unit"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "additive_extension_of_ratio",
@@ -32045,7 +32367,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -32399,11 +32721,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L16",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Solving More Ratio Problems",
    "negative_candidates": [
     {
@@ -32455,6 +32779,12 @@
      "productive": "scale_ratio_unit"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "reason": "automaton_refuses_operands([8-2, 12-3, 28-7, 72-9, 91-7, 130-10])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "share_into_divisor_groups",
@@ -32477,7 +32807,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -32700,11 +33030,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L3",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Converting Units",
    "negative_candidates": [
     {
@@ -32740,6 +33072,12 @@
      "productive": "compare_by_matching_difference"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "additive_extension_of_ratio",
@@ -32762,7 +33100,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.3.d": [
      "convert",
@@ -32788,11 +33126,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L4",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Comparing Speeds and Prices",
    "negative_candidates": [
     {
@@ -32820,6 +33160,12 @@
      "productive": "scale_ratio_unit"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "additive_extension_of_ratio",
@@ -32842,7 +33188,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.2": [
      "understand",
@@ -32869,11 +33215,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L5",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Interpreting Rates",
    "negative_candidates": [
     {
@@ -32901,6 +33249,12 @@
      "productive": "scale_ratio_unit"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "additive_extension_of_ratio",
@@ -32923,7 +33277,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.2": [
      "understand",
@@ -33295,11 +33649,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L10",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "What Are Percentages?",
    "negative_candidates": [
     {
@@ -33351,6 +33707,12 @@
      "productive": "scale_ratio_unit"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "additive_extension_of_ratio",
@@ -33373,7 +33735,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.RP.A.3.c": [
      "find",
@@ -34357,11 +34719,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U4-L10",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Dividing by Unit and Non-Unit Fractions",
    "negative_candidates": [
     {
@@ -34371,6 +34735,12 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "measure_groups_of_size"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "reason": "automaton_refuses_operands([12-3, 12-4, 12-6])"
     }
    ],
    "negative_receipts": [
@@ -34395,7 +34765,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.NS.A.1": [
      "compute",
@@ -35447,13 +35817,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U5-L13",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Dividing a Decimal by a Decimal",
    "negative_candidates": [
     {
@@ -35465,8 +35833,29 @@
      "productive": "long_division"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "sum_dividend_and_divisor",
+     "intended_action": {
+      "kind": "long_division",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U5-L13",
+     "material_incompatibility": "The lesson requires finding the quotient of 8 for the expressions 8 ÷ 1 and 8,000 ÷ 1,000, a result the alternative discards by summing the dividend and divisor.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "8 ÷ 1 and 8,000 ÷ 1,000 both have a value of 8"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.B.2": [
      "divide",
@@ -36508,11 +36897,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L1",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Positive and Negative Numbers",
    "negative_candidates": [
     {
@@ -36530,6 +36921,12 @@
      "operation": "integer",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "signed_number_location_and_order"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "order_by_magnitude_ignore_sign",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -36554,7 +36951,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.NS.C.5": [
      "describe",
@@ -36760,11 +37157,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L5",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Using Negative Numbers to Make Sense of Contexts",
    "negative_candidates": [
     {
@@ -36808,6 +37207,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "order_by_magnitude_ignore_sign",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "order_by_magnitude_ignore_sign",
@@ -36830,7 +37235,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.NS.C.5": [
      "describe",
@@ -36853,11 +37258,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L6",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Absolute Value of Numbers",
    "negative_candidates": [
     {
@@ -36875,6 +37282,12 @@
      "operation": "integer",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "signed_number_location_and_order"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "order_by_magnitude_ignore_sign",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -36899,7 +37312,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.NS.C.7": [
      "order",
@@ -37364,11 +37777,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L14",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Distances in the Coordinate Plane",
    "negative_candidates": [
     {
@@ -37386,6 +37801,12 @@
      "operation": "geometry",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "axis_aligned_coordinate_distance"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "directed_difference_as_coordinate_distance",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -37410,7 +37831,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.NS.C.6": [
      "extend",
@@ -37539,11 +37960,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L16",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Common Factors",
    "negative_candidates": [
     {
@@ -37561,6 +37984,12 @@
      "operation": "multiplication",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "common_factor_intersection"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "factors_of_first_number_only",
+     "reason": "no_task_with_receipt_operation"
     }
    ],
    "negative_receipts": [
@@ -37585,7 +38014,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "6.NS.B.4": [
      "find",
@@ -40238,11 +40667,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U2-L12",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Using Graphs to Compare Relationships",
    "negative_candidates": [
     {
@@ -40260,6 +40691,12 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "inverse_fact_decomposition"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "reason": "automaton_refuses_operands([2-8, 3-6, 4-5, 5-4, 10-6, 50-20, 50-30])"
     }
    ],
    "negative_receipts": [
@@ -40284,7 +40721,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "7.RP.A.2": [
      "recognize",
@@ -41298,11 +41735,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U4-L8",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Percent Increase and Decrease with Equations",
    "negative_candidates": [
     {
@@ -41320,6 +41759,12 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "missing_factor_known_product_search"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "reject_known_product_match",
+     "reason": "automaton_refuses_operands([10-50, 49-50, 51-50, 60-50])"
     }
    ],
    "negative_receipts": [
@@ -41344,7 +41789,7 @@
      "source_kind": "vision_digest"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "7.EE.A.2": [
      "multiply",
@@ -42186,13 +42631,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U5-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Multiplying Rational Numbers (Part 1)",
    "negative_candidates": [
     {
@@ -42212,8 +42655,29 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G7-U5-L8",
+     "material_incompatibility": "The lesson uses a negative velocity and a positive travel time to determine position. The alternative discards the travel time's role as a multiplier.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "product of a negative velocity and a positive travel time"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.NS.A.2.a": [
      "describe",
@@ -58118,11 +58582,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "K",
    "lesson": "IM-GK-U8-L18",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "All the Ways to Make 10",
    "negative_candidates": [
     {
@@ -58148,6 +58614,12 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "count_up_missing_addend"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "single_decomposition_treated_as_exhaustive",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -58181,7 +58653,7 @@
      "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.CC.B.4.c": [
      "name",
@@ -59885,11 +60357,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "1",
    "lesson": "IM-G1-U2-L10",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Center Day 2",
    "negative_candidates": [
     {
@@ -59917,6 +60391,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "count_all_when_count_on_available",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "count_all_when_count_on_available",
@@ -59938,7 +60418,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.OA.C.6": [
      "add",
@@ -64456,11 +64936,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "1",
    "lesson": "IM-G1-U4-L18",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -64520,6 +65002,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "compare_ones_digits_only",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "compare_ones_digits_only",
@@ -64541,7 +65029,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.NBT.B.3": [
      "compare",
@@ -64769,11 +65257,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "1",
    "lesson": "IM-G1-U4-L21",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Compare 2-Digit Numbers Shown in Different Ways",
    "negative_candidates": [
     {
@@ -64849,6 +65339,12 @@
      "productive": "decompose_base_for_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "compare_ones_digits_only",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "compare_ones_digits_only",
@@ -64870,7 +65366,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.NBT.B.2": [
      "represent",
@@ -67576,11 +68072,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "1",
    "lesson": "IM-G1-U7-L6",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Rectangles and Squares",
    "negative_candidates": [
     {
@@ -67624,6 +68122,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "orientation_bound_shape_classification",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "orientation_bound_shape_classification",
@@ -67645,7 +68149,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.G.A": [
      "reason"
@@ -68474,11 +68978,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "1",
    "lesson": "IM-G1-U8-L3",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Add and Subtract within 20",
    "negative_candidates": [
     {
@@ -68522,6 +69028,12 @@
      "productive": "take_away_base_ones"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "reason": "automaton_refuses_operands([13-7, 15-7])"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "drop_ones_after_base_takeaway",
@@ -68543,7 +69055,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.OA.C.6": [
      "add",
@@ -69526,11 +70038,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "5",
    "lesson": "IM-G5-U1-L9",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Measure Figures Made from Prisms",
    "negative_candidates": [
     {
@@ -69558,6 +70072,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "sum_overlapping_prism_volumes",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "sum_overlapping_prism_volumes",
@@ -69579,7 +70099,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.MD.C.5": [
      "relate",
@@ -69689,11 +70209,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "5",
    "lesson": "IM-G5-U1-L11",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "All Kinds of Prisms",
    "negative_candidates": [
     {
@@ -69703,6 +70225,12 @@
      "operation": "geometry",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "composite_prism_volume_sum"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "sum_overlapping_prism_volumes",
+     "reason": "automaton_refuses_operands([prism(9,4)-5])"
     }
    ],
    "negative_receipts": [
@@ -69726,7 +70254,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.MD.C.3": [
      "recognize",
@@ -69805,11 +70333,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "5",
    "lesson": "IM-G5-U2-L1",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Share Sandwiches",
    "negative_candidates": [
     {
@@ -69827,6 +70357,12 @@
      "operation": "fraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "unit_fraction_iteration"
+    }
+   ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "discard_unshared_remainder",
+     "reason": "alternative_not_in_registry"
     }
    ],
    "negative_receipts": [
@@ -69862,7 +70398,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.NF.B.3": [
      "divide",
@@ -69998,13 +70534,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U2-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Division Situations",
    "negative_candidates": [
     {
@@ -70024,8 +70558,36 @@
      "productive": "unit_fraction_iteration"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G5-U2-L4",
+     "material_incompatibility": "The lesson asks for the number of friends based on the amount of gold each friend gets. The alternative would interpret the gold amount as the number of friends.",
+     "source": {
+      "fragments": [
+       {
+        "line": 289,
+        "text": "collect 5 grams of gold together and"
+       },
+       {
+        "line": 290,
+        "text": "Each friend gets    gram."
+       },
+       {
+        "line": 291,
+        "text": "many friends shared the gold?"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit2/lesson4.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.NF.B.3": [
      "divide",
@@ -71986,13 +72548,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Standard Algorithm: One-digit and Multi-digit Numbers, with Composing",
    "negative_candidates": [
     {
@@ -72044,8 +72604,28 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G5-U4-L4",
+     "material_incompatibility": "The lesson requires multiplying 3 groups of 1 ten, while the alternative would add 3 and 1 ten.",
+     "source": {
+      "fragments": [
+       {
+        "line": 165,
+        "text": "Three times 1 ten is 3 tens"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit4/lesson4.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.NBT.B.5": [
      "multiply",
@@ -73002,11 +73582,13 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": true
+    "structured_negative": false
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L19",
-   "missing_for_diagnosis": [],
+   "missing_for_diagnosis": [
+    "structured_negative"
+   ],
    "name": "Shipping Trash",
    "negative_candidates": [
     {
@@ -73050,6 +73632,12 @@
      "productive": "repeat_equal_groups"
     }
    ],
+   "negative_receipt_defects": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "reason": "no_task_with_receipt_operation"
+    }
+   ],
    "negative_receipts": [
     {
      "alternative": "share_into_divisor_groups",
@@ -73071,7 +73659,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "diagnostic_ready",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.MD.C.5": [
      "relate",
@@ -77523,25 +78111,26 @@
   ],
   "negative_candidate": "registry-derived counterpossibility; requires lesson-source review",
   "standard_action_candidate": "inferred only from an addressing alignment; not executable",
-  "structured_negative": "lesson-specific source receipt, explicit misconception, or compiled deformation"
+  "structured_negative": "runnable lesson-specific receipt route, explicit misconception, or compiled deformation"
  },
  "schema": "im_lesson_evidence_v1",
  "sources": {
   "atlas": "scripts/bigred/iteration15/work/atlas/atlas_landscape.jsonl",
   "negative_receipts": "scripts/curriculum/lesson_negative_receipts.json",
   "productive_deformation_catalog": "data/learningcommons/derived/im_productive_deformation_catalog.json",
+  "receipt_routes": "curriculum/im/generated/compiled_receipt_routes.pl",
   "spine": "data/learningcommons/derived/im_k8_spine.json",
   "standard_catalog": "data/learningcommons/derived/im_ccss_action_catalog.json",
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 310,
+  "diagnostic_ready": 261,
   "executable_task": 379,
   "measured_transition": 372,
   "negative_candidate": 820,
   "published": 1308,
   "standard_action_candidate": 1272,
   "strategy_evidence": 915,
-  "structured_negative": 464
+  "structured_negative": 415
  }
 }

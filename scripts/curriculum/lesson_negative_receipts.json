@@ -3348,6 +3348,153 @@
           }
         ]
       }
+    },
+    {
+      "lesson": "IM-G2-U2-L16",
+      "intended_action": {
+        "operation": "subtraction",
+        "kind": "take_away_base_ones"
+      },
+      "alternative": "drop_ones_after_base_takeaway",
+      "material_incompatibility": "Subtracting 19 from 35 takes the ten away and still leaves the subtrahend's 9 ones to remove, which the alternative discards once the base is gone.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit2/lesson16.md",
+        "fragments": [
+          {
+            "line": 108,
+            "text": "be subtracted while the ones are left alone"
+          },
+          {
+            "line": 106,
+            "text": "I took away 2 tens and gave 1 one back since it"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U8-L6",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "count_on_from_larger"
+      },
+      "alternative": "count_all_when_count_on_available",
+      "material_incompatibility": "The lesson presents values as being 2 more than the previous expression, a relation the alternative ignores by counting all units from the start.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade2/unit8/lesson6.md",
+        "fragments": [
+          {
+            "line": 101,
+            "text": "I saw that it’s 2 more than the last expression"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U3-L5",
+      "intended_action": {
+        "operation": "addition",
+        "kind": "base_ones_chunking"
+      },
+      "alternative": "dropped_ones_chunk",
+      "material_incompatibility": "The algorithm records a digit for the sum of every place-value position, so the ones are added after the tens and hundreds; the alternative stops at the base chunk and drops the remaining ones.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade3/unit3/lesson5.md",
+        "fragments": [
+          {
+            "line": 11,
+            "text": "records a single digit for the sum of each place-value position, and “10” or “100” for a newly composed ten or hundred"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G6-U5-L13",
+      "intended_action": {
+        "operation": "division",
+        "kind": "long_division"
+      },
+      "alternative": "sum_dividend_and_divisor",
+      "material_incompatibility": "The lesson requires finding the quotient of 8 for the expressions 8 ÷ 1 and 8,000 ÷ 1,000, a result the alternative discards by summing the dividend and divisor.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_purpose",
+            "text": "8 ÷ 1 and 8,000 ÷ 1,000 both have a value of 8"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G7-U5-L8",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson uses a negative velocity and a positive travel time to determine position. The alternative discards the travel time's role as a multiplier.",
+      "source_kind": "vision_digest",
+      "source": {
+        "kind": "fact",
+        "path": "curriculum/im/generated/vision_lesson_digest.pl",
+        "fragments": [
+          {
+            "predicate": "vision_lesson_purpose",
+            "text": "product of a negative velocity and a positive travel time"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U2-L4",
+      "intended_action": {
+        "operation": "division",
+        "kind": "measure_groups_of_size"
+      },
+      "alternative": "share_into_divisor_groups",
+      "material_incompatibility": "The lesson asks for the number of friends based on the amount of gold each friend gets. The alternative would interpret the gold amount as the number of friends.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit2/lesson4.md",
+        "fragments": [
+          {
+            "line": 289,
+            "text": "collect 5 grams of gold together and"
+          },
+          {
+            "line": 290,
+            "text": "Each friend gets    gram."
+          },
+          {
+            "line": 291,
+            "text": "many friends shared the gold?"
+          }
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G5-U4-L4",
+      "intended_action": {
+        "operation": "multiplication",
+        "kind": "repeat_equal_groups"
+      },
+      "alternative": "add_instead_of_multiply",
+      "material_incompatibility": "The lesson requires multiplying 3 groups of 1 ten, while the alternative would add 3 and 1 ten.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "curriculum/im_teacher_guides/grade5/unit4/lesson4.md",
+        "fragments": [
+          {
+            "line": 165,
+            "text": "Three times 1 ten is 3 tens"
+          }
+        ]
+      }
     }
   ]
 }
