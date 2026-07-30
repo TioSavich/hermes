@@ -1,0 +1,49 @@
+{
+  "schema": "equation_verification_witness_controls_v1",
+  "register": "Unit controls on the truth-value witness gate. Every line number and every excerpt here is real text from the named guide, which is the point: a witness that is real, in-lesson and near the right place still has to state the judgment it licenses, at the line it cites, inside the response block that answers this task span. The licensing control is the fifth row and must pass.",
+  "lesson": "IM-G1-U5-L11",
+  "position": "student_task_statement(1)",
+  "source": "curriculum/im_teacher_guides/grade1/unit5/lesson11.md",
+  "controls": [
+    {
+      "id": "witness_licenses",
+      "expected": null,
+      "line": 101,
+      "judgment": "false",
+      "excerpt": "• False: The 3 is only 3 ones, not 3 tens.",
+      "why": "The guide's own printed judgment for the first item, on its own line, inside the first Student Response block after the span."
+    },
+    {
+      "id": "witness_states_no_judgment",
+      "expected": "witness excerpt prints no leading True or False judgment",
+      "line": 105,
+      "judgment": "false",
+      "excerpt": "should be 72.",
+      "why": "Real text, real line, right block, and it is the continuation of a False item's reasoning. It reasons about the answer without printing one, which is the truth-value form of the printed-answer hole task-201 found."
+    },
+    {
+      "id": "witness_states_the_other_judgment",
+      "expected": "witness excerpt states 'true' but the row claims 'false'",
+      "line": 103,
+      "judgment": "false",
+      "excerpt": "• True:",
+      "why": "A printed judgment from the right block, cited for an item the guide answers the other way. The truth value has to be read off the guide, not asserted beside it."
+    },
+    {
+      "id": "witness_off_the_response_block",
+      "expected": "witness is not in the next Student Response block after the task span",
+      "line": 22,
+      "judgment": "true",
+      "excerpt": "• True or False?",
+      "why": "The routine's name in the lesson's activity list. It opens with True and is verbatim guide text, and it answers nothing."
+    },
+    {
+      "id": "witness_drifted_from_its_line",
+      "expected": "witness excerpt drifted at curriculum/im_teacher_guides/grade1/unit5/lesson11.md:101",
+      "line": 101,
+      "judgment": "false",
+      "excerpt": "False: 24 plus 3 is 27, not 54.",
+      "why": "A plausible sentence the guide never prints, cited at a line whose real text is a different False item."
+    }
+  ]
+}

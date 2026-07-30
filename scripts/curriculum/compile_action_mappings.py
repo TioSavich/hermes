@@ -19,6 +19,9 @@ import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import equation_verification  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 # Every corpus this compiler reads and every artifact it writes is named once,
@@ -37,6 +40,9 @@ DEFAULT_OUTPUT = GENERATED_ROOT / "compiled_action_mappings.pl"
 DEFAULT_TASK_OUTPUT = GENERATED_ROOT / "compiled_task_instances.pl"
 RECOVERED_TASK_SPANS = GENERATED_ROOT / "recovered_task_spans.json"
 TASK_READINGS = ROOT / "scripts" / "curriculum" / "lesson_task_readings.json"
+EQUATION_VERIFICATIONS = (
+    ROOT / "scripts" / "curriculum" / "lesson_equation_verifications.json"
+)
 
 CODE_RE = re.compile(r"IM-G([K0-8])-U(\d+)-L(\d+)")
 EXPLICIT_RE = re.compile(
@@ -451,6 +457,56 @@ def _task_reading_operand_present(operand: int, excerpt: str) -> bool:
     """Match a whole numeral after removing only thousands separators."""
     normalized = re.sub(r"(?<=\d),(?=\d)", "", excerpt)
     return re.search(rf"(?<!\d){re.escape(str(operand))}(?!\d)", normalized) is not None
+
+
+def _printed_answer_states_value(value: Fraction, excerpt: str) -> bool:
+    """Whether the cited response text actually prints the value it witnesses.
+
+    Three checks used to stand for a printed-answer witness: the excerpt is at
+    the cited line, the line is in the next Student Response block, and the
+    stated value equals the computed task. None of them asks whether the
+    excerpt says the value, so any verbatim sentence from the right block
+    licensed any correctly-computed answer. A machine proposer found this on
+    its first survivor (task-201): witness value 247 against the excerpt "and
+    15, so it would be more than 200", from a response block that never prints
+    247. The 71 authored readings all carry their value by discipline; this
+    makes it a gate.
+
+    The matching rule is a numeral-token match after thousands separators are
+    removed, so the guides' "247", "$247" and "247 marbles" all witness 247
+    while "2470" and "1247" do not. A non-integer value is witnessed by its
+    printed fraction, by its terminating decimal, or by a mixed number whose
+    parts are adjacent in the excerpt.
+    """
+    normalized = re.sub(r"(?<=\d),(?=\d)", "", excerpt)
+    forms: list[str] = []
+    if value.denominator == 1:
+        forms.append(str(value.numerator))
+    else:
+        forms.append(f"{value.numerator}/{value.denominator}")
+        decimal = _terminating_decimal(value)
+        if decimal is not None:
+            forms.append(decimal)
+        whole, remainder = divmod(abs(value.numerator), value.denominator)
+        if whole:
+            sign = "-" if value < 0 else ""
+            forms.append(f"{sign}{whole} {remainder}/{value.denominator}")
+    for form in forms:
+        if re.search(rf"(?<![\d.]){re.escape(form)}(?![\d.]?\d)", normalized):
+            return True
+    return False
+
+
+def _terminating_decimal(value: Fraction) -> str | None:
+    """The exact decimal spelling of a fraction, when it has one."""
+    denominator = value.denominator
+    for factor in (2, 5):
+        while denominator % factor == 0:
+            denominator //= factor
+    if denominator != 1:
+        return None
+    text = f"{float(value):.10f}".rstrip("0").rstrip(".")
+    return text or "0"
 
 
 # A one-space predecessor is ordinary sentence punctuation in the extracted
@@ -901,6 +957,12 @@ def validate_lesson_task_readings(
                     f"lesson task reading {reading_id} printed answer disagrees: "
                     f"task={computed} witness={value}"
                 )
+            if not _printed_answer_states_value(witness, answer["excerpt"]):
+                raise SystemExit(
+                    f"lesson task reading {reading_id} printed answer is absent from "
+                    f"its own witness excerpt: value={value} "
+                    f"excerpt={answer['excerpt']!r}"
+                )
             # A printed answer is a witness only when it is in the first response
             # block after the cited task span. This deliberately follows document
             # order rather than matching task and response ordinals.
@@ -940,6 +1002,222 @@ def validate_lesson_task_readings(
             "witness_class": witness_class,
         })
     return validated
+
+
+def equation_witness_refusal(
+    root: pathlib.Path,
+    span: StudentTaskSpan,
+    source: str,
+    line: object,
+    fragment: object,
+    judgment: str,
+    guide_lines: dict[str, list[str]] | None = None,
+) -> str | None:
+    """Why a cited printed judgment does not license the equation it is cited for.
+
+    Returns ``None`` when the witness licenses, and otherwise the reason it does
+    not.  Four things have to hold together, and each of them refuses something
+    the others let through:
+
+    * the excerpt has to *print* a judgment, opening with True or False, so that
+      any sentence from the right block cannot stand in for an answer;
+    * the judgment it prints has to be the judgment claimed, so the truth value
+      is read off the guide rather than asserted beside it;
+    * the excerpt has to be at the line it cites, so the text is the guide's;
+    * that line has to be inside the first Student Response block after the task
+      span, so a "True or False?" activity title elsewhere on the page is not a
+      response to this prompt.
+
+    This is the truth-value counterpart of the printed-answer rule tightened in
+    ``_printed_answer_states_value``: a witness has to state what it licenses.
+    """
+    if not isinstance(fragment, str) or not fragment.strip():
+        return "witness excerpt is empty"
+    match = equation_verification.JUDGMENT_RE.match(fragment)
+    if match is None:
+        return "witness excerpt prints no leading True or False judgment"
+    if match.group("judgment").lower() != judgment:
+        return (
+            f"witness excerpt states {match.group('judgment').lower()!r} "
+            f"but the row claims {judgment!r}"
+        )
+    if not isinstance(line, int) or isinstance(line, bool) or line < 1:
+        return "witness line is not a line number"
+    if guide_lines is None:
+        guide_lines = {}
+    if source not in guide_lines:
+        guide_lines[source] = (root / source).read_text(
+            encoding="utf-8", errors="replace"
+        ).split("\n")
+    lines = guide_lines[source]
+    if line > len(lines):
+        return "witness line is outside the guide"
+    if _normalize_fragment(fragment) not in _normalize_fragment(lines[line - 1]):
+        return f"witness excerpt drifted at {source}:{line}"
+    response_range = _next_response_range(root / source, span.heading_line)
+    if response_range is None or not (response_range[0] < line <= response_range[1]):
+        return "witness is not in the next Student Response block after the task span"
+    return None
+
+
+def validate_equation_verifications(
+    root: pathlib.Path,
+    docs: list[LessonDoc],
+    covered: set[str],
+    attachments: dict[str, set[tuple[str, str]]],
+    ledger_path: pathlib.Path = EQUATION_VERIFICATIONS,
+) -> list[dict]:
+    """Re-derive the equation-verification ledger and refuse every claim it cannot prove.
+
+    The ledger is generated, so the question here is not whether someone
+    authored it carefully but whether the tree still says what it says.  The
+    compiler re-reads the guides, re-segments the equations, re-parses the
+    printed judgments, and accepts a row only when the ledger agrees with that
+    reading in every field it could otherwise invent: the equation text, the
+    claim term, the witness line, and the judgment printed on it.  The verdict
+    is pinned from the other side, by requiring it to match a judgment the
+    compiler read for itself out of the guide.
+    """
+    path = ledger_path if ledger_path.is_absolute() else root / ledger_path
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema") != equation_verification.LEDGER_SCHEMA:
+        raise SystemExit(
+            f"unexpected equation verification schema in {path}: {payload.get('schema')!r}"
+        )
+    if not isinstance(payload.get("register"), str):
+        raise SystemExit(f"equation verification ledger lacks a register paragraph: {path}")
+    spans = extract_student_task_spans(docs)
+    recovered = {
+        (span.code, span.position): span
+        for span in read_recovered_task_spans(root, spans)
+    }
+    derived = {
+        (reading.lesson, reading.position): reading
+        for reading in equation_verification.read_span_readings(
+            root, spans, recovered, {doc.code: doc for doc in docs},
+            attachments, _next_response_range,
+        )
+    }
+    span_by_key = {(span.code, span.position): span for span in spans}
+    guide_lines: dict[str, list[str]] = {}
+    accepted: list[dict] = []
+    for entry in payload.get("spans", []):
+        lesson = entry.get("lesson")
+        position = entry.get("position")
+        if not isinstance(lesson, str) or not isinstance(position, str):
+            raise SystemExit(f"malformed equation verification span identity: {entry!r}")
+        label = f"equation verification {lesson}/{position}"
+        reading = derived.get((lesson, position))
+        if reading is None:
+            raise SystemExit(f"{label} names no True-or-False routine span")
+        if entry.get("refusal") != reading.refusal:
+            raise SystemExit(
+                f"{label} refusal disagrees with the corpus: "
+                f"ledger {entry.get('refusal')!r} != {reading.refusal!r}"
+            )
+        rows = entry.get("rows")
+        if not isinstance(rows, list) or len(rows) != len(reading.rows):
+            raise SystemExit(f"{label} row count disagrees with the corpus")
+        for row, derived_row in zip(rows, reading.rows):
+            for key in ("equation", "claim", "position", "witness_line",
+                        "witness_judgment", "witness_fragment", "witness_source"):
+                if row.get(key) != getattr(derived_row, key):
+                    raise SystemExit(
+                        f"{label} {key} disagrees with the corpus: "
+                        f"{row.get(key)!r} != {getattr(derived_row, key)!r}"
+                    )
+            if not row.get("accepted"):
+                continue
+            if reading.refusal:
+                raise SystemExit(f"{label} accepts a row inside a refused span")
+            verdict = row.get("verdict")
+            expected = {"holds": "true", "refuted": "false"}.get(verdict)
+            if expected is None:
+                raise SystemExit(f"{label} accepted row carries no checked verdict")
+            if expected != derived_row.witness_judgment:
+                raise SystemExit(
+                    f"{label} verdict {verdict!r} contradicts the printed judgment "
+                    f"{derived_row.witness_judgment!r}"
+                )
+            checker = row.get("checker")
+            if not isinstance(checker, str) or not checker:
+                raise SystemExit(f"{label} accepted row names no checker")
+            witness_line = derived_row.witness_line
+            source = derived_row.witness_source
+            span = span_by_key[(lesson, position)]
+            refusal = equation_witness_refusal(
+                root, span, source, witness_line, derived_row.witness_fragment,
+                derived_row.witness_judgment, guide_lines,
+            )
+            if refusal is not None:
+                raise SystemExit(f"{label} {refusal}")
+            equation_span = recovered.get((lesson, position)) if (
+                derived_row.equation_source == "recovered_task_spans"
+            ) else span
+            if derived_row.equation not in equation_span.text:
+                raise SystemExit(f"{label} equation is absent from the span it names")
+            if derived_row.equation_source == "markdown":
+                # A markdown equation is line-addressable, so it gets the drift
+                # check every other markdown citation in this compiler gets:
+                # the excerpt has to be inside the student-facing lines it
+                # cites, not merely somewhere in the span.
+                printed = _normalize_fragment(" ".join(
+                    text for number, text in span.lines
+                    if derived_row.equation_line <= number <= derived_row.equation_end_line
+                ))
+                if _normalize_fragment(derived_row.equation) not in printed:
+                    raise SystemExit(
+                        f"{label} equation drifted at {derived_row.span_source}:"
+                        f"{derived_row.equation_line}-{derived_row.equation_end_line}"
+                    )
+            for task in derived_row.tasks:
+                if task.status != "reviewable":
+                    continue
+                # An adjudicated equation with a printed judgment is a record
+                # either way; only a runnable task needs the lesson to carry a
+                # route, so the coverage question is asked here and not above.
+                if lesson not in covered:
+                    raise SystemExit(
+                        f"{label} runnable task on a lesson without accepted mapping"
+                    )
+                if not any(
+                    operation == task.operation
+                    for operation, _ in attachments.get(lesson, set())
+                ):
+                    raise SystemExit(
+                        f"{label} task has no {task.operation} route: {lesson}"
+                    )
+                accepted.append({
+                    "lesson": lesson,
+                    "task": task.task,
+                    "id": task.rule_id,
+                    # The excerpt is the printed equation, so the cited source
+                    # is where the equation is printed. The witness lives in the
+                    # response block and travels in the position term, which is
+                    # what keeps both halves independently addressable.
+                    "source": derived_row.span_source,
+                    "line": derived_row.equation_line,
+                    "end_line": derived_row.equation_line,
+                    "position": (
+                        f"{derived_row.position}/side({task.side})"
+                        f"/witness(line({witness_line}))"
+                    ),
+                    "excerpt": derived_row.equation,
+                    "witness_class": equation_verification.WITNESS_CLASS,
+                    "claim": row.get("claim"),
+                    "verdict": verdict,
+                    "checker": checker,
+                    "reason_trace": row.get("reason_trace", []),
+                    "witness_judgment": derived_row.witness_judgment,
+                    "witness_fragment": derived_row.witness_fragment,
+                    "equation_source": derived_row.equation_source,
+                    "viability": row.get("viability", []),
+                })
+    return accepted
+
+
+def _normalize_fragment(text: str) -> str:
+    return re.sub(r"\s+", " ", text.replace("\f", " ")).strip()
 
 
 NUMBER_WORDS = {
@@ -2644,6 +2922,21 @@ def compile_task_instances(
                 reading["position"],
                 reading["excerpt"],
                 witness_class=reading["witness_class"],
+            )
+        )
+    for row in validate_equation_verifications(ROOT, docs, covered, attachments):
+        instances.add(
+            TaskInstance(
+                row["lesson"],
+                row["task"],
+                "productive",
+                row["id"],
+                row["source"],
+                row["line"],
+                row["end_line"],
+                row["position"],
+                row["excerpt"],
+                witness_class=row["witness_class"],
             )
         )
     return sorted(instances)

@@ -1,0 +1,236 @@
+{
+ "schema": "lesson_equation_verifications_v1",
+ "register": "Deliberately doctored: the claim term states operands the equation does not print, chosen so the claim would come out true. The compiler compiles claims from the printed equation itself, so a ledger claim that disagrees with the corpus is refused before its verdict is read.",
+ "expected_error": "claim disagrees with the corpus",
+ "spans": [
+  {
+   "equation_count": 3,
+   "equation_source": "recovered_task_spans",
+   "judgment_count": 3,
+   "lesson": "IM-G1-U5-L11",
+   "position": "student_task_statement(1)",
+   "refusal": "",
+   "rows": [
+    {
+     "accepted": true,
+     "checker": "grounded_arithmetic:add_grounded",
+     "claim": "sum(24, 30, 54)",
+     "claim_family": "grounded",
+     "claim_route": "stated_result_within_grounded_counting_bound",
+     "equation": "24 + 3 = 54",
+     "equation_end_line": 0,
+     "equation_line": 0,
+     "equation_source": "recovered_task_spans",
+     "item": 1,
+     "lesson": "IM-G1-U5-L11",
+     "position": "student_task_statement(1)/equation(1)",
+     "printed_reasoning": "• False: The 3 is only 3 ones, not 3 tens.",
+     "printed_reasoning_lines": [
+      101,
+      102
+     ],
+     "reason_trace": [
+      "count on from 24 by 30 reaches 54; claimed 54"
+     ],
+     "refusal": "",
+     "span_end_line": 98,
+     "span_line": 90,
+     "span_source": "curriculum/im/generated/recovered_task_spans.json",
+     "status": "domain_checked",
+     "tasks": [
+      {
+       "left": 24,
+       "operation": "addition",
+       "reason": "printed_equation_side_is_one_binary_operation_with_route",
+       "right": 3,
+       "rule_id": "equation_verification_stated_result",
+       "side": "left",
+       "status": "reviewable",
+       "task": "add(24, 3)"
+      }
+     ],
+     "verdict": "refuted",
+     "viability": [
+      {
+       "context": "agrees_at_input",
+       "deformation": "dropped_ones_chunk",
+       "deformation_answers": "false",
+       "deformation_ran": true,
+       "deformation_result": 24,
+       "family": "dropped_remainder_chunk",
+       "productive": "base_ones_chunking",
+       "productive_answers": "false",
+       "productive_ran": true,
+       "productive_result": 27,
+       "side": "left",
+       "task": "add(24, 3)"
+      },
+      {
+       "context": "pair_did_not_run_on_this_input",
+       "deformation": "make_ten_drop_leftover",
+       "deformation_ran": false,
+       "deformation_result": null,
+       "family": "dropped_leftover_after_make_ten",
+       "productive": "make_ten_split_leftover",
+       "productive_ran": false,
+       "productive_result": null,
+       "side": "left",
+       "task": "add(24, 3)"
+      }
+     ],
+     "witness_fragment": "• False: The 3 is only 3 ones, not 3 tens.",
+     "witness_judgment": "false",
+     "witness_line": 101,
+     "witness_source": "curriculum/im_teacher_guides/grade1/unit5/lesson11.md"
+    },
+    {
+     "accepted": true,
+     "checker": "grounded_arithmetic:add_grounded",
+     "claim": "sum(42, 5, 47)",
+     "claim_family": "grounded",
+     "claim_route": "stated_result_within_grounded_counting_bound",
+     "equation": "42 + 5 = 47",
+     "equation_end_line": 0,
+     "equation_line": 0,
+     "equation_source": "recovered_task_spans",
+     "item": 2,
+     "lesson": "IM-G1-U5-L11",
+     "position": "student_task_statement(1)/equation(2)",
+     "printed_reasoning": "• True:",
+     "printed_reasoning_lines": [
+      103,
+      103
+     ],
+     "reason_trace": [
+      "count on from 42 by 5 reaches 47; claimed 47"
+     ],
+     "refusal": "",
+     "span_end_line": 98,
+     "span_line": 90,
+     "span_source": "curriculum/im/generated/recovered_task_spans.json",
+     "status": "domain_checked",
+     "tasks": [
+      {
+       "left": 42,
+       "operation": "addition",
+       "reason": "printed_equation_side_is_one_binary_operation_with_route",
+       "right": 5,
+       "rule_id": "equation_verification_stated_result",
+       "side": "left",
+       "status": "reviewable",
+       "task": "add(42, 5)"
+      }
+     ],
+     "verdict": "holds",
+     "viability": [
+      {
+       "context": "separating_at_this_input",
+       "deformation": "dropped_ones_chunk",
+       "deformation_answers": "false",
+       "deformation_ran": true,
+       "deformation_result": 42,
+       "family": "dropped_remainder_chunk",
+       "productive": "base_ones_chunking",
+       "productive_answers": "true",
+       "productive_ran": true,
+       "productive_result": 47,
+       "side": "left",
+       "task": "add(42, 5)"
+      },
+      {
+       "context": "pair_did_not_run_on_this_input",
+       "deformation": "make_ten_drop_leftover",
+       "deformation_ran": false,
+       "deformation_result": null,
+       "family": "dropped_leftover_after_make_ten",
+       "productive": "make_ten_split_leftover",
+       "productive_ran": false,
+       "productive_result": null,
+       "side": "left",
+       "task": "add(42, 5)"
+      }
+     ],
+     "witness_fragment": "• True:",
+     "witness_judgment": "true",
+     "witness_line": 103,
+     "witness_source": "curriculum/im_teacher_guides/grade1/unit5/lesson11.md"
+    },
+    {
+     "accepted": true,
+     "checker": "grounded_arithmetic:add_grounded",
+     "claim": "sum(42, 30, 45)",
+     "claim_family": "grounded",
+     "claim_route": "stated_result_within_grounded_counting_bound",
+     "equation": "42 + 30 = 45",
+     "equation_end_line": 0,
+     "equation_line": 0,
+     "equation_source": "recovered_task_spans",
+     "item": 3,
+     "lesson": "IM-G1-U5-L11",
+     "position": "student_task_statement(1)/equation(3)",
+     "printed_reasoning": "• False: 45 is only 3 more than 42, not 30 more. It should be 72. Activity 1 How Much Litter? Standards Addressing The purpose of this activity is for students to interpret eq students connect the quantities in the story problem to addi (MP2). Base-ten drawings are provided for Jada and Kiran's w equations to make sense of the different methods. Students c ones to methods that add on by place. Students may also rela Grade 1 Unit 5 L methods they use when adding within 20. This activity uses MLR8 Discussion Supports. Advances: liste Required Materials Materials to Gather • Connecting cubes in towers of 10 and singles: Activity 1",
+     "printed_reasoning_lines": [
+      104,
+      141
+     ],
+     "reason_trace": [
+      "count on from 42 by 30 reaches 72; claimed 45"
+     ],
+     "refusal": "",
+     "span_end_line": 98,
+     "span_line": 90,
+     "span_source": "curriculum/im/generated/recovered_task_spans.json",
+     "status": "domain_checked",
+     "tasks": [
+      {
+       "left": 42,
+       "operation": "addition",
+       "reason": "printed_equation_side_is_one_binary_operation_with_route",
+       "right": 30,
+       "rule_id": "equation_verification_stated_result",
+       "side": "left",
+       "status": "reviewable",
+       "task": "add(42, 30)"
+      }
+     ],
+     "verdict": "refuted",
+     "viability": [
+      {
+       "context": "agrees_at_input",
+       "deformation": "dropped_ones_chunk",
+       "deformation_answers": "false",
+       "deformation_ran": true,
+       "deformation_result": 72,
+       "family": "dropped_remainder_chunk",
+       "productive": "base_ones_chunking",
+       "productive_answers": "false",
+       "productive_ran": true,
+       "productive_result": 72,
+       "side": "left",
+       "task": "add(42, 30)"
+      },
+      {
+       "context": "agrees_at_input",
+       "deformation": "make_ten_drop_leftover",
+       "deformation_answers": "false",
+       "deformation_ran": true,
+       "deformation_result": 50,
+       "family": "dropped_leftover_after_make_ten",
+       "productive": "make_ten_split_leftover",
+       "productive_answers": "false",
+       "productive_ran": true,
+       "productive_result": 72,
+       "side": "left",
+       "task": "add(42, 30)"
+      }
+     ],
+     "witness_fragment": "• False: 45 is only 3 more than 42, not 30 more. It",
+     "witness_judgment": "false",
+     "witness_line": 104,
+     "witness_source": "curriculum/im_teacher_guides/grade1/unit5/lesson11.md"
+    }
+   ],
+   "witness_alignment": "mixed_judgment_sequence_alignment_constrained"
+  }
+ ]
+}

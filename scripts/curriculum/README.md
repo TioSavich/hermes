@@ -17,11 +17,19 @@ byte-for-byte.
 ```sh
 python3 scripts/research/build_im_coverage.py
 python3 scripts/curriculum/build_digest.py curriculum/im/generated/vision_lesson_digest.pl
+python3 scripts/curriculum/build_equation_verifications.py       # --check to compare only
 python3 scripts/curriculum/compile_action_mappings.py            # --check to compare only
 python3 scripts/curriculum/ingest_vision.py --apply              # omit --apply for a dry run
 python3 scripts/curriculum/build_lesson_evidence.py              # --check to compare only
 swipl -q -l paths.pl -g "consult('scripts/curriculum/mini_atlas.pl')"
 ```
+
+`build_equation_verifications.py` runs before the compiler because the compiler
+reads its ledger. The ledger holds every equation the True-or-False routine
+prints, the claim term it compiles to, and the verdict and reason trace a
+registered checker in `hermes/math_claim_checker.pl` returned for it. The
+compiler re-derives all of that from the guides and refuses any row the tree no
+longer supports, so the ledger supplies the Prolog verdicts and nothing else.
 
 `compile_action_mappings.py` names each corpus it reads once, in the constants
 block at the top of the file. Rerouting a corpus is one line there; `--check`

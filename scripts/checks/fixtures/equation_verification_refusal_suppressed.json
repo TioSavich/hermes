@@ -1,0 +1,17 @@
+{
+ "schema": "lesson_equation_verifications_v1",
+ "register": "Deliberately doctored: a span the corpus refuses because its printed judgments and its printed equations do not come in equal numbers, shipped with the refusal removed. The count gate is what makes positional alignment testable, so a ledger cannot drop it.",
+ "expected_error": "refusal disagrees with the corpus",
+ "spans": [
+  {
+   "equation_count": 5,
+   "equation_source": "recovered_task_spans",
+   "judgment_count": 0,
+   "lesson": "IM-G1-U3-L16",
+   "position": "student_task_statement(3)",
+   "refusal": "",
+   "rows": [],
+   "witness_alignment": ""
+  }
+ ]
+}
