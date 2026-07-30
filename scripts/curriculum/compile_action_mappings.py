@@ -72,6 +72,9 @@ ARITHMETIC_EXPRESSION_RE = re.compile(
     rf"(?=(?<![\d.,])(?P<left>{ARITHMETIC_NUMERAL})\s*"
     rf"(?P<symbol>[+\-−×·÷/=])\s*(?P<right>{ARITHMETIC_NUMERAL})(?![\d,]|\.\d))"
 )
+RECOVERED_COMPLETE_EQUATION_RE = re.compile(
+    r"(?<![\d,./])\d+\s*[-−+×·÷]\s*\d+\s*=\s*\d+(?![\d,./])"
+)
 # Fraction task lane.  An operand is a printed fraction, a space-separated
 # mixed number, or a whole number beside a fraction.  The left lookbehinds
 # refuse a start inside a numeral and refuse slicing the fraction part out
@@ -911,6 +914,29 @@ def validate_lesson_task_readings(
         if citations["operands"][0].get("recovered_span") is not None:
             recovered_key = (lesson, span_position)
             operands_span = recovered_by_key[recovered_key]
+            unit_match = re.search(r"/recovered_equation\((\d+)\)$", position)
+            if unit_match is not None:
+                units = _recovered_printed_equation_units(operands_span)
+                unit_number = int(unit_match.group(1))
+                if not (1 <= unit_number <= len(units)):
+                    raise SystemExit(
+                        f"lesson task reading {reading_id} names no recovered "
+                        f"equation unit: {unit_number}"
+                    )
+                unit = units[unit_number - 1]
+                if operands_excerpt not in unit:
+                    raise SystemExit(
+                        f"lesson task reading {reading_id} operands leave recovered "
+                        f"equation unit {unit_number}"
+                    )
+                operands_span = StudentTaskSpan(
+                    lesson,
+                    recovered_by_key[recovered_key].source,
+                    0,
+                    0,
+                    position,
+                    ((0, unit),),
+                )
         if not _operands_scope_one_item(operands_span, operands_excerpt):
             raise SystemExit(
                 f"lesson task reading {reading_id} item-scope failed: operands cite multiple items"
@@ -1308,6 +1334,179 @@ def _whole_numbers_in_text(text: str) -> list[int]:
 def _through_how_many_question(text: str) -> str:
     match = re.search(r"^.*?\bHow many\b[^?]*\?", text, re.IGNORECASE)
     return match.group(0) if match else text
+
+
+def _recovered_printed_equation_units(span: StudentTaskSpan) -> list[str]:
+    """Split a sidecar pseudo-line into equation-sized units.
+
+    Recovered spans retain the workbook's horizontal spacing but have no
+    physical line boundaries.  This segmenter identifies only units with a
+    printed blank: either a binary-or-longer expression followed by ``=``, or
+    a stated total followed by a known operand and a trailing operator.  It
+    does not decide which task grammar the unit carries.  The existing
+    fullmatch parsers make that decision after segmentation, so a three-term
+    unit remains whole and is refused rather than truncated.
+
+    Two or more spaces after ``=`` are the sidecar's surviving blank box.  A
+    one- or two-digit number followed by a period marks the next item after a
+    trailing operator, including at end of string.  After ``=``, a numbered
+    marker is accepted only when the later item has an unresolved equation
+    shape.  A sentence-ending result followed by prose or another completed
+    equation is not a boundary.  Repeated expressions with the same starting
+    numeral are segmented at each equals sign, preserving the blanks in
+    printed calculation chains.  Other single-space numerals are printed
+    results, not blanks; this distinction refuses the teacher-column fragment
+    ``2 + 8 = 10`` in IM-G1-U5-L6.
+    """
+    if not span.recovered:
+        return []
+    numeral = ARITHMETIC_NUMERAL
+    operator = r"[+\-−×·÷]"
+    list_number = r"(?:[1-9]|[1-9]\d)\."
+    numbered_item = rf"{list_number}(?:\s|$)"
+    common_blank_boundary = (
+        r"\s{2,}|\s+(?:[A-Za-z]+\b|[a-z]\.\s)|\s*[•◦]|\s*$"
+    )
+    later_blank_boundary = (
+        rf"(?={common_blank_boundary}|\s+{numbered_item})"
+    )
+    unresolved_equation_start = (
+        rf"(?:=|"
+        rf"{numeral}(?:\s*{operator}\s*{numeral})+\s*=|"
+        rf"{numeral}\s*=\s*{numeral}\s*{operator})"
+    )
+    unresolved_result_boundary = (
+        rf"(?={common_blank_boundary}|"
+        rf"\s+{list_number}\s+"
+        rf"(?=(?:{list_number}\s+)*{unresolved_equation_start}))"
+    )
+    unresolved_equation = (
+        rf"(?:=|"
+        rf"{numeral}(?:\s*{operator}\s*{numeral})+\s*="
+        rf"{unresolved_result_boundary}|"
+        rf"{numeral}\s*=\s*{numeral}\s*{operator}{later_blank_boundary})"
+    )
+    numbered_equation_item = (
+        rf"{list_number}\s+"
+        rf"(?=(?:{list_number}\s+)*{unresolved_equation})"
+    )
+    result_blank_boundary = (
+        rf"(?={common_blank_boundary}|\s+{numbered_equation_item})"
+    )
+    operand_blank_boundary = (
+        rf"(?={common_blank_boundary}|\s+{numbered_item})"
+    )
+    pattern = re.compile(
+        rf"(?<![\d,])(?:"
+        rf"{numeral}(?:\s*{operator}\s*{numeral})+\s*="
+        rf"{result_blank_boundary}|"
+        rf"{numeral}\s*=\s*{numeral}\s*{operator}{operand_blank_boundary}"
+        rf")(?![\d,])"
+    )
+    units = [
+        (match.start(), match.group(0).strip())
+        for match in pattern.finditer(span.text)
+    ]
+
+    if not re.search(
+        r"\bFind the number that makes each equation true\b",
+        span.text,
+        re.IGNORECASE,
+    ):
+        return [unit for _, unit in sorted(set(units))]
+
+    # A flattened calculation chain retains a trustworthy boundary when the
+    # next expression restarts from the same first numeral.  Requiring that
+    # repeated start distinguishes the chain from a completed equation whose
+    # printed result happens to precede another expression.
+    chain_pattern = re.compile(
+        rf"(?<![\d,])(?P<expression>(?P<start>{numeral})"
+        rf"(?:\s*{operator}\s*{numeral})+)\s*="
+        rf"(?=\s+(?P<next>{numeral})\s*{operator})"
+    )
+    for match in chain_pattern.finditer(span.text):
+        if _arithmetic_number(match.group("start")) != _arithmetic_number(
+            match.group("next")
+        ):
+            continue
+        units.append((match.start(), f"{match.group('expression').strip()} ="))
+    return [unit for _, unit in sorted(set(units))]
+
+
+def _printed_equation_items(equation: str) -> list[tuple[str, str, str]]:
+    """Apply the existing equation-list fullmatch grammars to one unit."""
+    direct_patterns = (
+        (
+            "printed_equation_list_direct_addition",
+            "addition",
+            "add",
+            re.compile(
+                rf"(?P<a>{ARITHMETIC_NUMERAL})\s*\+\s*"
+                rf"(?P<b>{ARITHMETIC_NUMERAL})\s*=\s*$"
+            ),
+        ),
+        (
+            "printed_equation_list_direct_addition",
+            "addition",
+            "add",
+            re.compile(
+                rf"=\s*(?P<a>{ARITHMETIC_NUMERAL})\s*\+\s*"
+                rf"(?P<b>{ARITHMETIC_NUMERAL})\s*$"
+            ),
+        ),
+        (
+            "printed_equation_list_direct_subtraction",
+            "subtraction",
+            "subtract",
+            re.compile(
+                rf"(?P<a>{ARITHMETIC_NUMERAL})\s*[-−]\s*"
+                rf"(?P<b>{ARITHMETIC_NUMERAL})\s*=\s*$"
+            ),
+        ),
+        (
+            "printed_equation_list_direct_subtraction",
+            "subtraction",
+            "subtract",
+            re.compile(
+                rf"=\s*(?P<a>{ARITHMETIC_NUMERAL})\s*[-−]\s*"
+                rf"(?P<b>{ARITHMETIC_NUMERAL})\s*$"
+            ),
+        ),
+    )
+    missing_addend_patterns = (
+        re.compile(
+            rf"(?P<total>{ARITHMETIC_NUMERAL})\s*=\s*"
+            rf"(?P<known>{ARITHMETIC_NUMERAL})\s*\+\s*$"
+        ),
+        re.compile(
+            rf"\+\s*(?P<known>{ARITHMETIC_NUMERAL})\s*=\s*"
+            rf"(?P<total>{ARITHMETIC_NUMERAL})\s*$"
+        ),
+    )
+    items = []
+    for parser_id, operation, task_name, pattern in direct_patterns:
+        match = pattern.fullmatch(equation)
+        if match:
+            items.append(
+                (
+                    parser_id,
+                    operation,
+                    f"{task_name}({_arithmetic_number(match.group('a'))}, "
+                    f"{_arithmetic_number(match.group('b'))})",
+                )
+            )
+    for pattern in missing_addend_patterns:
+        match = pattern.fullmatch(equation)
+        if match:
+            items.append(
+                (
+                    "printed_equation_list_missing_addend",
+                    "subtraction",
+                    f"subtract({_arithmetic_number(match.group('total'))}, "
+                    f"{_arithmetic_number(match.group('known'))})",
+                )
+            )
+    return items
 
 
 def _recovered_equation_items(span: StudentTaskSpan) -> list[tuple[str, str, str, str]]:
@@ -2144,88 +2343,49 @@ def extract_task_candidates(
             # The guide export omits the printed box.  An anchored line can
             # still distinguish a completed-result blank from a missing
             # addend: the latter is an inverse subtraction task.
-            direct_patterns = (
-                (
-                    "printed_equation_list_direct_addition",
-                    "addition",
-                    "add",
-                    re.compile(r"(?P<a>\d+)\s*\+\s*(?P<b>\d+)\s*=\s*$"),
-                ),
-                (
-                    "printed_equation_list_direct_addition",
-                    "addition",
-                    "add",
-                    re.compile(r"=\s*(?P<a>\d+)\s*\+\s*(?P<b>\d+)\s*$"),
-                ),
-                (
-                    "printed_equation_list_direct_subtraction",
-                    "subtraction",
-                    "subtract",
-                    re.compile(r"(?P<a>\d+)\s*-\s*(?P<b>\d+)\s*=\s*$"),
-                ),
-                (
-                    "printed_equation_list_direct_subtraction",
-                    "subtraction",
-                    "subtract",
-                    re.compile(r"=\s*(?P<a>\d+)\s*-\s*(?P<b>\d+)\s*$"),
-                ),
-            )
-            missing_addend_patterns = (
-                re.compile(r"(?P<total>\d+)\s*=\s*(?P<known>\d+)\s*\+\s*$"),
-                re.compile(r"\+\s*(?P<known>\d+)\s*=\s*(?P<total>\d+)\s*$"),
-            )
-            for line, text in span.lines:
+            equation_lines = span.lines
+            if span.recovered and re.search(
+                r"\bFind the number that makes each equation true\b",
+                span.text,
+                re.IGNORECASE,
+            ) and RECOVERED_COMPLETE_EQUATION_RE.search(span.text):
+                equation_lines = tuple(
+                    (0, unit) for unit in _recovered_printed_equation_units(span)
+                )
+            for equation_number, (line, text) in enumerate(equation_lines, 1):
                 equation = re.sub(r"^(?:•|\d+\.)\s*", "", text.strip())
                 equation = re.sub(r"^[a-z]\.?\s*", "", equation)
-                for parser_id, operation, task_name, pattern in direct_patterns:
-                    match = pattern.fullmatch(equation)
-                    if not match:
-                        continue
+                for parser_id, operation, task in _printed_equation_items(equation):
                     has_route = any(
                         attached_operation == operation
                         for attached_operation, _ in attachments.get(span.code, set())
                     )
+                    position = (
+                        f"{span.position}/recovered_equation({equation_number})"
+                        if span.recovered
+                        else f"{span.position}/printed_equation({line})"
+                    )
                     candidates.add(
                         TaskCandidate(
                             span.code,
-                            f"{task_name}({int(match.group('a'))}, {int(match.group('b'))})",
+                            task,
                             operation,
                             parser_id,
                             span.source,
                             line,
                             line,
-                            f"{span.position}/printed_equation({line})",
+                            position,
                             text.strip(),
                             "reviewable" if has_route else "rejected",
                             "exact_two_known_operand_equation_with_blank_result"
                             if has_route
-                            else f"lesson_has_no_{operation}_attachment",
-                        )
-                    )
-                for pattern in missing_addend_patterns:
-                    match = pattern.fullmatch(equation)
-                    if not match:
-                        continue
-                    has_route = any(
-                        attached_operation == "subtraction"
-                        for attached_operation, _ in attachments.get(span.code, set())
-                    )
-                    candidates.add(
-                        TaskCandidate(
-                            span.code,
-                            f"subtract({int(match.group('total'))}, "
-                            f"{int(match.group('known'))})",
-                            "subtraction",
-                            "printed_equation_list_missing_addend",
-                            span.source,
-                            line,
-                            line,
-                            f"{span.position}/printed_equation({line})",
-                            text.strip(),
-                            "reviewable" if has_route else "rejected",
-                            "exact_total_known_addend_equation_with_blank_addend"
-                            if has_route
-                            else "lesson_has_no_subtraction_attachment",
+                            and parser_id
+                            != "printed_equation_list_missing_addend"
+                            else (
+                                "exact_total_known_addend_equation_with_blank_addend"
+                                if has_route
+                                else f"lesson_has_no_{operation}_attachment"
+                            ),
                         )
                     )
         # Recovered text has no physical line breaks: its printed equations are

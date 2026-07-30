@@ -1,0 +1,222 @@
+{
+  "schema": "equation_verification_sidecar_segmenter_controls_v3",
+  "constructed_controls": [
+    {
+      "id": "printed_result_before_completed_equation",
+      "text": "The teacher recorded 35 + 40 = 75. 12 + 8 = 20.",
+      "expected_units": []
+    }
+  ],
+  "admission": {
+    "lesson": "IM-G1-U4-L12",
+    "position": "student_task_statement(2)",
+    "expected_units": [
+      "67 + 10 =",
+      "67- 10 =",
+      "39 + 10 =",
+      "39- 10 =",
+      "52 + 10 =",
+      "52- 10 =",
+      "75 + 10 =",
+      "75 - 10 =",
+      "67 + 10 =",
+      "67 + 10 + 10 =",
+      "67 + 10 + 10 + 10 =",
+      "99- 10 =",
+      "99- 10- 10 =",
+      "99- 10- 10- 10 =",
+      "45 + 10 + 10 =",
+      "45 - 10- 10 =",
+      "45 + 10- 10 ="
+    ],
+    "expected_tasks": [
+      "add(67, 10)",
+      "subtract(67, 10)",
+      "add(39, 10)",
+      "subtract(39, 10)",
+      "add(52, 10)",
+      "subtract(52, 10)",
+      "add(75, 10)",
+      "subtract(75, 10)",
+      "add(67, 10)",
+      "subtract(99, 10)"
+    ]
+  },
+  "refusal": {
+    "lesson": "IM-G1-U5-L6",
+    "position": "student_task_statement(2)",
+    "expected_units": [
+      "40 + 2 + 8 ="
+    ],
+    "expected_tasks": [],
+    "reason": "The only student-side unit has three addends. The apparent 2 + 8 = 10 is a teacher-column fragment and is not a blank-result unit."
+  },
+  "named_regressions": [
+    {
+      "lesson": "IM-G2-U7-L17",
+      "position": "student_task_statement(2)",
+      "expected_units": []
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "position": "student_task_statement(2)",
+      "expected_contains": [
+        "99- 10 =",
+        "99- 10- 10- 10 ="
+      ]
+    },
+    {
+      "lesson": "IM-G1-U2-L4",
+      "position": "student_task_statement(3)",
+      "expected_contains": [
+        "8 = 4 +"
+      ]
+    }
+  ],
+  "held_out": {
+    "population_spans": 591,
+    "spans_with_units": 9,
+    "units": 19,
+    "parser_shaped_units": 18,
+    "admitted_by_missing_number_entry": 0,
+    "expected_units_by_span": [
+      {
+        "lesson": "IM-G1-U2-L15",
+        "position": "student_task_statement(1)",
+        "units": [
+          "5 = 3 +",
+          "4 + 1 =",
+          "5 - 3 ="
+        ]
+      },
+      {
+        "lesson": "IM-G1-U2-L17",
+        "position": "student_task_statement(2)",
+        "units": [
+          "9- 3 ="
+        ]
+      },
+      {
+        "lesson": "IM-G1-U2-L17",
+        "position": "student_task_statement(3)",
+        "units": [
+          "5 + 7 ="
+        ]
+      },
+      {
+        "lesson": "IM-G1-U2-L4",
+        "position": "student_task_statement(3)",
+        "units": [
+          "4 + 2 =",
+          "10 = 5 +",
+          "5 + 4 =",
+          "8 = 4 +"
+        ]
+      },
+      {
+        "lesson": "IM-G1-U3-L5",
+        "position": "student_task_statement(1)",
+        "units": [
+          "10- 6 =",
+          "10- 2 ="
+        ]
+      },
+      {
+        "lesson": "IM-G1-U4-L4",
+        "position": "student_task_statement(3)",
+        "units": [
+          "20 + 60 =",
+          "70- 20 =",
+          "90- 70 =",
+          "40 + 40 ="
+        ]
+      },
+      {
+        "lesson": "IM-G1-U5-L10",
+        "position": "student_task_statement(3)",
+        "units": [
+          "28 + 56 =",
+          "27 + 44 ="
+        ]
+      },
+      {
+        "lesson": "IM-G1-U6-L12",
+        "position": "student_task_statement(1)",
+        "units": [
+          "14- 8 ="
+        ]
+      },
+      {
+        "lesson": "IM-G3-U4-L6",
+        "position": "student_task_statement(2)",
+        "units": [
+          "14 ÷ 2 ="
+        ]
+      }
+    ]
+  },
+  "equation_matching_refusals": [
+    {
+      "lesson": "IM-G1-U2-L17",
+      "position": "student_task_statement(3)"
+    },
+    {
+      "lesson": "IM-G2-U2-L8",
+      "position": "student_task_statement(2)"
+    },
+    {
+      "lesson": "IM-G2-U4-L7",
+      "position": "student_task_statement(2)"
+    }
+  ],
+  "operation_glue": [
+    {
+      "lesson": "IM-G5-U4-L14",
+      "position": "student_task_statement(3)",
+      "task": "divide(882, 6)",
+      "operation": "division",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson14.md",
+        "line": 235,
+        "excerpt": "First, Clare finds the quotient 882 ÷ 6."
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit4/lesson14.md",
+        "line": 235,
+        "excerpt": "882 ÷ 6"
+      }
+    },
+    {
+      "lesson": "IM-G5-U5-L21",
+      "position": "student_task_statement(2)",
+      "task": "multiply(72, 53)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit5/lesson21.md",
+        "line": 148,
+        "excerpt": "Explain or show why each pair of expressions"
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit5/lesson21.md",
+        "line": 151,
+        "excerpt": "72 × 53"
+      }
+    },
+    {
+      "lesson": "IM-G5-U8-L2",
+      "position": "student_task_statement(1)",
+      "task": "multiply(9999, 896)",
+      "operation": "multiplication",
+      "prompt": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson2.md",
+        "line": 84,
+        "excerpt": "9,999 × 896"
+      },
+      "operands": {
+        "source": "curriculum/im_teacher_guides/grade5/unit8/lesson2.md",
+        "line": 84,
+        "excerpt": "9,999 × 896"
+      }
+    }
+  ]
+}

@@ -17,12 +17,18 @@ byte-for-byte.
 ```sh
 python3 scripts/research/build_im_coverage.py
 python3 scripts/curriculum/build_digest.py curriculum/im/generated/vision_lesson_digest.pl
+python3 scripts/curriculum/build_sidecar_equation_census.py       # --check to compare only
 python3 scripts/curriculum/build_equation_verifications.py       # --check to compare only
 python3 scripts/curriculum/compile_action_mappings.py            # --check to compare only
 python3 scripts/curriculum/ingest_vision.py --apply              # omit --apply for a dry run
 python3 scripts/curriculum/build_lesson_evidence.py              # --check to compare only
 swipl -q -l paths.pl -g "consult('scripts/curriculum/mini_atlas.pl')"
 ```
+
+`build_sidecar_equation_census.py` records the 23 recovered spans whose printed
+equations still sit outside the named equation lanes. It retains both the
+original survey match and the maximal equation reading, so flattened cross-item
+joins remain explicit.
 
 `build_equation_verifications.py` runs before the compiler because the compiler
 reads its ledger. The ledger holds every equation the True-or-False routine

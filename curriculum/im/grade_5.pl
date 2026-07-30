@@ -359,6 +359,8 @@ explicit_lesson_misconception('IM-G5-U4-L13', Operation, raw_quotient_with_remai
 text_interpreter:explicit_lesson_text_source('IM-G5-U4-L13', Path) :-
     absolute_file_name(lessons('im_teacher_guides/grade5/unit4/lesson13.md'), Path, [access(read)]).
 
+explicit_lesson_strategy('IM-G5-U4-L14', division, partial_quotient_chunking, Info) :-
+    strategy_info(division, partial_quotient_chunking, Info).
 explicit_lesson_misconception('IM-G5-U4-L14', Operation, raw_quotient_with_remainder, Info) :-
     misconception_registry_entry(raw_quotient_with_remainder, Operation, Citation, Commitment, EntitlementLacked),
     misconception_info(raw_quotient_with_remainder, Citation, Commitment, EntitlementLacked, [], Info).
@@ -641,6 +643,8 @@ text_interpreter:explicit_lesson_text_source('IM-G5-U5-L20', Path) :-
 
 explicit_lesson_strategy('IM-G5-U5-L21', addition, base_ones_chunking, Info) :-
     strategy_info(addition, base_ones_chunking, Info).
+explicit_lesson_strategy('IM-G5-U5-L21', multiplication, distribute_group_size_split, Info) :-
+    strategy_info(multiplication, distribute_group_size_split, Info).
 explicit_lesson_strategy('IM-G5-U5-L21', decimal, positional_decimal_reading, Info) :-
     strategy_info(decimal, positional_decimal_reading, Info).
 explicit_lesson_misconception('IM-G5-U5-L21', Operation, divide_to_find_decimal_of, Info) :-
@@ -1126,6 +1130,8 @@ explicit_lesson_strategy('IM-G5-U8-L2', addition, base_ones_chunking, Info) :-
     strategy_info(addition, base_ones_chunking, Info).
 explicit_lesson_strategy('IM-G5-U8-L2', addition, column_addition_with_carrying, Info) :-
     strategy_info(addition, column_addition_with_carrying, Info).
+explicit_lesson_strategy('IM-G5-U8-L2', multiplication, distribute_group_size_split, Info) :-
+    strategy_info(multiplication, distribute_group_size_split, Info).
 explicit_lesson_misconception('IM-G5-U8-L2', Operation, partial_products_no_shift, Info) :-
     misconception_registry_entry(partial_products_no_shift, Operation, Citation, Commitment, EntitlementLacked),
     misconception_info(partial_products_no_shift, Citation, Commitment, EntitlementLacked, [], Info).

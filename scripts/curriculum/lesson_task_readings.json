@@ -1933,6 +1933,296 @@
       },
       "read_by": "task-186-parser-gate-lane",
       "note": "Cool-down item 2 restored in the sidecar; the second next-response value is 6."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_67_plus_10",
+      "position": "student_task_statement(2)/recovered_equation(1)",
+      "task": "add(67, 10)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "67 + 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 275,
+        "excerpt": "77",
+        "value": "77"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The first recovered blank-result unit joins the first printed value in response item 1a."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_67_minus_10",
+      "position": "student_task_statement(2)/recovered_equation(2)",
+      "task": "subtract(67, 10)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "67- 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 275,
+        "excerpt": "57",
+        "value": "57"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The second recovered blank-result unit joins the second printed value in response item 1a."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_39_plus_10",
+      "position": "student_task_statement(2)/recovered_equation(3)",
+      "task": "add(39, 10)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "39 + 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 276,
+        "excerpt": "49",
+        "value": "49"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The third recovered blank-result unit joins the first printed value in response item 1b."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_39_minus_10",
+      "position": "student_task_statement(2)/recovered_equation(4)",
+      "task": "subtract(39, 10)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "39- 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 276,
+        "excerpt": "29",
+        "value": "29"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The fourth recovered blank-result unit joins the second printed value in response item 1b."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_52_plus_10",
+      "position": "student_task_statement(2)/recovered_equation(5)",
+      "task": "add(52, 10)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "52 + 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 277,
+        "excerpt": "62",
+        "value": "62"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The fifth recovered blank-result unit joins the first printed value in response item 1c."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_52_minus_10",
+      "position": "student_task_statement(2)/recovered_equation(6)",
+      "task": "subtract(52, 10)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "52- 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 277,
+        "excerpt": "42",
+        "value": "42"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The sixth recovered blank-result unit joins the second printed value in response item 1c."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_75_plus_10",
+      "position": "student_task_statement(2)/recovered_equation(7)",
+      "task": "add(75, 10)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "75 + 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 278,
+        "excerpt": "85",
+        "value": "85"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The seventh recovered blank-result unit joins the first printed value in response item 1d."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206_g1_u4_l12_75_minus_10",
+      "position": "student_task_statement(2)/recovered_equation(8)",
+      "task": "subtract(75, 10)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "75 - 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 278,
+        "excerpt": "65",
+        "value": "65"
+      },
+      "read_by": "task-206-sidecar-segmenter",
+      "note": "The eighth recovered blank-result unit joins the second printed value in response item 1d."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206fw_g1_u4_l12_chain_67_plus_10",
+      "position": "student_task_statement(2)/recovered_equation(9)",
+      "task": "add(67, 10)",
+      "operation": "addition",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "67 + 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 283,
+        "excerpt": "2.   a. 77, 87, 97.",
+        "value": "77"
+      },
+      "read_by": "equation-verification-sidecar-segmenter",
+      "note": "The first blank in the recovered addition chain joins response item 2a's first printed value."
+    },
+    {
+      "lesson": "IM-G1-U4-L12",
+      "id": "task_206fw_g1_u4_l12_chain_99_minus_10",
+      "position": "student_task_statement(2)/recovered_equation(12)",
+      "task": "subtract(99, 10)",
+      "operation": "subtraction",
+      "prompt": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "Find the number that makes each equation true."
+      },
+      "operands": {
+        "recovered_span": {
+          "lesson": "IM-G1-U4-L12",
+          "position": "student_task_statement(2)"
+        },
+        "excerpt": "99- 10 ="
+      },
+      "printed_answer": {
+        "source": "curriculum/im_teacher_guides/grade1/unit4/lesson12.md",
+        "line": 286,
+        "excerpt": "b. 89, 79, 69.",
+        "value": "89"
+      },
+      "read_by": "equation-verification-sidecar-segmenter",
+      "note": "The first blank in the recovered subtraction chain joins response item 2b's first printed value."
     }
   ]
 }
