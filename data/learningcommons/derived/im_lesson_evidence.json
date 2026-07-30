@@ -1,94 +1,94 @@
 {
  "by_grade": {
   "1": {
-   "diagnostic_ready": 66,
+   "diagnostic_ready": 67,
    "executable_task": 73,
    "measured_transition": 72,
    "negative_candidate": 128,
    "published": 148,
    "standard_action_candidate": 148,
    "strategy_evidence": 131,
-   "structured_negative": 87
+   "structured_negative": 88
   },
   "2": {
-   "diagnostic_ready": 49,
-   "executable_task": 69,
+   "diagnostic_ready": 59,
+   "executable_task": 70,
    "measured_transition": 66,
    "negative_candidate": 127,
    "published": 150,
    "standard_action_candidate": 149,
    "strategy_evidence": 134,
-   "structured_negative": 66
+   "structured_negative": 76
   },
   "3": {
-   "diagnostic_ready": 45,
+   "diagnostic_ready": 52,
    "executable_task": 61,
    "measured_transition": 58,
    "negative_candidate": 113,
    "published": 143,
    "standard_action_candidate": 139,
    "strategy_evidence": 125,
-   "structured_negative": 57
+   "structured_negative": 64
   },
   "4": {
-   "diagnostic_ready": 38,
-   "executable_task": 49,
+   "diagnostic_ready": 41,
+   "executable_task": 51,
    "measured_transition": 49,
-   "negative_candidate": 115,
+   "negative_candidate": 113,
    "published": 151,
    "standard_action_candidate": 147,
-   "strategy_evidence": 132,
-   "structured_negative": 65
+   "strategy_evidence": 133,
+   "structured_negative": 68
   },
   "5": {
-   "diagnostic_ready": 23,
-   "executable_task": 39,
+   "diagnostic_ready": 26,
+   "executable_task": 40,
    "measured_transition": 39,
-   "negative_candidate": 114,
+   "negative_candidate": 109,
    "published": 148,
    "standard_action_candidate": 145,
-   "strategy_evidence": 128,
-   "structured_negative": 58
+   "strategy_evidence": 129,
+   "structured_negative": 61
   },
   "6": {
-   "diagnostic_ready": 22,
+   "diagnostic_ready": 23,
    "executable_task": 51,
    "measured_transition": 51,
    "negative_candidate": 107,
    "published": 152,
    "standard_action_candidate": 143,
    "strategy_evidence": 134,
-   "structured_negative": 23
+   "structured_negative": 24
   },
   "7": {
-   "diagnostic_ready": 14,
+   "diagnostic_ready": 15,
    "executable_task": 28,
    "measured_transition": 28,
    "negative_candidate": 28,
    "published": 143,
    "standard_action_candidate": 140,
    "strategy_evidence": 28,
-   "structured_negative": 14
+   "structured_negative": 15
   },
   "8": {
    "published": 134,
    "standard_action_candidate": 130
   },
   "K": {
-   "diagnostic_ready": 3,
-   "executable_task": 8,
+   "diagnostic_ready": 4,
+   "executable_task": 9,
    "measured_transition": 9,
    "negative_candidate": 88,
    "published": 139,
    "standard_action_candidate": 131,
    "strategy_evidence": 102,
-   "structured_negative": 44
+   "structured_negative": 45
   }
  },
  "lessons": [
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
@@ -98,13 +98,12 @@
    "grade": "2",
    "lesson": "IM-G2-U1-L1",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Add and Subtract within 10",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.OA.B.2": [
      "add",
@@ -205,13 +204,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L3",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Relate Addition and Subtraction within 20",
    "negative_candidates": [
     {
@@ -280,9 +277,32 @@
       "path": "curriculum/im_teacher_guides/grade2/unit1/lesson3.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "make_ten_drop_leftover",
+     "intended_action": {
+      "kind": "make_ten_split_leftover",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U1-L3",
+     "material_incompatibility": "Students find a missing addend for a sum of 20 by making a 10 and identifying one more 10; the alternative would discard the second 10.",
+     "source": {
+      "fragments": [
+       {
+        "line": 217,
+        "text": "making a 10"
+       },
+       {
+        "line": 218,
+        "text": "knowing there is one more 10"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit1/lesson3.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.OA.B.2": [
      "add",
@@ -983,13 +1003,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U1-L16",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solve All Kinds of Compare Problems",
    "negative_candidates": [
     {
@@ -1061,9 +1079,28 @@
       "path": "curriculum/im_teacher_guides/grade2/unit1/lesson16.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "compare_returns_larger_count",
+     "intended_action": {
+      "kind": "compare_by_matching_difference",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G2-U1-L16",
+     "material_incompatibility": "The problem asks for the difference between Jada's 47 pages and Noah's 20 pages, which the alternative would ignore to return the larger count of 47 pages.",
+     "source": {
+      "fragments": [
+       {
+        "line": 386,
+        "text": "In this problem, we find the difference."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit1/lesson16.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -2082,13 +2119,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Add and Subtract within 100",
    "negative_candidates": [
     {
@@ -2189,9 +2224,32 @@
       "path": "curriculum/im_teacher_guides/grade2/unit2/lesson9.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U2-L9",
+     "material_incompatibility": "The lesson requires adding the ones and the tens and combining their sums, but the alternative ignores the ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 287,
+        "text": "both added the ones and added the tens"
+       },
+       {
+        "line": 288,
+        "text": "and then combined the two sums"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit2/lesson9.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -2637,13 +2695,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L14",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solve It Your Way",
    "negative_candidates": [
     {
@@ -2708,9 +2764,28 @@
       "path": "curriculum/im_teacher_guides/grade2/unit2/lesson14.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "make_ten_drop_leftover",
+     "intended_action": {
+      "kind": "make_ten_split_leftover",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U2-L14",
+     "material_incompatibility": "Students compose a ten when joining 29 and 18. The alternative would ignore the leftover ones remaining after that ten is composed.",
+     "source": {
+      "fragments": [
+       {
+        "line": 257,
+        "text": "compose a ten when joining 29 with 18"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit2/lesson14.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -3037,13 +3112,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L3",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Create and Use a Ruler",
    "negative_candidates": [
     {
@@ -3144,9 +3217,28 @@
       "path": "curriculum/im_teacher_guides/grade2/unit3/lesson3.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "answer_as_endpoint_count_up",
+     "intended_action": {
+      "kind": "count_up_missing_addend",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G2-U3-L3",
+     "material_incompatibility": "Students count the distance from a shorter line to a longer line to find the difference, but the alternative reports the longer line's length as the result.",
+     "source": {
+      "fragments": [
+       {
+        "line": 367,
+        "text": "count up"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit3/lesson3.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.MD.A.1": [
      "measure",
@@ -3307,13 +3399,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Compare Reptile Lengths in Story Problems",
    "negative_candidates": [
     {
@@ -3333,8 +3423,28 @@
      "productive": "count_on_from_larger"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U3-L6",
+     "material_incompatibility": "The lesson asks students to compose a ten by adding fives, and the alternative ignores this regrouping of ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 86,
+        "text": "adding fives to compose a ten mentally"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit3/lesson6.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.MD.B.5": [
      "represent",
@@ -3376,13 +3486,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U3-L7",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 1",
    "negative_candidates": [
     {
@@ -3459,9 +3567,28 @@
       "path": "curriculum/im_teacher_guides/grade2/unit3/lesson7.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "intended_action": {
+      "kind": "take_away_base_ones",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G2-U3-L7",
+     "material_incompatibility": "The student subtracts 7 ones from 37 to reach the friendly number 30; the alternative would omit this subtraction of ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 95,
+        "text": "I took away 7 ones and got 30"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit3/lesson7.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -5937,13 +6064,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U5-L10",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Place Value Comparisons (Part 1)",
    "negative_candidates": [
     {
@@ -6020,9 +6145,28 @@
       "path": "curriculum/im_teacher_guides/grade2/unit5/lesson10.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U5-L10",
+     "material_incompatibility": "A student reaches 76 by counting on by tens from 46, whereas the alternative discards the starting value to count all units from zero.",
+     "source": {
+      "fragments": [
+       {
+        "line": 103,
+        "text": "I just counted on by 10"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit5/lesson10.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.A.4": [
      "compare",
@@ -6972,13 +7116,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U6-L14",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Center Day 3",
    "negative_candidates": [
     {
@@ -7023,9 +7165,32 @@
       "path": "curriculum/im_teacher_guides/grade2/unit6/lesson14.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U6-L14",
+     "material_incompatibility": "The student counts on by tens (10, 20, 40, 50) and then adds 5 ones, which the alternative would discard in favor of counting every unit individually.",
+     "source": {
+      "fragments": [
+       {
+        "line": 97,
+        "text": "Sample response: I counted on all the tens first"
+       },
+       {
+        "line": 98,
+        "text": "10, 20, 40, 50, then I added the 5 ones and got 55."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit6/lesson14.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.G.A": [
      "reason"
@@ -7793,13 +7958,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U7-L3",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Count On or Count Back to Subtract",
    "negative_candidates": [
     {
@@ -7868,9 +8031,28 @@
       "path": "curriculum/im_teacher_guides/grade2/unit7/lesson3.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U7-L3",
+     "material_incompatibility": "The lesson asks students to find unknown values by counting on in hundreds and tens from a known starting number, a strategy the alternative discards in favor of counting every unit from one.",
+     "source": {
+      "fragments": [
+       {
+        "line": 294,
+        "text": "Counting on by hundreds and then by tens."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit7/lesson3.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -11816,13 +11998,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U1-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Multiplication for Equal Groups",
    "negative_candidates": [
     {
@@ -11905,9 +12085,32 @@
       "path": "curriculum/im_teacher_guides/grade3/unit1/lesson9.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U1-L9",
+     "material_incompatibility": "The lesson specifies 4 people each wearing 2 shoes, which the alternative would treat as simple addends rather than 4 groups of 2.",
+     "source": {
+      "fragments": [
+       {
+        "line": 287,
+        "text": "There are 4 people wearing shoes. Each person"
+       },
+       {
+        "line": 288,
+        "text": "is wearing 2 shoes."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit1/lesson9.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.OA.A": [
      "represent",
@@ -12535,13 +12738,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U1-L18",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Represent Arrays with Expressions",
    "negative_candidates": [
     {
@@ -12612,9 +12813,28 @@
       "path": "curriculum/im_teacher_guides/grade3/unit1/lesson18.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U1-L18",
+     "material_incompatibility": "The lesson specifies 2 rows of 5 plants, and the alternative would treat these as a sum, ignoring that the 5 plants are repeated in 2 rows.",
+     "source": {
+      "fragments": [
+       {
+        "line": 320,
+        "text": "There are 2 rows of plants. Each row has 5 plants."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit1/lesson18.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.OA.A.1": [
      "describe",
@@ -13441,13 +13661,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U2-L10",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solve Area Problems",
    "negative_candidates": [
     {
@@ -13516,9 +13734,28 @@
       "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U2-L10",
+     "material_incompatibility": "The lesson provides fabric dimensions of 9 yards by 2 yards; the alternative would add these lengths instead of multiplying them to find the area.",
+     "source": {
+      "fragments": [
+       {
+        "line": 367,
+        "text": "The black fabric is 9 yards by 2 yards"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit2/lesson10.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.MD.C.7.b": [
      "find",
@@ -14425,13 +14662,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L7",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Subtract Your Way",
    "negative_candidates": [
     {
@@ -14532,9 +14767,32 @@
       "path": "curriculum/im_teacher_guides/grade3/unit3/lesson7.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "drop_ones_after_base_takeaway",
+     "intended_action": {
+      "kind": "take_away_base_ones",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G3-U3-L7",
+     "material_incompatibility": "The lesson requires taking away 3 ones after removing hundreds and tens, while the alternative would omit the subtraction of those ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 165,
+        "text": "Then I took away 2 hundreds, 1 ten, and 3"
+       },
+       {
+        "line": 166,
+        "text": "ones"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit3/lesson7.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -14853,13 +15111,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L11",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Analyze Subtraction Algorithms",
    "negative_candidates": [
     {
@@ -14944,9 +15200,28 @@
       "path": "curriculum/im_teacher_guides/grade3/unit3/lesson11.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "borrow_without_reducing_bases",
+     "intended_action": {
+      "kind": "decompose_base_for_ones",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G3-U3-L11",
+     "material_incompatibility": "The lesson requires reducing the tens digit to 9 when decomposing a ten to provide ones; the alternative would fail to decrease the tens digit.",
+     "source": {
+      "fragments": [
+       {
+        "line": 264,
+        "text": "Crossing out the 10 and writing 9 in the tens"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit3/lesson11.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -15947,13 +16222,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U4-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Division as an Unknown Factor",
    "negative_candidates": [
     {
@@ -16029,9 +16302,28 @@
       "path": "curriculum/im_teacher_guides/grade3/unit4/lesson6.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G3-U4-L6",
+     "material_incompatibility": "The lesson divides 14 onions into 2 bags to find the amount per bag, while the alternative would treat the 2 bags as the amount per bag.",
+     "source": {
+      "fragments": [
+       {
+        "line": 143,
+        "text": "A farmer puts 14 onions into 2 bags"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit4/lesson6.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.OA.A.2": [
      "describe",
@@ -20849,13 +21141,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U8-L15",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Number Talk",
    "negative_candidates": [
     {
@@ -20883,8 +21173,28 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "round_without_adjusting",
+     "intended_action": {
+      "kind": "round_then_adjust",
+      "operation": "addition"
+     },
+     "lesson": "IM-G3-U8-L15",
+     "material_incompatibility": "Adding 199 requires compensating for the 1 difference when rounding the addend to 200, a value the alternative ignores.",
+     "source": {
+      "fragments": [
+       {
+        "line": 263,
+        "text": "Leave the 504, but adjust the 199."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit8/lesson15.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -22683,7 +22993,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -22693,7 +23003,6 @@
    "grade": "4",
    "lesson": "IM-G4-U3-L10",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -22709,7 +23018,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.NF.B.3.c": [
      "add",
@@ -22974,7 +23283,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -22985,16 +23294,7 @@
     "structured_negative"
    ],
    "name": "Add Tenths and Hundredths Together",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -23394,7 +23694,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -23405,16 +23705,7 @@
     "structured_negative"
    ],
    "name": "Compare and Order Decimals in Different Notations",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -25196,13 +25487,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U5-L7",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Meters and Centimeters",
    "negative_candidates": [
     {
@@ -25243,9 +25532,32 @@
       "path": "curriculum/im_teacher_guides/grade4/unit5/lesson7.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "change_unit_label_without_scaling",
+     "intended_action": {
+      "kind": "unit_conversion_by_iteration",
+      "operation": "measurement"
+     },
+     "lesson": "IM-G4-U5-L7",
+     "material_incompatibility": "The lesson relates 1 meter to 100 centimeters, but the alternative treats 1 meter as 1 centimeter when comparing it to 62 centimeters.",
+     "source": {
+      "fragments": [
+       {
+        "line": 344,
+        "text": "Students may say that 62 centimeters is longer than 1"
+       },
+       {
+        "line": 345,
+        "text": "meter because 62 is greater than 1."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit5/lesson7.md"
+     },
+     "source_kind": "responding_to_student_thinking"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.MD.A.1": [
      "generate",
@@ -25272,13 +25584,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U5-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Meters and Kilometers",
    "negative_candidates": [
     {
@@ -25331,9 +25641,28 @@
       "path": "curriculum/im_teacher_guides/grade4/unit5/lesson8.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G4-U5-L8",
+     "material_incompatibility": "The lesson calculates the total length of 10 races of 100 meters each, which the alternative would replace by adding 10 and 100.",
+     "source": {
+      "fragments": [
+       {
+        "line": 199,
+        "text": "10 races, because 10 × 100 = 1,000"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit5/lesson8.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.MD.A.1": [
      "generate",
@@ -29108,13 +29437,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "4",
    "lesson": "IM-G4-U8-L2",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Ways to Look at Triangles",
    "negative_candidates": [
     {
@@ -29167,9 +29494,28 @@
       "path": "curriculum/im_teacher_guides/grade4/unit8/lesson2.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G4-U8-L2",
+     "material_incompatibility": "The lesson establishes a relation of 1 more, which the alternative would ignore by counting every unit from 1.",
+     "source": {
+      "fragments": [
+       {
+        "line": 116,
+        "text": "this sum is 1 more than the"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade4/unit8/lesson2.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "4.G.A.2": [
      "classify",
@@ -29782,25 +30128,23 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "4",
    "lesson": "IM-G4-U9-L3",
    "missing_for_diagnosis": [
-    "strategy_evidence",
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Stories with Fractions",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.NF.B.3.c": [
      "add",
@@ -37996,13 +38340,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L16",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Common Factors",
    "negative_candidates": [
     {
@@ -38048,9 +38390,29 @@
       "path": "curriculum/im/generated/vision_lesson_digest.pl"
      },
      "source_kind": "vision_digest"
+    },
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U7-L16",
+     "material_incompatibility": "The lesson treats the largest number of combination boxes as the number of groups, whereas the alternative treats the number of boxes as the amount of books in each group.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "the greatest common factor represents the largest number of combination boxes possible"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.B.4": [
      "find",
@@ -41704,13 +42066,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U4-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Increasing and Decreasing",
    "negative_candidates": [
     {
@@ -41730,8 +42090,29 @@
      "productive": "coordinate_groups_items"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G7-U4-L6",
+     "material_incompatibility": "The lesson measures the difference between values as a percentage of the correct value, but the alternative would share that difference among a number of groups equal to the correct value.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "the difference between a correct value and an incorrect value is expressed as a percentage of the correct value"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.RP.A.3": [
      "solve",
@@ -56582,7 +56963,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -56592,7 +56973,6 @@
    "grade": "K",
    "lesson": "IM-GK-U6-L10",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Complete Equations",
@@ -56607,7 +56987,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.NBT.A.1": [
      "compose",
@@ -58676,13 +59056,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "K",
    "lesson": "IM-GK-U8-L18",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "All the Ways to Make 10",
    "negative_candidates": [
     {
@@ -58745,9 +59123,28 @@
       "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md"
      },
      "source_kind": "responding_to_student_thinking"
+    },
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-GK-U8-L18",
+     "material_incompatibility": "The student starts at the quantity 4 and counts on 1 to reach 5, which the alternative discards in favor of counting all 5 units from 1.",
+     "source": {
+      "fragments": [
+       {
+        "line": 122,
+        "text": "I counted 4, 5"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "K.CC.B.4.c": [
      "name",
@@ -68046,13 +68443,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U7-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Rectangles and Squares",
    "negative_candidates": [
     {
@@ -68121,9 +68516,28 @@
       "path": "curriculum/im_teacher_guides/grade1/unit7/lesson6.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "dropped_ones_chunk",
+     "intended_action": {
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+     },
+     "lesson": "IM-G1-U7-L6",
+     "material_incompatibility": "The lesson decomposes the addition of 57 and 42 into separate tens and ones calculations, which the alternative discards by omitting the ones.",
+     "source": {
+      "fragments": [
+       {
+        "line": 113,
+        "text": "50 + 40 = 90, 7 + 2 = 9, 90 + 9 = 99"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit7/lesson6.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.G.A": [
      "reason"
@@ -70012,13 +70426,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U1-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Measure Figures Made from Prisms",
    "negative_candidates": [
     {
@@ -70071,9 +70483,32 @@
       "path": "curriculum/im_teacher_guides/grade5/unit1/lesson9.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G5-U1-L9",
+     "material_incompatibility": "The lesson specifies a base area of 6 square inches and a height of 5 inches for a prism. The alternative adds these values, ignoring the multiplicative relationship between them.",
+     "source": {
+      "fragments": [
+       {
+        "line": 291,
+        "text": "One prism has a base area of 6 square inches"
+       },
+       {
+        "line": 292,
+        "text": "and the height for that base is 5 inches."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit1/lesson9.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.MD.C.5": [
      "relate",
@@ -70307,13 +70742,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U2-L1",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Share Sandwiches",
    "negative_candidates": [
     {
@@ -70370,9 +70803,32 @@
       "path": "curriculum/im_teacher_guides/grade5/unit2/lesson1.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "whole_number_grab",
+     "intended_action": {
+      "kind": "unit_fraction_iteration",
+      "operation": "fraction"
+     },
+     "lesson": "IM-G5-U2-L1",
+     "material_incompatibility": "Sharing 2 sandwiches among 5 people makes it impossible for anyone to take a whole sandwich.",
+     "source": {
+      "fragments": [
+       {
+        "line": 223,
+        "text": "If 2 sandwiches are shared by 5 people"
+       },
+       {
+        "line": 225,
+        "text": "get 1/5 of each sandwich"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit2/lesson1.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.NF.B.3": [
      "divide",
@@ -73524,13 +73980,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L19",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Shipping Trash",
    "negative_candidates": [
     {
@@ -73599,9 +74053,32 @@
       "path": "curriculum/im_teacher_guides/grade5/unit4/lesson19.md"
      },
      "source_kind": "activity_guidance"
+    },
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G5-U4-L19",
+     "material_incompatibility": "The lesson combines a daily volume of 100 cubic feet across 5 school days; the alternative would use addition to aggregate these daily totals.",
+     "source": {
+      "fragments": [
+       {
+        "line": 197,
+        "text": "I multiplied 100 cubic feet by 5"
+       },
+       {
+        "line": 198,
+        "text": "school days in a week."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit4/lesson19.md"
+     },
+     "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.MD.C.5": [
      "relate",
@@ -75939,7 +76416,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -75950,16 +76427,7 @@
     "structured_negative"
    ],
    "name": "Add and Subtract Fractions",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -76022,7 +76490,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -76033,16 +76501,7 @@
     "structured_negative"
    ],
    "name": "All Sorts of Denominators",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -76061,7 +76520,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -76072,16 +76531,7 @@
     "structured_negative"
    ],
    "name": "Different Ways to Subtract",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -76150,7 +76600,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -76161,16 +76611,7 @@
     "structured_negative"
    ],
    "name": "Put It All Together: Add and Subtract Fractions",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -77669,7 +78110,7 @@
    "evidence": {
     "executable_task": true,
     "measured_transition": true,
-    "negative_candidate": true,
+    "negative_candidate": false,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -77680,16 +78121,7 @@
     "structured_negative"
    ],
    "name": "Here Comes the Sum",
-   "negative_candidates": [
-    {
-     "deformation": "count_all_when_count_on_available",
-     "family": "count_all_when_count_on_available",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "addition",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "count_on_from_larger"
-    }
-   ],
+   "negative_candidates": [],
    "negative_receipts": [],
    "readiness": "event_ready",
    "standard_action_candidates": {
@@ -77706,25 +78138,23 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "5",
    "lesson": "IM-G5-U8-L11",
    "missing_for_diagnosis": [
-    "strategy_evidence",
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "What’s the Difference?",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.NF.A.1": [
      "add",
@@ -78067,13 +78497,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 260,
-  "executable_task": 378,
+  "diagnostic_ready": 287,
+  "executable_task": 383,
   "measured_transition": 372,
-  "negative_candidate": 820,
+  "negative_candidate": 813,
   "published": 1308,
   "standard_action_candidate": 1272,
-  "strategy_evidence": 914,
-  "structured_negative": 414
+  "strategy_evidence": 916,
+  "structured_negative": 441
  }
 }

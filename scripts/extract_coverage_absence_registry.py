@@ -298,13 +298,26 @@ def load_negative_receipts() -> dict[str, tuple[str, str, str | None]]:
     payload = json.loads(NEGATIVE_RECEIPTS.read_text(encoding="utf-8"))
     if not isinstance(payload.get("receipts"), list):
         raise RuntimeError("lesson_negative_receipts.json has no receipt list")
+    # The register's uniqueness key is (lesson, alternative): a lesson may
+    # carry a repair receipt beside the defective one it supersedes (the
+    # receipt-executability ruling keeps defect receipts on the books). Per
+    # lesson, this registry records the first receipt whose path validates,
+    # falling back to the first row.
     results = {}
+    seen_pairs = set()
     for receipt in payload["receipts"]:
         lesson = receipt["lesson"]
-        if lesson in results:
-            raise RuntimeError(f"duplicate reviewed negative receipt for {lesson}")
+        pair = (lesson, receipt.get("alternative"))
+        if pair in seen_pairs:
+            raise RuntimeError(
+                f"duplicate reviewed negative receipt for {lesson} / {pair[1]}"
+            )
+        seen_pairs.add(pair)
         status, actual = validate_receipt_path(receipt)
-        results[lesson] = (status, receipt["source"]["path"], actual)
+        if lesson not in results or (
+            results[lesson][0] != "present" and status == "present"
+        ):
+            results[lesson] = (status, receipt["source"]["path"], actual)
     if not results:
         raise RuntimeError("lesson_negative_receipts.json has no reviewed receipts")
     return results

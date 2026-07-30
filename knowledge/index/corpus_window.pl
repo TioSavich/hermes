@@ -150,6 +150,7 @@ window_legend_arc(break_then_keep_work_on, 1).
 window_legend_arc(break_then_work_on, 10).
 window_legend_arc(break_three_times, 1).
 window_legend_arc(break_twice_then_keep_work_on, 1).
+window_legend_arc(keep_break_recover_break_keep, 1).
 window_legend_arc(keep_first_break_keep_break, 1).
 window_legend_arc(keep_first_break_recover_break, 1).
 window_legend_arc(keep_first_break_recover_break_again, 1).
@@ -158,7 +159,7 @@ window_legend_arc(keep_first_then_break, 1).
 window_legend_arc(keep_first_then_work_on, 2).
 window_legend_arc(keep_first_work_keep, 3).
 window_legend_arc(keep_then_break, 5).
-window_legend_arc(keep_then_work_on, 29).
+window_legend_arc(keep_then_work_on, 31).
 window_legend_arc(keep_work_keep, 8).
 window_legend_arc(keep_work_keep_work_keep, 1).
 window_legend_arc(keep_work_keep_work_on, 2).
@@ -257,6 +258,7 @@ window_row(division, stop_after_one_known_fact, work_then_break, [], [retrieve_k
 window_row(division, stop_at_nearby_product_in_search, work_then_break, [assign_roles, enumerate_candidates], [halt_before_completion], [misname_result, record_loss], []).
 window_row(division, sum_dividend_and_divisor, work_then_break, [register_givens], [substitute_operation], [omit_required_step, misname_result, record_loss], []).
 window_row(fraction, add_numerator_denominator_comparison, break_then_work_on, [initiate], [combine_quantities], [omit_required_step], []).
+window_row(fraction, add_numerator_denominator_sum, keep_break_recover_break_keep, [initiate, re_express_equivalently], [combine_quantities], [omit_required_step, omit_required_step, verify_invariant, record_viability, emit_result], []).
 window_row(fraction, area_model_fraction_comparison, keep_work_keep_work_on, [initiate, unitize_referent, partition_into_equal_parts, disembed_part, align_to_common_unit], [iterate_unit], [verify_invariant, emit_result], []).
 window_row(fraction, area_model_part_of_part, unrecorded_run, [unitize_referent, partition_into_equal_parts, select_part, partition_into_equal_parts, select_part], [count_units, count_units], [name_result], []).
 window_row(fraction, area_model_unequal_partition_piece_count, break_recover_break_work_on, [initiate], [substitute_count_for_measure, count_units, substitute_count_for_measure], [accept_without_check, accept_without_check, accept_without_check, treat_relevant_as_irrelevant, emit_result], []).
@@ -264,6 +266,8 @@ window_row(fraction, benchmark_fraction_comparison, unrecorded_run, [initiate, e
 window_row(fraction, clear_inner_referent, work_then_break, [partition_into_equal_parts, partition_into_equal_parts], [], [name_result, omit_required_step, record_loss], []).
 window_row(fraction, co_denominator_count_on_from_larger, keep_first_work_keep, [unitize_referent, select_unit_scale], [], [verify_invariant, attach_units_coordination], [dispatch_to_kernel, receive_kernel_outcome]).
 window_row(fraction, co_denominator_make_base_transfer, keep_first_work_keep, [unitize_referent, select_unit_scale], [], [verify_invariant, attach_units_coordination], [dispatch_to_kernel, receive_kernel_outcome]).
+window_row(fraction, common_denominator_fraction_addition, keep_then_work_on, [initiate, re_express_equivalently, align_to_common_unit, re_express_equivalently, re_express_equivalently, align_to_common_unit], [combine_quantities], [emit_result], []).
+window_row(fraction, common_denominator_fraction_subtraction, keep_then_work_on, [initiate, re_express_equivalently, align_to_common_unit, re_express_equivalently, re_express_equivalently, align_to_common_unit], [remove_quantity], [emit_result], []).
 window_row(fraction, common_unit_fraction_comparison, unrecorded_run, [initiate, read_operand_attribute, retain_unchanged, retain_unchanged, read_operand_attribute, compare_magnitudes], [], [emit_result], []).
 window_row(fraction, cross_multiplication_rule_from_pattern, unrecorded_run, [read_operand_attribute, assign_roles, assign_roles], [apply_stored_rule, compute_product, compute_product], [name_result], [dispatch_to_kernel]).
 window_row(fraction, cross_multiplication_rule_without_ground, work_then_break, [], [retrieve_known_fact, apply_stored_rule, compute_product, compute_product], [name_result, omit_required_step], []).

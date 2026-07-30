@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(378, 1913).
+compiled_task_instance_summary(383, 1922).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -664,6 +664,8 @@ compiled_lesson_task_instance('IM-G1-U8-L6', productive-subtract(17, 7),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade1/unit8/lesson6.md', lines(163, 167)), position(student_task_statement(2)/item(3)), excerpt("2. The cotton candy booth sells 17 bags of blue cotton candy. They sell 7 bags of pink cotton candy. How many more bags of blue candy do they sell than pink candy?"))).
 compiled_lesson_task_instance('IM-G1-U8-L6', productive-subtract(20, 14),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade1/unit8/lesson6.md', lines(175, 180)), position(student_task_statement(2)/item(5)), excerpt("4. The Ferris wheel holds 20 people. The swings hold 14 people. How many fewer people do the swings hold than the Ferris wheel?"))).
+compiled_lesson_task_instance('IM-G2-U1-L1', productive-subtract(9, 3),
+                              task_evidence(rule(task_186_g2_u1_l1_9_minus_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U1-L1'), position('student_task_statement(4)'))), position(student_task_statement(4)), excerpt("9- 3 = ___"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U1-L11', productive-add(2, 4),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson11.md', lines(105, 105)), position(student_task_statement(1)/expression(4)), excerpt("2 + 4"))).
 compiled_lesson_task_instance('IM-G2-U1-L11', productive-add(3, 7),
@@ -1972,14 +1974,14 @@ compiled_lesson_task_instance('IM-G4-U3-L1', deformation(addition_instead_of_mul
                               task_evidence(rule(g4_clare_eggs_error), source('curriculum/im_teacher_guides/grade4/unit3/lesson1.md', lines(208, 208)), position(activity_1_item('2a')), excerpt("If students write addition expressions to represent"))).
 compiled_lesson_task_instance('IM-G4-U3-L1', productive-multiply(3, 4),
                               task_evidence(rule(g4_clare_eggs), source('curriculum/im_teacher_guides/grade4/unit3/lesson1.md', lines(185, 185)), position(activity_1_item('2a')), excerpt("Clare has 3 baskets. She put 4 eggs into"))).
-compiled_lesson_task_instance('IM-G4-U3-L16', productive-add(10, 3),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(3)), excerpt("10 + 3"))).
-compiled_lesson_task_instance('IM-G4-U3-L16', productive-add(10, 50),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(1)), excerpt("10 + 50"))).
-compiled_lesson_task_instance('IM-G4-U3-L16', productive-add(100, 4),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(2)), excerpt("100 + 4"))).
-compiled_lesson_task_instance('IM-G4-U3-L16', productive-add(100, 7),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(4)), excerpt("100 + 7"))).
+compiled_lesson_task_instance('IM-G4-U3-L10', productive-subtract_fractions(whole(2), frac(5, 6)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L10'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(1)), excerpt("2- 5/6"))).
+compiled_lesson_task_instance('IM-G4-U3-L16', productive-add_fractions(frac(1, 10), frac(50, 100)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(1)), excerpt("1/10 + 50/100"))).
+compiled_lesson_task_instance('IM-G4-U3-L16', productive-add_fractions(frac(20, 100), frac(4, 10)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(2)), excerpt("20/100 + 4/10"))).
+compiled_lesson_task_instance('IM-G4-U3-L16', productive-add_fractions(frac(6, 10), frac(3, 100)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L16'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(3)), excerpt("6/10 + 3/100"))).
 compiled_lesson_task_instance('IM-G4-U3-L18', productive-add(19, 101),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L18'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(6)), excerpt("19 + 101"))).
 compiled_lesson_task_instance('IM-G4-U3-L18', productive-add(25, 63),
@@ -2016,18 +2018,16 @@ compiled_lesson_task_instance('IM-G4-U4-L19', productive-subtract(1897, 116),
                               task_evidence(rule(g4_u4_l19_cooldown_difference_b), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L19'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)/b), excerpt("1,897- 116"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G4-U4-L19', productive-subtract(1972, 63),
                               task_evidence(rule(g4_u4_l19_necklace_year), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L19'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(2)/b), excerpt("1972- 63"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G4-U4-L19', productive-subtract_fractions(mixed(1, 1, 4), frac(3, 4)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L19'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("1 1/4 - 3/4"))).
 compiled_lesson_task_instance('IM-G4-U4-L20', productive-add(142571, 10909),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit4/lesson20.md', lines(163, 163)), position(student_task_statement(2)/expression(2)), excerpt("142,571 + 10,909"))).
 compiled_lesson_task_instance('IM-G4-U4-L20', productive-add(7106, 2835),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit4/lesson20.md', lines(159, 159)), position(student_task_statement(2)/expression(1)), excerpt("7,106 + 2,835"))).
-compiled_lesson_task_instance('IM-G4-U4-L5', productive-add(10, 50),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("10 + 50"))).
-compiled_lesson_task_instance('IM-G4-U4-L5', productive-add(10, 50),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("10 + 50"))).
-compiled_lesson_task_instance('IM-G4-U4-L5', productive-add(10, 55),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("10 + 55"))).
-compiled_lesson_task_instance('IM-G4-U4-L5', productive-add(10, 65),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("10 + 65"))).
+compiled_lesson_task_instance('IM-G4-U4-L5', productive-add_fractions(frac(5, 10), frac(50, 100)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("5/10 + 50/100"))).
+compiled_lesson_task_instance('IM-G4-U4-L5', productive-add_fractions(frac(6, 10), frac(50, 100)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U4-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(2)), excerpt("6/10 + 50/100"))).
 compiled_lesson_task_instance('IM-G4-U5-L14', productive-add(1200, 900),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit5/lesson14.md', lines(93, 93)), position(student_task_statement(1)/expression(1)), excerpt("1,200 + 900"))).
 compiled_lesson_task_instance('IM-G4-U5-L14', productive-add(12500, 9000),
@@ -2164,10 +2164,6 @@ compiled_lesson_task_instance('IM-G4-U7-L2', productive-subtract(90, 45),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade4/unit7/lesson2.md', lines(100, 100)), position(student_task_statement(1)/expression(1)), excerpt("90- 45"))).
 compiled_lesson_task_instance('IM-G4-U8-L2', productive-add(12, 12),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U8-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("12 + 12"))).
-compiled_lesson_task_instance('IM-G4-U8-L2', productive-add(2, 121),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U8-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("2 + 121"))).
-compiled_lesson_task_instance('IM-G4-U8-L2', productive-add(2, 75),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U8-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("2 + 75"))).
 compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(1, 257),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit8/lesson5.md', lines(108, 108)), position(student_task_statement(1)/expression(10)), excerpt("1 + 257"))).
 compiled_lesson_task_instance('IM-G4-U8-L5', productive-add(1000, 943),
@@ -2198,16 +2194,10 @@ compiled_lesson_task_instance('IM-G4-U9-L12', productive-add(75, 30),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L12'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(1)), excerpt("75 + 30"))).
 compiled_lesson_task_instance('IM-G4-U9-L2', productive-add(38, 62),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("38 + 62"))).
-compiled_lesson_task_instance('IM-G4-U9-L2', productive-add(6, 1623),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(5)), excerpt("6 + 1623"))).
-compiled_lesson_task_instance('IM-G4-U9-L2', productive-add(6, 171),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("6 + 171"))).
-compiled_lesson_task_instance('IM-G4-U9-L2', productive-add(6, 172),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(6)), excerpt("6 + 172"))).
-compiled_lesson_task_instance('IM-G4-U9-L2', productive-add(6, 623),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("6 + 623"))).
-compiled_lesson_task_instance('IM-G4-U9-L2', productive-add(6, 623),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("6 + 623"))).
+compiled_lesson_task_instance('IM-G4-U9-L3', productive-subtract_fractions(mixed(1, 4, 10), frac(8, 10)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L3'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(2)), excerpt("1 4/10 - 8/10"))).
+compiled_lesson_task_instance('IM-G4-U9-L3', productive-subtract_fractions(whole(1), frac(8, 10)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L3'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("1 - 8/10"))).
 compiled_lesson_task_instance('IM-G4-U9-L4', productive-subtract(387, 124),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U9-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("387- 124"))).
 compiled_lesson_task_instance('IM-G4-U9-L4', productive-subtract(6387, 129),
@@ -2368,36 +2358,46 @@ compiled_lesson_task_instance('IM-G5-U5-L4', productive-decimal_value(27, 10),
                               task_evidence(rule(decimal_unit_weight_count_inscription), source('curriculum/im_teacher_guides/grade5/unit5/lesson4.md', lines(214, 214)), position(student_task_statement(2)/item(4)/decimal_weight(3)), excerpt("27 of the 0.1-ounce weights"))).
 compiled_lesson_task_instance('IM-G5-U5-L6', productive-decimal_compare(534, 1000, 537, 1000),
                               task_evidence(rule(direct_decimal_numeral_comparison), source('curriculum/im_teacher_guides/grade5/unit5/lesson6.md', lines(213, 215)), position(student_task_statement(3)/item(2)), excerpt("compare 0.534 and 0.537"))).
-compiled_lesson_task_instance('IM-G5-U6-L10', productive-add(20, 41),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(4)), excerpt("20 + 41"))).
-compiled_lesson_task_instance('IM-G5-U6-L10', productive-add(4, 4),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/expression(2)), excerpt("4 + 4"))).
-compiled_lesson_task_instance('IM-G5-U6-L10', productive-add(4, 7),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/expression(1)), excerpt("4 + 7"))).
-compiled_lesson_task_instance('IM-G5-U6-L10', productive-add(5, 4),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(1)), excerpt("5 + 4"))).
-compiled_lesson_task_instance('IM-G5-U6-L10', productive-add(5, 4),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(2)), excerpt("5 + 4"))).
-compiled_lesson_task_instance('IM-G5-U6-L10', productive-add(8, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(3)), excerpt("8 + 1"))).
-compiled_lesson_task_instance('IM-G5-U6-L11', productive-add(3, 7),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("3 + 7"))).
-compiled_lesson_task_instance('IM-G5-U6-L11', productive-add(8, 6),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("8 + 6"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(12, 35),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(2)), excerpt("12 + 35"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(5, 13),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(1)), excerpt("5 + 13"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(6, 2),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(1)), excerpt("6 + 2"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(8, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("8 + 1"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(8, 5),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("8 + 5"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(8, 5),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("8 + 5"))).
-compiled_lesson_task_instance('IM-G5-U6-L13', productive-add(8, 6),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("8 + 6"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-add_fractions(frac(2, 5), frac(4, 9)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(1)), excerpt("2/5 + 4/9"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-add_fractions(frac(2, 5), frac(4, 9)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(2)), excerpt("2/5 + 4/9"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-add_fractions(frac(3, 4), frac(4, 6)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/fraction_expression(2)), excerpt("3/4 + 4/6"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-add_fractions(frac(3, 4), frac(7, 8)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/fraction_expression(1)), excerpt("3/4 + 7/8"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-add_fractions(frac(3, 8), frac(1, 5)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(3)), excerpt("3/8 + 1/5"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-subtract_fractions(frac(2, 9), frac(1, 6)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(5)), excerpt("2/9 - 1/6"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-subtract_fractions(frac(3, 4), frac(2, 5)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)/fraction_expression(3)), excerpt("3/4 - 2/5"))).
+compiled_lesson_task_instance('IM-G5-U6-L10', productive-subtract_fractions(frac(7, 10), frac(2, 3)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(4)), excerpt("7/10 - 2/3"))).
+compiled_lesson_task_instance('IM-G5-U6-L11', productive-add_fractions(mixed(1, 5, 8), frac(6, 8)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(3)), excerpt("1 5/8 + 6/8"))).
+compiled_lesson_task_instance('IM-G5-U6-L11', productive-add_fractions(whole(3), frac(7, 8)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("3 + 7/8"))).
+compiled_lesson_task_instance('IM-G5-U6-L11', productive-subtract_fractions(mixed(1, 5, 8), frac(6, 8)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(4)), excerpt("1 5/8 - 6/8"))).
+compiled_lesson_task_instance('IM-G5-U6-L11', productive-subtract_fractions(whole(3), frac(7, 8)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(2)), excerpt("3 - 7/8"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-add_fractions(frac(1, 8), frac(1, 3)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(3)), excerpt("1/8 + 1/3"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-add_fractions(frac(1, 8), frac(5, 12)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(4)), excerpt("1/8 + 5/12"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-add_fractions(frac(1, 8), frac(5, 8)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("1/8 + 5/8"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-add_fractions(frac(1, 8), frac(6, 16)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(2)), excerpt("1/8 + 6/16"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-add_fractions(frac(5, 6), frac(2, 9)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(2)), excerpt("5/6 + 2/9"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-subtract_fractions(frac(6, 10), frac(9, 25)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(2)), excerpt("6/10 - 9/25"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-subtract_fractions(frac(6, 5), frac(1, 3)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(1)), excerpt("6/5 - 1/3"))).
+compiled_lesson_task_instance('IM-G5-U6-L13', productive-subtract_fractions(frac(8, 7), frac(2, 3)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L13'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(1)), excerpt("8/7 - 2/3"))).
 compiled_lesson_task_instance('IM-G5-U6-L3', productive-divide(15, 10),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson3.md', lines(95, 95)), position(student_task_statement(1)/expression(1)), excerpt("15 \u00f7 10"))).
 compiled_lesson_task_instance('IM-G5-U6-L3', productive-divide(15, 100),
@@ -2418,20 +2418,32 @@ compiled_lesson_task_instance('IM-G5-U6-L7', productive-multiply(45, 2),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson7.md', lines(91, 91)), position(student_task_statement(1)/expression(1)), excerpt("45 \u00d7 2"))).
 compiled_lesson_task_instance('IM-G5-U6-L7', productive-multiply(46, 12),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson7.md', lines(96, 96)), position(student_task_statement(1)/expression(4)), excerpt("46 \u00d7 12"))).
-compiled_lesson_task_instance('IM-G5-U6-L8', productive-add(3, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(2)), excerpt("3 + 1"))).
-compiled_lesson_task_instance('IM-G5-U6-L8', productive-add(3, 2),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(1)), excerpt("3 + 2"))).
-compiled_lesson_task_instance('IM-G5-U6-L8', productive-add(4, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(4)'))), position(student_task_statement(4)/expression(1)), excerpt("4 + 1"))).
-compiled_lesson_task_instance('IM-G5-U8-L10', productive-add(12, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("12 + 1"))).
-compiled_lesson_task_instance('IM-G5-U8-L10', productive-add(3, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("3 + 1"))).
-compiled_lesson_task_instance('IM-G5-U8-L10', productive-add(3, 3),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("3 + 3"))).
-compiled_lesson_task_instance('IM-G5-U8-L10', productive-add(6, 1),
-                              task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("6 + 1"))).
+compiled_lesson_task_instance('IM-G5-U6-L8', productive-add_fractions(frac(2, 3), frac(1, 2)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(3)), excerpt("2/3 + 1/2"))).
+compiled_lesson_task_instance('IM-G5-U6-L8', productive-add_fractions(frac(2, 3), frac(2, 3)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(1)), excerpt("2/3 + 2/3"))).
+compiled_lesson_task_instance('IM-G5-U6-L8', productive-add_fractions(frac(3, 4), frac(1, 2)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(2)), excerpt("3/4 + 1/2"))).
+compiled_lesson_task_instance('IM-G5-U6-L8', productive-subtract_fractions(frac(2, 3), frac(1, 6)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(3)'))), position(student_task_statement(3)/fraction_expression(2)), excerpt("2/3 - 1/6"))).
+compiled_lesson_task_instance('IM-G5-U6-L8', productive-subtract_fractions(frac(5, 6), frac(1, 3)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U6-L8'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(1)), excerpt("5/6 - 1/3"))).
+compiled_lesson_task_instance('IM-G5-U8-L10', productive-add_fractions(frac(1, 3), frac(1, 2)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(3)), excerpt("1/3 + 1/2"))).
+compiled_lesson_task_instance('IM-G5-U8-L10', productive-add_fractions(frac(1, 3), frac(3, 2)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(4)), excerpt("1/3 + 3/2"))).
+compiled_lesson_task_instance('IM-G5-U8-L10', productive-add_fractions(frac(2, 12), frac(1, 6)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("2/12 + 1/6"))).
+compiled_lesson_task_instance('IM-G5-U8-L10', productive-add_fractions(frac(2, 6), frac(1, 2)),
+                              task_evidence(rule(direct_fraction_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(2)), excerpt("2/6 + 1/2"))).
+compiled_lesson_task_instance('IM-G5-U8-L11', productive-subtract_fractions(frac(2, 3), frac(1, 2)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(4)), excerpt("2/3 - 1/2"))).
+compiled_lesson_task_instance('IM-G5-U8-L11', productive-subtract_fractions(frac(2, 3), frac(1, 6)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(1)), excerpt("2/3 - 1/6"))).
+compiled_lesson_task_instance('IM-G5-U8-L11', productive-subtract_fractions(frac(2, 3), frac(2, 6)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(2)), excerpt("2/3 - 2/6"))).
+compiled_lesson_task_instance('IM-G5-U8-L11', productive-subtract_fractions(frac(2, 3), frac(4, 6)),
+                              task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L11'), position('student_task_statement(1)'))), position(student_task_statement(1)/fraction_expression(3)), excerpt("2/3 - 4/6"))).
 compiled_lesson_task_instance('IM-G5-U8-L16', productive-divide(220, 22),
                               task_evidence(rule(direct_division_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U8-L16'), position('student_task_statement(3)'))), position(student_task_statement(3)/expression(1)), excerpt("220 \u00f7 22"))).
 compiled_lesson_task_instance('IM-G5-U8-L16', productive-divide(260, 13),
@@ -3802,6 +3814,12 @@ compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(3, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("3 + 1"))).
 compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(4, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(103, 103)), position(student_task_statement(1)/expression(3)), excerpt("4 + 1"))).
+compiled_lesson_task_instance('IM-GK-U6-L10', productive-add(10, 3),
+                              task_evidence(rule(task_186_gk_u6_l10_10_plus_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)), excerpt("10 + 3 = ___"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-GK-U6-L10', productive-add(10, 5),
+                              task_evidence(rule(task_186_gk_u6_l10_10_plus_5), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U6-L10'), position('student_task_statement(3)'))), position(student_task_statement(3)), excerpt("10 + 5 = ___"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-GK-U6-L10', productive-add(10, 8),
+                              task_evidence(rule(task_186_gk_u6_l10_10_plus_8), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)), excerpt("10 + 8 = ___"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-GK-U6-L2', productive-add(3, 0),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("3 + 0"))).
 compiled_lesson_task_instance('IM-GK-U6-L2', productive-add(3, 1),

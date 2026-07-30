@@ -8,7 +8,7 @@
             compiled_mapping_summary/2
           ]).
 
-compiled_mapping_summary(545, 665).
+compiled_mapping_summary(549, 673).
 
 compiled_lesson_strategy('IM-G1-U1-L13', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', line(89)), confidence(high), input_domain(whole_number), excerpt("7 + 1"))).
@@ -602,10 +602,12 @@ compiled_lesson_strategy('IM-G4-U2-L5', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("16 \u00d7 12"))).
 compiled_lesson_strategy('IM-G4-U2-L9', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 \u00d7 12"))).
+compiled_lesson_strategy('IM-G4-U3-L10', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("2- 5/6"))).
 compiled_lesson_strategy('IM-G4-U3-L12', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade4/unit3/lesson12.md', line(5)), confidence(high), input_domain(rational), excerpt("Explain (orally and in writing) strategies for adding and subtracting fractions, including mixed numbers."))).
-compiled_lesson_strategy('IM-G4-U3-L16', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 + 3"))).
+compiled_lesson_strategy('IM-G4-U3-L16', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1/10 + 50/100"))).
 compiled_lesson_strategy('IM-G4-U3-L18', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("19 + 101"))).
 compiled_lesson_strategy('IM-G4-U3-L2', multiplication, repeat_equal_groups,
@@ -628,12 +630,14 @@ compiled_lesson_strategy('IM-G4-U4-L13', counting, recursive_place_value_inscrip
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade4/unit4/lesson13.md', line(5)), confidence(high), input_domain(discrete_collection), excerpt("Explain (orally) strategies based on place value for comparing and ordering multi-digit whole numbers."))).
 compiled_lesson_strategy('IM-G4-U4-L18', subtraction, decompose_base_for_ones,
                          mapping_evidence(rule(column_subtraction), source('curriculum/im_teacher_guides/grade4/unit4/lesson18.md', line(13)), confidence(high), input_domain(whole_number), excerpt("The purpose of this lesson is to add and subtract large numbers within 100,000 using the standard algorithm."))).
+compiled_lesson_strategy('IM-G4-U4-L19', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1 1/4 - 3/4"))).
 compiled_lesson_strategy('IM-G4-U4-L2', decimal, positional_decimal_reading,
                          mapping_evidence(rule(decimal_positional_notation), source('curriculum/im_teacher_guides/grade4/unit4/lesson2.md', line(12)), confidence(high), input_domain(decimal), excerpt("The purpose of this lesson is for students to reason about equivalent tenths and hundredths in decimal notation."))).
 compiled_lesson_strategy('IM-G4-U4-L20', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade4/unit4/lesson20.md', line(163)), confidence(high), input_domain(whole_number), excerpt("142,571 + 10,909"))).
-compiled_lesson_strategy('IM-G4-U4-L5', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 + 50"))).
+compiled_lesson_strategy('IM-G4-U4-L5', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("5/10 + 50/100"))).
 compiled_lesson_strategy('IM-G4-U4-L7', counting, recursive_place_value_inscription,
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade4/unit4/lesson7.md', line(6)), confidence(high), input_domain(discrete_collection), excerpt("Write 5-digit numbers and express 5-digit numbers with words."))).
 compiled_lesson_strategy('IM-G4-U4-L9', counting, recursive_place_value_inscription,
@@ -784,6 +788,8 @@ compiled_lesson_strategy('IM-G4-U9-L12', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("15 + 29"))).
 compiled_lesson_strategy('IM-G4-U9-L2', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("38 + 62"))).
+compiled_lesson_strategy('IM-G4-U9-L3', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1 4/10 - 8/10"))).
 compiled_lesson_strategy('IM-G4-U9-L4', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("387- 124"))).
 compiled_lesson_strategy('IM-G4-U9-L5', counting, recursive_place_value_inscription,
@@ -952,20 +958,26 @@ compiled_lesson_strategy('IM-G5-U5-L6', decimal, decimal_comparison_by_aligned_u
                          mapping_evidence(rule(task_grammar_direct_decimal_numeral_comparison), source('curriculum/im_teacher_guides/grade5/unit5/lesson6.md', line(213)), confidence(high), input_domain(decimal), excerpt("compare 0.534 and 0.537"))).
 compiled_lesson_strategy('IM-G5-U5-L8', decimal, positional_decimal_reading,
                          mapping_evidence(rule(decimal_positional_notation), source('curriculum/im_teacher_guides/grade5/unit5/lesson8.md', line(6)), confidence(high), input_domain(decimal), excerpt("Use place value understanding to label a number line and estimate the location of a decimal to thousandths."))).
-compiled_lesson_strategy('IM-G5-U6-L10', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("20 + 41"))).
 compiled_lesson_strategy('IM-G5-U6-L10', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson10.md', line(5)), confidence(high), input_domain(rational), excerpt("Explain (orally) strategies for adding and subtracting fractions with unlike denominators when one is not a multiple of the other."))).
-compiled_lesson_strategy('IM-G5-U6-L11', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("3 + 7"))).
+compiled_lesson_strategy('IM-G5-U6-L10', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("2/5 + 4/9"))).
+compiled_lesson_strategy('IM-G5-U6-L10', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("2/9 - 1/6"))).
 compiled_lesson_strategy('IM-G5-U6-L11', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson11.md', line(11)), confidence(high), input_domain(rational), excerpt("The purpose of this lesson is for students to subtract fractions with unlike denominators, including mixed numbers."))).
+compiled_lesson_strategy('IM-G5-U6-L11', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1 5/8 + 6/8"))).
+compiled_lesson_strategy('IM-G5-U6-L11', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1 5/8 - 6/8"))).
 compiled_lesson_strategy('IM-G5-U6-L12', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson12.md', line(11)), confidence(high), input_domain(rational), excerpt("The purpose of this lesson is for students to solve problems that involve adding and subtracting fractions with unlike denominators."))).
-compiled_lesson_strategy('IM-G5-U6-L13', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("12 + 35"))).
 compiled_lesson_strategy('IM-G5-U6-L13', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson13.md', line(6)), confidence(high), input_domain(rational), excerpt("Explain (orally and in writing) strategies for adding and subtracting fractions and mixed numbers."))).
+compiled_lesson_strategy('IM-G5-U6-L13', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1/8 + 1/3"))).
+compiled_lesson_strategy('IM-G5-U6-L13', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("6/10 - 9/25"))).
 compiled_lesson_strategy('IM-G5-U6-L3', division, measure_groups_of_size,
                          mapping_evidence(rule(task_grammar_direct_division_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson3.md', line(95)), confidence(high), input_domain(whole_number), excerpt("15 \u00f7 10"))).
 compiled_lesson_strategy('IM-G5-U6-L6', division, measure_groups_of_size,
@@ -974,10 +986,12 @@ compiled_lesson_strategy('IM-G5-U6-L6', measurement, unit_conversion_by_iteratio
                          mapping_evidence(rule(measurement_unit_conversion_by_iteration), source('curriculum/im_teacher_guides/grade5/unit6/lesson6.md', line(11)), confidence(high), input_domain(measured_quantity), excerpt("The purpose of this lesson is for students to solve conversion problems, using metric volume units."))).
 compiled_lesson_strategy('IM-G5-U6-L7', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade5/unit6/lesson7.md', line(93)), confidence(high), input_domain(whole_number), excerpt("45 \u00d7 10"))).
-compiled_lesson_strategy('IM-G5-U6-L8', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("3 + 1"))).
 compiled_lesson_strategy('IM-G5-U6-L8', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson8.md', line(11)), confidence(high), input_domain(rational), excerpt("The purpose of this lesson is for students to add and subtract fractions with unlike denominators in ways that make sense to them."))).
+compiled_lesson_strategy('IM-G5-U6-L8', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("2/3 + 1/2"))).
+compiled_lesson_strategy('IM-G5-U6-L8', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("2/3 - 1/6"))).
 compiled_lesson_strategy('IM-G5-U6-L9', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit6/lesson9.md', line(11)), confidence(high), input_domain(rational), excerpt("The purpose of this lesson is for students to add and subtract fractions with unlike denominators by replacing the given expressions with equivalent expressions with common denominators."))).
 compiled_lesson_strategy('IM-G5-U7-L11', geometry, ordered_pair_coordinate_plot,
@@ -996,10 +1010,12 @@ compiled_lesson_strategy('IM-G5-U7-L7', geometry, shape_classification_by_defini
                          mapping_evidence(rule(quadrilateral_hierarchy_by_defining_attributes), source('curriculum/im_teacher_guides/grade5/unit7/lesson7.md', line(5)), confidence(high), input_domain(spatial_measurement), excerpt("Determine the relationships between rectangles, rhombuses, squares, trapezoids, and parallelograms."))).
 compiled_lesson_strategy('IM-G5-U7-L8', geometry, shape_classification_by_defining_attributes,
                          mapping_evidence(rule(shape_classification_by_defining_attributes), source('curriculum/im_teacher_guides/grade5/unit7/lesson8.md', line(1)), confidence(high), input_domain(spatial_measurement), excerpt("Sort Triangles"))).
-compiled_lesson_strategy('IM-G5-U8-L10', addition, count_on_from_larger,
-                         mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("12 + 1"))).
 compiled_lesson_strategy('IM-G5-U8-L10', fraction, co_denominator_make_base_transfer,
                          mapping_evidence(rule(fraction_common_unit_addition), source('curriculum/im_teacher_guides/grade5/unit8/lesson10.md', line(5)), confidence(high), input_domain(rational), excerpt("Add fractions with unlike denominators."))).
+compiled_lesson_strategy('IM-G5-U8-L10', fraction, common_denominator_fraction_addition,
+                         mapping_evidence(rule(task_grammar_direct_fraction_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("1/3 + 1/2"))).
+compiled_lesson_strategy('IM-G5-U8-L11', fraction, common_denominator_fraction_subtraction,
+                         mapping_evidence(rule(task_grammar_direct_fraction_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(rational), excerpt("2/3 - 1/2"))).
 compiled_lesson_strategy('IM-G5-U8-L12', decimal, decimal_addition_by_aligned_units,
                          mapping_evidence(rule(decimal_addition_by_aligned_units), source('curriculum/im_teacher_guides/grade5/unit8/lesson12.md', line(5)), confidence(high), input_domain(decimal), excerpt("Add decimals to hundredths."))).
 compiled_lesson_strategy('IM-G5-U8-L16', division, measure_groups_of_size,

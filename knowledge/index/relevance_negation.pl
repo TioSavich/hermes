@@ -1504,6 +1504,7 @@ slice(family, machine(division, stop_after_one_known_fact)).
 slice(family, machine(division, stop_at_nearby_product_in_search)).
 slice(family, machine(division, sum_dividend_and_divisor)).
 slice(family, machine(fraction, add_numerator_denominator_comparison)).
+slice(family, machine(fraction, add_numerator_denominator_sum)).
 slice(family, machine(fraction, area_model_fraction_comparison)).
 slice(family, machine(fraction, area_model_part_of_part)).
 slice(family, machine(fraction, area_model_unequal_partition_piece_count)).
@@ -1511,6 +1512,8 @@ slice(family, machine(fraction, benchmark_fraction_comparison)).
 slice(family, machine(fraction, clear_inner_referent)).
 slice(family, machine(fraction, co_denominator_count_on_from_larger)).
 slice(family, machine(fraction, co_denominator_make_base_transfer)).
+slice(family, machine(fraction, common_denominator_fraction_addition)).
+slice(family, machine(fraction, common_denominator_fraction_subtraction)).
 slice(family, machine(fraction, common_unit_fraction_comparison)).
 slice(family, machine(fraction, cross_multiplication_rule_from_pattern)).
 slice(family, machine(fraction, cross_multiplication_rule_without_ground)).
@@ -4600,6 +4603,7 @@ machine_genre(division, stop_after_one_known_fact, computational).
 machine_genre(division, stop_at_nearby_product_in_search, computational).
 machine_genre(division, sum_dividend_and_divisor, computational).
 machine_genre(fraction, add_numerator_denominator_comparison, computational).
+machine_genre(fraction, add_numerator_denominator_sum, computational).
 machine_genre(fraction, area_model_fraction_comparison, computational).
 machine_genre(fraction, area_model_part_of_part, computational).
 machine_genre(fraction, area_model_unequal_partition_piece_count, computational).
@@ -4607,6 +4611,8 @@ machine_genre(fraction, benchmark_fraction_comparison, computational).
 machine_genre(fraction, clear_inner_referent, computational).
 machine_genre(fraction, co_denominator_count_on_from_larger, computational).
 machine_genre(fraction, co_denominator_make_base_transfer, computational).
+machine_genre(fraction, common_denominator_fraction_addition, computational).
+machine_genre(fraction, common_denominator_fraction_subtraction, computational).
 machine_genre(fraction, common_unit_fraction_comparison, computational).
 machine_genre(fraction, cross_multiplication_rule_from_pattern, computational).
 machine_genre(fraction, cross_multiplication_rule_without_ground, computational).
@@ -5089,6 +5095,7 @@ excludes(addition, family, machine(division, stop_after_one_known_fact), family_
 excludes(addition, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(division, sum_dividend_and_divisor), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(addition, fraction, [fraction])).
+excludes(addition, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, area_model_fraction_comparison), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, area_model_part_of_part), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(addition, fraction, [fraction])).
@@ -5096,6 +5103,8 @@ excludes(addition, family, machine(fraction, benchmark_fraction_comparison), fam
 excludes(addition, family, machine(fraction, clear_inner_referent), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(addition, fraction, [fraction])).
+excludes(addition, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(addition, fraction, [fraction])).
+excludes(addition, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(addition, fraction, [fraction])).
@@ -6214,6 +6223,7 @@ excludes(algebraic, family, machine(division, stop_after_one_known_fact), family
 excludes(algebraic, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(division, sum_dividend_and_divisor), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(algebraic, fraction, [fraction])).
+excludes(algebraic, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, area_model_fraction_comparison), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, area_model_part_of_part), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(algebraic, fraction, [fraction])).
@@ -6221,6 +6231,8 @@ excludes(algebraic, family, machine(fraction, benchmark_fraction_comparison), fa
 excludes(algebraic, family, machine(fraction, clear_inner_referent), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(algebraic, fraction, [fraction])).
+excludes(algebraic, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(algebraic, fraction, [fraction])).
+excludes(algebraic, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(algebraic, fraction, [fraction])).
@@ -7360,6 +7372,7 @@ excludes(calculus, family, machine(division, stop_after_one_known_fact), family_
 excludes(calculus, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(division, sum_dividend_and_divisor), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(calculus, fraction, [fraction])).
+excludes(calculus, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, area_model_fraction_comparison), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, area_model_part_of_part), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(calculus, fraction, [fraction])).
@@ -7367,6 +7380,8 @@ excludes(calculus, family, machine(fraction, benchmark_fraction_comparison), fam
 excludes(calculus, family, machine(fraction, clear_inner_referent), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(calculus, fraction, [fraction])).
+excludes(calculus, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(calculus, fraction, [fraction])).
+excludes(calculus, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(calculus, fraction, [fraction])).
@@ -8789,6 +8804,7 @@ excludes(cardinality, family, machine(division, stop_after_one_known_fact), fami
 excludes(cardinality, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(division, sum_dividend_and_divisor), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(cardinality, fraction, [fraction])).
+excludes(cardinality, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, area_model_fraction_comparison), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, area_model_part_of_part), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(cardinality, fraction, [fraction])).
@@ -8796,6 +8812,8 @@ excludes(cardinality, family, machine(fraction, benchmark_fraction_comparison), 
 excludes(cardinality, family, machine(fraction, clear_inner_referent), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(cardinality, fraction, [fraction])).
+excludes(cardinality, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(cardinality, fraction, [fraction])).
+excludes(cardinality, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(cardinality, fraction, [fraction])).
@@ -10210,6 +10228,7 @@ excludes(counting, family, machine(division, stop_after_one_known_fact), family_
 excludes(counting, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(division, sum_dividend_and_divisor), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(counting, fraction, [fraction])).
+excludes(counting, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, area_model_fraction_comparison), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, area_model_part_of_part), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(counting, fraction, [fraction])).
@@ -10217,6 +10236,8 @@ excludes(counting, family, machine(fraction, benchmark_fraction_comparison), fam
 excludes(counting, family, machine(fraction, clear_inner_referent), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(counting, fraction, [fraction])).
+excludes(counting, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(counting, fraction, [fraction])).
+excludes(counting, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(counting, fraction, [fraction])).
@@ -11565,6 +11586,7 @@ excludes(data, family, machine(division, stop_after_one_known_fact), family_mism
 excludes(data, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(data, division, [division])).
 excludes(data, family, machine(division, sum_dividend_and_divisor), family_mismatch(data, division, [division])).
 excludes(data, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, area_model_fraction_comparison), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, area_model_part_of_part), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(data, fraction, [fraction])).
@@ -11572,6 +11594,8 @@ excludes(data, family, machine(fraction, benchmark_fraction_comparison), family_
 excludes(data, family, machine(fraction, clear_inner_referent), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(data, fraction, [fraction])).
@@ -12878,6 +12902,7 @@ excludes(decimal, family, machine(division, stop_after_one_known_fact), family_m
 excludes(decimal, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(division, sum_dividend_and_divisor), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(decimal, fraction, [fraction])).
+excludes(decimal, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, area_model_fraction_comparison), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, area_model_part_of_part), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(decimal, fraction, [fraction])).
@@ -12885,6 +12910,8 @@ excludes(decimal, family, machine(fraction, benchmark_fraction_comparison), fami
 excludes(decimal, family, machine(fraction, clear_inner_referent), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(decimal, fraction, [fraction])).
+excludes(decimal, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(decimal, fraction, [fraction])).
+excludes(decimal, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(decimal, fraction, [fraction])).
@@ -14370,6 +14397,7 @@ excludes(division, family, machine(discourse, tutorial_interruption_on_incompati
 excludes(division, family, machine(discourse, universally_lx_loop), nonmathematical_genre(division, discourse, discursive)).
 excludes(division, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(division, discourse, discursive)).
 excludes(division, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(division, fraction, [fraction])).
+excludes(division, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, area_model_fraction_comparison), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, area_model_part_of_part), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(division, fraction, [fraction])).
@@ -14377,6 +14405,8 @@ excludes(division, family, machine(fraction, benchmark_fraction_comparison), fam
 excludes(division, family, machine(fraction, clear_inner_referent), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(division, fraction, [fraction])).
+excludes(division, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(division, fraction, [fraction])).
+excludes(division, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(division, fraction, [fraction])).
@@ -17394,6 +17424,7 @@ excludes(geometry, family, machine(division, stop_after_one_known_fact), family_
 excludes(geometry, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(division, sum_dividend_and_divisor), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(geometry, fraction, [fraction])).
+excludes(geometry, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, area_model_fraction_comparison), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, area_model_part_of_part), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(geometry, fraction, [fraction])).
@@ -17401,6 +17432,8 @@ excludes(geometry, family, machine(fraction, benchmark_fraction_comparison), fam
 excludes(geometry, family, machine(fraction, clear_inner_referent), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(geometry, fraction, [fraction])).
+excludes(geometry, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(geometry, fraction, [fraction])).
+excludes(geometry, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(geometry, fraction, [fraction])).
@@ -18472,6 +18505,7 @@ excludes(integer, family, machine(division, stop_after_one_known_fact), family_m
 excludes(integer, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(division, sum_dividend_and_divisor), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(integer, fraction, [fraction])).
+excludes(integer, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, area_model_fraction_comparison), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, area_model_part_of_part), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(integer, fraction, [fraction])).
@@ -18479,6 +18513,8 @@ excludes(integer, family, machine(fraction, benchmark_fraction_comparison), fami
 excludes(integer, family, machine(fraction, clear_inner_referent), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(integer, fraction, [fraction])).
+excludes(integer, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(integer, fraction, [fraction])).
+excludes(integer, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(integer, fraction, [fraction])).
@@ -20087,6 +20123,7 @@ excludes(multiplication, family, machine(division, stop_after_one_known_fact), f
 excludes(multiplication, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(division, sum_dividend_and_divisor), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(multiplication, fraction, [fraction])).
+excludes(multiplication, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, area_model_fraction_comparison), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, area_model_part_of_part), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(multiplication, fraction, [fraction])).
@@ -20094,6 +20131,8 @@ excludes(multiplication, family, machine(fraction, benchmark_fraction_comparison
 excludes(multiplication, family, machine(fraction, clear_inner_referent), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(multiplication, fraction, [fraction])).
+excludes(multiplication, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(multiplication, fraction, [fraction])).
+excludes(multiplication, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(multiplication, fraction, [fraction])).
@@ -21315,6 +21354,7 @@ excludes(probability, family, machine(division, stop_after_one_known_fact), fami
 excludes(probability, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(division, sum_dividend_and_divisor), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(probability, fraction, [fraction])).
+excludes(probability, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, area_model_fraction_comparison), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, area_model_part_of_part), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(probability, fraction, [fraction])).
@@ -21322,6 +21362,8 @@ excludes(probability, family, machine(fraction, benchmark_fraction_comparison), 
 excludes(probability, family, machine(fraction, clear_inner_referent), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(probability, fraction, [fraction])).
+excludes(probability, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(probability, fraction, [fraction])).
+excludes(probability, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(probability, fraction, [fraction])).
@@ -22929,6 +22971,7 @@ excludes(proportional, family, machine(division, stop_after_one_known_fact), fam
 excludes(proportional, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(division, sum_dividend_and_divisor), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(proportional, fraction, [fraction])).
+excludes(proportional, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, area_model_fraction_comparison), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, area_model_part_of_part), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(proportional, fraction, [fraction])).
@@ -22936,6 +22979,8 @@ excludes(proportional, family, machine(fraction, benchmark_fraction_comparison),
 excludes(proportional, family, machine(fraction, clear_inner_referent), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(proportional, fraction, [fraction])).
+excludes(proportional, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(proportional, fraction, [fraction])).
+excludes(proportional, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(proportional, fraction, [fraction])).
@@ -24505,6 +24550,7 @@ excludes(ratio, family, machine(division, stop_after_one_known_fact), family_mis
 excludes(ratio, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(division, sum_dividend_and_divisor), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(ratio, fraction, [fraction])).
+excludes(ratio, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, area_model_fraction_comparison), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, area_model_part_of_part), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(ratio, fraction, [fraction])).
@@ -24512,6 +24558,8 @@ excludes(ratio, family, machine(fraction, benchmark_fraction_comparison), family
 excludes(ratio, family, machine(fraction, clear_inner_referent), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(ratio, fraction, [fraction])).
+excludes(ratio, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(ratio, fraction, [fraction])).
+excludes(ratio, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(ratio, fraction, [fraction])).
@@ -25453,6 +25501,7 @@ excludes(subtraction, family, machine(division, stop_after_one_known_fact), fami
 excludes(subtraction, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(division, sum_dividend_and_divisor), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(subtraction, fraction, [fraction])).
+excludes(subtraction, family, machine(fraction, add_numerator_denominator_sum), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, area_model_fraction_comparison), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, area_model_part_of_part), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(subtraction, fraction, [fraction])).
@@ -25460,6 +25509,8 @@ excludes(subtraction, family, machine(fraction, benchmark_fraction_comparison), 
 excludes(subtraction, family, machine(fraction, clear_inner_referent), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(subtraction, fraction, [fraction])).
+excludes(subtraction, family, machine(fraction, common_denominator_fraction_addition), family_mismatch(subtraction, fraction, [fraction])).
+excludes(subtraction, family, machine(fraction, common_denominator_fraction_subtraction), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(subtraction, fraction, [fraction])).

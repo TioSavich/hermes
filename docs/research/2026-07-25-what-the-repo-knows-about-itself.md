@@ -16,7 +16,8 @@ The registry contains 283 rows. The reachability counts below are generated from
 |---|---:|
 | `lazy_reachable` | 10 |
 | `orphan_module` | 71 |
-| `routed_paged` | 195 |
+| `routed_only` | 14 |
+| `routed_paged` | 181 |
 | `unrouted` | 7 |
 
 ### By capability class

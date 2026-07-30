@@ -514,6 +514,7 @@ vision_digest_audit_positive_control('IM-G8-U1-L1', consistent).
 vision_digest_audit_positive_control('IM-G8-U3-L1', consistent).
 
 vision_digest_audit_fact_receipt(45, 'IM-G7-U2-L4', content_not_named_in_spine, 'division/inverse_fact_decomposition', stop_after_one_known_fact).
+vision_digest_audit_fact_receipt(192, 'IM-G7-U4-L6', content_not_named_in_spine, 'division/measure_groups_of_size', share_into_divisor_groups).
 
 vision_digest_audit_vision_module(grade_6, 'IM-G6-U2-L4', content_not_named_in_spine, 2).
 vision_digest_audit_vision_module(grade_6, 'IM-G6-U5-L5', cosmetic_title_variant, 1).

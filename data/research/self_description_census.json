@@ -424,7 +424,8 @@
     "by_status": {
       "lazy_reachable": 10,
       "orphan_module": 71,
-      "routed_paged": 195,
+      "routed_only": 14,
+      "routed_paged": 181,
       "unrouted": 7
     },
     "orphan_verdicts": {

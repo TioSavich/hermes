@@ -131,6 +131,7 @@ LEGEND - arcs (name, machines)
   break_then_work_on  10
   break_three_times  1
   break_twice_then_keep_work_on  1
+  keep_break_recover_break_keep  1
   keep_first_break_keep_break  1
   keep_first_break_recover_break  1
   keep_first_break_recover_break_again  1
@@ -139,7 +140,7 @@ LEGEND - arcs (name, machines)
   keep_first_then_work_on  2
   keep_first_work_keep  3
   keep_then_break  5
-  keep_then_work_on  29
+  keep_then_work_on  31
   keep_work_keep  8
   keep_work_keep_work_keep  1
   keep_work_keep_work_on  2
@@ -329,6 +330,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens core=substitute_operation closure=omit_required_step+misname_result+record_loss other=none
   fraction/add_numerator_denominator_comparison arc=break_then_work_on
     shell=initiate core=combine_quantities closure=omit_required_step other=none
+  fraction/add_numerator_denominator_sum arc=keep_break_recover_break_keep
+    shell=initiate+re_express_equivalently core=combine_quantities closure=omit_required_step+omit_required_step+verify_invariant+record_viability+emit_result other=none
   fraction/area_model_fraction_comparison arc=keep_work_keep_work_on
     shell=initiate+unitize_referent+partition_into_equal_parts+disembed_part+align_to_common_unit core=iterate_unit closure=verify_invariant+emit_result other=none
   fraction/area_model_part_of_part arc=unrecorded_run
@@ -343,6 +346,10 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
   fraction/co_denominator_make_base_transfer arc=keep_first_work_keep
     shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
+  fraction/common_denominator_fraction_addition arc=keep_then_work_on
+    shell=initiate+re_express_equivalently+align_to_common_unit+re_express_equivalently+re_express_equivalently+align_to_common_unit core=combine_quantities closure=emit_result other=none
+  fraction/common_denominator_fraction_subtraction arc=keep_then_work_on
+    shell=initiate+re_express_equivalently+align_to_common_unit+re_express_equivalently+re_express_equivalently+align_to_common_unit core=remove_quantity closure=emit_result other=none
   fraction/common_unit_fraction_comparison arc=unrecorded_run
     shell=initiate+read_operand_attribute+retain_unchanged+retain_unchanged+read_operand_attribute+compare_magnitudes core=none closure=emit_result other=none
   fraction/cross_multiplication_rule_from_pattern arc=unrecorded_run
