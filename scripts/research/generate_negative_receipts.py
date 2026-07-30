@@ -44,11 +44,51 @@ CONTRACTS = ROOT / "knowledge" / "strategies" / "automaton_input_contracts.pl"
 CONTRACT_FILTER_FIXTURE = ROOT / "scripts" / "checks" / "fixtures" / "negative_receipt_candidate_contract_whole_domain.json"
 DEFAULT_OUTPUT = ROOT / "scripts" / "research" / "negative_receipts_out"
 DEFAULT_LIMIT = 3
-RUN_VERSION = "candidate_contract_filter_v2"
+RUN_VERSION = "operation_match_filter_v3"
 CONTRACT_FILTER_OPERATIONS = frozenset({"addition", "subtraction", "multiplication", "division"})
+# Pass-6 standing finding 1: vision_lesson_boundary strings record the
+# pipeline's own mapping narrative, not the lesson, so the drafter neither
+# receives nor may cite them. The curated register's validator keeps the full
+# predicate tuple for receipts already merged.
+DRAFTING_FACT_PREDICATES = tuple(
+    predicate
+    for predicate in VISION_FACT_PREDICATES
+    if predicate != "vision_lesson_boundary"
+)
+# Mirror of task_action_operands/4 (formal/learner/activity_contract.pl):
+# a compiled productive task head carries an operation only when that
+# predicate maps it to one. This is the join the task-179 batch check used
+# to find the 25 receipts naming operations their lessons' tasks never carry.
+TASK_HEAD_OPERATIONS = {
+    "add": "addition",
+    "subtract": "subtraction",
+    "multiply": "multiplication",
+    "divide": "division",
+    "unit_fraction": "fraction",
+    "iterate_improper_fraction": "fraction",
+    "decimal_value": "decimal",
+    "decimal_multiply": "decimal",
+    "decimal_compare": "decimal",
+    "decimal_add": "decimal",
+    "decimal_subtract": "decimal",
+    "regroup_decimal_units": "decimal",
+    "signed_add": "integer",
+    "scale_ratio": "ratio",
+    "evaluate_expression": "algebraic",
+    "solve_linear": "algebraic",
+    "classify_shape": "geometry",
+    "angle_measure": "geometry",
+}
 LESSON_RE = re.compile(r"IM-G(K|[1-8])-U(\d+)-L(\d+)")
 COMPILED_TASK_RE = re.compile(
     r"^compiled_lesson_task_instance\('([^']+)',\s*productive-([a-z_]+)\(([^)]*)\),",
+    re.MULTILINE,
+)
+# Head-only variant for operation presence: nested-paren task arguments
+# (classify_shape, evaluate_expression) defeat COMPILED_TASK_RE's operand
+# group, and the operation join needs only the head.
+COMPILED_TASK_HEAD_RE = re.compile(
+    r"^compiled_lesson_task_instance\('([^']+)',\s*productive-([a-z_]+)\(",
     re.MULTILINE,
 )
 VISION_COMPUTATION_RE = re.compile(
@@ -141,6 +181,116 @@ def _digest_operand_domains() -> dict[str, dict[str, list[tuple[tuple[int | floa
 
 def _contract_index() -> dict[tuple[str, str], dict[str, Any]]:
     return {(row["operation"], row["kind"]): row for row in contracts()}
+
+
+def _drafting_facts(
+    fact_index: dict[str, dict[str, list[str]]], lesson: str
+) -> dict[str, list[str]]:
+    """Digest facts the drafter may quote: the allowlist minus the boundary narrative."""
+    facts = fact_index.get(lesson, {})
+    return {
+        predicate: facts[predicate]
+        for predicate in DRAFTING_FACT_PREDICATES
+        if facts.get(predicate)
+    }
+
+
+def _compiled_operation_index() -> dict[str, dict[str, set[str]]]:
+    """Per lesson: operations its compiled productive tasks carry, plus unmapped heads."""
+    index: dict[str, dict[str, set[str]]] = {}
+    for lesson, head in COMPILED_TASK_HEAD_RE.findall(
+        COMPILED_TASKS.read_text(encoding="utf-8", errors="strict")
+    ):
+        entry = index.setdefault(lesson, {"operations": set(), "unmapped_heads": set()})
+        operation = TASK_HEAD_OPERATIONS.get(head)
+        if operation is None:
+            entry["unmapped_heads"].add(head)
+        else:
+            entry["operations"].add(operation)
+    return index
+
+
+def filter_candidate_operations(
+    row: dict[str, Any],
+    *,
+    operation_index: dict[str, dict[str, set[str]]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Annotate, without deleting, candidates whose operation no compiled task carries.
+
+    Task-179 found 25 curated receipts naming an operation the lesson's
+    compiled productive tasks never carry, so no operand pair exists to run
+    the named pair on. The flag is a visible annotation on the run record,
+    never a silent drop; flagged candidates are withheld from the drafting
+    prompt so the class cannot be minted again.
+    """
+    entry = operation_index.get(
+        row["lesson"], {"operations": set(), "unmapped_heads": set()}
+    )
+    operations = entry["operations"]
+    join_range = set(TASK_HEAD_OPERATIONS.values())
+    usable: list[dict[str, Any]] = []
+    annotated: list[dict[str, Any]] = []
+    for candidate in row["negative_candidates"]:
+        candidate_copy = dict(candidate)
+        if candidate["operation"] in operations:
+            usable.append(candidate_copy)
+            annotated.append(candidate_copy)
+            continue
+        candidate_copy["annotation"] = "operation_unmatched"
+        candidate_copy["operation_evidence"] = {
+            "source": "compiled_task_instances",
+            "join": "task_action_operands head map over productive rows",
+            "compiled_operations": sorted(operations),
+            "unmapped_task_heads": sorted(entry["unmapped_heads"]),
+            "operation_in_join_range": candidate["operation"] in join_range,
+            "reason": (
+                "the lesson's compiled productive tasks carry no operation the join recognizes"
+                if not operations
+                else f"no compiled productive task of the lesson carries {candidate['operation']}"
+            ),
+        }
+        annotated.append(candidate_copy)
+    return usable, annotated
+
+
+def operation_filter_controls() -> str:
+    """Exercise a live flagged/kept split, the join-range disclosure, and the empty domain."""
+    ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    operation_index = _compiled_operation_index()
+    live = next(row for row in ledger["lessons"] if row["lesson"] == "IM-G2-U5-L12")
+    usable, annotated = filter_candidate_operations(live, operation_index=operation_index)
+    kept = {candidate["productive"] for candidate in usable}
+    flagged = {
+        candidate["productive"]
+        for candidate in annotated
+        if candidate.get("annotation") == "operation_unmatched"
+    }
+    if "take_away_base_ones" not in kept:
+        raise RuntimeError("operation control lost the subtraction candidate IM-G2-U5-L12 carries tasks for")
+    if "recursive_place_value_inscription" not in flagged:
+        raise RuntimeError("operation control failed to flag the counting candidate on IM-G2-U5-L12")
+    counting = next(
+        candidate
+        for candidate in annotated
+        if candidate["productive"] == "recursive_place_value_inscription"
+    )
+    if counting["operation_evidence"]["operation_in_join_range"]:
+        raise RuntimeError("counting is outside the task_action_operands range and must be disclosed as such")
+    synthetic = {
+        "lesson": "IM-CONTROL-NO-TASKS",
+        "negative_candidates": [
+            {"operation": "addition", "productive": "count_on_from_larger", "deformation": "count_all_when_count_on_available"}
+        ],
+    }
+    usable, annotated = filter_candidate_operations(synthetic, operation_index=operation_index)
+    if usable or annotated[0].get("annotation") != "operation_unmatched":
+        raise RuntimeError("empty-domain control was not flagged operation_unmatched")
+    if "no operation the join recognizes" not in annotated[0]["operation_evidence"]["reason"]:
+        raise RuntimeError("empty-domain control does not say the lesson carries no mappable operation")
+    return (
+        "IM-G2-U5-L12 keeps its subtraction candidate and flags counting "
+        "(outside the join range); empty-domain synthetic flags with its own reason"
+    )
 
 
 def drafting_provenance_kind(lesson: str) -> str:
@@ -345,13 +495,13 @@ def ledger_census(
     guides_present = sum(guide_path(row["lesson"]).is_file() for row in eligible)
     digest_sources = sum(
         not guide_path(row["lesson"]).is_file()
-        and bool(fact_index.get(row["lesson"]))
+        and bool(_drafting_facts(fact_index, row["lesson"]))
         for row in eligible
     )
     usable_sources = guides_present + digest_sources
     grade_6_7 = [row for row in eligible if row["grade"] in {"6", "7"}]
     grade_6_7_in_digest = sum(
-        row["lesson"] in fact_index for row in grade_6_7
+        bool(_drafting_facts(fact_index, row["lesson"])) for row in grade_6_7
     )
     return {
         "published": len(ledger["lessons"]),
@@ -398,7 +548,7 @@ def lesson_input(
         guide_path=None,
         guide_relative=None,
         guide_text=None,
-        digest_facts=fact_index.get(row["lesson"], {}),
+        digest_facts=_drafting_facts(fact_index, row["lesson"]),
     )
 
 
@@ -433,6 +583,20 @@ the previous review round:
   what its own source denies."""
 
 
+_CANDIDATE_SELECTION_GUIDANCE = """Two candidate-selection rules from the previous review round:
+- A division task whose divisor names how many groups, and whose quotient
+  comes out exact, wants the fair_share_equal_groups intended action with the
+  name_group_count_as_share_size alternative when that pair is supplied. The
+  measure_groups_of_size / share_into_divisor_groups pair reads the divisor as
+  a group size, and share_into_divisor_groups needs a nonzero remainder to
+  misplace, so it cannot deform an exact division on the lesson's own numbers.
+- Select add_instead_of_multiply only when the quoted text itself carries both
+  factors: the number of groups and the size of each group. With one factor or
+  neither in the quotation, the receipt collapses into "multiplication is not
+  addition", a sentence that fits every multiplication lesson. Abstain or
+  select another candidate instead."""
+
+
 _DRAFTING_RULES_TAIL = """Abstain rather than select a candidate whose incompatibility reduces to one
 operation not being another with no quantity named.
 
@@ -461,7 +625,7 @@ _FILE_DISQUALIFIER = """- A sample student response performing the alternative. 
 def drafting_rules(*, file_backed: bool) -> str:
     """Return the review-derived rules, with the guide-only disqualifier when apt."""
     bullets = f"{_DRAFTING_RULES_HEAD}\n{_FILE_DISQUALIFIER}" if file_backed else _DRAFTING_RULES_HEAD
-    return f"{bullets}\n\n{_DRAFTING_RULES_TAIL}"
+    return f"{bullets}\n\n{_CANDIDATE_SELECTION_GUIDANCE}\n\n{_DRAFTING_RULES_TAIL}"
 
 
 def build_messages(
@@ -472,7 +636,7 @@ def build_messages(
     if item.provenance_kind == "fact":
         quotable_facts = [
             {"predicate": predicate, "text": text}
-            for predicate in VISION_FACT_PREDICATES
+            for predicate in DRAFTING_FACT_PREDICATES
             for text in item.digest_facts.get(predicate, [])
         ]
         system = f"""You draft one review-pending lesson_negative_receipts_v3 record.
@@ -661,8 +825,17 @@ def _typed_shape_fault(
             return f"proposal source path must be {digest_relative}"
         for fragment in fragments:
             if (
+                isinstance(fragment, dict)
+                and fragment.get("predicate") in VISION_FACT_PREDICATES
+                and fragment.get("predicate") not in DRAFTING_FACT_PREDICATES
+            ):
+                return (
+                    f"proposal cites {fragment['predicate']}, which is outside "
+                    "the drafting fact allowlist"
+                )
+            if (
                 not isinstance(fragment, dict)
-                or fragment.get("predicate") not in VISION_FACT_PREDICATES
+                or fragment.get("predicate") not in DRAFTING_FACT_PREDICATES
                 or not isinstance(fragment.get("text"), str)
                 or not fragment["text"]
             ):
@@ -773,7 +946,6 @@ def stub_transport(item: LessonInput, _messages: list[dict[str, str]], index: in
             (
                 name
                 for name in (
-                    "vision_lesson_boundary",
                     "vision_lesson_purpose",
                     "vision_lesson_goal",
                     "vision_lesson_standard",
@@ -872,7 +1044,13 @@ def summarize(
         grade = record["grade"]
         effect = pool_effect_by_grade.setdefault(
             grade,
-            {"lessons": 0, "candidates_before": 0, "candidates_after": 0, "contract_mismatch": 0},
+            {
+                "lessons": 0,
+                "candidates_before": 0,
+                "candidates_after": 0,
+                "contract_mismatch": 0,
+                "operation_unmatched": 0,
+            },
         )
         effect["lessons"] += 1
         effect["candidates_before"] += record.get("candidate_count_before", 0)
@@ -881,9 +1059,18 @@ def summarize(
             candidate.get("annotation") == "contract_mismatch"
             for candidate in record.get("candidate_annotations", [])
         )
+        effect["operation_unmatched"] += len(record.get("operation_unmatched", []))
     needs_vocabulary = [
         record["lesson"] for record in records if record["status"] == "needs_vocabulary"
     ]
+    operation_unmatched_lessons = [
+        record["lesson"]
+        for record in records
+        if record["status"] == "operation_unmatched"
+    ]
+    operation_unmatched_annotations = sum(
+        len(record.get("operation_unmatched", [])) for record in records
+    )
     uncovered_operations = Counter(
         candidate["operation"]
         for record in records
@@ -917,6 +1104,25 @@ def summarize(
             "value": len(accepted) / proposed if proposed else 0.0,
         },
         "refusal_reasons": dict(reasons.most_common()),
+        "operation_match_filter": {
+            "version": RUN_VERSION,
+            "join": (
+                "task_action_operands head map over compiled_lesson_task_instance "
+                "productive rows (formal/learner/activity_contract.pl)"
+            ),
+            "operation_unmatched_annotations": operation_unmatched_annotations,
+            "lessons_with_flags": sum(
+                bool(record.get("operation_unmatched")) for record in records
+            ),
+            "pre_transport_operation_unmatched": operation_unmatched_lessons,
+            "disclosure": (
+                "A flagged candidate names an operation no compiled productive "
+                "task of its lesson carries, so no operand pair exists to run "
+                "the named pair on (the task-179 25-receipt defect class). "
+                "Flags are visible annotations; flagged candidates are withheld "
+                "from the drafting prompt, never silently dropped."
+            ),
+        },
         "candidate_contract_filter": {
             "version": RUN_VERSION,
             "mismatch_annotations": sum(
@@ -991,6 +1197,13 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
         f"ratchet={census['all_receipts_projection']}/{census['published']} "
         "if every source-backed target yields an accepted receipt"
     )
+    operation_filter = report["operation_match_filter"]
+    print(
+        "Operation-match filter: "
+        f"flags={operation_filter['operation_unmatched_annotations']} "
+        f"lessons_with_flags={operation_filter['lessons_with_flags']} "
+        f"pre_transport={', '.join(operation_filter['pre_transport_operation_unmatched']) or 'none'}"
+    )
     contract_filter = report["candidate_contract_filter"]
     print(
         "Candidate-contract filter: "
@@ -1001,7 +1214,8 @@ def print_report(report: dict[str, Any], output_dir: Path) -> None:
     for grade, effect in contract_filter["pool_effect_by_grade"].items():
         print(
             f"  grade {grade}: candidates={effect['candidates_before']}"
-            f"->{effect['candidates_after']} mismatches={effect['contract_mismatch']}"
+            f"->{effect['candidates_after']} contract={effect['contract_mismatch']}"
+            f" operation={effect['operation_unmatched']}"
             f" lessons={effect['lessons']}"
         )
     print(
@@ -1056,6 +1270,8 @@ def run(args: argparse.Namespace) -> int:
     census = ledger_census(ledger, eligible, fact_index)
     contract_controls = contract_filter_controls()
     print(f"Candidate-contract controls: {contract_controls}")
+    operation_controls = operation_filter_controls()
+    print(f"Operation-match controls: {operation_controls}")
     if args.limit < 1:
         raise ValueError("--limit must be at least 1")
     selected_pool = eligible
@@ -1075,6 +1291,7 @@ def run(args: argparse.Namespace) -> int:
     compiled_domains = _compiled_operand_domains()
     digest_domains = _digest_operand_domains()
     input_contracts = _contract_index()
+    operation_index = _compiled_operation_index()
     lesson_ids = {row["lesson"] for row in ledger["lessons"]}
     strategy_mappings = {
         row["lesson"]: {
@@ -1122,13 +1339,36 @@ def run(args: argparse.Namespace) -> int:
             continue
         path = guide_path(row["lesson"])
         provenance_kind = drafting_provenance_kind(row["lesson"])
-        filtered_candidates, candidate_annotations = filter_candidate_contracts(
+        operation_usable, operation_annotated = filter_candidate_operations(
             row,
+            operation_index=operation_index,
+        )
+        operation_row = dict(row)
+        operation_row["negative_candidates"] = operation_usable
+        filtered_candidates, contract_annotations = filter_candidate_contracts(
+            operation_row,
             provenance_kind=provenance_kind,
             compiled_domains=compiled_domains,
             digest_domains=digest_domains,
             contract_index=input_contracts,
         )
+        contract_iterator = iter(contract_annotations)
+        candidate_annotations = [
+            candidate
+            if candidate.get("annotation") == "operation_unmatched"
+            else next(contract_iterator)
+            for candidate in operation_annotated
+        ]
+        operation_unmatched = [
+            {
+                "operation": candidate["operation"],
+                "productive": candidate["productive"],
+                "deformation": candidate["deformation"],
+                "reason": candidate["operation_evidence"]["reason"],
+            }
+            for candidate in candidate_annotations
+            if candidate.get("annotation") == "operation_unmatched"
+        ]
         record_fields = {
             "run_version": RUN_VERSION,
             "lesson": row["lesson"],
@@ -1137,28 +1377,54 @@ def run(args: argparse.Namespace) -> int:
             "candidate_count_before": len(row["negative_candidates"]),
             "candidate_count_after": len(filtered_candidates),
             "candidate_annotations": candidate_annotations,
+            "operation_unmatched": operation_unmatched,
         }
         if row["negative_candidates"] and not filtered_candidates:
+            operation_flags = len(operation_unmatched)
+            contract_flags = sum(
+                candidate.get("annotation") == "contract_mismatch"
+                for candidate in candidate_annotations
+            )
+            if operation_flags and not contract_flags:
+                status = "operation_unmatched"
+                lesson_operations = operation_index.get(
+                    row["lesson"], {"operations": set()}
+                )["operations"]
+                reason = (
+                    "the lesson's compiled productive tasks carry no operation "
+                    "the task_action_operands join recognizes"
+                    if not lesson_operations
+                    else "no compiled productive task of the lesson carries any candidate's operation"
+                )
+            elif contract_flags and not operation_flags:
+                status = "needs_vocabulary"
+                reason = "all registry candidates are contract_mismatch for the lesson operand domain"
+            else:
+                status = "operation_unmatched"
+                reason = (
+                    f"no usable candidates: {operation_flags} operation_unmatched, "
+                    f"{contract_flags} contract_mismatch"
+                )
             record = {
                 **record_fields,
                 "proposed": False,
-                "status": "needs_vocabulary",
-                "reason": "all registry candidates are contract_mismatch for the lesson operand domain",
+                "status": status,
+                "reason": reason,
                 "receipt": None,
                 "raw_response": None,
             }
             atomic_write_json(checkpoint, record)
             records.append(record)
-            print(f"[{index}/{len(selected)}] {row['lesson']}: needs_vocabulary before transport")
+            print(f"[{index}/{len(selected)}] {row['lesson']}: {status} before transport")
             continue
-        if not path.is_file() and not fact_index.get(row["lesson"]):
+        if not path.is_file() and not _drafting_facts(fact_index, row["lesson"]):
             record = {
                 **record_fields,
                 "proposed": False,
                 "status": "refused",
                 "reason": (
                     "no usable lesson source: teacher guide missing and "
-                    "no allowlisted vision-digest facts"
+                    "no drafting-allowlisted vision-digest facts"
                 ),
                 "receipt": None,
                 "raw_response": None,
