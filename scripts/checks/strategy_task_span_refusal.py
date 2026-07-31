@@ -18,12 +18,27 @@ REFUSAL_CODES = {
     "IM-GK-U1-L2": "Explore Pattern Blocks",
 }
 BITE_CODE = "IM-G2-U3-L9"
-EXPECTED_NEW = {
+EXPECTED_HAND_TEMPLATED = {
     "IM-G2-U3-L14",
     "IM-G2-U3-L9",
     "IM-G3-U8-L7",
     "IM-G5-U2-L5",
     "IM-GK-U8-L8",
+}
+EXPECTED_DOCLING = {
+    "IM-G7-U1-L2",
+    "IM-G7-U1-L4",
+    "IM-G7-U3-L1",
+    "IM-G7-U7-L17",
+    "IM-G7-U7-L3",
+    "IM-G7-U7-L4",
+    "IM-G7-U9-L10",
+    "IM-G8-U1-L10",
+    "IM-G8-U1-L4",
+    "IM-G8-U1-L6",
+    "IM-G8-U1-L7",
+    "IM-G8-U7-L9",
+    "IM-G8-U9-L2",
 }
 
 
@@ -60,8 +75,23 @@ def assert_unattached(rows: list[compiler.Mapping], code: str) -> None:
 def main() -> int:
     rows = task_span_rows()
     codes = {row.code for row in rows}
-    if codes != EXPECTED_NEW:
+    expected = EXPECTED_HAND_TEMPLATED | EXPECTED_DOCLING
+    if codes != expected:
         raise SystemExit(f"unexpected task-span strategy lesson set: {sorted(codes)}")
+    corpora = {
+        row.code: compiler._source_corpus(row.source)
+        for row in rows
+    }
+    if {
+        code for code, corpus in corpora.items()
+        if corpus == compiler.HAND_TEMPLATED_GUIDE_CORPUS
+    } != EXPECTED_HAND_TEMPLATED:
+        raise SystemExit("hand-templated task-span provenance changed")
+    if {
+        code for code, corpus in corpora.items()
+        if corpus == compiler.DOCLING_GUIDE_CORPUS
+    } != EXPECTED_DOCLING:
+        raise SystemExit("Docling task-span provenance changed")
     for code, title in REFUSAL_CODES.items():
         assert_unattached(rows, code)
         print(f"refusal: {code} ({title}) remains unattached")

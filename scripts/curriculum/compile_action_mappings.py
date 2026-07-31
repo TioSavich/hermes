@@ -23,6 +23,13 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import equation_verification  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from scripts.research.extract_lesson_context import (  # noqa: E402
+    MIDDLE_CUTOFF_RE,
+    MIDDLE_GUIDE_RE,
+    MIDDLE_TASK_RE,
+    picture_description_lines,
+)
 
 # Every corpus this compiler reads and every artifact it writes is named once,
 # here. The generated files already carried these Hermes paths as their recorded
@@ -31,9 +38,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 # running. Rerouting a corpus means editing one line below, and the byte
 # comparison in ``--check`` is what says the reroute was faithful.
 GUIDE_ROOT = ROOT / "curriculum/im_teacher_guides"
+MIDDLE_GUIDE_ROOT = (
+    ROOT
+    / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
+    / "TeacherLessonGuides"
+)
 SCOPE_ROOT = ROOT / "curriculum/scope_and_sequence"
 LESSON_FACT_ROOT = ROOT / "curriculum/im"
 GENERATED_ROOT = LESSON_FACT_ROOT / "generated"
+
+# These names travel in Python objects and JSON review output. Generated Prolog
+# keeps the source path as its runtime discriminator; it does not emit a
+# source_corpus atom. A Docling path is line-addressable evidence only after the
+# citation validator below confirms that the cited line contains its excerpt.
+# Docling text enters the reader only after picture_description_lines() removes
+# the separately generated Granite Vision captions and image references.
+HAND_TEMPLATED_GUIDE_CORPUS = "im_teacher_guides_hand_templated"
+DOCLING_GUIDE_CORPUS = "docling_2_114_0_teacher_lesson_guides"
+RECOVERED_SPAN_CORPUS = "recovered_task_span_sidecar"
+SCOPE_SEQUENCE_CORPUS = "im_scope_and_sequence"
+VISION_HARVEST_CORPUS = "vision_harvest_pdf"
 
 DEFAULT_RULES = ROOT / "scripts/curriculum/action_mapping_rules.json"
 DEFAULT_OUTPUT = GENERATED_ROOT / "compiled_action_mappings.pl"
@@ -43,6 +67,24 @@ TASK_READINGS = ROOT / "scripts" / "curriculum" / "lesson_task_readings.json"
 EQUATION_VERIFICATIONS = (
     ROOT / "scripts" / "curriculum" / "lesson_equation_verifications.json"
 )
+
+
+def _source_corpus(source: str) -> str:
+    """Name a source's conversion history without discarding its path."""
+    docling_prefix = MIDDLE_GUIDE_ROOT.relative_to(ROOT).as_posix() + "/"
+    hand_prefix = GUIDE_ROOT.relative_to(ROOT).as_posix() + "/"
+    if source.startswith(docling_prefix):
+        return DOCLING_GUIDE_CORPUS
+    if source.startswith(hand_prefix):
+        return HAND_TEMPLATED_GUIDE_CORPUS
+    if source == RECOVERED_TASK_SPANS.relative_to(ROOT).as_posix():
+        return RECOVERED_SPAN_CORPUS
+    if source.startswith(SCOPE_ROOT.relative_to(ROOT).as_posix() + "/"):
+        return SCOPE_SEQUENCE_CORPUS
+    if source.lower().endswith(".pdf"):
+        return VISION_HARVEST_CORPUS
+    return "repo_source"
+
 
 CODE_RE = re.compile(r"IM-G([K0-8])-U(\d+)-L(\d+)")
 EXPLICIT_RE = re.compile(
@@ -147,6 +189,7 @@ class LessonDoc:
     goals: tuple[str, ...]
     purpose: str
     line_by_text: dict[str, int]
+    source_corpus: str = HAND_TEMPLATED_GUIDE_CORPUS
 
     @property
     def concise_text(self) -> str:
@@ -168,6 +211,10 @@ class Mapping:
     matched_field: str = ""
     span_position: str = ""
     end_line: int = 0
+
+    @property
+    def source_corpus(self) -> str:
+        return _source_corpus(self.source)
 
 
 @dataclass(frozen=True, order=True)
@@ -192,6 +239,10 @@ class TaskInstance:
     # witnesses the task. Legacy and parser-derived instances keep this empty.
     witness_class: str = ""
 
+    @property
+    def source_corpus(self) -> str:
+        return _source_corpus(self.source)
+
 
 @dataclass(frozen=True)
 class StudentTaskSpan:
@@ -201,6 +252,7 @@ class StudentTaskSpan:
     end_line: int
     position: str
     lines: tuple[tuple[int, str], ...]
+    source_corpus: str = HAND_TEMPLATED_GUIDE_CORPUS
 
     @property
     def text(self) -> str:
@@ -225,6 +277,10 @@ class TaskCandidate:
     status: str
     reason: str
 
+    @property
+    def source_corpus(self) -> str:
+        return _source_corpus(self.source)
+
 
 def _grade_token(directory: str) -> str:
     token = directory.removeprefix("grade")
@@ -238,33 +294,50 @@ def _code_for_guide(path: pathlib.Path) -> str:
     return f"IM-G{grade}-U{unit}-L{lesson}"
 
 
-def _section(lines: list[str], heading: str) -> list[tuple[int, str]]:
-    start = next((i for i, line in enumerate(lines) if line.strip() == heading), None)
+def _code_for_middle_guide(path: pathlib.Path) -> str:
+    """Return the canonical identity using the shared Docling path grammar."""
+    match = MIDDLE_GUIDE_RE.fullmatch(path.parent.name)
+    if match is None:
+        raise SystemExit(f"unrecognized Docling teacher-guide path: {path}")
+    grade, unit, lesson = match.groups()
+    return f"IM-G{grade}-U{int(unit)}-L{int(lesson)}"
+
+
+def _section(
+    lines: list[str],
+    headings: str | tuple[str, ...],
+    *,
+    excluded_lines: set[int] | None = None,
+) -> list[tuple[int, str]]:
+    """Read one declared heading vocabulary and retain physical line numbers."""
+    accepted = (headings,) if isinstance(headings, str) else headings
+    start = next(
+        (i for i, line in enumerate(lines) if line.strip() in accepted),
+        None,
+    )
     if start is None:
         return []
+    excluded = excluded_lines or set()
     out = []
     for index in range(start + 1, len(lines)):
         line = lines[index].strip()
         if line.startswith("## "):
             break
-        if line:
+        if line and index not in excluded:
             out.append((index + 1, line.removeprefix("- ").strip()))
     return out
 
 
-def read_teacher_guides(root: pathlib.Path = ROOT) -> list[LessonDoc]:
+def _read_hand_templated_teacher_guides(root: pathlib.Path) -> list[LessonDoc]:
     docs = []
     guide_root = root / GUIDE_ROOT.relative_to(ROOT)
     for path in sorted(guide_root.glob("*/unit*/lesson*.md")):
         grade_dir = path.parents[1].name
         if not (grade_dir.startswith("grade") or grade_dir == "kindergarten"):
             continue
-        # Grade-6 teacher guides stay on the reader lane. They were converted for
-        # per-lesson reading and figure-bound operands, not wired into the
-        # one-lesson-per-file LessonDoc path pending a per-lesson-provenance
-        # decision (2026-07-11 grade-6 corpus note). Their strategy mappings come
-        # from scope batches, so excluding them here changes report categorization
-        # only, not the emitted facts.
+        # These sparse grade-6 extracts belong to a different conversion and
+        # naming scheme. Grade 6-8 enters through the spine-exact Docling reader
+        # below, where every span carries its own corpus discriminator.
         if grade_dir == "grade6":
             continue
         # Reader-lane files sharing the glob (lesson9_student_task_statements.md,
@@ -277,6 +350,10 @@ def read_teacher_guides(root: pathlib.Path = ROOT) -> list[LessonDoc]:
         title = lines[0].removeprefix("# ").strip() if lines else ""
         goals_with_lines = _section(lines, "## Learning Goals (teacher-facing)")
         purpose_with_lines = _section(lines, "## Lesson Purpose")
+        if not goals_with_lines and not purpose_with_lines:
+            raise SystemExit(
+                f"teacher guide has no recognized hand-templated headings: {path}"
+            )
         purpose = " ".join(text for _, text in purpose_with_lines)
         line_by_text = {text: line for line, text in goals_with_lines + purpose_with_lines}
         line_by_text[title] = 1
@@ -288,9 +365,103 @@ def read_teacher_guides(root: pathlib.Path = ROOT) -> list[LessonDoc]:
                 tuple(text for _, text in goals_with_lines),
                 purpose,
                 line_by_text,
+                HAND_TEMPLATED_GUIDE_CORPUS,
             )
         )
     return docs
+
+
+def _read_docling_teacher_guides(root: pathlib.Path) -> list[LessonDoc]:
+    """Read spine-exact grade 6-8 guides without admitting model captions."""
+    docs = []
+    guide_root = root / MIDDLE_GUIDE_ROOT.relative_to(ROOT)
+    for grade in ("Grade6", "Grade7", "Grade8"):
+        for path in sorted((guide_root / grade).glob("*/document.md")):
+            code = _code_for_middle_guide(path)
+            lines = path.read_text(
+                encoding="utf-8", errors="replace"
+            ).splitlines()
+            excluded = picture_description_lines(path, lines)
+            if excluded is None:
+                raise SystemExit(
+                    f"Docling guide picture annotations cannot be separated: {path}"
+                )
+            headings = {
+                line.strip()
+                for line in lines
+                if line.strip().startswith("## ")
+            }
+            required = {"## Goals", "## Lesson Narrative"}
+            missing = sorted(required - headings)
+            if missing:
+                raise SystemExit(
+                    "Docling teacher guide has unrecognized or incomplete headings "
+                    f"({', '.join(missing)}): {path}"
+                )
+            goals_with_lines = _section(
+                lines, "## Goals", excluded_lines=excluded
+            ) + _section(
+                lines, "## Learning Targets", excluded_lines=excluded
+            )
+            narrative_with_lines = _section(
+                lines,
+                "## Lesson Narrative",
+                excluded_lines=excluded,
+            )
+            if not goals_with_lines or not narrative_with_lines:
+                raise SystemExit(
+                    f"Docling teacher guide recognized headings but no curriculum text: {path}"
+                )
+            goals_heading = next(
+                index for index, line in enumerate(lines) if line.strip() == "## Goals"
+            )
+            title_with_line = next(
+                (
+                    (index + 1, line.removeprefix("## ").strip())
+                    for index, line in enumerate(lines[:goals_heading])
+                    if line.startswith("## ") and index not in excluded
+                ),
+                None,
+            )
+            if title_with_line is None:
+                raise SystemExit(f"Docling teacher guide has no lesson title: {path}")
+            title_line, title = title_with_line
+            purpose = " ".join(text for _, text in narrative_with_lines)
+            line_by_text = {
+                text: line
+                for line, text in goals_with_lines + narrative_with_lines
+            }
+            line_by_text[title] = title_line
+            docs.append(
+                LessonDoc(
+                    code,
+                    path,
+                    title,
+                    tuple(text for _, text in goals_with_lines),
+                    purpose,
+                    line_by_text,
+                    DOCLING_GUIDE_CORPUS,
+                )
+            )
+    return docs
+
+
+def read_teacher_guides(root: pathlib.Path = ROOT) -> list[LessonDoc]:
+    """Read both declared guide corpora while refusing identity collisions."""
+    # A read establishes one source snapshot. Segmentation is memoized only
+    # inside that snapshot so a later build cannot reuse stale file contents.
+    _DOCLING_TASK_REGION_CACHE.clear()
+    docs = (
+        _read_hand_templated_teacher_guides(root)
+        + _read_docling_teacher_guides(root)
+    )
+    codes = [doc.code for doc in docs]
+    duplicates = sorted(code for code, count in Counter(codes).items() if count > 1)
+    if duplicates:
+        raise SystemExit(
+            f"teacher-guide corpora carry duplicate lesson identities: {duplicates}"
+        )
+    return sorted(docs, key=lambda doc: doc.code)
 
 
 def _student_column(line: str, right_column: int | None) -> str:
@@ -320,6 +491,27 @@ TASK_SPAN_STOP_HEADING = re.compile(
 # prompt that continues down the left column.
 TASK_SPAN_RIGHT_COLUMN_GUTTER = 10
 
+# Docling flattens running headers, page numbers, and activity metadata into the
+# same linear markdown stream as student prompts. None of these strings is task
+# text. In particular, a bare page numeral must not become an operand when
+# _task_chunks later joins the retained lines.
+DOCLING_TASK_FURNITURE_RE = re.compile(
+    r"^(?:"
+    r"\d+|"
+    r"\d+\s+min|"
+    r"Instructional Routines|"
+    r"Grade\s+[678](?:\s+Unit\s+\d+)?|"
+    r"Unit\s+\d+|"
+    r"Lesson\s+\d+|"
+    r"Math, CC BY Open Up Resources\."
+    r")$",
+    re.IGNORECASE,
+)
+
+
+def _docling_task_furniture(text: str) -> bool:
+    return bool(DOCLING_TASK_FURNITURE_RE.fullmatch(text.strip()))
+
 
 def _student_task_span_stop(
     raw_line: str, student_text: str, right_column: int | None
@@ -334,14 +526,18 @@ def _student_task_span_stop(
     )
 
 
-def extract_student_task_spans(docs: list[LessonDoc]) -> list[StudentTaskSpan]:
-    """Recover left-column student prompts without teacher launch commentary."""
+def _extract_hand_templated_student_task_spans(
+    docs: list[LessonDoc],
+) -> list[StudentTaskSpan]:
+    """Recover K-5 left-column prompts without changing the legacy reading."""
     spans = []
     footer = re.compile(
         r"^(?:Grade [K0-8]|Unit \d+|Lesson \d+|CC BY NC \d{4}|Illustrative Mathematics)",
         re.IGNORECASE,
     )
     for doc in docs:
+        if doc.source_corpus != HAND_TEMPLATED_GUIDE_CORPUS:
+            continue
         raw_lines = doc.path.read_text(encoding="utf-8", errors="replace").split("\n")
         span_number = 0
         for index, raw_heading in enumerate(raw_lines):
@@ -376,9 +572,148 @@ def extract_student_task_spans(docs: list[LessonDoc]) -> list[StudentTaskSpan]:
                     end_line,
                     f"student_task_statement({span_number})",
                     tuple(lines),
+                    HAND_TEMPLATED_GUIDE_CORPUS,
                 )
             )
     return spans
+
+
+_DOCLING_TASK_REGION_CACHE: dict[
+    tuple[pathlib.Path, str],
+    tuple[tuple[StudentTaskSpan, ...], str | None, int],
+] = {}
+
+
+def _segment_docling_task_regions(
+    doc: LessonDoc,
+) -> tuple[tuple[StudentTaskSpan, ...], str | None, int]:
+    """Segment one Docling guide once, excluding annotations and furniture."""
+    lines = doc.path.read_text(encoding="utf-8", errors="replace").splitlines()
+    excluded = picture_description_lines(doc.path, lines)
+    if excluded is None:
+        raise SystemExit(
+            f"Docling guide picture annotations cannot be separated: {doc.path}"
+        )
+    body_start = next(
+        (index for index, line in enumerate(lines) if line == "## Activity Narrative"),
+        None,
+    )
+    if body_start is None:
+        return (), "missing_activity_narrative", 0
+    body_end = next(
+        (
+            index
+            for index, line in enumerate(lines[body_start:], body_start)
+            if MIDDLE_CUTOFF_RE.fullmatch(line)
+        ),
+        len(lines),
+    )
+    spans = []
+    markers = 0
+    for index in range(body_start, body_end):
+        if not MIDDLE_TASK_RE.fullmatch(lines[index]):
+            continue
+        markers += 1
+        section_end = index + 1
+        while section_end < body_end and not lines[section_end].startswith("## "):
+            # In the flattened bullet-heading genre this marks a sibling
+            # metadata block, not part of the student task. Bounding here also
+            # removes its routine name instead of filtering only the banner.
+            if (
+                section_end not in excluded
+                and lines[section_end].strip() == "- Instructional Routines"
+            ):
+                break
+            section_end += 1
+        span_lines = []
+        for line_index in range(index + 1, section_end):
+            if line_index in excluded:
+                continue
+            text = lines[line_index].strip().removeprefix("- ").strip()
+            if text and not _docling_task_furniture(text):
+                span_lines.append((line_index + 1, text))
+        if not span_lines:
+            continue
+        spans.append(
+            StudentTaskSpan(
+                doc.code,
+                str(doc.path.relative_to(ROOT)),
+                index + 1,
+                section_end,
+                f"student_task_statement({markers})",
+                tuple(span_lines),
+                DOCLING_GUIDE_CORPUS,
+            )
+        )
+    if spans:
+        return tuple(spans), None, markers
+    if markers:
+        return (), "task_statements_contain_no_curriculum_text", markers
+    return (), "no_student_task_statement_heading", 0
+
+
+def _docling_task_region_result(
+    doc: LessonDoc,
+) -> tuple[tuple[StudentTaskSpan, ...], str | None, int]:
+    key = (doc.path, doc.code)
+    result = _DOCLING_TASK_REGION_CACHE.get(key)
+    if result is None:
+        result = _segment_docling_task_regions(doc)
+        _DOCLING_TASK_REGION_CACHE[key] = result
+    return result
+
+
+def _docling_task_regions(
+    doc: LessonDoc,
+) -> tuple[list[StudentTaskSpan], str | None]:
+    """Return a copy of the cached span list and its guide-level refusal."""
+    spans, reason, _markers = _docling_task_region_result(doc)
+    return list(spans), reason
+
+
+def extract_student_task_spans(docs: list[LessonDoc]) -> list[StudentTaskSpan]:
+    """Read task spans from both genres while retaining corpus provenance."""
+    spans = _extract_hand_templated_student_task_spans(docs)
+    for doc in docs:
+        if doc.source_corpus != DOCLING_GUIDE_CORPUS:
+            continue
+        doc_spans, _reason = _docling_task_regions(doc)
+        spans.extend(doc_spans)
+    return sorted(spans, key=lambda span: (span.code, span.heading_line))
+
+
+def docling_zero_span_reasons(
+    docs: list[LessonDoc],
+) -> dict[str, str]:
+    """Return one explicit refusal reason for each readable guide with no span."""
+    reasons = {}
+    for doc in docs:
+        if doc.source_corpus != DOCLING_GUIDE_CORPUS:
+            continue
+        spans, reason = _docling_task_regions(doc)
+        if not spans:
+            reasons[doc.code] = reason or "unknown"
+    return reasons
+
+
+def docling_task_section_metrics(
+    docs: list[LessonDoc],
+) -> dict[str, int]:
+    """Count recognized sections, including caption-only sections withheld."""
+    marker_count = 0
+    span_count = 0
+    for doc in docs:
+        if doc.source_corpus != DOCLING_GUIDE_CORPUS:
+            continue
+        cached_spans, _reason, markers = _docling_task_region_result(doc)
+        spans = list(cached_spans)
+        marker_count += markers
+        span_count += len(spans)
+    return {
+        "recognized_task_sections": marker_count,
+        "docling_task_heading_spans_by_origin": span_count,
+        "withheld_empty_or_model_only_sections": marker_count - span_count,
+    }
 
 
 def read_recovered_task_spans(
@@ -428,6 +763,7 @@ def read_recovered_task_spans(
             0,
             position,
             ((0, recovered_text),),
+            RECOVERED_SPAN_CORPUS,
         )
     return [recovered_by_key[key] for key in sorted(recovered_by_key)]
 
@@ -2783,13 +3119,77 @@ def _registry_rows(root: pathlib.Path = ROOT) -> set[tuple[str, str]]:
 
 
 def _first_match(doc: LessonDoc, patterns: list[str]) -> tuple[int, str] | None:
-    candidates = [(doc.line_by_text.get(text, 1), text) for text in (doc.title, *doc.goals, doc.purpose)]
+    candidates = (doc.title, *doc.goals, doc.purpose)
     for pattern in patterns:
         regex = re.compile(pattern, re.IGNORECASE)
-        for line, text in candidates:
-            if regex.search(text):
+        for text in candidates:
+            if not regex.search(text):
+                continue
+            line = doc.line_by_text.get(text)
+            if line is not None:
                 return line, text
+            # A joined purpose is useful for deciding whether the rule applies,
+            # but it is not itself a physical source line. Cite the first
+            # underlying line carrying the same match. If the match crosses a
+            # line boundary, refuse instead of inventing a plausible location.
+            physical = sorted(
+                (source_line, source_text)
+                for source_text, source_line in doc.line_by_text.items()
+                if regex.search(source_text)
+            )
+            if physical:
+                return physical[0]
+            # The regex matched only across the spaces inserted while joining
+            # physical lines. That synthetic adjacency has no citable source
+            # location, so this candidate is withheld.
+            continue
     return None
+
+
+def validate_mapping_citations(
+    root: pathlib.Path, mappings: list[Mapping]
+) -> int:
+    """Require every single-line markdown mapping to quote its cited line.
+
+    Task-span mappings deliberately quote a match within a physical range.
+    Legacy K-5 task-grammar mappings also predate range-bearing provenance, so
+    their separate contracts remain with the task-span checks. New Docling
+    task-grammar rows must satisfy this single-line validator.
+    """
+    checked = 0
+    source_lines: dict[str, list[str]] = {}
+    for mapping in mappings:
+        if (
+            mapping.line <= 0
+            or mapping.matched_field == "task_span"
+            or (
+                mapping.rule_id.startswith("task_grammar_")
+                and mapping.source_corpus != DOCLING_GUIDE_CORPUS
+            )
+            or not mapping.source.endswith(".md")
+        ):
+            continue
+        lines = source_lines.get(mapping.source)
+        if lines is None:
+            path = root / mapping.source
+            # Compiler citations count newline-delimited physical lines. Do not
+            # use splitlines(), which also splits K-5 form-feed characters and
+            # shifts every later citation.
+            lines = path.read_text(encoding="utf-8", errors="replace").split("\n")
+            source_lines[mapping.source] = lines
+        if mapping.line > len(lines):
+            raise SystemExit(
+                "mapping citation line is outside its source file: "
+                f"{mapping.source}:{mapping.line}"
+            )
+        cited = lines[mapping.line - 1].strip()
+        if mapping.excerpt not in cited:
+            raise SystemExit(
+                "mapping excerpt is absent from its cited line: "
+                f"{mapping.source}:{mapping.line} excerpt={mapping.excerpt!r}"
+            )
+        checked += 1
+    return checked
 
 
 def _first_task_span_match(
@@ -3205,6 +3605,7 @@ def similarity_review(
                 "lesson": doc.code,
                 "title": doc.title,
                 "source": str(doc.path.relative_to(ROOT)),
+                "source_corpus": doc.source_corpus,
                 "goals": list(doc.goals),
                 "purpose": doc.purpose,
                 "suggestions": suggestions,
@@ -3451,6 +3852,7 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     invalid = sorted({(m.operation, m.kind) for m in mappings} - productive)
     if invalid:
         raise SystemExit(f"mapping rules reference non-productive registry kinds: {invalid}")
+    validated_mapping_citations = validate_mapping_citations(root, mappings)
     covered = {mapping.code for mapping in mappings}
     attachments = {code: set(rows) for code, rows in explicit.items()}
     for mapping in mappings:
@@ -3461,6 +3863,10 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     task_instances, task_candidate_decisions = promote_task_candidates(
         task_instances, task_candidates, rules
     )
+    task_candidate_decisions = [
+        {**row, "source_corpus": _source_corpus(row["source"])}
+        for row in task_candidate_decisions
+    ]
     teacher_codes = {doc.code for doc in docs}
     newly_attached = {code for code in covered & teacher_codes if not explicit.get(code)}
     augmented = {code for code in covered & teacher_codes if explicit.get(code)}
@@ -3469,15 +3875,40 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     atom_gaps = gap_review(docs, rules, attachments) + scope_gap_review(
         rules, covered, scope_titles
     )
+    guide_corpora = Counter(doc.source_corpus for doc in docs)
+    span_corpora = Counter(span.source_corpus for span in task_spans)
+    docling_docs = [
+        doc for doc in docs if doc.source_corpus == DOCLING_GUIDE_CORPUS
+    ]
+    docling_span_lessons = {
+        span.code
+        for span in task_spans
+        if span.source_corpus == DOCLING_GUIDE_CORPUS
+    }
+    zero_span_reasons = docling_zero_span_reasons(docs)
+    docling_span_rows = [
+        span
+        for span in task_spans
+        if span.source_corpus == DOCLING_GUIDE_CORPUS
+    ]
     report = {
         "teacher_guides": len(docs),
+        "teacher_guide_corpora": dict(sorted(guide_corpora.items())),
+        "readable_middle_guides": len(docling_docs),
+        "readable_middle_guides_by_grade": dict(sorted(Counter(
+            CODE_RE.fullmatch(doc.code).group(1) for doc in docling_docs
+        ).items())),
         "accepted_lessons": len(covered),
         "accepted_mappings": len(mappings),
+        "validated_single_line_mapping_citations": validated_mapping_citations,
         "task_derived_mappings": len(task_derived_mappings),
         "newly_attached_teacher_lessons": len(newly_attached),
         "augmented_teacher_lessons": len(augmented),
         "scope_sequence_lessons": len(scope_codes),
-        "accepted": [mapping.__dict__ for mapping in mappings],
+        "accepted": [
+            {**mapping.__dict__, "source_corpus": _source_corpus(mapping.source)}
+            for mapping in mappings
+        ],
         "accepted_task_instance_lessons": len({instance.code for instance in task_instances}),
         "accepted_productive_task_instances": sum(
             instance.role == "productive" for instance in task_instances
@@ -3485,8 +3916,22 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
         "accepted_deformation_task_instances": sum(
             instance.role.startswith("deformation(") for instance in task_instances
         ),
-        "accepted_task_instances": [instance.__dict__ for instance in task_instances],
+        "accepted_task_instances": [
+            {**instance.__dict__, "source_corpus": _source_corpus(instance.source)}
+            for instance in task_instances
+        ],
         "student_task_spans": len(task_spans),
+        "student_task_span_corpora": dict(sorted(span_corpora.items())),
+        "middle_guide_span_lessons": len(docling_span_lessons),
+        "middle_guide_span_lessons_by_grade": dict(sorted(Counter(
+            CODE_RE.fullmatch(code).group(1) for code in docling_span_lessons
+        ).items())),
+        "middle_guide_spans_by_grade": dict(sorted(Counter(
+            CODE_RE.fullmatch(span.code).group(1) for span in docling_span_rows
+        ).items())),
+        "middle_guide_task_section_metrics": docling_task_section_metrics(docs),
+        "middle_guide_zero_span_lessons": len(zero_span_reasons),
+        "middle_guide_zero_span_reasons": zero_span_reasons,
         "recovered_task_spans": len(recovered_task_spans),
         "accepted_recovered_task_instances": sum(
             instance.source == str(RECOVERED_TASK_SPANS.relative_to(ROOT))

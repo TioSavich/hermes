@@ -198,6 +198,12 @@ REGISTER = """/** <module> Generated student-task-span absence registry
  * including declined ones, so the four parsed reasons name what the span
  * amounts to rather than what each candidate did.
  *
+ * Geometry evidence is genre-sensitive. Hand-templated K-5 guides report the
+ * measured column cut and an integer page-footer crossing count. Single-column
+ * Docling guides instead report column_cut(not_applicable(single_column_docling))
+ * and page_boundary_crossings(not_applicable(no_page_footer_geometry)). These
+ * terms distinguish an inapplicable measurement from a measured zero.
+ *
  * task_span_reason_queue/3 ranks the reasons by how many lessons missing only
  * executable_task and measured_transition carry at least one span with that
  * reason. A lesson usually carries several reasons, so the counts overlap and
@@ -278,11 +284,16 @@ def teacher_sections_in(text: str) -> list[str]:
 
 
 def span_geometry(root: Path) -> dict[tuple[str, str], tuple[int, str]]:
-    """Record, per span, how the guide's two columns were cut and how many
-    page footers the span crossed. Both come from the same forward scan the
-    compiler's span reader performs, so they describe the extract in hand."""
+    """Measure column cuts and page-footer crossings for K-5 guide spans.
+
+    This forward scan mirrors the compiler's hand-templated, two-column reader.
+    Docling guides use a separate single-column reader and have no corresponding
+    geometry measurement, so they are deliberately absent from this mapping.
+    """
     geometry: dict[tuple[str, str], tuple[int, str]] = {}
     for doc in compiler.read_teacher_guides(root):
+        if doc.source_corpus != compiler.HAND_TEMPLATED_GUIDE_CORPUS:
+            continue
         lines = doc.path.read_text(encoding="utf-8", errors="replace").split("\n")
         span_number = 0
         for index, raw_heading in enumerate(lines):
@@ -419,17 +430,37 @@ def build_rows(root: Path) -> dict[str, object]:
                     f"{span.code}/{span.position} parsed but was classified {reason}"
                 )
         grade = grade_of(span.code)
-        if (span.code, span.position) not in geometry:
+        span_key = (span.code, span.position)
+        if span.source_corpus == compiler.HAND_TEMPLATED_GUIDE_CORPUS:
+            if span_key not in geometry:
+                raise RuntimeError(
+                    "the K-5 geometry scan and the compiler's span reader disagree about "
+                    f"{span.code}/{span.position}"
+                )
+            crossings, column_cut = geometry[span_key]
+            geometry_evidence = [
+                f"column_cut({column_cut})",
+                f"page_boundary_crossings({crossings})",
+            ]
+        elif span.source_corpus == compiler.DOCLING_GUIDE_CORPUS:
+            if span_key in geometry:
+                raise RuntimeError(
+                    "Docling span unexpectedly carries K-5 geometry: "
+                    f"{span.code}/{span.position}"
+                )
+            geometry_evidence = [
+                "column_cut(not_applicable(single_column_docling))",
+                "page_boundary_crossings(not_applicable(no_page_footer_geometry))",
+            ]
+        else:
             raise RuntimeError(
-                "the geometry scan and the compiler's span reader disagree about "
-                f"{span.code}/{span.position}"
+                "student task span carries an unsupported geometry corpus: "
+                f"{span.code}/{span.position}/{span.source_corpus}"
             )
-        crossings, column_cut = geometry[(span.code, span.position)]
         evidence = [
             f"source({prolog_atom(span.source)}, "
             f"lines({span.heading_line}, {span.end_line}))",
-            f"column_cut({column_cut})",
-            f"page_boundary_crossings({crossings})",
+            *geometry_evidence,
             *evidence,
         ]
         status = f"{REASON_KIND[reason]}({reason})"
