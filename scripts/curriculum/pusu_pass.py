@@ -14,7 +14,7 @@ import json
 import subprocess
 import sys
 import time
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 
@@ -108,6 +108,13 @@ pusu_context(partial_products_no_place_shift, single_digit_multiplier, multiplic
     integer(Multiplier), Multiplier >= 0, Multiplier < 10.
 pusu_context(raw_quotient_with_remainder, exact_division, division, Dividend, Divisor) :-
     integer(Dividend), integer(Divisor), Divisor =\= 0, 0 =:= Dividend mod Divisor.
+pusu_context(raw_quotient_with_remainder, nonzero_remainder, division, Dividend, Divisor) :-
+    integer(Dividend), integer(Divisor), Divisor =\= 0, 0 =\= Dividend mod Divisor.
+pusu_context(adjust_dividend_for_division, exact_division, division, Dividend, Divisor) :-
+    integer(Dividend), integer(Divisor), Divisor =\= 0, 0 =:= Dividend mod Divisor.
+pusu_context(divide_larger_by_smaller, given_dividend_at_least_given_divisor,
+             division, Dividend, Divisor) :-
+    integer(Dividend), integer(Divisor), Divisor > 0, Dividend >= Divisor.
 pusu_context(double_first_add_one, addends_are_near_doubles, addition, A, B) :- B =:= A + 1.
 pusu_context(flip_subtraction_order, minuend_at_least_subtrahend, subtraction, A, B) :- A >= B.
 pusu_context(share_smaller_into_larger, dividend_at_least_divisor, division, A, B) :- A >= B.
@@ -125,6 +132,10 @@ pusu_context(additive_count_for_multiplicative_structure, factors_are_two, multi
 pusu_context_name(partial_products_no_shift, single_digit_multiplier, multiplication).
 pusu_context_name(partial_products_no_place_shift, single_digit_multiplier, multiplication).
 pusu_context_name(raw_quotient_with_remainder, exact_division, division).
+pusu_context_name(raw_quotient_with_remainder, nonzero_remainder, division).
+pusu_context_name(adjust_dividend_for_division, exact_division, division).
+pusu_context_name(divide_larger_by_smaller,
+                  given_dividend_at_least_given_divisor, division).
 pusu_context_name(double_first_add_one, addends_are_near_doubles, addition).
 pusu_context_name(flip_subtraction_order, minuend_at_least_subtrahend, subtraction).
 pusu_context_name(share_smaller_into_larger, dividend_at_least_divisor, division).
@@ -217,6 +228,161 @@ pusu_rule_expected(subtraction, A, B, Expected) :- Expected is A - B.
 pusu_rule_expected(multiplication, A, B, Expected) :- Expected is A * B.
 pusu_rule_expected(division, A, B, Expected) :- B =\= 0, Expected is A // B.
 
+% Division output schemas are registry declarations, not interchangeable
+% machine behaviours.  This table says only how an output may be read at the
+% arithmetic-value layer.  Traces, states, and vocabularies never enter it.
+% A schema that can discard exact value information stays explicitly
+% untranslatable, so the caller retains the trace classifier's term verdict.
+pusu_division_schema_translation(equal_share_size,
+                                 translatable(integer_value)).
+pusu_division_schema_translation(integer_quotient_and_remainder,
+                                 translatable(quotient_remainder(input_divisor))).
+pusu_division_schema_translation(magnitude_ordered_quotient_and_remainder,
+                                 translatable(quotient_remainder(smaller_operand))).
+pusu_division_schema_translation(remainder_insensitive_share_size,
+                                 translatable(integer_value)).
+pusu_division_schema_translation(group_count_as_incorrect_share_size,
+                                 translatable(integer_value)).
+pusu_division_schema_translation(long_division_quotient_and_remainder,
+                                 untranslatable(truncated_decimal_numeral)).
+pusu_division_schema_translation(integer_quotient,
+                                 translatable(integer_value)).
+pusu_division_schema_translation(reached_total_as_incorrect_quotient,
+                                 translatable(integer_value)).
+pusu_division_schema_translation(incomplete_integer_quotient_and_remainder,
+                                 translatable(quotient_remainder(input_divisor))).
+pusu_division_schema_translation(rejected_exact_quotient_match,
+                                 untranslatable(rejected_value)).
+pusu_division_schema_translation(sum_as_incorrect_quotient,
+                                 translatable(wrapped_integer(digit_sum_numeral))).
+
+% The runner's productive floor quotient carries the input's remainder
+% implicitly.  Two older registered rules predate the action-schema registry,
+% so their output schemas are declared here rather than guessed from a term
+% inside the comparison.
+pusu_division_schema_translation(productive_integer_quotient,
+                                 translatable(quotient_with_implicit_remainder)).
+pusu_division_schema_translation(adjusted_integer_quotient,
+                                 translatable(integer_value)).
+pusu_division_schema_translation(raw_quotient_plus_fraction,
+                                 translatable(quotient_plus_fraction)).
+pusu_division_rule_output_schema(adjust_dividend_for_division,
+                                 adjusted_integer_quotient).
+pusu_division_rule_output_schema(raw_quotient_with_remainder,
+                                 raw_quotient_plus_fraction).
+pusu_division_rule_output_schema(Kind, Schema) :-
+    action_automata_registry:action_automaton_signature(
+        division, Kind, _, Schema).
+
+% This rule's value is (Dividend // Divisor) +
+% (Dividend mod Divisor) / Divisor.  The divmod identity makes that exactly
+% Dividend / Divisor throughout the rule's declared nonzero-remainder domain,
+% so no arithmetic-value-layer separator exists.
+pusu_rule_value_layer_separator_capability(
+    raw_quotient_with_remainder,
+    cannot_separate(structural_divmod_identity)).
+
+pusu_division_registry_schema_covered(Schema, Translation) :-
+    action_automata_registry:action_automaton_signature(
+        division, _, _, Schema),
+    pusu_division_schema_translation(Schema, Translation).
+
+pusu_division_productive_kind(action_outcome(Kind, _), Kind).
+pusu_division_productive_kind(Outcome, Kind) :-
+    is_dict(Outcome), get_dict(action_kind, Outcome, Kind).
+pusu_division_productive_kind(Outcome, Kind) :-
+    is_dict(Outcome),
+    get_dict(validation, Outcome,
+             validated(_, action_automaton(Kind, _))).
+
+pusu_division_productive_declared_kind(action_outcome(Kind, _), Kind).
+pusu_division_productive_declared_kind(Outcome, Kind) :-
+    is_dict(Outcome), get_dict(action_kind, Outcome, Kind).
+
+pusu_division_productive_schema(Outcome, _, Schema) :-
+    pusu_division_productive_declared_kind(Outcome, Kind),
+    action_automata_registry:action_automaton_signature(
+        division, Kind, _, Schema), !.
+
+pusu_division_read_value(integer_value, _, _, Value,
+                         arithmetic_value(Value, 1)) :-
+    integer(Value).
+pusu_division_read_value(quotient_with_implicit_remainder, Left, Right,
+                         Quotient, arithmetic_value(Numerator, Right)) :-
+    integer(Quotient), integer(Left), integer(Right), Right > 0,
+    Remainder is Left mod Right,
+    Numerator is Quotient * Right + Remainder.
+pusu_division_read_value(quotient_remainder(input_divisor), _, Right,
+                         quotient_remainder(Quotient, Remainder),
+                         arithmetic_value(Numerator, Right)) :-
+    integer(Quotient), integer(Remainder), integer(Right), Right > 0,
+    Remainder >= 0, Remainder < Right,
+    Numerator is Quotient * Right + Remainder.
+pusu_division_read_value(quotient_remainder(smaller_operand), Left, Right,
+                         quotient_remainder(Quotient, Remainder),
+                         arithmetic_value(Numerator, Divisor)) :-
+    integer(Quotient), integer(Remainder),
+    integer(Left), integer(Right),
+    Divisor is min(Left, Right), Divisor > 0,
+    Remainder >= 0, Remainder < Divisor,
+    Numerator is Quotient * Divisor + Remainder.
+pusu_division_read_value(quotient_plus_fraction, _, _,
+                         quot_plus_frac(Quotient, Remainder, Divisor),
+                         arithmetic_value(Numerator, Divisor)) :-
+    integer(Quotient), integer(Remainder), integer(Divisor), Divisor > 0,
+    Remainder >= 0, Remainder < Divisor,
+    Numerator is Quotient * Divisor + Remainder.
+pusu_division_read_value(wrapped_integer(Functor), _, _, Wrapped,
+                         arithmetic_value(Value, 1)) :-
+    compound(Wrapped), Wrapped =.. [Functor, Value], integer(Value).
+
+pusu_division_schema_value(Schema, Left, Right, Output, Value) :-
+    pusu_division_schema_translation(Schema, translatable(Reader)),
+    pusu_division_read_value(Reader, Left, Right, Output, Value).
+
+pusu_rule_evidence_output(Evidence, Output) :-
+    is_dict(Evidence), get_dict(got, Evidence, Output), !.
+pusu_rule_evidence_output(Output, Output).
+
+pusu_arithmetic_value_equal(arithmetic_value(LeftNumerator, LeftDenominator),
+                            arithmetic_value(RightNumerator, RightDenominator)) :-
+    LeftNumerator * RightDenominator =:=
+        RightNumerator * LeftDenominator.
+
+pusu_division_comparison_relation(Kind, ProductiveSchema, Left, Right,
+                                  Expected, Evidence, Relation) :-
+    ( pusu_division_rule_output_schema(Kind, RuleSchema),
+      pusu_division_schema_value(
+          ProductiveSchema, Left, Right, Expected, ProductiveValue),
+      pusu_rule_evidence_output(Evidence, RuleOutput),
+      pusu_division_schema_value(
+          RuleSchema, Left, Right, RuleOutput, RuleValue)
+    -> ( pusu_arithmetic_value_equal(ProductiveValue, RuleValue)
+       -> Relation = arithmetic_value_agreement
+       ;  Relation = arithmetic_value_separation )
+    ;  Relation = untranslatable_term_fallback
+    ).
+
+pusu_rule_comparison_status(division, Kind, _, Left, Right, ProductiveSchema,
+                            Expected, Evidence, _, Status, Relation) :-
+    pusu_division_comparison_relation(
+        Kind, ProductiveSchema, Left, Right, Expected, Evidence, Relation),
+    Relation \== untranslatable_term_fallback, !,
+    ( Relation == arithmetic_value_agreement
+    -> Status = agrees
+    ;  Status = separates ).
+pusu_rule_comparison_status(division, Kind, Rule, Left, Right, ProductiveSchema,
+                            Expected, Evidence, Class, Status,
+                            untranslatable_term_fallback) :-
+    pusu_division_comparison_relation(
+        Kind, ProductiveSchema, Left, Right, Expected, Evidence,
+        untranslatable_term_fallback), !,
+    pusu_rule_class_status(
+        division, Kind, Rule, Left, Right, Class, Status).
+pusu_rule_comparison_status(Op, Kind, Rule, Left, Right, _, _, _, Class, Status,
+                            term_classification) :-
+    pusu_rule_class_status(Op, Kind, Rule, Left, Right, Class, Status).
+
 % The action signature is the registry's declared input domain. Type names stay
 % explicit: an unknown type is unavailable evidence, never a cue to infer a
 % domain from its spelling.
@@ -296,9 +462,14 @@ pusu_rule_probe(Op, Rule, Left, Right, Status) :-
     test_harness:arith_misconception(_, Domain, Kind, Rule, _, _),
     pusu_rule_expected(Op, Left, Right, Expected), pusu_rule_input(Kind, Left, Right, Input),
     pusu_call(contrast_diagnosis,
-              test_harness:classify_arith_by_trace(Rule, Input, Expected, Class, _), Result),
+              test_harness:classify_arith_by_trace(Rule, Input, Expected, Class, Evidence), Result),
     ( Result == succeeded
-    -> pusu_rule_class_status(Op, Kind, Rule, Left, Right, Class, Status)
+    -> ( Op == division
+       -> ProductiveSchema = productive_integer_quotient
+       ;  ProductiveSchema = not_applicable ),
+       pusu_rule_comparison_status(
+           Op, Kind, Rule, Left, Right, ProductiveSchema, Expected, Evidence,
+           Class, Status, _)
     ; Result == timed_out
     -> Status = rule_times_out
     ;  Status = rule_errors
@@ -328,6 +499,13 @@ pusu_rule_context_validated(Family, Op, Rule, SeparatorLeft-SeparatorRight, Cont
     pusu_context_inputs(Family, Context, Op, Battery, Inputs),
     forall(member(Left-Right, Inputs), pusu_rule_probe(Op, Rule, Left, Right, agrees)),
     \+ pusu_context(Family, Context, Op, SeparatorLeft, SeparatorRight).
+
+pusu_rule_agreement_region_validated(Family, Op, Rule, Context) :-
+    pusu_context_name(Family, Context, Op),
+    pusu_battery_for(Op, Battery),
+    pusu_context_inputs(Family, Context, Op, Battery, Inputs),
+    forall(member(Left-Right, Inputs),
+           pusu_rule_probe(Op, Rule, Left, Right, agrees)).
 
 pusu_trace_classified(Family, Productive, action_outcome(_, Fields)) :-
     member(misconception_family(Family), Fields),
@@ -366,6 +544,13 @@ pusu_agreement_status_rule(Family, Op, Rule, Status, ContextText, SeparatorText,
           ( pusu_rule_context_validated(Family, Op, Rule, SeparatorLeft-SeparatorRight, Context)
           -> atom_string(Context, ContextText), Status = "agrees_at_input"
           ;  ContextText = "", Status = "context_unvalidated" )
+       ;  pusu_rule_agreement_region_validated(Family, Op, Rule, Context)
+       -> atom_string(Context, ContextText),
+          SeparatorText = "",
+          ( pusu_rule_value_layer_separator_capability(
+                Family, cannot_separate(structural_divmod_identity))
+          -> Status = "cannot_separate_at_value_layer"
+          ;  Status = "vacuous_pair" )
        ;  ContextText = "", SeparatorText = "", Status = "vacuous_pair" )
     ; ContextText = "", SeparatorText = "", Status = "battery_absent" ).
 
@@ -580,7 +765,17 @@ pusu_diagnosis_with_budget(Op, Left, Right, Wrong, Kind, Status, Detail, Surface
 
 pusu_viability_field("agrees_at_input", Code, Family, ContextText, SeparatorText,
                      [_{lesson:Code, family:Family, context:Context,
-                        separating_input:SeparatorText}]) :-
+                        separating_input:SeparatorText,
+                        separation_witness:_{kind:found,
+                                             input:SeparatorText}}]) :-
+    atom_string(Context, ContextText), !.
+pusu_viability_field("cannot_separate_at_value_layer", Code, Family,
+                     ContextText, "",
+                     [_{lesson:Code, family:Family, context:Context,
+                        separating_input:"",
+                        separation_witness:_{
+                            kind:cannot_separate_at_value_layer,
+                            reason:structural_divmod_identity}}]) :-
     atom_string(Context, ContextText), !.
 pusu_viability_field(_, _, _, _, _, []).
 
@@ -745,36 +940,23 @@ pusu_action_contrast(Code, Family, Task, Row) :-
             separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
             norm_citation:""}.
 
-pusu_division_output_value(Value, Left, Right, Quotient, Remainder) :-
-    integer(Value),
-    Quotient = Value,
-    Remainder is Left mod Right.
-pusu_division_output_value(quotient_remainder(Quotient, Remainder), _, _,
-                           Quotient, Remainder) :-
-    integer(Quotient), integer(Remainder).
-pusu_division_output_value(quot_plus_frac(Quotient, Remainder, Divisor),
-                           _, Right, Quotient, Remainder) :-
-    integer(Quotient), integer(Remainder), integer(Divisor),
-    Divisor =:= Right.
-pusu_division_output_value(long_division_result(Text, Remainder), _, _,
-                           Quotient, Remainder) :-
-    string(Text), number_string(Quotient, Text),
-    integer(Quotient), integer(Remainder).
-
-% Keep the expected-output contract unchanged. This classifier only measures
-% wrong-answer rows where unequal terms encode the same quotient and remainder.
-pusu_rule_separation_kind(division, Left, Right, Expected, Evidence,
-                          schema_equivalent_separation) :-
-    integer(Left), integer(Right), Right > 0,
-    Evidence \=@= Expected,
-    pusu_division_output_value(Expected, Left, Right, ExpectedQ, ExpectedR),
-    pusu_division_output_value(Evidence, Left, Right, EvidenceQ, EvidenceR),
-    CorrectQ is Left // Right,
-    CorrectR is Left mod Right,
-    ExpectedQ =:= CorrectQ, ExpectedR =:= CorrectR,
-    EvidenceQ =:= CorrectQ, EvidenceR =:= CorrectR,
-    !.
-pusu_rule_separation_kind(_, _, _, _, _, genuine_separation).
+pusu_contrast_relation(arithmetic_value_agreement, Productive, Kind,
+                       distinct_automata, ProductiveKind) :-
+    pusu_division_productive_kind(Productive, ProductiveKind),
+    action_automata_registry:action_automaton_signature(
+        division, Kind, _, _),
+    ProductiveKind \== Kind, !.
+pusu_contrast_relation(arithmetic_value_agreement, Productive, Kind,
+                       same_automaton, Kind) :-
+    pusu_division_productive_kind(Productive, Kind),
+    action_automata_registry:action_automaton_signature(
+        division, Kind, _, _), !.
+pusu_contrast_relation(arithmetic_value_agreement, Productive, Kind,
+                       distinct_rule_and_automaton, ProductiveKind) :-
+    pusu_division_productive_kind(Productive, ProductiveKind),
+    \+ action_automata_registry:action_automaton_signature(
+           division, Kind, _, _), !.
+pusu_contrast_relation(_, _, _, not_compared, not_available).
 
 pusu_rule_contrast(Code, Obligation, Task, Row) :-
     Op = Obligation.operation, Kind = Obligation.kind,
@@ -782,23 +964,31 @@ pusu_rule_contrast(Code, Obligation, Task, Row) :-
     pusu_operation_domain(Op, Domain), pusu_rule_input(Kind, Left, Right, Input),
     test_harness:arith_misconception(_, Domain, Kind, Rule, _, _),
     pusu_run_productive(Code, Task, Productive, _, ProductiveTimedOut, _), pusu_result(Productive, Expected),
+    ( Op == division
+    -> ( pusu_division_productive_schema(Productive, Expected, ProductiveSchema)
+       -> true
+       ;  ProductiveSchema = untranslatable_productive_schema )
+    ;  ProductiveSchema = not_applicable ),
     Goal = test_harness:classify_arith_by_trace(Rule, Input, Expected, Class, Evidence),
     pusu_goal_text(Goal, GoalText), pusu_text(Task, TaskText), pusu_text(Kind, KindText),
     pusu_call(contrast_diagnosis, Goal, CallResult),
     ( CallResult == succeeded
-    -> ( Class == wrong_answer
+    -> pusu_rule_comparison_status(
+           Op, Kind, Rule, Left, Right, ProductiveSchema, Expected, Evidence,
+           Class, RuleStatus, ComparisonRelation),
+       ( RuleStatus == separates
        -> pusu_text(Evidence, WrongText), ContrastStatus = "separates",
           pusu_text(Expected, ExpectedText),
-          pusu_rule_separation_kind(Op, Left, Right, Expected, Evidence, SeparationKind),
           pusu_diagnosis_with_budget(Op, Left, Right, Evidence, Kind, Diagnosis0, Detail0, Surface0, DiagnosisTimedOut, Failure),
           pusu_upgrade_diagnosis(Op, Left, Right, Kind, Diagnosis0, Detail0, Diagnosis1, Detail1,
                                  SeparatorText, ContextText),
           pusu_complete_rule_diagnosis(Diagnosis1, Kind, Detail1, Surface0, Diagnosis, Detail, Surface),
           TraceRoundTrip = false, Viability = [], BatteryRefusals = [],
+          pusu_contrast_relation(
+              ComparisonRelation, Productive, Kind, ContrastRelation,
+              ProductiveKind),
           ( ( ProductiveTimedOut == true ; DiagnosisTimedOut == true ) -> TimedOut = true ; TimedOut = false )
        ;  pusu_text(Evidence, WrongText), pusu_text(Expected, ExpectedText),
-          SeparationKind = not_applicable,
-          pusu_rule_class_status(Op, Kind, Rule, Left, Right, Class, RuleStatus),
           ( RuleStatus == agrees
           -> pusu_agreement_status_rule(Kind, Op, Rule, ContrastStatus, ContextText,
                                         SeparatorText, BatteryRefusals),
@@ -806,10 +996,16 @@ pusu_rule_contrast(Code, Obligation, Task, Row) :-
           ;  ContrastStatus = RuleStatus, ContextText = "", SeparatorText = "",
              Viability = [], BatteryRefusals = []
           ),
+          pusu_contrast_relation(
+              ComparisonRelation, Productive, Kind, ContrastRelation,
+              ProductiveKind),
           Diagnosis = "not_applicable", Detail = [], Surface = "none", TimedOut = ProductiveTimedOut,
           Failure = "", TraceRoundTrip = false
        )
-    ;  WrongText = "", ExpectedText = "", SeparationKind = not_applicable,
+    ;  WrongText = "", ExpectedText = "",
+       Class = not_available,
+       ComparisonRelation = not_available,
+       ContrastRelation = not_compared, ProductiveKind = not_available,
        ContrastStatus = "cannot_run", Diagnosis = "not_applicable",
        Detail = [], Surface = "none",
        ( ( CallResult == timed_out ; ProductiveTimedOut == true ) -> TimedOut = true ; TimedOut = false ),
@@ -819,11 +1015,15 @@ pusu_rule_contrast(Code, Obligation, Task, Row) :-
     Row = _{kind:KindText, family:KindText, task:TaskText, operation:Op,
             source:"registered_misconception_rule", status:ContrastStatus,
             wrong_answer:WrongText, expected_answer:ExpectedText,
-            separation_kind:SeparationKind, diagnosis:Diagnosis,
-            diagnosis_detail:Detail, diagnosis_surface:Surface, goal:GoalText,
+            diagnosis:Diagnosis, diagnosis_detail:Detail,
+            diagnosis_surface:Surface, goal:GoalText,
             timed_out:TimedOut, failure:Failure, agreement_context:ContextText,
             separating_input:SeparatorText, trace_round_trip:TraceRoundTrip, viability:Viability,
-            battery_refusals:BatteryRefusals, norm_citation:""}.
+            battery_refusals:BatteryRefusals,
+            trace_class:Class,
+            value_relation:ComparisonRelation,
+            contrast_relation:ContrastRelation,
+            productive_kind:ProductiveKind, norm_citation:""}.
 
 pusu_receipt_contrast(Code, Op, AltKind, Family, Task, Row) :-
     compiled_receipt_routes:receipt_contrast_route(Code, Op, AltKind, Family, Task, Evidence),
@@ -959,6 +1159,10 @@ pusu_verdict(Productive, Contrasts, Verdict, Detail) :-
     -> Verdict = "needs_rule_exercising_numerals", Detail = "the lesson's numerals do not exercise this misconception"
     ; pusu_unseparated_rule_refusal(Contrasts, rule_refusal_reason_unavailable)
     -> Verdict = "rule_refusal_reason_unavailable", Detail = "the available declarations and automaton evidence cannot distinguish this rule refusal"
+    ; member(Row, Contrasts),
+      Row.status == "cannot_separate_at_value_layer"
+    -> Verdict = "cannot_separate_at_value_layer",
+       Detail = "a registered rule agrees throughout its domain, so the arithmetic-value layer cannot separate this contrast"
     ; member(Row, Contrasts), Row.status == "vacuous_pair"
     -> Verdict = "broken(vacuous_pair)", Detail = "a contrast has no separating battery input"
     ; member(Row, Contrasts), Row.status == "normative_contrast", Row.trace_round_trip \== true
@@ -1103,6 +1307,7 @@ def compact_prolog(rows: list[dict]) -> str:
             "needs_rule_exercising_numerals",
             "rule_domain_refusal",
             "rule_refusal_reason_unavailable",
+            "cannot_separate_at_value_layer",
         }:
             term = verdict + "(" + repr(row["detail"]).replace('"', "'") + ")"
         else:
@@ -1112,13 +1317,28 @@ def compact_prolog(rows: list[dict]) -> str:
             for fact in contrast.get("viability", []):
                 family = str(fact["family"]).replace("'", "\\'")
                 context = str(fact["context"]).replace("'", "\\'")
-                separator = str(fact["separating_input"]).replace("'", "\\'")
-                key = (lesson, family, context, separator)
+                witness = fact["separation_witness"]
+                witness_kind = str(witness["kind"])
+                if witness_kind == "found":
+                    separator = str(witness["input"]).replace("'", "\\'")
+                    witness_term = f"found('{separator}')"
+                elif witness_kind == "cannot_separate_at_value_layer":
+                    reason = str(witness["reason"]).replace("'", "\\'")
+                    witness_term = (
+                        "cannot_separate_at_value_layer("
+                        f"'{reason}')"
+                    )
+                else:
+                    raise ValueError(
+                        f"unknown viability witness kind: {witness_kind}"
+                    )
+                key = (lesson, family, context, witness_term)
                 if key in viability_seen:
                     continue
                 viability_seen.add(key)
                 lines.append(
-                    f"pusu_viability('{lesson}', '{family}', o(context({context})), '{separator}')."
+                    f"pusu_viability('{lesson}', '{family}', "
+                    f"o(context({context})), {witness_term})."
                 )
     return "\n".join(lines) + "\n"
 
@@ -1153,34 +1373,34 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
         for contrast in row["contrasts"]
         for refusal in contrast.get("battery_refusals", [])
     )
-    division_separations = [
+    division_value_agreements = [
         (row["lesson"], contrast)
         for row in rows
         for contrast in row["contrasts"]
         if contrast.get("source") == "registered_misconception_rule"
         and contrast.get("operation") == "division"
-        and contrast.get("status") == "separates"
+        and contrast.get("value_relation") == "arithmetic_value_agreement"
     ]
-    division_separation_distribution = Counter(
-        contrast.get("separation_kind", "unclassified")
-        for _, contrast in division_separations
+    division_value_agreement_families = Counter(
+        contrast["kind"] for _, contrast in division_value_agreements
     )
-    division_family_counts: dict[str, Counter[str]] = defaultdict(Counter)
-    for _, contrast in division_separations:
-        division_family_counts[contrast["kind"]][
-            contrast.get("separation_kind", "unclassified")
-        ] += 1
-    schema_examples: dict[str, dict] = {}
-    for lesson, contrast in division_separations:
-        if contrast.get("separation_kind") != "schema_equivalent_separation":
-            continue
-        schema_examples.setdefault(
+    division_schema_agreement_reclassifications = [
+        (lesson, contrast)
+        for lesson, contrast in division_value_agreements
+        if contrast.get("trace_class") == "wrong_answer"
+    ]
+    value_agreement_examples: dict[str, dict] = {}
+    for lesson, contrast in division_value_agreements:
+        value_agreement_examples.setdefault(
             contrast["kind"],
             {
                 "lesson": lesson,
                 "task": contrast["task"],
                 "expected_answer": contrast["expected_answer"],
                 "rule_answer": contrast["wrong_answer"],
+                "agreement_context": contrast["agreement_context"],
+                "separating_input": contrast["separating_input"],
+                "contrast_relation": contrast["contrast_relation"],
             },
         )
     raw_viability_facts = [
@@ -1188,7 +1408,8 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
         for fact in contrast.get("viability", [])
     ]
     viability_facts = list({
-        (str(fact["lesson"]), str(fact["family"]), str(fact["context"]), str(fact["separating_input"])): fact
+        (str(fact["lesson"]), str(fact["family"]), str(fact["context"]),
+         json.dumps(fact["separation_witness"], sort_keys=True)): fact
         for fact in raw_viability_facts
     }.values())
     return {
@@ -1207,8 +1428,11 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
             "rule_domain_refusal names an input outside the registered signature and operation domain, "
             "needs_rule_exercising_numerals names an in-domain input where the same-kind automaton "
             "refuses, and rule_refusal_reason_unavailable preserves an unresolved distinction; "
-            "schema_equivalent_separation keeps the division expected-output contract unchanged while "
-            "counting unequal output terms that encode the same quotient and remainder"
+            "division output schemas translate only at the arithmetic-value layer; "
+            "arithmetic_value_agreement records unequal output terms with equal values; "
+            "contrast_relation distinguishes two automata from a registered rule compared with "
+            "an automaton; cannot_separate_at_value_layer records a structural divmod identity "
+            "and cannot license a pass"
         ),
         "scope": {"diagnostic_ready_lessons": len(selected), "lessons": selected},
         "timing_seconds": round(elapsed, 3),
@@ -1217,15 +1441,15 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
         "rule_battery_refusal_distribution": dict(
             sorted(rule_battery_refusal_distribution.items())
         ),
-        "division_rule_separation_distribution": dict(
-            sorted(division_separation_distribution.items())
+        "division_value_agreement_count": len(division_value_agreements),
+        "division_schema_agreement_reclassification_count": len(
+            division_schema_agreement_reclassifications
         ),
-        "division_rule_separation_families": {
-            family: dict(sorted(counts.items()))
-            for family, counts in sorted(division_family_counts.items())
-        },
-        "division_schema_artifact_examples": [
-            example for _, example in sorted(schema_examples.items())
+        "division_value_agreement_families": dict(
+            sorted(division_value_agreement_families.items())
+        ),
+        "division_value_agreement_examples": [
+            example for _, example in sorted(value_agreement_examples.items())
         ],
         "verdict_motion": [
             {"lesson": row["lesson"], "before": before.get(row["lesson"], "not_in_prior_artifact"), "after": row["pusu"]}
