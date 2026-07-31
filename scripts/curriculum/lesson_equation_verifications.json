@@ -6570,6 +6570,46 @@
    "refusal": "routine_span_prints_no_complete_equation",
    "rows": [],
    "witness_alignment": ""
+  },
+  {
+   "equation_count": 0,
+   "equation_source": "markdown",
+   "judgment_count": 0,
+   "lesson": "IM-G6-U5-L3",
+   "position": "student_task_statement(1)",
+   "refusal": "routine_span_prints_no_complete_equation",
+   "rows": [],
+   "witness_alignment": ""
+  },
+  {
+   "equation_count": 0,
+   "equation_source": "markdown",
+   "judgment_count": 0,
+   "lesson": "IM-G6-U6-L13",
+   "position": "student_task_statement(2)",
+   "refusal": "routine_span_prints_no_complete_equation",
+   "rows": [],
+   "witness_alignment": ""
+  },
+  {
+   "equation_count": 1,
+   "equation_source": "markdown",
+   "judgment_count": 0,
+   "lesson": "IM-G7-U5-L9",
+   "position": "student_task_statement(5)",
+   "refusal": "routine_span_has_no_following_student_response_block",
+   "rows": [],
+   "witness_alignment": ""
+  },
+  {
+   "equation_count": 0,
+   "equation_source": "markdown",
+   "judgment_count": 0,
+   "lesson": "IM-G7-U6-L17",
+   "position": "student_task_statement(1)",
+   "refusal": "routine_span_prints_no_complete_equation",
+   "rows": [],
+   "witness_alignment": ""
   }
  ],
  "summary": {
@@ -6580,8 +6620,8 @@
   "arithmetic_equality_claims": 9,
   "grounded_claims": 99,
   "lessons_with_accepted_task": 25,
-  "refused_spans": 52,
-  "routine_spans": 84,
+  "refused_spans": 56,
+  "routine_spans": 88,
   "separating_at_this_input": 12
  }
 }

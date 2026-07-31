@@ -52,6 +52,7 @@ run a_fortiori_context_nesting_sweep python3 "$CHECKS_DIR/a_fortiori_context_nes
 run a_fortiori_context_closure_automaton_battery swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/a_fortiori_context_closure_automaton_battery.pl" -g main -t halt
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
 run compile_receipt_routes python3 "$CHECKS_DIR/../curriculum/compile_receipt_routes.py" --check
+run action_mapping_docling_reader.py python3 "$CHECKS_DIR/action_mapping_docling_reader.py"
 run lesson_task_readings.py python3 "$CHECKS_DIR/lesson_task_readings.py"
 run build_sidecar_equation_census python3 "$CHECKS_DIR/../curriculum/build_sidecar_equation_census.py" --check
 run equation_verification_sidecar_segmenter.py python3 "$CHECKS_DIR/equation_verification_sidecar_segmenter.py"
@@ -81,6 +82,10 @@ run route_behavior.py       python3 "$CHECKS_DIR/route_behavior.py"
 run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.py"
 run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
 run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
+run pusu_schema_translation_fixtures.py python3 "$CHECKS_DIR/../curriculum/pusu_schema_translation_fixtures.py"
+run build_im_lesson_capability_census python3 "$CHECKS_DIR/../curriculum/build_im_lesson_capability_census.py" --check
+run build_im_zero_candidate_triage python3 "$CHECKS_DIR/../curriculum/build_im_zero_candidate_triage.py" --check
+run build_im_action_seam_recut python3 "$CHECKS_DIR/../curriculum/build_im_action_seam_recut.py" --check
 
 run incompatibility_entailment_order python3 "$CHECKS_DIR/../extract_incompatibility_entailment_order.py" --check
 run incompatibility_register_runtime_agreement.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/incompatibility_register_runtime_agreement.pl" -g main -t halt

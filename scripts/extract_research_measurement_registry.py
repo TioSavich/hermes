@@ -296,10 +296,14 @@ def render_registry() -> str:
     # for: the carving of refused spans into kinds that differ in what should
     # happen to them.
     # 68 until 2026-07-29 night, which added the receipts pass-6 review record.
+    # 69 until 2026-07-31, which added the neurosymbolic status account: where
+    # the symbolic side stands, what the constraint-based-modelling literature
+    # says about runnable models, and why a fine-tune has no surface to land on
+    # while the tool boundary carries only {model, messages}.
     # Proposals under docs/research/proposals/ are not top-level and do not
     # enter this denominator.
-    if len(reports) != 69:
-        raise RuntimeError(f"expected 69 top-level research reports, found {len(reports)}")
+    if len(reports) != 70:
+        raise RuntimeError(f"expected 70 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),

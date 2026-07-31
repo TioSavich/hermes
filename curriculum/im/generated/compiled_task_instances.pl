@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(401, 2030).
+compiled_task_instance_summary(401, 2041).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -444,10 +444,30 @@ compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(10, 5),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("10 + 5"))).
 compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(3, 10),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("3 + 10"))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(39, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_39_plus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(3)), excerpt("39 + 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(52, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_52_plus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(5)), excerpt("52 + 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(67, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_67_plus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(1)), excerpt("67 + 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(67, 10),
+                              task_evidence(rule(task_206fw_g1_u4_l12_chain_67_plus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(9)), excerpt("67 + 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-add(75, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_75_plus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(7)), excerpt("75 + 10 ="), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(13, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("13 - 10"))).
 compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(15, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("15 - 10"))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(39, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_39_minus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(4)), excerpt("39- 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(52, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_52_minus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(6)), excerpt("52- 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(67, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_67_minus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(2)), excerpt("67- 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(75, 10),
+                              task_evidence(rule(task_206_g1_u4_l12_75_minus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(8)), excerpt("75 - 10 ="), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U4-L12', productive-subtract(99, 10),
+                              task_evidence(rule(task_206fw_g1_u4_l12_chain_99_minus_10), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U4-L12'), position('student_task_statement(2)'))), position(student_task_statement(2)/recovered_equation(12)), excerpt("99- 10 ="), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G1-U4-L13', productive-add(10, 4),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit4/lesson13.md', lines(80, 80)), position(student_task_statement(1)/expression(1)), excerpt("10 + 4"))).
 compiled_lesson_task_instance('IM-G1-U4-L13', productive-add(9, 4),
@@ -2918,6 +2938,8 @@ compiled_lesson_task_instance('IM-G6-U2-L2', productive-divide(12, 6),
                               task_evidence(rule(im_g6_u2_l2_divide_1), source(e343_pdf('Grade6-2-Unit-teacher-guide-.pdf', pages("55"))), position(cool_down), excerpt("There are ___ pencils for every eraser."))).
 compiled_lesson_task_instance('IM-G6-U2-L2', productive-divide(8, 2),
                               task_evidence(rule(im_g6_u2_l2_divide_2), source(e343_pdf('Grade6-2-Unit-teacher-guide-.pdf', pages("51"))), position(activity_2), excerpt("For each pint of glue, there are 4 cups of corn flour."))).
+compiled_lesson_task_instance('IM-G6-U2-L2', productive-multiply(3, 2),
+                              task_evidence(rule(equal_groups_each_has), source('hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-2-2-Lesson-teacher-guide-/document.md', lines(599, 599)), position(student_task_statement(3)/item(1)), excerpt("Lin has 3 sets of stationery. Each set has 2"))).
 compiled_lesson_task_instance('IM-G6-U2-L3', productive-add(18, 6),
                               task_evidence(rule(im_g6_u2_l3_add_16), source(e343_pdf('Grade6-2-Unit-teacher-guide-.pdf', pages("74"))), position(practice_4), excerpt("Write the missing number under each tick mark on the number line."))).
 compiled_lesson_task_instance('IM-G6-U2-L3', productive-add(30, 6),
