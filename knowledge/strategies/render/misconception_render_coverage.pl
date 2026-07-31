@@ -15,10 +15,15 @@
  * exemplar task that representation already admits. An op with no row is
  * reported not_renderable(no_render_family_mapping). The bridge is a
  * conservative starter, not a claim of completeness: it covers the whole-number,
- * counting, place-value, and fraction families that map cleanly onto an existing
- * drawable primitive. The broad K-6 topic space (geometry, measurement, decimal
- * magnitude, ratio) genuinely does not render today, and the report says so
- * rather than papering over it.
+ * counting, place-value, fraction, and written-notation families, and the
+ * middle-grades families the seven spatial and statistical formats draw —
+ * plotted graphs, isometries, tiled regions, angles, distributions, solids and
+ * lattice polygons, plus the balance for linear equations. What still does not
+ * render says so rather than papering over it: ratio and signed number have
+ * scene compilers with no language declared in the grammar, division has no
+ * task shape at all, and the coarse topic atoms (geometry, algebraic,
+ * measurement) carry registry entries no picture is about. The declines are
+ * written out beside the rows, with the reason attached to each.
  *
  * Beyond the live-render lane, two further lanes classify what the repo holds
  * for an op that does not draw today:
@@ -116,6 +121,199 @@ op_render_family(addition_and_subtraction_of_fractions, fraction_bars, fraction_
 op_render_family(fraction_addition_and_subtraction,     fraction_bars, fraction_subtraction(fraction(3, 4), fraction(1, 4))).
 %  --- area as a rectangular-array model (area_model) ---
 op_render_family(area_models,               area_model,      multiplication(3, 4)).
+%  --- written arithmetic notation (notation) ---
+%  The notation monitoring-chart lane draws these today: 260 encoded IM lessons
+%  host a chart keyed on equation(A, Op, B, R) (lesson_notation_chart.pl), and
+%  the exemplars below carry that same key shape. multiplication takes the
+%  equation form of necessity — the grammar admits equation(3, *, 4, 12) for
+%  notation but not multiplication(3, 4); the rest take it for uniformity with
+%  the lane they attest. The written_subtraction exemplar hosts a borrow
+%  (41 - 17), the written_computation exemplar a units carry (28 + 47), so each
+%  row's equation is one the op's registry entries are about.
+%  One bar is weaker here than for every other family in this table:
+%  render_spec_denotes/3 carries no link for the equation(A, Op, B, R) shape, so
+%  these rows rest on renderable_op/3 alone (grammar admission plus renderable
+%  status). The consumers that draw the lane — notation_render_dispatch in
+%  hermes_worker.pl and productive_notation_cell_scene/3 in
+%  lesson_notation_chart.pl — rebuild write_equation(A, Op, B, R) from the same
+%  fields and compile real glyphs; notation_render_frames/2 called on the bare
+%  equation term instead lands in the deferred fallback and draws nothing.
+op_render_family(addition,                  notation,        equation(3, +, 4, 7)).
+op_render_family(subtraction,               notation,        equation(9, -, 4, 5)).
+op_render_family(addition_and_subtraction,  notation,        equation(28, +, 47, 75)).
+op_render_family(multiplication,            notation,        equation(3, *, 4, 12)).
+op_render_family(written_subtraction,       notation,        equation(41, -, 17, 24)).
+op_render_family(written_computation,       notation,        equation(28, +, 47, 75)).
+
+%  --- the middle-grades spatial and statistical formats ---
+%
+%  Seven formats built for grades 6-8 content had no row in this table, so every
+%  op that dominates those grades reported not_covered while its drawer sat
+%  dispatched and unused. The rows below close that, one op at a time, under a
+%  rule stated here because it did the deciding: a row is written when the
+%  MAJORITY of the op's registry entries concern the object the exemplar draws,
+%  and declined when the majority concern a relation among classes, an algebraic
+%  register, a verbal translation, or an object the format itself refuses. The
+%  declines are the substance of the curation, not its residue; §Declined below
+%  records them so the next reader does not re-litigate each one.
+%
+%  Every exemplar here clears a bar the older rows did not have to state: it is
+%  admitted by valid_task_for_representation/2 AND some render_spec_denotes/3
+%  spec compiles it to a scene. That second half matters, because three shapes
+%  the grammar admits denote no spec at all — point(X, Y), region(C, R) and
+%  central_angle(D) pass the admission test and draw nothing. renderable_op/3
+%  would have called them covered. None is used as an exemplar.
+
+%  coordinate_plane: plotted points and plotted lines on an indexed plane.
+%  graphing / graphing_functions / functions_and_graphs turn on reading a curve
+%  off finitely many plotted points, so their exemplars are point sets, not
+%  lines — Even 1990's point-wise plotting that misses global behaviour, and
+%  Delgadillo 2016's continuity assumed from a handful of points, are about the
+%  points. slope and linear_functions turn on the line's parameters, so theirs
+%  is a line carrying both a rate and an intercept. The two motion ops take a
+%  line through the origin, which is the distance-time picture their entries
+%  argue over (Moschkovich 2018's reversed axes, Zahner 2012's horizontal
+%  segment read as movement).
+op_render_family(graphing,                  coordinate_plane, linear_graph(2, 1)).
+op_render_family(graphing_functions,        coordinate_plane, point_set([0-1, 1-3, 2-5])).
+op_render_family(functions_and_graphs,      coordinate_plane, point_set([0-1, 1-3, 2-5])).
+op_render_family(linear_functions,          coordinate_plane, linear_graph(2, 1)).
+op_render_family(slope,                     coordinate_plane, linear_graph(2, 1)).
+op_render_family(distance_time_graphs,      coordinate_plane, linear_graph(2, 0)).
+op_render_family(graphing_motion,           coordinate_plane, linear_graph(2, 0)).
+
+%  rigid_motion: a lattice polygon and its image under an isometry. Yanik 2009's
+%  four entries under geometric_transformations are all about a vector acting on
+%  a figure, which is the translate spec exactly; reflection_geometry and
+%  line_symmetry take the reflection spec, since both turn on an image being a
+%  mirror rather than merely congruent. line_symmetry's oblique-axis entry sits
+%  outside the format, which reflects over x or y only — one entry of three, so
+%  the row stands with the limit named rather than hidden.
+op_render_family(geometric_transformations, rigid_motion,
+                 isometry_image([0-0, 3-0, 0-2], translation(4, 1))).
+op_render_family(reflection_geometry,       rigid_motion,
+                 isometry_image([0-0, 3-0, 0-2], reflection(y))).
+op_render_family(line_symmetry,             rigid_motion,
+                 isometry_image([0-0, 3-0, 0-2], reflection(y))).
+
+%  polyform_tiling: rigid pieces filling a bounded region. area and
+%  area_measurement are dominated by covering and row-and-column structuring of
+%  a region — gaps and overlaps, counting without an array structure, partial
+%  tiles — which is what tile_area draws. tiling_tasks is DECLINED from this
+%  table: its sole registry entry (batch_row_40581, dismissing an impossible
+%  task) concerns impossibility, the productive tiling/2 exemplar draws a
+%  completable partial cover that carries none of that, and the parity lane
+%  that does stage impossibility (unfillable_by_parity_compare, verified live
+%  through polyform_tiling_compare_json/2) has no deformation_spec_evidence
+%  row in the grammar, so no witness shape in this module reaches it. The
+%  seam for a future row is grammar-side evidence for the parity lane first.
+op_render_family(area,                      polyform_tiling, area_by_tiling(region(4, 3), 4*3)).
+op_render_family(area_measurement,          polyform_tiling, area_by_tiling(region(4, 3), 4*3)).
+
+%  angle_circular: a turn drawn as an angle or a sector. angles carries
+%  Fischbein 1999's ray-length error, which this format computes (see the
+%  parametric row below); angle carries the turtle-geometry confusion of the
+%  turn with the interior angle, so its exemplar is 120 degrees, an exterior
+%  turn; angle_measure carries the arc-and-sector reading, and 90 degrees draws
+%  a quarter sector. central_angle(D) would have been the truer term for the
+%  last of these and is deliberately not used: no spec denotes it.
+op_render_family(angles,                    angle_circular,  angle_measure(45)).
+op_render_family(angle,                     angle_circular,  angle_measure(120)).
+op_render_family(angle_measure,             angle_circular,  angle_measure(90)).
+
+%  data_display: a distribution drawn as bars or dots. The dot plot is chosen
+%  over the bar chart because these three ops argue about reading a distribution
+%  globally rather than case by case (Konold 2015, Hahn 2014), and about the
+%  mode standing in for the mean (Mokros 1995). The exemplar is curated so those
+%  two values come apart: [3,3,4,5,5,5,6] has mode 5 and mean 31/7, so the
+%  picture is one where the substitution is visibly wrong.
+op_render_family(data_analysis,             data_display,    data_display(dot_plot, [3,3,4,5,5,5,6])).
+op_render_family(average,                   data_display,    data_display(dot_plot, [3,3,4,5,5,5,6])).
+op_render_family(mean,                      data_display,    data_display(dot_plot, [3,3,4,5,5,5,6])).
+
+%  solid_net: a solid's faces, unfolded, or a stack of unit cubes. volume and
+%  volume_enumeration are Battista 2004 and Stacey 2001 almost word for word —
+%  hidden interior cubes, corner cubes counted twice, exterior faces counted
+%  instead of the solid — which is the unit-cube stack. geometric_solids is
+%  Horzum 2018 on which face of a prism counts as the base, and a net is the
+%  only builder here that draws a solid's faces individually.
+op_render_family(volume,                    solid_net,       solid_volume(3, 4, 5)).
+op_render_family(volume_enumeration,        solid_net,       solid_volume(3, 4, 5)).
+op_render_family(geometric_solids,          solid_net,       net(rectangular_prism)).
+
+%  geoboard: a band bounding a region on a peg lattice, which carries an area
+%  and a boundary at once — the two attributes area_and_perimeter and
+%  perimeter_and_area report students conflating. perimeter takes a right
+%  triangle on purpose: its hypotenuse crosses grid squares, which is Clarke
+%  2018's error of counting a diagonal as one unit. triangles takes an oblique
+%  scalene triangle, since three of its four entries are about refusing a
+%  figure drawn off the prototypical horizontal base.
+op_render_family(perimeter,                 geoboard,        geoboard_polygon([0-0, 3-0, 0-4])).
+op_render_family(area_and_perimeter,        geoboard,        geoboard_polygon([0-0, 4-0, 4-3, 0-3])).
+op_render_family(perimeter_and_area,        geoboard,        geoboard_polygon([0-0, 4-0, 4-3, 0-3])).
+op_render_family(triangles,                 geoboard,        geoboard_polygon([1-0, 4-1, 2-3])).
+
+%  area_model, reached by a route worth naming: Ron 2017's three entries under
+%  area_model_for_probability are about a unit square whose sub-rectangles are
+%  event probabilities, and the area model's fraction_product spec draws exactly
+%  that — a 1/2-by-1/3 sub-rectangle of the unit square. The op reads as
+%  probability and its drawer is an area model.
+op_render_family(area_model_for_probability, area_model,     fraction_product(1, 2, 1, 3)).
+
+%  balance_scale: two pans that stay level. linear_equations is dominated by the
+%  balance principle and its misapplication (Pirie 1997, Cooper 2008, Tall 2007
+%  on where the balance breaks for negative terms), and equations by the
+%  relational reading of the equals sign that a level balance depicts — one of
+%  its entries is a critique of over-relying on this very model. 3x + 4 = 19.
+op_render_family(linear_equations,          balance_scale,   equation(linear(3, 4, 19))).
+op_render_family(equations,                 balance_scale,   equation(linear(3, 4, 19))).
+
+%  Declined, with the reason each time, so the boundary is a record and not a
+%  silence. Grouped by what does the declining.
+%
+%  No language registered, so no row can be witnessed: ratio, proportional_
+%  reasoning, ratio_and_proportion, ratio_comparison, rate_of_change and the
+%  rest of the ratio family; integer, negative_numbers, operations_with_integers.
+%  ratio_diagram_scene.pl and signed_number_line_scene.pl are both built and
+%  both compile scenes, but representation_grammar.pl declares no language and
+%  no render status for either, so representation_render_status/2 fails and
+%  renderable_op/3 cannot hold. Registering the two languages is the unlock, and
+%  it is a grammar change, not a row.
+%
+%  The format refuses the object outright: similarity, geometric_enlargement,
+%  similar_rectangles — representation_refusal(rigid_motion, dilation(_, K), _)
+%  declines dilation by design, and every entry under these three is about
+%  multiplicative enlargement. spherical_geometry — solid_net refuses curved
+%  surfaces. 3d_geometry — its concept-image entry is about cylinders and cones,
+%  which solid_net_supported_solid/1 does not carry.
+%
+%  One task, but the misconception needs two things: area_comparison,
+%  area_conservation (two figures compared; every admitted tiling task carries
+%  one region), arithmetic_mean (weighted means of two subgroups; one series per
+%  display), line_graphs (two lines and their intersection point; the plane's
+%  line spec draws one), systems_of_linear_equations (two equations; the balance
+%  carries one).
+%
+%  A name is not a doing: translation — its single entry is reversing variables
+%  when translating a verbal statement into symbols, which is not a geometric
+%  translation. transformations — both entries are translating a function graph
+%  in the algebraic register. linear_equation_word_problems, equation_solving —
+%  word-problem translation and symbol manipulation. statistics — the lesson
+%  join uses this atom for 23 lessons, but the registry carries zero entries
+%  under it, so no row can pair a registry op with anything.
+%
+%  The op's content is a relation among classes, which one drawn figure cannot
+%  settle: quadrilaterals, shape_classification, 2d_shapes, geometric_figures,
+%  polygons (interior-angle sums; no admitted geoboard task carries an angle).
+%
+%  No admitted task carries the object: probability, sample_space,
+%  theoretical_probability (sample spaces and spinners), circle_properties
+%  (inscribed angles, chords, tangents), circle_area (rearranged sectors and a
+%  limit), sampling (populations and repeated draws), variables, geometry (its
+%  one entry, Bell 1979, is about properties not forming a deductive hierarchy —
+%  nothing here draws that), algebraic, measurement, division. division is the
+%  same wall task 225 hit from the notation side: no task shape in the grammar
+%  expresses division at all.
 
 %! renderable_op(?Op, -Representation, -Task) is nondet.
 %
@@ -164,6 +362,40 @@ op_parametric_backing(fraction, equipartition_failure,
 op_parametric_backing(decimal, notation_place_value_writing,
                       deformation_spec_evidence(notation,
                           place_value_writing_error(7, '+', 6, 13))).
+%  decimal_notation: the same lane and anchor — mirror_image_place_value is
+%  itself an entry under decimal_notation, and place_value_writing_error
+%  computes the mirrored inscription for it live.
+op_parametric_backing(decimal_notation, notation_place_value_writing,
+                      deformation_spec_evidence(notation,
+                          place_value_writing_error(7, '+', 6, 13))).
+%  equal_sign / equality: operational_equals_chain computes the operational
+%  reading of the equals sign live (reason(equals_read_as_makes),
+%  corpus_attested), and the lesson notation charts admit it for any hosted
+%  equation. The evidence contour differs by atom and is thin under the first:
+%  equal_sign holds two entries, of which db_row(40252) describes the
+%  operational interpretation as previously held — a perturbation the teachers
+%  it documents worked through — and the other concerns answer-position format,
+%  not this chain. The direct computational-command reports sit under equality
+%  (db_row(37932)/db_row(38494)/db_row(40111)). The two atoms name one doing,
+%  so both rows stand, with equality carrying the direct evidence.
+op_parametric_backing(equal_sign, notation_operational_equals_chain,
+                      deformation_spec_evidence(notation,
+                          operational_equals_chain(3, '+', 4, 7))).
+op_parametric_backing(equality, notation_operational_equals_chain,
+                      deformation_spec_evidence(notation,
+                          operational_equals_chain(3, '+', 4, 7))).
+%  angles: the one place a spatial break lane and a registry entry name the same
+%  error. angle_circular's ray_length_error redraws a turn with longer rays and
+%  reads it as bigger; the registry's ESM_Fischbein_1999 entry under angles is
+%  students judging an angle by the length of its drawn arms. The lane comment
+%  in representation_grammar.pl calls that break literature-only, with no row in
+%  this corpus; this row is the counterexample, and the comment wants correcting
+%  when someone next edits the grammar. The row does not change the op's lane —
+%  the bridge row above already makes angles render live — it records that the
+%  repo computes the error, not only that it can draw the correct angle.
+op_parametric_backing(angles, angle_circular_ray_length,
+                      deformation_spec_evidence(angle_circular,
+                          ray_length_error(45, 2, 6))).
 
 %! parametric_witness(+Witness) is semidet.
 %

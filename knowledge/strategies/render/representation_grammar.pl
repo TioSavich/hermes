@@ -1647,8 +1647,9 @@ representation_refusal(angle_circular, linear_length(L),
 % The break lane: the ray-length error. The same turn is redrawn with longer rays
 % and read as a bigger angle, when ray length carries none of the measure.
 % Reachable only here (no productive spec draws over-long rays and calls the angle
-% bigger); it is the compiler's angle_circular_compare_json/2 lane. Literature-
-% only: the misconception is documented, with no row in this corpus.
+% bigger); it is the compiler's angle_circular_compare_json/2 lane. The registry
+% carries the row: batch_row_39105 (ESM_Fischbein_1999_Intuitions) documents
+% angle size judged by the drawn arm length.
 deformation_spec_evidence(
         angle_circular,
         ray_length_error(Degrees, ReferenceLen, StretchedLen),
