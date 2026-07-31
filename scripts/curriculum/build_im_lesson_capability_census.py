@@ -70,6 +70,22 @@ EARLY_RUNGS = (
     "measured_transition",
     "diagnostic_ready",
 )
+DISPLAYED_RUNGS = (
+    *EARLY_RUNGS,
+    "strict_conjunction",
+    "strict_and_wired",
+)
+COUNTED_RESULT_SHAPES = {
+    "registry_trace_nonempty",
+    "outcome_trace_nonempty",
+    "synthesis_path_moves_nonempty",
+}
+OLD_COUNTED_RESULT_SHAPES = {
+    "registry_trace_nonempty",
+    "registry_trace_empty",
+    "outcome_trace_nonempty",
+    "outcome_trace_empty",
+}
 
 
 def fail(message: str) -> "NoReturn":
@@ -158,29 +174,70 @@ RUNTIME_PROBE = r"""
 census_declared_absent(Evidence) :-
     sub_term(witness_class(declared_absent), Evidence), !.
 
-census_trace(Goal, Outcome) :-
+census_trace(Goal, _, registry_trace, Trace) :-
     Goal = action_automata_registry:run_action_automaton(_, _, _, _, _, Trace),
-    is_list(Trace), !.
-census_trace(_, Outcome) :-
-    is_dict(Outcome), get_dict(trace, Outcome, Trace), is_list(Trace).
+    is_list(Trace), Trace = [_|_], !.
+census_trace(_, Outcome, outcome_trace, Trace) :-
+    is_dict(Outcome), get_dict(trace, Outcome, Trace),
+    is_list(Trace), Trace = [_|_], !.
+census_trace(_, Outcome, synthesis_path_moves, Steps) :-
+    is_dict(Outcome), get_dict(path, Outcome, Strategy),
+    Strategy = strat(_, _, _, path(_, Steps)),
+    is_list(Steps), Steps = [_|_].
 
-census_task(Code, Task, HasResult, HasTrace) :-
+census_result_shape(Goal, _, registry_trace_nonempty) :-
+    Goal = action_automata_registry:run_action_automaton(_, _, _, _, _, Trace),
+    is_list(Trace), Trace = [_|_], !.
+census_result_shape(Goal, _, registry_trace_empty) :-
+    Goal = action_automata_registry:run_action_automaton(_, _, _, _, _, []), !.
+census_result_shape(Goal, _, registry_trace_not_list) :-
+    Goal = action_automata_registry:run_action_automaton(_, _, _, _, _, _), !.
+census_result_shape(_, Outcome, outcome_trace_nonempty) :-
+    is_dict(Outcome), get_dict(trace, Outcome, Trace),
+    is_list(Trace), Trace = [_|_], !.
+census_result_shape(_, Outcome, outcome_trace_empty) :-
+    is_dict(Outcome), get_dict(trace, Outcome, []), !.
+census_result_shape(_, Outcome, outcome_trace_not_list) :-
+    is_dict(Outcome), get_dict(trace, Outcome, _), !.
+census_result_shape(_, Outcome, synthesis_path_moves_nonempty) :-
+    is_dict(Outcome), get_dict(path, Outcome, Strategy),
+    Strategy = strat(_, _, _, path(_, Steps)),
+    is_list(Steps), Steps = [_|_], !.
+census_result_shape(_, Outcome, synthesis_path_moves_empty) :-
+    is_dict(Outcome), get_dict(path, Outcome, Strategy),
+    Strategy = strat(_, _, _, path(_, [])), !.
+census_result_shape(_, Outcome, outcome_path_without_step_list) :-
+    is_dict(Outcome), get_dict(path, Outcome, _), !.
+census_result_shape(_, Outcome, result_dict_without_step_list) :-
+    is_dict(Outcome), !.
+census_result_shape(_, _, result_term_without_step_list).
+
+census_task(Code, Task, HasResult, HasTrace, TraceShape, ResultShape) :-
     pusu_run_productive(Code, Task, Outcome, Goal, _, _),
     ( pusu_result(Outcome, _) -> HasResult = true ; HasResult = false ),
-    ( HasResult == true, census_trace(Goal, Outcome)
-    -> HasTrace = true
-    ;  HasTrace = false
+    ( HasResult == true
+    -> census_result_shape(Goal, Outcome, ResultShape)
+    ;  ResultShape = no_result
+    ),
+    ( HasResult == true, census_trace(Goal, Outcome, Shape, _)
+    -> HasTrace = true, TraceShape = Shape
+    ;  HasTrace = false, TraceShape = none
     ).
 
-census_scan(_, [], ResultTask, TraceTask, ResultTask, TraceTask).
-census_scan(_, _, ResultTask, TraceTask, ResultTask, TraceTask) :-
-    TraceTask \== "", !.
-census_scan(Code, [Task|Rest], Result0, Trace0, Result, Trace) :-
-    census_task(Code, Task, HasResult, HasTrace),
+census_scan(_, [], ResultTask, TraceTask, TraceShape, Shapes,
+            ResultTask, TraceTask, TraceShape, Shapes).
+census_scan(Code, [Task|Rest], Result0, Trace0, TraceShape0, Shapes0,
+            Result, Trace, TraceShape, Shapes) :-
+    census_task(Code, Task, HasResult, HasTrace, TaskTraceShape, ResultShape),
     pusu_text(Task, TaskText),
     ( Result0 == "", HasResult == true -> Result1 = TaskText ; Result1 = Result0 ),
     ( Trace0 == "", HasTrace == true -> Trace1 = TaskText ; Trace1 = Trace0 ),
-    census_scan(Code, Rest, Result1, Trace1, Result, Trace).
+    ( TraceShape0 == none, HasTrace == true
+    -> TraceShape1 = TaskTraceShape
+    ;  TraceShape1 = TraceShape0
+    ),
+    census_scan(Code, Rest, Result1, Trace1, TraceShape1,
+                [ResultShape|Shapes0], Result, Trace, TraceShape, Shapes).
 
 census_code(Code, Row) :-
     findall(Task,
@@ -191,12 +248,15 @@ census_code(Code, Row) :-
             Tasks0),
     sort(Tasks0, Tasks),
     length(Tasks, TaskCount),
-    census_scan(Code, Tasks, "", "", ResultTask, TraceTask),
+    census_scan(Code, Tasks, "", "", none, [],
+                ResultTask, TraceTask, TraceShape, ResultShapes0),
+    reverse(ResultShapes0, ResultShapes),
     ( ResultTask == "" -> Executable = false ; Executable = true ),
     ( TraceTask == "" -> Measured = false ; Measured = true ),
     Row = _{lesson:Code, task_count:TaskCount, executable:Executable,
             measured_trace:Measured, result_task:ResultTask,
-            trace_task:TraceTask}.
+            trace_task:TraceTask, trace_shape:TraceShape,
+            result_shapes:ResultShapes}.
 
 census_main(Codes) :-
     forall(member(Code, Codes),
@@ -458,6 +518,82 @@ def top_reason(reasons: Counter) -> dict:
     return {"reason": reason, "lessons": count}
 
 
+def ladder_nesting_note(rows: list[dict]) -> str:
+    canonical = [row for row in rows if row["identity_spine"]]
+    violations = []
+    for prior, current in zip(DISPLAYED_RUNGS, DISPLAYED_RUNGS[1:]):
+        count = sum(
+            row["memberships"][current]
+            and not row["memberships"][prior]
+            for row in canonical
+        )
+        if count:
+            violations.append(
+                f"{prior} to {current} ({count} {current} lessons "
+                f"lack {prior})"
+            )
+    if not violations:
+        return "Every displayed rung is a subset of the rung before it."
+    return "The ladder does not nest at " + "; ".join(violations) + "."
+
+
+def runtime_shape_inventory(runtime: dict[str, dict]) -> dict:
+    task_counts = Counter(
+        shape
+        for row in runtime.values()
+        for shape in row["result_shapes"]
+    )
+    lesson_counts = Counter()
+    for row in runtime.values():
+        for shape in set(row["result_shapes"]):
+            lesson_counts[shape] += 1
+    excluded_reasons = {
+        "no_result": "The task returned no result, so no measured sequence exists.",
+        "registry_trace_empty": "An empty list carries no executed step.",
+        "registry_trace_not_list": "The registry trace is not a concrete step list.",
+        "outcome_trace_empty": "An empty list carries no executed step.",
+        "outcome_trace_not_list": "The outcome trace is not a concrete step list.",
+        "synthesis_path_moves_empty": "An empty move list carries no executed step.",
+        "outcome_path_without_step_list": (
+            "The path does not match the validated synthesis strategy shape "
+            "with a concrete move list."
+        ),
+        "result_dict_without_step_list": (
+            "The result-bearing dict has no recognized concrete step list."
+        ),
+        "result_term_without_step_list": (
+            "The result-bearing term has no recognized concrete step list."
+        ),
+    }
+    observed_exclusions = {
+        shape: excluded_reasons[shape]
+        for shape in sorted(task_counts)
+        if shape not in COUNTED_RESULT_SHAPES
+    }
+    old_detector_count = sum(
+        any(
+            shape in OLD_COUNTED_RESULT_SHAPES
+            for shape in row["result_shapes"]
+        )
+        for row in runtime.values()
+    )
+    widened_detector_count = sum(
+        row["measured_trace"] for row in runtime.values()
+    )
+    return {
+        "task_counts": dict(sorted(task_counts.items())),
+        "lesson_counts": dict(sorted(lesson_counts.items())),
+        "counted_as_measured": sorted(COUNTED_RESULT_SHAPES),
+        "detector_change_on_same_live_results": {
+            "old_detector_lessons": old_detector_count,
+            "widened_detector_lessons": widened_detector_count,
+            "delta": widened_detector_count - old_detector_count,
+        },
+        "excluded_by_detector": dict(sorted(excluded_reasons.items())),
+        "excluded_observed": observed_exclusions,
+    }
+
+
 def ladder(rows: list[dict], pusu_document: dict) -> list[dict]:
     canonical = [row for row in rows if row["identity_spine"]]
     canonical_count = len(canonical)
@@ -484,7 +620,8 @@ def ladder(rows: list[dict], pusu_document: dict) -> list[dict]:
         ),
         "measured_transition": (
             "At least one current compiled productive task returned a result and "
-            "a concrete automaton trace list."
+            "a nonempty runtime step sequence: a registry trace, an outcome trace, "
+            "or validated synthesis-path moves."
         ),
         "diagnostic_ready": (
             "The evidence ledger has standard action, strategy, compiled executable "
@@ -520,7 +657,7 @@ def ladder(rows: list[dict], pusu_document: dict) -> list[dict]:
                 elif not runtime["executable"]:
                     reasons["compiled_task_produced_no_current_result"] += 1
                 else:
-                    reasons["current_result_has_no_automaton_trace"] += 1
+                    reasons["current_result_has_no_nonempty_step_sequence"] += 1
             elif rung == "diagnostic_ready":
                 for missing in row["evidence"]["missing_for_diagnosis"]:
                     reasons[f"missing_{missing}"] += 1
@@ -594,43 +731,55 @@ def ladder(rows: list[dict], pusu_document: dict) -> list[dict]:
 
 
 def cheapest_next_breadth(rows: list[dict], pusu_rows: dict[str, dict]) -> list[dict]:
-    raw_only = set()
-    share_after_raw = set()
+    raw_refusal = (
+        "raw_quotient_with_remainder",
+        "rule_refusal_reason_unavailable",
+    )
+    share_refusal = (
+        "share_smaller_into_larger",
+        "rule_refusal_reason_unavailable",
+    )
+    raw_refusal_only = set()
+    share_refusal_after_raw = set()
     clean_no_route = set()
     for lesson, row in pusu_rows.items():
         if row["pusu"] == "pass":
             continue
         blockers = set()
-        if not row["contrasts"]:
+        active_contrasts = [
+            contrast for contrast in row["contrasts"]
+            if contrast.get("source") != "receipt_route_defect"
+        ]
+        if not active_contrasts:
+            active_contrasts = row["contrasts"]
+        if not active_contrasts:
             blockers.add("no_route")
         if any(item["status"] != "runs" for item in row["productive"]):
             blockers.add("productive")
-        for contrast in row["contrasts"]:
-            if contrast.get("status") in {
-                "rule_no_output",
-                "cannot_run",
-                "battery_absent",
-                "context_unvalidated",
-                "vacuous_pair",
-                "attachment_unresolved",
-            }:
+        for contrast in active_contrasts:
+            if contrast.get("status") not in LIVE_CONTRAST_STATUSES:
                 blockers.add(
-                    contrast.get("kind")
-                    or contrast.get("family")
-                    or contrast["status"]
+                    (
+                        (
+                            contrast.get("kind")
+                            or contrast.get("family")
+                            or "unnamed_route"
+                        ),
+                        contrast.get("status", "status_missing"),
+                    )
                 )
             if contrast.get("diagnosis") in {
                 "no_diagnosis",
                 "recovered_different_error",
             }:
-                blockers.add(f"diagnosis:{contrast['diagnosis']}")
-        if blockers == {"raw_quotient_with_remainder"}:
-            raw_only.add(lesson)
+                blockers.add(("diagnosis", contrast["diagnosis"]))
+        if blockers == {raw_refusal}:
+            raw_refusal_only.add(lesson)
         if blockers in (
-            {"share_smaller_into_larger"},
-            {"raw_quotient_with_remainder", "share_smaller_into_larger"},
+            {share_refusal},
+            {raw_refusal, share_refusal},
         ):
-            share_after_raw.add(lesson)
+            share_refusal_after_raw.add(lesson)
         if blockers == {"no_route"}:
             clean_no_route.add(lesson)
 
@@ -644,29 +793,32 @@ def cheapest_next_breadth(rows: list[dict], pusu_rows: dict[str, dict]) -> list[
     return [
         {
             "rank": 1,
-            "population": sorted(raw_only, key=lesson_key),
-            "lessons": len(raw_only),
+            "population": sorted(raw_refusal_only, key=lesson_key),
+            "lessons": len(raw_refusal_only),
             "work_units": 1,
-            "lessons_per_unit": len(raw_only),
+            "lessons_per_unit": len(raw_refusal_only),
             "next_rung": "strict_conjunction",
             "single_blocker": (
-                "The registered raw_quotient_with_remainder rule produces no "
-                "output at these lessons' compiled division inputs."
+                "For raw_quotient_with_remainder, the current declarations and "
+                "automaton evidence cannot distinguish a domain refusal from "
+                "a missing rule form at these compiled division inputs."
             ),
         },
         {
             "rank": 2,
-            "population": sorted(share_after_raw, key=lesson_key),
-            "lessons": len(share_after_raw),
+            "population": sorted(share_refusal_after_raw, key=lesson_key),
+            "lessons": len(share_refusal_after_raw),
             "work_units": 1,
-            "lessons_per_unit": len(share_after_raw),
+            "lessons_per_unit": len(share_refusal_after_raw),
             "next_rung": "strict_conjunction",
             "dependency": (
-                "Two of these lessons also need the rank-1 rule repair first."
+                "Two of these lessons also need the rank-1 refusal "
+                "classification resolved first."
             ),
             "single_blocker": (
-                "The registered share_smaller_into_larger rule produces no "
-                "output at the compiled division inputs."
+                "For share_smaller_into_larger, the current declarations and "
+                "automaton evidence cannot distinguish a domain refusal from "
+                "a missing rule form at the compiled division inputs."
             ),
         },
         {
@@ -852,6 +1004,7 @@ def build() -> dict:
         )
         corpus_regions["+".join(sources)] += 1
 
+    nesting_note = ladder_nesting_note(rows)
     artifact = {
         "schema": SCHEMA,
         "generated_by": (
@@ -860,8 +1013,9 @@ def build() -> dict:
         "register": (
             "A denominator-explicit census of what Hermes can currently do with "
             "IM lessons. Source presence, parsing, compiled execution, measured "
-            "traces, evidence readiness, strict PUSU, and live misconception "
-            "routes remain separate claims."
+            "runtime step sequences, evidence readiness, strict PUSU, and live "
+            "misconception routes remain separate claims. "
+            + nesting_note
         ),
         "source_populations": {
             "identity_spine": len(spine_by_id),
@@ -876,6 +1030,12 @@ def build() -> dict:
         "ladder": ladder(rows, pusu_document),
         "cuts": cut_rollups(rows),
         "cheapest_next_breadth": cheapest_next_breadth(rows, pusu_by_id),
+        "ranking_basis": (
+            "Fresh pusu_pass_v2 regenerated from the current working tree after "
+            "the task-207 schema translation; current refusal classifications "
+            "and live agrees_at_input routes determine the ranking."
+        ),
+        "runtime_result_shapes": runtime_shape_inventory(runtime),
         "spot_checks": {
             "in_canonical_corpus": {
                 "sample_size": len(spine_by_id),
@@ -914,7 +1074,9 @@ def build() -> dict:
                 "candidate_failures": sum(
                     not row["measured_trace"] for row in runtime.values()
                 ),
-                "method": "full current result-plus-trace probe",
+                "method": (
+                    "full current result-plus-nonempty-step-sequence probe"
+                ),
             },
             "diagnostic_ready": {
                 "sample_size": len(diagnostic_ids),

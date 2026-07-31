@@ -3,12 +3,12 @@
 
 pusu('IM-G2-U1-L1', broken(execute_mismatch, 'a productive task did not execute')).
 pusu('IM-G2-U1-L3', broken(vacuous_pair, 'a contrast has no separating battery input')).
-pusu_viability('IM-G2-U1-L3', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G2-U1-L3', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G2-U1-L4', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G2-U1-L5', pass).
-pusu_viability('IM-G2-U1-L5', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G2-U1-L5', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G2-U1-L11', pass).
-pusu_viability('IM-G2-U1-L11', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G2-U1-L11', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G2-U1-L13', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G2-U1-L15', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G2-U1-L16', pass).
@@ -32,7 +32,7 @@ pusu('IM-G2-U3-L11', pass).
 pusu('IM-G2-U3-L13', pass).
 pusu('IM-G2-U3-L15', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G2-U3-L16', pass).
-pusu_viability('IM-G2-U3-L16', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G2-U3-L16', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G2-U3-L17', pass).
 pusu('IM-G2-U4-L4', pass).
 pusu('IM-G2-U4-L6', pass).
@@ -43,7 +43,7 @@ pusu('IM-G2-U5-L3', broken(contrast_cannot_run, 'no attached executable contrast
 pusu('IM-G2-U5-L9', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G2-U5-L10', pass).
 pusu('IM-G2-U6-L5', pass).
-pusu_viability('IM-G2-U6-L5', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G2-U6-L5', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G2-U6-L8', pass).
 pusu('IM-G2-U6-L14', pass).
 pusu('IM-G2-U6-L17', pass).
@@ -66,12 +66,12 @@ pusu('IM-G2-U9-L1', pass).
 pusu('IM-G2-U9-L2', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G2-U9-L7', pass).
 pusu('IM-G2-U9-L8', pass).
-pusu_viability('IM-G2-U9-L8', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G2-U9-L8', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G2-U9-L9', pass).
 pusu('IM-G2-U9-L11', pass).
 pusu('IM-G2-U9-L13', pass).
 pusu('IM-G3-U1-L3', pass).
-pusu_viability('IM-G3-U1-L3', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G3-U1-L3', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G3-U1-L8', pass).
 pusu('IM-G3-U1-L9', pass).
 pusu('IM-G3-U1-L10', pass).
@@ -87,7 +87,7 @@ pusu('IM-G3-U2-L12', pass).
 pusu('IM-G3-U2-L13', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G3-U3-L2', pass).
 pusu('IM-G3-U3-L3', pass).
-pusu_viability('IM-G3-U3-L3', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G3-U3-L3', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G3-U3-L4', pass).
 pusu('IM-G3-U3-L5', pass).
 pusu('IM-G3-U3-L6', broken(contrast_cannot_run, 'no attached executable contrast route')).
@@ -126,7 +126,8 @@ pusu('IM-G3-U8-L11', broken(contrast_cannot_run, 'no attached executable contras
 pusu('IM-G3-U8-L15', needs_separating_numerals('a separating input exists but its authored agreement context did not validate')).
 pusu('IM-G4-U1-L2', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G4-U1-L4', broken(contrast_cannot_run, 'no attached executable contrast route')).
-pusu('IM-G4-U1-L7', broken(contrast_cannot_run, 'no attached executable contrast route')).
+pusu('IM-G4-U1-L7', pass).
+pusu_viability('IM-G4-U1-L7', 'divide_larger_by_smaller', o(context(given_dividend_at_least_given_divisor)), found('divide(2,3)')).
 pusu('IM-G4-U2-L3', pass).
 pusu('IM-G4-U2-L5', pass).
 pusu('IM-G4-U2-L9', pass).
@@ -152,24 +153,30 @@ pusu('IM-G4-U6-L9', broken(contrast_cannot_run, 'no attached executable contrast
 pusu('IM-G4-U6-L10', pass).
 pusu('IM-G4-U6-L11', pass).
 pusu('IM-G4-U6-L14', broken(contrast_cannot_run, 'no attached executable contrast route')).
-pusu('IM-G4-U6-L15', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
-pusu('IM-G4-U6-L16', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
+pusu('IM-G4-U6-L15', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu_viability('IM-G4-U6-L15', 'divide_larger_by_smaller', o(context(given_dividend_at_least_given_divisor)), found('divide(2,3)')).
+pusu('IM-G4-U6-L16', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu_viability('IM-G4-U6-L16', 'divide_larger_by_smaller', o(context(given_dividend_at_least_given_divisor)), found('divide(2,3)')).
 pusu('IM-G4-U6-L17', broken(contrast_cannot_run, 'no attached executable contrast route')).
-pusu('IM-G4-U6-L18', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
-pusu('IM-G4-U6-L19', pass).
+pusu('IM-G4-U6-L18', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu_viability('IM-G4-U6-L18', 'divide_larger_by_smaller', o(context(given_dividend_at_least_given_divisor)), found('divide(2,3)')).
+pusu('IM-G4-U6-L19', cannot_separate_at_value_layer('a registered rule agrees throughout its domain, so the arithmetic-value layer cannot separate this contrast')).
+pusu_viability('IM-G4-U6-L19', 'raw_quotient_with_remainder', o(context(nonzero_remainder)), cannot_separate_at_value_layer('structural_divmod_identity')).
 pusu('IM-G4-U6-L20', broken(execute_mismatch, 'a productive task did not execute')).
-pusu('IM-G4-U6-L21', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
+pusu('IM-G4-U6-L21', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu_viability('IM-G4-U6-L21', 'divide_larger_by_smaller', o(context(given_dividend_at_least_given_divisor)), found('divide(2,3)')).
 pusu('IM-G4-U6-L24', broken(diagnosis_wrong_error, 'a wrong contrast answer recovered another error')).
 pusu('IM-G4-U7-L10', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G4-U8-L2', pass).
 pusu('IM-G4-U9-L4', pass).
 pusu('IM-G4-U9-L5', pass).
 pusu('IM-G4-U9-L6', pass).
-pusu('IM-G4-U9-L8', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
+pusu('IM-G4-U9-L8', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu_viability('IM-G4-U9-L8', 'raw_quotient_with_remainder', o(context(nonzero_remainder)), cannot_separate_at_value_layer('structural_divmod_identity')).
 pusu('IM-G4-U9-L9', pass).
 pusu('IM-G4-U9-L12', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G6-U2-L3', pass).
-pusu_viability('IM-G6-U2-L3', 'additive_count_for_multiplicative_structure', o(context(factors_are_two)), 'multiply(3,2)').
+pusu_viability('IM-G6-U2-L3', 'additive_count_for_multiplicative_structure', o(context(factors_are_two)), found('multiply(3,2)')).
 pusu('IM-G6-U2-L8', pass).
 pusu('IM-G6-U2-L9', broken(execute_mismatch, 'a productive task did not execute')).
 pusu('IM-G6-U2-L12', broken(execute_mismatch, 'a productive task did not execute')).
@@ -194,7 +201,7 @@ pusu('IM-G6-U7-L15', pass).
 pusu('IM-G6-U7-L16', pass).
 pusu('IM-G7-U2-L4', pass).
 pusu('IM-G7-U2-L7', broken(execute_mismatch, 'a productive task did not execute')).
-pusu_viability('IM-G7-U2-L7', 'group_count_as_share_size', o(context(quotient_equals_group_count)), 'divide(6,2)').
+pusu_viability('IM-G7-U2-L7', 'group_count_as_share_size', o(context(quotient_equals_group_count)), found('divide(6,2)')).
 pusu('IM-G7-U2-L9', pass).
 pusu('IM-G7-U2-L14', pass).
 pusu('IM-G7-U4-L4', pass).
@@ -240,11 +247,11 @@ pusu('IM-G1-U3-L10', pass).
 pusu('IM-G1-U3-L11', pass).
 pusu('IM-G1-U3-L12', pass).
 pusu('IM-G1-U3-L13', pass).
-pusu_viability('IM-G1-U3-L13', 'double_first_add_one', o(context(addends_are_near_doubles)), 'add(1,1)').
+pusu_viability('IM-G1-U3-L13', 'double_first_add_one', o(context(addends_are_near_doubles)), found('add(1,1)')).
 pusu('IM-G1-U3-L16', pass).
 pusu('IM-G1-U3-L17', pass).
 pusu('IM-G1-U3-L19', pass).
-pusu_viability('IM-G1-U3-L19', 'double_first_add_one', o(context(addends_are_near_doubles)), 'add(1,1)').
+pusu_viability('IM-G1-U3-L19', 'double_first_add_one', o(context(addends_are_near_doubles)), found('add(1,1)')).
 pusu('IM-G1-U3-L20', pass).
 pusu('IM-G1-U3-L22', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U3-L23', broken(contrast_cannot_run, 'no attached executable contrast route')).
@@ -252,7 +259,7 @@ pusu('IM-G1-U3-L24', pass).
 pusu('IM-G1-U3-L25', broken(execute_mismatch, 'a productive task did not execute')).
 pusu('IM-G1-U3-L26', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U3-L27', pass).
-pusu_viability('IM-G1-U3-L27', 'flip_subtraction_order', o(context(minuend_at_least_subtrahend)), 'subtract(1,2)').
+pusu_viability('IM-G1-U3-L27', 'flip_subtraction_order', o(context(minuend_at_least_subtrahend)), found('subtract(1,2)')).
 pusu('IM-G1-U4-L4', pass).
 pusu('IM-G1-U4-L10', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U4-L11', broken(contrast_cannot_run, 'no attached executable contrast route')).
@@ -265,28 +272,28 @@ pusu('IM-G1-U5-L2', pass).
 pusu('IM-G1-U5-L3', pass).
 pusu('IM-G1-U5-L5', pass).
 pusu('IM-G1-U5-L6', pass).
-pusu_viability('IM-G1-U5-L6', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G1-U5-L6', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G1-U5-L7', pass).
 pusu('IM-G1-U5-L8', pass).
 pusu('IM-G1-U5-L9', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U5-L10', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U5-L11', pass).
 pusu('IM-G1-U5-L12', pass).
-pusu_viability('IM-G1-U5-L12', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G1-U5-L12', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G1-U6-L2', pass).
 pusu('IM-G1-U6-L4', pass).
 pusu('IM-G1-U6-L13', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U6-L14', pass).
 pusu('IM-G1-U6-L15', pass).
 pusu('IM-G1-U6-L16', pass).
-pusu_viability('IM-G1-U6-L16', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G1-U6-L16', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G1-U7-L6', pass).
-pusu_viability('IM-G1-U7-L6', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), 'add(1,1)').
+pusu_viability('IM-G1-U7-L6', 'dropped_remainder_chunk', o(context(second_addend_has_no_ones)), found('add(1,1)')).
 pusu('IM-G1-U7-L8', pass).
-pusu_viability('IM-G1-U7-L8', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G1-U7-L8', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G1-U7-L14', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U7-L16', pass).
-pusu_viability('IM-G1-U7-L16', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), 'add(5,6)').
+pusu_viability('IM-G1-U7-L16', 'dropped_leftover_after_make_ten', o(context(smaller_addend_completes_next_base)), found('add(5,6)')).
 pusu('IM-G1-U8-L2', pass).
 pusu('IM-G1-U8-L4', pass).
 pusu('IM-G1-U8-L6', pass).
@@ -298,20 +305,21 @@ pusu('IM-G5-U2-L13', broken(contrast_cannot_run, 'no attached executable contras
 pusu('IM-G5-U4-L2', pass).
 pusu('IM-G5-U4-L4', pass).
 pusu('IM-G5-U4-L5', pass).
-pusu_viability('IM-G5-U4-L5', 'partial_products_no_place_shift', o(context(single_digit_multiplier)), 'multiply(12,11)').
-pusu_viability('IM-G5-U4-L5', 'partial_products_no_shift', o(context(single_digit_multiplier)), 'multiply(12,11)').
+pusu_viability('IM-G5-U4-L5', 'partial_products_no_place_shift', o(context(single_digit_multiplier)), found('multiply(12,11)')).
+pusu_viability('IM-G5-U4-L5', 'partial_products_no_shift', o(context(single_digit_multiplier)), found('multiply(12,11)')).
 pusu('IM-G5-U4-L6', pass).
-pusu('IM-G5-U4-L10', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
-pusu('IM-G5-U4-L11', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
-pusu('IM-G5-U4-L12', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
-pusu('IM-G5-U4-L13', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
-pusu('IM-G5-U4-L16', broken(contrast_cannot_run, 'an attached contrast route did not produce an executable output')).
+pusu('IM-G5-U4-L10', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu('IM-G5-U4-L11', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu('IM-G5-U4-L12', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu('IM-G5-U4-L13', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
+pusu('IM-G5-U4-L16', rule_refusal_reason_unavailable('the available declarations and automaton evidence cannot distinguish this rule refusal')).
 pusu('IM-G5-U4-L19', pass).
 pusu('IM-G5-U5-L4', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G5-U5-L6', broken(battery_absent, 'an agreeing contrast has no declared operation battery')).
 pusu('IM-G5-U5-L11', pass).
 pusu('IM-G5-U5-L25', broken(contrast_cannot_run, 'no attached executable contrast route')).
-pusu('IM-G5-U6-L3', broken(contrast_cannot_run, 'no attached executable contrast route')).
+pusu('IM-G5-U6-L3', pass).
+pusu_viability('IM-G5-U6-L3', 'divide_larger_by_smaller', o(context(given_dividend_at_least_given_divisor)), found('divide(2,3)')).
 pusu('IM-G5-U6-L6', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G5-U6-L7', pass).
 pusu('IM-G5-U6-L8', pass).
@@ -322,3 +330,4 @@ pusu('IM-G5-U8-L4', broken(execute_mismatch, 'a productive task did not execute'
 pusu('IM-G5-U8-L7', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G5-U8-L10', pass).
 pusu('IM-G5-U8-L16', pass).
+pusu_viability('IM-G5-U8-L16', 'adjust_dividend_for_division', o(context(exact_division)), found('divide(2,3)')).
