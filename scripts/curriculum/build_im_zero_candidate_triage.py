@@ -28,7 +28,7 @@ import compile_action_mappings as compiler  # noqa: E402
 OUTPUT = ROOT / "data/learningcommons/derived/im_zero_candidate_triage.json"
 CENSUS = ROOT / "data/learningcommons/derived/im_lesson_capability_census.json"
 SCHEMA = "im_zero_candidate_triage_v1"
-EXPECTED = 611
+EXPECTED = 586
 K5 = {"K", "1", "2", "3", "4", "5"}
 
 # Evidence grammar, not a promotion grammar. It includes forms deliberately

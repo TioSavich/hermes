@@ -2,7 +2,7 @@
  "by_grade": {
   "1": {
    "diagnostic_ready": 68,
-   "executable_task": 78,
+   "executable_task": 80,
    "measured_transition": 78,
    "negative_candidate": 128,
    "published": 148,
@@ -12,17 +12,17 @@
   },
   "2": {
    "diagnostic_ready": 63,
-   "executable_task": 76,
+   "executable_task": 78,
    "measured_transition": 76,
-   "negative_candidate": 127,
+   "negative_candidate": 128,
    "published": 150,
    "standard_action_candidate": 149,
-   "strategy_evidence": 134,
+   "strategy_evidence": 135,
    "structured_negative": 76
   },
   "3": {
    "diagnostic_ready": 52,
-   "executable_task": 63,
+   "executable_task": 66,
    "measured_transition": 63,
    "negative_candidate": 113,
    "published": 143,
@@ -32,7 +32,7 @@
   },
   "4": {
    "diagnostic_ready": 44,
-   "executable_task": 55,
+   "executable_task": 57,
    "measured_transition": 55,
    "negative_candidate": 115,
    "published": 151,
@@ -42,7 +42,7 @@
   },
   "5": {
    "diagnostic_ready": 30,
-   "executable_task": 41,
+   "executable_task": 42,
    "measured_transition": 41,
    "negative_candidate": 114,
    "published": 148,
@@ -54,34 +54,36 @@
    "diagnostic_ready": 23,
    "executable_task": 51,
    "measured_transition": 51,
-   "negative_candidate": 107,
+   "negative_candidate": 111,
    "published": 152,
    "standard_action_candidate": 143,
-   "strategy_evidence": 134,
+   "strategy_evidence": 138,
    "structured_negative": 24
   },
   "7": {
    "diagnostic_ready": 15,
    "executable_task": 28,
    "measured_transition": 28,
-   "negative_candidate": 28,
+   "negative_candidate": 41,
    "published": 143,
    "standard_action_candidate": 140,
-   "strategy_evidence": 28,
+   "strategy_evidence": 43,
    "structured_negative": 15
   },
   "8": {
+   "negative_candidate": 17,
    "published": 134,
-   "standard_action_candidate": 130
+   "standard_action_candidate": 130,
+   "strategy_evidence": 18
   },
   "K": {
    "diagnostic_ready": 5,
-   "executable_task": 9,
+   "executable_task": 17,
    "measured_transition": 9,
-   "negative_candidate": 88,
+   "negative_candidate": 90,
    "published": 139,
    "standard_action_candidate": 131,
-   "strategy_evidence": 102,
+   "strategy_evidence": 103,
    "structured_negative": 45
   }
  },
@@ -5236,25 +5238,40 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "2",
    "lesson": "IM-G2-U4-L13",
    "missing_for_diagnosis": [
-    "strategy_evidence",
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Represent Story Problems",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
+    {
+     "deformation": "answer_as_endpoint_count_up",
+     "family": "endpoint_as_difference",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "subtraction",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_up_missing_addend"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.MD.B.5": [
      "represent",
@@ -9491,7 +9508,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -9501,7 +9518,6 @@
    "grade": "2",
    "lesson": "IM-G2-U7-L19",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -9514,10 +9530,26 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "make_ten_split_leftover"
+    },
+    {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "2.NBT.B.7": [
      "add",
@@ -15901,7 +15933,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -15911,7 +15943,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L2",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -15943,7 +15974,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.A.2": [
      "describe",
@@ -17246,7 +17277,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -17256,7 +17287,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L18",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Greater Numbers in Equal Groups",
@@ -17351,7 +17381,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.OA.A.3": [
      "represent",
@@ -17635,7 +17665,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -17645,7 +17675,6 @@
    "grade": "3",
    "lesson": "IM-G3-U4-L22",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -17658,6 +17687,14 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "fair_share_equal_groups"
+    },
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
     },
     {
      "deformation": "add_instead_of_multiply",
@@ -17677,7 +17714,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "3.MD.C.7": [
      "relate"
@@ -22480,6 +22517,22 @@
      "operation": "fraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "unit_fraction_iteration"
+    },
+    {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
     }
    ],
    "negative_receipts": [],
@@ -27316,7 +27369,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -27326,7 +27379,6 @@
    "grade": "4",
    "lesson": "IM-G4-U6-L12",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -27339,10 +27391,26 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "base_ones_chunking"
+    },
+    {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.MD.A.2": [
      "represent",
@@ -27367,7 +27435,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -27377,7 +27445,6 @@
    "grade": "4",
    "lesson": "IM-G4-U6-L13",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Situations Involving Equal-Size Groups",
@@ -27416,7 +27483,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "4.NBT.B.6": [
      "explain",
@@ -31916,6 +31983,22 @@
      "productive": "fair_share_equal_groups"
     },
     {
+     "deformation": "add_instead_of_multiply",
+     "family": "addition_instead_of_multiplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
+     "deformation": "repeat_group_size_by_itself",
+     "family": "role_confusion_repeats_size_by_itself",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "repeat_equal_groups"
+    },
+    {
      "deformation": "reverse_ratio_referent_order",
      "family": "reversed_ratio_referent_order",
      "mapping_origin": "compiled_source_mapping",
@@ -33207,24 +33290,32 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": false,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L1",
    "missing_for_diagnosis": [
     "standard_action_candidate",
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Anchoring Units of Measurement",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "change_unit_label_without_scaling",
+     "family": "change_unit_label_without_scaling",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "unit_conversion_by_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "spine_only",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {},
    "standard_alignments": {
     "building_on": [
@@ -33355,6 +33446,14 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "base_ones_chunking"
+    },
+    {
+     "deformation": "change_unit_label_without_scaling",
+     "family": "change_unit_label_without_scaling",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "unit_conversion_by_iteration"
     },
     {
      "deformation": "add_counts_without_composite_unit",
@@ -34718,6 +34817,14 @@
      "productive": "measure_groups_of_size"
     },
     {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    },
+    {
      "deformation": "add_counts_without_composite_unit",
      "family": "additive_count_for_multiplicative_structure",
      "mapping_origin": "direct_lesson_fact",
@@ -34981,6 +35088,14 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "fair_share_equal_groups"
+    },
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
     }
    ],
    "negative_receipts": [],
@@ -35175,23 +35290,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U4-L12",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Fractional Lengths",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "6.NS.A.1": [
      "compute",
@@ -35260,13 +35383,12 @@
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U4-L14",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
@@ -35274,7 +35396,7 @@
    "name": "Fractional Lengths in Triangles and Prisms",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "6.G.A.1": [
      "apply",
@@ -35486,6 +35608,14 @@
      "productive": "decimal_addition_by_aligned_units"
     },
     {
+     "deformation": "decimal_point_rule_misapplication",
+     "family": "decimal_point_rule_misapplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "decimal_multiplication_rule"
+    },
+    {
      "deformation": "decimal_subtract_unaligned_numerals",
      "family": "decimal_subtract_unaligned_numerals",
      "mapping_origin": "direct_lesson_fact",
@@ -35555,6 +35685,14 @@
      "operation": "decimal",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "decimal_subtraction_by_aligned_units"
+    },
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
     }
    ],
    "negative_receipts": [],
@@ -35666,6 +35804,14 @@
      "operation": "decimal",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "decimal_subtraction_by_aligned_units"
+    },
+    {
+     "deformation": "answer_as_endpoint_count_up",
+     "family": "endpoint_as_difference",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "subtraction",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_up_missing_addend"
     }
    ],
    "negative_receipts": [],
@@ -35703,6 +35849,22 @@
    ],
    "name": "Using Fractions to Multiply Decimals",
    "negative_candidates": [
+    {
+     "deformation": "decimal_point_rule_misapplication",
+     "family": "decimal_point_rule_misapplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "decimal_multiplication_rule"
+    },
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
+    },
     {
      "deformation": "share_into_divisor_groups",
      "family": "divisor_as_number_of_groups",
@@ -35759,6 +35921,14 @@
      "operation": "decimal",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "decimal_multiplication_rule"
+    },
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
     }
    ],
    "negative_receipts": [],
@@ -35795,6 +35965,22 @@
    "missing_for_diagnosis": [],
    "name": "Using Diagrams to Represent Multiplication",
    "negative_candidates": [
+    {
+     "deformation": "decimal_point_rule_misapplication",
+     "family": "decimal_point_rule_misapplication",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "decimal_multiplication_rule"
+    },
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
+    },
     {
      "deformation": "add_counts_without_composite_unit",
      "family": "additive_count_for_multiplicative_structure",
@@ -35877,6 +36063,14 @@
      "operation": "decimal",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "decimal_multiplication_rule"
+    },
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
     },
     {
      "deformation": "drop_second_partial_product",
@@ -36007,6 +36201,14 @@
    "name": "Using Partial Quotients",
    "negative_candidates": [
     {
+     "deformation": "omit_highest_place_regrouping",
+     "family": "omitted_place_value_regrouping",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "counting",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "recursive_place_value_inscription"
+    },
+    {
      "deformation": "stop_after_first_partial_quotient",
      "family": "stops_after_first_partial_quotient",
      "mapping_origin": "direct_lesson_fact",
@@ -36053,12 +36255,28 @@
    "name": "Using Long Division",
    "negative_candidates": [
     {
+     "deformation": "omit_highest_place_regrouping",
+     "family": "omitted_place_value_regrouping",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "counting",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "recursive_place_value_inscription"
+    },
+    {
      "deformation": "sum_dividend_and_divisor",
      "family": "division_replaced_by_digit_sum",
      "mapping_origin": "direct_lesson_fact",
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "long_division"
+    },
+    {
+     "deformation": "stop_after_first_partial_quotient",
+     "family": "stops_after_first_partial_quotient",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "partial_quotient_chunking"
     },
     {
      "deformation": "drop_second_partial_product",
@@ -38952,7 +39170,7 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": false
@@ -38965,7 +39183,16 @@
     "measured_transition"
    ],
    "name": "Mean",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "name_group_count_as_share_size",
+     "family": "group_count_as_share_size",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "fair_share_equal_groups"
+    }
+   ],
    "negative_receipts": [],
    "readiness": "strategy_attached",
    "standard_action_candidates": {
@@ -39392,23 +39619,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "6",
    "lesson": "IM-G6-U9-L1",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Fermi Problems",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "change_unit_label_without_scaling",
+     "family": "change_unit_label_without_scaling",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "unit_conversion_by_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "6.G.A": [
      "solve"
@@ -39852,23 +40087,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U1-L2",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Corresponding Parts and Scale Factors",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A.1": [
      "compute",
@@ -39933,23 +40176,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U1-L4",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Scaled Relationships",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A.1": [
      "compute",
@@ -40401,23 +40652,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U2-L3",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "More about Constant of Proportionality",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "change_unit_label_without_scaling",
+     "family": "change_unit_label_without_scaling",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "unit_conversion_by_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.RP.A.2.a": [
      "graph",
@@ -40532,23 +40791,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U2-L5",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Two Equations for Each Relationship",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "change_unit_label_without_scaling",
+     "family": "change_unit_label_without_scaling",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "unit_conversion_by_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.RP.A": [
      "analyze",
@@ -41307,23 +41574,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U3-L1",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "How Well Can You Measure?",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_marks_not_intervals",
+     "family": "count_marks_not_intervals",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "linear_unit_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.RP.A.2.a": [
      "graph",
@@ -41389,23 +41664,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U3-L3",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Exploring Circumference",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.B.4": [
      "give",
@@ -41994,6 +42277,14 @@
    "name": "Say It with Decimals",
    "negative_candidates": [
     {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
+    },
+    {
      "deformation": "sum_dividend_and_divisor",
      "family": "division_replaced_by_digit_sum",
      "mapping_origin": "direct_lesson_fact",
@@ -42269,6 +42560,14 @@
    ],
    "name": "Part of a Percent",
    "negative_candidates": [
+    {
+     "deformation": "omit_highest_place_regrouping",
+     "family": "omitted_place_value_regrouping",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "counting",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "recursive_place_value_inscription"
+    },
     {
      "deformation": "name_group_count_as_share_size",
      "family": "group_count_as_share_size",
@@ -44668,13 +44967,12 @@
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L1",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
@@ -44682,7 +44980,7 @@
    "name": "Relationships of Angles",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A": [
      "construct",
@@ -44755,23 +45053,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L3",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Nonadjacent Angles",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.EE.A": [
      "generate",
@@ -44794,23 +45100,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L4",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Solving for Unknown Angles",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A": [
      "construct",
@@ -44844,13 +45158,12 @@
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L5",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
@@ -44858,7 +45171,7 @@
    "name": "Using Equations to  Solve for Unknown Angles",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.EE.B.4": [
      "construct",
@@ -44958,23 +45271,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L8",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Triangles with 3 Common Measures",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A.2": [
      "construct",
@@ -44992,23 +45313,39 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L9",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Drawing Triangles (Part 1)",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    },
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A": [
      "construct",
@@ -45032,23 +45369,39 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L10",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Drawing Triangles (Part 2)",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    },
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A.2": [
      "construct",
@@ -45289,23 +45642,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U7-L17",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Building Prisms",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.A.2": [
      "construct",
@@ -46680,23 +47041,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "7",
    "lesson": "IM-G7-U9-L10",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Building a Trundle Wheel",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_marks_not_intervals",
+     "family": "count_marks_not_intervals",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "measurement",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "linear_unit_iteration"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "7.G.B.4": [
      "give",
@@ -46915,23 +47284,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L4",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Making the Moves",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.1": [
      "verify"
@@ -46986,23 +47363,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L6",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Describing Transformations",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.1": [
      "verify"
@@ -47023,23 +47408,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L7",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "No Bending or Stretching",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.1.a": [
      "verify"
@@ -47063,23 +47456,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L8",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Rotation Patterns",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.1.a": [
      "verify"
@@ -47147,23 +47548,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L10",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Composing Figures",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.1.a": [
      "verify"
@@ -47334,23 +47743,39 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L15",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Adding the Angles in a Triangle",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    },
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.2": [
      "describe",
@@ -47375,23 +47800,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U1-L16",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Parallel Lines and the Angles in a Triangle",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A.5": [
      "give",
@@ -47452,24 +47885,32 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": false,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U2-L1",
    "missing_for_diagnosis": [
     "standard_action_candidate",
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Projecting and Scaling",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "spine_only",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {},
    "standard_alignments": {
     "building_on": [
@@ -47713,23 +48154,39 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U2-L8",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Similar Triangles",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "angle_as_ray_length",
+     "family": "angle_confused_with_ray_length",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "angle_turn_measurement"
+    },
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A": [
      "understand",
@@ -50423,13 +50880,12 @@
     "measured_transition": false,
     "negative_candidate": false,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U6-L10",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
@@ -50437,7 +50893,7 @@
    "name": "Using Data Displays to Find Associations",
    "negative_candidates": [],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.SP.A.4": [
      "collect",
@@ -50782,23 +51238,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U7-L9",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Describing Large and Small Numbers Using Powers of 10",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.EE.A.3": [
      "determine",
@@ -51045,23 +51509,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U7-L15",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Adding and Subtracting with Scientific Notation",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.EE.A.4": [
      "interpret",
@@ -51339,23 +51811,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U8-L6",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Reasoning about Square Roots",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.EE.A.2": [
      "evaluate",
@@ -51552,23 +52032,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U8-L11",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Applications of the Pythagorean Theorem",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.EE.A.2": [
      "evaluate",
@@ -51671,23 +52159,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U8-L14",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Edge Lengths and Volumes",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.EE.A.2": [
      "evaluate",
@@ -51755,23 +52251,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U8-L16",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Decimal Representations of Rational Numbers",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "decimal_whole_number_reading",
+     "family": "decimal_whole_number_reading",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "decimal",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "positional_decimal_reading"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.EE.A": [
      "work"
@@ -51842,23 +52346,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U8-L18",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "When Is the Same Size Not the Same Size?",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.B.7": [
      "apply",
@@ -51915,23 +52427,31 @@
    "evidence": {
     "executable_task": false,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "8",
    "lesson": "IM-G8-U9-L2",
    "missing_for_diagnosis": [
-    "strategy_evidence",
     "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Regular Tessellations",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "orientation_bound_shape_classification",
+     "family": "shape_classification_bound_to_prototype_orientation",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "geometry",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "shape_classification_by_defining_attributes"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "strategy_attached",
    "standard_action_candidates": {
     "8.G.A": [
      "understand",
@@ -53874,7 +54394,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -53884,11 +54404,18 @@
    "grade": "K",
    "lesson": "IM-GK-U2-L21",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Compare Numbers and Images",
    "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
     {
      "deformation": "round_without_adjusting",
      "family": "rounding_without_compensation",
@@ -53899,7 +54426,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.CC.B.4": [
      "count",
@@ -55111,9 +55638,9 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
     "structured_negative": true
@@ -55121,13 +55648,21 @@
    "grade": "K",
    "lesson": "IM-GK-U4-L8",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Represent and Solve Story Problems",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.OA.A.1": [
      "represent"
@@ -55153,25 +55688,32 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
-    "negative_candidate": false,
+    "negative_candidate": true,
     "standard_action_candidate": true,
-    "strategy_evidence": false,
+    "strategy_evidence": true,
     "structured_negative": false
    },
    "grade": "K",
    "lesson": "IM-GK-U4-L9",
    "missing_for_diagnosis": [
-    "strategy_evidence",
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Solve Story Problems",
-   "negative_candidates": [],
+   "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    }
+   ],
    "negative_receipts": [],
-   "readiness": "standard_action_candidate",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.CC.A.3": [
      "count",
@@ -55208,7 +55750,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -55218,11 +55760,18 @@
    "grade": "K",
    "lesson": "IM-GK-U4-L10",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Compare Drawings",
    "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
     {
      "deformation": "round_without_adjusting",
      "family": "rounding_without_compensation",
@@ -55233,7 +55782,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.CC.B.5": [
      "count"
@@ -55259,7 +55808,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -55269,12 +55818,19 @@
    "grade": "K",
    "lesson": "IM-GK-U4-L11",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Drawings to Represent Story Problems",
    "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
     {
      "deformation": "drop_ones_after_base_takeaway",
      "family": "dropped_subtrahend_remainder",
@@ -55285,7 +55841,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.OA.A.2": [
      "add",
@@ -55306,7 +55862,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -55316,7 +55872,6 @@
    "grade": "K",
    "lesson": "IM-GK-U4-L12",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "Compare Addition and Subtraction Story Problems",
@@ -55339,7 +55894,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.CC.A.1": [
      "count"
@@ -55635,7 +56190,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -55645,7 +56200,6 @@
    "grade": "K",
    "lesson": "IM-GK-U4-L18",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
@@ -55669,7 +56223,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.CC.A.1": [
      "count"
@@ -57405,7 +57959,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -57415,12 +57969,19 @@
    "grade": "K",
    "lesson": "IM-GK-U7-L5",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Story Problems about Shapes",
    "negative_candidates": [
+    {
+     "deformation": "count_all_when_count_on_available",
+     "family": "count_all_when_count_on_available",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "addition",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "count_on_from_larger"
+    },
     {
      "deformation": "round_without_adjusting",
      "family": "rounding_without_compensation",
@@ -57439,7 +58000,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "K.OA.A.1": [
      "represent"
@@ -60649,7 +61210,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -60659,7 +61220,6 @@
    "grade": "1",
    "lesson": "IM-G1-U2-L8",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "One Part Red, How Many Yellow?",
@@ -60690,7 +61250,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.NBT.A.1": [
      "count",
@@ -62349,6 +62909,14 @@
      "operation": "subtraction",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "count_up_missing_addend"
+    },
+    {
+     "deformation": "drop_ones_after_base_takeaway",
+     "family": "dropped_subtrahend_remainder",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "subtraction",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "take_away_base_ones"
     }
    ],
    "negative_receipts": [],
@@ -67694,7 +68262,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -67704,7 +68272,6 @@
    "grade": "1",
    "lesson": "IM-G1-U6-L11",
    "missing_for_diagnosis": [
-    "executable_task",
     "measured_transition"
    ],
    "name": "How Long Are Our Shoes?",
@@ -67735,7 +68302,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "1.MD.A.2": [
      "understand"
@@ -70896,7 +71463,7 @@
   },
   {
    "evidence": {
-    "executable_task": false,
+    "executable_task": true,
     "measured_transition": false,
     "negative_candidate": true,
     "standard_action_candidate": true,
@@ -70906,12 +71473,19 @@
    "grade": "5",
    "lesson": "IM-G5-U2-L3",
    "missing_for_diagnosis": [
-    "executable_task",
     "structured_negative",
     "measured_transition"
    ],
    "name": "Interpret Equations",
    "negative_candidates": [
+    {
+     "deformation": "name_group_count_as_share_size",
+     "family": "group_count_as_share_size",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "fair_share_equal_groups"
+    },
     {
      "deformation": "whole_number_grab",
      "family": "whole_number_grab",
@@ -70922,7 +71496,7 @@
     }
    ],
    "negative_receipts": [],
-   "readiness": "strategy_attached",
+   "readiness": "event_ready",
    "standard_action_candidates": {
     "5.NF.B.3": [
      "divide",
@@ -73402,6 +73976,14 @@
      "operation": "division",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "long_division"
+    },
+    {
+     "deformation": "share_into_divisor_groups",
+     "family": "divisor_as_number_of_groups",
+     "mapping_origin": "compiled_source_mapping",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "measure_groups_of_size"
     }
    ],
    "negative_receipts": [],
@@ -73670,6 +74252,14 @@
    ],
    "name": "Find Unknown Side Lengths",
    "negative_candidates": [
+    {
+     "deformation": "stop_after_first_partial_quotient",
+     "family": "stops_after_first_partial_quotient",
+     "mapping_origin": "direct_lesson_fact",
+     "operation": "division",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "partial_quotient_chunking"
+    },
     {
      "deformation": "subtract_side_from_area",
      "family": "area_product_treated_as_additive_total",
@@ -75636,6 +76226,14 @@
      "operation": "decimal",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "positional_decimal_reading"
+    },
+    {
+     "deformation": "drop_second_partial_product",
+     "family": "dropped_partial_product",
+     "mapping_origin": "direct_lesson_fact",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "distribute_group_size_split"
     }
    ],
    "negative_receipts": [],
@@ -77795,6 +78393,14 @@
      "operation": "addition",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
      "productive": "column_addition_with_carrying"
+    },
+    {
+     "deformation": "drop_second_partial_product",
+     "family": "dropped_partial_product",
+     "mapping_origin": "direct_lesson_fact",
+     "operation": "multiplication",
+     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
+     "productive": "distribute_group_size_split"
     }
    ],
    "negative_receipts": [],
@@ -78600,12 +79206,12 @@
  },
  "summary": {
   "diagnostic_ready": 300,
-  "executable_task": 401,
+  "executable_task": 419,
   "measured_transition": 401,
-  "negative_candidate": 820,
+  "negative_candidate": 857,
   "published": 1308,
   "standard_action_candidate": 1272,
-  "strategy_evidence": 916,
+  "strategy_evidence": 955,
   "structured_negative": 446
  }
 }

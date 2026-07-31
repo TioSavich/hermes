@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(401, 2041).
+compiled_task_instance_summary(419, 2086).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -54,8 +54,12 @@ compiled_lesson_task_instance('IM-G1-U2-L1', deformation(count_all_when_count_on
                               task_evidence(rule(g1_books_count_all_response), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', lines(293, 295)), position(activity_2_item(1)), excerpt("They count all the counters"))).
 compiled_lesson_task_instance('IM-G1-U2-L1', productive-add(5, 2),
                               task_evidence(rule(g1_books_add_to), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', lines(273, 276)), position(activity_2_item(1)), excerpt("5 books are on a shelf."))).
+compiled_lesson_task_instance('IM-G1-U2-L1', productive-add(5, 2),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', lines(273, 277)), position(student_task_statement(3)/item(1)), excerpt("5 books are on a shelf. Clare puts 2 more books on the shelf. How many books are on the shelf now?"))).
 compiled_lesson_task_instance('IM-G1-U2-L1', productive-subtract(5, 2),
                               task_evidence(rule(g1_books_take_from), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', lines(282, 285)), position(activity_2_item(2)), excerpt("2 of the books fall on the floor."))).
+compiled_lesson_task_instance('IM-G1-U2-L1', productive-subtract(5, 2),
+                              task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', lines(282, 287)), position(student_task_statement(3)/item(2)), excerpt("5 books are on the table. 2 of the books fall on the floor. How many books are still on the table?"))).
 compiled_lesson_task_instance('IM-G1-U2-L10', productive-subtract(7, 2),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit2/lesson10.md', lines(86, 86)), position(student_task_statement(1)/expression(1)), excerpt("7- 2"))).
 compiled_lesson_task_instance('IM-G1-U2-L10', productive-subtract(7, 5),
@@ -98,10 +102,16 @@ compiled_lesson_task_instance('IM-G1-U2-L19', productive-subtract(10, 4),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L19'), position('student_task_statement(1)'))), position(student_task_statement(1)/recovered_equation(2)), excerpt("10- 4 = 6"))).
 compiled_lesson_task_instance('IM-G1-U2-L19', productive-subtract(6, 2),
                               task_evidence(rule(printed_equation_list_missing_addend), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L19'), position('student_task_statement(1)'))), position(student_task_statement(1)/recovered_equation(3)), excerpt("6 = 2 + 4"))).
+compiled_lesson_task_instance('IM-G1-U2-L2', productive-add(4, 3),
+                              task_evidence(rule(narrative_two_actor_combine_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson2.md', lines(383, 387)), position(student_task_statement(4)/item(1)), excerpt("Mai put 4 books on the shelf. Then Noah put 3 books on the shelf. How many books are on the shelf now?"))).
 compiled_lesson_task_instance('IM-G1-U2-L2', deformation(count_all_when_count_on_available)-add(6, 3),
                               task_evidence(rule(g1_story_time_6_3_error), source('curriculum/im_teacher_guides/grade1/unit2/lesson2.md', lines(154, 154)), position(activity_1), excerpt("Represent the story with drawings and count all or count on from 6."))).
 compiled_lesson_task_instance('IM-G1-U2-L2', productive-add(6, 3),
                               task_evidence(rule(g1_story_time_6_3), source('curriculum/im_teacher_guides/grade1/unit2/lesson2.md', lines(175, 177)), position(activity_1), excerpt("6 people come to story time."))).
+compiled_lesson_task_instance('IM-G1-U2-L2', productive-add(6, 3),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson2.md', lines(175, 177)), position(student_task_statement(2)/item(1)), excerpt("6 people come to story time. 3 more people join the group. How many people are at story time now?"))).
+compiled_lesson_task_instance('IM-G1-U2-L2', productive-subtract(9, 2),
+                              task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson2.md', lines(282, 293)), position(student_task_statement(3)/item(1)), excerpt("9 books are on a cart. The librarian takes 2 of the books. How many books are still on the cart?"))).
 compiled_lesson_task_instance('IM-G1-U2-L20', productive-subtract(10, 4),
                               task_evidence(rule(story_compare_difference_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson20.md', lines(195, 211)), position(student_task_statement(1)/item(3)), excerpt("3. Noah covers 4 pictures on his board. His brother covers 10 pictures. How many fewer pictures does Noah have covered than his brother?"))).
 compiled_lesson_task_instance('IM-G1-U2-L20', productive-subtract(8, 5),
@@ -114,10 +124,14 @@ compiled_lesson_task_instance('IM-G1-U2-L22', productive-subtract(5, 4),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit2/lesson22.md', lines(96, 96)), position(student_task_statement(1)/printed_equation(96)), excerpt("\u2022 5 - 4 ="))).
 compiled_lesson_task_instance('IM-G1-U2-L22', productive-subtract(8, 6),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit2/lesson22.md', lines(98, 98)), position(student_task_statement(1)/printed_equation(98)), excerpt("\u2022 8 - 6 ="))).
+compiled_lesson_task_instance('IM-G1-U2-L3', productive-add(5, 4),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson3.md', lines(274, 278)), position(student_task_statement(3)/item(1)), excerpt("5 books about space. She checks out 4 more. How many books about space does Mai have?"))).
 compiled_lesson_task_instance('IM-G1-U2-L3', deformation(operation_direction_reversal)-subtract(8, 6),
                               task_evidence(rule(g1_kiran_books_8_6_error), source('curriculum/im_teacher_guides/grade1/unit2/lesson3.md', lines(228, 228)), position(activity_1), excerpt("If students add 6 and 8, consider asking:"))).
 compiled_lesson_task_instance('IM-G1-U2-L3', productive-subtract(8, 6),
                               task_evidence(rule(g1_kiran_books_8_6), source('curriculum/im_teacher_guides/grade1/unit2/lesson3.md', lines(170, 173)), position(activity_1), excerpt("Kiran has 6 books."))).
+compiled_lesson_task_instance('IM-G1-U2-L3', productive-subtract(8, 6),
+                              task_evidence(rule(narrative_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson3.md', lines(170, 177)), position(student_task_statement(2)/item(1)), excerpt("6 books. His friend gives him some more books. Now Kiran has 8 books. How many books did Kiran get from his friend?"))).
 compiled_lesson_task_instance('IM-G1-U2-L4', productive-add(5, 1),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("5 + 1"))).
 compiled_lesson_task_instance('IM-G1-U2-L4', productive-add(5, 2),
@@ -126,12 +140,18 @@ compiled_lesson_task_instance('IM-G1-U2-L4', productive-add(6, 2),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("6 + 2"))).
 compiled_lesson_task_instance('IM-G1-U2-L4', productive-add(7, 3),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("7 + 3"))).
+compiled_lesson_task_instance('IM-G1-U2-L4', productive-subtract(9, 3),
+                              task_evidence(rule(narrative_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson4.md', lines(178, 198)), position(student_task_statement(2)/item(2)), excerpt("3 books from the library. Mai gives him some more books. Now Andre has 9 books. How many books did Mai give him?"))).
 compiled_lesson_task_instance('IM-G1-U2-L6', deformation(count_all_when_count_on_available)-add(4, 5),
                               task_evidence(rule(g1_fish_tank_4_5_error), source('curriculum/im_teacher_guides/grade1/unit2/lesson6.md', lines(210, 210)), position(activity_1), excerpt("Use objects or drawings and count all."))).
 compiled_lesson_task_instance('IM-G1-U2-L6', productive-add(4, 5),
                               task_evidence(rule(g1_fish_tank_4_5), source('curriculum/im_teacher_guides/grade1/unit2/lesson6.md', lines(164, 164)), position(activity_1), excerpt("He has 4 red fish and 5 blue fish."))).
 compiled_lesson_task_instance('IM-G1-U2-L6', productive-add(4, 5),
                               task_evidence(rule(story_join_result_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson6.md', lines(163, 167)), position(student_task_statement(2)/item(1)), excerpt("Kiran has some fish in his fish tank. He has 4 red fish and 5 blue fish. How many fish does he have in all?"))).
+compiled_lesson_task_instance('IM-G1-U2-L8', productive-subtract(10, 6),
+                              task_evidence(rule(narrative_total_known_part_missing_part), source('curriculum/im_teacher_guides/grade1/unit2/lesson8.md', lines(287, 296)), position(student_task_statement(1)/item(3)), excerpt("There are 6 counters outside the cup. Some of the counters are under the cup. There are 10 counters total. How many counters are under the cup?"))).
+compiled_lesson_task_instance('IM-G1-U2-L8', productive-subtract(8, 3),
+                              task_evidence(rule(narrative_total_known_part_missing_part), source('curriculum/im_teacher_guides/grade1/unit2/lesson8.md', lines(297, 301)), position(student_task_statement(1)/item(4)), excerpt("There are 3 counters outside the cup. Some of the counters are under the cup. There are 8 counters total. How many counters are under the cup?"))).
 compiled_lesson_task_instance('IM-G1-U2-L9', productive-add(4, 6),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L9'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("4 + 6"))).
 compiled_lesson_task_instance('IM-G1-U2-L9', productive-add(6, 4),
@@ -168,6 +188,8 @@ compiled_lesson_task_instance('IM-G1-U3-L11', deformation(count_all_when_count_o
                               task_evidence(rule(g1_rock_collection_14_3_error), source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(137, 137)), position(activity_1), excerpt("add counters and count all."))).
 compiled_lesson_task_instance('IM-G1-U3-L11', productive-add(14, 3),
                               task_evidence(rule(g1_rock_collection_14_3), source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(150, 152)), position(activity_1), excerpt("So far, he has 14 rocks."))).
+compiled_lesson_task_instance('IM-G1-U3-L11', productive-add(14, 3),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(149, 157)), position(student_task_statement(2)/item(1)), excerpt("14 rocks. He gets 3 more. How many rocks does Kiran have now?"))).
 compiled_lesson_task_instance('IM-G1-U3-L11', productive-add(15, 4),
                               task_evidence(rule(printed_equation_list_direct_addition), source('curriculum/im_teacher_guides/grade1/unit3/lesson11.md', lines(252, 252)), position(student_task_statement(3)/printed_equation(252)), excerpt("5. = 15 + 4"))).
 compiled_lesson_task_instance('IM-G1-U3-L11', productive-add(16, 2),
@@ -394,6 +416,8 @@ compiled_lesson_task_instance('IM-G1-U3-L6', deformation(operation_direction_rev
                               task_evidence(rule(g1_shake_spill_10_3_error), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(224, 224)), position(activity_1), excerpt("If students add 3 and 10, consider asking:"))).
 compiled_lesson_task_instance('IM-G1-U3-L6', productive-subtract(10, 3),
                               task_evidence(rule(g1_shake_spill_10_3), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(164, 165)), position(activity_1), excerpt("Now he has 10 counters in his cup."))).
+compiled_lesson_task_instance('IM-G1-U3-L6', productive-subtract(10, 4),
+                              task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(268, 270)), position(student_task_statement(3)/item(2)), excerpt("10 counters in a cup. 4 of the counters fall out. How many counters are still in the cup?"))).
 compiled_lesson_task_instance('IM-G1-U3-L6', productive-subtract(7, 4),
                               task_evidence(rule(story_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson6.md', lines(272, 277)), position(student_task_statement(3)/item(3)), excerpt("2. Kiran has 4 counters in a cup. He puts more counters in. Now he has 7 counters in his cup. How many more counters did Kiran put in his cup?"))).
 compiled_lesson_task_instance('IM-G1-U3-L9', productive-add(10, 5),
@@ -628,6 +652,8 @@ compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 5),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(93, 93)), position(student_task_statement(1)/expression(3)), excerpt("38 + 5"))).
 compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(40, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("40 + 3"))).
+compiled_lesson_task_instance('IM-G1-U6-L11', productive-add(9, 7),
+                              task_evidence(rule(narrative_same_unit_combine_result_unknown), source('curriculum/im_teacher_guides/grade1/unit6/lesson11.md', lines(261, 264)), position(student_task_statement(3)/item(2)), excerpt("Clare\u2019s shoe is 9 cubes long. Han\u2019s shoe is 7 cubes long. How many cubes long are their shoes together?"))).
 compiled_lesson_task_instance('IM-G1-U6-L13', productive-add(15, 10),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit6/lesson13.md', lines(92, 92)), position(student_task_statement(1)/expression(1)), excerpt("15 + 10"))).
 compiled_lesson_task_instance('IM-G1-U6-L13', productive-add(15, 15),
@@ -1080,6 +1106,12 @@ compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(65, 18),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(261, 263)), position(student_task_statement(3)/item(3)), excerpt("Find the value of 65 - 18."))).
 compiled_lesson_task_instance('IM-G2-U4-L11', productive-subtract(68, 39),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade2/unit4/lesson11.md', lines(265, 265)), position(student_task_statement(3)/item(4)), excerpt("Find the value of 68 - 39."))).
+compiled_lesson_task_instance('IM-G2-U4-L13', productive-add(37, 39),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/grade2/unit4/lesson13.md', lines(263, 264)), position(student_task_statement(3)/item(3)), excerpt("37 cubes. He adds 39 more to make the train longer. How many cubes does he use?"))).
+compiled_lesson_task_instance('IM-G2-U4-L13', productive-subtract(28, 15),
+                              task_evidence(rule(narrative_add_to_change_unknown), source('curriculum/im_teacher_guides/grade2/unit4/lesson13.md', lines(357, 360)), position(student_task_statement(4)/item(1)), excerpt("15 cubes long. Then she added some more cubes. Now her train is 28 cubes long. How many cubes did she add to her train?"))).
+compiled_lesson_task_instance('IM-G2-U4-L13', productive-subtract(42, 24),
+                              task_evidence(rule(narrative_add_to_change_unknown), source('curriculum/im_teacher_guides/grade2/unit4/lesson13.md', lines(253, 255)), position(student_task_statement(3)/item(2)), excerpt("Clare starts with 24 cubes and adds some more. She makes a train with 42 cubes. How many cubes does she add on?"))).
 compiled_lesson_task_instance('IM-G2-U4-L4', productive-subtract(35, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit4/lesson4.md', lines(108, 108)), position(student_task_statement(1)/expression(2)), excerpt("35 - 10"))).
 compiled_lesson_task_instance('IM-G2-U4-L4', productive-subtract(35, 15),
@@ -1282,6 +1314,8 @@ compiled_lesson_task_instance('IM-G2-U7-L18', productive-subtract(434, 99),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit7/lesson18.md', lines(86, 86)), position(student_task_statement(1)/expression(2)), excerpt("434- 99"))).
 compiled_lesson_task_instance('IM-G2-U7-L18', productive-subtract(635, 298),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit7/lesson18.md', lines(89, 89)), position(student_task_statement(1)/expression(4)), excerpt("635 - 298"))).
+compiled_lesson_task_instance('IM-G2-U7-L19', productive-multiply(3, 275),
+                              task_evidence(rule(narrative_equal_groups_total_unknown), source('curriculum/im_teacher_guides/grade2/unit7/lesson19.md', lines(231, 235)), position(student_task_statement(3)/item(2)), excerpt(" The school donated books to 3 different places. The school donated 275 books to each place. How many books did the school donate in all?"))).
 compiled_lesson_task_instance('IM-G2-U7-L2', productive-add(158, 40),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L2'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("158 + 40"))).
 compiled_lesson_task_instance('IM-G2-U7-L2', productive-add(34, 20),
@@ -1842,8 +1876,16 @@ compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(300, 100),
                               task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(102, 102)), position(student_task_statement(1)/equation(3)/side(left)/witness(line(114))), excerpt("300- 100 = 100- 300"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(428, 156),
                               task_evidence(rule(g3_lin_subtract_smaller_from_larger), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(159, 159)), position(activity_1(revise_subtraction_work_lin)), excerpt("Lin subtracted 156 from 428"))).
+compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(24, 8),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(169, 171)), position(student_task_statement(2)/item(2)), excerpt("24 apples in boxes. She puts 8 apples in each box. How many boxes are there?"))).
 compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(30, 6),
                               task_evidence(rule(g3_apples_measurement_division), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(313, 314)), position(cool_down_item(1)), excerpt("Lin has 30 apples to share with her friends."))).
+compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(30, 6),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(313, 314)), position(student_task_statement(4)/item(1)), excerpt("30 apples to share with her friends. She is putting them in bags, with 6 apples in each bag. How many bags does she need?"))).
+compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(32, 4),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(177, 185)), position(student_task_statement(2)/item(4)), excerpt("32 apples in boxes. She put 4 apples in each box. How many boxes are there?"))).
+compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(42, 6),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(173, 175)), position(student_task_statement(2)/item(3)), excerpt("42 apples in boxes. She puts 6 apples in each box. How many boxes are there?"))).
 compiled_lesson_task_instance('IM-G3-U4-L10', productive-multiply(6, 7),
                               task_evidence(rule(g3_u4_l10_cooldown_product), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U4-L10'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(2)), excerpt("6 \u00d7 7?"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G3-U4-L12', productive-multiply(6, 40),
@@ -1874,6 +1916,8 @@ compiled_lesson_task_instance('IM-G3-U4-L17', productive-multiply(7, 10),
                               task_evidence(rule(equation_verification_side), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U4-L17'), position('student_task_statement(1)'))), position(student_task_statement(1)/equation(4)/side(right)/witness(line(104))), excerpt("3 \u00d7 40 = 7 \u00d7 10"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G3-U4-L17', productive-multiply(8, 10),
                               task_evidence(rule(equation_verification_side), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U4-L17'), position('student_task_statement(1)'))), position(student_task_statement(1)/equation(2)/side(right)/witness(line(98))), excerpt("2 \u00d7 40 = 8 \u00d7 10"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G3-U4-L18', productive-divide(48, 4),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson18.md', lines(185, 189)), position(student_task_statement(2)/item(1)), excerpt("There are 48 students going on a field trip to the aquarium. They visit the exhibits in groups of 4 students. How many groups will there be?"))).
 compiled_lesson_task_instance('IM-G3-U4-L19', productive-divide(51, 3),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade3/unit4/lesson19.md', lines(367, 367)), position(student_task_statement(4)/item(1)), excerpt("Find the value of 51 \u00f7 3."))).
 compiled_lesson_task_instance('IM-G3-U4-L19', productive-multiply(16, 10),
@@ -1888,6 +1932,12 @@ compiled_lesson_task_instance('IM-G3-U4-L19', productive-multiply(8, 20),
                               task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade3/unit4/lesson19.md', lines(103, 103)), position(student_task_statement(1)/equation(3)/side(left)/witness(line(112))), excerpt("8 \u00d7 20 = 8 \u00d7 2 \u00d7 1"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G3-U4-L19', productive-multiply(8, 20),
                               task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade3/unit4/lesson19.md', lines(104, 104)), position(student_task_statement(1)/equation(4)/side(left)/witness(line(115))), excerpt("8 \u00d7 20 = 16 \u00d7 10"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G3-U4-L2', productive-divide(20, 4),
+                              task_evidence(rule(narrative_partitive_division_share_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson2.md', lines(167, 169)), position(student_task_statement(2)/item(2)), excerpt(" A worker packs 20 apples in 4 boxes. She packs the same number of apples in each box. How many apples are in each box?"))).
+compiled_lesson_task_instance('IM-G3-U4-L2', productive-divide(36, 6),
+                              task_evidence(rule(narrative_partitive_division_share_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson2.md', lines(170, 172)), position(student_task_statement(2)/item(3)), excerpt(" A worker packs 36 apples in 6 boxes. He packs the same number of apples in each box. How many apples are in each box?"))).
+compiled_lesson_task_instance('IM-G3-U4-L2', productive-divide(45, 9),
+                              task_evidence(rule(narrative_partitive_division_share_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson2.md', lines(174, 183)), position(student_task_statement(2)/item(4)), excerpt(" A worker packs 45 apples in 9 boxes. She packs Le the same number of apples in each box. How many apples are in each box?"))).
 compiled_lesson_task_instance('IM-G3-U4-L20', productive-divide(65, 5),
                               task_evidence(rule(direct_division_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson20.md', lines(100, 100)), position(student_task_statement(1)/expression(1)), excerpt("65 \u00f7 5"))).
 compiled_lesson_task_instance('IM-G3-U4-L20', productive-divide(96, 6),
@@ -1898,6 +1948,8 @@ compiled_lesson_task_instance('IM-G3-U4-L20', productive-multiply(3, 5),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson20.md', lines(95, 95)), position(student_task_statement(1)/expression(1)), excerpt("3 \u00d7 5"))).
 compiled_lesson_task_instance('IM-G3-U4-L20', productive-multiply(6, 5),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson20.md', lines(97, 97)), position(student_task_statement(1)/expression(2)), excerpt("6 \u00d7 5"))).
+compiled_lesson_task_instance('IM-G3-U4-L22', productive-divide(56, 8),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson22.md', lines(161, 178)), position(student_task_statement(2)/item(2)), excerpt(" A strawberry patch has 56 strawberry plants in rows. There are 8 strawberry plants in each row. a. How many rows of strawberry plants are in the patch?"))).
 compiled_lesson_task_instance('IM-G3-U4-L3', productive-add(120, 120),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade3/unit4/lesson3.md', lines(88, 88)), position(student_task_statement(1)/expression(1)), excerpt("120 + 120"))).
 compiled_lesson_task_instance('IM-G3-U4-L3', productive-add(121, 119),
@@ -2172,6 +2224,8 @@ compiled_lesson_task_instance('IM-G4-U3-L1', deformation(addition_instead_of_mul
                               task_evidence(rule(g4_clare_eggs_error), source('curriculum/im_teacher_guides/grade4/unit3/lesson1.md', lines(208, 208)), position(activity_1_item('2a')), excerpt("If students write addition expressions to represent"))).
 compiled_lesson_task_instance('IM-G4-U3-L1', productive-multiply(3, 4),
                               task_evidence(rule(g4_clare_eggs), source('curriculum/im_teacher_guides/grade4/unit3/lesson1.md', lines(185, 185)), position(activity_1_item('2a')), excerpt("Clare has 3 baskets. She put 4 eggs into"))).
+compiled_lesson_task_instance('IM-G4-U3-L1', productive-multiply(3, 4),
+                              task_evidence(rule(narrative_equal_groups_total_unknown), source('curriculum/im_teacher_guides/grade4/unit3/lesson1.md', lines(169, 213)), position(student_task_statement(2)/item(2)), excerpt("3 baskets. She put 4 eggs into each basket. How many eggs did she put in baskets?"))).
 compiled_lesson_task_instance('IM-G4-U3-L10', productive-subtract_fractions(whole(2), frac(5, 6)),
                               task_evidence(rule(direct_fraction_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G4-U3-L10'), position('student_task_statement(4)'))), position(student_task_statement(4)/fraction_expression(1)), excerpt("2- 5/6"))).
 compiled_lesson_task_instance('IM-G4-U3-L16', productive-add_fractions(frac(1, 10), frac(50, 100)),
@@ -2272,6 +2326,10 @@ compiled_lesson_task_instance('IM-G4-U6-L11', productive-multiply(5, 203),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson11.md', lines(96, 96)), position(student_task_statement(1)/expression(3)), excerpt("5 \u00d7 203"))).
 compiled_lesson_task_instance('IM-G4-U6-L11', productive-multiply(5, 404),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade4/unit6/lesson11.md', lines(97, 97)), position(student_task_statement(1)/expression(4)), excerpt("5 \u00d7 404"))).
+compiled_lesson_task_instance('IM-G4-U6-L12', productive-multiply(3, 366),
+                              task_evidence(rule(narrative_rate_total_unknown), source('curriculum/im_teacher_guides/grade4/unit6/lesson12.md', lines(145, 146)), position(student_task_statement(2)/item(2)), excerpt("A leap year has 366 days. A non-leap year has 365 days. How many days are in 3 leap years?"))).
+compiled_lesson_task_instance('IM-G4-U6-L13', productive-divide(85, 5),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade4/unit6/lesson13.md', lines(246, 254)), position(student_task_statement(3)/item(1)), excerpt(" Priya\u2019s mom makes 85 gulab jamuns for the class to share. Priya gives 5 gulab jamuns to each student in the class. How many students are in Priya\u2019s class?"))).
 compiled_lesson_task_instance('IM-G4-U6-L14', productive-rectangle_missing_side_from_area(234, 9, tile),
                               task_evidence(rule(rectangle_area_known_width_missing_length), source('curriculum/im_teacher_guides/grade4/unit6/lesson14.md', lines(342, 350)), position(student_task_statement(4)/item(1)), excerpt("used 234 square sticky notes to cover their classroom door completely, leaving no gaps or overlaps between the notes. It takes 9 square notes to cover the width of the door. How many square notes does it take to cover the full height"))).
 compiled_lesson_task_instance('IM-G4-U6-L15', productive-divide(104, 8),
@@ -2480,6 +2538,8 @@ compiled_lesson_task_instance('IM-G5-U2-L12', productive-multiply(5, 2),
                               task_evidence(rule(direct_multiplication_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U2-L12'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("5 \u00d7 2"))).
 compiled_lesson_task_instance('IM-G5-U2-L13', productive-add(7, 4),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U2-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("7 + 4"))).
+compiled_lesson_task_instance('IM-G5-U2-L3', productive-divide(2, 3),
+                              task_evidence(rule(narrative_partitive_division_share_unknown), source('curriculum/im_teacher_guides/grade5/unit2/lesson3.md', lines(147, 150)), position(student_task_statement(2)/item(1)), excerpt("There are 3 dancers. They share 2 liters of water equally. How much water does each dancer get?"))).
 compiled_lesson_task_instance('IM-G5-U2-L4', productive-divide(1, 7),
                               task_evidence(rule(direct_division_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G5-U2-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("1 \u00f7 7"))).
 compiled_lesson_task_instance('IM-G5-U2-L4', productive-divide(35, 7),
@@ -2572,6 +2632,8 @@ compiled_lesson_task_instance('IM-G5-U4-L6', productive-multiply(241, 23),
                               task_evidence(rule(direct_binary_expression_prompt), source('curriculum/im_teacher_guides/grade5/unit4/lesson6.md', lines(154, 154)), position(student_task_statement(2)/item(1)), excerpt("Find the value of 241 \u00d7 23."))).
 compiled_lesson_task_instance('IM-G5-U4-L9', productive-divide(4632, 8),
                               task_evidence(rule(g5_dance_measurement_division), source('curriculum/im_teacher_guides/grade5/unit4/lesson9.md', lines(362, 366)), position(cool_down_item(1)), excerpt("A different group of 4,632 dancers make groups of 8."))).
+compiled_lesson_task_instance('IM-G5-U4-L9', productive-divide(4704, 8),
+                              task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade5/unit4/lesson9.md', lines(160, 162)), position(student_task_statement(2)/item(1)), excerpt("There were 4,704 people at the record-breaking folk dance in Peru. How many groups of 8 dancers were there?"))).
 compiled_lesson_task_instance('IM-G5-U5-L11', deformation(decimal_add_unaligned_numerals)-decimal_add(12, 10, 13, 100),
                               task_evidence(rule(g5_decimal_add_unaligned), source(e343_pdf('5th/Decimal Operations/5th_DecimalAddSubMult_teacherguide.pdf', pages("2"))), position(cool_down(the_value_of_the_sum)), excerpt("What is the value of 1.20 + 0.13? Explain or show your reasoning."))).
 compiled_lesson_task_instance('IM-G5-U5-L11', productive-decimal_add(12, 10, 13, 100),
@@ -4046,6 +4108,22 @@ compiled_lesson_task_instance('IM-G7-U5-L8', productive-multiply(9, 5),
                               task_evidence(rule(im_g7_u5_l8_multiply_4), source(e343_pdf('Grade7-5-Unit-teacher-guide-.pdf', pages("138-139"))), position(activity_2), excerpt("Complete the table to show the position of each vehicle after traveling at a constant velocity for the given amount of time. car C: velocity +9, time +5"))).
 compiled_lesson_task_instance('IM-G7-U5-L8', productive-multiply(9, 5),
                               task_evidence(rule(im_g7_u5_l8_multiply_4_x), source(e343_pdf('Grade7-5-Unit-teacher-guide-.pdf', pages("137-139"))), position(activity_1), excerpt("Complete the table to show the position of each vehicle. (car C: velocity +9 m/s, time +5 s)"))).
+compiled_lesson_task_instance('IM-GK-U2-L21', productive-add(5, 1),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit2/lesson21.md', lines(87, 89)), position(student_task_statement(1)/item(1)), excerpt("5 books. He gets 1 more book. How many books does Diego have now?"))).
+compiled_lesson_task_instance('IM-GK-U4-L10', productive-add(3, 5),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson10.md', lines(184, 188)), position(student_task_statement(1)/item(1)), excerpt("3 apple slices at the picnic. Tyler brought 5 more. How many now?"))).
+compiled_lesson_task_instance('IM-GK-U4-L11', productive-add(4, 5),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson11.md', lines(354, 360)), position(student_task_statement(4)/item(1)), excerpt("4 leaves at the park. Priya gave him 5 more leaves. How many leaves does Han have now?"))).
+compiled_lesson_task_instance('IM-GK-U4-L12', productive-add(5, 4),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson12.md', lines(154, 158)), position(student_task_statement(1)/item(1)), excerpt("5 ducks swim in the pond. 4 more come. How many now?"))).
+compiled_lesson_task_instance('IM-GK-U4-L12', productive-subtract(9, 4),
+                              task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson12.md', lines(239, 243)), position(student_task_statement(2)/item(1)), excerpt("9 ducks swim in the pond. 4 ducks leave. How many now?"))).
+compiled_lesson_task_instance('IM-GK-U4-L18', productive-add(3, 6),
+                              task_evidence(rule(narrative_two_actor_combine_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson18.md', lines(140, 146)), position(student_task_statement(1)/item(1)), excerpt("Mai finds 3 rocks. Diego finds 6 rocks. How many rocks did Diego and Mai find?"))).
+compiled_lesson_task_instance('IM-GK-U4-L8', productive-add(5, 4),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson8.md', lines(225, 235)), position(student_task_statement(3)/item(1)), excerpt("5 crayons. Jada gave him 4 more. How many crayons does Noah have now?"))).
+compiled_lesson_task_instance('IM-GK-U4-L9', productive-add(4, 3),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson9.md', lines(139, 143)), position(student_task_statement(2)/item(1)), excerpt("4 markers at school. Elena brought 3 more markers to school. How many markers are at school now?"))).
 compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(1, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("1 + 3"))).
 compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(3, 1),
@@ -4078,6 +4156,14 @@ compiled_lesson_task_instance('IM-GK-U7-L4', productive-subtract(10, 4),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U7-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/recovered_equation(1)), excerpt("10- 4 = 6"))).
 compiled_lesson_task_instance('IM-GK-U7-L4', productive-subtract(6, 4),
                               task_evidence(rule(printed_equation_list_missing_addend), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U7-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/recovered_equation(3)), excerpt("6 = 4 + 2"))).
+compiled_lesson_task_instance('IM-GK-U7-L5', productive-add(2, 5),
+                              task_evidence(rule(narrative_join_more_result_unknown), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U7-L5'), position('student_task_statement(2)'))), position(student_task_statement(2)/item(1)), excerpt("2 pattern blocks. Jada adds 5 more. How many pattern blocks?"))).
+compiled_lesson_task_instance('IM-GK-U7-L5', productive-add(2, 5),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md', lines(149, 152)), position(student_task_statement(2)/item(2)), excerpt("2 pattern blocks. Jada adds 5 more. How many pattern blocks?"))).
+compiled_lesson_task_instance('IM-GK-U7-L5', productive-add(4, 4),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md', lines(205, 211)), position(student_task_statement(3)/item(1)), excerpt("4 pattern blocks. He adds 4 more. How many pattern blocks?"))).
+compiled_lesson_task_instance('IM-GK-U7-L5', productive-subtract(7, 3),
+                              task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md', lines(142, 144)), position(student_task_statement(2)/item(1)), excerpt("7 pattern blocks. Her brother takes 3. How many now?"))).
 compiled_lesson_task_instance('IM-GK-U8-L11', productive-add(3, 2),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("3 + 2"))).
 compiled_lesson_task_instance('IM-GK-U8-L15', productive-add(2, 3),
@@ -4090,5 +4176,9 @@ compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(6, 4),
                               task_evidence(rule(gk_pigeons_compose_ten), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(173, 176)), position(activity_1_item(1)), excerpt("There are 6 pigeons in water."))).
 compiled_lesson_task_instance('IM-GK-U8-L3', productive-add(7, 1),
                               task_evidence(rule(gk_bus_add_one), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', lines(149, 153)), position(activity_1_item(1)), excerpt("1 more kid gets on the bus."))).
+compiled_lesson_task_instance('IM-GK-U8-L3', productive-add(7, 1),
+                              task_evidence(rule(narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', lines(149, 154)), position(student_task_statement(1)/item(1)), excerpt("7 kids on the bus. 1 more kid gets on the bus. How many kids are on the bus?"))).
 compiled_lesson_task_instance('IM-GK-U8-L3', productive-subtract(10, 1),
                               task_evidence(rule(gk_bus_subtract_one), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', lines(156, 160)), position(activity_1_item(2)), excerpt("1 kid gets off the bus."))).
+compiled_lesson_task_instance('IM-GK-U8-L3', productive-subtract(10, 1),
+                              task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', lines(156, 165)), position(student_task_statement(1)/item(2)), excerpt("10 kids on the bus. 1 kid gets off the bus. How many kids are on the bus?"))).

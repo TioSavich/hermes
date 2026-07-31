@@ -18,6 +18,7 @@ import subprocess
 import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from functools import lru_cache
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import equation_verification  # noqa: E402
@@ -1672,6 +1673,443 @@ def _through_how_many_question(text: str) -> str:
     return match.group(0) if match else text
 
 
+def _narrative_referent(phrase: str) -> str:
+    """Return the counted head carried by one bounded narrative phrase."""
+    head = re.split(
+        r"\b(?:at|in|on|of|for|with|to|from|are|is|was|were|does|do|did|"
+        r"has|have|had|gets?|gives?|gave|puts?|put|brings?|brought|adds?|"
+        r"join|joins|come|comes|swim|swims|fly|flies|sit|sits|long|now|"
+        r"still|altogether|will|should|can)\b",
+        phrase,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )[0]
+    words = re.findall(r"[A-Za-z]+", head)
+    return _singular(words[-1]) if words else ""
+
+
+def _prior_quantity_has_referent(text: str, end: int, referent: str) -> bool:
+    """Guard a local binary reading against an earlier same-referent operand."""
+    if not referent:
+        return False
+    for match in re.finditer(
+        rf"{ARITHMETIC_NUMERAL}\s+(?P<phrase>[A-Za-z][A-Za-z '-]{{0,40}})",
+        text[:end],
+    ):
+        if _narrative_referent(match.group("phrase")) == referent:
+            return True
+    return False
+
+
+def _narrative_referents_agree(left: str, right: str) -> bool:
+    if left == right:
+        return True
+    human_referents = {
+        "child",
+        "children",
+        "dancer",
+        "kid",
+        "people",
+        "person",
+        "student",
+    }
+    return left in human_referents and right in human_referents
+
+
+def _narrative_phrase_referent(phrase: str) -> str:
+    """Normalize a full group phrase while retaining distinguishing modifiers."""
+    words = re.findall(r"[A-Za-z]+(?:-[A-Za-z]+)?", phrase.lower())
+    if not words:
+        return ""
+    words[-1] = _singular(words[-1])
+    return " ".join(words)
+
+
+@lru_cache(maxsize=None)
+def _narrative_quantity_specs(text: str) -> list[tuple[str, str, str, str]]:
+    """Read named, binary whole-number narratives from one task chunk.
+
+    Each shape ends at the question that requests its result.  Referent checks
+    keep unrelated numerals from becoming operands, while the named shapes keep
+    representation selection, estimation, and multi-step work outside this
+    family.
+    """
+    numeral = ARITHMETIC_NUMERAL
+    specs: set[tuple[str, str, str, str]] = set()
+
+    join_more = re.compile(
+        rf"(?P<a>{numeral}) (?P<a_group>[A-Za-z][^.?]{{0,70}})\.\s+"
+        rf"(?P<change>[^.?]{{0,90}}?\b(?P<b>{numeral}) more"
+        rf"(?P<b_group>[^.?]{{0,45}}))\.\s+How many(?P<q>[^?]*)\?",
+        re.IGNORECASE,
+    )
+    for match in join_more.finditer(text):
+        if not re.search(
+            r"\b(?:gets?|gives?|gave|brings?|brought|adds?|puts?|put|"
+            r"join|joins|come|comes|checks? out)\b",
+            match.group("change"),
+            re.IGNORECASE,
+        ):
+            continue
+        left_ref = _narrative_referent(match.group("a_group"))
+        right_ref = _narrative_referent(match.group("b_group"))
+        question_ref = _narrative_referent(match.group("q"))
+        if not left_ref or (right_ref and right_ref != left_ref):
+            continue
+        if question_ref and question_ref != left_ref:
+            continue
+        specs.add(
+            (
+                "narrative_join_more_result_unknown",
+                "addition",
+                f"add({_arithmetic_number(match.group('a'))}, "
+                f"{_arithmetic_number(match.group('b'))})",
+                match.group(0),
+            )
+        )
+
+    two_actor_combine = re.compile(
+        rf"\b(?:[A-Z][a-z]+|Her grandfather) "
+        rf"(?:finds?|buys?|puts?|put|draws?|plants?) "
+        rf"(?P<a>{numeral}) (?P<a_group>[A-Za-z][^.?]{{0,45}})\.\s+"
+        rf"(?:Then )?(?:[A-Z][a-z]+|Her grandfather) "
+        rf"(?:finds?|buys?|puts?|put|draws?|plants?) "
+        rf"(?P<b>{numeral}) (?P<b_group>[A-Za-z][^.?]{{0,45}})\.\s+"
+        rf"How many(?P<q>[^?]*)\?",
+        re.IGNORECASE,
+    )
+    for match in two_actor_combine.finditer(text):
+        if re.search(r"\b(?:all together|altogether|in all)\b", match.group("q"), re.IGNORECASE):
+            continue
+        left_ref = _narrative_referent(match.group("a_group"))
+        right_ref = _narrative_referent(match.group("b_group"))
+        question_ref = _narrative_referent(match.group("q"))
+        if not left_ref or left_ref != right_ref or left_ref != question_ref:
+            continue
+        if _prior_quantity_has_referent(text, match.start(), left_ref):
+            continue
+        specs.add(
+            (
+                "narrative_two_actor_combine_result_unknown",
+                "addition",
+                f"add({_arithmetic_number(match.group('a'))}, "
+                f"{_arithmetic_number(match.group('b'))})",
+                match.group(0),
+            )
+        )
+
+    same_unit_combine = re.compile(
+        rf"\b[^.?]{{0,45}} is (?P<a>{numeral}) (?P<unit1>[A-Za-z]+) long\.\s+"
+        rf"[^.?]{{0,45}} is (?P<b>{numeral}) (?P<unit2>[A-Za-z]+) long\.\s+"
+        rf"How many (?P<question_unit>[A-Za-z]+) long [^?]*together\?",
+        re.IGNORECASE,
+    )
+    for match in same_unit_combine.finditer(text):
+        units = {
+            _singular(match.group("unit1")),
+            _singular(match.group("unit2")),
+            _singular(match.group("question_unit")),
+        }
+        if len(units) != 1:
+            continue
+        specs.add(
+            (
+                "narrative_same_unit_combine_result_unknown",
+                "addition",
+                f"add({_arithmetic_number(match.group('a'))}, "
+                f"{_arithmetic_number(match.group('b'))})",
+                match.group(0),
+            )
+        )
+
+    take_before_number = re.compile(
+        rf"(?P<total>{numeral}) (?P<total_group>[A-Za-z][^.?]{{0,65}})\.\s+"
+        rf"[^.?]{{0,65}}\b(?:takes?|took) (?P<removed>{numeral})"
+        rf"(?: of the (?P<removed_group>[A-Za-z]+))?[^.?]*\.\s+"
+        rf"How many(?P<q>[^?]*)\?",
+        re.IGNORECASE,
+    )
+    take_after_number = re.compile(
+        rf"(?P<total>{numeral}) (?P<total_group>[A-Za-z][^.?]{{0,65}})\.\s+"
+        rf"(?P<removed>{numeral})(?: of the)? "
+        rf"(?P<removed_group>[A-Za-z]+)[^.?]{{0,45}}\b"
+        rf"(?:gets? off|fall|falls|leave|leaves)[^.?]*\.\s+"
+        rf"How many(?P<q>[^?]*)\?",
+        re.IGNORECASE,
+    )
+    for pattern in (take_before_number, take_after_number):
+        for match in pattern.finditer(text):
+            if len(re.findall(ARITHMETIC_NUMERAL, match.group(0))) != 2:
+                continue
+            total_ref = _narrative_referent(match.group("total_group"))
+            removed_ref = _narrative_referent(match.group("removed_group") or "")
+            question_ref = _narrative_referent(match.group("q"))
+            if not total_ref or (removed_ref and removed_ref != total_ref):
+                continue
+            if question_ref and question_ref != total_ref:
+                continue
+            specs.add(
+                (
+                    "narrative_take_from_result_unknown",
+                    "subtraction",
+                    f"subtract({_arithmetic_number(match.group('total'))}, "
+                    f"{_arithmetic_number(match.group('removed'))})",
+                    match.group(0),
+                )
+            )
+
+    missing_addend = re.compile(
+        rf"(?P<known>{numeral}) (?P<known_group>[A-Za-z][^.?]{{0,45}})\.\s+"
+        rf"(?P<change>[^.?]{{0,80}}some more[^.?]*)\.\s+Now [^.?]{{0,45}} "
+        rf"(?P<total>{numeral}) (?P<total_group>[A-Za-z][^.?]{{0,45}})\.\s+"
+        rf"How many(?P<q>[^?]*)\?",
+        re.IGNORECASE,
+    )
+    starts_and_adds = re.compile(
+        rf"\b[^.?]{{0,35}} starts with (?P<known>{numeral}) "
+        rf"(?P<known_group>[A-Za-z]+) and adds some more\.\s+"
+        rf"[^.?]{{0,40}} with (?P<total>{numeral}) "
+        rf"(?P<total_group>[A-Za-z]+)\.\s+How many "
+        rf"(?P<q>[A-Za-z]+)[^?]*\?",
+        re.IGNORECASE,
+    )
+    for pattern in (missing_addend, starts_and_adds):
+        for match in pattern.finditer(text):
+            change = match.groupdict().get("change") or ""
+            if re.search(ARITHMETIC_NUMERAL, change):
+                continue
+            if re.match(r"\s*more\b", match.group("q"), re.IGNORECASE):
+                continue
+            known_ref = _narrative_referent(match.group("known_group"))
+            total_ref = _narrative_referent(match.group("total_group"))
+            question_ref = _narrative_referent(match.group("q"))
+            if not known_ref or {known_ref, total_ref, question_ref} != {known_ref}:
+                continue
+            known = _arithmetic_number(match.group("known"))
+            total = _arithmetic_number(match.group("total"))
+            if total <= known:
+                continue
+            specs.add(
+                (
+                    "narrative_add_to_change_unknown",
+                    "subtraction",
+                    f"subtract({total}, {known})",
+                    match.group(0),
+                )
+            )
+
+    hidden_part = re.compile(
+        rf"There are (?P<known>{numeral}) (?P<known_group>[A-Za-z]+) "
+        rf"outside [^.?]+\.\s+Some of the (?P<hidden_group>[A-Za-z]+) "
+        rf"are under [^.?]+\.\s+There are (?P<total>{numeral}) "
+        rf"(?P<total_group>[A-Za-z]+) total\.\s+How many "
+        rf"(?P<q>[A-Za-z]+) are under [^?]+\?",
+        re.IGNORECASE,
+    )
+    for match in hidden_part.finditer(text):
+        refs = {
+            _singular(match.group(name))
+            for name in ("known_group", "hidden_group", "total_group", "q")
+        }
+        if len(refs) != 1:
+            continue
+        known = _arithmetic_number(match.group("known"))
+        total = _arithmetic_number(match.group("total"))
+        if total <= known:
+            continue
+        specs.add(
+            (
+                "narrative_total_known_part_missing_part",
+                "subtraction",
+                f"subtract({total}, {known})",
+                match.group(0),
+            )
+        )
+
+    groups_then_each = re.compile(
+        rf"(?<!to )(?P<groups>{numeral}) "
+        rf"(?P<group_phrase>[A-Za-z][^.?]{{0,45}})\.\s+"
+        rf"[^.?]{{0,70}} (?P<size>{numeral}) "
+        rf"(?P<item_phrase>[A-Za-z][A-Za-z -]{{0,30}}) "
+        rf"(?:to|into|in|on) each (?P<each_group>[A-Za-z]+)\.\s+"
+        rf"How many (?P<question_item>[A-Za-z]+)[^?]*(?:in all|altogether|"
+        rf"put in|donate)[^?]*\?",
+        re.IGNORECASE,
+    )
+    donated_each = re.compile(
+        rf"[^.?]*\bto (?P<groups>{numeral}) "
+        rf"(?P<group_phrase>[A-Za-z][A-Za-z -]{{0,25}})\.\s+"
+        rf"[^.?]* (?P<size>{numeral}) (?P<item_phrase>[A-Za-z]+) "
+        rf"to each (?P<each_group>[A-Za-z]+)\.\s+How many "
+        rf"(?P<question_item>[A-Za-z]+)[^?]*(?:in all|altogether)\?",
+        re.IGNORECASE,
+    )
+    for pattern in (groups_then_each, donated_each):
+        for match in pattern.finditer(text):
+            group_ref = _narrative_referent(match.group("group_phrase"))
+            each_ref = _singular(match.group("each_group"))
+            item_ref = _narrative_referent(match.group("item_phrase"))
+            question_ref = _singular(match.group("question_item"))
+            if not group_ref or group_ref != each_ref or item_ref != question_ref:
+                continue
+            specs.add(
+                (
+                    "narrative_equal_groups_total_unknown",
+                    "multiplication",
+                    f"multiply({_arithmetic_number(match.group('groups'))}, "
+                    f"{_arithmetic_number(match.group('size'))})",
+                    match.group(0),
+                )
+            )
+
+    rate_statement = re.compile(
+        rf"\bA (?P<group>[A-Za-z]+(?:[- ][A-Za-z]+){{0,3}}) has "
+        rf"(?P<size>{numeral}) (?P<items>[A-Za-z]+)\.",
+        re.IGNORECASE,
+    )
+    rate_question = re.compile(
+        rf"How many (?P<question_items>[A-Za-z]+) are in "
+        rf"(?P<groups>{numeral}) (?P<question_groups>[A-Za-z -]+)\?",
+        re.IGNORECASE,
+    )
+    for question in rate_question.finditer(text):
+        question_group_ref = _narrative_phrase_referent(
+            question.group("question_groups")
+        )
+        question_item_ref = _singular(question.group("question_items"))
+        matching_rates = [
+            statement
+            for statement in rate_statement.finditer(text[: question.start()])
+            if _narrative_phrase_referent(statement.group("group"))
+            == question_group_ref
+            and _singular(statement.group("items")) == question_item_ref
+        ]
+        if len(matching_rates) != 1:
+            continue
+        statement = matching_rates[0]
+        specs.add(
+            (
+                "narrative_rate_total_unknown",
+                "multiplication",
+                f"multiply({_arithmetic_number(question.group('groups'))}, "
+                f"{_arithmetic_number(statement.group('size'))})",
+                text[statement.start() : question.end()],
+            )
+        )
+
+    measurement_group_patterns = (
+        re.compile(
+            rf"(?P<total>{numeral}) (?P<items>[A-Za-z]+) [^.?]*\.\s+"
+            rf"[^.?]* (?P<size>{numeral}) (?P<each_items>[A-Za-z]+) "
+            rf"in each (?P<group>[A-Za-z]+)\.\s+How many "
+            rf"(?P<question_group>[A-Za-z]+)[^?]*\?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            rf"There are (?P<total>{numeral}) (?P<items>[A-Za-z]+) [^.?]*\.\s+"
+            rf"[^.?]* in groups of (?P<size>{numeral}) "
+            rf"(?P<each_items>[A-Za-z]+)\.\s+How many "
+            rf"(?P<question_group>groups)[^?]*\?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            rf"[^.?]* has (?P<total>{numeral}) (?P<items>[A-Za-z -]+) in "
+            rf"(?P<group>[A-Za-z]+)\.\s+There are (?P<size>{numeral}) "
+            rf"(?P<each_items>[A-Za-z -]+) in each (?P<each_group>[A-Za-z]+)\.\s+"
+            rf"[^?]*How many (?P<question_group>[A-Za-z]+)[^?]*\?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            rf"[^.?]* makes (?P<total>{numeral}) (?P<items>[A-Za-z -]+) [^.?]*\.\s+"
+            rf"[^.?]* gives (?P<size>{numeral}) (?P<each_items>[A-Za-z -]+) "
+            rf"to each (?P<group>[A-Za-z]+)[^.?]*\.\s+How many "
+            rf"(?P<question_group>[A-Za-z]+)[^?]*\?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            rf"There (?:are|were) (?P<total>{numeral}) (?P<items>[A-Za-z]+) "
+            rf"[^.?]*\.\s+How many (?P<question_group>groups) of "
+            rf"(?P<size>{numeral}) (?P<each_items>[A-Za-z]+)[^?]*\?",
+            re.IGNORECASE,
+        ),
+    )
+    for pattern in measurement_group_patterns:
+        for match in pattern.finditer(text):
+            item_ref = _narrative_referent(match.group("items"))
+            each_item_ref = _narrative_referent(match.group("each_items"))
+            question_group_ref = _narrative_referent(match.group("question_group"))
+            if not item_ref or not _narrative_referents_agree(
+                item_ref, each_item_ref
+            ):
+                continue
+            group = match.groupdict().get("group")
+            if group is None:
+                if question_group_ref != "group":
+                    continue
+            else:
+                group_ref = _narrative_referent(group)
+                each_group = match.groupdict().get("each_group") or group
+                each_group_ref = _narrative_referent(each_group)
+                if not group_ref or group_ref != each_group_ref:
+                    continue
+                if question_group_ref not in {group_ref, "group"}:
+                    continue
+            specs.add(
+                (
+                    "narrative_measurement_division_groups_unknown",
+                    "division",
+                    f"divide({_arithmetic_number(match.group('total'))}, "
+                    f"{_arithmetic_number(match.group('size'))})",
+                    match.group(0),
+                )
+            )
+
+    partitive_boxes = re.compile(
+        rf"[^.?]* packs (?P<total>{numeral}) (?P<items>[A-Za-z]+) in "
+        rf"(?P<groups>{numeral}) (?P<groups_noun>[A-Za-z]+)\.\s+"
+        rf"[^.?]*same number of (?P<each_items>[A-Za-z]+) in each "
+        rf"(?P<each_group>[A-Za-z]+)\.\s+How many "
+        rf"(?P<question_items>[A-Za-z]+) are in each "
+        rf"(?P<question_group>[A-Za-z]+)\?",
+        re.IGNORECASE,
+    )
+    shared_measure = re.compile(
+        rf"There are (?P<groups>{numeral}) (?P<groups_noun>[A-Za-z]+)\.\s+"
+        rf"They share (?P<total>{numeral}) (?P<unit>[A-Za-z]+) of "
+        rf"(?P<items>[A-Za-z]+) equally\.\s+How much "
+        rf"(?P<question_items>[A-Za-z]+) does each "
+        rf"(?P<question_group>[A-Za-z]+) get\?",
+        re.IGNORECASE,
+    )
+    for pattern in (partitive_boxes, shared_measure):
+        for match in pattern.finditer(text):
+            groups_ref = _singular(match.group("groups_noun"))
+            question_group_ref = _singular(match.group("question_group"))
+            each_group_ref = _singular(
+                match.groupdict().get("each_group") or match.group("question_group")
+            )
+            items_ref = _singular(match.group("items"))
+            question_items_ref = _singular(match.group("question_items"))
+            each_items_ref = _singular(
+                match.groupdict().get("each_items") or match.group("items")
+            )
+            if groups_ref != each_group_ref or groups_ref != question_group_ref:
+                continue
+            if items_ref != each_items_ref or items_ref != question_items_ref:
+                continue
+            specs.add(
+                (
+                    "narrative_partitive_division_share_unknown",
+                    "division",
+                    f"divide({_arithmetic_number(match.group('total'))}, "
+                    f"{_arithmetic_number(match.group('groups'))})",
+                    match.group(0),
+                )
+            )
+
+    return sorted(specs)
+
+
 def _recovered_printed_equation_units(span: StudentTaskSpan) -> list[str]:
     """Split a sidecar pseudo-line into equation-sized units.
 
@@ -1969,6 +2407,28 @@ def extract_task_candidates(
                         direct_binary.group("excerpt"),
                         "reviewable" if has_route else "rejected",
                         "exact_standalone_binary_expression_and_operation_route"
+                        if has_route
+                        else f"lesson_has_no_{operation}_attachment",
+                    )
+                )
+            for parser_id, operation, task, excerpt in _narrative_quantity_specs(text):
+                has_route = any(
+                    attached_operation == operation
+                    for attached_operation, _ in attachments.get(span.code, set())
+                )
+                candidates.add(
+                    TaskCandidate(
+                        span.code,
+                        task,
+                        operation,
+                        parser_id,
+                        span.source,
+                        line,
+                        end_line,
+                        position,
+                        excerpt,
+                        "reviewable" if has_route else "rejected",
+                        "exact_binary_narrative_operands_referents_and_operation_route"
                         if has_route
                         else f"lesson_has_no_{operation}_attachment",
                     )
@@ -2950,6 +3410,43 @@ TASK_GRAMMAR_ACTIONS = {
         "count_on_from_larger",
     ),
     "story_take_from_result_unknown": ("subtraction", "take_away_base_ones"),
+    "narrative_join_more_result_unknown": ("addition", "count_on_from_larger"),
+    "narrative_two_actor_combine_result_unknown": (
+        "addition",
+        "count_on_from_larger",
+    ),
+    "narrative_same_unit_combine_result_unknown": (
+        "addition",
+        "count_on_from_larger",
+    ),
+    "narrative_take_from_result_unknown": (
+        "subtraction",
+        "take_away_base_ones",
+    ),
+    "narrative_add_to_change_unknown": (
+        "subtraction",
+        "count_up_missing_addend",
+    ),
+    "narrative_total_known_part_missing_part": (
+        "subtraction",
+        "count_up_missing_addend",
+    ),
+    "narrative_equal_groups_total_unknown": (
+        "multiplication",
+        "repeat_equal_groups",
+    ),
+    "narrative_rate_total_unknown": (
+        "multiplication",
+        "repeat_equal_groups",
+    ),
+    "narrative_measurement_division_groups_unknown": (
+        "division",
+        "measure_groups_of_size",
+    ),
+    "narrative_partitive_division_share_unknown": (
+        "division",
+        "fair_share_equal_groups",
+    ),
     "rectangle_dimensions_perimeter": (
         "geometry",
         "rectangle_perimeter_boundary_traversal",

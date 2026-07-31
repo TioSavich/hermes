@@ -808,45 +808,6 @@
      "reason": "required_true_or_false_routine_prompt_absent"
     }
    ],
-   "lesson": "IM-GK-U7-L5",
-   "maximal_equations": [
-    "7 = 4 + 3",
-    "7- 3 = 4",
-    "7 + 3 = 10",
-    "5 - 2 = 3",
-    "4 = 2 + 2",
-    "2 + 5 = 7"
-   ],
-   "position": "student_task_statement(2)",
-   "printed_equations": [
-    "7- 3 = 4",
-    "7 + 3 = 10",
-    "5 - 2 = 3",
-    "2 + 5 = 7"
-   ],
-   "prompt": "1. Clare has 7 pattern blocks. Her brother takes 3. How many now? 7 = 4 + 3 7- 3 = 4 7 + 3 = 10 2. Kiran has 2 pattern blocks. Jada adds 5 more. How many pattern blocks? 5 - 2 = 3 4 = 2 + 2 2 + 5 = 7",
-   "prompt_class": "interpret_shown_work",
-   "source": "curriculum/im/generated/recovered_task_spans.json"
-  },
-  {
-   "extractor_refusals": [
-    {
-     "extractor_family": "printed_equation_list_fullmatch",
-     "reason": "sidecar_pseudo_span_has_one_prompt_line_not_equation_only_lines"
-    },
-    {
-     "extractor_family": "direct_expression_list",
-     "reason": "required_find_the_value_of_each_prompt_absent"
-    },
-    {
-     "extractor_family": "recovered_equation_items",
-     "reason": "required_which_3_go_together_prompt_absent"
-    },
-    {
-     "extractor_family": "equation_verification",
-     "reason": "required_true_or_false_routine_prompt_absent"
-    }
-   ],
    "lesson": "IM-GK-U8-L17",
    "maximal_equations": [
     "7 + 3 = 10",
@@ -869,7 +830,7 @@
   "bucket_counts": {
    "equation_matching": 3,
    "missing_number": 1,
-   "other_prompt_shape": 23,
+   "other_prompt_shape": 22,
    "true_or_false": 10
   },
   "complete_equation_test_lessons": 38,
@@ -877,24 +838,24 @@
   "missing_number_candidate_spans": 1,
   "missing_number_spans": 2,
   "missing_number_withheld_spans": 1,
-  "other_prompt_spans": 23,
+  "other_prompt_spans": 22,
   "out_of_scope_shape_counts": {
    "left_blank_equals_expression": 1
   },
-  "pre_task_206_stalled_lessons": 33,
-  "pre_task_206_stalled_spans": 38,
+  "pre_task_206_stalled_lessons": 32,
+  "pre_task_206_stalled_spans": 37,
   "prompt_class_counts": {
    "analyze_error_or_correctness": 3,
    "compare_shown_methods_or_work": 1,
    "continue_or_use_partial_calculation": 1,
    "equation_grid_without_prompt": 4,
    "generate_problem_from_equation_or_work": 3,
-   "interpret_shown_work": 4,
+   "interpret_shown_work": 3,
    "notice_or_wonder_about_equations": 3,
    "select_or_place_equation_for_representation": 4
   },
   "recovered_spans": 593,
-  "stalled_lessons_after_task_206": 32,
-  "stalled_spans_after_task_206": 37
+  "stalled_lessons_after_task_206": 31,
+  "stalled_spans_after_task_206": 36
  }
 }

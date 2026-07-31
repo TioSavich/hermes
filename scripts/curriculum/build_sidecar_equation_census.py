@@ -239,9 +239,9 @@ def build(root: pathlib.Path) -> dict:
             }
         )
     rows.sort(key=lambda row: (row["lesson"], row["position"]))
-    if len(rows) != 23:
+    if len(rows) != 22:
         raise SystemExit(
-            f"sidecar other-prompt census moved: expected 23 rows, found {len(rows)}"
+            f"sidecar other-prompt census moved: expected 22 rows, found {len(rows)}"
         )
     class_counts = Counter(row["prompt_class"] for row in rows)
     return {

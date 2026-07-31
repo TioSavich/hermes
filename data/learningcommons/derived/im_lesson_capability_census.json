@@ -221,10 +221,10 @@
     "canonical_denominator": 92,
     "counts": {
      "diagnostic_ready": 4,
-     "executable_task": 4,
-     "has_candidates": 3,
+     "executable_task": 9,
+     "has_candidates": 9,
      "in_canonical_corpus": 92,
-     "measured_transition": 4,
+     "measured_transition": 9,
      "readable": 92,
      "strict_and_wired": 3,
      "strict_conjunction": 3,
@@ -233,7 +233,7 @@
     "diagnostic_scope_denominator": 4,
     "label": "counting_and_cardinality",
     "reader_status": {
-     "checked_and_empty_no_candidate": 89,
+     "checked_and_empty_no_candidate": 83,
      "unchecked_no_guide": 0
     }
    },
@@ -301,10 +301,10 @@
     "canonical_denominator": 212,
     "counts": {
      "diagnostic_ready": 55,
-     "executable_task": 65,
-     "has_candidates": 55,
+     "executable_task": 69,
+     "has_candidates": 59,
      "in_canonical_corpus": 212,
-     "measured_transition": 65,
+     "measured_transition": 69,
      "readable": 212,
      "strict_and_wired": 39,
      "strict_conjunction": 39,
@@ -313,7 +313,7 @@
     "diagnostic_scope_denominator": 55,
     "label": "measurement_and_data",
     "reader_status": {
-     "checked_and_empty_no_candidate": 157,
+     "checked_and_empty_no_candidate": 153,
      "unchecked_no_guide": 0
     }
    },
@@ -322,7 +322,7 @@
     "counts": {
      "diagnostic_ready": 0,
      "executable_task": 7,
-     "has_candidates": 2,
+     "has_candidates": 3,
      "in_canonical_corpus": 36,
      "measured_transition": 7,
      "readable": 36,
@@ -333,7 +333,7 @@
     "diagnostic_scope_denominator": 0,
     "label": "no_addressing_domain",
     "reader_status": {
-     "checked_and_empty_no_candidate": 34,
+     "checked_and_empty_no_candidate": 33,
      "unchecked_no_guide": 0
     }
    },
@@ -341,10 +341,10 @@
     "canonical_denominator": 312,
     "counts": {
      "diagnostic_ready": 152,
-     "executable_task": 174,
-     "has_candidates": 144,
+     "executable_task": 179,
+     "has_candidates": 149,
      "in_canonical_corpus": 312,
-     "measured_transition": 174,
+     "measured_transition": 179,
      "readable": 312,
      "strict_and_wired": 96,
      "strict_conjunction": 96,
@@ -353,7 +353,7 @@
     "diagnostic_scope_denominator": 152,
     "label": "number_and_operations_base_ten",
     "reader_status": {
-     "checked_and_empty_no_candidate": 168,
+     "checked_and_empty_no_candidate": 163,
      "unchecked_no_guide": 0
     }
    },
@@ -361,10 +361,10 @@
     "canonical_denominator": 132,
     "counts": {
      "diagnostic_ready": 22,
-     "executable_task": 34,
-     "has_candidates": 32,
+     "executable_task": 35,
+     "has_candidates": 34,
      "in_canonical_corpus": 132,
-     "measured_transition": 34,
+     "measured_transition": 35,
      "readable": 132,
      "strict_and_wired": 14,
      "strict_conjunction": 14,
@@ -373,7 +373,7 @@
     "diagnostic_scope_denominator": 22,
     "label": "number_and_operations_fractions",
     "reader_status": {
-     "checked_and_empty_no_candidate": 100,
+     "checked_and_empty_no_candidate": 98,
      "unchecked_no_guide": 0
     }
    },
@@ -401,10 +401,10 @@
     "canonical_denominator": 318,
     "counts": {
      "diagnostic_ready": 135,
-     "executable_task": 156,
-     "has_candidates": 132,
+     "executable_task": 169,
+     "has_candidates": 150,
      "in_canonical_corpus": 318,
-     "measured_transition": 156,
+     "measured_transition": 169,
      "readable": 318,
      "strict_and_wired": 87,
      "strict_conjunction": 87,
@@ -413,7 +413,7 @@
     "diagnostic_scope_denominator": 135,
     "label": "operations_and_algebraic_thinking",
     "reader_status": {
-     "checked_and_empty_no_candidate": 186,
+     "checked_and_empty_no_candidate": 168,
      "unchecked_no_guide": 0
     }
    },
@@ -463,10 +463,10 @@
     "canonical_denominator": 148,
     "counts": {
      "diagnostic_ready": 68,
-     "executable_task": 78,
-     "has_candidates": 66,
+     "executable_task": 80,
+     "has_candidates": 71,
      "in_canonical_corpus": 148,
-     "measured_transition": 78,
+     "measured_transition": 80,
      "readable": 148,
      "strict_and_wired": 54,
      "strict_conjunction": 54,
@@ -475,7 +475,7 @@
     "diagnostic_scope_denominator": 68,
     "label": "1",
     "reader_status": {
-     "checked_and_empty_no_candidate": 82,
+     "checked_and_empty_no_candidate": 77,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -503,10 +503,10 @@
       "canonical_denominator": 23,
       "counts": {
        "diagnostic_ready": 14,
-       "executable_task": 16,
-       "has_candidates": 13,
+       "executable_task": 17,
+       "has_candidates": 17,
        "in_canonical_corpus": 23,
-       "measured_transition": 16,
+       "measured_transition": 17,
        "readable": 23,
        "strict_and_wired": 13,
        "strict_conjunction": 13,
@@ -515,7 +515,7 @@
       "diagnostic_scope_denominator": 14,
       "label": "G1U2",
       "reader_status": {
-       "checked_and_empty_no_candidate": 10,
+       "checked_and_empty_no_candidate": 6,
        "unchecked_no_guide": 0
       }
      },
@@ -583,10 +583,10 @@
       "canonical_denominator": 17,
       "counts": {
        "diagnostic_ready": 6,
-       "executable_task": 6,
-       "has_candidates": 6,
+       "executable_task": 7,
+       "has_candidates": 7,
        "in_canonical_corpus": 17,
-       "measured_transition": 6,
+       "measured_transition": 7,
        "readable": 17,
        "strict_and_wired": 5,
        "strict_conjunction": 5,
@@ -595,7 +595,7 @@
       "diagnostic_scope_denominator": 6,
       "label": "G1U6",
       "reader_status": {
-       "checked_and_empty_no_candidate": 11,
+       "checked_and_empty_no_candidate": 10,
        "unchecked_no_guide": 0
       }
      },
@@ -645,10 +645,10 @@
     "canonical_denominator": 150,
     "counts": {
      "diagnostic_ready": 63,
-     "executable_task": 75,
-     "has_candidates": 61,
+     "executable_task": 77,
+     "has_candidates": 63,
      "in_canonical_corpus": 150,
-     "measured_transition": 75,
+     "measured_transition": 77,
      "readable": 150,
      "strict_and_wired": 50,
      "strict_conjunction": 50,
@@ -657,7 +657,7 @@
     "diagnostic_scope_denominator": 63,
     "label": "2",
     "reader_status": {
-     "checked_and_empty_no_candidate": 89,
+     "checked_and_empty_no_candidate": 87,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -725,10 +725,10 @@
       "canonical_denominator": 15,
       "counts": {
        "diagnostic_ready": 5,
-       "executable_task": 5,
-       "has_candidates": 5,
+       "executable_task": 6,
+       "has_candidates": 6,
        "in_canonical_corpus": 15,
-       "measured_transition": 5,
+       "measured_transition": 6,
        "readable": 15,
        "strict_and_wired": 5,
        "strict_conjunction": 5,
@@ -737,7 +737,7 @@
       "diagnostic_scope_denominator": 5,
       "label": "G2U4",
       "reader_status": {
-       "checked_and_empty_no_candidate": 10,
+       "checked_and_empty_no_candidate": 9,
        "unchecked_no_guide": 0
       }
      },
@@ -785,10 +785,10 @@
       "canonical_denominator": 19,
       "counts": {
        "diagnostic_ready": 12,
-       "executable_task": 16,
-       "has_candidates": 10,
+       "executable_task": 17,
+       "has_candidates": 11,
        "in_canonical_corpus": 19,
-       "measured_transition": 16,
+       "measured_transition": 17,
        "readable": 19,
        "strict_and_wired": 11,
        "strict_conjunction": 11,
@@ -797,7 +797,7 @@
       "diagnostic_scope_denominator": 12,
       "label": "G2U7",
       "reader_status": {
-       "checked_and_empty_no_candidate": 9,
+       "checked_and_empty_no_candidate": 8,
        "unchecked_no_guide": 0
       }
      },
@@ -847,10 +847,10 @@
     "canonical_denominator": 143,
     "counts": {
      "diagnostic_ready": 52,
-     "executable_task": 63,
-     "has_candidates": 53,
+     "executable_task": 66,
+     "has_candidates": 57,
      "in_canonical_corpus": 143,
-     "measured_transition": 63,
+     "measured_transition": 66,
      "readable": 143,
      "strict_and_wired": 32,
      "strict_conjunction": 32,
@@ -859,7 +859,7 @@
     "diagnostic_scope_denominator": 52,
     "label": "3",
     "reader_status": {
-     "checked_and_empty_no_candidate": 90,
+     "checked_and_empty_no_candidate": 86,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -927,10 +927,10 @@
       "canonical_denominator": 22,
       "counts": {
        "diagnostic_ready": 11,
-       "executable_task": 15,
-       "has_candidates": 10,
+       "executable_task": 18,
+       "has_candidates": 14,
        "in_canonical_corpus": 22,
-       "measured_transition": 15,
+       "measured_transition": 18,
        "readable": 22,
        "strict_and_wired": 4,
        "strict_conjunction": 4,
@@ -939,7 +939,7 @@
       "diagnostic_scope_denominator": 11,
       "label": "G3U4",
       "reader_status": {
-       "checked_and_empty_no_candidate": 12,
+       "checked_and_empty_no_candidate": 8,
        "unchecked_no_guide": 0
       }
      },
@@ -1029,10 +1029,10 @@
     "canonical_denominator": 151,
     "counts": {
      "diagnostic_ready": 44,
-     "executable_task": 53,
-     "has_candidates": 46,
+     "executable_task": 56,
+     "has_candidates": 49,
      "in_canonical_corpus": 151,
-     "measured_transition": 53,
+     "measured_transition": 56,
      "readable": 151,
      "strict_and_wired": 21,
      "strict_conjunction": 21,
@@ -1041,7 +1041,7 @@
     "diagnostic_scope_denominator": 44,
     "label": "4",
     "reader_status": {
-     "checked_and_empty_no_candidate": 105,
+     "checked_and_empty_no_candidate": 102,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -1089,10 +1089,10 @@
       "canonical_denominator": 20,
       "counts": {
        "diagnostic_ready": 3,
-       "executable_task": 5,
-       "has_candidates": 4,
+       "executable_task": 6,
+       "has_candidates": 5,
        "in_canonical_corpus": 20,
-       "measured_transition": 5,
+       "measured_transition": 6,
        "readable": 20,
        "strict_and_wired": 2,
        "strict_conjunction": 2,
@@ -1101,7 +1101,7 @@
       "diagnostic_scope_denominator": 3,
       "label": "G4U3",
       "reader_status": {
-       "checked_and_empty_no_candidate": 16,
+       "checked_and_empty_no_candidate": 15,
        "unchecked_no_guide": 0
       }
      },
@@ -1149,10 +1149,10 @@
       "canonical_denominator": 26,
       "counts": {
        "diagnostic_ready": 17,
-       "executable_task": 16,
-       "has_candidates": 14,
+       "executable_task": 18,
+       "has_candidates": 16,
        "in_canonical_corpus": 26,
-       "measured_transition": 16,
+       "measured_transition": 18,
        "readable": 26,
        "strict_and_wired": 6,
        "strict_conjunction": 6,
@@ -1161,7 +1161,7 @@
       "diagnostic_scope_denominator": 17,
       "label": "G4U6",
       "reader_status": {
-       "checked_and_empty_no_candidate": 12,
+       "checked_and_empty_no_candidate": 10,
        "unchecked_no_guide": 0
       }
      },
@@ -1232,7 +1232,7 @@
     "counts": {
      "diagnostic_ready": 30,
      "executable_task": 40,
-     "has_candidates": 35,
+     "has_candidates": 37,
      "in_canonical_corpus": 148,
      "measured_transition": 40,
      "readable": 148,
@@ -1243,7 +1243,7 @@
     "diagnostic_scope_denominator": 30,
     "label": "5",
     "reader_status": {
-     "checked_and_empty_no_candidate": 113,
+     "checked_and_empty_no_candidate": 111,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -1272,7 +1272,7 @@
       "counts": {
        "diagnostic_ready": 3,
        "executable_task": 4,
-       "has_candidates": 3,
+       "has_candidates": 4,
        "in_canonical_corpus": 17,
        "measured_transition": 4,
        "readable": 17,
@@ -1283,7 +1283,7 @@
       "diagnostic_scope_denominator": 3,
       "label": "G5U2",
       "reader_status": {
-       "checked_and_empty_no_candidate": 14,
+       "checked_and_empty_no_candidate": 13,
        "unchecked_no_guide": 0
       }
      },
@@ -1312,7 +1312,7 @@
       "counts": {
        "diagnostic_ready": 10,
        "executable_task": 12,
-       "has_candidates": 10,
+       "has_candidates": 11,
        "in_canonical_corpus": 20,
        "measured_transition": 12,
        "readable": 20,
@@ -1323,7 +1323,7 @@
       "diagnostic_scope_denominator": 10,
       "label": "G5U4",
       "reader_status": {
-       "checked_and_empty_no_candidate": 10,
+       "checked_and_empty_no_candidate": 9,
        "unchecked_no_guide": 0
       }
      },
@@ -2019,10 +2019,10 @@
     "canonical_denominator": 139,
     "counts": {
      "diagnostic_ready": 5,
-     "executable_task": 9,
-     "has_candidates": 7,
+     "executable_task": 17,
+     "has_candidates": 16,
      "in_canonical_corpus": 139,
-     "measured_transition": 9,
+     "measured_transition": 17,
      "readable": 139,
      "strict_and_wired": 3,
      "strict_conjunction": 3,
@@ -2031,7 +2031,7 @@
     "diagnostic_scope_denominator": 5,
     "label": "K",
     "reader_status": {
-     "checked_and_empty_no_candidate": 132,
+     "checked_and_empty_no_candidate": 123,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -2059,10 +2059,10 @@
       "canonical_denominator": 24,
       "counts": {
        "diagnostic_ready": 0,
-       "executable_task": 0,
-       "has_candidates": 0,
+       "executable_task": 1,
+       "has_candidates": 1,
        "in_canonical_corpus": 24,
-       "measured_transition": 0,
+       "measured_transition": 1,
        "readable": 24,
        "strict_and_wired": 0,
        "strict_conjunction": 0,
@@ -2071,7 +2071,7 @@
       "diagnostic_scope_denominator": 0,
       "label": "GKU2",
       "reader_status": {
-       "checked_and_empty_no_candidate": 24,
+       "checked_and_empty_no_candidate": 23,
        "unchecked_no_guide": 0
       }
      },
@@ -2099,10 +2099,10 @@
       "canonical_denominator": 18,
       "counts": {
        "diagnostic_ready": 0,
-       "executable_task": 0,
-       "has_candidates": 0,
+       "executable_task": 6,
+       "has_candidates": 6,
        "in_canonical_corpus": 18,
-       "measured_transition": 0,
+       "measured_transition": 6,
        "readable": 18,
        "strict_and_wired": 0,
        "strict_conjunction": 0,
@@ -2111,7 +2111,7 @@
       "diagnostic_scope_denominator": 0,
       "label": "GKU4",
       "reader_status": {
-       "checked_and_empty_no_candidate": 18,
+       "checked_and_empty_no_candidate": 12,
        "unchecked_no_guide": 0
       }
      },
@@ -2159,10 +2159,10 @@
       "canonical_denominator": 16,
       "counts": {
        "diagnostic_ready": 0,
-       "executable_task": 2,
-       "has_candidates": 2,
+       "executable_task": 3,
+       "has_candidates": 3,
        "in_canonical_corpus": 16,
-       "measured_transition": 2,
+       "measured_transition": 3,
        "readable": 16,
        "strict_and_wired": 0,
        "strict_conjunction": 0,
@@ -2171,7 +2171,7 @@
       "diagnostic_scope_denominator": 0,
       "label": "GKU7",
       "reader_status": {
-       "checked_and_empty_no_candidate": 14,
+       "checked_and_empty_no_candidate": 13,
        "unchecked_no_guide": 0
       }
      },
@@ -2180,7 +2180,7 @@
       "counts": {
        "diagnostic_ready": 3,
        "executable_task": 4,
-       "has_candidates": 3,
+       "has_candidates": 4,
        "in_canonical_corpus": 21,
        "measured_transition": 4,
        "readable": 21,
@@ -2191,7 +2191,7 @@
       "diagnostic_scope_denominator": 3,
       "label": "GKU8",
       "reader_status": {
-       "checked_and_empty_no_candidate": 18,
+       "checked_and_empty_no_candidate": 17,
        "unchecked_no_guide": 0
       }
      }
@@ -2223,10 +2223,10 @@
     "canonical_denominator": 879,
     "counts": {
      "diagnostic_ready": 262,
-     "executable_task": 318,
-     "has_candidates": 268,
+     "executable_task": 336,
+     "has_candidates": 293,
      "in_canonical_corpus": 879,
-     "measured_transition": 318,
+     "measured_transition": 336,
      "readable": 879,
      "strict_and_wired": 177,
      "strict_conjunction": 177,
@@ -2235,21 +2235,21 @@
     "diagnostic_scope_denominator": 262,
     "label": "K-5",
     "reader_status": {
-     "checked_and_empty_no_candidate": 611,
+     "checked_and_empty_no_candidate": 586,
      "unchecked_no_guide": 0
     }
    }
   },
   "by_operation_attachment": {
    "addition": {
-    "canonical_denominator": 486,
+    "canonical_denominator": 489,
     "counts": {
      "diagnostic_ready": 213,
-     "executable_task": 261,
-     "has_candidates": 206,
-     "in_canonical_corpus": 486,
-     "measured_transition": 261,
-     "readable": 486,
+     "executable_task": 275,
+     "has_candidates": 225,
+     "in_canonical_corpus": 489,
+     "measured_transition": 275,
+     "readable": 489,
      "strict_and_wired": 139,
      "strict_conjunction": 139,
      "wired_misconception_reachable": 147
@@ -2257,7 +2257,7 @@
     "diagnostic_scope_denominator": 213,
     "label": "addition",
     "reader_status": {
-     "checked_and_empty_no_candidate": 280,
+     "checked_and_empty_no_candidate": 264,
      "unchecked_no_guide": 0
     }
    },
@@ -2322,14 +2322,14 @@
     }
    },
    "division": {
-    "canonical_denominator": 174,
+    "canonical_denominator": 175,
     "counts": {
      "diagnostic_ready": 87,
-     "executable_task": 126,
-     "has_candidates": 59,
-     "in_canonical_corpus": 174,
-     "measured_transition": 126,
-     "readable": 174,
+     "executable_task": 130,
+     "has_candidates": 66,
+     "in_canonical_corpus": 175,
+     "measured_transition": 130,
+     "readable": 175,
      "strict_and_wired": 47,
      "strict_conjunction": 47,
      "wired_misconception_reachable": 56
@@ -2337,7 +2337,7 @@
     "diagnostic_scope_denominator": 87,
     "label": "division",
     "reader_status": {
-     "checked_and_empty_no_candidate": 115,
+     "checked_and_empty_no_candidate": 109,
      "unchecked_no_guide": 0
     }
    },
@@ -2345,10 +2345,10 @@
     "canonical_denominator": 101,
     "counts": {
      "diagnostic_ready": 16,
-     "executable_task": 27,
-     "has_candidates": 24,
+     "executable_task": 28,
+     "has_candidates": 26,
      "in_canonical_corpus": 101,
-     "measured_transition": 27,
+     "measured_transition": 28,
      "readable": 101,
      "strict_and_wired": 10,
      "strict_conjunction": 10,
@@ -2357,7 +2357,7 @@
     "diagnostic_scope_denominator": 16,
     "label": "fraction",
     "reader_status": {
-     "checked_and_empty_no_candidate": 77,
+     "checked_and_empty_no_candidate": 75,
      "unchecked_no_guide": 0
     }
    },
@@ -2422,22 +2422,22 @@
     }
    },
    "multiplication": {
-    "canonical_denominator": 220,
+    "canonical_denominator": 223,
     "counts": {
-     "diagnostic_ready": 117,
-     "executable_task": 155,
-     "has_candidates": 98,
-     "in_canonical_corpus": 220,
-     "measured_transition": 155,
-     "readable": 220,
+     "diagnostic_ready": 118,
+     "executable_task": 162,
+     "has_candidates": 105,
+     "in_canonical_corpus": 223,
+     "measured_transition": 162,
+     "readable": 223,
      "strict_and_wired": 74,
      "strict_conjunction": 74,
-     "wired_misconception_reachable": 81
+     "wired_misconception_reachable": 82
     },
-    "diagnostic_scope_denominator": 117,
+    "diagnostic_scope_denominator": 118,
     "label": "multiplication",
     "reader_status": {
-     "checked_and_empty_no_candidate": 122,
+     "checked_and_empty_no_candidate": 118,
      "unchecked_no_guide": 0
     }
    },
@@ -2482,14 +2482,14 @@
     }
    },
    "subtraction": {
-    "canonical_denominator": 229,
+    "canonical_denominator": 230,
     "counts": {
      "diagnostic_ready": 135,
-     "executable_task": 165,
-     "has_candidates": 124,
-     "in_canonical_corpus": 229,
-     "measured_transition": 165,
-     "readable": 229,
+     "executable_task": 173,
+     "has_candidates": 136,
+     "in_canonical_corpus": 230,
+     "measured_transition": 173,
+     "readable": 230,
      "strict_and_wired": 92,
      "strict_conjunction": 92,
      "wired_misconception_reachable": 98
@@ -2497,19 +2497,19 @@
     "diagnostic_scope_denominator": 135,
     "label": "subtraction",
     "reader_status": {
-     "checked_and_empty_no_candidate": 105,
+     "checked_and_empty_no_candidate": 94,
      "unchecked_no_guide": 0
     }
    },
    "unattached": {
-    "canonical_denominator": 355,
+    "canonical_denominator": 353,
     "counts": {
      "diagnostic_ready": 0,
      "executable_task": 0,
      "has_candidates": 0,
-     "in_canonical_corpus": 355,
+     "in_canonical_corpus": 353,
      "measured_transition": 0,
-     "readable": 355,
+     "readable": 353,
      "strict_and_wired": 0,
      "strict_conjunction": 0,
      "wired_misconception_reachable": 0
@@ -2517,7 +2517,7 @@
     "diagnostic_scope_denominator": 0,
     "label": "unattached",
     "reader_status": {
-     "checked_and_empty_no_candidate": 355,
+     "checked_and_empty_no_candidate": 353,
      "unchecked_no_guide": 0
     }
    }
@@ -2552,62 +2552,62 @@
   },
   {
    "binding_constraint": {
-    "lessons": 1039,
+    "lessons": 1014,
     "reason": "no_exact_operand_bearing_candidate"
    },
-   "count": 269,
+   "count": 294,
    "definition": "The live candidate extractor returned at least one operand-bearing task candidate from tracked or recovered spans.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
-    "no_exact_operand_bearing_candidate": 1039
+    "no_exact_operand_bearing_candidate": 1014
    },
    "id": "has_candidates"
   },
   {
    "binding_constraint": {
-    "lessons": 907,
+    "lessons": 889,
     "reason": "no_compiled_productive_task"
    },
-   "count": 396,
+   "count": 414,
    "definition": "At least one non-declared-absent compiled productive task returned a result through the current registry-or-activity runtime.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
     "compiled_task_produced_no_current_result": 5,
-    "no_compiled_productive_task": 907
+    "no_compiled_productive_task": 889
    },
    "id": "executable_task"
   },
   {
    "binding_constraint": {
-    "lessons": 907,
+    "lessons": 889,
     "reason": "no_compiled_productive_task"
    },
-   "count": 396,
+   "count": 414,
    "definition": "At least one current compiled productive task returned a result and a nonempty runtime step sequence: a registry trace, an outcome trace, or validated synthesis-path moves.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
     "compiled_task_produced_no_current_result": 5,
-    "no_compiled_productive_task": 907
+    "no_compiled_productive_task": 889
    },
    "id": "measured_transition"
   },
   {
    "binding_constraint": {
     "lessons": 907,
-    "reason": "missing_executable_task"
+    "reason": "missing_measured_transition"
    },
    "count": 300,
    "definition": "The evidence ledger has standard action, strategy, compiled executable task, structured negative, and resolved Atlas transition fields.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
-    "missing_executable_task": 907,
+    "missing_executable_task": 889,
     "missing_measured_transition": 907,
     "missing_standard_action_candidate": 36,
-    "missing_strategy_evidence": 392,
+    "missing_strategy_evidence": 353,
     "missing_structured_negative": 862
    },
    "id": "diagnostic_ready"
@@ -4804,17 +4804,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "counting_and_cardinality"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -4822,10 +4824,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -4833,10 +4834,10 @@
    "lesson_number": 21,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -4851,7 +4852,18 @@
     "span_count": 3,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U2-L21",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(5,1)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(5,1)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -6312,28 +6324,29 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
      "strategy_evidence": true,
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -6341,10 +6354,10 @@
    "lesson_number": 8,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -6359,7 +6372,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U4-L8",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(5,4)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(5,4)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -6369,10 +6393,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -6380,20 +6406,18 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -6401,23 +6425,36 @@
    "lesson_number": 9,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
     "wired_misconception_reachable": false
    },
    "name": "Solve Story Problems",
-   "operation_attachments": [],
+   "operation_attachments": [
+    "addition"
+   ],
    "pusu": null,
    "reader": {
     "span_count": 3,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U4-L9",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(4,3)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(4,3)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -6427,10 +6464,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -6438,7 +6477,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -6446,10 +6485,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -6457,10 +6495,10 @@
    "lesson_number": 10,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -6475,7 +6513,18 @@
     "span_count": 3,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U4-L10",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(3,5)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(3,5)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -6485,17 +6534,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -6503,11 +6554,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -6515,10 +6565,10 @@
    "lesson_number": 11,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -6526,6 +6576,7 @@
    },
    "name": "Drawings to Represent Story Problems",
    "operation_attachments": [
+    "addition",
     "subtraction"
    ],
    "pusu": null,
@@ -6533,7 +6584,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U4-L11",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(4,5)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(4,5)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -6543,10 +6605,13 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -6554,7 +6619,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -6562,10 +6627,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -6573,10 +6637,10 @@
    "lesson_number": 12,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -6592,7 +6656,19 @@
     "span_count": 3,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U4-L12",
+    "measured_trace": true,
+    "result_shapes": [
+     "outcome_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(5,4)",
+    "task_count": 2,
+    "trace_shape": "outcome_trace",
+    "trace_task": "add(5,4)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -6892,10 +6968,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -6903,7 +6981,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -6911,11 +6989,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -6923,10 +7000,10 @@
    "lesson_number": 18,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -6942,7 +7019,18 @@
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U4-L18",
+    "measured_trace": true,
+    "result_shapes": [
+     "synthesis_path_moves_nonempty"
+    ],
+    "result_task": "add(3,6)",
+    "task_count": 1,
+    "trace_shape": "synthesis_path_moves",
+    "trace_task": "add(3,6)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -8874,17 +8962,20 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 6,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 6
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -8892,11 +8983,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -8904,10 +8994,10 @@
    "lesson_number": 5,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -8923,7 +9013,20 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U7-L5",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(2,5)",
+    "task_count": 3,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(2,5)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -9704,10 +9807,13 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -9732,7 +9838,7 @@
    "memberships": {
     "diagnostic_ready": true,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -11862,10 +11968,13 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -11889,7 +11998,7 @@
    "memberships": {
     "diagnostic_ready": true,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -11938,10 +12047,13 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 3,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 3
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -11965,7 +12077,7 @@
    "memberships": {
     "diagnostic_ready": true,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -11997,12 +12109,14 @@
     "lesson": "IM-G1-U2-L2",
     "measured_trace": true,
     "result_shapes": [
-     "outcome_trace_nonempty"
+     "outcome_trace_nonempty",
+     "outcome_trace_nonempty",
+     "registry_trace_nonempty"
     ],
-    "result_task": "add(6,3)",
-    "task_count": 1,
+    "result_task": "add(4,3)",
+    "task_count": 3,
     "trace_shape": "outcome_trace",
-    "trace_task": "add(6,3)"
+    "trace_task": "add(4,3)"
    },
    "sources": {
     "identity_spine": true,
@@ -12013,10 +12127,13 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -12040,7 +12157,7 @@
    "memberships": {
     "diagnostic_ready": true,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -12073,12 +12190,13 @@
     "lesson": "IM-G1-U2-L3",
     "measured_trace": true,
     "result_shapes": [
+     "outcome_trace_nonempty",
      "outcome_trace_nonempty"
     ],
-    "result_task": "subtract(8,6)",
-    "task_count": 1,
+    "result_task": "add(5,4)",
+    "task_count": 2,
     "trace_shape": "outcome_trace",
-    "trace_task": "subtract(8,6)"
+    "trace_task": "add(5,4)"
    },
    "sources": {
     "identity_spine": true,
@@ -12089,12 +12207,13 @@
   },
   {
    "candidates": {
-    "count": 4,
+    "count": 5,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 4
+    "reviewable": 5
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -12152,10 +12271,11 @@
      "outcome_trace_nonempty",
      "outcome_trace_nonempty",
      "outcome_trace_nonempty",
-     "synthesis_path_moves_nonempty"
+     "synthesis_path_moves_nonempty",
+     "outcome_trace_nonempty"
     ],
     "result_task": "add(5,1)",
-    "task_count": 4,
+    "task_count": 5,
     "trace_shape": "outcome_trace",
     "trace_task": "add(5,1)"
    },
@@ -12359,10 +12479,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "number_and_operations_base_ten",
@@ -12370,7 +12492,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -12378,10 +12500,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "1",
    "identity_spine": true,
@@ -12389,10 +12510,10 @@
    "lesson_number": 8,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -12408,7 +12529,19 @@
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G1-U2-L8",
+    "measured_trace": true,
+    "result_shapes": [
+     "outcome_trace_nonempty",
+     "outcome_trace_nonempty"
+    ],
+    "result_task": "subtract(8,3)",
+    "task_count": 2,
+    "trace_shape": "outcome_trace",
+    "trace_task": "subtract(8,3)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -13884,12 +14017,12 @@
   },
   {
    "candidates": {
-    "count": 1,
+    "count": 2,
     "operations": [
      "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 1
+    "reviewable": 2
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -13946,12 +14079,13 @@
     "lesson": "IM-G1-U3-L6",
     "measured_trace": true,
     "result_shapes": [
-     "outcome_trace_nonempty",
-     "outcome_trace_nonempty"
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
     ],
     "result_task": "subtract(7,4)",
-    "task_count": 2,
-    "trace_shape": "outcome_trace",
+    "task_count": 3,
+    "trace_shape": "registry_trace",
     "trace_task": "subtract(7,4)"
    },
    "sources": {
@@ -14245,12 +14379,12 @@
   },
   {
    "candidates": {
-    "count": 6,
+    "count": 7,
     "operations": [
      "addition"
     ],
     "rejected": 0,
-    "reviewable": 6
+    "reviewable": 7
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -18808,10 +18942,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "addition"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "measurement_and_data",
@@ -18819,7 +18955,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -18827,10 +18963,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "1",
    "identity_spine": true,
@@ -18838,10 +18973,10 @@
    "lesson_number": 11,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -18857,7 +18992,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G1-U6-L11",
+    "measured_trace": true,
+    "result_shapes": [
+     "synthesis_path_moves_nonempty"
+    ],
+    "result_task": "add(9,7)",
+    "task_count": 1,
+    "trace_shape": "synthesis_path_moves",
+    "trace_task": "add(9,7)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -25764,10 +25910,13 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 3,
+    "operations": [
+     "addition",
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 3
    },
    "content_domains": [
     "measurement_and_data",
@@ -25776,20 +25925,18 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "event_ready"
    },
    "grade": "2",
    "identity_spine": true,
@@ -25797,23 +25944,39 @@
    "lesson_number": 13,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
     "wired_misconception_reachable": false
    },
    "name": "Represent Story Problems",
-   "operation_attachments": [],
+   "operation_attachments": [
+    "addition",
+    "subtraction"
+   ],
    "pusu": null,
    "reader": {
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G2-U4-L13",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(37,39)",
+    "task_count": 3,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(37,39)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -29656,17 +29819,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "multiplication"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "number_and_operations_base_ten"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -29674,11 +29839,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "2",
    "identity_spine": true,
@@ -29686,10 +29850,10 @@
    "lesson_number": 19,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -29697,14 +29861,26 @@
    },
    "name": "Book Drive",
    "operation_attachments": [
-    "addition"
+    "addition",
+    "multiplication"
    ],
    "pusu": null,
    "reader": {
     "span_count": 3,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G2-U7-L19",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "multiply(3,275)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "multiply(3,275)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -32259,13 +32435,13 @@
   },
   {
    "candidates": {
-    "count": 9,
+    "count": 10,
     "operations": [
      "division",
      "multiplication"
     ],
     "rejected": 2,
-    "reviewable": 7
+    "reviewable": 8
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -35456,10 +35632,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 4,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 4
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -35485,7 +35663,7 @@
    "memberships": {
     "diagnostic_ready": false,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -35507,12 +35685,15 @@
     "lesson": "IM-G3-U4-L1",
     "measured_trace": true,
     "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
-    "result_task": "divide(30,6)",
-    "task_count": 1,
+    "result_task": "divide(24,8)",
+    "task_count": 4,
     "trace_shape": "registry_trace",
-    "trace_task": "divide(30,6)"
+    "trace_task": "divide(24,8)"
    },
    "sources": {
     "identity_spine": true,
@@ -35523,17 +35704,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 3,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 3
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -35541,11 +35724,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "3",
    "identity_spine": true,
@@ -35553,10 +35735,10 @@
    "lesson_number": 2,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -35572,7 +35754,20 @@
     "span_count": 5,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G3-U4-L2",
+    "measured_trace": true,
+    "result_shapes": [
+     "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty"
+    ],
+    "result_task": "divide(20,4)",
+    "task_count": 3,
+    "trace_shape": "synthesis_path_moves",
+    "trace_task": "divide(20,4)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -36690,17 +36885,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -36708,10 +36905,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "3",
    "identity_spine": true,
@@ -36719,10 +36915,10 @@
    "lesson_number": 18,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -36740,7 +36936,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G3-U4-L18",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "divide(48,4)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "divide(48,4)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -36974,10 +37181,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "measurement_and_data",
@@ -36985,7 +37194,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -36993,11 +37202,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "3",
    "identity_spine": true,
@@ -37005,10 +37213,10 @@
    "lesson_number": 22,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -37024,7 +37232,18 @@
     "span_count": 3,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G3-U4-L22",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "divide(56,8)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "divide(56,8)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -42778,10 +42997,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "multiplication"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "number_and_operations_fractions"
@@ -42804,10 +43025,10 @@
    "lesson_number": 1,
    "memberships": {
     "diagnostic_ready": true,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -42815,7 +43036,8 @@
    },
    "name": "Equal Groups of Unit Fractions",
    "operation_attachments": [
-    "fraction"
+    "fraction",
+    "multiplication"
    ],
    "pusu": {
     "contrast_count": 1,
@@ -42832,16 +43054,16 @@
     "status": "segmented"
    },
    "runtime": {
-    "executable": false,
+    "executable": true,
     "lesson": "IM-G4-U3-L1",
-    "measured_trace": false,
+    "measured_trace": true,
     "result_shapes": [
-     "no_result"
+     "registry_trace_nonempty"
     ],
-    "result_task": "",
+    "result_task": "multiply(3,4)",
     "task_count": 1,
-    "trace_shape": "none",
-    "trace_task": ""
+    "trace_shape": "registry_trace",
+    "trace_task": "multiply(3,4)"
    },
    "sources": {
     "identity_spine": true,
@@ -47430,10 +47652,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "multiplication"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "measurement_and_data",
@@ -47441,7 +47665,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -47449,11 +47673,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "4",
    "identity_spine": true,
@@ -47461,10 +47684,10 @@
    "lesson_number": 12,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -47472,14 +47695,26 @@
    },
    "name": "Solve Problems Involving Multiplication",
    "operation_attachments": [
-    "addition"
+    "addition",
+    "multiplication"
    ],
    "pusu": null,
    "reader": {
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G4-U6-L12",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "multiply(3,366)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "multiply(3,366)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -47489,17 +47724,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "number_and_operations_base_ten"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -47507,10 +47744,9 @@
      "structured_negative": true
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "4",
    "identity_spine": true,
@@ -47518,10 +47754,10 @@
    "lesson_number": 13,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -47537,7 +47773,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G4-U6-L13",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "divide(85,5)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "divide(85,5)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -51907,17 +52154,19 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "number_and_operations_fractions"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -51925,11 +52174,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "5",
    "identity_spine": true,
@@ -51938,7 +52186,7 @@
    "memberships": {
     "diagnostic_ready": false,
     "executable_task": false,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": false,
     "readable": true,
@@ -51948,6 +52196,7 @@
    },
    "name": "Interpret Equations",
    "operation_attachments": [
+    "division",
     "fraction"
    ],
    "pusu": null,
@@ -51955,7 +52204,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": false,
+    "lesson": "IM-G5-U2-L3",
+    "measured_trace": false,
+    "result_shapes": [
+     "no_result"
+    ],
+    "result_task": "",
+    "task_count": 1,
+    "trace_shape": "none",
+    "trace_task": ""
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -54609,10 +54869,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 1,
+    "operations": [
+     "division"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 1
    },
    "content_domains": [
     "no_addressing_domain"
@@ -54639,7 +54901,7 @@
    "memberships": {
     "diagnostic_ready": false,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -54662,10 +54924,11 @@
     "lesson": "IM-G5-U4-L9",
     "measured_trace": true,
     "result_shapes": [
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
     "result_task": "divide(4632,8)",
-    "task_count": 1,
+    "task_count": 2,
     "trace_shape": "registry_trace",
     "trace_task": "divide(4632,8)"
    },
@@ -62825,19 +63088,18 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": false,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
      "standard_action_candidate",
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "spine_only"
+    "readiness": "strategy_attached"
    },
    "grade": "6",
    "identity_spine": true,
@@ -64838,18 +65100,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "6",
    "identity_spine": true,
@@ -64958,16 +65219,15 @@
      "measured_transition": false,
      "negative_candidate": false,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "6",
    "identity_spine": true,
@@ -69117,7 +69377,7 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
      "strategy_evidence": true,
      "structured_negative": false
@@ -69701,18 +69961,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "6",
    "identity_spine": true,
@@ -70391,18 +70650,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -70507,18 +70765,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -71193,18 +71450,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -71335,18 +71591,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -72114,18 +72369,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -72231,18 +72485,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76254,16 +76507,15 @@
      "measured_transition": false,
      "negative_candidate": false,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76369,18 +76621,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76428,18 +76679,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76490,16 +76740,15 @@
      "measured_transition": false,
      "negative_candidate": false,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76661,18 +76910,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76720,18 +76968,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -76779,18 +77026,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -77181,18 +77427,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -78991,18 +79236,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "7",
    "identity_spine": true,
@@ -79338,18 +79582,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -79454,18 +79697,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -79513,18 +79755,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -79572,18 +79813,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -79688,18 +79928,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -79975,18 +80214,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -80034,18 +80272,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -80150,19 +80387,18 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": false,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
      "standard_action_candidate",
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "spine_only"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -80552,18 +80788,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -84518,16 +84753,15 @@
      "measured_transition": false,
      "negative_candidate": false,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -85212,18 +85446,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -85556,18 +85789,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -86003,18 +86235,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -86292,18 +86523,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -86466,18 +86696,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -86584,18 +86813,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -86700,18 +86928,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -86816,18 +87043,17 @@
     "fields": {
      "executable_task": false,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
      "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "strategy_attached"
    },
    "grade": "8",
    "identity_spine": true,
@@ -87093,7 +87319,7 @@
   }
  ],
  "ranking_basis": "Fresh pusu_pass_v2 regenerated from the current working tree after the task-207 schema translation; current refusal classifications and live agrees_at_input routes determine the ranking.",
- "register": "A denominator-explicit census of what Hermes can currently do with IM lessons. Source presence, parsing, compiled execution, measured runtime step sequences, evidence readiness, strict PUSU, and live misconception routes remain separate claims. The ladder does not nest at has_candidates to executable_task (127 executable_task lessons lack has_candidates); measured_transition to diagnostic_ready (4 diagnostic_ready lessons lack measured_transition).",
+ "register": "A denominator-explicit census of what Hermes can currently do with IM lessons. Source presence, parsing, compiled execution, measured runtime step sequences, evidence readiness, strict PUSU, and live misconception routes remain separate claims. The ladder does not nest at has_candidates to executable_task (121 executable_task lessons lack has_candidates); measured_transition to diagnostic_ready (3 diagnostic_ready lessons lack measured_transition).",
  "runtime_result_shapes": {
   "counted_as_measured": [
    "outcome_trace_nonempty",
@@ -87101,9 +87327,9 @@
    "synthesis_path_moves_nonempty"
   ],
   "detector_change_on_same_live_results": {
-   "delta": 59,
-   "old_detector_lessons": 337,
-   "widened_detector_lessons": 396
+   "delta": 62,
+   "old_detector_lessons": 352,
+   "widened_detector_lessons": 414
   },
   "excluded_by_detector": {
    "no_result": "The task returned no result, so no measured sequence exists.",
@@ -87121,15 +87347,15 @@
   },
   "lesson_counts": {
    "no_result": 21,
-   "outcome_trace_nonempty": 130,
-   "registry_trace_nonempty": 217,
-   "synthesis_path_moves_nonempty": 157
+   "outcome_trace_nonempty": 131,
+   "registry_trace_nonempty": 233,
+   "synthesis_path_moves_nonempty": 160
   },
   "task_counts": {
    "no_result": 38,
-   "outcome_trace_nonempty": 385,
-   "registry_trace_nonempty": 782,
-   "synthesis_path_moves_nonempty": 629
+   "outcome_trace_nonempty": 389,
+   "registry_trace_nonempty": 808,
+   "synthesis_path_moves_nonempty": 634
   }
  },
  "schema": "im_lesson_capability_census_v1",
@@ -87164,14 +87390,14 @@
   "executable_task": {
    "candidate_failures": 5,
    "claimed_member_failures": 0,
-   "claimed_members_checked": 396,
+   "claimed_members_checked": 414,
    "method": "full current compiled-task runtime probe",
-   "sample_size": 401
+   "sample_size": 419
   },
   "has_candidates": {
    "failures": 0,
    "method": "full live candidate extractor run",
-   "sample_size": 269
+   "sample_size": 294
   },
   "in_canonical_corpus": {
    "failures": 0,
@@ -87181,9 +87407,9 @@
   "measured_transition": {
    "candidate_failures": 5,
    "claimed_member_failures": 0,
-   "claimed_members_checked": 396,
+   "claimed_members_checked": 414,
    "method": "full current result-plus-nonempty-step-sequence probe",
-   "sample_size": 401
+   "sample_size": 419
   },
   "readable": {
    "failures": 0,
