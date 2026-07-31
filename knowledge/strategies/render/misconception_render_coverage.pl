@@ -153,7 +153,9 @@ op_has_deformation_scene(Op) :-
 %  fraction: the four equipartition failures in parametric_fraction_errors.pl
 %  (unequal_partition, miscount_partition, shade_wrong_count, wrong_referent_
 %  whole) over the circle/bar/area hosts. lesson_deformation_chart.pl builds
-%  the IM-G3-U5 charts from this same lane.
+%  77 of its 78 IM lesson charts from this same lane, not only the three it
+%  reads off a teacher guide; the one exception, the division chart for
+%  IM-G6-U4-L10, is hardcoded in that module and never touches this lane.
 op_parametric_backing(fraction, equipartition_failure,
                       error_evidence(unequal_partition, circle, frac(1, 4))).
 %  decimal: the notation lane's place_value_writing_error computes the mirrored

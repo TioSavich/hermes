@@ -1170,9 +1170,10 @@ dispatch_request(fraction_cgi_addition, Id, Request, Response) :-
 
 % Parametric deformation chart for one IM lesson. A code outside coverage fails
 % the handler, which surfaces honestly as op_failed. Coverage is not a reading:
-% only three charted lessons take their hosts and fractions from a teacher guide
-% (IM-G3-U5-L1/L2/L15, plus the division chart IM-G6-U4-L10); the rest take the
-% fixed default set. Every payload carries provenance and provenance_note from
+% three charted lessons take their hosts and fractions from a teacher guide
+% (IM-G3-U5-L1/L2/L15) and the division chart IM-G6-U4-L10 takes compiled task
+% instances from its own guide; the other 74 take the fixed default set. Every
+% payload carries provenance and provenance_note from
 % lesson_deformation_chart:chart_provenance/2, so no consumer has to guess.
 dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
     (   get_dict(code, Request, Code0)
@@ -1181,7 +1182,12 @@ dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
         ->  json_safe(Chart, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_deformation_chart,
-                "lesson_deformation_chart covers IM lessons with unit-fraction partition or iteration strategies; no chart for that code",
+                "lesson_deformation_chart charts a lesson when its coverage row \c
+                 carries a unit-fraction partition or iteration strategy, or when \c
+                 it is a grade 6 unit 4 fraction-division lesson whose guide \c
+                 attests a tape-diagram scene. No chart for that code. Being \c
+                 charted settles only that a chart was assembled, not that the \c
+                 lesson's own quantities were read.",
                 Response)
         )
     ;   error_response(Id, missing_code,
@@ -2916,10 +2922,11 @@ state_label_text(Value, Text) :-
     ).
 
 deformation_chart_scope_export(Code, Dict) :-
+    % The module owns the definition of "charted"; read the list from it rather
+    % than rebuilding the disjunction here, so the covered list and
+    % chart_provenance/2 cannot answer differently about the same code.
     findall(CoveredCode,
-            ( lesson_deformation_chart:lesson_chart_lesson(CoveredCode, _, _, _, _)
-            ; lesson_deformation_chart:division_chart_lesson(CoveredCode)
-            ),
+            lesson_deformation_chart:charted_lesson_code(CoveredCode),
             Codes0),
     sort(Codes0, Codes),
     maplist(atom_string, Codes, CodeStrings),

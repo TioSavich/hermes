@@ -24,7 +24,10 @@
  *
  * chart_provenance/2 records the distinction per lesson and every assembled
  * chart carries it, together with a provenance_note that says in words what the
- * value means. NO COVERAGE NUMBER MAY CITE THIS CHART: a row's existence is
+ * value means. It FAILS for a code this module does not chart, so a lesson with
+ * no chart is never reported as carrying a default fill that never ran.
+ * charted_lesson_code/1 is the enumeration of what is charted at all.
+ * NO COVERAGE NUMBER MAY CITE THIS CHART: a row's existence is
  * evidence that the default fill ran, not that the lesson was read.
  *
  * Three layers, all read-only over the grammar, the parametric deformation
@@ -33,9 +36,13 @@
  *   1. lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions)
  *      The charted lessons: the IM lesson code, its title, its addressed
  *      standards, the host representations the chart partitions in
- *      (circle / rectangle / bar), and the unit fractions it models. Read off
- *      the teacher guide for the 3 hand-authored rows; the fixed default set
- *      for the other 74 (see chart_provenance/2).
+ *      (circle / rectangle / bar), and the unit fractions the chart draws.
+ *      Title and Standards are the lesson's own in every row. Hosts and
+ *      Fractions are read off the teacher guide for the 3 hand-authored rows
+ *      and are the fixed default set for the other 74 (see
+ *      chart_provenance/2), which is why they are reached through
+ *      chart_host/2 and chart_fraction/2 rather than through any name that
+ *      would call them the lesson's own.
  *
  *   2. lesson_likely_deformation(Code, Host, frac(M,N), Deformation)
  *      For a lesson host and fraction, the deformations LIKELY on that
@@ -66,11 +73,12 @@
 
 :- module(lesson_deformation_chart,
           [ lesson_chart_lesson/5,           % ?Code, ?Title, ?Standards, ?Hosts, ?Fractions
-            chart_provenance/2,               % ?Code, ?Provenance
+            charted_lesson_code/1,            % ?Code
+            chart_provenance/2,               % ?Code, -Provenance
             chart_provenance_note/2,          % ?Provenance, ?Note
             chart_provenance_census/1,        % -Dict
-            lesson_fraction_task/2,           % ?Code, ?frac(M,N)
-            lesson_host_representation/2,      % ?Code, ?Host
+            chart_fraction/2,                 % ?Code, ?frac(M,N)
+            chart_host/2,                     % ?Code, ?Host
             lesson_likely_deformation/4,       % ?Code, ?Host, ?frac(M,N), ?Deformation
             division_chart_lesson/1,          % ?Code
             lesson_division_deformation_chart/2, % +Code, -Chart
@@ -136,9 +144,17 @@ hand_authored_chart_lesson('IM-G3-U5-L15', "Compare Fractions with the Same Deno
         [bar, circle],
         [frac(1,4), frac(1,6)]).
 
-% Hand-authored rows preserve their guide-specific hosts and fractions.  The
-% default fill admits every other lesson through lesson_monitoring's explicit /
-% compiled strategy union, not through a second inventory of lesson codes.
+% Hand-authored rows preserve their guide-specific hosts and fractions. Every
+% other charted lesson is admitted by name, from the generated inventory in
+% generated/default_fill_lessons.pl. That inventory has two arms, both decided
+% by scripts/curriculum/build_default_fill_lessons.py and neither of them a
+% reading of the lesson's quantities:
+%   - 74 lessons whose coverage-table row carries the strategy atom
+%     unit_fraction_partition or unit_fraction_iteration;
+%   - 2 grade-6 unit-4 fraction-division lessons (IM-G6-U4-L6, IM-G6-U4-L7)
+%     whose vision digest attests a tape-diagram scene.
+% Being on that inventory settles only that the lesson gets a chart. The hosts
+% and fractions the chart then draws are the fixed default set either way.
 lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
     hand_authored_chart_lesson(Code, Title, Standards, Hosts, Fractions).
 lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
@@ -162,18 +178,41 @@ default_fill_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
 default_fill_hosts([circle, rectangle, bar]).
 default_fill_fractions([frac(1,2), frac(1,3), frac(1,4), frac(1,6), frac(1,8)]).
 
-%!  chart_provenance(?Code, ?Provenance) is det.
+%!  charted_lesson_code(?Code) is nondet.
 %
-%   hand_authored when the chart's quantities were read off the lesson's teacher
-%   guide; default_fill when they are the fixed default set. Every assembled
-%   chart carries this value and a note saying what it means.
-chart_provenance(Code, hand_authored) :-
-    hand_authored_chart_lesson(Code, _, _, _, _),
-    !.
-chart_provenance(Code, hand_authored) :-
+%   Every lesson code this module charts: the fraction charts plus the one
+%   division chart. The second clause subtracts any overlap, so enumerating
+%   this predicate never reports a code twice even if the generated inventory
+%   later stops excluding the division lesson. Callers that need the covered
+%   list read it here rather than rebuilding the disjunction, so the module and
+%   its consumers cannot answer differently about what "charted" covers.
+charted_lesson_code(Code) :-
+    lesson_chart_lesson(Code, _, _, _, _).
+charted_lesson_code(Code) :-
     division_chart_lesson(Code),
-    !.
-chart_provenance(_Code, default_fill).
+    \+ lesson_chart_lesson(Code, _, _, _, _).
+
+%!  chart_provenance(?Code, -Provenance) is nondet.
+%
+%   hand_authored when the chart's quantities were read off this lesson's
+%   teacher guide: hosts and unit fractions for the three
+%   hand_authored_chart_lesson/5 rows, compiled division tasks for
+%   IM-G6-U4-L10. default_fill when the chart took the fixed default set.
+%   Semidet with Code bound; enumerates the charted codes with Code unbound.
+%
+%   FAILS for a code this module does not chart. A lesson with no chart has no
+%   provenance, and answering default_fill about it would report a fill that
+%   never ran on a lesson that was never charted. Most IM lesson codes are in
+%   that position, so a caller passing an arbitrary code must be prepared for
+%   this to fail rather than to read the failure as a default.
+chart_provenance(Code, Provenance) :-
+    charted_lesson_code(Code),
+    (   hand_authored_chart_lesson(Code, _, _, _, _)
+    ->  Provenance = hand_authored
+    ;   division_chart_lesson(Code)
+    ->  Provenance = hand_authored
+    ;   Provenance = default_fill
+    ).
 
 %!  chart_provenance_note(?Provenance, ?Note) is det.
 %
@@ -196,22 +235,27 @@ chart_provenance_census(_{ hand_authored: HandAuthored,
                            default_fill: DefaultFill,
                            total: Total }) :-
     findall(Provenance,
-            ( ( lesson_chart_lesson(Code, _, _, _, _)
-              ; division_chart_lesson(Code)
-              ),
+            ( charted_lesson_code(Code),
               chart_provenance(Code, Provenance) ),
             Provenances),
     aggregate_all(count, member(hand_authored, Provenances), HandAuthored),
     aggregate_all(count, member(default_fill, Provenances), DefaultFill),
     length(Provenances, Total).
 
-% lesson_fraction_task(Code, frac(M,N)): each fraction the lesson models.
-lesson_fraction_task(Code, Frac) :-
+% chart_fraction(Code, frac(M,N)): each fraction THIS CHART draws for the
+% lesson. Only when chart_provenance/2 is hand_authored is that a fraction the
+% teacher guide named; under default_fill it is one of the five fixed
+% denominators, and the lesson may ask children to model none of them. The
+% earlier name for this predicate said "fraction task", which claimed for 74 of
+% the 78 charted lessons a derivation that never happened.
+chart_fraction(Code, Frac) :-
     lesson_chart_lesson(Code, _, _, _, Fractions),
     member(Frac, Fractions).
 
-% lesson_host_representation(Code, Host): each host the lesson partitions in.
-lesson_host_representation(Code, Host) :-
+% chart_host(Code, Host): each host representation THIS CHART partitions in for
+% the lesson. Read off the guide only under hand_authored provenance; the fixed
+% circle/rectangle/bar set otherwise.
+chart_host(Code, Host) :-
     lesson_chart_lesson(Code, _, _, Hosts, _),
     member(Host, Hosts).
 
@@ -232,15 +276,15 @@ lesson_host_representation(Code, Host) :-
 % on 1/N", parametric over N.
 
 lesson_likely_deformation(Code, Host, Frac, transplant(Rule)) :-
-    lesson_fraction_task(Code, Frac),
-    lesson_host_representation(Code, Host),
+    chart_fraction(Code, Frac),
+    chart_host(Code, Host),
     host_for_partition_layer(Host, PartitionHost),
     % only transplants anchored to a real attested witness for this host
     parametric_partition_deformation:attested_transplant_pair(PartitionHost, transplant(Rule)).
 
 lesson_likely_deformation(Code, Host, Frac, equipartition_failure(ErrorType)) :-
-    lesson_fraction_task(Code, Frac),
-    lesson_host_representation(Code, Host),
+    chart_fraction(Code, Frac),
+    chart_host(Code, Host),
     host_for_error_layer(Host, ErrorHost),
     likely_equipartition_error(ErrorType),
     % the error must actually have corpus-grounded evidence for this host+fraction
@@ -325,7 +369,7 @@ rule_host_to_grammar_spec(radial, set,
 % parametric productive generator; the denominator is the lesson fraction's N.
 
 productive_scene_for_lesson(Code, Host, frac(_M, N), Dict) :-
-    lesson_host_representation(Code, Host),
+    chart_host(Code, Host),
     host_for_partition_layer(Host, PartitionHost),
     parametric_partition_deformation:productive_partition_scene(PartitionHost, N, Dict).
 
