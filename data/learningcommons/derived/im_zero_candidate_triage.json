@@ -4376,42 +4376,6 @@
    ]
   },
   {
-   "class": "parser_gap",
-   "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
-   "current": {
-    "candidate_count": 0,
-    "executable_task": false
-   },
-   "evidence": {
-    "end_line": 96,
-    "excerpt": "Find the value of each expression. • 3 - 1 • 3 - 2 • 4- 2 • 5 - 1",
-    "kind": "printed_computation",
-    "line": 88,
-    "position": "student_task_statement(1)",
-    "source": "curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md"
-   },
-   "grade": "K",
-   "lesson": "IM-GK-U7-L14",
-   "recovered_spans": [],
-   "subclass": "compound_or_relational_expression",
-   "tracked_spans": [
-    {
-     "end_line": 97,
-     "heading_line": 87,
-     "position": "student_task_statement(1)",
-     "source": "curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md",
-     "text": "Find the value of each expression. • 3 - 1 • 3 - 2 • 4- 2 • 5 - 1"
-    },
-    {
-     "end_line": 341,
-     "heading_line": 300,
-     "position": "student_task_statement(2)",
-     "source": "curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md",
-     "text": "Choose a center. Build Shapes                 Geoblocks Counting Collections         Match Mine Shake and Spill Kindergarten"
-    }
-   ]
-  },
-  {
    "class": "non_arithmetic_mathematical_task",
    "class_description": "The span carries fixed mathematical work outside the arithmetic candidate extractor's task grammar.",
    "current": {
@@ -5619,7 +5583,7 @@
    "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
    "current": {
     "candidate_count": 0,
-    "executable_task": false
+    "executable_task": true
    },
    "evidence": {
     "end_line": 88,
@@ -6176,7 +6140,7 @@
    "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
    "current": {
     "candidate_count": 0,
-    "executable_task": false
+    "executable_task": true
    },
    "evidence": {
     "end_line": 86,
@@ -6312,49 +6276,6 @@
      "position": "student_task_statement(1)",
      "source": "curriculum/im_teacher_guides/grade1/unit3/lesson21.md",
      "text": "What do you know about 20?"
-    }
-   ]
-  },
-  {
-   "class": "parser_gap",
-   "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
-   "current": {
-    "candidate_count": 0,
-    "executable_task": true
-   },
-   "evidence": {
-    "end_line": 168,
-    "excerpt": "Show your thinking using drawings, numbers, or words. 1. 20- 15 = 2. 19- 3 = 3. 13 - 5 = 4. 18 - 9 = 5. 17- 15 =",
-    "kind": "printed_computation",
-    "line": 150,
-    "position": "student_task_statement(1)",
-    "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md"
-   },
-   "grade": "1",
-   "lesson": "IM-G1-U3-L25",
-   "recovered_spans": [],
-   "subclass": "compound_or_relational_expression",
-   "tracked_spans": [
-    {
-     "end_line": 171,
-     "heading_line": 149,
-     "position": "student_task_statement(1)",
-     "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
-     "text": "Show your thinking using drawings, numbers, or words. 1. 20- 15 = 2. 19- 3 = 3. 13 - 5 = 4. 18 - 9 = 5. 17- 15 ="
-    },
-    {
-     "end_line": 252,
-     "heading_line": 222,
-     "position": "student_task_statement(2)",
-     "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
-     "text": "Show your thinking using drawings, numbers, or words. 1. 12 pencils are on the table. The teacher picks up 7. How many pencils are still on the table? 2. Clare gets 8 glue sticks from the red table. She gets some more from the blue table. Now she has 15 glue sticks. How many did she get from the blue table? Le 3. Kiran has 17 crayons. He gives some to his friends. Now he has 9 crayons. How many did he give to his friends?"
-    },
-    {
-     "end_line": 291,
-     "heading_line": 283,
-     "position": "student_task_statement(3)",
-     "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
-     "text": "Find the value of each difference. Show your thinking using drawings, numbers, or words. 1. 13 - 7 2. 19- 14"
     }
    ]
   },
@@ -7514,7 +7435,7 @@
    "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
    "current": {
     "candidate_count": 0,
-    "executable_task": false
+    "executable_task": true
    },
    "evidence": {
     "end_line": 92,
@@ -11550,72 +11471,6 @@
    },
    "evidence": {
     "end_line": 0,
-    "excerpt": "Mai used base-ten blocks to find the value of 336- 52 . Then she made a matching diagram. What did she do in Step 2? What should she do to find the difference? Explain your reasoning. Step 1 Step 2 • • • • • • 1. Write each expression next to the matching diagram. Then find the",
-    "kind": "recovered_computation",
-    "line": 0,
-    "position": "student_task_statement(2)",
-    "source": "curriculum/im/generated/recovered_task_spans.json"
-   },
-   "grade": "2",
-   "lesson": "IM-G2-U7-L13",
-   "recovered_spans": [
-    {
-     "position": "student_task_statement(2)",
-     "source": "curriculum/im/generated/recovered_task_spans.json",
-     "text": "Mai used base-ten blocks to find the value of 336- 52 . Then she made a matching diagram. What did she do in Step 2? What should she do to find the difference? Explain your reasoning. Step 1 Step 2 • • • • • • 1. Write each expression next to the matching diagram. Then find the value of each difference. 244- 28         256- 64          244- 64 • a. Acti • • b.                                            Acti • • c."
-    },
-    {
-     "position": "student_task_statement(3)",
-     "source": "curriculum/im/generated/recovered_task_spans.json",
-     "text": "Find the value of each difference. Show your thinking, using drawings, numbers, or words. Try Mai's way for 1 expression. 1. 155 - 26 2. 352- 71 3. 364- 182 4. 293 - 147 5. Share how you found the value of 1 expression Le with your partner. Use the sentence frames to explain your reasoning. ◦ “First I . . . .” ◦ “Next I . . . .” ◦ “Then I . . . .” ◦ “Last I . . . .”"
-    },
-    {
-     "position": "student_task_statement(4)",
-     "source": "curriculum/im/generated/recovered_task_spans.json",
-     "text": "Find the value of 519- 236 . Show your thinking."
-    }
-   ],
-   "subclass": "sidecar_recovered_computation",
-   "tracked_spans": [
-    {
-     "end_line": 110,
-     "heading_line": 95,
-     "position": "student_task_statement(1)",
-     "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
-     "text": "Which 3 go together? A                            B C                            D"
-    },
-    {
-     "end_line": 232,
-     "heading_line": 168,
-     "position": "student_task_statement(2)",
-     "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
-     "text": "Mai used base-ten blocks to find the value of . Then she made a matching diagram. What did she do in Step 2? What should she do to find the difference? Explain your reasoning. Step 1 Step 2 • • • • • • 1. Write each expression next to the matching diagram. Then find the value of each difference. • a. Acti • • b.                                            Acti • • c."
-    },
-    {
-     "end_line": 311,
-     "heading_line": 282,
-     "position": "student_task_statement(3)",
-     "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
-     "text": "Find the value of each difference. Show your thinking, using drawings, numbers, or words. Try Mai's way for 1 expression. 1. 2. 3. 4. 5. Share how you found the value of 1 expression Le with your partner. Use the sentence frames to explain your reasoning. ◦ “First I . . . .” ◦ “Next I . . . .” ◦ “Then I . . . .” ◦ “Last I . . . .”"
-    },
-    {
-     "end_line": 387,
-     "heading_line": 384,
-     "position": "student_task_statement(4)",
-     "source": "curriculum/im_teacher_guides/grade2/unit7/lesson13.md",
-     "text": "Find the value of          . Show your thinking."
-    }
-   ]
-  },
-  {
-   "class": "source_representation_gap",
-   "class_description": "Tracked markdown omits a named computation, or the checked sidecar restores a computation that the tracked span dropped.",
-   "current": {
-    "candidate_count": 0,
-    "executable_task": true
-   },
-   "evidence": {
-    "end_line": 0,
     "excerpt": "Tyler and Clare subtract by place to find the value of 244- 67 . Tyler says he will decompose before he starts. Clare agrees. The diagrams show each student’s first steps. Tyler Clare 1. How are Tyler’s and Clare’s diagrams alike? How are they different? 2. Complete their diagrams to find",
     "kind": "recovered_computation",
     "line": 0,
@@ -12236,7 +12091,7 @@
    "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
    "current": {
     "candidate_count": 0,
-    "executable_task": false
+    "executable_task": true
    },
    "evidence": {
     "end_line": 185,
@@ -12392,7 +12247,7 @@
    "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
    "current": {
     "candidate_count": 0,
-    "executable_task": false
+    "executable_task": true
    },
    "evidence": {
     "end_line": 84,
@@ -13973,106 +13828,6 @@
      "position": "student_task_statement(4)",
      "source": "curriculum/im_teacher_guides/grade3/unit3/lesson2.md",
      "text": "The Statue of Liberty is 305 feet tall. The Brooklyn Bridge is 135 feet tall. How much taller is the Statue of Liberty than the Brooklyn Bridge? Explain or show your reasoning."
-    }
-   ]
-  },
-  {
-   "class": "parser_gap",
-   "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
-   "current": {
-    "candidate_count": 0,
-    "executable_task": true
-   },
-   "evidence": {
-    "end_line": 102,
-    "excerpt": "Decide if each statement is true or false. Be prepared to explain your reasoning. • 4 × 5 = 5 × 4 • 125 + 200 = 200 + 125 • 300- 100 = 100- 300",
-    "kind": "printed_computation",
-    "line": 96,
-    "position": "student_task_statement(1)",
-    "source": "curriculum/im_teacher_guides/grade3/unit3/lesson9.md"
-   },
-   "grade": "3",
-   "lesson": "IM-G3-U3-L9",
-   "recovered_spans": [],
-   "subclass": "compound_or_relational_expression",
-   "tracked_spans": [
-    {
-     "end_line": 103,
-     "heading_line": 95,
-     "position": "student_task_statement(1)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson9.md",
-     "text": "Decide if each statement is true or false. Be prepared to explain your reasoning. • 4 × 5 = 5 × 4 • 125 + 200 = 200 + 125 • 300- 100 = 100- 300"
-    },
-    {
-     "end_line": 167,
-     "heading_line": 155,
-     "position": "student_task_statement(2)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson9.md",
-     "text": "Lin’s work for finding the value of 428 - 156 is shown. 1. What error do you see in Lin's work? 2. What would you tell or show Lin so she can revise her work?"
-    },
-    {
-     "end_line": 275,
-     "heading_line": 253,
-     "position": "student_task_statement(3)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson9.md",
-     "text": "Here is a subtraction algorithm you saw in an earlier lesson: Try using this algorithm to find the value of each difference. Show your reasoning. Organize your work so it can be followed by others. 1. 283 - 159 2. 425 - 192 3. 639- 465 4. 591 - 128 5. 832- 575"
-    },
-    {
-     "end_line": 373,
-     "heading_line": 365,
-     "position": "student_task_statement(4)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson9.md",
-     "text": "Andre found the value of 739- 255 . His work is shown. Explain how he subtracted and the value he found for 739- 255 ."
-    }
-   ]
-  },
-  {
-   "class": "parser_gap",
-   "class_description": "The tracked span prints fixed operands and a requested computation, but the live extractor emits no candidate.",
-   "current": {
-    "candidate_count": 0,
-    "executable_task": true
-   },
-   "evidence": {
-    "end_line": 165,
-    "excerpt": "Andre and Clare found the value of 528 - 271. How they started their work is shown. Andre's algorithm           Clare's algorithm 1. Complete both algorithms to find the difference. 2. Andre and Clare started their subtraction in different ways. How did their way of",
-    "kind": "printed_computation",
-    "line": 154,
-    "position": "student_task_statement(2)",
-    "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md"
-   },
-   "grade": "3",
-   "lesson": "IM-G3-U3-L10",
-   "recovered_spans": [],
-   "subclass": "binary_expression_in_broader_prompt",
-   "tracked_spans": [
-    {
-     "end_line": 97,
-     "heading_line": 92,
-     "position": "student_task_statement(1)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
-     "text": "What do you notice? What do you wonder?"
-    },
-    {
-     "end_line": 170,
-     "heading_line": 153,
-     "position": "student_task_statement(2)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
-     "text": "Andre and Clare found the value of 528 - 271. How they started their work is shown. Andre's algorithm           Clare's algorithm 1. Complete both algorithms to find the difference. 2. Andre and Clare started their subtraction in different ways. How did their way of starting affect the steps needed to find the difference?"
-    },
-    {
-     "end_line": 247,
-     "heading_line": 229,
-     "position": "student_task_statement(3)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
-     "text": "Clare used an algorithm to find the value of 644- 283 . Try using her algorithm to find the value of each difference. 1. 691 - 358 2. 926- 584 3. 317- 182 L 4. 492- 325"
-    },
-    {
-     "end_line": 286,
-     "heading_line": 283,
-     "position": "student_task_statement(4)",
-     "source": "curriculum/im_teacher_guides/grade3/unit3/lesson10.md",
-     "text": "Use an algorithm of your choice to find the value of 419- 267 ."
     }
    ]
   },
@@ -29098,11 +28853,11 @@
   }
  ],
  "population_check": {
-  "classified": 586,
+  "classified": 581,
   "duplicate_lessons": 0,
-  "expected": 586,
+  "expected": 581,
   "live_extractor_candidates": 0,
-  "live_extractor_rerun_lessons": 586,
+  "live_extractor_rerun_lessons": 581,
   "method": "Absolute-root guide read, live tracked-plus-recovered candidate extraction, and exact membership comparison with the census.",
   "unclassified_lessons": 0
  },
@@ -29119,8 +28874,8 @@
    "indeterminate": 3,
    "no_fixed_computable_task": 142,
    "non_arithmetic_mathematical_task": 226,
-   "parser_gap": 121,
-   "source_representation_gap": 94
+   "parser_gap": 117,
+   "source_representation_gap": 93
   },
   "class_examples": {
    "indeterminate": {
@@ -29176,30 +28931,28 @@
   },
   "honest_ceiling": {
    "confirmed_maximum_executable_task_lessons": 734,
-   "confirmed_zero_candidate_lessons_with_fixed_tasks": 441,
+   "confirmed_zero_candidate_lessons_with_fixed_tasks": 436,
    "confirmed_zero_candidate_lessons_without_fixed_tasks": 142,
-   "executable_today": 336,
-   "gap_from_executable_today_to_confirmed_maximum": 398,
-   "has_candidates_today": 293,
+   "executable_today": 342,
+   "gap_from_executable_today_to_confirmed_maximum": 392,
+   "has_candidates_today": 298,
    "indeterminate_lessons": 3,
    "k5_identity_spine": 879,
    "possible_maximum_including_indeterminate": 737,
-   "statement": "734 K-5 lessons are confirmed to carry a fixed task or current candidate; 737 is the upper bound if all 3 indeterminate lessons carry one. Hermes executes 336 K-5 lessons today.",
-   "zero_candidate_lessons_executable_today": 44
+   "statement": "734 K-5 lessons are confirmed to carry a fixed task or current candidate; 737 is the upper bound if all 3 indeterminate lessons carry one. Hermes executes 342 K-5 lessons today.",
+   "zero_candidate_lessons_executable_today": 45
   },
   "parser_fix_ranking": [
    {
     "change_required": "Segment equalities, inequalities, and multi-operation statements safely.",
-    "currently_executable": 15,
+    "currently_executable": 17,
     "fix": "compound_or_relational_expression",
     "lesson_ids": [
      "IM-GK-U4-L14",
-     "IM-GK-U7-L14",
      "IM-G1-U2-L5",
      "IM-G1-U2-L23",
      "IM-G1-U3-L4",
      "IM-G1-U3-L14",
-     "IM-G1-U3-L25",
      "IM-G1-U4-L22",
      "IM-G1-U6-L10",
      "IM-G1-U7-L15",
@@ -29222,7 +28975,6 @@
      "IM-G3-U2-L5",
      "IM-G3-U2-L6",
      "IM-G3-U3-L1",
-     "IM-G3-U3-L9",
      "IM-G3-U3-L17",
      "IM-G3-U3-L18",
      "IM-G3-U3-L19",
@@ -29245,13 +28997,13 @@
      "IM-G5-U6-L5",
      "IM-G5-U7-L12"
     ],
-    "lessons": 51,
-    "not_currently_executable": 36,
+    "lessons": 48,
+    "not_currently_executable": 31,
     "rank": 1
    },
    {
     "change_required": "Read fixed narrative operands and the requested quantity from one span.",
-    "currently_executable": 4,
+    "currently_executable": 5,
     "fix": "narrative_quantity_relation",
     "lesson_ids": [
      "IM-GK-U5-L5",
@@ -29298,17 +29050,16 @@
      "IM-G5-U5-L26"
     ],
     "lessons": 42,
-    "not_currently_executable": 38,
+    "not_currently_executable": 37,
     "rank": 2
    },
    {
     "change_required": "Generalize beyond the exact \"Find the value of A op B.\" sentence to lists and true-or-false prompts.",
-    "currently_executable": 1,
+    "currently_executable": 0,
     "fix": "binary_expression_in_broader_prompt",
     "lesson_ids": [
      "IM-G1-U4-L8",
      "IM-G2-U5-L1",
-     "IM-G3-U3-L10",
      "IM-G3-U4-L13",
      "IM-G4-U4-L18",
      "IM-G5-U1-L4",
@@ -29318,7 +29069,7 @@
      "IM-G5-U8-L2",
      "IM-G5-U8-L5"
     ],
-    "lessons": 11,
+    "lessons": 10,
     "not_currently_executable": 10,
     "rank": 3
    },
@@ -29389,21 +29140,21 @@
     "measurement_task": 50
    },
    "parser_gap": {
-    "binary_expression_in_broader_prompt": 11,
-    "compound_or_relational_expression": 51,
+    "binary_expression_in_broader_prompt": 10,
+    "compound_or_relational_expression": 48,
     "decimal_expression": 8,
     "fraction_expression": 2,
     "narrative_quantity_relation": 42,
     "unknown_value_equation": 7
    },
    "source_representation_gap": {
-    "sidecar_recovered_computation": 85,
+    "sidecar_recovered_computation": 84,
     "unrecovered_computation_layout": 9
    }
   }
  },
  "verification": {
-  "class_count_sum": 586,
+  "class_count_sum": 581,
   "parser_gap_printed_computation_spot_checks": [
    {
     "excerpt": "1. 2 rocks in Lin’s jar Lin put in 4 more. How many rocks now? 3 + 3             6- 2             2 + 4 2. 8 kids play. 3 leave. How many now? 8 + 3             3 - 3            8 - 3",
@@ -29421,15 +29172,6 @@
     "line": 250,
     "position": "student_task_statement(2)",
     "source": "curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md",
-    "verified": true
-   },
-   {
-    "excerpt": "Find the value of each expression. • 3 - 1 • 3 - 2 • 4- 2 • 5 - 1",
-    "expression": "3 - 1",
-    "lesson": "IM-GK-U7-L14",
-    "line": 88,
-    "position": "student_task_statement(1)",
-    "source": "curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md",
     "verified": true
    },
    {
@@ -29478,15 +29220,6 @@
     "verified": true
    },
    {
-    "excerpt": "Show your thinking using drawings, numbers, or words. 1. 20- 15 = 2. 19- 3 = 3. 13 - 5 = 4. 18 - 9 = 5. 17- 15 =",
-    "expression": "20 - 15",
-    "lesson": "IM-G1-U3-L25",
-    "line": 150,
-    "position": "student_task_statement(1)",
-    "source": "curriculum/im_teacher_guides/grade1/unit3/lesson25.md",
-    "verified": true
-   },
-   {
     "excerpt": "Each student counted and showed a collection. • Clare drew • Han drew • Kiran wrote 3 ones and 7 tens. • Priya wrote 70 + 3. Did the students count the same number of objects? How do you know? Show your thinking using drawings, numbers, or words.",
     "expression": "70 + 3",
     "lesson": "IM-G1-U4-L8",
@@ -29494,8 +29227,26 @@
     "position": "student_task_statement(2)",
     "source": "curriculum/im_teacher_guides/grade1/unit4/lesson8.md",
     "verified": true
+   },
+   {
+    "excerpt": "Decide if each statement is true or false. Be prepared to explain your reasoning. • 92 = 90 + 2 • 90 + 2 > 80 + 12 • 20 + 13 < 30 + 13",
+    "expression": "90 + 2",
+    "lesson": "IM-G1-U4-L22",
+    "line": 82,
+    "position": "student_task_statement(1)",
+    "source": "curriculum/im_teacher_guides/grade1/unit4/lesson22.md",
+    "verified": true
+   },
+   {
+    "excerpt": "Is each statement true or false? Be prepared to explain your reasoning. • 24 + 30 = 44 • 24 + 40 = 64 • 30 + 45 = 75 • 32 + 45 = 76",
+    "expression": "24 + 30",
+    "lesson": "IM-G1-U6-L10",
+    "line": 85,
+    "position": "student_task_statement(1)",
+    "source": "curriculum/im_teacher_guides/grade1/unit6/lesson10.md",
+    "verified": true
    }
   ],
-  "unique_lessons": 586
+  "unique_lessons": 581
  }
 }

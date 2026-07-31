@@ -1174,6 +1174,8 @@
   "printed_equation_list_missing_addend",
   "direct_multiplication_expression_list",
   "direct_division_expression_list",
+  "segmented_direct_subtraction_expression_list",
+  "witnessed_true_false_equation_side",
   "equal_groups_pronoun_each",
   "equal_groups_each_has",
   "equal_groups_each_contains",

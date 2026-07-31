@@ -50,8 +50,9 @@ from pathlib import Path
 # lessons and five further phrasings on one or two each; the pattern covers the
 # stated forms rather than guessing at unstated ones.
 ROUTINE_PROMPT_RE = re.compile(
-    r"\b(?:decide|determine|tell)\s+(?:if|whether)\s+each\s+"
-    r"(?:equation|statement|comparison|expression)\b",
+    r"\b(?:(?:decide|determine|tell)\s+(?:if|whether)\s+each\s+"
+    r"(?:equation|statement|comparison|expression)\b|is\s+each\s+"
+    r"(?:equation|statement|comparison|expression)\s+true\s+or\s+false\b)",
     re.IGNORECASE,
 )
 

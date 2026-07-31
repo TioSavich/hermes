@@ -8,7 +8,7 @@
             compiled_task_instance_summary/2
           ]).
 
-compiled_task_instance_summary(419, 2086).
+compiled_task_instance_summary(425, 2146).
 
 compiled_lesson_task_instance('IM-G1-U1-L13', productive-add(7, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', lines(89, 89)), position(student_task_statement(1)/expression(1)), excerpt("7 + 1"))).
@@ -142,6 +142,10 @@ compiled_lesson_task_instance('IM-G1-U2-L4', productive-add(7, 3),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U2-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("7 + 3"))).
 compiled_lesson_task_instance('IM-G1-U2-L4', productive-subtract(9, 3),
                               task_evidence(rule(narrative_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit2/lesson4.md', lines(178, 198)), position(student_task_statement(2)/item(2)), excerpt("3 books from the library. Mai gives him some more books. Now Andre has 9 books. How many books did Mai give him?"))).
+compiled_lesson_task_instance('IM-G1-U2-L5', productive-add(2, 7),
+                              task_evidence(rule(equation_verification_stated_result), source('curriculum/im_teacher_guides/grade1/unit2/lesson5.md', lines(88, 88)), position(student_task_statement(1)/equation(3)/side(left)/witness(line(97))), excerpt("2 + 7 = 10"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U2-L5', productive-add(4, 6),
+                              task_evidence(rule(equation_verification_stated_result), source('curriculum/im_teacher_guides/grade1/unit2/lesson5.md', lines(87, 87)), position(student_task_statement(1)/equation(2)/side(left)/witness(line(95))), excerpt("4 + 6 = 10"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G1-U2-L6', deformation(count_all_when_count_on_available)-add(4, 5),
                               task_evidence(rule(g1_fish_tank_4_5_error), source('curriculum/im_teacher_guides/grade1/unit2/lesson6.md', lines(210, 210)), position(activity_1), excerpt("Use objects or drawings and count all."))).
 compiled_lesson_task_instance('IM-G1-U2-L6', productive-add(4, 5),
@@ -218,6 +222,18 @@ compiled_lesson_task_instance('IM-G1-U3-L13', productive-add(3, 4),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("3 + 4"))).
 compiled_lesson_task_instance('IM-G1-U3-L13', productive-add(4, 3),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(2)), excerpt("4 + 3"))).
+compiled_lesson_task_instance('IM-G1-U3-L14', productive-add(3, 2),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', lines(83, 83)), position(student_task_statement(1)/equation(1)/side(left)/witness(line(91))), excerpt("3 + 2 = 3 + 2"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U3-L14', productive-add(3, 2),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', lines(83, 83)), position(student_task_statement(1)/equation(1)/side(right)/witness(line(91))), excerpt("3 + 2 = 3 + 2"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U3-L14', productive-add(3, 7),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', lines(86, 86)), position(student_task_statement(1)/equation(3)/side(right)/witness(line(95))), excerpt("4 + 6 = 3 + 7"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U3-L14', productive-add(4, 6),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', lines(86, 86)), position(student_task_statement(1)/equation(3)/side(left)/witness(line(95))), excerpt("4 + 6 = 3 + 7"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U3-L14', productive-add(5, 1),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', lines(85, 85)), position(student_task_statement(1)/equation(2)/side(left)/witness(line(92))), excerpt("5 + 1 = 5 + 2"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U3-L14', productive-add(5, 2),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', lines(85, 85)), position(student_task_statement(1)/equation(2)/side(right)/witness(line(92))), excerpt("5 + 1 = 5 + 2"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G1-U3-L16', productive-add(10, 9),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L16'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("10 + 9"))).
 compiled_lesson_task_instance('IM-G1-U3-L16', productive-add(4, 9),
@@ -328,6 +344,10 @@ compiled_lesson_task_instance('IM-G1-U3-L22', productive-subtract(17, 7),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson22.md', lines(100, 100)), position(student_task_statement(1)/expression(3)), excerpt("17- 7"))).
 compiled_lesson_task_instance('IM-G1-U3-L22', productive-subtract(17, 9),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson22.md', lines(101, 101)), position(student_task_statement(1)/expression(4)), excerpt("17- 9"))).
+compiled_lesson_task_instance('IM-G1-U3-L23', productive-subtract(13, 6),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', lines(281, 281)), position(student_task_statement(3)/compound_unit(2)), excerpt("13 - 6"))).
+compiled_lesson_task_instance('IM-G1-U3-L23', productive-subtract(14, 5),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', lines(280, 280)), position(student_task_statement(3)/compound_unit(1)), excerpt("14- 5"))).
 compiled_lesson_task_instance('IM-G1-U3-L23', productive-subtract(17, 7),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', lines(102, 102)), position(student_task_statement(1)/expression(1)), excerpt("17- 7"))).
 compiled_lesson_task_instance('IM-G1-U3-L23', productive-subtract(17, 8),
@@ -342,14 +362,24 @@ compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(14, 6),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(264, 264)), position(student_task_statement(2)/printed_equation(264)), excerpt("3. = 14- 6"))).
 compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(15, 12),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(266, 266)), position(student_task_statement(2)/printed_equation(266)), excerpt("4. 15 - 12 ="))).
+compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(16, 3),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(155, 155)), position(student_task_statement(1)/compound_unit(1)), excerpt("16- 3"))).
+compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(17, 8),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(159, 159)), position(student_task_statement(1)/compound_unit(2)), excerpt("17- 8"))).
+compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(18, 15),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(161, 161)), position(student_task_statement(1)/compound_unit(3)), excerpt("18 - 15"))).
 compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(18, 5),
                               task_evidence(rule(printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(261, 261)), position(student_task_statement(2)/printed_equation(261)), excerpt("2. 18 - 5 ="))).
 compiled_lesson_task_instance('IM-G1-U3-L24', productive-subtract(20, 15),
                               task_evidence(rule(printed_equation_list_missing_addend), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', lines(279, 279)), position(student_task_statement(2)/printed_equation(279)), excerpt("3. 20 = 15 +"))).
 compiled_lesson_task_instance('IM-G1-U3-L25', productive-subtract(13, 7),
                               task_evidence(rule(g1_u3_l25_difference_1), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(288, 288)), position(student_task_statement(3)/item(1)), excerpt("13 - 7"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L25', productive-subtract(13, 7),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(288, 288)), position(student_task_statement(3)/compound_unit(1)), excerpt("13 - 7"))).
 compiled_lesson_task_instance('IM-G1-U3-L25', productive-subtract(19, 14),
                               task_evidence(rule(g1_u3_l25_difference_2), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(289, 289)), position(student_task_statement(3)/item(2)), excerpt("19- 14"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G1-U3-L25', productive-subtract(19, 14),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', lines(289, 289)), position(student_task_statement(3)/compound_unit(2)), excerpt("19- 14"))).
 compiled_lesson_task_instance('IM-G1-U3-L26', productive-subtract(15, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G1-U3-L26'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("15 - 10"))).
 compiled_lesson_task_instance('IM-G1-U3-L26', productive-subtract(15, 12),
@@ -652,6 +682,14 @@ compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(38, 5),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(93, 93)), position(student_task_statement(1)/expression(3)), excerpt("38 + 5"))).
 compiled_lesson_task_instance('IM-G1-U5-L9', productive-add(40, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit5/lesson9.md', lines(91, 91)), position(student_task_statement(1)/expression(2)), excerpt("40 + 3"))).
+compiled_lesson_task_instance('IM-G1-U6-L10', productive-add(24, 30),
+                              task_evidence(rule(equation_verification_stated_result), source('curriculum/im_teacher_guides/grade1/unit6/lesson10.md', lines(87, 87)), position(student_task_statement(1)/equation(1)/side(left)/witness(line(96))), excerpt("24 + 30 = 44"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U6-L10', productive-add(24, 40),
+                              task_evidence(rule(equation_verification_stated_result), source('curriculum/im_teacher_guides/grade1/unit6/lesson10.md', lines(89, 89)), position(student_task_statement(1)/equation(2)/side(left)/witness(line(98))), excerpt("24 + 40 = 64"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U6-L10', productive-add(30, 45),
+                              task_evidence(rule(equation_verification_stated_result), source('curriculum/im_teacher_guides/grade1/unit6/lesson10.md', lines(91, 91)), position(student_task_statement(1)/equation(3)/side(left)/witness(line(100))), excerpt("30 + 45 = 75"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G1-U6-L10', productive-add(32, 45),
+                              task_evidence(rule(equation_verification_stated_result), source('curriculum/im_teacher_guides/grade1/unit6/lesson10.md', lines(92, 92)), position(student_task_statement(1)/equation(4)/side(left)/witness(line(101))), excerpt("32 + 45 = 76"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G1-U6-L11', productive-add(9, 7),
                               task_evidence(rule(narrative_same_unit_combine_result_unknown), source('curriculum/im_teacher_guides/grade1/unit6/lesson11.md', lines(261, 264)), position(student_task_statement(3)/item(2)), excerpt("Clare\u2019s shoe is 9 cubes long. Han\u2019s shoe is 7 cubes long. How many cubes long are their shoes together?"))).
 compiled_lesson_task_instance('IM-G1-U6-L13', productive-add(15, 10),
@@ -862,6 +900,18 @@ compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(8, 5),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(101, 101)), position(student_task_statement(1)/expression(3)), excerpt("8 + 5"))).
 compiled_lesson_task_instance('IM-G2-U1-L4', productive-add(8, 6),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(312, 312)), position(student_task_statement(4)/expression(1)), excerpt("8 + 6"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-subtract(12, 4),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(249, 249)), position(student_task_statement(3)/compound_unit(6)), excerpt("12- 4"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-subtract(13, 5),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(314, 314)), position(student_task_statement(4)/compound_unit(2)), excerpt("13 - 5"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-subtract(15, 3),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(234, 234)), position(student_task_statement(3)/compound_unit(2)), excerpt("15 - 3"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-subtract(16, 4),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(316, 316)), position(student_task_statement(4)/compound_unit(3)), excerpt("16- 4"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-subtract(16, 5),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(253, 253)), position(student_task_statement(3)/compound_unit(8)), excerpt("16- 5"))).
+compiled_lesson_task_instance('IM-G2-U1-L4', productive-subtract(17, 9),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', lines(244, 244)), position(student_task_statement(3)/compound_unit(4)), excerpt("17- 9"))).
 compiled_lesson_task_instance('IM-G2-U1-L5', productive-add(16, 3),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U1-L5'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("16 + 3"))).
 compiled_lesson_task_instance('IM-G2-U1-L5', productive-add(16, 30),
@@ -1272,6 +1322,10 @@ compiled_lesson_task_instance('IM-G2-U7-L12', productive-subtract(652, 24),
                               task_evidence(rule(g2_u7_l12_cooldown_difference), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L12'), position('student_task_statement(4)'))), position(student_task_statement(4)/item(1)), excerpt("652- 24"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(155, 26),
                               task_evidence(rule(g2_u7_l13_diagram_difference_1), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(1)), excerpt("155 - 26"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(244, 64),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(2)'))), position(student_task_statement(2)/compound_unit(2)), excerpt("244- 64"))).
+compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(256, 64),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(2)'))), position(student_task_statement(2)/compound_unit(1)), excerpt("256- 64"))).
 compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(293, 147),
                               task_evidence(rule(g2_u7_l13_diagram_difference_4), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L13'), position('student_task_statement(3)'))), position(student_task_statement(3)/item(4)), excerpt("293 - 147"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G2-U7-L13', productive-subtract(352, 71),
@@ -1400,6 +1454,14 @@ compiled_lesson_task_instance('IM-G2-U7-L9', productive-add(575, 166),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L9'), position('student_task_statement(2)'))), position(student_task_statement(2)/expression(4)), excerpt("575 + 166"))).
 compiled_lesson_task_instance('IM-G2-U7-L9', productive-add(757, 152),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U7-L9'), position('student_task_statement(2)'))), position(student_task_statement(2)/expression(2)), excerpt("757 + 152"))).
+compiled_lesson_task_instance('IM-G2-U8-L10', productive-add(3, 3),
+                              task_evidence(rule(equation_verification_side), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U8-L10'), position('student_task_statement(1)'))), position(student_task_statement(1)/equation(1)/side(right)/witness(line(104))), excerpt("2 + 2 + 2 = 3 + 3"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G2-U8-L13', productive-add(3, 3),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade2/unit8/lesson13.md', lines(82, 82)), position(student_task_statement(1)/equation(2)/side(right)/witness(line(90))), excerpt("2 + 2 + 2 = 3 + 3"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G2-U8-L13', productive-add(4, 4),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade2/unit8/lesson13.md', lines(80, 80)), position(student_task_statement(1)/equation(1)/side(right)/witness(line(88))), excerpt("2 + 2 + 2 + 2 = 4 + 4"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G2-U8-L13', productive-add(5, 5),
+                              task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade2/unit8/lesson13.md', lines(84, 84)), position(student_task_statement(1)/equation(3)/side(right)/witness(line(92))), excerpt("2 + 2 + 2 + 2 + 2 + 2 = 5 + 5"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G2-U8-L4', productive-add(6, 6),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G2-U8-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("6 + 6"))).
 compiled_lesson_task_instance('IM-G2-U8-L4', productive-add(7, 7),
@@ -1762,14 +1824,22 @@ compiled_lesson_task_instance('IM-G3-U2-L13', productive-add(219, 34),
                               task_evidence(rule(direct_addition_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U2-L13'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("219 + 34"))).
 compiled_lesson_task_instance('IM-G3-U2-L3', productive-construct_rectangle_with_area(8),
                               task_evidence(rule(rectangle_area_construction_prompt), source('curriculum/im_teacher_guides/grade3/unit2/lesson3.md', lines(317, 319)), position(source_sequence(line(317))), excerpt("Draw a rectangle with an area of 8 square units on"))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(317, 182),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(238, 238)), position(student_task_statement(3)/compound_unit(3)), excerpt("317- 182"))).
 compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(419, 267),
                               task_evidence(rule(g3_u3_l10_cooldown_difference), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(284, 284)), position(student_task_statement(4)/item(1)), excerpt("419- 267"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(492, 325),
                               task_evidence(rule(g3_u3_l10_algorithm_difference_4), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(246, 246)), position(student_task_statement(3)/item(4)), excerpt("492- 325"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(492, 325),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(246, 246)), position(student_task_statement(3)/compound_unit(4)), excerpt("492- 325"))).
 compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(691, 358),
                               task_evidence(rule(g3_u3_l10_algorithm_difference_1), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(235, 235)), position(student_task_statement(3)/item(1)), excerpt("691 - 358"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(691, 358),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(235, 235)), position(student_task_statement(3)/compound_unit(1)), excerpt("691 - 358"))).
 compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(926, 584),
                               task_evidence(rule(g3_u3_l10_algorithm_difference_2), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(237, 237)), position(student_task_statement(3)/item(2)), excerpt("926- 584"), witness_class(printed_answer))).
+compiled_lesson_task_instance('IM-G3-U3-L10', productive-subtract(926, 584),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', lines(237, 237)), position(student_task_statement(3)/compound_unit(2)), excerpt("926- 584"))).
 compiled_lesson_task_instance('IM-G3-U3-L11', productive-subtract(400, 200),
                               task_evidence(rule(direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson11.md', lines(84, 84)), position(student_task_statement(1)/expression(1)), excerpt("400- 200"))).
 compiled_lesson_task_instance('IM-G3-U3-L11', productive-subtract(450, 200),
@@ -1786,6 +1856,16 @@ compiled_lesson_task_instance('IM-G3-U3-L12', productive-multiply(3, 6),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(98, 98)), position(student_task_statement(1)/expression(2)), excerpt("3 \u00d7 6"))).
 compiled_lesson_task_instance('IM-G3-U3-L12', productive-multiply(3, 7),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(101, 101)), position(student_task_statement(1)/expression(4)), excerpt("3 \u00d7 7"))).
+compiled_lesson_task_instance('IM-G3-U3-L12', productive-subtract(382, 190),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(173, 173)), position(student_task_statement(2)/compound_unit(2)), excerpt("382- 190"))).
+compiled_lesson_task_instance('IM-G3-U3-L12', productive-subtract(451, 329),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(171, 171)), position(student_task_statement(2)/compound_unit(1)), excerpt("451 - 329"))).
+compiled_lesson_task_instance('IM-G3-U3-L12', productive-subtract(505, 417),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(178, 178)), position(student_task_statement(2)/compound_unit(5)), excerpt("505 - 417"))).
+compiled_lesson_task_instance('IM-G3-U3-L12', productive-subtract(600, 478),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(176, 176)), position(student_task_statement(2)/compound_unit(4)), excerpt("600- 478"))).
+compiled_lesson_task_instance('IM-G3-U3-L12', productive-subtract(924, 285),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', lines(175, 175)), position(student_task_statement(2)/compound_unit(3)), excerpt("924- 285"))).
 compiled_lesson_task_instance('IM-G3-U3-L16', productive-multiply(4, 7),
                               task_evidence(rule(direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson16.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("4 \u00d7 7"))).
 compiled_lesson_task_instance('IM-G3-U3-L16', productive-multiply(4, 8),
@@ -1852,6 +1932,8 @@ compiled_lesson_task_instance('IM-G3-U3-L7', productive-subtract(258, 20),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U3-L7'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(3)), excerpt("258 - 20"))).
 compiled_lesson_task_instance('IM-G3-U3-L7', productive-subtract(258, 24),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U3-L7'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(4)), excerpt("258 - 24"))).
+compiled_lesson_task_instance('IM-G3-U3-L7', productive-subtract(262, 135),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U3-L7'), position('student_task_statement(3)'))), position(student_task_statement(3)/compound_unit(1)), excerpt("262- 135"))).
 compiled_lesson_task_instance('IM-G3-U3-L7', productive-subtract(50, 10),
                               task_evidence(rule(direct_subtraction_expression_list), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-G3-U3-L7'), position('student_task_statement(1)'))), position(student_task_statement(1)/expression(1)), excerpt("50- 10"))).
 compiled_lesson_task_instance('IM-G3-U3-L7', productive-subtract(58, 10),
@@ -1872,10 +1954,20 @@ compiled_lesson_task_instance('IM-G3-U3-L9', productive-multiply(4, 5),
                               task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(98, 98)), position(student_task_statement(1)/equation(1)/side(left)/witness(line(106))), excerpt("4 \u00d7 5 = 5 \u00d7 4"), witness_class(printed_judgment))).
 compiled_lesson_task_instance('IM-G3-U3-L9', productive-multiply(5, 4),
                               task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(98, 98)), position(student_task_statement(1)/equation(1)/side(right)/witness(line(106))), excerpt("4 \u00d7 5 = 5 \u00d7 4"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(283, 159),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(266, 266)), position(student_task_statement(3)/compound_unit(1)), excerpt("283 - 159"))).
 compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(300, 100),
                               task_evidence(rule(equation_verification_side), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(102, 102)), position(student_task_statement(1)/equation(3)/side(left)/witness(line(114))), excerpt("300- 100 = 100- 300"), witness_class(printed_judgment))).
+compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(425, 192),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(267, 267)), position(student_task_statement(3)/compound_unit(2)), excerpt("425 - 192"))).
 compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(428, 156),
                               task_evidence(rule(g3_lin_subtract_smaller_from_larger), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(159, 159)), position(activity_1(revise_subtraction_work_lin)), excerpt("Lin subtracted 156 from 428"))).
+compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(591, 128),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(271, 271)), position(student_task_statement(3)/compound_unit(4)), excerpt("591 - 128"))).
+compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(639, 465),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(269, 269)), position(student_task_statement(3)/compound_unit(3)), excerpt("639- 465"))).
+compiled_lesson_task_instance('IM-G3-U3-L9', productive-subtract(832, 575),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson9.md', lines(273, 273)), position(student_task_statement(3)/compound_unit(5)), excerpt("832- 575"))).
 compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(24, 8),
                               task_evidence(rule(narrative_measurement_division_groups_unknown), source('curriculum/im_teacher_guides/grade3/unit4/lesson1.md', lines(169, 171)), position(student_task_statement(2)/item(2)), excerpt("24 apples in boxes. She puts 8 apples in each box. How many boxes are there?"))).
 compiled_lesson_task_instance('IM-G3-U4-L1', productive-divide(30, 6),
@@ -4130,6 +4222,8 @@ compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(3, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("3 + 1"))).
 compiled_lesson_task_instance('IM-GK-U5-L8', productive-add(4, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(103, 103)), position(student_task_statement(1)/expression(3)), excerpt("4 + 1"))).
+compiled_lesson_task_instance('IM-GK-U5-L8', productive-subtract(4, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', lines(102, 102)), position(student_task_statement(1)/compound_unit(3)), excerpt("4- 1"))).
 compiled_lesson_task_instance('IM-GK-U6-L10', productive-add(10, 3),
                               task_evidence(rule(task_186_gk_u6_l10_10_plus_3), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U6-L10'), position('student_task_statement(2)'))), position(student_task_statement(2)), excerpt("10 + 3 = ___"), witness_class(printed_answer))).
 compiled_lesson_task_instance('IM-GK-U6-L10', productive-add(10, 5),
@@ -4140,6 +4234,10 @@ compiled_lesson_task_instance('IM-GK-U6-L2', productive-add(3, 0),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(98, 98)), position(student_task_statement(1)/expression(1)), excerpt("3 + 0"))).
 compiled_lesson_task_instance('IM-GK-U6-L2', productive-add(3, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(100, 100)), position(student_task_statement(1)/expression(2)), excerpt("3 + 1"))).
+compiled_lesson_task_instance('IM-GK-U6-L2', productive-subtract(2, 0),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(103, 103)), position(student_task_statement(1)/compound_unit(4)), excerpt("2- 0"))).
+compiled_lesson_task_instance('IM-GK-U6-L2', productive-subtract(3, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', lines(102, 102)), position(student_task_statement(1)/compound_unit(3)), excerpt("3 - 1"))).
 compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(2, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', lines(95, 95)), position(student_task_statement(1)/expression(1)), excerpt("2+3"))).
 compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(3, 2),
@@ -4148,6 +4246,14 @@ compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(4, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', lines(99, 99)), position(student_task_statement(1)/expression(3)), excerpt("4+1"))).
 compiled_lesson_task_instance('IM-GK-U7-L10', productive-add(5, 0),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', lines(100, 100)), position(student_task_statement(1)/expression(4)), excerpt("5+0"))).
+compiled_lesson_task_instance('IM-GK-U7-L14', productive-subtract(3, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md', lines(90, 90)), position(student_task_statement(1)/compound_unit(1)), excerpt("3 - 1"))).
+compiled_lesson_task_instance('IM-GK-U7-L14', productive-subtract(3, 2),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md', lines(92, 92)), position(student_task_statement(1)/compound_unit(2)), excerpt("3 - 2"))).
+compiled_lesson_task_instance('IM-GK-U7-L14', productive-subtract(4, 2),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md', lines(94, 94)), position(student_task_statement(1)/compound_unit(3)), excerpt("4- 2"))).
+compiled_lesson_task_instance('IM-GK-U7-L14', productive-subtract(5, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md', lines(96, 96)), position(student_task_statement(1)/compound_unit(4)), excerpt("5 - 1"))).
 compiled_lesson_task_instance('IM-GK-U7-L4', productive-add(3, 3),
                               task_evidence(rule(printed_equation_list_direct_addition), source(recovered_task_spans('curriculum/im/generated/recovered_task_spans.json', lesson('IM-GK-U7-L4'), position('student_task_statement(1)'))), position(student_task_statement(1)/recovered_equation(4)), excerpt("3 + 3 = 6"))).
 compiled_lesson_task_instance('IM-GK-U7-L4', productive-add(4, 3),
@@ -4166,14 +4272,28 @@ compiled_lesson_task_instance('IM-GK-U7-L5', productive-subtract(7, 3),
                               task_evidence(rule(narrative_take_from_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md', lines(142, 144)), position(student_task_statement(2)/item(1)), excerpt("7 pattern blocks. Her brother takes 3. How many now?"))).
 compiled_lesson_task_instance('IM-GK-U8-L11', productive-add(3, 2),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', lines(87, 87)), position(student_task_statement(1)/expression(1)), excerpt("3 + 2"))).
+compiled_lesson_task_instance('IM-GK-U8-L11', productive-subtract(3, 2),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', lines(85, 85)), position(student_task_statement(1)/compound_unit(1)), excerpt("3 - 2"))).
+compiled_lesson_task_instance('IM-GK-U8-L11', productive-subtract(4, 2),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', lines(89, 89)), position(student_task_statement(1)/compound_unit(3)), excerpt("4- 2"))).
+compiled_lesson_task_instance('IM-GK-U8-L11', productive-subtract(4, 3),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', lines(90, 90)), position(student_task_statement(1)/compound_unit(4)), excerpt("4- 3"))).
 compiled_lesson_task_instance('IM-GK-U8-L15', productive-add(2, 3),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md', lines(373, 373)), position(student_task_statement(3)/expression(1)), excerpt("2 + 3"))).
+compiled_lesson_task_instance('IM-GK-U8-L15', productive-subtract(4, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md', lines(375, 375)), position(student_task_statement(3)/compound_unit(2)), excerpt("4- 1"))).
+compiled_lesson_task_instance('IM-GK-U8-L15', productive-subtract(5, 3),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md', lines(377, 377)), position(student_task_statement(3)/compound_unit(3)), excerpt("5 - 3"))).
 compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(4, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(112, 112)), position(student_task_statement(1)/expression(1)), excerpt("4 + 1"))).
 compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(5, 1),
                               task_evidence(rule(direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(114, 114)), position(student_task_statement(1)/expression(2)), excerpt("5 + 1"))).
 compiled_lesson_task_instance('IM-GK-U8-L18', productive-add(6, 4),
                               task_evidence(rule(gk_pigeons_compose_ten), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(173, 176)), position(activity_1_item(1)), excerpt("There are 6 pigeons in water."))).
+compiled_lesson_task_instance('IM-GK-U8-L18', productive-subtract(7, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(118, 118)), position(student_task_statement(1)/compound_unit(4)), excerpt("7- 1"))).
+compiled_lesson_task_instance('IM-GK-U8-L18', productive-subtract(8, 1),
+                              task_evidence(rule(segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', lines(116, 116)), position(student_task_statement(1)/compound_unit(3)), excerpt("8 - 1"))).
 compiled_lesson_task_instance('IM-GK-U8-L3', productive-add(7, 1),
                               task_evidence(rule(gk_bus_add_one), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', lines(149, 153)), position(activity_1_item(1)), excerpt("1 more kid gets on the bus."))).
 compiled_lesson_task_instance('IM-GK-U8-L3', productive-add(7, 1),

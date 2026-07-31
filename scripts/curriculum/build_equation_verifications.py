@@ -74,6 +74,19 @@ def corpus(root: pathlib.Path):
         (span.code, span.position): span
         for span in compiler.read_recovered_task_spans(root, spans)
     }
+    # The ledger is regenerated before the compiler artifact.  Derive the
+    # witnessed EQV route attachments here as well, or the first regeneration
+    # would preserve the old rejected task statuses and the compiler could not
+    # validate or promote the newly routed rows.
+    mappings += compiler.compile_equation_verification_route_mappings(
+        root, docs, spans, recovered, attachments
+    )
+    mappings = sorted(set(mappings))
+    attachments = {code: set(rows) for code, rows in explicit.items()}
+    for mapping in mappings:
+        attachments.setdefault(mapping.code, set()).add(
+            (mapping.operation, mapping.kind)
+        )
     return docs, spans, recovered, attachments
 
 

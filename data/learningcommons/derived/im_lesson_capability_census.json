@@ -281,10 +281,10 @@
     "canonical_denominator": 223,
     "counts": {
      "diagnostic_ready": 12,
-     "executable_task": 17,
-     "has_candidates": 14,
+     "executable_task": 18,
+     "has_candidates": 15,
      "in_canonical_corpus": 223,
-     "measured_transition": 17,
+     "measured_transition": 18,
      "readable": 223,
      "strict_and_wired": 9,
      "strict_conjunction": 9,
@@ -293,7 +293,7 @@
     "diagnostic_scope_denominator": 12,
     "label": "geometry",
     "reader_status": {
-     "checked_and_empty_no_candidate": 209,
+     "checked_and_empty_no_candidate": 208,
      "unchecked_no_guide": 0
     }
    },
@@ -301,10 +301,10 @@
     "canonical_denominator": 212,
     "counts": {
      "diagnostic_ready": 55,
-     "executable_task": 69,
+     "executable_task": 70,
      "has_candidates": 59,
      "in_canonical_corpus": 212,
-     "measured_transition": 69,
+     "measured_transition": 70,
      "readable": 212,
      "strict_and_wired": 39,
      "strict_conjunction": 39,
@@ -341,10 +341,10 @@
     "canonical_denominator": 312,
     "counts": {
      "diagnostic_ready": 152,
-     "executable_task": 179,
-     "has_candidates": 149,
+     "executable_task": 181,
+     "has_candidates": 153,
      "in_canonical_corpus": 312,
-     "measured_transition": 179,
+     "measured_transition": 181,
      "readable": 312,
      "strict_and_wired": 96,
      "strict_conjunction": 96,
@@ -353,7 +353,7 @@
     "diagnostic_scope_denominator": 152,
     "label": "number_and_operations_base_ten",
     "reader_status": {
-     "checked_and_empty_no_candidate": 163,
+     "checked_and_empty_no_candidate": 159,
      "unchecked_no_guide": 0
     }
    },
@@ -401,10 +401,10 @@
     "canonical_denominator": 318,
     "counts": {
      "diagnostic_ready": 135,
-     "executable_task": 169,
-     "has_candidates": 150,
+     "executable_task": 173,
+     "has_candidates": 151,
      "in_canonical_corpus": 318,
-     "measured_transition": 169,
+     "measured_transition": 173,
      "readable": 318,
      "strict_and_wired": 87,
      "strict_conjunction": 87,
@@ -413,7 +413,7 @@
     "diagnostic_scope_denominator": 135,
     "label": "operations_and_algebraic_thinking",
     "reader_status": {
-     "checked_and_empty_no_candidate": 168,
+     "checked_and_empty_no_candidate": 167,
      "unchecked_no_guide": 0
     }
    },
@@ -463,10 +463,10 @@
     "canonical_denominator": 148,
     "counts": {
      "diagnostic_ready": 68,
-     "executable_task": 80,
-     "has_candidates": 71,
+     "executable_task": 83,
+     "has_candidates": 72,
      "in_canonical_corpus": 148,
-     "measured_transition": 80,
+     "measured_transition": 83,
      "readable": 148,
      "strict_and_wired": 54,
      "strict_conjunction": 54,
@@ -475,7 +475,7 @@
     "diagnostic_scope_denominator": 68,
     "label": "1",
     "reader_status": {
-     "checked_and_empty_no_candidate": 77,
+     "checked_and_empty_no_candidate": 76,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -503,10 +503,10 @@
       "canonical_denominator": 23,
       "counts": {
        "diagnostic_ready": 14,
-       "executable_task": 17,
+       "executable_task": 18,
        "has_candidates": 17,
        "in_canonical_corpus": 23,
-       "measured_transition": 17,
+       "measured_transition": 18,
        "readable": 23,
        "strict_and_wired": 13,
        "strict_conjunction": 13,
@@ -523,10 +523,10 @@
       "canonical_denominator": 28,
       "counts": {
        "diagnostic_ready": 18,
-       "executable_task": 20,
-       "has_candidates": 16,
+       "executable_task": 21,
+       "has_candidates": 17,
        "in_canonical_corpus": 28,
-       "measured_transition": 20,
+       "measured_transition": 21,
        "readable": 28,
        "strict_and_wired": 13,
        "strict_conjunction": 13,
@@ -535,7 +535,7 @@
       "diagnostic_scope_denominator": 18,
       "label": "G1U3",
       "reader_status": {
-       "checked_and_empty_no_candidate": 12,
+       "checked_and_empty_no_candidate": 11,
        "unchecked_no_guide": 0
       }
      },
@@ -583,10 +583,10 @@
       "canonical_denominator": 17,
       "counts": {
        "diagnostic_ready": 6,
-       "executable_task": 7,
+       "executable_task": 8,
        "has_candidates": 7,
        "in_canonical_corpus": 17,
-       "measured_transition": 7,
+       "measured_transition": 8,
        "readable": 17,
        "strict_and_wired": 5,
        "strict_conjunction": 5,
@@ -645,10 +645,10 @@
     "canonical_denominator": 150,
     "counts": {
      "diagnostic_ready": 63,
-     "executable_task": 77,
-     "has_candidates": 63,
+     "executable_task": 79,
+     "has_candidates": 64,
      "in_canonical_corpus": 150,
-     "measured_transition": 77,
+     "measured_transition": 79,
      "readable": 150,
      "strict_and_wired": 50,
      "strict_conjunction": 50,
@@ -657,7 +657,7 @@
     "diagnostic_scope_denominator": 63,
     "label": "2",
     "reader_status": {
-     "checked_and_empty_no_candidate": 87,
+     "checked_and_empty_no_candidate": 86,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -786,7 +786,7 @@
       "counts": {
        "diagnostic_ready": 12,
        "executable_task": 17,
-       "has_candidates": 11,
+       "has_candidates": 12,
        "in_canonical_corpus": 19,
        "measured_transition": 17,
        "readable": 19,
@@ -797,7 +797,7 @@
       "diagnostic_scope_denominator": 12,
       "label": "G2U7",
       "reader_status": {
-       "checked_and_empty_no_candidate": 8,
+       "checked_and_empty_no_candidate": 7,
        "unchecked_no_guide": 0
       }
      },
@@ -805,10 +805,10 @@
       "canonical_denominator": 14,
       "counts": {
        "diagnostic_ready": 1,
-       "executable_task": 2,
+       "executable_task": 4,
        "has_candidates": 2,
        "in_canonical_corpus": 14,
-       "measured_transition": 2,
+       "measured_transition": 4,
        "readable": 14,
        "strict_and_wired": 1,
        "strict_conjunction": 1,
@@ -848,7 +848,7 @@
     "counts": {
      "diagnostic_ready": 52,
      "executable_task": 66,
-     "has_candidates": 57,
+     "has_candidates": 59,
      "in_canonical_corpus": 143,
      "measured_transition": 66,
      "readable": 143,
@@ -859,7 +859,7 @@
     "diagnostic_scope_denominator": 52,
     "label": "3",
     "reader_status": {
-     "checked_and_empty_no_candidate": 86,
+     "checked_and_empty_no_candidate": 84,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -908,7 +908,7 @@
       "counts": {
        "diagnostic_ready": 10,
        "executable_task": 12,
-       "has_candidates": 9,
+       "has_candidates": 11,
        "in_canonical_corpus": 21,
        "measured_transition": 12,
        "readable": 21,
@@ -919,7 +919,7 @@
       "diagnostic_scope_denominator": 10,
       "label": "G3U3",
       "reader_status": {
-       "checked_and_empty_no_candidate": 12,
+       "checked_and_empty_no_candidate": 10,
        "unchecked_no_guide": 0
       }
      },
@@ -2019,10 +2019,10 @@
     "canonical_denominator": 139,
     "counts": {
      "diagnostic_ready": 5,
-     "executable_task": 17,
-     "has_candidates": 16,
+     "executable_task": 18,
+     "has_candidates": 17,
      "in_canonical_corpus": 139,
-     "measured_transition": 17,
+     "measured_transition": 18,
      "readable": 139,
      "strict_and_wired": 3,
      "strict_conjunction": 3,
@@ -2031,7 +2031,7 @@
     "diagnostic_scope_denominator": 5,
     "label": "K",
     "reader_status": {
-     "checked_and_empty_no_candidate": 123,
+     "checked_and_empty_no_candidate": 122,
      "unchecked_no_guide": 0
     },
     "units": {
@@ -2159,10 +2159,10 @@
       "canonical_denominator": 16,
       "counts": {
        "diagnostic_ready": 0,
-       "executable_task": 3,
-       "has_candidates": 3,
+       "executable_task": 4,
+       "has_candidates": 4,
        "in_canonical_corpus": 16,
-       "measured_transition": 3,
+       "measured_transition": 4,
        "readable": 16,
        "strict_and_wired": 0,
        "strict_conjunction": 0,
@@ -2171,7 +2171,7 @@
       "diagnostic_scope_denominator": 0,
       "label": "GKU7",
       "reader_status": {
-       "checked_and_empty_no_candidate": 13,
+       "checked_and_empty_no_candidate": 12,
        "unchecked_no_guide": 0
       }
      },
@@ -2223,10 +2223,10 @@
     "canonical_denominator": 879,
     "counts": {
      "diagnostic_ready": 262,
-     "executable_task": 336,
-     "has_candidates": 293,
+     "executable_task": 342,
+     "has_candidates": 298,
      "in_canonical_corpus": 879,
-     "measured_transition": 336,
+     "measured_transition": 342,
      "readable": 879,
      "strict_and_wired": 177,
      "strict_conjunction": 177,
@@ -2235,7 +2235,7 @@
     "diagnostic_scope_denominator": 262,
     "label": "K-5",
     "reader_status": {
-     "checked_and_empty_no_candidate": 586,
+     "checked_and_empty_no_candidate": 581,
      "unchecked_no_guide": 0
     }
    }
@@ -2245,10 +2245,10 @@
     "canonical_denominator": 489,
     "counts": {
      "diagnostic_ready": 213,
-     "executable_task": 275,
-     "has_candidates": 225,
+     "executable_task": 276,
+     "has_candidates": 229,
      "in_canonical_corpus": 489,
-     "measured_transition": 275,
+     "measured_transition": 276,
      "readable": 489,
      "strict_and_wired": 139,
      "strict_conjunction": 139,
@@ -2257,7 +2257,7 @@
     "diagnostic_scope_denominator": 213,
     "label": "addition",
     "reader_status": {
-     "checked_and_empty_no_candidate": 264,
+     "checked_and_empty_no_candidate": 260,
      "unchecked_no_guide": 0
     }
    },
@@ -2286,7 +2286,7 @@
     "counts": {
      "diagnostic_ready": 39,
      "executable_task": 46,
-     "has_candidates": 33,
+     "has_candidates": 34,
      "in_canonical_corpus": 92,
      "measured_transition": 46,
      "readable": 92,
@@ -2297,7 +2297,7 @@
     "diagnostic_scope_denominator": 39,
     "label": "counting",
     "reader_status": {
-     "checked_and_empty_no_candidate": 59,
+     "checked_and_empty_no_candidate": 58,
      "unchecked_no_guide": 0
     }
    },
@@ -2425,10 +2425,10 @@
     "canonical_denominator": 223,
     "counts": {
      "diagnostic_ready": 118,
-     "executable_task": 162,
-     "has_candidates": 105,
+     "executable_task": 165,
+     "has_candidates": 106,
      "in_canonical_corpus": 223,
-     "measured_transition": 162,
+     "measured_transition": 165,
      "readable": 223,
      "strict_and_wired": 74,
      "strict_conjunction": 74,
@@ -2437,7 +2437,7 @@
     "diagnostic_scope_denominator": 118,
     "label": "multiplication",
     "reader_status": {
-     "checked_and_empty_no_candidate": 118,
+     "checked_and_empty_no_candidate": 117,
      "unchecked_no_guide": 0
     }
    },
@@ -2482,34 +2482,34 @@
     }
    },
    "subtraction": {
-    "canonical_denominator": 230,
+    "canonical_denominator": 236,
     "counts": {
-     "diagnostic_ready": 135,
-     "executable_task": 173,
-     "has_candidates": 136,
-     "in_canonical_corpus": 230,
-     "measured_transition": 173,
-     "readable": 230,
-     "strict_and_wired": 92,
-     "strict_conjunction": 92,
-     "wired_misconception_reachable": 98
+     "diagnostic_ready": 138,
+     "executable_task": 179,
+     "has_candidates": 146,
+     "in_canonical_corpus": 236,
+     "measured_transition": 179,
+     "readable": 236,
+     "strict_and_wired": 93,
+     "strict_conjunction": 93,
+     "wired_misconception_reachable": 99
     },
-    "diagnostic_scope_denominator": 135,
+    "diagnostic_scope_denominator": 138,
     "label": "subtraction",
     "reader_status": {
-     "checked_and_empty_no_candidate": 94,
+     "checked_and_empty_no_candidate": 90,
      "unchecked_no_guide": 0
     }
    },
    "unattached": {
-    "canonical_denominator": 353,
+    "canonical_denominator": 352,
     "counts": {
      "diagnostic_ready": 0,
-     "executable_task": 0,
+     "executable_task": 1,
      "has_candidates": 0,
-     "in_canonical_corpus": 353,
-     "measured_transition": 0,
-     "readable": 353,
+     "in_canonical_corpus": 352,
+     "measured_transition": 1,
+     "readable": 352,
      "strict_and_wired": 0,
      "strict_conjunction": 0,
      "wired_misconception_reachable": 0
@@ -2517,7 +2517,7 @@
     "diagnostic_scope_denominator": 0,
     "label": "unattached",
     "reader_status": {
-     "checked_and_empty_no_candidate": 353,
+     "checked_and_empty_no_candidate": 352,
      "unchecked_no_guide": 0
     }
    }
@@ -2552,45 +2552,45 @@
   },
   {
    "binding_constraint": {
-    "lessons": 1014,
+    "lessons": 1009,
     "reason": "no_exact_operand_bearing_candidate"
    },
-   "count": 294,
+   "count": 299,
    "definition": "The live candidate extractor returned at least one operand-bearing task candidate from tracked or recovered spans.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
-    "no_exact_operand_bearing_candidate": 1014
+    "no_exact_operand_bearing_candidate": 1009
    },
    "id": "has_candidates"
   },
   {
    "binding_constraint": {
-    "lessons": 889,
+    "lessons": 883,
     "reason": "no_compiled_productive_task"
    },
-   "count": 414,
+   "count": 420,
    "definition": "At least one non-declared-absent compiled productive task returned a result through the current registry-or-activity runtime.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
     "compiled_task_produced_no_current_result": 5,
-    "no_compiled_productive_task": 889
+    "no_compiled_productive_task": 883
    },
    "id": "executable_task"
   },
   {
    "binding_constraint": {
-    "lessons": 889,
+    "lessons": 883,
     "reason": "no_compiled_productive_task"
    },
-   "count": 414,
+   "count": 420,
    "definition": "At least one current compiled productive task returned a result and a nonempty runtime step sequence: a registry trace, an outcome trace, or validated synthesis-path moves.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
     "compiled_task_produced_no_current_result": 5,
-    "no_compiled_productive_task": 889
+    "no_compiled_productive_task": 883
    },
    "id": "measured_transition"
   },
@@ -2604,10 +2604,10 @@
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
    "failure_reason_counts": {
-    "missing_executable_task": 889,
+    "missing_executable_task": 883,
     "missing_measured_transition": 907,
     "missing_standard_action_candidate": 36,
-    "missing_strategy_evidence": 353,
+    "missing_strategy_evidence": 351,
     "missing_structured_negative": 862
    },
    "id": "diagnostic_ready"
@@ -7439,12 +7439,13 @@
   },
   {
    "candidates": {
-    "count": 3,
+    "count": 4,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 3
+    "reviewable": 4
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -7480,7 +7481,8 @@
    },
    "name": "More than One Way",
    "operation_attachments": [
-    "addition"
+    "addition",
+    "subtraction"
    ],
    "pusu": null,
    "reader": {
@@ -7494,10 +7496,11 @@
     "result_shapes": [
      "registry_trace_nonempty",
      "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
     "result_task": "add(1,3)",
-    "task_count": 3,
+    "task_count": 4,
     "trace_shape": "registry_trace",
     "trace_task": "add(1,3)"
    },
@@ -7975,12 +7978,13 @@
   },
   {
    "candidates": {
-    "count": 2,
+    "count": 4,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 2
+    "reviewable": 4
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -8015,7 +8019,8 @@
    },
    "name": "Keep Track of Objects",
    "operation_attachments": [
-    "addition"
+    "addition",
+    "subtraction"
    ],
    "pusu": {
     "contrast_count": 0,
@@ -8035,10 +8040,12 @@
     "measured_trace": true,
     "result_shapes": [
      "outcome_trace_nonempty",
-     "outcome_trace_nonempty"
+     "outcome_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
     ],
     "result_task": "add(3,0)",
-    "task_count": 2,
+    "task_count": 4,
     "trace_shape": "outcome_trace",
     "trace_task": "add(3,0)"
    },
@@ -9516,30 +9523,30 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 4,
+    "operations": [
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 4
    },
    "content_domains": [
     "geometry"
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "event_ready"
    },
    "grade": "K",
    "identity_spine": true,
@@ -9547,23 +9554,39 @@
    "lesson_number": 14,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
-    "has_candidates": false,
+    "executable_task": true,
+    "has_candidates": true,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
     "wired_misconception_reachable": false
    },
    "name": "Build with Solid Shapes",
-   "operation_attachments": [],
+   "operation_attachments": [
+    "subtraction"
+   ],
    "pusu": null,
    "reader": {
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-GK-U7-L14",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "subtract(3,1)",
+    "task_count": 4,
+    "trace_shape": "registry_trace",
+    "trace_task": "subtract(3,1)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -10295,12 +10318,13 @@
   },
   {
    "candidates": {
-    "count": 1,
+    "count": 4,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 1
+    "reviewable": 4
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -10336,7 +10360,8 @@
    },
    "name": "Share Story Problems",
    "operation_attachments": [
-    "addition"
+    "addition",
+    "subtraction"
    ],
    "pusu": null,
    "reader": {
@@ -10348,10 +10373,13 @@
     "lesson": "IM-GK-U8-L11",
     "measured_trace": true,
     "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
     "result_task": "add(3,2)",
-    "task_count": 1,
+    "task_count": 4,
     "trace_shape": "registry_trace",
     "trace_task": "add(3,2)"
    },
@@ -10539,12 +10567,13 @@
   },
   {
    "candidates": {
-    "count": 1,
+    "count": 3,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 1
+    "reviewable": 3
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -10580,7 +10609,8 @@
    "name": "Addition and Subtraction Expressions within 5",
    "operation_attachments": [
     "addition",
-    "multiplication"
+    "multiplication",
+    "subtraction"
    ],
    "pusu": {
     "contrast_count": 1,
@@ -10601,10 +10631,12 @@
     "lesson": "IM-GK-U8-L15",
     "measured_trace": true,
     "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
     "result_task": "add(2,3)",
-    "task_count": 1,
+    "task_count": 3,
     "trace_shape": "registry_trace",
     "trace_task": "add(2,3)"
    },
@@ -10733,12 +10765,13 @@
   },
   {
    "candidates": {
-    "count": 2,
+    "count": 4,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 2
+    "reviewable": 4
    },
    "content_domains": [
     "counting_and_cardinality",
@@ -10797,10 +10830,12 @@
     "result_shapes": [
      "registry_trace_nonempty",
      "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
     "result_task": "add(4,1)",
-    "task_count": 3,
+    "task_count": 5,
     "trace_shape": "registry_trace",
     "trace_task": "add(4,1)"
    },
@@ -12298,7 +12333,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -12306,11 +12341,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "1",
    "identity_spine": true,
@@ -12318,10 +12352,10 @@
    "lesson_number": 5,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
+    "executable_task": true,
     "has_candidates": false,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -12336,7 +12370,19 @@
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G1-U2-L5",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(2,7)",
+    "task_count": 2,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(2,7)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -14638,7 +14684,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -14646,11 +14692,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "1",
    "identity_spine": true,
@@ -14658,10 +14703,10 @@
    "lesson_number": 14,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
+    "executable_task": true,
     "has_candidates": false,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -14676,7 +14721,22 @@
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G1-U3-L14",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(3,2)",
+    "task_count": 5,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(3,2)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -15258,12 +15318,12 @@
   },
   {
    "candidates": {
-    "count": 3,
+    "count": 5,
     "operations": [
      "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 3
+    "reviewable": 5
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -15319,12 +15379,14 @@
     "result_shapes": [
      "registry_trace_nonempty",
      "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
-    "result_task": "subtract(17,7)",
-    "task_count": 3,
+    "result_task": "subtract(13,6)",
+    "task_count": 5,
     "trace_shape": "registry_trace",
-    "trace_task": "subtract(17,7)"
+    "trace_task": "subtract(13,6)"
    },
    "sources": {
     "identity_spine": true,
@@ -15335,12 +15397,12 @@
   },
   {
    "candidates": {
-    "count": 6,
+    "count": 9,
     "operations": [
      "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 6
+    "reviewable": 9
    },
    "content_domains": [
     "number_and_operations_base_ten",
@@ -15402,10 +15464,13 @@
      "registry_trace_nonempty",
      "registry_trace_nonempty",
      "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
      "registry_trace_nonempty"
     ],
     "result_task": "subtract(12,7)",
-    "task_count": 6,
+    "task_count": 9,
     "trace_shape": "registry_trace",
     "trace_task": "subtract(12,7)"
    },
@@ -15418,10 +15483,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "number_and_operations_base_ten",
@@ -15446,7 +15513,7 @@
    "memberships": {
     "diagnostic_ready": true,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -15478,13 +15545,13 @@
     "lesson": "IM-G1-U3-L25",
     "measured_trace": true,
     "result_shapes": [
-     "no_result",
-     "synthesis_path_moves_nonempty"
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
     ],
-    "result_task": "subtract(19,14)",
+    "result_task": "subtract(13,7)",
     "task_count": 2,
-    "trace_shape": "synthesis_path_moves",
-    "trace_task": "subtract(19,14)"
+    "trace_shape": "registry_trace",
+    "trace_task": "subtract(13,7)"
    },
    "sources": {
     "identity_spine": true,
@@ -18894,7 +18961,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -18902,11 +18969,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "1",
    "identity_spine": true,
@@ -18914,10 +18980,10 @@
    "lesson_number": 10,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
+    "executable_task": true,
     "has_candidates": false,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -18932,7 +18998,21 @@
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G1-U6-L10",
+    "measured_trace": true,
+    "result_shapes": [
+     "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty"
+    ],
+    "result_task": "add(24,30)",
+    "task_count": 4,
+    "trace_shape": "synthesis_path_moves",
+    "trace_task": "add(24,30)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -21487,12 +21567,13 @@
   },
   {
    "candidates": {
-    "count": 9,
+    "count": 15,
     "operations": [
-     "addition"
+     "addition",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 9
+    "reviewable": 15
    },
    "content_domains": [
     "operations_and_algebraic_thinking"
@@ -21526,7 +21607,8 @@
    },
    "name": "Add and Subtract Your Way",
    "operation_attachments": [
-    "addition"
+    "addition",
+    "subtraction"
    ],
    "pusu": {
     "contrast_count": 0,
@@ -21552,10 +21634,16 @@
      "outcome_trace_nonempty",
      "synthesis_path_moves_nonempty",
      "synthesis_path_moves_nonempty",
-     "outcome_trace_nonempty"
+     "outcome_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
     ],
     "result_task": "add(4,9)",
-    "task_count": 8,
+    "task_count": 14,
     "trace_shape": "synthesis_path_moves",
     "trace_task": "add(4,9)"
    },
@@ -29368,10 +29456,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 2,
+    "operations": [
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 2
    },
    "content_domains": [
     "number_and_operations_base_ten"
@@ -29397,7 +29487,7 @@
    "memberships": {
     "diagnostic_ready": false,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -29422,13 +29512,15 @@
     "measured_trace": true,
     "result_shapes": [
      "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty",
+     "synthesis_path_moves_nonempty",
      "outcome_trace_nonempty",
      "synthesis_path_moves_nonempty",
      "outcome_trace_nonempty",
      "outcome_trace_nonempty"
     ],
     "result_task": "subtract(155,26)",
-    "task_count": 5,
+    "task_count": 7,
     "trace_shape": "synthesis_path_moves",
     "trace_task": "subtract(155,26)"
    },
@@ -30463,7 +30555,7 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
      "negative_candidate": true,
      "standard_action_candidate": true,
@@ -30471,11 +30563,10 @@
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "strategy_attached"
+    "readiness": "event_ready"
    },
    "grade": "2",
    "identity_spine": true,
@@ -30483,10 +30574,10 @@
    "lesson_number": 10,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
+    "executable_task": true,
     "has_candidates": false,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -30501,7 +30592,18 @@
     "span_count": 4,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G2-U8-L10",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(3,3)",
+    "task_count": 1,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(3,3)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -30639,20 +30741,18 @@
    ],
    "evidence": {
     "fields": {
-     "executable_task": false,
+     "executable_task": true,
      "measured_transition": false,
-     "negative_candidate": false,
+     "negative_candidate": true,
      "standard_action_candidate": true,
-     "strategy_evidence": false,
+     "strategy_evidence": true,
      "structured_negative": false
     },
     "missing_for_diagnosis": [
-     "strategy_evidence",
-     "executable_task",
      "structured_negative",
      "measured_transition"
     ],
-    "readiness": "standard_action_candidate"
+    "readiness": "event_ready"
    },
    "grade": "2",
    "identity_spine": true,
@@ -30660,10 +30760,10 @@
    "lesson_number": 13,
    "memberships": {
     "diagnostic_ready": false,
-    "executable_task": false,
+    "executable_task": true,
     "has_candidates": false,
     "in_canonical_corpus": true,
-    "measured_transition": false,
+    "measured_transition": true,
     "readable": true,
     "strict_and_wired": false,
     "strict_conjunction": false,
@@ -30676,7 +30776,20 @@
     "span_count": 2,
     "status": "segmented"
    },
-   "runtime": null,
+   "runtime": {
+    "executable": true,
+    "lesson": "IM-G2-U8-L13",
+    "measured_trace": true,
+    "result_shapes": [
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
+    ],
+    "result_task": "add(3,3)",
+    "task_count": 3,
+    "trace_shape": "registry_trace",
+    "trace_task": "add(3,3)"
+   },
    "sources": {
     "identity_spine": true,
     "markdown_guide": true,
@@ -34618,12 +34731,12 @@
   },
   {
    "candidates": {
-    "count": 4,
+    "count": 5,
     "operations": [
      "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 4
+    "reviewable": 5
    },
    "content_domains": [
     "number_and_operations_base_ten"
@@ -34682,10 +34795,11 @@
      "synthesis_path_moves_nonempty",
      "synthesis_path_moves_nonempty",
      "synthesis_path_moves_nonempty",
-     "synthesis_path_moves_nonempty"
+     "synthesis_path_moves_nonempty",
+     "outcome_trace_nonempty"
     ],
     "result_task": "subtract(50,10)",
-    "task_count": 4,
+    "task_count": 5,
     "trace_shape": "synthesis_path_moves",
     "trace_task": "subtract(50,10)"
    },
@@ -34778,10 +34892,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 5,
+    "operations": [
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 5
    },
    "content_domains": [
     "number_and_operations_base_ten"
@@ -34805,7 +34921,7 @@
    "memberships": {
     "diagnostic_ready": true,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -34842,11 +34958,16 @@
      "outcome_trace_nonempty",
      "synthesis_path_moves_nonempty",
      "synthesis_path_moves_nonempty",
+     "outcome_trace_nonempty",
      "synthesis_path_moves_nonempty",
+     "outcome_trace_nonempty",
+     "outcome_trace_nonempty",
+     "outcome_trace_nonempty",
+     "outcome_trace_nonempty",
      "outcome_trace_nonempty"
     ],
     "result_task": "add(125,200)",
-    "task_count": 6,
+    "task_count": 11,
     "trace_shape": "outcome_trace",
     "trace_task": "add(125,200)"
    },
@@ -34859,10 +34980,12 @@
   },
   {
    "candidates": {
-    "count": 0,
-    "operations": [],
+    "count": 4,
+    "operations": [
+     "subtraction"
+    ],
     "rejected": 0,
-    "reviewable": 0
+    "reviewable": 4
    },
    "content_domains": [
     "number_and_operations_base_ten"
@@ -34888,7 +35011,7 @@
    "memberships": {
     "diagnostic_ready": false,
     "executable_task": true,
-    "has_candidates": false,
+    "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
@@ -34911,15 +35034,16 @@
     "lesson": "IM-G3-U3-L10",
     "measured_trace": true,
     "result_shapes": [
-     "no_result",
-     "outcome_trace_nonempty",
-     "outcome_trace_nonempty",
-     "no_result"
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
     ],
-    "result_task": "subtract(492,325)",
-    "task_count": 4,
-    "trace_shape": "outcome_trace",
-    "trace_task": "subtract(492,325)"
+    "result_task": "subtract(317,182)",
+    "task_count": 5,
+    "trace_shape": "registry_trace",
+    "trace_task": "subtract(317,182)"
    },
    "sources": {
     "identity_spine": true,
@@ -35010,12 +35134,13 @@
   },
   {
    "candidates": {
-    "count": 4,
+    "count": 9,
     "operations": [
-     "multiplication"
+     "multiplication",
+     "subtraction"
     ],
     "rejected": 0,
-    "reviewable": 4
+    "reviewable": 9
    },
    "content_domains": [
     "number_and_operations_base_ten",
@@ -35069,10 +35194,15 @@
      "synthesis_path_moves_nonempty",
      "synthesis_path_moves_nonempty",
      "synthesis_path_moves_nonempty",
-     "synthesis_path_moves_nonempty"
+     "synthesis_path_moves_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty",
+     "registry_trace_nonempty"
     ],
     "result_task": "multiply(2,6)",
-    "task_count": 4,
+    "task_count": 9,
     "trace_shape": "synthesis_path_moves",
     "trace_task": "multiply(2,6)"
    },
@@ -87319,7 +87449,7 @@
   }
  ],
  "ranking_basis": "Fresh pusu_pass_v2 regenerated from the current working tree after the task-207 schema translation; current refusal classifications and live agrees_at_input routes determine the ranking.",
- "register": "A denominator-explicit census of what Hermes can currently do with IM lessons. Source presence, parsing, compiled execution, measured runtime step sequences, evidence readiness, strict PUSU, and live misconception routes remain separate claims. The ladder does not nest at has_candidates to executable_task (121 executable_task lessons lack has_candidates); measured_transition to diagnostic_ready (3 diagnostic_ready lessons lack measured_transition).",
+ "register": "A denominator-explicit census of what Hermes can currently do with IM lessons. Source presence, parsing, compiled execution, measured runtime step sequences, evidence readiness, strict PUSU, and live misconception routes remain separate claims. The ladder does not nest at has_candidates to executable_task (122 executable_task lessons lack has_candidates); measured_transition to diagnostic_ready (3 diagnostic_ready lessons lack measured_transition).",
  "runtime_result_shapes": {
   "counted_as_measured": [
    "outcome_trace_nonempty",
@@ -87327,9 +87457,9 @@
    "synthesis_path_moves_nonempty"
   ],
   "detector_change_on_same_live_results": {
-   "delta": 62,
-   "old_detector_lessons": 352,
-   "widened_detector_lessons": 414
+   "delta": 60,
+   "old_detector_lessons": 360,
+   "widened_detector_lessons": 420
   },
   "excluded_by_detector": {
    "no_result": "The task returned no result, so no measured sequence exists.",
@@ -87346,16 +87476,16 @@
    "no_result": "The task returned no result, so no measured sequence exists."
   },
   "lesson_counts": {
-   "no_result": 21,
+   "no_result": 19,
    "outcome_trace_nonempty": 131,
-   "registry_trace_nonempty": 233,
+   "registry_trace_nonempty": 243,
    "synthesis_path_moves_nonempty": 160
   },
   "task_counts": {
-   "no_result": 38,
-   "outcome_trace_nonempty": 389,
-   "registry_trace_nonempty": 808,
-   "synthesis_path_moves_nonempty": 634
+   "no_result": 35,
+   "outcome_trace_nonempty": 393,
+   "registry_trace_nonempty": 856,
+   "synthesis_path_moves_nonempty": 639
   }
  },
  "schema": "im_lesson_capability_census_v1",
@@ -87390,14 +87520,14 @@
   "executable_task": {
    "candidate_failures": 5,
    "claimed_member_failures": 0,
-   "claimed_members_checked": 414,
+   "claimed_members_checked": 420,
    "method": "full current compiled-task runtime probe",
-   "sample_size": 419
+   "sample_size": 425
   },
   "has_candidates": {
    "failures": 0,
    "method": "full live candidate extractor run",
-   "sample_size": 294
+   "sample_size": 299
   },
   "in_canonical_corpus": {
    "failures": 0,
@@ -87407,9 +87537,9 @@
   "measured_transition": {
    "candidate_failures": 5,
    "claimed_member_failures": 0,
-   "claimed_members_checked": 414,
+   "claimed_members_checked": 420,
    "method": "full current result-plus-nonempty-step-sequence probe",
-   "sample_size": 419
+   "sample_size": 425
   },
   "readable": {
    "failures": 0,

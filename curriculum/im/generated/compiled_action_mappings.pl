@@ -8,7 +8,7 @@
             compiled_mapping_summary/2
           ]).
 
-compiled_mapping_summary(609, 751).
+compiled_mapping_summary(619, 765).
 
 compiled_lesson_strategy('IM-G1-U1-L13', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade1/unit1/lesson13.md', line(89)), confidence(high), input_domain(whole_number), excerpt("7 + 1"))).
@@ -44,6 +44,8 @@ compiled_lesson_strategy('IM-G1-U2-L21', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_printed_equation_list_direct_addition), source('curriculum/im_teacher_guides/grade1/unit2/lesson21.md', line(108)), confidence(high), input_domain(whole_number), excerpt("\u2022 6 + 4 ="))).
 compiled_lesson_strategy('IM-G1-U2-L22', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit2/lesson22.md', line(96)), confidence(high), input_domain(whole_number), excerpt("\u2022 5 - 4 ="))).
+compiled_lesson_strategy('IM-G1-U2-L5', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_witnessed_true_false_equation_side), source('curriculum/im_teacher_guides/grade1/unit2/lesson5.md', line(87)), confidence(high), input_domain(whole_number), excerpt("4 + 6 = 10"))).
 compiled_lesson_strategy('IM-G1-U2-L9', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10- 4"))).
 compiled_lesson_strategy('IM-G1-U3-L10', addition, count_on_from_larger,
@@ -54,14 +56,18 @@ compiled_lesson_strategy('IM-G1-U3-L10', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit3/lesson10.md', line(272)), confidence(high), input_domain(whole_number), excerpt("2. = 13 - 3"))).
 compiled_lesson_strategy('IM-G1-U3-L12', subtraction, count_up_missing_addend,
                          mapping_evidence(rule(task_grammar_printed_equation_list_missing_addend), source('curriculum/im_teacher_guides/grade1/unit3/lesson12.md', line(256)), confidence(high), input_domain(whole_number), excerpt("6. + 1 = 18"))).
+compiled_lesson_strategy('IM-G1-U3-L14', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_witnessed_true_false_equation_side), source('curriculum/im_teacher_guides/grade1/unit3/lesson14.md', line(83)), confidence(high), input_domain(whole_number), excerpt("3 + 2 = 3 + 2"))).
 compiled_lesson_strategy('IM-G1-U3-L16', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10 + 9"))).
 compiled_lesson_strategy('IM-G1-U3-L22', subtraction, take_away_base_ones,
                          mapping_evidence(rule(take_from_result_unknown_story), source('curriculum/im_teacher_guides/grade1/unit3/lesson22.md', line(6)), confidence(high), input_domain(whole_number), excerpt("Explain (using words or other representations) a strategy for solving a Take From, Result Unknown problem within 20."))).
 compiled_lesson_strategy('IM-G1-U3-L23', subtraction, take_away_base_ones,
-                         mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', line(102)), confidence(high), input_domain(whole_number), excerpt("17- 7"))).
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson23.md', line(281)), confidence(high), input_domain(whole_number), excerpt("13 - 6"))).
 compiled_lesson_strategy('IM-G1-U3-L24', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_printed_equation_list_direct_subtraction), source('curriculum/im_teacher_guides/grade1/unit3/lesson24.md', line(259)), confidence(high), input_domain(whole_number), excerpt("1. 12- 7 ="))).
+compiled_lesson_strategy('IM-G1-U3-L25', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade1/unit3/lesson25.md', line(288)), confidence(high), input_domain(whole_number), excerpt("13 - 7"))).
 compiled_lesson_strategy('IM-G1-U3-L26', subtraction, count_up_missing_addend,
                          mapping_evidence(rule(task_grammar_story_add_to_change_unknown), source('curriculum/im_teacher_guides/grade1/unit3/lesson26.md', line(168)), confidence(high), input_domain(whole_number), excerpt("1. Elena has 6 counters. She gets some more. Now she has 18 counters. How many more counters did Elena get?"))).
 compiled_lesson_strategy('IM-G1-U3-L26', subtraction, take_away_base_ones,
@@ -208,6 +214,8 @@ compiled_lesson_strategy('IM-G2-U1-L3', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("7 + 3"))).
 compiled_lesson_strategy('IM-G2-U1-L3', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("10- 2"))).
+compiled_lesson_strategy('IM-G2-U1-L4', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson4.md', line(249)), confidence(high), input_domain(whole_number), excerpt("12- 4"))).
 compiled_lesson_strategy('IM-G2-U1-L6', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/grade2/unit1/lesson6.md', line(85)), confidence(high), input_domain(whole_number), excerpt("14 + 22"))).
 compiled_lesson_strategy('IM-G2-U2-L1', counting, recursive_place_value_inscription,
@@ -382,8 +390,12 @@ compiled_lesson_strategy('IM-G2-U7-L8', counting, recursive_place_value_inscript
                          mapping_evidence(rule(recursive_place_value_inscription), source('curriculum/im_teacher_guides/grade2/unit7/lesson8.md', line(12)), confidence(high), input_domain(discrete_collection), excerpt("The purpose of this lesson is for students to add within 1,000, using place value-based strategies, by composing both a ten and a hundred."))).
 compiled_lesson_strategy('IM-G2-U7-L9', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("227 + 673"))).
+compiled_lesson_strategy('IM-G2-U8-L10', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_witnessed_true_false_equation_side), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("2 + 2 + 2 = 3 + 3"))).
 compiled_lesson_strategy('IM-G2-U8-L12', geometry, rigid_shape_composition,
                          mapping_evidence(rule(rigid_shape_composition), source('curriculum/im_teacher_guides/grade2/unit8/lesson12.md', line(12)), confidence(high), input_domain(spatial_measurement), excerpt("The purpose of this lesson is for students to partition rectangles into equal-size squares."))).
+compiled_lesson_strategy('IM-G2-U8-L13', addition, count_on_from_larger,
+                         mapping_evidence(rule(task_grammar_witnessed_true_false_equation_side), source('curriculum/im_teacher_guides/grade2/unit8/lesson13.md', line(80)), confidence(high), input_domain(whole_number), excerpt("2 + 2 + 2 + 2 = 4 + 4"))).
 compiled_lesson_strategy('IM-G2-U8-L4', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im/generated/recovered_task_spans.json', line(0)), confidence(high), input_domain(whole_number), excerpt("6 + 6"))).
 compiled_lesson_strategy('IM-G2-U8-L6', addition, count_on_from_larger,
@@ -462,8 +474,12 @@ compiled_lesson_strategy('IM-G3-U2-L8', geometry, rectangle_area_unit_iteration,
                          mapping_evidence(rule(rectangle_area_unit_iteration), source('curriculum/im_teacher_guides/grade3/unit2/lesson8.md', line(12)), confidence(high), input_domain(spatial_measurement), excerpt("The purpose of this lesson is for students to determine the areas of rectangles that are not fully gridded with squares."))).
 compiled_lesson_strategy('IM-G3-U2-L9', geometry, rectangle_area_unit_iteration,
                          mapping_evidence(rule(rectangle_area_unit_iteration), source('curriculum/im_teacher_guides/grade3/unit2/lesson9.md', line(11)), confidence(high), input_domain(spatial_measurement), excerpt("The purpose of this lesson is for students to measure side lengths of rectangles to find their areas."))).
+compiled_lesson_strategy('IM-G3-U3-L10', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson10.md', line(238)), confidence(high), input_domain(whole_number), excerpt("317- 182"))).
 compiled_lesson_strategy('IM-G3-U3-L11', subtraction, take_away_base_ones,
                          mapping_evidence(rule(task_grammar_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson11.md', line(84)), confidence(high), input_domain(whole_number), excerpt("400- 200"))).
+compiled_lesson_strategy('IM-G3-U3-L12', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson12.md', line(173)), confidence(high), input_domain(whole_number), excerpt("382- 190"))).
 compiled_lesson_strategy('IM-G3-U3-L16', multiplication, repeat_equal_groups,
                          mapping_evidence(rule(task_grammar_direct_multiplication_expression_list), source('curriculum/im_teacher_guides/grade3/unit3/lesson16.md', line(100)), confidence(high), input_domain(whole_number), excerpt("4 \u00d7 7"))).
 compiled_lesson_strategy('IM-G3-U3-L3', addition, count_on_from_larger,
@@ -1476,14 +1492,20 @@ compiled_lesson_strategy('IM-GK-U4-L9', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_narrative_join_more_result_unknown), source('curriculum/im_teacher_guides/kindergarten/unit4/lesson9.md', line(139)), confidence(high), input_domain(whole_number), excerpt("4 markers at school. Elena brought 3 more markers to school. How many markers are at school now?"))).
 compiled_lesson_strategy('IM-GK-U5-L8', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', line(100)), confidence(high), input_domain(whole_number), excerpt("1 + 3"))).
+compiled_lesson_strategy('IM-GK-U5-L8', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md', line(102)), confidence(high), input_domain(whole_number), excerpt("4- 1"))).
 compiled_lesson_strategy('IM-GK-U5-L9', subtraction, take_away_base_ones,
                          mapping_evidence(rule(take_from_result_unknown_story), source('curriculum/im_teacher_guides/kindergarten/unit5/lesson9.md', line(6)), confidence(high), input_domain(whole_number), excerpt("Solve a Take From, Result Unknown and Put Together/Take Apart, Both Addends Unknown problems and represent the solution with an expression."))).
 compiled_lesson_strategy('IM-GK-U6-L13', counting, inscribe_cardinality,
                          mapping_evidence(rule(inscribe_cardinality), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson13.md', line(6)), confidence(high), input_domain(discrete_collection), excerpt("Write numbers to represent a quantity."))).
+compiled_lesson_strategy('IM-GK-U6-L2', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md', line(103)), confidence(high), input_domain(whole_number), excerpt("2- 0"))).
 compiled_lesson_strategy('IM-GK-U6-L3', counting, enumerate_collection_one_to_one,
                          mapping_evidence(rule(enumerate_collection_one_to_one), source('curriculum/im_teacher_guides/kindergarten/unit6/lesson3.md', line(11)), confidence(high), input_domain(discrete_collection), excerpt("The purpose of this lesson is for students to recognize that the number of objects in a group stays the same regardless of how they are counted."))).
 compiled_lesson_strategy('IM-GK-U7-L10', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md', line(95)), confidence(high), input_domain(whole_number), excerpt("2+3"))).
+compiled_lesson_strategy('IM-GK-U7-L14', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md', line(90)), confidence(high), input_domain(whole_number), excerpt("3 - 1"))).
 compiled_lesson_strategy('IM-GK-U7-L15', counting, enumerate_collection_one_to_one,
                          mapping_evidence(rule(enumerate_collection_one_to_one), source('curriculum/im_teacher_guides/kindergarten/unit7/lesson15.md', line(5)), confidence(high), input_domain(discrete_collection), excerpt("Ask (orally) \u201chow many\u201d questions about objects composed of solid shapes."))).
 compiled_lesson_strategy('IM-GK-U7-L2', counting, inscribe_cardinality,
@@ -1502,10 +1524,16 @@ compiled_lesson_strategy('IM-GK-U8-L1', counting, compare_cardinalities_one_to_o
                          mapping_evidence(rule(compare_cardinalities_one_to_one), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson1.md', line(6)), confidence(high), input_domain(discrete_collection), excerpt("Use the words \u201cmore\u201d and \u201cfewer\u201d to compare (orally) groups of objects within 20."))).
 compiled_lesson_strategy('IM-GK-U8-L11', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', line(87)), confidence(high), input_domain(whole_number), excerpt("3 + 2"))).
+compiled_lesson_strategy('IM-GK-U8-L11', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson11.md', line(85)), confidence(high), input_domain(whole_number), excerpt("3 - 2"))).
 compiled_lesson_strategy('IM-GK-U8-L15', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md', line(373)), confidence(high), input_domain(whole_number), excerpt("2 + 3"))).
+compiled_lesson_strategy('IM-GK-U8-L15', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md', line(375)), confidence(high), input_domain(whole_number), excerpt("4- 1"))).
 compiled_lesson_strategy('IM-GK-U8-L18', addition, count_on_from_larger,
                          mapping_evidence(rule(task_grammar_direct_addition_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', line(112)), confidence(high), input_domain(whole_number), excerpt("4 + 1"))).
+compiled_lesson_strategy('IM-GK-U8-L18', subtraction, take_away_base_ones,
+                         mapping_evidence(rule(task_grammar_segmented_direct_subtraction_expression_list), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md', line(118)), confidence(high), input_domain(whole_number), excerpt("7- 1"))).
 compiled_lesson_strategy('IM-GK-U8-L3', subtraction, take_away_base_ones,
                          mapping_evidence(rule(take_from_result_unknown_story), source('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md', line(5)), confidence(high), input_domain(whole_number), excerpt("Explain (orally) strategies for solving story problems about adding or taking away 1 within 10, including strategies based on the count sequence."))).
 compiled_lesson_strategy('IM-GK-U8-L4', subtraction, take_away_base_ones,

@@ -1661,6 +1661,56 @@ def _task_chunks(span: StudentTaskSpan) -> list[tuple[int, int, str, str]]:
     ]
 
 
+def _compound_expression_units(
+    span: StudentTaskSpan,
+) -> list[tuple[int, int, str, str]]:
+    """Segment exact printed arithmetic units without slicing prose numerals.
+
+    Physical bullet lines and numbered expression items provide explicit
+    boundaries.  Runs of three or more spaces are the surviving column gutters
+    in horizontally printed choice banks and cards.  A numbered marker is
+    removed only when the remainder is itself a complete arithmetic unit, so
+    ``1.`` is not an operand and ``2 rocks`` is not mistaken for one.  The
+    fullmatch is equally important at the other boundary: ``6- 2`` survives
+    Docling spacing, while a binary subexpression inside a longer expression
+    does not become a standalone unit.
+
+    This function segments only.  The prompt-specific caller decides whether a
+    unit asks for computation, adjudication, matching, or generation.
+    """
+    numeral = ARITHMETIC_NUMERAL
+    operator = r"[+\-−×·÷]"
+    side = rf"{numeral}(?:\s*{operator}\s*{numeral})*"
+    relation = rf"(?:{side})\s*(?:=|>|<)\s*(?:{side})"
+    binary = rf"{numeral}\s*{operator}\s*{numeral}"
+    unit_re = re.compile(rf"(?:{relation}|{binary})")
+    item_marker_re = re.compile(r"^(?:[1-9]|[1-9]\d)\.\s+")
+    units: list[tuple[int, int, str, str]] = []
+    for line, text in span.lines:
+        bullet_cells = re.split(r"\s*[•◦]\s*", text)
+        cells = [
+            cell
+            for bullet_cell in bullet_cells
+            for cell in re.split(r"\s{3,}", bullet_cell)
+        ]
+        for cell in cells:
+            candidate = cell.strip()
+            marker = item_marker_re.match(candidate)
+            if marker is not None:
+                candidate = candidate[marker.end():].strip()
+            if not candidate or unit_re.fullmatch(candidate) is None:
+                continue
+            units.append(
+                (
+                    line,
+                    line,
+                    f"{span.position}/compound_unit({len(units) + 1})",
+                    candidate,
+                )
+            )
+    return units
+
+
 def _whole_numbers_in_text(text: str) -> list[int]:
     return [
         int(match.group(0))
@@ -3363,6 +3413,57 @@ def extract_task_candidates(
                                 else f"lesson_has_no_{operation}_attachment",
                             )
                         )
+        # The non-"mentally" spelling is a distinct measured shape.  Segment
+        # first, then accept only a complete binary unit.  Choice banks,
+        # equation-building banks, relational claims, and longer expressions
+        # may segment into units but cannot enter this computation route because
+        # their prompts and fullmatch shapes differ.
+        if re.search(
+            r"\bFind the value of each (?:expression|difference|sum|product|quotient)\b",
+            span.text,
+            re.IGNORECASE,
+        ) and not re.search(r"\bmentally\b", span.text, re.IGNORECASE):
+            direct_patterns = (
+                (
+                    "segmented_direct_subtraction_expression_list",
+                    "subtraction",
+                    "subtract",
+                    re.compile(
+                        rf"(?P<a>{ARITHMETIC_NUMERAL})\s*[-−]\s*"
+                        rf"(?P<b>{ARITHMETIC_NUMERAL})"
+                    ),
+                ),
+            )
+            for line, end_line, position, unit in _compound_expression_units(span):
+                for parser_id, operation, task_name, pattern in direct_patterns:
+                    match = pattern.fullmatch(unit)
+                    if match is None:
+                        continue
+                    left = _arithmetic_number(match.group("a"))
+                    right = _arithmetic_number(match.group("b"))
+                    if operation == "subtraction" and left < right:
+                        continue
+                    has_route = any(
+                        attached_operation == operation
+                        for attached_operation, _ in attachments.get(span.code, set())
+                    )
+                    candidates.add(
+                        TaskCandidate(
+                            span.code,
+                            f"{task_name}({left}, {right})",
+                            operation,
+                            parser_id,
+                            span.source,
+                            line,
+                            end_line,
+                            position,
+                            unit,
+                            "reviewable" if has_route else "rejected",
+                            "exact_segmented_binary_expression_and_operation_route"
+                            if has_route
+                            else f"lesson_has_no_{operation}_attachment",
+                        )
+                    )
     return sorted(candidates)
 
 
@@ -3394,6 +3495,16 @@ TASK_GRAMMAR_ACTIONS = {
     ),
     "direct_multiplication_expression_list": ("multiplication", "repeat_equal_groups"),
     "direct_division_expression_list": ("division", "measure_groups_of_size"),
+    "segmented_direct_subtraction_expression_list": (
+        "subtraction",
+        "take_away_base_ones",
+    ),
+    "witnessed_true_false_equation_side": {
+        "addition": "count_on_from_larger",
+        "subtraction": "take_away_base_ones",
+        "multiplication": "repeat_equal_groups",
+        "division": "measure_groups_of_size",
+    },
     "equal_groups_pronoun_each": ("multiplication", "repeat_equal_groups"),
     "equal_groups_each_has": ("multiplication", "repeat_equal_groups"),
     "equal_groups_each_contains": ("multiplication", "repeat_equal_groups"),
@@ -3492,6 +3603,63 @@ TASK_GRAMMAR_ACTIONS = {
         "positional_decimal_reading",
     ),
 }
+
+
+def compile_equation_verification_route_mappings(
+    root: pathlib.Path,
+    docs: list[LessonDoc],
+    spans: list[StudentTaskSpan],
+    recovered_by_key: dict[tuple[str, str], StudentTaskSpan],
+    attachments: dict[str, set[tuple[str, str]]],
+) -> list[Mapping]:
+    """Attach only operation routes licensed by a bound EQV witness.
+
+    The EQV reader performs the prompt, maximal-equation, response-block, and
+    judgment-count gates before this function sees a row.  A row that passed
+    those gates may supply a missing operation attachment for an exactly binary
+    side.  The task itself is not promoted here; after the ledger is generated,
+    ``validate_equation_verifications`` emits it with
+    ``witness_class(printed_judgment)``.
+    """
+    parser_id = "witnessed_true_false_equation_side"
+    actions = TASK_GRAMMAR_ACTIONS[parser_id]
+    readings = equation_verification.read_span_readings(
+        root,
+        spans,
+        recovered_by_key,
+        {doc.code: doc for doc in docs},
+        attachments,
+        _next_response_range,
+    )
+    derived: set[Mapping] = set()
+    attached = {code: set(rows) for code, rows in attachments.items()}
+    for reading in readings:
+        if reading.refusal:
+            continue
+        for row in reading.rows:
+            for task in row.tasks:
+                if task.reason != f"lesson_has_no_{task.operation}_attachment":
+                    continue
+                kind = actions.get(task.operation)
+                if kind is None or (task.operation, kind) in attached.get(
+                    reading.lesson, set()
+                ):
+                    continue
+                mapping = Mapping(
+                    reading.lesson,
+                    task.operation,
+                    kind,
+                    _input_domain(task.operation),
+                    f"task_grammar_{parser_id}",
+                    row.span_source,
+                    row.equation_line,
+                    row.equation,
+                )
+                derived.add(mapping)
+                attached.setdefault(reading.lesson, set()).add(
+                    (task.operation, kind)
+                )
+    return sorted(derived)
 
 
 def compile_task_derived_mappings(
@@ -4333,6 +4501,21 @@ def build(root: pathlib.Path, rules_path: pathlib.Path) -> tuple[str, str, dict]
     )
     initial_attachments = {code: set(rows) for code, rows in explicit.items()}
     for mapping in baseline_mappings:
+        initial_attachments.setdefault(mapping.code, set()).add(
+            (mapping.operation, mapping.kind)
+        )
+    equation_route_mappings = compile_equation_verification_route_mappings(
+        root,
+        docs,
+        task_spans,
+        {
+            (span.code, span.position): span
+            for span in recovered_task_spans
+        },
+        initial_attachments,
+    )
+    baseline_mappings = sorted(set(baseline_mappings + equation_route_mappings))
+    for mapping in equation_route_mappings:
         initial_attachments.setdefault(mapping.code, set()).add(
             (mapping.operation, mapping.kind)
         )
