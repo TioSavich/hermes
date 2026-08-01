@@ -77,7 +77,7 @@ data_artifact('data/research/literature/corpus_index.jsonl', file, 1, 1228501, '
 data_artifact('data/research/literature/corpus_manifest.json', file, 1, 498, '12bf8e758f3ac7fed920f858c72c276f2e9a72593cb62e8801cdf137c35a66a4', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/misconception_embeddings.json', file, 1, 563734, 'b0681ccf1980144f16f2d32b25beb1345343d119330797918d409410b97e3e2f', live_reader, static_reader, [reader('hermes/app/routes/misconception_search.py', 78, read_text)], []).
 data_artifact('data/research/misconception_embeddings.npz', file, 1, 18037540, '0ee870b49d4eb25dd70abd45959127a939eebfaa2abaf949bed618015e0469f6', unconsumed_file, no_static_reader_or_writer, [], []).
-data_artifact('data/research/recognition_benchmark.json', file, 1, 436699, 'b4a84b561e101cab1185749a9b562c6fb00528f9680e1d91fe597c25b9838725', live_reader, static_reader, [reader('scripts/checks/recognition_benchmark.py', 84, read_bytes), reader('scripts/checks/recognition_benchmark.py', 91, read_text)], []).
+data_artifact('data/research/recognition_benchmark.json', file, 1, 436699, 'b4a84b561e101cab1185749a9b562c6fb00528f9680e1d91fe597c25b9838725', live_reader, static_reader, [reader('scripts/checks/recognition_benchmark.py', 84, read_bytes), reader('scripts/checks/recognition_benchmark.py', 91, read_text), reader('scripts/research/strategy_recognition_discrimination.py', 279, read_text)], []).
 data_artifact('data/research/references.bib', file, 1, 659759, '581f34ac125c2638c1cf5d3faef926e0b9deb563c9e57446adb29dd8b16565dd', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/registry_op_embedding_payloads.json', file, 1, 223912, 'bea7b3a131d5c502868ba377aa60bcf663c2e8683b001498a9df3b8a2883fe0a', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/registry_op_embeddings.json', file, 1, 129373, 'a051416255c9f52922c46fccbf9bfd5f3747c062cdecda8f092ee321de83ed3a', unconsumed_file, no_static_reader_or_writer, [], []).
@@ -87,7 +87,7 @@ data_artifact('data/research/self_description_census.json', file, 1, 72759, 'b20
 data_artifact('data/research/strategy_embedding_payloads.json', file, 1, 202985, '8585b8de9dc7792bdc2edec63fd37465c38c418afe7315347b95319185f35fbf', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/strategy_embeddings.json', file, 1, 103986, 'cf85ec98773800fd00937892998d6d3b050e0e286f09dab95989f0975b91beeb', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/strategy_embeddings.npz', file, 1, 1507895, '4af9d6e6b08f5aa3d26aa68360b6c4864f4e9a88d08cc755152818ff50c7af48', unconsumed_file, no_static_reader_or_writer, [], []).
-data_artifact('data/research/talkmoves_recognizer_sweep.json', file, 1, 6607, '981075f5a4fbe3b360580201b91e16dd49baf031b6ec6e9e8e28353b3b6b619f', unconsumed_file, no_static_reader_or_writer, [], []).
+data_artifact('data/research/talkmoves_recognizer_sweep.json', file, 1, 5352, '77465769e54d4534cccf60a6bff1a00d58600ffbbb301f66e14e3d4972b613f7', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/vision_excerpt_verification.json', file, 1, 3251269, '0baba32a88d8fa71ee1f3bde237c8fbda5b01cf96e3595087805d49beaa5a081', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/window_vs_shards.json', file, 1, 23271, '1f7d2864b9eb03ea61210eadb0a1c74a7ad7cdde3c9c20ddf2f519c4a2cabf0b', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research_assets', directory_corpus, 1610, 190039134, 'cafa888de592ace6df4e9cedb3e4b17652703b5f86ff4ed9a2803d7add7eeeaf', reader_and_writer, static_reader_and_writer, [reader('hermes/app/scripts/export_real_transplants.py', 94, read_text), reader('hermes/representation/extract_figures_docling.py', 118, open), reader('scripts/checks/pedagogical_questions_check.py', 18, glob), reader('scripts/scene/figure_context.py', 133, glob), reader('scripts/scene/figure_context.py', 139, read_text)], [writer('hermes/representation/extract_figures_docling.py', 210, open)]).
@@ -136,7 +136,7 @@ data_artifact('scripts/scene/items/items.jsonl', file, 1, 199785, 'f206310a2b953
 data_artifact_denominator(data_tree_regular_file, 8195).
 data_artifact_denominator(manifest_artifact, 92).
 data_root_denominator(curriculum, 7, 7, 20466703).
-data_root_denominator(data, 44, 8195, 962613656).
+data_root_denominator(data, 44, 8195, 962612401).
 data_root_denominator(scripts, 41, 41, 12997328).
 
 data_status_count(live_reader, 40).

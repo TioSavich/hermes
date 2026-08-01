@@ -300,10 +300,16 @@ def render_registry() -> str:
     # the symbolic side stands, what the constraint-based-modelling literature
     # says about runnable models, and why a fine-tune has no surface to land on
     # while the tool boundary carries only {model, messages}.
+    # 70 until 2026-08-01, which added three reports from three parallel lanes:
+    # the strategy_recognize discrimination measurement, the MathTutorBench
+    # held-out run with floors, and the first run of the diagnosis benchmark.
+    # Each lane set this number knowing only its own report, so the count was
+    # briefly wrong in the direction of the lane that wrote last. That is what
+    # this assertion is for: it refuses a report that lands without its count.
     # Proposals under docs/research/proposals/ are not top-level and do not
     # enter this denominator.
-    if len(reports) != 70:
-        raise RuntimeError(f"expected 70 top-level research reports, found {len(reports)}")
+    if len(reports) != 73:
+        raise RuntimeError(f"expected 73 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),

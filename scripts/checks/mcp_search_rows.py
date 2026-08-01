@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression checks for MCP offline misconception row matching."""
+"""Regression checks for MCP misconception lookup and offline row matching."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -9,7 +9,25 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hermes.mcp.server import HermesMCPServer, row_matches_query
+from hermes.mcp.server import HermesMCPServer, ToolCallError, row_matches_query
+
+
+def assert_filter_refused(
+    server: HermesMCPServer, argument: str, received: str
+) -> None:
+    """Pin the worker refusal for a supplied non-ground filter term."""
+    try:
+        server.misconception_lookup({argument: received, "limit": 100})
+    except ToolCallError as exc:
+        assert exc.kind == "malformed_input"
+        assert exc.worker_type == "invalid_misconception_filter"
+        assert argument in str(exc)
+        assert received in str(exc)
+        assert "misconception_search_rows" in str(exc)
+    else:
+        raise AssertionError(
+            f"misconception_lookup accepted non-ground {argument}={received!r}"
+        )
 
 
 def main() -> int:
@@ -39,6 +57,18 @@ def main() -> int:
 
     server = HermesMCPServer("core", ROOT)
     try:
+        assert_filter_refused(server, "domain", "Fraction")
+        assert_filter_refused(server, "source", "Baruk")
+        lowercase_exact = server.misconception_lookup(
+            {"source": "baruk", "limit": 100}
+        )
+        assert lowercase_exact["total"] == 0 and lowercase_exact["rows"] == []
+        assert_filter_refused(server, "description", "Whatever")
+        db_row_exact = server.misconception_lookup(
+            {"source": "db_row(37434)", "limit": 100}
+        )
+        assert db_row_exact["total"] == 1 and len(db_row_exact["rows"]) == 1
+
         absent = server.misconception_search_rows(
             {"query": "zzzz-no-such-misconception", "k": 3}
         )
@@ -52,7 +82,10 @@ def main() -> int:
         assert documented["rows"][0]["name"] == "too_vague"
     finally:
         server.close()
-    print("mcp search rows: empty-token and whole-word fixtures PASS")
+    print(
+        "mcp misconception filters and search rows: refusal, exact-match, "
+        "empty-token, and whole-word fixtures PASS"
+    )
     return 0
 
 

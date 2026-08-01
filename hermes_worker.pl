@@ -755,11 +755,27 @@ dispatch_request(diagnose_error, Id, Request, Response) :-
     ).
 
 dispatch_request(query_misconception, Id, Request, Response) :-
-    (   get_dict_opt(domain, Request, DomainVal) -> json_to_term(DomainVal, Domain) ; true ),
-    (   get_dict_opt(description, Request, DescVal) -> json_to_term(DescVal, Description) ; true ),
-    (   get_dict_opt(source, Request, SrcVal) -> json_to_term(SrcVal, Source) ; true ),
-    findall(Match, query_and_format(Domain, Description, Source, Match), Matches),
-    ok_response(Id, Matches, Response).
+    (   rejected_misconception_filter(Request, Argument, Received)
+    ->  format(string(Message),
+            "query_misconception refused argument '~w' with received value ~q because it does not parse as a ground filter term. Use misconception_search_rows to search citations or authors.",
+            [Argument, Received]),
+        error_response(Id, invalid_misconception_filter, Message, Response)
+    ;   (   get_dict_opt(domain, Request, DomainVal)
+        ->  json_to_term(DomainVal, Domain)
+        ;   true
+        ),
+        (   get_dict_opt(description, Request, DescVal)
+        ->  json_to_term(DescVal, Description)
+        ;   true
+        ),
+        (   get_dict_opt(source, Request, SrcVal)
+        ->  json_to_term(SrcVal, Source)
+        ;   true
+        ),
+        findall(Match,
+            query_and_format(Domain, Description, Source, Match), Matches),
+        ok_response(Id, Matches, Response)
+    ).
 
 %% render_coverage: the four-lane misconception render-coverage report.
 %% Stateless read over the registry and the render lanes; counts are computed
@@ -3707,6 +3723,13 @@ get_dict_opt(Key, Dict, Val) :-
     get_dict(Key, Dict, Val0),
     Val0 \== null,
     Val = Val0.
+
+rejected_misconception_filter(Request, Argument, Received) :-
+    member(Argument, [domain, description, source]),
+    get_dict_opt(Argument, Request, Received),
+    json_to_term(Received, Parsed),
+    \+ ground(Parsed),
+    !.
 
 diagnose_and_format(Domain, Input, Got, SafeMatch) :-
     test_harness:diagnose_error(Domain, Input, Got, Match),

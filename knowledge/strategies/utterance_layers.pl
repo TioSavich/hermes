@@ -114,6 +114,12 @@ layer_form(polarity, affirmed, []).
 % conservative forms are the honest ones.
 layer_form(polarity, denied, [did, not]).
 layer_form(polarity, denied, [does, not]).
+% [do, not] was missing while [did, not], [does, not] and its own contraction
+% [dont] were all present, so "do not split the other number or make ten" was
+% read as evidence for splitting and making ten. Found 2026-08-01 while probing
+% whether the recognizer separates a doing from talk about a doing; it does not
+% separate mood, and this was the one gap inside a paradigm it already carried.
+layer_form(polarity, denied, [do, not]).
 layer_form(polarity, denied, [didnt]).
 layer_form(polarity, denied, [dont]).
 layer_form(polarity, denied, [never]).

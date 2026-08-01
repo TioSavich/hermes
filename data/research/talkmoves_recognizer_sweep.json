@@ -1,178 +1,147 @@
 {
-  "abstention_rate": 0.9422,
+  "abstention_rate": 0.9846,
   "by_family": {
-    "addition": 2807,
-    "decimal": 2194,
-    "division": 5935,
-    "fraction": 16694,
+    "addition": 120,
+    "counting": 47,
+    "decimal": 204,
+    "division": 251,
+    "fraction": 2710,
     "geometry": 58,
-    "integer": 131,
-    "multiplication": 3588,
-    "ratio": 330,
-    "subtraction": 2005
+    "multiplication": 660,
+    "ratio": 133,
+    "subtraction": 12
   },
   "candidate_support_levels": {
-    "lexical_hint": 31347,
-    "partial_trace": 2395
+    "lexical_hint": 4193,
+    "partial_trace": 2
   },
-  "candidates_matching_two_or_more_actions": 2395,
+  "candidates_matching_two_or_more_actions": 580,
   "corpus": "TalkMoves (Sumner lab), CC BY-NC-SA 4.0; derived counts only",
-  "distinct_machines_fired": 87,
-  "distinct_machines_with_two_or_more_matched": 29,
-  "episode": {
-    "candidate_instances": 13236,
-    "candidate_support_levels": {
-      "lexical_hint": 11475,
-      "partial_trace": 1761
-    },
-    "comparison_to_sentence_baseline": {
-      "episode_candidate_support_levels": {
-        "lexical_hint": 11475,
-        "partial_trace": 1761
-      },
-      "episode_partial_trace_to_lexical_hint_ratio": 0.153464,
-      "sentence_candidate_support_levels": {
-        "lexical_hint": 31347,
-        "partial_trace": 2395
-      },
-      "sentence_partial_trace_to_lexical_hint_ratio": 0.076403,
-      "sentence_population": {
-        "student_sentences": 58926,
-        "transcripts": 564
-      }
-    },
-    "distinct_machines_fired": 87,
-    "distinct_machines_reaching_accepting_state": 0,
-    "distinct_machines_reaching_three_or_more_ordered_actions": 1,
-    "episode_abstention_rate": 0.1188,
-    "episode_count": 564,
-    "episodes_with_a_candidate": 497,
-    "machine_episode_candidates_reaching_accepting_state": 0,
-    "machine_episode_candidates_reaching_three_or_more_ordered_actions": 4,
-    "partial_trace_to_lexical_hint_ratio": 0.153464,
-    "recognition_unit": "all student utterances in one transcript, in corpus order",
-    "student_utterances": 58926,
-    "top_machines_reaching_accepting_state": {},
-    "top_machines_reaching_three_or_more_ordered_actions": {
-      "multiplication/distribute_group_size_split": 4
-    }
-  },
-  "partial_trace_to_lexical_hint_ratio": 0.076403,
+  "distinct_machines_fired": 55,
+  "distinct_machines_with_two_or_more_matched": 22,
+  "partial_trace_to_lexical_hint_ratio": 0.000477,
   "sentences_by_best_support": {
-    "lexical_hint": 1612,
-    "partial_trace": 1795
+    "lexical_hint": 906,
+    "partial_trace": 2
   },
-  "sentences_with_a_candidate": 3407,
+  "sentences_with_a_candidate": 908,
   "student_sentences": 58926,
   "top_machines": {
-    "addition/count_on_from_larger": 786,
-    "addition/known_fact_retrieval": 787,
-    "decimal/decimal_fraction_place_value_comparison": 879,
-    "decimal/decimal_scale_loss_comparison": 717,
-    "division/fair_share_equal_groups": 803,
-    "division/inverse_fact_decomposition": 834,
-    "division/long_division": 786,
-    "division/measure_groups_of_size": 891,
-    "division/missing_factor_known_product_search": 786,
-    "division/missing_factor_repeated_addition": 786,
-    "division/partial_quotient_chunking": 899,
-    "fraction/add_numerator_denominator_comparison": 1025,
-    "fraction/area_model_fraction_comparison": 700,
-    "fraction/area_model_part_of_part": 1133,
-    "fraction/area_model_unequal_partition_piece_count": 712,
-    "fraction/benchmark_fraction_comparison": 700,
-    "fraction/clear_inner_referent": 789,
-    "fraction/common_unit_fraction_comparison": 784,
-    "fraction/cross_multiplication_rule_from_pattern": 866,
-    "fraction/cross_multiplication_rule_without_ground": 867,
-    "fraction/gap_thinking_fraction_comparison": 700,
+    "addition/column_addition_with_carrying": 44,
+    "addition/count_all_instead_of_known_fact": 12,
+    "addition/count_all_when_count_on_available": 12,
+    "addition/drop_carry_to_next_column": 43,
+    "counting/recursive_place_value_inscription": 47,
+    "decimal/decimal_multiplication_rule": 123,
+    "decimal/decimal_point_rule_misapplication": 81,
+    "division/fair_share_equal_groups": 17,
+    "division/inverse_fact_decomposition": 49,
+    "division/measure_groups_of_size": 107,
+    "division/partial_quotient_chunking": 48,
+    "division/share_into_divisor_groups": 28,
+    "fraction/area_model_part_of_part": 350,
+    "fraction/area_model_unequal_partition_piece_count": 12,
+    "fraction/common_unit_fraction_comparison": 85,
+    "fraction/cross_multiplication_rule_from_pattern": 80,
+    "fraction/cross_multiplication_rule_without_ground": 81,
     "fraction/improper_fraction_chain_loss": 338,
-    "fraction/improper_fraction_iteration": 1121,
+    "fraction/improper_fraction_iteration": 338,
     "fraction/iterate_given_overshoot": 338,
-    "fraction/measurement_division": 786,
-    "fraction/number_line_count_marks_not_intervals": 717,
-    "fraction/number_line_fraction_comparison": 717,
-    "fraction/recursive_partition": 789,
-    "fraction/reversible_measurement_division": 786,
-    "fraction/set_model_fraction_comparison": 712,
-    "fraction/set_model_subset_size_focus": 700,
+    "fraction/set_model_fraction_comparison": 12,
     "fraction/unit_fraction_iteration": 338,
     "fraction/unit_fraction_partition": 349,
-    "fraction/whole_number_grab": 724,
-    "multiplication/coordinate_groups_items": 839,
-    "multiplication/regroup_to_base_preserving_total": 795,
-    "multiplication/repeat_equal_groups": 866,
-    "ratio/additive_extension_of_ratio": 254,
-    "subtraction/compare_by_matching_difference": 864,
-    "subtraction/count_up_missing_addend": 786
+    "fraction/whole_number_grab": 380,
+    "geometry/rectangle_area_unit_iteration": 58,
+    "multiplication/add_counts_without_composite_unit": 12,
+    "multiplication/common_multiple_sequence": 46,
+    "multiplication/commute_factors_preserve_product": 80,
+    "multiplication/coordinate_groups_items": 54,
+    "multiplication/distribute_group_size_split": 89,
+    "multiplication/drop_regrouping_remainder": 9,
+    "multiplication/drop_second_partial_product": 82,
+    "multiplication/known_product_adjustment": 81,
+    "multiplication/regroup_to_base_preserving_total": 9,
+    "multiplication/repeat_equal_groups": 77,
+    "multiplication/repeat_group_size_by_itself": 34,
+    "multiplication/sequential_recompute_commuted_products": 80,
+    "ratio/additive_extension_of_ratio": 57,
+    "ratio/scale_ratio_unit": 76,
+    "subtraction/compare_by_matching_difference": 12
   },
   "top_machines_two_or_more_matched": {
-    "addition/base_ones_chunking": 131,
-    "addition/round_then_adjust": 4,
-    "addition/round_without_adjusting": 4,
-    "decimal/decimal_fraction_place_value_comparison": 11,
+    "counting/recursive_place_value_inscription": 46,
     "decimal/decimal_multiplication_rule": 1,
+    "division/inverse_fact_decomposition": 1,
     "division/measure_groups_of_size": 4,
-    "fraction/add_numerator_denominator_comparison": 792,
+    "division/name_group_count_as_share_size": 1,
+    "division/partial_quotient_chunking": 1,
     "fraction/area_model_part_of_part": 15,
-    "fraction/common_unit_fraction_comparison": 3,
+    "fraction/common_unit_fraction_comparison": 2,
     "fraction/cross_multiplication_rule_from_pattern": 80,
     "fraction/cross_multiplication_rule_without_ground": 80,
     "fraction/improper_fraction_iteration": 3,
-    "fraction/measurement_division": 786,
     "fraction/unit_fraction_partition": 3,
     "fraction/whole_number_grab": 36,
     "multiplication/commute_factors_preserve_product": 80,
+    "multiplication/coordinate_groups_items": 1,
     "multiplication/distribute_group_size_split": 82,
     "multiplication/drop_second_partial_product": 2,
     "multiplication/known_product_adjustment": 1,
     "multiplication/repeat_equal_groups": 8,
     "multiplication/repeat_group_size_by_itself": 6,
     "multiplication/sequential_recompute_commuted_products": 80,
-    "ratio/scale_ratio_unit": 47,
-    "subtraction/borrow_without_reducing_bases": 66,
-    "subtraction/decompose_base_for_ones": 66
+    "ratio/scale_ratio_unit": 47
   },
   "transcripts": 564,
-  "transcripts_with_no_recognition": 67,
+  "transcripts_with_no_recognition": 254,
   "uncovered_math_language": [
     {
-      "abstained_sentences": 278,
+      "abstained_sentences": 302,
       "canonical_action": "compute_quotient",
       "pattern": "division_operator"
     },
     {
-      "abstained_sentences": 122,
+      "abstained_sentences": 129,
       "canonical_action": "compare_magnitudes",
       "pattern": "magnitude_relation"
     },
     {
-      "abstained_sentences": 45,
-      "canonical_action": "measure_out_group_size",
-      "pattern": "measurement_division"
+      "abstained_sentences": 62,
+      "canonical_action": "remove_quantity",
+      "pattern": "take_away_process"
     },
     {
-      "abstained_sentences": 43,
-      "canonical_action": "establish_reference_frame",
-      "pattern": "number_line_reference"
-    },
-    {
-      "abstained_sentences": 41,
-      "canonical_action": "compute_quotient",
-      "pattern": "deictic_division"
-    },
-    {
-      "abstained_sentences": 7,
-      "canonical_action": "decompose_operand",
-      "pattern": "operand_decomposition"
-    },
-    {
-      "abstained_sentences": 1,
+      "abstained_sentences": 52,
       "canonical_action": "combine_quantities",
       "pattern": "deictic_addition"
     },
     {
-      "abstained_sentences": 1,
+      "abstained_sentences": 49,
+      "canonical_action": "compute_quotient",
+      "pattern": "deictic_division"
+    },
+    {
+      "abstained_sentences": 49,
+      "canonical_action": "measure_out_group_size",
+      "pattern": "measurement_division"
+    },
+    {
+      "abstained_sentences": 49,
+      "canonical_action": "establish_reference_frame",
+      "pattern": "number_line_reference"
+    },
+    {
+      "abstained_sentences": 25,
+      "canonical_action": "align_to_common_unit",
+      "pattern": "common_denominator"
+    },
+    {
+      "abstained_sentences": 11,
+      "canonical_action": "decompose_operand",
+      "pattern": "operand_decomposition"
+    },
+    {
+      "abstained_sentences": 2,
       "canonical_action": "partition_into_equal_parts",
       "pattern": "equal_pieces"
     }

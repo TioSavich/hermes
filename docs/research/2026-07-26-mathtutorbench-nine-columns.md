@@ -28,8 +28,17 @@ string, which the benchmark then parses as an answer.
 
 | stop enforcement | empty rate | f1_micro |
 |---|---:|---:|
-| decode-time, the naive run | **0.900** | 0.475 |
-| applied to the reply afterwards | 0.000 | **0.575** |
+| decode-time, the naive run | **0.900** *(unreproducible)* | 0.475 *(unreproducible)* |
+| applied to the reply afterwards | 0.000 *(recomputable)* | **0.575** |
+
+**Audited 2026-08-01.** Only 0.575 has an artifact
+(`runs/mtb-unassisted-40/summary-mistake_location.json`). No file on disk holds
+0.475 or any empty-rate field; the 0.900 survives only as prose in a docstring at
+`mtb_responders.py:58`. The 0.000 is recomputable from
+`runs/mtb-unassisted-40/mistake_location.jsonl` but was never recorded. Worse,
+that run's `stop_mode` is recorded nowhere and the code default is `decode`, so
+the row cannot prove its own label. This table should not be quoted until the
+ablation is re-run with both arms written to disk.
 
 Every published model answers immediately, so those stops were harmless for
 them. A stop sequence is a decoding convenience whose intent is to bound the
@@ -43,6 +52,10 @@ scores 0.050 on `problem_solving` against 0.875 templated, because without a
 chat template the checkpoint continues text instead of answering. This was a
 guess worth testing and it was wrong.
 
+**Audited 2026-08-01: unreproducible.** No artifact holds a `problem_solving`
+accuracy of 0.050, and `mtb_responders.py` has no `raw` mode. The comparison has
+no code path in the current tree.
+
 ## The floors that any number here has to be read against
 
 The two assessment columns are balanced by construction, so a constant answer
@@ -52,13 +65,26 @@ scores well. Over the full 2004 items:
   weighted 0.333.
 - `solution_correctness`, always answering Yes: **f1 0.667**, accuracy 0.500.
 
-The constant answer beats GPT-4o's published 0.37 on `mistake_location` and
-sits just under LearnLM's 0.57. Most of that column is models failing to
-abstain. LLaMA3.2-3B's published 0.67 on `solution_correctness` is exactly the
-always-Yes f1. No number from either column should appear without its floor.
+The constant answer beats the 0.37 published under the label `GPT-4o` on
+`mistake_location` and sits just under LearnLM's 0.57. Most of that column is
+models failing to abstain. LLaMA3.2-3B's published 0.67 on
+`solution_correctness` is exactly the always-Yes f1. No number from either
+column should appear without its floor.
 
-The leaderboard does not say which of f1_micro/macro/weighted it reports.
-Magnitudes fit f1_micro. All three are recorded; comparisons here use micro.
+Two corrections from 2026-08-01. The row the benchmark labels `GPT-4o` is
+`gpt-4o-mini-2024-07-18` by its own Appendix B.1; repeating the label repeats
+the benchmark's error. And the leaderboard now carries fourteen rows, not eight,
+on which **nine of fourteen** sit at or below the `mistake_location` floor. The
+full re-scoring lives in
+`docs/research/2026-08-01-mathtutorbench-heldout-with-floors.md`.
+
+**Settled 2026-08-01: the column is micro-F1.** The paper's Table 2 metric row
+(arXiv 2502.18940, and the EMNLP camera-ready) reads `accuracy | bleu | F1 |
+micro F1 | accuracy | win rate ...`, and the current leaderboard carries a metric
+legend the vendored snapshot lacks: "Mistake Location: micro-F1". Because every
+item carries one label, sklearn's micro-F1 equals accuracy here. All three
+averagings are recorded; comparisons use micro. Macro must never be set beside a
+published value, and its floor is 0.081, not 0.500.
 
 ## The four assessment columns
 
@@ -66,23 +92,41 @@ Magnitudes fit f1_micro. All three are recorded; comparisons here use micro.
 differing only in the responder. Published column bests are from the
 benchmark's own leaderboard, vendored at `vendor/index.html`.
 
-| Task | trivial | published best | unassisted | Hermes assisted |
-|---|---:|---:|---:|---:|
-| problem_solving | — | 0.94 LearnLM | **0.925** | 0.875 |
-| solution_correctness (acc) | 0.500 | 0.75 LearnLM | **0.900** | 0.875 |
-| solution_correctness (f1) | 0.667 | 0.75 LearnLM | **0.875** | 0.872 |
-| mistake_location (f1_micro) | 0.500 | 0.57 LearnLM | 0.575 | **0.625** |
-| mistake_correction | — | 0.84 GPT-4o | 0.600 | **0.625** |
+The assisted arm was run **twice** under identical recorded configuration
+(`runs/mtb-assisted-40/` and `runs/mtb-assisted-40b/`; same responder, model,
+split, limit, and seed). Both runs are reported. An earlier version of this
+document reported run A alone, which inverted one of the two headline
+comparisons.
 
-n=40. Every difference between the two arms is one or two items and none of
-them is significant. The comparison against the published column is the
-part worth attention; the comparison between the arms is not yet decided.
+Published column bests below are from the leaderboard as it stood on 2026-07-26.
+The board has since grown from eight rows to fourteen and several of these
+"bests" are no longer the best; see the 2026-08-01 document for the current
+table.
 
-**The unassisted checkpoint, run correctly, is at or above the published best
-on two of the four columns** and within 0.015 of it on a third. That is a 2B
-model on a laptop against LearnLM-1.5-Pro and GPT-4o. On `mistake_correction`
-it trails the frontier badly (0.60 against 0.84) while sitting far above every
-published open model (0.09 to 0.49).
+| Task | trivial | published best | unassisted | assisted A | assisted B |
+|---|---:|---:|---:|---:|---:|
+| problem_solving | — | 0.94 LearnLM | 0.925 | 0.875 | 0.900 |
+| solution_correctness (acc) | 0.500 | 0.75 LearnLM | 0.900 | 0.875 | 0.875 |
+| solution_correctness (f1) | 0.667 | 0.75 LearnLM | 0.875 | 0.872 | 0.872 |
+| mistake_location (f1_micro) | 0.500 | 0.57 LearnLM | 0.575 | 0.625 | 0.600 |
+| mistake_correction | — | 0.84 gpt-4o-mini | 0.600 | 0.625 | 0.550 |
+
+n=40. **The assisted arm does not replicate.** On `mistake_correction` the two
+runs of the same configuration differ by 0.075, which is three times the 0.025
+that run A stood above the unassisted arm, and run B sits 0.050 *below* it. The
+sign of that comparison is set by which run gets reported. On
+`mistake_location` the A-over-unassisted gap of 0.050 halves to 0.025 in run B.
+`solution_correctness` is identical across both runs. Nothing here establishes
+an assisted effect in either direction, and the run-to-run spread is the size of
+the effect being looked for.
+
+The unassisted checkpoint sits at or above the published best of the day on two
+of the four columns and within 0.015 on a third. Two limits govern reading that.
+The checkpoint is 5.1B at Q4_K_M, not "a 2B model" (see the opening section).
+And these dev-40 numbers cannot be ranked against the leaderboard at all: that
+board evaluates with reasoning disabled, and this checkpoint reasons. The
+protocol audit is in
+`docs/research/2026-08-01-mathtutorbench-heldout-with-floors.md`.
 
 ## Is the core under-covered, or badly interfaced, or aimed elsewhere?
 
@@ -90,7 +134,10 @@ Asked directly, and measured three ways over 200 items in each half.
 
 **Coverage is not the problem.** Prolog adjudicates **99%** of every equation
 the reader hands it — 471 of 478 from incorrect student solutions, 462 of 466
-from reference solutions. The `arithmetic_equation` clause routes through SWI
+from reference solutions. *(Audited 2026-08-01: these three counts are
+unreproducible. `mtb_prolog_responder.py` prints them to stderr as
+`MTB_PROLOG_STATS` and no run captured a log. The claim below about the
+`arithmetic_equation` clause is checkable from source and stands.)* The `arithmetic_equation` clause routes through SWI
 `=:=`, so any ground arithmetic is in scope. Probed directly, it returns
 `holds` for `7*10+5*25 = 195`, `200+200/2 = 200+100`, and `2*3-1 = 5`. More
 claim families would change nothing.
@@ -135,6 +182,11 @@ first-wrong steps, only **2.5%** have arithmetic that is actually wrong;
 misunderstanding the question 28.6%, extra or missing quantity 24.0%, wrong
 factual knowledge 14.0%.
 
+*(Audited 2026-08-01: unreproducible. The 1002 and the 28.6% are asserted in a
+docstring at `scripts/research/diagnosis_benchmark.py:7,15`; the 2.5 / 69.6 /
+27.9 and the 24.0 / 14.0 appear nowhere but this document. The argument they
+support is also carried by the refutation counts below, which are backed.)*
+
 So an arithmetic verifier, however exact, has almost nothing to adjudicate
 here. The claim that a Prolog core raises accuracy on this benchmark is not
 supported. What small gain the assisted arm shows on `mistake_location` and
@@ -146,6 +198,8 @@ A crude rule confirms the shape of the problem from the other side. Given the
 reference solution as an oracle, "the first step asserting a quantity absent
 from the problem and the correct chain" matches the labelled first-wrong step
 on only 42.0% of items. Locating a modelling error is not a lookup.
+*(Audited 2026-08-01: unreproducible. No script in the tree implements this rule
+and no artifact holds 42.0%.)*
 
 ## Where the assessment tasks actually reduce to
 
@@ -165,12 +219,18 @@ Reward-model win rate over the human teacher's turn, which is the published
 metric; the question-mark rate the shipped `compute_metrics` returns is not it.
 40 dev items, unassisted:
 
-| column | unassisted | published best |
+| column | unassisted | published best (2026-07-26 board) |
 |---|---:|---:|
 | scaffolding_generation | 0.325 | 0.64 |
 | scaffolding_generation_hard | 0.325 | 0.66 LearnLM |
-| pedagogy_following | 0.350 | 0.82 GPT-4o |
-| pedagogy_following_hard | 0.500 | 0.70 GPT-4o |
+| pedagogy_following | 0.350 | 0.82 gpt-4o-mini |
+| pedagogy_following_hard | 0.500 | 0.70 gpt-4o-mini |
+
+These four unassisted values are backed by
+`runs/mtb-gen-40/reward-summary.json` and are the reward-model win rate, not the
+shipped `match` heuristic. The published bests are as of 2026-07-26 and have
+since moved; `claude-sonnet-4.6` now leads `pedagogy_following` at 0.85 and
+`pedagogy_following_hard` at 0.80.
 
 The mirror image of the assessment columns. There the checkpoint needed no
 help; here it is far below the board.
@@ -178,15 +238,28 @@ help; here it is far below the board.
 Four arms on the same 20 scaffolding dev items, scored together in one
 reward-model process:
 
-| arm | win rate | calls/item | tool calls |
-|---|---:|---:|---:|
-| unassisted | 0.45 | 1.0 | — |
-| `tutor_ledger`, evidence injected | **0.70** | 2.1 | n/a |
-| `agent_tutor`, tools offered | 0.65 | 1.6 | **0** |
-| `agent_tutor_mandated`, tools required | 0.50 | 2.2 | 9 |
+| arm | win rate | calls/item | tool calls | artifact |
+|---|---:|---:|---:|---|
+| unassisted | 0.45 | 1.0 | — | recomputable, not recorded |
+| `tutor_ledger`, evidence injected | **0.70** | 2.1 | n/a | **none** |
+| `agent_tutor`, tools offered | 0.65 | 1.6 | **0** | **none** |
+| `agent_tutor_mandated`, tools required | 0.50 | 2.2 | 9 | `runs/mtb-mandated-20/` |
 
 n=20 and the intervals overlap heavily; none of these differences is
-established. What is established is the tool-call count.
+established.
+
+**Audited 2026-08-01.** Two of the four win rates have no artifact anywhere.
+`runs/mtb-tutor-40/` holds a single 27-row `.jsonl` and no score of any kind, so
+`tutor_ledger`'s 0.70 is unreproducible; no `agent_tutor` run directory exists at
+all, so 0.65 is unreproducible. The mandated 0.50 is exact
+(`runs/mtb-mandated-20/reward-summary.json`, wilson 0.299–0.701). The unassisted
+0.45 is recomputable as 9 of 20 from the first twenty records of
+`runs/mtb-gen-40/reward-scaffolding_generation.json`, which carry the same source
+indexes in the same order, confirming the "same 20 items" claim. **Every entry in
+the calls/item and tool-call columns is unreproducible**: those counters print to
+stderr and only `mtb-assisted-40` captured a log, so the sentence below overstates
+what survives. The four-arm table must not be quoted until the two missing arms
+are re-run to disk.
 
 ## Capacity without disposition
 
@@ -219,19 +292,24 @@ query. Deriving the topic from the operations already adjudicated would serve
 the same rows without the model guessing — which is injection again, aimed
 better, and should be described that way rather than as an agent.
 
-## Not yet measured
+## Measured since
 
-The four generation columns — `scaffolding_generation`, its hard split,
-`pedagogy_following`, its hard split — are scored by the published reward
-model as a win rate over the human teacher's turn, not by the question-mark
-heuristic the shipped `compute_metrics` returns. They are running.
-An earlier bespoke driver reached 0.783 on 360 scaffolding items against a
-published best of 0.64, under a six-to-eight call evidence ledger whose
-reference-answer handling was audited here and does not enter any prompt.
-Whether that survives this measurement path is open.
+All numbers in this document are dev-split, n=40, frozen by seed 20260726 at 30%
+dev. **The held-out split has since been run at n=300 on all nine columns**
+(Slurm job `mtb-7792778`, `runs/bigred-heldout-300/`). Those results, each column
+against a floor recomputed on its own items, are in
+`docs/research/2026-08-01-mathtutorbench-heldout-with-floors.md`. That document
+also records the protocol audit which establishes that neither the dev nor the
+held-out arm can be ranked against the leaderboard: the board evaluates with
+reasoning disabled, and on `mistake_location` this checkpoint decoded a median of
+894 tokens per item while the benchmark's parser received one character.
 
-`socratic_questioning` is scored by sacrebleu against reference questions and
-has a low ceiling for everyone on the board (0.29 to 0.48).
+The earlier bespoke driver's 0.783 on 360 scaffolding items is **backed**
+(`runs/fleet_report.json`, arm `iterative`, 282 wins of 360, wilson 0.738–0.823),
+with an unassisted baseline of 0.458 at the same n. It was produced under a
+different driver and a different reward-scoring invocation than the numbers above,
+so it is not set beside them.
 
-All numbers here are dev-split, n=40. The split is frozen by seed 20260726 at
-30% dev; the held-out remainder has not been looked at.
+`socratic_questioning` is scored by sacrebleu against reference questions and has
+a low ceiling for everyone on the board (0.23 to 0.48). A single constant question
+reaches 0.13 of it.

@@ -344,17 +344,26 @@ functions held identical and only the wording changed:
 And four arms on the same 20 scaffolding dev items, scored together in one
 reward-model process:
 
-| arm | win rate | calls/item | tool calls |
-|---|---:|---:|---:|
-| unassisted | 0.45 | 1.0 | — |
-| `tutor_ledger`, evidence injected | 0.70 | 2.1 | n/a |
-| `agent_tutor`, tools offered | 0.65 | 1.6 | 0 |
-| `agent_tutor_mandated`, tools required | 0.50 | 2.2 | 9 |
+| arm | win rate | calls/item | tool calls | artifact |
+|---|---:|---:|---:|---|
+| unassisted | 0.45 | 1.0 | — | recomputable, not recorded |
+| `tutor_ledger`, evidence injected | 0.70 | 2.1 | n/a | **none** |
+| `agent_tutor`, tools offered | 0.65 | 1.6 | 0 | **none** |
+| `agent_tutor_mandated`, tools required | 0.50 | 2.2 | 9 | `runs/mtb-mandated-20/` |
 
-The document disciplines its own numbers and that discipline must travel with
-them: "n=20 and the intervals overlap heavily; none of these differences is
-established. What is established is the tool-call count." The win-rate column
-should not be quoted without that sentence.
+**Audited 2026-08-01, and the table is weaker than it was quoted as being.** Two
+of the four win rates have no artifact anywhere in the runs tree:
+`runs/mtb-tutor-40/` holds one 27-row `.jsonl` and no score, and no `agent_tutor`
+run directory exists. The mandated 0.50 is exact and the unassisted 0.45 is
+recomputable as 9 of 20 from `runs/mtb-gen-40/reward-scaffolding_generation.json`.
+Every value in the calls/item and tool-call columns is also unreproducible, the
+counters having gone to an uncaptured stderr.
+
+The source document's own caution was "n=20 and the intervals overlap heavily;
+none of these differences is established. What is established is the tool-call
+count." The first sentence still holds. The second does not: the tool-call count
+is exactly what no longer has a file behind it. Neither column should be quoted
+until the two missing arms are re-run to disk with their logs captured.
 
 **The disposition finding.** The checkpoint emits well-formed tool calls and
 never decides it needs one. Capacity without disposition. That is real and it

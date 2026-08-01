@@ -190,18 +190,31 @@ def main() -> int:
     finally:
         shutil.rmtree(workdir, ignore_errors=True)
 
+    # The earlier probe here was "jump through ten and decompose the other
+    # addend". It passed, but not for the reason it stated: "jump through ten"
+    # matches no observed trace at all, and the whole of what reached the
+    # recognizer was the bare word "decompose". Since one-word surfaces no
+    # longer carry evidence, the probe is two cited multi-word phrases, and the
+    # bare word is asserted the other way round.
     try:
         noise = candidate_count("purple bicycle tuesday")
-        analyst = candidate_count("jump through ten and decompose the other addend")
+        analyst = [candidate_count(text) for text in
+                   ("add the ones", "partial sums together")]
+        bare_word = candidate_count("decompose")
     except RuntimeError as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
     if noise != 0:
         errors.append(f"unrelated text no longer abstains ({noise} candidates)")
-    if analyst == 0:
+    if any(count == 0 for count in analyst):
         errors.append(
-            "literature wording still returns nothing; the cited surfaces are not "
-            "reaching the recognizer")
+            "cited multi-word literature wording returns nothing "
+            f"(counts {analyst}); the cited surfaces are not reaching the "
+            "recognizer")
+    if bare_word != 0:
+        errors.append(
+            f"a bare cited word answers on its own ({bare_word} candidates); "
+            "one word fits too much ordinary English to align a transition")
 
     if errors:
         print(f"FAIL: {len(errors)} problem(s):", file=sys.stderr)
