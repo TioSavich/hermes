@@ -1,0 +1,874 @@
+{
+  "_note": "Verbatim results of live read-only mcp__hermes calls. Every trace whose figure records numerals runs on THOSE numerals. Each trace carries figure_answer and reproduces_figure: whether the automaton's result is the number the student actually wrote. Three do not reproduce their figure and say so, which is the check round 1 lacked.",
+  "_captured_at": "2026-07-31",
+  "_server": "mcp__hermes (live, read-only queries)",
+  "_supersedes": "t228/grounding.json",
+  "trace.add_instead_of_multiply.2_3": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "add_instead_of_multiply",
+      "input": {
+        "a": 2,
+        "b": 3
+      }
+    },
+    "input_provenance": "the numerators of the task the scan carries: 2/7 taken three times. The automaton runs on 2 and 3; the denominator 7 is unchanged by either route and rides along.",
+    "figure_answer": "5/7 chosen where 6/7 was the answer",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "add_instead_of_multiply",
+      "representation": "action_automaton",
+      "result": "5",
+      "steps": [
+        {
+          "n": 1,
+          "label": "read_equal_groups(groups(2),items_per_group(3))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "treat_group_count_and_group_size_as_addends",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "add_uncoordinated_counts(2,3,5)",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "lose_equal_group_iteration(expected(6),produced(5))",
+          "value": ""
+        }
+      ]
+    },
+    "_note": "expected(6) produced(5) is exactly the figure: 6/7 was option (a), the student circled (c) 5/7. The multiplier became an addend."
+  },
+  "trace.borrow_across_zero_cascade.502_6": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "borrow_across_zero_cascade",
+      "input": {
+        "a": 502,
+        "b": 6
+      }
+    },
+    "input_provenance": "the figure's own numerals, 502 - 6, from transcribed_math",
+    "figure_answer": "496 is the correct value; the student wrote 406",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "borrow_across_zero_cascade",
+      "representation": "action_automaton",
+      "result": "496",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_columns(minuend_digits([2,0,5]),subtrahend_digits([6,0,0]))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "identify_zero_cascade(zero_columns([1]),donor_column(2,5))",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "cascade_borrow_from_donor_column(base(10),donor_column(2,5))",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "convert_zero_columns_to_nines([1])",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "borrow_into_ones_after_cascade",
+          "value": ""
+        },
+        {
+          "n": 6,
+          "label": "subtract_after_zero_cascade(496)",
+          "value": ""
+        }
+      ]
+    },
+    "_note": "The correct partner: the cascade carried through."
+  },
+  "trace.borrow_across_zero_no_cascade.502_6": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "borrow_across_zero_no_cascade",
+      "input": {
+        "a": 502,
+        "b": 6
+      }
+    },
+    "input_provenance": "the figure's own numerals, 502 - 6, from transcribed_math",
+    "figure_answer": "406",
+    "reproduces_figure": false,
+    "result": {
+      "ok": true,
+      "strategy": "borrow_across_zero_no_cascade",
+      "representation": "action_automaton",
+      "result": "596",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_columns(minuend_digits([2,0,5]),subtrahend_digits([6,0,0]))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "identify_zero_cascade(zero_columns([1]),donor_column(2,5))",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "note_zero_tens_column",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "treat_zero_as_full_base(base(10),stuck_tens(9))",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "skip_hundreds_decrement",
+          "value": ""
+        },
+        {
+          "n": 6,
+          "label": "skip_donor_decrement(position(2),donor_digit(5))",
+          "value": ""
+        },
+        {
+          "n": 7,
+          "label": "recompose_without_zero_cascade(deformed_digits([6,9,5]),596)",
+          "value": ""
+        },
+        {
+          "n": 8,
+          "label": "lose_hundreds_borrow(expected(496),produced(596))",
+          "value": ""
+        }
+      ]
+    },
+    "_note": "Both the automaton and the student break the same cascade, in opposite halves: the automaton leaves the hundreds at 5 and sets the tens to 9 (596); the student reduces the hundreds to 4 and leaves the tens at 0 (406). Same broken conservation, different residue."
+  },
+  "trace.borrow_without_reducing_bases.364_236": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "borrow_without_reducing_bases",
+      "input": {
+        "a": 364,
+        "b": 236
+      }
+    },
+    "input_provenance": "the figure's own numerals, 364 - 236, from transcribed_math",
+    "figure_answer": "122",
+    "reproduces_figure": false,
+    "result": {
+      "ok": true,
+      "strategy": "borrow_without_reducing_bases",
+      "representation": "action_automaton",
+      "result": "138",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_numbers(minuend(36,4),subtrahend(23,6))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "subtract_base_components(36,23,13)",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "add_base_to_ones_without_removing_base(base(10),4,14)",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "subtract_ones(14,6,8)",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "recompose_with_unreduced_bases(13,8,138)",
+          "value": ""
+        },
+        {
+          "n": 6,
+          "label": "lose_exchange_conservation(expected(128),produced(138))",
+          "value": ""
+        }
+      ]
+    },
+    "_note": "Runs on the figure's numerals and lands on 138, not the 122 the student wrote. This automaton keeps the exchange but forgets to reduce the tens; the figure shows the opposite half."
+  },
+  "trace.common_denominator_fraction_addition.2_7__3_7": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "common_denominator_fraction_addition",
+      "input": {
+        "kind": "fraction_addend_pair",
+        "left": {
+          "n": 2,
+          "d": 7
+        },
+        "right": {
+          "n": 3,
+          "d": 7
+        }
+      }
+    },
+    "input_provenance": "the figure's own numerals, 2/7 and 3/7, from transcribed_math",
+    "figure_answer": "5/7",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "common_denominator_fraction_addition",
+      "representation": "action_automaton",
+      "result": "fraction(5,7)",
+      "steps": [
+        {
+          "n": 1,
+          "label": "q_init",
+          "value": "init(frac(2,7),frac(3,7))"
+        },
+        {
+          "n": 2,
+          "label": "q_rename_addends_as_counts",
+          "value": "renamings(kept_as_stated(frac(2,7)),kept_as_stated(frac(3,7)))"
+        },
+        {
+          "n": 3,
+          "label": "q_common_partition",
+          "value": "partition(shared_unit(7))"
+        },
+        {
+          "n": 4,
+          "label": "q_transform_commensurate_1",
+          "value": "transformed(frac(2,7),fraction(2,7))"
+        },
+        {
+          "n": 5,
+          "label": "q_transform_commensurate_2",
+          "value": "transformed(frac(3,7),fraction(3,7))"
+        },
+        {
+          "n": 6,
+          "label": "q_measure_with_co_unit",
+          "value": "co_measure(unit_fraction(1,7),2,3)"
+        },
+        {
+          "n": 7,
+          "label": "q_combine_counts",
+          "value": "combined(2,3,5)"
+        },
+        {
+          "n": 8,
+          "label": "q_emit_sum",
+          "value": "emit(fraction(5,7))"
+        },
+        {
+          "n": 9,
+          "label": "q_accept",
+          "value": "accept(fraction(5,7))"
+        }
+      ]
+    },
+    "_note": "The addition the student wrote is correct. Round 1 bound this figure to the mediant automaton instead and inherited its validity(incorrect)."
+  },
+  "trace.decompose_base_for_ones.40_3": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "decompose_base_for_ones",
+      "input": {
+        "a": 40,
+        "b": 3
+      }
+    },
+    "input_provenance": "the figure's own numerals, 40 - 3, from transcribed_math",
+    "figure_answer": "37",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "decompose_base_for_ones",
+      "representation": "action_automaton",
+      "result": "37",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_numbers(minuend(4,0),subtrahend(0,3))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "subtract_base_components(4,0,4)",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "exchange_one_base_for_ones(base(10),from_bases(4),to_ones(0,10),remaining_bases(3))",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "subtract_ones(10,3,7)",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "recompose_difference(3,7,37)",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "trace.decompose_base_for_ones.60_25": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "decompose_base_for_ones",
+      "input": {
+        "a": 60,
+        "b": 25
+      }
+    },
+    "input_provenance": "the figure's own numerals, 60 - 25, from transcribed_math",
+    "figure_answer": "35",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "decompose_base_for_ones",
+      "representation": "action_automaton",
+      "result": "35",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_numbers(minuend(6,0),subtrahend(2,5))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "subtract_base_components(6,2,4)",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "exchange_one_base_for_ones(base(10),from_bases(4),to_ones(0,10),remaining_bases(3))",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "subtract_ones(10,5,5)",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "recompose_difference(3,5,35)",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "trace.decompose_base_for_ones.75_48": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "decompose_base_for_ones",
+      "input": {
+        "a": 75,
+        "b": 48
+      }
+    },
+    "input_provenance": "the figure's own numerals, 75 - 48, from transcribed_math",
+    "figure_answer": "27",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "decompose_base_for_ones",
+      "representation": "action_automaton",
+      "result": "27",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_numbers(minuend(7,5),subtrahend(4,8))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "subtract_base_components(7,4,3)",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "exchange_one_base_for_ones(base(10),from_bases(3),to_ones(5,15),remaining_bases(2))",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "subtract_ones(15,8,7)",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "recompose_difference(2,7,27)",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "trace.scale_ratio_unit.100_5": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "scale_ratio_unit",
+      "input": {
+        "a": 100,
+        "b": 5
+      }
+    },
+    "input_provenance": "the figure's own quantities, in half-metres so the automaton's integer template accepts them: 100 yen per 5 half-metres (2.5 m). Scaling by 2 gives 200 yen per 10 half-metres (5 m), which is the figure's second row.",
+    "figure_answer": "2.5 m costs 100 yen; 5 m costs 200 yen; 1 m is circled",
+    "reproduces_figure": true,
+    "result": {
+      "ok": true,
+      "strategy": "scale_ratio_unit",
+      "representation": "action_automaton",
+      "result": "ratio_pair(200,10)",
+      "steps": [
+        {
+          "n": 1,
+          "label": "identify_base_ratio(ratio_pair(100,5))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "identify_scale_factor(2)",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "scale_first_term_multiplicatively(100,2,200)",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "scale_second_term_multiplicatively(5,2,10)",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "compose_equivalent_ratio(ratio_pair(200,10))",
+          "value": ""
+        },
+        {
+          "n": 6,
+          "label": "preserve_multiplicative_unit_ratio(ratio_pair(200,10))",
+          "value": ""
+        }
+      ]
+    },
+    "_note": "The automaton reaches the figure's doubling and stops there. The unit rate the figure circles -- 1 m for 40 yen -- is a further step this strategy does not take, so the circle stays an open question in the scene rather than being answered by machinery that did not answer it."
+  },
+  "trace.smaller_from_larger_in_column.1823_9745": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "smaller_from_larger_in_column",
+      "input": {
+        "a": 1823,
+        "b": 9745
+      }
+    },
+    "input_provenance": "the figure's own numerals, 1823 - 9745, from transcribed_math",
+    "figure_answer": "8122",
+    "reproduces_figure": false,
+    "result": {
+      "ok": false,
+      "refusal": "strategy_trace could not run 'smaller_from_larger_in_column'",
+      "diagnosis": "a digit-count bound, not the negative result. The same strategy runs on 364 - 236 (three digits) and refuses 1234 - 1111 (four digits), so the refusal tracks width, not sign."
+    },
+    "_note": "Recorded rather than papered over. M2 is the figure whose whole interest is a subtrahend larger than the minuend, and the automaton that models its error cannot accept its numerals. The item falls back to the registry stand-in and says so."
+  },
+  "trace.smaller_from_larger_in_column.364_236": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "smaller_from_larger_in_column",
+      "input": {
+        "a": 364,
+        "b": 236
+      }
+    },
+    "input_provenance": "the figure's own numerals, 364 - 236, from transcribed_math",
+    "figure_answer": "122",
+    "reproduces_figure": false,
+    "result": {
+      "ok": true,
+      "strategy": "smaller_from_larger_in_column",
+      "representation": "action_automaton",
+      "result": "132",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_numbers(minuend(36,4),subtrahend(23,6))",
+          "value": ""
+        },
+        {
+          "n": 2,
+          "label": "skip_borrow_procedure",
+          "value": ""
+        },
+        {
+          "n": 3,
+          "label": "subtract_smaller_from_larger_in_ones(4,6,2)",
+          "value": ""
+        },
+        {
+          "n": 4,
+          "label": "subtract_smaller_from_larger_in_bases(36,23,13)",
+          "value": ""
+        },
+        {
+          "n": 5,
+          "label": "recompose_without_role_preservation(13,2,132)",
+          "value": ""
+        },
+        {
+          "n": 6,
+          "label": "lose_minuend_subtrahend_roles(expected(128),produced(132))",
+          "value": ""
+        }
+      ]
+    },
+    "_note": "Reproduces the figure's ones digit (4 and 6 give 2) but not its tens: this automaton never borrows, so its tens stay 3 and it lands on 132. The figure's 122 needs the borrow taken AND the ones reversed, which is the conjunction of this automaton's error with the other's bookkeeping. No single registered strategy produces 122."
+  },
+  "trace.recursive_partition.1_4": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "recursive_partition",
+      "input": {
+        "a": 1,
+        "b": 4
+      }
+    },
+    "input_provenance": "taken from the figure description, which names 1/4 split into eighths and then sixteenths",
+    "_truncation": "step 6 carried a full kernel trace of roughly 2,600 characters; it is summarised here to keep the prompt inside budget, and the omission is recorded rather than hidden",
+    "result": {
+      "ok": true,
+      "strategy": "recursive_partition",
+      "representation": "action_automaton",
+      "result": "fraction(1,4)",
+      "steps": [
+        {
+          "n": 1,
+          "label": "partition_whole_into_equal_units(1)"
+        },
+        {
+          "n": 2,
+          "label": "disembed_unit_fraction(fraction(1,1))"
+        },
+        {
+          "n": 3,
+          "label": "partition_that_part_again(4)"
+        },
+        {
+          "n": 4,
+          "label": "name_part_of_part_relative_to_whole(fraction(1,4))"
+        },
+        {
+          "n": 5,
+          "label": "recognize_composite_base_as_product(1,4,4)"
+        },
+        {
+          "n": 6,
+          "label": "recursive_partition_trace([... q_start / q_partition x D / q_verify, twice nested; certified: each part is 1/D, inside the whole and once disembedded iterable ...])"
+        }
+      ]
+    },
+    "_reused_from_round_1": "the figure names quarters, eighths and sixteenths; 1/4 is the figure's own"
+  },
+  "trace.unit_fraction_partition.1_5": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "unit_fraction_partition",
+      "input": {
+        "a": 1,
+        "b": 5
+      }
+    },
+    "input_provenance": "taken from the figure description, which names fifths",
+    "result": {
+      "ok": true,
+      "strategy": "unit_fraction_partition",
+      "representation": "action_automaton",
+      "result": "fraction(1,5)",
+      "steps": [
+        {
+          "n": 1,
+          "label": "establish_referent_whole(unit(whole))"
+        },
+        {
+          "n": 2,
+          "label": "partition_whole_into_equal_units(5)"
+        },
+        {
+          "n": 3,
+          "label": "select_one_partition_as_unit_fraction(fraction(1,5))"
+        },
+        {
+          "n": 4,
+          "label": "preserve_inside_and_iterable_status(fraction(1,5))"
+        },
+        {
+          "n": 5,
+          "label": "kernel_trace([divade(unit(whole),recollection([tally,tally,tally,tally,tally])),iterate_inside(recollection([tally]),recollection([tally,tally,tally,tally,tally]))])"
+        }
+      ]
+    },
+    "_reused_from_round_1": "the figure names fifths; 1/5 is the figure's own"
+  },
+  "trace.regroup_to_base_preserving_total.12_3": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "regroup_to_base_preserving_total",
+      "input": {
+        "a": 12,
+        "b": 3
+      }
+    },
+    "input_provenance": "registry worked input; stands for the base-ten bundling claim the figure asserts, not the figure's own quantity",
+    "result": {
+      "ok": true,
+      "strategy": "regroup_to_base_preserving_total",
+      "representation": "action_automaton",
+      "result": "36",
+      "steps": [
+        {
+          "n": 1,
+          "label": "form_equal_groups(12,size(3))"
+        },
+        {
+          "n": 2,
+          "label": "regroup_total_as_base_bundles(base(10),full_base_groups(3),leftover(6))"
+        },
+        {
+          "n": 3,
+          "label": "preserve_leftover_after_regrouping(6)"
+        },
+        {
+          "n": 4,
+          "label": "name_total_from_bundles_and_leftover(30,6,36)"
+        }
+      ]
+    },
+    "_reused_from_round_1": "the figure records no numerals; this is the registry's worked input, kept as a shape-preserving stand-in"
+  },
+  "trace.smaller_from_larger_in_column.53_27": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "smaller_from_larger_in_column",
+      "input": {
+        "a": 53,
+        "b": 27
+      }
+    },
+    "input_provenance": "registry worked input for this strategy family; the figure's own numerals are not recorded in the manifest",
+    "result": {
+      "ok": true,
+      "strategy": "smaller_from_larger_in_column",
+      "representation": "action_automaton",
+      "result": "34",
+      "steps": [
+        {
+          "n": 1,
+          "label": "decompose_numbers(minuend(5,3),subtrahend(2,7))"
+        },
+        {
+          "n": 2,
+          "label": "skip_borrow_procedure"
+        },
+        {
+          "n": 3,
+          "label": "subtract_smaller_from_larger_in_ones(3,7,4)"
+        },
+        {
+          "n": 4,
+          "label": "subtract_smaller_from_larger_in_bases(5,2,3)"
+        },
+        {
+          "n": 5,
+          "label": "recompose_without_role_preservation(3,4,34)"
+        },
+        {
+          "n": 6,
+          "label": "lose_minuend_subtrahend_roles(expected(26),produced(34))"
+        }
+      ]
+    },
+    "_reused_from_round_1": "stand-in for M2: the automaton refuses the figure's four-digit numerals (see trace.smaller_from_larger_in_column.1823_9745)"
+  },
+  "trace.add_numerator_denominator_sum.2_7__3_7": {
+    "op": "strategy_trace",
+    "arguments": {
+      "strategy": "add_numerator_denominator_sum",
+      "input": {
+        "kind": "fraction_addend_pair",
+        "left": {
+          "d": 7,
+          "n": 2
+        },
+        "right": {
+          "d": 7,
+          "n": 3
+        }
+      }
+    },
+    "input_provenance": "taken from the figure description, which names 2/7 and 3/7",
+    "result": {
+      "ok": true,
+      "strategy": "add_numerator_denominator_sum",
+      "representation": "action_automaton",
+      "result": "fraction(5,14)",
+      "steps": [
+        {
+          "n": 1,
+          "label": "q_init",
+          "value": "init(frac(2,7),frac(3,7))"
+        },
+        {
+          "n": 2,
+          "label": "q_rename_addends_as_counts",
+          "value": "renamings(kept_as_stated(frac(2,7)),kept_as_stated(frac(3,7)))"
+        },
+        {
+          "n": 3,
+          "label": "q_common_partition",
+          "value": "no_common_unit_constructed"
+        },
+        {
+          "n": 4,
+          "label": "q_add_numerator_denominator",
+          "value": "numerators_and_denominators_added(2+3=5,7+7=14)"
+        },
+        {
+          "n": 5,
+          "label": "q_measure_with_co_unit",
+          "value": "omitted"
+        },
+        {
+          "n": 6,
+          "label": "q_between_check",
+          "value": "record_betweenness(mediant_lies_between(fraction(2,7),fraction(3,7),fraction(5,14)))"
+        },
+        {
+          "n": 7,
+          "label": "q_viability_context",
+          "value": "record_viability(viability(fails_in_context,condition(mediant_diverges_from_sum),expected(fraction(5,7)),produced(fraction(5,14)),validity(incorrect)))"
+        },
+        {
+          "n": 8,
+          "label": "q_emit_sum",
+          "value": "emit(fraction(5,14))"
+        },
+        {
+          "n": 9,
+          "label": "q_accept",
+          "value": "accept(fraction(5,14))"
+        }
+      ]
+    },
+    "_reused_from_round_1": "kept as a NAMED CONTRAST only. This is the mediant route, which the figure does not take; round 1 mistook it for the figure's own trace"
+  },
+  "rows.subtraction_regrouping": {
+    "op": "misconception_search_rows",
+    "arguments": {
+      "query": "subtraction regrouping",
+      "k": 4
+    },
+    "result": {
+      "retrieval": "offline_row_search",
+      "query": "subtraction regrouping",
+      "count": 2,
+      "rows": [
+        {
+          "db_row": "db_row(40585)",
+          "name": "subtraction_regrouping_failure",
+          "domain": "decimal",
+          "description": "subtraction_regrouping_failure",
+          "citation": "Irit Peled, Bracha Segalis (2005): apply whole-number subtraction steps to decimal digits without tracking the decimal place value (db row 40585)",
+          "diagnosable": "true",
+          "status": "runnable case model registered"
+        },
+        {
+          "db_row": "db_row(40128)",
+          "name": "buggy_subtraction_regrouping",
+          "domain": "whole_number",
+          "description": "buggy_subtraction_regrouping",
+          "citation": "RUTH M. STEINBERG, SUSAN B. EMPSON and THOMAS P. CARPENTER (2004): in each column take the smaller digit away from the larger one regardless of which is on top (db row 40128)",
+          "diagnosable": "true",
+          "status": "runnable case model registered"
+        }
+      ]
+    },
+    "_reused_from_round_1": "row search, unchanged"
+  },
+  "rows.fraction_addition_denominator": {
+    "op": "misconception_search_rows",
+    "arguments": {
+      "query": "fraction addition denominator",
+      "k": 3
+    },
+    "_note": "one returned row is the too_vague placeholder family. It is annotated here rather than dropped, per the standing rule that withheld rows stay counted; too_vague is never served to web users, but this is an MCP context.",
+    "result": {
+      "retrieval": "offline_row_search",
+      "query": "fraction addition denominator",
+      "count": 5,
+      "rows": [
+        {
+          "db_row": "db_row(39183)",
+          "name": "area_model_count_addition",
+          "domain": "fraction",
+          "citation": "AFZAL AHMED, ALISON CLARK-JEAVONS and ADRIAN OLDKNOW (2004): add the shaded parts to make the numerator and add all the pieces to make the denominator (db row 39183)",
+          "diagnosable": "true",
+          "status": "runnable case model registered"
+        },
+        {
+          "db_row": "db_row(37588)",
+          "name": "rewrite_denom_freely",
+          "domain": "fraction",
+          "citation": "Katherine E. Lewis (2014): rewrite 1/4 as 1/2 by crossing out the denominator to make addition convenient (db row 37588)",
+          "diagnosable": "true",
+          "status": "runnable case model registered"
+        },
+        {
+          "db_row": "db_row(39684)",
+          "name": "too_vague",
+          "domain": "fraction",
+          "citation": "Eddie Gray & David Tall (2007): treat fraction addition as following denominator rules rather than combining quantities (db row 39684)",
+          "diagnosable": "false",
+          "status": "documented in the research corpus; not yet reconstructible as a runnable case model"
+        }
+      ]
+    },
+    "_reused_from_round_1": "row search, unchanged"
+  },
+  "rows.linear_equation_solving": {
+    "op": "misconception_search_rows",
+    "arguments": {
+      "query": "linear equation solving",
+      "k": 3
+    },
+    "_note": "a genuine abstention. The grounding lane returned nothing for this figure, and the empty result is passed to the model as-is rather than backfilled with a near-miss row. An item whose grounding is empty is a legitimate pilot condition.",
+    "result": {
+      "retrieval": "offline_row_search",
+      "query": "linear equation solving",
+      "count": 0,
+      "rows": []
+    },
+    "_reused_from_round_1": "row search, unchanged; returns nothing"
+  }
+}
