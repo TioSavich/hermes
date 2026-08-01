@@ -418,12 +418,12 @@
       "standards": 22,
       "synthesis": 35,
       "unclassified": 8,
-      "workflow": 6,
+      "workflow": 14,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 72,
+      "orphan_module": 80,
       "routed_only": 14,
       "routed_paged": 181,
       "unrouted": 7
@@ -435,13 +435,111 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 35
+      "undetermined": 43
     },
-    "total": 284,
+    "total": 292,
     "unrouted": 7
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Enactment forms for the counting, place-value, and comparison lane",
+          "path": "curriculum/im/enactment/counting_place_value.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "im_enactment_counting_place_value",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/counting_place_value.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Enactment lane: IM lessons classed data_representation_or_question",
+          "path": "curriculum/im/enactment/data_representation.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "data_representation_enactment",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/data_representation.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Reference lane — fraction_model_reasoning",
+          "path": "curriculum/im/enactment/fraction_model_reasoning.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "enactment_fraction_model_reasoning",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/fraction_model_reasoning.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Enactment lane: the 72 geometry construction and measure lessons",
+          "path": "curriculum/im/enactment/geometry_construction.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "geometry_construction",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/geometry_construction.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Enactment of the IM measurement lessons",
+          "path": "curriculum/im/enactment/measurement.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "im_enactment_measurement",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/measurement.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "% Lesson rows for the data_representation_or_question enactment lane.",
+          "path": "curriculum/im/enactment/support/data_representation_lessons.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "data_representation_lessons",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/support/data_representation_lessons.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Lattice figure algebra for the geometry enactment lane",
+          "path": "curriculum/im/enactment/support/geometry_figures.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "geometry_figures",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/enactment/support/geometry_figures.pl",
+      "verdict": "undetermined"
+    },
     {
       "capability_class": "workflow",
       "evidence": [
@@ -503,6 +601,20 @@
       "note": "No code reader was found. The file holds attributed K-8 glossary terms and lesson joins as generated facts.",
       "path": "curriculum/im/im_glossary.pl",
       "verdict": "stalled_input"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> lesson_enactment — the second rung, for IM lessons no automaton computes",
+          "path": "curriculum/im/lesson_enactment.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "lesson_enactment",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/lesson_enactment.pl",
+      "verdict": "undetermined"
     },
     {
       "capability_class": "workflow",

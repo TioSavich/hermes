@@ -211,9 +211,17 @@ capability('viability_witness', 'cw_driver', 'crosswalk', ['cost', 'resources', 
 capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_only).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'crosswalk', ['canonical', 'source'], routed_paged).
+capability('curriculum/im/enactment/counting_place_value.pl', 'im_enactment_counting_place_value', 'workflow', [], orphan_module).
+capability('curriculum/im/enactment/data_representation.pl', 'data_representation_enactment', 'workflow', [], orphan_module).
+capability('curriculum/im/enactment/fraction_model_reasoning.pl', 'enactment_fraction_model_reasoning', 'workflow', [], orphan_module).
+capability('curriculum/im/enactment/geometry_construction.pl', 'geometry_construction', 'workflow', [], orphan_module).
+capability('curriculum/im/enactment/measurement.pl', 'im_enactment_measurement', 'workflow', [], orphan_module).
+capability('curriculum/im/enactment/support/data_representation_lessons.pl', 'data_representation_lessons', 'workflow', [], orphan_module).
+capability('curriculum/im/enactment/support/geometry_figures.pl', 'geometry_figures', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/compiled_receipt_routes.pl', 'compiled_receipt_routes', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'workflow', [], orphan_module).
 capability('curriculum/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
+capability('curriculum/im/lesson_enactment.pl', 'lesson_enactment', 'workflow', [], orphan_module).
 capability('curriculum/im_harness.pl', 'im_harness', 'workflow', [], orphan_module).
 capability('formal/formalization/axioms_geometry.pl', 'axioms_geometry', 'synthesis', [], orphan_module).
 capability('formal/formalization/axioms_number_theory.pl', 'axioms_number_theory', 'synthesis', [], orphan_module).

@@ -899,8 +899,15 @@ def build() -> dict[str, object]:
     # table joining the geometry monitoring names to the misconception registry.
     # It arrived with 5ea7876 and the registry was not regenerated then, so the
     # capability gate had been failing on main until this wave caught it up.
-    if len(registry_rows) != 284:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 284")
+    # 285 through 292 (2026-08-01) are the lesson-enactment rung: the contract
+    # curriculum/im/lesson_enactment.pl, the five lane modules under
+    # curriculum/im/enactment/ that register into it, and the two files under
+    # enactment/support/ that carry a lesson table and a figure algebra without
+    # declaring a form of their own. The support pair reads as orphan modules
+    # because nothing routes to them directly, which is what an included table
+    # and a helper library look like from outside.
+    if len(registry_rows) != 292:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 292")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -924,8 +931,17 @@ def build() -> dict[str, object]:
     # monitoring_registry_bridge.pl is the 72nd (2026-08-01): its own header
     # states that no lesson predicate loads it yet. Stalled pipeline input with
     # a named reason and both witnesses recorded, never vestige.
-    if len(orphan_records) != 72:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 72")
+    # 73 through 80 are the whole lesson-enactment rung (2026-08-01): the
+    # contract, its five lanes, and its two support files. Every one of them is
+    # an orphan in the worker-closure sense, and the count is the honest record
+    # of a gap rather than a bookkeeping bump. An enactment serializes into the
+    # shape strategy_trace_dict already consumes, so it can be displayed, but no
+    # worker op yet produces one, so nothing routes to these modules from the
+    # dispatcher. Their readers today are the census builder and the best_IM
+    # page. Wiring an op is what moves them out of this count; until then the
+    # rung is reachable by regeneration and not by a request.
+    if len(orphan_records) != 80:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 80")
     if len(unrouted) != 7:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 7")
 

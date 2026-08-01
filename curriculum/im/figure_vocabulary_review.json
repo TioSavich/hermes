@@ -1,0 +1,46 @@
+{
+ "note": "Hand review of every representation_language the bulk forced-choice pass proposed. The pass proposed a language on 36 of the 632 crops it read; all 36 were opened and judged one at a time, because those 36 are the whole of what reaches lesson_monitoring_selector's productive gate. A rejected row is withheld from the overlay and stays on the books with its reason; it is not deleted and the count is not quietly shrunk.",
+ "reviewer": "read directly from the crops, 2026-08-01",
+ "reviewed": 36,
+ "accepted": 29,
+ "rejected": 7,
+ "what_the_rejections_share": "Five of the seven are area_model asserted over a closed outline that contains marks but carries no partition: a child's box with a zigzag in it, two circles with a scribble inside, a drawing of a classroom. Two more are a representation asserted over a page whose content is handwriting or a coloured picture. The model reaches for area_model and fraction_bars on any bounded region; set_grouping (15 proposals), number_line (3) and place_value_chart (1) held up on every one.",
+ "per_language": {
+  "area_model": {"proposed": 13, "rejected": 5},
+  "fraction_bars": {"proposed": 4, "rejected": 2},
+  "set_grouping": {"proposed": 15, "rejected": 0},
+  "number_line": {"proposed": 3, "rejected": 0},
+  "place_value_chart": {"proposed": 1, "rejected": 0}
+ },
+ "rejected_rows": {
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Ticha_2013_Developing/p8_2.png": {
+   "proposed": "area_model",
+   "reason": "The crop is handwritten Czech reasoning about times. Two thumbnail circles carry a partition; the figure is not an area model."
+  },
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/JMB_Schorr_2000_Impact/p15_1.png": {
+   "proposed": "area_model",
+   "reason": "A hand-drawn box with a zigzag inside. No partition, no equal parts."
+  },
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/JMB_Schorr_2000_Impact/p15_3.png": {
+   "proposed": "area_model",
+   "reason": "A hand-drawn circle with a scribble inside. No partition."
+  },
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/JMB_Schorr_2000_Impact/p16_1.png": {
+   "proposed": "area_model",
+   "reason": "A hand-drawn circle with a scribble inside. No partition."
+  },
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/JMB_Weinberg_2014_Students'/p6_1.png": {
+   "proposed": "area_model",
+   "reason": "A high-contrast drawing of a classroom, blackboard and pupils. Nothing in it is an area model."
+  },
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/IJSME_Shahbari_2015_Resolving/p10_1.png": {
+   "proposed": "fraction_bars",
+   "reason": "A child's coloured drawing folded into panels. The panels are not fraction bars."
+  },
+  "data/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_Zhang_2015_Enriching/p23_1.png": {
+   "proposed": "fraction_bars",
+   "reason": "Handwritten prose about folding a string into six equal parts, with a loose sketch of the string. The writing names equal parts; the drawing is not a fraction bar."
+  }
+ },
+ "what_this_review_does_not_cover": "The 114 spatial-element fills were not opened one at a time. They were sampled through the twenty-figure pilot and through the 36 crops above, and they cannot reach productive_fit on their own: lesson_monitoring_selector scores spatial elements only after a representation language has already matched, and 78 of the 114 sit on rows whose representation stayed none. A wrong spatial element there is a wrong description, never a wrong pick."
+}

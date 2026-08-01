@@ -1,16 +1,43 @@
 #!/usr/bin/env python3
 """Regenerate the interpreted-figure fact base (iteration13 B1).
 
-Joins the per-figure REALLMs classifications
-(data/research_assets/research/docling_classifications.json) to the docling figure
-crop list (data/research_assets/research/2026-06-18-docling-figures.jsonl) and to the
-article-level coding in research_corpus/research.db, then writes a richer
-GENERATED Prolog fact base over the same student-work figures the old /5 file
-carried.
+WHAT THIS SCRIPT READS, and what is actually on disk (checked 2026-08-01):
+
+  data/research_assets/research/docling_classifications.json   PRESENT
+      the per-figure REALLMs pass: student-work flag, reason, representation
+      language, spatial elements, transcribed math, strategy description.
+  data/research_assets/research/2026-06-18-docling-figures.jsonl   ABSENT
+      the crop list carrying the canonical RelPath and the per-figure error and
+      strategy topics. collect_rows() opens it unguarded, so running this script
+      in this repo raises FileNotFoundError at that line. The only copy on this
+      machine sits in an old umedcta-formalization checkout under the pre-rename
+      docs/research_assets path; it was never carried across.
+  research_corpus/research.db   ABSENT
+      the article-level coding. _article_meta() degrades to {} without it, so a
+      run that got past the crop list would still emit empty domains and
+      grade_bucket for every row.
+
+The committed curriculum/im/docling_figures_interpreted.{pl,json} therefore
+carry domains and grade buckets this script cannot currently reproduce. Running
+it here would not regenerate them; it would strip them. Restore both inputs
+before treating this as a regeneration path, and diff against the committed
+artifacts before overwriting them.
 
 The article-level join (bibtex_key -> domains, grade_bucket, ...) reuses the
 exact helpers in hermes/representation/build_asset_manifest.py (_article_meta,
 _grade_bucket, _classifications) so the two surfaces stay consistent.
+
+Two per-figure strings come out of the classifications, and they answer
+different questions. `reason` says what the crop shows and is what `description`
+carries; `student_strategy_description` says what the student did and is what
+`student_strategy` carries. Both were once fed from the strategy key, which made
+them the same string on 1,332 of 1,359 rows and left `reason` consumed by
+nothing.
+
+An optional overlay merges curriculum/im/figure_vocabulary_bulk.json, the
+forced-choice vocabulary fill written by hermes/representation/
+bulk_figure_vocabulary.py. It fills only fields that are empty and never
+overwrites a value already present, so a deeper per-figure pass outranks it.
 
 Outputs (both under repo-served paths, never /private/tmp):
   - curriculum/im/docling_figures_interpreted.pl   (the logic surface)
@@ -67,6 +94,60 @@ DOCLING_JSONL = os.path.join(
 DOCLING_CLASSIFICATIONS = os.path.join(
     REPO, "data", "research_assets", "research", "docling_classifications.json"
 )
+BULK_OVERLAY = os.path.join(REPO, "curriculum", "im", "figure_vocabulary_bulk.json")
+BULK_REVIEW = os.path.join(REPO, "curriculum", "im", "figure_vocabulary_review.json")
+
+
+def apply_bulk_overlay(rows):
+    """Fill empty vocabulary fields from the forced-choice bulk pass.
+
+    Lowest precedence of anything that writes these rows: a field already
+    carrying a value keeps it, and a row that a deeper per-figure pass has
+    written is left alone. Returns a tally, and leaves rows untouched when the
+    overlay file is absent.
+
+    Every representation language the pass proposed was read against its crop.
+    The seven the review rejected are withheld here by name, with the reason
+    kept in figure_vocabulary_review.json rather than dropped.
+    """
+    tally = {"rep_filled": 0, "spatial_filled": 0, "math_filled": 0,
+             "rows_touched": 0, "rep_withheld_by_review": 0}
+    if not os.path.exists(BULK_OVERLAY):
+        return tally
+    with open(BULK_OVERLAY, encoding="utf-8") as f:
+        overlay = json.load(f)
+    rejected = set()
+    if os.path.exists(BULK_REVIEW):
+        with open(BULK_REVIEW, encoding="utf-8") as f:
+            rejected = set(json.load(f).get("rejected_rows", {}))
+    by_image = {r["image"]: r for r in overlay.get("rows", [])}
+    for r in rows:
+        key = r["image"].replace("docs/research_assets", "data/research_assets", 1)
+        b = by_image.get(key)
+        if not b or not b.get("fields"):
+            continue
+        touched = False
+        rep = b["fields"].get("representation_language")
+        if rep and rep != "none" and key in rejected:
+            tally["rep_withheld_by_review"] += 1
+        elif rep and rep != "none" and r["representation_language"] == "none":
+            r["representation_language"] = rep
+            tally["rep_filled"] += 1
+            touched = True
+        spatial = b["fields"].get("spatial_elements") or []
+        if spatial and not r["spatial_elements"]:
+            r["spatial_elements"] = list(spatial)
+            tally["spatial_filled"] += 1
+            touched = True
+        tm = b["fields"].get("transcribed_math")
+        if tm and tm != "none" and r["transcribed_math"] == "none":
+            r["transcribed_math"] = tm
+            tally["math_filled"] += 1
+            touched = True
+        if touched:
+            r["provenance"] = b["provenance"]
+            tally["rows_touched"] += 1
+    return tally
 
 
 def _short_key(image_path):
@@ -129,7 +210,10 @@ def collect_rows():
         rep_lang = cls.get("representation_language") or "none"
         spatial = cls.get("spatial_elements") or []
         transcribed = cls.get("transcribed_equation_or_math") or "none"
-        description = cls.get("student_strategy_description") or "none"
+        # description = what the crop shows; student_strategy = what the student
+        # did. Feeding both from the strategy key made them one string on 1,332
+        # of 1,359 rows, so one of the two carried nothing.
+        description = cls.get("reason") or "none"
 
         is_hybrid = bool(cls.get("is_hybridized_transplant"))
         hd = cls.get("hybrid_details") if is_hybrid else None
@@ -205,8 +289,15 @@ def emit_pl(rows):
     out.append(" *   data/research_assets/research/docling_classifications.json  (REALLMs per-figure)")
     out.append(" *   data/research_assets/research/2026-06-18-docling-figures.jsonl (crop list + topics)")
     out.append(" *   research_corpus/research.db  (article-level domains, grade_bucket)")
+    out.append(" *   curriculum/im/figure_vocabulary_bulk.json  (optional overlay, empty fields only)")
+    out.append(" *")
+    out.append(" * The crop list and research.db are absent from this repo; see the")
+    out.append(" * generator docstring before running it.")
     out.append(" *")
     out.append(" * Membership: figures REALLMs flagged as student work.")
+    out.append(" *")
+    out.append(" * Description carries what the crop shows; Strategy carries what the")
+    out.append(" * student did. They are different strings from different source keys.")
     out.append(" *")
     out.append(" * Two fact shapes, both queryable:")
     out.append(" *   docling_figure_interpreted(RelPath, RepresentationLanguage,")
@@ -217,11 +308,17 @@ def emit_pl(rows):
     out.append(" *                    transcribed_math, description}")
     out.append(" *     Coding  = coding{domains, error_topics, strategy_topics}")
     out.append(" *     HybridDetails = none | hybrid{foreign_primitive, illicit_host}")
-    out.append(" *     Strategy = none | <description string>")
+    out.append(" *     Strategy = none | <strategy string>")
+    out.append(" *")
+    out.append(" * docling_figure_provenance/2 is emitted only for rows a later pass")
+    out.append(" * wrote into. Pass names its author, Precedence says who wins when two")
+    out.append(" * passes reach the same row. An absent fact means the row still carries")
+    out.append(" * what the original classification pass recorded.")
     out.append(" */")
     out.append(":- module(docling_figures_interpreted,")
     out.append("          [ docling_figure_interpreted/5,")
-    out.append("            docling_figure_rich/8 ]).")
+    out.append("            docling_figure_rich/8,")
+    out.append("            docling_figure_provenance/2 ]).")
     out.append("")
 
     # old /5 block
@@ -275,6 +372,24 @@ def emit_pl(rows):
             )
         )
     out.append("")
+
+    # provenance block: only rows a later pass wrote into
+    out.append("% --- docling_figure_provenance/2 (rows a later pass wrote into) ---")
+    out.append(":- discontiguous docling_figure_provenance/2.")
+    for r in rows:
+        prov = r.get("provenance")
+        if not prov:
+            continue
+        pairs = ", ".join(
+            "%s: %s" % (k, prov[k] if isinstance(prov[k], int)
+                        else "'" + _q(prov[k]) + "'")
+            for k in ("pass", "precedence", "model", "prompt_version",
+                      "article_path", "figure_key", "page", "timestamp")
+            if prov.get(k) is not None)
+        out.append("docling_figure_provenance('%s', provenance{%s})."
+                   % (_q(r["image"]), pairs))
+    out.append("")
+
     with open(PL_OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(out))
 
@@ -293,6 +408,7 @@ def emit_json(rows):
 
 def main():
     rows = collect_rows()
+    overlay_tally = apply_bulk_overlay(rows)
     emit_pl(rows)
     emit_json(rows)
 
@@ -312,6 +428,9 @@ def main():
           % cnt(lambda r: r["is_hybridized_transplant"]))
     print("  with hybrid_details      : %d"
           % cnt(lambda r: r["hybrid_details"]))
+    print("  description differs from student_strategy: %d"
+          % cnt(lambda r: r["description"] != r["student_strategy"]))
+    print("  bulk overlay             : %s" % json.dumps(overlay_tally))
 
 
 if __name__ == "__main__":
