@@ -143,12 +143,12 @@ LEGEND - arcs (name, machines)
   keep_first_work_keep  3
   keep_then_break  5
   keep_then_work_on  31
-  keep_work_keep  8
+  keep_work_keep  9
   keep_work_keep_work_keep  1
   keep_work_keep_work_on  2
   unrecorded_run  48
   work_then_break  49
-  work_then_keep  36
+  work_then_keep  35
 MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
   addition/append_column_sum_without_carrying arc=keep_first_break_recover_break
     shell=align_to_common_unit core=substitute_operation closure=omit_required_step+inscribe_result+record_loss other=none
@@ -228,8 +228,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+select_part core=none closure=omit_required_step+misname_result other=none
   counting/place_value_comparison arc=keep_first_then_work_on
     shell=align_to_common_unit+align_to_common_unit+locate_position+compare_magnitudes core=none closure=name_result other=none
-  counting/recursive_place_value_inscription arc=work_then_keep
-    shell=register_givens+select_unit_scale+regroup_to_base core=none closure=none other=none
+  counting/recursive_place_value_inscription arc=keep_work_keep
+    shell=register_givens+select_unit_scale+regroup_to_base+unitize_referent+select_unit_scale+read_operand_attribute+read_operand_attribute core=iterate_composite_unit+iterate_composite_unit+iterate_composite_unit closure=record_conservation other=none
   counting/spatial_extent_as_cardinality arc=break_first_work_break
     shell=compare_magnitudes+substitute_appearance_for_measure core=none closure=treat_relevant_as_irrelevant other=none
   decimal/change_decimal_place_name_without_regrouping arc=work_then_break

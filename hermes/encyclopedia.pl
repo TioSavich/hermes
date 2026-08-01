@@ -500,7 +500,13 @@ num_value(_, 0).
 %!  trace_inputs(+Input, -A, -B) is det.
 %
 %   Pull a/b operands out of the input dict; default 0 when absent so a
-%   strategy can at least be attempted.
+%   strategy can at least be attempted. A "kind" key selects a family-specific
+%   operand pair. The counting family carries its base and its collection
+%   extents in the operand terms themselves, so "count_pair", "cardinality",
+%   and "collection_pair" decode to counts/2 + base/1, an integer + base/1,
+%   and counts/2 + extents/2. Without those three the eight registered
+%   counting automata were unreachable from this seam: the a/b fallback hands
+%   them bare integers, and every counting clause head requires a term.
 trace_inputs(Input, A, B) :-
     ( is_dict(Input) -> D = Input ; D = _{} ),
     (   get_dict(kind, D, "fraction_pair"),
@@ -542,6 +548,18 @@ trace_inputs(Input, A, B) :-
         dict_num(Left, numeral, 0, N1), dict_num(Left, scale, 1, S1),
         dict_num(Right, numeral, 0, N2), dict_num(Right, scale, 1, S2)
     ->  A = decimal_pair(N1, S1, N2, S2), B = ignored
+    ;   get_dict(kind, D, "count_pair"),
+        dict_num(D, left, 0, LeftCount), dict_num(D, right, 0, RightCount),
+        dict_num(D, base, 10, CountBase)
+    ->  A = counts(LeftCount, RightCount), B = base(CountBase)
+    ;   get_dict(kind, D, "cardinality"),
+        dict_num(D, count, 0, Cardinality), dict_num(D, base, 10, CardBase)
+    ->  A = Cardinality, B = base(CardBase)
+    ;   get_dict(kind, D, "collection_pair"),
+        dict_num(D, left, 0, LeftSize), dict_num(D, right, 0, RightSize),
+        dict_num(D, left_extent, LeftSize, LeftExtent),
+        dict_num(D, right_extent, RightSize, RightExtent)
+    ->  A = counts(LeftSize, RightSize), B = extents(LeftExtent, RightExtent)
     ;   dict_num(D, a, 0, A),
         dict_num(D, b, 0, B)
     ).

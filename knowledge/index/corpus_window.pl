@@ -162,12 +162,12 @@ window_legend_arc(keep_first_then_work_on, 2).
 window_legend_arc(keep_first_work_keep, 3).
 window_legend_arc(keep_then_break, 5).
 window_legend_arc(keep_then_work_on, 31).
-window_legend_arc(keep_work_keep, 8).
+window_legend_arc(keep_work_keep, 9).
 window_legend_arc(keep_work_keep_work_keep, 1).
 window_legend_arc(keep_work_keep_work_on, 2).
 window_legend_arc(unrecorded_run, 48).
 window_legend_arc(work_then_break, 49).
-window_legend_arc(work_then_keep, 36).
+window_legend_arc(work_then_keep, 35).
 
 window_row(addition, append_column_sum_without_carrying, keep_first_break_recover_break, [align_to_common_unit], [substitute_operation], [omit_required_step, inscribe_result, record_loss], []).
 window_row(addition, base_ones_chunking, work_then_keep, [decompose_operand], [combine_quantities, combine_quantities], [record_conservation], []).
@@ -208,7 +208,7 @@ window_row(counting, compare_ones_digits_only, keep_first_break_work_on, [align_
 window_row(counting, inscribe_cardinality, unrecorded_run, [register_givens, select_unit_scale], [], [inscribe_result], []).
 window_row(counting, omit_highest_place_regrouping, work_then_break, [register_givens, select_part], [], [omit_required_step, misname_result], []).
 window_row(counting, place_value_comparison, keep_first_then_work_on, [align_to_common_unit, align_to_common_unit, locate_position, compare_magnitudes], [], [name_result], []).
-window_row(counting, recursive_place_value_inscription, work_then_keep, [register_givens, select_unit_scale, regroup_to_base], [], [], []).
+window_row(counting, recursive_place_value_inscription, keep_work_keep, [register_givens, select_unit_scale, regroup_to_base, unitize_referent, select_unit_scale, read_operand_attribute, read_operand_attribute], [iterate_composite_unit, iterate_composite_unit, iterate_composite_unit], [record_conservation], []).
 window_row(counting, spatial_extent_as_cardinality, break_first_work_break, [compare_magnitudes, substitute_appearance_for_measure], [], [treat_relevant_as_irrelevant], []).
 window_row(decimal, change_decimal_place_name_without_regrouping, work_then_break, [read_operand_attribute, rename_in_place_of_transforming, retain_where_change_was_due], [], [omit_required_step], []).
 window_row(decimal, decimal_add_unaligned_numerals, break_twice_then_test_what_held, [register_givens], [combine_quantities], [omit_required_step, inscribe_result, record_loss, verify_invariant], []).

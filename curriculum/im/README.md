@@ -26,6 +26,26 @@ teacher-guide markdown under `knowledge/geometry/corpus/`. `grade_6_vision.pl` a
 - `im_glossary.pl` and `docling_figures.pl` are generated (glossary from the IM
   glossary, CC BY 4.0; figures from the literature crops).
 
+## Lesson enactment
+
+`lesson_enactment.pl` carries the contract for machines that run a lesson's
+doing when that doing is not an arithmetic computation: naming the structural
+form a task asks a class to move through, running its moves on the lesson's own
+printed inputs, and emitting a scene or a printed record with a verdict. Lane
+modules live in `enactment/` and register into it through its multifile hooks;
+`scripts/curriculum/run_lesson_enactments.pl` loads every file there, so a lane
+lands a file and needs no registration edit.
+
+Two numbers stay apart. `executable_task` in the capability census means an
+automaton ran a computation. `enacted_non_arithmetic` in
+`data/learningcommons/derived/im_lesson_enactment_census.json` means a form ran.
+A lesson can sit on both, on one, or on neither. Every emitted row in
+`data/learningcommons/derived/lesson_enactments/` carries its own sentence
+saying what the artifact does not claim, and an input the machine supplied
+because the curriculum left it to the room caps that row's verdict at partial.
+
+The gate is `scripts/checks/lesson_enactment.pl`.
+
 ## Boundary
 
 The grade files map lesson ids to strategy and misconception atoms and point to

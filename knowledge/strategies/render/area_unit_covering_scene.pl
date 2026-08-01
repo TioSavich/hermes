@@ -4,7 +4,7 @@
           [ area_unit_covering_render_json/2
           ]).
 
-:- use_module(library(lists), [nth1/3]).
+:- use_module(library(lists), [nth1/3, member/2]).
 
 
 area_unit_covering_render_json(cover(Cells, Unit), Dict) :-
@@ -14,8 +14,9 @@ area_unit_covering_render_json(cover(Cells, Unit), Dict) :-
        length(Cells, Count),
        area_frame(Cells, Unit, Rects, Count, Count, Frame),
        format(string(Result), "~w square ~w units", [Count, Unit]),
+       cell_pairs(Cells, CellPairs),
        Dict = _{kind: "area_unit_covering",
-                request: _{cells: Cells, unit: Unit}, result: Result,
+                request: _{cells: CellPairs, unit: Unit}, result: Result,
                 frames: [Frame]}
     ;  Dict = _{kind: "area_unit_covering",
                 error: "A covering needs distinct nonnegative grid cells and a named unit.",
@@ -29,8 +30,9 @@ area_unit_covering_render_json(overlap(Cells, Unit), Dict) :-
        area_frame(Cells, Unit, Rects, Placed, Covered, Frame),
        format(string(Result), "~w placed tiles over ~w covered square units",
               [Placed, Covered]),
+       cell_pairs(Cells, CellPairs),
        Dict = _{kind: "area_unit_covering_deformation",
-                request: _{cells: Cells, unit: Unit}, result: Result,
+                request: _{cells: CellPairs, unit: Unit}, result: Result,
                 frames: [Frame]}
     ;  Dict = _{kind: "area_unit_covering_deformation",
                 error: "An overlap scene needs at least one repeated grid cell.",
@@ -73,10 +75,21 @@ prior_occurrences(Cells, Index, Cell, Count) :-
             Matches),
     length(Matches, Count).
 
+%!  cell_pairs(+Cells, -Pairs) is det.
+%
+%   A grid cell is `X-Y` inside this module, and a two-element list outside it.
+%   The pair term cannot be written as JSON, so a document carrying it could not
+%   reach any reader that goes through JSON, which is every reader this scene
+%   has. The rects the drawer reads were always pixel dicts and are untouched;
+%   this converts the two keys that carried the raw pairs.
+cell_pairs(Cells, Pairs) :-
+    findall([X, Y], member(X-Y, Cells), Pairs).
+
 area_frame(Cells, Unit, Rects, Placed, Covered, Frame) :-
+    cell_pairs(Cells, CellPairs),
     Scene = _{format: "area-model", version: 2,
               model: "unit-square-covering", unit: Unit,
-              placements: Cells, placedTileCount: Placed,
+              placements: CellPairs, placedTileCount: Placed,
               coveredCellCount: Covered, rects: Rects,
               gridlines: _{v: [], h: []}},
     format(string(Caption),

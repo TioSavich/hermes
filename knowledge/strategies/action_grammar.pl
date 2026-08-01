@@ -293,9 +293,9 @@ machine_grammar(computational, counting, omit_highest_place_regrouping, arc(work
 machine_grammar(computational, counting, place_value_comparison, arc(keep_first_then_work_on),
                 phrases([bring_both_to_a_common_unit, locate_position, compare_magnitudes, name_result]),
                 stances([conserving, conserving, neutral, neutral, neutral])).
-machine_grammar(computational, counting, recursive_place_value_inscription, arc(work_then_keep),
-                phrases([take_up_and_fix_the_unit, regroup_to_base]),
-                stances([neutral, neutral, conserving])).
+machine_grammar(computational, counting, recursive_place_value_inscription, arc(keep_work_keep),
+                phrases([take_up_and_fix_the_unit, regroup_to_base, unitize_referent, select_unit_scale, read_the_givens_through, iterate_composite_unit, iterate_composite_unit, iterate_composite_unit, record_conservation]),
+                stances([neutral, neutral, conserving, neutral, neutral, neutral, neutral, neutral, neutral, neutral, conserving])).
 machine_grammar(computational, counting, spatial_extent_as_cardinality, arc(break_first_work_break),
                 phrases([treat_relevant_as_irrelevant, compare_magnitudes, substitute_appearance_for_measure]),
                 stances([deforming, neutral, deforming])).
@@ -1780,7 +1780,7 @@ token_loss_rate(computational, filter_by_constraint, machines(5), ending_deformi
 token_loss_rate(computational, halt_before_completion, machines(10), ending_deforming(10)).
 token_loss_rate(computational, initiate, machines(15), ending_deforming(0)).
 token_loss_rate(computational, inscribe_result, machines(24), ending_deforming(6)).
-token_loss_rate(computational, iterate_composite_unit, machines(5), ending_deforming(0)).
+token_loss_rate(computational, iterate_composite_unit, machines(6), ending_deforming(0)).
 token_loss_rate(computational, iterate_unit, machines(16), ending_deforming(3)).
 token_loss_rate(computational, locate_position, machines(13), ending_deforming(1)).
 token_loss_rate(computational, measure_out_group_size, machines(4), ending_deforming(1)).
@@ -1791,10 +1791,10 @@ token_loss_rate(computational, omit_required_step, machines(42), ending_deformin
 token_loss_rate(computational, order_by_magnitude, machines(6), ending_deforming(1)).
 token_loss_rate(computational, partition_into_equal_parts, machines(14), ending_deforming(1)).
 token_loss_rate(computational, re_express_equivalently, machines(6), ending_deforming(0)).
-token_loss_rate(computational, read_operand_attribute, machines(45), ending_deforming(14)).
+token_loss_rate(computational, read_operand_attribute, machines(46), ending_deforming(14)).
 token_loss_rate(computational, receive_kernel_outcome, machines(11), ending_deforming(0)).
 token_loss_rate(computational, recompose_total, machines(12), ending_deforming(4)).
-token_loss_rate(computational, record_conservation, machines(19), ending_deforming(0)).
+token_loss_rate(computational, record_conservation, machines(20), ending_deforming(0)).
 token_loss_rate(discursive, record_deontic_incoherence, machines(7), ending_deforming(7)).
 token_loss_rate(discursive, record_deontic_score, machines(8), ending_deforming(0)).
 token_loss_rate(computational, record_loss, machines(55), ending_deforming(52)).
@@ -1816,5 +1816,5 @@ token_loss_rate(computational, substitute_values, machines(4), ending_deforming(
 token_loss_rate(computational, test_criteria, machines(8), ending_deforming(1)).
 token_loss_rate(computational, traverse_boundary, machines(4), ending_deforming(2)).
 token_loss_rate(computational, treat_relevant_as_irrelevant, machines(21), ending_deforming(16)).
-token_loss_rate(computational, unitize_referent, machines(20), ending_deforming(2)).
+token_loss_rate(computational, unitize_referent, machines(21), ending_deforming(2)).
 token_loss_rate(computational, verify_invariant, machines(29), ending_deforming(0)).

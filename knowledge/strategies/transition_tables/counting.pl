@@ -43,3 +43,81 @@ automaton_transition(counting, recursive_place_value_inscription, q_step_2, reco
 automaton_transition(counting, spatial_extent_as_cardinality, q_start, ignore_one_to_one_correspondence, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:200'))).
 automaton_transition(counting, spatial_extent_as_cardinality, q_step_1, compare_spatial_extents, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:200'))).
 automaton_transition(counting, spatial_extent_as_cardinality, q_step_2, substitute_extent_relation_for_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:200'))).
+
+% Bounded live traces reconstructed from returned step labels.
+automaton_transition(counting, compare_cardinalities_one_to_one, q_start, establish_collections, q_step_1, provenance(observed(contract_example))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_1, match_objects_one_to_one, q_step_2, provenance(observed(contract_example))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_2, inspect_unmatched_surplus, q_step_3, provenance(observed(contract_example))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_3, conclude_count_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, compare_cardinalities_one_to_one, q_start, establish_collections, q_step_1, provenance(observed(derived_template))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_1, match_objects_one_to_one, q_step_2, provenance(observed(derived_template))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_2, inspect_unmatched_surplus, q_step_3, provenance(observed(derived_template))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_3, conclude_count_relation, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(counting, compare_ones_digits_only, q_start, inscribe_in_common_base, q_step_1, provenance(observed(contract_example))).
+automaton_transition(counting, compare_ones_digits_only, q_step_1, discard_higher_place_digits, q_step_2, provenance(observed(contract_example))).
+automaton_transition(counting, compare_ones_digits_only, q_step_2, compare_ones_digits, q_step_3, provenance(observed(contract_example))).
+automaton_transition(counting, compare_ones_digits_only, q_step_3, conclude_count_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, inscribe_cardinality, q_start, establish_cardinality, q_step_1, provenance(observed(contract_example))).
+automaton_transition(counting, inscribe_cardinality, q_step_1, choose_base, q_step_2, provenance(observed(contract_example))).
+automaton_transition(counting, inscribe_cardinality, q_step_2, project_counting_cycles_into_digits, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, inscribe_cardinality, q_start, establish_cardinality, q_step_1, provenance(observed(derived_template))).
+automaton_transition(counting, inscribe_cardinality, q_step_1, choose_base, q_step_2, provenance(observed(derived_template))).
+automaton_transition(counting, inscribe_cardinality, q_step_2, project_counting_cycles_into_digits, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(counting, omit_highest_place_regrouping, q_start, establish_positional_numeral, q_step_1, provenance(observed(contract_example))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_1, select_highest_regrouped_place, q_step_2, provenance(observed(contract_example))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_2, omit_regrouping_action, q_step_3, provenance(observed(contract_example))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_3, read_deformed_cardinality, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, omit_highest_place_regrouping, q_start, establish_positional_numeral, q_step_1, provenance(observed(derived_template))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_1, select_highest_regrouped_place, q_step_2, provenance(observed(derived_template))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_2, omit_regrouping_action, q_step_3, provenance(observed(derived_template))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_3, read_deformed_cardinality, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(counting, place_value_comparison, q_start, inscribe_in_common_base, q_step_1, provenance(observed(contract_example))).
+automaton_transition(counting, place_value_comparison, q_step_1, align_places_by_unit, q_step_2, provenance(observed(contract_example))).
+automaton_transition(counting, place_value_comparison, q_step_2, locate_highest_differing_place, q_step_3, provenance(observed(contract_example))).
+automaton_transition(counting, place_value_comparison, q_step_3, compare_digits_at_that_place, q_step_4, provenance(observed(contract_example))).
+automaton_transition(counting, place_value_comparison, q_step_4, conclude_count_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, place_value_comparison, q_start, inscribe_in_common_base, q_step_1, provenance(observed(derived_template))).
+automaton_transition(counting, place_value_comparison, q_step_1, align_places_by_unit, q_step_2, provenance(observed(derived_template))).
+automaton_transition(counting, place_value_comparison, q_step_2, locate_highest_differing_place, q_step_3, provenance(observed(derived_template))).
+automaton_transition(counting, place_value_comparison, q_step_3, compare_digits_at_that_place, q_step_4, provenance(observed(derived_template))).
+automaton_transition(counting, place_value_comparison, q_step_4, conclude_count_relation, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(counting, recursive_place_value_inscription, q_start, establish_cardinality, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_1, establish_base, q_observed_2, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_2, recollect_completed_base_cycles, q_observed_3, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_3, establish_referent, q_observed_4, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_4, establish_base, q_observed_5, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_5, establish_sign, q_observed_6, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_6, establish_radix, q_observed_7, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_7, execute_place, q_observed_8, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_8, execute_place, q_observed_9, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_9, execute_place, q_observed_10, provenance(observed(contract_example))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_10, preserve_positional_sum, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, recursive_place_value_inscription, q_start, establish_cardinality, q_observed_1, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_1, establish_base, q_observed_2, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_2, recollect_completed_base_cycles, q_observed_3, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_3, establish_referent, q_observed_4, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_4, establish_base, q_observed_5, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_5, establish_sign, q_observed_6, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_6, establish_radix, q_observed_7, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_7, execute_place, q_observed_8, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_8, execute_place, q_observed_9, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_9, execute_place, q_observed_10, provenance(observed(derived_template))).
+automaton_transition(counting, recursive_place_value_inscription, q_observed_10, preserve_positional_sum, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(counting, spatial_extent_as_cardinality, q_start, ignore_one_to_one_correspondence, q_step_1, provenance(observed(contract_example))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_step_1, compare_spatial_extents, q_step_2, provenance(observed(contract_example))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_step_2, substitute_extent_relation_for_count_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(counting, spatial_extent_as_cardinality, q_start, ignore_one_to_one_correspondence, q_step_1, provenance(observed(derived_template))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_step_1, compare_spatial_extents, q_step_2, provenance(observed(derived_template))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_step_2, substitute_extent_relation_for_count_relation, q_accept, provenance(observed(derived_template))).

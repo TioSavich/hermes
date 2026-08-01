@@ -1,0 +1,2743 @@
+{
+ "by_artifact_kind": {
+  "printed": 120,
+  "scene": 72
+ },
+ "by_input_provenance": {
+  "curriculum": 110,
+  "curriculum_sample": 4,
+  "machine_supplied": 78
+ },
+ "by_prior_action_class": {
+  "enacted_with_lesson_inputs": 17,
+  "named_surface_without_registered_correspondence": 4,
+  "no_fixed_inputs_in_accepted_span": 53,
+  "not_enacted_by_measured_inventory": 106
+ },
+ "by_subclass": {
+  "counting_place_value_or_comparison": {
+   "denominator": 36,
+   "enacted": 14
+  },
+  "data_representation_or_question": {
+   "denominator": 42,
+   "enacted": 42
+  },
+  "fraction_model_reasoning": {
+   "denominator": 26,
+   "enacted": 3
+  },
+  "geometry_construction_or_measure": {
+   "denominator": 72,
+   "enacted": 72
+  },
+  "measurement_task": {
+   "denominator": 50,
+   "enacted": 49
+  }
+ },
+ "by_verdict": {
+  "partial": 93,
+  "well_formed": 99
+ },
+ "contract": "curriculum/im/lesson_enactment.pl",
+ "declared_outside_population": [],
+ "emissions": [
+  {
+   "path": "data/learningcommons/derived/lesson_enactments/counting_place_value_or_comparison.jsonl",
+   "rows": 16,
+   "subclass": "counting_place_value_or_comparison"
+  },
+  {
+   "path": "data/learningcommons/derived/lesson_enactments/data_representation_or_question.jsonl",
+   "rows": 48,
+   "subclass": "data_representation_or_question"
+  },
+  {
+   "path": "data/learningcommons/derived/lesson_enactments/fraction_model_reasoning.jsonl",
+   "rows": 3,
+   "subclass": "fraction_model_reasoning"
+  },
+  {
+   "path": "data/learningcommons/derived/lesson_enactments/geometry_construction_or_measure.jsonl",
+   "rows": 72,
+   "subclass": "geometry_construction_or_measure"
+  },
+  {
+   "path": "data/learningcommons/derived/lesson_enactments/measurement_task.jsonl",
+   "rows": 53,
+   "subclass": "measurement_task"
+  }
+ ],
+ "enactments": 192,
+ "forms": [
+  {
+   "form": "adjudicate_against_data",
+   "gloss": "A proposed statement or number is brought to the record and the record rules on it; a proposal the record refuses is repaired into one the record accepts.",
+   "lane": "data_representation_or_question",
+   "lessons": 2,
+   "moves": 4,
+   "warrant": {
+    "line": 174,
+    "source": "curriculum/im_teacher_guides/grade1/unit1/lesson11.md",
+    "text": "                                                                 • “How can we revise this statement to make it true?”"
+   }
+  },
+  {
+   "form": "angle_composition",
+   "gloss": "Angles add and subtract against a known whole, so copies of a part and the turn they fill determine each other.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 7,
+   "moves": 3,
+   "warrant": {
+    "line": 390,
+    "source": "curriculum/im_teacher_guides/grade4/unit7/lesson13.md",
+    "text": "Three copies of Angle P make a straight line. How many degrees is Angle P?"
+   }
+  },
+  {
+   "form": "attribute_sort",
+   "gloss": "A figure set is placed into named categories, and what fits none or more than one is reported.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 12,
+   "moves": 4,
+   "warrant": {
+    "line": 172,
+    "source": "curriculum/im_teacher_guides/grade4/unit8/lesson3.md",
+    "text": "Find the quadrilaterals that have each of the following attributes. Record their letter names here."
+   }
+  },
+  {
+   "form": "author_counting_image",
+   "gloss": "Lay out a collection so its count can be recognized, then list the ways the arrangement can be broken into two parts.",
+   "lane": "counting_place_value_or_comparison",
+   "lessons": 1,
+   "moves": 3,
+   "warrant": {
+    "line": 134,
+    "source": "curriculum/im_teacher_guides/grade3/unit8/lesson13.md",
+    "text": "Draw a dot image that would encourage your classmates to count or identify equal groups. Write down some ways students might see the dots in your image."
+   }
+  },
+  {
+   "form": "bracket_and_name_the_nearer",
+   "gloss": "Put a number between the two multiples of a place that surround it, then say which of the two it is nearer.",
+   "lane": "counting_place_value_or_comparison",
+   "lessons": 2,
+   "moves": 4,
+   "warrant": {
+    "line": 226,
+    "source": "curriculum/im_teacher_guides/grade5/unit5/lesson8.md",
+    "text": "Round 6.273 to the nearest whole number, tenth, and hundredth."
+   }
+  },
+  {
+   "form": "bracket_unknown_measure",
+   "gloss": "Put a measure between a too-low and a too-high landmark, name an about-right value, and test whether the bracket holds.",
+   "lane": "measurement_task",
+   "lessons": 7,
+   "moves": 5,
+   "warrant": {
+    "line": 91,
+    "source": "curriculum/im_teacher_guides/grade3/unit8/lesson14.md",
+    "text": "What is the length of this earthworm?"
+   }
+  },
+  {
+   "form": "center_menu_route",
+   "gloss": "Name each center on the menu and say which registered machine does the counting the center asks for.",
+   "lane": "counting_place_value_or_comparison",
+   "lessons": 5,
+   "moves": 3,
+   "warrant": {
+    "line": 334,
+    "source": "curriculum/im_teacher_guides/kindergarten/unit6/lesson6.md",
+    "text": "Choose a center. Number Race Tower Build Grab and Count Find the Pair"
+   }
+  },
+  {
+   "form": "change_measured_quantity",
+   "gloss": "Add or take away a measured amount and keep the unit on the result.",
+   "lane": "measurement_task",
+   "lessons": 3,
+   "moves": 4,
+   "warrant": {
+    "line": 199,
+    "source": "curriculum/im_teacher_guides/grade3/unit3/lesson2.md",
+    "text": "Solve each problem. Explain or show your"
+   }
+  },
+  {
+   "form": "compare_two_collections",
+   "gloss": "Match two collections one to one and say which holds more.",
+   "lane": "counting_place_value_or_comparison",
+   "lessons": 2,
+   "moves": 3,
+   "warrant": {
+    "line": 387,
+    "source": "curriculum/im_teacher_guides/kindergarten/unit7/lesson2.md",
+    "text": "Circle the penguin that is filled with more pattern blocks."
+   }
+  },
+  {
+   "form": "compose_from_parts",
+   "gloss": "Smaller pieces are assembled into a target, and the distinct assemblies are enumerated.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 6,
+   "moves": 4,
+   "warrant": {
+    "line": 292,
+    "source": "curriculum/im_teacher_guides/kindergarten/unit3/lesson12.md",
+    "text": "Display all the ways to make a hexagon."
+   }
+  },
+  {
+   "form": "compose_value_from_denominations",
+   "gloss": "Convert each denomination to a common unit of value, total them, and take a purchase away from the total.",
+   "lane": "measurement_task",
+   "lessons": 6,
+   "moves": 4,
+   "warrant": {
+    "line": 149,
+    "source": "curriculum/im_teacher_guides/grade2/unit6/lesson15.md",
+    "text": "Name the coins in each collection. Find the value in"
+   }
+  },
+  {
+   "form": "constraint_fill_table",
+   "gloss": "Rows are generated to satisfy a stated constraint rather than read off a given record, and each generated row is checked back against the constraint.",
+   "lane": "data_representation_or_question",
+   "lessons": 5,
+   "moves": 4,
+   "warrant": {
+    "line": 167,
+    "source": "curriculum/im_teacher_guides/grade5/unit7/lesson13.md",
+    "text": "       1. Jada draws a rectangle with a perimeter of 12                  width?”"
+   }
+  },
+  {
+   "form": "construct_to_spec",
+   "gloss": "A figure is produced that satisfies a printed list of constraints, or the search reports what it exhausted.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 8,
+   "moves": 4,
+   "warrant": {
+    "line": 158,
+    "source": "curriculum/im_teacher_guides/grade4/unit8/lesson6.md",
+    "text": "Draw 1 or more segments to create a figure with only 1 line of symmetry."
+   }
+  },
+  {
+   "form": "coordinate_locate",
+   "gloss": "A point is placed from its coordinates or read off its position, and a figure is named from its vertices.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 3,
+   "moves": 2,
+   "warrant": {
+    "line": 156,
+    "source": "curriculum/im_teacher_guides/grade5/unit7/lesson2.md",
+    "text": "Partner B: Plot the point on the blank coordinate grid."
+   }
+  },
+  {
+   "form": "cover_and_count",
+   "gloss": "A region is covered with a repeated unit and the covering is counted, which is what makes the array equations true of it.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 6,
+   "moves": 4,
+   "warrant": {
+    "line": 170,
+    "source": "curriculum/im_teacher_guides/grade2/unit8/lesson11.md",
+    "text": "Arrange all the tiles in an array. Then push them together to make a rectangle."
+   }
+  },
+  {
+   "form": "derive_unknown_measure",
+   "gloss": "An unlabelled length, area or volume is derived from labelled ones, or the sides that leave it undetermined are named.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 8,
+   "moves": 3,
+   "warrant": {
+    "line": 259,
+    "source": "curriculum/im_teacher_guides/grade4/unit8/lesson7.md",
+    "text": "Mai says we cannot find the perimeter of any of these shapes. Andre says we can find the perimeters for C and D but not for A and B."
+   }
+  },
+  {
+   "form": "describe_and_reproduce",
+   "gloss": "A description is generated from a figure, rebuilt from, and the figures the description still allows are counted.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 7,
+   "moves": 4,
+   "warrant": {
+    "line": 162,
+    "source": "curriculum/im_teacher_guides/grade3/unit2/lesson4.md",
+    "text": "Partner A: Draw a rectangle. Describe the rectangle to your partner without telling the total number of grid squares it covers."
+   }
+  },
+  {
+   "form": "design_and_run_a_routine",
+   "gloss": "A classroom routine is instantiated over a chosen stimulus: the routine's own printed step sequence is filled in, and the noticings and wonderings the stimulus licenses are drafted so a facilitator has something to compare a class's contributions against.",
+   "lane": "data_representation_or_question",
+   "lessons": 1,
+   "moves": 5,
+   "warrant": {
+    "line": 161,
+    "source": "curriculum/im_teacher_guides/grade3/unit8/lesson12.md",
+    "text": "       2. Write down some things students might notice           Wonder about equal groups.”"
+   }
+  },
+  {
+   "form": "display_question_set",
+   "gloss": "A finished display answers a fixed family of questions: how many in each category, how many in two categories together, how many more in one than another, how many in all, and which category sits at each extreme.",
+   "lane": "data_representation_or_question",
+   "lessons": 8,
+   "moves": 6,
+   "warrant": {
+    "line": 236,
+    "source": "curriculum/im_teacher_guides/grade2/unit1/lesson9.md",
+    "text": "         voted for fall or spring?                      • “How can we use the bar graph to answer these"
+   }
+  },
+  {
+   "form": "hierarchy_claim",
+   "gloss": "A quantified claim about two shape classes is adjudicated against every figure in the inventory.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 2,
+   "moves": 3,
+   "warrant": {
+    "line": 254,
+    "source": "curriculum/im_teacher_guides/grade5/unit7/lesson7.md",
+    "text": "Write always, sometimes, or never in each blank to make the statements true."
+   }
+  },
+  {
+   "form": "iterate_unit_along_extent",
+   "gloss": "Lay one unit end to end along an extent and report how many intervals it took.",
+   "lane": "measurement_task",
+   "lessons": 11,
+   "moves": 5,
+   "warrant": {
+    "line": 312,
+    "source": "curriculum/im_teacher_guides/grade1/unit6/lesson6.md",
+    "text": "Use paper clips to measure each strip of tape."
+   }
+  },
+  {
+   "form": "locate_on_number_line",
+   "gloss": "Place each printed number on one line, in order, and label it.",
+   "lane": "counting_place_value_or_comparison",
+   "lessons": 5,
+   "moves": 4,
+   "warrant": {
+    "line": 257,
+    "source": "curriculum/im_teacher_guides/grade2/unit4/lesson3.md",
+    "text": "Complete each number line. Fill in the labels with the number the tick mark represents. Locate each number. Mark it with a point."
+   }
+  },
+  {
+   "form": "measure_and_order",
+   "gloss": "A measure is computed for each object, and the ordering question the lesson asks is answered from the measures.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 6,
+   "moves": 3,
+   "warrant": {
+    "line": 258,
+    "source": "curriculum/im_teacher_guides/grade4/unit7/lesson6.md",
+    "text": "Order the angles on the cards from smallest to largest."
+   }
+  },
+  {
+   "form": "measure_then_plot",
+   "gloss": "Objects measured at a stated precision become a table and then a line plot, and re-measuring at a finer precision produces a second plot whose spread differs.",
+   "lane": "data_representation_or_question",
+   "lessons": 1,
+   "moves": 6,
+   "warrant": {
+    "line": 210,
+    "source": "curriculum/im_teacher_guides/grade4/unit3/lesson13.md",
+    "text": "       2. Create a line plot to represent the data your           nearest    inch. Record your measurements in the"
+   }
+  },
+  {
+   "form": "notice_and_wonder",
+   "gloss": "A record licenses some observations by computation over its own numbers and leaves others open; each open one names the datum that would settle it.",
+   "lane": "data_representation_or_question",
+   "lessons": 6,
+   "moves": 4,
+   "warrant": {
+    "line": 245,
+    "source": "curriculum/im_teacher_guides/grade3/unit6/lesson4.md",
+    "text": "                                                               • “This line plot has data about the lengths of some"
+   }
+  },
+  {
+   "form": "pack_region_with_unit",
+   "gloss": "Cover a region with a square or cubic unit and count the copies it takes.",
+   "lane": "measurement_task",
+   "lessons": 2,
+   "moves": 4,
+   "warrant": {
+    "line": 132,
+    "source": "curriculum/im_teacher_guides/grade5/unit8/lesson8.md",
+    "text": "The wagon bed is approximately 27 feet long, 13"
+   }
+  },
+  {
+   "form": "partition_equal_parts",
+   "gloss": "A whole is split into equal parts, the part is named, and the shaded amount is read as a fraction of the whole.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 4,
+   "moves": 4,
+   "warrant": {
+    "line": 185,
+    "source": "curriculum/im_teacher_guides/grade2/unit6/lesson7.md",
+    "text": "Fold the rectangle to make 2 equal-size pieces. Cut them out. Each piece is called a ____."
+   }
+  },
+  {
+   "form": "partition_extent_into_unit_pieces",
+   "gloss": "Cut an extent into pieces of a stated size and count the pieces, keeping any leftover as a remainder.",
+   "lane": "measurement_task",
+   "lessons": 6,
+   "moves": 4,
+   "warrant": {
+    "line": 154,
+    "source": "curriculum/im_teacher_guides/grade5/unit3/lesson13.md",
+    "text": "These diagrams show strips of different colored"
+   }
+  },
+  {
+   "form": "partition_strip_into_named_parts",
+   "gloss": "Partition a strip that represents 1 into the equal parts a task names in words, and label every part with its unit fraction.",
+   "lane": "fraction_model_reasoning",
+   "lessons": 3,
+   "moves": 4,
+   "warrant": {
+    "line": 196,
+    "source": "curriculum/im_teacher_guides/grade4/unit2/lesson4.md",
+    "text": "Use one blank strip to show tenths."
+   }
+  },
+  {
+   "form": "read_circular_scale",
+   "gloss": "Read a time from two hands on one dial, where the minute hand iterates five-minute intervals and the hour hand carries the coarser count.",
+   "lane": "measurement_task",
+   "lessons": 4,
+   "moves": 4,
+   "warrant": {
+    "line": 169,
+    "source": "curriculum/im_teacher_guides/grade2/unit6/lesson12.md",
+    "text": "1. Discuss 2 ways to read the time on this clock."
+   }
+  },
+  {
+   "form": "resolve_measure_to_scale_grain",
+   "gloss": "Round measures to the finest interval a scale offers and say what that scale can and cannot settle.",
+   "lane": "measurement_task",
+   "lessons": 4,
+   "moves": 4,
+   "warrant": {
+    "line": 158,
+    "source": "curriculum/im_teacher_guides/grade5/unit5/lesson7.md",
+    "text": "1728 weigh 6.867 grams."
+   }
+  },
+  {
+   "form": "reunitize_same_extent",
+   "gloss": "Measure one extent twice with units of different size and relate the two counts by the factor between the units.",
+   "lane": "measurement_task",
+   "lessons": 5,
+   "moves": 5,
+   "warrant": {
+    "line": 209,
+    "source": "curriculum/im_teacher_guides/grade2/unit3/lesson9.md",
+    "text": "1. Work with your group. Measure the tape strips"
+   }
+  },
+  {
+   "form": "scale_choice",
+   "gloss": "Each candidate scale for a display is costed against the counts: how many marks it needs per category, and what remainder it leaves that a whole mark cannot carry.",
+   "lane": "data_representation_or_question",
+   "lessons": 3,
+   "moves": 4,
+   "warrant": {
+    "line": 166,
+    "source": "curriculum/im_teacher_guides/grade3/unit1/lesson6.md",
+    "text": "        • Mai says the scale of the bar graph should be"
+   }
+  },
+  {
+   "form": "separating_attribute",
+   "gloss": "An attribute is searched for that splits a figure set the way the game asks, or the vocabulary is reported as too coarse.",
+   "lane": "geometry_construction_or_measure",
+   "lessons": 3,
+   "moves": 3,
+   "warrant": {
+    "line": 159,
+    "source": "curriculum/im_teacher_guides/grade5/unit7/lesson4.md",
+    "text": "Partner B: Ask yes or no questions to determine which shape your partner chose."
+   }
+  },
+  {
+   "form": "sort_against_benchmark",
+   "gloss": "Hold a referent quantity fixed and place candidate quantities in the band each one falls into.",
+   "lane": "measurement_task",
+   "lessons": 5,
+   "moves": 4,
+   "warrant": {
+    "line": 168,
+    "source": "curriculum/im_teacher_guides/grade3/unit6/lesson6.md",
+    "text": "This paper clip          This basket of apples weighs"
+   }
+  },
+  {
+   "form": "sort_into_bins",
+   "gloss": "Items are assigned to named bins by a stated criterion, and an item no bin admits is set aside rather than forced.",
+   "lane": "data_representation_or_question",
+   "lessons": 6,
+   "moves": 5,
+   "warrant": {
+    "line": 209,
+    "source": "curriculum/im_teacher_guides/grade3/unit3/lesson13.md",
+    "text": "         If you don’t think a number belongs in any                   • “Now work with your partner to decide if the number"
+   }
+  },
+  {
+   "form": "step_one_and_compare",
+   "gloss": "Take one more or one less than a starting number and say whether the new number is more or less.",
+   "lane": "counting_place_value_or_comparison",
+   "lessons": 1,
+   "moves": 3,
+   "warrant": {
+    "line": 275,
+    "source": "curriculum/im_teacher_guides/kindergarten/unit8/lesson4.md",
+    "text": "Roll to choose a number and 1 more or 1 less. Record the starting number and the new number."
+   }
+  },
+  {
+   "form": "survey_tally_display",
+   "gloss": "A survey question and its answer choices become responses, the responses become a tally by category, and the tally becomes a display that the class then questions.",
+   "lane": "data_representation_or_question",
+   "lessons": 5,
+   "moves": 6,
+   "warrant": {
+    "line": 149,
+    "source": "curriculum/im_teacher_guides/grade1/unit1/lesson12.md",
+    "text": "     __________________________________________________        • “Today we are going to collect survey data and"
+   }
+  },
+  {
+   "form": "table_from_rule",
+   "gloss": "A rule applied to a seed generates a column of a table, and the completed table answers questions about a term at an index and about how two columns stand to one another.",
+   "lane": "data_representation_or_question",
+   "lessons": 8,
+   "moves": 5,
+   "warrant": {
+    "line": 165,
+    "source": "curriculum/im_teacher_guides/grade4/unit6/lesson3.md",
+    "text": "      Andre’s rule for a pattern is “start with 9, keep          • Groups of 2"
+   }
+  },
+  {
+   "form": "two_displays_one_dataset",
+   "gloss": "One data set is rendered two ways, the totals of the two renderings are checked to agree, and each rendering is named for the reading it makes direct.",
+   "lane": "data_representation_or_question",
+   "lessons": 3,
+   "moves": 5,
+   "warrant": {
+    "line": 174,
+    "source": "curriculum/im_teacher_guides/grade3/unit1/lesson2.md",
+    "text": "       2. Represent the same data in a bar graph.                   bottom axis for bike, walk, bus, van, car, and train."
+   }
+  }
+ ],
+ "generated_by": "scripts/curriculum/build_im_lesson_enactment_census.py",
+ "ladder": [
+  {
+   "baseline": {
+    "measured_at": "2026-08-01, commit b9a851c",
+    "statement": "No enactor existed before this wave, so the rung opens at zero. Any later count is the number of lessons whose form a machine ran, measured by running it.",
+    "value": 0
+   },
+   "binding_constraint": {
+    "lessons": 46,
+    "reason": "no_lane_has_declared_a_form"
+   },
+   "count": 180,
+   "counted_separately_from": "executable_task",
+   "definition": "A machine named the structural form the lesson asks a class to move through, ran that form's moves on the lesson's own inputs, and produced a scene or a printed record together with a verdict. It is not a claim that a discussion occurred; each emitted row carries its own sentence about what it does not claim.",
+   "denominator": 226,
+   "denominator_source": "data/learningcommons/derived/im_action_seam_recut.json",
+   "failure_reason_counts": {
+    "no_lane_has_declared_a_form": 46
+   },
+   "id": "enacted_non_arithmetic"
+  }
+ ],
+ "lane_modules": 5,
+ "lessons": [
+  {
+   "artifact_kind": "printed",
+   "form": "adjudicate_against_data",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U1-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The graph is an image the markdown does not carry, so the three counts are the smallest whole numbers consistent with all four rulings the guide prints at lines 199-202, and the machine then reaches those same four rulings on its own.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "survey_tally_display",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U1-L12",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The class survey data is never printed, so seventeen responses were chosen to reproduce the two numbers the cool-down does print at lines 315-321: nine for lacrosse and seventeen respondents in all.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "survey_tally_display",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U1-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The lesson asks each pair to choose three activities and collect ten responses from classmates, so ten responses were chosen to match the guide worked recommendation that six students chose a read aloud.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U1-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "survey_tally_display",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U1-L9",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The guide leaves the survey topic and its three categories blank for the teacher to fill in and never prints a count, so a three-choice question and eighteen responses stand in for a class own cubes.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_into_bins",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U2-L17",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The story is printed at lines 378-381, Lin has 5 chips on her board and 7 in all, but the equation cards are images, so five candidate equations were written and the sort solves each one rather than recalling which two are circled.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_into_bins",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U4-L23",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The nine picture cards are images, so a count was chosen for each letter that lands it in the band the guide prints at lines 256-260, and the sort then reaches that same grouping by comparing each count with 20 and with 50.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "1",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G1-U6-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "resolve_measure_to_scale_grain",
+   "grade": "1",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G1-U6-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "1",
+   "input_provenance": "curriculum_sample",
+   "lesson": "IM-G1-U6-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: sample_response_and_not_a_class_record"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "iterate_unit_along_extent",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U6-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U6-L9",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "attribute_sort",
+   "grade": "1",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G1-U7-L10",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "read_circular_scale",
+   "grade": "1",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G1-U7-L13",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_equal_parts",
+   "grade": "1",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G1-U7-L18",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U7-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "describe_and_reproduce",
+   "grade": "1",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G1-U7-L4",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_equal_parts",
+   "grade": "1",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G1-U7-L9",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "two_displays_one_dataset",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U1-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "survey_tally_display",
+   "grade": "2",
+   "input_provenance": "curriculum_sample",
+   "lesson": "IM-G2-U1-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: sample_response_and_not_a_class_record"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U1-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "notice_and_wonder",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U1-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U1-L9",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U3-L1",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "resolve_measure_to_scale_grain",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U3-L1",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: measures"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U3-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "reunitize_same_extent",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U3-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U3-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U3-L5",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_against_benchmark",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U3-L5",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U3-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "reunitize_same_extent",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U3-L9",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "locate_on_number_line",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U4-L1",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: printed_line_endpoints_and_ticks_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "locate_on_number_line",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U4-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: printed_line_endpoints_and_ticks_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "adjudicate_against_data",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U5-L14",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The photograph carries no printed count, so four supply counts totalling seventy were chosen to sit inside the about-right band the guide names at lines 100-102, below 40 too low and 100 or more too high, and the machine then rules on four proposed estimates against that total.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "locate_on_number_line",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U5-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: printed_line_endpoints_and_ticks_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "read_circular_scale",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "read_circular_scale",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L12",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "read_circular_scale",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L13",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_value_from_denominations",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U6-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: holding"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "constraint_fill_table",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L16",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_value_from_denominations",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U6-L18",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: holding"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_value_from_denominations",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L22",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "compose_from_parts",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L4",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_from_parts",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_equal_parts",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U6-L7",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "cover_and_count",
+   "grade": "2",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G2-U8-L11",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "change_measured_quantity",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U9-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: left, right"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U9-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "two_displays_one_dataset",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U1-L1",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(Both graphs are images, so four counts were chosen that hold the one absolute figure the guide prints, seven for the bus, together with its statement that more students take the bus than ride bikes.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "two_displays_one_dataset",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U1-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The graph is built live from that day sticky notes, so counts were chosen for the six categories the guide names at line 174 that hold both differences its answers print: three more bike than bus, and two more car or van than walk.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "3",
+   "input_provenance": "curriculum_sample",
+   "lesson": "IM-G3-U1-L21",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: sample_response_and_not_a_class_record"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "scale_choice",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U1-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The survey runs live and the guide prints answers vary, so counts were chosen for the six travel categories it lists with odd amounts among them, because the half picture an odd amount forces at a scale of two is what the lesson turns on.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "scale_choice",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U1-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U1-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "measure_and_order",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U2-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "constraint_fill_table",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U2-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "notice_and_wonder",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U2-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U2-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U2-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the room, bed and desk dimensions sit in the lesson diagram, so the measures here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "cover_and_count",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U2-L2",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "cover_and_count",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U2-L3",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "describe_and_reproduce",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U2-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_against_benchmark",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U2-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "cover_and_count",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U2-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the rectangle side lengths sit in the lesson figure, so the regions here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U2-L9",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_into_bins",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U3-L13",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U3-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "change_measured_quantity",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U3-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_value_from_denominations",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U3-L21",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: cost"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "cover_and_count",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U4-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the three ungridded rectangles carry no printed dimensions, so the region here is the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "cover_and_count",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U4-L15",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "attribute_sort",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U5-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the target fraction is a filled outline the markdown extraction drops, so the shaded figures here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_extent_into_unit_pieces",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U5-L12",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: subunits_per_whole, piece_in_subunits"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U5-L17",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_strip_into_named_parts",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U5-L2",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 20,
+   "subclass": "fraction_model_reasoning",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U6-L1",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "change_measured_quantity",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U6-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U6-L2",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U6-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "resolve_measure_to_scale_grain",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U6-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: measures"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U6-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "notice_and_wonder",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U6-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_against_benchmark",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U6-L6",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "measure_and_order",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U6-L7",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U6-L9",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U7-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U7-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "measure_and_order",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U7-L6",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "design_and_run_a_routine",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U8-L12",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The group finds its own image in a picture book, so an equal-groups arrangement was chosen to match the one the guide own warm-up describes at lines 107-114, pots of plants organized in rows.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "author_counting_image",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U8-L13",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: inputs_supplied_by_this_module_not_by_the_lesson"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U8-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U8-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_value_from_denominations",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U8-L5",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "survey_tally_display",
+   "grade": "3",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G3-U8-L6",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The question and its answer choices are the guide own sample at lines 148-150, and the responses are collected from a large group over the following days and never printed, so twenty responses stand in for that collection.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "scale_choice",
+   "grade": "3",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G3-U8-L7",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U1-L1",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "constraint_fill_table",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U1-L3",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_into_bins",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U1-L3",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U1-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_strip_into_named_parts",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U2-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 12,
+   "subclass": "fraction_model_reasoning",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_strip_into_named_parts",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U2-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 8,
+   "subclass": "fraction_model_reasoning",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "measure_then_plot",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U3-L13",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(Each group measures its own used pencils and every length in the guide is an inline fraction image the extraction drops, so ten lengths were chosen for the ten pencils the guide answer names, and the two passes run at the quarter inch and the eighth inch the lesson calls for.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U3-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The line plot and every value on it are images the markdown does not carry, so thirteen lengths in eighths of an inch were chosen to span the range the lesson describes: seven plotted points and six missing ones.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "notice_and_wonder",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U3-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The line plot and every value on it are images the markdown does not carry, so thirteen lengths in eighths of an inch were chosen to span the range the lesson describes: seven plotted points and six missing ones.)"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "locate_on_number_line",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: printed_line_endpoints_and_ticks_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_and_name_the_nearer",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L14",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "locate_on_number_line",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L14",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: printed_line_endpoints_and_ticks_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "measure_and_order",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L17",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_against_benchmark",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L23",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U4-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "reunitize_same_extent",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U5-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U5-L12",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "reunitize_same_extent",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U5-L15",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "reunitize_same_extent",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U5-L9",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_from_parts",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U6-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_value_from_denominations",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U6-L22",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U6-L23",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "iterate_unit_along_extent",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U6-L26",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U6-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "describe_and_reproduce",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the degree bounds on the four cards are filled outlines the markdown extraction drops, so the bands here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U7-L13",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U7-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L15",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the angle values sit in the lesson figure, which the markdown carries as an image, so the parts here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L16",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the street angles sit in the lesson figures, so the slopes here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L3",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U7-L4",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "describe_and_reproduce",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L5",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "measure_and_order",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U7-L6",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: Cards A to P come from an earlier lesson and carry no printed measures, so the sixteen angles here are the machine own"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U7-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U7-L8",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_into_bins",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U8-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The figures are images the markdown does not carry, so each of the six letters the guide names at lines 316-320 was given the attribute list the guide implies by placing it, and the sort then reproduces the guide printed grouping.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "angle_composition",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U8-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the labelled angles sit in the origami diagram, so the folded angles here are the machine own"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U8-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U8-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U8-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "4",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G4-U9-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "separating_attribute",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U9-L11",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "notice_and_wonder",
+   "grade": "4",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G4-U9-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "measure_and_order",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U1-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "describe_and_reproduce",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U1-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U1-L7",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: the sort ran against typical object volumes this module states, which the guide does not print and does not derive"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "compose_from_parts",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U1-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "pack_region_with_unit",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U2-L16",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "constraint_fill_table",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U2-L5",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_extent_into_unit_pieces",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U2-L7",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: subunits_per_whole"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_extent_into_unit_pieces",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U3-L13",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: subunits_per_whole"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_extent_into_unit_pieces",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U3-L17",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_equal_parts",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U3-L2",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: both fraction values in this task are filled outlines the markdown extraction drops, so the partitions here are the machine own"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "partition_extent_into_unit_pieces",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U4-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_against_benchmark",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U4-L18",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: candidates"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U4-L8",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "sort_into_bins",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U5-L10",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "resolve_measure_to_scale_grain",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U5-L7",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_and_name_the_nearer",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U5-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "notice_and_wonder",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U6-L14",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: stand_in_data(The lesson tells each pair to spin until they hold twelve data points, so twelve sums in eighths were chosen to stand for one pair play; a real pair produces different sums and the same shape of plot.)"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "partition_extent_into_unit_pieces",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U6-L16",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: subunits_per_whole"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "describe_and_reproduce",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L1",
+   "prior_action_class": "named_surface_without_registered_correspondence",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L11",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "constraint_fill_table",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L13",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 4,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "coordinate_locate",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U7-L14",
+   "prior_action_class": "named_surface_without_registered_correspondence",
+   "steps": 2,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "coordinate_locate",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L2",
+   "prior_action_class": "enacted_with_lesson_inputs",
+   "steps": 2,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "coordinate_locate",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U7-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 2,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "separating_attribute",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U7-L4",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "hierarchy_claim",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L5",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "construct_to_spec",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: 1 of the constructions exhausted the bounded search space without a witness"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "hierarchy_claim",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L7",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L8",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "table_from_rule",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U7-L9",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "data_representation_or_question",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "bracket_unknown_measure",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U8-L15",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 5,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: actual"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "separating_attribute",
+   "grade": "5",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G5-U8-L18",
+   "prior_action_class": "named_surface_without_registered_correspondence",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "derive_unknown_measure",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U8-L6",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "pack_region_with_unit",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U8-L8",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "derive_unknown_measure",
+   "grade": "5",
+   "input_provenance": "curriculum",
+   "lesson": "IM-G5-U8-L9",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 3,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "display_question_set",
+   "grade": "K",
+   "input_provenance": "curriculum_sample",
+   "lesson": "IM-GK-U2-L24",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 6,
+   "subclass": "data_representation_or_question",
+   "verdict": "partial: sample_response_and_not_a_class_record"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_from_parts",
+   "grade": "K",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-GK-U3-L12",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "compose_from_parts",
+   "grade": "K",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-GK-U3-L15",
+   "prior_action_class": "named_surface_without_registered_correspondence",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "attribute_sort",
+   "grade": "K",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-GK-U3-L2",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "partial: inputs supplied by the machine; the guide names a card set, handout or manipulative it does not print"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "describe_and_reproduce",
+   "grade": "K",
+   "input_provenance": "curriculum",
+   "lesson": "IM-GK-U3-L8",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 4,
+   "subclass": "geometry_construction_or_measure",
+   "verdict": "well_formed"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "center_menu_route",
+   "grade": "K",
+   "input_provenance": "curriculum",
+   "lesson": "IM-GK-U6-L6",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: center_activity_cards_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "center_menu_route",
+   "grade": "K",
+   "input_provenance": "curriculum",
+   "lesson": "IM-GK-U6-L7",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: center_activity_cards_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "center_menu_route",
+   "grade": "K",
+   "input_provenance": "curriculum",
+   "lesson": "IM-GK-U7-L1",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: center_activity_cards_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "center_menu_route",
+   "grade": "K",
+   "input_provenance": "curriculum",
+   "lesson": "IM-GK-U7-L2",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: center_activity_cards_were_not_read"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "compare_two_collections",
+   "grade": "K",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-GK-U7-L2",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: inputs_supplied_by_this_module_not_by_the_lesson"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "center_menu_route",
+   "grade": "K",
+   "input_provenance": "curriculum",
+   "lesson": "IM-GK-U7-L3",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: center_activity_cards_were_not_read"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "step_one_and_compare",
+   "grade": "K",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-GK-U8-L4",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: inputs_supplied_by_this_module_not_by_the_lesson"
+  },
+  {
+   "artifact_kind": "scene",
+   "form": "compare_two_collections",
+   "grade": "K",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-GK-U8-L8",
+   "prior_action_class": "no_fixed_inputs_in_accepted_span",
+   "steps": 3,
+   "subclass": "counting_place_value_or_comparison",
+   "verdict": "partial: inputs_supplied_by_this_module_not_by_the_lesson"
+  }
+ ],
+ "move_check": {
+  "index_mismatched": 0,
+  "steps_checked": 824,
+  "undeclared": 0,
+  "undeclared_verbs": []
+ },
+ "refusals": [
+  {
+   "lesson": "IM-G1-U5-L13",
+   "machine_needed": "A center-activity enactor that reads a named center from the center descriptions and runs its turn structure over the stage the lesson names."
+  },
+  {
+   "lesson": "IM-G2-U4-L2",
+   "machine_needed": "A reader that takes a drawn number line and returns its tick sequence, so a mislabelled line can be checked against the sequence it should carry."
+  },
+  {
+   "lesson": "IM-G2-U4-L5",
+   "machine_needed": "The same drawn-line reader, returning the interval endpoints, so a point with no printed scale can be bracketed."
+  },
+  {
+   "lesson": "IM-G3-U5-L18",
+   "machine_needed": "A reader for the supplied race map, since every distance in the task is a position on a map this module never receives."
+  },
+  {
+   "lesson": "IM-G3-U5-L6",
+   "machine_needed": "A partition machine over a drawn interval that reports whether the marks cut equal parts, which the fraction partition automaton does not do because it partitions a supplied whole rather than reading a drawn one."
+  },
+  {
+   "lesson": "IM-G3-U5-L9",
+   "machine_needed": "A locate-the-unit machine that finds where 1 sits on a line whose only printed marks are unit fractions; the numerals live in the figure the markdown drops."
+  },
+  {
+   "lesson": "IM-G4-U2-L12",
+   "machine_needed": "A table reader for the 25-cell fraction grid; the fractions are printed in the figure and the row and column structure is not in the markdown."
+  },
+  {
+   "lesson": "IM-G4-U3-L17",
+   "machine_needed": "A card-set reader for the teacher-supplied expression cards, and the fraction lane this wave leaves closed."
+  }
+ ],
+ "register": "Measured enactment count. A lesson joins this rung only when enact_lesson/2 ran its form and produced steps and an artifact in this build.",
+ "runner": "scripts/curriculum/run_lesson_enactments.pl",
+ "schema": "im_lesson_enactment_census_v1",
+ "solution_check": {
+  "declared_form_pairs": 192,
+  "enactments": 192,
+  "lessons": 180,
+  "multiplied": 0,
+  "multiplied_lessons": []
+ }
+}

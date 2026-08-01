@@ -87,6 +87,23 @@ run build_im_lesson_capability_census python3 "$CHECKS_DIR/../curriculum/build_i
 run build_im_zero_candidate_triage python3 "$CHECKS_DIR/../curriculum/build_im_zero_candidate_triage.py" --check
 run build_im_action_seam_recut python3 "$CHECKS_DIR/../curriculum/build_im_action_seam_recut.py" --check
 
+# The lesson-enactment rung. Each lane's own gate runs first, because a lane
+# checks things its own machines know and the contract's gate cannot see: the
+# geometry lane re-derives its figure algebra, the measurement lane re-reads
+# its spans, the data lane re-reads its citations. The contract gate then reads
+# every lane through one vocabulary, and the census runs last, because the
+# census counts what the enactors did and a form whose warrant cites a span the
+# curriculum does not print must fail before it is counted.
+run geometry_enactment.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/geometry_enactment.pl" -g main -t halt
+run geometry_enactment_warrants.py python3 "$CHECKS_DIR/geometry_enactment_warrants.py"
+run measurement_enactment.py python3 "$CHECKS_DIR/measurement_enactment.py"
+run data_representation_enactment_citations.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/data_representation_enactment_citations.pl" -g check -t halt
+run lesson_enactment.pl     swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/lesson_enactment.pl" -g main -t halt
+run build_im_lesson_enactment_census python3 "$CHECKS_DIR/../curriculum/build_im_lesson_enactment_census.py" --check
+# Last on this rung: the counting diagnosis joins the re-cut, the emitted rows,
+# and the lane's refusals, so it reads what the census has just checked.
+run build_counting_place_value_diagnosis python3 "$CHECKS_DIR/../curriculum/build_counting_place_value_diagnosis.py" --check
+
 run incompatibility_entailment_order python3 "$CHECKS_DIR/../extract_incompatibility_entailment_order.py" --check
 run incompatibility_register_runtime_agreement.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/incompatibility_register_runtime_agreement.pl" -g main -t halt
 run error_rule_incompatibility python3 "$CHECKS_DIR/../extract_error_rule_incompatibility.py" --check

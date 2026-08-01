@@ -701,12 +701,17 @@ def main() -> int:
     # 131 gave the automata registered on 2026-07-25 input
     # contracts: 43 were added, 6 carry example kinds this extractor cannot encode
     # as probe arguments, and the remaining 37 joined the 69 already witnessed.
-    # A guard rather than a preference — the analyzer's results are only
+    # 114 since 2026-08-01, when the counting family received input contracts
+    # and the transition-table extractor learned its three operand shapes;
+    # seven of its eight signatures became observed, and
+    # enumerate_collection_one_to_one stayed out because it declares no static
+    # trace list for the extractor to root its states in.
+    # A guard rather than a preference. The analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.
-    if len(observed) != 107:
+    if len(observed) != 114:
         raise SystemExit(
-            f"expected 107 execution-observed signatures, found {len(observed)}"
+            f"expected 114 execution-observed signatures, found {len(observed)}"
         )
     if args.smoke:
         by_name = {automaton.signature.name: automaton for automaton in observed}

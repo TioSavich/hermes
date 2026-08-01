@@ -1311,6 +1311,26 @@ action_maps(counting, recursive_place_value_inscription, establish_cardinality, 
             confidence(high),
             evidence("counting/recursive_place_value_inscription, q_start -> q_step_1: 1 of the machine's 3 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
             status(review_pending)).
+action_maps(counting, recursive_place_value_inscription, establish_radix, read_operand_attribute,
+            confidence(medium),
+            evidence("counting/recursive_place_value_inscription, q_observed_6 -> q_observed_7: 1 of the machine's 11 distinct edges, witnessed. reads how many places the numeral carries; the count is an attribute of the operand, and it also fixes how many times execute_place runs, which read_operand_attribute drops"),
+            status(review_pending)).
+action_maps(counting, recursive_place_value_inscription, establish_referent, unitize_referent,
+            confidence(high),
+            evidence("counting/recursive_place_value_inscription, q_observed_3 -> q_observed_4: 1 of the machine's 11 distinct edges, witnessed. names the whole the places count in, the same doing the fraction machines record as establish_referent_whole"),
+            status(review_pending)).
+action_maps(counting, recursive_place_value_inscription, establish_sign, read_operand_attribute,
+            confidence(high),
+            evidence("counting/recursive_place_value_inscription, q_observed_5 -> q_observed_6: 1 of the machine's 11 distinct edges, witnessed. reads the numeral's sign off the given cardinality."),
+            status(review_pending)).
+action_maps(counting, recursive_place_value_inscription, execute_place, iterate_composite_unit,
+            confidence(high),
+            evidence("counting/recursive_place_value_inscription, q_observed_7 -> q_observed_8; q_observed_8 -> q_observed_9; q_observed_9 -> q_observed_10: 3 of the machine's 11 distinct edges, witnessed. iterates the composite unit of one place as many times as that place's digit says"),
+            status(review_pending)).
+action_maps(counting, recursive_place_value_inscription, preserve_positional_sum, record_conservation,
+            confidence(high),
+            evidence("counting/recursive_place_value_inscription, q_observed_10 -> q_accept: 1 of the machine's 11 distinct edges, witnessed. record which relation the strategy kept."),
+            status(review_pending)).
 action_maps(counting, recursive_place_value_inscription, recollect_completed_base_cycles, regroup_to_base,
             confidence(high),
             evidence("counting/recursive_place_value_inscription, q_step_2 -> q_accept: 1 of the machine's 3 distinct edges, static only. collects the completed base cycles into the next place, which is what makes the inscription recursive"),

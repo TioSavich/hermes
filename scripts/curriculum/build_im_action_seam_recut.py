@@ -124,8 +124,8 @@ def checked_registry_runs() -> dict:
             )
         payload = load(output)
     traces = payload.get("traces", [])
-    if payload.get("contracts") != 116 or len(traces) != 116:
-        fail("expected 116 live checked-contract traces")
+    if payload.get("contracts") != 124 or len(traces) != 124:
+        fail("expected 124 live checked-contract traces")
     if any(
         row.get("response", {}).get("ok") is not True
         or not row.get("response", {}).get("steps")
@@ -133,6 +133,39 @@ def checked_registry_runs() -> dict:
     ):
         fail("a checked contract did not produce a live trace")
     return payload
+
+
+ACTION_CLAUSE_HEAD = re.compile(
+    r"^run_[a-z_]*action\(\s*([a-z][a-z0-9_]*)\s*,", re.MULTILINE
+)
+
+
+def scene_request_requesting_kinds() -> dict[str, set[str]]:
+    """Map a scene-request name to the registry kinds whose clause requests it.
+
+    A third correspondence route, added 2026-08-01. The two routes above ask
+    whether a name IS a registered kind or is authored onto one through the
+    canonical alphabet. Neither reaches a scene request: `subitize` is neither
+    a kind nor a transition label, yet counting/enumerate_collection_one_to_one
+    calls set_grouping_render_json(subitize(auto, Count), Scene) and carries the
+    result as its representation. Reading the call is mechanical, so this route
+    records a correspondence nobody had to assert. It says the machine requests
+    the surface. It does not say the machine's transitions do what the surface
+    name says.
+    """
+    requesting: dict[str, set[str]] = {}
+    for path in sorted((ROOT / "knowledge/strategies/math").glob("*.pl")):
+        text = path.read_text(encoding="utf-8")
+        heads = list(ACTION_CLAUSE_HEAD.finditer(text))
+        for index, head in enumerate(heads):
+            end = heads[index + 1].start() if index + 1 < len(heads) else len(text)
+            body = text[head.end():end]
+            kind = head.group(1)
+            for call in re.finditer(
+                r"_render_json\(\s*([a-z][a-z0-9_]*)\(", body
+            ):
+                requesting.setdefault(call.group(1), set()).add(kind)
+    return requesting
 
 
 def named_surface_inventory(signatures: list[dict]) -> dict:
@@ -151,6 +184,8 @@ def named_surface_inventory(signatures: list[dict]) -> dict:
             (match.group(1), match.group(2))
         )
 
+    requesting_kinds = scene_request_requesting_kinds()
+
     records: list[dict] = []
 
     def add(path: Path, match: re.Match[str], surface: str, name: str) -> None:
@@ -164,6 +199,13 @@ def named_surface_inventory(signatures: list[dict]) -> dict:
                 if key in signature_keys
             ]
         )
+        requested = sorted(
+            [
+                list(key)
+                for key in signature_keys
+                if key[1] in requesting_kinds.get(name, set())
+            ]
+        )
         records.append(
             {
                 "action_name": name,
@@ -172,7 +214,10 @@ def named_surface_inventory(signatures: list[dict]) -> dict:
                 "line": path.read_text(encoding="utf-8").count("\n", 0, match.start()) + 1,
                 "registry_signature_matches": exact,
                 "canonical_mapping_signature_matches": mapped,
-                "registered_automaton_correspondence": bool(exact or mapped),
+                "requesting_signature_matches": requested,
+                "registered_automaton_correspondence": bool(
+                    exact or mapped or requested
+                ),
             }
         )
 
@@ -235,8 +280,9 @@ def named_surface_inventory(signatures: list[dict]) -> dict:
     ]
     return {
         "interpretation": (
-            "A name is uncorresponded when neither an exact registry kind nor an "
-            "authored canonical-action mapping connects it to a registered machine."
+            "A name is uncorresponded when no exact registry kind, no authored "
+            "canonical-action mapping, and no registered clause that requests the "
+            "surface as a scene connects it to a registered machine."
         ),
         "action_name_occurrences": len(records),
         "unique_action_names": len({row["action_name"] for row in records}),
@@ -327,6 +373,186 @@ UNIT_ALIASES = {
     "grams": "gram", "gram": "gram",
     "centimeters": "centimeter", "centimeter": "centimeter",
 }
+
+
+# Operand ceiling for the sar_* families, which reach arithmetic grounded in
+# iterated successor steps through math(integer_helpers) and
+# formalization(grounded_arithmetic). Cost climbs with the operand, not with the
+# numeral's length, and the failure is a stall or a stack overflow rather than a
+# clean failure, so a probe past the bound is never proposed. Measured here
+# 2026-08-01: addition/count_on_from_larger runs (4000,1000) in 876 ms,
+# (8000,5000) in 11.5 s, and overflows the stack on (11000,8000);
+# subtraction/count_up_missing_addend stays under 600 ms across the same range.
+# The counting and decimal families do not reach it and are not bounded:
+# place_value_comparison on counts(140261,194030) and
+# decimal_comparison_by_aligned_units on 99.909 against 99.099 both run in
+# about a millisecond.
+GROUNDED_ARITHMETIC_REACH = 5000
+
+DECIMAL_TOKEN = r"\d+\.\d+"
+DECIMAL_COMPARISON_RE = re.compile(
+    rf"({DECIMAL_TOKEN})\s*(?:_+|<|>|=)\s*({DECIMAL_TOKEN})"
+    rf"|({DECIMAL_TOKEN})\s*is\s+(?:greater|less)\s+than\s+({DECIMAL_TOKEN})"
+)
+ORDERED_LIST_RE = re.compile(
+    r"(?:in order from least to greatest|numbers in order|order from least)"
+)
+NEAREST_MULTIPLE_RE = re.compile(
+    r"is\s+(\d[\d,]*)\s+closer\s+to\s+(\d[\d,]*)\s+or\s+(\d[\d,]*)"
+)
+BUILD_COLLECTION_RE = re.compile(
+    r"(?:create a collection of|how many ways can you make|"
+    r"choose \d+ numbers to represent|show \d+ different ways to make)"
+    r"[^\d]{0,60}?(\d[\d,]*)"
+)
+# The height chain crosses a sentence break and a bullet in the printed guide,
+# so this pattern spans punctuation where the others stop at it.
+MEASURED_INCREASE_RE = re.compile(
+    r"(\d[\d,]*)\s+inches\s+tall[\s\S]{0,90}?(\d[\d,]*)\s+inches\s+(taller|shorter)"
+)
+SOLID_COUNT_RE = re.compile(
+    r"(\d+)\s+(?:cubes?|cylinders?|cones?|counters?|blocks?|connecting cubes)\b"
+)
+DIGIT_CARD_RE = re.compile(
+    r"cards? for\s+(\d)\s*,\s*(\d)\s*,?\s*and\s+(\d)"
+)
+
+
+def decimal_operand(token: str) -> tuple[int, int]:
+    """Read a printed decimal as the numeral and scale the automata take."""
+    whole, fraction = token.split(".", 1)
+    scale = 10 ** len(fraction)
+    return int(whole) * scale + int(fraction), scale
+
+
+def counting_lane_adapters(text: str, lower: str, add) -> None:
+    """Extract counting, place-value, and comparison inputs from one span.
+
+    Written 2026-08-01 for the counting_place_value_or_comparison subclass,
+    where 31 of 36 lessons had produced no candidate at all. The gap sat in
+    this extraction layer, not in the automata: the whole-number comparison
+    reader above matches integers only, and no reader offered a decimal pair,
+    a bracketing distance, or a collection to build. Each adapter below
+    proposes inputs the registry family already accepts; whether the automaton
+    then runs is decided by the live probe, never here.
+    """
+    for match in DECIMAL_COMPARISON_RE.finditer(lower):
+        left_token, right_token = (
+            (match.group(1), match.group(2))
+            if match.group(1) is not None
+            else (match.group(3), match.group(4))
+        )
+        left_numeral, left_scale = decimal_operand(left_token)
+        right_numeral, right_scale = decimal_operand(right_token)
+        add(
+            "compare_fixed_decimals", "decimal",
+            "decimal_comparison_by_aligned_units",
+            f"decimal_pair({left_numeral},{left_scale},"
+            f"{right_numeral},{right_scale})",
+            "ignored",
+            {"left": left_token, "right": right_token,
+             "left_scale": left_scale, "right_scale": right_scale},
+        )
+        break
+
+    if ORDERED_LIST_RE.search(lower):
+        printed = numeric_tokens(text)
+        decimals = [raw for raw in printed if "." in raw]
+        wholes = [int(raw.replace(",", "")) for raw in printed if "." not in raw]
+        if len(decimals) >= 2:
+            left_numeral, left_scale = decimal_operand(decimals[0])
+            right_numeral, right_scale = decimal_operand(decimals[1])
+            add(
+                "compare_adjacent_members_of_a_printed_ordering", "decimal",
+                "decimal_comparison_by_aligned_units",
+                f"decimal_pair({left_numeral},{left_scale},"
+                f"{right_numeral},{right_scale})",
+                "ignored",
+                {"ordering_members": decimals[:2], "position": "first_pair"},
+            )
+        elif len(wholes) >= 2 and min(wholes[:2]) >= 0:
+            add(
+                "compare_adjacent_members_of_a_printed_ordering", "counting",
+                "place_value_comparison",
+                f"counts({wholes[0]},{wholes[1]})", "base(10)",
+                {"ordering_members": wholes[:2], "position": "first_pair",
+                 "base": 10},
+            )
+
+    bracket = NEAREST_MULTIPLE_RE.search(lower)
+    if bracket:
+        target, lower_multiple, upper_multiple = (
+            int(raw.replace(",", "")) for raw in bracket.groups()
+        )
+        below = abs(target - lower_multiple)
+        above = abs(upper_multiple - target)
+        add(
+            "compare_distances_to_bracketing_multiples", "counting",
+            "place_value_comparison",
+            f"counts({below},{above})", "base(10)",
+            {"target": target, "lower_multiple": lower_multiple,
+             "upper_multiple": upper_multiple,
+             "distance_below": below, "distance_above": above, "base": 10},
+        )
+
+    build = BUILD_COLLECTION_RE.search(lower)
+    if build:
+        value = int(build.group(1).replace(",", ""))
+        add(
+            "inscribe_fixed_cardinality", "counting",
+            "recursive_place_value_inscription", str(value), "base(10)",
+            {"cardinality": value, "base": 10,
+             "trigger": "collection_or_regrouping_task"},
+        )
+
+    increase = MEASURED_INCREASE_RE.search(lower)
+    if increase:
+        base_height = int(increase.group(1).replace(",", ""))
+        change = int(increase.group(2).replace(",", ""))
+        if max(base_height, change) > GROUNDED_ARITHMETIC_REACH:
+            # Refuse rather than run away. This is the only adapter in the lane
+            # that routes to a grounded-arithmetic family.
+            pass
+        elif increase.group(3) == "taller":
+            add(
+                "add_fixed_measured_increase", "addition", "count_on_from_larger",
+                str(base_height), str(change),
+                {"height": base_height, "change": change, "unit": "inch",
+                 "direction": "taller"},
+            )
+        else:
+            add(
+                "subtract_fixed_measured_decrease", "subtraction",
+                "count_up_missing_addend", str(base_height), str(change),
+                {"height": base_height, "change": change, "unit": "inch",
+                 "direction": "shorter"},
+            )
+
+    solid = SOLID_COUNT_RE.search(lower)
+    if solid and "how many" in lower:
+        count = int(solid.group(1))
+        if 1 <= count <= 10:
+            add(
+                "enumerate_fixed_collection", "counting",
+                "enumerate_collection_one_to_one", str(count), "base(10)",
+                {"collection_size": count, "base": 10,
+                 "note": "one named part of the set, not the whole set"},
+            )
+
+    cards = DIGIT_CARD_RE.search(lower)
+    if cards and re.search(r"compare|greater|less|> or <|< or >", lower):
+        digits = sorted(int(digit) for digit in cards.groups())
+        smallest = int("".join(str(digit) for digit in digits))
+        largest = int("".join(str(digit) for digit in reversed(digits)))
+        if smallest != largest:
+            add(
+                "compare_numerals_built_from_fixed_digits", "counting",
+                "place_value_comparison",
+                f"counts({smallest},{largest})", "base(10)",
+                {"digits": digits, "left": smallest, "right": largest,
+                 "base": 10,
+                 "arrangement": "machine_selected_least_and_greatest"},
+            )
 
 
 def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
@@ -549,6 +775,9 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
                 f"counts({left},{right})", "base(10)",
                 {"left": left, "right": right, "base": 10},
             )
+
+    if row["subclass"] == "counting_place_value_or_comparison":
+        counting_lane_adapters(text, lower, add)
 
     count_question = re.search(r"(\d+)\s+bowls?[^.!?]{0,120}how many\s+spoons?", lower)
     if count_question:

@@ -253,6 +253,18 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
             f"decimal_pair({left['numeral']},{left['scale']},{right['numeral']},{right['scale']})",
             "ignored",
         )
+    if example.get("kind") == "count_pair":
+        return (
+            f"counts({example['left']},{example['right']})",
+            f"base({example['base']})",
+        )
+    if example.get("kind") == "cardinality":
+        return str(example["count"]), f"base({example['base']})"
+    if example.get("kind") == "collection_pair":
+        return (
+            f"counts({example['left']},{example['right']})",
+            f"extents({example['left_extent']},{example['right_extent']})",
+        )
     return str(example["a"]), str(example["b"])
 
 
@@ -263,7 +275,15 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
 # Skipping keeps the committed tables byte-identical; teaching the extractor these
 # forms is what would move their rows from static to observed provenance, and that
 # is a separate, consequential decision.
-ENCODABLE_KINDS = frozenset({"fraction_pair", "decimal_pair"})
+#
+# The three counting shapes entered in 2026-08-01 with their input contracts.
+# Until then the eight counting automata carried static provenance only, and
+# hermes/strategy_recognizer.pl searches observed transitions alone, so no
+# counting automaton could be proposed for any classroom sentence.
+ENCODABLE_KINDS = frozenset({
+    "fraction_pair", "decimal_pair",
+    "count_pair", "cardinality", "collection_pair",
+})
 
 
 def encodable(example: dict[str, object]) -> bool:
@@ -282,6 +302,15 @@ def derived_example(example: dict[str, object]) -> dict[str, object]:
         assert isinstance(left, dict)
         key = "n" if result["kind"] == "fraction_pair" else "numeral"
         left[key] = int(left[key]) + 1
+    elif result.get("kind") == "cardinality":
+        result["count"] = int(result["count"]) + 1
+    elif result.get("kind") in {"count_pair", "collection_pair"}:
+        # Shift the left operand only. The two comparison deformations report a
+        # relation exactly when it differs from the productive one, so moving
+        # both operands can silently retire the second probe.
+        result["left"] = int(result["left"]) + 1
+        if result.get("kind") == "collection_pair":
+            result["left_extent"] = int(result["left_extent"]) + 1
     else:
         result["a"] = int(result["a"]) + 1
     return result

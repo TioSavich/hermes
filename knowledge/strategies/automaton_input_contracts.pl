@@ -136,6 +136,18 @@ automaton_input_contract(probability, terminal_tree_endpoint_probability_sum, '{
 automaton_input_contract(fraction, common_denominator_fraction_addition, '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":7,\"d\":8}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, common_denominator_fraction_subtraction, '{\"kind\":\"fraction_minuend_subtrahend\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_minuend_subtrahend\",\"left\":{\"n\":2,\"d\":3},\"right\":{\"n\":1,\"d\":6}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, add_numerator_denominator_sum, '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_addend_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":7,\"d\":8}}', verified(strategy_trace_ok)).
+% The eight counting rows entered in 2026-08-01. They were registered
+% signatures with no contract because trace_inputs/3 had no decoder for the
+% counting operand terms, so the seam handed each clause head bare integers
+% and every run failed. The decoder landed with these rows.
+automaton_input_contract(counting, enumerate_collection_one_to_one, '{\"base\":\"positive_integer\",\"count\":\"positive_integer\",\"kind\":\"cardinality\"}', '{\"base\":10,\"count\":5,\"kind\":\"cardinality\"}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, inscribe_cardinality, '{\"base\":\"positive_integer\",\"count\":\"positive_integer\",\"kind\":\"cardinality\"}', '{\"base\":10,\"count\":7,\"kind\":\"cardinality\"}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, recursive_place_value_inscription, '{\"base\":\"positive_integer\",\"count\":\"integer\",\"kind\":\"cardinality\"}', '{\"base\":10,\"count\":347,\"kind\":\"cardinality\"}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, omit_highest_place_regrouping, '{\"base\":\"positive_integer\",\"count\":\"integer\",\"kind\":\"cardinality\"}', '{\"base\":10,\"count\":263,\"kind\":\"cardinality\"}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, place_value_comparison, '{\"base\":\"positive_integer\",\"kind\":\"count_pair\",\"left\":\"integer\",\"right\":\"integer\"}', '{\"base\":10,\"kind\":\"count_pair\",\"left\":56,\"right\":26}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, compare_ones_digits_only, '{\"base\":\"positive_integer\",\"kind\":\"count_pair\",\"left\":\"integer\",\"right\":\"integer\"}', '{\"base\":10,\"kind\":\"count_pair\",\"left\":39,\"right\":41}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, compare_cardinalities_one_to_one, '{\"kind\":\"collection_pair\",\"left\":\"positive_integer\",\"left_extent\":\"positive_integer\",\"right\":\"positive_integer\",\"right_extent\":\"positive_integer\"}', '{\"kind\":\"collection_pair\",\"left\":5,\"left_extent\":5,\"right\":4,\"right_extent\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(counting, spatial_extent_as_cardinality, '{\"kind\":\"collection_pair\",\"left\":\"positive_integer\",\"left_extent\":\"positive_integer\",\"right\":\"positive_integer\",\"right_extent\":\"positive_integer\"}', '{\"kind\":\"collection_pair\",\"left\":4,\"left_extent\":9,\"right\":5,\"right_extent\":3}', verified(strategy_trace_ok)).
 
 % A marked contract has a live strategy_trace witness represented in the
 % generated transition table. It does not change the public contract shape.
