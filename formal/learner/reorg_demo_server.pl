@@ -9,9 +9,9 @@
  * Run:  swipl -l paths.pl -l formal/learner/reorg_demo_server.pl -g start_demo
  *       then open http://localhost:8090
  *
- * Every number you type is fed straight into reorganize/4 — there is no cache and
- * no canned answer. Change the base or the numerator and the same machinery runs
- * on a problem it has never seen.
+ * Every number you type is fed through story_for/3 into the inventory-bearing
+ * reorganize/5 — there is no cache and no canned answer. Change the base or the
+ * numerator and the same machinery runs on a problem it has never seen.
  */
 
 :- module(reorg_demo_server, [start_demo/0, start_demo/1]).

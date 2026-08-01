@@ -31,7 +31,7 @@
 :- multifile
        reorganize:rd_initial/4,
        reorganize:rd_goal/2,
-       reorganize:rd_move/6,
+       reorganize:rd_move/7,
        reorganize:rd_baseline/3,
        reorganize:rd_level_above/3,
        reorganize:rd_result/3.
@@ -54,26 +54,31 @@ reorganize:rd_level_above(arithmetic(_Base), Level0, Level1) :-
 % ---- primitive moves ----
 
 % Count on / count back by one: always available.
-reorganize:rd_move(arithmetic(_Base), _Level, state(A, R), inc1, state(A1, R1), 1) :-
+reorganize:rd_move(arithmetic(_Base), _Level, _Inv,
+                   state(A, R), inc1, state(A1, R1), 1) :-
     A1 is A + 1,
     R1 is R - 1.
-reorganize:rd_move(arithmetic(_Base), _Level, state(A, R), dec1, state(A1, R1), 1) :-
+reorganize:rd_move(arithmetic(_Base), _Level, _Inv,
+                   state(A, R), dec1, state(A1, R1), 1) :-
     A1 is A - 1,
     R1 is R + 1.
 
 % Move by a composite unit (a power of Base), available at level >= 2.
-reorganize:rd_move(arithmetic(Base), Level, state(A, R), add_unit(U), state(A1, R1), 1) :-
+reorganize:rd_move(arithmetic(Base), Level, _Inv,
+                   state(A, R), add_unit(U), state(A1, R1), 1) :-
     composite_unit(Base, Level, U),
     A1 is A + U,
     R1 is R - U.
-reorganize:rd_move(arithmetic(Base), Level, state(A, R), sub_unit(U), state(A1, R1), 1) :-
+reorganize:rd_move(arithmetic(Base), Level, _Inv,
+                   state(A, R), sub_unit(U), state(A1, R1), 1) :-
     composite_unit(Base, Level, U),
     A1 is A - U,
     R1 is R + U.
 
 % Recall: regenerative use of a possessed base-partition fact, available at
 % level >= 2. The fact's value is carried in the move so re-execution checks it.
-reorganize:rd_move(arithmetic(Base), Level, state(A, R), recall(A, R, V), state(V, 0), 1) :-
+reorganize:rd_move(arithmetic(Base), Level, _Inv,
+                   state(A, R), recall(A, R, V), state(V, 0), 1) :-
     Level >= 2,
     R =\= 0,
     base_partition_fact(Base, A, R, V).

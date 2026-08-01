@@ -24,7 +24,7 @@
 :- multifile
        reorganize:rd_initial/4,
        reorganize:rd_goal/2,
-       reorganize:rd_move/6,
+       reorganize:rd_move/7,
        reorganize:rd_baseline/3,
        reorganize:rd_level_above/3,
        reorganize:rd_result/3.
@@ -49,12 +49,14 @@ reorganize:rd_level_above(fraction_of_fraction, Level0, Level1) :-
 
 % Name the result against the LOCAL bar (the C/D bar treated as the whole): the
 % Stage-2 deformation. Available at any level; never the correct global name.
-reorganize:rd_move(fraction_of_fraction, _Level, s(A, B, C, D, none), name_local,
+reorganize:rd_move(fraction_of_fraction, _Level, _Inv,
+                   s(A, B, C, D, none), name_local,
                    s(A, B, C, D, local), 1).
 
 % Name the result against the GLOBAL whole, holding three levels of units at once:
 % Stage 3, available at level >= 2.
-reorganize:rd_move(fraction_of_fraction, Level, s(A, B, C, D, none), name_global,
+reorganize:rd_move(fraction_of_fraction, Level, _Inv,
+                   s(A, B, C, D, none), name_global,
                    s(A, B, C, D, global), 1) :-
     Level >= 2,
     % fires only if the recursive part-of-part automaton (name against the global

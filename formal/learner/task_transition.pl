@@ -4,7 +4,7 @@
  * state (s, I) — a developmental stage s and an installed-strategy inventory I —
  * a source-backed task event t, and a policy c, execute the event through the
  * activity_contract machinery, classify the outcome against the crisis taxonomy,
- * invoke reorganize/4 only when the taxonomy calls for it, and return the updated
+ * invoke reorganize/5 only when the taxonomy calls for it, and return the updated
  * state with a trace. Learning happens through crisis: a productive success and
  * every honest boundary (needs_oracle, no reorganization domain, a declined
  * efficiency reorganization) leave (s, I) unchanged. This module introduces the
@@ -25,7 +25,7 @@
           ]).
 
 :- use_module(activity_contract, [activity_task_path/3]).
-:- use_module(reorganize, [reorganize/4]).
+:- use_module(reorganize, [reorganize/5]).
 :- use_module(reorg_domains/whole_number_operations, []).
 :- use_module(library(lists)).
 
@@ -35,10 +35,11 @@
 %   yield the same transition, which is the (s, I)-sufficiency property.
 task_transition(State0, task_event(Code, Role, Task, Provenance), Policy,
                 transition(State1, trace(Outcome, ReorgStep), Observation)) :-
-    State0 = learner_state(_Stage0, _Inventory0),
+    State0 = learner_state(Stage0, Inventory0),
     execute_event(Code, Role, Task, Provenance, Outcome),
     classify_execution(Outcome, Signal),
-    resolve(Signal, Task, State0, Policy, State1, ReorgStep, Observation),
+    resolve(Signal, Task, learner_state(Stage0, Inventory0), Policy,
+            State1, ReorgStep, Observation),
     !.
 
 %!  execute_event(+Code, +Role, +Task, +Provenance, -Outcome) is det.
@@ -58,7 +59,7 @@ execute_event(_Code, _Role, Task, _Provenance,
 %   Map an execution outcome to a crisis-taxonomy signal. A productive success is
 %   solved(Result) and no crisis. A traversed deformation is a dead_end(Family)
 %   crisis; an unsupported route is an impasse(Reason) crisis. Only crises reach
-%   reorganize/4.
+%   reorganize/5.
 classify_execution(Outcome, dead_end(Family)) :-
     is_dict(Outcome, candidate_path),
     get_dict(validation, Outcome, deformation(Family, _Kind)),
@@ -93,13 +94,13 @@ crisis_signal(impasse(_)).
 
 %!  reorganize_step(+Domain, +Op, +Task, +State0, +Policy, -State1, -ReorgStep, -Observation)
 %
-%   Run reorganize/4 at the current stage and apply its outcome to (s, I) under
+%   Run reorganize/5 at the current stage and apply its outcome to (s, I) under
 %   the policy. Accommodation advances the stage; an accepted efficiency
 %   reorganization installs a cheaper same-stage strategy; needs_oracle and a
 %   declined efficiency reorganization are boundaries that leave (s, I) unchanged.
 reorganize_step(Domain, Op, Task, learner_state(Stage0, Inv0), Policy,
                 State1, ReorgStep, Observation) :-
-    (   reorganize(Domain, Task, Stage0, ReorgStep)
+    (   reorganize(Domain, Task, Stage0, Inv0, ReorgStep)
     ->  true
     ;   ReorgStep = reorganize_failed
     ),

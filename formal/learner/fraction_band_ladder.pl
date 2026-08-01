@@ -11,9 +11,9 @@
  *   3. the method it BUILT — the primitive partition/iterate steps of the real
  *      action automaton now backing that move;
  *   4. RE-EXECUTING the built method move-by-move to get the answer by doing,
- *      not by retrieval (`run_learned_path/3` re-fires every move).
+ *      not by retrieval (`run_learned_path/4` re-fires every move).
  *
- * No oracle is consulted: `reorganize/4` has no teacher/oracle path; the strategy
+ * No oracle is consulted: `reorganize/5` has no teacher/oracle path; the strategy
  * is found purely by searching the domain's primitive moves. This module only
  * reads the engine; it installs nothing global.
  */
@@ -28,7 +28,7 @@
           ]).
 
 :- use_module(learner(reorganize),
-              [ reorganize/4, run_learned_path/3 ]).
+              [ reorganize/5, run_learned_path/4 ]).
 :- use_module(learner('reorg_domains/fraction_splitting')).
 :- use_module(learner('reorg_domains/fraction_improper')).
 :- use_module(learner('reorg_domains/fraction_of_fraction')).
@@ -107,38 +107,38 @@ readable_step(Step, S) :- term_string(Step, S).
 
 % ---- making the search visible (the exhaustive level-N attempts) ------------
 
-%!  explore_paths(+Domain, +Problem, +Level, +MaxDepth, -Paths) is det.
+%!  explore_paths(+Domain, +Problem, +Level, +Inventory, +MaxDepth, -Paths) is det.
 %
 %   Every root-to-terminal move sequence at Level, each tagged with how it ends:
 %   `goal` (reached the answer), `dead_end` (no move available, not the goal), or
 %   `depth_limit`. At a pre-reorganization level the productive move is absent,
 %   so no path is tagged `goal` — the "stuck" is a fact about the search, not a
 %   scripted message.
-explore_paths(Domain, Problem, Level, MaxDepth, Paths) :-
+explore_paths(Domain, Problem, Level, Inventory, MaxDepth, Paths) :-
     reorganize:rd_initial(Domain, Problem, Level, S0),
     findall(_{moves: MoveStrs, status: Status},
-            ( walk(Domain, Level, S0, MaxDepth, [], Moves, Status),
+            ( walk(Domain, Level, Inventory, S0, MaxDepth, [], Moves, Status),
               maplist(readable_step, Moves, MoveStrs) ),
             Paths0),
     sort(Paths0, Paths).
 
-walk(Domain, _Level, S, _D, RevAcc, Moves, goal) :-
+walk(Domain, _Level, _Inventory, S, _D, RevAcc, Moves, goal) :-
     reorganize:rd_goal(Domain, S),
     !,
     reverse(RevAcc, Moves).
-walk(Domain, Level, S, D, RevAcc, Moves, Status) :-
+walk(Domain, Level, Inventory, S, D, RevAcc, Moves, Status) :-
     \+ reorganize:rd_goal(Domain, S),
     D > 0,
-    findall(M-S1, reorganize:rd_move(Domain, Level, S, M, S1, _), Succ),
+    findall(M-S1, reorganize:rd_move(Domain, Level, Inventory, S, M, S1, _), Succ),
     (   Succ == []
     ->  reverse(RevAcc, Moves), Status = dead_end
     ;   D1 is D - 1,
         member(M-S1, Succ),
-        walk(Domain, Level, S1, D1, [M | RevAcc], Moves, Status)
+        walk(Domain, Level, Inventory, S1, D1, [M | RevAcc], Moves, Status)
     ).
-walk(Domain, Level, S, 0, RevAcc, Moves, depth_limit) :-
+walk(Domain, Level, Inventory, S, 0, RevAcc, Moves, depth_limit) :-
     \+ reorganize:rd_goal(Domain, S),
-    findall(_, reorganize:rd_move(Domain, Level, S, _, _, _), [_|_]),
+    findall(_, reorganize:rd_move(Domain, Level, Inventory, S, _, _, _), [_|_]),
     reverse(RevAcc, Moves).
 
 reached_goal(Paths) :- member(P, Paths), get_dict(status, P, goal).
@@ -155,12 +155,16 @@ story_for(Domain, Problem, Story) :-
     band_name(Domain, Name),
     band_question(Domain, Problem, Question),
     search_depth(Domain, Problem, MaxDepth),
+    % Stories use the legacy untracked-inventory mode. The current inventory
+    % vocabulary does not name partitioning and iterating separately, so the
+    % splitting story must not claim to possess what its level-up constructs.
+    Inventory = [],
     % 1. the stuck level
-    explore_paths(Domain, Problem, 1, MaxDepth, L1Paths),
+    explore_paths(Domain, Problem, 1, Inventory, MaxDepth, L1Paths),
     ( reached_goal(L1Paths) -> L1Goal = true ; L1Goal = false ),
     % 2. the reorganization (engine, starting at level 1)
-    reorganize(Domain, Problem, 1, Outcome),
-    outcome_story(Outcome, Domain, Problem, MaxDepth, OutDict),
+    reorganize(Domain, Problem, 1, Inventory, Outcome),
+    outcome_story(Outcome, Domain, Problem, Inventory, MaxDepth, OutDict),
     term_string(Problem, ProblemStr),
     Story = _{ order: Order,
                name: Name,
@@ -176,21 +180,23 @@ term_str(T, S) :- term_string(T, S).
 search_depth(fraction_improper, make_improper(N, _), D) :- !, D is N + 2.
 search_depth(_, _, 6).
 
-outcome_story(needs_oracle, _, _, _,
+outcome_story(needs_oracle, _, _, _, _,
               _{ kind: "needs_oracle",
                  note: "No improving path at this level or one above — the honest boundary; the engine would have to ask a teacher." }).
-outcome_story(reorganized(Kind, ToLevel, Strat), Domain, Problem, MaxDepth, Dict) :-
+outcome_story(reorganized(Kind, ToLevel, Strat), Domain, Problem, Inventory,
+              MaxDepth, Dict) :-
     Strat = strat(_, _, _, path(Cost, Moves)),
     maplist(readable_step, Moves, MoveStrs),
     % the built method re-executes move-by-move (not retrieval)
-    ( run_learned_path(Strat, ReexecResult, _) -> term_string(ReexecResult, ReexecStr)
+    ( run_learned_path(Strat, Inventory, ReexecResult, _)
+    -> term_string(ReexecResult, ReexecStr)
     ;  ReexecStr = "RE-EXECUTION FAILED" ),
     % the runnable automaton now backing the unlocked move
     ( backing_trace(Domain, Problem, BKind, BResult, BSteps)
     -> Backing = _{ automaton: BKind, result: BResult, steps: BSteps }
     ;  Backing = _{ automaton: none, result: "", steps: [] } ),
     % what the unlocked level can now reach
-    explore_paths(Domain, Problem, ToLevel, MaxDepth, L2Paths),
+    explore_paths(Domain, Problem, ToLevel, Inventory, MaxDepth, L2Paths),
     Dict = _{ kind: Kind,
               unlocked_at_level: ToLevel,
               installed_path: MoveStrs,

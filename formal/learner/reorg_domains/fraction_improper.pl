@@ -27,7 +27,7 @@
 :- multifile
        reorganize:rd_initial/4,
        reorganize:rd_goal/2,
-       reorganize:rd_move/6,
+       reorganize:rd_move/7,
        reorganize:rd_baseline/3,
        reorganize:rd_level_above/3,
        reorganize:rd_result/3.
@@ -49,14 +49,16 @@ reorganize:rd_level_above(fraction_improper, Level0, Level1) :-
     Level1 =< 2.
 
 % Iterate the unit fraction WITHIN the whole (up to D): available at any level.
-reorganize:rd_move(fraction_improper, _Level, s(N, D, K, intact), iterate,
+reorganize:rd_move(fraction_improper, _Level, _Inv,
+                   s(N, D, K, intact), iterate,
                    s(N, D, K1, intact), 1) :-
     K1 is K + 1,
     K1 =< D.
 
 % Iterate PAST the whole, keeping the referent fixed: the iterative fraction scheme,
 % available at level >= 2. This is the move that makes improper fractions reachable.
-reorganize:rd_move(fraction_improper, Level, s(N, D, K, intact), iterate_past,
+reorganize:rd_move(fraction_improper, Level, _Inv,
+                   s(N, D, K, intact), iterate_past,
                    s(N, D, K1, intact), 1) :-
     Level >= 2,
     K >= D,

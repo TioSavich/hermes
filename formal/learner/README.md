@@ -9,8 +9,8 @@ when a task exceeds its finite resources.
 `main.pl` runs a fixed Peano goal once, non-interactively. `server.pl` starts the
 Arithmetic Machine Explorer HTTP server (port 8080). `reorg_demo_server.pl`
 serves the live reorganization demo (`reorg_demo.html`, port 8090), which feeds
-each typed fraction problem straight into `reorganize/4` with no cache and no
-canned answer.
+each typed fraction problem through `story_for/3` into the inventory-bearing
+`reorganize/5` with no cache and no canned answer.
 
 ## The cycle, distributed across files
 

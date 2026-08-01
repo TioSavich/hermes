@@ -11,7 +11,7 @@
 :- multifile
        reorganize:rd_initial/4,
        reorganize:rd_goal/2,
-       reorganize:rd_move/6,
+       reorganize:rd_move/7,
        reorganize:rd_baseline/3,
        reorganize:rd_level_above/3,
        reorganize:rd_result/3.
@@ -27,14 +27,14 @@ reorganize:rd_result(whole_number(subtract, _Base),
                      subtraction_state(Result, 0), Result).
 reorganize:rd_baseline(whole_number(subtract, _Base), subtract(_A, B), B).
 
-reorganize:rd_move(whole_number(subtract, _Base), _Level,
+reorganize:rd_move(whole_number(subtract, _Base), _Level, _Inv,
                    subtraction_state(A, R), count_back_one,
                    subtraction_state(A1, R1), 1) :-
     R > 0,
     A > 0,
     A1 is A - 1,
     R1 is R - 1.
-reorganize:rd_move(whole_number(subtract, Base), Level,
+reorganize:rd_move(whole_number(subtract, Base), Level, _Inv,
                    subtraction_state(A, R), remove_composite_unit(U),
                    subtraction_state(A1, R1), 1) :-
     Level >= 2,
@@ -57,13 +57,13 @@ reorganize:rd_result(whole_number(multiply, _Base),
 reorganize:rd_baseline(whole_number(multiply, _Base), multiply(N, S), Cost) :-
     Cost is N * S.
 
-reorganize:rd_move(whole_number(multiply, _Base), _Level,
+reorganize:rd_move(whole_number(multiply, _Base), _Level, _Inv,
                    multiplication_state(Made, R, S), count_item,
                    multiplication_state(Made1, R1, S), 1) :-
     R > 0,
     Made1 is Made + 1,
     R1 is R - 1.
-reorganize:rd_move(whole_number(multiply, _Base), Level,
+reorganize:rd_move(whole_number(multiply, _Base), Level, _Inv,
                    multiplication_state(Made, R, S), iterate_composite_unit(S),
                    multiplication_state(Made1, R1, S), 1) :-
     Level >= 2,
@@ -86,14 +86,33 @@ reorganize:rd_result(whole_number(divide, _Base),
                      division_state(_Remainder, _Divisor, Quotient), Quotient).
 reorganize:rd_baseline(whole_number(divide, _Base), divide(Total, _Divisor), Total).
 
-reorganize:rd_move(whole_number(divide, _Base), Level,
+reorganize:rd_move(whole_number(divide, _Base), Level, Inv,
                    division_state(R, D, Q), measure_composite_unit(D),
                    division_state(R1, D, Q1), 1) :-
     Level >= 2,
+    division_composite_unit_available(Inv),
     D > 0,
     R >= D,
     R1 is R - D,
     Q1 is Q + 1.
+
+% Sourced warrant: research-corpus strategy 663 (Saenz-Ludlow 1995,
+% pp. 107-108), bound in research_corpus_automaton_bindings.pl, characterizes
+% measurement division as disembedding equal composite units and counting
+% them. The repository's
+% canonical iterate_composite_unit action cites Steffe & Olive 2010 and
+% Hackenberg 2013 for that units-coordination capacity. A populated installed
+% inventory therefore requires an acquired multiplication strategy at level 2
+% or above.
+%
+% The empty-inventory exemption is an unsourced engineering carve-out for the
+% legacy mode in which inventory is untracked. It deliberately preserves the
+% old stage-only behavior; adding any tracked strategy makes the sourced
+% multiplication requirement operative.
+division_composite_unit_available([]) :- !.
+division_composite_unit_available(Inv) :-
+    once(( member(strategy(multiply, MultiplyLevel), Inv),
+           MultiplyLevel >= 2 )).
 
 
 reorganize:rd_level_above(whole_number(_Operation, _Base), Level0, Level1) :-

@@ -25,7 +25,7 @@
 :- multifile
        reorganize:rd_initial/4,
        reorganize:rd_goal/2,
-       reorganize:rd_move/6,
+       reorganize:rd_move/7,
        reorganize:rd_baseline/3,
        reorganize:rd_level_above/3,
        reorganize:rd_result/3.
@@ -50,12 +50,14 @@ reorganize:rd_level_above(fraction_algebra, Level0, Level1) :-
 
 % Fall back to a whole-number relation, dropping the fraction: the Stage-2 deformation.
 % Available at any level; never expresses the fractional relationship.
-reorganize:rd_move(fraction_algebra, _Level, s(P, Q, none), whole_number_relate,
+reorganize:rd_move(fraction_algebra, _Level, _Inv,
+                   s(P, Q, none), whole_number_relate,
                    s(P, Q, whole_number), 1).
 
 % Use the fraction as an operator on the unknown: Stage 3 with the interiorized
 % iterative fraction scheme, available at level >= 2.
-reorganize:rd_move(fraction_algebra, Level, s(P, Q, none), fraction_operate,
+reorganize:rd_move(fraction_algebra, Level, _Inv,
+                   s(P, Q, none), fraction_operate,
                    s(P, Q, fractional), 1) :-
     Level >= 2,
     % fires only if the solve-for-unknown automaton (fraction as operator on an

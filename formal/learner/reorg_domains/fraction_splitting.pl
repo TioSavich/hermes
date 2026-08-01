@@ -24,7 +24,7 @@
 :- multifile
        reorganize:rd_initial/4,
        reorganize:rd_goal/2,
-       reorganize:rd_move/6,
+       reorganize:rd_move/7,
        reorganize:rd_baseline/3,
        reorganize:rd_level_above/3,
        reorganize:rd_result/3.
@@ -46,8 +46,10 @@ reorganize:rd_level_above(fraction_splitting, Level0, Level1) :-
     Level1 =< 2.
 
 % Splitting: partition the given M/D into its M unit parts and rebuild the whole,
-% as one reversible operation. Available at level >= 2.
-reorganize:rd_move(fraction_splitting, Level, s(M, D, given), split,
+% as one reversible operation. Available after level-up to 2. The inventory
+% vocabulary cannot yet represent partitioning and iterating as separately
+% possessed capabilities, so no possession guard is asserted here.
+reorganize:rd_move(fraction_splitting, Level, _Inv, s(M, D, given), split,
                    s(M, D, whole_recovered), 1) :-
     Level >= 2,
     % fires only if the splitting FSM (partition into D, iterate the unit D
@@ -56,5 +58,6 @@ reorganize:rd_move(fraction_splitting, Level, s(M, D, given), split,
 
 % Iterate the given part: the non-splitter's move — repeats M/D, overshooting.
 % Available at any level, never reaches the whole.
-reorganize:rd_move(fraction_splitting, _Level, s(M, D, given), iterate_given,
+reorganize:rd_move(fraction_splitting, _Level, _Inv,
+                   s(M, D, given), iterate_given,
                    s(M, D, overshot), 1).
