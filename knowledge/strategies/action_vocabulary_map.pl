@@ -1359,6 +1359,10 @@ action_maps(decimal, decimal_add_unaligned_numerals, read_written_integer_numera
             confidence(high),
             evidence("decimal/decimal_add_unaligned_numerals, q_start -> q_step_1: 1 of the machine's 5 distinct edges, witnessed. hold the given quantities, figure, or data set as the operands the strategy will work on."),
             status(review_pending)).
+action_maps(decimal, decimal_add_unaligned_numerals, record_decimal_operation_viability, verify_invariant,
+            confidence(high),
+            evidence("decimal/decimal_add_unaligned_numerals, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges. records whether adding the written numerals without aligning scales agreed with adding the decimal values for this input."),
+            status(review_pending)).
 action_maps(decimal, decimal_add_unaligned_numerals, reinscribe_at_larger_scale, inscribe_result,
             confidence(high),
             evidence("decimal/decimal_add_unaligned_numerals, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. writes the result at the larger of the two scales, the alignment having been omitted"),
@@ -1463,6 +1467,10 @@ action_maps(decimal, decimal_numeral_comparison_without_scale_alignment, read_wr
             confidence(high),
             evidence("decimal/decimal_numeral_comparison_without_scale_alignment, q_start -> q_step_1: 1 of the machine's 4 distinct edges, witnessed. hold the given quantities, figure, or data set as the operands the strategy will work on."),
             status(review_pending)).
+action_maps(decimal, decimal_numeral_comparison_without_scale_alignment, record_decimal_order_viability, verify_invariant,
+            confidence(high),
+            evidence("decimal/decimal_numeral_comparison_without_scale_alignment, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges. records whether the written-numeral order agreed with the decimal-value order for this input."),
+            status(review_pending)).
 action_maps(decimal, decimal_place_unit_regrouping, derive_regrouping_factor, read_operand_attribute,
             confidence(medium),
             evidence("decimal/decimal_place_unit_regrouping, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. reads the ten-to-one factor between the nested decimal units before the finer unit is iterated"),
@@ -1538,6 +1546,10 @@ action_maps(decimal, decimal_subtract_unaligned_numerals, omit_decimal_scale_ali
 action_maps(decimal, decimal_subtract_unaligned_numerals, read_written_integer_numerals, register_givens,
             confidence(high),
             evidence("decimal/decimal_subtract_unaligned_numerals, q_start -> q_step_1: 1 of the machine's 5 distinct edges, witnessed. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(decimal, decimal_subtract_unaligned_numerals, record_decimal_operation_viability, verify_invariant,
+            confidence(high),
+            evidence("decimal/decimal_subtract_unaligned_numerals, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges. records whether subtracting the written numerals without aligning scales agreed with subtracting the decimal values for this input."),
             status(review_pending)).
 action_maps(decimal, decimal_subtract_unaligned_numerals, reinscribe_at_larger_scale, inscribe_result,
             confidence(high),

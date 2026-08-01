@@ -181,7 +181,8 @@ run_decimal_action(decimal_numeral_comparison_without_scale_alignment, Pair,
     Trace = [ read_written_integer_numerals(N1, N2),
               omit_decimal_scale_alignment(S1, S2),
               compare_unaligned_numerals(N1, N2, Result),
-              lose_decimal_scale_relation(expected(Expected), produced(Result))
+              lose_decimal_scale_relation(expected(Expected), produced(Result)),
+              record_decimal_order_viability(Viability)
             ].
 run_decimal_action(decimal_fraction_place_value_comparison,
                    decimal_pair(N1, S1, N2, S2), ignored, Outcome, Trace) :-
@@ -284,7 +285,8 @@ run_decimal_action(decimal_add_unaligned_numerals, Pair, ignored,
               omit_decimal_scale_alignment(S1, S2),
               add_unaligned_numerals(N1, N2, ResultNumeral),
               reinscribe_at_larger_scale(ResultNumeral, CommonScale, Result),
-              lose_decimal_scale_relation(expected(Expected), produced(Result))
+              lose_decimal_scale_relation(expected(Expected), produced(Result)),
+              record_decimal_operation_viability(Viability)
             ].
 run_decimal_action(decimal_subtraction_by_aligned_units, Pair, ignored,
                    Outcome, Trace) :-
@@ -348,7 +350,8 @@ run_decimal_action(decimal_subtract_unaligned_numerals, Pair, ignored,
               omit_decimal_scale_alignment(S1, S2),
               subtract_unaligned_numerals(N1, N2, ResultNumeral),
               reinscribe_at_larger_scale(ResultNumeral, CommonScale, Result),
-              lose_decimal_scale_relation(expected(Expected), produced(Result))
+              lose_decimal_scale_relation(expected(Expected), produced(Result)),
+              record_decimal_operation_viability(Viability)
             ].
 run_decimal_action(decimal_place_unit_regrouping, Conversion, ignored,
                    Outcome, Trace) :-

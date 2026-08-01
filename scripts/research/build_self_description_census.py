@@ -895,8 +895,12 @@ def build() -> dict[str, object]:
     # compiled_receipt_routes.pl is the 283rd (2026-07-29, the receipt-route
     # wiring): the register the ledger's licensing rule and the PUSU contrast
     # lane both consume.
-    if len(registry_rows) != 283:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 283")
+    # monitoring_registry_bridge.pl is the 284th (2026-08-01): the two-witness
+    # table joining the geometry monitoring names to the misconception registry.
+    # It arrived with 5ea7876 and the registry was not regenerated then, so the
+    # capability gate had been failing on main until this wave caught it up.
+    if len(registry_rows) != 284:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 284")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -917,8 +921,11 @@ def build() -> dict[str, object]:
     # compiled_receipt_routes.pl is the 71st (2026-07-29): orphan only in the
     # worker-closure sense — its consumers are the ledger's licensing rule and
     # the PUSU runner, recorded in its finding above.
-    if len(orphan_records) != 71:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 71")
+    # monitoring_registry_bridge.pl is the 72nd (2026-08-01): its own header
+    # states that no lesson predicate loads it yet. Stalled pipeline input with
+    # a named reason and both witnesses recorded, never vestige.
+    if len(orphan_records) != 72:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 72")
     if len(unrouted) != 7:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 7")
 

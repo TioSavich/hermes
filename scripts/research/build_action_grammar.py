@@ -150,6 +150,8 @@ ARCS: dict[tuple[str, ...], tuple[str, str]] = {
      "A break, then ordinary work, then a check of what the result still keeps. The check records the agreement region without repairing the earlier role substitution."),
     ("neutral", "deforming", "neutral", "deforming"): ("break_recover_break",
      "A break, then working steps that look ordinary, then a further break. The most common deformation arc in the corpus."),
+    ("neutral", "deforming", "neutral", "deforming", "conserving"): ("break_twice_then_test_what_held",
+     "Two breaks with ordinary work between them, then a check of what the result still keeps. The closing check records whether this input fell inside the agreement region; it repairs neither break."),
     ("neutral", "conserving", "neutral", "conserving"): ("keep_work_keep",
      "The conservation is secured, more work follows, and a second conservation closes the machine."),
     ("deforming", "neutral", "deforming"): ("break_first_work_break",

@@ -124,7 +124,7 @@ LEGEND - actions (canonical, genre/register/stance)
 LEGEND - arcs (name, machines)
   break_first_work_break  4
   break_keep_break  3
-  break_recover_break  22
+  break_recover_break  19
   break_recover_break_work_on  1
   break_then_keep_then_break  1
   break_then_keep_work_on  1
@@ -132,6 +132,7 @@ LEGEND - arcs (name, machines)
   break_then_work_on  10
   break_three_times  1
   break_twice_then_keep_work_on  1
+  break_twice_then_test_what_held  3
   keep_break_recover_break_keep  1
   keep_first_break_keep_break  1
   keep_first_break_recover_break  1
@@ -233,8 +234,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=compare_magnitudes+substitute_appearance_for_measure core=none closure=treat_relevant_as_irrelevant other=none
   decimal/change_decimal_place_name_without_regrouping arc=work_then_break
     shell=read_operand_attribute+rename_in_place_of_transforming+retain_where_change_was_due core=none closure=omit_required_step other=none
-  decimal/decimal_add_unaligned_numerals arc=break_recover_break
-    shell=register_givens core=combine_quantities closure=omit_required_step+inscribe_result+record_loss other=none
+  decimal/decimal_add_unaligned_numerals arc=break_twice_then_test_what_held
+    shell=register_givens core=combine_quantities closure=omit_required_step+inscribe_result+record_loss+verify_invariant other=none
   decimal/decimal_addition_by_aligned_units arc=keep_then_work_on
     shell=read_operand_attribute+select_unit_scale+align_to_common_unit+align_to_common_unit core=combine_quantities closure=inscribe_result other=none
   decimal/decimal_comparison_by_aligned_units arc=keep_then_work_on
@@ -243,16 +244,16 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=initiate+read_operand_attribute+re_express_equivalently+align_to_common_unit+compare_magnitudes core=none closure=emit_result other=none
   decimal/decimal_multiplication_rule arc=keep_work_keep
     shell=read_operand_attribute+recompose_total core=compute_product+accumulate_total closure=set_aside_irrelevant_attribute+inscribe_result other=none
-  decimal/decimal_numeral_comparison_without_scale_alignment arc=break_recover_break
-    shell=register_givens+compare_magnitudes core=none closure=omit_required_step+record_loss other=none
+  decimal/decimal_numeral_comparison_without_scale_alignment arc=break_twice_then_test_what_held
+    shell=register_givens+compare_magnitudes core=none closure=omit_required_step+record_loss+verify_invariant other=none
   decimal/decimal_place_unit_regrouping arc=work_then_keep
     shell=read_operand_attribute+read_operand_attribute core=iterate_unit closure=record_conservation other=none
   decimal/decimal_point_rule_misapplication arc=break_recover_break
     shell=read_operand_attribute core=compute_product+substitute_operation closure=inscribe_result+record_loss other=none
   decimal/decimal_scale_loss_comparison arc=break_then_work_on
     shell=initiate+compare_magnitudes+compare_magnitudes core=none closure=accept_without_check+omit_required_step+emit_result other=none
-  decimal/decimal_subtract_unaligned_numerals arc=break_recover_break
-    shell=register_givens core=remove_quantity closure=omit_required_step+inscribe_result+record_loss other=none
+  decimal/decimal_subtract_unaligned_numerals arc=break_twice_then_test_what_held
+    shell=register_givens core=remove_quantity closure=omit_required_step+inscribe_result+record_loss+verify_invariant other=none
   decimal/decimal_subtraction_by_aligned_units arc=keep_then_work_on
     shell=read_operand_attribute+select_unit_scale+align_to_common_unit+align_to_common_unit core=remove_quantity closure=inscribe_result other=none
   decimal/decimal_whole_number_reading arc=work_then_break

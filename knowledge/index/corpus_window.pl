@@ -143,7 +143,7 @@ window_legend_action(withdraw_commitment, discursive, operation, neutral).
 
 window_legend_arc(break_first_work_break, 4).
 window_legend_arc(break_keep_break, 3).
-window_legend_arc(break_recover_break, 22).
+window_legend_arc(break_recover_break, 19).
 window_legend_arc(break_recover_break_work_on, 1).
 window_legend_arc(break_then_keep_then_break, 1).
 window_legend_arc(break_then_keep_work_on, 1).
@@ -151,6 +151,7 @@ window_legend_arc(break_then_test_what_held, 1).
 window_legend_arc(break_then_work_on, 10).
 window_legend_arc(break_three_times, 1).
 window_legend_arc(break_twice_then_keep_work_on, 1).
+window_legend_arc(break_twice_then_test_what_held, 3).
 window_legend_arc(keep_break_recover_break_keep, 1).
 window_legend_arc(keep_first_break_keep_break, 1).
 window_legend_arc(keep_first_break_recover_break, 1).
@@ -210,16 +211,16 @@ window_row(counting, place_value_comparison, keep_first_then_work_on, [align_to_
 window_row(counting, recursive_place_value_inscription, work_then_keep, [register_givens, select_unit_scale, regroup_to_base], [], [], []).
 window_row(counting, spatial_extent_as_cardinality, break_first_work_break, [compare_magnitudes, substitute_appearance_for_measure], [], [treat_relevant_as_irrelevant], []).
 window_row(decimal, change_decimal_place_name_without_regrouping, work_then_break, [read_operand_attribute, rename_in_place_of_transforming, retain_where_change_was_due], [], [omit_required_step], []).
-window_row(decimal, decimal_add_unaligned_numerals, break_recover_break, [register_givens], [combine_quantities], [omit_required_step, inscribe_result, record_loss], []).
+window_row(decimal, decimal_add_unaligned_numerals, break_twice_then_test_what_held, [register_givens], [combine_quantities], [omit_required_step, inscribe_result, record_loss, verify_invariant], []).
 window_row(decimal, decimal_addition_by_aligned_units, keep_then_work_on, [read_operand_attribute, select_unit_scale, align_to_common_unit, align_to_common_unit], [combine_quantities], [inscribe_result], []).
 window_row(decimal, decimal_comparison_by_aligned_units, keep_then_work_on, [read_operand_attribute, select_unit_scale, align_to_common_unit, align_to_common_unit, compare_magnitudes], [], [], []).
 window_row(decimal, decimal_fraction_place_value_comparison, keep_then_work_on, [initiate, read_operand_attribute, re_express_equivalently, align_to_common_unit, compare_magnitudes], [], [emit_result], []).
 window_row(decimal, decimal_multiplication_rule, keep_work_keep, [read_operand_attribute, recompose_total], [compute_product, accumulate_total], [set_aside_irrelevant_attribute, inscribe_result], []).
-window_row(decimal, decimal_numeral_comparison_without_scale_alignment, break_recover_break, [register_givens, compare_magnitudes], [], [omit_required_step, record_loss], []).
+window_row(decimal, decimal_numeral_comparison_without_scale_alignment, break_twice_then_test_what_held, [register_givens, compare_magnitudes], [], [omit_required_step, record_loss, verify_invariant], []).
 window_row(decimal, decimal_place_unit_regrouping, work_then_keep, [read_operand_attribute, read_operand_attribute], [iterate_unit], [record_conservation], []).
 window_row(decimal, decimal_point_rule_misapplication, break_recover_break, [read_operand_attribute], [compute_product, substitute_operation], [inscribe_result, record_loss], []).
 window_row(decimal, decimal_scale_loss_comparison, break_then_work_on, [initiate, compare_magnitudes, compare_magnitudes], [], [accept_without_check, omit_required_step, emit_result], []).
-window_row(decimal, decimal_subtract_unaligned_numerals, break_recover_break, [register_givens], [remove_quantity], [omit_required_step, inscribe_result, record_loss], []).
+window_row(decimal, decimal_subtract_unaligned_numerals, break_twice_then_test_what_held, [register_givens], [remove_quantity], [omit_required_step, inscribe_result, record_loss, verify_invariant], []).
 window_row(decimal, decimal_subtraction_by_aligned_units, keep_then_work_on, [read_operand_attribute, select_unit_scale, align_to_common_unit, align_to_common_unit], [remove_quantity], [inscribe_result], []).
 window_row(decimal, decimal_whole_number_reading, work_then_break, [register_givens], [], [treat_relevant_as_irrelevant, treat_relevant_as_irrelevant, misname_result, record_loss], []).
 window_row(decimal, ecuadorian_decimal_long_division, unrecorded_run, [read_operand_attribute, select_unit_scale, scale_multiplicatively], [apply_stored_rule, compute_quotient], [name_result], []).

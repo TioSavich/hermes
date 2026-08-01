@@ -158,6 +158,8 @@ normative_arc(break_then_keep_then_break, stances([neutral, deforming, neutral, 
               gloss("A break, work, something kept, and a final break. The kept step does not repair the first break.")).
 normative_arc(break_then_keep_work_on, stances([neutral, deforming, neutral, conserving, neutral]),
               gloss("A break, then a step that keeps something, then further work. One of the four machines in which anything conserving follows a break.")).
+normative_arc(break_twice_then_test_what_held, stances([neutral, deforming, neutral, deforming, conserving]),
+              gloss("Two breaks with ordinary work between them, then a check of what the result still keeps. The closing check records whether this input fell inside the agreement region; it repairs neither break.")).
 normative_arc(break_recover_break_work_on, stances([neutral, deforming, neutral, deforming, neutral]),
               gloss("Two breaks with working steps between and after them.")).
 normative_arc(keep_first_break_keep_break, stances([conserving, neutral, deforming, neutral, conserving, deforming]),
@@ -300,9 +302,9 @@ machine_grammar(computational, counting, spatial_extent_as_cardinality, arc(brea
 machine_grammar(computational, decimal, change_decimal_place_name_without_regrouping, arc(work_then_break),
                 phrases([read_operand_attribute, rename_in_place_of_transforming, retain_where_change_was_due, omit_required_step]),
                 stances([neutral, deforming, deforming, deforming])).
-machine_grammar(computational, decimal, decimal_add_unaligned_numerals, arc(break_recover_break),
-                phrases([register_givens, omit_required_step, combine_quantities, write_and_record_the_loss]),
-                stances([neutral, deforming, neutral, neutral, deforming])).
+machine_grammar(computational, decimal, decimal_add_unaligned_numerals, arc(break_twice_then_test_what_held),
+                phrases([register_givens, omit_required_step, combine_quantities, write_and_record_the_loss, verify_invariant]),
+                stances([neutral, deforming, neutral, neutral, deforming, conserving])).
 machine_grammar(computational, decimal, decimal_addition_by_aligned_units, arc(keep_then_work_on),
                 phrases([read_operand_attribute, select_unit_scale, bring_both_to_a_common_unit, combine_quantities, inscribe_result]),
                 stances([neutral, neutral, conserving, conserving, neutral, neutral])).
@@ -315,9 +317,9 @@ machine_grammar(computational, decimal, decimal_fraction_place_value_comparison,
 machine_grammar(computational, decimal, decimal_multiplication_rule, arc(keep_work_keep),
                 phrases([read_operand_attribute, set_aside_irrelevant_attribute, compute_product, accumulate_total, inscribe_result, recompose_total]),
                 stances([neutral, conserving, neutral, neutral, neutral, conserving])).
-machine_grammar(computational, decimal, decimal_numeral_comparison_without_scale_alignment, arc(break_recover_break),
-                phrases([register_givens, omit_required_step, compare_magnitudes, record_loss]),
-                stances([neutral, deforming, neutral, deforming])).
+machine_grammar(computational, decimal, decimal_numeral_comparison_without_scale_alignment, arc(break_twice_then_test_what_held),
+                phrases([register_givens, omit_required_step, compare_magnitudes, record_loss, verify_invariant]),
+                stances([neutral, deforming, neutral, deforming, conserving])).
 machine_grammar(computational, decimal, decimal_place_unit_regrouping, arc(work_then_keep),
                 phrases([read_the_givens_through, iterate_unit, record_conservation]),
                 stances([neutral, neutral, neutral, conserving])).
@@ -327,9 +329,9 @@ machine_grammar(computational, decimal, decimal_point_rule_misapplication, arc(b
 machine_grammar(computational, decimal, decimal_scale_loss_comparison, arc(break_then_work_on),
                 phrases([initiate, accept_unchecked_then_skip, compare_magnitudes, order_and_release]),
                 stances([neutral, deforming, deforming, neutral, neutral, neutral])).
-machine_grammar(computational, decimal, decimal_subtract_unaligned_numerals, arc(break_recover_break),
-                phrases([register_givens, omit_required_step, remove_quantity, write_and_record_the_loss]),
-                stances([neutral, deforming, neutral, neutral, deforming])).
+machine_grammar(computational, decimal, decimal_subtract_unaligned_numerals, arc(break_twice_then_test_what_held),
+                phrases([register_givens, omit_required_step, remove_quantity, write_and_record_the_loss, verify_invariant]),
+                stances([neutral, deforming, neutral, neutral, deforming, conserving])).
 machine_grammar(computational, decimal, decimal_subtraction_by_aligned_units, arc(keep_then_work_on),
                 phrases([read_operand_attribute, select_unit_scale, bring_both_to_a_common_unit, remove_quantity, inscribe_result]),
                 stances([neutral, neutral, conserving, conserving, neutral, neutral])).
@@ -1759,8 +1761,8 @@ token_loss_rate(computational, apply_stored_rule, machines(13), ending_deforming
 token_loss_rate(computational, assign_roles, machines(37), ending_deforming(10)).
 token_loss_rate(discursive, attend_to_utterance, machines(8), ending_deforming(4)).
 token_loss_rate(discursive, attribute_commitment, machines(4), ending_deforming(2)).
-token_loss_rate(computational, combine_quantities, machines(18), ending_deforming(7)).
-token_loss_rate(computational, compare_magnitudes, machines(17), ending_deforming(3)).
+token_loss_rate(computational, combine_quantities, machines(18), ending_deforming(6)).
+token_loss_rate(computational, compare_magnitudes, machines(17), ending_deforming(2)).
 token_loss_rate(computational, compose_expression, machines(6), ending_deforming(1)).
 token_loss_rate(computational, compute_product, machines(17), ending_deforming(7)).
 token_loss_rate(computational, compute_quotient, machines(9), ending_deforming(2)).
@@ -1777,7 +1779,7 @@ token_loss_rate(computational, evaluate_expression, machines(4), ending_deformin
 token_loss_rate(computational, filter_by_constraint, machines(5), ending_deforming(1)).
 token_loss_rate(computational, halt_before_completion, machines(10), ending_deforming(10)).
 token_loss_rate(computational, initiate, machines(15), ending_deforming(0)).
-token_loss_rate(computational, inscribe_result, machines(24), ending_deforming(8)).
+token_loss_rate(computational, inscribe_result, machines(24), ending_deforming(6)).
 token_loss_rate(computational, iterate_composite_unit, machines(5), ending_deforming(0)).
 token_loss_rate(computational, iterate_unit, machines(16), ending_deforming(3)).
 token_loss_rate(computational, locate_position, machines(13), ending_deforming(1)).
@@ -1785,7 +1787,7 @@ token_loss_rate(computational, measure_out_group_size, machines(4), ending_defor
 token_loss_rate(computational, measure_quantity, machines(8), ending_deforming(1)).
 token_loss_rate(computational, misname_result, machines(33), ending_deforming(32)).
 token_loss_rate(computational, name_result, machines(42), ending_deforming(2)).
-token_loss_rate(computational, omit_required_step, machines(42), ending_deforming(35)).
+token_loss_rate(computational, omit_required_step, machines(42), ending_deforming(32)).
 token_loss_rate(computational, order_by_magnitude, machines(6), ending_deforming(1)).
 token_loss_rate(computational, partition_into_equal_parts, machines(14), ending_deforming(1)).
 token_loss_rate(computational, re_express_equivalently, machines(6), ending_deforming(0)).
@@ -1795,10 +1797,10 @@ token_loss_rate(computational, recompose_total, machines(12), ending_deforming(4
 token_loss_rate(computational, record_conservation, machines(19), ending_deforming(0)).
 token_loss_rate(discursive, record_deontic_incoherence, machines(7), ending_deforming(7)).
 token_loss_rate(discursive, record_deontic_score, machines(8), ending_deforming(0)).
-token_loss_rate(computational, record_loss, machines(55), ending_deforming(55)).
-token_loss_rate(computational, register_givens, machines(71), ending_deforming(27)).
+token_loss_rate(computational, record_loss, machines(55), ending_deforming(52)).
+token_loss_rate(computational, register_givens, machines(71), ending_deforming(24)).
 token_loss_rate(computational, regroup_to_base, machines(7), ending_deforming(3)).
-token_loss_rate(computational, remove_quantity, machines(19), ending_deforming(8)).
+token_loss_rate(computational, remove_quantity, machines(19), ending_deforming(7)).
 token_loss_rate(computational, replicate_equal_groups, machines(6), ending_deforming(2)).
 token_loss_rate(computational, retain_unchanged, machines(4), ending_deforming(1)).
 token_loss_rate(computational, retain_what_must_survive, machines(5), ending_deforming(1)).
@@ -1815,4 +1817,4 @@ token_loss_rate(computational, test_criteria, machines(8), ending_deforming(1)).
 token_loss_rate(computational, traverse_boundary, machines(4), ending_deforming(2)).
 token_loss_rate(computational, treat_relevant_as_irrelevant, machines(21), ending_deforming(16)).
 token_loss_rate(computational, unitize_referent, machines(20), ending_deforming(2)).
-token_loss_rate(computational, verify_invariant, machines(26), ending_deforming(0)).
+token_loss_rate(computational, verify_invariant, machines(29), ending_deforming(0)).

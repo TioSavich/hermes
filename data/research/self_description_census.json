@@ -410,7 +410,7 @@
       "infrastructure": 20,
       "juncture": 1,
       "learner": 25,
-      "misconceptions": 13,
+      "misconceptions": 14,
       "monitoring": 5,
       "pml": 15,
       "render": 28,
@@ -423,7 +423,7 @@
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 71,
+      "orphan_module": 72,
       "routed_only": 14,
       "routed_paged": 181,
       "unrouted": 7
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 34
+      "undetermined": 35
     },
-    "total": 283,
+    "total": 284,
     "unrouted": 7
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1275,6 +1275,20 @@
       "note": "knowledge/misconceptions/literature_vocabulary.pl includes this source rather than importing it as a module.",
       "path": "knowledge/misconceptions/literature_canonical_mappings.pl",
       "verdict": "include_active"
+    },
+    {
+      "capability_class": "misconceptions",
+      "evidence": [
+        {
+          "locator": "/** <module> Monitoring-name to misconception-registry bridge",
+          "path": "knowledge/misconceptions/monitoring_registry_bridge.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "monitoring_registry_bridge",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/misconceptions/monitoring_registry_bridge.pl",
+      "verdict": "undetermined"
     },
     {
       "capability_class": "misconceptions",

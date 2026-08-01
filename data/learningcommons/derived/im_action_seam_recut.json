@@ -18577,6 +18577,18 @@
       "symbolic_expression_construction"
      ],
      [
+      "decimal",
+      "decimal_add_unaligned_numerals"
+     ],
+     [
+      "decimal",
+      "decimal_numeral_comparison_without_scale_alignment"
+     ],
+     [
+      "decimal",
+      "decimal_subtract_unaligned_numerals"
+     ],
+     [
       "division",
       "divide_larger_by_smaller"
      ],
@@ -29078,6 +29090,11 @@
         "label": "lose_decimal_scale_relation(expected(more),produced(more))",
         "n": 4,
         "value": ""
+       },
+       {
+        "label": "record_decimal_order_viability(viability(contextual_success,condition(written_numeral_order_coincides_with_decimal_value_order),validity(contextually_correct)))",
+        "n": 5,
+        "value": ""
        }
       ],
       "strategy": "decimal_numeral_comparison_without_scale_alignment"
@@ -29223,6 +29240,11 @@
         "label": "lose_decimal_scale_relation(expected(decimal(2,fractional_digits(8,1),tenths)),produced(decimal(2,fractional_digits(8,1),tenths)))",
         "n": 5,
         "value": ""
+       },
+       {
+        "label": "record_decimal_operation_viability(viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct)))",
+        "n": 6,
+        "value": ""
        }
       ],
       "strategy": "decimal_add_unaligned_numerals"
@@ -29367,6 +29389,11 @@
        {
         "label": "lose_decimal_scale_relation(expected(decimal(2,fractional_digits(2,1),tenths)),produced(decimal(2,fractional_digits(2,1),tenths)))",
         "n": 5,
+        "value": ""
+       },
+       {
+        "label": "record_decimal_operation_viability(viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct)))",
+        "n": 6,
         "value": ""
        }
       ],
