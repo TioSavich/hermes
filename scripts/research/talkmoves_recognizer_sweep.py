@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the strategy recognizer over every student turn in the TalkMoves corpus.
 
-The recognizer models 106 execution-observed automata and abstains by design.
+The recognizer models 114 execution-observed traces and abstains by design.
 Until now it has met three transcripts and one worked demonstration.  The Sumner
 lab's released corpus is 567 K-12 mathematics lesson transcripts, sentence
 segmented, with teacher and student moves already coded by people — real

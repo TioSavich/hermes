@@ -99,6 +99,9 @@ def main() -> int:
         request(21, "misconception_lookup", {"limit": 5.5}),
         request(22, "misconception_lookup", {"domain": "whole_number", "source": "db_row(37492)", "limit": 1}),
         request(23, "resonance_neighbors", {"db_row": "db_row(37492)", "k": 5}),
+        request(24, "lesson_enactment_list", {}),
+        request(25, "lesson_enactment_run", {"lesson": "IM-G4-U2-L4"}),
+        request(26, "diagnose_error", {"domain": "fraction", "input": "frac(1,7)-frac(1,7)", "got": "frac(1,14)"}),
     ]
     responses = run("core", messages)
     by_id = {response.get("id"): response for response in responses}
@@ -112,6 +115,9 @@ def main() -> int:
     assert next(tool for tool in listed if tool["name"] == "misconception_search_rows")["outputSchema"]
     assert next(tool for tool in listed if tool["name"] == "incompatibility_entailments")["outputSchema"]
     assert next(tool for tool in listed if tool["name"] == "incompatibility_profile")["outputSchema"]
+    diagnose_schema = next(tool for tool in listed if tool["name"] == "diagnose_error")["inputSchema"]
+    assert diagnose_schema["required"] == ["domain", "input", "got"]
+    assert all(diagnose_schema["properties"][key]["type"] == "string" for key in diagnose_schema["required"])
     assert tool_value(by_id[3])["inventory"]
     assert tool_value(by_id[4])["id"] == "$.cells[0].productive"
     assert "cells" in tool_value(by_id[5])
@@ -144,6 +150,14 @@ def main() -> int:
     identities = [row["db_row"] for row in neighbors["neighbors"]]
     assert neighbors["query_db_row"] == "db_row(37492)"
     assert len(identities) == len(set(identities)) and "db_row(37492)" not in identities
+    enactment_catalog = tool_value(by_id[24])
+    assert enactment_catalog["lesson_count"] == len(enactment_catalog["lessons"])
+    assert enactment_catalog["form_count"] == 40 and enactment_catalog["refusals"]
+    enacted = tool_value(by_id[25])
+    assert enacted["enactment_count"] == len(enacted["enactments"]) and enacted["enactments"]
+    assert all(row["input_provenance"] and row["what_it_does_not_claim"] for row in enacted["enactments"])
+    diagnoses = tool_value(by_id[26])
+    assert any(row["description"] == "add_denominators_unit_fractions" for row in diagnoses)
     monitoring_views = exercise_monitoring_views()
 
     bundle_results: dict[str, list[str]] = {}
@@ -159,6 +173,12 @@ def main() -> int:
         "lesson_deformation_chart_detail", "strategy_trace", "misconception_lookup", "misconception_search_rows",
     ]
 
+    registry_list = run("registry", [{"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}])[0]
+    registry_tools = registry_list["result"]["tools"]
+    assert registry_tools
+    assert all("/" not in tool["name"] and "." not in tool["name"] for tool in registry_tools)
+    assert all(tool["annotations"] == {"readOnlyHint": False, "idempotentHint": False} for tool in registry_tools)
+
     for message in messages:
         print("REQUEST", json.dumps(message, ensure_ascii=False))
     for response in responses:
@@ -166,6 +186,8 @@ def main() -> int:
     print("FIXTURE_MONITORING_VIEWS", json.dumps(monitoring_views, sort_keys=True))
     for bundle, names in bundle_results.items():
         print("BUNDLE", bundle, json.dumps(names))
+    print("REGISTRY", json.dumps({"tool_count": len(registry_tools), "invalid_name_count": 0,
+                                  "annotations": {"readOnlyHint": False, "idempotentHint": False}}, sort_keys=True))
     return 0
 
 

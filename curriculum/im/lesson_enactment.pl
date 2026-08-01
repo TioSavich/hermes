@@ -1074,7 +1074,7 @@ artifact_jumps(_, []).
 %   put one there, and is empty otherwise. An empty list carries a stated reason
 %   in jump_witness rather than passing as an absence nobody asked about.
 enactment_trace_dict(Enactment, Dict) :-
-    Enactment = enactment(Lesson, Form, _Inputs, Steps, Artifact),
+    Enactment = enactment(Lesson, Form, Inputs, Steps, Artifact),
     maplist(enactment_step_dict, Steps, StepDicts),
     artifact_jumps(Artifact, Jumps),
     enactment_verdict(Enactment, Verdict),
@@ -1087,6 +1087,8 @@ enactment_trace_dict(Enactment, Dict) :-
     ;   GlossStr = ""
     ),
     artifact_summary(Artifact, ArtifactKind, ArtifactText),
+    form_provenance(Form, Lesson, Inputs, InputProvenance),
+    atom_string(InputProvenance, InputProvenanceStr),
     last_result_text(Steps, ResultStr),
     length(Steps, Ran),
     length(Jumps, JumpCount),
@@ -1124,6 +1126,7 @@ enactment_trace_dict(Enactment, Dict) :-
         form: FormStr,
         form_gloss: GlossStr,
         verdict: VerdictText,
+        input_provenance: InputProvenanceStr,
         artifact_kind: ArtifactKind,
         artifact_summary: ArtifactText,
         what_it_does_not_claim: DisclaimerStr

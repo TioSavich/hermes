@@ -695,6 +695,14 @@ dispatch_spec(strategy_trace,
     call(hermes_encyclopedia:strategy_trace_dict,
          [strategy, input, out(dict)]),
     raw(missing_strategy)).
+dispatch_spec(lesson_enactment_list,
+    [],
+    call(user:lesson_enactment_catalog_dict, [out(dict)]),
+    raw).
+dispatch_spec(lesson_enactment_run,
+    [lesson-code],
+    call(user:lesson_enactment_trace_dict, [lesson, out(dict)]),
+    raw(no_lesson_enactment, malformed_lesson_enactment_request)).
 dispatch_spec(strategy_recognize,
     [content-nonempty_text],
     call(strategy_recognizer:recognize_strategies,
@@ -770,6 +778,8 @@ dispatch_message(field_context, malformed, "field_context requires lesson_code")
 dispatch_message(field_context, no_result, "field_context found no context for lesson_code").
 dispatch_message(inferential_strength, malformed, "inferential_strength requires lesson").
 dispatch_message(strategy_trace, malformed, "strategy_trace requires strategy").
+dispatch_message(lesson_enactment_run, no_result, "lesson_enactment_run found no declared enactment for that lesson; call lesson_enactment_list to inspect enacted lessons and named refusals").
+dispatch_message(lesson_enactment_run, malformed, "lesson_enactment_run requires lesson").
 dispatch_message(grounding_for, malformed, "grounding_for requires operation").
 dispatch_message(ground, malformed, "ground requires query").
 dispatch_message(lit_search, malformed, "lit_search requires query").

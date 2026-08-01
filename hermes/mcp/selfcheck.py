@@ -49,6 +49,36 @@ CHECKS = (
         fix="Use a strategy name and worked input from the strategy_trace tool schema; its contracts are specific to each strategy.",
     ),
     Check(
+        label="lesson_enactment_list exposes forms and named refusals",
+        tool="lesson_enactment_list",
+        arguments={},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("lesson_count") == len(value.get("lessons", []))
+        and value.get("form_count") == 40
+        and bool(value.get("refusals"))
+        and all(row.get("machine_needed") for row in value.get("refusals", [])),
+        fix="Confirm that the five curriculum/im/enactment lane modules load through paths.pl without geometry_bridge.pl or learner/server*.pl.",
+    ),
+    Check(
+        label="lesson_enactment_run preserves trace provenance and disclaimer",
+        tool="lesson_enactment_run",
+        arguments={"lesson": "IM-G4-U2-L4"},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("enactment_count") == len(value.get("enactments", []))
+        and bool(value.get("enactments"))
+        and all(row.get("input_provenance") and row.get("what_it_does_not_claim") for row in value.get("enactments", []))
+        and all(not str(step.get("label", "")).isdigit() for row in value.get("enactments", []) for step in row.get("steps", [])),
+        fix="Use an exact lesson code returned by lesson_enactment_list and preserve enactment_trace_dict/2, including input provenance and the disclaimer.",
+    ),
+    Check(
+        label="diagnose_error names an encoded matching misconception",
+        tool="diagnose_error",
+        arguments={"domain": "fraction", "input": "frac(1,7)-frac(1,7)", "got": "frac(1,14)"},
+        accepts=lambda value: isinstance(value, list)
+        and any(row.get("description") == "add_denominators_unit_fractions" for row in value),
+        fix="Use scalar term-form strings for domain, input, and got; an empty list means no encoded runnable rule matched.",
+    ),
+    Check(
         label="incompatibility_entailments for a reviewed a-fortiori replacement",
         tool="incompatibility_entailments",
         arguments={

@@ -122,6 +122,8 @@ capability('intersubjective_material_witness', 'intersubjective_praxis', 'pml', 
 capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
 capability('learner_reset', 'more_machine_learner', 'learner', [], routed_paged).
 capability('lesson_deformation_chart', 'lesson_deformation_chart', 'workflow', ['code'], routed_paged).
+capability('lesson_enactment_list', 'user', 'workflow', [], unrouted).
+capability('lesson_enactment_run', 'user', 'workflow', ['lesson'], unrouted).
 capability('lesson_misconception_incompatibility_witness', 'user', 'misconceptions', ['lesson_code', 'name', 'operation'], routed_only).
 capability('list_misconceptions', 'hermes_encyclopedia', 'misconceptions', ['domain'], routed_paged).
 capability('list_standards', 'hermes_encyclopedia', 'infrastructure', ['framework'], routed_paged).
@@ -340,6 +342,9 @@ capability_parameter('deontic_scorecard', 'commitments', 'array', false, []).
 capability_parameter('deontic_scorecard', 'entitlements', 'array', false, []).
 capability_parameter('deontic_up_level', 'agent', 'string', false, "student").
 capability_parameter('deontic_up_level', 'commitments', 'array', false, []).
+capability_parameter('diagnose_error', 'domain', 'string', true, "fraction").
+capability_parameter('diagnose_error', 'got', 'string', true, "frac(1,14)").
+capability_parameter('diagnose_error', 'input', 'string', true, "frac(1,7)-frac(1,7)").
 capability_parameter('domain_context_witness', 'domain', null, true, null).
 capability_parameter('domain_context_witness', 'context', null, true, null).
 capability_parameter('domain_context_witness', 'source', null, true, null).
@@ -429,6 +434,7 @@ capability_parameter('integer_signed_claim_witness', 'source', 'string', true, n
 capability_parameter('intersubjective_material_witness', 'from', null, true, null).
 capability_parameter('intersubjective_material_witness', 'to', null, true, null).
 capability_parameter('lesson_deformation_chart', 'code', 'string', true, "IM-G3-U5-L2").
+capability_parameter('lesson_enactment_run', 'lesson', 'string', true, "IM-G4-U2-L4").
 capability_parameter('lesson_misconception_incompatibility_witness', 'lesson_code', null, true, null).
 capability_parameter('lesson_misconception_incompatibility_witness', 'name', null, true, null).
 capability_parameter('lesson_misconception_incompatibility_witness', 'operation', null, false, null).
@@ -556,6 +562,8 @@ capability_parameter('whole_number_addsub_claim_witness', 'source', 'string', tr
 capability_parameter('whole_number_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('whole_number_claim_witness', 'source', 'string', true, null).
 capability_description('check_math_claim', "Check one typed mathematical claim term: equivalence(fraction(A,B), fraction(C,D)), multiplication, difference, sum, subtraction, comparison, fraction_sum, fraction_of, iterate_to_whole, ordering, quadrilateral claims, or arithmetic_equation; leaves are integers or registered vocabulary atoms.").
+capability_description('lesson_enactment_list', "List enacted IM lessons with every declared form, plus named refusals and the machine each refusal would need.").
+capability_description('lesson_enactment_run', "Run every distinct enacted form for one IM lesson and return each result through the strategy-trace response shape.").
 
 capability_route('accommodation_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('ace_of_bases_render', 'POST', '/api/monitoring_visuals').

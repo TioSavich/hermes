@@ -1678,7 +1678,7 @@ carving_strategy_proof_dispatch_dict(Op, X, Y, Z, Dict) :-
 
 % A response hook preserves a legacy response shape when the generic call
 % frame itself would be observable. The geometry coverage witness contains
-% Authored table dispatch. The 26 render operations and 29 irregular operations
+% Authored table dispatch. The 28 render-role operations and 55 irregular operations
 % remain bespoke by design; spec-backed operations commit here before the
 % catch-all.
 dispatch_request(Op, Id, Request, Response) :-
@@ -3973,6 +3973,82 @@ catalogue_break_for(ContentSet, Break) :-
     ->  term_to_text(BreakId, Break)
     ;   Break = null
     ).
+
+%!  ensure_lesson_enactment_loaded is det.
+%
+%   Import-free lazy load for the enactment contract and its five lanes. The
+%   lanes take about eleven seconds to load in this checkout, so worker boot
+%   stays unchanged and the cost is paid only by enactment callers. This list
+%   deliberately excludes geometry/geometry_bridge.pl and learner/server*.pl.
+ensure_lesson_enactment_loaded :-
+    (   current_module(im_enactment_counting_place_value),
+        current_module(data_representation_enactment),
+        current_module(enactment_fraction_model_reasoning),
+        current_module(geometry_construction),
+        current_module(im_enactment_measurement)
+    ->  true
+    ;   with_output_to(user_error,
+            ( use_module(im_lessons(lesson_enactment), []),
+              use_module(im_lessons('enactment/counting_place_value'), []),
+              use_module(im_lessons('enactment/data_representation'), []),
+              use_module(im_lessons('enactment/fraction_model_reasoning'), []),
+              use_module(im_lessons('enactment/geometry_construction'), []),
+              use_module(im_lessons('enactment/measurement'), [])
+            ))
+    ).
+
+%!  lesson_enactment_catalog_dict(-Dict) is det.
+%
+%   The discoverable enactment surface: every lesson that can run, all of its
+%   distinct forms, and every named refusal with the machine it would need.
+lesson_enactment_catalog_dict(Dict) :-
+    ensure_lesson_enactment_loaded,
+    lesson_enactment:enactment_declared_lessons(Lessons),
+    maplist(lesson_enactment_catalog_row, Lessons, LessonRows),
+    findall(_{lesson: LessonText, machine_needed: MachineText},
+            ( lesson_enactment:lesson_enactment_refusal(Lesson, Machine),
+              atom_string(Lesson, LessonText),
+              atom_string(Machine, MachineText)
+            ),
+            Refusals0),
+    sort(Refusals0, Refusals),
+    findall(Form,
+            lesson_enactment:enactment_form(Form, _, _),
+            Forms0),
+    sort(Forms0, Forms),
+    length(LessonRows, LessonCount),
+    length(Forms, FormCount),
+    length(Refusals, RefusalCount),
+    Dict = _{lesson_count: LessonCount,
+             form_count: FormCount,
+             refusal_count: RefusalCount,
+             lessons: LessonRows,
+             refusals: Refusals}.
+
+lesson_enactment_catalog_row(Lesson,
+        _{lesson: LessonText, forms: FormTexts}) :-
+    lesson_enactment:enactment_lesson_forms(Lesson, Forms),
+    atom_string(Lesson, LessonText),
+    maplist(atom_string, Forms, FormTexts).
+
+%!  lesson_enactment_trace_dict(+Lesson, -Dict) is semidet.
+%
+%   Run every distinct form declared for Lesson. Returning every form preserves
+%   enact_lesson/2's nondeterminism instead of hiding later input shapes behind
+%   the first solution.
+lesson_enactment_trace_dict(Lesson, Dict) :-
+    ensure_lesson_enactment_loaded,
+    findall(Trace,
+            ( lesson_enactment:enact_lesson(Lesson, Enactment),
+              lesson_enactment:enactment_trace_dict(Enactment, Trace)
+            ),
+            Traces),
+    Traces \== [],
+    atom_string(Lesson, LessonText),
+    length(Traces, EnactmentCount),
+    Dict = _{lesson: LessonText,
+             enactment_count: EnactmentCount,
+             enactments: Traces}.
 
 %!  ensure_learner_compute_loaded is det.
 %

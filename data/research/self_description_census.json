@@ -418,7 +418,7 @@
       "standards": 22,
       "synthesis": 35,
       "unclassified": 8,
-      "workflow": 14,
+      "workflow": 16,
       "zeeman": 4
     },
     "by_status": {
@@ -426,7 +426,7 @@
       "orphan_module": 80,
       "routed_only": 14,
       "routed_paged": 181,
-      "unrouted": 7
+      "unrouted": 9
     },
     "orphan_verdicts": {
       "consumed_by_builder": 3,
@@ -437,8 +437,8 @@
       "superseded": 0,
       "undetermined": 43
     },
-    "total": 292,
-    "unrouted": 7
+    "total": 294,
+    "unrouted": 9
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1858,6 +1858,37 @@
       "judgement": "A page should route to it.",
       "name": "index_topic_subtraction",
       "reason": "The module states that the index is reachable from the running application, but the dispatch operation has no web route or MCP exposure."
+    },
+    {
+      "does": "Lists every lesson an enactment lane can perform, the distinct forms declared for each, and every named refusal with the machine it would need.",
+      "evidence": [
+        {
+          "locator": "(\"lesson_enactment_list\", \"List every lesson with an executable enactment",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "lesson_enactment_list",
+      "reason": "It is a discovery listing for a caller choosing what to run next, and its consumers are the MCP surface and the census builder. The console reaches an enactment through the strategy-trace display it already serves, so a page that listed the inventory would show what no page asks for."
+    },
+    {
+      "does": "Runs one lesson's enactment and serializes every distinct form it produces, keeping the verdict, the input provenance, and the sentence naming what the row does not claim.",
+      "evidence": [
+        {
+          "locator": "The one serializer. It fills the dict shape `strategy_trace_dict/3` returns,",
+          "path": "curriculum/im/lesson_enactment.pl",
+          "relation": "the shared response shape that makes a page route unnecessary"
+        },
+        {
+          "locator": "(\"lesson_enactment_run\"",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "lesson_enactment_run",
+      "reason": "The serializer fills the dict shape strategy_trace_dict/3 returns, so an enactment already reaches every consumer a strategy trace reaches. A second route would duplicate a display path rather than add one."
     },
     {
       "does": "Finds the authored monitoring clusters for a topic, automaton state, or standard, and returns their assessing and advancing questions with the productive core and deformation that license them.",

@@ -50,6 +50,9 @@ CORE_TO_WORKER = {
     "strategy_trace": "strategy_trace",
     "strategy_recognize": "strategy_recognize",
     "incompatibility_contexts": "incompatibility_contexts",
+    "lesson_enactment_list": "lesson_enactment_list",
+    "lesson_enactment_run": "lesson_enactment_run",
+    "diagnose_error": "diagnose_error",
 }
 
 TOOL_BUNDLES = {
@@ -75,8 +78,11 @@ CORE_TOOLS = (
     ("deontic_consequences", "Return consequences licensed by stated commitment terms.", ("agent", "commitments")),
     ("deontic_up_level", "Return named up-level questions for unresolved commitment gaps.", ("agent", "commitments")),
     ("commitment_match", "Match reading content through the strategy/misconception and literature-canonical vocabularies. Each match labels its matcher; it abstains when neither complete-name gate admits a term.", ("content",)),
-    ("strategy_recognize", "Align ordinary classroom language to five execution-observed strategy traces. Results are candidates with token spans, missing evidence, trace frontier, order conflicts, and observed-transition provenance; an empty list is an abstention.", ("content",)),
+    ("strategy_recognize", "Align ordinary classroom language to 114 execution-observed strategy traces. Confidence is unshared surface evidence times trace coverage, capped at one. A partial_trace requires at least two steps in trace order from two distinct surfaces and at least one full step of unshared evidence. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("content",)),
     ("strategy_trace", "Run one registered strategy with an optional input object. The schema lists the registry-backed names, operation pairing, and worked inputs. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
+    ("lesson_enactment_list", "List every lesson with an executable enactment, all distinct forms declared for each lesson, and named refusals with the machine each would need. The first enactment call lazily loads five lanes and may take about eleven seconds in this checkout.", ()),
+    ("lesson_enactment_run", "Run every distinct enactment form declared for one lesson and return each result through the strategy-trace response shape. Each trace carries its verdict, input provenance, and what_it_does_not_claim sentence. A lesson with no declared enactment returns a not-covered error; call lesson_enactment_list to inspect named refusals. The first enactment call may take about eleven seconds.", ("lesson",)),
+    ("diagnose_error", "Return encoded misconception diagnoses whose runnable rule reproduces got for the stated domain and input. This names matching encoded misconceptions; it does not assess every possible error, and an empty result is an abstention rather than a verdict that the work is correct.", ("domain", "input", "got")),
     ("misconception_lookup", "Filter encoded misconceptions by optional domain, exact description slug, or source db_row identity. source narrows only to db_row(N); a supplied value that does not parse as a ground filter term is refused. Use misconception_search_rows for citation or author search. Results are paged; use limit and offset to move through the matched rows.", ("domain", "description", "source", "limit", "offset")),
     ("misconception_search_rows", "Search stored misconception rows offline by whole query words in their name, domain, description, or citation. All query words must be present. Returned rows carry a db_row identity for resonance_neighbors.", ("query", "k")),
     ("resonance_neighbors", "Find neighbors of one stored misconception vector. Prefer the returned db_row identity; name remains a display label and is accepted only when unambiguous. This uses only stored row vectors; it never makes a query-embedding network call.", ("db_row", "name", "k")),
@@ -123,10 +129,10 @@ def schema(parameters: tuple[str, ...] | list[str]) -> dict[str, Any]:
     }
 
 
-def tool_metadata(name: str) -> dict[str, Any]:
+def tool_metadata(name: str, *, read_only: bool, idempotent: bool) -> dict[str, Any]:
     return {
         "title": name.replace("_", " ").title(),
-        "annotations": {"readOnlyHint": True, "idempotentHint": True},
+        "annotations": {"readOnlyHint": read_only, "idempotentHint": idempotent},
     }
 
 
@@ -163,7 +169,10 @@ def output_schema(name: str) -> dict[str, Any] | None:
 
 
 def tool(name: str, description: str, parameters: tuple[str, ...] | list[str]) -> dict[str, Any]:
-    entry = {"name": name, "description": description, "inputSchema": schema(parameters), **tool_metadata(name)}
+    # The generated registry records web-route exposure, not state effects.
+    # Registry-mode annotations therefore make no safety promise. A false hint
+    # is conservative for read-only ops and honest for state-mutating ops.
+    entry = {"name": name, "description": description, "inputSchema": schema(parameters), **tool_metadata(name, read_only=False, idempotent=False)}
     if stable := output_schema(name):
         entry["outputSchema"] = stable
     return entry
@@ -197,7 +206,19 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "type": "object",
             "description": "Optional override for the worked input shown with the selected strategy.",
         }
-    entry = {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "additionalProperties": False}, **tool_metadata(name)}
+    required: list[str] = []
+    if name == "diagnose_error":
+        required = ["domain", "input", "got"]
+        properties["domain"] = {"type": "string", "minLength": 1, "description": "Registered misconception domain, such as fraction."}
+        properties["input"] = {"type": "string", "minLength": 1, "description": "Problem input in the worker's term-form text."}
+        properties["got"] = {"type": "string", "minLength": 1, "description": "Student answer in the worker's term-form text."}
+    elif name == "lesson_enactment_run":
+        required = ["lesson"]
+        properties["lesson"] = {"type": "string", "minLength": 1, "description": "Exact IM lesson code returned by lesson_enactment_list."}
+    input_schema: dict[str, Any] = {"type": "object", "properties": properties, "additionalProperties": False}
+    if required:
+        input_schema["required"] = required
+    entry = {"name": name, "description": description, "inputSchema": input_schema, **tool_metadata(name, read_only=True, idempotent=True)}
     if stable := output_schema(name):
         entry["outputSchema"] = stable
     return entry
@@ -218,9 +239,12 @@ def registry_tools(root: Path) -> list[dict[str, Any]]:
         if not match:
             continue
         name, module, role, raw_params, status = match.groups()
+        if status in {"orphan_module", "lazy_reachable"}:
+            continue
         parameters = tuple(re.findall(r"'([^']+)'", raw_params))
         description = (
-            f"Hermes registry operation from {module}, classified as {role} ({status}). "
+            f"Hermes worker operation from {module}, classified as {role}. "
+            f"Its web-exposure status is {status}; this status does not determine worker callability. "
             "Parameter names come from the capability registry; it does not carry parameter types or required/default metadata."
         )
         rows.append(tool(name, description, parameters))
@@ -376,6 +400,9 @@ class HermesMCPServer:
             for key in arguments:
                 if key not in properties:
                     raise InvalidArguments(f"invalid argument key: {key}")
+        for key in input_schema.get("required", []):
+            if key not in arguments:
+                raise InvalidArguments(f"missing required argument: {key}")
         for key, value in arguments.items():
             property_schema = properties[key]
             kind = property_schema.get("type")
@@ -386,6 +413,8 @@ class HermesMCPServer:
                 arguments[key] = normalized
             elif kind is not None and not self._matches_json_type(value, kind):
                 raise InvalidArguments(f"invalid argument {key}: expected {kind}")
+            if kind == "string" and len(value) < property_schema.get("minLength", 0):
+                raise InvalidArguments(f"invalid argument {key}: expected non-empty string")
             item_kind = property_schema.get("items", {}).get("type")
             if kind == "array" and item_kind is not None:
                 for item in value:

@@ -101,6 +101,12 @@ PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
     "deontic_up_level": {"agent": "student", "commitments": []},
     "commitment_match": {"content": "A square is a rectangle."},
     "check_math_claim": {"claim": "equivalence(fraction(3,4), fraction(6,8))"},
+    "lesson_enactment_run": {"lesson": "IM-G4-U2-L4"},
+    "diagnose_error": {
+        "domain": "fraction",
+        "input": "frac(1,7)-frac(1,7)",
+        "got": "frac(1,14)",
+    },
 }
 
 OPERATION_DESCRIPTIONS = {
@@ -111,12 +117,24 @@ OPERATION_DESCRIPTIONS = {
         "quadrilateral claims, or arithmetic_equation; leaves are integers or "
         "registered vocabulary atoms."
     ),
+    "lesson_enactment_list": (
+        "List enacted IM lessons with every declared form, plus named refusals "
+        "and the machine each refusal would need."
+    ),
+    "lesson_enactment_run": (
+        "Run every distinct enacted form for one IM lesson and return each "
+        "result through the strategy-trace response shape."
+    ),
 }
 
 # These legacy handlers are outside dispatch_spec/4.  Their contracts were
 # read from the handler guards before being recorded here; unlike spec-backed
 # rows, this metadata is deliberately limited to the MCP core surface.
 IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
+    "diagnose_error": {
+        "domain": ("string", True), "input": ("string", True),
+        "got": ("string", True),
+    },
     "lesson_deformation_chart": {"code": ("string", True)},
     "deontic_scorecard": {
         "agent": ("string", False), "commitments": ("array", False),
@@ -140,6 +158,7 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
     ("image_schema", "render"),
     ("inferential_strength", "synthesis"),
     ("lesson_deformation_chart", "workflow"),
+    ("lesson_enactment_", "workflow"),
     ("lesson_misconception_", "misconceptions"),
     ("pair_", "infrastructure"),
     ("primitive_for_practice", "render"),

@@ -535,6 +535,43 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
 
 
 UNROUTED = {
+    "lesson_enactment_list": {
+        "does": "Lists every lesson an enactment lane can perform, the distinct forms "
+        "declared for each, and every named refusal with the machine it would need.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "It is a discovery listing for a caller choosing what to run next, and "
+        "its consumers are the MCP surface and the census builder. The console reaches an "
+        "enactment through the strategy-trace display it already serves, so a page that "
+        "listed the inventory would show what no page asks for.",
+        "evidence": [
+            evidence(
+                "hermes/mcp/server.py",
+                '("lesson_enactment_list", "List every lesson with an executable enactment',
+                "MCP exposure",
+            )
+        ],
+    },
+    "lesson_enactment_run": {
+        "does": "Runs one lesson's enactment and serializes every distinct form it "
+        "produces, keeping the verdict, the input provenance, and the sentence naming "
+        "what the row does not claim.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The serializer fills the dict shape strategy_trace_dict/3 returns, so "
+        "an enactment already reaches every consumer a strategy trace reaches. A second "
+        "route would duplicate a display path rather than add one.",
+        "evidence": [
+            evidence(
+                "curriculum/im/lesson_enactment.pl",
+                "The one serializer. It fills the dict shape `strategy_trace_dict/3` returns,",
+                "the shared response shape that makes a page route unnecessary",
+            ),
+            evidence(
+                "hermes/mcp/server.py",
+                '("lesson_enactment_run"',
+                "MCP exposure",
+            ),
+        ],
+    },
     "check_math_claim": {
         "does": "Checks a safely parsed typed mathematical claim and returns a verdict record.",
         "judgement": "Being unrouted from a web page is correct.",
@@ -906,8 +943,11 @@ def build() -> dict[str, object]:
     # declaring a form of their own. The support pair reads as orphan modules
     # because nothing routes to them directly, which is what an included table
     # and a helper library look like from outside.
-    if len(registry_rows) != 292:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 292")
+    # 294 from 2026-08-01, the two being lesson_enactment_list and
+    # lesson_enactment_run. They are the first worker operations to reach the
+    # enactment contract, which until now no operation reached at all.
+    if len(registry_rows) != 294:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 294")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -934,16 +974,30 @@ def build() -> dict[str, object]:
     # 73 through 80 are the whole lesson-enactment rung (2026-08-01): the
     # contract, its five lanes, and its two support files. Every one of them is
     # an orphan in the worker-closure sense, and the count is the honest record
-    # of a gap rather than a bookkeeping bump. An enactment serializes into the
-    # shape strategy_trace_dict already consumes, so it can be displayed, but no
-    # worker op yet produces one, so nothing routes to these modules from the
-    # dispatcher. Their readers today are the census builder and the best_IM
-    # page. Wiring an op is what moves them out of this count; until then the
-    # rung is reachable by regeneration and not by a request.
+    # of a gap rather than a bookkeeping bump.
+    #
+    # That entry first predicted that wiring a worker op would move these eight
+    # out of this count. Later the same day lesson_enactment_list and
+    # lesson_enactment_run were wired, and the eight did not move. The
+    # prediction was wrong, and the reason is worth keeping. orphan_modules()
+    # subtracts the worker's STATIC load closure from the shipped set, while the
+    # two operations load the contract and its lanes lazily inside a predicate
+    # body, because loading them eagerly costs about eleven seconds at every
+    # worker boot for a rung most calls never touch. Both facts are correct at
+    # once: the rung is now reachable by a request, and it is still outside the
+    # closure this count measures.
+    #
+    # So this number does not mean "nothing can reach these files". It means
+    # "these files are not statically imported by the worker". Wiring changed
+    # the first and not the second. Whether the extractor should report a lazily
+    # loaded module as lazy_reachable rather than orphan_module is a live
+    # question, deliberately not answered here, because answering it moves
+    # counts across this census and wants its own slice.
     if len(orphan_records) != 80:
         raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 80")
-    if len(unrouted) != 7:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 7")
+    # 9 from 2026-08-01: the two enactment operations carry no web route.
+    if len(unrouted) != 9:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 9")
 
     return {
         "schema": "self_description_census_v1",
