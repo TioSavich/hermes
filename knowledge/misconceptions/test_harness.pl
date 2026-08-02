@@ -46,6 +46,18 @@
 :- use_module(library(error)).  % yall lambdas call must_be/2 from here
 
 % Registration predicates — populated from misconceptions_*.pl files.
+%
+% The sixth argument of arith_misconception/6 is read two ways by two
+% consumers, and the corpus populates it both ways. classify_arith/5 below
+% reads it as the rule's documented output: a match classifies well_formed.
+% misconception_registry:misconception_registry_entry/5 reads it as the
+% entitled correct answer: a mismatch witnesses the misconception. A row
+% therefore serves one reader or the other, never both, except at inputs
+% where the deformation agrees with the truth. Measured 2026-08-02 over the
+% runnable fraction pair rows: 54 carry the correct answer, 11 carry the
+% rule's own output. Splitting the slot into documented output and entitled
+% answer is queued work; until then, state beside a new row which reader it
+% serves.
 :- multifile arith_misconception/6.
 :- discontiguous arith_misconception/6.
 :- dynamic arith_misconception/6.

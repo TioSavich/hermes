@@ -7,6 +7,7 @@
 :- module(misconception_registry,
           [ misconception_registry_entry/5,
             attested_registry_entry/5,
+            rule_builds/4,
             misconception_term/2,
             misconception_gap/4,
             incompatibility_with/2,
@@ -789,6 +790,40 @@ safe_call_rule(Goal) :-
           _Error,
           fail),
     Status \== inference_limit_exceeded.
+
+
+%!  rule_builds(?Domain, +Input, ?Output, ?Rule) is nondet.
+%
+%   Abduction over the runnable harness rules: which registered rule, run
+%   on Input, produces Output. Asked with a student's operands and their
+%   wrong answer, the bindings are the documented doings that build that
+%   answer. Input must be ground; it is data handed to repository-authored
+%   rules and is never called. A bound Output is matched exactly; an
+%   unbound one collects what each rule produces. A full sweep of the
+%   registered rules measures in milliseconds because every run is bounded
+%   by safe_call_rule/1's inference limit and catch.
+rule_builds(Domain, Input, Output, Rule) :-
+    must_be(ground, Input),
+    distinct_harness_rule(Domain, Rule),
+    rule_result(Rule, Input, Got),
+    (   nonvar(Output)
+    ->  Got =@= Output
+    ;   Output = Got
+    ).
+
+distinct_harness_rule(Domain, Rule) :-
+    findall(D-R, test_harness:arith_misconception(_, D, _, R, _, _), Pairs0),
+    sort(Pairs0, Pairs),
+    member(Domain-Rule, Pairs),
+    Rule \== skip.
+
+% The sandbox cannot statically walk a rule resolved from a registry row,
+% so it refuses rule_builds/4 for a reason that does not apply: the rule
+% set is closed to repository-authored clauses, the caller contributes
+% data terms only, and every run is inference-limited. This declaration
+% records that license explicitly.
+:- multifile sandbox:safe_primitive/1.
+sandbox:safe_primitive(misconception_registry:rule_builds(_, _, _, _)).
 
 
 normalize_operation(Topic, Domain, Operation) :-
