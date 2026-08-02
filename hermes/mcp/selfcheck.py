@@ -28,6 +28,28 @@ class Check:
 
 CHECKS = (
     Check(
+        label="prolog_query runs a sandbox-safe loaded knowledge predicate",
+        tool="prolog_query",
+        arguments={"goal": "bigred_emergent_hyperedges:bigred_emergent_hyperedge(Date, Operation, Scope, Edge)"},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("status") == "ok"
+        and value.get("solution_count") == len(value.get("bindings", []))
+        and value.get("solution_count", 0) > 1
+        and value.get("limits") == {"solution_cap": 100, "timeout_seconds": 2.0},
+        fix="Use a module-qualified predicate returned by a prolog_query listing call; SWI's sandbox may reject predicates whose call graph reads files or changes state.",
+    ),
+    Check(
+        label="prolog_query lists and filters loaded knowledge predicates",
+        tool="prolog_query",
+        arguments={"name": "bigred_emergent_hyperedge", "arity": 4},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("kind") == "predicate_listing"
+        and value.get("matched_count") == 1
+        and value.get("predicates", [{}])[0].get("file") == "knowledge/hyperedges/bigred_emergent_hyperedges.pl"
+        and value.get("predicates", [{}])[0].get("clause_count") == 4,
+        fix="Call without goal and narrow with a name substring, a knowledge-relative file substring, or an exact arity.",
+    ),
+    Check(
         label="monitoring_chart on IM-G3-U5-L1",
         tool="monitoring_chart",
         arguments={"code": "IM-G3-U5-L1"},

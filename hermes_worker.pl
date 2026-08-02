@@ -89,6 +89,7 @@ load_runtime :-
                  lit_deontic_content_match_witness/3 ]),
     use_module(hermes(math_claim_checker), []),
     use_module(hermes(strategy_recognizer), []),
+    use_module(hermes(prolog_query), []),
     use_module(hermes(capability_registry), []),
     use_module(sequent(embodied_prover), []),
     use_module(sequent(sequent_engine), []),
@@ -291,6 +292,7 @@ dispatch_irregular(number_line_compare).
 dispatch_irregular(number_line_render).
 dispatch_irregular(pair_candidate_witness).
 dispatch_irregular(place_value_chart_render).
+dispatch_irregular(prolog_query).
 dispatch_irregular(query_misconception).
 dispatch_irregular(reorganize).
 dispatch_irregular(representation_candidates).
@@ -323,6 +325,14 @@ dispatch_request(health, Id, _Request, Response) :-
         ops: Ops,
         mode: "persistent"
     }, Response).
+
+% One caller-supplied goal, or the generated predicate listing when goal is
+% absent. prolog_query_dict/2 owns parsing, sandbox checks, bounds, and read-only
+% execution; this boundary only preserves the worker's JSON response shape.
+dispatch_request(prolog_query, Id, Request, Response) :-
+    prolog_query:prolog_query_dict(Request, Dict),
+    json_safe(Dict, Safe),
+    ok_response(Id, Safe, Response).
 
 dispatch_request(media_alignment, Id, Request, Response) :-
     (   get_dict(segments, Request, Segments),

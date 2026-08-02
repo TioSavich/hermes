@@ -83,7 +83,7 @@ data_artifact('data/research/registry_op_embedding_payloads.json', file, 1, 2239
 data_artifact('data/research/registry_op_embeddings.json', file, 1, 129373, 'a051416255c9f52922c46fccbf9bfd5f3747c062cdecda8f092ee321de83ed3a', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/registry_op_embeddings.npz', file, 1, 1718833, '9c5ecaf8971bc99fedf36790b0151dcd1571d6ab65a9a82ffacf021281121ddc', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/research_shared.db', file, 1, 13881344, 'bc3609b8fba19d84264bfb87e776458867fac2f9f38323e1509a1e3c030f8f00', reader_and_writer, static_reader_and_writer, [reader('hermes/app/routes/logic.py', 177, sqlite_connect), reader('hermes/app/routes/logic.py', 270, sqlite_connect), reader('scripts/checks/attested_phrases.py', 111, sqlite_connect), reader('scripts/checks/recognition_benchmark.py', 141, sqlite_connect), reader('scripts/checks/review_surface.py', 77, sqlite_connect), reader('scripts/extract_research_corpus_automaton_bindings.py', 25, sqlite_connect), reader('scripts/extract_research_corpus_misconceptions.py', 83, sqlite_connect), reader('scripts/research/ask_the_window.py', 93, sqlite_connect), reader('scripts/research/build_attested_phrases.py', 188, sqlite_connect), reader('scripts/research/code_incompatibility_triples.py', 279, sqlite_connect), reader('scripts/research/export_mua_for_mud.py', 233, sqlite_connect), reader('scripts/research/map_corpus_to_automata.py', 204, sqlite_connect)], [writer('scripts/research/apply_incompatibility_triples.py', 79, sqlite_connect)]).
-data_artifact('data/research/self_description_census.json', file, 1, 74540, 'e4b63ac4b2e6e389152ffb31082eae0d64ec4e03538b7af413a1ec700950657e', reader_and_writer, static_reader_and_writer, [reader('scripts/checks/self_description_census.py', 54, read_bytes)], [writer('scripts/research/build_self_description_census.py', 1051, write_text)]).
+data_artifact('data/research/self_description_census.json', file, 1, 75600, '61141ae59d499902badea69a8e0bdb2cf20b5cb5b1c1bc100195825a990ffb33', reader_and_writer, static_reader_and_writer, [reader('scripts/checks/self_description_census.py', 54, read_bytes)], [writer('scripts/research/build_self_description_census.py', 1078, write_text)]).
 data_artifact('data/research/strategy_embedding_payloads.json', file, 1, 202985, '8585b8de9dc7792bdc2edec63fd37465c38c418afe7315347b95319185f35fbf', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/strategy_embeddings.json', file, 1, 103986, 'cf85ec98773800fd00937892998d6d3b050e0e286f09dab95989f0975b91beeb', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('data/research/strategy_embeddings.npz', file, 1, 1507895, '4af9d6e6b08f5aa3d26aa68360b6c4864f4e9a88d08cc755152818ff50c7af48', unconsumed_file, no_static_reader_or_writer, [], []).
@@ -117,6 +117,7 @@ data_artifact('scripts/checks/fixtures/lesson_task_readings_truncated_expression
 data_artifact('scripts/checks/fixtures/lesson_task_readings_value_absent_from_witness.json', file, 1, 1422, 'b0777dc9ee4675f9cc3ead41608789801c3017eb13a5bdbb8f514138aab83bb5', live_reader, static_reader, [reader('scripts/checks/equation_verification_witness.py', 94, glob), reader('scripts/checks/lesson_task_readings.py', 13, glob)], []).
 data_artifact('scripts/checks/fixtures/lesson_task_readings_wrapped_span.json', file, 1, 525, 'bf036bb21642e67d81d951aad51997ff81012ef394b0326bd0df60f81b958937', live_reader, static_reader, [reader('scripts/checks/equation_verification_witness.py', 94, glob), reader('scripts/checks/lesson_task_readings.py', 13, glob)], []).
 data_artifact('scripts/checks/fixtures/negative_receipt_candidate_contract_whole_domain.json', file, 1, 504, '8267e86340140fcdc6e8be19e0519fc238b879a65a72793228308a7f793e3924', live_reader, static_reader, [reader('scripts/checks/equation_verification_witness.py', 94, glob), reader('scripts/checks/lesson_task_readings.py', 13, glob), reader('scripts/research/generate_negative_receipts.py', 1120, read_text)], []).
+data_artifact('scripts/checks/fixtures/task_240_branch_agent_replay.jsonl', file, 1, 13209, '8a6b71d6949d9d6dbc27ddcbf114d8a82214dcdb855bf5def951ba2cff909c5d', live_reader, static_reader, [reader('scripts/checks/equation_verification_witness.py', 94, glob), reader('scripts/checks/lesson_task_readings.py', 13, glob)], []).
 data_artifact('scripts/curriculum/action_mapping_rules.json', file, 1, 290219, '9306161a2f5674ac7fe1df8ef62f3bee9869737371b412582256761c5625d818', reader_and_writer, static_reader_and_writer, [reader('scripts/curriculum/ingest_vision.py', 196, open), reader('scripts/research/verify_vision_excerpts.py', 751, read_text)], [writer('scripts/curriculum/ingest_vision.py', 200, open)]).
 data_artifact('scripts/curriculum/basis_set.json', file, 1, 6321, '565dcf8bd832096502516bd9c282dadf84bdbcfa7b412d87ee436e147b13e281', live_reader, static_reader, [reader('scripts/curriculum/mini_atlas.pl', 5, text_reader_call)], []).
 data_artifact('scripts/curriculum/guide_math_glyphs.json', file, 1, 5848, '70e1600049e7d3ce5818287e3284f66e8fb163062080e4633adccc8c99b5432b', unconsumed_file, no_static_reader_or_writer, [], []).
@@ -134,12 +135,12 @@ data_artifact('scripts/scene/grounding_v2.json', file, 1, 27487, '3fa0bd8c6435b7
 data_artifact('scripts/scene/items/items.jsonl', file, 1, 199785, 'f206310a2b9538fb4cbaa3f3a59741cf8ca2a565fe4a11ab390cea3f7c2fbaa7', unconsumed_file, no_static_reader_or_writer, [], []).
 
 data_artifact_denominator(data_tree_regular_file, 8195).
-data_artifact_denominator(manifest_artifact, 92).
+data_artifact_denominator(manifest_artifact, 93).
 data_root_denominator(curriculum, 7, 7, 20466703).
-data_root_denominator(data, 44, 8195, 962614182).
-data_root_denominator(scripts, 41, 41, 12997328).
+data_root_denominator(data, 44, 8195, 962615242).
+data_root_denominator(scripts, 42, 42, 13010537).
 
-data_status_count(live_reader, 40).
+data_status_count(live_reader, 41).
 data_status_count(reader_and_writer, 20).
 data_status_count(writer_without_reader, 1).
 data_status_count(unconsumed_file, 30).

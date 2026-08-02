@@ -407,7 +407,7 @@
       "dialectic": 1,
       "geometry_witness": 35,
       "incompatibility": 11,
-      "infrastructure": 20,
+      "infrastructure": 21,
       "juncture": 1,
       "learner": 25,
       "misconceptions": 14,
@@ -426,7 +426,7 @@
       "orphan_module": 80,
       "routed_only": 14,
       "routed_paged": 181,
-      "unrouted": 9
+      "unrouted": 10
     },
     "orphan_verdicts": {
       "consumed_by_builder": 3,
@@ -437,8 +437,8 @@
       "superseded": 0,
       "undetermined": 43
     },
-    "total": 294,
-    "unrouted": 9
+    "total": 295,
+    "unrouted": 10
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1907,6 +1907,24 @@
       "judgement": "A page should route to it.",
       "name": "pedagogical_questions",
       "reason": "126 assessing and 85 advancing questions were reachable only through a lesson code before this operation, so a teacher who knew the mathematics but not the IM code could not reach them. A page could now ask from the mathematics."
+    },
+    {
+      "does": "Runs one caller-supplied Prolog goal against the loaded knowledge base and returns its bindings, after SWI's sandbox accepts the goal's whole call graph.",
+      "evidence": [
+        {
+          "locator": "Bounded read-only queries over loaded knowledge predicates",
+          "path": "hermes/prolog_query.pl",
+          "relation": "the module that runs and bounds the goal"
+        },
+        {
+          "locator": "(\"prolog_query\"",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct, and a page would be the wrong shape for it.",
+      "name": "prolog_query",
+      "reason": "Every other operation is a question shaped in advance with fixed argument slots; 202 of them stand against 81,663 clauses. This one lets a caller ask something nobody wrote an operation for. Its consumer is a program composing a goal, not a person filling a form, and a page would have to invent an input widget for arbitrary Prolog."
     },
     {
       "does": "Returns the default cited state label and its recorded alternatives.",

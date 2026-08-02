@@ -535,6 +535,30 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
 
 
 UNROUTED = {
+    "prolog_query": {
+        "does": "Runs one caller-supplied Prolog goal against the loaded "
+        "knowledge base and returns its bindings, after SWI's sandbox accepts "
+        "the goal's whole call graph.",
+        "judgement": "Being unrouted from a web page is correct, and a page "
+        "would be the wrong shape for it.",
+        "reason": "Every other operation is a question shaped in advance with "
+        "fixed argument slots; 202 of them stand against 81,663 clauses. This "
+        "one lets a caller ask something nobody wrote an operation for. Its "
+        "consumer is a program composing a goal, not a person filling a form, "
+        "and a page would have to invent an input widget for arbitrary Prolog.",
+        "evidence": [
+            evidence(
+                "hermes/prolog_query.pl",
+                "Bounded read-only queries over loaded knowledge predicates",
+                "the module that runs and bounds the goal",
+            ),
+            evidence(
+                "hermes/mcp/server.py",
+                '("prolog_query"',
+                "MCP exposure",
+            ),
+        ],
+    },
     "lesson_enactment_list": {
         "does": "Lists every lesson an enactment lane can perform, the distinct forms "
         "declared for each, and every named refusal with the machine it would need.",
@@ -946,8 +970,10 @@ def build() -> dict[str, object]:
     # 294 from 2026-08-01, the two being lesson_enactment_list and
     # lesson_enactment_run. They are the first worker operations to reach the
     # enactment contract, which until now no operation reached at all.
-    if len(registry_rows) != 294:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 294")
+    # 295 from 2026-08-01: prolog_query, the first operation that runs a
+    # goal rather than answering a question shaped in advance.
+    if len(registry_rows) != 295:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 295")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -995,9 +1021,10 @@ def build() -> dict[str, object]:
     # counts across this census and wants its own slice.
     if len(orphan_records) != 80:
         raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 80")
-    # 9 from 2026-08-01: the two enactment operations carry no web route.
-    if len(unrouted) != 9:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 9")
+    # 10 from 2026-08-01: the two enactment operations and prolog_query
+    # carry no web route.
+    if len(unrouted) != 10:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 10")
 
     return {
         "schema": "self_description_census_v1",

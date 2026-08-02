@@ -102,6 +102,8 @@ def main() -> int:
         request(24, "lesson_enactment_list", {}),
         request(25, "lesson_enactment_run", {"lesson": "IM-G4-U2-L4"}),
         request(26, "diagnose_error", {"domain": "fraction", "input": "frac(1,7)-frac(1,7)", "got": "frac(1,14)"}),
+        request(27, "prolog_query", {"goal": "bigred_emergent_hyperedges:bigred_emergent_hyperedge(Date, Operation, Scope, Edge)"}),
+        request(28, "prolog_query", {"name": "bigred_emergent_hyperedge", "arity": 4}),
     ]
     responses = run("core", messages)
     by_id = {response.get("id"): response for response in responses}
@@ -118,6 +120,10 @@ def main() -> int:
     diagnose_schema = next(tool for tool in listed if tool["name"] == "diagnose_error")["inputSchema"]
     assert diagnose_schema["required"] == ["domain", "input", "got"]
     assert all(diagnose_schema["properties"][key]["type"] == "string" for key in diagnose_schema["required"])
+    query_tool = next(tool for tool in listed if tool["name"] == "prolog_query")
+    assert query_tool["annotations"] == {"readOnlyHint": True, "idempotentHint": True}
+    assert query_tool["inputSchema"]["properties"]["arity"]["minimum"] == 0
+    assert query_tool["outputSchema"]
     assert tool_value(by_id[3])["inventory"]
     assert tool_value(by_id[4])["id"] == "$.cells[0].productive"
     assert "cells" in tool_value(by_id[5])
@@ -158,6 +164,14 @@ def main() -> int:
     assert all(row["input_provenance"] and row["what_it_does_not_claim"] for row in enacted["enactments"])
     diagnoses = tool_value(by_id[26])
     assert any(row["description"] == "add_denominators_unit_fractions" for row in diagnoses)
+    prolog_result = tool_value(by_id[27])
+    assert prolog_result["status"] == "ok"
+    assert prolog_result["solution_count"] == len(prolog_result["bindings"]) == 4
+    assert prolog_result["limits"] == {"solution_cap": 100, "timeout_seconds": 2.0}
+    prolog_listing = tool_value(by_id[28])
+    assert prolog_listing["kind"] == "predicate_listing"
+    assert prolog_listing["matched_count"] == 1
+    assert prolog_listing["predicates"][0]["clause_count"] == 4
     monitoring_views = exercise_monitoring_views()
 
     bundle_results: dict[str, list[str]] = {}

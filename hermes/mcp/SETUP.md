@@ -78,13 +78,14 @@ Restart or reload your MCP client after registering it. The client starts the
 server when it needs a tool; running `server.py` by hand is useful only for
 protocol debugging.
 
-## First three calls
+## First calls
 
 Ask the MCP client to make these tool calls. They use checked, covered inputs.
 
 1. `monitoring_chart` with `{"code":"IM-G3-U5-L1"}`.
 2. `check_math_claim` with `{"term":"3/4 = 6/8"}`.
 3. `strategy_trace` with `{"strategy":"count_on_from_larger","input":{"a":47,"b":28}}`.
+4. `prolog_query` with `{"name":"bigred_emergent_hyperedge","arity":4}` to list the predicate, followed by `{"goal":"bigred_emergent_hyperedges:bigred_emergent_hyperedge(Date, Operation, Scope, Edge)"}` to run it.
 
 For another strategy, use the `strategy_trace` tool schema: it lists the
 registered strategy names and an input example for each one.

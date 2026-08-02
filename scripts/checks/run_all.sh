@@ -24,6 +24,7 @@ run static_route_containment.py python3 "$CHECKS_DIR/static_route_containment.py
 run hermes_shell_page_context.py python3 "$CHECKS_DIR/hermes_shell_page_context.py"
 run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run mcp_search_rows.py      python3 "$CHECKS_DIR/mcp_search_rows.py"
+run task_240_branch_agents.py python3 "$CHECKS_DIR/task_240_branch_agents.py"
 run math_claim_language.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/math_claim_language.pl" -g main -t halt
 run pedagogical_questions_check.py python3 "$CHECKS_DIR/pedagogical_questions_check.py"
 run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/strategy_recognizer.pl" -g main -t halt

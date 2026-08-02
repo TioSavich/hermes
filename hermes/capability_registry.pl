@@ -161,6 +161,7 @@ capability('pml_score', 'hermes_encyclopedia', 'pml', ['clauses'], routed_paged)
 capability('practice_vocabulary_witness', 'cw_driver', 'crosswalk', ['key', 'source'], routed_paged).
 capability('primitive_for_practice', 'user', 'render', ['practice'], routed_paged).
 capability('productive_deformation_witness', 'cw_driver', 'crosswalk', ['deformation', 'family', 'operation', 'productive', 'source'], routed_paged).
+capability('prolog_query', 'prolog_query', 'infrastructure', [], unrouted).
 capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_only).
 capability('ranked_figures', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('ratio_proportion_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).

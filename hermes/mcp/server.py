@@ -41,6 +41,7 @@ REGISTRY_ARTIFACT = "hermes/capability_registry.pl"
 REGISTRY_REBUILD = "python3 scripts/extract_capability_registry.py"
 
 CORE_TO_WORKER = {
+    "prolog_query": "prolog_query",
     "monitoring_chart": "monitoring_chart_export",
     "lesson_deformation_chart": "lesson_deformation_chart",
     "deontic_scorecard": "deontic_scorecard",
@@ -89,6 +90,13 @@ CORE_TOOLS = (
     ("incompatibility_entailments", "Check one proposed replacement/replaced pair against the live finite incompatibility profiles. It reports entailment, equivalence when both directions hold, or an honest unresolved status, with its witnessing contexts. This is earned over a thin corpus and is distinct from the strict generated register; see docs/research/2026-07-28-why-entailment-does-not-move.md.", ("replacement", "replaced")),
     ("incompatibility_profile", "Return the size-3-or-more minimal incompatible sets containing one content term, with its partners and provenance. Declared binary seed pairs are outside this inventory; use incompatibility_entailments for a specified replacement/replaced pair.", ("content",)),
     ("incompatibility_contexts", "Enumerate the reviewed a-fortiori context nestings: strict input-class inclusions (narrow, broad, status, warrant) with native-triple counts at each end. These rows generate the strict register's context-earned entailments; basis prose and automaton status live in formal/incompatibility/a_fortiori_context_nestings.json. Optional context filters to rows touching one atom and reports not_covered when the atom touches none. This bounded reviewed inventory has no pagination; add limit and offset if it grows past about 100 rows. Distinct from incompatibility_entailments, which checks one replacement/replaced pair against live finite profiles.", ("context",)),
+)
+
+# This public core tool is intentionally outside Task 240's frozen branch
+# catalog. The query primitive is available to MCP callers, while deciding how
+# a branch-agent loop consumes it remains a later task.
+CORE_STANDALONE_TOOLS = (
+    ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
 )
 
 
@@ -164,6 +172,11 @@ def output_schema(name: str) -> dict[str, Any] | None:
             "required": ["count", "context_filter", "nestings", "register_note"],
             "properties": {"count": {"type": "integer"}, "context_filter": {"type": "string"}, "nestings": {"type": "array"}, "register_note": {"type": "string"}},
         },
+        "prolog_query": {
+            "type": "object",
+            "required": ["kind", "status"],
+            "properties": {"kind": {"type": "string"}, "status": {"type": "string"}},
+        },
     }
     return schemas.get(name)
 
@@ -180,7 +193,7 @@ def tool(name: str, description: str, parameters: tuple[str, ...] | list[str]) -
 
 def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy_contracts: list[dict[str, Any]]) -> dict[str, Any]:
     """Hand-authored tools can state the few JSON shapes their worker accepts."""
-    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean"}
+    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer"}
     properties: dict[str, dict[str, Any]] = {}
     for parameter in parameters:
         kind = kinds.get(parameter, "string")
@@ -205,6 +218,13 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
         properties["input"] = {
             "type": "object",
             "description": "Optional override for the worked input shown with the selected strategy.",
+        }
+    elif name == "prolog_query":
+        properties = {
+            "goal": {"type": "string", "minLength": 1, "description": "One Prolog goal. Use module qualification from the generated predicate listing when the predicate is not imported into user."},
+            "name": {"type": "string", "description": "Case-insensitive predicate-name substring for a listing call."},
+            "file": {"type": "string", "description": "Case-insensitive knowledge-relative source-file substring for a listing call."},
+            "arity": {"type": "integer", "minimum": 0, "description": "Exact predicate arity for a listing call."},
         }
     required: list[str] = []
     if name == "diagnose_error":
@@ -280,14 +300,22 @@ class HermesMCPServer:
         self._startup_error: ToolCallError | None = None
         try:
             tools = registry_tools(root) if mode == "registry" else [core_tool(*row, self._strategy_contracts) for row in CORE_TOOLS]
+            public_tools = list(tools)
+            if mode == "core":
+                public_tools.extend(core_tool(*row, self._strategy_contracts) for row in CORE_STANDALONE_TOOLS)
         except ToolCallError as exc:
             self._startup_error = exc
             tools = []
+            public_tools = []
         if mode.startswith("bundle:"):
             wanted = set(TOOL_BUNDLES[mode.removeprefix("bundle:")])
             tools = [entry for entry in tools if entry["name"] in wanted]
+            public_tools = list(tools)
+        # _tools remains Task 240's carved catalog for branch_agents.py. MCP
+        # discovery and calls use the complete public core surface.
         self._tools = tools
-        self._tool_names = {entry["name"] for entry in self._tools}
+        self._public_tools = public_tools
+        self._tool_names = {entry["name"] for entry in self._public_tools}
 
     def close(self) -> None:
         if self.worker is not None:
@@ -326,7 +354,9 @@ class HermesMCPServer:
         """Read execution-verified JSON contracts without starting a worker."""
         contracts_file = self.root / "knowledge" / "strategies" / "automaton_input_contracts.pl"
         contracts: list[dict[str, Any]] = []
-        for line in contracts_file.read_text(encoding="utf-8").splitlines():
+        for line_number, line in enumerate(
+            contracts_file.read_text(encoding="utf-8").splitlines(), start=1
+        ):
             match = INPUT_CONTRACT_ROW.match(line)
             if not match:
                 continue
@@ -337,7 +367,8 @@ class HermesMCPServer:
             except json.JSONDecodeError as exc:
                 raise ToolCallError(f"Invalid strategy input contract for {name}: {exc}", kind="worker_failure") from exc
             contracts.append({"name": name, "operation": operation, "template": template,
-                              "example": example, "verified": verified})
+                              "example": example, "verified": verified,
+                              "source": f"knowledge/strategies/automaton_input_contracts.pl:{line_number}"})
         if not contracts:
             raise ToolCallError("No execution-verified strategy input contracts were found.", kind="worker_failure")
         return sorted(contracts, key=lambda row: (row["operation"], row["name"]))
@@ -361,7 +392,7 @@ class HermesMCPServer:
         if method == "tools/list":
             if self._startup_error is not None:
                 return error(request_id, -32000, str(self._startup_error), {"kind": self._startup_error.kind})
-            return result(request_id, {"tools": self._tools})
+            return result(request_id, {"tools": self._public_tools})
         if method == "tools/call":
             if not isinstance(params, dict) or not isinstance(params.get("name"), str):
                 return error(request_id, -32602, "tools/call requires a string name")
@@ -393,7 +424,7 @@ class HermesMCPServer:
 
     def validate_arguments(self, name: str, arguments: dict[str, Any]) -> None:
         """Enforce the declared input schema before any worker request."""
-        entry = next(tool for tool in self._tools if tool["name"] == name)
+        entry = next(tool for tool in self._public_tools if tool["name"] == name)
         input_schema = entry["inputSchema"]
         properties = input_schema.get("properties", {})
         if input_schema.get("additionalProperties") is False:
@@ -415,6 +446,8 @@ class HermesMCPServer:
                 raise InvalidArguments(f"invalid argument {key}: expected {kind}")
             if kind == "string" and len(value) < property_schema.get("minLength", 0):
                 raise InvalidArguments(f"invalid argument {key}: expected non-empty string")
+            if kind == "integer" and value < property_schema.get("minimum", value):
+                raise InvalidArguments(f"invalid argument {key}: below minimum")
             item_kind = property_schema.get("items", {}).get("type")
             if kind == "array" and item_kind is not None:
                 for item in value:

@@ -52,6 +52,7 @@ KEEP_FILES = [
     "hermes_worker.pl",                # the worker entry point
     "hermes/capability_registry.pl",   # generated worker capability inventory
     "hermes/dispatch_spec.pl",         # authored generic-dispatch identity + behavior
+    "hermes/prolog_query.pl",          # sandboxed caller-supplied goals over the knowledge base
     "hermes/review_queue.pl",          # durable proposal-review queue operations
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
