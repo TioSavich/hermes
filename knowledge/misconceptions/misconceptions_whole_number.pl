@@ -4744,3 +4744,274 @@ test_harness:arith_misconception(action_registry(division, sum_dividend_and_divi
     whole_number, sum_dividend_and_divisor,
     misconceptions_whole_number_action_delegates:sum_dividend_and_divisor,
     1001-7, 143).
+
+
+% ---- Borrow execution ----
+%
+% The table already carries the side of the classic buggy-subtraction family
+% where the student never regroups at all: several rows take the smaller digit
+% from the larger in every column. The other side, where the student does reach
+% for a borrow and then executes it wrongly, had no runnable rule. These four
+% are that side. Each walks the written columns right to left and departs from
+% the standard algorithm at one named step, so the rule computes the student's
+% procedure rather than a formula fitted to a wrong answer.
+%
+% The names are the ones the buggy-subtraction literature uses: Brown and
+% Burton (1978), "Diagnostic Models for Procedural Bugs in Basic Mathematical
+% Skills", Cognitive Science 2, and the bug catalogue VanLehn later worked from
+% in the Sierra and repair-theory line. The doings are taken from that
+% literature; no benchmark implementation was read or copied.
+%
+% Source-term decision. The source is the atom brown_burton_1978, following
+% erlwanger_1973, the one other literature-named source the harness carries. A
+% db_row source was refused on two counts. No corpus row documents these four
+% doings, so an id would claim an attestation that does not exist; and
+% misconception_registry.pl drops a corpus row's own batch entry as soon as any
+% harness row carries that id, so an invented id colliding with a real row
+% would remove that row from the registry without saying so. The cost of the
+% literature-shaped source is that harness_backed_misconception/8 reaches a
+% non-db_row row only through source_backed_harness_citation/3, which carries
+% no clause for brown_burton_1978, so these four do not appear in
+% misconception_registry_entry/5. The seven action_registry rows above and the
+% seven asktm rows in the fraction table sit outside it for the same reason.
+% Writing the citation clause needs a BibTeX key, and the repository
+% bibliography holds no entry for Brown and Burton 1978. The surface these
+% rules were written for, misconception_registry:rule_builds/4, reads
+% arith_misconception/6 directly and is unaffected.
+%
+% The sixth argument of each row below is the true difference. These rows
+% therefore serve misconception_registry_entry/5's reading of that slot: the
+% rule's output differs from it, and the difference is the witness.
+%
+% db_row(40584) registers a neighbouring but distinct doing as too_vague. Peled
+% and Segalis (2005) document a student who borrows from the nearest non-zero
+% column and then misdistributes the borrowed amount across the columns in
+% between; the always_borrow_left rule below decrements the leftmost column and
+% adds one ten to the column that asked. That row is left where it stands.
+
+% The numerals sit one above the other and are read as digit columns, least
+% significant first. The subtrahend is padded on the left with zeros to the
+% minuend's width. A subtrahend wider than the minuend, or a negative operand,
+% is outside the domain of a written column subtraction and gets no output.
+misconceptions_whole_number_borrow_execution:(
+    column_pairs(Minuend, Subtrahend, Columns) :-
+        integer(Minuend), integer(Subtrahend),
+        Minuend >= 0, Subtrahend >= 0,
+        place_digits(Minuend, Top),
+        place_digits(Subtrahend, Bottom0),
+        length(Top, Width),
+        length(Bottom0, BottomWidth),
+        BottomWidth =< Width,
+        PadWidth is Width - BottomWidth,
+        length(Pad, PadWidth),
+        maplist(=(0), Pad),
+        append(Pad, Bottom0, Bottom),
+        pair_columns(Top, Bottom, Columns0),
+        reverse(Columns0, Columns)).
+
+misconceptions_whole_number_borrow_execution:(place_digits(0, [0]) :- !).
+misconceptions_whole_number_borrow_execution:(
+    place_digits(Number, Digits) :-
+        Number > 0,
+        place_digits(Number, [], Digits)).
+
+misconceptions_whole_number_borrow_execution:(place_digits(0, Digits, Digits) :- !).
+misconceptions_whole_number_borrow_execution:(
+    place_digits(Number, Acc, Digits) :-
+        Digit is Number mod 10,
+        Rest is Number // 10,
+        place_digits(Rest, [Digit|Acc], Digits)).
+
+misconceptions_whole_number_borrow_execution:(pair_columns([], [], [])).
+misconceptions_whole_number_borrow_execution:(
+    pair_columns([Top|Tops], [Bottom|Bottoms], [Top-Bottom|Columns]) :-
+        pair_columns(Tops, Bottoms, Columns)).
+
+% The answer as it stands on the page, read back from the column digits. A
+% digit outside 0..9 means the enactment left the page, so the rule reports no
+% output rather than a number no student could have written.
+misconceptions_whole_number_borrow_execution:(
+    written_answer(ColumnDigits, Answer) :-
+        reverse(ColumnDigits, Digits),
+        place_value(Digits, 0, Answer)).
+
+misconceptions_whole_number_borrow_execution:(place_value([], Answer, Answer)).
+misconceptions_whole_number_borrow_execution:(
+    place_value([Digit|Digits], Acc0, Answer) :-
+        between(0, 9, Digit),
+        Acc is Acc0 * 10 + Digit,
+        place_value(Digits, Acc, Answer)).
+
+% === always_borrow_left: the decrement lands on the leftmost column ===
+% A column that cannot subtract takes its ten, and the decrement that pays for
+% the ten is charged to the leftmost digit of the minuend rather than to the
+% neighbouring column.
+%
+% Worked by hand on 230 - 122. The ones column takes ten and the hundreds digit
+% falls from 2 to 1; the tens column subtracts 3 - 2 = 1 untouched; the hundreds
+% column reads its own decremented 1 and gives 1 - 1 = 0. The written answer is
+% 018, read as 18, against the true difference 108.
+%
+% The benchmark sample that prompted this family reports 974 - 163 -> 701 under
+% this name. The rule gives 811 there, which is the true difference, because no
+% column of 974 - 163 needs a borrow and a bug in how a borrow is executed has
+% nothing to fire on. 701 comes from a different doing: borrow in every column
+% whether or not the column needs one, charge each decrement to the neighbour,
+% and drop the overflow at the left end. That doing is not this one and is not
+% registered here. The registered input is 230 - 122, where this doing fires.
+%
+% 230 - 122 -> 18 is also built by db_row(39124)'s zero_no_substitute rule, so
+% the abduction surface returns both names at that pair. The two doings part on
+% other inputs; this one is the only one of the two that walks columns.
+% CONNECTS TO: s(comp_nec(unlicensed(always_borrow_left)))
+misconceptions_whole_number_borrow_execution:(
+    always_borrow_left(Minuend-Subtrahend, Got) :-
+        column_pairs(Minuend, Subtrahend, Columns),
+        borrow_left_columns(Columns, Digits),
+        written_answer(Digits, Got)).
+
+% The leftmost minuend digit travels as a cell: every borrow decrements it, and
+% the leftmost column reads it after those decrements.
+misconceptions_whole_number_borrow_execution:(
+    borrow_left_columns(Columns, Digits) :-
+        last(Columns, Leftmost-_),
+        borrow_left_columns(Columns, Leftmost, Digits)).
+
+% The leftmost column has already paid for every borrow the columns to its
+% right took, and there is nowhere further left to charge. A leftmost column
+% that cannot subtract what its decrements have left it produces no output.
+misconceptions_whole_number_borrow_execution:(
+    borrow_left_columns([_Top-Bottom], Cell, [Digit]) :-
+        !,
+        Cell >= Bottom,
+        Digit is Cell - Bottom).
+misconceptions_whole_number_borrow_execution:(
+    borrow_left_columns([Top-Bottom|Columns], Cell0, [Digit|Digits]) :-
+        take_column(Top, Bottom, Digit, Cell0, Cell),
+        borrow_left_columns(Columns, Cell, Digits)).
+
+misconceptions_whole_number_borrow_execution:(
+    take_column(Top, Bottom, Digit, Cell0, Cell) :-
+        (   Top >= Bottom
+        ->  Digit is Top - Bottom,
+            Cell = Cell0
+        ;   Digit is Top + 10 - Bottom,
+            Cell is Cell0 - 1
+        )).
+
+test_harness:arith_misconception(brown_burton_1978, whole_number, always_borrow_left,
+    misconceptions_whole_number_borrow_execution:always_borrow_left,
+    230-122,
+    108).
+
+% === borrow_from_bottom: the decrement is charged to the subtrahend ===
+% A column that cannot subtract takes its ten, and the decrement is written on
+% the subtrahend's next column instead of the minuend's.
+%
+% Worked by hand on 230 - 122. The ones column takes ten, gives 10 - 2 = 8, and
+% the subtrahend's tens digit falls from 2 to 1; the tens column then subtracts
+% 3 - 1 = 2; the hundreds column gives 2 - 1 = 1. The written answer is 128,
+% against the true difference 108, and it agrees with the benchmark sample.
+%
+% The leftmost column has no subtrahend column to charge, so a leftmost column
+% that cannot subtract produces no output rather than an invented digit.
+% CONNECTS TO: s(comp_nec(unlicensed(borrow_from_bottom)))
+misconceptions_whole_number_borrow_execution:(
+    borrow_from_bottom(Minuend-Subtrahend, Got) :-
+        column_pairs(Minuend, Subtrahend, Columns),
+        borrow_from_bottom_columns(Columns, Digits),
+        written_answer(Digits, Got)).
+
+misconceptions_whole_number_borrow_execution:(
+    borrow_from_bottom_columns([Top-Bottom], [Digit]) :-
+        !,
+        Top >= Bottom,
+        Digit is Top - Bottom).
+misconceptions_whole_number_borrow_execution:(
+    borrow_from_bottom_columns([Top-Bottom, NextTop-NextBottom|Columns], [Digit|Digits]) :-
+        (   Top >= Bottom
+        ->  Digit is Top - Bottom,
+            Charged = NextBottom
+        ;   Digit is Top + 10 - Bottom,
+            Charged is NextBottom - 1
+        ),
+        borrow_from_bottom_columns([NextTop-Charged|Columns], Digits)).
+
+test_harness:arith_misconception(brown_burton_1978, whole_number, borrow_from_bottom,
+    misconceptions_whole_number_borrow_execution:borrow_from_bottom,
+    230-122,
+    108).
+
+% === borrow_no_decrement: the ten arrives and nothing is charged for it ===
+% A column that cannot subtract takes its ten and no column anywhere is
+% decremented to pay for it.
+%
+% Worked by hand on 1251 - 826. The ones column gives 11 - 6 = 5; the tens
+% column is untouched and gives 5 - 2 = 3; the hundreds column gives 12 - 8 = 4
+% with the thousands digit left standing; the thousands column gives 1 - 0 = 1.
+% The written answer is 1435, against the true difference 425, and it agrees
+% with the benchmark sample.
+% CONNECTS TO: s(comp_nec(unlicensed(borrow_no_decrement)))
+misconceptions_whole_number_borrow_execution:(
+    borrow_no_decrement(Minuend-Subtrahend, Got) :-
+        column_pairs(Minuend, Subtrahend, Columns),
+        borrow_no_decrement_columns(Columns, Digits),
+        written_answer(Digits, Got)).
+
+misconceptions_whole_number_borrow_execution:(borrow_no_decrement_columns([], [])).
+misconceptions_whole_number_borrow_execution:(
+    borrow_no_decrement_columns([Top-Bottom|Columns], [Digit|Digits]) :-
+        (   Top >= Bottom
+        ->  Digit is Top - Bottom
+        ;   Digit is Top + 10 - Bottom
+        ),
+        borrow_no_decrement_columns(Columns, Digits)).
+
+test_harness:arith_misconception(brown_burton_1978, whole_number, borrow_no_decrement,
+    misconceptions_whole_number_borrow_execution:borrow_no_decrement,
+    1251-826,
+    425).
+
+% === diff_0_n_equals_n: a zero on top is answered by the digit below it ===
+% A column whose minuend digit is 0 is answered by writing the subtrahend digit
+% and taking no borrow for that column. Every other column runs the standard
+% procedure, borrowing when it needs to. A borrow arriving at a zero column
+% passes through it to the column on its left, because a zero has nothing to
+% give; the zero column's own answer is still read off the untouched 0.
+%
+% Worked by hand on 603 - 568. The ones column cannot subtract, so it takes a
+% ten and the request travels past the zero to the hundreds, which falls from 6
+% to 5; the ones column gives 13 - 8 = 5. The tens column reads 0 above 6 and
+% writes 6. The hundreds column gives 5 - 5 = 0. The written answer is 065,
+% read as 65, against the true difference 35, and it agrees with the benchmark
+% sample.
+%
+% A borrow still outstanding after the leftmost column is an underflow, and the
+% rule reports no output there.
+% CONNECTS TO: s(comp_nec(unlicensed(diff_0_n_equals_n)))
+misconceptions_whole_number_borrow_execution:(
+    diff_0_n_equals_n(Minuend-Subtrahend, Got) :-
+        column_pairs(Minuend, Subtrahend, Columns),
+        zero_top_columns(Columns, 0, Digits),
+        written_answer(Digits, Got)).
+
+misconceptions_whole_number_borrow_execution:(zero_top_columns([], 0, [])).
+misconceptions_whole_number_borrow_execution:(
+    zero_top_columns([Top-Bottom|Columns], Borrow0, [Digit|Digits]) :-
+        (   Top =:= 0
+        ->  Digit = Bottom,
+            Borrow = Borrow0
+        ;   Standing is Top - Borrow0,
+            (   Standing >= Bottom
+            ->  Digit is Standing - Bottom,
+                Borrow = 0
+            ;   Digit is Standing + 10 - Bottom,
+                Borrow = 1
+            )
+        ),
+        zero_top_columns(Columns, Borrow, Digits)).
+
+test_harness:arith_misconception(brown_burton_1978, whole_number, diff_0_n_equals_n,
+    misconceptions_whole_number_borrow_execution:diff_0_n_equals_n,
+    603-568,
+    35).

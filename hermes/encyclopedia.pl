@@ -734,6 +734,7 @@ source_citation_text(Source, Str) :-
     ( var(Source) -> Str = ""
     ; Source = db_row(Id) -> db_row_citation_text(Id, Str)
     ; Source = erlwanger_1973 -> Str = "Erlwanger 1973 (Benny)"
+    ; Source = brown_burton_1978 -> Str = "Brown and Burton 1978 (buggy subtraction)"
     ; Source = asktm -> Str = "AskTM corpus"
     ; Source = vocabulary -> Str = "vocabulary-derived"
     ; term_text_string(Source, Str)
