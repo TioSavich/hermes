@@ -410,7 +410,7 @@
       "infrastructure": 21,
       "juncture": 1,
       "learner": 25,
-      "misconceptions": 14,
+      "misconceptions": 15,
       "monitoring": 5,
       "pml": 15,
       "render": 28,
@@ -423,7 +423,7 @@
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 80,
+      "orphan_module": 81,
       "routed_only": 14,
       "routed_paged": 181,
       "unrouted": 10
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 43
+      "undetermined": 44
     },
-    "total": 295,
+    "total": 296,
     "unrouted": 10
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1400,6 +1400,20 @@
       "module": "monitoring_registry_bridge",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/misconceptions/monitoring_registry_bridge.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "misconceptions",
+      "evidence": [
+        {
+          "locator": "/** <module> Keyword probes over the research-corpus misconception rows",
+          "path": "knowledge/misconceptions/query_probes.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "misconception_query_probes",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/misconceptions/query_probes.pl",
       "verdict": "undetermined"
     },
     {

@@ -972,8 +972,12 @@ def build() -> dict[str, object]:
     # enactment contract, which until now no operation reached at all.
     # 295 from 2026-08-01: prolog_query, the first operation that runs a
     # goal rather than answering a question shaped in advance.
-    if len(registry_rows) != 295:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 295")
+    # 296 from late 2026-08-01: misconception_query_probes, the keyword
+    # probe the diagnosis benchmark's query-forming model can call through
+    # prolog_query. It reads as an orphan module because only caller-formed
+    # goals reach it, never a routed operation.
+    if len(registry_rows) != 296:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 296")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1019,8 +1023,11 @@ def build() -> dict[str, object]:
     # loaded module as lazy_reachable rather than orphan_module is a live
     # question, deliberately not answered here, because answering it moves
     # counts across this census and wants its own slice.
-    if len(orphan_records) != 80:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 80")
+    # 81 from late 2026-08-01: misconception_query_probes joins the orphan
+    # count for the same reason it joins the registry — only caller-formed
+    # prolog_query goals reach it, so no static import ever will.
+    if len(orphan_records) != 81:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 81")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route.
     if len(unrouted) != 10:

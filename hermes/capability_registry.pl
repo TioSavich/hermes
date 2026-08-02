@@ -283,6 +283,7 @@ capability('knowledge/index/task_span_absence_registry.pl', 'task_span_absence_r
 capability('knowledge/index/vision_lesson_digest_audit.pl', 'vision_lesson_digest_audit', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/misconceptions/monitoring_registry_bridge.pl', 'monitoring_registry_bridge', 'misconceptions', [], orphan_module).
+capability('knowledge/misconceptions/query_probes.pl', 'misconception_query_probes', 'misconceptions', [], orphan_module).
 capability('knowledge/misconceptions/research_corpus_automaton_bindings.pl', 'research_corpus_automaton_bindings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).

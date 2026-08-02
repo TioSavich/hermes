@@ -308,8 +308,11 @@ def render_registry() -> str:
     # this assertion is for: it refuses a report that lands without its count.
     # Proposals under docs/research/proposals/ are not top-level and do not
     # enter this denominator.
-    if len(reports) != 73:
-        raise RuntimeError(f"expected 73 top-level research reports, found {len(reports)}")
+    # 73 until late 2026-08-01, when the prolog-assisted diagnosis arm ran
+    # for the first time and its report landed with this count in the same
+    # commit.
+    if len(reports) != 74:
+        raise RuntimeError(f"expected 74 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
