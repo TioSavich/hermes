@@ -14,9 +14,32 @@
 :- use_module(library(time), [call_with_time_limit/2]).
 
 
-solution_cap(100).
-timeout_seconds(2.0).
-listing_cap(100).
+% The defaults below serve the interactive MCP surface. A batch caller that
+% owns its own wall-clock budget — a benchmark driver, a corpus probe — may
+% widen them through the environment; every reply still reports the limits
+% it actually ran under, so a widened run cannot be mistaken for a default
+% one.
+solution_cap(Cap) :-
+    limit_from_environment('HERMES_PROLOG_QUERY_SOLUTION_CAP',
+                           integer, 100, Cap).
+timeout_seconds(Timeout) :-
+    limit_from_environment('HERMES_PROLOG_QUERY_TIMEOUT_SECONDS',
+                           number, 2.0, Timeout).
+listing_cap(Cap) :-
+    limit_from_environment('HERMES_PROLOG_QUERY_LISTING_CAP',
+                           integer, 100, Cap).
+
+limit_from_environment(Name, Type, Default, Value) :-
+    (   getenv(Name, Text),
+        atom_number(Text, Number),
+        limit_of_type(Type, Number),
+        Number > 0
+    ->  Value = Number
+    ;   Value = Default
+    ).
+
+limit_of_type(integer, Number) :- integer(Number).
+limit_of_type(number, Number) :- number(Number).
 
 
 %!  prolog_query_dict(+Request:dict, -Dict:dict) is det.
