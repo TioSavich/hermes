@@ -508,6 +508,306 @@ num_value(_, 0).
 %   counting automata were unreachable from this seam: the a/b fallback hands
 %   them bare integers, and every counting clause head requires a term.
 trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "decimal_unit_conversion"), !,
+    json_nonnegative_integer_field(Input, count, Count),
+    json_positive_integer_field(Input, from_scale, FromScale),
+    json_positive_integer_field(Input, to_scale, ToScale),
+    A = decimal_unit_conversion(Count, FromScale, ToScale), B = ignored.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "signed_number_list"), !,
+    get_dict(values, Input, Values),
+    json_integer_values(Values, A), B = number_line.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "inequality"), !,
+    json_atom_field(Input, variable, Variable),
+    json_atom_field(Input, relation, Relation),
+    json_integer_field(Input, bound, Bound),
+    A = inequality(Variable, Relation, Bound), B = number_line.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "referent_pair"), !,
+    get_dict(first, Input, First), get_dict(second, Input, Second),
+    json_referent(First, A), json_referent(Second, B).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "measure_with_unit"), !,
+    json_positive_integer_field(Input, interval_count, IntervalCount),
+    json_positive_integer_field(Input, subdivisions, Subdivisions),
+    json_atom_field(Input, unit, Unit),
+    A = measure(IntervalCount, Subdivisions), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "quantity_conversion"), !,
+    json_nonnegative_integer_field(Input, count, Count),
+    json_atom_field(Input, from_unit, FromUnit),
+    json_atom_field(Input, to_unit, ToUnit),
+    json_positive_integer_field(Input, factor, Factor),
+    A = quantity(Count, FromUnit), B = conversion(ToUnit, Factor).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "measured_change"), !,
+    json_atom_field(Input, operation, Operation),
+    json_nonnegative_integer_field(Input, a, Left),
+    json_nonnegative_integer_field(Input, b, Right),
+    json_atom_field(Input, unit, Unit),
+    A = measured_change(Operation, Left, Right, Unit), B = ignored.
+
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "categorical_frequencies"), !,
+    get_dict(pairs, Input, JsonPairs), is_list(JsonPairs),
+    maplist(json_frequency_pair, JsonPairs, A),
+    get_dict(display, Input, "bar_chart"), B = display(bar_chart).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "numeric_data_display"), !,
+    get_dict(values, Input, Values), json_nonnegative_integer_values(Values, A),
+    get_dict(display, Input, "dot_plot"), B = display(dot_plot).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "statistical_question"), !,
+    json_atom_field(Input, variable, Variable),
+    json_atom_field(Input, population, Population),
+    A = question(Variable, expects_variability), B = population(Population).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "histogram_data"), !,
+    get_dict(values, Input, Values), json_nonnegative_integer_values(Values, A),
+    json_positive_integer_field(Input, bin_width, BinWidth),
+    B = display(histogram(BinWidth)).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "numeric_data_with_unit"), !,
+    get_dict(values, Input, Values), json_nonnegative_integer_values(Values, A),
+    json_atom_field(Input, unit, Unit), B = measurement_unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "box_plot_data"), !,
+    get_dict(values, Input, Values), json_nonnegative_integer_values(Values, A),
+    get_dict(display, Input, "box_plot"), B = display(box_plot).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "distribution_data"), !,
+    get_dict(values, Input, Values), json_nonnegative_integer_values(Values, A),
+    json_atom_field(Input, profile, Profile), B = distribution(Profile).
+
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "covered_cells"), !,
+    get_dict(cells, Input, JsonCells), maplist(json_lattice_point, JsonCells, Cells),
+    json_atom_field(Input, unit, Unit), A = covered_cells(Cells), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "placed_tiles"), !,
+    get_dict(cells, Input, JsonCells), maplist(json_lattice_point, JsonCells, Cells),
+    json_atom_field(Input, unit, Unit), A = placed_tiles(Cells), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "area_unit_candidates"), !,
+    json_atom_field(Input, extent, Extent),
+    get_dict(candidates, Input, JsonCandidates),
+    maplist(json_area_unit_candidate, JsonCandidates, Candidates),
+    A = area_extent(Extent), B = candidates(Candidates).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "rectangle_with_unit"), !,
+    json_positive_integer_field(Input, length, Length),
+    json_positive_integer_field(Input, width, Width),
+    json_atom_field(Input, unit, Unit),
+    A = rectangle(Length, Width), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "polygon_sides_with_unit"), !,
+    get_dict(sides, Input, Sides), json_positive_number_values(Sides, SideLengths),
+    json_atom_field(Input, unit, Unit), A = sides(SideLengths), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "symmetry_side_orbits"), !,
+    get_dict(known_orbits, Input, JsonKnown),
+    maplist(json_known_side_orbit, JsonKnown, KnownOrbits),
+    get_dict(unknown_orbit, Input, JsonUnknown),
+    json_unknown_side_orbit(JsonUnknown, UnknownOrbit),
+    append(KnownOrbits, [UnknownOrbit], Orbits),
+    json_positive_integer_field(Input, perimeter, Perimeter),
+    json_atom_field(Input, unit, Unit),
+    A = side_orbits(Orbits), B = perimeter(Perimeter, Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "perimeter_scope"), !,
+    json_positive_integer_field(Input, perimeter, Perimeter),
+    json_atom_field(Input, scope, Scope), A = Perimeter, B = side_scope(Scope).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "perimeter_known_side"), !,
+    json_positive_integer_field(Input, perimeter, Perimeter),
+    json_positive_integer_field(Input, known_side, Known),
+    A = perimeter(Perimeter), B = known_side(Known).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "area_scope"), !,
+    json_positive_integer_field(Input, area, Area),
+    json_atom_field(Input, scope, Scope), A = Area, B = factor_scope(Scope).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "rectangle_constraints"), !,
+    json_positive_integer_field(Input, area, Area),
+    json_positive_integer_field(Input, perimeter, Perimeter),
+    A = constraints(area(Area), perimeter(Perimeter)), B = constraint_scope(all).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "area_known_side"), !,
+    json_positive_integer_field(Input, area, Area),
+    json_positive_integer_field(Input, known_side, Known),
+    A = area(Area), B = known_side(Known).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "rectangular_prism"), !,
+    json_positive_integer_field(Input, length, Length),
+    json_positive_integer_field(Input, width, Width),
+    json_positive_integer_field(Input, height, Height),
+    A = prism(Length, Width), B = Height.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "volume_known_base"), !,
+    json_positive_integer_field(Input, volume, Volume),
+    json_positive_integer_field(Input, length, Length),
+    json_positive_integer_field(Input, width, Width),
+    A = volume(Volume), B = known_base(Length, Width).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "disjoint_prisms"), !,
+    get_dict(prisms, Input, JsonPrisms), maplist(json_prism, JsonPrisms, Prisms),
+    json_atom_field(Input, unit, Unit),
+    A = certified_disjoint_prisms(Prisms), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "overlapping_prisms"), !,
+    get_dict(prisms, Input, JsonPrisms), maplist(json_prism, JsonPrisms, Prisms),
+    json_positive_integer_field(Input, overlap_volume, OverlapVolume),
+    json_atom_field(Input, unit, Unit),
+    A = overlapping_prisms(Prisms, OverlapVolume), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "coordinate_points"), !,
+    get_dict(points, Input, JsonPoints), maplist(json_coordinate_point, JsonPoints, A),
+    B = axes(cartesian).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "coordinate_point_pair"), !,
+    get_dict(first, Input, First), get_dict(second, Input, Second),
+    json_coordinate_point(First, FirstPoint),
+    json_coordinate_point(Second, SecondPoint),
+    json_atom_field(Input, unit, Unit),
+    A = points(FirstPoint, SecondPoint), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "polygon_partition"), !,
+    get_dict(vertices, Input, JsonVertices),
+    maplist(json_lattice_point, JsonVertices, Vertices),
+    get_dict(pieces, Input, JsonPieces),
+    maplist(json_polygon, JsonPieces, Pieces),
+    json_atom_field(Input, certification, Certification),
+    polygon_partition_operand(Certification, Pieces, B), A = polygon(Vertices).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "parallelogram_with_unit"), !,
+    json_positive_integer_field(Input, base, Base),
+    json_positive_integer_field(Input, height, Height),
+    json_positive_integer_field(Input, slanted_side, SlantedSide),
+    json_nonnegative_integer_field(Input, offset, Offset),
+    json_atom_field(Input, unit, Unit),
+    A = parallelogram(Base, Height, SlantedSide, Offset), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "triangle_with_unit"), !,
+    json_positive_integer_field(Input, base, Base),
+    json_positive_integer_field(Input, height, Height),
+    json_atom_field(Input, unit, Unit), A = triangle(Base, Height), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "solid_net"), !,
+    json_atom_field(Input, solid, Solid),
+    get_dict(face_areas, Input, FaceAreas),
+    json_positive_integer_values(FaceAreas, Areas),
+    json_atom_field(Input, unit, Unit), A = net(Solid, Areas), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "dimensional_measure"), !,
+    json_atom_field(Input, dimension, Dimension),
+    json_nonnegative_number_field(Input, value, Value),
+    json_atom_field(Input, unit, Unit), A = measure(Dimension, Value), B = unit(Unit).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "shape_attributes"), !,
+    json_atom_field(Input, shape, Shape),
+    get_dict(attributes, Input, JsonAttributes),
+    maplist(json_shape_attribute, JsonAttributes, Attributes),
+    json_nonnegative_integer_field(Input, quarter_turns, QuarterTurns),
+    A = shape(Shape, Attributes), B = orientation(QuarterTurns).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "angle_measure"), !,
+    json_positive_integer_field(Input, degrees, Degrees),
+    A = Degrees, B = unit(degree).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "angle_parts"), !,
+    get_dict(parts, Input, Parts), json_positive_integer_values(Parts, AngleParts),
+    json_positive_integer_field(Input, whole, Whole),
+    A = angle_parts(AngleParts), B = whole_angle(Whole).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "rigid_shape_composition"), !,
+    json_positive_integer_field(Input, columns, Columns),
+    json_positive_integer_field(Input, rows, Rows),
+    get_dict(pieces, Input, JsonPieces),
+    maplist(json_rigid_piece, JsonPieces, Pieces),
+    A = region(Columns, Rows), B = Pieces.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "solid_volume_comparison"), !,
+    json_positive_integer_field(Input, count_a, CountA),
+    json_positive_integer_field(Input, count_b, CountB),
+    json_positive_number_field(Input, extent_a, ExtentA),
+    json_positive_number_field(Input, extent_b, ExtentB),
+    A = solid_cube_counts(CountA, CountB), B = visual_extents(ExtentA, ExtentB).
+
+% Algebraic expressions use recursive tagged objects: {"node":"int","value":N},
+% {"node":"var","name":"x"}, {"node":"add"|"mult","left":...,"right":...},
+% and {"node":"power","base":...,"exponent":N}. Decoding constructs the
+% corresponding term tree; it does not evaluate or simplify it.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "expression_assignment"), !,
+    get_dict(expression, Input, JsonExpression), json_expression(JsonExpression, A),
+    get_dict(assignments, Input, JsonAssignments),
+    maplist(json_assignment, JsonAssignments, B).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "linear_context"), !,
+    json_atom_field(Input, unknown, Unknown),
+    json_number_field(Input, coefficient, Coefficient),
+    json_number_field(Input, offset, Offset),
+    json_number_field(Input, total, Total),
+    get_dict(referent_roles, Input, JsonRoles), maplist(json_atom, JsonRoles, Roles),
+    A = linear_context(Unknown, Coefficient, Offset, Total, Roles),
+    B = equation_form(ax_plus_b_equals_c).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "equation_assignment"), !,
+    get_dict(left, Input, JsonLeft), get_dict(right, Input, JsonRight),
+    json_expression(JsonLeft, Left), json_expression(JsonRight, Right),
+    get_dict(assignments, Input, JsonAssignments),
+    maplist(json_assignment, JsonAssignments, B), A = equation(Left, Right).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "linear_equation"), !,
+    json_integer_field(Input, a, Coefficient),
+    json_integer_field(Input, b, Offset),
+    json_integer_field(Input, c, Total),
+    A = linear_equation(Coefficient, Offset, Total),
+    B = solution_domain(nonnegative_integer).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "quantity_relation"), !,
+    json_atom_field(Input, operator, Operator),
+    get_dict(left, Input, JsonLeft), get_dict(right, Input, JsonRight),
+    json_expression(JsonLeft, Left), json_expression(JsonRight, Right),
+    get_dict(referent_roles, Input, JsonRoles), maplist(json_atom, JsonRoles, Roles),
+    get_dict(declared_variables, Input, JsonVariables),
+    maplist(json_atom, JsonVariables, Variables),
+    A = quantity_relation(Operator, Left, Right, Roles),
+    B = variable_scope(Variables).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "expression_rewrite"), !,
+    get_dict(expression, Input, JsonExpression), json_expression(JsonExpression, A),
+    json_atom_field(Input, direction, Direction), B = rewrite_direction(Direction).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "power_notation"), !,
+    get_dict(base, Input, JsonBase), json_expression(JsonBase, Base),
+    json_nonnegative_integer_field(Input, exponent, Exponent),
+    A = power(Base, Exponent), B = notation(expanded_product).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "expression_pair"), !,
+    get_dict(left, Input, JsonLeft), get_dict(right, Input, JsonRight),
+    json_expression(JsonLeft, Left), json_expression(JsonRight, Right),
+    A = expression_pair(Left, Right), B = method(repeated_factor_expansion).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "linear_pattern_context"), !,
+    json_integer_field(Input, first, First),
+    json_integer_field(Input, change, Change),
+    json_positive_integer_field(Input, row, Row),
+    json_atom_field(Input, context, Context),
+    A = linear_pattern(first(First), change(Change), row(Row)), B = Context.
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "linear_pattern_empirical_rule"), !,
+    json_integer_field(Input, first, First),
+    json_integer_field(Input, change, Change),
+    json_positive_integer_field(Input, row, Row),
+    json_integer_field(Input, multiplier, Multiplier),
+    json_integer_field(Input, constant, Constant),
+    get_dict(checked_rows, Input, CheckedRows),
+    json_integer_values(CheckedRows, Rows),
+    A = linear_pattern(first(First), change(Change), row(Row)),
+    B = empirical_rule(multiplier(Multiplier), constant(Constant), checked_rows(Rows)).
+trace_inputs(Input, A, B) :-
     ( is_dict(Input) -> D = Input ; D = _{} ),
     (   get_dict(kind, D, "fraction_pair"),
         get_dict(left, D, Left), get_dict(right, D, Right),
@@ -610,6 +910,148 @@ json_terminal_path(JsonPath,
     get_dict(events, JsonPath, JsonEvents),
     is_list(JsonEvents),
     maplist(to_atom, JsonEvents, Events).
+
+json_number_field(Dict, Key, Value) :-
+    get_dict(Key, Dict, Value),
+    number(Value).
+
+json_nonnegative_number_field(Dict, Key, Value) :-
+    json_number_field(Dict, Key, Value),
+    Value >= 0.
+
+json_positive_number_field(Dict, Key, Value) :-
+    json_number_field(Dict, Key, Value),
+    Value > 0.
+
+json_integer_field(Dict, Key, Value) :-
+    get_dict(Key, Dict, Value),
+    integer(Value).
+
+json_nonnegative_integer_field(Dict, Key, Value) :-
+    json_integer_field(Dict, Key, Value),
+    Value >= 0.
+
+json_positive_integer_field(Dict, Key, Value) :-
+    json_integer_field(Dict, Key, Value),
+    Value > 0.
+
+json_atom_field(Dict, Key, Value) :-
+    get_dict(Key, Dict, Raw),
+    json_atom(Raw, Value).
+
+json_atom(Raw, Atom) :-
+    (   atom(Raw)
+    ->  Atom = Raw
+    ;   string(Raw), Raw \== "",
+        atom_string(Atom, Raw)
+    ).
+
+json_integer_values(Values, Integers) :-
+    is_list(Values),
+    maplist(json_integer, Values, Integers).
+
+json_nonnegative_integer_values(Values, Integers) :-
+    json_integer_values(Values, Integers),
+    maplist(nonnegative_json_integer, Integers).
+
+json_positive_integer_values(Values, Integers) :-
+    json_integer_values(Values, Integers),
+    maplist(positive_json_integer, Integers).
+
+json_positive_number_values(Values, Numbers) :-
+    is_list(Values),
+    maplist(positive_json_number, Values),
+    Numbers = Values.
+
+nonnegative_json_integer(Value) :- integer(Value), Value >= 0.
+positive_json_integer(Value) :- integer(Value), Value > 0.
+positive_json_number(Value) :- number(Value), Value > 0.
+
+json_referent(Dict, referent(Label, Count)) :-
+    is_dict(Dict),
+    json_atom_field(Dict, label, Label),
+    json_positive_integer_field(Dict, count, Count).
+
+json_frequency_pair(Dict, Category-Count) :-
+    is_dict(Dict),
+    json_atom_field(Dict, category, Category),
+    json_nonnegative_integer_field(Dict, count, Count).
+
+json_lattice_point(Dict, X-Y) :-
+    is_dict(Dict),
+    json_integer_field(Dict, x, X),
+    json_integer_field(Dict, y, Y).
+
+json_coordinate_point(Dict, point(X, Y)) :-
+    is_dict(Dict),
+    json_number_field(Dict, x, X),
+    json_number_field(Dict, y, Y).
+
+json_polygon(JsonVertices, Vertices) :-
+    is_list(JsonVertices),
+    maplist(json_lattice_point, JsonVertices, Vertices).
+
+json_area_unit_candidate(Dict, unit(Unit, Extent)) :-
+    is_dict(Dict),
+    json_atom_field(Dict, unit, Unit),
+    json_atom_field(Dict, extent, Extent).
+
+json_known_side_orbit(Dict, orbit(Copies, known(Length))) :-
+    is_dict(Dict),
+    json_positive_integer_field(Dict, copies, Copies),
+    json_positive_integer_field(Dict, length, Length).
+
+json_unknown_side_orbit(Dict, orbit(Copies, unknown(Name))) :-
+    is_dict(Dict),
+    json_positive_integer_field(Dict, copies, Copies),
+    json_atom_field(Dict, name, Name).
+
+json_prism(Dict, prism(Length, Width, Height)) :-
+    is_dict(Dict),
+    json_positive_integer_field(Dict, length, Length),
+    json_positive_integer_field(Dict, width, Width),
+    json_positive_integer_field(Dict, height, Height).
+
+polygon_partition_operand(certified, Pieces, certified_partition(Pieces)).
+polygon_partition_operand(unchecked, Pieces, decomposition(Pieces)).
+
+json_shape_attribute(Dict, Attribute) :-
+    is_dict(Dict),
+    json_atom_field(Dict, name, Name),
+    json_nonnegative_integer_field(Dict, value, Value),
+    Attribute =.. [Name, Value].
+
+json_rigid_piece(Dict, placed(Id, Cells)) :-
+    is_dict(Dict),
+    json_atom_field(Dict, id, Id),
+    get_dict(cells, Dict, JsonCells),
+    is_list(JsonCells),
+    maplist(json_lattice_point, JsonCells, Cells),
+    Cells = [_|_].
+
+json_expression(Dict, int(Value)) :-
+    is_dict(Dict), get_dict(node, Dict, "int"), !,
+    json_integer_field(Dict, value, Value).
+json_expression(Dict, var(Name)) :-
+    is_dict(Dict), get_dict(node, Dict, "var"), !,
+    json_atom_field(Dict, name, Name).
+json_expression(Dict, add(Left, Right)) :-
+    is_dict(Dict), get_dict(node, Dict, "add"), !,
+    get_dict(left, Dict, JsonLeft), get_dict(right, Dict, JsonRight),
+    json_expression(JsonLeft, Left), json_expression(JsonRight, Right).
+json_expression(Dict, mult(Left, Right)) :-
+    is_dict(Dict), get_dict(node, Dict, "mult"), !,
+    get_dict(left, Dict, JsonLeft), get_dict(right, Dict, JsonRight),
+    json_expression(JsonLeft, Left), json_expression(JsonRight, Right).
+json_expression(Dict, power(Base, Exponent)) :-
+    is_dict(Dict), get_dict(node, Dict, "power"), !,
+    get_dict(base, Dict, JsonBase), json_expression(JsonBase, Base),
+    json_nonnegative_integer_field(Dict, exponent, Exponent).
+
+json_assignment(Dict, var(Name) = int(Value)) :-
+    is_dict(Dict),
+    json_atom_field(Dict, variable, Name),
+    json_integer_field(Dict, value, Value).
 
 
 %% ======================================================================

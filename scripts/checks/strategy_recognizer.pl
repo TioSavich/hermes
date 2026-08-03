@@ -5,6 +5,12 @@
 main :-
     observed_signatures(Signatures),
     length(Signatures, SignatureCount),
+    % Decoder ledger (2026-08-03): 219 contracts now split into 122 examples
+    % encodable by build_transition_tables.py and 97 structured examples the
+    % extractor cannot yet encode. All 122 encodable probes ran; the existing
+    % counting/enumerate_collection_one_to_one row still has no static Trace
+    % list to receive its observation, so the recognizer corpus remains 121
+    % with the same per-family counts pinned below.
     expect_equal(121, SignatureCount, observed_signature_count),
     expect_family_counts(Signatures),
     forall(member(Operation-Kind, Signatures),

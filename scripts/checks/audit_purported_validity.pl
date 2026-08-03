@@ -42,6 +42,7 @@
               [ run_action_automaton/6, action_automaton_signature/4 ]).
 :- use_module(strategies(automaton_input_contracts),
               [ automaton_input_contract/5 ]).
+:- use_module(hermes(encyclopedia), []).
 
 :- discontiguous truth/5.
 
@@ -114,6 +115,13 @@ example_args(Dict, A, B) :-
     get_dict(left, Dict, L), get_dict(right, Dict, R),
     get_dict(base, Dict, Base),
     A = counts(L, R), B = base(Base).
+% Structured contract families use the same construction-only decoder as the
+% public strategy_trace seam. Earlier explicit adapters remain first so their
+% audit behavior stays unchanged.
+example_args(Dict, A, B) :-
+    is_dict(Dict),
+    get_dict(kind, Dict, _), !,
+    hermes_encyclopedia:trace_inputs(Dict, A, B).
 example_args(Dict, A, B) :-
     is_dict(Dict),
     get_dict(a, Dict, A), get_dict(b, Dict, B), !.

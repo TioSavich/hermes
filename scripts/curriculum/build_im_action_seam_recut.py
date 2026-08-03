@@ -127,8 +127,11 @@ def checked_registry_runs() -> dict:
     # 131 from 2026-08-03: the contract-gap slice added seven contracts the
     # existing seam could already decode (four decimal, two co-denominator
     # fraction dispatches, one integer deformation).
-    if payload.get("contracts") != 131 or len(traces) != 131:
-        fail("expected 131 live checked-contract traces")
+    # 219 from later the same day: the decoder slice taught trace_inputs/3
+    # the structured operand families and the remaining 88 kinds gained
+    # verified contracts — every registered signature now traces live.
+    if payload.get("contracts") != 219 or len(traces) != 219:
+        fail("expected 219 live checked-contract traces")
     if any(
         row.get("response", {}).get("ok") is not True
         or not row.get("response", {}).get("steps")

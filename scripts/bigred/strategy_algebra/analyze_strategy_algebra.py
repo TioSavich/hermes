@@ -706,10 +706,13 @@ def main() -> int:
     # seven of its eight signatures became observed, and
     # enumerate_collection_one_to_one stayed out because it declares no static
     # trace list for the extractor to root its states in.
-    # 121 since 2026-08-03, when the contract-gap slice added seven contracts
-    # the existing seam could already decode: four decimal reading/scaling
-    # kinds, the two co-denominator fraction dispatches, and the
-    # drop-sign integer deformation.
+    # 121 since the first 2026-08-03 contract-gap slice added seven contracts
+    # the existing seam could already decode. The 2026-08-03 decoder slice
+    # closed all 219 contracts, but its transition-table ledger found 97
+    # structured examples the extractor cannot encode and 122 encodable live
+    # probes. All 122 ran; counting/enumerate_collection_one_to_one still has
+    # no static Trace list to receive its observation, so the analyzer corpus
+    # and its per-family recognizer split remain 121.
     # A guard rather than a preference. The analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.

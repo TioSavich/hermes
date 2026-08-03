@@ -7,37 +7,19 @@ exports the grid-searching `separating_example/4` and input-specific
 (coincidence sweep; crash-isolated per kind),
 `scripts/checks/scan_self_certifying.py` (static scan for
 `expected(Result)` sharing the result variable), and the generated data
-in `knowledge/strategies/deformation_coincidence.pl`. State as of this
-date: Layer 1 covers all 124 contracted kinds. Layer 2 has 125
-executable rows because `counting/recursive_place_value_inscription`
-contributes two identical solutions: 74 pass the independent truth
-check, 25 have no adapter, and 26 have an unnormalized result shape.
-About 50 unique contracted kinds remain unchecked by Layer 2. The five
-deformation contracts that initially failed to witness their own bug
-carry separating examples, re-verified through the worker's
-strategy_trace seam (all 124 rows ok:true with nonempty steps).
+in `knowledge/strategies/deformation_coincidence.pl`. State after the
+decoder slice: Layer 1 covers all 219 contracted kinds with no broken
+purports or failed runs. Layer 2 has 221 executable outcomes: 76 pass
+independent truth checks, 119 have no truth adapter, and 26 have an
+unnormalized result shape; no incorrect-kind example coincides with its
+independent truth. All 219 contracts return `ok:true` with nonempty
+steps through the worker's `strategy_trace` seam.
 
 The ordering below is by harm, not by size.
 
-## 1. Defects: kinds that do not return on small in-shape inputs
+## 1. Closed: non-returning small in-shape inputs
 
-Recorded as `no_return_within/3` in deformation_coincidence.pl. Each
-was killed at 120 s in a crash-isolated process, on an input inside its
-declared contract shape:
-
-- `addition/make_base_transfer` on (1, 3) — also aborts the process
-  outright in an unbounded run (C-stack), which would take the worker
-  down with it.
-- `subtraction/count_up_missing_addend` on (1, 13)
-- `subtraction/take_away_base_ones` on (1, 14)
-- `subtraction/sliding_constant_difference` on (1, 17)
-
-All four sit where the second operand exceeds the first or the first is
-tiny. Each needs either a guard that FAILS cleanly (the registry
-boundary is semidet; failure is the contract) or an explicit refusal
-result, plus a contract-shape note recording the admissible domain.
-This is the highest-priority slice: a student input can currently hang
-or kill the worker.
+Closed 2026-08-03: admissibility guards in the addition and subtraction action-pair modules make all four recorded inputs fail cleanly while preserving the existing admissible contract traces. The 219-contract live seam regression passes after those guards.
 
 ## 2. Fixed points: per-input validity for coincident deformations
 
@@ -93,52 +75,29 @@ it loses is grounding, not answers. Answer-based detection is
 impossible for it, so its recognizer must read the trace for the missing
 grounding step.
 
-## 3. Coverage gap: 95 registered kinds with no input contract
+## 3. Closed: registered kinds without input contracts
 
-Per family, with the input-shape work each needs. A contract needs: a
-JSON shape, one worked example, seam verification, and — for
-deformations — a SEPARATING example (an input where the bug shows).
-Adding a separation check to scripts/checks/automaton_input_contracts.py
-once truth adapters exist would make non-witnessing examples
-impossible to reintroduce.
-
-- geometry (44): the large one. Shapes needed for rectangles (L, W),
-  prisms (L, W, H), angle compositions, coordinate pairs, polygon
-  side lists, symmetry specs. Suggest one shape vocabulary authored
-  first, then contracts in batches of ~10 by subfamily (area/perimeter,
-  volume, angles, coordinates, classification).
-- statistics (14): data-list shape (list of numbers) plus summary kind;
-  truth adapters are cheap here (mean, median, MAD are one-liners).
-- algebraic (14): expression/assignment shapes; truth via evaluation.
-- measurement (8): quantity-with-unit shape; four kinds pair with the
-  count_marks family already swept in fraction.
-- decimal (6), integer (5), fraction (2: the co_denominator dispatch
-  kinds — route through the addition contracts they delegate to),
-  ratio (2).
+Closed 2026-08-03: the additive tagged decoder expansion constructs the structured operand families, and 88 family-shaped contracts close the remainder left by the prior seven-contract slice. The live checker reports `contracts=219 registered-signatures=219 remaining-gap=0 verified-live=219`.
 
 ## 4. Truth adapters and result shapes still missing
 
-From the audit's honest remainder: 25 executable rows have no
-independent truth adapter, including the four multiplication tasks now
-explicitly excluded from the product adapter; 26 result shapes are not
-yet normalizable. These are 51 rows but about 50 unique contracted kinds
-because `recursive_place_value_inscription` contributes two identical
-solutions. Before the product-adapter repair these buckets were reported
-as 21 without an adapter and 30 not normalizable; the four tasks were in
-the wrong bucket. Each needs an adapter or an
+From the audit's honest remainder, 119 executable outcomes have no
+independent truth adapter and 26 result shapes are not yet normalizable.
+The structured geometry, statistics, algebraic, measurement, integer,
+ratio, and decimal-conversion contracts enter these buckets without
+claiming independent truth coverage. Each needs an adapter or an
 explicit recorded decision that its correctness is not a computable
-comparison. 49 contracted kinds were unsweepable for these reasons
-(`unswept/3` rows).
+comparison.
 
 ## 5. Self-certifying expected fields
 
-61 kinds carry `expected(Result)` sharing the result's variable
+64 kinds carry `expected(Result)` sharing the result's variable
 (scan_self_certifying.py): their validity(correct) cannot fail at
 runtime. The arithmetic families among them are now covered by the
 audit's layer 2; the remainder falls with section 4's adapters. Where
 an expected value is computable inside the module, computing it
 independently of the result is the durable fix.
 
-The scan's 61 self-certifying rows and 71 independent-variable rows are
+The scan's 64 self-certifying rows and 72 independent-variable rows are
 complementary regex buckets, not competing totals. Both are syntactic
 classifications of source spellings.

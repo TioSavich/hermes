@@ -25874,7 +25874,7 @@
  },
  "register": "Measured partial action-seam inventory. Enacted membership requires inputs extracted from that lesson's accepted tracked span and a live trace.",
  "registry_probe_inventory": {
-  "checked_contracts_run": 131,
+  "checked_contracts_run": 219,
   "coverage": [
    {
     "checked_contract_run": {
@@ -31789,24 +31789,124 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "count": 7,
+      "from_scale": 10,
+      "kind": "decimal_unit_conversion",
+      "to_scale": 100
+     },
+     "kind": "decimal_place_unit_regrouping",
+     "operation": "decimal",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "decimal_place_unit_regrouping",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "equivalent_decimal_units(70,unit_fraction(1,100))",
+      "steps": [
+       {
+        "label": "identify_nested_decimal_units(10,100)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "derive_regrouping_factor(10,100,10)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "iterate_finer_unit(7,10,70)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "preserve_decimal_quantity(equivalent_decimal_units(70,unit_fraction(1,100)))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "decimal_place_unit_regrouping"
+     }
+    },
     "direct_runs": [],
     "kind": "decimal_place_unit_regrouping",
     "line": 434,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "count": 7,
+      "from_scale": 10,
+      "kind": "decimal_unit_conversion",
+      "to_scale": 100
+     },
+     "kind": "change_decimal_place_name_without_regrouping",
+     "operation": "decimal",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "change_decimal_place_name_without_regrouping",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "equivalent_decimal_units(7,unit_fraction(1,100))",
+      "steps": [
+       {
+        "label": "identify_nested_decimal_units(10,100)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "change_decimal_unit_name(10,100)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "retain_original_count(7)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "omit_regrouping_factor(expected(equivalent_decimal_units(70,unit_fraction(1,100))),produced(equivalent_decimal_units(7,unit_fraction(1,100))))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "change_decimal_place_name_without_regrouping"
+     }
+    },
     "direct_runs": [],
     "kind": "change_decimal_place_name_without_regrouping",
     "line": 437,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -32462,44 +32562,250 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "signed_number_list",
+      "values": [
+       -7,
+       3,
+       -2,
+       5
+      ]
+     },
+     "kind": "signed_number_location_and_order",
+     "operation": "integer",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "signed_number_location_and_order",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "ordered_values([-7,-2,3,5])",
+      "steps": [
+       {
+        "label": "establish_zero_as_origin",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "locate_each_signed_value([-7,3,-2,5])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "preserve_direction_from_zero",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "read_locations_left_to_right([-7,-2,3,5])",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "signed_number_location_and_order"
+     }
+    },
     "direct_runs": [],
     "kind": "signed_number_location_and_order",
     "line": 465,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "signed_number_list",
+      "values": [
+       -7,
+       3,
+       -2,
+       5
+      ]
+     },
+     "kind": "order_by_magnitude_ignore_sign",
+     "operation": "integer",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "order_by_magnitude_ignore_sign",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "ordered_values([-2,3,5,-7])",
+      "steps": [
+       {
+        "label": "establish_zero_as_origin",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "replace_signed_locations_with_distances",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "order_magnitudes_only([-2,3,5,-7])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_directional_order([-7,-2,3,5])",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "order_by_magnitude_ignore_sign"
+     }
+    },
     "direct_runs": [],
     "kind": "order_by_magnitude_ignore_sign",
     "line": 468,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "bound": 4,
+      "kind": "inequality",
+      "relation": "lt",
+      "variable": "x"
+     },
+     "kind": "inequality_solution_set_representation",
+     "operation": "integer",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "inequality_solution_set_representation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "solution_set(ray(left,open,4))",
+      "steps": [
+       {
+        "label": "identify_boundary(4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "interpret_relation_direction(lt)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "choose_endpoint_inclusion(lt)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "extend_ray_over_all_solutions(solution_set(ray(left,open,4)))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "inequality_solution_set_representation"
+     }
+    },
     "direct_runs": [],
     "kind": "inequality_solution_set_representation",
     "line": 471,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "bound": 4,
+      "kind": "inequality",
+      "relation": "lt",
+      "variable": "x"
+     },
+     "kind": "inequality_as_boundary_point",
+     "operation": "integer",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "inequality_as_boundary_point",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "single_value(4)",
+      "steps": [
+       {
+        "label": "identify_boundary(4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_relation_direction(lt)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_solution_ray",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_boundary_as_only_solution(4)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "inequality_as_boundary_point"
+     }
+    },
     "direct_runs": [],
     "kind": "inequality_as_boundary_point",
     "line": 474,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -32633,164 +32939,1157 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "first": {
+       "count": 3,
+       "label": "red_tiles"
+      },
+      "kind": "referent_pair",
+      "second": {
+       "count": 5,
+       "label": "blue_tiles"
+      }
+     },
+     "kind": "construct_referent_ratio_diagram",
+     "operation": "ratio",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "construct_referent_ratio_diagram",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "ratio_statement(red_tiles,3,blue_tiles,5)",
+      "steps": [
+       {
+        "label": "establish_first_referent(red_tiles,3)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_second_referent(blue_tiles,5)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "coordinate_referent_counts",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "construct_ratio_diagram(3,5)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "inscribe_ordered_ratio(red_tiles-blue_tiles,3-5)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "construct_referent_ratio_diagram"
+     }
+    },
     "direct_runs": [],
     "kind": "construct_referent_ratio_diagram",
     "line": 483,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "first": {
+       "count": 3,
+       "label": "red_tiles"
+      },
+      "kind": "referent_pair",
+      "second": {
+       "count": 5,
+       "label": "blue_tiles"
+      }
+     },
+     "kind": "reverse_ratio_referent_order",
+     "operation": "ratio",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "reverse_ratio_referent_order",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "ratio_statement(red_tiles,5,blue_tiles,3)",
+      "steps": [
+       {
+        "label": "establish_counts_without_order(3,5)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "reverse_term_referent_alignment",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "inscribe_reversed_ratio(red_tiles-blue_tiles,5-3)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_ordered_referent_relation",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "reverse_ratio_referent_order"
+     }
+    },
     "direct_runs": [],
     "kind": "reverse_ratio_referent_order",
     "line": 486,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "assignments": [
+       {
+        "value": 4,
+        "variable": "x"
+       }
+      ],
+      "expression": {
+       "left": {
+        "left": {
+         "name": "x",
+         "node": "var"
+        },
+        "node": "mult",
+        "right": {
+         "node": "int",
+         "value": 3
+        }
+       },
+       "node": "add",
+       "right": {
+        "node": "int",
+        "value": 2
+       }
+      },
+      "kind": "expression_assignment"
+     },
+     "kind": "programming_expression_evaluation",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "programming_expression_evaluation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "value(14)",
+      "steps": [
+       {
+        "label": "identify_expression(add(mult(var(x),int(3)),int(2)))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_assignment([var(x)=int(4)])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "walk_expression_tree([combine(add,12,2,14),combine(mult,4,3,12),substitute(var(x),4),literal(int(3),3),literal(int(2),2)])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "kernel_trace([ground_integer(4,recollection([tally,tally,tally,tally])),ground_integer(3,recollection([tally,tally,tally])),multiply_grounded(recollection([tally,tally,tally,tally]),recollection([tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally])),recollection_to_integer(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),12),ground_integer(2,recollection([tally,tally])),add_grounded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally])),recollection_to_integer(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),14)])",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "report_value(value(14))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "programming_expression_evaluation"
+     }
+    },
     "direct_runs": [],
     "kind": "programming_expression_evaluation",
     "line": 490,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "coefficient": 3,
+      "kind": "linear_context",
+      "offset": 2,
+      "referent_roles": [
+       "groups",
+       "loose_items",
+       "total"
+      ],
+      "total": 20,
+      "unknown": "x"
+     },
+     "kind": "contextual_linear_equation_construction",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "contextual_linear_equation_construction",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "equation(add(mult(number(3),var(x)),number(2)),equals,number(20))",
+      "steps": [
+       {
+        "label": "identify_unknown_quantity(x)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "assign_referent_roles([groups,loose_items,total])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "coordinate_repeated_unknown(3,x)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "coordinate_constant_offset(2)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "relate_expression_to_total(20)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "inscribe_equation(equation(add(mult(number(3),var(x)),number(2)),equals,number(20)))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "contextual_linear_equation_construction"
+     }
+    },
     "direct_runs": [],
     "kind": "contextual_linear_equation_construction",
     "line": 492,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "assignments": [
+       {
+        "value": 5,
+        "variable": "x"
+       }
+      ],
+      "kind": "equation_assignment",
+      "left": {
+       "left": {
+        "name": "x",
+        "node": "var"
+       },
+       "node": "add",
+       "right": {
+        "node": "int",
+        "value": 2
+       }
+      },
+      "right": {
+       "node": "int",
+       "value": 7
+      }
+     },
+     "kind": "equation_truth_by_substitution",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "equation_truth_by_substitution",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "truth_value(true)",
+      "steps": [
+       {
+        "label": "substitute_assignment_into_both_sides([var(x)=int(5)])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "evaluate_left_expression([combine(add,5,2,7),substitute(var(x),5),literal(int(2),2)],7)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "evaluate_right_expression([literal(int(7),7)],7)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "compare_values_for_equality(7,7,true)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "equation_truth_by_substitution"
+     }
+    },
     "direct_runs": [],
     "kind": "equation_truth_by_substitution",
     "line": 497,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "assignments": [
+       {
+        "value": 5,
+        "variable": "x"
+       }
+      ],
+      "kind": "equation_assignment",
+      "left": {
+       "left": {
+        "name": "x",
+        "node": "var"
+       },
+       "node": "add",
+       "right": {
+        "node": "int",
+        "value": 2
+       }
+      },
+      "right": {
+       "node": "int",
+       "value": 7
+      }
+     },
+     "kind": "operational_equals_left_value",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "operational_equals_left_value",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "value(7)",
+      "steps": [
+       {
+        "label": "substitute_assignment_into_left_side([var(x)=int(5)])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "evaluate_left_expression([combine(add,5,2,7),substitute(var(x),5),literal(int(2),2)],7)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "treat_equals_as_answer_signal",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "ignore_right_expression(int(7),7)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "operational_equals_left_value"
+     }
+    },
     "direct_runs": [],
     "kind": "operational_equals_left_value",
     "line": 501,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": 3,
+      "b": 2,
+      "c": 20,
+      "kind": "linear_equation"
+     },
+     "kind": "balance_preserving_linear_solution",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "balance_preserving_linear_solution",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "value(6)",
+      "steps": [
+       {
+        "label": "read_equation_as_relation(3,2,20)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "apply_balance_preserving_steps([_33608{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_33648{left:[_33438{count:3,kind:x,role:x-box},_33462{count:2,kind:unit,role:unit-weight}],right:[_33510{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_33846{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_33886{left:[_33704{count:3,kind:x,role:x-box}],right:[_33754{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_33990{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_34030{left:[_33704{count:3,kind:x,role:x-box}],right:[_33754{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_34220{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_34260{left:[_34086{count:1,kind:x,role:x-box}],right:[_34136{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "isolate_unknown(6)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "verify_by_substitution(3,2,20,6)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "balance_preserving_linear_solution"
+     }
+    },
     "direct_runs": [],
     "kind": "balance_preserving_linear_solution",
     "line": 505,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": 3,
+      "b": 2,
+      "c": 20,
+      "kind": "linear_equation"
+     },
+     "kind": "one_sided_equation_operation",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "one_sided_equation_operation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "value(20r3)",
+      "steps": [
+       {
+        "label": "read_equals_as_instruction",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "remove_constant_from_left_side_only(2)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "leave_right_side_unchanged(20)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "divide_remaining_expression_by(3)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "report_unbalanced_value(20r3)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "one_sided_equation_operation"
+     }
+    },
     "direct_runs": [],
     "kind": "one_sided_equation_operation",
     "line": 510,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "declared_variables": [
+       "x"
+      ],
+      "kind": "quantity_relation",
+      "left": {
+       "name": "x",
+       "node": "var"
+      },
+      "operator": "add",
+      "referent_roles": [
+       "unknown_quantity",
+       "constant_offset"
+      ],
+      "right": {
+       "node": "int",
+       "value": 4
+      }
+     },
+     "kind": "symbolic_expression_construction",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "symbolic_expression_construction",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "add(var(x),int(4))",
+      "steps": [
+       {
+        "label": "identify_quantity_roles([unknown_quantity,constant_offset])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "declare_variables([x])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "select_operation(add)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "preserve_operand_structure(var(x),int(4))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "inscribe_expression(add(var(x),int(4)))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "symbolic_expression_construction"
+     }
+    },
     "direct_runs": [],
     "kind": "symbolic_expression_construction",
     "line": 514,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "direction": "expand",
+      "expression": {
+       "left": {
+        "node": "int",
+        "value": 3
+       },
+       "node": "mult",
+       "right": {
+        "left": {
+         "name": "x",
+         "node": "var"
+        },
+        "node": "add",
+        "right": {
+         "node": "int",
+         "value": 4
+        }
+       }
+      },
+      "kind": "expression_rewrite"
+     },
+     "kind": "distributive_expression_rewrite",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "distributive_expression_rewrite",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "add(mult(int(3),var(x)),mult(int(3),int(4)))",
+      "steps": [
+       {
+        "label": "identify_common_factor(int(3))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_addends([var(x),int(4)])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "distribute_factor(int(3),var(x),mult(int(3),var(x)))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "distribute_factor(int(3),int(4),mult(int(3),int(4)))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "join_partial_products(add(mult(int(3),var(x)),mult(int(3),int(4))))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "distributive_expression_rewrite"
+     }
+    },
     "direct_runs": [],
     "kind": "distributive_expression_rewrite",
     "line": 518,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "direction": "expand",
+      "expression": {
+       "left": {
+        "node": "int",
+        "value": 3
+       },
+       "node": "mult",
+       "right": {
+        "left": {
+         "name": "x",
+         "node": "var"
+        },
+        "node": "add",
+        "right": {
+         "node": "int",
+         "value": 4
+        }
+       }
+      },
+      "kind": "expression_rewrite"
+     },
+     "kind": "drop_distributed_term",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "drop_distributed_term",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "mult(int(3),var(x))",
+      "steps": [
+       {
+        "label": "identify_common_factor(int(3))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "distribute_factor(int(3),var(x),mult(int(3),var(x)))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "stop_before_second_addend(int(4))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_equivalent_expression(add(mult(int(3),var(x)),mult(int(3),int(4))),mult(int(3),var(x)))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "drop_distributed_term"
+     }
+    },
     "direct_runs": [],
     "kind": "drop_distributed_term",
     "line": 522,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "base": {
+       "node": "int",
+       "value": 3
+      },
+      "exponent": 4,
+      "kind": "power_notation"
+     },
+     "kind": "exponent_as_repeated_factor",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "exponent_as_repeated_factor",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "mult(int(3),mult(int(3),mult(int(3),int(3))))",
+      "steps": [
+       {
+        "label": "establish_base(int(3))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_exponent(4)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "iterate_base_factor(4,int(3))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "inscribe_expanded_product(mult(int(3),mult(int(3),mult(int(3),int(3)))))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "exponent_as_repeated_factor"
+     }
+    },
     "direct_runs": [],
     "kind": "exponent_as_repeated_factor",
     "line": 526,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "base": {
+       "node": "int",
+       "value": 3
+      },
+      "exponent": 4,
+      "kind": "power_notation"
+     },
+     "kind": "exponent_as_multiplier",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "exponent_as_multiplier",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "mult(int(3),int(4))",
+      "steps": [
+       {
+        "label": "read_exponent_as_second_factor(4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "multiply_base_by_exponent(int(3),4,mult(int(3),int(4)))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_repeated_factor_iteration(mult(int(3),mult(int(3),mult(int(3),int(3)))))",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "exponent_as_multiplier"
+     }
+    },
     "direct_runs": [],
     "kind": "exponent_as_multiplier",
     "line": 530,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "expression_pair",
+      "left": {
+       "base": {
+        "node": "int",
+        "value": 2
+       },
+       "exponent": 3,
+       "node": "power"
+      },
+      "right": {
+       "left": {
+        "node": "int",
+        "value": 2
+       },
+       "node": "mult",
+       "right": {
+        "left": {
+         "node": "int",
+         "value": 2
+        },
+        "node": "mult",
+        "right": {
+         "node": "int",
+         "value": 2
+        }
+       }
+      }
+     },
+     "kind": "exponential_equivalence_by_expansion",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "exponential_equivalence_by_expansion",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "equivalent",
+      "steps": [
+       {
+        "label": "expand_left_powers(power(int(2),3),mult(int(2),mult(int(2),int(2))))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "expand_right_powers(mult(int(2),mult(int(2),int(2))),mult(int(2),mult(int(2),int(2))))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "compare_factor_structures",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "certify_equivalent",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "exponential_equivalence_by_expansion"
+     }
+    },
     "direct_runs": [],
     "kind": "exponential_equivalence_by_expansion",
     "line": 534,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "change": 3,
+      "context": "tile_pattern",
+      "first": 4,
+      "kind": "linear_pattern_context",
+      "row": 6
+     },
+     "kind": "linear_pattern_contextual_rule",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "linear_pattern_contextual_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "value(19)",
+      "steps": [
+       {
+        "label": "identify_initial_value(4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_constant_change(3)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "count_increments_from_first_row(6,5)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "compute_accumulated_change(3,5,15)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "add_initial_value(4,15,19)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "preserve_contextual_linear_relation(tile_pattern)",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "linear_pattern_contextual_rule"
+     }
+    },
     "direct_runs": [],
     "kind": "linear_pattern_contextual_rule",
     "line": 539,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "change": 3,
+      "checked_rows": [
+       1,
+       2,
+       3
+      ],
+      "constant": 1,
+      "first": 4,
+      "kind": "linear_pattern_empirical_rule",
+      "multiplier": 2,
+      "row": 6
+     },
+     "kind": "guess_and_check_rule",
+     "operation": "algebraic",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "guess_and_check_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "value(13)",
+      "steps": [
+       {
+        "label": "read_empirical_rule(empirical_rule(multiplier(2),constant(1),checked_rows([1,2,3])))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "apply_empirical_rule(2,6,1,13)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "compare_with_contextual_rule(19)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_contextual_linear_relation(expected(19),produced(13))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "guess_and_check_rule"
+     }
+    },
     "direct_runs": [],
     "kind": "guess_and_check_rule",
     "line": 541,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -33043,117 +34342,800 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "cells": [
+       {
+        "x": 0,
+        "y": 0
+       },
+       {
+        "x": 1,
+        "y": 0
+       },
+       {
+        "x": 0,
+        "y": 1
+       }
+      ],
+      "kind": "covered_cells",
+      "unit": "centimeter"
+     },
+     "kind": "area_unit_covering",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "area_unit_covering",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(3,square(centimeter))",
+      "steps": [
+       {
+        "label": "establish_unit_square(centimeter)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "place_equal_unit_squares([0-0,1-0,0-1])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "verify_distinct_coverage([0-0,0-1,1-0])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "count_covered_cells(3)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "report_area_in_square_units(3,centimeter)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "area_unit_covering"
+     }
+    },
     "direct_runs": [],
     "kind": "area_unit_covering",
     "line": 550,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "cells": [
+       {
+        "x": 0,
+        "y": 0
+       },
+       {
+        "x": 1,
+        "y": 0
+       },
+       {
+        "x": 0,
+        "y": 0
+       }
+      ],
+      "kind": "placed_tiles",
+      "unit": "centimeter"
+     },
+     "kind": "count_overlapping_area_tiles",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "count_overlapping_area_tiles",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(3,square(centimeter))",
+      "steps": [
+       {
+        "label": "place_unit_squares([0-0,1-0,0-0])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "omit_overlap_check",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "count_tile_placements(3)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "double_count_covered_cells(3,2)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "count_overlapping_area_tiles"
+     }
+    },
     "direct_runs": [],
     "kind": "count_overlapping_area_tiles",
     "line": 553,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "candidates": [
+       {
+        "extent": "small",
+        "unit": "square_inch"
+       },
+       {
+        "extent": "medium",
+        "unit": "square_foot"
+       },
+       {
+        "extent": "large",
+        "unit": "square_meter"
+       }
+      ],
+      "extent": "medium",
+      "kind": "area_unit_candidates"
+     },
+     "kind": "area_unit_scale_selection",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "area_unit_scale_selection",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "square_unit(square_foot)",
+      "steps": [
+       {
+        "label": "classify_area_referent_extent(medium)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "compare_candidate_square_unit_scales([unit(square_inch,small),unit(square_foot,medium),unit(square_meter,large)])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "select_matching_square_unit(square_foot)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "area_unit_scale_selection"
+     }
+    },
     "direct_runs": [],
     "kind": "area_unit_scale_selection",
     "line": 556,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "candidates": [
+       {
+        "extent": "small",
+        "unit": "square_inch"
+       },
+       {
+        "extent": "medium",
+        "unit": "square_foot"
+       },
+       {
+        "extent": "large",
+        "unit": "square_meter"
+       }
+      ],
+      "extent": "medium",
+      "kind": "area_unit_candidates"
+     },
+     "kind": "choose_first_area_unit_without_scale",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "choose_first_area_unit_without_scale",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "square_unit(square_inch)",
+      "steps": [
+       {
+        "label": "ignore_area_referent_extent(medium)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "select_first_familiar_unit(square_inch)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_unit_scale_comparison",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "choose_first_area_unit_without_scale"
+     }
+    },
     "direct_runs": [],
     "kind": "choose_first_area_unit_without_scale",
     "line": 560,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "rectangle_with_unit",
+      "length": 7,
+      "unit": "centimeter",
+      "width": 4
+     },
+     "kind": "rectangle_perimeter_boundary_traversal",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangle_perimeter_boundary_traversal",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(22,centimeter)",
+      "steps": [
+       {
+        "label": "establish_rectangle(7,4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "traverse_side(length,7)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "traverse_side(width,4)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "traverse_opposite_side(length,7)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "traverse_opposite_side(width,4)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "accumulate_boundary_length(22,centimeter)",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangle_perimeter_boundary_traversal"
+     }
+    },
     "direct_runs": [],
     "kind": "rectangle_perimeter_boundary_traversal",
     "line": 564,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "rectangle_with_unit",
+      "length": 7,
+      "unit": "centimeter",
+      "width": 4
+     },
+     "kind": "perimeter_two_sides_only",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "perimeter_two_sides_only",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(11,centimeter)",
+      "steps": [
+       {
+        "label": "traverse_side(length,7)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "traverse_side(width,4)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "stop_before_opposite_sides",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_partial_boundary(11,centimeter)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "perimeter_two_sides_only"
+     }
+    },
     "direct_runs": [],
     "kind": "perimeter_two_sides_only",
     "line": 568,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "rectangle_with_unit",
+      "length": 7,
+      "unit": "centimeter",
+      "width": 4
+     },
+     "kind": "perimeter_uses_area_formula",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "perimeter_uses_area_formula",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(28,centimeter)",
+      "steps": [
+       {
+        "label": "observe_dimensions(7,4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "select_area_formula_by_surface_association",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "multiply_dimensions(28)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_area_value_as_perimeter(28,centimeter)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "perimeter_uses_area_formula"
+     }
+    },
     "direct_runs": [],
     "kind": "perimeter_uses_area_formula",
     "line": 571,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "polygon_sides_with_unit",
+      "sides": [
+       5,
+       7,
+       4,
+       6
+      ],
+      "unit": "centimeter"
+     },
+     "kind": "polygon_perimeter_boundary_accumulation",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "polygon_perimeter_boundary_accumulation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(22,centimeter)",
+      "steps": [
+       {
+        "label": "establish_closed_polygon_boundary",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "traverse_side_lengths_in_order([5,7,4,6])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "accumulate_complete_boundary(22,centimeter)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "polygon_perimeter_boundary_accumulation"
+     }
+    },
     "direct_runs": [],
     "kind": "polygon_perimeter_boundary_accumulation",
     "line": 574,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "polygon_sides_with_unit",
+      "sides": [
+       5,
+       7,
+       4,
+       6
+      ],
+      "unit": "centimeter"
+     },
+     "kind": "omit_unlabeled_boundary_side",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "omit_unlabeled_boundary_side",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(16,centimeter)",
+      "steps": [
+       {
+        "label": "read_labeled_sides([5,7,4])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "stop_before_boundary_closure",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_side_length(6)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_partial_boundary(16,centimeter)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "omit_unlabeled_boundary_side"
+     }
+    },
     "direct_runs": [],
     "kind": "omit_unlabeled_boundary_side",
     "line": 579,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "symmetry_side_orbits",
+      "known_orbits": [
+       {
+        "copies": 2,
+        "length": 5
+       }
+      ],
+      "perimeter": 26,
+      "unit": "centimeter",
+      "unknown_orbit": {
+       "copies": 2,
+       "name": "slanted_side"
+      }
+     },
+     "kind": "symmetry_constrained_side_reconstruction",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "symmetry_constrained_side_reconstruction",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "side_length(slanted_side,8,centimeter)",
+      "steps": [
+       {
+        "label": "establish_perimeter(26)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "group_sides_into_reflection_orbits([orbit(2,known(5)),orbit(2,unknown(slanted_side))])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "accumulate_known_orbits(10)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "isolate_unknown_orbit(2,slanted_side)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "partition_remaining_boundary(2,8)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "symmetry_constrained_side_reconstruction"
+     }
+    },
     "direct_runs": [],
     "kind": "symmetry_constrained_side_reconstruction",
     "line": 583,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "symmetry_side_orbits",
+      "known_orbits": [
+       {
+        "copies": 2,
+        "length": 5
+       }
+      ],
+      "perimeter": 26,
+      "unit": "centimeter",
+      "unknown_orbit": {
+       "copies": 2,
+       "name": "slanted_side"
+      }
+     },
+     "kind": "ignore_symmetry_multiplicity",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "ignore_symmetry_multiplicity",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "side_length(slanted_side,21,centimeter)",
+      "steps": [
+       {
+        "label": "establish_perimeter(26)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_reflected_side_copies",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "count_each_orbit_once(5)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "subtract_flat_known_total(21)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "ignore_symmetry_multiplicity"
+     }
+    },
     "direct_runs": [],
     "kind": "ignore_symmetry_multiplicity",
     "line": 588,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "perimeter_scope",
+      "perimeter": 22,
+      "scope": "all"
+     },
+     "kind": "rectangle_perimeter_side_pair_search",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangle_perimeter_side_pair_search",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "all_rectangle_side_pairs(perimeter(22),[1-10,2-9,3-8,4-7,5-6])",
+      "steps": [
+       {
+        "label": "establish_target_perimeter(22)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "halve_for_length_plus_width",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "enumerate_positive_side_pairs([1-10,2-9,3-8,4-7,5-6])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "retain_complete_boundaries(22)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "satisfy_side_scope(all)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangle_perimeter_side_pair_search"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -33205,17 +35187,125 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "perimeter_known_side",
+      "known_side": 4,
+      "perimeter": 22
+     },
+     "kind": "rectangle_missing_side_from_perimeter",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangle_missing_side_from_perimeter",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "side_length(7)",
+      "steps": [
+       {
+        "label": "establish_target_perimeter(22)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "coordinate_opposite_side_pairs",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "halve_perimeter(11)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "subtract_known_side(4,7)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "verify_rectangle_boundary(22)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangle_missing_side_from_perimeter"
+     }
+    },
     "direct_runs": [],
     "kind": "rectangle_missing_side_from_perimeter",
     "line": 595,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "area": 24,
+      "kind": "area_scope",
+      "scope": "all"
+     },
+     "kind": "rectangle_factor_pair_search",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangle_factor_pair_search",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "all_factor_pair_rectangles([1-24,2-12,3-8,4-6])",
+      "steps": [
+       {
+        "label": "establish_target_area(24)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "enumerate_whole_number_side_lengths",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "retain_products_equal_to_area([1-24,2-12,3-8,4-6])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "identify_rotations_as_commutative_pairs",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "satisfy_factor_scope(all)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangle_factor_pair_search"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -33357,47 +35447,298 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "area": 24,
+      "kind": "rectangle_constraints",
+      "perimeter": 22
+     },
+     "kind": "rectangle_area_perimeter_constraint_search",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangle_area_perimeter_constraint_search",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "rectangles([3-8])",
+      "steps": [
+       {
+        "label": "establish_area_constraint(24)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_perimeter_constraint(22)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "enumerate_area_factor_pairs([1-24,2-12,3-8,4-6])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "retain_pairs_with_perimeter(22,[3-8])",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "report_constrained_rectangles([3-8])",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangle_area_perimeter_constraint_search"
+     }
+    },
     "direct_runs": [],
     "kind": "rectangle_area_perimeter_constraint_search",
     "line": 601,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "area": 24,
+      "kind": "rectangle_constraints",
+      "perimeter": 22
+     },
+     "kind": "ignore_perimeter_rectangle_constraint",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "ignore_perimeter_rectangle_constraint",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "rectangles([1-24,2-12,3-8,4-6])",
+      "steps": [
+       {
+        "label": "establish_area_constraint(24)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_perimeter_constraint(22)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "retain_all_area_factor_pairs([1-24,2-12,3-8,4-6])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_unfiltered_rectangles([1-24,2-12,3-8,4-6])",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "ignore_perimeter_rectangle_constraint"
+     }
+    },
     "direct_runs": [],
     "kind": "ignore_perimeter_rectangle_constraint",
     "line": 606,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "area": 28,
+      "kind": "area_known_side",
+      "known_side": 4
+     },
+     "kind": "rectangle_missing_side_from_area",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangle_missing_side_from_area",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "side_length(7)",
+      "steps": [
+       {
+        "label": "establish_area_product(28)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "retain_known_side(4)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "divide_area_by_known_side(28,4,7)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "reconstruct_rectangle(4,7)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangle_missing_side_from_area"
+     }
+    },
     "direct_runs": [],
     "kind": "rectangle_missing_side_from_area",
     "line": 611,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "area": 28,
+      "kind": "area_known_side",
+      "known_side": 4
+     },
+     "kind": "subtract_side_from_area",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "subtract_side_from_area",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "side_length(24)",
+      "steps": [
+       {
+        "label": "establish_area_as_total(28)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "subtract_known_side(28,4,24)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_inverse_multiplication",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_additive_remainder_as_side(24)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "subtract_side_from_area"
+     }
+    },
     "direct_runs": [],
     "kind": "subtract_side_from_area",
     "line": 614,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "height": 5,
+      "kind": "rectangular_prism",
+      "length": 4,
+      "width": 3
+     },
+     "kind": "rectangular_prism_volume_layer_iteration",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangular_prism_volume_layer_iteration",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "cubic_units(60)",
+      "steps": [
+       {
+        "label": "coordinate_base(4,3,12)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_unit_cube_as_volume_unit",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "iterate_height_layers(5)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "count_cubic_units(60)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangular_prism_volume_layer_iteration"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -33493,67 +35834,441 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "volume_known_base",
+      "length": 4,
+      "volume": 60,
+      "width": 3
+     },
+     "kind": "rectangular_prism_missing_dimension_from_volume",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rectangular_prism_missing_dimension_from_volume",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "dimension(5)",
+      "steps": [
+       {
+        "label": "coordinate_known_base(4,3,12)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "divide_volume_by_base_area(60,12,5)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "reconstruct_unit_cube_stack(4,3,5)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "rectangular_prism_missing_dimension_from_volume"
+     }
+    },
     "direct_runs": [],
     "kind": "rectangular_prism_missing_dimension_from_volume",
     "line": 620,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "volume_known_base",
+      "length": 4,
+      "volume": 60,
+      "width": 3
+     },
+     "kind": "divide_volume_by_one_dimension",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "divide_volume_by_one_dimension",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "dimension(15)",
+      "steps": [
+       {
+        "label": "retain_one_known_dimension(4)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "drop_second_base_dimension(3)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "divide_volume_by_length_only(60,4,15)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_partial_quotient_as_height(15)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "divide_volume_by_one_dimension"
+     }
+    },
     "direct_runs": [],
     "kind": "divide_volume_by_one_dimension",
     "line": 625,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "disjoint_prisms",
+      "prisms": [
+       {
+        "height": 4,
+        "length": 2,
+        "width": 3
+       },
+       {
+        "height": 5,
+        "length": 1,
+        "width": 2
+       }
+      ],
+      "unit": "centimeter"
+     },
+     "kind": "composite_prism_volume_sum",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "composite_prism_volume_sum",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "volume(34,cube(centimeter))",
+      "steps": [
+       {
+        "label": "certify_disjoint_prism_decomposition",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "calculate_component_volumes([24,10])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "sum_component_volumes(34)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "preserve_composite_volume",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "composite_prism_volume_sum"
+     }
+    },
     "direct_runs": [],
     "kind": "composite_prism_volume_sum",
     "line": 629,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "overlapping_prisms",
+      "overlap_volume": 4,
+      "prisms": [
+       {
+        "height": 4,
+        "length": 2,
+        "width": 3
+       },
+       {
+        "height": 5,
+        "length": 1,
+        "width": 2
+       }
+      ],
+      "unit": "centimeter"
+     },
+     "kind": "sum_overlapping_prism_volumes",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "sum_overlapping_prism_volumes",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "volume(34,cube(centimeter))",
+      "steps": [
+       {
+        "label": "calculate_component_volumes([24,10])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "omit_overlap_correction(4)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "double_count_shared_cubes(4)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_component_sum(34)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "sum_overlapping_prism_volumes"
+     }
+    },
     "direct_runs": [],
     "kind": "sum_overlapping_prism_volumes",
     "line": 632,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "count_a": 12,
+      "count_b": 10,
+      "extent_a": 5,
+      "extent_b": 8,
+      "kind": "solid_volume_comparison"
+     },
+     "kind": "compare_solid_volume_by_cube_count",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "compare_solid_volume_by_cube_count",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "more",
+      "steps": [
+       {
+        "label": "establish_unit_cube_as_volume_unit",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "count_cubes_in_solid(a,12)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "count_cubes_in_solid(b,10)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "ignore_arrangement_extent(5,8)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "compare_cubic_unit_counts(12,10,more)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "compare_solid_volume_by_cube_count"
+     }
+    },
     "direct_runs": [],
     "kind": "compare_solid_volume_by_cube_count",
     "line": 635,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "count_a": 12,
+      "count_b": 10,
+      "extent_a": 5,
+      "extent_b": 8,
+      "kind": "solid_volume_comparison"
+     },
+     "kind": "compare_solid_volume_by_visible_extent",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "compare_solid_volume_by_visible_extent",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "less",
+      "steps": [
+       {
+        "label": "inspect_visible_extent(5,8)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_unit_cube_counts(12,10)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "compare_bounding_extents(5,8,less)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "compare_solid_volume_by_visible_extent"
+     }
+    },
     "direct_runs": [],
     "kind": "compare_solid_volume_by_visible_extent",
     "line": 639,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "coordinate_points",
+      "points": [
+       {
+        "x": -3,
+        "y": 2
+       },
+       {
+        "x": 1,
+        "y": 4
+       },
+       {
+        "x": 5,
+        "y": -1
+       }
+      ]
+     },
+     "kind": "ordered_pair_coordinate_plot",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "ordered_pair_coordinate_plot",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "plotted_points([point(-3,2),point(1,4),point(5,-1)])",
+      "steps": [
+       {
+        "label": "establish_cartesian_axes",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "preserve_coordinate_order",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "locate_first_then_second_for_each_pair([point(-3,2),point(1,4),point(5,-1)])",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "ordered_pair_coordinate_plot"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -33605,277 +36320,1909 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "first": {
+       "x": 7,
+       "y": 3
+      },
+      "kind": "coordinate_point_pair",
+      "second": {
+       "x": 2,
+       "y": 3
+      },
+      "unit": "centimeter"
+     },
+     "kind": "axis_aligned_coordinate_distance",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "axis_aligned_coordinate_distance",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(5,centimeter)",
+      "steps": [
+       {
+        "label": "plot_endpoint(point(7,3))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "plot_endpoint(point(2,3))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "hold_other_coordinate_fixed(horizontal)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "subtract_varying_coordinates(-5)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "take_absolute_coordinate_change(5,centimeter)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "axis_aligned_coordinate_distance"
+     }
+    },
     "direct_runs": [],
     "kind": "axis_aligned_coordinate_distance",
     "line": 646,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "first": {
+       "x": 7,
+       "y": 3
+      },
+      "kind": "coordinate_point_pair",
+      "second": {
+       "x": 2,
+       "y": 3
+      },
+      "unit": "centimeter"
+     },
+     "kind": "directed_difference_as_coordinate_distance",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "directed_difference_as_coordinate_distance",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(-5,centimeter)",
+      "steps": [
+       {
+        "label": "plot_endpoint(point(7,3))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "plot_endpoint(point(2,3))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "subtract_varying_coordinates(-5)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "omit_absolute_value",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "report_directed_change_as_length(-5,centimeter)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "directed_difference_as_coordinate_distance"
+     }
+    },
     "direct_runs": [],
     "kind": "directed_difference_as_coordinate_distance",
     "line": 650,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "certification": "certified",
+      "kind": "polygon_partition",
+      "pieces": [
+       [
+        {
+         "x": 0,
+         "y": 0
+        },
+        {
+         "x": 6,
+         "y": 0
+        },
+        {
+         "x": 6,
+         "y": 4
+        }
+       ],
+       [
+        {
+         "x": 0,
+         "y": 0
+        },
+        {
+         "x": 6,
+         "y": 4
+        },
+        {
+         "x": 0,
+         "y": 4
+        }
+       ]
+      ],
+      "vertices": [
+       {
+        "x": 0,
+        "y": 0
+       },
+       {
+        "x": 6,
+        "y": 0
+       },
+       {
+        "x": 6,
+        "y": 4
+       },
+       {
+        "x": 0,
+        "y": 4
+       }
+      ]
+     },
+     "kind": "area_preserving_polygon_decomposition",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "area_preserving_polygon_decomposition",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "square_units(24)",
+      "steps": [
+       {
+        "label": "establish_polygon([0-0,6-0,6-4,0-4])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "decompose_into_nonoverlapping_pieces([[0-0,6-0,6-4],[0-0,6-4,0-4]])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "measure_piece_areas([12,12])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "sum_piece_areas(24)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "preserve_whole_area(24)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "area_preserving_polygon_decomposition"
+     }
+    },
     "direct_runs": [],
     "kind": "area_preserving_polygon_decomposition",
     "line": 655,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "certification": "unchecked",
+      "kind": "polygon_partition",
+      "pieces": [
+       [
+        {
+         "x": 0,
+         "y": 0
+        },
+        {
+         "x": 6,
+         "y": 0
+        },
+        {
+         "x": 6,
+         "y": 4
+        }
+       ]
+      ],
+      "vertices": [
+       {
+        "x": 0,
+        "y": 0
+       },
+       {
+        "x": 6,
+        "y": 0
+       },
+       {
+        "x": 6,
+        "y": 4
+       },
+       {
+        "x": 0,
+        "y": 4
+       }
+      ]
+     },
+     "kind": "decomposition_with_gap_or_overlap",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "decomposition_with_gap_or_overlap",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "square_units(12)",
+      "steps": [
+       {
+        "label": "establish_polygon([0-0,6-0,6-4,0-4])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "accept_unchecked_pieces([[0-0,6-0,6-4]])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_gap_overlap_test",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "sum_piece_areas(12)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "lose_whole_area(24)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "decomposition_with_gap_or_overlap"
+     }
+    },
     "direct_runs": [],
     "kind": "decomposition_with_gap_or_overlap",
     "line": 659,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "base": 6,
+      "height": 4,
+      "kind": "parallelogram_with_unit",
+      "offset": 3,
+      "slanted_side": 5,
+      "unit": "centimeter"
+     },
+     "kind": "parallelogram_area_base_height",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "parallelogram_area_base_height",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(24,square(centimeter))",
+      "steps": [
+       {
+        "label": "identify_base(6)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "distinguish_height_from_slanted_side(4,5)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "cut_and_translate_to_rectangle",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "multiply_base_by_perpendicular_height(6,4,24)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "parallelogram_area_base_height"
+     }
+    },
     "direct_runs": [],
     "kind": "parallelogram_area_base_height",
     "line": 663,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "base": 6,
+      "height": 4,
+      "kind": "parallelogram_with_unit",
+      "offset": 3,
+      "slanted_side": 5,
+      "unit": "centimeter"
+     },
+     "kind": "slanted_side_as_parallelogram_height",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "slanted_side_as_parallelogram_height",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(30,square(centimeter))",
+      "steps": [
+       {
+        "label": "identify_base(6)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "select_slanted_side_as_height(5)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_perpendicularity_check",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "multiply_base_by_slanted_side(6,5,30)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "slanted_side_as_parallelogram_height"
+     }
+    },
     "direct_runs": [],
     "kind": "slanted_side_as_parallelogram_height",
     "line": 666,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "base": 7,
+      "height": 4,
+      "kind": "triangle_with_unit",
+      "unit": "centimeter"
+     },
+     "kind": "triangle_area_half_base_height",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "triangle_area_half_base_height",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(14,square(centimeter))",
+      "steps": [
+       {
+        "label": "identify_base(7)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_perpendicular_height(4)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "compose_matching_triangle_copy",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "form_parallelogram_product(28)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "take_one_of_two_equal_triangles(14)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "triangle_area_half_base_height"
+     }
+    },
     "direct_runs": [],
     "kind": "triangle_area_half_base_height",
     "line": 670,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "base": 7,
+      "height": 4,
+      "kind": "triangle_with_unit",
+      "unit": "centimeter"
+     },
+     "kind": "omit_half_in_triangle_area",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "omit_half_in_triangle_area",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(28,square(centimeter))",
+      "steps": [
+       {
+        "label": "multiply_base_by_height(7,4,28)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "omit_matching_copy_relation",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_halving",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_parallelogram_area_for_triangle(28)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "omit_half_in_triangle_area"
+     }
+    },
     "direct_runs": [],
     "kind": "omit_half_in_triangle_area",
     "line": 673,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "face_areas": [
+       12,
+       12,
+       8,
+       8,
+       6,
+       6
+      ],
+      "kind": "solid_net",
+      "solid": "cube",
+      "unit": "centimeter"
+     },
+     "kind": "polyhedron_surface_area_from_net",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "polyhedron_surface_area_from_net",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(52,square(centimeter))",
+      "steps": [
+       {
+        "label": "identify_polyhedron(cube)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "unfold_to_net",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "enumerate_all_face_areas([12,12,8,8,6,6])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "sum_each_face_exactly_once(52)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "polyhedron_surface_area_from_net"
+     }
+    },
     "direct_runs": [],
     "kind": "polyhedron_surface_area_from_net",
     "line": 676,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "face_areas": [
+       12,
+       12,
+       8,
+       8,
+       6,
+       6
+      ],
+      "kind": "solid_net",
+      "solid": "cube",
+      "unit": "centimeter"
+     },
+     "kind": "visible_faces_only_surface_area",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "visible_faces_only_surface_area",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "area(46,square(centimeter))",
+      "steps": [
+       {
+        "label": "inspect_solid_view",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "enumerate_visible_faces([12,12,8,8,6])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_hidden_face",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_partial_surface_area(46)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "visible_faces_only_surface_area"
+     }
+    },
     "direct_runs": [],
     "kind": "visible_faces_only_surface_area",
     "line": 679,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "dimension": "two_dimensional",
+      "kind": "dimensional_measure",
+      "unit": "centimeter",
+      "value": 28
+     },
+     "kind": "dimensional_measure_unit_coordination",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "dimensional_measure_unit_coordination",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "measured_quantity(area,28,unit_power(centimeter,2))",
+      "steps": [
+       {
+        "label": "identify_measure_dimension(two_dimensional)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_measure_name(area)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "coordinate_unit_iteration_power(2)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "inscribe_unit_exponent(centimeter,2)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "dimensional_measure_unit_coordination"
+     }
+    },
     "direct_runs": [],
     "kind": "dimensional_measure_unit_coordination",
     "line": 682,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "dimension": "two_dimensional",
+      "kind": "dimensional_measure",
+      "unit": "centimeter",
+      "value": 28
+     },
+     "kind": "linear_unit_for_area_or_volume",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "linear_unit_for_area_or_volume",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "measured_quantity(area,28,unit_power(centimeter,1))",
+      "steps": [
+       {
+        "label": "identify_measure_dimension(two_dimensional)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_dimension_power(2)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "write_linear_unit(centimeter)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_unit_exponent(2)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "linear_unit_for_area_or_volume"
+     }
+    },
     "direct_runs": [],
     "kind": "linear_unit_for_area_or_volume",
     "line": 686,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "attributes": [
+       {
+        "name": "straight_sides",
+        "value": 4
+       },
+       {
+        "name": "vertices",
+        "value": 4
+       },
+       {
+        "name": "right_angles",
+        "value": 4
+       },
+       {
+        "name": "equal_sides",
+        "value": 4
+       }
+      ],
+      "kind": "shape_attributes",
+      "quarter_turns": 1,
+      "shape": "square"
+     },
+     "kind": "shape_classification_by_defining_attributes",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "shape_classification_by_defining_attributes",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "classifications([square,rectangle,rhombus,parallelogram,trapezoid,quadrilateral])",
+      "steps": [
+       {
+        "label": "observe_attributes([straight_sides(4),vertices(4),right_angles(4),equal_sides(4)])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "test_required_attributes([straight_sides(4),vertices(4),right_angles(4),equal_sides(4)])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "ignore_nondefining_orientation(1)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "retain_hierarchical_categories([square,rectangle,rhombus,parallelogram,trapezoid,quadrilateral])",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "shape_classification_by_defining_attributes"
+     }
+    },
     "direct_runs": [],
     "kind": "shape_classification_by_defining_attributes",
     "line": 690,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "attributes": [
+       {
+        "name": "straight_sides",
+        "value": 4
+       },
+       {
+        "name": "vertices",
+        "value": 4
+       },
+       {
+        "name": "right_angles",
+        "value": 4
+       },
+       {
+        "name": "equal_sides",
+        "value": 4
+       }
+      ],
+      "kind": "shape_attributes",
+      "quarter_turns": 1,
+      "shape": "square"
+     },
+     "kind": "orientation_bound_shape_classification",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "orientation_bound_shape_classification",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "not_recognized_as(square)",
+      "steps": [
+       {
+        "label": "observe_attributes([straight_sides(4),vertices(4),right_angles(4),equal_sides(4)])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "privilege_prototype_orientation",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "reject_after_rotation(1,square)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "orientation_bound_shape_classification"
+     }
+    },
     "direct_runs": [],
     "kind": "orientation_bound_shape_classification",
     "line": 695,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "degrees": 65,
+      "kind": "angle_measure"
+     },
+     "kind": "angle_turn_measurement",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "angle_turn_measurement",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "angle_measure(65)",
+      "steps": [
+       {
+        "label": "establish_fixed_vertex",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_initial_ray",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "iterate_degree_turn(65)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "locate_terminal_ray",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "read_angle_measure(65)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "angle_turn_measurement"
+     }
+    },
     "direct_runs": [],
     "kind": "angle_turn_measurement",
     "line": 699,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "degrees": 65,
+      "kind": "angle_measure"
+     },
+     "kind": "angle_as_ray_length",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "angle_as_ray_length",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "misread_as_larger(angle_measure(65))",
+      "steps": [
+       {
+        "label": "preserve_turn(65)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "stretch_ray_length(150,300)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "misread_visual_extent_as_angle_magnitude",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "angle_as_ray_length"
+     }
+    },
     "direct_runs": [],
     "kind": "angle_as_ray_length",
     "line": 702,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "angle_parts",
+      "parts": [
+       35,
+       50,
+       45
+      ],
+      "whole": 130
+     },
+     "kind": "angle_additive_composition",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "angle_additive_composition",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "angle_measure(130)",
+      "steps": [
+       {
+        "label": "establish_shared_vertex",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "preserve_adjacent_turns([35,50,45])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "sum_part_measures(130)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "verify_whole_angle(130)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "angle_additive_composition"
+     }
+    },
     "direct_runs": [],
     "kind": "angle_additive_composition",
     "line": 705,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "columns": 3,
+      "kind": "rigid_shape_composition",
+      "pieces": [
+       {
+        "cells": [
+         {
+          "x": 0,
+          "y": 0
+         },
+         {
+          "x": 1,
+          "y": 0
+         },
+         {
+          "x": 2,
+          "y": 0
+         }
+        ],
+        "id": "top_row"
+       },
+       {
+        "cells": [
+         {
+          "x": 0,
+          "y": 1
+         },
+         {
+          "x": 1,
+          "y": 1
+         },
+         {
+          "x": 2,
+          "y": 1
+         }
+        ],
+        "id": "bottom_row"
+       }
+      ],
+      "rows": 2
+     },
+     "kind": "rigid_shape_composition",
+     "operation": "geometry",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "rigid_shape_composition",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "composed_region(3,2)",
+      "steps": [
+       {
+        "label": "establish_bounded_region(3,2)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "preserve_rigid_parts([placed(top_row,[0-0,1-0,2-0]),placed(bottom_row,[0-1,1-1,2-1])])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "place_parts_by_rigid_motion",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "inspect_coverage_without_gaps_or_overlaps",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "rigid_shape_composition"
+     }
+    },
     "direct_runs": [],
     "kind": "rigid_shape_composition",
     "line": 708,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "display": "bar_chart",
+      "kind": "categorical_frequencies",
+      "pairs": [
+       {
+        "category": "red",
+        "count": 4
+       },
+       {
+        "category": "blue",
+        "count": 6
+       }
+      ]
+     },
+     "kind": "categorical_frequency_bar_representation",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "categorical_frequency_bar_representation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "frequency_representation([red-4,blue-6])",
+      "steps": [
+       {
+        "label": "classify_observations_by_category",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "count_each_category([red-4,blue-6])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "establish_frequency_scale",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "raise_separated_bar_for_each_category",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "categorical_frequency_bar_representation"
+     }
+    },
     "direct_runs": [],
     "kind": "categorical_frequency_bar_representation",
     "line": 711,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "display": "dot_plot",
+      "kind": "numeric_data_display",
+      "values": [
+       2,
+       3,
+       3,
+       5
+      ]
+     },
+     "kind": "dot_plot_frequency_representation",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "dot_plot_frequency_representation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "dot_plot([2,3,3,5])",
+      "steps": [
+       {
+        "label": "establish_value_axis",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "preserve_one_mark_per_observation",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "stack_marks_at_equal_values([2-1,3-2,5-1])",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "dot_plot_frequency_representation"
+     }
+    },
     "direct_runs": [],
     "kind": "dot_plot_frequency_representation",
     "line": 714,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "statistical_question",
+      "population": "students",
+      "variable": "commute_time"
+     },
+     "kind": "statistical_question_variability_classification",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "statistical_question_variability_classification",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "statistical_question(commute_time,students)",
+      "steps": [
+       {
+        "label": "identify_population(students)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_measured_variable(commute_time)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "anticipate_varied_responses",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "classify_as_statistical_question",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "statistical_question_variability_classification"
+     }
+    },
     "direct_runs": [],
     "kind": "statistical_question_variability_classification",
     "line": 716,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "statistical_question",
+      "population": "students",
+      "variable": "commute_time"
+     },
+     "kind": "question_without_variability",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "question_without_variability",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "nonstatistical_question(commute_time,students)",
+      "steps": [
+       {
+        "label": "identify_measured_variable(commute_time)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "replace_varied_responses_with_one_fixed_answer",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "classify_as_nonstatistical_question",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "question_without_variability"
+     }
+    },
     "direct_runs": [],
     "kind": "question_without_variability",
     "line": 721,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "bin_width": 2,
+      "kind": "histogram_data",
+      "values": [
+       2,
+       3,
+       5,
+       7,
+       8,
+       9
+      ]
+     },
+     "kind": "histogram_equal_interval_representation",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "histogram_equal_interval_representation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "histogram([bin(2,4)-2,bin(4,6)-1,bin(6,8)-1,bin(8,10)-2])",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,3,5,7,8,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "choose_equal_bin_width(2)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "establish_contiguous_intervals([bin(2,4)-2,bin(4,6)-1,bin(6,8)-1,bin(8,10)-2])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "count_each_observation_once",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "draw_touching_interval_bars",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "histogram_equal_interval_representation"
+     }
+    },
     "direct_runs": [],
     "kind": "histogram_equal_interval_representation",
     "line": 725,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       4,
+       4,
+       6,
+       9
+      ]
+     },
+     "kind": "mean_as_fair_share",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "mean_as_fair_share",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "rational(5,1)",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,4,6,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "collect_total(25)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "count_values(5)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "redistribute_total_equally(rational(5,1))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "mean_as_fair_share"
+     }
+    },
     "direct_runs": [],
     "kind": "mean_as_fair_share",
     "line": 728,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       4,
+       4,
+       6,
+       9
+      ]
+     },
+     "kind": "mean_as_balance_point",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "mean_as_balance_point",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "rational(5,1)",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,4,6,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "locate_mean(rational(5,1))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "measure_signed_deviations([rational(-3,1),rational(-1,1),rational(-1,1),rational(1,1),rational(4,1)])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "verify_balanced_deviations",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "mean_as_balance_point"
+     }
+    },
     "direct_runs": [],
     "kind": "mean_as_balance_point",
     "line": 730,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       4,
+       4,
+       6,
+       9
+      ]
+     },
+     "kind": "mean_absolute_deviation",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "mean_absolute_deviation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "rational(2,1)",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,4,6,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "locate_mean(rational(5,1))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "measure_signed_deviations([rational(-3,1),rational(-1,1),rational(-1,1),rational(1,1),rational(4,1)])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "take_absolute_distances([rational(3,1),rational(1,1),rational(1,1),rational(1,1),rational(4,1)])",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "average_distances(rational(2,1))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "mean_absolute_deviation"
+     }
+    },
     "direct_runs": [],
     "kind": "mean_absolute_deviation",
     "line": 733,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       4,
+       4,
+       6,
+       9
+      ]
+     },
+     "kind": "mean_deviation_without_absolute_value",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "mean_deviation_without_absolute_value",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "rational(0,1)",
+      "steps": [
+       {
+        "label": "locate_mean(rational(5,1))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "measure_signed_deviations([rational(-3,1),rational(-1,1),rational(-1,1),rational(1,1),rational(4,1)])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "omit_absolute_value",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "average_signed_deviations(rational(0,1))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "mean_deviation_without_absolute_value"
+     }
+    },
     "direct_runs": [],
     "kind": "mean_deviation_without_absolute_value",
     "line": 735,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       4,
+       5,
+       7,
+       9
+      ]
+     },
+     "kind": "median_as_ordered_middle",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "median_as_ordered_middle",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "5",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,5,7,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "order_values([2,4,5,7,9])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "locate_single_middle(2,5)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "median_as_ordered_middle"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -33910,67 +38257,441 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       3,
+       3,
+       5,
+       7
+      ]
+     },
+     "kind": "mode_as_maximal_frequency",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "mode_as_maximal_frequency",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "modes([3])",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,3,3,5,7])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "count_equal_values([2-1,3-2,5-1,7-1])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "retain_all_maximal_frequencies([3],2)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "mode_as_maximal_frequency"
+     }
+    },
     "direct_runs": [],
     "kind": "mode_as_maximal_frequency",
     "line": 740,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "numeric_data_with_unit",
+      "unit": "minutes",
+      "values": [
+       2,
+       4,
+       5,
+       7,
+       9
+      ]
+     },
+     "kind": "five_number_summary_and_iqr",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "five_number_summary_and_iqr",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "summary(five_number(2,rational(3,1),rational(5,1),rational(8,1),9),iqr(rational(5,1)))",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,5,7,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "order_values([2,4,5,7,9])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "split_around_median",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "locate_quartiles(five_number(2,rational(3,1),rational(5,1),rational(8,1),9))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "subtract_quartiles(rational(5,1))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "five_number_summary_and_iqr"
+     }
+    },
     "direct_runs": [],
     "kind": "five_number_summary_and_iqr",
     "line": 742,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "display": "box_plot",
+      "kind": "box_plot_data",
+      "values": [
+       2,
+       4,
+       5,
+       7,
+       9
+      ]
+     },
+     "kind": "box_plot_from_five_number_summary",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "box_plot_from_five_number_summary",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "box_plot(five_number(2,rational(3,1),rational(5,1),rational(8,1),9))",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,5,7,9])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "order_values([2,4,5,7,9])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "construct_five_number_summary(five_number(2,rational(3,1),rational(5,1),rational(8,1),9))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "place_all_five_values_on_common_scale",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "draw_quartile_box_and_whiskers",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "box_plot_from_five_number_summary"
+     }
+    },
     "direct_runs": [],
     "kind": "box_plot_from_five_number_summary",
     "line": 746,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "distribution_data",
+      "profile": "symmetric_without_outliers",
+      "values": [
+       2,
+       4,
+       6,
+       8
+      ]
+     },
+     "kind": "distribution_summary_selection",
+     "operation": "statistics",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "distribution_summary_selection",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "summary_choice(mean_and_mad,measures(mean(rational(5,1)),mad(rational(2,1))))",
+      "steps": [
+       {
+        "label": "preserve_data_set([2,4,6,8])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "inspect_declared_profile(symmetric_without_outliers)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "select_mean_and_mean_absolute_deviation",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "distribution_summary_selection"
+     }
+    },
     "direct_runs": [],
     "kind": "distribution_summary_selection",
     "line": 749,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "interval_count": 7,
+      "kind": "measure_with_unit",
+      "subdivisions": 4,
+      "unit": "inch"
+     },
+     "kind": "linear_unit_iteration",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "linear_unit_iteration",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(rational(7,4),inch)",
+      "steps": [
+       {
+        "label": "establish_length_attribute",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_unit(inch)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "partition_unit_into_equal_intervals(4)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "iterate_interval_from_zero(7)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "read_accumulated_length(rational(7,4),inch)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "linear_unit_iteration"
+     }
+    },
     "direct_runs": [],
     "kind": "linear_unit_iteration",
     "line": 752,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "interval_count": 7,
+      "kind": "measure_with_unit",
+      "subdivisions": 4,
+      "unit": "inch"
+     },
+     "kind": "count_marks_not_intervals",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "count_marks_not_intervals",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(rational(2,1),inch)",
+      "steps": [
+       {
+        "label": "expose_interval_boundary_marks(7,8)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "count_marks_instead_of_spaces",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "overcount_by_one_subunit(4)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "count_marks_not_intervals"
+     }
+    },
     "direct_runs": [],
     "kind": "count_marks_not_intervals",
     "line": 755,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "interval_count": 5,
+      "kind": "measure_with_unit",
+      "subdivisions": 4,
+      "unit": "liter"
+     },
+     "kind": "liquid_volume_scale_reading",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "liquid_volume_scale_reading",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "volume(rational(5,4),liter)",
+      "steps": [
+       {
+        "label": "establish_liquid_volume_attribute",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_volume_unit(liter)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "partition_volume_scale(4)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "locate_fill_level_after_intervals(5)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "read_liquid_volume(rational(5,4),liter)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "liquid_volume_scale_reading"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -34033,17 +38754,113 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "interval_count": 5,
+      "kind": "measure_with_unit",
+      "subdivisions": 4,
+      "unit": "liter"
+     },
+     "kind": "liquid_volume_count_marks_not_intervals",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "liquid_volume_count_marks_not_intervals",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "volume(rational(3,2),liter)",
+      "steps": [
+       {
+        "label": "expose_volume_scale_marks(5,6)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "count_marks_instead_of_volume_intervals",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "overcount_liquid_volume_by_one_subunit(4)",
+        "n": 3,
+        "value": ""
+       }
+      ],
+      "strategy": "liquid_volume_count_marks_not_intervals"
+     }
+    },
     "direct_runs": [],
     "kind": "liquid_volume_count_marks_not_intervals",
     "line": 761,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "count": 3,
+      "factor": 3,
+      "from_unit": "yard",
+      "kind": "quantity_conversion",
+      "to_unit": "foot"
+     },
+     "kind": "unit_conversion_by_iteration",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "unit_conversion_by_iteration",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "quantity(9,foot)",
+      "steps": [
+       {
+        "label": "establish_equivalence(one(yard),3,foot)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "iterate_conversion_group(3,3)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "multiply_unit_count(3,3,9)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "relabel_as_smaller_unit(foot)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "unit_conversion_by_iteration"
+     }
+    },
     "direct_runs": [
      {
       "input_evidence": {
@@ -34336,34 +39153,187 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "count": 3,
+      "factor": 3,
+      "from_unit": "yard",
+      "kind": "quantity_conversion",
+      "to_unit": "foot"
+     },
+     "kind": "change_unit_label_without_scaling",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "change_unit_label_without_scaling",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "quantity(3,foot)",
+      "steps": [
+       {
+        "label": "read_conversion_factor(3)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "omit_iteration_by_factor",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "preserve_numeral(3)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "change_unit_label(yard,foot)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "change_unit_label_without_scaling"
+     }
+    },
     "direct_runs": [],
     "kind": "change_unit_label_without_scaling",
     "line": 769,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": 7,
+      "b": 5,
+      "kind": "measured_change",
+      "operation": "add",
+      "unit": "centimeter"
+     },
+     "kind": "unit_preserving_measured_quantity_change",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "unit_preserving_measured_quantity_change",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "quantity(12,centimeter)",
+      "steps": [
+       {
+        "label": "establish_common_measurement_unit(centimeter)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "perform_grounded_quantity_change(add,7,5,12)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "retain_measurement_unit(12,centimeter)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_unit_bearing_result(quantity(12,centimeter))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "unit_preserving_measured_quantity_change"
+     }
+    },
     "direct_runs": [],
     "kind": "unit_preserving_measured_quantity_change",
     "line": 773,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": 7,
+      "b": 5,
+      "kind": "measured_change",
+      "operation": "add",
+      "unit": "centimeter"
+     },
+     "kind": "drop_unit_from_measured_quantity_change",
+     "operation": "measurement",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "drop_unit_from_measured_quantity_change",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "12",
+      "steps": [
+       {
+        "label": "read_quantity_numerals(7,5)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "perform_grounded_quantity_change(add,7,5,12)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "discard_measurement_unit(centimeter)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_bare_numeral(12)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "drop_unit_from_measured_quantity_change"
+     }
+    },
     "direct_runs": [],
     "kind": "drop_unit_from_measured_quantity_change",
     "line": 777,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -38500,7 +43470,7 @@
     "unexercised_reason": null
    }
   ],
-  "exercised_signatures": 138,
+  "exercised_signatures": 219,
   "registered_signatures": 219,
   "reviewer_six": [
    {
@@ -38655,7 +43625,7 @@
     }
    }
   ],
-  "unexercised_signatures": 81
+  "unexercised_signatures": 0
  },
  "reviewed_blocker_lessons": [
   {
