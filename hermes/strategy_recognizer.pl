@@ -9,7 +9,7 @@
  * WHAT COUNTS AS EVIDENCE, AND WHY IT IS WEIGHED.  A surface reaches every
  * trace whose action language contains it, and some surfaces reach many.
  * "i got" is the authored phrase for the canonical action name_result, and
- * 26 of the 114 observed traces have a step that maps to name_result, so the
+ * 42 of the 218 observed traces have a step that maps to name_result, so the
  * phrase alone once returned 26 candidates for any sentence carrying it,
  * mathematical or not.  Weighing fixes the arithmetic of that: a surface
  * carried by Reach traces supports each of them by 1/Reach, distinct
@@ -240,18 +240,22 @@ step_action(step(_, Action, _), Action).
 %!  recognition_floor(-Floor) is det.
 %
 %   The least unshared evidence a candidate must carry to be returned at
-%   all: a tenth of a step, so one surface fitting no more than a tenth of
-%   the 114 observed traces, or several broader ones adding to as much.
-%   A stricter floor of 0.15 cleared the last non-mathematical sentence out
-%   of the development negatives, and also emptied
-%   "i did not make ten i just counted them all", whose whole evidence is a
-%   phrase fitting nine traces; that sentence is what
-%   scripts/checks/utterance_layers.py uses to test the denial's reach, and
-%   a floor that makes the test vacuous buys less than it costs.  The one
-%   sentence that survives at a tenth is reported below.
-%   docs/research/2026-08-01-strategy-recognize-discrimination.md records the
-%   sweep, the deviation and the held-out result.
-recognition_floor(0.1).
+%   all.  The floor is 10 / ObservedTraceCount: because a surface carried by
+%   Reach traces contributes 1/Reach, one surface clears the floor exactly
+%   when it fits no more than a tenth of the live observed corpus, and
+%   several broader surfaces can add to as much.  On 2026-08-03 the observed
+%   corpus grew from 114 to 218 traces; counting surfaces grew from a Reach
+%   of 9 to 20, diluting their evidence from 1/9 to 1/20, and the constant
+%   0.1 floor rejected them despite preserving the same corpus-relative
+%   reach.  Computing the floor from observed_steps/3 keeps that stated
+%   semantics as the corpus changes.
+recognition_floor(Floor) :-
+    findall(Operation-Kind,
+            observed_steps(Operation, Kind, _),
+            ObservedTraces),
+    length(ObservedTraces, ObservedTraceCount),
+    ObservedTraceCount > 0,
+    Floor is 10.0 / ObservedTraceCount.
 
 
 %!  surface_reach(+Surface, -Reach) is det.

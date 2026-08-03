@@ -4319,6 +4319,10 @@ action_maps(statistics, distribution_summary_selection, preserve_data_set, regis
             confidence(high),
             evidence("statistics/distribution_summary_selection, q_start -> q_step_1: 1 of the machine's 2 distinct edges, static only. holds the data set as the given the summary steps work from; the label reads as a conservation but the edge is the machine's first, not its last"),
             status(review_pending)).
+action_maps(statistics, distribution_summary_selection, select_mean_and_mean_absolute_deviation, name_result,
+            confidence(high),
+            evidence("statistics/distribution_summary_selection, q_observed_2 -> q_accept: 1 of the machine's 3 distinct observed edges, witnessed. statistics_action_pairs.pl:summary_for_profile/5's symmetric_without_outliers clause computes the mean and mean absolute deviation and returns mean_and_mad as the selected summary, so the terminal action names which center-and-spread pair is the result"),
+            status(review_pending)).
 action_maps(statistics, dot_plot_frequency_representation, establish_value_axis, establish_reference_frame,
             confidence(high),
             evidence("statistics/dot_plot_frequency_representation, q_start -> q_step_1: 1 of the machine's 3 distinct edges, static only. set up the frame against which locations or magnitudes will be read: axes, zero as origin, a vertex and initial ray, a value or frequency scale."),
@@ -4438,6 +4442,10 @@ action_maps(statistics, mean_deviation_without_absolute_value, measure_signed_de
 action_maps(statistics, mean_deviation_without_absolute_value, omit_absolute_value, omit_required_step,
             confidence(high),
             evidence("statistics/mean_deviation_without_absolute_value, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(statistics, median_as_ordered_middle, locate_single_middle, locate_position,
+            confidence(high),
+            evidence("statistics/median_as_ordered_middle, q_observed_2 -> q_accept: 1 of the machine's 3 distinct observed edges, witnessed. statistics_action_pairs.pl:median_value/3's odd-count clause uses the middle index to retrieve the single median from the ordered data, locating a value's position in the frame the preceding order_values action established"),
             status(review_pending)).
 action_maps(statistics, median_as_ordered_middle, order_values, order_by_magnitude,
             confidence(high),

@@ -379,7 +379,7 @@ window_row(ratio, reverse_ratio_referent_order, break_recover_break, [register_g
 window_row(ratio, scale_ratio_unit, work_then_keep, [register_givens, read_operand_attribute, scale_multiplicatively, scale_multiplicatively, compose_expression], [], [record_conservation], []).
 window_row(statistics, box_plot_from_five_number_summary, keep_then_work_on, [register_givens, order_by_magnitude, compose_expression, align_to_common_unit], [], [inscribe_result], []).
 window_row(statistics, categorical_frequency_bar_representation, unrecorded_run, [assign_roles, establish_reference_frame], [count_units], [inscribe_result], []).
-window_row(statistics, distribution_summary_selection, unrecorded_run, [register_givens, read_operand_attribute], [], [], []).
+window_row(statistics, distribution_summary_selection, unrecorded_run, [register_givens, read_operand_attribute], [], [name_result], []).
 window_row(statistics, dot_plot_frequency_representation, keep_then_work_on, [establish_reference_frame], [], [verify_invariant, inscribe_result], []).
 window_row(statistics, five_number_summary_and_iqr, unrecorded_run, [register_givens, order_by_magnitude, partition_into_equal_parts, locate_position], [remove_quantity], [], []).
 window_row(statistics, histogram_equal_interval_representation, unrecorded_run, [register_givens, select_unit_scale, partition_into_equal_parts], [count_units], [inscribe_result], []).
@@ -387,7 +387,7 @@ window_row(statistics, mean_absolute_deviation, unrecorded_run, [register_givens
 window_row(statistics, mean_as_balance_point, work_then_keep, [register_givens, locate_position], [measure_quantity], [verify_invariant], []).
 window_row(statistics, mean_as_fair_share, unrecorded_run, [register_givens], [accumulate_total, count_units, share_into_known_groups], [], []).
 window_row(statistics, mean_deviation_without_absolute_value, break_then_work_on, [locate_position], [measure_quantity, compute_quotient], [omit_required_step], []).
-window_row(statistics, median_as_ordered_middle, unrecorded_run, [register_givens, order_by_magnitude], [], [], []).
+window_row(statistics, median_as_ordered_middle, unrecorded_run, [register_givens, order_by_magnitude, locate_position], [], [], []).
 window_row(statistics, mode_as_maximal_frequency, unrecorded_run, [register_givens], [count_units], [name_result], []).
 window_row(statistics, question_without_variability, break_then_work_on, [read_operand_attribute, substitute_scalar_for_structured_quantity], [], [name_result], []).
 window_row(statistics, statistical_question_variability_classification, keep_then_work_on, [register_givens, read_operand_attribute], [], [test_criteria, name_result], []).

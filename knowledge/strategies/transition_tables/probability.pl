@@ -16,3 +16,15 @@ automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_star
 automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_step_1, identify_terminal_winners, q_step_2, provenance(static('knowledge/strategies/math/probability_action_pairs.pl:27'))).
 automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_step_2, sum_terminal_probabilities, q_step_3, provenance(static('knowledge/strategies/math/probability_action_pairs.pl:27'))).
 automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_step_3, allocate_stake, q_accept, provenance(static('knowledge/strategies/math/probability_action_pairs.pl:27'))).
+
+% Bounded live traces reconstructed from returned step labels.
+automaton_transition(probability, equiprobable_endpoint_counting, q_start, read_terminal_paths, q_step_1, provenance(observed(contract_example))).
+automaton_transition(probability, equiprobable_endpoint_counting, q_step_1, identify_terminal_winners, q_step_2, provenance(observed(contract_example))).
+automaton_transition(probability, equiprobable_endpoint_counting, q_step_2, count_terminal_endpoints, q_step_3, provenance(observed(contract_example))).
+automaton_transition(probability, equiprobable_endpoint_counting, q_step_3, treat_endpoints_as_equiprobable, q_step_4, provenance(observed(contract_example))).
+automaton_transition(probability, equiprobable_endpoint_counting, q_step_4, compare_with_weighted_terminal_sum, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_start, read_terminal_paths, q_step_1, provenance(observed(contract_example))).
+automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_step_1, identify_terminal_winners, q_step_2, provenance(observed(contract_example))).
+automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_step_2, sum_terminal_probabilities, q_step_3, provenance(observed(contract_example))).
+automaton_transition(probability, terminal_tree_endpoint_probability_sum, q_step_3, allocate_stake, q_accept, provenance(observed(contract_example))).

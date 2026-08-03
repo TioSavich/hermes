@@ -21,3 +21,20 @@ automaton_transition(calculus, factor_cancel_without_common_factor, q_step_2, fa
 automaton_transition(calculus, factor_cancel_without_common_factor, q_step_3, apply_cancel_routine_anyway, q_step_4, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:179'))).
 automaton_transition(calculus, factor_cancel_without_common_factor, q_step_4, produce_misfire_result, q_step_5, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:179'))).
 automaton_transition(calculus, factor_cancel_without_common_factor, q_step_5, lose_precondition_check, q_accept, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:179'))).
+
+% Bounded live traces reconstructed from returned step labels.
+automaton_transition(calculus, factor_cancel_substitute, q_start, identify_limit_target, q_step_1, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_1, substitute_target_into_expression, q_step_2, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_2, detect_zero_over_zero, q_step_3, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_3, factor_common_factor_x_minus_a, q_step_4, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_4, substitute_target_into_reduced, q_step_5, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_5, evaluate_reduced_at_point, q_step_6, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_6, kernel_trace, q_step_7, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_substitute, q_step_7, name_value_as_limit, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(calculus, factor_cancel_without_common_factor, q_start, identify_limit_target, q_step_1, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_without_common_factor, q_step_1, substitute_target_into_expression, q_step_2, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_without_common_factor, q_step_2, fail_to_detect_zero_over_zero, q_step_3, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_without_common_factor, q_step_3, apply_cancel_routine_anyway, q_step_4, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_without_common_factor, q_step_4, produce_misfire_result, q_step_5, provenance(observed(contract_example))).
+automaton_transition(calculus, factor_cancel_without_common_factor, q_step_5, lose_precondition_check, q_accept, provenance(observed(contract_example))).

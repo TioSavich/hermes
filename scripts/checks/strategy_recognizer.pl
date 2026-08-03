@@ -5,13 +5,14 @@
 main :-
     observed_signatures(Signatures),
     length(Signatures, SignatureCount),
-    % Decoder ledger (2026-08-03): 219 contracts now split into 122 examples
-    % encodable by build_transition_tables.py and 97 structured examples the
-    % extractor cannot yet encode. All 122 encodable probes ran; the existing
-    % counting/enumerate_collection_one_to_one row still has no static Trace
-    % list to receive its observation, so the recognizer corpus remains 121
-    % with the same per-family counts pinned below.
-    expect_equal(121, SignatureCount, observed_signature_count),
+    % Extractor ledger (2026-08-03): build_transition_tables.py learned all
+    % structured operands decoded by trace_inputs/3, so all 219 contracts are
+    % encodable and observed. The corpus rose from 121 to 218 rooted
+    % signatures. The only exclusion remains
+    % counting/enumerate_collection_one_to_one: it runs from its cardinality
+    % contract but has no static Trace list on which to root observed states.
+    % No newly encodable kind introduced another static-root exclusion.
+    expect_equal(218, SignatureCount, observed_signature_count),
     expect_family_counts(Signatures),
     forall(member(Operation-Kind, Signatures),
            expect_round_trips(Operation, Kind)),
@@ -20,7 +21,7 @@ main :-
     strategy_recognizer:recognize_strategies(
         "I do not know what to do next.", Empty),
     expect_equal([], Empty, honest_abstention),
-    format("PASS strategy recognizers: 121/121 execution-observed signatures~n").
+    format("PASS strategy recognizers: 218/218 execution-observed signatures~n").
 
 observed_signatures(Signatures) :-
     findall(Operation-Kind,
@@ -32,14 +33,19 @@ observed_signatures(Signatures) :-
 expect_family_counts(Signatures) :-
     forall(member(Operation-Expected,
                   [ addition-18,
+                    algebraic-14,
+                    calculus-2,
                     counting-7,
-                    decimal-14,
+                    decimal-16,
                     division-16,
-                    fraction-26,
-                    geometry-2,
-                    integer-2,
+                    fraction-31,
+                    geometry-46,
+                    integer-6,
+                    measurement-8,
                     multiplication-20,
-                    ratio-2,
+                    probability-2,
+                    ratio-4,
+                    statistics-14,
                     subtraction-14
                   ]),
            ( include(has_operation(Operation), Signatures, Family),

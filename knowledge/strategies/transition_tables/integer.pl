@@ -59,6 +59,21 @@ automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_3, sum_magnitu
 automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_4, name_magnitude_sum_as_answer, q_step_5, provenance(observed(derived_template))).
 automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_5, lose_sign_relation, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(integer, inequality_as_boundary_point, q_start, identify_boundary, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, inequality_as_boundary_point, q_step_1, ignore_relation_direction, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, inequality_as_boundary_point, q_step_2, omit_solution_ray, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, inequality_as_boundary_point, q_step_3, report_boundary_as_only_solution, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, inequality_solution_set_representation, q_start, identify_boundary, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, inequality_solution_set_representation, q_step_1, interpret_relation_direction, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, inequality_solution_set_representation, q_step_2, choose_endpoint_inclusion, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, inequality_solution_set_representation, q_step_3, extend_ray_over_all_solutions, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_start, establish_zero_as_origin, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_1, replace_signed_locations_with_distances, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_2, order_magnitudes_only, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_3, lose_directional_order, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(integer, signed_addition_with_sign_relation, q_start, identify_signs, q_step_1, provenance(observed(contract_example))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_1, identify_magnitudes, q_step_2, provenance(observed(contract_example))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_2, determine_sign_relation, q_step_3, provenance(observed(contract_example))).
@@ -72,3 +87,8 @@ automaton_transition(integer, signed_addition_with_sign_relation, q_step_2, dete
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_3, combine_magnitudes_by_sign_relation, q_step_4, provenance(observed(derived_template))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_4, assign_result_sign, q_step_5, provenance(observed(derived_template))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_5, preserve_sign_relation, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(integer, signed_number_location_and_order, q_start, establish_zero_as_origin, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, signed_number_location_and_order, q_step_1, locate_each_signed_value, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, signed_number_location_and_order, q_step_2, preserve_direction_from_zero, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, signed_number_location_and_order, q_step_3, read_locations_left_to_right, q_accept, provenance(observed(contract_example))).

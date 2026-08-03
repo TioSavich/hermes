@@ -84,3 +84,73 @@ automaton_transition(statistics, statistical_question_variability_classification
 automaton_transition(statistics, statistical_question_variability_classification, q_step_1, identify_measured_variable, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:70'))).
 automaton_transition(statistics, statistical_question_variability_classification, q_step_2, anticipate_varied_responses, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:70'))).
 automaton_transition(statistics, statistical_question_variability_classification, q_step_3, classify_as_statistical_question, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:70'))).
+
+% Bounded live traces reconstructed from returned step labels.
+automaton_transition(statistics, box_plot_from_five_number_summary, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_1, order_values, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_2, construct_five_number_summary, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_3, place_all_five_values_on_common_scale, q_step_4, provenance(observed(contract_example))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_4, draw_quartile_box_and_whiskers, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, categorical_frequency_bar_representation, q_start, classify_observations_by_category, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, categorical_frequency_bar_representation, q_step_1, count_each_category, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, categorical_frequency_bar_representation, q_step_2, establish_frequency_scale, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, categorical_frequency_bar_representation, q_step_3, raise_separated_bar_for_each_category, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, distribution_summary_selection, q_start, preserve_data_set, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(statistics, distribution_summary_selection, q_observed_1, inspect_declared_profile, q_observed_2, provenance(observed(contract_example))).
+automaton_transition(statistics, distribution_summary_selection, q_observed_2, select_mean_and_mean_absolute_deviation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, dot_plot_frequency_representation, q_start, establish_value_axis, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, dot_plot_frequency_representation, q_step_1, preserve_one_mark_per_observation, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, dot_plot_frequency_representation, q_step_2, stack_marks_at_equal_values, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, five_number_summary_and_iqr, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_1, order_values, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_2, split_around_median, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_3, locate_quartiles, q_step_4, provenance(observed(contract_example))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_4, subtract_quartiles, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, histogram_equal_interval_representation, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, histogram_equal_interval_representation, q_step_1, choose_equal_bin_width, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, histogram_equal_interval_representation, q_step_2, establish_contiguous_intervals, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, histogram_equal_interval_representation, q_step_3, count_each_observation_once, q_step_4, provenance(observed(contract_example))).
+automaton_transition(statistics, histogram_equal_interval_representation, q_step_4, draw_touching_interval_bars, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, mean_absolute_deviation, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_1, locate_mean, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_2, measure_signed_deviations, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_3, take_absolute_distances, q_step_4, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_4, average_distances, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, mean_as_balance_point, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_as_balance_point, q_step_1, locate_mean, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_as_balance_point, q_step_2, measure_signed_deviations, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_as_balance_point, q_step_3, verify_balanced_deviations, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, mean_as_fair_share, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_as_fair_share, q_step_1, collect_total, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_as_fair_share, q_step_2, count_values, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_as_fair_share, q_step_3, redistribute_total_equally, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_start, locate_mean, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_1, measure_signed_deviations, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_2, omit_absolute_value, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_3, average_signed_deviations, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, median_as_ordered_middle, q_start, preserve_data_set, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(statistics, median_as_ordered_middle, q_observed_1, order_values, q_observed_2, provenance(observed(contract_example))).
+automaton_transition(statistics, median_as_ordered_middle, q_observed_2, locate_single_middle, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, mode_as_maximal_frequency, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, mode_as_maximal_frequency, q_step_1, count_equal_values, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, mode_as_maximal_frequency, q_step_2, retain_all_maximal_frequencies, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, question_without_variability, q_start, identify_measured_variable, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, question_without_variability, q_step_1, replace_varied_responses_with_one_fixed_answer, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, question_without_variability, q_step_2, classify_as_nonstatistical_question, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, statistical_question_variability_classification, q_start, identify_population, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, statistical_question_variability_classification, q_step_1, identify_measured_variable, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, statistical_question_variability_classification, q_step_2, anticipate_varied_responses, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, statistical_question_variability_classification, q_step_3, classify_as_statistical_question, q_accept, provenance(observed(contract_example))).

@@ -121,6 +121,11 @@ automaton_transition(decimal, recalled_result_scaling, q_step_2, propagate_scale
 automaton_transition(decimal, recalled_result_scaling, q_step_3, name_decimal_quotient, q_accept, provenance(static('knowledge/strategies/math/decimal_action_pairs.pl:513'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_start, identify_nested_decimal_units, q_step_1, provenance(observed(contract_example))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_1, change_decimal_unit_name, q_step_2, provenance(observed(contract_example))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_2, retain_original_count, q_step_3, provenance(observed(contract_example))).
+automaton_transition(decimal, change_decimal_place_name_without_regrouping, q_step_3, omit_regrouping_factor, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(decimal, decimal_add_unaligned_numerals, q_start, read_written_integer_numerals, q_step_1, provenance(observed(contract_example))).
 automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_1, omit_decimal_scale_alignment, q_step_2, provenance(observed(contract_example))).
 automaton_transition(decimal, decimal_add_unaligned_numerals, q_step_2, add_unaligned_numerals, q_step_3, provenance(observed(contract_example))).
@@ -200,6 +205,11 @@ automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment
 automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_2, compare_unaligned_numerals, q_step_3, provenance(observed(derived_template))).
 automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_3, lose_decimal_scale_relation, q_step_4, provenance(observed(derived_template))).
 automaton_transition(decimal, decimal_numeral_comparison_without_scale_alignment, q_step_4, record_decimal_order_viability, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(decimal, decimal_place_unit_regrouping, q_start, identify_nested_decimal_units, q_step_1, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_step_1, derive_regrouping_factor, q_step_2, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_step_2, iterate_finer_unit, q_step_3, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_place_unit_regrouping, q_step_3, preserve_decimal_quantity, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(decimal, decimal_point_rule_misapplication, q_start, identify_operand_place_counts, q_step_1, provenance(observed(contract_example))).
 automaton_transition(decimal, decimal_point_rule_misapplication, q_step_1, multiply_integer_numerals, q_step_2, provenance(observed(contract_example))).

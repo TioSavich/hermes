@@ -571,7 +571,7 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
   statistics/categorical_frequency_bar_representation arc=unrecorded_run
     shell=assign_roles+establish_reference_frame core=count_units closure=inscribe_result other=none
   statistics/distribution_summary_selection arc=unrecorded_run
-    shell=register_givens+read_operand_attribute core=none closure=none other=none
+    shell=register_givens+read_operand_attribute core=none closure=name_result other=none
   statistics/dot_plot_frequency_representation arc=keep_then_work_on
     shell=establish_reference_frame core=none closure=verify_invariant+inscribe_result other=none
   statistics/five_number_summary_and_iqr arc=unrecorded_run
@@ -587,7 +587,7 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
   statistics/mean_deviation_without_absolute_value arc=break_then_work_on
     shell=locate_position core=measure_quantity+compute_quotient closure=omit_required_step other=none
   statistics/median_as_ordered_middle arc=unrecorded_run
-    shell=register_givens+order_by_magnitude core=none closure=none other=none
+    shell=register_givens+order_by_magnitude+locate_position core=none closure=none other=none
   statistics/mode_as_maximal_frequency arc=unrecorded_run
     shell=register_givens core=count_units closure=name_result other=none
   statistics/question_without_variability arc=break_then_work_on

@@ -94,3 +94,81 @@ automaton_transition(algebraic, symbolic_expression_construction, q_step_1, decl
 automaton_transition(algebraic, symbolic_expression_construction, q_step_2, select_operation, q_step_3, provenance(static('knowledge/strategies/math/algebraic_action_pairs.pl:303'))).
 automaton_transition(algebraic, symbolic_expression_construction, q_step_3, preserve_operand_structure, q_step_4, provenance(static('knowledge/strategies/math/algebraic_action_pairs.pl:303'))).
 automaton_transition(algebraic, symbolic_expression_construction, q_step_4, inscribe_expression, q_accept, provenance(static('knowledge/strategies/math/algebraic_action_pairs.pl:303'))).
+
+% Bounded live traces reconstructed from returned step labels.
+automaton_transition(algebraic, balance_preserving_linear_solution, q_start, read_equation_as_relation, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, balance_preserving_linear_solution, q_step_1, apply_balance_preserving_steps, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, balance_preserving_linear_solution, q_step_2, isolate_unknown, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, balance_preserving_linear_solution, q_step_3, verify_by_substitution, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, contextual_linear_equation_construction, q_start, identify_unknown_quantity, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, contextual_linear_equation_construction, q_step_1, assign_referent_roles, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, contextual_linear_equation_construction, q_step_2, coordinate_repeated_unknown, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, contextual_linear_equation_construction, q_step_3, coordinate_constant_offset, q_step_4, provenance(observed(contract_example))).
+automaton_transition(algebraic, contextual_linear_equation_construction, q_step_4, relate_expression_to_total, q_step_5, provenance(observed(contract_example))).
+automaton_transition(algebraic, contextual_linear_equation_construction, q_step_5, inscribe_equation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, distributive_expression_rewrite, q_start, identify_common_factor, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, distributive_expression_rewrite, q_step_1, identify_addends, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, distributive_expression_rewrite, q_step_2, distribute_factor, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, distributive_expression_rewrite, q_step_3, distribute_factor, q_step_4, provenance(observed(contract_example))).
+automaton_transition(algebraic, distributive_expression_rewrite, q_step_4, join_partial_products, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, drop_distributed_term, q_start, identify_common_factor, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, drop_distributed_term, q_step_1, distribute_factor, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, drop_distributed_term, q_step_2, stop_before_second_addend, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, drop_distributed_term, q_step_3, lose_equivalent_expression, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, equation_truth_by_substitution, q_start, substitute_assignment_into_both_sides, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, equation_truth_by_substitution, q_step_1, evaluate_left_expression, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, equation_truth_by_substitution, q_step_2, evaluate_right_expression, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, equation_truth_by_substitution, q_step_3, compare_values_for_equality, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, exponent_as_multiplier, q_start, read_exponent_as_second_factor, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponent_as_multiplier, q_step_1, multiply_base_by_exponent, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponent_as_multiplier, q_step_2, omit_repeated_factor_iteration, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, exponent_as_repeated_factor, q_start, establish_base, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponent_as_repeated_factor, q_step_1, establish_exponent, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponent_as_repeated_factor, q_step_2, iterate_base_factor, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponent_as_repeated_factor, q_step_3, inscribe_expanded_product, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, exponential_equivalence_by_expansion, q_start, expand_left_powers, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponential_equivalence_by_expansion, q_step_1, expand_right_powers, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponential_equivalence_by_expansion, q_step_2, compare_factor_structures, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, exponential_equivalence_by_expansion, q_step_3, certify_equivalent, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, guess_and_check_rule, q_start, read_empirical_rule, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, guess_and_check_rule, q_step_1, apply_empirical_rule, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, guess_and_check_rule, q_step_2, compare_with_contextual_rule, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, guess_and_check_rule, q_step_3, lose_contextual_linear_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, linear_pattern_contextual_rule, q_start, identify_initial_value, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, linear_pattern_contextual_rule, q_step_1, identify_constant_change, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, linear_pattern_contextual_rule, q_step_2, count_increments_from_first_row, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, linear_pattern_contextual_rule, q_step_3, compute_accumulated_change, q_step_4, provenance(observed(contract_example))).
+automaton_transition(algebraic, linear_pattern_contextual_rule, q_step_4, add_initial_value, q_step_5, provenance(observed(contract_example))).
+automaton_transition(algebraic, linear_pattern_contextual_rule, q_step_5, preserve_contextual_linear_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, one_sided_equation_operation, q_start, read_equals_as_instruction, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, one_sided_equation_operation, q_step_1, remove_constant_from_left_side_only, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, one_sided_equation_operation, q_step_2, leave_right_side_unchanged, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, one_sided_equation_operation, q_step_3, divide_remaining_expression_by, q_step_4, provenance(observed(contract_example))).
+automaton_transition(algebraic, one_sided_equation_operation, q_step_4, report_unbalanced_value, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, operational_equals_left_value, q_start, substitute_assignment_into_left_side, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, operational_equals_left_value, q_step_1, evaluate_left_expression, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, operational_equals_left_value, q_step_2, treat_equals_as_answer_signal, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, operational_equals_left_value, q_step_3, ignore_right_expression, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, programming_expression_evaluation, q_start, identify_expression, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, programming_expression_evaluation, q_step_1, identify_assignment, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, programming_expression_evaluation, q_step_2, walk_expression_tree, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, programming_expression_evaluation, q_step_3, kernel_trace, q_step_4, provenance(observed(contract_example))).
+automaton_transition(algebraic, programming_expression_evaluation, q_step_4, report_value, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(algebraic, symbolic_expression_construction, q_start, identify_quantity_roles, q_step_1, provenance(observed(contract_example))).
+automaton_transition(algebraic, symbolic_expression_construction, q_step_1, declare_variables, q_step_2, provenance(observed(contract_example))).
+automaton_transition(algebraic, symbolic_expression_construction, q_step_2, select_operation, q_step_3, provenance(observed(contract_example))).
+automaton_transition(algebraic, symbolic_expression_construction, q_step_3, preserve_operand_structure, q_step_4, provenance(observed(contract_example))).
+automaton_transition(algebraic, symbolic_expression_construction, q_step_4, inscribe_expression, q_accept, provenance(observed(contract_example))).

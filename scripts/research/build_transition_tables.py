@@ -190,7 +190,10 @@ def comparison_history(module: str, predicate: str) -> tuple[str, int, str] | No
 
 
 def prolog_atom(value: str) -> str:
-    return value if re.fullmatch(r"[a-z][a-z0-9_]*", value) else repr(value)
+    if re.fullmatch(r"[a-z][a-z0-9_]*", value):
+        return value
+    escaped = value.replace("\\", "\\\\").replace("'", "\\'")
+    return f"'{escaped}'"
 
 
 def render_table(table: Table) -> str:
@@ -235,9 +238,401 @@ def contracts() -> list[Contract]:
     return found
 
 
+def prolog_number(value: object) -> str:
+    assert isinstance(value, (int, float)) and not isinstance(value, bool)
+    return repr(value)
+
+
+def prolog_list(values: object, encode=prolog_number) -> str:
+    assert isinstance(values, list)
+    return f"[{','.join(encode(value) for value in values)}]"
+
+
+def prolog_expression(expression: object) -> str:
+    assert isinstance(expression, dict)
+    node = expression["node"]
+    if node == "int":
+        return f"int({prolog_number(expression['value'])})"
+    if node == "var":
+        return f"var({prolog_atom(str(expression['name']))})"
+    if node in {"add", "mult"}:
+        return (
+            f"{node}({prolog_expression(expression['left'])},"
+            f"{prolog_expression(expression['right'])})"
+        )
+    if node == "power":
+        return (
+            f"power({prolog_expression(expression['base'])},"
+            f"{prolog_number(expression['exponent'])})"
+        )
+    raise ValueError(f"unsupported algebraic expression node: {node!r}")
+
+
+def prolog_assignment(assignment: object) -> str:
+    assert isinstance(assignment, dict)
+    return (
+        f"var({prolog_atom(str(assignment['variable']))})="
+        f"int({prolog_number(assignment['value'])})"
+    )
+
+
+def prolog_point(point: object) -> str:
+    assert isinstance(point, dict)
+    return f"{prolog_number(point['x'])}-{prolog_number(point['y'])}"
+
+
+def prolog_coordinate_point(point: object) -> str:
+    assert isinstance(point, dict)
+    return f"point({prolog_number(point['x'])},{prolog_number(point['y'])})"
+
+
+def prolog_prism(prism: object) -> str:
+    assert isinstance(prism, dict)
+    return (
+        f"prism({prolog_number(prism['length'])},{prolog_number(prism['width'])},"
+        f"{prolog_number(prism['height'])})"
+    )
+
+
+def prolog_fraction_addend(addend: object) -> str:
+    assert isinstance(addend, dict)
+    if "whole" in addend and "n" in addend:
+        return (
+            f"mixed({prolog_number(addend['whole'])},{prolog_number(addend['n'])},"
+            f"{prolog_number(addend['d'])})"
+        )
+    if "n" in addend:
+        return f"frac({prolog_number(addend['n'])},{prolog_number(addend['d'])})"
+    return f"whole({prolog_number(addend['whole'])})"
+
+
 def prolog_input(example: dict[str, object]) -> tuple[str, str]:
     """Mirror hermes_encyclopedia:trace_inputs/3 for checked examples."""
-    if example.get("kind") == "fraction_pair":
+    kind = example.get("kind")
+    if kind == "decimal_unit_conversion":
+        return (
+            f"decimal_unit_conversion({prolog_number(example['count'])},"
+            f"{prolog_number(example['from_scale'])},{prolog_number(example['to_scale'])})",
+            "ignored",
+        )
+    if kind == "signed_number_list":
+        return prolog_list(example["values"]), "number_line"
+    if kind == "inequality":
+        return (
+            f"inequality({prolog_atom(str(example['variable']))},"
+            f"{prolog_atom(str(example['relation']))},{prolog_number(example['bound'])})",
+            "number_line",
+        )
+    if kind == "referent_pair":
+        first = example["first"]
+        second = example["second"]
+        assert isinstance(first, dict) and isinstance(second, dict)
+        return (
+            f"referent({prolog_atom(str(first['label']))},{prolog_number(first['count'])})",
+            f"referent({prolog_atom(str(second['label']))},{prolog_number(second['count'])})",
+        )
+    if kind == "measure_with_unit":
+        return (
+            f"measure({prolog_number(example['interval_count'])},"
+            f"{prolog_number(example['subdivisions'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "quantity_conversion":
+        return (
+            f"quantity({prolog_number(example['count'])},"
+            f"{prolog_atom(str(example['from_unit']))})",
+            f"conversion({prolog_atom(str(example['to_unit']))},"
+            f"{prolog_number(example['factor'])})",
+        )
+    if kind == "measured_change":
+        return (
+            f"measured_change({prolog_atom(str(example['operation']))},"
+            f"{prolog_number(example['a'])},{prolog_number(example['b'])},"
+            f"{prolog_atom(str(example['unit']))})",
+            "ignored",
+        )
+
+    if kind == "categorical_frequencies":
+        pairs = example["pairs"]
+        assert isinstance(pairs, list)
+        encoded_pairs = prolog_list(
+            pairs,
+            lambda pair: (
+                f"{prolog_atom(str(pair['category']))}-{prolog_number(pair['count'])}"
+                if isinstance(pair, dict) else ""
+            ),
+        )
+        return encoded_pairs, "display(bar_chart)"
+    if kind == "numeric_data_display":
+        return prolog_list(example["values"]), "display(dot_plot)"
+    if kind == "statistical_question":
+        return (
+            f"question({prolog_atom(str(example['variable']))},expects_variability)",
+            f"population({prolog_atom(str(example['population']))})",
+        )
+    if kind == "histogram_data":
+        return (
+            prolog_list(example["values"]),
+            f"display(histogram({prolog_number(example['bin_width'])}))",
+        )
+    if kind == "numeric_data_with_unit":
+        return (
+            prolog_list(example["values"]),
+            f"measurement_unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "box_plot_data":
+        return prolog_list(example["values"]), "display(box_plot)"
+    if kind == "distribution_data":
+        return (
+            prolog_list(example["values"]),
+            f"distribution({prolog_atom(str(example['profile']))})",
+        )
+
+    if kind in {"covered_cells", "placed_tiles"}:
+        return (
+            f"{kind}({prolog_list(example['cells'], prolog_point)})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "area_unit_candidates":
+        candidates = example["candidates"]
+        assert isinstance(candidates, list)
+        encoded_candidates = prolog_list(
+            candidates,
+            lambda candidate: (
+                f"unit({prolog_atom(str(candidate['unit']))},"
+                f"{prolog_atom(str(candidate['extent']))})"
+                if isinstance(candidate, dict) else ""
+            ),
+        )
+        return (
+            f"area_extent({prolog_atom(str(example['extent']))})",
+            f"candidates({encoded_candidates})",
+        )
+    if kind == "rectangle_with_unit":
+        return (
+            f"rectangle({prolog_number(example['length'])},{prolog_number(example['width'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "polygon_sides_with_unit":
+        return (
+            f"sides({prolog_list(example['sides'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "symmetry_side_orbits":
+        known_orbits = example["known_orbits"]
+        unknown_orbit = example["unknown_orbit"]
+        assert isinstance(known_orbits, list) and isinstance(unknown_orbit, dict)
+        encoded_orbits = [
+            f"orbit({prolog_number(orbit['copies'])},known({prolog_number(orbit['length'])}))"
+            for orbit in known_orbits if isinstance(orbit, dict)
+        ]
+        encoded_orbits.append(
+            f"orbit({prolog_number(unknown_orbit['copies'])},"
+            f"unknown({prolog_atom(str(unknown_orbit['name']))}))"
+        )
+        return (
+            f"side_orbits([{','.join(encoded_orbits)}])",
+            f"perimeter({prolog_number(example['perimeter'])},"
+            f"{prolog_atom(str(example['unit']))})",
+        )
+    if kind == "perimeter_scope":
+        return (
+            prolog_number(example["perimeter"]),
+            f"side_scope({prolog_atom(str(example['scope']))})",
+        )
+    if kind == "perimeter_known_side":
+        return (
+            f"perimeter({prolog_number(example['perimeter'])})",
+            f"known_side({prolog_number(example['known_side'])})",
+        )
+    if kind == "area_scope":
+        return (
+            prolog_number(example["area"]),
+            f"factor_scope({prolog_atom(str(example['scope']))})",
+        )
+    if kind == "rectangle_constraints":
+        return (
+            f"constraints(area({prolog_number(example['area'])}),"
+            f"perimeter({prolog_number(example['perimeter'])}))",
+            "constraint_scope(all)",
+        )
+    if kind == "area_known_side":
+        return (
+            f"area({prolog_number(example['area'])})",
+            f"known_side({prolog_number(example['known_side'])})",
+        )
+    if kind == "rectangular_prism":
+        return (
+            f"prism({prolog_number(example['length'])},{prolog_number(example['width'])})",
+            prolog_number(example["height"]),
+        )
+    if kind == "volume_known_base":
+        return (
+            f"volume({prolog_number(example['volume'])})",
+            f"known_base({prolog_number(example['length'])},{prolog_number(example['width'])})",
+        )
+    if kind == "disjoint_prisms":
+        return (
+            f"certified_disjoint_prisms({prolog_list(example['prisms'], prolog_prism)})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "overlapping_prisms":
+        return (
+            f"overlapping_prisms({prolog_list(example['prisms'], prolog_prism)},"
+            f"{prolog_number(example['overlap_volume'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "coordinate_points":
+        return prolog_list(example["points"], prolog_coordinate_point), "axes(cartesian)"
+    if kind == "coordinate_point_pair":
+        return (
+            f"points({prolog_coordinate_point(example['first'])},"
+            f"{prolog_coordinate_point(example['second'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "polygon_partition":
+        pieces = example["pieces"]
+        assert isinstance(pieces, list)
+        encoded_pieces = prolog_list(
+            pieces, lambda piece: prolog_list(piece, prolog_point)
+        )
+        partition = (
+            f"certified_partition({encoded_pieces})"
+            if example["certification"] == "certified"
+            else f"decomposition({encoded_pieces})"
+        )
+        return f"polygon({prolog_list(example['vertices'], prolog_point)})", partition
+    if kind == "parallelogram_with_unit":
+        return (
+            f"parallelogram({prolog_number(example['base'])},"
+            f"{prolog_number(example['height'])},{prolog_number(example['slanted_side'])},"
+            f"{prolog_number(example['offset'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "triangle_with_unit":
+        return (
+            f"triangle({prolog_number(example['base'])},{prolog_number(example['height'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "solid_net":
+        return (
+            f"net({prolog_atom(str(example['solid']))},{prolog_list(example['face_areas'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "dimensional_measure":
+        return (
+            f"measure({prolog_atom(str(example['dimension']))},"
+            f"{prolog_number(example['value'])})",
+            f"unit({prolog_atom(str(example['unit']))})",
+        )
+    if kind == "shape_attributes":
+        attributes = example["attributes"]
+        assert isinstance(attributes, list)
+        encoded_attributes = prolog_list(
+            attributes,
+            lambda attribute: (
+                f"{prolog_atom(str(attribute['name']))}({prolog_number(attribute['value'])})"
+                if isinstance(attribute, dict) else ""
+            ),
+        )
+        return (
+            f"shape({prolog_atom(str(example['shape']))},{encoded_attributes})",
+            f"orientation({prolog_number(example['quarter_turns'])})",
+        )
+    if kind == "angle_measure":
+        return prolog_number(example["degrees"]), "unit(degree)"
+    if kind == "angle_parts":
+        return (
+            f"angle_parts({prolog_list(example['parts'])})",
+            f"whole_angle({prolog_number(example['whole'])})",
+        )
+    if kind == "rigid_shape_composition":
+        pieces = example["pieces"]
+        assert isinstance(pieces, list)
+        encoded_pieces = prolog_list(
+            pieces,
+            lambda piece: (
+                f"placed({prolog_atom(str(piece['id']))},"
+                f"{prolog_list(piece['cells'], prolog_point)})"
+                if isinstance(piece, dict) else ""
+            ),
+        )
+        return (
+            f"region({prolog_number(example['columns'])},{prolog_number(example['rows'])})",
+            encoded_pieces,
+        )
+    if kind == "solid_volume_comparison":
+        return (
+            f"solid_cube_counts({prolog_number(example['count_a'])},"
+            f"{prolog_number(example['count_b'])})",
+            f"visual_extents({prolog_number(example['extent_a'])},"
+            f"{prolog_number(example['extent_b'])})",
+        )
+
+    if kind == "expression_assignment":
+        return (
+            prolog_expression(example["expression"]),
+            prolog_list(example["assignments"], prolog_assignment),
+        )
+    if kind == "linear_context":
+        return (
+            f"linear_context({prolog_atom(str(example['unknown']))},"
+            f"{prolog_number(example['coefficient'])},{prolog_number(example['offset'])},"
+            f"{prolog_number(example['total'])},"
+            f"{prolog_list(example['referent_roles'], lambda value: prolog_atom(str(value)))})",
+            "equation_form(ax_plus_b_equals_c)",
+        )
+    if kind == "equation_assignment":
+        return (
+            f"equation({prolog_expression(example['left'])},"
+            f"{prolog_expression(example['right'])})",
+            prolog_list(example["assignments"], prolog_assignment),
+        )
+    if kind == "linear_equation":
+        return (
+            f"linear_equation({prolog_number(example['a'])},{prolog_number(example['b'])},"
+            f"{prolog_number(example['c'])})",
+            "solution_domain(nonnegative_integer)",
+        )
+    if kind == "quantity_relation":
+        return (
+            f"quantity_relation({prolog_atom(str(example['operator']))},"
+            f"{prolog_expression(example['left'])},{prolog_expression(example['right'])},"
+            f"{prolog_list(example['referent_roles'], lambda value: prolog_atom(str(value)))})",
+            f"variable_scope({prolog_list(example['declared_variables'], lambda value: prolog_atom(str(value)))})",
+        )
+    if kind == "expression_rewrite":
+        return (
+            prolog_expression(example["expression"]),
+            f"rewrite_direction({prolog_atom(str(example['direction']))})",
+        )
+    if kind == "power_notation":
+        return (
+            f"power({prolog_expression(example['base'])},{prolog_number(example['exponent'])})",
+            "notation(expanded_product)",
+        )
+    if kind == "expression_pair":
+        return (
+            f"expression_pair({prolog_expression(example['left'])},"
+            f"{prolog_expression(example['right'])})",
+            "method(repeated_factor_expansion)",
+        )
+    if kind == "linear_pattern_context":
+        return (
+            f"linear_pattern(first({prolog_number(example['first'])}),"
+            f"change({prolog_number(example['change'])}),row({prolog_number(example['row'])}))",
+            prolog_atom(str(example["context"])),
+        )
+    if kind == "linear_pattern_empirical_rule":
+        return (
+            f"linear_pattern(first({prolog_number(example['first'])}),"
+            f"change({prolog_number(example['change'])}),row({prolog_number(example['row'])}))",
+            f"empirical_rule(multiplier({prolog_number(example['multiplier'])}),"
+            f"constant({prolog_number(example['constant'])}),"
+            f"checked_rows({prolog_list(example['checked_rows'])}))",
+        )
+
+    if kind == "fraction_pair":
         left = example["left"]
         right = example["right"]
         assert isinstance(left, dict) and isinstance(right, dict)
@@ -245,7 +640,44 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
             f"fraction_pair({left['n']},{left['d']},{right['n']},{right['d']})",
             "unit(whole)",
         )
-    if example.get("kind") == "decimal_pair":
+    if kind in {"fraction_addend_pair", "fraction_minuend_subtrahend"}:
+        return (
+            f"{kind}({prolog_fraction_addend(example['left'])},"
+            f"{prolog_fraction_addend(example['right'])})",
+            "unit(whole)",
+        )
+    if kind == "fraction_solve":
+        coefficient = example["coefficient"]
+        assert isinstance(coefficient, dict)
+        return (
+            f"solve({prolog_number(coefficient['n'])},{prolog_number(coefficient['d'])})",
+            prolog_number(example["total"]),
+        )
+    if kind == "rational_limit":
+        numerator = example["numerator"]
+        denominator = example["denominator"]
+        assert isinstance(numerator, dict) and isinstance(denominator, dict)
+        return (
+            f"rational_expression({prolog_list(numerator['coefficients'])},"
+            f"{prolog_list(denominator['coefficients'])})",
+            f"limit_at({prolog_number(example['at'])})",
+        )
+    if kind == "terminal_path_tree":
+        paths = example["paths"]
+        assert isinstance(paths, list)
+        encoded_paths = prolog_list(
+            paths,
+            lambda path: (
+                f"terminal({prolog_atom(str(path['winner']))},"
+                f"probability({prolog_number(path['probability']['n'])},"
+                f"{prolog_number(path['probability']['d'])}),"
+                f"{prolog_list(path['events'], lambda value: prolog_atom(str(value)))})"
+                if isinstance(path, dict) and isinstance(path.get("probability"), dict)
+                else ""
+            ),
+        )
+        return encoded_paths, f"stake({prolog_number(example['stake'])})"
+    if kind == "decimal_pair":
         left = example["left"]
         right = example["right"]
         assert isinstance(left, dict) and isinstance(right, dict)
@@ -253,41 +685,67 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
             f"decimal_pair({left['numeral']},{left['scale']},{right['numeral']},{right['scale']})",
             "ignored",
         )
-    if example.get("kind") == "count_pair":
+    if kind == "count_pair":
         return (
             f"counts({example['left']},{example['right']})",
             f"base({example['base']})",
         )
-    if example.get("kind") == "cardinality":
+    if kind == "cardinality":
         return str(example["count"]), f"base({example['base']})"
-    if example.get("kind") == "collection_pair":
+    if kind == "collection_pair":
         return (
             f"counts({example['left']},{example['right']})",
             f"extents({example['left_extent']},{example['right_extent']})",
         )
-    return str(example["a"]), str(example["b"])
+    return prolog_number(example["a"]), prolog_number(example["b"])
 
 
-# Example shapes this extractor can encode as Prolog probe arguments.  Contracts
-# outside this set are skipped rather than guessed at: task 131 added
-# fraction_solve, rational_limit and terminal_path_tree, whose runners take
-# compound terms that hermes/encyclopedia.pl decodes and this file does not.
-# Skipping keeps the committed tables byte-identical; teaching the extractor these
-# forms is what would move their rows from static to observed provenance, and that
-# is a separate, consequential decision.
+# Example shapes this extractor can encode as Prolog probe arguments. Task 201
+# taught the extractor every structured operand decoded by
+# hermes_encyclopedia:trace_inputs/3 on 2026-08-03. Unknown future tags remain
+# explicitly skipped with a stderr notice rather than falling through to a/b.
+# Tags added in Task 201 receive only their authored contract-example probe:
+# derived perturbations add table rows but are not consumed by recognition.
+# The five legacy tagged shapes retain their pre-201 perturbations because a
+# single contract example does not exercise every runtime branch. In
+# particular, the fraction_pair perturbation is the witness for
+# benchmark_fraction_comparison's opposite_sides branch.
 #
 # The three counting shapes entered in 2026-08-01 with their input contracts.
 # Until then the eight counting automata carried static provenance only, and
 # hermes/strategy_recognizer.pl searches observed transitions alone, so no
 # counting automaton could be proposed for any classroom sentence.
 ENCODABLE_KINDS = frozenset({
-    "fraction_pair", "decimal_pair",
-    "count_pair", "cardinality", "collection_pair",
+    "decimal_unit_conversion", "signed_number_list", "inequality",
+    "referent_pair", "measure_with_unit", "quantity_conversion",
+    "measured_change", "categorical_frequencies", "numeric_data_display",
+    "statistical_question", "histogram_data", "numeric_data_with_unit",
+    "box_plot_data", "distribution_data", "covered_cells", "placed_tiles",
+    "area_unit_candidates", "rectangle_with_unit", "polygon_sides_with_unit",
+    "symmetry_side_orbits", "perimeter_scope", "perimeter_known_side",
+    "area_scope", "rectangle_constraints", "area_known_side",
+    "rectangular_prism", "volume_known_base", "disjoint_prisms",
+    "overlapping_prisms", "coordinate_points", "coordinate_point_pair",
+    "polygon_partition", "parallelogram_with_unit", "triangle_with_unit",
+    "solid_net", "dimensional_measure", "shape_attributes", "angle_measure",
+    "angle_parts", "rigid_shape_composition", "solid_volume_comparison",
+    "expression_assignment", "linear_context", "equation_assignment",
+    "linear_equation", "quantity_relation", "expression_rewrite",
+    "power_notation", "expression_pair", "linear_pattern_context",
+    "linear_pattern_empirical_rule", "fraction_pair", "fraction_addend_pair",
+    "fraction_minuend_subtrahend", "fraction_solve", "rational_limit",
+    "terminal_path_tree", "decimal_pair", "count_pair", "cardinality",
+    "collection_pair",
+})
+
+LEGACY_PERTURBED_KINDS = frozenset({
+    "fraction_pair", "decimal_pair", "count_pair", "cardinality",
+    "collection_pair",
 })
 
 
 def encodable(example: dict[str, object]) -> bool:
-    """True when prolog_input/derived_example can handle this example."""
+    """True when prolog_input can handle this example."""
     kind = example.get("kind")
     if kind in ENCODABLE_KINDS:
         return True
@@ -364,8 +822,11 @@ def observe(checked_contracts: list[Contract]) -> list[Observation]:
     for contract in checked_contracts:
         if not encodable(contract.example):
             continue
-        for source, example in (("contract_example", contract.example),
-                                ("derived_template", derived_example(contract.example))):
+        examples = [("contract_example", contract.example)]
+        if (contract.example.get("kind") is None
+                or contract.example.get("kind") in LEGACY_PERTURBED_KINDS):
+            examples.append(("derived_template", derived_example(contract.example)))
+        for source, example in examples:
             left, right = prolog_input(example)
             probes.append(
                 f"probe({source}, {contract.operation}, {contract.kind}, {left}, {right})."

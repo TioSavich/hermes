@@ -45,6 +45,17 @@ automaton_transition(ratio, additive_extension_of_ratio, q_step_2, add_first_ter
 automaton_transition(ratio, additive_extension_of_ratio, q_step_3, compose_additive_pair, q_step_4, provenance(observed(derived_template))).
 automaton_transition(ratio, additive_extension_of_ratio, q_step_4, lose_multiplicative_unit_ratio, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(ratio, construct_referent_ratio_diagram, q_start, establish_first_referent, q_step_1, provenance(observed(contract_example))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_1, establish_second_referent, q_step_2, provenance(observed(contract_example))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_2, coordinate_referent_counts, q_step_3, provenance(observed(contract_example))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_3, construct_ratio_diagram, q_step_4, provenance(observed(contract_example))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_4, inscribe_ordered_ratio, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(ratio, reverse_ratio_referent_order, q_start, establish_counts_without_order, q_step_1, provenance(observed(contract_example))).
+automaton_transition(ratio, reverse_ratio_referent_order, q_step_1, reverse_term_referent_alignment, q_step_2, provenance(observed(contract_example))).
+automaton_transition(ratio, reverse_ratio_referent_order, q_step_2, inscribe_reversed_ratio, q_step_3, provenance(observed(contract_example))).
+automaton_transition(ratio, reverse_ratio_referent_order, q_step_3, lose_ordered_referent_relation, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(ratio, scale_ratio_unit, q_start, identify_base_ratio, q_step_1, provenance(observed(contract_example))).
 automaton_transition(ratio, scale_ratio_unit, q_step_1, identify_scale_factor, q_step_2, provenance(observed(contract_example))).
 automaton_transition(ratio, scale_ratio_unit, q_step_2, scale_first_term_multiplicatively, q_step_3, provenance(observed(contract_example))).

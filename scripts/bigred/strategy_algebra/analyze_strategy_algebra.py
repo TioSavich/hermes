@@ -707,18 +707,19 @@ def main() -> int:
     # enumerate_collection_one_to_one stayed out because it declares no static
     # trace list for the extractor to root its states in.
     # 121 since the first 2026-08-03 contract-gap slice added seven contracts
-    # the existing seam could already decode. The 2026-08-03 decoder slice
-    # closed all 219 contracts, but its transition-table ledger found 97
-    # structured examples the extractor cannot encode and 122 encodable live
-    # probes. All 122 ran; counting/enumerate_collection_one_to_one still has
-    # no static Trace list to receive its observation, so the analyzer corpus
-    # and its per-family recognizer split remain 121.
+    # the existing seam could already decode.
+    # 218 since task 201 on 2026-08-03 taught the transition-table extractor
+    # all structured operands decoded by trace_inputs/3. All 219 contracts are
+    # now encodable and observed. The only corpus exclusion remains
+    # counting/enumerate_collection_one_to_one: it executes from its
+    # cardinality contract but has no static Trace list on which to root the
+    # observation. No newly encodable kind has the same static-root gap.
     # A guard rather than a preference. The analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.
-    if len(observed) != 121:
+    if len(observed) != 218:
         raise SystemExit(
-            f"expected 121 execution-observed signatures, found {len(observed)}"
+            f"expected 218 execution-observed signatures, found {len(observed)}"
         )
     if args.smoke:
         by_name = {automaton.signature.name: automaton for automaton in observed}

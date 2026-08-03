@@ -807,8 +807,8 @@ machine_grammar(computational, statistics, categorical_frequency_bar_representat
                 phrases([assign_roles, count_units, establish_reference_frame, inscribe_result]),
                 stances([neutral, neutral, neutral, neutral])).
 machine_grammar(computational, statistics, distribution_summary_selection, arc(unrecorded_run),
-                phrases([take_up_and_read]),
-                stances([neutral, neutral])).
+                phrases([take_up_and_read, name_result]),
+                stances([neutral, neutral, neutral])).
 machine_grammar(computational, statistics, dot_plot_frequency_representation, arc(keep_then_work_on),
                 phrases([establish_reference_frame, verify_invariant, inscribe_result]),
                 stances([neutral, conserving, neutral])).
@@ -831,8 +831,8 @@ machine_grammar(computational, statistics, mean_deviation_without_absolute_value
                 phrases([locate_position, measure_quantity, omit_required_step, compute_quotient]),
                 stances([neutral, neutral, deforming, neutral])).
 machine_grammar(computational, statistics, median_as_ordered_middle, arc(unrecorded_run),
-                phrases([register_givens, order_by_magnitude]),
-                stances([neutral, neutral])).
+                phrases([register_givens, order_by_magnitude, locate_position]),
+                stances([neutral, neutral, neutral])).
 machine_grammar(computational, statistics, mode_as_maximal_frequency, arc(unrecorded_run),
                 phrases([register_givens, count_and_name]),
                 stances([neutral, neutral, neutral])).
@@ -1493,7 +1493,7 @@ machine_conservation_gap(computational, ratio, construct_referent_ratio_diagram,
 machine_conservation_gap(computational, statistics, categorical_frequency_bar_representation,
                         reason("4 edges, every one of them a working step: assign_roles > count_units > establish_reference_frame > inscribe_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, distribution_summary_selection,
-                        reason("2 edges, every one of them a working step: register_givens > read_operand_attribute. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
+                        reason("3 edges, every one of them a working step: register_givens > read_operand_attribute > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, five_number_summary_and_iqr,
                         reason("5 edges, every one of them a working step: register_givens > order_by_magnitude > partition_into_equal_parts > locate_position > remove_quantity. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, histogram_equal_interval_representation,
@@ -1503,7 +1503,7 @@ machine_conservation_gap(computational, statistics, mean_absolute_deviation,
 machine_conservation_gap(computational, statistics, mean_as_fair_share,
                         reason("4 edges, every one of them a working step: register_givens > accumulate_total > count_units > share_into_known_groups. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, median_as_ordered_middle,
-                        reason("2 edges, every one of them a working step: register_givens > order_by_magnitude. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
+                        reason("3 edges, every one of them a working step: register_givens > order_by_magnitude > locate_position. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, mode_as_maximal_frequency,
                         reason("3 edges, every one of them a working step: register_givens > count_units > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, subtraction, compare_by_matching_difference,
@@ -1782,11 +1782,11 @@ token_loss_rate(computational, initiate, machines(15), ending_deforming(0)).
 token_loss_rate(computational, inscribe_result, machines(24), ending_deforming(6)).
 token_loss_rate(computational, iterate_composite_unit, machines(6), ending_deforming(0)).
 token_loss_rate(computational, iterate_unit, machines(16), ending_deforming(3)).
-token_loss_rate(computational, locate_position, machines(13), ending_deforming(1)).
+token_loss_rate(computational, locate_position, machines(14), ending_deforming(1)).
 token_loss_rate(computational, measure_out_group_size, machines(4), ending_deforming(1)).
 token_loss_rate(computational, measure_quantity, machines(8), ending_deforming(1)).
 token_loss_rate(computational, misname_result, machines(33), ending_deforming(32)).
-token_loss_rate(computational, name_result, machines(42), ending_deforming(2)).
+token_loss_rate(computational, name_result, machines(43), ending_deforming(2)).
 token_loss_rate(computational, omit_required_step, machines(42), ending_deforming(32)).
 token_loss_rate(computational, order_by_magnitude, machines(6), ending_deforming(1)).
 token_loss_rate(computational, partition_into_equal_parts, machines(14), ending_deforming(1)).
