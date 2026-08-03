@@ -311,8 +311,11 @@ def render_registry() -> str:
     # 73 until late 2026-08-01, when the prolog-assisted diagnosis arm ran
     # for the first time and its report landed with this count in the same
     # commit.
-    if len(reports) != 74:
-        raise RuntimeError(f"expected 74 top-level research reports, found {len(reports)}")
+    # 74 until 2026-08-03, which added the purported-validity audit record
+    # (every contracted kind's validity claim held against computed truth)
+    # and the contract-coverage todo that orders the repair work it found.
+    if len(reports) != 76:
+        raise RuntimeError(f"expected 76 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),

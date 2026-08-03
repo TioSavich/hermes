@@ -1,0 +1,129 @@
+My Prompt: This is from hermes, I'll give you access in a moment, but i just wanted to see what you could do with these crazy automata - they overlap a bunch, some aren't very general. I think we need to tighten them up across the board. Its a balancing act between retaining truly different thought-actions that lead to the same answers and facial differences that should be unified as 1+1=1 (two automatons in, one out). I think if we could get them kinda regularized, we might be able to do interesting math with them, or at least be able to start composing and stringing them together better. Importantly, we're working on solving word problems, diagnosing where students have gone wrong with their word problem solutions and other practical problems where ultimately a leaner set of more abstract automata might help us build better recognizers/parsers. plus, one disappointing thing, we're supposed to be working with QUANTITIES in word problems; most of these just do numerals. I think that's okay - and would actually like them to be able to accept strings, too, at least some of them, since a mistake like 5-3=2=3-5 and "pokey dog is" are kinda of a type. So, think abstractly but retain the ability to dial into specifics. (Assume these have to go back to where they were found, I just kinda want you to think only about this problem for a turn).
+
+
+Fable's Response:
+I read the whole dump — 236 table automata across 16 domains, 2,300 transitions, 858 distinct action atoms, plus the executable action-pair layer and the discourse/sequent genre in Part 3. Here's what I think is actually going on and how I'd regularize it.
+
+## Diagnosis: these aren't automata, they're scripts wearing automata clothing
+
+Only two of the 236 table machines have a state with more than one outgoing action (the triple-counting elsewhere is just provenance duplication — static/contract_example/derived_template). Everything else is a linear chain q_start → q_step_1 → … → q_accept. The states carry no information; every bit of content lives in the action alphabet. So the corpus is, formally, a finite language of 236 words over an 858-symbol alphabet — and 858 symbols for 2,300 transitions means the alphabet is where all the bloat is. The average action appears 2.7 times; there's a huge singleton tail of atoms like `preserve_result_but_lose_count_on_efficiency` that will never recur because they pack three different things into one name.
+
+That's the root problem. Each atom currently fuses three layers that should be separate:
+
+1. **The operational step** — what was done (decompose, iterate, retrieve, align, compare)
+2. **The invariant ledger** — what the step kept or lost (44 `lose_*` and 34 `preserve_*` atoms are not actions at all; they're judgments *about* the run, sitting in the run)
+3. **The evaluative gloss** — efficiency, fluency, groundedness
+
+Your executable layer already knows this: `action_outcome/2` separates `classification`, `cluster`, `validity`, `vocabulary` into fields, and the newer modules (counting2, recursive_unit_actions) converged on a clean `init/.../emit` frame — 39 occurrences each. The transition tables are the *older* genre lagging behind your own newer design. So the tightening should happen once, at the action-pair layer, and the tables should be regenerated as projections. One source of truth.
+
+## The 1+1=1 criterion
+
+Behavioral equivalence (same answers) is the wrong merge criterion — you said it yourself: count-on and known-fact-retrieval both compute a+b and are absolutely different thought-actions. Input–output identity is too coarse. But surface identity is too fine. The right criterion is **isomorphism after typing the alphabet**: merge two automata iff, once each action atom is rewritten as an abstract action-type with arguments, their transition structures are identical *and* their invariant ledgers agree — same things conserved and lost at the same loci. That gives three distinct verdicts instead of one:
+
+**Merge (1+1=1).** `make_ten_split_leftover` and `make_base_transfer` are one schema — decompose-toward-a-base with conservation — parameterized by base. `count_marks_not_intervals` appears three separate times (measurement, liquid volume, number-line fractions) as three automata; it is one deformation of one reading schema, instantiated in three media. The ten-ish fraction-comparison machines (area model, set model, number line, common unit) are mostly one comparison schema with a *representation parameter* — which is exactly your "think abstractly but dial into specifics": the parameter is the dial.
+
+**Lift, don't merge.** `co_denominator_count_on_from_larger` is not the same automaton as `count_on_from_larger`, but it's not a new one either — it is count-on *composed with* a unit-coordination wrapper (establish common unit, then run the whole-number machine over unit-fractions). Your jason_fsm module already proves this composition works: FCS is literally PFS ∘ PFS with an accommodation step. The fraction corpus is full of lifted whole-number machines that are currently stored flat.
+
+**Keep apart (1+1=2).** `gap_thinking_fraction_comparison` vs. `benchmark_fraction_comparison`: same question, same answer, irreducibly different action-types (measuring complements vs. anchoring to a landmark). Count-on vs. retrieval. These survive the quotient, and the fact that they survive is informative — the quotient *certifies* which distinctions are real.
+
+## Deformations are edits, not machines
+
+This is the biggest structural win available. Look at the pairing that runs through the whole corpus: `round_then_adjust` / `round_without_adjusting`; `make_ten_split_leftover` / `make_ten_drop_leftover`; `column_addition_with_carrying` / `drop_carry` / `wrong_carry_amount` / `append_column_sum`; `derived_fact_adjustment` / `rote_derived_fact_rule_misfire`. Every deformation shares a prefix with its productive base and diverges at one or two edges. Storing each as a full flat automaton is why the corpus feels overlapping — roughly half of it is copies of the other half with one edge swapped.
+
+Represent instead: `deformation(BaseSchema, Patch)` where patches come from a *closed operator set*. From your own data, the operators are few:
+
+- **omit-compensation**: round-without-adjusting, unbalanced-make-base, known-product-without-adjustment, mean-deviation-without-absolute-value — one operator, four domains
+- **premature closure**: dropped-ones-chunk, drop-second-partial-product, stop-after-first-partial-quotient, drop-ones-after-base-takeaway
+- **component blindness** (operate componentwise, ignore the relation between components): smaller-from-larger-in-column, add-numerator-denominator, order-by-magnitude-ignore-sign, compare-ones-digits-only
+- **mark/interval confusion**, **rule-without-ground** (cross-mult-without-ground, decimal-point-rule-misapplication, rote-derived-fact), **wrong referent** (reverse-ratio-referent, set-model-subset-focus), **label-change-without-rescale**
+
+This is repair theory rediscovered from your own corpus — but you're storing the products where you could store the generators. Three payoffs: the corpus shrinks toward `#schemas + #operators` instead of `#schemas × #operators`; diagnosis becomes a decision procedure (find the minimal patch mapping the productive machine onto the observed trace — the patch *is* the diagnosis); and the closure predicts. Apply omit-compensation to every compensating schema and you get a list of *unattested but expected* bugs — sliding-constant-difference-without-sliding-the-minuend-back, say — which tells your recognizers what to watch for before you've ever seen a student do it.
+
+## Quantities, and why strings come along for free
+
+Make the machines' objects typed quantities — `q(Value, Unit, Frame)` — instead of numerals, and two things happen. First, whole families collapse: count-on over `q(3, apples)`, `q(3, tens)`, `q(3, sevenths)` is one machine; the fraction lift above stops being special. Second, and better: **many deformations turn out to be type errors**. Add-numerator-denominator is count-on applied componentwise to things whose unit-roles differ; change-unit-label-without-scaling and linear-unit-for-area are unit-coercion failures; decimal-add-unaligned is an alignment failure in the unit dimension. The deformation content that currently needs a bespoke automaton becomes a *detectable ill-typing of a general one* — which is what a diagnostic parser wants.
+
+Now the string point, which I think is deeper than you framed it. `5−3=2=3−5` and "pokey dog is" are the same failure at the meta-level: a relational token (=, the copula) pressed into service as something else (a sequencing arrow; a dangling predicate-slot) so that local composition succeeds while the global invariant — *everything flanking = denotes one quantity*; *the copula binds a subject to a completed predicate* — is lost. In the regularized form this needs no new machinery at all. An equation-chain automaton whose invariant ledger says "conserve denotation across =" is deformed by =-as-arrow via exactly the same operator family (wrong-referent / relation-as-procedure) that deforms your arithmetic machines. And Part 3 shows the file already wants this: the commitment automata explicitly reuse "the same viability grammar the strategy corpus uses, applied to normative rather than quantitative material." The regularization I'm describing just makes that comment true *formally* — one meta-form, `step keeps-or-loses what the practice must keep`, where the kept thing ranges over quantities, units, denotations, commitments. Then a recognizer for student equation-writing and a recognizer for make-ten are instances of one genre, and "5−3=2=3−5" and "pokey dog is" really are of a type, provably.
+
+## The normal form, concretely
+
+```prolog
+% One schema, many instantiations
+schema(compensate_via_easier_problem,
+    steps([ select(anchor, near(Target)),
+            transform(Problem, toward(Anchor), delta(D)),
+            execute(EasierProblem),
+            compensate(inverse(D)) ]),
+    ledger([ conserve(total), conserve(relation(problem, answer)) ])).
+
+instantiates(addition/round_then_adjust,        compensate_via_easier_problem, [op(add), anchor(base_multiple)]).
+instantiates(subtraction/sliding_constant_difference, compensate_via_easier_problem, [op(sub), transform(shift_both)]).
+instantiates(multiplication/known_product_adjustment, compensate_via_easier_problem, [op(mult), anchor(known_fact)]).
+instantiates(decimal/recalled_result_scaling,   compensate_via_easier_problem, [op(mult), anchor(whole_number_fact)]).
+
+% One operator, all its bugs
+deformation(omit_step(compensate(_)), loses(conserve(total))).
+% => round_without_adjusting, unbalanced_make_base_compensation,
+%    known_product_without_adjustment, ... are now derived, not stored.
+```
+
+States disappear entirely except where there's real branching or looping (long division's remainder cycle, borrow-across-zero cascade, the counting DPDA) — those keep honest FSM form; everything else is a step-sequence plus ledger, and `q_step_3` was never doing anything anyway.
+
+## What the math then is
+
+Once this is in place the corpus is a category: objects are quantity/state types, morphisms are schemas, composition is strategy-chaining (jason_fsm is your existence proof), and lifting into fractions/decimals is a functor from the whole-number subcategory. Deformation operators act on schemas monoid-style, so "the space of possible bugs for this strategy" is a computable orbit. For recognition: since nearly everything is linear, the union of all schemas sharing a prefix forms a cheap diagnostic trie — run a student's observed steps down it, maintain the consistent set, and the branch points are precisely where diagnosis happens and where a tutor should probe. And schema-space edit distance gives you a pedagogically meaningful metric — how far this student is from the productive practice, measured in thought-actions rather than in answer error.
+
+My honest estimate from the name-level survey: 236 table automata regularize to somewhere around 45–60 schemas × parameters × a deformation-operator set of maybe 8–10 — with the mergers, lifts, and kept-apart verdicts all auditable rather than judgment calls. The place to start is the alphabet, not the machines: type the 858 atoms into abstract actions with arguments, and most of the mergers fall out mechanically; the residue that won't unify under any typing is your certified list of truly different thought-actions.
+
+Happy to actually run the mechanical pass when you give me access — cluster the 858 atoms into action-types, compute which automata become isomorphic under the typing, and hand you the merge/lift/keep ledger as a concrete artifact rather than an estimate.
+
+My Response: It's a dangerous game; each of those alphabet tokens is potentially used by representational scripts (e.g., making svg files), lesson doings, etc. Not sure how to proceed strategically in a way that won't make a ton more work, but maybe if we can keep a record of how we abstract we can avoid losing all the calls to other functions. I'm surprised that they aren't 'automata' and are scripts. I thought many were fsms, pushdown stack automata, etc. Some obviously aren't. Would what you're suggesting make the claim that they are automata more defensible? I'm trying to kinda DO analytic pragmatism, so it's somewhat important that the doings are represented as automatons.
+
+
+Fable's Response: The folder's connected now — let me take a quick read-only census of who actually consumes these atoms before answering the strategy question, since that's exactly the risk you're worried about.Two answers — one strategic (the census I just ran settles most of the danger), one philosophical (yes, and it's precisely the move that makes the claim defensible).
+
+## The census: the danger is smaller and more localized than you fear
+
+I checked who actually consumes what, and there's a sharp asymmetry between two vocabularies you're currently treating as one:
+
+**Kind names** (`make_ten_split_leftover`, `count_marks_not_intervals`) are consumed everywhere — about 24 main-tree code files: the curriculum lesson maps (`explicit_lesson_strategy/4` in every grade file), `visuals.py` keys chart logic on them, `mua_relations.pl` wraps them as practices (`practice_kind(p_make_ten_split_leftover, addition, make_ten_split_leftover)`), the incompatibility sets, the atlas facts, the checks.
+
+**Action atoms** (`align_addends_by_place_value`, `preserve_total_by_using_both_split_parts`) are consumed almost nowhere outside the strategy modules and their generated tables. Grepping the 600 code files across `hermes/`, `scripts/`, `curriculum/`, `formal/`, `knowledge/index/`: the trace-step atoms hit exactly one real consumer, `hermes/strategy_recognizer.pl`, plus generated files that follow their generators.
+
+So the strategic answer writes itself, and it's the pattern you already blessed for the crosswalk: **the abstraction is a new data layer, not a rewrite.** Nothing gets renamed. You add one relation — call it `action_signature(Atom, Schema, OperatorRole, LedgerEffect)`, one row per atom, each row carrying provenance like the transition tables already do — and the 858 atoms stay exactly where they are. The 24 kind-name consumers never notice because kind names survive as `instantiates(Kind, Schema, Params)` rows. The one action-atom consumer is the recognizer, which is the thing the regularization exists to rebuild anyway. The typing file *is* the record-of-abstraction you asked for, and under your own consumption ethic it converts the atoms from raw vocabulary into consumed pipeline input. Deletion, if it ever happens, comes only after the view has eaten everything — years later or never.
+
+## Would this make "they are automata" defensible? Yes — it's the only thing that would
+
+First, a correction to my own claim, because it matters here: the corpus isn't uniformly scripts. `counting2`'s carry machine, the long-division remainder cycle, the borrow-across-zero cascade, and above all `jason_fsm`'s FCS — which calls PFS as a subroutine and suspends a whole while operating on its part — are real machines with real control structure. What are scripts are the *transition tables*, and there's a precise way to say why: a linear chain is what you get when you record one accepting run. The tables are unrolled traces of machines. A trace is not the machine; the machine is what you recover when you fold the family of traces back together. That reframing already softens the sting: you didn't build 236 fake automata, you built 236 witnesses and stored them unfolded.
+
+Now the Brandom point. In *Between Saying and Doing* the whole apparatus of algorithmic elaboration is stated in automata-theoretic terms — PP-sufficiency is discharged by *exhibiting the elaborating machine*, and the Chomsky hierarchy is what gives "practices-or-abilities" their internal stratification. For `mua_relations.pl`'s claims to be earned rather than asserted, the machine structure has to do work. A chain DFA accepts exactly one word; *anything* is an automaton in that sense, so the current form makes the claim true but vacuous — undischarged commitment. The regularization discharges it four ways:
+
+**Folding restores nondeterminism, and nondeterminism is where the deontics live.** When `column_addition_with_carrying` and its three deformations become one machine, the state after computing a column sum has multiple outgoing edges: propagate the carry, drop it, misread it. That state now *means* something — it is the position in the practice where what must be kept can be lost. States stop being `q_step_3` and become deontic loci. The machine recognizes a family of doings and the diagnosis question becomes "which run is this student on," which is what a recognizer is *for*. This is the single biggest gain: the strategy/deformation pairs, currently your redundancy problem, are exactly the material that turns scripts back into automata when merged.
+
+**Typed quantities make them transducers.** A machine over `q(Value, Unit, Frame)` actually transforms a store rather than narrating that it did. "The doing is represented as an automaton" becomes literal: configuration = control state + quantity store, step = store transformation. That's a register machine or transducer, not a labeled list.
+
+**Hierarchy placement becomes provable — and this is where you get to DO analytic pragmatism rather than gesture at it.** Counting-on is finite-state. Columnar arithmetic with carry is a finite-state transducer. But nested unit composition — fraction of a fraction, recursive partitioning, FCS's metamorphic accommodation where the result of one scheme becomes the whole for the next — requires suspending a whole while operating inside it: that's a stack, and no finite-state machine does it. So you get theorems of the form *"partitive fractional composition is not finite-state elaborable from unit iteration; it is PP-necessarily pushdown."* That is a formal statement of Steffe's re-presentation claim, derived rather than cited, and it's precisely the kind of MUA relation Brandom's framework says should exist but almost never gets proven. The `pp_necessary/2` rows in mua_relations.pl could carry proofs.
+
+**The ledger split is commitment and entitlement.** Once invariants are acceptance conditions rather than pseudo-actions, every machine has two notions of accepting: reaching q_accept (the doing completed — a commitment undertaken) and keeping the ledger (the doing vindicated — entitlement preserved). A deformation machine *accepts without entitlement*: the student finishes, asserts, and is committed to something they cannot vindicate. Dual acceptance conditions are ordinary automata theory, and they are exactly two-ply scorekeeping. Your Part 3 commitment automata already speak this vocabulary; the regularization makes it one meta-form across the quantitative and discursive genres instead of a comment claiming they rhyme.
+
+So the order of operations that makes no extra work: type the alphabet as an additive layer (nothing breaks, census says so); fold strategy/deformation families into single branched machines *in the new layer*, leaving the tables as the trace-witnesses they truly are; let `build_transition_tables.py` learn to emit the typed columns alongside the atoms; and rebuild `strategy_recognizer.pl` — the one real action-atom consumer — against the folded machines, where it becomes the diagnostic trie. The old genre never has to be touched until it's fully consumed, and the claim "these are automata" goes from decorative to demonstrated, machine by machine, with the pushdown results as the flagship.
+
+If you want, next turn I can draft the `action_signature/4` typing file for one family (addition is the obvious pilot — 18 machines, clean deformation pairs) so you can see whether the folded machine and the ledger split feel right before anything touches the pipeline.
+
+My Response: Yes, I'd like that.
+
+Fable's Response: Here is the pilot. It is one additive file. It renames nothing. Every consumer keeps working.
+
+What it contains: one `action_signature/4` row for each of the 59 addition atoms (type, ledger effect, provenance — every row marked authored and vetoable one by one); six folded machines with real branch points and one loop; `instantiates/3` and `deformation/5` rows that map the 18 kind names onto the six schemas and six operators; and the 18 witness sequences, generated from the dump with their static provenance lines intact.
+
+Four checks pass under SWI-Prolog 9, and each one is a claim from our conversation made mechanical:
+_
+1. **Coverage** — 59 atoms, exactly one signature each.
+2. **Runs** — all 18 table sequences, projected through the signatures, are accepted runs of the 6 folded machines. The tables are witnesses; the machines are what they unroll. This is the defensibility theorem: the fact-retrieval machine now has a real branch at the probe state (retrieve vs. retrieval-failure), the count machine has a real iterate loop that count-on passes once and count-all passes twice.
+3. **Ledger honesty** — for every kind, the losses incurred step-by-step equal the losses the closing verdict atom announces. The `preserve_*`/`lose_*` atoms are redundant but never lie.
+4. **Validity recovery** — the ledger alone re-derives the executable layer's classification (correct / correct_but_inefficient / incorrect) for all 18 kinds, without being told it. Dual acceptance falls out: all 18 runs complete; exactly the 8 productive ones are vindicated.
+
+The generative closure yields 7 predicted unattested deformations — operator preconditions that hold where no bug is recorded: an off-by-one tick boundary in count-on, a miscounted distance-to-base in make-base-transfer, a corrupted transfer amount, counting column sums instead of using facts, and a carry ritual applied without ground. Those are things the recognizer could watch for before any student produces them.
+
+Two things I'd flag for your read. The typing rows are interpretation, not extraction — the ones most worth your eye are `lose_decomposed_remainder` announced as a conservation loss, and `round_up_by` typed as *suspending* conservation (which makes omit-compensation formally definable as "close while something is suspended"). And the witnesses come from the dump, so a live-tree diff is a required step before this becomes a Codex brief. 
+<Addition_Action_Signatures.pl>

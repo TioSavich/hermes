@@ -48,3 +48,6 @@ data/research/*.db-shm
 # every run and carry nothing the merged landscape does not.
 scripts/bigred/iteration15/work/atlas/shards/
 scripts/bigred/iteration15/work/atlas/cells.json
+
+# Dump of all automata (gitignored)
+automata.pl

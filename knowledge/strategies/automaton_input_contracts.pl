@@ -4,6 +4,18 @@
  * ok:true for its concrete JSON example.  The registry signature remains the
  * broad type declaration; these facts record runnable JSON at the boundary.
  */
+%
+% Separating examples (2026-08-03). Five deformation kinds carried
+% examples on which the deformation's result equals the true answer, so
+% the example could not witness the bug it models (audit:
+% scripts/checks/audit_purported_validity.pl; coincidence data:
+% knowledge/strategies/deformation_coincidence.pl). Their examples were
+% replaced with separating inputs -- division/stop_after_first_partial_quotient,
+% fraction/add_numerator_denominator_comparison,
+% fraction/area_model_unequal_partition_piece_count,
+% fraction/set_model_subset_size_focus, decimal/decimal_scale_loss_comparison --
+% and every row below was re-run through the worker's strategy_trace
+% seam on that date.
 :- module(automaton_input_contracts,
           [ automaton_input_contract/5,
             automaton_observed_input_contract/3
@@ -27,7 +39,7 @@ automaton_input_contract(decimal, decimal_fraction_place_value_comparison, '{\"k
 automaton_input_contract(decimal, decimal_multiplication_rule, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":25,\"scale\":10},\"right\":{\"numeral\":3,\"scale\":10}}', verified(strategy_trace_ok)).
 automaton_input_contract(decimal, decimal_numeral_comparison_without_scale_alignment, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":25,\"scale\":10},\"right\":{\"numeral\":3,\"scale\":10}}', verified(strategy_trace_ok)).
 automaton_input_contract(decimal, decimal_point_rule_misapplication, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":25,\"scale\":10},\"right\":{\"numeral\":3,\"scale\":10}}', verified(strategy_trace_ok)).
-automaton_input_contract(decimal, decimal_scale_loss_comparison, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":25,\"scale\":10},\"right\":{\"numeral\":3,\"scale\":10}}', verified(strategy_trace_ok)).
+automaton_input_contract(decimal, decimal_scale_loss_comparison, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":3,\"scale\":10},\"right\":{\"numeral\":25,\"scale\":100}}', verified(strategy_trace_ok)).
 automaton_input_contract(decimal, decimal_subtract_unaligned_numerals, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":25,\"scale\":10},\"right\":{\"numeral\":3,\"scale\":10}}', verified(strategy_trace_ok)).
 automaton_input_contract(decimal, decimal_subtraction_by_aligned_units, '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"},\"right\":{\"numeral\":\"integer\",\"scale\":\"positive_integer\"}}', '{\"kind\":\"decimal_pair\",\"left\":{\"numeral\":25,\"scale\":10},\"right\":{\"numeral\":3,\"scale\":10}}', verified(strategy_trace_ok)).
 automaton_input_contract(division, fair_share_equal_groups, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":12,\"b\":3}', verified(strategy_trace_ok)).
@@ -39,11 +51,11 @@ automaton_input_contract(division, name_group_count_as_share_size, '{\"a\":\"int
 automaton_input_contract(division, name_reached_total_as_quotient, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":12,\"b\":3}', verified(strategy_trace_ok)).
 automaton_input_contract(division, partial_quotient_chunking, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(division, share_into_divisor_groups, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
-automaton_input_contract(division, stop_after_first_partial_quotient, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
-automaton_input_contract(fraction, add_numerator_denominator_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
+automaton_input_contract(division, stop_after_first_partial_quotient, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":96,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, add_numerator_denominator_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":2,\"d\":3},\"right\":{\"n\":3,\"d\":8}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, area_model_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, area_model_part_of_part, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
-automaton_input_contract(fraction, area_model_unequal_partition_piece_count, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, area_model_unequal_partition_piece_count, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":2,\"d\":3},\"right\":{\"n\":3,\"d\":8}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, benchmark_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, common_unit_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, gap_thinking_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
@@ -53,7 +65,7 @@ automaton_input_contract(fraction, number_line_count_marks_not_intervals, '{\"ki
 automaton_input_contract(fraction, number_line_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, reversible_measurement_division, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, set_model_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
-automaton_input_contract(fraction, set_model_subset_size_focus, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, set_model_subset_size_focus, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":2,\"d\":3},\"right\":{\"n\":3,\"d\":8}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, unit_fraction_iteration, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, unit_fraction_partition, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":1,\"b\":4}', verified(strategy_trace_ok)).
 automaton_input_contract(geometry, area_as_perimeter_count, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).

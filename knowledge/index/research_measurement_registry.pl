@@ -591,11 +591,14 @@ measurement_receipt(measurement(565), 'docs/research/2026-08-01-strategy-recogni
 measurement_receipt(measurement(566), 'docs/research/2026-08-01-strategy-recognize-discrimination.md', 'line(371)', 'arbitrary classroom speech and is now reachable by 0.003% of it. Firing at all', ambiguous_scripts(['scripts/bundle/app_manifest.py', 'scripts/extract_capability_registry.py']), ['data/research/talkmoves_recognizer_sweep.json'], method_ambiguous).
 measurement_receipt(measurement(567), 'docs/research/2026-08-01-strategy-recognize-discrimination.md', 'line(443)', '- **No repair of the benchmark''s skew.** 447 of 860 literature items carry one', ambiguous_scripts(['scripts/bundle/app_manifest.py', 'scripts/extract_capability_registry.py']), none_recorded, method_ambiguous).
 measurement_receipt(measurement(568), 'docs/research/2026-08-01-strategy-recognize-discrimination.md', 'line(81)', 'are stated rather than corrected. 447 of 860 literature items and 114 of 139', live_script('scripts/research/strategy_recognition_discrimination.py'), ['data/research/recognition_benchmark.json'], resolved_live_method).
+measurement_receipt(measurement(569), 'docs/research/2026-08-03-contract-coverage-todo.md', 'line(88)', '`incorrect` has a 100% coincidence row. The sweep has three 100% rows:', ambiguous_scripts(['scripts/checks/audit_purported_validity.pl', 'scripts/checks/sweep_coincidence.pl']), none_recorded, method_ambiguous).
+measurement_receipt(measurement(570), 'docs/research/2026-08-03-purported-validity-audit.md', 'line(31)', 'Layer 1: 124 of 124 contracted kinds mapped and executed. 120 hold.', live_script('scripts/checks/audit_purported_validity.pl'), ['curriculum/im/docling_figures_interpreted.pl', 'hermes/encyclopedia.pl'], resolved_live_method).
+measurement_receipt(measurement(571), 'docs/research/2026-08-03-purported-validity-audit.md', 'line(66)', 'Coverage gap: 95 of 219 registered kinds have no input contract at', live_script('scripts/checks/audit_purported_validity.pl'), none_recorded, resolved_live_method).
 
-measurement_denominator(explicit_quantitative_result_statement, 568).
-measurement_resolution_count(resolved_live_method, 112).
+measurement_denominator(explicit_quantitative_result_statement, 571).
+measurement_resolution_count(resolved_live_method, 114).
 measurement_resolution_count(resolved_method_data_missing, 1).
-measurement_resolution_count(method_ambiguous, 27).
+measurement_resolution_count(method_ambiguous, 28).
 measurement_resolution_count(method_path_and_cited_data_missing, 1).
 measurement_resolution_count(data_method_unrecorded, 40).
 measurement_resolution_count(method_not_recorded, 387).

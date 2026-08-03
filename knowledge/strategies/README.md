@@ -19,6 +19,9 @@ that runs them and draws them.
   `render/README.md`.
 - `meta/` — introspection over the automata (analyzer, pattern detectors,
   fact/json writers).
+- `abstraction/` — quarantined candidate structure from the 2026-08-03
+  regularization line (typed action signatures, kernel/gate pilots).
+  Nothing imports these modules. See `abstraction/README.md`.
 
 ## How it loads
 

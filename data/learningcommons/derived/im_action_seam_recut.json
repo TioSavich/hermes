@@ -28087,8 +28087,8 @@
    {
     "checked_contract_run": {
      "input": {
-      "a": 47,
-      "b": 28
+      "a": 96,
+      "b": 4
      },
      "kind": "stop_after_first_partial_quotient",
      "operation": "division",
@@ -28108,35 +28108,35 @@
       "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
       "ok": true,
       "representation": "action_automaton",
-      "result": "quotient_remainder(1,19)",
+      "result": "quotient_remainder(10,56)",
       "steps": [
        {
-        "label": "set_divisor_as_chunk_unit(28)",
+        "label": "set_divisor_as_chunk_unit(4)",
         "n": 1,
         "value": ""
        },
        {
-        "label": "choose_first_partial_multiple(28,1)",
+        "label": "choose_first_partial_multiple(40,10)",
         "n": 2,
         "value": ""
        },
        {
-        "label": "subtract_first_partial_multiple(19)",
+        "label": "subtract_first_partial_multiple(56)",
         "n": 3,
         "value": ""
        },
        {
-        "label": "stop_before_recomposing_remaining_total(19)",
+        "label": "stop_before_recomposing_remaining_total(56)",
         "n": 4,
         "value": ""
        },
        {
-        "label": "name_incomplete_partial_quotient(quotient_remainder(1,19))",
+        "label": "name_incomplete_partial_quotient(quotient_remainder(10,56))",
         "n": 5,
         "value": ""
        },
        {
-        "label": "lose_partial_quotient_recomposition(expected(quotient_remainder(1,19)),produced(quotient_remainder(1,19)))",
+        "label": "lose_partial_quotient_recomposition(expected(quotient_remainder(24,0)),produced(quotient_remainder(10,56)))",
         "n": 6,
         "value": ""
        }
@@ -29714,12 +29714,12 @@
      "input": {
       "kind": "fraction_pair",
       "left": {
-       "d": 4,
-       "n": 3
-      },
-      "right": {
        "d": 3,
        "n": 2
+      },
+      "right": {
+       "d": 8,
+       "n": 3
       }
      },
      "kind": "area_model_unequal_partition_piece_count",
@@ -29740,12 +29740,12 @@
       "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
       "ok": true,
       "representation": "action_automaton",
-      "result": "greater_than",
+      "result": "less_than",
       "steps": [
        {
         "label": "q_init",
         "n": 1,
-        "value": "init(fraction(3,4),fraction(2,3))"
+        "value": "init(fraction(2,3),fraction(3,8))"
        },
        {
         "label": "q_unitize_whole",
@@ -29775,22 +29775,22 @@
        {
         "label": "q_iterate_count_parts",
         "n": 7,
-        "value": "raw_piece_counts(3,2)"
+        "value": "raw_piece_counts(2,3)"
        },
        {
         "label": "q_compare_relative_size",
         "n": 8,
-        "value": "whole_number_dominance(compare_piece_counts(3,2,greater_than))"
+        "value": "whole_number_dominance(compare_piece_counts(2,3,less_than))"
        },
        {
         "label": "q_emit",
         "n": 9,
-        "value": "emit(greater_than)"
+        "value": "emit(less_than)"
        },
        {
         "label": "q_accept",
         "n": 10,
-        "value": "accept(greater_than)"
+        "value": "accept(less_than)"
        }
       ],
       "strategy": "area_model_unequal_partition_piece_count"
@@ -29899,12 +29899,12 @@
      "input": {
       "kind": "fraction_pair",
       "left": {
-       "d": 4,
-       "n": 3
-      },
-      "right": {
        "d": 3,
        "n": 2
+      },
+      "right": {
+       "d": 8,
+       "n": 3
       }
      },
      "kind": "set_model_subset_size_focus",
@@ -29925,12 +29925,12 @@
       "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
       "ok": true,
       "representation": "action_automaton",
-      "result": "greater_than",
+      "result": "less_than",
       "steps": [
        {
         "label": "q_init",
         "n": 1,
-        "value": "init(fraction(3,4),fraction(2,3))"
+        "value": "init(fraction(2,3),fraction(3,8))"
        },
        {
         "label": "q_unitize_set",
@@ -29950,12 +29950,12 @@
        {
         "label": "q_count_equal_sets",
         "n": 5,
-        "value": "confuse_counters_with_share_name(4,3)"
+        "value": "confuse_counters_with_share_name(3,8)"
        },
        {
         "label": "q_disembed_subset",
         "n": 6,
-        "value": "focus_on_subset_counts(3,2)"
+        "value": "focus_on_subset_counts(2,3)"
        },
        {
         "label": "q_subset_size_focus",
@@ -29965,17 +29965,17 @@
        {
         "label": "q_compare_relative_size",
         "n": 8,
-        "value": "compare_raw_subset_sizes(3,2,greater_than)"
+        "value": "compare_raw_subset_sizes(2,3,less_than)"
        },
        {
         "label": "q_emit",
         "n": 9,
-        "value": "emit(greater_than)"
+        "value": "emit(less_than)"
        },
        {
         "label": "q_accept",
         "n": 10,
-        "value": "accept(greater_than)"
+        "value": "accept(less_than)"
        }
       ],
       "strategy": "set_model_subset_size_focus"
@@ -30319,12 +30319,12 @@
      "input": {
       "kind": "fraction_pair",
       "left": {
-       "d": 4,
-       "n": 3
-      },
-      "right": {
        "d": 3,
        "n": 2
+      },
+      "right": {
+       "d": 8,
+       "n": 3
       }
      },
      "kind": "add_numerator_denominator_comparison",
@@ -30345,12 +30345,12 @@
       "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
       "ok": true,
       "representation": "action_automaton",
-      "result": "greater_than",
+      "result": "less_than",
       "steps": [
        {
         "label": "q_init",
         "n": 1,
-        "value": "init(fraction(3,4),fraction(2,3))"
+        "value": "init(fraction(2,3),fraction(3,8))"
        },
        {
         "label": "q_common_partition",
@@ -30360,12 +30360,12 @@
        {
         "label": "q_add_numerator_denominator",
         "n": 3,
-        "value": "first(3,4,7)"
+        "value": "first(2,3,5)"
        },
        {
         "label": "q_add_numerator_denominator",
         "n": 4,
-        "value": "second(2,3,5)"
+        "value": "second(3,8,11)"
        },
        {
         "label": "q_measure_with_co_unit",
@@ -30375,17 +30375,17 @@
        {
         "label": "q_compare_same_denominator",
         "n": 6,
-        "value": "compare_unlike_sums(7,5,greater_than)"
+        "value": "compare_unlike_sums(5,11,less_than)"
        },
        {
         "label": "q_emit_order",
         "n": 7,
-        "value": "emit(greater_than)"
+        "value": "emit(less_than)"
        },
        {
         "label": "q_accept",
         "n": 8,
-        "value": "accept(greater_than)"
+        "value": "accept(less_than)"
        }
       ],
       "strategy": "add_numerator_denominator_comparison"
@@ -30754,12 +30754,12 @@
      "input": {
       "kind": "decimal_pair",
       "left": {
-       "numeral": 25,
+       "numeral": 3,
        "scale": 10
       },
       "right": {
-       "numeral": 3,
-       "scale": 10
+       "numeral": 25,
+       "scale": 100
       }
      },
      "kind": "decimal_scale_loss_comparison",
@@ -30780,17 +30780,17 @@
       "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
       "ok": true,
       "representation": "action_automaton",
-      "result": "greater_than",
+      "result": "less_than",
       "steps": [
        {
         "label": "q_init",
         "n": 1,
-        "value": "init(decimal(25,10),decimal(3,10))"
+        "value": "init(decimal(3,10),decimal(25,100))"
        },
        {
         "label": "q_identify_decimal_units",
         "n": 2,
-        "value": "scales_seen_but_not_coordinated(10,10)"
+        "value": "scales_seen_but_not_coordinated(10,100)"
        },
        {
         "label": "q_express_as_fraction",
@@ -30800,27 +30800,27 @@
        {
         "label": "q_scale_loss",
         "n": 4,
-        "value": "compare_written_numerals(25,3)"
+        "value": "compare_written_numerals(3,25)"
        },
        {
         "label": "q_compare_decimal_magnitudes",
         "n": 5,
-        "value": "compare(25,3,greater_than)"
+        "value": "compare(3,25,less_than)"
        },
        {
         "label": "q_viability_context",
         "n": 6,
-        "value": "viability(contextual_success,condition(written_numeral_order_coincides_with_decimal_value_order),validity(contextually_correct))"
+        "value": "viability(fails_in_context,condition(written_numeral_order_diverges_from_decimal_value_order),expected(greater_than),produced(less_than),validity(incorrect))"
        },
        {
         "label": "q_emit",
         "n": 7,
-        "value": "emit(greater_than)"
+        "value": "emit(less_than)"
        },
        {
         "label": "q_accept",
         "n": 8,
-        "value": "accept(greater_than)"
+        "value": "accept(less_than)"
        }
       ],
       "strategy": "decimal_scale_loss_comparison"

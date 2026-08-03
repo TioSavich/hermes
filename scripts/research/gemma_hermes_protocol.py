@@ -197,7 +197,7 @@ main :-
 
 
 class Budget:
-    """Output tokens spent across every model call; the gate reads it."""
+    """Output-budget units spent across model calls; the gate reads it."""
 
     def __init__(self, cap: int) -> None:
         self.cap = cap
@@ -206,11 +206,15 @@ class Budget:
     def exhausted(self) -> bool:
         return self.spent >= self.cap
 
+    def remaining(self) -> int:
+        return max(0, self.cap - self.spent)
+
 
 def complete(prompt: str, budget: Budget, num_predict: int = 512,
              model: str = "gemma4:e2b") -> str:
     if budget.exhausted():
         return ""
+    num_predict = min(num_predict, budget.remaining())
     body = json.dumps({
         "model": model, "prompt": prompt, "stream": False, "think": False,
         "options": {"temperature": 0, "num_predict": num_predict}}).encode()
@@ -226,11 +230,13 @@ class MCPClient:
     """The same stdio server the interactive Hermes tools speak to."""
 
     def __init__(self) -> None:
+        import os
+        environment = dict(os.environ)
+        environment["UMEDCTA_ROOT"] = str(ROOT)
         self.process = subprocess.Popen(
             [sys.executable, str(ROOT / "hermes/mcp/server.py"),
              "--mode", "core"],
-            cwd=ROOT, text=True, encoding="utf-8",
-            env={"UMEDCTA_ROOT": str(ROOT), "PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin"},
+            cwd=ROOT, text=True, encoding="utf-8", env=environment,
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL)
         self.next_id = 0
@@ -320,29 +326,31 @@ def reconcile(facts: list[str]) -> list[str]:
 
 
 def extract(problem: str, steps: list[str], budget: Budget,
-            transcript: list[str]) -> list[str]:
-    facts = keep(complete(GIVENS_PROMPT.format(problem=problem), budget),
+            transcript: list[str], complete_fn=None,
+            max_steps: int = 12) -> list[str]:
+    call = complete_fn or complete
+    facts = keep(call(GIVENS_PROMPT.format(problem=problem), budget),
                  "given")
-    facts += keep(complete(RATIOS_PROMPT.format(problem=problem), budget),
+    facts += keep(call(RATIOS_PROMPT.format(problem=problem), budget),
                   "ratio")
     facts = reconcile(facts)
     names = names_of([f for f in facts if not f.startswith("student(")])
     unitless = [n for n in names
                 if not any(f.startswith(f"unit({n},") for f in facts)]
     if unitless:
-        facts += keep(complete(UNITS_PROMPT.format(
+        facts += keep(call(UNITS_PROMPT.format(
             problem=problem, names=", ".join(unitless)), budget), "unit")
-    facts += keep(complete(ASKS_PROMPT.format(
+    facts += keep(call(ASKS_PROMPT.format(
         problem=problem, names=", ".join(names)), budget), "asks")
     unit_words = {re.match(rf"^unit\({NAME},\s*({NAME})\)\.$", f).group(1)
                   for f in facts if f.startswith("unit(")}
     unit_words |= {"ounces", "ounce", "dollars", "cups", "count"}
-    for k, step in enumerate(steps, start=1):
-        if not step.strip():
+    for k, step in enumerate(steps[:max_steps], start=1):
+        if not step.strip() or not re.search(r"\d", step):
             continue
         prompt = STEP_PROMPT.format(
             names=", ".join(names), step=step.strip(), k=k)
-        lines = keep(complete(prompt, budget), "student")
+        lines = keep(call(prompt, budget), "student")
         named_by_unit = [
             line for line in lines
             if re.match(rf"^student\(\d+,\s*({NAME}),", line).group(1)
@@ -355,7 +363,7 @@ def extract(problem: str, steps: list[str], budget: Budget,
                                   rf"^student\(\d+,\s*({NAME}),", line)]})) +
                           " are units, not quantity names. Use the known "
                           "quantity names.")
-            lines = keep(complete(corrective, budget), "student")
+            lines = keep(call(corrective, budget), "student")
         facts += [line for line in lines
                   if re.match(rf"^student\(\d+,\s*({NAME}),", line).group(1)
                   not in unit_words]
@@ -381,7 +389,7 @@ def run_checker(facts: list[str]) -> list[str]:
     return [line for line in result.stdout.splitlines() if line.strip()]
 
 
-def violation_summary(report: list[str]) -> tuple[str, str] | None:
+def violation_summary(report: list[str]) -> tuple[str, str, int] | None:
     for line in report:
         parts = line.split()
         if parts[0] == "substitution":
@@ -390,15 +398,36 @@ def violation_summary(report: list[str]) -> tuple[str, str] | None:
                 f"In step {step} the student uses {value} as the value "
                 f"of {name}, but {value} {unit} is given as the "
                 f"{other} quantity; no stated fact licenses "
-                f"{name} = {value}.")
+                f"{name} = {value}."), int(step)
+    contradictions = []
     for line in report:
         parts = line.split()
         if parts[0] == "verdict" and parts[1] == "contradicts":
-            _, _, step, name, said, licensed = parts
-            return "contradicts", (
-                f"In step {step} the student states {name} = {said}, "
-                f"but the problem's facts license {name} = {licensed}.")
+            contradictions.append(parts)
+    if contradictions:
+        parts = min(contradictions, key=lambda p: int(p[2]))
+        _, _, step, name, said, licensed = parts
+        return "contradicts", (
+            f"In step {step} the student states {name} = {said}, "
+            f"but the problem's facts license {name} = {licensed}."), int(step)
     return None
+
+
+def corpus_gate(problem: str, kind: str, summary: str, budget: Budget,
+                transcript: list[str], client: MCPClient,
+                complete_fn=None) -> list[dict]:
+    """Gate (a) in one place: model-proposed keywords widen the fixed
+    probes, retrieval and ranking stay mechanical, and the rows returned
+    are the license for any judgment."""
+    call = complete_fn or complete
+    raw = call(KEYWORDS_PROMPT.format(summary=summary), budget,
+               num_predict=64)
+    keywords = ["whole part total", "referent proportion"] if (
+        kind == "substitution") else []
+    keywords += [line.strip() for line in raw.splitlines()
+                 if line.strip()][:3]
+    return corpus_rows(client, keywords, f"{summary} {problem}",
+                       kind, transcript)
 
 
 STOPWORDS = {
@@ -524,17 +553,12 @@ def main() -> None:
     judgment = None
     violation = violation_summary(report)
     if violation and not budget.exhausted():
-        kind, summary = violation
+        kind, summary, _step = violation
         transcript.append(f"violation ({kind}): {summary}")
-        raw = complete(KEYWORDS_PROMPT.format(summary=summary), budget,
-                       num_predict=64)
-        keywords = ["whole part total", "referent proportion"]
-        keywords += [line.strip() for line in raw.splitlines()
-                     if line.strip()][:3]
         client = MCPClient()
         try:
-            rows = corpus_rows(client, keywords, f"{summary} {problem}",
-                               kind, transcript)
+            rows = corpus_gate(problem, kind, summary, budget,
+                               transcript, client)
         finally:
             client.close()
         if rows:

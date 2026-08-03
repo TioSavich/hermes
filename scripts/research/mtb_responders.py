@@ -45,7 +45,8 @@ def ollama_complete(prompt: str, *, model: str, stop: list[str] | None = None,
                     temperature: float = DEFAULT_TEMPERATURE,
                     num_predict: int = DEFAULT_NUM_PREDICT,
                     attempts: int = 3, timeout: float = 600.0,
-                    stop_mode: str = "decode") -> str:
+                    stop_mode: str = "decode",
+                    think: bool | None = None) -> str:
     """One completion call, shaped like the benchmark's own.
 
     `stop_mode` decides where the config's stop list is enforced.
@@ -66,7 +67,7 @@ def ollama_complete(prompt: str, *, model: str, stop: list[str] | None = None,
 
     Both modes are reported. Neither is a repair of the benchmark.
     """
-    payload = json.dumps({
+    body_fields: dict[str, Any] = {
         "model": model,
         "prompt": prompt,
         "options": {
@@ -75,7 +76,12 @@ def ollama_complete(prompt: str, *, model: str, stop: list[str] | None = None,
             "stop": (stop or []) if stop_mode == "decode" else [],
         },
         "stream": False,
-    }).encode("utf-8")
+    }
+    # None leaves the request as it always was; False turns thinking off for
+    # extraction callers, whose budgets it otherwise spends invisibly.
+    if think is not None:
+        body_fields["think"] = think
+    payload = json.dumps(body_fields).encode("utf-8")
 
     last_error: Exception | None = None
     for attempt in range(attempts):
@@ -196,6 +202,7 @@ def build(name: str, *, model: str, **options: str) -> Responder:
             import mtb_agent_responder  # noqa: F401
             import mtb_prolog_responder  # noqa: F401
             import mtb_kb_responder  # noqa: F401
+            import mtb_gated_responder  # noqa: F401
         except ImportError:
             pass
     if name not in BUILDERS:
