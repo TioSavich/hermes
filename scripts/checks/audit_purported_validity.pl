@@ -153,15 +153,18 @@ audit_row(Op, Kind, Verdict) :-
     ;   example_args(Dict, A, B),
         (   catch(run_action_automaton(Op, Kind, A, B, Outcome, _Trace), E,
                   ( Verdict = errored(E), fail ))
-        ->  outcome_verdict(Outcome, Verdict)
+        ->  outcome_verdict(Op, Kind, A, B, Outcome, Verdict)
         ;   ( var(Verdict) -> Verdict = did_not_run ; true )
         )
     ).
 
-outcome_verdict(action_outcome(_, Fields), Verdict) :-
+outcome_verdict(Op, Kind, A, B, action_outcome(_, Fields), Verdict) :-
     (   memberchk(validity(V), Fields)
     ->  (   memberchk(result(Res), Fields), memberchk(expected(Exp), Fields)
-        ->  validity_pair_verdict(V, Res, Exp, Verdict)
+        ->  (   per_input_labeled_kind(Kind)
+            ->  per_input_validity_verdict(Op, Kind, A, B, V, Res, Verdict)
+            ;   validity_pair_verdict(V, Res, Exp, Verdict)
+            )
         ;   Verdict = no_expected(V)
         )
     ;   Verdict = no_validity_claim
@@ -187,6 +190,38 @@ validity_expectation(accidentally_correct, equal, nonstandard).
 
 pair_relation_holds(equal, R, E) :- R == E.
 pair_relation_holds(different, R, E) :- R \== E.
+
+per_input_validity_verdict(Op, Kind, A, B, V, Res, Verdict) :-
+    (   truth(Op, Kind, A, B, Truth),
+        normalize_result(Res, Norm),
+        Norm \== unknown,
+        validity_expectation(V, Relation, _)
+    ->  (   truth_relation_holds(Relation, Norm, Truth)
+        ->  Verdict = ok_per_input(V)
+        ;   Verdict = purport_broken(V, result(Norm), truth(Truth))
+        )
+    ;   Verdict = per_input_truth_unavailable(V, result(Res))
+    ).
+
+truth_relation_holds(equal, Norm, Truth) :- results_equal(Norm, Truth).
+truth_relation_holds(different, Norm, Truth) :- \+ results_equal(Norm, Truth).
+
+per_input_labeled_kind(number_line_count_marks_not_intervals).
+per_input_labeled_kind(area_model_unequal_partition_piece_count).
+per_input_labeled_kind(set_model_subset_size_focus).
+per_input_labeled_kind(add_numerator_denominator_comparison).
+per_input_labeled_kind(stop_after_first_partial_quotient).
+per_input_labeled_kind(stop_after_one_known_fact).
+per_input_labeled_kind(name_reached_total_as_quotient).
+per_input_labeled_kind(name_group_count_as_share_size).
+per_input_labeled_kind(make_ten_drop_leftover).
+per_input_labeled_kind(unbalanced_make_base_compensation).
+per_input_labeled_kind(dropped_ones_chunk).
+per_input_labeled_kind(round_without_adjusting).
+per_input_labeled_kind(append_column_sum_without_carrying).
+per_input_labeled_kind(add_counts_without_composite_unit).
+per_input_labeled_kind(add_instead_of_multiply).
+per_input_labeled_kind(repeat_group_size_by_itself).
 
 
 
@@ -245,6 +280,160 @@ truth(decimal, Kind, decimal_pair(N1, S1, N2, S2), _, T) :-
     ;   sub_atom(Kind, _, _, _, multiplication) -> V is V1 * V2, T = rat(V)
     ;   fail
     ).
+truth(statistics, Kind, Data, measurement_unit(_), rat(V)) :-
+    memberchk(Kind, [mean_as_fair_share, mean_as_balance_point]),
+    !,
+    integer_list_sum_count(Data, Sum, Count),
+    V is Sum rdiv Count.
+truth(statistics, median_as_ordered_middle, Data, measurement_unit(_), rat(V)) :-
+    !,
+    msort(Data, Sorted),
+    length(Sorted, Count),
+    Middle is Count // 2,
+    (   1 is Count mod 2
+    ->  nth0(Middle, Sorted, Value), V is Value rdiv 1
+    ;   LeftIndex is Middle - 1,
+        nth0(LeftIndex, Sorted, Left), nth0(Middle, Sorted, Right),
+        V is (Left + Right) rdiv 2
+    ).
+truth(statistics, Kind, Data, measurement_unit(_), rat(V)) :-
+    memberchk(Kind, [mean_absolute_deviation,
+                     mean_deviation_without_absolute_value]),
+    !,
+    integer_list_sum_count(Data, Sum, Count),
+    Mean is Sum rdiv Count,
+    maplist(distance_from(Mean), Data, Distances),
+    sum_list(Distances, DistanceSum),
+    V is DistanceSum / Count.
+truth(geometry, Kind, A, B, Truth) :-
+    geometry_truth(Kind, A, B, Truth).
+
+integer_list_sum_count(Data, Sum, Count) :-
+    Data = [_|_], maplist(integer, Data), sum_list(Data, Sum), length(Data, Count).
+
+distance_from(Mean, Value, Distance) :- Distance is abs(Value - Mean).
+
+geometry_truth(Kind, Length, Width, number(Area)) :-
+    memberchk(Kind, [rectangle_area_unit_iteration, area_as_perimeter_count]),
+    !, Area is Length * Width.
+geometry_truth(Kind, CellsTerm, unit(_), number(Area)) :-
+    memberchk(Kind, [area_unit_covering, count_overlapping_area_tiles]),
+    !,
+    ( CellsTerm = covered_cells(Cells) ; CellsTerm = placed_tiles(Cells) ),
+    sort(Cells, UniqueCells), length(UniqueCells, Area).
+geometry_truth(Kind, area_extent(Extent), candidates(Candidates), choice(Unit)) :-
+    memberchk(Kind, [area_unit_scale_selection, choose_first_area_unit_without_scale]),
+    !, memberchk(unit(Unit, Extent), Candidates).
+geometry_truth(Kind, rectangle(Length, Width), unit(_), number(Perimeter)) :-
+    memberchk(Kind, [rectangle_perimeter_boundary_traversal,
+                     perimeter_two_sides_only, perimeter_uses_area_formula]),
+    !, Perimeter is 2 * (Length + Width).
+geometry_truth(Kind, sides(Sides), unit(_), number(Perimeter)) :-
+    memberchk(Kind, [polygon_perimeter_boundary_accumulation,
+                     omit_unlabeled_boundary_side]),
+    !, sum_list(Sides, Perimeter).
+geometry_truth(Kind, constraints(area(Area), perimeter(Perimeter)), _,
+               rectangle_set(Pairs)) :-
+    memberchk(Kind, [rectangle_area_perimeter_constraint_search,
+                     ignore_perimeter_rectangle_constraint]),
+    !, rectangle_factor_pairs(Area, AllPairs),
+    include(has_rectangle_perimeter(Perimeter), AllPairs, Pairs).
+geometry_truth(rectangle_factor_pair_search, Area, factor_scope(all),
+               rectangle_set(Pairs)) :-
+    !, rectangle_factor_pairs(Area, Pairs).
+geometry_truth(rectangle_perimeter_side_pair_search, Perimeter, side_scope(all),
+               rectangle_set(Pairs)) :-
+    !, Half is Perimeter // 2,
+    findall(L-W, (between(1, Half, L), W is Half - L, L =< W, W > 0), Pairs).
+geometry_truth(Kind, area(Area), known_side(Known), number(Missing)) :-
+    memberchk(Kind, [rectangle_missing_side_from_area, subtract_side_from_area]),
+    !, Missing is Area // Known.
+geometry_truth(rectangle_missing_side_from_perimeter, perimeter(Perimeter),
+               known_side(Known), number(Missing)) :-
+    !, Missing is Perimeter // 2 - Known.
+geometry_truth(Kind, side_orbits(Orbits), perimeter(Perimeter, _), number(Missing)) :-
+    memberchk(Kind, [symmetry_constrained_side_reconstruction,
+                     ignore_symmetry_multiplicity]),
+    !, unknown_orbit_solution(Orbits, Perimeter, Missing).
+geometry_truth(Kind, solid_cube_counts(A, B), _, order(Order)) :-
+    memberchk(Kind, [compare_solid_volume_by_cube_count,
+                     compare_solid_volume_by_visible_extent]),
+    !, cmp_order(A, B, Order).
+geometry_truth(composite_prism_volume_sum, certified_disjoint_prisms(Prisms),
+               unit(_), number(Volume)) :-
+    !, prism_volume_sum(Prisms, Volume).
+geometry_truth(sum_overlapping_prism_volumes,
+               overlapping_prisms(Prisms, Overlap), unit(_), number(Volume)) :-
+    !, prism_volume_sum(Prisms, Sum), Volume is Sum - Overlap.
+geometry_truth(Kind, volume(Volume), known_base(Length, Width), number(Dimension)) :-
+    memberchk(Kind, [rectangular_prism_missing_dimension_from_volume,
+                     divide_volume_by_one_dimension]),
+    !, Dimension is Volume // (Length * Width).
+geometry_truth(rectangular_prism_volume_layer_iteration, prism(Length, Width),
+               Height, number(Volume)) :-
+    !, Volume is Length * Width * Height.
+geometry_truth(Kind, net(_, FaceAreas), unit(_), number(Area)) :-
+    memberchk(Kind, [polyhedron_surface_area_from_net,
+                     visible_faces_only_surface_area]),
+    !, sum_list(FaceAreas, Area).
+geometry_truth(angle_additive_composition, angle_parts(Parts), whole_angle(_),
+               number(Angle)) :-
+    !, sum_list(Parts, Angle).
+geometry_truth(angle_turn_measurement, Angle, unit(degree), number(Angle)) :- !.
+geometry_truth(Kind, polygon(Vertices), _, number(Area)) :-
+    memberchk(Kind, [area_preserving_polygon_decomposition,
+                     decomposition_with_gap_or_overlap]),
+    !, polygon_area(Vertices, Area).
+geometry_truth(Kind, points(point(X1, Y1), point(X2, Y2)), unit(_),
+               number(Distance)) :-
+    memberchk(Kind, [axis_aligned_coordinate_distance,
+                     directed_difference_as_coordinate_distance]),
+    !, Distance is abs(X2 - X1) + abs(Y2 - Y1).
+geometry_truth(Kind, measure(Dimension, Value), unit(Unit),
+               measured(Measure, Value, Unit, Power)) :-
+    memberchk(Kind, [dimensional_measure_unit_coordination,
+                     linear_unit_for_area_or_volume]),
+    !, dimension_measure(Dimension, Measure, Power).
+geometry_truth(Kind, triangle(Base, Height), unit(_), number(Area)) :-
+    memberchk(Kind, [triangle_area_half_base_height, omit_half_in_triangle_area]),
+    !, Area is Base * Height rdiv 2.
+geometry_truth(Kind, parallelogram(Base, Height, _, _), unit(_), number(Area)) :-
+    memberchk(Kind, [parallelogram_area_base_height,
+                     slanted_side_as_parallelogram_height]),
+    !, Area is Base * Height.
+
+rectangle_factor_pairs(Area, Pairs) :-
+    findall(L-W, (between(1, Area, L), 0 is Area mod L,
+                  W is Area // L, L =< W), Pairs).
+
+has_rectangle_perimeter(Perimeter, L-W) :- 2 * (L + W) =:= Perimeter.
+
+unknown_orbit_solution(Orbits, Perimeter, Missing) :-
+    findall(Contribution,
+            ( member(orbit(Copies, known(Length)), Orbits),
+              Contribution is Copies * Length ),
+            Contributions),
+    sum_list(Contributions, KnownTotal),
+    member(orbit(UnknownCopies, unknown(_)), Orbits),
+    Missing is (Perimeter - KnownTotal) // UnknownCopies.
+
+prism_volume_sum(Prisms, Volume) :-
+    findall(V, (member(prism(L, W, H), Prisms), V is L * W * H), Volumes),
+    sum_list(Volumes, Volume).
+
+polygon_area(Vertices, Area) :-
+    Vertices = [First|_], append(Vertices, [First], Closed),
+    polygon_cross_sum(Closed, 0, TwiceSignedArea),
+    Area is abs(TwiceSignedArea) rdiv 2.
+
+polygon_cross_sum([_], Sum, Sum).
+polygon_cross_sum([X1-Y1, X2-Y2|Rest], Acc, Sum) :-
+    Next is Acc + X1 * Y2 - X2 * Y1,
+    polygon_cross_sum([X2-Y2|Rest], Next, Sum).
+
+dimension_measure(one_dimensional, length, 1).
+dimension_measure(two_dimensional, area, 2).
+dimension_measure(three_dimensional, volume, 3).
 
 % These tasks compute factor or multiple structures, not products. They
 % remain explicitly without a Layer-2 adapter until their list-shaped
@@ -263,6 +452,8 @@ result_is_quotient_remainder(stop_after_first_partial_quotient).
 results_equal(X, X) :- !.
 results_equal(qr(Q, 0), number(Q)) :- !.
 results_equal(number(Q), qr(Q, 0)) :- !.
+results_equal(number(N), rat(N)) :- !.
+results_equal(rat(N), number(N)) :- !.
 
 cmp_order(V1, V2, greater_than) :- V1 > V2, !.
 cmp_order(V1, V2, less_than) :- V1 < V2, !.
@@ -279,11 +470,38 @@ normalize_result(greater_than, order(greater_than)) :- !.
 normalize_result(less_than, order(less_than)) :- !.
 normalize_result(equal, order(equal)) :- !.
 normalize_result(equal_value, order(equal)) :- !.
+normalize_result(more, order(greater_than)) :- !.
+normalize_result(less, order(less_than)) :- !.
+normalize_result(equivalent, order(equal)) :- !.
+normalize_result(rational(N, D), rat(V)) :- integer(N), integer(D), D =\= 0, !,
+    V is N rdiv D.
+normalize_result(decimal(Whole, fractional_digits(N, Places), _), rat(V)) :-
+    integer(Whole), integer(N), integer(Places), Places >= 0, !,
+    Scale is 10 ^ Places,
+    V is Whole + N rdiv Scale.
+normalize_result(boundary_units(N), number(N)) :- number(N), !.
+normalize_result(square_units(N), number(N)) :- number(N), !.
+normalize_result(area(N, square(_)), number(N)) :- number(N), !.
+normalize_result(length(N, _), number(N)) :- number(N), !.
+normalize_result(side_length(N), number(N)) :- number(N), !.
+normalize_result(side_length(_, N, _), number(N)) :- number(N), !.
+normalize_result(cubic_units(N), number(N)) :- number(N), !.
+normalize_result(volume(N, cube(_)), number(N)) :- number(N), !.
+normalize_result(dimension(N), number(N)) :- number(N), !.
+normalize_result(angle_measure(N), number(N)) :- number(N), !.
+normalize_result(square_unit(Unit), choice(Unit)) :- !.
+normalize_result(rectangles(Pairs), rectangle_set(Pairs)) :- !.
+normalize_result(all_factor_pair_rectangles(Pairs), rectangle_set(Pairs)) :- !.
+normalize_result(all_rectangle_side_pairs(perimeter(_), Pairs), rectangle_set(Pairs)) :- !.
+normalize_result(measured_quantity(Measure, N, unit_power(Unit, Power)),
+                 measured(Measure, N, Unit, Power)) :- !.
 normalize_result(R, rat(V)) :- R = N rdiv D, integer(N), integer(D), !, V is N rdiv D.
 normalize_result(_, unknown).
 
 truth_verdict(Op, Kind, A, B, Fields, TV) :-
-    (   \+ truth(Op, Kind, A, B, _)
+    (   recorded_non_comparable(Op, Kind)
+    ->  TV = recorded_non_comparable
+    ;   \+ truth(Op, Kind, A, B, _)
     ->  TV = no_truth_adapter
     ;   truth(Op, Kind, A, B, Truth),
         memberchk(result(Res), Fields),
@@ -297,6 +515,22 @@ truth_verdict(Op, Kind, A, B, Fields, TV) :-
             )
         )
     ).
+
+% These outcomes construct or select representations, collections, or
+% questions. No single quantity is the truth target for Layer 2.
+recorded_non_comparable(statistics, categorical_frequency_bar_representation).
+recorded_non_comparable(statistics, dot_plot_frequency_representation).
+recorded_non_comparable(statistics, statistical_question_variability_classification).
+recorded_non_comparable(statistics, question_without_variability).
+recorded_non_comparable(statistics, histogram_equal_interval_representation).
+recorded_non_comparable(statistics, mode_as_maximal_frequency).
+recorded_non_comparable(statistics, five_number_summary_and_iqr).
+recorded_non_comparable(statistics, box_plot_from_five_number_summary).
+recorded_non_comparable(statistics, distribution_summary_selection).
+recorded_non_comparable(geometry, ordered_pair_coordinate_plot).
+recorded_non_comparable(geometry, orientation_bound_shape_classification).
+recorded_non_comparable(geometry, shape_classification_by_defining_attributes).
+recorded_non_comparable(geometry, rigid_shape_composition).
 
 truth_relation_verdict(equal, V, Norm, Truth, TV) :-
     ( results_equal(Norm, Truth) -> TV = truth_ok(V)
@@ -322,9 +556,11 @@ audit_truth :-
     include([_-_-right_while_purporting_incorrect(_,_)]>>true, Rows, RightR),
     include([_-_-no_truth_adapter]>>true, Rows, NoAd),
     include([_-_-result_shape_unknown(_)]>>true, Rows, NoShape),
+    include([_-_-recorded_non_comparable]>>true, Rows, NonComparable),
     include([_-_-validity_not_auditable(_)]>>true, Rows, NoValidity),
     length(Rows, N), length(OkR, NOk), length(WrongR, NW),
     length(RightR, NRt), length(NoAd, NNa), length(NoShape, NNs),
+    length(NonComparable, NNC),
     length(NoValidity, NNV),
     format('rows with executable outcome: ~w~n', [N]),
     format('  truth check passes:                        ~w~n', [NOk]),
@@ -332,6 +568,7 @@ audit_truth :-
     format('  RIGHT while purporting incorrect (example fails to witness the bug): ~w~n', [NRt]),
     format('  no truth adapter for family/shape yet:     ~w~n', [NNa]),
     format('  result shape not yet normalizable:         ~w~n', [NNs]),
+    format('  recorded non-comparable result:            ~w~n', [NNC]),
     format('  validity atom not auditable:                ~w~n', [NNV]),
     ( NW > 0 ->
         format('~n--- wrong while purporting correct ---~n'),
@@ -401,11 +638,13 @@ audit :-
     partition_verdicts(Rows, Ok, Broken, NoExp, NoRun, Odd),
     length(Ok, NOk), length(Broken, NB), length(NoExp, NE),
     length(NoRun, NR), length(Odd, NO),
+    aggregate_all(count, member(_-_-ok_per_input(_), Rows), NPerInput),
     format('contracted kinds audited: ~w~n', [NRows]),
     format('  claim holds on execution:      ~w~n', [NOk]),
     format('  PURPORT BROKEN:                ~w~n', [NB]),
     format('  purports validity, no expected: ~w~n', [NE]),
     format('  did not run / errored:         ~w~n', [NR]),
+    format('  audited per-input labels:      ~w~n', [NPerInput]),
     format('  nonstandard / not auditable:    ~w~n~n', [NO]),
     ( NB > 0 ->
         format('--- purport broken ---~n'),
@@ -432,7 +671,8 @@ audit :-
 partition_verdicts([], [], [], [], [], []).
 partition_verdicts([R|Rs], Ok, Br, NE, NRun, Odd) :-
     partition_verdicts(Rs, Ok0, Br0, NE0, NRun0, Odd0),
-    (   R = _-_-ok(_)                -> Ok = [R|Ok0], Br=Br0, NE=NE0, NRun=NRun0, Odd=Odd0
+    (   ( R = _-_-ok(_) ; R = _-_-ok_per_input(_) )
+                                     -> Ok = [R|Ok0], Br=Br0, NE=NE0, NRun=NRun0, Odd=Odd0
     ;   R = _-_-purport_broken(_,_,_)-> Br = [R|Br0], Ok=Ok0, NE=NE0, NRun=NRun0, Odd=Odd0
     ;   R = _-_-no_expected(_)       -> NE = [R|NE0], Ok=Ok0, Br=Br0, NRun=NRun0, Odd=Odd0
     ;   ( R = _-_-did_not_run ; R = _-_-errored(_) ; R = _-_-errored_or_failed )

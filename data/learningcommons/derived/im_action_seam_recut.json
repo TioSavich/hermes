@@ -20333,7 +20333,7 @@
    {
     "action_name": "area_model_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 582,
+    "line": 588,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20348,7 +20348,7 @@
    {
     "action_name": "area_model_unequal_partition_piece_count",
     "canonical_mapping_signature_matches": [],
-    "line": 595,
+    "line": 601,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20363,7 +20363,7 @@
    {
     "action_name": "set_model_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 610,
+    "line": 622,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20378,7 +20378,7 @@
    {
     "action_name": "set_model_subset_size_focus",
     "canonical_mapping_signature_matches": [],
-    "line": 623,
+    "line": 635,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20393,7 +20393,7 @@
    {
     "action_name": "benchmark_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 639,
+    "line": 657,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20408,7 +20408,7 @@
    {
     "action_name": "gap_thinking_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 652,
+    "line": 670,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20423,7 +20423,7 @@
    {
     "action_name": "common_unit_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 669,
+    "line": 687,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20438,7 +20438,7 @@
    {
     "action_name": "add_numerator_denominator_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 683,
+    "line": 701,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20453,7 +20453,7 @@
    {
     "action_name": "area_model_part_of_part",
     "canonical_mapping_signature_matches": [],
-    "line": 698,
+    "line": 722,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20468,7 +20468,7 @@
    {
     "action_name": "unit_fraction_denominator_product_rule",
     "canonical_mapping_signature_matches": [],
-    "line": 728,
+    "line": 752,
     "registered_automaton_correspondence": false,
     "registry_signature_matches": [],
     "requesting_signature_matches": [],
@@ -20478,7 +20478,7 @@
    {
     "action_name": "cross_multiplication_rule_from_pattern",
     "canonical_mapping_signature_matches": [],
-    "line": 762,
+    "line": 786,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20493,7 +20493,7 @@
    {
     "action_name": "cross_multiplication_rule_without_ground",
     "canonical_mapping_signature_matches": [],
-    "line": 792,
+    "line": 816,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20508,7 +20508,7 @@
    {
     "action_name": "co_denominator_count_on_from_larger",
     "canonical_mapping_signature_matches": [],
-    "line": 838,
+    "line": 862,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20523,7 +20523,7 @@
    {
     "action_name": "co_denominator_make_ten_split_leftover",
     "canonical_mapping_signature_matches": [],
-    "line": 870,
+    "line": 894,
     "registered_automaton_correspondence": false,
     "registry_signature_matches": [],
     "requesting_signature_matches": [],
@@ -20533,7 +20533,7 @@
    {
     "action_name": "co_denominator_make_base_transfer",
     "canonical_mapping_signature_matches": [],
-    "line": 899,
+    "line": 923,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20548,7 +20548,7 @@
    {
     "action_name": "common_denominator_fraction_addition",
     "canonical_mapping_signature_matches": [],
-    "line": 941,
+    "line": 965,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20563,7 +20563,7 @@
    {
     "action_name": "common_denominator_fraction_subtraction",
     "canonical_mapping_signature_matches": [],
-    "line": 964,
+    "line": 988,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20578,7 +20578,7 @@
    {
     "action_name": "add_numerator_denominator_sum",
     "canonical_mapping_signature_matches": [],
-    "line": 993,
+    "line": 1017,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20593,7 +20593,7 @@
    {
     "action_name": "measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 1019,
+    "line": 1043,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20608,7 +20608,7 @@
    {
     "action_name": "reversible_measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 1058,
+    "line": 1082,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -25550,7 +25550,7 @@
    {
     "action_name": "unit_fraction_denominator_product_rule",
     "canonical_mapping_signature_matches": [],
-    "line": 728,
+    "line": 752,
     "registered_automaton_correspondence": false,
     "registry_signature_matches": [],
     "requesting_signature_matches": [],
@@ -25560,7 +25560,7 @@
    {
     "action_name": "co_denominator_make_ten_split_leftover",
     "canonical_mapping_signature_matches": [],
-    "line": 870,
+    "line": 894,
     "registered_automaton_correspondence": false,
     "registry_signature_matches": [],
     "requesting_signature_matches": [],
@@ -33433,7 +33433,7 @@
         "value": ""
        },
        {
-        "label": "apply_balance_preserving_steps([_33608{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_33648{left:[_33438{count:3,kind:x,role:x-box},_33462{count:2,kind:unit,role:unit-weight}],right:[_33510{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_33846{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_33886{left:[_33704{count:3,kind:x,role:x-box}],right:[_33754{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_33990{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_34030{left:[_33704{count:3,kind:x,role:x-box}],right:[_33754{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_34220{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_34260{left:[_34086{count:1,kind:x,role:x-box}],right:[_34136{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
+        "label": "apply_balance_preserving_steps([_33650{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_33690{left:[_33480{count:3,kind:x,role:x-box},_33504{count:2,kind:unit,role:unit-weight}],right:[_33552{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_33888{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_33928{left:[_33746{count:3,kind:x,role:x-box}],right:[_33796{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_34032{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_34072{left:[_33746{count:3,kind:x,role:x-box}],right:[_33796{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_34262{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_34302{left:[_34128{count:1,kind:x,role:x-box}],right:[_34178{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
         "n": 2,
         "value": ""
        },

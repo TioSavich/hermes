@@ -143,6 +143,11 @@ run_additive_action(make_ten_drop_leftover, A, B, Outcome, Trace) :-
     K > 0,
     Result = TargetBase,
     add_ints(A, B, Expected),
+    additive_result_viability(Expected, Result,
+                              no_leftover_after_making_base,
+                              leftover_remains_after_making_base,
+                              Viability),
+    additive_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   make_ten_drop_leftover,
                   [ classification(deformation),
@@ -151,7 +156,8 @@ run_additive_action(make_ten_drop_leftover, A, B, Outcome, Trace) :-
                     vocabulary([addend, ten, split, needed_part, leftover, conservation]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     deformation_of(make_ten_split_leftover),
                     misconception_family(dropped_leftover_after_make_ten)
@@ -194,6 +200,11 @@ run_additive_action(unbalanced_make_base_compensation, A, B, Outcome, Trace) :-
     Components = make_base_components(Larger, Smaller, Base, TargetBase, K, LargerMadeBase, _SmallerRemainder),
     add_ints(A, B, Expected),
     add_ints(LargerMadeBase, Smaller, Result),
+    additive_result_viability(Expected, Result,
+                              selected_addend_already_at_target_base,
+                              compensation_changes_total_without_transfer,
+                              Viability),
+    additive_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   unbalanced_make_base_compensation,
                   [ classification(deformation),
@@ -202,7 +213,8 @@ run_additive_action(unbalanced_make_base_compensation, A, B, Outcome, Trace) :-
                     vocabulary([addend, base, distance_to_base, compensation, conservation]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     deformation_of(make_base_transfer),
                     misconception_family(compensation_without_conservation)
@@ -241,6 +253,11 @@ run_additive_action(dropped_ones_chunk, A, B, Outcome, Trace) :-
     Components = chunk_components(Base, BaseChunk, OnesChunk, AfterBaseChunk, _CorrectResult),
     add_ints(A, B, Expected),
     Result = AfterBaseChunk,
+    additive_result_viability(Expected, Result,
+                              decomposed_addend_has_no_ones_chunk,
+                              omitted_ones_chunk_changes_total,
+                              Viability),
+    additive_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   dropped_ones_chunk,
                   [ classification(deformation),
@@ -249,7 +266,8 @@ run_additive_action(dropped_ones_chunk, A, B, Outcome, Trace) :-
                     vocabulary([addend, base_chunk, ones_chunk, running_sum, remainder]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     deformation_of(base_ones_chunking),
                     misconception_family(dropped_remainder_chunk)
@@ -289,6 +307,11 @@ run_additive_action(round_without_adjusting, A, B, Outcome, Trace) :-
     Components = rounding_components(Target, Other, Base, TargetBase, K, RoundedSum, _Result),
     add_ints(A, B, Expected),
     Result = RoundedSum,
+    additive_result_viability(Expected, Result,
+                              selected_addend_requires_no_rounding_adjustment,
+                              omitted_rounding_adjustment_changes_total,
+                              Viability),
+    additive_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   round_without_adjusting,
                   [ classification(deformation),
@@ -297,7 +320,8 @@ run_additive_action(round_without_adjusting, A, B, Outcome, Trace) :-
                     vocabulary([rounding_target, base, adjustment, temporary_sum, conservation]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     deformation_of(round_then_adjust),
                     misconception_family(rounding_without_compensation)
@@ -363,6 +387,11 @@ run_additive_action(append_column_sum_without_carrying, A, B, Outcome, Trace) :-
     Components = appended_column_sum_components(Base, ColumnSums, Result),
     has_multi_digit_column_sum(ColumnSums),
     add_ints(A, B, Expected),
+    additive_result_viability(Expected, Result,
+                              raw_column_concatenation_preserves_place_value,
+                              raw_column_concatenation_changes_place_value,
+                              Viability),
+    additive_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   append_column_sum_without_carrying,
                   [ classification(deformation),
@@ -372,7 +401,8 @@ run_additive_action(append_column_sum_without_carrying, A, B, Outcome, Trace) :-
                                 carry, regroup_ten_ones, concatenation_error]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     deformation_of(column_addition_with_carrying),
                     misconception_family(append_partial_sums_without_carrying)
@@ -965,6 +995,23 @@ column_sum_codes([column_sum(_Place, _ADigit, _BDigit, RawSum)|ColumnSums], Code
     number_codes(RawSum, RawCodes),
     column_sum_codes(ColumnSums, RestCodes),
     append(RawCodes, RestCodes, Codes).
+
+
+additive_result_viability(Expected, Expected, CoincidenceCondition, _,
+                          viability(contextual_success,
+                                    condition(CoincidenceCondition),
+                                    validity(contextually_correct))) :-
+    !.
+additive_result_viability(Expected, Produced, _, DivergenceCondition,
+                          viability(fails_in_context,
+                                    condition(DivergenceCondition),
+                                    expected(Expected), produced(Produced),
+                                    validity(incorrect))).
+
+additive_result_viability_validity(
+    viability(contextual_success, _, validity(Validity)), Validity).
+additive_result_viability_validity(
+    viability(fails_in_context, _, _, _, validity(Validity)), Validity).
 
 
 % add_ints/3 and subtract_ints/3 imported from math(integer_helpers).

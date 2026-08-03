@@ -144,6 +144,7 @@ run_statistics_action(mean_as_fair_share, Data, measurement_unit(Unit),
     sum_list(Data, Sum),
     length(Data, Count),
     reduced_rational(Sum, Count, Mean),
+    mean_value(Data, ExpectedMean),
     Outcome = action_outcome(
                   mean_as_fair_share,
                   [ classification(productive),
@@ -154,7 +155,7 @@ run_statistics_action(mean_as_fair_share, Data, measurement_unit(Unit),
                     input(Data),
                     unit(Unit),
                     result(Mean),
-                    expected(Mean),
+                    expected(ExpectedMean),
                     validity(correct)
                   ]),
     Trace = [ preserve_data_set(Data), collect_total(Sum),
@@ -164,6 +165,7 @@ run_statistics_action(mean_as_balance_point, Data, measurement_unit(Unit),
                       Outcome, Trace) :-
     valid_data(Data),
     mean_and_deviations(Data, Mean, Deviations),
+    mean_value(Data, ExpectedMean),
     sum_rationals(Deviations, DeviationSum),
     DeviationSum = rational(0, 1),
     data_display_render_json(dot_plot(Data), Scene),
@@ -176,7 +178,7 @@ run_statistics_action(mean_as_balance_point, Data, measurement_unit(Unit),
                     vocabulary([data_set, number_line, signed_deviation,
                                 balance_point, mean, measurement_unit]),
                     input(Data), unit(Unit), deviations(Deviations),
-                    result(Mean), expected(Mean), representation(Scene),
+                    result(Mean), expected(ExpectedMean), representation(Scene),
                     invariant(sum_signed_deviations(rational(0, 1))),
                     validity(correct)
                   ]),
@@ -190,6 +192,7 @@ run_statistics_action(mean_absolute_deviation, Data, measurement_unit(Unit),
     mean_and_deviations(Data, Mean, Deviations),
     maplist(rational_absolute, Deviations, AbsoluteDeviations),
     average_rationals(AbsoluteDeviations, MAD),
+    mean_absolute_deviation_value(Data, ExpectedMAD),
     Outcome = action_outcome(
                   mean_absolute_deviation,
                   [ classification(productive),
@@ -200,7 +203,7 @@ run_statistics_action(mean_absolute_deviation, Data, measurement_unit(Unit),
                                 measurement_unit]),
                     input(Data), unit(Unit), center(Mean),
                     absolute_deviations(AbsoluteDeviations),
-                    result(MAD), expected(MAD), validity(correct)
+                    result(MAD), expected(ExpectedMAD), validity(correct)
                   ]),
     Trace = [ preserve_data_set(Data), locate_mean(Mean),
               measure_signed_deviations(Deviations),
@@ -498,10 +501,13 @@ in_half_open_interval(Lower, Upper, Value) :-
     Value < Upper.
 
 mean_and_deviations(Data, Mean, Deviations) :-
+    mean_value(Data, Mean),
+    maplist(deviation_from(Mean), Data, Deviations).
+
+mean_value(Data, Mean) :-
     sum_list(Data, Sum),
     length(Data, Count),
-    reduced_rational(Sum, Count, Mean),
-    maplist(deviation_from(Mean), Data, Deviations).
+    reduced_rational(Sum, Count, Mean).
 
 deviation_from(rational(MeanNumerator, MeanDenominator), Value, Deviation) :-
     Numerator is Value * MeanDenominator - MeanNumerator,

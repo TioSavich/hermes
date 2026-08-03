@@ -25,8 +25,10 @@
  *      verdict atom announces (check_ledger/0). The ledger and the
  *      corpus classification are two encodings authored from the same
  *      reading; check_validity/0 verifies that they agree for all 18
- *      kinds — correct / correct_but_inefficient / incorrect. It does
- *      not recover the classification independently.
+ *      kinds. Per-input kinds record both possible outcome labels while
+ *      the trace ledger records whether the deformation can lose an
+ *      answer-bearing invariant. It does not recover the classification
+ *      independently.
  *
  * WHY VERDICT ATOMS ARE NOT ACTIONS. Atoms of the form preserve_* and
  * lose_* do not do anything to a quantity; they announce the state of
@@ -773,8 +775,9 @@ answer_bearing(problem_relation).
 %!  derived_validity(?Kind, ?Validity) is nondet.
 %
 %   The ledger and corpus classification are two authored encodings of
-%   the same reading. check_validity/0 verifies their agreement; it
-%   does not recover validity independently.
+%   the same reading. For a per-input corpus profile, check_validity/0 verifies
+%   that the trace-derived classification is one admitted member; it does not
+%   recover the concrete input's validity independently.
 derived_validity(Kind, Validity) :-
     witness_sequence(Kind, Atoms, _),
     incurred_losses(Atoms, Losses),
@@ -785,22 +788,27 @@ derived_validity(Kind, Validity) :-
     ;   Validity = correct
     ).
 
-% The executable layer's recorded validity, for the recovery check.
+% The executable layer's recorded validity profile, for the recovery check.
 % Source: sar_add_action_pairs.pl validity/1 fields, read from the
 % consolidated dump 2026-08-03.
 corpus_validity(addition/count_on_from_larger, correct).
 corpus_validity(addition/count_all_when_count_on_available, correct_but_inefficient).
 corpus_validity(addition/make_ten_split_leftover, correct).
-corpus_validity(addition/make_ten_drop_leftover, incorrect).
+corpus_validity(addition/make_ten_drop_leftover,
+                per_input([contextually_correct, incorrect])).
 corpus_validity(addition/make_base_transfer, correct).
-corpus_validity(addition/unbalanced_make_base_compensation, incorrect).
+corpus_validity(addition/unbalanced_make_base_compensation,
+                per_input([contextually_correct, incorrect])).
 corpus_validity(addition/base_ones_chunking, correct).
-corpus_validity(addition/dropped_ones_chunk, incorrect).
+corpus_validity(addition/dropped_ones_chunk,
+                per_input([contextually_correct, incorrect])).
 corpus_validity(addition/round_then_adjust, correct).
-corpus_validity(addition/round_without_adjusting, incorrect).
+corpus_validity(addition/round_without_adjusting,
+                per_input([contextually_correct, incorrect])).
 corpus_validity(addition/column_addition_with_carrying, correct).
 corpus_validity(addition/drop_carry_to_next_column, incorrect).
-corpus_validity(addition/append_column_sum_without_carrying, incorrect).
+corpus_validity(addition/append_column_sum_without_carrying,
+                per_input([contextually_correct, incorrect])).
 corpus_validity(addition/wrong_carry_amount_to_next_column, incorrect).
 corpus_validity(addition/known_fact_retrieval, correct).
 corpus_validity(addition/count_all_instead_of_known_fact, correct_but_inefficient).
@@ -848,13 +856,20 @@ check_ledger :-
 
 check_validity :-
     forall(corpus_validity(Kind, V),
-           (   derived_validity(Kind, V)
+           (   corpus_validity_agrees(Kind, V)
            ->  true
            ;   derived_validity(Kind, W),
                format('FAIL validity ~w: derived ~w, corpus ~w~n',
                       [Kind, W, V]),
                fail
            )).
+
+corpus_validity_agrees(Kind, per_input(Validities)) :-
+    !,
+    derived_validity(Kind, Derived),
+    memberchk(Derived, Validities).
+corpus_validity_agrees(Kind, Validity) :-
+    derived_validity(Kind, Validity).
 
 check_pilot :-
     check_coverage,

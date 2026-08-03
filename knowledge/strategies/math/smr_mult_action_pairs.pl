@@ -83,6 +83,7 @@ run_multiplicative_action(coordinate_groups_items, N, S, Outcome, Trace) :-
 run_multiplicative_action(add_counts_without_composite_unit, N, S, Outcome, Trace) :-
     multiply_ints(N, S, Expected),
     add_ints(N, S, Result),
+    accidental_result_viability(Expected, Result, Viability, Validity),
     Outcome = action_outcome(
                   add_counts_without_composite_unit,
                   [ classification(deformation),
@@ -91,7 +92,8 @@ run_multiplicative_action(add_counts_without_composite_unit, N, S, Outcome, Trac
                     vocabulary([group_count, item_count, composite_unit, total_items]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     groups(N),
                     items_per_group(S),
                     deformation_of(coordinate_groups_items),
@@ -106,6 +108,7 @@ run_multiplicative_action(add_counts_without_composite_unit, N, S, Outcome, Trac
 run_multiplicative_action(add_instead_of_multiply, N, S, Outcome, Trace) :-
     multiply_ints(N, S, Expected),
     add_ints(N, S, Result),
+    accidental_result_viability(Expected, Result, Viability, Validity),
     Outcome = action_outcome(
                   add_instead_of_multiply,
                   [ classification(deformation),
@@ -116,7 +119,8 @@ run_multiplicative_action(add_instead_of_multiply, N, S, Outcome, Trace) :-
                                 composite_unit_loss]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     groups(N),
                     items_per_group(S),
                     deformation_of(repeat_equal_groups),
@@ -155,6 +159,11 @@ run_multiplicative_action(repeat_group_size_by_itself, N, S, Outcome, Trace) :-
     multiply_ints(N, S, Expected),
     repeated_add_totals(S, S, Totals),
     multiply_ints(S, S, Result),
+    multiplicative_result_viability(Expected, Result,
+                                    group_count_equals_group_size,
+                                    group_count_differs_from_group_size,
+                                    Viability),
+    multiplicative_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   repeat_group_size_by_itself,
                   [ classification(deformation),
@@ -163,7 +172,8 @@ run_multiplicative_action(repeat_group_size_by_itself, N, S, Outcome, Trace) :-
                     vocabulary([equal_group, repeated_addend, iteration_count, running_product]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     groups(N),
                     items_per_group(S),
                     running_totals(Totals),
@@ -835,6 +845,35 @@ heuristic_split(Value, Base, S1, S2) :-
         recollection_to_integer(RecS2d, S2)
     ;   S1 = Value, S2 = 0
     ).
+
+
+accidental_result_viability(Expected, Expected,
+                            viability(accidental_success,
+                                      validity(accidentally_correct)),
+                            accidentally_correct) :-
+    !.
+accidental_result_viability(Expected, Produced,
+                            viability(fails_in_context,
+                                      condition(additive_count_diverges_from_composite_unit_total),
+                                      expected(Expected), produced(Produced),
+                                      validity(incorrect)),
+                            incorrect).
+
+multiplicative_result_viability(Expected, Expected, CoincidenceCondition, _,
+                                viability(contextual_success,
+                                          condition(CoincidenceCondition),
+                                          validity(contextually_correct))) :-
+    !.
+multiplicative_result_viability(Expected, Produced, _, DivergenceCondition,
+                                viability(fails_in_context,
+                                          condition(DivergenceCondition),
+                                          expected(Expected), produced(Produced),
+                                          validity(incorrect))).
+
+multiplicative_result_viability_validity(
+    viability(contextual_success, _, validity(Validity)), Validity).
+multiplicative_result_viability_validity(
+    viability(fails_in_context, _, _, _, validity(Validity)), Validity).
 
 
 % add_ints/3, multiply_ints/3 imported from math(integer_helpers).

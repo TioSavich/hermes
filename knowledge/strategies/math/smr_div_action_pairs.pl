@@ -182,6 +182,11 @@ run_division_action(name_group_count_as_share_size, Total, GroupCount, Outcome, 
     division_components(Total, GroupCount, Components),
     Components = division_components(GroupCount, ShareSize, 0),
     Result = GroupCount,
+    division_result_viability(ShareSize, Result,
+                              group_count_equals_share_size,
+                              group_count_differs_from_share_size,
+                              Viability),
+    division_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   name_group_count_as_share_size,
                   [ classification(deformation),
@@ -190,7 +195,8 @@ run_division_action(name_group_count_as_share_size, Total, GroupCount, Outcome, 
                     vocabulary([total, number_of_groups, share_size, dealing_round, equality]),
                     result(Result),
                     expected(ShareSize),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     deformation_of(fair_share_equal_groups),
                     misconception_family(group_count_as_share_size)
@@ -229,6 +235,11 @@ run_division_action(name_reached_total_as_quotient, Total, Factor, Outcome, Trac
     Components = division_components(Factor, Quotient, 0),
     repeated_multiple_totals(Factor, Quotient, Totals),
     Result = Total,
+    division_result_viability(Quotient, Result,
+                              reached_total_equals_missing_factor,
+                              reached_total_differs_from_missing_factor,
+                              Viability),
+    division_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   name_reached_total_as_quotient,
                   [ classification(deformation),
@@ -237,7 +248,8 @@ run_division_action(name_reached_total_as_quotient, Total, Factor, Outcome, Trac
                     vocabulary([total, factor, repeated_multiple, iteration_count, quotient]),
                     result(Result),
                     expected(Quotient),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     repeated_totals(Totals),
                     deformation_of(missing_factor_repeated_addition),
@@ -279,6 +291,11 @@ run_division_action(stop_after_one_known_fact, Total, Divisor, Outcome, Trace) :
     RemainingAfterFirst > 0,
     Result = quotient_remainder(QuotientAfterFirst, RemainingAfterFirst),
     Expected = quotient_remainder(Quotient, Remainder),
+    division_result_viability(Expected, Result,
+                              first_known_fact_completes_quotient_and_remainder,
+                              further_known_facts_are_required,
+                              Viability),
+    division_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   stop_after_one_known_fact,
                   [ classification(deformation),
@@ -287,7 +304,8 @@ run_division_action(stop_after_one_known_fact, Total, Divisor, Outcome, Trace) :
                     vocabulary([known_multiple, partial_quotient, remaining_total, recomposition]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     knowledge_base(KB),
                     deformation_of(inverse_fact_decomposition),
@@ -328,6 +346,11 @@ run_division_action(stop_after_first_partial_quotient, Total, Divisor, Outcome, 
     RemainingAfterFirst > 0,
     Result = quotient_remainder(QuotientAfterFirst, RemainingAfterFirst),
     Expected = quotient_remainder(Quotient, Remainder),
+    division_result_viability(Expected, Result,
+                              first_partial_quotient_completes_quotient_and_remainder,
+                              further_partial_quotients_are_required,
+                              Viability),
+    division_result_viability_validity(Viability, Validity),
     Outcome = action_outcome(
                   stop_after_first_partial_quotient,
                   [ classification(deformation),
@@ -336,7 +359,8 @@ run_division_action(stop_after_first_partial_quotient, Total, Divisor, Outcome, 
                     vocabulary([partial_multiple, partial_quotient, remaining_total, quotient_recomposition]),
                     result(Result),
                     expected(Expected),
-                    validity(incorrect),
+                    viability_context(Viability),
+                    validity(Validity),
                     components(Components),
                     divisor(Divisor),
                     deformation_of(partial_quotient_chunking),
@@ -643,6 +667,22 @@ division_order_viability(Expected, Produced,
 division_order_viability_validity(
     viability(contextual_success, _, validity(Validity)), Validity).
 division_order_viability_validity(
+    viability(fails_in_context, _, _, _, validity(Validity)), Validity).
+
+division_result_viability(Expected, Expected, CoincidenceCondition, _,
+                          viability(contextual_success,
+                                    condition(CoincidenceCondition),
+                                    validity(contextually_correct))) :-
+    !.
+division_result_viability(Expected, Produced, _, DivergenceCondition,
+                          viability(fails_in_context,
+                                    condition(DivergenceCondition),
+                                    expected(Expected), produced(Produced),
+                                    validity(incorrect))).
+
+division_result_viability_validity(
+    viability(contextual_success, _, validity(Validity)), Validity).
+division_result_viability_validity(
     viability(fails_in_context, _, _, _, validity(Validity)), Validity).
 
 

@@ -22,28 +22,28 @@ automaton_tuple(addition, round_without_adjusting, states([q_start, q_step_1, q_
 automaton_tuple(addition, unbalanced_make_base_compensation, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([order_addends, identify_target_base, count_distance_to_base, add_compensation_to_larger, leave_other_addend_unchanged, lose_total_conservation]), start(q_start), accepting([q_accept])).
 automaton_tuple(addition, wrong_carry_amount_to_next_column, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([align_addends_by_place_value, process_columns_right_to_left, misread_carry_amount, write_place_digits, carry_final_column_if_needed, lose_base_ten_regrouping]), start(q_start), accepting([q_accept])).
 
-automaton_transition(addition, append_column_sum_without_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:361'))).
-automaton_transition(addition, append_column_sum_without_carrying, q_step_1, compute_raw_column_sums_without_regrouping, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:361'))).
-automaton_transition(addition, append_column_sum_without_carrying, q_step_2, write_full_column_sums_in_place, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:361'))).
-automaton_transition(addition, append_column_sum_without_carrying, q_step_3, concatenate_partial_sums, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:361'))).
-automaton_transition(addition, append_column_sum_without_carrying, q_step_4, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:361'))).
+automaton_transition(addition, append_column_sum_without_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:385'))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_1, compute_raw_column_sums_without_regrouping, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:385'))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_2, write_full_column_sums_in_place, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:385'))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_3, concatenate_partial_sums, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:385'))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_4, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:385'))).
 
-automaton_transition(addition, base_ones_chunking, q_start, decompose_second_addend, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:217'))).
-automaton_transition(addition, base_ones_chunking, q_step_1, add_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:217'))).
-automaton_transition(addition, base_ones_chunking, q_step_2, add_ones_chunk, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:217'))).
-automaton_transition(addition, base_ones_chunking, q_step_3, preserve_all_decomposed_parts, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:217'))).
+automaton_transition(addition, base_ones_chunking, q_start, decompose_second_addend, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:229'))).
+automaton_transition(addition, base_ones_chunking, q_step_1, add_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:229'))).
+automaton_transition(addition, base_ones_chunking, q_step_2, add_ones_chunk, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:229'))).
+automaton_transition(addition, base_ones_chunking, q_step_3, preserve_all_decomposed_parts, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:229'))).
 
-automaton_transition(addition, column_addition_with_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:312'))).
-automaton_transition(addition, column_addition_with_carrying, q_step_1, process_columns_right_to_left, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:312'))).
-automaton_transition(addition, column_addition_with_carrying, q_step_2, write_place_digits, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:312'))).
-automaton_transition(addition, column_addition_with_carrying, q_step_3, carry_final_column_if_needed, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:312'))).
-automaton_transition(addition, column_addition_with_carrying, q_step_4, compose_column_sum, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:312'))).
-automaton_transition(addition, column_addition_with_carrying, q_step_5, preserve_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:312'))).
+automaton_transition(addition, column_addition_with_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:336'))).
+automaton_transition(addition, column_addition_with_carrying, q_step_1, process_columns_right_to_left, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:336'))).
+automaton_transition(addition, column_addition_with_carrying, q_step_2, write_place_digits, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:336'))).
+automaton_transition(addition, column_addition_with_carrying, q_step_3, carry_final_column_if_needed, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:336'))).
+automaton_transition(addition, column_addition_with_carrying, q_step_4, compose_column_sum, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:336'))).
+automaton_transition(addition, column_addition_with_carrying, q_step_5, preserve_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:336'))).
 
-automaton_transition(addition, count_all_instead_of_known_fact, q_start, recognize_number_combination, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:431'))).
-automaton_transition(addition, count_all_instead_of_known_fact, q_step_1, fail_to_retrieve_stored_sum, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:431'))).
-automaton_transition(addition, count_all_instead_of_known_fact, q_step_2, count_all_ticks, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:431'))).
-automaton_transition(addition, count_all_instead_of_known_fact, q_step_3, preserve_result_but_lose_fact_fluency, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:431'))).
+automaton_transition(addition, count_all_instead_of_known_fact, q_start, recognize_number_combination, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:461'))).
+automaton_transition(addition, count_all_instead_of_known_fact, q_step_1, fail_to_retrieve_stored_sum, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:461'))).
+automaton_transition(addition, count_all_instead_of_known_fact, q_step_2, count_all_ticks, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:461'))).
+automaton_transition(addition, count_all_instead_of_known_fact, q_step_3, preserve_result_but_lose_fact_fluency, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:461'))).
 
 automaton_transition(addition, count_all_when_count_on_available, q_start, reset_to_zero_instead_of_starting_from_composite, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:90'))).
 automaton_transition(addition, count_all_when_count_on_available, q_step_1, count_first_addend_from_zero, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:90'))).
@@ -55,32 +55,32 @@ automaton_transition(addition, count_on_from_larger, q_step_1, hold_other_addend
 automaton_transition(addition, count_on_from_larger, q_step_2, iterate_successor_ticks, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:65'))).
 automaton_transition(addition, count_on_from_larger, q_step_3, name_last_tick_as_sum, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:65'))).
 
-automaton_transition(addition, derived_fact_adjustment, q_start, recall_nearby_known_fact, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:456'))).
-automaton_transition(addition, derived_fact_adjustment, q_step_1, compare_target_to_anchor, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:456'))).
-automaton_transition(addition, derived_fact_adjustment, q_step_2, adjust_known_sum_by, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:456'))).
-automaton_transition(addition, derived_fact_adjustment, q_step_3, preserve_problem_relation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:456'))).
+automaton_transition(addition, derived_fact_adjustment, q_start, recall_nearby_known_fact, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:486'))).
+automaton_transition(addition, derived_fact_adjustment, q_step_1, compare_target_to_anchor, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:486'))).
+automaton_transition(addition, derived_fact_adjustment, q_step_2, adjust_known_sum_by, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:486'))).
+automaton_transition(addition, derived_fact_adjustment, q_step_3, preserve_problem_relation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:486'))).
 
-automaton_transition(addition, drop_carry_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:335'))).
-automaton_transition(addition, drop_carry_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:335'))).
-automaton_transition(addition, drop_carry_to_next_column, q_step_2, write_place_digits, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:335'))).
-automaton_transition(addition, drop_carry_to_next_column, q_step_3, discard_generated_carries, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:335'))).
-automaton_transition(addition, drop_carry_to_next_column, q_step_4, compose_column_sum_without_carry, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:335'))).
-automaton_transition(addition, drop_carry_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:335'))).
+automaton_transition(addition, drop_carry_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:359'))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:359'))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_2, write_place_digits, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:359'))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_3, discard_generated_carries, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:359'))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_4, compose_column_sum_without_carry, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:359'))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:359'))).
 
-automaton_transition(addition, dropped_ones_chunk, q_start, decompose_second_addend, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:239'))).
-automaton_transition(addition, dropped_ones_chunk, q_step_1, add_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:239'))).
-automaton_transition(addition, dropped_ones_chunk, q_step_2, drop_ones_chunk, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:239'))).
-automaton_transition(addition, dropped_ones_chunk, q_step_3, lose_decomposed_remainder, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:239'))).
+automaton_transition(addition, dropped_ones_chunk, q_start, decompose_second_addend, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:251'))).
+automaton_transition(addition, dropped_ones_chunk, q_step_1, add_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:251'))).
+automaton_transition(addition, dropped_ones_chunk, q_step_2, drop_ones_chunk, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:251'))).
+automaton_transition(addition, dropped_ones_chunk, q_step_3, lose_decomposed_remainder, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:251'))).
 
-automaton_transition(addition, known_fact_retrieval, q_start, recognize_number_combination, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:412'))).
-automaton_transition(addition, known_fact_retrieval, q_step_1, retrieve_stored_sum, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:412'))).
-automaton_transition(addition, known_fact_retrieval, q_step_2, state_memorized_sum, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:412'))).
+automaton_transition(addition, known_fact_retrieval, q_start, recognize_number_combination, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:442'))).
+automaton_transition(addition, known_fact_retrieval, q_step_1, retrieve_stored_sum, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:442'))).
+automaton_transition(addition, known_fact_retrieval, q_step_2, state_memorized_sum, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:442'))).
 
-automaton_transition(addition, make_base_transfer, q_start, order_addends, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:165'))).
-automaton_transition(addition, make_base_transfer, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:165'))).
-automaton_transition(addition, make_base_transfer, q_step_2, count_distance_to_base, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:165'))).
-automaton_transition(addition, make_base_transfer, q_step_3, transfer_from_smaller_to_larger, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:165'))).
-automaton_transition(addition, make_base_transfer, q_step_4, preserve_total_by_balanced_transfer, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:165'))).
+automaton_transition(addition, make_base_transfer, q_start, order_addends, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:171'))).
+automaton_transition(addition, make_base_transfer, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:171'))).
+automaton_transition(addition, make_base_transfer, q_step_2, count_distance_to_base, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:171'))).
+automaton_transition(addition, make_base_transfer, q_step_3, transfer_from_smaller_to_larger, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:171'))).
+automaton_transition(addition, make_base_transfer, q_step_4, preserve_total_by_balanced_transfer, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:171'))).
 
 automaton_transition(addition, make_ten_drop_leftover, q_start, choose_addend_near_base, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:140'))).
 automaton_transition(addition, make_ten_drop_leftover, q_step_1, split_other_addend, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:140'))).
@@ -94,37 +94,37 @@ automaton_transition(addition, make_ten_split_leftover, q_step_2, make_base, q_s
 automaton_transition(addition, make_ten_split_leftover, q_step_3, add_leftover_after_base, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:116'))).
 automaton_transition(addition, make_ten_split_leftover, q_step_4, preserve_total_by_using_both_split_parts, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:116'))).
 
-automaton_transition(addition, rote_derived_fact_rule_misfire, q_start, recall_nearby_known_fact, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:476'))).
-automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_1, notice_that_numbers_are_near_but_not_how_near, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:476'))).
-automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_2, apply_verbal_rule_with_wrong_adjustment, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:476'))).
-automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_3, lose_problem_relation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:476'))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_start, recall_nearby_known_fact, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:506'))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_1, notice_that_numbers_are_near_but_not_how_near, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:506'))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_2, apply_verbal_rule_with_wrong_adjustment, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:506'))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_3, lose_problem_relation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:506'))).
 
-automaton_transition(addition, round_then_adjust, q_start, choose_rounding_target, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:262'))).
-automaton_transition(addition, round_then_adjust, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:262'))).
-automaton_transition(addition, round_then_adjust, q_step_2, round_up_by, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:262'))).
-automaton_transition(addition, round_then_adjust, q_step_3, add_with_rounded_number, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:262'))).
-automaton_transition(addition, round_then_adjust, q_step_4, adjust_back_by, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:262'))).
+automaton_transition(addition, round_then_adjust, q_start, choose_rounding_target, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:280'))).
+automaton_transition(addition, round_then_adjust, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:280'))).
+automaton_transition(addition, round_then_adjust, q_step_2, round_up_by, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:280'))).
+automaton_transition(addition, round_then_adjust, q_step_3, add_with_rounded_number, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:280'))).
+automaton_transition(addition, round_then_adjust, q_step_4, adjust_back_by, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:280'))).
 
-automaton_transition(addition, round_without_adjusting, q_start, choose_rounding_target, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:287'))).
-automaton_transition(addition, round_without_adjusting, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:287'))).
-automaton_transition(addition, round_without_adjusting, q_step_2, round_up_by, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:287'))).
-automaton_transition(addition, round_without_adjusting, q_step_3, add_with_rounded_number, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:287'))).
-automaton_transition(addition, round_without_adjusting, q_step_4, omit_adjustment, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:287'))).
-automaton_transition(addition, round_without_adjusting, q_step_5, lose_total_conservation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:287'))).
+automaton_transition(addition, round_without_adjusting, q_start, choose_rounding_target, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:305'))).
+automaton_transition(addition, round_without_adjusting, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:305'))).
+automaton_transition(addition, round_without_adjusting, q_step_2, round_up_by, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:305'))).
+automaton_transition(addition, round_without_adjusting, q_step_3, add_with_rounded_number, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:305'))).
+automaton_transition(addition, round_without_adjusting, q_step_4, omit_adjustment, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:305'))).
+automaton_transition(addition, round_without_adjusting, q_step_5, lose_total_conservation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:305'))).
 
-automaton_transition(addition, unbalanced_make_base_compensation, q_start, order_addends, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:192'))).
-automaton_transition(addition, unbalanced_make_base_compensation, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:192'))).
-automaton_transition(addition, unbalanced_make_base_compensation, q_step_2, count_distance_to_base, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:192'))).
-automaton_transition(addition, unbalanced_make_base_compensation, q_step_3, add_compensation_to_larger, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:192'))).
-automaton_transition(addition, unbalanced_make_base_compensation, q_step_4, leave_other_addend_unchanged, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:192'))).
-automaton_transition(addition, unbalanced_make_base_compensation, q_step_5, lose_total_conservation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:192'))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_start, order_addends, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:198'))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_1, identify_target_base, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:198'))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_2, count_distance_to_base, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:198'))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_3, add_compensation_to_larger, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:198'))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_4, leave_other_addend_unchanged, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:198'))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_5, lose_total_conservation, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:198'))).
 
-automaton_transition(addition, wrong_carry_amount_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:386'))).
-automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:386'))).
-automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_2, misread_carry_amount, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:386'))).
-automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_3, write_place_digits, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:386'))).
-automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_4, carry_final_column_if_needed, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:386'))).
-automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:386'))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:416'))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:416'))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_2, misread_carry_amount, q_step_3, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:416'))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_3, write_place_digits, q_step_4, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:416'))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_4, carry_final_column_if_needed, q_step_5, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:416'))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:416'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(addition, append_column_sum_without_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(observed(contract_example))).

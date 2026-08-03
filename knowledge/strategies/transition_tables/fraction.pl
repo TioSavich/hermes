@@ -61,14 +61,14 @@ automaton_transition(fraction, area_model_fraction_comparison, q_iterate_count_p
 automaton_transition(fraction, area_model_fraction_comparison, q_compare_relative_size, co_measure, q_emit, provenance(static('knowledge/strategies/math/smr_frac_area_compare.pl:13'))).
 automaton_transition(fraction, area_model_fraction_comparison, q_emit, emit, q_accept, provenance(static('knowledge/strategies/math/smr_frac_area_compare.pl:13'))).
 
-automaton_transition(fraction, area_model_part_of_part, q_start, establish_referent_whole, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_1, partition_unit_square_vertically, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_2, select_first_fraction_strip, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_3, partition_each_strip_horizontally, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_4, select_part_of_part_in_strip, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_5, count_small_rectangles_in_whole, q_step_6, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_6, count_small_rectangles_selected, q_step_7, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
-automaton_transition(fraction, area_model_part_of_part, q_step_7, read_off_part_of_part, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:698'))).
+automaton_transition(fraction, area_model_part_of_part, q_start, establish_referent_whole, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_1, partition_unit_square_vertically, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_2, select_first_fraction_strip, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_3, partition_each_strip_horizontally, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_4, select_part_of_part_in_strip, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_5, count_small_rectangles_in_whole, q_step_6, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_6, count_small_rectangles_selected, q_step_7, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
+automaton_transition(fraction, area_model_part_of_part, q_step_7, read_off_part_of_part, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:722'))).
 
 automaton_transition(fraction, area_model_unequal_partition_piece_count, q_init, init, q_unitize_whole, provenance(static('knowledge/strategies/math/smr_frac_area_compare.pl:33'))).
 automaton_transition(fraction, area_model_unequal_partition_piece_count, q_unitize_whole, drawn_regions_treated_as_wholes, q_verify_same_size_whole, provenance(static('knowledge/strategies/math/smr_frac_area_compare.pl:33'))).
@@ -93,19 +93,19 @@ automaton_transition(fraction, clear_inner_referent, q_step_2, name_inner_part_r
 automaton_transition(fraction, clear_inner_referent, q_step_3, fail_to_relate_inner_part_to_original_whole, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:417'))).
 automaton_transition(fraction, clear_inner_referent, q_step_4, lose_outer_referent, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:417'))).
 
-automaton_transition(fraction, co_denominator_count_on_from_larger, q_start, confirm_same_denominator, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:837'))).
-automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_1, hold_referent_whole_at, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:837'))).
-automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_2, hold_unit_fraction_at, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:837'))).
-automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_3, dispatch_to_cgi, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:837'))).
-automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_4, cgi_kernel_outcome, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:837'))).
-automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_5, attach_three_level_units_coordination, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:837'))).
+automaton_transition(fraction, co_denominator_count_on_from_larger, q_start, confirm_same_denominator, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:861'))).
+automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_1, hold_referent_whole_at, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:861'))).
+automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_2, hold_unit_fraction_at, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:861'))).
+automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_3, dispatch_to_cgi, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:861'))).
+automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_4, cgi_kernel_outcome, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:861'))).
+automaton_transition(fraction, co_denominator_count_on_from_larger, q_step_5, attach_three_level_units_coordination, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:861'))).
 
-automaton_transition(fraction, co_denominator_make_base_transfer, q_start, confirm_same_denominator, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:898'))).
-automaton_transition(fraction, co_denominator_make_base_transfer, q_step_1, hold_referent_whole_at, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:898'))).
-automaton_transition(fraction, co_denominator_make_base_transfer, q_step_2, hold_unit_fraction_at, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:898'))).
-automaton_transition(fraction, co_denominator_make_base_transfer, q_step_3, dispatch_to_cgi, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:898'))).
-automaton_transition(fraction, co_denominator_make_base_transfer, q_step_4, cgi_kernel_outcome, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:898'))).
-automaton_transition(fraction, co_denominator_make_base_transfer, q_step_5, attach_three_level_units_coordination, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:898'))).
+automaton_transition(fraction, co_denominator_make_base_transfer, q_start, confirm_same_denominator, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:922'))).
+automaton_transition(fraction, co_denominator_make_base_transfer, q_step_1, hold_referent_whole_at, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:922'))).
+automaton_transition(fraction, co_denominator_make_base_transfer, q_step_2, hold_unit_fraction_at, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:922'))).
+automaton_transition(fraction, co_denominator_make_base_transfer, q_step_3, dispatch_to_cgi, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:922'))).
+automaton_transition(fraction, co_denominator_make_base_transfer, q_step_4, cgi_kernel_outcome, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:922'))).
+automaton_transition(fraction, co_denominator_make_base_transfer, q_step_5, attach_three_level_units_coordination, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:922'))).
 
 automaton_transition(fraction, common_denominator_fraction_addition, q_init, init, q_rename_addends_as_counts, provenance(static('knowledge/strategies/math/smr_frac_common_unit_add.pl:70'))).
 automaton_transition(fraction, common_denominator_fraction_addition, q_rename_addends_as_counts, renamings, q_common_partition, provenance(static('knowledge/strategies/math/smr_frac_common_unit_add.pl:70'))).
@@ -133,21 +133,21 @@ automaton_transition(fraction, common_unit_fraction_comparison, q_measure_with_c
 automaton_transition(fraction, common_unit_fraction_comparison, q_compare_same_numerator, inverse_denominator_relation, q_emit_order, provenance(static('knowledge/strategies/math/smr_frac_common_unit_compare.pl:11'))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_emit_order, emit, q_accept, provenance(static('knowledge/strategies/math/smr_frac_common_unit_compare.pl:11'))).
 
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_start, identify_rule_pattern, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_2, compute_numerator_product, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_3, compute_denominator_product, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_4, propose_result, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_5, justify_via_area_model_part_of_part, q_step_6, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_6, identify_denominator_product_as_whole_rectangle_area, q_step_7, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
-automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_7, identify_numerator_product_as_selected_area, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:762'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_start, identify_rule_pattern, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_2, compute_numerator_product, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_3, compute_denominator_product, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_4, propose_result, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_5, justify_via_area_model_part_of_part, q_step_6, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_6, identify_denominator_product_as_whole_rectangle_area, q_step_7, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_7, identify_numerator_product_as_selected_area, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:786'))).
 
-automaton_transition(fraction, cross_multiplication_rule_without_ground, q_start, recall_rule_pattern, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:792'))).
-automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:792'))).
-automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_2, compute_numerator_product, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:792'))).
-automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_3, compute_denominator_product, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:792'))).
-automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_4, produce_result_without_area_model_ground, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:792'))).
-automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_5, skip_area_model_justification, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:792'))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_start, recall_rule_pattern, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:816'))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:816'))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_2, compute_numerator_product, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:816'))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_3, compute_denominator_product, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:816'))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_4, produce_result_without_area_model_ground, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:816'))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_5, skip_area_model_justification, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:816'))).
 
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_init, init, q_select_benchmark, provenance(static('knowledge/strategies/math/smr_frac_benchmark_compare.pl:35'))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_select_benchmark, selected, q_benchmark_first, provenance(static('knowledge/strategies/math/smr_frac_benchmark_compare.pl:35'))).
@@ -183,11 +183,11 @@ automaton_transition(fraction, iterate_only_no_reverse, q_step_2, partitioning_c
 automaton_transition(fraction, iterate_only_no_reverse, q_step_3, cannot_run_inverse_edge_to_recover_unknown, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:504'))).
 automaton_transition(fraction, iterate_only_no_reverse, q_step_4, fail_to_solve, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:504'))).
 
-automaton_transition(fraction, measurement_division, q_start, establish_dividend_and_divisor, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1019'))).
-automaton_transition(fraction, measurement_division, q_step_1, co_measure_both_with_a_shared_fractional_unit, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1019'))).
-automaton_transition(fraction, measurement_division, q_step_2, count_how_many_group_sizes_fit, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1019'))).
-automaton_transition(fraction, measurement_division, q_step_3, name_leftover_as_a_fraction_of_the_group_size, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1019'))).
-automaton_transition(fraction, measurement_division, q_step_4, name_quotient_and_remainder, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1019'))).
+automaton_transition(fraction, measurement_division, q_start, establish_dividend_and_divisor, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1043'))).
+automaton_transition(fraction, measurement_division, q_step_1, co_measure_both_with_a_shared_fractional_unit, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1043'))).
+automaton_transition(fraction, measurement_division, q_step_2, count_how_many_group_sizes_fit, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1043'))).
+automaton_transition(fraction, measurement_division, q_step_3, name_leftover_as_a_fraction_of_the_group_size, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1043'))).
+automaton_transition(fraction, measurement_division, q_step_4, name_quotient_and_remainder, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1043'))).
 
 automaton_transition(fraction, number_line_count_marks_not_intervals, q_init, init, q_identify_unit, provenance(static('knowledge/strategies/math/smr_frac_nl_compare.pl:65'))).
 automaton_transition(fraction, number_line_count_marks_not_intervals, q_identify_unit, unit_interval, q_partition_interval, provenance(static('knowledge/strategies/math/smr_frac_nl_compare.pl:65'))).
@@ -214,11 +214,11 @@ automaton_transition(fraction, recursive_partition, q_step_3, name_part_of_part_
 automaton_transition(fraction, recursive_partition, q_step_4, recognize_composite_base_as_product, q_step_5, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:382'))).
 automaton_transition(fraction, recursive_partition, q_step_5, recursive_partition_trace, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:382'))).
 
-automaton_transition(fraction, reversible_measurement_division, q_start, establish_dividend_and_divisor, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1058'))).
-automaton_transition(fraction, reversible_measurement_division, q_step_1, recover_the_unit_generator_of_the_divisor, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1058'))).
-automaton_transition(fraction, reversible_measurement_division, q_step_2, measure_the_total_in_generator_scale, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1058'))).
-automaton_transition(fraction, reversible_measurement_division, q_step_3, form_one_group_from_the_generator_units, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1058'))).
-automaton_transition(fraction, reversible_measurement_division, q_step_4, read_quotient_as_total_ticks_over_group_ticks, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1058'))).
+automaton_transition(fraction, reversible_measurement_division, q_start, establish_dividend_and_divisor, q_step_1, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1082'))).
+automaton_transition(fraction, reversible_measurement_division, q_step_1, recover_the_unit_generator_of_the_divisor, q_step_2, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1082'))).
+automaton_transition(fraction, reversible_measurement_division, q_step_2, measure_the_total_in_generator_scale, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1082'))).
+automaton_transition(fraction, reversible_measurement_division, q_step_3, form_one_group_from_the_generator_units, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1082'))).
+automaton_transition(fraction, reversible_measurement_division, q_step_4, read_quotient_as_total_ticks_over_group_ticks, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:1082'))).
 
 automaton_transition(fraction, set_model_fraction_comparison, q_init, init, q_unitize_set, provenance(static('knowledge/strategies/math/smr_frac_set_compare.pl:13'))).
 automaton_transition(fraction, set_model_fraction_comparison, q_unitize_set, collections_as_single_wholes, q_verify_same_whole, provenance(static('knowledge/strategies/math/smr_frac_set_compare.pl:13'))).

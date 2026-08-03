@@ -18,29 +18,29 @@ automaton_tuple(statistics, mode_as_maximal_frequency, states([q_start, q_step_1
 automaton_tuple(statistics, question_without_variability, states([q_start, q_step_1, q_step_2, q_accept]), actions([identify_measured_variable, replace_varied_responses_with_one_fixed_answer, classify_as_nonstatistical_question]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, statistical_question_variability_classification, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([identify_population, identify_measured_variable, anticipate_varied_responses, classify_as_statistical_question]), start(q_start), accepting([q_accept])).
 
-automaton_transition(statistics, box_plot_from_five_number_summary, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:296'))).
-automaton_transition(statistics, box_plot_from_five_number_summary, q_step_1, order_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:296'))).
-automaton_transition(statistics, box_plot_from_five_number_summary, q_step_2, construct_five_number_summary, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:296'))).
-automaton_transition(statistics, box_plot_from_five_number_summary, q_step_3, place_all_five_values_on_common_scale, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:296'))).
-automaton_transition(statistics, box_plot_from_five_number_summary, q_step_4, draw_quartile_box_and_whiskers, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:296'))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:299'))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_1, order_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:299'))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_2, construct_five_number_summary, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:299'))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_3, place_all_five_values_on_common_scale, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:299'))).
+automaton_transition(statistics, box_plot_from_five_number_summary, q_step_4, draw_quartile_box_and_whiskers, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:299'))).
 
 automaton_transition(statistics, categorical_frequency_bar_representation, q_start, classify_observations_by_category, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:19'))).
 automaton_transition(statistics, categorical_frequency_bar_representation, q_step_1, count_each_category, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:19'))).
 automaton_transition(statistics, categorical_frequency_bar_representation, q_step_2, establish_frequency_scale, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:19'))).
 automaton_transition(statistics, categorical_frequency_bar_representation, q_step_3, raise_separated_bar_for_each_category, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:19'))).
 
-automaton_transition(statistics, distribution_summary_selection, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:320'))).
-automaton_transition(statistics, distribution_summary_selection, q_step_1, inspect_declared_profile, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:320'))).
+automaton_transition(statistics, distribution_summary_selection, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:323'))).
+automaton_transition(statistics, distribution_summary_selection, q_step_1, inspect_declared_profile, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:323'))).
 
 automaton_transition(statistics, dot_plot_frequency_representation, q_start, establish_value_axis, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:44'))).
 automaton_transition(statistics, dot_plot_frequency_representation, q_step_1, preserve_one_mark_per_observation, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:44'))).
 automaton_transition(statistics, dot_plot_frequency_representation, q_step_2, stack_marks_at_equal_values, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:44'))).
 
-automaton_transition(statistics, five_number_summary_and_iqr, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:275'))).
-automaton_transition(statistics, five_number_summary_and_iqr, q_step_1, order_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:275'))).
-automaton_transition(statistics, five_number_summary_and_iqr, q_step_2, split_around_median, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:275'))).
-automaton_transition(statistics, five_number_summary_and_iqr, q_step_3, locate_quartiles, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:275'))).
-automaton_transition(statistics, five_number_summary_and_iqr, q_step_4, subtract_quartiles, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:275'))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_1, order_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_2, split_around_median, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_3, locate_quartiles, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
+automaton_transition(statistics, five_number_summary_and_iqr, q_step_4, subtract_quartiles, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
 
 automaton_transition(statistics, histogram_equal_interval_representation, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:115'))).
 automaton_transition(statistics, histogram_equal_interval_representation, q_step_1, choose_equal_bin_width, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:115'))).
@@ -48,33 +48,33 @@ automaton_transition(statistics, histogram_equal_interval_representation, q_step
 automaton_transition(statistics, histogram_equal_interval_representation, q_step_3, count_each_observation_once, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:115'))).
 automaton_transition(statistics, histogram_equal_interval_representation, q_step_4, draw_touching_interval_bars, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:115'))).
 
-automaton_transition(statistics, mean_absolute_deviation, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:187'))).
-automaton_transition(statistics, mean_absolute_deviation, q_step_1, locate_mean, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:187'))).
-automaton_transition(statistics, mean_absolute_deviation, q_step_2, measure_signed_deviations, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:187'))).
-automaton_transition(statistics, mean_absolute_deviation, q_step_3, take_absolute_distances, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:187'))).
-automaton_transition(statistics, mean_absolute_deviation, q_step_4, average_distances, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:187'))).
+automaton_transition(statistics, mean_absolute_deviation, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:189'))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_1, locate_mean, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:189'))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_2, measure_signed_deviations, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:189'))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_3, take_absolute_distances, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:189'))).
+automaton_transition(statistics, mean_absolute_deviation, q_step_4, average_distances, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:189'))).
 
-automaton_transition(statistics, mean_as_balance_point, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:163'))).
-automaton_transition(statistics, mean_as_balance_point, q_step_1, locate_mean, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:163'))).
-automaton_transition(statistics, mean_as_balance_point, q_step_2, measure_signed_deviations, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:163'))).
-automaton_transition(statistics, mean_as_balance_point, q_step_3, verify_balanced_deviations, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:163'))).
+automaton_transition(statistics, mean_as_balance_point, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:164'))).
+automaton_transition(statistics, mean_as_balance_point, q_step_1, locate_mean, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:164'))).
+automaton_transition(statistics, mean_as_balance_point, q_step_2, measure_signed_deviations, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:164'))).
+automaton_transition(statistics, mean_as_balance_point, q_step_3, verify_balanced_deviations, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:164'))).
 
 automaton_transition(statistics, mean_as_fair_share, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:141'))).
 automaton_transition(statistics, mean_as_fair_share, q_step_1, collect_total, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:141'))).
 automaton_transition(statistics, mean_as_fair_share, q_step_2, count_values, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:141'))).
 automaton_transition(statistics, mean_as_fair_share, q_step_3, redistribute_total_equally, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:141'))).
 
-automaton_transition(statistics, mean_deviation_without_absolute_value, q_start, locate_mean, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:210'))).
-automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_1, measure_signed_deviations, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:210'))).
-automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_2, omit_absolute_value, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:210'))).
-automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_3, average_signed_deviations, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:210'))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_start, locate_mean, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:213'))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_1, measure_signed_deviations, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:213'))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_2, omit_absolute_value, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:213'))).
+automaton_transition(statistics, mean_deviation_without_absolute_value, q_step_3, average_signed_deviations, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:213'))).
 
-automaton_transition(statistics, median_as_ordered_middle, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:231'))).
-automaton_transition(statistics, median_as_ordered_middle, q_step_1, order_values, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:231'))).
+automaton_transition(statistics, median_as_ordered_middle, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:234'))).
+automaton_transition(statistics, median_as_ordered_middle, q_step_1, order_values, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:234'))).
 
-automaton_transition(statistics, mode_as_maximal_frequency, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:251'))).
-automaton_transition(statistics, mode_as_maximal_frequency, q_step_1, count_equal_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:251'))).
-automaton_transition(statistics, mode_as_maximal_frequency, q_step_2, retain_all_maximal_frequencies, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:251'))).
+automaton_transition(statistics, mode_as_maximal_frequency, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:254'))).
+automaton_transition(statistics, mode_as_maximal_frequency, q_step_1, count_equal_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:254'))).
+automaton_transition(statistics, mode_as_maximal_frequency, q_step_2, retain_all_maximal_frequencies, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:254'))).
 
 automaton_transition(statistics, question_without_variability, q_start, identify_measured_variable, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:93'))).
 automaton_transition(statistics, question_without_variability, q_step_1, replace_varied_responses_with_one_fixed_answer, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:93'))).
