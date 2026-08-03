@@ -20515,7 +20515,7 @@
    {
     "action_name": "co_denominator_make_ten_split_leftover",
     "canonical_mapping_signature_matches": [],
-    "line": 867,
+    "line": 870,
     "registered_automaton_correspondence": false,
     "registry_signature_matches": [],
     "requesting_signature_matches": [],
@@ -20525,7 +20525,7 @@
    {
     "action_name": "co_denominator_make_base_transfer",
     "canonical_mapping_signature_matches": [],
-    "line": 896,
+    "line": 899,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20540,7 +20540,7 @@
    {
     "action_name": "common_denominator_fraction_addition",
     "canonical_mapping_signature_matches": [],
-    "line": 935,
+    "line": 941,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20555,7 +20555,7 @@
    {
     "action_name": "common_denominator_fraction_subtraction",
     "canonical_mapping_signature_matches": [],
-    "line": 958,
+    "line": 964,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20570,7 +20570,7 @@
    {
     "action_name": "add_numerator_denominator_sum",
     "canonical_mapping_signature_matches": [],
-    "line": 987,
+    "line": 993,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20585,7 +20585,7 @@
    {
     "action_name": "measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 1013,
+    "line": 1019,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20600,7 +20600,7 @@
    {
     "action_name": "reversible_measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 1052,
+    "line": 1058,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -25552,7 +25552,7 @@
    {
     "action_name": "co_denominator_make_ten_split_leftover",
     "canonical_mapping_signature_matches": [],
-    "line": 867,
+    "line": 870,
     "registered_automaton_correspondence": false,
     "registry_signature_matches": [],
     "requesting_signature_matches": [],
@@ -25874,7 +25874,7 @@
  },
  "register": "Measured partial action-seam inventory. Enacted membership requires inputs extracted from that lesson's accepted tracked span and a live trace.",
  "registry_probe_inventory": {
-  "checked_contracts_run": 124,
+  "checked_contracts_run": 131,
   "coverage": [
    {
     "checked_contract_run": {
@@ -29096,14 +29096,79 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "fraction_pair",
+      "left": {
+       "d": 100,
+       "n": 47
+      },
+      "right": {
+       "d": 100,
+       "n": 28
+      }
+     },
+     "kind": "co_denominator_make_base_transfer",
+     "operation": "fraction",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "co_denominator_make_base_transfer",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "75",
+      "steps": [
+       {
+        "label": "confirm_same_denominator(100)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "hold_referent_whole_at(fraction(100,100))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "hold_unit_fraction_at(fraction(1,100))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "dispatch_to_cgi(make_base_transfer,numerators(47,28))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "cgi_kernel_outcome(action_outcome(make_base_transfer,[classification(productive),cluster(additive_strategy_fluency),automaton_state(make_ten),vocabulary([addend,base,distance_to_base,transfer,remainder,conservation]),result(75),expected(75),validity(correct),components(make_base_components(47,28,10,50,3,50,25)),elaborates(sar_add_rmb:run_rmb/4),evidence(existing_trace([step(state(q_init,47,28,0,0,0,0,0),[],Inputs: 47, 28. Larger: 47, Smaller: 28.),step(state(q_determine_order,47,28,0,47,28,0,28),[],Target base for A (47): 50. Need to calculate K.),step(state(q_calc_K,47,28,0,47,28,50,28),[],Count up: 48. Distance (K): 1.),step(state(q_calc_K,47,28,1,48,28,50,28),[],Count up: 49. Distance (K): 2.),step(state(q_calc_K,47,28,2,49,28,50,28),[],Count up: 50. Distance (K): 3.),step(state(q_calc_K,47,28,3,50,28,50,28),[],K needed is 3. Start counting down K from B.),step(state(q_decompose_B,47,28,3,50,28,50,28),[],Transferred 1. B remainder: 27. K remaining: 2.),step(state(q_decompose_B,47,28,2,50,27,50,28),[],Transferred 1. B remainder: 26. K remaining: 1.),step(state(q_decompose_B,47,28,1,50,26,50,28),[],Transferred 1. B remainder: 25. K remaining: 0.),step(state(q_decompose_B,47,28,0,50,25,50,28),[],Decomposition Complete. New state: A=50, B=25.),step(state(q_recombine,50,25,0,50,25,0,0),[],Proceed to accept.),step(state(q_accept,50,25,0,50,25,0,0),[],Successfully computed sum: 75 via rearranging to make bases strategy)]))]))",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "attach_three_level_units_coordination(three_level_units_coordination(operative_base(10),unit_fraction(fraction(1,100)),referent_whole(fraction(100,100)),iteration_count_at_unit(addition_of(47,28))))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "co_denominator_make_base_transfer"
+     }
+    },
     "direct_runs": [],
     "kind": "co_denominator_make_base_transfer",
     "line": 329,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -29191,14 +29256,79 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "fraction_pair",
+      "left": {
+       "d": 100,
+       "n": 47
+      },
+      "right": {
+       "d": 100,
+       "n": 28
+      }
+     },
+     "kind": "co_denominator_count_on_from_larger",
+     "operation": "fraction",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "co_denominator_count_on_from_larger",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "75",
+      "steps": [
+       {
+        "label": "confirm_same_denominator(100)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "hold_referent_whole_at(fraction(100,100))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "hold_unit_fraction_at(fraction(1,100))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "dispatch_to_cgi(count_on_from_larger,numerators(47,28))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "cgi_kernel_outcome(action_outcome(count_on_from_larger,[classification(productive),cluster(additive_strategy_fluency),automaton_state(count_on),vocabulary([start_number,counted_addend,successor_tick,cardinal_sum]),result(75),expected(75),validity(correct),start_number(47),counted_addend(28),tick_values([48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75]),elaborates(sar_add_counting_on:run_counting_on/4),evidence(existing_trace([step(q_start,47,28,Start at 47, count on 28 times.),step(q_initialize,47,28,Begin counting on by ones.),step(q_count,47,28,Count on: 47 -> 48.),step(q_count,48,27,Count on: 48 -> 49.),step(q_count,49,26,Count on: 49 -> 50.),step(q_count,50,25,Count on: 50 -> 51.),step(q_count,51,24,Count on: 51 -> 52.),step(q_count,52,23,Count on: 52 -> 53.),step(q_count,53,22,Count on: 53 -> 54.),step(q_count,54,21,Count on: 54 -> 55.),step(q_count,55,20,Count on: 55 -> 56.),step(q_count,56,19,Count on: 56 -> 57.),step(q_count,57,18,Count on: 57 -> 58.),step(q_count,58,17,Count on: 58 -> 59.),step(q_count,59,16,Count on: 59 -> 60.),step(q_count,60,15,Count on: 60 -> 61.),step(q_count,61,14,Count on: 61 -> 62.),step(q_count,62,13,Count on: 62 -> 63.),step(q_count,63,12,Count on: 63 -> 64.),step(q_count,64,11,Count on: 64 -> 65.),step(q_count,65,10,Count on: 65 -> 66.),step(q_count,66,9,Count on: 66 -> 67.),step(q_count,67,8,Count on: 67 -> 68.),step(q_count,68,7,Count on: 68 -> 69.),step(q_count,69,6,Count on: 69 -> 70.),step(q_count,70,5,Count on: 70 -> 71.),step(q_count,71,4,Count on: 71 -> 72.),step(q_count,72,3,Count on: 72 -> 73.),step(q_count,73,2,Count on: 73 -> 74.),step(q_count,74,1,Count on: 74 -> 75.),step(q_count,75,0,All counts complete. Final sum reached.),step(q_accept,75,0,Counting complete.)]))]))",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "attach_three_level_units_coordination(three_level_units_coordination(operative_base(10),unit_fraction(fraction(1,100)),referent_whole(fraction(100,100)),iteration_count_at_unit(addition_of(47,28))))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "co_denominator_count_on_from_larger"
+     }
+    },
     "direct_runs": [],
     "kind": "co_denominator_count_on_from_larger",
     "line": 336,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -30835,24 +30965,125 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": 347,
+      "b": 100
+     },
+     "kind": "positional_decimal_reading",
+     "operation": "decimal",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "positional_decimal_reading",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "decimal(3,fractional_digits(47,2),hundredths)",
+      "steps": [
+       {
+        "label": "read_decimal_mark(scale(100))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "split_whole_and_fractional_parts(347,100,3,47)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "assign_fractional_place_value(47,places(2),hundredths)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "compose_decimal_value(decimal(3,fractional_digits(47,2),hundredths))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "positional_decimal_reading"
+     }
+    },
     "direct_runs": [],
     "kind": "positional_decimal_reading",
     "line": 414,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": 347,
+      "b": 100
+     },
+     "kind": "decimal_whole_number_reading",
+     "operation": "decimal",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "decimal_whole_number_reading",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "whole_number(347)",
+      "steps": [
+       {
+        "label": "see_digits_as_whole_number_string(347)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_decimal_mark(scale(100))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "ignore_fractional_place_value(47,places(2),hundredths)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "name_decimal_as_whole_number(whole_number(347))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "lose_decimal_scale(expected(decimal(3,fractional_digits(47,2),hundredths)),produced(whole_number(347)))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "decimal_whole_number_reading"
+     }
+    },
     "direct_runs": [],
     "kind": "decimal_whole_number_reading",
     "line": 417,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -31723,24 +31954,144 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "decimal_pair",
+      "left": {
+       "numeral": 45,
+       "scale": 10
+      },
+      "right": {
+       "numeral": 15,
+       "scale": 10
+      }
+     },
+     "kind": "ecuadorian_decimal_long_division",
+     "operation": "decimal",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "ecuadorian_decimal_long_division",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "decimal_quotient(3,0)",
+      "steps": [
+       {
+        "label": "identify_operand_place_counts(1,1)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "choose_maximum_place_count(1)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "scale_both_operands_by_shared_power_of_ten(10)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "clear_decimal_points(45,15)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "divide_as_integers(45,15,3,0)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "name_decimal_quotient(decimal_quotient(3,0))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "ecuadorian_decimal_long_division"
+     }
+    },
     "direct_runs": [],
     "kind": "ecuadorian_decimal_long_division",
     "line": 444,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "kind": "decimal_pair",
+      "left": {
+       "numeral": 600,
+       "scale": 1
+      },
+      "right": {
+       "numeral": 5,
+       "scale": 1
+      }
+     },
+     "kind": "recalled_result_scaling",
+     "operation": "decimal",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "recalled_result_scaling",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "decimal_quotient(120,0)",
+      "steps": [
+       {
+        "label": "recall_base_division_fact(6,5,decimal_value(12,scale(10)))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_dividend_scale_factor(100)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "propagate_scale_factor_through_quotient(12,100,120)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "name_decimal_quotient(decimal_quotient(120,0))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "recalled_result_scaling"
+     }
+    },
     "direct_runs": [],
     "kind": "recalled_result_scaling",
     "line": 446,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": {
@@ -32043,14 +32394,72 @@
     "unexercised_reason": null
    },
    {
-    "checked_contract_run": null,
+    "checked_contract_run": {
+     "input": {
+      "a": -7,
+      "b": 3
+     },
+     "kind": "drop_sign_use_magnitude_sum",
+     "operation": "integer",
+     "response": {
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "drop_sign_use_magnitude_sum",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "10",
+      "steps": [
+       {
+        "label": "identify_signs(sign_a(negative),sign_b(positive))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_magnitudes(magnitude_a(7),magnitude_b(3))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "drop_signs(sign_a(negative),sign_b(positive))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "sum_magnitudes_only(7,3,10)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "name_magnitude_sum_as_answer(10)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "lose_sign_relation(expected(-4),produced(10))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "drop_sign_use_magnitude_sum"
+     }
+    },
     "direct_runs": [],
     "kind": "drop_sign_use_magnitude_sum",
     "line": 463,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
-    "status": "unexercised",
-    "unexercised_reason": "no checked input contract and no lesson-derived or reviewer fixture produced a successful run"
+    "status": "exercised",
+    "unexercised_reason": null
    },
    {
     "checked_contract_run": null,
@@ -38091,7 +38500,7 @@
     "unexercised_reason": null
    }
   ],
-  "exercised_signatures": 131,
+  "exercised_signatures": 138,
   "registered_signatures": 219,
   "reviewer_six": [
    {
@@ -38246,7 +38655,7 @@
     }
    }
   ],
-  "unexercised_signatures": 88
+  "unexercised_signatures": 81
  },
  "reviewed_blocker_lessons": [
   {

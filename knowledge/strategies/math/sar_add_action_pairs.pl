@@ -163,6 +163,9 @@ run_additive_action(make_ten_drop_leftover, A, B, Outcome, Trace) :-
               lose_total_conservation(expected(Expected), produced(Result))
             ].
 run_additive_action(make_base_transfer, A, B, Outcome, Trace) :-
+    % Admissible domain: nonnegative integer addends where the smaller addend
+    % can supply the distance needed to move the larger addend to its next base.
+    admissible_make_base_transfer(A, B),
     run_rmb(A, B, ExistingResult, ExistingTrace),
     make_base_components(A, B, Components),
     Components = make_base_components(Larger, Smaller, Base, TargetBase, K, LargerMadeBase, SmallerRemainder),
@@ -632,6 +635,24 @@ make_base_components(A, B, make_base_components(Larger, Smaller, Base, TargetBas
     add_ints(Larger, K, LargerMadeBase),
     subtract_ints(Smaller, K, SmallerRemainder),
     incur_cost(action_make_base_components).
+
+
+admissible_make_base_transfer(A, B) :-
+    integer(A),
+    integer(B),
+    A >= 0,
+    B >= 0,
+    current_cgi_base(Base),
+    Base > 0,
+    Larger is max(A, B),
+    Smaller is min(A, B),
+    Remainder is Larger mod Base,
+    (   Remainder =:= 0,
+        Larger =\= 0
+    ->  K = 0
+    ;   K is Base - Remainder
+    ),
+    Smaller >= K.
 
 
 rounding_components(A, B, rounding_components(Target, Other, Base, TargetBase, K, RoundedSum, Result)) :-

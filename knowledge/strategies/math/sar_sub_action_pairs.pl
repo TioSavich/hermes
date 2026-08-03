@@ -71,6 +71,8 @@
 %
 %   Execute a productive or deformed subtractive action automaton.
 run_subtractive_action(take_away_base_ones, M, S, Outcome, Trace) :-
+    % Admissible domain: nonnegative integer subtraction with minuend >= subtrahend.
+    admissible_ordered_subtraction(M, S),
     run_cbbo_ta(M, S, ExistingResult, ExistingTrace),
     takeaway_components(M, S, Components),
     Components = takeaway_components(Base, BaseChunk, OnesChunk, AfterBaseChunk, Result),
@@ -118,6 +120,8 @@ run_subtractive_action(drop_ones_after_base_takeaway, M, S, Outcome, Trace) :-
               lose_subtracted_remainder(expected(Expected), produced(Result))
             ].
 run_subtractive_action(count_up_missing_addend, M, S, Outcome, Trace) :-
+    % Admissible domain: nonnegative integer subtraction with minuend >= subtrahend.
+    admissible_ordered_subtraction(M, S),
     run_cobo_ma(M, S, ExistingResult, ExistingTrace),
     count_up_components(M, S, Components),
     Components = count_up_components(Base, BaseJumps, OneJumps, Distance, Endpoint),
@@ -213,6 +217,8 @@ run_subtractive_action(compare_returns_larger_count, A, B, Outcome, Trace) :-
               lose_surplus_as_unmatched_remainder(expected(Difference), produced(Result))
             ].
 run_subtractive_action(sliding_constant_difference, M, S, Outcome, Trace) :-
+    % Admissible domain: nonnegative integer subtraction with minuend >= subtrahend.
+    admissible_ordered_subtraction(M, S),
     run_sliding(M, S, ExistingResult, ExistingTrace),
     sliding_components(M, S, Components),
     Components = sliding_components(Base, TargetBase, K, AdjustedM, AdjustedS, Result),
@@ -561,6 +567,14 @@ takeaway_components(M, S, takeaway_components(Base, BaseChunk, OnesChunk, AfterB
     subtract_ints(M, BaseChunk, AfterBaseChunk),
     subtract_ints(AfterBaseChunk, OnesChunk, Result),
     incur_cost(action_takeaway_components).
+
+
+admissible_ordered_subtraction(M, S) :-
+    integer(M),
+    integer(S),
+    M >= 0,
+    S >= 0,
+    M >= S.
 
 
 count_up_components(M, S, count_up_components(Base, BaseJumps, OneJumps, Distance, M)) :-

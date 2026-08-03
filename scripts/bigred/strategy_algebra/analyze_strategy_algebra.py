@@ -706,12 +706,16 @@ def main() -> int:
     # seven of its eight signatures became observed, and
     # enumerate_collection_one_to_one stayed out because it declares no static
     # trace list for the extractor to root its states in.
+    # 121 since 2026-08-03, when the contract-gap slice added seven contracts
+    # the existing seam could already decode: four decimal reading/scaling
+    # kinds, the two co-denominator fraction dispatches, and the
+    # drop-sign integer deformation.
     # A guard rather than a preference. The analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.
-    if len(observed) != 114:
+    if len(observed) != 121:
         raise SystemExit(
-            f"expected 114 execution-observed signatures, found {len(observed)}"
+            f"expected 121 execution-observed signatures, found {len(observed)}"
         )
     if args.smoke:
         by_name = {automaton.signature.name: automaton for automaton in observed}

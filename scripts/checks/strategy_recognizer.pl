@@ -5,7 +5,7 @@
 main :-
     observed_signatures(Signatures),
     length(Signatures, SignatureCount),
-    expect_equal(114, SignatureCount, observed_signature_count),
+    expect_equal(121, SignatureCount, observed_signature_count),
     expect_family_counts(Signatures),
     forall(member(Operation-Kind, Signatures),
            expect_round_trips(Operation, Kind)),
@@ -14,7 +14,7 @@ main :-
     strategy_recognizer:recognize_strategies(
         "I do not know what to do next.", Empty),
     expect_equal([], Empty, honest_abstention),
-    format("PASS strategy recognizers: 114/114 execution-observed signatures~n").
+    format("PASS strategy recognizers: 121/121 execution-observed signatures~n").
 
 observed_signatures(Signatures) :-
     findall(Operation-Kind,
@@ -27,11 +27,11 @@ expect_family_counts(Signatures) :-
     forall(member(Operation-Expected,
                   [ addition-18,
                     counting-7,
-                    decimal-10,
+                    decimal-14,
                     division-16,
-                    fraction-24,
+                    fraction-26,
                     geometry-2,
-                    integer-1,
+                    integer-2,
                     multiplication-20,
                     ratio-2,
                     subtraction-14

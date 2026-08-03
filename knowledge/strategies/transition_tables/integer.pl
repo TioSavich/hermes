@@ -45,6 +45,20 @@ automaton_transition(integer, signed_number_location_and_order, q_step_2, preser
 automaton_transition(integer, signed_number_location_and_order, q_step_3, read_locations_left_to_right, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:83'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_start, identify_signs, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_1, identify_magnitudes, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_2, drop_signs, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_3, sum_magnitudes_only, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_4, name_magnitude_sum_as_answer, q_step_5, provenance(observed(contract_example))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_5, lose_sign_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_start, identify_signs, q_step_1, provenance(observed(derived_template))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_1, identify_magnitudes, q_step_2, provenance(observed(derived_template))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_2, drop_signs, q_step_3, provenance(observed(derived_template))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_3, sum_magnitudes_only, q_step_4, provenance(observed(derived_template))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_4, name_magnitude_sum_as_answer, q_step_5, provenance(observed(derived_template))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_5, lose_sign_relation, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(integer, signed_addition_with_sign_relation, q_start, identify_signs, q_step_1, provenance(observed(contract_example))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_1, identify_magnitudes, q_step_2, provenance(observed(contract_example))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_2, determine_sign_relation, q_step_3, provenance(observed(contract_example))).

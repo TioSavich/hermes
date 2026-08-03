@@ -43,6 +43,8 @@
 :- use_module(strategies(automaton_input_contracts),
               [ automaton_input_contract/5 ]).
 
+:- discontiguous truth/5.
+
 % --- JSON example -> run_action_automaton argument pair -------------------
 
 example_args(Dict, A, B) :-
@@ -207,6 +209,10 @@ truth(division, Kind, A, B, T) :-
 
 truth(counting, _, Count, base(_), number(Count)) :- integer(Count).
 truth(counting, _, counts(A, B), _, order(O)) :- cmp_order(A, B, O).
+truth(fraction, Kind, fraction_pair(N1, D, N2, D), unit(whole), number(T)) :-
+    sub_atom(Kind, 0, _, _, co_denominator_),
+    !,
+    T is N1 + N2.
 truth(fraction, Kind, fraction_pair(N1, D1, N2, D2), unit(whole), T) :-
     V1 is N1 rdiv D1, V2 is N2 rdiv D2,
     (   ( sub_atom(Kind, _, _, _, part_of_part)

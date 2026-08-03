@@ -256,3 +256,37 @@ automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_2, al
 automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_3, align_decimal_units, q_step_4, provenance(observed(derived_template))).
 automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_4, subtract_grounded_aligned_units, q_step_5, provenance(observed(derived_template))).
 automaton_transition(decimal, decimal_subtraction_by_aligned_units, q_step_5, reinscribe_decimal_result, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(decimal, decimal_whole_number_reading, q_start, see_digits_as_whole_number_string, q_step_1, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_1, ignore_decimal_mark, q_step_2, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_2, ignore_fractional_place_value, q_step_3, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_3, name_decimal_as_whole_number, q_step_4, provenance(observed(contract_example))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_4, lose_decimal_scale, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(decimal, decimal_whole_number_reading, q_start, see_digits_as_whole_number_string, q_step_1, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_1, ignore_decimal_mark, q_step_2, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_2, ignore_fractional_place_value, q_step_3, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_3, name_decimal_as_whole_number, q_step_4, provenance(observed(derived_template))).
+automaton_transition(decimal, decimal_whole_number_reading, q_step_4, lose_decimal_scale, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_start, identify_operand_place_counts, q_step_1, provenance(observed(contract_example))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_1, choose_maximum_place_count, q_step_2, provenance(observed(contract_example))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_2, scale_both_operands_by_shared_power_of_ten, q_step_3, provenance(observed(contract_example))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_3, clear_decimal_points, q_step_4, provenance(observed(contract_example))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_4, divide_as_integers, q_step_5, provenance(observed(contract_example))).
+automaton_transition(decimal, ecuadorian_decimal_long_division, q_step_5, name_decimal_quotient, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(decimal, positional_decimal_reading, q_start, read_decimal_mark, q_step_1, provenance(observed(contract_example))).
+automaton_transition(decimal, positional_decimal_reading, q_step_1, split_whole_and_fractional_parts, q_step_2, provenance(observed(contract_example))).
+automaton_transition(decimal, positional_decimal_reading, q_step_2, assign_fractional_place_value, q_step_3, provenance(observed(contract_example))).
+automaton_transition(decimal, positional_decimal_reading, q_step_3, compose_decimal_value, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(decimal, positional_decimal_reading, q_start, read_decimal_mark, q_step_1, provenance(observed(derived_template))).
+automaton_transition(decimal, positional_decimal_reading, q_step_1, split_whole_and_fractional_parts, q_step_2, provenance(observed(derived_template))).
+automaton_transition(decimal, positional_decimal_reading, q_step_2, assign_fractional_place_value, q_step_3, provenance(observed(derived_template))).
+automaton_transition(decimal, positional_decimal_reading, q_step_3, compose_decimal_value, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(decimal, recalled_result_scaling, q_start, recall_base_division_fact, q_step_1, provenance(observed(contract_example))).
+automaton_transition(decimal, recalled_result_scaling, q_step_1, identify_dividend_scale_factor, q_step_2, provenance(observed(contract_example))).
+automaton_transition(decimal, recalled_result_scaling, q_step_2, propagate_scale_factor_through_quotient, q_step_3, provenance(observed(contract_example))).
+automaton_transition(decimal, recalled_result_scaling, q_step_3, name_decimal_quotient, q_accept, provenance(observed(contract_example))).

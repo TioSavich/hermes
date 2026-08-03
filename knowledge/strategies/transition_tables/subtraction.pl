@@ -18,89 +18,89 @@ automaton_tuple(subtraction, sliding_constant_difference, states([q_start, q_ste
 automaton_tuple(subtraction, smaller_from_larger_in_column, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([decompose_numbers, skip_borrow_procedure, subtract_smaller_from_larger_in_ones, subtract_smaller_from_larger_in_bases, recompose_without_role_preservation, lose_minuend_subtrahend_roles]), start(q_start), accepting([q_accept])).
 automaton_tuple(subtraction, take_away_base_ones, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([decompose_subtrahend, count_back_by_base_chunk, count_back_by_ones, preserve_all_subtracted_parts]), start(q_start), accepting([q_accept])).
 
-automaton_transition(subtraction, add_instead_of_subtract_column, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:359'))).
-automaton_transition(subtraction, add_instead_of_subtract_column, q_step_1, add_ones_instead_of_subtracting, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:359'))).
-automaton_transition(subtraction, add_instead_of_subtract_column, q_step_2, add_bases_instead_of_subtracting, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:359'))).
-automaton_transition(subtraction, add_instead_of_subtract_column, q_step_3, recompose_as_sum, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:359'))).
-automaton_transition(subtraction, add_instead_of_subtract_column, q_step_4, lose_operation_direction, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:359'))).
+automaton_transition(subtraction, add_instead_of_subtract_column, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:365'))).
+automaton_transition(subtraction, add_instead_of_subtract_column, q_step_1, add_ones_instead_of_subtracting, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:365'))).
+automaton_transition(subtraction, add_instead_of_subtract_column, q_step_2, add_bases_instead_of_subtracting, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:365'))).
+automaton_transition(subtraction, add_instead_of_subtract_column, q_step_3, recompose_as_sum, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:365'))).
+automaton_transition(subtraction, add_instead_of_subtract_column, q_step_4, lose_operation_direction, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:365'))).
 
-automaton_transition(subtraction, answer_as_endpoint_count_up, q_start, start_at_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:143'))).
-automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_1, target_minuend, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:143'))).
-automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_2, count_up_by_bases, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:143'))).
-automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_3, count_up_by_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:143'))).
-automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_4, name_endpoint_as_answer, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:143'))).
-automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_5, lose_distance_as_count, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:143'))).
+automaton_transition(subtraction, answer_as_endpoint_count_up, q_start, start_at_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:147'))).
+automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_1, target_minuend, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:147'))).
+automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_2, count_up_by_bases, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:147'))).
+automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_3, count_up_by_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:147'))).
+automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_4, name_endpoint_as_answer, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:147'))).
+automaton_transition(subtraction, answer_as_endpoint_count_up, q_step_5, lose_distance_as_count, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:147'))).
 
-automaton_transition(subtraction, borrow_across_zero_cascade, q_start, decompose_columns, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:388'))).
-automaton_transition(subtraction, borrow_across_zero_cascade, q_step_1, identify_zero_cascade, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:388'))).
-automaton_transition(subtraction, borrow_across_zero_cascade, q_step_2, cascade_borrow_from_donor_column, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:388'))).
-automaton_transition(subtraction, borrow_across_zero_cascade, q_step_3, convert_zero_columns_to_nines, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:388'))).
-automaton_transition(subtraction, borrow_across_zero_cascade, q_step_4, borrow_into_ones_after_cascade, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:388'))).
-automaton_transition(subtraction, borrow_across_zero_cascade, q_step_5, subtract_after_zero_cascade, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:388'))).
+automaton_transition(subtraction, borrow_across_zero_cascade, q_start, decompose_columns, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:394'))).
+automaton_transition(subtraction, borrow_across_zero_cascade, q_step_1, identify_zero_cascade, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:394'))).
+automaton_transition(subtraction, borrow_across_zero_cascade, q_step_2, cascade_borrow_from_donor_column, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:394'))).
+automaton_transition(subtraction, borrow_across_zero_cascade, q_step_3, convert_zero_columns_to_nines, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:394'))).
+automaton_transition(subtraction, borrow_across_zero_cascade, q_step_4, borrow_into_ones_after_cascade, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:394'))).
+automaton_transition(subtraction, borrow_across_zero_cascade, q_step_5, subtract_after_zero_cascade, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:394'))).
 
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_start, decompose_columns, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_1, identify_zero_cascade, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_2, note_zero_tens_column, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_3, treat_zero_as_full_base, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_4, skip_hundreds_decrement, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_5, skip_donor_decrement, q_step_6, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_6, recompose_without_zero_cascade, q_step_7, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
-automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_7, lose_hundreds_borrow, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:414'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_start, decompose_columns, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_1, identify_zero_cascade, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_2, note_zero_tens_column, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_3, treat_zero_as_full_base, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_4, skip_hundreds_decrement, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_5, skip_donor_decrement, q_step_6, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_6, recompose_without_zero_cascade, q_step_7, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
+automaton_transition(subtraction, borrow_across_zero_no_cascade, q_step_7, lose_hundreds_borrow, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:420'))).
 
-automaton_transition(subtraction, borrow_without_reducing_bases, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:295'))).
-automaton_transition(subtraction, borrow_without_reducing_bases, q_step_1, subtract_base_components, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:295'))).
-automaton_transition(subtraction, borrow_without_reducing_bases, q_step_2, add_base_to_ones_without_removing_base, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:295'))).
-automaton_transition(subtraction, borrow_without_reducing_bases, q_step_3, subtract_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:295'))).
-automaton_transition(subtraction, borrow_without_reducing_bases, q_step_4, recompose_with_unreduced_bases, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:295'))).
-automaton_transition(subtraction, borrow_without_reducing_bases, q_step_5, lose_exchange_conservation, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:295'))).
+automaton_transition(subtraction, borrow_without_reducing_bases, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:301'))).
+automaton_transition(subtraction, borrow_without_reducing_bases, q_step_1, subtract_base_components, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:301'))).
+automaton_transition(subtraction, borrow_without_reducing_bases, q_step_2, add_base_to_ones_without_removing_base, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:301'))).
+automaton_transition(subtraction, borrow_without_reducing_bases, q_step_3, subtract_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:301'))).
+automaton_transition(subtraction, borrow_without_reducing_bases, q_step_4, recompose_with_unreduced_bases, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:301'))).
+automaton_transition(subtraction, borrow_without_reducing_bases, q_step_5, lose_exchange_conservation, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:301'))).
 
-automaton_transition(subtraction, compare_by_matching_difference, q_start, identify_larger_and_smaller, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:167'))).
-automaton_transition(subtraction, compare_by_matching_difference, q_step_1, pair_objects_one_to_one, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:167'))).
-automaton_transition(subtraction, compare_by_matching_difference, q_step_2, remove_matched_pairs, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:167'))).
-automaton_transition(subtraction, compare_by_matching_difference, q_step_3, count_unmatched_as_difference, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:167'))).
-automaton_transition(subtraction, compare_by_matching_difference, q_step_4, name_difference_not_larger_total, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:167'))).
+automaton_transition(subtraction, compare_by_matching_difference, q_start, identify_larger_and_smaller, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:171'))).
+automaton_transition(subtraction, compare_by_matching_difference, q_step_1, pair_objects_one_to_one, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:171'))).
+automaton_transition(subtraction, compare_by_matching_difference, q_step_2, remove_matched_pairs, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:171'))).
+automaton_transition(subtraction, compare_by_matching_difference, q_step_3, count_unmatched_as_difference, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:171'))).
+automaton_transition(subtraction, compare_by_matching_difference, q_step_4, name_difference_not_larger_total, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:171'))).
 
-automaton_transition(subtraction, compare_returns_larger_count, q_start, identify_larger_and_smaller, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:189'))).
-automaton_transition(subtraction, compare_returns_larger_count, q_step_1, pair_objects_one_to_one, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:189'))).
-automaton_transition(subtraction, compare_returns_larger_count, q_step_2, ignore_matched_pairs, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:189'))).
-automaton_transition(subtraction, compare_returns_larger_count, q_step_3, report_larger_count_as_difference, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:189'))).
-automaton_transition(subtraction, compare_returns_larger_count, q_step_4, lose_surplus_as_unmatched_remainder, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:189'))).
+automaton_transition(subtraction, compare_returns_larger_count, q_start, identify_larger_and_smaller, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:193'))).
+automaton_transition(subtraction, compare_returns_larger_count, q_step_1, pair_objects_one_to_one, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:193'))).
+automaton_transition(subtraction, compare_returns_larger_count, q_step_2, ignore_matched_pairs, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:193'))).
+automaton_transition(subtraction, compare_returns_larger_count, q_step_3, report_larger_count_as_difference, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:193'))).
+automaton_transition(subtraction, compare_returns_larger_count, q_step_4, lose_surplus_as_unmatched_remainder, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:193'))).
 
-automaton_transition(subtraction, count_up_missing_addend, q_start, start_at_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:120'))).
-automaton_transition(subtraction, count_up_missing_addend, q_step_1, target_minuend, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:120'))).
-automaton_transition(subtraction, count_up_missing_addend, q_step_2, count_up_by_bases, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:120'))).
-automaton_transition(subtraction, count_up_missing_addend, q_step_3, count_up_by_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:120'))).
-automaton_transition(subtraction, count_up_missing_addend, q_step_4, name_distance_not_endpoint, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:120'))).
+automaton_transition(subtraction, count_up_missing_addend, q_start, start_at_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:122'))).
+automaton_transition(subtraction, count_up_missing_addend, q_step_1, target_minuend, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:122'))).
+automaton_transition(subtraction, count_up_missing_addend, q_step_2, count_up_by_bases, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:122'))).
+automaton_transition(subtraction, count_up_missing_addend, q_step_3, count_up_by_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:122'))).
+automaton_transition(subtraction, count_up_missing_addend, q_step_4, name_distance_not_endpoint, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:122'))).
 
-automaton_transition(subtraction, decompose_base_for_ones, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:264'))).
-automaton_transition(subtraction, decompose_base_for_ones, q_step_1, subtract_base_components, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:264'))).
-automaton_transition(subtraction, decompose_base_for_ones, q_step_2, exchange_one_base_for_ones, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:264'))).
-automaton_transition(subtraction, decompose_base_for_ones, q_step_3, subtract_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:264'))).
-automaton_transition(subtraction, decompose_base_for_ones, q_step_4, recompose_difference, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:264'))).
+automaton_transition(subtraction, decompose_base_for_ones, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:270'))).
+automaton_transition(subtraction, decompose_base_for_ones, q_step_1, subtract_base_components, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:270'))).
+automaton_transition(subtraction, decompose_base_for_ones, q_step_2, exchange_one_base_for_ones, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:270'))).
+automaton_transition(subtraction, decompose_base_for_ones, q_step_3, subtract_ones, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:270'))).
+automaton_transition(subtraction, decompose_base_for_ones, q_step_4, recompose_difference, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:270'))).
 
-automaton_transition(subtraction, drop_ones_after_base_takeaway, q_start, decompose_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:95'))).
-automaton_transition(subtraction, drop_ones_after_base_takeaway, q_step_1, count_back_by_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:95'))).
-automaton_transition(subtraction, drop_ones_after_base_takeaway, q_step_2, drop_ones_chunk, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:95'))).
-automaton_transition(subtraction, drop_ones_after_base_takeaway, q_step_3, lose_subtracted_remainder, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:95'))).
+automaton_transition(subtraction, drop_ones_after_base_takeaway, q_start, decompose_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:97'))).
+automaton_transition(subtraction, drop_ones_after_base_takeaway, q_step_1, count_back_by_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:97'))).
+automaton_transition(subtraction, drop_ones_after_base_takeaway, q_step_2, drop_ones_chunk, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:97'))).
+automaton_transition(subtraction, drop_ones_after_base_takeaway, q_step_3, lose_subtracted_remainder, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:97'))).
 
-automaton_transition(subtraction, slide_subtrahend_only, q_start, identify_subtrahend_target_base, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:239'))).
-automaton_transition(subtraction, slide_subtrahend_only, q_step_1, count_slide_amount, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:239'))).
-automaton_transition(subtraction, slide_subtrahend_only, q_step_2, slide_subtrahend_without_minuend, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:239'))).
-automaton_transition(subtraction, slide_subtrahend_only, q_step_3, subtract_unbalanced_pair, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:239'))).
-automaton_transition(subtraction, slide_subtrahend_only, q_step_4, lose_constant_difference, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:239'))).
+automaton_transition(subtraction, slide_subtrahend_only, q_start, identify_subtrahend_target_base, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:245'))).
+automaton_transition(subtraction, slide_subtrahend_only, q_step_1, count_slide_amount, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:245'))).
+automaton_transition(subtraction, slide_subtrahend_only, q_step_2, slide_subtrahend_without_minuend, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:245'))).
+automaton_transition(subtraction, slide_subtrahend_only, q_step_3, subtract_unbalanced_pair, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:245'))).
+automaton_transition(subtraction, slide_subtrahend_only, q_step_4, lose_constant_difference, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:245'))).
 
-automaton_transition(subtraction, sliding_constant_difference, q_start, identify_subtrahend_target_base, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:215'))).
-automaton_transition(subtraction, sliding_constant_difference, q_step_1, count_slide_amount, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:215'))).
-automaton_transition(subtraction, sliding_constant_difference, q_step_2, slide_both_numbers, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:215'))).
-automaton_transition(subtraction, sliding_constant_difference, q_step_3, subtract_adjusted_pair, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:215'))).
-automaton_transition(subtraction, sliding_constant_difference, q_step_4, preserve_constant_difference, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:215'))).
+automaton_transition(subtraction, sliding_constant_difference, q_start, identify_subtrahend_target_base, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:219'))).
+automaton_transition(subtraction, sliding_constant_difference, q_step_1, count_slide_amount, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:219'))).
+automaton_transition(subtraction, sliding_constant_difference, q_step_2, slide_both_numbers, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:219'))).
+automaton_transition(subtraction, sliding_constant_difference, q_step_3, subtract_adjusted_pair, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:219'))).
+automaton_transition(subtraction, sliding_constant_difference, q_step_4, preserve_constant_difference, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:219'))).
 
-automaton_transition(subtraction, smaller_from_larger_in_column, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:326'))).
-automaton_transition(subtraction, smaller_from_larger_in_column, q_step_1, skip_borrow_procedure, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:326'))).
-automaton_transition(subtraction, smaller_from_larger_in_column, q_step_2, subtract_smaller_from_larger_in_ones, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:326'))).
-automaton_transition(subtraction, smaller_from_larger_in_column, q_step_3, subtract_smaller_from_larger_in_bases, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:326'))).
-automaton_transition(subtraction, smaller_from_larger_in_column, q_step_4, recompose_without_role_preservation, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:326'))).
-automaton_transition(subtraction, smaller_from_larger_in_column, q_step_5, lose_minuend_subtrahend_roles, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:326'))).
+automaton_transition(subtraction, smaller_from_larger_in_column, q_start, decompose_numbers, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:332'))).
+automaton_transition(subtraction, smaller_from_larger_in_column, q_step_1, skip_borrow_procedure, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:332'))).
+automaton_transition(subtraction, smaller_from_larger_in_column, q_step_2, subtract_smaller_from_larger_in_ones, q_step_3, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:332'))).
+automaton_transition(subtraction, smaller_from_larger_in_column, q_step_3, subtract_smaller_from_larger_in_bases, q_step_4, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:332'))).
+automaton_transition(subtraction, smaller_from_larger_in_column, q_step_4, recompose_without_role_preservation, q_step_5, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:332'))).
+automaton_transition(subtraction, smaller_from_larger_in_column, q_step_5, lose_minuend_subtrahend_roles, q_accept, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:332'))).
 
 automaton_transition(subtraction, take_away_base_ones, q_start, decompose_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:73'))).
 automaton_transition(subtraction, take_away_base_ones, q_step_1, count_back_by_base_chunk, q_step_2, provenance(static('knowledge/strategies/math/sar_sub_action_pairs.pl:73'))).

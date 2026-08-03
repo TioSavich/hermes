@@ -285,8 +285,13 @@ capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literat
 capability('knowledge/misconceptions/monitoring_registry_bridge.pl', 'monitoring_registry_bridge', 'misconceptions', [], orphan_module).
 capability('knowledge/misconceptions/query_probes.pl', 'misconception_query_probes', 'misconceptions', [], orphan_module).
 capability('knowledge/misconceptions/research_corpus_automaton_bindings.pl', 'research_corpus_automaton_bindings', 'misconceptions', [], orphan_module).
+capability('knowledge/strategies/abstraction/addition_action_signatures.pl', 'addition_action_signatures', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/channel_collapse.pl', 'channel_collapse', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/kernel_gate_pilot.pl', 'kernel_gate_pilot', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/deformation_coincidence.pl', 'deformation_coincidence', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
