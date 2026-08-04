@@ -346,27 +346,135 @@ vocab_source_text(Vocab, Str) :-
 %!  strategy_trace_dict(+StrategyName, +InputDict, -Dict) is det.
 %
 %   Best-effort trace of a named FSM strategy on the supplied input. Never
-%   throws. If the strategy can be run to a number-line jump trace, jumps[]
-%   is filled. If it runs to a result but the step-shape isn't readable,
-%   result is filled and the note explains. If it can't run, ok:false.
+%   throws or fails: input decode failures return ok:false with the input kind
+%   and field, while strategy run failures return ok:false with a note. If the
+%   strategy can be run to a number-line jump trace, jumps[] is filled. If it
+%   runs to a result but the step-shape isn't readable, result is filled and
+%   the note explains.
 strategy_trace_dict(StrategyName0, Input, Dict) :-
     to_atom(StrategyName0, StrategyName),
     strategy_lookup_name(StrategyName, LookupName),
     term_text_string(LookupName, NameStr),
-    trace_inputs(Input, A, B),
-    (   catch(run_named_strategy(LookupName, A, B, Result, History),
-              _Err, fail)
-    ->  trace_result_dict(LookupName, NameStr, A, B, Result, History, Dict)
-    ;   Dict = _{
-            strategy: NameStr,
-            ok: false,
-            representation: "fsm",
-            result: "",
-            steps: [],
-            jumps: [],
-            note: "Strategy could not be run on the given input (no matching operator/strategy, or the run failed)."
-        }
+    trace_inputs_result(Input, A, B, DecodeResult),
+    (   DecodeResult == ok
+    ->  (   catch(run_named_strategy(LookupName, A, B, Result, History),
+                  _Err, fail)
+        ->  trace_result_dict(LookupName, NameStr, A, B, Result, History, Dict)
+        ;   Dict = _{
+                strategy: NameStr,
+                ok: false,
+                representation: "fsm",
+                result: "",
+                steps: [],
+                jumps: [],
+                note: "Strategy could not be run on the given input (no matching operator/strategy, or the run failed)."
+            }
+        )
+    ;   trace_input_error_dict(LookupName, NameStr, Input, Dict)
     ).
+
+trace_inputs_result(Input, A, B, Result) :-
+    catch(( trace_inputs(Input, A, B) -> Result = ok ; Result = failed ),
+          _Error, Result = exception).
+
+trace_input_error_dict(LookupName, NameStr, Input, _{
+        strategy: NameStr,
+        ok: false,
+        representation: "fsm",
+        result: "",
+        steps: [],
+        jumps: [],
+        input_kind: KindStr,
+        field: FieldStr,
+        error: Message,
+        note: Message
+    }) :-
+    trace_input_kind_string(Input, LookupName, KindStr),
+    trace_input_failure_field(LookupName, Input, FieldStr),
+    format(string(Message), "Input kind ~s could not decode field ~s.",
+           [KindStr, FieldStr]).
+
+trace_input_kind_string(Input, _LookupName, KindStr) :-
+    is_dict(Input),
+    get_dict(kind, Input, Kind),
+    !,
+    term_text_string(Kind, KindStr).
+trace_input_kind_string(_Input, LookupName, KindStr) :-
+    term_text_string(LookupName, KindStr).
+
+trace_input_failure_field(LookupName, Input, FieldStr) :-
+    automaton_input_contract(_, LookupName, ShapeAtom, _,
+                             verified(strategy_trace_ok)),
+    atom_json_dict(ShapeAtom, Shape, [value_string_as(string)]),
+    schema_mismatch_path(Shape, Input, [], Path),
+    !,
+    field_path_string(Path, FieldStr).
+trace_input_failure_field(_LookupName, _Input, "input").
+
+schema_mismatch_path(Expected, Actual, Path, Mismatch) :-
+    is_dict(Expected),
+    !,
+    (   is_dict(Actual)
+    ->  dict_pairs(Expected, _, Pairs0),
+        kind_first_pairs(Pairs0, Pairs),
+        schema_dict_mismatch(Pairs, Actual, Path, Mismatch)
+    ;   path_or_input(Path, Mismatch)
+    ).
+schema_mismatch_path(Expected, Actual, Path, Mismatch) :-
+    is_list(Expected),
+    !,
+    (   is_list(Actual)
+    ->  schema_list_mismatch(Expected, Actual, Path, Mismatch)
+    ;   path_or_input(Path, Mismatch)
+    ).
+schema_mismatch_path(Expected, Actual, Path, Mismatch) :-
+    \+ schema_value_matches(Expected, Actual),
+    path_or_input(Path, Mismatch).
+
+kind_first_pairs(Pairs0, [kind-Expected|Pairs]) :-
+    select(kind-Expected, Pairs0, Pairs),
+    !.
+kind_first_pairs(Pairs, Pairs).
+
+schema_dict_mismatch([Key-_Expected|_], Actual, Path, Mismatch) :-
+    \+ get_dict(Key, Actual, _),
+    !,
+    append(Path, [Key], Mismatch).
+schema_dict_mismatch([Key-Expected|_], Actual, Path, Mismatch) :-
+    get_dict(Key, Actual, Value),
+    append(Path, [Key], ChildPath),
+    schema_mismatch_path(Expected, Value, ChildPath, Mismatch),
+    !.
+schema_dict_mismatch([_|Pairs], Actual, Path, Mismatch) :-
+    schema_dict_mismatch(Pairs, Actual, Path, Mismatch).
+
+schema_list_mismatch([], _Actual, _Path, _Mismatch) :-
+    fail.
+schema_list_mismatch([Expected], Actual, Path, Mismatch) :-
+    member(Value, Actual),
+    schema_mismatch_path(Expected, Value, Path, Mismatch),
+    !.
+schema_list_mismatch(Expected, Actual, Path, Mismatch) :-
+    Expected \= Actual,
+    path_or_input(Path, Mismatch).
+
+schema_value_matches("integer", Value) :- !, integer(Value).
+schema_value_matches("nonnegative_integer", Value) :-
+    !, integer(Value), Value >= 0.
+schema_value_matches("positive_integer", Value) :- !, integer(Value), Value > 0.
+schema_value_matches("number", Value) :- !, number(Value).
+schema_value_matches("nonnegative_number", Value) :- !, number(Value), Value >= 0.
+schema_value_matches("positive_number", Value) :- !, number(Value), Value > 0.
+schema_value_matches("atom", Value) :- !, json_atom(Value, _).
+schema_value_matches("string", Value) :- !, string(Value).
+schema_value_matches(Expected, Actual) :- Expected == Actual.
+
+path_or_input([], [input]).
+path_or_input(Path, Path) :- Path \= [].
+
+field_path_string(Path, String) :-
+    atomic_list_concat(Path, '.', Atom),
+    atom_string(Atom, String).
 
 %!  strategy_lookup_name(+RawName, -LookupName) is det.
 %

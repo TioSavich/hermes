@@ -39,19 +39,32 @@
 
     try {
       const response = await global.fetch(url, Object.assign({}, settings, { signal: controller.signal }));
+      if (!response.ok) {
+        let errorData = null;
+        let bodyParseFailed = false;
+        try {
+          errorData = await response.json();
+        } catch (_error) {
+          if (timedOut) {
+            return { kind: "timeout", status: response.status, response: response, data: null, url: url };
+          }
+          bodyParseFailed = true;
+        }
+        return { kind: "http-error", status: response.status, response: response, data: errorData, url: url, bodyParseFailed: bodyParseFailed };
+      }
       let data;
       try {
         data = await response.json();
       } catch (_error) {
-        return { kind: "broken", status: response.status, response: response, data: null };
+        if (timedOut) {
+          return { kind: "timeout", status: response.status, response: response, data: null, url: url };
+        }
+        return { kind: "broken", status: response.status, response: response, data: null, url: url };
       }
-      if (!response.ok) {
-        return { kind: "http-error", status: response.status, response: response, data: data };
-      }
-      return { kind: "ok", status: response.status, response: response, data: data };
+      return { kind: "ok", status: response.status, response: response, data: data, url: url };
     } catch (error) {
-      if (timedOut) return { kind: "timeout", status: 0, response: null, data: null, error: error };
-      return { kind: "offline", status: 0, response: null, data: null, error: error };
+      if (timedOut) return { kind: "timeout", status: 0, response: null, data: null, error: error, url: url };
+      return { kind: "offline", status: 0, response: null, data: null, error: error, url: url };
     } finally {
       global.clearTimeout(timer);
     }
@@ -64,8 +77,14 @@
     if (result.kind === "offline") {
       return "The app isn't answering. Start it with the run button, or this stays a static view.";
     }
-    if (result.kind === "http-error") return "The app returned HTTP " + result.status + ".";
-    return "The app returned a broken reply.";
+    if (result.kind === "http-error") {
+      const apiPath = typeof result.url === "string" && /^(?:https?:\/\/[^/]+)?\/api\//.test(result.url);
+      if (apiPath && (result.status === 405 || result.status === 501) && result.bodyParseFailed === true) {
+        return "The page reached a static file server (HTTP " + result.status + "). Start the app server with python3 -m hermes.app.server, then reload this page.";
+      }
+      return "The app returned HTTP " + result.status + ".";
+    }
+    return "The app returned HTTP " + result.status + " with a reply that was not JSON.";
   }
 
   function requireOK(result) {

@@ -291,6 +291,7 @@
     const kindEl = document.getElementById(cfg.kindId);
     const editorEl = document.getElementById(cfg.editorId);
     const runEl = document.getElementById(cfg.runId);
+    const retryEl = document.getElementById(cfg.retryId);
     const statusEl = document.getElementById(cfg.statusId);
     const outcomeEl = document.getElementById(cfg.outcomeId);
     const stepsEl = document.getElementById(cfg.stepsId);
@@ -314,8 +315,10 @@
       if (!family || !kind) return;
       runEl.disabled = true;
       editorEl.value = '';
-      setStatus('Loading the verified input example…', false);
+      let stopElapsed = function () {};
       try {
+        await requestClientReady;
+        stopElapsed = HermesFetch.startElapsed(statusEl, 'Loading the verified input example…');
         const contract = await postResult('/api/input_contract', {operation: family, kind: kind});
         editorEl.value = JSON.stringify(contract.example, null, 2);
         const url = new URL(window.location.href);
@@ -326,6 +329,9 @@
         setStatus(`Ready to run ${family}:${kind}.`, false);
       } catch (err) {
         setStatus(`No verified input contract is registered for ${family}:${kind}. ${err.message}`, true);
+        runEl.disabled = false;
+      } finally {
+        stopElapsed();
       }
     }
 
@@ -356,7 +362,6 @@
         return;
       }
 
-      setStatus('Running the selected automaton…', false);
       runEl.disabled = true;
       stepsEl.innerHTML = '';
       outcomeEl.innerHTML = '';
@@ -364,7 +369,10 @@
       topologyEl.innerHTML = '';
       svgEl.innerHTML = '';
       svgEl.hidden = true;
+      let stopElapsed = function () {};
       try {
+        await requestClientReady;
+        stopElapsed = HermesFetch.startElapsed(statusEl, 'Running the selected automaton…');
         const data = await postResult('/api/strategy_trace', {
           strategy: kindEl.value,
           input: input
@@ -405,6 +413,7 @@
       } catch (err) {
         setStatus(err.message, true);
       } finally {
+        stopElapsed();
         runEl.disabled = false;
       }
     }
@@ -416,30 +425,54 @@
     kindEl.addEventListener('change', loadContract);
     runEl.addEventListener('click', runSelected);
 
-    try {
-      setStatus('Loading the strategy catalog…', false);
-      const catalog = await postResult('/api/strategies', {});
-      strategies = Array.isArray(catalog.strategies) ? catalog.strategies : [];
-      const families = Array.from(new Set(strategies.map(function (entry) { return entry.operation; }))).sort();
-      families.forEach(function (family) {
-        const option = document.createElement('option');
-        option.value = family;
-        option.textContent = family.replace(/_/g, ' ');
-        familyEl.appendChild(option);
-      });
-      const params = new URLSearchParams(window.location.search);
-      const requestedKind = params.get('kind') || '';
-      const requestedEntry = strategies.find(function (entry) { return entry.kind === requestedKind; });
-      const requestedFamily = params.get('family') || (requestedEntry && requestedEntry.operation) || '';
-      if (requestedFamily && families.indexOf(requestedFamily) !== -1) familyEl.value = requestedFamily;
-      fillKinds(requestedKind);
-      await loadContract();
-    } catch (err) {
-      setStatus(err.message, true);
+    async function loadCatalog() {
       familyEl.disabled = true;
       kindEl.disabled = true;
       runEl.disabled = true;
+      retryEl.hidden = true;
+      familyEl.innerHTML = '';
+      kindEl.innerHTML = '';
+      strategies = [];
+      let stopElapsed = function () {};
+      try {
+        await requestClientReady;
+        stopElapsed = HermesFetch.startElapsed(
+          statusEl,
+          'Loading the strategy catalog. The first request on a cold server loads the symbolic worker and can take about two minutes…'
+        );
+        const catalog = await postResult('/api/strategies', {});
+        strategies = Array.isArray(catalog.strategies) ? catalog.strategies : [];
+        const families = Array.from(new Set(strategies.map(function (entry) { return entry.operation; }))).sort();
+        families.forEach(function (family) {
+          const option = document.createElement('option');
+          option.value = family;
+          option.textContent = family.replace(/_/g, ' ');
+          familyEl.appendChild(option);
+        });
+        const params = new URLSearchParams(window.location.search);
+        const requestedKind = params.get('kind') || '';
+        const requestedEntry = strategies.find(function (entry) { return entry.kind === requestedKind; });
+        const requestedFamily = params.get('family') || (requestedEntry && requestedEntry.operation) || '';
+        if (requestedFamily && families.indexOf(requestedFamily) !== -1) familyEl.value = requestedFamily;
+        fillKinds(requestedKind);
+        familyEl.disabled = false;
+        kindEl.disabled = false;
+        stopElapsed();
+        stopElapsed = function () {};
+        await loadContract();
+      } catch (err) {
+        setStatus(err.message, true);
+        familyEl.disabled = false;
+        kindEl.disabled = false;
+        runEl.disabled = false;
+        retryEl.hidden = false;
+      } finally {
+        stopElapsed();
+      }
     }
+
+    retryEl.addEventListener('click', loadCatalog);
+    await loadCatalog();
   };
 
   window.HermesStrategyViz = {

@@ -42,7 +42,7 @@ READMES = {
 # UMEDCTA public surfaces — reviewer bundle
 
 Static package of the public Hermes pages reachable from the theory entry page.
-Open it through a local file server: from this directory run `python3 -m http.server 8000`, then go to <http://localhost:8000/more-zeeman/landing.html>. A direct file:// open works only for the pages with embedded data (the monitoring chart, the fraction calculator); the gallery and scoreboard fetch JSON and need the server.
+Open it through a local file server: from this directory run `python3 -m http.server 8000`, then go to <http://localhost:8000/more-zeeman/landing.html>. A direct file:// open works only for the pages with embedded data (the monitoring chart, the fraction calculator); the gallery and scoreboard fetch JSON and need the server. The API-backed strategy pages, including machine.html, need the full app server (`python3 -m hermes.app.server`) rather than this static server.
 The scoreboard's deontic and inferential-strength sections ask a live Hermes worker first, fall back to the saved data included here, and name their data source on the page; the drawing pages keep their embedded sample when no worker answers. For live numbers and interactive rendering, clone the full repository and run `bash hermes/app/launch.sh`.
 The ASKTM student-work corpus ships with the repository; the gallery includes coded figures and the survey text. The fine-grained source coding documents remain in the source project. The teaching console reads student work and is deliberately absent from every bundle.
 """,

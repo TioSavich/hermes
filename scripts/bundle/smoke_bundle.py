@@ -754,13 +754,41 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               check=lambda b: b.get("ok") is True
               and b.get("result", {}).get("kind") == "pck_synthesis")
         probe("POST /api/strategies", "/api/strategies", {},
-              want=range(200, 500), timeout=120.0)
+              want=range(200, 201), timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and isinstance(b.get("result", {}).get("strategies"), list))
+        structured_operand = {
+            "kind": "decimal_unit_conversion",
+            "count": 7,
+            "from_scale": 10,
+            "to_scale": 100,
+        }
+        probe("POST /api/input_contract (structured)", "/api/input_contract",
+              {"operation": "decimal", "kind": "decimal_place_unit_regrouping"},
+              want=range(200, 201), timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("example") == structured_operand)
         # the per-strategy visualizer pages call this with display names
         probe("POST /api/strategy_trace (COBO)", "/api/strategy_trace",
               {"strategy": "COBO", "input": {"a": 8, "b": 5}},
               timeout=120.0,
               check=lambda b: b.get("ok") and b["result"].get("ok")
               and b["result"].get("jumps"))
+        probe("POST /api/strategy_trace (structured)", "/api/strategy_trace",
+              {"strategy": "decimal_place_unit_regrouping",
+               "input": structured_operand}, want=range(200, 201), timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("ok") is True)
+        malformed_operand = dict(structured_operand)
+        malformed_operand.pop("from_scale")
+        probe("POST /api/strategy_trace (malformed structured)",
+              "/api/strategy_trace",
+              {"strategy": "decimal_place_unit_regrouping",
+               "input": malformed_operand}, want=range(200, 201), timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("ok") is False
+              and b.get("result", {}).get("input_kind") == "decimal_unit_conversion"
+              and b.get("result", {}).get("field") == "from_scale")
         probe("POST /api/literature", "/api/literature", {"q": "fractions"},
               want=range(200, 500), timeout=120.0)
 

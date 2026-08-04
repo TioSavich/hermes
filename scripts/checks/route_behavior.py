@@ -95,6 +95,36 @@ def main() -> int:
             if actual != expected:
                 failures.append((name, expected, actual))
 
+        structured_operand = {
+            "kind": "decimal_unit_conversion",
+            "count": 7,
+            "from_scale": 10,
+            "to_scale": 100,
+        }
+        worker_fixtures = [
+            ("strategies", "/api/strategies", {},
+             lambda body: body.get("ok") is True
+             and isinstance(body.get("result", {}).get("strategies"), list),
+             "200 with ok:true and a strategies list"),
+            ("input_contract", "/api/input_contract", {
+                "operation": "decimal",
+                "kind": "decimal_place_unit_regrouping",
+             },
+             lambda body: body == {
+                 "ok": True,
+                 "result": {
+                     "operation": "decimal",
+                     "kind": "decimal_place_unit_regrouping",
+                     "example": structured_operand,
+                 },
+             },
+             "200 with the registered structured example"),
+        ]
+        for name, path, payload, check, expected_shape in worker_fixtures:
+            status, body = request(base, "POST", path, payload, timeout=300)
+            if status != 200 or not isinstance(body, dict) or not check(body):
+                failures.append((name, expected_shape, (status, str(body)[:160])))
+
         # Query-stringed GETs: the split once crashed on exactly these, so
         # they are checked by shape (the bodies are computed, not constant).
         # First learner call starts the Prolog worker; allow it time.
@@ -119,6 +149,7 @@ def main() -> int:
                 print(f"{name}: expected {expected!r}, got {actual!r}", file=sys.stderr)
             return 1
         print(f"route behavior: {len(fixtures)} status+JSON fixtures "
+              f"+ {len(worker_fixtures)} worker route fixtures "
               "+ 2 query-GET shape fixtures PASS")
         return 0
     finally:

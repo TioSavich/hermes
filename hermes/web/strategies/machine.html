@@ -31,6 +31,7 @@
     <textarea id="machine-input" class="json-editor" rows="12" spellcheck="false" aria-label="operand JSON"></textarea>
     <div class="machine-run-controls">
       <button id="machine-run" type="button">Run automaton</button>
+      <button id="machine-retry" type="button" hidden>Retry catalog</button>
       <p id="machine-status" class="machine-status meta" aria-live="polite"></p>
     </div>
   </section>
@@ -60,7 +61,7 @@
 <script>
   wireStrategyMachinePage({
     familyId: 'machine-family', kindId: 'machine-kind', editorId: 'machine-input',
-    runId: 'machine-run', statusId: 'machine-status', outcomeId: 'machine-outcome',
+    runId: 'machine-run', retryId: 'machine-retry', statusId: 'machine-status', outcomeId: 'machine-outcome',
     stepsId: 'machine-steps', jumpsId: 'machine-jumps', topologyId: 'machine-topology',
     svgId: 'machine-diagram'
   });
