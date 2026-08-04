@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430" role="img" aria-labelledby="title desc">
+  <title id="title">Domain scene for geometry/decomposition_with_gap_or_overlap</title>
+  <desc id="desc">The run produced square_units(12); the recorded expected result is square_units(24).</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <polygon points="142.5,306.7 577.5,306.7 577.5,93.3 142.5,93.3" fill="#d4a747" fill-opacity="0.38" stroke="#0d0c08" stroke-width="3"/>
+  <circle cx="70.0" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="70.0" cy="306.7" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="70.0" cy="253.3" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="70.0" cy="200.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="70.0" cy="146.7" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="70.0" cy="93.3" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="70.0" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="253.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="200.0" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="146.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="142.5" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="253.3" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="200.0" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="146.7" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="215.0" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="253.3" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="200.0" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="146.7" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="287.5" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="253.3" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="200.0" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="146.7" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="360.0" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="253.3" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="200.0" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="146.7" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="432.5" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="253.3" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="200.0" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="146.7" r="4" fill="#d4a747" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="505.0" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="306.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="253.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="200.0" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="146.7" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="93.3" r="4" fill="#0d0c08" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="577.5" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="360.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="306.7" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="253.3" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="200.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="146.7" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="93.3" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <circle cx="650.0" cy="40.0" r="2.5" fill="#fffef9" stroke="#665f4f" stroke-width="0.7"/>
+  <text x="350.0" y="32.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="bold" fill="#0d0c08">area 24</text>
+  <text x="28.0" y="408.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#b95238">The run produced square_units(12); the recorded expected result is square_units(24).</text>
+</svg>

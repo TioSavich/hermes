@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Domain scene for addition/make_ten_split_leftover</title>
+  <desc id="desc">The run produced 75.</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <line x1="70.0" y1="205.0" x2="690.0" y2="205.0" stroke="#0d0c08" stroke-width="2"/>
+  <line x1="130.0" y1="196.0" x2="130.0" y2="214.0" stroke="#0d0c08" stroke-width="1.5"/>
+  <circle cx="130.0" cy="205.0" r="5" fill="#d4a747" stroke="#0d0c08"/>
+  <text x="130.0" y="236.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#0d0c08">0</text>
+  <line x1="443.3" y1="196.0" x2="443.3" y2="214.0" stroke="#0d0c08" stroke-width="1.5"/>
+  <circle cx="443.3" cy="205.0" r="5" fill="#d4a747" stroke="#0d0c08"/>
+  <text x="443.3" y="236.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#0d0c08">47</text>
+  <line x1="630.0" y1="196.0" x2="630.0" y2="214.0" stroke="#0d0c08" stroke-width="1.5"/>
+  <circle cx="630.0" cy="205.0" r="5" fill="#d4a747" stroke="#0d0c08"/>
+  <text x="630.0" y="236.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#0d0c08">75</text>
+  <path d="M 443.3 200.0 Q 536.7 160.2 630.0 200.0" fill="none" stroke="#d4a747" stroke-width="3"/>
+  <text x="536.7" y="175.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#0d0c08">+28</text>
+  <text x="36.0" y="330.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#665f4f">The run produced 75.</text>
+</svg>

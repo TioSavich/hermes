@@ -14,10 +14,12 @@ from pathlib import Path
 
 from build_machine_typology import ROOT, Machine, Transition, parse_transition_tables, structure
 from build_transition_tables import derived_example
-from render_automaton_svg import palette
+from render_automaton_context_svg import composite_records, scene_records
+from render_automaton_svg import palette, render_all as render_radial
 
 
 OUTPUT = ROOT / "docs/research/2026-08-03-automata-compendium.html"
+FAMILY_OUTPUT_DIR = ROOT / "docs/research/automata-compendium"
 CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"
 VOCABULARY = ROOT / "knowledge/strategies/math/state_vocabulary.pl"
 ATTESTATIONS = ROOT / "knowledge/strategies/machine_class_attestations.pl"
@@ -70,6 +72,14 @@ CLASS_GLOSSES = {
 
 def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
+
+
+def image_attributes(svg: str) -> str:
+    match = re.search(r'<svg\b[^>]*\bwidth="(\d+)"[^>]*\bheight="(\d+)"', svg)
+    if match is None:
+        raise ValueError("generated SVG lacks intrinsic integer width and height")
+    width, height = match.groups()
+    return f'width="{width}" height="{height}" loading="lazy" decoding="async"'
 
 
 def decode_prolog_string(value: str) -> str:
@@ -344,19 +354,53 @@ def machine_section(
     labels: dict[str, list[tuple[str, str, str]]],
     contracts: dict[tuple[str, str], InputContract],
     attestations: dict[tuple[str, str], list[tuple[str, str]]],
+    scenes,
+    radials,
+    asset_prefix: str,
 ) -> str:
     key = (machine.family, machine.kind)
+    scene = scenes[key]
+    if scene.svg is not None:
+        scene_html = (
+            f'<figure class="diagram domain-scene"><img src="{asset_prefix}/{esc(machine.family)}/'
+            f'{esc(machine.kind)}-scene.svg" {image_attributes(scene.svg)} '
+            f'alt="Executed domain scene for {esc(machine.family)} '
+            f'{esc(machine.kind)}"><figcaption>{esc(scene.caption)}</figcaption></figure>'
+        )
+    else:
+        scene_html = f'<p class="scene-limit">{esc(scene.reach_limit)}</p>'
+    radial_svg = radials[Path(machine.family) / f"{machine.kind}.svg"]
     return f"""
 <article class="machine" id="{esc(machine.family)}-{esc(machine.kind)}">
 <h3><span class="entry-number">{entry_number}.</span> <code>{esc(machine.kind)}</code></h3>
+{scene_html}
+<figure class="diagram transition-diagram"><img src="{asset_prefix}/{esc(machine.family)}/{esc(machine.kind)}.svg" {image_attributes(radial_svg)} alt="Radial transition diagram for {esc(machine.family)} {esc(machine.kind)}"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 {tuple_block(machine, labels)}
 {contract_line(contracts.get(key))}
 <h4><i>δ</i>: recorded transitions</h4>
 {transition_table(machine, contracts.get(key))}
-<figure class="diagram"><img src="assets/automata/{esc(machine.family)}/{esc(machine.kind)}.svg" alt="State diagram for {esc(machine.family)} {esc(machine.kind)}"></figure>
 {typology_line(machine)}
 {attestation_line(machine, attestations)}
 </article>"""
+
+
+def family_composite(
+    family: str,
+    svg: str,
+    unaligned: tuple[str, ...],
+    asset_prefix: str,
+) -> str:
+    limit = " For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals."
+    if unaligned:
+        kinds = ", ".join(f"<code>{esc(kind)}</code>" for kind in unaligned)
+        limit += f" The following kinds have no simple accepting path and remain unmerged: {kinds}."
+    return (
+        f'<figure class="diagram family-composite"><img src="{asset_prefix}/{esc(family)}/_composite.svg" '
+        f'{image_attributes(svg)} alt="Canonical-action composite for the {esc(family)} family"><figcaption>'
+        "Construction: canonical action sequences merge by common prefix and structurally identical suffix. "
+        "Branch labels name the kinds taking each branch. This models shared doing under canonical action names; "
+        f"the automata do not literally share states.{limit}</figcaption></figure>"
+    )
 
 
 def plain_negation(condition: str) -> str:
@@ -428,11 +472,11 @@ def contents(grouped: dict[str, list[Machine]]) -> str:
     families = []
     for family in sorted(grouped):
         kinds = "".join(
-            f'<li><a href="#{esc(machine.family)}-{esc(machine.kind)}"><code>{esc(machine.kind)}</code></a></li>'
+            f'<li><a href="automata-compendium/{esc(machine.family)}.html#{esc(machine.family)}-{esc(machine.kind)}"><code>{esc(machine.kind)}</code></a></li>'
             for machine in sorted(grouped[family], key=lambda row: row.kind)
         )
         families.append(
-            f'<section class="contents-family"><h3><a href="#family-{esc(family)}">{esc(family)}</a></h3>'
+            f'<section class="contents-family"><h3><a href="automata-compendium/{esc(family)}.html#family-{esc(family)}">{esc(family)}</a></h3>'
             f'<ol>{kinds}</ol></section>'
         )
     return (
@@ -451,76 +495,160 @@ def root_palette() -> str:
     )
 
 
-def generate_compendium() -> str:
-    machines = parse_transition_tables()
-    contracts = read_contracts()
-    labels = read_state_labels()
-    attestations = read_attestations()
-    atlas = read_atlas_rows()
-    grouped: dict[str, list[Machine]] = defaultdict(list)
-    for machine in machines:
-        grouped[machine.family].append(machine)
-    family_sections = []
-    for family in sorted(grouped):
-        kinds = "\n".join(
-            machine_section(machine, index, labels, contracts, attestations)
-            for index, machine in enumerate(
-                sorted(grouped[family], key=lambda row: row.kind), start=1
-            )
-        )
-        family_sections.append(
-            f'<section class="family" id="family-{esc(family)}"><h2>{esc(family)}</h2>{kinds}</section>'
-        )
-    command = (
-        "python3 scripts/research/build_machine_typology.py &amp;&amp; "
-        "python3 scripts/research/render_automaton_svg.py &amp;&amp; "
-        "python3 scripts/research/build_automata_compendium.py"
-    )
+def shared_style() -> str:
+    """Return the one generated stylesheet shared by every compendium page."""
+    return f"""{root_palette()}
+*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .back-link{{margin:0 0 1rem}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} article.machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} figcaption{{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem}} .domain-scene img{{max-height:34rem}} .transition-diagram img{{max-height:46rem}} .family-composite img{{max-width:none;min-width:100%}} .family-composite{{max-height:72rem}} .scene-limit{{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} .swatch{{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor}} .swatch.conserving{{color:var(--ink)}} .swatch.deforming{{color:var(--rust)}} .swatch.neutral{{color:var(--muted)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}article.machine{{padding:.75rem}}}}"""
+
+
+def page_document(title: str, body: str) -> str:
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hermes automata compendium</title>
+<title>{esc(title)}</title>
 <style>
-{root_palette()}
-*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} .machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}.machine{{padding:.75rem}}}}
+{shared_style()}
 </style>
 <script>window.MathJax={{tex:{{inlineMath:[["\\(","\\)"]]}}}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body><main>
-<header class="page-header"><h1>Hermes automata compendium</h1>
-<p class="lede">This compendium records the finite transition-table corpus as five-tuples, tables, and state diagrams. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
-</header>
-{contents(grouped)}
-<section id="legend"><h2>Legend</h2>
-<p>Each entry writes \\(M=(Q,\\Sigma,\\delta,q_0,F)\\): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. Solid dark edges occur only in static rows extracted from source. Dashed gold edges occur only in bounded observations. Solid gold edges have both static and observed provenance. The gold arrow entering <i>q</i><sub>0</sub> marks the start state.</p>
-<dl class="legend-list"><dt>linear_trace</dt><dd>{CLASS_GLOSSES["linear_trace"]}.</dd><dt>branching</dt><dd>{CLASS_GLOSSES["branching"]}.</dd><dt>looping</dt><dd>{CLASS_GLOSSES["looping"]}.</dd><dt>branching_looping</dt><dd>{CLASS_GLOSSES["branching_looping"]}.</dd></dl>
-<p>Computed structure reports only the table graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
-</section>
-{"".join(family_sections)}
-{atlas_section(atlas)}
-<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated table rows, including observed-only states named by those rows. They do not establish determinism, language coverage, or memory bounds beyond the recorded graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>
-<footer><p>Artifacts and regeneration: <code>knowledge/strategies/transition_tables/*.pl</code>, <code>python3 scripts/research/build_transition_tables.py</code>; <code>knowledge/strategies/machine_typology.pl</code>, <code>python3 scripts/research/build_machine_typology.py</code>; <code>docs/research/assets/automata/&lt;family&gt;/&lt;kind&gt;.svg</code>, <code>python3 scripts/research/render_automaton_svg.py</code>; <code>docs/research/2026-08-03-automata-compendium.html</code>, <code>python3 scripts/research/build_automata_compendium.py</code>. Authored input: <code>knowledge/strategies/machine_class_attestations.pl</code>. Parsed inputs: <code>knowledge/strategies/automaton_input_contracts.pl</code>, <code>knowledge/strategies/math/state_vocabulary.pl</code>, and <code>knowledge/strategies/deformation_coincidence.pl</code>; the coincidence file records its sweep generator and finite grids in its header.</p></footer>
+{body}
 </main></body></html>
 """
 
 
+def legend_section() -> str:
+    return f"""<section id="legend"><h2>Legend</h2>
+<p>Each entry writes \\(M=(Q,\\Sigma,\\delta,q_0,F)\\): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. In transition diagrams, <span class="swatch conserving"></span>dark edges are conserving actions, <span class="swatch deforming"></span>rust edges are deforming actions, and <span class="swatch neutral"></span>muted edges are neutral actions. Dashed edges are observed-only rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes use rust for an executed deformation and gold or dark marks for the admitted representation roles.</p>
+<dl class="legend-list"><dt>linear_trace</dt><dd>{CLASS_GLOSSES["linear_trace"]}.</dd><dt>branching</dt><dd>{CLASS_GLOSSES["branching"]}.</dd><dt>looping</dt><dd>{CLASS_GLOSSES["looping"]}.</dd><dt>branching_looping</dt><dd>{CLASS_GLOSSES["branching_looping"]}.</dd></dl>
+<p>Computed structure reports only the table graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
+</section>"""
+
+
+def typology_section(machines: list[Machine]) -> str:
+    counts = {name: 0 for name in CLASS_GLOSSES}
+    for machine in machines:
+        counts[structure(machine).structural_class] += 1
+    rows = "".join(
+        f'<tr><td><code>{esc(name)}</code></td><td class="numeric">{counts[name]}</td>'
+        f'<td>{esc(CLASS_GLOSSES[name])}</td></tr>'
+        for name in CLASS_GLOSSES
+    )
+    return f"""<section id="computed-typology"><h2>Computed typology</h2>
+<p>These classes summarize the graphs recorded by all {len(machines)} transition tables. They do not add claims about unrecorded runs or memory.</p>
+<div class="table-scroll"><table><thead><tr><th>Structural class</th><th>Machines</th><th>Recorded shape</th></tr></thead><tbody>{rows}</tbody></table></div>
+</section>"""
+
+
+def attestations_section(
+    attestations: dict[tuple[str, str], list[tuple[str, str]]]
+) -> str:
+    rows = []
+    for (family, kind), claims in sorted(attestations.items()):
+        for claim, source in claims:
+            rows.append(
+                f'<tr><td><a href="automata-compendium/{esc(family)}.html#{esc(family)}-{esc(kind)}">'
+                f'<code>{esc(family)}/{esc(kind)}</code></a></td><td><code>{esc(claim)}</code></td>'
+                f'<td><code>{esc(source)}</code></td></tr>'
+            )
+    return f"""<section id="authored-attestations"><h2>Authored class attestations</h2>
+<p>These class names come from module prose and remain separate from the computed table-graph typology.</p>
+<div class="table-scroll"><table><thead><tr><th>Machine</th><th>Authored class</th><th>Source</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
+</section>"""
+
+
+def footer() -> str:
+    return """<footer><p>Artifacts and regeneration: <code>knowledge/strategies/transition_tables/*.pl</code>, <code>python3 scripts/research/build_transition_tables.py</code>; <code>knowledge/strategies/machine_typology.pl</code>, <code>python3 scripts/research/build_machine_typology.py</code>; radial assets <code>docs/research/assets/automata/&lt;family&gt;/&lt;kind&gt;.svg</code>, <code>python3 scripts/research/render_automaton_svg.py</code>; scene and composite assets, <code>python3 scripts/research/render_automaton_context_svg.py</code>; the hub <code>docs/research/2026-08-03-automata-compendium.html</code> and family pages under <code>docs/research/automata-compendium/</code>, <code>python3 scripts/research/build_automata_compendium.py</code>. Authored input: <code>knowledge/strategies/machine_class_attestations.pl</code>. Parsed inputs: <code>knowledge/strategies/automaton_input_contracts.pl</code>, <code>knowledge/strategies/math/state_vocabulary.pl</code>, and <code>knowledge/strategies/deformation_coincidence.pl</code>; the coincidence file records its sweep generator and finite grids in its header.</p></footer>"""
+
+
+def generate_compendium_pages() -> dict[Path, str]:
+    machines = parse_transition_tables()
+    contracts = read_contracts()
+    labels = read_state_labels()
+    attestations = read_attestations()
+    atlas = read_atlas_rows()
+    scenes = scene_records()
+    composites = composite_records()
+    radials = render_radial()
+    grouped: dict[str, list[Machine]] = defaultdict(list)
+    for machine in machines:
+        grouped[machine.family].append(machine)
+    command = (
+        "python3 scripts/research/build_machine_typology.py &amp;&amp; "
+        "python3 scripts/research/render_automaton_svg.py &amp;&amp; "
+        "python3 scripts/research/render_automaton_context_svg.py &amp;&amp; "
+        "python3 scripts/research/build_automata_compendium.py"
+    )
+    hub_body = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
+<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and tables. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
+<p>The corpus is split by family so each page stays within what a browser can paint.</p>
+</header>
+{contents(grouped)}
+{legend_section()}
+{typology_section(machines)}
+{attestations_section(attestations)}
+{atlas_section(atlas)}
+<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated table rows, including observed-only states named by those rows. They do not establish determinism, language coverage, or memory bounds beyond the recorded graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>
+{footer()}"""
+    pages = {OUTPUT: page_document("Hermes automata compendium", hub_body)}
+    for family in sorted(grouped):
+        articles = "\n".join(
+            machine_section(
+                machine,
+                index,
+                labels,
+                contracts,
+                attestations,
+                scenes,
+                radials,
+                "../assets/automata",
+            )
+            for index, machine in enumerate(
+                sorted(grouped[family], key=lambda row: row.kind), start=1
+            )
+        )
+        family_body = f"""<header class="page-header">
+<p class="back-link"><a href="../2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
+<h1>{esc(family)}</h1>
+</header>
+<section class="family" id="family-{esc(family)}">
+{family_composite(family, *composites[family], "../assets/automata")}
+{articles}
+</section>
+{footer()}"""
+        pages[FAMILY_OUTPUT_DIR / f"{family}.html"] = page_document(
+            f"{family} | Hermes automata compendium", family_body
+        )
+    return pages
+
+
+def generate_compendium() -> str:
+    """Return the hub for callers retained from the former single-page build."""
+    return generate_compendium_pages()[OUTPUT]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=OUTPUT)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    content = generate_compendium()
+    pages = generate_compendium_pages()
     if args.check:
-        current = args.output.read_text(encoding="utf-8") if args.output.exists() else ""
-        if current != content:
-            print(f"stale generated compendium: {args.output}", file=sys.stderr)
+        stale = [
+            path
+            for path, expected in pages.items()
+            if not path.exists() or path.read_text(encoding="utf-8") != expected
+        ]
+        if stale:
+            for path in stale:
+                print(f"stale generated compendium: {path}", file=sys.stderr)
             return 1
     else:
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(content, encoding="utf-8")
+        for path, content in pages.items():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content, encoding="utf-8")
     profile_count = len(
         re.findall(
             r"^coincidence_profile\([^\n]+, deformation,",
@@ -530,7 +658,7 @@ def main() -> int:
     )
     print(
         f"automata compendium: {len(parse_transition_tables())} machines, "
-        f"{profile_count} deformation profiles"
+        f"{profile_count} deformation profiles, {len(pages)} pages"
     )
     return 0
 

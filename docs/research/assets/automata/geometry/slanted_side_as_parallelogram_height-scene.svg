@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" role="img" aria-labelledby="title desc">
+  <title id="title">Domain scene for geometry/slanted_side_as_parallelogram_height</title>
+  <desc id="desc">The run produced area(30,square(centimeter)); the recorded expected result is area(24,square(centimeter)).</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <polygon points="145,320 505.0,320 575.0,80 215,80" fill="#d4a747" fill-opacity="0.38" stroke="#0d0c08" stroke-width="2"/>
+  <text x="325.0" y="344.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#0d0c08">base 6</text>
+  <text x="535.0" y="200.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#0d0c08">height 4</text>
+  <text x="36.0" y="386.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#b95238">The run produced area(30,square(centimeter)); the recorded expected result is area(24,square(centimeter)).</text>
+</svg>

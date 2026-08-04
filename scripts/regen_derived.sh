@@ -36,6 +36,7 @@ BUILDERS=(
     "scripts/research/build_transition_tables.py"
     "scripts/research/build_machine_typology.py"
     "scripts/research/render_automaton_svg.py"
+    "scripts/research/render_automaton_context_svg.py"
     "scripts/research/build_automata_compendium.py"
     "scripts/extract_capability_registry.py"
     "scripts/extract_machine_block_decomposition.py"

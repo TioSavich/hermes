@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2980" height="596" viewBox="0 0 2980 596" role="img" aria-labelledby="title desc">
+  <title id="title">counting family composite</title>
+  <desc id="desc">counting composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <defs>
+    <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
+    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+  </defs>
+  <path d="M 100.0 298.0 C 208.0 298.0, 208.0 261.0, 316.0 261.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: compare_ones_digits_only, place_value_comparison</title></path>
+  <rect x="146.0" y="252.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="208.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
+  <text x="208.0" y="280.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_ones_digits_only</text>
+  <text x="208.0" y="289.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">place_value_comparison</text>
+  <path d="M 100.0 298.0 C 208.0 298.0, 208.0 261.0, 316.0 261.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: compare_cardinalities_one_to_one, inscribe_cardinality, omit_highest_place_regrouping, recursive_place_value_inscription</title></path>
+  <rect x="160.0" y="252.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="208.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
+  <text x="208.0" y="280.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_cardinalities_one_to_one</text>
+  <text x="208.0" y="289.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_cardinality</text>
+  <text x="208.0" y="298.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">omit_highest_place_regrouping</text>
+  <text x="208.0" y="307.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_place_value_inscription</text>
+  <path d="M 100.0 298.0 C 208.0 298.0, 208.0 520.0, 316.0 520.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: spatial_extent_as_cardinality</title></path>
+  <rect x="154.4" y="506.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="208.0" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
+  <text x="208.0" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <text x="208.0" y="544.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">spatial_extent_as_cardinality</text>
+  <path d="M 1124.0 199.3 C 2000.0 199.3, 2000.0 298.0, 2876.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: compare_cardinalities_one_to_one, compare_ones_digits_only, place_value_comparison</title></path>
+  <rect x="1963.2" y="289.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="2000.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
+  <path d="M 868.0 261.0 C 976.0 261.0, 976.0 199.3, 1084.0 199.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: compare_ones_digits_only, place_value_comparison</title></path>
+  <rect x="919.6" y="190.3" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="976.0" y="202.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
+  <path d="M 612.0 372.0 C 720.0 372.0, 720.0 261.0, 828.0 261.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: place_value_comparison</title></path>
+  <rect x="672.0" y="252.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="720.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
+  <path d="M 356.0 261.0 C 464.0 261.0, 464.0 372.0, 572.0 372.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: place_value_comparison</title></path>
+  <rect x="402.0" y="363.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="464.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
+  <text x="464.0" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">place_value_comparison</text>
+  <path d="M 356.0 261.0 C 592.0 261.0, 592.0 261.0, 828.0 261.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: compare_ones_digits_only</title></path>
+  <rect x="538.4" y="247.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="592.0" y="259.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
+  <text x="592.0" y="269.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <text x="592.0" y="285.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_ones_digits_only</text>
+  <path d="M 612.0 76.0 C 848.0 76.0, 848.0 199.3, 1084.0 199.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: compare_cardinalities_one_to_one</title></path>
+  <rect x="808.4" y="185.3" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="848.0" y="197.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="848.0" y="207.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <path d="M 868.0 298.0 C 1872.0 298.0, 1872.0 298.0, 2876.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: omit_highest_place_regrouping</title></path>
+  <rect x="1826.8" y="289.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1872.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
+  <path d="M 612.0 298.0 C 720.0 298.0, 720.0 298.0, 828.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: omit_highest_place_regrouping</title></path>
+  <rect x="663.6" y="289.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="720.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <path d="M 2660.0 446.0 C 2768.0 446.0, 2768.0 298.0, 2876.0 298.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: recursive_place_value_inscription</title></path>
+  <rect x="2708.8" y="289.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="2768.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_conservation</text>
+  <path d="M 2404.0 446.0 C 2512.0 446.0, 2512.0 446.0, 2620.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_composite_unit: recursive_place_value_inscription</title></path>
+  <rect x="2458.4" y="432.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="2512.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_composite</text>
+  <text x="2512.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unit</text>
+  <path d="M 2148.0 446.0 C 2256.0 446.0, 2256.0 446.0, 2364.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_composite_unit: recursive_place_value_inscription</title></path>
+  <rect x="2202.4" y="432.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="2256.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_composite</text>
+  <text x="2256.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unit</text>
+  <path d="M 1892.0 446.0 C 2000.0 446.0, 2000.0 446.0, 2108.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_composite_unit: recursive_place_value_inscription</title></path>
+  <rect x="1946.4" y="432.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="2000.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_composite</text>
+  <text x="2000.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unit</text>
+  <path d="M 1636.0 446.0 C 1744.0 446.0, 1744.0 446.0, 1852.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: recursive_place_value_inscription</title></path>
+  <rect x="1704.4" y="432.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1744.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="1744.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <path d="M 1380.0 446.0 C 1488.0 446.0, 1488.0 446.0, 1596.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: recursive_place_value_inscription</title></path>
+  <rect x="1448.4" y="432.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1488.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="1488.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <path d="M 1124.0 446.0 C 1232.0 446.0, 1232.0 446.0, 1340.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: recursive_place_value_inscription</title></path>
+  <rect x="1178.4" y="437.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1232.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
+  <path d="M 868.0 446.0 C 976.0 446.0, 976.0 446.0, 1084.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>unitize_referent: recursive_place_value_inscription</title></path>
+  <rect x="925.2" y="437.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="976.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unitize_referent</text>
+  <path d="M 612.0 335.0 C 1744.0 335.0, 1744.0 298.0, 2876.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: inscribe_cardinality</title></path>
+  <rect x="1696.0" y="289.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1744.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
+  <text x="1744.0" y="317.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_cardinality</text>
+  <path d="M 612.0 335.0 C 720.0 335.0, 720.0 446.0, 828.0 446.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>regroup_to_base: recursive_place_value_inscription</title></path>
+  <rect x="672.0" y="437.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="720.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">regroup_to_base</text>
+  <text x="720.0" y="465.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_place_value_inscription</text>
+  <path d="M 356.0 261.0 C 464.0 261.0, 464.0 76.0, 572.0 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>match_one_to_one: compare_cardinalities_one_to_one</title></path>
+  <rect x="413.2" y="67.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="464.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">match_one_to_one</text>
+  <text x="464.0" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_cardinalities_one_to_one</text>
+  <path d="M 356.0 261.0 C 464.0 261.0, 464.0 298.0, 572.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_part: omit_highest_place_regrouping</title></path>
+  <rect x="427.2" y="289.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="464.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_part</text>
+  <text x="464.0" y="317.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">omit_highest_place_regrouping</text>
+  <path d="M 356.0 261.0 C 464.0 261.0, 464.0 335.0, 572.0 335.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: inscribe_cardinality, recursive_place_value_inscription</title></path>
+  <rect x="410.4" y="326.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="464.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
+  <text x="464.0" y="354.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_cardinality</text>
+  <text x="464.0" y="363.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_place_value_inscription</text>
+  <path d="M 612.0 520.0 C 1744.0 520.0, 1744.0 298.0, 2876.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_appearance_for_measure: spatial_extent_as_cardinality</title></path>
+  <rect x="1698.8" y="279.0" width="90.4" height="38.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1744.0" y="291.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute</text>
+  <text x="1744.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">appearance_for</text>
+  <text x="1744.0" y="311.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">measure</text>
+  <path d="M 356.0 520.0 C 464.0 520.0, 464.0 520.0, 572.0 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: spatial_extent_as_cardinality</title></path>
+  <rect x="407.6" y="511.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="464.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
+  <circle cx="82.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="82.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>
+  <circle cx="2898.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="2898.0" cy="298.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
+  <text x="2898.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s1</text>
+  <circle cx="1106.0" cy="199.3" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1106.0" y="202.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s2</text>
+  <circle cx="850.0" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="850.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s3</text>
+  <circle cx="594.0" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="594.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s4</text>
+  <circle cx="338.0" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="338.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s5</text>
+  <circle cx="594.0" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="594.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s6</text>
+  <circle cx="850.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="850.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s7</text>
+  <circle cx="594.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="594.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s8</text>
+  <circle cx="2642.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="2642.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s9</text>
+  <circle cx="2386.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="2386.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s10</text>
+  <circle cx="2130.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="2130.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s11</text>
+  <circle cx="1874.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1874.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s12</text>
+  <circle cx="1618.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1618.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s13</text>
+  <circle cx="1362.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1362.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s14</text>
+  <circle cx="1106.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1106.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s15</text>
+  <circle cx="850.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="850.0" cy="446.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
+  <text x="850.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s16</text>
+  <circle cx="594.0" cy="335.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="594.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s17</text>
+  <circle cx="338.0" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="338.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s18</text>
+  <circle cx="594.0" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="594.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s19</text>
+  <circle cx="338.0" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="338.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s20</text>
+</svg>

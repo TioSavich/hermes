@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="244" viewBox="0 0 760 244" role="img" aria-labelledby="title desc">
+  <title id="title">Domain scene for fraction/iterate_given_overshoot</title>
+  <desc id="desc">The run produced overshot(fraction(7,4)); the recorded expected result is whole_recovered(unit(whole)).</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <text x="132.0" y="103.0" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#0d0c08">iterated unit: 7/4</text>
+  <rect x="150.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="270.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="390.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="510.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="630.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="750.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="870.0" y="72.0" width="120.0" height="52.0" fill="#d4a747" fill-opacity="0.72" stroke="#0d0c08" stroke-width="1"/>
+  <rect x="150.0" y="72.0" width="840.0" height="52.0" fill="none" stroke="#0d0c08" stroke-width="2"/>
+  <text x="36.0" y="216.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#b95238">The run produced overshot(fraction(7,4)); the recorded expected result is whole_recovered(unit(whole)).</text>
+</svg>

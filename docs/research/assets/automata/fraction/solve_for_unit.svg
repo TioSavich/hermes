@@ -1,43 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1374" height="384" viewBox="0 0 1374 384" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="680" viewBox="0 0 680 680" role="img" aria-labelledby="title desc">
   <title id="title">fraction / solve_for_unit</title>
-  <desc id="desc">Solid dark edges have static provenance only; dashed gold edges have observed provenance only; solid gold edges have both static and observed provenance.</desc>
+  <desc id="desc">States are arranged radially. Edge color records the authored stance: dark for conserving, rust for deforming, and muted for neutral. Dashed edges have observed-only provenance.</desc>
   <defs>
-    <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
-    <marker id="arrow-observed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
-    <marker id="arrow-combined" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
+    <marker id="arrow-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
+    <marker id="arrow-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b95238"/></marker>
+    <marker id="arrow-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#665f4f"/></marker>
+    <marker id="arrow-start" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
   </defs>
   <rect width="100%" height="100%" fill="#f4ead6"/>
-  <path class="edge-static-observed" d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="223.0" y="92.0">read_equation</tspan></text>
-  <path class="edge-static-observed" d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="453.0" y="59.0">treat_unknown_as_</tspan><tspan x="453.0" y="70.0">iterable_</tspan><tspan x="453.0" y="81.0">partitionable_</tspan><tspan x="453.0" y="92.0">quantity</tspan></text>
-  <path class="edge-static-observed" d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="683.0" y="81.0">partition_total_</tspan><tspan x="683.0" y="92.0">into_numerator_parts</tspan></text>
-  <path class="edge-static-observed" d="M 850.0 112.0 L 976.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="913.0" y="81.0">iterate_recovered_</tspan><tspan x="913.0" y="92.0">part_by_denominator</tspan></text>
-  <path class="edge-static-observed" d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="1143.0" y="92.0">recover_unknown</tspan></text>
-  <path class="edge-static-observed" d="M 1214.5 118.6 C 1352.0 118.6, 1352.0 264.3, 167.5 264.3" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="691.0" y="147.4">recognize_partition_</tspan><tspan x="691.0" y="158.4">undoes_iteration_on_</tspan><tspan x="691.0" y="169.4">the_unknown</tspan></text>
-  <path class="edge-static-observed" d="M 160.0 272.0 L 286.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="223.0" y="252.0">solve_trace</tspan></text>
-  <path d="M 16.0 112.0 L 56.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.5" marker-end="url(#arrow-observed)"/>
-  <circle cx="112.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="112.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_start</text>
-  <circle cx="342.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="342.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_1</text>
-  <circle cx="572.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="572.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_2</text>
-  <circle cx="802.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="802.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_3</text>
-  <circle cx="1032.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="1032.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_4</text>
-  <circle cx="1262.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="1262.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_5</text>
-  <circle cx="112.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <text x="112.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_6</text>
-  <circle cx="342.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
-  <circle cx="342.0" cy="272.0" r="42.0" fill="none" stroke="#0d0c08" stroke-width="1.6"/>
-  <text x="342.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_accept</text>
+  <path class="edge-neutral" d="M 356.6 218.9 Q 399.7 195.9 407.4 239.9" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>read_equation → register_givens (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: register_givens</title><tspan x="385.5" y="225.6">read_equation</tspan></text>
+  <path class="edge-neutral" d="M 437.4 266.1 Q 484.1 280.3 458.4 316.9" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>treat_unknown_as_iterable_partitionable_quantity → assign_roles (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: assign_roles</title><tspan x="453.1" y="275.7">treat_unknown_as</tspan><tspan x="453.1" y="286.1">iterable</tspan><tspan x="453.1" y="296.5">partitionable</tspan><tspan x="453.1" y="306.9">quantity</tspan></text>
+  <path class="edge-neutral" d="M 461.1 356.6 Q 484.1 399.7 440.1 407.4" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>partition_total_into_numerator_parts → partition_into_equal_parts (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: partition_into_equal_parts</title><tspan x="454.4" y="380.3">partition_total</tspan><tspan x="454.4" y="390.7">into_numerator_parts</tspan></text>
+  <path class="edge-neutral" d="M 413.9 437.4 Q 399.7 484.1 363.1 458.4" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>iterate_recovered_part_by_denominator → iterate_unit (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: iterate_unit</title><tspan x="388.7" y="447.9">iterate_recovered</tspan><tspan x="388.7" y="458.3">part_by_denominator</tspan></text>
+  <path class="edge-neutral" d="M 323.4 461.1 Q 280.3 484.1 272.6 440.1" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>recover_unknown → isolate_unknown (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: isolate_unknown</title><tspan x="294.5" y="454.4">recover_unknown</tspan></text>
+  <path class="edge-conserving" d="M 242.6 413.9 Q 195.9 399.7 221.6 363.1" fill="none" stroke="#0d0c08" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-conserving)"><title>recognize_partition_undoes_iteration_on_the_unknown → verify_invariant (conserving)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#0d0c08" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: verify_invariant</title><tspan x="226.9" y="378.3">recognize_partition</tspan><tspan x="226.9" y="388.7">undoes_iteration_on</tspan><tspan x="226.9" y="399.1">the_unknown</tspan></text>
+  <path class="edge-neutral" d="M 218.9 323.4 Q 195.9 280.3 239.9 272.6" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>solve_trace → receive_kernel_outcome (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: receive_kernel_outcome</title><tspan x="225.6" y="294.5">solve_trace</tspan></text>
+  <path d="M 340.0 148.0 L 340.0 187.0" fill="none" stroke="#d4a747" stroke-width="2.6" marker-end="url(#arrow-start)"/>
+  <circle cx="340.0" cy="212.0" r="18.0" fill="#fffef9" stroke="#d4a747" stroke-width="3"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="340.0" y="154.0">q_start</tspan></text>
+  <text x="340.0" y="215.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q0</text>
+  <circle cx="430.5" cy="249.5" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="474.5" y="208.5">q_step_1</tspan></text>
+  <text x="430.5" y="253.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q1</text>
+  <circle cx="468.0" cy="340.0" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="529.0" y="340.0">q_step_2</tspan></text>
+  <text x="468.0" y="343.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q2</text>
+  <circle cx="430.5" cy="430.5" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="474.5" y="471.5">q_step_3</tspan></text>
+  <text x="430.5" y="434.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q3</text>
+  <circle cx="340.0" cy="468.0" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="340.0" y="526.0">q_step_4</tspan></text>
+  <text x="340.0" y="471.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q4</text>
+  <circle cx="249.5" cy="430.5" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="205.5" y="471.5">q_step_5</tspan></text>
+  <text x="249.5" y="434.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q5</text>
+  <circle cx="212.0" cy="340.0" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="151.0" y="340.0">q_step_6</tspan></text>
+  <text x="212.0" y="343.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q6</text>
+  <circle cx="249.5" cy="249.5" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="249.5" cy="249.5" r="13.5" fill="none" stroke="#0d0c08" stroke-width="1.4"/>
+  <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="205.5" y="208.5">q_accept</tspan></text>
+  <text x="249.5" y="253.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q7</text>
 </svg>

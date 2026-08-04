@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="520" viewBox="0 0 700 520" role="img" aria-labelledby="title desc">
+  <title id="title">Domain scene for multiplication/add_numbers_as_common_multiple</title>
+  <desc id="desc">The run produced candidate_common_multiple(75); the recorded expected result is common_multiples(generator(step(1316)),witnesses([1316,2632,3948,5264,6580]),least(1316)).</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <rect x="-546.0" y="-908.0" width="1792.0" height="2256.0" fill="#d4a747" fill-opacity="0.55" stroke="#0d0c08" stroke-width="1.5"/>
+  <line x1="-546.0" y1="-908.0" x2="-546.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-482.0" y1="-908.0" x2="-482.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-418.0" y1="-908.0" x2="-418.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-354.0" y1="-908.0" x2="-354.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-290.0" y1="-908.0" x2="-290.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-226.0" y1="-908.0" x2="-226.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-162.0" y1="-908.0" x2="-162.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-98.0" y1="-908.0" x2="-98.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-34.0" y1="-908.0" x2="-34.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="30.0" y1="-908.0" x2="30.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="94.0" y1="-908.0" x2="94.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="158.0" y1="-908.0" x2="158.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="222.0" y1="-908.0" x2="222.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="286.0" y1="-908.0" x2="286.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="350.0" y1="-908.0" x2="350.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="414.0" y1="-908.0" x2="414.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="478.0" y1="-908.0" x2="478.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="542.0" y1="-908.0" x2="542.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="606.0" y1="-908.0" x2="606.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="670.0" y1="-908.0" x2="670.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="734.0" y1="-908.0" x2="734.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="798.0" y1="-908.0" x2="798.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="862.0" y1="-908.0" x2="862.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="926.0" y1="-908.0" x2="926.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="990.0" y1="-908.0" x2="990.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="1054.0" y1="-908.0" x2="1054.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="1118.0" y1="-908.0" x2="1118.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="1182.0" y1="-908.0" x2="1182.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="1246.0" y1="-908.0" x2="1246.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-908.0" x2="1246.0" y2="-908.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-860.0" x2="1246.0" y2="-860.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-812.0" x2="1246.0" y2="-812.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-764.0" x2="1246.0" y2="-764.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-716.0" x2="1246.0" y2="-716.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-668.0" x2="1246.0" y2="-668.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-620.0" x2="1246.0" y2="-620.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-572.0" x2="1246.0" y2="-572.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-524.0" x2="1246.0" y2="-524.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-476.0" x2="1246.0" y2="-476.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-428.0" x2="1246.0" y2="-428.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-380.0" x2="1246.0" y2="-380.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-332.0" x2="1246.0" y2="-332.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-284.0" x2="1246.0" y2="-284.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-236.0" x2="1246.0" y2="-236.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-188.0" x2="1246.0" y2="-188.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-140.0" x2="1246.0" y2="-140.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-92.0" x2="1246.0" y2="-92.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="-44.0" x2="1246.0" y2="-44.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="4.0" x2="1246.0" y2="4.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="52.0" x2="1246.0" y2="52.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="100.0" x2="1246.0" y2="100.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="148.0" x2="1246.0" y2="148.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="196.0" x2="1246.0" y2="196.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="244.0" x2="1246.0" y2="244.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="292.0" x2="1246.0" y2="292.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="340.0" x2="1246.0" y2="340.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="388.0" x2="1246.0" y2="388.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="436.0" x2="1246.0" y2="436.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="484.0" x2="1246.0" y2="484.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="532.0" x2="1246.0" y2="532.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="580.0" x2="1246.0" y2="580.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="628.0" x2="1246.0" y2="628.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="676.0" x2="1246.0" y2="676.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="724.0" x2="1246.0" y2="724.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="772.0" x2="1246.0" y2="772.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="820.0" x2="1246.0" y2="820.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="868.0" x2="1246.0" y2="868.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="916.0" x2="1246.0" y2="916.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="964.0" x2="1246.0" y2="964.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1012.0" x2="1246.0" y2="1012.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1060.0" x2="1246.0" y2="1060.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1108.0" x2="1246.0" y2="1108.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1156.0" x2="1246.0" y2="1156.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1204.0" x2="1246.0" y2="1204.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1252.0" x2="1246.0" y2="1252.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1300.0" x2="1246.0" y2="1300.0" stroke="#665f4f" stroke-width="0.8"/>
+  <line x1="-546.0" y1="1348.0" x2="1246.0" y2="1348.0" stroke="#665f4f" stroke-width="0.8"/>
+  <text x="36.0" y="486.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#b95238">The run produced candidate_common_multiple(75); the recorded expected result is common_multiples(generator(step(1316)),witnesses([1316,2632,3948,5264,6580]),least(1316)).</text>
+</svg>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2230" height="390" viewBox="0 0 2230 390" role="img" aria-labelledby="title desc">
+  <title id="title">calculus family composite</title>
+  <desc id="desc">calculus composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <defs>
+    <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
+    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+  </defs>
+  <path d="M 100.0 187.0 C 209.1 187.0, 209.1 187.0, 318.2 187.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: bounded_numerator_over_diverging_denominator, direct_substitution, factor_cancel_substitute, factor_cancel_without_common_factor</title></path>
+  <rect x="169.5" y="173.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="209.1" y="185.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="209.1" y="195.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <path d="M 1907.8 150.0 C 2016.9 150.0, 2016.9 187.0, 2126.0 187.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: bounded_numerator_over_diverging_denominator, direct_substitution, factor_cancel_substitute</title></path>
+  <rect x="1980.1" y="178.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="2016.9" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
+  <path d="M 1133.0 76.0 C 1500.4 76.0, 1500.4 150.0, 1867.8 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>judge_against_benchmark: bounded_numerator_over_diverging_denominator</title></path>
+  <rect x="1458.0" y="136.0" width="84.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1500.4" y="148.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">judge_against</text>
+  <text x="1500.4" y="158.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">benchmark</text>
+  <path d="M 874.8 76.0 C 983.9 76.0, 983.9 76.0, 1093.0 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>filter_by_constraint: bounded_numerator_over_diverging_denominator</title></path>
+  <rect x="921.9" y="67.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="983.9" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">filter_by_constraint</text>
+  <path d="M 616.5 76.0 C 725.6 76.0, 725.6 76.0, 834.8 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: bounded_numerator_over_diverging_denominator</title></path>
+  <rect x="686.0" y="62.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="725.6" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="725.6" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <path d="M 1391.2 298.0 C 1758.6 298.0, 1758.6 187.0, 2126.0 187.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: factor_cancel_without_common_factor</title></path>
+  <rect x="1721.8" y="178.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1758.6" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
+  <path d="M 1133.0 298.0 C 1242.1 298.0, 1242.1 298.0, 1351.2 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: factor_cancel_without_common_factor</title></path>
+  <rect x="1196.9" y="289.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1242.1" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
+  <path d="M 874.8 298.0 C 983.9 298.0, 983.9 298.0, 1093.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>apply_stored_rule: factor_cancel_without_common_factor</title></path>
+  <rect x="930.3" y="289.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="983.9" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">apply_stored_rule</text>
+  <path d="M 1649.5 187.0 C 1758.6 187.0, 1758.6 150.0, 1867.8 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>receive_kernel_outcome: direct_substitution, factor_cancel_substitute</title></path>
+  <rect x="1713.4" y="136.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1758.6" y="148.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">receive_kernel</text>
+  <text x="1758.6" y="158.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">outcome</text>
+  <path d="M 1391.2 187.0 C 1500.4 187.0, 1500.4 187.0, 1609.5 187.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>evaluate_expression: direct_substitution, factor_cancel_substitute</title></path>
+  <rect x="1441.2" y="178.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1500.4" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">evaluate_expression</text>
+  <path d="M 1133.0 187.0 C 1242.1 187.0, 1242.1 187.0, 1351.2 187.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>substitute_values: direct_substitution, factor_cancel_substitute</title></path>
+  <rect x="1188.5" y="178.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1242.1" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">substitute_values</text>
+  <path d="M 874.8 224.0 C 983.9 224.0, 983.9 187.0, 1093.0 187.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>decompose_operand: factor_cancel_substitute</title></path>
+  <rect x="930.3" y="178.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="983.9" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">decompose_operand</text>
+  <path d="M 616.5 261.0 C 725.6 261.0, 725.6 298.0, 834.8 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: factor_cancel_without_common_factor</title></path>
+  <rect x="669.2" y="289.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="725.6" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="725.6" y="317.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">factor_cancel_without_common_factor</text>
+  <path d="M 616.5 261.0 C 725.6 261.0, 725.6 224.0, 834.8 224.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>test_criteria: factor_cancel_substitute</title></path>
+  <rect x="683.2" y="215.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="725.6" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">test_criteria</text>
+  <text x="725.6" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">factor_cancel_substitute</text>
+  <path d="M 358.2 187.0 C 467.4 187.0, 467.4 76.0, 576.5 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: bounded_numerator_over_diverging_denominator</title></path>
+  <rect x="427.8" y="62.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="467.4" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="467.4" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <text x="467.4" y="100.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">bounded_numerator_over_diverging_denominator</text>
+  <path d="M 358.2 187.0 C 467.4 187.0, 467.4 261.0, 576.5 261.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>substitute_values: factor_cancel_substitute, factor_cancel_without_common_factor</title></path>
+  <rect x="413.8" y="252.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="467.4" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">substitute_values</text>
+  <text x="467.4" y="280.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">factor_cancel_substitute</text>
+  <text x="467.4" y="289.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">factor_cancel_without_common_factor</text>
+  <path d="M 358.2 187.0 C 725.6 187.0, 725.6 187.0, 1093.0 187.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>test_criteria: direct_substitution</title></path>
+  <rect x="683.2" y="178.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="725.6" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">test_criteria</text>
+  <text x="725.6" y="206.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">direct_substitution</text>
+  <circle cx="82.0" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="82.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>
+  <circle cx="2148.0" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="2148.0" cy="187.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
+  <text x="2148.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s1</text>
+  <circle cx="1889.8" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1889.8" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s2</text>
+  <circle cx="1115.0" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1115.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s3</text>
+  <circle cx="856.8" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="856.8" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s4</text>
+  <circle cx="598.5" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="598.5" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s5</text>
+  <circle cx="1373.2" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1373.2" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s6</text>
+  <circle cx="1115.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1115.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s7</text>
+  <circle cx="856.8" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="856.8" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s8</text>
+  <circle cx="1631.5" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1631.5" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s9</text>
+  <circle cx="1373.2" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1373.2" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s10</text>
+  <circle cx="1115.0" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1115.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s11</text>
+  <circle cx="856.8" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="856.8" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s12</text>
+  <circle cx="598.5" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="598.5" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s13</text>
+  <circle cx="340.2" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="340.2" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s14</text>
+</svg>

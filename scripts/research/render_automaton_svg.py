@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render deterministic state-diagram SVGs from transition-table facts."""
+"""Render deterministic radial state-diagram SVGs from transition-table facts."""
 from __future__ import annotations
 
 import argparse
@@ -7,25 +7,30 @@ import html
 import math
 import re
 import sys
-from collections import Counter, defaultdict, deque
+from collections import Counter, defaultdict
+from functools import lru_cache
 from pathlib import Path
 
-from build_machine_typology import (
-    ROOT,
-    Machine,
-    Structure,
-    parse_transition_tables,
-    structure,
-)
+from build_machine_typology import ROOT, Machine, Structure, parse_transition_tables, structure
 
 
 OUTPUT_DIR = ROOT / "docs/research/assets/automata"
 HOST_CSS = ROOT / "hermes/web/render/host.css"
-RADIUS = 48.0
-COLS = 6
-X_GAP = 230.0
-Y_GAP = 160.0
-MARGIN = 112.0
+ACTION_MAP = ROOT / "knowledge/strategies/action_vocabulary_map.pl"
+ACTION_GRAMMAR = ROOT / "knowledge/strategies/action_grammar.pl"
+NODE_RADIUS = 18.0
+EDGE_BOW = 34.0
+ATOM = r"[a-z][a-z0-9_]*"
+MAP_RE = re.compile(rf"^action_maps\(({ATOM}), ({ATOM}), ({ATOM}), ({ATOM}),", re.MULTILINE)
+REGISTER_RE = re.compile(
+    rf"^action_register\(({ATOM}), genre\(computational\), register\(({ATOM})\), stance\(({ATOM})\)\)\.",
+    re.MULTILINE,
+)
+GRAMMAR_RE = re.compile(
+    rf"machine_grammar\(computational, ({ATOM}), ({ATOM}), arc\([^)]*\),\s*"
+    r"phrases\(\[[^\]]*\]\),\s*stances\(\[([^\]]*)\]\)\)\.",
+    re.MULTILINE,
+)
 
 
 def palette(path: Path = HOST_CSS) -> dict[str, str]:
@@ -34,120 +39,64 @@ def palette(path: Path = HOST_CSS) -> dict[str, str]:
     found: dict[str, str] = {}
     for name, color in re.findall(r"var\(--([a-z0-9-]+),\s*(#[0-9a-fA-F]{6})\)", text):
         found.setdefault(name, color.lower())
-    required = ("paper", "ink", "muted", "gold", "surface")
+    required = ("paper", "ink", "muted", "gold", "surface", "rust")
     missing = [name for name in required if name not in found]
     if missing:
         raise ValueError(f"host.css lacks required palette fallbacks: {missing}")
     return found
 
 
-def graph_distances(machine: Machine) -> dict[str, int]:
-    adjacency: dict[str, set[str]] = defaultdict(set)
-    for before, _action, after in machine.unique_edges:
-        adjacency[before].add(after)
-    distances = {machine.start: 0}
-    queue = deque([machine.start])
-    while queue:
-        current = queue.popleft()
-        for nxt in sorted(adjacency.get(current, ())):
-            if nxt not in distances:
-                distances[nxt] = distances[current] + 1
-                queue.append(nxt)
-    distance = max(distances.values(), default=0) + 1
-    for state in machine.states:
-        if state not in distances:
-            distances[state] = distance
-            distance += 1
-    return distances
+def action_semantics(path: Path = ACTION_MAP) -> tuple[dict[tuple[str, str, str], str], dict[str, str]]:
+    """Return the authored local-to-canonical map and each canonical stance."""
+    text = path.read_text(encoding="utf-8")
+    canonical = {(family, kind, local): mapped for family, kind, local, mapped in MAP_RE.findall(text)}
+    stances = {action: stance for action, _register, stance in REGISTER_RE.findall(text)}
+    if not canonical or not stances:
+        raise ValueError("action_vocabulary_map.pl lacks action_maps/7 or computational action_register/4 rows")
+    return canonical, stances
 
 
-def positions(row: Structure) -> tuple[dict[str, tuple[float, float]], float, float]:
-    machine = row.machine
-    placed: dict[str, tuple[float, float]] = {}
-    if row.structural_class == "linear_trace":
-        for index, state in enumerate(machine.states):
-            band, col = divmod(index, COLS)
-            placed[state] = (MARGIN + col * X_GAP, MARGIN + band * Y_GAP)
-        bands = max(1, math.ceil(len(machine.states) / COLS))
-        return placed, 2 * MARGIN + (min(COLS, len(machine.states)) - 1) * X_GAP, 2 * MARGIN + (bands - 1) * Y_GAP
-
-    distances = graph_distances(machine)
-    layers: dict[int, list[str]] = defaultdict(list)
-    for state in machine.states:
-        layers[distances[state]].append(state)
-    band_offsets: dict[int, float] = {}
-    running_y = MARGIN
-    for band in range(max(layers, default=0) // COLS + 1):
-        band_depths = [depth for depth in layers if depth // COLS == band]
-        max_fan = max((len(layers[depth]) for depth in band_depths), default=1)
-        band_offsets[band] = running_y
-        running_y += max(1, max_fan) * Y_GAP + 100
-    for depth in sorted(layers):
-        band, col = divmod(depth, COLS)
-        states = sorted(layers[depth], key=machine.states.index)
-        for index, state in enumerate(states):
-            placed[state] = (MARGIN + col * X_GAP, band_offsets[band] + index * Y_GAP)
-    width = 2 * MARGIN + (min(COLS, max(layers, default=0) + 1) - 1) * X_GAP
-    return placed, width, running_y - 40
+@lru_cache(maxsize=1)
+def grammar_stances(path: Path = ACTION_GRAMMAR) -> dict[tuple[str, str], tuple[str, ...]]:
+    """Read the machine stance words used to audit edge coloring."""
+    rows = {
+        (family, kind): tuple(part.strip() for part in body.split(",") if part.strip())
+        for family, kind, body in GRAMMAR_RE.findall(path.read_text(encoding="utf-8"))
+    }
+    if not rows:
+        raise ValueError("action_grammar.pl lacks computational machine_grammar/6 rows")
+    return rows
 
 
-def shortened_line(a: tuple[float, float], b: tuple[float, float]) -> tuple[float, float, float, float]:
-    x1, y1 = a
-    x2, y2 = b
-    dx, dy = x2 - x1, y2 - y1
-    distance = math.hypot(dx, dy) or 1.0
-    ux, uy = dx / distance, dy / distance
-    return x1 + ux * RADIUS, y1 + uy * RADIUS, x2 - ux * (RADIUS + 8), y2 - uy * (RADIUS + 8)
-
-
-def edge_path(
-    before: str,
-    after: str,
-    placed: dict[str, tuple[float, float]],
-    loop: bool,
-) -> tuple[str, float, float]:
-    x1, y1 = placed[before]
-    x2, y2 = placed[after]
-    if before == after:
-        path = (
-            f"M {x1 - 23:.1f} {y1 - 42:.1f} "
-            f"C {x1 - 72:.1f} {y1 - 104:.1f}, {x1 + 72:.1f} {y1 - 104:.1f}, "
-            f"{x1 + 23:.1f} {y1 - 42:.1f}"
+def validate_grammar_stances(
+    machine: Machine,
+    canonical_map: dict[tuple[str, str, str], str],
+    stance_map: dict[str, str],
+) -> None:
+    """Match action_grammar's deterministic word before drawing its stances."""
+    routes: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    for source, local, target in machine.unique_edges:
+        canonical = canonical_map.get((machine.family, machine.kind, local), local)
+        if canonical not in [action for action, _target in routes[source]]:
+            routes[source].append((canonical, target))
+    observed: list[str] = []
+    state, seen = machine.start, {machine.start}
+    while len(routes.get(state, [])) == 1:
+        action, target = routes[state][0]
+        observed.append(stance_map.get(action, "neutral"))
+        if target in seen:
+            break
+        seen.add(target)
+        state = target
+    expected = grammar_stances().get((machine.family, machine.kind))
+    if expected is None or tuple(observed) != expected:
+        raise ValueError(
+            f"action-grammar stance drift for {machine.family}/{machine.kind}: "
+            f"renderer {tuple(observed)!r}, grammar {expected!r}"
         )
-        return path, x1, y1 - 58
-    sx, sy, tx, ty = shortened_line((x1, y1), (x2, y2))
-    if loop:
-        lift = max(75.0, abs(x2 - x1) * 0.22)
-        path = f"M {sx:.1f} {sy:.1f} Q {(sx + tx) / 2:.1f} {min(sy, ty) - lift:.1f} {tx:.1f} {ty:.1f}"
-        return path, (sx + tx) / 2, min(sy, ty) - 12
-    if x2 < x1 and y2 > y1:
-        bend = max(x1, x2) + 90
-        path = f"M {sx:.1f} {sy:.1f} C {bend:.1f} {sy:.1f}, {bend:.1f} {ty:.1f}, {tx:.1f} {ty:.1f}"
-        return path, (sx + tx) / 2, (sy + ty) / 2 - 22
-    path = f"M {sx:.1f} {sy:.1f} L {tx:.1f} {ty:.1f}"
-    dx, dy = tx - sx, ty - sy
-    distance = math.hypot(dx, dy) or 1.0
-    normal_x, normal_y = -dy / distance, dx / distance
-    if normal_y > 0:
-        normal_x, normal_y = -normal_x, -normal_y
-    label_offset = 20.0
-    return (
-        path,
-        (sx + tx) / 2 + normal_x * label_offset,
-        (sy + ty) / 2 + normal_y * label_offset,
-    )
 
 
-def text_size(
-    atom: str,
-    maximum: float = 12.0,
-    target_width: float = 84.0,
-    minimum: float = 6.0,
-) -> float:
-    return max(minimum, min(maximum, target_width / (max(1, len(atom)) * 0.62)))
-
-
-def wrap_atom(atom: str, limit: int = 20) -> list[str]:
+def wrap_atom(atom: str, limit: int = 22) -> list[str]:
     """Wrap a full atom at underscores without dropping any characters."""
     if len(atom) <= limit:
         return [atom]
@@ -155,130 +104,245 @@ def wrap_atom(atom: str, limit: int = 20) -> list[str]:
     lines: list[str] = []
     current = ""
     for piece in pieces:
-        candidate = f"{current}{piece}"
+        candidate = current + piece
         if current and len(candidate) > limit:
-            lines.append(current)
-            current = piece
+            lines.append(current.rstrip("_"))
+            current = piece.lstrip("_")
         else:
             current = candidate
         while len(current) > limit:
             lines.append(current[:limit])
             current = current[limit:]
     if current:
-        lines.append(current)
+        lines.append(current.rstrip("_"))
     return lines
 
 
-def edge_label(atom: str, x: float, y: float, color: str, background: str) -> str:
-    lines = wrap_atom(atom)
-    size = text_size(max(lines, key=len), 9.5, 126.0, minimum=9.0)
-    first_y = y - (len(lines) - 1) * (size + 1.5)
+def geometry(machine: Machine) -> tuple[dict[str, tuple[float, float, float]], float, float, float, float]:
+    """Place states evenly on a circle, starting at -pi/2 as fractal.html does."""
+    count = max(1, len(machine.states))
+    ring = max(108.0, min(300.0, 16.0 * count))
+    # Long authored state atoms stay outside the ring without being clipped.
+    label_reach = 184.0
+    margin = 28.0
+    size = 2 * (ring + label_reach + margin)
+    cx = cy = size / 2
+    placed = {}
+    for index, state in enumerate(machine.states):
+        angle = -math.pi / 2 + index / count * math.tau
+        placed[state] = (cx + math.cos(angle) * ring, cy + math.sin(angle) * ring, angle)
+    return placed, size, size, cx, cy
+
+
+def point_toward(a: tuple[float, float], b: tuple[float, float], distance: float) -> tuple[float, float]:
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    length = math.hypot(dx, dy) or 1.0
+    return a[0] + dx / length * distance, a[1] + dy / length * distance
+
+
+def quadratic_point(a: tuple[float, float], c: tuple[float, float], b: tuple[float, float], t: float) -> tuple[float, float]:
+    u = 1 - t
+    return (
+        u * u * a[0] + 2 * u * t * c[0] + t * t * b[0],
+        u * u * a[1] + 2 * u * t * c[1] + t * t * b[1],
+    )
+
+
+def edge_path(
+    machine: Machine,
+    before: str,
+    after: str,
+    placed: dict[str, tuple[float, float, float]],
+    cx: float,
+    cy: float,
+    lane: float,
+) -> tuple[str, float, float]:
+    """Bow adjacent edges around the ring and let skips/back-edges cross it."""
+    x1, y1, a1 = placed[before]
+    x2, y2, a2 = placed[after]
+    if before == after:
+        outward = (math.cos(a1), math.sin(a1))
+        tangent = (-outward[1], outward[0])
+        p1 = (x1 + tangent[0] * 9 + outward[0] * NODE_RADIUS,
+              y1 + tangent[1] * 9 + outward[1] * NODE_RADIUS)
+        p2 = (x1 - tangent[0] * 9 + outward[0] * NODE_RADIUS,
+              y1 - tangent[1] * 9 + outward[1] * NODE_RADIUS)
+        c1 = (p1[0] + tangent[0] * 34 + outward[0] * 34,
+              p1[1] + tangent[1] * 34 + outward[1] * 34)
+        c2 = (p2[0] - tangent[0] * 34 + outward[0] * 34,
+              p2[1] - tangent[1] * 34 + outward[1] * 34)
+        label = (x1 + outward[0] * 72, y1 + outward[1] * 72)
+        return (
+            f"M {p1[0]:.1f} {p1[1]:.1f} C {c1[0]:.1f} {c1[1]:.1f}, "
+            f"{c2[0]:.1f} {c2[1]:.1f}, {p2[0]:.1f} {p2[1]:.1f}",
+            label[0], label[1],
+        )
+
+    start = point_toward((x1, y1), (x2, y2), NODE_RADIUS)
+    end = point_toward((x2, y2), (x1, y1), NODE_RADIUS + 7)
+    indices = {state: index for index, state in enumerate(machine.states)}
+    i, j, n = indices[before], indices[after], len(machine.states)
+    adjacent = (j - i) % n == 1 or (i - j) % n == 1
+    if adjacent:
+        # The angle bisector outside the ring makes consecutive edges follow its contour.
+        ux, uy = x1 - cx, y1 - cy
+        vx, vy = x2 - cx, y2 - cy
+        mx, my = ux + vx, uy + vy
+        length = math.hypot(mx, my) or 1.0
+        ring = math.hypot(ux, uy)
+        tangent_x, tangent_y = -my / length, mx / length
+        control = (
+            cx + mx / length * (ring + 28 + abs(lane) * 9) + tangent_x * lane * 26,
+            cy + my / length * (ring + 28 + abs(lane) * 9) + tangent_y * lane * 26,
+        )
+    else:
+        # Fractal's fixed perpendicular offset keeps the chord readable without hiding skips.
+        dx, dy = end[0] - start[0], end[1] - start[1]
+        length = math.hypot(dx, dy) or 1.0
+        side = -1.0 if ((i + j) % 2) else 1.0
+        offset = EDGE_BOW * side + lane * 18
+        control = ((start[0] + end[0]) / 2 - dy / length * offset,
+                   (start[1] + end[1]) / 2 + dx / length * offset)
+    label_x, label_y = quadratic_point(start, control, end, 0.5)
+    dx, dy = end[0] - start[0], end[1] - start[1]
+    length = math.hypot(dx, dy) or 1.0
+    label_x += -dy / length * (14 + lane * 48)
+    label_y += dx / length * (14 + lane * 48)
+    return (
+        f"M {start[0]:.1f} {start[1]:.1f} Q {control[0]:.1f} {control[1]:.1f} {end[0]:.1f} {end[1]:.1f}",
+        label_x, label_y,
+    )
+
+
+def edge_label(atom: str, canonical: str, x: float, y: float, color: str, background: str) -> str:
+    lines = wrap_atom(atom, 20)
+    size = 9.0
+    first_y = y - (len(lines) - 1) * 5.2
     tspans = "".join(
-        f'<tspan x="{x:.1f}" y="{first_y + index * (size + 1.5):.1f}">{html.escape(line)}</tspan>'
+        f'<tspan x="{x:.1f}" y="{first_y + index * 10.4:.1f}">{html.escape(line)}</tspan>'
         for index, line in enumerate(lines)
     )
     return (
-        f'  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" '
-        f'font-size="{size:.1f}" fill="{color}" stroke="{background}" '
-        f'stroke-width="5" stroke-linejoin="round" paint-order="stroke fill">{tspans}</text>'
+        '  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" '
+        f'font-size="{size:.1f}" fill="{color}" stroke="{background}" stroke-width="4" '
+        f'stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: {html.escape(canonical)}</title>'
+        f'{tspans}</text>'
     )
 
 
-def render_svg(row: Structure, colors: dict[str, str] | None = None) -> str:
-    colors = colors or palette()
-    machine = row.machine
-    placed, width, height = positions(row)
-    loops = set(row.loop_edges)
-    grouped: dict[tuple[str, str, str], set[str]] = defaultdict(set)
-    for edge in machine.transitions:
-        grouped[(edge.before, edge.action, edge.after)].add(edge.provenance_kind)
-
-    out = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        (
-            f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.0f}" height="{height:.0f}" '
-            f'viewBox="0 0 {width:.0f} {height:.0f}" role="img" '
-            f'aria-labelledby="title desc">'
-        ),
-        f"  <title id=\"title\">{html.escape(machine.family)} / {html.escape(machine.kind)}</title>",
-        (
-            '  <desc id="desc">Solid dark edges have static provenance only; '
-            'dashed gold edges have observed provenance only; solid gold edges '
-            'have both static and observed provenance.</desc>'
-        ),
-        "  <defs>",
-        (
-            f'    <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" '
-            f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
-            f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["ink"]}"/></marker>'
-        ),
-        (
-            f'    <marker id="arrow-observed" viewBox="0 0 10 10" refX="9" refY="5" '
-            f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
-            f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["gold"]}"/></marker>'
-        ),
-        (
-            f'    <marker id="arrow-combined" viewBox="0 0 10 10" refX="9" refY="5" '
-            f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
-            f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["gold"]}"/></marker>'
-        ),
-        "  </defs>",
-        f'  <rect width="100%" height="100%" fill="{colors["paper"]}"/>',
+def state_label(state: str, index: int, x: float, y: float, angle: float, cx: float, cy: float, color: str) -> list[str]:
+    radial = 58.0
+    lx, ly = x + math.cos(angle) * radial, y + math.sin(angle) * radial
+    cosine = math.cos(angle)
+    anchor = "start" if cosine > 0.32 else "end" if cosine < -0.32 else "middle"
+    lines = wrap_atom(state, 22)
+    if anchor == "start":
+        lx += 3
+    elif anchor == "end":
+        lx -= 3
+    first_y = ly - (len(lines) - 1) * 5.5
+    tspans = "".join(
+        f'<tspan x="{lx:.1f}" y="{first_y + i * 11:.1f}">{html.escape(line)}</tspan>'
+        for i, line in enumerate(lines)
+    )
+    return [
+        f'  <text text-anchor="{anchor}" font-family="ui-monospace, Menlo, Consolas, monospace" '
+        f'font-size="9.5" fill="{color}">{tspans}</text>',
+        f'  <text x="{x:.1f}" y="{y + 3.5:.1f}" text-anchor="middle" '
+        f'font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="{color}">q{index}</text>',
     ]
 
-    for before, action, after in sorted(grouped):
-        path, label_x, label_y = edge_path(before, after, placed, (before, action, after) in loops)
-        sources = grouped[(before, action, after)]
-        if sources == {"static"}:
-            edge_class = "edge-static"
-            stroke = colors["ink"]
-            dash = ""
-            marker = "arrow-static"
-        elif sources == {"observed"}:
-            edge_class = "edge-observed"
-            stroke = colors["gold"]
-            dash = ' stroke-dasharray="8 6"'
-            marker = "arrow-observed"
-        else:
-            edge_class = "edge-static-observed"
-            stroke = colors["gold"]
-            dash = ""
-            marker = "arrow-combined"
-        out.append(
-            f'  <path class="{edge_class}" d="{path}" fill="none" stroke="{stroke}" '
-            f'stroke-width="2.2"{dash} marker-end="url(#{marker})"/>'
-        )
-        out.append(edge_label(action, label_x, label_y, colors["muted"], colors["paper"]))
 
-    start_x, start_y = placed[machine.start]
-    out.append(
-        f'  <path d="M {start_x - 96:.1f} {start_y:.1f} L {start_x - RADIUS - 8:.1f} {start_y:.1f}" '
-        f'fill="none" stroke="{colors["gold"]}" stroke-width="2.5" marker-end="url(#arrow-observed)"/>'
-    )
-    for state in machine.states:
-        x, y = placed[state]
+def render_svg(
+    row: Structure,
+    colors: dict[str, str] | None = None,
+    semantics: tuple[dict[tuple[str, str, str], str], dict[str, str]] | None = None,
+) -> str:
+    colors = colors or palette()
+    canonical_map, stance_map = semantics or action_semantics()
+    machine = row.machine
+    validate_grammar_stances(machine, canonical_map, stance_map)
+    placed, width, height, cx, cy = geometry(machine)
+    grouped: dict[tuple[str, str, str], set[str]] = defaultdict(set)
+    pair_actions: dict[tuple[str, str], list[str]] = defaultdict(list)
+    for edge in machine.transitions:
+        grouped[(edge.before, edge.action, edge.after)].add(edge.provenance_kind)
+    for before, action, after in sorted(grouped):
+        pair_actions[(before, after)].append(action)
+
+    stance_colors = {
+        "conserving": colors["ink"],
+        "deforming": colors["rust"],
+        "neutral": colors["muted"],
+    }
+    out = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.0f}" height="{height:.0f}" '
+        f'viewBox="0 0 {width:.0f} {height:.0f}" role="img" aria-labelledby="title desc">',
+        f'  <title id="title">{html.escape(machine.family)} / {html.escape(machine.kind)}</title>',
+        '  <desc id="desc">States are arranged radially. Edge color records the authored stance: '
+        'dark for conserving, rust for deforming, and muted for neutral. Dashed edges have observed-only provenance.</desc>',
+        "  <defs>",
+    ]
+    for stance, color in stance_colors.items():
         out.append(
-            f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="{RADIUS:.1f}" fill="{colors["surface"]}" '
-            f'stroke="{colors["ink"]}" stroke-width="2.2"/>'
+            f'    <marker id="arrow-{stance}" viewBox="0 0 10 10" refX="9" refY="5" '
+            f'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+            f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{color}"/></marker>'
+        )
+    out.append(
+        f'    <marker id="arrow-start" viewBox="0 0 10 10" refX="9" refY="5" '
+        f'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+        f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["gold"]}"/></marker>'
+    )
+    out.extend(["  </defs>", f'  <rect width="100%" height="100%" fill="{colors["paper"]}"/>'])
+
+    for before, action, after in sorted(grouped):
+        actions = pair_actions[(before, after)]
+        lane = actions.index(action) - (len(actions) - 1) / 2
+        path, label_x, label_y = edge_path(machine, before, after, placed, cx, cy, lane)
+        canonical = canonical_map.get((machine.family, machine.kind, action), action)
+        stance = stance_map.get(canonical, "neutral")
+        stroke = stance_colors[stance]
+        sources = grouped[(before, action, after)]
+        dash = ' stroke-dasharray="7 5"' if sources == {"observed"} else ""
+        out.append(
+            f'  <path class="edge-{stance}" d="{path}" fill="none" stroke="{stroke}" '
+            f'stroke-width="2.5" stroke-linecap="round"{dash} marker-end="url(#arrow-{stance})"><title>'
+            f'{html.escape(action)} → {html.escape(canonical)} ({stance})</title></path>'
+        )
+        out.append(edge_label(action, canonical, label_x, label_y, stroke, colors["paper"]))
+
+    start_x, start_y, start_angle = placed[machine.start]
+    arrow_start = (start_x + math.cos(start_angle) * 64, start_y + math.sin(start_angle) * 64)
+    arrow_end = (start_x + math.cos(start_angle) * (NODE_RADIUS + 7),
+                 start_y + math.sin(start_angle) * (NODE_RADIUS + 7))
+    out.append(
+        f'  <path d="M {arrow_start[0]:.1f} {arrow_start[1]:.1f} L {arrow_end[0]:.1f} {arrow_end[1]:.1f}" '
+        f'fill="none" stroke="{colors["gold"]}" stroke-width="2.6" marker-end="url(#arrow-start)"/>'
+    )
+    for index, state in enumerate(machine.states):
+        x, y, angle = placed[state]
+        stroke = colors["gold"] if state == machine.start else colors["ink"]
+        out.append(
+            f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="{NODE_RADIUS:.1f}" fill="{colors["surface"]}" '
+            f'stroke="{stroke}" stroke-width="{3 if state == machine.start else 2}"/>'
         )
         if state in machine.accepting:
             out.append(
-                f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="{RADIUS - 6:.1f}" fill="none" '
-                f'stroke="{colors["ink"]}" stroke-width="1.6"/>'
+                f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="{NODE_RADIUS - 4.5:.1f}" fill="none" '
+                f'stroke="{colors["ink"]}" stroke-width="1.4"/>'
             )
-        out.append(
-            f'  <text x="{x:.1f}" y="{y + 4:.1f}" text-anchor="middle" '
-            f'font-family="ui-monospace, Menlo, Consolas, monospace" font-size="{text_size(state):.1f}" '
-            f'fill="{colors["ink"]}">{html.escape(state)}</text>'
-        )
+        out.extend(state_label(state, index, x, y, angle, cx, cy, colors["ink"]))
     out.append("</svg>")
     return "\n".join(out) + "\n"
 
 
 def render_all() -> dict[Path, str]:
     colors = palette()
+    semantics = action_semantics()
     return {
-        Path(machine.family) / f"{machine.kind}.svg": render_svg(structure(machine), colors)
+        Path(machine.family) / f"{machine.kind}.svg": render_svg(structure(machine), colors, semantics)
         for machine in parse_transition_tables()
     }
 
@@ -299,7 +363,11 @@ def main() -> int:
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(content, encoding="utf-8")
     if args.check:
-        existing = {path.relative_to(args.output_dir) for path in args.output_dir.glob("*/*.svg")} if args.output_dir.exists() else set()
+        existing = (
+            {path.relative_to(args.output_dir) for path in args.output_dir.glob("*/*.svg")
+             if not path.name.endswith("-scene.svg") and path.name != "_composite.svg"}
+            if args.output_dir.exists() else set()
+        )
         failures.extend(str(args.output_dir / path) for path in sorted(existing - set(rendered)))
         if failures:
             for failure in failures:

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1730" height="1558" viewBox="0 0 1730 1558" role="img" aria-labelledby="title desc">
+  <title id="title">multiplication family composite</title>
+  <desc id="desc">multiplication composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <defs>
+    <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
+    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+  </defs>
+  <path d="M 100.0 779.0 C 210.5 779.0, 210.5 1297.0, 321.0 1297.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: repeat_equal_groups, repeat_group_size_by_itself</title></path>
+  <rect x="170.9" y="1288.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="210.5" y="1300.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="210.5" y="1316.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">repeat_equal_groups</text>
+  <text x="210.5" y="1325.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">repeat_group_size_by_itself</text>
+  <path d="M 100.0 779.0 C 210.5 779.0, 210.5 742.0, 321.0 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>decompose_operand: distribute_group_size_split, drop_second_partial_product</title></path>
+  <rect x="156.9" y="733.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="210.5" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">decompose_operand</text>
+  <text x="210.5" y="761.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">distribute_group_size_split</text>
+  <text x="210.5" y="770.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_second_partial_product</text>
+  <path d="M 100.0 779.0 C 210.5 779.0, 210.5 520.0, 321.0 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>enumerate_candidates: common_factor_intersection, common_multiple_sequence, factors_of_first_number_only</title></path>
+  <rect x="148.5" y="511.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="210.5" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">enumerate_candidates</text>
+  <text x="210.5" y="539.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_factor_intersection</text>
+  <text x="210.5" y="548.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_multiple_sequence</text>
+  <text x="210.5" y="557.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">factors_of_first_number_only</text>
+  <path d="M 100.0 779.0 C 210.5 779.0, 210.5 677.2, 321.0 677.2" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: add_counts_without_composite_unit, add_instead_of_multiply, add_numbers_as_common_multiple, commute_factors_preserve_product, context_free_fact_family_guess, multiplication_fact_retrieval, rigid_factor_order_roles, sequential_recompute_commuted_products</title></path>
+  <rect x="162.5" y="668.2" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="210.5" y="680.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
+  <text x="210.5" y="696.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_counts_without_composite_unit</text>
+  <text x="210.5" y="705.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_instead_of_multiply</text>
+  <text x="210.5" y="714.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_numbers_as_common_multiple</text>
+  <text x="210.5" y="723.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">commute_factors_preserve_product</text>
+  <text x="210.5" y="732.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">context_free_fact_family_guess</text>
+  <text x="210.5" y="741.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">multiplication_fact_retrieval</text>
+  <text x="210.5" y="750.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">rigid_factor_order_roles</text>
+  <text x="210.5" y="759.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">sequential_recompute_commuted_products</text>
+  <path d="M 100.0 779.0 C 210.5 779.0, 210.5 840.7, 321.0 840.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>replicate_equal_groups: coordinate_groups_items, drop_regrouping_remainder, regroup_to_base_preserving_total</title></path>
+  <rect x="162.5" y="826.7" width="96.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="210.5" y="838.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">replicate_equal</text>
+  <text x="210.5" y="848.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">groups</text>
+  <text x="210.5" y="864.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">coordinate_groups_items</text>
+  <text x="210.5" y="873.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_regrouping_remainder</text>
+  <text x="210.5" y="882.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">regroup_to_base_preserving_total</text>
+  <path d="M 100.0 779.0 C 210.5 779.0, 210.5 1001.0, 321.0 1001.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>retrieve_known_fact: known_product_adjustment, known_product_without_adjustment</title></path>
+  <rect x="151.3" y="992.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="210.5" y="1004.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retrieve_known_fact</text>
+  <text x="210.5" y="1020.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">known_product_adjustment</text>
+  <text x="210.5" y="1029.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">known_product_without_adjustment</text>
+  <path d="M 883.0 1013.3 C 1254.5 1013.3, 1254.5 779.0, 1626.0 779.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: coordinate_groups_items, regroup_to_base_preserving_total, repeat_equal_groups</title></path>
+  <rect x="1217.7" y="770.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1254.5" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
+  <path d="M 622.0 1260.0 C 732.5 1260.0, 732.5 1013.3, 843.0 1013.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>replicate_equal_groups: repeat_equal_groups</title></path>
+  <rect x="684.5" y="999.3" width="96.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="1011.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">replicate_equal</text>
+  <text x="732.5" y="1021.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">groups</text>
+  <path d="M 1405.0 840.7 C 1515.5 840.7, 1515.5 779.0, 1626.0 779.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: add_counts_without_composite_unit, add_instead_of_multiply, context_free_fact_family_guess, drop_regrouping_remainder, drop_second_partial_product, known_product_without_adjustment, repeat_group_size_by_itself, rigid_factor_order_roles, sequential_recompute_commuted_products</title></path>
+  <rect x="1478.7" y="770.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1515.5" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
+  <path d="M 622.0 1334.0 C 993.5 1334.0, 993.5 840.7, 1365.0 840.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>replicate_equal_groups: repeat_group_size_by_itself</title></path>
+  <rect x="945.5" y="826.7" width="96.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="993.5" y="838.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">replicate_equal</text>
+  <text x="993.5" y="848.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">groups</text>
+  <path d="M 361.0 1297.0 C 471.5 1297.0, 471.5 1260.0, 582.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: repeat_equal_groups</title></path>
+  <rect x="431.9" y="1251.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="471.5" y="1279.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">repeat_equal_groups</text>
+  <path d="M 361.0 1297.0 C 471.5 1297.0, 471.5 1334.0, 582.0 1334.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>conflate_roles: repeat_group_size_by_itself</title></path>
+  <rect x="426.3" y="1325.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="1337.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
+  <text x="471.5" y="1353.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">repeat_group_size_by_itself</text>
+  <path d="M 1144.0 797.5 C 1385.0 797.5, 1385.0 779.0, 1626.0 779.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: commute_factors_preserve_product, distribute_group_size_split, known_product_adjustment, multiplication_fact_retrieval</title></path>
+  <rect x="1325.8" y="770.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1385.0" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_conservation</text>
+  <path d="M 883.0 668.0 C 993.5 668.0, 993.5 797.5, 1104.0 797.5" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>recompose_total: distribute_group_size_split</title></path>
+  <rect x="945.5" y="788.5" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="993.5" y="800.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">recompose_total</text>
+  <path d="M 622.0 742.0 C 732.5 742.0, 732.5 668.0, 843.0 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: distribute_group_size_split</title></path>
+  <rect x="684.5" y="659.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <text x="732.5" y="687.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">distribute_group_size_split</text>
+  <path d="M 622.0 742.0 C 993.5 742.0, 993.5 840.7, 1365.0 840.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: drop_second_partial_product</title></path>
+  <rect x="937.1" y="831.7" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="993.5" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="993.5" y="859.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_second_partial_product</text>
+  <path d="M 361.0 742.0 C 471.5 742.0, 471.5 742.0, 582.0 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: distribute_group_size_split, drop_second_partial_product</title></path>
+  <rect x="423.5" y="733.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <path d="M 883.0 298.0 C 1254.5 298.0, 1254.5 779.0, 1626.0 779.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_extremal: common_factor_intersection</title></path>
+  <rect x="1206.5" y="770.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1254.5" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_extremal</text>
+  <path d="M 622.0 298.0 C 732.5 298.0, 732.5 298.0, 843.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>intersect_candidate_sets: common_factor_intersection</title></path>
+  <rect x="673.3" y="284.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">intersect_candidate</text>
+  <text x="732.5" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">sets</text>
+  <path d="M 883.0 890.0 C 1254.5 890.0, 1254.5 779.0, 1626.0 779.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: factors_of_first_number_only</title></path>
+  <rect x="1209.3" y="770.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1254.5" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
+  <path d="M 622.0 890.0 C 732.5 890.0, 732.5 890.0, 843.0 890.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: factors_of_first_number_only</title></path>
+  <rect x="676.1" y="881.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <path d="M 883.0 372.0 C 1254.5 372.0, 1254.5 779.0, 1626.0 779.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_composite_unit: common_multiple_sequence</title></path>
+  <rect x="1200.9" y="765.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1254.5" y="777.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_composite</text>
+  <text x="1254.5" y="787.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unit</text>
+  <path d="M 622.0 372.0 C 732.5 372.0, 732.5 372.0, 843.0 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: common_multiple_sequence</title></path>
+  <rect x="678.9" y="363.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
+  <path d="M 361.0 520.0 C 471.5 520.0, 471.5 298.0, 582.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>enumerate_candidates: common_factor_intersection</title></path>
+  <rect x="409.5" y="289.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">enumerate_candidates</text>
+  <text x="471.5" y="317.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_factor_intersection</text>
+  <path d="M 361.0 520.0 C 471.5 520.0, 471.5 890.0, 582.0 890.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: factors_of_first_number_only</title></path>
+  <rect x="415.1" y="881.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="471.5" y="909.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">factors_of_first_number_only</text>
+  <path d="M 361.0 520.0 C 471.5 520.0, 471.5 372.0, 582.0 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_extremal: common_multiple_sequence</title></path>
+  <rect x="423.5" y="363.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_extremal</text>
+  <text x="471.5" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_multiple_sequence</text>
+  <path d="M 883.0 446.0 C 993.5 446.0, 993.5 797.5, 1104.0 797.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: commute_factors_preserve_product</title></path>
+  <rect x="945.5" y="788.5" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="993.5" y="800.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <path d="M 622.0 446.0 C 732.5 446.0, 732.5 446.0, 843.0 446.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>commute_operands: commute_factors_preserve_product</title></path>
+  <rect x="681.7" y="437.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">commute_operands</text>
+  <path d="M 883.0 113.0 C 1124.0 113.0, 1124.0 840.7, 1365.0 840.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: add_counts_without_composite_unit, add_instead_of_multiply</title></path>
+  <rect x="1062.0" y="831.7" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1124.0" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
+  <path d="M 1144.0 1482.0 C 1254.5 1482.0, 1254.5 840.7, 1365.0 840.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: sequential_recompute_commuted_products</title></path>
+  <rect x="1198.1" y="831.7" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1254.5" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
+  <path d="M 883.0 1482.0 C 993.5 1482.0, 993.5 1482.0, 1104.0 1482.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: sequential_recompute_commuted_products</title></path>
+  <rect x="945.5" y="1473.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="993.5" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <path d="M 622.0 1482.0 C 732.5 1482.0, 732.5 1482.0, 843.0 1482.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: sequential_recompute_commuted_products</title></path>
+  <rect x="684.5" y="1473.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <path d="M 883.0 1408.0 C 1124.0 1408.0, 1124.0 840.7, 1365.0 840.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: rigid_factor_order_roles</title></path>
+  <rect x="1067.6" y="831.7" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1124.0" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <path d="M 622.0 1408.0 C 732.5 1408.0, 732.5 1408.0, 843.0 1408.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: rigid_factor_order_roles</title></path>
+  <rect x="678.9" y="1394.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="1406.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
+  <text x="732.5" y="1416.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <path d="M 883.0 766.7 C 1124.0 766.7, 1124.0 840.7, 1365.0 840.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: context_free_fact_family_guess, drop_regrouping_remainder, known_product_without_adjustment</title></path>
+  <rect x="1078.8" y="831.7" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1124.0" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
+  <path d="M 622.0 816.0 C 863.0 816.0, 863.0 797.5, 1104.0 797.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: multiplication_fact_retrieval</title></path>
+  <rect x="823.4" y="788.5" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="863.0" y="800.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="863.0" y="816.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">multiplication_fact_retrieval</text>
+  <path d="M 622.0 816.0 C 732.5 816.0, 732.5 766.7, 843.0 766.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: context_free_fact_family_guess</title></path>
+  <rect x="670.5" y="757.7" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="769.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
+  <text x="732.5" y="785.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">context_free_fact_family_guess</text>
+  <path d="M 622.0 76.0 C 732.5 76.0, 732.5 113.0, 843.0 113.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: add_counts_without_composite_unit</title></path>
+  <rect x="695.7" y="104.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
+  <path d="M 883.0 224.0 C 1254.5 224.0, 1254.5 779.0, 1626.0 779.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: add_numbers_as_common_multiple</title></path>
+  <rect x="1198.1" y="770.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1254.5" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <path d="M 622.0 224.0 C 732.5 224.0, 732.5 224.0, 843.0 224.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: add_numbers_as_common_multiple</title></path>
+  <rect x="676.1" y="215.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
+  <path d="M 361.0 677.2 C 471.5 677.2, 471.5 446.0, 582.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: commute_factors_preserve_product</title></path>
+  <rect x="423.5" y="437.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <text x="471.5" y="465.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">commute_factors_preserve_product</text>
+  <path d="M 361.0 677.2 C 602.0 677.2, 602.0 113.0, 843.0 113.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>conflate_roles: add_instead_of_multiply</title></path>
+  <rect x="556.8" y="104.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="602.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
+  <text x="602.0" y="132.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_instead_of_multiply</text>
+  <path d="M 361.0 677.2 C 471.5 677.2, 471.5 1482.0, 582.0 1482.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: sequential_recompute_commuted_products</title></path>
+  <rect x="415.1" y="1473.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="471.5" y="1501.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">sequential_recompute_commuted_products</text>
+  <path d="M 361.0 677.2 C 471.5 677.2, 471.5 1408.0, 582.0 1408.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>retain_where_change_was_due: rigid_factor_order_roles</title></path>
+  <rect x="412.3" y="1394.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="1406.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">retain_where_change</text>
+  <text x="471.5" y="1416.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">was_due</text>
+  <text x="471.5" y="1432.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">rigid_factor_order_roles</text>
+  <path d="M 361.0 677.2 C 471.5 677.2, 471.5 816.0, 582.0 816.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>retrieve_known_fact: context_free_fact_family_guess, multiplication_fact_retrieval</title></path>
+  <rect x="412.3" y="807.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retrieve_known_fact</text>
+  <text x="471.5" y="835.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">context_free_fact_family_guess</text>
+  <text x="471.5" y="844.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">multiplication_fact_retrieval</text>
+  <path d="M 361.0 677.2 C 471.5 677.2, 471.5 76.0, 582.0 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: add_counts_without_composite_unit</title></path>
+  <rect x="420.7" y="62.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
+  <text x="471.5" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
+  <text x="471.5" y="100.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_counts_without_composite_unit</text>
+  <path d="M 361.0 677.2 C 471.5 677.2, 471.5 224.0, 582.0 224.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: add_numbers_as_common_multiple</title></path>
+  <rect x="409.5" y="215.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
+  <text x="471.5" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_numbers_as_common_multiple</text>
+  <path d="M 622.0 594.0 C 732.5 594.0, 732.5 1013.3, 843.0 1013.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_composite_unit: coordinate_groups_items</title></path>
+  <rect x="678.9" y="999.3" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="1011.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_composite</text>
+  <text x="732.5" y="1021.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unit</text>
+  <path d="M 622.0 964.0 C 732.5 964.0, 732.5 766.7, 843.0 766.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>halt_before_completion: drop_regrouping_remainder</title></path>
+  <rect x="695.7" y="752.7" width="73.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="764.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">halt_before</text>
+  <text x="732.5" y="774.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">completion</text>
+  <text x="732.5" y="790.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_regrouping_remainder</text>
+  <path d="M 622.0 964.0 C 732.5 964.0, 732.5 1013.3, 843.0 1013.3" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>retain_what_must_survive: regroup_to_base_preserving_total</title></path>
+  <rect x="681.7" y="999.3" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="1011.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">retain_what_must</text>
+  <text x="732.5" y="1021.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">survive</text>
+  <text x="732.5" y="1037.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">regroup_to_base_preserving_total</text>
+  <path d="M 361.0 840.7 C 471.5 840.7, 471.5 594.0, 582.0 594.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: coordinate_groups_items</title></path>
+  <rect x="431.9" y="585.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="597.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="471.5" y="613.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">coordinate_groups_items</text>
+  <path d="M 361.0 840.7 C 471.5 840.7, 471.5 964.0, 582.0 964.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>regroup_to_base: drop_regrouping_remainder, regroup_to_base_preserving_total</title></path>
+  <rect x="423.5" y="955.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">regroup_to_base</text>
+  <text x="471.5" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_regrouping_remainder</text>
+  <text x="471.5" y="992.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">regroup_to_base_preserving_total</text>
+  <path d="M 883.0 964.0 C 993.5 964.0, 993.5 797.5, 1104.0 797.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: known_product_adjustment</title></path>
+  <rect x="937.1" y="788.5" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="993.5" y="800.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
+  <path d="M 622.0 1001.0 C 732.5 1001.0, 732.5 964.0, 843.0 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: known_product_adjustment</title></path>
+  <rect x="684.5" y="955.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
+  <text x="732.5" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">known_product_adjustment</text>
+  <path d="M 622.0 1001.0 C 732.5 1001.0, 732.5 766.7, 843.0 766.7" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: known_product_without_adjustment</title></path>
+  <rect x="676.1" y="757.7" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="732.5" y="769.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="732.5" y="785.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">known_product_without_adjustment</text>
+  <path d="M 361.0 1001.0 C 471.5 1001.0, 471.5 1001.0, 582.0 1001.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: known_product_adjustment, known_product_without_adjustment</title></path>
+  <rect x="431.9" y="987.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="471.5" y="999.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="471.5" y="1009.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <circle cx="82.0" cy="779.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="82.0" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>
+  <circle cx="1648.0" cy="779.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="1648.0" cy="779.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
+  <text x="1648.0" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s1</text>
+  <circle cx="865.0" cy="1013.3" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="1016.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s2</text>
+  <circle cx="604.0" cy="1260.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s3</text>
+  <circle cx="1387.0" cy="840.7" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1387.0" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s4</text>
+  <circle cx="604.0" cy="1334.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="1337.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s5</text>
+  <circle cx="343.0" cy="1297.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="343.0" y="1300.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s6</text>
+  <circle cx="1126.0" cy="797.5" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1126.0" y="800.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s7</text>
+  <circle cx="865.0" cy="668.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s8</text>
+  <circle cx="604.0" cy="742.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s9</text>
+  <circle cx="343.0" cy="742.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="343.0" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s10</text>
+  <circle cx="865.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s11</text>
+  <circle cx="604.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s12</text>
+  <circle cx="865.0" cy="890.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s13</text>
+  <circle cx="604.0" cy="890.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s14</text>
+  <circle cx="865.0" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s15</text>
+  <circle cx="604.0" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s16</text>
+  <circle cx="343.0" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="343.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s17</text>
+  <circle cx="865.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s18</text>
+  <circle cx="604.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s19</text>
+  <circle cx="865.0" cy="113.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s20</text>
+  <circle cx="1126.0" cy="1482.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1126.0" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s21</text>
+  <circle cx="865.0" cy="1482.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s22</text>
+  <circle cx="604.0" cy="1482.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s23</text>
+  <circle cx="865.0" cy="1408.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="1411.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s24</text>
+  <circle cx="604.0" cy="1408.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="1411.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s25</text>
+  <circle cx="865.0" cy="766.7" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="769.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s26</text>
+  <circle cx="604.0" cy="816.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s27</text>
+  <circle cx="604.0" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s28</text>
+  <circle cx="865.0" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s29</text>
+  <circle cx="604.0" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s30</text>
+  <circle cx="343.0" cy="677.2" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="343.0" y="680.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s31</text>
+  <circle cx="604.0" cy="594.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="597.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s32</text>
+  <circle cx="604.0" cy="964.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s33</text>
+  <circle cx="343.0" cy="840.7" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="343.0" y="843.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s34</text>
+  <circle cx="865.0" cy="964.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="865.0" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s35</text>
+  <circle cx="604.0" cy="1001.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="604.0" y="1004.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s36</text>
+  <circle cx="343.0" cy="1001.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="343.0" y="1004.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s37</text>
+</svg>

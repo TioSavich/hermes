@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="420" viewBox="0 0 580 420" role="img" aria-labelledby="title desc">
+  <title id="title">Domain scene for statistics/box_plot_from_five_number_summary</title>
+  <desc id="desc">The run produced box_plot(five_number(2,rational(3,1),rational(5,1),rational(8,1),9)).</desc>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <line x1="80" y1="190.0" x2="480" y2="190.0" stroke="#0d0c08" stroke-width="2"/>
+  <rect x="194" y="160.0" width="172.0" height="60" fill="#d4a747" fill-opacity="0.5" stroke="#0d0c08"/>
+  <line x1="251" y1="160.0" x2="251" y2="220.0" stroke="#0d0c08" stroke-width="2"/>
+  <text x="28.0" y="394.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.0" font-weight="normal" fill="#665f4f">The run produced box_plot(five_number(2,rational(3,1),rational(5,1),rational(8,1),9)).</text>
+</svg>
