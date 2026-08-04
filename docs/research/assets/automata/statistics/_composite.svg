@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1114" viewBox="0 0 1480 1114" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1496" height="1114" viewBox="0 0 1496 1114" role="img" aria-labelledby="title desc">
   <title id="title">statistics family composite</title>
   <desc id="desc">statistics composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -9,25 +9,25 @@
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
   </defs>
   <path d="M 100.0 557.0 C 211.6 557.0, 211.6 150.0, 323.2 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: categorical_frequency_bar_representation</title></path>
-  <rect x="172.0" y="141.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="171.9" y="141.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="211.6" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <text x="211.6" y="169.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">categorical_frequency_bar_representation</text>
   <path d="M 100.0 557.0 C 211.6 557.0, 211.6 298.0, 323.2 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>establish_reference_frame: dot_plot_frequency_representation</title></path>
-  <rect x="152.4" y="284.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="152.3" y="284.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="211.6" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">establish_reference</text>
   <text x="211.6" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">frame</text>
   <text x="211.6" y="322.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">dot_plot_frequency_representation</text>
   <path d="M 100.0 557.0 C 211.6 557.0, 211.6 742.0, 323.2 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: mean_deviation_without_absolute_value</title></path>
-  <rect x="163.6" y="733.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="163.5" y="733.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="211.6" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
   <text x="211.6" y="761.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mean_deviation_without_absolute_value</text>
   <path d="M 100.0 557.0 C 211.6 557.0, 211.6 964.0, 323.2 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: question_without_variability</title></path>
-  <rect x="172.0" y="950.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="171.9" y="950.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="211.6" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="211.6" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="211.6" y="988.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">question_without_variability</text>
   <path d="M 100.0 557.0 C 211.6 557.0, 211.6 564.4, 323.2 564.4" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: box_plot_from_five_number_summary, distribution_summary_selection, five_number_summary_and_iqr, histogram_equal_interval_representation, mean_absolute_deviation, mean_as_balance_point, mean_as_fair_share, median_as_ordered_middle, mode_as_maximal_frequency, statistical_question_variability_classification</title></path>
-  <rect x="163.6" y="555.4" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="163.5" y="555.4" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="211.6" y="567.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
   <text x="211.6" y="583.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">box_plot_from_five_number_summary</text>
   <text x="211.6" y="592.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">distribution_summary_selection</text>
@@ -40,117 +40,117 @@
   <text x="211.6" y="655.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mode_as_maximal_frequency</text>
   <text x="211.6" y="664.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">statistical_question_variability_classification</text>
   <path d="M 1152.8 242.5 C 1264.4 242.5, 1264.4 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: box_plot_from_five_number_summary, categorical_frequency_bar_representation, dot_plot_frequency_representation, histogram_equal_interval_representation</title></path>
-  <rect x="1216.4" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1216.3" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1264.4" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
   <path d="M 626.4 150.0 C 869.6 150.0, 869.6 242.5, 1112.8 242.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>establish_reference_frame: categorical_frequency_bar_representation</title></path>
-  <rect x="810.4" y="228.5" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="810.3" y="228.5" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="869.6" y="240.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">establish_reference</text>
   <text x="869.6" y="250.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">frame</text>
   <path d="M 363.2 150.0 C 474.8 150.0, 474.8 150.0, 586.4 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: categorical_frequency_bar_representation</title></path>
-  <rect x="438.0" y="141.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="437.9" y="141.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 363.2 298.0 C 738.0 298.0, 738.0 242.5, 1112.8 242.5" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: dot_plot_frequency_representation</title></path>
-  <rect x="687.2" y="233.5" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="687.1" y="233.5" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="245.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <path d="M 1152.8 631.0 C 1264.4 631.0, 1264.4 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: mean_absolute_deviation, mean_deviation_without_absolute_value</title></path>
-  <rect x="1213.6" y="548.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1213.5" y="548.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1264.4" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
   <path d="M 626.4 742.0 C 869.6 742.0, 869.6 631.0, 1112.8 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: mean_deviation_without_absolute_value</title></path>
-  <rect x="813.2" y="622.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="813.1" y="622.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="869.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 363.2 742.0 C 474.8 742.0, 474.8 742.0, 586.4 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>measure_quantity: mean_deviation_without_absolute_value</title></path>
-  <rect x="424.0" y="733.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="423.9" y="733.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">measure_quantity</text>
   <path d="M 889.6 964.0 C 1132.8 964.0, 1132.8 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: mode_as_maximal_frequency, question_without_variability, statistical_question_variability_classification</title></path>
-  <rect x="1096.0" y="548.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1095.9" y="548.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1132.8" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 363.2 964.0 C 606.4 964.0, 606.4 964.0, 849.6 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_scalar_for_structured_quantity: question_without_variability</title></path>
-  <rect x="552.8" y="945.0" width="107.2" height="38.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="552.7" y="945.0" width="107.4" height="38.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="606.4" y="957.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_scalar</text>
   <text x="606.4" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_structured</text>
   <text x="606.4" y="977.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">quantity</text>
   <path d="M 889.6 668.0 C 1132.8 668.0, 1132.8 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>share_into_known_groups: mean_as_fair_share</title></path>
-  <rect x="1082.0" y="543.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1081.9" y="543.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1132.8" y="555.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">share_into_known</text>
   <text x="1132.8" y="565.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">groups</text>
   <path d="M 626.4 668.0 C 738.0 668.0, 738.0 668.0, 849.6 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: mean_as_fair_share</title></path>
-  <rect x="701.2" y="659.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="701.1" y="659.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 889.6 557.0 C 1001.2 557.0, 1001.2 631.0, 1112.8 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>apply_stored_rule: mean_absolute_deviation</title></path>
-  <rect x="947.6" y="622.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="947.5" y="622.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">apply_stored_rule</text>
   <text x="1001.2" y="650.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mean_absolute_deviation</text>
   <path d="M 889.6 557.0 C 1132.8 557.0, 1132.8 557.0, 1376.0 557.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: mean_as_balance_point</title></path>
-  <rect x="1082.0" y="548.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1081.9" y="548.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1132.8" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <text x="1132.8" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mean_as_balance_point</text>
   <path d="M 626.4 557.0 C 738.0 557.0, 738.0 557.0, 849.6 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>measure_quantity: mean_absolute_deviation, mean_as_balance_point</title></path>
-  <rect x="687.2" y="548.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="687.1" y="548.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">measure_quantity</text>
   <path d="M 889.6 76.0 C 1001.2 76.0, 1001.2 242.5, 1112.8 242.5" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: box_plot_from_five_number_summary</title></path>
-  <rect x="939.2" y="233.5" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="939.1" y="233.5" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="245.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <path d="M 1152.8 372.0 C 1264.4 372.0, 1264.4 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: five_number_summary_and_iqr</title></path>
-  <rect x="1216.4" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1216.3" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1264.4" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <path d="M 889.6 372.0 C 1001.2 372.0, 1001.2 372.0, 1112.8 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: five_number_summary_and_iqr</title></path>
-  <rect x="953.2" y="363.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="953.1" y="363.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
   <path d="M 626.4 421.3 C 738.0 421.3, 738.0 76.0, 849.6 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: box_plot_from_five_number_summary</title></path>
-  <rect x="681.6" y="67.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="681.5" y="67.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
   <text x="738.0" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">box_plot_from_five_number_summary</text>
   <path d="M 626.4 421.3 C 1001.2 421.3, 1001.2 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: median_as_ordered_middle</title></path>
-  <rect x="953.2" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="953.1" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
   <text x="1001.2" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">median_as_ordered_middle</text>
   <path d="M 626.4 421.3 C 738.0 421.3, 738.0 372.0, 849.6 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: five_number_summary_and_iqr</title></path>
-  <rect x="692.8" y="358.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="692.7" y="358.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="738.0" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="738.0" y="396.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">five_number_summary_and_iqr</text>
   <path d="M 626.4 631.0 C 1001.2 631.0, 1001.2 557.0, 1376.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: distribution_summary_selection</title></path>
-  <rect x="964.4" y="548.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="964.3" y="548.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <text x="1001.2" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">distribution_summary_selection</text>
   <path d="M 626.4 631.0 C 738.0 631.0, 738.0 964.0, 849.6 964.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>test_criteria: statistical_question_variability_classification</title></path>
-  <rect x="695.6" y="955.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="695.5" y="955.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">test_criteria</text>
   <text x="738.0" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">statistical_question_variability_classification</text>
   <path d="M 889.6 446.0 C 1001.2 446.0, 1001.2 242.5, 1112.8 242.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: histogram_equal_interval_representation</title></path>
-  <rect x="964.4" y="233.5" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="964.3" y="233.5" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="245.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 626.4 446.0 C 738.0 446.0, 738.0 446.0, 849.6 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: histogram_equal_interval_representation</title></path>
-  <rect x="692.8" y="432.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="692.7" y="432.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="738.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <path d="M 363.2 564.4 C 474.8 564.4, 474.8 668.0, 586.4 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>accumulate_total: mean_as_fair_share</title></path>
-  <rect x="424.0" y="659.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="423.9" y="659.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">accumulate_total</text>
   <text x="474.8" y="687.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mean_as_fair_share</text>
   <path d="M 363.2 564.4 C 606.4 564.4, 606.4 964.0, 849.6 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: mode_as_maximal_frequency</title></path>
-  <rect x="569.6" y="955.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="569.5" y="955.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="606.4" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <text x="606.4" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mode_as_maximal_frequency</text>
   <path d="M 363.2 564.4 C 474.8 564.4, 474.8 557.0, 586.4 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: mean_absolute_deviation, mean_as_balance_point</title></path>
-  <rect x="426.8" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.7" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
   <text x="474.8" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mean_absolute_deviation</text>
   <text x="474.8" y="585.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">mean_as_balance_point</text>
   <path d="M 363.2 564.4 C 474.8 564.4, 474.8 421.3, 586.4 421.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>order_by_magnitude: box_plot_from_five_number_summary, five_number_summary_and_iqr, median_as_ordered_middle</title></path>
-  <rect x="418.4" y="412.3" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="418.3" y="412.3" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="424.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">order_by_magnitude</text>
   <text x="474.8" y="440.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">box_plot_from_five_number_summary</text>
   <text x="474.8" y="449.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">five_number_summary_and_iqr</text>
   <text x="474.8" y="458.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">median_as_ordered_middle</text>
   <path d="M 363.2 564.4 C 474.8 564.4, 474.8 631.0, 586.4 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: distribution_summary_selection, statistical_question_variability_classification</title></path>
-  <rect x="435.2" y="617.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="435.1" y="617.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="629.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="474.8" y="639.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="474.8" y="655.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">distribution_summary_selection</text>
   <text x="474.8" y="664.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">statistical_question_variability_classification</text>
   <path d="M 363.2 564.4 C 474.8 564.4, 474.8 446.0, 586.4 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: histogram_equal_interval_representation</title></path>
-  <rect x="421.2" y="437.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="421.1" y="437.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="474.8" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <text x="474.8" y="465.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">histogram_equal_interval_representation</text>
   <circle cx="82.0" cy="557.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="342" viewBox="0 0 700 342" role="img" aria-labelledby="title desc">
   <title id="title">Domain scene for addition/drop_carry_to_next_column</title>
   <desc id="desc">The run produced 65; the recorded expected result is 75.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -23,5 +23,5 @@
   <text x="196.0" y="260.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="24.0" font-weight="bold" fill="#b95238">6</text>
   <rect x="242" y="226" width="92" height="52" fill="none" stroke="#665f4f"/>
   <text x="288.0" y="260.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="24.0" font-weight="bold" fill="#b95238">5</text>
-  <text x="36.0" y="272.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#b95238">The run produced 65; the recorded expected result is 75.</text>
+  <text x="36.0" y="314.0" text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" font-weight="normal" fill="#b95238">The run produced 65; the recorded expected result is 75.</text>
 </svg>

@@ -6,10 +6,8 @@
 <title>geometry | Hermes automata compendium</title>
 <style>
 :root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold:#d4a747;--gold-deep:#a97c24;--paper-bg:#f4ead6;--rust:#b95238;--paper-cool:#ede4cf;--surface:#fffef9;--gold-pale:#f0d68a;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
-*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif} main{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem} p{max-width:var(--prose)} .page-header{margin-bottom:2rem} .page-header h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem} .lede{font-size:1.08rem;margin:.3rem 0;color:var(--muted)} h2{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem} h3{font-size:1.38rem;line-height:1.25;margin:0 0 1rem} h4{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem} code{font:.82em var(--mono);overflow-wrap:anywhere} a{color:var(--gold-deep);text-underline-offset:.14em} .back-link{margin:0 0 1rem} .contents{margin:2rem 0 3.5rem} .contents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem} .contents-family{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem} .contents-family h3{font-size:1.05rem;margin:0 0 .35rem} .contents-family ol{margin:.2rem 0;padding-left:2.1rem} .contents-family li{padding:.08rem 0} article.machine{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px} .machine h3{font-size:1.38rem} .entry-number{color:var(--gold-deep);font-weight:normal} .tuple-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start} .machine-tuple{font-size:1.12rem} dl{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem} dt{color:var(--gold-deep)} dd{margin:0} table{border-collapse:collapse;width:100%;font-size:.88rem} .table-scroll{width:100%;overflow:auto} .transitions-scroll{max-height:28rem} th,td{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top} th{background:var(--paper-warm);color:var(--muted);font-weight:normal} .transitions thead th{position:sticky;top:0;z-index:1;background:var(--paper-warm)} .state-map td:first-child{white-space:nowrap} .citation,.none{color:var(--muted);font-size:.9em} .literature-label{font-style:italic} .provenance.observed{color:var(--gold-deep)} .input-contract{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .diagram{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem} .diagram img{display:block;margin:auto;max-width:100%;height:auto} figcaption{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem} .domain-scene img{max-height:34rem} .transition-diagram img{max-height:46rem} .family-composite img{max-width:none;min-width:100%} .family-composite{max-height:72rem} .scene-limit{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem} .typology,.attestation{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .term{color:var(--gold-deep)} .attestation{border-left:3px solid var(--gold)} .atlas{font-size:.84rem;min-width:860px} .numeric{white-space:nowrap;text-align:right} .legend-list{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem} .legend-list dt{font-family:var(--mono)} .swatch{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor} .swatch.conserving{color:var(--ink)} .swatch.deforming{color:var(--rust)} .swatch.neutral{color:var(--muted)} footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem} @media(max-width:850px){.tuple-grid{grid-template-columns:1fr}main{padding:.9rem}article.machine{padding:.75rem}}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif} main{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem} p{max-width:var(--prose)} .page-header{margin-bottom:2rem} .page-header h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem} .lede{font-size:1.08rem;margin:.3rem 0;color:var(--muted)} h2{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem} h3{font-size:1.38rem;line-height:1.25;margin:0 0 1rem} h4{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem} code{font:.82em var(--mono);overflow-wrap:anywhere} a{color:var(--gold-deep);text-underline-offset:.14em} .back-link{margin:0 0 1rem} .contents{margin:2rem 0 3.5rem} .contents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem} .contents-family{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem} .contents-family h3{font-size:1.05rem;margin:0 0 .35rem} .contents-family ol{margin:.2rem 0;padding-left:2.1rem} .contents-family li{padding:.08rem 0} article.machine{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px} .machine h3{font-size:1.38rem} .entry-number{color:var(--gold-deep);font-weight:normal} .tuple-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start} .machine-tuple{font-size:1.12rem} .typeset-space{display:inline-block;width:.28em;white-space:pre} dl{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem} dt{color:var(--gold-deep)} dd{margin:0} table{border-collapse:collapse;width:100%;font-size:.88rem} .table-scroll{width:100%;overflow:auto} .transitions-scroll{max-height:28rem} th,td{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top} th{background:var(--paper-warm);color:var(--muted);font-weight:normal} .transitions thead th{position:sticky;top:0;z-index:1;background:var(--paper-warm)} .state-map td:first-child{white-space:nowrap} .citation,.none{color:var(--muted);font-size:.9em} .literature-label{font-style:italic} .provenance.observed{color:var(--gold-deep)} .input-contract{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .diagram{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem} .diagram img{display:block;margin:auto;max-width:100%;height:auto} figcaption{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem} .domain-scene img{max-height:34rem} .transition-diagram img{max-height:46rem} .family-composite img{max-width:none;min-width:100%} .family-composite{max-height:72rem} .scene-limit{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem} .typology,.attestation{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .term{color:var(--gold-deep)} .attestation{border-left:3px solid var(--gold)} .atlas{font-size:.84rem;min-width:860px} .numeric{white-space:nowrap;text-align:right} .legend-list{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem} .legend-list dt{font-family:var(--mono)} .swatch{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor} .swatch.conserving{color:var(--ink)} .swatch.deforming{color:var(--rust)} .swatch.neutral{color:var(--muted)} footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem} @media(max-width:850px){.tuple-grid{grid-template-columns:1fr}main{padding:.9rem}article.machine{padding:.75rem}}
 </style>
-<script>window.MathJax={tex:{inlineMath:[["\(","\)"]]}};</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body><main>
 <header class="page-header">
@@ -17,19 +15,19 @@
 <h1>geometry</h1>
 </header>
 <section class="family" id="family-geometry">
-<figure class="diagram family-composite"><img src="../assets/automata/geometry/_composite.svg" width="1730" height="3482" loading="lazy" decoding="async" alt="Canonical-action composite for the geometry family"><figcaption>Construction: canonical action sequences merge by common prefix and structurally identical suffix. Branch labels name the kinds taking each branch. This models shared doing under canonical action names; the automata do not literally share states. For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals.</figcaption></figure>
+<figure class="diagram family-composite"><img src="../assets/automata/geometry/_composite.svg" width="1746" height="3482" loading="lazy" decoding="async" alt="Canonical-action composite for the geometry family"><figcaption>Construction: canonical action sequences merge by common prefix and structurally identical suffix. Branch labels name the kinds taking each branch. This models shared doing under canonical action names; the automata do not literally share states. For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals.</figcaption></figure>
 
 <article class="machine" id="geometry-angle_additive_composition">
 <h3><span class="entry-number">1.</span> <code>angle_additive_composition</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_additive_composition-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_additive_composition"><figcaption>The run produced angle_measure(130). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_additive_composition-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_additive_composition"><figcaption>The run produced angle_measure(130). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/angle_additive_composition.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry angle_additive_composition"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_shared_vertex</code>, <code>preserve_adjacent_turns</code>, <code>sum_part_measures</code>, <code>verify_whole_angle</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_shared_vertex</code>, <code>preserve_adjacent_turns</code>, <code>sum_part_measures</code>, <code>verify_whole_angle</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -45,15 +43,15 @@
 
 <article class="machine" id="geometry-angle_as_ray_length">
 <h3><span class="entry-number">2.</span> <code>angle_as_ray_length</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_as_ray_length-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_as_ray_length"><figcaption>The run produced misread_as_larger(angle_measure(65)); the recorded expected result is angle_measure(65). The scene is derived from the contract run (3 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_as_ray_length-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_as_ray_length"><figcaption>The run produced misread_as_larger(angle_measure(65)); the recorded expected result is angle_measure(65). The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/angle_as_ray_length.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry angle_as_ray_length"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>misread_visual_extent_as_angle_magnitude</code>, <code>preserve_turn</code>, <code>stretch_ray_length</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>misread_visual_extent_as_angle_magnitude</code>, <code>preserve_turn</code>, <code>stretch_ray_length</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -69,15 +67,15 @@
 
 <article class="machine" id="geometry-angle_turn_measurement">
 <h3><span class="entry-number">3.</span> <code>angle_turn_measurement</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_turn_measurement-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_turn_measurement"><figcaption>The run produced angle_measure(65). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_turn_measurement-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_turn_measurement"><figcaption>The run produced angle_measure(65). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/angle_turn_measurement.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry angle_turn_measurement"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_fixed_vertex</code>, <code>establish_initial_ray</code>, <code>iterate_degree_turn</code>, <code>locate_terminal_ray</code>, <code>read_angle_measure</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_fixed_vertex</code>, <code>establish_initial_ray</code>, <code>iterate_degree_turn</code>, <code>locate_terminal_ray</code>, <code>read_angle_measure</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -98,10 +96,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_rectangle</code>, <code>ignore_interior_coverage</code>, <code>substitute_boundary_count_for_area</code>, <code>traverse_boundary_instead</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_rectangle</code>, <code>ignore_interior_coverage</code>, <code>substitute_boundary_count_for_area</code>, <code>traverse_boundary_instead</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -110,22 +108,22 @@
 </div>
 <p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;a&quot;: &quot;integer&quot;, &quot;b&quot;: &quot;integer&quot;}</code>; example <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code>; <code>verified(strategy_trace_ok)</code>.</p>
 <h4><i>δ</i>: recorded transitions</h4>
-<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_rectangle</code></td><td><code>q_step_1</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_1</code></td><td><code>ignore_interior_coverage</code></td><td><code>q_step_2</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_2</code></td><td><code>traverse_boundary_instead</code></td><td><code>q_step_3</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_3</code></td><td><code>substitute_boundary_count_for_area</code></td><td><code>q_accept</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr></tbody></table></div>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_rectangle</code></td><td><code>q_step_1</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_1</code></td><td><code>ignore_interior_coverage</code></td><td><code>q_step_2</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_2</code></td><td><code>traverse_boundary_instead</code></td><td><code>q_step_3</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_3</code></td><td><code>substitute_boundary_count_for_area</code></td><td><code>q_accept</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:65">geometry_action_pairs.pl:65</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr></tbody></table></div>
 <p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the table records one accepting run. 5 states, 4 distinct actions, 0 branching states, 0 loop edges; 4 static rows and 8 observed rows.</p>
 
 </article>
 
 <article class="machine" id="geometry-area_preserving_polygon_decomposition">
 <h3><span class="entry-number">5.</span> <code>area_preserving_polygon_decomposition</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/area_preserving_polygon_decomposition-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry area_preserving_polygon_decomposition"><figcaption>The run produced square_units(24). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/area_preserving_polygon_decomposition-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry area_preserving_polygon_decomposition"><figcaption>The run produced square_units(24). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/area_preserving_polygon_decomposition.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry area_preserving_polygon_decomposition"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>decompose_into_nonoverlapping_pieces</code>, <code>establish_polygon</code>, <code>measure_piece_areas</code>, <code>preserve_whole_area</code>, <code>sum_piece_areas</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>decompose_into_nonoverlapping_pieces</code>, <code>establish_polygon</code>, <code>measure_piece_areas</code>, <code>preserve_whole_area</code>, <code>sum_piece_areas</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -141,15 +139,15 @@
 
 <article class="machine" id="geometry-area_unit_covering">
 <h3><span class="entry-number">6.</span> <code>area_unit_covering</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/area_unit_covering-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry area_unit_covering"><figcaption>The run produced area(3,square(centimeter)). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/area_unit_covering-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry area_unit_covering"><figcaption>The run produced area(3,square(centimeter)). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/area_unit_covering.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry area_unit_covering"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>count_covered_cells</code>, <code>establish_unit_square</code>, <code>place_equal_unit_squares</code>, <code>report_area_in_square_units</code>, <code>verify_distinct_coverage</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>count_covered_cells</code>, <code>establish_unit_square</code>, <code>place_equal_unit_squares</code>, <code>report_area_in_square_units</code>, <code>verify_distinct_coverage</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -170,10 +168,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>classify_area_referent_extent</code>, <code>compare_candidate_square_unit_scales</code>, <code>select_matching_square_unit</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>classify_area_referent_extent</code>, <code>compare_candidate_square_unit_scales</code>, <code>select_matching_square_unit</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -189,15 +187,15 @@
 
 <article class="machine" id="geometry-axis_aligned_coordinate_distance">
 <h3><span class="entry-number">8.</span> <code>axis_aligned_coordinate_distance</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/axis_aligned_coordinate_distance-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry axis_aligned_coordinate_distance"><figcaption>The run produced length(5,centimeter). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/axis_aligned_coordinate_distance-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry axis_aligned_coordinate_distance"><figcaption>The run produced length(5,centimeter). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/axis_aligned_coordinate_distance.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry axis_aligned_coordinate_distance"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>hold_other_coordinate_fixed</code>, <code>plot_endpoint</code>, <code>subtract_varying_coordinates</code>, <code>take_absolute_coordinate_change</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>hold_other_coordinate_fixed</code>, <code>plot_endpoint</code>, <code>subtract_varying_coordinates</code>, <code>take_absolute_coordinate_change</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -218,10 +216,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>ignore_area_referent_extent</code>, <code>omit_unit_scale_comparison</code>, <code>select_first_familiar_unit</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>ignore_area_referent_extent</code>, <code>omit_unit_scale_comparison</code>, <code>select_first_familiar_unit</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -242,10 +240,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>compare_cubic_unit_counts</code>, <code>count_cubes_in_solid</code>, <code>establish_unit_cube_as_volume_unit</code>, <code>ignore_arrangement_extent</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>compare_cubic_unit_counts</code>, <code>count_cubes_in_solid</code>, <code>establish_unit_cube_as_volume_unit</code>, <code>ignore_arrangement_extent</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -266,10 +264,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>compare_bounding_extents</code>, <code>ignore_unit_cube_counts</code>, <code>inspect_visible_extent</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>compare_bounding_extents</code>, <code>ignore_unit_cube_counts</code>, <code>inspect_visible_extent</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -290,10 +288,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>calculate_component_volumes</code>, <code>certify_disjoint_prism_decomposition</code>, <code>preserve_composite_volume</code>, <code>sum_component_volumes</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>calculate_component_volumes</code>, <code>certify_disjoint_prism_decomposition</code>, <code>preserve_composite_volume</code>, <code>sum_component_volumes</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -314,10 +312,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>count_tile_placements</code>, <code>double_count_covered_cells</code>, <code>omit_overlap_check</code>, <code>place_unit_squares</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>count_tile_placements</code>, <code>double_count_covered_cells</code>, <code>omit_overlap_check</code>, <code>place_unit_squares</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -333,15 +331,15 @@
 
 <article class="machine" id="geometry-decomposition_with_gap_or_overlap">
 <h3><span class="entry-number">14.</span> <code>decomposition_with_gap_or_overlap</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/decomposition_with_gap_or_overlap-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry decomposition_with_gap_or_overlap"><figcaption>The run produced square_units(12); the recorded expected result is square_units(24). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/decomposition_with_gap_or_overlap-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry decomposition_with_gap_or_overlap"><figcaption>The run produced square_units(12); the recorded expected result is square_units(24). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/decomposition_with_gap_or_overlap.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry decomposition_with_gap_or_overlap"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>accept_unchecked_pieces</code>, <code>establish_polygon</code>, <code>lose_whole_area</code>, <code>omit_gap_overlap_test</code>, <code>sum_piece_areas</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>accept_unchecked_pieces</code>, <code>establish_polygon</code>, <code>lose_whole_area</code>, <code>omit_gap_overlap_test</code>, <code>sum_piece_areas</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -362,10 +360,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>coordinate_unit_iteration_power</code>, <code>identify_measure_dimension</code>, <code>identify_measure_name</code>, <code>inscribe_unit_exponent</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>coordinate_unit_iteration_power</code>, <code>identify_measure_dimension</code>, <code>identify_measure_name</code>, <code>inscribe_unit_exponent</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -381,15 +379,15 @@
 
 <article class="machine" id="geometry-directed_difference_as_coordinate_distance">
 <h3><span class="entry-number">16.</span> <code>directed_difference_as_coordinate_distance</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/directed_difference_as_coordinate_distance-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry directed_difference_as_coordinate_distance"><figcaption>The run produced length(-5,centimeter); the recorded expected result is length(5,centimeter). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/directed_difference_as_coordinate_distance-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry directed_difference_as_coordinate_distance"><figcaption>The run produced length(-5,centimeter); the recorded expected result is length(5,centimeter). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/directed_difference_as_coordinate_distance.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry directed_difference_as_coordinate_distance"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>omit_absolute_value</code>, <code>plot_endpoint</code>, <code>report_directed_change_as_length</code>, <code>subtract_varying_coordinates</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>omit_absolute_value</code>, <code>plot_endpoint</code>, <code>report_directed_change_as_length</code>, <code>subtract_varying_coordinates</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -405,15 +403,15 @@
 
 <article class="machine" id="geometry-divide_volume_by_one_dimension">
 <h3><span class="entry-number">17.</span> <code>divide_volume_by_one_dimension</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/divide_volume_by_one_dimension-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry divide_volume_by_one_dimension"><figcaption>The run produced dimension(15); the recorded expected result is dimension(5). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/divide_volume_by_one_dimension-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry divide_volume_by_one_dimension"><figcaption>The run produced dimension(15); the recorded expected result is dimension(5). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/divide_volume_by_one_dimension.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry divide_volume_by_one_dimension"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>divide_volume_by_length_only</code>, <code>drop_second_base_dimension</code>, <code>report_partial_quotient_as_height</code>, <code>retain_one_known_dimension</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>divide_volume_by_length_only</code>, <code>drop_second_base_dimension</code>, <code>report_partial_quotient_as_height</code>, <code>retain_one_known_dimension</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -429,15 +427,15 @@
 
 <article class="machine" id="geometry-ignore_perimeter_rectangle_constraint">
 <h3><span class="entry-number">18.</span> <code>ignore_perimeter_rectangle_constraint</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/ignore_perimeter_rectangle_constraint-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry ignore_perimeter_rectangle_constraint"><figcaption>The run produced rectangles([1-24,2-12,3-8,4-6]); the recorded expected result is rectangles([3-8]). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/ignore_perimeter_rectangle_constraint-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry ignore_perimeter_rectangle_constraint"><figcaption>The run produced rectangles([1-24,2-12,3-8,4-6]); the recorded expected result is rectangles([3-8]). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/ignore_perimeter_rectangle_constraint.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry ignore_perimeter_rectangle_constraint"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_area_constraint</code>, <code>ignore_perimeter_constraint</code>, <code>report_unfiltered_rectangles</code>, <code>retain_all_area_factor_pairs</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_area_constraint</code>, <code>ignore_perimeter_constraint</code>, <code>report_unfiltered_rectangles</code>, <code>retain_all_area_factor_pairs</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -458,10 +456,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>count_each_orbit_once</code>, <code>establish_perimeter</code>, <code>ignore_reflected_side_copies</code>, <code>subtract_flat_known_total</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>count_each_orbit_once</code>, <code>establish_perimeter</code>, <code>ignore_reflected_side_copies</code>, <code>subtract_flat_known_total</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -482,10 +480,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>identify_measure_dimension</code>, <code>ignore_dimension_power</code>, <code>lose_unit_exponent</code>, <code>write_linear_unit</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>identify_measure_dimension</code>, <code>ignore_dimension_power</code>, <code>lose_unit_exponent</code>, <code>write_linear_unit</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -501,15 +499,15 @@
 
 <article class="machine" id="geometry-omit_half_in_triangle_area">
 <h3><span class="entry-number">21.</span> <code>omit_half_in_triangle_area</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/omit_half_in_triangle_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry omit_half_in_triangle_area"><figcaption>The run produced area(28,square(centimeter)); the recorded expected result is area(14,square(centimeter)). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/omit_half_in_triangle_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry omit_half_in_triangle_area"><figcaption>The run produced area(28,square(centimeter)); the recorded expected result is area(14,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/omit_half_in_triangle_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry omit_half_in_triangle_area"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>multiply_base_by_height</code>, <code>omit_halving</code>, <code>omit_matching_copy_relation</code>, <code>report_parallelogram_area_for_triangle</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>multiply_base_by_height</code>, <code>omit_halving</code>, <code>omit_matching_copy_relation</code>, <code>report_parallelogram_area_for_triangle</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -530,10 +528,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>omit_side_length</code>, <code>read_labeled_sides</code>, <code>report_partial_boundary</code>, <code>stop_before_boundary_closure</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>omit_side_length</code>, <code>read_labeled_sides</code>, <code>report_partial_boundary</code>, <code>stop_before_boundary_closure</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -554,10 +552,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_cartesian_axes</code>, <code>locate_first_then_second_for_each_pair</code>, <code>preserve_coordinate_order</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_cartesian_axes</code>, <code>locate_first_then_second_for_each_pair</code>, <code>preserve_coordinate_order</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -578,10 +576,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>observe_attributes</code>, <code>privilege_prototype_orientation</code>, <code>reject_after_rotation</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>observe_attributes</code>, <code>privilege_prototype_orientation</code>, <code>reject_after_rotation</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -597,15 +595,15 @@
 
 <article class="machine" id="geometry-parallelogram_area_base_height">
 <h3><span class="entry-number">25.</span> <code>parallelogram_area_base_height</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/parallelogram_area_base_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry parallelogram_area_base_height"><figcaption>The run produced area(24,square(centimeter)). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/parallelogram_area_base_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry parallelogram_area_base_height"><figcaption>The run produced area(24,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/parallelogram_area_base_height.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry parallelogram_area_base_height"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>cut_and_translate_to_rectangle</code>, <code>distinguish_height_from_slanted_side</code>, <code>identify_base</code>, <code>multiply_base_by_perpendicular_height</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>cut_and_translate_to_rectangle</code>, <code>distinguish_height_from_slanted_side</code>, <code>identify_base</code>, <code>multiply_base_by_perpendicular_height</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -621,15 +619,15 @@
 
 <article class="machine" id="geometry-perimeter_two_sides_only">
 <h3><span class="entry-number">26.</span> <code>perimeter_two_sides_only</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/perimeter_two_sides_only-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry perimeter_two_sides_only"><figcaption>The run produced length(11,centimeter); the recorded expected result is length(22,centimeter). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/perimeter_two_sides_only-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry perimeter_two_sides_only"><figcaption>The run produced length(11,centimeter); the recorded expected result is length(22,centimeter). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/perimeter_two_sides_only.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry perimeter_two_sides_only"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>report_partial_boundary</code>, <code>stop_before_opposite_sides</code>, <code>traverse_side</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>report_partial_boundary</code>, <code>stop_before_opposite_sides</code>, <code>traverse_side</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -645,15 +643,15 @@
 
 <article class="machine" id="geometry-perimeter_uses_area_formula">
 <h3><span class="entry-number">27.</span> <code>perimeter_uses_area_formula</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/perimeter_uses_area_formula-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry perimeter_uses_area_formula"><figcaption>The run produced length(28,centimeter); the recorded expected result is length(22,centimeter). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/perimeter_uses_area_formula-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry perimeter_uses_area_formula"><figcaption>The run produced length(28,centimeter); the recorded expected result is length(22,centimeter). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/perimeter_uses_area_formula.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry perimeter_uses_area_formula"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>multiply_dimensions</code>, <code>observe_dimensions</code>, <code>report_area_value_as_perimeter</code>, <code>select_area_formula_by_surface_association</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>multiply_dimensions</code>, <code>observe_dimensions</code>, <code>report_area_value_as_perimeter</code>, <code>select_area_formula_by_surface_association</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -674,10 +672,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>accumulate_complete_boundary</code>, <code>establish_closed_polygon_boundary</code>, <code>traverse_side_lengths_in_order</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>accumulate_complete_boundary</code>, <code>establish_closed_polygon_boundary</code>, <code>traverse_side_lengths_in_order</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -693,15 +691,15 @@
 
 <article class="machine" id="geometry-polyhedron_surface_area_from_net">
 <h3><span class="entry-number">29.</span> <code>polyhedron_surface_area_from_net</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/polyhedron_surface_area_from_net-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry polyhedron_surface_area_from_net"><figcaption>The run produced area(52,square(centimeter)). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/polyhedron_surface_area_from_net-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry polyhedron_surface_area_from_net"><figcaption>The run produced area(52,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/polyhedron_surface_area_from_net.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry polyhedron_surface_area_from_net"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>enumerate_all_face_areas</code>, <code>identify_polyhedron</code>, <code>sum_each_face_exactly_once</code>, <code>unfold_to_net</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>enumerate_all_face_areas</code>, <code>identify_polyhedron</code>, <code>sum_each_face_exactly_once</code>, <code>unfold_to_net</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -717,15 +715,15 @@
 
 <article class="machine" id="geometry-rectangle_area_perimeter_constraint_search">
 <h3><span class="entry-number">30.</span> <code>rectangle_area_perimeter_constraint_search</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_area_perimeter_constraint_search-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_area_perimeter_constraint_search"><figcaption>The run produced rectangles([3-8]). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_area_perimeter_constraint_search-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_area_perimeter_constraint_search"><figcaption>The run produced rectangles([3-8]). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_area_perimeter_constraint_search.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_area_perimeter_constraint_search"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>enumerate_area_factor_pairs</code>, <code>establish_area_constraint</code>, <code>establish_perimeter_constraint</code>, <code>report_constrained_rectangles</code>, <code>retain_pairs_with_perimeter</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>enumerate_area_factor_pairs</code>, <code>establish_area_constraint</code>, <code>establish_perimeter_constraint</code>, <code>report_constrained_rectangles</code>, <code>retain_pairs_with_perimeter</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -746,10 +744,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>coordinate_square_units</code>, <code>count_square_units</code>, <code>establish_rectangle</code>, <code>iterate_columns</code>, <code>iterate_rows</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>coordinate_square_units</code>, <code>count_square_units</code>, <code>establish_rectangle</code>, <code>iterate_columns</code>, <code>iterate_rows</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -758,7 +756,7 @@
 </div>
 <p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;a&quot;: &quot;integer&quot;, &quot;b&quot;: &quot;integer&quot;}</code>; example <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code>; <code>verified(strategy_trace_ok)</code>.</p>
 <h4><i>δ</i>: recorded transitions</h4>
-<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_rectangle</code></td><td><code>q_step_1</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_1</code></td><td><code>iterate_rows</code></td><td><code>q_step_2</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_2</code></td><td><code>iterate_columns</code></td><td><code>q_step_3</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_3</code></td><td><code>coordinate_square_units</code></td><td><code>q_step_4</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr><tr><td><code>q_step_4</code></td><td><code>count_square_units</code></td><td><code>q_accept</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived template)</td></tr></tbody></table></div>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_rectangle</code></td><td><code>q_step_1</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_1</code></td><td><code>iterate_rows</code></td><td><code>q_step_2</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_2</code></td><td><code>iterate_columns</code></td><td><code>q_step_3</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_3</code></td><td><code>coordinate_square_units</code></td><td><code>q_step_4</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr><tr><td><code>q_step_4</code></td><td><code>count_square_units</code></td><td><code>q_accept</code></td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:35">geometry_action_pairs.pl:35</code><br>observed on <code>{&quot;a&quot;: 47, &quot;b&quot;: 28}</code><br>observed on <code>{&quot;a&quot;: 48, &quot;b&quot;: 28}</code> (derived<span class="typeset-space"> </span>template)</td></tr></tbody></table></div>
 <p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the table records one accepting run. 6 states, 5 distinct actions, 0 branching states, 0 loop edges; 5 static rows and 10 observed rows.</p>
 
 </article>
@@ -770,10 +768,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>enumerate_whole_number_side_lengths</code>, <code>establish_target_area</code>, <code>identify_rotations_as_commutative_pairs</code>, <code>retain_products_equal_to_area</code>, <code>satisfy_factor_scope</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>enumerate_whole_number_side_lengths</code>, <code>establish_target_area</code>, <code>identify_rotations_as_commutative_pairs</code>, <code>retain_products_equal_to_area</code>, <code>satisfy_factor_scope</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -789,15 +787,15 @@
 
 <article class="machine" id="geometry-rectangle_missing_side_from_area">
 <h3><span class="entry-number">33.</span> <code>rectangle_missing_side_from_area</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_missing_side_from_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_missing_side_from_area"><figcaption>The run produced side_length(7). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_missing_side_from_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_missing_side_from_area"><figcaption>The run produced side_length(7). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_missing_side_from_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_missing_side_from_area"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>divide_area_by_known_side</code>, <code>establish_area_product</code>, <code>reconstruct_rectangle</code>, <code>retain_known_side</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>divide_area_by_known_side</code>, <code>establish_area_product</code>, <code>reconstruct_rectangle</code>, <code>retain_known_side</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -813,15 +811,15 @@
 
 <article class="machine" id="geometry-rectangle_missing_side_from_perimeter">
 <h3><span class="entry-number">34.</span> <code>rectangle_missing_side_from_perimeter</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_missing_side_from_perimeter-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_missing_side_from_perimeter"><figcaption>The run produced side_length(7). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_missing_side_from_perimeter-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_missing_side_from_perimeter"><figcaption>The run produced side_length(7). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_missing_side_from_perimeter.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_missing_side_from_perimeter"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>coordinate_opposite_side_pairs</code>, <code>establish_target_perimeter</code>, <code>halve_perimeter</code>, <code>subtract_known_side</code>, <code>verify_rectangle_boundary</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>coordinate_opposite_side_pairs</code>, <code>establish_target_perimeter</code>, <code>halve_perimeter</code>, <code>subtract_known_side</code>, <code>verify_rectangle_boundary</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -837,15 +835,15 @@
 
 <article class="machine" id="geometry-rectangle_perimeter_boundary_traversal">
 <h3><span class="entry-number">35.</span> <code>rectangle_perimeter_boundary_traversal</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_perimeter_boundary_traversal-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_perimeter_boundary_traversal"><figcaption>The run produced length(22,centimeter). The scene is derived from the contract run (6 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_perimeter_boundary_traversal-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_perimeter_boundary_traversal"><figcaption>The run produced length(22,centimeter). The scene is derived from the contract run (6<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_perimeter_boundary_traversal.svg" width="648" height="648" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_perimeter_boundary_traversal"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>, <i>q</i><sub>6</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>accumulate_boundary_length</code>, <code>establish_rectangle</code>, <code>traverse_opposite_side</code>, <code>traverse_side</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>accumulate_boundary_length</code>, <code>establish_rectangle</code>, <code>traverse_opposite_side</code>, <code>traverse_side</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>6</sub>}</dd>
     </dl>
@@ -866,10 +864,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>enumerate_positive_side_pairs</code>, <code>establish_target_perimeter</code>, <code>halve_for_length_plus_width</code>, <code>retain_complete_boundaries</code>, <code>satisfy_side_scope</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>enumerate_positive_side_pairs</code>, <code>establish_target_perimeter</code>, <code>halve_for_length_plus_width</code>, <code>retain_complete_boundaries</code>, <code>satisfy_side_scope</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -885,15 +883,15 @@
 
 <article class="machine" id="geometry-rectangular_prism_missing_dimension_from_volume">
 <h3><span class="entry-number">37.</span> <code>rectangular_prism_missing_dimension_from_volume</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangular_prism_missing_dimension_from_volume-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangular_prism_missing_dimension_from_volume"><figcaption>The run produced dimension(5). The scene is derived from the contract run (3 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangular_prism_missing_dimension_from_volume-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangular_prism_missing_dimension_from_volume"><figcaption>The run produced dimension(5). The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangular_prism_missing_dimension_from_volume.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangular_prism_missing_dimension_from_volume"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>coordinate_known_base</code>, <code>divide_volume_by_base_area</code>, <code>reconstruct_unit_cube_stack</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>coordinate_known_base</code>, <code>divide_volume_by_base_area</code>, <code>reconstruct_unit_cube_stack</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -909,15 +907,15 @@
 
 <article class="machine" id="geometry-rectangular_prism_volume_layer_iteration">
 <h3><span class="entry-number">38.</span> <code>rectangular_prism_volume_layer_iteration</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangular_prism_volume_layer_iteration-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangular_prism_volume_layer_iteration"><figcaption>The run produced cubic_units(60). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangular_prism_volume_layer_iteration-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangular_prism_volume_layer_iteration"><figcaption>The run produced cubic_units(60). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangular_prism_volume_layer_iteration.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangular_prism_volume_layer_iteration"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>coordinate_base</code>, <code>count_cubic_units</code>, <code>establish_unit_cube_as_volume_unit</code>, <code>iterate_height_layers</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>coordinate_base</code>, <code>count_cubic_units</code>, <code>establish_unit_cube_as_volume_unit</code>, <code>iterate_height_layers</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -933,15 +931,15 @@
 
 <article class="machine" id="geometry-rigid_shape_composition">
 <h3><span class="entry-number">39.</span> <code>rigid_shape_composition</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rigid_shape_composition-scene.svg" width="700" height="410" loading="lazy" decoding="async" alt="Executed domain scene for geometry rigid_shape_composition"><figcaption>The run produced composed_region(3,2). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/rigid_shape_composition-scene.svg" width="700" height="410" loading="lazy" decoding="async" alt="Executed domain scene for geometry rigid_shape_composition"><figcaption>The run produced composed_region(3,2). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rigid_shape_composition.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rigid_shape_composition"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_bounded_region</code>, <code>inspect_coverage_without_gaps_or_overlaps</code>, <code>place_parts_by_rigid_motion</code>, <code>preserve_rigid_parts</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_bounded_region</code>, <code>inspect_coverage_without_gaps_or_overlaps</code>, <code>place_parts_by_rigid_motion</code>, <code>preserve_rigid_parts</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -962,10 +960,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>ignore_nondefining_orientation</code>, <code>observe_attributes</code>, <code>retain_hierarchical_categories</code>, <code>test_required_attributes</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>ignore_nondefining_orientation</code>, <code>observe_attributes</code>, <code>retain_hierarchical_categories</code>, <code>test_required_attributes</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -981,15 +979,15 @@
 
 <article class="machine" id="geometry-slanted_side_as_parallelogram_height">
 <h3><span class="entry-number">41.</span> <code>slanted_side_as_parallelogram_height</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/slanted_side_as_parallelogram_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry slanted_side_as_parallelogram_height"><figcaption>The run produced area(30,square(centimeter)); the recorded expected result is area(24,square(centimeter)). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/slanted_side_as_parallelogram_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry slanted_side_as_parallelogram_height"><figcaption>The run produced area(30,square(centimeter)); the recorded expected result is area(24,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/slanted_side_as_parallelogram_height.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry slanted_side_as_parallelogram_height"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>identify_base</code>, <code>multiply_base_by_slanted_side</code>, <code>omit_perpendicularity_check</code>, <code>select_slanted_side_as_height</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>identify_base</code>, <code>multiply_base_by_slanted_side</code>, <code>omit_perpendicularity_check</code>, <code>select_slanted_side_as_height</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -1005,15 +1003,15 @@
 
 <article class="machine" id="geometry-subtract_side_from_area">
 <h3><span class="entry-number">42.</span> <code>subtract_side_from_area</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/subtract_side_from_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry subtract_side_from_area"><figcaption>The run produced side_length(24); the recorded expected result is side_length(7). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/subtract_side_from_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry subtract_side_from_area"><figcaption>The run produced side_length(24); the recorded expected result is side_length(7). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/subtract_side_from_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry subtract_side_from_area"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_area_as_total</code>, <code>omit_inverse_multiplication</code>, <code>report_additive_remainder_as_side</code>, <code>subtract_known_side</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_area_as_total</code>, <code>omit_inverse_multiplication</code>, <code>report_additive_remainder_as_side</code>, <code>subtract_known_side</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -1034,10 +1032,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>calculate_component_volumes</code>, <code>double_count_shared_cubes</code>, <code>omit_overlap_correction</code>, <code>report_component_sum</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>calculate_component_volumes</code>, <code>double_count_shared_cubes</code>, <code>omit_overlap_correction</code>, <code>report_component_sum</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -1058,10 +1056,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>accumulate_known_orbits</code>, <code>establish_perimeter</code>, <code>group_sides_into_reflection_orbits</code>, <code>isolate_unknown_orbit</code>, <code>partition_remaining_boundary</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>accumulate_known_orbits</code>, <code>establish_perimeter</code>, <code>group_sides_into_reflection_orbits</code>, <code>isolate_unknown_orbit</code>, <code>partition_remaining_boundary</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -1077,15 +1075,15 @@
 
 <article class="machine" id="geometry-triangle_area_half_base_height">
 <h3><span class="entry-number">45.</span> <code>triangle_area_half_base_height</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/triangle_area_half_base_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry triangle_area_half_base_height"><figcaption>The run produced area(14,square(centimeter)). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/triangle_area_half_base_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry triangle_area_half_base_height"><figcaption>The run produced area(14,square(centimeter)). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/triangle_area_half_base_height.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry triangle_area_half_base_height"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>compose_matching_triangle_copy</code>, <code>form_parallelogram_product</code>, <code>identify_base</code>, <code>identify_perpendicular_height</code>, <code>take_one_of_two_equal_triangles</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>compose_matching_triangle_copy</code>, <code>form_parallelogram_product</code>, <code>identify_base</code>, <code>identify_perpendicular_height</code>, <code>take_one_of_two_equal_triangles</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -1101,15 +1099,15 @@
 
 <article class="machine" id="geometry-visible_faces_only_surface_area">
 <h3><span class="entry-number">46.</span> <code>visible_faces_only_surface_area</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/geometry/visible_faces_only_surface_area-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry visible_faces_only_surface_area"><figcaption>The run produced area(46,square(centimeter)); the recorded expected result is area(52,square(centimeter)). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/geometry/visible_faces_only_surface_area-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry visible_faces_only_surface_area"><figcaption>The run produced area(46,square(centimeter)); the recorded expected result is area(52,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/visible_faces_only_surface_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry visible_faces_only_surface_area"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>enumerate_visible_faces</code>, <code>inspect_solid_view</code>, <code>omit_hidden_face</code>, <code>report_partial_surface_area</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>enumerate_visible_faces</code>, <code>inspect_solid_view</code>, <code>omit_hidden_face</code>, <code>report_partial_surface_area</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>

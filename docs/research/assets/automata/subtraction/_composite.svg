@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2230" height="1114" viewBox="0 0 2230 1114" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2246" height="1114" viewBox="0 0 2246 1114" role="img" aria-labelledby="title desc">
   <title id="title">subtraction family composite</title>
   <desc id="desc">subtraction composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -9,14 +9,14 @@
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
   </defs>
   <path d="M 100.0 557.0 C 209.1 557.0, 209.1 427.5, 318.2 427.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: answer_as_endpoint_count_up, compare_by_matching_difference, compare_returns_larger_count, count_up_missing_addend</title></path>
-  <rect x="169.5" y="418.5" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="169.5" y="418.5" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.1" y="430.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <text x="209.1" y="446.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">answer_as_endpoint_count_up</text>
   <text x="209.1" y="455.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_by_matching_difference</text>
   <text x="209.1" y="464.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_returns_larger_count</text>
   <text x="209.1" y="473.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">count_up_missing_addend</text>
   <path d="M 100.0 557.0 C 209.1 557.0, 209.1 433.7, 318.2 433.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>decompose_by_place: add_instead_of_subtract_column, borrow_across_zero_cascade, borrow_across_zero_no_cascade, borrow_without_reducing_bases, decompose_base_for_ones, smaller_from_larger_in_column</title></path>
-  <rect x="152.7" y="424.7" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="152.6" y="424.7" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.1" y="436.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">decompose_by_place</text>
   <text x="209.1" y="452.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_instead_of_subtract_column</text>
   <text x="209.1" y="461.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_across_zero_cascade</text>
@@ -25,165 +25,165 @@
   <text x="209.1" y="488.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decompose_base_for_ones</text>
   <text x="209.1" y="497.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">smaller_from_larger_in_column</text>
   <path d="M 100.0 557.0 C 209.1 557.0, 209.1 890.0, 318.2 890.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>decompose_operand: drop_ones_after_base_takeaway, take_away_base_ones</title></path>
-  <rect x="155.5" y="881.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="155.4" y="881.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.1" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">decompose_operand</text>
   <text x="209.1" y="909.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_ones_after_base_takeaway</text>
   <text x="209.1" y="918.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">take_away_base_ones</text>
   <path d="M 100.0 557.0 C 209.1 557.0, 209.1 853.0, 318.2 853.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: slide_subtrahend_only, sliding_constant_difference</title></path>
-  <rect x="155.5" y="844.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="155.4" y="844.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.1" y="856.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <text x="209.1" y="872.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">slide_subtrahend_only</text>
   <text x="209.1" y="881.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">sliding_constant_difference</text>
   <path d="M 1907.8 492.2 C 2016.9 492.2, 2016.9 557.0, 2126.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: add_instead_of_subtract_column, answer_as_endpoint_count_up, borrow_across_zero_no_cascade, borrow_without_reducing_bases, compare_returns_larger_count, drop_ones_after_base_takeaway, slide_subtrahend_only, smaller_from_larger_in_column</title></path>
-  <rect x="1980.1" y="548.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1980.0" y="548.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2016.9" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 1133.0 372.0 C 1500.4 372.0, 1500.4 492.2, 1867.8 492.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: answer_as_endpoint_count_up</title></path>
-  <rect x="1455.2" y="483.2" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1455.1" y="483.2" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1500.4" y="495.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <text x="1500.4" y="511.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">answer_as_endpoint_count_up</text>
   <path d="M 1133.0 372.0 C 1629.5 372.0, 1629.5 557.0, 2126.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: count_up_missing_addend</title></path>
-  <rect x="1592.7" y="548.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1592.6" y="548.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1629.5" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <text x="1629.5" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">count_up_missing_addend</text>
   <path d="M 874.8 372.0 C 983.9 372.0, 983.9 372.0, 1093.0 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_up_to_target: answer_as_endpoint_count_up, count_up_missing_addend</title></path>
-  <rect x="927.5" y="363.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="927.4" y="363.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="983.9" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_up_to_target</text>
   <path d="M 616.5 372.0 C 725.6 372.0, 725.6 372.0, 834.8 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_up_to_target: answer_as_endpoint_count_up, count_up_missing_addend</title></path>
-  <rect x="669.2" y="363.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.1" y="363.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_up_to_target</text>
   <path d="M 1133.0 446.0 C 1629.5 446.0, 1629.5 557.0, 2126.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: compare_by_matching_difference</title></path>
-  <rect x="1592.7" y="548.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1592.6" y="548.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1629.5" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 874.8 446.0 C 983.9 446.0, 983.9 446.0, 1093.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: compare_by_matching_difference</title></path>
-  <rect x="947.1" y="437.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="947.0" y="437.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="983.9" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 874.8 520.0 C 1371.2 520.0, 1371.2 492.2, 1867.8 492.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: compare_returns_larger_count</title></path>
-  <rect x="1326.0" y="483.2" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1326.0" y="483.2" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1371.2" y="495.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <path d="M 616.5 483.0 C 725.6 483.0, 725.6 446.0, 834.8 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: compare_by_matching_difference</title></path>
-  <rect x="677.6" y="437.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="677.5" y="437.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <text x="725.6" y="465.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_by_matching_difference</text>
   <path d="M 616.5 483.0 C 725.6 483.0, 725.6 520.0, 834.8 520.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: compare_returns_larger_count</title></path>
-  <rect x="672.0" y="506.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="671.9" y="506.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="725.6" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
   <text x="725.6" y="544.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_returns_larger_count</text>
   <path d="M 358.2 427.5 C 467.4 427.5, 467.4 372.0, 576.5 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: answer_as_endpoint_count_up, count_up_missing_addend</title></path>
-  <rect x="427.8" y="363.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="427.7" y="363.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <text x="467.4" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">answer_as_endpoint_count_up</text>
   <text x="467.4" y="400.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">count_up_missing_addend</text>
   <path d="M 358.2 427.5 C 467.4 427.5, 467.4 483.0, 576.5 483.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>match_one_to_one: compare_by_matching_difference, compare_returns_larger_count</title></path>
-  <rect x="416.6" y="474.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="416.5" y="474.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="486.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">match_one_to_one</text>
   <text x="467.4" y="502.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_by_matching_difference</text>
   <text x="467.4" y="511.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_returns_larger_count</text>
   <path d="M 1649.5 427.5 C 1758.6 427.5, 1758.6 492.2, 1867.8 492.2" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>recompose_total: add_instead_of_subtract_column, borrow_across_zero_no_cascade, borrow_without_reducing_bases, smaller_from_larger_in_column</title></path>
-  <rect x="1710.6" y="483.2" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1710.5" y="483.2" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1758.6" y="495.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">recompose_total</text>
   <path d="M 874.8 520.0 C 1242.1 520.0, 1242.1 427.5, 1609.5 427.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: add_instead_of_subtract_column, smaller_from_larger_in_column</title></path>
-  <rect x="1180.1" y="418.5" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1180.0" y="418.5" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1242.1" y="430.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
   <path d="M 616.5 964.0 C 725.6 964.0, 725.6 520.0, 834.8 520.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: smaller_from_larger_in_column</title></path>
-  <rect x="663.6" y="511.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="663.5" y="511.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
   <path d="M 1391.2 224.0 C 1758.6 224.0, 1758.6 557.0, 2126.0 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: borrow_across_zero_cascade</title></path>
-  <rect x="1710.6" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1710.5" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1758.6" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <path d="M 1133.0 224.0 C 1242.1 224.0, 1242.1 224.0, 1351.2 224.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>exchange_base_down: borrow_across_zero_cascade</title></path>
-  <rect x="1185.7" y="215.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1185.6" y="215.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1242.1" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">exchange_base_down</text>
   <path d="M 874.8 224.0 C 983.9 224.0, 983.9 224.0, 1093.0 224.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>exchange_base_down: borrow_across_zero_cascade</title></path>
-  <rect x="927.5" y="215.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="927.4" y="215.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="983.9" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">exchange_base_down</text>
   <path d="M 1391.2 298.0 C 1500.4 298.0, 1500.4 427.5, 1609.5 427.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: borrow_across_zero_no_cascade</title></path>
-  <rect x="1444.0" y="418.5" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1443.9" y="418.5" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1500.4" y="430.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1133.0 298.0 C 1242.1 298.0, 1242.1 298.0, 1351.2 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: borrow_across_zero_no_cascade</title></path>
-  <rect x="1185.7" y="289.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1185.6" y="289.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1242.1" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 874.8 298.0 C 983.9 298.0, 983.9 298.0, 1093.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misread_intermediate_value: borrow_across_zero_no_cascade</title></path>
-  <rect x="927.5" y="284.0" width="112.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="927.4" y="284.0" width="113.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="983.9" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misread</text>
   <text x="983.9" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">intermediate_value</text>
   <path d="M 616.5 261.0 C 725.6 261.0, 725.6 224.0, 834.8 224.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>exchange_base_down: borrow_across_zero_cascade</title></path>
-  <rect x="669.2" y="215.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.1" y="215.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">exchange_base_down</text>
   <text x="725.6" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_across_zero_cascade</text>
   <path d="M 616.5 261.0 C 725.6 261.0, 725.6 298.0, 834.8 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: borrow_across_zero_no_cascade</title></path>
-  <rect x="686.0" y="284.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="686.0" y="284.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="725.6" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="725.6" y="322.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_across_zero_no_cascade</text>
   <path d="M 1133.0 668.0 C 1629.5 668.0, 1629.5 557.0, 2126.0 557.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>recompose_total: decompose_base_for_ones</title></path>
-  <rect x="1581.5" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1581.4" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1629.5" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">recompose_total</text>
   <path d="M 874.8 668.0 C 983.9 668.0, 983.9 668.0, 1093.0 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: decompose_base_for_ones</title></path>
-  <rect x="935.9" y="659.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="935.8" y="659.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="983.9" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <path d="M 874.8 372.0 C 1242.1 372.0, 1242.1 427.5, 1609.5 427.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: borrow_without_reducing_bases</title></path>
-  <rect x="1194.1" y="418.5" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1194.0" y="418.5" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1242.1" y="430.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <path d="M 616.5 520.0 C 725.6 520.0, 725.6 668.0, 834.8 668.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>exchange_base_down: decompose_base_for_ones</title></path>
-  <rect x="669.2" y="659.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.1" y="659.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">exchange_base_down</text>
   <text x="725.6" y="687.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decompose_base_for_ones</text>
   <path d="M 616.5 520.0 C 725.6 520.0, 725.6 372.0, 834.8 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: borrow_without_reducing_bases</title></path>
-  <rect x="669.2" y="363.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.1" y="363.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="725.6" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_without_reducing_bases</text>
   <path d="M 358.2 433.7 C 467.4 433.7, 467.4 964.0, 576.5 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: smaller_from_larger_in_column</title></path>
-  <rect x="411.0" y="955.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="410.9" y="955.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="467.4" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">smaller_from_larger_in_column</text>
   <path d="M 358.2 433.7 C 467.4 433.7, 467.4 261.0, 576.5 261.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: borrow_across_zero_cascade, borrow_across_zero_no_cascade</title></path>
-  <rect x="427.8" y="247.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="427.7" y="247.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="259.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="467.4" y="269.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="467.4" y="285.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_across_zero_cascade</text>
   <text x="467.4" y="294.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_across_zero_no_cascade</text>
   <path d="M 358.2 433.7 C 467.4 433.7, 467.4 520.0, 576.5 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: borrow_without_reducing_bases, decompose_base_for_ones</title></path>
-  <rect x="419.4" y="511.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="419.3" y="511.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <text x="467.4" y="539.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">borrow_without_reducing_bases</text>
   <text x="467.4" y="548.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decompose_base_for_ones</text>
   <path d="M 358.2 433.7 C 596.5 433.7, 596.5 520.0, 834.8 520.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: add_instead_of_subtract_column</title></path>
-  <rect x="534.5" y="511.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="534.4" y="511.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="596.5" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
   <text x="596.5" y="539.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_instead_of_subtract_column</text>
   <path d="M 1133.0 964.0 C 1629.5 964.0, 1629.5 557.0, 2126.0 557.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: sliding_constant_difference, take_away_base_ones</title></path>
-  <rect x="1570.3" y="548.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1570.2" y="548.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1629.5" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_conservation</text>
   <path d="M 616.5 890.0 C 854.8 890.0, 854.8 964.0, 1093.0 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_back_from: take_away_base_ones</title></path>
-  <rect x="806.8" y="955.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="806.7" y="955.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="854.8" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_back_from</text>
   <text x="854.8" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">take_away_base_ones</text>
   <path d="M 616.5 890.0 C 1242.1 890.0, 1242.1 492.2, 1867.8 492.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>halt_before_completion: drop_ones_after_base_takeaway</title></path>
-  <rect x="1205.3" y="478.2" width="73.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1205.3" y="478.2" width="73.7" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1242.1" y="490.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">halt_before</text>
   <text x="1242.1" y="500.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">completion</text>
   <text x="1242.1" y="516.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_ones_after_base_takeaway</text>
   <path d="M 358.2 890.0 C 467.4 890.0, 467.4 890.0, 576.5 890.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_back_from: drop_ones_after_base_takeaway, take_away_base_ones</title></path>
-  <rect x="419.4" y="881.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="419.3" y="881.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_back_from</text>
   <path d="M 874.8 816.0 C 1371.2 816.0, 1371.2 492.2, 1867.8 492.2" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: slide_subtrahend_only</title></path>
-  <rect x="1323.2" y="483.2" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1323.2" y="483.2" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1371.2" y="495.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <path d="M 874.8 890.0 C 983.9 890.0, 983.9 964.0, 1093.0 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: sliding_constant_difference</title></path>
-  <rect x="935.9" y="955.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="935.8" y="955.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="983.9" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <path d="M 616.5 853.0 C 725.6 853.0, 725.6 816.0, 834.8 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: slide_subtrahend_only</title></path>
-  <rect x="669.2" y="807.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.1" y="807.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="725.6" y="835.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">slide_subtrahend_only</text>
   <path d="M 616.5 853.0 C 725.6 853.0, 725.6 890.0, 834.8 890.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>transfer_between_operands: sliding_constant_difference</title></path>
-  <rect x="674.8" y="876.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="674.7" y="876.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="725.6" y="888.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">transfer_between</text>
   <text x="725.6" y="898.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">operands</text>
   <text x="725.6" y="914.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">sliding_constant_difference</text>
   <path d="M 358.2 853.0 C 467.4 853.0, 467.4 853.0, 576.5 853.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_up_to_target: slide_subtrahend_only, sliding_constant_difference</title></path>
-  <rect x="411.0" y="844.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="410.9" y="844.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="467.4" y="856.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_up_to_target</text>
   <circle cx="82.0" cy="557.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="82.0" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>

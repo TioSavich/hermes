@@ -6,10 +6,8 @@
 <title>measurement | Hermes automata compendium</title>
 <style>
 :root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold:#d4a747;--gold-deep:#a97c24;--paper-bg:#f4ead6;--rust:#b95238;--paper-cool:#ede4cf;--surface:#fffef9;--gold-pale:#f0d68a;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
-*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif} main{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem} p{max-width:var(--prose)} .page-header{margin-bottom:2rem} .page-header h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem} .lede{font-size:1.08rem;margin:.3rem 0;color:var(--muted)} h2{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem} h3{font-size:1.38rem;line-height:1.25;margin:0 0 1rem} h4{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem} code{font:.82em var(--mono);overflow-wrap:anywhere} a{color:var(--gold-deep);text-underline-offset:.14em} .back-link{margin:0 0 1rem} .contents{margin:2rem 0 3.5rem} .contents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem} .contents-family{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem} .contents-family h3{font-size:1.05rem;margin:0 0 .35rem} .contents-family ol{margin:.2rem 0;padding-left:2.1rem} .contents-family li{padding:.08rem 0} article.machine{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px} .machine h3{font-size:1.38rem} .entry-number{color:var(--gold-deep);font-weight:normal} .tuple-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start} .machine-tuple{font-size:1.12rem} dl{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem} dt{color:var(--gold-deep)} dd{margin:0} table{border-collapse:collapse;width:100%;font-size:.88rem} .table-scroll{width:100%;overflow:auto} .transitions-scroll{max-height:28rem} th,td{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top} th{background:var(--paper-warm);color:var(--muted);font-weight:normal} .transitions thead th{position:sticky;top:0;z-index:1;background:var(--paper-warm)} .state-map td:first-child{white-space:nowrap} .citation,.none{color:var(--muted);font-size:.9em} .literature-label{font-style:italic} .provenance.observed{color:var(--gold-deep)} .input-contract{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .diagram{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem} .diagram img{display:block;margin:auto;max-width:100%;height:auto} figcaption{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem} .domain-scene img{max-height:34rem} .transition-diagram img{max-height:46rem} .family-composite img{max-width:none;min-width:100%} .family-composite{max-height:72rem} .scene-limit{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem} .typology,.attestation{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .term{color:var(--gold-deep)} .attestation{border-left:3px solid var(--gold)} .atlas{font-size:.84rem;min-width:860px} .numeric{white-space:nowrap;text-align:right} .legend-list{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem} .legend-list dt{font-family:var(--mono)} .swatch{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor} .swatch.conserving{color:var(--ink)} .swatch.deforming{color:var(--rust)} .swatch.neutral{color:var(--muted)} footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem} @media(max-width:850px){.tuple-grid{grid-template-columns:1fr}main{padding:.9rem}article.machine{padding:.75rem}}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif} main{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem} p{max-width:var(--prose)} .page-header{margin-bottom:2rem} .page-header h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem} .lede{font-size:1.08rem;margin:.3rem 0;color:var(--muted)} h2{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem} h3{font-size:1.38rem;line-height:1.25;margin:0 0 1rem} h4{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem} code{font:.82em var(--mono);overflow-wrap:anywhere} a{color:var(--gold-deep);text-underline-offset:.14em} .back-link{margin:0 0 1rem} .contents{margin:2rem 0 3.5rem} .contents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem} .contents-family{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem} .contents-family h3{font-size:1.05rem;margin:0 0 .35rem} .contents-family ol{margin:.2rem 0;padding-left:2.1rem} .contents-family li{padding:.08rem 0} article.machine{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px} .machine h3{font-size:1.38rem} .entry-number{color:var(--gold-deep);font-weight:normal} .tuple-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start} .machine-tuple{font-size:1.12rem} .typeset-space{display:inline-block;width:.28em;white-space:pre} dl{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem} dt{color:var(--gold-deep)} dd{margin:0} table{border-collapse:collapse;width:100%;font-size:.88rem} .table-scroll{width:100%;overflow:auto} .transitions-scroll{max-height:28rem} th,td{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top} th{background:var(--paper-warm);color:var(--muted);font-weight:normal} .transitions thead th{position:sticky;top:0;z-index:1;background:var(--paper-warm)} .state-map td:first-child{white-space:nowrap} .citation,.none{color:var(--muted);font-size:.9em} .literature-label{font-style:italic} .provenance.observed{color:var(--gold-deep)} .input-contract{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .diagram{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem} .diagram img{display:block;margin:auto;max-width:100%;height:auto} figcaption{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem} .domain-scene img{max-height:34rem} .transition-diagram img{max-height:46rem} .family-composite img{max-width:none;min-width:100%} .family-composite{max-height:72rem} .scene-limit{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem} .typology,.attestation{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .term{color:var(--gold-deep)} .attestation{border-left:3px solid var(--gold)} .atlas{font-size:.84rem;min-width:860px} .numeric{white-space:nowrap;text-align:right} .legend-list{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem} .legend-list dt{font-family:var(--mono)} .swatch{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor} .swatch.conserving{color:var(--ink)} .swatch.deforming{color:var(--rust)} .swatch.neutral{color:var(--muted)} footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem} @media(max-width:850px){.tuple-grid{grid-template-columns:1fr}main{padding:.9rem}article.machine{padding:.75rem}}
 </style>
-<script>window.MathJax={tex:{inlineMath:[["\(","\)"]]}};</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body><main>
 <header class="page-header">
@@ -17,19 +15,19 @@
 <h1>measurement</h1>
 </header>
 <section class="family" id="family-measurement">
-<figure class="diagram family-composite"><img src="../assets/automata/measurement/_composite.svg" width="1480" height="670" loading="lazy" decoding="async" alt="Canonical-action composite for the measurement family"><figcaption>Construction: canonical action sequences merge by common prefix and structurally identical suffix. Branch labels name the kinds taking each branch. This models shared doing under canonical action names; the automata do not literally share states. For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals.</figcaption></figure>
+<figure class="diagram family-composite"><img src="../assets/automata/measurement/_composite.svg" width="1496" height="670" loading="lazy" decoding="async" alt="Canonical-action composite for the measurement family"><figcaption>Construction: canonical action sequences merge by common prefix and structurally identical suffix. Branch labels name the kinds taking each branch. This models shared doing under canonical action names; the automata do not literally share states. For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals.</figcaption></figure>
 
 <article class="machine" id="measurement-change_unit_label_without_scaling">
 <h3><span class="entry-number">1.</span> <code>change_unit_label_without_scaling</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/change_unit_label_without_scaling-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement change_unit_label_without_scaling"><figcaption>The run produced quantity(3,foot); the recorded expected result is quantity(9,foot). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/change_unit_label_without_scaling-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement change_unit_label_without_scaling"><figcaption>The run produced quantity(3,foot); the recorded expected result is quantity(9,foot). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/change_unit_label_without_scaling.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement change_unit_label_without_scaling"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>change_unit_label</code>, <code>omit_iteration_by_factor</code>, <code>preserve_numeral</code>, <code>read_conversion_factor</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>change_unit_label</code>, <code>omit_iteration_by_factor</code>, <code>preserve_numeral</code>, <code>read_conversion_factor</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -45,15 +43,15 @@
 
 <article class="machine" id="measurement-count_marks_not_intervals">
 <h3><span class="entry-number">2.</span> <code>count_marks_not_intervals</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/count_marks_not_intervals-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement count_marks_not_intervals"><figcaption>The run produced length(rational(2,1),inch); the recorded expected result is length(rational(7,4),inch). The scene is derived from the contract run (3 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/count_marks_not_intervals-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement count_marks_not_intervals"><figcaption>The run produced length(rational(2,1),inch); the recorded expected result is length(rational(7,4),inch). The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/count_marks_not_intervals.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement count_marks_not_intervals"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>count_marks_instead_of_spaces</code>, <code>expose_interval_boundary_marks</code>, <code>overcount_by_one_subunit</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>count_marks_instead_of_spaces</code>, <code>expose_interval_boundary_marks</code>, <code>overcount_by_one_subunit</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -69,15 +67,15 @@
 
 <article class="machine" id="measurement-drop_unit_from_measured_quantity_change">
 <h3><span class="entry-number">3.</span> <code>drop_unit_from_measured_quantity_change</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/drop_unit_from_measured_quantity_change-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement drop_unit_from_measured_quantity_change"><figcaption>The run produced 12; the recorded expected result is quantity(12,centimeter). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/drop_unit_from_measured_quantity_change-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement drop_unit_from_measured_quantity_change"><figcaption>The run produced 12; the recorded expected result is quantity(12,centimeter). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/drop_unit_from_measured_quantity_change.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement drop_unit_from_measured_quantity_change"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>discard_measurement_unit</code>, <code>perform_grounded_quantity_change</code>, <code>read_quantity_numerals</code>, <code>report_bare_numeral</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>discard_measurement_unit</code>, <code>perform_grounded_quantity_change</code>, <code>read_quantity_numerals</code>, <code>report_bare_numeral</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -93,15 +91,15 @@
 
 <article class="machine" id="measurement-linear_unit_iteration">
 <h3><span class="entry-number">4.</span> <code>linear_unit_iteration</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/linear_unit_iteration-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement linear_unit_iteration"><figcaption>The run produced length(rational(7,4),inch). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/linear_unit_iteration-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement linear_unit_iteration"><figcaption>The run produced length(rational(7,4),inch). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/linear_unit_iteration.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement linear_unit_iteration"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_length_attribute</code>, <code>establish_unit</code>, <code>iterate_interval_from_zero</code>, <code>partition_unit_into_equal_intervals</code>, <code>read_accumulated_length</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_length_attribute</code>, <code>establish_unit</code>, <code>iterate_interval_from_zero</code>, <code>partition_unit_into_equal_intervals</code>, <code>read_accumulated_length</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -117,15 +115,15 @@
 
 <article class="machine" id="measurement-liquid_volume_count_marks_not_intervals">
 <h3><span class="entry-number">5.</span> <code>liquid_volume_count_marks_not_intervals</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/liquid_volume_count_marks_not_intervals-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement liquid_volume_count_marks_not_intervals"><figcaption>The run produced volume(rational(3,2),liter); the recorded expected result is volume(rational(5,4),liter). The scene is derived from the contract run (3 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/liquid_volume_count_marks_not_intervals-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement liquid_volume_count_marks_not_intervals"><figcaption>The run produced volume(rational(3,2),liter); the recorded expected result is volume(rational(5,4),liter). The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/liquid_volume_count_marks_not_intervals.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement liquid_volume_count_marks_not_intervals"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>count_marks_instead_of_volume_intervals</code>, <code>expose_volume_scale_marks</code>, <code>overcount_liquid_volume_by_one_subunit</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>count_marks_instead_of_volume_intervals</code>, <code>expose_volume_scale_marks</code>, <code>overcount_liquid_volume_by_one_subunit</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -141,15 +139,15 @@
 
 <article class="machine" id="measurement-liquid_volume_scale_reading">
 <h3><span class="entry-number">6.</span> <code>liquid_volume_scale_reading</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/liquid_volume_scale_reading-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement liquid_volume_scale_reading"><figcaption>The run produced volume(rational(5,4),liter). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/liquid_volume_scale_reading-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement liquid_volume_scale_reading"><figcaption>The run produced volume(rational(5,4),liter). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/liquid_volume_scale_reading.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement liquid_volume_scale_reading"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_liquid_volume_attribute</code>, <code>establish_volume_unit</code>, <code>locate_fill_level_after_intervals</code>, <code>partition_volume_scale</code>, <code>read_liquid_volume</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_liquid_volume_attribute</code>, <code>establish_volume_unit</code>, <code>locate_fill_level_after_intervals</code>, <code>partition_volume_scale</code>, <code>read_liquid_volume</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -165,15 +163,15 @@
 
 <article class="machine" id="measurement-unit_conversion_by_iteration">
 <h3><span class="entry-number">7.</span> <code>unit_conversion_by_iteration</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/unit_conversion_by_iteration-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement unit_conversion_by_iteration"><figcaption>The run produced quantity(9,foot). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/unit_conversion_by_iteration-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement unit_conversion_by_iteration"><figcaption>The run produced quantity(9,foot). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/unit_conversion_by_iteration.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement unit_conversion_by_iteration"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_equivalence</code>, <code>iterate_conversion_group</code>, <code>multiply_unit_count</code>, <code>relabel_as_smaller_unit</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_equivalence</code>, <code>iterate_conversion_group</code>, <code>multiply_unit_count</code>, <code>relabel_as_smaller_unit</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -189,15 +187,15 @@
 
 <article class="machine" id="measurement-unit_preserving_measured_quantity_change">
 <h3><span class="entry-number">8.</span> <code>unit_preserving_measured_quantity_change</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/measurement/unit_preserving_measured_quantity_change-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement unit_preserving_measured_quantity_change"><figcaption>The run produced quantity(12,centimeter). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/measurement/unit_preserving_measured_quantity_change-scene.svg" width="760" height="360" loading="lazy" decoding="async" alt="Executed domain scene for measurement unit_preserving_measured_quantity_change"><figcaption>The run produced quantity(12,centimeter). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/measurement/unit_preserving_measured_quantity_change.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for measurement unit_preserving_measured_quantity_change"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_common_measurement_unit</code>, <code>perform_grounded_quantity_change</code>, <code>report_unit_bearing_result</code>, <code>retain_measurement_unit</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_common_measurement_unit</code>, <code>perform_grounded_quantity_change</code>, <code>report_unit_bearing_result</code>, <code>retain_measurement_unit</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>

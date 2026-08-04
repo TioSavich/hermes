@@ -104,6 +104,20 @@ def svg_text(x: float, y: float, value: object, color: str, size: float = 13, an
     )
 
 
+def estimated_text_width(value: object, size: float) -> float:
+    """Estimate monospace text width using the factor used by label boxes."""
+    return len(str(value)) * size * 0.66
+
+
+def text_right_edge(x: float, value: object, size: float, anchor: str = "middle") -> float:
+    width = estimated_text_width(value, size)
+    if anchor == "start":
+        return x + width
+    if anchor == "end":
+        return x
+    return x + width / 2
+
+
 def execution_harness(probes: list[tuple[str, str, str, str]]) -> str:
     facts = "\n".join(
         f"probe({family}, {kind}, {left}, {right})." for family, kind, left, right in probes
@@ -348,7 +362,9 @@ def draw_place_value(
     cell_w, cell_h = 92, 52
     x0, y0 = 150, 70
     width = max(700, x0 + ncols * cell_w + 80)
-    height = 300 + max(0, len(rows) - 3) * cell_h
+    chart_max_y = y0 + (len(rows) + 1) * cell_h
+    caption_y = chart_max_y + 36
+    height = int(caption_y + 28)
     body = [svg_text(x0 - 28, 32, machine.kind, colors["ink"], 12, "start", "bold")]
     for i, column in enumerate(columns):
         x = x0 + i * cell_w
@@ -369,7 +385,7 @@ def draw_place_value(
         index = ncols - 1 - place
         x = x0 + index * cell_w + cell_w / 2
         body.append(svg_text(x, y0 - 12, carry.get("label", "carry"), colors["gold"], 10))
-    body.append(svg_text(36, height - 28, note, colors["rust"] if deformed else colors["muted"], 12, "start"))
+    body.append(svg_text(36, caption_y, note, colors["rust"] if deformed else colors["muted"], 12, "start"))
     return svg_document(f"Domain scene for {machine.family}/{machine.kind}", note, width, height, body, colors), note
 
 
@@ -955,17 +971,18 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
     node_kinds[0].update(kind_order)
     row_gap = 74.0
     top = 76.0
-    width = max(1080, 230 + max_layer * 250)
+    layout_width = max(1080, 230 + max_layer * 250)
     height = max(390, int(top * 2 + max(1, len(kind_order) - 1) * row_gap))
     positions = {}
     for node in nodes:
         ranks = [kind_order[kind] for kind in node_kinds[node] if kind in kind_order]
         average_rank = sum(ranks) / len(ranks) if ranks else 0.0
-        x = 82 + depth.get(node, 0) * ((width - 164) / max(1, max_layer))
+        x = 82 + depth.get(node, 0) * ((layout_width - 164) / max(1, max_layer))
         y = top + average_rank * row_gap
         positions[node] = (x, y)
     outdegree = Counter(int(edge["source"]) for edge in edges)
     stance_colors = {"conserving": colors["ink"], "deforming": colors["rust"], "neutral": colors["muted"]}
+    right_extents = [x + 16 for x, _y in positions.values()]
     body = ["  <defs>"]
     for stance, color in stance_colors.items():
         body.append(f'    <marker id="composite-{stance}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="{color}"/></marker>')
@@ -985,8 +1002,12 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
         # Put labels at the destination lane, not halfway through a fan-out.
         # This keeps the authored kind names separated at large branch points.
         label_y = y2
-        label_width = min(164, max(64, max(len(line) for line in action_lines) * 5.6 + 12))
+        label_width = min(
+            164,
+            max(64, max(estimated_text_width(line, 8.5) for line in action_lines) + 12),
+        )
         label_height = len(action_lines) * 10 + 8
+        right_extents.append(mx + label_width / 2)
         body.append(
             f'  <rect x="{mx-label_width/2:.1f}" y="{label_y-label_height/2:.1f}" '
             f'width="{label_width:.1f}" height="{label_height:.1f}" rx="4" fill="{colors["paper"]}" '
@@ -995,6 +1016,7 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
         first_y = label_y - (len(action_lines) - 1) * 5 + 3
         for i, line in enumerate(action_lines):
             body.append(svg_text(mx, first_y + i * 10, line, color, 8.5))
+            right_extents.append(text_right_edge(mx, line, 8.5))
         if outdegree[source] > 1:
             kind_lines = []
             current = ""
@@ -1008,12 +1030,16 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
                 kind_lines.append(current)
             for i, line in enumerate(kind_lines):
                 body.append(svg_text(mx, label_y + label_height / 2 + 10 + i * 9, line, colors["muted"], 7.2))
+                right_extents.append(text_right_edge(mx, line, 7.2))
     for node, (x, y) in sorted(positions.items()):
         terminal = bool(nodes[node].get("terminal"))
         body.append(f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="16" fill="{colors["surface"]}" stroke="{colors["ink"]}" stroke-width="2"/>')
         if terminal:
             body.append(f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="11" fill="none" stroke="{colors["ink"]}" stroke-width="1.2"/>')
-        body.append(svg_text(x, y + 3, "start" if node == 0 else f"s{node}", colors["ink"], 8))
+        node_label = "start" if node == 0 else f"s{node}"
+        body.append(svg_text(x, y + 3, node_label, colors["ink"], 8))
+        right_extents.append(text_right_edge(x, node_label, 8))
+    width = math.ceil(max(right_extents, default=layout_width) + 82)
     desc = (
         f"{family} composite made by a prefix trie with structurally identical suffixes merged. "
         "Edges use canonical action names; branch labels name the kinds taking each branch."

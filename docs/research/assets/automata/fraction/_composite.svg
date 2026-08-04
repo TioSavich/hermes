@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2480" height="2520" viewBox="0 0 2480 2520" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2496" height="2520" viewBox="0 0 2496 2520" role="img" aria-labelledby="title desc">
   <title id="title">fraction family composite</title>
   <desc id="desc">fraction composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -25,29 +25,29 @@
   <text x="208.7" y="1070.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_fraction_comparison</text>
   <text x="208.7" y="1079.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_subset_size_focus</text>
   <path d="M 100.0 1260.0 C 208.7 1260.0, 208.7 1482.0, 317.3 1482.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: clear_inner_referent, recursive_partition, splitting</title></path>
-  <rect x="163.5" y="1468.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="163.4" y="1468.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.7" y="1480.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="208.7" y="1490.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="208.7" y="1506.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">clear_inner_referent</text>
   <text x="208.7" y="1515.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_partition, splitting</text>
   <path d="M 100.0 1260.0 C 208.7 1260.0, 208.7 1038.0, 317.3 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="169.1" y="1024.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="169.0" y="1024.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.7" y="1036.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="208.7" y="1046.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="208.7" y="1062.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">cross_multiplication_rule_from_pattern</text>
   <path d="M 100.0 1260.0 C 208.7 1260.0, 208.7 1741.0, 317.3 1741.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: iterate_only_no_reverse, measurement_division, reversible_measurement_division, solve_for_unit</title></path>
-  <rect x="160.7" y="1732.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="160.6" y="1732.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.7" y="1744.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
   <text x="208.7" y="1760.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">iterate_only_no_reverse</text>
   <text x="208.7" y="1769.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">measurement_division</text>
   <text x="208.7" y="1778.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reversible_measurement_division</text>
   <text x="208.7" y="1787.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">solve_for_unit</text>
   <path d="M 100.0 1260.0 C 208.7 1260.0, 208.7 1112.0, 317.3 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>retrieve_known_fact: cross_multiplication_rule_without_ground</title></path>
-  <rect x="149.5" y="1103.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="149.4" y="1103.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.7" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retrieve_known_fact</text>
   <text x="208.7" y="1131.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">cross_multiplication_rule_without_ground</text>
   <path d="M 100.0 1260.0 C 208.7 1260.0, 208.7 1704.0, 317.3 1704.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>unitize_referent: area_model_part_of_part, improper_fraction_chain_loss, improper_fraction_iteration, iterate_given_overshoot, unit_fraction_denominator_product_rule, unit_fraction_iteration, unit_fraction_partition, whole_number_grab</title></path>
-  <rect x="157.9" y="1695.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="157.8" y="1695.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.7" y="1707.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unitize_referent</text>
   <text x="208.7" y="1723.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_part_of_part</text>
   <text x="208.7" y="1732.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">improper_fraction_chain_loss</text>
@@ -58,247 +58,247 @@
   <text x="208.7" y="1777.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_partition</text>
   <text x="208.7" y="1786.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">whole_number_grab</text>
   <path d="M 100.0 1260.0 C 208.7 1260.0, 208.7 668.0, 317.3 668.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: co_denominator_count_on_from_larger, co_denominator_make_base_transfer, co_denominator_make_ten_split_leftover</title></path>
-  <rect x="157.9" y="659.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="157.8" y="659.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.7" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <text x="208.7" y="687.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">co_denominator_count_on_from_larger</text>
   <text x="208.7" y="696.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">co_denominator_make_base_transfer</text>
   <text x="208.7" y="705.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">co_denominator_make_ten_split_leftover</text>
   <path d="M 2158.7 952.6 C 2267.3 952.6, 2267.3 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>emit_result: add_numerator_denominator_comparison, add_numerator_denominator_sum, area_model_fraction_comparison, area_model_unequal_partition_piece_count, benchmark_fraction_comparison, common_denominator_fraction_addition, common_denominator_fraction_subtraction, common_unit_fraction_comparison, gap_thinking_fraction_comparison, number_line_count_marks_not_intervals, number_line_fraction_comparison, set_model_fraction_comparison, set_model_subset_size_focus</title></path>
-  <rect x="2230.5" y="1251.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="2230.5" y="1251.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2267.3" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">emit_result</text>
   <path d="M 1901.3 372.0 C 2010.0 372.0, 2010.0 952.6, 2118.7 952.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: area_model_unequal_partition_piece_count</title></path>
-  <rect x="1959.2" y="938.6" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1959.1" y="938.6" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2010.0" y="950.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
   <text x="2010.0" y="960.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
   <path d="M 1644.0 372.0 C 1752.7 372.0, 1752.7 372.0, 1861.3 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: area_model_unequal_partition_piece_count</title></path>
-  <rect x="1715.9" y="363.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1715.8" y="363.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 1386.7 372.0 C 1495.3 372.0, 1495.3 372.0, 1604.0 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: area_model_unequal_partition_piece_count</title></path>
-  <rect x="1441.7" y="358.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1441.6" y="358.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="1495.3" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
   <path d="M 1129.3 372.0 C 1238.0 372.0, 1238.0 372.0, 1346.7 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: area_model_unequal_partition_piece_count</title></path>
-  <rect x="1187.2" y="358.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1187.1" y="358.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
   <text x="1238.0" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
   <path d="M 872.0 372.0 C 980.7 372.0, 980.7 372.0, 1089.3 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: area_model_unequal_partition_piece_count</title></path>
-  <rect x="918.7" y="363.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="918.6" y="363.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <path d="M 614.7 372.0 C 723.3 372.0, 723.3 372.0, 832.0 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: area_model_unequal_partition_piece_count</title></path>
-  <rect x="661.3" y="363.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="661.2" y="363.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <path d="M 1901.3 1274.8 C 2010.0 1274.8, 2010.0 952.6, 2118.7 952.6" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: add_numerator_denominator_comparison, common_unit_fraction_comparison, number_line_count_marks_not_intervals, number_line_fraction_comparison, set_model_subset_size_focus</title></path>
-  <rect x="1953.6" y="943.6" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1953.5" y="943.6" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2010.0" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
   <path d="M 1386.7 1432.7 C 1624.0 1432.7, 1624.0 1274.8, 1861.3 1274.8" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: common_unit_fraction_comparison, number_line_count_marks_not_intervals, number_line_fraction_comparison</title></path>
-  <rect x="1562.0" y="1265.8" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1561.9" y="1265.8" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1624.0" y="1277.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <path d="M 872.0 964.0 C 1109.3 964.0, 1109.3 1432.7, 1346.7 1432.7" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>re_express_equivalently: common_unit_fraction_comparison</title></path>
-  <rect x="1069.7" y="1418.7" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1069.7" y="1418.7" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1109.3" y="1430.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="1109.3" y="1440.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
   <path d="M 614.7 964.0 C 723.3 964.0, 723.3 964.0, 832.0 964.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>re_express_equivalently: common_unit_fraction_comparison</title></path>
-  <rect x="683.7" y="950.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="683.7" y="950.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="723.3" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
   <path d="M 1386.7 446.0 C 1752.7 446.0, 1752.7 952.6, 2118.7 952.6" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_residuals: benchmark_fraction_comparison</title></path>
-  <rect x="1699.1" y="943.6" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1699.0" y="943.6" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_residuals</text>
   <path d="M 1129.3 446.0 C 1624.0 446.0, 1624.0 952.6, 2118.7 952.6" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_residuals: benchmark_fraction_comparison</title></path>
-  <rect x="1570.4" y="943.6" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1570.3" y="943.6" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1624.0" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_residuals</text>
   <text x="1624.0" y="971.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">benchmark_fraction_comparison</text>
   <path d="M 1129.3 446.0 C 1238.0 446.0, 1238.0 446.0, 1346.7 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>judge_against_benchmark: benchmark_fraction_comparison</title></path>
-  <rect x="1195.6" y="432.0" width="84.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1195.5" y="432.0" width="84.9" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">judge_against</text>
   <text x="1238.0" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">benchmark</text>
   <text x="1238.0" y="470.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">benchmark_fraction_comparison</text>
   <path d="M 872.0 446.0 C 980.7 446.0, 980.7 446.0, 1089.3 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>judge_against_benchmark: benchmark_fraction_comparison</title></path>
-  <rect x="938.3" y="432.0" width="84.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="938.2" y="432.0" width="84.9" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">judge_against</text>
   <text x="980.7" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">benchmark</text>
   <path d="M 1901.3 1186.0 C 2138.7 1186.0, 2138.7 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>emit_result: gap_thinking_fraction_comparison</title></path>
-  <rect x="2101.9" y="1251.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="2101.8" y="1251.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2138.7" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">emit_result</text>
   <text x="2138.7" y="1279.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">gap_thinking_fraction_comparison</text>
   <path d="M 1901.3 1186.0 C 2010.0 1186.0, 2010.0 952.6, 2118.7 952.6" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_viability: gap_thinking_fraction_comparison</title></path>
-  <rect x="1959.2" y="943.6" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1959.1" y="943.6" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2010.0" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_viability</text>
   <text x="2010.0" y="971.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">gap_thinking_fraction_comparison</text>
   <path d="M 1644.0 1186.0 C 1752.7 1186.0, 1752.7 1186.0, 1861.3 1186.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_residuals: gap_thinking_fraction_comparison</title></path>
-  <rect x="1699.1" y="1177.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1699.0" y="1177.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1189.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_residuals</text>
   <path d="M 1386.7 1186.0 C 1495.3 1186.0, 1495.3 1186.0, 1604.0 1186.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: gap_thinking_fraction_comparison</title></path>
-  <rect x="1438.9" y="1177.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1438.8" y="1177.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1189.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1129.3 1186.0 C 1238.0 1186.0, 1238.0 1186.0, 1346.7 1186.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_additive_gaps: gap_thinking_fraction_comparison</title></path>
-  <rect x="1187.2" y="1172.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1187.1" y="1172.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="1184.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_additive</text>
   <text x="1238.0" y="1194.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">gaps</text>
   <path d="M 872.0 1186.0 C 980.7 1186.0, 980.7 1186.0, 1089.3 1186.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_additive_for_multiplicative: gap_thinking_fraction_comparison</title></path>
-  <rect x="921.5" y="1172.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="921.4" y="1172.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1184.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_additive</text>
   <text x="980.7" y="1194.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_multiplicative</text>
   <path d="M 614.7 816.0 C 723.3 816.0, 723.3 446.0, 832.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>judge_against_benchmark: benchmark_fraction_comparison</title></path>
-  <rect x="680.9" y="432.0" width="84.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="680.9" y="432.0" width="84.9" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">judge_against</text>
   <text x="723.3" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">benchmark</text>
   <text x="723.3" y="470.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">benchmark_fraction_comparison</text>
   <path d="M 614.7 816.0 C 723.3 816.0, 723.3 1186.0, 832.0 1186.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_additive_for_multiplicative: gap_thinking_fraction_comparison</title></path>
-  <rect x="664.1" y="1172.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="664.0" y="1172.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1184.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_additive</text>
   <text x="723.3" y="1194.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_multiplicative</text>
   <text x="723.3" y="1210.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">gap_thinking_fraction_comparison</text>
   <path d="M 872.0 76.0 C 1366.7 76.0, 1366.7 1274.8, 1861.3 1274.8" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: add_numerator_denominator_comparison</title></path>
-  <rect x="1310.3" y="1265.8" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1310.2" y="1265.8" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1366.7" y="1277.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 614.7 76.0 C 723.3 76.0, 723.3 76.0, 832.0 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: add_numerator_denominator_comparison</title></path>
-  <rect x="666.9" y="67.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="666.8" y="67.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
   <path d="M 1644.0 853.0 C 1881.3 853.0, 1881.3 952.6, 2118.7 952.6" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: common_denominator_fraction_addition</title></path>
-  <rect x="1824.9" y="943.6" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1824.8" y="943.6" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1881.3" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
   <text x="1881.3" y="971.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_denominator_fraction_addition</text>
   <path d="M 1644.0 853.0 C 1881.3 853.0, 1881.3 952.6, 2118.7 952.6" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: common_denominator_fraction_subtraction</title></path>
-  <rect x="1833.3" y="943.6" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1833.3" y="943.6" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1881.3" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <text x="1881.3" y="971.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_denominator_fraction_subtraction</text>
   <path d="M 1386.7 853.0 C 1495.3 853.0, 1495.3 853.0, 1604.0 853.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: common_denominator_fraction_addition, common_denominator_fraction_subtraction</title></path>
-  <rect x="1433.3" y="844.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1433.2" y="844.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="856.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <path d="M 1129.3 853.0 C 1238.0 853.0, 1238.0 853.0, 1346.7 853.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>re_express_equivalently: common_denominator_fraction_addition, common_denominator_fraction_subtraction</title></path>
-  <rect x="1198.4" y="839.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1198.3" y="839.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="851.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="1238.0" y="861.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
   <path d="M 872.0 853.0 C 980.7 853.0, 980.7 853.0, 1089.3 853.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>re_express_equivalently: common_denominator_fraction_addition, common_denominator_fraction_subtraction</title></path>
-  <rect x="941.1" y="839.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="941.0" y="839.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="851.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="980.7" y="861.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
   <path d="M 1644.0 150.0 C 1881.3 150.0, 1881.3 952.6, 2118.7 952.6" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_viability: add_numerator_denominator_sum</title></path>
-  <rect x="1830.5" y="943.6" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1830.5" y="943.6" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1881.3" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_viability</text>
   <path d="M 1386.7 150.0 C 1495.3 150.0, 1495.3 150.0, 1604.0 150.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: add_numerator_denominator_sum</title></path>
-  <rect x="1444.5" y="141.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1444.5" y="141.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <path d="M 1129.3 150.0 C 1238.0 150.0, 1238.0 150.0, 1346.7 150.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: add_numerator_denominator_sum</title></path>
-  <rect x="1181.6" y="141.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1181.5" y="141.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 872.0 150.0 C 980.7 150.0, 980.7 150.0, 1089.3 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: add_numerator_denominator_sum</title></path>
-  <rect x="924.3" y="141.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="924.2" y="141.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
   <path d="M 614.7 618.7 C 723.3 618.7, 723.3 853.0, 832.0 853.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: common_denominator_fraction_addition, common_denominator_fraction_subtraction</title></path>
-  <rect x="661.3" y="844.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="661.2" y="844.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="856.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <text x="723.3" y="872.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_denominator_fraction_addition</text>
   <text x="723.3" y="881.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_denominator_fraction_subtraction</text>
   <path d="M 614.7 618.7 C 723.3 618.7, 723.3 150.0, 832.0 150.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: add_numerator_denominator_sum</title></path>
-  <rect x="666.9" y="141.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="666.8" y="141.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="723.3" y="169.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_numerator_denominator_sum</text>
   <path d="M 1129.3 964.0 C 1495.3 964.0, 1495.3 1274.8, 1861.3 1274.8" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: common_unit_fraction_comparison</title></path>
-  <rect x="1455.7" y="1260.8" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1455.7" y="1260.8" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1272.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="1495.3" y="1282.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <path d="M 872.0 964.0 C 980.7 964.0, 980.7 964.0, 1089.3 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>retain_unchanged: common_unit_fraction_comparison</title></path>
-  <rect x="929.9" y="955.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="929.8" y="955.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retain_unchanged</text>
   <path d="M 614.7 964.0 C 723.3 964.0, 723.3 964.0, 832.0 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>retain_unchanged: common_unit_fraction_comparison</title></path>
-  <rect x="672.5" y="955.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="672.5" y="955.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retain_unchanged</text>
   <path d="M 1644.0 2000.0 C 1752.7 2000.0, 1752.7 1274.8, 1861.3 1274.8" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: set_model_subset_size_focus</title></path>
-  <rect x="1701.9" y="1260.8" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1701.8" y="1260.8" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1272.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
   <text x="1752.7" y="1282.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
   <path d="M 1386.7 2000.0 C 1495.3 2000.0, 1495.3 2000.0, 1604.0 2000.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: set_model_subset_size_focus</title></path>
-  <rect x="1444.5" y="1986.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1444.5" y="1986.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1998.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
   <text x="1495.3" y="2008.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
   <path d="M 1129.3 2000.0 C 1238.0 2000.0, 1238.0 2000.0, 1346.7 2000.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>conflate_roles: set_model_subset_size_focus</title></path>
-  <rect x="1192.8" y="1991.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1192.7" y="1991.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="2003.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
   <path d="M 872.0 2000.0 C 980.7 2000.0, 980.7 2000.0, 1089.3 2000.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: set_model_subset_size_focus</title></path>
-  <rect x="924.3" y="1991.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="924.2" y="1991.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="2003.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1129.3 1667.0 C 1238.0 1667.0, 1238.0 1432.7, 1346.7 1432.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: number_line_count_marks_not_intervals, number_line_fraction_comparison</title></path>
-  <rect x="1190.0" y="1423.7" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1189.9" y="1423.7" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="1435.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
   <path d="M 872.0 1667.0 C 980.7 1667.0, 980.7 1667.0, 1089.3 1667.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: number_line_fraction_comparison</title></path>
-  <rect x="941.1" y="1658.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="941.0" y="1658.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1670.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <text x="980.7" y="1686.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">number_line_fraction_comparison</text>
   <path d="M 872.0 1667.0 C 980.7 1667.0, 980.7 1667.0, 1089.3 1667.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: number_line_count_marks_not_intervals</title></path>
-  <rect x="929.9" y="1653.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="929.8" y="1653.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1665.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
   <text x="980.7" y="1675.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
   <text x="980.7" y="1691.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">number_line_count_marks_not_intervals</text>
   <path d="M 1644.0 1075.0 C 1881.3 1075.0, 1881.3 952.6, 2118.7 952.6" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: area_model_fraction_comparison, set_model_fraction_comparison</title></path>
-  <rect x="1819.3" y="943.6" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1819.2" y="943.6" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1881.3" y="955.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <path d="M 1386.7 1926.0 C 1495.3 1926.0, 1495.3 1075.0, 1604.0 1075.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>disembed_part: set_model_fraction_comparison</title></path>
-  <rect x="1452.9" y="1066.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1452.9" y="1066.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1078.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">disembed_part</text>
   <path d="M 1386.7 224.0 C 1495.3 224.0, 1495.3 1075.0, 1604.0 1075.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: area_model_fraction_comparison</title></path>
-  <rect x="1455.7" y="1066.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1455.7" y="1066.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1078.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <path d="M 1129.3 1075.0 C 1238.0 1075.0, 1238.0 1926.0, 1346.7 1926.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: set_model_fraction_comparison</title></path>
-  <rect x="1201.2" y="1917.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1201.1" y="1917.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="1929.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <text x="1238.0" y="1945.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_fraction_comparison</text>
   <path d="M 1129.3 1075.0 C 1238.0 1075.0, 1238.0 224.0, 1346.7 224.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>disembed_part: area_model_fraction_comparison</title></path>
-  <rect x="1195.6" y="215.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1195.5" y="215.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">disembed_part</text>
   <text x="1238.0" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_fraction_comparison</text>
   <path d="M 872.0 1075.0 C 980.7 1075.0, 980.7 1075.0, 1089.3 1075.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: area_model_fraction_comparison, set_model_fraction_comparison</title></path>
-  <rect x="935.5" y="1061.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="935.4" y="1061.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1073.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="980.7" y="1083.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <path d="M 614.7 1496.8 C 723.3 1496.8, 723.3 2000.0, 832.0 2000.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: set_model_subset_size_focus</title></path>
-  <rect x="661.3" y="1991.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="661.2" y="1991.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="2003.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <text x="723.3" y="2019.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_subset_size_focus</text>
   <path d="M 614.7 1496.8 C 723.3 1496.8, 723.3 1667.0, 832.0 1667.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: number_line_count_marks_not_intervals, number_line_fraction_comparison</title></path>
-  <rect x="678.1" y="1653.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="678.1" y="1653.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1665.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="723.3" y="1675.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="723.3" y="1691.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">number_line_count_marks_not_intervals</text>
   <text x="723.3" y="1700.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">number_line_fraction_comparison</text>
   <path d="M 614.7 1496.8 C 723.3 1496.8, 723.3 1075.0, 832.0 1075.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: area_model_fraction_comparison, set_model_fraction_comparison</title></path>
-  <rect x="672.5" y="1066.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="672.5" y="1066.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1078.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <text x="723.3" y="1094.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_fraction_comparison</text>
   <text x="723.3" y="1103.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_fraction_comparison</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 372.0, 574.7 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: area_model_unequal_partition_piece_count</title></path>
-  <rect x="404.0" y="363.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="403.9" y="363.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <text x="466.0" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_unequal_partition_piece_count</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 964.0, 574.7 964.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: common_unit_fraction_comparison</title></path>
-  <rect x="404.0" y="955.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="403.9" y="955.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <text x="466.0" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_unit_fraction_comparison</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 816.0, 574.7 816.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>establish_reference_frame: benchmark_fraction_comparison, gap_thinking_fraction_comparison</title></path>
-  <rect x="406.8" y="802.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="406.7" y="802.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="814.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">establish_reference</text>
   <text x="466.0" y="824.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">frame</text>
   <text x="466.0" y="840.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">benchmark_fraction_comparison</text>
   <text x="466.0" y="849.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">gap_thinking_fraction_comparison</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 76.0, 574.7 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: add_numerator_denominator_comparison</title></path>
-  <rect x="409.6" y="67.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="409.5" y="67.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="466.0" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_numerator_denominator_comparison</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 618.7, 574.7 618.7" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>re_express_equivalently: add_numerator_denominator_sum, common_denominator_fraction_addition, common_denominator_fraction_subtraction</title></path>
-  <rect x="426.4" y="604.7" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.3" y="604.7" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="616.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="466.0" y="626.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
   <text x="466.0" y="642.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">add_numerator_denominator_sum</text>
   <text x="466.0" y="651.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_denominator_fraction_addition</text>
   <text x="466.0" y="660.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_denominator_fraction_subtraction</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 964.0, 574.7 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: common_unit_fraction_comparison</title></path>
-  <rect x="426.4" y="950.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.3" y="950.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="466.0" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="466.0" y="988.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">common_unit_fraction_comparison</text>
   <path d="M 357.3 952.6 C 466.0 952.6, 466.0 1496.8, 574.7 1496.8" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>unitize_referent: area_model_fraction_comparison, number_line_count_marks_not_intervals, number_line_fraction_comparison, set_model_fraction_comparison, set_model_subset_size_focus</title></path>
-  <rect x="415.2" y="1487.8" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="415.1" y="1487.8" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1499.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unitize_referent</text>
   <text x="466.0" y="1515.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_fraction_comparison</text>
   <text x="466.0" y="1524.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">number_line_count_marks_not_intervals</text>
@@ -306,260 +306,260 @@
   <text x="466.0" y="1542.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_fraction_comparison</text>
   <text x="466.0" y="1551.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">set_model_subset_size_focus</text>
   <path d="M 1901.3 1827.3 C 2138.7 1827.3, 2138.7 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>receive_kernel_outcome: improper_fraction_chain_loss, improper_fraction_iteration, recursive_partition, solve_for_unit, splitting, unit_fraction_partition</title></path>
-  <rect x="2093.5" y="1246.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="2093.4" y="1246.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2138.7" y="1258.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">receive_kernel</text>
   <text x="2138.7" y="1268.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">outcome</text>
   <path d="M 1644.0 2148.0 C 1752.7 2148.0, 1752.7 1827.3, 1861.3 1827.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>receive_kernel_outcome: splitting</title></path>
-  <rect x="1707.5" y="1813.3" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1707.4" y="1813.3" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1825.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">receive_kernel</text>
   <text x="1752.7" y="1835.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">outcome</text>
   <path d="M 1386.7 2148.0 C 1495.3 2148.0, 1495.3 2148.0, 1604.0 2148.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>attach_units_coordination: splitting</title></path>
-  <rect x="1455.7" y="2134.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1455.7" y="2134.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="2146.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">attach_units</text>
   <text x="1495.3" y="2156.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">coordination</text>
   <path d="M 1129.3 2148.0 C 1238.0 2148.0, 1238.0 2148.0, 1346.7 2148.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>recompose_total: splitting</title></path>
-  <rect x="1190.0" y="2139.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1189.9" y="2139.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="2151.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">recompose_total</text>
   <path d="M 872.0 2148.0 C 980.7 2148.0, 980.7 2148.0, 1089.3 2148.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: splitting</title></path>
-  <rect x="929.9" y="2139.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="929.8" y="2139.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="2151.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <path d="M 1386.7 2074.0 C 1624.0 2074.0, 1624.0 1827.3, 1861.3 1827.3" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: recursive_partition, solve_for_unit, unit_fraction_partition</title></path>
-  <rect x="1573.2" y="1818.3" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1573.1" y="1818.3" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1624.0" y="1830.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <path d="M 872.0 1778.0 C 1109.3 1778.0, 1109.3 2074.0, 1346.7 2074.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: recursive_partition</title></path>
-  <rect x="1072.5" y="2065.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1072.5" y="2065.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1109.3" y="2077.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 614.7 1963.0 C 723.3 1963.0, 723.3 2148.0, 832.0 2148.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: splitting</title></path>
-  <rect x="683.7" y="2139.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="683.7" y="2139.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="2151.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <text x="723.3" y="2167.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">splitting</text>
   <path d="M 614.7 1963.0 C 723.3 1963.0, 723.3 1778.0, 832.0 1778.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: recursive_partition</title></path>
-  <rect x="678.1" y="1764.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="678.1" y="1764.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1776.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="723.3" y="1786.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="723.3" y="1802.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_partition</text>
   <path d="M 1129.3 1463.5 C 1752.7 1463.5, 1752.7 1260.0, 2376.0 1260.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: clear_inner_referent, iterate_given_overshoot, iterate_only_no_reverse, whole_number_grab</title></path>
-  <rect x="1715.9" y="1251.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1715.8" y="1251.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 872.0 520.0 C 980.7 520.0, 980.7 1463.5, 1089.3 1463.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: clear_inner_referent</title></path>
-  <rect x="924.3" y="1454.5" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="924.2" y="1454.5" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1466.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 614.7 520.0 C 723.3 520.0, 723.3 520.0, 832.0 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: clear_inner_referent</title></path>
-  <rect x="686.5" y="511.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="686.5" y="511.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 357.3 1482.0 C 466.0 1482.0, 466.0 1963.0, 574.7 1963.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>disembed_part: recursive_partition, splitting</title></path>
-  <rect x="423.6" y="1954.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="423.5" y="1954.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1966.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">disembed_part</text>
   <text x="466.0" y="1982.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_partition, splitting</text>
   <path d="M 357.3 1482.0 C 466.0 1482.0, 466.0 520.0, 574.7 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: clear_inner_referent</title></path>
-  <rect x="420.8" y="506.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="420.7" y="506.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="466.0" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="466.0" y="544.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">clear_inner_referent</text>
   <path d="M 1901.3 1038.0 C 2138.7 1038.0, 2138.7 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="2099.1" y="1251.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="2099.0" y="1251.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2138.7" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <path d="M 1644.0 1038.0 C 1752.7 1038.0, 1752.7 1038.0, 1861.3 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="1713.1" y="1029.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1713.0" y="1029.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <path d="M 1386.7 1038.0 C 1495.3 1038.0, 1495.3 1038.0, 1604.0 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>dispatch_to_kernel: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="1438.9" y="1029.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1438.8" y="1029.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">dispatch_to_kernel</text>
   <path d="M 1129.3 1038.0 C 1238.0 1038.0, 1238.0 1038.0, 1346.7 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="1201.2" y="1029.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1201.1" y="1029.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 872.0 1038.0 C 980.7 1038.0, 980.7 1038.0, 1089.3 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="932.7" y="1029.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="932.6" y="1029.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 614.7 1038.0 C 723.3 1038.0, 723.3 1038.0, 832.0 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="675.3" y="1029.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="675.3" y="1029.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 357.3 1038.0 C 466.0 1038.0, 466.0 1038.0, 574.7 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>apply_stored_rule: cross_multiplication_rule_from_pattern</title></path>
-  <rect x="412.4" y="1029.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="412.3" y="1029.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">apply_stored_rule</text>
   <path d="M 1901.3 1235.3 C 2138.7 1235.3, 2138.7 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: area_model_part_of_part, measurement_division, reversible_measurement_division</title></path>
-  <rect x="2101.9" y="1251.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="2101.8" y="1251.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2138.7" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 872.0 1556.0 C 1366.7 1556.0, 1366.7 1235.3, 1861.3 1235.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: measurement_division</title></path>
-  <rect x="1329.9" y="1226.3" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1329.8" y="1226.3" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1366.7" y="1238.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 614.7 1556.0 C 723.3 1556.0, 723.3 1556.0, 832.0 1556.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>measure_out_group_size: measurement_division</title></path>
-  <rect x="669.7" y="1542.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.6" y="1542.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1554.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">measure_out_group</text>
   <text x="723.3" y="1564.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">size</text>
   <path d="M 1129.3 2074.0 C 1238.0 2074.0, 1238.0 2074.0, 1346.7 2074.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>isolate_unknown: solve_for_unit</title></path>
-  <rect x="1190.0" y="2065.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1189.9" y="2065.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="2077.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">isolate_unknown</text>
   <path d="M 872.0 2074.0 C 980.7 2074.0, 980.7 2074.0, 1089.3 2074.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: solve_for_unit</title></path>
-  <rect x="941.1" y="2065.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="941.0" y="2065.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="2077.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <path d="M 614.7 2074.0 C 723.3 2074.0, 723.3 2074.0, 832.0 2074.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: solve_for_unit</title></path>
-  <rect x="678.1" y="2060.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="678.1" y="2060.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="2072.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="723.3" y="2082.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <path d="M 872.0 1482.0 C 980.7 1482.0, 980.7 1463.5, 1089.3 1463.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>exhaust_resource: iterate_only_no_reverse</title></path>
-  <rect x="929.9" y="1454.5" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="929.8" y="1454.5" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1466.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">exhaust_resource</text>
   <path d="M 614.7 1482.0 C 723.3 1482.0, 723.3 1482.0, 832.0 1482.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: iterate_only_no_reverse</title></path>
-  <rect x="666.9" y="1473.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="666.8" y="1473.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 872.0 1852.0 C 1366.7 1852.0, 1366.7 1235.3, 1861.3 1235.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>replicate_equal_groups: reversible_measurement_division</title></path>
-  <rect x="1318.7" y="1221.3" width="96.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1318.6" y="1221.3" width="96.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1366.7" y="1233.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">replicate_equal</text>
   <text x="1366.7" y="1243.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">groups</text>
   <path d="M 614.7 1852.0 C 723.3 1852.0, 723.3 1852.0, 832.0 1852.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>measure_quantity: reversible_measurement_division</title></path>
-  <rect x="672.5" y="1843.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="672.5" y="1843.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1855.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">measure_quantity</text>
   <path d="M 357.3 1741.0 C 466.0 1741.0, 466.0 1556.0, 574.7 1556.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: measurement_division</title></path>
-  <rect x="404.0" y="1547.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="403.9" y="1547.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1559.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <text x="466.0" y="1575.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">measurement_division</text>
   <path d="M 357.3 1741.0 C 466.0 1741.0, 466.0 2074.0, 574.7 2074.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: solve_for_unit</title></path>
-  <rect x="426.4" y="2065.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.3" y="2065.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="2077.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <text x="466.0" y="2093.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">solve_for_unit</text>
   <path d="M 357.3 1741.0 C 466.0 1741.0, 466.0 1482.0, 574.7 1482.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: iterate_only_no_reverse</title></path>
-  <rect x="426.4" y="1473.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.3" y="1473.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1485.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <text x="466.0" y="1501.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">iterate_only_no_reverse</text>
   <path d="M 357.3 1741.0 C 466.0 1741.0, 466.0 1852.0, 574.7 1852.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: reversible_measurement_division</title></path>
-  <rect x="412.4" y="1843.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="412.3" y="1843.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1855.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <text x="466.0" y="1871.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reversible_measurement_division</text>
   <path d="M 1386.7 1112.0 C 1881.3 1112.0, 1881.3 1260.0, 2376.0 1260.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: cross_multiplication_rule_without_ground</title></path>
-  <rect x="1824.9" y="1251.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1824.8" y="1251.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1881.3" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1129.3 1112.0 C 1238.0 1112.0, 1238.0 1112.0, 1346.7 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: cross_multiplication_rule_without_ground</title></path>
-  <rect x="1201.2" y="1103.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1201.1" y="1103.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 872.0 1112.0 C 980.7 1112.0, 980.7 1112.0, 1089.3 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: cross_multiplication_rule_without_ground</title></path>
-  <rect x="932.7" y="1103.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="932.6" y="1103.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 614.7 1112.0 C 723.3 1112.0, 723.3 1112.0, 832.0 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: cross_multiplication_rule_without_ground</title></path>
-  <rect x="675.3" y="1103.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="675.3" y="1103.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 357.3 1112.0 C 466.0 1112.0, 466.0 1112.0, 574.7 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>apply_stored_rule: cross_multiplication_rule_without_ground</title></path>
-  <rect x="412.4" y="1103.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="412.3" y="1103.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">apply_stored_rule</text>
   <path d="M 1129.3 1815.0 C 1495.3 1815.0, 1495.3 1827.3, 1861.3 1827.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: improper_fraction_iteration</title></path>
-  <rect x="1458.5" y="1818.3" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1458.5" y="1818.3" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1830.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <text x="1495.3" y="1846.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">improper_fraction_iteration</text>
   <path d="M 1129.3 1815.0 C 1752.7 1815.0, 1752.7 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>receive_kernel_outcome: unit_fraction_iteration</title></path>
-  <rect x="1707.5" y="1246.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1707.4" y="1246.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1258.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">receive_kernel</text>
   <text x="1752.7" y="1268.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">outcome</text>
   <text x="1752.7" y="1284.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_iteration</text>
   <path d="M 872.0 1815.0 C 980.7 1815.0, 980.7 1815.0, 1089.3 1815.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: improper_fraction_iteration, unit_fraction_iteration</title></path>
-  <rect x="929.9" y="1806.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="929.8" y="1806.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1818.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <path d="M 1901.3 2222.0 C 2138.7 2222.0, 2138.7 1260.0, 2376.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>dispatch_to_kernel: unit_fraction_denominator_product_rule</title></path>
-  <rect x="2082.3" y="1251.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="2082.2" y="1251.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="2138.7" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">dispatch_to_kernel</text>
   <path d="M 1644.0 2222.0 C 1752.7 2222.0, 1752.7 2222.0, 1861.3 2222.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: unit_fraction_denominator_product_rule</title></path>
-  <rect x="1713.1" y="2213.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1713.0" y="2213.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="2225.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <path d="M 1386.7 2222.0 C 1495.3 2222.0, 1495.3 2222.0, 1604.0 2222.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: unit_fraction_denominator_product_rule</title></path>
-  <rect x="1447.3" y="2213.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1447.3" y="2213.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="2225.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 1129.3 2222.0 C 1238.0 2222.0, 1238.0 2222.0, 1346.7 2222.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: unit_fraction_denominator_product_rule</title></path>
-  <rect x="1190.0" y="2213.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1189.9" y="2213.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="2225.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 872.0 2222.0 C 980.7 2222.0, 980.7 2222.0, 1089.3 2222.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: unit_fraction_denominator_product_rule</title></path>
-  <rect x="927.1" y="2213.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="927.0" y="2213.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="2225.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <path d="M 614.7 1950.7 C 723.3 1950.7, 723.3 1815.0, 832.0 1815.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: improper_fraction_iteration, unit_fraction_iteration</title></path>
-  <rect x="683.7" y="1806.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="683.7" y="1806.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1818.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <text x="723.3" y="1834.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">improper_fraction_iteration</text>
   <text x="723.3" y="1843.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_iteration</text>
   <path d="M 614.7 1950.7 C 723.3 1950.7, 723.3 2222.0, 832.0 2222.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: unit_fraction_denominator_product_rule</title></path>
-  <rect x="678.1" y="2208.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="678.1" y="2208.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="2220.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="723.3" y="2230.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="723.3" y="2246.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_denominator_product_rule</text>
   <path d="M 1129.3 1260.0 C 1495.3 1260.0, 1495.3 1827.3, 1861.3 1827.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: improper_fraction_chain_loss</title></path>
-  <rect x="1450.1" y="1818.3" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1450.1" y="1818.3" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="1830.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <path d="M 872.0 1260.0 C 980.7 1260.0, 980.7 1260.0, 1089.3 1260.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>rename_in_place_of_transforming: improper_fraction_chain_loss</title></path>
-  <rect x="924.3" y="1246.0" width="112.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="924.2" y="1246.0" width="113.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1258.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">rename_in_place_of</text>
   <text x="980.7" y="1268.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">transforming</text>
   <path d="M 614.7 1334.0 C 852.0 1334.0, 852.0 1463.5, 1089.3 1463.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: iterate_given_overshoot</title></path>
-  <rect x="795.6" y="1454.5" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="795.5" y="1454.5" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="852.0" y="1466.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="852.0" y="1482.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">iterate_given_overshoot</text>
   <path d="M 614.7 1334.0 C 723.3 1334.0, 723.3 1260.0, 832.0 1260.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: improper_fraction_chain_loss</title></path>
-  <rect x="669.7" y="1246.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.6" y="1246.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="1258.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="723.3" y="1268.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
   <text x="723.3" y="1284.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">improper_fraction_chain_loss</text>
   <path d="M 1644.0 298.0 C 1752.7 298.0, 1752.7 1235.3, 1861.3 1235.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: area_model_part_of_part</title></path>
-  <rect x="1715.9" y="1226.3" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1715.8" y="1226.3" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1752.7" y="1238.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 1386.7 298.0 C 1495.3 298.0, 1495.3 298.0, 1604.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: area_model_part_of_part</title></path>
-  <rect x="1458.5" y="289.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1458.5" y="289.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1495.3" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <path d="M 1129.3 298.0 C 1238.0 298.0, 1238.0 298.0, 1346.7 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_part: area_model_part_of_part</title></path>
-  <rect x="1201.2" y="289.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1201.1" y="289.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_part</text>
   <path d="M 872.0 298.0 C 980.7 298.0, 980.7 298.0, 1089.3 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: area_model_part_of_part</title></path>
-  <rect x="935.5" y="284.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="935.4" y="284.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="980.7" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <path d="M 614.7 1334.0 C 980.7 1334.0, 980.7 2074.0, 1346.7 2074.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>disembed_part: unit_fraction_partition</title></path>
-  <rect x="938.3" y="2065.0" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="938.2" y="2065.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="2077.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">disembed_part</text>
   <text x="980.7" y="2093.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_partition</text>
   <path d="M 614.7 1334.0 C 723.3 1334.0, 723.3 298.0, 832.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_part: area_model_part_of_part</title></path>
-  <rect x="686.5" y="289.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="686.5" y="289.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_part</text>
   <text x="723.3" y="317.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_part_of_part</text>
   <path d="M 872.0 2444.0 C 980.7 2444.0, 980.7 1463.5, 1089.3 1463.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: whole_number_grab</title></path>
-  <rect x="935.5" y="1454.5" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="935.4" y="1454.5" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="1466.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <path d="M 614.7 2444.0 C 723.3 2444.0, 723.3 2444.0, 832.0 2444.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: whole_number_grab</title></path>
-  <rect x="669.7" y="2430.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.6" y="2430.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="2442.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="723.3" y="2452.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
   <path d="M 357.3 1704.0 C 466.0 1704.0, 466.0 1950.7, 574.7 1950.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>disembed_part: improper_fraction_iteration, unit_fraction_denominator_product_rule, unit_fraction_iteration</title></path>
-  <rect x="423.6" y="1941.7" width="84.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="423.5" y="1941.7" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1953.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">disembed_part</text>
   <text x="466.0" y="1969.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">improper_fraction_iteration</text>
   <text x="466.0" y="1978.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_denominator_product_rule</text>
   <text x="466.0" y="1987.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_iteration</text>
   <path d="M 357.3 1704.0 C 466.0 1704.0, 466.0 1334.0, 574.7 1334.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: improper_fraction_chain_loss, iterate_given_overshoot</title></path>
-  <rect x="426.4" y="1325.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.3" y="1325.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1337.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <text x="466.0" y="1353.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">improper_fraction_chain_loss</text>
   <text x="466.0" y="1362.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">iterate_given_overshoot</text>
   <path d="M 357.3 1704.0 C 466.0 1704.0, 466.0 1334.0, 574.7 1334.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>partition_into_equal_parts: area_model_part_of_part, unit_fraction_partition</title></path>
-  <rect x="420.8" y="1320.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="420.7" y="1320.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="1332.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">partition_into</text>
   <text x="466.0" y="1342.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">equal_parts</text>
   <text x="466.0" y="1358.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_model_part_of_part</text>
   <text x="466.0" y="1367.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">unit_fraction_partition</text>
   <path d="M 357.3 1704.0 C 466.0 1704.0, 466.0 2444.0, 574.7 2444.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: whole_number_grab</title></path>
-  <rect x="426.4" y="2430.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="426.3" y="2430.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="2442.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="466.0" y="2452.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="466.0" y="2468.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">whole_number_grab</text>
   <path d="M 1386.7 668.0 C 1881.3 668.0, 1881.3 1260.0, 2376.0 1260.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>attach_units_coordination: co_denominator_count_on_from_larger, co_denominator_make_base_transfer, co_denominator_make_ten_split_leftover</title></path>
-  <rect x="1841.7" y="1246.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1841.7" y="1246.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1881.3" y="1258.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">attach_units</text>
   <text x="1881.3" y="1268.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">coordination</text>
   <path d="M 1129.3 668.0 C 1238.0 668.0, 1238.0 668.0, 1346.7 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>receive_kernel_outcome: co_denominator_count_on_from_larger, co_denominator_make_base_transfer, co_denominator_make_ten_split_leftover</title></path>
-  <rect x="1192.8" y="654.0" width="90.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1192.7" y="654.0" width="90.5" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1238.0" y="666.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">receive_kernel</text>
   <text x="1238.0" y="676.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">outcome</text>
   <path d="M 872.0 668.0 C 980.7 668.0, 980.7 668.0, 1089.3 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>dispatch_to_kernel: co_denominator_count_on_from_larger, co_denominator_make_base_transfer, co_denominator_make_ten_split_leftover</title></path>
-  <rect x="924.3" y="659.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="924.2" y="659.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="980.7" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">dispatch_to_kernel</text>
   <path d="M 614.7 668.0 C 723.3 668.0, 723.3 668.0, 832.0 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: co_denominator_count_on_from_larger, co_denominator_make_base_transfer, co_denominator_make_ten_split_leftover</title></path>
-  <rect x="669.7" y="659.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.6" y="659.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="723.3" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <path d="M 357.3 668.0 C 466.0 668.0, 466.0 668.0, 574.7 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>unitize_referent: co_denominator_count_on_from_larger, co_denominator_make_base_transfer, co_denominator_make_ten_split_leftover</title></path>
-  <rect x="415.2" y="659.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="415.1" y="659.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="466.0" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">unitize_referent</text>
   <circle cx="82.0" cy="1260.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="82.0" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>

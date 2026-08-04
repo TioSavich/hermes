@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1980" height="1262" viewBox="0 0 1980 1262" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1996" height="1262" viewBox="0 0 1996 1262" role="img" aria-labelledby="title desc">
   <title id="title">decimal family composite</title>
   <desc id="desc">decimal composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -14,7 +14,7 @@
   <text x="209.7" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_fraction_place_value_comparison</text>
   <text x="209.7" y="585.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_scale_loss_comparison</text>
   <path d="M 100.0 631.0 C 209.7 631.0, 209.7 594.0, 319.4 594.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: change_decimal_place_name_without_regrouping, decimal_addition_by_aligned_units, decimal_comparison_by_aligned_units, decimal_multiplication_rule, decimal_place_unit_regrouping, decimal_point_rule_misapplication, decimal_subtraction_by_aligned_units, ecuadorian_decimal_long_division, positional_decimal_reading</title></path>
-  <rect x="170.1" y="580.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="170.1" y="580.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.7" y="592.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="209.7" y="602.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="209.7" y="618.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">change_decimal_place_name_without_regrouping</text>
@@ -27,205 +27,205 @@
   <text x="209.7" y="681.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">ecuadorian_decimal_long_division</text>
   <text x="209.7" y="690.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">positional_decimal_reading</text>
   <path d="M 100.0 631.0 C 209.7 631.0, 209.7 612.5, 319.4 612.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals, decimal_whole_number_reading</title></path>
-  <rect x="161.7" y="603.5" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="161.6" y="603.5" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.7" y="615.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
   <text x="209.7" y="631.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_add_unaligned_numerals</text>
   <text x="209.7" y="640.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_numeral_comparison_without_scale_alignment</text>
   <text x="209.7" y="649.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtract_unaligned_numerals</text>
   <text x="209.7" y="658.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_whole_number_reading</text>
   <path d="M 100.0 631.0 C 209.7 631.0, 209.7 1186.0, 319.4 1186.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>retrieve_known_fact: recalled_result_scaling</title></path>
-  <rect x="150.5" y="1177.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="150.4" y="1177.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="209.7" y="1189.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retrieve_known_fact</text>
   <text x="209.7" y="1205.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recalled_result_scaling</text>
   <path d="M 1656.6 557.0 C 1766.3 557.0, 1766.3 631.0, 1876.0 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>emit_result: decimal_fraction_place_value_comparison, decimal_scale_loss_comparison</title></path>
-  <rect x="1729.5" y="622.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1729.4" y="622.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1766.3" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">emit_result</text>
   <path d="M 1397.1 742.0 C 1636.6 742.0, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>emit_result: decimal_scale_loss_comparison</title></path>
-  <rect x="1599.8" y="622.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1599.7" y="622.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1636.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">emit_result</text>
   <text x="1636.6" y="650.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_scale_loss_comparison</text>
   <path d="M 1397.1 742.0 C 1506.9 742.0, 1506.9 557.0, 1616.6 557.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_viability: decimal_scale_loss_comparison</title></path>
-  <rect x="1456.1" y="548.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1456.0" y="548.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1506.9" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_viability</text>
   <text x="1506.9" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_scale_loss_comparison</text>
   <path d="M 1137.7 742.0 C 1247.4 742.0, 1247.4 742.0, 1357.1 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_scale_loss_comparison</title></path>
-  <rect x="1191.0" y="733.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1190.9" y="733.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
   <path d="M 878.3 742.0 C 988.0 742.0, 988.0 742.0, 1097.7 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_scale_loss_comparison</title></path>
-  <rect x="931.6" y="733.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="931.5" y="733.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
   <path d="M 618.9 742.0 C 728.6 742.0, 728.6 742.0, 838.3 742.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: decimal_scale_loss_comparison</title></path>
-  <rect x="672.2" y="733.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="672.1" y="733.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1137.7 372.0 C 1377.1 372.0, 1377.1 557.0, 1616.6 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_fraction_place_value_comparison</title></path>
-  <rect x="1320.7" y="548.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1320.7" y="548.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1377.1" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
   <path d="M 878.3 372.0 C 988.0 372.0, 988.0 372.0, 1097.7 372.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: decimal_fraction_place_value_comparison</title></path>
-  <rect x="926.0" y="363.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="925.9" y="363.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <path d="M 618.9 372.0 C 728.6 372.0, 728.6 372.0, 838.3 372.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>re_express_equivalently: decimal_fraction_place_value_comparison</title></path>
-  <rect x="689.0" y="358.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="688.9" y="358.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="728.6" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
   <path d="M 359.4 557.0 C 469.1 557.0, 469.1 742.0, 578.9 742.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: decimal_scale_loss_comparison</title></path>
-  <rect x="407.1" y="733.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="407.0" y="733.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <text x="469.1" y="761.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_scale_loss_comparison</text>
   <path d="M 359.4 557.0 C 469.1 557.0, 469.1 372.0, 578.9 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: decimal_fraction_place_value_comparison</title></path>
-  <rect x="429.5" y="358.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="429.5" y="358.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="469.1" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="469.1" y="396.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_fraction_place_value_comparison</text>
   <path d="M 1137.7 816.0 C 1506.9 816.0, 1506.9 631.0, 1876.0 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: decimal_point_rule_misapplication, decimal_whole_number_reading</title></path>
-  <rect x="1470.1" y="622.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1470.0" y="622.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1506.9" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 878.3 668.0 C 988.0 668.0, 988.0 816.0, 1097.7 816.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: decimal_point_rule_misapplication</title></path>
-  <rect x="940.0" y="807.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="939.9" y="807.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
   <path d="M 618.9 668.0 C 728.6 668.0, 728.6 668.0, 838.3 668.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: decimal_point_rule_misapplication</title></path>
-  <rect x="666.6" y="659.0" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="666.5" y="659.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
   <path d="M 1397.1 779.0 C 1636.6 779.0, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>recompose_total: decimal_multiplication_rule, positional_decimal_reading</title></path>
-  <rect x="1588.6" y="622.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1588.5" y="622.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1636.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">recompose_total</text>
   <path d="M 618.9 1112.0 C 988.0 1112.0, 988.0 779.0, 1357.1 779.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: positional_decimal_reading</title></path>
-  <rect x="948.4" y="770.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="948.3" y="770.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <path d="M 878.3 594.0 C 1377.1 594.0, 1377.1 631.0, 1876.0 631.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: decimal_place_unit_regrouping</title></path>
-  <rect x="1317.9" y="622.0" width="118.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1317.8" y="622.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1377.1" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_conservation</text>
   <path d="M 618.9 594.0 C 728.6 594.0, 728.6 594.0, 838.3 594.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: decimal_place_unit_regrouping</title></path>
-  <rect x="689.0" y="585.0" width="79.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="688.9" y="585.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="597.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
   <path d="M 878.3 76.0 C 1377.1 76.0, 1377.1 631.0, 1876.0 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: change_decimal_place_name_without_regrouping</title></path>
-  <rect x="1320.7" y="622.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1320.7" y="622.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1377.1" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 618.9 76.0 C 728.6 76.0, 728.6 76.0, 838.3 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>retain_where_change_was_due: change_decimal_place_name_without_regrouping</title></path>
-  <rect x="669.4" y="62.0" width="118.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="669.3" y="62.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">retain_where_change</text>
   <text x="728.6" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">was_due</text>
   <path d="M 1397.1 557.0 C 1636.6 557.0, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: decimal_addition_by_aligned_units, decimal_subtraction_by_aligned_units</title></path>
-  <rect x="1588.6" y="622.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1588.5" y="622.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1636.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
   <path d="M 1137.7 470.7 C 1247.4 470.7, 1247.4 557.0, 1357.1 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: decimal_addition_by_aligned_units</title></path>
-  <rect x="1191.0" y="548.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1190.9" y="548.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
   <text x="1247.4" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_addition_by_aligned_units</text>
   <path d="M 1137.7 470.7 C 1506.9 470.7, 1506.9 631.0, 1876.0 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_comparison_by_aligned_units</title></path>
-  <rect x="1450.5" y="622.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1450.4" y="622.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1506.9" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
   <text x="1506.9" y="650.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_comparison_by_aligned_units</text>
   <path d="M 1137.7 470.7 C 1247.4 470.7, 1247.4 557.0, 1357.1 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: decimal_subtraction_by_aligned_units</title></path>
-  <rect x="1199.4" y="548.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1199.4" y="548.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <text x="1247.4" y="576.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtraction_by_aligned_units</text>
   <path d="M 878.3 470.7 C 988.0 470.7, 988.0 470.7, 1097.7 470.7" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: decimal_addition_by_aligned_units, decimal_comparison_by_aligned_units, decimal_subtraction_by_aligned_units</title></path>
-  <rect x="926.0" y="461.7" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="925.9" y="461.7" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="473.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <path d="M 1397.1 1112.0 C 1636.6 1112.0, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: ecuadorian_decimal_long_division, recalled_result_scaling</title></path>
-  <rect x="1599.8" y="622.0" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1599.7" y="622.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1636.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
   <path d="M 1137.7 1038.0 C 1247.4 1038.0, 1247.4 1112.0, 1357.1 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: ecuadorian_decimal_long_division</title></path>
-  <rect x="1196.6" y="1103.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1196.5" y="1103.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
   <path d="M 878.3 1038.0 C 988.0 1038.0, 988.0 1038.0, 1097.7 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>apply_stored_rule: ecuadorian_decimal_long_division</title></path>
-  <rect x="934.4" y="1029.0" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="934.3" y="1029.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">apply_stored_rule</text>
   <path d="M 618.9 612.5 C 728.6 612.5, 728.6 470.7, 838.3 470.7" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: decimal_addition_by_aligned_units, decimal_comparison_by_aligned_units, decimal_subtraction_by_aligned_units</title></path>
-  <rect x="666.6" y="461.7" width="124.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="666.5" y="461.7" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="473.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <text x="728.6" y="489.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_addition_by_aligned_units</text>
   <text x="728.6" y="498.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_comparison_by_aligned_units</text>
   <text x="728.6" y="507.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtraction_by_aligned_units</text>
   <path d="M 618.9 612.5 C 728.6 612.5, 728.6 1038.0, 838.3 1038.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: ecuadorian_decimal_long_division</title></path>
-  <rect x="677.8" y="1024.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="677.7" y="1024.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="1036.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
   <text x="728.6" y="1046.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
   <text x="728.6" y="1062.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">ecuadorian_decimal_long_division</text>
   <path d="M 1137.7 446.0 C 1247.4 446.0, 1247.4 779.0, 1357.1 779.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: decimal_multiplication_rule</title></path>
-  <rect x="1199.4" y="770.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1199.4" y="770.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
   <path d="M 878.3 446.0 C 988.0 446.0, 988.0 446.0, 1097.7 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>accumulate_total: decimal_multiplication_rule</title></path>
-  <rect x="937.2" y="437.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="937.1" y="437.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">accumulate_total</text>
   <path d="M 618.9 446.0 C 728.6 446.0, 728.6 446.0, 838.3 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: decimal_multiplication_rule</title></path>
-  <rect x="680.6" y="437.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="680.5" y="437.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <path d="M 359.4 594.0 C 469.1 594.0, 469.1 668.0, 578.9 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: decimal_point_rule_misapplication</title></path>
-  <rect x="421.1" y="659.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="421.1" y="659.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <text x="469.1" y="687.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_point_rule_misapplication</text>
   <path d="M 359.4 594.0 C 469.1 594.0, 469.1 1112.0, 578.9 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>decompose_by_place: positional_decimal_reading</title></path>
-  <rect x="412.7" y="1103.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="412.7" y="1103.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="1115.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">decompose_by_place</text>
   <text x="469.1" y="1131.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">positional_decimal_reading</text>
   <path d="M 359.4 594.0 C 469.1 594.0, 469.1 594.0, 578.9 594.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: decimal_place_unit_regrouping</title></path>
-  <rect x="429.5" y="580.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="429.5" y="580.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="592.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="469.1" y="602.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="469.1" y="618.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_place_unit_regrouping</text>
   <path d="M 359.4 594.0 C 469.1 594.0, 469.1 76.0, 578.9 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>rename_in_place_of_transforming: change_decimal_place_name_without_regrouping</title></path>
-  <rect x="412.7" y="62.0" width="112.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="412.7" y="62.0" width="113.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">rename_in_place_of</text>
   <text x="469.1" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">transforming</text>
   <text x="469.1" y="100.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">change_decimal_place_name_without_regrouping</text>
   <path d="M 359.4 594.0 C 469.1 594.0, 469.1 612.5, 578.9 612.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: decimal_addition_by_aligned_units, decimal_comparison_by_aligned_units, decimal_subtraction_by_aligned_units, ecuadorian_decimal_long_division</title></path>
-  <rect x="415.5" y="603.5" width="107.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="415.5" y="603.5" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="615.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <text x="469.1" y="631.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_addition_by_aligned_units</text>
   <text x="469.1" y="640.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_comparison_by_aligned_units</text>
   <text x="469.1" y="649.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtraction_by_aligned_units</text>
   <text x="469.1" y="658.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">ecuadorian_decimal_long_division</text>
   <path d="M 359.4 594.0 C 469.1 594.0, 469.1 446.0, 578.9 446.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>set_aside_irrelevant_attribute: decimal_multiplication_rule</title></path>
-  <rect x="407.1" y="432.0" width="124.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="407.0" y="432.0" width="124.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="444.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">set_aside</text>
   <text x="469.1" y="454.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">irrelevant_attribute</text>
   <text x="469.1" y="470.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_multiplication_rule</text>
   <path d="M 1397.1 495.3 C 1636.6 495.3, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals</title></path>
-  <rect x="1585.8" y="622.0" width="101.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1585.7" y="622.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1636.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <path d="M 1137.7 495.3 C 1247.4 495.3, 1247.4 495.3, 1357.1 495.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals</title></path>
-  <rect x="1210.6" y="486.3" width="73.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="1210.6" y="486.3" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="498.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 878.3 483.0 C 988.0 483.0, 988.0 495.3, 1097.7 495.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: decimal_add_unaligned_numerals, decimal_subtract_unaligned_numerals</title></path>
-  <rect x="940.0" y="486.3" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="939.9" y="486.3" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="498.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
   <path d="M 618.9 495.3 C 728.6 495.3, 728.6 483.0, 838.3 483.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: decimal_add_unaligned_numerals</title></path>
-  <rect x="672.2" y="474.0" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="672.1" y="474.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="486.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
   <text x="728.6" y="502.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_add_unaligned_numerals</text>
   <path d="M 618.9 495.3 C 858.3 495.3, 858.3 495.3, 1097.7 495.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_numeral_comparison_without_scale_alignment</title></path>
-  <rect x="801.9" y="486.3" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="801.8" y="486.3" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="858.3" y="498.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
   <text x="858.3" y="514.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_numeral_comparison_without_scale_alignment</text>
   <path d="M 618.9 495.3 C 728.6 495.3, 728.6 483.0, 838.3 483.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: decimal_subtract_unaligned_numerals</title></path>
-  <rect x="680.6" y="474.0" width="96.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="680.5" y="474.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="486.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <text x="728.6" y="502.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtract_unaligned_numerals</text>
   <path d="M 878.3 964.0 C 988.0 964.0, 988.0 816.0, 1097.7 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: decimal_whole_number_reading</title></path>
-  <rect x="942.8" y="807.0" width="90.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="942.7" y="807.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <path d="M 618.9 964.0 C 728.6 964.0, 728.6 964.0, 838.3 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: decimal_whole_number_reading</title></path>
-  <rect x="675.0" y="950.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="674.9" y="950.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="728.6" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
   <path d="M 359.4 612.5 C 469.1 612.5, 469.1 495.3, 578.9 495.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals</title></path>
-  <rect x="412.7" y="486.3" width="112.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="412.7" y="486.3" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="498.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="469.1" y="514.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_add_unaligned_numerals</text>
   <text x="469.1" y="523.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_numeral_comparison_without_scale_alignment</text>
   <text x="469.1" y="532.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtract_unaligned_numerals</text>
   <path d="M 359.4 612.5 C 469.1 612.5, 469.1 964.0, 578.9 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: decimal_whole_number_reading</title></path>
-  <rect x="415.5" y="950.0" width="107.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="415.5" y="950.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="469.1" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
   <text x="469.1" y="988.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_whole_number_reading</text>
   <path d="M 618.9 1186.0 C 988.0 1186.0, 988.0 1112.0, 1357.1 1112.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: recalled_result_scaling</title></path>
-  <rect x="937.2" y="1098.0" width="101.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="937.1" y="1098.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="1110.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
   <text x="988.0" y="1120.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
   <path d="M 359.4 1186.0 C 469.1 1186.0, 469.1 1186.0, 578.9 1186.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: recalled_result_scaling</title></path>
-  <rect x="429.5" y="1172.0" width="79.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <rect x="429.5" y="1172.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="1184.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="469.1" y="1194.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <circle cx="82.0" cy="631.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>

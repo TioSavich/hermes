@@ -20,6 +20,7 @@ from render_automaton_svg import palette, render_all as render_radial
 
 OUTPUT = ROOT / "docs/research/2026-08-03-automata-compendium.html"
 FAMILY_OUTPUT_DIR = ROOT / "docs/research/automata-compendium"
+PRINT_OUTPUT = ROOT / "build/automata-compendium/2026-08-03-automata-compendium-print.html"
 CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"
 VOCABULARY = ROOT / "knowledge/strategies/math/state_vocabulary.pl"
 ATTESTATIONS = ROOT / "knowledge/strategies/machine_class_attestations.pl"
@@ -74,12 +75,13 @@ def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
 
-def image_attributes(svg: str) -> str:
+def image_attributes(svg: str, *, eager: bool = False) -> str:
     match = re.search(r'<svg\b[^>]*\bwidth="(\d+)"[^>]*\bheight="(\d+)"', svg)
     if match is None:
         raise ValueError("generated SVG lacks intrinsic integer width and height")
     width, height = match.groups()
-    return f'width="{width}" height="{height}" loading="lazy" decoding="async"'
+    loading = ' loading="eager"' if eager else ' loading="lazy"'
+    return f'width="{width}" height="{height}"{loading} decoding="async"'
 
 
 def decode_prolog_string(value: str) -> str:
@@ -233,7 +235,7 @@ def alphabet(machine: Machine) -> str:
     actions = list(machine.actions)
     if len(actions) <= 12:
         body = ", ".join(f"<code>{esc(action)}</code>" for action in actions)
-        return f"{body} ({len(actions)} distinct)"
+        return f'{body} ({len(actions)}<span class="typeset-space"> </span>distinct)'
     sample = ", ".join(f"<code>{esc(action)}</code>" for action in actions[:12])
     return f"{len(actions)} distinct actions; alphabetical sample: {sample}"
 
@@ -261,7 +263,7 @@ def provenance_item(
     suffix = ""
     if edge.provenance == "observed(derived_template)":
         example = derived_example(example)
-        suffix = " (derived template)"
+        suffix = ' (derived<span class="typeset-space"> </span>template)'
     elif edge.provenance != "observed(contract_example)":
         raise ValueError(f"unexpected observed provenance: {edge.provenance}")
     rendered = json.dumps(example, sort_keys=True)
@@ -299,7 +301,7 @@ def tuple_block(machine: Machine, labels: dict[str, list[tuple[str, str, str]]])
     return f"""
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\\(M = (Q, \\Sigma, \\delta, q_0, F)\\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{{{q_values}}}</dd>
       <dt><i>Σ</i></dt><dd>{alphabet(machine)}</dd>
@@ -357,15 +359,22 @@ def machine_section(
     scenes,
     radials,
     asset_prefix: str,
+    *,
+    print_mode: bool = False,
 ) -> str:
     key = (machine.family, machine.kind)
     scene = scenes[key]
     if scene.svg is not None:
+        scene_caption = esc(scene.caption).replace(
+            " trace steps",
+            '<span class="typeset-space"> </span>trace'
+            '<span class="typeset-space"> </span>steps',
+        )
         scene_html = (
             f'<figure class="diagram domain-scene"><img src="{asset_prefix}/{esc(machine.family)}/'
-            f'{esc(machine.kind)}-scene.svg" {image_attributes(scene.svg)} '
+            f'{esc(machine.kind)}-scene.svg" {image_attributes(scene.svg, eager=print_mode)} '
             f'alt="Executed domain scene for {esc(machine.family)} '
-            f'{esc(machine.kind)}"><figcaption>{esc(scene.caption)}</figcaption></figure>'
+            f'{esc(machine.kind)}"><figcaption>{scene_caption}</figcaption></figure>'
         )
     else:
         scene_html = f'<p class="scene-limit">{esc(scene.reach_limit)}</p>'
@@ -374,7 +383,7 @@ def machine_section(
 <article class="machine" id="{esc(machine.family)}-{esc(machine.kind)}">
 <h3><span class="entry-number">{entry_number}.</span> <code>{esc(machine.kind)}</code></h3>
 {scene_html}
-<figure class="diagram transition-diagram"><img src="{asset_prefix}/{esc(machine.family)}/{esc(machine.kind)}.svg" {image_attributes(radial_svg)} alt="Radial transition diagram for {esc(machine.family)} {esc(machine.kind)}"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
+<figure class="diagram transition-diagram"><img src="{asset_prefix}/{esc(machine.family)}/{esc(machine.kind)}.svg" {image_attributes(radial_svg, eager=print_mode)} alt="Radial transition diagram for {esc(machine.family)} {esc(machine.kind)}"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 {tuple_block(machine, labels)}
 {contract_line(contracts.get(key))}
 <h4><i>δ</i>: recorded transitions</h4>
@@ -389,6 +398,8 @@ def family_composite(
     svg: str,
     unaligned: tuple[str, ...],
     asset_prefix: str,
+    *,
+    print_mode: bool = False,
 ) -> str:
     limit = " For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals."
     if unaligned:
@@ -396,7 +407,7 @@ def family_composite(
         limit += f" The following kinds have no simple accepting path and remain unmerged: {kinds}."
     return (
         f'<figure class="diagram family-composite"><img src="{asset_prefix}/{esc(family)}/_composite.svg" '
-        f'{image_attributes(svg)} alt="Canonical-action composite for the {esc(family)} family"><figcaption>'
+        f'{image_attributes(svg, eager=print_mode)} alt="Canonical-action composite for the {esc(family)} family"><figcaption>'
         "Construction: canonical action sequences merge by common prefix and structurally identical suffix. "
         "Branch labels name the kinds taking each branch. This models shared doing under canonical action names; "
         f"the automata do not literally share states.{limit}</figcaption></figure>"
@@ -486,6 +497,25 @@ def contents(grouped: dict[str, list[Machine]]) -> str:
     )
 
 
+def print_contents(grouped: dict[str, list[Machine]]) -> str:
+    """Render the same contents list with links into the single print document."""
+    families = []
+    for family in sorted(grouped):
+        kinds = "".join(
+            f'<li><a href="#{esc(machine.family)}-{esc(machine.kind)}"><code>{esc(machine.kind)}</code></a></li>'
+            for machine in sorted(grouped[family], key=lambda row: row.kind)
+        )
+        families.append(
+            f'<section class="contents-family"><h3><a href="#family-{esc(family)}">{esc(family)}</a></h3>'
+            f'<ol>{kinds}</ol></section>'
+        )
+    return (
+        '<nav class="contents" aria-labelledby="contents-heading">'
+        '<h2 id="contents-heading">Contents</h2>'
+        f'<div class="contents-grid">{"".join(families)}</div></nav>'
+    )
+
+
 def root_palette() -> str:
     properties = palette()
     colors = ";".join(f"--{name}:{value}" for name, value in properties.items())
@@ -498,10 +528,43 @@ def root_palette() -> str:
 def shared_style() -> str:
     """Return the one generated stylesheet shared by every compendium page."""
     return f"""{root_palette()}
-*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .back-link{{margin:0 0 1rem}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} article.machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} figcaption{{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem}} .domain-scene img{{max-height:34rem}} .transition-diagram img{{max-height:46rem}} .family-composite img{{max-width:none;min-width:100%}} .family-composite{{max-height:72rem}} .scene-limit{{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} .swatch{{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor}} .swatch.conserving{{color:var(--ink)}} .swatch.deforming{{color:var(--rust)}} .swatch.neutral{{color:var(--muted)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}article.machine{{padding:.75rem}}}}"""
+*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .back-link{{margin:0 0 1rem}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} article.machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} .typeset-space{{display:inline-block;width:.28em;white-space:pre}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} figcaption{{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem}} .domain-scene img{{max-height:34rem}} .transition-diagram img{{max-height:46rem}} .family-composite img{{max-width:none;min-width:100%}} .family-composite{{max-height:72rem}} .scene-limit{{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} .swatch{{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor}} .swatch.conserving{{color:var(--ink)}} .swatch.deforming{{color:var(--rust)}} .swatch.neutral{{color:var(--muted)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}article.machine{{padding:.75rem}}}}"""
 
 
-def page_document(title: str, body: str) -> str:
+def print_style() -> str:
+    """Return the shared design with flow-safe print rules."""
+    screen = shared_style()
+    for browser_only in (
+        "content-visibility:auto;contain-intrinsic-size:auto 2400px",
+        "overflow:auto",
+        ".transitions-scroll{max-height:28rem}",
+        ".domain-scene img{max-height:34rem}",
+        ".transition-diagram img{max-height:46rem}",
+        ".family-composite{max-height:72rem}",
+    ):
+        screen = screen.replace(browser_only, "")
+    return screen + """
+@page{size:A4 portrait;margin:14mm 12mm 16mm}
+@media print{
+  html,body{background:#fff}
+  main{max-width:none;margin:0;padding:0}
+  section.family{break-before:page;page-break-before:always}
+  article.machine{contain:none}
+  figure,tr{break-inside:avoid;page-break-inside:avoid}
+  thead{display:table-header-group}
+  tfoot{display:table-footer-group}
+  .table-scroll,.transitions-scroll,.diagram,.family-composite{overflow:visible}
+  .diagram img,.family-composite img{display:block;width:auto;min-width:0;max-width:100%;height:auto}
+  .transitions thead th{position:static}
+  .atlas{min-width:0;font-size:.72rem}
+  a{color:inherit;text-decoration:none}
+}
+""".strip()
+
+
+def page_document(title: str, body: str, *, stylesheet: str | None = None) -> str:
+    if stylesheet is None:
+        stylesheet = shared_style()
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -509,10 +572,8 @@ def page_document(title: str, body: str) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <style>
-{shared_style()}
+{stylesheet}
 </style>
-<script>window.MathJax={{tex:{{inlineMath:[["\\(","\\)"]]}}}};</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body><main>
 {body}
@@ -522,7 +583,7 @@ def page_document(title: str, body: str) -> str:
 
 def legend_section() -> str:
     return f"""<section id="legend"><h2>Legend</h2>
-<p>Each entry writes \\(M=(Q,\\Sigma,\\delta,q_0,F)\\): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. In transition diagrams, <span class="swatch conserving"></span>dark edges are conserving actions, <span class="swatch deforming"></span>rust edges are deforming actions, and <span class="swatch neutral"></span>muted edges are neutral actions. Dashed edges are observed-only rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes use rust for an executed deformation and gold or dark marks for the admitted representation roles.</p>
+<p>Each entry writes <i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. In transition diagrams, <span class="swatch conserving"></span>dark edges are conserving actions, <span class="swatch deforming"></span>rust edges are deforming actions, and <span class="swatch neutral"></span>muted edges are neutral actions. Dashed edges are observed-only rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes use rust for an executed deformation and gold or dark marks for the admitted representation roles.</p>
 <dl class="legend-list"><dt>linear_trace</dt><dd>{CLASS_GLOSSES["linear_trace"]}.</dd><dt>branching</dt><dd>{CLASS_GLOSSES["branching"]}.</dd><dt>looping</dt><dd>{CLASS_GLOSSES["looping"]}.</dd><dt>branching_looping</dt><dd>{CLASS_GLOSSES["branching_looping"]}.</dd></dl>
 <p>Computed structure reports only the table graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
 </section>"""
@@ -544,13 +605,20 @@ def typology_section(machines: list[Machine]) -> str:
 
 
 def attestations_section(
-    attestations: dict[tuple[str, str], list[tuple[str, str]]]
+    attestations: dict[tuple[str, str], list[tuple[str, str]]],
+    *,
+    print_mode: bool = False,
 ) -> str:
     rows = []
     for (family, kind), claims in sorted(attestations.items()):
         for claim, source in claims:
+            href = (
+                f"#{family}-{kind}"
+                if print_mode
+                else f"automata-compendium/{family}.html#{family}-{kind}"
+            )
             rows.append(
-                f'<tr><td><a href="automata-compendium/{esc(family)}.html#{esc(family)}-{esc(kind)}">'
+                f'<tr><td><a href="{esc(href)}">'
                 f'<code>{esc(family)}/{esc(kind)}</code></a></td><td><code>{esc(claim)}</code></td>'
                 f'<td><code>{esc(source)}</code></td></tr>'
             )
@@ -625,6 +693,67 @@ def generate_compendium_pages() -> dict[Path, str]:
     return pages
 
 
+def generate_print_compendium() -> str:
+    """Return the complete corpus as one print-oriented HTML document."""
+    machines = parse_transition_tables()
+    contracts = read_contracts()
+    labels = read_state_labels()
+    attestations = read_attestations()
+    atlas = read_atlas_rows()
+    scenes = scene_records()
+    composites = composite_records()
+    radials = render_radial()
+    grouped: dict[str, list[Machine]] = defaultdict(list)
+    for machine in machines:
+        grouped[machine.family].append(machine)
+    command = (
+        "python3 scripts/research/build_machine_typology.py &amp;&amp; "
+        "python3 scripts/research/render_automaton_svg.py &amp;&amp; "
+        "python3 scripts/research/render_automaton_context_svg.py &amp;&amp; "
+        "python3 scripts/research/build_automata_compendium.py"
+    )
+    front_matter = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
+<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and tables. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
+</header>
+{print_contents(grouped)}
+{legend_section()}
+{typology_section(machines)}
+{attestations_section(attestations, print_mode=True)}
+{atlas_section(atlas)}
+<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated table rows, including observed-only states named by those rows. They do not establish determinism, language coverage, or memory bounds beyond the recorded graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>"""
+    family_sections = []
+    for family in sorted(grouped):
+        articles = "\n".join(
+            machine_section(
+                machine,
+                index,
+                labels,
+                contracts,
+                attestations,
+                scenes,
+                radials,
+                "../../docs/research/assets/automata",
+                print_mode=True,
+            )
+            for index, machine in enumerate(
+                sorted(grouped[family], key=lambda row: row.kind), start=1
+            )
+        )
+        family_sections.append(
+            f"""<section class="family" id="family-{esc(family)}">
+<h2>{esc(family)}</h2>
+{family_composite(family, *composites[family], "../../docs/research/assets/automata", print_mode=True)}
+{articles}
+</section>"""
+        )
+    body = "\n".join([front_matter, *family_sections, footer()])
+    return page_document(
+        "Hermes automata compendium",
+        body,
+        stylesheet=print_style(),
+    )
+
+
 def generate_compendium() -> str:
     """Return the hub for callers retained from the former single-page build."""
     return generate_compendium_pages()[OUTPUT]
@@ -632,8 +761,20 @@ def generate_compendium() -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true")
+    mode.add_argument(
+        "--print",
+        action="store_true",
+        dest="print_mode",
+        help=f"write the single print document to {PRINT_OUTPUT.relative_to(ROOT)}",
+    )
     args = parser.parse_args()
+    if args.print_mode:
+        PRINT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+        PRINT_OUTPUT.write_text(generate_print_compendium(), encoding="utf-8")
+        print(f"automata compendium print HTML: {PRINT_OUTPUT.relative_to(ROOT)}")
+        return 0
     pages = generate_compendium_pages()
     if args.check:
         stale = [

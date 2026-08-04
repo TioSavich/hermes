@@ -6,10 +6,8 @@
 <title>algebraic | Hermes automata compendium</title>
 <style>
 :root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold:#d4a747;--gold-deep:#a97c24;--paper-bg:#f4ead6;--rust:#b95238;--paper-cool:#ede4cf;--surface:#fffef9;--gold-pale:#f0d68a;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
-*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif} main{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem} p{max-width:var(--prose)} .page-header{margin-bottom:2rem} .page-header h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem} .lede{font-size:1.08rem;margin:.3rem 0;color:var(--muted)} h2{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem} h3{font-size:1.38rem;line-height:1.25;margin:0 0 1rem} h4{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem} code{font:.82em var(--mono);overflow-wrap:anywhere} a{color:var(--gold-deep);text-underline-offset:.14em} .back-link{margin:0 0 1rem} .contents{margin:2rem 0 3.5rem} .contents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem} .contents-family{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem} .contents-family h3{font-size:1.05rem;margin:0 0 .35rem} .contents-family ol{margin:.2rem 0;padding-left:2.1rem} .contents-family li{padding:.08rem 0} article.machine{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px} .machine h3{font-size:1.38rem} .entry-number{color:var(--gold-deep);font-weight:normal} .tuple-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start} .machine-tuple{font-size:1.12rem} dl{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem} dt{color:var(--gold-deep)} dd{margin:0} table{border-collapse:collapse;width:100%;font-size:.88rem} .table-scroll{width:100%;overflow:auto} .transitions-scroll{max-height:28rem} th,td{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top} th{background:var(--paper-warm);color:var(--muted);font-weight:normal} .transitions thead th{position:sticky;top:0;z-index:1;background:var(--paper-warm)} .state-map td:first-child{white-space:nowrap} .citation,.none{color:var(--muted);font-size:.9em} .literature-label{font-style:italic} .provenance.observed{color:var(--gold-deep)} .input-contract{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .diagram{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem} .diagram img{display:block;margin:auto;max-width:100%;height:auto} figcaption{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem} .domain-scene img{max-height:34rem} .transition-diagram img{max-height:46rem} .family-composite img{max-width:none;min-width:100%} .family-composite{max-height:72rem} .scene-limit{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem} .typology,.attestation{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .term{color:var(--gold-deep)} .attestation{border-left:3px solid var(--gold)} .atlas{font-size:.84rem;min-width:860px} .numeric{white-space:nowrap;text-align:right} .legend-list{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem} .legend-list dt{font-family:var(--mono)} .swatch{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor} .swatch.conserving{color:var(--ink)} .swatch.deforming{color:var(--rust)} .swatch.neutral{color:var(--muted)} footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem} @media(max-width:850px){.tuple-grid{grid-template-columns:1fr}main{padding:.9rem}article.machine{padding:.75rem}}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif} main{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem} p{max-width:var(--prose)} .page-header{margin-bottom:2rem} .page-header h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem} .lede{font-size:1.08rem;margin:.3rem 0;color:var(--muted)} h2{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem} h3{font-size:1.38rem;line-height:1.25;margin:0 0 1rem} h4{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem} code{font:.82em var(--mono);overflow-wrap:anywhere} a{color:var(--gold-deep);text-underline-offset:.14em} .back-link{margin:0 0 1rem} .contents{margin:2rem 0 3.5rem} .contents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem} .contents-family{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem} .contents-family h3{font-size:1.05rem;margin:0 0 .35rem} .contents-family ol{margin:.2rem 0;padding-left:2.1rem} .contents-family li{padding:.08rem 0} article.machine{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px} .machine h3{font-size:1.38rem} .entry-number{color:var(--gold-deep);font-weight:normal} .tuple-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start} .machine-tuple{font-size:1.12rem} .typeset-space{display:inline-block;width:.28em;white-space:pre} dl{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem} dt{color:var(--gold-deep)} dd{margin:0} table{border-collapse:collapse;width:100%;font-size:.88rem} .table-scroll{width:100%;overflow:auto} .transitions-scroll{max-height:28rem} th,td{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top} th{background:var(--paper-warm);color:var(--muted);font-weight:normal} .transitions thead th{position:sticky;top:0;z-index:1;background:var(--paper-warm)} .state-map td:first-child{white-space:nowrap} .citation,.none{color:var(--muted);font-size:.9em} .literature-label{font-style:italic} .provenance.observed{color:var(--gold-deep)} .input-contract{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .diagram{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem} .diagram img{display:block;margin:auto;max-width:100%;height:auto} figcaption{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem} .domain-scene img{max-height:34rem} .transition-diagram img{max-height:46rem} .family-composite img{max-width:none;min-width:100%} .family-composite{max-height:72rem} .scene-limit{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem} .typology,.attestation{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px} .term{color:var(--gold-deep)} .attestation{border-left:3px solid var(--gold)} .atlas{font-size:.84rem;min-width:860px} .numeric{white-space:nowrap;text-align:right} .legend-list{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem} .legend-list dt{font-family:var(--mono)} .swatch{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor} .swatch.conserving{color:var(--ink)} .swatch.deforming{color:var(--rust)} .swatch.neutral{color:var(--muted)} footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem} @media(max-width:850px){.tuple-grid{grid-template-columns:1fr}main{padding:.9rem}article.machine{padding:.75rem}}
 </style>
-<script>window.MathJax={tex:{inlineMath:[["\(","\)"]]}};</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body><main>
 <header class="page-header">
@@ -17,19 +15,19 @@
 <h1>algebraic</h1>
 </header>
 <section class="family" id="family-algebraic">
-<figure class="diagram family-composite"><img src="../assets/automata/algebraic/_composite.svg" width="1730" height="1114" loading="lazy" decoding="async" alt="Canonical-action composite for the algebraic family"><figcaption>Construction: canonical action sequences merge by common prefix and structurally identical suffix. Branch labels name the kinds taking each branch. This models shared doing under canonical action names; the automata do not literally share states. For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals.</figcaption></figure>
+<figure class="diagram family-composite"><img src="../assets/automata/algebraic/_composite.svg" width="1746" height="1114" loading="lazy" decoding="async" alt="Canonical-action composite for the algebraic family"><figcaption>Construction: canonical action sequences merge by common prefix and structurally identical suffix. Branch labels name the kinds taking each branch. This models shared doing under canonical action names; the automata do not literally share states. For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals.</figcaption></figure>
 
 <article class="machine" id="algebraic-balance_preserving_linear_solution">
 <h3><span class="entry-number">1.</span> <code>balance_preserving_linear_solution</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/algebraic/balance_preserving_linear_solution-scene.svg" width="700" height="360" loading="lazy" decoding="async" alt="Executed domain scene for algebraic balance_preserving_linear_solution"><figcaption>The run produced value(6). The scene is derived from the contract run (4 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/algebraic/balance_preserving_linear_solution-scene.svg" width="700" height="360" loading="lazy" decoding="async" alt="Executed domain scene for algebraic balance_preserving_linear_solution"><figcaption>The run produced value(6). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/algebraic/balance_preserving_linear_solution.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for algebraic balance_preserving_linear_solution"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>apply_balance_preserving_steps</code>, <code>isolate_unknown</code>, <code>read_equation_as_relation</code>, <code>verify_by_substitution</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>apply_balance_preserving_steps</code>, <code>isolate_unknown</code>, <code>read_equation_as_relation</code>, <code>verify_by_substitution</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -45,15 +43,15 @@
 
 <article class="machine" id="algebraic-contextual_linear_equation_construction">
 <h3><span class="entry-number">2.</span> <code>contextual_linear_equation_construction</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/algebraic/contextual_linear_equation_construction-scene.svg" width="700" height="360" loading="lazy" decoding="async" alt="Executed domain scene for algebraic contextual_linear_equation_construction"><figcaption>The run produced equation(add(mult(number(3),var(x)),number(2)),equals,number(20)). The scene is derived from the contract run (6 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/algebraic/contextual_linear_equation_construction-scene.svg" width="700" height="360" loading="lazy" decoding="async" alt="Executed domain scene for algebraic contextual_linear_equation_construction"><figcaption>The run produced equation(add(mult(number(3),var(x)),number(2)),equals,number(20)). The scene is derived from the contract run (6<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/algebraic/contextual_linear_equation_construction.svg" width="648" height="648" loading="lazy" decoding="async" alt="Radial transition diagram for algebraic contextual_linear_equation_construction"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>, <i>q</i><sub>6</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>assign_referent_roles</code>, <code>coordinate_constant_offset</code>, <code>coordinate_repeated_unknown</code>, <code>identify_unknown_quantity</code>, <code>inscribe_equation</code>, <code>relate_expression_to_total</code> (6 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>assign_referent_roles</code>, <code>coordinate_constant_offset</code>, <code>coordinate_repeated_unknown</code>, <code>identify_unknown_quantity</code>, <code>inscribe_equation</code>, <code>relate_expression_to_total</code> (6<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>6</sub>}</dd>
     </dl>
@@ -74,10 +72,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>distribute_factor</code>, <code>identify_addends</code>, <code>identify_common_factor</code>, <code>join_partial_products</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>distribute_factor</code>, <code>identify_addends</code>, <code>identify_common_factor</code>, <code>join_partial_products</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -98,10 +96,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>distribute_factor</code>, <code>identify_common_factor</code>, <code>lose_equivalent_expression</code>, <code>stop_before_second_addend</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>distribute_factor</code>, <code>identify_common_factor</code>, <code>lose_equivalent_expression</code>, <code>stop_before_second_addend</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -122,10 +120,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>compare_values_for_equality</code>, <code>evaluate_left_expression</code>, <code>evaluate_right_expression</code>, <code>substitute_assignment_into_both_sides</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>compare_values_for_equality</code>, <code>evaluate_left_expression</code>, <code>evaluate_right_expression</code>, <code>substitute_assignment_into_both_sides</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -146,10 +144,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>multiply_base_by_exponent</code>, <code>omit_repeated_factor_iteration</code>, <code>read_exponent_as_second_factor</code> (3 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>multiply_base_by_exponent</code>, <code>omit_repeated_factor_iteration</code>, <code>read_exponent_as_second_factor</code> (3<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>3</sub>}</dd>
     </dl>
@@ -170,10 +168,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>establish_base</code>, <code>establish_exponent</code>, <code>inscribe_expanded_product</code>, <code>iterate_base_factor</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_base</code>, <code>establish_exponent</code>, <code>inscribe_expanded_product</code>, <code>iterate_base_factor</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -194,10 +192,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>certify_equivalent</code>, <code>compare_factor_structures</code>, <code>expand_left_powers</code>, <code>expand_right_powers</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>certify_equivalent</code>, <code>compare_factor_structures</code>, <code>expand_left_powers</code>, <code>expand_right_powers</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -218,10 +216,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>apply_empirical_rule</code>, <code>compare_with_contextual_rule</code>, <code>lose_contextual_linear_relation</code>, <code>read_empirical_rule</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>apply_empirical_rule</code>, <code>compare_with_contextual_rule</code>, <code>lose_contextual_linear_relation</code>, <code>read_empirical_rule</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -242,10 +240,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>, <i>q</i><sub>6</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>add_initial_value</code>, <code>compute_accumulated_change</code>, <code>count_increments_from_first_row</code>, <code>identify_constant_change</code>, <code>identify_initial_value</code>, <code>preserve_contextual_linear_relation</code> (6 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>add_initial_value</code>, <code>compute_accumulated_change</code>, <code>count_increments_from_first_row</code>, <code>identify_constant_change</code>, <code>identify_initial_value</code>, <code>preserve_contextual_linear_relation</code> (6<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>6</sub>}</dd>
     </dl>
@@ -261,15 +259,15 @@
 
 <article class="machine" id="algebraic-one_sided_equation_operation">
 <h3><span class="entry-number">11.</span> <code>one_sided_equation_operation</code></h3>
-<figure class="diagram domain-scene"><img src="../assets/automata/algebraic/one_sided_equation_operation-scene.svg" width="700" height="360" loading="lazy" decoding="async" alt="Executed domain scene for algebraic one_sided_equation_operation"><figcaption>The run produced value(20r3); the recorded expected result is value(6). The scene is derived from the contract run (5 trace steps).</figcaption></figure>
+<figure class="diagram domain-scene"><img src="../assets/automata/algebraic/one_sided_equation_operation-scene.svg" width="700" height="360" loading="lazy" decoding="async" alt="Executed domain scene for algebraic one_sided_equation_operation"><figcaption>The run produced value(20r3); the recorded expected result is value(6). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/algebraic/one_sided_equation_operation.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for algebraic one_sided_equation_operation"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>divide_remaining_expression_by</code>, <code>leave_right_side_unchanged</code>, <code>read_equals_as_instruction</code>, <code>remove_constant_from_left_side_only</code>, <code>report_unbalanced_value</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>divide_remaining_expression_by</code>, <code>leave_right_side_unchanged</code>, <code>read_equals_as_instruction</code>, <code>remove_constant_from_left_side_only</code>, <code>report_unbalanced_value</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -290,10 +288,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>evaluate_left_expression</code>, <code>ignore_right_expression</code>, <code>substitute_assignment_into_left_side</code>, <code>treat_equals_as_answer_signal</code> (4 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>evaluate_left_expression</code>, <code>ignore_right_expression</code>, <code>substitute_assignment_into_left_side</code>, <code>treat_equals_as_answer_signal</code> (4<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
     </dl>
@@ -314,10 +312,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>identify_assignment</code>, <code>identify_expression</code>, <code>kernel_trace</code>, <code>report_value</code>, <code>walk_expression_tree</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>identify_assignment</code>, <code>identify_expression</code>, <code>kernel_trace</code>, <code>report_value</code>, <code>walk_expression_tree</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
@@ -338,10 +336,10 @@
 
 <div class="tuple-grid">
   <div class="tuple-formal">
-    <p class="machine-tuple">\(M = (Q, \Sigma, \delta, q_0, F)\)</p>
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
     <dl>
       <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
-      <dt><i>Σ</i></dt><dd><code>declare_variables</code>, <code>identify_quantity_roles</code>, <code>inscribe_expression</code>, <code>preserve_operand_structure</code>, <code>select_operation</code> (5 distinct)</dd>
+      <dt><i>Σ</i></dt><dd><code>declare_variables</code>, <code>identify_quantity_roles</code>, <code>inscribe_expression</code>, <code>preserve_operand_structure</code>, <code>select_operation</code> (5<span class="typeset-space"> </span>distinct)</dd>
       <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
       <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
     </dl>
