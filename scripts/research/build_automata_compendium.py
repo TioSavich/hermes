@@ -12,7 +12,9 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
-from build_machine_typology import ROOT, Machine, parse_transition_tables, structure
+from build_machine_typology import ROOT, Machine, Transition, parse_transition_tables, structure
+from build_transition_tables import derived_example
+from render_automaton_svg import palette
 
 
 OUTPUT = ROOT / "docs/research/2026-08-03-automata-compendium.html"
@@ -47,7 +49,15 @@ class AtlasRow:
     ran: int
     coincide: int
     rate: int
-    sample: str
+    sample_coincide: str
+    sample_separate: str
+
+
+@dataclass(frozen=True)
+class InputContract:
+    schema: dict[str, object]
+    example: dict[str, object]
+    verification: str
 
 
 CLASS_GLOSSES = {
@@ -66,12 +76,16 @@ def decode_prolog_string(value: str) -> str:
     return value.replace(r'\"', '"')
 
 
-def read_contracts() -> dict[tuple[str, str], dict[str, object]]:
-    found: dict[tuple[str, str], dict[str, object]] = {}
-    for family, kind, _schema, example, _verification in CONTRACT.findall(
+def read_contracts() -> dict[tuple[str, str], InputContract]:
+    found: dict[tuple[str, str], InputContract] = {}
+    for family, kind, schema, example, verification in CONTRACT.findall(
         CONTRACTS.read_text(encoding="utf-8")
     ):
-        found[(family, kind)] = json.loads(example.replace(r'\"', '"'))
+        found[(family, kind)] = InputContract(
+            schema=json.loads(schema.replace(r'\"', '"')),
+            example=json.loads(example.replace(r'\"', '"')),
+            verification=verification,
+        )
     return found
 
 
@@ -109,8 +123,8 @@ def read_atlas_rows() -> list[AtlasRow]:
 forall(
   deformation_coincidence:coincidence_profile(
     Op, K, deformation, ran(Ran), coincide(Co), rate_pct(Rate), _,
-    sample_coincide(Sample), _, _),
-  ( ( Sample = some(A, B)
+    sample_coincide(CoincideSample), sample_separate(SeparateSample), _),
+  ( ( CoincideSample = some(A, B)
     -> action_automata_registry:run_action_automaton(
          Op, K, A, B, action_outcome(_, Fields), _),
        once(sub_term(validity(Validity), Fields)),
@@ -122,8 +136,9 @@ forall(
     ;  Validity = incorrect,
        Condition = none
     ),
-    format('ROW\t~q\t~q\t~q\t~q\t~w\t~w\t~w\t~q~n',
-           [Op, K, Validity, Condition, Ran, Co, Rate, Sample])
+    format('ROW\t~q\t~q\t~q\t~q\t~w\t~w\t~w\t~q\t~q~n',
+           [Op, K, Validity, Condition, Ran, Co, Rate,
+            CoincideSample, SeparateSample])
   )),
 halt
 """.strip()
@@ -155,11 +170,17 @@ halt
         if not line.startswith("ROW\t"):
             continue
         fields = line.split("\t")
-        if len(fields) != 9:
+        if len(fields) != 10:
             raise ValueError(f"unexpected validity sample row: {line!r}")
-        _, family, kind, validity, condition, ran, coincide, rate, sample = fields
+        (
+            _, family, kind, validity, condition, ran, coincide, rate,
+            sample_coincide, sample_separate,
+        ) = fields
         rows.append(
-            AtlasRow(family, kind, validity, condition, int(ran), int(coincide), int(rate), sample)
+            AtlasRow(
+                family, kind, validity, condition, int(ran), int(coincide),
+                int(rate), sample_coincide, sample_separate,
+            )
         )
     profile_count = len(re.findall(r"^coincidence_profile\([^\n]+, deformation,", COINCIDENCE.read_text(encoding="utf-8"), re.MULTILINE))
     if len(rows) != profile_count:
@@ -167,9 +188,13 @@ halt
     return sorted(rows, key=lambda row: (row.family, row.kind))
 
 
-def formal_aliases(machine: Machine) -> dict[str, str]:
+def formal_aliases(machine: Machine) -> dict[str, int]:
     ordered = [machine.start, *(state for state in machine.states if state != machine.start)]
-    return {state: f"q_{{{index}}}" for index, state in enumerate(ordered)}
+    return {state: index for index, state in enumerate(ordered)}
+
+
+def formal_state(index: int) -> str:
+    return f"<i>q</i><sub>{index}</sub>"
 
 
 def state_mapping_table(machine: Machine, labels: dict[str, list[tuple[str, str, str]]]) -> str:
@@ -186,7 +211,7 @@ def state_mapping_table(machine: Machine, labels: dict[str, list[tuple[str, str,
         else:
             rendered = '<span class="none">none recorded</span>'
         rows.append(
-            f"<tr><td>\\({aliases[state]}\\)</td><td><code>{esc(state)}</code></td><td>{rendered}</td></tr>"
+            f"<tr><td>{formal_state(aliases[state])}</td><td><code>{esc(state)}</code></td><td>{rendered}</td></tr>"
         )
     return (
         '<table class="state-map"><thead><tr><th>Formal state</th><th>ASCII atom</th>'
@@ -203,42 +228,92 @@ def alphabet(machine: Machine) -> str:
     return f"{len(actions)} distinct actions; alphabetical sample: {sample}"
 
 
-def transition_table(machine: Machine) -> str:
-    rows = []
+def static_source(provenance: str) -> str:
+    match = re.fullmatch(r"static\('((?:[^']|'')*)'\)", provenance)
+    if not match:
+        raise ValueError(f"unexpected static provenance: {provenance}")
+    return match.group(1).replace("''", "'")
+
+
+def provenance_item(
+    edge: Transition,
+    contract: InputContract | None,
+) -> str:
+    if edge.provenance_kind == "static":
+        source = static_source(edge.provenance)
+        leaf = source.rsplit("/", 1)[-1]
+        return f'<code title="{esc(source)}">{esc(leaf)}</code>'
+    if contract is None:
+        raise ValueError(
+            f"observed transition lacks an input contract: {edge.provenance}"
+        )
+    example = contract.example
+    suffix = ""
+    if edge.provenance == "observed(derived_template)":
+        example = derived_example(example)
+        suffix = " (derived template)"
+    elif edge.provenance != "observed(contract_example)":
+        raise ValueError(f"unexpected observed provenance: {edge.provenance}")
+    rendered = json.dumps(example, sort_keys=True)
+    return f'observed on <code>{esc(rendered)}</code>{suffix}'
+
+
+def transition_table(machine: Machine, contract: InputContract | None) -> str:
+    grouped: dict[tuple[str, str, str], list[Transition]] = {}
     for edge in machine.transitions:
-        provenance = edge.provenance
-        provenance_kind = edge.provenance_kind
+        key = (edge.before, edge.action, edge.after)
+        grouped.setdefault(key, []).append(edge)
+    rows = []
+    for (before, action, after), edges in grouped.items():
+        provenance = "<br>".join(
+            provenance_item(edge, contract)
+            for edge in dict.fromkeys(edges)
+        )
+        provenance_kinds = " ".join(dict.fromkeys(edge.provenance_kind for edge in edges))
         rows.append(
-            f'<tr><td><code>{esc(edge.before)}</code></td><td><code>{esc(edge.action)}</code></td>'
-            f'<td><code>{esc(edge.after)}</code></td><td class="provenance {provenance_kind}">'
-            f'<code>{esc(provenance)}</code></td></tr>'
+            f'<tr><td><code>{esc(before)}</code></td><td><code>{esc(action)}</code></td>'
+            f'<td><code>{esc(after)}</code></td><td class="provenance {provenance_kinds}">'
+            f'{provenance}</td></tr>'
         )
     return (
-        '<table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th>'
-        f'<th>Provenance</th></tr></thead><tbody>{"".join(rows)}</tbody></table>'
+        '<div class="table-scroll transitions-scroll"><table class="transitions">'
+        '<thead><tr><th>From</th><th>Action</th><th>To</th>'
+        f'<th>Provenance</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
     )
 
 
 def tuple_block(machine: Machine, labels: dict[str, list[tuple[str, str, str]]]) -> str:
     aliases = formal_aliases(machine)
-    q_values = ", ".join(aliases[state] for state in aliases)
-    accepting = ", ".join(aliases[state] for state in machine.accepting)
+    q_values = ", ".join(formal_state(aliases[state]) for state in aliases)
+    accepting = ", ".join(formal_state(aliases[state]) for state in machine.accepting)
     return f"""
 <div class="tuple-grid">
   <div class="tuple-formal">
     <p class="machine-tuple">\\(M = (Q, \\Sigma, \\delta, q_0, F)\\)</p>
     <dl>
-      <dt>\\(Q\\)</dt><dd>\\(\\{{{q_values}\\}}\\)</dd>
-      <dt>\\(\\Sigma\\)</dt><dd>{alphabet(machine)}</dd>
-      <dt>\\(q_0\\)</dt><dd>\\({aliases[machine.start]}\\) = <code>{esc(machine.start)}</code></dd>
-      <dt>\\(F\\)</dt><dd>\\(\\{{{accepting}\\}}\\)</dd>
+      <dt><i>Q</i></dt><dd>{{{q_values}}}</dd>
+      <dt><i>Σ</i></dt><dd>{alphabet(machine)}</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd>{formal_state(aliases[machine.start])} = <code>{esc(machine.start)}</code></dd>
+      <dt><i>F</i></dt><dd>{{{accepting}}}</dd>
     </dl>
   </div>
   <div>{state_mapping_table(machine, labels)}</div>
 </div>"""
 
 
-def typology_line(machine: Machine, contract: dict[str, object] | None) -> str:
+def contract_line(contract: InputContract | None) -> str:
+    if contract is None:
+        return '<p class="input-contract"><span class="term">Input contract:</span> <span class="none">none recorded</span>.</p>'
+    schema = json.dumps(contract.schema, sort_keys=True)
+    example = json.dumps(contract.example, sort_keys=True)
+    return (
+        '<p class="input-contract"><span class="term">Input contract:</span> '
+        f'<code>{esc(schema)}</code>; example <code>{esc(example)}</code>; '
+        f'<code>verified({esc(contract.verification)})</code>.</p>'
+    )
+
+
+def typology_line(machine: Machine) -> str:
     row = structure(machine)
     gloss = CLASS_GLOSSES[row.structural_class]
     counts = (
@@ -246,16 +321,9 @@ def typology_line(machine: Machine, contract: dict[str, object] | None) -> str:
         f"{len(row.branching_states)} branching states, {len(row.loop_edges)} loop edges; "
         f"{row.static_rows} static rows and {row.observed_rows} observed rows"
     )
-    input_text = ""
-    if row.structural_class == "linear_trace":
-        if contract is None:
-            input_text = "; no contract example is recorded"
-        else:
-            compact = json.dumps(contract, sort_keys=True, separators=(",", ":"))
-            input_text = f"; contract example <code>{esc(compact)}</code>"
     return (
         f'<p class="typology"><span class="term">Computed structure:</span> '
-        f'<code>{row.structural_class}</code>. {esc(gloss)}{input_text}. {esc(counts)}.</p>'
+        f'<code>{row.structural_class}</code>. {esc(gloss)}. {esc(counts)}.</p>'
     )
 
 
@@ -272,19 +340,21 @@ def attestation_line(machine: Machine, attestations: dict[tuple[str, str], list[
 
 def machine_section(
     machine: Machine,
+    entry_number: int,
     labels: dict[str, list[tuple[str, str, str]]],
-    contracts: dict[tuple[str, str], dict[str, object]],
+    contracts: dict[tuple[str, str], InputContract],
     attestations: dict[tuple[str, str], list[tuple[str, str]]],
 ) -> str:
     key = (machine.family, machine.kind)
     return f"""
 <article class="machine" id="{esc(machine.family)}-{esc(machine.kind)}">
-<h3><code>{esc(machine.kind)}</code></h3>
+<h3><span class="entry-number">{entry_number}.</span> <code>{esc(machine.kind)}</code></h3>
 {tuple_block(machine, labels)}
-<h4>\\(\\delta\\): recorded transitions</h4>
-{transition_table(machine)}
+{contract_line(contracts.get(key))}
+<h4><i>δ</i>: recorded transitions</h4>
+{transition_table(machine, contracts.get(key))}
 <figure class="diagram"><img src="assets/automata/{esc(machine.family)}/{esc(machine.kind)}.svg" alt="State diagram for {esc(machine.family)} {esc(machine.kind)}"></figure>
-{typology_line(machine, contracts.get(key))}
+{typology_line(machine)}
 {attestation_line(machine, attestations)}
 </article>"""
 
@@ -341,15 +411,44 @@ def atlas_section(rows: list[AtlasRow]) -> str:
         body.append(
             f"<tr><td><code>{esc(row.family)}/{esc(row.kind)}</code></td><td>{validity}</td>"
             f'<td class="numeric">{row.coincide} / {row.ran} ({row.rate}%)</td>'
-            f"<td>{sample_text(row.sample)}</td><td>{atlas_separation(row)}</td></tr>"
+            f"<td>{sample_text(row.sample_coincide)}</td>"
+            f"<td>{sample_text(row.sample_separate)}</td>"
+            f"<td>{atlas_separation(row)}</td></tr>"
         )
     return f"""
 <section id="coincidence-atlas">
 <h2>Coincidence atlas</h2>
 <p>A deformation pair <em>(f, g)</em> coincides on the equalizer of the pair, the inputs where <em>f(x) = g(x)</em>. These profiles measure samples of those sets on finite grids; they are not proofs over every input.</p>
 <p>A recognizer may charge a misconception only on inputs where the deformation separates. A problem set teaches against a misconception only on inputs where it separates.</p>
-<table class="atlas"><thead><tr><th>Kind</th><th>Validity label</th><th>Measured coincidence</th><th>Sample coinciding input</th><th>Separation</th></tr></thead><tbody>{"".join(body)}</tbody></table>
+<div class="table-scroll"><table class="atlas"><thead><tr><th>Kind</th><th>Validity label</th><th>Measured coincidence</th><th>Sample coinciding input</th><th>Sample separating input</th><th>Separation</th></tr></thead><tbody>{"".join(body)}</tbody></table></div>
 </section>"""
+
+
+def contents(grouped: dict[str, list[Machine]]) -> str:
+    families = []
+    for family in sorted(grouped):
+        kinds = "".join(
+            f'<li><a href="#{esc(machine.family)}-{esc(machine.kind)}"><code>{esc(machine.kind)}</code></a></li>'
+            for machine in sorted(grouped[family], key=lambda row: row.kind)
+        )
+        families.append(
+            f'<section class="contents-family"><h3><a href="#family-{esc(family)}">{esc(family)}</a></h3>'
+            f'<ol>{kinds}</ol></section>'
+        )
+    return (
+        '<nav class="contents" aria-labelledby="contents-heading">'
+        '<h2 id="contents-heading">Contents</h2>'
+        f'<div class="contents-grid">{"".join(families)}</div></nav>'
+    )
+
+
+def root_palette() -> str:
+    properties = palette()
+    colors = ";".join(f"--{name}:{value}" for name, value in properties.items())
+    return (
+        f":root{{{colors};--line:color-mix(in srgb,var(--ink) 20%,transparent);"
+        "--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}"
+    )
 
 
 def generate_compendium() -> str:
@@ -364,8 +463,10 @@ def generate_compendium() -> str:
     family_sections = []
     for family in sorted(grouped):
         kinds = "\n".join(
-            machine_section(machine, labels, contracts, attestations)
-            for machine in sorted(grouped[family], key=lambda row: row.kind)
+            machine_section(machine, index, labels, contracts, attestations)
+            for index, machine in enumerate(
+                sorted(grouped[family], key=lambda row: row.kind), start=1
+            )
         )
         family_sections.append(
             f'<section class="family" id="family-{esc(family)}"><h2>{esc(family)}</h2>{kinds}</section>'
@@ -382,16 +483,19 @@ def generate_compendium() -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hermes automata compendium</title>
 <style>
-:root{{--paper:#f4ead6;--surface:#fffef9;--warm:#ebdfc5;--cool:#ede4cf;--ink:#0d0c08;--muted:#665f4f;--gold:#d4a747;--gold-deep:#a97c24;--rust:#b95238;--line:rgba(13,12,8,.2);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace}}
-*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:82ch}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.45rem;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.35rem}} h3{{font-size:1.05rem;margin:0 0 1rem}} h4{{font-size:.92rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} .machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--warm);color:var(--muted);font-weight:normal}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .transitions{{display:block;max-height:28rem;overflow:auto}} .transitions thead{{position:sticky;top:0}} .provenance.observed{{color:var(--gold-deep)}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:none}} .typology,.attestation{{max-width:none;background:var(--cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1rem;max-width:900px}} .legend-list dt{{font-family:var(--mono)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}.machine{{padding:.75rem}}}}
+{root_palette()}
+*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} .machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}.machine{{padding:.75rem}}}}
 </style>
 <script>window.MathJax={{tex:{{inlineMath:[["\\(","\\)"]]}}}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body><main>
+<header class="page-header"><h1>Hermes automata compendium</h1>
 <p class="lede">This compendium records the finite transition-table corpus as five-tuples, tables, and state diagrams. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
+</header>
+{contents(grouped)}
 <section id="legend"><h2>Legend</h2>
-<p>Each entry writes \\(M=(Q,\\Sigma,\\delta,q_0,F)\\): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. Solid edges are static rows extracted from source; dashed gold edges are bounded observations from a contract example or derived template.</p>
+<p>Each entry writes \\(M=(Q,\\Sigma,\\delta,q_0,F)\\): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. Solid dark edges occur only in static rows extracted from source. Dashed gold edges occur only in bounded observations. Solid gold edges have both static and observed provenance. The gold arrow entering <i>q</i><sub>0</sub> marks the start state.</p>
 <dl class="legend-list"><dt>linear_trace</dt><dd>{CLASS_GLOSSES["linear_trace"]}.</dd><dt>branching</dt><dd>{CLASS_GLOSSES["branching"]}.</dd><dt>looping</dt><dd>{CLASS_GLOSSES["looping"]}.</dd><dt>branching_looping</dt><dd>{CLASS_GLOSSES["branching_looping"]}.</dd></dl>
 <p>Computed structure reports only the table graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
 </section>

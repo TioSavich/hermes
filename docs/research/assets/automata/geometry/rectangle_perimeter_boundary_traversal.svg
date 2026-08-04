@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1374" height="384" viewBox="0 0 1374 384" role="img" aria-labelledby="title desc">
   <title id="title">geometry / rectangle_perimeter_boundary_traversal</title>
-  <desc id="desc">State diagram generated from static and observed transition-table rows.</desc>
+  <desc id="desc">Solid dark edges have static provenance only; dashed gold edges have observed provenance only; solid gold edges have both static and observed provenance.</desc>
   <defs>
     <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
     <marker id="arrow-observed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
+    <marker id="arrow-combined" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
   </defs>
   <rect width="100%" height="100%" fill="#f4ead6"/>
-  <path d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <path d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.0" y="104.0">establish_rectangle</tspan></text>
-  <path d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <path d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="453.0" y="104.0">traverse_side</tspan></text>
-  <path d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <path d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="683.0" y="104.0">traverse_side</tspan></text>
-  <path d="M 850.0 112.0 L 976.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <path d="M 850.0 112.0 L 976.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.2" fill="#665f4f"><tspan x="913.0" y="104.0">traverse_opposite_side</tspan></text>
-  <path d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <path d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.2" fill="#665f4f"><tspan x="1143.0" y="104.0">traverse_opposite_side</tspan></text>
-  <path d="M 1214.5 118.6 C 1352.0 118.6, 1352.0 264.3, 167.5 264.3" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <path d="M 1214.5 118.6 C 1352.0 118.6, 1352.0 264.3, 167.5 264.3" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="691.0" y="185.9">accumulate_boundary_</tspan><tspan x="691.0" y="196.9">length</tspan></text>
+  <path class="edge-static-observed" d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="223.0" y="92.0">establish_rectangle</tspan></text>
+  <path class="edge-static-observed" d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="453.0" y="92.0">traverse_side</tspan></text>
+  <path class="edge-static-observed" d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="683.0" y="92.0">traverse_side</tspan></text>
+  <path class="edge-static-observed" d="M 850.0 112.0 L 976.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="913.0" y="81.0">traverse_opposite_</tspan><tspan x="913.0" y="92.0">side</tspan></text>
+  <path class="edge-static-observed" d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="1143.0" y="81.0">traverse_opposite_</tspan><tspan x="1143.0" y="92.0">side</tspan></text>
+  <path class="edge-static-observed" d="M 1214.5 118.6 C 1352.0 118.6, 1352.0 264.3, 167.5 264.3" fill="none" stroke="#d4a747" stroke-width="2.2" marker-end="url(#arrow-combined)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="691.0" y="158.4">accumulate_boundary_</tspan><tspan x="691.0" y="169.4">length</tspan></text>
   <path d="M 16.0 112.0 L 56.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.5" marker-end="url(#arrow-observed)"/>
   <circle cx="112.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
   <text x="112.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_start</text>

@@ -114,25 +114,40 @@ def edge_path(
             f"C {x1 - 72:.1f} {y1 - 104:.1f}, {x1 + 72:.1f} {y1 - 104:.1f}, "
             f"{x1 + 23:.1f} {y1 - 42:.1f}"
         )
-        return path, x1, y1 - 99
+        return path, x1, y1 - 58
     sx, sy, tx, ty = shortened_line((x1, y1), (x2, y2))
     if loop:
         lift = max(75.0, abs(x2 - x1) * 0.22)
         path = f"M {sx:.1f} {sy:.1f} Q {(sx + tx) / 2:.1f} {min(sy, ty) - lift:.1f} {tx:.1f} {ty:.1f}"
-        return path, (sx + tx) / 2, min(sy, ty) - lift + 14
+        return path, (sx + tx) / 2, min(sy, ty) - 12
     if x2 < x1 and y2 > y1:
         bend = max(x1, x2) + 90
         path = f"M {sx:.1f} {sy:.1f} C {bend:.1f} {sy:.1f}, {bend:.1f} {ty:.1f}, {tx:.1f} {ty:.1f}"
-        return path, (sx + tx) / 2, (sy + ty) / 2
+        return path, (sx + tx) / 2, (sy + ty) / 2 - 22
     path = f"M {sx:.1f} {sy:.1f} L {tx:.1f} {ty:.1f}"
-    return path, (sx + tx) / 2, (sy + ty) / 2 - 8
+    dx, dy = tx - sx, ty - sy
+    distance = math.hypot(dx, dy) or 1.0
+    normal_x, normal_y = -dy / distance, dx / distance
+    if normal_y > 0:
+        normal_x, normal_y = -normal_x, -normal_y
+    label_offset = 20.0
+    return (
+        path,
+        (sx + tx) / 2 + normal_x * label_offset,
+        (sy + ty) / 2 + normal_y * label_offset,
+    )
 
 
-def text_size(atom: str, maximum: float = 12.0, target_width: float = 84.0) -> float:
-    return max(6.0, min(maximum, target_width / (max(1, len(atom)) * 0.62)))
+def text_size(
+    atom: str,
+    maximum: float = 12.0,
+    target_width: float = 84.0,
+    minimum: float = 6.0,
+) -> float:
+    return max(minimum, min(maximum, target_width / (max(1, len(atom)) * 0.62)))
 
 
-def wrap_atom(atom: str, limit: int = 24) -> list[str]:
+def wrap_atom(atom: str, limit: int = 20) -> list[str]:
     """Wrap a full atom at underscores without dropping any characters."""
     if len(atom) <= limit:
         return [atom]
@@ -154,17 +169,18 @@ def wrap_atom(atom: str, limit: int = 24) -> list[str]:
     return lines
 
 
-def edge_label(atom: str, x: float, y: float, color: str) -> str:
+def edge_label(atom: str, x: float, y: float, color: str, background: str) -> str:
     lines = wrap_atom(atom)
-    size = text_size(max(lines, key=len), 9.5, 126.0)
-    first_y = y - (len(lines) - 1) * (size + 1.5) / 2
+    size = text_size(max(lines, key=len), 9.5, 126.0, minimum=9.0)
+    first_y = y - (len(lines) - 1) * (size + 1.5)
     tspans = "".join(
         f'<tspan x="{x:.1f}" y="{first_y + index * (size + 1.5):.1f}">{html.escape(line)}</tspan>'
         for index, line in enumerate(lines)
     )
     return (
         f'  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" '
-        f'font-size="{size:.1f}" fill="{color}">{tspans}</text>'
+        f'font-size="{size:.1f}" fill="{color}" stroke="{background}" '
+        f'stroke-width="5" stroke-linejoin="round" paint-order="stroke fill">{tspans}</text>'
     )
 
 
@@ -185,7 +201,11 @@ def render_svg(row: Structure, colors: dict[str, str] | None = None) -> str:
             f'aria-labelledby="title desc">'
         ),
         f"  <title id=\"title\">{html.escape(machine.family)} / {html.escape(machine.kind)}</title>",
-        f"  <desc id=\"desc\">State diagram generated from static and observed transition-table rows.</desc>",
+        (
+            '  <desc id="desc">Solid dark edges have static provenance only; '
+            'dashed gold edges have observed provenance only; solid gold edges '
+            'have both static and observed provenance.</desc>'
+        ),
         "  <defs>",
         (
             f'    <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" '
@@ -197,6 +217,11 @@ def render_svg(row: Structure, colors: dict[str, str] | None = None) -> str:
             f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
             f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["gold"]}"/></marker>'
         ),
+        (
+            f'    <marker id="arrow-combined" viewBox="0 0 10 10" refX="9" refY="5" '
+            f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
+            f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["gold"]}"/></marker>'
+        ),
         "  </defs>",
         f'  <rect width="100%" height="100%" fill="{colors["paper"]}"/>',
     ]
@@ -204,16 +229,26 @@ def render_svg(row: Structure, colors: dict[str, str] | None = None) -> str:
     for before, action, after in sorted(grouped):
         path, label_x, label_y = edge_path(before, after, placed, (before, action, after) in loops)
         sources = grouped[(before, action, after)]
-        if "static" in sources:
-            out.append(
-                f'  <path d="{path}" fill="none" stroke="{colors["ink"]}" stroke-width="2.2" marker-end="url(#arrow-static)"/>'
-            )
-        if "observed" in sources:
-            out.append(
-                f'  <path d="{path}" fill="none" stroke="{colors["gold"]}" stroke-width="2.2" '
-                f'stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>'
-            )
-        out.append(edge_label(action, label_x, label_y, colors["muted"]))
+        if sources == {"static"}:
+            edge_class = "edge-static"
+            stroke = colors["ink"]
+            dash = ""
+            marker = "arrow-static"
+        elif sources == {"observed"}:
+            edge_class = "edge-observed"
+            stroke = colors["gold"]
+            dash = ' stroke-dasharray="8 6"'
+            marker = "arrow-observed"
+        else:
+            edge_class = "edge-static-observed"
+            stroke = colors["gold"]
+            dash = ""
+            marker = "arrow-combined"
+        out.append(
+            f'  <path class="{edge_class}" d="{path}" fill="none" stroke="{stroke}" '
+            f'stroke-width="2.2"{dash} marker-end="url(#{marker})"/>'
+        )
+        out.append(edge_label(action, label_x, label_y, colors["muted"], colors["paper"]))
 
     start_x, start_y = placed[machine.start]
     out.append(

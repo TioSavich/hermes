@@ -8,11 +8,12 @@
 #
 # The order is a dependency order, not an alphabetical one:
 #
-#   transition_tables    reads the automata source
-#   action_grammar       reads the transition tables and the vocabulary map
-#   corpus_window        reads the tables, the grammar, and the vocabulary map
-#   capability_registry  reads the module headers
-#   the remaining four   read whatever is above them
+#   transition_tables                   reads the automata source
+#   machine_typology, SVGs, compendium  read the transition tables in sequence
+#   action_grammar                      reads the tables and vocabulary map
+#   corpus_window                       reads the tables, grammar, and vocabulary
+#   capability_registry                 reads the module headers
+#   the remaining builders              read whatever is above them
 #
 # Run this after any change to an automaton, to the vocabulary map, or to a
 # dispatch spec. Then run scripts/checks/run_all.sh.
@@ -33,6 +34,9 @@ cd "$(dirname "$0")/.." || exit 2
 BUILDERS=(
     # source-derived: read the automata and the module headers
     "scripts/research/build_transition_tables.py"
+    "scripts/research/build_machine_typology.py"
+    "scripts/research/render_automaton_svg.py"
+    "scripts/research/build_automata_compendium.py"
     "scripts/extract_capability_registry.py"
     "scripts/extract_machine_block_decomposition.py"
     # grammar and index: read the tables and the vocabulary map

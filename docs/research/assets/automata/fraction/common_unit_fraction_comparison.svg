@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1374" height="912" viewBox="0 0 1374 912" role="img" aria-labelledby="title desc">
   <title id="title">fraction / common_unit_fraction_comparison</title>
-  <desc id="desc">State diagram generated from static and observed transition-table rows.</desc>
+  <desc id="desc">Solid dark edges have static provenance only; dashed gold edges have observed provenance only; solid gold edges have both static and observed provenance.</desc>
   <defs>
     <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
     <marker id="arrow-observed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
+    <marker id="arrow-combined" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
   </defs>
   <rect width="100%" height="100%" fill="#f4ead6"/>
-  <path d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="453.0" y="104.0">shared_numerator</tspan></text>
-  <path d="M 1216.9 128.5 C 1352.0 128.5, 1352.0 512.8, 164.6 512.8" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="690.8" y="315.1">inverse_denominator_</tspan><tspan x="690.8" y="326.1">relation</tspan></text>
-  <path d="M 160.0 532.0 L 286.0 532.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.0" y="524.0">emit</tspan></text>
-  <path d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.0" y="104.0">init</tspan></text>
-  <path d="M 151.4 139.4 L 296.0 240.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.7" y="181.7">init</tspan></text>
-  <path d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="1143.0" y="98.5">same_count_different_</tspan><tspan x="1143.0" y="109.5">unit_sizes</tspan></text>
-  <path d="M 390.0 272.0 L 516.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="453.0" y="264.0">common_denominator</tspan></text>
-  <path d="M 620.0 272.0 L 746.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="683.0" y="264.0">transformed</tspan></text>
-  <path d="M 850.0 272.0 L 976.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="913.0" y="264.0">transformed</tspan></text>
-  <path d="M 1080.0 272.0 L 1206.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="1143.0" y="264.0">co_measure</tspan></text>
-  <path d="M 1216.9 288.5 C 1352.0 288.5, 1352.0 672.8, 164.6 672.8" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="690.8" y="480.6">compare_counts</tspan></text>
-  <path d="M 151.4 664.6 L 296.0 564.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.7" y="606.3">emit</tspan></text>
-  <path d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="683.0" y="104.0">unchanged</tspan></text>
-  <path d="M 850.0 112.0 L 976.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
-  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="913.0" y="104.0">unchanged</tspan></text>
+  <path class="edge-static" d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="453.0" y="92.0">shared_numerator</tspan></text>
+  <path class="edge-static" d="M 1216.9 128.5 C 1352.0 128.5, 1352.0 512.8, 164.6 512.8" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="690.8" y="287.6">inverse_denominator_</tspan><tspan x="690.8" y="298.6">relation</tspan></text>
+  <path class="edge-static" d="M 160.0 532.0 L 286.0 532.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="223.0" y="512.0">emit</tspan></text>
+  <path class="edge-static" d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="223.0" y="92.0">init</tspan></text>
+  <path class="edge-observed" d="M 151.4 139.4 L 296.0 240.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="235.1" y="173.3">init</tspan></text>
+  <path class="edge-static" d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="1143.0" y="81.0">same_count_</tspan><tspan x="1143.0" y="92.0">different_unit_sizes</tspan></text>
+  <path class="edge-observed" d="M 390.0 272.0 L 516.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="453.0" y="252.0">common_denominator</tspan></text>
+  <path class="edge-observed" d="M 620.0 272.0 L 746.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="683.0" y="252.0">transformed</tspan></text>
+  <path class="edge-observed" d="M 850.0 272.0 L 976.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="913.0" y="252.0">transformed</tspan></text>
+  <path class="edge-observed" d="M 1080.0 272.0 L 1206.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="1143.0" y="252.0">co_measure</tspan></text>
+  <path class="edge-observed" d="M 1216.9 288.5 C 1352.0 288.5, 1352.0 672.8, 164.6 672.8" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="690.8" y="458.6">compare_counts</tspan></text>
+  <path class="edge-observed" d="M 151.4 664.6 L 296.0 564.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="212.3" y="597.9">emit</tspan></text>
+  <path class="edge-static" d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="683.0" y="92.0">unchanged</tspan></text>
+  <path class="edge-static" d="M 850.0 112.0 L 976.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f" stroke="#f4ead6" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill"><tspan x="913.0" y="92.0">unchanged</tspan></text>
   <path d="M 16.0 112.0 L 56.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.5" marker-end="url(#arrow-observed)"/>
   <circle cx="112.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
   <text x="112.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_init</text>
