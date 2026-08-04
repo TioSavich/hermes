@@ -653,6 +653,7 @@ def generate_compendium_pages() -> dict[Path, str]:
     hub_body = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
 <p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and tables. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
 <p>The corpus is split by family so each page stays within what a browser can paint.</p>
+<p><a href="automata-graph.html">Open the 3D automata graph</a> to read all 222 computational machines in one authored pedagogical order.</p>
 </header>
 {contents(grouped)}
 {legend_section()}

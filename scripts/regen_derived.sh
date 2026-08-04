@@ -9,7 +9,8 @@
 # The order is a dependency order, not an alphabetical one:
 #
 #   transition_tables                   reads the automata source
-#   machine_typology, SVGs, compendium  read the transition tables in sequence
+#   machine_typology, SVGs, compendium, full graph
+#                                       read the transition tables in sequence
 #   action_grammar                      reads the tables and vocabulary map
 #   corpus_window                       reads the tables, grammar, and vocabulary
 #   capability_registry                 reads the module headers
@@ -38,6 +39,7 @@ BUILDERS=(
     "scripts/research/render_automaton_svg.py"
     "scripts/research/render_automaton_context_svg.py"
     "scripts/research/build_automata_compendium.py"
+    "scripts/research/build_full_graph_json.py"
     "scripts/extract_capability_registry.py"
     "scripts/extract_machine_block_decomposition.py"
     # grammar and index: read the tables and the vocabulary map
