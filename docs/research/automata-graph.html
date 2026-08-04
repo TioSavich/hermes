@@ -45,7 +45,7 @@
   <p class="selection" id="selection">No machine pinned.</p>
   <div class="legend" aria-label="Graph legend">
     <span><i class="swatch conserving"></i>conserving transition</span>
-    <span><i class="swatch deforming"></i>deforming transition</span>
+    <span><i class="swatch deforming"></i>deforming transition; rust line and target ring</span>
     <span><i class="swatch neutral"></i>neutral transition</span>
     <span><i class="swatch borrow"></i>shared canonical action</span>
   </div>
@@ -288,6 +288,7 @@
     var target = edge.target.projected;
     var alpha = alphaForDepth(Math.min(source.scale, target.scale), 0.38);
     var width = 0.8;
+    if (!pinnedMachine && edge.stance === 'neutral') alpha *= 0.38;
     if (pinnedMachine) {
       if (edge.machine === pinnedMachine) {
         alpha = 0.96;
@@ -305,6 +306,34 @@
     ctx.moveTo(source.x, source.y);
     ctx.lineTo(target.x, target.y);
     ctx.stroke();
+  }
+
+  function drawDeformingOverlay(deformingEdges) {
+    var targets = new Map();
+    ctx.lineCap = 'round';
+    deformingEdges.forEach(function (edge) {
+      var source = edge.source.projected;
+      var target = edge.target.projected;
+      setStroke(palette.rust, 1, edge.machine === pinnedMachine ? 2.8 : 2.2);
+      ctx.beginPath();
+      ctx.moveTo(source.x, source.y);
+      ctx.lineTo(target.x, target.y);
+      ctx.stroke();
+      targets.set(edge.target.id, edge.target);
+    });
+    ctx.lineCap = 'butt';
+    ctx.globalAlpha = 0.82;
+    ctx.strokeStyle = palette.rust;
+    ctx.lineWidth = 1.35;
+    targets.forEach(function (node) {
+      var point = node.projected;
+      var nodeRadius = Math.max(1.15, 1.65 * point.scale);
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, nodeRadius + 3.1, 0, Math.PI * 2);
+      ctx.stroke();
+    });
+    diagnostics.deformingEdges = deformingEdges.length;
+    diagnostics.deformingTargets = targets.size;
   }
 
   function drawNode(node, pinnedActions, borrowedMachines) {
@@ -388,11 +417,17 @@
     }
     var borrowedMachines = new Set();
     var borrowCounts = drawBorrowSegments(projectedMachines, pinnedActions, borrowedMachines);
-    edges.slice().sort(function (a, b) {
+    var orderedEdges = edges.slice().sort(function (a, b) {
       return ((b.source.projected.depth + b.target.projected.depth) -
               (a.source.projected.depth + a.target.projected.depth));
-    }).forEach(function (edge) { drawEdge(edge, pinnedActions, borrowedMachines); });
+    });
+    var deformingEdges = [];
+    orderedEdges.forEach(function (edge) {
+      if (edge.stance === 'deforming') deformingEdges.push(edge);
+      else drawEdge(edge, pinnedActions, borrowedMachines);
+    });
     lastProjected.forEach(function (node) { drawNode(node, pinnedActions, borrowedMachines); });
+    drawDeformingOverlay(deformingEdges);
     drawLabels(projectedMachines);
     ctx.globalAlpha = 1;
     diagnostics.lastRenderMs = performance.now() - started;
