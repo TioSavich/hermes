@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="684" height="492" viewBox="0 0 684 492" role="img" aria-labelledby="title desc">
+  <title id="title">statistics / distribution_summary_selection</title>
+  <desc id="desc">State diagram generated from static and observed transition-table rows.</desc>
+  <defs>
+    <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
+    <marker id="arrow-observed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <path d="M 390.0 272.0 L 516.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" fill="#665f4f"><tspan x="453.0" y="264.0">inspect_declared_profile</tspan></text>
+  <path d="M 572.0 224.0 L 572.0 168.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="572.0" y="182.5">select_mean_and_mean_</tspan><tspan x="572.0" y="193.5">absolute_deviation</tspan></text>
+  <path d="M 151.4 139.4 L 296.0 240.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.7" y="181.7">preserve_data_set</tspan></text>
+  <path d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.0" y="104.0">preserve_data_set</tspan></text>
+  <path d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" fill="#665f4f"><tspan x="453.0" y="104.0">inspect_declared_profile</tspan></text>
+  <path d="M 16.0 112.0 L 56.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.5" marker-end="url(#arrow-observed)"/>
+  <circle cx="112.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="112.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_start</text>
+  <circle cx="342.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="342.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_1</text>
+  <circle cx="572.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <circle cx="572.0" cy="112.0" r="42.0" fill="none" stroke="#0d0c08" stroke-width="1.6"/>
+  <text x="572.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_accept</text>
+  <circle cx="342.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="342.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_1</text>
+  <circle cx="572.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="572.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_2</text>
+</svg>

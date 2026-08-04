@@ -30,6 +30,7 @@ run pedagogical_questions_check.py python3 "$CHECKS_DIR/pedagogical_questions_ch
 run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/strategy_recognizer.pl" -g main -t halt
 run mobius_band_readers.py  python3 "$CHECKS_DIR/mobius_band_readers.py"
 run transition_tables.py    python3 "$CHECKS_DIR/transition_tables.py"
+run automata_compendium.py  python3 "$CHECKS_DIR/automata_compendium.py"
 run vocabulary_licenses.py  python3 "$CHECKS_DIR/vocabulary_licenses.py"
 run action_vocabulary_map.py python3 "$CHECKS_DIR/action_vocabulary_map.py"
 run action_grammar.py       python3 "$CHECKS_DIR/action_grammar.py"

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1374" height="752" viewBox="0 0 1374 752" role="img" aria-labelledby="title desc">
+  <title id="title">counting / recursive_place_value_inscription</title>
+  <desc id="desc">State diagram generated from static and observed transition-table rows.</desc>
+  <defs>
+    <marker id="arrow-static" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
+    <marker id="arrow-observed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <path d="M 390.0 272.0 L 516.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="453.0" y="264.0">establish_base</tspan></text>
+  <path d="M 1008.9 489.9 L 828.9 161.1" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.8" fill="#665f4f"><tspan x="918.9" y="317.5">preserve_positional_sum</tspan></text>
+  <path d="M 620.0 272.0 L 746.0 272.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="683.0" y="258.5">recollect_completed_</tspan><tspan x="683.0" y="269.5">base_cycles</tspan></text>
+  <path d="M 841.4 244.6 L 986.0 144.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="913.7" y="186.3">establish_referent</tspan></text>
+  <path d="M 1080.0 112.0 L 1206.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="1143.0" y="104.0">establish_base</tspan></text>
+  <path d="M 1216.9 128.5 C 1352.0 128.5, 1352.0 512.8, 164.6 512.8" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="690.8" y="320.6">establish_sign</tspan></text>
+  <path d="M 160.0 532.0 L 286.0 532.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.0" y="524.0">establish_radix</tspan></text>
+  <path d="M 390.0 532.0 L 516.0 532.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="453.0" y="524.0">execute_place</tspan></text>
+  <path d="M 620.0 532.0 L 746.0 532.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="683.0" y="524.0">execute_place</tspan></text>
+  <path d="M 850.0 532.0 L 976.0 532.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="913.0" y="524.0">execute_place</tspan></text>
+  <path d="M 151.4 139.4 L 296.0 240.0" fill="none" stroke="#d4a747" stroke-width="2.2" stroke-dasharray="8 6" marker-end="url(#arrow-observed)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.7" y="181.7">establish_cardinality</tspan></text>
+  <path d="M 160.0 112.0 L 286.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="223.0" y="104.0">establish_cardinality</tspan></text>
+  <path d="M 390.0 112.0 L 516.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="453.0" y="104.0">establish_base</tspan></text>
+  <path d="M 620.0 112.0 L 746.0 112.0" fill="none" stroke="#0d0c08" stroke-width="2.2" marker-end="url(#arrow-static)"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#665f4f"><tspan x="683.0" y="98.5">recollect_completed_</tspan><tspan x="683.0" y="109.5">base_cycles</tspan></text>
+  <path d="M 16.0 112.0 L 56.0 112.0" fill="none" stroke="#d4a747" stroke-width="2.5" marker-end="url(#arrow-observed)"/>
+  <circle cx="112.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="112.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_start</text>
+  <circle cx="342.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="342.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_1</text>
+  <circle cx="572.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="572.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_step_2</text>
+  <circle cx="802.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <circle cx="802.0" cy="112.0" r="42.0" fill="none" stroke="#0d0c08" stroke-width="1.6"/>
+  <text x="802.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.0" fill="#0d0c08">q_accept</text>
+  <circle cx="342.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="342.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_1</text>
+  <circle cx="572.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="572.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_2</text>
+  <circle cx="802.0" cy="272.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="802.0" y="276.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_3</text>
+  <circle cx="1032.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="1032.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_4</text>
+  <circle cx="1262.0" cy="112.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="1262.0" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_5</text>
+  <circle cx="112.0" cy="532.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="112.0" y="536.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_6</text>
+  <circle cx="342.0" cy="532.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="342.0" y="536.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_7</text>
+  <circle cx="572.0" cy="532.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="572.0" y="536.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_8</text>
+  <circle cx="802.0" cy="532.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="802.0" y="536.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.3" fill="#0d0c08">q_observed_9</text>
+  <circle cx="1032.0" cy="532.0" r="48.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2.2"/>
+  <text x="1032.0" y="536.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.4" fill="#0d0c08">q_observed_10</text>
+</svg>
