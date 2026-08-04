@@ -39,6 +39,7 @@ EMBEDDING_ARTIFACTS = (
 EMBEDDING_REBUILD = "python3 scripts/research/misconception_embedding.py build"
 REGISTRY_ARTIFACT = "hermes/capability_registry.pl"
 REGISTRY_REBUILD = "python3 scripts/extract_capability_registry.py"
+FULL_GRAPH_ARTIFACT = "docs/research/assets/automata/full_graph.json"
 
 CORE_TO_WORKER = {
     "prolog_query": "prolog_query",
@@ -92,11 +93,14 @@ CORE_TOOLS = (
     ("incompatibility_contexts", "Enumerate the reviewed a-fortiori context nestings: strict input-class inclusions (narrow, broad, status, warrant) with native-triple counts at each end. These rows generate the strict register's context-earned entailments; basis prose and automaton status live in formal/incompatibility/a_fortiori_context_nestings.json. Optional context filters to rows touching one atom and reports not_covered when the atom touches none. This bounded reviewed inventory has no pagination; add limit and offset if it grows past about 100 rows. Distinct from incompatibility_entailments, which checks one replacement/replaced pair against live finite profiles.", ("context",)),
 )
 
-# This public core tool is intentionally outside Task 240's frozen branch
-# catalog. The query primitive is available to MCP callers, while deciding how
-# a branch-agent loop consumes it remains a later task.
+# These public core tools are intentionally outside Task 240's frozen branch
+# catalog. They are available to MCP callers without changing the branch-agent
+# carving.
 CORE_STANDALONE_TOOLS = (
     ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
+    ("graph_overview", "Return the full computational graph's scope, authored level ladder, counts, and per-family inventory. The level ladder is authored rather than derived from the transition tables. This reads the shipped JSON artifact without starting the Prolog worker.", ()),
+    ("graph_machine", "Return one machine's states, transitions, and shared canonical-action summary from the full computational graph. A borrow records a shared canonical action name; it does not assert that two machines, transitions, or mathematical practices are equivalent.", ("family", "kind")),
+    ("graph_borrows", "Return borrow pairs for one canonical action or one family-and-kind machine. A borrow records only that transition edges share a canonical action name. It does not assert equivalence, prerequisite order, or a learner relation. Results are paged; cross_family_only restricts pairs before paging.", ("canonical_action", "family", "kind", "cross_family_only", "limit", "offset")),
 )
 
 
@@ -177,6 +181,21 @@ def output_schema(name: str) -> dict[str, Any] | None:
             "required": ["kind", "status"],
             "properties": {"kind": {"type": "string"}, "status": {"type": "string"}},
         },
+        "graph_overview": {
+            "type": "object",
+            "required": ["meta", "counts", "families"],
+            "properties": {"meta": {"type": "object"}, "counts": {"type": "object"}, "families": {"type": "array"}},
+        },
+        "graph_machine": {
+            "type": "object",
+            "required": ["machine", "family", "kind", "states", "edges", "borrow_summary"],
+            "properties": {"machine": {"type": "string"}, "family": {"type": "string"}, "kind": {"type": "string"}, "states": {"type": "array"}, "edges": {"type": "array"}, "borrow_summary": {"type": "object"}},
+        },
+        "graph_borrows": {
+            "type": "object",
+            "required": ["query", "assertion", "totals", "page", "pairs"],
+            "properties": {"query": {"type": "object"}, "assertion": {"type": "string"}, "totals": {"type": "object"}, "page": {"type": "object"}, "pairs": {"type": "array"}},
+        },
     }
     return schemas.get(name)
 
@@ -193,7 +212,7 @@ def tool(name: str, description: str, parameters: tuple[str, ...] | list[str]) -
 
 def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy_contracts: list[dict[str, Any]]) -> dict[str, Any]:
     """Hand-authored tools can state the few JSON shapes their worker accepts."""
-    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer"}
+    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer", "cross_family_only": "boolean"}
     properties: dict[str, dict[str, Any]] = {}
     for parameter in parameters:
         kind = kinds.get(parameter, "string")
@@ -226,6 +245,20 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "file": {"type": "string", "description": "Case-insensitive knowledge-relative source-file substring for a listing call."},
             "arity": {"type": "integer", "minimum": 0, "description": "Exact predicate arity for a listing call."},
         }
+    elif name == "graph_machine":
+        properties = {
+            "family": {"type": "string", "minLength": 1, "description": "Exact machine family from graph_overview."},
+            "kind": {"type": "string", "minLength": 1, "description": "Exact machine kind within the family."},
+        }
+    elif name == "graph_borrows":
+        properties = {
+            "canonical_action": {"type": "string", "minLength": 1, "description": "Exact canonical action name. Do not combine this with family or kind."},
+            "family": {"type": "string", "minLength": 1, "description": "Exact machine family; supply kind with it. Do not combine it with canonical_action."},
+            "kind": {"type": "string", "minLength": 1, "description": "Exact machine kind; supply family with it. Do not combine it with canonical_action."},
+            "cross_family_only": {"type": "boolean", "description": "When true, retain only pairs whose machines have different families."},
+            "limit": {"type": "integer", "minimum": 1, "maximum": 100, "description": "Pair rows to return; defaults to 25 and cannot exceed 100."},
+            "offset": {"type": "integer", "minimum": 0, "description": "Zero-based pair offset; defaults to 0."},
+        }
     required: list[str] = []
     if name == "diagnose_error":
         required = ["domain", "input", "got"]
@@ -235,9 +268,16 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
     elif name == "lesson_enactment_run":
         required = ["lesson"]
         properties["lesson"] = {"type": "string", "minLength": 1, "description": "Exact IM lesson code returned by lesson_enactment_list."}
+    elif name == "graph_machine":
+        required = ["family", "kind"]
     input_schema: dict[str, Any] = {"type": "object", "properties": properties, "additionalProperties": False}
     if required:
         input_schema["required"] = required
+    if name == "graph_borrows":
+        input_schema["oneOf"] = [
+            {"required": ["canonical_action"]},
+            {"required": ["family", "kind"]},
+        ]
     entry = {"name": name, "description": description, "inputSchema": input_schema, **tool_metadata(name, read_only=True, idempotent=True)}
     if stable := output_schema(name):
         entry["outputSchema"] = stable
@@ -296,6 +336,7 @@ class HermesMCPServer:
         self.mode = mode
         self.root = root
         self.worker: PersistentPrologWorker | None = None
+        self._full_graph: dict[str, Any] | None = None
         self._strategy_contracts = self._load_strategy_contracts() if mode != "registry" else []
         self._startup_error: ToolCallError | None = None
         try:
@@ -487,6 +528,12 @@ class HermesMCPServer:
     def call(self, name: str, arguments: dict[str, Any]) -> Any:
         if self.mode == "registry":
             return self._worker_request(name, **arguments)
+        if name == "graph_overview":
+            return self.graph_overview()
+        if name == "graph_machine":
+            return self.graph_machine(arguments)
+        if name == "graph_borrows":
+            return self.graph_borrows(arguments)
         if name == "check_math_claim":
             term = arguments.get("term")
             if not isinstance(term, str) or not term.strip():
@@ -530,6 +577,286 @@ class HermesMCPServer:
                 kind="not_covered", extra={"suggestions": suggestions},
             )
         return value
+
+    def _load_full_graph(self) -> dict[str, Any]:
+        """Load the shipped graph artifact once without starting Prolog."""
+        if self._full_graph is not None:
+            return self._full_graph
+        graph_file = self.root / FULL_GRAPH_ARTIFACT
+        try:
+            value = json.loads(graph_file.read_text(encoding="utf-8"))
+        except FileNotFoundError as exc:
+            raise ToolCallError(
+                f"Full graph artifact {FULL_GRAPH_ARTIFACT} is missing.",
+                kind="worker_failure",
+            ) from exc
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ToolCallError(
+                f"Full graph artifact {FULL_GRAPH_ARTIFACT} is unavailable or invalid.",
+                kind="worker_failure",
+            ) from exc
+        if not isinstance(value, dict):
+            raise ToolCallError(
+                f"Full graph artifact {FULL_GRAPH_ARTIFACT} is invalid.",
+                kind="worker_failure",
+            )
+        self._full_graph = value
+        return value
+
+    @staticmethod
+    def _graph_rows(graph: dict[str, Any], name: str) -> list[dict[str, Any]]:
+        rows = graph.get(name)
+        if not isinstance(rows, list) or not all(isinstance(row, dict) for row in rows):
+            raise ToolCallError(
+                f"Full graph artifact {FULL_GRAPH_ARTIFACT} has an invalid {name} inventory.",
+                kind="worker_failure",
+            )
+        return rows
+
+    def graph_overview(self) -> dict[str, Any]:
+        graph = self._load_full_graph()
+        meta = graph.get("meta")
+        if not isinstance(meta, dict) or not isinstance(meta.get("counts"), dict):
+            raise ToolCallError(
+                f"Full graph artifact {FULL_GRAPH_ARTIFACT} has invalid meta counts.",
+                kind="worker_failure",
+            )
+        nodes = self._graph_rows(graph, "nodes")
+        family_machines: dict[str, set[str]] = {}
+        family_states: dict[str, int] = {}
+        family_levels: dict[str, set[int]] = {}
+        for node in nodes:
+            family = node.get("family")
+            kind = node.get("kind")
+            level = node.get("level")
+            if not isinstance(family, str) or not isinstance(kind, str) or not isinstance(level, int):
+                raise ToolCallError(
+                    f"Full graph artifact {FULL_GRAPH_ARTIFACT} has an invalid node identity.",
+                    kind="worker_failure",
+                )
+            family_machines.setdefault(family, set()).add(kind)
+            family_states[family] = family_states.get(family, 0) + 1
+            family_levels.setdefault(family, set()).add(level)
+        families: list[dict[str, Any]] = []
+        for family in family_machines:
+            levels = family_levels[family]
+            if len(levels) != 1:
+                raise ToolCallError(
+                    f"Full graph artifact {FULL_GRAPH_ARTIFACT} assigns multiple levels to family {family}.",
+                    kind="worker_failure",
+                )
+            families.append({
+                "family": family,
+                "level": next(iter(levels)),
+                "machine_count": len(family_machines[family]),
+                "state_count": family_states[family],
+            })
+        families.sort(key=lambda row: (row["level"], row["family"]))
+        counts = meta["counts"]
+        return {
+            "meta": {
+                "scope": meta.get("scope"),
+                "level_ladder": meta.get("level_ladder"),
+                "level_note": meta.get("level_note"),
+            },
+            "counts": {
+                "machines": counts.get("machines"),
+                "nodes": counts.get("nodes"),
+                "edges": counts.get("edges"),
+                "borrow_actions": counts.get("borrows"),
+                "borrow_pairs": counts.get("borrow_pairs"),
+                "cross_family_pairs": counts.get("cross_family_borrow_pairs"),
+            },
+            "families": families,
+        }
+
+    def graph_machine(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        family = arguments.get("family")
+        kind = arguments.get("kind")
+        if not isinstance(family, str) or not family.strip() or not isinstance(kind, str) or not kind.strip():
+            raise ToolCallError("graph_machine requires non-empty family and kind strings.", kind="malformed_input")
+        machine = f"{family}/{kind}"
+        graph = self._load_full_graph()
+        nodes = [
+            node for node in self._graph_rows(graph, "nodes")
+            if node.get("family") == family and node.get("kind") == kind
+        ]
+        if not nodes:
+            raise ToolCallError(f"Full graph has no machine named {machine!r}.", kind="not_covered")
+        nodes.sort(key=lambda node: (node.get("formal_index", 0), str(node.get("state", ""))))
+        node_states = {
+            node.get("id"): node.get("state")
+            for node in nodes
+            if isinstance(node.get("id"), str)
+        }
+        edges = [edge for edge in self._graph_rows(graph, "edges") if edge.get("machine") == machine]
+        edges.sort(key=lambda edge: str(edge.get("id", "")))
+        machine_edge_ids = {edge.get("id") for edge in edges}
+        borrow_actions: list[dict[str, Any]] = []
+        for borrow in self._graph_rows(graph, "borrows"):
+            pairs = [
+                pair for pair in borrow.get("pairs", [])
+                if isinstance(pair, dict) and machine in pair.get("machines", [])
+            ]
+            if not pairs:
+                continue
+            other_machines = sorted({
+                other
+                for pair in pairs
+                for other in pair.get("machines", [])
+                if isinstance(other, str) and other != machine
+            })
+            cross_family_machines = sorted({
+                other
+                for pair in pairs if pair.get("cross_family") is True
+                for other in pair.get("machines", [])
+                if isinstance(other, str) and other != machine
+            })
+            borrow_actions.append({
+                "canonical_action": borrow.get("canonical_action"),
+                "machine_edge_ids": sorted(
+                    edge_id for edge_id in borrow.get("edge_ids", []) if edge_id in machine_edge_ids
+                ),
+                "other_machine_count": len(other_machines),
+                "cross_family_machine_count": len(cross_family_machines),
+            })
+        borrow_actions.sort(key=lambda row: str(row["canonical_action"]))
+        return {
+            "machine": machine,
+            "family": family,
+            "kind": kind,
+            "level": nodes[0].get("level"),
+            "states": [
+                {
+                    "id": node.get("id"),
+                    "state": node.get("state"),
+                    "formal_index": node.get("formal_index"),
+                    "start": node.get("start"),
+                    "accepting": node.get("accepting"),
+                    "level": node.get("level"),
+                }
+                for node in nodes
+            ],
+            "edges": [
+                {
+                    "id": edge.get("id"),
+                    "from": edge.get("from"),
+                    "from_state": node_states.get(edge.get("from")),
+                    "to": edge.get("to"),
+                    "to_state": node_states.get(edge.get("to")),
+                    "local_action": edge.get("local_action"),
+                    "canonical_action": edge.get("canonical_action"),
+                    "stance": edge.get("stance"),
+                    "provenance_kinds": edge.get("provenance_kinds"),
+                }
+                for edge in edges
+            ],
+            "borrow_summary": {
+                "assertion": "A borrow records a shared canonical action name and does not assert equivalence between machines or transitions.",
+                "shared_canonical_action_count": len(borrow_actions),
+                "actions": borrow_actions,
+            },
+        }
+
+    def graph_borrows(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        canonical_action = arguments.get("canonical_action")
+        family = arguments.get("family")
+        kind = arguments.get("kind")
+        has_action = canonical_action is not None
+        has_machine_part = family is not None or kind is not None
+        if has_action == has_machine_part:
+            raise ToolCallError(
+                "graph_borrows requires either canonical_action or family with kind.",
+                kind="malformed_input",
+            )
+        if has_action:
+            if not isinstance(canonical_action, str) or not canonical_action.strip():
+                raise ToolCallError("graph_borrows canonical_action must be a non-empty string.", kind="malformed_input")
+            machine = None
+            query = {"canonical_action": canonical_action}
+        else:
+            if not isinstance(family, str) or not family.strip() or not isinstance(kind, str) or not kind.strip():
+                raise ToolCallError("graph_borrows requires non-empty family and kind strings.", kind="malformed_input")
+            machine = f"{family}/{kind}"
+            query = {"family": family, "kind": kind, "machine": machine}
+        cross_family_only = arguments.get("cross_family_only", False)
+        if not isinstance(cross_family_only, bool):
+            raise ToolCallError("graph_borrows cross_family_only must be boolean.", kind="malformed_input")
+        limit = arguments.get("limit", 25)
+        offset = arguments.get("offset", 0)
+        if not isinstance(limit, int) or isinstance(limit, bool) or not 1 <= limit <= 100:
+            raise ToolCallError("graph_borrows limit must be an integer between 1 and 100.", kind="malformed_input")
+        if not isinstance(offset, int) or isinstance(offset, bool) or offset < 0:
+            raise ToolCallError("graph_borrows offset must be a non-negative integer.", kind="malformed_input")
+
+        graph = self._load_full_graph()
+        edges = self._graph_rows(graph, "edges")
+        if canonical_action is not None:
+            action_edges = [edge for edge in edges if edge.get("canonical_action") == canonical_action]
+            if not action_edges:
+                raise ToolCallError(f"Full graph has no canonical action named {canonical_action!r}.", kind="not_covered")
+        else:
+            action_edges = [edge for edge in edges if edge.get("machine") == machine]
+            if not action_edges:
+                raise ToolCallError(f"Full graph has no machine named {machine!r}.", kind="not_covered")
+
+        pairs: list[dict[str, Any]] = []
+        for borrow in self._graph_rows(graph, "borrows"):
+            action = borrow.get("canonical_action")
+            if canonical_action is not None and action != canonical_action:
+                continue
+            for pair in borrow.get("pairs", []):
+                if not isinstance(pair, dict) or (machine is not None and machine not in pair.get("machines", [])):
+                    continue
+                machines = pair.get("machines", [])
+                edge_groups = pair.get("edge_ids", [])
+                pairs.append({
+                    "canonical_action": action,
+                    "machines": [
+                        {"machine": machine_name, "edge_ids": edge_groups[index] if index < len(edge_groups) else []}
+                        for index, machine_name in enumerate(machines)
+                    ],
+                    "cross_family": pair.get("cross_family") is True,
+                })
+        pairs.sort(key=lambda pair: (
+            str(pair.get("canonical_action", "")),
+            tuple(str(row.get("machine", "")) for row in pair.get("machines", [])),
+        ))
+        cross_family_pairs = [pair for pair in pairs if pair["cross_family"]]
+        matching_pairs = cross_family_pairs if cross_family_only else pairs
+        returned_pairs = matching_pairs[offset:offset + limit]
+        next_offset = offset + len(returned_pairs)
+        carriers: dict[str, list[str]] = {}
+        for edge in action_edges:
+            edge_machine = edge.get("machine")
+            edge_id = edge.get("id")
+            if isinstance(edge_machine, str) and isinstance(edge_id, str):
+                carriers.setdefault(edge_machine, []).append(edge_id)
+        query["cross_family_only"] = cross_family_only
+        return {
+            "query": query,
+            "assertion": "Each pair records only that its transition edges share a canonical action name; it does not assert equivalence, prerequisite order, or a learner relation.",
+            "carriers": [
+                {"machine": name, "edge_ids": sorted(edge_ids)}
+                for name, edge_ids in sorted(carriers.items())
+            ],
+            "totals": {
+                "canonical_actions": len({pair["canonical_action"] for pair in matching_pairs}),
+                "carrier_machines": len(carriers),
+                "carrier_edges": sum(len(edge_ids) for edge_ids in carriers.values()),
+                "pairs": len(pairs),
+                "cross_family_pairs": len(cross_family_pairs),
+                "matching_pairs": len(matching_pairs),
+            },
+            "page": {
+                "limit": limit,
+                "offset": offset,
+                "returned": len(returned_pairs),
+                "truncated": next_offset < len(matching_pairs),
+                "next_offset": next_offset if next_offset < len(matching_pairs) else None,
+            },
+            "pairs": returned_pairs,
+        }
 
     @staticmethod
     def _code(arguments: dict[str, Any], tool_name: str) -> str:
