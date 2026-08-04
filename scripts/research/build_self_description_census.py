@@ -971,8 +971,13 @@ def build() -> dict[str, object]:
     # nothing imports candidate structure; that is the quarantine, recorded.
     # 308 from 2026-08-03: seven formerly prebaked-only scene formats now
     # expose bounded live render operations through the worker.
-    if len(registry_rows) != 308:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 308")
+    # 310 from the evening of 2026-08-03: machine_typology.pl (computed
+    # structural classes for every transition table) and
+    # machine_class_attestations.pl (module-documented class claims held
+    # apart from computation). Both read as orphan modules: the compendium
+    # builder consumes them by parsing, and nothing imports them.
+    if len(registry_rows) != 310:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 310")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1026,8 +1031,11 @@ def build() -> dict[str, object]:
     # candidate structure that nothing imports until adopted.
     # 85 after input_contract made automaton_input_contracts.pl reachable
     # through the dispatch surface.
-    if len(orphan_records) != 85:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 85")
+    # 87 from the evening of 2026-08-03: machine_typology.pl and
+    # machine_class_attestations.pl join for the registry's reason —
+    # the compendium builder parses them; nothing imports them.
+    if len(orphan_records) != 87:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 87")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route.
     if len(unrouted) != 10:

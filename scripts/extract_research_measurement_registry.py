@@ -317,8 +317,12 @@ def render_registry() -> str:
     # 76 until later the same day, which added the show-the-money
     # demonstration: live traces, tuple rows, and the separation rule,
     # written for a reader who knows nothing about the project.
-    if len(reports) != 77:
-        raise RuntimeError(f"expected 77 top-level research reports, found {len(reports)}")
+    # 77 until the evening of 2026-08-03, which added the-machines-typeset:
+    # the demonstration that pairs the automata compendium — every machine's
+    # five-tuple, table, computed shape, and diagram — with pasted live runs,
+    # including the per-input validity labels answering on 2+2 versus 2+3.
+    if len(reports) != 78:
+        raise RuntimeError(f"expected 78 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),

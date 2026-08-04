@@ -299,6 +299,8 @@ capability('knowledge/strategies/abstraction/kernel_gate_pilot.pl', 'kernel_gate
 capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/deformation_coincidence.pl', 'deformation_coincidence', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/machine_class_attestations.pl', 'machine_class_attestations', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/machine_typology.pl', 'machine_typology', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
