@@ -58,6 +58,7 @@ POST /api/render public worker
 POST /api/inferential_strength public worker
 POST /api/strategies public worker
 POST /api/strategy_trace public worker
+POST /api/input_contract public worker
 POST /api/deontic_scorecard public worker
 POST /api/crisis public worker
 POST /api/deontic_consequences public worker

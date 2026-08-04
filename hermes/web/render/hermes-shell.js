@@ -66,6 +66,7 @@
     console:        { theme: "norms",        lede: "Bring a mathematical discussion, computation, or lesson to the local workbench." },
     discussions:    { theme: "norms",        lede: "Build a claim-checked account of a discussion and keep the evidence attached." }, // R? recollection
     visualizations: { theme: "objects",      lede: "Run a representation filmstrip, then change its inputs when a worker is available." },
+    "strategy-machine": { theme: "objects", lede: "Run any registered strategy kind from its verified JSON input contract." },
     witnesses:      { theme: "recollection", lede: "Query the finite witness families gathered from the loaded knowledge base." },
     monitoring:     { theme: "norms",        lede: "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions." },
     review:         { theme: "norms",        lede: "Judge one generated proposal at a time with its recorded warrant and machine actions." },
@@ -105,6 +106,7 @@
       ["explore",     "Explore lessons",  app("console.html#explore")],
       ["discussions", "Discussions",      app("discussions.html")],
       ["visualizations", "Visualizers",   mz("visualizations.html")],
+      ["strategy-machine", "Strategy machine", mz("strategies/machine.html")],
       ["witnesses",   "Witnesses",        mz("witnesses.html")],
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
       ["review",      "Proposal review",  mz("review.html")],
@@ -145,6 +147,7 @@
     var byFile = {
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
+      "machine.html": "strategy-machine",
       "atlas.html": "atlas", "witnesses.html": "witnesses", "review.html": "review",
       "gallery.html": "gallery",
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",

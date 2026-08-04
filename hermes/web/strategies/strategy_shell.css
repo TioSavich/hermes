@@ -23,3 +23,19 @@
 .grounding-queue-list li { margin: 10px 0; }
 .grounding-queue-list code { display: block; color: #111827; }
 .grounding-queue-list span, .grounding-queue-list small { display: block; margin-top: 2px; color: #6b7280; font-size: 0.82em; }
+.machine-page { max-width: 980px; }
+.machine-page .inputs select { min-width: 240px; padding: 6px 8px; font: inherit; }
+.machine-page .json-editor { width: 100%; box-sizing: border-box; resize: vertical; padding: 12px; border: 1px solid #bbb; border-radius: 4px; background: #fffdf8; color: #222; font: 0.86rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.machine-run-controls { display: flex; align-items: center; gap: 14px; margin-top: 10px; flex-wrap: wrap; }
+.machine-run-controls button { padding: 8px 16px; cursor: pointer; }
+.machine-status { margin: 0; }
+.outcome-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 0; }
+.outcome-fields div { padding: 10px 12px; border: 1px solid #ddd; background: #fffdf8; }
+.outcome-fields dt { color: #666; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
+.outcome-fields dd { margin: 5px 0 0; overflow-wrap: anywhere; }
+.empty-state { margin: 0; padding: 10px 12px; border-left: 3px solid #a97c24; background: #fff8e8; color: #5f5747; }
+.machine-page .action-topology { margin-top: 0; }
+@media (max-width: 800px) {
+  .machine-page { margin: 0; border-radius: 0; padding: 18px; }
+  .machine-page svg { width: 100%; height: auto; }
+}

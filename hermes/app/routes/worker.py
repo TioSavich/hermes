@@ -35,6 +35,7 @@ _HANDLERS = (
     ("/api/inferential_strength", "_handle_inferential_strength"),
     ("/api/strategies", "_handle_strategies"),
     ("/api/strategy_trace", "_handle_strategy_trace"),
+    ("/api/input_contract", "_handle_input_contract"),
     ("/api/deontic_scorecard", "_handle_deontic_scorecard"),
     ("/api/crisis", "_handle_crisis"),
     ("/api/deontic_consequences", "_handle_deontic_consequences"),

@@ -146,7 +146,13 @@ load_runtime :-
     use_module(render(unit_echo_scene), []),
     use_module(render(place_value_chart_scene), []),
     use_module(render(hybridization_scene), []),
+    use_module(render(coordinate_plane_scene), []),
     use_module(render(rigid_motion_scene), []),
+    use_module(render(polyform_tiling_scene), []),
+    use_module(render(angle_circular_scene), []),
+    use_module(render(data_display_scene), []),
+    use_module(render(solid_net_scene), []),
+    use_module(render(geoboard_scene), []),
     use_module(render(representation_grammar), []),
     % The corpus-attested grammar layer: which grammar objects/uses the student
     % corpus actually witnesses, and where the grammar runs ahead of the corpus.
@@ -264,6 +270,8 @@ dispatch_irregular(brandomian_check).
 dispatch_irregular(canonical_check).
 dispatch_irregular(capability_atlas).
 dispatch_irregular(compute).
+dispatch_irregular(coordinate_plane_render).
+dispatch_irregular(data_display_render).
 dispatch_irregular(deontic_consequences).
 dispatch_irregular(deontic_crisis).
 dispatch_irregular(deontic_requires_entitlement).
@@ -277,6 +285,7 @@ dispatch_irregular(fraction_compare).
 dispatch_irregular(fraction_render).
 dispatch_irregular(geometry).
 dispatch_irregular(gesture_alignment).
+dispatch_irregular(geoboard_render).
 dispatch_irregular(get_base).
 dispatch_irregular(health).
 dispatch_irregular(hybridization_render).
@@ -292,21 +301,25 @@ dispatch_irregular(number_line_compare).
 dispatch_irregular(number_line_render).
 dispatch_irregular(pair_candidate_witness).
 dispatch_irregular(place_value_chart_render).
+dispatch_irregular(polyform_tiling_render).
 dispatch_irregular(prolog_query).
 dispatch_irregular(query_misconception).
 dispatch_irregular(reorganize).
 dispatch_irregular(representation_candidates).
 dispatch_irregular(representation_check).
 dispatch_irregular(representation_spec_check).
+dispatch_irregular(rigid_motion_render).
 dispatch_irregular(sequent_proof_witness).
 dispatch_irregular(set_base).
 dispatch_irregular(set_grouping_compare).
 dispatch_irregular(set_grouping_render).
+dispatch_irregular(solid_net_render).
 dispatch_irregular(teacher_layer).
 dispatch_irregular(trace_adjudication).
 dispatch_irregular(unit_coordination_svg).
 dispatch_irregular(unit_echo_render).
 dispatch_irregular(visualize_coordination).
+dispatch_irregular(angle_circular_render).
 
 op_error(Id, Op, Error, Response) :-
     message_string(Error, Detail),
@@ -1044,6 +1057,76 @@ dispatch_request(hybridization_render, Id, Request, Response) :-
     hybridization_scene:hybridization_render_json(Spec, Dict0),
     enrich_render_doc(hybridization_render, Spec, Dict0, Dict),
     ok_response(Id, Dict, Response).
+
+dispatch_request(coordinate_plane_render, Id, Request, Response) :-
+    (   coordinate_plane_spec(Request, Spec)
+    ->  coordinate_plane_scene:coordinate_plane_render_json(Spec, Dict0),
+        enrich_render_doc(coordinate_plane_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_coordinate_plane_render,
+            "coordinate_plane_render needs a bounded point array or integer slope and intercept",
+            Response)
+    ).
+
+dispatch_request(rigid_motion_render, Id, Request, Response) :-
+    (   rigid_motion_spec(Request, Spec)
+    ->  rigid_motion_scene:rigid_motion_render_json(Spec, Dict0),
+        enrich_render_doc(rigid_motion_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_rigid_motion_render,
+            "rigid_motion_render needs a bounded polygon and a supported translation, reflection, or quarter-turn",
+            Response)
+    ).
+
+dispatch_request(polyform_tiling_render, Id, Request, Response) :-
+    (   polyform_tiling_spec(Request, Spec)
+    ->  polyform_tiling_scene:polyform_tiling_render_json(Spec, Dict0),
+        enrich_render_doc(polyform_tiling_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_polyform_tiling_render,
+            "polyform_tiling_render needs positive dimensions no greater than 20",
+            Response)
+    ).
+
+dispatch_request(angle_circular_render, Id, Request, Response) :-
+    (   angle_circular_spec(Request, Spec)
+    ->  angle_circular_scene:angle_circular_render_json(Spec, Dict0),
+        enrich_render_doc(angle_circular_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_angle_circular_render,
+            "angle_circular_render needs a whole-number degree measure from 1 through 360",
+            Response)
+    ).
+
+dispatch_request(data_display_render, Id, Request, Response) :-
+    (   data_display_spec(Request, Spec)
+    ->  data_display_scene:data_display_render_json(Spec, Dict0),
+        enrich_render_doc(data_display_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_data_display_render,
+            "data_display_render needs a bounded JSON data array for the selected display",
+            Response)
+    ).
+
+dispatch_request(solid_net_render, Id, Request, Response) :-
+    (   solid_net_spec(Request, Spec)
+    ->  solid_net_scene:solid_net_render_json(Spec, Dict0),
+        enrich_render_doc(solid_net_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_solid_net_render,
+            "solid_net_render needs a supported solid or positive stack dimensions no greater than 20",
+            Response)
+    ).
+
+dispatch_request(geoboard_render, Id, Request, Response) :-
+    (   geoboard_spec(Request, Spec)
+    ->  geoboard_scene:geoboard_render_json(Spec, Dict0),
+        enrich_render_doc(geoboard_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_geoboard_render,
+            "geoboard_render needs 3 through 12 lattice vertices with coordinates from -20 through 20",
+            Response)
+    ).
 
 dispatch_request(number_line_compare, Id, Request, Response) :-
     request_op_atom(Request, operation, addition, Op),
@@ -2718,6 +2801,151 @@ place_value_chart_spec_for(add_with_carry, Base, Request, add_with_carry(A, B, B
 place_value_chart_spec_for(_Other, Base, Request, add_with_carry(A, B, Base)) :-
     request_integer(Request, a, 28, A),
     request_integer(Request, b, 47, B).
+
+%!  coordinate_plane_spec(+Request, -Spec) is semidet.
+%   Public scene requests use JSON arrays rather than caller-authored Prolog
+%   terms. Bounds keep every per-request compiler call finite.
+coordinate_plane_spec(Request, Spec) :-
+    request_op_atom(Request, kind, plot_points, Kind),
+    coordinate_plane_spec_for(Kind, Request, Spec).
+
+coordinate_plane_spec_for(plot_points, Request, plot_points(Points)) :-
+    request_json_array(Request, points, [[-3,2],[0,0],[4,-1]], Raw),
+    length_between(Raw, 1, 12),
+    maplist(scene_lattice_point(-50, 50), Raw, Points).
+coordinate_plane_spec_for(plot_line, Request, plot_line(Slope, Intercept)) :-
+    request_integer(Request, slope, 2, Slope),
+    request_integer(Request, intercept, 1, Intercept),
+    between(-20, 20, Slope),
+    between(-20, 20, Intercept).
+
+rigid_motion_spec(Request, Spec) :-
+    request_json_array(Request, vertices, [[0,0],[3,0],[1,2]], Raw),
+    length_between(Raw, 3, 12),
+    maplist(scene_lattice_point(-50, 50), Raw, Vertices),
+    request_op_atom(Request, kind, translate, Kind),
+    rigid_motion_spec_for(Kind, Request, Vertices, Spec).
+
+rigid_motion_spec_for(translate, Request, Vertices,
+                      translate(Vertices, DX, DY)) :-
+    request_integer(Request, dx, 2, DX),
+    request_integer(Request, dy, 1, DY),
+    between(-50, 50, DX),
+    between(-50, 50, DY).
+rigid_motion_spec_for(reflect, Request, Vertices, reflect(Vertices, Mirror)) :-
+    request_op_atom(Request, mirror, mirror_y, Mirror),
+    memberchk(Mirror, [mirror_x, mirror_y]).
+rigid_motion_spec_for(rotate, Request, Vertices,
+                      rotate(Vertices, point(CX, CY), Degrees)) :-
+    request_integer(Request, cx, 0, CX),
+    request_integer(Request, cy, 0, CY),
+    request_integer(Request, degrees, 90, Degrees),
+    between(-50, 50, CX),
+    between(-50, 50, CY),
+    memberchk(Degrees, [90, 180, 270]).
+
+polyform_tiling_spec(Request, tile_area(cols(Columns), rows(Rows))) :-
+    request_integer(Request, cols, 5, Columns),
+    request_integer(Request, rows, 3, Rows),
+    between(1, 20, Columns),
+    between(1, 20, Rows).
+
+angle_circular_spec(Request, Spec) :-
+    request_op_atom(Request, kind, angle, Kind),
+    memberchk(Kind, [angle, sector]),
+    request_integer(Request, degrees, 120, Degrees),
+    between(1, 360, Degrees),
+    Spec =.. [Kind, Degrees].
+
+data_display_spec(Request, Spec) :-
+    request_op_atom(Request, kind, dot_plot, Kind),
+    data_display_spec_for(Kind, Request, Spec).
+
+data_display_spec_for(dot_plot, Request, dot_plot(Values)) :-
+    request_json_array(Request, values, [2,3,3,5,7], Values),
+    length_between(Values, 1, 60),
+    maplist(bounded_integer(-10000, 10000), Values).
+data_display_spec_for(bar_chart, Request, bar_chart(Pairs)) :-
+    request_json_array(Request, pairs,
+        [_{category:"red",count:4}, _{category:"blue",count:6}], Raw),
+    length_between(Raw, 1, 12),
+    maplist(scene_category_count, Raw, Pairs).
+data_display_spec_for(histogram, Request, histogram(Bins)) :-
+    request_json_array(Request, bins,
+        [_{lower:0,upper:2,count:3}, _{lower:2,upper:4,count:5}], Raw),
+    length_between(Raw, 1, 20),
+    maplist(scene_histogram_bin, Raw, Bins).
+data_display_spec_for(box_plot, Request, box_plot(FiveNumber)) :-
+    request_json_array(Request, summary, [2,4,5,7,9], Values),
+    Values = [Minimum,Q1,Median,Q3,Maximum],
+    maplist(bounded_integer(-10000, 10000), Values),
+    FiveNumber = five_number(Minimum,Q1,Median,Q3,Maximum).
+
+solid_net_spec(Request, Spec) :-
+    request_op_atom(Request, kind, net_of, Kind),
+    solid_net_spec_for(Kind, Request, Spec).
+
+solid_net_spec_for(net_of, Request, net_of(Solid)) :-
+    request_op_atom(Request, solid, cube, Solid),
+    memberchk(Solid, [cube, square_pyramid, triangular_prism,
+                      rectangular_prism]).
+solid_net_spec_for(unit_cube_stack, Request, unit_cube_stack(L, W, H)) :-
+    request_integer(Request, length, 3, L),
+    request_integer(Request, width, 2, W),
+    request_integer(Request, height, 2, H),
+    maplist(between(1, 20), [L,W,H]).
+
+geoboard_spec(Request, stretch_polygon(Vertices)) :-
+    request_json_array(Request, vertices, [[0,0],[4,0],[4,3],[0,3]], Raw),
+    length_between(Raw, 3, 12),
+    maplist(scene_lattice_point(-20, 20), Raw, Vertices).
+
+request_json_array(Request, Key, Default, Values) :-
+    (   get_dict_opt(Key, Request, Raw)
+    ->  json_array_value(Raw, Values)
+    ;   Values = Default
+    ).
+
+json_array_value(Value, Value) :- is_list(Value), !.
+json_array_value(Value, List) :-
+    ( string(Value) ; atom(Value) ),
+    catch(atom_json_term(Value, List, [value_string_as(string)]), _, fail),
+    is_list(List).
+
+scene_lattice_point(Low, High, [X,Y], X-Y) :-
+    bounded_integer(Low, High, X),
+    bounded_integer(Low, High, Y).
+scene_lattice_point(Low, High, Dict, X-Y) :-
+    is_dict(Dict),
+    get_dict(x, Dict, X), get_dict(y, Dict, Y),
+    bounded_integer(Low, High, X),
+    bounded_integer(Low, High, Y).
+
+scene_category_count(Dict, Category-Count) :-
+    is_dict(Dict),
+    get_dict(category, Dict, Category0),
+    string_or_atom_to_atom(Category0, Category),
+    get_dict(count, Dict, Count),
+    bounded_integer(0, 1000, Count).
+
+scene_histogram_bin(Dict, bin(Lower, Upper)-Count) :-
+    is_dict(Dict),
+    get_dict(lower, Dict, Lower), get_dict(upper, Dict, Upper),
+    get_dict(count, Dict, Count),
+    bounded_integer(-10000, 10000, Lower),
+    bounded_integer(-10000, 10000, Upper),
+    bounded_integer(0, 1000, Count).
+
+bounded_integer(Low, High, Value) :-
+    integer(Value),
+    Value >= Low,
+    Value =< High.
+
+length_between(List, Low, High) :-
+    is_list(List),
+    length(List, Length),
+    Length >= Low,
+    Length =< High.
 
 % --- enrich_render_doc/3: thread the three additive document fields ----------
 %!  enrich_render_doc(+Op, +Spec, +Dict0, -Dict) is det.

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-hermes-base="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strategy machine | Hermes</title>
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <link rel="stylesheet" href="strategy_shell.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="strategy-machine"></script>
+</head>
+<body>
+<main class="container machine-page">
+  <p class="back"><a href="index.html">&larr; Curated strategy pages</a></p>
+  <h1>Strategy machine</h1>
+  <p class="meta">Choose a family and registered kind. The editor starts from that kind&rsquo;s verified worker input; edit the JSON to work through another case within the same contract.</p>
+
+  <section class="machine-picker" aria-labelledby="selection-title">
+    <h2 id="selection-title">Automaton</h2>
+    <div class="inputs">
+      <label>Family
+        <select id="machine-family" aria-label="strategy family"></select>
+      </label>
+      <label>Kind
+        <select id="machine-kind" aria-label="strategy kind"></select>
+      </label>
+    </div>
+  </section>
+
+  <section aria-labelledby="operands-title">
+    <h2 id="operands-title">Operand JSON</h2>
+    <textarea id="machine-input" class="json-editor" rows="12" spellcheck="false" aria-label="operand JSON"></textarea>
+    <div class="machine-run-controls">
+      <button id="machine-run" type="button">Run automaton</button>
+      <p id="machine-status" class="machine-status meta" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="outcome-title">
+    <h2 id="outcome-title">Outcome</h2>
+    <div id="machine-outcome"></div>
+  </section>
+
+  <section aria-labelledby="jumps-title">
+    <h2 id="jumps-title">Numeric jumps</h2>
+    <div id="machine-jumps"></div>
+    <svg id="machine-diagram" width="760" height="280" role="img" aria-label="numeric jump trace" hidden></svg>
+  </section>
+
+  <section aria-labelledby="steps-title">
+    <h2 id="steps-title">Execution steps</h2>
+    <ol id="machine-steps" class="step-list"></ol>
+  </section>
+
+  <section aria-labelledby="topology-title">
+    <h2 id="topology-title">Action topology</h2>
+    <div id="machine-topology"></div>
+  </section>
+</main>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyMachinePage({
+    familyId: 'machine-family', kindId: 'machine-kind', editorId: 'machine-input',
+    runId: 'machine-run', statusId: 'machine-status', outcomeId: 'machine-outcome',
+    stepsId: 'machine-steps', jumpsId: 'machine-jumps', topologyId: 'machine-topology',
+    svgId: 'machine-diagram'
+  });
+</script>
+</body>
+</html>

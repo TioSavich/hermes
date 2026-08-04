@@ -53,8 +53,11 @@
 :- use_module(library(lists)).
 :- use_module(library(apply)).
 :- use_module(library(pairs)).
+:- use_module(library(http/json), [ atom_json_dict/3 ]).
 
 :- use_module(strategies(math/action_automata_registry)).
+:- use_module(strategies(automaton_input_contracts),
+              [ automaton_input_contract/5 ]).
 :- use_module(strategies(hermeneutic_calculator)).
 :- use_module(strategies(visualization)).
 :- use_module(math(algebraic_action_pairs),
@@ -182,21 +185,40 @@ strategy_catalog_dict(_{
 
 %!  runnable_list(-List) is det.
 %
-%   The curated set of FSM strategies that hermeneutic_calculator can RUN on a
-%   sensible default input and that produce a non-empty number-line jump trace
-%   with the correct result. This is the showcase: a user clicks one and
-%   watches the automaton compute. Each entry carries the exact display name
-%   strategy_trace_dict/3 accepts plus a default (a, b) for the operation.
+%   A hand-curated showcase of FSM and action-automaton traces. Arithmetic FSM
+%   entries retain their numeric a/b controls. Registry-kind entries take their
+%   input object from the verified contract, including structured operands.
 runnable_list(List) :-
-    findall(_{name: NameStr, operation: OpStr, op_symbol: SymStr,
-              a: A, b: B, expression: ExprStr},
+    findall(Dict,
             ( runnable_strategy(Name, Op, A, B),
-              term_text_string(Name, NameStr),
-              term_text_string(Op, OpStr),
-              op_display_symbol(Op, Sym), term_text_string(Sym, SymStr),
-              format(string(ExprStr), "~w ~w ~w", [A, Sym, B])
+              runnable_entry_dict(Name, Op, A, B, Dict)
             ),
             List).
+
+runnable_entry_dict(Name, Op, A, B, _{
+        name: NameStr,
+        operation: OpStr,
+        op_symbol: SymStr,
+        a: LegacyA,
+        b: LegacyB,
+        input: Input,
+        expression: ExprStr
+    }) :-
+    term_text_string(Name, NameStr),
+    term_text_string(Op, OpStr),
+    op_display_symbol(Op, Sym),
+    term_text_string(Sym, SymStr),
+    (   automaton_input_contract(Op, Name, _Shape, ExampleAtom,
+                                 verified(strategy_trace_ok))
+    ->  atom_json_dict(ExampleAtom, Input, [value_string_as(string)]),
+        atom_string(ExampleAtom, ExprStr)
+    ;   Input = _{a: A, b: B},
+        format(string(ExprStr), "~w ~w ~w", [A, Sym, B])
+    ),
+    ( number(A), number(B)
+    -> LegacyA = A, LegacyB = B
+    ;  LegacyA = null, LegacyB = null
+    ).
 
 op_display_symbol(addition, '+') :- !.
 op_display_symbol(subtraction, '−') :- !.
@@ -216,12 +238,10 @@ op_default_input(_,               8,  5).
 
 %!  runnable_strategy(?DisplayName, ?Operation, ?A, ?B) is nondet.
 %
-%   Verified runnable + visualizable: each produces a number-line jump trace
-%   and the correct result on (A, B). Names are the FSM display names the
-%   hermeneutic calculator keys on. Strategies that run and yield a step trace
-%   but no number-line jumps (division CGOB/IDP, whose group-conversion shape
-%   the jump extractor does not read) are excluded here so this list stays the
-%   jump showcase; they remain reachable through strategy_trace directly.
+%   Hand-curated rather than exhaustive. The first block retains the arithmetic
+%   number-line showcase. The second admits one readable trace from each newer
+%   structured-operand family; A/B are the terms decoded from that kind's exact
+%   verified contract example.
 runnable_strategy('COBO',                  addition,       47, 28).
 runnable_strategy('Chunking',              addition,       47, 28).
 runnable_strategy('RMB',                   addition,       47, 28).
@@ -237,6 +257,28 @@ runnable_strategy('Commutative Reasoning', multiplication,  7,  8).
 runnable_strategy('DR',                    multiplication,  7,  8).
 runnable_strategy('Dealing by Ones',       division,       12,  3).
 runnable_strategy('UCR',                   division,       12,  3).
+
+runnable_strategy(rectangle_area_unit_iteration, geometry, 47, 28).
+runnable_strategy(box_plot_from_five_number_summary, statistics,
+                  [2,4,5,7,9], display(box_plot)).
+runnable_strategy(balance_preserving_linear_solution, algebraic,
+                  linear_equation(3,2,20),
+                  solution_domain(nonnegative_integer)).
+runnable_strategy(unit_conversion_by_iteration, measurement,
+                  quantity(3,yard), conversion(foot,3)).
+runnable_strategy(signed_number_location_and_order, integer,
+                  [-7,3,-2,5], number_line).
+runnable_strategy(scale_ratio_unit, ratio, 47, 28).
+runnable_strategy(terminal_tree_endpoint_probability_sum, probability,
+                  [ terminal(alice, probability(1,2), [alice_wins_first]),
+                    terminal(bob, probability(1,4),
+                             [alice_wins_then_bob,bob_wins]),
+                    terminal(bob, probability(1,4),
+                             [bob_wins_then_bob,bob_wins])
+                  ],
+                  stake(60)).
+runnable_strategy(factor_cancel_substitute, calculus,
+                  rational_expression([-2,1,1],[-1,1]), limit_at(1)).
 
 strategy_entry_dict(Op, Kind, _{
         operation: OpStr,
@@ -335,7 +377,8 @@ strategy_lookup_name(RawName, LookupName) :-
     ;   LookupName = Trimmed
     ).
 
-trace_result_dict(StrategyName, NameStr, _A, _B, Result0, History, _{
+trace_result_dict(StrategyName, NameStr, _A, _B, Result0, History, Dict) :-
+    Base = _{
         strategy: NameStr,
         ok: true,
         representation: Representation,
@@ -344,7 +387,7 @@ trace_result_dict(StrategyName, NameStr, _A, _B, Result0, History, _{
         jumps: Jumps,
         jump_witness: JumpWitness,
         note: Note
-    }) :-
+    },
     trace_result_value(Result0, Result),
     trace_representation(Result0, Representation),
     term_text_string(Result, ResultStr),
@@ -359,6 +402,24 @@ trace_result_dict(StrategyName, NameStr, _A, _B, Result0, History, _{
     ( Jumps == []
     -> Note = "Ran to a result; number-line jump trace is not available for this strategy's step shape."
     ;  Note = "Number-line jump trace extracted from the strategy's execution history."
+    ),
+    trace_outcome_fields(Result0, Base, Dict).
+
+trace_outcome_fields(action_outcome(_Kind, Properties), Base, Dict) :-
+    !,
+    add_outcome_field(expected, Properties, Base, WithExpected),
+    add_outcome_field(validity, Properties, WithExpected, WithValidity),
+    add_outcome_field(viability_context, Properties, WithValidity,
+                      WithViabilityContext),
+    add_outcome_field(viability, Properties, WithViabilityContext, Dict).
+trace_outcome_fields(_Result, Dict, Dict).
+
+add_outcome_field(Key, Properties, Dict0, Dict) :-
+    Template =.. [Key, Value],
+    (   member(Template, Properties)
+    ->  term_text_string(Value, Text),
+        Dict = Dict0.put(Key, Text)
+    ;   Dict = Dict0
     ).
 
 trace_result_value(action_outcome(_, Properties), Result) :-

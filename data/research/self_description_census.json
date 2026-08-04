@@ -407,29 +407,29 @@
       "dialectic": 1,
       "geometry_witness": 35,
       "incompatibility": 11,
-      "infrastructure": 21,
+      "infrastructure": 22,
       "juncture": 1,
       "learner": 25,
       "misconceptions": 15,
       "monitoring": 5,
       "pml": 15,
-      "render": 28,
+      "render": 35,
       "sequent": 14,
       "standards": 22,
-      "synthesis": 40,
+      "synthesis": 39,
       "unclassified": 8,
       "workflow": 16,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 86,
-      "routed_only": 14,
-      "routed_paged": 181,
+      "orphan_module": 85,
+      "routed_only": 15,
+      "routed_paged": 188,
       "unrouted": 10
     },
     "orphan_verdicts": {
-      "consumed_by_builder": 3,
+      "consumed_by_builder": 2,
       "consumed_by_check": 6,
       "deliberately_unloaded": 4,
       "include_active": 21,
@@ -437,7 +437,7 @@
       "superseded": 0,
       "undetermined": 49
     },
-    "total": 301,
+    "total": 308,
     "unrouted": 10
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1504,25 +1504,6 @@
       "note": "The action_grammar check reads the generated grammar and compares a rebuild.",
       "path": "knowledge/strategies/action_grammar.pl",
       "verdict": "consumed_by_check"
-    },
-    {
-      "capability_class": "synthesis",
-      "evidence": [
-        {
-          "locator": "/** <module> Execution-verified JSON inputs for action automata",
-          "path": "knowledge/strategies/automaton_input_contracts.pl",
-          "relation": "source inspected"
-        },
-        {
-          "locator": "CONTRACTS = ROOT / \"knowledge/strategies/automaton_input_contracts.pl\"",
-          "path": "scripts/research/build_transition_tables.py",
-          "relation": "builder input"
-        }
-      ],
-      "module": "automaton_input_contracts",
-      "note": "The transition-table builder reads the checked input contracts.",
-      "path": "knowledge/strategies/automaton_input_contracts.pl",
-      "verdict": "consumed_by_builder"
     },
     {
       "capability_class": "synthesis",

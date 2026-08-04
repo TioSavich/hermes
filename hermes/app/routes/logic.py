@@ -1469,6 +1469,9 @@ class RouteLogic:
             "unit_echo_render",
             "set_grouping_compare", "number_line_render", "number_line_compare",
             "place_value_chart_render", "hybridization_render",
+            "coordinate_plane_render", "rigid_motion_render",
+            "polyform_tiling_render", "angle_circular_render",
+            "data_display_render", "solid_net_render", "geoboard_render",
             "balance_render", "balance_compare", "teacher_layer",
             "strategy_trace", "geometry",
         }
@@ -1534,6 +1537,19 @@ class RouteLogic:
         if isinstance(inp, dict):
             kwargs["input"] = inp
         self._send_json({"ok": True, "result": self.ctx.worker_request("strategy_trace", **kwargs)})
+
+    def _handle_input_contract(self, payload: dict) -> None:
+        operation = str(payload.get("operation") or "").strip()
+        kind = str(payload.get("kind") or "").strip()
+        if not operation or not kind:
+            self._send_json(
+                {"error": "operation and kind are required"}, status=400
+            )
+            return
+        result = self.ctx.worker_request(
+            "input_contract", operation=operation, kind=kind
+        )
+        self._send_json({"ok": True, "result": result})
 
     def _handle_literature(self, payload: dict) -> None:
         # Public: literature-derived incompatibility analyses (student_rule /

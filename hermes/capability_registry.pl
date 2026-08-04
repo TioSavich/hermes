@@ -13,6 +13,7 @@ capability('accommodation_witness', 'cw_driver', 'crosswalk', ['source', 'target
 capability('ace_of_bases_render', 'base_ten_scene', 'render', [], routed_paged).
 capability('action_cluster_witness', 'cw_driver', 'crosswalk', ['cluster', 'kind', 'operation', 'source'], routed_paged).
 capability('algebra_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
+capability('angle_circular_render', 'angle_circular_scene', 'render', [], routed_paged).
 capability('area_compare', 'area_model_scene', 'render', ['da', 'db', 'na', 'nb'], routed_paged).
 capability('area_render', 'area_model_scene', 'render', [], routed_paged).
 capability('arithmetic_property_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
@@ -38,9 +39,11 @@ capability('check_math_claim', 'math_claim_checker', 'misconceptions', ['claim']
 capability('check_solution_steps', 'solution_step_check', 'infrastructure', ['text'], unrouted).
 capability('commitment_match', 'user', 'misconceptions', ['content'], routed_paged).
 capability('compute', 'hermes_worker', 'learner', [], routed_paged).
+capability('coordinate_plane_render', 'coordinate_plane_scene', 'render', [], routed_paged).
 capability('corpus_grammar_summary', 'corpus_attested_grammar', 'render', [], routed_paged).
 capability('counting_claim_witness', 'cw_counting_claim', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('critique_bad_infinite', 'critique', 'dialectic', ['proof'], routed_paged).
+capability('data_display_render', 'data_display_scene', 'render', [], routed_paged).
 capability('decimal_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('defeasible_classify', 'defeasible_inference', 'incompatibility', ['defeater_set', 'inference_id'], routed_paged).
 capability('deontic_consequences', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_only).
@@ -64,6 +67,7 @@ capability('fraction_compare', 'fraction_bars_scene', 'render', ['a', 'b', 'kind
 capability('fraction_extra_claim_witness', 'cw_driver', 'render', ['canonical', 'source'], routed_paged).
 capability('fraction_render', 'hermes_worker', 'render', ['kind'], routed_paged).
 capability('fsm_engine_witness', 'cw_driver', 'crosswalk', ['descriptor', 'source'], routed_paged).
+capability('geoboard_render', 'geoboard_scene', 'render', [], routed_paged).
 capability('geometry', 'hermes_worker', 'geometry_witness', ['args', 'predicate'], routed_paged).
 capability('geometry_angle_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
 capability('geometry_area_perimeter_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
@@ -117,6 +121,7 @@ capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'in
 capability('incompatibility_entailment_witness', 'incompatibility_sets', 'incompatibility', ['replaced', 'replacement'], routed_paged).
 capability('index_topic_subtraction', 'index_query', 'unclassified', ['topic'], unrouted).
 capability('inferential_strength', 'user', 'synthesis', ['lesson'], routed_paged).
+capability('input_contract', 'dispatch_spec', 'infrastructure', ['kind', 'operation'], routed_only).
 capability('integer_signed_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('intersubjective_material_witness', 'intersubjective_praxis', 'pml', ['from', 'to'], routed_paged).
 capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
@@ -158,6 +163,7 @@ capability('pedagogical_questions', 'lesson_monitoring', 'workflow', ['kind', 'q
 capability('place_value_chart_render', 'place_value_chart_scene', 'render', [], routed_paged).
 capability('place_value_number_claim_witness', 'cw_place_value_number_claim', 'render', ['canonical', 'source'], routed_paged).
 capability('pml_score', 'hermes_encyclopedia', 'pml', ['clauses'], routed_paged).
+capability('polyform_tiling_render', 'polyform_tiling_scene', 'render', [], routed_paged).
 capability('practice_vocabulary_witness', 'cw_driver', 'crosswalk', ['key', 'source'], routed_paged).
 capability('primitive_for_practice', 'user', 'render', ['practice'], routed_paged).
 capability('productive_deformation_witness', 'cw_driver', 'crosswalk', ['deformation', 'family', 'operation', 'productive', 'source'], routed_paged).
@@ -174,12 +180,14 @@ capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], rou
 capability('review_decide', 'review_queue', 'infrastructure', ['item_id', 'note', 'shown', 'source', 'verdict'], routed_paged).
 capability('review_queue', 'review_queue', 'infrastructure', ['offset', 'source'], routed_paged).
 capability('rhythm_transition_witness', 'sequent_engine', 'sequent', ['from', 'to'], routed_paged).
+capability('rigid_motion_render', 'rigid_motion_scene', 'render', [], routed_paged).
 capability('robinson_axiom_witness', 'sequent_engine', 'sequent', ['axiom', 'claim'], routed_paged).
 capability('semantic_material_witness', 'semantic_axioms', 'pml', ['from', 'to'], routed_paged).
 capability('sequent_proof_witness', 'cw_driver', 'sequent', ['sequent', 'source'], routed_paged).
 capability('set_base', 'cgi_base', 'infrastructure', ['base'], routed_paged).
 capability('set_grouping_compare', 'set_grouping_scene', 'render', ['a', 'b'], routed_paged).
 capability('set_grouping_render', 'set_grouping_scene', 'render', [], routed_paged).
+capability('solid_net_render', 'solid_net_scene', 'render', [], routed_paged).
 capability('standard_1_ca_1_making_ten_witness', 'standard_1_ca_1', 'standards', ['a', 'b'], routed_paged).
 capability('standard_1_ca_3_add_by_place_value_witness', 'standard_1_ca_3', 'standards', ['a', 'b'], routed_paged).
 capability('standard_1_ns_1_count_by_fives_witness', 'standard_1_ns_1', 'standards', ['from', 'to'], routed_paged).
@@ -290,7 +298,6 @@ capability('knowledge/strategies/abstraction/channel_collapse.pl', 'channel_coll
 capability('knowledge/strategies/abstraction/kernel_gate_pilot.pl', 'kernel_gate_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
-capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/deformation_coincidence.pl', 'deformation_coincidence', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
@@ -436,6 +443,8 @@ capability_parameter('incompatibility_entailment_witness', 'replacement', null, 
 capability_parameter('incompatibility_entailment_witness', 'replaced', null, true, null).
 capability_parameter('index_topic_subtraction', 'topic', 'string', true, null).
 capability_parameter('inferential_strength', 'lesson', 'string', true, null).
+capability_parameter('input_contract', 'operation', 'string', true, null).
+capability_parameter('input_contract', 'kind', 'string', true, null).
 capability_parameter('integer_signed_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('integer_signed_claim_witness', 'source', 'string', true, null).
 capability_parameter('intersubjective_material_witness', 'from', null, true, null).
@@ -577,6 +586,7 @@ capability_route('ace_of_bases_render', 'POST', '/api/monitoring_visuals').
 capability_route('ace_of_bases_render', 'POST', '/api/render').
 capability_route('action_cluster_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('algebra_claim_witness', 'POST', '/api/witness/crosswalk_claim').
+capability_route('angle_circular_render', 'POST', '/api/render').
 capability_route('area_compare', 'POST', '/api/monitoring_visuals').
 capability_route('area_compare', 'POST', '/api/render').
 capability_route('area_render', 'POST', '/api/chat').
@@ -609,9 +619,11 @@ capability_route('carving_operation_summary', 'POST', '/api/carving_operation_su
 capability_route('carving_strategy_proof', 'POST', '/api/carving_strategy_proof').
 capability_route('commitment_match', 'POST', '/api/witness/grounding').
 capability_route('compute', 'POST', '/api/compute').
+capability_route('coordinate_plane_render', 'POST', '/api/render').
 capability_route('corpus_grammar_summary', 'POST', '/api/witness/grounding').
 capability_route('counting_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('critique_bad_infinite', 'POST', '/api/witness/formal').
+capability_route('data_display_render', 'POST', '/api/render').
 capability_route('decimal_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('defeasible_classify', 'POST', '/api/witness/formal').
 capability_route('deontic_consequences', 'POST', '/api/deontic_consequences').
@@ -641,6 +653,7 @@ capability_route('fraction_render', 'GET', '/api/fraction/render').
 capability_route('fraction_render', 'POST', '/api/monitoring_visuals').
 capability_route('fraction_render', 'POST', '/api/render').
 capability_route('fsm_engine_witness', 'POST', '/api/witness/crosswalk_claim').
+capability_route('geoboard_render', 'POST', '/api/render').
 capability_route('geometry', 'POST', '/api/geometry').
 capability_route('geometry', 'POST', '/api/render').
 capability_route('geometry_angle_material_witness', 'POST', '/api/witness/geometry').
@@ -694,6 +707,7 @@ capability_route('incoherent_witness', 'POST', '/api/witness/formal').
 capability_route('incompatibility_discovery_witness', 'POST', '/api/witness/formal').
 capability_route('incompatibility_entailment_witness', 'POST', '/api/witness/formal').
 capability_route('inferential_strength', 'POST', '/api/inferential_strength').
+capability_route('input_contract', 'POST', '/api/input_contract').
 capability_route('integer_signed_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('intersubjective_material_witness', 'POST', '/api/witness/pml').
 capability_route('knowledge', 'GET', '/api/knowledge').
@@ -735,6 +749,7 @@ capability_route('place_value_chart_render', 'POST', '/api/monitoring_visuals').
 capability_route('place_value_chart_render', 'POST', '/api/render').
 capability_route('place_value_number_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('pml_score', 'POST', '/api/pml_score').
+capability_route('polyform_tiling_render', 'POST', '/api/render').
 capability_route('practice_vocabulary_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('primitive_for_practice', 'POST', '/api/witness/grounding').
 capability_route('productive_deformation_witness', 'POST', '/api/witness/crosswalk_claim').
@@ -750,6 +765,7 @@ capability_route('representation_spine_witness', 'POST', '/api/witness/grounding
 capability_route('review_decide', 'POST', '/api/review_decide').
 capability_route('review_queue', 'POST', '/api/review_queue').
 capability_route('rhythm_transition_witness', 'POST', '/api/witness/formal').
+capability_route('rigid_motion_render', 'POST', '/api/render').
 capability_route('robinson_axiom_witness', 'POST', '/api/witness/formal').
 capability_route('semantic_material_witness', 'POST', '/api/witness/pml').
 capability_route('sequent_proof_witness', 'POST', '/api/sequent_proof').
@@ -758,6 +774,7 @@ capability_route('set_grouping_compare', 'POST', '/api/render').
 capability_route('set_grouping_render', 'POST', '/api/chat').
 capability_route('set_grouping_render', 'POST', '/api/monitoring_visuals').
 capability_route('set_grouping_render', 'POST', '/api/render').
+capability_route('solid_net_render', 'POST', '/api/render').
 capability_route('standard_1_ca_1_making_ten_witness', 'POST', '/api/witness/standards').
 capability_route('standard_1_ca_3_add_by_place_value_witness', 'POST', '/api/witness/standards').
 capability_route('standard_1_ns_1_count_by_fives_witness', 'POST', '/api/witness/standards').
@@ -802,6 +819,12 @@ capability_page('ace_of_bases_render', '/more-zeeman/visualizations.html').
 capability_page('ace_of_bases_render', '/more-zeeman/witnesses.html').
 capability_page('action_cluster_witness', '/more-zeeman/witnesses.html').
 capability_page('algebra_claim_witness', '/more-zeeman/witnesses.html').
+capability_page('angle_circular_render', '/hermes/app/web/discussions.html').
+capability_page('angle_circular_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('angle_circular_render', '/more-zeeman/monitoring_chart.html').
+capability_page('angle_circular_render', '/more-zeeman/unit-echo/index.html').
+capability_page('angle_circular_render', '/more-zeeman/visualizations.html').
+capability_page('angle_circular_render', '/more-zeeman/witnesses.html').
 capability_page('area_compare', '/hermes/app/web/discussions.html').
 capability_page('area_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('area_compare', '/more-zeeman/monitoring_chart.html').
@@ -859,9 +882,21 @@ capability_page('carving_operation_summary', '/more-zeeman/strategies.html').
 capability_page('carving_strategy_proof', '/more-zeeman/strategies.html').
 capability_page('commitment_match', '/more-zeeman/witnesses.html').
 capability_page('compute', '/more-zeeman/bridge.html').
+capability_page('coordinate_plane_render', '/hermes/app/web/discussions.html').
+capability_page('coordinate_plane_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('coordinate_plane_render', '/more-zeeman/monitoring_chart.html').
+capability_page('coordinate_plane_render', '/more-zeeman/unit-echo/index.html').
+capability_page('coordinate_plane_render', '/more-zeeman/visualizations.html').
+capability_page('coordinate_plane_render', '/more-zeeman/witnesses.html').
 capability_page('corpus_grammar_summary', '/more-zeeman/witnesses.html').
 capability_page('counting_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('critique_bad_infinite', '/hermes/app/web/breaks.html').
+capability_page('data_display_render', '/hermes/app/web/discussions.html').
+capability_page('data_display_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('data_display_render', '/more-zeeman/monitoring_chart.html').
+capability_page('data_display_render', '/more-zeeman/unit-echo/index.html').
+capability_page('data_display_render', '/more-zeeman/visualizations.html').
+capability_page('data_display_render', '/more-zeeman/witnesses.html').
 capability_page('decimal_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('defeasible_classify', '/hermes/app/web/breaks.html').
 capability_page('deontic_crisis', '/hermes/app/web/breaks.html').
@@ -895,6 +930,12 @@ capability_page('fraction_render', '/more-zeeman/unit-echo/index.html').
 capability_page('fraction_render', '/more-zeeman/visualizations.html').
 capability_page('fraction_render', '/more-zeeman/witnesses.html').
 capability_page('fsm_engine_witness', '/more-zeeman/witnesses.html').
+capability_page('geoboard_render', '/hermes/app/web/discussions.html').
+capability_page('geoboard_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('geoboard_render', '/more-zeeman/monitoring_chart.html').
+capability_page('geoboard_render', '/more-zeeman/unit-echo/index.html').
+capability_page('geoboard_render', '/more-zeeman/visualizations.html').
+capability_page('geoboard_render', '/more-zeeman/witnesses.html').
 capability_page('geometry', '/hermes/app/web/discussions.html').
 capability_page('geometry', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('geometry', '/more-zeeman/monitoring_chart.html').
@@ -1013,6 +1054,12 @@ capability_page('place_value_chart_render', '/more-zeeman/visualizations.html').
 capability_page('place_value_chart_render', '/more-zeeman/witnesses.html').
 capability_page('place_value_number_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('pml_score', '/hermes/app/web/console.html').
+capability_page('polyform_tiling_render', '/hermes/app/web/discussions.html').
+capability_page('polyform_tiling_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('polyform_tiling_render', '/more-zeeman/monitoring_chart.html').
+capability_page('polyform_tiling_render', '/more-zeeman/unit-echo/index.html').
+capability_page('polyform_tiling_render', '/more-zeeman/visualizations.html').
+capability_page('polyform_tiling_render', '/more-zeeman/witnesses.html').
 capability_page('practice_vocabulary_witness', '/more-zeeman/witnesses.html').
 capability_page('primitive_for_practice', '/more-zeeman/witnesses.html').
 capability_page('productive_deformation_witness', '/more-zeeman/witnesses.html').
@@ -1023,6 +1070,12 @@ capability_page('representation_spine_witness', '/more-zeeman/witnesses.html').
 capability_page('review_decide', '/more-zeeman/review.html').
 capability_page('review_queue', '/more-zeeman/review.html').
 capability_page('rhythm_transition_witness', '/hermes/app/web/breaks.html').
+capability_page('rigid_motion_render', '/hermes/app/web/discussions.html').
+capability_page('rigid_motion_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('rigid_motion_render', '/more-zeeman/monitoring_chart.html').
+capability_page('rigid_motion_render', '/more-zeeman/unit-echo/index.html').
+capability_page('rigid_motion_render', '/more-zeeman/visualizations.html').
+capability_page('rigid_motion_render', '/more-zeeman/witnesses.html').
 capability_page('robinson_axiom_witness', '/hermes/app/web/breaks.html').
 capability_page('semantic_material_witness', '/more-zeeman/witnesses.html').
 capability_page('sequent_proof_witness', '/hermes/app/web/breaks.html').
@@ -1040,6 +1093,12 @@ capability_page('set_grouping_render', '/more-zeeman/monitoring_chart.html').
 capability_page('set_grouping_render', '/more-zeeman/unit-echo/index.html').
 capability_page('set_grouping_render', '/more-zeeman/visualizations.html').
 capability_page('set_grouping_render', '/more-zeeman/witnesses.html').
+capability_page('solid_net_render', '/hermes/app/web/discussions.html').
+capability_page('solid_net_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('solid_net_render', '/more-zeeman/monitoring_chart.html').
+capability_page('solid_net_render', '/more-zeeman/unit-echo/index.html').
+capability_page('solid_net_render', '/more-zeeman/visualizations.html').
+capability_page('solid_net_render', '/more-zeeman/witnesses.html').
 capability_page('standard_1_ca_1_making_ten_witness', '/more-zeeman/witnesses.html').
 capability_page('standard_1_ca_3_add_by_place_value_witness', '/more-zeeman/witnesses.html').
 capability_page('standard_1_ns_1_count_by_fives_witness', '/more-zeeman/witnesses.html').

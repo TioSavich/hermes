@@ -5,6 +5,9 @@
 
 :- use_module(hermes(review_queue), []).
 :- use_module(hermes(solution_step_check), []).
+:- use_module(strategies(automaton_input_contracts),
+              [ automaton_input_contract/5 ]).
+:- use_module(library(http/json), [ atom_json_dict/3 ]).
 
 % dispatch_spec(Op, Inputs, Call, Result).
 % Inputs are Key-Converter pairs. Call arguments name bound keys, mark ignored
@@ -695,6 +698,11 @@ dispatch_spec(strategy_trace,
     call(hermes_encyclopedia:strategy_trace_dict,
          [strategy, input, out(dict)]),
     raw(missing_strategy)).
+dispatch_spec(input_contract,
+    [operation-code, kind-code],
+    call(dispatch_spec:input_contract_dict,
+         [operation, kind, out(dict)]),
+    raw(no_input_contract, malformed_input_contract_request)).
 dispatch_spec(lesson_enactment_list,
     [],
     call(user:lesson_enactment_catalog_dict, [out(dict)]),
@@ -778,6 +786,10 @@ dispatch_message(field_context, malformed, "field_context requires lesson_code")
 dispatch_message(field_context, no_result, "field_context found no context for lesson_code").
 dispatch_message(inferential_strength, malformed, "inferential_strength requires lesson").
 dispatch_message(strategy_trace, malformed, "strategy_trace requires strategy").
+dispatch_message(input_contract, malformed,
+    "input_contract requires operation and kind").
+dispatch_message(input_contract, no_result,
+    "input_contract found no verified example for that operation and kind").
 dispatch_message(lesson_enactment_run, no_result, "lesson_enactment_run found no declared enactment for that lesson; call lesson_enactment_list to inspect enacted lessons and named refusals").
 dispatch_message(lesson_enactment_run, malformed, "lesson_enactment_run requires lesson").
 dispatch_message(grounding_for, malformed, "grounding_for requires operation").
@@ -992,3 +1004,14 @@ dispatch_message(review_queue, no_result, "review_queue found no valid proposal 
 dispatch_message(review_queue, malformed, "review_queue requires source unit_recognition_set or signature_anchor and a non-negative offset").
 dispatch_message(review_decide, no_result, "review_decide could not record a first verdict for that queue item").
 dispatch_message(review_decide, malformed, "review_decide requires source, item_id, a verdict valid for that review mode, shown item text, and an optional note").
+
+input_contract_dict(Operation, Kind, _{
+        operation: OperationString,
+        kind: KindString,
+        example: Example
+    }) :-
+    automaton_input_contract(Operation, Kind, _Shape, ExampleAtom,
+                             verified(strategy_trace_ok)),
+    atom_json_dict(ExampleAtom, Example, [value_string_as(string)]),
+    atom_string(Operation, OperationString),
+    atom_string(Kind, KindString).

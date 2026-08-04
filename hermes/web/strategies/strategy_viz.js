@@ -255,4 +255,195 @@
       drawNumberLine(cfg.svgId, trajStart, jumps, finalVal);
     });
   };
+
+  async function postResult(path, body) {
+    await requestClientReady;
+    const response = await HermesFetch.requestJSON(path, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+      timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
+    });
+    const envelope = HermesFetch.requireOK(response);
+    return envelope && envelope.ok ? envelope.result : envelope;
+  }
+
+  function outcomeMarkup(data) {
+    const fields = [
+      ['Result', data.result],
+      ['Expected', data.expected],
+      ['Validity', data.validity],
+      ['Viability context', data.viability_context || data.viability]
+    ].filter(function (entry) {
+      return entry[1] !== undefined && entry[1] !== null && entry[1] !== '';
+    });
+    return fields.map(function (entry) {
+      const value = typeof entry[1] === 'object' ? JSON.stringify(entry[1]) : entry[1];
+      return `<div><dt>${escapeHtml(entry[0])}</dt><dd><code>${escapeHtml(value)}</code></dd></div>`;
+    }).join('');
+  }
+
+  // Wire the all-kinds strategy page. It shares the established trace,
+  // number-line, and action-topology renderers above; only selection and the
+  // raw JSON editor are page-specific.
+  window.wireStrategyMachinePage = async function (cfg) {
+    const familyEl = document.getElementById(cfg.familyId);
+    const kindEl = document.getElementById(cfg.kindId);
+    const editorEl = document.getElementById(cfg.editorId);
+    const runEl = document.getElementById(cfg.runId);
+    const statusEl = document.getElementById(cfg.statusId);
+    const outcomeEl = document.getElementById(cfg.outcomeId);
+    const stepsEl = document.getElementById(cfg.stepsId);
+    const jumpsEl = document.getElementById(cfg.jumpsId);
+    const topologyEl = document.getElementById(cfg.topologyId);
+    const svgEl = document.getElementById(cfg.svgId);
+    let strategies = [];
+
+    function setStatus(message, isError) {
+      statusEl.textContent = message;
+      statusEl.className = isError ? 'machine-status error-banner' : 'machine-status meta';
+    }
+
+    function kindsFor(family) {
+      return strategies.filter(function (entry) { return entry.operation === family; });
+    }
+
+    async function loadContract() {
+      const family = familyEl.value;
+      const kind = kindEl.value;
+      if (!family || !kind) return;
+      runEl.disabled = true;
+      editorEl.value = '';
+      setStatus('Loading the verified input example…', false);
+      try {
+        const contract = await postResult('/api/input_contract', {operation: family, kind: kind});
+        editorEl.value = JSON.stringify(contract.example, null, 2);
+        const url = new URL(window.location.href);
+        url.searchParams.set('kind', kind);
+        url.searchParams.set('family', family);
+        history.replaceState(null, '', url);
+        runEl.disabled = false;
+        setStatus(`Ready to run ${family}:${kind}.`, false);
+      } catch (err) {
+        setStatus(`No verified input contract is registered for ${family}:${kind}. ${err.message}`, true);
+      }
+    }
+
+    function fillKinds(preferredKind) {
+      const entries = kindsFor(familyEl.value);
+      kindEl.innerHTML = '';
+      entries.forEach(function (entry) {
+        const option = document.createElement('option');
+        option.value = entry.kind;
+        option.textContent = entry.kind.replace(/_/g, ' ');
+        kindEl.appendChild(option);
+      });
+      if (preferredKind && entries.some(function (entry) { return entry.kind === preferredKind; })) {
+        kindEl.value = preferredKind;
+      }
+    }
+
+    async function runSelected() {
+      let input;
+      try {
+        input = JSON.parse(editorEl.value);
+      } catch (err) {
+        setStatus(`The operand JSON is not valid: ${err.message}`, true);
+        return;
+      }
+      if (!input || Array.isArray(input) || typeof input !== 'object') {
+        setStatus('The operand editor needs one JSON object.', true);
+        return;
+      }
+
+      setStatus('Running the selected automaton…', false);
+      runEl.disabled = true;
+      stepsEl.innerHTML = '';
+      outcomeEl.innerHTML = '';
+      jumpsEl.innerHTML = '';
+      topologyEl.innerHTML = '';
+      svgEl.innerHTML = '';
+      svgEl.hidden = true;
+      try {
+        const data = await postResult('/api/strategy_trace', {
+          strategy: kindEl.value,
+          input: input
+        });
+        if (!data || data.ok === false) {
+          throw new Error((data && data.note) || 'The automaton did not return a trace.');
+        }
+
+        outcomeEl.innerHTML = `<dl class="outcome-fields">${outcomeMarkup(data)}</dl>`;
+        (data.steps || []).forEach(function (step) {
+          const li = document.createElement('li');
+          li.textContent = step.value ? `${step.label} — ${step.value}` : step.label;
+          stepsEl.appendChild(li);
+        });
+        if (!stepsEl.children.length) {
+          const li = document.createElement('li');
+          li.textContent = 'This response carries no named execution steps.';
+          stepsEl.appendChild(li);
+        }
+
+        const jumps = Array.isArray(data.jumps) ? data.jumps : [];
+        if (jumps.length) {
+          const first = jumps[0];
+          const last = jumps[jumps.length - 1];
+          svgEl.hidden = false;
+          drawNumberLine(cfg.svgId, first.from, jumps, last.to);
+          jumpsEl.innerHTML = `<p class="meta">${jumps.length} numeric jump(s) were extracted from the execution history.</p>`;
+        } else {
+          jumpsEl.innerHTML = '<p class="empty-state">No numeric jumps are present. This is expected when the state history does not carry a running numeric path.</p>';
+        }
+
+        if (data.action_topology) {
+          topologyEl.innerHTML = renderActionTopology(data.action_topology);
+        } else {
+          topologyEl.innerHTML = '<p class="empty-state">No action-topology block is present. The trace seam does not attach that block to every registry kind.</p>';
+        }
+        setStatus(`Completed ${familyEl.value}:${kindEl.value}.`, false);
+      } catch (err) {
+        setStatus(err.message, true);
+      } finally {
+        runEl.disabled = false;
+      }
+    }
+
+    familyEl.addEventListener('change', function () {
+      fillKinds('');
+      loadContract();
+    });
+    kindEl.addEventListener('change', loadContract);
+    runEl.addEventListener('click', runSelected);
+
+    try {
+      setStatus('Loading the strategy catalog…', false);
+      const catalog = await postResult('/api/strategies', {});
+      strategies = Array.isArray(catalog.strategies) ? catalog.strategies : [];
+      const families = Array.from(new Set(strategies.map(function (entry) { return entry.operation; }))).sort();
+      families.forEach(function (family) {
+        const option = document.createElement('option');
+        option.value = family;
+        option.textContent = family.replace(/_/g, ' ');
+        familyEl.appendChild(option);
+      });
+      const params = new URLSearchParams(window.location.search);
+      const requestedKind = params.get('kind') || '';
+      const requestedEntry = strategies.find(function (entry) { return entry.kind === requestedKind; });
+      const requestedFamily = params.get('family') || (requestedEntry && requestedEntry.operation) || '';
+      if (requestedFamily && families.indexOf(requestedFamily) !== -1) familyEl.value = requestedFamily;
+      fillKinds(requestedKind);
+      await loadContract();
+    } catch (err) {
+      setStatus(err.message, true);
+      familyEl.disabled = true;
+      kindEl.disabled = true;
+      runEl.disabled = true;
+    }
+  };
+
+  window.HermesStrategyViz = {
+    drawNumberLine: drawNumberLine,
+    renderActionTopology: renderActionTopology
+  };
 })();

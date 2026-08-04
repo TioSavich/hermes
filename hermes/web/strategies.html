@@ -540,9 +540,13 @@ async function runMachine() {
   const resultElement = machineEl('machine-result');
   const stopElapsed = HermesFetch.startElapsed(resultElement, 'running…');
   try {
+    const numericPair = Number.isFinite(machineCurrent.a) && Number.isFinite(machineCurrent.b);
+    const input = numericPair
+      ? {a: Number(machineEl('machine-a').value), b: Number(machineEl('machine-b').value)}
+      : JSON.parse(JSON.stringify(machineCurrent.input || {}));
     const result = await machineApi('/api/strategy_trace', {
       strategy: machineCurrent.name,
-      input: {a: Number(machineEl('machine-a').value), b: Number(machineEl('machine-b').value)}
+      input
     });
     if (!result.ok) {
       machineEl('machine-result').textContent = '';
@@ -551,7 +555,7 @@ async function runMachine() {
       drawMachineNumberline([]);
       return;
     }
-    machineEl('machine-result').innerHTML = `${machineCurrent.name}: ${machineEl('machine-a').value} ${machineCurrent.op_symbol} ${machineEl('machine-b').value} = <b>${result.result}</b>`;
+    machineEl('machine-result').innerHTML = `${machineCurrent.name}: ${machineCurrent.expression} &rarr; <b>${result.result}</b>`;
     drawMachineNumberline(result.jumps);
     showMachineSteps(result.steps);
     machineEl('machine-note').textContent = result.jumps.length ? '' : result.note;
@@ -565,9 +569,15 @@ function selectMachine(entry, chip) {
   machineCurrent = entry;
   document.querySelectorAll('.machine-chip').forEach(item => item.classList.remove('active'));
   chip.classList.add('active');
-  machineEl('machine-opsym').textContent = entry.op_symbol;
-  machineEl('machine-a').value = entry.a;
-  machineEl('machine-b').value = entry.b;
+  const numericPair = Number.isFinite(entry.a) && Number.isFinite(entry.b);
+  machineEl('machine-opsym').hidden = !numericPair;
+  machineEl('machine-a').hidden = !numericPair;
+  machineEl('machine-b').hidden = !numericPair;
+  if (numericPair) {
+    machineEl('machine-opsym').textContent = entry.op_symbol;
+    machineEl('machine-a').value = entry.a;
+    machineEl('machine-b').value = entry.b;
+  }
   machineEl('machine-runbar').hidden = false;
   runMachine();
 }

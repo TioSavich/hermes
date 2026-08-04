@@ -25893,6 +25893,7 @@
      "kind": "base_ones_chunking",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -25931,7 +25932,8 @@
         "value": ""
        }
       ],
-      "strategy": "base_ones_chunking"
+      "strategy": "base_ones_chunking",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -25951,6 +25953,7 @@
      "kind": "round_then_adjust",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -25994,7 +25997,8 @@
         "value": ""
        }
       ],
-      "strategy": "round_then_adjust"
+      "strategy": "round_then_adjust",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -26041,6 +26045,7 @@
      "kind": "count_on_from_larger",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26079,7 +26084,8 @@
         "value": ""
        }
       ],
-      "strategy": "count_on_from_larger"
+      "strategy": "count_on_from_larger",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -26146,6 +26152,7 @@
      "kind": "make_ten_split_leftover",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26189,7 +26196,8 @@
         "value": ""
        }
       ],
-      "strategy": "make_ten_split_leftover"
+      "strategy": "make_ten_split_leftover",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26209,6 +26217,7 @@
      "kind": "make_ten_drop_leftover",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26252,7 +26261,9 @@
         "value": ""
        }
       ],
-      "strategy": "make_ten_drop_leftover"
+      "strategy": "make_ten_drop_leftover",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(leftover_remains_after_making_base),expected(75),produced(50),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -26272,6 +26283,7 @@
      "kind": "count_all_when_count_on_available",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26310,7 +26322,8 @@
         "value": ""
        }
       ],
-      "strategy": "count_all_when_count_on_available"
+      "strategy": "count_all_when_count_on_available",
+      "validity": "correct_but_inefficient"
      }
     },
     "direct_runs": [],
@@ -26330,6 +26343,7 @@
      "kind": "column_addition_with_carrying",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26378,7 +26392,8 @@
         "value": ""
        }
       ],
-      "strategy": "column_addition_with_carrying"
+      "strategy": "column_addition_with_carrying",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26398,6 +26413,7 @@
      "kind": "known_fact_retrieval",
      "operation": "addition",
      "response": {
+      "expected": "15",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26431,7 +26447,8 @@
         "value": ""
        }
       ],
-      "strategy": "known_fact_retrieval"
+      "strategy": "known_fact_retrieval",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26451,6 +26468,7 @@
      "kind": "count_all_instead_of_known_fact",
      "operation": "addition",
      "response": {
+      "expected": "15",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26489,7 +26507,8 @@
         "value": ""
        }
       ],
-      "strategy": "count_all_instead_of_known_fact"
+      "strategy": "count_all_instead_of_known_fact",
+      "validity": "correct_but_inefficient"
      }
     },
     "direct_runs": [],
@@ -26509,6 +26528,7 @@
      "kind": "round_without_adjusting",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26557,7 +26577,9 @@
         "value": ""
        }
       ],
-      "strategy": "round_without_adjusting"
+      "strategy": "round_without_adjusting",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(omitted_rounding_adjustment_changes_total),expected(75),produced(77),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -26577,6 +26599,7 @@
      "kind": "make_base_transfer",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26620,7 +26643,8 @@
         "value": ""
        }
       ],
-      "strategy": "make_base_transfer"
+      "strategy": "make_base_transfer",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26640,6 +26664,7 @@
      "kind": "count_up_missing_addend",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26683,7 +26708,8 @@
         "value": ""
        }
       ],
-      "strategy": "count_up_missing_addend"
+      "strategy": "count_up_missing_addend",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26703,6 +26729,7 @@
      "kind": "decompose_base_for_ones",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26746,7 +26773,8 @@
         "value": ""
        }
       ],
-      "strategy": "decompose_base_for_ones"
+      "strategy": "decompose_base_for_ones",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26766,6 +26794,7 @@
      "kind": "take_away_base_ones",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26804,7 +26833,8 @@
         "value": ""
        }
       ],
-      "strategy": "take_away_base_ones"
+      "strategy": "take_away_base_ones",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26824,6 +26854,7 @@
      "kind": "compare_by_matching_difference",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26867,7 +26898,8 @@
         "value": ""
        }
       ],
-      "strategy": "compare_by_matching_difference"
+      "strategy": "compare_by_matching_difference",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -26887,6 +26919,7 @@
      "kind": "add_instead_of_subtract_column",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26930,7 +26963,8 @@
         "value": ""
        }
       ],
-      "strategy": "add_instead_of_subtract_column"
+      "strategy": "add_instead_of_subtract_column",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -26950,6 +26984,7 @@
      "kind": "smaller_from_larger_in_column",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -26998,7 +27033,8 @@
         "value": ""
        }
       ],
-      "strategy": "smaller_from_larger_in_column"
+      "strategy": "smaller_from_larger_in_column",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -27018,6 +27054,7 @@
      "kind": "answer_as_endpoint_count_up",
      "operation": "subtraction",
      "response": {
+      "expected": "19",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27066,7 +27103,8 @@
         "value": ""
        }
       ],
-      "strategy": "answer_as_endpoint_count_up"
+      "strategy": "answer_as_endpoint_count_up",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -27086,6 +27124,7 @@
      "kind": "repeat_equal_groups",
      "operation": "multiplication",
      "response": {
+      "expected": "1316",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27124,7 +27163,8 @@
         "value": ""
        }
       ],
-      "strategy": "repeat_equal_groups"
+      "strategy": "repeat_equal_groups",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -27186,6 +27226,7 @@
      "kind": "distribute_group_size_split",
      "operation": "multiplication",
      "response": {
+      "expected": "1316",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27229,7 +27270,8 @@
         "value": ""
        }
       ],
-      "strategy": "distribute_group_size_split"
+      "strategy": "distribute_group_size_split",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27249,6 +27291,7 @@
      "kind": "multiplication_fact_retrieval",
      "operation": "multiplication",
      "response": {
+      "expected": "1316",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27287,7 +27330,8 @@
         "value": ""
        }
       ],
-      "strategy": "multiplication_fact_retrieval"
+      "strategy": "multiplication_fact_retrieval",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27307,6 +27351,7 @@
      "kind": "commute_factors_preserve_product",
      "operation": "multiplication",
      "response": {
+      "expected": "1316",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27350,7 +27395,8 @@
         "value": ""
        }
       ],
-      "strategy": "commute_factors_preserve_product"
+      "strategy": "commute_factors_preserve_product",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27370,6 +27416,7 @@
      "kind": "coordinate_groups_items",
      "operation": "multiplication",
      "response": {
+      "expected": "1316",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27408,7 +27455,8 @@
         "value": ""
        }
       ],
-      "strategy": "coordinate_groups_items"
+      "strategy": "coordinate_groups_items",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27428,6 +27476,7 @@
      "kind": "regroup_to_base_preserving_total",
      "operation": "multiplication",
      "response": {
+      "expected": "36",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27466,7 +27515,8 @@
         "value": ""
        }
       ],
-      "strategy": "regroup_to_base_preserving_total"
+      "strategy": "regroup_to_base_preserving_total",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27486,6 +27536,7 @@
      "kind": "repeat_group_size_by_itself",
      "operation": "multiplication",
      "response": {
+      "expected": "1316",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27524,7 +27575,9 @@
         "value": ""
        }
       ],
-      "strategy": "repeat_group_size_by_itself"
+      "strategy": "repeat_group_size_by_itself",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(group_count_differs_from_group_size),expected(1316),produced(784),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -27544,6 +27597,7 @@
      "kind": "fair_share_equal_groups",
      "operation": "division",
      "response": {
+      "expected": "4",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27582,7 +27636,8 @@
         "value": ""
        }
       ],
-      "strategy": "fair_share_equal_groups"
+      "strategy": "fair_share_equal_groups",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27602,6 +27657,7 @@
      "kind": "measure_groups_of_size",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(1,19)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27645,7 +27701,8 @@
         "value": ""
        }
       ],
-      "strategy": "measure_groups_of_size"
+      "strategy": "measure_groups_of_size",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27665,6 +27722,7 @@
      "kind": "divide_larger_by_smaller",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(0,15)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27713,7 +27771,9 @@
         "value": ""
        }
       ],
-      "strategy": "divide_larger_by_smaller"
+      "strategy": "divide_larger_by_smaller",
+      "validity": "incorrect",
+      "viability": "viability(fails_in_context,condition(magnitude_order_replaces_given_dividend_divisor_roles),expected(quotient_remainder(0,15)),produced(quotient_remainder(6,10)),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -27733,6 +27793,7 @@
      "kind": "share_into_divisor_groups",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(1,19)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27776,7 +27837,8 @@
         "value": ""
        }
       ],
-      "strategy": "share_into_divisor_groups"
+      "strategy": "share_into_divisor_groups",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -27796,6 +27858,7 @@
      "kind": "partial_quotient_chunking",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(1,19)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27839,7 +27902,8 @@
         "value": ""
        }
       ],
-      "strategy": "partial_quotient_chunking"
+      "strategy": "partial_quotient_chunking",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27859,6 +27923,7 @@
      "kind": "name_group_count_as_share_size",
      "operation": "division",
      "response": {
+      "expected": "4",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27897,7 +27962,9 @@
         "value": ""
        }
       ],
-      "strategy": "name_group_count_as_share_size"
+      "strategy": "name_group_count_as_share_size",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(group_count_differs_from_share_size),expected(4),produced(3),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -27917,6 +27984,7 @@
      "kind": "long_division",
      "operation": "division",
      "response": {
+      "expected": "long_division_result(1.6785,20)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -27965,7 +28033,8 @@
         "value": ""
        }
       ],
-      "strategy": "long_division"
+      "strategy": "long_division",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -27985,6 +28054,7 @@
      "kind": "missing_factor_repeated_addition",
      "operation": "division",
      "response": {
+      "expected": "4",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -28023,7 +28093,8 @@
         "value": ""
        }
       ],
-      "strategy": "missing_factor_repeated_addition"
+      "strategy": "missing_factor_repeated_addition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -28043,6 +28114,7 @@
      "kind": "name_reached_total_as_quotient",
      "operation": "division",
      "response": {
+      "expected": "4",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -28081,7 +28153,9 @@
         "value": ""
        }
       ],
-      "strategy": "name_reached_total_as_quotient"
+      "strategy": "name_reached_total_as_quotient",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(reached_total_differs_from_missing_factor),expected(4),produced(12),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -28101,6 +28175,7 @@
      "kind": "stop_after_first_partial_quotient",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(24,0)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -28149,7 +28224,9 @@
         "value": ""
        }
       ],
-      "strategy": "stop_after_first_partial_quotient"
+      "strategy": "stop_after_first_partial_quotient",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(further_partial_quotients_are_required),expected(quotient_remainder(24,0)),produced(quotient_remainder(10,56)),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -28169,6 +28246,7 @@
      "kind": "unit_fraction_partition",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(1,4)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -28212,7 +28290,8 @@
         "value": ""
        }
       ],
-      "strategy": "unit_fraction_partition"
+      "strategy": "unit_fraction_partition",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -28976,6 +29055,7 @@
      "kind": "unit_fraction_iteration",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(47,28)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29019,7 +29099,8 @@
         "value": ""
        }
       ],
-      "strategy": "unit_fraction_iteration"
+      "strategy": "unit_fraction_iteration",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -29119,6 +29200,7 @@
      "kind": "co_denominator_make_base_transfer",
      "operation": "fraction",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29167,7 +29249,8 @@
         "value": ""
        }
       ],
-      "strategy": "co_denominator_make_base_transfer"
+      "strategy": "co_denominator_make_base_transfer",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -29194,6 +29277,7 @@
      "kind": "area_model_part_of_part",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(6,12)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29252,7 +29336,8 @@
         "value": ""
        }
       ],
-      "strategy": "area_model_part_of_part"
+      "strategy": "area_model_part_of_part",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -29279,6 +29364,7 @@
      "kind": "co_denominator_count_on_from_larger",
      "operation": "fraction",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29327,7 +29413,8 @@
         "value": ""
        }
       ],
-      "strategy": "co_denominator_count_on_from_larger"
+      "strategy": "co_denominator_count_on_from_larger",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -29347,6 +29434,7 @@
      "kind": "improper_fraction_chain_loss",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(47,28)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29395,7 +29483,8 @@
         "value": ""
        }
       ],
-      "strategy": "improper_fraction_chain_loss"
+      "strategy": "improper_fraction_chain_loss",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -29422,6 +29511,7 @@
      "kind": "measurement_division",
      "operation": "fraction",
      "response": {
+      "expected": "fraction_division_quotient(fraction(3,4),fraction(2,3),whole_groups(1),remainder(fraction(1,8)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29465,7 +29555,8 @@
         "value": ""
        }
       ],
-      "strategy": "measurement_division"
+      "strategy": "measurement_division",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -29492,6 +29583,7 @@
      "kind": "reversible_measurement_division",
      "operation": "fraction",
      "response": {
+      "expected": "fraction_division_quotient(fraction(3,4),fraction(2,3),quotient(fraction(9,8)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29535,7 +29627,8 @@
         "value": ""
        }
       ],
-      "strategy": "reversible_measurement_division"
+      "strategy": "reversible_measurement_division",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -29562,6 +29655,7 @@
      "kind": "number_line_fraction_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29625,7 +29719,8 @@
         "value": "accept(greater_than)"
        }
       ],
-      "strategy": "number_line_fraction_comparison"
+      "strategy": "number_line_fraction_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -29652,6 +29747,7 @@
      "kind": "number_line_count_marks_not_intervals",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29715,7 +29811,9 @@
         "value": "accept(equivalent)"
        }
       ],
-      "strategy": "number_line_count_marks_not_intervals"
+      "strategy": "number_line_count_marks_not_intervals",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(mark_count_order_diverges_from_interval_measure),expected(greater_than),produced(equivalent),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -29742,6 +29840,7 @@
      "kind": "area_model_fraction_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29805,7 +29904,8 @@
         "value": "accept(greater_than)"
        }
       ],
-      "strategy": "area_model_fraction_comparison"
+      "strategy": "area_model_fraction_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -29863,6 +29963,7 @@
      "kind": "area_model_unequal_partition_piece_count",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -29931,7 +30032,9 @@
         "value": "accept(less_than)"
        }
       ],
-      "strategy": "area_model_unequal_partition_piece_count"
+      "strategy": "area_model_unequal_partition_piece_count",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(piece_count_order_diverges_from_fraction_magnitude),expected(greater_than),produced(less_than),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -29958,6 +30061,7 @@
      "kind": "set_model_fraction_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30021,7 +30125,8 @@
         "value": "accept(greater_than)"
        }
       ],
-      "strategy": "set_model_fraction_comparison"
+      "strategy": "set_model_fraction_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -30048,6 +30153,7 @@
      "kind": "set_model_subset_size_focus",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30116,7 +30222,9 @@
         "value": "accept(less_than)"
        }
       ],
-      "strategy": "set_model_subset_size_focus"
+      "strategy": "set_model_subset_size_focus",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(subset_size_order_diverges_from_fraction_magnitude),expected(greater_than),produced(less_than),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -30143,6 +30251,7 @@
      "kind": "benchmark_fraction_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30201,7 +30310,8 @@
         "value": "accept(greater_than)"
        }
       ],
-      "strategy": "benchmark_fraction_comparison"
+      "strategy": "benchmark_fraction_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -30258,6 +30368,7 @@
      "kind": "gap_thinking_fraction_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30326,7 +30437,9 @@
         "value": "accept(equivalent)"
        }
       ],
-      "strategy": "gap_thinking_fraction_comparison"
+      "strategy": "gap_thinking_fraction_comparison",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(gap_order_diverges_from_fraction_order),expected(greater_than),produced(equivalent),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -30353,6 +30466,7 @@
      "kind": "common_unit_fraction_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30411,7 +30525,8 @@
         "value": "accept(greater_than)"
        }
       ],
-      "strategy": "common_unit_fraction_comparison"
+      "strategy": "common_unit_fraction_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -30468,6 +30583,7 @@
      "kind": "add_numerator_denominator_comparison",
      "operation": "fraction",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30526,7 +30642,9 @@
         "value": "accept(less_than)"
        }
       ],
-      "strategy": "add_numerator_denominator_comparison"
+      "strategy": "add_numerator_denominator_comparison",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(numerator_denominator_sum_order_diverges_from_common_unit_order),expected(greater_than),produced(less_than),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -30553,6 +30671,7 @@
      "kind": "common_denominator_fraction_addition",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(13,8)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30616,7 +30735,8 @@
         "value": "accept(fraction(13,8))"
        }
       ],
-      "strategy": "common_denominator_fraction_addition"
+      "strategy": "common_denominator_fraction_addition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -30643,6 +30763,7 @@
      "kind": "common_denominator_fraction_subtraction",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(3,6)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30706,7 +30827,8 @@
         "value": "accept(fraction(3,6))"
        }
       ],
-      "strategy": "common_denominator_fraction_subtraction"
+      "strategy": "common_denominator_fraction_subtraction",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -30733,6 +30855,7 @@
      "kind": "add_numerator_denominator_sum",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(13,8)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30796,7 +30919,9 @@
         "value": "accept(fraction(10,12))"
        }
       ],
-      "strategy": "add_numerator_denominator_sum"
+      "strategy": "add_numerator_denominator_sum",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(mediant_diverges_from_sum),expected(fraction(13,8)),produced(fraction(10,12)),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -30823,6 +30948,7 @@
      "kind": "decimal_fraction_place_value_comparison",
      "operation": "decimal",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30876,7 +31002,8 @@
         "value": "accept(greater_than)"
        }
       ],
-      "strategy": "decimal_fraction_place_value_comparison"
+      "strategy": "decimal_fraction_place_value_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -30903,6 +31030,7 @@
      "kind": "decimal_scale_loss_comparison",
      "operation": "decimal",
      "response": {
+      "expected": "greater_than",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -30961,7 +31089,9 @@
         "value": "accept(less_than)"
        }
       ],
-      "strategy": "decimal_scale_loss_comparison"
+      "strategy": "decimal_scale_loss_comparison",
+      "validity": "incorrect",
+      "viability": "viability(fails_in_context,condition(written_numeral_order_diverges_from_decimal_value_order),expected(greater_than),produced(less_than),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -30981,6 +31111,7 @@
      "kind": "positional_decimal_reading",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(3,fractional_digits(47,2),hundredths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31019,7 +31150,8 @@
         "value": ""
        }
       ],
-      "strategy": "positional_decimal_reading"
+      "strategy": "positional_decimal_reading",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -31039,6 +31171,7 @@
      "kind": "decimal_whole_number_reading",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(3,fractional_digits(47,2),hundredths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31082,7 +31215,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_whole_number_reading"
+      "strategy": "decimal_whole_number_reading",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -31109,6 +31243,7 @@
      "kind": "decimal_comparison_by_aligned_units",
      "operation": "decimal",
      "response": {
+      "expected": "more",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31152,7 +31287,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_comparison_by_aligned_units"
+      "strategy": "decimal_comparison_by_aligned_units",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -31442,6 +31578,7 @@
      "kind": "decimal_numeral_comparison_without_scale_alignment",
      "operation": "decimal",
      "response": {
+      "expected": "more",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31485,7 +31622,9 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_numeral_comparison_without_scale_alignment"
+      "strategy": "decimal_numeral_comparison_without_scale_alignment",
+      "validity": "accidentally_correct",
+      "viability": "viability(contextual_success,condition(written_numeral_order_coincides_with_decimal_value_order),validity(contextually_correct))"
      }
     },
     "direct_runs": [],
@@ -31512,6 +31651,7 @@
      "kind": "decimal_addition_by_aligned_units",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(2,fractional_digits(8,1),tenths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31560,7 +31700,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_addition_by_aligned_units"
+      "strategy": "decimal_addition_by_aligned_units",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -31587,6 +31728,7 @@
      "kind": "decimal_add_unaligned_numerals",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(2,fractional_digits(8,1),tenths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31635,7 +31777,9 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_add_unaligned_numerals"
+      "strategy": "decimal_add_unaligned_numerals",
+      "validity": "accidentally_correct",
+      "viability": "viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct))"
      }
     },
     "direct_runs": [],
@@ -31662,6 +31806,7 @@
      "kind": "decimal_subtraction_by_aligned_units",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(2,fractional_digits(2,1),tenths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31710,7 +31855,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_subtraction_by_aligned_units"
+      "strategy": "decimal_subtraction_by_aligned_units",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -31737,6 +31883,7 @@
      "kind": "decimal_subtract_unaligned_numerals",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(2,fractional_digits(2,1),tenths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31785,7 +31932,9 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_subtract_unaligned_numerals"
+      "strategy": "decimal_subtract_unaligned_numerals",
+      "validity": "accidentally_correct",
+      "viability": "viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct))"
      }
     },
     "direct_runs": [],
@@ -31807,6 +31956,7 @@
      "kind": "decimal_place_unit_regrouping",
      "operation": "decimal",
      "response": {
+      "expected": "equivalent_decimal_units(70,unit_fraction(1,100))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31845,7 +31995,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_place_unit_regrouping"
+      "strategy": "decimal_place_unit_regrouping",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -31867,6 +32018,7 @@
      "kind": "change_decimal_place_name_without_regrouping",
      "operation": "decimal",
      "response": {
+      "expected": "equivalent_decimal_units(70,unit_fraction(1,100))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31905,7 +32057,8 @@
         "value": ""
        }
       ],
-      "strategy": "change_decimal_place_name_without_regrouping"
+      "strategy": "change_decimal_place_name_without_regrouping",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -31932,6 +32085,7 @@
      "kind": "decimal_multiplication_rule",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(0,fractional_digits(75,2),hundredths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -31980,7 +32134,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_multiplication_rule"
+      "strategy": "decimal_multiplication_rule",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32007,6 +32162,7 @@
      "kind": "decimal_point_rule_misapplication",
      "operation": "decimal",
      "response": {
+      "expected": "decimal(0,fractional_digits(75,2),hundredths)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32050,7 +32206,8 @@
         "value": ""
        }
       ],
-      "strategy": "decimal_point_rule_misapplication"
+      "strategy": "decimal_point_rule_misapplication",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32077,6 +32234,7 @@
      "kind": "ecuadorian_decimal_long_division",
      "operation": "decimal",
      "response": {
+      "expected": "decimal_quotient(3,0)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32125,7 +32283,8 @@
         "value": ""
        }
       ],
-      "strategy": "ecuadorian_decimal_long_division"
+      "strategy": "ecuadorian_decimal_long_division",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32152,6 +32311,7 @@
      "kind": "recalled_result_scaling",
      "operation": "decimal",
      "response": {
+      "expected": "decimal_quotient(120,0)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32190,7 +32350,8 @@
         "value": ""
        }
       ],
-      "strategy": "recalled_result_scaling"
+      "strategy": "recalled_result_scaling",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32210,6 +32371,7 @@
      "kind": "common_factor_intersection",
      "operation": "multiplication",
      "response": {
+      "expected": "common_factors([1],greatest(1))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32248,7 +32410,8 @@
         "value": ""
        }
       ],
-      "strategy": "common_factor_intersection"
+      "strategy": "common_factor_intersection",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32268,6 +32431,7 @@
      "kind": "factors_of_first_number_only",
      "operation": "multiplication",
      "response": {
+      "expected": "common_factors([1],greatest(1))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32306,7 +32470,8 @@
         "value": ""
        }
       ],
-      "strategy": "factors_of_first_number_only"
+      "strategy": "factors_of_first_number_only",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32326,6 +32491,7 @@
      "kind": "common_multiple_sequence",
      "operation": "multiplication",
      "response": {
+      "expected": "common_multiples(generator(step(1316)),witnesses([1316,2632,3948,5264,6580]),least(1316))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32364,7 +32530,8 @@
         "value": ""
        }
       ],
-      "strategy": "common_multiple_sequence"
+      "strategy": "common_multiple_sequence",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32384,6 +32551,7 @@
      "kind": "add_numbers_as_common_multiple",
      "operation": "multiplication",
      "response": {
+      "expected": "common_multiples(generator(step(1316)),witnesses([1316,2632,3948,5264,6580]),least(1316))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32422,7 +32590,8 @@
         "value": ""
        }
       ],
-      "strategy": "add_numbers_as_common_multiple"
+      "strategy": "add_numbers_as_common_multiple",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32442,6 +32611,7 @@
      "kind": "signed_addition_with_sign_relation",
      "operation": "integer",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32490,7 +32660,8 @@
         "value": ""
        }
       ],
-      "strategy": "signed_addition_with_sign_relation"
+      "strategy": "signed_addition_with_sign_relation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32510,6 +32681,7 @@
      "kind": "drop_sign_use_magnitude_sum",
      "operation": "integer",
      "response": {
+      "expected": "-4",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32558,7 +32730,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_sign_use_magnitude_sum"
+      "strategy": "drop_sign_use_magnitude_sum",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32583,6 +32756,7 @@
      "kind": "signed_number_location_and_order",
      "operation": "integer",
      "response": {
+      "expected": "ordered_values([-7,-2,3,5])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32621,7 +32795,8 @@
         "value": ""
        }
       ],
-      "strategy": "signed_number_location_and_order"
+      "strategy": "signed_number_location_and_order",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32646,6 +32821,7 @@
      "kind": "order_by_magnitude_ignore_sign",
      "operation": "integer",
      "response": {
+      "expected": "ordered_values([-7,-2,3,5])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32684,7 +32860,8 @@
         "value": ""
        }
       ],
-      "strategy": "order_by_magnitude_ignore_sign"
+      "strategy": "order_by_magnitude_ignore_sign",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32706,6 +32883,7 @@
      "kind": "inequality_solution_set_representation",
      "operation": "integer",
      "response": {
+      "expected": "solution_set(ray(left,open,4))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32744,7 +32922,8 @@
         "value": ""
        }
       ],
-      "strategy": "inequality_solution_set_representation"
+      "strategy": "inequality_solution_set_representation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32766,6 +32945,7 @@
      "kind": "inequality_as_boundary_point",
      "operation": "integer",
      "response": {
+      "expected": "solution_set(ray(left,open,4))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32804,7 +32984,8 @@
         "value": ""
        }
       ],
-      "strategy": "inequality_as_boundary_point"
+      "strategy": "inequality_as_boundary_point",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32824,6 +33005,7 @@
      "kind": "scale_ratio_unit",
      "operation": "ratio",
      "response": {
+      "expected": "ratio_pair(94,56)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32872,7 +33054,8 @@
         "value": ""
        }
       ],
-      "strategy": "scale_ratio_unit"
+      "strategy": "scale_ratio_unit",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -32892,6 +33075,7 @@
      "kind": "additive_extension_of_ratio",
      "operation": "ratio",
      "response": {
+      "expected": "ratio_pair(94,56)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -32935,7 +33119,8 @@
         "value": ""
        }
       ],
-      "strategy": "additive_extension_of_ratio"
+      "strategy": "additive_extension_of_ratio",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -32962,6 +33147,7 @@
      "kind": "construct_referent_ratio_diagram",
      "operation": "ratio",
      "response": {
+      "expected": "ratio_statement(red_tiles,3,blue_tiles,5)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33005,7 +33191,8 @@
         "value": ""
        }
       ],
-      "strategy": "construct_referent_ratio_diagram"
+      "strategy": "construct_referent_ratio_diagram",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33032,6 +33219,7 @@
      "kind": "reverse_ratio_referent_order",
      "operation": "ratio",
      "response": {
+      "expected": "ratio_statement(red_tiles,3,blue_tiles,5)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33070,7 +33258,8 @@
         "value": ""
        }
       ],
-      "strategy": "reverse_ratio_referent_order"
+      "strategy": "reverse_ratio_referent_order",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -33113,6 +33302,7 @@
      "kind": "programming_expression_evaluation",
      "operation": "algebraic",
      "response": {
+      "expected": "value(14)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33156,7 +33346,8 @@
         "value": ""
        }
       ],
-      "strategy": "programming_expression_evaluation"
+      "strategy": "programming_expression_evaluation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33184,6 +33375,7 @@
      "kind": "contextual_linear_equation_construction",
      "operation": "algebraic",
      "response": {
+      "expected": "equation(add(mult(number(3),var(x)),number(2)),equals,number(20))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33232,7 +33424,8 @@
         "value": ""
        }
       ],
-      "strategy": "contextual_linear_equation_construction"
+      "strategy": "contextual_linear_equation_construction",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33272,6 +33465,7 @@
      "kind": "equation_truth_by_substitution",
      "operation": "algebraic",
      "response": {
+      "expected": "truth_value(true)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33310,7 +33504,8 @@
         "value": ""
        }
       ],
-      "strategy": "equation_truth_by_substitution"
+      "strategy": "equation_truth_by_substitution",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33350,6 +33545,7 @@
      "kind": "operational_equals_left_value",
      "operation": "algebraic",
      "response": {
+      "expected": "truth_value(true)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33388,7 +33584,8 @@
         "value": ""
        }
       ],
-      "strategy": "operational_equals_left_value"
+      "strategy": "operational_equals_left_value",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -33410,6 +33607,7 @@
      "kind": "balance_preserving_linear_solution",
      "operation": "algebraic",
      "response": {
+      "expected": "value(6)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33433,7 +33631,7 @@
         "value": ""
        },
        {
-        "label": "apply_balance_preserving_steps([_33650{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_33690{left:[_33480{count:3,kind:x,role:x-box},_33504{count:2,kind:unit,role:unit-weight}],right:[_33552{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_33888{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_33928{left:[_33746{count:3,kind:x,role:x-box}],right:[_33796{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_34032{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_34072{left:[_33746{count:3,kind:x,role:x-box}],right:[_33796{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_34262{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_34302{left:[_34128{count:1,kind:x,role:x-box}],right:[_34178{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
+        "label": "apply_balance_preserving_steps([_35156{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_35196{left:[_34986{count:3,kind:x,role:x-box},_35010{count:2,kind:unit,role:unit-weight}],right:[_35058{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_35394{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_35434{left:[_35252{count:3,kind:x,role:x-box}],right:[_35302{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_35538{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_35578{left:[_35252{count:3,kind:x,role:x-box}],right:[_35302{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_35768{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_35808{left:[_35634{count:1,kind:x,role:x-box}],right:[_35684{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
         "n": 2,
         "value": ""
        },
@@ -33448,7 +33646,8 @@
         "value": ""
        }
       ],
-      "strategy": "balance_preserving_linear_solution"
+      "strategy": "balance_preserving_linear_solution",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33470,6 +33669,7 @@
      "kind": "one_sided_equation_operation",
      "operation": "algebraic",
      "response": {
+      "expected": "value(6)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33513,7 +33713,8 @@
         "value": ""
        }
       ],
-      "strategy": "one_sided_equation_operation"
+      "strategy": "one_sided_equation_operation",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -33548,6 +33749,7 @@
      "kind": "symbolic_expression_construction",
      "operation": "algebraic",
      "response": {
+      "expected": "add(var(x),int(4))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33591,7 +33793,8 @@
         "value": ""
        }
       ],
-      "strategy": "symbolic_expression_construction"
+      "strategy": "symbolic_expression_construction",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33629,6 +33832,7 @@
      "kind": "distributive_expression_rewrite",
      "operation": "algebraic",
      "response": {
+      "expected": "add(mult(int(3),var(x)),mult(int(3),int(4)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33672,7 +33876,8 @@
         "value": ""
        }
       ],
-      "strategy": "distributive_expression_rewrite"
+      "strategy": "distributive_expression_rewrite",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33710,6 +33915,7 @@
      "kind": "drop_distributed_term",
      "operation": "algebraic",
      "response": {
+      "expected": "add(mult(int(3),var(x)),mult(int(3),int(4)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33748,7 +33954,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_distributed_term"
+      "strategy": "drop_distributed_term",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -33772,6 +33979,7 @@
      "kind": "exponent_as_repeated_factor",
      "operation": "algebraic",
      "response": {
+      "expected": "mult(int(3),mult(int(3),mult(int(3),int(3))))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33810,7 +34018,8 @@
         "value": ""
        }
       ],
-      "strategy": "exponent_as_repeated_factor"
+      "strategy": "exponent_as_repeated_factor",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33834,6 +34043,7 @@
      "kind": "exponent_as_multiplier",
      "operation": "algebraic",
      "response": {
+      "expected": "mult(int(3),mult(int(3),mult(int(3),int(3))))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33867,7 +34077,8 @@
         "value": ""
        }
       ],
-      "strategy": "exponent_as_multiplier"
+      "strategy": "exponent_as_multiplier",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -33912,6 +34123,7 @@
      "kind": "exponential_equivalence_by_expansion",
      "operation": "algebraic",
      "response": {
+      "expected": "equivalent",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -33950,7 +34162,8 @@
         "value": ""
        }
       ],
-      "strategy": "exponential_equivalence_by_expansion"
+      "strategy": "exponential_equivalence_by_expansion",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -33973,6 +34186,7 @@
      "kind": "linear_pattern_contextual_rule",
      "operation": "algebraic",
      "response": {
+      "expected": "value(19)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34021,7 +34235,8 @@
         "value": ""
        }
       ],
-      "strategy": "linear_pattern_contextual_rule"
+      "strategy": "linear_pattern_contextual_rule",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -34050,6 +34265,7 @@
      "kind": "guess_and_check_rule",
      "operation": "algebraic",
      "response": {
+      "expected": "value(19)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34088,7 +34304,8 @@
         "value": ""
        }
       ],
-      "strategy": "guess_and_check_rule"
+      "strategy": "guess_and_check_rule",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34108,6 +34325,7 @@
      "kind": "rectangle_area_unit_iteration",
      "operation": "geometry",
      "response": {
+      "expected": "square_units(1316)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34151,7 +34369,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_area_unit_iteration"
+      "strategy": "rectangle_area_unit_iteration",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -34300,6 +34519,7 @@
      "kind": "area_as_perimeter_count",
      "operation": "geometry",
      "response": {
+      "expected": "square_units(1316)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34338,7 +34558,8 @@
         "value": ""
        }
       ],
-      "strategy": "area_as_perimeter_count"
+      "strategy": "area_as_perimeter_count",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34372,6 +34593,7 @@
      "kind": "area_unit_covering",
      "operation": "geometry",
      "response": {
+      "expected": "area(3,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34415,7 +34637,8 @@
         "value": ""
        }
       ],
-      "strategy": "area_unit_covering"
+      "strategy": "area_unit_covering",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -34449,6 +34672,7 @@
      "kind": "count_overlapping_area_tiles",
      "operation": "geometry",
      "response": {
+      "expected": "area(2,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34487,7 +34711,8 @@
         "value": ""
        }
       ],
-      "strategy": "count_overlapping_area_tiles"
+      "strategy": "count_overlapping_area_tiles",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34521,6 +34746,7 @@
      "kind": "area_unit_scale_selection",
      "operation": "geometry",
      "response": {
+      "expected": "square_unit(square_foot)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34554,7 +34780,8 @@
         "value": ""
        }
       ],
-      "strategy": "area_unit_scale_selection"
+      "strategy": "area_unit_scale_selection",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -34588,6 +34815,7 @@
      "kind": "choose_first_area_unit_without_scale",
      "operation": "geometry",
      "response": {
+      "expected": "square_unit(square_foot)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34621,7 +34849,8 @@
         "value": ""
        }
       ],
-      "strategy": "choose_first_area_unit_without_scale"
+      "strategy": "choose_first_area_unit_without_scale",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34643,6 +34872,7 @@
      "kind": "rectangle_perimeter_boundary_traversal",
      "operation": "geometry",
      "response": {
+      "expected": "length(22,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34691,7 +34921,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_perimeter_boundary_traversal"
+      "strategy": "rectangle_perimeter_boundary_traversal",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -34713,6 +34944,7 @@
      "kind": "perimeter_two_sides_only",
      "operation": "geometry",
      "response": {
+      "expected": "length(22,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34751,7 +34983,8 @@
         "value": ""
        }
       ],
-      "strategy": "perimeter_two_sides_only"
+      "strategy": "perimeter_two_sides_only",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34773,6 +35006,7 @@
      "kind": "perimeter_uses_area_formula",
      "operation": "geometry",
      "response": {
+      "expected": "length(22,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34811,7 +35045,8 @@
         "value": ""
        }
       ],
-      "strategy": "perimeter_uses_area_formula"
+      "strategy": "perimeter_uses_area_formula",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34837,6 +35072,7 @@
      "kind": "polygon_perimeter_boundary_accumulation",
      "operation": "geometry",
      "response": {
+      "expected": "length(22,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34870,7 +35106,8 @@
         "value": ""
        }
       ],
-      "strategy": "polygon_perimeter_boundary_accumulation"
+      "strategy": "polygon_perimeter_boundary_accumulation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -34896,6 +35133,7 @@
      "kind": "omit_unlabeled_boundary_side",
      "operation": "geometry",
      "response": {
+      "expected": "length(22,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -34934,7 +35172,8 @@
         "value": ""
        }
       ],
-      "strategy": "omit_unlabeled_boundary_side"
+      "strategy": "omit_unlabeled_boundary_side",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -34965,6 +35204,7 @@
      "kind": "symmetry_constrained_side_reconstruction",
      "operation": "geometry",
      "response": {
+      "expected": "side_length(slanted_side,8,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35008,7 +35248,8 @@
         "value": ""
        }
       ],
-      "strategy": "symmetry_constrained_side_reconstruction"
+      "strategy": "symmetry_constrained_side_reconstruction",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -35039,6 +35280,7 @@
      "kind": "ignore_symmetry_multiplicity",
      "operation": "geometry",
      "response": {
+      "expected": "side_length(slanted_side,8,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35077,7 +35319,8 @@
         "value": ""
        }
       ],
-      "strategy": "ignore_symmetry_multiplicity"
+      "strategy": "ignore_symmetry_multiplicity",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -35098,6 +35341,7 @@
      "kind": "rectangle_perimeter_side_pair_search",
      "operation": "geometry",
      "response": {
+      "expected": "all_rectangle_side_pairs(perimeter(22),[1-10,2-9,3-8,4-7,5-6])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35141,7 +35385,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_perimeter_side_pair_search"
+      "strategy": "rectangle_perimeter_side_pair_search",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -35204,6 +35449,7 @@
      "kind": "rectangle_missing_side_from_perimeter",
      "operation": "geometry",
      "response": {
+      "expected": "side_length(7)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35247,7 +35493,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_missing_side_from_perimeter"
+      "strategy": "rectangle_missing_side_from_perimeter",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -35268,6 +35515,7 @@
      "kind": "rectangle_factor_pair_search",
      "operation": "geometry",
      "response": {
+      "expected": "all_factor_pair_rectangles([1-24,2-12,3-8,4-6])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35311,7 +35559,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_factor_pair_search"
+      "strategy": "rectangle_factor_pair_search",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -35464,6 +35713,7 @@
      "kind": "rectangle_area_perimeter_constraint_search",
      "operation": "geometry",
      "response": {
+      "expected": "rectangles([3-8])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35507,7 +35757,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_area_perimeter_constraint_search"
+      "strategy": "rectangle_area_perimeter_constraint_search",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -35528,6 +35779,7 @@
      "kind": "ignore_perimeter_rectangle_constraint",
      "operation": "geometry",
      "response": {
+      "expected": "rectangles([3-8])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35566,7 +35818,8 @@
         "value": ""
        }
       ],
-      "strategy": "ignore_perimeter_rectangle_constraint"
+      "strategy": "ignore_perimeter_rectangle_constraint",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -35587,6 +35840,7 @@
      "kind": "rectangle_missing_side_from_area",
      "operation": "geometry",
      "response": {
+      "expected": "side_length(7)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35625,7 +35879,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangle_missing_side_from_area"
+      "strategy": "rectangle_missing_side_from_area",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -35646,6 +35901,7 @@
      "kind": "subtract_side_from_area",
      "operation": "geometry",
      "response": {
+      "expected": "side_length(7)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35684,7 +35940,8 @@
         "value": ""
        }
       ],
-      "strategy": "subtract_side_from_area"
+      "strategy": "subtract_side_from_area",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -35706,6 +35963,7 @@
      "kind": "rectangular_prism_volume_layer_iteration",
      "operation": "geometry",
      "response": {
+      "expected": "cubic_units(60)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35744,7 +36002,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangular_prism_volume_layer_iteration"
+      "strategy": "rectangular_prism_volume_layer_iteration",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -35852,6 +36111,7 @@
      "kind": "rectangular_prism_missing_dimension_from_volume",
      "operation": "geometry",
      "response": {
+      "expected": "dimension(5)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35885,7 +36145,8 @@
         "value": ""
        }
       ],
-      "strategy": "rectangular_prism_missing_dimension_from_volume"
+      "strategy": "rectangular_prism_missing_dimension_from_volume",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -35907,6 +36168,7 @@
      "kind": "divide_volume_by_one_dimension",
      "operation": "geometry",
      "response": {
+      "expected": "dimension(5)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -35945,7 +36207,8 @@
         "value": ""
        }
       ],
-      "strategy": "divide_volume_by_one_dimension"
+      "strategy": "divide_volume_by_one_dimension",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -35977,6 +36240,7 @@
      "kind": "composite_prism_volume_sum",
      "operation": "geometry",
      "response": {
+      "expected": "volume(34,cube(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36015,7 +36279,8 @@
         "value": ""
        }
       ],
-      "strategy": "composite_prism_volume_sum"
+      "strategy": "composite_prism_volume_sum",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -36048,6 +36313,7 @@
      "kind": "sum_overlapping_prism_volumes",
      "operation": "geometry",
      "response": {
+      "expected": "volume(30,cube(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36086,7 +36352,8 @@
         "value": ""
        }
       ],
-      "strategy": "sum_overlapping_prism_volumes"
+      "strategy": "sum_overlapping_prism_volumes",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -36109,6 +36376,7 @@
      "kind": "compare_solid_volume_by_cube_count",
      "operation": "geometry",
      "response": {
+      "expected": "more",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36152,7 +36420,8 @@
         "value": ""
        }
       ],
-      "strategy": "compare_solid_volume_by_cube_count"
+      "strategy": "compare_solid_volume_by_cube_count",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -36175,6 +36444,7 @@
      "kind": "compare_solid_volume_by_visible_extent",
      "operation": "geometry",
      "response": {
+      "expected": "more",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36208,7 +36478,8 @@
         "value": ""
        }
       ],
-      "strategy": "compare_solid_volume_by_visible_extent"
+      "strategy": "compare_solid_volume_by_visible_extent",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -36241,6 +36512,7 @@
      "kind": "ordered_pair_coordinate_plot",
      "operation": "geometry",
      "response": {
+      "expected": "plotted_points([point(-3,2),point(1,4),point(5,-1)])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36274,7 +36546,8 @@
         "value": ""
        }
       ],
-      "strategy": "ordered_pair_coordinate_plot"
+      "strategy": "ordered_pair_coordinate_plot",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -36344,6 +36617,7 @@
      "kind": "axis_aligned_coordinate_distance",
      "operation": "geometry",
      "response": {
+      "expected": "length(5,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36387,7 +36661,8 @@
         "value": ""
        }
       ],
-      "strategy": "axis_aligned_coordinate_distance"
+      "strategy": "axis_aligned_coordinate_distance",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -36415,6 +36690,7 @@
      "kind": "directed_difference_as_coordinate_distance",
      "operation": "geometry",
      "response": {
+      "expected": "length(5,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36458,7 +36734,8 @@
         "value": ""
        }
       ],
-      "strategy": "directed_difference_as_coordinate_distance"
+      "strategy": "directed_difference_as_coordinate_distance",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -36526,6 +36803,7 @@
      "kind": "area_preserving_polygon_decomposition",
      "operation": "geometry",
      "response": {
+      "expected": "square_units(24)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36569,7 +36847,8 @@
         "value": ""
        }
       ],
-      "strategy": "area_preserving_polygon_decomposition"
+      "strategy": "area_preserving_polygon_decomposition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -36623,6 +36902,7 @@
      "kind": "decomposition_with_gap_or_overlap",
      "operation": "geometry",
      "response": {
+      "expected": "square_units(24)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36666,7 +36946,8 @@
         "value": ""
        }
       ],
-      "strategy": "decomposition_with_gap_or_overlap"
+      "strategy": "decomposition_with_gap_or_overlap",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -36690,6 +36971,7 @@
      "kind": "parallelogram_area_base_height",
      "operation": "geometry",
      "response": {
+      "expected": "area(24,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36728,7 +37010,8 @@
         "value": ""
        }
       ],
-      "strategy": "parallelogram_area_base_height"
+      "strategy": "parallelogram_area_base_height",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -36752,6 +37035,7 @@
      "kind": "slanted_side_as_parallelogram_height",
      "operation": "geometry",
      "response": {
+      "expected": "area(24,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36790,7 +37074,8 @@
         "value": ""
        }
       ],
-      "strategy": "slanted_side_as_parallelogram_height"
+      "strategy": "slanted_side_as_parallelogram_height",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -36812,6 +37097,7 @@
      "kind": "triangle_area_half_base_height",
      "operation": "geometry",
      "response": {
+      "expected": "area(14,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36855,7 +37141,8 @@
         "value": ""
        }
       ],
-      "strategy": "triangle_area_half_base_height"
+      "strategy": "triangle_area_half_base_height",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -36877,6 +37164,7 @@
      "kind": "omit_half_in_triangle_area",
      "operation": "geometry",
      "response": {
+      "expected": "area(14,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36915,7 +37203,8 @@
         "value": ""
        }
       ],
-      "strategy": "omit_half_in_triangle_area"
+      "strategy": "omit_half_in_triangle_area",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -36944,6 +37233,7 @@
      "kind": "polyhedron_surface_area_from_net",
      "operation": "geometry",
      "response": {
+      "expected": "area(52,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -36982,7 +37272,8 @@
         "value": ""
        }
       ],
-      "strategy": "polyhedron_surface_area_from_net"
+      "strategy": "polyhedron_surface_area_from_net",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37011,6 +37302,7 @@
      "kind": "visible_faces_only_surface_area",
      "operation": "geometry",
      "response": {
+      "expected": "area(52,square(centimeter))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37049,7 +37341,8 @@
         "value": ""
        }
       ],
-      "strategy": "visible_faces_only_surface_area"
+      "strategy": "visible_faces_only_surface_area",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -37071,6 +37364,7 @@
      "kind": "dimensional_measure_unit_coordination",
      "operation": "geometry",
      "response": {
+      "expected": "measured_quantity(area,28,unit_power(centimeter,2))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37109,7 +37403,8 @@
         "value": ""
        }
       ],
-      "strategy": "dimensional_measure_unit_coordination"
+      "strategy": "dimensional_measure_unit_coordination",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37131,6 +37426,7 @@
      "kind": "linear_unit_for_area_or_volume",
      "operation": "geometry",
      "response": {
+      "expected": "measured_quantity(area,28,unit_power(centimeter,2))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37169,7 +37465,8 @@
         "value": ""
        }
       ],
-      "strategy": "linear_unit_for_area_or_volume"
+      "strategy": "linear_unit_for_area_or_volume",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -37208,6 +37505,7 @@
      "kind": "shape_classification_by_defining_attributes",
      "operation": "geometry",
      "response": {
+      "expected": "classifications([square,rectangle,rhombus,parallelogram,trapezoid,quadrilateral])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37246,7 +37544,8 @@
         "value": ""
        }
       ],
-      "strategy": "shape_classification_by_defining_attributes"
+      "strategy": "shape_classification_by_defining_attributes",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37285,6 +37584,7 @@
      "kind": "orientation_bound_shape_classification",
      "operation": "geometry",
      "response": {
+      "expected": "classifications([square,rectangle,rhombus,parallelogram,trapezoid,quadrilateral])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37318,7 +37618,8 @@
         "value": ""
        }
       ],
-      "strategy": "orientation_bound_shape_classification"
+      "strategy": "orientation_bound_shape_classification",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -37338,6 +37639,7 @@
      "kind": "angle_turn_measurement",
      "operation": "geometry",
      "response": {
+      "expected": "angle_measure(65)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37381,7 +37683,8 @@
         "value": ""
        }
       ],
-      "strategy": "angle_turn_measurement"
+      "strategy": "angle_turn_measurement",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37401,6 +37704,7 @@
      "kind": "angle_as_ray_length",
      "operation": "geometry",
      "response": {
+      "expected": "angle_measure(65)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37434,7 +37738,8 @@
         "value": ""
        }
       ],
-      "strategy": "angle_as_ray_length"
+      "strategy": "angle_as_ray_length",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -37459,6 +37764,7 @@
      "kind": "angle_additive_composition",
      "operation": "geometry",
      "response": {
+      "expected": "angle_measure(130)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37497,7 +37803,8 @@
         "value": ""
        }
       ],
-      "strategy": "angle_additive_composition"
+      "strategy": "angle_additive_composition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37554,6 +37861,7 @@
      "kind": "rigid_shape_composition",
      "operation": "geometry",
      "response": {
+      "expected": "composed_region(3,2)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37592,7 +37900,8 @@
         "value": ""
        }
       ],
-      "strategy": "rigid_shape_composition"
+      "strategy": "rigid_shape_composition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37622,6 +37931,7 @@
      "kind": "categorical_frequency_bar_representation",
      "operation": "statistics",
      "response": {
+      "expected": "frequency_representation([red-4,blue-6])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37660,7 +37970,8 @@
         "value": ""
        }
       ],
-      "strategy": "categorical_frequency_bar_representation"
+      "strategy": "categorical_frequency_bar_representation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37686,6 +37997,7 @@
      "kind": "dot_plot_frequency_representation",
      "operation": "statistics",
      "response": {
+      "expected": "dot_plot([2,3,3,5])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37719,7 +38031,8 @@
         "value": ""
        }
       ],
-      "strategy": "dot_plot_frequency_representation"
+      "strategy": "dot_plot_frequency_representation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37740,6 +38053,7 @@
      "kind": "statistical_question_variability_classification",
      "operation": "statistics",
      "response": {
+      "expected": "statistical_question(commute_time,students)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37778,7 +38092,8 @@
         "value": ""
        }
       ],
-      "strategy": "statistical_question_variability_classification"
+      "strategy": "statistical_question_variability_classification",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37799,6 +38114,7 @@
      "kind": "question_without_variability",
      "operation": "statistics",
      "response": {
+      "expected": "statistical_question(commute_time,students)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37832,7 +38148,8 @@
         "value": ""
        }
       ],
-      "strategy": "question_without_variability"
+      "strategy": "question_without_variability",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -37860,6 +38177,7 @@
      "kind": "histogram_equal_interval_representation",
      "operation": "statistics",
      "response": {
+      "expected": "histogram([bin(2,4)-2,bin(4,6)-1,bin(6,8)-1,bin(8,10)-2])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37903,7 +38221,8 @@
         "value": ""
        }
       ],
-      "strategy": "histogram_equal_interval_representation"
+      "strategy": "histogram_equal_interval_representation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37930,6 +38249,7 @@
      "kind": "mean_as_fair_share",
      "operation": "statistics",
      "response": {
+      "expected": "rational(5,1)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -37968,7 +38288,8 @@
         "value": ""
        }
       ],
-      "strategy": "mean_as_fair_share"
+      "strategy": "mean_as_fair_share",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -37995,6 +38316,7 @@
      "kind": "mean_as_balance_point",
      "operation": "statistics",
      "response": {
+      "expected": "rational(5,1)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38033,7 +38355,8 @@
         "value": ""
        }
       ],
-      "strategy": "mean_as_balance_point"
+      "strategy": "mean_as_balance_point",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38060,6 +38383,7 @@
      "kind": "mean_absolute_deviation",
      "operation": "statistics",
      "response": {
+      "expected": "rational(2,1)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38103,7 +38427,8 @@
         "value": ""
        }
       ],
-      "strategy": "mean_absolute_deviation"
+      "strategy": "mean_absolute_deviation",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38130,6 +38455,7 @@
      "kind": "mean_deviation_without_absolute_value",
      "operation": "statistics",
      "response": {
+      "expected": "rational(2,1)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38168,7 +38494,8 @@
         "value": ""
        }
       ],
-      "strategy": "mean_deviation_without_absolute_value"
+      "strategy": "mean_deviation_without_absolute_value",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -38195,6 +38522,7 @@
      "kind": "median_as_ordered_middle",
      "operation": "statistics",
      "response": {
+      "expected": "5",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38228,7 +38556,8 @@
         "value": ""
        }
       ],
-      "strategy": "median_as_ordered_middle"
+      "strategy": "median_as_ordered_middle",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -38280,6 +38609,7 @@
      "kind": "mode_as_maximal_frequency",
      "operation": "statistics",
      "response": {
+      "expected": "modes([3])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38313,7 +38643,8 @@
         "value": ""
        }
       ],
-      "strategy": "mode_as_maximal_frequency"
+      "strategy": "mode_as_maximal_frequency",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38340,6 +38671,7 @@
      "kind": "five_number_summary_and_iqr",
      "operation": "statistics",
      "response": {
+      "expected": "summary(five_number(2,rational(3,1),rational(5,1),rational(8,1),9),iqr(rational(5,1)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38383,7 +38715,8 @@
         "value": ""
        }
       ],
-      "strategy": "five_number_summary_and_iqr"
+      "strategy": "five_number_summary_and_iqr",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38410,6 +38743,7 @@
      "kind": "box_plot_from_five_number_summary",
      "operation": "statistics",
      "response": {
+      "expected": "box_plot(five_number(2,rational(3,1),rational(5,1),rational(8,1),9))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38453,7 +38787,8 @@
         "value": ""
        }
       ],
-      "strategy": "box_plot_from_five_number_summary"
+      "strategy": "box_plot_from_five_number_summary",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38479,6 +38814,7 @@
      "kind": "distribution_summary_selection",
      "operation": "statistics",
      "response": {
+      "expected": "summary_choice(mean_and_mad,measures(mean(rational(5,1)),mad(rational(2,1))))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38512,7 +38848,8 @@
         "value": ""
        }
       ],
-      "strategy": "distribution_summary_selection"
+      "strategy": "distribution_summary_selection",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38534,6 +38871,7 @@
      "kind": "linear_unit_iteration",
      "operation": "measurement",
      "response": {
+      "expected": "length(rational(7,4),inch)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38577,7 +38915,8 @@
         "value": ""
        }
       ],
-      "strategy": "linear_unit_iteration"
+      "strategy": "linear_unit_iteration",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -38599,6 +38938,7 @@
      "kind": "count_marks_not_intervals",
      "operation": "measurement",
      "response": {
+      "expected": "length(rational(7,4),inch)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38632,7 +38972,8 @@
         "value": ""
        }
       ],
-      "strategy": "count_marks_not_intervals"
+      "strategy": "count_marks_not_intervals",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -38654,6 +38995,7 @@
      "kind": "liquid_volume_scale_reading",
      "operation": "measurement",
      "response": {
+      "expected": "volume(rational(5,4),liter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38697,7 +39039,8 @@
         "value": ""
        }
       ],
-      "strategy": "liquid_volume_scale_reading"
+      "strategy": "liquid_volume_scale_reading",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -38772,6 +39115,7 @@
      "kind": "liquid_volume_count_marks_not_intervals",
      "operation": "measurement",
      "response": {
+      "expected": "volume(rational(5,4),liter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38805,7 +39149,8 @@
         "value": ""
        }
       ],
-      "strategy": "liquid_volume_count_marks_not_intervals"
+      "strategy": "liquid_volume_count_marks_not_intervals",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -38828,6 +39173,7 @@
      "kind": "unit_conversion_by_iteration",
      "operation": "measurement",
      "response": {
+      "expected": "quantity(9,foot)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -38866,7 +39212,8 @@
         "value": ""
        }
       ],
-      "strategy": "unit_conversion_by_iteration"
+      "strategy": "unit_conversion_by_iteration",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -39172,6 +39519,7 @@
      "kind": "change_unit_label_without_scaling",
      "operation": "measurement",
      "response": {
+      "expected": "quantity(9,foot)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39210,7 +39558,8 @@
         "value": ""
        }
       ],
-      "strategy": "change_unit_label_without_scaling"
+      "strategy": "change_unit_label_without_scaling",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -39233,6 +39582,7 @@
      "kind": "unit_preserving_measured_quantity_change",
      "operation": "measurement",
      "response": {
+      "expected": "quantity(12,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39271,7 +39621,8 @@
         "value": ""
        }
       ],
-      "strategy": "unit_preserving_measured_quantity_change"
+      "strategy": "unit_preserving_measured_quantity_change",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -39294,6 +39645,7 @@
      "kind": "drop_unit_from_measured_quantity_change",
      "operation": "measurement",
      "response": {
+      "expected": "quantity(12,centimeter)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39332,7 +39684,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_unit_from_measured_quantity_change"
+      "strategy": "drop_unit_from_measured_quantity_change",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -39353,6 +39706,7 @@
      "kind": "enumerate_collection_one_to_one",
      "operation": "counting",
      "response": {
+      "expected": "cardinality(5)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39401,7 +39755,8 @@
         "value": ""
        }
       ],
-      "strategy": "enumerate_collection_one_to_one"
+      "strategy": "enumerate_collection_one_to_one",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -39471,6 +39826,7 @@
      "kind": "inscribe_cardinality",
      "operation": "counting",
      "response": {
+      "expected": "numeral(10,positive,radix(1),[digit(7,7)])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39504,7 +39860,8 @@
         "value": ""
        }
       ],
-      "strategy": "inscribe_cardinality"
+      "strategy": "inscribe_cardinality",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -39525,6 +39882,7 @@
      "kind": "recursive_place_value_inscription",
      "operation": "counting",
      "response": {
+      "expected": "numeral(10,positive,radix(3),[digit(3,3),digit(4,4),digit(7,7)])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39598,7 +39956,8 @@
         "value": ""
        }
       ],
-      "strategy": "recursive_place_value_inscription"
+      "strategy": "recursive_place_value_inscription",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -39949,6 +40308,7 @@
      "kind": "omit_highest_place_regrouping",
      "operation": "counting",
      "response": {
+      "expected": "cardinality(263)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -39987,7 +40347,8 @@
         "value": ""
        }
       ],
-      "strategy": "omit_highest_place_regrouping"
+      "strategy": "omit_highest_place_regrouping",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -40009,6 +40370,7 @@
      "kind": "place_value_comparison",
      "operation": "counting",
      "response": {
+      "expected": "more",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40052,7 +40414,8 @@
         "value": ""
        }
       ],
-      "strategy": "place_value_comparison"
+      "strategy": "place_value_comparison",
+      "validity": "correct"
      }
     },
     "direct_runs": [
@@ -40417,6 +40780,7 @@
      "kind": "compare_ones_digits_only",
      "operation": "counting",
      "response": {
+      "expected": "fewer",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40455,7 +40819,8 @@
         "value": ""
        }
       ],
-      "strategy": "compare_ones_digits_only"
+      "strategy": "compare_ones_digits_only",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -40478,6 +40843,7 @@
      "kind": "compare_cardinalities_one_to_one",
      "operation": "counting",
      "response": {
+      "expected": "more",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40516,7 +40882,8 @@
         "value": ""
        }
       ],
-      "strategy": "compare_cardinalities_one_to_one"
+      "strategy": "compare_cardinalities_one_to_one",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -40539,6 +40906,7 @@
      "kind": "spatial_extent_as_cardinality",
      "operation": "counting",
      "response": {
+      "expected": "fewer",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40572,7 +40940,8 @@
         "value": ""
        }
       ],
-      "strategy": "spatial_extent_as_cardinality"
+      "strategy": "spatial_extent_as_cardinality",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -40592,6 +40961,7 @@
      "kind": "derived_fact_adjustment",
      "operation": "addition",
      "response": {
+      "expected": "14",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40630,7 +41000,8 @@
         "value": ""
        }
       ],
-      "strategy": "derived_fact_adjustment"
+      "strategy": "derived_fact_adjustment",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -40650,6 +41021,7 @@
      "kind": "append_column_sum_without_carrying",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40693,7 +41065,9 @@
         "value": ""
        }
       ],
-      "strategy": "append_column_sum_without_carrying"
+      "strategy": "append_column_sum_without_carrying",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(raw_column_concatenation_changes_place_value),expected(75),produced(615),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -40713,6 +41087,7 @@
      "kind": "drop_carry_to_next_column",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40761,7 +41136,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_carry_to_next_column"
+      "strategy": "drop_carry_to_next_column",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -40781,6 +41157,7 @@
      "kind": "wrong_carry_amount_to_next_column",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40829,7 +41206,8 @@
         "value": ""
        }
       ],
-      "strategy": "wrong_carry_amount_to_next_column"
+      "strategy": "wrong_carry_amount_to_next_column",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -40849,6 +41227,7 @@
      "kind": "dropped_ones_chunk",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40887,7 +41266,9 @@
         "value": ""
        }
       ],
-      "strategy": "dropped_ones_chunk"
+      "strategy": "dropped_ones_chunk",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(omitted_ones_chunk_changes_total),expected(75),produced(67),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -40907,6 +41288,7 @@
      "kind": "rote_derived_fact_rule_misfire",
      "operation": "addition",
      "response": {
+      "expected": "14",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -40945,7 +41327,8 @@
         "value": ""
        }
       ],
-      "strategy": "rote_derived_fact_rule_misfire"
+      "strategy": "rote_derived_fact_rule_misfire",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -40965,6 +41348,7 @@
      "kind": "unbalanced_make_base_compensation",
      "operation": "addition",
      "response": {
+      "expected": "75",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41013,7 +41397,9 @@
         "value": ""
        }
       ],
-      "strategy": "unbalanced_make_base_compensation"
+      "strategy": "unbalanced_make_base_compensation",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(compensation_changes_total_without_transfer),expected(75),produced(78),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -41033,6 +41419,7 @@
      "kind": "sliding_constant_difference",
      "operation": "subtraction",
      "response": {
+      "expected": "26",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41076,7 +41463,8 @@
         "value": ""
        }
       ],
-      "strategy": "sliding_constant_difference"
+      "strategy": "sliding_constant_difference",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -41096,6 +41484,7 @@
      "kind": "borrow_across_zero_cascade",
      "operation": "subtraction",
      "response": {
+      "expected": "95",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41144,7 +41533,8 @@
         "value": ""
        }
       ],
-      "strategy": "borrow_across_zero_cascade"
+      "strategy": "borrow_across_zero_cascade",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -41164,6 +41554,7 @@
      "kind": "borrow_across_zero_no_cascade",
      "operation": "subtraction",
      "response": {
+      "expected": "95",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41222,7 +41613,8 @@
         "value": ""
        }
       ],
-      "strategy": "borrow_across_zero_no_cascade"
+      "strategy": "borrow_across_zero_no_cascade",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41242,6 +41634,7 @@
      "kind": "borrow_without_reducing_bases",
      "operation": "subtraction",
      "response": {
+      "expected": "26",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41290,7 +41683,8 @@
         "value": ""
        }
       ],
-      "strategy": "borrow_without_reducing_bases"
+      "strategy": "borrow_without_reducing_bases",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41310,6 +41704,7 @@
      "kind": "drop_ones_after_base_takeaway",
      "operation": "subtraction",
      "response": {
+      "expected": "26",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41348,7 +41743,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_ones_after_base_takeaway"
+      "strategy": "drop_ones_after_base_takeaway",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41368,6 +41764,7 @@
      "kind": "slide_subtrahend_only",
      "operation": "subtraction",
      "response": {
+      "expected": "26",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41411,7 +41808,8 @@
         "value": ""
        }
       ],
-      "strategy": "slide_subtrahend_only"
+      "strategy": "slide_subtrahend_only",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41431,6 +41829,7 @@
      "kind": "compare_returns_larger_count",
      "operation": "subtraction",
      "response": {
+      "expected": "4",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41474,7 +41873,8 @@
         "value": ""
        }
       ],
-      "strategy": "compare_returns_larger_count"
+      "strategy": "compare_returns_larger_count",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41494,6 +41894,7 @@
      "kind": "known_product_adjustment",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41537,7 +41938,8 @@
         "value": ""
        }
       ],
-      "strategy": "known_product_adjustment"
+      "strategy": "known_product_adjustment",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -41557,6 +41959,7 @@
      "kind": "known_product_without_adjustment",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41600,7 +42003,8 @@
         "value": ""
        }
       ],
-      "strategy": "known_product_without_adjustment"
+      "strategy": "known_product_without_adjustment",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41620,6 +42024,7 @@
      "kind": "add_counts_without_composite_unit",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41663,7 +42068,9 @@
         "value": ""
        }
       ],
-      "strategy": "add_counts_without_composite_unit"
+      "strategy": "add_counts_without_composite_unit",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(additive_count_diverges_from_composite_unit_total),expected(56),produced(15),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -41683,6 +42090,7 @@
      "kind": "add_instead_of_multiply",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41721,7 +42129,9 @@
         "value": ""
        }
       ],
-      "strategy": "add_instead_of_multiply"
+      "strategy": "add_instead_of_multiply",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(additive_count_diverges_from_composite_unit_total),expected(56),produced(15),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -41741,6 +42151,7 @@
      "kind": "drop_regrouping_remainder",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41784,7 +42195,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_regrouping_remainder"
+      "strategy": "drop_regrouping_remainder",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41804,6 +42216,7 @@
      "kind": "drop_second_partial_product",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41842,7 +42255,8 @@
         "value": ""
        }
       ],
-      "strategy": "drop_second_partial_product"
+      "strategy": "drop_second_partial_product",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41862,6 +42276,7 @@
      "kind": "context_free_fact_family_guess",
      "operation": "multiplication",
      "response": {
+      "expected": "factor_pair(7,8,56)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41905,7 +42320,8 @@
         "value": ""
        }
       ],
-      "strategy": "context_free_fact_family_guess"
+      "strategy": "context_free_fact_family_guess",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41925,6 +42341,7 @@
      "kind": "rigid_factor_order_roles",
      "operation": "multiplication",
      "response": {
+      "expected": "56",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -41968,7 +42385,8 @@
         "value": ""
        }
       ],
-      "strategy": "rigid_factor_order_roles"
+      "strategy": "rigid_factor_order_roles",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -41988,6 +42406,7 @@
      "kind": "sequential_recompute_commuted_products",
      "operation": "multiplication",
      "response": {
+      "expected": "structural_equivalence(56)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42036,7 +42455,8 @@
         "value": ""
        }
       ],
-      "strategy": "sequential_recompute_commuted_products"
+      "strategy": "sequential_recompute_commuted_products",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42056,6 +42476,7 @@
      "kind": "inverse_fact_decomposition",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(15,2)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42094,7 +42515,8 @@
         "value": ""
        }
       ],
-      "strategy": "inverse_fact_decomposition"
+      "strategy": "inverse_fact_decomposition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -42114,6 +42536,7 @@
      "kind": "missing_factor_known_product_search",
      "operation": "division",
      "response": {
+      "expected": "8",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42152,7 +42575,8 @@
         "value": ""
        }
       ],
-      "strategy": "missing_factor_known_product_search"
+      "strategy": "missing_factor_known_product_search",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -42172,6 +42596,7 @@
      "kind": "reject_known_product_match",
      "operation": "division",
      "response": {
+      "expected": "8",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42215,7 +42640,8 @@
         "value": ""
        }
       ],
-      "strategy": "reject_known_product_match"
+      "strategy": "reject_known_product_match",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42235,6 +42661,7 @@
      "kind": "stop_after_one_known_fact",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(15,2)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42278,7 +42705,9 @@
         "value": ""
        }
       ],
-      "strategy": "stop_after_one_known_fact"
+      "strategy": "stop_after_one_known_fact",
+      "validity": "incorrect",
+      "viability_context": "viability(fails_in_context,condition(further_known_facts_are_required),expected(quotient_remainder(15,2)),produced(quotient_remainder(10,17)),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -42298,6 +42727,7 @@
      "kind": "stop_at_nearby_product_in_search",
      "operation": "division",
      "response": {
+      "expected": "8",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42341,7 +42771,8 @@
         "value": ""
        }
       ],
-      "strategy": "stop_at_nearby_product_in_search"
+      "strategy": "stop_at_nearby_product_in_search",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42361,6 +42792,7 @@
      "kind": "sum_dividend_and_divisor",
      "operation": "division",
      "response": {
+      "expected": "quotient_remainder(24,0)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42404,7 +42836,8 @@
         "value": ""
        }
       ],
-      "strategy": "sum_dividend_and_divisor"
+      "strategy": "sum_dividend_and_divisor",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42424,6 +42857,7 @@
      "kind": "splitting",
      "operation": "fraction",
      "response": {
+      "expected": "whole_recovered(unit(whole))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42482,7 +42916,8 @@
         "value": ""
        }
       ],
-      "strategy": "splitting"
+      "strategy": "splitting",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -42506,6 +42941,7 @@
      "kind": "solve_for_unit",
      "operation": "fraction",
      "response": {
+      "expected": "solved_unknown(coefficient(fraction(2,3)),total(12),reciprocal_operator(fraction(3,2)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42559,7 +42995,8 @@
         "value": ""
        }
       ],
-      "strategy": "solve_for_unit"
+      "strategy": "solve_for_unit",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -42583,6 +43020,7 @@
      "kind": "iterate_only_no_reverse",
      "operation": "fraction",
      "response": {
+      "expected": "solved_unknown(coefficient(fraction(2,3)),total(12),reciprocal_operator(fraction(3,2)))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42626,7 +43064,8 @@
         "value": ""
        }
       ],
-      "strategy": "iterate_only_no_reverse"
+      "strategy": "iterate_only_no_reverse",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42646,6 +43085,7 @@
      "kind": "recursive_partition",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(1,12)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42694,7 +43134,8 @@
         "value": ""
        }
       ],
-      "strategy": "recursive_partition"
+      "strategy": "recursive_partition",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -42714,6 +43155,7 @@
      "kind": "clear_inner_referent",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(1,12)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42757,7 +43199,8 @@
         "value": ""
        }
       ],
-      "strategy": "clear_inner_referent"
+      "strategy": "clear_inner_referent",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42777,6 +43220,7 @@
      "kind": "improper_fraction_iteration",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(7,4)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42825,7 +43269,8 @@
         "value": ""
        }
       ],
-      "strategy": "improper_fraction_iteration"
+      "strategy": "improper_fraction_iteration",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -42845,6 +43290,7 @@
      "kind": "iterate_given_overshoot",
      "operation": "fraction",
      "response": {
+      "expected": "whole_recovered(unit(whole))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42883,7 +43329,8 @@
         "value": ""
        }
       ],
-      "strategy": "iterate_given_overshoot"
+      "strategy": "iterate_given_overshoot",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42903,6 +43350,7 @@
      "kind": "whole_number_grab",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(3,4)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -42946,7 +43394,8 @@
         "value": ""
        }
       ],
-      "strategy": "whole_number_grab"
+      "strategy": "whole_number_grab",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -42973,6 +43422,7 @@
      "kind": "cross_multiplication_rule_from_pattern",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(6,20)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -43031,7 +43481,8 @@
         "value": ""
        }
       ],
-      "strategy": "cross_multiplication_rule_from_pattern"
+      "strategy": "cross_multiplication_rule_from_pattern",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -43058,6 +43509,7 @@
      "kind": "cross_multiplication_rule_without_ground",
      "operation": "fraction",
      "response": {
+      "expected": "fraction(6,20)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -43106,7 +43558,8 @@
         "value": ""
        }
       ],
-      "strategy": "cross_multiplication_rule_without_ground"
+      "strategy": "cross_multiplication_rule_without_ground",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -43139,6 +43592,7 @@
      "kind": "factor_cancel_substitute",
      "operation": "calculus",
      "response": {
+      "expected": "limit_value(3)",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -43197,7 +43651,8 @@
         "value": ""
        }
       ],
-      "strategy": "factor_cancel_substitute"
+      "strategy": "factor_cancel_substitute",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -43229,6 +43684,7 @@
      "kind": "factor_cancel_without_common_factor",
      "operation": "calculus",
      "response": {
+      "expected": "misfire_no_common_factor(1,numerator_value(2),denominator_value(3))",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -43277,7 +43733,8 @@
         "value": ""
        }
       ],
-      "strategy": "factor_cancel_without_common_factor"
+      "strategy": "factor_cancel_without_common_factor",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],
@@ -43331,6 +43788,7 @@
      "kind": "terminal_tree_endpoint_probability_sum",
      "operation": "probability",
      "response": {
+      "expected": "stake_split([alice-rational(1,2),bob-rational(1,2)])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -43369,7 +43827,8 @@
         "value": ""
        }
       ],
-      "strategy": "terminal_tree_endpoint_probability_sum"
+      "strategy": "terminal_tree_endpoint_probability_sum",
+      "validity": "correct"
      }
     },
     "direct_runs": [],
@@ -43423,6 +43882,7 @@
      "kind": "equiprobable_endpoint_counting",
      "operation": "probability",
      "response": {
+      "expected": "stake_split([alice-rational(1,2),bob-rational(1,2)])",
       "jump_witness": {
        "derivation": "no_known_running_sum_trace",
        "extraction": "",
@@ -43466,7 +43926,8 @@
         "value": ""
        }
       ],
-      "strategy": "equiprobable_endpoint_counting"
+      "strategy": "equiprobable_endpoint_counting",
+      "validity": "incorrect"
      }
     },
     "direct_runs": [],

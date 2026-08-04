@@ -222,17 +222,6 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
         ),
     )
     set_finding(
-        "knowledge/strategies/automaton_input_contracts.pl",
-        "consumed_by_builder",
-        "The transition-table builder reads the checked input contracts.",
-        evidence(
-            "scripts/research/build_transition_tables.py",
-            'CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"',
-            "builder input",
-        ),
-    )
-
-    set_finding(
         "hermes/quantity_claim.pl",
         "consumed_by_check",
         "The quantity_claim check adjudicates single claims and expression trees "
@@ -980,8 +969,10 @@ def build() -> dict[str, object]:
     # modules under knowledge/strategies/abstraction/ and the generated
     # deformation-coincidence data. All five read as orphan modules because
     # nothing imports candidate structure; that is the quarantine, recorded.
-    if len(registry_rows) != 301:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 301")
+    # 308 from 2026-08-03: seven formerly prebaked-only scene formats now
+    # expose bounded live render operations through the worker.
+    if len(registry_rows) != 308:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 308")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1033,8 +1024,10 @@ def build() -> dict[str, object]:
     # 86 from 2026-08-03: the five abstraction-wing files (four pilots and
     # the deformation-coincidence data) are orphan modules by design —
     # candidate structure that nothing imports until adopted.
-    if len(orphan_records) != 86:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 86")
+    # 85 after input_contract made automaton_input_contracts.pl reachable
+    # through the dispatch surface.
+    if len(orphan_records) != 85:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 85")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route.
     if len(unrouted) != 10:
