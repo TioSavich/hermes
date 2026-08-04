@@ -662,6 +662,18 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
             f"{prolog_list(denominator['coefficients'])})",
             f"limit_at({prolog_number(example['at'])})",
         )
+    if kind == "polynomial_limit":
+        return (
+            f"polynomial({prolog_list(example['coefficients'])})",
+            f"limit_at({prolog_number(example['at'])})",
+        )
+    if kind == "bounded_sequence_limit":
+        return (
+            "sequence_term("
+            f"bounded({prolog_atom(example['numerator'])},{prolog_number(example['bound'])}),"
+            f"diverging({prolog_atom(example['denominator'])}))",
+            "as_n_to_infinity",
+        )
     if kind == "terminal_path_tree":
         paths = example["paths"]
         assert isinstance(paths, list)
@@ -734,6 +746,7 @@ ENCODABLE_KINDS = frozenset({
     "power_notation", "expression_pair", "linear_pattern_context",
     "linear_pattern_empirical_rule", "fraction_pair", "fraction_addend_pair",
     "fraction_minuend_subtrahend", "fraction_solve", "rational_limit",
+    "polynomial_limit", "bounded_sequence_limit",
     "terminal_path_tree", "decimal_pair", "count_pair", "cardinality",
     "collection_pair",
 })

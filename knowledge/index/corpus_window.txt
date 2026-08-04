@@ -140,13 +140,13 @@ LEGEND - arcs (name, machines)
   keep_first_break_work_on  1
   keep_first_then_break  1
   keep_first_then_work_on  2
-  keep_first_work_keep  3
+  keep_first_work_keep  4
   keep_then_break  5
-  keep_then_work_on  31
+  keep_then_work_on  32
   keep_work_keep  9
   keep_work_keep_work_keep  1
   keep_work_keep_work_on  2
-  unrecorded_run  48
+  unrecorded_run  50
   work_then_break  49
   work_then_keep  35
 MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
@@ -214,6 +214,10 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+register_givens core=evaluate_expression closure=name_result other=receive_kernel_outcome
   algebraic/symbolic_expression_construction arc=keep_then_work_on
     shell=assign_roles+assign_roles+compose_expression core=none closure=verify_invariant+inscribe_result other=none
+  calculus/bounded_numerator_over_diverging_denominator arc=unrecorded_run
+    shell=read_operand_attribute+read_operand_attribute+read_operand_attribute+filter_by_constraint+judge_against_benchmark core=none closure=name_result other=none
+  calculus/direct_substitution arc=keep_then_work_on
+    shell=read_operand_attribute+substitute_values core=evaluate_expression closure=test_criteria+name_result other=receive_kernel_outcome
   calculus/factor_cancel_substitute arc=keep_then_work_on
     shell=read_operand_attribute+substitute_values+decompose_operand+substitute_values core=evaluate_expression closure=test_criteria+name_result other=receive_kernel_outcome
   calculus/factor_cancel_without_common_factor arc=break_recover_break
@@ -350,6 +354,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
   fraction/co_denominator_make_base_transfer arc=keep_first_work_keep
     shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
+  fraction/co_denominator_make_ten_split_leftover arc=keep_first_work_keep
+    shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
   fraction/common_denominator_fraction_addition arc=keep_then_work_on
     shell=initiate+re_express_equivalently+align_to_common_unit+re_express_equivalently+re_express_equivalently+align_to_common_unit core=combine_quantities closure=emit_result other=none
   fraction/common_denominator_fraction_subtraction arc=keep_then_work_on
@@ -388,6 +394,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+assign_roles+partition_into_equal_parts+isolate_unknown core=iterate_unit closure=verify_invariant other=receive_kernel_outcome
   fraction/splitting arc=keep_then_work_on
     shell=partition_into_equal_parts+disembed_part+recompose_total core=iterate_unit closure=verify_invariant+attach_units_coordination other=receive_kernel_outcome+receive_kernel_outcome
+  fraction/unit_fraction_denominator_product_rule arc=unrecorded_run
+    shell=unitize_referent+disembed_part+partition_into_equal_parts+select_unit_scale core=compute_product+compute_product+iterate_unit closure=none other=dispatch_to_kernel
   fraction/unit_fraction_iteration arc=keep_then_work_on
     shell=unitize_referent+disembed_part core=iterate_unit closure=verify_invariant other=receive_kernel_outcome
   fraction/unit_fraction_partition arc=keep_then_work_on

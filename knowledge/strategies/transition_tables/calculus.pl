@@ -3,8 +3,24 @@
 :- multifile automaton_tuple/6.
 :- multifile automaton_transition/6.
 
+automaton_tuple(calculus, bounded_numerator_over_diverging_denominator, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_limit_target, identify_bound_on_numerator, identify_diverging_denominator, for_any_epsilon_choose_n_so_tail_is_within_epsilon, bound_tail_by_constant_over_diverging_term, conclude_limit_is_zero]), start(q_start), accepting([q_accept])).
+automaton_tuple(calculus, direct_substitution, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_limit_target, recognize_polynomial_is_continuous, substitute_target_into_polynomial, evaluate_polynomial_at_point, kernel_trace, name_value_as_limit]), start(q_start), accepting([q_accept])).
 automaton_tuple(calculus, factor_cancel_substitute, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_step_6, q_step_7, q_accept]), actions([identify_limit_target, substitute_target_into_expression, detect_zero_over_zero, factor_common_factor_x_minus_a, substitute_target_into_reduced, evaluate_reduced_at_point, kernel_trace, name_value_as_limit]), start(q_start), accepting([q_accept])).
 automaton_tuple(calculus, factor_cancel_without_common_factor, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_limit_target, substitute_target_into_expression, fail_to_detect_zero_over_zero, apply_cancel_routine_anyway, produce_misfire_result, lose_precondition_check]), start(q_start), accepting([q_accept])).
+
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_start, identify_limit_target, q_step_1, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:220'))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_1, identify_bound_on_numerator, q_step_2, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:220'))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_2, identify_diverging_denominator, q_step_3, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:220'))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_3, for_any_epsilon_choose_n_so_tail_is_within_epsilon, q_step_4, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:220'))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_4, bound_tail_by_constant_over_diverging_term, q_step_5, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:220'))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_5, conclude_limit_is_zero, q_accept, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:220'))).
+
+automaton_transition(calculus, direct_substitution, q_start, identify_limit_target, q_step_1, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:96'))).
+automaton_transition(calculus, direct_substitution, q_step_1, recognize_polynomial_is_continuous, q_step_2, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:96'))).
+automaton_transition(calculus, direct_substitution, q_step_2, substitute_target_into_polynomial, q_step_3, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:96'))).
+automaton_transition(calculus, direct_substitution, q_step_3, evaluate_polynomial_at_point, q_step_4, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:96'))).
+automaton_transition(calculus, direct_substitution, q_step_4, kernel_trace, q_step_5, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:96'))).
+automaton_transition(calculus, direct_substitution, q_step_5, name_value_as_limit, q_accept, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:96'))).
 
 automaton_transition(calculus, factor_cancel_substitute, q_start, identify_limit_target, q_step_1, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:128'))).
 automaton_transition(calculus, factor_cancel_substitute, q_step_1, substitute_target_into_expression, q_step_2, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:128'))).
@@ -23,6 +39,20 @@ automaton_transition(calculus, factor_cancel_without_common_factor, q_step_4, pr
 automaton_transition(calculus, factor_cancel_without_common_factor, q_step_5, lose_precondition_check, q_accept, provenance(static('knowledge/strategies/math/calculus_limits_action_pairs.pl:179'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_start, identify_limit_target, q_step_1, provenance(observed(contract_example))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_1, identify_bound_on_numerator, q_step_2, provenance(observed(contract_example))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_2, identify_diverging_denominator, q_step_3, provenance(observed(contract_example))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_3, for_any_epsilon_choose_n_so_tail_is_within_epsilon, q_step_4, provenance(observed(contract_example))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_4, bound_tail_by_constant_over_diverging_term, q_step_5, provenance(observed(contract_example))).
+automaton_transition(calculus, bounded_numerator_over_diverging_denominator, q_step_5, conclude_limit_is_zero, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(calculus, direct_substitution, q_start, identify_limit_target, q_step_1, provenance(observed(contract_example))).
+automaton_transition(calculus, direct_substitution, q_step_1, recognize_polynomial_is_continuous, q_step_2, provenance(observed(contract_example))).
+automaton_transition(calculus, direct_substitution, q_step_2, substitute_target_into_polynomial, q_step_3, provenance(observed(contract_example))).
+automaton_transition(calculus, direct_substitution, q_step_3, evaluate_polynomial_at_point, q_step_4, provenance(observed(contract_example))).
+automaton_transition(calculus, direct_substitution, q_step_4, kernel_trace, q_step_5, provenance(observed(contract_example))).
+automaton_transition(calculus, direct_substitution, q_step_5, name_value_as_limit, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(calculus, factor_cancel_substitute, q_start, identify_limit_target, q_step_1, provenance(observed(contract_example))).
 automaton_transition(calculus, factor_cancel_substitute, q_step_1, substitute_target_into_expression, q_step_2, provenance(observed(contract_example))).
 automaton_transition(calculus, factor_cancel_substitute, q_step_2, detect_zero_over_zero, q_step_3, provenance(observed(contract_example))).

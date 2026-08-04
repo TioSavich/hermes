@@ -1,8 +1,8 @@
 {
  "counts": {
-  "affected_union": 163,
-  "clean_proposals": 105,
-  "displacements": 38,
+  "affected_union": 164,
+  "clean_proposals": 104,
+  "displacements": 39,
   "fan_surplus": 73,
   "proposals": 268,
   "reviewable_signatures": 57,
@@ -1209,6 +1209,21 @@
        "evidence": [
         "unit fraction",
         "denominator",
+        "fraction",
+        "iterate",
+        "numerator",
+        "partition",
+        "parts",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 5.5
+      },
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
         "equal",
         "fraction",
         "one",
@@ -1446,6 +1461,19 @@
         "unit",
         "whole"
        ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 4.5
+      },
+      {
+       "evidence": [
+        "referent whole",
+        "denominator",
+        "fraction",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
        "machine": "fraction/unit_fraction_partition",
        "score": 4.5
       },
@@ -1608,6 +1636,19 @@
       {
        "evidence": [
         "unit fraction",
+        "fraction",
+        "iterate",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 4.5
+      },
+      {
+       "evidence": [
+        "unit fraction",
         "count",
         "fraction",
         "iterate",
@@ -1638,6 +1679,19 @@
       {
        "evidence": [
         "referent whole",
+        "identify",
+        "partition",
+        "parts",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 4.5
+      },
+      {
+       "evidence": [
+        "referent whole",
         "equal",
         "one",
         "partition",
@@ -1665,6 +1719,17 @@
    "defects": [
     {
      "better_bound_candidates": [
+      {
+       "evidence": [
+        "iterate unit fraction",
+        "unit fraction",
+        "fraction",
+        "iterate",
+        "unit"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 5.0
+      },
       {
        "evidence": [
         "iterate unit fraction",
@@ -1940,6 +2005,18 @@
        "evidence": [
         "unit fraction",
         "fraction",
+        "iterate",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 4.0
+      },
+      {
+       "evidence": [
+        "unit fraction",
+        "fraction",
         "one",
         "partition",
         "unit",
@@ -2010,6 +2087,19 @@
        ],
        "machine": "fraction/unit_fraction_partition",
        "score": 5.0
+      },
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "fraction",
+        "iterate",
+        "parts",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 4.5
       }
      ],
      "kind": "displacement",
@@ -2028,6 +2118,21 @@
     },
     {
      "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "fraction",
+        "iterate",
+        "numerator",
+        "partition",
+        "parts",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 5.5
+      },
       {
        "evidence": [
         "unit fraction",
@@ -2079,9 +2184,28 @@
    "signature_has_clean_candidate": true
   },
   {
-   "defects": [],
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "fraction",
+        "numerator",
+        "partition",
+        "parts",
+        "unit"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
    "identity": "corpus_candidate:strategy:1334:fraction/solve_for_unit",
-   "reviewable": true,
+   "reviewable": false,
    "signature_has_clean_candidate": true
   },
   {
@@ -2170,6 +2294,21 @@
        "evidence": [
         "unit fraction",
         "denominator",
+        "fraction",
+        "iterate",
+        "numerator",
+        "partition",
+        "parts",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 5.5
+      },
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
         "equal",
         "fraction",
         "one",
@@ -2218,6 +2357,20 @@
        ],
        "machine": "fraction/unit_fraction_partition",
        "score": 5.5
+      },
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "fraction",
+        "identify",
+        "iterate",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_denominator_product_rule",
+       "score": 5.0
       }
      ],
      "kind": "displacement",

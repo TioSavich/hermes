@@ -159,13 +159,13 @@ window_legend_arc(keep_first_break_recover_break_again, 1).
 window_legend_arc(keep_first_break_work_on, 1).
 window_legend_arc(keep_first_then_break, 1).
 window_legend_arc(keep_first_then_work_on, 2).
-window_legend_arc(keep_first_work_keep, 3).
+window_legend_arc(keep_first_work_keep, 4).
 window_legend_arc(keep_then_break, 5).
-window_legend_arc(keep_then_work_on, 31).
+window_legend_arc(keep_then_work_on, 32).
 window_legend_arc(keep_work_keep, 9).
 window_legend_arc(keep_work_keep_work_keep, 1).
 window_legend_arc(keep_work_keep_work_on, 2).
-window_legend_arc(unrecorded_run, 48).
+window_legend_arc(unrecorded_run, 50).
 window_legend_arc(work_then_break, 49).
 window_legend_arc(work_then_keep, 35).
 
@@ -201,6 +201,8 @@ window_row(algebraic, one_sided_equation_operation, break_three_times, [substitu
 window_row(algebraic, operational_equals_left_value, work_then_break, [substitute_values, substitute_symbol_reading], [evaluate_expression], [treat_relevant_as_irrelevant], []).
 window_row(algebraic, programming_expression_evaluation, unrecorded_run, [register_givens, register_givens], [evaluate_expression], [name_result], [receive_kernel_outcome]).
 window_row(algebraic, symbolic_expression_construction, keep_then_work_on, [assign_roles, assign_roles, compose_expression], [], [verify_invariant, inscribe_result], []).
+window_row(calculus, bounded_numerator_over_diverging_denominator, unrecorded_run, [read_operand_attribute, read_operand_attribute, read_operand_attribute, filter_by_constraint, judge_against_benchmark], [], [name_result], []).
+window_row(calculus, direct_substitution, keep_then_work_on, [read_operand_attribute, substitute_values], [evaluate_expression], [test_criteria, name_result], [receive_kernel_outcome]).
 window_row(calculus, factor_cancel_substitute, keep_then_work_on, [read_operand_attribute, substitute_values, decompose_operand, substitute_values], [evaluate_expression], [test_criteria, name_result], [receive_kernel_outcome]).
 window_row(calculus, factor_cancel_without_common_factor, break_recover_break, [read_operand_attribute, substitute_values], [apply_stored_rule], [omit_required_step, misname_result, record_loss], []).
 window_row(counting, compare_cardinalities_one_to_one, unrecorded_run, [register_givens, match_one_to_one, read_operand_attribute], [], [name_result], []).
@@ -269,6 +271,7 @@ window_row(fraction, benchmark_fraction_comparison, unrecorded_run, [initiate, e
 window_row(fraction, clear_inner_referent, work_then_break, [partition_into_equal_parts, partition_into_equal_parts], [], [name_result, omit_required_step, record_loss], []).
 window_row(fraction, co_denominator_count_on_from_larger, keep_first_work_keep, [unitize_referent, select_unit_scale], [], [verify_invariant, attach_units_coordination], [dispatch_to_kernel, receive_kernel_outcome]).
 window_row(fraction, co_denominator_make_base_transfer, keep_first_work_keep, [unitize_referent, select_unit_scale], [], [verify_invariant, attach_units_coordination], [dispatch_to_kernel, receive_kernel_outcome]).
+window_row(fraction, co_denominator_make_ten_split_leftover, keep_first_work_keep, [unitize_referent, select_unit_scale], [], [verify_invariant, attach_units_coordination], [dispatch_to_kernel, receive_kernel_outcome]).
 window_row(fraction, common_denominator_fraction_addition, keep_then_work_on, [initiate, re_express_equivalently, align_to_common_unit, re_express_equivalently, re_express_equivalently, align_to_common_unit], [combine_quantities], [emit_result], []).
 window_row(fraction, common_denominator_fraction_subtraction, keep_then_work_on, [initiate, re_express_equivalently, align_to_common_unit, re_express_equivalently, re_express_equivalently, align_to_common_unit], [remove_quantity], [emit_result], []).
 window_row(fraction, common_unit_fraction_comparison, unrecorded_run, [initiate, read_operand_attribute, retain_unchanged, retain_unchanged, read_operand_attribute, compare_magnitudes], [], [emit_result], []).
@@ -288,6 +291,7 @@ window_row(fraction, set_model_fraction_comparison, keep_work_keep_work_on, [ini
 window_row(fraction, set_model_subset_size_focus, break_then_work_on, [initiate, unitize_referent, conflate_roles, compare_magnitudes], [substitute_count_for_measure, substitute_count_for_measure], [accept_without_check, omit_required_step, emit_result], []).
 window_row(fraction, solve_for_unit, keep_then_work_on, [register_givens, assign_roles, partition_into_equal_parts, isolate_unknown], [iterate_unit], [verify_invariant], [receive_kernel_outcome]).
 window_row(fraction, splitting, keep_then_work_on, [partition_into_equal_parts, disembed_part, recompose_total], [iterate_unit], [verify_invariant, attach_units_coordination], [receive_kernel_outcome, receive_kernel_outcome]).
+window_row(fraction, unit_fraction_denominator_product_rule, unrecorded_run, [unitize_referent, disembed_part, partition_into_equal_parts, select_unit_scale], [compute_product, compute_product, iterate_unit], [], [dispatch_to_kernel]).
 window_row(fraction, unit_fraction_iteration, keep_then_work_on, [unitize_referent, disembed_part], [iterate_unit], [verify_invariant], [receive_kernel_outcome]).
 window_row(fraction, unit_fraction_partition, keep_then_work_on, [unitize_referent, partition_into_equal_parts, disembed_part], [], [verify_invariant], [receive_kernel_outcome]).
 window_row(fraction, whole_number_grab, work_then_break, [unitize_referent, read_operand_attribute], [], [treat_relevant_as_irrelevant, misname_result, record_loss], []).

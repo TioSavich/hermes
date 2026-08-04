@@ -14613,7 +14613,7 @@
   }
  ],
  "named_surface_inventory": {
-  "action_name_occurrences": 482,
+  "action_name_occurrences": 486,
   "fraction_api_surfaces": [
    {
     "line": 112,
@@ -15392,6 +15392,10 @@
      ],
      [
       "fraction",
+      "co_denominator_make_ten_split_leftover"
+     ],
+     [
+      "fraction",
       "splitting"
      ]
     ],
@@ -15732,6 +15736,10 @@
      [
       "fraction",
       "cross_multiplication_rule_without_ground"
+     ],
+     [
+      "fraction",
+      "unit_fraction_denominator_product_rule"
      ],
      [
       "geometry",
@@ -16225,6 +16233,10 @@
      ],
      [
       "fraction",
+      "unit_fraction_denominator_product_rule"
+     ],
+     [
+      "fraction",
       "unit_fraction_iteration"
      ],
      [
@@ -16252,7 +16264,15 @@
      ],
      [
       "fraction",
+      "co_denominator_make_ten_split_leftover"
+     ],
+     [
+      "fraction",
       "cross_multiplication_rule_from_pattern"
+     ],
+     [
+      "fraction",
+      "unit_fraction_denominator_product_rule"
      ]
     ],
     "line": 215,
@@ -16496,6 +16516,10 @@
      ],
      [
       "calculus",
+      "direct_substitution"
+     ],
+     [
+      "calculus",
       "factor_cancel_substitute"
      ]
     ],
@@ -16557,6 +16581,10 @@
    {
     "action_name": "filter_by_constraint",
     "canonical_mapping_signature_matches": [
+     [
+      "calculus",
+      "bounded_numerator_over_diverging_denominator"
+     ],
      [
       "division",
       "missing_factor_known_product_search"
@@ -16982,6 +17010,10 @@
      ],
      [
       "fraction",
+      "unit_fraction_denominator_product_rule"
+     ],
+     [
+      "fraction",
       "unit_fraction_iteration"
      ],
      [
@@ -17015,6 +17047,10 @@
    {
     "action_name": "judge_against_benchmark",
     "canonical_mapping_signature_matches": [
+     [
+      "calculus",
+      "bounded_numerator_over_diverging_denominator"
+     ],
      [
       "fraction",
       "benchmark_fraction_comparison"
@@ -17387,6 +17423,14 @@
      [
       "algebraic",
       "programming_expression_evaluation"
+     ],
+     [
+      "calculus",
+      "bounded_numerator_over_diverging_denominator"
+     ],
+     [
+      "calculus",
+      "direct_substitution"
      ],
      [
       "calculus",
@@ -17827,6 +17871,10 @@
      ],
      [
       "fraction",
+      "unit_fraction_denominator_product_rule"
+     ],
+     [
+      "fraction",
       "unit_fraction_partition"
      ],
      [
@@ -17910,6 +17958,14 @@
      [
       "algebraic",
       "linear_pattern_contextual_rule"
+     ],
+     [
+      "calculus",
+      "bounded_numerator_over_diverging_denominator"
+     ],
+     [
+      "calculus",
+      "direct_substitution"
      ],
      [
       "calculus",
@@ -18096,6 +18152,10 @@
      ],
      [
       "calculus",
+      "direct_substitution"
+     ],
+     [
+      "calculus",
       "factor_cancel_substitute"
      ],
      [
@@ -18105,6 +18165,10 @@
      [
       "fraction",
       "co_denominator_make_base_transfer"
+     ],
+     [
+      "fraction",
+      "co_denominator_make_ten_split_leftover"
      ],
      [
       "fraction",
@@ -19365,7 +19429,15 @@
      ],
      [
       "fraction",
+      "co_denominator_make_ten_split_leftover"
+     ],
+     [
+      "fraction",
       "reversible_measurement_division"
+     ],
+     [
+      "fraction",
+      "unit_fraction_denominator_product_rule"
      ],
      [
       "geometry",
@@ -19670,6 +19742,10 @@
      ],
      [
       "calculus",
+      "direct_substitution"
+     ],
+     [
+      "calculus",
       "factor_cancel_substitute"
      ],
      [
@@ -19708,6 +19784,10 @@
      [
       "algebraic",
       "guess_and_check_rule"
+     ],
+     [
+      "calculus",
+      "direct_substitution"
      ],
      [
       "calculus",
@@ -19913,6 +19993,10 @@
      ],
      [
       "fraction",
+      "co_denominator_make_ten_split_leftover"
+     ],
+     [
+      "fraction",
       "improper_fraction_chain_loss"
      ],
      [
@@ -19938,6 +20022,10 @@
      [
       "fraction",
       "set_model_subset_size_focus"
+     ],
+     [
+      "fraction",
+      "unit_fraction_denominator_product_rule"
      ],
      [
       "fraction",
@@ -20040,6 +20128,10 @@
      [
       "fraction",
       "co_denominator_make_base_transfer"
+     ],
+     [
+      "fraction",
+      "co_denominator_make_ten_split_leftover"
      ],
      [
       "fraction",
@@ -20469,8 +20561,13 @@
     "action_name": "unit_fraction_denominator_product_rule",
     "canonical_mapping_signature_matches": [],
     "line": 752,
-    "registered_automaton_correspondence": false,
-    "registry_signature_matches": [],
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "fraction",
+      "unit_fraction_denominator_product_rule"
+     ]
+    ],
     "requesting_signature_matches": [],
     "source": "knowledge/strategies/math/fraction_action_pairs.pl",
     "surface": "fraction_action"
@@ -20524,8 +20621,13 @@
     "action_name": "co_denominator_make_ten_split_leftover",
     "canonical_mapping_signature_matches": [],
     "line": 894,
-    "registered_automaton_correspondence": false,
-    "registry_signature_matches": [],
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "fraction",
+      "co_denominator_make_ten_split_leftover"
+     ]
+    ],
     "requesting_signature_matches": [],
     "source": "knowledge/strategies/math/fraction_action_pairs.pl",
     "surface": "fraction_action"
@@ -20533,7 +20635,7 @@
    {
     "action_name": "co_denominator_make_base_transfer",
     "canonical_mapping_signature_matches": [],
-    "line": 923,
+    "line": 926,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20548,7 +20650,7 @@
    {
     "action_name": "common_denominator_fraction_addition",
     "canonical_mapping_signature_matches": [],
-    "line": 965,
+    "line": 968,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20563,7 +20665,7 @@
    {
     "action_name": "common_denominator_fraction_subtraction",
     "canonical_mapping_signature_matches": [],
-    "line": 988,
+    "line": 991,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20578,7 +20680,7 @@
    {
     "action_name": "add_numerator_denominator_sum",
     "canonical_mapping_signature_matches": [],
-    "line": 1017,
+    "line": 1020,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20593,7 +20695,7 @@
    {
     "action_name": "measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 1043,
+    "line": 1046,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -20608,7 +20710,7 @@
    {
     "action_name": "reversible_measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 1082,
+    "line": 1085,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22136,9 +22238,39 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "factor_cancel_substitute",
+    "action_name": "bounded_numerator_over_diverging_denominator",
     "canonical_mapping_signature_matches": [],
     "line": 6,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "calculus",
+      "bounded_numerator_over_diverging_denominator"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/calculus.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "direct_substitution",
+    "canonical_mapping_signature_matches": [],
+    "line": 7,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "calculus",
+      "direct_substitution"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/calculus.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "factor_cancel_substitute",
+    "canonical_mapping_signature_matches": [],
+    "line": 8,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22153,7 +22285,7 @@
    {
     "action_name": "factor_cancel_without_common_factor",
     "canonical_mapping_signature_matches": [],
-    "line": 7,
+    "line": 9,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22886,9 +23018,24 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "common_denominator_fraction_addition",
+    "action_name": "co_denominator_make_ten_split_leftover",
     "canonical_mapping_signature_matches": [],
     "line": 15,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "fraction",
+      "co_denominator_make_ten_split_leftover"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/fraction.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "common_denominator_fraction_addition",
+    "canonical_mapping_signature_matches": [],
+    "line": 16,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22903,7 +23050,7 @@
    {
     "action_name": "common_denominator_fraction_subtraction",
     "canonical_mapping_signature_matches": [],
-    "line": 16,
+    "line": 17,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22918,7 +23065,7 @@
    {
     "action_name": "common_unit_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 17,
+    "line": 18,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22933,7 +23080,7 @@
    {
     "action_name": "cross_multiplication_rule_from_pattern",
     "canonical_mapping_signature_matches": [],
-    "line": 18,
+    "line": 19,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22948,7 +23095,7 @@
    {
     "action_name": "cross_multiplication_rule_without_ground",
     "canonical_mapping_signature_matches": [],
-    "line": 19,
+    "line": 20,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22963,7 +23110,7 @@
    {
     "action_name": "gap_thinking_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 20,
+    "line": 21,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22978,7 +23125,7 @@
    {
     "action_name": "improper_fraction_chain_loss",
     "canonical_mapping_signature_matches": [],
-    "line": 21,
+    "line": 22,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22993,7 +23140,7 @@
    {
     "action_name": "improper_fraction_iteration",
     "canonical_mapping_signature_matches": [],
-    "line": 22,
+    "line": 23,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23008,7 +23155,7 @@
    {
     "action_name": "iterate_given_overshoot",
     "canonical_mapping_signature_matches": [],
-    "line": 23,
+    "line": 24,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23023,7 +23170,7 @@
    {
     "action_name": "iterate_only_no_reverse",
     "canonical_mapping_signature_matches": [],
-    "line": 24,
+    "line": 25,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23038,7 +23185,7 @@
    {
     "action_name": "measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 25,
+    "line": 26,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23053,7 +23200,7 @@
    {
     "action_name": "number_line_count_marks_not_intervals",
     "canonical_mapping_signature_matches": [],
-    "line": 26,
+    "line": 27,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23068,7 +23215,7 @@
    {
     "action_name": "number_line_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 27,
+    "line": 28,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23083,7 +23230,7 @@
    {
     "action_name": "recursive_partition",
     "canonical_mapping_signature_matches": [],
-    "line": 28,
+    "line": 29,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23098,7 +23245,7 @@
    {
     "action_name": "reversible_measurement_division",
     "canonical_mapping_signature_matches": [],
-    "line": 29,
+    "line": 30,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23113,7 +23260,7 @@
    {
     "action_name": "set_model_fraction_comparison",
     "canonical_mapping_signature_matches": [],
-    "line": 30,
+    "line": 31,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23128,7 +23275,7 @@
    {
     "action_name": "set_model_subset_size_focus",
     "canonical_mapping_signature_matches": [],
-    "line": 31,
+    "line": 32,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23143,7 +23290,7 @@
    {
     "action_name": "solve_for_unit",
     "canonical_mapping_signature_matches": [],
-    "line": 32,
+    "line": 33,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23158,7 +23305,7 @@
    {
     "action_name": "splitting",
     "canonical_mapping_signature_matches": [],
-    "line": 33,
+    "line": 34,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23171,9 +23318,24 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "unit_fraction_denominator_product_rule",
+    "canonical_mapping_signature_matches": [],
+    "line": 35,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "fraction",
+      "unit_fraction_denominator_product_rule"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/fraction.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "unit_fraction_iteration",
     "canonical_mapping_signature_matches": [],
-    "line": 34,
+    "line": 36,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23188,7 +23350,7 @@
    {
     "action_name": "unit_fraction_partition",
     "canonical_mapping_signature_matches": [],
-    "line": 35,
+    "line": 37,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23203,7 +23365,7 @@
    {
     "action_name": "whole_number_grab",
     "canonical_mapping_signature_matches": [],
-    "line": 36,
+    "line": 38,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -25548,26 +25710,6 @@
     "surface": "canonical_action"
    },
    {
-    "action_name": "unit_fraction_denominator_product_rule",
-    "canonical_mapping_signature_matches": [],
-    "line": 752,
-    "registered_automaton_correspondence": false,
-    "registry_signature_matches": [],
-    "requesting_signature_matches": [],
-    "source": "knowledge/strategies/math/fraction_action_pairs.pl",
-    "surface": "fraction_action"
-   },
-   {
-    "action_name": "co_denominator_make_ten_split_leftover",
-    "canonical_mapping_signature_matches": [],
-    "line": 894,
-    "registered_automaton_correspondence": false,
-    "registry_signature_matches": [],
-    "requesting_signature_matches": [],
-    "source": "knowledge/strategies/math/fraction_action_pairs.pl",
-    "surface": "fraction_action"
-   },
-   {
     "action_name": "cover_region_with_unit_squares",
     "canonical_mapping_signature_matches": [],
     "line": 98,
@@ -25868,9 +26010,9 @@
     "surface": "scene_request"
    }
   ],
-  "uncorresponded_occurrences": 94,
-  "uncorresponded_unique_names": 90,
-  "unique_action_names": 400
+  "uncorresponded_occurrences": 92,
+  "uncorresponded_unique_names": 88,
+  "unique_action_names": 402
  },
  "population_check": {
   "class_count_sum": 226,
@@ -25882,7 +26024,7 @@
  },
  "register": "Measured partial action-seam inventory. Enacted membership requires inputs extracted from that lesson's accepted tracked span and a live trace.",
  "registry_probe_inventory": {
-  "checked_contracts_run": 219,
+  "checked_contracts_run": 223,
   "coverage": [
    {
     "checked_contract_run": {
@@ -29266,6 +29408,83 @@
      "input": {
       "kind": "fraction_pair",
       "left": {
+       "d": 10,
+       "n": 7
+      },
+      "right": {
+       "d": 10,
+       "n": 8
+      }
+     },
+     "kind": "co_denominator_make_ten_split_leftover",
+     "operation": "fraction",
+     "response": {
+      "expected": "15",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "co_denominator_make_ten_split_leftover",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "15",
+      "steps": [
+       {
+        "label": "confirm_same_denominator(10)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "hold_referent_whole_at(fraction(10,10))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "hold_unit_fraction_at(fraction(1,10))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "dispatch_to_cgi(make_ten_split_leftover,numerators(7,8))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "cgi_kernel_outcome(action_outcome(make_ten_split_leftover,[classification(productive),cluster(additive_strategy_fluency),automaton_state(make_ten),vocabulary([addend,ten,split,needed_part,leftover,conservation]),result(15),expected(15),validity(correct),components(make_base_components(8,7,10,10,2,10,5)),elaborates(sar_add_rmb:run_rmb/4)]))",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "attach_three_level_units_coordination(three_level_units_coordination(operative_base(10),unit_fraction(fraction(1,10)),referent_whole(fraction(10,10)),iteration_count_at_unit(addition_of(7,8))))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "co_denominator_make_ten_split_leftover",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "co_denominator_make_ten_split_leftover",
+    "line": 333,
+    "operation": "fraction",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "fraction_pair",
+      "left": {
        "d": 4,
        "n": 3
       },
@@ -29342,7 +29561,94 @@
     },
     "direct_runs": [],
     "kind": "area_model_part_of_part",
-    "line": 333,
+    "line": 337,
+    "operation": "fraction",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "fraction_pair",
+      "left": {
+       "d": 3,
+       "n": 1
+      },
+      "right": {
+       "d": 4,
+       "n": 1
+      }
+     },
+     "kind": "unit_fraction_denominator_product_rule",
+     "operation": "fraction",
+     "response": {
+      "expected": "fraction(1,12)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "unit_fraction_denominator_product_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "fraction(1,12)",
+      "steps": [
+       {
+        "label": "establish_referent_whole(unit(whole))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "recover_unit_fraction(fraction(1,3))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "partition_unit_fraction_into_d_parts(3,4)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "identify_nested_unit_fraction(fraction(1,12))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "compute_denominator_product(3,4,12)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "compute_numerator_product(1,1,1)",
+        "n": 6,
+        "value": ""
+       },
+       {
+        "label": "iterate_nested_unit_fraction(1,fraction(1,12),fraction(1,12))",
+        "n": 7,
+        "value": ""
+       },
+       {
+        "label": "connect_to_unit_fraction_iteration_kernel(fraction(1,12))",
+        "n": 8,
+        "value": ""
+       }
+      ],
+      "strategy": "unit_fraction_denominator_product_rule",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "unit_fraction_denominator_product_rule",
+    "line": 340,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29419,7 +29725,7 @@
     },
     "direct_runs": [],
     "kind": "co_denominator_count_on_from_larger",
-    "line": 336,
+    "line": 343,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29489,7 +29795,7 @@
     },
     "direct_runs": [],
     "kind": "improper_fraction_chain_loss",
-    "line": 341,
+    "line": 348,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29561,7 +29867,7 @@
     },
     "direct_runs": [],
     "kind": "measurement_division",
-    "line": 345,
+    "line": 352,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29633,7 +29939,7 @@
     },
     "direct_runs": [],
     "kind": "reversible_measurement_division",
-    "line": 349,
+    "line": 356,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29725,7 +30031,7 @@
     },
     "direct_runs": [],
     "kind": "number_line_fraction_comparison",
-    "line": 353,
+    "line": 360,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29818,7 +30124,7 @@
     },
     "direct_runs": [],
     "kind": "number_line_count_marks_not_intervals",
-    "line": 356,
+    "line": 363,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -29941,7 +30247,7 @@
      }
     ],
     "kind": "area_model_fraction_comparison",
-    "line": 360,
+    "line": 367,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30039,7 +30345,7 @@
     },
     "direct_runs": [],
     "kind": "area_model_unequal_partition_piece_count",
-    "line": 364,
+    "line": 371,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30131,7 +30437,7 @@
     },
     "direct_runs": [],
     "kind": "set_model_fraction_comparison",
-    "line": 369,
+    "line": 376,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30229,7 +30535,7 @@
     },
     "direct_runs": [],
     "kind": "set_model_subset_size_focus",
-    "line": 373,
+    "line": 380,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30346,7 +30652,7 @@
      }
     ],
     "kind": "benchmark_fraction_comparison",
-    "line": 377,
+    "line": 384,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30444,7 +30750,7 @@
     },
     "direct_runs": [],
     "kind": "gap_thinking_fraction_comparison",
-    "line": 381,
+    "line": 388,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30561,7 +30867,7 @@
      }
     ],
     "kind": "common_unit_fraction_comparison",
-    "line": 385,
+    "line": 392,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30649,7 +30955,7 @@
     },
     "direct_runs": [],
     "kind": "add_numerator_denominator_comparison",
-    "line": 389,
+    "line": 396,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30741,7 +31047,7 @@
     },
     "direct_runs": [],
     "kind": "common_denominator_fraction_addition",
-    "line": 393,
+    "line": 400,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30833,7 +31139,7 @@
     },
     "direct_runs": [],
     "kind": "common_denominator_fraction_subtraction",
-    "line": 397,
+    "line": 404,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -30926,7 +31232,7 @@
     },
     "direct_runs": [],
     "kind": "add_numerator_denominator_sum",
-    "line": 401,
+    "line": 408,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31008,7 +31314,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_fraction_place_value_comparison",
-    "line": 405,
+    "line": 412,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31096,7 +31402,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_scale_loss_comparison",
-    "line": 410,
+    "line": 417,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31156,7 +31462,7 @@
     },
     "direct_runs": [],
     "kind": "positional_decimal_reading",
-    "line": 414,
+    "line": 421,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31221,7 +31527,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_whole_number_reading",
-    "line": 417,
+    "line": 424,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31556,7 +31862,7 @@
      }
     ],
     "kind": "decimal_comparison_by_aligned_units",
-    "line": 420,
+    "line": 427,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31629,7 +31935,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_numeral_comparison_without_scale_alignment",
-    "line": 423,
+    "line": 430,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31706,7 +32012,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_addition_by_aligned_units",
-    "line": 426,
+    "line": 433,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31784,7 +32090,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_add_unaligned_numerals",
-    "line": 428,
+    "line": 435,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31861,7 +32167,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_subtraction_by_aligned_units",
-    "line": 430,
+    "line": 437,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -31939,7 +32245,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_subtract_unaligned_numerals",
-    "line": 432,
+    "line": 439,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32001,7 +32307,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_place_unit_regrouping",
-    "line": 434,
+    "line": 441,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32063,7 +32369,7 @@
     },
     "direct_runs": [],
     "kind": "change_decimal_place_name_without_regrouping",
-    "line": 437,
+    "line": 444,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32140,7 +32446,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_multiplication_rule",
-    "line": 440,
+    "line": 447,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32212,7 +32518,7 @@
     },
     "direct_runs": [],
     "kind": "decimal_point_rule_misapplication",
-    "line": 442,
+    "line": 449,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32289,7 +32595,7 @@
     },
     "direct_runs": [],
     "kind": "ecuadorian_decimal_long_division",
-    "line": 444,
+    "line": 451,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32356,7 +32662,7 @@
     },
     "direct_runs": [],
     "kind": "recalled_result_scaling",
-    "line": 446,
+    "line": 453,
     "operation": "decimal",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32416,7 +32722,7 @@
     },
     "direct_runs": [],
     "kind": "common_factor_intersection",
-    "line": 449,
+    "line": 456,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32476,7 +32782,7 @@
     },
     "direct_runs": [],
     "kind": "factors_of_first_number_only",
-    "line": 452,
+    "line": 459,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32536,7 +32842,7 @@
     },
     "direct_runs": [],
     "kind": "common_multiple_sequence",
-    "line": 455,
+    "line": 462,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32596,7 +32902,7 @@
     },
     "direct_runs": [],
     "kind": "add_numbers_as_common_multiple",
-    "line": 458,
+    "line": 465,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32666,7 +32972,7 @@
     },
     "direct_runs": [],
     "kind": "signed_addition_with_sign_relation",
-    "line": 461,
+    "line": 468,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32736,7 +33042,7 @@
     },
     "direct_runs": [],
     "kind": "drop_sign_use_magnitude_sum",
-    "line": 463,
+    "line": 470,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32801,7 +33107,7 @@
     },
     "direct_runs": [],
     "kind": "signed_number_location_and_order",
-    "line": 465,
+    "line": 472,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32866,7 +33172,7 @@
     },
     "direct_runs": [],
     "kind": "order_by_magnitude_ignore_sign",
-    "line": 468,
+    "line": 475,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32928,7 +33234,7 @@
     },
     "direct_runs": [],
     "kind": "inequality_solution_set_representation",
-    "line": 471,
+    "line": 478,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -32990,7 +33296,7 @@
     },
     "direct_runs": [],
     "kind": "inequality_as_boundary_point",
-    "line": 474,
+    "line": 481,
     "operation": "integer",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33060,7 +33366,7 @@
     },
     "direct_runs": [],
     "kind": "scale_ratio_unit",
-    "line": 477,
+    "line": 484,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33125,7 +33431,7 @@
     },
     "direct_runs": [],
     "kind": "additive_extension_of_ratio",
-    "line": 480,
+    "line": 487,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33197,7 +33503,7 @@
     },
     "direct_runs": [],
     "kind": "construct_referent_ratio_diagram",
-    "line": 483,
+    "line": 490,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33264,7 +33570,7 @@
     },
     "direct_runs": [],
     "kind": "reverse_ratio_referent_order",
-    "line": 486,
+    "line": 493,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33352,7 +33658,7 @@
     },
     "direct_runs": [],
     "kind": "programming_expression_evaluation",
-    "line": 490,
+    "line": 497,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33430,7 +33736,7 @@
     },
     "direct_runs": [],
     "kind": "contextual_linear_equation_construction",
-    "line": 492,
+    "line": 499,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33510,7 +33816,7 @@
     },
     "direct_runs": [],
     "kind": "equation_truth_by_substitution",
-    "line": 497,
+    "line": 504,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33590,7 +33896,7 @@
     },
     "direct_runs": [],
     "kind": "operational_equals_left_value",
-    "line": 501,
+    "line": 508,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33652,7 +33958,7 @@
     },
     "direct_runs": [],
     "kind": "balance_preserving_linear_solution",
-    "line": 505,
+    "line": 512,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33719,7 +34025,7 @@
     },
     "direct_runs": [],
     "kind": "one_sided_equation_operation",
-    "line": 510,
+    "line": 517,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33799,7 +34105,7 @@
     },
     "direct_runs": [],
     "kind": "symbolic_expression_construction",
-    "line": 514,
+    "line": 521,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33882,7 +34188,7 @@
     },
     "direct_runs": [],
     "kind": "distributive_expression_rewrite",
-    "line": 518,
+    "line": 525,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33960,7 +34266,7 @@
     },
     "direct_runs": [],
     "kind": "drop_distributed_term",
-    "line": 522,
+    "line": 529,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34024,7 +34330,7 @@
     },
     "direct_runs": [],
     "kind": "exponent_as_repeated_factor",
-    "line": 526,
+    "line": 533,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34083,7 +34389,7 @@
     },
     "direct_runs": [],
     "kind": "exponent_as_multiplier",
-    "line": 530,
+    "line": 537,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34168,7 +34474,7 @@
     },
     "direct_runs": [],
     "kind": "exponential_equivalence_by_expansion",
-    "line": 534,
+    "line": 541,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34241,7 +34547,7 @@
     },
     "direct_runs": [],
     "kind": "linear_pattern_contextual_rule",
-    "line": 539,
+    "line": 546,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34310,7 +34616,7 @@
     },
     "direct_runs": [],
     "kind": "guess_and_check_rule",
-    "line": 541,
+    "line": 548,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34504,7 +34810,7 @@
      }
     ],
     "kind": "rectangle_area_unit_iteration",
-    "line": 543,
+    "line": 550,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34564,7 +34870,7 @@
     },
     "direct_runs": [],
     "kind": "area_as_perimeter_count",
-    "line": 546,
+    "line": 553,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34643,7 +34949,7 @@
     },
     "direct_runs": [],
     "kind": "area_unit_covering",
-    "line": 550,
+    "line": 557,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34717,7 +35023,7 @@
     },
     "direct_runs": [],
     "kind": "count_overlapping_area_tiles",
-    "line": 553,
+    "line": 560,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34786,7 +35092,7 @@
     },
     "direct_runs": [],
     "kind": "area_unit_scale_selection",
-    "line": 556,
+    "line": 563,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34855,7 +35161,7 @@
     },
     "direct_runs": [],
     "kind": "choose_first_area_unit_without_scale",
-    "line": 560,
+    "line": 567,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34927,7 +35233,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_perimeter_boundary_traversal",
-    "line": 564,
+    "line": 571,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34989,7 +35295,7 @@
     },
     "direct_runs": [],
     "kind": "perimeter_two_sides_only",
-    "line": 568,
+    "line": 575,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35051,7 +35357,7 @@
     },
     "direct_runs": [],
     "kind": "perimeter_uses_area_formula",
-    "line": 571,
+    "line": 578,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35112,7 +35418,7 @@
     },
     "direct_runs": [],
     "kind": "polygon_perimeter_boundary_accumulation",
-    "line": 574,
+    "line": 581,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35178,7 +35484,7 @@
     },
     "direct_runs": [],
     "kind": "omit_unlabeled_boundary_side",
-    "line": 579,
+    "line": 586,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35254,7 +35560,7 @@
     },
     "direct_runs": [],
     "kind": "symmetry_constrained_side_reconstruction",
-    "line": 583,
+    "line": 590,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35325,7 +35631,7 @@
     },
     "direct_runs": [],
     "kind": "ignore_symmetry_multiplicity",
-    "line": 588,
+    "line": 595,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35433,7 +35739,7 @@
      }
     ],
     "kind": "rectangle_perimeter_side_pair_search",
-    "line": 592,
+    "line": 599,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35499,7 +35805,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_missing_side_from_perimeter",
-    "line": 595,
+    "line": 602,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35697,7 +36003,7 @@
      }
     ],
     "kind": "rectangle_factor_pair_search",
-    "line": 598,
+    "line": 605,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35763,7 +36069,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_area_perimeter_constraint_search",
-    "line": 601,
+    "line": 608,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35824,7 +36130,7 @@
     },
     "direct_runs": [],
     "kind": "ignore_perimeter_rectangle_constraint",
-    "line": 606,
+    "line": 613,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35885,7 +36191,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_missing_side_from_area",
-    "line": 611,
+    "line": 618,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35946,7 +36252,7 @@
     },
     "direct_runs": [],
     "kind": "subtract_side_from_area",
-    "line": 614,
+    "line": 621,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36094,7 +36400,7 @@
      }
     ],
     "kind": "rectangular_prism_volume_layer_iteration",
-    "line": 617,
+    "line": 624,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36151,7 +36457,7 @@
     },
     "direct_runs": [],
     "kind": "rectangular_prism_missing_dimension_from_volume",
-    "line": 620,
+    "line": 627,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36213,7 +36519,7 @@
     },
     "direct_runs": [],
     "kind": "divide_volume_by_one_dimension",
-    "line": 625,
+    "line": 632,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36285,7 +36591,7 @@
     },
     "direct_runs": [],
     "kind": "composite_prism_volume_sum",
-    "line": 629,
+    "line": 636,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36358,7 +36664,7 @@
     },
     "direct_runs": [],
     "kind": "sum_overlapping_prism_volumes",
-    "line": 632,
+    "line": 639,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36426,7 +36732,7 @@
     },
     "direct_runs": [],
     "kind": "compare_solid_volume_by_cube_count",
-    "line": 635,
+    "line": 642,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36484,7 +36790,7 @@
     },
     "direct_runs": [],
     "kind": "compare_solid_volume_by_visible_extent",
-    "line": 639,
+    "line": 646,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36594,7 +36900,7 @@
      }
     ],
     "kind": "ordered_pair_coordinate_plot",
-    "line": 643,
+    "line": 650,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36667,7 +36973,7 @@
     },
     "direct_runs": [],
     "kind": "axis_aligned_coordinate_distance",
-    "line": 646,
+    "line": 653,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36740,7 +37046,7 @@
     },
     "direct_runs": [],
     "kind": "directed_difference_as_coordinate_distance",
-    "line": 650,
+    "line": 657,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36853,7 +37159,7 @@
     },
     "direct_runs": [],
     "kind": "area_preserving_polygon_decomposition",
-    "line": 655,
+    "line": 662,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36952,7 +37258,7 @@
     },
     "direct_runs": [],
     "kind": "decomposition_with_gap_or_overlap",
-    "line": 659,
+    "line": 666,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37016,7 +37322,7 @@
     },
     "direct_runs": [],
     "kind": "parallelogram_area_base_height",
-    "line": 663,
+    "line": 670,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37080,7 +37386,7 @@
     },
     "direct_runs": [],
     "kind": "slanted_side_as_parallelogram_height",
-    "line": 666,
+    "line": 673,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37147,7 +37453,7 @@
     },
     "direct_runs": [],
     "kind": "triangle_area_half_base_height",
-    "line": 670,
+    "line": 677,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37209,7 +37515,7 @@
     },
     "direct_runs": [],
     "kind": "omit_half_in_triangle_area",
-    "line": 673,
+    "line": 680,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37278,7 +37584,7 @@
     },
     "direct_runs": [],
     "kind": "polyhedron_surface_area_from_net",
-    "line": 676,
+    "line": 683,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37347,7 +37653,7 @@
     },
     "direct_runs": [],
     "kind": "visible_faces_only_surface_area",
-    "line": 679,
+    "line": 686,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37409,7 +37715,7 @@
     },
     "direct_runs": [],
     "kind": "dimensional_measure_unit_coordination",
-    "line": 682,
+    "line": 689,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37471,7 +37777,7 @@
     },
     "direct_runs": [],
     "kind": "linear_unit_for_area_or_volume",
-    "line": 686,
+    "line": 693,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37550,7 +37856,7 @@
     },
     "direct_runs": [],
     "kind": "shape_classification_by_defining_attributes",
-    "line": 690,
+    "line": 697,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37624,7 +37930,7 @@
     },
     "direct_runs": [],
     "kind": "orientation_bound_shape_classification",
-    "line": 695,
+    "line": 702,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37689,7 +37995,7 @@
     },
     "direct_runs": [],
     "kind": "angle_turn_measurement",
-    "line": 699,
+    "line": 706,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37744,7 +38050,7 @@
     },
     "direct_runs": [],
     "kind": "angle_as_ray_length",
-    "line": 702,
+    "line": 709,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37809,7 +38115,7 @@
     },
     "direct_runs": [],
     "kind": "angle_additive_composition",
-    "line": 705,
+    "line": 712,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37906,7 +38212,7 @@
     },
     "direct_runs": [],
     "kind": "rigid_shape_composition",
-    "line": 708,
+    "line": 715,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37976,7 +38282,7 @@
     },
     "direct_runs": [],
     "kind": "categorical_frequency_bar_representation",
-    "line": 711,
+    "line": 718,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38037,7 +38343,7 @@
     },
     "direct_runs": [],
     "kind": "dot_plot_frequency_representation",
-    "line": 714,
+    "line": 721,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38098,7 +38404,7 @@
     },
     "direct_runs": [],
     "kind": "statistical_question_variability_classification",
-    "line": 716,
+    "line": 723,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38154,7 +38460,7 @@
     },
     "direct_runs": [],
     "kind": "question_without_variability",
-    "line": 721,
+    "line": 728,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38227,7 +38533,7 @@
     },
     "direct_runs": [],
     "kind": "histogram_equal_interval_representation",
-    "line": 725,
+    "line": 732,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38294,7 +38600,7 @@
     },
     "direct_runs": [],
     "kind": "mean_as_fair_share",
-    "line": 728,
+    "line": 735,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38361,7 +38667,7 @@
     },
     "direct_runs": [],
     "kind": "mean_as_balance_point",
-    "line": 730,
+    "line": 737,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38433,7 +38739,7 @@
     },
     "direct_runs": [],
     "kind": "mean_absolute_deviation",
-    "line": 733,
+    "line": 740,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38500,7 +38806,7 @@
     },
     "direct_runs": [],
     "kind": "mean_deviation_without_absolute_value",
-    "line": 735,
+    "line": 742,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38587,7 +38893,7 @@
      }
     ],
     "kind": "median_as_ordered_middle",
-    "line": 738,
+    "line": 745,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38649,7 +38955,7 @@
     },
     "direct_runs": [],
     "kind": "mode_as_maximal_frequency",
-    "line": 740,
+    "line": 747,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38721,7 +39027,7 @@
     },
     "direct_runs": [],
     "kind": "five_number_summary_and_iqr",
-    "line": 742,
+    "line": 749,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38793,7 +39099,7 @@
     },
     "direct_runs": [],
     "kind": "box_plot_from_five_number_summary",
-    "line": 746,
+    "line": 753,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38854,7 +39160,7 @@
     },
     "direct_runs": [],
     "kind": "distribution_summary_selection",
-    "line": 749,
+    "line": 756,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38921,7 +39227,7 @@
     },
     "direct_runs": [],
     "kind": "linear_unit_iteration",
-    "line": 752,
+    "line": 759,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38978,7 +39284,7 @@
     },
     "direct_runs": [],
     "kind": "count_marks_not_intervals",
-    "line": 755,
+    "line": 762,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39098,7 +39404,7 @@
      }
     ],
     "kind": "liquid_volume_scale_reading",
-    "line": 758,
+    "line": 765,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39155,7 +39461,7 @@
     },
     "direct_runs": [],
     "kind": "liquid_volume_count_marks_not_intervals",
-    "line": 761,
+    "line": 768,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39501,7 +39807,7 @@
      }
     ],
     "kind": "unit_conversion_by_iteration",
-    "line": 765,
+    "line": 772,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39564,7 +39870,7 @@
     },
     "direct_runs": [],
     "kind": "change_unit_label_without_scaling",
-    "line": 769,
+    "line": 776,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39627,7 +39933,7 @@
     },
     "direct_runs": [],
     "kind": "unit_preserving_measured_quantity_change",
-    "line": 773,
+    "line": 780,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39690,7 +39996,7 @@
     },
     "direct_runs": [],
     "kind": "drop_unit_from_measured_quantity_change",
-    "line": 777,
+    "line": 784,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39810,7 +40116,7 @@
      }
     ],
     "kind": "enumerate_collection_one_to_one",
-    "line": 780,
+    "line": 787,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39866,7 +40172,7 @@
     },
     "direct_runs": [],
     "kind": "inscribe_cardinality",
-    "line": 783,
+    "line": 790,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40292,7 +40598,7 @@
      }
     ],
     "kind": "recursive_place_value_inscription",
-    "line": 786,
+    "line": 793,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40353,7 +40659,7 @@
     },
     "direct_runs": [],
     "kind": "omit_highest_place_regrouping",
-    "line": 789,
+    "line": 796,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40763,7 +41069,7 @@
      }
     ],
     "kind": "place_value_comparison",
-    "line": 793,
+    "line": 800,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40825,7 +41131,7 @@
     },
     "direct_runs": [],
     "kind": "compare_ones_digits_only",
-    "line": 797,
+    "line": 804,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40888,7 +41194,7 @@
     },
     "direct_runs": [],
     "kind": "compare_cardinalities_one_to_one",
-    "line": 801,
+    "line": 808,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40946,7 +41252,7 @@
     },
     "direct_runs": [],
     "kind": "spatial_extent_as_cardinality",
-    "line": 804,
+    "line": 811,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41006,7 +41312,7 @@
     },
     "direct_runs": [],
     "kind": "derived_fact_adjustment",
-    "line": 808,
+    "line": 815,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41072,7 +41378,7 @@
     },
     "direct_runs": [],
     "kind": "append_column_sum_without_carrying",
-    "line": 812,
+    "line": 819,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41142,7 +41448,7 @@
     },
     "direct_runs": [],
     "kind": "drop_carry_to_next_column",
-    "line": 816,
+    "line": 823,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41212,7 +41518,7 @@
     },
     "direct_runs": [],
     "kind": "wrong_carry_amount_to_next_column",
-    "line": 820,
+    "line": 827,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41273,7 +41579,7 @@
     },
     "direct_runs": [],
     "kind": "dropped_ones_chunk",
-    "line": 824,
+    "line": 831,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41333,7 +41639,7 @@
     },
     "direct_runs": [],
     "kind": "rote_derived_fact_rule_misfire",
-    "line": 828,
+    "line": 835,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41404,7 +41710,7 @@
     },
     "direct_runs": [],
     "kind": "unbalanced_make_base_compensation",
-    "line": 832,
+    "line": 839,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41469,7 +41775,7 @@
     },
     "direct_runs": [],
     "kind": "sliding_constant_difference",
-    "line": 836,
+    "line": 843,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41539,7 +41845,7 @@
     },
     "direct_runs": [],
     "kind": "borrow_across_zero_cascade",
-    "line": 840,
+    "line": 847,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41619,7 +41925,7 @@
     },
     "direct_runs": [],
     "kind": "borrow_across_zero_no_cascade",
-    "line": 844,
+    "line": 851,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41689,7 +41995,7 @@
     },
     "direct_runs": [],
     "kind": "borrow_without_reducing_bases",
-    "line": 848,
+    "line": 855,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41749,7 +42055,7 @@
     },
     "direct_runs": [],
     "kind": "drop_ones_after_base_takeaway",
-    "line": 852,
+    "line": 859,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41814,7 +42120,7 @@
     },
     "direct_runs": [],
     "kind": "slide_subtrahend_only",
-    "line": 856,
+    "line": 863,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41879,7 +42185,7 @@
     },
     "direct_runs": [],
     "kind": "compare_returns_larger_count",
-    "line": 860,
+    "line": 867,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41944,7 +42250,7 @@
     },
     "direct_runs": [],
     "kind": "known_product_adjustment",
-    "line": 864,
+    "line": 871,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42009,7 +42315,7 @@
     },
     "direct_runs": [],
     "kind": "known_product_without_adjustment",
-    "line": 868,
+    "line": 875,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42075,7 +42381,7 @@
     },
     "direct_runs": [],
     "kind": "add_counts_without_composite_unit",
-    "line": 873,
+    "line": 880,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42136,7 +42442,7 @@
     },
     "direct_runs": [],
     "kind": "add_instead_of_multiply",
-    "line": 878,
+    "line": 885,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42201,7 +42507,7 @@
     },
     "direct_runs": [],
     "kind": "drop_regrouping_remainder",
-    "line": 882,
+    "line": 889,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42261,7 +42567,7 @@
     },
     "direct_runs": [],
     "kind": "drop_second_partial_product",
-    "line": 886,
+    "line": 893,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42326,7 +42632,7 @@
     },
     "direct_runs": [],
     "kind": "context_free_fact_family_guess",
-    "line": 890,
+    "line": 897,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42391,7 +42697,7 @@
     },
     "direct_runs": [],
     "kind": "rigid_factor_order_roles",
-    "line": 894,
+    "line": 901,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42461,7 +42767,7 @@
     },
     "direct_runs": [],
     "kind": "sequential_recompute_commuted_products",
-    "line": 898,
+    "line": 905,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42521,7 +42827,7 @@
     },
     "direct_runs": [],
     "kind": "inverse_fact_decomposition",
-    "line": 903,
+    "line": 910,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42581,7 +42887,7 @@
     },
     "direct_runs": [],
     "kind": "missing_factor_known_product_search",
-    "line": 907,
+    "line": 914,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42646,7 +42952,7 @@
     },
     "direct_runs": [],
     "kind": "reject_known_product_match",
-    "line": 911,
+    "line": 918,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42712,7 +43018,7 @@
     },
     "direct_runs": [],
     "kind": "stop_after_one_known_fact",
-    "line": 915,
+    "line": 922,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42777,7 +43083,7 @@
     },
     "direct_runs": [],
     "kind": "stop_at_nearby_product_in_search",
-    "line": 919,
+    "line": 926,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42842,7 +43148,7 @@
     },
     "direct_runs": [],
     "kind": "sum_dividend_and_divisor",
-    "line": 923,
+    "line": 930,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42922,7 +43228,7 @@
     },
     "direct_runs": [],
     "kind": "splitting",
-    "line": 927,
+    "line": 934,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43001,7 +43307,7 @@
     },
     "direct_runs": [],
     "kind": "solve_for_unit",
-    "line": 931,
+    "line": 938,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43070,7 +43376,7 @@
     },
     "direct_runs": [],
     "kind": "iterate_only_no_reverse",
-    "line": 935,
+    "line": 942,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43140,7 +43446,7 @@
     },
     "direct_runs": [],
     "kind": "recursive_partition",
-    "line": 939,
+    "line": 946,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43205,7 +43511,7 @@
     },
     "direct_runs": [],
     "kind": "clear_inner_referent",
-    "line": 943,
+    "line": 950,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43275,7 +43581,7 @@
     },
     "direct_runs": [],
     "kind": "improper_fraction_iteration",
-    "line": 947,
+    "line": 954,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43335,7 +43641,7 @@
     },
     "direct_runs": [],
     "kind": "iterate_given_overshoot",
-    "line": 951,
+    "line": 958,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43400,7 +43706,7 @@
     },
     "direct_runs": [],
     "kind": "whole_number_grab",
-    "line": 955,
+    "line": 962,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43487,7 +43793,7 @@
     },
     "direct_runs": [],
     "kind": "cross_multiplication_rule_from_pattern",
-    "line": 959,
+    "line": 966,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43564,7 +43870,7 @@
     },
     "direct_runs": [],
     "kind": "cross_multiplication_rule_without_ground",
-    "line": 964,
+    "line": 971,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43657,7 +43963,7 @@
     },
     "direct_runs": [],
     "kind": "factor_cancel_substitute",
-    "line": 969,
+    "line": 976,
     "operation": "calculus",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43739,7 +44045,154 @@
     },
     "direct_runs": [],
     "kind": "factor_cancel_without_common_factor",
-    "line": 973,
+    "line": 980,
+    "operation": "calculus",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "at": 2,
+      "coefficients": [
+       1,
+       2,
+       3
+      ],
+      "kind": "polynomial_limit"
+     },
+     "kind": "direct_substitution",
+     "operation": "calculus",
+     "response": {
+      "expected": "limit_value(17)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "direct_substitution",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "limit_value(17)",
+      "steps": [
+       {
+        "label": "identify_limit_target(limit_at(2))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "recognize_polynomial_is_continuous(polynomial([1,2,3]))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "substitute_target_into_polynomial(polynomial([1,2,3]),2)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "evaluate_polynomial_at_point([1,2,3],2,17)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "kernel_trace([ground_value_as_recollection(17,recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]))])",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "name_value_as_limit(limit_value(17))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "direct_substitution",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "direct_substitution",
+    "line": 984,
+    "operation": "calculus",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "bound": 1,
+      "denominator": "linear_in_n",
+      "kind": "bounded_sequence_limit",
+      "numerator": "cosine_of_n_x"
+     },
+     "kind": "bounded_numerator_over_diverging_denominator",
+     "operation": "calculus",
+     "response": {
+      "expected": "limit_value(0)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "bounded_numerator_over_diverging_denominator",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "limit_value(0)",
+      "steps": [
+       {
+        "label": "identify_limit_target(as_n_to_infinity)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_bound_on_numerator(cosine_of_n_x,1)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "identify_diverging_denominator(linear_in_n)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "for_any_epsilon_choose_n_so_tail_is_within_epsilon(1)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "bound_tail_by_constant_over_diverging_term(1,linear_in_n)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "conclude_limit_is_zero(limit_value(0))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "bounded_numerator_over_diverging_denominator",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "bounded_numerator_over_diverging_denominator",
+    "line": 988,
     "operation": "calculus",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43833,7 +44286,7 @@
     },
     "direct_runs": [],
     "kind": "terminal_tree_endpoint_probability_sum",
-    "line": 977,
+    "line": 993,
     "operation": "probability",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43932,15 +44385,15 @@
     },
     "direct_runs": [],
     "kind": "equiprobable_endpoint_counting",
-    "line": 982,
+    "line": 998,
     "operation": "probability",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
     "unexercised_reason": null
    }
   ],
-  "exercised_signatures": 219,
-  "registered_signatures": 219,
+  "exercised_signatures": 223,
+  "registered_signatures": 223,
   "reviewer_six": [
    {
     "kind": "unit_conversion_by_iteration",

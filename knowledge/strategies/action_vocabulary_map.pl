@@ -1223,6 +1223,54 @@ action_maps(calculus, factor_cancel_without_common_factor, substitute_target_int
             confidence(high),
             evidence("calculus/factor_cancel_without_common_factor, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. replace the variables in an expression with their assigned values."),
             status(review_pending)).
+action_maps(calculus, bounded_numerator_over_diverging_denominator, bound_tail_by_constant_over_diverging_term, judge_against_benchmark,
+            confidence(high),
+            evidence("calculus/bounded_numerator_over_diverging_denominator, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, witnessed. compare the sequence tail with the constant-over-diverging-term bound."),
+            status(review_pending)).
+action_maps(calculus, bounded_numerator_over_diverging_denominator, conclude_limit_is_zero, name_result,
+            confidence(high),
+            evidence("calculus/bounded_numerator_over_diverging_denominator, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, witnessed. name zero as the limit established by the tail bound."),
+            status(review_pending)).
+action_maps(calculus, bounded_numerator_over_diverging_denominator, for_any_epsilon_choose_n_so_tail_is_within_epsilon, filter_by_constraint,
+            confidence(high),
+            evidence("calculus/bounded_numerator_over_diverging_denominator, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, witnessed. choose a tail threshold that satisfies the given epsilon constraint."),
+            status(review_pending)).
+action_maps(calculus, bounded_numerator_over_diverging_denominator, identify_bound_on_numerator, read_operand_attribute,
+            confidence(high),
+            evidence("calculus/bounded_numerator_over_diverging_denominator, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, witnessed. read the bound carried by the numerator."),
+            status(review_pending)).
+action_maps(calculus, bounded_numerator_over_diverging_denominator, identify_diverging_denominator, read_operand_attribute,
+            confidence(high),
+            evidence("calculus/bounded_numerator_over_diverging_denominator, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, witnessed. read the denominator's divergence condition."),
+            status(review_pending)).
+action_maps(calculus, bounded_numerator_over_diverging_denominator, identify_limit_target, read_operand_attribute,
+            confidence(high),
+            evidence("calculus/bounded_numerator_over_diverging_denominator, q_start -> q_step_1: 1 of the machine's 6 distinct edges, witnessed. read the parameter target the sequence approaches."),
+            status(review_pending)).
+action_maps(calculus, direct_substitution, evaluate_polynomial_at_point, evaluate_expression,
+            confidence(high),
+            evidence("calculus/direct_substitution, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, witnessed. evaluate the polynomial after substitution."),
+            status(review_pending)).
+action_maps(calculus, direct_substitution, identify_limit_target, read_operand_attribute,
+            confidence(high),
+            evidence("calculus/direct_substitution, q_start -> q_step_1: 1 of the machine's 6 distinct edges, witnessed. read the point the variable approaches."),
+            status(review_pending)).
+action_maps(calculus, direct_substitution, kernel_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("calculus/direct_substitution, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, witnessed. receive the grounded value from the arithmetic kernel."),
+            status(review_pending)).
+action_maps(calculus, direct_substitution, name_value_as_limit, name_result,
+            confidence(high),
+            evidence("calculus/direct_substitution, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, witnessed. name the evaluated value as the limit."),
+            status(review_pending)).
+action_maps(calculus, direct_substitution, recognize_polynomial_is_continuous, test_criteria,
+            confidence(high),
+            evidence("calculus/direct_substitution, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, witnessed. check that the polynomial satisfies the continuity condition for substitution."),
+            status(review_pending)).
+action_maps(calculus, direct_substitution, substitute_target_into_polynomial, substitute_values,
+            confidence(high),
+            evidence("calculus/direct_substitution, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, witnessed. put the limit point into the polynomial's variable position."),
+            status(review_pending)).
 action_maps(counting, compare_cardinalities_one_to_one, conclude_count_relation, name_result,
             confidence(high),
             evidence("counting/compare_cardinalities_one_to_one, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. say which quantity the answer is."),
@@ -2239,6 +2287,30 @@ action_maps(fraction, co_denominator_make_base_transfer, hold_unit_fraction_at, 
             confidence(high),
             evidence("fraction/co_denominator_make_base_transfer, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. choose which unit, base, or scale to work in from among the available ones."),
             status(review_pending)).
+action_maps(fraction, co_denominator_make_ten_split_leftover, attach_three_level_units_coordination, attach_units_coordination,
+            confidence(high),
+            evidence("fraction/co_denominator_make_ten_split_leftover, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, witnessed. attach the three levels of units coordination to the result."),
+            status(review_pending)).
+action_maps(fraction, co_denominator_make_ten_split_leftover, cgi_kernel_outcome, receive_kernel_outcome,
+            confidence(high),
+            evidence("fraction/co_denominator_make_ten_split_leftover, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, witnessed. receive the numerator result from the CGI kernel."),
+            status(review_pending)).
+action_maps(fraction, co_denominator_make_ten_split_leftover, confirm_same_denominator, verify_invariant,
+            confidence(high),
+            evidence("fraction/co_denominator_make_ten_split_leftover, q_start -> q_step_1: 1 of the machine's 6 distinct edges, witnessed. verify that both fractions retain the same denominator unit."),
+            status(review_pending)).
+action_maps(fraction, co_denominator_make_ten_split_leftover, dispatch_to_cgi, dispatch_to_kernel,
+            confidence(high),
+            evidence("fraction/co_denominator_make_ten_split_leftover, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, witnessed. hand the numerator addition to the CGI kernel."),
+            status(review_pending)).
+action_maps(fraction, co_denominator_make_ten_split_leftover, hold_referent_whole_at, unitize_referent,
+            confidence(high),
+            evidence("fraction/co_denominator_make_ten_split_leftover, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, witnessed. establish the denominator-sized referent whole."),
+            status(review_pending)).
+action_maps(fraction, co_denominator_make_ten_split_leftover, hold_unit_fraction_at, select_unit_scale,
+            confidence(high),
+            evidence("fraction/co_denominator_make_ten_split_leftover, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, witnessed. choose the fraction's denominator unit as the scale on which the numerator action runs."),
+            status(review_pending)).
 action_maps(fraction, common_denominator_fraction_addition, co_measure, align_to_common_unit,
             confidence(high),
             evidence("fraction/common_denominator_fraction_addition, q_measure_with_co_unit -> q_combine_counts: 1 of the machine's 8 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
@@ -2762,6 +2834,38 @@ action_maps(fraction, splitting, recognize_partition_iterate_as_mutual_inverse, 
 action_maps(fraction, splitting, recover_whole, recompose_total,
             confidence(high),
             evidence("fraction/splitting, q_step_4 -> q_step_5: 1 of the machine's 8 distinct edges, static only. rebuilds the whole from the iterated unit fractions"),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, compute_denominator_product, compute_product,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_4 -> q_step_5: 1 of the machine's 8 distinct edges, witnessed. multiply the two denominator counts."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, compute_numerator_product, compute_product,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_5 -> q_step_6: 1 of the machine's 8 distinct edges, witnessed. multiply the two numerator counts."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, connect_to_unit_fraction_iteration_kernel, dispatch_to_kernel,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_7 -> q_accept: 1 of the machine's 8 distinct edges, witnessed. connect the nested unit fraction to the unit-fraction iteration kernel."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, establish_referent_whole, unitize_referent,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_start -> q_step_1: 1 of the machine's 8 distinct edges, witnessed. establish the whole against which the product is named."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, identify_nested_unit_fraction, select_unit_scale,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_3 -> q_step_4: 1 of the machine's 8 distinct edges, witnessed. select the nested unit fraction as the scale for iteration."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, iterate_nested_unit_fraction, iterate_unit,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_6 -> q_step_7: 1 of the machine's 8 distinct edges, witnessed. iterate the nested unit fraction by the numerator product."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, partition_unit_fraction_into_d_parts, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_2 -> q_step_3: 1 of the machine's 8 distinct edges, witnessed. partition the first unit fraction into the second denominator's equal parts."),
+            status(review_pending)).
+action_maps(fraction, unit_fraction_denominator_product_rule, recover_unit_fraction, disembed_part,
+            confidence(high),
+            evidence("fraction/unit_fraction_denominator_product_rule, q_step_1 -> q_step_2: 1 of the machine's 8 distinct edges, witnessed. recover the first unit fraction from the referent whole."),
             status(review_pending)).
 action_maps(fraction, unit_fraction_iteration, coordinate_iteration_with_completion_marker, verify_invariant,
             confidence(medium),

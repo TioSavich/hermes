@@ -330,7 +330,14 @@ action_automaton_signature(fraction, co_denominator_make_base_transfer,
                            inputs(same_denominator_fraction_pair,
                                   referent_whole),
                            co_denominator_fraction_sum).
+action_automaton_signature(fraction, co_denominator_make_ten_split_leftover,
+                           inputs(same_denominator_fraction_pair,
+                                  referent_whole),
+                           co_denominator_fraction_sum).
 action_automaton_signature(fraction, area_model_part_of_part,
+                           inputs(positive_fraction_pair, referent_whole),
+                           fraction_product).
+action_automaton_signature(fraction, unit_fraction_denominator_product_rule,
                            inputs(positive_fraction_pair, referent_whole),
                            fraction_product).
 action_automaton_signature(fraction,
@@ -974,6 +981,15 @@ action_automaton_signature(calculus, factor_cancel_without_common_factor,
                            inputs(rational_expression_with_integer_coefficients,
                                   integer_limit_point),
                            incorrect_limit_value).
+action_automaton_signature(calculus, direct_substitution,
+                           inputs(polynomial_with_integer_coefficients,
+                                  integer_limit_point),
+                           limit_value).
+action_automaton_signature(calculus,
+                           bounded_numerator_over_diverging_denominator,
+                           inputs(bounded_symbolic_numerator,
+                                  diverging_symbolic_denominator),
+                           zero_sequence_limit).
 action_automaton_signature(probability,
                            terminal_tree_endpoint_probability_sum,
                            inputs(terminal_path_tree,

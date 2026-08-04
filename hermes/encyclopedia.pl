@@ -157,8 +157,8 @@ term_text_string(Value, String) :-
 
 %!  strategy_catalog_dict(-Dict) is det.
 %
-%   Catalog of every action-pair kind across all operations. has_fsm marks
-%   the kinds that an FSM module backs (via action_semantic_context).
+%   Catalog of learner-facing action-pair kinds across all operations. has_fsm
+%   marks the kinds that an FSM module backs (via action_semantic_context).
 strategy_catalog_dict(_{
         count: Count,
         operations: Operations,
@@ -166,7 +166,9 @@ strategy_catalog_dict(_{
         runnable: Runnable
     }) :-
     findall(Op-Kind,
-            action_automata_registry:action_automaton_cluster(Op, Kind, _),
+            ( action_automata_registry:action_automaton_cluster(Op, Kind, _),
+              \+ internal_validation_catalog_kind(Op, Kind)
+            ),
             Pairs0),
     sort(Pairs0, Pairs),
     findall(SDict,
@@ -182,6 +184,16 @@ strategy_catalog_dict(_{
             OpStrs0),
     sort(OpStrs0, Operations),
     runnable_list(Runnable).
+
+% These diagnostic runners accept an existing answer, estimate, count, or
+% rule and test it against an independent reference. They type and
+% cross-examine learner actions; they are not actions the product should offer
+% as learner strategies.
+internal_validation_catalog_kind(diagnostic, multiplicative_bound_invalidation).
+internal_validation_catalog_kind(diagnostic, decomposed_divisor_product).
+internal_validation_catalog_kind(diagnostic, small_area_justification).
+internal_validation_catalog_kind(diagnostic, rigorous_counting_procedure).
+internal_validation_catalog_kind(diagnostic, error_magnitude_estimate_comparison).
 
 %!  runnable_list(-List) is det.
 %
@@ -868,6 +880,19 @@ trace_inputs(Input, A, B) :-
     json_integer_values(CheckedRows, Rows),
     A = linear_pattern(first(First), change(Change), row(Row)),
     B = empirical_rule(multiplier(Multiplier), constant(Constant), checked_rows(Rows)).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "polynomial_limit"), !,
+    get_dict(coefficients, Input, Coefficients0),
+    json_integer_values(Coefficients0, Coefficients),
+    json_integer_field(Input, at, LimitPoint),
+    A = polynomial(Coefficients), B = limit_at(LimitPoint).
+trace_inputs(Input, A, B) :-
+    is_dict(Input), get_dict(kind, Input, "bounded_sequence_limit"), !,
+    json_atom_field(Input, numerator, Numerator),
+    json_positive_integer_field(Input, bound, Bound),
+    json_atom_field(Input, denominator, Denominator),
+    A = sequence_term(bounded(Numerator, Bound), diverging(Denominator)),
+    B = as_n_to_infinity.
 trace_inputs(Input, A, B) :-
     ( is_dict(Input) -> D = Input ; D = _{} ),
     (   get_dict(kind, D, "fraction_pair"),

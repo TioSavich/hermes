@@ -272,6 +272,12 @@ machine_grammar(computational, algebraic, programming_expression_evaluation, arc
 machine_grammar(computational, algebraic, symbolic_expression_construction, arc(keep_then_work_on),
                 phrases([bind_then_compose, verify_invariant, inscribe_result]),
                 stances([neutral, neutral, neutral, conserving, neutral])).
+machine_grammar(computational, calculus, bounded_numerator_over_diverging_denominator, arc(unrecorded_run),
+                phrases([read_the_givens_through, read_operand_attribute, filter_by_constraint, judge_against_benchmark, name_result]),
+                stances([neutral, neutral, neutral, neutral, neutral, neutral])).
+machine_grammar(computational, calculus, direct_substitution, arc(keep_then_work_on),
+                phrases([read_operand_attribute, test_criteria, substitute_values, evaluate_expression, receive_kernel_outcome, name_result]),
+                stances([neutral, conserving, neutral, neutral, neutral, neutral])).
 machine_grammar(computational, calculus, factor_cancel_substitute, arc(keep_then_work_on),
                 phrases([read_operand_attribute, substitute_values, test_criteria, decompose_operand, substitute_values, evaluate_expression, receive_kernel_outcome, name_result]),
                 stances([neutral, neutral, conserving, neutral, neutral, neutral, neutral, neutral])).
@@ -476,6 +482,9 @@ machine_grammar(computational, fraction, co_denominator_count_on_from_larger, ar
 machine_grammar(computational, fraction, co_denominator_make_base_transfer, arc(keep_first_work_keep),
                 phrases([verify_invariant, unitize_referent, select_unit_scale, dispatch_to_kernel, receive_kernel_outcome, attach_units_coordination]),
                 stances([conserving, neutral, neutral, neutral, neutral, conserving])).
+machine_grammar(computational, fraction, co_denominator_make_ten_split_leftover, arc(keep_first_work_keep),
+                phrases([verify_invariant, unitize_referent, select_unit_scale, dispatch_to_kernel, receive_kernel_outcome, attach_units_coordination]),
+                stances([conserving, neutral, neutral, neutral, neutral, conserving])).
 machine_grammar(computational, fraction, common_denominator_fraction_addition, arc(keep_then_work_on),
                 phrases([initiate, re_express_equivalently, align_to_common_unit, re_express_equivalently, re_express_equivalently, align_to_common_unit, combine_quantities, emit_result]),
                 stances([neutral, conserving, conserving, conserving, conserving, conserving, neutral, neutral])).
@@ -533,6 +542,9 @@ machine_grammar(computational, fraction, solve_for_unit, arc(keep_then_work_on),
 machine_grammar(computational, fraction, splitting, arc(keep_then_work_on),
                 phrases([partition_into_equal_parts, disembed_part, iterate_unit, verify_invariant, recompose_total, attach_units_coordination, receive_kernel_outcome, receive_kernel_outcome]),
                 stances([neutral, neutral, neutral, conserving, conserving, conserving, neutral, neutral])).
+machine_grammar(computational, fraction, unit_fraction_denominator_product_rule, arc(unrecorded_run),
+                phrases([unitize_referent, disembed_part, partition_into_equal_parts, select_unit_scale, compute_product, compute_product, iterate_unit, dispatch_to_kernel]),
+                stances([neutral, neutral, neutral, neutral, neutral, neutral, neutral, neutral])).
 machine_grammar(computational, fraction, unit_fraction_iteration, arc(keep_then_work_on),
                 phrases([unitize_referent, disembed_part, iterate_unit, verify_invariant, receive_kernel_outcome]),
                 stances([neutral, neutral, neutral, conserving, neutral])).
@@ -1424,6 +1436,8 @@ machine_conservation_gap(computational, algebraic, exponent_as_repeated_factor,
                         reason("4 edges, every one of them a working step: assign_roles > assign_roles > iterate_unit > inscribe_result. An EXTRACTION gap, not an authoring one: exponent_as_repeated_factor already declares invariant(exponent_counts_copies_of_base_as_factors) in algebraic_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, algebraic, programming_expression_evaluation,
                         reason("5 edges, every one of them a working step: register_givens > register_givens > evaluate_expression > receive_kernel_outcome > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
+machine_conservation_gap(computational, calculus, bounded_numerator_over_diverging_denominator,
+                        reason("6 edges, every one of them a working step: read_operand_attribute > read_operand_attribute > read_operand_attribute > filter_by_constraint > judge_against_benchmark > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, counting, compare_cardinalities_one_to_one,
                         reason("4 edges, every one of them a working step: register_givens > match_one_to_one > read_operand_attribute > name_result. An EXTRACTION gap, not an authoring one: compare_cardinalities_one_to_one already declares invariant(cardinality_independent_of_spatial_extent) in counting_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, counting, inscribe_cardinality,
@@ -1450,6 +1464,8 @@ machine_conservation_gap(computational, fraction, cross_multiplication_rule_from
                         reason("8 edges, every one of them a working step: read_operand_attribute > apply_stored_rule > compute_product > compute_product > name_result > dispatch_to_kernel > assign_roles > assign_roles. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, fraction, reversible_measurement_division,
                         reason("5 edges, every one of them a working step: register_givens > select_unit_scale > measure_quantity > replicate_equal_groups > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
+machine_conservation_gap(computational, fraction, unit_fraction_denominator_product_rule,
+                        reason("8 edges, every one of them a working step: unitize_referent > disembed_part > partition_into_equal_parts > select_unit_scale > compute_product > compute_product > iterate_unit > dispatch_to_kernel. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, geometry, angle_turn_measurement,
                         reason("5 edges, every one of them a working step: establish_reference_frame > establish_reference_frame > iterate_unit > locate_position > name_result. An EXTRACTION gap, not an authoring one: angle_turn_measurement already declares invariant(ray_length_does_not_change_angle_measure) in geometry_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, geometry, area_unit_scale_selection,
@@ -1759,40 +1775,42 @@ token_loss_rate(discursive, acknowledge_commitment, machines(8), ending_deformin
 token_loss_rate(computational, align_to_common_unit, machines(18), ending_deforming(3)).
 token_loss_rate(computational, apply_stored_rule, machines(13), ending_deforming(6)).
 token_loss_rate(computational, assign_roles, machines(37), ending_deforming(10)).
+token_loss_rate(computational, attach_units_coordination, machines(4), ending_deforming(0)).
 token_loss_rate(discursive, attend_to_utterance, machines(8), ending_deforming(4)).
 token_loss_rate(discursive, attribute_commitment, machines(4), ending_deforming(2)).
 token_loss_rate(computational, combine_quantities, machines(18), ending_deforming(6)).
 token_loss_rate(computational, compare_magnitudes, machines(17), ending_deforming(2)).
 token_loss_rate(computational, compose_expression, machines(6), ending_deforming(1)).
-token_loss_rate(computational, compute_product, machines(17), ending_deforming(7)).
+token_loss_rate(computational, compute_product, machines(18), ending_deforming(7)).
 token_loss_rate(computational, compute_quotient, machines(9), ending_deforming(2)).
 token_loss_rate(computational, conflate_roles, machines(9), ending_deforming(6)).
 token_loss_rate(computational, count_units, machines(20), ending_deforming(4)).
 token_loss_rate(computational, count_up_to_target, machines(8), ending_deforming(4)).
 token_loss_rate(computational, decompose_by_place, machines(7), ending_deforming(4)).
 token_loss_rate(computational, decompose_operand, machines(9), ending_deforming(4)).
-token_loss_rate(computational, disembed_part, machines(7), ending_deforming(0)).
+token_loss_rate(computational, disembed_part, machines(8), ending_deforming(0)).
+token_loss_rate(computational, dispatch_to_kernel, machines(5), ending_deforming(0)).
 token_loss_rate(computational, emit_result, machines(14), ending_deforming(0)).
 token_loss_rate(computational, enumerate_candidates, machines(10), ending_deforming(4)).
 token_loss_rate(computational, establish_reference_frame, machines(9), ending_deforming(1)).
-token_loss_rate(computational, evaluate_expression, machines(4), ending_deforming(1)).
-token_loss_rate(computational, filter_by_constraint, machines(5), ending_deforming(1)).
+token_loss_rate(computational, evaluate_expression, machines(5), ending_deforming(1)).
+token_loss_rate(computational, filter_by_constraint, machines(6), ending_deforming(1)).
 token_loss_rate(computational, halt_before_completion, machines(10), ending_deforming(10)).
 token_loss_rate(computational, initiate, machines(15), ending_deforming(0)).
 token_loss_rate(computational, inscribe_result, machines(24), ending_deforming(6)).
 token_loss_rate(computational, iterate_composite_unit, machines(6), ending_deforming(0)).
-token_loss_rate(computational, iterate_unit, machines(16), ending_deforming(3)).
+token_loss_rate(computational, iterate_unit, machines(17), ending_deforming(3)).
 token_loss_rate(computational, locate_position, machines(14), ending_deforming(1)).
 token_loss_rate(computational, measure_out_group_size, machines(4), ending_deforming(1)).
 token_loss_rate(computational, measure_quantity, machines(8), ending_deforming(1)).
 token_loss_rate(computational, misname_result, machines(33), ending_deforming(32)).
-token_loss_rate(computational, name_result, machines(43), ending_deforming(2)).
+token_loss_rate(computational, name_result, machines(45), ending_deforming(2)).
 token_loss_rate(computational, omit_required_step, machines(42), ending_deforming(32)).
 token_loss_rate(computational, order_by_magnitude, machines(6), ending_deforming(1)).
-token_loss_rate(computational, partition_into_equal_parts, machines(14), ending_deforming(1)).
+token_loss_rate(computational, partition_into_equal_parts, machines(15), ending_deforming(1)).
 token_loss_rate(computational, re_express_equivalently, machines(6), ending_deforming(0)).
-token_loss_rate(computational, read_operand_attribute, machines(46), ending_deforming(14)).
-token_loss_rate(computational, receive_kernel_outcome, machines(11), ending_deforming(0)).
+token_loss_rate(computational, read_operand_attribute, machines(48), ending_deforming(14)).
+token_loss_rate(computational, receive_kernel_outcome, machines(13), ending_deforming(0)).
 token_loss_rate(computational, recompose_total, machines(12), ending_deforming(4)).
 token_loss_rate(computational, record_conservation, machines(20), ending_deforming(0)).
 token_loss_rate(discursive, record_deontic_incoherence, machines(7), ending_deforming(7)).
@@ -1807,14 +1825,14 @@ token_loss_rate(computational, retain_what_must_survive, machines(5), ending_def
 token_loss_rate(computational, retain_where_change_was_due, machines(6), ending_deforming(6)).
 token_loss_rate(computational, retrieve_known_fact, machines(11), ending_deforming(5)).
 token_loss_rate(computational, scale_multiplicatively, machines(4), ending_deforming(1)).
-token_loss_rate(computational, select_unit_scale, machines(22), ending_deforming(5)).
+token_loss_rate(computational, select_unit_scale, machines(24), ending_deforming(5)).
 token_loss_rate(computational, share_into_known_groups, machines(4), ending_deforming(1)).
 token_loss_rate(computational, substitute_appearance_for_measure, machines(5), ending_deforming(5)).
 token_loss_rate(computational, substitute_count_for_measure, machines(7), ending_deforming(3)).
 token_loss_rate(computational, substitute_operation, machines(10), ending_deforming(10)).
-token_loss_rate(computational, substitute_values, machines(4), ending_deforming(2)).
-token_loss_rate(computational, test_criteria, machines(8), ending_deforming(1)).
+token_loss_rate(computational, substitute_values, machines(5), ending_deforming(2)).
+token_loss_rate(computational, test_criteria, machines(9), ending_deforming(1)).
 token_loss_rate(computational, traverse_boundary, machines(4), ending_deforming(2)).
 token_loss_rate(computational, treat_relevant_as_irrelevant, machines(21), ending_deforming(16)).
-token_loss_rate(computational, unitize_referent, machines(21), ending_deforming(2)).
-token_loss_rate(computational, verify_invariant, machines(29), ending_deforming(0)).
+token_loss_rate(computational, unitize_referent, machines(23), ending_deforming(2)).
+token_loss_rate(computational, verify_invariant, machines(30), ending_deforming(0)).

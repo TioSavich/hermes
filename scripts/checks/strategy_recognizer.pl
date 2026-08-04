@@ -5,14 +5,13 @@
 main :-
     observed_signatures(Signatures),
     length(Signatures, SignatureCount),
-    % Extractor ledger (2026-08-03): build_transition_tables.py learned all
-    % structured operands decoded by trace_inputs/3, so all 219 contracts are
-    % encodable and observed. The corpus rose from 121 to 218 rooted
-    % signatures. The only exclusion remains
+    % Extractor ledger (2026-08-03): the four orphaned learner actions added
+    % contracts and encoders, moving 219 contracts to 223 and the rooted corpus
+    % from 218 to 222 signatures. The only exclusion remains
     % counting/enumerate_collection_one_to_one: it runs from its cardinality
     % contract but has no static Trace list on which to root observed states.
     % No newly encodable kind introduced another static-root exclusion.
-    expect_equal(218, SignatureCount, observed_signature_count),
+    expect_equal(222, SignatureCount, observed_signature_count),
     expect_family_counts(Signatures),
     forall(member(Operation-Kind, Signatures),
            expect_round_trips(Operation, Kind)),
@@ -21,7 +20,7 @@ main :-
     strategy_recognizer:recognize_strategies(
         "I do not know what to do next.", Empty),
     expect_equal([], Empty, honest_abstention),
-    format("PASS strategy recognizers: 218/218 execution-observed signatures~n").
+    format("PASS strategy recognizers: 222/222 execution-observed signatures~n").
 
 observed_signatures(Signatures) :-
     findall(Operation-Kind,
@@ -34,11 +33,11 @@ expect_family_counts(Signatures) :-
     forall(member(Operation-Expected,
                   [ addition-18,
                     algebraic-14,
-                    calculus-2,
+                    calculus-4,
                     counting-7,
                     decimal-16,
                     division-16,
-                    fraction-31,
+                    fraction-33,
                     geometry-46,
                     integer-6,
                     measurement-8,

@@ -709,17 +709,19 @@ def main() -> int:
     # 121 since the first 2026-08-03 contract-gap slice added seven contracts
     # the existing seam could already decode.
     # 218 since task 201 on 2026-08-03 taught the transition-table extractor
-    # all structured operands decoded by trace_inputs/3. All 219 contracts are
-    # now encodable and observed. The only corpus exclusion remains
+    # all structured operands decoded by trace_inputs/3.
+    # 222 since task 2026-08-03-orphans added contracts and encoders for two
+    # calculus and two fraction learner actions. The per-family changes are
+    # calculus 2 to 4 and fraction 31 to 33. The only corpus exclusion remains
     # counting/enumerate_collection_one_to_one: it executes from its
     # cardinality contract but has no static Trace list on which to root the
     # observation. No newly encodable kind has the same static-root gap.
     # A guard rather than a preference. The analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.
-    if len(observed) != 218:
+    if len(observed) != 222:
         raise SystemExit(
-            f"expected 218 execution-observed signatures, found {len(observed)}"
+            f"expected 222 execution-observed signatures, found {len(observed)}"
         )
     if args.smoke:
         by_name = {automaton.signature.name: automaton for automaton in observed}

@@ -247,7 +247,7 @@ run_calculus_action(bounded_numerator_over_diverging_denominator,
     Trace = [ identify_limit_target(as_n_to_infinity),
               identify_bound_on_numerator(NumExpression, BoundValue),
               identify_diverging_denominator(DenExpression),
-              for_any_epsilon_choose_N_so_tail_is_within_epsilon(BoundValue),
+              for_any_epsilon_choose_n_so_tail_is_within_epsilon(BoundValue),
               bound_tail_by_constant_over_diverging_term(BoundValue, DenExpression),
               conclude_limit_is_zero(Result)
             ].

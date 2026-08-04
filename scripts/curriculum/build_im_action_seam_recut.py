@@ -100,8 +100,10 @@ def registry_signatures() -> list[dict]:
         for match in SIGNATURE_RE.finditer(text)
     ]
     keys = [(row["operation"], row["kind"]) for row in rows]
-    if len(rows) != 219 or len(keys) != len(set(keys)):
-        fail(f"expected 219 unique signatures, found {len(rows)}")
+    # Registry ledger (2026-08-03): the orphan reconciliation registered two
+    # calculus and two fraction learner actions, moving 219 signatures to 223.
+    if len(rows) != 223 or len(keys) != len(set(keys)):
+        fail(f"expected 223 unique signatures, found {len(rows)}")
     return rows
 
 
@@ -130,8 +132,10 @@ def checked_registry_runs() -> dict:
     # 219 from later the same day: the decoder slice taught trace_inputs/3
     # the structured operand families and the remaining 88 kinds gained
     # verified contracts — every registered signature now traces live.
-    if payload.get("contracts") != 219 or len(traces) != 219:
-        fail("expected 219 live checked-contract traces")
+    # 223 from the orphan reconciliation later that day: the two calculus and
+    # two fraction learner actions gained verified boundary examples.
+    if payload.get("contracts") != 223 or len(traces) != 223:
+        fail("expected 223 live checked-contract traces")
     if any(
         row.get("response", {}).get("ok") is not True
         or not row.get("response", {}).get("steps")

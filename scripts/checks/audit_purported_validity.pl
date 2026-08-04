@@ -259,7 +259,8 @@ truth(fraction, Kind, fraction_pair(N1, D, N2, D), unit(whole), number(T)) :-
 truth(fraction, Kind, fraction_pair(N1, D1, N2, D2), unit(whole), T) :-
     V1 is N1 rdiv D1, V2 is N2 rdiv D2,
     (   ( sub_atom(Kind, _, _, _, part_of_part)
-        ; sub_atom(Kind, _, _, _, cross_multiplication) )
+        ; sub_atom(Kind, _, _, _, cross_multiplication)
+        ; sub_atom(Kind, _, _, _, denominator_product_rule) )
     ->  V is V1 * V2, T = rat(V)
     ;   sub_atom(Kind, _, _, _, measurement_division)
     ->  V is V1 / V2, T = rat(V)

@@ -397,6 +397,30 @@ attested_phrase(addition, wrong_carry_amount_to_next_column, lose_base_ten_regro
                 [regrouping, errors, in, multi, digit, addition],
                 source('JRME_Hill_2008_Unpacking'),
                 attachment(register(analyst), shared([regrouping]))).
+attested_phrase(calculus, bounded_numerator_over_diverging_denominator, conclude_limit_is_zero,
+                [convergence, to, zero],
+                source('ESM_Alcock_2005_Convergence'),
+                attachment(register(analyst), shared([zero]))).
+attested_phrase(calculus, bounded_numerator_over_diverging_denominator, conclude_limit_is_zero,
+                [convergence, to, zero],
+                source('ESM_Martin_2013_Differences'),
+                attachment(register(analyst), shared([zero]))).
+attested_phrase(calculus, bounded_numerator_over_diverging_denominator, conclude_limit_is_zero,
+                [converges, to, zero],
+                source('ESM_Martin_2013_Differences'),
+                attachment(register(analyst), shared([zero]))).
+attested_phrase(calculus, bounded_numerator_over_diverging_denominator, identify_diverging_denominator,
+                [denominator, grows, without, bound],
+                source('ESM_Alcock_2005_Convergence'),
+                attachment(register(analyst), shared([denominator]))).
+attested_phrase(calculus, bounded_numerator_over_diverging_denominator, conclude_limit_is_zero,
+                [tends, to, zero],
+                source('ESM_Alcock_2005_Convergence'),
+                attachment(register(analyst), shared([zero]))).
+attested_phrase(calculus, direct_substitution, substitute_target_into_polynomial,
+                [substitute, the, constant],
+                source('ESM_Hardy_2009_Students\''),
+                attachment(register(analyst), shared([substitute]))).
 attested_phrase(calculus, factor_cancel_substitute, factor_common_factor_x_minus_a,
                 [cancel, the, common, factor],
                 source('ESM_Hardy_2009_Students\''),
@@ -793,6 +817,38 @@ attested_phrase(fraction, cross_multiplication_rule_from_pattern, identify_rule_
                 [number, pattern, rule],
                 source('ESM_Glade_2017_Students\''),
                 attachment(register(analyst), shared([pattern, rule]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, compute_denominator_product,
+                [denominator, multiplication],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([denominator]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, compute_numerator_product,
+                [keep, numerator, 1],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([numerator]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, compute_numerator_product,
+                [recognize, both, fractions, have, numerator, 1],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([numerator]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, connect_to_unit_fraction_iteration_kernel,
+                [report, the, resulting, unit, fraction],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([fraction, unit]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, identify_nested_unit_fraction,
+                [report, the, resulting, unit, fraction],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([fraction, unit]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, iterate_nested_unit_fraction,
+                [report, the, resulting, unit, fraction],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([fraction, unit]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, partition_unit_fraction_into_d_parts,
+                [report, the, resulting, unit, fraction],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([fraction, unit]))).
+attested_phrase(fraction, unit_fraction_denominator_product_rule, recover_unit_fraction,
+                [report, the, resulting, unit, fraction],
+                source('ESM_Glade_2017_Students\''),
+                attachment(register(analyst), shared([fraction, unit]))).
 attested_phrase(fraction, unit_fraction_iteration, iterate_unit_fraction,
                 [iterate, unit, fraction],
                 source('IJSME_Yang_2003_Teaching'),
