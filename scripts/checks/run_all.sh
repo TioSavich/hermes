@@ -31,7 +31,9 @@ run pedagogical_questions_check.py python3 "$CHECKS_DIR/pedagogical_questions_ch
 run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/strategy_recognizer.pl" -g main -t halt
 run mobius_band_readers.py  python3 "$CHECKS_DIR/mobius_band_readers.py"
 run transition_tables.py    python3 "$CHECKS_DIR/transition_tables.py"
+run deformation_validity.py python3 "$CHECKS_DIR/deformation_validity.py"
 run automata_compendium.py  python3 "$CHECKS_DIR/automata_compendium.py"
+run automata_vocabulary.py  python3 "$CHECKS_DIR/automata_vocabulary.py"
 run full_graph.py           python3 "$CHECKS_DIR/full_graph.py"
 run vocabulary_licenses.py  python3 "$CHECKS_DIR/vocabulary_licenses.py"
 run action_vocabulary_map.py python3 "$CHECKS_DIR/action_vocabulary_map.py"
@@ -79,6 +81,7 @@ run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_clien
 run crosswalk_load.sh       bash "$CHECKS_DIR/crosswalk_load.sh"
 run geometry_load.sh        bash "$CHECKS_DIR/geometry_load.sh"
 run strict_gate_failures.py python3 "$CHECKS_DIR/strict_gate_failures.py"
+run llm_client.py python3 "$CHECKS_DIR/llm_client.py"
 run tls_verified_first.py python3 "$CHECKS_DIR/tls_verified_first.py"
 run diagnostics_payload.py python3 "$CHECKS_DIR/diagnostics_payload.py"
 run workflow_service.py     python3 "$CHECKS_DIR/workflow_service.py"

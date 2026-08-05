@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes automata vocabulary</title>
+<style>
+:root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold-deep:#a97c24;--rust:#b95238;--surface:#fffef9;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}main{max-width:980px;margin:auto;padding:2.4rem 1.25rem 4rem}h1{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:.4rem 0 .65rem}h2{font-size:1.65rem;line-height:1.2;font-weight:normal;margin:2.8rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}p{max-width:var(--prose)}a{color:var(--gold-deep);text-underline-offset:.14em}code{font:.82em var(--mono);overflow-wrap:anywhere}.lede{font-size:1.08rem;color:var(--muted);margin:.3rem 0}.back-link{margin:0 0 .45rem}.terms{display:grid;grid-template-columns:minmax(11rem,15rem) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}.terms dt,.terms dd{margin:0;padding:.7rem .85rem;border-bottom:1px solid var(--line)}.terms dt{font-weight:normal;color:var(--gold-deep);background:var(--paper-warm)}.terms dd:nth-last-child(-n+1),.terms dt:nth-last-child(-n+2){border-bottom:0}.formula{font-size:1.18rem}.tuple{display:grid;grid-template-columns:3.4rem minmax(0,1fr);gap:.45rem .8rem;max-width:var(--prose)}.tuple dt{color:var(--gold-deep)}.tuple dd{margin:0}.note{max-width:var(--prose);background:var(--surface);border-left:3px solid var(--rust);padding:.75rem .9rem}footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.9rem}@media(max-width:650px){main{padding:1rem .75rem 3rem}.terms{grid-template-columns:1fr}.terms dt{border-bottom:0;padding-bottom:.15rem}.terms dd{padding-top:.25rem}.terms dt:nth-last-child(-n+2){border-bottom:0}}
+</style>
+</head>
+<body><main>
+<header>
+<p class="back-link"><a href="2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
+<p class="back-link"><a href="automata-graph.html">Open the automata graph</a></p>
+<h1>Hermes automata vocabulary</h1>
+<p class="lede">These terms describe the registered automata, their recorded transitions, and the pages that present them. Each term has one meaning on these pages.</p>
+</header>
+
+<section aria-labelledby="terms-heading">
+<h2 id="terms-heading">Terms</h2>
+<dl class="terms">
+<dt id="automaton">automaton</dt><dd>One registered state-and-transition structure for one family and kind. <em>Machine</em> is an informal synonym.</dd>
+<dt id="state">state</dt><dd>One node in one automaton.</dd>
+<dt id="formal-state-name">formal state name</dt><dd>The display name <i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, and so on within one automaton.</dd>
+<dt id="code-name">code name</dt><dd>The Prolog atom for a state, such as <code>q_start</code> or <code>q_accept</code>.</dd>
+<dt id="plain-language-state-label">plain-language state label</dt><dd>The literature-facing description attached to a state.</dd>
+<dt id="start-state">start state</dt><dd>The state where an automaton begins.</dd>
+<dt id="accepting-state">accepting state</dt><dd>A state designated as an accepted endpoint.</dd>
+<dt id="transition">transition</dt><dd>One directed move from a source state to a target state, labeled by a local action.</dd>
+<dt id="local-action">local action</dt><dd>The action name authored on one transition.</dd>
+<dt id="canonical-action">canonical action</dt><dd>A normalized action name used to compare local actions across automata.</dd>
+<dt id="borrow">borrow</dt><dd>A canonical action name shared by two or more automata. A borrow asserts no equivalence between automata and no prerequisite order.</dd>
+<dt id="conserving">conserving</dt><dd>A semantic class for a canonical action recorded as preserving the relevant object or relation.</dd>
+<dt id="deforming">deforming</dt><dd>A semantic class for a canonical action recorded as changing the relevant object or relation.</dd>
+<dt id="neutral">neutral</dt><dd>The semantic class used when no conserving or deforming classification is recorded. It does not assert that the action has no mathematical effect.</dd>
+<dt id="runtime-trace">runtime trace</dt><dd>The ordered steps returned by one runner invocation.</dd>
+<dt id="action-sequence">action sequence</dt><dd>An ordered list of action names independent of one runner invocation.</dd>
+<dt id="algorithm">algorithm</dt><dd>A specified procedure for producing a result. An automaton is an algorithm only when a procedure claim is specified and supported.</dd>
+<dt id="family">family</dt><dd>The arithmetic or content grouping, such as fraction or counting.</dd>
+<dt id="kind">kind</dt><dd>The registered subtype within a family. A family and kind together identify one automaton.</dd>
+<dt id="domain-scene">domain scene</dt><dd>The contextual SVG placed beside one automaton.</dd>
+<dt id="family-path-composite">family path composite</dt><dd>The action paths of all automata in one family, merged at shared prefixes and identical suffixes. Loops are not unfolded.</dd>
+<dt id="path-point">path point</dt><dd>A node in a family path composite, labeled <code>p1</code>, <code>p2</code>, and so on. Path points are not states of any single automaton.</dd>
+<dt id="recorded-transition-graph">recorded transition graph</dt><dd>The graph formed by the transition-table rows recorded for one automaton.</dd>
+<dt id="branching">branching</dt><dd>A recorded transition graph has a source with more than one distinct outgoing action-and-target pair.</dd>
+<dt id="loop">loop</dt><dd>A transition returns to a state already on its graph path. A self-loop is included.</dd>
+</dl>
+<p>Dark, rust, and muted are color names used in legends. They are not semantic classes.</p>
+</section>
+
+<section aria-labelledby="tuple-heading">
+<h2 id="tuple-heading">Formal tuple</h2>
+<p>An automaton entry uses this tuple:</p>
+<p class="formula"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+<dl class="tuple">
+<dt><i>Q</i></dt><dd>the set of states</dd>
+<dt><i>Σ</i></dt><dd>the local action alphabet</dd>
+<dt><i>δ</i></dt><dd>the transition relation</dd>
+<dt><i>q</i><sub>0</sub></dt><dd>the start state</dd>
+<dt><i>F</i></dt><dd>the set of accepting states</dd>
+</dl>
+</section>
+
+<section aria-labelledby="branching-heading">
+<h2 id="branching-heading">How branching is computed</h2>
+<p class="note">The structural class reads the union of static and observed transition-table rows. Most branching sites come from that provenance union. This recorded relation does not establish that a runtime runner makes a nondeterministic choice.</p>
+</section>
+
+<footer><p>This vocabulary applies to the automata compendium and the automata graph.</p></footer>
+</main></body>
+</html>

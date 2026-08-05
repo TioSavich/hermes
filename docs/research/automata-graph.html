@@ -13,11 +13,12 @@
 <header>
 <p class="back-link"><a href="2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
 <h1>Hermes automata graph</h1>
-<p class="lede">This page draws the computational transition-table corpus in one authored pedagogical order. Counting is the floor and calculus is the top.</p>
+<p class="lede">This page draws the transition-table corpus of automata in one authored pedagogical order. Counting is the floor and calculus is the top.</p>
+<p><a href="automata-vocabulary.html">Read the automata vocabulary</a> for the terms used here.</p>
 </header>
 <div class="controls">
   <div class="field">
-    <label for="borrow-mode">Borrow links</label>
+    <label for="borrow-mode">Borrow lines</label>
     <select id="borrow-mode">
       <option value="off" selected>Off</option>
       <option value="cross">Cross-family only</option>
@@ -26,7 +27,7 @@
   </div>
   <p class="status" id="status" aria-live="polite">Loading the graph data…</p>
 </div>
-<p class="instructions">Drag to orbit, use the wheel to zoom, hover for a state name, and click a state to pin its machine.</p>
+<p class="instructions">Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.</p>
 <figure>
   <div class="graph-frame" id="graph-frame">
     <canvas id="graph" aria-label="Three-dimensional graph of the computational automata corpus"></canvas>
@@ -42,14 +43,14 @@
     </ol>
     <div class="tooltip" id="tooltip" role="status"></div>
   </div>
-  <p class="selection" id="selection">No machine pinned.</p>
+  <p class="selection" id="selection">No automaton pinned.</p>
   <div class="legend" aria-label="Graph legend">
     <span><i class="swatch conserving"></i>conserving transition</span>
     <span><i class="swatch deforming"></i>deforming transition; rust line and target ring</span>
     <span><i class="swatch neutral"></i>neutral transition</span>
-    <span><i class="swatch borrow"></i>shared canonical action</span>
+    <span><i class="swatch borrow"></i><a href="automata-vocabulary.html#borrow">borrow</a>; shared canonical action name</span>
   </div>
-  <figcaption>The picture records states separately for every machine; no state is literally shared. A gold borrow link asserts only that two machines carry the same canonical action name. The vertical order is authored rather than derived from the transition tables.</figcaption>
+  <figcaption>The graph records each automaton's states separately; no state is literally shared. A gold borrow line connects automata that share a canonical action name. A <a href="automata-vocabulary.html#borrow">borrow</a> asserts no equivalence and no prerequisite order. The vertical order is authored rather than derived from the transition tables.</figcaption>
 </figure>
 <noscript><p class="noscript">This reader requires JavaScript to load and draw the graph JSON.</p></noscript>
 </main>
@@ -138,8 +139,8 @@
       borrowMode.value = 'cross';
     }
     var counts = data.meta.counts;
-    status.textContent = counts.machines + ' machines · ' + counts.nodes + ' states · ' +
-      counts.edges + ' transitions · ' + counts.borrow_pairs.toLocaleString() + ' borrow pairs';
+    status.textContent = counts.machines + ' automata · ' + counts.nodes + ' states · ' +
+      counts.edges + ' transitions · ' + counts.borrow_pairs.toLocaleString() + ' borrow lines';
     resize();
     scheduleRender();
   }
@@ -437,14 +438,14 @@
     if (borrowMode.value !== 'off') {
       var suffix = borrowCounts.eligible > borrowCounts.drawn ?
         ' · distance-culling draws ' + borrowCounts.drawn.toLocaleString() + ' of ' +
-        borrowCounts.eligible.toLocaleString() + ' eligible links' :
-        ' · ' + borrowCounts.drawn.toLocaleString() + ' borrow links';
-      status.textContent = graph.meta.counts.machines + ' machines · ' +
+        borrowCounts.eligible.toLocaleString() + ' eligible borrow lines' :
+        ' · ' + borrowCounts.drawn.toLocaleString() + ' borrow lines';
+      status.textContent = graph.meta.counts.machines + ' automata · ' +
         graph.meta.counts.nodes + ' states · ' + graph.meta.counts.edges + ' transitions' + suffix;
     } else {
-      status.textContent = graph.meta.counts.machines + ' machines · ' +
+      status.textContent = graph.meta.counts.machines + ' automata · ' +
         graph.meta.counts.nodes + ' states · ' + graph.meta.counts.edges + ' transitions · ' +
-        graph.meta.counts.borrow_pairs.toLocaleString() + ' borrow pairs';
+        graph.meta.counts.borrow_pairs.toLocaleString() + ' borrow lines';
     }
   }
 
@@ -473,7 +474,8 @@
       tooltip.classList.remove('visible');
       return;
     }
-    tooltip.textContent = node.machine + ' · ' + node.state + ' · q' + node.formal_index;
+    tooltip.textContent = 'automaton ' + node.machine + ' · code name ' + node.state +
+      ' · formal state name q' + node.formal_index;
     tooltip.classList.add('visible');
     var frameRect = frame.getBoundingClientRect();
     var left = Math.min(Math.max(8, frameRect.width - 350),
@@ -485,7 +487,7 @@
 
   function updateSelection() {
     if (!pinnedMachine) {
-      selection.textContent = 'No machine pinned.';
+      selection.textContent = 'No automaton pinned.';
       return;
     }
     var machine = machineById.get(pinnedMachine);
@@ -495,7 +497,7 @@
     });
     selection.textContent = pinnedMachine + ' · level ' + machine.level + ' · ' +
       machine.nodes.length + ' states · ' + machine.edges.length + ' transitions · ' +
-      actions.size + ' shared canonical actions';
+      actions.size + ' borrows';
   }
 
   canvas.addEventListener('pointerdown', function (event) {

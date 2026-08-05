@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="2996" height="596" viewBox="0 0 2996 596" role="img" aria-labelledby="title desc">
-  <title id="title">counting family composite</title>
-  <desc id="desc">counting composite made by a prefix trie with structurally identical suffixes merged. Edges use canonical action names; branch labels name the kinds taking each branch.</desc>
+  <title id="title">counting family path composite</title>
+  <desc id="desc">The counting family path composite contains the action paths of all the family&#x27;s automata, merged at shared prefixes and identical suffixes. Path points are not states of any single automaton. Loops are not unfolded.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
@@ -115,44 +115,44 @@
   <text x="82.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>
   <circle cx="2898.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <circle cx="2898.0" cy="298.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
-  <text x="2898.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s1</text>
+  <text x="2898.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p1</text>
   <circle cx="1106.0" cy="199.3" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1106.0" y="202.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s2</text>
+  <text x="1106.0" y="202.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p2</text>
   <circle cx="850.0" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="850.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s3</text>
+  <text x="850.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p3</text>
   <circle cx="594.0" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="594.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s4</text>
+  <text x="594.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p4</text>
   <circle cx="338.0" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="338.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s5</text>
+  <text x="338.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p5</text>
   <circle cx="594.0" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="594.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s6</text>
+  <text x="594.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p6</text>
   <circle cx="850.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="850.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s7</text>
+  <text x="850.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p7</text>
   <circle cx="594.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="594.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s8</text>
+  <text x="594.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p8</text>
   <circle cx="2642.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="2642.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s9</text>
+  <text x="2642.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p9</text>
   <circle cx="2386.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="2386.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s10</text>
+  <text x="2386.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p10</text>
   <circle cx="2130.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="2130.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s11</text>
+  <text x="2130.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p11</text>
   <circle cx="1874.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1874.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s12</text>
+  <text x="1874.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p12</text>
   <circle cx="1618.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1618.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s13</text>
+  <text x="1618.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p13</text>
   <circle cx="1362.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1362.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s14</text>
+  <text x="1362.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p14</text>
   <circle cx="1106.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1106.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s15</text>
+  <text x="1106.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p15</text>
   <circle cx="850.0" cy="446.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <circle cx="850.0" cy="446.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
-  <text x="850.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s16</text>
+  <text x="850.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p16</text>
   <circle cx="594.0" cy="335.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="594.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s17</text>
+  <text x="594.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p17</text>
   <circle cx="338.0" cy="261.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="338.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s18</text>
+  <text x="338.0" y="264.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p18</text>
   <circle cx="594.0" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="594.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s19</text>
+  <text x="594.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p19</text>
   <circle cx="338.0" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="338.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">s20</text>
+  <text x="338.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p20</text>
 </svg>

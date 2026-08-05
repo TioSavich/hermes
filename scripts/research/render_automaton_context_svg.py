@@ -828,7 +828,7 @@ def build_scene_record(
         tag = contract.example.get("kind", "two-operand")
         reason = (
             f"No domain scene: the static scene emitter has no {machine.family} form for the "
-            f"{tag} contract used by this machine."
+            f"{tag} contract used by this automaton."
         )
         if execution.status != "observed":
             reason = f"No domain scene: the contract run returned {execution.status}, so no executed scene was admitted."
@@ -1036,15 +1036,16 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
         body.append(f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="16" fill="{colors["surface"]}" stroke="{colors["ink"]}" stroke-width="2"/>')
         if terminal:
             body.append(f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="11" fill="none" stroke="{colors["ink"]}" stroke-width="1.2"/>')
-        node_label = "start" if node == 0 else f"s{node}"
+        node_label = "start" if node == 0 else f"p{node}"
         body.append(svg_text(x, y + 3, node_label, colors["ink"], 8))
         right_extents.append(text_right_edge(x, node_label, 8))
     width = math.ceil(max(right_extents, default=layout_width) + 82)
     desc = (
-        f"{family} composite made by a prefix trie with structurally identical suffixes merged. "
-        "Edges use canonical action names; branch labels name the kinds taking each branch."
+        f"The {family} family path composite contains the action paths of all the family's "
+        "automata, merged at shared prefixes and identical suffixes. Path points are not states "
+        "of any single automaton. Loops are not unfolded."
     )
-    return svg_document(f"{family} family composite", desc, width, height, body, colors), tuple(unaligned)
+    return svg_document(f"{family} family path composite", desc, width, height, body, colors), tuple(unaligned)
 
 
 @lru_cache(maxsize=1)

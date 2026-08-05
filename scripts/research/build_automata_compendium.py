@@ -64,10 +64,10 @@ class InputContract:
 
 
 CLASS_GLOSSES = {
-    "linear_trace": "no recorded branch or loop; the table records one accepting run",
-    "branching": "one or more recorded states have multiple outgoing transitions; no loop edge is recorded",
-    "looping": "one or more recorded edges return to an earlier state; no branch state is recorded",
-    "branching_looping": "the recorded graph contains both a branch state and a loop edge",
+    "linear_trace": "no recorded branch or loop; the recorded transition graph has one accepting path",
+    "branching": "one or more recorded states have multiple outgoing transitions; no loop transition is recorded",
+    "looping": "one or more recorded transitions return to an earlier state; no branch state is recorded",
+    "branching_looping": "the recorded transition graph contains both a branch state and a loop transition",
 }
 
 
@@ -226,8 +226,8 @@ def state_mapping_table(machine: Machine, labels: dict[str, list[tuple[str, str,
             f"<tr><td>{formal_state(aliases[state])}</td><td><code>{esc(state)}</code></td><td>{rendered}</td></tr>"
         )
     return (
-        '<table class="state-map"><thead><tr><th>Formal state</th><th>ASCII atom</th>'
-        f'<th>Literature label and citation</th></tr></thead><tbody>{"".join(rows)}</tbody></table>'
+        '<table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th>'
+        f'<th>Plain-language state label and citation</th></tr></thead><tbody>{"".join(rows)}</tbody></table>'
     )
 
 
@@ -330,8 +330,8 @@ def typology_line(machine: Machine) -> str:
     gloss = CLASS_GLOSSES[row.structural_class]
     counts = (
         f"{len(machine.states)} states, {len(machine.actions)} distinct actions, "
-        f"{len(row.branching_states)} branching states, {len(row.loop_edges)} loop edges; "
-        f"{row.static_rows} static rows and {row.observed_rows} observed rows"
+        f"{len(row.branching_states)} branching states, {len(row.loop_edges)} loop transitions; "
+        f"{row.static_rows} static table rows and {row.observed_rows} observed table rows"
     )
     return (
         f'<p class="typology"><span class="term">Computed structure:</span> '
@@ -347,7 +347,7 @@ def attestation_line(machine: Machine, attestations: dict[tuple[str, str], list[
         f'<code>{esc(claim)}</code>, attested at <code>{esc(source)}</code>'
         for claim, source in rows
     )
-    return f'<p class="attestation"><span class="term">Authored class:</span> {claims}. This claim comes from module prose, not from the table graph.</p>'
+    return f'<p class="attestation"><span class="term">Authored class:</span> {claims}. This claim comes from module prose, not from the recorded transition graph.</p>'
 
 
 def machine_section(
@@ -383,7 +383,7 @@ def machine_section(
 <article class="machine" id="{esc(machine.family)}-{esc(machine.kind)}">
 <h3><span class="entry-number">{entry_number}.</span> <code>{esc(machine.kind)}</code></h3>
 {scene_html}
-<figure class="diagram transition-diagram"><img src="{asset_prefix}/{esc(machine.family)}/{esc(machine.kind)}.svg" {image_attributes(radial_svg, eager=print_mode)} alt="Radial transition diagram for {esc(machine.family)} {esc(machine.kind)}"><figcaption>Recorded transition graph; local action names remain on the edges.</figcaption></figure>
+<figure class="diagram transition-diagram"><img src="{asset_prefix}/{esc(machine.family)}/{esc(machine.kind)}.svg" {image_attributes(radial_svg, eager=print_mode)} alt="Radial transition diagram for {esc(machine.family)} {esc(machine.kind)}"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 {tuple_block(machine, labels)}
 {contract_line(contracts.get(key))}
 <h4><i>δ</i>: recorded transitions</h4>
@@ -401,16 +401,16 @@ def family_composite(
     *,
     print_mode: bool = False,
 ) -> str:
-    limit = " For graphs with loops, the construction uses simple accepting paths and does not unfold repeated traversals."
+    limit = ""
     if unaligned:
         kinds = ", ".join(f"<code>{esc(kind)}</code>" for kind in unaligned)
-        limit += f" The following kinds have no simple accepting path and remain unmerged: {kinds}."
+        limit = f" Kinds with no simple accepting path are not included: {kinds}."
     return (
         f'<figure class="diagram family-composite"><img src="{asset_prefix}/{esc(family)}/_composite.svg" '
-        f'{image_attributes(svg, eager=print_mode)} alt="Canonical-action composite for the {esc(family)} family"><figcaption>'
-        "Construction: canonical action sequences merge by common prefix and structurally identical suffix. "
-        "Branch labels name the kinds taking each branch. This models shared doing under canonical action names; "
-        f"the automata do not literally share states.{limit}</figcaption></figure>"
+        f'{image_attributes(svg, eager=print_mode)} alt="Family path composite for the {esc(family)} family"><figcaption>'
+        "<span class=\"term\">Family path composite:</span> the action paths of all the family's automata, "
+        "merged at shared prefixes and identical suffixes. The labels are canonical action names. Its nodes are path points. Path points are not states "
+        f"of any single automaton. Loops are not unfolded.{limit}</figcaption></figure>"
     )
 
 
@@ -583,9 +583,9 @@ def page_document(title: str, body: str, *, stylesheet: str | None = None) -> st
 
 def legend_section() -> str:
     return f"""<section id="legend"><h2>Legend</h2>
-<p>Each entry writes <i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>): states, action alphabet, transition relation, start state, and accepting states. ASCII atoms remain beside the indexed state notation. In transition diagrams, <span class="swatch conserving"></span>dark edges are conserving actions, <span class="swatch deforming"></span>rust edges are deforming actions, and <span class="swatch neutral"></span>muted edges are neutral actions. Dashed edges are observed-only rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes use rust for an executed deformation and gold or dark marks for the admitted representation roles.</p>
+<p>Each entry writes <i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>): states, action alphabet, transition relation, start state, and accepting states. Code names remain beside formal state names. In transition diagrams, conserving transitions use <span class="swatch conserving"></span>dark lines, deforming transitions use <span class="swatch deforming"></span>rust lines, and neutral transitions use <span class="swatch neutral"></span>muted lines. Dashed transition lines represent observed-only table rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes use rust for an executed deformation and gold or dark marks for the admitted representation roles.</p>
 <dl class="legend-list"><dt>linear_trace</dt><dd>{CLASS_GLOSSES["linear_trace"]}.</dd><dt>branching</dt><dd>{CLASS_GLOSSES["branching"]}.</dd><dt>looping</dt><dd>{CLASS_GLOSSES["looping"]}.</dd><dt>branching_looping</dt><dd>{CLASS_GLOSSES["branching_looping"]}.</dd></dl>
-<p>Computed structure reports only the table graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
+<p>Computed structure reports only the recorded transition graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
 </section>"""
 
 
@@ -599,8 +599,8 @@ def typology_section(machines: list[Machine]) -> str:
         for name in CLASS_GLOSSES
     )
     return f"""<section id="computed-typology"><h2>Computed typology</h2>
-<p>These classes summarize the graphs recorded by all {len(machines)} transition tables. They do not add claims about unrecorded runs or memory.</p>
-<div class="table-scroll"><table><thead><tr><th>Structural class</th><th>Machines</th><th>Recorded shape</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p>These classes summarize the recorded transition graphs of all {len(machines)} automata. Most branching sites come from the union of static and observed transition-table rows. That union does not establish that a runtime runner makes a nondeterministic choice.</p>
+<div class="table-scroll"><table><thead><tr><th>Structural class</th><th>Automata</th><th>Recorded shape</th></tr></thead><tbody>{rows}</tbody></table></div>
 </section>"""
 
 
@@ -624,7 +624,7 @@ def attestations_section(
             )
     return f"""<section id="authored-attestations"><h2>Authored class attestations</h2>
 <p>These class names come from module prose and remain separate from the computed table-graph typology.</p>
-<div class="table-scroll"><table><thead><tr><th>Machine</th><th>Authored class</th><th>Source</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th>Automaton</th><th>Authored class</th><th>Source</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
 </section>"""
 
 
@@ -651,16 +651,16 @@ def generate_compendium_pages() -> dict[Path, str]:
         "python3 scripts/research/build_automata_compendium.py"
     )
     hub_body = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
-<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and tables. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
+<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and transition tables. A transition table supports claims about its recorded transition graph. It does not establish a stack or a richer computational class. The transition-table rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
 <p>The corpus is split by family so each page stays within what a browser can paint.</p>
-<p><a href="automata-graph.html">Open the 3D automata graph</a> to read all 222 computational machines in one authored pedagogical order.</p>
+<p><a href="automata-graph.html">Open the 3D automata graph</a> to read all 222 automata in one authored pedagogical order. <a href="automata-vocabulary.html">Read the automata vocabulary</a> for the terms used here.</p>
 </header>
 {contents(grouped)}
 {legend_section()}
 {typology_section(machines)}
 {attestations_section(attestations)}
 {atlas_section(atlas)}
-<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated table rows, including observed-only states named by those rows. They do not establish determinism, language coverage, or memory bounds beyond the recorded graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>
+<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated transition-table rows, including observed-only states named by those rows. They do not establish runtime determinism, language coverage, or memory bounds beyond the recorded transition graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>
 {footer()}"""
     pages = {OUTPUT: page_document("Hermes automata compendium", hub_body)}
     for family in sorted(grouped):
@@ -682,6 +682,7 @@ def generate_compendium_pages() -> dict[Path, str]:
         family_body = f"""<header class="page-header">
 <p class="back-link"><a href="../2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
 <h1>{esc(family)}</h1>
+<p><a href="../automata-vocabulary.html">Read the automata vocabulary</a>.</p>
 </header>
 <section class="family" id="family-{esc(family)}">
 {family_composite(family, *composites[family], "../assets/automata")}
@@ -714,14 +715,14 @@ def generate_print_compendium() -> str:
         "python3 scripts/research/build_automata_compendium.py"
     )
     front_matter = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
-<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and tables. A table can witness its recorded graph; it cannot by itself witness a stack or establish a richer computational class. The rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
+<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and transition tables. A transition table supports claims about its recorded transition graph. It does not establish a stack or a richer computational class. The transition-table rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
 </header>
 {print_contents(grouped)}
 {legend_section()}
 {typology_section(machines)}
 {attestations_section(attestations, print_mode=True)}
 {atlas_section(atlas)}
-<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated table rows, including observed-only states named by those rows. They do not establish determinism, language coverage, or memory bounds beyond the recorded graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>"""
+<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated transition-table rows, including observed-only states named by those rows. They do not establish runtime determinism, language coverage, or memory bounds beyond the recorded transition graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>"""
     family_sections = []
     for family in sorted(grouped):
         articles = "\n".join(
