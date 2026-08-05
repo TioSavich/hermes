@@ -1377,7 +1377,7 @@ dispatch_request(brandomian_check, Id, Request, Response) :-
 
 % Discovered incompatibility hyperedges, surfaced for the console. Rows come
 % from the Big Red iteration7 discovery cache (every discovered_set_kind/3
-% row, cached kind and file provenance attached) plus the size >= 3
+% row of arity >= 2, cached kind and file provenance attached) plus the size >= 3
 % hyperedges declared in the canonical relation (kind "declared" — where the
 % catalogue-attested incommensurability triple lives). Emergence, meaning
 % jointly incoherent with NO incoherent proper subset, is COMPUTED per row
@@ -1395,7 +1395,7 @@ dispatch_request(hyperedges, Id, Request, Response) :-
                   ( member(R, Rows), get_dict(emergent, R, true) ),
                   EmergentCount),
     term_to_text(KindFilter, KindFilterText),
-    json_safe(_{ criterion: "size >= 3, jointly incoherent under a runnable relation, every one-element removal coherent",
+    json_safe(_{ criterion: "finite sets of jointly incompatible contents, arity >= 2, with classification kind and provenance",
                  kind_filter: KindFilterText,
                  row_count: RowCount,
                  emergent_count: EmergentCount,
@@ -4095,6 +4095,8 @@ hyperedge_row(KindFilter, Row) :-
              catalogue_break: null }.
 hyperedge_row(KindFilter, Row) :-
     incompatibility_sets:discovered_set_kind(Context, Set, Kind0),
+    length(Set, Arity),
+    Arity >= 2,
     hyperedge_kind_atom(Kind0, Kind),
     (   KindFilter == all
     ->  true

@@ -115,7 +115,7 @@ CHECKS = (
         tool="incompatibility_profile",
         arguments={"content": "o(context(the_expansion_repeats_periodically))"},
         accepts=lambda value: isinstance(value, dict) and bool(value.get("minimal_sets")),
-        fix="Pass the exact content-term text recorded in a size-3-or-more hyperedge; binary declared seed pairs are not in this inventory.",
+        fix="Pass the exact content-term text recorded in an incompatibility set of arity 2 or more.",
     ),
     Check(
         label="incompatibility_contexts returns the reviewed nesting inventory",
