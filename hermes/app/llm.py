@@ -10,9 +10,81 @@ import time
 import urllib.error
 import urllib.request
 from pathlib import Path
+from typing import Any, Sequence
 
 DEFAULT_API_URL = "https://reallms.rescloud.iu.edu/direct/v1/chat/completions"
 DEFAULT_MODEL = "gemma-4-31B-it"
+DEFAULT_MAX_TOKENS = 8192
+OUTCOMES = {
+    "ok",
+    "empty_content",
+    "truncated",
+    "transport_error",
+    "http_error",
+}
+RETRYABLE_HTTP_CODES = {429, 500, 502, 503, 504}
+
+
+class ReallmsResult:
+    """Channel-preserving result from one completed API call."""
+
+    __slots__ = (
+        "outcome",
+        "content",
+        "reasoning_content",
+        "finish_reason",
+        "usage",
+        "raw_response",
+        "error",
+        "status_code",
+        "attempts",
+        "retryable",
+    )
+
+    def __init__(
+        self,
+        *,
+        outcome: str,
+        content: str = "",
+        reasoning_content: str = "",
+        finish_reason: str | None = None,
+        usage: dict[str, Any] | None = None,
+        raw_response: Any = None,
+        error: str | None = None,
+        status_code: int | None = None,
+        attempts: int = 1,
+        retryable: bool = False,
+    ) -> None:
+        if outcome not in OUTCOMES:
+            raise ValueError(f"unknown REALLMS outcome: {outcome}")
+        self.outcome = outcome
+        self.content = content
+        self.reasoning_content = reasoning_content
+        self.finish_reason = finish_reason
+        self.usage = usage or {}
+        self.raw_response = raw_response
+        self.error = error
+        self.status_code = status_code
+        self.attempts = attempts
+        self.retryable = retryable
+
+    @property
+    def ok(self) -> bool:
+        return self.outcome == "ok"
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "outcome": self.outcome,
+            "content": self.content,
+            "reasoning_content": self.reasoning_content,
+            "finish_reason": self.finish_reason,
+            "usage": self.usage,
+            "raw_response": self.raw_response,
+            "error": self.error,
+            "status_code": self.status_code,
+            "attempts": self.attempts,
+            "retryable": self.retryable,
+        }
 
 
 def load_dotenv(pack_root: Path) -> None:
@@ -129,6 +201,66 @@ def _looks_like_cert_error(exc: BaseException) -> bool:
     return "CERTIFICATE_VERIFY_FAILED" in text or "unable to get local issuer certificate" in text
 
 
+def _text(value: Any) -> str:
+    return value if isinstance(value, str) else ""
+
+
+def _apply_final_stops(content: str, stop_sequences: Sequence[str]) -> str:
+    """Apply local stops after the final channel has been isolated."""
+    positions = [content.find(stop) for stop in stop_sequences if stop and stop in content]
+    return content[: min(positions)] if positions else content
+
+
+def parse_chat_completion(
+    raw_response: Any,
+    *,
+    final_stop_sequences: Sequence[str] = (),
+    attempts: int = 1,
+) -> ReallmsResult:
+    """Classify one decoded OpenAI-compatible response without channel fallback."""
+    try:
+        choice = raw_response["choices"][0]
+        message = choice["message"]
+        if not isinstance(message, dict):
+            raise TypeError("choice message is not an object")
+    except (KeyError, IndexError, TypeError) as exc:
+        return ReallmsResult(
+            outcome="transport_error",
+            raw_response=raw_response,
+            error=f"malformed chat-completion response: {exc}",
+            attempts=attempts,
+        )
+
+    content = _apply_final_stops(_text(message.get("content")), final_stop_sequences)
+    reasoning_content = _text(message.get("reasoning_content"))
+    finish_reason = _text(choice.get("finish_reason")) or None
+    usage_value = raw_response.get("usage", {}) if isinstance(raw_response, dict) else {}
+    usage = usage_value if isinstance(usage_value, dict) else {}
+
+    if finish_reason == "length":
+        outcome = "truncated"
+    elif content.strip():
+        outcome = "ok"
+    else:
+        outcome = "empty_content"
+    return ReallmsResult(
+        outcome=outcome,
+        content=content,
+        reasoning_content=reasoning_content,
+        finish_reason=finish_reason,
+        usage=usage,
+        raw_response=raw_response,
+        attempts=attempts,
+    )
+
+
+def _decoded_error_body(body: str) -> Any:
+    try:
+        return json.loads(body)
+    except json.JSONDecodeError:
+        return body
+
+
 def call_api(
     system_prompt: str,
     user_content: str,
@@ -139,6 +271,8 @@ def call_api(
     ssl_ctx: ssl.SSLContext,
     retries: int = 3,
     timeout: int = 600,
+    max_tokens: int = DEFAULT_MAX_TOKENS,
+    final_stop_sequences: Sequence[str] = (),
 ) -> str:
     messages = [
         {"role": "system", "content": system_prompt},
@@ -152,6 +286,38 @@ def call_api(
         ssl_ctx=ssl_ctx,
         retries=retries,
         timeout=timeout,
+        max_tokens=max_tokens,
+        final_stop_sequences=final_stop_sequences,
+    )
+
+
+def call_api_result(
+    system_prompt: str,
+    user_content: str,
+    *,
+    api_key: str,
+    api_url: str,
+    model: str,
+    ssl_ctx: ssl.SSLContext,
+    retries: int = 3,
+    timeout: int = 600,
+    max_tokens: int = DEFAULT_MAX_TOKENS,
+    final_stop_sequences: Sequence[str] = (),
+) -> ReallmsResult:
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_content},
+    ]
+    return call_api_messages_result(
+        messages,
+        api_key=api_key,
+        api_url=api_url,
+        model=model,
+        ssl_ctx=ssl_ctx,
+        retries=retries,
+        timeout=timeout,
+        max_tokens=max_tokens,
+        final_stop_sequences=final_stop_sequences,
     )
 
 
@@ -165,59 +331,147 @@ def call_api_messages(
     retries: int = 3,
     timeout: int = 600,
     fail_on_error: bool = True,
+    max_tokens: int = DEFAULT_MAX_TOKENS,
+    final_stop_sequences: Sequence[str] = (),
 ) -> str:
     """Call the chat API with already-formed messages.
 
     This supports both plain text messages and OpenAI-compatible multimodal
     content arrays with `image_url` parts.
     """
+    result = call_api_messages_result(
+        messages,
+        api_key=api_key,
+        api_url=api_url,
+        model=model,
+        ssl_ctx=ssl_ctx,
+        retries=retries,
+        timeout=timeout,
+        max_tokens=max_tokens,
+        final_stop_sequences=final_stop_sequences,
+    )
+    if result.outcome in {"transport_error", "http_error"}:
+        message = f"API call failed after {result.attempts} attempts: {result.error}"
+        if fail_on_error:
+            fail(message)
+        raise RuntimeError(message)
+    if result.outcome == "truncated":
+        return ""
+    return result.content
+
+
+def call_api_messages_result(
+    messages: list[dict],
+    *,
+    api_key: str,
+    api_url: str,
+    model: str,
+    ssl_ctx: ssl.SSLContext,
+    retries: int = 3,
+    timeout: int = 600,
+    max_tokens: int = DEFAULT_MAX_TOKENS,
+    final_stop_sequences: Sequence[str] = (),
+) -> ReallmsResult:
+    """Call REALLMS and retain final, reasoning, status, usage, and raw data.
+
+    The request deliberately has no stop parameter. Local stop sequences are
+    applied only to message.content after the response channels are separated.
+    """
+    if retries < 1:
+        raise ValueError("retries must be at least 1")
+    if not isinstance(max_tokens, int) or isinstance(max_tokens, bool) or max_tokens < 1:
+        raise ValueError("max_tokens must be a positive integer")
     payload = {
         "model": model,
         "messages": messages,
+        "max_tokens": max_tokens,
     }
     body = json.dumps(payload).encode("utf-8")
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    last_err = None
     for attempt in range(1, retries + 1):
         req = urllib.request.Request(api_url, data=body, headers=headers, method="POST")
         try:
             with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                message = data["choices"][0]["message"]
-                content = message.get("content")
-                if content:
-                    return content
-                # Some REALLMS deployments (the Qwen family) return the whole
-                # answer in reasoning_content and leave content null.
-                return message.get("reasoning_content") or ""
+                try:
+                    response_bytes = resp.read()
+                    response_text = response_bytes.decode("utf-8")
+                    data = json.loads(response_text)
+                except UnicodeDecodeError as exc:
+                    result = ReallmsResult(
+                        outcome="transport_error",
+                        raw_response=response_bytes.decode("utf-8", errors="replace"),
+                        error=f"malformed UTF-8 response: {exc}",
+                        attempts=attempt,
+                        retryable=True,
+                    )
+                    if attempt < retries:
+                        time.sleep(5 * attempt)
+                        continue
+                    return result
+                except json.JSONDecodeError as exc:
+                    result = ReallmsResult(
+                        outcome="transport_error",
+                        raw_response=response_text,
+                        error=f"malformed JSON response: {exc}",
+                        attempts=attempt,
+                        retryable=True,
+                    )
+                    if attempt < retries:
+                        time.sleep(5 * attempt)
+                        continue
+                    return result
+                result = parse_chat_completion(
+                    data,
+                    final_stop_sequences=final_stop_sequences,
+                    attempts=attempt,
+                )
+                if result.outcome == "transport_error" and attempt < retries:
+                    result.retryable = True
+                    time.sleep(5 * attempt)
+                    continue
+                return result
         except urllib.error.HTTPError as e:
             err_body = e.read().decode("utf-8", errors="replace")
-            last_err = f"HTTP {e.code}: {err_body[:500]}"
-            if e.code in (429, 500, 502, 503, 504) and attempt < retries:
+            retryable = e.code in RETRYABLE_HTTP_CODES
+            result = ReallmsResult(
+                outcome="http_error",
+                raw_response=_decoded_error_body(err_body),
+                error=f"HTTP {e.code}: {err_body[:500]}",
+                status_code=e.code,
+                attempts=attempt,
+                retryable=retryable,
+            )
+            if retryable and attempt < retries:
                 wait = 5 * attempt
-                sys.stderr.write(f"  retry {attempt}/{retries} after {wait}s ({last_err.splitlines()[0]})\n")
+                sys.stderr.write(f"  retry {attempt}/{retries} after {wait}s ({result.error.splitlines()[0]})\n")
                 time.sleep(wait)
                 continue
-            break
+            return result
         except (urllib.error.URLError, TimeoutError) as e:
-            last_err = f"network: {e}"
+            error = f"network: {e}"
             if _looks_like_cert_error(e):
-                last_err += (
+                error += (
                     "\nTLS certificate verification failed before the API key could be checked. "
                     "Set SSL_CERT_FILE to a trusted CA bundle such as /etc/ssl/cert.pem, "
                     "install certifi, or ask campus IT for the IU/network CA bundle. "
                     "REALLMS_INSECURE=1 disables server verification and should only be used for temporary debugging."
                 )
-                break
+                return ReallmsResult(
+                    outcome="transport_error",
+                    error=error,
+                    attempts=attempt,
+                    retryable=False,
+                )
             if attempt < retries:
                 time.sleep(5 * attempt)
                 continue
-            break
-    message = f"API call failed after {retries} attempts: {last_err}"
-    if fail_on_error:
-        fail(message)
-    raise RuntimeError(message)
-    return ""
+            return ReallmsResult(
+                outcome="transport_error",
+                error=error,
+                attempts=attempt,
+                retryable=True,
+            )
+    raise AssertionError("REALLMS retry loop ended without a result")
 
 
 def make_client(pack_root: Path) -> dict:
