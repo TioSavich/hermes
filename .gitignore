@@ -51,3 +51,6 @@ scripts/bigred/iteration15/work/atlas/cells.json
 
 # Dump of all automata (gitignored)
 automata.pl
+
+# Held for review before publication
+docs/research/2026-08-05-hyperedges-and-the-calculus-rung.html
