@@ -595,11 +595,13 @@ measurement_receipt(measurement(569), 'docs/research/2026-08-03-contract-coverag
 measurement_receipt(measurement(570), 'docs/research/2026-08-03-purported-validity-audit.md', 'line(31)', 'Layer 1: 124 of 124 contracted kinds mapped and executed. 120 hold.', live_script('scripts/checks/audit_purported_validity.pl'), ['curriculum/im/docling_figures_interpreted.pl', 'hermes/encyclopedia.pl'], resolved_live_method).
 measurement_receipt(measurement(571), 'docs/research/2026-08-03-purported-validity-audit.md', 'line(66)', 'Coverage gap: 95 of 219 registered kinds have no input contract at', live_script('scripts/checks/audit_purported_validity.pl'), none_recorded, resolved_live_method).
 measurement_receipt(measurement(572), 'docs/research/2026-08-03-the-machines-typeset.md', 'line(268)', 'Reading the numbers down rather than letting them stand: 137 of 225', ambiguous_scripts(['scripts/checks/automata_compendium.py', 'scripts/checks/automaton_input_contracts.py', 'scripts/checks/transition_tables.py']), none_recorded, method_ambiguous).
+measurement_receipt(measurement(573), 'docs/research/2026-08-05-prolog-arm-repair.md', 'line(177)', '- **7 of 29 is not the arm''s rate on real items.** The mix of the corpus was', ambiguous_scripts(['scripts/checks/prolog_repair.py', 'scripts/research/prolog_arm_probe.py']), none_recorded, method_ambiguous).
+measurement_receipt(measurement(574), 'docs/research/2026-08-05-prolog-arm-repair.md', 'line(22)', '45 of 327 formed goals failed, and "the failures have a shape worth keeping:', live_script('scripts/checks/prolog_repair.py'), none_recorded, resolved_live_method).
 
-measurement_denominator(explicit_quantitative_result_statement, 572).
-measurement_resolution_count(resolved_live_method, 114).
+measurement_denominator(explicit_quantitative_result_statement, 574).
+measurement_resolution_count(resolved_live_method, 115).
 measurement_resolution_count(resolved_method_data_missing, 1).
-measurement_resolution_count(method_ambiguous, 29).
+measurement_resolution_count(method_ambiguous, 30).
 measurement_resolution_count(method_path_and_cited_data_missing, 1).
 measurement_resolution_count(data_method_unrecorded, 40).
 measurement_resolution_count(method_not_recorded, 387).

@@ -15,6 +15,7 @@ HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
+import mtb_prolog_repair as repair
 import mtb_prolog_responder as responder
 import prolog_arm_report as report
 
@@ -177,6 +178,276 @@ solve(Answer) :- {Answer >= 0}.
         self.assertIsInstance(record["seconds"], float)
 
 
+class RepairReaderTests(unittest.TestCase):
+    def test_clause_end_is_not_read_as_a_decimal_point(self) -> None:
+        clauses = repair.parse_clauses("a(1).\nb(2).\n")
+        self.assertEqual(
+            [clause.functor for clause in clauses], [("a", 1), ("b", 1)])
+
+    def test_decimal_number_keeps_its_fraction(self) -> None:
+        clauses = repair.parse_clauses("rate(1.5).\n")
+        self.assertEqual(clauses[0].head_text, "rate(1.5)")
+
+    def test_query_and_directive_are_distinguished(self) -> None:
+        clauses = repair.parse_clauses(":- dynamic x/1.\n?- solve(A).\n")
+        self.assertEqual([clause.kind for clause in clauses],
+                         ["directive", "query"])
+
+    def test_quoted_atom_holding_a_period_is_one_token(self) -> None:
+        clauses = repair.parse_clauses("name('a. b').\n")
+        self.assertEqual(len(clauses), 1)
+
+
+class RepairStepTests(unittest.TestCase):
+    def test_query_line_is_dropped(self) -> None:
+        rung = repair.normalize("solve(1).\n?- solve(X), write(X).")
+        self.assertIn("dropped_query", rung.steps)
+        self.assertNotIn("write", rung.program)
+
+    def test_allowed_import_survives_and_others_do_not(self) -> None:
+        rung = repair.normalize(
+            ":- use_module(library(clpq)).\n"
+            ":- initialization(main).\n"
+            "solve(A) :- {A = 1}."
+        )
+        self.assertIn("use_module(library(clpq))", rung.program)
+        self.assertIn("dropped_directive", rung.steps)
+
+    def test_root_predicate_of_another_name_is_aliased(self) -> None:
+        rung = repair.normalize("answer(A) :- A is 2 * 3.")
+        self.assertIn("aliased_answer_predicate", rung.steps)
+        self.assertIn("solve(A)", rung.program)
+
+    def test_two_roots_are_too_ambiguous_to_alias(self) -> None:
+        rung = repair.normalize("answer(A) :- A is 1.\nresult(B) :- B is 2.")
+        self.assertNotIn("aliased_answer_predicate", rung.steps)
+
+    def test_wider_solve_is_aliased_to_its_last_argument(self) -> None:
+        rung = repair.normalize("solve(A, B, C) :- C is A + B.")
+        self.assertIn("aliased_answer_arity", rung.steps)
+        self.assertIn("solve(_, _, A)", rung.program)
+
+    def test_clauses_solve_cannot_reach_are_dropped(self) -> None:
+        rung = repair.normalize(
+            "solve(A) :- A is 1.\nmain :- solve(X), write(X).")
+        self.assertIn("dropped_unreachable_clauses", rung.steps)
+        self.assertNotIn("main", rung.program)
+
+    def test_a_predicate_called_inside_findall_survives_pruning(self) -> None:
+        rung = repair.normalize(
+            "?- go.\n"
+            "sale(14).\nsale(22).\n"
+            "solve(A) :- findall(X, sale(X), L), sum_list(L, A)."
+        )
+        self.assertIn("sale(14)", rung.program)
+
+    def test_atom_used_as_the_target_of_is_becomes_a_variable(self) -> None:
+        rung = repair.normalize("solve(total) :- total is 6 * 7.")
+        self.assertIn("capitalized_pseudo_variables", rung.steps)
+        self.assertIn("V_total", rung.program)
+
+    def test_a_defined_predicate_name_is_not_taken_for_a_variable(self) -> None:
+        rung = repair.normalize("total(42).\nsolve(A) :- total(A).")
+        self.assertNotIn("capitalized_pseudo_variables", rung.steps)
+
+    def test_clpq_import_is_added_only_for_brace_constraints(self) -> None:
+        with_braces = repair.normalize("solve(A) :- {A = 1}.")
+        self.assertIn("added_clpq_import", with_braces.steps)
+        without = repair.normalize("solve(A) :- A is 1.")
+        self.assertNotIn("added_clpq_import", without.steps)
+
+
+class ReorderTests(unittest.TestCase):
+    def test_evaluation_moves_after_what_binds_its_inputs(self) -> None:
+        rung = repair.reorder("solve(T) :- T is A * B, A = 7, B = 12.")
+        self.assertEqual(rung.steps, ("reordered_by_dataflow",))
+        body = rung.program.split(":-")[1]
+        self.assertLess(body.index("A = 7"), body.index("T is A * B"))
+
+    def test_a_body_that_already_runs_is_left_alone(self) -> None:
+        rung = repair.reorder("solve(T) :- A = 7, B = 12, T is A * B.")
+        self.assertEqual(rung.steps, ())
+
+    def test_generate_and_test_keeps_its_generator_first(self) -> None:
+        rung = repair.reorder(
+            "solve(X) :- between(1, 9, X), X > 4, Y is X + 1, Y > 0.")
+        self.assertEqual(rung.steps, ())
+
+    def test_a_body_with_a_disjunction_is_not_reordered(self) -> None:
+        rung = repair.reorder(
+            "solve(T) :- (T is A ; T is B), A = 1, B = 2.")
+        self.assertEqual(rung.steps, ())
+
+    def test_a_body_nothing_can_bind_keeps_the_author_order(self) -> None:
+        rung = repair.reorder("solve(T) :- T is A + B, C > 1.")
+        self.assertEqual(rung.steps, ())
+
+
+class ConstrainTests(unittest.TestCase):
+    def test_rational_arithmetic_becomes_a_constraint(self) -> None:
+        rung = repair.constrain("solve(T) :- T is 3 * (A + 2), A = 1.")
+        self.assertIn("constrained_arithmetic", rung.steps)
+        self.assertIn("{T = 3 * (A + 2)}", rung.program)
+
+    def test_integer_division_has_no_constraint_reading(self) -> None:
+        rung = repair.constrain("solve(T) :- T is 30 // 4.")
+        self.assertEqual(rung.steps, ())
+
+    def test_a_named_function_has_no_constraint_reading(self) -> None:
+        for expression in ("max(A, B)", "truncate(A)", "A mod 3", "sqrt(A)"):
+            with self.subTest(expression=expression):
+                rung = repair.constrain(f"solve(T) :- T is {expression}.")
+                self.assertEqual(rung.steps, ())
+
+
+class LadderTests(unittest.TestCase):
+    def test_every_rung_is_a_program_no_earlier_rung_already_was(self) -> None:
+        rungs = repair.repair_ladder(
+            "solve(T) :- T is A * B, A = 7, B = 12.")
+        programs = [rung.program.strip() for rung in rungs]
+        self.assertEqual(len(programs), len(set(programs)))
+
+    def test_steps_accumulate_down_the_ladder(self) -> None:
+        rungs = repair.repair_ladder(
+            ":- initialization(main).\n"
+            "solve(T) :- T is A * B, A = 7, B = 12.\n"
+            "main :- solve(X), write(X)."
+        )
+        self.assertIn("dropped_directive", rungs[0].steps)
+        self.assertIn("dropped_directive", rungs[-1].steps)
+        self.assertIn("reordered_by_dataflow", rungs[-1].steps)
+
+    def test_text_that_will_not_parse_yields_no_rungs_or_no_answer(self) -> None:
+        # The reader is total over token streams, so a broken program may still
+        # produce rungs; what it must never do is raise into the arm.
+        for text in ("solve(", ")))", "", "solve(A :- , B is 1."):
+            with self.subTest(text=text):
+                repair.repair_ladder(text)
+
+
+class VoteTests(unittest.TestCase):
+    def _attempt(self, outcome: str, value: str | None) -> responder.Attempt:
+        return responder.Attempt(outcome, value, 0, (), None, None, "")
+
+    def test_the_value_most_programs_reached_wins(self) -> None:
+        value, tally = responder._vote([
+            self._attempt("ran", "12"),
+            self._attempt("ran", "7"),
+            self._attempt("ran", "7"),
+        ])
+        self.assertEqual(value, "7")
+        self.assertEqual(tally, {"12": 1, "7": 2})
+
+    def test_a_program_that_did_not_run_casts_no_vote(self) -> None:
+        value, tally = responder._vote([
+            self._attempt("runtime_error", None),
+            self._attempt("ran", "5"),
+        ])
+        self.assertEqual((value, tally), ("5", {"5": 1}))
+
+    def test_a_tie_goes_to_the_earliest_sample(self) -> None:
+        value, _ = responder._vote([
+            self._attempt("ran", "9"), self._attempt("ran", "4")])
+        self.assertEqual(value, "9")
+
+    def test_no_answer_at_all_is_no_answer(self) -> None:
+        self.assertEqual(responder._vote([]), (None, {}))
+        self.assertEqual(
+            responder._vote([self._attempt("timeout", None)]), (None, {}))
+
+
+class ArmRepairTests(unittest.TestCase):
+    """The arm's own behaviour around repair, sampling, and the fallback."""
+
+    DECLARATIVE = "```prolog\nsolve(T) :- T is A * B, A = 7, B = 12.\n```"
+
+    def setUp(self) -> None:
+        self.temporary = tempfile.TemporaryDirectory()
+        self.scratch = Path(self.temporary.name)
+
+    def tearDown(self) -> None:
+        self.temporary.cleanup()
+
+    def _arm(self, **options: str) -> responder.PrologResponder:
+        return responder.PrologResponder(
+            "test-model", guarded=False, scratch_dir=str(self.scratch),
+            **options,
+        )
+
+    def _ask(self, arm: responder.PrologResponder, replies: list[str]) -> str:
+        with mock.patch.object(
+                responder.mtb_responders, "complete", side_effect=replies):
+            return arm.respond(
+                prompt="benchmark prompt", stop=None,
+                example={"question": "How many in all?"},
+                task_name="problem_solving",
+            )
+
+    def test_repair_recovers_a_program_the_arm_used_to_discard(self) -> None:
+        arm = self._arm()
+        self.assertEqual(self._ask(arm, [self.DECLARATIVE]), "Final answer: 84")
+        self.assertEqual(arm.stats["repaired"], 1)
+
+    def test_repair_off_reproduces_the_arm_before_the_ladder(self) -> None:
+        arm = self._arm(repair="off")
+        self.assertEqual(self._ask(arm, [self.DECLARATIVE]), "")
+        self.assertEqual(arm.stats["repaired"], 0)
+        self.assertEqual(arm.stats["runtime_error"], 1)
+
+    def test_a_program_that_runs_is_never_repaired(self) -> None:
+        arm = self._arm()
+        self.assertEqual(
+            self._ask(arm, [f"```prolog\n{BENIGN}```"]), "Final answer: 13")
+        self.assertEqual(arm.stats["repaired"], 0)
+
+    def test_samples_vote_on_what_the_interpreter_returned(self) -> None:
+        arm = self._arm(samples="3")
+        replies = [
+            "```prolog\nsolve(T) :- T is 5 * 5.\n```",
+            "```prolog\nsolve(T) :- T is 4 * 6.\n```",
+            "```prolog\nsolve(T) :- T is 12 * 2.\n```",
+        ]
+        self.assertEqual(self._ask(arm, replies), "Final answer: 24")
+        self.assertEqual(arm.stats["prolog_model_calls"], 3)
+
+    def test_samples_that_do_not_run_leave_the_one_that_did(self) -> None:
+        arm = self._arm(samples="2")
+        replies = ["not a program at all", "```prolog\nsolve(T) :- T is 6.\n```"]
+        self.assertEqual(self._ask(arm, replies), "Final answer: 6")
+
+    def test_more_than_one_sample_needs_spread_to_be_worth_taking(self) -> None:
+        self.assertEqual(self._arm().temperature, 0.0)
+        self.assertGreater(self._arm(samples="4").temperature, 0.0)
+        self.assertEqual(self._arm(samples="4", temperature="0.3").temperature, 0.3)
+
+    def test_the_record_names_the_rung_and_the_steps_it_took(self) -> None:
+        transcripts = self.scratch / "transcripts"
+        arm = self._arm(transcript_dir=str(transcripts))
+        self._ask(arm, [self.DECLARATIVE])
+        arm.close()
+        record = json.loads(
+            (arm.transcript_path or Path()).read_text(encoding="utf-8"))
+        self.assertGreater(record["rung"], 0)
+        self.assertIn("reordered_by_dataflow", record["repair_steps"])
+        self.assertEqual(len(record["attempts"]), 1)
+
+    def test_an_unsafe_program_is_refused_at_every_rung(self) -> None:
+        arm = self._arm()
+        reply = (
+            "```prolog\n:- initialization(main).\n"
+            "solve(A) :- A is 1, shell('ls').\n"
+            "main :- solve(X), write(X).\n```"
+        )
+        self.assertEqual(self._ask(arm, [reply]), "")
+        self.assertEqual(arm.stats["rejected_unsafe"], 1)
+
+    def test_bad_options_are_refused_at_construction(self) -> None:
+        for options in ({"repair": "maybe"}, {"samples": "0"}):
+            with self.subTest(options=options):
+                with self.assertRaises(ValueError):
+                    self._arm(**options)
+
+
 class ReportTests(unittest.TestCase):
     def test_report_crosses_outcomes_with_correctness(self) -> None:
         built = report.build_report(
@@ -192,6 +463,27 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(built["ran_rate"], 0.5)
         self.assertEqual(built["outcomes"]["ran"]["correct"], 1)
         self.assertEqual(built["outcomes"]["no_program"]["incorrect"], 1)
+
+    def test_report_separates_answers_that_needed_a_repair(self) -> None:
+        built = report.build_report(
+            {
+                0: {"position": 0, "prediction": "54", "target": "54"},
+                1: {"position": 1, "prediction": "9", "target": "12"},
+                2: {"position": 2, "prediction": "7", "target": "7"},
+            },
+            {
+                0: {"position": 0, "outcome": "ran", "rung": 2,
+                    "repair_steps": ["reordered_by_dataflow"]},
+                1: {"position": 1, "outcome": "ran", "rung": 1,
+                    "repair_steps": ["dropped_query"]},
+                2: {"position": 2, "outcome": "ran", "rung": 0},
+            },
+        )
+        self.assertEqual(built["repaired"]["items"], 2)
+        self.assertEqual(built["repaired"]["correct"], 1)
+        self.assertEqual(built["repaired"]["incorrect"], 1)
+        self.assertEqual(
+            built["repaired"]["steps"]["reordered_by_dataflow"]["correct"], 1)
 
     def test_report_counts_grounded_runs_in_overall_ran_rate(self) -> None:
         built = report.build_report(

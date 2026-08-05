@@ -84,11 +84,21 @@ def build_report(
             f"items_only={sorted(item_positions - runner_positions)}"
         )
     crossed: dict[str, Counter[str]] = defaultdict(Counter)
+    # An answer that only exists because a rung above zero ran is an answer the
+    # arm did not have before the ladder. Crossing the rung with correctness is
+    # what says whether recovering those programs was worth doing: recovering a
+    # wrong program costs the arm an item it used to leave blank.
+    repaired: Counter[str] = Counter()
+    steps: dict[str, Counter[str]] = defaultdict(Counter)
     for position in sorted(runner_positions):
         item = item_rows[position]
         runner = runner_rows[position]
         correctness = "correct" if _is_correct(runner["prediction"], runner["target"]) else "incorrect"
         crossed[str(item["outcome"])][correctness] += 1
+        if item.get("rung"):
+            repaired[correctness] += 1
+            for step in item.get("repair_steps") or []:
+                steps[str(step)][correctness] += 1
     items = len(runner_positions)
     ran = sum(
         crossed[outcome]["correct"] + crossed[outcome]["incorrect"]
@@ -103,6 +113,16 @@ def build_report(
                 "incorrect": counts["incorrect"],
             }
             for outcome, counts in sorted(crossed.items())
+        },
+        "repaired": {
+            "items": repaired["correct"] + repaired["incorrect"],
+            "correct": repaired["correct"],
+            "incorrect": repaired["incorrect"],
+            "steps": {
+                step: {"correct": counts["correct"],
+                       "incorrect": counts["incorrect"]}
+                for step, counts in sorted(steps.items())
+            },
         },
     }
 

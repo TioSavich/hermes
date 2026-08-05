@@ -47,6 +47,12 @@ FORBIDDEN_ATOMS = {
 }
 FORBIDDEN_PREFIXES = ("http_", "socket", "qsave")
 
+# The repair module reads `ALLOWED_MODULES` to know which imports a repaired
+# program may keep, so it must be imported after that name exists. The two
+# modules are a cycle by design: the screen owns what may run, the repair owns
+# what to try, and neither decides the other's question.
+import mtb_prolog_repair  # noqa: E402
+
 
 @dataclass(frozen=True)
 class Token:
@@ -425,6 +431,50 @@ def prolog_prompt(question: str) -> str:
     )
 
 
+@dataclass(frozen=True)
+class Attempt:
+    """What one generated program did, after however much repair it needed."""
+
+    outcome: str
+    value: str | None
+    rung: int
+    steps: tuple[str, ...]
+    program: str | None
+    screen: ScreenResult | None
+    reply: str
+    detail: str | None = None
+    error_class: str | None = None
+    grounding: str | None = None
+    stdout: str = ""
+    stderr: str = ""
+
+    @property
+    def answered(self) -> bool:
+        return self.outcome in {"ran", "ran_grounded"} and self.value is not None
+
+
+def _vote(attempts: list[Attempt]) -> tuple[str | None, dict[str, int]]:
+    """Take the value the most executed programs agree on.
+
+    A generated program that will not run casts no vote, so the interpreter is
+    doing the filtering an unassisted arm has to do with a second opinion. Ties
+    go to the value the earliest sample reached, which makes a single-sample arm
+    and a k-sample arm agree whenever the first sample runs.
+    """
+    tally: Counter[str] = Counter()
+    order: dict[str, int] = {}
+    for position, attempt in enumerate(attempts):
+        if not attempt.answered:
+            continue
+        assert attempt.value is not None
+        tally[attempt.value] += 1
+        order.setdefault(attempt.value, position)
+    if not tally:
+        return None, {}
+    winner = min(tally, key=lambda value: (-tally[value], order[value]))
+    return winner, dict(tally)
+
+
 class PrologResponder:
     """One strict or guarded Prolog-generation arm for ``problem_solving``."""
 
@@ -442,6 +492,22 @@ class PrologResponder:
         self.backend = options.get("backend", "ollama")
         self.endpoint = options.get("endpoint")
         self.num_predict = int(options.get("num_predict", mtb_responders.DEFAULT_NUM_PREDICT))
+        # Repair is on by default and `repair=off` reproduces the arm as it ran
+        # before the ladder existed, so the two are an ablation rather than a
+        # replacement. Every run records which of them it was.
+        repair_value = options.get("repair", "on")
+        if repair_value not in {"on", "off"}:
+            raise ValueError("repair must be on or off")
+        self.repair = repair_value == "on"
+        self.samples = int(options.get("samples", 1))
+        if self.samples < 1:
+            raise ValueError("samples must be at least one")
+        # One sample stays greedy, which is what every recorded run used. More
+        # than one needs spread, or the samples are the same program k times.
+        default_temperature = (
+            mtb_responders.DEFAULT_TEMPERATURE if self.samples == 1 else 0.8
+        )
+        self.temperature = float(options.get("temperature", default_temperature))
         transcript_value = options.get("transcript_dir")
         self.transcript_path: Path | None = None
         self._transcript_handle = None
@@ -495,74 +561,146 @@ class PrologResponder:
             self.stats["fallback_errors"] += 1
             return ""
 
+    def _screen_and_run(
+        self, program: str, *, rung: int, steps: tuple[str, ...], reply: str,
+    ) -> Attempt:
+        """Screen one program text and run it, whether written or repaired.
+
+        Repair never widens what may run: the screen is applied to the repaired
+        text, exactly as it is applied to the text as written.
+        """
+        screened = screen_program(program)
+        if not screened.allowed:
+            return Attempt(
+                "rejected_unsafe", None, rung, steps, program, screened, reply,
+                detail=screened.reason,
+            )
+        result = run_program(program, self.scratch_dir)
+        grounding = None
+        if result.outcome == "ran":
+            grounding = "direct"
+        elif result.outcome == "ran_grounded":
+            grounding = "clpq_bb_inf_integer_maximum"
+        return Attempt(
+            result.outcome, result.value, rung, steps, program, screened, reply,
+            detail=result.detail, error_class=result.error_class,
+            grounding=grounding, stdout=result.stdout, stderr=result.stderr,
+        )
+
+    def _solve_once(self, question: str, *, stop: list[str] | None) -> Attempt:
+        """One model call, then the repair ladder until something runs."""
+        reply = ""
+        self.stats["prolog_model_calls"] += 1
+        try:
+            reply = mtb_responders.complete(
+                prolog_prompt(question), model=self.model, backend=self.backend,
+                endpoint=self.endpoint, stop=stop, num_predict=self.num_predict,
+                stop_mode="post", temperature=self.temperature,
+            )
+        except RuntimeError as exc:
+            return Attempt(
+                "no_program", None, 0, (), None, None, reply,
+                detail=f"completion_error:{type(exc).__name__}",
+            )
+        program = extract_program(reply)
+        if program is None:
+            return Attempt("no_program", None, 0, (), None, None, reply)
+
+        attempt = self._screen_and_run(program, rung=0, steps=(), reply=reply)
+        if attempt.answered or not self.repair:
+            return attempt
+        try:
+            rungs = mtb_prolog_repair.repair_ladder(program)
+        except (ValueError, RecursionError):
+            # A program the repair reader cannot take apart is left as it ran.
+            self.stats["repair_errors"] += 1
+            return attempt
+        for number, rung in enumerate(rungs, start=1):
+            repaired = self._screen_and_run(
+                rung.program, rung=number, steps=rung.steps, reply=reply,
+            )
+            if repaired.answered:
+                self.stats["repaired"] += 1
+                for step in rung.steps:
+                    self.stats[f"repair_step:{step}"] += 1
+                return repaired
+        return attempt
+
     def respond(
         self, *, prompt: str, stop: list[str] | None, example: dict[str, Any],
         task_name: str,
     ) -> str:
         started = time.monotonic()
-        outcome = "no_program"
+        attempts: list[Attempt] = []
         record_extra: dict[str, Any] = {}
-        answer = ""
-        reply = ""
-        program: str | None = None
-        screened: ScreenResult | None = None
-        swipl_stdout = ""
-        swipl_stderr = ""
+        outcome = "no_program"
         try:
             if task_name != "problem_solving":
                 raise ValueError("prolog responders support only problem_solving")
             question = str(example.get("question", ""))
             if not question:
                 raise ValueError("problem_solving item has no question")
-            self.stats["prolog_model_calls"] += 1
-            try:
-                reply = mtb_responders.complete(
-                    prolog_prompt(question), model=self.model, backend=self.backend,
-                    endpoint=self.endpoint, stop=stop, num_predict=self.num_predict,
-                    stop_mode="post",
-                )
-            except RuntimeError as exc:
-                record_extra["detail"] = f"completion_error:{type(exc).__name__}"
-            program = extract_program(reply)
-            if program is None:
-                return self._fallback(prompt, stop) if self.guarded else ""
-            screened = screen_program(program)
-            if not screened.allowed:
-                outcome = "rejected_unsafe"
-                record_extra["rule"] = screened.reason
-                return self._fallback(prompt, stop) if self.guarded else ""
-            result = run_program(program, self.scratch_dir)
-            outcome = result.outcome
-            swipl_stdout = result.stdout
-            swipl_stderr = result.stderr
-            if result.detail:
-                record_extra["detail"] = result.detail
-            if result.error_class:
-                record_extra["error_class"] = result.error_class
-            if result.value is not None:
-                record_extra["value"] = result.value
-            if result.outcome == "ran":
-                record_extra["grounding"] = "direct"
-            elif result.outcome == "ran_grounded":
-                record_extra["grounding"] = "clpq_bb_inf_integer_maximum"
-            if result.outcome in {"ran", "ran_grounded"} and result.value is not None:
-                answer = f"Final answer: {result.value}"
-                return answer
+            for _ in range(self.samples):
+                attempts.append(self._solve_once(question, stop=stop))
+            value, tally = _vote(attempts)
+            chosen = next(
+                (attempt for attempt in attempts
+                 if attempt.answered and attempt.value == value),
+                attempts[0] if attempts else None,
+            )
+            if chosen is not None:
+                outcome = chosen.outcome
+                record_extra["rung"] = chosen.rung
+                if chosen.steps:
+                    record_extra["repair_steps"] = list(chosen.steps)
+                if chosen.detail:
+                    record_extra["detail"] = chosen.detail
+                if chosen.error_class:
+                    record_extra["error_class"] = chosen.error_class
+                if chosen.grounding:
+                    record_extra["grounding"] = chosen.grounding
+            if self.samples > 1:
+                record_extra["votes"] = tally
+                record_extra["answered_samples"] = sum(
+                    1 for attempt in attempts if attempt.answered)
+            if value is not None:
+                record_extra["value"] = value
+                return f"Final answer: {value}"
             return self._fallback(prompt, stop) if self.guarded else ""
         except (RuntimeError, ValueError) as exc:
             record_extra["detail"] = f"responder_error:{type(exc).__name__}"
             return self._fallback(prompt, stop) if self.guarded else ""
         finally:
             record_extra["seconds"] = round(time.monotonic() - started, 3)
+            # The transcript's own fields describe the attempt the answer came
+            # from; every other attempt is kept beside them under `attempts`.
+            shown = next(
+                (attempt for attempt in attempts if attempt.answered),
+                attempts[0] if attempts else None,
+            )
             transcript = {
-                "raw_reply": reply,
-                "program": program,
+                "raw_reply": shown.reply if shown else "",
+                "program": shown.program if shown else None,
                 "screen": (
-                    None if screened is None
-                    else {"allowed": screened.allowed, "reason": screened.reason}
+                    None if shown is None or shown.screen is None
+                    else {
+                        "allowed": shown.screen.allowed,
+                        "reason": shown.screen.reason,
+                    }
                 ),
-                "swipl_stdout": swipl_stdout,
-                "swipl_stderr": swipl_stderr,
+                "swipl_stdout": shown.stdout if shown else "",
+                "swipl_stderr": shown.stderr if shown else "",
+                "attempts": [
+                    {
+                        "outcome": attempt.outcome,
+                        "value": attempt.value,
+                        "rung": attempt.rung,
+                        "steps": list(attempt.steps),
+                        "program": attempt.program,
+                        "detail": attempt.detail,
+                    }
+                    for attempt in attempts
+                ],
             }
             self._record(outcome, transcript=transcript, **record_extra)
 
@@ -578,6 +716,16 @@ class PrologResponder:
             "arm": self.arm,
             "model": self.model,
             "items": items,
+            "repair": "on" if self.repair else "off",
+            "samples": self.samples,
+            "temperature": self.temperature,
+            "repaired": self.stats["repaired"],
+            "repair_errors": self.stats["repair_errors"],
+            "repair_steps": {
+                name.removeprefix("repair_step:"): count
+                for name, count in sorted(self.stats.items())
+                if name.startswith("repair_step:")
+            },
             "fallbacks": self.stats["fallbacks"],
             "fallback_errors": self.stats["fallback_errors"],
             "prolog_model_calls": self.stats["prolog_model_calls"],

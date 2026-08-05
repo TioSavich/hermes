@@ -45,6 +45,8 @@ run canonical_phrases.py    python3 "$CHECKS_DIR/canonical_phrases.py"
 run utterance_layers.py     python3 "$CHECKS_DIR/utterance_layers.py"
 run attested_phrases.py     python3 "$CHECKS_DIR/attested_phrases.py"
 run recognition_benchmark.py python3 "$CHECKS_DIR/recognition_benchmark.py"
+run prolog_repair.py        python3 "$CHECKS_DIR/prolog_repair.py"
+run test_mtb_prolog_responder python3 -m unittest discover -s "$CHECKS_DIR/../research" -p "test_mtb_prolog_responder.py" -q
 run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_registry.py" --check
 run extract_im_lesson_identity python3 "$CHECKS_DIR/../extract_im_lesson_identity.py" --check
 run extract_machine_block_decomposition python3 "$CHECKS_DIR/../extract_machine_block_decomposition.py" --check

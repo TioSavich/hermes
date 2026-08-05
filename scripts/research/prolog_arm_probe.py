@@ -43,11 +43,25 @@ def main() -> int:
         "--num-predict", type=int,
         default=mtb_prolog_responder.mtb_responders.DEFAULT_NUM_PREDICT,
     )
+    parser.add_argument(
+        "--repair", choices=["on", "off"], default="on",
+        help="off reproduces the arm as it ran before the repair ladder",
+    )
+    parser.add_argument(
+        "--samples", type=int, default=1,
+        help="programs generated per item; their executed answers vote",
+    )
+    parser.add_argument(
+        "--temperature", type=float,
+        help="decoding temperature; one sample stays greedy by default",
+    )
     args = parser.parse_args()
     if args.items <= 0:
         parser.error("--items must be positive")
     if args.offset < 0:
         parser.error("--offset must be non-negative")
+    if args.samples < 1:
+        parser.error("--samples must be at least one")
 
     task, config = mtb_official_runner.load_task(TASK_NAME)
     examples = task.get_test_examples()
@@ -58,7 +72,11 @@ def main() -> int:
         "scratch_dir": str(args.scratch_dir),
         "backend": args.backend,
         "num_predict": str(args.num_predict),
+        "repair": args.repair,
+        "samples": str(args.samples),
     }
+    if args.temperature is not None:
+        options["temperature"] = str(args.temperature)
     if args.transcript_dir is not None:
         options["transcript_dir"] = str(args.transcript_dir)
     if args.endpoint:

@@ -321,8 +321,12 @@ def render_registry() -> str:
     # the demonstration that pairs the automata compendium — every machine's
     # five-tuple, table, computed shape, and diagram — with pasted live runs,
     # including the per-input validity labels answering on 2+2 versus 2+3.
-    if len(reports) != 78:
-        raise RuntimeError(f"expected 78 top-level research reports, found {len(reports)}")
+    # 78 until 2026-08-05, which added the Prolog-arm repair report: what the
+    # problem_solving arm's harness discards when a checkpoint writes a correct
+    # quantity model in a form the runner will not run, measured on an authored
+    # corpus rather than on any benchmark item.
+    if len(reports) != 79:
+        raise RuntimeError(f"expected 79 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
