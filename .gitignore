@@ -16,7 +16,7 @@ __pycache__/
 .DS_Store
 
 # Bundle build output
-build/
+#build/
 
 # LaTeX build byproducts (the appendix source ships; its build residue does not)
 *.aux

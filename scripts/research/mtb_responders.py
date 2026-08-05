@@ -13,6 +13,7 @@ particular arm does.
 from __future__ import annotations
 
 import json
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -21,6 +22,28 @@ from typing import Any, Callable, Protocol
 DEFAULT_ENDPOINT = "http://localhost:11434/api/generate"
 DEFAULT_TEMPERATURE = 0.0
 DEFAULT_NUM_PREDICT = 2048
+
+_SINK = threading.local()
+
+
+def emit(record: dict[str, Any]) -> None:
+    """Leave a responder's working record where its caller can pick it up.
+
+    A responder returns only the string the benchmark parses, so anything it
+    learned on the way out — which gate closed, what it named, what it read —
+    has nowhere to go. Writing that to a side file leaves it unjoinable: the
+    item set carries repeated problems whose only distinguishing mark is
+    their position, which a responder must never be told. The runner calls
+    `take` right after the responder returns, on the same thread, so the
+    record lands on the item's own row.
+    """
+    _SINK.record = record
+
+
+def take() -> dict[str, Any] | None:
+    record = getattr(_SINK, "record", None)
+    _SINK.record = None
+    return record
 
 
 class Responder(Protocol):
@@ -203,6 +226,8 @@ def build(name: str, *, model: str, **options: str) -> Responder:
             import mtb_prolog_responder  # noqa: F401
             import mtb_kb_responder  # noqa: F401
             import mtb_gated_responder  # noqa: F401
+            import mtb_graph_responder  # noqa: F401
+            import mtb_graph_agent_responder  # noqa: F401
         except ImportError:
             pass
     if name not in BUILDERS:
