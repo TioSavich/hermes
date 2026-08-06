@@ -283,7 +283,7 @@
     }).join('');
   }
 
-  // Wire the all-kinds strategy page. It shares the established trace,
+  // Wire the all-kinds automaton page. It shares the established trace,
   // number-line, and action-topology renderers above; only selection and the
   // raw JSON editor are page-specific.
   window.wireStrategyMachinePage = async function (cfg) {
@@ -372,13 +372,13 @@
       let stopElapsed = function () {};
       try {
         await requestClientReady;
-        stopElapsed = HermesFetch.startElapsed(statusEl, 'Running the selected automaton…');
+        stopElapsed = HermesFetch.startElapsed(statusEl, 'Invoking the registered automaton runner…');
         const data = await postResult('/api/strategy_trace', {
           strategy: kindEl.value,
           input: input
         });
         if (!data || data.ok === false) {
-          throw new Error((data && data.note) || 'The automaton did not return a trace.');
+          throw new Error((data && data.note) || 'The automaton runner did not return a runtime trace.');
         }
 
         outcomeEl.innerHTML = `<dl class="outcome-fields">${outcomeMarkup(data)}</dl>`;
@@ -389,7 +389,7 @@
         });
         if (!stepsEl.children.length) {
           const li = document.createElement('li');
-          li.textContent = 'This response carries no named execution steps.';
+          li.textContent = 'The runtime trace carries no named steps.';
           stepsEl.appendChild(li);
         }
 
@@ -399,17 +399,17 @@
           const last = jumps[jumps.length - 1];
           svgEl.hidden = false;
           drawNumberLine(cfg.svgId, first.from, jumps, last.to);
-          jumpsEl.innerHTML = `<p class="meta">${jumps.length} numeric jump(s) were extracted from the execution history.</p>`;
+          jumpsEl.innerHTML = `<p class="meta">${jumps.length} numeric jump(s) were extracted from the runtime trace.</p>`;
         } else {
-          jumpsEl.innerHTML = '<p class="empty-state">No numeric jumps are present. This is expected when the state history does not carry a running numeric path.</p>';
+          jumpsEl.innerHTML = '<p class="empty-state">No numeric jumps are present. This is expected when the runtime trace does not carry a running numeric path.</p>';
         }
 
         if (data.action_topology) {
           topologyEl.innerHTML = renderActionTopology(data.action_topology);
         } else {
-          topologyEl.innerHTML = '<p class="empty-state">No action-topology block is present. The trace seam does not attach that block to every registry kind.</p>';
+          topologyEl.innerHTML = '<p class="empty-state">No action-topology block is present. The runner response does not attach that block to every registered kind.</p>';
         }
-        setStatus(`Completed ${familyEl.value}:${kindEl.value}.`, false);
+        setStatus(`Runtime trace returned for ${familyEl.value}:${kindEl.value}.`, false);
       } catch (err) {
         setStatus(err.message, true);
       } finally {
@@ -438,7 +438,7 @@
         await requestClientReady;
         stopElapsed = HermesFetch.startElapsed(
           statusEl,
-          'Loading the strategy catalog. The first request on a cold server loads the symbolic worker and can take about two minutes…'
+          'Loading the automaton catalog. The first request on a cold server loads the symbolic worker and can take about two minutes…'
         );
         const catalog = await postResult('/api/strategies', {});
         strategies = Array.isArray(catalog.strategies) ? catalog.strategies : [];

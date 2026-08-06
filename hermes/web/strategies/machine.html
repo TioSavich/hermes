@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Strategy machine | Hermes</title>
+  <title>Automaton runner | Hermes</title>
   <link rel="stylesheet" href="../hermes-tokens.css">
   <link rel="stylesheet" href="strategy_shell.css">
   <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="strategy-machine"></script>
@@ -11,17 +11,18 @@
 <body>
 <main class="container machine-page">
   <p class="back"><a href="index.html">&larr; Curated strategy pages</a></p>
-  <h1>Strategy machine</h1>
-  <p class="meta">Choose a family and registered kind. The editor starts from that kind&rsquo;s verified worker input; edit the JSON to work through another case within the same contract.</p>
+  <h1>Automaton runner</h1>
+  <p class="meta">A family and kind identify one automaton. This page invokes its registered runner and displays the returned runtime trace. The editor starts from the runner&rsquo;s verified worker input; edit the JSON to work through another case within the same contract.</p>
 
   <section class="machine-picker" aria-labelledby="selection-title">
-    <h2 id="selection-title">Automaton</h2>
+    <h2 id="selection-title">Select an automaton</h2>
+    <p class="meta">Definitions are in the <a href="../../docs/research/automata-vocabulary.html">Hermes automata vocabulary</a>.</p>
     <div class="inputs">
       <label>Family
-        <select id="machine-family" aria-label="strategy family"></select>
+        <select id="machine-family" aria-label="automaton family"></select>
       </label>
       <label>Kind
-        <select id="machine-kind" aria-label="strategy kind"></select>
+        <select id="machine-kind" aria-label="automaton kind"></select>
       </label>
     </div>
   </section>
@@ -48,7 +49,7 @@
   </section>
 
   <section aria-labelledby="steps-title">
-    <h2 id="steps-title">Execution steps</h2>
+    <h2 id="steps-title">Runtime trace</h2>
     <ol id="machine-steps" class="step-list"></ol>
   </section>
 

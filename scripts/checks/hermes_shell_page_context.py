@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from hermes.app.help_grounding import PAGE_CONTEXT
+from hermes.app.help_grounding import PAGE_CONTEXT, assemble_help_context
 
 
 TEMPLATE_ROOTS = (
@@ -46,6 +46,28 @@ def report_orphans(template_ids: set[str], context_ids: set[str]) -> int:
     return int(bool(missing_context or missing_template))
 
 
+def report_strategy_machine_backing() -> int:
+    context = assemble_help_context(ROOT, "strategy-machine")
+    required = (
+        "PAGE-SPECIFIC BACKING",
+        "MACHINE PAGE",
+        "selects one automaton by family and kind",
+        "GLOSSARY EXCERPT (docs/research/automata-vocabulary.html)",
+        "- automaton: One registered state-and-transition structure for one family and kind.",
+        "- state: One node in one automaton.",
+        "- transition: One directed move from a source state to a target state, labeled by a local action.",
+        "- local action: The action name authored on one transition.",
+        "- canonical action: A normalized action name used to compare local actions across automata.",
+        "- kind: The registered subtype within a family.",
+        "- runtime trace: The ordered steps returned by one runner invocation.",
+    )
+    missing = [text for text in required if text not in context]
+    if missing:
+        print("strategy-machine context missing backing: " + ", ".join(missing))
+        return 1
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -59,6 +81,7 @@ def main() -> int:
     if args.synthetic_orphan:
         template_ids.add("synthetic-orphan")
     failed = report_orphans(template_ids, set(PAGE_CONTEXT))
+    failed |= report_strategy_machine_backing()
     if failed:
         return 1
     print(

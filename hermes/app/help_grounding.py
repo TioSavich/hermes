@@ -13,7 +13,7 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "console": {"theme": "Norms & curriculum", "lede": "Bring a mathematical discussion, computation, or lesson to the local workbench.", "path": "/hermes/app/web/console.html", "theory": "/more-zeeman/landing.html"},
     "discussions": {"theme": "Norms & curriculum", "lede": "Build a claim-checked account of a discussion and keep the evidence attached.", "path": "/hermes/app/web/discussions.html", "theory": "/more-zeeman/muds.html"},
     "visualizations": {"theme": "Objects", "lede": "Run a representation filmstrip, then change its inputs when a worker is available.", "path": "/more-zeeman/visualizations.html", "theory": "/more-zeeman/strategies.html"},
-    "strategy-machine": {"theme": "Objects", "lede": "Run any registered strategy kind from its verified JSON input contract.", "path": "/more-zeeman/strategies/machine.html", "theory": "/more-zeeman/strategies.html"},
+    "strategy-machine": {"theme": "Objects", "lede": "Invoke one registered automaton runner by family and kind, then read its runtime trace.", "path": "/more-zeeman/strategies/machine.html", "theory": "/more-zeeman/strategies.html"},
     "witnesses": {"theme": "Recollection", "lede": "Query the finite witness families gathered from the loaded knowledge base.", "path": "/more-zeeman/witnesses.html", "theory": "/more-zeeman/landing.html"},
     "monitoring": {"theme": "Norms & curriculum", "lede": "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions.", "path": "/more-zeeman/monitoring_chart.html", "theory": "/more-zeeman/scoreboard.html"},
     "review": {"theme": "Norms & curriculum", "lede": "Judge one generated proposal at a time with its recorded warrant and machine actions.", "path": "/more-zeeman/review.html", "theory": "/more-zeeman/scoreboard.html"},
@@ -70,6 +70,22 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
     "unit-echo": ("knowledge/strategies/render/README.md",),
     "fraction-bars": ("knowledge/strategies/render/README.md",),
     "fraction-compare": ("knowledge/strategies/render/README.md",),
+}
+
+PAGE_BACKING: dict[str, tuple[str, ...]] = {
+    "strategy-machine": (
+        "MACHINE PAGE",
+        "- The Automaton runner page selects one automaton by family and kind, invokes that automaton's registered runner with the edited JSON input, and displays the returned runtime trace.",
+        "",
+        "GLOSSARY EXCERPT (docs/research/automata-vocabulary.html)",
+        "- automaton: One registered state-and-transition structure for one family and kind. Machine is an informal synonym.",
+        "- state: One node in one automaton.",
+        "- transition: One directed move from a source state to a target state, labeled by a local action.",
+        "- local action: The action name authored on one transition.",
+        "- canonical action: A normalized action name used to compare local actions across automata.",
+        "- kind: The registered subtype within a family. A family and kind together identify one automaton.",
+        "- runtime trace: The ordered steps returned by one runner invocation.",
+    ),
 }
 
 CAPABILITY_RE = re.compile(
@@ -160,6 +176,9 @@ def assemble_help_context(repo_root: Path, page: str) -> str:
     ]
     capability_lines = _capability_lines(repo_root, info["path"])
     blocks.extend(capability_lines or ["- No capability_page facts are registered for this page."])
+    backing_lines = PAGE_BACKING.get(page, ())
+    if backing_lines:
+        blocks.extend(["", "PAGE-SPECIFIC BACKING", *backing_lines])
     if page in {"witnesses", "visualizations"}:
         blocks.extend(["", "STATE VOCABULARY LABELS", *_state_label_lines(repo_root)])
     blocks.extend(["", "BACKING MODULE DOCUMENTATION"])
