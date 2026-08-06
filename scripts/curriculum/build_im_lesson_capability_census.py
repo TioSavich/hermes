@@ -12,7 +12,9 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 import json
+import os
 from pathlib import Path
 import random
 import re
@@ -269,7 +271,7 @@ census_main(Codes) :-
 """
 
 
-def runtime_probe(lessons: list[str]) -> dict[str, dict]:
+def runtime_probe_serial(lessons: list[str]) -> dict[str, dict]:
     """Run every compiled productive lesson until a trace is found."""
     program = (
         pusu_pass.PROLOG_RUNNER
@@ -317,6 +319,45 @@ def runtime_probe(lessons: list[str]) -> dict[str, dict]:
             f"expected={len(lessons)} actual={len(rows)}"
         )
     return rows
+
+
+def census_worker_count() -> int:
+    configured = os.environ.get("HERMES_CENSUS_WORKERS")
+    if configured is None:
+        return min(6, max(1, (os.cpu_count() or 1) - 2))
+    try:
+        workers = int(configured)
+    except ValueError:
+        fail("HERMES_CENSUS_WORKERS must be a positive integer")
+    if workers < 1:
+        fail("HERMES_CENSUS_WORKERS must be a positive integer")
+    return workers
+
+
+def runtime_probe(lessons: list[str]) -> dict[str, dict]:
+    """Probe stable lesson-code shards, then restore canonical lesson order."""
+    worker_count = census_worker_count()
+    if worker_count == 1 or len(lessons) < 2:
+        return runtime_probe_serial(lessons)
+
+    ordered_lessons = sorted(lessons, key=lesson_key)
+    shard_count = min(worker_count, len(ordered_lessons))
+    shards = [ordered_lessons[index::shard_count] for index in range(shard_count)]
+    with ThreadPoolExecutor(max_workers=shard_count) as executor:
+        shard_rows = list(executor.map(runtime_probe_serial, shards))
+
+    merged = {
+        lesson: rows[lesson]
+        for lesson in ordered_lessons
+        for rows in shard_rows
+        if lesson in rows
+    }
+    if set(merged) != set(ordered_lessons):
+        fail(
+            "runtime census shards returned the wrong lesson population: "
+            f"expected={len(ordered_lessons)} actual={len(merged)}"
+        )
+    return merged
 
 
 def current_pusu_spot_checks(
