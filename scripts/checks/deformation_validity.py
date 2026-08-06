@@ -21,9 +21,11 @@ ALLOWED_MODES = {
     "objective_invalid",
     "context_sensitive_or_inefficient",
 }
-ALLOWED_STATUSES = {"seeded_profile", "seeded_ledger", "proposed"}
+ALLOWED_STATUSES = {"seeded_profile", "seeded_ledger", "proposed", "adjudicated"}
 ALLOWED_BASIS_KINDS = {
     "addition_ledger_loss/3",
+    "adjudicated/3",
+    "coincidence_at/1",
     "coincidence_profile/4",
     "independent_truth_derivation/2",
     "proposed_from_code_reading/2",
@@ -45,6 +47,10 @@ CONFLICT_RE = re.compile(
     r"^conflict\(machine_profile_projects_mixed,"
     r"addition_ledger_selects_objective_invalid,'.+'\)$"
 )
+ADJUDICATED_RE = re.compile(
+    r"^adjudicated\(code_reading\('2026-08-05'\),'.+','.+'\)$"
+)
+COINCIDENCE_AT_RE = re.compile(r"^coincidence_at\('.+'\)$")
 
 TRANSITION_RE = re.compile(
     r"^automaton_transition\(([^,]+), ([^,]+), ([^,]+), ([^,]+), ([^,]+),",
@@ -169,6 +175,7 @@ def main() -> None:
             fail(f"row {row_number} {key} has malformed structured basis items")
         addition_seed = None
         profile_seed = None
+        adjudication_count = 0
         for basis_kind, basis_item in zip(basis_kinds, basis_items):
             basis_item = str(basis_item)
             if basis_kind == "addition_ledger_loss/3":
@@ -193,6 +200,13 @@ def main() -> None:
             elif basis_kind == "conflict/3":
                 if not CONFLICT_RE.fullmatch(basis_item):
                     fail(f"row {row_number} {key} has invalid conflict basis {basis_item}")
+            elif basis_kind == "adjudicated/3":
+                if not ADJUDICATED_RE.fullmatch(basis_item):
+                    fail(f"row {row_number} {key} has invalid adjudication basis {basis_item}")
+                adjudication_count += 1
+            elif basis_kind == "coincidence_at/1":
+                if not COINCIDENCE_AT_RE.fullmatch(basis_item):
+                    fail(f"row {row_number} {key} has invalid coincidence basis {basis_item}")
         if "proposed_from_code_reading/2" not in basis_kinds:
             fail(f"row {row_number} {key} does not name its code-reading basis")
         if status == "seeded_ledger" and "addition_ledger_loss/3" not in basis_kinds:
@@ -204,6 +218,10 @@ def main() -> None:
             "coincidence_profile/4",
         }:
             fail(f"row {row_number} {key} is proposed but cites a seed source")
+        if status == "adjudicated" and adjudication_count != 1:
+            fail(f"row {row_number} {key} must name exactly one adjudication basis")
+        if status != "adjudicated" and adjudication_count:
+            fail(f"row {row_number} {key} has an adjudication basis before review")
 
         if status == "seeded_ledger":
             expected_modes = (
@@ -277,7 +295,7 @@ def main() -> None:
     for label in ("rust-only", "blue-only", "mixed"):
         print(f"  {label}: {mode_census[label]}")
     print("  by review_status:")
-    for status in ("seeded_ledger", "seeded_profile", "proposed"):
+    for status in ("seeded_ledger", "seeded_profile", "proposed", "adjudicated"):
         print(f"    {status}: {status_census[status]}")
     print(
         f"PASS deformation validity: {len(rows)} ledger rows join "
