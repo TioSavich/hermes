@@ -32251,7 +32251,8 @@
       ],
       "strategy": "decimal_scale_loss_comparison",
       "validity": "incorrect",
-      "viability": "viability(fails_in_context,condition(written_numeral_order_diverges_from_decimal_value_order),expected(greater_than),produced(less_than),validity(incorrect))"
+      "viability": "viability(fails_in_context,condition(written_numeral_order_diverges_from_decimal_value_order),expected(greater_than),produced(less_than),validity(incorrect))",
+      "viability_context": "viability(deformation_without_scale_alignment,condition(different_decimal_scales(10,100)),construction(align_decimal_units_before_integer_operation),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -32784,7 +32785,8 @@
       ],
       "strategy": "decimal_numeral_comparison_without_scale_alignment",
       "validity": "accidentally_correct",
-      "viability": "viability(contextual_success,condition(written_numeral_order_coincides_with_decimal_value_order),validity(contextually_correct))"
+      "viability": "viability(contextual_success,condition(written_numeral_order_coincides_with_decimal_value_order),validity(contextually_correct))",
+      "viability_context": "viability(licensed_same_scale_construction,condition(same_decimal_scale(10)),construction(integer_operation_on_decimal_unit(unit_fraction(1,10))),validity(correct))"
      }
     },
     "direct_runs": [],
@@ -32939,7 +32941,8 @@
       ],
       "strategy": "decimal_add_unaligned_numerals",
       "validity": "accidentally_correct",
-      "viability": "viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct))"
+      "viability": "viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct))",
+      "viability_context": "viability(licensed_same_scale_construction,condition(same_decimal_scale(10)),construction(integer_operation_on_decimal_unit(unit_fraction(1,10))),validity(correct))"
      }
     },
     "direct_runs": [],
@@ -33094,7 +33097,8 @@
       ],
       "strategy": "decimal_subtract_unaligned_numerals",
       "validity": "accidentally_correct",
-      "viability": "viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct))"
+      "viability": "viability(contextual_success,condition(unaligned_decimal_operation_coincides_with_decimal_value_operation),validity(contextually_correct))",
+      "viability_context": "viability(licensed_same_scale_construction,condition(same_decimal_scale(10)),construction(integer_operation_on_decimal_unit(unit_fraction(1,10))),validity(correct))"
      }
     },
     "direct_runs": [],
