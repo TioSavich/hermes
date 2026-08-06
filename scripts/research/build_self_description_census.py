@@ -980,8 +980,12 @@ def build() -> dict[str, object]:
     # ledger for the 232 deforming transitions (rust/blue/mixed with basis
     # and review status). Orphan module for the same reason: the graph and
     # compendium builders consume it by parsing, and nothing imports it.
-    if len(registry_rows) != 311:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 311")
+    # 312 from 2026-08-06: metaphor_seam_registry.pl, the authored registry
+    # of where each curricular metaphor operates and where its reach ends
+    # (26 rows, 16 seams). Orphan module for the abstraction wing's reason:
+    # its gate check parses it, and nothing imports it.
+    if len(registry_rows) != 312:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 312")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1041,8 +1045,11 @@ def build() -> dict[str, object]:
     # 88 from 2026-08-05: deformation_validity.pl joins for the same
     # reason — the graph and compendium builders parse it; nothing
     # imports it.
-    if len(orphan_records) != 88:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 88")
+    # 89 from 2026-08-06: metaphor_seam_registry.pl joins for the
+    # abstraction wing's reason — its gate check parses it; nothing
+    # imports it.
+    if len(orphan_records) != 89:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 89")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route.
     if len(unrouted) != 10:

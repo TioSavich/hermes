@@ -416,14 +416,14 @@
       "render": 35,
       "sequent": 14,
       "standards": 22,
-      "synthesis": 42,
+      "synthesis": 43,
       "unclassified": 8,
       "workflow": 16,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 88,
+      "orphan_module": 89,
       "routed_only": 15,
       "routed_paged": 188,
       "unrouted": 10
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 52
+      "undetermined": 53
     },
-    "total": 311,
+    "total": 312,
     "unrouted": 10
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1470,6 +1470,20 @@
       "module": "kernel_gate_pilot",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/kernel_gate_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "metaphor_seam_registry",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
       "verdict": "undetermined"
     },
     {
