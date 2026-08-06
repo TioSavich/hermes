@@ -7,6 +7,7 @@
 <style>
 :root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold:#d4a747;--gold-deep:#a97c24;--rust:#b95238;--validity-blue:#2e6f9e;--surface:#fffef9;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Georgia,serif}main{max-width:1320px;margin:auto;padding:2rem 1.25rem 4rem}h1{font-size:2.25rem;line-height:1.08;font-weight:normal;margin:.4rem 0 .65rem}p{max-width:var(--prose)}a{color:var(--gold-deep);text-underline-offset:.14em}code{font:.82em var(--mono);overflow-wrap:anywhere}.lede{font-size:1.08rem;color:var(--muted);margin:.3rem 0}.back-link{margin:0}.controls{display:flex;align-items:end;gap:1.2rem;flex-wrap:wrap;margin:1.4rem 0 .8rem;font-family:var(--mono);font-size:.78rem}.field{display:flex;flex-direction:column;gap:.28rem}.field label{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.7rem}.field select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:.42rem .6rem}.status{color:var(--muted);margin:0 0 .1rem;flex:1;min-width:260px}.graph-frame{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}.graph-frame canvas{display:block;width:100%;height:680px;touch-action:none;cursor:grab}.graph-frame canvas.dragging{cursor:grabbing}.level-ruler{position:absolute;right:.65rem;top:1rem;bottom:1rem;width:146px;margin:0;padding:0 0 0 1rem;list-style:none;border-left:1px solid color-mix(in srgb,var(--ink) 30%,transparent);display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;color:var(--muted);font:10px/1.15 var(--mono);text-shadow:0 1px var(--surface),1px 0 var(--surface),0 -1px var(--surface),-1px 0 var(--surface)}.level-ruler li{position:relative}.level-ruler li::before{content:"";position:absolute;left:-1rem;top:.55em;width:.55rem;border-top:1px solid currentColor}.level-ruler b{display:block;color:var(--ink);font-weight:normal}.tooltip{position:absolute;z-index:2;display:none;max-width:460px;padding:.42rem .55rem;border:1px solid var(--line);border-radius:4px;background:color-mix(in srgb,var(--surface) 95%,transparent);color:var(--ink);font:11px/1.4 var(--mono);pointer-events:none}.tooltip.visible{display:block}.selection{min-height:1.6rem;margin:.65rem 0 0;color:var(--muted);font:.76rem/1.45 var(--mono);overflow-wrap:anywhere}.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:1rem 0;color:var(--muted);font-size:.88rem}.legend span{white-space:normal}.swatch{display:inline-block;width:1.45rem;height:.16rem;vertical-align:middle;margin-right:.35rem;background:currentColor}.swatch.conserving{color:var(--ink)}.swatch.objective{color:var(--rust)}.swatch.contextual{color:var(--validity-blue)}.swatch.mixed{background:linear-gradient(to bottom,var(--rust) 0 42%,var(--validity-blue) 42% 100%)}.swatch.neutral{color:var(--muted)}.swatch.borrow{color:var(--gold)}.review-counts{flex-basis:100%;font-family:var(--mono);font-size:.8rem}figcaption{max-width:var(--prose);color:var(--muted);font-size:.92rem;margin:1rem 0}.instructions{color:var(--muted);font-size:.88rem;margin:.45rem 0}.noscript{color:var(--rust)}@media(max-width:780px){main{padding:1rem .65rem 3rem}.graph-frame canvas{height:560px}.level-ruler{width:104px;font-size:8px}.status{flex-basis:100%}}
+.hidden{display:none!important}
 </style>
 </head>
 <body><main>
@@ -18,6 +19,13 @@
 </header>
 <div class="controls">
   <div class="field">
+    <label for="view-mode">View</label>
+    <select id="view-mode">
+      <option value="full" selected>Full</option>
+      <option value="family">Family</option>
+    </select>
+  </div>
+  <div class="field" id="borrow-field">
     <label for="borrow-mode">Borrow lines</label>
     <select id="borrow-mode">
       <option value="off" selected>Off</option>
@@ -27,11 +35,11 @@
   </div>
   <p class="status" id="status" aria-live="polite">Loading the graph data…</p>
 </div>
-<p class="instructions">Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.</p>
+<p class="instructions" id="instructions">Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.</p>
 <figure>
   <div class="graph-frame" id="graph-frame">
     <canvas id="graph" aria-label="Three-dimensional graph of the computational automata corpus"></canvas>
-    <ol class="level-ruler" aria-label="Authored pedagogical level ladder">
+    <ol class="level-ruler" id="level-ruler" aria-label="Authored pedagogical level ladder">
       <li><b>7</b>calculus</li>
       <li><b>6</b>algebraic</li>
       <li><b>5</b>ratio · probability · statistics</li>
@@ -53,7 +61,7 @@
     <span><i class="swatch borrow"></i><a href="automata-vocabulary.html#borrow">borrow</a>; shared canonical action name</span>
     <span class="review-counts" id="review-counts">Validity review counts load with the graph data.</span>
   </div>
-  <figcaption>The graph records each automaton's states separately; no state is literally shared. A gold borrow line connects automata that share a canonical action name. A <a href="automata-vocabulary.html#borrow">borrow</a> asserts no equivalence and no prerequisite order. The vertical order is authored rather than derived from the transition tables.</figcaption>
+  <figcaption id="view-note">The graph records each automaton's states separately; no state is literally shared. A gold borrow line connects automata that share a canonical action name. A <a href="automata-vocabulary.html#borrow">borrow</a> asserts no equivalence and no prerequisite order. The vertical order is authored rather than derived from the transition tables. In Family view, each gold bundle records shared canonical action names only; it asserts no equivalence, prerequisite order, or learner relation, and its vertical placement is authored.</figcaption>
 </figure>
 <noscript><p class="noscript">This reader requires JavaScript to load and draw the graph JSON.</p></noscript>
 </main>
@@ -61,7 +69,10 @@
 (function () {
   'use strict';
 
-  var DATA_PATH = 'assets/automata/full_graph.json';
+  var DATA_PATHS = {
+    full: 'assets/automata/full_graph.json',
+    family: 'assets/automata/family_graph.json'
+  };
   var MAX_AMBIENT_BORROWS = 1800;
   var LEVEL_HEIGHT = 9;
   var canvas = document.getElementById('graph');
@@ -72,22 +83,31 @@
   var tooltip = document.getElementById('tooltip');
   var reviewCounts = document.getElementById('review-counts');
   var borrowMode = document.getElementById('borrow-mode');
+  var borrowField = document.getElementById('borrow-field');
+  var viewMode = document.getElementById('view-mode');
+  var levelRuler = document.getElementById('level-ruler');
+  var instructions = document.getElementById('instructions');
   var palette = {
     paper: '#f4ead6', surface: '#fffef9', ink: '#0d0c08',
     muted: '#665f4f', rust: '#b95238', validityBlue: '#2e6f9e',
     gold: '#d4a747', goldDeep: '#a97c24'
   };
   var graph = null;
+  var currentView = 'full';
   var nodes = [];
   var edges = [];
   var borrows = [];
   var nodeById = new Map();
   var machineById = new Map();
   var edgesByAction = new Map();
+  var edgeById = new Map();
   var borrowedActions = new Set();
   var lastProjected = [];
+  var lastProjectedEdges = [];
   var pinnedMachine = null;
+  var pinnedEdge = null;
   var hoveredNode = null;
+  var hoveredEdge = null;
   var camera = { yaw: 0.48, pitch: 0.42, zoom: 1, offsetX: 0, offsetY: 0 };
   var pointer = { active: false, moved: false, x: 0, y: 0, startX: 0, startY: 0 };
   var renderPending = false;
@@ -95,7 +115,25 @@
   var diagnostics = { lastRenderMs: 0, ambientBorrowSegments: 0, pinnedBorrowSegments: 0 };
   window.__fullGraphDiagnostics = diagnostics;
 
-  function prepare(data) {
+  function clearPreparedState() {
+    nodeById.clear();
+    machineById.clear();
+    edgesByAction.clear();
+    edgeById.clear();
+    borrowedActions.clear();
+    nodes = [];
+    edges = [];
+    borrows = [];
+    lastProjected = [];
+    lastProjectedEdges = [];
+    pinnedMachine = null;
+    pinnedEdge = null;
+    hoveredNode = null;
+    hoveredEdge = null;
+    tooltip.classList.remove('visible');
+  }
+
+  function prepareFull(data) {
     graph = data;
     nodes = data.nodes.map(function (node) {
       var copy = Object.assign({}, node);
@@ -123,6 +161,7 @@
       var copy = Object.assign({}, edge, {
         source: nodeById.get(edge.from), target: nodeById.get(edge.to)
       });
+      edgeById.set(copy.id, copy);
       machineById.get(copy.machine).edges.push(copy);
       if (copy.canonical_action !== null) {
         if (!edgesByAction.has(copy.canonical_action)) edgesByAction.set(copy.canonical_action, []);
@@ -148,6 +187,55 @@
       '. Unreviewed rows retain rust-family styling; their modes remain queryable.';
     status.textContent = baseStatusText(counts) + ' · ' +
       counts.borrow_pairs.toLocaleString() + ' borrow lines';
+  }
+
+  function prepareFamily(data) {
+    graph = data;
+    nodes = data.nodes.map(function (node) {
+      var copy = Object.assign({}, node, {
+        machine: node.id,
+        state: node.family,
+        formal_index: 0,
+        start: false,
+        accepting: false,
+        projected: null
+      });
+      nodeById.set(copy.id, copy);
+      machineById.set(copy.machine, {
+        id: copy.machine, family: copy.family, kind: 'family', level: copy.level,
+        nodes: [copy], edges: [], center: copy.position
+      });
+      return copy;
+    });
+    edges = data.edges.map(function (edge) {
+      var copy = Object.assign({}, edge, {
+        bundle: true,
+        source: nodeById.get(edge.from),
+        target: nodeById.get(edge.to)
+      });
+      edgeById.set(copy.id, copy);
+      machineById.get(copy.from).edges.push(copy);
+      machineById.get(copy.to).edges.push(copy);
+      return copy;
+    });
+    var counts = data.meta.counts;
+    reviewCounts.textContent = data.meta.assertion;
+    status.textContent = counts.nodes + ' families · ' + counts.edges +
+      ' gold bundles · ' + counts.members.toLocaleString() + ' shared-action members';
+  }
+
+  function prepare(data) {
+    clearPreparedState();
+    currentView = viewMode.value;
+    if (currentView === 'family') prepareFamily(data);
+    else prepareFull(data);
+    var familyView = currentView === 'family';
+    borrowField.classList.toggle('hidden', familyView);
+    levelRuler.classList.toggle('hidden', familyView);
+    instructions.textContent = familyView ?
+      'Drag to orbit, use the wheel to zoom, hover a family or bundle for member counts, and click to pin it.' :
+      "Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.";
+    selection.textContent = familyView ? 'No family or bundle pinned.' : 'No automaton pinned.';
     resize();
     scheduleRender();
   }
@@ -274,7 +362,47 @@
     ctx.lineWidth = width;
   }
 
+  function memberCounts(members) {
+    var stances = {};
+    var validity = {};
+    members.forEach(function (member) {
+      stances[member.stance] = (stances[member.stance] || 0) + 1;
+      member.validity_modes.forEach(function (mode) {
+        validity[mode] = (validity[mode] || 0) + 1;
+      });
+    });
+    return { stances: stances, validity: validity };
+  }
+
+  function countMapText(counts) {
+    var keys = Object.keys(counts).sort();
+    return keys.length ? keys.map(function (key) {
+      return key + ' ' + counts[key];
+    }).join(', ') : 'none';
+  }
+
+  function bundleSummary(edge) {
+    var counts = memberCounts(edge.members);
+    return edge.source.family + ' / ' + edge.target.family + ' · ' +
+      edge.members.length + ' shared action names · stance members: ' +
+      countMapText(counts.stances) + ' · validity members: ' +
+      countMapText(counts.validity);
+  }
+
+  function incidentBundleSummary(machine) {
+    var members = [];
+    machine.edges.forEach(function (edge) {
+      members = members.concat(edge.members);
+    });
+    var counts = memberCounts(members);
+    return machine.family + ' · ' + machine.edges.length + ' family bundles · ' +
+      members.length + ' shared-action members · stance members: ' +
+      countMapText(counts.stances) + ' · validity members: ' +
+      countMapText(counts.validity);
+  }
+
   function drawBorrowSegments(projectedMachines, pinnedActions, borrowedMachines) {
+    if (currentView === 'family') return { eligible: 0, drawn: 0 };
     var mode = borrowMode.value;
     var ambient = [];
     var pinned = [];
@@ -325,6 +453,28 @@
   function drawEdge(edge, pinnedActions, borrowedMachines) {
     var source = edge.source.projected;
     var target = edge.target.projected;
+    if (edge.bundle) {
+      var bundleAlpha = 0.16;
+      var bundleWidth = 0.8;
+      if (edge === hoveredEdge) {
+        bundleAlpha = 0.95;
+        bundleWidth = 2.2;
+      }
+      if (pinnedEdge) {
+        bundleAlpha = edge === pinnedEdge ? 1 : 0.035;
+        bundleWidth = edge === pinnedEdge ? 2.6 : 0.6;
+      } else if (pinnedMachine) {
+        var incident = edge.from === pinnedMachine || edge.to === pinnedMachine;
+        bundleAlpha = incident ? 0.78 : 0.025;
+        bundleWidth = incident ? 1.45 : 0.55;
+      }
+      setStroke(palette.gold, bundleAlpha, bundleWidth);
+      ctx.beginPath();
+      ctx.moveTo(source.x, source.y);
+      ctx.lineTo(target.x, target.y);
+      ctx.stroke();
+      return;
+    }
     var alpha = alphaForDepth(Math.min(source.scale, target.scale), 0.38);
     var width = 0.8;
     if (!pinnedMachine && edge.stance === 'neutral') alpha *= 0.38;
@@ -413,8 +563,12 @@
 
   function drawNode(node, pinnedActions, borrowedMachines) {
     var point = node.projected;
-    var radius = Math.max(1.15, 1.65 * point.scale);
+    var radius = currentView === 'family' ? Math.max(3.2, 4.2 * point.scale) :
+      Math.max(1.15, 1.65 * point.scale);
     var alpha = alphaForDepth(point.scale, 0.78);
+    if (pinnedEdge && currentView === 'family') {
+      alpha = node.id === pinnedEdge.from || node.id === pinnedEdge.to ? 1 : 0.14;
+    }
     if (pinnedMachine) {
       if (node.machine === pinnedMachine) alpha = 1;
       else if (borrowedMachines.has(node.machine)) alpha = 0.52;
@@ -444,6 +598,14 @@
     ctx.globalAlpha = 1;
     ctx.font = '10px ui-monospace, Menlo, Monaco, Consolas, monospace';
     ctx.textBaseline = 'middle';
+    if (currentView === 'family') {
+      nodes.forEach(function (node) {
+        ctx.fillStyle = node.machine === pinnedMachine ? palette.goldDeep : palette.ink;
+        ctx.textAlign = 'left';
+        ctx.fillText(node.family, node.projected.x + 7, node.projected.y - 7);
+      });
+      return;
+    }
     if (pinnedMachine) {
       var machine = machineById.get(pinnedMachine);
       machine.nodes.forEach(function (node) {
@@ -482,8 +644,9 @@
     lastProjected = nodes.slice().sort(function (a, b) {
       return b.projected.depth - a.projected.depth;
     });
+    lastProjectedEdges = edges.slice();
     var pinnedActions = new Set();
-    if (pinnedMachine) {
+    if (pinnedMachine && currentView === 'full') {
       machineById.get(pinnedMachine).edges.forEach(function (edge) {
         if (edge.canonical_action && borrowedActions.has(edge.canonical_action)) {
           pinnedActions.add(edge.canonical_action);
@@ -514,6 +677,13 @@
     diagnostics.nodes = nodes.length;
     diagnostics.baseSegments = edges.length;
     diagnostics.borrowMode = borrowMode.value;
+    diagnostics.view = currentView;
+    if (currentView === 'family') {
+      status.textContent = graph.meta.counts.nodes + ' families · ' +
+        graph.meta.counts.edges + ' gold bundles · ' +
+        graph.meta.counts.members.toLocaleString() + ' shared-action members';
+      return;
+    }
     if (borrowMode.value !== 'off') {
       var suffix = borrowCounts.eligible > borrowCounts.drawn ?
         ' · distance-culling draws ' + borrowCounts.drawn.toLocaleString() + ' of ' +
@@ -546,20 +716,51 @@
     return null;
   }
 
-  function updateTooltip(event, node) {
-    if (!node) {
+  function pointSegmentDistance(point, source, target) {
+    var dx = target.x - source.x;
+    var dy = target.y - source.y;
+    var lengthSquared = dx * dx + dy * dy;
+    if (!lengthSquared) return Math.hypot(point.x - source.x, point.y - source.y);
+    var amount = ((point.x - source.x) * dx + (point.y - source.y) * dy) /
+      lengthSquared;
+    amount = Math.max(0, Math.min(1, amount));
+    return Math.hypot(point.x - (source.x + amount * dx),
+      point.y - (source.y + amount * dy));
+  }
+
+  function hitEdge(point) {
+    if (currentView !== 'family') return null;
+    var nearest = null;
+    var distance = 6;
+    lastProjectedEdges.forEach(function (edge) {
+      var candidate = pointSegmentDistance(point, edge.source.projected, edge.target.projected);
+      if (candidate < distance) {
+        distance = candidate;
+        nearest = edge;
+      }
+    });
+    return nearest;
+  }
+
+  function updateTooltip(event, node, edge) {
+    if (!node && !edge) {
       tooltip.classList.remove('visible');
       return;
     }
-    tooltip.textContent = 'automaton ' + node.machine + ' · code name ' + node.state +
-      ' · formal state name q' + node.formal_index;
-    var incomingValidity = machineById.get(node.machine).edges.filter(function (edge) {
-      return edge.to === node.id && edge.stance === 'deforming';
-    });
-    if (incomingValidity.length) {
-      tooltip.textContent += ' · incoming ' + incomingValidity.map(function (edge) {
-        return edge.local_action + ': ' + validityText(edge);
-      }).join(' · ');
+    if (currentView === 'family') {
+      tooltip.textContent = edge ? bundleSummary(edge) :
+        incidentBundleSummary(machineById.get(node.machine));
+    } else {
+      tooltip.textContent = 'automaton ' + node.machine + ' · code name ' + node.state +
+        ' · formal state name q' + node.formal_index;
+      var incomingValidity = machineById.get(node.machine).edges.filter(function (incoming) {
+        return incoming.to === node.id && incoming.stance === 'deforming';
+      });
+      if (incomingValidity.length) {
+        tooltip.textContent += ' · incoming ' + incomingValidity.map(function (incoming) {
+          return incoming.local_action + ': ' + validityText(incoming);
+        }).join(' · ');
+      }
     }
     tooltip.classList.add('visible');
     var frameRect = frame.getBoundingClientRect();
@@ -571,6 +772,16 @@
   }
 
   function updateSelection() {
+    if (currentView === 'family') {
+      if (pinnedEdge) {
+        selection.textContent = bundleSummary(pinnedEdge);
+      } else if (pinnedMachine) {
+        selection.textContent = incidentBundleSummary(machineById.get(pinnedMachine));
+      } else {
+        selection.textContent = 'No family or bundle pinned.';
+      }
+      return;
+    }
     if (!pinnedMachine) {
       selection.textContent = 'No automaton pinned.';
       return;
@@ -613,20 +824,24 @@
       tooltip.classList.remove('visible');
       scheduleRender();
     } else {
-      var found = hitNode(point);
-      if (found !== hoveredNode) {
-        hoveredNode = found;
+      var foundNode = hitNode(point);
+      var foundEdge = foundNode ? null : hitEdge(point);
+      if (foundNode !== hoveredNode || foundEdge !== hoveredEdge) {
+        hoveredNode = foundNode;
+        hoveredEdge = foundEdge;
         scheduleRender();
       }
-      updateTooltip(event, found);
+      updateTooltip(event, foundNode, foundEdge);
     }
   });
   function releasePointer(event) {
     if (!pointer.active) return;
     var point = pointFromEvent(event);
     if (!pointer.moved) {
-      var found = hitNode(point);
-      pinnedMachine = found ? found.machine : null;
+      var foundNode = hitNode(point);
+      var foundEdge = foundNode ? null : hitEdge(point);
+      pinnedMachine = foundNode ? foundNode.machine : null;
+      pinnedEdge = foundEdge;
       updateSelection();
     }
     pointer.active = false;
@@ -638,6 +853,7 @@
   canvas.addEventListener('pointerleave', function () {
     if (!pointer.active) {
       hoveredNode = null;
+      hoveredEdge = null;
       tooltip.classList.remove('visible');
       scheduleRender();
     }
@@ -648,15 +864,31 @@
     scheduleRender();
   }, { passive: false });
   borrowMode.addEventListener('change', scheduleRender);
+  var loadSequence = 0;
+  function loadView() {
+    var requestedView = viewMode.value;
+    var sequence = ++loadSequence;
+    clearPreparedState();
+    graph = null;
+    currentView = requestedView;
+    status.style.color = palette.muted;
+    status.textContent = 'Loading the ' + requestedView + ' graph data…';
+    selection.textContent = requestedView === 'family' ?
+      'No family or bundle pinned.' : 'No automaton pinned.';
+    fetch(DATA_PATHS[requestedView]).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    }).then(function (data) {
+      if (sequence === loadSequence) prepare(data);
+    }).catch(function (error) {
+      if (sequence !== loadSequence) return;
+      status.textContent = 'The graph data could not be loaded: ' + error.message;
+      status.style.color = palette.rust;
+    });
+  }
+  viewMode.addEventListener('change', loadView);
   window.addEventListener('resize', resize);
-
-  fetch(DATA_PATH).then(function (response) {
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-    return response.json();
-  }).then(prepare).catch(function (error) {
-    status.textContent = 'The graph data could not be loaded: ' + error.message;
-    status.style.color = palette.rust;
-  });
+  loadView();
 })();
 </script>
 </body>

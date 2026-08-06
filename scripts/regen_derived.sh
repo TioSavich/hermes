@@ -40,6 +40,7 @@ BUILDERS=(
     "scripts/research/render_automaton_context_svg.py"
     "scripts/research/build_automata_compendium.py"
     "scripts/research/build_full_graph_json.py"
+    "scripts/research/build_graph_quotients.py"
     "scripts/extract_capability_registry.py"
     "scripts/extract_machine_block_decomposition.py"
     # grammar and index: read the tables and the vocabulary map

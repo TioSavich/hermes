@@ -197,6 +197,10 @@ def main() -> int:
         page = PAGE.read_text(encoding="utf-8")
         required = (
             "assets/automata/full_graph.json",
+            "assets/automata/family_graph.json",
+            '<select id="view-mode">',
+            '<option value="full"',
+            '<option value="family"',
             '<canvas id="graph"',
             '<option value="off"',
             '<option value="cross"',
@@ -214,6 +218,12 @@ def main() -> int:
             "validityBlue",
             "drawValidityBlueBases",
             "drawValidityRustOverlays",
+            "shared canonical action names only",
+            "gold bundles",
+            "bundleSummary",
+            "edgeById.clear()",
+            "pinnedEdge = null",
+            "levelRuler.classList.toggle('hidden', familyView)",
         )
         for fragment in required:
             fail_if(fragment not in page, f"graph page lacks required fragment: {fragment}", failures)
