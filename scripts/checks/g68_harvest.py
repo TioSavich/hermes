@@ -24,6 +24,7 @@ from scripts.curriculum.harvest_g68_tasks import (  # noqa: E402
     execute_run,
     parse_args,
     parse_task_content,
+    select_lessons,
 )
 from scripts.curriculum.verify_g68_harvest import (  # noqa: E402
     CONTROL_EXCERPTS,
@@ -88,6 +89,8 @@ Select all statements that are true about the area.
 def lesson_for(
     source_file: Path,
     *,
+    lesson_id: str = "IM-G6-U1-L1",
+    lesson_number: int = 1,
     source_text: str = SYNTHETIC_MARKDOWN,
     picture_descriptions: str = EMPTY_PICTURE_DESCRIPTIONS,
 ) -> LessonSource:
@@ -97,10 +100,10 @@ def lesson_for(
     )
     cleaned_source_text = cleaned_source_view(source_file, source_text)
     return LessonSource(
-        lesson="IM-G6-U1-L1",
+        lesson=lesson_id,
         grade=6,
         unit=1,
-        lesson_number=1,
+        lesson_number=lesson_number,
         source_file=source_file.resolve(),
         raw_source_sha256=hashlib.sha256(source_text.encode("utf-8")).hexdigest(),
         cleaned_source_sha256=sha256_text(cleaned_source_text),
@@ -403,6 +406,11 @@ def test_atomic_checkpoint_and_accepted_resume() -> None:
         checkpoint_path = output / "checkpoints" / "IM-G6-U1-L1.json"
         checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8"))
         assert checkpoint["verdict"] == "accepted"
+        assert checkpoint["budget"] == DEFAULT_BUDGET
+        checkpoint.pop("budget")
+        checkpoint_path.write_text(
+            json.dumps(checkpoint, indent=2) + "\n", encoding="utf-8"
+        )
 
         def forbidden_transport(
             _lesson: LessonSource, _messages: list[dict[str, str]]
@@ -414,7 +422,129 @@ def test_atomic_checkpoint_and_accepted_resume() -> None:
         assert calls == 1
         verified = verify_run(output)
         assert verified["source_fingerprints_verified"] == 1
-    print("PASS manifest-before-call, atomic checkpoint, and accepted-checkpoint resume")
+    print(
+        "PASS manifest-before-call, checkpoint budget, and legacy accepted resume"
+    )
+
+
+def test_filtered_retry_and_budget_raise() -> None:
+    accepted_excerpt = (
+        "Students compare 12 and 19, then explain how the two quantities are related."
+    )
+    rejected_excerpt = "Students estimate the height of a cedar tree in meters."
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        first_dir = root / "first"
+        second_dir = root / "second"
+        first_dir.mkdir()
+        second_dir.mkdir()
+        first = lesson_for(first_dir / "document.md")
+        second = lesson_for(
+            second_dir / "document.md",
+            lesson_id="IM-G6-U1-L2",
+            lesson_number=2,
+        )
+        lessons = [first, second]
+        output = root / "run"
+        default_config = RunConfig(
+            grade=6,
+            unit=None,
+            limit=2,
+            model="glm-5.2",
+            budget=DEFAULT_BUDGET,
+            endpoint_class="offline_fixture",
+            dry_run=True,
+        )
+        initial_calls: list[str] = []
+
+        def initial_transport(
+            lesson: LessonSource, _messages: list[dict[str, str]]
+        ) -> FixtureResult:
+            initial_calls.append(lesson.lesson)
+            excerpt = accepted_excerpt if lesson is first else rejected_excerpt
+            return fixture_result(excerpt)
+
+        initial = execute_run(lessons, output, default_config, initial_transport)
+        assert initial_calls == [first.lesson, second.lesson]
+        assert initial["accepted"] == 1
+        assert initial["rejected"] == 1
+        manifest_path = output / "manifest.json"
+        manifest_before_subset = manifest_path.read_text(encoding="utf-8")
+        assert len(json.loads(manifest_before_subset)["lessons"]) == 2
+
+        selected = select_lessons(lessons, [second.lesson])
+        subset_calls: list[str] = []
+
+        def subset_transport(
+            lesson: LessonSource, _messages: list[dict[str, str]]
+        ) -> FixtureResult:
+            subset_calls.append(lesson.lesson)
+            return fixture_result(rejected_excerpt)
+
+        subset = execute_run(
+            lessons,
+            output,
+            default_config,
+            subset_transport,
+            selected_lessons=selected,
+        )
+        assert subset_calls == [second.lesson]
+        assert subset["total"] == 2
+        assert subset["accepted"] == 1
+        assert subset["rejected"] == 1
+        assert manifest_path.read_text(encoding="utf-8") == manifest_before_subset
+
+        raised_config = RunConfig(
+            grade=6,
+            unit=None,
+            limit=2,
+            model="glm-5.2",
+            budget=65536,
+            endpoint_class="offline_fixture",
+            dry_run=True,
+        )
+        raised = execute_run(
+            lessons,
+            output,
+            raised_config,
+            lambda _lesson, _messages: fixture_result(accepted_excerpt),
+            selected_lessons=selected,
+        )
+        assert raised["accepted"] == 2
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        assert manifest["budget"] == 65536
+        assert len(manifest["budget_history"]) == 1
+        history = manifest["budget_history"][0]
+        assert history["from"] == DEFAULT_BUDGET
+        assert history["to"] == 65536
+        assert isinstance(history["raised_at"], str)
+        second_checkpoint = json.loads(
+            (output / "checkpoints" / f"{second.lesson}.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        assert second_checkpoint["budget"] == 65536
+
+        try:
+            execute_run(
+                lessons,
+                output,
+                default_config,
+                lambda _lesson, _messages: fixture_result(accepted_excerpt),
+                selected_lessons=selected,
+            )
+        except ValueError as exc:
+            assert "below manifest budget" in str(exc)
+        else:
+            raise AssertionError("a budget decrease did not fail")
+
+        try:
+            select_lessons(lessons, ["NO-SUCH-ID"])
+        except ValueError as exc:
+            assert "NO-SUCH-ID" in str(exc)
+        else:
+            raise AssertionError("an unknown lesson id did not fail")
+    print("PASS filtered retry preserves full accounting and records budget raises")
 
 
 def main() -> int:
@@ -428,6 +558,7 @@ def main() -> int:
     test_control_calibration_and_leak_detection()
     test_default_budget()
     test_atomic_checkpoint_and_accepted_resume()
+    test_filtered_retry_and_budget_raise()
     print("PASS g68 harvest offline fixture suite")
     return 0
 

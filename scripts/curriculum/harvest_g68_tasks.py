@@ -4,7 +4,8 @@
 Lessons run sequentially through the shared channel-preserving REALLMS client.
 The runner writes a manifest before its first call and atomically checkpoints
 each lesson. Parsed task records are accepted or rejected independently. Only
-checkpoints with verdict ``accepted`` are resumed without a new call.
+checkpoints with verdict ``accepted`` are resumed without a new call. A lesson
+filter can restrict calls without narrowing the manifest or progress totals.
 """
 
 from __future__ import annotations
@@ -286,6 +287,7 @@ def rejected_checkpoint(
     lesson: LessonSource,
     result: Any,
     *,
+    budget: int = DEFAULT_BUDGET,
     failure_kind: str,
     detail: str,
     tasks: list[dict[str, Any]] | None = None,
@@ -311,6 +313,7 @@ def rejected_checkpoint(
         "source_file": str(lesson.source_file),
         "raw_source_sha256": lesson.raw_source_sha256,
         "cleaned_source_sha256": lesson.cleaned_source_sha256,
+        "budget": budget,
         "verdict": "rejected",
         "failure": {"kind": failure_kind, "detail": detail},
         "response": response_dict(result),
@@ -324,18 +327,28 @@ def rejected_checkpoint(
     }
 
 
-def evaluate_result(lesson: LessonSource, result: Any) -> dict[str, Any]:
+def evaluate_result(
+    lesson: LessonSource,
+    result: Any,
+    *,
+    budget: int = DEFAULT_BUDGET,
+) -> dict[str, Any]:
     """Branch on outcome before final content can reach the JSON parser."""
     outcome = getattr(result, "outcome", None)
     if outcome in {"transport_error", "http_error"}:
         detail = getattr(result, "error", None) or f"REALLMS outcome: {outcome}"
         return rejected_checkpoint(
-            lesson, result, failure_kind="transport", detail=str(detail)
+            lesson,
+            result,
+            budget=budget,
+            failure_kind="transport",
+            detail=str(detail),
         )
     if outcome == "truncated":
         return rejected_checkpoint(
             lesson,
             result,
+            budget=budget,
             failure_kind="truncated",
             detail="finish_reason length; final content was not parsed",
         )
@@ -343,6 +356,7 @@ def evaluate_result(lesson: LessonSource, result: Any) -> dict[str, Any]:
         return rejected_checkpoint(
             lesson,
             result,
+            budget=budget,
             failure_kind="empty",
             detail="final content was empty; reasoning content was not parsed",
         )
@@ -350,6 +364,7 @@ def evaluate_result(lesson: LessonSource, result: Any) -> dict[str, Any]:
         return rejected_checkpoint(
             lesson,
             result,
+            budget=budget,
             failure_kind="transport",
             detail=f"unknown REALLMS outcome: {outcome!r}",
         )
@@ -361,6 +376,7 @@ def evaluate_result(lesson: LessonSource, result: Any) -> dict[str, Any]:
         return rejected_checkpoint(
             lesson,
             result,
+            budget=budget,
             failure_kind="schema_rejection",
             detail=str(exc),
         )
@@ -390,6 +406,7 @@ def evaluate_result(lesson: LessonSource, result: Any) -> dict[str, Any]:
         return rejected_checkpoint(
             lesson,
             result,
+            budget=budget,
             failure_kind="provenance_rejection",
             detail=f"exact source match failed for task indices {rejected_indices}",
             tasks=gated_tasks,
@@ -407,6 +424,7 @@ def evaluate_result(lesson: LessonSource, result: Any) -> dict[str, Any]:
         "source_file": str(lesson.source_file),
         "raw_source_sha256": lesson.raw_source_sha256,
         "cleaned_source_sha256": lesson.cleaned_source_sha256,
+        "budget": budget,
         "verdict": verdict,
         "failure": failure,
         "response": response_dict(result),
@@ -438,6 +456,7 @@ def manifest_payload(
         "prompt_version": PROMPT_VERSION,
         "prompt_version_hash": PROMPT_VERSION_HASH,
         "budget": config.budget,
+        "budget_history": [],
         "grade": config.grade,
         "unit_filter": config.unit,
         "limit": config.limit,
@@ -461,6 +480,8 @@ def ensure_manifest(
     lessons: list[LessonSource],
     config: RunConfig,
     calibration: dict[str, Any],
+    *,
+    selected_lessons: list[LessonSource] | None = None,
 ) -> dict[str, Any]:
     path = output_dir / "manifest.json"
     proposed = manifest_payload(lessons, config, calibration)
@@ -474,40 +495,96 @@ def ensure_manifest(
         "endpoint_class",
         "prompt_version",
         "prompt_version_hash",
-        "budget",
         "grade",
         "unit_filter",
         "limit",
         "dry_run",
         "worker_count",
-        "lessons",
     }
     differences = sorted(
         key for key in comparison_keys if existing.get(key) != proposed.get(key)
     )
+    existing_lessons = existing.get("lessons")
+    proposed_lessons = proposed["lessons"]
+    if existing_lessons != proposed_lessons:
+        differences.append("lessons")
+
+    if isinstance(existing_lessons, list):
+        manifest_lessons = {
+            item.get("lesson"): item
+            for item in existing_lessons
+            if isinstance(item, dict) and isinstance(item.get("lesson"), str)
+        }
+    else:
+        manifest_lessons = {}
+    for lesson in selected_lessons if selected_lessons is not None else lessons:
+        selected_entry = {
+            "lesson": lesson.lesson,
+            "source_file": str(lesson.source_file),
+            "raw_source_sha256": lesson.raw_source_sha256,
+            "cleaned_source_sha256": lesson.cleaned_source_sha256,
+        }
+        if manifest_lessons.get(lesson.lesson) != selected_entry:
+            if "lessons" not in differences:
+                differences.append("lessons")
+            break
+
     if differences:
         raise ValueError(
-            f"output directory belongs to an incompatible run; differing manifest fields: {differences}"
+            "output directory belongs to an incompatible run; differing manifest "
+            f"fields: {sorted(differences)}"
         )
-    return existing
+
+    existing_budget = existing.get("budget")
+    if not isinstance(existing_budget, int):
+        raise ValueError("existing manifest budget must be an integer")
+    if config.budget < existing_budget:
+        raise ValueError(
+            "output directory belongs to an incompatible run; requested budget "
+            f"{config.budget} is below manifest budget {existing_budget}"
+        )
+    if config.budget == existing_budget:
+        return existing
+
+    history = existing.get("budget_history", [])
+    if not isinstance(history, list):
+        raise ValueError("existing manifest budget_history must be a list")
+    raised = dict(existing)
+    raised["budget"] = config.budget
+    raised["budget_history"] = [
+        *history,
+        {
+            "from": existing_budget,
+            "to": config.budget,
+            "raised_at": utc_timestamp(),
+        },
+    ]
+    atomic_write_json(path, raised)
+    return raised
 
 
 def checkpoint_path(output_dir: Path, lesson: str) -> Path:
     return output_dir / "checkpoints" / f"{lesson}.json"
 
 
-def accepted_checkpoint(path: Path, lesson: LessonSource) -> dict[str, Any] | None:
+def compatible_checkpoint(path: Path, lesson: LessonSource) -> dict[str, Any] | None:
     if not path.is_file():
         return None
     payload = json.loads(path.read_text(encoding="utf-8"))
     if payload.get("lesson") != lesson.lesson:
         raise ValueError(f"checkpoint lesson mismatch: {path}")
     if (
-        payload.get("verdict") == "accepted"
-        and payload.get("run_version") == RUN_VERSION
+        payload.get("run_version") == RUN_VERSION
         and payload.get("raw_source_sha256") == lesson.raw_source_sha256
         and payload.get("cleaned_source_sha256") == lesson.cleaned_source_sha256
     ):
+        return payload
+    return None
+
+
+def accepted_checkpoint(path: Path, lesson: LessonSource) -> dict[str, Any] | None:
+    payload = compatible_checkpoint(path, lesson)
+    if payload is not None and payload.get("verdict") == "accepted":
         return payload
     return None
 
@@ -563,6 +640,8 @@ def execute_run(
     output_dir: Path,
     config: RunConfig,
     transport: Transport,
+    *,
+    selected_lessons: list[LessonSource] | None = None,
 ) -> dict[str, Any]:
     """Run one sequential harvest; dependency injection keeps checks offline."""
     sources = {
@@ -570,28 +649,62 @@ def execute_run(
         for lesson in lessons
     }
     calibration = calibrate_controls(sources)
-    ensure_manifest(output_dir, lessons, config, calibration)
+    lessons_to_process = lessons if selected_lessons is None else selected_lessons
+    ensure_manifest(
+        output_dir,
+        lessons,
+        config,
+        calibration,
+        selected_lessons=lessons_to_process,
+    )
 
     checkpoints: dict[str, dict[str, Any]] = {}
     for lesson in lessons:
-        existing = accepted_checkpoint(checkpoint_path(output_dir, lesson.lesson), lesson)
+        existing = compatible_checkpoint(
+            checkpoint_path(output_dir, lesson.lesson), lesson
+        )
         if existing is not None:
             checkpoints[lesson.lesson] = existing
     write_progress(output_dir, lessons, checkpoints)
 
-    for index, lesson in enumerate(lessons, 1):
-        if lesson.lesson in checkpoints:
-            print(f"[{index}/{len(lessons)}] {lesson.lesson}: resumed accepted checkpoint")
+    for index, lesson in enumerate(lessons_to_process, 1):
+        existing = checkpoints.get(lesson.lesson)
+        if existing is not None and existing.get("verdict") == "accepted":
+            print(
+                f"[{index}/{len(lessons_to_process)}] {lesson.lesson}: "
+                "resumed accepted checkpoint"
+            )
             continue
         result = transport(lesson, build_messages(lesson))
-        checkpoint = evaluate_result(lesson, result)
+        checkpoint = evaluate_result(lesson, result, budget=config.budget)
         atomic_write_json(checkpoint_path(output_dir, lesson.lesson), checkpoint)
         checkpoints[lesson.lesson] = checkpoint
         write_progress(output_dir, lessons, checkpoints)
         failure = checkpoint.get("failure")
         suffix = f" ({failure['kind']})" if isinstance(failure, dict) else ""
-        print(f"[{index}/{len(lessons)}] {lesson.lesson}: {checkpoint['verdict']}{suffix}")
+        print(
+            f"[{index}/{len(lessons_to_process)}] {lesson.lesson}: "
+            f"{checkpoint['verdict']}{suffix}"
+        )
     return write_progress(output_dir, lessons, checkpoints)
+
+
+def select_lessons(
+    lessons: list[LessonSource], requested_ids: list[str] | None
+) -> list[LessonSource]:
+    """Return requested lessons in source order after the other filters run."""
+    if requested_ids is None:
+        return lessons
+    requested = set(requested_ids)
+    selected = [lesson for lesson in lessons if lesson.lesson in requested]
+    found = {lesson.lesson for lesson in selected}
+    missing = sorted(requested - found)
+    if missing:
+        raise ValueError(
+            "requested lesson ids not found after grade, unit, and limit filters: "
+            + ", ".join(missing)
+        )
+    return selected
 
 
 def dry_run_result(lesson: LessonSource) -> FixtureResult:
@@ -642,6 +755,10 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--unit", type=int, help="optional numeric unit filter")
     parser.add_argument("--limit", type=int, help="maximum lessons after sorting and filtering")
     parser.add_argument(
+        "--lessons",
+        help="comma-separated lesson ids to process after grade, unit, and limit filters",
+    )
+    parser.add_argument(
         "--out",
         type=Path,
         help=(
@@ -674,6 +791,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         parser.error(f"--budget must be at least {MINIMUM_BUDGET}")
     if args.timeout < 1:
         parser.error("--timeout must be at least 1")
+    if args.lessons is not None:
+        lesson_ids = [lesson_id.strip() for lesson_id in args.lessons.split(",")]
+        if not lesson_ids or any(not lesson_id for lesson_id in lesson_ids):
+            parser.error("--lessons must be a comma-separated list of lesson ids")
+        args.lessons = list(dict.fromkeys(lesson_ids))
     if args.out is None:
         args.out = (
             ROOT
@@ -690,6 +812,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 
 def run(args: argparse.Namespace) -> int:
     lessons = discover_lessons(args.grade, unit=args.unit, limit=args.limit)
+    lessons_to_process = select_lessons(lessons, args.lessons)
     if args.dry_run:
         config = RunConfig(
             grade=args.grade,
@@ -732,7 +855,13 @@ def run(args: argparse.Namespace) -> int:
                 max_tokens=args.budget,
             )
 
-    summary = execute_run(lessons, args.out.resolve(), config, transport)
+    summary = execute_run(
+        lessons,
+        args.out.resolve(),
+        config,
+        transport,
+        selected_lessons=lessons_to_process,
+    )
     print(json.dumps({"run_dir": str(args.out.resolve()), **summary}, ensure_ascii=False))
     return 0 if summary["rejected"] == 0 else 2
 
