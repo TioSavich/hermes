@@ -130,6 +130,18 @@ metaphor_seam(
         source('formal/formalization/grounding_metaphors.pl'),
         citation('Lakoff and Nunez 2000, Where Mathematics Comes From, ch. 3'))).
 
+metaphor_seam(
+    fraction/cross_multiplication_rule_without_ground,
+    arithmetic_is_object_collection,
+    arithmetic_is_object_construction,
+    seam_kind(repair_point),
+    basis(
+        break(fraction_multiplication_as_part_of_part),
+        reason('Multiplying numerator and denominator counts reproduces the fraction product but does not establish how the selected part relates to the whole; the part-of-part area model supplies that warrant.'),
+        source('knowledge/strategies/math/fraction_action_pairs.pl:786-814'),
+        witness(justify_via_area_model_part_of_part),
+        citation('Lakoff and Nunez 2000, Where Mathematics Comes From, ch. 3'))).
+
 % RATIO lane rows.
 metaphor_operating(ratio/scale_ratio_unit,
                    arithmetic_is_measuring_stick,

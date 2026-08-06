@@ -46369,7 +46369,7 @@
         "value": ""
        },
        {
-        "label": "skip_area_model_justification(fraction(6,20))",
+        "label": "skip_area_model_justification(missing_warrant(justify_via_area_model_part_of_part(fraction(6,20))))",
         "n": 6,
         "value": ""
        }

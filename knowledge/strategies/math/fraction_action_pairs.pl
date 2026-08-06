@@ -839,7 +839,7 @@ run_fraction_action(cross_multiplication_rule_without_ground, fraction_pair(A, B
               compute_numerator_product(A, C, NumeratorProduct),
               compute_denominator_product(B, D, DenominatorProduct),
               produce_result_without_area_model_ground(Result),
-              skip_area_model_justification(Result)
+              skip_area_model_justification(missing_warrant(justify_via_area_model_part_of_part(Result)))
             ].
 
 % -----------------------------------------------------------------------------
