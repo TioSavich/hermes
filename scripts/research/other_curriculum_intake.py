@@ -23,7 +23,7 @@ SIBLING = Path("/Users/tio/Documents/GitHub/umedcta-formalization")
 MAP = SIBLING / "other_curriculum/transcript_map.json"
 MANIFEST = SIBLING / "data/external/talkmoves/manifests/talkmoves_blind_manifest.json"
 TALKMOVES = SIBLING / "data/external/talkmoves"
-DEFAULT_REPORT = ROOT / "docs/research/2026-07-23-other-curriculum-intake.md"
+DEFAULT_REPORT = ROOT / "docs/research/internal/2026-07-23-other-curriculum-intake.md"
 
 
 @dataclass(frozen=True)

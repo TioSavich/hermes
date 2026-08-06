@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_REPORT = ROOT / "docs/research/2026-07-22-misconception-consolidation-survey.md"
+DEFAULT_REPORT = ROOT / "docs/research/internal/2026-07-22-misconception-consolidation-survey.md"
 
 PROLOG_SOURCE = r''' :- use_module(library(http/json)).
 as_string(Value, String) :- string(Value), !, String = Value.

@@ -1,9 +1,11 @@
 # The window was asked
 
-Model: `claude-opus-5[1m]` (Opus 5, 1M context) as controller; the model under
-test is `gemma-4-31B-it` via REALLMS.
-Date: 2026-07-25. Closes the limit named in `2026-07-25-the-index-and-its-negation.md`
-and in `2026-07-25-the-fractal-measured.md`.
+Date: 2026-07-25. Author: Claude (Opus 5, 1M context); the model under test is
+`gemma-4-31B-it`, served through the REALLMS API. Context:
+`2026-07-25-the-fractal-measured.md` sized a one-line-per-automaton index (the
+"window") over the corpus of 232 strategy automata, and
+`2026-07-25-the-index-and-its-negation.md` built it; both ended on the same
+untested claim, closed here.
 
 Files: `scripts/research/ask_the_window.py`, `data/research/window_vs_shards.json`,
 this report.

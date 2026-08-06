@@ -8,7 +8,8 @@
 % says "I started from the bigger number and counted on" is not recognized while
 % one who says "choose larger addend as start hold other addend as count" is
 % recognized at confidence 1. That was checked against the running server rather
-% than read off the source: see docs/research/2026-07-25-can-they-parse.md.
+% than read off the source: see the local research log,
+% docs/research/internal/2026-07-25-can-they-parse.md (untracked).
 %
 % THE ABSTRACTION IS THE SAME ONE THIS WHOLE ARC OPENED WITH. 638 labels each
 % needing individual treatment became 122 canonical actions in

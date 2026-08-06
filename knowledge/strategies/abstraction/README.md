@@ -44,6 +44,7 @@ The audit machinery this line produced is live, not quarantined:
 `scripts/checks/audit_purported_validity.pl`,
 `scripts/checks/sweep_coincidence.pl`,
 `scripts/checks/scan_self_certifying.py`, with generated data in
-`knowledge/strategies/deformation_coincidence.pl`. Findings and the
-work queue: `docs/research/2026-08-03-purported-validity-audit.md` and
-`docs/research/2026-08-03-contract-coverage-todo.md`.
+`knowledge/strategies/deformation_coincidence.pl`. Findings:
+`docs/research/2026-08-03-purported-validity-audit.md`. The work queue it
+ordered lives in the untracked local research log,
+`docs/research/internal/2026-08-03-contract-coverage-todo.md`.

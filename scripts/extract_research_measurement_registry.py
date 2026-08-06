@@ -281,7 +281,9 @@ def control_rows() -> list[tuple[str, str, str]]:
 
 
 def render_registry() -> str:
-    reports = sorted(REPORTS.glob("*.md"))
+    # README.md is the folder's index, not a report; it names findings and
+    # carries no measurement of its own, so it stays out of the denominator.
+    reports = sorted(p for p in REPORTS.glob("*.md") if p.name != "README.md")
     # The count is asserted rather than inferred so that a report entering or
     # leaving the corpus is a decision someone makes, not a silent change in a
     # denominator. Raise it when a report is added, in the same commit.
@@ -325,8 +327,15 @@ def render_registry() -> str:
     # problem_solving arm's harness discards when a checkpoint writes a correct
     # quantity model in a form the runner will not run, measured on an authored
     # corpus rather than on any benchmark item.
-    if len(reports) != 79:
-        raise RuntimeError(f"expected 79 top-level research reports, found {len(reports)}")
+    # 79 until 2026-08-06, the day the folder was carved for outside readers:
+    # 52 engineering reports (per-task completion records, pass reviews, cycle
+    # logs, plans, QA checks, and status snapshots) moved to the untracked
+    # local log at docs/research/internal/, git history keeping their record;
+    # the grade-8 saying-and-doing survey entered as a report; README.md
+    # entered as the folder index and is excluded above. The findings that
+    # remain are the denominator.
+    if len(reports) != 28:
+        raise RuntimeError(f"expected 28 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
@@ -355,7 +364,7 @@ def render_registry() -> str:
     lines = [
         "/** <module> Generated research-measurement provenance registry",
         " *",
-        " * The denominator is every explicit quantitative-result statement in the 65",
+        f" * The denominator is every explicit quantitative-result statement in the {len(reports)}",
         " * top-level Markdown reports in docs/research/: a non-code prose line with",
         " * a percentage or cohort ratio, or a Markdown table data row under a header",
         " * that names a quantitative field. A table row is one measurement vector;",

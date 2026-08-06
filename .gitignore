@@ -54,3 +54,8 @@ automata.pl
 
 # Held for review before publication
 docs/research/2026-08-05-hyperedges-and-the-calculus-rung.html
+
+# Local research log: per-task engineering reports, pass reviews, plans,
+# and status snapshots. Findings stay tracked in docs/research/ above;
+# git history keeps the record of everything that moved here.
+docs/research/internal/

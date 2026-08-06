@@ -1,7 +1,7 @@
 # The labelling was already done — reading the invariants and the pairings
 
-Model: `claude-opus-5[1m]` (Opus 5, 1M context).
-Date: 2026-07-25. Continues `2026-07-25-retention-split-addendum.md`.
+Date: 2026-07-25. Author: Claude (Opus 5, 1M context). Continues a
+retention-split addendum kept in the repository's local research log.
 
 Files changed: `scripts/research/build_action_grammar.py`,
 `knowledge/strategies/action_grammar.pl`, `scripts/checks/action_grammar.py`,
@@ -9,7 +9,8 @@ this report.
 
 ## Two jobs I had handed to the owner, and where they turned out to be
 
-The last two reports left him two piles of work, and both were badly aimed.
+The last two reports left the owner two piles of work, and both were badly
+aimed.
 
 **"Label the 44 machines with what they conserve."** The labels exist.
 `knowledge/strategies/math/*_action_pairs.pl` carries `invariant(Name)` in the

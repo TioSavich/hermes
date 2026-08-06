@@ -32,7 +32,7 @@ INDEX_NPZ = ROOT / "data" / "research" / "misconception_embeddings.npz"
 OUTPUT_ROOT = ROOT / "scripts" / "research" / "articulation_out"
 STATE_VOCABULARY = ROOT / "knowledge" / "strategies" / "math" / "state_vocabulary.pl"
 SURVEY_PATH = ROOT / "scripts" / "research" / "misconception_survey.py"
-TASK89_REPORT = ROOT / "docs" / "research" / "2026-07-22-task-89-report.md"
+TASK89_REPORT = ROOT / "docs" / "research" / "internal" / "2026-07-22-task-89-report.md"
 DOMAIN_TABLES = {
     "decimal": ROOT / "knowledge" / "misconceptions" / "misconceptions_decimal.pl",
     "fraction": ROOT / "knowledge" / "misconceptions" / "misconceptions_fraction.pl",

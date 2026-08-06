@@ -1,6 +1,10 @@
 # The index and its negation
 
-Date: 2026-07-25
+Date: 2026-07-25. Author: Claude (Opus 5). The "window" this report builds —
+a one-line-per-automaton index over the corpus of strategy automata — was
+sized in `2026-07-25-the-fractal-measured.md`, and the test this report calls
+for ran in `2026-07-25-the-window-was-asked.md`. "The brief" below names the
+implementation brief this build answered.
 
 ## What was built
 

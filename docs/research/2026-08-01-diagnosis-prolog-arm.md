@@ -2,7 +2,7 @@
 
 The 2026-08-01 diagnosis report ended with an arm that could not be run: no
 responder could reach the item, and nothing in any benchmark had ever called
-swipl. Both gaps are closed tonight. A new responder, `prolog_kb`
+swipl. Both gaps were closed on 2026-08-01. A new responder, `prolog_kb`
 (`scripts/research/mtb_kb_responder.py`, commit `986ac7a`), makes two model
 calls around one Prolog call: the model writes a single SWI-Prolog goal, the
 goal runs through the same `prolog_query` surface the MCP tool serves — same
@@ -34,7 +34,7 @@ unassisted arm gets right, 21 items only the assisted arm gets right,
 p = 1.000. **Three nulls: neither arm clears its floor, and the arms do not
 differ.** The laptop route had already measured the unassisted checkpoint at
 0.3023 on this split through Ollama; two serving routes now agree that the
-deployable checkpoint diagnoses at its floor, and tonight adds that one
+deployable checkpoint diagnoses at its floor, and this run adds that one
 caller-formed Prolog consultation per item does not move it.
 
 Per category, correct counts (base → assisted): Misunderstanding of a
@@ -73,15 +73,16 @@ binding count. Across 327 formed goals on 301 items:
 
 - No claim that Prolog assistance is useless here. The 31B checkpoint earns
   +0.104 over this floor unassisted; whether consultation moves *that* model
-  was not measured tonight. What was measured is that the E2B checkpoint
+  was not measured here. What was measured is that the E2B checkpoint
   cannot diagnose at floor-clearing level with or without one arithmetic
   check per item.
 - No claim about the misconception corpus as an assist, because the model
   never consulted it. An arm that forces or prompts the keyword probe would
-  measure that; tonight's arm measured the model's own choice.
+  measure that; this arm measured the model's own choice.
 - The two arms ran in different jobs. Serving flags are identical and both
-  summaries carry the model id, but the same-job pair (7871465) is the
-  cleaner artifact and lands in the morning.
+  summaries carry the model id. The same-job pair (7871465) would have been
+  the cleaner artifact, but that job hung and was allowed to time out; the
+  cross-job pair above stands as the record.
 - n=40 rehearsal numbers (jobs 7871496) exist in the collected artifacts and
   are parser-audit evidence only: all routes `exact`, zero unparsed, at a
   40-item floor that belongs to a different category than the corpus floor.
