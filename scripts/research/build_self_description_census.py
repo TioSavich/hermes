@@ -976,8 +976,12 @@ def build() -> dict[str, object]:
     # machine_class_attestations.pl (module-documented class claims held
     # apart from computation). Both read as orphan modules: the compendium
     # builder consumes them by parsing, and nothing imports them.
-    if len(registry_rows) != 310:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 310")
+    # 311 from 2026-08-05: deformation_validity.pl, the authored validity
+    # ledger for the 232 deforming transitions (rust/blue/mixed with basis
+    # and review status). Orphan module for the same reason: the graph and
+    # compendium builders consume it by parsing, and nothing imports it.
+    if len(registry_rows) != 311:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 311")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1034,8 +1038,11 @@ def build() -> dict[str, object]:
     # 87 from the evening of 2026-08-03: machine_typology.pl and
     # machine_class_attestations.pl join for the registry's reason —
     # the compendium builder parses them; nothing imports them.
-    if len(orphan_records) != 87:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 87")
+    # 88 from 2026-08-05: deformation_validity.pl joins for the same
+    # reason — the graph and compendium builders parse it; nothing
+    # imports it.
+    if len(orphan_records) != 88:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 88")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route.
     if len(unrouted) != 10:

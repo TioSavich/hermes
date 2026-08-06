@@ -416,14 +416,14 @@
       "render": 35,
       "sequent": 14,
       "standards": 22,
-      "synthesis": 41,
+      "synthesis": 42,
       "unclassified": 8,
       "workflow": 16,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 87,
+      "orphan_module": 88,
       "routed_only": 15,
       "routed_paged": 188,
       "unrouted": 10
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 51
+      "undetermined": 52
     },
-    "total": 310,
+    "total": 311,
     "unrouted": 10
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1517,6 +1517,20 @@
       "module": "deformation_coincidence",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/deformation_coincidence.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/deformation_validity.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "deformation_validity",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/deformation_validity.pl",
       "verdict": "undetermined"
     },
     {
