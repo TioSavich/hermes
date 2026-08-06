@@ -34,6 +34,11 @@
 :- use_module(render(polyform_tiling_scene), [polyform_tiling_render_json/2]).
 
 
+% rectangle_area_unit_iteration — gate(positive integer row and column counts
+% in a rectangular unit-square array, with the product interpreted as square
+% units); shell(establish the rectangle, iterate rows and columns, coordinate
+% unit squares, and count the area); kernel(formalization:grounded_arithmetic:
+% multiply_grounded/3).
 run_geometry_action(rectangle_area_unit_iteration, Rows, Columns,
                     Outcome, Trace) :-
     positive_integer(Rows),
@@ -589,6 +594,11 @@ run_geometry_action(subtract_side_from_area,
               omit_inverse_multiplication,
               report_additive_remainder_as_side(ReportedSide)
             ].
+% rectangular_prism_volume_layer_iteration — gate(three positive integer
+% dimensions in a rectangular prism, with the iterated product interpreted as
+% cubic units); shell(coordinate the base, establish the unit cube, iterate
+% height layers, and count the volume); kernel(formalization:grounded_arithmetic:
+% multiply_grounded/3).
 run_geometry_action(rectangular_prism_volume_layer_iteration,
                     prism(Length, Width), Height, Outcome, Trace) :-
     positive_integer(Length),

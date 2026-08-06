@@ -123,6 +123,11 @@
 %   `add_numerator_denominator_sum`,
 %   `fraction_minuend_subtrahend(Left, Right)` for
 %   `common_denominator_fraction_subtraction`.
+% unit_fraction_partition — gate(exactly one unit-fraction count, a positive
+% integer denominator, and a referent whole; Base = 1 is the identity-partition
+% boundary); shell(establish the whole, partition it equally, select one part,
+% and preserve its inside and iterable status); kernel(partition_regroup for
+% Base > 1); grounding(divaded_fractional_units:partitive_fraction/5).
 run_fraction_action(unit_fraction_partition, Count, Base, Outcome, Trace) :-
     % The integer guard keeps a compound operand (a fraction_addend_pair
     % or fraction_minuend_subtrahend from the contract's obligation
