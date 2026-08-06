@@ -27,7 +27,7 @@
             action_cluster/2,
             action_vocabulary/2,
             productive_deformation/3,
-            action_misconception_hook/3
+            action_misconception_hook/3, count_all_viability_context/3
           ]).
 
 :- use_module(formalization(grounded_arithmetic),
@@ -89,7 +89,7 @@ run_additive_action(count_on_from_larger, A, B, Outcome, Trace) :-
             ].
 run_additive_action(count_all_when_count_on_available, A, B, Outcome, Trace) :-
     larger_smaller(A, B, Start, Count),
-    add_ints(A, B, Result),
+    add_ints(A, B, Result), count_all_viability_context(count_on_move, shortcut_available, Viability),
     count_on_values(0, A, FirstAddendTicks),
     count_on_values(A, B, AllTicks),
     append(FirstAddendTicks, AllTicks, CountAllTicks),
@@ -101,7 +101,7 @@ run_additive_action(count_all_when_count_on_available, A, B, Outcome, Trace) :-
                     vocabulary([counted_collection, successor_tick, cardinal_sum, composite_start]),
                     result(Result),
                     expected(Result),
-                    validity(correct_but_inefficient),
+                    viability_context(Viability), validity(correct_but_inefficient),
                     missed_start_number(Start),
                     counted_addend(Count),
                     tick_values(CountAllTicks),
@@ -460,7 +460,7 @@ run_additive_action(known_fact_retrieval, A, B, Outcome, Trace) :-
             ].
 run_additive_action(count_all_instead_of_known_fact, A, B, Outcome, Trace) :-
     known_fact_components(A, B, Components),
-    Components = known_fact_components(A, B, Result),
+    Components = known_fact_components(A, B, Result), count_all_viability_context(stored_fact, shortcut_available, Viability),
     count_on_values(0, A, FirstAddendTicks),
     count_on_values(A, B, AllTicks),
     append(FirstAddendTicks, AllTicks, CountAllTicks),
@@ -473,7 +473,7 @@ run_additive_action(count_all_instead_of_known_fact, A, B, Outcome, Trace) :-
                                 counting_all, working_memory_load]),
                     result(Result),
                     expected(Result),
-                    validity(correct_but_inefficient),
+                    viability_context(Viability), validity(correct_but_inefficient),
                     components(Components),
                     deformation_of(known_fact_retrieval),
                     misconception_family(procedural_count_when_fact_available)
@@ -995,6 +995,22 @@ column_sum_codes([column_sum(_Place, _ADigit, _BDigit, RawSum)|ColumnSums], Code
     number_codes(RawSum, RawCodes),
     column_sum_codes(ColumnSums, RestCodes),
     append(RawCodes, RestCodes, Codes).
+
+
+%!  count_all_viability_context(+Shortcut, +Availability, -Viability) is semidet.
+%
+%   Record when counting all constructs a licensed fallback and when the same
+%   construction replaces an available fluency shortcut.
+count_all_viability_context(Shortcut, shortcut_available,
+                            viability(context_sensitive_or_inefficient,
+                                      condition(shortcut_available(Shortcut)),
+                                      construction(count_all),
+                                      validity(correct_but_inefficient))).
+count_all_viability_context(Shortcut, fallback_needed,
+                            viability(licensed_fallback_construction,
+                                      condition(no_shortcut_available(Shortcut)),
+                                      construction(count_all),
+                                      validity(correct))).
 
 
 additive_result_viability(Expected, Expected, CoincidenceCondition, _,

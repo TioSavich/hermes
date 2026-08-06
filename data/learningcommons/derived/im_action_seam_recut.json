@@ -27317,7 +27317,8 @@
        }
       ],
       "strategy": "count_all_when_count_on_available",
-      "validity": "correct_but_inefficient"
+      "validity": "correct_but_inefficient",
+      "viability_context": "viability(context_sensitive_or_inefficient,condition(shortcut_available(count_on_move)),construction(count_all),validity(correct_but_inefficient))"
      }
     },
     "direct_runs": [],
@@ -27502,7 +27503,8 @@
        }
       ],
       "strategy": "count_all_instead_of_known_fact",
-      "validity": "correct_but_inefficient"
+      "validity": "correct_but_inefficient",
+      "viability_context": "viability(context_sensitive_or_inefficient,condition(shortcut_available(stored_fact)),construction(count_all),validity(correct_but_inefficient))"
      }
     },
     "direct_runs": [],

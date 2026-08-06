@@ -579,6 +579,8 @@ def render_registry() -> tuple[str, dict[str, object]]:
             f"{reference.line}, {atom(reference.method)})."
         )
     lines.append("")
+    if not duplicates:
+        lines.append("duplicate_content(_, _) :- fail.")
     for digest, paths in duplicates:
         lines.append("duplicate_content(" + quote(digest) + ", [" + ", ".join(quote(path) for path in paths) + "]).")
     lines.append("")
