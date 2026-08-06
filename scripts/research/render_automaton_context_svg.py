@@ -414,7 +414,7 @@ def number_line_scene(
         elif tag == "inequality":
             bound = float(example["bound"])
             points = [(bound, f"{example['relation']} {example['bound']}")]
-        else:
+        elif "a" in example and "b" in example:
             points = [(float(example["a"]), str(example["a"])), (float(example["b"]), str(example["b"]))]
     elif machine.family == "decimal":
         if tag == "decimal_pair":

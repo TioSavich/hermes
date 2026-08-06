@@ -1,4 +1,4 @@
-/** <module> Productive data and statistics action automata
+/** <module> Data and statistics action automata
  *
  * Exposes data representations, center and spread definitions, and the
  * decisions that coordinate them. Graph construction preserves the counted
@@ -341,6 +341,127 @@ run_statistics_action(distribution_summary_selection, Data,
               SelectionAction
             ].
 
+% estimate_probability_from_observed_frequency — gate(a finite repetition
+% record with successes between zero and trials); shell(coordinate event count
+% with total trials); kernels([form relative frequency, qualify as estimate]).
+run_statistics_action(estimate_probability_from_observed_frequency,
+                      frequency_record(Event, Successes, Trials),
+                      estimate_context(repeated_experiment), Outcome, Trace) :-
+    valid_frequency_record(Event, Successes, Trials),
+    reduced_rational(Successes, Trials, Estimate),
+    Outcome = action_outcome(
+                  estimate_probability_from_observed_frequency,
+                  [ classification(productive),
+                    cluster(data_probability_as_long_run_relative_frequency),
+                    automaton_state(
+                        estimate_probability_from_cumulative_relative_frequency),
+                    vocabulary([chance_event, repeated_experiment, trial,
+                                event_frequency, cumulative_relative_frequency,
+                                probability_estimate, long_run]),
+                    input(frequency_record(Event, Successes, Trials)),
+                    result(probability_estimate(Event, Estimate)),
+                    expected(probability_estimate(Event, Estimate)),
+                    viability_context(finite_record(trials(Trials))),
+                    validity(correct_as_estimate),
+                    source(im_teacher_guide('IM-G7-U8-L4'))
+                  ]),
+    Trace = [ register_frequency_record(Event, Successes, Trials),
+              count_event_occurrences(Successes),
+              divide_by_total_trials(Successes, Trials, Estimate),
+              qualify_relative_frequency_as_probability_estimate(Estimate)
+            ].
+
+% finite_frequency_as_exact_probability — gate(the same finite repetition
+% record); shell(promote an estimate to an exact probability claim);
+% kernels([form relative frequency, erase sampling qualification]);
+% validity(per-input finite-frequency claim check).
+run_statistics_action(finite_frequency_as_exact_probability,
+                      frequency_record(Event, Successes, Trials),
+                      estimate_context(repeated_experiment), Outcome, Trace) :-
+    valid_frequency_record(Event, Successes, Trials),
+    reduced_rational(Successes, Trials, RelativeFrequency),
+    finite_frequency_claim_validity(Trials, exact_probability,
+                                    Validity),
+    Outcome = action_outcome(
+                  finite_frequency_as_exact_probability,
+                  [ classification(deformation),
+                    cluster(data_probability_as_long_run_relative_frequency),
+                    automaton_state(
+                        promote_finite_relative_frequency_to_exact_probability),
+                    vocabulary([chance_event, repeated_experiment, trial,
+                                event_frequency, relative_frequency,
+                                exact_probability, sampling_variability]),
+                    input(frequency_record(Event, Successes, Trials)),
+                    result(exact_probability(Event, RelativeFrequency)),
+                    expected(probability_estimate(Event, RelativeFrequency)),
+                    deformation_of(
+                        estimate_probability_from_observed_frequency),
+                    violation(finite_record_does_not_license_exact_probability),
+                    viability_context(finite_record(trials(Trials))),
+                    validity(Validity),
+                    source(im_teacher_guide('IM-G7-U8-L4'))
+                  ]),
+    Trace = [ register_frequency_record(Event, Successes, Trials),
+              calculate_relative_frequency(Successes, Trials,
+                                           RelativeFrequency),
+              replace_estimate_with_exact_claim,
+              report_exact_probability_from_finite_record(RelativeFrequency)
+            ].
+
+% sample_population_distribution_judgment — gate(two nonempty measurement
+% data sets with declared shapes and comparison tolerances); shell(summarize
+% each distribution); kernels([median, IQR, shape-center-spread test]).
+run_statistics_action(sample_population_distribution_judgment,
+                      sample(SampleData, shape(SampleShape)),
+                      population(PopulationData, shape(PopulationShape),
+                                 tolerances(center(CenterTolerance),
+                                            spread(SpreadTolerance))),
+                      Outcome, Trace) :-
+    valid_profile_data(SampleData, SampleShape),
+    valid_profile_data(PopulationData, PopulationShape),
+    valid_profile_tolerance(CenterTolerance),
+    valid_profile_tolerance(SpreadTolerance),
+    distribution_median_iqr(SampleData, SampleMedian, SampleIQR),
+    distribution_median_iqr(PopulationData, PopulationMedian,
+                            PopulationIQR),
+    rational_absolute_difference(SampleMedian, PopulationMedian,
+                                 CenterDifference),
+    rational_absolute_difference(SampleIQR, PopulationIQR,
+                                 SpreadDifference),
+    sample_population_judgment(
+        SampleShape, PopulationShape, CenterDifference, SpreadDifference,
+        CenterTolerance, SpreadTolerance, Judgment),
+    Outcome = action_outcome(
+                  sample_population_distribution_judgment,
+                  [ classification(productive),
+                    cluster(data_sample_population_representativeness),
+                    automaton_state(
+                        compare_sample_and_population_shape_center_spread),
+                    vocabulary([sample, population, distribution_shape,
+                                center, median, spread,
+                                interquartile_range, representative,
+                                sampling_variability]),
+                    input(sample(SampleData, shape(SampleShape))),
+                    population(PopulationData, shape(PopulationShape)),
+                    comparison(center_difference(CenterDifference),
+                               spread_difference(SpreadDifference),
+                               tolerances(CenterTolerance,
+                                          SpreadTolerance)),
+                    result(representativeness(Judgment)),
+                    expected(representativeness(Judgment)),
+                    validity(correct),
+                    source(im_teacher_guide('IM-G7-U8-L13'))
+                  ]),
+    Trace = [ preserve_sample_and_population(SampleData, PopulationData),
+              summarize_sample_distribution(
+                  SampleShape, SampleMedian, SampleIQR),
+              summarize_population_distribution(
+                  PopulationShape, PopulationMedian, PopulationIQR),
+              compare_shape_center_and_spread(
+                  CenterDifference, SpreadDifference),
+              name_representativeness_judgment(Judgment)
+            ].
+
 
 statistics_action_cluster(categorical_frequency_bar_representation,
                           data_categorical_frequency_representation).
@@ -368,6 +489,12 @@ statistics_action_cluster(box_plot_from_five_number_summary,
                           data_distribution_quartile_representation).
 statistics_action_cluster(distribution_summary_selection,
                           data_summary_coordinated_with_distribution_shape).
+statistics_action_cluster(estimate_probability_from_observed_frequency,
+                          data_probability_as_long_run_relative_frequency).
+statistics_action_cluster(finite_frequency_as_exact_probability,
+                          data_probability_as_long_run_relative_frequency).
+statistics_action_cluster(sample_population_distribution_judgment,
+                          data_sample_population_representativeness).
 
 statistics_action_vocabulary(categorical_frequency_bar_representation,
                              [categorical_data, category, frequency, bar_graph,
@@ -413,6 +540,18 @@ statistics_action_vocabulary(distribution_summary_selection,
                              [distribution_shape, symmetry, skew, outlier,
                               center, variability, mean, median,
                               mean_absolute_deviation, interquartile_range]).
+statistics_action_vocabulary(estimate_probability_from_observed_frequency,
+                             [chance_event, repeated_experiment, trial,
+                              event_frequency, cumulative_relative_frequency,
+                              probability_estimate, long_run]).
+statistics_action_vocabulary(finite_frequency_as_exact_probability,
+                             [chance_event, repeated_experiment, trial,
+                              event_frequency, relative_frequency,
+                              exact_probability, sampling_variability]).
+statistics_action_vocabulary(sample_population_distribution_judgment,
+                             [sample, population, distribution_shape, center,
+                              median, spread, interquartile_range,
+                              representative, sampling_variability]).
 
 productive_statistics_deformation(
     statistical_question_variability_classification,
@@ -422,6 +561,10 @@ productive_statistics_deformation(
     mean_absolute_deviation,
     mean_deviation_without_absolute_value,
     signed_deviation_cancellation).
+productive_statistics_deformation(
+    estimate_probability_from_observed_frequency,
+    finite_frequency_as_exact_probability,
+    finite_frequency_promoted_to_exact_probability).
 
 statistics_action_misconception_hook(action_outcome(Kind, Fields),
                                      statistics_productive_monitoring(Kind), Hook) :-
@@ -609,3 +752,44 @@ maximal_frequency_values(Frequencies, Modes, Maximum) :-
     findall(Count, member(_-Count, Frequencies), Counts),
     max_list(Counts, Maximum),
     findall(Value, member(Value-Maximum, Frequencies), Modes).
+
+valid_frequency_record(Event, Successes, Trials) :-
+    atom(Event),
+    integer(Successes),
+    Successes >= 0,
+    positive_integer(Trials),
+    Successes =< Trials.
+
+finite_frequency_claim_validity(Trials, exact_probability, incorrect) :-
+    positive_integer(Trials).
+
+valid_profile_data(Data, Shape) :-
+    valid_data(Data),
+    Data = [_, _|_],
+    atom(Shape).
+
+valid_profile_tolerance(Tolerance) :-
+    number(Tolerance),
+    Tolerance >= 0.
+
+distribution_median_iqr(Data, Median, IQR) :-
+    msort(Data, Sorted),
+    five_number_summary(Sorted,
+                        five_number(_, _, Median, _, _), IQR).
+
+rational_absolute_difference(rational(AN, AD), rational(BN, BD),
+                             Difference) :-
+    Numerator is abs(AN * BD - BN * AD),
+    Denominator is AD * BD,
+    reduced_rational(Numerator, Denominator, Difference).
+
+sample_population_judgment(
+    Shape, Shape, CenterDifference, SpreadDifference,
+    CenterTolerance, SpreadTolerance, representative) :-
+    rational_at_most(CenterDifference, CenterTolerance),
+    rational_at_most(SpreadDifference, SpreadTolerance),
+    !.
+sample_population_judgment(_, _, _, _, _, _, not_representative).
+
+rational_at_most(rational(Numerator, Denominator), Bound) :-
+    Numerator / Denominator =< Bound.

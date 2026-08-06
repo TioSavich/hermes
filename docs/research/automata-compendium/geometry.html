@@ -14,10 +14,10 @@
 <p class="back-link"><a href="../2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
 <h1>geometry</h1>
 <p><a href="../automata-vocabulary.html">Read the automata vocabulary</a>.</p>
-<p>Validity review for this family: 42 reviewed and 0 unreviewed deforming transitions. Unreviewed rows retain rust-family styling.</p>
+<p>Validity review for this family: 42 reviewed and 2 unreviewed deforming transitions. Unreviewed rows retain rust-family styling.</p>
 </header>
 <section class="family" id="family-geometry">
-<figure class="diagram family-composite"><img src="../assets/automata/geometry/_composite.svg" width="1746" height="3482" loading="lazy" decoding="async" alt="Family path composite for the geometry family"><figcaption><span class="term">Family path composite:</span> the action paths of all the family's automata, merged at shared prefixes and identical suffixes. The labels are canonical action names. Its nodes are path points. Path points are not states of any single automaton. Loops are not unfolded.</figcaption></figure>
+<figure class="diagram family-composite"><img src="../assets/automata/geometry/_composite.svg" width="1746" height="3778" loading="lazy" decoding="async" alt="Family path composite for the geometry family"><figcaption><span class="term">Family path composite:</span> the action paths of all the family's automata, merged at shared prefixes and identical suffixes. The labels are canonical action names. Its nodes are path points. Path points are not states of any single automaton. Loops are not unfolded.</figcaption></figure>
 
 <article class="machine" id="geometry-angle_additive_composition">
 <h3><span class="entry-number">1.</span> <code>angle_additive_composition</code></h3>
@@ -67,8 +67,32 @@
 
 </article>
 
+<article class="machine" id="geometry-angle_relation_unknown_measure">
+<h3><span class="entry-number">3.</span> <code>angle_relation_unknown_measure</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the angle_relation contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/geometry/angle_relation_unknown_measure.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry angle_relation_unknown_measure"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>accumulate_known_angle_parts</code>, <code>establish_angle_part_whole_relation</code>, <code>inscribe_angle_equation</code>, <code>isolate_unknown_angle</code> (4<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;kind&quot;: &quot;angle_relation&quot;, &quot;known_parts&quot;: [&quot;positive_number&quot;], &quot;unknown&quot;: &quot;atom&quot;, &quot;whole&quot;: &quot;positive_number&quot;}</code>; example <code>{&quot;kind&quot;: &quot;angle_relation&quot;, &quot;known_parts&quot;: [110, 30], &quot;unknown&quot;: &quot;x&quot;, &quot;whole&quot;: 180}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_angle_part_whole_relation</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1420">geometry_action_pairs.pl:1420</code><br>observed on <code>{&quot;kind&quot;: &quot;angle_relation&quot;, &quot;known_parts&quot;: [110, 30], &quot;unknown&quot;: &quot;x&quot;, &quot;whole&quot;: 180}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>accumulate_known_angle_parts</code></td><td><code>q_step_2</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1420">geometry_action_pairs.pl:1420</code><br>observed on <code>{&quot;kind&quot;: &quot;angle_relation&quot;, &quot;known_parts&quot;: [110, 30], &quot;unknown&quot;: &quot;x&quot;, &quot;whole&quot;: 180}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>inscribe_angle_equation</code></td><td><code>q_step_3</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1420">geometry_action_pairs.pl:1420</code><br>observed on <code>{&quot;kind&quot;: &quot;angle_relation&quot;, &quot;known_parts&quot;: [110, 30], &quot;unknown&quot;: &quot;x&quot;, &quot;whole&quot;: 180}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>isolate_unknown_angle</code></td><td><code>q_accept</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1420">geometry_action_pairs.pl:1420</code><br>observed on <code>{&quot;kind&quot;: &quot;angle_relation&quot;, &quot;known_parts&quot;: [110, 30], &quot;unknown&quot;: &quot;x&quot;, &quot;whole&quot;: 180}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 5 states, 4 distinct actions, 0 branching states, 0 loop transitions; 4 static table rows and 4 observed table rows.</p>
+
+</article>
+
 <article class="machine" id="geometry-angle_turn_measurement">
-<h3><span class="entry-number">3.</span> <code>angle_turn_measurement</code></h3>
+<h3><span class="entry-number">4.</span> <code>angle_turn_measurement</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/angle_turn_measurement-scene.svg" width="700" height="380" loading="lazy" decoding="async" alt="Executed domain scene for geometry angle_turn_measurement"><figcaption>The run produced angle_measure(65). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/angle_turn_measurement.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry angle_turn_measurement"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -92,7 +116,7 @@
 </article>
 
 <article class="machine" id="geometry-area_as_perimeter_count">
-<h3><span class="entry-number">4.</span> <code>area_as_perimeter_count</code></h3>
+<h3><span class="entry-number">5.</span> <code>area_as_perimeter_count</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the two-operand contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/area_as_perimeter_count.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry area_as_perimeter_count"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -116,7 +140,7 @@
 </article>
 
 <article class="machine" id="geometry-area_preserving_polygon_decomposition">
-<h3><span class="entry-number">5.</span> <code>area_preserving_polygon_decomposition</code></h3>
+<h3><span class="entry-number">6.</span> <code>area_preserving_polygon_decomposition</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/area_preserving_polygon_decomposition-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry area_preserving_polygon_decomposition"><figcaption>The run produced square_units(24). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/area_preserving_polygon_decomposition.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry area_preserving_polygon_decomposition"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -140,7 +164,7 @@
 </article>
 
 <article class="machine" id="geometry-area_unit_covering">
-<h3><span class="entry-number">6.</span> <code>area_unit_covering</code></h3>
+<h3><span class="entry-number">7.</span> <code>area_unit_covering</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/area_unit_covering-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry area_unit_covering"><figcaption>The run produced area(3,square(centimeter)). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/area_unit_covering.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry area_unit_covering"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -164,7 +188,7 @@
 </article>
 
 <article class="machine" id="geometry-area_unit_scale_selection">
-<h3><span class="entry-number">7.</span> <code>area_unit_scale_selection</code></h3>
+<h3><span class="entry-number">8.</span> <code>area_unit_scale_selection</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the area_unit_candidates contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/area_unit_scale_selection.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry area_unit_scale_selection"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -188,7 +212,7 @@
 </article>
 
 <article class="machine" id="geometry-axis_aligned_coordinate_distance">
-<h3><span class="entry-number">8.</span> <code>axis_aligned_coordinate_distance</code></h3>
+<h3><span class="entry-number">9.</span> <code>axis_aligned_coordinate_distance</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/axis_aligned_coordinate_distance-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry axis_aligned_coordinate_distance"><figcaption>The run produced length(5,centimeter). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/axis_aligned_coordinate_distance.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry axis_aligned_coordinate_distance"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -212,7 +236,7 @@
 </article>
 
 <article class="machine" id="geometry-choose_first_area_unit_without_scale">
-<h3><span class="entry-number">9.</span> <code>choose_first_area_unit_without_scale</code></h3>
+<h3><span class="entry-number">10.</span> <code>choose_first_area_unit_without_scale</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the area_unit_candidates contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/choose_first_area_unit_without_scale.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry choose_first_area_unit_without_scale"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -235,8 +259,32 @@
 
 </article>
 
+<article class="machine" id="geometry-circle_circumference_diameter_co_measurement">
+<h3><span class="entry-number">11.</span> <code>circle_circumference_diameter_co_measurement</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the circle_co_measurement contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/geometry/circle_circumference_diameter_co_measurement.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry circle_circumference_diameter_co_measurement"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>establish_circle_measure</code>, <code>establish_co_measurement_unit</code>, <code>report_circle_measure</code>, <code>transform_circle_measure_through_co_measure</code> (4<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;given_measure&quot;: &quot;atom&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: &quot;positive_integer&quot;, &quot;n&quot;: &quot;positive_integer&quot;}, &quot;requested_measure&quot;: &quot;atom&quot;, &quot;unit&quot;: &quot;atom&quot;, &quot;value&quot;: &quot;positive_number&quot;}</code>; example <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_circle_measure</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1317">geometry_action_pairs.pl:1317</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>establish_co_measurement_unit</code></td><td><code>q_step_2</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1317">geometry_action_pairs.pl:1317</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>transform_circle_measure_through_co_measure</code></td><td><code>q_step_3</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1317">geometry_action_pairs.pl:1317</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>report_circle_measure</code></td><td><code>q_accept</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1317">geometry_action_pairs.pl:1317</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 5 states, 4 distinct actions, 0 branching states, 0 loop transitions; 4 static table rows and 4 observed table rows.</p>
+
+</article>
+
 <article class="machine" id="geometry-compare_solid_volume_by_cube_count">
-<h3><span class="entry-number">10.</span> <code>compare_solid_volume_by_cube_count</code></h3>
+<h3><span class="entry-number">12.</span> <code>compare_solid_volume_by_cube_count</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the solid_volume_comparison contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/compare_solid_volume_by_cube_count.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry compare_solid_volume_by_cube_count"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -260,7 +308,7 @@
 </article>
 
 <article class="machine" id="geometry-compare_solid_volume_by_visible_extent">
-<h3><span class="entry-number">11.</span> <code>compare_solid_volume_by_visible_extent</code></h3>
+<h3><span class="entry-number">13.</span> <code>compare_solid_volume_by_visible_extent</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the solid_volume_comparison contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/compare_solid_volume_by_visible_extent.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry compare_solid_volume_by_visible_extent"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -284,7 +332,7 @@
 </article>
 
 <article class="machine" id="geometry-composite_prism_volume_sum">
-<h3><span class="entry-number">12.</span> <code>composite_prism_volume_sum</code></h3>
+<h3><span class="entry-number">14.</span> <code>composite_prism_volume_sum</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the disjoint_prisms contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/composite_prism_volume_sum.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry composite_prism_volume_sum"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -308,7 +356,7 @@
 </article>
 
 <article class="machine" id="geometry-count_overlapping_area_tiles">
-<h3><span class="entry-number">13.</span> <code>count_overlapping_area_tiles</code></h3>
+<h3><span class="entry-number">15.</span> <code>count_overlapping_area_tiles</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the placed_tiles contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/count_overlapping_area_tiles.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry count_overlapping_area_tiles"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -332,7 +380,7 @@
 </article>
 
 <article class="machine" id="geometry-decomposition_with_gap_or_overlap">
-<h3><span class="entry-number">14.</span> <code>decomposition_with_gap_or_overlap</code></h3>
+<h3><span class="entry-number">16.</span> <code>decomposition_with_gap_or_overlap</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/decomposition_with_gap_or_overlap-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry decomposition_with_gap_or_overlap"><figcaption>The run produced square_units(12); the recorded expected result is square_units(24). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/decomposition_with_gap_or_overlap.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry decomposition_with_gap_or_overlap"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -356,7 +404,7 @@
 </article>
 
 <article class="machine" id="geometry-dimensional_measure_unit_coordination">
-<h3><span class="entry-number">15.</span> <code>dimensional_measure_unit_coordination</code></h3>
+<h3><span class="entry-number">17.</span> <code>dimensional_measure_unit_coordination</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the dimensional_measure contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/dimensional_measure_unit_coordination.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry dimensional_measure_unit_coordination"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -380,7 +428,7 @@
 </article>
 
 <article class="machine" id="geometry-directed_difference_as_coordinate_distance">
-<h3><span class="entry-number">16.</span> <code>directed_difference_as_coordinate_distance</code></h3>
+<h3><span class="entry-number">18.</span> <code>directed_difference_as_coordinate_distance</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/directed_difference_as_coordinate_distance-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry directed_difference_as_coordinate_distance"><figcaption>The run produced length(-5,centimeter); the recorded expected result is length(5,centimeter). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/directed_difference_as_coordinate_distance.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry directed_difference_as_coordinate_distance"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -404,7 +452,7 @@
 </article>
 
 <article class="machine" id="geometry-divide_volume_by_one_dimension">
-<h3><span class="entry-number">17.</span> <code>divide_volume_by_one_dimension</code></h3>
+<h3><span class="entry-number">19.</span> <code>divide_volume_by_one_dimension</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/divide_volume_by_one_dimension-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry divide_volume_by_one_dimension"><figcaption>The run produced dimension(15); the recorded expected result is dimension(5). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/divide_volume_by_one_dimension.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry divide_volume_by_one_dimension"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -428,7 +476,7 @@
 </article>
 
 <article class="machine" id="geometry-ignore_perimeter_rectangle_constraint">
-<h3><span class="entry-number">18.</span> <code>ignore_perimeter_rectangle_constraint</code></h3>
+<h3><span class="entry-number">20.</span> <code>ignore_perimeter_rectangle_constraint</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/ignore_perimeter_rectangle_constraint-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry ignore_perimeter_rectangle_constraint"><figcaption>The run produced rectangles([1-24,2-12,3-8,4-6]); the recorded expected result is rectangles([3-8]). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/ignore_perimeter_rectangle_constraint.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry ignore_perimeter_rectangle_constraint"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -452,7 +500,7 @@
 </article>
 
 <article class="machine" id="geometry-ignore_symmetry_multiplicity">
-<h3><span class="entry-number">19.</span> <code>ignore_symmetry_multiplicity</code></h3>
+<h3><span class="entry-number">21.</span> <code>ignore_symmetry_multiplicity</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the symmetry_side_orbits contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/ignore_symmetry_multiplicity.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry ignore_symmetry_multiplicity"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -476,7 +524,7 @@
 </article>
 
 <article class="machine" id="geometry-linear_unit_for_area_or_volume">
-<h3><span class="entry-number">20.</span> <code>linear_unit_for_area_or_volume</code></h3>
+<h3><span class="entry-number">22.</span> <code>linear_unit_for_area_or_volume</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the dimensional_measure contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/linear_unit_for_area_or_volume.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry linear_unit_for_area_or_volume"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -500,7 +548,7 @@
 </article>
 
 <article class="machine" id="geometry-omit_half_in_triangle_area">
-<h3><span class="entry-number">21.</span> <code>omit_half_in_triangle_area</code></h3>
+<h3><span class="entry-number">23.</span> <code>omit_half_in_triangle_area</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/omit_half_in_triangle_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry omit_half_in_triangle_area"><figcaption>The run produced area(28,square(centimeter)); the recorded expected result is area(14,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/omit_half_in_triangle_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry omit_half_in_triangle_area"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -524,7 +572,7 @@
 </article>
 
 <article class="machine" id="geometry-omit_unlabeled_boundary_side">
-<h3><span class="entry-number">22.</span> <code>omit_unlabeled_boundary_side</code></h3>
+<h3><span class="entry-number">24.</span> <code>omit_unlabeled_boundary_side</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the polygon_sides_with_unit contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/omit_unlabeled_boundary_side.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry omit_unlabeled_boundary_side"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -548,7 +596,7 @@
 </article>
 
 <article class="machine" id="geometry-ordered_pair_coordinate_plot">
-<h3><span class="entry-number">23.</span> <code>ordered_pair_coordinate_plot</code></h3>
+<h3><span class="entry-number">25.</span> <code>ordered_pair_coordinate_plot</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the coordinate_points contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/ordered_pair_coordinate_plot.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry ordered_pair_coordinate_plot"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -572,7 +620,7 @@
 </article>
 
 <article class="machine" id="geometry-orientation_bound_shape_classification">
-<h3><span class="entry-number">24.</span> <code>orientation_bound_shape_classification</code></h3>
+<h3><span class="entry-number">26.</span> <code>orientation_bound_shape_classification</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the shape_attributes contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/orientation_bound_shape_classification.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry orientation_bound_shape_classification"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -596,7 +644,7 @@
 </article>
 
 <article class="machine" id="geometry-parallelogram_area_base_height">
-<h3><span class="entry-number">25.</span> <code>parallelogram_area_base_height</code></h3>
+<h3><span class="entry-number">27.</span> <code>parallelogram_area_base_height</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/parallelogram_area_base_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry parallelogram_area_base_height"><figcaption>The run produced area(24,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/parallelogram_area_base_height.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry parallelogram_area_base_height"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -620,7 +668,7 @@
 </article>
 
 <article class="machine" id="geometry-perimeter_two_sides_only">
-<h3><span class="entry-number">26.</span> <code>perimeter_two_sides_only</code></h3>
+<h3><span class="entry-number">28.</span> <code>perimeter_two_sides_only</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/perimeter_two_sides_only-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry perimeter_two_sides_only"><figcaption>The run produced length(11,centimeter); the recorded expected result is length(22,centimeter). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/perimeter_two_sides_only.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry perimeter_two_sides_only"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -644,7 +692,7 @@
 </article>
 
 <article class="machine" id="geometry-perimeter_uses_area_formula">
-<h3><span class="entry-number">27.</span> <code>perimeter_uses_area_formula</code></h3>
+<h3><span class="entry-number">29.</span> <code>perimeter_uses_area_formula</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/perimeter_uses_area_formula-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry perimeter_uses_area_formula"><figcaption>The run produced length(28,centimeter); the recorded expected result is length(22,centimeter). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/perimeter_uses_area_formula.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry perimeter_uses_area_formula"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -668,7 +716,7 @@
 </article>
 
 <article class="machine" id="geometry-polygon_perimeter_boundary_accumulation">
-<h3><span class="entry-number">28.</span> <code>polygon_perimeter_boundary_accumulation</code></h3>
+<h3><span class="entry-number">30.</span> <code>polygon_perimeter_boundary_accumulation</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the polygon_sides_with_unit contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/polygon_perimeter_boundary_accumulation.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry polygon_perimeter_boundary_accumulation"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -692,7 +740,7 @@
 </article>
 
 <article class="machine" id="geometry-polyhedron_surface_area_from_net">
-<h3><span class="entry-number">29.</span> <code>polyhedron_surface_area_from_net</code></h3>
+<h3><span class="entry-number">31.</span> <code>polyhedron_surface_area_from_net</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/polyhedron_surface_area_from_net-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry polyhedron_surface_area_from_net"><figcaption>The run produced area(52,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/polyhedron_surface_area_from_net.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry polyhedron_surface_area_from_net"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -716,7 +764,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_area_perimeter_constraint_search">
-<h3><span class="entry-number">30.</span> <code>rectangle_area_perimeter_constraint_search</code></h3>
+<h3><span class="entry-number">32.</span> <code>rectangle_area_perimeter_constraint_search</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_area_perimeter_constraint_search-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_area_perimeter_constraint_search"><figcaption>The run produced rectangles([3-8]). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_area_perimeter_constraint_search.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_area_perimeter_constraint_search"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -740,7 +788,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_area_unit_iteration">
-<h3><span class="entry-number">31.</span> <code>rectangle_area_unit_iteration</code></h3>
+<h3><span class="entry-number">33.</span> <code>rectangle_area_unit_iteration</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the two-operand contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_area_unit_iteration.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_area_unit_iteration"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -764,7 +812,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_factor_pair_search">
-<h3><span class="entry-number">32.</span> <code>rectangle_factor_pair_search</code></h3>
+<h3><span class="entry-number">34.</span> <code>rectangle_factor_pair_search</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the area_scope contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_factor_pair_search.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_factor_pair_search"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -788,7 +836,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_missing_side_from_area">
-<h3><span class="entry-number">33.</span> <code>rectangle_missing_side_from_area</code></h3>
+<h3><span class="entry-number">35.</span> <code>rectangle_missing_side_from_area</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_missing_side_from_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_missing_side_from_area"><figcaption>The run produced side_length(7). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_missing_side_from_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_missing_side_from_area"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -812,7 +860,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_missing_side_from_perimeter">
-<h3><span class="entry-number">34.</span> <code>rectangle_missing_side_from_perimeter</code></h3>
+<h3><span class="entry-number">36.</span> <code>rectangle_missing_side_from_perimeter</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_missing_side_from_perimeter-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_missing_side_from_perimeter"><figcaption>The run produced side_length(7). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_missing_side_from_perimeter.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_missing_side_from_perimeter"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -836,7 +884,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_perimeter_boundary_traversal">
-<h3><span class="entry-number">35.</span> <code>rectangle_perimeter_boundary_traversal</code></h3>
+<h3><span class="entry-number">37.</span> <code>rectangle_perimeter_boundary_traversal</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangle_perimeter_boundary_traversal-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangle_perimeter_boundary_traversal"><figcaption>The run produced length(22,centimeter). The scene is derived from the contract run (6<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_perimeter_boundary_traversal.svg" width="648" height="648" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_perimeter_boundary_traversal"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -860,7 +908,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangle_perimeter_side_pair_search">
-<h3><span class="entry-number">36.</span> <code>rectangle_perimeter_side_pair_search</code></h3>
+<h3><span class="entry-number">38.</span> <code>rectangle_perimeter_side_pair_search</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the perimeter_scope contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangle_perimeter_side_pair_search.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangle_perimeter_side_pair_search"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -884,7 +932,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangular_prism_missing_dimension_from_volume">
-<h3><span class="entry-number">37.</span> <code>rectangular_prism_missing_dimension_from_volume</code></h3>
+<h3><span class="entry-number">39.</span> <code>rectangular_prism_missing_dimension_from_volume</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangular_prism_missing_dimension_from_volume-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangular_prism_missing_dimension_from_volume"><figcaption>The run produced dimension(5). The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangular_prism_missing_dimension_from_volume.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangular_prism_missing_dimension_from_volume"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -908,7 +956,7 @@
 </article>
 
 <article class="machine" id="geometry-rectangular_prism_volume_layer_iteration">
-<h3><span class="entry-number">38.</span> <code>rectangular_prism_volume_layer_iteration</code></h3>
+<h3><span class="entry-number">40.</span> <code>rectangular_prism_volume_layer_iteration</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rectangular_prism_volume_layer_iteration-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry rectangular_prism_volume_layer_iteration"><figcaption>The run produced cubic_units(60). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rectangular_prism_volume_layer_iteration.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rectangular_prism_volume_layer_iteration"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -932,7 +980,7 @@
 </article>
 
 <article class="machine" id="geometry-rigid_shape_composition">
-<h3><span class="entry-number">39.</span> <code>rigid_shape_composition</code></h3>
+<h3><span class="entry-number">41.</span> <code>rigid_shape_composition</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/rigid_shape_composition-scene.svg" width="700" height="410" loading="lazy" decoding="async" alt="Executed domain scene for geometry rigid_shape_composition"><figcaption>The run produced composed_region(3,2). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/rigid_shape_composition.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry rigid_shape_composition"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -956,7 +1004,7 @@
 </article>
 
 <article class="machine" id="geometry-shape_classification_by_defining_attributes">
-<h3><span class="entry-number">40.</span> <code>shape_classification_by_defining_attributes</code></h3>
+<h3><span class="entry-number">42.</span> <code>shape_classification_by_defining_attributes</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the shape_attributes contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/shape_classification_by_defining_attributes.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry shape_classification_by_defining_attributes"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -980,7 +1028,7 @@
 </article>
 
 <article class="machine" id="geometry-slanted_side_as_parallelogram_height">
-<h3><span class="entry-number">41.</span> <code>slanted_side_as_parallelogram_height</code></h3>
+<h3><span class="entry-number">43.</span> <code>slanted_side_as_parallelogram_height</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/slanted_side_as_parallelogram_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry slanted_side_as_parallelogram_height"><figcaption>The run produced area(30,square(centimeter)); the recorded expected result is area(24,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/slanted_side_as_parallelogram_height.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry slanted_side_as_parallelogram_height"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -1004,7 +1052,7 @@
 </article>
 
 <article class="machine" id="geometry-subtract_side_from_area">
-<h3><span class="entry-number">42.</span> <code>subtract_side_from_area</code></h3>
+<h3><span class="entry-number">44.</span> <code>subtract_side_from_area</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/subtract_side_from_area-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry subtract_side_from_area"><figcaption>The run produced side_length(24); the recorded expected result is side_length(7). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/subtract_side_from_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry subtract_side_from_area"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -1028,7 +1076,7 @@
 </article>
 
 <article class="machine" id="geometry-sum_overlapping_prism_volumes">
-<h3><span class="entry-number">43.</span> <code>sum_overlapping_prism_volumes</code></h3>
+<h3><span class="entry-number">45.</span> <code>sum_overlapping_prism_volumes</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the overlapping_prisms contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/sum_overlapping_prism_volumes.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry sum_overlapping_prism_volumes"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -1052,7 +1100,7 @@
 </article>
 
 <article class="machine" id="geometry-symmetry_constrained_side_reconstruction">
-<h3><span class="entry-number">44.</span> <code>symmetry_constrained_side_reconstruction</code></h3>
+<h3><span class="entry-number">46.</span> <code>symmetry_constrained_side_reconstruction</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the symmetry_side_orbits contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/symmetry_constrained_side_reconstruction.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry symmetry_constrained_side_reconstruction"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -1076,7 +1124,7 @@
 </article>
 
 <article class="machine" id="geometry-triangle_area_half_base_height">
-<h3><span class="entry-number">45.</span> <code>triangle_area_half_base_height</code></h3>
+<h3><span class="entry-number">47.</span> <code>triangle_area_half_base_height</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/triangle_area_half_base_height-scene.svg" width="700" height="420" loading="lazy" decoding="async" alt="Executed domain scene for geometry triangle_area_half_base_height"><figcaption>The run produced area(14,square(centimeter)). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/triangle_area_half_base_height.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry triangle_area_half_base_height"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -1099,8 +1147,56 @@
 
 </article>
 
+<article class="machine" id="geometry-triangle_three_measure_determination">
+<h3><span class="entry-number">48.</span> <code>triangle_three_measure_determination</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the triangle_conditions contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/geometry/triangle_three_measure_determination.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry triangle_three_measure_determination"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>accept_triangle_determination</code>, <code>register_triangle_conditions</code>, <code>test_triangle_determination</code>, <code>test_triangle_feasibility</code> (4<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;condition&quot;: &quot;atom&quot;, &quot;kind&quot;: &quot;triangle_conditions&quot;, &quot;measures&quot;: [&quot;positive_number&quot;]}</code>; example <code>{&quot;condition&quot;: &quot;sss&quot;, &quot;kind&quot;: &quot;triangle_conditions&quot;, &quot;measures&quot;: [3, 4, 5]}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>register_triangle_conditions</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1393">geometry_action_pairs.pl:1393</code><br>observed on <code>{&quot;condition&quot;: &quot;sss&quot;, &quot;kind&quot;: &quot;triangle_conditions&quot;, &quot;measures&quot;: [3, 4, 5]}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>test_triangle_feasibility</code></td><td><code>q_step_2</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1393">geometry_action_pairs.pl:1393</code><br>observed on <code>{&quot;condition&quot;: &quot;sss&quot;, &quot;kind&quot;: &quot;triangle_conditions&quot;, &quot;measures&quot;: [3, 4, 5]}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>test_triangle_determination</code></td><td><code>q_step_3</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1393">geometry_action_pairs.pl:1393</code><br>observed on <code>{&quot;condition&quot;: &quot;sss&quot;, &quot;kind&quot;: &quot;triangle_conditions&quot;, &quot;measures&quot;: [3, 4, 5]}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>accept_triangle_determination</code></td><td><code>q_accept</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1393">geometry_action_pairs.pl:1393</code><br>observed on <code>{&quot;condition&quot;: &quot;sss&quot;, &quot;kind&quot;: &quot;triangle_conditions&quot;, &quot;measures&quot;: [3, 4, 5]}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 5 states, 4 distinct actions, 0 branching states, 0 loop transitions; 4 static table rows and 4 observed table rows.</p>
+
+</article>
+
+<article class="machine" id="geometry-use_diameter_as_radius_in_circumference">
+<h3><span class="entry-number">49.</span> <code>use_diameter_as_radius_in_circumference</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no geometry form for the circle_co_measurement contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/geometry/use_diameter_as_radius_in_circumference.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry use_diameter_as_radius_in_circumference"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>double_misread_radius_to_diameter</code>, <code>establish_circle_measure</code>, <code>read_diameter_as_radius</code>, <code>report_misread_circumference</code> (4<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;given_measure&quot;: &quot;atom&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: &quot;positive_integer&quot;, &quot;n&quot;: &quot;positive_integer&quot;}, &quot;requested_measure&quot;: &quot;atom&quot;, &quot;unit&quot;: &quot;atom&quot;, &quot;value&quot;: &quot;positive_number&quot;}</code>; example <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>establish_circle_measure</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1353">geometry_action_pairs.pl:1353</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>read_diameter_as_radius</code></td><td><code>q_step_2</code></td><td>the claim is false on its own. Review status: unreviewed; proposed from code reading</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1353">geometry_action_pairs.pl:1353</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>double_misread_radius_to_diameter</code></td><td><code>q_step_3</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1353">geometry_action_pairs.pl:1353</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>report_misread_circumference</code></td><td><code>q_accept</code></td><td>the claim is false on its own. Review status: unreviewed; proposed from code reading</td><td class="provenance static observed"><code title="knowledge/strategies/math/geometry_action_pairs.pl:1353">geometry_action_pairs.pl:1353</code><br>observed on <code>{&quot;given_measure&quot;: &quot;diameter&quot;, &quot;kind&quot;: &quot;circle_co_measurement&quot;, &quot;pi&quot;: {&quot;d&quot;: 7, &quot;n&quot;: 22}, &quot;requested_measure&quot;: &quot;circumference&quot;, &quot;unit&quot;: &quot;cm&quot;, &quot;value&quot;: 10}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 5 states, 4 distinct actions, 0 branching states, 0 loop transitions; 4 static table rows and 4 observed table rows.</p>
+
+</article>
+
 <article class="machine" id="geometry-visible_faces_only_surface_area">
-<h3><span class="entry-number">46.</span> <code>visible_faces_only_surface_area</code></h3>
+<h3><span class="entry-number">50.</span> <code>visible_faces_only_surface_area</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/geometry/visible_faces_only_surface_area-scene.svg" width="700" height="430" loading="lazy" decoding="async" alt="Executed domain scene for geometry visible_faces_only_surface_area"><figcaption>The run produced area(46,square(centimeter)); the recorded expected result is area(52,square(centimeter)). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/geometry/visible_faces_only_surface_area.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for geometry visible_faces_only_surface_area"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 

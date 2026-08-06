@@ -5,6 +5,7 @@
 
 automaton_tuple(geometry, angle_additive_composition, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_shared_vertex, preserve_adjacent_turns, sum_part_measures, verify_whole_angle]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, angle_as_ray_length, states([q_start, q_step_1, q_step_2, q_accept]), actions([preserve_turn, stretch_ray_length, misread_visual_extent_as_angle_magnitude]), start(q_start), accepting([q_accept])).
+automaton_tuple(geometry, angle_relation_unknown_measure, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_angle_part_whole_relation, accumulate_known_angle_parts, inscribe_angle_equation, isolate_unknown_angle]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, angle_turn_measurement, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([establish_fixed_vertex, establish_initial_ray, iterate_degree_turn, locate_terminal_ray, read_angle_measure]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, area_as_perimeter_count, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_rectangle, ignore_interior_coverage, traverse_boundary_instead, substitute_boundary_count_for_area]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, area_preserving_polygon_decomposition, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([establish_polygon, decompose_into_nonoverlapping_pieces, measure_piece_areas, sum_piece_areas, preserve_whole_area]), start(q_start), accepting([q_accept])).
@@ -12,6 +13,7 @@ automaton_tuple(geometry, area_unit_covering, states([q_start, q_step_1, q_step_
 automaton_tuple(geometry, area_unit_scale_selection, states([q_start, q_step_1, q_step_2, q_accept]), actions([classify_area_referent_extent, compare_candidate_square_unit_scales, select_matching_square_unit]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, axis_aligned_coordinate_distance, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([plot_endpoint, plot_endpoint, hold_other_coordinate_fixed, subtract_varying_coordinates, take_absolute_coordinate_change]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, choose_first_area_unit_without_scale, states([q_start, q_step_1, q_step_2, q_accept]), actions([ignore_area_referent_extent, select_first_familiar_unit, omit_unit_scale_comparison]), start(q_start), accepting([q_accept])).
+automaton_tuple(geometry, circle_circumference_diameter_co_measurement, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_circle_measure, establish_co_measurement_unit, transform_circle_measure_through_co_measure, report_circle_measure]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, compare_solid_volume_by_cube_count, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([establish_unit_cube_as_volume_unit, count_cubes_in_solid, count_cubes_in_solid, ignore_arrangement_extent, compare_cubic_unit_counts]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, compare_solid_volume_by_visible_extent, states([q_start, q_step_1, q_step_2, q_accept]), actions([inspect_visible_extent, ignore_unit_cube_counts, compare_bounding_extents]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, composite_prism_volume_sum, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([certify_disjoint_prism_decomposition, calculate_component_volumes, sum_component_volumes, preserve_composite_volume]), start(q_start), accepting([q_accept])).
@@ -48,6 +50,8 @@ automaton_tuple(geometry, subtract_side_from_area, states([q_start, q_step_1, q_
 automaton_tuple(geometry, sum_overlapping_prism_volumes, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([calculate_component_volumes, omit_overlap_correction, double_count_shared_cubes, report_component_sum]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, symmetry_constrained_side_reconstruction, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([establish_perimeter, group_sides_into_reflection_orbits, accumulate_known_orbits, isolate_unknown_orbit, partition_remaining_boundary]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, triangle_area_half_base_height, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([identify_base, identify_perpendicular_height, compose_matching_triangle_copy, form_parallelogram_product, take_one_of_two_equal_triangles]), start(q_start), accepting([q_accept])).
+automaton_tuple(geometry, triangle_three_measure_determination, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([register_triangle_conditions, test_triangle_feasibility, test_triangle_determination, accept_triangle_determination]), start(q_start), accepting([q_accept])).
+automaton_tuple(geometry, use_diameter_as_radius_in_circumference, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_circle_measure, read_diameter_as_radius, double_misread_radius_to_diameter, report_misread_circumference]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, visible_faces_only_surface_area, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([inspect_solid_view, enumerate_visible_faces, omit_hidden_face, report_partial_surface_area]), start(q_start), accepting([q_accept])).
 
 automaton_transition(geometry, angle_additive_composition, q_start, establish_shared_vertex, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1168'))).
@@ -58,6 +62,11 @@ automaton_transition(geometry, angle_additive_composition, q_step_3, verify_whol
 automaton_transition(geometry, angle_as_ray_length, q_start, preserve_turn, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1146'))).
 automaton_transition(geometry, angle_as_ray_length, q_step_1, stretch_ray_length, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1146'))).
 automaton_transition(geometry, angle_as_ray_length, q_step_2, misread_visual_extent_as_angle_magnitude, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1146'))).
+
+automaton_transition(geometry, angle_relation_unknown_measure, q_start, establish_angle_part_whole_relation, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1420'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_1, accumulate_known_angle_parts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1420'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_2, inscribe_angle_equation, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1420'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_3, isolate_unknown_angle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1420'))).
 
 automaton_transition(geometry, angle_turn_measurement, q_start, establish_fixed_vertex, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1122'))).
 automaton_transition(geometry, angle_turn_measurement, q_step_1, establish_initial_ray, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1122'))).
@@ -95,6 +104,11 @@ automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_4, take_
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_start, ignore_area_referent_extent, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:171'))).
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_step_1, select_first_familiar_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:171'))).
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_step_2, omit_unit_scale_comparison, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:171'))).
+
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_start, establish_circle_measure, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1317'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_1, establish_co_measurement_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1317'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_2, transform_circle_measure_through_co_measure, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1317'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_3, report_circle_measure, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1317'))).
 
 automaton_transition(geometry, compare_solid_volume_by_cube_count, q_start, establish_unit_cube_as_volume_unit, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1223'))).
 automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_1, count_cubes_in_solid, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1223'))).
@@ -283,6 +297,16 @@ automaton_transition(geometry, triangle_area_half_base_height, q_step_2, compose
 automaton_transition(geometry, triangle_area_half_base_height, q_step_3, form_parallelogram_product, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:923'))).
 automaton_transition(geometry, triangle_area_half_base_height, q_step_4, take_one_of_two_equal_triangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:923'))).
 
+automaton_transition(geometry, triangle_three_measure_determination, q_start, register_triangle_conditions, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1393'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_1, test_triangle_feasibility, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1393'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_2, test_triangle_determination, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1393'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_3, accept_triangle_determination, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1393'))).
+
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_start, establish_circle_measure, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1353'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_1, read_diameter_as_radius, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1353'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_2, double_misread_radius_to_diameter, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1353'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_3, report_misread_circumference, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1353'))).
+
 automaton_transition(geometry, visible_faces_only_surface_area, q_start, inspect_solid_view, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:995'))).
 automaton_transition(geometry, visible_faces_only_surface_area, q_step_1, enumerate_visible_faces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:995'))).
 automaton_transition(geometry, visible_faces_only_surface_area, q_step_2, omit_hidden_face, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:995'))).
@@ -297,6 +321,11 @@ automaton_transition(geometry, angle_additive_composition, q_step_3, verify_whol
 automaton_transition(geometry, angle_as_ray_length, q_start, preserve_turn, q_step_1, provenance(observed(contract_example))).
 automaton_transition(geometry, angle_as_ray_length, q_step_1, stretch_ray_length, q_step_2, provenance(observed(contract_example))).
 automaton_transition(geometry, angle_as_ray_length, q_step_2, misread_visual_extent_as_angle_magnitude, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(geometry, angle_relation_unknown_measure, q_start, establish_angle_part_whole_relation, q_step_1, provenance(observed(contract_example))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_1, accumulate_known_angle_parts, q_step_2, provenance(observed(contract_example))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_2, inscribe_angle_equation, q_step_3, provenance(observed(contract_example))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_3, isolate_unknown_angle, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(geometry, angle_turn_measurement, q_start, establish_fixed_vertex, q_step_1, provenance(observed(contract_example))).
 automaton_transition(geometry, angle_turn_measurement, q_step_1, establish_initial_ray, q_step_2, provenance(observed(contract_example))).
@@ -339,6 +368,11 @@ automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_4, take_
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_start, ignore_area_referent_extent, q_step_1, provenance(observed(contract_example))).
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_step_1, select_first_familiar_unit, q_step_2, provenance(observed(contract_example))).
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_step_2, omit_unit_scale_comparison, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_start, establish_circle_measure, q_step_1, provenance(observed(contract_example))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_1, establish_co_measurement_unit, q_step_2, provenance(observed(contract_example))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_2, transform_circle_measure_through_co_measure, q_step_3, provenance(observed(contract_example))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_3, report_circle_measure, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(geometry, compare_solid_volume_by_cube_count, q_start, establish_unit_cube_as_volume_unit, q_step_1, provenance(observed(contract_example))).
 automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_1, count_cubes_in_solid, q_step_2, provenance(observed(contract_example))).
@@ -532,6 +566,16 @@ automaton_transition(geometry, triangle_area_half_base_height, q_step_1, identif
 automaton_transition(geometry, triangle_area_half_base_height, q_step_2, compose_matching_triangle_copy, q_step_3, provenance(observed(contract_example))).
 automaton_transition(geometry, triangle_area_half_base_height, q_step_3, form_parallelogram_product, q_step_4, provenance(observed(contract_example))).
 automaton_transition(geometry, triangle_area_half_base_height, q_step_4, take_one_of_two_equal_triangles, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(geometry, triangle_three_measure_determination, q_start, register_triangle_conditions, q_step_1, provenance(observed(contract_example))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_1, test_triangle_feasibility, q_step_2, provenance(observed(contract_example))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_2, test_triangle_determination, q_step_3, provenance(observed(contract_example))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_3, accept_triangle_determination, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_start, establish_circle_measure, q_step_1, provenance(observed(contract_example))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_1, read_diameter_as_radius, q_step_2, provenance(observed(contract_example))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_2, double_misread_radius_to_diameter, q_step_3, provenance(observed(contract_example))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_3, report_misread_circumference, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(geometry, visible_faces_only_surface_area, q_start, inspect_solid_view, q_step_1, provenance(observed(contract_example))).
 automaton_transition(geometry, visible_faces_only_surface_area, q_step_1, enumerate_visible_faces, q_step_2, provenance(observed(contract_example))).

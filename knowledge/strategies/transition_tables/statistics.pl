@@ -7,6 +7,8 @@ automaton_tuple(statistics, box_plot_from_five_number_summary, states([q_start, 
 automaton_tuple(statistics, categorical_frequency_bar_representation, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([classify_observations_by_category, count_each_category, establish_frequency_scale, raise_separated_bar_for_each_category]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, distribution_summary_selection, states([q_start, q_step_1, q_accept]), actions([preserve_data_set, inspect_declared_profile]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, dot_plot_frequency_representation, states([q_start, q_step_1, q_step_2, q_accept]), actions([establish_value_axis, preserve_one_mark_per_observation, stack_marks_at_equal_values]), start(q_start), accepting([q_accept])).
+automaton_tuple(statistics, estimate_probability_from_observed_frequency, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([register_frequency_record, count_event_occurrences, divide_by_total_trials, qualify_relative_frequency_as_probability_estimate]), start(q_start), accepting([q_accept])).
+automaton_tuple(statistics, finite_frequency_as_exact_probability, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([register_frequency_record, calculate_relative_frequency, replace_estimate_with_exact_claim, report_exact_probability_from_finite_record]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, five_number_summary_and_iqr, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([preserve_data_set, order_values, split_around_median, locate_quartiles, subtract_quartiles]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, histogram_equal_interval_representation, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([preserve_data_set, choose_equal_bin_width, establish_contiguous_intervals, count_each_observation_once, draw_touching_interval_bars]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, mean_absolute_deviation, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([preserve_data_set, locate_mean, measure_signed_deviations, take_absolute_distances, average_distances]), start(q_start), accepting([q_accept])).
@@ -16,6 +18,7 @@ automaton_tuple(statistics, mean_deviation_without_absolute_value, states([q_sta
 automaton_tuple(statistics, median_as_ordered_middle, states([q_start, q_step_1, q_accept]), actions([preserve_data_set, order_values]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, mode_as_maximal_frequency, states([q_start, q_step_1, q_step_2, q_accept]), actions([preserve_data_set, count_equal_values, retain_all_maximal_frequencies]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, question_without_variability, states([q_start, q_step_1, q_step_2, q_accept]), actions([identify_measured_variable, replace_varied_responses_with_one_fixed_answer, classify_as_nonstatistical_question]), start(q_start), accepting([q_accept])).
+automaton_tuple(statistics, sample_population_distribution_judgment, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([preserve_sample_and_population, summarize_sample_distribution, summarize_population_distribution, compare_shape_center_and_spread, name_representativeness_judgment]), start(q_start), accepting([q_accept])).
 automaton_tuple(statistics, statistical_question_variability_classification, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([identify_population, identify_measured_variable, anticipate_varied_responses, classify_as_statistical_question]), start(q_start), accepting([q_accept])).
 
 automaton_transition(statistics, box_plot_from_five_number_summary, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:299'))).
@@ -35,6 +38,16 @@ automaton_transition(statistics, distribution_summary_selection, q_step_1, inspe
 automaton_transition(statistics, dot_plot_frequency_representation, q_start, establish_value_axis, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:44'))).
 automaton_transition(statistics, dot_plot_frequency_representation, q_step_1, preserve_one_mark_per_observation, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:44'))).
 automaton_transition(statistics, dot_plot_frequency_representation, q_step_2, stack_marks_at_equal_values, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:44'))).
+
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_start, register_frequency_record, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:347'))).
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_step_1, count_event_occurrences, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:347'))).
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_step_2, divide_by_total_trials, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:347'))).
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_step_3, qualify_relative_frequency_as_probability_estimate, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:347'))).
+
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_start, register_frequency_record, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:378'))).
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_step_1, calculate_relative_frequency, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:378'))).
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_step_2, replace_estimate_with_exact_claim, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:378'))).
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_step_3, report_exact_probability_from_finite_record, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:378'))).
 
 automaton_transition(statistics, five_number_summary_and_iqr, q_start, preserve_data_set, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
 automaton_transition(statistics, five_number_summary_and_iqr, q_step_1, order_values, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:278'))).
@@ -80,6 +93,12 @@ automaton_transition(statistics, question_without_variability, q_start, identify
 automaton_transition(statistics, question_without_variability, q_step_1, replace_varied_responses_with_one_fixed_answer, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:93'))).
 automaton_transition(statistics, question_without_variability, q_step_2, classify_as_nonstatistical_question, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:93'))).
 
+automaton_transition(statistics, sample_population_distribution_judgment, q_start, preserve_sample_and_population, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:414'))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_1, summarize_sample_distribution, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:414'))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_2, summarize_population_distribution, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:414'))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_3, compare_shape_center_and_spread, q_step_4, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:414'))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_4, name_representativeness_judgment, q_accept, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:414'))).
+
 automaton_transition(statistics, statistical_question_variability_classification, q_start, identify_population, q_step_1, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:70'))).
 automaton_transition(statistics, statistical_question_variability_classification, q_step_1, identify_measured_variable, q_step_2, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:70'))).
 automaton_transition(statistics, statistical_question_variability_classification, q_step_2, anticipate_varied_responses, q_step_3, provenance(static('knowledge/strategies/math/statistics_action_pairs.pl:70'))).
@@ -104,6 +123,16 @@ automaton_transition(statistics, distribution_summary_selection, q_observed_2, s
 automaton_transition(statistics, dot_plot_frequency_representation, q_start, establish_value_axis, q_step_1, provenance(observed(contract_example))).
 automaton_transition(statistics, dot_plot_frequency_representation, q_step_1, preserve_one_mark_per_observation, q_step_2, provenance(observed(contract_example))).
 automaton_transition(statistics, dot_plot_frequency_representation, q_step_2, stack_marks_at_equal_values, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_start, register_frequency_record, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_step_1, count_event_occurrences, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_step_2, divide_by_total_trials, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, estimate_probability_from_observed_frequency, q_step_3, qualify_relative_frequency_as_probability_estimate, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_start, register_frequency_record, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_step_1, calculate_relative_frequency, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_step_2, replace_estimate_with_exact_claim, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, finite_frequency_as_exact_probability, q_step_3, report_exact_probability_from_finite_record, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(statistics, five_number_summary_and_iqr, q_start, preserve_data_set, q_step_1, provenance(observed(contract_example))).
 automaton_transition(statistics, five_number_summary_and_iqr, q_step_1, order_values, q_step_2, provenance(observed(contract_example))).
@@ -149,6 +178,12 @@ automaton_transition(statistics, mode_as_maximal_frequency, q_step_2, retain_all
 automaton_transition(statistics, question_without_variability, q_start, identify_measured_variable, q_step_1, provenance(observed(contract_example))).
 automaton_transition(statistics, question_without_variability, q_step_1, replace_varied_responses_with_one_fixed_answer, q_step_2, provenance(observed(contract_example))).
 automaton_transition(statistics, question_without_variability, q_step_2, classify_as_nonstatistical_question, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(statistics, sample_population_distribution_judgment, q_start, preserve_sample_and_population, q_step_1, provenance(observed(contract_example))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_1, summarize_sample_distribution, q_step_2, provenance(observed(contract_example))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_2, summarize_population_distribution, q_step_3, provenance(observed(contract_example))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_3, compare_shape_center_and_spread, q_step_4, provenance(observed(contract_example))).
+automaton_transition(statistics, sample_population_distribution_judgment, q_step_4, name_representativeness_judgment, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(statistics, statistical_question_variability_classification, q_start, identify_population, q_step_1, provenance(observed(contract_example))).
 automaton_transition(statistics, statistical_question_variability_classification, q_step_1, identify_measured_variable, q_step_2, provenance(observed(contract_example))).

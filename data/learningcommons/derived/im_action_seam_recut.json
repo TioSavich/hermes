@@ -14613,7 +14613,7 @@
   }
  ],
  "named_surface_inventory": {
-  "action_name_occurrences": 486,
+  "action_name_occurrences": 514,
   "fraction_api_surfaces": [
    {
     "line": 112,
@@ -14951,6 +14951,10 @@
      [
       "geometry",
       "decomposition_with_gap_or_overlap"
+     ],
+     [
+      "statistics",
+      "finite_frequency_as_exact_probability"
      ]
     ],
     "line": 145,
@@ -14986,6 +14990,10 @@
      [
       "geometry",
       "angle_additive_composition"
+     ],
+     [
+      "geometry",
+      "angle_relation_unknown_measure"
      ],
      [
       "geometry",
@@ -15117,6 +15125,10 @@
       "set_model_fraction_comparison"
      ],
      [
+      "geometry",
+      "circle_circumference_diameter_co_measurement"
+     ],
+     [
       "statistics",
       "box_plot_from_five_number_summary"
      ]
@@ -15243,6 +15255,10 @@
      ],
      [
       "algebraic",
+      "combine_signed_like_terms"
+     ],
+     [
+      "algebraic",
       "contextual_linear_equation_construction"
      ],
      [
@@ -15251,7 +15267,15 @@
      ],
      [
       "algebraic",
+      "percent_change_composition"
+     ],
+     [
+      "algebraic",
       "symbolic_expression_construction"
+     ],
+     [
+      "algebraic",
+      "translate_diagram_to_equation"
      ],
      [
       "decimal",
@@ -15322,6 +15346,18 @@
       "signed_addition_with_sign_relation"
      ],
      [
+      "integer",
+      "signed_division_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_multiplication_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_subtraction_as_additive_inverse"
+     ],
+     [
       "multiplication",
       "coordinate_groups_items"
      ],
@@ -15339,7 +15375,15 @@
      ],
      [
       "ratio",
+      "compute_unit_rate_from_ratio_pair"
+     ],
+     [
+      "ratio",
       "construct_referent_ratio_diagram"
+     ],
+     [
+      "ratio",
+      "inscribe_proportional_equation"
      ],
      [
       "statistics",
@@ -15486,6 +15530,10 @@
      [
       "addition",
       "unbalanced_make_base_compensation"
+     ],
+     [
+      "algebraic",
+      "combine_signed_like_terms"
      ],
      [
       "algebraic",
@@ -15687,12 +15735,24 @@
       "symbolic_expression_construction"
      ],
      [
+      "algebraic",
+      "translate_diagram_to_equation"
+     ],
+     [
+      "geometry",
+      "angle_relation_unknown_measure"
+     ],
+     [
       "ratio",
       "additive_extension_of_ratio"
      ],
      [
       "ratio",
       "construct_referent_ratio_diagram"
+     ],
+     [
+      "ratio",
+      "inscribe_proportional_equation"
      ],
      [
       "ratio",
@@ -15762,6 +15822,18 @@
       "triangle_area_half_base_height"
      ],
      [
+      "geometry",
+      "use_diameter_as_radius_in_circumference"
+     ],
+     [
+      "integer",
+      "reverse_signed_multiplication_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_multiplication_by_sign_rule"
+     ],
+     [
       "measurement",
       "unit_conversion_by_iteration"
      ],
@@ -15825,6 +15897,38 @@
       "rectangular_prism_missing_dimension_from_volume"
      ],
      [
+      "integer",
+      "reverse_signed_division_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_division_by_sign_rule"
+     ],
+     [
+      "ratio",
+      "compute_unit_rate_from_ratio_pair"
+     ],
+     [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
+     ],
+     [
+      "ratio",
+      "inscribe_proportional_equation"
+     ],
+     [
+      "ratio",
+      "test_relation_for_proportionality"
+     ],
+     [
+      "statistics",
+      "estimate_probability_from_observed_frequency"
+     ],
+     [
+      "statistics",
+      "finite_frequency_as_exact_probability"
+     ],
+     [
       "statistics",
       "mean_absolute_deviation"
      ],
@@ -15855,6 +15959,10 @@
     "canonical_mapping_signature_matches": [
      [
       "algebraic",
+      "combine_unlike_terms"
+     ],
+     [
+      "algebraic",
       "exponent_as_multiplier"
      ],
      [
@@ -15878,12 +15986,24 @@
       "slanted_side_as_parallelogram_height"
      ],
      [
+      "geometry",
+      "use_diameter_as_radius_in_circumference"
+     ],
+     [
+      "integer",
+      "swap_subtraction_operands_to_preserve_nonnegative_result"
+     ],
+     [
       "multiplication",
       "add_instead_of_multiply"
      ],
      [
       "multiplication",
       "repeat_group_size_by_itself"
+     ],
+     [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
      ],
      [
       "ratio",
@@ -16004,6 +16124,10 @@
      ],
      [
       "statistics",
+      "estimate_probability_from_observed_frequency"
+     ],
+     [
+      "statistics",
       "histogram_equal_interval_representation"
      ],
      [
@@ -16044,6 +16168,14 @@
      [
       "division",
       "name_reached_total_as_quotient"
+     ],
+     [
+      "integer",
+      "signed_subtraction_as_additive_inverse"
+     ],
+     [
+      "integer",
+      "swap_subtraction_operands_to_preserve_nonnegative_result"
      ],
      [
       "subtraction",
@@ -16796,6 +16928,10 @@
      ],
      [
       "algebraic",
+      "combine_signed_like_terms"
+     ],
+     [
+      "algebraic",
       "contextual_linear_equation_construction"
      ],
      [
@@ -16804,7 +16940,15 @@
      ],
      [
       "algebraic",
+      "percent_change_composition"
+     ],
+     [
+      "algebraic",
       "symbolic_expression_construction"
+     ],
+     [
+      "algebraic",
+      "translate_diagram_to_equation"
      ],
      [
       "counting",
@@ -16856,7 +17000,15 @@
      ],
      [
       "ratio",
+      "inscribe_proportional_equation"
+     ],
+     [
+      "ratio",
       "reverse_ratio_referent_order"
+     ],
+     [
+      "ratio",
+      "test_relation_for_proportionality"
      ],
      [
       "statistics",
@@ -16915,8 +17067,16 @@
       "balance_preserving_linear_solution"
      ],
      [
+      "algebraic",
+      "percent_change_composition"
+     ],
+     [
       "fraction",
       "solve_for_unit"
+     ],
+     [
+      "geometry",
+      "angle_relation_unknown_measure"
      ],
      [
       "geometry",
@@ -17116,6 +17276,10 @@
      ],
      [
       "integer",
+      "conflate_signed_difference_with_distance"
+     ],
+     [
+      "integer",
       "signed_number_location_and_order"
      ],
      [
@@ -17224,6 +17388,10 @@
       "sum_overlapping_prism_volumes"
      ],
      [
+      "integer",
+      "conflate_signed_difference_with_distance"
+     ],
+     [
       "statistics",
       "mean_absolute_deviation"
      ],
@@ -17234,6 +17402,10 @@
      [
       "statistics",
       "mean_deviation_without_absolute_value"
+     ],
+     [
+      "statistics",
+      "sample_population_distribution_judgment"
      ]
     ],
     "line": 275,
@@ -17248,7 +17420,15 @@
     "canonical_mapping_signature_matches": [
      [
       "algebraic",
+      "combine_unlike_terms"
+     ],
+     [
+      "algebraic",
       "one_sided_equation_operation"
+     ],
+     [
+      "algebraic",
+      "split_repeated_diagram_variable"
      ],
      [
       "calculus",
@@ -17340,7 +17520,15 @@
      ],
      [
       "geometry",
+      "use_diameter_as_radius_in_circumference"
+     ],
+     [
+      "geometry",
       "visible_faces_only_surface_area"
+     ],
+     [
+      "integer",
+      "conflate_signed_difference_with_distance"
      ],
      [
       "integer",
@@ -17349,6 +17537,18 @@
      [
       "integer",
       "inequality_as_boundary_point"
+     ],
+     [
+      "integer",
+      "reverse_signed_division_sign_rule"
+     ],
+     [
+      "integer",
+      "reverse_signed_multiplication_sign_rule"
+     ],
+     [
+      "integer",
+      "swap_subtraction_operands_to_preserve_nonnegative_result"
      ],
      [
       "measurement",
@@ -17369,6 +17569,10 @@
      [
       "multiplication",
       "known_product_without_adjustment"
+     ],
+     [
+      "statistics",
+      "finite_frequency_as_exact_probability"
      ],
      [
       "subtraction",
@@ -17530,7 +17734,15 @@
      ],
      [
       "geometry",
+      "circle_circumference_diameter_co_measurement"
+     ],
+     [
+      "geometry",
       "rectangle_area_perimeter_constraint_search"
+     ],
+     [
+      "integer",
+      "signed_subtraction_as_additive_inverse"
      ],
      [
       "measurement",
@@ -17565,6 +17777,14 @@
       "terminal_tree_endpoint_probability_sum"
      ],
      [
+      "ratio",
+      "compute_unit_rate_from_ratio_pair"
+     ],
+     [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
+     ],
+     [
       "statistics",
       "distribution_summary_selection"
      ],
@@ -17575,6 +17795,10 @@
      [
       "statistics",
       "question_without_variability"
+     ],
+     [
+      "statistics",
+      "sample_population_distribution_judgment"
      ],
      [
       "statistics",
@@ -17811,6 +18035,10 @@
       "signed_number_location_and_order"
      ],
      [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
+     ],
+     [
       "statistics",
       "box_plot_from_five_number_summary"
      ],
@@ -17910,7 +18138,15 @@
      ],
      [
       "algebraic",
+      "combine_signed_like_terms"
+     ],
+     [
+      "algebraic",
       "exponential_equivalence_by_expansion"
+     ],
+     [
+      "algebraic",
+      "percent_change_composition"
      ],
      [
       "decimal",
@@ -17931,6 +18167,18 @@
      [
       "fraction",
       "common_unit_fraction_comparison"
+     ],
+     [
+      "integer",
+      "reverse_signed_division_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_division_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_subtraction_as_additive_inverse"
      ]
     ],
     "line": 293,
@@ -17949,6 +18197,14 @@
      ],
      [
       "algebraic",
+      "combine_signed_like_terms"
+     ],
+     [
+      "algebraic",
+      "combine_unlike_terms"
+     ],
+     [
+      "algebraic",
       "distributive_expression_rewrite"
      ],
      [
@@ -17958,6 +18214,14 @@
      [
       "algebraic",
       "linear_pattern_contextual_rule"
+     ],
+     [
+      "algebraic",
+      "split_repeated_diagram_variable"
+     ],
+     [
+      "algebraic",
+      "translate_diagram_to_equation"
      ],
      [
       "calculus",
@@ -18081,7 +18345,23 @@
      ],
      [
       "integer",
+      "reverse_signed_division_sign_rule"
+     ],
+     [
+      "integer",
+      "reverse_signed_multiplication_sign_rule"
+     ],
+     [
+      "integer",
       "signed_addition_with_sign_relation"
+     ],
+     [
+      "integer",
+      "signed_division_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_multiplication_by_sign_rule"
      ],
      [
       "measurement",
@@ -18321,6 +18601,18 @@
       "signed_addition_with_sign_relation"
      ],
      [
+      "integer",
+      "signed_division_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_multiplication_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_subtraction_as_additive_inverse"
+     ],
+     [
       "multiplication",
       "commute_factors_preserve_product"
      ],
@@ -18335,6 +18627,10 @@
      [
       "multiplication",
       "multiplication_fact_retrieval"
+     ],
+     [
+      "ratio",
+      "compute_unit_rate_from_ratio_pair"
      ],
      [
       "ratio",
@@ -18421,11 +18717,19 @@
      ],
      [
       "algebraic",
+      "combine_unlike_terms"
+     ],
+     [
+      "algebraic",
       "drop_distributed_term"
      ],
      [
       "algebraic",
       "guess_and_check_rule"
+     ],
+     [
+      "algebraic",
+      "split_repeated_diagram_variable"
      ],
      [
       "calculus",
@@ -18509,11 +18813,27 @@
      ],
      [
       "integer",
+      "conflate_signed_difference_with_distance"
+     ],
+     [
+      "integer",
       "drop_sign_use_magnitude_sum"
      ],
      [
       "integer",
       "order_by_magnitude_ignore_sign"
+     ],
+     [
+      "integer",
+      "reverse_signed_division_sign_rule"
+     ],
+     [
+      "integer",
+      "reverse_signed_multiplication_sign_rule"
+     ],
+     [
+      "integer",
+      "swap_subtraction_operands_to_preserve_nonnegative_result"
      ],
      [
       "measurement",
@@ -18562,6 +18882,10 @@
      [
       "ratio",
       "additive_extension_of_ratio"
+     ],
+     [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
      ],
      [
       "ratio",
@@ -18621,6 +18945,18 @@
      [
       "fraction",
       "gap_thinking_fraction_comparison"
+     ],
+     [
+      "geometry",
+      "triangle_three_measure_determination"
+     ],
+     [
+      "ratio",
+      "test_relation_for_proportionality"
+     ],
+     [
+      "statistics",
+      "estimate_probability_from_observed_frequency"
      ]
     ],
     "line": 309,
@@ -18723,11 +19059,19 @@
      ],
      [
       "geometry",
+      "angle_relation_unknown_measure"
+     ],
+     [
+      "geometry",
       "area_as_perimeter_count"
      ],
      [
       "geometry",
       "area_preserving_polygon_decomposition"
+     ],
+     [
+      "geometry",
+      "circle_circumference_diameter_co_measurement"
      ],
      [
       "geometry",
@@ -18795,6 +19139,14 @@
      ],
      [
       "geometry",
+      "triangle_three_measure_determination"
+     ],
+     [
+      "geometry",
+      "use_diameter_as_radius_in_circumference"
+     ],
+     [
+      "geometry",
       "visible_faces_only_surface_area"
      ],
      [
@@ -18859,11 +19211,27 @@
      ],
      [
       "ratio",
+      "compute_unit_rate_from_ratio_pair"
+     ],
+     [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
+     ],
+     [
+      "ratio",
+      "inscribe_proportional_equation"
+     ],
+     [
+      "ratio",
       "reverse_ratio_referent_order"
      ],
      [
       "ratio",
       "scale_ratio_unit"
+     ],
+     [
+      "ratio",
+      "test_relation_for_proportionality"
      ],
      [
       "statistics",
@@ -18872,6 +19240,14 @@
      [
       "statistics",
       "distribution_summary_selection"
+     ],
+     [
+      "statistics",
+      "estimate_probability_from_observed_frequency"
+     ],
+     [
+      "statistics",
+      "finite_frequency_as_exact_probability"
      ],
      [
       "statistics",
@@ -18900,6 +19276,10 @@
      [
       "statistics",
       "mode_as_maximal_frequency"
+     ],
+     [
+      "statistics",
+      "sample_population_distribution_judgment"
      ],
      [
       "statistics",
@@ -19315,6 +19695,14 @@
       "angle_as_ray_length"
      ],
      [
+      "geometry",
+      "circle_circumference_diameter_co_measurement"
+     ],
+     [
+      "ratio",
+      "inscribe_proportional_equation"
+     ],
+     [
       "ratio",
       "scale_ratio_unit"
      ]
@@ -19720,6 +20108,18 @@
      [
       "algebraic",
       "operational_equals_left_value"
+     ],
+     [
+      "algebraic",
+      "split_repeated_diagram_variable"
+     ],
+     [
+      "integer",
+      "reverse_signed_division_sign_rule"
+     ],
+     [
+      "integer",
+      "reverse_signed_multiplication_sign_rule"
      ]
     ],
     "line": 365,
@@ -19751,6 +20151,10 @@
      [
       "calculus",
       "factor_cancel_without_common_factor"
+     ],
+     [
+      "ratio",
+      "inscribe_proportional_equation"
      ]
     ],
     "line": 367,
@@ -19802,8 +20206,16 @@
       "shape_classification_by_defining_attributes"
      ],
      [
+      "geometry",
+      "triangle_three_measure_determination"
+     ],
+     [
       "integer",
       "inequality_solution_set_representation"
+     ],
+     [
+      "statistics",
+      "sample_population_distribution_judgment"
      ],
      [
       "statistics",
@@ -19854,6 +20266,14 @@
      [
       "geometry",
       "rectangle_perimeter_boundary_traversal"
+     ],
+     [
+      "integer",
+      "signed_division_by_sign_rule"
+     ],
+     [
+      "integer",
+      "signed_multiplication_by_sign_rule"
      ]
     ],
     "line": 375,
@@ -19932,11 +20352,19 @@
      ],
      [
       "integer",
+      "conflate_signed_difference_with_distance"
+     ],
+     [
+      "integer",
       "drop_sign_use_magnitude_sum"
      ],
      [
       "integer",
       "inequality_as_boundary_point"
+     ],
+     [
+      "integer",
+      "swap_subtraction_operands_to_preserve_nonnegative_result"
      ],
      [
       "measurement",
@@ -20200,6 +20628,10 @@
      [
       "integer",
       "signed_number_location_and_order"
+     ],
+     [
+      "ratio",
+      "test_relation_for_proportionality"
      ],
      [
       "statistics",
@@ -21413,6 +21845,81 @@
     "surface": "geometry_action"
    },
    {
+    "action_name": "circle_circumference_diameter_co_measurement",
+    "canonical_mapping_signature_matches": [],
+    "line": 1286,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "circle_circumference_diameter_co_measurement"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/math/geometry_action_pairs.pl",
+    "surface": "geometry_action"
+   },
+   {
+    "action_name": "circle_circumference_diameter_co_measurement",
+    "canonical_mapping_signature_matches": [],
+    "line": 1317,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "circle_circumference_diameter_co_measurement"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/math/geometry_action_pairs.pl",
+    "surface": "geometry_action"
+   },
+   {
+    "action_name": "use_diameter_as_radius_in_circumference",
+    "canonical_mapping_signature_matches": [],
+    "line": 1353,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "use_diameter_as_radius_in_circumference"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/math/geometry_action_pairs.pl",
+    "surface": "geometry_action"
+   },
+   {
+    "action_name": "triangle_three_measure_determination",
+    "canonical_mapping_signature_matches": [],
+    "line": 1393,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "triangle_three_measure_determination"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/math/geometry_action_pairs.pl",
+    "surface": "geometry_action"
+   },
+   {
+    "action_name": "angle_relation_unknown_measure",
+    "canonical_mapping_signature_matches": [],
+    "line": 1420,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "angle_relation_unknown_measure"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/math/geometry_action_pairs.pl",
+    "surface": "geometry_action"
+   },
+   {
     "action_name": "cover_region_with_unit_squares",
     "canonical_mapping_signature_matches": [],
     "line": 98,
@@ -22043,9 +22550,39 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "contextual_linear_equation_construction",
+    "action_name": "combine_signed_like_terms",
     "canonical_mapping_signature_matches": [],
     "line": 7,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "algebraic",
+      "combine_signed_like_terms"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/algebraic.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "combine_unlike_terms",
+    "canonical_mapping_signature_matches": [],
+    "line": 8,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "algebraic",
+      "combine_unlike_terms"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/algebraic.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "contextual_linear_equation_construction",
+    "canonical_mapping_signature_matches": [],
+    "line": 9,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22060,7 +22597,7 @@
    {
     "action_name": "distributive_expression_rewrite",
     "canonical_mapping_signature_matches": [],
-    "line": 8,
+    "line": 10,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22075,7 +22612,7 @@
    {
     "action_name": "drop_distributed_term",
     "canonical_mapping_signature_matches": [],
-    "line": 9,
+    "line": 11,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22090,7 +22627,7 @@
    {
     "action_name": "equation_truth_by_substitution",
     "canonical_mapping_signature_matches": [],
-    "line": 10,
+    "line": 12,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22105,7 +22642,7 @@
    {
     "action_name": "exponent_as_multiplier",
     "canonical_mapping_signature_matches": [],
-    "line": 11,
+    "line": 13,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22120,7 +22657,7 @@
    {
     "action_name": "exponent_as_repeated_factor",
     "canonical_mapping_signature_matches": [],
-    "line": 12,
+    "line": 14,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22135,7 +22672,7 @@
    {
     "action_name": "exponential_equivalence_by_expansion",
     "canonical_mapping_signature_matches": [],
-    "line": 13,
+    "line": 15,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22150,7 +22687,7 @@
    {
     "action_name": "guess_and_check_rule",
     "canonical_mapping_signature_matches": [],
-    "line": 14,
+    "line": 16,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22165,7 +22702,7 @@
    {
     "action_name": "linear_pattern_contextual_rule",
     "canonical_mapping_signature_matches": [],
-    "line": 15,
+    "line": 17,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22180,7 +22717,7 @@
    {
     "action_name": "one_sided_equation_operation",
     "canonical_mapping_signature_matches": [],
-    "line": 16,
+    "line": 18,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22195,7 +22732,7 @@
    {
     "action_name": "operational_equals_left_value",
     "canonical_mapping_signature_matches": [],
-    "line": 17,
+    "line": 19,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22208,9 +22745,24 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "percent_change_composition",
+    "canonical_mapping_signature_matches": [],
+    "line": 20,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "algebraic",
+      "percent_change_composition"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/algebraic.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "programming_expression_evaluation",
     "canonical_mapping_signature_matches": [],
-    "line": 18,
+    "line": 21,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -22223,14 +22775,44 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "split_repeated_diagram_variable",
+    "canonical_mapping_signature_matches": [],
+    "line": 22,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "algebraic",
+      "split_repeated_diagram_variable"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/algebraic.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "symbolic_expression_construction",
     "canonical_mapping_signature_matches": [],
-    "line": 19,
+    "line": 23,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
       "algebraic",
       "symbolic_expression_construction"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/algebraic.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "translate_diagram_to_equation",
+    "canonical_mapping_signature_matches": [],
+    "line": 24,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "algebraic",
+      "translate_diagram_to_equation"
      ]
     ],
     "requesting_signature_matches": [],
@@ -23408,9 +23990,24 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "angle_turn_measurement",
+    "action_name": "angle_relation_unknown_measure",
     "canonical_mapping_signature_matches": [],
     "line": 8,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "angle_relation_unknown_measure"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/geometry.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "angle_turn_measurement",
+    "canonical_mapping_signature_matches": [],
+    "line": 9,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23425,7 +24022,7 @@
    {
     "action_name": "area_as_perimeter_count",
     "canonical_mapping_signature_matches": [],
-    "line": 9,
+    "line": 10,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23440,7 +24037,7 @@
    {
     "action_name": "area_preserving_polygon_decomposition",
     "canonical_mapping_signature_matches": [],
-    "line": 10,
+    "line": 11,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23455,7 +24052,7 @@
    {
     "action_name": "area_unit_covering",
     "canonical_mapping_signature_matches": [],
-    "line": 11,
+    "line": 12,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23470,7 +24067,7 @@
    {
     "action_name": "area_unit_scale_selection",
     "canonical_mapping_signature_matches": [],
-    "line": 12,
+    "line": 13,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23485,7 +24082,7 @@
    {
     "action_name": "axis_aligned_coordinate_distance",
     "canonical_mapping_signature_matches": [],
-    "line": 13,
+    "line": 14,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23500,7 +24097,7 @@
    {
     "action_name": "choose_first_area_unit_without_scale",
     "canonical_mapping_signature_matches": [],
-    "line": 14,
+    "line": 15,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23513,9 +24110,24 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "circle_circumference_diameter_co_measurement",
+    "canonical_mapping_signature_matches": [],
+    "line": 16,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "circle_circumference_diameter_co_measurement"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/geometry.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "compare_solid_volume_by_cube_count",
     "canonical_mapping_signature_matches": [],
-    "line": 15,
+    "line": 17,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23530,7 +24142,7 @@
    {
     "action_name": "compare_solid_volume_by_visible_extent",
     "canonical_mapping_signature_matches": [],
-    "line": 16,
+    "line": 18,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23545,7 +24157,7 @@
    {
     "action_name": "composite_prism_volume_sum",
     "canonical_mapping_signature_matches": [],
-    "line": 17,
+    "line": 19,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23560,7 +24172,7 @@
    {
     "action_name": "count_overlapping_area_tiles",
     "canonical_mapping_signature_matches": [],
-    "line": 18,
+    "line": 20,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23575,7 +24187,7 @@
    {
     "action_name": "decomposition_with_gap_or_overlap",
     "canonical_mapping_signature_matches": [],
-    "line": 19,
+    "line": 21,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23590,7 +24202,7 @@
    {
     "action_name": "dimensional_measure_unit_coordination",
     "canonical_mapping_signature_matches": [],
-    "line": 20,
+    "line": 22,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23605,7 +24217,7 @@
    {
     "action_name": "directed_difference_as_coordinate_distance",
     "canonical_mapping_signature_matches": [],
-    "line": 21,
+    "line": 23,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23620,7 +24232,7 @@
    {
     "action_name": "divide_volume_by_one_dimension",
     "canonical_mapping_signature_matches": [],
-    "line": 22,
+    "line": 24,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23635,7 +24247,7 @@
    {
     "action_name": "ignore_perimeter_rectangle_constraint",
     "canonical_mapping_signature_matches": [],
-    "line": 23,
+    "line": 25,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23650,7 +24262,7 @@
    {
     "action_name": "ignore_symmetry_multiplicity",
     "canonical_mapping_signature_matches": [],
-    "line": 24,
+    "line": 26,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23665,7 +24277,7 @@
    {
     "action_name": "linear_unit_for_area_or_volume",
     "canonical_mapping_signature_matches": [],
-    "line": 25,
+    "line": 27,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23680,7 +24292,7 @@
    {
     "action_name": "omit_half_in_triangle_area",
     "canonical_mapping_signature_matches": [],
-    "line": 26,
+    "line": 28,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23695,7 +24307,7 @@
    {
     "action_name": "omit_unlabeled_boundary_side",
     "canonical_mapping_signature_matches": [],
-    "line": 27,
+    "line": 29,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23710,7 +24322,7 @@
    {
     "action_name": "ordered_pair_coordinate_plot",
     "canonical_mapping_signature_matches": [],
-    "line": 28,
+    "line": 30,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23725,7 +24337,7 @@
    {
     "action_name": "orientation_bound_shape_classification",
     "canonical_mapping_signature_matches": [],
-    "line": 29,
+    "line": 31,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23740,7 +24352,7 @@
    {
     "action_name": "parallelogram_area_base_height",
     "canonical_mapping_signature_matches": [],
-    "line": 30,
+    "line": 32,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23755,7 +24367,7 @@
    {
     "action_name": "perimeter_two_sides_only",
     "canonical_mapping_signature_matches": [],
-    "line": 31,
+    "line": 33,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23770,7 +24382,7 @@
    {
     "action_name": "perimeter_uses_area_formula",
     "canonical_mapping_signature_matches": [],
-    "line": 32,
+    "line": 34,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23785,7 +24397,7 @@
    {
     "action_name": "polygon_perimeter_boundary_accumulation",
     "canonical_mapping_signature_matches": [],
-    "line": 33,
+    "line": 35,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23800,7 +24412,7 @@
    {
     "action_name": "polyhedron_surface_area_from_net",
     "canonical_mapping_signature_matches": [],
-    "line": 34,
+    "line": 36,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23815,7 +24427,7 @@
    {
     "action_name": "rectangle_area_perimeter_constraint_search",
     "canonical_mapping_signature_matches": [],
-    "line": 35,
+    "line": 37,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23830,7 +24442,7 @@
    {
     "action_name": "rectangle_area_unit_iteration",
     "canonical_mapping_signature_matches": [],
-    "line": 36,
+    "line": 38,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23845,7 +24457,7 @@
    {
     "action_name": "rectangle_factor_pair_search",
     "canonical_mapping_signature_matches": [],
-    "line": 37,
+    "line": 39,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23860,7 +24472,7 @@
    {
     "action_name": "rectangle_missing_side_from_area",
     "canonical_mapping_signature_matches": [],
-    "line": 38,
+    "line": 40,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23875,7 +24487,7 @@
    {
     "action_name": "rectangle_missing_side_from_perimeter",
     "canonical_mapping_signature_matches": [],
-    "line": 39,
+    "line": 41,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23890,7 +24502,7 @@
    {
     "action_name": "rectangle_perimeter_boundary_traversal",
     "canonical_mapping_signature_matches": [],
-    "line": 40,
+    "line": 42,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23905,7 +24517,7 @@
    {
     "action_name": "rectangle_perimeter_side_pair_search",
     "canonical_mapping_signature_matches": [],
-    "line": 41,
+    "line": 43,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23920,7 +24532,7 @@
    {
     "action_name": "rectangular_prism_missing_dimension_from_volume",
     "canonical_mapping_signature_matches": [],
-    "line": 42,
+    "line": 44,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23935,7 +24547,7 @@
    {
     "action_name": "rectangular_prism_volume_layer_iteration",
     "canonical_mapping_signature_matches": [],
-    "line": 43,
+    "line": 45,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23950,7 +24562,7 @@
    {
     "action_name": "rigid_shape_composition",
     "canonical_mapping_signature_matches": [],
-    "line": 44,
+    "line": 46,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23965,7 +24577,7 @@
    {
     "action_name": "shape_classification_by_defining_attributes",
     "canonical_mapping_signature_matches": [],
-    "line": 45,
+    "line": 47,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23980,7 +24592,7 @@
    {
     "action_name": "slanted_side_as_parallelogram_height",
     "canonical_mapping_signature_matches": [],
-    "line": 46,
+    "line": 48,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -23995,7 +24607,7 @@
    {
     "action_name": "subtract_side_from_area",
     "canonical_mapping_signature_matches": [],
-    "line": 47,
+    "line": 49,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24010,7 +24622,7 @@
    {
     "action_name": "sum_overlapping_prism_volumes",
     "canonical_mapping_signature_matches": [],
-    "line": 48,
+    "line": 50,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24025,7 +24637,7 @@
    {
     "action_name": "symmetry_constrained_side_reconstruction",
     "canonical_mapping_signature_matches": [],
-    "line": 49,
+    "line": 51,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24040,7 +24652,7 @@
    {
     "action_name": "triangle_area_half_base_height",
     "canonical_mapping_signature_matches": [],
-    "line": 50,
+    "line": 52,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24053,9 +24665,39 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "triangle_three_measure_determination",
+    "canonical_mapping_signature_matches": [],
+    "line": 53,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "triangle_three_measure_determination"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/geometry.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "use_diameter_as_radius_in_circumference",
+    "canonical_mapping_signature_matches": [],
+    "line": 54,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "geometry",
+      "use_diameter_as_radius_in_circumference"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/geometry.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "visible_faces_only_surface_area",
     "canonical_mapping_signature_matches": [],
-    "line": 51,
+    "line": 55,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24068,9 +24710,24 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "drop_sign_use_magnitude_sum",
+    "action_name": "conflate_signed_difference_with_distance",
     "canonical_mapping_signature_matches": [],
     "line": 6,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "conflate_signed_difference_with_distance"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "drop_sign_use_magnitude_sum",
+    "canonical_mapping_signature_matches": [],
+    "line": 7,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24085,7 +24742,7 @@
    {
     "action_name": "inequality_as_boundary_point",
     "canonical_mapping_signature_matches": [],
-    "line": 7,
+    "line": 8,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24100,7 +24757,7 @@
    {
     "action_name": "inequality_solution_set_representation",
     "canonical_mapping_signature_matches": [],
-    "line": 8,
+    "line": 9,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24115,7 +24772,7 @@
    {
     "action_name": "order_by_magnitude_ignore_sign",
     "canonical_mapping_signature_matches": [],
-    "line": 9,
+    "line": 10,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24128,9 +24785,39 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "reverse_signed_division_sign_rule",
+    "canonical_mapping_signature_matches": [],
+    "line": 11,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "reverse_signed_division_sign_rule"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "reverse_signed_multiplication_sign_rule",
+    "canonical_mapping_signature_matches": [],
+    "line": 12,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "reverse_signed_multiplication_sign_rule"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "signed_addition_with_sign_relation",
     "canonical_mapping_signature_matches": [],
-    "line": 10,
+    "line": 13,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24143,14 +24830,74 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "signed_division_by_sign_rule",
+    "canonical_mapping_signature_matches": [],
+    "line": 14,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "signed_division_by_sign_rule"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "signed_multiplication_by_sign_rule",
+    "canonical_mapping_signature_matches": [],
+    "line": 15,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "signed_multiplication_by_sign_rule"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "signed_number_location_and_order",
     "canonical_mapping_signature_matches": [],
-    "line": 11,
+    "line": 16,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
       "integer",
       "signed_number_location_and_order"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "signed_subtraction_as_additive_inverse",
+    "canonical_mapping_signature_matches": [],
+    "line": 17,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "signed_subtraction_as_additive_inverse"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/integer.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "swap_subtraction_operands_to_preserve_nonnegative_result",
+    "canonical_mapping_signature_matches": [],
+    "line": 18,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "integer",
+      "swap_subtraction_operands_to_preserve_nonnegative_result"
      ]
     ],
     "requesting_signature_matches": [],
@@ -24623,9 +25370,24 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "construct_referent_ratio_diagram",
+    "action_name": "compute_unit_rate_from_ratio_pair",
     "canonical_mapping_signature_matches": [],
     "line": 7,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "ratio",
+      "compute_unit_rate_from_ratio_pair"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/ratio.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "construct_referent_ratio_diagram",
+    "canonical_mapping_signature_matches": [],
+    "line": 8,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24638,9 +25400,39 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "divide_larger_by_smaller_for_unit_rate",
+    "canonical_mapping_signature_matches": [],
+    "line": 9,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "ratio",
+      "divide_larger_by_smaller_for_unit_rate"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/ratio.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "inscribe_proportional_equation",
+    "canonical_mapping_signature_matches": [],
+    "line": 10,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "ratio",
+      "inscribe_proportional_equation"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/ratio.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "reverse_ratio_referent_order",
     "canonical_mapping_signature_matches": [],
-    "line": 8,
+    "line": 11,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24655,12 +25447,27 @@
    {
     "action_name": "scale_ratio_unit",
     "canonical_mapping_signature_matches": [],
-    "line": 9,
+    "line": 12,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
       "ratio",
       "scale_ratio_unit"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/ratio.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "test_relation_for_proportionality",
+    "canonical_mapping_signature_matches": [],
+    "line": 13,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "ratio",
+      "test_relation_for_proportionality"
      ]
     ],
     "requesting_signature_matches": [],
@@ -24728,9 +25535,39 @@
     "surface": "transition_table_automaton"
    },
    {
-    "action_name": "five_number_summary_and_iqr",
+    "action_name": "estimate_probability_from_observed_frequency",
     "canonical_mapping_signature_matches": [],
     "line": 10,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "statistics",
+      "estimate_probability_from_observed_frequency"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/statistics.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "finite_frequency_as_exact_probability",
+    "canonical_mapping_signature_matches": [],
+    "line": 11,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "statistics",
+      "finite_frequency_as_exact_probability"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/statistics.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
+    "action_name": "five_number_summary_and_iqr",
+    "canonical_mapping_signature_matches": [],
+    "line": 12,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24745,7 +25582,7 @@
    {
     "action_name": "histogram_equal_interval_representation",
     "canonical_mapping_signature_matches": [],
-    "line": 11,
+    "line": 13,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24760,7 +25597,7 @@
    {
     "action_name": "mean_absolute_deviation",
     "canonical_mapping_signature_matches": [],
-    "line": 12,
+    "line": 14,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24775,7 +25612,7 @@
    {
     "action_name": "mean_as_balance_point",
     "canonical_mapping_signature_matches": [],
-    "line": 13,
+    "line": 15,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24790,7 +25627,7 @@
    {
     "action_name": "mean_as_fair_share",
     "canonical_mapping_signature_matches": [],
-    "line": 14,
+    "line": 16,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24805,7 +25642,7 @@
    {
     "action_name": "mean_deviation_without_absolute_value",
     "canonical_mapping_signature_matches": [],
-    "line": 15,
+    "line": 17,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24820,7 +25657,7 @@
    {
     "action_name": "median_as_ordered_middle",
     "canonical_mapping_signature_matches": [],
-    "line": 16,
+    "line": 18,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24835,7 +25672,7 @@
    {
     "action_name": "mode_as_maximal_frequency",
     "canonical_mapping_signature_matches": [],
-    "line": 17,
+    "line": 19,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24850,7 +25687,7 @@
    {
     "action_name": "question_without_variability",
     "canonical_mapping_signature_matches": [],
-    "line": 18,
+    "line": 20,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -24863,9 +25700,24 @@
     "surface": "transition_table_automaton"
    },
    {
+    "action_name": "sample_population_distribution_judgment",
+    "canonical_mapping_signature_matches": [],
+    "line": 21,
+    "registered_automaton_correspondence": true,
+    "registry_signature_matches": [
+     [
+      "statistics",
+      "sample_population_distribution_judgment"
+     ]
+    ],
+    "requesting_signature_matches": [],
+    "source": "knowledge/strategies/transition_tables/statistics.pl",
+    "surface": "transition_table_automaton"
+   },
+   {
     "action_name": "statistical_question_variability_classification",
     "canonical_mapping_signature_matches": [],
-    "line": 19,
+    "line": 22,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -26012,7 +26864,7 @@
   ],
   "uncorresponded_occurrences": 92,
   "uncorresponded_unique_names": 88,
-  "unique_action_names": 402
+  "unique_action_names": 425
  },
  "population_check": {
   "class_count_sum": 226,
@@ -26024,7 +26876,7 @@
  },
  "register": "Measured partial action-seam inventory. Enacted membership requires inputs extracted from that lesson's accepted tracked span and a live trace.",
  "registry_probe_inventory": {
-  "checked_contracts_run": 223,
+  "checked_contracts_run": 246,
   "coverage": [
    {
     "checked_contract_run": {
@@ -33305,6 +34157,503 @@
    {
     "checked_contract_run": {
      "input": {
+      "kind": "signed_subtraction",
+      "minuend": 3,
+      "subtrahend": 5
+     },
+     "kind": "signed_subtraction_as_additive_inverse",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_difference(-2)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "signed_subtraction_as_additive_inverse",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_difference(-2)",
+      "steps": [
+       {
+        "label": "assign_subtraction_roles(minuend(3),subtrahend(5))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "rewrite_subtraction_as_unknown_addend(equation(5+unknown,3))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "draw_addend_arrow_to_target(5,3)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "read_arrow_displacement(-2)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "rewrite_as_adding_additive_inverse(3+ -5,-2)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "generalize_subtract_as_add_opposite(-2)",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "signed_subtraction_as_additive_inverse",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "signed_subtraction_as_additive_inverse",
+    "line": 488,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "signed_subtraction",
+      "minuend": 3,
+      "subtrahend": 5
+     },
+     "kind": "swap_subtraction_operands_to_preserve_nonnegative_result",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_difference(-2)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "swap_subtraction_operands_to_preserve_nonnegative_result",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_difference(2)",
+      "steps": [
+       {
+        "label": "swap_minuend_and_subtrahend(original(3,5),used(5,3))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "prefer_nonnegative_subtraction_orientation",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "draw_addend_arrow_to_target(3,5)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_swapped_difference(2)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "lose_ordered_difference(expected(-2),produced(2))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "swap_subtraction_operands_to_preserve_nonnegative_result",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "swap_subtraction_operands_to_preserve_nonnegative_result",
+    "line": 492,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "signed_subtraction",
+      "minuend": 3,
+      "subtrahend": 5
+     },
+     "kind": "conflate_signed_difference_with_distance",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_difference(-2)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "conflate_signed_difference_with_distance",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_difference(2)",
+      "steps": [
+       {
+        "label": "locate_subtraction_endpoints(5,3)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "measure_unsigned_distance_between_endpoints(2)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "discard_change_direction(expected(-2))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "name_distance_as_signed_difference(2)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "lose_ordered_difference(expected(-2),produced(2))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "conflate_signed_difference_with_distance",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "conflate_signed_difference_with_distance",
+    "line": 496,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "signed_multiplication",
+      "multiplicand": 8,
+      "multiplier": -5
+     },
+     "kind": "signed_multiplication_by_sign_rule",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_product(-40)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "signed_multiplication_by_sign_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_product(-40)",
+      "steps": [
+       {
+        "label": "continue_product_pattern_across_zero",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_factor_signs(negative,positive)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "determine_multiplicative_sign_relation(different_signs)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "multiply_factor_magnitudes(5,8,40)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "assign_product_sign(negative,40,-40)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "state_signed_product_rule(-40)",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "signed_multiplication_by_sign_rule",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "signed_multiplication_by_sign_rule",
+    "line": 500,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "signed_multiplication",
+      "multiplicand": 8,
+      "multiplier": -5
+     },
+     "kind": "reverse_signed_multiplication_sign_rule",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_product(-40)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "reverse_signed_multiplication_sign_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_product(40)",
+      "steps": [
+       {
+        "label": "identify_factor_signs(negative,positive)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "reverse_multiplicative_sign_relation(different_signs)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "multiply_factor_magnitudes(5,8,40)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "assign_reversed_product_sign(positive,40,40)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "report_reversed_signed_product(40)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "lose_product_sign_relation(expected(-40),produced(40))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "reverse_signed_multiplication_sign_rule",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "reverse_signed_multiplication_sign_rule",
+    "line": 504,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "dividend": -12,
+      "divisor": 3,
+      "kind": "signed_division"
+     },
+     "kind": "signed_division_by_sign_rule",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_quotient(-4)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "signed_division_by_sign_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_quotient(-4)",
+      "steps": [
+       {
+        "label": "rewrite_division_as_unknown_factor_product(equation(3*unknown,-12))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "continue_quotient_sign_pattern_from_multiplication",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "identify_dividend_divisor_signs(negative,positive)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "determine_multiplicative_sign_relation(different_signs)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "divide_magnitudes(12,3,4)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "assign_quotient_sign(negative,4,-4)",
+        "n": 6,
+        "value": ""
+       },
+       {
+        "label": "state_signed_quotient_rule(-4)",
+        "n": 7,
+        "value": ""
+       }
+      ],
+      "strategy": "signed_division_by_sign_rule",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "signed_division_by_sign_rule",
+    "line": 509,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "dividend": -12,
+      "divisor": 3,
+      "kind": "signed_division"
+     },
+     "kind": "reverse_signed_division_sign_rule",
+     "operation": "integer",
+     "response": {
+      "expected": "signed_quotient(-4)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "reverse_signed_division_sign_rule",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "signed_quotient(4)",
+      "steps": [
+       {
+        "label": "rewrite_division_as_unknown_factor_product(equation(3*unknown,-12))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_dividend_divisor_signs(negative,positive)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "reverse_multiplicative_sign_relation(different_signs)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "divide_magnitudes(12,3,4)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "assign_reversed_quotient_sign(positive,4,4)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "report_reversed_signed_quotient(4)",
+        "n": 6,
+        "value": ""
+       },
+       {
+        "label": "lose_quotient_sign_relation(expected(-4),produced(4))",
+        "n": 7,
+        "value": ""
+       }
+      ],
+      "strategy": "reverse_signed_division_sign_rule",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "reverse_signed_division_sign_rule",
+    "line": 513,
+    "operation": "integer",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
       "a": 47,
       "b": 28
      },
@@ -33366,7 +34715,7 @@
     },
     "direct_runs": [],
     "kind": "scale_ratio_unit",
-    "line": 484,
+    "line": 519,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33431,7 +34780,7 @@
     },
     "direct_runs": [],
     "kind": "additive_extension_of_ratio",
-    "line": 487,
+    "line": 522,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33503,7 +34852,7 @@
     },
     "direct_runs": [],
     "kind": "construct_referent_ratio_diagram",
-    "line": 490,
+    "line": 525,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33570,7 +34919,307 @@
     },
     "direct_runs": [],
     "kind": "reverse_ratio_referent_order",
-    "line": 493,
+    "line": 528,
+    "operation": "ratio",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "first": 2,
+      "kind": "ratio_pair_unit_rate",
+      "referent": "first_per_second",
+      "second": 6
+     },
+     "kind": "compute_unit_rate_from_ratio_pair",
+     "operation": "ratio",
+     "response": {
+      "expected": "unit_rate(first_per_second,1r3)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "compute_unit_rate_from_ratio_pair",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "unit_rate(first_per_second,1r3)",
+      "steps": [
+       {
+        "label": "identify_ratio_pair(ratio_pair(2,6))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "select_per_one_referent(second_quantity,6)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "select_compared_quantity(first_quantity,2)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "divide_compared_by_reference(2,6,1r3)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "inscribe_unit_rate(first_per_second,1r3)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "preserve_rate_quantity_order(first_per_second)",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "compute_unit_rate_from_ratio_pair",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "compute_unit_rate_from_ratio_pair",
+    "line": 537,
+    "operation": "ratio",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "first": 2,
+      "kind": "ratio_pair_unit_rate",
+      "referent": "first_per_second",
+      "second": 6
+     },
+     "kind": "divide_larger_by_smaller_for_unit_rate",
+     "operation": "ratio",
+     "response": {
+      "expected": "unit_rate(first_per_second,1r3)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "divide_larger_by_smaller_for_unit_rate",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "unit_rate(first_per_second,3)",
+      "steps": [
+       {
+        "label": "identify_ratio_pair(ratio_pair(2,6))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "ignore_requested_rate_direction(first_per_second)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "order_ratio_terms_by_magnitude(6,2)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "divide_larger_term_by_smaller_term(6,2,3)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "inscribe_unit_rate(first_per_second,3)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "lose_rate_quantity_order(expected(1r3),produced(3))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "divide_larger_by_smaller_for_unit_rate",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "divide_larger_by_smaller_for_unit_rate",
+    "line": 541,
+    "operation": "ratio",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "ratio_pairs_proportionality_test",
+      "pairs": [
+       {
+        "first": 1,
+        "second": 3
+       },
+       {
+        "first": 2,
+        "second": 6
+       },
+       {
+        "first": 4,
+        "second": 12
+       }
+      ],
+      "test": "proportionality_test"
+     },
+     "kind": "test_relation_for_proportionality",
+     "operation": "ratio",
+     "response": {
+      "expected": "proportional(constant_of_proportionality(3))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "test_relation_for_proportionality",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "proportional(constant_of_proportionality(3))",
+      "steps": [
+       {
+        "label": "identify_relation_pairs([ratio_pair(1,3),ratio_pair(2,6),ratio_pair(4,12)])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_candidate_constant(ratio_pair(1,3),3)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "compare_each_pair_to_constant([ratio_pair(1,3),ratio_pair(2,6),ratio_pair(4,12)],3)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "accept_proportional_relation(3)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "inscribe_relation_classification(proportional(constant_of_proportionality(3)))",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "test_relation_for_proportionality",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "test_relation_for_proportionality",
+    "line": 546,
+    "operation": "ratio",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "first": 3,
+      "kind": "ratio_pair_solve_at_x",
+      "second": 12,
+      "target_x": 7
+     },
+     "kind": "inscribe_proportional_equation",
+     "operation": "ratio",
+     "response": {
+      "expected": "proportional_equation(equation(y,equals,times(4,x)),value_pair(7,28))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "inscribe_proportional_equation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "proportional_equation(equation(y,equals,times(4,x)),value_pair(7,28))",
+      "steps": [
+       {
+        "label": "identify_ratio_pair(ratio_pair(3,12))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "compute_constant_of_proportionality(3,12,4)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "bind_proportional_variable_roles(first_quantity(x),second_quantity(y))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "inscribe_y_equals_kx(4,equation(y,equals,times(4,x)))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "substitute_target_first_quantity(7)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "scale_target_by_constant(7,4,28)",
+        "n": 6,
+        "value": ""
+       },
+       {
+        "label": "inscribe_proportional_value(7,28)",
+        "n": 7,
+        "value": ""
+       }
+      ],
+      "strategy": "inscribe_proportional_equation",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "inscribe_proportional_equation",
+    "line": 550,
     "operation": "ratio",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33658,7 +35307,7 @@
     },
     "direct_runs": [],
     "kind": "programming_expression_evaluation",
-    "line": 497,
+    "line": 556,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33736,7 +35385,7 @@
     },
     "direct_runs": [],
     "kind": "contextual_linear_equation_construction",
-    "line": 499,
+    "line": 558,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33816,7 +35465,7 @@
     },
     "direct_runs": [],
     "kind": "equation_truth_by_substitution",
-    "line": 504,
+    "line": 563,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33896,7 +35545,7 @@
     },
     "direct_runs": [],
     "kind": "operational_equals_left_value",
-    "line": 508,
+    "line": 567,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -33937,7 +35586,7 @@
         "value": ""
        },
        {
-        "label": "apply_balance_preserving_steps([_35416{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_35456{left:[_35246{count:3,kind:x,role:x-box},_35270{count:2,kind:unit,role:unit-weight}],right:[_35318{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_35654{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_35694{left:[_35512{count:3,kind:x,role:x-box}],right:[_35562{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_35798{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_35838{left:[_35512{count:3,kind:x,role:x-box}],right:[_35562{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_36028{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_36068{left:[_35894{count:1,kind:x,role:x-box}],right:[_35944{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
+        "label": "apply_balance_preserving_steps([_35160{action:read_equation,balance_preserving:true,caption:3x + 2 = 20. The two sides name the same weight, so the beam is level.,left_total:20,pans:_35200{left:[_34990{count:3,kind:x,role:x-box},_35014{count:2,kind:unit,role:unit-weight}],right:[_35062{count:20,kind:unit,role:unit-weight}]},right_total:20,step:1,tilt:level,verb:show_equation_as_balance},_35398{action:subtract_same_units_from_both_pans,balance_preserving:true,caption:Take 2 units off BOTH pans. Left 3x, right 18; still level.,left_total:18,pans:_35438{left:[_35256{count:3,kind:x,role:x-box}],right:[_35306{count:18,kind:unit,role:unit-weight}]},right_total:18,step:2,tilt:level,verb:subtract_units_from_both_pans},_35542{action:split_each_side_into_equal_groups,balance_preserving:true,caption:Split each pan into 3 equal groups: one x-box balances 18 / 3 = 6 units.,left_total:18,pans:_35582{left:[_35256{count:3,kind:x,role:x-box}],right:[_35306{count:18,kind:unit,role:unit-weight}]},right_total:18,step:3,tilt:level,verb:split_each_side_into_equal_groups},_35772{action:isolate_the_unknown,balance_preserving:true,caption:x = 6. One x-box balances 6 units; the beam stays level.,left_total:6,pans:_35812{left:[_35638{count:1,kind:x,role:x-box}],right:[_35688{count:6,kind:unit,role:unit-weight}]},right_total:6,step:4,tilt:level,verb:isolate_the_unknown}])",
         "n": 2,
         "value": ""
        },
@@ -33958,7 +35607,7 @@
     },
     "direct_runs": [],
     "kind": "balance_preserving_linear_solution",
-    "line": 512,
+    "line": 571,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34025,7 +35674,7 @@
     },
     "direct_runs": [],
     "kind": "one_sided_equation_operation",
-    "line": 517,
+    "line": 576,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34105,7 +35754,7 @@
     },
     "direct_runs": [],
     "kind": "symbolic_expression_construction",
-    "line": 521,
+    "line": 580,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34188,7 +35837,7 @@
     },
     "direct_runs": [],
     "kind": "distributive_expression_rewrite",
-    "line": 525,
+    "line": 584,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34266,7 +35915,7 @@
     },
     "direct_runs": [],
     "kind": "drop_distributed_term",
-    "line": 529,
+    "line": 588,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34330,7 +35979,7 @@
     },
     "direct_runs": [],
     "kind": "exponent_as_repeated_factor",
-    "line": 533,
+    "line": 592,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34389,7 +36038,7 @@
     },
     "direct_runs": [],
     "kind": "exponent_as_multiplier",
-    "line": 537,
+    "line": 596,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34474,7 +36123,7 @@
     },
     "direct_runs": [],
     "kind": "exponential_equivalence_by_expansion",
-    "line": 541,
+    "line": 600,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34547,7 +36196,7 @@
     },
     "direct_runs": [],
     "kind": "linear_pattern_contextual_rule",
-    "line": 546,
+    "line": 605,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34616,7 +36265,387 @@
     },
     "direct_runs": [],
     "kind": "guess_and_check_rule",
-    "line": 548,
+    "line": 607,
+    "operation": "algebraic",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "additional": 5,
+      "equation_form": "px_plus_q_equals_r",
+      "group_expression": {
+       "name": "x",
+       "node": "var"
+      },
+      "groups": 3,
+      "kind": "diagram_relation",
+      "representation": "tape",
+      "total": 50
+     },
+     "kind": "translate_diagram_to_equation",
+     "operation": "algebraic",
+     "response": {
+      "expected": "equation(add(mult(number(3),var(x)),number(5)),equals,number(50))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "translate_diagram_to_equation",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "equation(add(mult(number(3),var(x)),number(5)),equals,number(50))",
+      "steps": [
+       {
+        "label": "identify_diagram_representation(tape)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "identify_equal_groups(3,var(x))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "coordinate_repeated_variable(x)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "coordinate_additional_quantity(5)",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "relate_diagram_sides(50)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "inscribe_equation(equation(add(mult(number(3),var(x)),number(5)),equals,number(50)))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "translate_diagram_to_equation",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "translate_diagram_to_equation",
+    "line": 614,
+    "operation": "algebraic",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "additional": 5,
+      "equation_form": "px_plus_q_equals_r",
+      "group_expression": {
+       "name": "x",
+       "node": "var"
+      },
+      "groups": 3,
+      "kind": "diagram_relation",
+      "representation": "tape",
+      "total": 50
+     },
+     "kind": "split_repeated_diagram_variable",
+     "operation": "algebraic",
+     "response": {
+      "expected": "equation(add(mult(number(3),var(x)),number(5)),equals,number(50))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "split_repeated_diagram_variable",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "equation(add(add(var(x_occurrence_1),add(var(x_occurrence_2),var(x_occurrence_3))),number(5)),equals,number(50))",
+      "steps": [
+       {
+        "label": "identify_repeated_variable_label(x,3)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "assign_distinct_roles_to_repeated_label([x_occurrence_1,x_occurrence_2,x_occurrence_3])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "inscribe_changed_equation(equation(add(add(var(x_occurrence_1),add(var(x_occurrence_2),var(x_occurrence_3))),number(5)),equals,number(50)))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_equal_group_relation(expected(equation(add(mult(number(3),var(x)),number(5)),equals,number(50))),produced(equation(add(add(var(x_occurrence_1),add(var(x_occurrence_2),var(x_occurrence_3))),number(5)),equals,number(50))))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "split_repeated_diagram_variable",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "split_repeated_diagram_variable",
+    "line": 618,
+    "operation": "algebraic",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "amount": 18.5,
+      "amount_role": "original_amount",
+      "direction": "increase",
+      "kind": "percent_change",
+      "rate_percent": 20,
+      "target": "new_amount"
+     },
+     "kind": "percent_change_composition",
+     "operation": "algebraic",
+     "response": {
+      "expected": "amount(22.2)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "percent_change_composition",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "amount(22.2)",
+      "steps": [
+       {
+        "label": "identify_percent_change_roles(increase,18.5,new_amount)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "convert_percent_to_multiplier(20,1.2)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "solve_percent_multiplier_relation(new_amount,18.5,1.2,22.2)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_percent_change_amount(22.2)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "percent_change_composition",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "percent_change_composition",
+    "line": 622,
+    "operation": "algebraic",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "constant_terms": [
+       {
+        "operation": "add",
+        "value": 8
+       },
+       {
+        "operation": "subtract",
+        "value": 3
+       }
+      ],
+      "direction": "combine_like_terms",
+      "kind": "signed_linear_expression",
+      "variable_terms": [
+       {
+        "coefficient": 7,
+        "operation": "add",
+        "variable": "x"
+       },
+       {
+        "coefficient": 2,
+        "operation": "subtract",
+        "variable": "x"
+       }
+      ]
+     },
+     "kind": "combine_signed_like_terms",
+     "operation": "algebraic",
+     "response": {
+      "expected": "linear_expression(terms([term(5,var(x))]),constant(5))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "combine_signed_like_terms",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "linear_expression(terms([term(5,var(x))]),constant(5))",
+      "steps": [
+       {
+        "label": "identify_signed_terms([add(term(7,var(x))),subtract(term(2,var(x))),add(constant(8)),subtract(constant(3))])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "rewrite_subtraction_as_adding_the_opposite([variable_contribution(7,x),variable_contribution(-2,x),constant_contribution(8),constant_contribution(-3)])",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "group_like_terms_by_variable([term(5,var(x))])",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "combine_like_term_coefficients([term(5,var(x))])",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "combine_constant_terms(5)",
+        "n": 5,
+        "value": ""
+       },
+       {
+        "label": "inscribe_equivalent_linear_expression(linear_expression(terms([term(5,var(x))]),constant(5)))",
+        "n": 6,
+        "value": ""
+       }
+      ],
+      "strategy": "combine_signed_like_terms",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "combine_signed_like_terms",
+    "line": 626,
+    "operation": "algebraic",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "constant_terms": [
+       {
+        "operation": "add",
+        "value": 8
+       }
+      ],
+      "direction": "combine_like_terms",
+      "kind": "signed_linear_expression",
+      "variable_terms": [
+       {
+        "coefficient": 7,
+        "operation": "add",
+        "variable": "x"
+       },
+       {
+        "coefficient": 2,
+        "operation": "subtract",
+        "variable": "x"
+       }
+      ]
+     },
+     "kind": "combine_unlike_terms",
+     "operation": "algebraic",
+     "response": {
+      "expected": "linear_expression(terms([term(5,var(x))]),constant(8))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "combine_unlike_terms",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "linear_expression(terms([term(13,var(x))]),constant(0))",
+      "steps": [
+       {
+        "label": "identify_unlike_terms(variable_groups([term(5,var(x))]),constant_sum(8))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "combine_constant_with_variable_coefficient(5,8,13)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "inscribe_non_equivalent_linear_expression(linear_expression(terms([term(13,var(x))]),constant(0)))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "lose_like_term_condition(expected(linear_expression(terms([term(5,var(x))]),constant(8))),produced(linear_expression(terms([term(13,var(x))]),constant(0))))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "combine_unlike_terms",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "combine_unlike_terms",
+    "line": 630,
     "operation": "algebraic",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34810,7 +36839,7 @@
      }
     ],
     "kind": "rectangle_area_unit_iteration",
-    "line": 550,
+    "line": 635,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34870,7 +36899,7 @@
     },
     "direct_runs": [],
     "kind": "area_as_perimeter_count",
-    "line": 553,
+    "line": 638,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -34949,7 +36978,7 @@
     },
     "direct_runs": [],
     "kind": "area_unit_covering",
-    "line": 557,
+    "line": 642,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35023,7 +37052,7 @@
     },
     "direct_runs": [],
     "kind": "count_overlapping_area_tiles",
-    "line": 560,
+    "line": 645,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35092,7 +37121,7 @@
     },
     "direct_runs": [],
     "kind": "area_unit_scale_selection",
-    "line": 563,
+    "line": 648,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35161,7 +37190,7 @@
     },
     "direct_runs": [],
     "kind": "choose_first_area_unit_without_scale",
-    "line": 567,
+    "line": 652,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35233,7 +37262,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_perimeter_boundary_traversal",
-    "line": 571,
+    "line": 656,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35295,7 +37324,7 @@
     },
     "direct_runs": [],
     "kind": "perimeter_two_sides_only",
-    "line": 575,
+    "line": 660,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35357,7 +37386,7 @@
     },
     "direct_runs": [],
     "kind": "perimeter_uses_area_formula",
-    "line": 578,
+    "line": 663,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35418,7 +37447,7 @@
     },
     "direct_runs": [],
     "kind": "polygon_perimeter_boundary_accumulation",
-    "line": 581,
+    "line": 666,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35484,7 +37513,7 @@
     },
     "direct_runs": [],
     "kind": "omit_unlabeled_boundary_side",
-    "line": 586,
+    "line": 671,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35560,7 +37589,7 @@
     },
     "direct_runs": [],
     "kind": "symmetry_constrained_side_reconstruction",
-    "line": 590,
+    "line": 675,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35631,7 +37660,7 @@
     },
     "direct_runs": [],
     "kind": "ignore_symmetry_multiplicity",
-    "line": 595,
+    "line": 680,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35739,7 +37768,7 @@
      }
     ],
     "kind": "rectangle_perimeter_side_pair_search",
-    "line": 599,
+    "line": 684,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -35805,7 +37834,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_missing_side_from_perimeter",
-    "line": 602,
+    "line": 687,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36003,7 +38032,7 @@
      }
     ],
     "kind": "rectangle_factor_pair_search",
-    "line": 605,
+    "line": 690,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36069,7 +38098,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_area_perimeter_constraint_search",
-    "line": 608,
+    "line": 693,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36130,7 +38159,7 @@
     },
     "direct_runs": [],
     "kind": "ignore_perimeter_rectangle_constraint",
-    "line": 613,
+    "line": 698,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36191,7 +38220,7 @@
     },
     "direct_runs": [],
     "kind": "rectangle_missing_side_from_area",
-    "line": 618,
+    "line": 703,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36252,7 +38281,7 @@
     },
     "direct_runs": [],
     "kind": "subtract_side_from_area",
-    "line": 621,
+    "line": 706,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36400,7 +38429,7 @@
      }
     ],
     "kind": "rectangular_prism_volume_layer_iteration",
-    "line": 624,
+    "line": 709,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36457,7 +38486,7 @@
     },
     "direct_runs": [],
     "kind": "rectangular_prism_missing_dimension_from_volume",
-    "line": 627,
+    "line": 712,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36519,7 +38548,7 @@
     },
     "direct_runs": [],
     "kind": "divide_volume_by_one_dimension",
-    "line": 632,
+    "line": 717,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36591,7 +38620,7 @@
     },
     "direct_runs": [],
     "kind": "composite_prism_volume_sum",
-    "line": 636,
+    "line": 721,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36664,7 +38693,7 @@
     },
     "direct_runs": [],
     "kind": "sum_overlapping_prism_volumes",
-    "line": 639,
+    "line": 724,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36732,7 +38761,7 @@
     },
     "direct_runs": [],
     "kind": "compare_solid_volume_by_cube_count",
-    "line": 642,
+    "line": 727,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36790,7 +38819,7 @@
     },
     "direct_runs": [],
     "kind": "compare_solid_volume_by_visible_extent",
-    "line": 646,
+    "line": 731,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36900,7 +38929,7 @@
      }
     ],
     "kind": "ordered_pair_coordinate_plot",
-    "line": 650,
+    "line": 735,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -36973,7 +39002,7 @@
     },
     "direct_runs": [],
     "kind": "axis_aligned_coordinate_distance",
-    "line": 653,
+    "line": 738,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37046,7 +39075,7 @@
     },
     "direct_runs": [],
     "kind": "directed_difference_as_coordinate_distance",
-    "line": 657,
+    "line": 742,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37159,7 +39188,7 @@
     },
     "direct_runs": [],
     "kind": "area_preserving_polygon_decomposition",
-    "line": 662,
+    "line": 747,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37258,7 +39287,7 @@
     },
     "direct_runs": [],
     "kind": "decomposition_with_gap_or_overlap",
-    "line": 666,
+    "line": 751,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37322,7 +39351,7 @@
     },
     "direct_runs": [],
     "kind": "parallelogram_area_base_height",
-    "line": 670,
+    "line": 755,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37386,7 +39415,7 @@
     },
     "direct_runs": [],
     "kind": "slanted_side_as_parallelogram_height",
-    "line": 673,
+    "line": 758,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37453,7 +39482,7 @@
     },
     "direct_runs": [],
     "kind": "triangle_area_half_base_height",
-    "line": 677,
+    "line": 762,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37515,7 +39544,7 @@
     },
     "direct_runs": [],
     "kind": "omit_half_in_triangle_area",
-    "line": 680,
+    "line": 765,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37584,7 +39613,7 @@
     },
     "direct_runs": [],
     "kind": "polyhedron_surface_area_from_net",
-    "line": 683,
+    "line": 768,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37653,7 +39682,7 @@
     },
     "direct_runs": [],
     "kind": "visible_faces_only_surface_area",
-    "line": 686,
+    "line": 771,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37715,7 +39744,7 @@
     },
     "direct_runs": [],
     "kind": "dimensional_measure_unit_coordination",
-    "line": 689,
+    "line": 774,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37777,7 +39806,7 @@
     },
     "direct_runs": [],
     "kind": "linear_unit_for_area_or_volume",
-    "line": 693,
+    "line": 778,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37856,7 +39885,7 @@
     },
     "direct_runs": [],
     "kind": "shape_classification_by_defining_attributes",
-    "line": 697,
+    "line": 782,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37930,7 +39959,7 @@
     },
     "direct_runs": [],
     "kind": "orientation_bound_shape_classification",
-    "line": 702,
+    "line": 787,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -37995,7 +40024,7 @@
     },
     "direct_runs": [],
     "kind": "angle_turn_measurement",
-    "line": 706,
+    "line": 791,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38050,7 +40079,7 @@
     },
     "direct_runs": [],
     "kind": "angle_as_ray_length",
-    "line": 709,
+    "line": 794,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38115,7 +40144,7 @@
     },
     "direct_runs": [],
     "kind": "angle_additive_composition",
-    "line": 712,
+    "line": 797,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38212,7 +40241,271 @@
     },
     "direct_runs": [],
     "kind": "rigid_shape_composition",
-    "line": 715,
+    "line": 800,
+    "operation": "geometry",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "given_measure": "diameter",
+      "kind": "circle_co_measurement",
+      "pi": {
+       "d": 7,
+       "n": 22
+      },
+      "requested_measure": "circumference",
+      "unit": "cm",
+      "value": 10
+     },
+     "kind": "circle_circumference_diameter_co_measurement",
+     "operation": "geometry",
+     "response": {
+      "expected": "length(rational(220,7),cm)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "circle_circumference_diameter_co_measurement",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(rational(220,7),cm)",
+      "steps": [
+       {
+        "label": "establish_circle_measure(diameter,10,cm)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "establish_co_measurement_unit(pi,rational(22,7))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "transform_circle_measure_through_co_measure(diameter,circumference,10,rational(220,7))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_circle_measure(circumference,rational(220,7),cm)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "circle_circumference_diameter_co_measurement",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "circle_circumference_diameter_co_measurement",
+    "line": 808,
+    "operation": "geometry",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "given_measure": "diameter",
+      "kind": "circle_co_measurement",
+      "pi": {
+       "d": 7,
+       "n": 22
+      },
+      "requested_measure": "circumference",
+      "unit": "cm",
+      "value": 10
+     },
+     "kind": "use_diameter_as_radius_in_circumference",
+     "operation": "geometry",
+     "response": {
+      "expected": "length(rational(220,7),cm)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "use_diameter_as_radius_in_circumference",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "length(rational(440,7),cm)",
+      "steps": [
+       {
+        "label": "establish_circle_measure(diameter,10,cm)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "read_diameter_as_radius(10)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "double_misread_radius_to_diameter(10,20)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_misread_circumference(rational(440,7),cm)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "use_diameter_as_radius_in_circumference",
+      "validity": "incorrect"
+     }
+    },
+    "direct_runs": [],
+    "kind": "use_diameter_as_radius_in_circumference",
+    "line": 813,
+    "operation": "geometry",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "condition": "sss",
+      "kind": "triangle_conditions",
+      "measures": [
+       3,
+       4,
+       5
+      ]
+     },
+     "kind": "triangle_three_measure_determination",
+     "operation": "geometry",
+     "response": {
+      "expected": "triangle_determination(determined,sss_congruence)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "triangle_three_measure_determination",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "triangle_determination(determined,sss_congruence)",
+      "steps": [
+       {
+        "label": "register_triangle_conditions(sss(3,4,5))",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "test_triangle_feasibility(sss_congruence)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "test_triangle_determination(determined)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "accept_triangle_determination(determined,sss_congruence)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "triangle_three_measure_determination",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "triangle_three_measure_determination",
+    "line": 818,
+    "operation": "geometry",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "angle_relation",
+      "known_parts": [
+       110,
+       30
+      ],
+      "unknown": "x",
+      "whole": 180
+     },
+     "kind": "angle_relation_unknown_measure",
+     "operation": "geometry",
+     "response": {
+      "expected": "angle_measure(x,40)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "angle_relation_unknown_measure",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "angle_measure(x,40)",
+      "steps": [
+       {
+        "label": "establish_angle_part_whole_relation(180,[110,30],x)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "accumulate_known_angle_parts([110,30],140)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "inscribe_angle_equation(180,140,x)",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "isolate_unknown_angle(x,40)",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "angle_relation_unknown_measure",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "angle_relation_unknown_measure",
+    "line": 823,
     "operation": "geometry",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38282,7 +40575,7 @@
     },
     "direct_runs": [],
     "kind": "categorical_frequency_bar_representation",
-    "line": 718,
+    "line": 828,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38343,7 +40636,7 @@
     },
     "direct_runs": [],
     "kind": "dot_plot_frequency_representation",
-    "line": 721,
+    "line": 831,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38404,7 +40697,7 @@
     },
     "direct_runs": [],
     "kind": "statistical_question_variability_classification",
-    "line": 723,
+    "line": 833,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38460,7 +40753,7 @@
     },
     "direct_runs": [],
     "kind": "question_without_variability",
-    "line": 728,
+    "line": 838,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38533,7 +40826,7 @@
     },
     "direct_runs": [],
     "kind": "histogram_equal_interval_representation",
-    "line": 732,
+    "line": 842,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38600,7 +40893,7 @@
     },
     "direct_runs": [],
     "kind": "mean_as_fair_share",
-    "line": 735,
+    "line": 845,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38667,7 +40960,7 @@
     },
     "direct_runs": [],
     "kind": "mean_as_balance_point",
-    "line": 737,
+    "line": 847,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38739,7 +41032,7 @@
     },
     "direct_runs": [],
     "kind": "mean_absolute_deviation",
-    "line": 740,
+    "line": 850,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38806,7 +41099,7 @@
     },
     "direct_runs": [],
     "kind": "mean_deviation_without_absolute_value",
-    "line": 742,
+    "line": 852,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38893,7 +41186,7 @@
      }
     ],
     "kind": "median_as_ordered_middle",
-    "line": 745,
+    "line": 855,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -38955,7 +41248,7 @@
     },
     "direct_runs": [],
     "kind": "mode_as_maximal_frequency",
-    "line": 747,
+    "line": 857,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39027,7 +41320,7 @@
     },
     "direct_runs": [],
     "kind": "five_number_summary_and_iqr",
-    "line": 749,
+    "line": 859,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39099,7 +41392,7 @@
     },
     "direct_runs": [],
     "kind": "box_plot_from_five_number_summary",
-    "line": 753,
+    "line": 863,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39160,7 +41453,224 @@
     },
     "direct_runs": [],
     "kind": "distribution_summary_selection",
-    "line": 756,
+    "line": 866,
+    "operation": "statistics",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "context": "repeated_experiment",
+      "event": "win",
+      "kind": "frequency_record",
+      "successes": 6,
+      "trials": 20
+     },
+     "kind": "estimate_probability_from_observed_frequency",
+     "operation": "statistics",
+     "response": {
+      "expected": "probability_estimate(win,rational(3,10))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "estimate_probability_from_observed_frequency",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "probability_estimate(win,rational(3,10))",
+      "steps": [
+       {
+        "label": "register_frequency_record(win,6,20)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "count_event_occurrences(6)",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "divide_by_total_trials(6,20,rational(3,10))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "qualify_relative_frequency_as_probability_estimate(rational(3,10))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "estimate_probability_from_observed_frequency",
+      "validity": "correct_as_estimate",
+      "viability_context": "finite_record(trials(20))"
+     }
+    },
+    "direct_runs": [],
+    "kind": "estimate_probability_from_observed_frequency",
+    "line": 869,
+    "operation": "statistics",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "context": "repeated_experiment",
+      "event": "win",
+      "kind": "frequency_record",
+      "successes": 6,
+      "trials": 20
+     },
+     "kind": "finite_frequency_as_exact_probability",
+     "operation": "statistics",
+     "response": {
+      "expected": "probability_estimate(win,rational(3,10))",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "finite_frequency_as_exact_probability",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "exact_probability(win,rational(3,10))",
+      "steps": [
+       {
+        "label": "register_frequency_record(win,6,20)",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "calculate_relative_frequency(6,20,rational(3,10))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "replace_estimate_with_exact_claim",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "report_exact_probability_from_finite_record(rational(3,10))",
+        "n": 4,
+        "value": ""
+       }
+      ],
+      "strategy": "finite_frequency_as_exact_probability",
+      "validity": "incorrect",
+      "viability_context": "finite_record(trials(20))"
+     }
+    },
+    "direct_runs": [],
+    "kind": "finite_frequency_as_exact_probability",
+    "line": 874,
+    "operation": "statistics",
+    "source": "knowledge/strategies/math/action_automata_registry.pl",
+    "status": "exercised",
+    "unexercised_reason": null
+   },
+   {
+    "checked_contract_run": {
+     "input": {
+      "kind": "sample_population_distribution",
+      "population": {
+       "shape": "symmetric",
+       "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      },
+      "sample": {
+       "shape": "symmetric",
+       "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "tolerances": {
+       "center": 1,
+       "spread": 1
+      }
+     },
+     "kind": "sample_population_distribution_judgment",
+     "operation": "statistics",
+     "response": {
+      "expected": "representativeness(representative)",
+      "jump_witness": {
+       "derivation": "no_known_running_sum_trace",
+       "extraction": "",
+       "jump_count": 0,
+       "jumps": [],
+       "kind": "strategy_number_line_jumps_unavailable",
+       "sample_count": 0,
+       "scope": "closed_world_finite_strategy_history_step_shapes",
+       "strategy": "sample_population_distribution_judgment",
+       "sums": []
+      },
+      "jumps": [],
+      "note": "Ran to a result; number-line jump trace is not available for this strategy's step shape.",
+      "ok": true,
+      "representation": "action_automaton",
+      "result": "representativeness(representative)",
+      "steps": [
+       {
+        "label": "preserve_sample_and_population([1,2,3,4,5],[1,2,3,4,5,6])",
+        "n": 1,
+        "value": ""
+       },
+       {
+        "label": "summarize_sample_distribution(symmetric,rational(3,1),rational(3,1))",
+        "n": 2,
+        "value": ""
+       },
+       {
+        "label": "summarize_population_distribution(symmetric,rational(7,2),rational(3,1))",
+        "n": 3,
+        "value": ""
+       },
+       {
+        "label": "compare_shape_center_and_spread(rational(1,2),rational(0,1))",
+        "n": 4,
+        "value": ""
+       },
+       {
+        "label": "name_representativeness_judgment(representative)",
+        "n": 5,
+        "value": ""
+       }
+      ],
+      "strategy": "sample_population_distribution_judgment",
+      "validity": "correct"
+     }
+    },
+    "direct_runs": [],
+    "kind": "sample_population_distribution_judgment",
+    "line": 879,
     "operation": "statistics",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39227,7 +41737,7 @@
     },
     "direct_runs": [],
     "kind": "linear_unit_iteration",
-    "line": 759,
+    "line": 885,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39284,7 +41794,7 @@
     },
     "direct_runs": [],
     "kind": "count_marks_not_intervals",
-    "line": 762,
+    "line": 888,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39404,7 +41914,7 @@
      }
     ],
     "kind": "liquid_volume_scale_reading",
-    "line": 765,
+    "line": 891,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39461,7 +41971,7 @@
     },
     "direct_runs": [],
     "kind": "liquid_volume_count_marks_not_intervals",
-    "line": 768,
+    "line": 894,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39807,7 +42317,7 @@
      }
     ],
     "kind": "unit_conversion_by_iteration",
-    "line": 772,
+    "line": 898,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39870,7 +42380,7 @@
     },
     "direct_runs": [],
     "kind": "change_unit_label_without_scaling",
-    "line": 776,
+    "line": 902,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39933,7 +42443,7 @@
     },
     "direct_runs": [],
     "kind": "unit_preserving_measured_quantity_change",
-    "line": 780,
+    "line": 906,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -39996,7 +42506,7 @@
     },
     "direct_runs": [],
     "kind": "drop_unit_from_measured_quantity_change",
-    "line": 784,
+    "line": 910,
     "operation": "measurement",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40116,7 +42626,7 @@
      }
     ],
     "kind": "enumerate_collection_one_to_one",
-    "line": 787,
+    "line": 913,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40172,7 +42682,7 @@
     },
     "direct_runs": [],
     "kind": "inscribe_cardinality",
-    "line": 790,
+    "line": 916,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40598,7 +43108,7 @@
      }
     ],
     "kind": "recursive_place_value_inscription",
-    "line": 793,
+    "line": 919,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -40659,7 +43169,7 @@
     },
     "direct_runs": [],
     "kind": "omit_highest_place_regrouping",
-    "line": 796,
+    "line": 922,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41069,7 +43579,7 @@
      }
     ],
     "kind": "place_value_comparison",
-    "line": 800,
+    "line": 926,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41131,7 +43641,7 @@
     },
     "direct_runs": [],
     "kind": "compare_ones_digits_only",
-    "line": 804,
+    "line": 930,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41194,7 +43704,7 @@
     },
     "direct_runs": [],
     "kind": "compare_cardinalities_one_to_one",
-    "line": 808,
+    "line": 934,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41252,7 +43762,7 @@
     },
     "direct_runs": [],
     "kind": "spatial_extent_as_cardinality",
-    "line": 811,
+    "line": 937,
     "operation": "counting",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41312,7 +43822,7 @@
     },
     "direct_runs": [],
     "kind": "derived_fact_adjustment",
-    "line": 815,
+    "line": 941,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41378,7 +43888,7 @@
     },
     "direct_runs": [],
     "kind": "append_column_sum_without_carrying",
-    "line": 819,
+    "line": 945,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41448,7 +43958,7 @@
     },
     "direct_runs": [],
     "kind": "drop_carry_to_next_column",
-    "line": 823,
+    "line": 949,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41518,7 +44028,7 @@
     },
     "direct_runs": [],
     "kind": "wrong_carry_amount_to_next_column",
-    "line": 827,
+    "line": 953,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41579,7 +44089,7 @@
     },
     "direct_runs": [],
     "kind": "dropped_ones_chunk",
-    "line": 831,
+    "line": 957,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41639,7 +44149,7 @@
     },
     "direct_runs": [],
     "kind": "rote_derived_fact_rule_misfire",
-    "line": 835,
+    "line": 961,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41710,7 +44220,7 @@
     },
     "direct_runs": [],
     "kind": "unbalanced_make_base_compensation",
-    "line": 839,
+    "line": 965,
     "operation": "addition",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41775,7 +44285,7 @@
     },
     "direct_runs": [],
     "kind": "sliding_constant_difference",
-    "line": 843,
+    "line": 969,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41845,7 +44355,7 @@
     },
     "direct_runs": [],
     "kind": "borrow_across_zero_cascade",
-    "line": 847,
+    "line": 973,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41925,7 +44435,7 @@
     },
     "direct_runs": [],
     "kind": "borrow_across_zero_no_cascade",
-    "line": 851,
+    "line": 977,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -41995,7 +44505,7 @@
     },
     "direct_runs": [],
     "kind": "borrow_without_reducing_bases",
-    "line": 855,
+    "line": 981,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42055,7 +44565,7 @@
     },
     "direct_runs": [],
     "kind": "drop_ones_after_base_takeaway",
-    "line": 859,
+    "line": 985,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42120,7 +44630,7 @@
     },
     "direct_runs": [],
     "kind": "slide_subtrahend_only",
-    "line": 863,
+    "line": 989,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42185,7 +44695,7 @@
     },
     "direct_runs": [],
     "kind": "compare_returns_larger_count",
-    "line": 867,
+    "line": 993,
     "operation": "subtraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42250,7 +44760,7 @@
     },
     "direct_runs": [],
     "kind": "known_product_adjustment",
-    "line": 871,
+    "line": 997,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42315,7 +44825,7 @@
     },
     "direct_runs": [],
     "kind": "known_product_without_adjustment",
-    "line": 875,
+    "line": 1001,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42381,7 +44891,7 @@
     },
     "direct_runs": [],
     "kind": "add_counts_without_composite_unit",
-    "line": 880,
+    "line": 1006,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42442,7 +44952,7 @@
     },
     "direct_runs": [],
     "kind": "add_instead_of_multiply",
-    "line": 885,
+    "line": 1011,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42507,7 +45017,7 @@
     },
     "direct_runs": [],
     "kind": "drop_regrouping_remainder",
-    "line": 889,
+    "line": 1015,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42567,7 +45077,7 @@
     },
     "direct_runs": [],
     "kind": "drop_second_partial_product",
-    "line": 893,
+    "line": 1019,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42632,7 +45142,7 @@
     },
     "direct_runs": [],
     "kind": "context_free_fact_family_guess",
-    "line": 897,
+    "line": 1023,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42697,7 +45207,7 @@
     },
     "direct_runs": [],
     "kind": "rigid_factor_order_roles",
-    "line": 901,
+    "line": 1027,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42767,7 +45277,7 @@
     },
     "direct_runs": [],
     "kind": "sequential_recompute_commuted_products",
-    "line": 905,
+    "line": 1031,
     "operation": "multiplication",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42827,7 +45337,7 @@
     },
     "direct_runs": [],
     "kind": "inverse_fact_decomposition",
-    "line": 910,
+    "line": 1036,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42887,7 +45397,7 @@
     },
     "direct_runs": [],
     "kind": "missing_factor_known_product_search",
-    "line": 914,
+    "line": 1040,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -42952,7 +45462,7 @@
     },
     "direct_runs": [],
     "kind": "reject_known_product_match",
-    "line": 918,
+    "line": 1044,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43018,7 +45528,7 @@
     },
     "direct_runs": [],
     "kind": "stop_after_one_known_fact",
-    "line": 922,
+    "line": 1048,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43083,7 +45593,7 @@
     },
     "direct_runs": [],
     "kind": "stop_at_nearby_product_in_search",
-    "line": 926,
+    "line": 1052,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43148,7 +45658,7 @@
     },
     "direct_runs": [],
     "kind": "sum_dividend_and_divisor",
-    "line": 930,
+    "line": 1056,
     "operation": "division",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43228,7 +45738,7 @@
     },
     "direct_runs": [],
     "kind": "splitting",
-    "line": 934,
+    "line": 1060,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43307,7 +45817,7 @@
     },
     "direct_runs": [],
     "kind": "solve_for_unit",
-    "line": 938,
+    "line": 1064,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43376,7 +45886,7 @@
     },
     "direct_runs": [],
     "kind": "iterate_only_no_reverse",
-    "line": 942,
+    "line": 1068,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43446,7 +45956,7 @@
     },
     "direct_runs": [],
     "kind": "recursive_partition",
-    "line": 946,
+    "line": 1072,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43511,7 +46021,7 @@
     },
     "direct_runs": [],
     "kind": "clear_inner_referent",
-    "line": 950,
+    "line": 1076,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43581,7 +46091,7 @@
     },
     "direct_runs": [],
     "kind": "improper_fraction_iteration",
-    "line": 954,
+    "line": 1080,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43641,7 +46151,7 @@
     },
     "direct_runs": [],
     "kind": "iterate_given_overshoot",
-    "line": 958,
+    "line": 1084,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43706,7 +46216,7 @@
     },
     "direct_runs": [],
     "kind": "whole_number_grab",
-    "line": 962,
+    "line": 1088,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43793,7 +46303,7 @@
     },
     "direct_runs": [],
     "kind": "cross_multiplication_rule_from_pattern",
-    "line": 966,
+    "line": 1092,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43870,7 +46380,7 @@
     },
     "direct_runs": [],
     "kind": "cross_multiplication_rule_without_ground",
-    "line": 971,
+    "line": 1097,
     "operation": "fraction",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -43963,7 +46473,7 @@
     },
     "direct_runs": [],
     "kind": "factor_cancel_substitute",
-    "line": 976,
+    "line": 1102,
     "operation": "calculus",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -44045,7 +46555,7 @@
     },
     "direct_runs": [],
     "kind": "factor_cancel_without_common_factor",
-    "line": 980,
+    "line": 1106,
     "operation": "calculus",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -44120,7 +46630,7 @@
     },
     "direct_runs": [],
     "kind": "direct_substitution",
-    "line": 984,
+    "line": 1110,
     "operation": "calculus",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -44192,7 +46702,7 @@
     },
     "direct_runs": [],
     "kind": "bounded_numerator_over_diverging_denominator",
-    "line": 988,
+    "line": 1114,
     "operation": "calculus",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -44286,7 +46796,7 @@
     },
     "direct_runs": [],
     "kind": "terminal_tree_endpoint_probability_sum",
-    "line": 993,
+    "line": 1119,
     "operation": "probability",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
@@ -44385,15 +46895,15 @@
     },
     "direct_runs": [],
     "kind": "equiprobable_endpoint_counting",
-    "line": 998,
+    "line": 1124,
     "operation": "probability",
     "source": "knowledge/strategies/math/action_automata_registry.pl",
     "status": "exercised",
     "unexercised_reason": null
    }
   ],
-  "exercised_signatures": 223,
-  "registered_signatures": 223,
+  "exercised_signatures": 246,
+  "registered_signatures": 246,
   "reviewer_six": [
    {
     "kind": "unit_conversion_by_iteration",

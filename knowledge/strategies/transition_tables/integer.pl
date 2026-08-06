@@ -3,48 +3,110 @@
 :- multifile automaton_tuple/6.
 :- multifile automaton_transition/6.
 
+automaton_tuple(integer, conflate_signed_difference_with_distance, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([locate_subtraction_endpoints, measure_unsigned_distance_between_endpoints, discard_change_direction, name_distance_as_signed_difference, lose_ordered_difference]), start(q_start), accepting([q_accept])).
 automaton_tuple(integer, drop_sign_use_magnitude_sum, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_signs, identify_magnitudes, drop_signs, sum_magnitudes_only, name_magnitude_sum_as_answer, lose_sign_relation]), start(q_start), accepting([q_accept])).
 automaton_tuple(integer, inequality_as_boundary_point, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([identify_boundary, ignore_relation_direction, omit_solution_ray, report_boundary_as_only_solution]), start(q_start), accepting([q_accept])).
 automaton_tuple(integer, inequality_solution_set_representation, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([identify_boundary, interpret_relation_direction, choose_endpoint_inclusion, extend_ray_over_all_solutions]), start(q_start), accepting([q_accept])).
 automaton_tuple(integer, order_by_magnitude_ignore_sign, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_zero_as_origin, replace_signed_locations_with_distances, order_magnitudes_only, lose_directional_order]), start(q_start), accepting([q_accept])).
+automaton_tuple(integer, reverse_signed_division_sign_rule, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_step_6, q_accept]), actions([rewrite_division_as_unknown_factor_product, identify_dividend_divisor_signs, reverse_multiplicative_sign_relation, divide_magnitudes, assign_reversed_quotient_sign, report_reversed_signed_quotient, lose_quotient_sign_relation]), start(q_start), accepting([q_accept])).
+automaton_tuple(integer, reverse_signed_multiplication_sign_rule, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_factor_signs, reverse_multiplicative_sign_relation, multiply_factor_magnitudes, assign_reversed_product_sign, report_reversed_signed_product, lose_product_sign_relation]), start(q_start), accepting([q_accept])).
 automaton_tuple(integer, signed_addition_with_sign_relation, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_signs, identify_magnitudes, determine_sign_relation, combine_magnitudes_by_sign_relation, assign_result_sign, preserve_sign_relation]), start(q_start), accepting([q_accept])).
+automaton_tuple(integer, signed_division_by_sign_rule, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_step_6, q_accept]), actions([rewrite_division_as_unknown_factor_product, continue_quotient_sign_pattern_from_multiplication, identify_dividend_divisor_signs, determine_multiplicative_sign_relation, divide_magnitudes, assign_quotient_sign, state_signed_quotient_rule]), start(q_start), accepting([q_accept])).
+automaton_tuple(integer, signed_multiplication_by_sign_rule, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([continue_product_pattern_across_zero, identify_factor_signs, determine_multiplicative_sign_relation, multiply_factor_magnitudes, assign_product_sign, state_signed_product_rule]), start(q_start), accepting([q_accept])).
 automaton_tuple(integer, signed_number_location_and_order, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_zero_as_origin, locate_each_signed_value, preserve_direction_from_zero, read_locations_left_to_right]), start(q_start), accepting([q_accept])).
+automaton_tuple(integer, signed_subtraction_as_additive_inverse, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([assign_subtraction_roles, rewrite_subtraction_as_unknown_addend, draw_addend_arrow_to_target, read_arrow_displacement, rewrite_as_adding_additive_inverse, generalize_subtract_as_add_opposite]), start(q_start), accepting([q_accept])).
+automaton_tuple(integer, swap_subtraction_operands_to_preserve_nonnegative_result, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([swap_minuend_and_subtrahend, prefer_nonnegative_subtraction_orientation, draw_addend_arrow_to_target, report_swapped_difference, lose_ordered_difference]), start(q_start), accepting([q_accept])).
 
-automaton_transition(integer, drop_sign_use_magnitude_sum, q_start, identify_signs, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:53'))).
-automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_1, identify_magnitudes, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:53'))).
-automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_2, drop_signs, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:53'))).
-automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_3, sum_magnitudes_only, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:53'))).
-automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_4, name_magnitude_sum_as_answer, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:53'))).
-automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_5, lose_sign_relation, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:53'))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_start, locate_subtraction_endpoints, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:174'))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_1, measure_unsigned_distance_between_endpoints, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:174'))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_2, discard_change_direction, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:174'))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_3, name_distance_as_signed_difference, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:174'))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_4, lose_ordered_difference, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:174'))).
 
-automaton_transition(integer, inequality_as_boundary_point, q_start, identify_boundary, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:160'))).
-automaton_transition(integer, inequality_as_boundary_point, q_step_1, ignore_relation_direction, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:160'))).
-automaton_transition(integer, inequality_as_boundary_point, q_step_2, omit_solution_ray, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:160'))).
-automaton_transition(integer, inequality_as_boundary_point, q_step_3, report_boundary_as_only_solution, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:160'))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_start, identify_signs, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:59'))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_1, identify_magnitudes, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:59'))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_2, drop_signs, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:59'))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_3, sum_magnitudes_only, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:59'))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_4, name_magnitude_sum_as_answer, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:59'))).
+automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_5, lose_sign_relation, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:59'))).
 
-automaton_transition(integer, inequality_solution_set_representation, q_start, identify_boundary, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:133'))).
-automaton_transition(integer, inequality_solution_set_representation, q_step_1, interpret_relation_direction, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:133'))).
-automaton_transition(integer, inequality_solution_set_representation, q_step_2, choose_endpoint_inclusion, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:133'))).
-automaton_transition(integer, inequality_solution_set_representation, q_step_3, extend_ray_over_all_solutions, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:133'))).
+automaton_transition(integer, inequality_as_boundary_point, q_start, identify_boundary, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:470'))).
+automaton_transition(integer, inequality_as_boundary_point, q_step_1, ignore_relation_direction, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:470'))).
+automaton_transition(integer, inequality_as_boundary_point, q_step_2, omit_solution_ray, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:470'))).
+automaton_transition(integer, inequality_as_boundary_point, q_step_3, report_boundary_as_only_solution, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:470'))).
 
-automaton_transition(integer, order_by_magnitude_ignore_sign, q_start, establish_zero_as_origin, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:106'))).
-automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_1, replace_signed_locations_with_distances, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:106'))).
-automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_2, order_magnitudes_only, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:106'))).
-automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_3, lose_directional_order, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:106'))).
+automaton_transition(integer, inequality_solution_set_representation, q_start, identify_boundary, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:443'))).
+automaton_transition(integer, inequality_solution_set_representation, q_step_1, interpret_relation_direction, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:443'))).
+automaton_transition(integer, inequality_solution_set_representation, q_step_2, choose_endpoint_inclusion, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:443'))).
+automaton_transition(integer, inequality_solution_set_representation, q_step_3, extend_ray_over_all_solutions, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:443'))).
 
-automaton_transition(integer, signed_addition_with_sign_relation, q_start, identify_signs, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:27'))).
-automaton_transition(integer, signed_addition_with_sign_relation, q_step_1, identify_magnitudes, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:27'))).
-automaton_transition(integer, signed_addition_with_sign_relation, q_step_2, determine_sign_relation, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:27'))).
-automaton_transition(integer, signed_addition_with_sign_relation, q_step_3, combine_magnitudes_by_sign_relation, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:27'))).
-automaton_transition(integer, signed_addition_with_sign_relation, q_step_4, assign_result_sign, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:27'))).
-automaton_transition(integer, signed_addition_with_sign_relation, q_step_5, preserve_sign_relation, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:27'))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_start, establish_zero_as_origin, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:416'))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_1, replace_signed_locations_with_distances, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:416'))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_2, order_magnitudes_only, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:416'))).
+automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_3, lose_directional_order, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:416'))).
 
-automaton_transition(integer, signed_number_location_and_order, q_start, establish_zero_as_origin, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:83'))).
-automaton_transition(integer, signed_number_location_and_order, q_step_1, locate_each_signed_value, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:83'))).
-automaton_transition(integer, signed_number_location_and_order, q_step_2, preserve_direction_from_zero, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:83'))).
-automaton_transition(integer, signed_number_location_and_order, q_step_3, read_locations_left_to_right, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:83'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_start, rewrite_division_as_unknown_factor_product, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_1, identify_dividend_divisor_signs, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_2, reverse_multiplicative_sign_relation, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_3, divide_magnitudes, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_4, assign_reversed_quotient_sign, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_5, report_reversed_signed_quotient, q_step_6, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_6, lose_quotient_sign_relation, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:348'))).
+
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_start, identify_factor_signs, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:254'))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_1, reverse_multiplicative_sign_relation, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:254'))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_2, multiply_factor_magnitudes, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:254'))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_3, assign_reversed_product_sign, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:254'))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_4, report_reversed_signed_product, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:254'))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_5, lose_product_sign_relation, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:254'))).
+
+automaton_transition(integer, signed_addition_with_sign_relation, q_start, identify_signs, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:33'))).
+automaton_transition(integer, signed_addition_with_sign_relation, q_step_1, identify_magnitudes, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:33'))).
+automaton_transition(integer, signed_addition_with_sign_relation, q_step_2, determine_sign_relation, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:33'))).
+automaton_transition(integer, signed_addition_with_sign_relation, q_step_3, combine_magnitudes_by_sign_relation, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:33'))).
+automaton_transition(integer, signed_addition_with_sign_relation, q_step_4, assign_result_sign, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:33'))).
+automaton_transition(integer, signed_addition_with_sign_relation, q_step_5, preserve_sign_relation, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:33'))).
+
+automaton_transition(integer, signed_division_by_sign_rule, q_start, rewrite_division_as_unknown_factor_product, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_1, continue_quotient_sign_pattern_from_multiplication, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_2, identify_dividend_divisor_signs, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_3, determine_multiplicative_sign_relation, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_4, divide_magnitudes, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_5, assign_quotient_sign, q_step_6, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_6, state_signed_quotient_rule, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:306'))).
+
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_start, continue_product_pattern_across_zero, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:212'))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_1, identify_factor_signs, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:212'))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_2, determine_multiplicative_sign_relation, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:212'))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_3, multiply_factor_magnitudes, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:212'))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_4, assign_product_sign, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:212'))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_5, state_signed_product_rule, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:212'))).
+
+automaton_transition(integer, signed_number_location_and_order, q_start, establish_zero_as_origin, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:393'))).
+automaton_transition(integer, signed_number_location_and_order, q_step_1, locate_each_signed_value, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:393'))).
+automaton_transition(integer, signed_number_location_and_order, q_step_2, preserve_direction_from_zero, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:393'))).
+automaton_transition(integer, signed_number_location_and_order, q_step_3, read_locations_left_to_right, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:393'))).
+
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_start, assign_subtraction_roles, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:92'))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_1, rewrite_subtraction_as_unknown_addend, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:92'))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_2, draw_addend_arrow_to_target, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:92'))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_3, read_arrow_displacement, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:92'))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_4, rewrite_as_adding_additive_inverse, q_step_5, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:92'))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_5, generalize_subtract_as_add_opposite, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:92'))).
+
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_start, swap_minuend_and_subtrahend, q_step_1, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:134'))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_1, prefer_nonnegative_subtraction_orientation, q_step_2, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:134'))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_2, draw_addend_arrow_to_target, q_step_3, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:134'))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_3, report_swapped_difference, q_step_4, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:134'))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_4, lose_ordered_difference, q_accept, provenance(static('knowledge/strategies/math/integer_action_pairs.pl:134'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(integer, conflate_signed_difference_with_distance, q_start, locate_subtraction_endpoints, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_1, measure_unsigned_distance_between_endpoints, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_2, discard_change_direction, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_3, name_distance_as_signed_difference, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, conflate_signed_difference_with_distance, q_step_4, lose_ordered_difference, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(integer, drop_sign_use_magnitude_sum, q_start, identify_signs, q_step_1, provenance(observed(contract_example))).
 automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_1, identify_magnitudes, q_step_2, provenance(observed(contract_example))).
 automaton_transition(integer, drop_sign_use_magnitude_sum, q_step_2, drop_signs, q_step_3, provenance(observed(contract_example))).
@@ -74,6 +136,21 @@ automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_1, replace_
 automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_2, order_magnitudes_only, q_step_3, provenance(observed(contract_example))).
 automaton_transition(integer, order_by_magnitude_ignore_sign, q_step_3, lose_directional_order, q_accept, provenance(observed(contract_example))).
 
+automaton_transition(integer, reverse_signed_division_sign_rule, q_start, rewrite_division_as_unknown_factor_product, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_1, identify_dividend_divisor_signs, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_2, reverse_multiplicative_sign_relation, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_3, divide_magnitudes, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_4, assign_reversed_quotient_sign, q_step_5, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_5, report_reversed_signed_quotient, q_step_6, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_division_sign_rule, q_step_6, lose_quotient_sign_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_start, identify_factor_signs, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_1, reverse_multiplicative_sign_relation, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_2, multiply_factor_magnitudes, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_3, assign_reversed_product_sign, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_4, report_reversed_signed_product, q_step_5, provenance(observed(contract_example))).
+automaton_transition(integer, reverse_signed_multiplication_sign_rule, q_step_5, lose_product_sign_relation, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(integer, signed_addition_with_sign_relation, q_start, identify_signs, q_step_1, provenance(observed(contract_example))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_1, identify_magnitudes, q_step_2, provenance(observed(contract_example))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_2, determine_sign_relation, q_step_3, provenance(observed(contract_example))).
@@ -88,7 +165,35 @@ automaton_transition(integer, signed_addition_with_sign_relation, q_step_3, comb
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_4, assign_result_sign, q_step_5, provenance(observed(derived_template))).
 automaton_transition(integer, signed_addition_with_sign_relation, q_step_5, preserve_sign_relation, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(integer, signed_division_by_sign_rule, q_start, rewrite_division_as_unknown_factor_product, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_1, continue_quotient_sign_pattern_from_multiplication, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_2, identify_dividend_divisor_signs, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_3, determine_multiplicative_sign_relation, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_4, divide_magnitudes, q_step_5, provenance(observed(contract_example))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_5, assign_quotient_sign, q_step_6, provenance(observed(contract_example))).
+automaton_transition(integer, signed_division_by_sign_rule, q_step_6, state_signed_quotient_rule, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_start, continue_product_pattern_across_zero, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_1, identify_factor_signs, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_2, determine_multiplicative_sign_relation, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_3, multiply_factor_magnitudes, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_4, assign_product_sign, q_step_5, provenance(observed(contract_example))).
+automaton_transition(integer, signed_multiplication_by_sign_rule, q_step_5, state_signed_product_rule, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(integer, signed_number_location_and_order, q_start, establish_zero_as_origin, q_step_1, provenance(observed(contract_example))).
 automaton_transition(integer, signed_number_location_and_order, q_step_1, locate_each_signed_value, q_step_2, provenance(observed(contract_example))).
 automaton_transition(integer, signed_number_location_and_order, q_step_2, preserve_direction_from_zero, q_step_3, provenance(observed(contract_example))).
 automaton_transition(integer, signed_number_location_and_order, q_step_3, read_locations_left_to_right, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_start, assign_subtraction_roles, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_1, rewrite_subtraction_as_unknown_addend, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_2, draw_addend_arrow_to_target, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_3, read_arrow_displacement, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_4, rewrite_as_adding_additive_inverse, q_step_5, provenance(observed(contract_example))).
+automaton_transition(integer, signed_subtraction_as_additive_inverse, q_step_5, generalize_subtract_as_add_opposite, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_start, swap_minuend_and_subtrahend, q_step_1, provenance(observed(contract_example))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_1, prefer_nonnegative_subtraction_orientation, q_step_2, provenance(observed(contract_example))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_2, draw_addend_arrow_to_target, q_step_3, provenance(observed(contract_example))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_3, report_swapped_difference, q_step_4, provenance(observed(contract_example))).
+automaton_transition(integer, swap_subtraction_operands_to_preserve_nonnegative_result, q_step_4, lose_ordered_difference, q_accept, provenance(observed(contract_example))).

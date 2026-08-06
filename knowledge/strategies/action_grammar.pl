@@ -233,6 +233,12 @@ machine_grammar(computational, addition, wrong_carry_amount_to_next_column, arc(
 machine_grammar(computational, algebraic, balance_preserving_linear_solution, arc(keep_work_keep),
                 phrases([register_givens, re_express_equivalently, isolate_unknown, verify_by_substitution]),
                 stances([neutral, conserving, neutral, conserving])).
+machine_grammar(computational, algebraic, combine_signed_like_terms, arc(keep_then_work_on),
+                phrases([read_operand_attribute, re_express_equivalently, assign_roles, combine_quantities, combine_quantities, inscribe_result]),
+                stances([neutral, conserving, neutral, neutral, neutral, neutral])).
+machine_grammar(computational, algebraic, combine_unlike_terms, arc(work_then_break),
+                phrases([read_operand_attribute, conflate_roles, misname_and_record_the_loss]),
+                stances([neutral, deforming, deforming, deforming])).
 machine_grammar(computational, algebraic, contextual_linear_equation_construction, arc(unrecorded_run),
                 phrases([bind_then_compose, compose_expression, compose_expression, inscribe_result]),
                 stances([neutral, neutral, neutral, neutral, neutral, neutral])).
@@ -266,12 +272,21 @@ machine_grammar(computational, algebraic, one_sided_equation_operation, arc(brea
 machine_grammar(computational, algebraic, operational_equals_left_value, arc(work_then_break),
                 phrases([substitute_values, evaluate_expression, substitute_symbol_reading, treat_relevant_as_irrelevant]),
                 stances([neutral, neutral, deforming, deforming])).
+machine_grammar(computational, algebraic, percent_change_composition, arc(keep_then_work_on),
+                phrases([assign_roles, re_express_equivalently, isolate_unknown, inscribe_result]),
+                stances([neutral, conserving, neutral, neutral])).
 machine_grammar(computational, algebraic, programming_expression_evaluation, arc(unrecorded_run),
                 phrases([register_givens, register_givens, evaluate_expression, receive_kernel_outcome, name_result]),
                 stances([neutral, neutral, neutral, neutral, neutral])).
+machine_grammar(computational, algebraic, split_repeated_diagram_variable, arc(work_then_break),
+                phrases([read_operand_attribute, substitute_symbol_reading, misname_and_record_the_loss]),
+                stances([neutral, deforming, deforming, deforming])).
 machine_grammar(computational, algebraic, symbolic_expression_construction, arc(keep_then_work_on),
                 phrases([bind_then_compose, verify_invariant, inscribe_result]),
                 stances([neutral, neutral, neutral, conserving, neutral])).
+machine_grammar(computational, algebraic, translate_diagram_to_equation, arc(unrecorded_run),
+                phrases([read_the_givens_through, assign_roles, compose_expression, compose_expression, inscribe_result]),
+                stances([neutral, neutral, neutral, neutral, neutral, neutral])).
 machine_grammar(computational, calculus, bounded_numerator_over_diverging_denominator, arc(unrecorded_run),
                 phrases([read_the_givens_through, read_operand_attribute, filter_by_constraint, judge_against_benchmark, name_result]),
                 stances([neutral, neutral, neutral, neutral, neutral, neutral])).
@@ -560,6 +575,9 @@ machine_grammar(computational, geometry, angle_additive_composition, arc(keep_wo
 machine_grammar(computational, geometry, angle_as_ray_length, arc(keep_first_then_break),
                 phrases([retain_what_must_survive, scale_multiplicatively, substitute_appearance_for_measure]),
                 stances([conserving, neutral, deforming])).
+machine_grammar(computational, geometry, angle_relation_unknown_measure, arc(unrecorded_run),
+                phrases([register_givens, accumulate_total, compose_expression, isolate_unknown]),
+                stances([neutral, neutral, neutral, neutral])).
 machine_grammar(computational, geometry, angle_turn_measurement, arc(unrecorded_run),
                 phrases([establish_reference_frame, establish_reference_frame, iterate_unit, locate_position, name_result]),
                 stances([neutral, neutral, neutral, neutral, neutral])).
@@ -581,6 +599,9 @@ machine_grammar(computational, geometry, axis_aligned_coordinate_distance, arc(u
 machine_grammar(computational, geometry, choose_first_area_unit_without_scale, arc(break_first_work_break),
                 phrases([treat_relevant_as_irrelevant, select_unit_scale, omit_required_step]),
                 stances([deforming, neutral, deforming])).
+machine_grammar(computational, geometry, circle_circumference_diameter_co_measurement, arc(keep_then_work_on),
+                phrases([register_givens, align_to_common_unit, scale_multiplicatively, name_result]),
+                stances([neutral, conserving, neutral, neutral])).
 machine_grammar(computational, geometry, compare_solid_volume_by_cube_count, arc(keep_then_work_on),
                 phrases([unitize_referent, count_units, count_units, set_aside_irrelevant_attribute, compare_magnitudes]),
                 stances([neutral, neutral, neutral, conserving, neutral])).
@@ -689,9 +710,18 @@ machine_grammar(computational, geometry, symmetry_constrained_side_reconstructio
 machine_grammar(computational, geometry, triangle_area_half_base_height, arc(keep_then_work_on),
                 phrases([bind_the_roles, recompose_total, compute_product, select_part]),
                 stances([neutral, neutral, conserving, neutral, neutral])).
+machine_grammar(computational, geometry, triangle_three_measure_determination, arc(work_then_keep),
+                phrases([register_givens, test_criteria, test_criteria, record_viability]),
+                stances([neutral, conserving, conserving, conserving])).
+machine_grammar(computational, geometry, use_diameter_as_radius_in_circumference, arc(break_recover_break),
+                phrases([register_givens, conflate_roles, compute_product, misname_result]),
+                stances([neutral, deforming, neutral, deforming])).
 machine_grammar(computational, geometry, visible_faces_only_surface_area, arc(work_then_break),
                 phrases([register_givens, enumerate_candidates, skip_then_misname]),
                 stances([neutral, neutral, deforming, deforming])).
+machine_grammar(computational, integer, conflate_signed_difference_with_distance, arc(work_then_break),
+                phrases([locate_position, measure_quantity, treat_relevant_as_irrelevant, misname_and_record_the_loss]),
+                stances([neutral, neutral, deforming, deforming, deforming])).
 machine_grammar(computational, integer, drop_sign_use_magnitude_sum, arc(break_recover_break),
                 phrases([read_the_givens_through, treat_relevant_as_irrelevant, combine_quantities, misname_and_record_the_loss]),
                 stances([neutral, neutral, deforming, neutral, deforming, deforming])).
@@ -704,12 +734,30 @@ machine_grammar(computational, integer, inequality_solution_set_representation, 
 machine_grammar(computational, integer, order_by_magnitude_ignore_sign, arc(break_recover_break),
                 phrases([establish_reference_frame, substitute_scalar_for_structured_quantity, order_by_magnitude, record_loss]),
                 stances([neutral, deforming, neutral, deforming])).
+machine_grammar(computational, integer, reverse_signed_division_sign_rule, arc(keep_first_break_recover_break_again),
+                phrases([re_express_equivalently, read_operand_attribute, substitute_symbol_reading, compute_quotient, substitute_symbol_reading, misname_and_record_the_loss]),
+                stances([conserving, neutral, deforming, neutral, deforming, deforming, deforming])).
+machine_grammar(computational, integer, reverse_signed_multiplication_sign_rule, arc(break_recover_break),
+                phrases([read_operand_attribute, substitute_symbol_reading, compute_product, substitute_symbol_reading, misname_and_record_the_loss]),
+                stances([neutral, deforming, neutral, deforming, deforming, deforming])).
 machine_grammar(computational, integer, signed_addition_with_sign_relation, arc(work_then_keep),
                 phrases([read_the_givens_through, read_operand_attribute, combine_quantities, assign_roles, record_conservation]),
+                stances([neutral, neutral, neutral, neutral, neutral, conserving])).
+machine_grammar(computational, integer, signed_division_by_sign_rule, arc(keep_first_work_keep),
+                phrases([re_express_equivalently, traverse_boundary, read_the_givens_through, compute_quotient, assign_roles, record_conservation]),
+                stances([conserving, neutral, neutral, neutral, neutral, neutral, conserving])).
+machine_grammar(computational, integer, signed_multiplication_by_sign_rule, arc(work_then_keep),
+                phrases([traverse_boundary, read_the_givens_through, compute_product, assign_roles, record_conservation]),
                 stances([neutral, neutral, neutral, neutral, neutral, conserving])).
 machine_grammar(computational, integer, signed_number_location_and_order, arc(keep_then_work_on),
                 phrases([establish_reference_frame, locate_position, verify_invariant, order_by_magnitude]),
                 stances([neutral, neutral, conserving, neutral])).
+machine_grammar(computational, integer, signed_subtraction_as_additive_inverse, arc(keep_work_keep),
+                phrases([assign_roles, re_express_equivalently, count_up_to_target, name_result, re_express_equivalently, record_conservation]),
+                stances([neutral, conserving, neutral, neutral, conserving, conserving])).
+machine_grammar(computational, integer, swap_subtraction_operands_to_preserve_nonnegative_result, arc(break_first_work_break),
+                phrases([conflate_roles, treat_relevant_as_irrelevant, count_then_name_the_wrong_terminus]),
+                stances([deforming, deforming, neutral, deforming, deforming])).
 machine_grammar(computational, measurement, change_unit_label_without_scaling, arc(work_then_break),
                 phrases([read_operand_attribute, omit_required_step, retain_where_change_was_due, rename_in_place_of_transforming]),
                 stances([neutral, deforming, deforming, deforming])).
@@ -803,15 +851,27 @@ machine_grammar(computational, probability, terminal_tree_endpoint_probability_s
 machine_grammar(computational, ratio, additive_extension_of_ratio, arc(work_then_break),
                 phrases([register_givens, remove_quantity, combine_quantities, compose_expression, record_loss]),
                 stances([neutral, neutral, neutral, neutral, deforming])).
+machine_grammar(computational, ratio, compute_unit_rate_from_ratio_pair, arc(work_then_keep),
+                phrases([register_givens, bind_the_roles, compute_quotient, name_result, record_conservation]),
+                stances([neutral, neutral, neutral, neutral, neutral, conserving])).
 machine_grammar(computational, ratio, construct_referent_ratio_diagram, arc(unrecorded_run),
                 phrases([bind_the_roles, assign_roles, compose_expression, inscribe_result]),
                 stances([neutral, neutral, neutral, neutral, neutral])).
+machine_grammar(computational, ratio, divide_larger_by_smaller_for_unit_rate, arc(break_recover_break),
+                phrases([register_givens, conflate_roles, order_by_magnitude, compute_quotient, name_result, record_loss]),
+                stances([neutral, deforming, neutral, neutral, neutral, deforming])).
+machine_grammar(computational, ratio, inscribe_proportional_equation, arc(unrecorded_run),
+                phrases([register_givens, compute_quotient, assign_roles, compose_expression, substitute_values, scale_multiplicatively, inscribe_result]),
+                stances([neutral, neutral, neutral, neutral, neutral, neutral, neutral])).
 machine_grammar(computational, ratio, reverse_ratio_referent_order, arc(break_recover_break),
                 phrases([register_givens, conflate_roles, write_and_record_the_loss]),
                 stances([neutral, deforming, neutral, deforming])).
 machine_grammar(computational, ratio, scale_ratio_unit, arc(work_then_keep),
                 phrases([take_up_and_read, scale_multiplicatively, scale_multiplicatively, compose_expression, record_conservation]),
                 stances([neutral, neutral, neutral, neutral, neutral, conserving])).
+machine_grammar(computational, ratio, test_relation_for_proportionality, arc(keep_then_work_on),
+                phrases([register_givens, compute_quotient, verify_invariant, record_viability, inscribe_result]),
+                stances([neutral, neutral, conserving, conserving, neutral])).
 machine_grammar(computational, statistics, box_plot_from_five_number_summary, arc(keep_then_work_on),
                 phrases([register_givens, order_by_magnitude, compose_expression, align_to_common_unit, inscribe_result]),
                 stances([neutral, neutral, neutral, conserving, neutral])).
@@ -824,6 +884,12 @@ machine_grammar(computational, statistics, distribution_summary_selection, arc(u
 machine_grammar(computational, statistics, dot_plot_frequency_representation, arc(keep_then_work_on),
                 phrases([establish_reference_frame, verify_invariant, inscribe_result]),
                 stances([neutral, conserving, neutral])).
+machine_grammar(computational, statistics, estimate_probability_from_observed_frequency, arc(work_then_keep),
+                phrases([register_givens, count_units, compute_quotient, record_viability]),
+                stances([neutral, neutral, neutral, conserving])).
+machine_grammar(computational, statistics, finite_frequency_as_exact_probability, arc(work_then_break),
+                phrases([register_givens, compute_quotient, accept_without_check, misname_result]),
+                stances([neutral, neutral, deforming, deforming])).
 machine_grammar(computational, statistics, five_number_summary_and_iqr, arc(unrecorded_run),
                 phrases([register_givens, order_by_magnitude, partition_into_equal_parts, locate_position, remove_quantity]),
                 stances([neutral, neutral, neutral, neutral, neutral])).
@@ -851,6 +917,9 @@ machine_grammar(computational, statistics, mode_as_maximal_frequency, arc(unreco
 machine_grammar(computational, statistics, question_without_variability, arc(break_then_work_on),
                 phrases([read_operand_attribute, substitute_scalar_for_structured_quantity, name_result]),
                 stances([neutral, deforming, neutral])).
+machine_grammar(computational, statistics, sample_population_distribution_judgment, arc(keep_then_work_on),
+                phrases([register_givens, measure_quantity, measure_quantity, test_criteria, name_result]),
+                stances([neutral, neutral, neutral, conserving, neutral])).
 machine_grammar(computational, statistics, statistical_question_variability_classification, arc(keep_then_work_on),
                 phrases([take_up_and_read, test_criteria, name_result]),
                 stances([neutral, neutral, conserving, neutral])).
@@ -917,6 +986,8 @@ machine_answerability(computational, geometry, angle_additive_composition,
                       invariant(part_turns_sum_to_whole_turn), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, angle_as_ray_length,
                       invariant(ray_length_does_not_change_angle_measure), source('geometry_action_pairs.pl')).
+machine_answerability(computational, geometry, angle_relation_unknown_measure,
+                      invariant(part_turns_sum_to_whole_turn), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, angle_turn_measurement,
                       invariant(ray_length_does_not_change_angle_measure), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, area_as_perimeter_count,
@@ -937,6 +1008,12 @@ machine_answerability(computational, measurement, change_unit_label_without_scal
                       invariant(quantity_preserved_while_unit_count_changes), source('measurement_action_pairs.pl')).
 machine_answerability(computational, geometry, choose_first_area_unit_without_scale,
                       invariant(area_unit_scale_matches_referent_extent), source('geometry_action_pairs.pl')).
+machine_answerability(computational, geometry, circle_circumference_diameter_co_measurement,
+                      invariant(circumference_and_diameter_share_pi_as_co_measure), source('geometry_action_pairs.pl')).
+machine_answerability(computational, algebraic, combine_signed_like_terms,
+                      invariant(only_terms_with_the_same_variable_role_are_combined), source('algebraic_action_pairs.pl')).
+machine_answerability(computational, algebraic, combine_unlike_terms,
+                      invariant(only_terms_with_the_same_variable_role_are_combined), source('algebraic_action_pairs.pl')).
 machine_answerability(computational, multiplication, common_factor_intersection,
                       invariant(each_common_factor_divides_both_numbers), source('smr_mult_action_pairs.pl')).
 machine_answerability(computational, multiplication, common_multiple_sequence,
@@ -951,6 +1028,10 @@ machine_answerability(computational, geometry, compare_solid_volume_by_cube_coun
                       invariant(volume_compared_by_conserved_cubic_units), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, composite_prism_volume_sum,
                       invariant(disjoint_component_volumes_sum_to_whole), source('geometry_action_pairs.pl')).
+machine_answerability(computational, ratio, compute_unit_rate_from_ratio_pair,
+                      invariant(rate_direction_tracks_quantity_roles), source('ratio_action_pairs.pl')).
+machine_answerability(computational, integer, conflate_signed_difference_with_distance,
+                      invariant(subtraction_order_is_preserved), source('integer_action_pairs.pl')).
 machine_answerability(computational, ratio, construct_referent_ratio_diagram,
                       invariant(ratio_order_tracks_named_referents), source('ratio_action_pairs.pl')).
 machine_answerability(computational, algebraic, contextual_linear_equation_construction,
@@ -979,6 +1060,8 @@ machine_answerability(computational, geometry, directed_difference_as_coordinate
                       invariant(distance_is_nonnegative_absolute_coordinate_change), source('geometry_action_pairs.pl')).
 machine_answerability(computational, algebraic, distributive_expression_rewrite,
                       invariant(every_addend_receives_the_common_factor), source('algebraic_action_pairs.pl')).
+machine_answerability(computational, ratio, divide_larger_by_smaller_for_unit_rate,
+                      invariant(rate_direction_tracks_quantity_roles), source('ratio_action_pairs.pl')).
 machine_answerability(computational, geometry, divide_volume_by_one_dimension,
                       invariant(base_area_times_height_equals_volume), source('geometry_action_pairs.pl')).
 machine_answerability(computational, algebraic, drop_distributed_term,
@@ -1039,6 +1122,8 @@ machine_answerability(computational, geometry, orientation_bound_shape_classific
                       invariant(classification_independent_of_orientation), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, parallelogram_area_base_height,
                       invariant(height_is_perpendicular_distance_to_opposite_base), source('geometry_action_pairs.pl')).
+machine_answerability(computational, algebraic, percent_change_composition,
+                      invariant(percent_rate_is_relative_to_the_named_base), source('algebraic_action_pairs.pl')).
 machine_answerability(computational, geometry, perimeter_two_sides_only,
                       invariant(perimeter_traverses_all_four_sides), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, perimeter_uses_area_formula,
@@ -1071,18 +1156,26 @@ machine_answerability(computational, geometry, shape_classification_by_defining_
                       invariant(classification_independent_of_orientation), source('geometry_action_pairs.pl')).
 machine_answerability(computational, integer, signed_number_location_and_order,
                       invariant(left_position_is_less_value), source('integer_action_pairs.pl')).
+machine_answerability(computational, integer, signed_subtraction_as_additive_inverse,
+                      invariant(subtraction_order_is_preserved), source('integer_action_pairs.pl')).
 machine_answerability(computational, geometry, slanted_side_as_parallelogram_height,
                       invariant(height_is_perpendicular_distance_to_opposite_base), source('geometry_action_pairs.pl')).
 machine_answerability(computational, counting, spatial_extent_as_cardinality,
                       invariant(cardinality_independent_of_spatial_extent), source('counting_action_pairs.pl')).
+machine_answerability(computational, algebraic, split_repeated_diagram_variable,
+                      invariant(repeated_diagram_labels_name_one_quantity), source('algebraic_action_pairs.pl')).
 machine_answerability(computational, geometry, subtract_side_from_area,
                       invariant(known_side_times_missing_side_equals_area), source('geometry_action_pairs.pl')).
 machine_answerability(computational, geometry, sum_overlapping_prism_volumes,
                       invariant(disjoint_component_volumes_sum_to_whole), source('geometry_action_pairs.pl')).
+machine_answerability(computational, integer, swap_subtraction_operands_to_preserve_nonnegative_result,
+                      invariant(subtraction_order_is_preserved), source('integer_action_pairs.pl')).
 machine_answerability(computational, algebraic, symbolic_expression_construction,
                       invariant(operation_and_referent_roles_preserved), source('algebraic_action_pairs.pl')).
 machine_answerability(computational, geometry, symmetry_constrained_side_reconstruction,
                       invariant(reflected_sides_share_length), source('geometry_action_pairs.pl')).
+machine_answerability(computational, algebraic, translate_diagram_to_equation,
+                      invariant(repeated_diagram_labels_name_one_quantity), source('algebraic_action_pairs.pl')).
 machine_answerability(computational, geometry, triangle_area_half_base_height,
                       invariant(triangle_is_half_matching_parallelogram), source('geometry_action_pairs.pl')).
 machine_answerability(computational, measurement, unit_conversion_by_iteration,
@@ -1136,6 +1229,9 @@ incompatible_pair(fraction, benchmark_fraction_comparison, gap_thinking_fraction
 incompatible_pair(subtraction, borrow_across_zero_cascade, borrow_across_zero_no_cascade, deforms(borrow_across_zero),
                   divergence(3, exchange_base_down, read_operand_attribute),
                   class(substantive_keep)).
+incompatible_pair(geometry, circle_circumference_diameter_co_measurement, use_diameter_as_radius_in_circumference, deforms(diameter_read_as_radius_in_circle_co_measurement),
+                  divergence(2, align_to_common_unit, conflate_roles),
+                  class(substantive_break)).
 incompatible_pair(addition, column_addition_with_carrying, append_column_sum_without_carrying, deforms(append_partial_sums_without_carrying),
                   divergence(2, apply_stored_rule, omit_required_step),
                   class(substantive_break)).
@@ -1144,6 +1240,9 @@ incompatible_pair(addition, column_addition_with_carrying, drop_carry_to_next_co
                   class(substantive_break)).
 incompatible_pair(addition, column_addition_with_carrying, wrong_carry_amount_to_next_column, deforms(incorrect_carry_amount),
                   divergence(3, inscribe_result, misread_intermediate_value),
+                  class(substantive_break)).
+incompatible_pair(algebraic, combine_signed_like_terms, combine_unlike_terms, deforms(combine_constant_with_variable_coefficient),
+                  divergence(2, re_express_equivalently, conflate_roles),
                   class(substantive_break)).
 incompatible_pair(fraction, common_denominator_fraction_addition, add_numerator_denominator_sum, deforms(add_numerator_and_denominator),
                   divergence(3, align_to_common_unit, omit_required_step),
@@ -1175,6 +1274,9 @@ incompatible_pair(geometry, compare_solid_volume_by_cube_count, compare_solid_vo
 incompatible_pair(geometry, composite_prism_volume_sum, sum_overlapping_prism_volumes, deforms(overlapping_component_volume_double_count),
                   divergence(1, verify_invariant, measure_quantity),
                   class(substantive_keep)).
+incompatible_pair(ratio, compute_unit_rate_from_ratio_pair, divide_larger_by_smaller_for_unit_rate, deforms(rate_direction_replaced_by_magnitude_order),
+                  divergence(2, assign_roles, conflate_roles),
+                  class(substantive_break)).
 incompatible_pair(ratio, construct_referent_ratio_diagram, reverse_ratio_referent_order, deforms(reversed_ratio_referent_order),
                   divergence(1, assign_roles, register_givens),
                   class(same_register_neutral)).
@@ -1235,6 +1337,9 @@ incompatible_pair(algebraic, distributive_expression_rewrite, drop_distributed_t
 incompatible_pair(algebraic, equation_truth_by_substitution, operational_equals_left_value, deforms(operational_equals_left_value),
                   divergence(3, evaluate_expression, substitute_symbol_reading),
                   class(substantive_break)).
+incompatible_pair(statistics, estimate_probability_from_observed_frequency, finite_frequency_as_exact_probability, deforms(finite_frequency_promoted_to_exact_probability),
+                  divergence(2, count_units, compute_quotient),
+                  class(register_divergence)).
 incompatible_pair(algebraic, exponent_as_repeated_factor, exponent_as_multiplier, deforms(exponent_as_multiplier),
                   divergence(1, assign_roles, conflate_roles),
                   class(substantive_break)).
@@ -1367,8 +1472,20 @@ incompatible_pair(geometry, shape_classification_by_defining_attributes, orienta
 incompatible_pair(integer, signed_addition_with_sign_relation, drop_sign_use_magnitude_sum, deforms(magnitude_only_combination),
                   divergence(3, read_operand_attribute, treat_relevant_as_irrelevant),
                   class(substantive_break)).
+incompatible_pair(integer, signed_division_by_sign_rule, reverse_signed_division_sign_rule, deforms(reversed_signed_quotient_rule),
+                  divergence(2, traverse_boundary, read_operand_attribute),
+                  class(register_divergence)).
+incompatible_pair(integer, signed_multiplication_by_sign_rule, reverse_signed_multiplication_sign_rule, deforms(reversed_signed_product_rule),
+                  divergence(1, traverse_boundary, read_operand_attribute),
+                  class(register_divergence)).
 incompatible_pair(integer, signed_number_location_and_order, order_by_magnitude_ignore_sign, deforms(magnitude_only_signed_order),
                   divergence(2, locate_position, substitute_scalar_for_structured_quantity),
+                  class(substantive_break)).
+incompatible_pair(integer, signed_subtraction_as_additive_inverse, conflate_signed_difference_with_distance, deforms(difference_distance_conflation),
+                  divergence(1, assign_roles, locate_position),
+                  class(register_divergence)).
+incompatible_pair(integer, signed_subtraction_as_additive_inverse, swap_subtraction_operands_to_preserve_nonnegative_result, deforms(swap_operands_to_avoid_negative_result),
+                  divergence(1, assign_roles, conflate_roles),
                   class(substantive_break)).
 incompatible_pair(subtraction, sliding_constant_difference, slide_subtrahend_only, deforms(nonconstant_difference_shift),
                   divergence(3, transfer_between_operands, omit_required_step),
@@ -1391,6 +1508,12 @@ incompatible_pair(subtraction, take_away_base_ones, drop_ones_after_base_takeawa
 incompatible_pair(probability, terminal_tree_endpoint_probability_sum, equiprobable_endpoint_counting, deforms(equiprobability_bias_over_terminal_paths),
                   divergence(3, accumulate_total, count_units),
                   class(same_register_neutral)).
+incompatible_pair(ratio, test_relation_for_proportionality, additive_extension_of_ratio, deforms(additive_comparison_in_proportion),
+                  divergence(2, compute_quotient, remove_quantity),
+                  class(same_register_neutral)).
+incompatible_pair(algebraic, translate_diagram_to_equation, split_repeated_diagram_variable, deforms(repeated_diagram_label_as_distinct_quantities),
+                  divergence(2, read_operand_attribute, substitute_symbol_reading),
+                  class(substantive_break)).
 incompatible_pair(geometry, triangle_area_half_base_height, omit_half_in_triangle_area, deforms(triangle_area_omits_half),
                   divergence(1, assign_roles, compute_product),
                   class(register_divergence)).
@@ -1436,6 +1559,8 @@ machine_conservation_gap(computational, algebraic, exponent_as_repeated_factor,
                         reason("4 edges, every one of them a working step: assign_roles > assign_roles > iterate_unit > inscribe_result. An EXTRACTION gap, not an authoring one: exponent_as_repeated_factor already declares invariant(exponent_counts_copies_of_base_as_factors) in algebraic_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, algebraic, programming_expression_evaluation,
                         reason("5 edges, every one of them a working step: register_givens > register_givens > evaluate_expression > receive_kernel_outcome > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
+machine_conservation_gap(computational, algebraic, translate_diagram_to_equation,
+                        reason("6 edges, every one of them a working step: read_operand_attribute > read_operand_attribute > assign_roles > compose_expression > compose_expression > inscribe_result. An EXTRACTION gap, not an authoring one: translate_diagram_to_equation already declares invariant(repeated_diagram_labels_name_one_quantity) in algebraic_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, calculus, bounded_numerator_over_diverging_denominator,
                         reason("6 edges, every one of them a working step: read_operand_attribute > read_operand_attribute > read_operand_attribute > filter_by_constraint > judge_against_benchmark > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, counting, compare_cardinalities_one_to_one,
@@ -1466,6 +1591,8 @@ machine_conservation_gap(computational, fraction, reversible_measurement_divisio
                         reason("5 edges, every one of them a working step: register_givens > select_unit_scale > measure_quantity > replicate_equal_groups > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, fraction, unit_fraction_denominator_product_rule,
                         reason("8 edges, every one of them a working step: unitize_referent > disembed_part > partition_into_equal_parts > select_unit_scale > compute_product > compute_product > iterate_unit > dispatch_to_kernel. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
+machine_conservation_gap(computational, geometry, angle_relation_unknown_measure,
+                        reason("4 edges, every one of them a working step: register_givens > accumulate_total > compose_expression > isolate_unknown. An EXTRACTION gap, not an authoring one: angle_relation_unknown_measure already declares invariant(part_turns_sum_to_whole_turn) in geometry_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, geometry, angle_turn_measurement,
                         reason("5 edges, every one of them a working step: establish_reference_frame > establish_reference_frame > iterate_unit > locate_position > name_result. An EXTRACTION gap, not an authoring one: angle_turn_measurement already declares invariant(ray_length_does_not_change_angle_measure) in geometry_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
 machine_conservation_gap(computational, geometry, area_unit_scale_selection,
@@ -1506,6 +1633,8 @@ machine_conservation_gap(computational, probability, terminal_tree_endpoint_prob
                         reason("4 edges, every one of them a working step: register_givens > read_operand_attribute > accumulate_total > name_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, ratio, construct_referent_ratio_diagram,
                         reason("5 edges, every one of them a working step: assign_roles > assign_roles > assign_roles > compose_expression > inscribe_result. An EXTRACTION gap, not an authoring one: construct_referent_ratio_diagram already declares invariant(ratio_order_tracks_named_referents) in ratio_action_pairs.pl, and the transition-table builder did not carry it onto an edge. Fixable by extraction")).
+machine_conservation_gap(computational, ratio, inscribe_proportional_equation,
+                        reason("7 edges, every one of them a working step: register_givens > compute_quotient > assign_roles > compose_expression > substitute_values > scale_multiplicatively > inscribe_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, categorical_frequency_bar_representation,
                         reason("4 edges, every one of them a working step: assign_roles > count_units > establish_reference_frame > inscribe_result. An AUTHORING gap: no invariant/1 for this signature anywhere in the action-pair sources, so nothing in the tree says what the strategy is answerable for")).
 machine_conservation_gap(computational, statistics, distribution_summary_selection,
@@ -1584,12 +1713,16 @@ reading_held_open(fraction, benchmark_fraction_comparison, gap_thinking_fraction
                   reason("the two readings part at step 3 and both remain reachable: a trace on the gap_thinking_fraction_comparison reading may still terminate where benchmark_fraction_comparison does, and the corpus cannot say it will not")).
 reading_held_open(subtraction, borrow_across_zero_cascade, borrow_across_zero_no_cascade, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the borrow_across_zero_no_cascade reading may still terminate where borrow_across_zero_cascade does, and the corpus cannot say it will not")).
+reading_held_open(geometry, circle_circumference_diameter_co_measurement, use_diameter_as_radius_in_circumference, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the use_diameter_as_radius_in_circumference reading may still terminate where circle_circumference_diameter_co_measurement does, and the corpus cannot say it will not")).
 reading_held_open(addition, column_addition_with_carrying, append_column_sum_without_carrying, divergence(2),
                   reason("the two readings part at step 2 and both remain reachable: a trace on the append_column_sum_without_carrying reading may still terminate where column_addition_with_carrying does, and the corpus cannot say it will not")).
 reading_held_open(addition, column_addition_with_carrying, drop_carry_to_next_column, divergence(4),
                   reason("the two readings part at step 4 and both remain reachable: a trace on the drop_carry_to_next_column reading may still terminate where column_addition_with_carrying does, and the corpus cannot say it will not")).
 reading_held_open(addition, column_addition_with_carrying, wrong_carry_amount_to_next_column, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the wrong_carry_amount_to_next_column reading may still terminate where column_addition_with_carrying does, and the corpus cannot say it will not")).
+reading_held_open(algebraic, combine_signed_like_terms, combine_unlike_terms, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the combine_unlike_terms reading may still terminate where combine_signed_like_terms does, and the corpus cannot say it will not")).
 reading_held_open(fraction, common_denominator_fraction_addition, add_numerator_denominator_sum, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the add_numerator_denominator_sum reading may still terminate where common_denominator_fraction_addition does, and the corpus cannot say it will not")).
 reading_held_open(multiplication, common_factor_intersection, factors_of_first_number_only, divergence(2),
@@ -1610,6 +1743,8 @@ reading_held_open(geometry, compare_solid_volume_by_cube_count, compare_solid_vo
                   reason("the two readings part at step 1 and both remain reachable: a trace on the compare_solid_volume_by_visible_extent reading may still terminate where compare_solid_volume_by_cube_count does, and the corpus cannot say it will not")).
 reading_held_open(geometry, composite_prism_volume_sum, sum_overlapping_prism_volumes, divergence(1),
                   reason("the two readings part at step 1 and both remain reachable: a trace on the sum_overlapping_prism_volumes reading may still terminate where composite_prism_volume_sum does, and the corpus cannot say it will not")).
+reading_held_open(ratio, compute_unit_rate_from_ratio_pair, divide_larger_by_smaller_for_unit_rate, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the divide_larger_by_smaller_for_unit_rate reading may still terminate where compute_unit_rate_from_ratio_pair does, and the corpus cannot say it will not")).
 reading_held_open(ratio, construct_referent_ratio_diagram, reverse_ratio_referent_order, divergence(1),
                   reason("the two readings part at step 1 and both remain reachable: a trace on the reverse_ratio_referent_order reading may still terminate where construct_referent_ratio_diagram does, and the corpus cannot say it will not")).
 reading_held_open(multiplication, coordinate_groups_items, add_counts_without_composite_unit, divergence(1),
@@ -1650,6 +1785,8 @@ reading_held_open(algebraic, distributive_expression_rewrite, drop_distributed_t
                   reason("the two readings part at step 2 and both remain reachable: a trace on the drop_distributed_term reading may still terminate where distributive_expression_rewrite does, and the corpus cannot say it will not")).
 reading_held_open(algebraic, equation_truth_by_substitution, operational_equals_left_value, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the operational_equals_left_value reading may still terminate where equation_truth_by_substitution does, and the corpus cannot say it will not")).
+reading_held_open(statistics, estimate_probability_from_observed_frequency, finite_frequency_as_exact_probability, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the finite_frequency_as_exact_probability reading may still terminate where estimate_probability_from_observed_frequency does, and the corpus cannot say it will not")).
 reading_held_open(algebraic, exponent_as_repeated_factor, exponent_as_multiplier, divergence(1),
                   reason("the two readings part at step 1 and both remain reachable: a trace on the exponent_as_multiplier reading may still terminate where exponent_as_repeated_factor does, and the corpus cannot say it will not")).
 reading_held_open(calculus, factor_cancel_substitute, factor_cancel_without_common_factor, divergence(3),
@@ -1738,8 +1875,16 @@ reading_held_open(geometry, shape_classification_by_defining_attributes, orienta
                   reason("the two readings part at step 2 and both remain reachable: a trace on the orientation_bound_shape_classification reading may still terminate where shape_classification_by_defining_attributes does, and the corpus cannot say it will not")).
 reading_held_open(integer, signed_addition_with_sign_relation, drop_sign_use_magnitude_sum, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the drop_sign_use_magnitude_sum reading may still terminate where signed_addition_with_sign_relation does, and the corpus cannot say it will not")).
+reading_held_open(integer, signed_division_by_sign_rule, reverse_signed_division_sign_rule, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the reverse_signed_division_sign_rule reading may still terminate where signed_division_by_sign_rule does, and the corpus cannot say it will not")).
+reading_held_open(integer, signed_multiplication_by_sign_rule, reverse_signed_multiplication_sign_rule, divergence(1),
+                  reason("the two readings part at step 1 and both remain reachable: a trace on the reverse_signed_multiplication_sign_rule reading may still terminate where signed_multiplication_by_sign_rule does, and the corpus cannot say it will not")).
 reading_held_open(integer, signed_number_location_and_order, order_by_magnitude_ignore_sign, divergence(2),
                   reason("the two readings part at step 2 and both remain reachable: a trace on the order_by_magnitude_ignore_sign reading may still terminate where signed_number_location_and_order does, and the corpus cannot say it will not")).
+reading_held_open(integer, signed_subtraction_as_additive_inverse, conflate_signed_difference_with_distance, divergence(1),
+                  reason("the two readings part at step 1 and both remain reachable: a trace on the conflate_signed_difference_with_distance reading may still terminate where signed_subtraction_as_additive_inverse does, and the corpus cannot say it will not")).
+reading_held_open(integer, signed_subtraction_as_additive_inverse, swap_subtraction_operands_to_preserve_nonnegative_result, divergence(1),
+                  reason("the two readings part at step 1 and both remain reachable: a trace on the swap_subtraction_operands_to_preserve_nonnegative_result reading may still terminate where signed_subtraction_as_additive_inverse does, and the corpus cannot say it will not")).
 reading_held_open(subtraction, sliding_constant_difference, slide_subtrahend_only, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the slide_subtrahend_only reading may still terminate where sliding_constant_difference does, and the corpus cannot say it will not")).
 reading_held_open(fraction, solve_for_unit, iterate_only_no_reverse, divergence(2),
@@ -1754,6 +1899,10 @@ reading_held_open(subtraction, take_away_base_ones, drop_ones_after_base_takeawa
                   reason("the two readings part at step 3 and both remain reachable: a trace on the drop_ones_after_base_takeaway reading may still terminate where take_away_base_ones does, and the corpus cannot say it will not")).
 reading_held_open(probability, terminal_tree_endpoint_probability_sum, equiprobable_endpoint_counting, divergence(3),
                   reason("the two readings part at step 3 and both remain reachable: a trace on the equiprobable_endpoint_counting reading may still terminate where terminal_tree_endpoint_probability_sum does, and the corpus cannot say it will not")).
+reading_held_open(ratio, test_relation_for_proportionality, additive_extension_of_ratio, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the additive_extension_of_ratio reading may still terminate where test_relation_for_proportionality does, and the corpus cannot say it will not")).
+reading_held_open(algebraic, translate_diagram_to_equation, split_repeated_diagram_variable, divergence(2),
+                  reason("the two readings part at step 2 and both remain reachable: a trace on the split_repeated_diagram_variable reading may still terminate where translate_diagram_to_equation does, and the corpus cannot say it will not")).
 reading_held_open(geometry, triangle_area_half_base_height, omit_half_in_triangle_area, divergence(1),
                   reason("the two readings part at step 1 and both remain reachable: a trace on the omit_half_in_triangle_area reading may still terminate where triangle_area_half_base_height does, and the corpus cannot say it will not")).
 reading_held_open(measurement, unit_conversion_by_iteration, change_unit_label_without_scaling, divergence(1),
@@ -1769,23 +1918,23 @@ reading_held_open(measurement, unit_preserving_measured_quantity_change, drop_un
 % Evidence, not a verdict. It says where losses cluster in this corpus and
 % nothing about whether to interrupt. Actions carried by fewer than four
 % machines are omitted rather than reported at a scale that cannot bear it.
-token_loss_rate(computational, accept_without_check, machines(4), ending_deforming(1)).
-token_loss_rate(computational, accumulate_total, machines(15), ending_deforming(2)).
+token_loss_rate(computational, accept_without_check, machines(5), ending_deforming(2)).
+token_loss_rate(computational, accumulate_total, machines(16), ending_deforming(2)).
 token_loss_rate(discursive, acknowledge_commitment, machines(8), ending_deforming(3)).
-token_loss_rate(computational, align_to_common_unit, machines(18), ending_deforming(3)).
+token_loss_rate(computational, align_to_common_unit, machines(19), ending_deforming(3)).
 token_loss_rate(computational, apply_stored_rule, machines(13), ending_deforming(6)).
-token_loss_rate(computational, assign_roles, machines(37), ending_deforming(10)).
+token_loss_rate(computational, assign_roles, machines(45), ending_deforming(10)).
 token_loss_rate(computational, attach_units_coordination, machines(4), ending_deforming(0)).
 token_loss_rate(discursive, attend_to_utterance, machines(8), ending_deforming(4)).
 token_loss_rate(discursive, attribute_commitment, machines(4), ending_deforming(2)).
-token_loss_rate(computational, combine_quantities, machines(18), ending_deforming(6)).
+token_loss_rate(computational, combine_quantities, machines(19), ending_deforming(6)).
 token_loss_rate(computational, compare_magnitudes, machines(17), ending_deforming(2)).
-token_loss_rate(computational, compose_expression, machines(6), ending_deforming(1)).
-token_loss_rate(computational, compute_product, machines(18), ending_deforming(7)).
-token_loss_rate(computational, compute_quotient, machines(9), ending_deforming(2)).
-token_loss_rate(computational, conflate_roles, machines(9), ending_deforming(6)).
-token_loss_rate(computational, count_units, machines(20), ending_deforming(4)).
-token_loss_rate(computational, count_up_to_target, machines(8), ending_deforming(4)).
+token_loss_rate(computational, compose_expression, machines(9), ending_deforming(1)).
+token_loss_rate(computational, compute_product, machines(21), ending_deforming(9)).
+token_loss_rate(computational, compute_quotient, machines(17), ending_deforming(5)).
+token_loss_rate(computational, conflate_roles, machines(13), ending_deforming(10)).
+token_loss_rate(computational, count_units, machines(21), ending_deforming(4)).
+token_loss_rate(computational, count_up_to_target, machines(10), ending_deforming(5)).
 token_loss_rate(computational, decompose_by_place, machines(7), ending_deforming(4)).
 token_loss_rate(computational, decompose_operand, machines(9), ending_deforming(4)).
 token_loss_rate(computational, disembed_part, machines(8), ending_deforming(0)).
@@ -1797,26 +1946,28 @@ token_loss_rate(computational, evaluate_expression, machines(5), ending_deformin
 token_loss_rate(computational, filter_by_constraint, machines(6), ending_deforming(1)).
 token_loss_rate(computational, halt_before_completion, machines(10), ending_deforming(10)).
 token_loss_rate(computational, initiate, machines(15), ending_deforming(0)).
-token_loss_rate(computational, inscribe_result, machines(24), ending_deforming(6)).
+token_loss_rate(computational, inscribe_result, machines(29), ending_deforming(6)).
+token_loss_rate(computational, isolate_unknown, machines(5), ending_deforming(0)).
 token_loss_rate(computational, iterate_composite_unit, machines(6), ending_deforming(0)).
 token_loss_rate(computational, iterate_unit, machines(17), ending_deforming(3)).
-token_loss_rate(computational, locate_position, machines(14), ending_deforming(1)).
+token_loss_rate(computational, locate_position, machines(15), ending_deforming(2)).
 token_loss_rate(computational, measure_out_group_size, machines(4), ending_deforming(1)).
-token_loss_rate(computational, measure_quantity, machines(8), ending_deforming(1)).
-token_loss_rate(computational, misname_result, machines(33), ending_deforming(32)).
-token_loss_rate(computational, name_result, machines(45), ending_deforming(2)).
+token_loss_rate(computational, measure_quantity, machines(10), ending_deforming(2)).
+token_loss_rate(computational, misname_result, machines(41), ending_deforming(40)).
+token_loss_rate(computational, name_result, machines(50), ending_deforming(3)).
 token_loss_rate(computational, omit_required_step, machines(42), ending_deforming(32)).
-token_loss_rate(computational, order_by_magnitude, machines(6), ending_deforming(1)).
+token_loss_rate(computational, order_by_magnitude, machines(7), ending_deforming(2)).
 token_loss_rate(computational, partition_into_equal_parts, machines(15), ending_deforming(1)).
-token_loss_rate(computational, re_express_equivalently, machines(6), ending_deforming(0)).
-token_loss_rate(computational, read_operand_attribute, machines(48), ending_deforming(14)).
+token_loss_rate(computational, re_express_equivalently, machines(11), ending_deforming(1)).
+token_loss_rate(computational, read_operand_attribute, machines(56), ending_deforming(18)).
 token_loss_rate(computational, receive_kernel_outcome, machines(13), ending_deforming(0)).
 token_loss_rate(computational, recompose_total, machines(12), ending_deforming(4)).
-token_loss_rate(computational, record_conservation, machines(20), ending_deforming(0)).
+token_loss_rate(computational, record_conservation, machines(24), ending_deforming(0)).
 token_loss_rate(discursive, record_deontic_incoherence, machines(7), ending_deforming(7)).
 token_loss_rate(discursive, record_deontic_score, machines(8), ending_deforming(0)).
-token_loss_rate(computational, record_loss, machines(55), ending_deforming(52)).
-token_loss_rate(computational, register_givens, machines(71), ending_deforming(24)).
+token_loss_rate(computational, record_loss, machines(62), ending_deforming(59)).
+token_loss_rate(computational, record_viability, machines(5), ending_deforming(0)).
+token_loss_rate(computational, register_givens, machines(82), ending_deforming(27)).
 token_loss_rate(computational, regroup_to_base, machines(7), ending_deforming(3)).
 token_loss_rate(computational, remove_quantity, machines(19), ending_deforming(7)).
 token_loss_rate(computational, replicate_equal_groups, machines(6), ending_deforming(2)).
@@ -1824,15 +1975,16 @@ token_loss_rate(computational, retain_unchanged, machines(4), ending_deforming(1
 token_loss_rate(computational, retain_what_must_survive, machines(5), ending_deforming(1)).
 token_loss_rate(computational, retain_where_change_was_due, machines(6), ending_deforming(6)).
 token_loss_rate(computational, retrieve_known_fact, machines(11), ending_deforming(5)).
-token_loss_rate(computational, scale_multiplicatively, machines(4), ending_deforming(1)).
+token_loss_rate(computational, scale_multiplicatively, machines(6), ending_deforming(1)).
 token_loss_rate(computational, select_unit_scale, machines(24), ending_deforming(5)).
 token_loss_rate(computational, share_into_known_groups, machines(4), ending_deforming(1)).
 token_loss_rate(computational, substitute_appearance_for_measure, machines(5), ending_deforming(5)).
 token_loss_rate(computational, substitute_count_for_measure, machines(7), ending_deforming(3)).
 token_loss_rate(computational, substitute_operation, machines(10), ending_deforming(10)).
-token_loss_rate(computational, substitute_values, machines(5), ending_deforming(2)).
-token_loss_rate(computational, test_criteria, machines(9), ending_deforming(1)).
-token_loss_rate(computational, traverse_boundary, machines(4), ending_deforming(2)).
-token_loss_rate(computational, treat_relevant_as_irrelevant, machines(21), ending_deforming(16)).
+token_loss_rate(computational, substitute_symbol_reading, machines(5), ending_deforming(5)).
+token_loss_rate(computational, substitute_values, machines(6), ending_deforming(2)).
+token_loss_rate(computational, test_criteria, machines(11), ending_deforming(1)).
+token_loss_rate(computational, traverse_boundary, machines(6), ending_deforming(2)).
+token_loss_rate(computational, treat_relevant_as_irrelevant, machines(23), ending_deforming(18)).
 token_loss_rate(computational, unitize_referent, machines(23), ending_deforming(2)).
-token_loss_rate(computational, verify_invariant, machines(30), ending_deforming(0)).
+token_loss_rate(computational, verify_invariant, machines(31), ending_deforming(0)).

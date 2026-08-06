@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="648" height="648" viewBox="0 0 648 648" role="img" aria-labelledby="title desc">
+  <title id="title">integer / signed_subtraction_as_additive_inverse</title>
+  <desc id="desc">States are arranged radially. Dark and muted lines record conserving and neutral stances. For deforming transitions, blue records a correct doing the context makes insufficient; rust records a claim that is false on its own. Mixed transitions have a blue base and rust overlay. Unreviewed rows remain rust.</desc>
+  <defs>
+    <marker id="arrow-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
+    <marker id="arrow-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#665f4f"/></marker>
+    <marker id="arrow-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="arrow-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b95238"/></marker>
+    <marker id="arrow-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b95238"/></marker>
+    <marker id="arrow-start" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#f4ead6"/>
+  <path class="edge-neutral" d="M 340.2 219.8 Q 384.7 197.9 389.0 243.3" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>assign_subtraction_roles → assign_roles (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: assign_roles</title><tspan x="368.6" y="222.1">assign_subtraction</tspan><tspan x="368.6" y="232.5">roles</tspan></text>
+  <path class="edge-conserving" d="M 415.6 271.7 Q 460.5 292.8 427.6 324.5" fill="none" stroke="#0d0c08" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-conserving)"><title>rewrite_subtraction_as_unknown_addend → re_express_equivalently (conserving)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#0d0c08" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: re_express_equivalently</title><tspan x="427.4" y="293.4">rewrite_subtraction</tspan><tspan x="427.4" y="303.8">as_unknown_addend</tspan></text>
+  <path class="edge-neutral" d="M 422.0 363.0 Q 433.5 411.3 388.2 405.4" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>draw_addend_arrow_to_target → count_up_to_target (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: count_up_to_target</title><tspan x="408.3" y="383.8">draw_addend_arrow</tspan><tspan x="408.3" y="394.2">to_target</tspan></text>
+  <path class="edge-neutral" d="M 354.6 424.9 Q 324.0 464.0 300.4 424.9" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>read_arrow_displacement → name_result (neutral)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: name_result</title><tspan x="325.8" y="425.3">read_arrow</tspan><tspan x="325.8" y="435.7">displacement</tspan></text>
+  <path class="edge-conserving" d="M 264.2 410.8 Q 214.5 411.3 230.4 368.5" fill="none" stroke="#0d0c08" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-conserving)"><title>rewrite_as_adding_additive_inverse → re_express_equivalently (conserving)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#0d0c08" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: re_express_equivalently</title><tspan x="241.9" y="386.5">rewrite_as_adding</tspan><tspan x="241.9" y="396.9">additive_inverse</tspan></text>
+  <path class="edge-conserving" d="M 218.8 331.4 Q 187.5 292.8 230.9 278.5" fill="none" stroke="#0d0c08" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-conserving)"><title>generalize_subtract_as_add_opposite → record_conservation (conserving)</title></path>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#0d0c08" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: record_conservation</title><tspan x="219.8" y="296.8">generalize_subtract</tspan><tspan x="219.8" y="307.2">as_add_opposite</tspan></text>
+  <path d="M 324.0 148.0 L 324.0 187.0" fill="none" stroke="#d4a747" stroke-width="2.6" marker-end="url(#arrow-start)"/>
+  <circle cx="324.0" cy="212.0" r="18.0" fill="#fffef9" stroke="#d4a747" stroke-width="3"/>
+  <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="324.0" y="154.0">q_start</tspan></text>
+  <text x="324.0" y="215.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q0</text>
+  <circle cx="411.6" cy="254.2" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="459.9" y="218.0">q_step_1</tspan></text>
+  <text x="411.6" y="257.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q1</text>
+  <circle cx="433.2" cy="348.9" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="492.7" y="361.8">q_step_2</tspan></text>
+  <text x="433.2" y="352.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q2</text>
+  <circle cx="372.6" cy="424.9" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="start" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="400.8" y="477.2">q_step_3</tspan></text>
+  <text x="372.6" y="428.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q3</text>
+  <circle cx="275.4" cy="424.9" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="247.2" y="477.2">q_step_4</tspan></text>
+  <text x="275.4" y="428.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q4</text>
+  <circle cx="214.8" cy="348.9" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="155.3" y="361.8">q_step_5</tspan></text>
+  <text x="214.8" y="352.4" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q5</text>
+  <circle cx="236.4" cy="254.2" r="18.0" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="236.4" cy="254.2" r="13.5" fill="none" stroke="#0d0c08" stroke-width="1.4"/>
+  <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="188.1" y="218.0">q_accept</tspan></text>
+  <text x="236.4" y="257.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q6</text>
+</svg>

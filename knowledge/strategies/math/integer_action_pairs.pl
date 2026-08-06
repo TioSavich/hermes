@@ -1,9 +1,15 @@
 /** <module> Integer/signed-number action/deformation pairs
  *
  * Signed-number actions coordinate signs, magnitudes, locations, and sets of
- * values. Addition preserves the sign relation; ordering locates values on a
- * two-sided number line; inequalities preserve every satisfying value rather
- * than reducing a relation to its boundary point.
+ * values. Addition preserves the sign relation; subtraction coordinates an
+ * unknown-addend arrow with adding the additive inverse; multiplication and
+ * division continue sign patterns; ordering locates values on a two-sided
+ * number line; inequalities preserve every satisfying value rather than
+ * reducing a relation to its boundary point.
+ *
+ * New deformation clauses below use an explicit numerical separation guard.
+ * Each binds Reported and Expected independently and requires
+ * Reported =\= Expected before producing an outcome.
  */
 
 :- module(integer_action_pairs,
@@ -79,6 +85,310 @@ run_integer_action(drop_sign_use_magnitude_sum, A, B, Outcome, Trace) :-
               sum_magnitudes_only(MagnitudeA, MagnitudeB, MagnitudeSum),
               name_magnitude_sum_as_answer(Result),
               lose_sign_relation(expected(Expected), produced(Result))
+            ].
+
+% Gate: integer_line; shell: unknown-addend arrow then additive-inverse
+% generalization; kernels: iterate_to_target and signed addition.
+run_integer_action(signed_subtraction_as_additive_inverse,
+                   minuend(Minuend), subtrahend(Subtrahend), Outcome, Trace) :-
+    signed_number(Minuend),
+    signed_number(Subtrahend),
+    Expected is Minuend - Subtrahend,
+    AdditiveInverse is -Subtrahend,
+    RewrittenResult is Minuend + AdditiveInverse,
+    RewrittenResult =:= Expected,
+    Outcome = action_outcome(
+                  signed_subtraction_as_additive_inverse,
+                  [ classification(productive),
+                    cluster(signed_subtraction_rewrite),
+                    automaton_state(unknown_addend_arrow_then_additive_inverse),
+                    vocabulary([signed_minuend, signed_subtrahend,
+                                unknown_addend, addend_arrow,
+                                additive_inverse, signed_difference]),
+                    input(subtraction(minuend(Minuend),
+                                      subtrahend(Subtrahend))),
+                    result(signed_difference(Expected)),
+                    expected(signed_difference(Expected)),
+                    gate(integer_line),
+                    shell(unknown_addend_arrow_then_generalization),
+                    kernels([iterate_to_target,
+                             signed_addition_by_sign_relation]),
+                    stage_order([doing(addend_arrow),
+                                 saying(add_the_additive_inverse)]),
+                    invariant(subtraction_order_is_preserved),
+                    validity(correct)
+                  ]),
+    Trace = [ assign_subtraction_roles(minuend(Minuend),
+                                       subtrahend(Subtrahend)),
+              rewrite_subtraction_as_unknown_addend(
+                  equation(Subtrahend+unknown, Minuend)),
+              draw_addend_arrow_to_target(Subtrahend, Minuend),
+              read_arrow_displacement(Expected),
+              rewrite_as_adding_additive_inverse(
+                  Minuend+AdditiveInverse, RewrittenResult),
+              generalize_subtract_as_add_opposite(Expected)
+            ].
+
+% Gate: integer_line after a whole-number refusal; shell: swap the ordered
+% subtraction roles; kernel: iterate_to_target; guard: Reported =\= Expected.
+run_integer_action(swap_subtraction_operands_to_preserve_nonnegative_result,
+                   minuend(Minuend), subtrahend(Subtrahend), Outcome, Trace) :-
+    signed_number(Minuend),
+    signed_number(Subtrahend),
+    Minuend < Subtrahend,
+    Expected is Minuend - Subtrahend,
+    Reported is Subtrahend - Minuend,
+    Reported =\= Expected,
+    Outcome = action_outcome(
+                  swap_subtraction_operands_to_preserve_nonnegative_result,
+                  [ classification(deformation),
+                    cluster(signed_subtraction_rewrite),
+                    automaton_state(swap_roles_to_retain_nonnegative_difference),
+                    vocabulary([signed_minuend, signed_subtrahend,
+                                operand_order, nonnegative_difference,
+                                whole_number_refusal, signed_difference]),
+                    input(subtraction(minuend(Minuend),
+                                      subtrahend(Subtrahend))),
+                    result(signed_difference(Reported)),
+                    expected(signed_difference(Expected)),
+                    gate(integer_line),
+                    shell(evade_refusal(swap_operands)),
+                    kernels([iterate_to_target]),
+                    separation_guard(Reported =\= Expected),
+                    deformation_of(signed_subtraction_as_additive_inverse),
+                    misconception_family(swap_operands_to_avoid_negative_result),
+                    violated_invariant(subtraction_order_is_preserved),
+                    validity(incorrect)
+                  ]),
+    Trace = [ swap_minuend_and_subtrahend(
+                  original(Minuend, Subtrahend),
+                  used(Subtrahend, Minuend)),
+              prefer_nonnegative_subtraction_orientation,
+              draw_addend_arrow_to_target(Minuend, Subtrahend),
+              report_swapped_difference(Reported),
+              lose_ordered_difference(expected(Expected), produced(Reported))
+            ].
+
+% Gate: integer_line; shell: replace directed change with unsigned distance;
+% kernel: iterate_to_target; guard: Reported =\= Expected.
+run_integer_action(conflate_signed_difference_with_distance,
+                   minuend(Minuend), subtrahend(Subtrahend), Outcome, Trace) :-
+    signed_number(Minuend),
+    signed_number(Subtrahend),
+    Expected is Minuend - Subtrahend,
+    Reported is abs(Expected),
+    Reported =\= Expected,
+    Outcome = action_outcome(
+                  conflate_signed_difference_with_distance,
+                  [ classification(deformation),
+                    cluster(signed_subtraction_rewrite),
+                    automaton_state(name_unsigned_distance_as_signed_difference),
+                    vocabulary([signed_minuend, signed_subtrahend,
+                                directed_change, distance, magnitude,
+                                signed_difference]),
+                    input(subtraction(minuend(Minuend),
+                                      subtrahend(Subtrahend))),
+                    result(signed_difference(Reported)),
+                    expected(signed_difference(Expected)),
+                    gate(integer_line),
+                    shell(distance_in_place_of_directed_difference),
+                    kernels([iterate_to_target]),
+                    separation_guard(Reported =\= Expected),
+                    deformation_of(signed_subtraction_as_additive_inverse),
+                    misconception_family(difference_distance_conflation),
+                    violated_invariant(subtraction_order_is_preserved),
+                    validity(incorrect)
+                  ]),
+    Trace = [ locate_subtraction_endpoints(Subtrahend, Minuend),
+              measure_unsigned_distance_between_endpoints(Reported),
+              discard_change_direction(expected(Expected)),
+              name_distance_as_signed_difference(Reported),
+              lose_ordered_difference(expected(Expected), produced(Reported))
+            ].
+
+% Gate: signed_numbers; shell: continue product patterns across zero; kernel:
+% multiply magnitudes and assign sign. Break-point: refusal_genesis_sketch.pl
+% has no genesis mode for extension by pattern continuation.
+run_integer_action(signed_multiplication_by_sign_rule,
+                   multiplier(Multiplier), multiplicand(Multiplicand),
+                   Outcome, Trace) :-
+    signed_number(Multiplier),
+    signed_number(Multiplicand),
+    signed_operation_components(Multiplier, Multiplicand, multiplication,
+                                Components),
+    Components = signed_operation_components(
+                     SignMultiplier, SignMultiplicand, SignRelation,
+                     MagnitudeMultiplier, MagnitudeMultiplicand,
+                     ResultSign, ResultMagnitude, Expected),
+    Outcome = action_outcome(
+                  signed_multiplication_by_sign_rule,
+                  [ classification(productive),
+                    cluster(signed_multiplication_division),
+                    automaton_state(continue_product_pattern_then_name_sign_rule),
+                    vocabulary([signed_factor, sign_relation, magnitude,
+                                pattern_continuation, signed_product]),
+                    input(multiplication(multiplier(Multiplier),
+                                         multiplicand(Multiplicand))),
+                    result(signed_product(Expected)),
+                    expected(signed_product(Expected)),
+                    components(Components),
+                    gate(signed_numbers),
+                    shell(pattern_continuation_across_zero),
+                    kernels([multiply_magnitudes, assign_sign]),
+                    genesis_breakpoint(
+                        no_pattern_continuation_mode_in_refusal_genesis_sketch),
+                    validity(correct)
+                  ]),
+    Trace = [ continue_product_pattern_across_zero,
+              identify_factor_signs(SignMultiplier, SignMultiplicand),
+              determine_multiplicative_sign_relation(SignRelation),
+              multiply_factor_magnitudes(MagnitudeMultiplier,
+                                          MagnitudeMultiplicand,
+                                          ResultMagnitude),
+              assign_product_sign(ResultSign, ResultMagnitude, Expected),
+              state_signed_product_rule(Expected)
+            ].
+
+% Gate: signed_numbers; shell: reverse the attested sign relation; kernel:
+% multiply magnitudes and assign sign; guard: Reported =\= Expected.
+run_integer_action(reverse_signed_multiplication_sign_rule,
+                   multiplier(Multiplier), multiplicand(Multiplicand),
+                   Outcome, Trace) :-
+    signed_number(Multiplier),
+    signed_number(Multiplicand),
+    ( Multiplier < 0 ; Multiplicand < 0 ),
+    Multiplier =\= 0,
+    Multiplicand =\= 0,
+    signed_operation_components(Multiplier, Multiplicand, multiplication,
+                                Components),
+    Components = signed_operation_components(
+                     SignMultiplier, SignMultiplicand, SignRelation,
+                     MagnitudeMultiplier, MagnitudeMultiplicand,
+                     _ExpectedSign, ResultMagnitude, Expected),
+    reverse_nonzero_result_sign(Expected, ReportedSign, Reported),
+    Reported =\= Expected,
+    Outcome = action_outcome(
+                  reverse_signed_multiplication_sign_rule,
+                  [ classification(deformation),
+                    cluster(signed_multiplication_division),
+                    automaton_state(reverse_product_sign_relation),
+                    vocabulary([signed_factor, sign_relation, magnitude,
+                                reversed_sign_rule, signed_product]),
+                    input(multiplication(multiplier(Multiplier),
+                                         multiplicand(Multiplicand))),
+                    result(signed_product(Reported)),
+                    expected(signed_product(Expected)),
+                    components(Components),
+                    gate(signed_numbers),
+                    shell(reversed_pattern_continuation),
+                    kernels([multiply_magnitudes, assign_sign]),
+                    separation_guard(Reported =\= Expected),
+                    deformation_of(signed_multiplication_by_sign_rule),
+                    misconception_family(reversed_signed_product_rule),
+                    validity(incorrect)
+                  ]),
+    Trace = [ identify_factor_signs(SignMultiplier, SignMultiplicand),
+              reverse_multiplicative_sign_relation(SignRelation),
+              multiply_factor_magnitudes(MagnitudeMultiplier,
+                                          MagnitudeMultiplicand,
+                                          ResultMagnitude),
+              assign_reversed_product_sign(ReportedSign,
+                                           ResultMagnitude, Reported),
+              report_reversed_signed_product(Reported),
+              lose_product_sign_relation(expected(Expected),
+                                         produced(Reported))
+            ].
+
+% Gate: signed_numbers; shell: rewrite division as an unknown-factor product
+% and continue its sign pattern; kernel: divide magnitudes and assign sign.
+% Break-point: refusal_genesis_sketch.pl has no genesis mode for extension by
+% pattern continuation.
+run_integer_action(signed_division_by_sign_rule,
+                   dividend(Dividend), divisor(Divisor), Outcome, Trace) :-
+    signed_number(Dividend),
+    signed_nonzero_number(Divisor),
+    signed_operation_components(Dividend, Divisor, division, Components),
+    Components = signed_operation_components(
+                     SignDividend, SignDivisor, SignRelation,
+                     MagnitudeDividend, MagnitudeDivisor,
+                     ResultSign, ResultMagnitude, Expected),
+    Outcome = action_outcome(
+                  signed_division_by_sign_rule,
+                  [ classification(productive),
+                    cluster(signed_multiplication_division),
+                    automaton_state(rewrite_as_unknown_factor_then_name_quotient_sign),
+                    vocabulary([signed_dividend, signed_divisor,
+                                unknown_factor, sign_relation, magnitude,
+                                pattern_continuation, signed_quotient]),
+                    input(division(dividend(Dividend), divisor(Divisor))),
+                    result(signed_quotient(Expected)),
+                    expected(signed_quotient(Expected)),
+                    components(Components),
+                    gate(signed_numbers),
+                    shell(unknown_factor_product_then_pattern_continuation),
+                    kernels([divide_magnitudes, assign_sign]),
+                    genesis_breakpoint(
+                        no_pattern_continuation_mode_in_refusal_genesis_sketch),
+                    validity(correct)
+                  ]),
+    Trace = [ rewrite_division_as_unknown_factor_product(
+                  equation(Divisor*unknown, Dividend)),
+              continue_quotient_sign_pattern_from_multiplication,
+              identify_dividend_divisor_signs(SignDividend, SignDivisor),
+              determine_multiplicative_sign_relation(SignRelation),
+              divide_magnitudes(MagnitudeDividend, MagnitudeDivisor,
+                                ResultMagnitude),
+              assign_quotient_sign(ResultSign, ResultMagnitude, Expected),
+              state_signed_quotient_rule(Expected)
+            ].
+
+% Gate: signed_numbers; shell: reverse the multiplication-derived quotient
+% sign relation; kernel: divide magnitudes and assign sign; guard:
+% Reported =\= Expected.
+run_integer_action(reverse_signed_division_sign_rule,
+                   dividend(Dividend), divisor(Divisor), Outcome, Trace) :-
+    signed_number(Dividend),
+    signed_nonzero_number(Divisor),
+    ( Dividend < 0 ; Divisor < 0 ),
+    Dividend =\= 0,
+    signed_operation_components(Dividend, Divisor, division, Components),
+    Components = signed_operation_components(
+                     SignDividend, SignDivisor, SignRelation,
+                     MagnitudeDividend, MagnitudeDivisor,
+                     _ExpectedSign, ResultMagnitude, Expected),
+    reverse_nonzero_result_sign(Expected, ReportedSign, Reported),
+    Reported =\= Expected,
+    Outcome = action_outcome(
+                  reverse_signed_division_sign_rule,
+                  [ classification(deformation),
+                    cluster(signed_multiplication_division),
+                    automaton_state(reverse_quotient_sign_relation),
+                    vocabulary([signed_dividend, signed_divisor,
+                                sign_relation, magnitude,
+                                reversed_sign_rule, signed_quotient]),
+                    input(division(dividend(Dividend), divisor(Divisor))),
+                    result(signed_quotient(Reported)),
+                    expected(signed_quotient(Expected)),
+                    components(Components),
+                    gate(signed_numbers),
+                    shell(reversed_multiplication_derived_sign_pattern),
+                    kernels([divide_magnitudes, assign_sign]),
+                    separation_guard(Reported =\= Expected),
+                    deformation_of(signed_division_by_sign_rule),
+                    misconception_family(reversed_signed_quotient_rule),
+                    validity(incorrect)
+                  ]),
+    Trace = [ rewrite_division_as_unknown_factor_product(
+                  equation(Divisor*unknown, Dividend)),
+              identify_dividend_divisor_signs(SignDividend, SignDivisor),
+              reverse_multiplicative_sign_relation(SignRelation),
+              divide_magnitudes(MagnitudeDividend, MagnitudeDivisor,
+                                ResultMagnitude),
+              assign_reversed_quotient_sign(ReportedSign,
+                                            ResultMagnitude, Reported),
+              report_reversed_signed_quotient(Reported),
+              lose_quotient_sign_relation(expected(Expected),
+                                          produced(Reported))
             ].
 run_integer_action(signed_number_location_and_order, Values, number_line,
                    Outcome, Trace) :-
@@ -188,6 +498,20 @@ run_integer_action(inequality_as_boundary_point,
 %!  integer_action_cluster(+Kind, -Cluster) is det.
 integer_action_cluster(signed_addition_with_sign_relation, signed_number_combination).
 integer_action_cluster(drop_sign_use_magnitude_sum, signed_number_combination).
+integer_action_cluster(signed_subtraction_as_additive_inverse,
+                       signed_subtraction_rewrite).
+integer_action_cluster(swap_subtraction_operands_to_preserve_nonnegative_result,
+                       signed_subtraction_rewrite).
+integer_action_cluster(conflate_signed_difference_with_distance,
+                       signed_subtraction_rewrite).
+integer_action_cluster(signed_multiplication_by_sign_rule,
+                       signed_multiplication_division).
+integer_action_cluster(reverse_signed_multiplication_sign_rule,
+                       signed_multiplication_division).
+integer_action_cluster(signed_division_by_sign_rule,
+                       signed_multiplication_division).
+integer_action_cluster(reverse_signed_division_sign_rule,
+                       signed_multiplication_division).
 integer_action_cluster(signed_number_location_and_order,
                        signed_number_location_order).
 integer_action_cluster(order_by_magnitude_ignore_sign,
@@ -206,6 +530,31 @@ integer_action_vocabulary(signed_addition_with_sign_relation,
 integer_action_vocabulary(drop_sign_use_magnitude_sum,
                           [signed_addend, sign, magnitude,
                            magnitude_only_combination, sign_loss, signed_sum]).
+integer_action_vocabulary(signed_subtraction_as_additive_inverse,
+                          [signed_minuend, signed_subtrahend,
+                           unknown_addend, addend_arrow,
+                           additive_inverse, signed_difference]).
+integer_action_vocabulary(
+    swap_subtraction_operands_to_preserve_nonnegative_result,
+    [signed_minuend, signed_subtrahend, operand_order,
+     nonnegative_difference, whole_number_refusal, signed_difference]).
+integer_action_vocabulary(conflate_signed_difference_with_distance,
+                          [signed_minuend, signed_subtrahend,
+                           directed_change, distance, magnitude,
+                           signed_difference]).
+integer_action_vocabulary(signed_multiplication_by_sign_rule,
+                          [signed_factor, sign_relation, magnitude,
+                           pattern_continuation, signed_product]).
+integer_action_vocabulary(reverse_signed_multiplication_sign_rule,
+                          [signed_factor, sign_relation, magnitude,
+                           reversed_sign_rule, signed_product]).
+integer_action_vocabulary(signed_division_by_sign_rule,
+                          [signed_dividend, signed_divisor, unknown_factor,
+                           sign_relation, magnitude, pattern_continuation,
+                           signed_quotient]).
+integer_action_vocabulary(reverse_signed_division_sign_rule,
+                          [signed_dividend, signed_divisor, sign_relation,
+                           magnitude, reversed_sign_rule, signed_quotient]).
 integer_action_vocabulary(signed_number_location_and_order,
                           [positive_number, negative_number, zero, sign,
                            magnitude, opposite, number_line, location,
@@ -226,6 +575,20 @@ integer_action_vocabulary(inequality_as_boundary_point,
 productive_integer_deformation(signed_addition_with_sign_relation,
                                drop_sign_use_magnitude_sum,
                                magnitude_only_combination).
+productive_integer_deformation(
+    signed_subtraction_as_additive_inverse,
+    swap_subtraction_operands_to_preserve_nonnegative_result,
+    swap_operands_to_avoid_negative_result).
+productive_integer_deformation(
+    signed_subtraction_as_additive_inverse,
+    conflate_signed_difference_with_distance,
+    difference_distance_conflation).
+productive_integer_deformation(signed_multiplication_by_sign_rule,
+                               reverse_signed_multiplication_sign_rule,
+                               reversed_signed_product_rule).
+productive_integer_deformation(signed_division_by_sign_rule,
+                               reverse_signed_division_sign_rule,
+                               reversed_signed_quotient_rule).
 productive_integer_deformation(signed_number_location_and_order,
                                order_by_magnitude_ignore_sign,
                                magnitude_only_signed_order).
@@ -276,6 +639,79 @@ signed_components(A, B,
                    ResultSign, ResultMagnitude),
     Result is A + B,
     result_consistency(ResultSign, ResultMagnitude, Result).
+
+
+signed_operation_components(
+    Left, Right, Operation,
+    signed_operation_components(SignLeft, SignRight, SignRelation,
+                                MagnitudeLeft, MagnitudeRight,
+                                ResultSign, ResultMagnitude, Result)) :-
+    signed_number(Left),
+    signed_number(Right),
+    ( Operation == multiplication
+    ; Operation == division,
+      Right =\= 0
+    ),
+    sign_of(Left, SignLeft),
+    sign_of(Right, SignRight),
+    multiplicative_sign_relation(SignLeft, SignRight,
+                                 SignRelation, ResultSign),
+    MagnitudeLeft is abs(Left),
+    MagnitudeRight is abs(Right),
+    signed_operation_result(Operation, Left, Right,
+                            MagnitudeLeft, MagnitudeRight,
+                            ResultMagnitude, Result),
+    signed_result_consistency(ResultSign, ResultMagnitude, Result).
+
+
+signed_operation_result(multiplication, Left, Right,
+                        MagnitudeLeft, MagnitudeRight,
+                        ResultMagnitude, Result) :-
+    ResultMagnitude is MagnitudeLeft * MagnitudeRight,
+    Result is Left * Right.
+signed_operation_result(division, Left, Right,
+                        MagnitudeLeft, MagnitudeRight,
+                        ResultMagnitude, Result) :-
+    Right =\= 0,
+    ResultMagnitude is MagnitudeLeft / MagnitudeRight,
+    Result is Left / Right.
+
+
+multiplicative_sign_relation(zero, _, zero_factor, zero) :- !.
+multiplicative_sign_relation(_, zero, zero_factor, zero) :- !.
+multiplicative_sign_relation(positive, positive, same_signs, positive) :- !.
+multiplicative_sign_relation(negative, negative, same_signs, positive) :- !.
+multiplicative_sign_relation(_, _, different_signs, negative).
+
+
+signed_result_consistency(zero, 0, Result) :-
+    Result =:= 0,
+    !.
+signed_result_consistency(positive, Magnitude, Result) :-
+    Result =:= Magnitude,
+    Result > 0,
+    !.
+signed_result_consistency(negative, Magnitude, Result) :-
+    Result =:= -Magnitude,
+    Result < 0.
+
+
+reverse_nonzero_result_sign(Expected, negative, Reported) :-
+    Expected > 0,
+    Reported is -Expected,
+    !.
+reverse_nonzero_result_sign(Expected, positive, Reported) :-
+    Expected < 0,
+    Reported is -Expected.
+
+
+signed_number(Value) :-
+    number(Value).
+
+
+signed_nonzero_number(Value) :-
+    signed_number(Value),
+    Value =\= 0.
 
 
 sign_of(N, positive) :- N > 0, !.

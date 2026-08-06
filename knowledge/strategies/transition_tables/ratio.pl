@@ -4,33 +4,65 @@
 :- multifile automaton_transition/6.
 
 automaton_tuple(ratio, additive_extension_of_ratio, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([identify_base_ratio, compute_first_term_increment, add_first_term_increment_to_second_term, compose_additive_pair, lose_multiplicative_unit_ratio]), start(q_start), accepting([q_accept])).
+automaton_tuple(ratio, compute_unit_rate_from_ratio_pair, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_ratio_pair, select_per_one_referent, select_compared_quantity, divide_compared_by_reference, inscribe_unit_rate, preserve_rate_quantity_order]), start(q_start), accepting([q_accept])).
 automaton_tuple(ratio, construct_referent_ratio_diagram, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([establish_first_referent, establish_second_referent, coordinate_referent_counts, construct_ratio_diagram, inscribe_ordered_ratio]), start(q_start), accepting([q_accept])).
+automaton_tuple(ratio, divide_larger_by_smaller_for_unit_rate, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_ratio_pair, ignore_requested_rate_direction, order_ratio_terms_by_magnitude, divide_larger_term_by_smaller_term, inscribe_unit_rate, lose_rate_quantity_order]), start(q_start), accepting([q_accept])).
+automaton_tuple(ratio, inscribe_proportional_equation, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_step_6, q_accept]), actions([identify_ratio_pair, compute_constant_of_proportionality, bind_proportional_variable_roles, inscribe_y_equals_kx, substitute_target_first_quantity, scale_target_by_constant, inscribe_proportional_value]), start(q_start), accepting([q_accept])).
 automaton_tuple(ratio, reverse_ratio_referent_order, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_counts_without_order, reverse_term_referent_alignment, inscribe_reversed_ratio, lose_ordered_referent_relation]), start(q_start), accepting([q_accept])).
 automaton_tuple(ratio, scale_ratio_unit, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([identify_base_ratio, identify_scale_factor, scale_first_term_multiplicatively, scale_second_term_multiplicatively, compose_equivalent_ratio, preserve_multiplicative_unit_ratio]), start(q_start), accepting([q_accept])).
+automaton_tuple(ratio, test_relation_for_proportionality, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([identify_relation_pairs, establish_candidate_constant, compare_each_pair_to_constant, refuse_nonproportional_relation, inscribe_relation_classification]), start(q_start), accepting([q_accept])).
 
-automaton_transition(ratio, additive_extension_of_ratio, q_start, identify_base_ratio, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:132'))).
-automaton_transition(ratio, additive_extension_of_ratio, q_step_1, compute_first_term_increment, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:132'))).
-automaton_transition(ratio, additive_extension_of_ratio, q_step_2, add_first_term_increment_to_second_term, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:132'))).
-automaton_transition(ratio, additive_extension_of_ratio, q_step_3, compose_additive_pair, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:132'))).
-automaton_transition(ratio, additive_extension_of_ratio, q_step_4, lose_multiplicative_unit_ratio, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:132'))).
+automaton_transition(ratio, additive_extension_of_ratio, q_start, identify_base_ratio, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:344'))).
+automaton_transition(ratio, additive_extension_of_ratio, q_step_1, compute_first_term_increment, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:344'))).
+automaton_transition(ratio, additive_extension_of_ratio, q_step_2, add_first_term_increment_to_second_term, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:344'))).
+automaton_transition(ratio, additive_extension_of_ratio, q_step_3, compose_additive_pair, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:344'))).
+automaton_transition(ratio, additive_extension_of_ratio, q_step_4, lose_multiplicative_unit_ratio, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:344'))).
 
-automaton_transition(ratio, construct_referent_ratio_diagram, q_start, establish_first_referent, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:42'))).
-automaton_transition(ratio, construct_referent_ratio_diagram, q_step_1, establish_second_referent, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:42'))).
-automaton_transition(ratio, construct_referent_ratio_diagram, q_step_2, coordinate_referent_counts, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:42'))).
-automaton_transition(ratio, construct_referent_ratio_diagram, q_step_3, construct_ratio_diagram, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:42'))).
-automaton_transition(ratio, construct_referent_ratio_diagram, q_step_4, inscribe_ordered_ratio, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:42'))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_start, identify_ratio_pair, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:91'))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_1, select_per_one_referent, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:91'))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_2, select_compared_quantity, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:91'))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_3, divide_compared_by_reference, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:91'))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_4, inscribe_unit_rate, q_step_5, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:91'))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_5, preserve_rate_quantity_order, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:91'))).
 
-automaton_transition(ratio, reverse_ratio_referent_order, q_start, establish_counts_without_order, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:70'))).
-automaton_transition(ratio, reverse_ratio_referent_order, q_step_1, reverse_term_referent_alignment, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:70'))).
-automaton_transition(ratio, reverse_ratio_referent_order, q_step_2, inscribe_reversed_ratio, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:70'))).
-automaton_transition(ratio, reverse_ratio_referent_order, q_step_3, lose_ordered_referent_relation, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:70'))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_start, establish_first_referent, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:254'))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_1, establish_second_referent, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:254'))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_2, coordinate_referent_counts, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:254'))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_3, construct_ratio_diagram, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:254'))).
+automaton_transition(ratio, construct_referent_ratio_diagram, q_step_4, inscribe_ordered_ratio, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:254'))).
 
-automaton_transition(ratio, scale_ratio_unit, q_start, identify_base_ratio, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:107'))).
-automaton_transition(ratio, scale_ratio_unit, q_step_1, identify_scale_factor, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:107'))).
-automaton_transition(ratio, scale_ratio_unit, q_step_2, scale_first_term_multiplicatively, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:107'))).
-automaton_transition(ratio, scale_ratio_unit, q_step_3, scale_second_term_multiplicatively, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:107'))).
-automaton_transition(ratio, scale_ratio_unit, q_step_4, compose_equivalent_ratio, q_step_5, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:107'))).
-automaton_transition(ratio, scale_ratio_unit, q_step_5, preserve_multiplicative_unit_ratio, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:107'))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_start, identify_ratio_pair, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:122'))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_1, ignore_requested_rate_direction, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:122'))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_2, order_ratio_terms_by_magnitude, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:122'))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_3, divide_larger_term_by_smaller_term, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:122'))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_4, inscribe_unit_rate, q_step_5, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:122'))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_5, lose_rate_quantity_order, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:122'))).
+
+automaton_transition(ratio, inscribe_proportional_equation, q_start, identify_ratio_pair, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_1, compute_constant_of_proportionality, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_2, bind_proportional_variable_roles, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_3, inscribe_y_equals_kx, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_4, substitute_target_first_quantity, q_step_5, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_5, scale_target_by_constant, q_step_6, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_6, inscribe_proportional_value, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:219'))).
+
+automaton_transition(ratio, reverse_ratio_referent_order, q_start, establish_counts_without_order, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:282'))).
+automaton_transition(ratio, reverse_ratio_referent_order, q_step_1, reverse_term_referent_alignment, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:282'))).
+automaton_transition(ratio, reverse_ratio_referent_order, q_step_2, inscribe_reversed_ratio, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:282'))).
+automaton_transition(ratio, reverse_ratio_referent_order, q_step_3, lose_ordered_referent_relation, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:282'))).
+
+automaton_transition(ratio, scale_ratio_unit, q_start, identify_base_ratio, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:319'))).
+automaton_transition(ratio, scale_ratio_unit, q_step_1, identify_scale_factor, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:319'))).
+automaton_transition(ratio, scale_ratio_unit, q_step_2, scale_first_term_multiplicatively, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:319'))).
+automaton_transition(ratio, scale_ratio_unit, q_step_3, scale_second_term_multiplicatively, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:319'))).
+automaton_transition(ratio, scale_ratio_unit, q_step_4, compose_equivalent_ratio, q_step_5, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:319'))).
+automaton_transition(ratio, scale_ratio_unit, q_step_5, preserve_multiplicative_unit_ratio, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:319'))).
+
+automaton_transition(ratio, test_relation_for_proportionality, q_start, identify_relation_pairs, q_step_1, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:189'))).
+automaton_transition(ratio, test_relation_for_proportionality, q_step_1, establish_candidate_constant, q_step_2, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:189'))).
+automaton_transition(ratio, test_relation_for_proportionality, q_step_2, compare_each_pair_to_constant, q_step_3, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:189'))).
+automaton_transition(ratio, test_relation_for_proportionality, q_step_3, refuse_nonproportional_relation, q_step_4, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:189'))).
+automaton_transition(ratio, test_relation_for_proportionality, q_step_4, inscribe_relation_classification, q_accept, provenance(static('knowledge/strategies/math/ratio_action_pairs.pl:189'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(ratio, additive_extension_of_ratio, q_start, identify_base_ratio, q_step_1, provenance(observed(contract_example))).
@@ -45,11 +77,33 @@ automaton_transition(ratio, additive_extension_of_ratio, q_step_2, add_first_ter
 automaton_transition(ratio, additive_extension_of_ratio, q_step_3, compose_additive_pair, q_step_4, provenance(observed(derived_template))).
 automaton_transition(ratio, additive_extension_of_ratio, q_step_4, lose_multiplicative_unit_ratio, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_start, identify_ratio_pair, q_step_1, provenance(observed(contract_example))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_1, select_per_one_referent, q_step_2, provenance(observed(contract_example))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_2, select_compared_quantity, q_step_3, provenance(observed(contract_example))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_3, divide_compared_by_reference, q_step_4, provenance(observed(contract_example))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_4, inscribe_unit_rate, q_step_5, provenance(observed(contract_example))).
+automaton_transition(ratio, compute_unit_rate_from_ratio_pair, q_step_5, preserve_rate_quantity_order, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(ratio, construct_referent_ratio_diagram, q_start, establish_first_referent, q_step_1, provenance(observed(contract_example))).
 automaton_transition(ratio, construct_referent_ratio_diagram, q_step_1, establish_second_referent, q_step_2, provenance(observed(contract_example))).
 automaton_transition(ratio, construct_referent_ratio_diagram, q_step_2, coordinate_referent_counts, q_step_3, provenance(observed(contract_example))).
 automaton_transition(ratio, construct_referent_ratio_diagram, q_step_3, construct_ratio_diagram, q_step_4, provenance(observed(contract_example))).
 automaton_transition(ratio, construct_referent_ratio_diagram, q_step_4, inscribe_ordered_ratio, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_start, identify_ratio_pair, q_step_1, provenance(observed(contract_example))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_1, ignore_requested_rate_direction, q_step_2, provenance(observed(contract_example))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_2, order_ratio_terms_by_magnitude, q_step_3, provenance(observed(contract_example))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_3, divide_larger_term_by_smaller_term, q_step_4, provenance(observed(contract_example))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_4, inscribe_unit_rate, q_step_5, provenance(observed(contract_example))).
+automaton_transition(ratio, divide_larger_by_smaller_for_unit_rate, q_step_5, lose_rate_quantity_order, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(ratio, inscribe_proportional_equation, q_start, identify_ratio_pair, q_step_1, provenance(observed(contract_example))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_1, compute_constant_of_proportionality, q_step_2, provenance(observed(contract_example))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_2, bind_proportional_variable_roles, q_step_3, provenance(observed(contract_example))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_3, inscribe_y_equals_kx, q_step_4, provenance(observed(contract_example))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_4, substitute_target_first_quantity, q_step_5, provenance(observed(contract_example))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_5, scale_target_by_constant, q_step_6, provenance(observed(contract_example))).
+automaton_transition(ratio, inscribe_proportional_equation, q_step_6, inscribe_proportional_value, q_accept, provenance(observed(contract_example))).
 
 automaton_transition(ratio, reverse_ratio_referent_order, q_start, establish_counts_without_order, q_step_1, provenance(observed(contract_example))).
 automaton_transition(ratio, reverse_ratio_referent_order, q_step_1, reverse_term_referent_alignment, q_step_2, provenance(observed(contract_example))).
@@ -69,3 +123,9 @@ automaton_transition(ratio, scale_ratio_unit, q_step_2, scale_first_term_multipl
 automaton_transition(ratio, scale_ratio_unit, q_step_3, scale_second_term_multiplicatively, q_step_4, provenance(observed(derived_template))).
 automaton_transition(ratio, scale_ratio_unit, q_step_4, compose_equivalent_ratio, q_step_5, provenance(observed(derived_template))).
 automaton_transition(ratio, scale_ratio_unit, q_step_5, preserve_multiplicative_unit_ratio, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(ratio, test_relation_for_proportionality, q_start, identify_relation_pairs, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(ratio, test_relation_for_proportionality, q_observed_1, establish_candidate_constant, q_observed_2, provenance(observed(contract_example))).
+automaton_transition(ratio, test_relation_for_proportionality, q_observed_2, compare_each_pair_to_constant, q_observed_3, provenance(observed(contract_example))).
+automaton_transition(ratio, test_relation_for_proportionality, q_observed_3, accept_proportional_relation, q_observed_4, provenance(observed(contract_example))).
+automaton_transition(ratio, test_relation_for_proportionality, q_observed_4, inscribe_relation_classification, q_accept, provenance(observed(contract_example))).

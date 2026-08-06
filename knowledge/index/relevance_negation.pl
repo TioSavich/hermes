@@ -1432,6 +1432,8 @@ slice(family, machine(addition, round_without_adjusting)).
 slice(family, machine(addition, unbalanced_make_base_compensation)).
 slice(family, machine(addition, wrong_carry_amount_to_next_column)).
 slice(family, machine(algebraic, balance_preserving_linear_solution)).
+slice(family, machine(algebraic, combine_signed_like_terms)).
+slice(family, machine(algebraic, combine_unlike_terms)).
 slice(family, machine(algebraic, contextual_linear_equation_construction)).
 slice(family, machine(algebraic, distributive_expression_rewrite)).
 slice(family, machine(algebraic, drop_distributed_term)).
@@ -1443,8 +1445,11 @@ slice(family, machine(algebraic, guess_and_check_rule)).
 slice(family, machine(algebraic, linear_pattern_contextual_rule)).
 slice(family, machine(algebraic, one_sided_equation_operation)).
 slice(family, machine(algebraic, operational_equals_left_value)).
+slice(family, machine(algebraic, percent_change_composition)).
 slice(family, machine(algebraic, programming_expression_evaluation)).
+slice(family, machine(algebraic, split_repeated_diagram_variable)).
 slice(family, machine(algebraic, symbolic_expression_construction)).
+slice(family, machine(algebraic, translate_diagram_to_equation)).
 slice(family, machine(calculus, bounded_numerator_over_diverging_denominator)).
 slice(family, machine(calculus, direct_substitution)).
 slice(family, machine(calculus, factor_cancel_substitute)).
@@ -1541,6 +1546,7 @@ slice(family, machine(fraction, unit_fraction_partition)).
 slice(family, machine(fraction, whole_number_grab)).
 slice(family, machine(geometry, angle_additive_composition)).
 slice(family, machine(geometry, angle_as_ray_length)).
+slice(family, machine(geometry, angle_relation_unknown_measure)).
 slice(family, machine(geometry, angle_turn_measurement)).
 slice(family, machine(geometry, area_as_perimeter_count)).
 slice(family, machine(geometry, area_preserving_polygon_decomposition)).
@@ -1548,6 +1554,7 @@ slice(family, machine(geometry, area_unit_covering)).
 slice(family, machine(geometry, area_unit_scale_selection)).
 slice(family, machine(geometry, axis_aligned_coordinate_distance)).
 slice(family, machine(geometry, choose_first_area_unit_without_scale)).
+slice(family, machine(geometry, circle_circumference_diameter_co_measurement)).
 slice(family, machine(geometry, compare_solid_volume_by_cube_count)).
 slice(family, machine(geometry, compare_solid_volume_by_visible_extent)).
 slice(family, machine(geometry, composite_prism_volume_sum)).
@@ -1584,13 +1591,22 @@ slice(family, machine(geometry, subtract_side_from_area)).
 slice(family, machine(geometry, sum_overlapping_prism_volumes)).
 slice(family, machine(geometry, symmetry_constrained_side_reconstruction)).
 slice(family, machine(geometry, triangle_area_half_base_height)).
+slice(family, machine(geometry, triangle_three_measure_determination)).
+slice(family, machine(geometry, use_diameter_as_radius_in_circumference)).
 slice(family, machine(geometry, visible_faces_only_surface_area)).
+slice(family, machine(integer, conflate_signed_difference_with_distance)).
 slice(family, machine(integer, drop_sign_use_magnitude_sum)).
 slice(family, machine(integer, inequality_as_boundary_point)).
 slice(family, machine(integer, inequality_solution_set_representation)).
 slice(family, machine(integer, order_by_magnitude_ignore_sign)).
+slice(family, machine(integer, reverse_signed_division_sign_rule)).
+slice(family, machine(integer, reverse_signed_multiplication_sign_rule)).
 slice(family, machine(integer, signed_addition_with_sign_relation)).
+slice(family, machine(integer, signed_division_by_sign_rule)).
+slice(family, machine(integer, signed_multiplication_by_sign_rule)).
 slice(family, machine(integer, signed_number_location_and_order)).
+slice(family, machine(integer, signed_subtraction_as_additive_inverse)).
+slice(family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result)).
 slice(family, machine(measurement, change_unit_label_without_scaling)).
 slice(family, machine(measurement, count_marks_not_intervals)).
 slice(family, machine(measurement, drop_unit_from_measured_quantity_change)).
@@ -1622,13 +1638,19 @@ slice(family, machine(multiplication, sequential_recompute_commuted_products)).
 slice(family, machine(probability, equiprobable_endpoint_counting)).
 slice(family, machine(probability, terminal_tree_endpoint_probability_sum)).
 slice(family, machine(ratio, additive_extension_of_ratio)).
+slice(family, machine(ratio, compute_unit_rate_from_ratio_pair)).
 slice(family, machine(ratio, construct_referent_ratio_diagram)).
+slice(family, machine(ratio, divide_larger_by_smaller_for_unit_rate)).
+slice(family, machine(ratio, inscribe_proportional_equation)).
 slice(family, machine(ratio, reverse_ratio_referent_order)).
 slice(family, machine(ratio, scale_ratio_unit)).
+slice(family, machine(ratio, test_relation_for_proportionality)).
 slice(family, machine(statistics, box_plot_from_five_number_summary)).
 slice(family, machine(statistics, categorical_frequency_bar_representation)).
 slice(family, machine(statistics, distribution_summary_selection)).
 slice(family, machine(statistics, dot_plot_frequency_representation)).
+slice(family, machine(statistics, estimate_probability_from_observed_frequency)).
+slice(family, machine(statistics, finite_frequency_as_exact_probability)).
 slice(family, machine(statistics, five_number_summary_and_iqr)).
 slice(family, machine(statistics, histogram_equal_interval_representation)).
 slice(family, machine(statistics, mean_absolute_deviation)).
@@ -1638,6 +1660,7 @@ slice(family, machine(statistics, mean_deviation_without_absolute_value)).
 slice(family, machine(statistics, median_as_ordered_middle)).
 slice(family, machine(statistics, mode_as_maximal_frequency)).
 slice(family, machine(statistics, question_without_variability)).
+slice(family, machine(statistics, sample_population_distribution_judgment)).
 slice(family, machine(statistics, statistical_question_variability_classification)).
 slice(family, machine(subtraction, add_instead_of_subtract_column)).
 slice(family, machine(subtraction, answer_as_endpoint_count_up)).
@@ -4536,6 +4559,8 @@ machine_genre(addition, round_without_adjusting, computational).
 machine_genre(addition, unbalanced_make_base_compensation, computational).
 machine_genre(addition, wrong_carry_amount_to_next_column, computational).
 machine_genre(algebraic, balance_preserving_linear_solution, computational).
+machine_genre(algebraic, combine_signed_like_terms, computational).
+machine_genre(algebraic, combine_unlike_terms, computational).
 machine_genre(algebraic, contextual_linear_equation_construction, computational).
 machine_genre(algebraic, distributive_expression_rewrite, computational).
 machine_genre(algebraic, drop_distributed_term, computational).
@@ -4547,8 +4572,11 @@ machine_genre(algebraic, guess_and_check_rule, computational).
 machine_genre(algebraic, linear_pattern_contextual_rule, computational).
 machine_genre(algebraic, one_sided_equation_operation, computational).
 machine_genre(algebraic, operational_equals_left_value, computational).
+machine_genre(algebraic, percent_change_composition, computational).
 machine_genre(algebraic, programming_expression_evaluation, computational).
+machine_genre(algebraic, split_repeated_diagram_variable, computational).
 machine_genre(algebraic, symbolic_expression_construction, computational).
+machine_genre(algebraic, translate_diagram_to_equation, computational).
 machine_genre(calculus, bounded_numerator_over_diverging_denominator, computational).
 machine_genre(calculus, direct_substitution, computational).
 machine_genre(calculus, factor_cancel_substitute, computational).
@@ -4645,6 +4673,7 @@ machine_genre(fraction, unit_fraction_partition, computational).
 machine_genre(fraction, whole_number_grab, computational).
 machine_genre(geometry, angle_additive_composition, computational).
 machine_genre(geometry, angle_as_ray_length, computational).
+machine_genre(geometry, angle_relation_unknown_measure, computational).
 machine_genre(geometry, angle_turn_measurement, computational).
 machine_genre(geometry, area_as_perimeter_count, computational).
 machine_genre(geometry, area_preserving_polygon_decomposition, computational).
@@ -4652,6 +4681,7 @@ machine_genre(geometry, area_unit_covering, computational).
 machine_genre(geometry, area_unit_scale_selection, computational).
 machine_genre(geometry, axis_aligned_coordinate_distance, computational).
 machine_genre(geometry, choose_first_area_unit_without_scale, computational).
+machine_genre(geometry, circle_circumference_diameter_co_measurement, computational).
 machine_genre(geometry, compare_solid_volume_by_cube_count, computational).
 machine_genre(geometry, compare_solid_volume_by_visible_extent, computational).
 machine_genre(geometry, composite_prism_volume_sum, computational).
@@ -4688,13 +4718,22 @@ machine_genre(geometry, subtract_side_from_area, computational).
 machine_genre(geometry, sum_overlapping_prism_volumes, computational).
 machine_genre(geometry, symmetry_constrained_side_reconstruction, computational).
 machine_genre(geometry, triangle_area_half_base_height, computational).
+machine_genre(geometry, triangle_three_measure_determination, computational).
+machine_genre(geometry, use_diameter_as_radius_in_circumference, computational).
 machine_genre(geometry, visible_faces_only_surface_area, computational).
+machine_genre(integer, conflate_signed_difference_with_distance, computational).
 machine_genre(integer, drop_sign_use_magnitude_sum, computational).
 machine_genre(integer, inequality_as_boundary_point, computational).
 machine_genre(integer, inequality_solution_set_representation, computational).
 machine_genre(integer, order_by_magnitude_ignore_sign, computational).
+machine_genre(integer, reverse_signed_division_sign_rule, computational).
+machine_genre(integer, reverse_signed_multiplication_sign_rule, computational).
 machine_genre(integer, signed_addition_with_sign_relation, computational).
+machine_genre(integer, signed_division_by_sign_rule, computational).
+machine_genre(integer, signed_multiplication_by_sign_rule, computational).
 machine_genre(integer, signed_number_location_and_order, computational).
+machine_genre(integer, signed_subtraction_as_additive_inverse, computational).
+machine_genre(integer, swap_subtraction_operands_to_preserve_nonnegative_result, computational).
 machine_genre(measurement, change_unit_label_without_scaling, computational).
 machine_genre(measurement, count_marks_not_intervals, computational).
 machine_genre(measurement, drop_unit_from_measured_quantity_change, computational).
@@ -4726,13 +4765,19 @@ machine_genre(multiplication, sequential_recompute_commuted_products, computatio
 machine_genre(probability, equiprobable_endpoint_counting, computational).
 machine_genre(probability, terminal_tree_endpoint_probability_sum, computational).
 machine_genre(ratio, additive_extension_of_ratio, computational).
+machine_genre(ratio, compute_unit_rate_from_ratio_pair, computational).
 machine_genre(ratio, construct_referent_ratio_diagram, computational).
+machine_genre(ratio, divide_larger_by_smaller_for_unit_rate, computational).
+machine_genre(ratio, inscribe_proportional_equation, computational).
 machine_genre(ratio, reverse_ratio_referent_order, computational).
 machine_genre(ratio, scale_ratio_unit, computational).
+machine_genre(ratio, test_relation_for_proportionality, computational).
 machine_genre(statistics, box_plot_from_five_number_summary, computational).
 machine_genre(statistics, categorical_frequency_bar_representation, computational).
 machine_genre(statistics, distribution_summary_selection, computational).
 machine_genre(statistics, dot_plot_frequency_representation, computational).
+machine_genre(statistics, estimate_probability_from_observed_frequency, computational).
+machine_genre(statistics, finite_frequency_as_exact_probability, computational).
 machine_genre(statistics, five_number_summary_and_iqr, computational).
 machine_genre(statistics, histogram_equal_interval_representation, computational).
 machine_genre(statistics, mean_absolute_deviation, computational).
@@ -4742,6 +4787,7 @@ machine_genre(statistics, mean_deviation_without_absolute_value, computational).
 machine_genre(statistics, median_as_ordered_middle, computational).
 machine_genre(statistics, mode_as_maximal_frequency, computational).
 machine_genre(statistics, question_without_variability, computational).
+machine_genre(statistics, sample_population_distribution_judgment, computational).
 machine_genre(statistics, statistical_question_variability_classification, computational).
 machine_genre(subtraction, add_instead_of_subtract_column, computational).
 machine_genre(subtraction, answer_as_endpoint_count_up, computational).
@@ -5033,6 +5079,8 @@ source_gap(cache_only_lesson, 'IM-G8-U6-L18').
 source_gap(cache_only_lesson, 'IM-G8-U7-L20').
 
 excludes(addition, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(addition, algebraic, [algebraic])).
+excludes(addition, family, machine(algebraic, combine_signed_like_terms), family_mismatch(addition, algebraic, [algebraic])).
+excludes(addition, family, machine(algebraic, combine_unlike_terms), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, drop_distributed_term), family_mismatch(addition, algebraic, [algebraic])).
@@ -5044,8 +5092,11 @@ excludes(addition, family, machine(algebraic, guess_and_check_rule), family_mism
 excludes(addition, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, one_sided_equation_operation), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, operational_equals_left_value), family_mismatch(addition, algebraic, [algebraic])).
+excludes(addition, family, machine(algebraic, percent_change_composition), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, programming_expression_evaluation), family_mismatch(addition, algebraic, [algebraic])).
+excludes(addition, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(algebraic, symbolic_expression_construction), family_mismatch(addition, algebraic, [algebraic])).
+excludes(addition, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(addition, algebraic, [algebraic])).
 excludes(addition, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(addition, calculus, [calculus])).
 excludes(addition, family, machine(calculus, direct_substitution), family_mismatch(addition, calculus, [calculus])).
 excludes(addition, family, machine(calculus, factor_cancel_substitute), family_mismatch(addition, calculus, [calculus])).
@@ -5142,6 +5193,7 @@ excludes(addition, family, machine(fraction, unit_fraction_partition), family_mi
 excludes(addition, family, machine(fraction, whole_number_grab), family_mismatch(addition, fraction, [fraction])).
 excludes(addition, family, machine(geometry, angle_additive_composition), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, angle_as_ray_length), family_mismatch(addition, geometry, [geometry])).
+excludes(addition, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, angle_turn_measurement), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, area_as_perimeter_count), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(addition, geometry, [geometry])).
@@ -5149,6 +5201,7 @@ excludes(addition, family, machine(geometry, area_unit_covering), family_mismatc
 excludes(addition, family, machine(geometry, area_unit_scale_selection), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(addition, geometry, [geometry])).
+excludes(addition, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, composite_prism_volume_sum), family_mismatch(addition, geometry, [geometry])).
@@ -5185,13 +5238,22 @@ excludes(addition, family, machine(geometry, subtract_side_from_area), family_mi
 excludes(addition, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, triangle_area_half_base_height), family_mismatch(addition, geometry, [geometry])).
+excludes(addition, family, machine(geometry, triangle_three_measure_determination), family_mismatch(addition, geometry, [geometry])).
+excludes(addition, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(addition, geometry, [geometry])).
 excludes(addition, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(addition, geometry, [geometry])).
+excludes(addition, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(integer, inequality_as_boundary_point), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(integer, inequality_solution_set_representation), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(addition, integer, [integer])).
+excludes(addition, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(addition, integer, [integer])).
+excludes(addition, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(addition, integer, [integer])).
+excludes(addition, family, machine(integer, signed_division_by_sign_rule), family_mismatch(addition, integer, [integer])).
+excludes(addition, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(integer, signed_number_location_and_order), family_mismatch(addition, integer, [integer])).
+excludes(addition, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(addition, integer, [integer])).
+excludes(addition, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(addition, integer, [integer])).
 excludes(addition, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(addition, multiplication, [multiplication])).
 excludes(addition, family, machine(multiplication, add_instead_of_multiply), family_mismatch(addition, multiplication, [multiplication])).
 excludes(addition, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(addition, multiplication, [multiplication])).
@@ -5215,13 +5277,19 @@ excludes(addition, family, machine(multiplication, sequential_recompute_commuted
 excludes(addition, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(addition, probability, [probability])).
 excludes(addition, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(addition, probability, [probability])).
 excludes(addition, family, machine(ratio, additive_extension_of_ratio), family_mismatch(addition, ratio, [proportional, ratio])).
+excludes(addition, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(addition, ratio, [proportional, ratio])).
 excludes(addition, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(addition, ratio, [proportional, ratio])).
+excludes(addition, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(addition, ratio, [proportional, ratio])).
+excludes(addition, family, machine(ratio, inscribe_proportional_equation), family_mismatch(addition, ratio, [proportional, ratio])).
 excludes(addition, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(addition, ratio, [proportional, ratio])).
 excludes(addition, family, machine(ratio, scale_ratio_unit), family_mismatch(addition, ratio, [proportional, ratio])).
+excludes(addition, family, machine(ratio, test_relation_for_proportionality), family_mismatch(addition, ratio, [proportional, ratio])).
 excludes(addition, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, distribution_summary_selection), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, mean_absolute_deviation), family_mismatch(addition, statistics, [data])).
@@ -5231,6 +5299,7 @@ excludes(addition, family, machine(statistics, mean_deviation_without_absolute_v
 excludes(addition, family, machine(statistics, median_as_ordered_middle), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, question_without_variability), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(statistics, statistical_question_variability_classification), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(addition, subtraction, [subtraction])).
 excludes(addition, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(addition, subtraction, [subtraction])).
@@ -6275,6 +6344,7 @@ excludes(algebraic, family, machine(fraction, unit_fraction_partition), family_m
 excludes(algebraic, family, machine(fraction, whole_number_grab), family_mismatch(algebraic, fraction, [fraction])).
 excludes(algebraic, family, machine(geometry, angle_additive_composition), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, angle_as_ray_length), family_mismatch(algebraic, geometry, [geometry])).
+excludes(algebraic, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, angle_turn_measurement), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, area_as_perimeter_count), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(algebraic, geometry, [geometry])).
@@ -6282,6 +6352,7 @@ excludes(algebraic, family, machine(geometry, area_unit_covering), family_mismat
 excludes(algebraic, family, machine(geometry, area_unit_scale_selection), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(algebraic, geometry, [geometry])).
+excludes(algebraic, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, composite_prism_volume_sum), family_mismatch(algebraic, geometry, [geometry])).
@@ -6318,13 +6389,22 @@ excludes(algebraic, family, machine(geometry, subtract_side_from_area), family_m
 excludes(algebraic, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, triangle_area_half_base_height), family_mismatch(algebraic, geometry, [geometry])).
+excludes(algebraic, family, machine(geometry, triangle_three_measure_determination), family_mismatch(algebraic, geometry, [geometry])).
+excludes(algebraic, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(algebraic, geometry, [geometry])).
 excludes(algebraic, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(algebraic, geometry, [geometry])).
+excludes(algebraic, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(integer, inequality_as_boundary_point), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(integer, inequality_solution_set_representation), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(algebraic, integer, [integer])).
+excludes(algebraic, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(algebraic, integer, [integer])).
+excludes(algebraic, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(algebraic, integer, [integer])).
+excludes(algebraic, family, machine(integer, signed_division_by_sign_rule), family_mismatch(algebraic, integer, [integer])).
+excludes(algebraic, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(integer, signed_number_location_and_order), family_mismatch(algebraic, integer, [integer])).
+excludes(algebraic, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(algebraic, integer, [integer])).
+excludes(algebraic, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(algebraic, integer, [integer])).
 excludes(algebraic, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(algebraic, multiplication, [multiplication])).
 excludes(algebraic, family, machine(multiplication, add_instead_of_multiply), family_mismatch(algebraic, multiplication, [multiplication])).
 excludes(algebraic, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(algebraic, multiplication, [multiplication])).
@@ -6348,13 +6428,19 @@ excludes(algebraic, family, machine(multiplication, sequential_recompute_commute
 excludes(algebraic, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(algebraic, probability, [probability])).
 excludes(algebraic, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(algebraic, probability, [probability])).
 excludes(algebraic, family, machine(ratio, additive_extension_of_ratio), family_mismatch(algebraic, ratio, [proportional, ratio])).
+excludes(algebraic, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(algebraic, ratio, [proportional, ratio])).
 excludes(algebraic, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(algebraic, ratio, [proportional, ratio])).
+excludes(algebraic, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(algebraic, ratio, [proportional, ratio])).
+excludes(algebraic, family, machine(ratio, inscribe_proportional_equation), family_mismatch(algebraic, ratio, [proportional, ratio])).
 excludes(algebraic, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(algebraic, ratio, [proportional, ratio])).
 excludes(algebraic, family, machine(ratio, scale_ratio_unit), family_mismatch(algebraic, ratio, [proportional, ratio])).
+excludes(algebraic, family, machine(ratio, test_relation_for_proportionality), family_mismatch(algebraic, ratio, [proportional, ratio])).
 excludes(algebraic, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, distribution_summary_selection), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, mean_absolute_deviation), family_mismatch(algebraic, statistics, [data])).
@@ -6364,6 +6450,7 @@ excludes(algebraic, family, machine(statistics, mean_deviation_without_absolute_
 excludes(algebraic, family, machine(statistics, median_as_ordered_middle), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, question_without_variability), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(statistics, statistical_question_variability_classification), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(algebraic, subtraction, [subtraction])).
 excludes(algebraic, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(algebraic, subtraction, [subtraction])).
@@ -7322,6 +7409,8 @@ excludes(calculus, family, machine(addition, round_without_adjusting), family_mi
 excludes(calculus, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(calculus, addition, [addition])).
 excludes(calculus, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(calculus, addition, [addition])).
 excludes(calculus, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(calculus, algebraic, [algebraic])).
+excludes(calculus, family, machine(algebraic, combine_signed_like_terms), family_mismatch(calculus, algebraic, [algebraic])).
+excludes(calculus, family, machine(algebraic, combine_unlike_terms), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, drop_distributed_term), family_mismatch(calculus, algebraic, [algebraic])).
@@ -7333,8 +7422,11 @@ excludes(calculus, family, machine(algebraic, guess_and_check_rule), family_mism
 excludes(calculus, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, one_sided_equation_operation), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, operational_equals_left_value), family_mismatch(calculus, algebraic, [algebraic])).
+excludes(calculus, family, machine(algebraic, percent_change_composition), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, programming_expression_evaluation), family_mismatch(calculus, algebraic, [algebraic])).
+excludes(calculus, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(algebraic, symbolic_expression_construction), family_mismatch(calculus, algebraic, [algebraic])).
+excludes(calculus, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(calculus, algebraic, [algebraic])).
 excludes(calculus, family, machine(counting, compare_cardinalities_one_to_one), family_mismatch(calculus, counting, [counting])).
 excludes(calculus, family, machine(counting, compare_ones_digits_only), family_mismatch(calculus, counting, [counting])).
 excludes(calculus, family, machine(counting, inscribe_cardinality), family_mismatch(calculus, counting, [counting])).
@@ -7427,6 +7519,7 @@ excludes(calculus, family, machine(fraction, unit_fraction_partition), family_mi
 excludes(calculus, family, machine(fraction, whole_number_grab), family_mismatch(calculus, fraction, [fraction])).
 excludes(calculus, family, machine(geometry, angle_additive_composition), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, angle_as_ray_length), family_mismatch(calculus, geometry, [geometry])).
+excludes(calculus, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, angle_turn_measurement), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, area_as_perimeter_count), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(calculus, geometry, [geometry])).
@@ -7434,6 +7527,7 @@ excludes(calculus, family, machine(geometry, area_unit_covering), family_mismatc
 excludes(calculus, family, machine(geometry, area_unit_scale_selection), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(calculus, geometry, [geometry])).
+excludes(calculus, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, composite_prism_volume_sum), family_mismatch(calculus, geometry, [geometry])).
@@ -7470,13 +7564,22 @@ excludes(calculus, family, machine(geometry, subtract_side_from_area), family_mi
 excludes(calculus, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, triangle_area_half_base_height), family_mismatch(calculus, geometry, [geometry])).
+excludes(calculus, family, machine(geometry, triangle_three_measure_determination), family_mismatch(calculus, geometry, [geometry])).
+excludes(calculus, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(calculus, geometry, [geometry])).
 excludes(calculus, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(calculus, geometry, [geometry])).
+excludes(calculus, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(integer, inequality_as_boundary_point), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(integer, inequality_solution_set_representation), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(calculus, integer, [integer])).
+excludes(calculus, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(calculus, integer, [integer])).
+excludes(calculus, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(calculus, integer, [integer])).
+excludes(calculus, family, machine(integer, signed_division_by_sign_rule), family_mismatch(calculus, integer, [integer])).
+excludes(calculus, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(integer, signed_number_location_and_order), family_mismatch(calculus, integer, [integer])).
+excludes(calculus, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(calculus, integer, [integer])).
+excludes(calculus, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(calculus, integer, [integer])).
 excludes(calculus, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(calculus, multiplication, [multiplication])).
 excludes(calculus, family, machine(multiplication, add_instead_of_multiply), family_mismatch(calculus, multiplication, [multiplication])).
 excludes(calculus, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(calculus, multiplication, [multiplication])).
@@ -7500,13 +7603,19 @@ excludes(calculus, family, machine(multiplication, sequential_recompute_commuted
 excludes(calculus, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(calculus, probability, [probability])).
 excludes(calculus, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(calculus, probability, [probability])).
 excludes(calculus, family, machine(ratio, additive_extension_of_ratio), family_mismatch(calculus, ratio, [proportional, ratio])).
+excludes(calculus, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(calculus, ratio, [proportional, ratio])).
 excludes(calculus, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(calculus, ratio, [proportional, ratio])).
+excludes(calculus, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(calculus, ratio, [proportional, ratio])).
+excludes(calculus, family, machine(ratio, inscribe_proportional_equation), family_mismatch(calculus, ratio, [proportional, ratio])).
 excludes(calculus, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(calculus, ratio, [proportional, ratio])).
 excludes(calculus, family, machine(ratio, scale_ratio_unit), family_mismatch(calculus, ratio, [proportional, ratio])).
+excludes(calculus, family, machine(ratio, test_relation_for_proportionality), family_mismatch(calculus, ratio, [proportional, ratio])).
 excludes(calculus, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, distribution_summary_selection), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, mean_absolute_deviation), family_mismatch(calculus, statistics, [data])).
@@ -7516,6 +7625,7 @@ excludes(calculus, family, machine(statistics, mean_deviation_without_absolute_v
 excludes(calculus, family, machine(statistics, median_as_ordered_middle), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, question_without_variability), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(statistics, statistical_question_variability_classification), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(calculus, subtraction, [subtraction])).
 excludes(calculus, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(calculus, subtraction, [subtraction])).
@@ -8755,6 +8865,8 @@ excludes(cardinality, family, machine(addition, round_without_adjusting), family
 excludes(cardinality, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(cardinality, addition, [addition])).
 excludes(cardinality, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(cardinality, addition, [addition])).
 excludes(cardinality, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(cardinality, algebraic, [algebraic])).
+excludes(cardinality, family, machine(algebraic, combine_signed_like_terms), family_mismatch(cardinality, algebraic, [algebraic])).
+excludes(cardinality, family, machine(algebraic, combine_unlike_terms), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, drop_distributed_term), family_mismatch(cardinality, algebraic, [algebraic])).
@@ -8766,8 +8878,11 @@ excludes(cardinality, family, machine(algebraic, guess_and_check_rule), family_m
 excludes(cardinality, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, one_sided_equation_operation), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, operational_equals_left_value), family_mismatch(cardinality, algebraic, [algebraic])).
+excludes(cardinality, family, machine(algebraic, percent_change_composition), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, programming_expression_evaluation), family_mismatch(cardinality, algebraic, [algebraic])).
+excludes(cardinality, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(algebraic, symbolic_expression_construction), family_mismatch(cardinality, algebraic, [algebraic])).
+excludes(cardinality, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(cardinality, algebraic, [algebraic])).
 excludes(cardinality, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(cardinality, calculus, [calculus])).
 excludes(cardinality, family, machine(calculus, direct_substitution), family_mismatch(cardinality, calculus, [calculus])).
 excludes(cardinality, family, machine(calculus, factor_cancel_substitute), family_mismatch(cardinality, calculus, [calculus])).
@@ -8864,6 +8979,7 @@ excludes(cardinality, family, machine(fraction, unit_fraction_partition), family
 excludes(cardinality, family, machine(fraction, whole_number_grab), family_mismatch(cardinality, fraction, [fraction])).
 excludes(cardinality, family, machine(geometry, angle_additive_composition), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, angle_as_ray_length), family_mismatch(cardinality, geometry, [geometry])).
+excludes(cardinality, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, angle_turn_measurement), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, area_as_perimeter_count), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(cardinality, geometry, [geometry])).
@@ -8871,6 +8987,7 @@ excludes(cardinality, family, machine(geometry, area_unit_covering), family_mism
 excludes(cardinality, family, machine(geometry, area_unit_scale_selection), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(cardinality, geometry, [geometry])).
+excludes(cardinality, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, composite_prism_volume_sum), family_mismatch(cardinality, geometry, [geometry])).
@@ -8907,13 +9024,22 @@ excludes(cardinality, family, machine(geometry, subtract_side_from_area), family
 excludes(cardinality, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, triangle_area_half_base_height), family_mismatch(cardinality, geometry, [geometry])).
+excludes(cardinality, family, machine(geometry, triangle_three_measure_determination), family_mismatch(cardinality, geometry, [geometry])).
+excludes(cardinality, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(cardinality, geometry, [geometry])).
 excludes(cardinality, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(cardinality, geometry, [geometry])).
+excludes(cardinality, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(integer, inequality_as_boundary_point), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(integer, inequality_solution_set_representation), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(cardinality, integer, [integer])).
+excludes(cardinality, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(cardinality, integer, [integer])).
+excludes(cardinality, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(cardinality, integer, [integer])).
+excludes(cardinality, family, machine(integer, signed_division_by_sign_rule), family_mismatch(cardinality, integer, [integer])).
+excludes(cardinality, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(integer, signed_number_location_and_order), family_mismatch(cardinality, integer, [integer])).
+excludes(cardinality, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(cardinality, integer, [integer])).
+excludes(cardinality, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(cardinality, integer, [integer])).
 excludes(cardinality, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(cardinality, multiplication, [multiplication])).
 excludes(cardinality, family, machine(multiplication, add_instead_of_multiply), family_mismatch(cardinality, multiplication, [multiplication])).
 excludes(cardinality, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(cardinality, multiplication, [multiplication])).
@@ -8937,13 +9063,19 @@ excludes(cardinality, family, machine(multiplication, sequential_recompute_commu
 excludes(cardinality, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(cardinality, probability, [probability])).
 excludes(cardinality, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(cardinality, probability, [probability])).
 excludes(cardinality, family, machine(ratio, additive_extension_of_ratio), family_mismatch(cardinality, ratio, [proportional, ratio])).
+excludes(cardinality, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(cardinality, ratio, [proportional, ratio])).
 excludes(cardinality, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(cardinality, ratio, [proportional, ratio])).
+excludes(cardinality, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(cardinality, ratio, [proportional, ratio])).
+excludes(cardinality, family, machine(ratio, inscribe_proportional_equation), family_mismatch(cardinality, ratio, [proportional, ratio])).
 excludes(cardinality, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(cardinality, ratio, [proportional, ratio])).
 excludes(cardinality, family, machine(ratio, scale_ratio_unit), family_mismatch(cardinality, ratio, [proportional, ratio])).
+excludes(cardinality, family, machine(ratio, test_relation_for_proportionality), family_mismatch(cardinality, ratio, [proportional, ratio])).
 excludes(cardinality, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, distribution_summary_selection), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, mean_absolute_deviation), family_mismatch(cardinality, statistics, [data])).
@@ -8953,6 +9085,7 @@ excludes(cardinality, family, machine(statistics, mean_deviation_without_absolut
 excludes(cardinality, family, machine(statistics, median_as_ordered_middle), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, question_without_variability), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(statistics, statistical_question_variability_classification), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(cardinality, subtraction, [subtraction])).
 excludes(cardinality, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(cardinality, subtraction, [subtraction])).
@@ -10191,6 +10324,8 @@ excludes(counting, family, machine(addition, round_without_adjusting), family_mi
 excludes(counting, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(counting, addition, [addition])).
 excludes(counting, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(counting, addition, [addition])).
 excludes(counting, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(counting, algebraic, [algebraic])).
+excludes(counting, family, machine(algebraic, combine_signed_like_terms), family_mismatch(counting, algebraic, [algebraic])).
+excludes(counting, family, machine(algebraic, combine_unlike_terms), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, drop_distributed_term), family_mismatch(counting, algebraic, [algebraic])).
@@ -10202,8 +10337,11 @@ excludes(counting, family, machine(algebraic, guess_and_check_rule), family_mism
 excludes(counting, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, one_sided_equation_operation), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, operational_equals_left_value), family_mismatch(counting, algebraic, [algebraic])).
+excludes(counting, family, machine(algebraic, percent_change_composition), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, programming_expression_evaluation), family_mismatch(counting, algebraic, [algebraic])).
+excludes(counting, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(algebraic, symbolic_expression_construction), family_mismatch(counting, algebraic, [algebraic])).
+excludes(counting, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(counting, algebraic, [algebraic])).
 excludes(counting, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(counting, calculus, [calculus])).
 excludes(counting, family, machine(calculus, direct_substitution), family_mismatch(counting, calculus, [calculus])).
 excludes(counting, family, machine(calculus, factor_cancel_substitute), family_mismatch(counting, calculus, [calculus])).
@@ -10293,6 +10431,7 @@ excludes(counting, family, machine(fraction, unit_fraction_partition), family_mi
 excludes(counting, family, machine(fraction, whole_number_grab), family_mismatch(counting, fraction, [fraction])).
 excludes(counting, family, machine(geometry, angle_additive_composition), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, angle_as_ray_length), family_mismatch(counting, geometry, [geometry])).
+excludes(counting, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, angle_turn_measurement), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, area_as_perimeter_count), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(counting, geometry, [geometry])).
@@ -10300,6 +10439,7 @@ excludes(counting, family, machine(geometry, area_unit_covering), family_mismatc
 excludes(counting, family, machine(geometry, area_unit_scale_selection), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(counting, geometry, [geometry])).
+excludes(counting, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, composite_prism_volume_sum), family_mismatch(counting, geometry, [geometry])).
@@ -10336,13 +10476,22 @@ excludes(counting, family, machine(geometry, subtract_side_from_area), family_mi
 excludes(counting, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, triangle_area_half_base_height), family_mismatch(counting, geometry, [geometry])).
+excludes(counting, family, machine(geometry, triangle_three_measure_determination), family_mismatch(counting, geometry, [geometry])).
+excludes(counting, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(counting, geometry, [geometry])).
 excludes(counting, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(counting, geometry, [geometry])).
+excludes(counting, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(integer, inequality_as_boundary_point), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(integer, inequality_solution_set_representation), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(counting, integer, [integer])).
+excludes(counting, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(counting, integer, [integer])).
+excludes(counting, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(counting, integer, [integer])).
+excludes(counting, family, machine(integer, signed_division_by_sign_rule), family_mismatch(counting, integer, [integer])).
+excludes(counting, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(integer, signed_number_location_and_order), family_mismatch(counting, integer, [integer])).
+excludes(counting, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(counting, integer, [integer])).
+excludes(counting, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(counting, integer, [integer])).
 excludes(counting, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(counting, multiplication, [multiplication])).
 excludes(counting, family, machine(multiplication, add_instead_of_multiply), family_mismatch(counting, multiplication, [multiplication])).
 excludes(counting, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(counting, multiplication, [multiplication])).
@@ -10366,13 +10515,19 @@ excludes(counting, family, machine(multiplication, sequential_recompute_commuted
 excludes(counting, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(counting, probability, [probability])).
 excludes(counting, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(counting, probability, [probability])).
 excludes(counting, family, machine(ratio, additive_extension_of_ratio), family_mismatch(counting, ratio, [proportional, ratio])).
+excludes(counting, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(counting, ratio, [proportional, ratio])).
 excludes(counting, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(counting, ratio, [proportional, ratio])).
+excludes(counting, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(counting, ratio, [proportional, ratio])).
+excludes(counting, family, machine(ratio, inscribe_proportional_equation), family_mismatch(counting, ratio, [proportional, ratio])).
 excludes(counting, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(counting, ratio, [proportional, ratio])).
 excludes(counting, family, machine(ratio, scale_ratio_unit), family_mismatch(counting, ratio, [proportional, ratio])).
+excludes(counting, family, machine(ratio, test_relation_for_proportionality), family_mismatch(counting, ratio, [proportional, ratio])).
 excludes(counting, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, distribution_summary_selection), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, mean_absolute_deviation), family_mismatch(counting, statistics, [data])).
@@ -10382,6 +10537,7 @@ excludes(counting, family, machine(statistics, mean_deviation_without_absolute_v
 excludes(counting, family, machine(statistics, median_as_ordered_middle), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, question_without_variability), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(statistics, statistical_question_variability_classification), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(counting, subtraction, [subtraction])).
 excludes(counting, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(counting, subtraction, [subtraction])).
@@ -11547,6 +11703,8 @@ excludes(data, family, machine(addition, round_without_adjusting), family_mismat
 excludes(data, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(data, addition, [addition])).
 excludes(data, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(data, addition, [addition])).
 excludes(data, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, combine_signed_like_terms), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, combine_unlike_terms), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, drop_distributed_term), family_mismatch(data, algebraic, [algebraic])).
@@ -11558,8 +11716,11 @@ excludes(data, family, machine(algebraic, guess_and_check_rule), family_mismatch
 excludes(data, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, one_sided_equation_operation), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, operational_equals_left_value), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, percent_change_composition), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, programming_expression_evaluation), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(algebraic, symbolic_expression_construction), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(data, algebraic, [algebraic])).
 excludes(data, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(data, calculus, [calculus])).
 excludes(data, family, machine(calculus, direct_substitution), family_mismatch(data, calculus, [calculus])).
 excludes(data, family, machine(calculus, factor_cancel_substitute), family_mismatch(data, calculus, [calculus])).
@@ -11656,6 +11817,7 @@ excludes(data, family, machine(fraction, unit_fraction_partition), family_mismat
 excludes(data, family, machine(fraction, whole_number_grab), family_mismatch(data, fraction, [fraction])).
 excludes(data, family, machine(geometry, angle_additive_composition), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, angle_as_ray_length), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, angle_turn_measurement), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, area_as_perimeter_count), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(data, geometry, [geometry])).
@@ -11663,6 +11825,7 @@ excludes(data, family, machine(geometry, area_unit_covering), family_mismatch(da
 excludes(data, family, machine(geometry, area_unit_scale_selection), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, composite_prism_volume_sum), family_mismatch(data, geometry, [geometry])).
@@ -11699,13 +11862,22 @@ excludes(data, family, machine(geometry, subtract_side_from_area), family_mismat
 excludes(data, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, triangle_area_half_base_height), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, triangle_three_measure_determination), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(data, geometry, [geometry])).
 excludes(data, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(integer, inequality_as_boundary_point), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(integer, inequality_solution_set_representation), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, signed_division_by_sign_rule), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(integer, signed_number_location_and_order), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(data, integer, [integer])).
 excludes(data, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(data, multiplication, [multiplication])).
 excludes(data, family, machine(multiplication, add_instead_of_multiply), family_mismatch(data, multiplication, [multiplication])).
 excludes(data, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(data, multiplication, [multiplication])).
@@ -11729,9 +11901,13 @@ excludes(data, family, machine(multiplication, sequential_recompute_commuted_pro
 excludes(data, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(data, probability, [probability])).
 excludes(data, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(data, probability, [probability])).
 excludes(data, family, machine(ratio, additive_extension_of_ratio), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(data, ratio, [proportional, ratio])).
 excludes(data, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, inscribe_proportional_equation), family_mismatch(data, ratio, [proportional, ratio])).
 excludes(data, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(data, ratio, [proportional, ratio])).
 excludes(data, family, machine(ratio, scale_ratio_unit), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, test_relation_for_proportionality), family_mismatch(data, ratio, [proportional, ratio])).
 excludes(data, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(data, subtraction, [subtraction])).
 excludes(data, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(data, subtraction, [subtraction])).
 excludes(data, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(data, subtraction, [subtraction])).
@@ -12884,6 +13060,8 @@ excludes(decimal, family, machine(addition, round_without_adjusting), family_mis
 excludes(decimal, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(decimal, addition, [addition])).
 excludes(decimal, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(decimal, addition, [addition])).
 excludes(decimal, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(decimal, algebraic, [algebraic])).
+excludes(decimal, family, machine(algebraic, combine_signed_like_terms), family_mismatch(decimal, algebraic, [algebraic])).
+excludes(decimal, family, machine(algebraic, combine_unlike_terms), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, drop_distributed_term), family_mismatch(decimal, algebraic, [algebraic])).
@@ -12895,8 +13073,11 @@ excludes(decimal, family, machine(algebraic, guess_and_check_rule), family_misma
 excludes(decimal, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, one_sided_equation_operation), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, operational_equals_left_value), family_mismatch(decimal, algebraic, [algebraic])).
+excludes(decimal, family, machine(algebraic, percent_change_composition), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, programming_expression_evaluation), family_mismatch(decimal, algebraic, [algebraic])).
+excludes(decimal, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(algebraic, symbolic_expression_construction), family_mismatch(decimal, algebraic, [algebraic])).
+excludes(decimal, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(decimal, algebraic, [algebraic])).
 excludes(decimal, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(decimal, calculus, [calculus])).
 excludes(decimal, family, machine(calculus, direct_substitution), family_mismatch(decimal, calculus, [calculus])).
 excludes(decimal, family, machine(calculus, factor_cancel_substitute), family_mismatch(decimal, calculus, [calculus])).
@@ -12977,6 +13158,7 @@ excludes(decimal, family, machine(fraction, unit_fraction_partition), family_mis
 excludes(decimal, family, machine(fraction, whole_number_grab), family_mismatch(decimal, fraction, [fraction])).
 excludes(decimal, family, machine(geometry, angle_additive_composition), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, angle_as_ray_length), family_mismatch(decimal, geometry, [geometry])).
+excludes(decimal, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, angle_turn_measurement), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, area_as_perimeter_count), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(decimal, geometry, [geometry])).
@@ -12984,6 +13166,7 @@ excludes(decimal, family, machine(geometry, area_unit_covering), family_mismatch
 excludes(decimal, family, machine(geometry, area_unit_scale_selection), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(decimal, geometry, [geometry])).
+excludes(decimal, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, composite_prism_volume_sum), family_mismatch(decimal, geometry, [geometry])).
@@ -13020,13 +13203,22 @@ excludes(decimal, family, machine(geometry, subtract_side_from_area), family_mis
 excludes(decimal, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, triangle_area_half_base_height), family_mismatch(decimal, geometry, [geometry])).
+excludes(decimal, family, machine(geometry, triangle_three_measure_determination), family_mismatch(decimal, geometry, [geometry])).
+excludes(decimal, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(decimal, geometry, [geometry])).
 excludes(decimal, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(decimal, geometry, [geometry])).
+excludes(decimal, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(integer, inequality_as_boundary_point), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(integer, inequality_solution_set_representation), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(decimal, integer, [integer])).
+excludes(decimal, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(decimal, integer, [integer])).
+excludes(decimal, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(decimal, integer, [integer])).
+excludes(decimal, family, machine(integer, signed_division_by_sign_rule), family_mismatch(decimal, integer, [integer])).
+excludes(decimal, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(integer, signed_number_location_and_order), family_mismatch(decimal, integer, [integer])).
+excludes(decimal, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(decimal, integer, [integer])).
+excludes(decimal, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(decimal, integer, [integer])).
 excludes(decimal, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(decimal, multiplication, [multiplication])).
 excludes(decimal, family, machine(multiplication, add_instead_of_multiply), family_mismatch(decimal, multiplication, [multiplication])).
 excludes(decimal, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(decimal, multiplication, [multiplication])).
@@ -13050,13 +13242,19 @@ excludes(decimal, family, machine(multiplication, sequential_recompute_commuted_
 excludes(decimal, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(decimal, probability, [probability])).
 excludes(decimal, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(decimal, probability, [probability])).
 excludes(decimal, family, machine(ratio, additive_extension_of_ratio), family_mismatch(decimal, ratio, [proportional, ratio])).
+excludes(decimal, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(decimal, ratio, [proportional, ratio])).
 excludes(decimal, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(decimal, ratio, [proportional, ratio])).
+excludes(decimal, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(decimal, ratio, [proportional, ratio])).
+excludes(decimal, family, machine(ratio, inscribe_proportional_equation), family_mismatch(decimal, ratio, [proportional, ratio])).
 excludes(decimal, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(decimal, ratio, [proportional, ratio])).
 excludes(decimal, family, machine(ratio, scale_ratio_unit), family_mismatch(decimal, ratio, [proportional, ratio])).
+excludes(decimal, family, machine(ratio, test_relation_for_proportionality), family_mismatch(decimal, ratio, [proportional, ratio])).
 excludes(decimal, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, distribution_summary_selection), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, mean_absolute_deviation), family_mismatch(decimal, statistics, [data])).
@@ -13066,6 +13264,7 @@ excludes(decimal, family, machine(statistics, mean_deviation_without_absolute_va
 excludes(decimal, family, machine(statistics, median_as_ordered_middle), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, question_without_variability), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(statistics, statistical_question_variability_classification), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(decimal, subtraction, [subtraction])).
 excludes(decimal, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(decimal, subtraction, [subtraction])).
@@ -14383,6 +14582,8 @@ excludes(division, family, machine(addition, round_without_adjusting), family_mi
 excludes(division, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(division, addition, [addition])).
 excludes(division, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(division, addition, [addition])).
 excludes(division, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(division, algebraic, [algebraic])).
+excludes(division, family, machine(algebraic, combine_signed_like_terms), family_mismatch(division, algebraic, [algebraic])).
+excludes(division, family, machine(algebraic, combine_unlike_terms), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, drop_distributed_term), family_mismatch(division, algebraic, [algebraic])).
@@ -14394,8 +14595,11 @@ excludes(division, family, machine(algebraic, guess_and_check_rule), family_mism
 excludes(division, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, one_sided_equation_operation), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, operational_equals_left_value), family_mismatch(division, algebraic, [algebraic])).
+excludes(division, family, machine(algebraic, percent_change_composition), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, programming_expression_evaluation), family_mismatch(division, algebraic, [algebraic])).
+excludes(division, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(algebraic, symbolic_expression_construction), family_mismatch(division, algebraic, [algebraic])).
+excludes(division, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(division, algebraic, [algebraic])).
 excludes(division, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(division, calculus, [calculus])).
 excludes(division, family, machine(calculus, direct_substitution), family_mismatch(division, calculus, [calculus])).
 excludes(division, family, machine(calculus, factor_cancel_substitute), family_mismatch(division, calculus, [calculus])).
@@ -14476,6 +14680,7 @@ excludes(division, family, machine(fraction, unit_fraction_partition), family_mi
 excludes(division, family, machine(fraction, whole_number_grab), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(geometry, angle_additive_composition), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, angle_as_ray_length), family_mismatch(division, geometry, [geometry])).
+excludes(division, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, angle_turn_measurement), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, area_as_perimeter_count), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(division, geometry, [geometry])).
@@ -14483,6 +14688,7 @@ excludes(division, family, machine(geometry, area_unit_covering), family_mismatc
 excludes(division, family, machine(geometry, area_unit_scale_selection), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(division, geometry, [geometry])).
+excludes(division, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, composite_prism_volume_sum), family_mismatch(division, geometry, [geometry])).
@@ -14519,13 +14725,22 @@ excludes(division, family, machine(geometry, subtract_side_from_area), family_mi
 excludes(division, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, triangle_area_half_base_height), family_mismatch(division, geometry, [geometry])).
+excludes(division, family, machine(geometry, triangle_three_measure_determination), family_mismatch(division, geometry, [geometry])).
+excludes(division, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(division, geometry, [geometry])).
 excludes(division, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(division, geometry, [geometry])).
+excludes(division, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(integer, inequality_as_boundary_point), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(integer, inequality_solution_set_representation), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(division, integer, [integer])).
+excludes(division, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(division, integer, [integer])).
+excludes(division, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(division, integer, [integer])).
+excludes(division, family, machine(integer, signed_division_by_sign_rule), family_mismatch(division, integer, [integer])).
+excludes(division, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(integer, signed_number_location_and_order), family_mismatch(division, integer, [integer])).
+excludes(division, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(division, integer, [integer])).
+excludes(division, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(division, integer, [integer])).
 excludes(division, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(division, multiplication, [multiplication])).
 excludes(division, family, machine(multiplication, add_instead_of_multiply), family_mismatch(division, multiplication, [multiplication])).
 excludes(division, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(division, multiplication, [multiplication])).
@@ -14549,13 +14764,19 @@ excludes(division, family, machine(multiplication, sequential_recompute_commuted
 excludes(division, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(division, probability, [probability])).
 excludes(division, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(division, probability, [probability])).
 excludes(division, family, machine(ratio, additive_extension_of_ratio), family_mismatch(division, ratio, [proportional, ratio])).
+excludes(division, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(division, ratio, [proportional, ratio])).
 excludes(division, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(division, ratio, [proportional, ratio])).
+excludes(division, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(division, ratio, [proportional, ratio])).
+excludes(division, family, machine(ratio, inscribe_proportional_equation), family_mismatch(division, ratio, [proportional, ratio])).
 excludes(division, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(division, ratio, [proportional, ratio])).
 excludes(division, family, machine(ratio, scale_ratio_unit), family_mismatch(division, ratio, [proportional, ratio])).
+excludes(division, family, machine(ratio, test_relation_for_proportionality), family_mismatch(division, ratio, [proportional, ratio])).
 excludes(division, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, distribution_summary_selection), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, mean_absolute_deviation), family_mismatch(division, statistics, [data])).
@@ -14565,6 +14786,7 @@ excludes(division, family, machine(statistics, mean_deviation_without_absolute_v
 excludes(division, family, machine(statistics, median_as_ordered_middle), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, question_without_variability), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(statistics, statistical_question_variability_classification), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(division, subtraction, [subtraction])).
 excludes(division, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(division, subtraction, [subtraction])).
@@ -15707,6 +15929,8 @@ excludes(fraction, family, machine(addition, round_without_adjusting), family_mi
 excludes(fraction, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(fraction, addition, [addition])).
 excludes(fraction, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(fraction, addition, [addition])).
 excludes(fraction, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(fraction, algebraic, [algebraic])).
+excludes(fraction, family, machine(algebraic, combine_signed_like_terms), family_mismatch(fraction, algebraic, [algebraic])).
+excludes(fraction, family, machine(algebraic, combine_unlike_terms), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, drop_distributed_term), family_mismatch(fraction, algebraic, [algebraic])).
@@ -15718,8 +15942,11 @@ excludes(fraction, family, machine(algebraic, guess_and_check_rule), family_mism
 excludes(fraction, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, one_sided_equation_operation), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, operational_equals_left_value), family_mismatch(fraction, algebraic, [algebraic])).
+excludes(fraction, family, machine(algebraic, percent_change_composition), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, programming_expression_evaluation), family_mismatch(fraction, algebraic, [algebraic])).
+excludes(fraction, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(algebraic, symbolic_expression_construction), family_mismatch(fraction, algebraic, [algebraic])).
+excludes(fraction, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(fraction, algebraic, [algebraic])).
 excludes(fraction, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(fraction, calculus, [calculus])).
 excludes(fraction, family, machine(calculus, direct_substitution), family_mismatch(fraction, calculus, [calculus])).
 excludes(fraction, family, machine(calculus, factor_cancel_substitute), family_mismatch(fraction, calculus, [calculus])).
@@ -15783,6 +16010,7 @@ excludes(fraction, family, machine(division, stop_at_nearby_product_in_search), 
 excludes(fraction, family, machine(division, sum_dividend_and_divisor), family_mismatch(fraction, division, [division])).
 excludes(fraction, family, machine(geometry, angle_additive_composition), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, angle_as_ray_length), family_mismatch(fraction, geometry, [geometry])).
+excludes(fraction, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, angle_turn_measurement), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, area_as_perimeter_count), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(fraction, geometry, [geometry])).
@@ -15790,6 +16018,7 @@ excludes(fraction, family, machine(geometry, area_unit_covering), family_mismatc
 excludes(fraction, family, machine(geometry, area_unit_scale_selection), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(fraction, geometry, [geometry])).
+excludes(fraction, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, composite_prism_volume_sum), family_mismatch(fraction, geometry, [geometry])).
@@ -15826,13 +16055,22 @@ excludes(fraction, family, machine(geometry, subtract_side_from_area), family_mi
 excludes(fraction, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, triangle_area_half_base_height), family_mismatch(fraction, geometry, [geometry])).
+excludes(fraction, family, machine(geometry, triangle_three_measure_determination), family_mismatch(fraction, geometry, [geometry])).
+excludes(fraction, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(fraction, geometry, [geometry])).
 excludes(fraction, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(fraction, geometry, [geometry])).
+excludes(fraction, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(integer, inequality_as_boundary_point), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(integer, inequality_solution_set_representation), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(fraction, integer, [integer])).
+excludes(fraction, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(fraction, integer, [integer])).
+excludes(fraction, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(fraction, integer, [integer])).
+excludes(fraction, family, machine(integer, signed_division_by_sign_rule), family_mismatch(fraction, integer, [integer])).
+excludes(fraction, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(integer, signed_number_location_and_order), family_mismatch(fraction, integer, [integer])).
+excludes(fraction, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(fraction, integer, [integer])).
+excludes(fraction, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(fraction, integer, [integer])).
 excludes(fraction, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(fraction, multiplication, [multiplication])).
 excludes(fraction, family, machine(multiplication, add_instead_of_multiply), family_mismatch(fraction, multiplication, [multiplication])).
 excludes(fraction, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(fraction, multiplication, [multiplication])).
@@ -15856,13 +16094,19 @@ excludes(fraction, family, machine(multiplication, sequential_recompute_commuted
 excludes(fraction, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(fraction, probability, [probability])).
 excludes(fraction, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(fraction, probability, [probability])).
 excludes(fraction, family, machine(ratio, additive_extension_of_ratio), family_mismatch(fraction, ratio, [proportional, ratio])).
+excludes(fraction, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(fraction, ratio, [proportional, ratio])).
 excludes(fraction, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(fraction, ratio, [proportional, ratio])).
+excludes(fraction, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(fraction, ratio, [proportional, ratio])).
+excludes(fraction, family, machine(ratio, inscribe_proportional_equation), family_mismatch(fraction, ratio, [proportional, ratio])).
 excludes(fraction, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(fraction, ratio, [proportional, ratio])).
 excludes(fraction, family, machine(ratio, scale_ratio_unit), family_mismatch(fraction, ratio, [proportional, ratio])).
+excludes(fraction, family, machine(ratio, test_relation_for_proportionality), family_mismatch(fraction, ratio, [proportional, ratio])).
 excludes(fraction, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, distribution_summary_selection), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, mean_absolute_deviation), family_mismatch(fraction, statistics, [data])).
@@ -15872,6 +16116,7 @@ excludes(fraction, family, machine(statistics, mean_deviation_without_absolute_v
 excludes(fraction, family, machine(statistics, median_as_ordered_middle), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, question_without_variability), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(statistics, statistical_question_variability_classification), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(fraction, subtraction, [subtraction])).
 excludes(fraction, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(fraction, subtraction, [subtraction])).
@@ -17402,6 +17647,8 @@ excludes(geometry, family, machine(addition, round_without_adjusting), family_mi
 excludes(geometry, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(geometry, addition, [addition])).
 excludes(geometry, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(geometry, addition, [addition])).
 excludes(geometry, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(geometry, algebraic, [algebraic])).
+excludes(geometry, family, machine(algebraic, combine_signed_like_terms), family_mismatch(geometry, algebraic, [algebraic])).
+excludes(geometry, family, machine(algebraic, combine_unlike_terms), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, drop_distributed_term), family_mismatch(geometry, algebraic, [algebraic])).
@@ -17413,8 +17660,11 @@ excludes(geometry, family, machine(algebraic, guess_and_check_rule), family_mism
 excludes(geometry, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, one_sided_equation_operation), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, operational_equals_left_value), family_mismatch(geometry, algebraic, [algebraic])).
+excludes(geometry, family, machine(algebraic, percent_change_composition), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, programming_expression_evaluation), family_mismatch(geometry, algebraic, [algebraic])).
+excludes(geometry, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(algebraic, symbolic_expression_construction), family_mismatch(geometry, algebraic, [algebraic])).
+excludes(geometry, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(geometry, algebraic, [algebraic])).
 excludes(geometry, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(geometry, calculus, [calculus])).
 excludes(geometry, family, machine(calculus, direct_substitution), family_mismatch(geometry, calculus, [calculus])).
 excludes(geometry, family, machine(calculus, factor_cancel_substitute), family_mismatch(geometry, calculus, [calculus])).
@@ -17509,12 +17759,19 @@ excludes(geometry, family, machine(fraction, unit_fraction_denominator_product_r
 excludes(geometry, family, machine(fraction, unit_fraction_iteration), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, unit_fraction_partition), family_mismatch(geometry, fraction, [fraction])).
 excludes(geometry, family, machine(fraction, whole_number_grab), family_mismatch(geometry, fraction, [fraction])).
+excludes(geometry, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(integer, inequality_as_boundary_point), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(integer, inequality_solution_set_representation), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(geometry, integer, [integer])).
+excludes(geometry, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(geometry, integer, [integer])).
+excludes(geometry, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(geometry, integer, [integer])).
+excludes(geometry, family, machine(integer, signed_division_by_sign_rule), family_mismatch(geometry, integer, [integer])).
+excludes(geometry, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(integer, signed_number_location_and_order), family_mismatch(geometry, integer, [integer])).
+excludes(geometry, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(geometry, integer, [integer])).
+excludes(geometry, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(geometry, integer, [integer])).
 excludes(geometry, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(geometry, multiplication, [multiplication])).
 excludes(geometry, family, machine(multiplication, add_instead_of_multiply), family_mismatch(geometry, multiplication, [multiplication])).
 excludes(geometry, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(geometry, multiplication, [multiplication])).
@@ -17538,13 +17795,19 @@ excludes(geometry, family, machine(multiplication, sequential_recompute_commuted
 excludes(geometry, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(geometry, probability, [probability])).
 excludes(geometry, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(geometry, probability, [probability])).
 excludes(geometry, family, machine(ratio, additive_extension_of_ratio), family_mismatch(geometry, ratio, [proportional, ratio])).
+excludes(geometry, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(geometry, ratio, [proportional, ratio])).
 excludes(geometry, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(geometry, ratio, [proportional, ratio])).
+excludes(geometry, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(geometry, ratio, [proportional, ratio])).
+excludes(geometry, family, machine(ratio, inscribe_proportional_equation), family_mismatch(geometry, ratio, [proportional, ratio])).
 excludes(geometry, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(geometry, ratio, [proportional, ratio])).
 excludes(geometry, family, machine(ratio, scale_ratio_unit), family_mismatch(geometry, ratio, [proportional, ratio])).
+excludes(geometry, family, machine(ratio, test_relation_for_proportionality), family_mismatch(geometry, ratio, [proportional, ratio])).
 excludes(geometry, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, distribution_summary_selection), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, mean_absolute_deviation), family_mismatch(geometry, statistics, [data])).
@@ -17554,6 +17817,7 @@ excludes(geometry, family, machine(statistics, mean_deviation_without_absolute_v
 excludes(geometry, family, machine(statistics, median_as_ordered_middle), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, question_without_variability), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(statistics, statistical_question_variability_classification), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(geometry, subtraction, [subtraction])).
 excludes(geometry, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(geometry, subtraction, [subtraction])).
@@ -18488,6 +18752,8 @@ excludes(integer, family, machine(addition, round_without_adjusting), family_mis
 excludes(integer, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(integer, addition, [addition])).
 excludes(integer, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(integer, addition, [addition])).
 excludes(integer, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(integer, algebraic, [algebraic])).
+excludes(integer, family, machine(algebraic, combine_signed_like_terms), family_mismatch(integer, algebraic, [algebraic])).
+excludes(integer, family, machine(algebraic, combine_unlike_terms), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, drop_distributed_term), family_mismatch(integer, algebraic, [algebraic])).
@@ -18499,8 +18765,11 @@ excludes(integer, family, machine(algebraic, guess_and_check_rule), family_misma
 excludes(integer, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, one_sided_equation_operation), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, operational_equals_left_value), family_mismatch(integer, algebraic, [algebraic])).
+excludes(integer, family, machine(algebraic, percent_change_composition), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, programming_expression_evaluation), family_mismatch(integer, algebraic, [algebraic])).
+excludes(integer, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(algebraic, symbolic_expression_construction), family_mismatch(integer, algebraic, [algebraic])).
+excludes(integer, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(integer, algebraic, [algebraic])).
 excludes(integer, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(integer, calculus, [calculus])).
 excludes(integer, family, machine(calculus, direct_substitution), family_mismatch(integer, calculus, [calculus])).
 excludes(integer, family, machine(calculus, factor_cancel_substitute), family_mismatch(integer, calculus, [calculus])).
@@ -18597,6 +18866,7 @@ excludes(integer, family, machine(fraction, unit_fraction_partition), family_mis
 excludes(integer, family, machine(fraction, whole_number_grab), family_mismatch(integer, fraction, [fraction])).
 excludes(integer, family, machine(geometry, angle_additive_composition), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, angle_as_ray_length), family_mismatch(integer, geometry, [geometry])).
+excludes(integer, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, angle_turn_measurement), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, area_as_perimeter_count), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(integer, geometry, [geometry])).
@@ -18604,6 +18874,7 @@ excludes(integer, family, machine(geometry, area_unit_covering), family_mismatch
 excludes(integer, family, machine(geometry, area_unit_scale_selection), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(integer, geometry, [geometry])).
+excludes(integer, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, composite_prism_volume_sum), family_mismatch(integer, geometry, [geometry])).
@@ -18640,6 +18911,8 @@ excludes(integer, family, machine(geometry, subtract_side_from_area), family_mis
 excludes(integer, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, triangle_area_half_base_height), family_mismatch(integer, geometry, [geometry])).
+excludes(integer, family, machine(geometry, triangle_three_measure_determination), family_mismatch(integer, geometry, [geometry])).
+excludes(integer, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(integer, geometry, [geometry])).
 excludes(integer, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(integer, multiplication, [multiplication])).
 excludes(integer, family, machine(multiplication, add_instead_of_multiply), family_mismatch(integer, multiplication, [multiplication])).
@@ -18664,13 +18937,19 @@ excludes(integer, family, machine(multiplication, sequential_recompute_commuted_
 excludes(integer, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(integer, probability, [probability])).
 excludes(integer, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(integer, probability, [probability])).
 excludes(integer, family, machine(ratio, additive_extension_of_ratio), family_mismatch(integer, ratio, [proportional, ratio])).
+excludes(integer, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(integer, ratio, [proportional, ratio])).
 excludes(integer, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(integer, ratio, [proportional, ratio])).
+excludes(integer, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(integer, ratio, [proportional, ratio])).
+excludes(integer, family, machine(ratio, inscribe_proportional_equation), family_mismatch(integer, ratio, [proportional, ratio])).
 excludes(integer, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(integer, ratio, [proportional, ratio])).
 excludes(integer, family, machine(ratio, scale_ratio_unit), family_mismatch(integer, ratio, [proportional, ratio])).
+excludes(integer, family, machine(ratio, test_relation_for_proportionality), family_mismatch(integer, ratio, [proportional, ratio])).
 excludes(integer, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, distribution_summary_selection), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, mean_absolute_deviation), family_mismatch(integer, statistics, [data])).
@@ -18680,6 +18959,7 @@ excludes(integer, family, machine(statistics, mean_deviation_without_absolute_va
 excludes(integer, family, machine(statistics, median_as_ordered_middle), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, question_without_variability), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(statistics, statistical_question_variability_classification), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(integer, subtraction, [subtraction])).
 excludes(integer, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(integer, subtraction, [subtraction])).
@@ -20111,6 +20391,8 @@ excludes(multiplication, family, machine(addition, round_without_adjusting), fam
 excludes(multiplication, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(multiplication, addition, [addition])).
 excludes(multiplication, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(multiplication, addition, [addition])).
 excludes(multiplication, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(multiplication, algebraic, [algebraic])).
+excludes(multiplication, family, machine(algebraic, combine_signed_like_terms), family_mismatch(multiplication, algebraic, [algebraic])).
+excludes(multiplication, family, machine(algebraic, combine_unlike_terms), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, drop_distributed_term), family_mismatch(multiplication, algebraic, [algebraic])).
@@ -20122,8 +20404,11 @@ excludes(multiplication, family, machine(algebraic, guess_and_check_rule), famil
 excludes(multiplication, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, one_sided_equation_operation), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, operational_equals_left_value), family_mismatch(multiplication, algebraic, [algebraic])).
+excludes(multiplication, family, machine(algebraic, percent_change_composition), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, programming_expression_evaluation), family_mismatch(multiplication, algebraic, [algebraic])).
+excludes(multiplication, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(algebraic, symbolic_expression_construction), family_mismatch(multiplication, algebraic, [algebraic])).
+excludes(multiplication, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(multiplication, algebraic, [algebraic])).
 excludes(multiplication, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(multiplication, calculus, [calculus])).
 excludes(multiplication, family, machine(calculus, direct_substitution), family_mismatch(multiplication, calculus, [calculus])).
 excludes(multiplication, family, machine(calculus, factor_cancel_substitute), family_mismatch(multiplication, calculus, [calculus])).
@@ -20220,6 +20505,7 @@ excludes(multiplication, family, machine(fraction, unit_fraction_partition), fam
 excludes(multiplication, family, machine(fraction, whole_number_grab), family_mismatch(multiplication, fraction, [fraction])).
 excludes(multiplication, family, machine(geometry, angle_additive_composition), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, angle_as_ray_length), family_mismatch(multiplication, geometry, [geometry])).
+excludes(multiplication, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, angle_turn_measurement), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, area_as_perimeter_count), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(multiplication, geometry, [geometry])).
@@ -20227,6 +20513,7 @@ excludes(multiplication, family, machine(geometry, area_unit_covering), family_m
 excludes(multiplication, family, machine(geometry, area_unit_scale_selection), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(multiplication, geometry, [geometry])).
+excludes(multiplication, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, composite_prism_volume_sum), family_mismatch(multiplication, geometry, [geometry])).
@@ -20263,23 +20550,38 @@ excludes(multiplication, family, machine(geometry, subtract_side_from_area), fam
 excludes(multiplication, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, triangle_area_half_base_height), family_mismatch(multiplication, geometry, [geometry])).
+excludes(multiplication, family, machine(geometry, triangle_three_measure_determination), family_mismatch(multiplication, geometry, [geometry])).
+excludes(multiplication, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(multiplication, geometry, [geometry])).
 excludes(multiplication, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(multiplication, geometry, [geometry])).
+excludes(multiplication, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(integer, inequality_as_boundary_point), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(integer, inequality_solution_set_representation), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(multiplication, integer, [integer])).
+excludes(multiplication, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(multiplication, integer, [integer])).
+excludes(multiplication, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(multiplication, integer, [integer])).
+excludes(multiplication, family, machine(integer, signed_division_by_sign_rule), family_mismatch(multiplication, integer, [integer])).
+excludes(multiplication, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(integer, signed_number_location_and_order), family_mismatch(multiplication, integer, [integer])).
+excludes(multiplication, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(multiplication, integer, [integer])).
+excludes(multiplication, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(multiplication, integer, [integer])).
 excludes(multiplication, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(multiplication, probability, [probability])).
 excludes(multiplication, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(multiplication, probability, [probability])).
 excludes(multiplication, family, machine(ratio, additive_extension_of_ratio), family_mismatch(multiplication, ratio, [proportional, ratio])).
+excludes(multiplication, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(multiplication, ratio, [proportional, ratio])).
 excludes(multiplication, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(multiplication, ratio, [proportional, ratio])).
+excludes(multiplication, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(multiplication, ratio, [proportional, ratio])).
+excludes(multiplication, family, machine(ratio, inscribe_proportional_equation), family_mismatch(multiplication, ratio, [proportional, ratio])).
 excludes(multiplication, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(multiplication, ratio, [proportional, ratio])).
 excludes(multiplication, family, machine(ratio, scale_ratio_unit), family_mismatch(multiplication, ratio, [proportional, ratio])).
+excludes(multiplication, family, machine(ratio, test_relation_for_proportionality), family_mismatch(multiplication, ratio, [proportional, ratio])).
 excludes(multiplication, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, distribution_summary_selection), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, mean_absolute_deviation), family_mismatch(multiplication, statistics, [data])).
@@ -20289,6 +20591,7 @@ excludes(multiplication, family, machine(statistics, mean_deviation_without_abso
 excludes(multiplication, family, machine(statistics, median_as_ordered_middle), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, question_without_variability), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(statistics, statistical_question_variability_classification), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(multiplication, subtraction, [subtraction])).
 excludes(multiplication, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(multiplication, subtraction, [subtraction])).
@@ -21347,6 +21650,8 @@ excludes(probability, family, machine(addition, round_without_adjusting), family
 excludes(probability, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(probability, addition, [addition])).
 excludes(probability, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(probability, addition, [addition])).
 excludes(probability, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(probability, algebraic, [algebraic])).
+excludes(probability, family, machine(algebraic, combine_signed_like_terms), family_mismatch(probability, algebraic, [algebraic])).
+excludes(probability, family, machine(algebraic, combine_unlike_terms), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, drop_distributed_term), family_mismatch(probability, algebraic, [algebraic])).
@@ -21358,8 +21663,11 @@ excludes(probability, family, machine(algebraic, guess_and_check_rule), family_m
 excludes(probability, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, one_sided_equation_operation), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, operational_equals_left_value), family_mismatch(probability, algebraic, [algebraic])).
+excludes(probability, family, machine(algebraic, percent_change_composition), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, programming_expression_evaluation), family_mismatch(probability, algebraic, [algebraic])).
+excludes(probability, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(algebraic, symbolic_expression_construction), family_mismatch(probability, algebraic, [algebraic])).
+excludes(probability, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(probability, algebraic, [algebraic])).
 excludes(probability, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(probability, calculus, [calculus])).
 excludes(probability, family, machine(calculus, direct_substitution), family_mismatch(probability, calculus, [calculus])).
 excludes(probability, family, machine(calculus, factor_cancel_substitute), family_mismatch(probability, calculus, [calculus])).
@@ -21456,6 +21764,7 @@ excludes(probability, family, machine(fraction, unit_fraction_partition), family
 excludes(probability, family, machine(fraction, whole_number_grab), family_mismatch(probability, fraction, [fraction])).
 excludes(probability, family, machine(geometry, angle_additive_composition), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, angle_as_ray_length), family_mismatch(probability, geometry, [geometry])).
+excludes(probability, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, angle_turn_measurement), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, area_as_perimeter_count), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(probability, geometry, [geometry])).
@@ -21463,6 +21772,7 @@ excludes(probability, family, machine(geometry, area_unit_covering), family_mism
 excludes(probability, family, machine(geometry, area_unit_scale_selection), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(probability, geometry, [geometry])).
+excludes(probability, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, composite_prism_volume_sum), family_mismatch(probability, geometry, [geometry])).
@@ -21499,13 +21809,22 @@ excludes(probability, family, machine(geometry, subtract_side_from_area), family
 excludes(probability, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, triangle_area_half_base_height), family_mismatch(probability, geometry, [geometry])).
+excludes(probability, family, machine(geometry, triangle_three_measure_determination), family_mismatch(probability, geometry, [geometry])).
+excludes(probability, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(probability, geometry, [geometry])).
 excludes(probability, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(probability, geometry, [geometry])).
+excludes(probability, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(integer, inequality_as_boundary_point), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(integer, inequality_solution_set_representation), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(probability, integer, [integer])).
+excludes(probability, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(probability, integer, [integer])).
+excludes(probability, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(probability, integer, [integer])).
+excludes(probability, family, machine(integer, signed_division_by_sign_rule), family_mismatch(probability, integer, [integer])).
+excludes(probability, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(integer, signed_number_location_and_order), family_mismatch(probability, integer, [integer])).
+excludes(probability, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(probability, integer, [integer])).
+excludes(probability, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(probability, integer, [integer])).
 excludes(probability, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(probability, multiplication, [multiplication])).
 excludes(probability, family, machine(multiplication, add_instead_of_multiply), family_mismatch(probability, multiplication, [multiplication])).
 excludes(probability, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(probability, multiplication, [multiplication])).
@@ -21527,13 +21846,19 @@ excludes(probability, family, machine(multiplication, repeat_group_size_by_itsel
 excludes(probability, family, machine(multiplication, rigid_factor_order_roles), family_mismatch(probability, multiplication, [multiplication])).
 excludes(probability, family, machine(multiplication, sequential_recompute_commuted_products), family_mismatch(probability, multiplication, [multiplication])).
 excludes(probability, family, machine(ratio, additive_extension_of_ratio), family_mismatch(probability, ratio, [proportional, ratio])).
+excludes(probability, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(probability, ratio, [proportional, ratio])).
 excludes(probability, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(probability, ratio, [proportional, ratio])).
+excludes(probability, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(probability, ratio, [proportional, ratio])).
+excludes(probability, family, machine(ratio, inscribe_proportional_equation), family_mismatch(probability, ratio, [proportional, ratio])).
 excludes(probability, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(probability, ratio, [proportional, ratio])).
 excludes(probability, family, machine(ratio, scale_ratio_unit), family_mismatch(probability, ratio, [proportional, ratio])).
+excludes(probability, family, machine(ratio, test_relation_for_proportionality), family_mismatch(probability, ratio, [proportional, ratio])).
 excludes(probability, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, distribution_summary_selection), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, mean_absolute_deviation), family_mismatch(probability, statistics, [data])).
@@ -21543,6 +21868,7 @@ excludes(probability, family, machine(statistics, mean_deviation_without_absolut
 excludes(probability, family, machine(statistics, median_as_ordered_middle), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, question_without_variability), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(statistics, statistical_question_variability_classification), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(probability, subtraction, [subtraction])).
 excludes(probability, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(probability, subtraction, [subtraction])).
@@ -22969,6 +23295,8 @@ excludes(proportional, family, machine(addition, round_without_adjusting), famil
 excludes(proportional, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(proportional, addition, [addition])).
 excludes(proportional, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(proportional, addition, [addition])).
 excludes(proportional, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(proportional, algebraic, [algebraic])).
+excludes(proportional, family, machine(algebraic, combine_signed_like_terms), family_mismatch(proportional, algebraic, [algebraic])).
+excludes(proportional, family, machine(algebraic, combine_unlike_terms), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, drop_distributed_term), family_mismatch(proportional, algebraic, [algebraic])).
@@ -22980,8 +23308,11 @@ excludes(proportional, family, machine(algebraic, guess_and_check_rule), family_
 excludes(proportional, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, one_sided_equation_operation), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, operational_equals_left_value), family_mismatch(proportional, algebraic, [algebraic])).
+excludes(proportional, family, machine(algebraic, percent_change_composition), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, programming_expression_evaluation), family_mismatch(proportional, algebraic, [algebraic])).
+excludes(proportional, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(algebraic, symbolic_expression_construction), family_mismatch(proportional, algebraic, [algebraic])).
+excludes(proportional, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(proportional, algebraic, [algebraic])).
 excludes(proportional, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(proportional, calculus, [calculus])).
 excludes(proportional, family, machine(calculus, direct_substitution), family_mismatch(proportional, calculus, [calculus])).
 excludes(proportional, family, machine(calculus, factor_cancel_substitute), family_mismatch(proportional, calculus, [calculus])).
@@ -23078,6 +23409,7 @@ excludes(proportional, family, machine(fraction, unit_fraction_partition), famil
 excludes(proportional, family, machine(fraction, whole_number_grab), family_mismatch(proportional, fraction, [fraction])).
 excludes(proportional, family, machine(geometry, angle_additive_composition), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, angle_as_ray_length), family_mismatch(proportional, geometry, [geometry])).
+excludes(proportional, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, angle_turn_measurement), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, area_as_perimeter_count), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(proportional, geometry, [geometry])).
@@ -23085,6 +23417,7 @@ excludes(proportional, family, machine(geometry, area_unit_covering), family_mis
 excludes(proportional, family, machine(geometry, area_unit_scale_selection), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(proportional, geometry, [geometry])).
+excludes(proportional, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, composite_prism_volume_sum), family_mismatch(proportional, geometry, [geometry])).
@@ -23121,13 +23454,22 @@ excludes(proportional, family, machine(geometry, subtract_side_from_area), famil
 excludes(proportional, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, triangle_area_half_base_height), family_mismatch(proportional, geometry, [geometry])).
+excludes(proportional, family, machine(geometry, triangle_three_measure_determination), family_mismatch(proportional, geometry, [geometry])).
+excludes(proportional, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(proportional, geometry, [geometry])).
 excludes(proportional, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(proportional, geometry, [geometry])).
+excludes(proportional, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(integer, inequality_as_boundary_point), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(integer, inequality_solution_set_representation), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(proportional, integer, [integer])).
+excludes(proportional, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(proportional, integer, [integer])).
+excludes(proportional, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(proportional, integer, [integer])).
+excludes(proportional, family, machine(integer, signed_division_by_sign_rule), family_mismatch(proportional, integer, [integer])).
+excludes(proportional, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(integer, signed_number_location_and_order), family_mismatch(proportional, integer, [integer])).
+excludes(proportional, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(proportional, integer, [integer])).
+excludes(proportional, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(proportional, integer, [integer])).
 excludes(proportional, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(proportional, multiplication, [multiplication])).
 excludes(proportional, family, machine(multiplication, add_instead_of_multiply), family_mismatch(proportional, multiplication, [multiplication])).
 excludes(proportional, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(proportional, multiplication, [multiplication])).
@@ -23154,6 +23496,8 @@ excludes(proportional, family, machine(statistics, box_plot_from_five_number_sum
 excludes(proportional, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, distribution_summary_selection), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, mean_absolute_deviation), family_mismatch(proportional, statistics, [data])).
@@ -23163,6 +23507,7 @@ excludes(proportional, family, machine(statistics, mean_deviation_without_absolu
 excludes(proportional, family, machine(statistics, median_as_ordered_middle), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, question_without_variability), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(statistics, statistical_question_variability_classification), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(proportional, subtraction, [subtraction])).
 excludes(proportional, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(proportional, subtraction, [subtraction])).
@@ -24553,6 +24898,8 @@ excludes(ratio, family, machine(addition, round_without_adjusting), family_misma
 excludes(ratio, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(ratio, addition, [addition])).
 excludes(ratio, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(ratio, addition, [addition])).
 excludes(ratio, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(ratio, algebraic, [algebraic])).
+excludes(ratio, family, machine(algebraic, combine_signed_like_terms), family_mismatch(ratio, algebraic, [algebraic])).
+excludes(ratio, family, machine(algebraic, combine_unlike_terms), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, drop_distributed_term), family_mismatch(ratio, algebraic, [algebraic])).
@@ -24564,8 +24911,11 @@ excludes(ratio, family, machine(algebraic, guess_and_check_rule), family_mismatc
 excludes(ratio, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, one_sided_equation_operation), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, operational_equals_left_value), family_mismatch(ratio, algebraic, [algebraic])).
+excludes(ratio, family, machine(algebraic, percent_change_composition), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, programming_expression_evaluation), family_mismatch(ratio, algebraic, [algebraic])).
+excludes(ratio, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(algebraic, symbolic_expression_construction), family_mismatch(ratio, algebraic, [algebraic])).
+excludes(ratio, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(ratio, algebraic, [algebraic])).
 excludes(ratio, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(ratio, calculus, [calculus])).
 excludes(ratio, family, machine(calculus, direct_substitution), family_mismatch(ratio, calculus, [calculus])).
 excludes(ratio, family, machine(calculus, factor_cancel_substitute), family_mismatch(ratio, calculus, [calculus])).
@@ -24662,6 +25012,7 @@ excludes(ratio, family, machine(fraction, unit_fraction_partition), family_misma
 excludes(ratio, family, machine(fraction, whole_number_grab), family_mismatch(ratio, fraction, [fraction])).
 excludes(ratio, family, machine(geometry, angle_additive_composition), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, angle_as_ray_length), family_mismatch(ratio, geometry, [geometry])).
+excludes(ratio, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, angle_turn_measurement), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, area_as_perimeter_count), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(ratio, geometry, [geometry])).
@@ -24669,6 +25020,7 @@ excludes(ratio, family, machine(geometry, area_unit_covering), family_mismatch(r
 excludes(ratio, family, machine(geometry, area_unit_scale_selection), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(ratio, geometry, [geometry])).
+excludes(ratio, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, composite_prism_volume_sum), family_mismatch(ratio, geometry, [geometry])).
@@ -24705,13 +25057,22 @@ excludes(ratio, family, machine(geometry, subtract_side_from_area), family_misma
 excludes(ratio, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, triangle_area_half_base_height), family_mismatch(ratio, geometry, [geometry])).
+excludes(ratio, family, machine(geometry, triangle_three_measure_determination), family_mismatch(ratio, geometry, [geometry])).
+excludes(ratio, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(ratio, geometry, [geometry])).
 excludes(ratio, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(ratio, geometry, [geometry])).
+excludes(ratio, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(integer, inequality_as_boundary_point), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(integer, inequality_solution_set_representation), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(ratio, integer, [integer])).
+excludes(ratio, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(ratio, integer, [integer])).
+excludes(ratio, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(ratio, integer, [integer])).
+excludes(ratio, family, machine(integer, signed_division_by_sign_rule), family_mismatch(ratio, integer, [integer])).
+excludes(ratio, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(integer, signed_number_location_and_order), family_mismatch(ratio, integer, [integer])).
+excludes(ratio, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(ratio, integer, [integer])).
+excludes(ratio, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(ratio, integer, [integer])).
 excludes(ratio, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(ratio, multiplication, [multiplication])).
 excludes(ratio, family, machine(multiplication, add_instead_of_multiply), family_mismatch(ratio, multiplication, [multiplication])).
 excludes(ratio, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(ratio, multiplication, [multiplication])).
@@ -24738,6 +25099,8 @@ excludes(ratio, family, machine(statistics, box_plot_from_five_number_summary), 
 excludes(ratio, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, distribution_summary_selection), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, mean_absolute_deviation), family_mismatch(ratio, statistics, [data])).
@@ -24747,6 +25110,7 @@ excludes(ratio, family, machine(statistics, mean_deviation_without_absolute_valu
 excludes(ratio, family, machine(statistics, median_as_ordered_middle), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, question_without_variability), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(statistics, statistical_question_variability_classification), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(ratio, subtraction, [subtraction])).
 excludes(ratio, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(ratio, subtraction, [subtraction])).
@@ -25509,6 +25873,8 @@ excludes(subtraction, family, machine(addition, round_without_adjusting), family
 excludes(subtraction, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(subtraction, addition, [addition])).
 excludes(subtraction, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(subtraction, addition, [addition])).
 excludes(subtraction, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(subtraction, algebraic, [algebraic])).
+excludes(subtraction, family, machine(algebraic, combine_signed_like_terms), family_mismatch(subtraction, algebraic, [algebraic])).
+excludes(subtraction, family, machine(algebraic, combine_unlike_terms), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, drop_distributed_term), family_mismatch(subtraction, algebraic, [algebraic])).
@@ -25520,8 +25886,11 @@ excludes(subtraction, family, machine(algebraic, guess_and_check_rule), family_m
 excludes(subtraction, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, one_sided_equation_operation), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, operational_equals_left_value), family_mismatch(subtraction, algebraic, [algebraic])).
+excludes(subtraction, family, machine(algebraic, percent_change_composition), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, programming_expression_evaluation), family_mismatch(subtraction, algebraic, [algebraic])).
+excludes(subtraction, family, machine(algebraic, split_repeated_diagram_variable), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(algebraic, symbolic_expression_construction), family_mismatch(subtraction, algebraic, [algebraic])).
+excludes(subtraction, family, machine(algebraic, translate_diagram_to_equation), family_mismatch(subtraction, algebraic, [algebraic])).
 excludes(subtraction, family, machine(calculus, bounded_numerator_over_diverging_denominator), family_mismatch(subtraction, calculus, [calculus])).
 excludes(subtraction, family, machine(calculus, direct_substitution), family_mismatch(subtraction, calculus, [calculus])).
 excludes(subtraction, family, machine(calculus, factor_cancel_substitute), family_mismatch(subtraction, calculus, [calculus])).
@@ -25618,6 +25987,7 @@ excludes(subtraction, family, machine(fraction, unit_fraction_partition), family
 excludes(subtraction, family, machine(fraction, whole_number_grab), family_mismatch(subtraction, fraction, [fraction])).
 excludes(subtraction, family, machine(geometry, angle_additive_composition), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, angle_as_ray_length), family_mismatch(subtraction, geometry, [geometry])).
+excludes(subtraction, family, machine(geometry, angle_relation_unknown_measure), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, angle_turn_measurement), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, area_as_perimeter_count), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(subtraction, geometry, [geometry])).
@@ -25625,6 +25995,7 @@ excludes(subtraction, family, machine(geometry, area_unit_covering), family_mism
 excludes(subtraction, family, machine(geometry, area_unit_scale_selection), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(subtraction, geometry, [geometry])).
+excludes(subtraction, family, machine(geometry, circle_circumference_diameter_co_measurement), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, composite_prism_volume_sum), family_mismatch(subtraction, geometry, [geometry])).
@@ -25661,13 +26032,22 @@ excludes(subtraction, family, machine(geometry, subtract_side_from_area), family
 excludes(subtraction, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, triangle_area_half_base_height), family_mismatch(subtraction, geometry, [geometry])).
+excludes(subtraction, family, machine(geometry, triangle_three_measure_determination), family_mismatch(subtraction, geometry, [geometry])).
+excludes(subtraction, family, machine(geometry, use_diameter_as_radius_in_circumference), family_mismatch(subtraction, geometry, [geometry])).
 excludes(subtraction, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(subtraction, geometry, [geometry])).
+excludes(subtraction, family, machine(integer, conflate_signed_difference_with_distance), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(integer, inequality_as_boundary_point), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(integer, inequality_solution_set_representation), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(subtraction, integer, [integer])).
+excludes(subtraction, family, machine(integer, reverse_signed_division_sign_rule), family_mismatch(subtraction, integer, [integer])).
+excludes(subtraction, family, machine(integer, reverse_signed_multiplication_sign_rule), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(subtraction, integer, [integer])).
+excludes(subtraction, family, machine(integer, signed_division_by_sign_rule), family_mismatch(subtraction, integer, [integer])).
+excludes(subtraction, family, machine(integer, signed_multiplication_by_sign_rule), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(integer, signed_number_location_and_order), family_mismatch(subtraction, integer, [integer])).
+excludes(subtraction, family, machine(integer, signed_subtraction_as_additive_inverse), family_mismatch(subtraction, integer, [integer])).
+excludes(subtraction, family, machine(integer, swap_subtraction_operands_to_preserve_nonnegative_result), family_mismatch(subtraction, integer, [integer])).
 excludes(subtraction, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(subtraction, multiplication, [multiplication])).
 excludes(subtraction, family, machine(multiplication, add_instead_of_multiply), family_mismatch(subtraction, multiplication, [multiplication])).
 excludes(subtraction, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(subtraction, multiplication, [multiplication])).
@@ -25691,13 +26071,19 @@ excludes(subtraction, family, machine(multiplication, sequential_recompute_commu
 excludes(subtraction, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(subtraction, probability, [probability])).
 excludes(subtraction, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(subtraction, probability, [probability])).
 excludes(subtraction, family, machine(ratio, additive_extension_of_ratio), family_mismatch(subtraction, ratio, [proportional, ratio])).
+excludes(subtraction, family, machine(ratio, compute_unit_rate_from_ratio_pair), family_mismatch(subtraction, ratio, [proportional, ratio])).
 excludes(subtraction, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(subtraction, ratio, [proportional, ratio])).
+excludes(subtraction, family, machine(ratio, divide_larger_by_smaller_for_unit_rate), family_mismatch(subtraction, ratio, [proportional, ratio])).
+excludes(subtraction, family, machine(ratio, inscribe_proportional_equation), family_mismatch(subtraction, ratio, [proportional, ratio])).
 excludes(subtraction, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(subtraction, ratio, [proportional, ratio])).
 excludes(subtraction, family, machine(ratio, scale_ratio_unit), family_mismatch(subtraction, ratio, [proportional, ratio])).
+excludes(subtraction, family, machine(ratio, test_relation_for_proportionality), family_mismatch(subtraction, ratio, [proportional, ratio])).
 excludes(subtraction, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, distribution_summary_selection), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, estimate_probability_from_observed_frequency), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, finite_frequency_as_exact_probability), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, mean_absolute_deviation), family_mismatch(subtraction, statistics, [data])).
@@ -25707,6 +26093,7 @@ excludes(subtraction, family, machine(statistics, mean_deviation_without_absolut
 excludes(subtraction, family, machine(statistics, median_as_ordered_middle), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, question_without_variability), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, sample_population_distribution_judgment), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, family, machine(statistics, statistical_question_variability_classification), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, lesson, 'IM-G1-U1-L1', lesson_topic_mismatch(subtraction, [addition, counting, ratio])).
 excludes(subtraction, lesson, 'IM-G1-U1-L11', lesson_topic_mismatch(subtraction, [data])).

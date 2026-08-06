@@ -14,10 +14,10 @@
 <p class="back-link"><a href="../2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
 <h1>statistics</h1>
 <p><a href="../automata-vocabulary.html">Read the automata vocabulary</a>.</p>
-<p>Validity review for this family: 2 reviewed and 0 unreviewed deforming transitions. Unreviewed rows retain rust-family styling.</p>
+<p>Validity review for this family: 2 reviewed and 2 unreviewed deforming transitions. Unreviewed rows retain rust-family styling.</p>
 </header>
 <section class="family" id="family-statistics">
-<figure class="diagram family-composite"><img src="../assets/automata/statistics/_composite.svg" width="1496" height="1114" loading="lazy" decoding="async" alt="Family path composite for the statistics family"><figcaption><span class="term">Family path composite:</span> the action paths of all the family's automata, merged at shared prefixes and identical suffixes. The labels are canonical action names. Its nodes are path points. Path points are not states of any single automaton. Loops are not unfolded.</figcaption></figure>
+<figure class="diagram family-composite"><img src="../assets/automata/statistics/_composite.svg" width="1496" height="1336" loading="lazy" decoding="async" alt="Family path composite for the statistics family"><figcaption><span class="term">Family path composite:</span> the action paths of all the family's automata, merged at shared prefixes and identical suffixes. The labels are canonical action names. Its nodes are path points. Path points are not states of any single automaton. Loops are not unfolded.</figcaption></figure>
 
 <article class="machine" id="statistics-box_plot_from_five_number_summary">
 <h3><span class="entry-number">1.</span> <code>box_plot_from_five_number_summary</code></h3>
@@ -115,8 +115,56 @@
 
 </article>
 
+<article class="machine" id="statistics-estimate_probability_from_observed_frequency">
+<h3><span class="entry-number">5.</span> <code>estimate_probability_from_observed_frequency</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no statistics form for the frequency_record contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/statistics/estimate_probability_from_observed_frequency.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics estimate_probability_from_observed_frequency"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>count_event_occurrences</code>, <code>divide_by_total_trials</code>, <code>qualify_relative_frequency_as_probability_estimate</code>, <code>register_frequency_record</code> (4<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;atom&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: &quot;integer&quot;, &quot;trials&quot;: &quot;positive_integer&quot;}</code>; example <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>register_frequency_record</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:347">statistics_action_pairs.pl:347</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>count_event_occurrences</code></td><td><code>q_step_2</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:347">statistics_action_pairs.pl:347</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>divide_by_total_trials</code></td><td><code>q_step_3</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:347">statistics_action_pairs.pl:347</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>qualify_relative_frequency_as_probability_estimate</code></td><td><code>q_accept</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:347">statistics_action_pairs.pl:347</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 5 states, 4 distinct actions, 0 branching states, 0 loop transitions; 4 static table rows and 4 observed table rows.</p>
+
+</article>
+
+<article class="machine" id="statistics-finite_frequency_as_exact_probability">
+<h3><span class="entry-number">6.</span> <code>finite_frequency_as_exact_probability</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no statistics form for the frequency_record contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/statistics/finite_frequency_as_exact_probability.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics finite_frequency_as_exact_probability"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>calculate_relative_frequency</code>, <code>register_frequency_record</code>, <code>replace_estimate_with_exact_claim</code>, <code>report_exact_probability_from_finite_record</code> (4<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>4</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;atom&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: &quot;integer&quot;, &quot;trials&quot;: &quot;positive_integer&quot;}</code>; example <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>register_frequency_record</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:378">statistics_action_pairs.pl:378</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>calculate_relative_frequency</code></td><td><code>q_step_2</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:378">statistics_action_pairs.pl:378</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>replace_estimate_with_exact_claim</code></td><td><code>q_step_3</code></td><td>a correct doing the context makes insufficient. Review status: unreviewed; proposed from code reading</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:378">statistics_action_pairs.pl:378</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>report_exact_probability_from_finite_record</code></td><td><code>q_accept</code></td><td>a correct doing the context makes insufficient. Review status: unreviewed; proposed from code reading</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:378">statistics_action_pairs.pl:378</code><br>observed on <code>{&quot;context&quot;: &quot;repeated_experiment&quot;, &quot;event&quot;: &quot;win&quot;, &quot;kind&quot;: &quot;frequency_record&quot;, &quot;successes&quot;: 6, &quot;trials&quot;: 20}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 5 states, 4 distinct actions, 0 branching states, 0 loop transitions; 4 static table rows and 4 observed table rows.</p>
+
+</article>
+
 <article class="machine" id="statistics-five_number_summary_and_iqr">
-<h3><span class="entry-number">5.</span> <code>five_number_summary_and_iqr</code></h3>
+<h3><span class="entry-number">7.</span> <code>five_number_summary_and_iqr</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/five_number_summary_and_iqr-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics five_number_summary_and_iqr"><figcaption>The run produced summary(five_number(2,rational(3,1),rational(5,1),rational(8,1),9),iqr(rational(5,1))). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/five_number_summary_and_iqr.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics five_number_summary_and_iqr"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -140,7 +188,7 @@
 </article>
 
 <article class="machine" id="statistics-histogram_equal_interval_representation">
-<h3><span class="entry-number">6.</span> <code>histogram_equal_interval_representation</code></h3>
+<h3><span class="entry-number">8.</span> <code>histogram_equal_interval_representation</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/histogram_equal_interval_representation-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics histogram_equal_interval_representation"><figcaption>The run produced histogram([bin(2,4)-2,bin(4,6)-1,bin(6,8)-1,bin(8,10)-2]). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/histogram_equal_interval_representation.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics histogram_equal_interval_representation"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -164,7 +212,7 @@
 </article>
 
 <article class="machine" id="statistics-mean_absolute_deviation">
-<h3><span class="entry-number">7.</span> <code>mean_absolute_deviation</code></h3>
+<h3><span class="entry-number">9.</span> <code>mean_absolute_deviation</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/mean_absolute_deviation-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics mean_absolute_deviation"><figcaption>The run produced rational(2,1). The scene is derived from the contract run (5<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/mean_absolute_deviation.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics mean_absolute_deviation"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -188,7 +236,7 @@
 </article>
 
 <article class="machine" id="statistics-mean_as_balance_point">
-<h3><span class="entry-number">8.</span> <code>mean_as_balance_point</code></h3>
+<h3><span class="entry-number">10.</span> <code>mean_as_balance_point</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/mean_as_balance_point-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics mean_as_balance_point"><figcaption>The run produced rational(5,1). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/mean_as_balance_point.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics mean_as_balance_point"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -212,7 +260,7 @@
 </article>
 
 <article class="machine" id="statistics-mean_as_fair_share">
-<h3><span class="entry-number">9.</span> <code>mean_as_fair_share</code></h3>
+<h3><span class="entry-number">11.</span> <code>mean_as_fair_share</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/mean_as_fair_share-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics mean_as_fair_share"><figcaption>The run produced rational(5,1). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/mean_as_fair_share.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics mean_as_fair_share"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -236,7 +284,7 @@
 </article>
 
 <article class="machine" id="statistics-mean_deviation_without_absolute_value">
-<h3><span class="entry-number">10.</span> <code>mean_deviation_without_absolute_value</code></h3>
+<h3><span class="entry-number">12.</span> <code>mean_deviation_without_absolute_value</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/mean_deviation_without_absolute_value-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics mean_deviation_without_absolute_value"><figcaption>The run produced rational(0,1); the recorded expected result is rational(2,1). The scene is derived from the contract run (4<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/mean_deviation_without_absolute_value.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics mean_deviation_without_absolute_value"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -260,7 +308,7 @@
 </article>
 
 <article class="machine" id="statistics-median_as_ordered_middle">
-<h3><span class="entry-number">11.</span> <code>median_as_ordered_middle</code></h3>
+<h3><span class="entry-number">13.</span> <code>median_as_ordered_middle</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/median_as_ordered_middle-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics median_as_ordered_middle"><figcaption>The run produced 5. The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/median_as_ordered_middle.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics median_as_ordered_middle"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -284,7 +332,7 @@
 </article>
 
 <article class="machine" id="statistics-mode_as_maximal_frequency">
-<h3><span class="entry-number">12.</span> <code>mode_as_maximal_frequency</code></h3>
+<h3><span class="entry-number">14.</span> <code>mode_as_maximal_frequency</code></h3>
 <figure class="diagram domain-scene"><img src="../assets/automata/statistics/mode_as_maximal_frequency-scene.svg" width="580" height="420" loading="lazy" decoding="async" alt="Executed domain scene for statistics mode_as_maximal_frequency"><figcaption>The run produced modes([3]). The scene is derived from the contract run (3<span class="typeset-space"> </span>trace<span class="typeset-space"> </span>steps).</figcaption></figure>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/mode_as_maximal_frequency.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics mode_as_maximal_frequency"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -308,7 +356,7 @@
 </article>
 
 <article class="machine" id="statistics-question_without_variability">
-<h3><span class="entry-number">13.</span> <code>question_without_variability</code></h3>
+<h3><span class="entry-number">15.</span> <code>question_without_variability</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no statistics form for the statistical_question contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/question_without_variability.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics question_without_variability"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 
@@ -331,8 +379,32 @@
 
 </article>
 
+<article class="machine" id="statistics-sample_population_distribution_judgment">
+<h3><span class="entry-number">16.</span> <code>sample_population_distribution_judgment</code></h3>
+<p class="scene-limit">No domain scene: the static scene emitter has no statistics form for the sample_population_distribution contract used by this automaton.</p>
+<figure class="diagram transition-diagram"><img src="../assets/automata/statistics/sample_population_distribution_judgment.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics sample_population_distribution_judgment"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
+
+<div class="tuple-grid">
+  <div class="tuple-formal">
+    <p class="machine-tuple"><i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>)</p>
+    <dl>
+      <dt><i>Q</i></dt><dd>{<i>q</i><sub>0</sub>, <i>q</i><sub>1</sub>, <i>q</i><sub>2</sub>, <i>q</i><sub>3</sub>, <i>q</i><sub>4</sub>, <i>q</i><sub>5</sub>}</dd>
+      <dt><i>Σ</i></dt><dd><code>compare_shape_center_and_spread</code>, <code>name_representativeness_judgment</code>, <code>preserve_sample_and_population</code>, <code>summarize_population_distribution</code>, <code>summarize_sample_distribution</code> (5<span class="typeset-space"> </span>distinct)</dd>
+      <dt><i>q</i><sub>0</sub></dt><dd><i>q</i><sub>0</sub> = <code>q_start</code></dd>
+      <dt><i>F</i></dt><dd>{<i>q</i><sub>5</sub>}</dd>
+    </dl>
+  </div>
+  <div><table class="state-map"><thead><tr><th>Formal state name</th><th>Code name</th><th>Plain-language state label and citation</th></tr></thead><tbody><tr><td><i>q</i><sub>0</sub></td><td><code>q_start</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>1</sub></td><td><code>q_step_1</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>2</sub></td><td><code>q_step_2</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>3</sub></td><td><code>q_step_3</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>4</sub></td><td><code>q_step_4</code></td><td><span class="none">none recorded</span></td></tr><tr><td><i>q</i><sub>5</sub></td><td><code>q_accept</code></td><td><span class="none">none recorded</span></td></tr></tbody></table></div>
+</div>
+<p class="input-contract"><span class="term">Input contract:</span> <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;atom&quot;, &quot;values&quot;: [&quot;integer&quot;]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;atom&quot;, &quot;values&quot;: [&quot;integer&quot;]}, &quot;tolerances&quot;: {&quot;center&quot;: &quot;number&quot;, &quot;spread&quot;: &quot;number&quot;}}</code>; example <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5, 6]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5]}, &quot;tolerances&quot;: {&quot;center&quot;: 1, &quot;spread&quot;: 1}}</code>; <code>verified(strategy_trace_ok)</code>.</p>
+<h4><i>δ</i>: recorded transitions</h4>
+<div class="table-scroll transitions-scroll"><table class="transitions"><thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th><th>Provenance</th></tr></thead><tbody><tr><td><code>q_start</code></td><td><code>preserve_sample_and_population</code></td><td><code>q_step_1</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:414">statistics_action_pairs.pl:414</code><br>observed on <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5, 6]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5]}, &quot;tolerances&quot;: {&quot;center&quot;: 1, &quot;spread&quot;: 1}}</code></td></tr><tr><td><code>q_step_1</code></td><td><code>summarize_sample_distribution</code></td><td><code>q_step_2</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:414">statistics_action_pairs.pl:414</code><br>observed on <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5, 6]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5]}, &quot;tolerances&quot;: {&quot;center&quot;: 1, &quot;spread&quot;: 1}}</code></td></tr><tr><td><code>q_step_2</code></td><td><code>summarize_population_distribution</code></td><td><code>q_step_3</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:414">statistics_action_pairs.pl:414</code><br>observed on <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5, 6]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5]}, &quot;tolerances&quot;: {&quot;center&quot;: 1, &quot;spread&quot;: 1}}</code></td></tr><tr><td><code>q_step_3</code></td><td><code>compare_shape_center_and_spread</code></td><td><code>q_step_4</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:414">statistics_action_pairs.pl:414</code><br>observed on <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5, 6]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5]}, &quot;tolerances&quot;: {&quot;center&quot;: 1, &quot;spread&quot;: 1}}</code></td></tr><tr><td><code>q_step_4</code></td><td><code>name_representativeness_judgment</code></td><td><code>q_accept</code></td><td>not a deforming transition</td><td class="provenance static observed"><code title="knowledge/strategies/math/statistics_action_pairs.pl:414">statistics_action_pairs.pl:414</code><br>observed on <code>{&quot;kind&quot;: &quot;sample_population_distribution&quot;, &quot;population&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5, 6]}, &quot;sample&quot;: {&quot;shape&quot;: &quot;symmetric&quot;, &quot;values&quot;: [1, 2, 3, 4, 5]}, &quot;tolerances&quot;: {&quot;center&quot;: 1, &quot;spread&quot;: 1}}</code></td></tr></tbody></table></div>
+<p class="typology"><span class="term">Computed structure:</span> <code>linear_trace</code>. no recorded branch or loop; the recorded transition graph has one accepting path. 6 states, 5 distinct actions, 0 branching states, 0 loop transitions; 5 static table rows and 5 observed table rows.</p>
+
+</article>
+
 <article class="machine" id="statistics-statistical_question_variability_classification">
-<h3><span class="entry-number">14.</span> <code>statistical_question_variability_classification</code></h3>
+<h3><span class="entry-number">17.</span> <code>statistical_question_variability_classification</code></h3>
 <p class="scene-limit">No domain scene: the static scene emitter has no statistics form for the statistical_question contract used by this automaton.</p>
 <figure class="diagram transition-diagram"><img src="../assets/automata/statistics/statistical_question_variability_classification.svg" width="640" height="640" loading="lazy" decoding="async" alt="Radial transition diagram for statistics statistical_question_variability_classification"><figcaption>Recorded transition graph. Local action names label the transitions.</figcaption></figure>
 

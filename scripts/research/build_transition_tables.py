@@ -306,9 +306,172 @@ def prolog_fraction_addend(addend: object) -> str:
     return f"whole({prolog_number(addend['whole'])})"
 
 
+def prolog_diagram_expression(expression: object) -> str:
+    assert isinstance(expression, dict)
+    node = expression["node"]
+    if node == "var":
+        return f"var({prolog_atom(str(expression['name']))})"
+    if node == "number":
+        return f"number({prolog_number(expression['value'])})"
+    if node == "add":
+        return (
+            f"add({prolog_diagram_expression(expression['left'])},"
+            f"{prolog_diagram_expression(expression['right'])})"
+        )
+    raise ValueError(f"unsupported diagram expression node: {node!r}")
+
+
+def prolog_signed_variable_item(item: object) -> str:
+    assert isinstance(item, dict)
+    operation = str(item["operation"])
+    if operation not in {"add", "subtract"}:
+        raise ValueError(f"unsupported signed-linear operation: {operation!r}")
+    return (
+        f"{operation}(term({prolog_number(item['coefficient'])},"
+        f"var({prolog_atom(str(item['variable']))})))"
+    )
+
+
+def prolog_signed_constant_item(item: object) -> str:
+    assert isinstance(item, dict)
+    operation = str(item["operation"])
+    if operation not in {"add", "subtract"}:
+        raise ValueError(f"unsupported signed-linear operation: {operation!r}")
+    return f"{operation}(constant({prolog_number(item['value'])}))"
+
+
 def prolog_input(example: dict[str, object]) -> tuple[str, str]:
     """Mirror hermes_encyclopedia:trace_inputs/3 for checked examples."""
     kind = example.get("kind")
+    if kind == "signed_subtraction":
+        return (
+            f"minuend({prolog_number(example['minuend'])})",
+            f"subtrahend({prolog_number(example['subtrahend'])})",
+        )
+    if kind == "signed_multiplication":
+        return (
+            f"multiplier({prolog_number(example['multiplier'])})",
+            f"multiplicand({prolog_number(example['multiplicand'])})",
+        )
+    if kind == "signed_division":
+        return (
+            f"dividend({prolog_number(example['dividend'])})",
+            f"divisor({prolog_number(example['divisor'])})",
+        )
+    if kind == "ratio_pair_unit_rate":
+        return (
+            f"ratio_pair({prolog_number(example['first'])},"
+            f"{prolog_number(example['second'])})",
+            f"unit_rate({prolog_atom(str(example['referent']))})",
+        )
+    if kind == "ratio_pairs_proportionality_test":
+        pairs = example["pairs"]
+        assert isinstance(pairs, list)
+        encoded_pairs = prolog_list(
+            pairs,
+            lambda pair: (
+                f"ratio_pair({prolog_number(pair['first'])},"
+                f"{prolog_number(pair['second'])})"
+                if isinstance(pair, dict) else ""
+            ),
+        )
+        return f"ratio_pairs({encoded_pairs})", "proportionality_test"
+    if kind == "ratio_pair_solve_at_x":
+        return (
+            f"ratio_pair({prolog_number(example['first'])},"
+            f"{prolog_number(example['second'])})",
+            f"solve_at_x({prolog_number(example['target_x'])})",
+        )
+    if kind == "circle_co_measurement":
+        pi_value = example["pi"]
+        assert isinstance(pi_value, dict)
+        given = str(example["given_measure"])
+        requested = str(example["requested_measure"])
+        if (given, requested) == ("diameter", "circumference"):
+            request = "circumference_with_pi"
+        elif (given, requested) == ("circumference", "diameter"):
+            request = "diameter_with_pi"
+        else:
+            raise ValueError(
+                f"unsupported circle co-measurement direction: {given!r}/{requested!r}"
+            )
+        return (
+            f"circle_measure({prolog_atom(given)},{prolog_number(example['value'])},"
+            f"{prolog_atom(str(example['unit']))})",
+            f"{request}(rational({prolog_number(pi_value['n'])},"
+            f"{prolog_number(pi_value['d'])}))",
+        )
+    if kind == "triangle_conditions":
+        condition = str(example["condition"])
+        if condition not in {"sss", "sas", "asa", "aas", "ssa", "aaa"}:
+            raise ValueError(f"unsupported triangle condition: {condition!r}")
+        measures = example["measures"]
+        assert isinstance(measures, list) and len(measures) == 3
+        return (
+            f"triangle_conditions({condition}({','.join(prolog_number(value) for value in measures)}))",
+            "classify",
+        )
+    if kind == "angle_relation":
+        return (
+            f"angle_relation(whole({prolog_number(example['whole'])}),"
+            f"known_parts({prolog_list(example['known_parts'])}))",
+            f"unknown({prolog_atom(str(example['unknown']))})",
+        )
+    if kind == "frequency_record":
+        return (
+            f"frequency_record({prolog_atom(str(example['event']))},"
+            f"{prolog_number(example['successes'])},"
+            f"{prolog_number(example['trials'])})",
+            "estimate_context(repeated_experiment)",
+        )
+    if kind == "sample_population_distribution":
+        sample = example["sample"]
+        population = example["population"]
+        tolerances = example["tolerances"]
+        assert isinstance(sample, dict)
+        assert isinstance(population, dict)
+        assert isinstance(tolerances, dict)
+        return (
+            f"sample({prolog_list(sample['values'])},"
+            f"shape({prolog_atom(str(sample['shape']))}))",
+            f"population({prolog_list(population['values'])},"
+            f"shape({prolog_atom(str(population['shape']))}),"
+            f"tolerances(center({prolog_number(tolerances['center'])}),"
+            f"spread({prolog_number(tolerances['spread'])})))",
+        )
+    if kind == "diagram_relation":
+        return (
+            f"diagram({prolog_atom(str(example['representation']))},"
+            f"equal_groups({prolog_number(example['groups'])},"
+            f"{prolog_diagram_expression(example['group_expression'])}),"
+            f"additional(number({prolog_number(example['additional'])})),"
+            f"total(number({prolog_number(example['total'])})))",
+            f"equation_form({prolog_atom(str(example['equation_form']))})",
+        )
+    if kind == "percent_change":
+        amount_role = str(example["amount_role"])
+        if amount_role not in {"original_amount", "changed_amount"}:
+            raise ValueError(f"unsupported percent-change amount role: {amount_role!r}")
+        return (
+            f"percent_change({amount_role}({prolog_number(example['amount'])}),"
+            f"rate_percent({prolog_number(example['rate_percent'])}),"
+            f"direction({prolog_atom(str(example['direction']))}))",
+            f"target({prolog_atom(str(example['target']))})",
+        )
+    if kind == "signed_linear_expression":
+        variable_terms = prolog_list(
+            example["variable_terms"], prolog_signed_variable_item
+        )
+        constant_terms = prolog_list(
+            example["constant_terms"], prolog_signed_constant_item
+        )
+        items = variable_terms[:-1] + (
+            "," if variable_terms != "[]" and constant_terms != "[]" else ""
+        ) + constant_terms[1:]
+        return (
+            f"signed_linear_expression({items})",
+            "rewrite_direction(combine_like_terms)",
+        )
     if kind == "decimal_unit_conversion":
         return (
             f"decimal_unit_conversion({prolog_number(example['count'])},"
@@ -728,6 +891,12 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
 # hermes/strategy_recognizer.pl searches observed transitions alone, so no
 # counting automaton could be proposed for any classroom sentence.
 ENCODABLE_KINDS = frozenset({
+    "signed_subtraction", "signed_multiplication", "signed_division",
+    "ratio_pair_unit_rate", "ratio_pairs_proportionality_test",
+    "ratio_pair_solve_at_x", "circle_co_measurement",
+    "triangle_conditions", "angle_relation", "frequency_record",
+    "sample_population_distribution", "diagram_relation",
+    "percent_change", "signed_linear_expression",
     "decimal_unit_conversion", "signed_number_list", "inequality",
     "referent_pair", "measure_with_unit", "quantity_conversion",
     "measured_change", "categorical_frequencies", "numeric_data_display",

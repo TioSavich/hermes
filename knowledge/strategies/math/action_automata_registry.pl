@@ -481,6 +481,41 @@ action_automaton_signature(integer, inequality_solution_set_representation,
 action_automaton_signature(integer, inequality_as_boundary_point,
                            inputs(one_variable_integer_inequality, number_line),
                            boundary_as_single_solution).
+% The shared registry already delegates integer kinds through
+% run_integer_action/5, action_cluster/2, and action_vocabulary/2. These
+% signature rows are the only merge-time wiring this existing family needs.
+
+action_automaton_signature(
+    integer, signed_subtraction_as_additive_inverse,
+    inputs(minuend(signed_number), subtrahend(signed_number)),
+    signed_difference).
+action_automaton_signature(
+    integer, swap_subtraction_operands_to_preserve_nonnegative_result,
+    inputs(minuend(signed_number), subtrahend(signed_number)),
+    incorrect_signed_difference).
+action_automaton_signature(
+    integer, conflate_signed_difference_with_distance,
+    inputs(minuend(signed_number), subtrahend(signed_number)),
+    unsigned_distance_as_signed_difference).
+action_automaton_signature(
+    integer, signed_multiplication_by_sign_rule,
+    inputs(multiplier(signed_number), multiplicand(signed_number)),
+    signed_product).
+action_automaton_signature(
+    integer, reverse_signed_multiplication_sign_rule,
+    inputs(multiplier(nonzero_signed_number),
+           multiplicand(nonzero_signed_number)),
+    incorrect_signed_product).
+action_automaton_signature(
+    integer, signed_division_by_sign_rule,
+    inputs(dividend(signed_number), divisor(nonzero_signed_number)),
+    signed_quotient).
+action_automaton_signature(
+    integer, reverse_signed_division_sign_rule,
+    inputs(dividend(nonzero_signed_number),
+           divisor(nonzero_signed_number)),
+    incorrect_signed_quotient).
+
 action_automaton_signature(ratio, scale_ratio_unit,
                            inputs(ratio_pair_with_scale_factor, ignored),
                            equivalent_ratio_pair).
@@ -494,6 +529,30 @@ action_automaton_signature(ratio, reverse_ratio_referent_order,
                            inputs(two_named_unequal_positive_collections,
                                   ratio_diagram),
                            referent_reversed_ratio_statement).
+% Ratio lane registry fragment. The existing registry already imports
+% math(ratio_action_pairs) and delegates every ratio Kind through
+% run_ratio_action/5, so the new kinds need signatures but no duplicate
+% run_action_automaton/6 clause.
+
+action_automaton_signature(ratio, compute_unit_rate_from_ratio_pair,
+                           inputs(structured_positive_ratio_pair,
+                                  unit_rate_direction),
+                           ordered_unit_rate).
+action_automaton_signature(ratio,
+                           divide_larger_by_smaller_for_unit_rate,
+                           inputs(structured_positive_ratio_pair,
+                                  unit_rate_direction),
+                           incorrect_ordered_unit_rate).
+action_automaton_signature(ratio, test_relation_for_proportionality,
+                           inputs(ratio_pair_table,
+                                  proportionality_test),
+                           proportionality_classification_or_justified_refusal).
+action_automaton_signature(ratio,
+                           inscribe_proportional_equation,
+                           inputs(structured_positive_ratio_pair,
+                                  nonnegative_target_first_quantity),
+                           proportional_equation_and_value_pair).
+
 action_automaton_signature(algebraic, programming_expression_evaluation,
                            inputs(expression_tree, variable_bindings), value).
 action_automaton_signature(algebraic,
@@ -547,6 +606,32 @@ action_automaton_signature(algebraic, linear_pattern_contextual_rule,
                            inputs(linear_pattern, context), value).
 action_automaton_signature(algebraic, guess_and_check_rule,
                            inputs(linear_pattern, context), guessed_value).
+% Algebraic lane registry fragment.
+% The existing generic algebraic runner, cluster, vocabulary, pair, and hook
+% clauses already delegate every Kind to algebraic_action_pairs.pl; no duplicate
+% family-level clause is needed for these kinds.
+
+action_automaton_signature(algebraic, translate_diagram_to_equation,
+                           inputs(structured_tape_or_hanger_diagram,
+                                  supported_diagram_equation_form),
+                           equation_from_diagram_relation).
+action_automaton_signature(algebraic, split_repeated_diagram_variable,
+                           inputs(structured_tape_or_hanger_diagram_with_repeated_variable,
+                                  supported_diagram_equation_form),
+                           equation_with_distinct_occurrence_variables).
+action_automaton_signature(algebraic, percent_change_composition,
+                           inputs(structured_percent_change,
+                                  new_or_original_amount_target),
+                           percent_change_amount).
+action_automaton_signature(algebraic, combine_signed_like_terms,
+                           inputs(signed_linear_expression_items,
+                                  combine_like_terms_direction),
+                           equivalent_linear_expression).
+action_automaton_signature(algebraic, combine_unlike_terms,
+                           inputs(signed_linear_expression_with_variable_and_constant_terms,
+                                  combine_like_terms_direction),
+                           non_equivalent_linear_expression).
+
 action_automaton_signature(geometry, rectangle_area_unit_iteration,
                            inputs(positive_integer_rows, positive_integer_columns),
                            square_units).
@@ -715,6 +800,31 @@ action_automaton_signature(geometry, angle_additive_composition,
 action_automaton_signature(geometry, rigid_shape_composition,
                            inputs(bounded_lattice_region, placed_rigid_parts),
                            composed_region).
+% GEOSTAT registry signatures.
+% Existing family-level runner, cluster, vocabulary, pair, and hook clauses in
+% action_automata_registry.pl already wire every geometry and statistics Kind;
+% duplicating those clauses would add redundant solutions.
+
+action_automaton_signature(
+    geometry, circle_circumference_diameter_co_measurement,
+    inputs(circle_diameter_or_circumference_with_linear_unit,
+           requested_partner_with_positive_rational_pi_co_measure),
+    partner_circle_measure_with_linear_unit).
+action_automaton_signature(
+    geometry, use_diameter_as_radius_in_circumference,
+    inputs(circle_diameter_with_linear_unit,
+           positive_rational_pi_co_measure),
+    incorrect_circle_circumference_with_linear_unit).
+action_automaton_signature(
+    geometry, triangle_three_measure_determination,
+    inputs(three_named_triangle_measures,
+           triangle_determination_request),
+    determined_ambiguous_or_refused_impossible_triangle).
+action_automaton_signature(
+    geometry, angle_relation_unknown_measure,
+    inputs(whole_angle_and_known_parts, unknown_angle_name),
+    unknown_angle_measure).
+
 action_automaton_signature(statistics, categorical_frequency_bar_representation,
                            inputs(category_frequency_pairs, bar_chart_display),
                            frequency_representation).
@@ -756,6 +866,22 @@ action_automaton_signature(statistics, box_plot_from_five_number_summary,
 action_automaton_signature(statistics, distribution_summary_selection,
                            inputs(data_set, declared_distribution_profile),
                            center_and_spread_pair).
+action_automaton_signature(
+    statistics, estimate_probability_from_observed_frequency,
+    inputs(observed_event_frequency_record,
+           repeated_experiment_estimate_context),
+    probability_estimate_from_relative_frequency).
+action_automaton_signature(
+    statistics, finite_frequency_as_exact_probability,
+    inputs(observed_event_frequency_record,
+           repeated_experiment_estimate_context),
+    exact_probability_claim_from_finite_frequency).
+action_automaton_signature(
+    statistics, sample_population_distribution_judgment,
+    inputs(sample_data_with_declared_shape,
+           population_data_with_declared_shape_and_tolerances),
+    sample_representativeness_judgment).
+
 action_automaton_signature(measurement, linear_unit_iteration,
                            inputs(interval_count_and_subdivision, measurement_unit),
                            measured_length).

@@ -185,6 +185,110 @@ state_label(q_order_division_operands_by_magnitude, bonotto,
             "larger number as dividend",
             "Cinzia Bonotto 2005, Mathematical Thinking and Learning, p. 318; research corpus row 40632").
 
+% INTEGER lane state labels.
+state_label(unknown_addend_arrow_then_additive_inverse,
+            illustrative_mathematics,
+            "rewrite as an unknown addend, then add the additive inverse",
+            "Illustrative Mathematics Grade 7 Unit 5 Lesson 5 teacher guide").
+state_label(swap_roles_to_retain_nonnegative_difference,
+            illustrative_mathematics,
+            "subtract the lesser number from the greater number",
+            "Illustrative Mathematics Grade 7 Unit 5 Lesson 6 teacher guide").
+state_label(name_unsigned_distance_as_signed_difference,
+            illustrative_mathematics,
+            "difference and distance are not interchangeable",
+            "Illustrative Mathematics Grade 7 Unit 5 Lesson 7 teacher guide").
+state_label(continue_product_pattern_then_name_sign_rule,
+            illustrative_mathematics,
+            "continue a product pattern across zero",
+            "Illustrative Mathematics Grade 7 Unit 5 Lesson 9 teacher guide").
+state_label(reverse_product_sign_relation,
+            illustrative_mathematics,
+            "reverse the sign relation in a signed product",
+            "Illustrative Mathematics Grade 7 Unit 5 Lesson 10, Making Mistakes").
+state_label(rewrite_as_unknown_factor_then_name_quotient_sign,
+            illustrative_mathematics,
+            "rewrite as an unknown-factor product and name the quotient sign",
+            "Illustrative Mathematics Grade 7 Unit 5 Lesson 11 teacher guide").
+state_label(reverse_quotient_sign_relation,
+            none_recorded,
+            "none_recorded",
+            "No separately cited division-error label; the machine transfers Lesson 10's attested reversal only through Lesson 11's explicit product-quotient sign-pattern equivalence").
+
+% RATIO lane state labels.
+state_label(equivalent_ratio_scaling, van_de_walle,
+            "multiplicative comparison and scaling",
+            "Vergnaud 1983, via Van de Walle, ch. 18; action_vocabulary_map substitute_additive_for_multiplicative citation").
+state_label(q_unit_rate_normalization, constructivist,
+            "unitizing a rate",
+            "Lamon 1996, Development of Unitizing; research corpus JRME_Lamon_1996_Development").
+state_label(q_unit_rate_direction_ignored, christou_philippou,
+            "larger-divided-by-smaller unit-rate setup",
+            "Christou & Philippou 2002, Journal of Mathematical Behavior, pp. 327-328; research corpus row 38316").
+state_label(q_proportional_relation_test, arican,
+            "distinguishing proportional and nonproportional relationships",
+            "Arican 2018, International Journal of Science and Mathematics Education; research corpus row 40430").
+state_label(q_proportional_equation_setup_and_use, none_recorded,
+            none_recorded,
+            none_recorded).
+
+% GEOSTAT lane state labels.
+% Literature labels for GEOSTAT automaton_state atoms.
+
+state_label(co_measure_diameter_and_circumference_with_pi, constructivist,
+            "co-measurement unit for diameter and circumference",
+            "Shin & Lee 2018; Nabors 2003; IM-G7-U3-L3").
+state_label(treat_diameter_as_radius_before_circle_scaling,
+            illustrative_mathematics,
+            "diameter used as if it were the radius",
+            "IM-G7-U3-L10, Building on Student Thinking").
+state_label(classify_three_measure_triangle_conditions,
+            illustrative_mathematics,
+            "one triangle, more than one, or none",
+            "IM-G7-U7-L9 and L10; CCSS 7.G.A.2").
+state_label(compose_angle_relation_and_isolate_unknown,
+            illustrative_mathematics,
+            "compose angle measures to determine an unknown angle",
+            "IM-G7-U7-L4; CCSS 7.G.B.5").
+state_label(estimate_probability_from_cumulative_relative_frequency,
+            illustrative_mathematics,
+            "cumulative relative frequency as a probability estimate",
+            "IM-G7-U8-L4, Goals and Activity Synthesis").
+state_label(promote_finite_relative_frequency_to_exact_probability,
+            illustrative_mathematics,
+            "finite relative frequency treated as an exact probability",
+            "IM-G7-U8-L4 and L5, long-run and short-term comparison").
+state_label(compare_sample_and_population_shape_center_spread,
+            illustrative_mathematics,
+            "compare sample and population shape, center, and spread",
+            "IM-G7-U8-L13, Goals and Lesson Narrative").
+
+% ALGEBRAIC lane state labels.
+% These source-facing labels quote or closely retain the curriculum's named
+% doings. They are not assigned to a historical constructivist tradition that
+% the cited source does not claim.
+
+state_label(coordinate_diagram_parts_with_equation_relation,
+            illustrative_mathematics,
+            "match equations and diagrams that represent the same relationship",
+            "Illustrative Mathematics Grade 7, Unit 6, Lessons 2-3").
+state_label(split_repeated_variable_label_into_distinct_roles,
+            illustrative_mathematics,
+            "repeated variable occurrences read as different values",
+            "Illustrative Mathematics Grade 7, Unit 6, Lesson 2, Building on Student Thinking").
+state_label(compose_percent_multiplier_with_amount,
+            illustrative_mathematics,
+            "coordinate percent change with a multiplier of the original",
+            "Illustrative Mathematics Grade 7, Unit 4, Lesson 6").
+state_label(rewrite_and_combine_signed_like_terms,
+            illustrative_mathematics,
+            "rewrite subtraction as adding the opposite, then combine like terms",
+            "Illustrative Mathematics Grade 7, Unit 6, Lessons 18, 20, and 21").
+state_label(combine_unlike_terms_as_one_coefficient,
+            illustrative_mathematics,
+            "a variable term and a number combined as if they were like terms",
+            "Illustrative Mathematics Grade 7, Unit 6, Lesson 20, Activity Synthesis").
+
 % Display-default policy.  The final atom_name row is deliberately a fallback,
 % including for the three neutral GAP states, which have no state_label fact.
 display_default_tradition(constructivist, 1).

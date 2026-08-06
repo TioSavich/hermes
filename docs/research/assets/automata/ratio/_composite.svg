@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1746" height="390" viewBox="0 0 1746 390" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1996" height="670" viewBox="0 0 1996 670" role="img" aria-labelledby="title desc">
   <title id="title">ratio family path composite</title>
   <desc id="desc">The ratio family path composite contains the action paths of all the family&#x27;s automata, merged at shared prefixes and identical suffixes. Path points are not states of any single automaton. Loops are not unfolded.</desc>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -10,98 +10,173 @@
     <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
-  <path d="M 100.0 187.0 C 210.5 187.0, 210.5 150.0, 321.0 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: construct_referent_ratio_diagram</title></path>
-  <rect x="170.8" y="141.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="210.5" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
-  <text x="210.5" y="169.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">construct_referent_ratio_diagram</text>
-  <path d="M 100.0 187.0 C 210.5 187.0, 210.5 199.3, 321.0 199.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: additive_extension_of_ratio, reverse_ratio_referent_order, scale_ratio_unit</title></path>
-  <rect x="162.4" y="190.3" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="210.5" y="202.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
-  <text x="210.5" y="218.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">additive_extension_of_ratio</text>
-  <text x="210.5" y="227.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reverse_ratio_referent_order</text>
-  <text x="210.5" y="236.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">scale_ratio_unit</text>
-  <path d="M 1144.0 150.0 C 1385.0 150.0, 1385.0 187.0, 1626.0 187.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: construct_referent_ratio_diagram</title></path>
-  <rect x="1336.9" y="178.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1385.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
-  <path d="M 883.0 150.0 C 993.5 150.0, 993.5 150.0, 1104.0 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: construct_referent_ratio_diagram</title></path>
-  <rect x="937.0" y="141.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="993.5" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
-  <path d="M 622.0 150.0 C 732.5 150.0, 732.5 150.0, 843.0 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: construct_referent_ratio_diagram</title></path>
-  <rect x="692.8" y="141.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="732.5" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
-  <path d="M 361.0 150.0 C 471.5 150.0, 471.5 150.0, 582.0 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: construct_referent_ratio_diagram</title></path>
-  <rect x="431.8" y="141.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
-  <rect x="1348.1" y="178.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1385.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
-  <path d="M 622.0 224.0 C 863.0 224.0, 863.0 150.0, 1104.0 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: reverse_ratio_referent_order</title></path>
-  <rect x="814.9" y="141.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="863.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
-  <path d="M 1405.0 298.0 C 1515.5 298.0, 1515.5 187.0, 1626.0 187.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: scale_ratio_unit</title></path>
-  <rect x="1456.2" y="178.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1515.5" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_conservation</text>
-  <path d="M 1144.0 298.0 C 1254.5 298.0, 1254.5 298.0, 1365.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: scale_ratio_unit</title></path>
-  <rect x="1198.0" y="289.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1254.5" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
-  <path d="M 883.0 298.0 C 993.5 298.0, 993.5 298.0, 1104.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: scale_ratio_unit</title></path>
-  <rect x="942.6" y="284.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="993.5" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
-  <text x="993.5" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
-  <path d="M 622.0 298.0 C 732.5 298.0, 732.5 298.0, 843.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: scale_ratio_unit</title></path>
-  <rect x="681.6" y="284.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="732.5" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
-  <text x="732.5" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
-  <path d="M 883.0 76.0 C 993.5 76.0, 993.5 150.0, 1104.0 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: additive_extension_of_ratio</title></path>
-  <rect x="937.0" y="141.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="993.5" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
-  <path d="M 622.0 76.0 C 732.5 76.0, 732.5 76.0, 843.0 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: additive_extension_of_ratio</title></path>
-  <rect x="676.0" y="67.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="732.5" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
-  <rect x="426.2" y="215.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
-  <text x="471.5" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reverse_ratio_referent_order</text>
-  <path d="M 361.0 199.3 C 471.5 199.3, 471.5 298.0, 582.0 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: scale_ratio_unit</title></path>
-  <rect x="431.8" y="284.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="296.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
-  <text x="471.5" y="306.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
-  <text x="471.5" y="322.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">scale_ratio_unit</text>
-  <path d="M 361.0 199.3 C 471.5 199.3, 471.5 76.0, 582.0 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: additive_extension_of_ratio</title></path>
-  <rect x="423.4" y="67.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
-  <text x="471.5" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">additive_extension_of_ratio</text>
-  <circle cx="82.0" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="82.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>
-  <circle cx="1648.0" cy="187.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <circle cx="1648.0" cy="187.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
-  <text x="1648.0" y="190.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p1</text>
-  <circle cx="1126.0" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1126.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p2</text>
-  <circle cx="865.0" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="865.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p3</text>
-  <circle cx="604.0" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="604.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p4</text>
-  <circle cx="343.0" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="343.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p5</text>
-  <circle cx="1126.0" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1126.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p6</text>
-  <circle cx="604.0" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="604.0" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p7</text>
-  <circle cx="1387.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1387.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p8</text>
-  <circle cx="1126.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="1126.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p9</text>
-  <circle cx="865.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="865.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p10</text>
-  <circle cx="604.0" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="604.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p11</text>
-  <circle cx="865.0" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="865.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p12</text>
-  <circle cx="604.0" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="604.0" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p13</text>
-  <circle cx="343.0" cy="199.3" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
-  <text x="343.0" y="202.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p14</text>
-  <path class="validity-rust-overlay" d="M 1144.0 150.0 C 1385.0 150.0, 1385.0 187.0, 1626.0 187.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>record_loss: additive_extension_of_ratio, reverse_ratio_referent_order; modes objective_invalid; review status adjudicated</title></path>
-  <path class="validity-rust-overlay" d="M 361.0 199.3 C 471.5 199.3, 471.5 224.0, 582.0 224.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>conflate_roles: reverse_ratio_referent_order; modes objective_invalid; review status adjudicated</title></path>
-  <circle class="validity-rust-ring" cx="1648.0" cy="187.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
-  <circle class="validity-rust-ring" cx="604.0" cy="224.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <path d="M 100.0 335.0 C 209.7 335.0, 209.7 224.0, 319.4 224.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: construct_referent_ratio_diagram</title></path>
+  <rect x="170.1" y="215.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="209.7" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="209.7" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">construct_referent_ratio_diagram</text>
+  <path d="M 100.0 335.0 C 209.7 335.0, 209.7 350.9, 319.4 350.9" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: additive_extension_of_ratio, compute_unit_rate_from_ratio_pair, divide_larger_by_smaller_for_unit_rate, inscribe_proportional_equation, reverse_ratio_referent_order, scale_ratio_unit, test_relation_for_proportionality</title></path>
+  <rect x="161.6" y="341.9" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="209.7" y="353.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
+  <text x="209.7" y="369.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">additive_extension_of_ratio</text>
+  <text x="209.7" y="378.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compute_unit_rate_from_ratio_pair</text>
+  <text x="209.7" y="387.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">divide_larger_by_smaller_for_unit_rate</text>
+  <text x="209.7" y="396.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_proportional_equation</text>
+  <text x="209.7" y="405.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reverse_ratio_referent_order</text>
+  <text x="209.7" y="414.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">scale_ratio_unit</text>
+  <text x="209.7" y="423.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">test_relation_for_proportionality</text>
+  <path d="M 1656.6 396.7 C 1766.3 396.7, 1766.3 335.0, 1876.0 335.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: construct_referent_ratio_diagram, inscribe_proportional_equation, test_relation_for_proportionality</title></path>
+  <rect x="1718.2" y="326.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1766.3" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
+  <path d="M 878.3 224.0 C 1247.4 224.0, 1247.4 396.7, 1616.6 396.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: construct_referent_ratio_diagram</title></path>
+  <rect x="1190.9" y="387.7" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1247.4" y="399.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
+  <path d="M 618.9 224.0 C 728.6 224.0, 728.6 224.0, 838.3 224.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: construct_referent_ratio_diagram</title></path>
+  <rect x="688.9" y="215.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <path d="M 359.4 224.0 C 469.1 224.0, 469.1 224.0, 578.9 224.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: construct_referent_ratio_diagram</title></path>
+  <rect x="429.5" y="215.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="469.1" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <path d="M 1397.1 335.0 C 1636.6 335.0, 1636.6 335.0, 1876.0 335.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: compute_unit_rate_from_ratio_pair, scale_ratio_unit</title></path>
+  <rect x="1577.3" y="326.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1636.6" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_conservation</text>
+  <path d="M 1137.7 150.0 C 1247.4 150.0, 1247.4 335.0, 1357.1 335.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: compute_unit_rate_from_ratio_pair</title></path>
+  <rect x="1210.6" y="326.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1247.4" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
+  <path d="M 878.3 150.0 C 988.0 150.0, 988.0 150.0, 1097.7 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: compute_unit_rate_from_ratio_pair</title></path>
+  <rect x="937.1" y="141.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="988.0" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
+  <path d="M 618.9 150.0 C 728.6 150.0, 728.6 150.0, 838.3 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: compute_unit_rate_from_ratio_pair</title></path>
+  <rect x="688.9" y="141.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <path d="M 1397.1 372.0 C 1506.9 372.0, 1506.9 396.7, 1616.6 396.7" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: inscribe_proportional_equation</title></path>
+  <rect x="1456.0" y="382.7" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1506.9" y="394.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
+  <text x="1506.9" y="404.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
+  <path d="M 1137.7 372.0 C 1247.4 372.0, 1247.4 372.0, 1357.1 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>substitute_values: inscribe_proportional_equation</title></path>
+  <rect x="1193.7" y="363.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1247.4" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">substitute_values</text>
+  <path d="M 878.3 372.0 C 988.0 372.0, 988.0 372.0, 1097.7 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: inscribe_proportional_equation</title></path>
+  <rect x="931.5" y="363.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="988.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
+  <path d="M 878.3 594.0 C 1247.4 594.0, 1247.4 396.7, 1616.6 396.7" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_viability: test_relation_for_proportionality</title></path>
+  <rect x="1196.5" y="387.7" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1247.4" y="399.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_viability</text>
+  <path d="M 618.9 483.0 C 728.6 483.0, 728.6 372.0, 838.3 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: inscribe_proportional_equation</title></path>
+  <rect x="688.9" y="363.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="728.6" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_proportional_equation</text>
+  <path d="M 618.9 483.0 C 728.6 483.0, 728.6 594.0, 838.3 594.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: test_relation_for_proportionality</title></path>
+  <rect x="677.7" y="585.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="597.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
+  <text x="728.6" y="613.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">test_relation_for_proportionality</text>
+  <rect x="1599.7" y="326.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1636.6" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
+  <path d="M 1137.7 298.0 C 1247.4 298.0, 1247.4 273.3, 1357.1 273.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: divide_larger_by_smaller_for_unit_rate</title></path>
+  <rect x="1210.6" y="264.3" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1247.4" y="276.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
+  <path d="M 878.3 298.0 C 988.0 298.0, 988.0 298.0, 1097.7 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: divide_larger_by_smaller_for_unit_rate</title></path>
+  <rect x="937.1" y="289.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="988.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
+  <path d="M 618.9 372.0 C 988.0 372.0, 988.0 273.3, 1357.1 273.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: reverse_ratio_referent_order</title></path>
+  <rect x="939.9" y="264.3" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="988.0" y="276.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
+  <text x="988.0" y="292.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reverse_ratio_referent_order</text>
+  <path d="M 618.9 372.0 C 728.6 372.0, 728.6 298.0, 838.3 298.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>order_by_magnitude: divide_larger_by_smaller_for_unit_rate</title></path>
+  <rect x="672.1" y="289.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">order_by_magnitude</text>
+  <text x="728.6" y="317.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">divide_larger_by_smaller_for_unit_rate</text>
+  <path d="M 1137.7 520.0 C 1247.4 520.0, 1247.4 335.0, 1357.1 335.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: scale_ratio_unit</title></path>
+  <rect x="1190.9" y="326.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1247.4" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
+  <path d="M 878.3 520.0 C 988.0 520.0, 988.0 520.0, 1097.7 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: scale_ratio_unit</title></path>
+  <rect x="937.1" y="506.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="988.0" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
+  <text x="988.0" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
+  <path d="M 618.9 520.0 C 728.6 520.0, 728.6 520.0, 838.3 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>scale_multiplicatively: scale_ratio_unit</title></path>
+  <rect x="677.7" y="506.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
+  <text x="728.6" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
+  <path d="M 878.3 76.0 C 1117.7 76.0, 1117.7 273.3, 1357.1 273.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compose_expression: additive_extension_of_ratio</title></path>
+  <rect x="1061.2" y="264.3" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="1117.7" y="276.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compose_expression</text>
+  <path d="M 618.9 76.0 C 728.6 76.0, 728.6 76.0, 838.3 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>combine_quantities: additive_extension_of_ratio</title></path>
+  <rect x="672.1" y="67.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="728.6" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
+  <path d="M 359.4 350.9 C 469.1 350.9, 469.1 150.0, 578.9 150.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: compute_unit_rate_from_ratio_pair</title></path>
+  <rect x="429.5" y="141.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="469.1" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
+  <text x="469.1" y="169.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compute_unit_rate_from_ratio_pair</text>
+  <path d="M 359.4 350.9 C 469.1 350.9, 469.1 483.0, 578.9 483.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: inscribe_proportional_equation, test_relation_for_proportionality</title></path>
+  <rect x="418.3" y="474.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="469.1" y="486.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
+  <text x="469.1" y="502.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_proportional_equation</text>
+  <text x="469.1" y="511.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">test_relation_for_proportionality</text>
+  <rect x="423.9" y="363.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="469.1" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
+  <text x="469.1" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">divide_larger_by_smaller_for_unit_rate</text>
+  <text x="469.1" y="400.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">reverse_ratio_referent_order</text>
+  <path d="M 359.4 350.9 C 469.1 350.9, 469.1 520.0, 578.9 520.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>read_operand_attribute: scale_ratio_unit</title></path>
+  <rect x="429.5" y="506.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="469.1" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
+  <text x="469.1" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
+  <text x="469.1" y="544.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">scale_ratio_unit</text>
+  <path d="M 359.4 350.9 C 469.1 350.9, 469.1 76.0, 578.9 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: additive_extension_of_ratio</title></path>
+  <rect x="421.1" y="67.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
+  <text x="469.1" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
+  <text x="469.1" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">additive_extension_of_ratio</text>
+  <circle cx="82.0" cy="335.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="82.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">start</text>
+  <circle cx="1898.0" cy="335.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <circle cx="1898.0" cy="335.0" r="11" fill="none" stroke="#0d0c08" stroke-width="1.2"/>
+  <text x="1898.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p1</text>
+  <circle cx="1638.6" cy="396.7" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1638.6" y="399.7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p2</text>
+  <circle cx="860.3" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p3</text>
+  <circle cx="600.9" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="600.9" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p4</text>
+  <circle cx="341.4" cy="224.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="341.4" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p5</text>
+  <circle cx="1379.1" cy="335.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1379.1" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p6</text>
+  <circle cx="1119.7" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1119.7" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p7</text>
+  <circle cx="860.3" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p8</text>
+  <circle cx="600.9" cy="150.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="600.9" y="153.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p9</text>
+  <circle cx="1379.1" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1379.1" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p10</text>
+  <circle cx="1119.7" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1119.7" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p11</text>
+  <circle cx="860.3" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p12</text>
+  <circle cx="860.3" cy="594.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="597.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p13</text>
+  <circle cx="600.9" cy="483.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="600.9" y="486.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p14</text>
+  <circle cx="1379.1" cy="273.3" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1379.1" y="276.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p15</text>
+  <circle cx="1119.7" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1119.7" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p16</text>
+  <circle cx="860.3" cy="298.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p17</text>
+  <circle cx="600.9" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="600.9" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p18</text>
+  <circle cx="1119.7" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="1119.7" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p19</text>
+  <circle cx="860.3" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p20</text>
+  <circle cx="600.9" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="600.9" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p21</text>
+  <circle cx="860.3" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="860.3" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p22</text>
+  <circle cx="600.9" cy="76.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="600.9" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p23</text>
+  <circle cx="341.4" cy="350.9" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
+  <text x="341.4" y="353.9" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p24</text>
+  <path class="validity-rust-overlay" d="M 1397.1 273.3 C 1636.6 273.3, 1636.6 335.0, 1876.0 335.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>record_loss: additive_extension_of_ratio, divide_larger_by_smaller_for_unit_rate, reverse_ratio_referent_order; modes objective_invalid; review status adjudicated, proposed</title></path>
+  <path class="validity-rust-overlay" d="M 359.4 350.9 C 469.1 350.9, 469.1 372.0, 578.9 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>conflate_roles: divide_larger_by_smaller_for_unit_rate, reverse_ratio_referent_order; modes objective_invalid; review status adjudicated, proposed</title></path>
+  <circle class="validity-rust-ring" cx="1898.0" cy="335.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="600.9" cy="372.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
 </svg>

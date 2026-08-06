@@ -77,6 +77,28 @@
  * nonnegative whole-number exponent into repeated factors. Structural
  * exponential equivalence is certified only when those expanded forms match
  * exactly; it does not claim a general computer-algebra normalizer.
+ *
+ * Grade-7 diagram, percent, and signed-rewrite extension. Each line states
+ * gate, shell, and kernels in the kernel-gate pilot's idiom:
+ *   - translate_diagram_to_equation: gate(diagram_relation, tape_or_hanger) |> shell[coordinate_equal_groups_with_total] [kernel(inscribe_equation_from_roles)].
+ *   - split_repeated_diagram_variable: gate(diagram_relation, repeated_labels_name_one_quantity) |> shell[separate_repeated_labels] [kernel(inscribe_equation_from_roles)].
+ *   - percent_change_composition: gate(percent_relation, nonnegative_amount_and_admissible_rate) |> shell[select_change_direction_and_target] [kernels(percent_to_multiplier, scale_or_invert)].
+ *   - combine_signed_like_terms: gate(linear_expression, terms_share_variable_role_or_are_constants) |> shell[rewrite_subtraction_as_adding_the_opposite] [kernel(sum_coefficients_by_role)].
+ *   - combine_unlike_terms: gate(linear_expression, unlike_terms_remain_separate) |> shell[collapse_constant_into_variable_coefficient] [kernel(sum_coefficients_by_role)].
+ * The two new deformations derive Expected independently and require
+ * Result \== Expected. The same separation guard now excludes the known
+ * power(int(2),2) coincidence from exponent_as_multiplier.
+ *
+ * Structured contracts:
+ *   - diagram(Representation, equal_groups(P, GroupExpression),
+ *             additional(number(Q)), total(number(R))) with Representation
+ *     tape or hanger and equation_form(px_plus_q_equals_r) or
+ *     equation_form(p_times_x_plus_q_equals_r);
+ *   - percent_change(original_amount(A), rate_percent(P), direction(D)) with
+ *     target(new_amount), or percent_change(changed_amount(A), ... ) with
+ *     target(original_amount), where D is increase or decrease;
+ *   - signed_linear_expression/1 whose items are add/1 or subtract/1 terms
+ *     containing term(Coefficient,var(Name)) or constant(Number).
  */
 
 :- module(algebraic_action_pairs,
@@ -170,6 +192,106 @@ run_algebraic_action(contextual_linear_equation_construction,
               coordinate_constant_offset(Offset),
               relate_expression_to_total(Total),
               inscribe_equation(Equation)
+            ].
+run_algebraic_action(translate_diagram_to_equation, Diagram,
+                     equation_form(EquationForm),
+                     Outcome, Trace) :-
+    diagram_equation_components(Diagram, EquationForm, Representation,
+                                Groups, GroupExpression, Offset, Total,
+                                Unknown, Equation),
+    Outcome = action_outcome(
+                  translate_diagram_to_equation,
+                  [ classification(productive),
+                    cluster(algebraic_diagram_equation_coordination),
+                    automaton_state(coordinate_diagram_parts_with_equation_relation),
+                    vocabulary([tape_diagram, hanger_diagram, equal_groups,
+                                repeated_variable, additional_quantity, total,
+                                equation, representation_coordination]),
+                    input(Diagram),
+                    equation_form(EquationForm),
+                    result(Equation),
+                    expected(Equation),
+                    components(diagram_equation_components(
+                                   Representation, Groups, GroupExpression,
+                                   Offset, Total, Unknown)),
+                    invariant(repeated_diagram_labels_name_one_quantity),
+                    validity(correct),
+                    source(im_grade7(unit6, lessons([2, 3, 6, 7])))
+                  ]),
+    Trace = [ identify_diagram_representation(Representation),
+              identify_equal_groups(Groups, GroupExpression),
+              coordinate_repeated_variable(Unknown),
+              coordinate_additional_quantity(Offset),
+              relate_diagram_sides(Total),
+              inscribe_equation(Equation)
+            ].
+run_algebraic_action(split_repeated_diagram_variable, Diagram,
+                     equation_form(EquationForm),
+                     Outcome, Trace) :-
+    diagram_equation_components(Diagram, EquationForm, _Representation,
+                                Groups, GroupExpression, Offset, Total,
+                                Unknown, Expected),
+    Groups >= 2,
+    distinct_occurrence_sum(Groups, GroupExpression, Unknown, 1,
+                            DistinctGroupExpression, DistinctNames),
+    add_external_offset(DistinctGroupExpression, Offset, ResultExpression),
+    Result = equation(ResultExpression, equals, number(Total)),
+    Result \== Expected,
+    Outcome = action_outcome(
+                  split_repeated_diagram_variable,
+                  [ classification(deformation),
+                    cluster(algebraic_diagram_equation_coordination),
+                    automaton_state(split_repeated_variable_label_into_distinct_roles),
+                    vocabulary([diagram, repeated_variable, equal_groups,
+                                variable_occurrence, distinct_quantity_roles,
+                                changed_equation]),
+                    input(Diagram),
+                    equation_form(EquationForm),
+                    result(Result),
+                    expected(Expected),
+                    distinct_variable_names(DistinctNames),
+                    deformation_of(translate_diagram_to_equation),
+                    misconception_family(repeated_diagram_label_as_distinct_quantities),
+                    violated_invariant(repeated_diagram_labels_name_one_quantity),
+                    validity(incorrect),
+                    source(im_grade7(unit6, lesson2,
+                                     building_on_student_thinking))
+                  ]),
+    Trace = [ identify_repeated_variable_label(Unknown, Groups),
+              assign_distinct_roles_to_repeated_label(DistinctNames),
+              inscribe_changed_equation(Result),
+              lose_equal_group_relation(expected(Expected), produced(Result))
+            ].
+run_algebraic_action(percent_change_composition, Change, target(Target),
+                     Outcome, Trace) :-
+    percent_change_components(Change, Target, Direction, SourceAmount,
+                              Percent, Multiplier, ResultAmount,
+                              ApplicationStep),
+    Outcome = action_outcome(
+                  percent_change_composition,
+                  [ classification(productive),
+                    cluster(algebraic_percent_change_composition),
+                    automaton_state(compose_percent_multiplier_with_amount),
+                    vocabulary([original_amount, changed_amount, percent_rate,
+                                increase, decrease, multiplier, new_amount,
+                                recover_original, multiplicative_relation]),
+                    input(Change),
+                    target(Target),
+                    result(amount(ResultAmount)),
+                    expected(amount(ResultAmount)),
+                    components(percent_change_components(
+                                   Direction, SourceAmount, Percent,
+                                   Multiplier, ResultAmount)),
+                    kernel_application(ApplicationStep),
+                    invariant(percent_rate_is_relative_to_the_named_base),
+                    validity(correct),
+                    source(im_grade7(unit4, lessons([6, 8, 11, 12])))
+                  ]),
+    Trace = [ identify_percent_change_roles(Direction, SourceAmount, Target),
+              convert_percent_to_multiplier(Percent, Multiplier),
+              solve_percent_multiplier_relation(
+                  Target, SourceAmount, Multiplier, ResultAmount),
+              report_percent_change_amount(ResultAmount)
             ].
 run_algebraic_action(equation_truth_by_substitution,
                      equation(LeftExpression, RightExpression), Assignment,
@@ -391,6 +513,77 @@ run_algebraic_action(drop_distributed_term,
               stop_before_second_addend(Right),
               lose_equivalent_expression(Expected, Result)
             ].
+run_algebraic_action(combine_signed_like_terms,
+                     signed_linear_expression(Items),
+                     rewrite_direction(combine_like_terms), Outcome, Trace) :-
+    combine_signed_linear_items(Items, Contributions, VariableGroups,
+                                ConstantSum, Result),
+    Outcome = action_outcome(
+                  combine_signed_like_terms,
+                  [ classification(productive),
+                    cluster(algebraic_equivalent_expression_rewrite),
+                    automaton_state(rewrite_and_combine_signed_like_terms),
+                    vocabulary([signed_coefficient, subtraction,
+                                adding_the_opposite, like_terms,
+                                variable_role, constant_term,
+                                equivalent_expression]),
+                    input(signed_linear_expression(Items)),
+                    result(Result),
+                    expected(Result),
+                    contributions(Contributions),
+                    variable_groups(VariableGroups),
+                    constant_sum(ConstantSum),
+                    invariant(only_terms_with_the_same_variable_role_are_combined),
+                    validity(correct),
+                    source(im_grade7(unit6, lessons([18, 20, 21])))
+                  ]),
+    Trace = [ identify_signed_terms(Items),
+              rewrite_subtraction_as_adding_the_opposite(Contributions),
+              group_like_terms_by_variable(VariableGroups),
+              combine_like_term_coefficients(VariableGroups),
+              combine_constant_terms(ConstantSum),
+              inscribe_equivalent_linear_expression(Result)
+            ].
+run_algebraic_action(combine_unlike_terms,
+                     signed_linear_expression(Items),
+                     rewrite_direction(combine_like_terms), Outcome, Trace) :-
+    combine_signed_linear_items(Items, _Contributions, VariableGroups,
+                                ConstantSum, Expected),
+    ConstantSum =\= 0,
+    VariableGroups = [term(_FirstCoefficient, var(FirstVariable))],
+    findall(Coefficient,
+            member(term(Coefficient, _Variable), VariableGroups),
+            Coefficients),
+    sum_list(Coefficients, VariableCoefficientSum),
+    ReportedCoefficient is VariableCoefficientSum + ConstantSum,
+    Result = linear_expression(
+                 terms([term(ReportedCoefficient, var(FirstVariable))]),
+                 constant(0)),
+    Result \== Expected,
+    Outcome = action_outcome(
+                  combine_unlike_terms,
+                  [ classification(deformation),
+                    cluster(algebraic_equivalent_expression_rewrite),
+                    automaton_state(combine_unlike_terms_as_one_coefficient),
+                    vocabulary([like_terms, unlike_terms, variable_term,
+                                constant_term, coefficient,
+                                non_equivalent_expression]),
+                    input(signed_linear_expression(Items)),
+                    result(Result),
+                    expected(Expected),
+                    deformation_of(combine_signed_like_terms),
+                    misconception_family(combine_constant_with_variable_coefficient),
+                    violated_invariant(only_terms_with_the_same_variable_role_are_combined),
+                    validity(incorrect),
+                    source(im_grade7(unit6, lessons([20, 21])))
+                  ]),
+    Trace = [ identify_unlike_terms(variable_groups(VariableGroups),
+                                    constant_sum(ConstantSum)),
+              combine_constant_with_variable_coefficient(
+                  VariableCoefficientSum, ConstantSum, ReportedCoefficient),
+              inscribe_non_equivalent_linear_expression(Result),
+              lose_like_term_condition(expected(Expected), produced(Result))
+            ].
 run_algebraic_action(exponent_as_repeated_factor,
                      power(Base, Exponent), notation(expanded_product),
                      Outcome, Trace) :-
@@ -423,6 +616,7 @@ run_algebraic_action(exponent_as_multiplier,
     integer(Exponent), Exponent >= 2,
     expanded_power(Base, Exponent, Expected),
     Result = mult(Base, int(Exponent)),
+    Result \== Expected,
     Outcome = action_outcome(
                   exponent_as_multiplier,
                   [ classification(deformation),
@@ -543,6 +737,12 @@ algebraic_action_cluster(programming_expression_evaluation,
                          algebraic_expression_evaluation_as_program).
 algebraic_action_cluster(contextual_linear_equation_construction,
                          algebraic_context_to_equation_relation).
+algebraic_action_cluster(translate_diagram_to_equation,
+                         algebraic_diagram_equation_coordination).
+algebraic_action_cluster(split_repeated_diagram_variable,
+                         algebraic_diagram_equation_coordination).
+algebraic_action_cluster(percent_change_composition,
+                         algebraic_percent_change_composition).
 algebraic_action_cluster(equation_truth_by_substitution,
                          algebraic_equation_truth_and_solution).
 algebraic_action_cluster(operational_equals_left_value,
@@ -556,6 +756,10 @@ algebraic_action_cluster(symbolic_expression_construction,
 algebraic_action_cluster(distributive_expression_rewrite,
                          algebraic_equivalent_expression_rewrite).
 algebraic_action_cluster(drop_distributed_term,
+                         algebraic_equivalent_expression_rewrite).
+algebraic_action_cluster(combine_signed_like_terms,
+                         algebraic_equivalent_expression_rewrite).
+algebraic_action_cluster(combine_unlike_terms,
                          algebraic_equivalent_expression_rewrite).
 algebraic_action_cluster(exponent_as_repeated_factor,
                          algebraic_exponent_as_iterated_multiplication).
@@ -579,6 +783,18 @@ algebraic_action_vocabulary(contextual_linear_equation_construction,
                             [context, unknown_quantity, variable, coefficient,
                              constant, total, referent_role, equation,
                              equality_relation, representation]).
+algebraic_action_vocabulary(translate_diagram_to_equation,
+                            [tape_diagram, hanger_diagram, equal_groups,
+                             repeated_variable, additional_quantity, total,
+                             equation, representation_coordination]).
+algebraic_action_vocabulary(split_repeated_diagram_variable,
+                            [diagram, repeated_variable, equal_groups,
+                             variable_occurrence, distinct_quantity_roles,
+                             changed_equation]).
+algebraic_action_vocabulary(percent_change_composition,
+                            [original_amount, changed_amount, percent_rate,
+                             increase, decrease, multiplier, new_amount,
+                             recover_original, multiplicative_relation]).
 algebraic_action_vocabulary(equation_truth_by_substitution,
                             [equation, variable_assignment, substitution,
                              left_expression, right_expression, equality,
@@ -604,6 +820,15 @@ algebraic_action_vocabulary(distributive_expression_rewrite,
 algebraic_action_vocabulary(drop_distributed_term,
                             [distributive_property, dropped_term,
                              partial_expansion, equality_loss]).
+algebraic_action_vocabulary(combine_signed_like_terms,
+                            [signed_coefficient, subtraction,
+                             adding_the_opposite, like_terms,
+                             variable_role, constant_term,
+                             equivalent_expression]).
+algebraic_action_vocabulary(combine_unlike_terms,
+                            [like_terms, unlike_terms, variable_term,
+                             constant_term, coefficient,
+                             non_equivalent_expression]).
 algebraic_action_vocabulary(exponent_as_repeated_factor,
                             [base, exponent, power, repeated_factor,
                              multiplication, expanded_form,
@@ -637,9 +862,15 @@ productive_algebraic_deformation(balance_preserving_linear_solution,
 productive_algebraic_deformation(equation_truth_by_substitution,
                                  operational_equals_left_value,
                                  operational_equals_left_value).
+productive_algebraic_deformation(translate_diagram_to_equation,
+                                 split_repeated_diagram_variable,
+                                 repeated_diagram_label_as_distinct_quantities).
 productive_algebraic_deformation(distributive_expression_rewrite,
                                  drop_distributed_term,
                                  dropped_term_in_symbolic_distribution).
+productive_algebraic_deformation(combine_signed_like_terms,
+                                 combine_unlike_terms,
+                                 combine_constant_with_variable_coefficient).
 productive_algebraic_deformation(exponent_as_repeated_factor,
                                  exponent_as_multiplier,
                                  exponent_as_multiplier).
@@ -697,6 +928,10 @@ algebraic_monitoring_focus(programming_expression_evaluation,
                                programming_expression_evaluation)).
 algebraic_monitoring_focus(contextual_linear_equation_construction,
                            preserve_contextual_quantity_roles).
+algebraic_monitoring_focus(translate_diagram_to_equation,
+                           coordinate_diagram_parts_with_equation_roles).
+algebraic_monitoring_focus(percent_change_composition,
+                           preserve_named_percent_base_and_direction).
 algebraic_monitoring_focus(equation_truth_by_substitution,
                            compare_both_sides_under_same_assignment).
 algebraic_monitoring_focus(balance_preserving_linear_solution,
@@ -705,6 +940,8 @@ algebraic_monitoring_focus(symbolic_expression_construction,
                            preserve_operation_and_referent_roles).
 algebraic_monitoring_focus(distributive_expression_rewrite,
                            distribute_common_factor_to_every_addend).
+algebraic_monitoring_focus(combine_signed_like_terms,
+                           combine_only_terms_with_the_same_variable_role).
 algebraic_monitoring_focus(exponent_as_repeated_factor,
                            preserve_exponent_as_factor_iteration_count).
 algebraic_monitoring_focus(exponential_equivalence_by_expansion,
@@ -728,6 +965,141 @@ contextual_linear_pattern(linear_pattern(first(First), change(Change), row(Row))
     Increments is Row - 1,
     AccumulatedChange is Change * Increments,
     Value is First + AccumulatedChange.
+
+diagram_equation_components(
+    diagram(Representation, equal_groups(Groups, var(Unknown)),
+            additional(number(Offset)), total(number(Total))),
+    px_plus_q_equals_r, Representation, Groups, var(Unknown),
+    Offset, Total, Unknown, Equation) :-
+    diagram_representation(Representation),
+    integer(Groups), Groups > 0,
+    atom(Unknown),
+    number(Offset),
+    number(Total),
+    add_external_offset(mult(number(Groups), var(Unknown)), Offset,
+                        LeftExpression),
+    Equation = equation(LeftExpression, equals, number(Total)).
+diagram_equation_components(
+    diagram(Representation,
+            equal_groups(Groups, add(var(Unknown), number(Offset))),
+            additional(number(0)), total(number(Total))),
+    p_times_x_plus_q_equals_r, Representation, Groups,
+    add(var(Unknown), number(Offset)), 0, Total, Unknown, Equation) :-
+    diagram_representation(Representation),
+    integer(Groups), Groups > 0,
+    atom(Unknown),
+    number(Offset),
+    number(Total),
+    Equation = equation(
+                   mult(number(Groups), add(var(Unknown), number(Offset))),
+                   equals,
+                   number(Total)).
+
+diagram_representation(tape).
+diagram_representation(hanger).
+
+add_external_offset(Expression, 0, Expression) :- !.
+add_external_offset(Expression, Offset, add(Expression, number(Offset))).
+
+distinct_occurrence_sum(Count, GroupExpression, Unknown, StartIndex,
+                        Sum, Names) :-
+    Count > 0,
+    EndIndex is StartIndex + Count - 1,
+    findall(Renamed-Name,
+            ( between(StartIndex, EndIndex, Index),
+              occurrence_variable_name(Unknown, Index, Name),
+              replace_diagram_variable(GroupExpression, Unknown, Name,
+                                       Renamed)
+            ),
+            RenamedPairs),
+    pairs_parts(RenamedPairs, Expressions, Names),
+    sum_expression(Expressions, Sum).
+
+occurrence_variable_name(Unknown, Index, Name) :-
+    atomic_list_concat([Unknown, occurrence, Index], '_', Name).
+
+replace_diagram_variable(var(Unknown), Unknown, Name, var(Name)).
+replace_diagram_variable(add(var(Unknown), number(Offset)), Unknown, Name,
+                         add(var(Name), number(Offset))).
+
+pairs_parts([], [], []).
+pairs_parts([Expression-Name|Rest], [Expression|Expressions], [Name|Names]) :-
+    pairs_parts(Rest, Expressions, Names).
+
+sum_expression([Expression], Expression) :- !.
+sum_expression([Expression|Rest], add(Expression, RestSum)) :-
+    sum_expression(Rest, RestSum).
+
+percent_change_components(
+    percent_change(original_amount(Original), rate_percent(Percent),
+                   direction(Direction)),
+    new_amount, Direction, Original, Percent, Multiplier,
+    Changed, apply_multiplier_to_original(Original, Multiplier, Changed)) :-
+    number(Original), Original >= 0,
+    percent_multiplier(Direction, Percent, Multiplier),
+    Changed is Original * Multiplier.
+percent_change_components(
+    percent_change(changed_amount(Changed), rate_percent(Percent),
+                   direction(Direction)),
+    original_amount, Direction, Changed, Percent, Multiplier,
+    Original, invert_multiplier_from_changed(Changed, Multiplier, Original)) :-
+    number(Changed), Changed >= 0,
+    percent_multiplier(Direction, Percent, Multiplier),
+    Multiplier > 0,
+    Original is Changed / Multiplier.
+
+percent_multiplier(increase, Percent, Multiplier) :-
+    number(Percent), Percent >= 0,
+    Multiplier is (100 + Percent) / 100.
+percent_multiplier(decrease, Percent, Multiplier) :-
+    number(Percent), Percent >= 0, Percent =< 100,
+    Multiplier is (100 - Percent) / 100.
+
+combine_signed_linear_items(Items, Contributions, VariableTerms,
+                            ConstantSum,
+                            linear_expression(terms(VariableTerms),
+                                              constant(ConstantSum))) :-
+    is_list(Items),
+    Items = [_|_],
+    maplist(signed_linear_contribution, Items, Contributions),
+    findall(Variable,
+            member(variable_contribution(_Coefficient, Variable),
+                   Contributions),
+            Variables0),
+    sort(Variables0, Variables),
+    maplist(variable_coefficient_term(Contributions), Variables,
+            VariableTerms0),
+    exclude(zero_coefficient_term, VariableTerms0, VariableTerms),
+    findall(Constant,
+            member(constant_contribution(Constant), Contributions),
+            Constants),
+    sum_list(Constants, ConstantSum).
+
+signed_linear_contribution(add(term(Coefficient, var(Variable))),
+                           variable_contribution(Coefficient, Variable)) :-
+    number(Coefficient), atom(Variable).
+signed_linear_contribution(subtract(term(Coefficient, var(Variable))),
+                           variable_contribution(Negated, Variable)) :-
+    number(Coefficient), atom(Variable),
+    Negated is -Coefficient.
+signed_linear_contribution(add(constant(Constant)),
+                           constant_contribution(Constant)) :-
+    number(Constant).
+signed_linear_contribution(subtract(constant(Constant)),
+                           constant_contribution(Negated)) :-
+    number(Constant),
+    Negated is -Constant.
+
+variable_coefficient_term(Contributions, Variable,
+                          term(CoefficientSum, var(Variable))) :-
+    findall(Coefficient,
+            member(variable_contribution(Coefficient, Variable),
+                   Contributions),
+            Coefficients),
+    sum_list(Coefficients, CoefficientSum).
+
+zero_coefficient_term(term(Coefficient, _Variable)) :-
+    Coefficient =:= 0.
 
 valid_referent_roles(Roles) :-
     is_list(Roles),

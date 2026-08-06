@@ -11,8 +11,10 @@
  * A row may carry both modes. Basis terms name the evidence used for the row.
  * Addition loss rows govern when they conflict with a projected machine
  * profile. A finite coincidence profile bounds nothing beyond its stated grid
- * and is seed evidence only. Rows marked proposed await review; rows marked
- * adjudicated record a completed code-reading review.
+ * and is seed evidence only. ReviewStatus uses seeded_ledger for a row carried
+ * from the addition-loss ledger, seeded_profile for a finite coincidence
+ * profile, proposed for a new code-reading row awaiting review, and
+ * adjudicated for a completed code-reading review.
  *
  * deformation_validity(Family, Kind, LocalAction, From, To,
  *                      Modes, Basis, ReviewStatus).
@@ -45,14 +47,65 @@ deformation_validity(addition, wrong_carry_amount_to_next_column, lose_base_ten_
 % algebraic
 deformation_validity(algebraic, drop_distributed_term, stop_before_second_addend, q_step_2, q_step_3, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(stop_before_second_addend), 'Stops before second addend.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:372', 'The clause fixes Result = mult(Factor,Left) while deriving Expected = add(mult(Factor,Left),mult(Factor,Right)) independently, so the second product is dropped out of the answer at this step; the code also records violated_invariant(every_addend_receives_the_common_factor).')]), adjudicated).
 deformation_validity(algebraic, drop_distributed_term, lose_equivalent_expression, q_step_3, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(lose_equivalent_expression), 'Drops equivalent expression from the result.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:392', 'The accepting edge asserts the partial product as the rewrite of mult(Factor,add(Left,Right)); result and expected are different terms at every admitted input because the functors differ (mult vs add).')]), adjudicated).
-deformation_validity(algebraic, exponent_as_multiplier, read_exponent_as_second_factor, q_start, q_step_1, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(names(read_exponent_as_second_factor), 'Reads exponent as second factor.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:425', 'The clause has no Result-differs-from-Expected guard, and at power(int(2),2) expanded_power yields mult(int(2),int(2)) which is the identical term to Result = mult(Base,int(Exponent)) - the row''s own independent expected derivation certifies the produced claim as correct at that input, while every other Base makes it false.'), coincidence_at('At power(int(2),2), the produced expansion is true.')]), adjudicated).
-deformation_validity(algebraic, exponent_as_multiplier, omit_repeated_factor_iteration, q_step_2, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(omit_repeated_factor_iteration), 'Omits repeated factor iteration.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:443', 'Same counterexample as the reading edge: at power(int(2),2) the accepted Result equals Expected term-for-term (expanded_power(Base,2) = mult(Base,Base)), so this accepting edge asserts a true expansion at that input and a false one at every other base.'), coincidence_at('At power(int(2),2), the produced expansion is true.')]), adjudicated).
+deformation_validity(algebraic, exponent_as_multiplier,
+                     read_exponent_as_second_factor, q_start, q_step_1,
+                     [objective_invalid],
+                     basis([independent_truth_derivation(action_pair_expected_result, 'The clause derives the expected value by expanded_power separately from the deformation result.'),
+                            proposed_from_code_reading(names(read_exponent_as_second_factor), 'Reads the exponent as a second factor; the guard was added 2026-08-06 after the prior adjudication flagged the unguarded shape.'),
+                            separation_guard('Result is not identical to Expected')]), proposed).
+deformation_validity(algebraic, exponent_as_multiplier,
+                     omit_repeated_factor_iteration, q_step_2, q_accept,
+                     [objective_invalid],
+                     basis([independent_truth_derivation(action_pair_expected_result, 'The clause derives the expected value by expanded_power separately from the deformation result.'),
+                            answer_bearing_change('Drops the answer-bearing repeated-factor iteration.'),
+                            proposed_from_code_reading(drops(repeated_factor_iteration), 'Drops the repeated-factor iteration; the guard was added 2026-08-06 after the prior adjudication flagged the unguarded shape.'),
+                            separation_guard('Result is not identical to Expected')]), proposed).
 deformation_validity(algebraic, guess_and_check_rule, lose_contextual_linear_relation, q_step_3, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(lose_contextual_linear_relation), 'Drops contextual linear relation from the result.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:514', 'The clause admits an input only when Result =\\= Expected, so the value named at the accepting edge is false at every run the automaton can execute.')]), adjudicated).
 deformation_validity(algebraic, one_sided_equation_operation, read_equals_as_instruction, q_start, q_step_1, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(names(read_equals_as_instruction), 'Reads equals as instruction.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:279', 'The clause computes Wrong is C rdiv A and requires Wrong =\\= Expected, so the one-sided reading commits the run to a reported solution that is false at every admitted input; the misread relation is answer-bearing in the way a misread carry is.')]), adjudicated).
 deformation_validity(algebraic, one_sided_equation_operation, leave_right_side_unchanged, q_step_2, q_step_3, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(retains(leave_right_side_unchanged), 'Leaves right side unchanged.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:299', 'Removing B from the left while leaving C untouched is where the balance is broken and where Wrong = C rdiv A comes from; B > 0 and Wrong =\\= Expected are both guarded, so no admitted input keeps the equality.')]), adjudicated).
 deformation_validity(algebraic, one_sided_equation_operation, report_unbalanced_value, q_step_4, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(names(report_unbalanced_value), 'Names unbalanced value.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:301', 'The accepting edge names Wrong as the solution while the clause carries the independently derived balance_solve_witness solution in Expected, and the two are guarded to differ.')]), adjudicated).
 deformation_validity(algebraic, operational_equals_left_value, treat_equals_as_answer_signal, q_step_2, q_step_3, [context_sensitive_or_inefficient], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(conflates(treat_equals_as_answer_signal), 'Treats equals as answer signal.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:214', 'LeftValue is produced by the same evaluate_expression call the productive partner uses and is reported unaltered as result(value(LeftValue)); no quantity is dropped or miscomputed, so the run answers a truth-of-equation question with a correct evaluation of the left side rather than asserting anything false.')]), adjudicated).
 deformation_validity(algebraic, operational_equals_left_value, ignore_right_expression, q_step_3, q_accept, [context_sensitive_or_inefficient], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(ignore_right_expression), 'Drops right expression from the calculation.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/algebraic_action_pairs.pl:239', 'The right side is in fact evaluated at line 216 and its value is carried into the trace term ignore_right_expression(RightExpression, RightValue); nothing is corrupted, and the accepted artifact stays the true left-side value, which is insufficient as an answer rather than false.')]), adjudicated).
+
+% split_repeated_diagram_variable derives Expected from the shared-label
+% diagram contract and requires Result \== Expected.
+deformation_validity(algebraic, split_repeated_diagram_variable,
+                     assign_distinct_roles_to_repeated_label, q_step_1, q_step_2,
+                     [objective_invalid],
+                     basis([independent_truth_derivation(action_pair_expected_result, 'The clause derives Expected independently and requires the result to differ.'),
+                            separation_guard('Result \\== Expected'),
+                            proposed_from_code_reading(changes(one_quantity_role_into_distinct_variable_roles), 'Changes one quantity role into distinct variable roles.'),
+                            guide_evidence(im_grade7_unit6_lesson2)]), proposed).
+deformation_validity(algebraic, split_repeated_diagram_variable,
+                     inscribe_changed_equation, q_step_2, q_step_3,
+                     [objective_invalid],
+                     basis([proposed_from_code_reading(names(equation_with_distinct_roles_as_diagram_equation), 'Names equation with distinct roles as diagram equation.'),
+                            independent_truth_derivation(action_pair_expected_result, 'The clause derives the expected value by diagram_equation_components separately from the deformation result.')]), proposed).
+deformation_validity(algebraic, split_repeated_diagram_variable,
+                     lose_equal_group_relation, q_step_3, q_accept,
+                     [objective_invalid],
+                     basis([proposed_from_code_reading(drops(answer_bearing_equal_group_relation), 'Drops answer bearing equal group relation.'),
+                            separation_guard('Result is not identical to Expected')]), proposed).
+
+% combine_unlike_terms derives Expected by grouping variables and constants
+% separately and requires Result \== Expected.
+deformation_validity(algebraic, combine_unlike_terms,
+                     combine_constant_with_variable_coefficient,
+                     q_step_1, q_step_2, [objective_invalid],
+                     basis([independent_truth_derivation(action_pair_expected_result, 'The clause derives Expected by grouping like terms separately from the deformation result.'),
+                            separation_guard('Result \\== Expected; ConstantSum =\\= 0 excludes the degenerate zero case'),
+                            proposed_from_code_reading(conflates(constant_role, variable_coefficient_role), 'Conflates constant role, variable coefficient role.'),
+                            guide_evidence(im_grade7_unit6_lesson20)]), proposed).
+deformation_validity(algebraic, combine_unlike_terms,
+                     inscribe_non_equivalent_linear_expression,
+                     q_step_2, q_step_3, [objective_invalid],
+                     basis([proposed_from_code_reading(names(collapsed_unlike_terms_as_equivalent), 'Names collapsed unlike terms as equivalent.'),
+                            independent_truth_derivation(action_pair_expected_result, 'The clause derives the expected value by combine_signed_linear_items separately from the deformation result.')]), proposed).
+deformation_validity(algebraic, combine_unlike_terms,
+                     lose_like_term_condition, q_step_3, q_accept,
+                     [objective_invalid],
+                     basis([proposed_from_code_reading(drops(answer_bearing_same_variable_condition), 'Drops answer bearing same variable condition.'),
+                            separation_guard('Result is not identical to Expected')]), proposed).
 
 % calculus
 deformation_validity(calculus, factor_cancel_without_common_factor, fail_to_detect_zero_over_zero, q_step_2, q_step_3, [context_sensitive_or_inefficient], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(fail_to_detect_zero_over_zero), 'Leaves detect zero over zero unresolved.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/calculus_limits_action_pairs.pl:189', 'The clause fires only when it is NOT zero over zero, and what this edge omits is a precondition check, not a quantity: NumValueAtA and DenValueAtA are computed by evaluate_polynomial and appear unchanged in both result and expected.')]), adjudicated).
@@ -194,6 +247,31 @@ deformation_validity(geometry, sum_overlapping_prism_volumes, report_component_s
 deformation_validity(geometry, visible_faces_only_surface_area, omit_hidden_face, q_step_2, q_step_3, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(omit_hidden_face), 'Omits hidden face.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/geometry_action_pairs.pl:998', 'valid_face_areas (line 1795) requires every face area to be a positive integer and the head peels exactly one face off the sum with VisibleFaceAreas nonempty, so ReportedSurfaceArea is strictly less than ExpectedSurfaceArea on every accepted input.')]), adjudicated).
 deformation_validity(geometry, visible_faces_only_surface_area, report_partial_surface_area, q_step_3, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(names(report_partial_surface_area), 'Names partial surface area.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/geometry_action_pairs.pl:998-1001,1795', 'append(VisibleFaceAreas,[_HiddenFace],FaceAreas) removes exactly one face and valid_face_areas requires every face area to be a positive integer, so the reported sum is strictly less than the expected surface area on every accepted input.')]), adjudicated).
 
+% GEOSTAT deforming edges. Review status is proposed as required by the lane.
+
+deformation_validity(
+    geometry, use_diameter_as_radius_in_circumference,
+    read_diameter_as_radius, q_step_1, q_step_2,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(read_diameter_as_radius), 'Read diameter as radius.'),
+           independent_truth_derivation(action_pair_expected_result,
+             'The productive circumference is computed from the supplied diameter.'),
+           separation_guard('ReportedValue =\\= ExpectedValue in knowledge/strategies/math/geometry_action_pairs.pl'),
+           answer_bearing_loss(conflates(diameter, radius)),
+           source(im_teacher_guide('IM-G7-U3-L10'))]),
+    proposed).
+deformation_validity(
+    geometry, use_diameter_as_radius_in_circumference,
+    report_misread_circumference, q_step_3, q_accept,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(report_misread_circumference), 'Report misread circumference.'),
+           independent_truth_derivation(action_pair_expected_result,
+             'Expected and reported circumference are computed independently.'),
+           separation_guard('ReportedValue =\\= ExpectedValue in knowledge/strategies/math/geometry_action_pairs.pl'),
+           answer_bearing_loss(reports_doubled_circle_measure),
+           source(im_teacher_guide('IM-G7-U3-L10'))]),
+    proposed).
+
 % integer
 deformation_validity(integer, drop_sign_use_magnitude_sum, drop_signs, q_step_2, q_step_3, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(drop_signs), 'Drops signs.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/integer_action_pairs.pl:57-61,281-283', 'The clause admits only inputs where a sign is negative, and sign_of/2 gives negative only to nonzero values, so |A|+|B| can never equal A+B; discarding the signs destroys the one datum the true sum needs.')]), adjudicated).
 deformation_validity(integer, drop_sign_use_magnitude_sum, name_magnitude_sum_as_answer, q_step_4, q_step_5, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(names(name_magnitude_sum_as_answer), 'Names magnitude sum as answer.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/integer_action_pairs.pl:60-61,70,80', 'The step binds Result to MagnitudeSum and offers it as the answer while expected(Expected) is A+B derived independently by signed_components/3; the two differ for every input the guard admits.')]), adjudicated).
@@ -203,6 +281,130 @@ deformation_validity(integer, inequality_as_boundary_point, omit_solution_ray, q
 deformation_validity(integer, inequality_as_boundary_point, report_boundary_as_only_solution, q_step_3, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(names(report_boundary_as_only_solution), 'Names boundary as only solution.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/integer_action_pairs.pl:177,185,336-348', 'The accept edge asserts the boundary as the whole solution set; under lt/gt the boundary is not even a solution, and under lte/gte the set claim is still false, so no admitted input yields a true claim.')]), adjudicated).
 deformation_validity(integer, order_by_magnitude_ignore_sign, replace_signed_locations_with_distances, q_step_1, q_step_2, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(conflates(replace_signed_locations_with_distances), 'Replaces signed locations with distances.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/integer_action_pairs.pl:109-111,129', 'The clause guard MagnitudeOrder \\== Expected admits only inputs on which the distance ordering differs from msort/2''s true ordering, so replacing signed locations with distances corrupts the answer on every run.')]), adjudicated).
 deformation_validity(integer, order_by_magnitude_ignore_sign, lose_directional_order, q_step_3, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(lose_directional_order), 'Drops directional order from the result.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/integer_action_pairs.pl:109-111,121-122,131', 'The accept edge names ordered_values(MagnitudeOrder) as the answer while the same clause holds ordered_values(Expected) from msort/2 and requires the two to differ.')]), adjudicated).
+
+deformation_validity(
+    integer, swap_subtraction_operands_to_preserve_nonnegative_result,
+    swap_minuend_and_subtrahend, q_start, q_step_1,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(swap_minuend_and_subtrahend), 'Swap minuend and subtrahend.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Exchanges the ordered roles that determine the sign of M-S.')]),
+    proposed).
+deformation_validity(
+    integer, swap_subtraction_operands_to_preserve_nonnegative_result,
+    prefer_nonnegative_subtraction_orientation, q_step_1, q_step_2,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(prefer_nonnegative_subtraction_orientation), 'Prefer nonnegative subtraction orientation.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Replaces task order with the orientation that keeps the result nonnegative.')]),
+    proposed).
+deformation_validity(
+    integer, swap_subtraction_operands_to_preserve_nonnegative_result,
+    report_swapped_difference, q_step_3, q_step_4,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(report_swapped_difference), 'Report swapped difference.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Reports S-M where the task asks for M-S.')]),
+    proposed).
+deformation_validity(
+    integer, swap_subtraction_operands_to_preserve_nonnegative_result,
+    lose_ordered_difference, q_step_4, q_accept,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(lose_ordered_difference), 'Lose ordered difference.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Drops the original operand order from the accepted result.')]),
+    proposed).
+
+deformation_validity(
+    integer, conflate_signed_difference_with_distance,
+    discard_change_direction, q_step_2, q_step_3,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(discard_change_direction), 'Discard change direction.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Removes the direction that supplies the difference sign.')]),
+    proposed).
+deformation_validity(
+    integer, conflate_signed_difference_with_distance,
+    name_distance_as_signed_difference, q_step_3, q_step_4,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(name_distance_as_signed_difference), 'Name distance as signed difference.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Names abs(M-S) as M-S on a separated input.')]),
+    proposed).
+deformation_validity(
+    integer, conflate_signed_difference_with_distance,
+    lose_ordered_difference, q_step_4, q_accept,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(lose_ordered_difference), 'Lose ordered difference.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Accepts a magnitude after the direction has been removed.')]),
+    proposed).
+
+deformation_validity(
+    integer, reverse_signed_multiplication_sign_rule,
+    reverse_multiplicative_sign_relation, q_step_1, q_step_2,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(reverse_multiplicative_sign_relation), 'Reverse multiplicative sign relation.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Reverses the same-sign and different-sign product classification.')]),
+    proposed).
+deformation_validity(
+    integer, reverse_signed_multiplication_sign_rule,
+    assign_reversed_product_sign, q_step_3, q_step_4,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(assign_reversed_product_sign), 'Assign reversed product sign.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Attaches the opposite sign to a nonzero magnitude product.')]),
+    proposed).
+deformation_validity(
+    integer, reverse_signed_multiplication_sign_rule,
+    report_reversed_signed_product, q_step_4, q_step_5,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(report_reversed_signed_product), 'Report reversed signed product.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Reports -Expected for the signed product.')]),
+    proposed).
+deformation_validity(
+    integer, reverse_signed_multiplication_sign_rule,
+    lose_product_sign_relation, q_step_5, q_accept,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(lose_product_sign_relation), 'Lose product sign relation.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Accepts the magnitude with the reversed product sign.')]),
+    proposed).
+
+deformation_validity(
+    integer, reverse_signed_division_sign_rule,
+    reverse_multiplicative_sign_relation, q_step_2, q_step_3,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(reverse_multiplicative_sign_relation), 'Reverse multiplicative sign relation.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Reverses the multiplication-derived quotient sign classification.')]),
+    proposed).
+deformation_validity(
+    integer, reverse_signed_division_sign_rule,
+    assign_reversed_quotient_sign, q_step_4, q_step_5,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(assign_reversed_quotient_sign), 'Assign reversed quotient sign.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Attaches the opposite sign to a nonzero quotient magnitude.')]),
+    proposed).
+deformation_validity(
+    integer, reverse_signed_division_sign_rule,
+    report_reversed_signed_quotient, q_step_5, q_step_6,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(report_reversed_signed_quotient), 'Report reversed signed quotient.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Reports -Expected for the signed quotient.')]),
+    proposed).
+deformation_validity(
+    integer, reverse_signed_division_sign_rule,
+    lose_quotient_sign_relation, q_step_6, q_accept,
+    [objective_invalid],
+    basis([proposed_from_code_reading(names(lose_quotient_sign_relation), 'Lose quotient sign relation.'),
+           separation_guard('Reported =\\= Expected'),
+           answer_bearing_change('Accepts the magnitude with the reversed quotient sign.')]),
+    proposed).
 
 % measurement
 deformation_validity(measurement, change_unit_label_without_scaling, omit_iteration_by_factor, q_step_1, q_step_2, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(omit_iteration_by_factor), 'Omits iteration by factor.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/measurement_action_pairs.pl:166,176-177,339-345', 'valid_unit_conversion/4 admits Count >= 0, so on quantity(0, FromUnit) Expected is 0*Factor = 0 and result(quantity(0,ToUnit)) is term-identical to expected(quantity(0,ToUnit)) — omitting the iteration then yields a true claim (0 m is 0 cm) reached by an unwarranted doing, while every Count > 0 is false.'), coincidence_at('At Count=0, the converted quantity is true.')]), adjudicated).
@@ -255,9 +457,49 @@ deformation_validity(ratio, additive_extension_of_ratio, lose_multiplicative_uni
 deformation_validity(ratio, reverse_ratio_referent_order, reverse_term_referent_alignment, q_step_1, q_step_2, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(changes(reverse_term_referent_alignment), 'Carries out reverse term referent alignment.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/ratio_action_pairs.pl:75-79,96', 'Result binds FirstLabel to SecondCount and SecondLabel to FirstCount under the guard FirstCount =\\= SecondCount, so each count is attached to the wrong referent — a misnamed quantity, and the degenerate harmless case is excluded by the guard.')]), adjudicated).
 deformation_validity(ratio, reverse_ratio_referent_order, lose_ordered_referent_relation, q_step_3, q_accept, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(lose_ordered_referent_relation), 'Drops ordered referent relation from the result.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/ratio_action_pairs.pl:76-79,88-89,99', 'The accept edge asserts ratio_statement(FirstLabel, SecondCount, SecondLabel, FirstCount) against the independently built Expected with the counts the other way round; the statement is false of the input situation.')]), adjudicated).
 
+deformation_validity(ratio, divide_larger_by_smaller_for_unit_rate,
+                     ignore_requested_rate_direction, q_step_1, q_step_2,
+                     [objective_invalid],
+                     basis([separation_guard('Reported =\\= Expected'),
+                            proposed_from_code_reading(drops(ignore_requested_rate_direction),
+                                 'Drops the answer-bearing direction that determines which quantity is per one.')]),
+                     proposed).
+deformation_validity(ratio, divide_larger_by_smaller_for_unit_rate,
+                     lose_rate_quantity_order, q_step_5, q_accept,
+                     [objective_invalid],
+                     basis([independent_truth_derivation(action_pair_expected_result,
+                                 'The outcome carries both ordered Expected and magnitude-ordered Reported rates.'),
+                            separation_guard('Reported =\\= Expected'),
+                            proposed_from_code_reading(drops(lose_rate_quantity_order),
+                                 'Loses the quantity order that makes the unit-rate answer determinate.')]),
+                     proposed).
+
 % statistics
 deformation_validity(statistics, mean_deviation_without_absolute_value, omit_absolute_value, q_step_2, q_step_3, [objective_invalid, context_sensitive_or_inefficient], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(drops(omit_absolute_value), 'Omits absolute value.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/statistics_action_pairs.pl:215-218,227,232,459-461', 'This clause carries no disequality guard and valid_data/1 admits any nonempty list of nonnegative integers, so on a constant or singleton data set (e.g. [4,4,4]) every deviation is 0 and IncorrectSpread equals ExpectedSpread — a true spread claim reached by an unwarranted doing — while any varied data set gives 0 against a positive MAD.')]), adjudicated).
 deformation_validity(statistics, question_without_variability, replace_varied_responses_with_one_fixed_answer, q_step_1, q_step_2, [objective_invalid], basis([independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(conflates(replace_varied_responses_with_one_fixed_answer), 'Replaces varied responses with one fixed answer.'), adjudicated(code_reading('2026-08-05'), 'knowledge/strategies/math/statistics_action_pairs.pl:93-97,106-107,112', 'The clause head matches only question(Variable, expects_variability), so the input itself states that varied responses are anticipated; replacing them with one fixed answer produces nonstatistical_question(...) as the classification, which is false for every input the head admits.')]), adjudicated).
+
+deformation_validity(
+    statistics, finite_frequency_as_exact_probability,
+    replace_estimate_with_exact_claim, q_step_2, q_step_3,
+    [context_sensitive_or_inefficient],
+    basis([proposed_from_code_reading(names(replace_estimate_with_exact_claim), 'Replace estimate with exact claim.'),
+           per_input_validity(
+             finite_frequency_claim_validity(Trials, exact_probability,
+                                               incorrect)),
+           answer_bearing_loss(erases_finite_record_qualification(Trials)),
+           source(im_teacher_guide('IM-G7-U8-L4'))]),
+    proposed).
+deformation_validity(
+    statistics, finite_frequency_as_exact_probability,
+    report_exact_probability_from_finite_record, q_step_3, q_accept,
+    [context_sensitive_or_inefficient],
+    basis([proposed_from_code_reading(names(report_exact_probability_from_finite_record), 'Report exact probability from finite record.'),
+           per_input_validity(
+             finite_frequency_claim_validity(Trials, exact_probability,
+                                               incorrect)),
+           answer_bearing_loss(names_estimate_as_exact_probability(Trials)),
+           source(im_teacher_guide('IM-G7-U8-L4'))]),
+    proposed).
 
 % subtraction
 deformation_validity(subtraction, add_instead_of_subtract_column, add_ones_instead_of_subtracting, q_step_1, q_step_2, [objective_invalid], basis([coincidence_profile('knowledge/strategies/deformation_coincidence.pl', subtraction/add_instead_of_subtract_column, ran(465), coincide(0)), independent_truth_derivation(action_pair_expected_result, 'The action-pair code derives expected(...) separately from the deformation result.'), proposed_from_code_reading(changes(add_ones_instead_of_subtracting), 'Adds ones instead of subtracting.')]), seeded_profile).

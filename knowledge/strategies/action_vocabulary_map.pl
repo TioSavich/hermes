@@ -1167,6 +1167,62 @@ action_maps(algebraic, symbolic_expression_construction, select_operation, compo
             confidence(medium),
             evidence("algebraic/symbolic_expression_construction, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. chooses the operation that will join the declared variables into one expression"),
             status(review_pending)).
+% No new canonical action is needed. Each local doing joins an existing
+% canonical action under the union rule.
+
+action_maps(algebraic, translate_diagram_to_equation, identify_diagram_representation, read_operand_attribute,
+            confidence(high), evidence("algebraic/translate_diagram_to_equation, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. The trace reads whether the structured diagram is tape or hanger before composing an equation."), status(review_pending)).
+action_maps(algebraic, translate_diagram_to_equation, identify_equal_groups, read_operand_attribute,
+            confidence(high), evidence("algebraic/translate_diagram_to_equation, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. The trace reads the equal-group count and group expression from the diagram contract."), status(review_pending)).
+action_maps(algebraic, translate_diagram_to_equation, coordinate_repeated_variable, assign_roles,
+            confidence(high), evidence("algebraic/translate_diagram_to_equation, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. The repeated label is bound to one unknown quantity role, as required by IM Grade 7 Unit 6 Lesson 2."), status(review_pending)).
+action_maps(algebraic, translate_diagram_to_equation, coordinate_additional_quantity, compose_expression,
+            confidence(high), evidence("algebraic/translate_diagram_to_equation, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. The additional diagram quantity is placed in the algebraic expression."), status(review_pending)).
+action_maps(algebraic, translate_diagram_to_equation, relate_diagram_sides, compose_expression,
+            confidence(high), evidence("algebraic/translate_diagram_to_equation, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. The composed group expression is related to the diagram total as an equation."), status(review_pending)).
+action_maps(algebraic, translate_diagram_to_equation, inscribe_equation, inscribe_result,
+            confidence(high), evidence("algebraic/translate_diagram_to_equation, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. The accepting step writes the equation that preserves the structured diagram roles."), status(review_pending)).
+
+action_maps(algebraic, split_repeated_diagram_variable, identify_repeated_variable_label, read_operand_attribute,
+            confidence(high), evidence("algebraic/split_repeated_diagram_variable, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. The trace reads the shared variable label and its occurrence count."), status(review_pending)).
+action_maps(algebraic, split_repeated_diagram_variable, assign_distinct_roles_to_repeated_label, substitute_symbol_reading,
+            confidence(high), evidence("algebraic/split_repeated_diagram_variable, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. The deformation reads repeated occurrences of one label as distinct variables, changing what the notation says."), status(review_pending)).
+action_maps(algebraic, split_repeated_diagram_variable, inscribe_changed_equation, misname_result,
+            confidence(high), evidence("algebraic/split_repeated_diagram_variable, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. The deformation writes an equation whose variable roles no longer match the diagram."), status(review_pending)).
+action_maps(algebraic, split_repeated_diagram_variable, lose_equal_group_relation, record_loss,
+            confidence(high), evidence("algebraic/split_repeated_diagram_variable, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. The accepting step records loss of the equal-group relation carried by repeated labels."), status(review_pending)).
+
+action_maps(algebraic, percent_change_composition, identify_percent_change_roles, assign_roles,
+            confidence(high), evidence("algebraic/percent_change_composition, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. The trace assigns the source amount, rate, direction, and requested target before calculation."), status(review_pending)).
+action_maps(algebraic, percent_change_composition, convert_percent_to_multiplier, re_express_equivalently,
+            confidence(high), evidence("algebraic/percent_change_composition, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. The percent rate is rewritten as the equivalent increase or decrease multiplier."), status(review_pending)).
+action_maps(algebraic, percent_change_composition, solve_percent_multiplier_relation, isolate_unknown,
+            confidence(high), evidence("algebraic/percent_change_composition, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. The requested new or original amount is isolated in the multiplicative percent relation; kernel_application records whether the run scaled or inverted."), status(review_pending)).
+action_maps(algebraic, percent_change_composition, report_percent_change_amount, inscribe_result,
+            confidence(high), evidence("algebraic/percent_change_composition, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. The accepting step writes the requested new or original amount."), status(review_pending)).
+
+action_maps(algebraic, combine_signed_like_terms, identify_signed_terms, read_operand_attribute,
+            confidence(high), evidence("algebraic/combine_signed_like_terms, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. The trace reads variable names, coefficients, constants, and operation signs from the structured expression."), status(review_pending)).
+action_maps(algebraic, combine_signed_like_terms, rewrite_subtraction_as_adding_the_opposite, re_express_equivalently,
+            confidence(high), evidence("algebraic/combine_signed_like_terms, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. IM Grade 7 Unit 6 Lessons 18 and 21 use adding the opposite to preserve the expression while rearranging terms."), status(review_pending)).
+action_maps(algebraic, combine_signed_like_terms, group_like_terms_by_variable, assign_roles,
+            confidence(high), evidence("algebraic/combine_signed_like_terms, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. Terms are grouped only when they carry the same variable role; constants form their own group."), status(review_pending)).
+action_maps(algebraic, combine_signed_like_terms, combine_like_term_coefficients, combine_quantities,
+            confidence(high), evidence("algebraic/combine_signed_like_terms, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. Coefficients attached to the same variable role are added."), status(review_pending)).
+action_maps(algebraic, combine_signed_like_terms, combine_constant_terms, combine_quantities,
+            confidence(high), evidence("algebraic/combine_signed_like_terms, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. Constant contributions are added separately from variable terms."), status(review_pending)).
+action_maps(algebraic, combine_signed_like_terms, inscribe_equivalent_linear_expression, inscribe_result,
+            confidence(high), evidence("algebraic/combine_signed_like_terms, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. The accepting step writes the normalized expression after role-preserving combination."), status(review_pending)).
+
+action_maps(algebraic, combine_unlike_terms, identify_unlike_terms, read_operand_attribute,
+            confidence(high), evidence("algebraic/combine_unlike_terms, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. The trace identifies the variable-term groups and the separate constant sum."), status(review_pending)).
+action_maps(algebraic, combine_unlike_terms, combine_constant_with_variable_coefficient, conflate_roles,
+            confidence(high), evidence("algebraic/combine_unlike_terms, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. The deformation collapses a constant role into a variable coefficient role, the distinction IM Grade 7 Unit 6 Lesson 20 says must remain."), status(review_pending)).
+action_maps(algebraic, combine_unlike_terms, inscribe_non_equivalent_linear_expression, misname_result,
+            confidence(high), evidence("algebraic/combine_unlike_terms, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. The deformation writes the collapsed coefficient as though it were an equivalent expression."), status(review_pending)).
+action_maps(algebraic, combine_unlike_terms, lose_like_term_condition, record_loss,
+            confidence(high), evidence("algebraic/combine_unlike_terms, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. The accepting step records that the same-variable condition for combination was not preserved."), status(review_pending)).
+
 action_maps(calculus, factor_cancel_substitute, detect_zero_over_zero, test_criteria,
             confidence(high),
             evidence("calculus/factor_cancel_substitute, q_step_2 -> q_step_3: 1 of the machine's 8 distinct edges, static only. tests the indeterminate form, which is the precondition the cancelling routine needs"),
@@ -3671,6 +3727,66 @@ action_maps(geometry, visible_faces_only_surface_area, report_partial_surface_ar
             confidence(high),
             evidence("geometry/visible_faces_only_surface_area, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. name a value that answers a different question than the one asked."),
             status(review_pending)).
+% GEOSTAT local actions mapped onto the existing canonical alphabet.
+
+action_maps(geometry, circle_circumference_diameter_co_measurement, establish_circle_measure, register_givens, confidence(high),
+            evidence("geometry/circle_circumference_diameter_co_measurement, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. Registers the supplied diameter and its linear unit before circle co-measurement."),
+            status(review_pending)).
+action_maps(geometry, circle_circumference_diameter_co_measurement, establish_co_measurement_unit, align_to_common_unit,
+            confidence(high),
+            evidence("geometry/circle_circumference_diameter_co_measurement, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. Coordinates diameter and circumference through the supplied rational approximation to pi."),
+            status(review_pending)).
+action_maps(geometry, circle_circumference_diameter_co_measurement, transform_circle_measure_through_co_measure, scale_multiplicatively,
+            confidence(high),
+            evidence("geometry/circle_circumference_diameter_co_measurement, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. Scales by pi or its reciprocal to move between diameter and circumference."),
+            status(review_pending)).
+action_maps(geometry, circle_circumference_diameter_co_measurement, report_circle_measure, name_result, confidence(high),
+            evidence("geometry/circle_circumference_diameter_co_measurement, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. Names the co-measured circumference with its linear unit."),
+            status(review_pending)).
+
+action_maps(geometry, use_diameter_as_radius_in_circumference, establish_circle_measure, register_givens, confidence(high),
+            evidence("geometry/use_diameter_as_radius_in_circumference, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. Registers the supplied diameter before the role substitution."),
+            status(review_pending)).
+action_maps(geometry, use_diameter_as_radius_in_circumference, read_diameter_as_radius, conflate_roles, confidence(high),
+            evidence("geometry/use_diameter_as_radius_in_circumference, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. Uses the diameter value in the radius role attested in IM-G7-U3-L10."),
+            status(review_pending)).
+action_maps(geometry, use_diameter_as_radius_in_circumference, double_misread_radius_to_diameter, compute_product,
+            confidence(high),
+            evidence("geometry/use_diameter_as_radius_in_circumference, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. Doubles the misread radius value before applying the circumference relation."),
+            status(review_pending)).
+action_maps(geometry, use_diameter_as_radius_in_circumference, report_misread_circumference, misname_result, confidence(high),
+            evidence("geometry/use_diameter_as_radius_in_circumference, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. Reports the separated result as the circumference of the supplied circle."),
+            status(review_pending)).
+
+action_maps(geometry, triangle_three_measure_determination, register_triangle_conditions, register_givens, confidence(high),
+            evidence("geometry/triangle_three_measure_determination, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. Registers the three named side or angle measures and their roles."),
+            status(review_pending)).
+action_maps(geometry, triangle_three_measure_determination, test_triangle_feasibility, test_criteria, confidence(high),
+            evidence("geometry/triangle_three_measure_determination, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. Tests whether the measures can bound a triangle; failure becomes an accepting refusal."),
+            status(review_pending)).
+action_maps(geometry, triangle_three_measure_determination, test_triangle_determination, test_criteria, confidence(high),
+            evidence("geometry/triangle_three_measure_determination, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. Tests whether the admissible conditions determine one or more congruence classes."),
+            status(review_pending)).
+action_maps(geometry, triangle_three_measure_determination, accept_triangle_determination, record_viability,
+            confidence(medium),
+            evidence("geometry/triangle_three_measure_determination, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. Closes with determined, ambiguous, or refused impossible as viable task outcomes."),
+            status(review_pending)).
+
+action_maps(geometry, angle_relation_unknown_measure, establish_angle_part_whole_relation, register_givens,
+            confidence(high),
+            evidence("geometry/angle_relation_unknown_measure, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. Registers the whole angle, known adjacent parts, and unknown name."),
+            status(review_pending)).
+action_maps(geometry, angle_relation_unknown_measure, accumulate_known_angle_parts, accumulate_total,
+            confidence(high),
+            evidence("geometry/angle_relation_unknown_measure, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. Adds the known adjacent angle measures."),
+            status(review_pending)).
+action_maps(geometry, angle_relation_unknown_measure, inscribe_angle_equation, compose_expression, confidence(high),
+            evidence("geometry/angle_relation_unknown_measure, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. Forms the part-whole equation used to determine the missing angle."),
+            status(review_pending)).
+action_maps(geometry, angle_relation_unknown_measure, isolate_unknown_angle, isolate_unknown, confidence(high),
+            evidence("geometry/angle_relation_unknown_measure, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. Subtracts the known total from the whole to isolate the unknown angle."),
+            status(review_pending)).
+
 action_maps(integer, drop_sign_use_magnitude_sum, drop_signs, treat_relevant_as_irrelevant,
             confidence(high),
             evidence("integer/drop_sign_use_magnitude_sum, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. treat a relation the result depends on as though it did not bear on the result."),
@@ -3783,6 +3899,181 @@ action_maps(integer, signed_number_location_and_order, read_locations_left_to_ri
             confidence(high),
             evidence("integer/signed_number_location_and_order, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. reads the order off the frame, left to right, from the located signed values"),
             status(review_pending)).
+action_maps(integer, signed_subtraction_as_additive_inverse, assign_subtraction_roles, assign_roles,
+            confidence(high),
+            evidence("integer/signed_subtraction_as_additive_inverse, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. Binds minuend and subtrahend before either rewrite."),
+            status(review_pending)).
+action_maps(integer, signed_subtraction_as_additive_inverse, rewrite_subtraction_as_unknown_addend, re_express_equivalently,
+            confidence(high),
+            evidence("integer/signed_subtraction_as_additive_inverse, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. Rewrites M-S=x as S+x=M without changing the asked value."),
+            status(review_pending)).
+action_maps(integer, signed_subtraction_as_additive_inverse, draw_addend_arrow_to_target, count_up_to_target,
+            confidence(high),
+            evidence("integer/signed_subtraction_as_additive_inverse, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. Traverses from the subtrahend to the minuend as the unknown addend."),
+            status(review_pending)).
+action_maps(integer, signed_subtraction_as_additive_inverse, read_arrow_displacement, name_result,
+            confidence(high),
+            evidence("integer/signed_subtraction_as_additive_inverse, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. Names the directed displacement carried by the addend arrow."),
+            status(review_pending)).
+action_maps(integer, signed_subtraction_as_additive_inverse, rewrite_as_adding_additive_inverse, re_express_equivalently,
+            confidence(high),
+            evidence("integer/signed_subtraction_as_additive_inverse, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. Re-expresses subtraction as addition of the additive inverse."),
+            status(review_pending)).
+action_maps(integer, signed_subtraction_as_additive_inverse, generalize_subtract_as_add_opposite, record_conservation,
+            confidence(high),
+            evidence("integer/signed_subtraction_as_additive_inverse, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. Records that the staged rewrites preserve the signed difference."),
+            status(review_pending)).
+
+action_maps(integer, swap_subtraction_operands_to_preserve_nonnegative_result, swap_minuend_and_subtrahend, conflate_roles,
+            confidence(high),
+            evidence("integer/swap_subtraction_operands_to_preserve_nonnegative_result, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static and observed. Exchanges the ordered minuend and subtrahend roles."),
+            status(review_pending)).
+action_maps(integer, swap_subtraction_operands_to_preserve_nonnegative_result, prefer_nonnegative_subtraction_orientation, treat_relevant_as_irrelevant,
+            confidence(high),
+            evidence("integer/swap_subtraction_operands_to_preserve_nonnegative_result, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static and observed. Treats the task's operand order as irrelevant so the result remains nonnegative."),
+            status(review_pending)).
+action_maps(integer, swap_subtraction_operands_to_preserve_nonnegative_result, draw_addend_arrow_to_target, count_up_to_target,
+            confidence(high),
+            evidence("integer/swap_subtraction_operands_to_preserve_nonnegative_result, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static and observed. Runs the arrow after the two subtraction roles have been exchanged."),
+            status(review_pending)).
+action_maps(integer, swap_subtraction_operands_to_preserve_nonnegative_result, report_swapped_difference, misname_result,
+            confidence(high),
+            evidence("integer/swap_subtraction_operands_to_preserve_nonnegative_result, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static and observed. Names the swapped result as the answer to the original ordered subtraction."),
+            status(review_pending)).
+action_maps(integer, swap_subtraction_operands_to_preserve_nonnegative_result, lose_ordered_difference, record_loss,
+            confidence(high),
+            evidence("integer/swap_subtraction_operands_to_preserve_nonnegative_result, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static and observed. Records loss of the original subtraction order."),
+            status(review_pending)).
+
+action_maps(integer, conflate_signed_difference_with_distance, locate_subtraction_endpoints, locate_position,
+            confidence(high),
+            evidence("integer/conflate_signed_difference_with_distance, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static and observed. Locates the two signed endpoints before measuring between them."),
+            status(review_pending)).
+action_maps(integer, conflate_signed_difference_with_distance, measure_unsigned_distance_between_endpoints, measure_quantity,
+            confidence(high),
+            evidence("integer/conflate_signed_difference_with_distance, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static and observed. Measures endpoint separation without a direction."),
+            status(review_pending)).
+action_maps(integer, conflate_signed_difference_with_distance, discard_change_direction, treat_relevant_as_irrelevant,
+            confidence(high),
+            evidence("integer/conflate_signed_difference_with_distance, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static and observed. Drops the direction that distinguishes signed change from distance."),
+            status(review_pending)).
+action_maps(integer, conflate_signed_difference_with_distance, name_distance_as_signed_difference, misname_result,
+            confidence(high),
+            evidence("integer/conflate_signed_difference_with_distance, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static and observed. Names an unsigned distance as the ordered signed difference."),
+            status(review_pending)).
+action_maps(integer, conflate_signed_difference_with_distance, lose_ordered_difference, record_loss,
+            confidence(high),
+            evidence("integer/conflate_signed_difference_with_distance, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static and observed. Records loss of the directed difference."),
+            status(review_pending)).
+
+action_maps(integer, signed_multiplication_by_sign_rule, continue_product_pattern_across_zero, traverse_boundary,
+            confidence(high),
+            evidence("integer/signed_multiplication_by_sign_rule, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. Continues the product sequence from positive through zero to negative factors."),
+            status(review_pending)).
+action_maps(integer, signed_multiplication_by_sign_rule, identify_factor_signs, read_operand_attribute,
+            confidence(high),
+            evidence("integer/signed_multiplication_by_sign_rule, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. Reads the sign attached to each factor."),
+            status(review_pending)).
+action_maps(integer, signed_multiplication_by_sign_rule, determine_multiplicative_sign_relation, read_operand_attribute,
+            confidence(high),
+            evidence("integer/signed_multiplication_by_sign_rule, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. Reads whether the factor signs are the same or different."),
+            status(review_pending)).
+action_maps(integer, signed_multiplication_by_sign_rule, multiply_factor_magnitudes, compute_product,
+            confidence(high),
+            evidence("integer/signed_multiplication_by_sign_rule, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. Computes the product of the two factor magnitudes."),
+            status(review_pending)).
+action_maps(integer, signed_multiplication_by_sign_rule, assign_product_sign, assign_roles,
+            confidence(high),
+            evidence("integer/signed_multiplication_by_sign_rule, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. Binds the sign relation to the product's sign role."),
+            status(review_pending)).
+action_maps(integer, signed_multiplication_by_sign_rule, state_signed_product_rule, record_conservation,
+            confidence(high),
+            evidence("integer/signed_multiplication_by_sign_rule, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. Records the sign relation retained in the computed product."),
+            status(review_pending)).
+
+action_maps(integer, reverse_signed_multiplication_sign_rule, identify_factor_signs, read_operand_attribute,
+            confidence(high),
+            evidence("integer/reverse_signed_multiplication_sign_rule, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. Reads the factor signs before the local reversal."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_multiplication_sign_rule, reverse_multiplicative_sign_relation, substitute_symbol_reading,
+            confidence(high),
+            evidence("integer/reverse_signed_multiplication_sign_rule, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. Substitutes the opposite same-sign or different-sign reading."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_multiplication_sign_rule, multiply_factor_magnitudes, compute_product,
+            confidence(high),
+            evidence("integer/reverse_signed_multiplication_sign_rule, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. Preserves the magnitude product while the sign relation is reversed."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_multiplication_sign_rule, assign_reversed_product_sign, substitute_symbol_reading,
+            confidence(high),
+            evidence("integer/reverse_signed_multiplication_sign_rule, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. Assigns the sign supplied by the reversed relation."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_multiplication_sign_rule, report_reversed_signed_product, misname_result,
+            confidence(high),
+            evidence("integer/reverse_signed_multiplication_sign_rule, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. Reports the separated reversed-sign product."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_multiplication_sign_rule, lose_product_sign_relation, record_loss,
+            confidence(high),
+            evidence("integer/reverse_signed_multiplication_sign_rule, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. Records loss of the productive product sign relation."),
+            status(review_pending)).
+
+action_maps(integer, signed_division_by_sign_rule, rewrite_division_as_unknown_factor_product, re_express_equivalently,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_start -> q_step_1: 1 of the machine's 7 distinct edges, static and observed. Rewrites dividend divided by divisor as divisor times unknown equals dividend."),
+            status(review_pending)).
+action_maps(integer, signed_division_by_sign_rule, continue_quotient_sign_pattern_from_multiplication, traverse_boundary,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_step_1 -> q_step_2: 1 of the machine's 7 distinct edges, static and observed. Carries the product sign pattern into quotient cases as the guide directs."),
+            status(review_pending)).
+action_maps(integer, signed_division_by_sign_rule, identify_dividend_divisor_signs, read_operand_attribute,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_step_2 -> q_step_3: 1 of the machine's 7 distinct edges, static and observed. Reads the signs of the dividend and divisor."),
+            status(review_pending)).
+action_maps(integer, signed_division_by_sign_rule, determine_multiplicative_sign_relation, read_operand_attribute,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_step_3 -> q_step_4: 1 of the machine's 7 distinct edges, static and observed. Reads whether dividend and divisor signs are the same or different."),
+            status(review_pending)).
+action_maps(integer, signed_division_by_sign_rule, divide_magnitudes, compute_quotient,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_step_4 -> q_step_5: 1 of the machine's 7 distinct edges, static and observed. Computes the quotient of the two magnitudes."),
+            status(review_pending)).
+action_maps(integer, signed_division_by_sign_rule, assign_quotient_sign, assign_roles,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_step_5 -> q_step_6: 1 of the machine's 7 distinct edges, static and observed. Binds the inherited sign relation to the quotient's sign role."),
+            status(review_pending)).
+action_maps(integer, signed_division_by_sign_rule, state_signed_quotient_rule, record_conservation,
+            confidence(high),
+            evidence("integer/signed_division_by_sign_rule, q_step_6 -> q_accept: 1 of the machine's 7 distinct edges, static and observed. Records the sign relation retained in the computed quotient."),
+            status(review_pending)).
+
+action_maps(integer, reverse_signed_division_sign_rule, rewrite_division_as_unknown_factor_product, re_express_equivalently,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_start -> q_step_1: 1 of the machine's 7 distinct edges, static and observed. Keeps the unknown-factor rewrite before the sign mutation."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_division_sign_rule, identify_dividend_divisor_signs, read_operand_attribute,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_step_1 -> q_step_2: 1 of the machine's 7 distinct edges, static and observed. Reads the dividend and divisor signs before the local reversal."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_division_sign_rule, reverse_multiplicative_sign_relation, substitute_symbol_reading,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_step_2 -> q_step_3: 1 of the machine's 7 distinct edges, static and observed. Substitutes the reversed product-derived sign relation."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_division_sign_rule, divide_magnitudes, compute_quotient,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_step_3 -> q_step_4: 1 of the machine's 7 distinct edges, static and observed. Preserves the quotient magnitude while the sign relation is reversed."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_division_sign_rule, assign_reversed_quotient_sign, substitute_symbol_reading,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_step_4 -> q_step_5: 1 of the machine's 7 distinct edges, static and observed. Assigns the sign supplied by the reversed relation."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_division_sign_rule, report_reversed_signed_quotient, misname_result,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_step_5 -> q_step_6: 1 of the machine's 7 distinct edges, static and observed. Reports the separated reversed-sign quotient."),
+            status(review_pending)).
+action_maps(integer, reverse_signed_division_sign_rule, lose_quotient_sign_relation, record_loss,
+            confidence(high),
+            evidence("integer/reverse_signed_division_sign_rule, q_step_6 -> q_accept: 1 of the machine's 7 distinct edges, static and observed. Records loss of the productive quotient sign relation."),
+            status(review_pending)).
+
 action_maps(measurement, change_unit_label_without_scaling, change_unit_label, rename_in_place_of_transforming,
             confidence(high),
             evidence("measurement/change_unit_label_without_scaling, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. relabels the measurement unit, the iteration by the conversion factor having been omitted two edges earlier"),
@@ -4379,6 +4670,114 @@ action_maps(ratio, scale_ratio_unit, scale_second_term_multiplicatively, scale_m
             confidence(high),
             evidence("ratio/scale_ratio_unit, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, witnessed. multiply a quantity or a term by a factor, keeping the multiplicative relation."),
             status(review_pending)).
+% Unit-rate normalization.
+action_maps(ratio, compute_unit_rate_from_ratio_pair, identify_ratio_pair, register_givens,
+            confidence(high),
+            evidence("ratio/compute_unit_rate_from_ratio_pair, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. Holds the ordered ratio pair before either quantity is selected as the per-one referent."),
+            status(review_pending)).
+action_maps(ratio, compute_unit_rate_from_ratio_pair, select_per_one_referent, assign_roles,
+            confidence(high),
+            evidence("ratio/compute_unit_rate_from_ratio_pair, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. Binds the requested quantity as the reference quantity that will be normalized to one."),
+            status(review_pending)).
+action_maps(ratio, compute_unit_rate_from_ratio_pair, select_compared_quantity, assign_roles,
+            confidence(high),
+            evidence("ratio/compute_unit_rate_from_ratio_pair, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. Binds the other quantity as the quantity measured per one reference quantity."),
+            status(review_pending)).
+action_maps(ratio, compute_unit_rate_from_ratio_pair, divide_compared_by_reference, compute_quotient,
+            confidence(high),
+            evidence("ratio/compute_unit_rate_from_ratio_pair, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. Divides the compared quantity by the reference quantity to compute the requested unit rate."),
+            status(review_pending)).
+action_maps(ratio, compute_unit_rate_from_ratio_pair, inscribe_unit_rate, name_result,
+            confidence(high),
+            evidence("ratio/compute_unit_rate_from_ratio_pair, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. Names the quotient together with its ordered rate direction."),
+            status(review_pending)).
+action_maps(ratio, compute_unit_rate_from_ratio_pair, preserve_rate_quantity_order, record_conservation,
+            confidence(high),
+            evidence("ratio/compute_unit_rate_from_ratio_pair, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. Records that the reported rate retains the requested quantity order."),
+            status(review_pending)).
+
+% Unit-rate direction deformation.
+action_maps(ratio, divide_larger_by_smaller_for_unit_rate, identify_ratio_pair, register_givens,
+            confidence(high),
+            evidence("ratio/divide_larger_by_smaller_for_unit_rate, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static and observed. Holds the same ordered ratio pair as the productive unit-rate machine."),
+            status(review_pending)).
+action_maps(ratio, divide_larger_by_smaller_for_unit_rate, ignore_requested_rate_direction, conflate_roles,
+            confidence(high),
+            evidence("ratio/divide_larger_by_smaller_for_unit_rate, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static and observed. Collapses the reference and compared quantity roles into an unordered pair before division."),
+            status(review_pending)).
+action_maps(ratio, divide_larger_by_smaller_for_unit_rate, order_ratio_terms_by_magnitude, order_by_magnitude,
+            confidence(high),
+            evidence("ratio/divide_larger_by_smaller_for_unit_rate, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static and observed. Orders the two terms by size in place of the rate direction supplied by the task."),
+            status(review_pending)).
+action_maps(ratio, divide_larger_by_smaller_for_unit_rate, divide_larger_term_by_smaller_term, compute_quotient,
+            confidence(high),
+            evidence("ratio/divide_larger_by_smaller_for_unit_rate, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static and observed. Computes a quotient from magnitude order rather than quantity roles."),
+            status(review_pending)).
+action_maps(ratio, divide_larger_by_smaller_for_unit_rate, inscribe_unit_rate, name_result,
+            confidence(high),
+            evidence("ratio/divide_larger_by_smaller_for_unit_rate, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static and observed. Uses the same result-naming action as the productive sibling while attaching the requested direction to the reversed quotient."),
+            status(review_pending)).
+action_maps(ratio, divide_larger_by_smaller_for_unit_rate, lose_rate_quantity_order, record_loss,
+            confidence(high),
+            evidence("ratio/divide_larger_by_smaller_for_unit_rate, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static and observed. Records that magnitude order replaced the answer-bearing quantity order."),
+            status(review_pending)).
+
+% Proportionality relation-license test.
+action_maps(ratio, test_relation_for_proportionality, identify_relation_pairs, register_givens,
+            confidence(high),
+            evidence("ratio/test_relation_for_proportionality, q_start -> q_step_1: 1 of the machine's 10 distinct edges, static and observed. Holds the ratio-pair table as the relation to be classified."),
+            status(review_pending)).
+action_maps(ratio, test_relation_for_proportionality, establish_candidate_constant, compute_quotient,
+            confidence(high),
+            evidence("ratio/test_relation_for_proportionality, q_step_1 -> q_step_2: 1 of the machine's 10 distinct edges, static and observed. Computes the second-per-first quotient of the base pair as the candidate constant."),
+            status(review_pending)).
+action_maps(ratio, test_relation_for_proportionality, compare_each_pair_to_constant, verify_invariant,
+            confidence(high),
+            evidence("ratio/test_relation_for_proportionality, q_step_2 -> q_step_3: 1 of the machine's 10 distinct edges, static and observed. Checks every pair against the same multiplicative invariant."),
+            status(review_pending)).
+action_maps(ratio, test_relation_for_proportionality, accept_proportional_relation, record_viability,
+            confidence(high),
+            evidence("ratio/test_relation_for_proportionality, q_observed_3 -> q_observed_4: 1 of the machine's 10 distinct edges, observed only. Records that all supplied pairs support the proportional relation license."),
+            status(review_pending)).
+action_maps(ratio, test_relation_for_proportionality, refuse_nonproportional_relation, record_viability,
+            confidence(high),
+            evidence("ratio/test_relation_for_proportionality, q_step_3 -> q_step_4: 1 of the machine's 10 distinct edges, static only. Records a witness-bearing refusal when a supplied pair has a different quotient."),
+            status(review_pending)).
+action_maps(ratio, test_relation_for_proportionality, inscribe_relation_classification, inscribe_result,
+            confidence(high),
+            evidence("ratio/test_relation_for_proportionality, q_step_4 -> q_accept: 1 of the machine's 10 distinct edges, static and observed. Writes either the constant-bearing classification or the justified refusal."),
+            status(review_pending)).
+
+% Proportional-equation setup and use.
+action_maps(ratio, inscribe_proportional_equation, identify_ratio_pair, register_givens,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_start -> q_step_1: 1 of the machine's 7 distinct edges, static and observed. Holds the known input-output pair used to determine the equation constant."),
+            status(review_pending)).
+action_maps(ratio, inscribe_proportional_equation, compute_constant_of_proportionality, compute_quotient,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_step_1 -> q_step_2: 1 of the machine's 7 distinct edges, static and observed. Computes k as the second quantity divided by the first quantity."),
+            status(review_pending)).
+action_maps(ratio, inscribe_proportional_equation, bind_proportional_variable_roles, assign_roles,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_step_2 -> q_step_3: 1 of the machine's 7 distinct edges, static and observed. Binds x to the first quantity and y to the second quantity."),
+            status(review_pending)).
+action_maps(ratio, inscribe_proportional_equation, inscribe_y_equals_kx, compose_expression,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_step_3 -> q_step_4: 1 of the machine's 7 distinct edges, static and observed. Assembles the symbolic equation y=kx from the bound roles and computed constant."),
+            status(review_pending)).
+action_maps(ratio, inscribe_proportional_equation, substitute_target_first_quantity, substitute_values,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_step_4 -> q_step_5: 1 of the machine's 7 distinct edges, static and observed. Substitutes the requested first-quantity value for x."),
+            status(review_pending)).
+action_maps(ratio, inscribe_proportional_equation, scale_target_by_constant, scale_multiplicatively,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_step_5 -> q_step_6: 1 of the machine's 7 distinct edges, static and observed. Multiplies the target first quantity by k to compute its paired second quantity."),
+            status(review_pending)).
+action_maps(ratio, inscribe_proportional_equation, inscribe_proportional_value, inscribe_result,
+            confidence(high),
+            evidence("ratio/inscribe_proportional_equation, q_step_6 -> q_accept: 1 of the machine's 7 distinct edges, static and observed. Writes the target input-output pair produced by the equation."),
+            status(review_pending)).
+
 action_maps(statistics, box_plot_from_five_number_summary, construct_five_number_summary, compose_expression,
             confidence(medium),
             evidence("statistics/box_plot_from_five_number_summary, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. assembles the five located values into the summary object the plot is drawn from"),
@@ -4599,6 +4998,57 @@ action_maps(statistics, statistical_question_variability_classification, identif
             confidence(high),
             evidence("statistics/statistical_question_variability_classification, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
             status(review_pending)).
+action_maps(statistics, estimate_probability_from_observed_frequency, register_frequency_record, register_givens, confidence(high),
+            evidence("statistics/estimate_probability_from_observed_frequency, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. Registers event occurrences and total repetitions."),
+            status(review_pending)).
+action_maps(statistics, estimate_probability_from_observed_frequency, count_event_occurrences, count_units, confidence(high),
+            evidence("statistics/estimate_probability_from_observed_frequency, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. Counts trials in which the named event occurred."),
+            status(review_pending)).
+action_maps(statistics, estimate_probability_from_observed_frequency, divide_by_total_trials, compute_quotient, confidence(high),
+            evidence("statistics/estimate_probability_from_observed_frequency, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. Forms cumulative relative frequency by dividing occurrences by trials."),
+            status(review_pending)).
+action_maps(statistics, estimate_probability_from_observed_frequency, qualify_relative_frequency_as_probability_estimate, record_viability, confidence(high),
+            evidence("statistics/estimate_probability_from_observed_frequency, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. Keeps the finite-record qualification when naming the probability estimate."),
+            status(review_pending)).
+
+action_maps(statistics, finite_frequency_as_exact_probability, register_frequency_record, register_givens, confidence(high),
+            evidence("statistics/finite_frequency_as_exact_probability, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static and observed. Registers event occurrences and total repetitions."),
+            status(review_pending)).
+action_maps(statistics, finite_frequency_as_exact_probability, calculate_relative_frequency, compute_quotient, confidence(high),
+            evidence("statistics/finite_frequency_as_exact_probability, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static and observed. Correctly calculates the observed relative frequency before the claim is changed."),
+            status(review_pending)).
+action_maps(statistics, finite_frequency_as_exact_probability, replace_estimate_with_exact_claim, accept_without_check,
+            confidence(high),
+            evidence("statistics/finite_frequency_as_exact_probability, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static and observed. Promotes a finite-run estimate to exact probability without a long-run warrant."),
+            status(review_pending)).
+action_maps(statistics, finite_frequency_as_exact_probability, report_exact_probability_from_finite_record, misname_result,
+            confidence(high),
+            evidence("statistics/finite_frequency_as_exact_probability, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static and observed. Names an exact probability where the record supports an estimate."),
+            status(review_pending)).
+
+action_maps(statistics, sample_population_distribution_judgment, preserve_sample_and_population, register_givens,
+            confidence(high),
+            evidence("statistics/sample_population_distribution_judgment, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static and observed. Retains both data referents for the representativeness comparison."),
+            status(review_pending)).
+action_maps(statistics, sample_population_distribution_judgment, summarize_sample_distribution, measure_quantity,
+            confidence(medium),
+            evidence("statistics/sample_population_distribution_judgment, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static and observed. statistics_action_pairs.pl: Computes the sample median and IQR while retaining its declared shape."),
+            status(review_pending)).
+action_maps(statistics, sample_population_distribution_judgment, summarize_population_distribution, measure_quantity,
+            confidence(medium),
+            evidence("statistics/sample_population_distribution_judgment, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static and observed. statistics_action_pairs.pl: Computes the population median and IQR while retaining its declared shape."),
+            status(review_pending)).
+action_maps(statistics, sample_population_distribution_judgment, compare_shape_center_and_spread, test_criteria,
+            confidence(high),
+            evidence("statistics/sample_population_distribution_judgment, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static and observed. statistics_action_pairs.pl: Compares shape, center, and spread between the two summarized distributions."),
+            status(review_pending)).
+action_maps(statistics, sample_population_distribution_judgment, name_representativeness_judgment, name_result,
+            confidence(high),
+            evidence("statistics/sample_population_distribution_judgment, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static and observed. statistics_action_pairs.pl: Names the representativeness judgment the comparison licenses."),
+            status(review_pending)).
+
+% No new canonical action is needed; every local doing reuses an existing row.
+
 action_maps(subtraction, add_instead_of_subtract_column, add_bases_instead_of_subtracting, substitute_operation,
             confidence(high),
             evidence("subtraction/add_instead_of_subtract_column, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, witnessed. adds at the base place where the problem calls for removal"),

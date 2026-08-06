@@ -141,9 +141,9 @@ window_legend_action(verify_by_substitution, computational, normative, conservin
 window_legend_action(verify_invariant, computational, normative, conserving).
 window_legend_action(withdraw_commitment, discursive, operation, neutral).
 
-window_legend_arc(break_first_work_break, 4).
+window_legend_arc(break_first_work_break, 5).
 window_legend_arc(break_keep_break, 3).
-window_legend_arc(break_recover_break, 19).
+window_legend_arc(break_recover_break, 22).
 window_legend_arc(break_recover_break_work_on, 1).
 window_legend_arc(break_then_keep_then_break, 1).
 window_legend_arc(break_then_keep_work_on, 1).
@@ -155,19 +155,19 @@ window_legend_arc(break_twice_then_test_what_held, 3).
 window_legend_arc(keep_break_recover_break_keep, 1).
 window_legend_arc(keep_first_break_keep_break, 1).
 window_legend_arc(keep_first_break_recover_break, 1).
-window_legend_arc(keep_first_break_recover_break_again, 1).
+window_legend_arc(keep_first_break_recover_break_again, 2).
 window_legend_arc(keep_first_break_work_on, 1).
 window_legend_arc(keep_first_then_break, 1).
 window_legend_arc(keep_first_then_work_on, 2).
-window_legend_arc(keep_first_work_keep, 4).
+window_legend_arc(keep_first_work_keep, 5).
 window_legend_arc(keep_then_break, 5).
-window_legend_arc(keep_then_work_on, 32).
-window_legend_arc(keep_work_keep, 9).
+window_legend_arc(keep_then_work_on, 37).
+window_legend_arc(keep_work_keep, 10).
 window_legend_arc(keep_work_keep_work_keep, 1).
 window_legend_arc(keep_work_keep_work_on, 2).
-window_legend_arc(unrecorded_run, 50).
-window_legend_arc(work_then_break, 49).
-window_legend_arc(work_then_keep, 35).
+window_legend_arc(unrecorded_run, 53).
+window_legend_arc(work_then_break, 53).
+window_legend_arc(work_then_keep, 39).
 
 window_row(addition, append_column_sum_without_carrying, keep_first_break_recover_break, [align_to_common_unit], [substitute_operation], [omit_required_step, inscribe_result, record_loss], []).
 window_row(addition, base_ones_chunking, work_then_keep, [decompose_operand], [combine_quantities, combine_quantities], [record_conservation], []).
@@ -188,6 +188,8 @@ window_row(addition, round_without_adjusting, work_then_break, [assign_roles, se
 window_row(addition, unbalanced_make_base_compensation, work_then_break, [assign_roles, select_unit_scale, retain_where_change_was_due], [count_up_to_target, combine_quantities], [record_loss], []).
 window_row(addition, wrong_carry_amount_to_next_column, keep_first_break_keep_break, [align_to_common_unit, misread_intermediate_value, regroup_to_base], [apply_stored_rule], [inscribe_result, record_loss], []).
 window_row(algebraic, balance_preserving_linear_solution, keep_work_keep, [register_givens, re_express_equivalently, isolate_unknown], [], [verify_by_substitution], []).
+window_row(algebraic, combine_signed_like_terms, keep_then_work_on, [read_operand_attribute, re_express_equivalently, assign_roles], [combine_quantities, combine_quantities], [inscribe_result], []).
+window_row(algebraic, combine_unlike_terms, work_then_break, [read_operand_attribute, conflate_roles], [], [misname_result, record_loss], []).
 window_row(algebraic, contextual_linear_equation_construction, unrecorded_run, [assign_roles, assign_roles, compose_expression, compose_expression, compose_expression], [], [inscribe_result], []).
 window_row(algebraic, distributive_expression_rewrite, work_then_keep, [read_operand_attribute, read_operand_attribute, distribute_over_partition, distribute_over_partition, recompose_total], [], [], []).
 window_row(algebraic, drop_distributed_term, keep_then_break, [read_operand_attribute, distribute_over_partition], [halt_before_completion], [record_loss], []).
@@ -199,8 +201,11 @@ window_row(algebraic, guess_and_check_rule, keep_then_break, [register_givens], 
 window_row(algebraic, linear_pattern_contextual_rule, work_then_keep, [read_operand_attribute, read_operand_attribute], [count_units, compute_product, combine_quantities], [record_conservation], []).
 window_row(algebraic, one_sided_equation_operation, break_three_times, [substitute_symbol_reading, retain_where_change_was_due], [remove_quantity, compute_quotient], [misname_result], []).
 window_row(algebraic, operational_equals_left_value, work_then_break, [substitute_values, substitute_symbol_reading], [evaluate_expression], [treat_relevant_as_irrelevant], []).
+window_row(algebraic, percent_change_composition, keep_then_work_on, [assign_roles, re_express_equivalently, isolate_unknown], [], [inscribe_result], []).
 window_row(algebraic, programming_expression_evaluation, unrecorded_run, [register_givens, register_givens], [evaluate_expression], [name_result], [receive_kernel_outcome]).
+window_row(algebraic, split_repeated_diagram_variable, work_then_break, [read_operand_attribute, substitute_symbol_reading], [], [misname_result, record_loss], []).
 window_row(algebraic, symbolic_expression_construction, keep_then_work_on, [assign_roles, assign_roles, compose_expression], [], [verify_invariant, inscribe_result], []).
+window_row(algebraic, translate_diagram_to_equation, unrecorded_run, [read_operand_attribute, read_operand_attribute, assign_roles, compose_expression, compose_expression], [], [inscribe_result], []).
 window_row(calculus, bounded_numerator_over_diverging_denominator, unrecorded_run, [read_operand_attribute, read_operand_attribute, read_operand_attribute, filter_by_constraint, judge_against_benchmark], [], [name_result], []).
 window_row(calculus, direct_substitution, keep_then_work_on, [read_operand_attribute, substitute_values], [evaluate_expression], [test_criteria, name_result], [receive_kernel_outcome]).
 window_row(calculus, factor_cancel_substitute, keep_then_work_on, [read_operand_attribute, substitute_values, decompose_operand, substitute_values], [evaluate_expression], [test_criteria, name_result], [receive_kernel_outcome]).
@@ -297,6 +302,7 @@ window_row(fraction, unit_fraction_partition, keep_then_work_on, [unitize_refere
 window_row(fraction, whole_number_grab, work_then_break, [unitize_referent, read_operand_attribute], [], [treat_relevant_as_irrelevant, misname_result, record_loss], []).
 window_row(geometry, angle_additive_composition, keep_work_keep, [establish_reference_frame], [accumulate_total], [verify_invariant, verify_invariant], []).
 window_row(geometry, angle_as_ray_length, keep_first_then_break, [retain_what_must_survive, scale_multiplicatively, substitute_appearance_for_measure], [], [], []).
+window_row(geometry, angle_relation_unknown_measure, unrecorded_run, [register_givens, compose_expression, isolate_unknown], [accumulate_total], [], []).
 window_row(geometry, angle_turn_measurement, unrecorded_run, [establish_reference_frame, establish_reference_frame, locate_position], [iterate_unit], [name_result], []).
 window_row(geometry, area_as_perimeter_count, break_recover_break, [register_givens, substitute_appearance_for_measure], [traverse_boundary], [treat_relevant_as_irrelevant], []).
 window_row(geometry, area_preserving_polygon_decomposition, work_then_keep, [register_givens, decompose_region], [measure_quantity, accumulate_total], [record_conservation], []).
@@ -304,6 +310,7 @@ window_row(geometry, area_unit_covering, keep_then_work_on, [unitize_referent], 
 window_row(geometry, area_unit_scale_selection, unrecorded_run, [read_operand_attribute, compare_magnitudes, select_unit_scale], [], [], []).
 window_row(geometry, axis_aligned_coordinate_distance, unrecorded_run, [locate_position, locate_position, retain_unchanged], [remove_quantity, apply_stored_rule], [], []).
 window_row(geometry, choose_first_area_unit_without_scale, break_first_work_break, [select_unit_scale], [], [treat_relevant_as_irrelevant, omit_required_step], []).
+window_row(geometry, circle_circumference_diameter_co_measurement, keep_then_work_on, [register_givens, align_to_common_unit, scale_multiplicatively], [], [name_result], []).
 window_row(geometry, compare_solid_volume_by_cube_count, keep_then_work_on, [unitize_referent, compare_magnitudes], [count_units, count_units], [set_aside_irrelevant_attribute], []).
 window_row(geometry, compare_solid_volume_by_visible_extent, break_then_work_on, [read_operand_attribute, compare_magnitudes], [], [treat_relevant_as_irrelevant], []).
 window_row(geometry, composite_prism_volume_sum, keep_first_work_keep, [], [measure_quantity, accumulate_total], [verify_invariant, record_conservation], []).
@@ -340,13 +347,22 @@ window_row(geometry, subtract_side_from_area, work_then_break, [register_givens]
 window_row(geometry, sum_overlapping_prism_volumes, work_then_break, [], [measure_quantity, double_count], [omit_required_step, misname_result], []).
 window_row(geometry, symmetry_constrained_side_reconstruction, unrecorded_run, [register_givens, assign_roles, isolate_unknown], [accumulate_total, share_into_known_groups], [], []).
 window_row(geometry, triangle_area_half_base_height, keep_then_work_on, [assign_roles, assign_roles, recompose_total, select_part], [compute_product], [], []).
+window_row(geometry, triangle_three_measure_determination, work_then_keep, [register_givens], [], [test_criteria, test_criteria, record_viability], []).
+window_row(geometry, use_diameter_as_radius_in_circumference, break_recover_break, [register_givens, conflate_roles], [compute_product], [misname_result], []).
 window_row(geometry, visible_faces_only_surface_area, work_then_break, [register_givens, enumerate_candidates], [], [omit_required_step, misname_result], []).
+window_row(integer, conflate_signed_difference_with_distance, work_then_break, [locate_position], [measure_quantity], [treat_relevant_as_irrelevant, misname_result, record_loss], []).
 window_row(integer, drop_sign_use_magnitude_sum, break_recover_break, [read_operand_attribute, read_operand_attribute], [combine_quantities], [treat_relevant_as_irrelevant, misname_result, record_loss], []).
 window_row(integer, inequality_as_boundary_point, work_then_break, [read_operand_attribute], [], [treat_relevant_as_irrelevant, omit_required_step, misname_result], []).
 window_row(integer, inequality_solution_set_representation, keep_then_work_on, [read_operand_attribute, read_operand_attribute], [], [test_criteria, inscribe_result], []).
 window_row(integer, order_by_magnitude_ignore_sign, break_recover_break, [establish_reference_frame, substitute_scalar_for_structured_quantity, order_by_magnitude], [], [record_loss], []).
+window_row(integer, reverse_signed_division_sign_rule, keep_first_break_recover_break_again, [re_express_equivalently, read_operand_attribute, substitute_symbol_reading, substitute_symbol_reading], [compute_quotient], [misname_result, record_loss], []).
+window_row(integer, reverse_signed_multiplication_sign_rule, break_recover_break, [read_operand_attribute, substitute_symbol_reading, substitute_symbol_reading], [compute_product], [misname_result, record_loss], []).
 window_row(integer, signed_addition_with_sign_relation, work_then_keep, [read_operand_attribute, read_operand_attribute, read_operand_attribute, assign_roles], [combine_quantities], [record_conservation], []).
+window_row(integer, signed_division_by_sign_rule, keep_first_work_keep, [re_express_equivalently, read_operand_attribute, read_operand_attribute, assign_roles], [traverse_boundary, compute_quotient], [record_conservation], []).
+window_row(integer, signed_multiplication_by_sign_rule, work_then_keep, [read_operand_attribute, read_operand_attribute, assign_roles], [traverse_boundary, compute_product], [record_conservation], []).
 window_row(integer, signed_number_location_and_order, keep_then_work_on, [establish_reference_frame, locate_position, order_by_magnitude], [], [verify_invariant], []).
+window_row(integer, signed_subtraction_as_additive_inverse, keep_work_keep, [assign_roles, re_express_equivalently, re_express_equivalently], [count_up_to_target], [name_result, record_conservation], []).
+window_row(integer, swap_subtraction_operands_to_preserve_nonnegative_result, break_first_work_break, [conflate_roles], [count_up_to_target], [treat_relevant_as_irrelevant, misname_result, record_loss], []).
 window_row(measurement, change_unit_label_without_scaling, work_then_break, [read_operand_attribute, retain_where_change_was_due, rename_in_place_of_transforming], [], [omit_required_step], []).
 window_row(measurement, count_marks_not_intervals, work_then_break, [register_givens], [substitute_count_for_measure], [record_loss], []).
 window_row(measurement, drop_unit_from_measured_quantity_change, work_then_break, [register_givens], [apply_quantity_change], [treat_relevant_as_irrelevant, misname_result], []).
@@ -378,13 +394,19 @@ window_row(multiplication, sequential_recompute_commuted_products, break_recover
 window_row(probability, equiprobable_endpoint_counting, break_then_work_on, [register_givens, read_operand_attribute, compare_magnitudes], [count_units, substitute_count_for_measure], [], []).
 window_row(probability, terminal_tree_endpoint_probability_sum, unrecorded_run, [register_givens, read_operand_attribute], [accumulate_total], [name_result], []).
 window_row(ratio, additive_extension_of_ratio, work_then_break, [register_givens, compose_expression], [remove_quantity, combine_quantities], [record_loss], []).
+window_row(ratio, compute_unit_rate_from_ratio_pair, work_then_keep, [register_givens, assign_roles, assign_roles], [compute_quotient], [name_result, record_conservation], []).
 window_row(ratio, construct_referent_ratio_diagram, unrecorded_run, [assign_roles, assign_roles, assign_roles, compose_expression], [], [inscribe_result], []).
+window_row(ratio, divide_larger_by_smaller_for_unit_rate, break_recover_break, [register_givens, conflate_roles, order_by_magnitude], [compute_quotient], [name_result, record_loss], []).
+window_row(ratio, inscribe_proportional_equation, unrecorded_run, [register_givens, assign_roles, compose_expression, substitute_values, scale_multiplicatively], [compute_quotient], [inscribe_result], []).
 window_row(ratio, reverse_ratio_referent_order, break_recover_break, [register_givens, conflate_roles], [], [inscribe_result, record_loss], []).
 window_row(ratio, scale_ratio_unit, work_then_keep, [register_givens, read_operand_attribute, scale_multiplicatively, scale_multiplicatively, compose_expression], [], [record_conservation], []).
+window_row(ratio, test_relation_for_proportionality, keep_then_work_on, [register_givens], [compute_quotient], [verify_invariant, record_viability, inscribe_result], []).
 window_row(statistics, box_plot_from_five_number_summary, keep_then_work_on, [register_givens, order_by_magnitude, compose_expression, align_to_common_unit], [], [inscribe_result], []).
 window_row(statistics, categorical_frequency_bar_representation, unrecorded_run, [assign_roles, establish_reference_frame], [count_units], [inscribe_result], []).
 window_row(statistics, distribution_summary_selection, unrecorded_run, [register_givens, read_operand_attribute], [], [name_result], []).
 window_row(statistics, dot_plot_frequency_representation, keep_then_work_on, [establish_reference_frame], [], [verify_invariant, inscribe_result], []).
+window_row(statistics, estimate_probability_from_observed_frequency, work_then_keep, [register_givens], [count_units, compute_quotient], [record_viability], []).
+window_row(statistics, finite_frequency_as_exact_probability, work_then_break, [register_givens], [compute_quotient], [accept_without_check, misname_result], []).
 window_row(statistics, five_number_summary_and_iqr, unrecorded_run, [register_givens, order_by_magnitude, partition_into_equal_parts, locate_position], [remove_quantity], [], []).
 window_row(statistics, histogram_equal_interval_representation, unrecorded_run, [register_givens, select_unit_scale, partition_into_equal_parts], [count_units], [inscribe_result], []).
 window_row(statistics, mean_absolute_deviation, unrecorded_run, [register_givens, locate_position], [measure_quantity, apply_stored_rule, compute_quotient], [], []).
@@ -394,6 +416,7 @@ window_row(statistics, mean_deviation_without_absolute_value, break_then_work_on
 window_row(statistics, median_as_ordered_middle, unrecorded_run, [register_givens, order_by_magnitude, locate_position], [], [], []).
 window_row(statistics, mode_as_maximal_frequency, unrecorded_run, [register_givens], [count_units], [name_result], []).
 window_row(statistics, question_without_variability, break_then_work_on, [read_operand_attribute, substitute_scalar_for_structured_quantity], [], [name_result], []).
+window_row(statistics, sample_population_distribution_judgment, keep_then_work_on, [register_givens], [measure_quantity, measure_quantity], [test_criteria, name_result], []).
 window_row(statistics, statistical_question_variability_classification, keep_then_work_on, [register_givens, read_operand_attribute], [], [test_criteria, name_result], []).
 window_row(subtraction, add_instead_of_subtract_column, break_keep_break, [decompose_by_place, recompose_total], [substitute_operation, substitute_operation], [record_loss], []).
 window_row(subtraction, answer_as_endpoint_count_up, work_then_break, [assign_roles, assign_roles], [count_up_to_target, count_up_to_target], [misname_result, record_loss], []).

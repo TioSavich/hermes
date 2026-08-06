@@ -122,9 +122,9 @@ LEGEND - actions (canonical, genre/register/stance)
   verify_invariant  computational/normative/conserving
   withdraw_commitment  discursive/operation/neutral
 LEGEND - arcs (name, machines)
-  break_first_work_break  4
+  break_first_work_break  5
   break_keep_break  3
-  break_recover_break  19
+  break_recover_break  22
   break_recover_break_work_on  1
   break_then_keep_then_break  1
   break_then_keep_work_on  1
@@ -136,19 +136,19 @@ LEGEND - arcs (name, machines)
   keep_break_recover_break_keep  1
   keep_first_break_keep_break  1
   keep_first_break_recover_break  1
-  keep_first_break_recover_break_again  1
+  keep_first_break_recover_break_again  2
   keep_first_break_work_on  1
   keep_first_then_break  1
   keep_first_then_work_on  2
-  keep_first_work_keep  4
+  keep_first_work_keep  5
   keep_then_break  5
-  keep_then_work_on  32
-  keep_work_keep  9
+  keep_then_work_on  37
+  keep_work_keep  10
   keep_work_keep_work_keep  1
   keep_work_keep_work_on  2
-  unrecorded_run  50
-  work_then_break  49
-  work_then_keep  35
+  unrecorded_run  53
+  work_then_break  53
+  work_then_keep  39
 MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
   addition/append_column_sum_without_carrying arc=keep_first_break_recover_break
     shell=align_to_common_unit core=substitute_operation closure=omit_required_step+inscribe_result+record_loss other=none
@@ -188,6 +188,10 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=align_to_common_unit+misread_intermediate_value+regroup_to_base core=apply_stored_rule closure=inscribe_result+record_loss other=none
   algebraic/balance_preserving_linear_solution arc=keep_work_keep
     shell=register_givens+re_express_equivalently+isolate_unknown core=none closure=verify_by_substitution other=none
+  algebraic/combine_signed_like_terms arc=keep_then_work_on
+    shell=read_operand_attribute+re_express_equivalently+assign_roles core=combine_quantities+combine_quantities closure=inscribe_result other=none
+  algebraic/combine_unlike_terms arc=work_then_break
+    shell=read_operand_attribute+conflate_roles core=none closure=misname_result+record_loss other=none
   algebraic/contextual_linear_equation_construction arc=unrecorded_run
     shell=assign_roles+assign_roles+compose_expression+compose_expression+compose_expression core=none closure=inscribe_result other=none
   algebraic/distributive_expression_rewrite arc=work_then_keep
@@ -210,10 +214,16 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=substitute_symbol_reading+retain_where_change_was_due core=remove_quantity+compute_quotient closure=misname_result other=none
   algebraic/operational_equals_left_value arc=work_then_break
     shell=substitute_values+substitute_symbol_reading core=evaluate_expression closure=treat_relevant_as_irrelevant other=none
+  algebraic/percent_change_composition arc=keep_then_work_on
+    shell=assign_roles+re_express_equivalently+isolate_unknown core=none closure=inscribe_result other=none
   algebraic/programming_expression_evaluation arc=unrecorded_run
     shell=register_givens+register_givens core=evaluate_expression closure=name_result other=receive_kernel_outcome
+  algebraic/split_repeated_diagram_variable arc=work_then_break
+    shell=read_operand_attribute+substitute_symbol_reading core=none closure=misname_result+record_loss other=none
   algebraic/symbolic_expression_construction arc=keep_then_work_on
     shell=assign_roles+assign_roles+compose_expression core=none closure=verify_invariant+inscribe_result other=none
+  algebraic/translate_diagram_to_equation arc=unrecorded_run
+    shell=read_operand_attribute+read_operand_attribute+assign_roles+compose_expression+compose_expression core=none closure=inscribe_result other=none
   calculus/bounded_numerator_over_diverging_denominator arc=unrecorded_run
     shell=read_operand_attribute+read_operand_attribute+read_operand_attribute+filter_by_constraint+judge_against_benchmark core=none closure=name_result other=none
   calculus/direct_substitution arc=keep_then_work_on
@@ -406,6 +416,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=establish_reference_frame core=accumulate_total closure=verify_invariant+verify_invariant other=none
   geometry/angle_as_ray_length arc=keep_first_then_break
     shell=retain_what_must_survive+scale_multiplicatively+substitute_appearance_for_measure core=none closure=none other=none
+  geometry/angle_relation_unknown_measure arc=unrecorded_run
+    shell=register_givens+compose_expression+isolate_unknown core=accumulate_total closure=none other=none
   geometry/angle_turn_measurement arc=unrecorded_run
     shell=establish_reference_frame+establish_reference_frame+locate_position core=iterate_unit closure=name_result other=none
   geometry/area_as_perimeter_count arc=break_recover_break
@@ -420,6 +432,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=locate_position+locate_position+retain_unchanged core=remove_quantity+apply_stored_rule closure=none other=none
   geometry/choose_first_area_unit_without_scale arc=break_first_work_break
     shell=select_unit_scale core=none closure=treat_relevant_as_irrelevant+omit_required_step other=none
+  geometry/circle_circumference_diameter_co_measurement arc=keep_then_work_on
+    shell=register_givens+align_to_common_unit+scale_multiplicatively core=none closure=name_result other=none
   geometry/compare_solid_volume_by_cube_count arc=keep_then_work_on
     shell=unitize_referent+compare_magnitudes core=count_units+count_units closure=set_aside_irrelevant_attribute other=none
   geometry/compare_solid_volume_by_visible_extent arc=break_then_work_on
@@ -492,8 +506,14 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+assign_roles+isolate_unknown core=accumulate_total+share_into_known_groups closure=none other=none
   geometry/triangle_area_half_base_height arc=keep_then_work_on
     shell=assign_roles+assign_roles+recompose_total+select_part core=compute_product closure=none other=none
+  geometry/triangle_three_measure_determination arc=work_then_keep
+    shell=register_givens core=none closure=test_criteria+test_criteria+record_viability other=none
+  geometry/use_diameter_as_radius_in_circumference arc=break_recover_break
+    shell=register_givens+conflate_roles core=compute_product closure=misname_result other=none
   geometry/visible_faces_only_surface_area arc=work_then_break
     shell=register_givens+enumerate_candidates core=none closure=omit_required_step+misname_result other=none
+  integer/conflate_signed_difference_with_distance arc=work_then_break
+    shell=locate_position core=measure_quantity closure=treat_relevant_as_irrelevant+misname_result+record_loss other=none
   integer/drop_sign_use_magnitude_sum arc=break_recover_break
     shell=read_operand_attribute+read_operand_attribute core=combine_quantities closure=treat_relevant_as_irrelevant+misname_result+record_loss other=none
   integer/inequality_as_boundary_point arc=work_then_break
@@ -502,10 +522,22 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=read_operand_attribute+read_operand_attribute core=none closure=test_criteria+inscribe_result other=none
   integer/order_by_magnitude_ignore_sign arc=break_recover_break
     shell=establish_reference_frame+substitute_scalar_for_structured_quantity+order_by_magnitude core=none closure=record_loss other=none
+  integer/reverse_signed_division_sign_rule arc=keep_first_break_recover_break_again
+    shell=re_express_equivalently+read_operand_attribute+substitute_symbol_reading+substitute_symbol_reading core=compute_quotient closure=misname_result+record_loss other=none
+  integer/reverse_signed_multiplication_sign_rule arc=break_recover_break
+    shell=read_operand_attribute+substitute_symbol_reading+substitute_symbol_reading core=compute_product closure=misname_result+record_loss other=none
   integer/signed_addition_with_sign_relation arc=work_then_keep
     shell=read_operand_attribute+read_operand_attribute+read_operand_attribute+assign_roles core=combine_quantities closure=record_conservation other=none
+  integer/signed_division_by_sign_rule arc=keep_first_work_keep
+    shell=re_express_equivalently+read_operand_attribute+read_operand_attribute+assign_roles core=traverse_boundary+compute_quotient closure=record_conservation other=none
+  integer/signed_multiplication_by_sign_rule arc=work_then_keep
+    shell=read_operand_attribute+read_operand_attribute+assign_roles core=traverse_boundary+compute_product closure=record_conservation other=none
   integer/signed_number_location_and_order arc=keep_then_work_on
     shell=establish_reference_frame+locate_position+order_by_magnitude core=none closure=verify_invariant other=none
+  integer/signed_subtraction_as_additive_inverse arc=keep_work_keep
+    shell=assign_roles+re_express_equivalently+re_express_equivalently core=count_up_to_target closure=name_result+record_conservation other=none
+  integer/swap_subtraction_operands_to_preserve_nonnegative_result arc=break_first_work_break
+    shell=conflate_roles core=count_up_to_target closure=treat_relevant_as_irrelevant+misname_result+record_loss other=none
   measurement/change_unit_label_without_scaling arc=work_then_break
     shell=read_operand_attribute+retain_where_change_was_due+rename_in_place_of_transforming core=none closure=omit_required_step other=none
   measurement/count_marks_not_intervals arc=work_then_break
@@ -568,12 +600,20 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+read_operand_attribute core=accumulate_total closure=name_result other=none
   ratio/additive_extension_of_ratio arc=work_then_break
     shell=register_givens+compose_expression core=remove_quantity+combine_quantities closure=record_loss other=none
+  ratio/compute_unit_rate_from_ratio_pair arc=work_then_keep
+    shell=register_givens+assign_roles+assign_roles core=compute_quotient closure=name_result+record_conservation other=none
   ratio/construct_referent_ratio_diagram arc=unrecorded_run
     shell=assign_roles+assign_roles+assign_roles+compose_expression core=none closure=inscribe_result other=none
+  ratio/divide_larger_by_smaller_for_unit_rate arc=break_recover_break
+    shell=register_givens+conflate_roles+order_by_magnitude core=compute_quotient closure=name_result+record_loss other=none
+  ratio/inscribe_proportional_equation arc=unrecorded_run
+    shell=register_givens+assign_roles+compose_expression+substitute_values+scale_multiplicatively core=compute_quotient closure=inscribe_result other=none
   ratio/reverse_ratio_referent_order arc=break_recover_break
     shell=register_givens+conflate_roles core=none closure=inscribe_result+record_loss other=none
   ratio/scale_ratio_unit arc=work_then_keep
     shell=register_givens+read_operand_attribute+scale_multiplicatively+scale_multiplicatively+compose_expression core=none closure=record_conservation other=none
+  ratio/test_relation_for_proportionality arc=keep_then_work_on
+    shell=register_givens core=compute_quotient closure=verify_invariant+record_viability+inscribe_result other=none
   statistics/box_plot_from_five_number_summary arc=keep_then_work_on
     shell=register_givens+order_by_magnitude+compose_expression+align_to_common_unit core=none closure=inscribe_result other=none
   statistics/categorical_frequency_bar_representation arc=unrecorded_run
@@ -582,6 +622,10 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens+read_operand_attribute core=none closure=name_result other=none
   statistics/dot_plot_frequency_representation arc=keep_then_work_on
     shell=establish_reference_frame core=none closure=verify_invariant+inscribe_result other=none
+  statistics/estimate_probability_from_observed_frequency arc=work_then_keep
+    shell=register_givens core=count_units+compute_quotient closure=record_viability other=none
+  statistics/finite_frequency_as_exact_probability arc=work_then_break
+    shell=register_givens core=compute_quotient closure=accept_without_check+misname_result other=none
   statistics/five_number_summary_and_iqr arc=unrecorded_run
     shell=register_givens+order_by_magnitude+partition_into_equal_parts+locate_position core=remove_quantity closure=none other=none
   statistics/histogram_equal_interval_representation arc=unrecorded_run
@@ -600,6 +644,8 @@ MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
     shell=register_givens core=count_units closure=name_result other=none
   statistics/question_without_variability arc=break_then_work_on
     shell=read_operand_attribute+substitute_scalar_for_structured_quantity core=none closure=name_result other=none
+  statistics/sample_population_distribution_judgment arc=keep_then_work_on
+    shell=register_givens core=measure_quantity+measure_quantity closure=test_criteria+name_result other=none
   statistics/statistical_question_variability_classification arc=keep_then_work_on
     shell=register_givens+read_operand_attribute core=none closure=test_criteria+name_result other=none
   subtraction/add_instead_of_subtract_column arc=break_keep_break

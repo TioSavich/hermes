@@ -1,10 +1,10 @@
-/** <module> Productive geometry action automata
+/** <module> Geometry action automata
  *
  * Makes the executable geometry plans used by formal/learner/activity_contract.pl
  * available through the shared action registry. These actions coordinate a
  * measurement or location action with an existing spatial scene compiler.
- * They are productive-only until a deformation is supported by an explicit
- * transformation and a corresponding representation check.
+ * Deformations use explicit transformations and record the invariant or
+ * representation relation that separates their result from the expected one.
  */
 
 :- module(geometry_action_pairs,
@@ -1280,6 +1280,174 @@ run_geometry_action(compare_solid_volume_by_visible_extent,
               compare_bounding_extents(ExtentA, ExtentB, Result)
             ].
 
+% circle_circumference_diameter_co_measurement — gate(circle linear measures
+% with a positive rational pi co-measure); shell(select the given measure and
+% requested partner); kernels([coordinate unit, scale by pi or its reciprocal]).
+run_geometry_action(circle_circumference_diameter_co_measurement,
+                    circle_measure(diameter, Diameter, Unit),
+                    circumference_with_pi(rational(PiNumerator, PiDenominator)),
+                    Outcome, Trace) :-
+    valid_circle_co_measurement(Diameter, Unit,
+                                PiNumerator, PiDenominator),
+    scaled_rational(Diameter, PiNumerator, PiDenominator, Circumference),
+    Outcome = action_outcome(
+                  circle_circumference_diameter_co_measurement,
+                  [ classification(productive),
+                    cluster(geometry_circle_linear_co_measurement),
+                    automaton_state(
+                        co_measure_diameter_and_circumference_with_pi),
+                    vocabulary([circle, diameter, circumference,
+                                co_measurement_unit, pi, proportional_relation,
+                                linear_unit]),
+                    input(circle_measure(diameter, Diameter, Unit)),
+                    co_measure(pi, rational(PiNumerator, PiDenominator)),
+                    result(length(Circumference, Unit)),
+                    expected(length(Circumference, Unit)),
+                    invariant(circumference_and_diameter_share_pi_as_co_measure),
+                    validity(correct),
+                    source(im_teacher_guide('IM-G7-U3-L3'))
+                  ]),
+    Trace = [ establish_circle_measure(diameter, Diameter, Unit),
+              establish_co_measurement_unit(
+                  pi, rational(PiNumerator, PiDenominator)),
+              transform_circle_measure_through_co_measure(
+                  diameter, circumference, Diameter, Circumference),
+              report_circle_measure(circumference, Circumference, Unit)
+            ].
+run_geometry_action(circle_circumference_diameter_co_measurement,
+                    circle_measure(circumference, Circumference, Unit),
+                    diameter_with_pi(rational(PiNumerator, PiDenominator)),
+                    Outcome, Trace) :-
+    valid_circle_co_measurement(Circumference, Unit,
+                                PiNumerator, PiDenominator),
+    scaled_rational(Circumference, PiDenominator, PiNumerator, Diameter),
+    Outcome = action_outcome(
+                  circle_circumference_diameter_co_measurement,
+                  [ classification(productive),
+                    cluster(geometry_circle_linear_co_measurement),
+                    automaton_state(
+                        co_measure_diameter_and_circumference_with_pi),
+                    vocabulary([circle, diameter, circumference,
+                                co_measurement_unit, pi, proportional_relation,
+                                linear_unit]),
+                    input(circle_measure(circumference, Circumference, Unit)),
+                    co_measure(pi, rational(PiNumerator, PiDenominator)),
+                    result(length(Diameter, Unit)),
+                    expected(length(Diameter, Unit)),
+                    invariant(circumference_and_diameter_share_pi_as_co_measure),
+                    validity(correct),
+                    source(im_teacher_guide('IM-G7-U3-L3'))
+                  ]),
+    Trace = [ establish_circle_measure(
+                  circumference, Circumference, Unit),
+              establish_co_measurement_unit(
+                  pi, rational(PiNumerator, PiDenominator)),
+              transform_circle_measure_through_co_measure(
+                  circumference, diameter, Circumference, Diameter),
+              report_circle_measure(diameter, Diameter, Unit)
+            ].
+
+% use_diameter_as_radius_in_circumference — gate(the same circle-measure
+% contract); shell(substitute the radius role for the supplied diameter);
+% kernels([double, scale by co-measure]); validity(numeric separation guard).
+run_geometry_action(use_diameter_as_radius_in_circumference,
+                    circle_measure(diameter, Diameter, Unit),
+                    circumference_with_pi(rational(PiNumerator, PiDenominator)),
+                    Outcome, Trace) :-
+    valid_circle_co_measurement(Diameter, Unit,
+                                PiNumerator, PiDenominator),
+    scaled_rational(Diameter, PiNumerator, PiDenominator, Expected),
+    MisreadDiameter is Diameter * 2,
+    scaled_rational(MisreadDiameter, PiNumerator, PiDenominator, Reported),
+    rational_number(Expected, ExpectedValue),
+    rational_number(Reported, ReportedValue),
+    ReportedValue =\= ExpectedValue,
+    Outcome = action_outcome(
+                  use_diameter_as_radius_in_circumference,
+                  [ classification(deformation),
+                    cluster(geometry_circle_linear_co_measurement),
+                    automaton_state(
+                        treat_diameter_as_radius_before_circle_scaling),
+                    vocabulary([circle, diameter, radius, circumference,
+                                co_measurement_unit, pi, measure_role]),
+                    input(circle_measure(diameter, Diameter, Unit)),
+                    co_measure(pi, rational(PiNumerator, PiDenominator)),
+                    result(length(Reported, Unit)),
+                    expected(length(Expected, Unit)),
+                    deformation_of(
+                        circle_circumference_diameter_co_measurement),
+                    violated_invariant(
+                        circumference_and_diameter_share_pi_as_co_measure),
+                    validity(incorrect),
+                    source(im_teacher_guide('IM-G7-U3-L10'))
+                  ]),
+    Trace = [ establish_circle_measure(diameter, Diameter, Unit),
+              read_diameter_as_radius(Diameter),
+              double_misread_radius_to_diameter(Diameter, MisreadDiameter),
+              report_misread_circumference(Reported, Unit)
+            ].
+
+% triangle_three_measure_determination — gate(exactly three positive side or
+% angle measures with named roles); shell(dispatch by SSS, SAS, ASA, AAS, SSA,
+% or AAA); kernels([feasibility test, determination test, accepting refusal]).
+run_geometry_action(triangle_three_measure_determination,
+                    triangle_conditions(Conditions), classify,
+                    Outcome, Trace) :-
+    triangle_condition_result(Conditions, Determination, Reason),
+    triangle_result(Determination, Reason, Result, Validity),
+    Outcome = action_outcome(
+                  triangle_three_measure_determination,
+                  [ classification(productive),
+                    cluster(geometry_triangle_condition_determination),
+                    automaton_state(classify_three_measure_triangle_conditions),
+                    vocabulary([triangle, side_length, angle_measure,
+                                three_conditions, determined, ambiguous,
+                                impossible, refusal, identical_copy]),
+                    input(triangle_conditions(Conditions)),
+                    determination(Determination),
+                    result(Result), expected(Result), validity(Validity),
+                    source(im_teacher_guides('IM-G7-U7-L6-to-L10'))
+                  ]),
+    Trace = [ register_triangle_conditions(Conditions),
+              test_triangle_feasibility(Reason),
+              test_triangle_determination(Determination),
+              accept_triangle_determination(Determination, Reason)
+            ].
+
+% angle_relation_unknown_measure — gate(adjacent positive angle parts within a
+% named whole turn); shell(write the part-whole relation and isolate one
+% unknown); kernels([accumulate known parts, subtract from whole]).
+run_geometry_action(angle_relation_unknown_measure,
+                    angle_relation(whole(Whole), known_parts(KnownParts)),
+                    unknown(Unknown), Outcome, Trace) :-
+    valid_angle_measure(Whole),
+    valid_angle_parts(KnownParts),
+    atom(Unknown),
+    sum_list(KnownParts, KnownTotal),
+    Missing is Whole - KnownTotal,
+    Missing > 0,
+    Outcome = action_outcome(
+                  angle_relation_unknown_measure,
+                  [ classification(productive),
+                    cluster(geometry_angle_additive_composition),
+                    automaton_state(compose_angle_relation_and_isolate_unknown),
+                    vocabulary([angle, adjacent_angles, part, whole,
+                                unknown_angle, equation, addition, subtraction]),
+                    input(angle_relation(whole(Whole),
+                                         known_parts(KnownParts),
+                                         unknown(Unknown))),
+                    result(angle_measure(Unknown, Missing)),
+                    expected(angle_measure(Unknown, Missing)),
+                    invariant(part_turns_sum_to_whole_turn),
+                    validity(correct),
+                    source(im_teacher_guide('IM-G7-U7-L4'))
+                  ]),
+    Trace = [ establish_angle_part_whole_relation(Whole, KnownParts, Unknown),
+              accumulate_known_angle_parts(KnownParts, KnownTotal),
+              inscribe_angle_equation(Whole, KnownTotal, Unknown),
+              isolate_unknown_angle(Unknown, Missing)
+            ].
+
 
 geometry_action_cluster(rectangle_area_unit_iteration,
                         geometry_area_as_composite_unit_iteration).
@@ -1373,6 +1541,14 @@ geometry_action_cluster(compare_solid_volume_by_cube_count,
                         geometry_solid_volume_comparison).
 geometry_action_cluster(compare_solid_volume_by_visible_extent,
                         geometry_solid_volume_comparison).
+geometry_action_cluster(circle_circumference_diameter_co_measurement,
+                        geometry_circle_linear_co_measurement).
+geometry_action_cluster(use_diameter_as_radius_in_circumference,
+                        geometry_circle_linear_co_measurement).
+geometry_action_cluster(triangle_three_measure_determination,
+                        geometry_triangle_condition_determination).
+geometry_action_cluster(angle_relation_unknown_measure,
+                        geometry_angle_additive_composition).
 
 geometry_action_vocabulary(rectangle_area_unit_iteration,
                            [rectangle, row, column, unit_square, square_unit,
@@ -1526,6 +1702,20 @@ geometry_action_vocabulary(compare_solid_volume_by_cube_count,
 geometry_action_vocabulary(compare_solid_volume_by_visible_extent,
                            [solid_object, volume, visual_extent, height,
                             spread, cube_count_ignored]).
+geometry_action_vocabulary(circle_circumference_diameter_co_measurement,
+                           [circle, diameter, circumference,
+                            co_measurement_unit, pi, proportional_relation,
+                            linear_unit]).
+geometry_action_vocabulary(use_diameter_as_radius_in_circumference,
+                           [circle, diameter, radius, circumference,
+                            co_measurement_unit, pi, measure_role]).
+geometry_action_vocabulary(triangle_three_measure_determination,
+                           [triangle, side_length, angle_measure,
+                            three_conditions, determined, ambiguous,
+                            impossible, refusal, identical_copy]).
+geometry_action_vocabulary(angle_relation_unknown_measure,
+                           [angle, adjacent_angles, part, whole, unknown_angle,
+                            equation, addition, subtraction]).
 
 productive_geometry_deformation(
     rectangle_area_unit_iteration,
@@ -1607,6 +1797,10 @@ productive_geometry_deformation(
     compare_solid_volume_by_cube_count,
     compare_solid_volume_by_visible_extent,
     solid_volume_compared_by_visible_extent).
+productive_geometry_deformation(
+    circle_circumference_diameter_co_measurement,
+    use_diameter_as_radius_in_circumference,
+    diameter_read_as_radius_in_circle_co_measurement).
 
 geometry_action_misconception_hook(action_outcome(Kind, Fields),
                                    geometry_productive_monitoring(Kind), Hook) :-
@@ -1906,3 +2100,120 @@ valid_angle_measure(Degrees) :-
 valid_angle_parts([Part|Parts]) :-
     valid_angle_measure(Part),
     maplist(valid_angle_measure, Parts).
+
+valid_circle_co_measurement(Diameter, Unit, PiNumerator, PiDenominator) :-
+    positive_integer(Diameter),
+    atom(Unit),
+    integer(PiNumerator),
+    integer(PiDenominator),
+    PiNumerator > 0,
+    PiDenominator > 0.
+
+scaled_rational(Factor, Numerator, Denominator,
+                rational(ReducedNumerator, ReducedDenominator)) :-
+    RawNumerator is Factor * Numerator,
+    GCD is gcd(abs(RawNumerator), Denominator),
+    ReducedNumerator is RawNumerator // GCD,
+    ReducedDenominator is Denominator // GCD.
+
+rational_number(rational(Numerator, Denominator), Number) :-
+    Number is Numerator / Denominator.
+
+triangle_condition_result(sss(A, B, C), determined, sss_congruence) :-
+    maplist(positive_number, [A, B, C]),
+    triangle_inequality_holds(A, B, C),
+    !.
+triangle_condition_result(sss(A, B, C), impossible,
+                          triangle_inequality_refusal) :-
+    maplist(positive_number, [A, B, C]),
+    !.
+triangle_condition_result(sas(A, Angle, B), determined, sas_congruence) :-
+    maplist(positive_number, [A, B]),
+    interior_angle(Angle),
+    !.
+triangle_condition_result(sas(A, Angle, B), impossible,
+                          angle_measure_refusal) :-
+    maplist(positive_number, [A, Angle, B]),
+    !.
+triangle_condition_result(asa(AngleA, Side, AngleB), determined,
+                          asa_congruence) :-
+    positive_number(Side),
+    valid_two_angles(AngleA, AngleB),
+    !.
+triangle_condition_result(asa(AngleA, Side, AngleB), impossible,
+                          angle_sum_refusal) :-
+    maplist(positive_number, [AngleA, Side, AngleB]),
+    !.
+triangle_condition_result(aas(AngleA, AngleB, Side), determined,
+                          aas_congruence) :-
+    positive_number(Side),
+    valid_two_angles(AngleA, AngleB),
+    !.
+triangle_condition_result(aas(AngleA, AngleB, Side), impossible,
+                          angle_sum_refusal) :-
+    maplist(positive_number, [AngleA, AngleB, Side]),
+    !.
+triangle_condition_result(aaa(AngleA, AngleB, AngleC), ambiguous,
+                          scale_not_fixed) :-
+    maplist(interior_angle, [AngleA, AngleB, AngleC]),
+    angle_sum_is_straight(AngleA, AngleB, AngleC),
+    !.
+triangle_condition_result(aaa(AngleA, AngleB, AngleC), impossible,
+                          angle_sum_refusal) :-
+    maplist(positive_number, [AngleA, AngleB, AngleC]),
+    !.
+triangle_condition_result(ssa(OppositeSide, OtherSide, Angle),
+                          Determination, Reason) :-
+    maplist(positive_number, [OppositeSide, OtherSide]),
+    interior_angle(Angle),
+    ssa_determination(OppositeSide, OtherSide, Angle,
+                      Determination, Reason).
+triangle_condition_result(ssa(OppositeSide, OtherSide, Angle), impossible,
+                          angle_measure_refusal) :-
+    maplist(positive_number, [OppositeSide, OtherSide, Angle]).
+
+triangle_inequality_holds(A, B, C) :-
+    A + B > C,
+    A + C > B,
+    B + C > A.
+
+interior_angle(Angle) :- number(Angle), Angle > 0, Angle < 180.
+
+valid_two_angles(AngleA, AngleB) :-
+    interior_angle(AngleA),
+    interior_angle(AngleB),
+    AngleA + AngleB < 180.
+
+angle_sum_is_straight(AngleA, AngleB, AngleC) :-
+    Sum is AngleA + AngleB + AngleC,
+    abs(Sum - 180) < 1.0e-9.
+
+ssa_determination(OppositeSide, OtherSide, Angle, Determination, Reason) :-
+    Height is OtherSide * sin(Angle * pi / 180),
+    triangle_number_tolerance(Tolerance),
+    (   Angle >= 90
+    ->  ( OppositeSide > OtherSide + Tolerance
+        -> Determination = determined,
+           Reason = ssa_one_triangle_obtuse_or_right
+        ;  Determination = impossible,
+           Reason = ssa_side_opposite_large_angle_too_short
+        )
+    ;   OppositeSide < Height - Tolerance
+    ->  Determination = impossible,
+        Reason = ssa_side_shorter_than_altitude
+    ;   abs(OppositeSide - Height) =< Tolerance
+    ->  Determination = determined,
+        Reason = ssa_one_right_triangle
+    ;   OppositeSide < OtherSide - Tolerance
+    ->  Determination = ambiguous,
+        Reason = ssa_two_triangles
+    ;   Determination = determined,
+        Reason = ssa_one_triangle
+    ).
+
+triangle_number_tolerance(1.0e-9).
+
+triangle_result(impossible, Reason,
+                refused(impossible_triangle(Reason)), refusal_accepted) :- !.
+triangle_result(Determination, Reason,
+                triangle_determination(Determination, Reason), correct).
