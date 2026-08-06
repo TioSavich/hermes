@@ -223,9 +223,9 @@ def validate_source_scope(
     if missing_levels:
         raise ValueError(f"authored level ladder lacks families: {missing_levels}")
     expected = {
-        "machines": (len(machines), 222),
-        "action_maps rows": (map_row_count, 1081),
-        "local action names": (len({key[2] for key in mappings}), 839),
+        "machines": (len(machines), 245),  # 245 from 2026-08-06: the grade-7 authoring wave adds 23 machines
+        "action_maps rows": (map_row_count, 1201),  # 1201 from 2026-08-06: the wave's vocabulary rows
+        "local action names": (len({key[2] for key in mappings}), 944),  # 944 from 2026-08-06
         "canonical actions": (len(registers), 122),
         "computational canonical actions": (
             sum(genre == "computational" for genre, _register, _stance in registers.values()),
@@ -235,7 +235,7 @@ def validate_source_scope(
             sum(genre == "discursive" for genre, _register, _stance in registers.values()),
             32,
         ),
-        "computational grammar rows": (len(grammar), 222),
+        "computational grammar rows": (len(grammar), 245),  # 245 from 2026-08-06, equal to machines
     }
     drift = [
         f"{label}: expected {wanted}, got {observed}"
@@ -484,7 +484,7 @@ def generate_graph() -> dict[str, object]:
         "schema": 2,
         "meta": {
             "scope": (
-                "The graph records the 222 computational machines in the "
+                "The graph records the 245 computational machines in the "
                 "transition-table compendium; the 18 discursive machines are outside it."
             ),
             "level_note": LEVEL_NOTE,

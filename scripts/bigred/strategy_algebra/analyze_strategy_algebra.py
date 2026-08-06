@@ -719,9 +719,10 @@ def main() -> int:
     # A guard rather than a preference. The analyzer's results are only
     # comparable across runs over the same corpus, so a silent change of corpus
     # size is what this refuses.
-    if len(observed) != 222:
+    # 245 from 2026-08-06: the grade-7 authoring wave adds 23 machines.
+    if len(observed) != 245:
         raise SystemExit(
-            f"expected 222 execution-observed signatures, found {len(observed)}"
+            f"expected 245 execution-observed signatures, found {len(observed)}"
         )
     if args.smoke:
         by_name = {automaton.signature.name: automaton for automaton in observed}

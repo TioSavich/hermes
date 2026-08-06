@@ -57,7 +57,7 @@ def main() -> int:
     edge_by_id = {edge.get("id"): edge for edge in edges}
 
     fail_if(data.get("schema") != 2, "full graph schema is not 2", failures)
-    fail_if(len(machines) != 222, f"expected 222 machines, got {len(machines)}", failures)
+    fail_if(len(machines) != 245, f"expected 245 machines, got {len(machines)}", failures)  # 245 from 2026-08-06: the grade-7 authoring wave
     fail_if(len(nodes) != sum(len(machine.states) for machine in machines),
             "node count does not equal the per-machine state sum", failures)
     fail_if(len(edges) != sum(len(machine.unique_edges) for machine in machines),

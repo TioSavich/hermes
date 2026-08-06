@@ -11,7 +11,8 @@ main :-
     % counting/enumerate_collection_one_to_one: it runs from its cardinality
     % contract but has no static Trace list on which to root observed states.
     % No newly encodable kind introduced another static-root exclusion.
-    expect_equal(222, SignatureCount, observed_signature_count),
+    % 245 from 2026-08-06: the grade-7 authoring wave adds 23 machines.
+    expect_equal(245, SignatureCount, observed_signature_count),
     expect_family_counts(Signatures),
     forall(member(Operation-Kind, Signatures),
            expect_round_trips(Operation, Kind)),
@@ -20,7 +21,7 @@ main :-
     strategy_recognizer:recognize_strategies(
         "I do not know what to do next.", Empty),
     expect_equal([], Empty, honest_abstention),
-    format("PASS strategy recognizers: 222/222 execution-observed signatures~n").
+    format("PASS strategy recognizers: 245/245 execution-observed signatures~n").
 
 observed_signatures(Signatures) :-
     findall(Operation-Kind,
@@ -31,20 +32,23 @@ observed_signatures(Signatures) :-
 
 expect_family_counts(Signatures) :-
     forall(member(Operation-Expected,
+                  % Counts from 2026-08-06: the grade-7 authoring wave adds
+                  % 5 algebraic, 4 geometry, 7 integer, 4 ratio, and 3
+                  % statistics machines.
                   [ addition-18,
-                    algebraic-14,
+                    algebraic-19,
                     calculus-4,
                     counting-7,
                     decimal-16,
                     division-16,
                     fraction-33,
-                    geometry-46,
-                    integer-6,
+                    geometry-50,
+                    integer-13,
                     measurement-8,
                     multiplication-20,
                     probability-2,
-                    ratio-4,
-                    statistics-14,
+                    ratio-8,
+                    statistics-17,
                     subtraction-14
                   ]),
            ( include(has_operation(Operation), Signatures, Family),

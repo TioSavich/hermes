@@ -122,6 +122,15 @@ LOSE_WORDS = re.compile(
     r"confuse|misread|double|overcount)|_not_checked$|_ignored$")
 
 STANCE_INVERSIONS = {
+    "compute_product":
+        # 2026-08-06: double_misread_radius_to_diameter names the misread
+        # history, but the doing at this step is a sound doubling of the
+        # value it was handed; the misreading itself is the earlier
+        # deforming transition. The lose-word carries legibility, not
+        # stance.
+        "the label names an upstream misreading for legibility; the doing "
+        "at this step is arithmetically sound on its input, and the "
+        "deforming transition is the earlier read step",
     "set_aside_irrelevant_attribute":
         "the labels all begin ignore_, and setting aside a property the "
         "conclusion does not depend on is correct; treat_relevant_as_irrelevant "

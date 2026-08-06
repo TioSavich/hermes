@@ -16,7 +16,7 @@ GRAPH = ROOT / "docs/research/assets/automata/full_graph.json"
 LEDGER = ROOT / "knowledge/strategies/deformation_validity.pl"
 TABLES = ROOT / "knowledge/strategies/transition_tables"
 
-EXPECTED_ROWS = 232
+EXPECTED_ROWS = 259  # 259 from 2026-08-06: the grade-7 authoring wave adds 27 deforming edges (34 filed minus 7 misfiled on non-deforming transitions)
 ALLOWED_MODES = {
     "objective_invalid",
     "context_sensitive_or_inefficient",
@@ -30,6 +30,14 @@ ALLOWED_BASIS_KINDS = {
     "independent_truth_derivation/2",
     "proposed_from_code_reading/2",
     "conflict/3",
+    # 2026-08-06, the grade-7 authoring wave's evidence kinds:
+    "separation_guard/1",      # the clause's numerical separation guard, quoted
+    "answer_bearing_change/1", # what answer-bearing information the doing changes
+    "answer_bearing_loss/1",   # what answer-bearing information the doing loses
+    "per_input_validity/1",    # the machine computes validity per input (geometry idiom)
+    "guide_evidence/1",        # curriculum attestation (lesson id and quote)
+    "guide_evidence/2",
+    "source/1",                # research-corpus citation for an attested doing
 }
 ADDITION_BASIS_RE = re.compile(
     r"^addition_ledger_loss\('knowledge/strategies/abstraction/addition_action_signatures\.pl',"
@@ -248,6 +256,10 @@ def main() -> None:
         basis_text = str(row.get("basis", ""))
         if modes == ["objective_invalid"] and not (
             "independent_truth_derivation(" in basis_text
+            or "separation_guard(" in basis_text
+            # 2026-08-06: a separation guard is an authored truth basis —
+            # the clause admits only inputs whose result differs from the
+            # independently derived expected value.
             or (
                 "addition_ledger_loss(" in basis_text
                 and "answer_bearing(" in basis_text
