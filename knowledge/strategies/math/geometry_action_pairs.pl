@@ -1347,9 +1347,9 @@ run_geometry_action(circle_circumference_diameter_co_measurement,
               report_circle_measure(diameter, Diameter, Unit)
             ].
 
-% use_diameter_as_radius_in_circumference — gate(the same circle-measure
-% contract); shell(substitute the radius role for the supplied diameter);
-% kernels([double, scale by co-measure]); validity(numeric separation guard).
+% use_diameter_as_radius_in_circumference — gate(circle linear measures with a
+% positive rational pi co-measure); shell(select the given measure and requested
+% partner); kernels([coordinate unit, scale by pi or its reciprocal]); mutation(substitute the radius role for the supplied diameter); validity(numeric separation guard).
 run_geometry_action(use_diameter_as_radius_in_circumference,
                     circle_measure(diameter, Diameter, Unit),
                     circumference_with_pi(rational(PiNumerator, PiDenominator)),

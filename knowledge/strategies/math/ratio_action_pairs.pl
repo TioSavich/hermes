@@ -17,15 +17,15 @@
  *   scale_ratio_unit -- gate: a positive integer ratio pair and scale
  *     factor; shell: bind the factor and compose the new pair; kernel: scale
  *     both terms by the same factor.
- *   additive_extension_of_ratio -- gate: the same ratio task; shell: carry
- *     the first-term increment to the second term; kernel: additive change in
- *     the slot where multiplicative scaling is required.
+ *   additive_extension_of_ratio -- gate: a positive integer ratio pair and
+ *     scale factor; shell: bind the factor and compose the new pair; kernel:
+ *     scale both terms by the same factor; mutation: carry the first-term increment to the second term.
  *   compute_unit_rate_from_ratio_pair -- gate: ordered positive ratio pair
  *     plus requested per-one referent; shell: bind quantity roles and name
  *     the rate; kernel: normalize the reference quantity to one by division.
- *   divide_larger_by_smaller_for_unit_rate -- gate: the same ordered pair and
- *     requested referent; shell: replace quantity roles with magnitude order;
- *     kernel: divide the larger term by the smaller term.
+ *   divide_larger_by_smaller_for_unit_rate -- gate: ordered positive ratio pair
+ *     plus requested per-one referent; shell: bind quantity roles and name the
+ *     rate; kernel: normalize the reference quantity to one by division; mutation: replace quantity roles with magnitude order.
  *   test_relation_for_proportionality -- gate: at least two positive ratio
  *     pairs; shell: accept or give a witness-bearing refusal; kernel: compare
  *     each pair's quotient with one candidate constant.

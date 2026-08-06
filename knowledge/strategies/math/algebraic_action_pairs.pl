@@ -81,10 +81,10 @@
  * Grade-7 diagram, percent, and signed-rewrite extension. Each line states
  * gate, shell, and kernels in the kernel-gate pilot's idiom:
  *   - translate_diagram_to_equation: gate(diagram_relation, tape_or_hanger) |> shell[coordinate_equal_groups_with_total] [kernel(inscribe_equation_from_roles)].
- *   - split_repeated_diagram_variable: gate(diagram_relation, repeated_labels_name_one_quantity) |> shell[separate_repeated_labels] [kernel(inscribe_equation_from_roles)].
+ *   - split_repeated_diagram_variable: gate(diagram_relation, tape_or_hanger) |> shell[coordinate_equal_groups_with_total] [kernel(inscribe_equation_from_roles)] [mutation(separate_repeated_labels)].
  *   - percent_change_composition: gate(percent_relation, nonnegative_amount_and_admissible_rate) |> shell[select_change_direction_and_target] [kernels(percent_to_multiplier, scale_or_invert)].
  *   - combine_signed_like_terms: gate(linear_expression, terms_share_variable_role_or_are_constants) |> shell[rewrite_subtraction_as_adding_the_opposite] [kernel(sum_coefficients_by_role)].
- *   - combine_unlike_terms: gate(linear_expression, unlike_terms_remain_separate) |> shell[collapse_constant_into_variable_coefficient] [kernel(sum_coefficients_by_role)].
+ *   - combine_unlike_terms: gate(linear_expression, terms_share_variable_role_or_are_constants) |> shell[rewrite_subtraction_as_adding_the_opposite] [kernel(sum_coefficients_by_role)] [mutation(collapse_constant_into_variable_coefficient)].
  * The two new deformations derive Expected independently and require
  * Result \== Expected. The same separation guard now excludes the known
  * power(int(2),2) coincidence from exponent_as_multiplier.

@@ -342,8 +342,8 @@ run_statistics_action(distribution_summary_selection, Data,
             ].
 
 % estimate_probability_from_observed_frequency — gate(a finite repetition
-% record with successes between zero and trials); shell(coordinate event count
-% with total trials); kernels([form relative frequency, qualify as estimate]).
+% record with successes between zero and trials; interpret result as estimate);
+% shell(coordinate event count with total trials); kernel(form relative frequency).
 run_statistics_action(estimate_probability_from_observed_frequency,
                       frequency_record(Event, Successes, Trials),
                       estimate_context(repeated_experiment), Outcome, Trace) :-
@@ -371,10 +371,10 @@ run_statistics_action(estimate_probability_from_observed_frequency,
               qualify_relative_frequency_as_probability_estimate(Estimate)
             ].
 
-% finite_frequency_as_exact_probability — gate(the same finite repetition
-% record); shell(promote an estimate to an exact probability claim);
-% kernels([form relative frequency, erase sampling qualification]);
-% validity(per-input finite-frequency claim check).
+% finite_frequency_as_exact_probability — gate(a finite repetition record with
+% successes between zero and trials; interpret result as estimate);
+% shell(coordinate event count with total trials); kernel(form relative frequency);
+% mutation(erase sampling qualification); validity(per-input finite-frequency claim check).
 run_statistics_action(finite_frequency_as_exact_probability,
                       frequency_record(Event, Successes, Trials),
                       estimate_context(repeated_experiment), Outcome, Trace) :-

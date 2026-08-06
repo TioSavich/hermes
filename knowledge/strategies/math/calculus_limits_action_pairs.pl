@@ -14,7 +14,7 @@
  *   - `direct_substitution` (function_limit)
  *       For lim x -> A of f(x) where f is continuous at A, substitute A
  *       and compute. Source: extract-033 Hardy 2009 (`direct_substitution`).
- *       Kernel coupling: routes the post-substitution arithmetic through
+ *       Grounding: routes the post-substitution arithmetic through
  *       `grounded_arithmetic:integer_to_recollection/2`, so the trace
  *       records the value as a recollection alongside the integer result.
  *
@@ -23,7 +23,7 @@
  *       (the 0/0 case), factor (x - A) out of numerator and denominator
  *       by synthetic division, then substitute A into the reduced quotient.
  *       Source: extract-033 Hardy 2009 (`factor_cancel_substitute`).
- *       Kernel coupling: the reduced-quotient evaluation routes through
+ *       Grounding: the reduced-quotient evaluation routes through
  *       `integer_to_recollection/2`; the trace records both the symbolic
  *       cancel step and the grounded evaluation.
  *
@@ -32,8 +32,8 @@
  *       above by some constant B) and D(n) is unbounded (diverges to
  *       infinity as n -> infinity), conclude lim a_n = 0. Source:
  *       extract-003 Alcock 2005 (`size_comparison_convergence_to_zero`,
- *       `epsilon_n_tail_plus_finite_initial_segment_bound`). Kernel
- *       coupling: symbolic only -- limits are not in Robinson Q, so the
+ *       `epsilon_n_tail_plus_finite_initial_segment_bound`). Grounding:
+ *       symbolic only -- limits are not in Robinson Q, so the
  *       trace records the epsilon-bound reasoning structurally and the
  *       outcome carries `elaborates(epsilon_n_tail_bound)` as a
  *       deferred-grounding marker.
@@ -47,7 +47,7 @@
  *       routine but not its precondition (both P(A) = 0 and Q(A) = 0).
  *       Source: extract-033 Hardy 2009 (article notes factoring attempts
  *       frustrated students when no common factors were available).
- *       Kernel coupling: connected to the productive's kernel through
+ *       Grounding: connected to the productive's kernel through
  *       `deformation_of(factor_cancel_substitute)`. Same primitives, but
  *       applied where the precondition fails.
  *

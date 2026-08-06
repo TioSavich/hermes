@@ -129,8 +129,8 @@ run_integer_action(signed_subtraction_as_additive_inverse,
               generalize_subtract_as_add_opposite(Expected)
             ].
 
-% Gate: integer_line after a whole-number refusal; shell: swap the ordered
-% subtraction roles; kernel: iterate_to_target; guard: Reported =\= Expected.
+% Gate: integer_line; shell: unknown-addend arrow then additive-inverse
+% generalization; kernels: iterate_to_target and signed addition; mutation: swap the ordered subtraction roles; guard: Reported =\= Expected.
 run_integer_action(swap_subtraction_operands_to_preserve_nonnegative_result,
                    minuend(Minuend), subtrahend(Subtrahend), Outcome, Trace) :-
     signed_number(Minuend),
@@ -169,8 +169,8 @@ run_integer_action(swap_subtraction_operands_to_preserve_nonnegative_result,
               lose_ordered_difference(expected(Expected), produced(Reported))
             ].
 
-% Gate: integer_line; shell: replace directed change with unsigned distance;
-% kernel: iterate_to_target; guard: Reported =\= Expected.
+% Gate: integer_line; shell: unknown-addend arrow then additive-inverse
+% generalization; kernels: iterate_to_target and signed addition; mutation: replace directed change with unsigned distance; guard: Reported =\= Expected.
 run_integer_action(conflate_signed_difference_with_distance,
                    minuend(Minuend), subtrahend(Subtrahend), Outcome, Trace) :-
     signed_number(Minuend),
@@ -249,8 +249,8 @@ run_integer_action(signed_multiplication_by_sign_rule,
               state_signed_product_rule(Expected)
             ].
 
-% Gate: signed_numbers; shell: reverse the attested sign relation; kernel:
-% multiply magnitudes and assign sign; guard: Reported =\= Expected.
+% Gate: signed_numbers; shell: continue product patterns across zero; kernels:
+% multiply magnitudes and assign sign; mutation: reverse the attested sign relation; guard: Reported =\= Expected.
 run_integer_action(reverse_signed_multiplication_sign_rule,
                    multiplier(Multiplier), multiplicand(Multiplicand),
                    Outcome, Trace) :-
@@ -342,9 +342,9 @@ run_integer_action(signed_division_by_sign_rule,
               state_signed_quotient_rule(Expected)
             ].
 
-% Gate: signed_numbers; shell: reverse the multiplication-derived quotient
-% sign relation; kernel: divide magnitudes and assign sign; guard:
-% Reported =\= Expected.
+% Gate: signed_numbers; shell: rewrite division as an unknown-factor product
+% and continue its sign pattern; kernels: divide magnitudes and assign sign;
+% mutation: reverse the multiplication-derived quotient sign relation; guard: Reported =\= Expected.
 run_integer_action(reverse_signed_division_sign_rule,
                    dividend(Dividend), divisor(Divisor), Outcome, Trace) :-
     signed_number(Dividend),
