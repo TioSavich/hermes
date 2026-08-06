@@ -3,7 +3,7 @@
   "view": "family",
   "source_artifact": "docs/research/assets/automata/full_graph.json",
   "source_schema": 2,
-  "source_sha256": "f8216e0ca163673b3851ef6a187fbe2725c0e69e3dc2b9574287a3e6ecb43aa0",
+  "source_sha256": "0d1bcee9e9f3d54429b6de68e4e7f3e554ebbb7683348e63ebe90cd2e8fce86e",
   "meta": {
     "scope": "Cross-family bundles over canonical actions carried in both families.",
     "assertion": "A bundle records shared canonical action names only; it does not assert equivalence, prerequisite order, or a learner relation.",

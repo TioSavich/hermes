@@ -56,7 +56,7 @@ CONFLICT_RE = re.compile(
     r"addition_ledger_selects_objective_invalid,'.+'\)$"
 )
 ADJUDICATED_RE = re.compile(
-    r"^adjudicated\(code_reading\('2026-08-05'\),'.+','.+'\)$"
+    r"^adjudicated\(code_reading\('\d{4}-\d{2}-\d{2}'\),'.+','.+'\)$"
 )
 COINCIDENCE_AT_RE = re.compile(r"^coincidence_at\('.+'\)$")
 

@@ -230,12 +230,12 @@
       "deforming_edges_by_review_status": {
         "seeded_ledger": 18,
         "seeded_profile": 88,
-        "proposed": 29,
-        "adjudicated": 124
+        "proposed": 0,
+        "adjudicated": 153
       },
       "deforming_edges_by_review_state": {
-        "reviewed": 142,
-        "unreviewed": 117
+        "reviewed": 171,
+        "unreviewed": 88
       }
     },
     "generation_sources": [
@@ -23953,7 +23953,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0098",
@@ -23970,7 +23970,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0099",
@@ -23987,7 +23987,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0100",
@@ -24259,7 +24259,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0120",
@@ -24289,7 +24289,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0122",
@@ -24811,7 +24811,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0160",
@@ -24828,7 +24828,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0161",
@@ -24845,7 +24845,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0162",
@@ -34299,7 +34299,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0852",
@@ -34329,7 +34329,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0854",
@@ -34432,7 +34432,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0861",
@@ -34449,7 +34449,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0862",
@@ -34466,7 +34466,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0863",
@@ -34775,7 +34775,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0884",
@@ -34805,7 +34805,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0886",
@@ -34822,7 +34822,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0887",
@@ -34839,7 +34839,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0888",
@@ -34869,7 +34869,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0890",
@@ -34899,7 +34899,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0892",
@@ -34916,7 +34916,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0893",
@@ -34933,7 +34933,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0894",
@@ -35327,7 +35327,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0924",
@@ -35344,7 +35344,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0925",
@@ -35374,7 +35374,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0927",
@@ -35391,7 +35391,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e0928",
@@ -37504,7 +37504,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e1077",
@@ -37560,7 +37560,7 @@
       "validity_modes": [
         "objective_invalid"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e1081",
@@ -38220,7 +38220,7 @@
       "validity_modes": [
         "context_sensitive_or_inefficient"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e1132",
@@ -38237,7 +38237,7 @@
       "validity_modes": [
         "context_sensitive_or_inefficient"
       ],
-      "review_status": "proposed"
+      "review_status": "adjudicated"
     },
     {
       "id": "e1133",

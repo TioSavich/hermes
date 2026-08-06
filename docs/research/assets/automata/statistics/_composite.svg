@@ -80,10 +80,12 @@
   <path d="M 626.4 816.0 C 738.0 816.0, 738.0 816.0, 849.6 816.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: mean_as_fair_share</title></path>
   <rect x="701.1" y="807.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="738.0" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
+  <path class="validity-blue-base" d="M 889.6 446.0 C 1132.8 446.0, 1132.8 668.0, 1376.0 668.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>misname_result: finite_frequency_as_exact_probability; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="1087.5" y="659.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1132.8" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
+  <text x="1132.8" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">misname_result</text>
+  <path class="validity-blue-base" d="M 626.4 446.0 C 738.0 446.0, 738.0 446.0, 849.6 446.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>accept_without_check: finite_frequency_as_exact_probability; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="675.9" y="437.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="738.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
+  <text x="738.0" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">accept_without_check</text>
   <path d="M 889.6 372.0 C 1132.8 372.0, 1132.8 668.0, 1376.0 668.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_viability: estimate_probability_from_observed_frequency</title></path>
   <rect x="1081.9" y="659.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1132.8" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">record_viability</text>
@@ -250,11 +252,9 @@
   <text x="345.2" y="688.1" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p28</text>
   <path class="validity-rust-overlay" d="M 626.4 890.0 C 869.6 890.0, 869.6 779.0, 1112.8 779.0" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>omit_required_step: mean_deviation_without_absolute_value; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
   <path class="validity-rust-overlay" d="M 363.2 1112.0 C 738.0 1112.0, 738.0 1186.0, 1112.8 1186.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>substitute_scalar_for_structured_quantity: question_without_variability; modes objective_invalid; review status adjudicated</title></path>
-  <path class="validity-rust-overlay" d="M 889.6 446.0 C 1132.8 446.0, 1132.8 668.0, 1376.0 668.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>misname_result: finite_frequency_as_exact_probability; modes context_sensitive_or_inefficient; review status proposed</title></path>
-  <path class="validity-rust-overlay" d="M 626.4 446.0 C 738.0 446.0, 738.0 446.0, 849.6 446.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>accept_without_check: finite_frequency_as_exact_probability; modes context_sensitive_or_inefficient; review status proposed</title></path>
-  <circle class="validity-rust-ring" cx="1398.0" cy="668.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-blue-ring" cx="1398.0" cy="668.0" r="20.5" fill="none" stroke="#2e6f9e" stroke-width="1.5"/>
   <path class="validity-blue-ring" d="M 1114.3 779.0 A 20.5 20.5 0 0 1 1155.3 779.0" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
   <path class="validity-rust-ring" d="M 1155.3 779.0 A 20.5 20.5 0 0 1 1114.3 779.0" fill="none" stroke="#b95238" stroke-width="1.7"/>
   <circle class="validity-rust-ring" cx="1134.8" cy="1186.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
-  <circle class="validity-rust-ring" cx="871.6" cy="446.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-blue-ring" cx="871.6" cy="446.0" r="20.5" fill="none" stroke="#2e6f9e" stroke-width="1.5"/>
 </svg>
