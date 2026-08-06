@@ -32,6 +32,7 @@ run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS
 run mobius_band_readers.py  python3 "$CHECKS_DIR/mobius_band_readers.py"
 run transition_tables.py    python3 "$CHECKS_DIR/transition_tables.py"
 run deformation_validity.py python3 "$CHECKS_DIR/deformation_validity.py"
+run metaphor_seam_registry.py python3 "$CHECKS_DIR/metaphor_seam_registry.py"
 run automata_compendium.py  python3 "$CHECKS_DIR/automata_compendium.py"
 run automata_vocabulary.py  python3 "$CHECKS_DIR/automata_vocabulary.py"
 run full_graph.py           python3 "$CHECKS_DIR/full_graph.py"
