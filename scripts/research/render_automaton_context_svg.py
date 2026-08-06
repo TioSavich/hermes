@@ -16,6 +16,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
 
+from build_full_graph_json import UNREVIEWED_STATUSES, read_validity_ledger
 from build_machine_typology import ROOT, Machine, parse_transition_tables
 from build_transition_tables import Contract, contracts as read_contract_rows, prolog_input
 from render_automaton_svg import action_semantics, palette, wrap_atom
@@ -855,20 +856,24 @@ def scene_records() -> dict[tuple[str, str], SceneRecord]:
     }
 
 
-def accepting_paths(machine: Machine) -> list[tuple[str, ...]]:
+def accepting_paths(machine: Machine) -> list[tuple[tuple[str, str, str], ...]]:
     """Enumerate simple accepting action paths; loop traversal is not invented."""
     adjacency: dict[str, list[tuple[str, str]]] = defaultdict(list)
     for before, action, after in machine.unique_edges:
         adjacency[before].append((action, after))
-    found: list[tuple[str, ...]] = []
+    found: list[tuple[tuple[str, str, str], ...]] = []
 
-    def walk(state: str, seen: frozenset[str], actions: tuple[str, ...]) -> None:
+    def walk(
+        state: str,
+        seen: frozenset[str],
+        transitions: tuple[tuple[str, str, str], ...],
+    ) -> None:
         if state in machine.accepting:
-            found.append(actions)
+            found.append(transitions)
         for action, after in adjacency.get(state, []):
             if after in seen:
                 continue
-            walk(after, seen | {after}, actions + (action,))
+            walk(after, seen | {after}, transitions + ((state, action, after),))
 
     walk(machine.start, frozenset({machine.start}), ())
     return sorted(set(found))
@@ -878,11 +883,13 @@ class TrieNode:
     def __init__(self) -> None:
         self.children: dict[str, TrieNode] = {}
         self.edge_kinds: dict[str, set[str]] = defaultdict(set)
+        self.edge_validity: dict[str, list[dict[str, object]]] = defaultdict(list)
         self.terminal = False
 
 
 def composite_graph(family: str, machines: list[Machine]) -> tuple[dict[int, dict[str, object]], list[dict[str, object]], list[str]]:
     canonical_map, stance_map = action_semantics()
+    validity = read_validity_ledger()
     root = TrieNode()
     unaligned = []
     for machine in sorted(machines, key=lambda item: item.kind):
@@ -890,13 +897,25 @@ def composite_graph(family: str, machines: list[Machine]) -> tuple[dict[int, dic
         if not paths:
             unaligned.append(machine.kind)
             continue
-        for local_path in paths:
+        for transition_path in paths:
             canonical_path = tuple(
-                canonical_map.get((family, machine.kind, action), action) for action in local_path
+                canonical_map.get((family, machine.kind, action), action)
+                for _before, action, _after in transition_path
             )
             node = root
-            for action in canonical_path:
+            for (before, local_action, after), action in zip(transition_path, canonical_path):
                 node.edge_kinds[action].add(machine.kind)
+                validity_row = validity.get(
+                    (family, machine.kind, local_action, before, after)
+                )
+                stance = stance_map.get(action, "neutral")
+                if stance == "deforming" and validity_row is None:
+                    raise ValueError(
+                        f"deforming composite edge lacks validity row: "
+                        f"{family}/{machine.kind}/{before}/{local_action}/{after}"
+                    )
+                if validity_row is not None:
+                    node.edge_validity[action].append(validity_row)
                 node = node.children.setdefault(action, TrieNode())
             node.terminal = True
 
@@ -919,7 +938,7 @@ def composite_graph(family: str, machines: list[Machine]) -> tuple[dict[int, dic
 
     intern(root, True)
     nodes: dict[int, dict[str, object]] = {0: {"terminal": root.terminal}}
-    edges: dict[tuple[int, str, int], set[str]] = defaultdict(set)
+    edges: dict[tuple[int, str, int], dict[str, object]] = {}
 
     def collect(node: TrieNode) -> None:
         source = node_ids[id(node)]
@@ -928,14 +947,20 @@ def composite_graph(family: str, machines: list[Machine]) -> tuple[dict[int, dic
         for action, child in sorted(node.children.items()):
             target = node_ids[id(child)]
             nodes.setdefault(target, {"terminal": child.terminal})
-            edges[(source, action, target)].update(node.edge_kinds[action])
+            edge = edges.setdefault(
+                (source, action, target), {"kinds": set(), "validity": []}
+            )
+            edge["kinds"].update(node.edge_kinds[action])
+            edge["validity"].extend(node.edge_validity[action])
             collect(child)
 
     collect(root)
     rendered_edges = [
         {"source": source, "action": action, "target": target,
-         "kinds": tuple(sorted(kinds)), "stance": stance_map.get(action, "neutral")}
-        for (source, action, target), kinds in sorted(edges.items())
+         "kinds": tuple(sorted(values["kinds"])),
+         "stance": stance_map.get(action, "neutral"),
+         "validity_rows": tuple(values["validity"])}
+        for (source, action, target), values in sorted(edges.items())
     ]
     return nodes, rendered_edges, unaligned
 
@@ -981,23 +1006,64 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
         y = top + average_rank * row_gap
         positions[node] = (x, y)
     outdegree = Counter(int(edge["source"]) for edge in edges)
-    stance_colors = {"conserving": colors["ink"], "deforming": colors["rust"], "neutral": colors["muted"]}
+    stance_colors = {"conserving": colors["ink"], "neutral": colors["muted"]}
     right_extents = [x + 16 for x, _y in positions.values()]
     body = ["  <defs>"]
     for stance, color in stance_colors.items():
         body.append(f'    <marker id="composite-{stance}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="{color}"/></marker>')
+    body.append(f'    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="{colors["validity-blue"]}"/></marker>')
+    body.append(f'    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="{colors["rust"]}"/></marker>')
+    body.append(f'    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="{colors["rust"]}"/></marker>')
     body.append("  </defs>")
+    rust_overlays: list[tuple[str, bool, str]] = []
+    target_modes: dict[int, set[str]] = defaultdict(set)
     for edge in edges:
         source, target = int(edge["source"]), int(edge["target"])
         x1, y1 = positions[source]; x2, y2 = positions[target]
         sx, tx = x1 + 18, x2 - 22
         mx = (sx + tx) / 2
-        color = stance_colors[str(edge["stance"])]
-        body.append(
-            f'  <path d="M {sx:.1f} {y1:.1f} C {mx:.1f} {y1:.1f}, {mx:.1f} {y2:.1f}, {tx:.1f} {y2:.1f}" '
-            f'fill="none" stroke="{color}" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-{edge["stance"]})"><title>'
-            f'{esc(edge["action"])}: {esc(", ".join(edge["kinds"]))}</title></path>'
-        )
+        path = f"M {sx:.1f} {y1:.1f} C {mx:.1f} {y1:.1f}, {mx:.1f} {y2:.1f}, {tx:.1f} {y2:.1f}"
+        validity_rows = tuple(edge["validity_rows"])
+        stance = str(edge["stance"])
+        if stance == "deforming":
+            if not validity_rows:
+                raise ValueError(f"deforming composite action lacks validity rows: {family}/{edge['action']}")
+            render_blue = any(
+                row["review_status"] not in UNREVIEWED_STATUSES
+                and "context_sensitive_or_inefficient" in row["validity_modes"]
+                for row in validity_rows
+            )
+            render_rust = any(
+                row["review_status"] in UNREVIEWED_STATUSES
+                or "objective_invalid" in row["validity_modes"]
+                for row in validity_rows
+            )
+            status_text = ", ".join(sorted({str(row["review_status"]) for row in validity_rows}))
+            mode_text = ", ".join(sorted({
+                str(mode) for row in validity_rows for mode in row["validity_modes"]
+            }))
+            title = (
+                f'{esc(edge["action"])}: {esc(", ".join(edge["kinds"]))}; '
+                f'modes {esc(mode_text)}; review status {esc(status_text)}'
+            )
+            color = colors["validity-blue"] if render_blue else colors["rust"]
+            if render_blue:
+                body.append(
+                    f'  <path class="validity-blue-base" d="{path}" fill="none" '
+                    f'stroke="{colors["validity-blue"]}" stroke-width="{3.2 if render_rust else 2.5}" '
+                    f'stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>{title}</title></path>'
+                )
+                target_modes[target].add("blue")
+            if render_rust:
+                rust_overlays.append((path, render_blue, title))
+                target_modes[target].add("rust")
+        else:
+            color = stance_colors[stance]
+            body.append(
+                f'  <path d="{path}" fill="none" stroke="{color}" stroke-width="2.2" '
+                f'stroke-linecap="round" marker-end="url(#composite-{stance})"><title>'
+                f'{esc(edge["action"])}: {esc(", ".join(edge["kinds"]))}</title></path>'
+            )
         action_lines = wrap_atom(str(edge["action"]), 20)
         # Put labels at the destination lane, not halfway through a fan-out.
         # This keeps the authored kind names separated at large branch points.
@@ -1039,6 +1105,23 @@ def render_composite(family: str, machines: list[Machine], colors: dict[str, str
         node_label = "start" if node == 0 else f"p{node}"
         body.append(svg_text(x, y + 3, node_label, colors["ink"], 8))
         right_extents.append(text_right_edge(x, node_label, 8))
+    for path, mixed, title in rust_overlays:
+        body.append(
+            f'  <path class="validity-rust-overlay" d="{path}" fill="none" '
+            f'stroke="{colors["rust"]}" stroke-width="{1.4 if mixed else 2.2}" '
+            f'stroke-linecap="round" marker-end="url(#composite-validity-rust{ "-mixed" if mixed else "" })">'
+            f'<title>{title}</title></path>'
+        )
+    ring_radius = 20.5
+    for node, modes in sorted(target_modes.items()):
+        x, y = positions[node]
+        if modes == {"blue"}:
+            body.append(f'  <circle class="validity-blue-ring" cx="{x:.1f}" cy="{y:.1f}" r="{ring_radius:.1f}" fill="none" stroke="{colors["validity-blue"]}" stroke-width="1.5"/>')
+        elif modes == {"rust"}:
+            body.append(f'  <circle class="validity-rust-ring" cx="{x:.1f}" cy="{y:.1f}" r="{ring_radius:.1f}" fill="none" stroke="{colors["rust"]}" stroke-width="1.5"/>')
+        else:
+            body.append(f'  <path class="validity-blue-ring" d="M {x-ring_radius:.1f} {y:.1f} A {ring_radius:.1f} {ring_radius:.1f} 0 0 1 {x+ring_radius:.1f} {y:.1f}" fill="none" stroke="{colors["validity-blue"]}" stroke-width="1.7"/>')
+            body.append(f'  <path class="validity-rust-ring" d="M {x+ring_radius:.1f} {y:.1f} A {ring_radius:.1f} {ring_radius:.1f} 0 0 1 {x-ring_radius:.1f} {y:.1f}" fill="none" stroke="{colors["rust"]}" stroke-width="1.7"/>')
     width = math.ceil(max(right_extents, default=layout_width) + 82)
     desc = (
         f"The {family} family path composite contains the action paths of all the family's "

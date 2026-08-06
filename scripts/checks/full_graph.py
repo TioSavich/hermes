@@ -18,6 +18,9 @@ sys.path.insert(0, str(RESEARCH_SCRIPTS))
 from build_full_graph_json import (  # noqa: E402
     LEVEL_BY_FAMILY,
     OUTPUT,
+    REVIEW_STATUSES,
+    UNREVIEWED_STATUSES,
+    VALIDITY_MODES,
     generate_json,
 )
 from build_machine_typology import parse_transition_tables  # noqa: E402
@@ -25,6 +28,7 @@ from build_machine_typology import parse_transition_tables  # noqa: E402
 
 PAGE = ROOT / "docs/research/automata-graph.html"
 HUB = ROOT / "docs/research/2026-08-03-automata-compendium.html"
+TOKENS = ROOT / "hermes/web/hermes-tokens.css"
 
 
 def fail_if(condition: bool, message: str, failures: list[str]) -> None:
@@ -52,7 +56,7 @@ def main() -> int:
     edge_ids = [edge.get("id") for edge in edges]
     edge_by_id = {edge.get("id"): edge for edge in edges}
 
-    fail_if(data.get("schema") != 1, "full graph schema is not 1", failures)
+    fail_if(data.get("schema") != 2, "full graph schema is not 2", failures)
     fail_if(len(machines) != 222, f"expected 222 machines, got {len(machines)}", failures)
     fail_if(len(nodes) != sum(len(machine.states) for machine in machines),
             "node count does not equal the per-machine state sum", failures)
@@ -69,6 +73,28 @@ def main() -> int:
             "node level or z position disagrees with the authored ladder", failures)
     fail_if(any(edge.get("stance") not in {"conserving", "deforming", "neutral"}
                 for edge in edges), "edge has an invalid stance", failures)
+    deforming_edges = [edge for edge in edges if edge.get("stance") == "deforming"]
+    non_deforming_edges = [edge for edge in edges if edge.get("stance") != "deforming"]
+    fail_if(any("validity_modes" not in edge or "review_status" not in edge
+                for edge in deforming_edges),
+            "deforming edge lacks validity_modes or review_status", failures)
+    fail_if(any("validity_modes" in edge or "review_status" in edge
+                for edge in non_deforming_edges),
+            "non-deforming edge carries validity metadata", failures)
+    for edge in deforming_edges:
+        modes = edge.get("validity_modes")
+        fail_if(
+            not isinstance(modes, list)
+            or not modes
+            or len(modes) != len(set(modes))
+            or any(mode not in VALIDITY_MODES for mode in modes)
+            or (len(modes) == 2 and modes != list(VALIDITY_MODES)),
+            f"edge {edge.get('id')} has invalid validity_modes {modes!r}",
+            failures,
+        )
+        fail_if(edge.get("review_status") not in REVIEW_STATUSES,
+                f"edge {edge.get('id')} has invalid review_status {edge.get('review_status')!r}",
+                failures)
 
     borrow_actions = [borrow.get("canonical_action") for borrow in borrows]
     fail_if(len(borrow_actions) != len(set(borrow_actions)),
@@ -127,6 +153,43 @@ def main() -> int:
         stance: stance_counts.get(stance, 0)
         for stance in ("conserving", "deforming", "neutral")
     }, "meta stance counts disagree with edges", failures)
+    validity_counts = Counter()
+    for edge in deforming_edges:
+        modes = set(edge.get("validity_modes", []))
+        if modes == {"objective_invalid"}:
+            validity_counts["objective_invalid_only"] += 1
+        elif modes == {"context_sensitive_or_inefficient"}:
+            validity_counts["context_sensitive_or_inefficient_only"] += 1
+        elif modes == set(VALIDITY_MODES):
+            validity_counts["mixed"] += 1
+    expected_validity_counts = {
+        label: validity_counts.get(label, 0)
+        for label in (
+            "objective_invalid_only",
+            "context_sensitive_or_inefficient_only",
+            "mixed",
+        )
+    }
+    fail_if(counts.get("deforming_edges_by_validity") != expected_validity_counts,
+            "meta validity counts disagree with deforming edges", failures)
+    expected_status_counts = {
+        status: sum(edge.get("review_status") == status for edge in deforming_edges)
+        for status in REVIEW_STATUSES
+    }
+    fail_if(counts.get("deforming_edges_by_review_status") != expected_status_counts,
+            "meta review-status counts disagree with deforming edges", failures)
+    expected_review_counts = {
+        "reviewed": sum(edge.get("review_status") not in UNREVIEWED_STATUSES
+                        for edge in deforming_edges),
+        "unreviewed": sum(edge.get("review_status") in UNREVIEWED_STATUSES
+                          for edge in deforming_edges),
+    }
+    fail_if(counts.get("deforming_edges_by_review_state") != expected_review_counts,
+            "meta reviewed/unreviewed counts disagree with deforming edges", failures)
+    fail_if(sum(expected_validity_counts.values()) != len(deforming_edges),
+            "validity categories do not cover every deforming edge", failures)
+    fail_if(sum(expected_status_counts.values()) != len(deforming_edges),
+            "review statuses do not cover every deforming edge", failures)
 
     if not PAGE.exists():
         failures.append(f"missing graph page: {PAGE.relative_to(ROOT)}")
@@ -141,9 +204,23 @@ def main() -> int:
             "Drag to orbit",
             "no state is literally shared",
             "vertical order is authored",
+            "the claim is false on its own",
+            "a correct doing the context makes insufficient",
+            "blue base with a rust overlay",
+            "reviewed",
+            "unreviewed",
+            "validity_modes",
+            "review_status",
+            "validityBlue",
+            "drawValidityBlueBases",
+            "drawValidityRustOverlays",
         )
         for fragment in required:
             fail_if(fragment not in page, f"graph page lacks required fragment: {fragment}", failures)
+        blue_call = page.find("\n    drawValidityBlueBases(validityBlueEdges);")
+        rust_call = page.find("\n    drawValidityRustOverlays(deformingEdges);")
+        fail_if(blue_call < 0 or rust_call < 0 or blue_call > rust_call,
+                "graph page does not draw blue validity bases before rust overlays", failures)
         fail_if(bool(re.search(r"https?://", page)), "graph page contains an external URL", failures)
         fail_if(bool(re.search(r"<script\b[^>]+\bsrc=", page, re.IGNORECASE)),
                 "graph page loads an external script", failures)
@@ -161,6 +238,13 @@ def main() -> int:
 
     if not HUB.exists() or 'href="automata-graph.html"' not in HUB.read_text(encoding="utf-8"):
         failures.append("compendium hub lacks the full-graph link")
+
+    token_text = TOKENS.read_text(encoding="utf-8") if TOKENS.exists() else ""
+    blue = re.search(r"--validity-blue:\s*(#[0-9a-fA-F]{6})", token_text)
+    norms = re.search(r"--acc-norms:\s*(#[0-9a-fA-F]{6})", token_text)
+    fail_if(blue is None, "Hermes tokens lack --validity-blue", failures)
+    fail_if(blue is not None and norms is not None and blue.group(1).lower() == norms.group(1).lower(),
+            "--validity-blue reuses --acc-norms", failures)
 
     if failures:
         for failure in failures:

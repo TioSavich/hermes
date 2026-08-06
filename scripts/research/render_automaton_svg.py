@@ -11,11 +11,13 @@ from collections import Counter, defaultdict
 from functools import lru_cache
 from pathlib import Path
 
+from build_full_graph_json import UNREVIEWED_STATUSES, read_validity_ledger
 from build_machine_typology import ROOT, Machine, Structure, parse_transition_tables, structure
 
 
 OUTPUT_DIR = ROOT / "docs/research/assets/automata"
 HOST_CSS = ROOT / "hermes/web/render/host.css"
+TOKENS_CSS = ROOT / "hermes/web/hermes-tokens.css"
 ACTION_MAP = ROOT / "knowledge/strategies/action_vocabulary_map.pl"
 ACTION_GRAMMAR = ROOT / "knowledge/strategies/action_grammar.pl"
 NODE_RADIUS = 18.0
@@ -33,13 +35,16 @@ GRAMMAR_RE = re.compile(
 )
 
 
-def palette(path: Path = HOST_CSS) -> dict[str, str]:
+def palette(path: Path = HOST_CSS, tokens_path: Path = TOKENS_CSS) -> dict[str, str]:
     """Read the CSS fallback palette used by the render host."""
     text = path.read_text(encoding="utf-8")
     found: dict[str, str] = {}
     for name, color in re.findall(r"var\(--([a-z0-9-]+),\s*(#[0-9a-fA-F]{6})\)", text):
         found.setdefault(name, color.lower())
-    required = ("paper", "ink", "muted", "gold", "surface", "rust")
+    token_text = tokens_path.read_text(encoding="utf-8")
+    for name, color in re.findall(r"--([a-z0-9-]+):\s*(#[0-9a-fA-F]{6})", token_text):
+        found.setdefault(name, color.lower())
+    required = ("paper", "ink", "muted", "gold", "surface", "rust", "validity-blue")
     missing = [name for name in required if name not in found]
     if missing:
         raise ValueError(f"host.css lacks required palette fallbacks: {missing}")
@@ -272,16 +277,47 @@ def render_svg(
 
     stance_colors = {
         "conserving": colors["ink"],
-        "deforming": colors["rust"],
         "neutral": colors["muted"],
     }
+    validity = read_validity_ledger()
+    drawn_edges: list[dict[str, object]] = []
+    for before, action, after in sorted(grouped):
+        actions = pair_actions[(before, after)]
+        lane = actions.index(action) - (len(actions) - 1) / 2
+        path, label_x, label_y = edge_path(machine, before, after, placed, cx, cy, lane)
+        canonical = canonical_map.get((machine.family, machine.kind, action), action)
+        stance = stance_map.get(canonical, "neutral")
+        validity_row = validity.get((machine.family, machine.kind, action, before, after))
+        if stance == "deforming" and validity_row is None:
+            raise ValueError(
+                f"deforming renderer edge lacks validity row: "
+                f"{machine.family}/{machine.kind}/{before}/{action}/{after}"
+            )
+        if stance != "deforming" and validity_row is not None:
+            raise ValueError(
+                f"non-deforming renderer edge has validity row: "
+                f"{machine.family}/{machine.kind}/{before}/{action}/{after}"
+            )
+        drawn_edges.append({
+            "before": before,
+            "action": action,
+            "after": after,
+            "path": path,
+            "label_x": label_x,
+            "label_y": label_y,
+            "canonical": canonical,
+            "stance": stance,
+            "sources": grouped[(before, action, after)],
+            "validity": validity_row,
+        })
     out = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.0f}" height="{height:.0f}" '
         f'viewBox="0 0 {width:.0f} {height:.0f}" role="img" aria-labelledby="title desc">',
         f'  <title id="title">{html.escape(machine.family)} / {html.escape(machine.kind)}</title>',
-        '  <desc id="desc">States are arranged radially. Edge color records the authored stance: '
-        'dark for conserving, rust for deforming, and muted for neutral. Dashed edges have observed-only provenance.</desc>',
+        '  <desc id="desc">States are arranged radially. Dark and muted lines record conserving and neutral stances. '
+        'For deforming transitions, blue records a correct doing the context makes insufficient; rust records a claim '
+        'that is false on its own. Mixed transitions have a blue base and rust overlay. Unreviewed rows remain rust.</desc>',
         "  <defs>",
     ]
     for stance, color in stance_colors.items():
@@ -290,6 +326,17 @@ def render_svg(
             f'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
             f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{color}"/></marker>'
         )
+    out.extend([
+        f'    <marker id="arrow-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" '
+        f'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+        f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["validity-blue"]}"/></marker>',
+        f'    <marker id="arrow-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" '
+        f'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+        f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["rust"]}"/></marker>',
+        f'    <marker id="arrow-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" '
+        f'markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">'
+        f'<path d="M 0 0 L 10 5 L 0 10 z" fill="{colors["rust"]}"/></marker>',
+    ])
     out.append(
         f'    <marker id="arrow-start" viewBox="0 0 10 10" refX="9" refY="5" '
         f'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
@@ -297,21 +344,41 @@ def render_svg(
     )
     out.extend(["  </defs>", f'  <rect width="100%" height="100%" fill="{colors["paper"]}"/>'])
 
-    for before, action, after in sorted(grouped):
-        actions = pair_actions[(before, after)]
-        lane = actions.index(action) - (len(actions) - 1) / 2
-        path, label_x, label_y = edge_path(machine, before, after, placed, cx, cy, lane)
-        canonical = canonical_map.get((machine.family, machine.kind, action), action)
-        stance = stance_map.get(canonical, "neutral")
-        stroke = stance_colors[stance]
-        sources = grouped[(before, action, after)]
+    # Base pass: ordinary edges and reviewed blue validity bases. Rust is emitted last.
+    for edge in drawn_edges:
+        stance = str(edge["stance"])
+        validity_row = edge["validity"]
+        sources = edge["sources"]
         dash = ' stroke-dasharray="7 5"' if sources == {"observed"} else ""
-        out.append(
-            f'  <path class="edge-{stance}" d="{path}" fill="none" stroke="{stroke}" '
-            f'stroke-width="2.5" stroke-linecap="round"{dash} marker-end="url(#arrow-{stance})"><title>'
-            f'{html.escape(action)} → {html.escape(canonical)} ({stance})</title></path>'
-        )
-        out.append(edge_label(action, canonical, label_x, label_y, stroke, colors["paper"]))
+        if validity_row is None:
+            stroke = stance_colors[stance]
+            out.append(
+                f'  <path class="edge-{stance}" d="{edge["path"]}" fill="none" stroke="{stroke}" '
+                f'stroke-width="2.5" stroke-linecap="round"{dash} marker-end="url(#arrow-{stance})"><title>'
+                f'{html.escape(str(edge["action"]))} → {html.escape(str(edge["canonical"]))} ({stance})</title></path>'
+            )
+            label_color = stroke
+        else:
+            modes = list(validity_row["validity_modes"])
+            status = str(validity_row["review_status"])
+            reviewed_blue = (
+                status not in UNREVIEWED_STATUSES
+                and "context_sensitive_or_inefficient" in modes
+            )
+            label_color = colors["validity-blue"] if reviewed_blue else colors["rust"]
+            if reviewed_blue:
+                width = "3.4" if "objective_invalid" in modes else "2.8"
+                out.append(
+                    f'  <path class="validity-blue-base" d="{edge["path"]}" fill="none" '
+                    f'stroke="{colors["validity-blue"]}" stroke-width="{width}" stroke-linecap="round"{dash} '
+                    f'marker-end="url(#arrow-validity-blue)"><title>{html.escape(str(edge["action"]))} '
+                    f'→ {html.escape(str(edge["canonical"]))}; modes {html.escape(", ".join(modes))}; '
+                    f'review status {html.escape(status)}</title></path>'
+                )
+        out.append(edge_label(
+            str(edge["action"]), str(edge["canonical"]), float(edge["label_x"]),
+            float(edge["label_y"]), label_color, colors["paper"]
+        ))
 
     start_x, start_y, start_angle = placed[machine.start]
     arrow_start = (start_x + math.cos(start_angle) * 64, start_y + math.sin(start_angle) * 64)
@@ -334,6 +401,54 @@ def render_svg(
                 f'stroke="{colors["ink"]}" stroke-width="1.4"/>'
             )
         out.extend(state_label(state, index, x, y, angle, cx, cy, colors["ink"]))
+
+    # Rust overlays and validity rings are last and remain at full strength.
+    target_modes: dict[str, set[str]] = defaultdict(set)
+    for edge in drawn_edges:
+        validity_row = edge["validity"]
+        if validity_row is None:
+            continue
+        modes = list(validity_row["validity_modes"])
+        status = str(validity_row["review_status"])
+        unreviewed = status in UNREVIEWED_STATUSES
+        if not unreviewed and "context_sensitive_or_inefficient" in modes:
+            target_modes[str(edge["after"])].add("blue")
+        if unreviewed or "objective_invalid" in modes:
+            target_modes[str(edge["after"])].add("rust")
+            mixed = not unreviewed and set(modes) == {
+                "objective_invalid", "context_sensitive_or_inefficient"
+            }
+            out.append(
+                f'  <path class="validity-rust-overlay" d="{edge["path"]}" fill="none" '
+                f'stroke="{colors["rust"]}" stroke-width="{1.5 if mixed else 2.5}" '
+                f'stroke-linecap="round" marker-end="url(#arrow-validity-rust{ "-mixed" if mixed else "" })"><title>'
+                f'{html.escape(str(edge["action"]))} → {html.escape(str(edge["canonical"]))}; '
+                f'modes {html.escape(", ".join(modes))}; review status {html.escape(status)}</title></path>'
+            )
+    ring_radius = NODE_RADIUS + 5.5
+    for state, modes in sorted(target_modes.items()):
+        x, y, _angle = placed[state]
+        if modes == {"blue"}:
+            out.append(
+                f'  <circle class="validity-blue-ring" cx="{x:.1f}" cy="{y:.1f}" r="{ring_radius:.1f}" '
+                f'fill="none" stroke="{colors["validity-blue"]}" stroke-width="1.5"/>'
+            )
+        elif modes == {"rust"}:
+            out.append(
+                f'  <circle class="validity-rust-ring" cx="{x:.1f}" cy="{y:.1f}" r="{ring_radius:.1f}" '
+                f'fill="none" stroke="{colors["rust"]}" stroke-width="1.5"/>'
+            )
+        else:
+            out.append(
+                f'  <path class="validity-blue-ring" d="M {x-ring_radius:.1f} {y:.1f} '
+                f'A {ring_radius:.1f} {ring_radius:.1f} 0 0 1 {x+ring_radius:.1f} {y:.1f}" '
+                f'fill="none" stroke="{colors["validity-blue"]}" stroke-width="1.7"/>'
+            )
+            out.append(
+                f'  <path class="validity-rust-ring" d="M {x+ring_radius:.1f} {y:.1f} '
+                f'A {ring_radius:.1f} {ring_radius:.1f} 0 0 1 {x-ring_radius:.1f} {y:.1f}" '
+                f'fill="none" stroke="{colors["rust"]}" stroke-width="1.7"/>'
+            )
     out.append("</svg>")
     return "\n".join(out) + "\n"
 

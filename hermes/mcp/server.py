@@ -184,17 +184,29 @@ def output_schema(name: str) -> dict[str, Any] | None:
         "graph_overview": {
             "type": "object",
             "required": ["meta", "counts", "families"],
-            "properties": {"meta": {"type": "object"}, "counts": {"type": "object"}, "families": {"type": "array"}},
+            "properties": {
+                "meta": {"type": "object"},
+                "counts": {
+                    "type": "object",
+                    "required": ["validity_counts", "review_status_counts", "reviewed_unreviewed_counts"],
+                    "properties": {
+                        "validity_counts": {"type": "object"},
+                        "review_status_counts": {"type": "object"},
+                        "reviewed_unreviewed_counts": {"type": "object"},
+                    },
+                },
+                "families": {"type": "array"},
+            },
         },
         "graph_machine": {
             "type": "object",
             "required": ["machine", "family", "kind", "states", "edges", "borrow_summary"],
-            "properties": {"machine": {"type": "string"}, "family": {"type": "string"}, "kind": {"type": "string"}, "states": {"type": "array"}, "edges": {"type": "array"}, "borrow_summary": {"type": "object"}},
+            "properties": {"machine": {"type": "string"}, "family": {"type": "string"}, "kind": {"type": "string"}, "states": {"type": "array"}, "edges": {"type": "array", "items": {"type": "object", "required": ["validity_modes", "review_status"], "properties": {"validity_modes": {"type": "array", "items": {"type": "string"}}, "review_status": {"type": ["string", "null"]}}}}, "borrow_summary": {"type": "object"}},
         },
         "graph_borrows": {
             "type": "object",
-            "required": ["query", "assertion", "totals", "page", "pairs"],
-            "properties": {"query": {"type": "object"}, "assertion": {"type": "string"}, "totals": {"type": "object"}, "page": {"type": "object"}, "pairs": {"type": "array"}},
+            "required": ["query", "assertion", "carriers", "totals", "page", "pairs"],
+            "properties": {"query": {"type": "object"}, "assertion": {"type": "string"}, "carriers": {"type": "array", "items": {"type": "object", "required": ["validity_modes"], "properties": {"validity_modes": {"type": "array", "items": {"type": "string"}}}}}, "totals": {"type": "object"}, "page": {"type": "object"}, "pairs": {"type": "array"}},
         },
     }
     return schemas.get(name)
@@ -666,6 +678,9 @@ class HermesMCPServer:
                 "borrow_actions": counts.get("borrows"),
                 "borrow_pairs": counts.get("borrow_pairs"),
                 "cross_family_pairs": counts.get("cross_family_borrow_pairs"),
+                "validity_counts": counts.get("deforming_edges_by_validity"),
+                "review_status_counts": counts.get("deforming_edges_by_review_status"),
+                "reviewed_unreviewed_counts": counts.get("deforming_edges_by_review_state"),
             },
             "families": families,
         }
@@ -747,6 +762,8 @@ class HermesMCPServer:
                     "local_action": edge.get("local_action"),
                     "canonical_action": edge.get("canonical_action"),
                     "stance": edge.get("stance"),
+                    "validity_modes": edge.get("validity_modes", []),
+                    "review_status": edge.get("review_status"),
                     "provenance_kinds": edge.get("provenance_kinds"),
                 }
                 for edge in edges
@@ -826,24 +843,33 @@ class HermesMCPServer:
         matching_pairs = cross_family_pairs if cross_family_only else pairs
         returned_pairs = matching_pairs[offset:offset + limit]
         next_offset = offset + len(returned_pairs)
-        carriers: dict[str, list[str]] = {}
+        carriers: dict[str, list[dict[str, Any]]] = {}
         for edge in action_edges:
             edge_machine = edge.get("machine")
             edge_id = edge.get("id")
             if isinstance(edge_machine, str) and isinstance(edge_id, str):
-                carriers.setdefault(edge_machine, []).append(edge_id)
+                carriers.setdefault(edge_machine, []).append(edge)
         query["cross_family_only"] = cross_family_only
         return {
             "query": query,
             "assertion": "Each pair records only that its transition edges share a canonical action name; it does not assert equivalence, prerequisite order, or a learner relation.",
             "carriers": [
-                {"machine": name, "edge_ids": sorted(edge_ids)}
-                for name, edge_ids in sorted(carriers.items())
+                {
+                    "machine": name,
+                    "edge_ids": sorted(str(edge["id"]) for edge in carrier_edges),
+                    "validity_modes": [
+                        mode for mode in (
+                            "objective_invalid", "context_sensitive_or_inefficient"
+                        )
+                        if any(mode in edge.get("validity_modes", []) for edge in carrier_edges)
+                    ],
+                }
+                for name, carrier_edges in sorted(carriers.items())
             ],
             "totals": {
                 "canonical_actions": len({pair["canonical_action"] for pair in matching_pairs}),
                 "carrier_machines": len(carriers),
-                "carrier_edges": sum(len(edge_ids) for edge_ids in carriers.values()),
+                "carrier_edges": sum(len(carrier_edges) for carrier_edges in carriers.values()),
                 "pairs": len(pairs),
                 "cross_family_pairs": len(cross_family_pairs),
                 "matching_pairs": len(matching_pairs),

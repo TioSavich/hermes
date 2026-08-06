@@ -5,8 +5,10 @@
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
-    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
   <path d="M 100.0 113.0 C 211.6 113.0, 211.6 113.0, 323.2 113.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>register_givens: equiprobable_endpoint_counting, terminal_tree_endpoint_probability_sum</title></path>
   <rect x="163.5" y="104.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -17,7 +19,6 @@
   <path d="M 1152.8 76.0 C 1264.4 76.0, 1264.4 113.0, 1376.0 113.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: equiprobable_endpoint_counting</title></path>
   <rect x="1207.9" y="104.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1264.4" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
-  <path d="M 889.6 76.0 C 1001.2 76.0, 1001.2 76.0, 1112.8 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_count_for_measure: equiprobable_endpoint_counting</title></path>
   <rect x="950.3" y="62.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1001.2" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_count</text>
   <text x="1001.2" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">for_measure</text>
@@ -48,4 +49,6 @@
   <text x="608.4" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p5</text>
   <circle cx="345.2" cy="113.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="345.2" y="116.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p6</text>
+  <path class="validity-rust-overlay" d="M 889.6 76.0 C 1001.2 76.0, 1001.2 76.0, 1112.8 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>substitute_count_for_measure: equiprobable_endpoint_counting; modes objective_invalid; review status adjudicated</title></path>
+  <circle class="validity-rust-ring" cx="1134.8" cy="76.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
 </svg>

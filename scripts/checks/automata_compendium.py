@@ -66,6 +66,32 @@ def main() -> int:
         failures.append(
             f"compendium page-count mismatch: expected 16, got {len(compendium_pages)}"
         )
+    hub = compendium_pages.get(COMPENDIUM, "")
+    for fragment in (
+        "the claim is false on its own",
+        "a correct doing the context makes insufficient",
+        "blue base with a rust overlay drawn last",
+        "reviewed and",
+        "unreviewed deforming transitions",
+    ):
+        if fragment not in hub:
+            failures.append(f"compendium legend lacks validity fragment: {fragment}")
+    for path in sorted(expected_family_pages):
+        page = compendium_pages[path]
+        if "<th>Validity</th>" not in page:
+            failures.append(f"family page lacks transition validity column: {path.relative_to(ROOT)}")
+        if "Validity review for this family:" not in page:
+            failures.append(f"family page lacks review counts: {path.relative_to(ROOT)}")
+    for relative, svg in radial.items():
+        blue_at = svg.find('class="validity-blue-base"')
+        rust_at = svg.find('class="validity-rust-overlay"')
+        if blue_at >= 0 and rust_at >= 0 and blue_at > rust_at:
+            failures.append(f"radial SVG does not draw blue before rust: {relative}")
+    for family, (svg, _unaligned) in composite_records().items():
+        blue_at = svg.find('class="validity-blue-base"')
+        rust_at = svg.find('class="validity-rust-overlay"')
+        if blue_at >= 0 and rust_at >= 0 and blue_at > rust_at:
+            failures.append(f"composite SVG does not draw blue before rust: {family}")
     if len(radial) != len(machines):
         failures.append(
             f"tuple/radial-SVG count mismatch: {len(machines)} tuples, {len(radial)} SVGs"

@@ -13,8 +13,10 @@ import itertools
 import json
 import math
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 from build_machine_typology import ROOT, Machine, parse_transition_tables
@@ -23,6 +25,13 @@ from build_machine_typology import ROOT, Machine, parse_transition_tables
 OUTPUT = ROOT / "docs/research/assets/automata/full_graph.json"
 ACTION_MAP = ROOT / "knowledge/strategies/action_vocabulary_map.pl"
 ACTION_GRAMMAR = ROOT / "knowledge/strategies/action_grammar.pl"
+VALIDITY_LEDGER = ROOT / "knowledge/strategies/deformation_validity.pl"
+VALIDITY_MODES = (
+    "objective_invalid",
+    "context_sensitive_or_inefficient",
+)
+REVIEW_STATUSES = ("seeded_ledger", "seeded_profile", "proposed", "adjudicated")
+UNREVIEWED_STATUSES = {"seeded_profile", "proposed"}
 ATOM = r"[a-z][a-z0-9_]*"
 MAP_RE = re.compile(
     rf"^action_maps\(({ATOM}), ({ATOM}), ({ATOM}), ({ATOM}),", re.MULTILINE
@@ -71,6 +80,63 @@ def machine_id(machine: Machine) -> str:
 
 def node_id(family: str, kind: str, state: str) -> str:
     return f"n:{family}:{kind}:{state}"
+
+
+@lru_cache(maxsize=1)
+def read_validity_ledger() -> dict[tuple[str, str, str, str, str], dict[str, object]]:
+    """Read the gated authored ledger without interpreting its evidence terms."""
+    query = (
+        "use_module(library(http/json)),"
+        f"use_module('{VALIDITY_LEDGER.as_posix()}'),"
+        "forall(deformation_validity(Family,Kind,Action,From,To,Modes,_Basis,Status),"
+        "(json_write_dict(current_output,_{family:Family,kind:Kind,local_action:Action,"
+        "from:From,to:To,validity_modes:Modes,review_status:Status},[width(0)]),nl))"
+    )
+    completed = subprocess.run(
+        ["swipl", "-q", "-g", query, "-t", "halt"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode:
+        detail = completed.stderr.strip() or completed.stdout.strip()
+        raise ValueError(f"deformation validity ledger did not load cleanly: {detail}")
+    rows: dict[tuple[str, str, str, str, str], dict[str, object]] = {}
+    for line_number, line in enumerate(completed.stdout.splitlines(), 1):
+        if not line:
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ValueError(
+                f"deformation validity ledger row {line_number} is not JSON: {exc}"
+            ) from exc
+        key = tuple(
+            str(row[name])
+            for name in ("family", "kind", "local_action", "from", "to")
+        )
+        if key in rows:
+            raise ValueError(f"duplicate deformation validity row for {key!r}")
+        modes = row.get("validity_modes")
+        if not isinstance(modes, list) or not modes or any(
+            mode not in VALIDITY_MODES for mode in modes
+        ):
+            raise ValueError(f"invalid validity_modes for {key!r}: {modes!r}")
+        if len(modes) != len(set(modes)) or (
+            len(modes) == 2 and modes != list(VALIDITY_MODES)
+        ):
+            raise ValueError(f"noncanonical validity_modes for {key!r}: {modes!r}")
+        status = row.get("review_status")
+        if status not in REVIEW_STATUSES:
+            raise ValueError(f"invalid review_status for {key!r}: {status!r}")
+        rows[key] = {
+            "validity_modes": modes,
+            "review_status": status,
+        }
+    if not rows:
+        raise ValueError("deformation validity ledger has no rows")
+    return rows
 
 
 def formal_states(machine: Machine) -> tuple[str, ...]:
@@ -276,8 +342,10 @@ def build_edges(
     node_by_key: dict[tuple[str, str, str], dict[str, object]],
     mappings: dict[tuple[str, str, str], str],
     registers: dict[str, tuple[str, str, str]],
+    validity: dict[tuple[str, str, str, str, str], dict[str, object]],
 ) -> list[dict[str, object]]:
     edges: list[dict[str, object]] = []
+    joined_validity: set[tuple[str, str, str, str, str]] = set()
     edge_number = 0
     for machine in machines:
         provenance: dict[tuple[str, str, str], set[str]] = defaultdict(set)
@@ -295,19 +363,36 @@ def build_edges(
                     f"edge names a missing node in {machine_id(machine)}: "
                     f"{source}/{local}/{target}"
                 )
-            edges.append(
-                {
-                    "id": f"e{edge_number:04d}",
-                    "machine": machine_id(machine),
-                    "from": node_by_key[source_key]["id"],
-                    "to": node_by_key[target_key]["id"],
-                    "local_action": local,
-                    "canonical_action": canonical,
-                    "stance": stance,
-                    "provenance_kinds": sorted(provenance[(source, local, target)]),
-                }
-            )
+            edge = {
+                "id": f"e{edge_number:04d}",
+                "machine": machine_id(machine),
+                "from": node_by_key[source_key]["id"],
+                "to": node_by_key[target_key]["id"],
+                "local_action": local,
+                "canonical_action": canonical,
+                "stance": stance,
+                "provenance_kinds": sorted(provenance[(source, local, target)]),
+            }
+            validity_key = (machine.family, machine.kind, local, source, target)
+            if stance == "deforming":
+                if validity_key not in validity:
+                    raise ValueError(
+                        f"deforming edge lacks deformation validity row: {validity_key!r}"
+                    )
+                edge.update(validity[validity_key])
+                joined_validity.add(validity_key)
+            elif validity_key in validity:
+                raise ValueError(
+                    f"non-deforming edge has deformation validity row: {validity_key!r}"
+                )
+            edges.append(edge)
             edge_number += 1
+    orphan_rows = sorted(set(validity) - joined_validity)
+    if orphan_rows:
+        raise ValueError(
+            f"deformation validity ledger has {len(orphan_rows)} orphan rows; "
+            f"first: {orphan_rows[0]!r}"
+        )
     return edges
 
 
@@ -356,9 +441,27 @@ def generate_graph() -> dict[str, object]:
     for machine in machines:
         validate_machine_grammar(machine, mappings, registers, grammar)
     nodes, node_by_key = build_nodes(machines)
-    edges = build_edges(machines, node_by_key, mappings, registers)
+    validity = read_validity_ledger()
+    edges = build_edges(machines, node_by_key, mappings, registers, validity)
     borrows = build_borrows(edges)
     stance_counts = Counter(str(edge["stance"]) for edge in edges)
+    deforming_edges = [edge for edge in edges if edge["stance"] == "deforming"]
+    validity_counts = Counter()
+    review_status_counts = Counter(str(edge["review_status"]) for edge in deforming_edges)
+    for edge in deforming_edges:
+        modes = set(edge["validity_modes"])
+        if modes == {"objective_invalid"}:
+            validity_counts["objective_invalid_only"] += 1
+        elif modes == {"context_sensitive_or_inefficient"}:
+            validity_counts["context_sensitive_or_inefficient_only"] += 1
+        elif modes == set(VALIDITY_MODES):
+            validity_counts["mixed"] += 1
+        else:
+            raise ValueError(f"unsupported validity mode combination: {sorted(modes)!r}")
+    review_counts = Counter(
+        "unreviewed" if edge["review_status"] in UNREVIEWED_STATUSES else "reviewed"
+        for edge in deforming_edges
+    )
     unmapped_edges = [edge for edge in edges if edge["canonical_action"] is None]
     stance_absent_edges = [
         edge
@@ -378,7 +481,7 @@ def generate_graph() -> dict[str, object]:
         if genre == "discursive"
     )
     return {
-        "schema": 1,
+        "schema": 2,
         "meta": {
             "scope": (
                 "The graph records the 222 computational machines in the "
@@ -428,11 +531,28 @@ def generate_graph() -> dict[str, object]:
                     stance: stance_counts.get(stance, 0)
                     for stance in ("conserving", "deforming", "neutral")
                 },
+                "deforming_edges_by_validity": {
+                    label: validity_counts.get(label, 0)
+                    for label in (
+                        "objective_invalid_only",
+                        "context_sensitive_or_inefficient_only",
+                        "mixed",
+                    )
+                },
+                "deforming_edges_by_review_status": {
+                    status: review_status_counts.get(status, 0)
+                    for status in REVIEW_STATUSES
+                },
+                "deforming_edges_by_review_state": {
+                    state: review_counts.get(state, 0)
+                    for state in ("reviewed", "unreviewed")
+                },
             },
             "generation_sources": [
                 "knowledge/strategies/transition_tables/*.pl",
                 "knowledge/strategies/action_vocabulary_map.pl",
                 "knowledge/strategies/action_grammar.pl",
+                "knowledge/strategies/deformation_validity.pl",
                 "scripts/research/build_machine_typology.py",
                 "scripts/research/build_full_graph_json.py",
             ],

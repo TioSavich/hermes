@@ -5,8 +5,10 @@
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
-    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
   <path d="M 100.0 557.0 C 210.5 557.0, 210.5 569.3, 321.0 569.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: contextual_linear_equation_construction, exponent_as_repeated_factor, symbolic_expression_construction</title></path>
   <rect x="170.8" y="560.3" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -14,7 +16,6 @@
   <text x="210.5" y="588.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">contextual_linear_equation_construction</text>
   <text x="210.5" y="597.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">exponent_as_repeated_factor</text>
   <text x="210.5" y="606.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">symbolic_expression_construction</text>
-  <path d="M 100.0 557.0 C 210.5 557.0, 210.5 446.0, 321.0 446.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>conflate_roles: exponent_as_multiplier</title></path>
   <rect x="165.2" y="437.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="210.5" y="449.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
   <text x="210.5" y="465.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">exponent_as_multiplier</text>
@@ -36,7 +37,6 @@
   <text x="210.5" y="588.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">balance_preserving_linear_solution</text>
   <text x="210.5" y="597.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">guess_and_check_rule</text>
   <text x="210.5" y="606.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">programming_expression_evaluation</text>
-  <path d="M 100.0 557.0 C 210.5 557.0, 210.5 816.0, 321.0 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_symbol_reading: one_sided_equation_operation</title></path>
   <rect x="156.8" y="802.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="210.5" y="814.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_symbol</text>
   <text x="210.5" y="824.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">reading</text>
@@ -72,7 +72,6 @@
   <path d="M 361.0 569.3 C 471.5 569.3, 471.5 569.3, 582.0 569.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: contextual_linear_equation_construction, exponent_as_repeated_factor, symbolic_expression_construction</title></path>
   <rect x="431.8" y="560.3" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="572.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
-  <path d="M 622.0 446.0 C 1124.0 446.0, 1124.0 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: exponent_as_multiplier</title></path>
   <rect x="1067.5" y="548.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1124.0" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 361.0 446.0 C 471.5 446.0, 471.5 446.0, 582.0 446.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: exponent_as_multiplier</title></path>
@@ -88,10 +87,8 @@
   <rect x="431.8" y="580.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="592.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="471.5" y="602.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
-  <path d="M 883.0 483.0 C 1254.5 483.0, 1254.5 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: drop_distributed_term, guess_and_check_rule</title></path>
   <rect x="1217.6" y="548.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
-  <path d="M 622.0 298.0 C 732.5 298.0, 732.5 483.0, 843.0 483.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>halt_before_completion: drop_distributed_term</title></path>
   <rect x="695.6" y="469.0" width="73.7" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="481.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">halt_before</text>
   <text x="732.5" y="491.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">completion</text>
@@ -161,13 +158,11 @@
   <rect x="423.4" y="955.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">register_givens</text>
   <text x="471.5" y="983.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">programming_expression_evaluation</text>
-  <path d="M 1144.0 816.0 C 1385.0 816.0, 1385.0 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: one_sided_equation_operation</title></path>
   <rect x="1339.7" y="548.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1385.0" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <path d="M 883.0 816.0 C 993.5 816.0, 993.5 816.0, 1104.0 816.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: one_sided_equation_operation</title></path>
   <rect x="942.6" y="807.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="993.5" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
-  <path d="M 622.0 816.0 C 732.5 816.0, 732.5 816.0, 843.0 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>retain_where_change_was_due: one_sided_equation_operation</title></path>
   <rect x="673.2" y="802.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="814.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">retain_where_change</text>
   <text x="732.5" y="824.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">was_due</text>
@@ -177,18 +172,18 @@
   <path d="M 883.0 372.0 C 1254.5 372.0, 1254.5 557.0, 1626.0 557.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>test_criteria: equation_truth_by_substitution</title></path>
   <rect x="1212.0" y="548.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="560.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">test_criteria</text>
-  <path d="M 883.0 890.0 C 1254.5 890.0, 1254.5 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: operational_equals_left_value</title></path>
+  <path class="validity-blue-base" d="M 883.0 890.0 C 1254.5 890.0, 1254.5 557.0, 1626.0 557.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>treat_relevant_as_irrelevant: operational_equals_left_value; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="1200.8" y="543.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1254.5" y="555.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
-  <text x="1254.5" y="565.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <text x="1254.5" y="555.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">treat_relevant_as</text>
+  <text x="1254.5" y="565.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">irrelevant</text>
   <path d="M 622.0 631.0 C 732.5 631.0, 732.5 372.0, 843.0 372.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>evaluate_expression: equation_truth_by_substitution</title></path>
   <rect x="673.2" y="363.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">evaluate_expression</text>
   <text x="732.5" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">equation_truth_by_substitution</text>
-  <path d="M 622.0 631.0 C 732.5 631.0, 732.5 890.0, 843.0 890.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_symbol_reading: operational_equals_left_value</title></path>
+  <path class="validity-blue-base" d="M 622.0 631.0 C 732.5 631.0, 732.5 890.0, 843.0 890.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>substitute_symbol_reading: operational_equals_left_value; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="678.8" y="876.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="732.5" y="888.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_symbol</text>
-  <text x="732.5" y="898.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">reading</text>
+  <text x="732.5" y="888.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">substitute_symbol</text>
+  <text x="732.5" y="898.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">reading</text>
   <text x="732.5" y="914.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">operational_equals_left_value</text>
   <path d="M 361.0 631.0 C 471.5 631.0, 471.5 631.0, 582.0 631.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>evaluate_expression: equation_truth_by_substitution, operational_equals_left_value</title></path>
   <rect x="412.2" y="622.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -264,4 +259,18 @@
   <text x="604.0" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p33</text>
   <circle cx="343.0" cy="631.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="343.0" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p34</text>
+  <path class="validity-rust-overlay" d="M 100.0 557.0 C 210.5 557.0, 210.5 446.0, 321.0 446.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>conflate_roles: exponent_as_multiplier; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 100.0 557.0 C 210.5 557.0, 210.5 816.0, 321.0 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>substitute_symbol_reading: one_sided_equation_operation; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 446.0 C 1124.0 446.0, 1124.0 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: exponent_as_multiplier; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 483.0 C 1254.5 483.0, 1254.5 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>record_loss: drop_distributed_term, guess_and_check_rule; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 298.0 C 732.5 298.0, 732.5 483.0, 843.0 483.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>halt_before_completion: drop_distributed_term; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 1144.0 816.0 C 1385.0 816.0, 1385.0 557.0, 1626.0 557.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>misname_result: one_sided_equation_operation; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 816.0 C 732.5 816.0, 732.5 816.0, 843.0 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>retain_where_change_was_due: one_sided_equation_operation; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-blue-ring" d="M 1627.5 557.0 A 20.5 20.5 0 0 1 1668.5 557.0" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 1668.5 557.0 A 20.5 20.5 0 0 1 1627.5 557.0" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <circle class="validity-rust-ring" cx="343.0" cy="446.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="865.0" cy="483.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="865.0" cy="816.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="343.0" cy="816.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-blue-ring" cx="865.0" cy="890.0" r="20.5" fill="none" stroke="#2e6f9e" stroke-width="1.5"/>
 </svg>

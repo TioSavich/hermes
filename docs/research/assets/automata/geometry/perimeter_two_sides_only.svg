@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
   <title id="title">geometry / perimeter_two_sides_only</title>
-  <desc id="desc">States are arranged radially. Edge color records the authored stance: dark for conserving, rust for deforming, and muted for neutral. Dashed edges have observed-only provenance.</desc>
+  <desc id="desc">States are arranged radially. Dark and muted lines record conserving and neutral stances. For deforming transitions, blue records a correct doing the context makes insufficient; rust records a claim that is false on its own. Mixed transitions have a blue base and rust overlay. Unreviewed rows remain rust.</desc>
   <defs>
     <marker id="arrow-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0d0c08"/></marker>
-    <marker id="arrow-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b95238"/></marker>
     <marker id="arrow-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#665f4f"/></marker>
+    <marker id="arrow-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="arrow-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b95238"/></marker>
+    <marker id="arrow-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b95238"/></marker>
     <marker id="arrow-start" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a747"/></marker>
   </defs>
   <rect width="100%" height="100%" fill="#f4ead6"/>
@@ -13,9 +15,7 @@
   <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: traverse_boundary</title><tspan x="376.0" y="239.9">traverse_side</tspan></text>
   <path class="edge-neutral" d="M 417.2 303.7 Q 449.3 362.0 391.2 383.6" fill="none" stroke="#665f4f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-neutral)"><title>traverse_side → traverse_boundary (neutral)</title></path>
   <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#665f4f" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: traverse_boundary</title><tspan x="413.4" y="348.5">traverse_side</tspan></text>
-  <path class="edge-deforming" d="M 365.5 407.4 Q 320.0 456.0 281.5 407.4" fill="none" stroke="#b95238" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-deforming)"><title>stop_before_opposite_sides → halt_before_completion (deforming)</title></path>
   <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#b95238" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: halt_before_completion</title><tspan x="321.8" y="412.5">stop_before</tspan><tspan x="321.8" y="422.9">opposite_sides</tspan></text>
-  <path class="edge-deforming" d="M 251.0 390.3 Q 190.7 362.0 225.0 310.4" fill="none" stroke="#b95238" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-deforming)"><title>report_partial_boundary → misname_result (deforming)</title></path>
   <text text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.0" fill="#b95238" stroke="#f4ead6" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill"><title>Canonical action: misname_result</title><tspan x="227.6" y="346.7">report_partial</tspan><tspan x="227.6" y="357.1">boundary</tspan></text>
   <path d="M 320.0 148.0 L 320.0 187.0" fill="none" stroke="#d4a747" stroke-width="2.6" marker-end="url(#arrow-start)"/>
   <circle cx="320.0" cy="212.0" r="18.0" fill="#fffef9" stroke="#d4a747" stroke-width="3"/>
@@ -34,4 +34,8 @@
   <circle cx="217.3" cy="286.6" r="13.5" fill="none" stroke="#0d0c08" stroke-width="1.4"/>
   <text text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#0d0c08"><tspan x="159.1" y="268.7">q_accept</tspan></text>
   <text x="217.3" y="290.1" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" fill="#0d0c08">q4</text>
+  <path class="validity-rust-overlay" d="M 365.5 407.4 Q 320.0 456.0 281.5 407.4" fill="none" stroke="#b95238" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-validity-rust)"><title>stop_before_opposite_sides → halt_before_completion; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 251.0 390.3 Q 190.7 362.0 225.0 310.4" fill="none" stroke="#b95238" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-validity-rust)"><title>report_partial_boundary → misname_result; modes objective_invalid; review status adjudicated</title></path>
+  <circle class="validity-rust-ring" cx="217.3" cy="286.6" r="23.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="256.5" cy="407.4" r="23.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
 </svg>

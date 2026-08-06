@@ -5,8 +5,10 @@
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
-    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
   <path d="M 100.0 298.0 C 208.0 298.0, 208.0 261.0, 316.0 261.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: compare_ones_digits_only, place_value_comparison</title></path>
   <rect x="145.9" y="252.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -20,7 +22,6 @@
   <text x="208.0" y="289.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_cardinality</text>
   <text x="208.0" y="298.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">omit_highest_place_regrouping</text>
   <text x="208.0" y="307.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_place_value_inscription</text>
-  <path d="M 100.0 298.0 C 208.0 298.0, 208.0 520.0, 316.0 520.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: spatial_extent_as_cardinality</title></path>
   <rect x="154.3" y="506.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="208.0" y="518.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="208.0" y="528.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
@@ -38,7 +39,6 @@
   <rect x="401.9" y="363.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="464.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">align_to_common_unit</text>
   <text x="464.0" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">place_value_comparison</text>
-  <path d="M 356.0 261.0 C 592.0 261.0, 592.0 261.0, 828.0 261.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: compare_ones_digits_only</title></path>
   <rect x="538.3" y="247.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="592.0" y="259.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="592.0" y="269.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
@@ -47,10 +47,8 @@
   <rect x="808.3" y="185.3" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="848.0" y="197.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="848.0" y="207.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
-  <path d="M 868.0 298.0 C 1872.0 298.0, 1872.0 298.0, 2876.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: omit_highest_place_regrouping</title></path>
   <rect x="1826.7" y="289.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1872.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
-  <path d="M 612.0 298.0 C 720.0 298.0, 720.0 298.0, 828.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: omit_highest_place_regrouping</title></path>
   <rect x="663.5" y="289.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="720.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 2660.0 446.0 C 2768.0 446.0, 2768.0 298.0, 2876.0 298.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: recursive_place_value_inscription</title></path>
@@ -103,7 +101,6 @@
   <text x="464.0" y="338.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
   <text x="464.0" y="354.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">inscribe_cardinality</text>
   <text x="464.0" y="363.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">recursive_place_value_inscription</text>
-  <path d="M 612.0 520.0 C 1744.0 520.0, 1744.0 298.0, 2876.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_appearance_for_measure: spatial_extent_as_cardinality</title></path>
   <rect x="1698.7" y="279.0" width="90.5" height="38.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1744.0" y="291.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute</text>
   <text x="1744.0" y="301.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">appearance_for</text>
@@ -155,4 +152,13 @@
   <text x="594.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p19</text>
   <circle cx="338.0" cy="520.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="338.0" y="523.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p20</text>
+  <path class="validity-rust-overlay" d="M 100.0 298.0 C 208.0 298.0, 208.0 520.0, 316.0 520.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>treat_relevant_as_irrelevant: spatial_extent_as_cardinality; modes objective_invalid; review status seeded_profile</title></path>
+  <path class="validity-rust-overlay" d="M 356.0 261.0 C 592.0 261.0, 592.0 261.0, 828.0 261.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>treat_relevant_as_irrelevant: compare_ones_digits_only; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 868.0 298.0 C 1872.0 298.0, 1872.0 298.0, 2876.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>misname_result: omit_highest_place_regrouping; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 612.0 298.0 C 720.0 298.0, 720.0 298.0, 828.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: omit_highest_place_regrouping; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 612.0 520.0 C 1744.0 520.0, 1744.0 298.0, 2876.0 298.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>substitute_appearance_for_measure: spatial_extent_as_cardinality; modes objective_invalid; review status seeded_profile</title></path>
+  <circle class="validity-rust-ring" cx="2898.0" cy="298.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="850.0" cy="261.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="850.0" cy="298.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="338.0" cy="520.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
 </svg>

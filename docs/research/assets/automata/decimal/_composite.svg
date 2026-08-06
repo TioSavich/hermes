@@ -5,8 +5,10 @@
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
-    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
   <path d="M 100.0 631.0 C 209.7 631.0, 209.7 557.0, 319.4 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>initiate: decimal_fraction_place_value_comparison, decimal_scale_loss_comparison</title></path>
   <rect x="177.7" y="548.0" width="64.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -54,7 +56,6 @@
   <path d="M 878.3 742.0 C 988.0 742.0, 988.0 742.0, 1097.7 742.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_scale_loss_comparison</title></path>
   <rect x="931.5" y="733.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compare_magnitudes</text>
-  <path d="M 618.9 742.0 C 728.6 742.0, 728.6 742.0, 838.3 742.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: decimal_scale_loss_comparison</title></path>
   <rect x="672.1" y="733.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1137.7 372.0 C 1377.1 372.0, 1377.1 557.0, 1616.6 557.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: decimal_fraction_place_value_comparison</title></path>
@@ -67,7 +68,6 @@
   <rect x="688.9" y="358.0" width="79.3" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">re_express</text>
   <text x="728.6" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">equivalently</text>
-  <path d="M 359.4 557.0 C 469.1 557.0, 469.1 742.0, 578.9 742.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: decimal_scale_loss_comparison</title></path>
   <rect x="407.0" y="733.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <text x="469.1" y="761.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_scale_loss_comparison</text>
@@ -76,13 +76,11 @@
   <text x="469.1" y="370.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="469.1" y="380.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="469.1" y="396.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_fraction_place_value_comparison</text>
-  <path d="M 1137.7 816.0 C 1506.9 816.0, 1506.9 631.0, 1876.0 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: decimal_point_rule_misapplication, decimal_whole_number_reading</title></path>
   <rect x="1470.0" y="622.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1506.9" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 878.3 668.0 C 988.0 668.0, 988.0 816.0, 1097.7 816.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: decimal_point_rule_misapplication</title></path>
   <rect x="939.9" y="807.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
-  <path d="M 618.9 668.0 C 728.6 668.0, 728.6 668.0, 838.3 668.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: decimal_point_rule_misapplication</title></path>
   <rect x="666.5" y="659.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
   <path d="M 1397.1 779.0 C 1636.6 779.0, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>recompose_total: decimal_multiplication_rule, positional_decimal_reading</title></path>
@@ -97,10 +95,8 @@
   <path d="M 618.9 594.0 C 728.6 594.0, 728.6 594.0, 838.3 594.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>iterate_unit: decimal_place_unit_regrouping</title></path>
   <rect x="688.9" y="585.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="597.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">iterate_unit</text>
-  <path d="M 878.3 76.0 C 1377.1 76.0, 1377.1 631.0, 1876.0 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: change_decimal_place_name_without_regrouping</title></path>
   <rect x="1320.7" y="622.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1377.1" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
-  <path d="M 618.9 76.0 C 728.6 76.0, 728.6 76.0, 838.3 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>retain_where_change_was_due: change_decimal_place_name_without_regrouping</title></path>
   <rect x="669.3" y="62.0" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">retain_where_change</text>
   <text x="728.6" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">was_due</text>
@@ -164,7 +160,6 @@
   <text x="469.1" y="592.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="469.1" y="602.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="469.1" y="618.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_place_unit_regrouping</text>
-  <path d="M 359.4 594.0 C 469.1 594.0, 469.1 76.0, 578.9 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>rename_in_place_of_transforming: change_decimal_place_name_without_regrouping</title></path>
   <rect x="412.7" y="62.0" width="113.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="74.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">rename_in_place_of</text>
   <text x="469.1" y="84.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">transforming</text>
@@ -184,7 +179,6 @@
   <path d="M 1397.1 495.3 C 1636.6 495.3, 1636.6 631.0, 1876.0 631.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>verify_invariant: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals</title></path>
   <rect x="1585.7" y="622.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1636.6" y="634.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
-  <path d="M 1137.7 495.3 C 1247.4 495.3, 1247.4 495.3, 1357.1 495.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals</title></path>
   <rect x="1210.6" y="486.3" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1247.4" y="498.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 878.3 483.0 C 988.0 483.0, 988.0 495.3, 1097.7 495.3" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: decimal_add_unaligned_numerals, decimal_subtract_unaligned_numerals</title></path>
@@ -202,20 +196,16 @@
   <rect x="680.5" y="474.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="486.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
   <text x="728.6" y="502.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtract_unaligned_numerals</text>
-  <path d="M 878.3 964.0 C 988.0 964.0, 988.0 816.0, 1097.7 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: decimal_whole_number_reading</title></path>
   <rect x="942.7" y="807.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="988.0" y="819.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
-  <path d="M 618.9 964.0 C 728.6 964.0, 728.6 964.0, 838.3 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: decimal_whole_number_reading</title></path>
   <rect x="674.9" y="950.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="728.6" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="728.6" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
-  <path d="M 359.4 612.5 C 469.1 612.5, 469.1 495.3, 578.9 495.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals</title></path>
   <rect x="412.7" y="486.3" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="498.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="469.1" y="514.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_add_unaligned_numerals</text>
   <text x="469.1" y="523.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_numeral_comparison_without_scale_alignment</text>
   <text x="469.1" y="532.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decimal_subtract_unaligned_numerals</text>
-  <path d="M 359.4 612.5 C 469.1 612.5, 469.1 964.0, 578.9 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: decimal_whole_number_reading</title></path>
   <rect x="415.5" y="950.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="469.1" y="962.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="469.1" y="972.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
@@ -309,4 +299,27 @@
   <text x="600.9" y="1189.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p38</text>
   <circle cx="341.4" cy="1186.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="341.4" y="1189.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p39</text>
+  <path class="validity-rust-overlay" d="M 618.9 742.0 C 728.6 742.0, 728.6 742.0, 838.3 742.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: decimal_scale_loss_comparison; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_profile</title></path>
+  <path class="validity-rust-overlay" d="M 359.4 557.0 C 469.1 557.0, 469.1 742.0, 578.9 742.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>accept_without_check: decimal_scale_loss_comparison; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_profile</title></path>
+  <path class="validity-rust-overlay" d="M 1137.7 816.0 C 1506.9 816.0, 1506.9 631.0, 1876.0 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>record_loss: decimal_point_rule_misapplication, decimal_whole_number_reading; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 618.9 668.0 C 728.6 668.0, 728.6 668.0, 838.3 668.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>substitute_operation: decimal_point_rule_misapplication; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 878.3 76.0 C 1377.1 76.0, 1377.1 631.0, 1876.0 631.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: change_decimal_place_name_without_regrouping; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 618.9 76.0 C 728.6 76.0, 728.6 76.0, 838.3 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>retain_where_change_was_due: change_decimal_place_name_without_regrouping; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 359.4 594.0 C 469.1 594.0, 469.1 76.0, 578.9 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>rename_in_place_of_transforming: change_decimal_place_name_without_regrouping; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 1137.7 495.3 C 1247.4 495.3, 1247.4 495.3, 1357.1 495.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>record_loss: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_profile</title></path>
+  <path class="validity-rust-overlay" d="M 878.3 964.0 C 988.0 964.0, 988.0 816.0, 1097.7 816.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>misname_result: decimal_whole_number_reading; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 618.9 964.0 C 728.6 964.0, 728.6 964.0, 838.3 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>treat_relevant_as_irrelevant: decimal_whole_number_reading; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 359.4 612.5 C 469.1 612.5, 469.1 495.3, 578.9 495.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: decimal_add_unaligned_numerals, decimal_numeral_comparison_without_scale_alignment, decimal_subtract_unaligned_numerals; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_profile</title></path>
+  <path class="validity-rust-overlay" d="M 359.4 612.5 C 469.1 612.5, 469.1 964.0, 578.9 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>treat_relevant_as_irrelevant: decimal_whole_number_reading; modes objective_invalid; review status adjudicated</title></path>
+  <circle class="validity-rust-ring" cx="1898.0" cy="631.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="860.3" cy="742.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="600.9" cy="742.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="1119.7" cy="816.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="860.3" cy="668.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="860.3" cy="76.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="600.9" cy="76.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="1379.1" cy="495.3" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="600.9" cy="495.3" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="860.3" cy="964.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="600.9" cy="964.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
 </svg>

@@ -5,8 +5,10 @@
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
-    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
   <path d="M 100.0 1741.0 C 210.5 1741.0, 210.5 2740.0, 321.0 2740.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>assign_roles: parallelogram_area_base_height, slanted_side_as_parallelogram_height, triangle_area_half_base_height</title></path>
   <rect x="170.8" y="2731.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -84,10 +86,10 @@
   <rect x="156.8" y="1917.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="210.5" y="1929.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">traverse_boundary</text>
   <text x="210.5" y="1945.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">perimeter_two_sides_only</text>
-  <path d="M 100.0 1741.0 C 210.5 1741.0, 210.5 668.0, 321.0 668.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: choose_first_area_unit_without_scale</title></path>
+  <path class="validity-blue-base" d="M 100.0 1741.0 C 210.5 1741.0, 210.5 668.0, 321.0 668.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>treat_relevant_as_irrelevant: choose_first_area_unit_without_scale; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="156.8" y="654.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="210.5" y="666.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
-  <text x="210.5" y="676.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <text x="210.5" y="666.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">treat_relevant_as</text>
+  <text x="210.5" y="676.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">irrelevant</text>
   <text x="210.5" y="692.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">choose_first_area_unit_without_scale</text>
   <path d="M 100.0 1741.0 C 210.5 1741.0, 210.5 1722.5, 321.0 1722.5" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>unitize_referent: area_unit_covering, compare_solid_volume_by_cube_count, rectangular_prism_volume_layer_iteration, rigid_shape_composition</title></path>
   <rect x="159.6" y="1713.5" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -112,7 +114,6 @@
   <path d="M 883.0 2444.0 C 1254.5 2444.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_product: parallelogram_area_base_height, slanted_side_as_parallelogram_height</title></path>
   <rect x="1206.4" y="1723.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
-  <path d="M 622.0 3036.0 C 732.5 3036.0, 732.5 2444.0, 843.0 2444.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: slanted_side_as_parallelogram_height</title></path>
   <rect x="676.0" y="2435.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="2447.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 622.0 1852.0 C 732.5 1852.0, 732.5 2444.0, 843.0 2444.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>decompose_region: parallelogram_area_base_height</title></path>
@@ -122,7 +123,6 @@
   <rect x="431.8" y="3323.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="3335.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">assign_roles</text>
   <text x="471.5" y="3351.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">triangle_area_half_base_height</text>
-  <path d="M 361.0 2740.0 C 471.5 2740.0, 471.5 3036.0, 582.0 3036.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>conflate_roles: slanted_side_as_parallelogram_height</title></path>
   <rect x="426.2" y="3027.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="3039.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">conflate_roles</text>
   <text x="471.5" y="3055.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">slanted_side_as_parallelogram_height</text>
@@ -130,15 +130,14 @@
   <rect x="429.0" y="1843.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="1855.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">test_criteria</text>
   <text x="471.5" y="1871.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">parallelogram_area_base_height</text>
-  <path d="M 1144.0 2059.2 C 1385.0 2059.2, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: directed_difference_as_coordinate_distance, divide_volume_by_one_dimension, ignore_perimeter_rectangle_constraint, omit_half_in_triangle_area, omit_unlabeled_boundary_side, perimeter_two_sides_only, perimeter_uses_area_formula, subtract_side_from_area, sum_overlapping_prism_volumes, visible_faces_only_surface_area</title></path>
+  <path class="validity-blue-base" d="M 1144.0 2059.2 C 1385.0 2059.2, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#2e6f9e" stroke-width="3.2" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>misname_result: directed_difference_as_coordinate_distance, divide_volume_by_one_dimension, ignore_perimeter_rectangle_constraint, omit_half_in_triangle_area, omit_unlabeled_boundary_side, perimeter_two_sides_only, perimeter_uses_area_formula, subtract_side_from_area, sum_overlapping_prism_volumes, visible_faces_only_surface_area; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
   <rect x="1339.7" y="1723.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1385.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
-  <path d="M 883.0 1870.5 C 993.5 1870.5, 993.5 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: directed_difference_as_coordinate_distance, omit_half_in_triangle_area, omit_unlabeled_boundary_side, subtract_side_from_area</title></path>
+  <text x="1385.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">misname_result</text>
   <rect x="937.0" y="2050.2" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="993.5" y="2062.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
-  <path d="M 361.0 1556.0 C 602.0 1556.0, 602.0 1870.5, 843.0 1870.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: omit_half_in_triangle_area</title></path>
+  <path class="validity-blue-base" d="M 361.0 1556.0 C 602.0 1556.0, 602.0 1870.5, 843.0 1870.5" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>omit_required_step: omit_half_in_triangle_area; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="545.5" y="1861.5" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="602.0" y="1873.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="602.0" y="1873.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">omit_required_step</text>
   <path d="M 1144.0 964.0 C 1385.0 964.0, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>name_result: angle_turn_measurement, area_unit_covering, rectangle_area_perimeter_constraint_search</title></path>
   <rect x="1348.1" y="1723.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1385.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">name_result</text>
@@ -171,13 +170,11 @@
   <rect x="420.6" y="67.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">verify_invariant</text>
   <text x="471.5" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">angle_additive_composition</text>
-  <path d="M 883.0 964.0 C 1254.5 964.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>double_count: count_overlapping_area_tiles</title></path>
   <rect x="1214.8" y="1723.0" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">double_count</text>
   <path d="M 622.0 964.0 C 732.5 964.0, 732.5 964.0, 843.0 964.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: count_overlapping_area_tiles</title></path>
   <rect x="695.6" y="955.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
-  <path d="M 361.0 964.0 C 471.5 964.0, 471.5 964.0, 582.0 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: count_overlapping_area_tiles</title></path>
   <rect x="415.0" y="955.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="967.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1144.0 594.0 C 1385.0 594.0, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>apply_stored_rule: axis_aligned_coordinate_distance</title></path>
@@ -197,10 +194,8 @@
   <path d="M 361.0 890.0 C 471.5 890.0, 471.5 890.0, 582.0 890.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>locate_position: axis_aligned_coordinate_distance, directed_difference_as_coordinate_distance</title></path>
   <rect x="423.4" y="881.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">locate_position</text>
-  <path d="M 622.0 3184.0 C 863.0 3184.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>double_count: sum_overlapping_prism_volumes</title></path>
   <rect x="823.3" y="2050.2" width="79.3" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="863.0" y="2062.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">double_count</text>
-  <path d="M 361.0 3184.0 C 471.5 3184.0, 471.5 3184.0, 582.0 3184.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: sum_overlapping_prism_volumes</title></path>
   <rect x="415.0" y="3175.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="3187.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 622.0 520.0 C 1124.0 520.0, 1124.0 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: area_unit_scale_selection</title></path>
@@ -216,7 +211,6 @@
   <rect x="814.9" y="2050.2" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="863.0" y="2062.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_product</text>
   <text x="863.0" y="2078.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">perimeter_uses_area_formula</text>
-  <path d="M 622.0 1889.0 C 1124.0 1889.0, 1124.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misname_result: orientation_bound_shape_classification</title></path>
   <rect x="1078.7" y="1723.0" width="90.5" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1124.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misname_result</text>
   <text x="1124.0" y="1751.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">orientation_bound_shape_classification</text>
@@ -227,7 +221,6 @@
   <rect x="670.4" y="1912.0" width="124.2" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="1924.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">set_aside</text>
   <text x="732.5" y="1934.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">irrelevant_attribute</text>
-  <path d="M 1144.0 1260.0 C 1385.0 1260.0, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: decomposition_with_gap_or_overlap, linear_unit_for_area_or_volume</title></path>
   <rect x="1348.1" y="1723.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1385.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
   <path d="M 622.0 1149.0 C 1124.0 1149.0, 1124.0 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compare_magnitudes: compare_solid_volume_by_visible_extent</title></path>
@@ -247,27 +240,26 @@
   <text x="471.5" y="1110.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">read_operand</text>
   <text x="471.5" y="1120.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">attribute</text>
   <text x="471.5" y="1136.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">dimensional_measure_unit_coordination</text>
-  <path d="M 361.0 1524.3 C 471.5 1524.3, 471.5 1889.0, 582.0 1889.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_appearance_for_measure: orientation_bound_shape_classification, perimeter_uses_area_formula</title></path>
+  <path class="validity-blue-base" d="M 361.0 1524.3 C 471.5 1524.3, 471.5 1889.0, 582.0 1889.0" fill="none" stroke="#2e6f9e" stroke-width="3.2" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>substitute_appearance_for_measure: orientation_bound_shape_classification, perimeter_uses_area_formula; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
   <rect x="426.2" y="1870.0" width="90.5" height="38.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="1882.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute</text>
-  <text x="471.5" y="1892.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">appearance_for</text>
-  <text x="471.5" y="1902.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">measure</text>
+  <text x="471.5" y="1882.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">substitute</text>
+  <text x="471.5" y="1892.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">appearance_for</text>
+  <text x="471.5" y="1902.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">measure</text>
   <text x="471.5" y="1918.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">orientation_bound_shape_classification</text>
   <text x="471.5" y="1927.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">perimeter_uses_area_formula</text>
   <path d="M 361.0 1524.3 C 471.5 1524.3, 471.5 2962.0, 582.0 2962.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>test_criteria: shape_classification_by_defining_attributes</title></path>
   <rect x="429.0" y="2953.0" width="84.9" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="2965.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">test_criteria</text>
   <text x="471.5" y="2981.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">shape_classification_by_defining_attributes</text>
-  <path d="M 361.0 1524.3 C 471.5 1524.3, 471.5 1149.0, 582.0 1149.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: compare_solid_volume_by_visible_extent, linear_unit_for_area_or_volume</title></path>
+  <path class="validity-blue-base" d="M 361.0 1524.3 C 471.5 1524.3, 471.5 1149.0, 582.0 1149.0" fill="none" stroke="#2e6f9e" stroke-width="3.2" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>treat_relevant_as_irrelevant: compare_solid_volume_by_visible_extent, linear_unit_for_area_or_volume; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
   <rect x="417.8" y="1135.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="1147.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
-  <text x="471.5" y="1157.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <text x="471.5" y="1147.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">treat_relevant_as</text>
+  <text x="471.5" y="1157.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">irrelevant</text>
   <text x="471.5" y="1173.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">compare_solid_volume_by_visible_extent</text>
   <text x="471.5" y="1182.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">linear_unit_for_area_or_volume</text>
   <path d="M 883.0 1038.0 C 993.5 1038.0, 993.5 1260.0, 1104.0 1260.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>accumulate_total: decomposition_with_gap_or_overlap</title></path>
   <rect x="942.6" y="1251.0" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="993.5" y="1263.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">accumulate_total</text>
-  <path d="M 622.0 1038.0 C 732.5 1038.0, 732.5 1038.0, 843.0 1038.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: decomposition_with_gap_or_overlap</title></path>
   <rect x="676.0" y="1029.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <path d="M 1144.0 3258.0 C 1385.0 3258.0, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>share_into_known_groups: symmetry_constrained_side_reconstruction</title></path>
@@ -315,7 +307,6 @@
   <rect x="670.4" y="2361.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="2373.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">filter_by_constraint</text>
   <text x="732.5" y="2389.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">rectangle_factor_pair_search</text>
-  <path d="M 622.0 2888.0 C 863.0 2888.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: visible_faces_only_surface_area</title></path>
   <rect x="806.5" y="2050.2" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="863.0" y="2062.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="863.0" y="2078.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">visible_faces_only_surface_area</text>
@@ -358,16 +349,15 @@
   <path d="M 883.0 1408.0 C 1254.5 1408.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>remove_quantity: ignore_symmetry_multiplicity</title></path>
   <rect x="1206.4" y="1723.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">remove_quantity</text>
-  <path d="M 883.0 224.0 C 1254.5 224.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_appearance_for_measure: angle_as_ray_length, area_as_perimeter_count</title></path>
+  <path class="validity-blue-base" d="M 883.0 224.0 C 1254.5 224.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#2e6f9e" stroke-width="3.2" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>substitute_appearance_for_measure: angle_as_ray_length, area_as_perimeter_count; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
   <rect x="1209.2" y="1713.0" width="90.5" height="38.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1254.5" y="1725.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute</text>
-  <text x="1254.5" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">appearance_for</text>
-  <text x="1254.5" y="1745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">measure</text>
+  <text x="1254.5" y="1725.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">substitute</text>
+  <text x="1254.5" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">appearance_for</text>
+  <text x="1254.5" y="1745.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">measure</text>
   <path d="M 622.0 1013.3 C 732.5 1013.3, 732.5 1408.0, 843.0 1408.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>count_units: ignore_symmetry_multiplicity</title></path>
   <rect x="695.6" y="1399.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="1411.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">count_units</text>
   <text x="732.5" y="1427.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">ignore_symmetry_multiplicity</text>
-  <path d="M 622.0 1013.3 C 863.0 1013.3, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>retain_where_change_was_due: ignore_perimeter_rectangle_constraint</title></path>
   <rect x="803.7" y="2045.2" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="863.0" y="2057.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">retain_where_change</text>
   <text x="863.0" y="2067.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">was_due</text>
@@ -376,7 +366,6 @@
   <rect x="678.8" y="215.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">traverse_boundary</text>
   <text x="732.5" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_as_perimeter_count</text>
-  <path d="M 361.0 2101.3 C 471.5 2101.3, 471.5 1038.0, 582.0 1038.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>accept_without_check: decomposition_with_gap_or_overlap</title></path>
   <rect x="409.4" y="1029.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="1041.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">accept_without_check</text>
   <text x="471.5" y="1057.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">decomposition_with_gap_or_overlap</text>
@@ -400,7 +389,6 @@
   <text x="471.5" y="2891.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">enumerate_candidates</text>
   <text x="471.5" y="2907.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">rectangle_factor_pair_search</text>
   <text x="471.5" y="2916.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">visible_faces_only_surface_area</text>
-  <path d="M 361.0 2101.3 C 602.0 2101.3, 602.0 1870.5, 843.0 1870.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>halt_before_completion: omit_unlabeled_boundary_side</title></path>
   <rect x="565.1" y="1856.5" width="73.7" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="602.0" y="1868.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">halt_before</text>
   <text x="602.0" y="1878.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">completion</text>
@@ -426,17 +414,16 @@
   <text x="471.5" y="2336.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">traverse_boundary</text>
   <text x="471.5" y="2352.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">polygon_perimeter_boundary_accumulation</text>
   <text x="471.5" y="2361.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">rectangle_perimeter_boundary_traversal</text>
-  <path d="M 361.0 2101.3 C 471.5 2101.3, 471.5 1013.3, 582.0 1013.3" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: area_as_perimeter_count, ignore_perimeter_rectangle_constraint, ignore_symmetry_multiplicity</title></path>
+  <path class="validity-blue-base" d="M 361.0 2101.3 C 471.5 2101.3, 471.5 1013.3, 582.0 1013.3" fill="none" stroke="#2e6f9e" stroke-width="3.2" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>treat_relevant_as_irrelevant: area_as_perimeter_count, ignore_perimeter_rectangle_constraint, ignore_symmetry_multiplicity; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
   <rect x="417.8" y="999.3" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="471.5" y="1011.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
-  <text x="471.5" y="1021.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
+  <text x="471.5" y="1011.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">treat_relevant_as</text>
+  <text x="471.5" y="1021.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">irrelevant</text>
   <text x="471.5" y="1037.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">area_as_perimeter_count</text>
   <text x="471.5" y="1046.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">ignore_perimeter_rectangle_constraint</text>
   <text x="471.5" y="1055.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">ignore_symmetry_multiplicity</text>
   <path d="M 622.0 1260.0 C 863.0 1260.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>compute_quotient: divide_volume_by_one_dimension</title></path>
   <rect x="812.1" y="2050.2" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="863.0" y="2062.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">compute_quotient</text>
-  <path d="M 361.0 1260.0 C 471.5 1260.0, 471.5 1260.0, 582.0 1260.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: divide_volume_by_one_dimension</title></path>
   <rect x="417.8" y="1246.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="1258.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="471.5" y="1268.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
@@ -444,16 +431,15 @@
   <rect x="551.1" y="210.0" width="101.8" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="602.0" y="222.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">scale</text>
   <text x="602.0" y="232.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">multiplicatively</text>
-  <path d="M 622.0 1926.0 C 863.0 1926.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>halt_before_completion: perimeter_two_sides_only</title></path>
   <rect x="826.1" y="2045.2" width="73.7" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="863.0" y="2057.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">halt_before</text>
   <text x="863.0" y="2067.2" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">completion</text>
   <path d="M 361.0 1926.0 C 471.5 1926.0, 471.5 1926.0, 582.0 1926.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>traverse_boundary: perimeter_two_sides_only</title></path>
   <rect x="417.8" y="1917.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="1929.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">traverse_boundary</text>
-  <path d="M 622.0 668.0 C 1124.0 668.0, 1124.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: choose_first_area_unit_without_scale</title></path>
+  <path class="validity-blue-base" d="M 622.0 668.0 C 1124.0 668.0, 1124.0 1732.0, 1626.0 1732.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>omit_required_step: choose_first_area_unit_without_scale; modes context_sensitive_or_inefficient; review status adjudicated</title></path>
   <rect x="1067.5" y="1723.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1124.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
+  <text x="1124.0" y="1735.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">omit_required_step</text>
   <path d="M 361.0 668.0 C 471.5 668.0, 471.5 668.0, 582.0 668.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>select_unit_scale: choose_first_area_unit_without_scale</title></path>
   <rect x="417.8" y="659.0" width="107.4" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">select_unit_scale</text>
@@ -660,4 +646,44 @@
   <text x="604.0" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p78</text>
   <circle cx="343.0" cy="890.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="343.0" y="893.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p79</text>
+  <path class="validity-rust-overlay" d="M 622.0 3036.0 C 732.5 3036.0, 732.5 2444.0, 843.0 2444.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: slanted_side_as_parallelogram_height; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 2740.0 C 471.5 2740.0, 471.5 3036.0, 582.0 3036.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>conflate_roles: slanted_side_as_parallelogram_height; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 1144.0 2059.2 C 1385.0 2059.2, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>misname_result: directed_difference_as_coordinate_distance, divide_volume_by_one_dimension, ignore_perimeter_rectangle_constraint, omit_half_in_triangle_area, omit_unlabeled_boundary_side, perimeter_two_sides_only, perimeter_uses_area_formula, subtract_side_from_area, sum_overlapping_prism_volumes, visible_faces_only_surface_area; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 1870.5 C 993.5 1870.5, 993.5 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: directed_difference_as_coordinate_distance, omit_half_in_triangle_area, omit_unlabeled_boundary_side, subtract_side_from_area; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 964.0 C 1254.5 964.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>double_count: count_overlapping_area_tiles; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 964.0 C 471.5 964.0, 471.5 964.0, 582.0 964.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: count_overlapping_area_tiles; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 3184.0 C 863.0 3184.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>double_count: sum_overlapping_prism_volumes; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 3184.0 C 471.5 3184.0, 471.5 3184.0, 582.0 3184.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: sum_overlapping_prism_volumes; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 1889.0 C 1124.0 1889.0, 1124.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>misname_result: orientation_bound_shape_classification; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 1144.0 1260.0 C 1385.0 1260.0, 1385.0 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>record_loss: decomposition_with_gap_or_overlap, linear_unit_for_area_or_volume; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 1524.3 C 471.5 1524.3, 471.5 1889.0, 582.0 1889.0" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>substitute_appearance_for_measure: orientation_bound_shape_classification, perimeter_uses_area_formula; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 1524.3 C 471.5 1524.3, 471.5 1149.0, 582.0 1149.0" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>treat_relevant_as_irrelevant: compare_solid_volume_by_visible_extent, linear_unit_for_area_or_volume; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 1038.0 C 732.5 1038.0, 732.5 1038.0, 843.0 1038.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: decomposition_with_gap_or_overlap; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 2888.0 C 863.0 2888.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: visible_faces_only_surface_area; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 224.0 C 1254.5 224.0, 1254.5 1732.0, 1626.0 1732.0" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>substitute_appearance_for_measure: angle_as_ray_length, area_as_perimeter_count; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 1013.3 C 863.0 1013.3, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>retain_where_change_was_due: ignore_perimeter_rectangle_constraint; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 2101.3 C 471.5 2101.3, 471.5 1038.0, 582.0 1038.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>accept_without_check: decomposition_with_gap_or_overlap; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 2101.3 C 602.0 2101.3, 602.0 1870.5, 843.0 1870.5" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>halt_before_completion: omit_unlabeled_boundary_side; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 2101.3 C 471.5 2101.3, 471.5 1013.3, 582.0 1013.3" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>treat_relevant_as_irrelevant: area_as_perimeter_count, ignore_perimeter_rectangle_constraint, ignore_symmetry_multiplicity; modes context_sensitive_or_inefficient, objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 1260.0 C 471.5 1260.0, 471.5 1260.0, 582.0 1260.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>treat_relevant_as_irrelevant: divide_volume_by_one_dimension; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 1926.0 C 863.0 1926.0, 863.0 2059.2, 1104.0 2059.2" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>halt_before_completion: perimeter_two_sides_only; modes objective_invalid; review status adjudicated</title></path>
+  <path class="validity-blue-ring" d="M 1627.5 1732.0 A 20.5 20.5 0 0 1 1668.5 1732.0" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 1668.5 1732.0 A 20.5 20.5 0 0 1 1627.5 1732.0" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <circle class="validity-rust-ring" cx="865.0" cy="2444.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="604.0" cy="3036.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="1126.0" cy="2059.2" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <path class="validity-blue-ring" d="M 844.5 1870.5 A 20.5 20.5 0 0 1 885.5 1870.5" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 885.5 1870.5 A 20.5 20.5 0 0 1 844.5 1870.5" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <circle class="validity-rust-ring" cx="604.0" cy="964.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="604.0" cy="3184.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <path class="validity-blue-ring" d="M 583.5 1889.0 A 20.5 20.5 0 0 1 624.5 1889.0" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 624.5 1889.0 A 20.5 20.5 0 0 1 583.5 1889.0" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <path class="validity-blue-ring" d="M 583.5 1149.0 A 20.5 20.5 0 0 1 624.5 1149.0" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 624.5 1149.0 A 20.5 20.5 0 0 1 583.5 1149.0" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <circle class="validity-rust-ring" cx="865.0" cy="1038.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="604.0" cy="1038.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <path class="validity-blue-ring" d="M 583.5 1013.3 A 20.5 20.5 0 0 1 624.5 1013.3" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 624.5 1013.3 A 20.5 20.5 0 0 1 583.5 1013.3" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <circle class="validity-rust-ring" cx="604.0" cy="1260.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-blue-ring" cx="343.0" cy="668.0" r="20.5" fill="none" stroke="#2e6f9e" stroke-width="1.5"/>
 </svg>

@@ -33,6 +33,7 @@
   --gold-deep:   #7a5a12; /* 5.33:1 on --paper; text-safe deep gold */
   --gold-pale:   #f0d68a;
   --rust:        #b95238;
+  --validity-blue: #2e6f9e;
   --teal:        #3f7f89;
   --teal-deep:   #2c5e66;
   --line:        rgba(13, 12, 8, 0.14);

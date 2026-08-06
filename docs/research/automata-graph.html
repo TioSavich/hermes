@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hermes automata graph</title>
 <style>
-:root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold:#d4a747;--gold-deep:#a97c24;--rust:#b95238;--surface:#fffef9;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Georgia,serif}main{max-width:1320px;margin:auto;padding:2rem 1.25rem 4rem}h1{font-size:2.25rem;line-height:1.08;font-weight:normal;margin:.4rem 0 .65rem}p{max-width:var(--prose)}a{color:var(--gold-deep);text-underline-offset:.14em}code{font:.82em var(--mono);overflow-wrap:anywhere}.lede{font-size:1.08rem;color:var(--muted);margin:.3rem 0}.back-link{margin:0}.controls{display:flex;align-items:end;gap:1.2rem;flex-wrap:wrap;margin:1.4rem 0 .8rem;font-family:var(--mono);font-size:.78rem}.field{display:flex;flex-direction:column;gap:.28rem}.field label{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.7rem}.field select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:.42rem .6rem}.status{color:var(--muted);margin:0 0 .1rem;flex:1;min-width:260px}.graph-frame{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}.graph-frame canvas{display:block;width:100%;height:680px;touch-action:none;cursor:grab}.graph-frame canvas.dragging{cursor:grabbing}.level-ruler{position:absolute;right:.65rem;top:1rem;bottom:1rem;width:146px;margin:0;padding:0 0 0 1rem;list-style:none;border-left:1px solid color-mix(in srgb,var(--ink) 30%,transparent);display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;color:var(--muted);font:10px/1.15 var(--mono);text-shadow:0 1px var(--surface),1px 0 var(--surface),0 -1px var(--surface),-1px 0 var(--surface)}.level-ruler li{position:relative}.level-ruler li::before{content:"";position:absolute;left:-1rem;top:.55em;width:.55rem;border-top:1px solid currentColor}.level-ruler b{display:block;color:var(--ink);font-weight:normal}.tooltip{position:absolute;z-index:2;display:none;max-width:340px;padding:.42rem .55rem;border:1px solid var(--line);border-radius:4px;background:color-mix(in srgb,var(--surface) 95%,transparent);color:var(--ink);font:11px/1.4 var(--mono);pointer-events:none}.tooltip.visible{display:block}.selection{min-height:1.6rem;margin:.65rem 0 0;color:var(--muted);font:.76rem/1.45 var(--mono)}.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:1rem 0;color:var(--muted);font-size:.88rem}.legend span{white-space:nowrap}.swatch{display:inline-block;width:1.45rem;height:.16rem;vertical-align:middle;margin-right:.35rem;background:currentColor}.swatch.conserving{color:var(--ink)}.swatch.deforming{color:var(--rust)}.swatch.neutral{color:var(--muted)}.swatch.borrow{color:var(--gold)}figcaption{max-width:var(--prose);color:var(--muted);font-size:.92rem;margin:1rem 0}.instructions{color:var(--muted);font-size:.88rem;margin:.45rem 0}.noscript{color:var(--rust)}@media(max-width:780px){main{padding:1rem .65rem 3rem}.graph-frame canvas{height:560px}.level-ruler{width:104px;font-size:8px}.status{flex-basis:100%}}
+:root{--paper:#f4ead6;--ink:#0d0c08;--muted:#665f4f;--paper-warm:#ebdfc5;--gold:#d4a747;--gold-deep:#a97c24;--rust:#b95238;--validity-blue:#2e6f9e;--surface:#fffef9;--line:color-mix(in srgb,var(--ink) 20%,transparent);--mono:ui-monospace,Menlo,Monaco,Consolas,monospace;--prose:76ch}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Georgia,serif}main{max-width:1320px;margin:auto;padding:2rem 1.25rem 4rem}h1{font-size:2.25rem;line-height:1.08;font-weight:normal;margin:.4rem 0 .65rem}p{max-width:var(--prose)}a{color:var(--gold-deep);text-underline-offset:.14em}code{font:.82em var(--mono);overflow-wrap:anywhere}.lede{font-size:1.08rem;color:var(--muted);margin:.3rem 0}.back-link{margin:0}.controls{display:flex;align-items:end;gap:1.2rem;flex-wrap:wrap;margin:1.4rem 0 .8rem;font-family:var(--mono);font-size:.78rem}.field{display:flex;flex-direction:column;gap:.28rem}.field label{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.7rem}.field select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:.42rem .6rem}.status{color:var(--muted);margin:0 0 .1rem;flex:1;min-width:260px}.graph-frame{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}.graph-frame canvas{display:block;width:100%;height:680px;touch-action:none;cursor:grab}.graph-frame canvas.dragging{cursor:grabbing}.level-ruler{position:absolute;right:.65rem;top:1rem;bottom:1rem;width:146px;margin:0;padding:0 0 0 1rem;list-style:none;border-left:1px solid color-mix(in srgb,var(--ink) 30%,transparent);display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;color:var(--muted);font:10px/1.15 var(--mono);text-shadow:0 1px var(--surface),1px 0 var(--surface),0 -1px var(--surface),-1px 0 var(--surface)}.level-ruler li{position:relative}.level-ruler li::before{content:"";position:absolute;left:-1rem;top:.55em;width:.55rem;border-top:1px solid currentColor}.level-ruler b{display:block;color:var(--ink);font-weight:normal}.tooltip{position:absolute;z-index:2;display:none;max-width:460px;padding:.42rem .55rem;border:1px solid var(--line);border-radius:4px;background:color-mix(in srgb,var(--surface) 95%,transparent);color:var(--ink);font:11px/1.4 var(--mono);pointer-events:none}.tooltip.visible{display:block}.selection{min-height:1.6rem;margin:.65rem 0 0;color:var(--muted);font:.76rem/1.45 var(--mono);overflow-wrap:anywhere}.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:1rem 0;color:var(--muted);font-size:.88rem}.legend span{white-space:normal}.swatch{display:inline-block;width:1.45rem;height:.16rem;vertical-align:middle;margin-right:.35rem;background:currentColor}.swatch.conserving{color:var(--ink)}.swatch.objective{color:var(--rust)}.swatch.contextual{color:var(--validity-blue)}.swatch.mixed{background:linear-gradient(to bottom,var(--rust) 0 42%,var(--validity-blue) 42% 100%)}.swatch.neutral{color:var(--muted)}.swatch.borrow{color:var(--gold)}.review-counts{flex-basis:100%;font-family:var(--mono);font-size:.8rem}figcaption{max-width:var(--prose);color:var(--muted);font-size:.92rem;margin:1rem 0}.instructions{color:var(--muted);font-size:.88rem;margin:.45rem 0}.noscript{color:var(--rust)}@media(max-width:780px){main{padding:1rem .65rem 3rem}.graph-frame canvas{height:560px}.level-ruler{width:104px;font-size:8px}.status{flex-basis:100%}}
 </style>
 </head>
 <body><main>
@@ -46,9 +46,12 @@
   <p class="selection" id="selection">No automaton pinned.</p>
   <div class="legend" aria-label="Graph legend">
     <span><i class="swatch conserving"></i>conserving transition</span>
-    <span><i class="swatch deforming"></i>deforming transition; rust line and target ring</span>
+    <span><i class="swatch objective"></i>objective invalid: the claim is false on its own</span>
+    <span><i class="swatch contextual"></i>context-sensitive or inefficient: a correct doing the context makes insufficient</span>
+    <span><i class="swatch mixed"></i>mixed: blue base with a rust overlay drawn last, plus a segmented target ring</span>
     <span><i class="swatch neutral"></i>neutral transition</span>
     <span><i class="swatch borrow"></i><a href="automata-vocabulary.html#borrow">borrow</a>; shared canonical action name</span>
+    <span class="review-counts" id="review-counts">Validity review counts load with the graph data.</span>
   </div>
   <figcaption>The graph records each automaton's states separately; no state is literally shared. A gold borrow line connects automata that share a canonical action name. A <a href="automata-vocabulary.html#borrow">borrow</a> asserts no equivalence and no prerequisite order. The vertical order is authored rather than derived from the transition tables.</figcaption>
 </figure>
@@ -67,10 +70,12 @@
   var status = document.getElementById('status');
   var selection = document.getElementById('selection');
   var tooltip = document.getElementById('tooltip');
+  var reviewCounts = document.getElementById('review-counts');
   var borrowMode = document.getElementById('borrow-mode');
   var palette = {
     paper: '#f4ead6', surface: '#fffef9', ink: '#0d0c08',
-    muted: '#665f4f', rust: '#b95238', gold: '#d4a747', goldDeep: '#a97c24'
+    muted: '#665f4f', rust: '#b95238', validityBlue: '#2e6f9e',
+    gold: '#d4a747', goldDeep: '#a97c24'
   };
   var graph = null;
   var nodes = [];
@@ -139,8 +144,10 @@
       borrowMode.value = 'cross';
     }
     var counts = data.meta.counts;
-    status.textContent = counts.machines + ' automata · ' + counts.nodes + ' states · ' +
-      counts.edges + ' transitions · ' + counts.borrow_pairs.toLocaleString() + ' borrow lines';
+    reviewCounts.textContent = reviewCountText(counts) +
+      '. Unreviewed rows retain rust-family styling; their modes remain queryable.';
+    status.textContent = baseStatusText(counts) + ' · ' +
+      counts.borrow_pairs.toLocaleString() + ' borrow lines';
     resize();
     scheduleRender();
   }
@@ -226,8 +233,39 @@
 
   function lineColor(stance) {
     if (stance === 'conserving') return palette.ink;
-    if (stance === 'deforming') return palette.rust;
     return palette.muted;
+  }
+
+  function hasMode(edge, mode) {
+    return Array.isArray(edge.validity_modes) && edge.validity_modes.indexOf(mode) !== -1;
+  }
+
+  function isUnreviewed(edge) {
+    return edge.review_status === 'proposed' || edge.review_status === 'seeded_profile';
+  }
+
+  function rendersBlue(edge) {
+    return !isUnreviewed(edge) && hasMode(edge, 'context_sensitive_or_inefficient');
+  }
+
+  function rendersRust(edge) {
+    return isUnreviewed(edge) || hasMode(edge, 'objective_invalid');
+  }
+
+  function validityText(edge) {
+    return 'validity_modes [' + edge.validity_modes.join(', ') + '] · review_status ' +
+      edge.review_status;
+  }
+
+  function reviewCountText(counts) {
+    var review = counts.deforming_edges_by_review_state;
+    return review.reviewed + ' reviewed deforming transitions · ' +
+      review.unreviewed + ' unreviewed deforming transitions';
+  }
+
+  function baseStatusText(counts) {
+    return counts.machines + ' automata · ' + counts.nodes + ' states · ' +
+      counts.edges + ' transitions · ' + reviewCountText(counts);
   }
 
   function setStroke(color, alpha, width) {
@@ -309,32 +347,68 @@
     ctx.stroke();
   }
 
-  function drawDeformingOverlay(deformingEdges) {
-    var targets = new Map();
-    ctx.lineCap = 'round';
-    deformingEdges.forEach(function (edge) {
+  function drawValidityBlueBases(blueEdges) {
+    blueEdges.forEach(function (edge) {
       var source = edge.source.projected;
       var target = edge.target.projected;
-      setStroke(palette.rust, 1, edge.machine === pinnedMachine ? 2.8 : 2.2);
+      var mixed = rendersRust(edge);
+      setStroke(palette.validityBlue, edge.machine === pinnedMachine ? 1 : 0.82,
+        mixed ? 3.2 : 2.35);
+      ctx.lineCap = 'round';
       ctx.beginPath();
       ctx.moveTo(source.x, source.y);
       ctx.lineTo(target.x, target.y);
       ctx.stroke();
-      targets.set(edge.target.id, edge.target);
     });
     ctx.lineCap = 'butt';
-    ctx.globalAlpha = 0.82;
-    ctx.strokeStyle = palette.rust;
-    ctx.lineWidth = 1.35;
-    targets.forEach(function (node) {
-      var point = node.projected;
-      var nodeRadius = Math.max(1.15, 1.65 * point.scale);
+    diagnostics.validityBlueBases = blueEdges.length;
+  }
+
+  function drawValidityRustOverlays(deformingEdges) {
+    var targetModes = new Map();
+    ctx.lineCap = 'round';
+    deformingEdges.forEach(function (edge) {
+      var modes = targetModes.get(edge.target.id) || new Set();
+      if (rendersBlue(edge)) modes.add('blue');
+      if (rendersRust(edge)) modes.add('rust');
+      targetModes.set(edge.target.id, modes);
+      if (!rendersRust(edge)) return;
+      var source = edge.source.projected;
+      var target = edge.target.projected;
+      var mixed = rendersBlue(edge);
+      setStroke(palette.rust, 1, mixed ? 1.45 : (edge.machine === pinnedMachine ? 2.8 : 2.2));
       ctx.beginPath();
-      ctx.arc(point.x, point.y, nodeRadius + 3.1, 0, Math.PI * 2);
+      ctx.moveTo(source.x, source.y);
+      ctx.lineTo(target.x, target.y);
       ctx.stroke();
     });
+    ctx.lineCap = 'butt';
+    targetModes.forEach(function (modes, nodeId) {
+      var node = nodeById.get(nodeId);
+      var point = node.projected;
+      var nodeRadius = Math.max(1.15, 1.65 * point.scale);
+      var ringRadius = nodeRadius + 3.1;
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 1.35;
+      if (modes.size === 1) {
+        ctx.strokeStyle = modes.has('blue') ? palette.validityBlue : palette.rust;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, ringRadius, 0, Math.PI * 2);
+        ctx.stroke();
+      } else {
+        ctx.strokeStyle = palette.validityBlue;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, ringRadius, Math.PI, Math.PI * 2);
+        ctx.stroke();
+        ctx.strokeStyle = palette.rust;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, ringRadius, 0, Math.PI);
+        ctx.stroke();
+      }
+    });
     diagnostics.deformingEdges = deformingEdges.length;
-    diagnostics.deformingTargets = targets.size;
+    diagnostics.deformingTargets = targetModes.size;
+    diagnostics.validityRustOverlays = deformingEdges.filter(rendersRust).length;
   }
 
   function drawNode(node, pinnedActions, borrowedMachines) {
@@ -423,12 +497,17 @@
               (a.source.projected.depth + a.target.projected.depth));
     });
     var deformingEdges = [];
+    var validityBlueEdges = [];
     orderedEdges.forEach(function (edge) {
-      if (edge.stance === 'deforming') deformingEdges.push(edge);
+      if (edge.stance === 'deforming') {
+        deformingEdges.push(edge);
+        if (rendersBlue(edge)) validityBlueEdges.push(edge);
+      }
       else drawEdge(edge, pinnedActions, borrowedMachines);
     });
+    drawValidityBlueBases(validityBlueEdges);
     lastProjected.forEach(function (node) { drawNode(node, pinnedActions, borrowedMachines); });
-    drawDeformingOverlay(deformingEdges);
+    drawValidityRustOverlays(deformingEdges);
     drawLabels(projectedMachines);
     ctx.globalAlpha = 1;
     diagnostics.lastRenderMs = performance.now() - started;
@@ -440,11 +519,9 @@
         ' · distance-culling draws ' + borrowCounts.drawn.toLocaleString() + ' of ' +
         borrowCounts.eligible.toLocaleString() + ' eligible borrow lines' :
         ' · ' + borrowCounts.drawn.toLocaleString() + ' borrow lines';
-      status.textContent = graph.meta.counts.machines + ' automata · ' +
-        graph.meta.counts.nodes + ' states · ' + graph.meta.counts.edges + ' transitions' + suffix;
+      status.textContent = baseStatusText(graph.meta.counts) + suffix;
     } else {
-      status.textContent = graph.meta.counts.machines + ' automata · ' +
-        graph.meta.counts.nodes + ' states · ' + graph.meta.counts.edges + ' transitions · ' +
+      status.textContent = baseStatusText(graph.meta.counts) + ' · ' +
         graph.meta.counts.borrow_pairs.toLocaleString() + ' borrow lines';
     }
   }
@@ -476,6 +553,14 @@
     }
     tooltip.textContent = 'automaton ' + node.machine + ' · code name ' + node.state +
       ' · formal state name q' + node.formal_index;
+    var incomingValidity = machineById.get(node.machine).edges.filter(function (edge) {
+      return edge.to === node.id && edge.stance === 'deforming';
+    });
+    if (incomingValidity.length) {
+      tooltip.textContent += ' · incoming ' + incomingValidity.map(function (edge) {
+        return edge.local_action + ': ' + validityText(edge);
+      }).join(' · ');
+    }
     tooltip.classList.add('visible');
     var frameRect = frame.getBoundingClientRect();
     var left = Math.min(Math.max(8, frameRect.width - 350),
@@ -498,6 +583,12 @@
     selection.textContent = pinnedMachine + ' · level ' + machine.level + ' · ' +
       machine.nodes.length + ' states · ' + machine.edges.length + ' transitions · ' +
       actions.size + ' borrows';
+    var validityDetails = machine.edges.filter(function (edge) {
+      return edge.stance === 'deforming';
+    }).map(function (edge) {
+      return edge.local_action + ': ' + validityText(edge);
+    });
+    if (validityDetails.length) selection.textContent += ' · ' + validityDetails.join(' · ');
   }
 
   canvas.addEventListener('pointerdown', function (event) {

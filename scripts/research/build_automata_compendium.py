@@ -12,6 +12,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
+from build_full_graph_json import UNREVIEWED_STATUSES, read_validity_ledger
 from build_machine_typology import ROOT, Machine, Transition, parse_transition_tables, structure
 from build_transition_tables import derived_example
 from render_automaton_context_svg import composite_records, scene_records
@@ -271,6 +272,7 @@ def provenance_item(
 
 
 def transition_table(machine: Machine, contract: InputContract | None) -> str:
+    validity = read_validity_ledger()
     grouped: dict[tuple[str, str, str], list[Transition]] = {}
     for edge in machine.transitions:
         key = (edge.before, edge.action, edge.after)
@@ -282,16 +284,47 @@ def transition_table(machine: Machine, contract: InputContract | None) -> str:
             for edge in dict.fromkeys(edges)
         )
         provenance_kinds = " ".join(dict.fromkeys(edge.provenance_kind for edge in edges))
+        validity_row = validity.get((machine.family, machine.kind, action, before, after))
+        if validity_row is None:
+            validity_text = "not a deforming transition"
+        else:
+            mode_words = {
+                "objective_invalid": "the claim is false on its own",
+                "context_sensitive_or_inefficient": (
+                    "a correct doing the context makes insufficient"
+                ),
+            }
+            modes = [mode_words[str(mode)] for mode in validity_row["validity_modes"]]
+            status = str(validity_row["review_status"])
+            status_words = {
+                "seeded_ledger": "reviewed from the authored addition ledger",
+                "seeded_profile": "unreviewed; seeded from a finite profile",
+                "proposed": "unreviewed; proposed from code reading",
+                "adjudicated": "reviewed by code-cited adjudication",
+            }[status]
+            validity_text = f'{"; and ".join(modes)}. Review status: {status_words}'
         rows.append(
             f'<tr><td><code>{esc(before)}</code></td><td><code>{esc(action)}</code></td>'
-            f'<td><code>{esc(after)}</code></td><td class="provenance {provenance_kinds}">'
+            f'<td><code>{esc(after)}</code></td><td>{esc(validity_text)}</td>'
+            f'<td class="provenance {provenance_kinds}">'
             f'{provenance}</td></tr>'
         )
     return (
         '<div class="table-scroll transitions-scroll"><table class="transitions">'
-        '<thead><tr><th>From</th><th>Action</th><th>To</th>'
+        '<thead><tr><th>From</th><th>Action</th><th>To</th><th>Validity</th>'
         f'<th>Provenance</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
     )
+
+
+def validity_review_counts(family: str | None = None) -> dict[str, int]:
+    rows = [
+        row for key, row in read_validity_ledger().items()
+        if family is None or key[0] == family
+    ]
+    return {
+        "reviewed": sum(row["review_status"] not in UNREVIEWED_STATUSES for row in rows),
+        "unreviewed": sum(row["review_status"] in UNREVIEWED_STATUSES for row in rows),
+    }
 
 
 def tuple_block(machine: Machine, labels: dict[str, list[tuple[str, str, str]]]) -> str:
@@ -528,7 +561,7 @@ def root_palette() -> str:
 def shared_style() -> str:
     """Return the one generated stylesheet shared by every compendium page."""
     return f"""{root_palette()}
-*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .back-link{{margin:0 0 1rem}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} article.machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} .typeset-space{{display:inline-block;width:.28em;white-space:pre}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} figcaption{{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem}} .domain-scene img{{max-height:34rem}} .transition-diagram img{{max-height:46rem}} .family-composite img{{max-width:none;min-width:100%}} .family-composite{{max-height:72rem}} .scene-limit{{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} .swatch{{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor}} .swatch.conserving{{color:var(--ink)}} .swatch.deforming{{color:var(--rust)}} .swatch.neutral{{color:var(--muted)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}article.machine{{padding:.75rem}}}}"""
+*{{box-sizing:border-box}} body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,serif}} main{{max-width:1180px;margin:auto;padding:2.4rem 1.25rem 4rem}} p{{max-width:var(--prose)}} .page-header{{margin-bottom:2rem}} .page-header h1{{font-size:2.35rem;line-height:1.08;font-weight:normal;margin:0 0 .65rem}} .lede{{font-size:1.08rem;margin:.3rem 0;color:var(--muted)}} h2{{font-size:1.7rem;line-height:1.2;font-weight:normal;margin:3rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}} h3{{font-size:1.38rem;line-height:1.25;margin:0 0 1rem}} h4{{font-size:1rem;font-weight:normal;color:var(--muted);margin:1.4rem 0 .4rem}} code{{font:.82em var(--mono);overflow-wrap:anywhere}} a{{color:var(--gold-deep);text-underline-offset:.14em}} .back-link{{margin:0 0 1rem}} .contents{{margin:2rem 0 3.5rem}} .contents-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}} .contents-family{{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:.8rem 1rem}} .contents-family h3{{font-size:1.05rem;margin:0 0 .35rem}} .contents-family ol{{margin:.2rem 0;padding-left:2.1rem}} .contents-family li{{padding:.08rem 0}} article.machine{{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:1.2rem;margin:1.1rem 0 2rem;content-visibility:auto;contain-intrinsic-size:auto 2400px}} .machine h3{{font-size:1.38rem}} .entry-number{{color:var(--gold-deep);font-weight:normal}} .tuple-grid{{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(460px,1.28fr);gap:1.25rem;align-items:start}} .machine-tuple{{font-size:1.12rem}} .typeset-space{{display:inline-block;width:.28em;white-space:pre}} dl{{display:grid;grid-template-columns:2rem 1fr;gap:.45rem .7rem}} dt{{color:var(--gold-deep)}} dd{{margin:0}} table{{border-collapse:collapse;width:100%;font-size:.88rem}} .table-scroll{{width:100%;overflow:auto}} .transitions-scroll{{max-height:28rem}} th,td{{border:1px solid var(--line);padding:.38rem .52rem;text-align:left;vertical-align:top}} th{{background:var(--paper-warm);color:var(--muted);font-weight:normal}} .transitions thead th{{position:sticky;top:0;z-index:1;background:var(--paper-warm)}} .state-map td:first-child{{white-space:nowrap}} .citation,.none{{color:var(--muted);font-size:.9em}} .literature-label{{font-style:italic}} .provenance.observed{{color:var(--gold-deep)}} .input-contract{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .diagram{{margin:1.2rem 0;overflow:auto;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:.6rem}} .diagram img{{display:block;margin:auto;max-width:100%;height:auto}} figcaption{{max-width:var(--prose);margin:.55rem auto 0;color:var(--muted);font-size:.9rem}} .domain-scene img{{max-height:34rem}} .transition-diagram img{{max-height:46rem}} .family-composite img{{max-width:none;min-width:100%}} .family-composite{{max-height:72rem}} .scene-limit{{background:var(--paper-cool);border-left:3px solid var(--muted);padding:.65rem .8rem}} .typology,.attestation{{background:var(--paper-cool);padding:.7rem .85rem;border-radius:5px}} .term{{color:var(--gold-deep)}} .attestation{{border-left:3px solid var(--gold)}} .atlas{{font-size:.84rem;min-width:860px}} .numeric{{white-space:nowrap;text-align:right}} .legend-list{{display:grid;grid-template-columns:max-content minmax(0,var(--prose));gap:.45rem 1rem}} .legend-list dt{{font-family:var(--mono)}} .swatch{{display:inline-block;width:1.4rem;height:.18rem;vertical-align:middle;margin-right:.35rem;background:currentColor}} .swatch.conserving{{color:var(--ink)}} .swatch.objective{{color:var(--rust)}} .swatch.contextual{{color:var(--validity-blue)}} .swatch.mixed{{background:linear-gradient(to bottom,var(--rust) 0 42%,var(--validity-blue) 42% 100%)}} .swatch.neutral{{color:var(--muted)}} footer{{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.88rem}} @media(max-width:850px){{.tuple-grid{{grid-template-columns:1fr}}main{{padding:.9rem}}article.machine{{padding:.75rem}}}}"""
 
 
 def print_style() -> str:
@@ -582,8 +615,9 @@ def page_document(title: str, body: str, *, stylesheet: str | None = None) -> st
 
 
 def legend_section() -> str:
+    counts = validity_review_counts()
     return f"""<section id="legend"><h2>Legend</h2>
-<p>Each entry writes <i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>): states, action alphabet, transition relation, start state, and accepting states. Code names remain beside formal state names. In transition diagrams, conserving transitions use <span class="swatch conserving"></span>dark lines, deforming transitions use <span class="swatch deforming"></span>rust lines, and neutral transitions use <span class="swatch neutral"></span>muted lines. Dashed transition lines represent observed-only table rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes use rust for an executed deformation and gold or dark marks for the admitted representation roles.</p>
+<p>Each entry writes <i>M</i> = (<i>Q</i>, <i>Σ</i>, <i>δ</i>, <i>q</i><sub>0</sub>, <i>F</i>): states, action alphabet, transition relation, start state, and accepting states. Code names remain beside formal state names. Conserving transitions use <span class="swatch conserving"></span>dark lines and neutral transitions use <span class="swatch neutral"></span>muted lines. For deforming transitions, <span class="swatch objective"></span>rust means the claim is false on its own; <span class="swatch contextual"></span>blue means a correct doing the context makes insufficient. A mixed transition uses a <span class="swatch mixed"></span>blue base with a rust overlay drawn last and a segmented target ring. Unreviewed rows retain rust-family styling. The ledger currently records {counts["reviewed"]} reviewed and {counts["unreviewed"]} unreviewed deforming transitions. Dashed transition lines represent observed-only table rows. The gold arrow and state ring mark <i>q</i><sub>0</sub>; accepting states have two rings. Domain scenes keep their separate outcome palette.</p>
 <dl class="legend-list"><dt>linear_trace</dt><dd>{CLASS_GLOSSES["linear_trace"]}.</dd><dt>branching</dt><dd>{CLASS_GLOSSES["branching"]}.</dd><dt>looping</dt><dd>{CLASS_GLOSSES["looping"]}.</dd><dt>branching_looping</dt><dd>{CLASS_GLOSSES["branching_looping"]}.</dd></dl>
 <p>Computed structure reports only the recorded transition graph. An authored class appears on a separate line only when module prose names it and supplies a source location.</p>
 </section>"""
@@ -629,7 +663,7 @@ def attestations_section(
 
 
 def footer() -> str:
-    return """<footer><p>Artifacts and regeneration: <code>knowledge/strategies/transition_tables/*.pl</code>, <code>python3 scripts/research/build_transition_tables.py</code>; <code>knowledge/strategies/machine_typology.pl</code>, <code>python3 scripts/research/build_machine_typology.py</code>; radial assets <code>docs/research/assets/automata/&lt;family&gt;/&lt;kind&gt;.svg</code>, <code>python3 scripts/research/render_automaton_svg.py</code>; scene and composite assets, <code>python3 scripts/research/render_automaton_context_svg.py</code>; the hub <code>docs/research/2026-08-03-automata-compendium.html</code> and family pages under <code>docs/research/automata-compendium/</code>, <code>python3 scripts/research/build_automata_compendium.py</code>. Authored input: <code>knowledge/strategies/machine_class_attestations.pl</code>. Parsed inputs: <code>knowledge/strategies/automaton_input_contracts.pl</code>, <code>knowledge/strategies/math/state_vocabulary.pl</code>, and <code>knowledge/strategies/deformation_coincidence.pl</code>; the coincidence file records its sweep generator and finite grids in its header.</p></footer>"""
+    return """<footer><p>Artifacts and regeneration: <code>knowledge/strategies/transition_tables/*.pl</code>, <code>python3 scripts/research/build_transition_tables.py</code>; <code>knowledge/strategies/machine_typology.pl</code>, <code>python3 scripts/research/build_machine_typology.py</code>; radial assets <code>docs/research/assets/automata/&lt;family&gt;/&lt;kind&gt;.svg</code>, <code>python3 scripts/research/render_automaton_svg.py</code>; scene and composite assets, <code>python3 scripts/research/render_automaton_context_svg.py</code>; the hub <code>docs/research/2026-08-03-automata-compendium.html</code> and family pages under <code>docs/research/automata-compendium/</code>, <code>python3 scripts/research/build_automata_compendium.py</code>. Authored inputs: <code>knowledge/strategies/machine_class_attestations.pl</code> and <code>knowledge/strategies/deformation_validity.pl</code>. Other parsed inputs: <code>knowledge/strategies/automaton_input_contracts.pl</code>, <code>knowledge/strategies/math/state_vocabulary.pl</code>, and <code>knowledge/strategies/deformation_coincidence.pl</code>; the coincidence file records its sweep generator and finite grids in its header.</p></footer>"""
 
 
 def generate_compendium_pages() -> dict[Path, str]:
@@ -683,6 +717,7 @@ def generate_compendium_pages() -> dict[Path, str]:
 <p class="back-link"><a href="../2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
 <h1>{esc(family)}</h1>
 <p><a href="../automata-vocabulary.html">Read the automata vocabulary</a>.</p>
+<p>Validity review for this family: {validity_review_counts(family)["reviewed"]} reviewed and {validity_review_counts(family)["unreviewed"]} unreviewed deforming transitions. Unreviewed rows retain rust-family styling.</p>
 </header>
 <section class="family" id="family-{esc(family)}">
 {family_composite(family, *composites[family], "../assets/automata")}

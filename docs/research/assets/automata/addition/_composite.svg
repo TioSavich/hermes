@@ -5,8 +5,10 @@
   <rect width="100%" height="100%" fill="#f4ead6"/>
   <defs>
     <marker id="composite-conserving" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d0c08"/></marker>
-    <marker id="composite-deforming" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
     <marker id="composite-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#665f4f"/></marker>
+    <marker id="composite-validity-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e6f9e"/></marker>
+    <marker id="composite-validity-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
+    <marker id="composite-validity-rust-mixed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b95238"/></marker>
   </defs>
   <path d="M 100.0 705.0 C 210.5 705.0, 210.5 557.0, 321.0 557.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>align_to_common_unit: append_column_sum_without_carrying, column_addition_with_carrying, drop_carry_to_next_column, wrong_carry_amount_to_next_column</title></path>
   <rect x="148.4" y="548.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -39,9 +41,9 @@
   <text x="210.5" y="782.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">retrieve_known_fact</text>
   <text x="210.5" y="798.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">derived_fact_adjustment</text>
   <text x="210.5" y="807.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">rote_derived_fact_rule_misfire</text>
-  <path d="M 100.0 705.0 C 210.5 705.0, 210.5 372.0, 321.0 372.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: count_all_when_count_on_available</title></path>
+  <path class="validity-blue-base" d="M 100.0 705.0 C 210.5 705.0, 210.5 372.0, 321.0 372.0" fill="none" stroke="#2e6f9e" stroke-width="2.5" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>substitute_operation: count_all_when_count_on_available; modes context_sensitive_or_inefficient; review status seeded_ledger</title></path>
   <rect x="148.4" y="363.0" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="210.5" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
+  <text x="210.5" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">substitute_operation</text>
   <text x="210.5" y="391.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">count_all_when_count_on_available</text>
   <path d="M 1405.0 534.8 C 1515.5 534.8, 1515.5 705.0, 1626.0 705.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>record_conservation: base_ones_chunking, column_addition_with_carrying, derived_fact_adjustment, make_base_transfer, make_ten_split_leftover</title></path>
   <rect x="1456.2" y="696.0" width="118.6" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
@@ -49,9 +51,9 @@
   <path d="M 1144.0 224.0 C 1254.5 224.0, 1254.5 534.8, 1365.0 534.8" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>accumulate_total: column_addition_with_carrying</title></path>
   <rect x="1203.6" y="525.8" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="537.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">accumulate_total</text>
-  <path d="M 1405.0 771.6 C 1515.5 771.6, 1515.5 705.0, 1626.0 705.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>record_loss: append_column_sum_without_carrying, count_all_instead_of_known_fact, count_all_when_count_on_available, drop_carry_to_next_column, dropped_ones_chunk, make_ten_drop_leftover, rote_derived_fact_rule_misfire, round_without_adjusting, unbalanced_make_base_compensation, wrong_carry_amount_to_next_column</title></path>
+  <path class="validity-blue-base" d="M 1405.0 771.6 C 1515.5 771.6, 1515.5 705.0, 1626.0 705.0" fill="none" stroke="#2e6f9e" stroke-width="3.2" stroke-linecap="round" marker-end="url(#composite-validity-blue)"><title>record_loss: append_column_sum_without_carrying, count_all_instead_of_known_fact, count_all_when_count_on_available, drop_carry_to_next_column, dropped_ones_chunk, make_ten_drop_leftover, rote_derived_fact_rule_misfire, round_without_adjusting, unbalanced_make_base_compensation, wrong_carry_amount_to_next_column; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_ledger</title></path>
   <rect x="1478.6" y="696.0" width="73.7" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
-  <text x="1515.5" y="708.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">record_loss</text>
+  <text x="1515.5" y="708.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#2e6f9e">record_loss</text>
   <path d="M 1144.0 594.0 C 1254.5 594.0, 1254.5 771.6, 1365.0 771.6" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>accumulate_total: drop_carry_to_next_column</title></path>
   <rect x="1203.6" y="762.6" width="101.8" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="774.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">accumulate_total</text>
@@ -59,7 +61,6 @@
   <rect x="945.4" y="215.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="993.5" y="227.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">regroup_to_base</text>
   <text x="993.5" y="243.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">column_addition_with_carrying</text>
-  <path d="M 883.0 409.0 C 993.5 409.0, 993.5 594.0, 1104.0 594.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>treat_relevant_as_irrelevant: drop_carry_to_next_column</title></path>
   <rect x="939.8" y="580.0" width="107.4" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="993.5" y="592.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">treat_relevant_as</text>
   <text x="993.5" y="602.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">irrelevant</text>
@@ -75,12 +76,10 @@
   <text x="732.5" y="412.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">inscribe_result</text>
   <text x="732.5" y="428.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">column_addition_with_carrying</text>
   <text x="732.5" y="437.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_carry_to_next_column</text>
-  <path d="M 622.0 717.3 C 732.5 717.3, 732.5 1334.0, 843.0 1334.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>misread_intermediate_value: wrong_carry_amount_to_next_column</title></path>
   <rect x="676.0" y="1320.0" width="113.0" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="1332.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">misread</text>
   <text x="732.5" y="1342.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">intermediate_value</text>
   <text x="732.5" y="1358.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">wrong_carry_amount_to_next_column</text>
-  <path d="M 883.0 76.0 C 1124.0 76.0, 1124.0 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>substitute_operation: append_column_sum_without_carrying</title></path>
   <rect x="1061.9" y="762.6" width="124.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1124.0" y="774.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">substitute_operation</text>
   <path d="M 622.0 76.0 C 732.5 76.0, 732.5 76.0, 843.0 76.0" fill="none" stroke="#665f4f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-neutral)"><title>inscribe_result: append_column_sum_without_carrying</title></path>
@@ -92,7 +91,6 @@
   <text x="471.5" y="736.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">column_addition_with_carrying</text>
   <text x="471.5" y="745.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">drop_carry_to_next_column</text>
   <text x="471.5" y="754.3" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">wrong_carry_amount_to_next_column</text>
-  <path d="M 361.0 557.0 C 471.5 557.0, 471.5 76.0, 582.0 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: append_column_sum_without_carrying</title></path>
   <rect x="415.0" y="67.0" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="471.5" y="79.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="471.5" y="95.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">append_column_sum_without_carrying</text>
@@ -107,7 +105,6 @@
   <text x="1124.0" y="537.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#665f4f">combine_quantities</text>
   <text x="1124.0" y="553.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">base_ones_chunking</text>
   <text x="1124.0" y="562.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">make_ten_split_leftover</text>
-  <path d="M 883.0 668.0 C 1124.0 668.0, 1124.0 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>halt_before_completion: dropped_ones_chunk, make_ten_drop_leftover</title></path>
   <rect x="1087.1" y="757.6" width="73.7" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1124.0" y="769.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">halt_before</text>
   <text x="1124.0" y="779.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">completion</text>
@@ -116,7 +113,6 @@
   <path d="M 622.0 927.0 C 732.5 927.0, 732.5 668.0, 843.0 668.0" fill="none" stroke="#0d0c08" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-conserving)"><title>regroup_to_base: make_ten_drop_leftover, make_ten_split_leftover</title></path>
   <rect x="684.4" y="659.0" width="96.2" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="732.5" y="671.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">regroup_to_base</text>
-  <path d="M 1144.0 1260.0 C 1254.5 1260.0, 1254.5 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>retain_where_change_was_due: unbalanced_make_base_compensation</title></path>
   <rect x="1195.2" y="757.6" width="118.6" height="28.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="769.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">retain_where_change</text>
   <text x="1254.5" y="779.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">was_due</text>
@@ -129,7 +125,6 @@
   <text x="1124.0" y="532.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">transfer_between</text>
   <text x="1124.0" y="542.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#0d0c08">operands</text>
   <text x="1124.0" y="558.8" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">make_base_transfer</text>
-  <path d="M 1144.0 1149.0 C 1254.5 1149.0, 1254.5 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-deforming)"><title>omit_required_step: round_without_adjusting</title></path>
   <rect x="1198.0" y="762.6" width="113.0" height="18.0" rx="4" fill="#f4ead6" fill-opacity="0.94" stroke="#fffef9" stroke-width="0.8"/>
   <text x="1254.5" y="774.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="normal" fill="#b95238">omit_required_step</text>
   <text x="1254.5" y="790.6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.2" font-weight="normal" fill="#665f4f">round_without_adjusting</text>
@@ -263,4 +258,19 @@
   <text x="604.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p29</text>
   <circle cx="343.0" cy="372.0" r="16" fill="#fffef9" stroke="#0d0c08" stroke-width="2"/>
   <text x="343.0" y="375.0" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.0" font-weight="normal" fill="#0d0c08">p30</text>
+  <path class="validity-rust-overlay" d="M 1405.0 771.6 C 1515.5 771.6, 1515.5 705.0, 1626.0 705.0" fill="none" stroke="#b95238" stroke-width="1.4" stroke-linecap="round" marker-end="url(#composite-validity-rust-mixed)"><title>record_loss: append_column_sum_without_carrying, count_all_instead_of_known_fact, count_all_when_count_on_available, drop_carry_to_next_column, dropped_ones_chunk, make_ten_drop_leftover, rote_derived_fact_rule_misfire, round_without_adjusting, unbalanced_make_base_compensation, wrong_carry_amount_to_next_column; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 409.0 C 993.5 409.0, 993.5 594.0, 1104.0 594.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>treat_relevant_as_irrelevant: drop_carry_to_next_column; modes objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-rust-overlay" d="M 622.0 717.3 C 732.5 717.3, 732.5 1334.0, 843.0 1334.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>misread_intermediate_value: wrong_carry_amount_to_next_column; modes objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 76.0 C 1124.0 76.0, 1124.0 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>substitute_operation: append_column_sum_without_carrying; modes context_sensitive_or_inefficient, objective_invalid; review status seeded_profile</title></path>
+  <path class="validity-rust-overlay" d="M 361.0 557.0 C 471.5 557.0, 471.5 76.0, 582.0 76.0" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: append_column_sum_without_carrying; modes objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-rust-overlay" d="M 883.0 668.0 C 1124.0 668.0, 1124.0 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>halt_before_completion: dropped_ones_chunk, make_ten_drop_leftover; modes objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-rust-overlay" d="M 1144.0 1260.0 C 1254.5 1260.0, 1254.5 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>retain_where_change_was_due: unbalanced_make_base_compensation; modes objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-rust-overlay" d="M 1144.0 1149.0 C 1254.5 1149.0, 1254.5 771.6, 1365.0 771.6" fill="none" stroke="#b95238" stroke-width="2.2" stroke-linecap="round" marker-end="url(#composite-validity-rust)"><title>omit_required_step: round_without_adjusting; modes objective_invalid; review status seeded_ledger</title></path>
+  <path class="validity-blue-ring" d="M 1627.5 705.0 A 20.5 20.5 0 0 1 1668.5 705.0" fill="none" stroke="#2e6f9e" stroke-width="1.7"/>
+  <path class="validity-rust-ring" d="M 1668.5 705.0 A 20.5 20.5 0 0 1 1627.5 705.0" fill="none" stroke="#b95238" stroke-width="1.7"/>
+  <circle class="validity-rust-ring" cx="1387.0" cy="771.6" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="1126.0" cy="594.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="865.0" cy="1334.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-rust-ring" cx="604.0" cy="76.0" r="20.5" fill="none" stroke="#b95238" stroke-width="1.5"/>
+  <circle class="validity-blue-ring" cx="343.0" cy="372.0" r="20.5" fill="none" stroke="#2e6f9e" stroke-width="1.5"/>
 </svg>

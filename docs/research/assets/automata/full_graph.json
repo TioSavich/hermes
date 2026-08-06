@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "meta": {
     "scope": "The graph records the 222 computational machines in the transition-table compendium; the 18 discursive machines are outside it.",
     "level_note": "The level ladder is an authored pedagogical ordering, not a relation derived from the transition tables.",
@@ -221,12 +221,28 @@
         "conserving": 148,
         "deforming": 232,
         "neutral": 751
+      },
+      "deforming_edges_by_validity": {
+        "objective_invalid_only": 147,
+        "context_sensitive_or_inefficient_only": 27,
+        "mixed": 58
+      },
+      "deforming_edges_by_review_status": {
+        "seeded_ledger": 18,
+        "seeded_profile": 88,
+        "proposed": 0,
+        "adjudicated": 126
+      },
+      "deforming_edges_by_review_state": {
+        "reviewed": 144,
+        "unreviewed": 88
       }
     },
     "generation_sources": [
       "knowledge/strategies/transition_tables/*.pl",
       "knowledge/strategies/action_vocabulary_map.pl",
       "knowledge/strategies/action_grammar.pl",
+      "knowledge/strategies/deformation_validity.pl",
       "scripts/research/build_machine_typology.py",
       "scripts/research/build_full_graph_json.py"
     ]
@@ -20418,7 +20434,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0002",
@@ -20444,7 +20464,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0004",
@@ -20457,7 +20482,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0005",
@@ -20639,7 +20668,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0019",
@@ -20652,7 +20685,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0020",
@@ -20691,7 +20728,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0023",
@@ -20847,7 +20888,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0035",
@@ -20873,7 +20918,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0037",
@@ -20912,7 +20961,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0040",
@@ -20925,7 +20978,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0041",
@@ -21081,7 +21138,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0053",
@@ -21094,7 +21155,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0054",
@@ -21211,7 +21276,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0063",
@@ -21341,7 +21410,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0073",
@@ -21354,7 +21427,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0074",
@@ -21419,7 +21496,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0079",
@@ -21432,7 +21513,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0080",
@@ -21471,7 +21556,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0083",
@@ -21510,7 +21599,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_ledger"
     },
     {
       "id": "e0086",
@@ -21744,7 +21837,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0104",
@@ -21757,7 +21854,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0105",
@@ -21822,7 +21923,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0110",
@@ -21848,7 +21953,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0112",
@@ -22004,7 +22113,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0124",
@@ -22095,7 +22208,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0131",
@@ -22121,7 +22238,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0133",
@@ -22147,7 +22268,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0135",
@@ -22186,7 +22311,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0138",
@@ -22199,7 +22328,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0139",
@@ -22628,7 +22761,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0172",
@@ -22654,7 +22791,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0174",
@@ -22667,7 +22808,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0175",
@@ -22745,7 +22890,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0181",
@@ -22849,7 +22998,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0189",
@@ -22862,7 +23015,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0190",
@@ -23108,7 +23265,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0210",
@@ -23134,7 +23295,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0212",
@@ -23160,7 +23325,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0214",
@@ -23173,7 +23342,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0215",
@@ -23186,7 +23359,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0216",
@@ -23212,7 +23389,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0218",
@@ -23251,7 +23433,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0221",
@@ -23589,7 +23776,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0247",
@@ -23615,7 +23807,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0249",
@@ -23719,7 +23916,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0257",
@@ -23745,7 +23946,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0259",
@@ -23781,7 +23986,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0262",
@@ -23793,7 +24003,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0263",
@@ -23829,7 +24044,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "observed"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0266",
@@ -23841,7 +24061,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "observed"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0267",
@@ -23927,7 +24152,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0274",
@@ -23966,7 +24196,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0277",
@@ -24083,7 +24318,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0286",
@@ -24096,7 +24335,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0287",
@@ -24109,7 +24352,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0288",
@@ -24122,7 +24369,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0289",
@@ -24343,7 +24594,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0306",
@@ -24759,7 +25015,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0338",
@@ -24772,7 +25033,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0339",
@@ -24785,7 +25051,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0340",
@@ -24824,7 +25095,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0343",
@@ -24837,7 +25113,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0344",
@@ -24954,7 +25235,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0353",
@@ -24967,7 +25252,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0354",
@@ -24993,7 +25282,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0356",
@@ -25019,7 +25312,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0358",
@@ -25032,7 +25329,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0359",
@@ -25084,7 +25385,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0363",
@@ -25097,7 +25403,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0364",
@@ -25110,7 +25421,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0365",
@@ -25149,7 +25465,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0368",
@@ -25162,7 +25483,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0369",
@@ -25175,7 +25501,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0370",
@@ -25214,7 +25545,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0373",
@@ -25227,7 +25562,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0374",
@@ -25240,7 +25579,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0375",
@@ -25266,7 +25609,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0377",
@@ -25279,7 +25626,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0378",
@@ -25292,7 +25643,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0379",
@@ -25305,7 +25660,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0380",
@@ -25344,7 +25703,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0383",
@@ -25396,7 +25760,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0387",
@@ -25435,7 +25804,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0390",
@@ -25474,7 +25847,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0393",
@@ -25721,7 +26098,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0412",
@@ -25734,7 +26116,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0413",
@@ -25786,7 +26173,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0417",
@@ -25799,7 +26191,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0418",
@@ -25812,7 +26209,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0419",
@@ -25825,7 +26227,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0420",
@@ -26045,7 +26452,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0438",
@@ -26058,7 +26469,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0439",
@@ -26850,7 +27265,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0501",
@@ -26862,7 +27281,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0502",
@@ -26874,7 +27298,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0503",
@@ -26946,7 +27375,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "observed"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0509",
@@ -26958,7 +27392,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "observed"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0510",
@@ -26982,7 +27421,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "observed"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0512",
@@ -27054,7 +27498,12 @@
       "stance": "deforming",
       "provenance_kinds": [
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0518",
@@ -27093,7 +27542,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0521",
@@ -27106,7 +27559,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0522",
@@ -27119,7 +27576,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0523",
@@ -27249,7 +27710,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0533",
@@ -27262,7 +27727,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0534",
@@ -27301,7 +27770,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0537",
@@ -27327,7 +27800,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0539",
@@ -27418,7 +27895,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0546",
@@ -27873,7 +28355,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0581",
@@ -27886,7 +28373,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0582",
@@ -27925,7 +28417,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0585",
@@ -27938,7 +28435,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0586",
@@ -27964,7 +28466,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0588",
@@ -28432,7 +28939,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0624",
@@ -28445,7 +28956,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0625",
@@ -28458,7 +28973,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0626",
@@ -28549,7 +29069,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0633",
@@ -28640,7 +29164,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0640",
@@ -28666,7 +29195,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0642",
@@ -28913,7 +29447,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0661",
@@ -28939,7 +29477,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0663",
@@ -29030,7 +29572,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0670",
@@ -29121,7 +29668,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0677",
@@ -29147,7 +29698,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0679",
@@ -29173,7 +29728,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0681",
@@ -29186,7 +29745,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0682",
@@ -29212,7 +29775,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0684",
@@ -29316,7 +29883,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0692",
@@ -29329,7 +29900,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0693",
@@ -29355,7 +29930,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0695",
@@ -29381,7 +29960,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0697",
@@ -29407,7 +29990,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0699",
@@ -29420,7 +30007,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0700",
@@ -29433,7 +30024,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0701",
@@ -29459,7 +30054,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0703",
@@ -29511,7 +30110,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0707",
@@ -29537,7 +30140,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0709",
@@ -29563,7 +30170,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0711",
@@ -29576,7 +30187,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0712",
@@ -29589,7 +30204,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0713",
@@ -29615,7 +30234,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0715",
@@ -29628,7 +30251,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0716",
@@ -29641,7 +30268,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0717",
@@ -29706,7 +30337,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0722",
@@ -29719,7 +30354,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0723",
@@ -29810,7 +30449,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0730",
@@ -29823,7 +30466,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0731",
@@ -29849,7 +30496,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0733",
@@ -29875,7 +30527,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0735",
@@ -30642,7 +31299,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0794",
@@ -30655,7 +31316,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0795",
@@ -30707,7 +31372,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0799",
@@ -30720,7 +31389,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0800",
@@ -30746,7 +31419,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0802",
@@ -30759,7 +31436,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0803",
@@ -30772,7 +31453,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0804",
@@ -30941,7 +31626,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0817",
@@ -30954,7 +31643,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0818",
@@ -30993,7 +31686,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0821",
@@ -31019,7 +31716,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0823",
@@ -31032,7 +31733,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0824",
@@ -31058,7 +31763,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0826",
@@ -31071,7 +31780,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0827",
@@ -31084,7 +31797,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0828",
@@ -31162,7 +31879,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0834",
@@ -31188,7 +31909,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0836",
@@ -31344,7 +32069,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0848",
@@ -31357,7 +32086,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0849",
@@ -31370,7 +32103,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0850",
@@ -31396,7 +32133,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0852",
@@ -31409,7 +32150,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0853",
@@ -31448,7 +32193,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0856",
@@ -31461,7 +32210,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0857",
@@ -31552,7 +32305,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0864",
@@ -31565,7 +32322,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0865",
@@ -31760,7 +32521,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0880",
@@ -31786,7 +32552,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0882",
@@ -31799,7 +32570,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0883",
@@ -31825,7 +32601,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0885",
@@ -31838,7 +32619,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0886",
@@ -31851,7 +32637,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0887",
@@ -31877,7 +32668,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0889",
@@ -31903,7 +32698,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0891",
@@ -32111,7 +32910,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0907",
@@ -32124,7 +32927,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0908",
@@ -32137,7 +32944,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0909",
@@ -32293,7 +33104,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0921",
@@ -32306,7 +33121,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0922",
@@ -32319,7 +33138,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0923",
@@ -32358,7 +33181,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0926",
@@ -32371,7 +33198,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0927",
@@ -32397,7 +33228,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0929",
@@ -32410,7 +33245,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0930",
@@ -32423,7 +33262,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0931",
@@ -32527,7 +33370,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0939",
@@ -32540,7 +33387,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0940",
@@ -32553,7 +33404,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0941",
@@ -32735,7 +33590,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0955",
@@ -32761,7 +33621,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e0957",
@@ -32787,7 +33652,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0959",
@@ -32800,7 +33669,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0960",
@@ -32813,7 +33686,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0961",
@@ -32826,7 +33703,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0962",
@@ -32852,7 +33733,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0964",
@@ -32904,7 +33789,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0968",
@@ -32956,7 +33845,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0972",
@@ -33086,7 +33979,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0982",
@@ -33177,7 +34074,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0989",
@@ -33203,7 +34104,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e0991",
@@ -33835,7 +34740,12 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid",
+        "context_sensitive_or_inefficient"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e1040",
@@ -33973,7 +34883,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e1051",
@@ -34064,7 +34978,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1058",
@@ -34077,7 +34995,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1059",
@@ -34103,7 +35025,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1061",
@@ -34168,7 +35094,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1066",
@@ -34181,7 +35111,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1067",
@@ -34311,7 +35245,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e1077",
@@ -34324,7 +35262,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e1078",
@@ -34337,7 +35279,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e1079",
@@ -34363,7 +35309,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "adjudicated"
     },
     {
       "id": "e1081",
@@ -34402,7 +35352,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1084",
@@ -34441,7 +35395,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1087",
@@ -34545,7 +35503,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1095",
@@ -34558,7 +35520,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1096",
@@ -34571,7 +35537,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1097",
@@ -34740,7 +35710,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1110",
@@ -34753,7 +35727,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1111",
@@ -34792,7 +35770,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1114",
@@ -34818,7 +35800,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1116",
@@ -34909,7 +35895,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1123",
@@ -34922,7 +35912,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1124",
@@ -34935,7 +35929,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1125",
@@ -34961,7 +35959,11 @@
       "provenance_kinds": [
         "observed",
         "static"
-      ]
+      ],
+      "validity_modes": [
+        "objective_invalid"
+      ],
+      "review_status": "seeded_profile"
     },
     {
       "id": "e1127",

@@ -27,6 +27,14 @@ def main() -> int:
         }
         assert set(graph_tools) == {"graph_overview", "graph_machine", "graph_borrows"}
         assert all(row["annotations"] == {"readOnlyHint": True, "idempotentHint": True} for row in graph_tools.values())
+        overview_count_schema = graph_tools["graph_overview"]["outputSchema"]["properties"]["counts"]
+        assert {"validity_counts", "review_status_counts", "reviewed_unreviewed_counts"} <= set(
+            overview_count_schema["required"]
+        )
+        machine_edge_schema = graph_tools["graph_machine"]["outputSchema"]["properties"]["edges"]["items"]
+        assert {"validity_modes", "review_status"} <= set(machine_edge_schema["required"])
+        carrier_schema = graph_tools["graph_borrows"]["outputSchema"]["properties"]["carriers"]["items"]
+        assert "validity_modes" in carrier_schema["required"]
 
         overview = server.call("graph_overview", {})
         assert overview["counts"] == {
@@ -36,6 +44,9 @@ def main() -> int:
             "borrow_actions": counts["borrows"],
             "borrow_pairs": counts["borrow_pairs"],
             "cross_family_pairs": counts["cross_family_borrow_pairs"],
+            "validity_counts": counts["deforming_edges_by_validity"],
+            "review_status_counts": counts["deforming_edges_by_review_status"],
+            "reviewed_unreviewed_counts": counts["deforming_edges_by_review_state"],
         }
         assert overview["meta"]["scope"] == graph["meta"]["scope"]
         assert overview["meta"]["level_ladder"] == graph["meta"]["level_ladder"]
@@ -49,7 +60,14 @@ def main() -> int:
         assert len(machine["edges"]) == 5
         assert machine["borrow_summary"]["shared_canonical_action_count"] > 0
         assert all(
-            {"local_action", "canonical_action", "stance", "provenance_kinds"} <= set(edge)
+            {"local_action", "canonical_action", "stance", "validity_modes",
+             "review_status", "provenance_kinds"} <= set(edge)
+            for edge in machine["edges"]
+        )
+        assert all(
+            (edge["validity_modes"] and edge["review_status"] is not None)
+            if edge["stance"] == "deforming"
+            else (edge["validity_modes"] == [] and edge["review_status"] is None)
             for edge in machine["edges"]
         )
 
@@ -65,6 +83,14 @@ def main() -> int:
         assert action_borrows["totals"]["cross_family_pairs"] > 0
         assert action_borrows["totals"]["carrier_machines"] >= 2
         assert action_borrows["pairs"] and all(pair["cross_family"] for pair in action_borrows["pairs"])
+        graph_edge_by_id = {edge["id"]: edge for edge in graph["edges"]}
+        for carrier in action_borrows["carriers"]:
+            expected_modes = [
+                mode for mode in ("objective_invalid", "context_sensitive_or_inefficient")
+                if any(mode in graph_edge_by_id[edge_id].get("validity_modes", [])
+                       for edge_id in carrier["edge_ids"])
+            ]
+            assert carrier["validity_modes"] == expected_modes
 
         machine_borrows = server.call(
             "graph_borrows",
@@ -102,7 +128,7 @@ def main() -> int:
 
     print(f"PASS graph_overview matches {counts['machines']} machines, {counts['nodes']} nodes, and {counts['edges']} edges")
     print("PASS graph_machine returns 6 states, 5 edges, and shared-action counts")
-    print(f"PASS graph_borrows returns cross-family pairs for {cross_family_action}")
+    print(f"PASS graph_borrows returns cross-family pairs and carrier validity modes for {cross_family_action}")
     print("PASS graph_borrows exposes pagination totals and truncation")
     print(f"PASS a missing graph names {FULL_GRAPH_ARTIFACT} without starting Prolog")
     return 0
