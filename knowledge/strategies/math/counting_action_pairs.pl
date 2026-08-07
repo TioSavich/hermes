@@ -22,7 +22,7 @@
                 numeral_action_witness/3,
                 numeral_plan_deformation/4
               ]).
-
+:- use_module(strategies('abstraction/kernel_gate_pilot'), [run_kernel/4]).
 
 run_counting_action(enumerate_collection_one_to_one, Count, base(Base),
                     Outcome, Trace) :-
@@ -79,7 +79,7 @@ run_counting_action(recursive_place_value_inscription, Count, base(Base),
                     Outcome, Trace) :-
     valid_cardinality(Count),
     valid_base(Base),
-    integer_numeral(Count, Base, Numeral),
+    recursive_place_value_inscription_bridge(Count, Base, Numeral),
     numeral_unit_tree(Numeral, UnitTree),
     numeral_action_witness(Numeral, _Plan, WitnessTrace),
     Outcome = action_outcome(
@@ -143,7 +143,7 @@ run_counting_action(place_value_comparison, counts(A, B), base(Base),
     integer_numeral(B, Base, NumeralB),
     numeral_unit_tree(NumeralA, TreeA),
     numeral_unit_tree(NumeralB, TreeB),
-    count_relation(A, B, Relation),
+    place_value_comparison_bridge(Base, NumeralA, NumeralB, Relation),
     Outcome = action_outcome(
                   place_value_comparison,
                   [ classification(productive),
@@ -336,3 +336,37 @@ count_relation(_, _, same_number).
 count_steps(Count, Steps) :-
     findall(pair_object_with_count_word(Index, Index),
             between(1, Count, Index), Steps).
+
+
+% The exact kernel, gate, argument, and result matches make pilot drift refuse
+% these bridges. check_kernel_pilot/0 must stay green for both consumers.
+recursive_place_value_inscription_bridge(Count, Base, Numeral) :-
+    integer(Count),
+    Count >= 0,
+    integer(Base),
+    Base >= 2,
+    run_kernel(
+        recollect_base_cycles,
+        cardinality_in_base(Base),
+        [cardinality(Count)],
+        run(recollect_base_cycles,
+            cardinality_in_base(Base),
+            [cardinality(Count)],
+            _KernelSteps,
+            Numeral)),
+    Numeral = numeral(Base, _Sign, radix(_Radix), _Digits).
+
+place_value_comparison_bridge(Base, LeftNumeral, RightNumeral, Relation) :-
+    integer(Base),
+    Base >= 2,
+    nonvar(LeftNumeral),
+    nonvar(RightNumeral),
+    run_kernel(
+        compare_place_sequences_by_significance,
+        positional_numerals(Base),
+        [left(LeftNumeral), right(RightNumeral)],
+        run(compare_place_sequences_by_significance,
+            positional_numerals(Base),
+            [left(LeftNumeral), right(RightNumeral)],
+            _KernelSteps,
+            relation(Relation, _Witness))).
