@@ -1,7 +1,7 @@
 # hermes/web/render
 
 The one browser-side render pipeline every Hermes scene page shares. It is
-render-only: it draws a `{frames:[...]}` document forward and never computes a
+draw-only: it draws a `{frames:[...]}` document forward and never computes a
 result or edits a scene.
 
 ## What it holds

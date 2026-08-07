@@ -86,9 +86,9 @@ before replacing it; the default work tree is `scripts/bigred/atlas/work/`.
 | `ATLAS_STACK_LIMIT` | `4g` | Prolog stack bound; `run_cell.sh` records why the default is 4g |
 | `ATLAS_WORK` | `scripts/bigred/atlas/work` | the work tree |
 
-## Model version — the `(s, I)` state
+## Model version — the `(s, I)` learner state
 
-- state `= learner_state(Stage, Inventory)`, `Inventory` a sorted set of
+- learner state `= learner_state(Stage, Inventory)`, `Inventory` a sorted set of
   `strategy(Op, Stage)`; every transition starts from `Inventory = []`.
 - policy `= policy(accept_efficiency)` by default.
 - stages `= [1, 2, 3]`, the reorganization-domain ladder
@@ -97,7 +97,7 @@ before replacing it; the default work tree is `scripts/bigred/atlas/work/`.
 ## Honest register
 
 - Every record computes one step of the **model's** local dynamics under the
-  stated `(s, I)` state and policy. It certifies formal closure of that step
+  stated `(s, I)` learner state and policy. It certifies formal closure of that step
   only (`certifies: formal_closure_only` in the summary). It says nothing about
   a child.
 - The stage ladder is model-given, not discovered. The sweep records where the

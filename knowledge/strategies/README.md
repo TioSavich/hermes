@@ -1,12 +1,12 @@
 # strategies
 
-Children's arithmetic strategies encoded as action automata, plus the machinery
-that runs them and draws them.
+Children's arithmetic strategies encoded as action automata, plus the code
+that runs them and compiles their scene documents.
 
 ## What it holds
 
-- `hermeneutic_calculator.pl` — the strategy dispatcher.
-- `fsm_engine.pl` — the finite-state-machine engine that steps an action-pair
+- `hermeneutic_calculator.pl` — the automaton dispatcher.
+- `fsm_engine.pl` — the finite-state automaton engine that steps an action-pair
   automaton.
 - `composition_engine.pl`, `normalization.pl` — grounded fractional arithmetic
   (composition and normal forms over the grounded number representation).
@@ -15,7 +15,7 @@ that runs them and draws them.
 - `strategies.pl` — a signpost to the deployed dispatch surface.
 - `math/` — the automata registry and the per-operation action-pair modules.
   See `math/README.md`.
-- `render/` — scene compilers that emit render-contract documents. See
+- `render/` — scene compilers that emit scene documents under the render contract. See
   `render/README.md`.
 - `meta/` — introspection over the automata (analyzer, pattern detectors,
   fact/json writers).
@@ -27,15 +27,16 @@ that runs them and draws them.
 
 After `paths.pl` sets the `strategies` alias, consumers
 `use_module(strategies(math/action_automata_registry))` for execution and
-`use_module(strategies(render/<scene>))` for drawing.
+`use_module(strategies(render/<scene>))` for scene compilation.
 
 ## What consumes it
 
-`hermes_worker.pl` runs strategy traces and render operations; `formal/learner/`,
-`curriculum/im/`, and `hermes/` modules query the registry and render surfaces.
+`hermes_worker.pl` runs strategy traces and scene-compilation requests;
+`formal/learner/`, `curriculum/im/`, and `hermes/` modules query the registry and
+scene-compilation surfaces.
 
 ## Boundary
 
 The automata run attested strategies from the CGI and constructivist literature
-on representative operands within a bounded working base. They encode named
+on representative operands within a bounded working inscription base. They encode named
 strategies; they are not a general solver.

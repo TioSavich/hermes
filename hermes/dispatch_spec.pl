@@ -774,68 +774,68 @@ dispatch_spec(benny_demo,
 
 dispatch_message(event_score, malformed, "event_score requires event").
 dispatch_message(incompatibility_contexts, no_result,
-    "incompatibility_contexts found no nesting touching that context; pass no context for the full inventory").
+    "incompatibility_contexts found no matching nesting touching that context; pass no context for the full inventory").
 dispatch_message(batch_event_score, malformed, "batch_event_score requires events list").
 dispatch_message(pair_score, malformed, "pair_score requires events list").
 dispatch_message(pair_graph, malformed, "pair_graph requires events list").
 dispatch_message(monitoring_chart_export, malformed, "monitoring_chart_export requires lesson_code").
-dispatch_message(monitoring_chart_export, no_result, "monitoring_chart_export found no chart for lesson_code").
+dispatch_message(monitoring_chart_export, no_result, "monitoring_chart_export found no matching chart for lesson_code").
 dispatch_message(ranked_figures, malformed, "ranked_figures requires lesson_code").
-dispatch_message(ranked_figures, no_result, "ranked_figures found no selector candidates for lesson_code").
+dispatch_message(ranked_figures, no_result, "ranked_figures found no matching selector candidates for lesson_code").
 dispatch_message(field_context, malformed, "field_context requires lesson_code").
-dispatch_message(field_context, no_result, "field_context found no context for lesson_code").
+dispatch_message(field_context, no_result, "field_context found no matching context for lesson_code").
 dispatch_message(inferential_strength, malformed, "inferential_strength requires lesson").
 dispatch_message(strategy_trace, malformed, "strategy_trace requires strategy").
 dispatch_message(input_contract, malformed,
     "input_contract requires operation and kind").
 dispatch_message(input_contract, no_result,
-    "input_contract found no verified example for that operation and kind").
-dispatch_message(lesson_enactment_run, no_result, "lesson_enactment_run found no declared enactment for that lesson; call lesson_enactment_list to inspect enacted lessons and named refusals").
+    "input_contract found no matching verified example for that operation and kind").
+dispatch_message(lesson_enactment_run, no_result, "lesson_enactment_run found no matching declared enactment for that lesson; call lesson_enactment_list to inspect enacted lessons and named refusals").
 dispatch_message(lesson_enactment_run, malformed, "lesson_enactment_run requires lesson").
 dispatch_message(grounding_for, malformed, "grounding_for requires operation").
-dispatch_message(ground, malformed, "ground requires query").
+dispatch_message(ground, malformed, "knowledge lookup requires query").
 dispatch_message(lit_search, malformed, "lit_search requires query").
 dispatch_message(pml_score, malformed, "pml_score requires clauses (a list of strings)").
 dispatch_message(carving_strategy_proof, malformed, "carving_strategy_proof requires operation, x, y, and z").
-dispatch_message(carving_strategy_proof, no_result, "carving_strategy_proof found no productive proof for that fact").
-dispatch_message(carving_operation_summary, no_result, "carving_operation_summary found no bounded experiment for that operation").
-dispatch_message(benny_demo, no_result, "benny_demo produced no comparison data").
+dispatch_message(carving_strategy_proof, no_result, "carving_strategy_proof found no matching productive proof result for that fact").
+dispatch_message(carving_operation_summary, no_result, "carving_operation_summary found no matching bounded experiment for that operation").
+dispatch_message(benny_demo, no_result, "benny_demo found no matching comparison data").
 
-dispatch_message(axiom_pack_witness, no_witness, "axiom_pack_witness found no enabled-pack recorded example").
+dispatch_message(axiom_pack_witness, no_witness, "axiom_pack_witness found no matching enabled-pack recorded example").
 dispatch_message(axiom_pack_witness, malformed, "axiom_pack_witness requires pack and source").
-dispatch_message(viability_witness, no_witness, "viability_witness found no sufficient resource recorded example").
+dispatch_message(viability_witness, no_witness, "viability_witness found no matching sufficient resource recorded example").
 dispatch_message(viability_witness, malformed, "viability_witness requires resources, cost, and source").
-dispatch_message(modal_context_witness, no_witness, "modal_context_witness found no modal-context recorded example").
+dispatch_message(modal_context_witness, no_witness, "modal_context_witness found no matching modal-context recorded example").
 dispatch_message(modal_context_witness, malformed, "modal_context_witness requires term, context, and source").
-dispatch_message(grounded_arith_witness, no_witness, "grounded_arith_witness found no owner-verified grounded arithmetic operation").
+dispatch_message(grounded_arith_witness, no_witness, "grounded_arith_witness found no matching owner-verified grounded arithmetic operation").
 dispatch_message(grounded_arith_witness, malformed, "grounded_arith_witness requires operation, inputs, output, and source").
-dispatch_message(material_inference_witness, no_witness, "material_inference_witness found no material-inference recorded example").
+dispatch_message(material_inference_witness, no_witness, "material_inference_witness found no matching material-inference recorded example").
 dispatch_message(material_inference_witness, malformed, "material_inference_witness requires inference_id, premises, conclusion, and source").
-dispatch_message(normative_crisis_witness, no_witness, "normative_crisis_witness found no normative-crisis recorded example").
+dispatch_message(normative_crisis_witness, no_witness, "normative_crisis_witness found no matching normative-crisis recorded example").
 dispatch_message(normative_crisis_witness, malformed, "normative_crisis_witness requires context, goal, and source").
-dispatch_message(metaphor_break_witness, no_witness, "metaphor_break_witness found no metaphor-break recorded example").
+dispatch_message(metaphor_break_witness, no_witness, "metaphor_break_witness found no matching metaphor-break recorded example").
 dispatch_message(metaphor_break_witness, malformed, "metaphor_break_witness requires metaphor, inference, detail, and source").
-dispatch_message(grounding_metaphor_witness, no_witness, "grounding_metaphor_witness found no grounding-metaphor recorded example").
+dispatch_message(grounding_metaphor_witness, no_witness, "grounding_metaphor_witness found no matching grounding-metaphor recorded example").
 dispatch_message(grounding_metaphor_witness, malformed, "grounding_metaphor_witness requires metaphor, anchor, and source").
-dispatch_message(unit_coordination_witness, no_witness, "unit_coordination_witness found no unit-coordination recorded example").
+dispatch_message(unit_coordination_witness, no_witness, "unit_coordination_witness found no matching unit-coordination recorded example").
 dispatch_message(unit_coordination_witness, malformed, "unit_coordination_witness requires key, detail, and source").
-dispatch_message(godel_primes_witness, no_witness, "godel_primes_witness found no prime-utility recorded example").
+dispatch_message(godel_primes_witness, no_witness, "godel_primes_witness found no matching prime-utility recorded example").
 dispatch_message(godel_primes_witness, malformed, "godel_primes_witness requires query and source").
-dispatch_message(fsm_engine_witness, no_witness, "fsm_engine_witness found no loaded FSM executor registry recorded example").
+dispatch_message(fsm_engine_witness, no_witness, "fsm_engine_witness found no matching loaded FSM executor registry recorded example").
 dispatch_message(fsm_engine_witness, malformed, "fsm_engine_witness requires descriptor and source").
-dispatch_message(action_cluster_witness, no_witness, "action_cluster_witness found no action-cluster recorded example").
+dispatch_message(action_cluster_witness, no_witness, "action_cluster_witness found no matching action-cluster recorded example").
 dispatch_message(action_cluster_witness, malformed, "action_cluster_witness requires operation, kind, cluster, and source").
-dispatch_message(practice_vocabulary_witness, no_witness, "practice_vocabulary_witness found no practice-vocabulary recorded example").
+dispatch_message(practice_vocabulary_witness, no_witness, "practice_vocabulary_witness found no matching practice-vocabulary recorded example").
 dispatch_message(practice_vocabulary_witness, malformed, "practice_vocabulary_witness requires key and source").
-dispatch_message(accommodation_witness, no_witness, "accommodation_witness found no accommodation registry recorded example").
+dispatch_message(accommodation_witness, no_witness, "accommodation_witness found no matching accommodation registry recorded example").
 dispatch_message(accommodation_witness, malformed, "accommodation_witness requires target and source").
-dispatch_message(domain_context_witness, no_witness, "domain_context_witness found no domain-context recorded example").
+dispatch_message(domain_context_witness, no_witness, "domain_context_witness found no matching domain-context recorded example").
 dispatch_message(domain_context_witness, malformed, "domain_context_witness requires domain, context, and source").
-dispatch_message(orr_entry_witness, no_witness, "orr_entry_witness found no Observe-React-Reorganize entry registry recorded example").
+dispatch_message(orr_entry_witness, no_witness, "orr_entry_witness found no matching Observe-React-Reorganize entry registry recorded example").
 dispatch_message(orr_entry_witness, malformed, "orr_entry_witness requires variant and source").
-dispatch_message(executable_practice_witness, no_witness, "executable_practice_witness found no executable-practice registry recorded example").
+dispatch_message(executable_practice_witness, no_witness, "executable_practice_witness found no matching executable-practice registry recorded example").
 dispatch_message(executable_practice_witness, malformed, "executable_practice_witness requires variant and source").
-dispatch_message(misconception_hook_witness, no_witness, "misconception_hook_witness found no misconception-hook recorded example").
+dispatch_message(misconception_hook_witness, no_witness, "misconception_hook_witness found no matching misconception-hook recorded example").
 dispatch_message(misconception_hook_witness, malformed, "misconception_hook_witness requires operation, outcome, family, and source").
 dispatch_message(algebra_claim_witness, no_witness, "algebra_claim_witness: no recorded crosswalk record connects the requested algebra claim and source").
 dispatch_message(integer_signed_claim_witness, no_witness, "integer_signed_claim_witness: no recorded crosswalk record connects the requested signed-integer claim and source").
@@ -865,144 +865,144 @@ dispatch_message(place_value_number_claim_witness, malformed, "place_value_numbe
 dispatch_message(whole_number_claim_witness, malformed, "whole_number_claim_witness requires canonical and source").
 dispatch_message(fraction_extra_claim_witness, malformed, "fraction_extra_claim_witness requires canonical and source").
 dispatch_message(fraction_claim_witness, malformed, "fraction_claim_witness requires canonical and source").
-dispatch_message(productive_deformation_witness, no_witness, "productive_deformation_witness found no recorded productive and wrong-answer pair").
+dispatch_message(productive_deformation_witness, no_witness, "productive_deformation_witness found no matching recorded productive and wrong-answer pair").
 dispatch_message(productive_deformation_witness, malformed, "productive_deformation_witness requires operation, productive, deformation, family, and source").
-dispatch_message(mua_coherence_witness, no_witness, "mua_coherence_witness found no coherence scoring recorded example").
+dispatch_message(mua_coherence_witness, no_witness, "mua_coherence_witness found no matching coherence scoring recorded example").
 dispatch_message(mua_coherence_witness, malformed, "mua_coherence_witness requires subject, input, and source").
-dispatch_message(geometry_entailment_witness, no_witness, "geometry_entailment_witness found no entailment recorded example").
+dispatch_message(geometry_entailment_witness, no_witness, "geometry_entailment_witness found no matching entailment recorded example").
 dispatch_message(geometry_entailment_witness, malformed, "geometry_entailment_witness requires entailer and entailed").
-dispatch_message(geometry_material_profile_witness, no_witness, "geometry_material_profile_witness found no profile recorded example for concept").
+dispatch_message(geometry_material_profile_witness, no_witness, "geometry_material_profile_witness found no matching profile recorded example for concept").
 dispatch_message(geometry_material_profile_witness, malformed, "geometry_material_profile_witness requires concept").
-dispatch_message(geometry_quadrilateral_entailment_witness, no_witness, "geometry_quadrilateral_entailment_witness found no entailment recorded example").
+dispatch_message(geometry_quadrilateral_entailment_witness, no_witness, "geometry_quadrilateral_entailment_witness found no matching entailment recorded example").
 dispatch_message(geometry_quadrilateral_entailment_witness, malformed, "geometry_quadrilateral_entailment_witness requires entailer and entailed").
-dispatch_message(geometry_strength_lift_coverage_witness, no_witness, "geometry_strength_lift_coverage_witness found no coverage recorded example").
-dispatch_message(geometry_van_hiele_material_witness, no_witness, "geometry_van_hiele_material_witness found no material recorded example for claim_id").
+dispatch_message(geometry_strength_lift_coverage_witness, no_witness, "geometry_strength_lift_coverage_witness found no matching coverage recorded example").
+dispatch_message(geometry_van_hiele_material_witness, no_witness, "geometry_van_hiele_material_witness found no matching material recorded example for claim_id").
 dispatch_message(geometry_van_hiele_material_witness, malformed, "geometry_van_hiele_material_witness requires claim_id").
-dispatch_message(geometry_van_hiele_marker_witness, no_witness, "geometry_van_hiele_marker_witness found no marker recorded example").
+dispatch_message(geometry_van_hiele_marker_witness, no_witness, "geometry_van_hiele_marker_witness found no matching marker recorded example").
 dispatch_message(geometry_van_hiele_marker_witness, malformed, "geometry_van_hiele_marker_witness requires concept and level").
-dispatch_message(geometry_cross_link_witness, no_witness, "geometry_cross_link_witness found no cross-link recorded example").
+dispatch_message(geometry_cross_link_witness, no_witness, "geometry_cross_link_witness found no matching cross-link recorded example").
 dispatch_message(geometry_cross_link_witness, malformed, "geometry_cross_link_witness requires source, relation, and target").
-dispatch_message(geometry_developmental_arc_witness, no_witness, "geometry_developmental_arc_witness found no arc recorded example").
+dispatch_message(geometry_developmental_arc_witness, no_witness, "geometry_developmental_arc_witness found no matching arc recorded example").
 dispatch_message(geometry_developmental_arc_witness, malformed, "geometry_developmental_arc_witness requires arc_id").
-dispatch_message(geometry_attribute_material_witness, no_witness, "geometry_attribute_material_witness found no material recorded example").
+dispatch_message(geometry_attribute_material_witness, no_witness, "geometry_attribute_material_witness found no matching material recorded example").
 dispatch_message(geometry_attribute_material_witness, malformed, "geometry_attribute_material_witness requires claim_id").
-dispatch_message(geometry_similarity_material_witness, no_witness, "geometry_similarity_material_witness found no material recorded example").
+dispatch_message(geometry_similarity_material_witness, no_witness, "geometry_similarity_material_witness found no matching material recorded example").
 dispatch_message(geometry_similarity_material_witness, malformed, "geometry_similarity_material_witness requires claim_id").
-dispatch_message(geometry_pythagorean_material_witness, no_witness, "geometry_pythagorean_material_witness found no material recorded example").
+dispatch_message(geometry_pythagorean_material_witness, no_witness, "geometry_pythagorean_material_witness found no matching material recorded example").
 dispatch_message(geometry_pythagorean_material_witness, malformed, "geometry_pythagorean_material_witness requires claim_id").
-dispatch_message(geometry_van_hiele_level_material_witness, no_witness, "geometry_van_hiele_level_material_witness found no material recorded example").
+dispatch_message(geometry_van_hiele_level_material_witness, no_witness, "geometry_van_hiele_level_material_witness found no matching material recorded example").
 dispatch_message(geometry_van_hiele_level_material_witness, malformed, "geometry_van_hiele_level_material_witness requires claim_id").
-dispatch_message(geometry_measurement_misconception_witness, no_witness, "geometry_measurement_misconception_witness found no misconception recorded example").
+dispatch_message(geometry_measurement_misconception_witness, no_witness, "geometry_measurement_misconception_witness found no matching misconception recorded example").
 dispatch_message(geometry_measurement_misconception_witness, malformed, "geometry_measurement_misconception_witness requires id_value").
-dispatch_message(geometry_n103_bootstrap_witness, no_witness, "geometry_n103_bootstrap_witness found no bootstrap recorded example").
+dispatch_message(geometry_n103_bootstrap_witness, no_witness, "geometry_n103_bootstrap_witness found no matching bootstrap recorded example").
 dispatch_message(geometry_n103_bootstrap_witness, malformed, "geometry_n103_bootstrap_witness requires bootstrap_id").
-dispatch_message(geometry_van_de_walle_bootstrap_witness, no_witness, "geometry_van_de_walle_bootstrap_witness found no bootstrap recorded example").
+dispatch_message(geometry_van_de_walle_bootstrap_witness, no_witness, "geometry_van_de_walle_bootstrap_witness found no matching bootstrap recorded example").
 dispatch_message(geometry_van_de_walle_bootstrap_witness, malformed, "geometry_van_de_walle_bootstrap_witness requires bootstrap_id").
-dispatch_message(geometry_shape_recognition_material_witness, no_witness, "geometry_shape_recognition_material_witness found no material recorded example").
+dispatch_message(geometry_shape_recognition_material_witness, no_witness, "geometry_shape_recognition_material_witness found no matching material recorded example").
 dispatch_message(geometry_shape_recognition_material_witness, malformed, "geometry_shape_recognition_material_witness requires claim_id").
-dispatch_message(geometry_coordinate_material_witness, no_witness, "geometry_coordinate_material_witness found no material recorded example").
+dispatch_message(geometry_coordinate_material_witness, no_witness, "geometry_coordinate_material_witness found no matching material recorded example").
 dispatch_message(geometry_coordinate_material_witness, malformed, "geometry_coordinate_material_witness requires claim_id").
-dispatch_message(geometry_angle_material_witness, no_witness, "geometry_angle_material_witness found no material recorded example").
+dispatch_message(geometry_angle_material_witness, no_witness, "geometry_angle_material_witness found no matching material recorded example").
 dispatch_message(geometry_angle_material_witness, malformed, "geometry_angle_material_witness requires claim_id").
-dispatch_message(geometry_area_perimeter_material_witness, no_witness, "geometry_area_perimeter_material_witness found no material recorded example").
+dispatch_message(geometry_area_perimeter_material_witness, no_witness, "geometry_area_perimeter_material_witness found no matching material recorded example").
 dispatch_message(geometry_area_perimeter_material_witness, malformed, "geometry_area_perimeter_material_witness requires claim_id").
-dispatch_message(geometry_volume_surface_area_material_witness, no_witness, "geometry_volume_surface_area_material_witness found no material recorded example").
+dispatch_message(geometry_volume_surface_area_material_witness, no_witness, "geometry_volume_surface_area_material_witness found no matching material recorded example").
 dispatch_message(geometry_volume_surface_area_material_witness, malformed, "geometry_volume_surface_area_material_witness requires claim_id").
-dispatch_message(geometry_transformation_material_witness, no_witness, "geometry_transformation_material_witness found no material recorded example").
+dispatch_message(geometry_transformation_material_witness, no_witness, "geometry_transformation_material_witness found no matching material recorded example").
 dispatch_message(geometry_transformation_material_witness, malformed, "geometry_transformation_material_witness requires claim_id").
-dispatch_message(geometry_classification_material_witness, no_witness, "geometry_classification_material_witness found no material recorded example").
+dispatch_message(geometry_classification_material_witness, no_witness, "geometry_classification_material_witness found no matching material recorded example").
 dispatch_message(geometry_classification_material_witness, malformed, "geometry_classification_material_witness requires claim_id").
-dispatch_message(geometry_pck_classification_witness, no_witness, "geometry_pck_classification_witness found no synthesis recorded example").
+dispatch_message(geometry_pck_classification_witness, no_witness, "geometry_pck_classification_witness found no matching synthesis recorded example").
 dispatch_message(geometry_pck_classification_witness, malformed, "geometry_pck_classification_witness requires concept").
-dispatch_message(geometry_measuring_stick_metaphor_witness, no_witness, "geometry_measuring_stick_metaphor_witness found no metaphor recorded example").
+dispatch_message(geometry_measuring_stick_metaphor_witness, no_witness, "geometry_measuring_stick_metaphor_witness found no matching metaphor recorded example").
 dispatch_message(geometry_measuring_stick_metaphor_witness, malformed, "geometry_measuring_stick_metaphor_witness requires concept and metaphor").
-dispatch_message(geometry_lakoff_nunez_metaphor_witness, no_witness, "geometry_lakoff_nunez_metaphor_witness found no metaphor recorded example").
+dispatch_message(geometry_lakoff_nunez_metaphor_witness, no_witness, "geometry_lakoff_nunez_metaphor_witness found no matching metaphor recorded example").
 dispatch_message(geometry_lakoff_nunez_metaphor_witness, malformed, "geometry_lakoff_nunez_metaphor_witness requires concept and metaphor").
-dispatch_message(geometry_synthesizer_anchor_material_witness, no_witness, "geometry_synthesizer_anchor_material_witness found no material recorded example").
+dispatch_message(geometry_synthesizer_anchor_material_witness, no_witness, "geometry_synthesizer_anchor_material_witness found no matching material recorded example").
 dispatch_message(geometry_synthesizer_anchor_material_witness, malformed, "geometry_synthesizer_anchor_material_witness requires claim_id").
-dispatch_message(geometry_synthesizer_triangulation_witness, no_witness, "geometry_synthesizer_triangulation_witness found no concept recorded example").
+dispatch_message(geometry_synthesizer_triangulation_witness, no_witness, "geometry_synthesizer_triangulation_witness found no matching concept recorded example").
 dispatch_message(geometry_synthesizer_triangulation_witness, malformed, "geometry_synthesizer_triangulation_witness requires concept").
-dispatch_message(geometry_ccss_standard_witness, no_witness, "geometry_ccss_standard_witness found no standard recorded example").
+dispatch_message(geometry_ccss_standard_witness, no_witness, "geometry_ccss_standard_witness found no matching standard recorded example").
 dispatch_message(geometry_ccss_standard_witness, malformed, "geometry_ccss_standard_witness requires concept and code").
-dispatch_message(geometry_indiana_standard_witness, no_witness, "geometry_indiana_standard_witness found no standard recorded example").
+dispatch_message(geometry_indiana_standard_witness, no_witness, "geometry_indiana_standard_witness found no matching standard recorded example").
 dispatch_message(geometry_indiana_standard_witness, malformed, "geometry_indiana_standard_witness requires concept and code").
-dispatch_message(geometry_im_grade8_lesson_standard_witness, no_witness, "geometry_im_grade8_lesson_standard_witness found no lesson recorded example").
+dispatch_message(geometry_im_grade8_lesson_standard_witness, no_witness, "geometry_im_grade8_lesson_standard_witness found no matching lesson recorded example").
 dispatch_message(geometry_im_grade8_lesson_standard_witness, malformed, "geometry_im_grade8_lesson_standard_witness requires concept and code").
-dispatch_message(geometry_im_grade7_lesson_standard_witness, no_witness, "geometry_im_grade7_lesson_standard_witness found no lesson recorded example").
+dispatch_message(geometry_im_grade7_lesson_standard_witness, no_witness, "geometry_im_grade7_lesson_standard_witness found no matching lesson recorded example").
 dispatch_message(geometry_im_grade7_lesson_standard_witness, malformed, "geometry_im_grade7_lesson_standard_witness requires concept and code").
-dispatch_message(geometry_im_grade6_lesson_standard_witness, no_witness, "geometry_im_grade6_lesson_standard_witness found no lesson recorded example").
+dispatch_message(geometry_im_grade6_lesson_standard_witness, no_witness, "geometry_im_grade6_lesson_standard_witness found no matching lesson recorded example").
 dispatch_message(geometry_im_grade6_lesson_standard_witness, malformed, "geometry_im_grade6_lesson_standard_witness requires concept and code").
-dispatch_message(geometry_im_grade5_standard_anchor_witness, no_witness, "geometry_im_grade5_standard_anchor_witness found no standard recorded example").
+dispatch_message(geometry_im_grade5_standard_anchor_witness, no_witness, "geometry_im_grade5_standard_anchor_witness found no matching standard recorded example").
 dispatch_message(geometry_im_grade5_standard_anchor_witness, malformed, "geometry_im_grade5_standard_anchor_witness requires concept, framework, and code").
-dispatch_message(standard_k_ns_1_count_by_ones_witness, no_witness, "standard_k_ns_1_count_by_ones_witness found no finite counting trace").
+dispatch_message(standard_k_ns_1_count_by_ones_witness, no_witness, "standard_k_ns_1_count_by_ones_witness found no matching finite counting trace").
 dispatch_message(standard_k_ns_2_represent_count_witness, no_witness, "standard_k_ns_2_represent_count_witness requires object_count between 0 and 20").
-dispatch_message(standard_1_ns_1_count_by_fives_witness, no_witness, "standard_1_ns_1_count_by_fives_witness found no finite count-by-fives trace").
-dispatch_message(standard_2_ns_1_count_by_twos_witness, no_witness, "standard_2_ns_1_count_by_twos_witness found no finite count-by-twos trace").
-dispatch_message(standard_2_ns_2_4_place_value_witness, no_witness, "standard_2_ns_2_4_place_value_witness found no finite three-digit place-value proof").
-dispatch_message(standard_2_ns_5_place_value_comparison_witness, no_witness, "standard_2_ns_5_place_value_comparison_witness found no finite place-value comparison proof").
-dispatch_message(standard_3_ca_5_mult_skip_count_witness, no_witness, "standard_3_ca_5_mult_skip_count_witness found no finite skip-count multiplication result").
-dispatch_message(standard_2_ns_3_parity_witness, no_witness, "standard_2_ns_3_parity_witness found no finite parity proof").
-dispatch_message(standard_k_ns_3_order_independence_witness, no_witness, "standard_k_ns_3_order_independence_witness found no finite order-independence proof").
+dispatch_message(standard_1_ns_1_count_by_fives_witness, no_witness, "standard_1_ns_1_count_by_fives_witness found no matching finite count-by-fives trace").
+dispatch_message(standard_2_ns_1_count_by_twos_witness, no_witness, "standard_2_ns_1_count_by_twos_witness found no matching finite count-by-twos trace").
+dispatch_message(standard_2_ns_2_4_place_value_witness, no_witness, "standard_2_ns_2_4_place_value_witness found no matching finite three-digit place-value witness").
+dispatch_message(standard_2_ns_5_place_value_comparison_witness, no_witness, "standard_2_ns_5_place_value_comparison_witness found no matching finite place-value comparison witness").
+dispatch_message(standard_3_ca_5_mult_skip_count_witness, no_witness, "standard_3_ca_5_mult_skip_count_witness found no matching finite skip-count multiplication result").
+dispatch_message(standard_2_ns_3_parity_witness, no_witness, "standard_2_ns_3_parity_witness found no matching finite parity witness").
+dispatch_message(standard_k_ns_3_order_independence_witness, no_witness, "standard_k_ns_3_order_independence_witness found no matching finite order-independence witness").
 dispatch_message(standard_k_ns_3_order_independence_witness, malformed, "standard_k_ns_3_order_independence_witness requires objects").
-dispatch_message(standard_k_ns_4_verify_subitizing_witness, no_witness, "standard_k_ns_4_verify_subitizing_witness found no finite recognition-count agreement proof").
+dispatch_message(standard_k_ns_4_verify_subitizing_witness, no_witness, "standard_k_ns_4_verify_subitizing_witness found no matching finite recognition-count agreement witness").
 dispatch_message(standard_k_ns_4_verify_subitizing_witness, malformed, "standard_k_ns_4_verify_subitizing_witness requires pattern").
-dispatch_message(standard_k_ns_5_6_compare_groups_witness, no_witness, "standard_k_ns_5_6_compare_groups_witness found no finite group-comparison proof").
+dispatch_message(standard_k_ns_5_6_compare_groups_witness, no_witness, "standard_k_ns_5_6_compare_groups_witness found no matching finite group-comparison witness").
 dispatch_message(standard_k_ns_5_6_compare_groups_witness, malformed, "standard_k_ns_5_6_compare_groups_witness requires group_a and group_b").
-dispatch_message(standard_k_ns_7_place_value_witness, no_witness, "standard_k_ns_7_place_value_witness found no finite one-ten-group proof").
-dispatch_message(standard_k_ca_1_3_complement_witness, no_witness, "standard_k_ca_1_3_complement_witness found no finite complement-to-ten proof").
-dispatch_message(standard_1_ns_2_place_value_witness, no_witness, "standard_1_ns_2_place_value_witness found no finite two-digit place-value proof").
-dispatch_message(standard_1_ca_1_making_ten_witness, no_witness, "standard_1_ca_1_making_ten_witness found no finite making-ten proof").
-dispatch_message(standard_1_ca_3_add_by_place_value_witness, no_witness, "standard_1_ca_3_add_by_place_value_witness found no finite place-value addition proof").
-dispatch_message(standard_2_ca_2_add_three_digit_witness, no_witness, "standard_2_ca_2_add_three_digit_witness found no finite three-digit addition proof").
-dispatch_message(standard_3_ca_3_4_fact_family_witness, no_witness, "standard_3_ca_3_4_fact_family_witness found no finite multiplication/division family proof").
-dispatch_message(standard_3_ns_2_unit_fraction_witness, no_witness, "standard_3_ns_2_unit_fraction_witness found no finite unit-fraction proof").
-dispatch_message(standard_3_ns_5_fraction_comparison_witness, no_witness, "standard_3_ns_5_fraction_comparison_witness found no finite comparison proof").
-dispatch_message(multiply_array_witness, no_witness, "multiply_array_witness found no array model for the given rows/cols").
-dispatch_message(mult_div_family_witness, no_witness, "mult_div_family_witness found no fact family for the given a/b").
-dispatch_message(axiom_hierarchy_witness, no_witness, "axiom_hierarchy_witness found no hierarchy proof recorded example for kind").
+dispatch_message(standard_k_ns_7_place_value_witness, no_witness, "standard_k_ns_7_place_value_witness found no matching finite one-ten-group witness").
+dispatch_message(standard_k_ca_1_3_complement_witness, no_witness, "standard_k_ca_1_3_complement_witness found no matching finite complement-to-ten witness").
+dispatch_message(standard_1_ns_2_place_value_witness, no_witness, "standard_1_ns_2_place_value_witness found no matching finite two-digit place-value witness").
+dispatch_message(standard_1_ca_1_making_ten_witness, no_witness, "standard_1_ca_1_making_ten_witness found no matching finite making-ten witness").
+dispatch_message(standard_1_ca_3_add_by_place_value_witness, no_witness, "standard_1_ca_3_add_by_place_value_witness found no matching finite place-value addition witness").
+dispatch_message(standard_2_ca_2_add_three_digit_witness, no_witness, "standard_2_ca_2_add_three_digit_witness found no matching finite three-digit addition witness").
+dispatch_message(standard_3_ca_3_4_fact_family_witness, no_witness, "standard_3_ca_3_4_fact_family_witness found no matching finite multiplication/division fact-family witness").
+dispatch_message(standard_3_ns_2_unit_fraction_witness, no_witness, "standard_3_ns_2_unit_fraction_witness found no matching finite unit-fraction witness").
+dispatch_message(standard_3_ns_5_fraction_comparison_witness, no_witness, "standard_3_ns_5_fraction_comparison_witness found no matching finite comparison witness").
+dispatch_message(multiply_array_witness, no_witness, "multiply_array_witness found no matching array model for the given rows/cols").
+dispatch_message(mult_div_family_witness, no_witness, "mult_div_family_witness found no matching fact family for the given a/b").
+dispatch_message(axiom_hierarchy_witness, no_witness, "axiom_hierarchy_witness found no matching hierarchy proof result for kind").
 dispatch_message(axiom_hierarchy_witness, malformed, "axiom_hierarchy_witness requires kind").
-dispatch_message(critique_bad_infinite, no_witness, "critique_bad_infinite found no bad-infinite recorded example for proof").
+dispatch_message(critique_bad_infinite, no_witness, "critique_bad_infinite found no matching bad-infinite recorded example for proof").
 dispatch_message(critique_bad_infinite, malformed, "critique_bad_infinite requires proof").
 dispatch_message(defeasible_classify, malformed, "defeasible_classify requires inference_id and defeater_set list").
-dispatch_message(embodied_proof_witness, no_witness, "embodied_proof_witness found no proof recorded example").
+dispatch_message(embodied_proof_witness, no_witness, "embodied_proof_witness found no matching proof result").
 dispatch_message(embodied_proof_witness, malformed, "embodied_proof_witness requires sequent and resources").
-dispatch_message(rhythm_transition_witness, no_witness, "rhythm_transition_witness found no transition recorded example for from/to").
+dispatch_message(rhythm_transition_witness, no_witness, "rhythm_transition_witness found no matching transition recorded example for from/to").
 dispatch_message(rhythm_transition_witness, malformed, "rhythm_transition_witness requires from and to").
-dispatch_message(incoherent_witness, no_witness, "incoherent_witness found no recorded example for context").
+dispatch_message(incoherent_witness, no_witness, "incoherent_witness found no matching recorded example for context").
 dispatch_message(incoherent_witness, malformed, "incoherent_witness requires context").
 dispatch_message(incompatibility_discovery_witness, malformed, "incompatibility_discovery_witness requires context and set").
-dispatch_message(incompatibility_entailment_witness, no_witness, "incompatibility_entailment_witness found no entailment recorded example").
+dispatch_message(incompatibility_entailment_witness, no_witness, "incompatibility_entailment_witness found no matching entailment recorded example").
 dispatch_message(incompatibility_entailment_witness, malformed, "incompatibility_entailment_witness requires replacement and replaced").
-dispatch_message(number_theory_self_defeat_witness, no_witness, "number_theory_self_defeat_witness found no Euclid recorded example for list").
+dispatch_message(number_theory_self_defeat_witness, no_witness, "number_theory_self_defeat_witness found no matching Euclid recorded example for list").
 dispatch_message(number_theory_self_defeat_witness, malformed, "number_theory_self_defeat_witness requires list").
-dispatch_message(robinson_axiom_witness, no_witness, "robinson_axiom_witness found no recorded example for axiom/claim").
+dispatch_message(robinson_axiom_witness, no_witness, "robinson_axiom_witness found no matching recorded example for axiom/claim").
 dispatch_message(robinson_axiom_witness, malformed, "robinson_axiom_witness requires axiom and claim").
-dispatch_message(semantic_material_witness, no_witness, "semantic_material_witness found no material recorded example").
+dispatch_message(semantic_material_witness, no_witness, "semantic_material_witness found no matching material recorded example").
 dispatch_message(semantic_material_witness, malformed, "semantic_material_witness requires from and to").
-dispatch_message(intersubjective_material_witness, no_witness, "intersubjective_material_witness found no material recorded example").
+dispatch_message(intersubjective_material_witness, no_witness, "intersubjective_material_witness found no matching material recorded example").
 dispatch_message(intersubjective_material_witness, malformed, "intersubjective_material_witness requires from and to").
-dispatch_message(mua_kind_coherence_witness, no_witness, "mua_kind_coherence_witness found no scoring recorded example").
+dispatch_message(mua_kind_coherence_witness, no_witness, "mua_kind_coherence_witness found no matching scoring recorded example").
 dispatch_message(mua_kind_coherence_witness, malformed, "mua_kind_coherence_witness requires kind and row_text").
 dispatch_message(validate_reader_axioms, malformed, "validate_reader_axioms requires lesson_code and clauses (a list of strings)").
 dispatch_message(commitment_match, malformed, "commitment_match requires non-empty content").
 dispatch_message(check_math_claim, malformed, "check_math_claim requires a safely parsed typed claim term using a registered claim shape").
 dispatch_message(check_solution_steps, malformed, "check_solution_steps requires non-empty numbered solution text").
 dispatch_message(pedagogical_questions, malformed, "pedagogical_questions requires a non-empty query and accepts kind topic, automaton_state, or standard").
-dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary produced no summary").
-dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no grounding recorded example").
+dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary found no matching summary").
+dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no matching metaphor-grounding result").
 dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").
 dispatch_message(image_schema, malformed, "image_schema requires practice (a practice atom string)").
 dispatch_message(primitive_for_practice, malformed, "primitive_for_practice requires practice (a practice atom string)").
-dispatch_message(representation_spine_witness, no_witness, "representation_spine_witness found no renders_on route or asset for that concept").
-dispatch_message(target_inferential_strength_witness, no_witness, "target_inferential_strength_witness found no recorded example for target").
+dispatch_message(representation_spine_witness, no_witness, "representation_spine_witness found no matching renders_on route or asset for that concept").
+dispatch_message(target_inferential_strength_witness, no_witness, "target_inferential_strength_witness found no matching recorded example for target").
 dispatch_message(target_inferential_strength_witness, malformed, "target_inferential_strength_witness requires target").
-dispatch_message(misconception_incompatibility_witness, no_witness, "misconception_incompatibility_witness found no registry recorded example").
+dispatch_message(misconception_incompatibility_witness, no_witness, "misconception_incompatibility_witness found no matching registry recorded example").
 dispatch_message(misconception_incompatibility_witness, malformed, "misconception_incompatibility_witness requires move and conflict").
-dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no lesson recorded example").
+dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no matching lesson recorded example").
 dispatch_message(lesson_misconception_incompatibility_witness, malformed, "lesson_misconception_incompatibility_witness requires lesson_code and name").
-dispatch_message(review_queue, no_result, "review_queue found no valid proposal queue for the requested source").
+dispatch_message(review_queue, no_result, "review_queue found no matching valid proposal queue for the requested source").
 dispatch_message(review_queue, malformed, "review_queue requires source unit_recognition_set or signature_anchor and a non-negative offset").
-dispatch_message(review_decide, no_result, "review_decide could not record a first verdict for that queue item").
+dispatch_message(review_decide, no_result, "review_decide found no matching first verdict for that queue item").
 dispatch_message(review_decide, malformed, "review_decide requires source, item_id, a verdict valid for that review mode, shown item text, and an optional note").
 
 input_contract_dict(Operation, Kind, _{

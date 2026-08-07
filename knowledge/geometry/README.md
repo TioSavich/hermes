@@ -34,4 +34,4 @@ modules live in `curriculum/im_teacher_guides/` and
 the `cw_grounding_metaphor` group in `knowledge/crosswalk/families/cw_edges.pl`, and the app's geometry route read
 the KB. Witnesses build through `witness_dict:witness_dict/4`. van Hiele markers
 cover levels 0 through 4; some declared tables hold no rows in this snapshot; a
-witness proves membership in the loaded table, not general standards alignment.
+witness records membership in the loaded table, not general standards alignment.

@@ -8,7 +8,7 @@ copying it.
 ## The dispatch table
 
 `dispatch_spec.pl` is an authored specification, not code paths. It carries 139
-`dispatch_spec/4` rows (each names an operation, its typed inputs, the call to
+`dispatch_spec/4` rows (each names a capability request, its typed inputs, the call to
 run, and the empty-result witness) and 216 `dispatch_message/3` rows (the
 malformed-input and no-result messages). One generic dispatcher, `dispatch_request/4`
 in `hermes_worker.pl`, reads the spec and runs the call. `validate_dispatch_spec/0`
@@ -28,6 +28,6 @@ than surfacing as a permanent malformed reply.
 
 ## Boundary
 
-The spec table handles the mechanical and witness operations; the 26 render
-operations and 29 irregular operations stay bespoke in the worker by design, and
-spec-backed operations commit before that catch-all.
+The spec table handles the mechanical and witness capability requests; the 26
+scene-compilation requests and 29 irregular requests stay bespoke in the worker
+by design, and spec-backed requests commit before that catch-all.

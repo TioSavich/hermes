@@ -12,7 +12,7 @@ possible reorganization, not the reorganization.
 
 - `addition_action_signatures.pl` — types the 59 addition-family action
   atoms (operational step / invariant ledger / verdict), folds the 18
-  transition tables into 6 machines with genuine branch points, and
+  transition tables into 6 automata with genuine branch points, and
   checks agreement between two validity encodings authored from the
   same reading. Check: `check_pilot/0`.
 - `kernel_gate_pilot.pl` — runs three cross-domain kernels

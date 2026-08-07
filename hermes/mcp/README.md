@@ -6,7 +6,7 @@ Run the standard-library-only stdio server from the repository root:
 python3 hermes/mcp/server.py --mode core
 ```
 
-`core` is the default. It offers a small tool surface for bounded Prolog queries, monitoring and deformation charts, fraction-equivalence checks, deontic scorekeeping, commitment matching, strategy traces, misconception lookup, and stored-vector resonance neighbors. `registry` exposes every current capability-registry operation. Its schemas preserve the registry's actual limit: it records parameter names, but not types or required/default status, so parameters are described as strings when their type is unknown.
+`core` is the default. It offers a small tool surface for bounded Prolog queries, monitoring and deformation charts, fraction-equivalence checks, deontic scorekeeping, commitment matching, strategy traces, misconception lookup, and stored-vector resonance neighbors. `registry` exposes every current capability request in the registry. Its schemas preserve the registry's actual limit: it records parameter names, but not types or required/default status, so parameters are described as strings when their type is unknown.
 
 Call `prolog_query` without `goal` to get its generated predicate listing. Narrow the listing with a predicate-name substring, a knowledge-relative file substring, or an exact arity. Then call it with one module-qualified goal from that listing. The complete goal call graph must pass SWI-Prolog's sandbox; accepted calls return no more than 100 solutions and run for no more than two seconds.
 

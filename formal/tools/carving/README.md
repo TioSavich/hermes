@@ -4,7 +4,7 @@ Carving takes a bounded table of arithmetic facts and derives each one into
 symbolic proofs built from primitive actions. Every distinct proof body is a
 named strategy; facts that resist derivation are the structural residue. The read
 is Brandomian: the proof head is a commitment, its body the entitlement. The
-machines are base-parametric (checked at base 10 and base 5).
+machines are inscription-base-parametric (checked at inscription bases 10 and 5).
 
 ## What it holds
 

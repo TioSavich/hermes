@@ -26,7 +26,7 @@ provenance fact. The framework atoms are `ccss`, `in_indiana`, and `im_lesson`.
 `base_ten` and `area_model` render scenes load the standard modules. CCSS and
 Indiana cite the official published text as authority and the Learning Commons
 Knowledge Graph as retrieval source; the IM lesson ids derive from Illustrative
-Mathematics (`NOTICE.md`). A witness proves membership in the loaded, closed
+Mathematics (`NOTICE.md`). A witness records membership in the loaded, closed
 table; it is not a general standards-alignment model for open-ended curricula.
 The IM stub concepts are flagged `developmental`, an honest coarse bucket with no
 canonicalization synthesizer wired.

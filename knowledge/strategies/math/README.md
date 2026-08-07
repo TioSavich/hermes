@@ -5,15 +5,15 @@ operation.
 
 ## The registry
 
-`action_automata_registry.pl` is the bridge. `run_action_automaton/6` runs a
-strategy without the caller knowing whether it came from addition, subtraction,
+`action_automata_registry.pl` is the bridge. `run_action_automaton/6` runs an
+automaton without the caller knowing whether it came from addition, subtraction,
 multiplication, division, fractions, decimals, integers, or another domain. It
 loads the per-operation action-pair modules: `sar_add_*`/`sar_sub_*` (addition
 and subtraction reasoning), `smr_mult_*`/`smr_div_*` (multiplicative reasoning),
 and the `fraction_*`, `decimal_*`, `integer_*`, `ratio_*`, `measurement_*`,
 `probability_*`, `statistics_*`, `algebraic_*`, and `calculus_limits_*` families.
-Each strategy is an automaton of named states and action pairs; `cgi_base.pl`
-sets the working base.
+Each registered kind selects an automaton of named states and action pairs;
+`cgi_base.pl` sets the working inscription base.
 
 ## Comparison automata and their labels
 
@@ -32,5 +32,5 @@ not imported into the automata.
 
 ## Boundary
 
-Automata run on representative operands within a bounded base. The labels record
+Automata run on representative operands within a bounded inscription base. The labels record
 which tradition names a state; they do not adjudicate which naming is correct.

@@ -20,13 +20,13 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "gallery": {"theme": "Objects", "lede": "Browse coded representation samples from the local asset manifest.", "path": "/more-zeeman/gallery.html", "theory": "/more-zeeman/landing.html"},
     "landing": {"theme": "Recollection", "lede": "Choose a door into Hermes or follow the theory journey from its shared entry.", "path": "/more-zeeman/landing.html", "theory": "/more-zeeman/landing.html"},
     "no": {"theme": "Incompatibility", "lede": "Being wrong has structure: a rule, its domain, and the collision beyond that domain.", "path": "/hermes/app/web/no.html", "theory": "/hermes/app/web/no.html"},
-    "breaks": {"theme": "Incompatibility", "lede": "Run where a grounding metaphor or incompatibility relation reaches its boundary.", "path": "/hermes/app/web/breaks.html", "theory": "/hermes/app/web/no.html"},
+    "breaks": {"theme": "Incompatibility", "lede": "Run where metaphor grounding or an incompatibility relation reaches its boundary.", "path": "/hermes/app/web/breaks.html", "theory": "/hermes/app/web/no.html"},
     "incompatibility-entailment": {"theme": "Incompatibility", "lede": "Inspect the finite register of declared incompatibility hyperedges and its earned entailment relation.", "path": "/more-zeeman/incompatibility-entailment.html", "theory": "/hermes/app/web/no.html"},
     "snap": {"theme": "The feeling body", "lede": "Drag the disc until accumulated tension produces a snap into another strategy.", "path": "/more-zeeman/index.html", "theory": "/more-zeeman/index.html"},
     "counting": {"theme": "Objects", "lede": "Counting by ones is correct and, past a point, unaffordable; follow the cost tally by tally.", "path": "/more-zeeman/counting.html", "theory": "/more-zeeman/counting.html"},
     "crisis": {"theme": "The feeling body", "lede": "Work 38 + 55 by counting and mark the point where that method stops paying.", "path": "/more-zeeman/crisis.html", "theory": "/more-zeeman/crisis.html"},
     "strategies": {"theme": "Objects", "lede": "Run counting-on, COBO, and RMB as successively shorter strategic actions.", "path": "/more-zeeman/strategies.html", "theory": "/more-zeeman/strategies.html"},
-    "fractal": {"theme": "Objects", "lede": "Run the nested strategy machines and change the conditions that propagate a snap.", "path": "/more-zeeman/fractal.html", "theory": "/more-zeeman/fractal.html"},
+    "fractal": {"theme": "Objects", "lede": "Run the nested automata and change the conditions that propagate a snap.", "path": "/more-zeeman/fractal.html", "theory": "/more-zeeman/fractal.html"},
     "playground": {"theme": "The feeling body", "lede": "Drag one node and test when enough local snaps produce a new strategy ring.", "path": "/more-zeeman/playground.html", "theory": "/more-zeeman/fractal.html"},
     "boundary": {"theme": "Objects", "lede": "Test what the action model handles at the boundary between counting and fractions.", "path": "/more-zeeman/boundary.html", "theory": "/more-zeeman/boundary.html"},
     "matrix": {"theme": "The feeling body", "lede": "Follow each snap as it grows the memory grid and reorganizes repeated tallies.", "path": "/more-zeeman/matrix.html", "theory": "/more-zeeman/matrix.html"},
@@ -153,7 +153,7 @@ def _fit_utf8(text: str, limit: int) -> str:
     data = text.encode("utf-8")
     if len(data) <= limit:
         return text
-    suffix = "\n[Context trimmed to the 6 KB grounding limit.]"
+    suffix = "\n[Context trimmed to the 6 KB help context limit.]"
     room = limit - len(suffix.encode("utf-8"))
     clipped = data[:room].decode("utf-8", errors="ignore").rsplit("\n", 1)[0]
     return clipped + suffix

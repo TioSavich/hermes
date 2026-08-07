@@ -246,10 +246,10 @@ handle_request(Request, Response) :-
         ->  Response = R
         ;   % A known op whose handler simply failed (no solution). Report it
             % honestly rather than letting it masquerade as an unknown op.
-            format(string(FailMsg), "Operation '~w' is known but produced no result", [Op]),
+            format(string(FailMsg), "Capability request '~w' is known but found no matching result", [Op]),
             error_response(Id, op_failed, FailMsg, Response)
         )
-    ;   error_response(Id, missing_op, "request has no op", Response)
+    ;   error_response(Id, missing_op, "request requires op", Response)
     ).
 
 %!  dispatch_irregular(?Op) is nondet.
@@ -475,7 +475,7 @@ dispatch_request(pair_candidate_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_pair_candidate_witness,
-                "pair_candidate_witness found no recorded example for event_a/event_b",
+                "pair_candidate_witness found no matching recorded example for event_a/event_b",
                 Response)
         )
     ;   error_response(Id, malformed_pair_candidate_request,
@@ -491,7 +491,7 @@ dispatch_request(deontic_requires_entitlement, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_deontic_entitlement_witness,
-                "deontic_requires_entitlement found no entitlement recorded example for proposition",
+                "deontic_requires_entitlement found no matching entitlement recorded example for proposition",
                 Response)
         )
     ;   error_response(Id, missing_proposition,
@@ -539,7 +539,7 @@ dispatch_request(deontic_scorecard, Id, Request, Response) :-
     ->  json_safe(Card, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, deontic_scorecard_failed,
-            "deontic_scorecard could not compute a commitment tracker for the request",
+            "deontic_scorecard found no matching commitment tracker for the request",
             Response)
     ).
 
@@ -592,7 +592,7 @@ dispatch_request(deontic_crisis, Id, Request, Response) :-
     ->  json_safe(Result, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, deontic_crisis_failed,
-            "deontic_crisis could not compute crises for the request",
+            "deontic_crisis found no matching crises for the request",
             Response)
     ).
 
@@ -630,7 +630,7 @@ dispatch_request(deontic_consequences, Id, Request, Response) :-
     ->  json_safe(_{agent: Agent, consequences: Consequences}, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, deontic_consequences_failed,
-            "deontic_consequences could not compute consequences for the request",
+            "deontic_consequences found no matching consequences for the request",
             Response)
     ).
 
@@ -667,7 +667,7 @@ dispatch_request(deontic_up_level, Id, Request, Response) :-
     ->  json_safe(_{agent: Agent, up_levels: Witnesses}, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, deontic_up_level_failed,
-            "deontic_up_level could not name the stuck point as a new question for the request",
+            "deontic_up_level found no matching new question for the request's stuck point",
             Response)
     ).
 
@@ -694,7 +694,7 @@ dispatch_request(sequent_proof_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_sequent_proof_witness,
-                "sequent_proof_witness found no sequent proof recorded example",
+                "sequent_proof_witness found no matching sequent proof result",
                 Response)
         )
     ;   error_response(Id, malformed_sequent_proof_request,
@@ -780,7 +780,7 @@ dispatch_request(diagnose_error, Id, Request, Response) :-
 dispatch_request(query_misconception, Id, Request, Response) :-
     (   rejected_misconception_filter(Request, Argument, Received)
     ->  format(string(Message),
-            "query_misconception refused argument '~w' with received value ~q because it does not parse as a ground filter term. Use misconception_search_rows to search citations or authors.",
+            "query_misconception requires argument '~w' to be a fully instantiated Prolog filter term; received ~q. Use misconception_search_rows to search citations or authors.",
             [Argument, Received]),
         error_response(Id, invalid_misconception_filter, Message, Response)
     ;   (   get_dict_opt(domain, Request, DomainVal)
@@ -819,7 +819,7 @@ dispatch_request(misconception_jumps_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_misconception_jumps_witness,
-                "misconception_jumps_witness found no drawable number-line deformation trace",
+                "misconception_jumps_witness found no matching drawable number-line deformation trace",
                 Response)
         )
     ;   error_response(Id, malformed_misconception_jumps_request,
@@ -838,7 +838,7 @@ dispatch_request(balance_solve_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_balance_solve_witness,
-                "balance_solve_witness found no non-negative integer one-unknown solution",
+                "balance_solve_witness found no matching non-negative integer one-unknown solution",
                 Response)
         )
     ;   error_response(Id, malformed_balance_solve_request,
@@ -886,7 +886,7 @@ dispatch_request(representation_spec_check, Id, Request, Response) :-
         ->  json_safe(Dict0, Dict),
             ok_response(Id, Dict, Response)
         ;   error_response(Id, no_representation_spec_denotation,
-                "representation_spec_check could not infer a denotation or deformation evidence",
+                "representation_spec_check found no matching denotation or deformation evidence",
                 Response)
         )
     ;   error_response(Id, malformed_representation_spec_request,
@@ -1064,7 +1064,7 @@ dispatch_request(coordinate_plane_render, Id, Request, Response) :-
         enrich_render_doc(coordinate_plane_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_coordinate_plane_render,
-            "coordinate_plane_render needs a bounded point array or integer slope and intercept",
+            "coordinate_plane_render requires a bounded point array or integer slope and intercept",
             Response)
     ).
 
@@ -1074,7 +1074,7 @@ dispatch_request(rigid_motion_render, Id, Request, Response) :-
         enrich_render_doc(rigid_motion_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_rigid_motion_render,
-            "rigid_motion_render needs a bounded polygon and a supported translation, reflection, or quarter-turn",
+            "rigid_motion_render requires a bounded polygon and a supported translation, reflection, or quarter-turn",
             Response)
     ).
 
@@ -1084,7 +1084,7 @@ dispatch_request(polyform_tiling_render, Id, Request, Response) :-
         enrich_render_doc(polyform_tiling_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_polyform_tiling_render,
-            "polyform_tiling_render needs positive dimensions no greater than 20",
+            "polyform_tiling_render requires positive dimensions no greater than 20",
             Response)
     ).
 
@@ -1094,7 +1094,7 @@ dispatch_request(angle_circular_render, Id, Request, Response) :-
         enrich_render_doc(angle_circular_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_angle_circular_render,
-            "angle_circular_render needs a whole-number degree measure from 1 through 360",
+            "angle_circular_render requires a whole-number degree measure from 1 through 360",
             Response)
     ).
 
@@ -1104,7 +1104,7 @@ dispatch_request(data_display_render, Id, Request, Response) :-
         enrich_render_doc(data_display_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_data_display_render,
-            "data_display_render needs a bounded JSON data array for the selected display",
+            "data_display_render requires a bounded JSON data array for the selected display",
             Response)
     ).
 
@@ -1114,7 +1114,7 @@ dispatch_request(solid_net_render, Id, Request, Response) :-
         enrich_render_doc(solid_net_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_solid_net_render,
-            "solid_net_render needs a supported solid or positive stack dimensions no greater than 20",
+            "solid_net_render requires a supported solid or positive stack dimensions no greater than 20",
             Response)
     ).
 
@@ -1124,7 +1124,7 @@ dispatch_request(geoboard_render, Id, Request, Response) :-
         enrich_render_doc(geoboard_render, Spec, Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_geoboard_render,
-            "geoboard_render needs 3 through 12 lattice vertices with coordinates from -20 through 20",
+            "geoboard_render requires 3 through 12 lattice vertices with coordinates from -20 through 20",
             Response)
     ).
 
@@ -1172,7 +1172,7 @@ dispatch_request(teacher_layer, Id, Request, Response) :-
             json_safe(Dict1, Dict),
             ok_response(Id, Dict, Response)
         ;   error_response(Id, no_teacher_layer,
-                "teacher_layer found no metaphor-grounded teacher channels for this practice",
+                "teacher_layer found no matching metaphor-grounded teacher channels for this practice",
                 Response)
         )
     ;   error_response(Id, missing_practice,
@@ -1233,7 +1233,7 @@ notation_render_dispatch(write_equation, Id, Request, Response) :-
     ->  json_safe(Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, no_notation_scene,
-            "notation_render found no productive write_equation scene for the given fields",
+            "notation_render found no matching productive write_equation scene for the given fields",
             Response)
     ).
 notation_render_dispatch(mirror_written, Id, Request, Response) :-
@@ -1247,7 +1247,7 @@ notation_render_dispatch(mirror_written, Id, Request, Response) :-
     ->  json_safe(Dict0, Dict),
         ok_response(Id, Dict, Response)
     ;   error_response(Id, no_notation_scene,
-            "notation_render found no mirror_written deformation scene for the given fields",
+            "notation_render found no matching mirror_written deformation scene for the given fields",
             Response)
     ).
 notation_render_dispatch(Kind, Id, _Request, Response) :-
@@ -1269,7 +1269,7 @@ dispatch_request(fraction_cgi_addition, Id, Request, Response) :-
         ->  json_safe(_{kind: Kind, outcome: Outcome, annotation: Annotation}, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_fraction_cgi_addition,
-                "fraction_cgi_addition found no CGI route for that kind and same-denominator pair",
+                "fraction_cgi_addition found no matching CGI route for that kind and same-denominator pair",
                 Response)
         )
     ;   error_response(Id, missing_kind,
@@ -1313,7 +1313,7 @@ dispatch_request(notation_monitoring_chart, Id, Request, Response) :-
         ->  json_safe(Chart, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, unknown_lesson_code,
-                "notation_monitoring_chart found no IM lesson for that code",
+                "notation_monitoring_chart found no matching IM lesson for that code",
                 Response)
         )
     ;   error_response(Id, missing_code,
@@ -1460,7 +1460,7 @@ dispatch_request(reorganize, Id, Request, Response) :-
     ->  json_safe(Story, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, invalid_reorganize_request,
-            "Could not run that problem; check the domain and integer inputs (improper fractions require the top number to exceed the bottom).",
+            "That problem requires a supported domain and integer inputs (improper fractions require the top number to exceed the bottom).",
             Response)
     ).
 
@@ -2062,7 +2062,7 @@ worker_strategy_trace_dict(StrategyName, Input, Dict) :-
                 result: "",
                 steps: [],
                 jumps: [],
-                note: "Strategy could not be run on the given input (no matching operator/strategy, or the run failed)."
+                note: "The automaton could not be run on the given input (no matching operation/kind, or the run failed)."
             }
         )
     ;   hermes_encyclopedia:trace_input_error_dict(
@@ -2450,7 +2450,7 @@ dispatch_input_failure_response(Result, Op, Id, Response) :-
 dispatch_request(Op, Id, _Request, Response) :-
     \+ dispatch_spec(Op, _, _, _),
     \+ dispatch_irregular(Op),
-    format(string(Message), "Unsupported op: ~w", [Op]),
+    format(string(Message), "Unsupported capability request: ~w", [Op]),
     error_response(Id, unknown_op, Message, Response).
 
 %!  request_filter(+Request, +Key, -Filter) is det.
@@ -3966,7 +3966,7 @@ dispatch_geometry(concept_monitoring_bundle, [ConceptId0], Id, Response) :-
         Safe = _{kind: "concept_monitoring_bundle", raw: Raw},
         ok_response(Id, Safe, Response)
     ;   error_response(Id, no_geometry_monitoring_bundle,
-            "concept_monitoring_bundle found no bundle for concept", Response)
+            "concept_monitoring_bundle found no matching bundle for concept", Response)
     ).
 
 dispatch_geometry(rigid_motion_render, [Spec0], Id, Response) :-

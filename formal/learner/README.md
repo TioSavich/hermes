@@ -21,7 +21,7 @@ each typed fraction problem through `story_for/3` into the inventory-bearing
 - `crisis_processor.pl`, `curriculum_processor.pl` — read the `crisis_curriculum*.txt`
   and `mathematical_curriculum.txt` files line by line and drive tasks to crisis.
 - `more_machine_learner.pl`, `strategy_synthesis.pl`, `deontic_scorekeeper.pl`
-  (commitment vs entitlement), `tension_dynamics.pl` (catastrophe-geometry state).
+  (commitment vs entitlement), `tension_dynamics.pl` (catastrophe state).
 - `up_leveling.pl` — labels itself a representation, not an implementation, of
   Gödelian diagonalization.
 - `reorg_domains/` — the reorganization domains (arithmetic, the whole-number

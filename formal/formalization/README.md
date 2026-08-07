@@ -1,7 +1,7 @@
 # formalization
 
-The formal arithmetic core: grounded arithmetic, the Lakoff & Núñez grounding
-metaphors, Robinson Arithmetic Q, and the shared witness constructor.
+The formal arithmetic core: grounded arithmetic, the Lakoff & Núñez account of
+metaphor grounding, Robinson Arithmetic Q, and the shared witness constructor.
 
 ## What it holds
 
@@ -13,7 +13,7 @@ metaphors, Robinson Arithmetic Q, and the shared witness constructor.
   arithmetic carried out without Prolog's built-in operators, grounded in an
   embodied number representation.
 - `grounding_metaphors.pl` and `grounding_metaphors_extended.pl` — the Lakoff &
-  Núñez grounding metaphors for arithmetic and beyond.
+  Núñez account of metaphor grounding for arithmetic and beyond.
 - `robinson_q.pl`, `axioms_robinson.pl` — Robinson Arithmetic Q inside the
   Hermeneutic Calculator.
 - `modal_costs.pl`, `axioms_geometry.pl`, `axioms_number_theory.pl` — supporting

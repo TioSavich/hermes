@@ -1,6 +1,6 @@
 # knowledge/strategies/render
 
-Scene compilers. Each emits a render document (frames of geometric primitives,
+Scene compilers. Each emits a scene document (frames of geometric primitives,
 one role atom per fill) that the browser drawer steps through. A compiler emits
 geometry; it never computes a result.
 
@@ -13,7 +13,7 @@ geometry; it never computes a result.
   `set_grouping_scene`, `unit_echo_scene`, and the rest.
 - `render_common.pl` — shared plumbing for the compilers.
 - `representation_grammar.pl` — the logical grammar for representations.
-- `teacher_layer.pl` — teacher-layer composition over a render document.
+- `teacher_layer.pl` — teacher-layer composition over a scene document.
 - `corpus_attested_grammar.pl` with `attested_objects`, `attested_uses`,
   `attested_deformations` — the corpus-attested vocabulary.
 - `parametric_*` — deformation generators (fraction errors, notation and
@@ -23,11 +23,11 @@ geometry; it never computes a result.
 ## Contract and consumers
 
 The document shape is fixed by `docs/render-contract-v2.md`. `hermes_worker.pl`
-runs the render operations; the browser draws the documents through
+runs the scene-compilation requests; the browser draws the documents through
 `hermes/web/render/drawer.js`, which resolves each role atom to a CSS variable
 from `hermes/web/hermes-tokens.css`.
 
 ## Boundary
 
-A compiler draws a strategy; it does not run it. The result geometry comes from
+A compiler compiles a strategy into a scene document; it does not run it. The result geometry comes from
 the automata in `knowledge/strategies/math/`.

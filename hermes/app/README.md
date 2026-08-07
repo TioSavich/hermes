@@ -7,7 +7,7 @@ Prolog or Python background.
 
 ## The server
 
-`server.py` owns the mutable gate, worker, and cache state behind an immutable
+`server.py` owns the mutable server state for the gate, worker, and cache behind an immutable
 route registry and hands each request a per-request context. `routes/registry.py`
 holds the `Route` record and `build_router`, which aggregates the `ROUTES` tuples
 from `static`, `gate`, `runtime`, `analysis`, `llm`, `monitoring`, `worker`, and
