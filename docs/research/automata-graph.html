@@ -23,6 +23,15 @@
     <select id="view-mode">
       <option value="full" selected>Full</option>
       <option value="family">Family</option>
+      <option value="domain">Domain ego</option>
+      <option value="action">Action</option>
+      <option value="ladder">Ladder</option>
+    </select>
+  </div>
+  <div class="field hidden" id="domain-field">
+    <label for="domain-family">Focal family</label>
+    <select id="domain-family">
+      <option value="counting">counting</option><option value="addition">addition</option><option value="subtraction">subtraction</option><option value="multiplication">multiplication</option><option value="division">division</option><option value="measurement">measurement</option><option value="geometry">geometry</option><option value="fraction">fraction</option><option value="decimal">decimal</option><option value="integer">integer</option><option value="ratio">ratio</option><option value="probability">probability</option><option value="statistics">statistics</option><option value="algebraic">algebraic</option><option value="calculus">calculus</option>
     </select>
   </div>
   <div class="field" id="borrow-field">
@@ -61,7 +70,7 @@
     <span><i class="swatch borrow"></i><a href="automata-vocabulary.html#borrow">borrow</a>; shared canonical action name</span>
     <span class="review-counts" id="review-counts">Validity review counts load with the graph data.</span>
   </div>
-  <figcaption id="view-note">The graph records each automaton's states separately; no state is literally shared. A gold borrow line connects automata that share a canonical action name. A <a href="automata-vocabulary.html#borrow">borrow</a> asserts no equivalence and no prerequisite order. The vertical order is authored rather than derived from the transition tables. In Family view, each gold bundle records shared canonical action names only; it asserts no equivalence, prerequisite order, or learner relation, and its vertical placement is authored.</figcaption>
+  <figcaption id="view-note">The graph records each automaton's states separately; no state is literally shared. A gold borrow line connects automata that share a canonical action name. A <a href="automata-vocabulary.html#borrow">borrow</a> asserts no equivalence and no prerequisite order. The vertical order is authored rather than derived from the transition tables. Family and Domain ego bundles record shared canonical action names only and retain member-level stances and validity modes. Action edges record co-occurrence inside a machine, not adjacency or order. Ladder bundles use authored rungs and do not assert prerequisite order or reachability.</figcaption>
 </figure>
 <noscript><p class="noscript">This reader requires JavaScript to load and draw the graph JSON.</p></noscript>
 </main>
@@ -71,7 +80,10 @@
 
   var DATA_PATHS = {
     full: 'assets/automata/full_graph.json',
-    family: 'assets/automata/family_graph.json'
+    family: 'assets/automata/family_graph.json',
+    domain: 'assets/automata/family_graph.json',
+    action: 'assets/automata/canonical_action_graph.json',
+    ladder: 'assets/automata/ladder_graph.json'
   };
   var MAX_AMBIENT_BORROWS = 1800;
   var LEVEL_HEIGHT = 9;
@@ -84,9 +96,12 @@
   var reviewCounts = document.getElementById('review-counts');
   var borrowMode = document.getElementById('borrow-mode');
   var borrowField = document.getElementById('borrow-field');
+  var domainField = document.getElementById('domain-field');
+  var domainFamily = document.getElementById('domain-family');
   var viewMode = document.getElementById('view-mode');
   var levelRuler = document.getElementById('level-ruler');
   var instructions = document.getElementById('instructions');
+  var viewNote = document.getElementById('view-note');
   var palette = {
     paper: '#f4ead6', surface: '#fffef9', ink: '#0d0c08',
     muted: '#665f4f', rust: '#b95238', validityBlue: '#2e6f9e',
@@ -189,12 +204,48 @@
       counts.borrow_pairs.toLocaleString() + ' borrow lines';
   }
 
-  function prepareFamily(data) {
+  function nodeName(node) {
+    if (node.family) return node.family;
+    if (node.canonical_action) return node.canonical_action;
+    if (Number.isInteger(node.level)) return 'rung ' + node.level;
+    return node.id;
+  }
+
+  function quotientCounts() {
+    return {
+      nodes: nodes.length,
+      edges: edges.length,
+      members: edges.reduce(function (total, edge) { return total + edge.members.length; }, 0)
+    };
+  }
+
+  function quotientStatusText() {
+    var counts = quotientCounts();
+    if (currentView === 'domain') return domainFamily.value + ' ego · ' + counts.nodes +
+      ' families · ' + counts.edges + ' gold bundles · ' + counts.members.toLocaleString() +
+      ' shared-action members';
+    if (currentView === 'action') return counts.nodes + ' canonical actions · ' + counts.edges +
+      ' co-occurrence edges · ' + counts.members.toLocaleString() + ' machine supports';
+    if (currentView === 'ladder') return counts.nodes + ' authored rungs · ' + counts.edges +
+      ' gold bundles · ' + counts.members.toLocaleString() + ' shared-action members';
+    return counts.nodes + ' families · ' + counts.edges + ' gold bundles · ' +
+      counts.members.toLocaleString() + ' shared-action members';
+  }
+
+  function prepareQuotient(data) {
     graph = data;
+    var graphEdges = data.edges;
+    if (currentView === 'domain') {
+      var focalId = 'family:' + domainFamily.value;
+      graphEdges = graphEdges.filter(function (edge) {
+        return edge.from === focalId || edge.to === focalId;
+      });
+    }
     nodes = data.nodes.map(function (node) {
       var copy = Object.assign({}, node, {
         machine: node.id,
-        state: node.family,
+        family: node.family || nodeName(node),
+        state: nodeName(node),
         formal_index: 0,
         start: false,
         accepting: false,
@@ -202,12 +253,12 @@
       });
       nodeById.set(copy.id, copy);
       machineById.set(copy.machine, {
-        id: copy.machine, family: copy.family, kind: 'family', level: copy.level,
+        id: copy.machine, family: copy.family, kind: currentView, level: copy.level || 0,
         nodes: [copy], edges: [], center: copy.position
       });
       return copy;
     });
-    edges = data.edges.map(function (edge) {
+    edges = graphEdges.map(function (edge) {
       var copy = Object.assign({}, edge, {
         bundle: true,
         source: nodeById.get(edge.from),
@@ -215,27 +266,27 @@
       });
       edgeById.set(copy.id, copy);
       machineById.get(copy.from).edges.push(copy);
-      machineById.get(copy.to).edges.push(copy);
+      if (copy.to !== copy.from) machineById.get(copy.to).edges.push(copy);
       return copy;
     });
-    var counts = data.meta.counts;
     reviewCounts.textContent = data.meta.assertion;
-    status.textContent = counts.nodes + ' families · ' + counts.edges +
-      ' gold bundles · ' + counts.members.toLocaleString() + ' shared-action members';
+    status.textContent = quotientStatusText();
   }
 
   function prepare(data) {
     clearPreparedState();
     currentView = viewMode.value;
-    if (currentView === 'family') prepareFamily(data);
+    if (currentView !== 'full') prepareQuotient(data);
     else prepareFull(data);
-    var familyView = currentView === 'family';
-    borrowField.classList.toggle('hidden', familyView);
-    levelRuler.classList.toggle('hidden', familyView);
-    instructions.textContent = familyView ?
-      'Drag to orbit, use the wheel to zoom, hover a family or bundle for member counts, and click to pin it.' :
+    var quotientView = currentView !== 'full';
+    borrowField.classList.toggle('hidden', quotientView);
+    domainField.classList.toggle('hidden', currentView !== 'domain');
+    levelRuler.classList.toggle('hidden', currentView !== 'full' && currentView !== 'ladder');
+    instructions.textContent = quotientView ?
+      'Drag to orbit, use the wheel to zoom, hover a node or edge for member counts, and click to pin it.' :
       "Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.";
-    selection.textContent = familyView ? 'No family or bundle pinned.' : 'No automaton pinned.';
+    selection.textContent = quotientView ? 'No quotient node or edge pinned.' : 'No automaton pinned.';
+    viewNote.textContent = data.meta.assertion || data.meta.level_note;
     resize();
     scheduleRender();
   }
@@ -366,9 +417,12 @@
     var stances = {};
     var validity = {};
     members.forEach(function (member) {
-      stances[member.stance] = (stances[member.stance] || 0) + 1;
-      member.validity_modes.forEach(function (mode) {
-        validity[mode] = (validity[mode] || 0) + 1;
+      var rows = member.actions || [member];
+      rows.forEach(function (row) {
+        stances[row.stance] = (stances[row.stance] || 0) + 1;
+        row.validity_modes.forEach(function (mode) {
+          validity[mode] = (validity[mode] || 0) + 1;
+        });
       });
     });
     return { stances: stances, validity: validity };
@@ -383,8 +437,9 @@
 
   function bundleSummary(edge) {
     var counts = memberCounts(edge.members);
-    return edge.source.family + ' / ' + edge.target.family + ' · ' +
-      edge.members.length + ' shared action names · stance members: ' +
+    var relation = currentView === 'action' ? ' machine supports' : ' shared action names';
+    return nodeName(edge.source) + ' / ' + nodeName(edge.target) + ' · ' +
+      edge.members.length + relation + ' · stance evidence: ' +
       countMapText(counts.stances) + ' · validity members: ' +
       countMapText(counts.validity);
   }
@@ -395,14 +450,15 @@
       members = members.concat(edge.members);
     });
     var counts = memberCounts(members);
-    return machine.family + ' · ' + machine.edges.length + ' family bundles · ' +
-      members.length + ' shared-action members · stance members: ' +
+    var relation = currentView === 'action' ? ' machine supports' : ' shared-action members';
+    return nodeName(machine.nodes[0]) + ' · ' + machine.edges.length + ' incident edges · ' +
+      members.length + relation + ' · stance evidence: ' +
       countMapText(counts.stances) + ' · validity members: ' +
       countMapText(counts.validity);
   }
 
   function drawBorrowSegments(projectedMachines, pinnedActions, borrowedMachines) {
-    if (currentView === 'family') return { eligible: 0, drawn: 0 };
+    if (currentView !== 'full') return { eligible: 0, drawn: 0 };
     var mode = borrowMode.value;
     var ambient = [];
     var pinned = [];
@@ -470,8 +526,12 @@
       }
       setStroke(palette.gold, bundleAlpha, bundleWidth);
       ctx.beginPath();
-      ctx.moveTo(source.x, source.y);
-      ctx.lineTo(target.x, target.y);
+      if (edge.from === edge.to) {
+        ctx.arc(source.x + 8, source.y - 8, 9, Math.PI * 0.15, Math.PI * 1.85);
+      } else {
+        ctx.moveTo(source.x, source.y);
+        ctx.lineTo(target.x, target.y);
+      }
       ctx.stroke();
       return;
     }
@@ -563,10 +623,10 @@
 
   function drawNode(node, pinnedActions, borrowedMachines) {
     var point = node.projected;
-    var radius = currentView === 'family' ? Math.max(3.2, 4.2 * point.scale) :
+    var radius = currentView !== 'full' ? Math.max(3.2, 4.2 * point.scale) :
       Math.max(1.15, 1.65 * point.scale);
     var alpha = alphaForDepth(point.scale, 0.78);
-    if (pinnedEdge && currentView === 'family') {
+    if (pinnedEdge && currentView !== 'full') {
       alpha = node.id === pinnedEdge.from || node.id === pinnedEdge.to ? 1 : 0.14;
     }
     if (pinnedMachine) {
@@ -575,7 +635,9 @@
       else alpha = 0.12;
     }
     ctx.globalAlpha = alpha;
-    ctx.fillStyle = node === hoveredNode ? palette.gold : palette.ink;
+    ctx.fillStyle = node === hoveredNode ? palette.gold :
+      (currentView === 'action' && node.stance === 'deforming' ? palette.rust :
+        (currentView === 'action' && node.stance === 'neutral' ? palette.muted : palette.ink));
     ctx.beginPath();
     ctx.arc(point.x, point.y, node === hoveredNode ? radius + 1.4 : radius, 0, Math.PI * 2);
     ctx.fill();
@@ -598,11 +660,11 @@
     ctx.globalAlpha = 1;
     ctx.font = '10px ui-monospace, Menlo, Monaco, Consolas, monospace';
     ctx.textBaseline = 'middle';
-    if (currentView === 'family') {
+    if (currentView !== 'full') {
       nodes.forEach(function (node) {
         ctx.fillStyle = node.machine === pinnedMachine ? palette.goldDeep : palette.ink;
         ctx.textAlign = 'left';
-        ctx.fillText(node.family, node.projected.x + 7, node.projected.y - 7);
+        ctx.fillText(nodeName(node), node.projected.x + 7, node.projected.y - 7);
       });
       return;
     }
@@ -678,10 +740,8 @@
     diagnostics.baseSegments = edges.length;
     diagnostics.borrowMode = borrowMode.value;
     diagnostics.view = currentView;
-    if (currentView === 'family') {
-      status.textContent = graph.meta.counts.nodes + ' families · ' +
-        graph.meta.counts.edges + ' gold bundles · ' +
-        graph.meta.counts.members.toLocaleString() + ' shared-action members';
+    if (currentView !== 'full') {
+      status.textContent = quotientStatusText();
       return;
     }
     if (borrowMode.value !== 'off') {
@@ -729,11 +789,17 @@
   }
 
   function hitEdge(point) {
-    if (currentView !== 'family') return null;
+    if (currentView === 'full') return null;
     var nearest = null;
     var distance = 6;
     lastProjectedEdges.forEach(function (edge) {
-      var candidate = pointSegmentDistance(point, edge.source.projected, edge.target.projected);
+      var candidate;
+      if (edge.from === edge.to) {
+        candidate = Math.abs(Math.hypot(point.x - edge.source.projected.x - 8,
+          point.y - edge.source.projected.y + 8) - 9);
+      } else {
+        candidate = pointSegmentDistance(point, edge.source.projected, edge.target.projected);
+      }
       if (candidate < distance) {
         distance = candidate;
         nearest = edge;
@@ -747,7 +813,7 @@
       tooltip.classList.remove('visible');
       return;
     }
-    if (currentView === 'family') {
+    if (currentView !== 'full') {
       tooltip.textContent = edge ? bundleSummary(edge) :
         incidentBundleSummary(machineById.get(node.machine));
     } else {
@@ -772,13 +838,13 @@
   }
 
   function updateSelection() {
-    if (currentView === 'family') {
+    if (currentView !== 'full') {
       if (pinnedEdge) {
         selection.textContent = bundleSummary(pinnedEdge);
       } else if (pinnedMachine) {
         selection.textContent = incidentBundleSummary(machineById.get(pinnedMachine));
       } else {
-        selection.textContent = 'No family or bundle pinned.';
+        selection.textContent = 'No quotient node or edge pinned.';
       }
       return;
     }
@@ -873,8 +939,8 @@
     currentView = requestedView;
     status.style.color = palette.muted;
     status.textContent = 'Loading the ' + requestedView + ' graph data…';
-    selection.textContent = requestedView === 'family' ?
-      'No family or bundle pinned.' : 'No automaton pinned.';
+    selection.textContent = requestedView === 'full' ?
+      'No automaton pinned.' : 'No quotient node or edge pinned.';
     fetch(DATA_PATHS[requestedView]).then(function (response) {
       if (!response.ok) throw new Error('HTTP ' + response.status);
       return response.json();
@@ -887,6 +953,9 @@
     });
   }
   viewMode.addEventListener('change', loadView);
+  domainFamily.addEventListener('change', function () {
+    if (viewMode.value === 'domain') loadView();
+  });
   window.addEventListener('resize', resize);
   loadView();
 })();

@@ -198,9 +198,15 @@ def main() -> int:
         required = (
             "assets/automata/full_graph.json",
             "assets/automata/family_graph.json",
+            "assets/automata/canonical_action_graph.json",
+            "assets/automata/ladder_graph.json",
             '<select id="view-mode">',
             '<option value="full"',
             '<option value="family"',
+            '<option value="domain"',
+            '<option value="action"',
+            '<option value="ladder"',
+            '<select id="domain-family">',
             '<canvas id="graph"',
             '<option value="off"',
             '<option value="cross"',
@@ -223,7 +229,9 @@ def main() -> int:
             "bundleSummary",
             "edgeById.clear()",
             "pinnedEdge = null",
-            "levelRuler.classList.toggle('hidden', familyView)",
+            "levelRuler.classList.toggle('hidden', currentView !== 'full' && currentView !== 'ladder')",
+            "Action edges record co-occurrence inside a machine",
+            "Ladder bundles use authored rungs",
         )
         for fragment in required:
             fail_if(fragment not in page, f"graph page lacks required fragment: {fragment}", failures)

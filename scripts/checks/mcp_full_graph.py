@@ -12,12 +12,20 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hermes.mcp.server import FAMILY_GRAPH_ARTIFACT, FULL_GRAPH_ARTIFACT, HermesMCPServer
+from hermes.mcp.server import (
+    ACTION_GRAPH_ARTIFACT,
+    FAMILY_GRAPH_ARTIFACT,
+    FULL_GRAPH_ARTIFACT,
+    LADDER_GRAPH_ARTIFACT,
+    HermesMCPServer,
+)
 
 
 def main() -> int:
     graph = json.loads((ROOT / FULL_GRAPH_ARTIFACT).read_text(encoding="utf-8"))
     family_graph = json.loads((ROOT / FAMILY_GRAPH_ARTIFACT).read_text(encoding="utf-8"))
+    action_graph = json.loads((ROOT / ACTION_GRAPH_ARTIFACT).read_text(encoding="utf-8"))
+    ladder_graph = json.loads((ROOT / LADDER_GRAPH_ARTIFACT).read_text(encoding="utf-8"))
     counts = graph["meta"]["counts"]
     server = HermesMCPServer("core", ROOT)
     try:
@@ -141,9 +149,63 @@ def main() -> int:
             for edge in quotient["edges"] for member in edge["members"]
         )
 
+        domain = server.call(
+            "graph_quotient", {"view": "domain", "family": "probability", "limit": 100}
+        )
+        assert domain["summary"]["view"] == "domain"
+        assert domain["summary"]["family"] == "probability"
+        assert domain["summary"]["counts"]["nodes"] == len(family_graph["nodes"])
+        assert domain["summary"]["counts"]["edges"] == len(family_graph["nodes"]) - 1
+        assert domain["summary"]["local"] == {
+            "machine_count": 2,
+            "state_count": 11,
+            "transition_count": 9,
+        }
+        assert all(
+            edge["from"] == "family:probability" or edge["to"] == "family:probability"
+            for edge in domain["edges"]
+        )
+
+        action = server.call(
+            "graph_quotient", {"view": "action", "limit": 3, "offset": 2}
+        )
+        assert action["summary"]["counts"] == action_graph["meta"]["counts"]
+        assert action["nodes"] == action_graph["nodes"]
+        assert action["edges"] == action_graph["edges"][2:5]
+        assert all(
+            {"carrier_machine_id", "stances", "stance_counts", "actions"} <= set(member)
+            for edge in action["edges"] for member in edge["members"]
+        )
+        assert all(
+            {"canonical_action", "stance", "validity_modes", "source_edge_ids"} <= set(row)
+            for edge in action["edges"] for member in edge["members"]
+            for row in member["actions"]
+        )
+
+        ladder = server.call(
+            "graph_quotient", {"view": "ladder", "limit": 100}
+        )
+        assert ladder["summary"]["counts"] == ladder_graph["meta"]["counts"]
+        assert ladder["nodes"] == ladder_graph["nodes"]
+        assert ladder["edges"] == ladder_graph["edges"]
+        assert sum(edge["from"] == edge["to"] for edge in ladder["edges"]) == 8
+
+        for arguments in (
+            {"view": "domain"},
+            {"view": "family", "family": "addition"},
+            {"view": "domain", "family": "not-a-family"},
+        ):
+            response = server.handle({
+                "jsonrpc": "2.0", "id": 9, "method": "tools/call",
+                "params": {"name": "graph_quotient", "arguments": arguments},
+            })
+            assert response is not None and "error" in response
+
         assert server.worker is None
         assert server._load_full_graph() is server._load_full_graph()
         assert server._load_family_graph() is server._load_family_graph()
+        assert server._load_quotient_graph("action") is server._load_quotient_graph("action")
+        assert server._load_quotient_graph("ladder") is server._load_quotient_graph("ladder")
     finally:
         server.close()
 
@@ -186,7 +248,7 @@ def main() -> int:
     print("PASS graph_machine returns 6 states, 5 edges, and shared-action counts")
     print(f"PASS graph_borrows returns cross-family pairs and carrier validity modes for {cross_family_action}")
     print("PASS graph_borrows exposes pagination totals and truncation")
-    print("PASS graph_quotient returns a summary, visible page totals, and member evidence")
+    print("PASS graph_quotient returns family, domain, action, and ladder evidence with paging")
     print(f"PASS a missing graph names {FULL_GRAPH_ARTIFACT} without starting Prolog")
     print(f"PASS a missing quotient names {FAMILY_GRAPH_ARTIFACT} without starting Prolog")
     return 0

@@ -41,6 +41,13 @@ REGISTRY_ARTIFACT = "hermes/capability_registry.pl"
 REGISTRY_REBUILD = "python3 scripts/extract_capability_registry.py"
 FULL_GRAPH_ARTIFACT = "docs/research/assets/automata/full_graph.json"
 FAMILY_GRAPH_ARTIFACT = "docs/research/assets/automata/family_graph.json"
+ACTION_GRAPH_ARTIFACT = "docs/research/assets/automata/canonical_action_graph.json"
+LADDER_GRAPH_ARTIFACT = "docs/research/assets/automata/ladder_graph.json"
+QUOTIENT_GRAPH_ARTIFACTS = {
+    "family": FAMILY_GRAPH_ARTIFACT,
+    "action": ACTION_GRAPH_ARTIFACT,
+    "ladder": LADDER_GRAPH_ARTIFACT,
+}
 
 CORE_TO_WORKER = {
     "prolog_query": "prolog_query",
@@ -102,7 +109,7 @@ CORE_STANDALONE_TOOLS = (
     ("graph_overview", "Return the full computational graph's scope, authored level ladder, counts, and per-family inventory. The level ladder is authored rather than derived from the transition tables. This reads the shipped JSON artifact without starting the Prolog worker.", ()),
     ("graph_machine", "Return one machine's states, transitions, and shared canonical-action summary from the full computational graph. A borrow records a shared canonical action name; it does not assert that two machines, transitions, or mathematical practices are equivalent.", ("family", "kind")),
     ("graph_borrows", "Return borrow pairs for one canonical action or one family-and-kind machine. A borrow records only that transition edges share a canonical action name. It does not assert equivalence, prerequisite order, or a learner relation. Results are paged; cross_family_only restricts pairs before paging.", ("canonical_action", "family", "kind", "cross_family_only", "limit", "offset")),
-    ("graph_quotient", "Return a summary and a page of bundle edges from a graph quotient. The family view records shared canonical action names only; it does not assert equivalence, prerequisite order, or a learner relation. Results include member stance, validity, carrier-machine, and source-edge evidence.", ("view", "limit", "offset")),
+    ("graph_quotient", "Return a summary and a page of edges from a family, domain ego, canonical-action, or authored-ladder quotient. Domain requires one exact family. Results retain member-level stance, validity, carrier-machine, and source-edge evidence; each view states the limit of its relation.", ("view", "family", "limit", "offset")),
 )
 
 
@@ -286,7 +293,8 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
         }
     elif name == "graph_quotient":
         properties = {
-            "view": {"type": "string", "minLength": 1, "description": "Quotient view. Slice 1 accepts family."},
+            "view": {"type": "string", "enum": ["family", "domain", "action", "ladder"], "description": "Quotient view."},
+            "family": {"type": "string", "minLength": 1, "description": "Exact focal family; required only for the domain view."},
             "limit": {"type": "integer", "minimum": 1, "maximum": 100, "description": "Bundle edges to return; defaults to 10 and cannot exceed 100."},
             "offset": {"type": "integer", "minimum": 0, "description": "Zero-based bundle-edge offset; defaults to 0."},
         }
@@ -371,6 +379,7 @@ class HermesMCPServer:
         self.worker: PersistentPrologWorker | None = None
         self._full_graph: dict[str, Any] | None = None
         self._family_graph: dict[str, Any] | None = None
+        self._quotient_graphs: dict[str, dict[str, Any]] = {}
         self._strategy_contracts = self._load_strategy_contracts() if mode != "registry" else []
         self._startup_error: ToolCallError | None = None
         try:
@@ -662,6 +671,35 @@ class HermesMCPServer:
                 kind="worker_failure",
             )
         self._family_graph = value
+        self._quotient_graphs["family"] = value
+        return value
+
+    def _load_quotient_graph(self, view: str) -> dict[str, Any]:
+        """Load one shipped quotient once without starting Prolog."""
+        if view == "family":
+            return self._load_family_graph()
+        if view in self._quotient_graphs:
+            return self._quotient_graphs[view]
+        artifact = QUOTIENT_GRAPH_ARTIFACTS[view]
+        graph_file = self.root / artifact
+        try:
+            value = json.loads(graph_file.read_text(encoding="utf-8"))
+        except FileNotFoundError as exc:
+            raise ToolCallError(
+                f"Quotient graph artifact {artifact} is missing.",
+                kind="worker_failure",
+            ) from exc
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ToolCallError(
+                f"Quotient graph artifact {artifact} is unavailable or invalid.",
+                kind="worker_failure",
+            ) from exc
+        if not isinstance(value, dict):
+            raise ToolCallError(
+                f"Quotient graph artifact {artifact} is invalid.",
+                kind="worker_failure",
+            )
+        self._quotient_graphs[view] = value
         return value
 
     @staticmethod
@@ -935,10 +973,23 @@ class HermesMCPServer:
 
     def graph_quotient(self, arguments: dict[str, Any]) -> dict[str, Any]:
         view = arguments.get("view")
-        if view != "family":
+        if view not in ("family", "domain", "action", "ladder"):
             raise ToolCallError(
-                "graph_quotient view must be family in slice 1.",
+                "graph_quotient view must be family, domain, action, or ladder.",
                 kind="not_covered" if isinstance(view, str) and view else "malformed_input",
+            )
+        family = arguments.get("family")
+        if view == "domain":
+            if not isinstance(family, str) or not family.strip():
+                raise ToolCallError(
+                    "graph_quotient domain view requires a non-empty family.",
+                    kind="malformed_input",
+                )
+            family = family.strip()
+        elif family is not None:
+            raise ToolCallError(
+                "graph_quotient family is accepted only for the domain view.",
+                kind="malformed_input",
             )
         limit = arguments.get("limit", 10)
         offset = arguments.get("offset", 0)
@@ -952,12 +1003,14 @@ class HermesMCPServer:
                 "graph_quotient offset must be a non-negative integer.",
                 kind="malformed_input",
             )
-        graph = self._load_family_graph()
+        artifact_view = "family" if view == "domain" else view
+        graph = self._load_quotient_graph(artifact_view)
+        artifact = QUOTIENT_GRAPH_ARTIFACTS[artifact_view]
         meta = graph.get("meta")
         nodes = graph.get("nodes")
         edges = graph.get("edges")
         if (
-            graph.get("view") != "family"
+            graph.get("view") != artifact_view
             or not isinstance(meta, dict)
             or not isinstance(meta.get("counts"), dict)
             or not isinstance(nodes, list)
@@ -966,26 +1019,71 @@ class HermesMCPServer:
             or not all(isinstance(edge, dict) for edge in edges)
         ):
             raise ToolCallError(
-                f"Family graph artifact {FAMILY_GRAPH_ARTIFACT} has an invalid quotient inventory.",
+                f"Quotient graph artifact {artifact} has an invalid inventory.",
                 kind="worker_failure",
             )
+        counts = meta["counts"]
+        local: dict[str, Any] | None = None
+        if view == "domain":
+            family_id = f"family:{family}"
+            focal = next((node for node in nodes if node.get("id") == family_id), None)
+            if focal is None:
+                available = sorted(
+                    str(node.get("family")) for node in nodes if isinstance(node.get("family"), str)
+                )
+                raise ToolCallError(
+                    f"Unknown graph quotient family {family!r}. Available families: {', '.join(available)}.",
+                    kind="not_covered",
+                )
+            edges = [edge for edge in edges
+                     if edge.get("from") == family_id or edge.get("to") == family_id]
+            domain_members = [member for edge in edges for member in edge.get("members", [])]
+            mode_names = sorted({
+                str(mode) for member in domain_members
+                for mode in member.get("validity_modes", [])
+            })
+            counts = {
+                "nodes": len(nodes),
+                "edges": len(edges),
+                "members": len(domain_members),
+                "members_by_stance": {
+                    stance: sum(member.get("stance") == stance for member in domain_members)
+                    for stance in ("conserving", "deforming", "neutral")
+                },
+                "member_validity_mode_occurrences": {
+                    mode: sum(mode in member.get("validity_modes", [])
+                              for member in domain_members)
+                    for mode in mode_names
+                },
+                "mixed_stance_edges": sum(len(edge.get("stances", [])) > 1 for edge in edges),
+            }
+            local = {
+                "machine_count": focal.get("machine_count"),
+                "state_count": focal.get("state_count"),
+                "transition_count": focal.get("transition_count"),
+            }
         returned_edges = edges[offset:offset + limit]
         next_offset = offset + len(returned_edges)
         assertion = meta.get("assertion")
         if not isinstance(assertion, str) or not assertion:
             raise ToolCallError(
-                f"Family graph artifact {FAMILY_GRAPH_ARTIFACT} lacks its shared-name assertion.",
+                f"Quotient graph artifact {artifact} lacks its relation assertion.",
                 kind="worker_failure",
             )
+        summary = {
+            "view": view,
+            "scope": meta.get("scope"),
+            "source_artifact": graph.get("source_artifact"),
+            "source_schema": graph.get("source_schema"),
+            "source_sha256": graph.get("source_sha256"),
+            "counts": counts,
+        }
+        if view == "domain":
+            summary["family"] = family
+            summary["local"] = local
+            summary["scope"] = f"Family bundles incident on the focal {family} family."
         return {
-            "summary": {
-                "view": "family",
-                "scope": meta.get("scope"),
-                "source_artifact": graph.get("source_artifact"),
-                "source_schema": graph.get("source_schema"),
-                "source_sha256": graph.get("source_sha256"),
-                "counts": meta["counts"],
-            },
+            "summary": summary,
             "assertion": assertion,
             "nodes": nodes,
             "page": {
