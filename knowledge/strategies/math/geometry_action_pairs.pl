@@ -32,7 +32,7 @@
                 angle_circular_compare_json/2
               ]).
 :- use_module(render(polyform_tiling_scene), [polyform_tiling_render_json/2]).
-
+:- use_module(strategies('abstraction/kernel_gate_pilot'), [run_kernel/4]).
 
 % rectangle_area_unit_iteration — gate(positive integer row and column counts
 % in a rectangular unit-square array, with the product interpreted as square
@@ -2034,17 +2034,23 @@ rectangle_geoboard_scene(Length, Width, Scene) :-
         stretch_polygon([0-0, Length-0, Length-Width, 0-Width]), Scene),
     successful_scene(Scene).
 
+% The exact kernel, gate, argument, and result match keeps the machine's
+% 1..100 side boundary and makes pilot drift refuse this bridge.
+% check_kernel_pilot/0 must stay green for this consumer.
 rectangle_perimeter_pairs(Perimeter, Pairs) :-
-    HalfPerimeter is Perimeter // 2,
-    MaxLength is HalfPerimeter - 1,
-    findall(Length-Width,
-            ( between(1, MaxLength, Length),
-              Width is HalfPerimeter - Length,
-              Length =< Width,
-              bounded_rectangle_dimension(Length),
-              bounded_rectangle_dimension(Width)
-            ),
-            Pairs).
+    integer(Perimeter),
+    between(4, 400, Perimeter),
+    0 is Perimeter mod 2,
+    run_kernel(
+        enumerate_positive_integer_pairs,
+        rectangle_even_perimeter(Perimeter),
+        [],
+        run(enumerate_positive_integer_pairs,
+            rectangle_even_perimeter(Perimeter),
+            [],
+            _KernelSteps,
+            positive_integer_pairs(Pairs))),
+    is_list(Pairs).
 
 perimeter_pair_scenes([], []).
 perimeter_pair_scenes([Length-Width|Pairs], [Scene|Scenes]) :-
