@@ -16,7 +16,7 @@ from typing import Any
 from unittest.mock import patch
 
 from build_choice_sets import ABSTENTION_LETTER, CONTENT_LETTERS, Choice, conforms
-from check_compliance_smoke import check_rows
+from check_compliance_smoke import check_rows, terminal_recognition
 from ollama_client import DEFAULT_ENDPOINT, DEFAULT_MODEL, OllamaQuestionnaireClient, question_id
 from runner import (
     ModelOutcome,
@@ -235,7 +235,7 @@ def item_row(
     probes: list[dict[str, Any]],
 ) -> dict[str, Any]:
     leaf_calls = [event for event in result.ledger if event.get("kind") == "leaf_call"]
-    return {
+    row = {
         "record_type": "item",
         "item_id": item["id"],
         "source": "authored_invented_smoke_item",
@@ -258,6 +258,8 @@ def item_row(
         "model_attempts": attempts,
         "runner": result.to_dict(),
     }
+    row["terminal_recognition"] = terminal_recognition(row)
+    return row
 
 
 def summarize(
@@ -293,7 +295,10 @@ def summarize(
     exact_rate = exact / len(navigation) if navigation else 0.0
     accepted = sum(row["binding_fidelity"]["accepted_bindings"] for row in item_rows)
     verified = sum(row["binding_fidelity"]["verified_verbatim_bindings"] for row in item_rows)
-    all_items_leaf = all(row["result_status"] == "leaf_computed" for row in item_rows)
+    leaf_items = sum(row["result_status"] == "leaf_computed" for row in item_rows)
+    terminal_rows = [terminal_recognition(row) for row in item_rows]
+    recognized_terminals = sum(row["recognized"] is True for row in terminal_rows)
+    terminals_pass = bool(item_rows) and recognized_terminals == len(item_rows)
     fidelity_pass = accepted > 0 and accepted == verified and all(
         row["binding_fidelity"]["pass"] for row in item_rows
     )
@@ -306,16 +311,21 @@ def summarize(
         and non_ok_content_parsed == 0
         and flips == 0
         and fidelity_pass
-        and all_items_leaf
+        and terminals_pass
     )
     return {
         "record_type": "summary",
-        "schema": "questionnaire_compliance_smoke_v2",
+        "schema": "questionnaire_compliance_smoke_v3",
         "mode": mode,
         "model": model,
         "items_requested": items_requested,
         "items_completed": len(item_rows),
-        "leaf_items": sum(row["result_status"] == "leaf_computed" for row in item_rows),
+        "leaf_items": leaf_items,
+        "completion": {
+            "leaf_items": leaf_items,
+            "items": len(item_rows),
+            "rate": leaf_items / len(item_rows) if item_rows else 0.0,
+        },
         "model_calls": len(attempts),
         "contract_compliance": {
             "valid_letter": {
@@ -329,6 +339,12 @@ def summarize(
                 "accepted": accepted,
                 "verbatim_present": verified,
                 "pass": fidelity_pass,
+            },
+            "recognized_terminal": {
+                "count": recognized_terminals,
+                "total": len(item_rows),
+                "pass": terminals_pass,
+                "accepted_statuses": ["leaf_computed", "not_covered", "extraction_incomplete"],
             },
             "reply_stops_honored": {"count": stops_honored, "observed": len(stops_observed)},
             "request_contract_exact": {"count": requests_exact, "total": len(attempts)},
@@ -439,7 +455,8 @@ def main() -> int:
         f"valid_letter_rate={summary['contract_compliance']['valid_letter']['rate']:.1%} "
         f"binding_fidelity={summary['contract_compliance']['transcription_fidelity']['verbatim_present']}/"
         f"{summary['contract_compliance']['transcription_fidelity']['accepted']} "
-        f"position_flips={summary['contract_compliance']['position_permutation']['flips']}"
+        f"position_flips={summary['contract_compliance']['position_permutation']['flips']} "
+        f"completion={summary['completion']['leaf_items']}/{summary['completion']['items']}"
     )
     print(f"ledger: {args.output}")
     return 0

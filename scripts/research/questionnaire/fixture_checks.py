@@ -8,7 +8,8 @@ from typing import Any
 from unittest.mock import patch
 
 from build_choice_sets import Choice
-from compliance_smoke import PositionProbeClient
+from check_compliance_smoke import check_rows, terminal_recognition
+from compliance_smoke import PositionProbeClient, summarize
 from ollama_client import OllamaQuestionnaireClient
 from runner import (
     ModelOutcome,
@@ -96,6 +97,87 @@ def assert_position_rotation_catches_bias() -> None:
     assert probe["flip"] is True
 
 
+def terminal_fixture_item(*, receipt: bool) -> dict[str, Any]:
+    ledger = (
+        [{"kind": "system_abstention", "level": "L4", "reason": "binding_retry_exhausted"}]
+        if receipt else []
+    )
+    row: dict[str, Any] = {
+        "record_type": "item",
+        "item_id": "fixture-well-formed-abstention" if receipt else "fixture-malformed-terminal",
+        "source": "authored_fixture",
+        "expected_family": "addition",
+        "form": "prose",
+        "result_status": "extraction_incomplete",
+        "resolved_family": "addition",
+        "excerpt_sha256": "fixture",
+        "question_sequence": [],
+        "letters": ["A"],
+        "transcriptions": ["given(a, 27)."],
+        "abstentions": [],
+        "binding_fidelity": {
+            "accepted_bindings": 1,
+            "verified_verbatim_bindings": 1,
+            "rejected_bindings": 0,
+            "pass": True,
+        },
+        "leaf_operation_invocations": [],
+        "latencies_ms": [1.0],
+        "model_attempts": [{
+            "status": "ok",
+            "response_kind": "letter",
+            "level": "L1",
+            "parsed_content": "A",
+            "parsed_letter": "A",
+            "raw_exact_one_letter": True,
+            "reply_stops_honored": True,
+            "request_contract_exact": True,
+            "latency_within_bound": True,
+            "latency_bound_ms": 12000.0,
+        }],
+        "runner": {
+            "status": "extraction_incomplete",
+            "family": "addition",
+            "schema_id": None,
+            "leaf": None,
+            "ledger": ledger,
+        },
+    }
+    row["terminal_recognition"] = terminal_recognition(row)
+    return row
+
+
+def assert_terminal_gate_semantics() -> None:
+    abstention = terminal_fixture_item(receipt=True)
+    passing = summarize(
+        mode="fixture",
+        model="fixture-model",
+        items_requested=1,
+        item_rows=[abstention],
+    )
+    assert passing["pass"] is True
+    assert passing["completion"] == {"leaf_items": 0, "items": 1, "rate": 0.0}
+    assert passing["contract_compliance"]["recognized_terminal"]["pass"] is True
+    check_rows([abstention, passing])
+
+    malformed = terminal_fixture_item(receipt=False)
+    failing = summarize(
+        mode="fixture",
+        model="fixture-model",
+        items_requested=1,
+        item_rows=[malformed],
+    )
+    assert failing["pass"] is False
+    assert failing["completion"] == {"leaf_items": 0, "items": 1, "rate": 0.0}
+    assert failing["contract_compliance"]["recognized_terminal"]["pass"] is False
+    try:
+        check_rows([malformed, failing])
+    except AssertionError as exc:
+        assert "unrecognized or malformed terminal" in str(exc)
+    else:
+        raise AssertionError("malformed terminal passed the ledger checker")
+
+
 def main() -> int:
     socket_count = 0
 
@@ -170,12 +252,13 @@ def main() -> int:
         assert mismatch_attempt.request_contract_exact is False
 
         assert_position_rotation_catches_bias()
+        assert_terminal_gate_semantics()
 
     assert socket_count == 0
     print(
         "QUESTIONNAIRE MODEL FIXTURES: PASS "
         f"malformed={len(malformed_values)} requests=navigation+binding "
-        "position_bias_fixture=detected sockets=0"
+        "position_bias_fixture=detected terminal_fixtures=pass+fail sockets=0"
     )
     return 0
 

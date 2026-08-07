@@ -8,6 +8,52 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
+RECOGNIZED_ABSTENTION_STATUSES = {"not_covered", "extraction_incomplete"}
+
+
+def terminal_recognition(item: dict[str, Any]) -> dict[str, Any]:
+    """Classify the item terminal from its runner receipt and ledger evidence."""
+    status = item.get("result_status")
+    runner = item.get("runner")
+    if not isinstance(runner, dict) or runner.get("status") != status:
+        return {"recognized": False, "status": status, "reason": "runner_status_mismatch"}
+    ledger = runner.get("ledger")
+    if not isinstance(ledger, list) or any(not isinstance(event, dict) for event in ledger):
+        return {"recognized": False, "status": status, "reason": "malformed_runner_ledger"}
+    leaf_events = [event for event in ledger if event.get("kind") == "leaf_call"]
+    row_leaf_events = item.get("leaf_operation_invocations")
+    if not isinstance(row_leaf_events, list) or row_leaf_events != leaf_events:
+        return {"recognized": False, "status": status, "reason": "leaf_receipt_mismatch"}
+
+    if status == "leaf_computed":
+        complete = (
+            len(leaf_events) == 1
+            and runner.get("family") is not None
+            and runner.get("schema_id") is not None
+            and runner.get("leaf") is not None
+        )
+        return {
+            "recognized": complete,
+            "status": status,
+            "reason": "leaf_receipt" if complete else "malformed_leaf_terminal",
+        }
+
+    if status not in RECOGNIZED_ABSTENTION_STATUSES:
+        return {"recognized": False, "status": status, "reason": "unknown_terminal_status"}
+    if leaf_events:
+        return {"recognized": False, "status": status, "reason": "abstention_has_leaf_call"}
+    terminal_events = [event for event in ledger if event.get("kind") == "terminal"]
+    if any(event.get("status") != status or not event.get("reason") for event in terminal_events):
+        return {"recognized": False, "status": status, "reason": "malformed_terminal_event"}
+    system_abstentions = [event for event in ledger if event.get("kind") == "system_abstention"]
+    evidence = system_abstentions or terminal_events
+    return {
+        "recognized": bool(evidence),
+        "status": status,
+        "reason": "abstention_receipt" if evidence else "missing_abstention_receipt",
+    }
+
+
 def load_rows(path: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -26,9 +72,29 @@ def check_rows(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
     if len(summaries) != 1:
         raise AssertionError(f"expected one summary row, found {len(summaries)}")
     summary = summaries[0]
+    if summary.get("schema") != "questionnaire_compliance_smoke_v3":
+        raise AssertionError("compliance summary schema is not v3")
     items = [row for row in material if row.get("record_type") == "item"]
     if len(items) != summary.get("items_completed"):
         raise AssertionError("item-row count does not match the summary")
+
+    terminal_rows = [terminal_recognition(item) for item in items]
+    for item, recomputed in zip(items, terminal_rows):
+        if item.get("terminal_recognition") != recomputed:
+            raise AssertionError("item terminal-recognition record does not match its runner receipt")
+    recognized = sum(row["recognized"] is True for row in terminal_rows)
+    terminal_summary = summary.get("contract_compliance", {}).get("recognized_terminal", {})
+    if terminal_summary.get("count") != recognized or terminal_summary.get("total") != len(items):
+        raise AssertionError("recognized-terminal summary does not match item receipts")
+    if recognized != len(items) or not terminal_summary.get("pass"):
+        raise AssertionError("an item has an unrecognized or malformed terminal")
+    leaf_items = sum(item.get("result_status") == "leaf_computed" for item in items)
+    completion = summary.get("completion", {})
+    if completion.get("leaf_items") != leaf_items or completion.get("items") != len(items):
+        raise AssertionError("completion data does not match item terminals")
+    expected_completion_rate = leaf_items / len(items) if items else 0.0
+    if abs(float(completion.get("rate", -1.0)) - expected_completion_rate) > 1e-12:
+        raise AssertionError("completion rate does not match item terminals")
 
     attempts = [attempt for item in items for attempt in item.get("model_attempts", [])]
     if len(attempts) != summary.get("model_calls"):
@@ -90,7 +156,8 @@ def main() -> int:
     print(
         "QUESTIONNAIRE COMPLIANCE LEDGER: PASS "
         f"items={summary['items_completed']} calls={summary['model_calls']} "
-        f"valid_letter_rate={summary['contract_compliance']['valid_letter']['rate']:.1%}"
+        f"valid_letter_rate={summary['contract_compliance']['valid_letter']['rate']:.1%} "
+        f"completion={summary['completion']['leaf_items']}/{summary['completion']['items']}"
     )
     return 0
 
