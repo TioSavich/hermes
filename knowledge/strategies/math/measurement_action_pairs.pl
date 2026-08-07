@@ -13,7 +13,7 @@
             productive_measurement_deformation/3,
             measurement_action_misconception_hook/3
           ]).
-
+:- use_module(strategies('abstraction/kernel_gate_pilot'), [run_kernel/4]).
 :- use_module(render(measurement_strip_scene),
               [measurement_strip_render_json/2]).
 :- use_module(math(integer_helpers), [add_ints/3, subtract_ints/3]).
@@ -141,7 +141,7 @@ run_measurement_action(unit_conversion_by_iteration,
                        quantity(Count, FromUnit),
                        conversion(ToUnit, Factor), Outcome, Trace) :-
     valid_unit_conversion(Count, FromUnit, ToUnit, Factor),
-    Converted is Count * Factor,
+    unit_conversion_by_iteration_bridge(Count, Factor, Converted),
     Outcome = action_outcome(
                   unit_conversion_by_iteration,
                   [ classification(productive),
@@ -370,3 +370,48 @@ reduced_rational(Numerator, Denominator, rational(N, D)) :-
     GCD is gcd(abs(Numerator), Denominator),
     N is Numerator // GCD,
     D is Denominator // GCD.
+
+
+% The zero-count seam is the empty fold. Positive counts take one exact K2
+% endpoint run per larger-unit copy, beginning at the preceding endpoint.
+unit_conversion_by_iteration_bridge(Count, Factor, 0) :-
+    integer(Count),
+    Count =:= 0,
+    integer(Factor),
+    Factor > 1.
+unit_conversion_by_iteration_bridge(Count, Factor, Converted) :-
+    integer(Count),
+    Count > 0,
+    integer(Factor),
+    Factor > 1,
+    unit_conversion_by_iteration_fold(Count, Factor, 0, Converted).
+
+unit_conversion_by_iteration_fold(Remaining, Factor, Current, Current) :-
+    integer(Remaining),
+    Remaining =:= 0,
+    integer(Factor),
+    Factor > 1,
+    integer(Current),
+    Current >= 0.
+% The exact kernel, gate, argument, and result match makes pilot drift refuse
+% this fold. check_kernel_pilot/0 must stay green for this consumer.
+unit_conversion_by_iteration_fold(Remaining, Factor, Current, Converted) :-
+    integer(Remaining),
+    Remaining > 0,
+    integer(Factor),
+    Factor > 1,
+    integer(Current),
+    Current >= 0,
+    run_kernel(
+        iterate_to_target,
+        whole_number(10),
+        [start(Current), delta(Factor), direction(up), output(endpoint)],
+        run(iterate_to_target,
+            whole_number(10),
+            [start(Current), delta(Factor), direction(up), output(endpoint)],
+            _KernelSteps,
+            endpoint(Next))),
+    integer(Next),
+    NextRemaining is Remaining - 1,
+    unit_conversion_by_iteration_fold(
+        NextRemaining, Factor, Next, Converted).
