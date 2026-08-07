@@ -967,8 +967,8 @@ def build() -> dict[str, object]:
     # goals reach it, never a routed operation.
     # 301 from 2026-08-03: the abstraction wing — four quarantined pilot
     # modules under knowledge/strategies/abstraction/ and the generated
-    # deformation-coincidence data. All five read as orphan modules because
-    # nothing imports candidate structure; that is the quarantine, recorded.
+    # deformation-coincidence data. All five then read as orphan modules
+    # because nothing imported candidate structure.
     # 308 from 2026-08-03: seven formerly prebaked-only scene formats now
     # expose bounded live render operations through the worker.
     # 310 from the evening of 2026-08-03: machine_typology.pl (computed
@@ -984,8 +984,12 @@ def build() -> dict[str, object]:
     # of where each curricular metaphor operates and where its reach ends
     # (26 rows, 16 seams). Orphan module for the abstraction wing's reason:
     # its gate check parses it, and nothing imports it.
-    if len(registry_rows) != 312:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 312")
+    # 311 from 2026-08-07: fraction_action_pairs.pl statically imports
+    # kernel_gate_pilot.pl for unit_fraction_partition. The extractor records
+    # dispatch operations and unreachable module rows, so a loaded helper with
+    # no dispatch operation leaves the registry instead of becoming unrouted.
+    if len(registry_rows) != 311:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 311")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1035,8 +1039,8 @@ def build() -> dict[str, object]:
     # count for the same reason it joins the registry — only caller-formed
     # prolog_query goals reach it, so no static import ever will.
     # 86 from 2026-08-03: the five abstraction-wing files (four pilots and
-    # the deformation-coincidence data) are orphan modules by design —
-    # candidate structure that nothing imports until adopted.
+    # the deformation-coincidence data) were orphan modules by design —
+    # candidate structure that nothing imported until adopted.
     # 85 after input_contract made automaton_input_contracts.pl reachable
     # through the dispatch surface.
     # 87 from the evening of 2026-08-03: machine_typology.pl and
@@ -1048,8 +1052,10 @@ def build() -> dict[str, object]:
     # 89 from 2026-08-06: metaphor_seam_registry.pl joins for the
     # abstraction wing's reason — its gate check parses it; nothing
     # imports it.
-    if len(orphan_records) != 89:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 89")
+    # 88 from 2026-08-07: kernel_gate_pilot.pl leaves the orphan count when
+    # fraction_action_pairs.pl adopts run_kernel/4 for unit_fraction_partition.
+    if len(orphan_records) != 88:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 88")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route.
     if len(unrouted) != 10:

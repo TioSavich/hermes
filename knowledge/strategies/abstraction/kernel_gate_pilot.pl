@@ -13,11 +13,12 @@
  * the named boundary, and result interpretation. Correct and incorrect doings
  * are instances or single local mutations of the same kernel run.
  *
- * This file is standalone and quarantined in the sense of
- * action_vocabulary_map.pl: nothing imports it, it renames nothing,
- * and its rows are authored and vetoable. It is a candidate structure,
- * not a rewrite. Where its steps meet the canonical alphabet of
- * action_vocabulary_map.pl, the correspondence is recorded in
+ * This file remains a pilot in the sense of action_vocabulary_map.pl:
+ * fraction_action_pairs.pl imports run_kernel/4 for the Base > 1 branch of
+ * unit_fraction_partition; refusal_genesis_sketch.pl imports run_kernel/4,
+ * mutate_run/3, and gate/2; no other module imports it. It renames
+ * nothing, and its rows are authored and vetoable. Where its steps meet the
+ * canonical alphabet of action_vocabulary_map.pl, the correspondence is recorded in
  * kernel_canonical/2 comments-as-data rather than by inventing a rival
  * alphabet: the 122-action map, its register axis, and its stance axis
  * already carry most of what the earlier addition pilot re-derived.

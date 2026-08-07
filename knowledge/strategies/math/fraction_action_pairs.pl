@@ -98,7 +98,7 @@
                 run_common_unit_subtract/4,
                 run_add_numerator_denominator_sum/5
               ]).
-
+:- use_module(strategies('abstraction/kernel_gate_pilot'), [run_kernel/4]).
 % Text-grounded PFS kernel (Steffe-Hackenberg). Sits alongside the live
 % N101 PFS in divaded_fractional_units as the citable manuscript form.
 % Models the same conceptual object (partitive fractional scheme) at two
@@ -135,10 +135,10 @@ run_fraction_action(unit_fraction_partition, Count, Base, Outcome, Trace) :-
     integer(Count),
     Count =:= 1,
     positive_integer(Base),
+    unit_fraction_partition_bridge(Base, Result),
     rec(Count, RecCount),
     rec(Base, RecBase),
     partitive_fraction(RecCount, RecBase, unit(whole), FractionState, KernelTrace),
-    Result = fraction(Count, Base),
     Outcome = action_outcome(
                   unit_fraction_partition,
                   [ classification(productive),
@@ -1451,3 +1451,23 @@ multiplication_components(A, B, C, D, Components) :-
     Components = fraction_multiplication_components(NumeratorProduct,
                                                     DenominatorProduct,
                                                     Result).
+
+
+% The identity partition stays outside K3's gate. For Base >= 2, accept only
+% the pilot's exact partition run before projecting its result to a fraction.
+unit_fraction_partition_bridge(1, fraction(1, 1)).
+% The exact run-term match below also means pilot drift fails this clause
+% rather than raising; check_kernel_pilot/0's partition-direction row is the
+% guard that must stay green for this consumer.
+unit_fraction_partition_bridge(Base, fraction(1, Base)) :-
+    integer(Base),
+    Base >= 2,
+    run_kernel(
+        partition_regroup,
+        unit_fraction(Base),
+        [unit(whole), plan(partition(Base))],
+        run(partition_regroup,
+            unit_fraction(Base),
+            [unit(whole), plan(partition(Base))],
+            [take_units(1, of(whole)), partition_into(Base)],
+            made(Base, part_unit(Base, whole)))).

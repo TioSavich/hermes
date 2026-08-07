@@ -295,7 +295,6 @@ capability('knowledge/misconceptions/query_probes.pl', 'misconception_query_prob
 capability('knowledge/misconceptions/research_corpus_automaton_bindings.pl', 'research_corpus_automaton_bindings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/abstraction/addition_action_signatures.pl', 'addition_action_signatures', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/channel_collapse.pl', 'channel_collapse', 'synthesis', [], orphan_module).
-capability('knowledge/strategies/abstraction/kernel_gate_pilot.pl', 'kernel_gate_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/metaphor_seam_registry.pl', 'metaphor_seam_registry', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
