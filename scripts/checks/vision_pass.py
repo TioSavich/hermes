@@ -15,15 +15,19 @@ if str(ROOT) not in sys.path:
 
 from scripts.curriculum.vision_pass import (  # noqa: E402
     DEFAULT_BUDGET,
+    MAX_IMAGES_PER_CALL,
     REPORT_COUNTS,
     RUN_VERSION,
     FixtureResult,
     RunConfig,
+    atomic_write_json,
     build_messages,
+    checkpoint_path,
     derive_worklist,
     dry_run_result,
     evaluate_result,
     execute_run,
+    select_call_images,
     stable_hash,
     text_only_pairs,
 )
@@ -50,13 +54,56 @@ def main() -> int:
     first = worklist["spans"][0]
     messages = build_messages(first)
     image_parts = messages[1]["content"][1:]
-    assert len(image_parts) == len(first["images"])
+    assert len(image_parts) == min(len(first["images"]), MAX_IMAGES_PER_CALL)
     assert all(
         part["type"] == "image_url"
         and part["image_url"]["url"].startswith("data:image/")
         for part in image_parts
     )
-    print("PASS multimodal request contains one data URL per selected source image")
+    print("PASS multimodal request contains one data URL per call-selected source image")
+
+    over_cap = next(span for span in worklist["spans"] if len(span["images"]) == 6)
+    selected_images = select_call_images(over_cap)
+    over_cap_messages = build_messages(over_cap, selected_images)
+    assert len(over_cap_messages[1]["content"][1:]) == MAX_IMAGES_PER_CALL
+    assert len(selected_images) == MAX_IMAGES_PER_CALL
+    assert [
+        (
+            image["distance_from_task_anchor"],
+            image["source_line"],
+            image["file"],
+        )
+        for image in selected_images
+    ] == sorted(
+        (
+            image["distance_from_task_anchor"],
+            image["source_line"],
+            image["file"],
+        )
+        for image in selected_images
+    )
+    over_cap_checkpoint = evaluate_result(
+        over_cap,
+        dry_run_result(over_cap),
+        selected_images=selected_images,
+    )
+    assert over_cap_checkpoint["verdict"] == "accepted"
+    assert len(over_cap_checkpoint["image_selection"]) == MAX_IMAGES_PER_CALL
+    assert over_cap_checkpoint["image_overflow"] == 2
+    over_cap_http_error = evaluate_result(
+        over_cap,
+        FixtureResult(outcome="http_error", content=""),
+        selected_images=selected_images,
+    )
+    assert over_cap_http_error["verdict"] == "rejected"
+    assert len(over_cap_http_error["image_selection"]) == MAX_IMAGES_PER_CALL
+    assert over_cap_http_error["image_overflow"] == 2
+    four_image = next(span for span in worklist["spans"] if len(span["images"]) == 4)
+    assert "image_overflow" not in evaluate_result(
+        four_image,
+        dry_run_result(four_image),
+    )
+    print("PASS six-image fixture sends four proximity-ranked images and records overflow=2")
 
     accepted = evaluate_result(first, dry_run_result(first))
     assert accepted["verdict"] == "accepted"
@@ -84,7 +131,7 @@ def main() -> int:
     assert rejected["failure"]["kind"] == "provenance_rejection"
     print("PASS image-derived records retain source exactness; source paraphrases reject")
 
-    selection = tuple(span["span_id"] for span in worklist["spans"][:2])
+    selection = (over_cap["span_id"], four_image["span_id"])
     config = RunConfig(
         model="offline-fixture",
         budget=DEFAULT_BUDGET,
@@ -105,17 +152,34 @@ def main() -> int:
         first_summary = execute_run(
             worklist, worklist_hash, output, config, transport
         )
+        legacy_path = checkpoint_path(output, over_cap["span_id"])
+        legacy_checkpoint = json.loads(legacy_path.read_text(encoding="utf-8"))
+        legacy_checkpoint.pop("image_selection")
+        legacy_checkpoint.pop("image_overflow")
+        atomic_write_json(legacy_path, legacy_checkpoint)
         second_summary = execute_run(
             worklist, worklist_hash, output, config, transport
         )
         manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
         checkpoints = list((output / "checkpoints").glob("*.json"))
+        checkpoint_payloads = [
+            json.loads(path.read_text(encoding="utf-8")) for path in checkpoints
+        ]
     assert first_summary["accepted"] == 2
     assert second_summary["accepted"] == 2
     assert calls == 2
     assert len(checkpoints) == 2
     assert manifest["run_version"] == RUN_VERSION
     assert manifest["control_calibration"]["rejection_rate"] == 1.0
+    checkpoint_by_id = {
+        payload["span_id"]: payload
+        for payload in checkpoint_payloads
+    }
+    assert all(
+        len(payload["image_selection"]) <= MAX_IMAGES_PER_CALL
+        for payload in checkpoint_by_id.values()
+    )
+    assert checkpoint_by_id[over_cap["span_id"]]["image_overflow"] == 2
     print("PASS atomic checkpoints, 100% control rejection, and accepted-span resume")
     return 0
 

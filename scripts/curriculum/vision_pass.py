@@ -59,6 +59,7 @@ PROMPT_VERSION = "g67_vision_verbatim_split_source_image_v1"
 DEFAULT_MODEL = "gemma-4-31B-it"
 DEFAULT_BUDGET = 8192
 MINIMUM_BUDGET = 2500
+MAX_IMAGES_PER_CALL = 4
 REPORT_COUNTS = {"grade_6": 145, "grade_7": 58, "total": 203}
 
 RUN_SPECS = (
@@ -714,8 +715,9 @@ def rejected_checkpoint(
     detail: str,
     task: Mapping[str, Any] | None = None,
     provenance: Mapping[str, Any] | None = None,
+    selected_images: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    return {
+    payload = {
         "run_version": RUN_VERSION,
         "span_id": span["span_id"],
         "lesson": span["lesson"],
@@ -732,16 +734,29 @@ def rejected_checkpoint(
         "provenance": provenance,
         "checkpointed_at": utc_timestamp(),
     }
+    payload.update(checkpoint_image_fields(span, selected_images))
+    return payload
 
 
 def evaluate_result(
-    span: Mapping[str, Any], result: Any, *, budget: int = DEFAULT_BUDGET
+    span: Mapping[str, Any],
+    result: Any,
+    *,
+    budget: int = DEFAULT_BUDGET,
+    selected_images: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
+    if selected_images is None:
+        selected_images = select_call_images(span)
     outcome = getattr(result, "outcome", None)
     if outcome in {"transport_error", "http_error"}:
         detail = getattr(result, "error", None) or f"REALLMS outcome: {outcome}"
         return rejected_checkpoint(
-            span, result, budget=budget, failure_kind="transport", detail=str(detail)
+            span,
+            result,
+            budget=budget,
+            failure_kind="transport",
+            detail=str(detail),
+            selected_images=selected_images,
         )
     if outcome == "truncated":
         return rejected_checkpoint(
@@ -750,6 +765,7 @@ def evaluate_result(
             budget=budget,
             failure_kind="truncated",
             detail="finish_reason length; final content was not parsed",
+            selected_images=selected_images,
         )
     if outcome == "empty_content":
         return rejected_checkpoint(
@@ -758,6 +774,7 @@ def evaluate_result(
             budget=budget,
             failure_kind="empty",
             detail="final content was empty; reasoning content was not parsed",
+            selected_images=selected_images,
         )
     if outcome != "ok":
         return rejected_checkpoint(
@@ -766,6 +783,7 @@ def evaluate_result(
             budget=budget,
             failure_kind="transport",
             detail=f"unknown REALLMS outcome: {outcome!r}",
+            selected_images=selected_images,
         )
     try:
         task = parse_content(getattr(result, "content", ""))
@@ -776,6 +794,7 @@ def evaluate_result(
             budget=budget,
             failure_kind="schema_rejection",
             detail=str(exc),
+            selected_images=selected_images,
         )
     source_path = ROOT / span["source_file"]
     raw_source = source_path.read_text(encoding="utf-8", errors="strict")
@@ -795,6 +814,7 @@ def evaluate_result(
             detail="source-bearing span returned an empty source_excerpt",
             task=task,
             provenance=provenance,
+            selected_images=selected_images,
         )
     if task["source_excerpt"].strip() and source_gate["verdict"] != "accepted":
         return rejected_checkpoint(
@@ -808,8 +828,9 @@ def evaluate_result(
             ),
             task=task,
             provenance=provenance,
+            selected_images=selected_images,
         )
-    return {
+    payload = {
         "run_version": RUN_VERSION,
         "span_id": span["span_id"],
         "lesson": span["lesson"],
@@ -826,6 +847,8 @@ def evaluate_result(
         "provenance": provenance,
         "checkpointed_at": utc_timestamp(),
     }
+    payload.update(checkpoint_image_fields(span, selected_images))
+    return payload
 
 
 def image_data_url(path: Path) -> str:
@@ -834,7 +857,73 @@ def image_data_url(path: Path) -> str:
     return f"data:{mime_type};base64,{encoded}"
 
 
-def build_messages(span: Mapping[str, Any]) -> list[dict[str, Any]]:
+def select_call_images(span: Mapping[str, Any]) -> list[dict[str, Any]]:
+    """Select at most four images without changing the derived worklist.
+
+    The vLLM host accepts no more than four images.  Rank worklist images by
+    absolute source-line distance to the task anchor, then by source line and
+    file path for deterministic ties; retain the first four in that order.
+    """
+    source_path = ROOT / str(span["source_file"])
+    source_lines = source_path.read_text(encoding="utf-8", errors="strict").splitlines()
+    line_by_ref: dict[str, int] = {}
+    for line_number, line in enumerate(source_lines, 1):
+        marker = IMAGE_MARKER_RE.fullmatch(line)
+        if marker is not None:
+            line_by_ref[marker.group(1)] = line_number
+    anchor_line = int(span["alignment"]["anchor_line"])
+    ranked: list[dict[str, Any]] = []
+    for image in span["images"]:
+        source_ref = str(image["source_ref"])
+        source_line = line_by_ref.get(source_ref)
+        if source_line is None:
+            raise ValueError(
+                f"worklist image marker no longer resolves for {span['span_id']}: "
+                f"{source_ref}"
+            )
+        ranked.append({
+            **image,
+            "source_line": source_line,
+            "distance_from_task_anchor": abs(source_line - anchor_line),
+        })
+    ranked.sort(
+        key=lambda image: (
+            image["distance_from_task_anchor"],
+            image["source_line"],
+            image["file"],
+        )
+    )
+    return ranked[:MAX_IMAGES_PER_CALL]
+
+
+def checkpoint_image_fields(
+    span: Mapping[str, Any], selected_images: list[dict[str, Any]] | None = None
+) -> dict[str, Any]:
+    if selected_images is None:
+        selected_images = select_call_images(span)
+    fields: dict[str, Any] = {
+        "image_selection": [
+            {
+                "file": image["file"],
+                "sha256": image["sha256"],
+                "source_ref": image["source_ref"],
+                "source_line": image["source_line"],
+                "distance_from_task_anchor": image["distance_from_task_anchor"],
+            }
+            for image in selected_images
+        ]
+    }
+    overflow = len(span["images"]) - len(selected_images)
+    if overflow > 0:
+        fields["image_overflow"] = overflow
+    return fields
+
+
+def build_messages(
+    span: Mapping[str, Any], selected_images: list[dict[str, Any]] | None = None
+) -> list[dict[str, Any]]:
+    if selected_images is None:
+        selected_images = select_call_images(span)
     content: list[dict[str, Any]] = [{
         "type": "text",
         "text": USER_PROMPT_TEMPLATE.format(
@@ -843,7 +932,7 @@ def build_messages(span: Mapping[str, Any]) -> list[dict[str, Any]]:
             region_text=span["region_text"],
         ),
     }]
-    for image in span["images"]:
+    for image in selected_images:
         content.append({
             "type": "image_url",
             "image_url": {"url": image_data_url(ROOT / image["file"])},
@@ -891,6 +980,20 @@ def compatible_checkpoint(
     ):
         return payload
     return None
+
+
+def record_checkpoint_image_selection(
+    path: Path, checkpoint: dict[str, Any], span: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Add or refresh call-image audit fields without repeating an accepted call."""
+    expected = checkpoint_image_fields(span)
+    updated = dict(checkpoint)
+    updated.update(expected)
+    if "image_overflow" not in expected:
+        updated.pop("image_overflow", None)
+    if updated != checkpoint:
+        atomic_write_json(path, updated)
+    return updated
 
 
 def write_progress(
@@ -1009,20 +1112,27 @@ def execute_run(
     ensure_manifest(output_dir, worklist, worklist_hash, config, calibration)
     checkpoints: dict[str, dict[str, Any]] = {}
     for span in selected:
-        existing = compatible_checkpoint(
-            checkpoint_path(output_dir, span["span_id"]), span
-        )
+        path = checkpoint_path(output_dir, span["span_id"])
+        existing = compatible_checkpoint(path, span)
         if existing is not None:
-            checkpoints[span["span_id"]] = existing
+            checkpoints[span["span_id"]] = record_checkpoint_image_selection(
+                path, existing, span
+            )
     write_progress(output_dir, selected, checkpoints)
     for index, span in enumerate(selected, 1):
         existing = checkpoints.get(span["span_id"])
         if existing is not None and existing.get("verdict") == "accepted":
             print(f"[{index}/{len(selected)}] {span['span_id']}: resumed accepted checkpoint")
             continue
-        messages = build_messages(span)
+        selected_images = select_call_images(span)
+        messages = build_messages(span, selected_images)
         result = transport(span, messages)
-        checkpoint = evaluate_result(span, result, budget=config.budget)
+        checkpoint = evaluate_result(
+            span,
+            result,
+            budget=config.budget,
+            selected_images=selected_images,
+        )
         atomic_write_json(checkpoint_path(output_dir, span["span_id"]), checkpoint)
         checkpoints[span["span_id"]] = checkpoint
         write_progress(output_dir, selected, checkpoints)
@@ -1119,8 +1229,8 @@ def run(args: argparse.Namespace) -> int:
             span: dict[str, Any], messages: list[dict[str, Any]]
         ) -> FixtureResult:
             image_parts = messages[1]["content"][1:]
-            if len(image_parts) != len(span["images"]):
-                raise RuntimeError("dry-run multimodal message omitted an image")
+            if len(image_parts) != min(len(span["images"]), MAX_IMAGES_PER_CALL):
+                raise RuntimeError("dry-run multimodal message violated the image cap")
             return dry_run_result(span)
 
     else:
