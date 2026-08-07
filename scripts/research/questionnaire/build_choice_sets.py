@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile the questionnaire's deterministic L1-L3 choice sets.
+"""Compile navigation choices and engine-side operand contracts.
 
 The compiler reads the shipped family quotient and execution-verified input
 contracts.  The two vocabulary bridges are deliberately authored JSON files;
@@ -131,35 +131,6 @@ class CompiledChoiceSets:
         choices = [(family, plain_label(family), family) for family in region["families"]]
         return make_pages("L2", "Which Hermes family best matches the work?", choices)
 
-    def l3_pages(self, family: str) -> tuple[ChoicePage, ...]:
-        schemas = self.schemas_for_family(family)
-        if len(schemas) > MAX_CONTENT_CHOICES:
-            raise ValueError(f"{family} requires its discriminator stage before schema selection")
-        choices = [
-            (schema.schema_id, schema_label(schema), schema.schema_id)
-            for schema in schemas
-        ]
-        return make_pages("L3", "What operand shape does the work use?", choices)
-
-    def l3_discriminator_pages(self, family: str) -> tuple[ChoicePage, ...]:
-        discriminators = sorted({schema.discriminator for schema in self.schemas_for_family(family)})
-        choices = [
-            (discriminator, plain_label(discriminator), discriminator)
-            for discriminator in discriminators
-        ]
-        return make_pages("L3-kind", "Which operand-shape kind does the work use?", choices)
-
-    def l3_schema_pages(self, family: str, discriminator: str) -> tuple[ChoicePage, ...]:
-        schemas = tuple(
-            schema for schema in self.schemas_for_family(family)
-            if schema.discriminator == discriminator
-        )
-        choices = [
-            (schema.schema_id, schema_label(schema), schema.schema_id)
-            for schema in schemas
-        ]
-        return make_pages("L3-schema", "Which schema within that kind matches the work?", choices)
-
     def to_dict(self) -> dict[str, Any]:
         families: dict[str, Any] = {}
         for family in self.family_order:
@@ -167,20 +138,11 @@ class CompiledChoiceSets:
             family_row: dict[str, Any] = {
                 "domain": self.family_domains[family],
                 "schemas": [asdict(schema) for schema in schemas],
+                "selection": "engine_side_contract_binding",
             }
-            if len(schemas) <= MAX_CONTENT_CHOICES:
-                family_row["l3_pages"] = pages_as_dicts(self.l3_pages(family))
-            else:
-                family_row["l3_discriminator_pages"] = pages_as_dicts(
-                    self.l3_discriminator_pages(family)
-                )
-                family_row["l3_schema_pages"] = {
-                    discriminator: pages_as_dicts(self.l3_schema_pages(family, discriminator))
-                    for discriminator in sorted({schema.discriminator for schema in schemas})
-                }
             families[family] = family_row
         return {
-            "schema": 1,
+            "schema": 2,
             "sources": {
                 "family_graph": self.graph_source,
                 "input_contracts": self.contracts_source,
@@ -204,13 +166,6 @@ class CompiledChoiceSets:
 
     def to_bytes(self) -> bytes:
         return (json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8")
-
-
-def schema_label(schema: ContractSchema) -> str:
-    numeric = ", ".join(f"{slot.key}: {plain_label(slot.type_name)}" for slot in numeric_slots(schema))
-    if numeric:
-        return f"{plain_label(schema.discriminator)} ({numeric})"
-    return f"{plain_label(schema.discriminator)} ({canonical_json(schema.template)})"
 
 
 def make_pages(

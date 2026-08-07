@@ -18,8 +18,10 @@ from typing import Any, Callable
 from runner import (
     ModelOutcome,
     Question,
+    ResponseKind,
     TransportStatus,
     load_call_contract,
+    request_for_question,
 )
 
 
@@ -37,6 +39,8 @@ class ClientAttempt:
     page: int
     model: str
     status: str
+    response_kind: str
+    parsed_content: str | None
     parsed_letter: str | None
     abstention: bool
     eval_count: int
@@ -108,8 +112,7 @@ class OllamaQuestionnaireClient:
             raise ValueError("Ollama response is not a JSON object")
         return value
 
-    def _payload(self, prompt: str) -> dict[str, Any]:
-        request = self.contract["request"]
+    def _payload(self, prompt: str, request: dict[str, Any]) -> dict[str, Any]:
         options: dict[str, Any] = {
             "temperature": request["temperature"],
             "num_predict": request["num_predict"],
@@ -133,7 +136,12 @@ class OllamaQuestionnaireClient:
         *,
         request_contract_exact: bool,
     ) -> ModelOutcome:
-        parsed_letter = outcome.content if outcome.status is TransportStatus.OK else None
+        parsed_content = outcome.content if outcome.status is TransportStatus.OK else None
+        parsed_letter = (
+            parsed_content
+            if question.response_kind == ResponseKind.LETTER.value
+            else None
+        )
         self.attempts.append(ClientAttempt(
             sequence=len(self.attempts) + 1,
             question_id=question_id(question),
@@ -142,6 +150,8 @@ class OllamaQuestionnaireClient:
             page=question.page_index,
             model=self.model,
             status=outcome.status.value,
+            response_kind=question.response_kind,
+            parsed_content=parsed_content,
             parsed_letter=parsed_letter,
             abstention=outcome.status is not TransportStatus.OK or parsed_letter == "X",
             eval_count=outcome.eval_count,
@@ -157,7 +167,7 @@ class OllamaQuestionnaireClient:
         return outcome
 
     def complete(self, question: Question, prompt: str, request: dict[str, Any]) -> ModelOutcome:
-        expected = self.contract["request"]
+        expected = request_for_question(self.contract, question)
         request_exact = request == expected
         if not request_exact:
             outcome = ModelOutcome(
@@ -171,7 +181,7 @@ class OllamaQuestionnaireClient:
 
         started = time.perf_counter()
         try:
-            payload = self._transport(self._payload(prompt), self.timeout)
+            payload = self._transport(self._payload(prompt, request), self.timeout)
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
             latency = (time.perf_counter() - started) * 1000.0
             outcome = ModelOutcome(
@@ -262,18 +272,26 @@ class OllamaQuestionnaireClient:
             )
             return self._record(question, outcome, request_contract_exact=True)
 
-        valid = {choice.letter for choice in question.choices}
-        raw_exact = len(raw) == 1 and raw.upper() in valid
         stopped = raw
         for stop in self.contract["reply_stops"]:
             stopped = stopped.split(stop, 1)[0]
-        normalized = stopped.strip().upper()
-        parse_ok = len(normalized) == 1 and normalized in valid
+        normalized = stopped.strip()
+        if question.response_kind == ResponseKind.TRANSCRIPTION.value:
+            parse_ok = bool(normalized)
+            raw_exact: bool | None = None
+            parsed = normalized
+            failure_detail = "transcription_parse_failed"
+        else:
+            valid = {choice.letter for choice in question.choices}
+            raw_exact = len(raw) == 1 and raw.upper() in valid
+            parsed = normalized.upper()
+            parse_ok = len(parsed) == 1 and parsed in valid
+            failure_detail = "one_letter_parse_failed"
         if not parse_ok:
             outcome = ModelOutcome(
                 TransportStatus.INVALID_CONTENT,
                 eval_count=eval_count,
-                detail="one_letter_parse_failed",
+                detail=failure_detail,
                 latency_ms=latency,
                 raw_exact_one_letter=raw_exact,
                 reply_stops_honored=True,
@@ -284,7 +302,7 @@ class OllamaQuestionnaireClient:
 
         outcome = ModelOutcome(
             TransportStatus.OK,
-            content=normalized,
+            content=parsed,
             eval_count=eval_count,
             latency_ms=latency,
             raw_exact_one_letter=raw_exact,

@@ -34,21 +34,25 @@ def check_rows(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
     if len(attempts) != summary.get("model_calls"):
         raise AssertionError("model-attempt count does not match the summary")
     for attempt in attempts:
-        if attempt.get("status") != "ok" and attempt.get("parsed_letter") is not None:
-            raise AssertionError("non-ok model content entered the parsed-letter lane")
+        if attempt.get("status") != "ok" and attempt.get("parsed_content") is not None:
+            raise AssertionError("non-ok model content entered a parsed-content lane")
 
     compliance = summary.get("contract_compliance", {})
     valid = compliance.get("valid_letter", {})
-    exact_count = sum(attempt.get("raw_exact_one_letter") is True for attempt in attempts)
-    exact_rate = exact_count / len(attempts) if attempts else 0.0
-    if valid.get("count") != exact_count or valid.get("total") != len(attempts):
+    navigation = [
+        attempt for attempt in attempts
+        if attempt.get("response_kind") == "letter" and attempt.get("level") in {"L1", "L2"}
+    ]
+    exact_count = sum(attempt.get("raw_exact_one_letter") is True for attempt in navigation)
+    exact_rate = exact_count / len(navigation) if navigation else 0.0
+    if valid.get("count") != exact_count or valid.get("total") != len(navigation):
         raise AssertionError("valid-letter summary counts do not match the item records")
     if abs(float(valid.get("rate", -1.0)) - exact_rate) > 1e-12:
         raise AssertionError("valid-letter summary rate does not match the item records")
     if exact_rate < valid.get("threshold", 0.9):
         raise AssertionError("valid-letter rate is below the registered 90% gate")
     non_ok_content_parsed = sum(
-        attempt.get("status") != "ok" and attempt.get("parsed_letter") is not None
+        attempt.get("status") != "ok" and attempt.get("parsed_content") is not None
         for attempt in attempts
     )
     if compliance.get("non_ok_content_parsed") != non_ok_content_parsed:
@@ -61,6 +65,18 @@ def check_rows(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
         raise AssertionError("position-flip summary does not match the item records")
     if flips != 0:
         raise AssertionError("a position permutation changed a semantic answer")
+    if any(probe.get("level") not in {"L1", "L2"} for probe in probes):
+        raise AssertionError("position gate includes a non-navigation question")
+    fidelity = compliance.get("transcription_fidelity", {})
+    accepted = sum(item.get("binding_fidelity", {}).get("accepted_bindings", 0) for item in items)
+    verified = sum(
+        item.get("binding_fidelity", {}).get("verified_verbatim_bindings", 0)
+        for item in items
+    )
+    if fidelity.get("accepted") != accepted or fidelity.get("verbatim_present") != verified:
+        raise AssertionError("transcription-fidelity summary does not match item records")
+    if accepted == 0 or verified != accepted or not fidelity.get("pass"):
+        raise AssertionError("an accepted binding lacks verbatim source presence")
     if not summary.get("pass"):
         raise AssertionError("summary compliance gate is not passing")
     return summary

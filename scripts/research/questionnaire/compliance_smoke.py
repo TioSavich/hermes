@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the questionnaire's short Ollama and Hermes compliance smoke.
 
-The default mode calls local Ollama and the real stdio MCP core.  ``--fixture``
+The default mode calls local Ollama and the real stdio MCP core. ``--fixture``
 uses injected transports and opens no network socket.
 """
 from __future__ import annotations
@@ -17,19 +17,14 @@ from unittest.mock import patch
 
 from build_choice_sets import ABSTENTION_LETTER, CONTENT_LETTERS, Choice, conforms
 from check_compliance_smoke import check_rows
-from ollama_client import (
-    DEFAULT_ENDPOINT,
-    DEFAULT_MODEL,
-    OllamaQuestionnaireClient,
-    question_id,
-)
+from ollama_client import DEFAULT_ENDPOINT, DEFAULT_MODEL, OllamaQuestionnaireClient, question_id
 from runner import (
     ModelOutcome,
     Question,
     QuestionnaireRunner,
+    ResponseKind,
     StdioHermesClient,
     TransportStatus,
-    load_call_contract,
 )
 
 
@@ -67,35 +62,36 @@ def prompt_with_question_choices(prompt: str, original: Question, changed: Quest
 def selected_key(question: Question, outcome: ModelOutcome) -> str | None:
     if outcome.status is not TransportStatus.OK:
         return None
-    return next(
-        (choice.key for choice in question.choices if choice.letter == outcome.content),
-        None,
-    )
+    return next((choice.key for choice in question.choices if choice.letter == outcome.content), None)
 
 
 class PositionProbeClient:
-    """Ask each question in its compiled and content-permuted order."""
+    """Permutation-probe only the retained L1/L2 letter questions."""
 
     def __init__(self, client: OllamaQuestionnaireClient) -> None:
         self.client = client
         self.probes: list[dict[str, Any]] = []
 
     def complete(self, question: Question, prompt: str, request: dict[str, Any]) -> ModelOutcome:
+        if question.response_kind != ResponseKind.LETTER.value or question.level not in {"L1", "L2"}:
+            return self.client.complete(question, prompt, request)
+
         sequence = len(self.probes) + 1
         primary = replace(
             question,
             context={**question.context, "_smoke_ordering": "compiled", "_smoke_pair": sequence},
         )
         primary_outcome = self.client.complete(primary, prompt, request)
-
         permuted = permute_question(question, sequence)
         permuted = replace(
             permuted,
             context={**permuted.context, "_smoke_ordering": "permuted", "_smoke_pair": sequence},
         )
-        permuted_prompt = prompt_with_question_choices(prompt, question, permuted)
-        permuted_outcome = self.client.complete(permuted, permuted_prompt, request)
-
+        permuted_outcome = self.client.complete(
+            permuted,
+            prompt_with_question_choices(prompt, question, permuted),
+            request,
+        )
         primary_key = selected_key(primary, primary_outcome)
         permuted_key = selected_key(permuted, permuted_outcome)
         comparable = primary_key is not None and permuted_key is not None
@@ -119,8 +115,6 @@ class PositionProbeClient:
             "comparable": comparable,
             "flip": comparable and primary_key != permuted_key,
         })
-        # The per-item budget covers every sampled token, including the paired
-        # permutation probe, even though only the compiled-order answer routes.
         return replace(
             primary_outcome,
             eval_count=primary_outcome.eval_count + permuted_outcome.eval_count,
@@ -131,13 +125,9 @@ class FixtureHermes:
     """Shape-checking symbolic fixture used only by ``--fixture``."""
 
     def __init__(self, compiled: Any) -> None:
-        self.by_strategy = {
-            schema.representative_kind: schema for schema in compiled.contracts
-        }
+        self.by_strategy = {schema.representative_kind: schema for schema in compiled.contracts}
 
     def call_tool(self, name: str, arguments: dict[str, Any]) -> Any:
-        if name == "strategy_recognize":
-            return []
         if name != "strategy_trace":
             raise AssertionError(f"unexpected fixture tool: {name}")
         schema = self.by_strategy[arguments["strategy"]]
@@ -156,7 +146,7 @@ class FixtureHermes:
 
 
 class WorkedItemFixtureTransport:
-    """Choose the authored worked item's semantic answer from each prompt."""
+    """Return authored semantic answers in the new navigation/binding shapes."""
 
     @staticmethod
     def _family(prompt: str) -> str:
@@ -164,42 +154,46 @@ class WorkedItemFixtureTransport:
             return "multiplication"
         if " 53 - 18 " in prompt:
             return "subtraction"
-        if " 27 + 15 " in prompt:
+        if " 27 + 15 " in prompt or "joined 15 more" in prompt:
             return "addition"
         raise AssertionError("unknown authored fixture excerpt")
 
     def __call__(self, payload: dict[str, Any], timeout: float) -> dict[str, Any]:
         del timeout
         prompt = payload["prompt"]
-        choices = CHOICE_LINE.findall(prompt)
-        if not choices:
-            raise AssertionError("fixture prompt has no choices")
-        family = self._family(prompt)
-        if "What is the work mostly doing?" in prompt:
-            wanted = "whole-number arithmetic"
-        elif "Which Hermes family best matches the work?" in prompt:
-            wanted = family
-        elif "operand slot /a" in prompt:
-            wanted = {"addition": "27", "subtraction": "53", "multiplication": "6"}[family]
-        elif "operand slot /b" in prompt:
-            wanted = {"addition": "15", "subtraction": "18", "multiplication": "7"}[family]
-        elif "student's final answer" in prompt:
-            wanted = {"addition": "42", "subtraction": "35", "multiplication": "42"}[family]
+        if "given(got, Value)." in prompt:
+            response = "given(got, 42)."
+        elif "given(a, Value)." in prompt:
+            response = "given(a, 27)."
+        elif "given(b, Value)." in prompt:
+            response = "given(b, 15)."
+        elif "Write the student's operation exactly as written" in prompt:
+            family = self._family(prompt)
+            response = {
+                "addition": "27 + 15 = 42",
+                "subtraction": "53 - 18 = 35",
+                "multiplication": "6 times 7 = 42",
+            }[family]
         else:
-            raise AssertionError("fixture received an unexpected question")
-
-        letter = next(
-            (letter for letter, label in choices if label == wanted or label.startswith(wanted + " [")),
-            None,
-        )
-        if letter is None:
-            raise AssertionError(f"fixture answer {wanted!r} is absent from the choices")
-        return {"response": letter, "done": True, "done_reason": "stop", "eval_count": 1}
+            family = self._family(prompt)
+            choices = CHOICE_LINE.findall(prompt)
+            if not choices:
+                raise AssertionError("fixture prompt has neither binding form nor choices")
+            if "What is the work mostly doing?" in prompt:
+                wanted = "whole-number arithmetic"
+            elif "Which Hermes family best matches the work?" in prompt:
+                wanted = family
+            else:
+                raise AssertionError("fixture received an unexpected letter question")
+            response = next((letter for letter, label in choices if label == wanted), "")
+            if not response:
+                raise AssertionError(f"fixture answer {wanted!r} is absent from the choices")
+        return {"response": response, "done": True, "done_reason": "stop", "eval_count": 1}
 
 
 def load_smoke_items(limit: int) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     data = json.loads(SMOKE_ITEMS.read_text(encoding="utf-8"))
-    if data.get("schema") != 1 or "invented" not in data.get("authorship", ""):
+    if data.get("schema") != 2 or "invented" not in data.get("authorship", ""):
         raise ValueError("smoke-item authorship or schema is missing")
     items = data.get("items", [])
     if not isinstance(items, list) or not items:
@@ -207,6 +201,31 @@ def load_smoke_items(limit: int) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     if limit < 1 or limit > len(items):
         raise ValueError(f"items must be between 1 and {len(items)}")
     return data, items[:limit]
+
+
+def _binding_fidelity(result: Any) -> dict[str, Any]:
+    l0 = next(event for event in result.ledger if event.get("kind") == "l0")
+    harvested = {
+        (span["text"], span["start"], span["end"], span["role"])
+        for span in l0["numeral_spans"]
+    }
+    recoveries = [event for event in result.ledger if event.get("kind") == "verbatim_span_recovery"]
+    accepted = [event for event in result.ledger if event.get("kind") == "binding_accepted"]
+    verified = 0
+    for event in recoveries:
+        groups = event.get("values", {}).values() if "values" in event else (event,)
+        spans = [span for group in groups for span in group.get("spans", [])]
+        if spans and all(
+            (span["text"], span["start"], span["end"], span["role"]) in harvested
+            for span in spans
+        ):
+            verified += 1
+    return {
+        "accepted_bindings": len(accepted),
+        "verified_verbatim_bindings": verified,
+        "rejected_bindings": sum(event.get("kind") == "binding_rejected" for event in result.ledger),
+        "pass": len(accepted) > 0 and verified == len(accepted),
+    }
 
 
 def item_row(
@@ -221,12 +240,19 @@ def item_row(
         "item_id": item["id"],
         "source": "authored_invented_smoke_item",
         "expected_family": item["family"],
+        "form": item["form"],
         "result_status": result.status,
         "resolved_family": result.family,
         "excerpt_sha256": result.excerpt_sha256,
         "question_sequence": probes,
         "letters": [attempt["parsed_letter"] for attempt in attempts if attempt["parsed_letter"]],
+        "transcriptions": [
+            attempt["parsed_content"] for attempt in attempts
+            if attempt["response_kind"] == ResponseKind.TRANSCRIPTION.value
+            and attempt["parsed_content"] is not None
+        ],
         "abstentions": [attempt for attempt in attempts if attempt["abstention"]],
+        "binding_fidelity": _binding_fidelity(result),
         "leaf_operation_invocations": leaf_calls,
         "latencies_ms": [attempt["latency_ms"] for attempt in attempts],
         "model_attempts": attempts,
@@ -242,74 +268,79 @@ def summarize(
     item_rows: list[dict[str, Any]],
 ) -> dict[str, Any]:
     attempts = [attempt for row in item_rows for attempt in row["model_attempts"]]
+    navigation = [
+        attempt for attempt in attempts
+        if attempt["response_kind"] == ResponseKind.LETTER.value
+        and attempt["level"] in {"L1", "L2"}
+    ]
     probes = [probe for row in item_rows for probe in row["question_sequence"]]
-    total = len(attempts)
-    exact = sum(attempt["raw_exact_one_letter"] is True for attempt in attempts)
-    parsed = sum(attempt["parse_ok"] is True for attempt in attempts)
+    exact = sum(attempt["raw_exact_one_letter"] is True for attempt in navigation)
     stops_observed = [attempt for attempt in attempts if attempt["reply_stops_honored"] is not None]
     stops_honored = sum(attempt["reply_stops_honored"] is True for attempt in stops_observed)
     requests_exact = sum(attempt["request_contract_exact"] is True for attempt in attempts)
     within_latency = sum(attempt["latency_within_bound"] is True for attempt in attempts)
     non_ok_transport = sum(
-        attempt["status"] in {"truncated", "empty_content", "error"}
-        for attempt in attempts
+        attempt["status"] in {"truncated", "empty_content", "error"} for attempt in attempts
     )
     parse_anomalies = sum(attempt["status"] == "invalid_content" for attempt in attempts)
     non_ok_content_parsed = sum(
-        attempt["status"] != "ok" and attempt["parsed_letter"] is not None
+        attempt["status"] != "ok" and attempt["parsed_content"] is not None
         for attempt in attempts
     )
     flips = sum(probe["flip"] for probe in probes)
     uncomparable = sum(not probe["comparable"] for probe in probes)
     threshold = 0.90
-    exact_rate = exact / total if total else 0.0
-    parsed_rate = parsed / total if total else 0.0
+    exact_rate = exact / len(navigation) if navigation else 0.0
+    accepted = sum(row["binding_fidelity"]["accepted_bindings"] for row in item_rows)
+    verified = sum(row["binding_fidelity"]["verified_verbatim_bindings"] for row in item_rows)
     all_items_leaf = all(row["result_status"] == "leaf_computed" for row in item_rows)
+    fidelity_pass = accepted > 0 and accepted == verified and all(
+        row["binding_fidelity"]["pass"] for row in item_rows
+    )
     passed = (
-        total > 0
+        bool(navigation)
         and exact_rate >= threshold
-        and requests_exact == total
+        and requests_exact == len(attempts)
         and stops_honored == len(stops_observed)
-        and within_latency == total
+        and within_latency == len(attempts)
         and non_ok_content_parsed == 0
         and flips == 0
+        and fidelity_pass
         and all_items_leaf
     )
     return {
         "record_type": "summary",
-        "schema": "questionnaire_compliance_smoke_v1",
+        "schema": "questionnaire_compliance_smoke_v2",
         "mode": mode,
         "model": model,
         "items_requested": items_requested,
         "items_completed": len(item_rows),
         "leaf_items": sum(row["result_status"] == "leaf_computed" for row in item_rows),
-        "model_calls": total,
+        "model_calls": len(attempts),
         "contract_compliance": {
             "valid_letter": {
                 "count": exact,
-                "total": total,
+                "total": len(navigation),
                 "rate": exact_rate,
                 "threshold": threshold,
-                "definition": "raw output is exactly one listed letter",
+                "definition": "raw L1/L2 output is exactly one listed letter",
             },
-            "parsed_valid_letter": {
-                "count": parsed,
-                "total": total,
-                "rate": parsed_rate,
+            "transcription_fidelity": {
+                "accepted": accepted,
+                "verbatim_present": verified,
+                "pass": fidelity_pass,
             },
-            "reply_stops_honored": {
-                "count": stops_honored,
-                "observed": len(stops_observed),
-            },
-            "request_contract_exact": {"count": requests_exact, "total": total},
-            "non_ok_transport": {"count": non_ok_transport, "total": total},
-            "parse_anomaly": {"count": parse_anomalies, "total": total},
+            "reply_stops_honored": {"count": stops_honored, "observed": len(stops_observed)},
+            "request_contract_exact": {"count": requests_exact, "total": len(attempts)},
+            "non_ok_transport": {"count": non_ok_transport, "total": len(attempts)},
+            "parse_anomaly": {"count": parse_anomalies, "total": len(attempts)},
             "latency_within_bound": {
                 "count": within_latency,
-                "total": total,
+                "total": len(attempts),
                 "bound_ms": attempts[0]["latency_bound_ms"] if attempts else None,
             },
             "position_permutation": {
+                "levels": ["L1", "L2"],
                 "pairs": len(probes),
                 "comparable": len(probes) - uncomparable,
                 "uncomparable": uncomparable,
@@ -332,8 +363,7 @@ def write_rows(path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 def run(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    metadata, items = load_smoke_items(args.items)
-    del metadata
+    _, items = load_smoke_items(args.items)
     base = OllamaQuestionnaireClient(
         model=args.model,
         endpoint=args.endpoint,
@@ -380,7 +410,7 @@ def main() -> int:
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--endpoint", default=DEFAULT_ENDPOINT)
     parser.add_argument("--timeout", type=float, default=300.0)
-    parser.add_argument("--items", type=int, default=3)
+    parser.add_argument("--items", type=int, default=4)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 
@@ -407,6 +437,8 @@ def main() -> int:
         f"mode={summary['mode']} items={summary['items_completed']} "
         f"calls={summary['model_calls']} "
         f"valid_letter_rate={summary['contract_compliance']['valid_letter']['rate']:.1%} "
+        f"binding_fidelity={summary['contract_compliance']['transcription_fidelity']['verbatim_present']}/"
+        f"{summary['contract_compliance']['transcription_fidelity']['accepted']} "
         f"position_flips={summary['contract_compliance']['position_permutation']['flips']}"
     )
     print(f"ledger: {args.output}")

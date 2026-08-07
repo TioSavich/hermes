@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run every sandbox-safe questionnaire check, including slice 2 fixtures."""
+"""Run every fixture-only questionnaire check through slice 3."""
 from __future__ import annotations
 
 import subprocess
@@ -28,4 +28,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

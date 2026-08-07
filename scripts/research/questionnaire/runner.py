@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Run one offline questionnaire item with injected model and Hermes clients.
+"""Run one questionnaire item with an injected model and symbolic client.
 
-The default symbolic client is the repository's stdio ``MCPClient``.  A model
-client is always injected; this module has no network transport and makes no
-model call on import or construction.
+Navigation uses bounded letter questions. Binding uses constrained verbatim
+transcription; the runner validates and locates the text before it can enter a
+contract. Import and construction make no model or network call.
 """
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ from dataclasses import asdict, dataclass, field
 from enum import Enum
 from fractions import Fraction
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Any, Callable, Protocol
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -32,22 +32,39 @@ from build_choice_sets import (  # noqa: E402
     ChoicePage,
     CompiledChoiceSets,
     ContractSchema,
-    MAX_CONTENT_CHOICES,
     NumericSlot,
     compile_choice_sets,
     conforms,
-    make_pages,
     numeric_slots,
+    plain_label,
     replace_path,
 )
 from scripts.research.gemma_hermes_protocol import MCPClient  # noqa: E402
 
 
 CALL_CONTRACT_PATH = HERE / "call_contract.json"
-NUMERAL_RE = re.compile(
-    r"(?<![\w.])[-+]?(?:\d+\s+\d+/\d+|\d+/\d+|\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)(?![\w.])"
+NUMERAL_PATTERN = (
+    r"[-+]?(?:\d+\s+\d+/\d+|\d+/\d+|\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)"
 )
+NUMERAL_RE = re.compile(rf"(?<![\w.]){NUMERAL_PATTERN}(?![\w.])")
 SIMPLE_FRACTION_RE = re.compile(r"^([+-]?\d+)/(\d+)$")
+EQUATION_RE = re.compile(
+    rf"(?P<a>{NUMERAL_PATTERN})\s*"
+    r"(?P<operator>\+|-|×|÷|/|times)\s*"
+    rf"(?P<b>{NUMERAL_PATTERN})\s*=\s*(?P<got>{NUMERAL_PATTERN})",
+    re.IGNORECASE,
+)
+GIVEN_RE = re.compile(
+    rf"^given\((?P<name>[a-z][a-z0-9_]*),\s*(?P<value>{NUMERAL_PATTERN})\)\.$"
+)
+OPERATOR_FAMILIES = {
+    "+": "addition",
+    "-": "subtraction",
+    "×": "multiplication",
+    "times": "multiplication",
+    "÷": "division",
+    "/": "division",
+}
 
 
 class TransportStatus(str, Enum):
@@ -56,6 +73,11 @@ class TransportStatus(str, Enum):
     EMPTY_CONTENT = "empty_content"
     INVALID_CONTENT = "invalid_content"
     ERROR = "error"
+
+
+class ResponseKind(str, Enum):
+    LETTER = "letter"
+    TRANSCRIPTION = "transcription"
 
 
 @dataclass(frozen=True)
@@ -88,8 +110,22 @@ class Question:
     excerpt: str
     page_index: int
     page_count: int
-    choices: tuple[Choice, ...]
+    choices: tuple[Choice, ...] = ()
     context: dict[str, Any] = field(default_factory=dict)
+    response_kind: str = ResponseKind.LETTER.value
+
+
+@dataclass(frozen=True)
+class BoundValue:
+    text: str
+    value: int | float | str
+    spans: tuple[NumeralSpan, ...]
+
+
+@dataclass(frozen=True)
+class SchemaBinding:
+    schema: ContractSchema
+    operand: Any
 
 
 @dataclass
@@ -138,12 +174,20 @@ class StdioHermesClient:
 
 def load_call_contract() -> dict[str, Any]:
     contract = json.loads(CALL_CONTRACT_PATH.read_text(encoding="utf-8"))
-    request = contract["request"]
-    if request != {"temperature": 0, "num_predict": 8, "think": False, "stops": []}:
-        raise ValueError("call contract drifted from the designed one-letter request")
+    navigation = {"temperature": 0, "num_predict": 8, "think": False, "stops": []}
+    binding = {"temperature": 0, "num_predict": 24, "think": False, "stops": []}
+    if contract.get("request") != navigation:
+        raise ValueError("call contract drifted from the designed navigation request")
+    if contract.get("binding_request") != binding:
+        raise ValueError("call contract drifted from the designed binding request")
     if contract["output"]["abstention_letter"] != ABSTENTION_LETTER:
         raise ValueError("call contract abstention letter does not match the compiler")
     return contract
+
+
+def request_for_question(contract: dict[str, Any], question: Question) -> dict[str, Any]:
+    key = "binding_request" if question.response_kind == ResponseKind.TRANSCRIPTION.value else "request"
+    return dict(contract[key])
 
 
 def _parse_numeric(text: str) -> int | float | str:
@@ -205,8 +249,7 @@ def final_step_bounds(excerpt: str) -> tuple[int, int]:
     return final.start(), final.end()
 
 
-def compatible_span(slot: NumericSlot, span: NumeralSpan) -> bool:
-    value = span.value
+def compatible_value(slot: NumericSlot, value: int | float | str) -> bool:
     if isinstance(value, str):
         return False
     if slot.type_name in {"integer", "positive_integer"} and not isinstance(value, int):
@@ -216,16 +259,56 @@ def compatible_span(slot: NumericSlot, span: NumeralSpan) -> bool:
     return True
 
 
-def span_pages(level: str, question: str, spans: tuple[NumeralSpan, ...]) -> tuple[ChoicePage, ...]:
-    rows = [
-        (
-            f"{span.start}:{span.end}:{span.role}",
-            f"{span.text} [characters {span.start}:{span.end}]",
-            asdict(span),
-        )
-        for span in spans
-    ]
-    return make_pages(level, question, rows)
+def compatible_span(slot: NumericSlot, span: NumeralSpan) -> bool:
+    return compatible_value(slot, span.value)
+
+
+def equation_matches(text: str) -> tuple[re.Match[str], ...]:
+    matches: list[re.Match[str]] = []
+    for line_match in re.finditer(r"[^\n]+", text):
+        line = line_match.group(0)
+        if "=" not in line:
+            continue
+        matches.extend(EQUATION_RE.finditer(line))
+    return tuple(matches)
+
+
+def equation_operator_tokens(text: str) -> tuple[str, ...]:
+    """Find explicit operator tokens on equation lines without treating signs as operators."""
+    found: list[str] = []
+    for line in text.splitlines():
+        if "=" not in line:
+            continue
+        found.extend(match.group(0).lower() for match in re.finditer(r"\btimes\b", line, re.I))
+        for index, character in enumerate(line):
+            if character not in "+-×÷":
+                continue
+            left = next((value for value in reversed(line[:index]) if not value.isspace()), "")
+            right = next((value for value in line[index + 1:] if not value.isspace()), "")
+            if left and right and left not in "=([{,:+-×÷/" and right not in "=)]},:+×÷/":
+                found.append(character)
+        # A slash surrounded by space is an explicit division token. Compact
+        # numeric division is admitted only when the equation parser identifies
+        # the slash as its operator, so fraction bars do not create ambiguity.
+        found.extend("/" for _ in re.finditer(r"\s/\s", line))
+        if "/" not in found:
+            found.extend(
+                match.group("operator").lower()
+                for match in EQUATION_RE.finditer(line)
+                if match.group("operator") == "/"
+            )
+    return tuple(found)
+
+
+def operator_family(text: str) -> tuple[str | None, tuple[str, ...]]:
+    operators = equation_operator_tokens(text)
+    families = {OPERATOR_FAMILIES[operator] for operator in operators}
+    return (next(iter(families)) if len(families) == 1 else None), operators
+
+
+def exact_spans(text: str, spans: tuple[NumeralSpan, ...]) -> tuple[NumeralSpan, ...]:
+    """Recover every maximal source span with exactly the transcribed text."""
+    return tuple(span for span in spans if span.role == "numeral" and span.text == text)
 
 
 def _candidate_letter(raw: str, valid: set[str]) -> str | None:
@@ -234,6 +317,12 @@ def _candidate_letter(raw: str, valid: set[str]) -> str | None:
         return None
     letter = matched.group(1).upper()
     return letter if letter in valid else None
+
+
+def _slot_name(slot_key: str) -> str:
+    value = slot_key.strip("/").replace("/", "_").replace("-", "_") or "operand"
+    value = re.sub(r"[^a-zA-Z0-9_]", "_", value).lower()
+    return value if re.match(r"^[a-z]", value) else "slot_" + value
 
 
 class QuestionnaireRunner:
@@ -257,7 +346,7 @@ class QuestionnaireRunner:
     def _record(self, kind: str, **fields: Any) -> None:
         self._ledger.append({"kind": kind, **fields})
 
-    def _render_prompt(self, question: Question, *, corrective_note: str = "") -> str:
+    def _render_choice_prompt(self, question: Question, *, corrective_note: str = "") -> str:
         choices = "\n".join(f"{choice.letter} — {choice.label}" for choice in question.choices)
         prompt = self.call_contract["prompt_template"].format(
             excerpt=question.excerpt,
@@ -267,6 +356,48 @@ class QuestionnaireRunner:
         if corrective_note:
             prompt += f"\n\nValidator note: {corrective_note}"
         return prompt
+
+    def _render_binding_prompt(self, question: Question, *, corrective_note: str = "") -> str:
+        template = self.call_contract["binding_prompt_templates"][question.context["binding_mode"]]
+        prompt = template.format(excerpt=question.excerpt, **question.context)
+        if corrective_note:
+            prompt += f"\n\nValidator note: {corrective_note}"
+        return prompt
+
+    def _record_outcome(self, question: Question, outcome: ModelOutcome, attempt: int) -> None:
+        self._model_calls += 1
+        self._eval_count += max(0, int(outcome.eval_count))
+        event: dict[str, Any] = {
+            "kind": "model_attempt",
+            "level": question.level,
+            "page": question.page_index,
+            "attempt": attempt,
+            "response_kind": question.response_kind,
+            "transport": outcome.status.value,
+            "eval_count": outcome.eval_count,
+        }
+        if outcome.detail:
+            event["detail"] = outcome.detail
+        for name in (
+            "latency_ms",
+            "raw_exact_one_letter",
+            "reply_stops_honored",
+            "request_contract_exact",
+            "parse_ok",
+        ):
+            value = getattr(outcome, name)
+            if value is not None:
+                event[name] = value
+        if outcome.status is TransportStatus.OK and outcome.content:
+            field_name = "letter" if question.response_kind == ResponseKind.LETTER.value else "transcription"
+            event[field_name] = outcome.content
+        self._ledger.append(event)
+
+    def _budget_available(self, level: str) -> bool:
+        if self._eval_count <= self.call_contract["item_eval_count_cap"]:
+            return True
+        self._record("budget_exhausted", level=level, eval_count=self._eval_count)
+        return False
 
     def _ask_page(self, page: ChoicePage, excerpt: str, context: dict[str, Any], *, auto_bind: bool) -> Choice | None:
         content = page.content_choices
@@ -288,38 +419,10 @@ class QuestionnaireRunner:
         first_candidate: str | None = None
         corrective_note = ""
         for attempt in range(1, self.call_contract["max_attempts_per_question"] + 1):
-            prompt = self._render_prompt(question, corrective_note=corrective_note)
-            request = dict(self.call_contract["request"])
-            outcome = self.model.complete(question, prompt, request)
-            self._model_calls += 1
-            self._eval_count += max(0, int(outcome.eval_count))
-            event = {
-                "kind": "model_attempt",
-                "level": page.level,
-                "page": page.page_index,
-                "attempt": attempt,
-                "transport": outcome.status.value,
-                "eval_count": outcome.eval_count,
-            }
-            if outcome.detail:
-                event["detail"] = outcome.detail
-            for name in (
-                "latency_ms",
-                "raw_exact_one_letter",
-                "reply_stops_honored",
-                "request_contract_exact",
-                "parse_ok",
-            ):
-                value = getattr(outcome, name)
-                if value is not None:
-                    event[name] = value
-            if outcome.status is TransportStatus.OK and outcome.content:
-                event["letter"] = outcome.content
-            self._ledger.append(event)
-
-            if self._eval_count > self.call_contract["item_eval_count_cap"]:
-                corrective_note = "The item output budget is exhausted; this answer is recorded as X."
-                self._record("budget_exhausted", level=page.level, eval_count=self._eval_count)
+            prompt = self._render_choice_prompt(question, corrective_note=corrective_note)
+            outcome = self.model.complete(question, prompt, request_for_question(self.call_contract, question))
+            self._record_outcome(question, outcome, attempt)
+            if not self._budget_available(page.level):
                 break
             if outcome.status is not TransportStatus.OK:
                 corrective_note = "The prior transport outcome was not usable. Reply with exactly one listed letter."
@@ -338,13 +441,18 @@ class QuestionnaireRunner:
                         "conflict", level=page.level,
                         first_letter=first_candidate, retry_letter=normalized,
                     )
+                    self._record("system_abstention", level=page.level, reason="conflicting_retry")
                     return None
                 selected = next(choice for choice in question.choices if choice.letter == normalized)
                 self._record("choice", level=page.level, letter=normalized, key=selected.key)
-                return None if normalized == ABSTENTION_LETTER else selected
+                if normalized == ABSTENTION_LETTER:
+                    self._record("system_abstention", level=page.level, reason="abstention_exit")
+                    return None
+                return selected
             corrective_note = "The prior reply was invalid. Reply with exactly one listed letter, with no other text."
             self._record("invalid_letter", level=page.level, reply=outcome.content)
         self._record("retry_exhausted", level=page.level)
+        self._record("system_abstention", level=page.level, reason="retry_exhausted")
         return None
 
     def _ask_pages(self, pages: tuple[ChoicePage, ...], excerpt: str, context: dict[str, Any]) -> Choice | None:
@@ -357,6 +465,37 @@ class QuestionnaireRunner:
                 return choice
             if page.page_index + 1 < page.page_count:
                 self._record("page_continue", level=page.level, next_page=page.page_index + 1)
+        return None
+
+    def _ask_transcription(
+        self,
+        question: Question,
+        validator: Callable[[str], tuple[Any | None, str]],
+    ) -> Any | None:
+        corrective_note = ""
+        for attempt in range(1, self.call_contract["max_attempts_per_question"] + 1):
+            prompt = self._render_binding_prompt(question, corrective_note=corrective_note)
+            outcome = self.model.complete(question, prompt, request_for_question(self.call_contract, question))
+            self._record_outcome(question, outcome, attempt)
+            if not self._budget_available(question.level):
+                break
+            if outcome.status is not TransportStatus.OK:
+                corrective_note = "The prior transport outcome was unusable. Transcribe only the requested text."
+                continue
+            value, reason = validator(outcome.content)
+            if value is not None:
+                self._record("binding_accepted", level=question.level, mode=question.context["binding_mode"])
+                return value
+            self._record(
+                "binding_rejected", level=question.level,
+                mode=question.context["binding_mode"], reason=reason,
+            )
+            corrective_note = (
+                f"The prior transcription failed validation ({reason}). "
+                "Copy the requested numeral or operation verbatim from the excerpt."
+            )
+        self._record("binding_retry_exhausted", level=question.level)
+        self._record("system_abstention", level=question.level, reason="binding_retry_exhausted")
         return None
 
     def _select_family(self, excerpt: str) -> tuple[str | None, str | None]:
@@ -382,86 +521,232 @@ class QuestionnaireRunner:
             return None, "l2_abstention"
         return None, "l2_abstention"
 
-    def _recognized_schema(self, family: str, excerpt: str) -> ContractSchema | None:
-        value = self.symbolic.call_tool("strategy_recognize", {"content": excerpt})
-        candidates = value if isinstance(value, list) else value.get("items", []) if isinstance(value, dict) else []
-        by_kind = {
-            kind: schema
-            for schema in self.compiled.schemas_for_family(family)
-            for kind in schema.kinds
-        }
-        for candidate in candidates:
-            if not isinstance(candidate, dict):
-                continue
-            kind = candidate.get("strategy") or candidate.get("kind") or candidate.get("name")
-            if kind in by_kind:
-                self._record("l3_free_route", family=family, strategy=kind)
-                return by_kind[kind]
-        self._record("l3_free_route_abstention", family=family)
-        return None
-
-    def _select_schema(self, family: str, excerpt: str) -> ContractSchema | None:
-        schemas = self.compiled.schemas_for_family(family)
-        if len(schemas) <= MAX_CONTENT_CHOICES:
-            choice = self._ask_pages(self.compiled.l3_pages(family), excerpt, {"family": family})
-        else:
-            discriminator_choice = self._ask_pages(
-                self.compiled.l3_discriminator_pages(family), excerpt, {"family": family},
-            )
-            if discriminator_choice is None:
-                return self._recognized_schema(family, excerpt)
-            discriminator = str(discriminator_choice.value)
-            choice = self._ask_pages(
-                self.compiled.l3_schema_pages(family, discriminator), excerpt,
-                {"family": family, "discriminator": discriminator},
-            )
-        if choice is None:
-            return self._recognized_schema(family, excerpt)
-        return self.compiled.schema_by_id(str(choice.value))
-
-    def _bind_operand(
+    def _validate_equation(
         self,
-        schema: ContractSchema,
+        raw: str,
         excerpt: str,
         spans: tuple[NumeralSpan, ...],
-    ) -> tuple[Any, bool]:
-        operand = copy.deepcopy(schema.example)
-        complete = True
-        for slot in numeric_slots(schema):
-            candidates = tuple(span for span in spans if compatible_span(slot, span))
-            if not candidates:
-                self._record("slot_unbound", slot=slot.key, reason="no_compatible_numeral")
-                complete = False
-                continue
-            choice = self._ask_pages(
-                span_pages("L4", f"Which numeral binds operand slot {slot.key}?", candidates),
-                excerpt,
-                {"family": schema.family, "schema_id": schema.schema_id,
-                 "slot": slot.key, "example_value": slot.example},
-            )
-            if choice is None:
-                self._record("slot_unbound", slot=slot.key, reason="abstention")
-                complete = False
-                continue
-            value = choice.value["value"]
-            operand = replace_path(operand, slot.path, value)
-        return operand, complete and conforms(schema.template, operand)
-
-    def _bind_got(self, excerpt: str, spans: tuple[NumeralSpan, ...]) -> str | None:
-        start, end = final_step_bounds(excerpt)
-        final_spans = tuple(span for span in spans if start <= span.start and span.end <= end and span.role == "numeral")
-        if not final_spans:
-            self._record("got_unbound", reason="no_final_step_numeral")
-            return None
-        choice = self._ask_pages(
-            span_pages("L5", "Which numeral is the student's final answer?", final_spans),
-            excerpt[start:end],
-            {"final_step_start": start, "final_step_end": end},
+        family: str,
+    ) -> tuple[dict[str, Any] | None, str]:
+        text = raw.strip()
+        matched = EQUATION_RE.fullmatch(text)
+        if not matched:
+            return None, "not_one_equation"
+        transcribed_family = OPERATOR_FAMILIES[matched.group("operator").lower()]
+        if transcribed_family != family:
+            return None, "operator_family_mismatch"
+        if text not in excerpt:
+            return None, "equation_not_exact_text"
+        bound: dict[str, BoundValue] = {}
+        for name in ("a", "b", "got"):
+            numeral = matched.group(name)
+            matches = exact_spans(numeral, spans)
+            if not matches:
+                return None, f"non_verbatim_numeral:{numeral}"
+            bound[name] = BoundValue(numeral, _parse_numeric(numeral), matches)
+        self._record(
+            "verbatim_span_recovery",
+            mode="symbol_equation",
+            equation=text,
+            values={name: {"text": value.text, "spans": [asdict(span) for span in value.spans]}
+                    for name, value in bound.items()},
         )
-        if choice is None:
-            self._record("got_unbound", reason="abstention")
+        return {"operands": (bound["a"], bound["b"]), "got": bound["got"]}, ""
+
+    def _transcribe_symbol(
+        self,
+        family: str,
+        excerpt: str,
+        spans: tuple[NumeralSpan, ...],
+    ) -> dict[str, Any] | None:
+        question = Question(
+            level="L4/L5",
+            text="Write the student's operation exactly as written.",
+            excerpt=excerpt,
+            page_index=0,
+            page_count=1,
+            context={"binding_mode": "symbol_equation", "family": family},
+            response_kind=ResponseKind.TRANSCRIPTION.value,
+        )
+        return self._ask_transcription(
+            question,
+            lambda raw: self._validate_equation(raw, excerpt, spans, family),
+        )
+
+    def _validate_given(
+        self,
+        raw: str,
+        expected_name: str,
+        spans: tuple[NumeralSpan, ...],
+        *,
+        require_final_step: tuple[int, int] | None = None,
+    ) -> tuple[BoundValue | None, str]:
+        matched = GIVEN_RE.fullmatch(raw.strip())
+        if not matched or matched.group("name") != expected_name:
+            return None, "not_expected_given_fact"
+        text = matched.group("value")
+        matches = exact_spans(text, spans)
+        if not matches:
+            return None, f"non_verbatim_numeral:{text}"
+        if require_final_step is not None:
+            start, end = require_final_step
+            if not any(start <= span.start and span.end <= end for span in matches):
+                return None, "got_absent_from_final_step"
+        value = BoundValue(text, _parse_numeric(text), matches)
+        self._record(
+            "verbatim_span_recovery",
+            mode="prose_given",
+            name=expected_name,
+            text=text,
+            spans=[asdict(span) for span in matches],
+        )
+        return value, ""
+
+    def _prose_bindings(
+        self,
+        family: str,
+        excerpt: str,
+        spans: tuple[NumeralSpan, ...],
+    ) -> tuple[dict[str, BoundValue], BoundValue | None]:
+        schemas = self.compiled.schemas_for_family(family)
+        slot_keys = sorted({slot.key for schema in schemas for slot in numeric_slots(schema)})
+        values: dict[str, BoundValue] = {}
+        for slot_key in slot_keys:
+            name = _slot_name(slot_key)
+            question = Question(
+                level="L4",
+                text=f"Transcribe the given for operand slot {slot_key}.",
+                excerpt=excerpt,
+                page_index=0,
+                page_count=1,
+                context={
+                    "binding_mode": "prose_slot",
+                    "family": family,
+                    "slot": slot_key,
+                    "slot_name": name,
+                },
+                response_kind=ResponseKind.TRANSCRIPTION.value,
+            )
+            value = self._ask_transcription(
+                question,
+                lambda raw, expected=name: self._validate_given(raw, expected, spans),
+            )
+            if value is not None:
+                values[slot_key] = value
+            else:
+                self._record("slot_unbound", slot=slot_key, reason="system_abstention")
+
+        start, end = final_step_bounds(excerpt)
+        got_question = Question(
+            level="L5",
+            text="Transcribe the student's final answer.",
+            excerpt=excerpt[start:end],
+            page_index=0,
+            page_count=1,
+            context={"binding_mode": "prose_got", "family": family, "slot_name": "got"},
+            response_kind=ResponseKind.TRANSCRIPTION.value,
+        )
+        got = self._ask_transcription(
+            got_question,
+            lambda raw: self._validate_given(raw, "got", spans, require_final_step=(start, end)),
+        )
+        if got is None:
+            self._record("got_unbound", reason="system_abstention")
+        return values, got
+
+    @staticmethod
+    def _bind_schema(schema: ContractSchema, values: dict[str, BoundValue]) -> SchemaBinding | None:
+        slots = numeric_slots(schema)
+        if any(slot.key not in values or not compatible_value(slot, values[slot.key].value) for slot in slots):
             return None
-        return str(choice.value["text"]).replace(",", "")
+        operand = copy.deepcopy(schema.example)
+        for slot in slots:
+            operand = replace_path(operand, slot.path, values[slot.key].value)
+        if not conforms(schema.template, operand):
+            return None
+        return SchemaBinding(schema, operand)
+
+    def _schema_candidates_from_symbol(
+        self,
+        family: str,
+        transcription: dict[str, Any],
+    ) -> tuple[SchemaBinding, ...]:
+        operands: tuple[BoundValue, ...] = transcription["operands"]
+        candidates: list[SchemaBinding] = []
+        for schema in self.compiled.schemas_for_family(family):
+            slots = numeric_slots(schema)
+            if len(slots) != len(operands):
+                continue
+            values = {slot.key: value for slot, value in zip(slots, operands)}
+            bound = self._bind_schema(schema, values)
+            if bound is not None:
+                candidates.append(bound)
+        return tuple(candidates)
+
+    def _residual_question(self, binding: SchemaBinding, excerpt: str) -> ChoicePage:
+        slots = numeric_slots(binding.schema)
+        anchors = ", ".join(f"{slot.key}={self._value_at(binding.operand, slot.path)}" for slot in slots)
+        shape = binding.schema.discriminator
+        if shape == "untyped":
+            shape = binding.schema.representative_kind
+        question = (
+            f"The excerpt supplies {anchors}. Does it explicitly use the "
+            f"{plain_label(shape)} form?"
+        )
+        return ChoicePage(
+            "L3-binary",
+            question,
+            0,
+            1,
+            (
+                Choice("A", "yes", "yes", True),
+                Choice("B", "no", "no", False),
+                Choice("X", "abstain", "the excerpt does not say", None),
+            ),
+        )
+
+    @staticmethod
+    def _value_at(value: Any, path: tuple[str | int, ...]) -> Any:
+        cursor = value
+        for part in path:
+            cursor = cursor[part]
+        return cursor
+
+    def _select_schema_by_binding(
+        self,
+        candidates: tuple[SchemaBinding, ...],
+        excerpt: str,
+    ) -> SchemaBinding | None:
+        self._record(
+            "schema_binding_candidates",
+            candidates=[candidate.schema.schema_id for candidate in candidates],
+        )
+        if not candidates:
+            self._record("system_abstention", level="L3", reason="no_conforming_schema")
+            return None
+        if len(candidates) == 1:
+            selected = candidates[0]
+            self._record("schema_selected_by_binding", schema_id=selected.schema.schema_id)
+            return selected
+
+        yes: list[SchemaBinding] = []
+        for candidate in candidates:
+            choice = self._ask_page(
+                self._residual_question(candidate, excerpt),
+                excerpt,
+                {"schema_id": candidate.schema.schema_id, "contract_bound": True},
+                auto_bind=False,
+            )
+            if choice is not None and choice.key == "yes":
+                yes.append(candidate)
+        if len(yes) == 1:
+            self._record("schema_selected_by_binary", schema_id=yes[0].schema.schema_id)
+            return yes[0]
+        self._record(
+            "system_abstention", level="L3-binary", reason="residual_tie_unresolved",
+            affirmative_schemas=[candidate.schema.schema_id for candidate in yes],
+        )
+        return None
 
     def run(self, excerpt: str) -> ItemResult:
         self._ledger = []
@@ -473,32 +758,52 @@ class QuestionnaireRunner:
         if not excerpt.strip() or not spans:
             return self._finish(ItemResult("not_covered", digest), reason="l0_gate")
 
-        family, reason = self._select_family(excerpt)
-        if family is None:
-            return self._finish(ItemResult("not_covered", digest), reason=reason)
-        schema = self._select_schema(family, excerpt)
-        if schema is None:
-            return self._finish(ItemResult("not_covered", digest, family=family), reason="l3_abstention")
+        gated_family, operators = operator_family(excerpt)
+        if gated_family is not None:
+            family = gated_family
+            self._record("l0_operator_bound", family=family, operators=list(operators))
+        else:
+            if operators:
+                self._record("l0_operator_ambiguous", operators=list(operators))
+            family, reason = self._select_family(excerpt)
+            if family is None:
+                return self._finish(ItemResult("not_covered", digest), reason=reason)
 
-        operand, operand_complete = self._bind_operand(schema, excerpt, spans)
-        got = self._bind_got(excerpt, spans)
-        if not operand_complete or got is None:
+        symbol_form = gated_family is not None
+        if symbol_form:
+            transcription = self._transcribe_symbol(family, excerpt, spans)
+            if transcription is None:
+                return self._finish(ItemResult("extraction_incomplete", digest, family=family))
+            candidates = self._schema_candidates_from_symbol(family, transcription)
+            got_value: BoundValue | None = transcription["got"]
+        else:
+            prose_values, got_value = self._prose_bindings(family, excerpt, spans)
+            candidates = tuple(
+                bound for schema in self.compiled.schemas_for_family(family)
+                if (bound := self._bind_schema(schema, prose_values)) is not None
+            )
+
+        selected = self._select_schema_by_binding(candidates, excerpt)
+        if selected is None:
+            status = "extraction_incomplete" if not candidates or got_value is None else "not_covered"
+            return self._finish(ItemResult(status, digest, family=family), reason="schema_selection_abstention")
+        if got_value is None:
             return self._finish(ItemResult(
                 "extraction_incomplete", digest, family=family,
-                schema_id=schema.schema_id, operand=operand, got=got,
+                schema_id=selected.schema.schema_id, operand=selected.operand,
             ))
 
         leaf = self.symbolic.call_tool(
             "strategy_trace",
-            {"strategy": schema.representative_kind, "input": operand},
+            {"strategy": selected.schema.representative_kind, "input": selected.operand},
         )
         self._record(
             "leaf_call", tool="strategy_trace", family=family,
-            strategy=schema.representative_kind, schema_id=schema.schema_id,
+            strategy=selected.schema.representative_kind, schema_id=selected.schema.schema_id,
         )
         return self._finish(ItemResult(
-            "leaf_computed", digest, family=family, schema_id=schema.schema_id,
-            operand=operand, got=got, leaf=leaf,
+            "leaf_computed", digest, family=family, schema_id=selected.schema.schema_id,
+            operand=selected.operand, got=got_value.text.replace(",", ""), leaf=leaf,
         ))
 
     def _finish(self, result: ItemResult, *, reason: str | None = None) -> ItemResult:
@@ -519,15 +824,22 @@ def prolog_fraction(text: str) -> Fraction | None:
 
 
 __all__ = [
+    "BoundValue",
     "ItemResult",
     "ModelClient",
     "ModelOutcome",
     "NumeralSpan",
     "Question",
     "QuestionnaireRunner",
+    "ResponseKind",
+    "SchemaBinding",
     "StdioHermesClient",
     "SymbolicClient",
     "TransportStatus",
+    "equation_matches",
+    "equation_operator_tokens",
     "harvest_numerals",
     "load_call_contract",
+    "operator_family",
+    "request_for_question",
 ]

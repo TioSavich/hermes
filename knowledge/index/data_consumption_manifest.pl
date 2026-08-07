@@ -131,10 +131,10 @@ data_artifact('scripts/curriculum/vision_harvest/registry_vocab.json', file, 1, 
 data_artifact('scripts/research/brandomian_lexicons.json', file, 1, 510, 'a75cde2981082c8e214e3851bed3683d0f165bd8bd740f842ade4a4e24da13c9', live_reader, static_reader, [reader('scripts/checks/vocabulary_licenses.py', 463, read_text)], []).
 data_artifact('scripts/research/churn_out/pilot_summary.json', file, 1, 1032364, '1c545cbbcf26248ab9a60a2392b512bee19197e90dc33182e2155dcd70bf85da', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('scripts/research/mobius_band_lexicons.json', file, 1, 1655, 'a78d7498123eec35241b8e56cee9e4ffcbeec41aff3385537fc8532bb0fbc830', live_reader, static_reader, [reader('scripts/checks/vocabulary_licenses.py', 462, read_text), reader('scripts/research/mobius_adversarial_loop.py', 372, read_text)], []).
-data_artifact('scripts/research/questionnaire/call_contract.json', file, 1, 687, '07dadf98c48bef5ffba1d6c43f79aeba307b7cb4bd8882cc0ec98ae75b9c438d', unconsumed_file, no_static_reader_or_writer, [], []).
+data_artifact('scripts/research/questionnaire/call_contract.json', file, 1, 1598, 'd1732fc2c4fb3c520d1762f9d2394eac45abdbf4004971319049ddf7420bc117', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('scripts/research/questionnaire/family_domain_map.json', file, 1, 645, '1aa221df0622822b1105a9b292c24d4989184ed8f1c9cb7ea0d7a94d3e4c1654', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('scripts/research/questionnaire/region_partition.json', file, 1, 1076, '623f094bb079d8a507638b45f87870a1c4a83b1db3d5154b2c4d7fc48e1db06c', unconsumed_file, no_static_reader_or_writer, [], []).
-data_artifact('scripts/research/questionnaire/smoke_items.json', file, 1, 753, 'e1e4198124427cc62c76e730e8d02625717066b8c6c4dff0b24e8a2bd99a9b6a', unconsumed_file, no_static_reader_or_writer, [], []).
+data_artifact('scripts/research/questionnaire/smoke_items.json', file, 1, 1040, 'bb2d4fa3b8225e959bac5c9bd4f0a233cb65fce2cbe8b767607f4b5f023c0935', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('scripts/scene/grounding_v2.json', file, 1, 27487, '3fa0bd8c6435b7815b6875bef17157e66f627203a473d071ac027befde442150', unconsumed_file, no_static_reader_or_writer, [], []).
 data_artifact('scripts/scene/items/items.jsonl', file, 1, 199785, 'f206310a2b9538fb4cbaa3f3a59741cf8ca2a565fe4a11ab390cea3f7c2fbaa7', unconsumed_file, no_static_reader_or_writer, [], []).
 
@@ -142,7 +142,7 @@ data_artifact_denominator(data_tree_regular_file, 8195).
 data_artifact_denominator(manifest_artifact, 97).
 data_root_denominator(curriculum, 7, 7, 20466703).
 data_root_denominator(data, 44, 8195, 962867858).
-data_root_denominator(scripts, 46, 46, 13013698).
+data_root_denominator(scripts, 46, 46, 13014896).
 
 data_status_count(live_reader, 41).
 data_status_count(reader_and_writer, 20).

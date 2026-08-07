@@ -1,22 +1,31 @@
 {
-  "schema": 1,
+  "schema": 2,
   "authorship": "Authored, invented questionnaire compliance fixtures; vetoable and not derived from a benchmark or learner corpus.",
   "leakage_boundary": "These items are not drawn from the frozen 60-index falsifier corpus and carry no experimental target labels.",
   "items": [
     {
       "id": "invented-addition-27-15",
       "family": "addition",
+      "form": "symbol",
       "excerpt": "Student work: 27 + 15 = 42\nFinal answer: 42"
     },
     {
       "id": "invented-subtraction-53-18",
       "family": "subtraction",
+      "form": "symbol",
       "excerpt": "Student work: 53 - 18 = 35\nFinal answer: 35"
     },
     {
       "id": "invented-multiplication-6-7",
       "family": "multiplication",
+      "form": "symbol",
       "excerpt": "Student work: 6 times 7 = 42\nFinal answer: 42"
+    },
+    {
+      "id": "invented-addition-prose-27-15",
+      "family": "addition",
+      "form": "prose",
+      "excerpt": "Student work: I started with 27 and joined 15 more. My total was 42.\nFinal answer: 42"
     }
   ]
 }

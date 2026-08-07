@@ -1,15 +1,27 @@
 {
-  "schema": 1,
-  "purpose": "One navigation or binding judgment per call; the symbolic engine computes at the leaf.",
+  "schema": 2,
+  "purpose": "Navigation uses one letter; binding copies excerpt text for deterministic validation and span recovery.",
   "prompt_template": "Choose one letter for the question below. Use only the excerpt and the listed choices. If none fits or the excerpt does not say, choose X.\n\nExcerpt:\n{excerpt}\n\nQuestion: {question}\n\n{choices}\n\nAnswer with exactly one letter.",
+  "binding_prompt_templates": {
+    "symbol_equation": "Excerpt:\n{excerpt}\n\nWrite the student's operation exactly as written. Copy one equation containing its two operands, operator, and result. Do not solve it. Write only the equation, with no label or explanation.",
+    "prose_slot": "Excerpt:\n{excerpt}\n\nCopy the numeral from the excerpt that fills operand slot {slot}. Write exactly one fact in this form:\ngiven({slot_name}, Value).\nReplace Value with the copied numeral. Do not solve or explain.",
+    "prose_got": "Final step:\n{excerpt}\n\nCopy the student's final answer. Write exactly one fact in this form:\ngiven(got, Value).\nReplace Value with the copied numeral. Do not solve or explain."
+  },
   "output": {
-    "format": "one_letter",
+    "navigation_format": "one_letter",
+    "binding_format": "one_line_verbatim_transcription",
     "content_letters": "ABCDEFG",
     "abstention_letter": "X"
   },
   "request": {
     "temperature": 0,
     "num_predict": 8,
+    "think": false,
+    "stops": []
+  },
+  "binding_request": {
+    "temperature": 0,
+    "num_predict": 24,
     "think": false,
     "stops": []
   },
