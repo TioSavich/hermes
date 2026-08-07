@@ -54,6 +54,7 @@ class TransportStatus(str, Enum):
     OK = "ok"
     TRUNCATED = "truncated"
     EMPTY_CONTENT = "empty_content"
+    INVALID_CONTENT = "invalid_content"
     ERROR = "error"
 
 
@@ -63,6 +64,11 @@ class ModelOutcome:
     content: str = ""
     eval_count: int = 0
     detail: str = ""
+    latency_ms: float | None = None
+    raw_exact_one_letter: bool | None = None
+    reply_stops_honored: bool | None = None
+    request_contract_exact: bool | None = None
+    parse_ok: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -297,6 +303,18 @@ class QuestionnaireRunner:
             }
             if outcome.detail:
                 event["detail"] = outcome.detail
+            for name in (
+                "latency_ms",
+                "raw_exact_one_letter",
+                "reply_stops_honored",
+                "request_contract_exact",
+                "parse_ok",
+            ):
+                value = getattr(outcome, name)
+                if value is not None:
+                    event[name] = value
+            if outcome.status is TransportStatus.OK and outcome.content:
+                event["letter"] = outcome.content
             self._ledger.append(event)
 
             if self._eval_count > self.call_contract["item_eval_count_cap"]:
