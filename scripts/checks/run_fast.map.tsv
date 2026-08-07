@@ -68,6 +68,7 @@ geometry_load.sh	no	bash scripts/checks/geometry_load.sh	scripts/checks/geometry
 strict_gate_failures.py	no	python3 scripts/checks/strict_gate_failures.py	scripts/checks/strict_gate_failures.py;scripts/bundle/app_manifest.py;scripts/bundle/smoke_bundle.py	-	-	-
 llm_client.py	no	python3 scripts/checks/llm_client.py	scripts/checks/llm_client.py;hermes/app/llm.py	-	-	-
 g68_harvest.py	no	python3 scripts/checks/g68_harvest.py	scripts/checks/g68_harvest.py;scripts/curriculum/harvest_g68_tasks.py;hermes/app/llm.py	-	-	-
+vision_pass.py	no	python3 scripts/checks/vision_pass.py	scripts/checks/vision_pass.py;scripts/curriculum/vision_pass.py;scripts/curriculum/verify_g68_harvest.py;hermes/app/llm.py	-	hermes/app/runtime/experiments/g68_harvest/**;hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/**;hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade7/**	-
 tls_verified_first.py	no	python3 scripts/checks/tls_verified_first.py	scripts/checks/tls_verified_first.py;hermes/app/gate.py;hermes/app/server.py;hermes/app/routes/logic.py;hermes/app/**	-	-	-
 diagnostics_payload.py	no	python3 scripts/checks/diagnostics_payload.py	scripts/checks/diagnostics_payload.py;hermes/app/server.py;hermes/app/worker.py;hermes/app/routes/**	-	-	-
 workflow_service.py	no	python3 scripts/checks/workflow_service.py	scripts/checks/workflow_service.py;hermes/app/workflow/**;hermes/app/system_prompts/**;hermes/app/llm.py	-	-	-
