@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "purpose": "One navigation or binding judgment per call; the symbolic engine computes at the leaf.",
+  "prompt_template": "Choose one letter for the question below. Use only the excerpt and the listed choices. If none fits or the excerpt does not say, choose X.\n\nExcerpt:\n{excerpt}\n\nQuestion: {question}\n\n{choices}\n\nAnswer with exactly one letter.",
+  "output": {
+    "format": "one_letter",
+    "content_letters": "ABCDEFG",
+    "abstention_letter": "X"
+  },
+  "request": {
+    "temperature": 0,
+    "num_predict": 8,
+    "think": false,
+    "stops": []
+  },
+  "reply_stops": [
+    "\n"
+  ],
+  "item_eval_count_cap": 2500,
+  "max_attempts_per_question": 2
+}

@@ -107,6 +107,12 @@ PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
         "input": "frac(1,7)-frac(1,7)",
         "got": "frac(1,14)",
     },
+    # Added 2026-08-07 with the additive rule_builds/4 worker seam.
+    "abduce_error": {
+        "domain": "fraction",
+        "input": "frac(1,9)-frac(1,9)",
+        "got": "frac(1,18)",
+    },
 }
 
 OPERATION_DESCRIPTIONS = {
@@ -131,6 +137,10 @@ OPERATION_DESCRIPTIONS = {
 # read from the handler guards before being recorded here; unlike spec-backed
 # rows, this metadata is deliberately limited to the MCP core surface.
 IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
+    "abduce_error": {
+        "domain": ("string", True), "input": ("string", True),
+        "got": ("string", True),
+    },
     "diagnose_error": {
         "domain": ("string", True), "input": ("string", True),
         "got": ("string", True),
@@ -150,6 +160,7 @@ IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
 
 
 ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
+    ("abduce_error", "misconceptions"),
     ("batch_event_score", "infrastructure"),
     ("benny_demo", "misconceptions"),
     ("check_math_claim", "misconceptions"),

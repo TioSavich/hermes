@@ -524,6 +524,26 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
 
 
 UNROUTED = {
+    "abduce_error": {
+        "does": "Runs the closed misconception-rule registry on a caller's ground input "
+        "and returns the rules that reproduce the supplied result, with recorded db_row citations.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The questionnaire runner and other analysis clients reach it through "
+        "the MCP core. Its results are cited candidates rather than learner diagnoses, "
+        "so adding a standalone web form would not add a licensed interpretation.",
+        "evidence": [
+            evidence(
+                "hermes/mcp/server.py",
+                '("abduce_error", "Run the closed registry of arithmetic misconception rules',
+                "MCP exposure",
+            ),
+            evidence(
+                "hermes_worker.pl",
+                "dispatch_request(abduce_error, Id, Request, Response)",
+                "worker dispatch",
+            ),
+        ],
+    },
     "prolog_query": {
         "does": "Runs one caller-supplied Prolog goal against the loaded "
         "knowledge base and returns its bindings, after SWI's sandbox accepts "
@@ -988,8 +1008,10 @@ def build() -> dict[str, object]:
     # kernel_gate_pilot.pl for unit_fraction_partition. The extractor records
     # dispatch operations and unreachable module rows, so a loaded helper with
     # no dispatch operation leaves the registry instead of becoming unrouted.
-    if len(registry_rows) != 311:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 311")
+    # 312 from 2026-08-07: abduce_error adds the rule_builds/4 worker operation;
+    # it is MCP-exposed and intentionally has no web route.
+    if len(registry_rows) != 312:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 312")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1057,9 +1079,10 @@ def build() -> dict[str, object]:
     if len(orphan_records) != 88:
         raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 88")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
-    # carry no web route.
-    if len(unrouted) != 10:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 10")
+    # carry no web route. 11 from 2026-08-07: abduce_error is the additive
+    # questionnaire analysis seam and is exposed through MCP, not a web form.
+    if len(unrouted) != 11:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 11")
 
     return {
         "schema": "self_description_census_v1",

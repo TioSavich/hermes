@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "authorship": "Authored and vetoable partition, 2026-08-07. It is navigation data, not a derived ontology or learner claim.",
+  "regions": [
+    {
+      "id": "whole_number_arithmetic",
+      "label": "whole-number arithmetic",
+      "families": [
+        "counting",
+        "addition",
+        "subtraction",
+        "multiplication",
+        "division"
+      ]
+    },
+    {
+      "id": "fractions_decimals_ratios",
+      "label": "fractions, decimals, and ratios",
+      "families": [
+        "fraction",
+        "decimal",
+        "ratio"
+      ]
+    },
+    {
+      "id": "signed_numbers",
+      "label": "signed numbers",
+      "families": [
+        "integer"
+      ]
+    },
+    {
+      "id": "space_and_measure",
+      "label": "space and measure",
+      "families": [
+        "geometry",
+        "measurement"
+      ]
+    },
+    {
+      "id": "data_chance_algebra_limits",
+      "label": "data, chance, algebra, and limits",
+      "families": [
+        "statistics",
+        "probability",
+        "algebraic",
+        "calculus"
+      ]
+    }
+  ]
+}

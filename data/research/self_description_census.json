@@ -410,7 +410,7 @@
       "infrastructure": 22,
       "juncture": 1,
       "learner": 25,
-      "misconceptions": 15,
+      "misconceptions": 16,
       "monitoring": 5,
       "pml": 15,
       "render": 35,
@@ -426,7 +426,7 @@
       "orphan_module": 88,
       "routed_only": 15,
       "routed_paged": 188,
-      "unrouted": 10
+      "unrouted": 11
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -437,8 +437,8 @@
       "superseded": 0,
       "undetermined": 52
     },
-    "total": 311,
-    "unrouted": 10
+    "total": 312,
+    "unrouted": 11
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1904,6 +1904,24 @@
   "registry": "hermes/capability_registry.pl",
   "schema": "self_description_census_v1",
   "unrouted": [
+    {
+      "does": "Runs the closed misconception-rule registry on a caller's ground input and returns the rules that reproduce the supplied result, with recorded db_row citations.",
+      "evidence": [
+        {
+          "locator": "(\"abduce_error\", \"Run the closed registry of arithmetic misconception rules",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        },
+        {
+          "locator": "dispatch_request(abduce_error, Id, Request, Response)",
+          "path": "hermes_worker.pl",
+          "relation": "worker dispatch"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "abduce_error",
+      "reason": "The questionnaire runner and other analysis clients reach it through the MCP core. Its results are cited candidates rather than learner diagnoses, so adding a standalone web form would not add a licensed interpretation."
+    },
     {
       "does": "Checks a safely parsed typed mathematical claim and returns a verdict record.",
       "evidence": [

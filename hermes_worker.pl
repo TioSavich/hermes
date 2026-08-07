@@ -8,12 +8,13 @@
 %   {"id":"req_5","op":"pair_graph","events":[...]}
 %   {"id":"req_6","op":"pair_candidate_witness","event_a":{...},"event_b":{...}}
 %   {"id":"req_7","op":"diagnose_error","domain":"fraction","input":...,"got":...}
-%   {"id":"req_8","op":"query_misconception","domain":"fraction","description":...}
-%   {"id":"req_9","op":"discourse_features","utterances":[...],"context":{...}}
-%   {"id":"req_10","op":"discourse_pragmatics","utterances":[...],"context":{...}}
-%   {"id":"req_11","op":"trace_adjudication","utterances":[...],"context":{...},"ledger":{...}}
-%   {"id":"req_12","op":"media_alignment","segments":[...],"source":"..."}
-%   {"id":"req_13","op":"gesture_alignment","utterances":[...],"context":{...},"observations":[...]}
+%   {"id":"req_8","op":"abduce_error","domain":"fraction","input":...,"got":...}
+%   {"id":"req_9","op":"query_misconception","domain":"fraction","description":...}
+%   {"id":"req_10","op":"discourse_features","utterances":[...],"context":{...}}
+%   {"id":"req_11","op":"discourse_pragmatics","utterances":[...],"context":{...}}
+%   {"id":"req_12","op":"trace_adjudication","utterances":[...],"context":{...},"ledger":{...}}
+%   {"id":"req_13","op":"media_alignment","segments":[...],"source":"..."}
+%   {"id":"req_14","op":"gesture_alignment","utterances":[...],"context":{...},"observations":[...]}
 %
 % One JSON object in, one JSON object out. Human-readable diagnostics go to
 % stderr only.
@@ -277,6 +278,7 @@ dispatch_irregular(deontic_crisis).
 dispatch_irregular(deontic_requires_entitlement).
 dispatch_irregular(deontic_scorecard).
 dispatch_irregular(deontic_up_level).
+dispatch_irregular(abduce_error).
 dispatch_irregular(diagnose_error).
 dispatch_irregular(discourse_features).
 dispatch_irregular(discourse_pragmatics).
@@ -775,6 +777,28 @@ dispatch_request(diagnose_error, Id, Request, Response) :-
         ok_response(Id, Matches, Response)
     ;   error_response(Id, malformed_diagnose_request,
             "diagnose_error requires domain, input, and got", Response)
+    ).
+
+% Added 2026-08-07 as an additive seam. diagnose_error remains bound to
+% recorded exemplar rows; this operation runs the registry's rules on the
+% caller's ground input and returns the rows that cite each candidate rule.
+dispatch_request(abduce_error, Id, Request, Response) :-
+    (   get_dict(domain, Request, DomainStr),
+        get_dict(input, Request, JSONInput),
+        get_dict(got, Request, JSONGot)
+    ->  atom_string(Domain, DomainStr),
+        json_to_term(JSONInput, Input),
+        json_to_term(JSONGot, Got),
+        (   ground(Input),
+            ground(Got)
+        ->  findall(Match,
+                abduce_and_format(Domain, Input, Got, Match), Matches),
+            ok_response(Id, Matches, Response)
+        ;   error_response(Id, malformed_abduce_request,
+                "abduce_error requires ground input and got terms", Response)
+        )
+    ;   error_response(Id, malformed_abduce_request,
+            "abduce_error requires domain, input, and got", Response)
     ).
 
 dispatch_request(query_misconception, Id, Request, Response) :-
@@ -4235,6 +4259,23 @@ rejected_misconception_filter(Request, Argument, Received) :-
 diagnose_and_format(Domain, Input, Got, SafeMatch) :-
     test_harness:diagnose_error(Domain, Input, Got, Match),
     json_safe(Match, SafeMatch).
+
+abduce_and_format(Domain, Input, Got, SafeMatch) :-
+    misconception_registry:rule_builds(Domain, Input, Got, Rule),
+    findall(_{source: Source, description: Description},
+        test_harness:arith_misconception(
+            Source, Domain, Description, Rule, _RecordedInput, _Expected),
+        CitationRows0),
+    sort(CitationRows0, CitationRows),
+    Candidate = _{
+        type: arithmetic_abduction,
+        domain: Domain,
+        input: Input,
+        got: Got,
+        rule: Rule,
+        citations: CitationRows
+    },
+    json_safe(Candidate, SafeMatch).
 
 query_and_format(Domain, Description, Source, SafeMatch) :-
     test_harness:query_misconception(Domain, Description, Source, Match),

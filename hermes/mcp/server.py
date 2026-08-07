@@ -63,6 +63,7 @@ CORE_TO_WORKER = {
     "lesson_enactment_list": "lesson_enactment_list",
     "lesson_enactment_run": "lesson_enactment_run",
     "diagnose_error": "diagnose_error",
+    "abduce_error": "abduce_error",
 }
 
 TOOL_BUNDLES = {
@@ -92,7 +93,7 @@ CORE_TOOLS = (
     ("strategy_trace", "Run one registered strategy with an optional input object. The schema lists the registry-backed names, operation pairing, and worked inputs. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
     ("lesson_enactment_list", "List every lesson with an executable enactment, all distinct forms declared for each lesson, and named refusals with the machine each would need. The first enactment call lazily loads five lanes and may take about eleven seconds in this checkout.", ()),
     ("lesson_enactment_run", "Run every distinct enactment form declared for one lesson and return each result through the strategy-trace response shape. Each trace carries its verdict, input provenance, and what_it_does_not_claim sentence. A lesson with no declared enactment returns a not-covered error; call lesson_enactment_list to inspect named refusals. The first enactment call may take about eleven seconds.", ("lesson",)),
-    ("diagnose_error", "Return encoded misconception diagnoses whose runnable rule reproduces got for the stated domain and input. This names matching encoded misconceptions; it does not assess every possible error, and an empty result is an abstention rather than a verdict that the work is correct.", ("domain", "input", "got")),
+    ("diagnose_error", "Return encoded misconception rows whose recorded exemplar input matches the stated domain and input and whose runnable rule reproduces got. This operation is exemplar-bound rather than abductive; an empty result is an abstention rather than a verdict that the work is correct.", ("domain", "input", "got")),
     ("misconception_lookup", "Filter encoded misconceptions by optional domain, exact description slug, or source db_row identity. source narrows only to db_row(N); a supplied value that does not parse as a ground filter term is refused. Use misconception_search_rows for citation or author search. Results are paged; use limit and offset to move through the matched rows.", ("domain", "description", "source", "limit", "offset")),
     ("misconception_search_rows", "Search stored misconception rows offline by whole query words in their name, domain, description, or citation. All query words must be present. Returned rows carry a db_row identity for resonance_neighbors.", ("query", "k")),
     ("resonance_neighbors", "Find neighbors of one stored misconception vector. Prefer the returned db_row identity; name remains a display label and is accepted only when unambiguous. This uses only stored row vectors; it never makes a query-embedding network call.", ("db_row", "name", "k")),
@@ -105,6 +106,7 @@ CORE_TOOLS = (
 # catalog. They are available to MCP callers without changing the branch-agent
 # carving.
 CORE_STANDALONE_TOOLS = (
+    ("abduce_error", "Run the closed registry of arithmetic misconception rules on one ground input and return the candidate rules that reproduce got, with their recorded db_row citations. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("domain", "input", "got")),
     ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
     ("graph_overview", "Return the full computational graph's scope, authored level ladder, counts, and per-family inventory. The level ladder is authored rather than derived from the transition tables. This reads the shipped JSON artifact without starting the Prolog worker.", ()),
     ("graph_machine", "Return one machine's states, transitions, and shared canonical-action summary from the full computational graph. A borrow records a shared canonical action name; it does not assert that two machines, transitions, or mathematical practices are equivalent.", ("family", "kind")),
@@ -299,7 +301,7 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "offset": {"type": "integer", "minimum": 0, "description": "Zero-based bundle-edge offset; defaults to 0."},
         }
     required: list[str] = []
-    if name == "diagnose_error":
+    if name in {"diagnose_error", "abduce_error"}:
         required = ["domain", "input", "got"]
         properties["domain"] = {"type": "string", "minLength": 1, "description": "Registered misconception domain, such as fraction."}
         properties["input"] = {"type": "string", "minLength": 1, "description": "Problem input in the worker's term-form text."}

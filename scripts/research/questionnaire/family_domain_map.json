@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "authorship": "Authored and vetoable family-to-misconception-domain map, 2026-08-07. Machine families and misconception domains are different vocabularies.",
+  "map": {
+    "counting": "whole_number",
+    "addition": "whole_number",
+    "subtraction": "whole_number",
+    "multiplication": "whole_number",
+    "division": "whole_number",
+    "fraction": "fraction",
+    "decimal": "decimal",
+    "ratio": "ratio",
+    "integer": "integer",
+    "geometry": "geometric",
+    "measurement": "measurement",
+    "statistics": "discrete",
+    "probability": "discrete",
+    "algebraic": "rational",
+    "calculus": "rational"
+  }
+}

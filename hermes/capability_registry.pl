@@ -9,6 +9,7 @@
             capability_lazy_via/2
           ]).
 
+capability('abduce_error', 'hermes_worker', 'misconceptions', ['domain', 'got', 'input'], unrouted).
 capability('accommodation_witness', 'cw_driver', 'crosswalk', ['source', 'target'], routed_paged).
 capability('ace_of_bases_render', 'base_ten_scene', 'render', [], routed_paged).
 capability('action_cluster_witness', 'cw_driver', 'crosswalk', ['cluster', 'kind', 'operation', 'source'], routed_paged).
@@ -321,6 +322,9 @@ capability('knowledge/strategies/transition_tables/ratio.pl', 'ratio', 'synthesi
 capability('knowledge/strategies/transition_tables/statistics.pl', 'statistics', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/subtraction.pl', 'subtraction', 'synthesis', [], orphan_module).
 
+capability_parameter('abduce_error', 'domain', 'string', true, "fraction").
+capability_parameter('abduce_error', 'got', 'string', true, "frac(1,18)").
+capability_parameter('abduce_error', 'input', 'string', true, "frac(1,9)-frac(1,9)").
 capability_parameter('accommodation_witness', 'target', null, true, null).
 capability_parameter('accommodation_witness', 'source', null, true, null).
 capability_parameter('action_cluster_witness', 'operation', null, true, null).

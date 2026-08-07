@@ -13314,11 +13314,20 @@
      "kind": "decimal_comparison_by_aligned_units",
      "operation": "decimal",
      "run": {
-      "error": "goal failed",
+      "goal": "action_automata_registry:run_action_automaton(decimal,decimal_comparison_by_aligned_units,decimal_pair(5654,10,556040,1000),ignored,Outcome,Trace)",
       "id": "lesson_0055",
       "kind": "decimal_comparison_by_aligned_units",
       "operation": "decimal",
-      "status": "failed"
+      "outcome": "action_outcome(decimal_comparison_by_aligned_units,[classification(productive),cluster(decimal_magnitude_comparison),automaton_state(decimal_place_value_coordination),vocabulary([decimal_mark,common_decimal_unit,scale_alignment,equivalent_numeral,magnitude_comparison]),result(more),expected(more),validity(correct),operands(decimal_pair(5654,10,556040,1000)),components(decimal_comparison_components(5654,10,556040,1000,1000,565400,556040,more)),representation(aligned_decimal_units(common_scale(1000),left_units(565400),right_units(556040))),invariant(compare_only_after_common_unit_alignment)])",
+      "status": "observed",
+      "trace": "[identify_operand_scales(10,1000),choose_common_decimal_scale(1000),align_decimal_units(5654,10,565400),align_decimal_units(556040,1000,556040),compare_aligned_decimal_units(565400,556040,more)]",
+      "trace_actions": [
+       "identify_operand_scales",
+       "choose_common_decimal_scale",
+       "align_decimal_units",
+       "align_decimal_units",
+       "compare_aligned_decimal_units"
+      ]
      }
     }
    ],
@@ -13352,7 +13361,7 @@
      }
     },
     "operation": "decimal",
-    "other_successful_candidates": 1,
+    "other_successful_candidates": 2,
     "run": {
      "goal": "action_automata_registry:run_action_automaton(decimal,decimal_comparison_by_aligned_units,decimal_pair(909,1000,91,100),ignored,Outcome,Trace)",
      "id": "lesson_0053",
@@ -32653,6 +32662,50 @@
        "outcome": "action_outcome(decimal_comparison_by_aligned_units,[classification(productive),cluster(decimal_magnitude_comparison),automaton_state(decimal_place_value_coordination),vocabulary([decimal_mark,common_decimal_unit,scale_alignment,equivalent_numeral,magnitude_comparison]),result(less),expected(less),validity(correct),operands(decimal_pair(67020,1000,67200,1000)),components(decimal_comparison_components(67020,1000,67200,1000,1000,67020,67200,less)),representation(aligned_decimal_units(common_scale(1000),left_units(67020),right_units(67200))),invariant(compare_only_after_common_unit_alignment)])",
        "status": "observed",
        "trace": "[identify_operand_scales(1000,1000),choose_common_decimal_scale(1000),align_decimal_units(67020,1000,67020),align_decimal_units(67200,1000,67200),compare_aligned_decimal_units(67020,67200,less)]",
+       "trace_actions": [
+        "identify_operand_scales",
+        "choose_common_decimal_scale",
+        "align_decimal_units",
+        "align_decimal_units",
+        "compare_aligned_decimal_units"
+       ]
+      }
+     },
+     {
+      "input_evidence": {
+       "extracted": {
+        "ordering_members": [
+         "565.4",
+         "556.040"
+        ],
+        "position": "first_pair"
+       },
+       "span": {
+        "end_line": 287,
+        "line": 284,
+        "numeric_tokens": [
+         "565.4",
+         "556.040",
+         "565.004"
+        ],
+        "position": "student_task_statement(4)",
+        "refusal": null,
+        "source": "curriculum/im_teacher_guides/grade5/unit5/lesson9.md",
+        "task_209_evidence_excerpt": null,
+        "task_209_evidence_position": false,
+        "text": "Write these numbers in order from least to greatest: 565.4, 556.040, 565.004"
+       }
+      },
+      "lesson": "IM-G5-U5-L9",
+      "origin": "lesson_span",
+      "run": {
+       "goal": "action_automata_registry:run_action_automaton(decimal,decimal_comparison_by_aligned_units,decimal_pair(5654,10,556040,1000),ignored,Outcome,Trace)",
+       "id": "lesson_0055",
+       "kind": "decimal_comparison_by_aligned_units",
+       "operation": "decimal",
+       "outcome": "action_outcome(decimal_comparison_by_aligned_units,[classification(productive),cluster(decimal_magnitude_comparison),automaton_state(decimal_place_value_coordination),vocabulary([decimal_mark,common_decimal_unit,scale_alignment,equivalent_numeral,magnitude_comparison]),result(more),expected(more),validity(correct),operands(decimal_pair(5654,10,556040,1000)),components(decimal_comparison_components(5654,10,556040,1000,1000,565400,556040,more)),representation(aligned_decimal_units(common_scale(1000),left_units(565400),right_units(556040))),invariant(compare_only_after_common_unit_alignment)])",
+       "status": "observed",
+       "trace": "[identify_operand_scales(10,1000),choose_common_decimal_scale(1000),align_decimal_units(5654,10,565400),align_decimal_units(556040,1000,556040),compare_aligned_decimal_units(565400,556040,more)]",
        "trace_actions": [
         "identify_operand_scales",
         "choose_common_decimal_scale",
