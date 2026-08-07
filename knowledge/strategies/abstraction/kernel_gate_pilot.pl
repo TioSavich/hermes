@@ -5,11 +5,13 @@
  *
  *     strategy = gate(genre, representation) |> shell [ kernel ]
  *
- * on three cross-domain probes: complete_to_unit, iterate_to_target,
- * and partition/regroup. The kernel carries control flow and actually
- * computes. The gate supplies sorts, admissibility guards, the named
- * boundary, and result interpretation. Correct and incorrect doings are
- * instances or single local mutations of the same kernel run.
+ * on three cross-domain probes (complete_to_unit, iterate_to_target,
+ * partition/regroup) and three single-gate probes (bracket refinement,
+ * place-sequence comparison, base-cycle recollection). The kernel carries
+ * control flow and actually computes. The gate supplies sorts, admissibility
+ * guards, the named boundary, and result interpretation. Correct and
+ * incorrect doings are instances or single local mutations of the same
+ * kernel run.
  *
  * This file is standalone and quarantined in the sense of
  * action_vocabulary_map.pl: nothing imports it, it renames nothing,
@@ -74,14 +76,23 @@
  * is the impasse-repair structure made executable.
  *
  * LIMITS.
- *   - Three kernels do not cover the strategy corpus, and are not
+ *   - Six kernels do not cover the strategy corpus, and are not
  *     claimed to. check_resisters/0 REPORTS what resists them (the
  *     fact-retrieval economy, anchor-and-compensate, the columnar
  *     shell) instead of forcing it. Resisters are the work list for
  *     candidate kernels, not failures of the probe.
- *   - Gates here are three: whole_number(B), integer_line, and
- *     unit_fraction(D) over a referent whole. Measurement, decimal,
- *     and equation gates are future waves.
+ *   - Gates here are six: whole_number(B), integer_line,
+ *     unit_fraction(D) over a referent whole, ordered_rational_interval,
+ *     positional_numerals(B), and cardinality_in_base(B). Measurement,
+ *     decimal, and equation gates are future waves.
+ *   - The three new gates are visible through gate/2 to K1-K3 even though
+ *     those kernels' argument sorts do not match them. This widens the sort
+ *     discipline: K1 fails at boundary(none) for ordered_rational_interval
+ *     but can run against the numeric boundaries of the other new gates;
+ *     K2 and K3 use generic gate checks. Gate-parameter range handling also
+ *     differs: existing gate-parametric kernel calls can fail when a gate
+ *     parameter is outside its range, while K5 and K6 return refused(...) for
+ *     invalid bases. This limit is recorded, not repaired, in this slice.
  *   - attested_as/2 annotations point at corpus kind names by hand;
  *     they are claims to check against the live tables, not links.
  *   - The commutation check runs on the mutations and bridges defined
@@ -138,6 +149,27 @@ gate(unit_fraction(D),
            lower_limit(0),
            subtraction(partial))) :-
     integer(D), D > 1.
+gate(ordered_rational_interval,
+     props(sort(target_with_decidable_rational_order),
+           boundary(none),
+           boundary_kind(containing_interval),
+           operative_radix(none),
+           lower_limit(none),
+           subtraction(none))).
+gate(positional_numerals(B),
+     props(sort(pair(canonical_nonnegative_positional_numerals(B))),
+           boundary(B), boundary_kind(radix_cycle(B)),
+           operative_radix(B),
+           lower_limit(0),
+           subtraction(none))) :-
+    integer(B), B > 1.
+gate(cardinality_in_base(B),
+     props(sort(nonnegative_cardinality),
+           boundary(B), boundary_kind(radix_cycle(B)),
+           operative_radix(B),
+           lower_limit(0),
+           subtraction(none))) :-
+    integer(B), B > 1.
 
 gate_boundary(GateId, B) :- gate(GateId, props(_, boundary(B), _, _, _, _)).
 gate_boundary_kind(GateId, K) :- gate(GateId, props(_, _, boundary_kind(K), _, _, _)).
@@ -251,6 +283,247 @@ nested_partition(GateId, N1, N2, Result) :-
     PU = part_unit(N2, part_unit(N1, whole)),
     Scale is N1 * N2,
     Result = referent_scale(Scale).
+
+% --- K4: refine bracket by order -----------------------------------------
+% Admitted from the failed nested-interval derivation recorded in
+% .superpowers/sdd/task-2026-08-06-nested-interval-probe-report.md.
+% That report's algebraic_root/1 is narrowed here to square_root/1, the only
+% degree its comparison-by-squaring test decides.
+% The existing-kernel composition for nested interval refinement forms a
+% rational cut, then stalls because no kernel compares the target with the
+% cut or selects the target-preserving subinterval.
+run_kernel(refine_bracket_by_order, ordered_rational_interval,
+           [target(Target), bracket(interval(Lower, Upper)), cut(Cut)],
+           run(refine_bracket_by_order, ordered_rational_interval,
+               [target(Target), bracket(interval(Lower, Upper)), cut(Cut)],
+               Steps, Result)) :-
+    (   \+ bracket_target(Target)
+    ->  Steps = [refuse_before_iteration],
+        Result = refused(malformed_target(Target))
+    ;   \+ ordered_rational_bracket(Lower, Cut, Upper)
+    ->  Steps = [refuse_before_iteration],
+        Result = refused(malformed_bracket(interval(Lower, Upper), cut(Cut)))
+    ;   \+ target_inside_bracket(Target, Lower, Upper)
+    ->  Steps = [refuse_before_iteration],
+        Result = refused(target_outside_bracket(Target,
+                                                interval(Lower, Upper)))
+    ;   target_cut_order(Target, Cut, Order),
+        refine_order_result(Order, Lower, Cut, Upper, DecisionSteps, Result),
+        append([ admit(target_inside(interval(Lower, Upper))),
+                 compare_target_to_cut(Order)
+               ], DecisionSteps, Steps)
+    ).
+
+refine_order_result(equal, _Lower, Cut, _Upper,
+                    [witness(target_equals_cut), read_off(exact(Cut))],
+                    exact(Cut)).
+refine_order_result(below, Lower, Cut, _Upper,
+                    [ select_target_preserving_interval(interval(Lower, Cut)),
+                      read_off(next(interval(Lower, Cut), target_below_cut))
+                    ],
+                    next(interval(Lower, Cut), target_below_cut)).
+refine_order_result(above, _Lower, Cut, Upper,
+                    [ select_target_preserving_interval(interval(Cut, Upper)),
+                      read_off(next(interval(Cut, Upper), target_above_cut))
+                    ],
+                    next(interval(Cut, Upper), target_above_cut)).
+
+ordered_rational_bracket(Lower, Cut, Upper) :-
+    rational_point(Lower),
+    rational_point(Cut),
+    rational_point(Upper),
+    rational_order(below, Lower, Cut),
+    rational_order(below, Cut, Upper).
+
+bracket_target(rational(Point)) :-
+    rational_point(Point).
+bracket_target(square_root(Radicand)) :-
+    integer(Radicand),
+    Radicand > 0.
+
+rational_point(q(Numerator, Denominator)) :-
+    integer(Numerator),
+    integer(Denominator),
+    Denominator > 0.
+
+rational_order(Order, q(LeftNumerator, LeftDenominator),
+               q(RightNumerator, RightDenominator)) :-
+    Left is LeftNumerator * RightDenominator,
+    Right is RightNumerator * LeftDenominator,
+    compare(Relation, Left, Right),
+    comparison_order(Relation, Order).
+
+target_cut_order(rational(Target), Cut, Order) :-
+    rational_order(Order, Target, Cut).
+target_cut_order(square_root(Radicand), q(Numerator, Denominator), Order) :-
+    (   Numerator < 0
+    ->  Order = above
+    ;   TargetSquared is Radicand * Denominator * Denominator,
+        CutSquared is Numerator * Numerator,
+        compare(Relation, TargetSquared, CutSquared),
+        comparison_order(Relation, Order)
+    ).
+
+comparison_order((<), below).
+comparison_order((=), equal).
+comparison_order((>), above).
+
+target_inside_bracket(Target, Lower, Upper) :-
+    target_cut_order(Target, Lower, LowerOrder),
+    memberchk(LowerOrder, [equal, above]),
+    target_cut_order(Target, Upper, UpperOrder),
+    memberchk(UpperOrder, [equal, below]).
+
+% --- K5: compare place sequences by significance ------------------------
+% Admitted from the failed derivation of counting/place_value_comparison in
+% .superpowers/sdd/task-2026-08-06-placevalue-kernel-probe-report.md.
+% The existing composition recovers the extensional relation but supplies no
+% highest-differing-place witness. In the adopted numeral/4 term,
+% radix(Radix) is the digit count (recursive_unit_actions.pl:64-65); the
+% gate's operative_radix(Base) is the inscription base.
+run_kernel(compare_place_sequences_by_significance, positional_numerals(Base),
+           [left(LeftNumeral), right(RightNumeral)],
+           run(compare_place_sequences_by_significance,
+               positional_numerals(Base),
+               [left(LeftNumeral), right(RightNumeral)], Steps, Result)) :-
+    (   \+ gate(positional_numerals(Base), _)
+    ->  Steps = [refuse_before_comparison],
+        Result = refused(base_below_two_or_noninteger(Base))
+    ;   canonical_nonnegative_numeral(Base, LeftNumeral, LeftValues)
+    ->  (   canonical_nonnegative_numeral(Base, RightNumeral, RightValues)
+        ->  align_place_values(LeftValues, RightValues,
+                               AlignedLeft, AlignedRight),
+            length(AlignedLeft, Width),
+            compare_place_values(AlignedLeft, AlignedRight, Width,
+                                 Relation, Witness),
+            Result = relation(Relation, Witness),
+            Steps = [ align_places_by_unit(AlignedLeft, AlignedRight),
+                      locate_highest_differing_place(Witness),
+                      compare_digits_at_that_place,
+                      read_off(Result)
+                    ]
+        ;   Steps = [refuse_before_comparison],
+            Result = refused(malformed_right_positional_numeral(RightNumeral))
+        )
+    ;   Steps = [refuse_before_comparison],
+        Result = refused(malformed_left_positional_numeral(LeftNumeral))
+    ).
+
+canonical_nonnegative_numeral(
+        Base, numeral(Base, Sign, radix(Radix), Digits), Values) :-
+    Digits = [_|_],
+    maplist(canonical_digit(Base), Digits, Values),
+    length(Digits, Radix),
+    canonical_nonnegative_values(Sign, Values).
+
+canonical_digit(Base, digit(Value, Glyph), Value) :-
+    integer(Value),
+    Value >= 0,
+    Value < Base,
+    string(Glyph),
+    canonical_digit_glyph(Value, Glyph).
+
+canonical_nonnegative_values(zero, [0]).
+canonical_nonnegative_values(positive, [First|_]) :-
+    First > 0.
+
+align_place_values(Left, Right, AlignedLeft, AlignedRight) :-
+    length(Left, LeftWidth),
+    length(Right, RightWidth),
+    Width is max(LeftWidth, RightWidth),
+    pad_place_values(Left, Width, AlignedLeft),
+    pad_place_values(Right, Width, AlignedRight).
+
+pad_place_values(Values, Width, Padded) :-
+    length(Values, ValueWidth),
+    ZeroCount is Width - ValueWidth,
+    length(Zeroes, ZeroCount),
+    maplist(=(0), Zeroes),
+    append(Zeroes, Values, Padded).
+
+compare_place_values([], [], _Width, same_number,
+                     no_differing_place(equal_digit_sequences)).
+compare_place_values([Left|Lefts], [Right|Rights], Width,
+                     Relation, Witness) :-
+    Exponent is Width - 1,
+    (   Left > Right
+    ->  Relation = more,
+        Witness = highest_differing_place(Exponent, digits(Left, Right))
+    ;   Left < Right
+    ->  Relation = fewer,
+        Witness = highest_differing_place(Exponent, digits(Left, Right))
+    ;   NextWidth is Width - 1,
+        compare_place_values(Lefts, Rights, NextWidth, Relation, Witness)
+    ).
+
+% --- K6: recollect base cycles -------------------------------------------
+% Admitted from the failed derivation of
+% counting/recursive_place_value_inscription in
+% .superpowers/sdd/task-2026-08-06-placevalue-kernel-probe-report.md.
+% The existing composition retains the cardinality but cannot feed a quotient
+% and remainder into the next place. In the adopted numeral/4 term,
+% radix(Radix) is the digit count (recursive_unit_actions.pl:64-65); the
+% gate's operative_radix(Base) is the inscription base.
+run_kernel(recollect_base_cycles, cardinality_in_base(Base),
+           [cardinality(Count)],
+           run(recollect_base_cycles, cardinality_in_base(Base),
+               [cardinality(Count)], Steps, Result)) :-
+    (   \+ gate(cardinality_in_base(Base), _)
+    ->  Steps = [refuse_before_recollection],
+        Result = refused(base_below_two_or_noninteger(Base))
+    ;   \+ (integer(Count), Count >= 0)
+    ->  Steps = [refuse_before_recollection],
+        Result = refused(negative_or_noninteger_cardinality(Count))
+    ;   recollect_digit_values(Count, Base, Values, CycleSteps),
+        maplist(inscribe_digit(Base), Values, Digits),
+        length(Digits, Radix),
+        cardinality_sign(Count, Sign),
+        append(CycleSteps,
+               [ reverse_retained_remainders,
+                 read_off(numeral(Base, Sign, radix(Radix), Digits))
+               ], Steps),
+        Result = numeral(Base, Sign, radix(Radix), Digits)
+    ).
+
+recollect_digit_values(0, _Base, [0],
+                       [retain_unit_place_zero]) :-
+    !.
+recollect_digit_values(Count, Base, Values, CycleSteps) :-
+    recollect_least_significant(Count, Base, LeastFirst, CycleSteps),
+    reverse(LeastFirst, Values).
+
+recollect_least_significant(0, _Base, [], []) :-
+    !.
+recollect_least_significant(Current, Base, [Remainder|Remainders],
+                            [ quotient_remainder_cycle(
+                                  current(Current), quotient(Quotient),
+                                  remainder(Remainder))
+                            | CycleSteps ]) :-
+    Quotient is Current // Base,
+    Remainder is Current mod Base,
+    recollect_least_significant(Quotient, Base, Remainders, CycleSteps).
+
+inscribe_digit(Base, Value, digit(Value, Glyph)) :-
+    Value >= 0,
+    Value < Base,
+    canonical_digit_glyph(Value, Glyph).
+
+% Copied from knowledge/strategies/math/recursive_unit_actions.pl:389-399.
+canonical_digit_glyph(Value, Glyph) :-
+    Value =< 9,
+    !,
+    number_string(Value, Glyph).
+canonical_digit_glyph(Value, Glyph) :-
+    Value =< 35,
+    !,
+    Code is 0'A + Value - 10,
+    string_codes(Glyph, [Code]).
+canonical_digit_glyph(Value, Glyph) :-
+    format(string(Glyph), "[~w]", [Value]).
+
+cardinality_sign(0, zero) :-
+    !.
+cardinality_sign(_Count, positive).
 
 % ==========================================================================
 % 3. MUTATIONS
@@ -394,6 +667,169 @@ task_answered(asked(difference(M, S)), iterate_to_target, _, Args, endpoint(E)) 
     E =:= M - S.
 task_answered(asked(partition(N)), partition_regroup, _, _, made(N, part_unit(N, _))).
 task_answered(asked(regroup(N)), partition_regroup, _, _, made(1, composite_unit(N, _))).
+task_answered(
+    asked(refine_bracket_by_order(Target, interval(Lower, Upper), Cut)),
+    refine_bracket_by_order, ordered_rational_interval,
+    [target(Target), bracket(interval(Lower, Upper)), cut(Cut)],
+    ClaimedResult) :-
+    oracle_refinement_answer(Target, Lower, Cut, Upper, ClaimedResult).
+task_answered(
+    asked(compare_place_sequences_by_significance(LeftNumeral, RightNumeral)),
+    compare_place_sequences_by_significance, positional_numerals(Base),
+    [left(LeftNumeral), right(RightNumeral)], relation(Relation, Witness)) :-
+    gate(positional_numerals(Base), _),
+    numeral_cardinality(Base, LeftNumeral, LeftCount),
+    numeral_cardinality(Base, RightNumeral, RightCount),
+    oracle_integer_relation(LeftCount, RightCount, Relation),
+    oracle_place_witness(Relation, LeftNumeral, RightNumeral, Witness).
+task_answered(asked(recollect_base_cycles(Count, Base)),
+              recollect_base_cycles, cardinality_in_base(Base),
+              [cardinality(Count)], Numeral) :-
+    gate(cardinality_in_base(Base), _),
+    integer(Count),
+    Count >= 0,
+    numeral_cardinality(Base, Numeral, Count).
+
+% Ground truth for recollection reads the produced numeral back by place
+% value; it does not reuse the quotient/remainder loop under test.
+numeral_cardinality(Base, Numeral, Count) :-
+    canonical_nonnegative_numeral(Base, Numeral, Values),
+    place_values_cardinality(Values, Base, 0, Count).
+
+place_values_cardinality([], _Base, Count, Count).
+place_values_cardinality([Digit|Digits], Base, Acc0, Count) :-
+    Acc1 is Acc0 * Base + Digit,
+    place_values_cardinality(Digits, Base, Acc1, Count).
+
+% Independent K4 oracle. It duplicates the admitted arithmetic instead of
+% calling rational_order/3, target_cut_order/3, target_inside_bracket/3, or
+% refine_order_result/6 from the kernel under test.
+oracle_refinement_answer(Target,
+                         q(LowerNumerator, LowerDenominator),
+                         q(CutNumerator, CutDenominator),
+                         q(UpperNumerator, UpperDenominator),
+                         ClaimedResult) :-
+    maplist(integer,
+            [ LowerNumerator, LowerDenominator,
+              CutNumerator, CutDenominator,
+              UpperNumerator, UpperDenominator
+            ]),
+    LowerDenominator > 0,
+    CutDenominator > 0,
+    UpperDenominator > 0,
+    LowerNumerator * CutDenominator < CutNumerator * LowerDenominator,
+    CutNumerator * UpperDenominator < UpperNumerator * CutDenominator,
+    oracle_target_rational_order(
+        Target, q(LowerNumerator, LowerDenominator), LowerOrder),
+    memberchk(LowerOrder, [equal, above]),
+    oracle_target_rational_order(
+        Target, q(UpperNumerator, UpperDenominator), UpperOrder),
+    memberchk(UpperOrder, [equal, below]),
+    oracle_target_rational_order(
+        Target, q(CutNumerator, CutDenominator), CutOrder),
+    oracle_refinement_claim(
+        CutOrder,
+        q(LowerNumerator, LowerDenominator),
+        q(CutNumerator, CutDenominator),
+        q(UpperNumerator, UpperDenominator),
+        ClaimedResult).
+
+oracle_target_rational_order(rational(q(TargetNumerator, TargetDenominator)),
+                             q(PointNumerator, PointDenominator), Order) :-
+    integer(TargetNumerator),
+    integer(TargetDenominator),
+    TargetDenominator > 0,
+    Left is TargetNumerator * PointDenominator,
+    Right is PointNumerator * TargetDenominator,
+    compare(Comparison, Left, Right),
+    oracle_comparison_order(Comparison, Order).
+oracle_target_rational_order(square_root(Radicand),
+                             q(PointNumerator, PointDenominator), Order) :-
+    integer(Radicand),
+    Radicand > 0,
+    (   PointNumerator < 0
+    ->  Order = above
+    ;   RootSquared is Radicand * PointDenominator * PointDenominator,
+        PointSquared is PointNumerator * PointNumerator,
+        compare(Comparison, RootSquared, PointSquared),
+        oracle_comparison_order(Comparison, Order)
+    ).
+
+oracle_comparison_order((<), below).
+oracle_comparison_order((=), equal).
+oracle_comparison_order((>), above).
+
+oracle_refinement_claim(equal, _Lower, Cut, _Upper, exact(Cut)).
+oracle_refinement_claim(below, Lower, Cut, _Upper,
+                        next(interval(Lower, Cut), target_below_cut)).
+oracle_refinement_claim(above, _Lower, Cut, Upper,
+                        next(interval(Cut, Upper), target_above_cut)).
+
+% Independent K5 oracle. Cardinality order comes from Horner read-back. The
+% claimed place witness is checked by direct indexing into the digit lists,
+% with virtual leading zeroes supplied only for indices before a shorter list.
+oracle_integer_relation(Left, Right, Relation) :-
+    compare(Comparison, Left, Right),
+    oracle_count_relation(Comparison, Relation).
+
+oracle_count_relation((<), fewer).
+oracle_count_relation((=), same_number).
+oracle_count_relation((>), more).
+
+oracle_place_witness(
+    same_number, LeftNumeral, RightNumeral,
+    no_differing_place(equal_digit_sequences)) :-
+    oracle_numeral_digits(LeftNumeral, LeftDigits),
+    oracle_numeral_digits(RightNumeral, RightDigits),
+    oracle_aligned_width(LeftDigits, RightDigits, Width),
+    oracle_equal_places(0, Width, LeftDigits, RightDigits, Width).
+oracle_place_witness(
+    Relation, LeftNumeral, RightNumeral,
+    highest_differing_place(Exponent, digits(ClaimedLeft, ClaimedRight))) :-
+    memberchk(Relation, [fewer, more]),
+    oracle_numeral_digits(LeftNumeral, LeftDigits),
+    oracle_numeral_digits(RightNumeral, RightDigits),
+    oracle_aligned_width(LeftDigits, RightDigits, Width),
+    integer(Exponent),
+    Exponent >= 0,
+    Exponent < Width,
+    Position is Width - Exponent - 1,
+    oracle_equal_places(0, Position, LeftDigits, RightDigits, Width),
+    oracle_aligned_digit(LeftDigits, Width, Position, LeftDigit),
+    oracle_aligned_digit(RightDigits, Width, Position, RightDigit),
+    integer(ClaimedLeft),
+    integer(ClaimedRight),
+    ClaimedLeft =:= LeftDigit,
+    ClaimedRight =:= RightDigit,
+    compare(DigitComparison, LeftDigit, RightDigit),
+    oracle_count_relation(DigitComparison, Relation).
+
+oracle_numeral_digits(numeral(_Base, _Sign, radix(_Radix), Digits), Digits).
+
+oracle_aligned_width(LeftDigits, RightDigits, Width) :-
+    length(LeftDigits, LeftWidth),
+    length(RightDigits, RightWidth),
+    Width is max(LeftWidth, RightWidth).
+
+oracle_aligned_digit(Digits, Width, Position, Value) :-
+    length(Digits, DigitWidth),
+    Padding is Width - DigitWidth,
+    (   Position < Padding
+    ->  Value = 0
+    ;   DigitIndex is Position - Padding,
+        nth0(DigitIndex, Digits, digit(Value, _Glyph))
+    ).
+
+oracle_equal_places(Position, Limit, _LeftDigits, _RightDigits, _Width) :-
+    Position >= Limit,
+    !.
+oracle_equal_places(Position, Limit, LeftDigits, RightDigits, Width) :-
+    oracle_aligned_digit(LeftDigits, Width, Position, LeftValue),
+    oracle_aligned_digit(RightDigits, Width, Position, RightValue),
+    LeftValue =:= RightValue,
+    NextPosition is Position + 1,
+    oracle_equal_places(NextPosition, Limit,
+                        LeftDigits, RightDigits, Width).
 
 % ==========================================================================
 % 6. CANDIDATE DEFORMATIONS (not "predictions")
@@ -531,9 +967,110 @@ demo_productive(Task, R) :-
              asked(complement_within(unit_fraction(7), 2))-(complete_to_unit-unit_fraction(7)-[part(2)]),
              asked(sum(5, 3))-(iterate_to_target-whole_number(10)-[start(5), delta(3), direction(up), output(endpoint)]),
              asked(difference(8, 3))-(iterate_to_target-whole_number(10)-[start(3), delta(5), direction(up), output(distance)]),
-             asked(partition(7))-(partition_regroup-unit_fraction(7)-[unit(whole), plan(partition(7))])
+             asked(partition(7))-(partition_regroup-unit_fraction(7)-[unit(whole), plan(partition(7))]),
+             asked(refine_bracket_by_order(rational(q(1, 3)),
+                                           interval(q(0, 1), q(1, 1)),
+                                           q(1, 2)))-
+                 (refine_bracket_by_order-ordered_rational_interval-
+                  [ target(rational(q(1, 3))),
+                    bracket(interval(q(0, 1), q(1, 1))),
+                    cut(q(1, 2))
+                  ]),
+             asked(compare_place_sequences_by_significance(
+                       numeral(10, positive, radix(2),
+                               [digit(5, "5"), digit(6, "6")]),
+                       numeral(10, positive, radix(2),
+                               [digit(2, "2"), digit(6, "6")])))-
+                 (compare_place_sequences_by_significance-positional_numerals(10)-
+                  [ left(numeral(10, positive, radix(2),
+                                 [digit(5, "5"), digit(6, "6")])),
+                    right(numeral(10, positive, radix(2),
+                                  [digit(2, "2"), digit(6, "6")]))
+                  ]),
+             asked(recollect_base_cycles(347, 10))-
+                 (recollect_base_cycles-cardinality_in_base(10)-
+                  [cardinality(347)])
            ]),
     run_kernel(K, G, A, R).
+
+% The three admissions participate in the same task/execution recognition as
+% K1-K3. Correct runs are productive; result tampering is unvindicated.
+check_admitted_kernel_validity :-
+    NewTasks =
+        [ asked(refine_bracket_by_order(rational(q(1, 3)),
+                                        interval(q(0, 1), q(1, 1)),
+                                        q(1, 2))),
+          asked(compare_place_sequences_by_significance(
+                    numeral(10, positive, radix(2),
+                            [digit(5, "5"), digit(6, "6")]),
+                    numeral(10, positive, radix(2),
+                            [digit(2, "2"), digit(6, "6")]))),
+          asked(recollect_base_cycles(347, 10))
+        ],
+    forall(member(Task, NewTasks),
+           ( demo_productive(Task, Run),
+             recognize(Task, Run, productive),
+             \+ recognize(Task, Run, unvindicated) )),
+    NewTasks = [RefineTask, CompareTask, RecollectTask],
+    demo_productive(RefineTask, run(K4, G4, A4, S4, _)),
+    WrongRefine = run(K4, G4, A4, S4, exact(q(1, 2))),
+    recognize(RefineTask, WrongRefine, unvindicated),
+    \+ recognize(RefineTask, WrongRefine, productive),
+    demo_productive(CompareTask, run(K5, G5, A5, S5, _)),
+    WrongCompare = run(K5, G5, A5, S5,
+                       relation(more,
+                                highest_differing_place(0, digits(5, 2)))),
+    recognize(CompareTask, WrongCompare, unvindicated),
+    \+ recognize(CompareTask, WrongCompare, productive),
+    demo_productive(RecollectTask, run(K6, G6, A6, S6, _)),
+    WrongRecollect = run(
+        K6, G6, A6, S6,
+        numeral(10, positive, radix(3),
+                [digit(3, "3"), digit(4, "4"), digit(6, "6")])),
+    recognize(RecollectTask, WrongRecollect, unvindicated),
+    \+ recognize(RecollectTask, WrongRecollect, productive).
+
+% The reviewed cross-kernel and malformed-glyph calls fail or refuse as data;
+% neither reaches an arithmetic or string conversion exception.
+check_admission_refusals :-
+    \+ run_kernel(complete_to_unit, ordered_rational_interval,
+                  [part(2)], _),
+    findall(Gate-Run,
+            run_kernel(complete_to_unit, Gate, [part(2)], Run),
+            GateRuns),
+    GateRuns == [],
+    Left = numeral(10, positive, radix(2),
+                   [digit(5, '5'), digit(6, "6")]),
+    Right = numeral(10, positive, radix(2),
+                    [digit(2, "2"), digit(6, "6")]),
+    run_kernel(compare_place_sequences_by_significance,
+               positional_numerals(10), [left(Left), right(Right)],
+               run(_, _, _, [refuse_before_comparison],
+                   refused(malformed_left_positional_numeral(Left)))).
+
+% K6 output is the canonical K5 input. The full 0..40 pair grid covers zero,
+% exact base cycles for every listed base, multiple places in the smaller
+% bases, and bracketed digit glyphs above base 36.
+check_recollect_compare_composition :-
+    Bases = [2, 10, 16, 36, 40],
+    forall(( member(Base, Bases),
+             between(0, 40, LeftCount),
+             between(0, 40, RightCount) ),
+           ( run_kernel(recollect_base_cycles, cardinality_in_base(Base),
+                        [cardinality(LeftCount)], LeftRun),
+             LeftRun = run(_, _, _, _, LeftNumeral),
+             run_kernel(recollect_base_cycles, cardinality_in_base(Base),
+                        [cardinality(RightCount)], RightRun),
+             RightRun = run(_, _, _, _, RightNumeral),
+             run_kernel(compare_place_sequences_by_significance,
+                        positional_numerals(Base),
+                        [left(LeftNumeral), right(RightNumeral)], CompareRun),
+             CompareRun = run(_, _, _, _, relation(Relation, _Witness)),
+             oracle_integer_relation(LeftCount, RightCount, Relation),
+             CompareTask = asked(compare_place_sequences_by_significance(
+                                     LeftNumeral, RightNumeral)),
+             recognize(CompareTask, CompareRun, productive),
+             \+ recognize(CompareTask, CompareRun, unvindicated) )).
 
 demo_mutant(asked(complement_within(whole_number(7), 2)), M, Mu) :-
     run_kernel(complete_to_unit, whole_number(7), [part(2)], R1),
@@ -582,7 +1119,7 @@ check_commutation :-
     run_kernel(complete_to_unit, whole_number(7), [part(2)], RW),
     \+ mutate_run(conflate_count_with_unit_size, RW, _).
 
-% What resists the three kernels, reported rather than forced. These
+% What resists the pilot kernels, reported rather than forced. These
 % name control forms the kernel set does not carry yet; each is a
 % candidate kernel for the next wave, with its corpus locus.
 resists(fact_retrieval_economy,
@@ -600,7 +1137,7 @@ resists(columnar_shell,
 check_resisters :-
     aggregate_all(count, resists(_, _, _), N),
     N >= 3,
-    format('  resisters reported: ~w control forms outside the three kernels~n', [N]).
+    format('  resisters reported: ~w control forms outside the pilot kernels~n', [N]).
 
 % Locus-exact candidates, enumerated.
 check_candidates :-
@@ -621,6 +1158,12 @@ check_kernel_pilot :-
     format('partition/regroup: directions distinct, nesting composes to 1/49 ... ok~n'),
     check_execution_validity,
     format('validity: from execution against independent ground truth, no authored table ... ok~n'),
+    check_admitted_kernel_validity,
+    format('admitted validity: refinement, place comparison, and recollection runs are productive; tampered results unvindicated ... ok~n'),
+    check_recollect_compare_composition,
+    format('composition: recollection feeds canonical comparison for 8,405 pairs at counts 0..40 and bases 2,10,16,36,40 ... ok~n'),
+    check_admission_refusals,
+    format('admission refusals: cross-kernel ordered-interval calls fail cleanly; atom glyphs refuse as data ... ok~n'),
     check_negative,
     format('negative tests: mutants and tampered results rejected; dishonest runs named ... ok~n'),
     check_commutation,
