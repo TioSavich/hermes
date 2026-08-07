@@ -6,12 +6,12 @@
  *     strategy = gate(genre, representation) |> shell [ kernel ]
  *
  * on three cross-domain probes (complete_to_unit, iterate_to_target,
- * partition/regroup) and three single-gate probes (bracket refinement,
- * place-sequence comparison, base-cycle recollection). The kernel carries
- * control flow and actually computes. The gate supplies sorts, admissibility
- * guards, the named boundary, and result interpretation. Correct and
- * incorrect doings are instances or single local mutations of the same
- * kernel run.
+ * partition/regroup), three single-gate probes (bracket refinement,
+ * place-sequence comparison, base-cycle recollection), and one pair-
+ * enumeration kernel shared by two geometry gates. The kernel carries control
+ * flow and actually computes. The gate supplies sorts, admissibility guards,
+ * the named boundary, and result interpretation. Correct and incorrect doings
+ * are instances or single local mutations of the same kernel run.
  *
  * This file is standalone and quarantined in the sense of
  * action_vocabulary_map.pl: nothing imports it, it renames nothing,
@@ -76,15 +76,25 @@
  * is the impasse-repair structure made executable.
  *
  * LIMITS.
- *   - Six kernels do not cover the strategy corpus, and are not
+ *   - Seven kernels do not cover the strategy corpus, and are not
  *     claimed to. check_resisters/0 REPORTS what resists them (the
  *     fact-retrieval economy, anchor-and-compensate, the columnar
  *     shell) instead of forcing it. Resisters are the work list for
  *     candidate kernels, not failures of the probe.
- *   - Gates here are six: whole_number(B), integer_line,
+ *   - Gates here are eight: whole_number(B), integer_line,
  *     unit_fraction(D) over a referent whole, ordered_rational_interval,
- *     positional_numerals(B), and cardinality_in_base(B). Measurement,
- *     decimal, and equation gates are future waves.
+ *     positional_numerals(B), cardinality_in_base(B),
+ *     rectangle_area_product(Area), and
+ *     rectangle_even_perimeter(Perimeter). Measurement, decimal, and equation
+ *     gates are future waves.
+ *   - Pair enumeration is deliberately bounded. The area-product gate admits
+ *     products through 10,000; the perimeter gate retains the source
+ *     machine's 1..100 side limit. The area gate has boundary(none). The
+ *     perimeter gate's half-perimeter is a numeric sum boundary, so K1 can
+ *     compute one complementary side under that gate but cannot enumerate the
+ *     complete pair list. As with the prior admissions, gate/2 also exposes
+ *     these gates to generic K2 and K3 calls; no cross-kernel sort repair is
+ *     made in this slice.
  *   - The three new gates are visible through gate/2 to K1-K3 even though
  *     those kernels' argument sorts do not match them. This widens the sort
  *     discipline: K1 fails at boundary(none) for ordered_rational_interval
@@ -92,7 +102,9 @@
  *     K2 and K3 use generic gate checks. Gate-parameter range handling also
  *     differs: existing gate-parametric kernel calls can fail when a gate
  *     parameter is outside its range, while K5 and K6 return refused(...) for
- *     invalid bases. This limit is recorded, not repaired, in this slice.
+ *     invalid bases, and K7 returns refused(unsupported_pair_gate(GateId)) for
+ *     an unsupported gate. This limit is recorded, not repaired, in this
+ *     slice.
  *   - attested_as/2 annotations point at corpus kind names by hand;
  *     they are claims to check against the live tables, not links.
  *   - The commutation check runs on the mutations and bridges defined
@@ -170,6 +182,27 @@ gate(cardinality_in_base(B),
            lower_limit(0),
            subtraction(none))) :-
     integer(B), B > 1.
+gate(rectangle_area_product(Area),
+     props(sort(pair(positive_integer_side_lengths)),
+           boundary(none), boundary_kind(product_constraint(Area)),
+           operative_radix(none),
+           lower_limit(1),
+           subtraction(none))) :-
+    integer(Area),
+    pair_enumeration_area_limit(Limit),
+    between(1, Limit, Area).
+gate(rectangle_even_perimeter(Perimeter),
+     props(sort(pair(bounded_positive_integer_side_lengths(1, 100))),
+           boundary(Half), boundary_kind(half_perimeter_sum(Half)),
+           operative_radix(none),
+           lower_limit(1),
+           subtraction(none))) :-
+    integer(Perimeter),
+    between(4, 400, Perimeter),
+    0 is Perimeter mod 2,
+    Half is Perimeter // 2.
+
+pair_enumeration_area_limit(10000).
 
 gate_boundary(GateId, B) :- gate(GateId, props(_, boundary(B), _, _, _, _)).
 gate_boundary_kind(GateId, K) :- gate(GateId, props(_, _, boundary_kind(K), _, _, _)).
@@ -525,6 +558,97 @@ cardinality_sign(0, zero) :-
     !.
 cardinality_sign(_Count, positive).
 
+% --- K7: enumerate positive integer pairs -------------------------------
+% Admitted from both failed derivations in
+% .superpowers/sdd/task-2026-08-07-five-deferral-probe-report.md:
+% geometry/rectangle_factor_pair_search reaches an area endpoint but cannot
+% return the product-constrained pair set, and
+% geometry/rectangle_perimeter_side_pair_search reaches the half-perimeter
+% endpoint but cannot return the sum-constrained pair set. The machines are
+% not bridged in this slice.
+run_kernel(enumerate_positive_integer_pairs, GateId, [],
+           run(enumerate_positive_integer_pairs, GateId, [], Steps, Result)) :-
+    (   pair_gate_refusal(GateId, Why)
+    ->  Steps = [refuse_before_enumeration],
+        Result = refused(Why)
+    ;   pair_gate_plan(GateId, Upper, Admission, Constraint),
+        enumerate_admitted_pairs(GateId, Upper, Pairs),
+        Steps = [ Admission,
+                  enumerate_positive_integer_pairs,
+                  test_pair_constraint(Constraint),
+                  canonicalize_commutative_pairs,
+                  read_off(positive_integer_pairs(Pairs))
+                ],
+        Result = positive_integer_pairs(Pairs)
+    ).
+
+pair_gate_refusal(GateId, unbound_pair_gate) :-
+    var(GateId),
+    !.
+pair_gate_refusal(rectangle_area_product(Area), Why) :-
+    !,
+    area_product_refusal(Area, Why).
+pair_gate_refusal(rectangle_even_perimeter(Perimeter), Why) :-
+    !,
+    even_perimeter_refusal(Perimeter, Why).
+pair_gate_refusal(GateId, unsupported_pair_gate(GateId)).
+
+area_product_refusal(Area, unbound_area) :-
+    var(Area),
+    !.
+area_product_refusal(Area, noninteger_area(Area)) :-
+    \+ integer(Area),
+    !.
+area_product_refusal(Area, nonpositive_area(Area)) :-
+    Area =< 0,
+    !.
+area_product_refusal(Area, area_exceeds_enumeration_limit(Area, Limit)) :-
+    pair_enumeration_area_limit(Limit),
+    Area > Limit.
+
+even_perimeter_refusal(Perimeter, unbound_perimeter) :-
+    var(Perimeter),
+    !.
+even_perimeter_refusal(Perimeter, noninteger_perimeter(Perimeter)) :-
+    \+ integer(Perimeter),
+    !.
+even_perimeter_refusal(Perimeter, perimeter_below_minimum(Perimeter, 4)) :-
+    Perimeter < 4,
+    !.
+even_perimeter_refusal(Perimeter, odd_perimeter(Perimeter)) :-
+    1 is Perimeter mod 2,
+    !.
+even_perimeter_refusal(Perimeter,
+                       perimeter_exceeds_bounded_side_limit(Perimeter, 400)) :-
+    Perimeter > 400.
+
+pair_gate_plan(rectangle_area_product(Area), Area,
+               admit(positive_integer_area(Area)), product(Area)) :-
+    gate(rectangle_area_product(Area), _).
+pair_gate_plan(rectangle_even_perimeter(Perimeter), MaxLength,
+               admit(even_perimeter_with_bounded_positive_side_pair(
+                         Perimeter)),
+               sum(Half)) :-
+    gate_boundary(rectangle_even_perimeter(Perimeter), Half),
+    MaxLength is Half - 1.
+
+enumerate_admitted_pairs(GateId, Upper, Pairs) :-
+    findall(Length-Width,
+            ( between(1, Upper, Length),
+              gate_pair_width(GateId, Length, Width),
+              Length =< Width
+            ),
+            Pairs).
+
+gate_pair_width(rectangle_area_product(Area), Length, Width) :-
+    0 is Area mod Length,
+    Width is Area // Length.
+gate_pair_width(rectangle_even_perimeter(Perimeter), Length, Width) :-
+    Half is Perimeter // 2,
+    Width is Half - Length,
+    between(1, 100, Length),
+    between(1, 100, Width).
+
 % ==========================================================================
 % 3. MUTATIONS
 %
@@ -689,6 +813,10 @@ task_answered(asked(recollect_base_cycles(Count, Base)),
     integer(Count),
     Count >= 0,
     numeral_cardinality(Base, Numeral, Count).
+task_answered(asked(enumerate_positive_integer_pairs(GateId)),
+              enumerate_positive_integer_pairs, GateId, [],
+              positive_integer_pairs(Pairs)) :-
+    oracle_positive_integer_pairs(GateId, Pairs).
 
 % Ground truth for recollection reads the produced numeral back by place
 % value; it does not reuse the quotient/remainder loop under test.
@@ -700,6 +828,73 @@ place_values_cardinality([], _Base, Count, Count).
 place_values_cardinality([Digit|Digits], Base, Acc0, Count) :-
     Acc1 is Acc0 * Base + Digit,
     place_values_cardinality(Digits, Base, Acc1, Count).
+
+% Independent K7 oracle. It checks the claimed list's members and order by
+% direct arithmetic, then counts every satisfying canonical pair without
+% calling gate/2, pair_gate_plan/4, enumerate_admitted_pairs/3, or
+% gate_pair_width/3 from the kernel under test. The count comprehension shares
+% the gate-supplied scan bound with the kernel; its membership arithmetic is
+% independent, as the K6 oracle shares a base while reading place value back.
+oracle_positive_integer_pairs(rectangle_area_product(Area), Pairs) :-
+    integer(Area),
+    pair_enumeration_area_limit(Limit),
+    between(1, Limit, Area),
+    is_list(Pairs),
+    Pairs = [_|_],
+    oracle_strictly_increasing_pair_lengths(Pairs),
+    maplist(oracle_area_pair(Area), Pairs),
+    aggregate_all(count,
+                  ( between(1, Area, Length),
+                    0 is Area mod Length,
+                    Width is Area // Length,
+                    Length =< Width
+                  ),
+                  ExpectedCount),
+    length(Pairs, ExpectedCount).
+oracle_positive_integer_pairs(rectangle_even_perimeter(Perimeter), Pairs) :-
+    integer(Perimeter),
+    between(4, 400, Perimeter),
+    0 is Perimeter mod 2,
+    Half is Perimeter // 2,
+    is_list(Pairs),
+    Pairs = [_|_],
+    oracle_strictly_increasing_pair_lengths(Pairs),
+    maplist(oracle_perimeter_pair(Half), Pairs),
+    MaxLength is Half - 1,
+    aggregate_all(count,
+                  ( between(1, MaxLength, Length),
+                    Width is Half - Length,
+                    Length =< Width,
+                    between(1, 100, Length),
+                    between(1, 100, Width)
+                  ),
+                  ExpectedCount),
+    length(Pairs, ExpectedCount).
+
+oracle_area_pair(Area, Length-Width) :-
+    integer(Length),
+    integer(Width),
+    Length > 0,
+    Length =< Width,
+    Length * Width =:= Area.
+
+oracle_perimeter_pair(Half, Length-Width) :-
+    integer(Length),
+    integer(Width),
+    between(1, 100, Length),
+    between(1, 100, Width),
+    Length =< Width,
+    Length + Width =:= Half.
+
+oracle_strictly_increasing_pair_lengths([]).
+oracle_strictly_increasing_pair_lengths([_]).
+oracle_strictly_increasing_pair_lengths(
+        [LeftLength-_LeftWidth, RightLength-RightWidth | Pairs]) :-
+    integer(LeftLength),
+    integer(RightLength),
+    LeftLength < RightLength,
+    oracle_strictly_increasing_pair_lengths(
+        [RightLength-RightWidth | Pairs]).
 
 % Independent K4 oracle. It duplicates the admitted arithmetic instead of
 % calling rational_order/3, target_cut_order/3, target_inside_bracket/3, or
@@ -989,12 +1184,20 @@ demo_productive(Task, R) :-
                   ]),
              asked(recollect_base_cycles(347, 10))-
                  (recollect_base_cycles-cardinality_in_base(10)-
-                  [cardinality(347)])
+                  [cardinality(347)]),
+             asked(enumerate_positive_integer_pairs(
+                       rectangle_area_product(24)))-
+                 (enumerate_positive_integer_pairs-
+                  rectangle_area_product(24)-[]),
+             asked(enumerate_positive_integer_pairs(
+                       rectangle_even_perimeter(22)))-
+                 (enumerate_positive_integer_pairs-
+                  rectangle_even_perimeter(22)-[])
            ]),
     run_kernel(K, G, A, R).
 
-% The three admissions participate in the same task/execution recognition as
-% K1-K3. Correct runs are productive; result tampering is unvindicated.
+% The admissions participate in the same task/execution recognition as K1-K3.
+% Correct runs are productive; result tampering is unvindicated.
 check_admitted_kernel_validity :-
     NewTasks =
         [ asked(refine_bracket_by_order(rational(q(1, 3)),
@@ -1005,13 +1208,19 @@ check_admitted_kernel_validity :-
                             [digit(5, "5"), digit(6, "6")]),
                     numeral(10, positive, radix(2),
                             [digit(2, "2"), digit(6, "6")]))),
-          asked(recollect_base_cycles(347, 10))
+          asked(recollect_base_cycles(347, 10)),
+          asked(enumerate_positive_integer_pairs(
+                    rectangle_area_product(24))),
+          asked(enumerate_positive_integer_pairs(
+                    rectangle_even_perimeter(22)))
         ],
     forall(member(Task, NewTasks),
            ( demo_productive(Task, Run),
              recognize(Task, Run, productive),
              \+ recognize(Task, Run, unvindicated) )),
-    NewTasks = [RefineTask, CompareTask, RecollectTask],
+    NewTasks = [ RefineTask, CompareTask, RecollectTask,
+                 AreaPairTask, PerimeterPairTask
+               ],
     demo_productive(RefineTask, run(K4, G4, A4, S4, _)),
     WrongRefine = run(K4, G4, A4, S4, exact(q(1, 2))),
     recognize(RefineTask, WrongRefine, unvindicated),
@@ -1028,7 +1237,53 @@ check_admitted_kernel_validity :-
         numeral(10, positive, radix(3),
                 [digit(3, "3"), digit(4, "4"), digit(6, "6")])),
     recognize(RecollectTask, WrongRecollect, unvindicated),
-    \+ recognize(RecollectTask, WrongRecollect, productive).
+    \+ recognize(RecollectTask, WrongRecollect, productive),
+    demo_productive(AreaPairTask, run(K7A, G7A, A7A, S7A, _)),
+    WrongAreaPairs = run(
+        K7A, G7A, A7A, S7A,
+        positive_integer_pairs([1-24, 2-12, 3-8])),
+    recognize(AreaPairTask, WrongAreaPairs, unvindicated),
+    \+ recognize(AreaPairTask, WrongAreaPairs, productive),
+    demo_productive(PerimeterPairTask, run(K7P, G7P, A7P, S7P, _)),
+    WrongPerimeterPairs = run(
+        K7P, G7P, A7P, S7P,
+        positive_integer_pairs([1-10, 2-9, 3-8, 4-7, 5-5])),
+    recognize(PerimeterPairTask, WrongPerimeterPairs, unvindicated),
+    \+ recognize(PerimeterPairTask, WrongPerimeterPairs, productive).
+
+% The pair lists retain the prototype outputs. Gate-specific readings are
+% parameters of one shared trace skeleton, and the asserted list is wrapped in
+% a compound result for recognition.
+check_pair_enumeration_admission :-
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_area_product(24), [], AreaRun),
+    AreaRun = run(
+        enumerate_positive_integer_pairs, rectangle_area_product(24), [],
+        [ admit(positive_integer_area(24)),
+          enumerate_positive_integer_pairs,
+          test_pair_constraint(product(24)),
+          canonicalize_commutative_pairs,
+          read_off(positive_integer_pairs([1-24, 2-12, 3-8, 4-6]))
+        ],
+        positive_integer_pairs([1-24, 2-12, 3-8, 4-6])),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_even_perimeter(22), [], PerimeterRun),
+    PerimeterRun = run(
+        enumerate_positive_integer_pairs, rectangle_even_perimeter(22), [],
+        [ admit(even_perimeter_with_bounded_positive_side_pair(22)),
+          enumerate_positive_integer_pairs,
+          test_pair_constraint(sum(11)),
+          canonicalize_commutative_pairs,
+          read_off(positive_integer_pairs(
+                       [1-10, 2-9, 3-8, 4-7, 5-6]))
+        ],
+        positive_integer_pairs([1-10, 2-9, 3-8, 4-7, 5-6])),
+    AreaRun = run(_, _, _, AreaSteps, _),
+    PerimeterRun = run(_, _, _, PerimeterSteps, _),
+    skeleton(AreaSteps, PairSkeleton),
+    skeleton(PerimeterSteps, PairSkeleton),
+    gate_boundary(rectangle_area_product(24), none),
+    gate_boundary(rectangle_even_perimeter(22), 11).
 
 % The reviewed cross-kernel and malformed-glyph calls fail or refuse as data;
 % neither reaches an arithmetic or string conversion exception.
@@ -1046,7 +1301,48 @@ check_admission_refusals :-
     run_kernel(compare_place_sequences_by_significance,
                positional_numerals(10), [left(Left), right(Right)],
                run(_, _, _, [refuse_before_comparison],
-                   refused(malformed_left_positional_numeral(Left)))).
+                   refused(malformed_left_positional_numeral(Left)))),
+    run_kernel(enumerate_positive_integer_pairs, UnboundGate, [],
+               run(_, UnboundGate, _, [refuse_before_enumeration],
+                   refused(unbound_pair_gate))),
+    var(UnboundGate),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_area_product(UnboundArea), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(unbound_area))),
+    var(UnboundArea),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_area_product(-1), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(nonpositive_area(-1)))),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_area_product(0), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(nonpositive_area(0)))),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_area_product(2.5), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(noninteger_area(2.5)))),
+    pair_enumeration_area_limit(AreaLimit),
+    HugeArea is AreaLimit + 1,
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_area_product(HugeArea), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(area_exceeds_enumeration_limit(
+                               HugeArea, AreaLimit)))),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_even_perimeter(UnboundPerimeter), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(unbound_perimeter))),
+    var(UnboundPerimeter),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_even_perimeter(5), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(odd_perimeter(5)))),
+    run_kernel(enumerate_positive_integer_pairs,
+               rectangle_even_perimeter(402), [],
+               run(_, _, _, [refuse_before_enumeration],
+                   refused(perimeter_exceeds_bounded_side_limit(402, 400)))).
 
 % K6 output is the canonical K5 input. The full 0..40 pair grid covers zero,
 % exact base cycles for every listed base, multiple places in the smaller
@@ -1159,11 +1455,13 @@ check_kernel_pilot :-
     check_execution_validity,
     format('validity: from execution against independent ground truth, no authored table ... ok~n'),
     check_admitted_kernel_validity,
-    format('admitted validity: refinement, place comparison, and recollection runs are productive; tampered results unvindicated ... ok~n'),
+    format('admitted validity: refinement, place comparison, recollection, and pair-enumeration runs are productive; tampered results unvindicated ... ok~n'),
+    check_pair_enumeration_admission,
+    format('pair enumeration: prototype pair lists, one skeleton across product and sum gates ... ok~n'),
     check_recollect_compare_composition,
     format('composition: recollection feeds canonical comparison for 8,405 pairs at counts 0..40 and bases 2,10,16,36,40 ... ok~n'),
     check_admission_refusals,
-    format('admission refusals: cross-kernel ordered-interval calls fail cleanly; atom glyphs refuse as data ... ok~n'),
+    format('admission refusals: reviewed malformed calls and out-of-gate pair inputs refuse without throwing ... ok~n'),
     check_negative,
     format('negative tests: mutants and tampered results rejected; dishonest runs named ... ok~n'),
     check_commutation,
