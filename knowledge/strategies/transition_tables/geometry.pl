@@ -54,36 +54,36 @@ automaton_tuple(geometry, triangle_three_measure_determination, states([q_start,
 automaton_tuple(geometry, use_diameter_as_radius_in_circumference, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_circle_measure, read_diameter_as_radius, double_misread_radius_to_diameter, report_misread_circumference]), start(q_start), accepting([q_accept])).
 automaton_tuple(geometry, visible_faces_only_surface_area, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([inspect_solid_view, enumerate_visible_faces, omit_hidden_face, report_partial_surface_area]), start(q_start), accepting([q_accept])).
 
-automaton_transition(geometry, angle_additive_composition, q_start, establish_shared_vertex, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1178'))).
-automaton_transition(geometry, angle_additive_composition, q_step_1, preserve_adjacent_turns, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1178'))).
-automaton_transition(geometry, angle_additive_composition, q_step_2, sum_part_measures, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1178'))).
-automaton_transition(geometry, angle_additive_composition, q_step_3, verify_whole_angle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1178'))).
+automaton_transition(geometry, angle_additive_composition, q_start, establish_shared_vertex, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1196'))).
+automaton_transition(geometry, angle_additive_composition, q_step_1, preserve_adjacent_turns, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1196'))).
+automaton_transition(geometry, angle_additive_composition, q_step_2, sum_part_measures, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1196'))).
+automaton_transition(geometry, angle_additive_composition, q_step_3, verify_whole_angle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1196'))).
 
-automaton_transition(geometry, angle_as_ray_length, q_start, preserve_turn, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1156'))).
-automaton_transition(geometry, angle_as_ray_length, q_step_1, stretch_ray_length, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1156'))).
-automaton_transition(geometry, angle_as_ray_length, q_step_2, misread_visual_extent_as_angle_magnitude, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1156'))).
+automaton_transition(geometry, angle_as_ray_length, q_start, preserve_turn, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1174'))).
+automaton_transition(geometry, angle_as_ray_length, q_step_1, stretch_ray_length, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1174'))).
+automaton_transition(geometry, angle_as_ray_length, q_step_2, misread_visual_extent_as_angle_magnitude, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1174'))).
 
-automaton_transition(geometry, angle_relation_unknown_measure, q_start, establish_angle_part_whole_relation, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1430'))).
-automaton_transition(geometry, angle_relation_unknown_measure, q_step_1, accumulate_known_angle_parts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1430'))).
-automaton_transition(geometry, angle_relation_unknown_measure, q_step_2, inscribe_angle_equation, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1430'))).
-automaton_transition(geometry, angle_relation_unknown_measure, q_step_3, isolate_unknown_angle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1430'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_start, establish_angle_part_whole_relation, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1448'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_1, accumulate_known_angle_parts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1448'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_2, inscribe_angle_equation, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1448'))).
+automaton_transition(geometry, angle_relation_unknown_measure, q_step_3, isolate_unknown_angle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1448'))).
 
-automaton_transition(geometry, angle_turn_measurement, q_start, establish_fixed_vertex, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1132'))).
-automaton_transition(geometry, angle_turn_measurement, q_step_1, establish_initial_ray, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1132'))).
-automaton_transition(geometry, angle_turn_measurement, q_step_2, iterate_degree_turn, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1132'))).
-automaton_transition(geometry, angle_turn_measurement, q_step_3, locate_terminal_ray, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1132'))).
-automaton_transition(geometry, angle_turn_measurement, q_step_4, read_angle_measure, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1132'))).
+automaton_transition(geometry, angle_turn_measurement, q_start, establish_fixed_vertex, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1150'))).
+automaton_transition(geometry, angle_turn_measurement, q_step_1, establish_initial_ray, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1150'))).
+automaton_transition(geometry, angle_turn_measurement, q_step_2, iterate_degree_turn, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1150'))).
+automaton_transition(geometry, angle_turn_measurement, q_step_3, locate_terminal_ray, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1150'))).
+automaton_transition(geometry, angle_turn_measurement, q_step_4, read_angle_measure, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1150'))).
 
 automaton_transition(geometry, area_as_perimeter_count, q_start, establish_rectangle, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:70'))).
 automaton_transition(geometry, area_as_perimeter_count, q_step_1, ignore_interior_coverage, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:70'))).
 automaton_transition(geometry, area_as_perimeter_count, q_step_2, traverse_boundary_instead, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:70'))).
 automaton_transition(geometry, area_as_perimeter_count, q_step_3, substitute_boundary_count_for_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:70'))).
 
-automaton_transition(geometry, area_preserving_polygon_decomposition, q_start, establish_polygon, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:826'))).
-automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_1, decompose_into_nonoverlapping_pieces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:826'))).
-automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_2, measure_piece_areas, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:826'))).
-automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_3, sum_piece_areas, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:826'))).
-automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_4, preserve_whole_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:826'))).
+automaton_transition(geometry, area_preserving_polygon_decomposition, q_start, establish_polygon, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:844'))).
+automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_1, decompose_into_nonoverlapping_pieces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:844'))).
+automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_2, measure_piece_areas, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:844'))).
+automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_3, sum_piece_areas, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:844'))).
+automaton_transition(geometry, area_preserving_polygon_decomposition, q_step_4, preserve_whole_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:844'))).
 
 automaton_transition(geometry, area_unit_covering, q_start, establish_unit_square, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:97'))).
 automaton_transition(geometry, area_unit_covering, q_step_1, place_equal_unit_squares, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:97'))).
@@ -95,100 +95,100 @@ automaton_transition(geometry, area_unit_scale_selection, q_start, classify_area
 automaton_transition(geometry, area_unit_scale_selection, q_step_1, compare_candidate_square_unit_scales, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:152'))).
 automaton_transition(geometry, area_unit_scale_selection, q_step_2, select_matching_square_unit, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:152'))).
 
-automaton_transition(geometry, axis_aligned_coordinate_distance, q_start, plot_endpoint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:768'))).
-automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_1, plot_endpoint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:768'))).
-automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_2, hold_other_coordinate_fixed, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:768'))).
-automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_3, subtract_varying_coordinates, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:768'))).
-automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_4, take_absolute_coordinate_change, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:768'))).
+automaton_transition(geometry, axis_aligned_coordinate_distance, q_start, plot_endpoint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:786'))).
+automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_1, plot_endpoint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:786'))).
+automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_2, hold_other_coordinate_fixed, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:786'))).
+automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_3, subtract_varying_coordinates, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:786'))).
+automaton_transition(geometry, axis_aligned_coordinate_distance, q_step_4, take_absolute_coordinate_change, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:786'))).
 
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_start, ignore_area_referent_extent, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:176'))).
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_step_1, select_first_familiar_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:176'))).
 automaton_transition(geometry, choose_first_area_unit_without_scale, q_step_2, omit_unit_scale_comparison, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:176'))).
 
-automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_start, establish_circle_measure, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1327'))).
-automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_1, establish_co_measurement_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1327'))).
-automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_2, transform_circle_measure_through_co_measure, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1327'))).
-automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_3, report_circle_measure, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1327'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_start, establish_circle_measure, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1345'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_1, establish_co_measurement_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1345'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_2, transform_circle_measure_through_co_measure, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1345'))).
+automaton_transition(geometry, circle_circumference_diameter_co_measurement, q_step_3, report_circle_measure, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1345'))).
 
-automaton_transition(geometry, compare_solid_volume_by_cube_count, q_start, establish_unit_cube_as_volume_unit, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1233'))).
-automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_1, count_cubes_in_solid, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1233'))).
-automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_2, count_cubes_in_solid, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1233'))).
-automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_3, ignore_arrangement_extent, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1233'))).
-automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_4, compare_cubic_unit_counts, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1233'))).
+automaton_transition(geometry, compare_solid_volume_by_cube_count, q_start, establish_unit_cube_as_volume_unit, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1251'))).
+automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_1, count_cubes_in_solid, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1251'))).
+automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_2, count_cubes_in_solid, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1251'))).
+automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_3, ignore_arrangement_extent, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1251'))).
+automaton_transition(geometry, compare_solid_volume_by_cube_count, q_step_4, compare_cubic_unit_counts, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1251'))).
 
-automaton_transition(geometry, compare_solid_volume_by_visible_extent, q_start, inspect_visible_extent, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1262'))).
-automaton_transition(geometry, compare_solid_volume_by_visible_extent, q_step_1, ignore_unit_cube_counts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1262'))).
-automaton_transition(geometry, compare_solid_volume_by_visible_extent, q_step_2, compare_bounding_extents, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1262'))).
+automaton_transition(geometry, compare_solid_volume_by_visible_extent, q_start, inspect_visible_extent, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1280'))).
+automaton_transition(geometry, compare_solid_volume_by_visible_extent, q_step_1, ignore_unit_cube_counts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1280'))).
+automaton_transition(geometry, compare_solid_volume_by_visible_extent, q_step_2, compare_bounding_extents, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1280'))).
 
-automaton_transition(geometry, composite_prism_volume_sum, q_start, certify_disjoint_prism_decomposition, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:691'))).
-automaton_transition(geometry, composite_prism_volume_sum, q_step_1, calculate_component_volumes, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:691'))).
-automaton_transition(geometry, composite_prism_volume_sum, q_step_2, sum_component_volumes, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:691'))).
-automaton_transition(geometry, composite_prism_volume_sum, q_step_3, preserve_composite_volume, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:691'))).
+automaton_transition(geometry, composite_prism_volume_sum, q_start, certify_disjoint_prism_decomposition, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:704'))).
+automaton_transition(geometry, composite_prism_volume_sum, q_step_1, calculate_component_volumes, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:704'))).
+automaton_transition(geometry, composite_prism_volume_sum, q_step_2, sum_component_volumes, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:704'))).
+automaton_transition(geometry, composite_prism_volume_sum, q_step_3, preserve_composite_volume, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:704'))).
 
 automaton_transition(geometry, count_overlapping_area_tiles, q_start, place_unit_squares, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:123'))).
 automaton_transition(geometry, count_overlapping_area_tiles, q_step_1, omit_overlap_check, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:123'))).
 automaton_transition(geometry, count_overlapping_area_tiles, q_step_2, count_tile_placements, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:123'))).
 automaton_transition(geometry, count_overlapping_area_tiles, q_step_3, double_count_covered_cells, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:123'))).
 
-automaton_transition(geometry, decomposition_with_gap_or_overlap, q_start, establish_polygon, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:852'))).
-automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_1, accept_unchecked_pieces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:852'))).
-automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_2, omit_gap_overlap_test, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:852'))).
-automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_3, sum_piece_areas, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:852'))).
-automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_4, lose_whole_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:852'))).
+automaton_transition(geometry, decomposition_with_gap_or_overlap, q_start, establish_polygon, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:870'))).
+automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_1, accept_unchecked_pieces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:870'))).
+automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_2, omit_gap_overlap_test, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:870'))).
+automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_3, sum_piece_areas, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:870'))).
+automaton_transition(geometry, decomposition_with_gap_or_overlap, q_step_4, lose_whole_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:870'))).
 
-automaton_transition(geometry, dimensional_measure_unit_coordination, q_start, identify_measure_dimension, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1032'))).
-automaton_transition(geometry, dimensional_measure_unit_coordination, q_step_1, identify_measure_name, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1032'))).
-automaton_transition(geometry, dimensional_measure_unit_coordination, q_step_2, coordinate_unit_iteration_power, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1032'))).
-automaton_transition(geometry, dimensional_measure_unit_coordination, q_step_3, inscribe_unit_exponent, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1032'))).
+automaton_transition(geometry, dimensional_measure_unit_coordination, q_start, identify_measure_dimension, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1050'))).
+automaton_transition(geometry, dimensional_measure_unit_coordination, q_step_1, identify_measure_name, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1050'))).
+automaton_transition(geometry, dimensional_measure_unit_coordination, q_step_2, coordinate_unit_iteration_power, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1050'))).
+automaton_transition(geometry, dimensional_measure_unit_coordination, q_step_3, inscribe_unit_exponent, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1050'))).
 
-automaton_transition(geometry, directed_difference_as_coordinate_distance, q_start, plot_endpoint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:796'))).
-automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_1, plot_endpoint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:796'))).
-automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_2, subtract_varying_coordinates, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:796'))).
-automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_3, omit_absolute_value, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:796'))).
-automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_4, report_directed_change_as_length, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:796'))).
+automaton_transition(geometry, directed_difference_as_coordinate_distance, q_start, plot_endpoint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:814'))).
+automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_1, plot_endpoint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:814'))).
+automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_2, subtract_varying_coordinates, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:814'))).
+automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_3, omit_absolute_value, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:814'))).
+automaton_transition(geometry, directed_difference_as_coordinate_distance, q_step_4, report_directed_change_as_length, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:814'))).
 
-automaton_transition(geometry, divide_volume_by_one_dimension, q_start, retain_one_known_dimension, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:659'))).
-automaton_transition(geometry, divide_volume_by_one_dimension, q_step_1, drop_second_base_dimension, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:659'))).
-automaton_transition(geometry, divide_volume_by_one_dimension, q_step_2, divide_volume_by_length_only, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:659'))).
-automaton_transition(geometry, divide_volume_by_one_dimension, q_step_3, report_partial_quotient_as_height, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:659'))).
+automaton_transition(geometry, divide_volume_by_one_dimension, q_start, retain_one_known_dimension, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:672'))).
+automaton_transition(geometry, divide_volume_by_one_dimension, q_step_1, drop_second_base_dimension, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:672'))).
+automaton_transition(geometry, divide_volume_by_one_dimension, q_step_2, divide_volume_by_length_only, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:672'))).
+automaton_transition(geometry, divide_volume_by_one_dimension, q_step_3, report_partial_quotient_as_height, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:672'))).
 
-automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_start, establish_area_constraint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:516'))).
-automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_step_1, ignore_perimeter_constraint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:516'))).
-automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_step_2, retain_all_area_factor_pairs, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:516'))).
-automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_step_3, report_unfiltered_rectangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:516'))).
+automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_start, establish_area_constraint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:529'))).
+automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_step_1, ignore_perimeter_constraint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:529'))).
+automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_step_2, retain_all_area_factor_pairs, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:529'))).
+automaton_transition(geometry, ignore_perimeter_rectangle_constraint, q_step_3, report_unfiltered_rectangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:529'))).
 
 automaton_transition(geometry, ignore_symmetry_multiplicity, q_start, establish_perimeter, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:367'))).
 automaton_transition(geometry, ignore_symmetry_multiplicity, q_step_1, ignore_reflected_side_copies, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:367'))).
 automaton_transition(geometry, ignore_symmetry_multiplicity, q_step_2, count_each_orbit_once, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:367'))).
 automaton_transition(geometry, ignore_symmetry_multiplicity, q_step_3, subtract_flat_known_total, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:367'))).
 
-automaton_transition(geometry, linear_unit_for_area_or_volume, q_start, identify_measure_dimension, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1055'))).
-automaton_transition(geometry, linear_unit_for_area_or_volume, q_step_1, ignore_dimension_power, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1055'))).
-automaton_transition(geometry, linear_unit_for_area_or_volume, q_step_2, write_linear_unit, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1055'))).
-automaton_transition(geometry, linear_unit_for_area_or_volume, q_step_3, lose_unit_exponent, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1055'))).
+automaton_transition(geometry, linear_unit_for_area_or_volume, q_start, identify_measure_dimension, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1073'))).
+automaton_transition(geometry, linear_unit_for_area_or_volume, q_step_1, ignore_dimension_power, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1073'))).
+automaton_transition(geometry, linear_unit_for_area_or_volume, q_step_2, write_linear_unit, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1073'))).
+automaton_transition(geometry, linear_unit_for_area_or_volume, q_step_3, lose_unit_exponent, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1073'))).
 
-automaton_transition(geometry, omit_half_in_triangle_area, q_start, multiply_base_by_height, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:958'))).
-automaton_transition(geometry, omit_half_in_triangle_area, q_step_1, omit_matching_copy_relation, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:958'))).
-automaton_transition(geometry, omit_half_in_triangle_area, q_step_2, omit_halving, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:958'))).
-automaton_transition(geometry, omit_half_in_triangle_area, q_step_3, report_parallelogram_area_for_triangle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:958'))).
+automaton_transition(geometry, omit_half_in_triangle_area, q_start, multiply_base_by_height, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:976'))).
+automaton_transition(geometry, omit_half_in_triangle_area, q_step_1, omit_matching_copy_relation, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:976'))).
+automaton_transition(geometry, omit_half_in_triangle_area, q_step_2, omit_halving, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:976'))).
+automaton_transition(geometry, omit_half_in_triangle_area, q_step_3, report_parallelogram_area_for_triangle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:976'))).
 
 automaton_transition(geometry, omit_unlabeled_boundary_side, q_start, read_labeled_sides, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:308'))).
 automaton_transition(geometry, omit_unlabeled_boundary_side, q_step_1, stop_before_boundary_closure, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:308'))).
 automaton_transition(geometry, omit_unlabeled_boundary_side, q_step_2, omit_side_length, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:308'))).
 automaton_transition(geometry, omit_unlabeled_boundary_side, q_step_3, report_partial_boundary, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:308'))).
 
-automaton_transition(geometry, ordered_pair_coordinate_plot, q_start, establish_cartesian_axes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:745'))).
-automaton_transition(geometry, ordered_pair_coordinate_plot, q_step_1, preserve_coordinate_order, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:745'))).
-automaton_transition(geometry, ordered_pair_coordinate_plot, q_step_2, locate_first_then_second_for_each_pair, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:745'))).
+automaton_transition(geometry, ordered_pair_coordinate_plot, q_start, establish_cartesian_axes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:763'))).
+automaton_transition(geometry, ordered_pair_coordinate_plot, q_step_1, preserve_coordinate_order, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:763'))).
+automaton_transition(geometry, ordered_pair_coordinate_plot, q_step_2, locate_first_then_second_for_each_pair, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:763'))).
 
-automaton_transition(geometry, orientation_bound_shape_classification, q_start, observe_attributes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1106'))).
-automaton_transition(geometry, orientation_bound_shape_classification, q_step_1, privilege_prototype_orientation, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1106'))).
-automaton_transition(geometry, orientation_bound_shape_classification, q_step_2, reject_after_rotation, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1106'))).
+automaton_transition(geometry, orientation_bound_shape_classification, q_start, observe_attributes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1124'))).
+automaton_transition(geometry, orientation_bound_shape_classification, q_step_1, privilege_prototype_orientation, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1124'))).
+automaton_transition(geometry, orientation_bound_shape_classification, q_step_2, reject_after_rotation, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1124'))).
 
-automaton_transition(geometry, parallelogram_area_base_height, q_start, identify_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:882'))).
-automaton_transition(geometry, parallelogram_area_base_height, q_step_1, distinguish_height_from_slanted_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:882'))).
-automaton_transition(geometry, parallelogram_area_base_height, q_step_2, cut_and_translate_to_rectangle, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:882'))).
-automaton_transition(geometry, parallelogram_area_base_height, q_step_3, multiply_base_by_perpendicular_height, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:882'))).
+automaton_transition(geometry, parallelogram_area_base_height, q_start, identify_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:900'))).
+automaton_transition(geometry, parallelogram_area_base_height, q_step_1, distinguish_height_from_slanted_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:900'))).
+automaton_transition(geometry, parallelogram_area_base_height, q_step_2, cut_and_translate_to_rectangle, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:900'))).
+automaton_transition(geometry, parallelogram_area_base_height, q_step_3, multiply_base_by_perpendicular_height, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:900'))).
 
 automaton_transition(geometry, perimeter_two_sides_only, q_start, traverse_side, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:232'))).
 automaton_transition(geometry, perimeter_two_sides_only, q_step_1, traverse_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:232'))).
@@ -204,16 +204,16 @@ automaton_transition(geometry, polygon_perimeter_boundary_accumulation, q_start,
 automaton_transition(geometry, polygon_perimeter_boundary_accumulation, q_step_1, traverse_side_lengths_in_order, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:284'))).
 automaton_transition(geometry, polygon_perimeter_boundary_accumulation, q_step_2, accumulate_complete_boundary, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:284'))).
 
-automaton_transition(geometry, polyhedron_surface_area_from_net, q_start, identify_polyhedron, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:982'))).
-automaton_transition(geometry, polyhedron_surface_area_from_net, q_step_1, unfold_to_net, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:982'))).
-automaton_transition(geometry, polyhedron_surface_area_from_net, q_step_2, enumerate_all_face_areas, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:982'))).
-automaton_transition(geometry, polyhedron_surface_area_from_net, q_step_3, sum_each_face_exactly_once, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:982'))).
+automaton_transition(geometry, polyhedron_surface_area_from_net, q_start, identify_polyhedron, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1000'))).
+automaton_transition(geometry, polyhedron_surface_area_from_net, q_step_1, unfold_to_net, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1000'))).
+automaton_transition(geometry, polyhedron_surface_area_from_net, q_step_2, enumerate_all_face_areas, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1000'))).
+automaton_transition(geometry, polyhedron_surface_area_from_net, q_step_3, sum_each_face_exactly_once, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1000'))).
 
-automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_start, establish_area_constraint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:487'))).
-automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_1, establish_perimeter_constraint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:487'))).
-automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_2, enumerate_area_factor_pairs, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:487'))).
-automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_3, retain_pairs_with_perimeter, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:487'))).
-automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_4, report_constrained_rectangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:487'))).
+automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_start, establish_area_constraint, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:500'))).
+automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_1, establish_perimeter_constraint, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:500'))).
+automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_2, enumerate_area_factor_pairs, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:500'))).
+automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_3, retain_pairs_with_perimeter, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:500'))).
+automaton_transition(geometry, rectangle_area_perimeter_constraint_search, q_step_4, report_constrained_rectangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:500'))).
 
 automaton_transition(geometry, rectangle_area_unit_iteration, q_start, establish_rectangle, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:42'))).
 automaton_transition(geometry, rectangle_area_unit_iteration, q_step_1, iterate_rows, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:42'))).
@@ -221,22 +221,22 @@ automaton_transition(geometry, rectangle_area_unit_iteration, q_step_2, iterate_
 automaton_transition(geometry, rectangle_area_unit_iteration, q_step_3, coordinate_square_units, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:42'))).
 automaton_transition(geometry, rectangle_area_unit_iteration, q_step_4, count_square_units, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:42'))).
 
-automaton_transition(geometry, rectangle_factor_pair_search, q_start, establish_target_area, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:456'))).
-automaton_transition(geometry, rectangle_factor_pair_search, q_step_1, enumerate_whole_number_side_lengths, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:456'))).
-automaton_transition(geometry, rectangle_factor_pair_search, q_step_2, retain_products_equal_to_area, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:456'))).
-automaton_transition(geometry, rectangle_factor_pair_search, q_step_3, identify_rotations_as_commutative_pairs, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:456'))).
-automaton_transition(geometry, rectangle_factor_pair_search, q_step_4, satisfy_factor_scope, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:456'))).
+automaton_transition(geometry, rectangle_factor_pair_search, q_start, establish_target_area, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:469'))).
+automaton_transition(geometry, rectangle_factor_pair_search, q_step_1, enumerate_whole_number_side_lengths, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:469'))).
+automaton_transition(geometry, rectangle_factor_pair_search, q_step_2, retain_products_equal_to_area, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:469'))).
+automaton_transition(geometry, rectangle_factor_pair_search, q_step_3, identify_rotations_as_commutative_pairs, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:469'))).
+automaton_transition(geometry, rectangle_factor_pair_search, q_step_4, satisfy_factor_scope, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:469'))).
 
-automaton_transition(geometry, rectangle_missing_side_from_area, q_start, establish_area_product, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:545'))).
-automaton_transition(geometry, rectangle_missing_side_from_area, q_step_1, retain_known_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:545'))).
-automaton_transition(geometry, rectangle_missing_side_from_area, q_step_2, divide_area_by_known_side, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:545'))).
-automaton_transition(geometry, rectangle_missing_side_from_area, q_step_3, reconstruct_rectangle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:545'))).
+automaton_transition(geometry, rectangle_missing_side_from_area, q_start, establish_area_product, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:558'))).
+automaton_transition(geometry, rectangle_missing_side_from_area, q_step_1, retain_known_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:558'))).
+automaton_transition(geometry, rectangle_missing_side_from_area, q_step_2, divide_area_by_known_side, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:558'))).
+automaton_transition(geometry, rectangle_missing_side_from_area, q_step_3, reconstruct_rectangle, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:558'))).
 
-automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_start, establish_target_perimeter, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:427'))).
-automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_1, coordinate_opposite_side_pairs, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:427'))).
-automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_2, halve_perimeter, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:427'))).
-automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_3, subtract_known_side, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:427'))).
-automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_4, verify_rectangle_boundary, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:427'))).
+automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_start, establish_target_perimeter, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:434'))).
+automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_1, coordinate_opposite_side_pairs, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:434'))).
+automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_2, halve_perimeter, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:434'))).
+automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_3, subtract_known_side, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:434'))).
+automaton_transition(geometry, rectangle_missing_side_from_perimeter, q_step_4, verify_rectangle_boundary, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:434'))).
 
 automaton_transition(geometry, rectangle_perimeter_boundary_traversal, q_start, establish_rectangle, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:203'))).
 automaton_transition(geometry, rectangle_perimeter_boundary_traversal, q_step_1, traverse_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:203'))).
@@ -245,45 +245,45 @@ automaton_transition(geometry, rectangle_perimeter_boundary_traversal, q_step_3,
 automaton_transition(geometry, rectangle_perimeter_boundary_traversal, q_step_4, traverse_opposite_side, q_step_5, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:203'))).
 automaton_transition(geometry, rectangle_perimeter_boundary_traversal, q_step_5, accumulate_boundary_length, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:203'))).
 
-automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_start, establish_target_perimeter, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:397'))).
-automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_1, halve_for_length_plus_width, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:397'))).
-automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_2, enumerate_positive_side_pairs, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:397'))).
-automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_3, retain_complete_boundaries, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:397'))).
-automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_4, satisfy_side_scope, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:397'))).
+automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_start, establish_target_perimeter, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:404'))).
+automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_1, halve_for_length_plus_width, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:404'))).
+automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_2, enumerate_positive_side_pairs, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:404'))).
+automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_3, retain_complete_boundaries, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:404'))).
+automaton_transition(geometry, rectangle_perimeter_side_pair_search, q_step_4, satisfy_side_scope, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:404'))).
 
-automaton_transition(geometry, rectangular_prism_missing_dimension_from_volume, q_start, coordinate_known_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:631'))).
-automaton_transition(geometry, rectangular_prism_missing_dimension_from_volume, q_step_1, divide_volume_by_base_area, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:631'))).
-automaton_transition(geometry, rectangular_prism_missing_dimension_from_volume, q_step_2, reconstruct_unit_cube_stack, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:631'))).
+automaton_transition(geometry, rectangular_prism_missing_dimension_from_volume, q_start, coordinate_known_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:644'))).
+automaton_transition(geometry, rectangular_prism_missing_dimension_from_volume, q_step_1, divide_volume_by_base_area, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:644'))).
+automaton_transition(geometry, rectangular_prism_missing_dimension_from_volume, q_step_2, reconstruct_unit_cube_stack, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:644'))).
 
-automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_start, coordinate_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:602'))).
-automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_step_1, establish_unit_cube_as_volume_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:602'))).
-automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_step_2, iterate_height_layers, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:602'))).
-automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_step_3, count_cubic_units, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:602'))).
+automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_start, coordinate_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:615'))).
+automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_step_1, establish_unit_cube_as_volume_unit, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:615'))).
+automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_step_2, iterate_height_layers, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:615'))).
+automaton_transition(geometry, rectangular_prism_volume_layer_iteration, q_step_3, count_cubic_units, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:615'))).
 
-automaton_transition(geometry, rigid_shape_composition, q_start, establish_bounded_region, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1204'))).
-automaton_transition(geometry, rigid_shape_composition, q_step_1, preserve_rigid_parts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1204'))).
-automaton_transition(geometry, rigid_shape_composition, q_step_2, place_parts_by_rigid_motion, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1204'))).
-automaton_transition(geometry, rigid_shape_composition, q_step_3, inspect_coverage_without_gaps_or_overlaps, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1204'))).
+automaton_transition(geometry, rigid_shape_composition, q_start, establish_bounded_region, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1222'))).
+automaton_transition(geometry, rigid_shape_composition, q_step_1, preserve_rigid_parts, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1222'))).
+automaton_transition(geometry, rigid_shape_composition, q_step_2, place_parts_by_rigid_motion, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1222'))).
+automaton_transition(geometry, rigid_shape_composition, q_step_3, inspect_coverage_without_gaps_or_overlaps, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1222'))).
 
-automaton_transition(geometry, shape_classification_by_defining_attributes, q_start, observe_attributes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1079'))).
-automaton_transition(geometry, shape_classification_by_defining_attributes, q_step_1, test_required_attributes, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1079'))).
-automaton_transition(geometry, shape_classification_by_defining_attributes, q_step_2, ignore_nondefining_orientation, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1079'))).
-automaton_transition(geometry, shape_classification_by_defining_attributes, q_step_3, retain_hierarchical_categories, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1079'))).
+automaton_transition(geometry, shape_classification_by_defining_attributes, q_start, observe_attributes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1097'))).
+automaton_transition(geometry, shape_classification_by_defining_attributes, q_step_1, test_required_attributes, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1097'))).
+automaton_transition(geometry, shape_classification_by_defining_attributes, q_step_2, ignore_nondefining_orientation, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1097'))).
+automaton_transition(geometry, shape_classification_by_defining_attributes, q_step_3, retain_hierarchical_categories, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1097'))).
 
-automaton_transition(geometry, slanted_side_as_parallelogram_height, q_start, identify_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:907'))).
-automaton_transition(geometry, slanted_side_as_parallelogram_height, q_step_1, select_slanted_side_as_height, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:907'))).
-automaton_transition(geometry, slanted_side_as_parallelogram_height, q_step_2, omit_perpendicularity_check, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:907'))).
-automaton_transition(geometry, slanted_side_as_parallelogram_height, q_step_3, multiply_base_by_slanted_side, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:907'))).
+automaton_transition(geometry, slanted_side_as_parallelogram_height, q_start, identify_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:925'))).
+automaton_transition(geometry, slanted_side_as_parallelogram_height, q_step_1, select_slanted_side_as_height, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:925'))).
+automaton_transition(geometry, slanted_side_as_parallelogram_height, q_step_2, omit_perpendicularity_check, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:925'))).
+automaton_transition(geometry, slanted_side_as_parallelogram_height, q_step_3, multiply_base_by_slanted_side, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:925'))).
 
-automaton_transition(geometry, subtract_side_from_area, q_start, establish_area_as_total, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:570'))).
-automaton_transition(geometry, subtract_side_from_area, q_step_1, subtract_known_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:570'))).
-automaton_transition(geometry, subtract_side_from_area, q_step_2, omit_inverse_multiplication, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:570'))).
-automaton_transition(geometry, subtract_side_from_area, q_step_3, report_additive_remainder_as_side, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:570'))).
+automaton_transition(geometry, subtract_side_from_area, q_start, establish_area_as_total, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:583'))).
+automaton_transition(geometry, subtract_side_from_area, q_step_1, subtract_known_side, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:583'))).
+automaton_transition(geometry, subtract_side_from_area, q_step_2, omit_inverse_multiplication, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:583'))).
+automaton_transition(geometry, subtract_side_from_area, q_step_3, report_additive_remainder_as_side, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:583'))).
 
-automaton_transition(geometry, sum_overlapping_prism_volumes, q_start, calculate_component_volumes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:716'))).
-automaton_transition(geometry, sum_overlapping_prism_volumes, q_step_1, omit_overlap_correction, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:716'))).
-automaton_transition(geometry, sum_overlapping_prism_volumes, q_step_2, double_count_shared_cubes, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:716'))).
-automaton_transition(geometry, sum_overlapping_prism_volumes, q_step_3, report_component_sum, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:716'))).
+automaton_transition(geometry, sum_overlapping_prism_volumes, q_start, calculate_component_volumes, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:729'))).
+automaton_transition(geometry, sum_overlapping_prism_volumes, q_step_1, omit_overlap_correction, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:729'))).
+automaton_transition(geometry, sum_overlapping_prism_volumes, q_step_2, double_count_shared_cubes, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:729'))).
+automaton_transition(geometry, sum_overlapping_prism_volumes, q_step_3, report_component_sum, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:729'))).
 
 automaton_transition(geometry, symmetry_constrained_side_reconstruction, q_start, establish_perimeter, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:338'))).
 automaton_transition(geometry, symmetry_constrained_side_reconstruction, q_step_1, group_sides_into_reflection_orbits, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:338'))).
@@ -291,26 +291,26 @@ automaton_transition(geometry, symmetry_constrained_side_reconstruction, q_step_
 automaton_transition(geometry, symmetry_constrained_side_reconstruction, q_step_3, isolate_unknown_orbit, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:338'))).
 automaton_transition(geometry, symmetry_constrained_side_reconstruction, q_step_4, partition_remaining_boundary, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:338'))).
 
-automaton_transition(geometry, triangle_area_half_base_height, q_start, identify_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:933'))).
-automaton_transition(geometry, triangle_area_half_base_height, q_step_1, identify_perpendicular_height, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:933'))).
-automaton_transition(geometry, triangle_area_half_base_height, q_step_2, compose_matching_triangle_copy, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:933'))).
-automaton_transition(geometry, triangle_area_half_base_height, q_step_3, form_parallelogram_product, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:933'))).
-automaton_transition(geometry, triangle_area_half_base_height, q_step_4, take_one_of_two_equal_triangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:933'))).
+automaton_transition(geometry, triangle_area_half_base_height, q_start, identify_base, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:951'))).
+automaton_transition(geometry, triangle_area_half_base_height, q_step_1, identify_perpendicular_height, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:951'))).
+automaton_transition(geometry, triangle_area_half_base_height, q_step_2, compose_matching_triangle_copy, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:951'))).
+automaton_transition(geometry, triangle_area_half_base_height, q_step_3, form_parallelogram_product, q_step_4, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:951'))).
+automaton_transition(geometry, triangle_area_half_base_height, q_step_4, take_one_of_two_equal_triangles, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:951'))).
 
-automaton_transition(geometry, triangle_three_measure_determination, q_start, register_triangle_conditions, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1403'))).
-automaton_transition(geometry, triangle_three_measure_determination, q_step_1, test_triangle_feasibility, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1403'))).
-automaton_transition(geometry, triangle_three_measure_determination, q_step_2, test_triangle_determination, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1403'))).
-automaton_transition(geometry, triangle_three_measure_determination, q_step_3, accept_triangle_determination, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1403'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_start, register_triangle_conditions, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1421'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_1, test_triangle_feasibility, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1421'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_2, test_triangle_determination, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1421'))).
+automaton_transition(geometry, triangle_three_measure_determination, q_step_3, accept_triangle_determination, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1421'))).
 
-automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_start, establish_circle_measure, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1363'))).
-automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_1, read_diameter_as_radius, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1363'))).
-automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_2, double_misread_radius_to_diameter, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1363'))).
-automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_3, report_misread_circumference, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1363'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_start, establish_circle_measure, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1381'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_1, read_diameter_as_radius, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1381'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_2, double_misread_radius_to_diameter, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1381'))).
+automaton_transition(geometry, use_diameter_as_radius_in_circumference, q_step_3, report_misread_circumference, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1381'))).
 
-automaton_transition(geometry, visible_faces_only_surface_area, q_start, inspect_solid_view, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1005'))).
-automaton_transition(geometry, visible_faces_only_surface_area, q_step_1, enumerate_visible_faces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1005'))).
-automaton_transition(geometry, visible_faces_only_surface_area, q_step_2, omit_hidden_face, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1005'))).
-automaton_transition(geometry, visible_faces_only_surface_area, q_step_3, report_partial_surface_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1005'))).
+automaton_transition(geometry, visible_faces_only_surface_area, q_start, inspect_solid_view, q_step_1, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1023'))).
+automaton_transition(geometry, visible_faces_only_surface_area, q_step_1, enumerate_visible_faces, q_step_2, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1023'))).
+automaton_transition(geometry, visible_faces_only_surface_area, q_step_2, omit_hidden_face, q_step_3, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1023'))).
+automaton_transition(geometry, visible_faces_only_surface_area, q_step_3, report_partial_surface_area, q_accept, provenance(static('knowledge/strategies/math/geometry_action_pairs.pl:1023'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(geometry, angle_additive_composition, q_start, establish_shared_vertex, q_step_1, provenance(observed(contract_example))).

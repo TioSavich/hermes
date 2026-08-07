@@ -118,6 +118,15 @@ run_decimal_action(decimal_whole_number_reading, Numeral, Scale, Outcome, Trace)
               name_decimal_as_whole_number(Result),
               lose_decimal_scale(expected(Expected), produced(Result))
             ].
+% decimal_comparison_by_aligned_units — gate(two nonnegative decimal numerals
+% with power-of-ten scales of at least ten, with the result interpreted as
+% less, equal, or more only after common-unit alignment); shell(choose the
+% common scale, align each numeral by folding iterate_to_target for each
+% counted unit, recollect both aligned counts as base-ten places, compare the
+% place sequences by significance, and read the decimal relation; a zero
+% numeral aligns by an empty fold);
+% kernels([iterate_to_target, recollect_base_cycles,
+%          compare_place_sequences_by_significance]).
 run_decimal_action(decimal_comparison_by_aligned_units, Pair, ignored,
                    Outcome, Trace) :-
     decimal_comparison_components(Pair, Components),

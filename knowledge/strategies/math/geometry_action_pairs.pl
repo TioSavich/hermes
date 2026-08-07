@@ -394,6 +394,13 @@ run_geometry_action(ignore_symmetry_multiplicity,
               count_each_orbit_once(FlatKnown),
               subtract_flat_known_total(Reported)
             ].
+% rectangle_perimeter_side_pair_search — gate(an even integer perimeter from
+% four through four hundred and a side scope of one or all, with results read
+% as the complete canonical positive side pairs selected by that scope);
+% shell(establish the perimeter, halve it for the side sum, enumerate positive
+% pairs, retain complete boundaries, and apply the requested scope);
+% kernel(enumerate_positive_integer_pairs at
+% rectangle_even_perimeter(Perimeter)).
 run_geometry_action(rectangle_perimeter_side_pair_search, Perimeter,
                     side_scope(Scope), Outcome, Trace) :-
     integer(Perimeter), Perimeter >= 4, 0 is Perimeter mod 2,
@@ -453,6 +460,12 @@ run_geometry_action(rectangle_missing_side_from_perimeter,
               subtract_known_side(Known, Missing),
               verify_rectangle_boundary(Perimeter)
             ].
+% rectangle_factor_pair_search — gate(a positive integer area and a factor
+% scope of one or all, with products read as canonical rectangle factor pairs);
+% shell(establish the area, enumerate positive whole-number side pairs, retain
+% products equal to the area, identify rotations as commutative pairs, and
+% apply the requested scope); kernel(enumerate_positive_integer_pairs at
+% rectangle_area_product(Area), admitted through Area =< 10000).
 run_geometry_action(rectangle_factor_pair_search, Area, factor_scope(Scope),
                     Outcome, Trace) :-
     positive_integer(Area),
@@ -742,6 +755,11 @@ run_geometry_action(sum_overlapping_prism_volumes,
               double_count_shared_cubes(OverlapVolume),
               report_component_sum(ReportedVolume)
             ].
+% ordered_pair_coordinate_plot — gate(a nonempty list of integer ordered pairs
+% in X-Y or point(X,Y) form and Cartesian axes, with the result preserving the
+% admitted points); shell(establish the axes, preserve coordinate order, and
+% locate each first coordinate followed by its second coordinate).
+% kernels: none — scene construction (renderer: coordinate_plane_render_json/2)
 run_geometry_action(ordered_pair_coordinate_plot, Points, axes(cartesian),
                     Outcome, Trace) :-
     valid_points(Points),

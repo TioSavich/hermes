@@ -21352,7 +21352,7 @@
    {
     "action_name": "rectangle_perimeter_side_pair_search",
     "canonical_mapping_signature_matches": [],
-    "line": 397,
+    "line": 404,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21367,7 +21367,7 @@
    {
     "action_name": "rectangle_missing_side_from_perimeter",
     "canonical_mapping_signature_matches": [],
-    "line": 427,
+    "line": 434,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21382,7 +21382,7 @@
    {
     "action_name": "rectangle_factor_pair_search",
     "canonical_mapping_signature_matches": [],
-    "line": 456,
+    "line": 469,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21397,7 +21397,7 @@
    {
     "action_name": "rectangle_area_perimeter_constraint_search",
     "canonical_mapping_signature_matches": [],
-    "line": 487,
+    "line": 500,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21412,7 +21412,7 @@
    {
     "action_name": "ignore_perimeter_rectangle_constraint",
     "canonical_mapping_signature_matches": [],
-    "line": 516,
+    "line": 529,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21427,7 +21427,7 @@
    {
     "action_name": "rectangle_missing_side_from_area",
     "canonical_mapping_signature_matches": [],
-    "line": 545,
+    "line": 558,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21442,7 +21442,7 @@
    {
     "action_name": "subtract_side_from_area",
     "canonical_mapping_signature_matches": [],
-    "line": 570,
+    "line": 583,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21457,7 +21457,7 @@
    {
     "action_name": "rectangular_prism_volume_layer_iteration",
     "canonical_mapping_signature_matches": [],
-    "line": 602,
+    "line": 615,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21472,7 +21472,7 @@
    {
     "action_name": "rectangular_prism_missing_dimension_from_volume",
     "canonical_mapping_signature_matches": [],
-    "line": 631,
+    "line": 644,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21487,7 +21487,7 @@
    {
     "action_name": "divide_volume_by_one_dimension",
     "canonical_mapping_signature_matches": [],
-    "line": 659,
+    "line": 672,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21502,7 +21502,7 @@
    {
     "action_name": "composite_prism_volume_sum",
     "canonical_mapping_signature_matches": [],
-    "line": 691,
+    "line": 704,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21517,7 +21517,7 @@
    {
     "action_name": "sum_overlapping_prism_volumes",
     "canonical_mapping_signature_matches": [],
-    "line": 716,
+    "line": 729,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21532,7 +21532,7 @@
    {
     "action_name": "ordered_pair_coordinate_plot",
     "canonical_mapping_signature_matches": [],
-    "line": 745,
+    "line": 763,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21547,7 +21547,7 @@
    {
     "action_name": "axis_aligned_coordinate_distance",
     "canonical_mapping_signature_matches": [],
-    "line": 768,
+    "line": 786,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21562,7 +21562,7 @@
    {
     "action_name": "directed_difference_as_coordinate_distance",
     "canonical_mapping_signature_matches": [],
-    "line": 796,
+    "line": 814,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21577,7 +21577,7 @@
    {
     "action_name": "area_preserving_polygon_decomposition",
     "canonical_mapping_signature_matches": [],
-    "line": 826,
+    "line": 844,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21592,7 +21592,7 @@
    {
     "action_name": "decomposition_with_gap_or_overlap",
     "canonical_mapping_signature_matches": [],
-    "line": 852,
+    "line": 870,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21607,7 +21607,7 @@
    {
     "action_name": "parallelogram_area_base_height",
     "canonical_mapping_signature_matches": [],
-    "line": 882,
+    "line": 900,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21622,7 +21622,7 @@
    {
     "action_name": "slanted_side_as_parallelogram_height",
     "canonical_mapping_signature_matches": [],
-    "line": 907,
+    "line": 925,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21637,7 +21637,7 @@
    {
     "action_name": "triangle_area_half_base_height",
     "canonical_mapping_signature_matches": [],
-    "line": 933,
+    "line": 951,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21652,7 +21652,7 @@
    {
     "action_name": "omit_half_in_triangle_area",
     "canonical_mapping_signature_matches": [],
-    "line": 958,
+    "line": 976,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21667,7 +21667,7 @@
    {
     "action_name": "polyhedron_surface_area_from_net",
     "canonical_mapping_signature_matches": [],
-    "line": 982,
+    "line": 1000,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21682,7 +21682,7 @@
    {
     "action_name": "visible_faces_only_surface_area",
     "canonical_mapping_signature_matches": [],
-    "line": 1005,
+    "line": 1023,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21697,7 +21697,7 @@
    {
     "action_name": "dimensional_measure_unit_coordination",
     "canonical_mapping_signature_matches": [],
-    "line": 1032,
+    "line": 1050,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21712,7 +21712,7 @@
    {
     "action_name": "linear_unit_for_area_or_volume",
     "canonical_mapping_signature_matches": [],
-    "line": 1055,
+    "line": 1073,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21727,7 +21727,7 @@
    {
     "action_name": "shape_classification_by_defining_attributes",
     "canonical_mapping_signature_matches": [],
-    "line": 1079,
+    "line": 1097,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21742,7 +21742,7 @@
    {
     "action_name": "orientation_bound_shape_classification",
     "canonical_mapping_signature_matches": [],
-    "line": 1106,
+    "line": 1124,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21757,7 +21757,7 @@
    {
     "action_name": "angle_turn_measurement",
     "canonical_mapping_signature_matches": [],
-    "line": 1132,
+    "line": 1150,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21772,7 +21772,7 @@
    {
     "action_name": "angle_as_ray_length",
     "canonical_mapping_signature_matches": [],
-    "line": 1156,
+    "line": 1174,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21787,7 +21787,7 @@
    {
     "action_name": "angle_additive_composition",
     "canonical_mapping_signature_matches": [],
-    "line": 1178,
+    "line": 1196,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21802,7 +21802,7 @@
    {
     "action_name": "rigid_shape_composition",
     "canonical_mapping_signature_matches": [],
-    "line": 1204,
+    "line": 1222,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21817,7 +21817,7 @@
    {
     "action_name": "compare_solid_volume_by_cube_count",
     "canonical_mapping_signature_matches": [],
-    "line": 1233,
+    "line": 1251,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21832,7 +21832,7 @@
    {
     "action_name": "compare_solid_volume_by_visible_extent",
     "canonical_mapping_signature_matches": [],
-    "line": 1262,
+    "line": 1280,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21847,7 +21847,7 @@
    {
     "action_name": "circle_circumference_diameter_co_measurement",
     "canonical_mapping_signature_matches": [],
-    "line": 1296,
+    "line": 1314,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21862,7 +21862,7 @@
    {
     "action_name": "circle_circumference_diameter_co_measurement",
     "canonical_mapping_signature_matches": [],
-    "line": 1327,
+    "line": 1345,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21877,7 +21877,7 @@
    {
     "action_name": "use_diameter_as_radius_in_circumference",
     "canonical_mapping_signature_matches": [],
-    "line": 1363,
+    "line": 1381,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21892,7 +21892,7 @@
    {
     "action_name": "triangle_three_measure_determination",
     "canonical_mapping_signature_matches": [],
-    "line": 1403,
+    "line": 1421,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [
@@ -21907,7 +21907,7 @@
    {
     "action_name": "angle_relation_unknown_measure",
     "canonical_mapping_signature_matches": [],
-    "line": 1430,
+    "line": 1448,
     "registered_automaton_correspondence": true,
     "registry_signature_matches": [
      [

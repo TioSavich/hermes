@@ -69,6 +69,12 @@ run_counting_action(inscribe_cardinality, Count, base(Base), Outcome, Trace) :-
                   ]),
     Trace = [ establish_cardinality(Count), choose_base(Base),
               project_counting_cycles_into_digits(Numeral) ].
+% recursive_place_value_inscription — gate(a nonnegative cardinality and an
+% inscription base of at least two, with zero interpreted as one unit-place
+% zero and the result as a positional numeral with a recursive unit tree);
+% shell(establish cardinality and base, recollect completed base cycles, and
+% project the numeral's positional-place action witness);
+% kernel(recollect_base_cycles).
 run_counting_action(recursive_place_value_inscription, Count, base(Base),
                     Outcome, Trace) :-
     valid_cardinality(Count),
@@ -124,6 +130,12 @@ run_counting_action(omit_highest_place_regrouping, Count, base(Base),
               omit_regrouping_action(Exponent),
               read_deformed_cardinality(ProducedValue)
             ].
+% place_value_comparison — gate(two nonnegative cardinalities in one
+% inscription base of at least two, with equal aligned sequences interpreted
+% as same_number without a differing place); shell(inscribe both cardinalities
+% in the common base, align place units, locate the highest differing place,
+% compare its digits, and conclude the count relation);
+% kernel(compare_place_sequences_by_significance).
 run_counting_action(place_value_comparison, counts(A, B), base(Base),
                     Outcome, Trace) :-
     valid_cardinality(A), valid_cardinality(B), valid_base(Base),

@@ -130,6 +130,13 @@ run_measurement_action(liquid_volume_count_marks_not_intervals,
               count_marks_instead_of_volume_intervals,
               overcount_liquid_volume_by_one_subunit(Subdivisions)
             ].
+% unit_conversion_by_iteration — gate(a nonnegative count in a larger unit,
+% distinct named units, and an integer conversion factor greater than one,
+% with the result interpreted as an equivalent count in the smaller unit);
+% shell(establish one larger-unit copy as Factor smaller units, then fold
+% iterate_to_target under whole_number(10) once per larger-unit copy from the
+% preceding endpoint and relabel the final endpoint; zero count is the empty
+% fold at zero); kernel(iterate_to_target).
 run_measurement_action(unit_conversion_by_iteration,
                        quantity(Count, FromUnit),
                        conversion(ToUnit, Factor), Outcome, Trace) :-

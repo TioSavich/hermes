@@ -12,19 +12,19 @@ automaton_tuple(measurement, liquid_volume_scale_reading, states([q_start, q_ste
 automaton_tuple(measurement, unit_conversion_by_iteration, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_equivalence, iterate_conversion_group, multiply_unit_count, relabel_as_smaller_unit]), start(q_start), accepting([q_accept])).
 automaton_tuple(measurement, unit_preserving_measured_quantity_change, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([establish_common_measurement_unit, perform_grounded_quantity_change, retain_measurement_unit, report_unit_bearing_result]), start(q_start), accepting([q_accept])).
 
-automaton_transition(measurement, change_unit_label_without_scaling, q_start, read_conversion_factor, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:162'))).
-automaton_transition(measurement, change_unit_label_without_scaling, q_step_1, omit_iteration_by_factor, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:162'))).
-automaton_transition(measurement, change_unit_label_without_scaling, q_step_2, preserve_numeral, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:162'))).
-automaton_transition(measurement, change_unit_label_without_scaling, q_step_3, change_unit_label, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:162'))).
+automaton_transition(measurement, change_unit_label_without_scaling, q_start, read_conversion_factor, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:169'))).
+automaton_transition(measurement, change_unit_label_without_scaling, q_step_1, omit_iteration_by_factor, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:169'))).
+automaton_transition(measurement, change_unit_label_without_scaling, q_step_2, preserve_numeral, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:169'))).
+automaton_transition(measurement, change_unit_label_without_scaling, q_step_3, change_unit_label, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:169'))).
 
 automaton_transition(measurement, count_marks_not_intervals, q_start, expose_interval_boundary_marks, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:51'))).
 automaton_transition(measurement, count_marks_not_intervals, q_step_1, count_marks_instead_of_spaces, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:51'))).
 automaton_transition(measurement, count_marks_not_intervals, q_step_2, overcount_by_one_subunit, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:51'))).
 
-automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_start, read_quantity_numerals, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:216'))).
-automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_step_1, perform_grounded_quantity_change, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:216'))).
-automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_step_2, discard_measurement_unit, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:216'))).
-automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_step_3, report_bare_numeral, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:216'))).
+automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_start, read_quantity_numerals, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:223'))).
+automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_step_1, perform_grounded_quantity_change, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:223'))).
+automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_step_2, discard_measurement_unit, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:223'))).
+automaton_transition(measurement, drop_unit_from_measured_quantity_change, q_step_3, report_bare_numeral, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:223'))).
 
 automaton_transition(measurement, linear_unit_iteration, q_start, establish_length_attribute, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:20'))).
 automaton_transition(measurement, linear_unit_iteration, q_step_1, establish_unit, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:20'))).
@@ -42,15 +42,15 @@ automaton_transition(measurement, liquid_volume_scale_reading, q_step_2, partiti
 automaton_transition(measurement, liquid_volume_scale_reading, q_step_3, locate_fill_level_after_intervals, q_step_4, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:76'))).
 automaton_transition(measurement, liquid_volume_scale_reading, q_step_4, read_liquid_volume, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:76'))).
 
-automaton_transition(measurement, unit_conversion_by_iteration, q_start, establish_equivalence, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:133'))).
-automaton_transition(measurement, unit_conversion_by_iteration, q_step_1, iterate_conversion_group, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:133'))).
-automaton_transition(measurement, unit_conversion_by_iteration, q_step_2, multiply_unit_count, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:133'))).
-automaton_transition(measurement, unit_conversion_by_iteration, q_step_3, relabel_as_smaller_unit, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:133'))).
+automaton_transition(measurement, unit_conversion_by_iteration, q_start, establish_equivalence, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:140'))).
+automaton_transition(measurement, unit_conversion_by_iteration, q_step_1, iterate_conversion_group, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:140'))).
+automaton_transition(measurement, unit_conversion_by_iteration, q_step_2, multiply_unit_count, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:140'))).
+automaton_transition(measurement, unit_conversion_by_iteration, q_step_3, relabel_as_smaller_unit, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:140'))).
 
-automaton_transition(measurement, unit_preserving_measured_quantity_change, q_start, establish_common_measurement_unit, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:190'))).
-automaton_transition(measurement, unit_preserving_measured_quantity_change, q_step_1, perform_grounded_quantity_change, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:190'))).
-automaton_transition(measurement, unit_preserving_measured_quantity_change, q_step_2, retain_measurement_unit, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:190'))).
-automaton_transition(measurement, unit_preserving_measured_quantity_change, q_step_3, report_unit_bearing_result, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:190'))).
+automaton_transition(measurement, unit_preserving_measured_quantity_change, q_start, establish_common_measurement_unit, q_step_1, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:197'))).
+automaton_transition(measurement, unit_preserving_measured_quantity_change, q_step_1, perform_grounded_quantity_change, q_step_2, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:197'))).
+automaton_transition(measurement, unit_preserving_measured_quantity_change, q_step_2, retain_measurement_unit, q_step_3, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:197'))).
+automaton_transition(measurement, unit_preserving_measured_quantity_change, q_step_3, report_unit_bearing_result, q_accept, provenance(static('knowledge/strategies/math/measurement_action_pairs.pl:197'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(measurement, change_unit_label_without_scaling, q_start, read_conversion_factor, q_step_1, provenance(observed(contract_example))).

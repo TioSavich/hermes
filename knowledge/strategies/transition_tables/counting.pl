@@ -11,38 +11,38 @@ automaton_tuple(counting, place_value_comparison, states([q_start, q_step_1, q_s
 automaton_tuple(counting, recursive_place_value_inscription, states([q_start, q_step_1, q_step_2, q_accept]), actions([establish_cardinality, establish_base, recollect_completed_base_cycles]), start(q_start), accepting([q_accept])).
 automaton_tuple(counting, spatial_extent_as_cardinality, states([q_start, q_step_1, q_step_2, q_accept]), actions([ignore_one_to_one_correspondence, compare_spatial_extents, substitute_extent_relation_for_count_relation]), start(q_start), accepting([q_accept])).
 
-automaton_transition(counting, compare_cardinalities_one_to_one, q_start, establish_collections, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:177'))).
-automaton_transition(counting, compare_cardinalities_one_to_one, q_step_1, match_objects_one_to_one, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:177'))).
-automaton_transition(counting, compare_cardinalities_one_to_one, q_step_2, inspect_unmatched_surplus, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:177'))).
-automaton_transition(counting, compare_cardinalities_one_to_one, q_step_3, conclude_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:177'))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_start, establish_collections, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:189'))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_1, match_objects_one_to_one, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:189'))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_2, inspect_unmatched_surplus, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:189'))).
+automaton_transition(counting, compare_cardinalities_one_to_one, q_step_3, conclude_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:189'))).
 
-automaton_transition(counting, compare_ones_digits_only, q_start, inscribe_in_common_base, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:152'))).
-automaton_transition(counting, compare_ones_digits_only, q_step_1, discard_higher_place_digits, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:152'))).
-automaton_transition(counting, compare_ones_digits_only, q_step_2, compare_ones_digits, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:152'))).
-automaton_transition(counting, compare_ones_digits_only, q_step_3, conclude_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:152'))).
+automaton_transition(counting, compare_ones_digits_only, q_start, inscribe_in_common_base, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:164'))).
+automaton_transition(counting, compare_ones_digits_only, q_step_1, discard_higher_place_digits, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:164'))).
+automaton_transition(counting, compare_ones_digits_only, q_step_2, compare_ones_digits, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:164'))).
+automaton_transition(counting, compare_ones_digits_only, q_step_3, conclude_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:164'))).
 
 automaton_transition(counting, inscribe_cardinality, q_start, establish_cardinality, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:52'))).
 automaton_transition(counting, inscribe_cardinality, q_step_1, choose_base, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:52'))).
 automaton_transition(counting, inscribe_cardinality, q_step_2, project_counting_cycles_into_digits, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:52'))).
 
-automaton_transition(counting, omit_highest_place_regrouping, q_start, establish_positional_numeral, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:96'))).
-automaton_transition(counting, omit_highest_place_regrouping, q_step_1, select_highest_regrouped_place, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:96'))).
-automaton_transition(counting, omit_highest_place_regrouping, q_step_2, omit_regrouping_action, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:96'))).
-automaton_transition(counting, omit_highest_place_regrouping, q_step_3, read_deformed_cardinality, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:96'))).
+automaton_transition(counting, omit_highest_place_regrouping, q_start, establish_positional_numeral, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:102'))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_1, select_highest_regrouped_place, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:102'))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_2, omit_regrouping_action, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:102'))).
+automaton_transition(counting, omit_highest_place_regrouping, q_step_3, read_deformed_cardinality, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:102'))).
 
-automaton_transition(counting, place_value_comparison, q_start, inscribe_in_common_base, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:127'))).
-automaton_transition(counting, place_value_comparison, q_step_1, align_places_by_unit, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:127'))).
-automaton_transition(counting, place_value_comparison, q_step_2, locate_highest_differing_place, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:127'))).
-automaton_transition(counting, place_value_comparison, q_step_3, compare_digits_at_that_place, q_step_4, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:127'))).
-automaton_transition(counting, place_value_comparison, q_step_4, conclude_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:127'))).
+automaton_transition(counting, place_value_comparison, q_start, inscribe_in_common_base, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:139'))).
+automaton_transition(counting, place_value_comparison, q_step_1, align_places_by_unit, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:139'))).
+automaton_transition(counting, place_value_comparison, q_step_2, locate_highest_differing_place, q_step_3, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:139'))).
+automaton_transition(counting, place_value_comparison, q_step_3, compare_digits_at_that_place, q_step_4, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:139'))).
+automaton_transition(counting, place_value_comparison, q_step_4, conclude_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:139'))).
 
-automaton_transition(counting, recursive_place_value_inscription, q_start, establish_cardinality, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:72'))).
-automaton_transition(counting, recursive_place_value_inscription, q_step_1, establish_base, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:72'))).
-automaton_transition(counting, recursive_place_value_inscription, q_step_2, recollect_completed_base_cycles, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:72'))).
+automaton_transition(counting, recursive_place_value_inscription, q_start, establish_cardinality, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:78'))).
+automaton_transition(counting, recursive_place_value_inscription, q_step_1, establish_base, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:78'))).
+automaton_transition(counting, recursive_place_value_inscription, q_step_2, recollect_completed_base_cycles, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:78'))).
 
-automaton_transition(counting, spatial_extent_as_cardinality, q_start, ignore_one_to_one_correspondence, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:200'))).
-automaton_transition(counting, spatial_extent_as_cardinality, q_step_1, compare_spatial_extents, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:200'))).
-automaton_transition(counting, spatial_extent_as_cardinality, q_step_2, substitute_extent_relation_for_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:200'))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_start, ignore_one_to_one_correspondence, q_step_1, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:212'))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_step_1, compare_spatial_extents, q_step_2, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:212'))).
+automaton_transition(counting, spatial_extent_as_cardinality, q_step_2, substitute_extent_relation_for_count_relation, q_accept, provenance(static('knowledge/strategies/math/counting_action_pairs.pl:212'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(counting, compare_cardinalities_one_to_one, q_start, establish_collections, q_step_1, provenance(observed(contract_example))).
