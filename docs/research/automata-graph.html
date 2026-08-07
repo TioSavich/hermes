@@ -14,7 +14,7 @@
 <header>
 <p class="back-link"><a href="2026-08-03-automata-compendium.html">Back to the automata compendium</a></p>
 <h1>Hermes automata graph</h1>
-<p class="lede">This page draws the transition-table corpus of automata in one authored pedagogical order. Counting is the floor and calculus is the top.</p>
+<p class="lede">This page draws the transition-table corpus in an authored pedagogical order. The order begins with counting and ends with calculus.</p>
 <p><a href="automata-vocabulary.html">Read the automata vocabulary</a> for the terms used here.</p>
 </header>
 <div class="controls">
@@ -44,7 +44,7 @@
   </div>
   <p class="status" id="status" aria-live="polite">Loading the graph data…</p>
 </div>
-<p class="instructions" id="instructions">Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.</p>
+<p class="instructions" id="instructions">Drag to orbit and use the wheel to zoom. Hover over a state to read its names. Click a state to pin its automaton.</p>
 <figure>
   <div class="graph-frame" id="graph-frame">
     <canvas id="graph" aria-label="Three-dimensional graph of the computational automata corpus"></canvas>
@@ -199,7 +199,7 @@
     }
     var counts = data.meta.counts;
     reviewCounts.textContent = reviewCountText(counts) +
-      '. Unreviewed rows retain rust-family styling; their modes remain queryable.';
+      '. Unreviewed rows retain rust-family styling. Their modes remain queryable.';
     status.textContent = baseStatusText(counts) + ' · ' +
       counts.borrow_pairs.toLocaleString() + ' borrow lines';
   }
@@ -283,8 +283,8 @@
     domainField.classList.toggle('hidden', currentView !== 'domain');
     levelRuler.classList.toggle('hidden', currentView !== 'full' && currentView !== 'ladder');
     instructions.textContent = quotientView ?
-      'Drag to orbit, use the wheel to zoom, hover a node or edge for member counts, and click to pin it.' :
-      "Drag to orbit, use the wheel to zoom, hover for a state's names, and click a state to pin its automaton.";
+      'Drag to orbit and use the wheel to zoom. Hover over a node or edge for member counts. Click it to pin it.' :
+      "Drag to orbit and use the wheel to zoom. Hover over a state to read its names. Click a state to pin its automaton.";
     selection.textContent = quotientView ? 'No quotient node or edge pinned.' : 'No automaton pinned.';
     viewNote.textContent = data.meta.assertion || data.meta.level_note;
     resize();

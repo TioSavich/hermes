@@ -663,7 +663,7 @@ def attestations_section(
 
 
 def footer() -> str:
-    return """<footer><p>Artifacts and regeneration: <code>knowledge/strategies/transition_tables/*.pl</code>, <code>python3 scripts/research/build_transition_tables.py</code>; <code>knowledge/strategies/machine_typology.pl</code>, <code>python3 scripts/research/build_machine_typology.py</code>; radial assets <code>docs/research/assets/automata/&lt;family&gt;/&lt;kind&gt;.svg</code>, <code>python3 scripts/research/render_automaton_svg.py</code>; scene and composite assets, <code>python3 scripts/research/render_automaton_context_svg.py</code>; the hub <code>docs/research/2026-08-03-automata-compendium.html</code> and family pages under <code>docs/research/automata-compendium/</code>, <code>python3 scripts/research/build_automata_compendium.py</code>. Authored inputs: <code>knowledge/strategies/machine_class_attestations.pl</code> and <code>knowledge/strategies/deformation_validity.pl</code>. Other parsed inputs: <code>knowledge/strategies/automaton_input_contracts.pl</code>, <code>knowledge/strategies/math/state_vocabulary.pl</code>, and <code>knowledge/strategies/deformation_coincidence.pl</code>; the coincidence file records its sweep generator and finite grids in its header.</p></footer>"""
+    return """<footer><p>Transition tables come from <code>knowledge/strategies/transition_tables/*.pl</code>. Builder: <code>python3 scripts/research/build_transition_tables.py</code>. Machine typology comes from <code>knowledge/strategies/machine_typology.pl</code>. Builder: <code>python3 scripts/research/build_machine_typology.py</code>. Radial assets: <code>docs/research/assets/automata/&lt;family&gt;/&lt;kind&gt;.svg</code>. Builder: <code>python3 scripts/research/render_automaton_svg.py</code>. Scene and composite builder: <code>python3 scripts/research/render_automaton_context_svg.py</code>. Hub and family-page builder: <code>python3 scripts/research/build_automata_compendium.py</code>. Authored inputs: <code>knowledge/strategies/machine_class_attestations.pl</code> and <code>knowledge/strategies/deformation_validity.pl</code>. Other parsed inputs: <code>knowledge/strategies/automaton_input_contracts.pl</code>, <code>knowledge/strategies/math/state_vocabulary.pl</code>, and <code>knowledge/strategies/deformation_coincidence.pl</code>. The coincidence file names its sweep generator and finite grids in its header.</p></footer>"""
 
 
 def generate_compendium_pages() -> dict[Path, str]:
@@ -685,16 +685,16 @@ def generate_compendium_pages() -> dict[Path, str]:
         "python3 scripts/research/build_automata_compendium.py"
     )
     hub_body = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
-<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and transition tables. A transition table supports claims about its recorded transition graph. It does not establish a stack or a richer computational class. The transition-table rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
-<p>The corpus is split by family so each page stays within what a browser can paint.</p>
-<p><a href="automata-graph.html">Open the 3D automata graph</a> to read all 222 automata in one authored pedagogical order. <a href="automata-vocabulary.html">Read the automata vocabulary</a> for the terms used here.</p>
+<p class="lede">This compendium records the finite transition-table corpus through executed domain scenes, radial transition diagrams, five-tuples, and transition tables. A transition table supports claims about its recorded transition graph. It does not establish a stack or a richer computational class. Rows come from <code>knowledge/strategies/transition_tables/</code>. Authored class attestations remain separate. Regenerate with <code>{command}</code>.</p>
+<p>The corpus is split by family to limit each page's size.</p>
+<p><a href="automata-graph.html">Open the 3D automata graph</a> to read all registered automata in an authored pedagogical order. <a href="automata-vocabulary.html">Read the automata vocabulary</a> for the terms used here.</p>
 </header>
 {contents(grouped)}
 {legend_section()}
 {typology_section(machines)}
 {attestations_section(attestations)}
 {atlas_section(atlas)}
-<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated transition-table rows, including observed-only states named by those rows. They do not establish runtime determinism, language coverage, or memory bounds beyond the recorded transition graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>
+<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated transition-table rows. They include observed-only states named by those rows. They do not establish runtime determinism, language coverage, or memory bounds beyond the recorded transition graph. Coincidence rates describe the finite grids named by their generator. They do not generalize beyond those grids without further proof.</p></section>
 {footer()}"""
     pages = {OUTPUT: page_document("Hermes automata compendium", hub_body)}
     for family in sorted(grouped):
@@ -750,14 +750,14 @@ def generate_print_compendium() -> str:
         "python3 scripts/research/build_automata_compendium.py"
     )
     front_matter = f"""<header class="page-header"><h1>Hermes automata compendium</h1>
-<p class="lede">This compendium records the finite transition-table corpus as executed domain scenes, radial transition diagrams, five-tuples, and transition tables. A transition table supports claims about its recorded transition graph. It does not establish a stack or a richer computational class. The transition-table rows come from <code>knowledge/strategies/transition_tables/</code>, with authored class attestations kept separate. Regenerate it with <code>{command}</code>.</p>
+<p class="lede">This compendium records the finite transition-table corpus through executed domain scenes, radial transition diagrams, five-tuples, and transition tables. A transition table supports claims about its recorded transition graph. It does not establish a stack or a richer computational class. Rows come from <code>knowledge/strategies/transition_tables/</code>. Authored class attestations remain separate. Regenerate with <code>{command}</code>.</p>
 </header>
 {print_contents(grouped)}
 {legend_section()}
 {typology_section(machines)}
 {attestations_section(attestations, print_mode=True)}
 {atlas_section(atlas)}
-<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated transition-table rows, including observed-only states named by those rows. They do not establish runtime determinism, language coverage, or memory bounds beyond the recorded transition graph. Coincidence rates describe the finite grids named by their generator and do not generalize beyond those grids without further proof.</p></section>"""
+<section id="limits"><h2>Limits</h2><p>The structural classes summarize generated transition-table rows. They include observed-only states named by those rows. They do not establish runtime determinism, language coverage, or memory bounds beyond the recorded transition graph. Coincidence rates describe the finite grids named by their generator. They do not generalize beyond those grids without further proof.</p></section>"""
     family_sections = []
     for family in sorted(grouped):
         articles = "\n".join(

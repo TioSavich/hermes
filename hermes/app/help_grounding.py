@@ -75,7 +75,8 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
 PAGE_BACKING: dict[str, tuple[str, ...]] = {
     "strategy-machine": (
         "MACHINE PAGE",
-        "- The Automaton runner page selects one automaton by family and kind, invokes that automaton's registered runner with the edited JSON input, and displays the returned runtime trace.",
+        "- The Automaton runner page selects one automaton by family and kind.",
+        "- It invokes that automaton's registered runner with the edited JSON input and displays the returned runtime trace.",
         "",
         "GLOSSARY EXCERPT (docs/research/automata-vocabulary.html)",
         "- automaton: One registered state-and-transition structure for one family and kind. Machine is an informal synonym.",
