@@ -65,7 +65,7 @@
                 multiply_ints/3,
                 positive_integer/1
               ]).
-
+:- use_module(strategies('abstraction/kernel_gate_pilot'), [run_kernel/4]).
 
 %!  run_decimal_action(+Kind, +Numeral, +Scale, -Outcome, -Trace) is semidet.
 %
@@ -129,7 +129,7 @@ run_decimal_action(decimal_whole_number_reading, Numeral, Scale, Outcome, Trace)
 %          compare_place_sequences_by_significance]).
 run_decimal_action(decimal_comparison_by_aligned_units, Pair, ignored,
                    Outcome, Trace) :-
-    decimal_comparison_components(Pair, Components),
+    decimal_comparison_by_aligned_units_components(Pair, Components),
     Components = decimal_comparison_components(N1, S1, N2, S2,
                                                 CommonScale,
                                                 Aligned1, Aligned2,
@@ -707,6 +707,117 @@ decimal_comparison_components(
     Aligned1 is N1 * (CommonScale // S1),
     Aligned2 is N2 * (CommonScale // S2),
     comparison_relation(Aligned1, Aligned2, Relation).
+
+
+decimal_comparison_by_aligned_units_components(
+    decimal_pair(N1, S1, N2, S2),
+    decimal_comparison_components(N1, S1, N2, S2,
+                                  CommonScale, Aligned1, Aligned2, Relation)) :-
+    integer(N1),
+    N1 >= 0,
+    integer(N2),
+    N2 >= 0,
+    decimal_scale(S1, _, _),
+    decimal_scale(S2, _, _),
+    CommonScale is max(S1, S2),
+    decimal_alignment_factor(CommonScale, S1, Factor1),
+    decimal_alignment_factor(CommonScale, S2, Factor2),
+    decimal_alignment_fold(N1, Factor1, Aligned1),
+    decimal_alignment_fold(N2, Factor2, Aligned2),
+    recollect_aligned_decimal_units(Aligned1, LeftNumeral),
+    recollect_aligned_decimal_units(Aligned2, RightNumeral),
+    compare_aligned_decimal_numerals(LeftNumeral, RightNumeral, Relation).
+
+
+decimal_alignment_factor(CommonScale, Scale, Factor) :-
+    integer(CommonScale),
+    CommonScale >= 10,
+    integer(Scale),
+    Scale >= 10,
+    0 is CommonScale mod Scale,
+    Factor is CommonScale // Scale,
+    integer(Factor),
+    Factor >= 1.
+
+
+% A zero numeral aligns through the empty fold. Positive numerals take one
+% exact K2 endpoint run per counted unit, beginning at the preceding endpoint.
+decimal_alignment_fold(Count, Factor, 0) :-
+    integer(Count),
+    Count =:= 0,
+    integer(Factor),
+    Factor >= 1.
+decimal_alignment_fold(Count, Factor, Aligned) :-
+    integer(Count),
+    Count > 0,
+    integer(Factor),
+    Factor >= 1,
+    decimal_alignment_fold_(Count, Factor, 0, Aligned).
+
+
+decimal_alignment_fold_(Remaining, Factor, Current, Current) :-
+    integer(Remaining),
+    Remaining =:= 0,
+    integer(Factor),
+    Factor >= 1,
+    integer(Current),
+    Current >= 0.
+% The exact kernel, gate, argument, and result matches below make pilot drift
+% refuse this composition. check_kernel_pilot/0 must stay green for it.
+decimal_alignment_fold_(Remaining, Factor, Current, Aligned) :-
+    integer(Remaining),
+    Remaining > 0,
+    integer(Factor),
+    Factor >= 1,
+    integer(Current),
+    Current >= 0,
+    run_kernel(
+        iterate_to_target,
+        whole_number(10),
+        [start(Current), delta(Factor), direction(up), output(endpoint)],
+        run(iterate_to_target,
+            whole_number(10),
+            [start(Current), delta(Factor), direction(up), output(endpoint)],
+            _KernelSteps,
+            endpoint(Next))),
+    integer(Next),
+    NextRemaining is Remaining - 1,
+    decimal_alignment_fold_(NextRemaining, Factor, Next, Aligned).
+
+
+recollect_aligned_decimal_units(Aligned, Numeral) :-
+    integer(Aligned),
+    Aligned >= 0,
+    run_kernel(
+        recollect_base_cycles,
+        cardinality_in_base(10),
+        [cardinality(Aligned)],
+        run(recollect_base_cycles,
+            cardinality_in_base(10),
+            [cardinality(Aligned)],
+            _KernelSteps,
+            Numeral)),
+    Numeral = numeral(10, _Sign, radix(_Radix), _Digits).
+
+
+compare_aligned_decimal_numerals(LeftNumeral, RightNumeral, Relation) :-
+    nonvar(LeftNumeral),
+    nonvar(RightNumeral),
+    run_kernel(
+        compare_place_sequences_by_significance,
+        positional_numerals(10),
+        [left(LeftNumeral), right(RightNumeral)],
+        run(compare_place_sequences_by_significance,
+            positional_numerals(10),
+            [left(LeftNumeral), right(RightNumeral)],
+            _KernelSteps,
+            relation(KernelRelation, _Witness))),
+    decimal_kernel_relation(KernelRelation, Relation).
+
+
+decimal_kernel_relation(fewer, less).
+decimal_kernel_relation(more, more).
+decimal_kernel_relation(same_number, equal).
 
 
 aligned_decimal_operands(decimal_pair(N1, S1, N2, S2),
