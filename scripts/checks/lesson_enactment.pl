@@ -735,12 +735,12 @@ check_solutions_are_confined :-
 %   measurement lane met the quadratic renderer.
 check_contract_rules :-
     Capped = enactment(
-        'IM-G4-U2-L4', partition_strip_into_named_parts,
+        'IM-G4-U2-L4', unit_fraction_partition,
         [ input(part_word, tenths,
                 stand_in('the lesson leaves the strip to the classroom')) ],
         [ step(1, establish_referent_whole, strip, referent_whole(strip, 1)),
           step(2, read_named_partition_count, tenths, 10),
-          step(3, partition_whole_into_equal_parts, 10,
+          step(3, partition_into_equal_parts, 10,
                equal_parts(10, fraction(1, 10))),
           step(4, label_each_part_with_its_unit_fraction,
                equal_parts(10, fraction(1, 10)), labelled_parts(10, '1/10')) ],
@@ -785,12 +785,12 @@ check_contract_rules :-
     % right and the other wrong is how a three-value vocabulary collapses back
     % into two.
     Sampled = enactment(
-        'IM-G4-U2-L4', partition_strip_into_named_parts,
+        'IM-G4-U2-L4', unit_fraction_partition,
         [ input(part_word, tenths,
                 sample('one worked case of a task whose answer is open')) ],
         [ step(1, establish_referent_whole, strip, referent_whole(strip, 1)),
           step(2, read_named_partition_count, tenths, 10),
-          step(3, partition_whole_into_equal_parts, 10,
+          step(3, partition_into_equal_parts, 10,
                equal_parts(10, fraction(1, 10))),
           step(4, label_each_part_with_its_unit_fraction,
                equal_parts(10, fraction(1, 10)), labelled_parts(10, '1/10')) ],
@@ -844,10 +844,10 @@ check_contract_rules :-
 check_list_artifact :-
     Document = _{kind: "checked_by_the_gate", frames: [], result: "none"},
     Both = enactment(
-        'IM-G4-U2-L4', partition_strip_into_named_parts, [],
+        'IM-G4-U2-L4', unit_fraction_partition, [],
         [ step(1, establish_referent_whole, strip, referent_whole(strip, 1)),
           step(2, read_named_partition_count, tenths, 10),
-          step(3, partition_whole_into_equal_parts, 10,
+          step(3, partition_into_equal_parts, 10,
                equal_parts(10, fraction(1, 10))),
           step(4, label_each_part_with_its_unit_fraction,
                equal_parts(10, fraction(1, 10)), labelled_parts(10, '1/10')) ],
@@ -874,10 +874,10 @@ check_list_artifact :-
         fail
     ),
     Half = enactment(
-        'IM-G4-U2-L4', partition_strip_into_named_parts, [],
+        'IM-G4-U2-L4', unit_fraction_partition, [],
         [ step(1, establish_referent_whole, strip, referent_whole(strip, 1)),
           step(2, read_named_partition_count, tenths, 10),
-          step(3, partition_whole_into_equal_parts, 10,
+          step(3, partition_into_equal_parts, 10,
                equal_parts(10, fraction(1, 10))),
           step(4, label_each_part_with_its_unit_fraction,
                equal_parts(10, fraction(1, 10)), labelled_parts(10, '1/10')) ],

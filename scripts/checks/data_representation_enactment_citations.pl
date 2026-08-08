@@ -12,7 +12,8 @@
 
 :- use_module(im_lessons('enactment/data_representation')).
 :- use_module(library(readutil)).
-:- use_module(library(lists)).
+% List predicates autoload. A blanket import also claims lists:select/3 in
+% user after the path bootstrap has imported utils:select/3 there.
 
 check :-
     findall(cite(warrant(L), S, N, T),

@@ -17,7 +17,8 @@
 
 :- use_module(im_lessons('enactment/geometry_construction')).
 :- use_module(im_lessons('enactment/support/geometry_figures')).
-:- use_module(library(lists)).
+% List predicates autoload. A blanket import also claims lists:select/3 in
+% user after the path bootstrap has imported utils:select/3 there.
 
 main :-
     check_every_lesson_runs,
