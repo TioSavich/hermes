@@ -41,12 +41,19 @@ export HF_DATASETS_OFFLINE=1
 
 set +u
 module purge
-module load conda/25.3.0
 module load llamacpp/gpu/06182026
-source "$(conda info --base)/etc/profile.d/conda.sh"
+# Lmod swaps the conda module out when llamacpp pulls python/gpu (both
+# jobs 7919575/7919576 died on it), so conda comes from its absolute
+# install path instead of the module system.
+source /geode2/soft/hps/sles15sp6/conda/25.3.0/etc/profile.d/conda.sh
 conda activate "${HERMES_ENV:-umedcta}"
 set -u
-echo "environment: python=$(command -v python3) swipl=$(command -v swipl)"
+# The deeplearning python module shadows python3 even after conda
+# activation (jobs 7919587/7919588: env swipl beside module python, no
+# datasets lib), so the env interpreter is pinned by absolute path.
+PY="${CONDA_PREFIX}/bin/python3"
+[ -x "$PY" ] || { echo "no python at $PY"; exit 1; }
+echo "environment: python=$PY swipl=$(command -v swipl)"
 
 SERVER_PID=""
 SERVER_LOG="${TMPDIR:?}/llama-server-${SLURM_JOB_ID}.log"
@@ -87,8 +94,8 @@ echo "llama-server healthy on port $PORT with -c 8192 -np 1 $REASONING_FLAG"
 
 cd "$REPO"
 ENDPOINT="http://127.0.0.1:$PORT/v1/chat/completions"
-python3 "$DRIVER/preflight.py" --model "$MODEL_TAG" --endpoint "$ENDPOINT"
-python3 "$DRIVER/arm_${ARM}.py" \
+"$PY" "$DRIVER/preflight.py" --model "$MODEL_TAG" --endpoint "$ENDPOINT"
+"$PY" "$DRIVER/arm_${ARM}.py" \
   --model "$MODEL_TAG" \
   --endpoint "$ENDPOINT" \
   --ledger "$RUN_DIR/${ARM}.jsonl"
