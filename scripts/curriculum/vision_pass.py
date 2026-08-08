@@ -60,7 +60,9 @@ DEFAULT_MODEL = "gemma-4-31B-it"
 DEFAULT_BUDGET = 8192
 MINIMUM_BUDGET = 2500
 MAX_IMAGES_PER_CALL = 4
-REPORT_COUNTS = {"grade_6": 145, "grade_7": 58, "total": 203}
+# 203 from the 08-06 scout report, plus 35 spans exposed when the
+# 08-08 serialization repair recovered 34 recordless lessons.
+REPORT_COUNTS = {"grade_6": 156, "grade_7": 82, "total": 238}
 
 RUN_SPECS = (
     (

@@ -42,7 +42,7 @@ def main() -> int:
         "grade_7": 0,
         "total": 0,
     }
-    assert len(worklist["spans"]) == 203
+    assert len(worklist["spans"]) == 238
     assert all(span["images"] for span in worklist["spans"])
     assert all(
         (ROOT / image["file"]).is_file()
