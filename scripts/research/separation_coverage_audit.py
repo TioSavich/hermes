@@ -134,7 +134,7 @@ def audit(instances: list[TaskInstance], rows: list[PairRow]) -> dict:
     unreachable = len(rows) - len(joinable)
 
     per_lesson: dict[str, dict[str, int]] = defaultdict(
-        lambda: {"tasks": 0, "separated": 0, "coinciding": 0}
+        lambda: {"tasks": 0, "separated": 0, "coinciding": 0, "unmeasured": 0}
     )
     coinciding_examples: list[tuple[str, TaskInstance, str, str]] = []
     for instance in instances:
@@ -148,6 +148,14 @@ def audit(instances: list[TaskInstance], rows: list[PairRow]) -> dict:
         bucket = per_lesson[instance.lesson]
         bucket["tasks"] += 1
         point = (instance.left, instance.right)
+        # The atlas measured a bounded grid (integer pairs 0..49 each side).
+        # A point outside it was never walked, so an empty separating set
+        # there records absence of measurement, never coincidence — the
+        # 2026-08-08 verification found all 100 of this audit's first
+        # "no separating task" lessons were exactly the off-grid ones.
+        if not (0 <= instance.left <= 49 and 0 <= instance.right <= 49):
+            bucket["unmeasured"] += 1
+            continue
         separating_pairs = [row for row in relevant if point in row.separating]
         if separating_pairs:
             bucket["separated"] += 1
@@ -161,7 +169,12 @@ def audit(instances: list[TaskInstance], rows: list[PairRow]) -> dict:
 
     fully_coinciding = sorted(
         lesson for lesson, counts in per_lesson.items()
-        if counts["tasks"] and counts["separated"] == 0
+        if counts["coinciding"] and counts["separated"] == 0
+    )
+    unmeasured_only = sorted(
+        lesson for lesson, counts in per_lesson.items()
+        if counts["tasks"]
+        and counts["unmeasured"] == counts["tasks"]
     )
     return {
         "pair_rows": len(rows),
@@ -170,6 +183,7 @@ def audit(instances: list[TaskInstance], rows: list[PairRow]) -> dict:
         "task_instances": len(instances),
         "lessons_touched": len(per_lesson),
         "lessons_with_no_separating_task": fully_coinciding,
+        "lessons_entirely_unmeasured": unmeasured_only,
         "per_lesson": dict(per_lesson),
         "coinciding_examples": coinciding_examples,
     }

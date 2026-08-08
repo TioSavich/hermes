@@ -59,6 +59,10 @@
             machine_schema/2,
             aa_run/4,
             same_result/2,
+            registered_deformation/2,
+            family_alphabet/2,
+            machine_canonical_actions/3,
+            r2_rows/2,
             same_schema/2,
             family_probe_archetype/2,
             same_archetype/2,
@@ -74,6 +78,12 @@
               [ automaton_input_contract/5 ]).
 :- use_module(strategies('math/action_automata_registry'), []).
 :- use_module(hermes(encyclopedia), []).
+% R2's lens data. All three are fact tables; none binds a port or runs a
+% server. deformation_validity/8 and action_automaton_pair/4 say whether a
+% receiver is a REGISTERED deformation; action_maps/7 carries each machine's
+% canonical actions, which is how a release is seen to cross families.
+:- use_module(strategies(deformation_validity), [ deformation_validity/8 ]).
+:- use_module(strategies(action_vocabulary_map), [ action_maps/7 ]).
 
 
 % ==========================================================================
@@ -738,18 +748,26 @@ pair(schema_and_archetype, MachineA, MachineB) :-
 
 main_item :-
     json_read_dict(current_input, Item, [value_string_as(string)]),
-    item_row(Item, Row),
-    json_write_dict(current_output, Row, [width(0)]),
-    nl.
+    item_rows(Item, Rows),
+    forall(member(Row, Rows),
+           ( json_write_dict(current_output, Row, [width(0)]), nl )).
 
-item_row(Item, Row) :-
+%!  item_rows(+Item, -Rows) is det.
+%
+%   One item yields one row for R1 and TWO for R2: R2 walks an unordered
+%   pair once and reports both directions from that single walk, because the
+%   refusal asymmetry is what it is measuring and running the grid twice to
+%   get it would double the cost for nothing.
+item_rows(Item, Rows) :-
     get_dict(run, Item, RunString),
     atom_string(Run, RunString),
     (   Run == r1
-    ->  r1_row(Item, Row)
+    ->  r1_row(Item, Row), Rows = [Row]
+    ;   Run == r2
+    ->  r2_rows(Item, Rows)
     ;   throw(error(domain_error(supported_run, Run),
-                    context(loop_driver:item_row/2,
-                            'only r1 items run in wave 1; see the wave-1 report \c
+                    context(loop_driver:item_rows/2,
+                            'r1 and r2 items run; see the wave-1 report \c
                              for why r5 has no manifest')))
     ).
 
@@ -951,3 +969,369 @@ outcome_atom_string(Outcome, String) :-
     (   atom(Outcome) -> atom_string(Outcome, String)
     ;   term_string(Outcome, String)
     ).
+
+
+% ==========================================================================
+% 6. R2 — refusal-genesis sweep as a DIRECTED REPLAY
+%
+% Amendment 2026-08-08-B, ruling 1. R1's rows count refusals jointly: a point
+% where either machine declined added one to `refused`, with no record of
+% WHICH declined. The asymmetry R2 needs was never retained, so it cannot be
+% recovered from the collection and the grids are walked again. One walk over
+% an unordered pair yields both directed censuses.
+%
+% For directed (Refuser -> Receiver):
+%   released points = { I : Refuser refused I, Receiver computed I },
+%   each carrying the receiver's validity at I.
+%
+% A release whose every point is `incorrect` or `accidentally_correct` is
+% recorded and is NOT a candidate. Isolated-point coincidence is skating, and
+% the validity carve already ruled that it keeps rust.
+% ==========================================================================
+
+%!  registered_deformation(+Family, +Kind) is semidet.
+%
+%   The receiver is a deformation the repo has registered as one: either the
+%   deformation member of an action_automaton_pair/4 row, or the subject of
+%   deformation_validity/8 rows (whose tags are objective_invalid and
+%   context_sensitive_or_inefficient — neither is a clean bill).
+registered_deformation(Family, Kind) :-
+    action_automata_registry:action_automaton_pair(Family, _, Kind, _),
+    !.
+registered_deformation(Family, Kind) :-
+    deformation_validity(Family, Kind, _, _, _, _, _, _),
+    !.
+
+%!  machine_canonical_actions(+Family, +Kind, -Actions) is det.
+machine_canonical_actions(Family, Kind, Actions) :-
+    (   setof(Canonical,
+              L^A^B^C^action_maps(Family, Kind, L, Canonical, A, B, C),
+              Actions0)
+    ->  Actions = Actions0
+    ;   Actions = []
+    ).
+
+%!  family_alphabet(+Family, -Actions) is det.
+%
+%   Every canonical action any machine of this family performs.
+family_alphabet(Family, Actions) :-
+    (   setof(Canonical,
+              K^L^A^B^C^action_maps(Family, K, L, Canonical, A, B, C),
+              Actions0)
+    ->  Actions = Actions0
+    ;   Actions = []
+    ).
+
+%   L3's alphabet half: the receiver performs canonical actions that also
+%   belong to the REFUSING machine's family alphabet, and the two families
+%   differ — the release crosses a family boundary through shared doing.
+%   L3's other half (the receiver computes through a kernel that also serves
+%   a machine of the refusing family) needs the kernel_dependency overlay R3
+%   produces, and R3 has not run; the row records that half as unavailable
+%   rather than as absent.
+crossing_actions(RefuserFamily, ReceiverFamily, ReceiverKind, Shared) :-
+    RefuserFamily \== ReceiverFamily,
+    machine_canonical_actions(ReceiverFamily, ReceiverKind, Actions),
+    family_alphabet(RefuserFamily, Alphabet),
+    intersection(Actions, Alphabet, Shared),
+    Shared \== [].
+
+
+% -------------------------------------------------------------------------
+% The walk
+% -------------------------------------------------------------------------
+
+%   Each grid point becomes pt(Input, OutcomeA, OutcomeB). Collecting the
+%   points and reading them afterwards keeps the two directed censuses
+%   honestly derived from ONE walk instead of two accumulators that could
+%   drift apart.
+r2_walk(Schema, FamilyA, KindA, FamilyB, KindB, Started, Budget,
+        InputTimeout, Points, Stopped) :-
+    findall(Input, grid_input(Schema, _, Input), Inputs),
+    r2_points(Inputs, FamilyA, KindA, FamilyB, KindB, Started, Budget,
+              InputTimeout, [], Reversed, completed, Stopped),
+    reverse(Reversed, Points).
+
+r2_points([], _, _, _, _, _, _, _, Points, Points, Stopped, Stopped).
+r2_points([Input|Rest], FamilyA, KindA, FamilyB, KindB, Started, Budget,
+          InputTimeout, Points0, Points, Stopped0, Stopped) :-
+    get_time(Now),
+    Elapsed is Now - Started,
+    (   Elapsed >= Budget
+    ->  Points = Points0, Stopped = pair_budget
+    ;   (   catch(call_with_time_limit(
+                      InputTimeout,
+                      ( aa_run(FamilyA, KindA, Input, OutcomeA0),
+                        aa_run(FamilyB, KindB, Input, OutcomeB0) )),
+                  _TimeLimit, fail)
+        ->  OutcomeA = OutcomeA0, OutcomeB = OutcomeB0
+        ;   OutcomeA = error(input_time_limit),
+            OutcomeB = error(input_time_limit)
+        ),
+        r2_points(Rest, FamilyA, KindA, FamilyB, KindB, Started, Budget,
+                  InputTimeout, [pt(Input, OutcomeA, OutcomeB)|Points0],
+                  Points, Stopped0, Stopped)
+    ).
+
+%   released(+Points, +Side, -Released, -OutRegionIncorrect)
+%
+%   Side is ab (A refuses, B receives) or ba. Released is a list of
+%   released(Input, Validity, ReceiverOutcome) in grid order, which is
+%   lexicographic by construction of the template expander. OutRegion is the
+%   receiver's incorrect points OUTSIDE the released region — the evidence
+%   that its viability is regional rather than general.
+released_region([], _, [], []).
+released_region([pt(Input, OutcomeA, OutcomeB)|Rest], Side,
+                Released, OutRegion) :-
+    ( Side == ab -> Refuser = OutcomeA, Receiver = OutcomeB
+    ;               Refuser = OutcomeB, Receiver = OutcomeA ),
+    released_region(Rest, Side, Released0, OutRegion0),
+    (   Refuser = refused(_), Receiver = result(_, _, Validity)
+    ->  Released = [released(Input, Validity, Receiver)|Released0],
+        OutRegion = OutRegion0
+    ;   Receiver = result(_, _, incorrect), \+ Refuser = refused(_)
+    ->  Released = Released0,
+        OutRegion = [Input|OutRegion0]
+    ;   Released = Released0, OutRegion = OutRegion0
+    ).
+
+%   Witness retention: exact counts always; the witness LIST is capped, and
+%   the cap keeps the lexicographically first and last released points so
+%   every region stays reconstructible from its endpoints. The 200 MB lesson
+%   from R1 is why the list is capped at all.
+sample_witnesses(Released, Cap, Sampled, Truncated) :-
+    length(Released, Total),
+    (   ( Cap =:= 0 ; Total =< Cap )
+    ->  Sampled = Released, Truncated = false
+    ;   last(Released, Last),
+        Released = [First|_],
+        Interior is Cap - 2,
+        (   Interior =< 0
+        ->  Middle = []
+        ;   Stride is max(1, Total // Interior),
+            findall(Item,
+                    ( nth0(Index, Released, Item),
+                      Index > 0, Index < Total - 1,
+                      0 =:= Index mod Stride ),
+                    Middle0),
+            length(Middle1, Interior),
+            ( append(Middle1, _, Middle0) -> Middle = Middle1 ; Middle = Middle0 )
+        ),
+        append([[First], Middle, [Last]], Sampled),
+        Truncated = true
+    ).
+
+validity_counts(Released, Counts) :-
+    findall(V, member(released(_, V, _), Released), Validities),
+    msort(Validities, Sorted),
+    clumped(Sorted, Pairs),
+    dict_pairs(Counts, _, Pairs).
+
+%   The release is a candidate when the receiver does something the repo
+%   would stand behind on at least one released point. Inefficiency is not
+%   error (the PUSU ruling), so correct_but_inefficient counts;
+%   accidentally_correct alone does not.
+release_quality(Released, Quality) :-
+    (   member(released(_, Validity, _), Released),
+        memberchk(Validity, [correct, correct_but_inefficient,
+                             contextually_correct])
+    ->  Quality = licensed
+    ;   Released == []
+    ->  Quality = empty
+    ;   Quality = unlicensed
+    ).
+
+
+% -------------------------------------------------------------------------
+% The rows
+% -------------------------------------------------------------------------
+
+r2_rows(Item, Rows) :-
+    (   get_dict(no_receiver, Item, true)
+    ->  r2_no_receiver_row(Item, Row), Rows = [Row]
+    ;   item_machine(Item, source, machine(FamilyA, KindA)),
+        item_machine(Item, target, machine(FamilyB, KindB)),
+        item_number(Item, pair_budget_s, 600, Budget),
+        item_number(Item, input_timeout_s, 30, InputTimeout),
+        item_number(Item, max_witnesses, 200, Cap),
+        get_time(Started),
+        (   \+ same_schema(machine(FamilyA, KindA), machine(FamilyB, KindB))
+        ->  throw(error(domain_error(shared_schema_pair,
+                                     FamilyA/KindA-FamilyB/KindB),
+                        context(loop_driver:r2_rows/2,
+                                'R2 receivers share the exact schema string')))
+        ;   true
+        ),
+        machine_schema(machine(FamilyA, KindA), Schema),
+        (   grid_plan(Schema, Bounds, _)
+        ->  r2_walk(Schema, FamilyA, KindA, FamilyB, KindB, Started, Budget,
+                    InputTimeout, Points, Stopped),
+            grid_point_count(Schema, GridPoints),
+            term_string(Bounds, BoundsString),
+            r2_directed_row(ab, machine(FamilyA, KindA), machine(FamilyB, KindB),
+                            Points, Stopped, Schema, BoundsString, GridPoints,
+                            Cap, Started, RowAB),
+            r2_directed_row(ba, machine(FamilyB, KindB), machine(FamilyA, KindA),
+                            Points, Stopped, Schema, BoundsString, GridPoints,
+                            Cap, Started, RowBA),
+            Rows = [RowAB, RowBA]
+        ;   r2_uninstantiated_row(machine(FamilyA, KindA), machine(FamilyB, KindB),
+                                  Schema, RowAB),
+            r2_uninstantiated_row(machine(FamilyB, KindB), machine(FamilyA, KindA),
+                                  Schema, RowBA),
+            Rows = [RowAB, RowBA]
+        )
+    ).
+
+r2_directed_row(Side, machine(RefuserF, RefuserK), machine(ReceiverF, ReceiverK),
+                Points, Stopped, Schema, BoundsString, GridPoints, Cap,
+                Started, Row) :-
+    released_region(Points, Side, Released, OutRegion),
+    length(Released, ReleasedCount),
+    length(OutRegion, OutRegionCount),
+    length(Points, Walked),
+    sample_witnesses(Released, Cap, Sampled, Truncated),
+    validity_counts(Released, ValidityCounts),
+    release_quality(Released, Quality),
+    r2_lens(machine(RefuserF, RefuserK), machine(ReceiverF, ReceiverK),
+            Released, OutRegionCount, Quality, Lens, LensFlags, Crossing),
+    r2_verdict(Quality, Stopped, Outcome, CandidateType),
+    witness_dicts(Sampled, WitnessDicts),
+    ( OutRegion = [OutWitness|_] -> OutWitnessField = OutWitness
+    ; OutWitnessField = null ),
+    first_release_strings(Released, RefusalString, ReceiverString),
+    receiver_license(ReceiverF, ReceiverK, License),
+    get_time(Now),
+    ElapsedMs is round((Now - Started) * 1000),
+    atom_string(Stopped, StoppedString),
+    atom_string(Quality, QualityString),
+    atom_string(Lens, LensString),
+    Row = _{run: "r2",
+            candidate_type: CandidateType,
+            source: _{family: RefuserF, kind: RefuserK},
+            target: _{family: ReceiverF, kind: ReceiverK},
+            input: _{schema: Schema, bounds: BoundsString,
+                     points: GridPoints},
+            evidence: _{kind: "failed_derivation",
+                        source_outcome: RefusalString,
+                        target_outcome: ReceiverString,
+                        elapsed_ms: ElapsedMs,
+                        walked_points: Walked,
+                        released_count: ReleasedCount,
+                        released_witnesses: WitnessDicts,
+                        witnesses_truncated: Truncated,
+                        released_validity_counts: ValidityCounts,
+                        release_quality: QualityString,
+                        receiver_incorrect_out_of_region: OutRegionCount,
+                        out_of_region_incorrect_witness: OutWitnessField,
+                        license: License,
+                        lens_flags: LensFlags,
+                        crossing_actions: Crossing,
+                        walk: StoppedString},
+            outcome: Outcome,
+            candidate_lens: LensString,
+            consumer: "the G_walk crisis_release candidate queue (admission \c
+                       ceremony, L2 and L3 first) + the rung-map seam report \c
+                       + the stage-2 gap report"}.
+
+%   L1/L2 are mechanical here. L3's alphabet half is mechanical too and is
+%   computed; its kernel half waits on R3 and says so rather than reading as
+%   a negative.
+r2_lens(machine(RefuserF, _), machine(ReceiverF, ReceiverK), Released,
+        OutRegionCount, Quality, Lens, Flags, Crossing) :-
+    ( registered_deformation(ReceiverF, ReceiverK) -> Deformation = true
+    ; Deformation = false ),
+    findall(V, ( member(released(_, V, _), Released),
+                 memberchk(V, [correct, contextually_correct]) ), Strong),
+    length(Strong, StrongCount),
+    findall(V, ( member(released(_, V, _), Released),
+                 memberchk(V, [correct, correct_but_inefficient]) ), Clean),
+    length(Clean, CleanCount),
+    (   Quality == licensed, Deformation == true,
+        StrongCount >= 10, OutRegionCount >= 1
+    ->  L2 = true ; L2 = false ),
+    (   Quality == licensed, Deformation == false, CleanCount >= 1
+    ->  L1 = true ; L1 = false ),
+    (   Quality == licensed,
+        crossing_actions(RefuserF, ReceiverF, ReceiverK, Shared)
+    ->  L3 = true, Crossing = Shared
+    ;   L3 = false, Crossing = [] ),
+    % L2 is the hunted class, so it names the row when it fires; L3 is
+    % orthogonal and both stay readable in lens_flags.
+    (   L2 == true -> Lens = l2
+    ;   L3 == true -> Lens = l3
+    ;   L1 == true -> Lens = l1
+    ;   Lens = unlensed ),
+    Flags = _{l1: L1, l2: L2, l3: L3,
+              receiver_is_registered_deformation: Deformation,
+              strong_released_points: StrongCount,
+              clean_released_points: CleanCount,
+              l3_kernel_half: "unavailable until R3 produces the \c
+                               kernel_dependency overlay"}.
+
+r2_verdict(_, pair_budget, "resource_error", "pair_budget_spent") :- !.
+r2_verdict(licensed, _, "certified_candidate", "crisis_release") :- !.
+r2_verdict(unlicensed, _, "no_candidate", "release_without_licence") :- !.
+r2_verdict(empty, _, "no_candidate", "no_release").
+
+witness_dicts(Sampled, Dicts) :-
+    findall(_{input: Input, validity: ValidityString},
+            ( member(released(Input, Validity, _), Sampled),
+              atom_string(Validity, ValidityString) ),
+            Dicts).
+
+first_release_strings([], "no_release", "no_release").
+first_release_strings([released(_, _, Receiver)|_], RefusalString,
+                      ReceiverString) :-
+    RefusalString = "refused(domain)",
+    term_string(Receiver, ReceiverString).
+
+%   The license citation the amendment asks for: the receiver's own contract
+%   row, which is what says this input was admissible for it.
+receiver_license(Family, Kind, License) :-
+    (   automaton_input_contract(Family, Kind, Schema, Example, Verified)
+    ->  term_string(Verified, VerifiedString),
+        License = _{schema: Schema, verified_example: Example,
+                    status: VerifiedString}
+    ;   License = _{schema: null, verified_example: null,
+                    status: "no contract row"}
+    ).
+
+r2_no_receiver_row(Item, Row) :-
+    item_machine(Item, source, machine(Family, Kind)),
+    machine_schema(machine(Family, Kind), Schema),
+    Row = _{run: "r2",
+            candidate_type: "no_receiver",
+            source: _{family: Family, kind: Kind},
+            target: _{family: null, kind: null},
+            input: _{schema: Schema, bounds: null, points: 0},
+            evidence: _{kind: "failed_derivation",
+                        source_outcome: "no receiver shares this schema string",
+                        target_outcome: "none",
+                        elapsed_ms: 0,
+                        released_count: 0,
+                        released_witnesses: [],
+                        witnesses_truncated: false},
+            outcome: "uninstantiated",
+            candidate_lens: "unlensed",
+            consumer: "the stage-2 gap report (schemas with a single machine \c
+                       name a missing receiver, not a missing run)"}.
+
+r2_uninstantiated_row(machine(RefuserF, RefuserK), machine(ReceiverF, ReceiverK),
+                      Schema, Row) :-
+    Row = _{run: "r2",
+            candidate_type: "uninstantiated_schema",
+            source: _{family: RefuserF, kind: RefuserK},
+            target: _{family: ReceiverF, kind: ReceiverK},
+            input: _{schema: Schema, bounds: null, points: 0},
+            evidence: _{kind: "failed_derivation",
+                        source_outcome: "no_grid_plan",
+                        target_outcome: "no_grid_plan",
+                        elapsed_ms: 0,
+                        released_count: 0,
+                        released_witnesses: [],
+                        witnesses_truncated: false},
+            outcome: "uninstantiated",
+            candidate_lens: "unlensed",
+            consumer: "the stage-2 gap report (a schema with no authored grid \c
+                       is a contract gap, not a compute gap)"}.

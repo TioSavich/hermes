@@ -48,6 +48,10 @@ CONSUMERS = {
         "scripts/research/build_automata_compendium.py:read_r1_atlas_rows"
         " + scripts/research/separation_coverage_audit.py"
     ),
+    "r2": (
+        "the G_walk crisis_release candidate queue (admission ceremony, L2 and"
+        " L3 first) + the rung-map seam report + the stage-2 gap report"
+    ),
 }
 
 REQUIRED_ROW_FIELDS = (
@@ -107,7 +111,11 @@ def completed_keys(path: Path) -> set[str]:
                 row = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            if row.get("key"):
+            # An item can emit more than one row (R2 walks a pair once and reports
+            # both directions), so resume keys on the ITEM, never on the row.
+            if row.get("item_key"):
+                keys.add(str(row["item_key"]))
+            elif row.get("key"):
                 keys.add(str(row["key"]))
     return keys
 
@@ -143,8 +151,13 @@ def fallback_row(item: dict, outcome: str, candidate_type: str,
     }
 
 
-def run_item(item: dict, watchdog_s: float) -> tuple[dict, str]:
-    """Run one item in its own Prolog process. Returns (row, disposition)."""
+def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
+    """Run one item in its own Prolog process. Returns (rows, disposition).
+
+    An item yields one row for R1 and two for R2. Reading every row the driver
+    writes, rather than the first, is what keeps R2's second direction from
+    being silently dropped.
+    """
     started = time.monotonic()
     command = [
         "swipl", "-q",
@@ -174,39 +187,43 @@ def run_item(item: dict, watchdog_s: float) -> tuple[dict, str]:
             pass
         elapsed_ms = round((time.monotonic() - started) * 1000)
         return (
-            fallback_row(item, "timeout", "watchdog_kill",
-                         f"killed by the watchdog after {watchdog_s:g}s",
-                         elapsed_ms),
+            [fallback_row(item, "timeout", "watchdog_kill",
+                          f"killed by the watchdog after {watchdog_s:g}s",
+                          elapsed_ms)],
             "timeout",
         )
 
     elapsed_ms = round((time.monotonic() - started) * 1000)
-    line = next((ln for ln in stdout.splitlines() if ln.strip().startswith("{")), "")
-    if not line:
+    lines = [ln for ln in stdout.splitlines() if ln.strip().startswith("{")]
+    if not lines:
         note = (stderr.strip() or "the driver wrote no row")[:400]
         return (
-            fallback_row(item, "resource_error", "no_row", note, elapsed_ms),
+            [fallback_row(item, "resource_error", "no_row", note, elapsed_ms)],
             "no_row",
         )
-    try:
-        row = json.loads(line)
-    except json.JSONDecodeError as error:
-        return (
-            fallback_row(item, "resource_error", "malformed_row",
-                         f"{error}", elapsed_ms),
-            "malformed",
-        )
 
-    missing = [field for field in REQUIRED_ROW_FIELDS if field not in row]
-    if missing:
-        return (
-            fallback_row(item, "resource_error", "incomplete_row",
-                         "row lacked " + ", ".join(missing), elapsed_ms),
-            "incomplete",
-        )
-    if not row.get("consumer"):
-        row["consumer"] = CONSUMERS.get(str(row.get("run")), CONSUMERS["r1"])
-    return row, str(row.get("outcome", "?"))
+    rows = []
+    for line in lines:
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as error:
+            return (
+                [fallback_row(item, "resource_error", "malformed_row",
+                              f"{error}", elapsed_ms)],
+                "malformed",
+            )
+        missing = [field for field in REQUIRED_ROW_FIELDS if field not in row]
+        if missing:
+            return (
+                [fallback_row(item, "resource_error", "incomplete_row",
+                              "row lacked " + ", ".join(missing), elapsed_ms)],
+                "incomplete",
+            )
+        if not row.get("consumer"):
+            row["consumer"] = CONSUMERS.get(str(row.get("run")), CONSUMERS["r1"])
+        rows.append(row)
+    dispositions = sorted({str(row.get("outcome", "?")) for row in rows})
+    return rows, "+".join(dispositions)
 
 
 def main() -> int:
@@ -244,14 +261,22 @@ def main() -> int:
         if arguments.limit and written >= arguments.limit:
             print(f"stopping at --limit {arguments.limit}", flush=True)
             break
-        row, disposition = run_item(item, arguments.watchdog_s)
-        row["key"] = key
-        append_row(arguments.output, row)
-        written += 1
+        rows, disposition = run_item(item, arguments.watchdog_s)
+        for index, row in enumerate(rows):
+            row["item_key"] = key
+            source = row.get("source") or {}
+            target = row.get("target") or {}
+            row["key"] = (
+                f"{key}#{source.get('family')}/{source.get('kind')}"
+                f"->{target.get('family')}/{target.get('kind')}"
+                if len(rows) > 1 else key
+            )
+            append_row(arguments.output, row)
+        written += len(rows)
         tally[disposition] = tally.get(disposition, 0) + 1
-        elapsed = row.get("evidence", {}).get("elapsed_ms", 0)
-        print(f"[{number}/{len(items)}] {key} -> {disposition} ({elapsed} ms)",
-              flush=True)
+        elapsed = rows[0].get("evidence", {}).get("elapsed_ms", 0) if rows else 0
+        print(f"[{number}/{len(items)}] {key} -> {disposition} "
+              f"({len(rows)} row(s), {elapsed} ms)", flush=True)
 
     summary = ", ".join(f"{name}={count}" for name, count in sorted(tally.items()))
     print(f"shard done: {written} rows written; {summary or 'nothing to do'}",

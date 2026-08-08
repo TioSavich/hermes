@@ -144,6 +144,121 @@ def harvest_census(harvest_root: Path) -> dict:
     return census
 
 
+def singleton_machines() -> list[tuple[str, str]]:
+    """Machines whose schema string no other machine shares.
+
+    R2's receiver set is every machine sharing the EXACT schema string, so a
+    singleton has no receiver at all. These are recorded as
+    uninstantiated(no_receiver) rather than left out: a schema with one
+    machine names a missing receiver, which is authoring work, and dropping
+    the row would hide it.
+    """
+    goal = (
+        "forall(( loop_driver:contracted_machine(machine(F,K)), "
+        "  loop_driver:machine_schema(machine(F,K), S), "
+        "  aggregate_all(count, loop_driver:machine_schema(_, S), 1) ), "
+        "format('~w\\t~w~n', [F,K]))"
+    )
+    machines = []
+    for line in swipl_lines(goal):
+        fields = line.split("\t")
+        if len(fields) == 2:
+            machines.append((fields[0], fields[1]))
+    return machines
+
+
+def measured_pair_cost(collection: Path | None) -> dict[tuple[str, ...], int]:
+    """Per-pair wall time from a completed R1 collection.
+
+    R1 measured what each pair costs, and the spread is wide: addition pairs
+    finish in seconds, multiplication pairs spend the whole budget. Dealing
+    the expensive pairs across shards instead of letting them clump is the
+    difference between a shard that finishes and a shard that is cut off at
+    the wall.
+    """
+    costs: dict[tuple[str, ...], int] = {}
+    if collection is None or not collection.is_dir():
+        return costs
+    for path in sorted(collection.rglob("*.jsonl")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            source = row.get("source") or {}
+            target = row.get("target") or {}
+            key = tuple(sorted([
+                f"{source.get('family')}/{source.get('kind')}",
+                f"{target.get('family')}/{target.get('kind')}",
+            ]))
+            elapsed = int((row.get("evidence") or {}).get("elapsed_ms") or 0)
+            costs[key] = max(costs.get(key, 0), elapsed)
+    return costs
+
+
+def interleave_by_cost(pairs, costs, shard_count: int) -> list[list]:
+    """Deal pairs into shards most-expensive-first, round robin.
+
+    Round robin over a cost-ordered list puts one of the worst pairs in each
+    shard before any shard gets a second, so no shard collects the tail.
+    """
+    ordered = sorted(
+        pairs,
+        key=lambda pair: -costs.get(
+            tuple(sorted([f"{pair[0]}/{pair[1]}", f"{pair[2]}/{pair[3]}"])), 0
+        ),
+    )
+    shards: list[list] = [[] for _ in range(max(shard_count, 1))]
+    for index, pair in enumerate(ordered):
+        shards[index % len(shards)].append(pair)
+    return shards
+
+
+def write_r2_shards(pairs, singletons, output_dir: Path, per_task: int,
+                    budget: float, input_timeout: float, max_witnesses: int,
+                    costs) -> list[Path]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for stale in output_dir.glob("r2_shard_*.jsonl"):
+        stale.unlink()
+    shard_count = max(1, -(-len(pairs) // per_task))
+    buckets = interleave_by_cost(pairs, costs, shard_count)
+
+    # The no-receiver rows cost nothing to produce; they ride along evenly.
+    for index, (family, kind) in enumerate(singletons):
+        buckets[index % len(buckets)].append(("__singleton__", family, kind, ""))
+
+    written = []
+    for number, bucket in enumerate(buckets):
+        shard = output_dir / f"r2_shard_{number:04d}.jsonl"
+        with shard.open("w", encoding="utf-8") as handle:
+            for entry in bucket:
+                if entry[0] == "__singleton__":
+                    _, family, kind, _ = entry
+                    item = {
+                        "run": "r2",
+                        "key": f"r2:{family}/{kind}|no_receiver",
+                        "source": {"family": family, "kind": kind},
+                        "no_receiver": True,
+                    }
+                else:
+                    family_a, kind_a, family_b, kind_b = entry
+                    item = {
+                        "run": "r2",
+                        "key": f"r2:{family_a}/{kind_a}|{family_b}/{kind_b}",
+                        "source": {"family": family_a, "kind": kind_a},
+                        "target": {"family": family_b, "kind": kind_b},
+                        "pair_budget_s": budget,
+                        "input_timeout_s": input_timeout,
+                        "max_witnesses": max_witnesses,
+                    }
+                handle.write(json.dumps(item, sort_keys=True) + "\n")
+        written.append(shard)
+    return written
+
+
 def write_shards(pairs, output_dir: Path, per_task: int, budget: float,
                  input_timeout: float, max_witnesses: int) -> list[Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -169,6 +284,54 @@ def write_shards(pairs, output_dir: Path, per_task: int, budget: float,
     return written
 
 
+def emit_r2(arguments) -> int:
+    """R2's manifest: the R1 pair list, replayed with per-side retention.
+
+    R2's filter is schema-only, ruled after R1. It needs no --pair-filter of
+    its own: it replays exactly the pairs R1 walked, because the asymmetry it
+    is measuring is the one R1's joint refusal count could not keep.
+    """
+    print("== R2 directed-replay manifest ==", flush=True)
+    pairs = enumerate_pairs("schema_only")
+    singletons = singleton_machines()
+    costs = measured_pair_cost(arguments.r1_collection)
+
+    print(f"unordered pairs (schema-only)  : {len(pairs)}", flush=True)
+    print(f"directed rows they emit        : {2 * len(pairs)} "
+          f"(one walk, two directions)", flush=True)
+    print(f"machines with no receiver      : {len(singletons)} "
+          f"-> uninstantiated(no_receiver)", flush=True)
+    if costs:
+        print(f"measured pair costs read       : {len(costs)} pairs from "
+              f"{arguments.r1_collection}", flush=True)
+    else:
+        print(f"measured pair costs read       : none at "
+              f"{arguments.r1_collection}; shards deal in enumeration order",
+              flush=True)
+
+    goal = ("findall(P, loop_driver:grid_plan(_, bounds(_, P), _), Ps), "
+            "max_list(Ps, M), format('~w~n', [M])")
+    largest = int(swipl_lines(goal)[0])
+    ceiling = len(pairs) * largest
+    print(f"point-evaluation ceiling       : {len(pairs)} walks x <={largest} "
+          f"points = <={ceiling:,}", flush=True)
+
+    if arguments.census:
+        return 0
+
+    shards = write_r2_shards(pairs, singletons, arguments.output_dir,
+                             arguments.pairs_per_task, arguments.pair_budget_s,
+                             arguments.input_timeout_s,
+                             arguments.max_witnesses, costs)
+    last = len(shards) - 1
+    print(f"\nR2 manifest written under {arguments.output_dir}", flush=True)
+    print(f"  {len(pairs)} pairs + {len(singletons)} no-receiver rows across "
+          f"{len(shards)} shards at {arguments.pairs_per_task}/task, "
+          f"cost-interleaved", flush=True)
+    print(f"  sbatch array range: 0-{last}", flush=True)
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pair-filter", choices=PAIR_FILTERS, default=None,
@@ -177,15 +340,36 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path,
                         default=ROOT / ".bigred-output/2026-08-08-loops-wave1",
                         help="where the shard manifests are written")
-    parser.add_argument("--pairs-per-task", type=int, default=25)
+    parser.add_argument("--pairs-per-task", type=int, default=None,
+                        help="default 25 for R1, 12 for R2 (amendment B)")
     parser.add_argument("--pair-budget-s", type=float, default=600.0)
     parser.add_argument("--input-timeout-s", type=float, default=30.0)
-    parser.add_argument("--max-witnesses", type=int, default=0,
-                        help="0 keeps every separating input, as the design asks")
+    parser.add_argument("--max-witnesses", type=int, default=None,
+                        help="default 0 for R1 (every separating input) and "
+                             "200 for R2 (amendment B's cap, endpoints kept)")
     parser.add_argument("--harvest-root", type=Path, default=HARVEST_ROOT)
     parser.add_argument("--census", action="store_true",
                         help="measure and print only; write nothing")
+    parser.add_argument("--r2", action="store_true",
+                        help="write R2's directed-replay manifest instead of R1's")
+    parser.add_argument("--r1-collection", type=Path,
+                        default=ROOT / ".bigred-collected/2026-08-08-loops-wave1-r1/rows",
+                        help="a completed R1 collection, read for measured "
+                             "per-pair cost so shards interleave by it")
     arguments = parser.parse_args()
+
+    # The two runs carry different defaults and neither should inherit the
+    # other's: R1 keeps every separating input, R2 caps witnesses at 200.
+    if arguments.r2:
+        if arguments.pairs_per_task is None:
+            arguments.pairs_per_task = 12
+        if arguments.max_witnesses is None:
+            arguments.max_witnesses = 200
+        return emit_r2(arguments)
+    if arguments.pairs_per_task is None:
+        arguments.pairs_per_task = 25
+    if arguments.max_witnesses is None:
+        arguments.max_witnesses = 0
 
     print("== schema coverage ==", flush=True)
     coverage = schema_coverage()

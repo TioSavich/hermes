@@ -87,11 +87,22 @@ def check_schema_coverage() -> None:
     missing = [r for r in rows if r[0] != "instantiated"]
     drift = [r for r in instantiated if r[2] != r[3]]
 
-    print(f"      {'status':14s} {'grid':28s} {'pts':>5s} {'enum':>5s} "
-          f"{'mach':>4s}", flush=True)
+    # The grid NAME is not the key and several names collide (three distinct
+    # schema strings are all called a_b, three more decimal_pair). Reading the
+    # name column as the key sums 69 + 10 + 6 into one 85-machine receiver set
+    # that does not exist, so the schema string is printed beside it.
+    print(f"      {'status':14s} {'grid':22s} {'pts':>5s} {'enum':>5s} "
+          f"{'mach':>4s}  schema (the key)", flush=True)
     for row in rows:
-        print(f"      {row[0]:14s} {row[1][:28]:28s} {row[2]:>5s} {row[3]:>5s} "
-              f"{row[4]:>4s}", flush=True)
+        print(f"      {row[0]:14s} {row[1][:22]:22s} {row[2]:>5s} {row[3]:>5s} "
+              f"{row[4]:>4s}  {row[5][:64]}", flush=True)
+
+    names = [row[1] for row in instantiated]
+    colliding = sorted({name for name in names if names.count(name) > 1})
+    record("colliding grid names are shown beside their schema keys",
+           True,
+           f"{len(colliding)} name(s) cover more than one schema: "
+           f"{', '.join(colliding) or 'none'}")
 
     covered = sum(int(r[4]) for r in instantiated)
     uncovered = sum(int(r[4]) for r in missing)
@@ -557,13 +568,224 @@ def check_separation_audit() -> None:
                "the report carries its source path")
 
 
+# --------------------------------------------------------------------------
+# 11. R2 — the directed replay, per-side retention, and the lens thresholds.
+# --------------------------------------------------------------------------
+
+def run_item_rows(item: dict, timeout: int = 300) -> list[dict]:
+    """Every row the driver writes for one item, not just the first."""
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(PATHS), "-l", str(DRIVER),
+         "-g", "loop_driver:main_item", "-t", "halt"],
+        cwd=str(ROOT), text=True, capture_output=True, timeout=timeout,
+        input=json.dumps(item) + "\n", check=False,
+    )
+    rows = [json.loads(ln) for ln in completed.stdout.splitlines()
+            if ln.strip().startswith("{")]
+    if not rows:
+        raise RuntimeError(f"driver wrote no row: {completed.stderr[:400]}")
+    return rows
+
+
+def check_r2_directed_walk() -> None:
+    print("\n[11] R2 — one walk, two directed censuses, per-side retention",
+          flush=True)
+    # subtraction/take_away_base_ones refuses wherever the minuend is smaller;
+    # smaller_from_larger_in_column computes there. R1 recorded 2,050 refusals
+    # for this pair as ONE joint number. R2 has to split it.
+    item = {
+        "run": "r2",
+        "source": {"family": "subtraction", "kind": "take_away_base_ones"},
+        "target": {"family": "subtraction", "kind": "smaller_from_larger_in_column"},
+        "pair_budget_s": 300, "input_timeout_s": 20, "max_witnesses": 200,
+    }
+    rows = run_item_rows(item, timeout=600)
+    record("one walk emits both directed censuses", len(rows) == 2,
+           f"{len(rows)} row(s)")
+    if len(rows) != 2:
+        return
+    forward, backward = rows
+    for row in rows:
+        problems = validate_row(row)
+        if problems:
+            record("R2 rows validate against the shared schema", False,
+                   "; ".join(problems))
+            return
+    record("R2 rows validate against the shared schema", True,
+           "both directions carry every field, on their enums")
+    record("both directions come from the SAME walk",
+           forward["evidence"]["walked_points"]
+           == backward["evidence"]["walked_points"],
+           f"{forward['evidence']['walked_points']} points walked once")
+
+    forward_released = forward["evidence"]["released_count"]
+    backward_released = backward["evidence"]["released_count"]
+    print(f"      {forward['source']['kind']} refuses -> "
+          f"{forward['target']['kind']} receives: {forward_released} released",
+          flush=True)
+    print(f"      {backward['source']['kind']} refuses -> "
+          f"{backward['target']['kind']} receives: {backward_released} released",
+          flush=True)
+    record("per-side retention recovers the asymmetry R1 could not",
+           forward_released != backward_released,
+           f"{forward_released} one way, {backward_released} the other — "
+           "a joint refusal count cannot express this")
+
+    released = backward if backward_released > forward_released else forward
+    evidence = released["evidence"]
+    record("the productive receiver's release is a candidate at lens l1",
+           released["outcome"] == "certified_candidate"
+           and released["candidate_lens"] == "l1",
+           f"outcome={released['outcome']} lens={released['candidate_lens']} "
+           f"validities={evidence['released_validity_counts']}")
+    record("the witness list is capped at 200 with the count kept exact",
+           len(evidence["released_witnesses"]) <= 200
+           and evidence["released_count"] == backward_released
+           if released is backward else True,
+           f"{len(evidence['released_witnesses'])} witnesses kept of "
+           f"{evidence['released_count']} released, "
+           f"truncated={evidence['witnesses_truncated']}")
+    witnesses = evidence["released_witnesses"]
+    record("the region endpoints are retained so the region reconstructs",
+           len(witnesses) >= 2,
+           f"first={witnesses[0]['input'] if witnesses else None} "
+           f"last={witnesses[-1]['input'] if witnesses else None}")
+    record("every row names a consumer", bool(released["consumer"]),
+           released["consumer"][:60])
+
+
+def lens_probe(refuser: str, receiver: str, validities: list[str],
+               out_region: int) -> tuple[str, dict]:
+    """Call release_quality/2 and r2_lens/8 on a constructed released region."""
+    released = ", ".join(
+        f"released(point({index}), {validity}, result(0,0,{validity}))"
+        for index, validity in enumerate(validities)
+    )
+    refuser_family, refuser_kind = refuser.split("/")
+    receiver_family, receiver_kind = receiver.split("/")
+    goal = (
+        f"Released = [{released}], "
+        "loop_driver:release_quality(Released, Quality), "
+        f"loop_driver:r2_lens(machine({refuser_family},{refuser_kind}), "
+        f"machine({receiver_family},{receiver_kind}), Released, {out_region}, "
+        "Quality, Lens, Flags, _), "
+        # get_dict/3 rather than Flags.l1: functional dict notation needs goal
+        # expansion, which a -g goal does not get.
+        "get_dict(l1, Flags, L1), get_dict(l2, Flags, L2), "
+        "get_dict(l3, Flags, L3), "
+        "format('LENS ~w~n', [Lens]), "
+        "format('FLAGS ~w ~w ~w ~w~n', [Quality, L1, L2, L3])"
+    )
+    lens, detail = "?", {}
+    for line in swipl(goal).splitlines():
+        if line.startswith("LENS "):
+            lens = line.split(None, 1)[1].strip()
+        elif line.startswith("FLAGS "):
+            quality, l1, l2, l3 = line.split()[1:5]
+            detail = {"quality": quality, "l1": l1, "l2": l2, "l3": l3}
+    return lens, detail
+
+
+def check_r2_lenses() -> None:
+    print("\n[12] R2 — the L2 thresholds and the accidentally_correct exclusion",
+          flush=True)
+    deformation = "multiplication/add_instead_of_multiply"   # registered
+    productive = "subtraction/take_away_base_ones"           # not registered
+
+    lens, flags = lens_probe("multiplication/repeat_equal_groups", deformation,
+                             ["correct"] * 12, 1)
+    record("a registered deformation, strong on 12 released points, "
+           "incorrect elsewhere, is l2", lens == "l2",
+           f"lens={lens} flags={flags}")
+
+    lens, flags = lens_probe("multiplication/repeat_equal_groups", deformation,
+                             ["correct"] * 9, 1)
+    record("nine strong points is below the L2 threshold", lens != "l2",
+           f"lens={lens} (the ruling says >=10)")
+
+    lens, flags = lens_probe("multiplication/repeat_equal_groups", deformation,
+                             ["correct"] * 12, 0)
+    record("no out-of-region incorrect point is not l2", lens != "l2",
+           f"lens={lens} — without it the viability is not shown to be regional")
+
+    lens, flags = lens_probe("multiplication/repeat_equal_groups", deformation,
+                             ["accidentally_correct"] * 20, 5)
+    record("an accidentally_correct-only release is EXCLUDED",
+           lens == "unlensed" and flags["quality"] == "unlicensed",
+           f"lens={lens} quality={flags['quality']} — isolated-point "
+           "coincidence keeps rust")
+
+    lens, flags = lens_probe("subtraction/smaller_from_larger_in_column",
+                             productive, ["correct", "correct_but_inefficient"], 0)
+    record("a non-deformation receiver on clean validity is l1", lens == "l1",
+           f"lens={lens} — inefficiency is not error")
+
+    lens, flags = lens_probe("multiplication/repeat_equal_groups", deformation,
+                             ["contextually_correct"] * 11, 2)
+    record("contextually_correct counts toward the L2 threshold", lens == "l2",
+           f"lens={lens} flags={flags}")
+
+
+def check_r2_resume() -> None:
+    print("\n[13] R2 — resume idempotence across a two-row item", flush=True)
+    item = {
+        "run": "r2",
+        "key": "r2:geometry/angle_as_ray_length|geometry/angle_turn_measurement",
+        "source": {"family": "geometry", "kind": "angle_as_ray_length"},
+        "target": {"family": "geometry", "kind": "angle_turn_measurement"},
+        "pair_budget_s": 60, "input_timeout_s": 20, "max_witnesses": 200,
+    }
+    singleton = {
+        "run": "r2",
+        "key": "r2:probability/terminal_tree_endpoint_probability_sum|no_receiver",
+        "source": {"family": "probability",
+                   "kind": "terminal_tree_endpoint_probability_sum"},
+        "no_receiver": True,
+    }
+    with tempfile.TemporaryDirectory() as workspace:
+        manifest = Path(workspace) / "shard.jsonl"
+        output = Path(workspace) / "rows.jsonl"
+        manifest.write_text(
+            json.dumps(item) + "\n" + json.dumps(singleton) + "\n",
+            encoding="utf-8")
+        counts = []
+        for _ in range(2):
+            subprocess.run(
+                [sys.executable, str(RUNNER), "--manifest", str(manifest),
+                 "--output", str(output)],
+                cwd=str(ROOT), text=True, capture_output=True, timeout=600,
+                check=False,
+            )
+            if not output.is_file():
+                record("R2 resume idempotence", False, "first run wrote nothing")
+                return
+            counts.append(len([ln for ln in
+                               output.read_text(encoding="utf-8").splitlines()
+                               if ln.strip()]))
+        record("a two-row item plus a no-receiver item writes three rows",
+               counts[0] == 3, f"{counts[0]} row(s) after the first run")
+        record("R2 resume idempotence", counts[0] == counts[1],
+               f"{counts[0]} then {counts[1]} — the second run adds "
+               f"{counts[1] - counts[0]}")
+        rows = [json.loads(ln) for ln in
+                output.read_text(encoding="utf-8").splitlines() if ln.strip()]
+        no_receiver = [row for row in rows
+                       if row.get("candidate_type") == "no_receiver"]
+        record("a schema singleton records uninstantiated(no_receiver)",
+               len(no_receiver) == 1
+               and no_receiver[0]["outcome"] == "uninstantiated",
+               f"{len(no_receiver)} no-receiver row, "
+               f"outcome={no_receiver[0]['outcome'] if no_receiver else 'none'}")
+
+
 def main() -> int:
     print("Big Red loop substrate — offline fixture checks", flush=True)
     print(f"repo: {ROOT}", flush=True)
     for check in (check_schema_coverage, check_aa_run, check_same_archetype,
                   check_archetype_map_against_tree, check_r1_walk,
                   check_r5_reproduction, check_resume, check_watchdog,
-                  check_compendium_reader, check_separation_audit):
+                  check_compendium_reader, check_separation_audit,
+                  check_r2_directed_walk, check_r2_lenses, check_r2_resume):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip
