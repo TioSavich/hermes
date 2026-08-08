@@ -98,6 +98,8 @@ run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.
 run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
 run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
 run pusu_schema_translation_fixtures.py python3 "$CHECKS_DIR/../curriculum/pusu_schema_translation_fixtures.py"
+run build_standards_progression_overlay python3 "$CHECKS_DIR/../curriculum/build_standards_progression_overlay.py" --check
+run standards_progression_overlay.py python3 "$CHECKS_DIR/standards_progression_overlay.py"
 run build_im_lesson_capability_census python3 "$CHECKS_DIR/../curriculum/build_im_lesson_capability_census.py" --check
 run build_im_zero_candidate_triage python3 "$CHECKS_DIR/../curriculum/build_im_zero_candidate_triage.py" --check
 run build_im_action_seam_recut python3 "$CHECKS_DIR/../curriculum/build_im_action_seam_recut.py" --check

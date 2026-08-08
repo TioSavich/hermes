@@ -1,0 +1,38 @@
+[
+ {
+  "component_id": "component_early_addition",
+  "nodes": [
+   {
+    "node_type": "machine",
+    "node_id": "whole_number/addition_within_twenty"
+   }
+  ],
+  "standard_codes": [
+   "1.OA.C.6"
+  ]
+ },
+ {
+  "component_id": "component_grade_two_fluency",
+  "nodes": [
+   {
+    "node_type": "machine",
+    "node_id": "whole_number/addition_fluency"
+   }
+  ],
+  "standard_codes": [
+   "2.OA.B.2"
+  ]
+ },
+ {
+  "component_id": "component_unrelated",
+  "nodes": [
+   {
+    "node_type": "machine",
+    "node_id": "geometry/angle_measurement"
+   }
+  ],
+  "standard_codes": [
+   "fixture.unmatched.standard"
+  ]
+ }
+]

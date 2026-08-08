@@ -210,6 +210,7 @@ capability('standard_k_ns_3_order_independence_witness', 'standard_k_ns_3', 'sta
 capability('standard_k_ns_4_verify_subitizing_witness', 'standard_k_ns_4', 'standards', ['pattern'], routed_paged).
 capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'standards', ['group_a', 'group_b'], routed_paged).
 capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], routed_paged).
+capability('standards_progression_candidates', 'index_query', 'unclassified', ['code'], unrouted).
 capability('state_labels', 'user', 'synthesis', ['state'], unrouted).
 capability('strategy_recognize', 'strategy_recognizer', 'synthesis', ['content'], unrouted).
 capability('strategy_trace', 'hermes_encyclopedia', 'synthesis', ['input', 'strategy'], routed_paged).
@@ -572,6 +573,7 @@ capability_parameter('standard_k_ns_4_verify_subitizing_witness', 'pattern', nul
 capability_parameter('standard_k_ns_5_6_compare_groups_witness', 'group_a', null, true, null).
 capability_parameter('standard_k_ns_5_6_compare_groups_witness', 'group_b', null, true, null).
 capability_parameter('standard_k_ns_7_place_value_witness', 'number', null, false, null).
+capability_parameter('standards_progression_candidates', 'code', 'string', true, null).
 capability_parameter('state_labels', 'state', 'string', true, null).
 capability_parameter('strategy_recognize', 'content', 'string', true, null).
 capability_parameter('strategy_trace', 'strategy', 'string', true, null).

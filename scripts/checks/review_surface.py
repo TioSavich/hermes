@@ -156,6 +156,7 @@ def copy_runtime_inputs(tree: Path) -> None:
         "knowledge/index/corpus_window.pl",
         "knowledge/index/index_query.pl",
         "knowledge/index/relevance_negation.pl",
+        "knowledge/index/standards_progression_overlay.pl",
     )
     for relative in paths:
         source = ROOT / relative

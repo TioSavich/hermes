@@ -417,7 +417,7 @@
       "sequent": 14,
       "standards": 22,
       "synthesis": 42,
-      "unclassified": 8,
+      "unclassified": 9,
       "workflow": 17,
       "zeeman": 4
     },
@@ -426,7 +426,7 @@
       "orphan_module": 88,
       "routed_only": 15,
       "routed_paged": 189,
-      "unrouted": 11
+      "unrouted": 12
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -437,8 +437,8 @@
       "superseded": 0,
       "undetermined": 52
     },
-    "total": 313,
-    "unrouted": 11
+    "total": 314,
+    "unrouted": 12
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -2050,6 +2050,24 @@
       "judgement": "Being unrouted from a web page is correct, and a page would be the wrong shape for it.",
       "name": "prolog_query",
       "reason": "Every other operation is a question shaped in advance with fixed argument slots; 202 of them stand against 81,663 clauses. This one lets a caller ask something nobody wrote an operation for. Its consumer is a program composing a goal, not a person filling a form, and a page would have to invent an input widget for arbitrary Prolog."
+    },
+    {
+      "does": "Returns the candidate building_on-to-addressing progression rows touching a standards code, from the lesson-mediated overlay, each carrying its spine provenance and the learner_reachability false boundary.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(standards_progression_candidates,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "learner_reachability",
+          "path": "knowledge/index/standards_progression_overlay.pl",
+          "relation": "the candidate boundary"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "standards_progression_candidates",
+      "reason": "The overlay holds candidates, not licensed prerequisites. Its consumers are the stage-2 normalizer and analysis clients through the worker; a web form would invite readers to treat candidate edges as a learning order before any reviewed promotion."
     },
     {
       "does": "Returns the default cited state label and its recorded alternatives.",

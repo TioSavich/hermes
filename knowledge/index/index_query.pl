@@ -19,6 +19,7 @@
             machines_for_topic/3,      % +Topic, -Machines, -Excluded
             topic_subtraction/2,       % +Topic, -Counts
             topic_subtraction_dict/2,  % +Topic, -Dict
+            standards_progression_candidates_dict/2, % +Code, -Dict
             index_topic/1              % ?Topic
           ]).
 
@@ -27,6 +28,8 @@
 
 :- ensure_loaded(index('corpus_window')).
 :- ensure_loaded(index('relevance_negation')).
+:- use_module(index(standards_progression_overlay),
+              [ standards_progression_candidates_dict/2 ]).
 
 %!  window_of(?Machine, -Row) is nondet.
 %

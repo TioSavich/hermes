@@ -524,6 +524,29 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
 
 
 UNROUTED = {
+    "standards_progression_candidates": {
+        "does": "Returns the candidate building_on-to-addressing progression "
+        "rows touching a standards code, from the lesson-mediated overlay, "
+        "each carrying its spine provenance and the learner_reachability "
+        "false boundary.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The overlay holds candidates, not licensed prerequisites. "
+        "Its consumers are the stage-2 normalizer and analysis clients "
+        "through the worker; a web form would invite readers to treat "
+        "candidate edges as a learning order before any reviewed promotion.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(standards_progression_candidates,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/index/standards_progression_overlay.pl",
+                "learner_reachability",
+                "the candidate boundary",
+            ),
+        ],
+    },
     "abduce_error": {
         "does": "Runs the closed misconception-rule registry on a caller's ground input "
         "and returns the rules that reproduce the supplied result, with recorded db_row citations.",
@@ -1012,8 +1035,11 @@ def build() -> dict[str, object]:
     # it is MCP-exposed and intentionally has no web route.
     # 313 from 2026-08-08: lesson_arithmetic_demonstration — the vertical
     # slice's lesson-bounded operation (worker + MCP + POST route).
-    if len(registry_rows) != 313:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 313")
+    # 314 later the same day: standards_progression_candidates — the
+    # candidate progression overlay's bounded worker query (unrouted by
+    # judgement; candidates never read as a learning order).
+    if len(registry_rows) != 314:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 314")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1083,8 +1109,11 @@ def build() -> dict[str, object]:
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.
-    if len(unrouted) != 11:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 11")
+    # 12 from 2026-08-08: standards_progression_candidates joins the
+    # unrouted set with its authored judgement (candidates never read
+    # as a learning order).
+    if len(unrouted) != 12:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 12")
 
     return {
         "schema": "self_description_census_v1",

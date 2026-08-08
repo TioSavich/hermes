@@ -31,6 +31,11 @@ dispatch_spec(index_topic_subtraction,
     [topic-atom],
     call(index_query:topic_subtraction_dict, [topic, out(dict)]),
     raw(no_index_topic, malformed_index_topic_request)).
+dispatch_spec(standards_progression_candidates,
+    [code-code],
+    call(index_query:standards_progression_candidates_dict, [code, out(dict)]),
+    raw(no_standards_progression_candidate,
+        malformed_standards_progression_candidate_request)).
 dispatch_spec(incompatibility_contexts,
     [context-default(atom, all)],
     call(incompatibility_sets:a_fortiori_context_nesting_inventory,
@@ -782,6 +787,10 @@ dispatch_spec(benny_demo,
 dispatch_message(event_score, malformed, "event_score requires event").
 dispatch_message(incompatibility_contexts, no_result,
     "incompatibility_contexts found no matching nesting touching that context; pass no context for the full inventory").
+dispatch_message(standards_progression_candidates, no_result,
+    "standards_progression_candidates found no candidate overlay row; learner_reachability is false for every overlay row").
+dispatch_message(standards_progression_candidates, malformed,
+    "standards_progression_candidates requires a standard code; learner_reachability remains false").
 dispatch_message(batch_event_score, malformed, "batch_event_score requires events list").
 dispatch_message(pair_score, malformed, "pair_score requires events list").
 dispatch_message(pair_graph, malformed, "pair_graph requires events list").

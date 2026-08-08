@@ -39,6 +39,7 @@ curriculum/im/grade_8.pl
 curriculum/im/grade_k.pl
 curriculum/im/grind_boundary.pl
 curriculum/im/im_glossary.pl
+curriculum/im/lesson_arithmetic_demonstration.pl
 curriculum/im/lesson_deformation_chart.pl
 curriculum/im/lesson_enactment.pl
 curriculum/im/lesson_monitoring.pl
@@ -7493,6 +7494,7 @@ data/asktm/Survery questions for students_files/image010.png
 data/asktm/Survery questions for students_files/image011.png
 data/asktm/Survery questions for students_files/image012.png
 data/asktm/survey_questions.md
+data/learningcommons/derived/im_standards_progression_overlay.json
 data/research/corpus_binding_diagnostics.json
 data/research/corpus_binding_proposals.json
 data/research/grade78_pairing_proposals.jsonl
@@ -18152,6 +18154,7 @@ knowledge/index/index_query.pl
 knowledge/index/machine_block_decomposition.pl
 knowledge/index/relevance_negation.pl
 knowledge/index/research_measurement_registry.pl
+knowledge/index/standards_progression_overlay.pl
 knowledge/index/task_span_absence_registry.pl
 knowledge/index/vision_lesson_digest_audit.pl
 knowledge/misconceptions/README.md

@@ -54,10 +54,12 @@ KEEP_FILES = [
     "hermes/dispatch_spec.pl",         # authored generic-dispatch identity + behavior
     "hermes/prolog_query.pl",          # sandboxed caller-supplied goals over the knowledge base
     "hermes/review_queue.pl",          # durable proposal-review queue operations
+    "data/learningcommons/derived/im_standards_progression_overlay.json",  # candidate-only standards query data
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
     "hermes/app/help_grounding.py",    # page-specific context for /api/help
     "knowledge/crosswalk/representation_spine.pl",
+    "knowledge/index/standards_progression_overlay.pl",  # guarded candidate-only reader
     "hermes/web/contact-sheets/goal-e-console.png",
     "hermes/web/contact-sheets/goal-e-contact-sheet.html",
     "hermes/web/contact-sheets/goal-e-contact-sheet.png",
