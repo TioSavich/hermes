@@ -660,3 +660,56 @@ def monitoring_visuals_for_chart(
 ) -> dict:
     root = repo_root or Path(__file__).resolve().parents[3]
     return _VisualBuilder(root, worker_request)._monitoring_visuals_for_chart(code, chart)
+
+
+def lesson_arithmetic_demonstration_visual(
+    result: dict[str, Any],
+    worker_request: Callable[..., Any],
+    *,
+    repo_root: Path | None = None,
+) -> dict[str, Any]:
+    """Build the selected IM-G1-U3-L17 make-ten pair from worker evidence."""
+    if result.get("lesson_code") != "IM-G1-U3-L17":
+        return {}
+    task = result.get("selected_task")
+    productive = result.get("productive_trace")
+    incorrect = result.get("incorrect_trace")
+    if not all(isinstance(value, dict) for value in (task, productive, incorrect)):
+        return {}
+    if productive.get("strategy") != "make_ten_split_leftover":
+        return {}
+    if incorrect.get("strategy") != "make_ten_drop_leftover":
+        return {}
+    try:
+        shown_a = int(task["a"])
+        shown_b = int(task["b"])
+    except (KeyError, TypeError, ValueError):
+        return {}
+    render_a, render_b = max(shown_a, shown_b), min(shown_a, shown_b)
+    builder = _VisualBuilder(repo_root or Path(__file__).resolve().parents[3], worker_request)
+    visual = builder._visual_card(
+        str(task.get("expression") or f"{shown_a} + {shown_b}"),
+        {"op": "set_grouping_render", "kind": "make_ten", "a": render_a, "b": render_b},
+        {"op": "set_grouping_render", "kind": "make_ten_drop_leftover", "a": render_a, "b": render_b},
+        "Make a ten, then preserve the leftover.",
+        "Make a ten, then drop the leftover.",
+        "make_ten",
+    )
+    correct_frames = visual["correct"]["doc"].get("frames") or []
+    incorrect_frames = visual["incorrect"]["doc"].get("frames") or []
+    visual.update({
+        "task_id": task.get("task_id"),
+        "task_sources": task.get("sources") or [],
+        "trace_binding": {
+            "correct_strategy": productive.get("strategy"),
+            "incorrect_strategy": incorrect.get("strategy"),
+        },
+        "synchronization": {
+            "mode": "shared_step_index",
+            "correct_frame_count": len(correct_frames),
+            "incorrect_frame_count": len(incorrect_frames),
+            "shared_step_count": min(len(correct_frames), len(incorrect_frames)),
+            "first_divergent_step": min(len(correct_frames), len(incorrect_frames)),
+        },
+    })
+    return visual

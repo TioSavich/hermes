@@ -48,6 +48,7 @@ POST /api/field_context public monitoring
 POST /api/monitoring_chart_export public monitoring
 POST /api/ranked_figures public monitoring
 POST /api/monitoring_visuals public monitoring
+POST /api/lesson_arithmetic_demonstration public monitoring
 POST /api/field_connectivity_audit public monitoring
 POST /api/render_coverage public monitoring
 GET /api/capabilities public worker

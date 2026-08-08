@@ -698,6 +698,13 @@ dispatch_spec(strategy_trace,
     call(hermes_encyclopedia:strategy_trace_dict,
          [strategy, input, out(dict)]),
     raw(missing_strategy)).
+dispatch_spec(lesson_arithmetic_demonstration,
+    [lesson-code, task_id-default(string, ""),
+     observed_answer-default(json, ""),
+     work_transcription-default(string, "")],
+    call(lesson_arithmetic_demonstration:lesson_arithmetic_demonstration_dict,
+         [lesson, task_id, observed_answer, work_transcription, out(dict)]),
+    raw(malformed_lesson_arithmetic_demonstration_request)).
 dispatch_spec(input_contract,
     [operation-code, kind-code],
     call(dispatch_spec:input_contract_dict,
@@ -792,6 +799,8 @@ dispatch_message(input_contract, no_result,
     "input_contract found no matching verified example for that operation and kind").
 dispatch_message(lesson_enactment_run, no_result, "lesson_enactment_run found no matching declared enactment for that lesson; call lesson_enactment_list to inspect enacted lessons and named refusals").
 dispatch_message(lesson_enactment_run, malformed, "lesson_enactment_run requires lesson").
+dispatch_message(lesson_arithmetic_demonstration, malformed,
+    "lesson_arithmetic_demonstration requires lesson and accepts task_id, observed_answer, and work_transcription.").
 dispatch_message(grounding_for, malformed, "grounding_for requires operation").
 dispatch_message(ground, malformed, "knowledge lookup requires query").
 dispatch_message(lit_search, malformed, "lit_search requires query").

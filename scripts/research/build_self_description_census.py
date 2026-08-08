@@ -1010,8 +1010,10 @@ def build() -> dict[str, object]:
     # no dispatch operation leaves the registry instead of becoming unrouted.
     # 312 from 2026-08-07: abduce_error adds the rule_builds/4 worker operation;
     # it is MCP-exposed and intentionally has no web route.
-    if len(registry_rows) != 312:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 312")
+    # 313 from 2026-08-08: lesson_arithmetic_demonstration — the vertical
+    # slice's lesson-bounded operation (worker + MCP + POST route).
+    if len(registry_rows) != 313:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 313")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same

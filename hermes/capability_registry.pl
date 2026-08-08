@@ -127,6 +127,7 @@ capability('integer_signed_claim_witness', 'cw_driver', 'crosswalk', ['canonical
 capability('intersubjective_material_witness', 'intersubjective_praxis', 'pml', ['from', 'to'], routed_paged).
 capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
 capability('learner_reset', 'more_machine_learner', 'learner', [], routed_paged).
+capability('lesson_arithmetic_demonstration', 'lesson_arithmetic_demonstration', 'workflow', ['lesson', 'observed_answer', 'task_id', 'work_transcription'], routed_paged).
 capability('lesson_deformation_chart', 'lesson_deformation_chart', 'workflow', ['code'], routed_paged).
 capability('lesson_enactment_list', 'user', 'workflow', [], unrouted).
 capability('lesson_enactment_run', 'user', 'workflow', ['lesson'], unrouted).
@@ -456,6 +457,10 @@ capability_parameter('integer_signed_claim_witness', 'canonical', 'string', true
 capability_parameter('integer_signed_claim_witness', 'source', 'string', true, null).
 capability_parameter('intersubjective_material_witness', 'from', null, true, null).
 capability_parameter('intersubjective_material_witness', 'to', null, true, null).
+capability_parameter('lesson_arithmetic_demonstration', 'lesson', 'string', true, null).
+capability_parameter('lesson_arithmetic_demonstration', 'task_id', 'string', false, null).
+capability_parameter('lesson_arithmetic_demonstration', 'observed_answer', null, false, null).
+capability_parameter('lesson_arithmetic_demonstration', 'work_transcription', 'string', false, null).
 capability_parameter('lesson_deformation_chart', 'code', 'string', true, "IM-G3-U5-L2").
 capability_parameter('lesson_enactment_run', 'lesson', 'string', true, "IM-G4-U2-L4").
 capability_parameter('lesson_misconception_incompatibility_witness', 'lesson_code', null, true, null).
@@ -719,6 +724,7 @@ capability_route('integer_signed_claim_witness', 'POST', '/api/witness/crosswalk
 capability_route('intersubjective_material_witness', 'POST', '/api/witness/pml').
 capability_route('knowledge', 'GET', '/api/knowledge').
 capability_route('learner_reset', 'POST', '/api/learner/reset').
+capability_route('lesson_arithmetic_demonstration', 'POST', '/api/lesson_arithmetic_demonstration').
 capability_route('lesson_deformation_chart', 'POST', '/api/lesson_deformation_chart').
 capability_route('lesson_misconception_incompatibility_witness', 'POST', '/api/witness/misconception').
 capability_route('list_misconceptions', 'POST', '/api/misconceptions').
@@ -1013,6 +1019,7 @@ capability_page('integer_signed_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('intersubjective_material_witness', '/more-zeeman/witnesses.html').
 capability_page('knowledge', '/more-zeeman/bridge.html').
 capability_page('learner_reset', '/more-zeeman/bridge.html').
+capability_page('lesson_arithmetic_demonstration', '/more-zeeman/monitoring_chart.html').
 capability_page('lesson_deformation_chart', '/more-zeeman/monitoring_chart.html').
 capability_page('list_misconceptions', '/hermes/app/web/console.html').
 capability_page('list_standards', '/hermes/app/web/console.html').

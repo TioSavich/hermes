@@ -58,6 +58,7 @@ CORE_TO_WORKER = {
     "deontic_up_level": "deontic_up_level",
     "commitment_match": "commitment_match",
     "strategy_trace": "strategy_trace",
+    "lesson_arithmetic_demonstration": "lesson_arithmetic_demonstration",
     "strategy_recognize": "strategy_recognize",
     "incompatibility_contexts": "incompatibility_contexts",
     "lesson_enactment_list": "lesson_enactment_list",
@@ -107,6 +108,7 @@ CORE_TOOLS = (
 # carving.
 CORE_STANDALONE_TOOLS = (
     ("abduce_error", "Run the closed registry of arithmetic misconception rules on one ground input and return the candidate rules that reproduce got, with their recorded db_row citations. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("domain", "input", "got")),
+    ("lesson_arithmetic_demonstration", "List the four compiled IM-G1-U3-L17 addition tasks or run one selected task against an observed whole-number answer. The result returns productive and dropped-leftover traces, a candidate match or explicit abstention, and never diagnoses the student. Work transcription remains request-local and is not returned or persisted.", ("lesson", "task_id", "observed_answer", "work_transcription")),
     ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
     ("graph_overview", "Return the full computational graph's scope, authored level ladder, counts, and per-family inventory. The level ladder is authored rather than derived from the transition tables. This reads the shipped JSON artifact without starting the Prolog worker.", ()),
     ("graph_machine", "Return one machine's states, transitions, and shared canonical-action summary from the full computational graph. A borrow records a shared canonical action name; it does not assert that two machines, transitions, or mathematical practices are equivalent.", ("family", "kind")),
@@ -246,7 +248,7 @@ def tool(name: str, description: str, parameters: tuple[str, ...] | list[str]) -
 
 def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy_contracts: list[dict[str, Any]]) -> dict[str, Any]:
     """Hand-authored tools can state the few JSON shapes their worker accepts."""
-    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer", "cross_family_only": "boolean"}
+    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer", "cross_family_only": "boolean", "observed_answer": "integer"}
     properties: dict[str, dict[str, Any]] = {}
     for parameter in parameters:
         kind = kinds.get(parameter, "string")
@@ -279,6 +281,13 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "file": {"type": "string", "description": "Case-insensitive knowledge-relative source-file substring for a listing call."},
             "arity": {"type": "integer", "minimum": 0, "description": "Exact predicate arity for a listing call."},
         }
+    elif name == "lesson_arithmetic_demonstration":
+        properties = {
+            "lesson": {"type": "string", "minLength": 1, "description": "The bounded lesson code IM-G1-U3-L17."},
+            "task_id": {"type": "string", "minLength": 1, "description": "A task_id returned by a catalog call with lesson only."},
+            "observed_answer": {"type": "integer", "description": "The teacher-entered observed whole-number answer."},
+            "work_transcription": {"type": "string", "description": "Optional request-local transcription; it is neither returned nor persisted."},
+        }
     elif name == "graph_machine":
         properties = {
             "family": {"type": "string", "minLength": 1, "description": "Exact machine family from graph_overview."},
@@ -309,6 +318,8 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
     elif name == "lesson_enactment_run":
         required = ["lesson"]
         properties["lesson"] = {"type": "string", "minLength": 1, "description": "Exact IM lesson code returned by lesson_enactment_list."}
+    elif name == "lesson_arithmetic_demonstration":
+        required = ["lesson"]
     elif name == "graph_machine":
         required = ["family", "kind"]
     elif name == "graph_quotient":

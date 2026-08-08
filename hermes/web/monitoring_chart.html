@@ -79,7 +79,18 @@
 .load-failed .teacher-detail{display:none}
  .visual-pairs{display:grid;gap:1rem}.visual-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
  .visual-pair figure{max-width:none}.visual-pair img{width:100%;max-height:360px;object-fit:contain}
+ .student-work-demo{border:2px solid var(--gold);border-radius:10px;padding:1rem 1.1rem;margin:1.4rem 0;background:var(--surface,#fff)}
+ .student-work-demo h2{margin-top:0}.student-work-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem 1rem;align-items:end}
+ .student-work-form label{display:grid;gap:.25rem;font-size:.85rem;color:var(--muted)}
+ .student-work-form select,.student-work-form input,.student-work-form textarea{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:.45rem .55rem}
+ .student-work-form .work-transcription{grid-column:1/-1}.student-work-form button{width:fit-content;font:inherit;padding:.45rem .8rem}
+ .demo-reading{border-left:4px solid var(--gold);padding:.55rem .75rem;margin:1rem 0;background:var(--paper-cool)}
+ .demo-drawers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+ .demo-drawer{max-width:none}.demo-drawer .stage{min-height:220px}.demo-drawer figcaption{font-size:.9rem;color:var(--ink-soft)}
+ .demo-controls{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;margin:.8rem 0}.demo-controls input{flex:1;min-width:160px}
+ .demo-traces pre{white-space:pre-wrap;overflow-wrap:anywhere;font:.76rem/1.45 ui-monospace,monospace;color:var(--muted)}
  @media(max-width:720px){.visual-pair{grid-template-columns:1fr}}
+ @media(max-width:720px){.student-work-form,.demo-drawers{grid-template-columns:1fr}.student-work-form .work-transcription{grid-column:auto}}
  /* The embedded visualizer. host.css styles .stage/.controls/.calc-bar; this
     wraps them in a card and shows the student-facing caption regardless of
     the body view class (the chart has no audience toggle). */
@@ -94,7 +105,7 @@
     grayscale-legible palette, and keep each section/card off a page seam. */
  @media print{
    body{max-width:none;margin:0;color:#000;background:#fff}
-   nav,.controls,.calc-bar,.calc-note,#download,#play,#prev,#next,#seek,
+   nav,.controls,.calc-bar,.calc-note,#download,#play,#prev,#next,#seek,.student-work-form,.demo-controls,
    .meta-line,.picker,.picker-note,.source-line,.live-state{display:none}
    .teacher-detail,details,.register,.why-link,#chart-error{display:none!important}
    .tomorrow-card{border:0;margin:0;padding:0;max-width:none}.tomorrow-grid{gap:.4rem 1rem}
@@ -136,6 +147,47 @@ into this page from the lesson encodings in <code>curriculum/im</code> (the app 
 no live lesson-list query). Loading asks the running app for that lesson's chart;
 when the app is off, the committed lesson below stays put.</p>
 <p class='source-line' id='chart-source'></p>
+<section id='lesson-arithmetic-demonstration' class='student-work-demo' hidden>
+  <h2>Run this student's work</h2>
+  <p class='note'>Choose one compiled task from IM-G1-U3-L17 and enter the answer that was observed. The optional transcription stays in this request and is not saved.</p>
+  <form id='student-work-form' class='student-work-form'>
+    <label>Lesson task
+      <select id='student-work-task' required disabled><option value=''>Choose a compiled task</option></select>
+    </label>
+    <label>Observed answer
+      <input id='student-work-answer' type='number' step='1' required autocomplete='off'>
+    </label>
+    <label class='work-transcription'>Optional work transcription
+      <textarea id='student-work-transcription' rows='3' maxlength='4000' autocomplete='off'></textarea>
+    </label>
+    <button id='student-work-run' type='submit' disabled>Run traces</button>
+  </form>
+  <p id='student-work-task-source' class='guide-source' hidden></p>
+  <p id='student-work-status' class='note' role='status'>Connect the app to load the compiled tasks.</p>
+  <div id='student-work-reading' class='demo-reading' hidden></div>
+  <div id='student-work-drawings' hidden>
+    <div class='demo-controls' aria-label='Shared drawing controls'>
+      <button id='student-work-prev' type='button'>&larr; Prev</button>
+      <input id='student-work-seek' type='range' min='0' max='0' value='0'>
+      <button id='student-work-next' type='button'>Next &rarr;</button>
+      <button id='student-work-play' type='button'>Play</button>
+      <span id='student-work-counter' class='counter'></span>
+    </div>
+    <div class='demo-drawers'>
+      <figure class='demo-drawer'>
+        <figcaption><b>Productive trace</b><br>Make a ten and preserve the leftover.</figcaption>
+        <div id='student-work-productive-stage' class='stage'></div>
+        <p id='student-work-productive-caption' class='caption'></p>
+      </figure>
+      <figure class='demo-drawer'>
+        <figcaption><b>Incorrect trace</b><br>Make a ten and drop the leftover.</figcaption>
+        <div id='student-work-incorrect-stage' class='stage'></div>
+        <p id='student-work-incorrect-caption' class='caption'></p>
+      </figure>
+    </div>
+    <details class='demo-traces'><summary>Trace evidence and task source</summary><pre id='student-work-trace-evidence'></pre></details>
+  </div>
+</section>
 <!-- Lesson codes embedded at build time. Source: curriculum/im grade files
      (explicit_lesson_strategy/4 and explicit_lesson_misconception/4), joined to
      encoded_lesson/6 for titles. No worker op lists lessons, so the list cannot
@@ -227,6 +279,18 @@ trace.</p>
 
     var d = HermesDrawer.create({ op: 'base_ten_render', endpoint: '/api/render',
       defaultView: 'freshman' });
+    var DEMONSTRATION_LESSON = 'IM-G1-U3-L17';
+    var productiveDemoDrawer = HermesDrawer.createDetached({
+      stage: 'student-work-productive-stage', isolated: true,
+      elements: { caption: 'student-work-productive-caption' }
+    });
+    var incorrectDemoDrawer = HermesDrawer.createDetached({
+      stage: 'student-work-incorrect-stage', isolated: true,
+      elements: { caption: 'student-work-incorrect-caption' }
+    });
+    var demoTasks = {};
+    var demoCatalogLoaded = false;
+    var demoPlayTimer = null;
 
     var appReachable = null;              // null until the preflight answers
     var shownLesson = STATIC_LESSON;      // which lesson the sections describe
@@ -255,6 +319,131 @@ trace.</p>
     function plainName(value) {
       var text = String(value || '').replace(/_/g, ' ').trim();
       return text ? text.charAt(0).toUpperCase() + text.slice(1) : 'Unnamed strategy';
+    }
+
+    function unwrapResult(payload) {
+      return payload && payload.result && typeof payload.result === 'object'
+        ? payload.result : payload;
+    }
+
+    function requestLessonDemonstration(payload) {
+      return HermesFetch.requestJSON('/api/lesson_arithmetic_demonstration', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
+      }).then(HermesFetch.requireOK).then(unwrapResult);
+    }
+
+    function stopDemoPlayback() {
+      if (demoPlayTimer) window.clearInterval(demoPlayTimer);
+      demoPlayTimer = null;
+      el('student-work-play').textContent = 'Play';
+    }
+
+    function setDemoStep(index) {
+      var count = Math.min(
+        productiveDemoDrawer.doc.frames.length,
+        incorrectDemoDrawer.doc.frames.length
+      );
+      if (!count) return;
+      var nextIndex = Math.max(0, Math.min(count - 1, index));
+      productiveDemoDrawer.goTo(nextIndex);
+      incorrectDemoDrawer.goTo(nextIndex);
+      el('student-work-seek').value = String(nextIndex);
+      el('student-work-counter').textContent = 'step ' + (nextIndex + 1) + ' of ' + count;
+      el('student-work-prev').disabled = nextIndex === 0;
+      el('student-work-next').disabled = nextIndex === count - 1;
+    }
+
+    function traceEvidenceText(result) {
+      var task = result.selected_task || {};
+      var sources = (task.sources || []).map(function (source) {
+        var lines = source.lines || {};
+        return (source.source || '') + ':' + (lines.start || '') + '-' + (lines.end || '')
+          + ' | ' + (source.excerpt || '');
+      });
+      function actions(trace) {
+        return (trace.steps || []).map(function (step) {
+          return step.step + '. ' + step.action;
+        });
+      }
+      return [
+        'Task ' + (task.task_id || '') + ': ' + (task.expression || ''),
+        'Sources:',
+        sources.join('\n'),
+        '',
+        'Productive machine: ' + (result.productive_trace.strategy || ''),
+        actions(result.productive_trace).join('\n'),
+        '',
+        'Incorrect machine: ' + (result.incorrect_trace.strategy || ''),
+        actions(result.incorrect_trace).join('\n'),
+        '',
+        result.interpretation_limit || ''
+      ].join('\n');
+    }
+
+    function renderDemonstrationResult(result) {
+      var reading = result.reading || {};
+      var readingBox = el('student-work-reading');
+      readingBox.textContent = reading.message || 'The operation returned no reading.';
+      readingBox.hidden = false;
+      var pair = result.visual_pair || {};
+      var correctDoc = pair.correct && pair.correct.doc;
+      var incorrectDoc = pair.incorrect && pair.incorrect.doc;
+      if (!correctDoc || !incorrectDoc) {
+        el('student-work-drawings').hidden = true;
+        return;
+      }
+      productiveDemoDrawer.ingest(correctDoc);
+      incorrectDemoDrawer.ingest(incorrectDoc);
+      var count = Math.min(correctDoc.frames.length, incorrectDoc.frames.length);
+      el('student-work-seek').max = String(Math.max(0, count - 1));
+      el('student-work-trace-evidence').textContent = traceEvidenceText(result);
+      el('student-work-drawings').hidden = false;
+      stopDemoPlayback();
+      setDemoStep(0);
+    }
+
+    function populateDemonstrationTasks(tasks) {
+      var select = el('student-work-task');
+      select.textContent = '';
+      var prompt = document.createElement('option');
+      prompt.value = '';
+      prompt.textContent = 'Choose a compiled task';
+      select.appendChild(prompt);
+      demoTasks = {};
+      (tasks || []).forEach(function (task) {
+        demoTasks[task.task_id] = task;
+        var option = document.createElement('option');
+        option.value = task.task_id;
+        option.textContent = task.expression;
+        select.appendChild(option);
+      });
+      select.disabled = false;
+      el('student-work-run').disabled = !appReachable;
+      el('student-work-status').textContent = tasks.length
+        + ' compiled lesson tasks are ready. Select the task that matches the work.';
+      demoCatalogLoaded = true;
+    }
+
+    function loadDemonstrationCatalog() {
+      if (demoCatalogLoaded || !appReachable) return;
+      el('student-work-status').textContent = 'Loading the compiled lesson tasks…';
+      requestLessonDemonstration({lesson: DEMONSTRATION_LESSON})
+        .then(function (result) { populateDemonstrationTasks(result.tasks || []); })
+        .catch(function (error) {
+          el('student-work-status').textContent = error.message || 'The compiled lesson tasks could not be loaded.';
+        });
+    }
+
+    function configureDemonstration(code) {
+      var active = code === DEMONSTRATION_LESSON;
+      el('lesson-arithmetic-demonstration').hidden = !active;
+      var questions = el('lesson-questions');
+      if (questions) questions.hidden = active;
+      if (active) loadDemonstrationCatalog();
+      else stopDemoPlayback();
     }
 
     // A deformation chart's quantities are read from the teacher guide for a
@@ -440,8 +629,10 @@ trace.</p>
       approaches.appendChild(list); body.appendChild(approaches);
       var trouble = (chart.teacher_misconceptions || [])[0];
       body.appendChild(cardSection('Likely trouble spot', trouble ? plainName(trouble.name || trouble.re_anchoring_move || 'A documented wrong turn') : 'No likely trouble spot is prepared for this lesson yet.'));
-      body.appendChild(cardSection('Assess question', assess[0] || 'No assess question is attached to this lesson yet.'));
-      body.appendChild(cardSection('Advance question', advance[0] || 'No advance question is attached to this lesson yet.'));
+      if (chart.lesson_code !== DEMONSTRATION_LESSON) {
+        body.appendChild(cardSection('Assess question', assess[0] || 'No assess question is attached to this lesson yet.'));
+        body.appendChild(cardSection('Advance question', advance[0] || 'No advance question is attached to this lesson yet.'));
+      }
       var visual = document.querySelector('#monitoring-visuals img');
       if (visual) {
         var visualSection = document.createElement('section');
@@ -554,6 +745,7 @@ trace.</p>
       document.title = 'Monitoring chart — ' + code;
       el('chart-title').textContent = 'Monitoring chart — ' + title;
       el('chart-code').textContent = code;
+      configureDemonstration(code);
 
       var registeredTasks = Array.isArray(chart.registered_task_instances)
         ? chart.registered_task_instances : [];
@@ -627,12 +819,14 @@ trace.</p>
           ? 'Listen for: ' + vocabulary.map(plainName).join(', ') + '.'
           : 'The live payload carries no observation cue for this strategy.';
         item.appendChild(cue);
-        var question = document.createElement('span');
-        question.className = 'strategy-question';
-        question.textContent = assess.length
-          ? 'Ask: “' + assess[0] + '”'
-          : 'No suggested question is attached to this strategy.';
-        item.appendChild(question);
+        if (code !== DEMONSTRATION_LESSON) {
+          var question = document.createElement('span');
+          question.className = 'strategy-question';
+          question.textContent = assess.length
+            ? 'Ask: “' + assess[0] + '”'
+            : 'No suggested question is attached to this strategy.';
+          item.appendChild(question);
+        }
         chips.appendChild(item);
       });
 
@@ -775,6 +969,7 @@ trace.</p>
     function loadLesson() {
       var code = (el('lesson-pick').value || '').trim();
       if (!code) return;
+      configureDemonstration(code);
       var stopElapsed = HermesFetch.startElapsed(
         el('chart-source'),
         'Asking the live app for ' + code + '…',
@@ -797,6 +992,66 @@ trace.</p>
       if (e.key === 'Enter') loadLesson();
     });
     el('print-card').addEventListener('click', function () { window.print(); });
+    el('student-work-task').addEventListener('change', function () {
+      var task = demoTasks[this.value];
+      var source = el('student-work-task-source');
+      if (!task) {
+        source.hidden = true;
+        source.textContent = '';
+        return;
+      }
+      var first = (task.sources || [])[0] || {};
+      var lines = first.lines || {};
+      source.textContent = (first.source || 'compiled lesson source')
+        + (lines.start ? ', lines ' + lines.start + '-' + lines.end : '')
+        + (first.excerpt ? ': ' + first.excerpt : '');
+      source.hidden = false;
+    });
+    el('student-work-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var taskId = el('student-work-task').value;
+      var answerInput = el('student-work-answer');
+      if (!taskId || !answerInput.validity.valid) return;
+      stopDemoPlayback();
+      el('student-work-run').disabled = true;
+      el('student-work-status').textContent = 'Running the lesson-bounded traces…';
+      requestLessonDemonstration({
+        lesson: DEMONSTRATION_LESSON,
+        task_id: taskId,
+        observed_answer: answerInput.valueAsNumber,
+        work_transcription: el('student-work-transcription').value
+      }).then(function (result) {
+        renderDemonstrationResult(result);
+        el('student-work-status').textContent = 'The traces ran on ' + result.selected_task.expression + '.';
+      }).catch(function (error) {
+        el('student-work-reading').hidden = true;
+        el('student-work-drawings').hidden = true;
+        el('student-work-status').textContent = error.message || 'The traces could not run.';
+      }).finally(function () {
+        el('student-work-run').disabled = !appReachable;
+      });
+    });
+    el('student-work-prev').addEventListener('click', function () {
+      stopDemoPlayback(); setDemoStep(productiveDemoDrawer.index - 1);
+    });
+    el('student-work-next').addEventListener('click', function () {
+      stopDemoPlayback(); setDemoStep(productiveDemoDrawer.index + 1);
+    });
+    el('student-work-seek').addEventListener('input', function () {
+      stopDemoPlayback(); setDemoStep(Number(this.value));
+    });
+    el('student-work-play').addEventListener('click', function () {
+      if (demoPlayTimer) { stopDemoPlayback(); return; }
+      if (productiveDemoDrawer.index >= productiveDemoDrawer.doc.frames.length - 1) setDemoStep(0);
+      this.textContent = 'Pause';
+      demoPlayTimer = window.setInterval(function () {
+        var finalIndex = Math.min(productiveDemoDrawer.doc.frames.length,
+          incorrectDemoDrawer.doc.frames.length) - 1;
+        if (productiveDemoDrawer.index >= finalIndex) { stopDemoPlayback(); return; }
+        setDemoStep(productiveDemoDrawer.index + 1);
+      }, 1400);
+    });
+    configureDemonstration(STATIC_LESSON);
 
     // The embedded #frames block paints a real picture immediately, so a static
     // deploy (no worker) still draws. Only when the worker answers do we refresh
@@ -808,12 +1063,16 @@ trace.</p>
         .then(function (result) {
           var ok = result.kind === 'ok';
           setLiveState(ok);
+          if (ok && (el('lesson-pick').value || '').trim() === DEMONSTRATION_LESSON) {
+            loadDemonstrationCatalog();
+          }
           if (ok && d && typeof d.calculate === 'function') d.calculate();
         })
         .catch(function () { setLiveState(false); });
       var requestedLesson = new URLSearchParams(window.location.search).get('lesson');
       if (requestedLesson) {
         el('lesson-pick').value = requestedLesson.trim().toUpperCase();
+        configureDemonstration(el('lesson-pick').value);
         loadLesson();
       }
     });

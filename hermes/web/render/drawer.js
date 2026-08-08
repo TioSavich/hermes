@@ -1957,7 +1957,12 @@
     this.playTimer = null;
   }
 
-  Drawer.prototype.el = function (id) { return document.getElementById(id); };
+  Drawer.prototype.el = function (id) {
+    if (id === this.stageId) return document.getElementById(this.stageId);
+    var mapped = this.opts.elements && this.opts.elements[id];
+    if (this.opts.isolated && !mapped) return null;
+    return document.getElementById(mapped || id);
+  };
 
   // A render document must be a non-null object carrying (at least) a frames
   // array. A bare scalar, a string, or null is not drawable; ingest refuses it
@@ -2001,7 +2006,7 @@
     }
     var frame = frames[this.index];
     var svg = buildSvg(frame, this.bounds);
-    svg.setAttribute('id', 'scene-svg');
+    svg.setAttribute('id', this.stageId === 'stage' ? 'scene-svg' : this.stageId + '-svg');
     svg.setAttribute('width', '100%');
     stage.appendChild(svg);
     enableBlockDrag(svg);
@@ -2344,6 +2349,11 @@
         d.load();
       });
       return d;
+    },
+    // A host with its own shared controls can own several independent drawer
+    // documents without triggering the global #frames loader or control wiring.
+    createDetached: function (opts) {
+      return new Drawer(opts || {});
     },
     // Exposed for tests / reuse.
     _internal: {

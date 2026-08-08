@@ -418,14 +418,14 @@
       "standards": 22,
       "synthesis": 42,
       "unclassified": 8,
-      "workflow": 16,
+      "workflow": 17,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
       "orphan_module": 88,
       "routed_only": 15,
-      "routed_paged": 188,
+      "routed_paged": 189,
       "unrouted": 11
     },
     "orphan_verdicts": {
@@ -437,7 +437,7 @@
       "superseded": 0,
       "undetermined": 52
     },
-    "total": 312,
+    "total": 313,
     "unrouted": 11
   },
   "generated_by": "scripts/research/build_self_description_census.py",

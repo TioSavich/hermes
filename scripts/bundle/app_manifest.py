@@ -95,6 +95,7 @@ KEEP_FILES = [
     "curriculum/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
     "curriculum/im/generated/compiled_lesson_context.pl",  # attributed prompt and synthesis cache
     "curriculum/im/generated/compiled_task_instances.pl",  # source-backed learner task cache
+    "curriculum/im/lesson_arithmetic_demonstration.pl",  # lesson-bounded make-ten demonstration
     "knowledge/strategies/math/geometry_action_pairs.pl",  # registry geometry actions
     "knowledge/strategies/math/statistics_action_pairs.pl",  # registry data actions
     "knowledge/strategies/math/measurement_action_pairs.pl",  # registry measurement actions

@@ -80,6 +80,8 @@ run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
 run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
 run monitoring_route_budget.py python3 "$CHECKS_DIR/monitoring_route_budget.py"
 run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_client_guard.py"
+run lesson_arithmetic_demonstration.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/lesson_arithmetic_demonstration.pl" -g main -t halt
+run vertical_slice_build1.py python3 "$CHECKS_DIR/vertical_slice_build1.py"
 run crosswalk_load.sh       bash "$CHECKS_DIR/crosswalk_load.sh"
 run geometry_load.sh        bash "$CHECKS_DIR/geometry_load.sh"
 run strict_gate_failures.py python3 "$CHECKS_DIR/strict_gate_failures.py"

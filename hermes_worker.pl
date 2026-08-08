@@ -171,6 +171,7 @@ load_runtime :-
     use_module(math(fraction_cgi_dispatch), []),
     use_module(im_lessons(lesson_deformation_chart), []),
     use_module(im_lessons('generated/compiled_task_instances'), []),
+    use_module(im_lessons(lesson_arithmetic_demonstration), []),
     % The notation monitoring chart (519 lessons, GK-G6, four operations). Import-free for the same
     % reason as lesson_deformation_chart: its monitoring_chart_*/N predicates
     % must not collide with the lesson_monitoring exports imported above.
