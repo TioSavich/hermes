@@ -106,17 +106,38 @@ def _expected_steps(items: Iterable[RunItem]) -> dict[tuple[int, str], list[str]
     return {(item.index, item.side): list(item.steps) for item in items}
 
 
-def _instrument_counts(rows: list[dict[str, Any]]) -> dict[str, int]:
-    return {
-        arm: sum(
-            event.get("kind") == "symbolic_leaf" and event.get("success") is True
-            for row in rows
-            if row["arm"] == arm
-            for event in row["events"]
-            if isinstance(event, dict)
-        )
-        for arm in ("compiler", "questionnaire")
-    }
+def _instrument_counts(rows: list[dict[str, Any]]) -> dict[str, dict[str, int]]:
+    counts: dict[str, dict[str, int]] = {}
+    for arm in ("compiler", "questionnaire"):
+        attempted = comparable = legacy_events = legacy_rows = 0
+        for row in rows:
+            if row["arm"] != arm:
+                continue
+            events = [
+                event for event in row["events"]
+                if isinstance(event, dict) and event.get("kind") == "symbolic_leaf"
+            ]
+            row_used_legacy_default = False
+            for event in events:
+                if "ran" in event:
+                    ran = event.get("ran") is True
+                else:
+                    ran = True
+                    legacy_events += 1
+                    row_used_legacy_default = True
+                attempted += int(ran)
+                if "comparable_licensed_value" in event:
+                    comparable += int(event.get("comparable_licensed_value") is True)
+                else:
+                    comparable += int(event.get("success") is True)
+            legacy_rows += int(row_used_legacy_default)
+        counts[arm] = {
+            "attempted": attempted,
+            "comparable": comparable,
+            "legacy_default_events": legacy_events,
+            "legacy_default_rows": legacy_rows,
+        }
+    return counts
 
 
 def score_rows(
@@ -195,14 +216,35 @@ def score_rows(
     selected: str | None = None
     tier = "tie"
     instrument_counts = _instrument_counts(rows)
-    instrument_valid = {
-        arm: count > 0 for arm, count in instrument_counts.items()
-    }
+    instrument_cause: dict[str, str] = {}
+    instrument_valid: dict[str, bool] = {}
     for arm in ("compiler", "questionnaire"):
-        if not instrument_valid[arm]:
+        counts = instrument_counts[arm]
+        if counts["legacy_default_events"]:
             trace.append(
-                f"INSTRUMENT FAILURE: arm={arm} successful_symbolic_leaves=0"
+                "INSTRUMENT DEFAULT: "
+                f"arm={arm} absent_ran_events={counts['legacy_default_events']} "
+                f"rows={counts['legacy_default_rows']} "
+                "rule=symbolic-event-implies-attempted"
             )
+        if counts["comparable"] > 0:
+            cause = "attempted-and-comparable"
+            valid = True
+            prefix = "INSTRUMENT"
+        elif counts["attempted"] > 0:
+            cause = "attempted-none-comparable"
+            valid = False
+            prefix = "INSTRUMENT FAILURE"
+        else:
+            cause = "never-attempted"
+            valid = True
+            prefix = "INSTRUMENT"
+        instrument_cause[arm] = cause
+        instrument_valid[arm] = valid
+        trace.append(
+            f"{prefix}: arm={arm} cause={cause} "
+            f"attempted={counts['attempted']} comparable={counts['comparable']}"
+        )
     if not all(instrument_valid.values()):
         tier = "instrument_failure"
         trace.append("DECISION: suppressed because an arm failed the instrument precondition")
@@ -256,7 +298,13 @@ def score_rows(
         "instrument": {
             arm: {
                 "valid": instrument_valid[arm],
-                "successful_symbolic_leaves": instrument_counts[arm],
+                "cause": instrument_cause[arm],
+                "attempted_symbolic_leaves": instrument_counts[arm]["attempted"],
+                "successful_symbolic_leaves": instrument_counts[arm]["comparable"],
+                "legacy_ran_default_events": (
+                    instrument_counts[arm]["legacy_default_events"]
+                ),
+                "legacy_ran_default_rows": instrument_counts[arm]["legacy_default_rows"],
             }
             for arm in ("compiler", "questionnaire")
         },

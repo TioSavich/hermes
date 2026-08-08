@@ -233,7 +233,7 @@ def _captured_probe_call(
         and isinstance(result.stdout, str)
         and result.stdout.strip()
     )
-    event: dict[str, Any] = {"success": success}
+    event: dict[str, Any] = {"ran": result is not None, "success": success}
     if result is not None and result.returncode:
         event["returncode"] = result.returncode
         event["stderr"] = str(result.stderr or "").strip()

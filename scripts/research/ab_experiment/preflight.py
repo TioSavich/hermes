@@ -458,9 +458,14 @@ def fixture_producer_dedup_and_normalization() -> None:
         event.get("kind") == "symbolic_leaf" and event.get("success") is True
         for event in row["events"]
     ) == 2
+    assert all(
+        event.get("ran") is True
+        for event in row["events"]
+        if event.get("kind") == "symbolic_leaf"
+    )
     print(
         "COMPILER PRODUCER DEDUP FIXTURE: PASS quantity_verdict=refuted "
-        "arithmetic_verdict=refuted accusations=1 normalized_values=elided"
+        "arithmetic_verdict=refuted accusations=1 normalized_values=elided ran=true"
     )
 
 
@@ -519,9 +524,23 @@ def _row(
     *,
     calls: int = 0,
     tokens: int = 0,
-    symbolic_ran: bool = True,
+    symbolic_event: bool = True,
+    symbolic_ran: bool | None = True,
+    symbolic_comparable: bool | None = True,
     symbolic_success: bool = True,
 ) -> dict[str, Any]:
+    events: list[dict[str, Any]] = []
+    if symbolic_event:
+        event: dict[str, Any] = {
+            "kind": "symbolic_leaf",
+            "tool": "fixture",
+            "success": symbolic_success,
+        }
+        if symbolic_ran is not None:
+            event["ran"] = symbolic_ran
+        if symbolic_comparable is not None:
+            event["comparable_licensed_value"] = symbolic_comparable
+        events.append(event)
     return {
         "schema": SCHEMA,
         "arm": arm,
@@ -530,12 +549,7 @@ def _row(
         "problem": "fixture",
         "steps": ["1 + 1 = 3", "2 + 2 = 5"],
         "receipts": receipts,
-        "events": [{
-            "kind": "symbolic_leaf",
-            "tool": "fixture",
-            "ran": symbolic_ran,
-            "success": symbolic_success,
-        }],
+        "events": events,
         "usage": {
             "model_calls": calls,
             "prompt_tokens": 0,
@@ -626,33 +640,115 @@ def fixture_scorer() -> None:
             assert ab_score.FALSIFIER_BOTH in trace
         print(f"SCORER FIXTURE {name}: PASS")
 
-    instrument_rows = [
+    comparable_rows = [
         _row("compiler", "incorrect", []),
         _row("compiler", "correct", []),
-        _row(
-            "questionnaire", "incorrect", [],
-            symbolic_ran=True, symbolic_success=False,
-        ),
-        _row(
-            "questionnaire", "correct", [],
-            symbolic_ran=True, symbolic_success=False,
-        ),
+        _row("questionnaire", "incorrect", []),
+        _row("questionnaire", "correct", []),
     ]
-    print("SCORER FIXTURE INSTRUMENT TRACE")
-    instrument, trace = ab_score.score_rows(
-        instrument_rows,
+    print("SCORER FIXTURE A5 ATTEMPTED-COMPARABLE TRACE")
+    comparable, trace = ab_score.score_rows(
+        comparable_rows,
         indexes=[1],
-        expected_steps=_fixture_expected(instrument_rows),
+        expected_steps=_fixture_expected(comparable_rows),
     )
     for line in trace:
         print(line)
-    assert instrument["decision"]["tier"] == "instrument_failure"
-    assert "INSTRUMENT FAILURE: arm=questionnaire successful_symbolic_leaves=0" in trace
-    assert ab_score.FALSIFIER_Q not in trace and ab_score.FALSIFIER_BOTH not in trace
-    print(
-        "SCORER FIXTURE INSTRUMENT: PASS ran_noncomparable=2 "
-        "successful_symbolic_leaves=0 falsifier=suppressed"
+    for arm in ("compiler", "questionnaire"):
+        assert comparable["instrument"][arm]["cause"] == "attempted-and-comparable"
+        assert comparable["instrument"][arm]["valid"] is True
+    print("SCORER FIXTURE A5 ATTEMPTED-COMPARABLE: PASS arms=compiler+questionnaire")
+
+    for failed_arm in ("compiler", "questionnaire"):
+        instrument_rows = [
+            _row(
+                arm, side, [],
+                symbolic_ran=True,
+                symbolic_comparable=arm != failed_arm,
+                symbolic_success=arm != failed_arm,
+            )
+            for arm in ("compiler", "questionnaire")
+            for side in ("incorrect", "correct")
+        ]
+        print(f"SCORER FIXTURE A5 ATTEMPTED-NONE-COMPARABLE arm={failed_arm} TRACE")
+        instrument, trace = ab_score.score_rows(
+            instrument_rows,
+            indexes=[1],
+            expected_steps=_fixture_expected(instrument_rows),
+        )
+        for line in trace:
+            print(line)
+        assert instrument["decision"]["tier"] == "instrument_failure"
+        assert instrument["instrument"][failed_arm]["cause"] == (
+            "attempted-none-comparable"
+        )
+        assert instrument["instrument"][failed_arm]["valid"] is False
+        assert not any(
+            line.startswith(ab_score.FALSIFIER_BOTH)
+            for line in trace
+        )
+        if failed_arm == "questionnaire":
+            assert ab_score.FALSIFIER_Q not in trace
+        else:
+            assert ab_score.FALSIFIER_Q in trace
+        print(
+            "SCORER FIXTURE A5 ATTEMPTED-NONE-COMPARABLE: PASS "
+            f"arm={failed_arm} falsifier=suppressed-for-failed-arm"
+        )
+
+    never_rows = [
+        _row(arm, side, [], symbolic_event=False)
+        for arm in ("compiler", "questionnaire")
+        for side in ("incorrect", "correct")
+    ]
+    print("SCORER FIXTURE A5 NEVER-ATTEMPTED TRACE")
+    never, trace = ab_score.score_rows(
+        never_rows,
+        indexes=[1],
+        expected_steps=_fixture_expected(never_rows),
     )
+    for line in trace:
+        print(line)
+    for arm in ("compiler", "questionnaire"):
+        assert never["instrument"][arm]["cause"] == "never-attempted"
+        assert never["instrument"][arm]["valid"] is True
+    assert ab_score.FALSIFIER_Q in trace
+    assert ab_score.FALSIFIER_BOTH in trace
+    print(
+        "SCORER FIXTURE A5 NEVER-ATTEMPTED: PASS arms=compiler+questionnaire "
+        "section3_falsifiers=printed"
+    )
+
+    legacy_rows = [
+        _row(
+            "compiler", side, [],
+            symbolic_ran=None,
+            symbolic_comparable=None,
+            symbolic_success=True,
+        )
+        for side in ("incorrect", "correct")
+    ] + [
+        _row("questionnaire", side, [])
+        for side in ("incorrect", "correct")
+    ]
+    print("SCORER FIXTURE A5 RUNNING-LEDGER DEFAULT TRACE")
+    legacy, trace = ab_score.score_rows(
+        legacy_rows,
+        indexes=[1],
+        expected_steps=_fixture_expected(legacy_rows),
+    )
+    for line in trace:
+        print(line)
+    assert legacy["instrument"]["compiler"]["cause"] == "attempted-and-comparable"
+    assert legacy["instrument"]["compiler"]["legacy_ran_default_events"] == 2
+    assert any(
+        line == (
+            "INSTRUMENT DEFAULT: arm=compiler absent_ran_events=2 rows=2 "
+            "rule=symbolic-event-implies-attempted"
+        )
+        for line in trace
+    )
+    print("SCORER FIXTURE A5 RUNNING-LEDGER DEFAULT: PASS absent_ran=attempted")
 
     blocked_rows = [
         _row("compiler", "incorrect", [
