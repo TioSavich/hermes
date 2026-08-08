@@ -88,6 +88,11 @@ quoted without its floor is the first error these reports exist to prevent.
 - [The Prolog-assisted diagnosis arm](2026-08-01-diagnosis-prolog-arm.md) —
   one Prolog consultation per item does not move a checkpoint that diagnoses
   at its floor.
+- [The A-vs-B instrument comparison](2026-08-08-ab-experiment-finding.md) —
+  the pre-registered paired run: the typed compiler won the first tier on
+  false-accusation discipline, the falsifier fired for neither arm, and the
+  post-hoc reading shows this corpus scores extraction fidelity, not
+  error-finding.
 - [strategy_recognize discrimination](2026-08-01-strategy-recognize-discrimination.md)
   — a recognizer that returned identical candidates for math and non-math
   sentences, and the mechanism that fixed it.

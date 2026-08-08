@@ -334,8 +334,11 @@ def render_registry() -> str:
     # the grade-8 saying-and-doing survey entered as a report; README.md
     # entered as the folder index and is excluded above. The findings that
     # remain are the denominator.
-    if len(reports) != 34:
-        raise RuntimeError(f"expected 34 top-level research reports, found {len(reports)}")
+    # 35 on 2026-08-08: the pre-registered A-vs-B instrument comparison
+    # entered with its decision trace, abstention accounting, and post-hoc
+    # row-level diagnosis.
+    if len(reports) != 35:
+        raise RuntimeError(f"expected 35 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),

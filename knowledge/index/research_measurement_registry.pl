@@ -1,6 +1,6 @@
 /** <module> Generated research-measurement provenance registry
  *
- * The denominator is every explicit quantitative-result statement in the 34
+ * The denominator is every explicit quantitative-result statement in the 35
  * top-level Markdown reports in docs/research/: a non-code prose line with
  * a percentage or cohort ratio, or a Markdown table data row under a header
  * that names a quantitative field. A table row is one measurement vector;
@@ -338,13 +338,27 @@ measurement_receipt(measurement(312), 'docs/research/2026-08-07-questionnaire-ar
 measurement_receipt(measurement(313), 'docs/research/2026-08-07-questionnaire-architecture.md', 'line(298)', '(5 of 6 asks landed on position D or E regardless of which family sat there). The', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(314), 'docs/research/2026-08-07-questionnaire-architecture.md', 'line(30)', '11.3% (`.bigred-collected/2026-08-02-mistake-location-gated/`, memory', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(315), 'docs/research/2026-08-07-questionnaire-architecture.md', 'line(351)', 'on this grid, still loses the /b slots (majority key is the result numeral on 2 of 3', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(316), 'docs/research/2026-08-08-ab-experiment-finding.md', 'line(226)', 'post-hoc reading found correct diagnostic content in 0 of 11.', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(317), 'docs/research/2026-08-08-ab-experiment-finding.md', 'line(56)', 'result in 26 of 26 rows.', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(318), 'docs/research/2026-08-08-ab-experiment-finding.md', 'line(80)', 'The questionnaire accused 29 of 93 computed leaves on the incorrect side,', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(319), 'docs/research/2026-08-08-ab-experiment-finding.md', 'line(81)', '31.2%, and 26 of 82 on the correct side, 31.7%. These rates provide no observed', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(320), 'docs/research/2026-08-08-ab-experiment-finding.md', 'line(83)', 'licensed 11 receipts because 199 of 233 schema bindings had exactly one', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(321), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,185)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L1 abstention exit | 15 | 0 | 15 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(322), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,186)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L2 abstention exit | 13 | 3 | 16 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(323), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,187)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L3 no conforming schema | 44 | 17 | 61 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(324), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,188)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L3 binary abstention exit | 17 | 6 | 23 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(325), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,189)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L3 binary residual tie unresolved | 12 | 12 | 24 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(326), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,190)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L4 binding retries exhausted | 589 | 191 | 780 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(327), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,191)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L4/L5 equation-binding retries exhausted | 73 | 72 | 145 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(328), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,192)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L5 result-binding retries exhausted | 48 | 19 | 67 |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(329), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,193)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | **internal system-abstention events** | **811** | **320** | **1,131** |', none_recorded, none_recorded, method_not_recorded).
 
-measurement_denominator(explicit_quantitative_result_statement, 315).
+measurement_denominator(explicit_quantitative_result_statement, 329).
 measurement_resolution_count(resolved_live_method, 81).
 measurement_resolution_count(resolved_method_data_missing, 1).
 measurement_resolution_count(method_ambiguous, 5).
 measurement_resolution_count(data_method_unrecorded, 26).
-measurement_resolution_count(method_not_recorded, 202).
+measurement_resolution_count(method_not_recorded, 216).
 
 measurement_control(coverage_absence_registry, 'scripts/extract_coverage_absence_registry.py', resolved_live_method).
 measurement_control(self_description_census, 'scripts/research/build_self_description_census.py', resolved_live_method).
