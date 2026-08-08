@@ -847,6 +847,16 @@ hist_actions([], []).
 hist_actions([hist(_, Step)|Rest], [Action|Actions]) :-
     functor(Step, Action, _), hist_actions(Rest, Actions).
 
+canonical_term_strings(Left, Right, Outcome, Trace,
+                       LeftText, RightText, OutcomeText, TraceText) :-
+    copy_term([Left, Right, Outcome, Trace],
+              [StableLeft, StableRight, StableOutcome, StableTrace]),
+    numbervars([StableLeft, StableRight, StableOutcome, StableTrace], 0, _),
+    term_string(StableLeft, LeftText, [quoted(true), numbervars(true)]),
+    term_string(StableRight, RightText, [quoted(true), numbervars(true)]),
+    term_string(StableOutcome, OutcomeText, [quoted(true), numbervars(true)]),
+    term_string(StableTrace, TraceText, [quoted(true), numbervars(true)]).
+
 probe(Id, Operation, Kind, Left, Right) :-
     Goal = action_automata_registry:run_action_automaton(
                Operation, Kind, Left, Right, Outcome, Trace),
@@ -854,10 +864,8 @@ probe(Id, Operation, Kind, Left, Right) :-
           (message_to_string(Error, Message), failed(Id, Operation, Kind, Message))),
     is_list(Trace), Trace = [_|_], !,
     trace_actions(Trace, Actions),
-    term_string(Left, LeftText, [quoted(true)]),
-    term_string(Right, RightText, [quoted(true)]),
-    term_string(Outcome, OutcomeText, [quoted(true)]),
-    term_string(Trace, TraceText, [quoted(true)]),
+    canonical_term_strings(Left, Right, Outcome, Trace,
+                           LeftText, RightText, OutcomeText, TraceText),
     format(string(GoalText),
            "action_automata_registry:run_action_automaton(~w,~w,~w,~w,Outcome,Trace)",
            [Operation, Kind, LeftText, RightText]),

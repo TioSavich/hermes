@@ -135,7 +135,9 @@ term_text(Value, Text) :-
     ->  atom_string(Value, Text)
     ;   number(Value)
     ->  Text = Value
-    ;   term_string(Value, Text, [quoted(false), numbervars(true)])
+    ;   copy_term(Value, StableValue),
+        numbervars(StableValue, 0, _),
+        term_string(StableValue, Text, [quoted(false), numbervars(true)])
     ).
 
 %!  term_text_string(+Value, -String) is det.
