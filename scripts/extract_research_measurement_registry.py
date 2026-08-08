@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate a bounded provenance registry for quantitative research claims.
 
-The denominator is every explicit quantitative-result statement in the 65
+The denominator is every explicit quantitative-result statement in the 34
 top-level Markdown reports in docs/research/: a non-code prose line carrying a
 percentage or cohort ratio, or a Markdown table data row under a header that
 names a quantitative field.  A table row is one measurement vector; its metric
@@ -334,8 +334,8 @@ def render_registry() -> str:
     # the grade-8 saying-and-doing survey entered as a report; README.md
     # entered as the folder index and is excluded above. The findings that
     # remain are the denominator.
-    if len(reports) != 28:
-        raise RuntimeError(f"expected 28 top-level research reports, found {len(reports)}")
+    if len(reports) != 34:
+        raise RuntimeError(f"expected 34 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),
