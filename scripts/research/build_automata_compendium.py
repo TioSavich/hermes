@@ -58,6 +58,32 @@ class AtlasRow:
 
 
 @dataclass(frozen=True)
+class R1PairRow:
+    """One machine pair as the R1 equalizer atlas measured it.
+
+    `ran` counts the grid inputs on which both machines computed; `refused`
+    counts those at least one declined. A pair whose grid is entirely refused
+    has ran == 0, which is a measurement about the pair's shared domain rather
+    than a missing row.
+    """
+
+    source_family: str
+    source_kind: str
+    target_family: str
+    target_kind: str
+    schema: str
+    points: int
+    ran: int
+    coincide: int
+    separate: int
+    refused: int
+    full_agreement: bool
+    separating_inputs: tuple[str, ...]
+    outcome: str
+    candidate_type: str
+
+
+@dataclass(frozen=True)
 class InputContract:
     schema: dict[str, object]
     example: dict[str, object]
@@ -199,6 +225,64 @@ halt
     if len(rows) != profile_count:
         raise ValueError(f"validity query returned {len(rows)} of {profile_count} deformation profiles")
     return sorted(rows, key=lambda row: (row.family, row.kind))
+
+
+def read_r1_atlas_rows(collection_dir: Path) -> list[R1PairRow]:
+    """Read an R1 equalizer-atlas collection into pair rows.
+
+    R1 (scripts/bigred/loops/) walks each compatible machine pair over its
+    authored grid and records where the two agree and where they separate.
+    This reader is the compendium's half of that handshake: the run names this
+    function as its consumer before it launches, so the function exists and is
+    tested before any shard runs. It is NOT yet wired into the page — that is
+    a later slice, and wiring it now would put a section on the page with no
+    collection behind it.
+
+    Rows the run retained for a reason other than a completed walk (a spent
+    budget, a killed item, a schema with no grid) are kept and carry their
+    outcome. Dropping them here would turn a measured refusal into a silence.
+    """
+    rows: list[R1PairRow] = []
+    if not collection_dir.is_dir():
+        raise FileNotFoundError(f"no R1 collection at {collection_dir}")
+    for path in sorted(collection_dir.rglob("*.jsonl")):
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as error:
+                raise ValueError(f"{path}:{number}: {error}") from error
+            if row.get("run") != "r1":
+                continue
+            evidence = row.get("evidence") or {}
+            rows.append(
+                R1PairRow(
+                    source_family=(row.get("source") or {}).get("family", ""),
+                    source_kind=(row.get("source") or {}).get("kind", ""),
+                    target_family=(row.get("target") or {}).get("family", ""),
+                    target_kind=(row.get("target") or {}).get("kind", ""),
+                    schema=(row.get("input") or {}).get("schema") or "",
+                    points=int((row.get("input") or {}).get("points") or 0),
+                    ran=int(evidence.get("ran") or 0),
+                    coincide=int(evidence.get("coincide") or 0),
+                    separate=int(evidence.get("separate") or 0),
+                    refused=int(evidence.get("refused") or 0),
+                    full_agreement=bool(evidence.get("full_agreement")),
+                    separating_inputs=tuple(
+                        json.dumps(value, sort_keys=True)
+                        for value in (evidence.get("separating_inputs") or [])
+                    ),
+                    outcome=str(row.get("outcome") or ""),
+                    candidate_type=str(row.get("candidate_type") or ""),
+                )
+            )
+    return sorted(
+        rows,
+        key=lambda row: (row.source_family, row.source_kind,
+                         row.target_family, row.target_kind),
+    )
 
 
 def formal_aliases(machine: Machine) -> dict[str, int]:
