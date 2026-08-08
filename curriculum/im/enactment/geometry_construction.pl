@@ -162,12 +162,12 @@ enactment_move(partition_equal_parts, 3, name_the_part).
 enactment_move(partition_equal_parts, 4, read_shaded_fraction).
 
 enactment_move(compose_from_parts, 1, read_target).
-enactment_move(compose_from_parts, 2, enumerate_assemblies).
+enactment_move(compose_from_parts, 2, enumerate_candidates).
 enactment_move(compose_from_parts, 3, check_exact_fit).
 enactment_move(compose_from_parts, 4, count_distinct_ways).
 
-enactment_move(measure_and_order, 1, compute_each_measure).
-enactment_move(measure_and_order, 2, sort_by_measure).
+enactment_move(measure_and_order, 1, measure_quantity).
+enactment_move(measure_and_order, 2, order_by_magnitude).
 enactment_move(measure_and_order, 3, answer_ordering_query).
 
 enactment_move(angle_composition, 1, read_known_whole).
@@ -184,7 +184,7 @@ enactment_move(separating_attribute, 2, search_separating_condition).
 enactment_move(separating_attribute, 3, report_split_or_coarseness).
 
 enactment_move(hierarchy_claim, 1, fix_definition).
-enactment_move(hierarchy_claim, 2, test_claim_over_inventory).
+enactment_move(hierarchy_claim, 2, test_criteria).
 enactment_move(hierarchy_claim, 3, report_quantifier).
 
 enactment_move(coordinate_locate, 1, place_or_read_points).
@@ -1078,7 +1078,7 @@ run_form(compose_from_parts, assembly(pattern_blocks(Target)), Steps, printed(Re
     length(Ways, NWays),
     pattern_block_note(Note),
     Steps = [ step(1, read_target, hexagon_units(Target), Target),
-              step(2, enumerate_assemblies, Sizes, NWays),
+              step(2, enumerate_candidates, Sizes, NWays),
               step(3, check_exact_fit, Ways, exact_by_area),
               step(4, count_distinct_ways, NWays, Note) ],
     Record = assemblies(Target, Ways, Note).
@@ -1089,7 +1089,7 @@ run_form(compose_from_parts, assembly(same_block_compositions(Counts)), Steps, p
             Compositions),
     length(Compositions, NC),
     Steps = [ step(1, read_target, same_block_counts(Counts), NC),
-              step(2, enumerate_assemblies, Compositions, NC),
+              step(2, enumerate_candidates, Compositions, NC),
               step(3, check_exact_fit, Compositions, equal_size_pieces),
               step(4, count_distinct_ways, NC, done) ],
     Record = compositions(Compositions).
@@ -1101,7 +1101,7 @@ run_form(compose_from_parts, assembly(cube_nets), Steps, Artifact) :-
     length(Folders, NFold),
     Artifact = scene(solid_net_scene, net_of(cube)),
     Steps = [ step(1, read_target, cube_six_square_faces, 6),
-              step(2, enumerate_assemblies, six_square_arrangements, NAll),
+              step(2, enumerate_candidates, six_square_arrangements, NAll),
               step(3, check_exact_fit, roll_a_cube_over_each, NFold),
               step(4, count_distinct_ways, NFold, of(NAll)) ].
 
@@ -1114,7 +1114,7 @@ run_form(compose_from_parts, assembly(repeating_unit(Unit, Positions)), Steps, p
             Answers),
     length(Positions, NP),
     Steps = [ step(1, read_target, unit(Unit), L),
-              step(2, enumerate_assemblies, Positions, NP),
+              step(2, enumerate_candidates, Positions, NP),
               step(3, check_exact_fit, position_modulo_unit_length, L),
               step(4, count_distinct_ways, Answers, answered) ],
     Record = pattern(Unit, Answers).
@@ -1128,7 +1128,7 @@ run_form(compose_from_parts, assembly(cube_join(V1, V2)), Steps, Artifact) :-
     BT = [L-W-H | _],
     Artifact = scene(solid_net_scene, unit_cube_stack(L, W, H)),
     Steps = [ step(1, read_target, join(V1, V2), Total),
-              step(2, enumerate_assemblies, prisms(N1, N2), NT),
+              step(2, enumerate_candidates, prisms(N1, N2), NT),
               step(3, check_exact_fit, volume_adds_when_prisms_do_not_overlap, Total),
               step(4, count_distinct_ways, BT, NT) ].
 
@@ -1140,8 +1140,8 @@ run_form(measure_and_order, order_task(objects(Objects), Query), Steps, printed(
     pairs_values(Sorted, Ranked),
     length(Objects, NO),
     order_answer(Query, Sorted, Answer),
-    Steps = [ step(1, compute_each_measure, Objects, NO),
-              step(2, sort_by_measure, Ranked, ordered),
+    Steps = [ step(1, measure_quantity, Objects, NO),
+              step(2, order_by_magnitude, Ranked, ordered),
               step(3, answer_ordering_query, Query, Answer) ],
     Record = ordering(Ranked, Query, Answer).
 
@@ -1159,8 +1159,8 @@ run_form(measure_and_order, order_task(cube_objects(N), Query), Steps, printed(R
             ( member(L-W-H, Boxes), format(atom(Label), "~wx~wx~w", [L, W, H]) ),
             Objects),
     length(Objects, NO),
-    Steps = [ step(1, compute_each_measure, Objects, NO),
-              step(2, sort_by_measure, all_equal(N), tie),
+    Steps = [ step(1, measure_quantity, Objects, NO),
+              step(2, order_by_magnitude, all_equal(N), tie),
               step(3, answer_ordering_query, Query,
                     'every object built from the same number of cubes has the same volume, so the order is a tie') ],
     Record = ordering(Objects, Query, tie(N)).
@@ -1372,7 +1372,7 @@ run_form(hierarchy_claim, claim_task(Definitions, Claims), Steps, printed(Record
     length(Claims, NC),
     length(Definitions, ND),
     Steps = [ step(1, fix_definition, Definitions, ND),
-              step(2, test_claim_over_inventory, Claims, NC),
+              step(2, test_criteria, Claims, NC),
               step(3, report_quantifier, Results, adjudicated) ],
     Record = claims(Results).
 

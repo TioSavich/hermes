@@ -73,7 +73,7 @@ enactment_form(center_menu_route,
     warrant('IM-GK-U6-L6', 'curriculum/im_teacher_guides/kindergarten/unit6/lesson6.md',
             334,
             "Choose a center. Number Race Tower Build Grab and Count Find the Pair")).
-enactment_form(compare_two_collections,
+enactment_form(compare_cardinalities_one_to_one,
     "Match two collections one to one and say which holds more.",
     warrant('IM-GK-U7-L2', 'curriculum/im_teacher_guides/kindergarten/unit7/lesson2.md',
             387,
@@ -114,16 +114,16 @@ enactment_move(center_menu_route, 1, read_each_center_name_off_the_menu).
 enactment_move(center_menu_route, 2, name_the_doing_the_center_asks_for).
 enactment_move(center_menu_route, 3, run_the_registered_machine_for_that_doing).
 
-enactment_move(compare_two_collections, 1, establish_both_collection_sizes).
-enactment_move(compare_two_collections, 2, match_one_to_one_and_name_the_relation).
-enactment_move(compare_two_collections, 3, run_the_extent_deformation_as_the_contrast).
+enactment_move(compare_cardinalities_one_to_one, 1, establish_both_collection_sizes).
+enactment_move(compare_cardinalities_one_to_one, 2, match_one_to_one).
+enactment_move(compare_cardinalities_one_to_one, 3, run_the_extent_deformation_as_the_contrast).
 
 enactment_move(step_one_and_compare, 1, take_the_starting_number).
 enactment_move(step_one_and_compare, 2, step_one_in_the_named_direction).
 enactment_move(step_one_and_compare, 3, compare_the_new_number_with_the_start).
 
 enactment_move(author_counting_image, 1, lay_out_the_collection_as_a_scene).
-enactment_move(author_counting_image, 2, count_the_arrangement_one_to_one).
+enactment_move(author_counting_image, 2, enumerate_collection_one_to_one).
 enactment_move(author_counting_image, 3, list_the_two_part_breakings_of_the_count).
 
 
@@ -174,7 +174,7 @@ lesson_enactment_form('IM-GK-U7-L3', center_menu_route,
     evidence('curriculum/im_teacher_guides/kindergarten/unit7/lesson3.md', 324,
              "Choose a center. Pattern Blocks Geoblocks Grab and Count Find the Pair")).
 
-lesson_enactment_form('IM-GK-U7-L2', compare_two_collections,
+lesson_enactment_form('IM-GK-U7-L2', compare_cardinalities_one_to_one,
     evidence('curriculum/im_teacher_guides/kindergarten/unit7/lesson2.md', 387,
              "Circle the penguin that is filled with more pattern blocks.")).
 lesson_enactment_form('IM-GK-U7-L2', center_menu_route,
@@ -184,7 +184,7 @@ lesson_enactment_form('IM-G4-U4-L14', bracket_and_name_the_nearer,
     evidence('curriculum/im_teacher_guides/grade4/unit4/lesson14.md', 275,
              "Name the multiple of 10,000 that is the nearest to each number. \c
               100,025 128,201 140,261 158,002 194,030")).
-lesson_enactment_form('IM-GK-U8-L8', compare_two_collections,
+lesson_enactment_form('IM-GK-U8-L8', compare_cardinalities_one_to_one,
     evidence('curriculum/im_teacher_guides/kindergarten/unit8/lesson8.md', 218,
              "Find 2 groups to compare. Find 2 groups whose numbers of objects \c
               you can compare.")).
@@ -263,9 +263,9 @@ lesson_enactment_input('IM-GK-U7-L2',
                                  'Grab and Count', 'Find the Pair'])],
     curriculum).
 lesson_enactment_input('IM-GK-U7-L2',
-    [compare_two_collections, collections(7, 4)], machine_supplied).
+    [compare_cardinalities_one_to_one, collections(7, 4)], machine_supplied).
 lesson_enactment_input('IM-GK-U8-L8',
-    [compare_two_collections, collections(6, 4)], machine_supplied).
+    [compare_cardinalities_one_to_one, collections(6, 4)], machine_supplied).
 
 lesson_enactment_input('IM-GK-U8-L4',
     [step_one_and_compare, starts([4, 7, 9])], machine_supplied).
@@ -396,7 +396,7 @@ run_form(center_menu_route, centers(Centers), Steps,
               step(3, run_the_registered_machine_for_that_doing,
                    FirstOp/FirstKind, FirstResult) ].
 
-run_form(compare_two_collections, collections(Left, Right), Steps,
+run_form(compare_cardinalities_one_to_one, collections(Left, Right), Steps,
          scene(set_grouping_scene, compare(Left, Right))) :-
     integer(Left), integer(Right),
     between(1, 10, Left), between(1, 10, Right),
@@ -414,7 +414,7 @@ run_form(compare_two_collections, collections(Left, Right), Steps,
     ),
     Steps = [ step(1, establish_both_collection_sizes,
                    counts(Left, Right), established),
-              step(2, match_one_to_one_and_name_the_relation,
+              step(2, match_one_to_one,
                    counts(Left, Right), Relation),
               step(3, run_the_extent_deformation_as_the_contrast,
                    extents(Right, Left), Contrast) ].
@@ -453,7 +453,7 @@ run_form(author_counting_image, image_count(Count), Steps,
             Seeings),
     Steps = [ step(1, lay_out_the_collection_as_a_scene,
                    Count, arrangement(Arrangement)),
-              step(2, count_the_arrangement_one_to_one,
+              step(2, enumerate_collection_one_to_one,
                    Count, Cardinality),
               step(3, list_the_two_part_breakings_of_the_count,
                    Count, Seeings) ].
@@ -493,7 +493,7 @@ what_it_does_not_claim(bracket_and_name_the_nearer,
 what_it_does_not_claim(center_menu_route,
     "Routing a center to a machine does not say a child at that center does \c
      what the machine does.").
-what_it_does_not_claim(compare_two_collections,
+what_it_does_not_claim(compare_cardinalities_one_to_one,
     "The two collection sizes are this module's, so the relation holds of the \c
      stand-ins and not of the pattern blocks in the picture.").
 what_it_does_not_claim(step_one_and_compare,

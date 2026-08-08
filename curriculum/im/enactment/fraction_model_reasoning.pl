@@ -8,7 +8,7 @@
  *
  * ## The form
  *
- * `partition_strip_into_named_parts`. Three lessons in this subclass ask a
+ * `unit_fraction_partition`. Three lessons in this subclass ask a
  * class to take a strip that represents 1 and partition it into parts the task
  * names in words rather than in numerals: halves, thirds, tenths, twelfths.
  * The numeral extractor that feeds the arithmetic rung reads numerals, so it
@@ -60,11 +60,11 @@
 %% The form
 %% ======================================================================
 
-lesson_enactment:enactment_lane(partition_strip_into_named_parts,
+lesson_enactment:enactment_lane(unit_fraction_partition,
                                 fraction_model_reasoning).
 
 lesson_enactment:enactment_form(
-    partition_strip_into_named_parts,
+    unit_fraction_partition,
     'Partition a strip that represents 1 into the equal parts a task names in \c
      words, and label every part with its unit fraction.',
     warrant('IM-G4-U2-L4',
@@ -73,13 +73,13 @@ lesson_enactment:enactment_form(
             'Use one blank strip to show tenths.')).
 
 lesson_enactment:enactment_disclaimer(
-    partition_strip_into_named_parts,
+    unit_fraction_partition,
     'The machine partitions a strip model and labels every part with its unit \c
      fraction; no paper was folded, and the row says nothing about how a \c
      student would partition the strip or what a class would say about it.').
 
 lesson_enactment:enactment_input_provenance(
-    partition_strip_into_named_parts, Lesson, curriculum) :-
+    unit_fraction_partition, Lesson, curriculum) :-
     partition_span(Lesson, _, _, _, _).
 
 
@@ -87,13 +87,13 @@ lesson_enactment:enactment_input_provenance(
 %% The moves
 %% ======================================================================
 
-lesson_enactment:enactment_move(partition_strip_into_named_parts, 1,
+lesson_enactment:enactment_move(unit_fraction_partition, 1,
     move(establish_referent_whole, const(strip))).
-lesson_enactment:enactment_move(partition_strip_into_named_parts, 2,
+lesson_enactment:enactment_move(unit_fraction_partition, 2,
     move(read_named_partition_count, input(part_word))).
-lesson_enactment:enactment_move(partition_strip_into_named_parts, 3,
-    move(partition_whole_into_equal_parts, prior)).
-lesson_enactment:enactment_move(partition_strip_into_named_parts, 4,
+lesson_enactment:enactment_move(unit_fraction_partition, 3,
+    move(partition_into_equal_parts, prior)).
+lesson_enactment:enactment_move(unit_fraction_partition, 4,
     move(label_each_part_with_its_unit_fraction, prior)).
 
 
@@ -101,12 +101,12 @@ lesson_enactment:enactment_move(partition_strip_into_named_parts, 4,
 %% The verbs. Each one runs; none of them stores a string.
 %% ======================================================================
 
-lesson_enactment:enactment_verb(partition_strip_into_named_parts,
+lesson_enactment:enactment_verb(unit_fraction_partition,
                                 establish_referent_whole, Kind,
                                 referent_whole(Kind, 1)) :-
     atom(Kind).
 
-lesson_enactment:enactment_verb(partition_strip_into_named_parts,
+lesson_enactment:enactment_verb(unit_fraction_partition,
                                 read_named_partition_count, Word, Count) :-
     partition_word(Word, Count).
 
@@ -114,8 +114,8 @@ lesson_enactment:enactment_verb(partition_strip_into_named_parts,
 % fraction. The result term stays compact so the step label a reader meets says
 % what was partitioned rather than reciting every piece; the parts themselves
 % are rebuilt by the artifact, from the same predicate.
-lesson_enactment:enactment_verb(partition_strip_into_named_parts,
-                                partition_whole_into_equal_parts, Count,
+lesson_enactment:enactment_verb(unit_fraction_partition,
+                                partition_into_equal_parts, Count,
                                 equal_parts(Count, fraction(1, Count))) :-
     equal_parts_of_whole(Count, Parts),
     length(Parts, Count).
@@ -123,7 +123,7 @@ lesson_enactment:enactment_verb(partition_strip_into_named_parts,
 % Label every part, then check that every label names the unit fraction. A
 % partition whose parts do not all carry 1/Count is not the doing this task
 % asks for, so the verb fails rather than emitting a mixed strip.
-lesson_enactment:enactment_verb(partition_strip_into_named_parts,
+lesson_enactment:enactment_verb(unit_fraction_partition,
                                 label_each_part_with_its_unit_fraction,
                                 equal_parts(Count, fraction(1, Count)),
                                 labelled_parts(Count, Label)) :-
@@ -197,7 +197,7 @@ partition_span('IM-G4-U2-L4',
                'Use one blank strip to show tenths.').
 
 lesson_enactment:lesson_enactment_form(Lesson,
-                                       partition_strip_into_named_parts,
+                                       unit_fraction_partition,
                                        evidence(Source, Line, Verbatim)) :-
     partition_span(Lesson, Source, Line, _, Verbatim).
 
@@ -206,7 +206,7 @@ lesson_enactment:lesson_enactment_form(Lesson,
 %% The passes: one per part-word the guide prints
 %% ======================================================================
 
-lesson_enactment:enactment_passes(partition_strip_into_named_parts,
+lesson_enactment:enactment_passes(unit_fraction_partition,
                                   Lesson, _Inputs, Passes) :-
     partition_span(Lesson, Source, Line, Window, _),
     guide_window_words(Source, Line, Window, Words),
@@ -278,7 +278,7 @@ repo_path(Relative, Absolute) :-
 %% The artifact: an existing renderer, once per part-word
 %% ======================================================================
 
-lesson_enactment:enactment_artifact(partition_strip_into_named_parts,
+lesson_enactment:enactment_artifact(unit_fraction_partition,
                                     _Lesson, Passes, _Steps,
                                     scene(fraction_bars,
                                           partition_filmstrip(Counts),

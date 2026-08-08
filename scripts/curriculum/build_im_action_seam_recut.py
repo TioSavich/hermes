@@ -457,7 +457,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
         left_numeral, left_scale = decimal_operand(left_token)
         right_numeral, right_scale = decimal_operand(right_token)
         add(
-            "compare_fixed_decimals", "decimal",
+            "decimal_comparison_by_aligned_units", "decimal",
             "decimal_comparison_by_aligned_units",
             f"decimal_pair({left_numeral},{left_scale},"
             f"{right_numeral},{right_scale})",
@@ -475,7 +475,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
             left_numeral, left_scale = decimal_operand(decimals[0])
             right_numeral, right_scale = decimal_operand(decimals[1])
             add(
-                "compare_adjacent_members_of_a_printed_ordering", "decimal",
+                "decimal_comparison_by_aligned_units", "decimal",
                 "decimal_comparison_by_aligned_units",
                 f"decimal_pair({left_numeral},{left_scale},"
                 f"{right_numeral},{right_scale})",
@@ -484,7 +484,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
             )
         elif len(wholes) >= 2 and min(wholes[:2]) >= 0:
             add(
-                "compare_adjacent_members_of_a_printed_ordering", "counting",
+                "place_value_comparison", "counting",
                 "place_value_comparison",
                 f"counts({wholes[0]},{wholes[1]})", "base(10)",
                 {"ordering_members": wholes[:2], "position": "first_pair",
@@ -499,7 +499,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
         below = abs(target - lower_multiple)
         above = abs(upper_multiple - target)
         add(
-            "compare_distances_to_bracketing_multiples", "counting",
+            "place_value_comparison", "counting",
             "place_value_comparison",
             f"counts({below},{above})", "base(10)",
             {"target": target, "lower_multiple": lower_multiple,
@@ -511,7 +511,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
     if build:
         value = int(build.group(1).replace(",", ""))
         add(
-            "inscribe_fixed_cardinality", "counting",
+            "recursive_place_value_inscription", "counting",
             "recursive_place_value_inscription", str(value), "base(10)",
             {"cardinality": value, "base": 10,
              "trigger": "collection_or_regrouping_task"},
@@ -527,7 +527,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
             pass
         elif increase.group(3) == "taller":
             add(
-                "add_fixed_measured_increase", "addition", "count_on_from_larger",
+                "count_on_from_larger", "addition", "count_on_from_larger",
                 str(base_height), str(change),
                 {"height": base_height, "change": change, "unit": "inch",
                  "direction": "taller"},
@@ -545,7 +545,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
         count = int(solid.group(1))
         if 1 <= count <= 10:
             add(
-                "enumerate_fixed_collection", "counting",
+                "enumerate_collection_one_to_one", "counting",
                 "enumerate_collection_one_to_one", str(count), "base(10)",
                 {"collection_size": count, "base": 10,
                  "note": "one named part of the set, not the whole set"},
@@ -558,7 +558,7 @@ def counting_lane_adapters(text: str, lower: str, add) -> None:
         largest = int("".join(str(digit) for digit in reversed(digits)))
         if smallest != largest:
             add(
-                "compare_numerals_built_from_fixed_digits", "counting",
+                "place_value_comparison", "counting",
                 "place_value_comparison",
                 f"counts({smallest},{largest})", "base(10)",
                 {"digits": digits, "left": smallest, "right": largest,
@@ -614,7 +614,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
             from_unit = UNIT_ALIASES[match.group(2)]
             to_unit, factor = UNIT_CONVERSIONS[from_unit]
             add(
-                "convert_measurement_unit_by_iteration", "measurement",
+                "unit_conversion_by_iteration", "measurement",
                 "unit_conversion_by_iteration", f"quantity({count},{from_unit})",
                 f"conversion({to_unit},{factor})",
                 {"quantity": count, "from_unit": from_unit,
@@ -640,7 +640,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
     ):
         numerator, denominator = fractions[0]
         add(
-            "iterate_fixed_unit_fraction", "fraction", "unit_fraction_iteration",
+            "unit_fraction_iteration", "fraction", "unit_fraction_iteration",
             str(numerator), str(denominator),
             {"fraction": f"{numerator}/{denominator}"},
         )
@@ -656,7 +656,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
         and re.search(r"split|fold|partition|divide|equal parts", lower)
     ):
         add(
-            "partition_fixed_whole", "fraction", "unit_fraction_partition",
+            "unit_fraction_partition", "fraction", "unit_fraction_partition",
             "1", str(denominator), {"parts": denominator},
         )
 
@@ -664,7 +664,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
     if group_match:
         groups, size = map(int, group_match.groups())
         add(
-            "iterate_fixed_equal_groups", "multiplication", "repeat_equal_groups",
+            "repeat_equal_groups", "multiplication", "repeat_equal_groups",
             str(groups), str(size), {"groups": groups, "group_size": size},
         )
 
@@ -673,7 +673,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
         perimeter = int(perimeter_target.group(1))
         if perimeter >= 4 and perimeter % 2 == 0:
             add(
-                "search_fixed_perimeter_side_pairs", "geometry",
+                "rectangle_perimeter_side_pair_search", "geometry",
                 "rectangle_perimeter_side_pair_search", str(perimeter),
                 "side_scope(all)", {"perimeter": perimeter},
             )
@@ -682,7 +682,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
     if area_target and re.search(r"possible|side lengths|length and width", lower):
         area = int(area_target.group(1))
         add(
-            "search_fixed_area_factor_pairs", "geometry", "rectangle_factor_pair_search",
+            "rectangle_factor_pair_search", "geometry", "rectangle_factor_pair_search",
             str(area), "factor_scope(all)", {"area": area},
         )
 
@@ -699,7 +699,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
     if three_dims and re.search(r"volume|rectangular prism|pack|cubes", lower):
         length, width, height = map(int, three_dims.groups())
         add(
-            "iterate_fixed_prism_layers", "geometry",
+            "rectangular_prism_volume_layer_iteration", "geometry",
             "rectangular_prism_volume_layer_iteration",
             f"prism({length},{width})", str(height),
             {"length": length, "width": width, "height": height},
@@ -709,7 +709,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
             lower_height, upper_height = map(int, height_range.groups())
             if upper_height != height:
                 add(
-                    "iterate_fixed_prism_layers", "geometry",
+                    "rectangular_prism_volume_layer_iteration", "geometry",
                     "rectangular_prism_volume_layer_iteration",
                     f"prism({length},{width})", str(upper_height),
                     {"length": length, "width": width, "height": upper_height,
@@ -725,7 +725,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
         length, width = map(int, two_dims.groups())
         if re.search(r"what is the area|find[^.!?]{0,50}area|calculate[^.!?]{0,50}area|area of", lower):
             add(
-                "iterate_fixed_rectangle_area_units", "geometry",
+                "rectangle_area_unit_iteration", "geometry",
                 "rectangle_area_unit_iteration", str(length), str(width),
                 {"length": length, "width": width},
             )
@@ -741,7 +741,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
     if pair_values and re.search(r"coordinate|grid|plot|represent", lower):
         points = ",".join(f"point({int(x)},{int(y)})" for x, y in pair_values)
         add(
-            "plot_fixed_ordered_pairs", "geometry", "ordered_pair_coordinate_plot",
+            "ordered_pair_coordinate_plot", "geometry", "ordered_pair_coordinate_plot",
             f"[{points}]", "axes(cartesian)",
             {"points": [[int(x), int(y)] for x, y in pair_values]},
         )
@@ -751,7 +751,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
         count = int(liquid.group(1))
         unit = UNIT_ALIASES[liquid.group(2)]
         add(
-            "read_fixed_liquid_volume_scale", "measurement",
+            "liquid_volume_scale_reading", "measurement",
             "liquid_volume_scale_reading", f"measure({count},1)", f"unit({unit})",
             {"interval_count": count, "subdivision": 1, "unit": unit},
         )
@@ -760,7 +760,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
     if place_value and re.search(r"base-ten|place value|tens and ones|hundreds", lower):
         value = int(place_value.group(1).replace(",", ""))
         add(
-            "inscribe_fixed_cardinality", "counting",
+            "recursive_place_value_inscription", "counting",
             "recursive_place_value_inscription", str(value), "base(10)",
             {"cardinality": value, "base": 10},
         )
@@ -783,7 +783,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
         )
         if left >= 0 and right >= 0:
             add(
-                "compare_fixed_whole_numbers", "counting", "place_value_comparison",
+                "place_value_comparison", "counting", "place_value_comparison",
                 f"counts({left},{right})", "base(10)",
                 {"left": left, "right": right, "base": 10},
             )
@@ -796,7 +796,7 @@ def lesson_candidates(row: dict, span: dict, start: int) -> list[Candidate]:
         count = int(count_question.group(1))
         if 0 <= count <= 10:
             add(
-                "enumerate_fixed_collection", "counting",
+                "enumerate_collection_one_to_one", "counting",
                 "enumerate_collection_one_to_one", str(count), "base(10)",
                 {"collection_size": count, "base": 10},
             )

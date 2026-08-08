@@ -563,7 +563,7 @@
    "diagnosis": "no_automaton_computes_this_doing",
    "enactment_forms": [
     "center_menu_route",
-    "compare_two_collections"
+    "compare_cardinalities_one_to_one"
    ],
    "enactment_verdicts": [
     "partial: center_activity_cards_were_not_read",
@@ -624,7 +624,7 @@
    "candidate_attempts_before": 0,
    "diagnosis": "no_automaton_computes_this_doing",
    "enactment_forms": [
-    "compare_two_collections"
+    "compare_cardinalities_one_to_one"
    ],
    "enactment_verdicts": [
     "partial: inputs_supplied_by_this_module_not_by_the_lesson"

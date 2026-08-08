@@ -547,7 +547,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "enumerate_fixed_collection",
+     "doing": "enumerate_collection_one_to_one",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -597,7 +597,7 @@
     }
    ],
    "enactment": {
-    "doing": "enumerate_fixed_collection",
+    "doing": "enumerate_collection_one_to_one",
     "kind": "enumerate_collection_one_to_one",
     "lesson_input": {
      "extracted": {
@@ -1072,7 +1072,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1129,7 +1129,7 @@
     }
    ],
    "enactment": {
-    "doing": "inscribe_fixed_cardinality",
+    "doing": "recursive_place_value_inscription",
     "kind": "recursive_place_value_inscription",
     "lesson_input": {
      "extracted": {
@@ -1232,7 +1232,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_fixed_whole_numbers",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1278,7 +1278,7 @@
     }
    ],
    "enactment": {
-    "doing": "compare_fixed_whole_numbers",
+    "doing": "place_value_comparison",
     "kind": "place_value_comparison",
     "lesson_input": {
      "extracted": {
@@ -1376,7 +1376,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_fixed_whole_numbers",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1419,7 +1419,7 @@
      }
     },
     {
-     "doing": "compare_fixed_whole_numbers",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1463,7 +1463,7 @@
      }
     },
     {
-     "doing": "compare_fixed_whole_numbers",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1508,7 +1508,7 @@
     }
    ],
    "enactment": {
-    "doing": "compare_fixed_whole_numbers",
+    "doing": "place_value_comparison",
     "kind": "place_value_comparison",
     "lesson_input": {
      "extracted": {
@@ -1591,7 +1591,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_adjacent_members_of_a_printed_ordering",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1646,7 +1646,7 @@
     }
    ],
    "enactment": {
-    "doing": "compare_adjacent_members_of_a_printed_ordering",
+    "doing": "place_value_comparison",
     "kind": "place_value_comparison",
     "lesson_input": {
      "extracted": {
@@ -1747,7 +1747,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1793,7 +1793,7 @@
      }
     },
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1840,7 +1840,7 @@
     }
    ],
    "enactment": {
-    "doing": "inscribe_fixed_cardinality",
+    "doing": "recursive_place_value_inscription",
     "kind": "recursive_place_value_inscription",
     "lesson_input": {
      "extracted": {
@@ -1935,7 +1935,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -1981,7 +1981,7 @@
      }
     },
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -2027,7 +2027,7 @@
      }
     },
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -2075,7 +2075,7 @@
     }
    ],
    "enactment": {
-    "doing": "inscribe_fixed_cardinality",
+    "doing": "recursive_place_value_inscription",
     "kind": "recursive_place_value_inscription",
     "lesson_input": {
      "extracted": {
@@ -2504,7 +2504,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -2550,7 +2550,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -2587,7 +2587,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -2625,7 +2625,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -2727,7 +2727,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -2767,7 +2767,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -2814,7 +2814,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 4
@@ -2854,7 +2854,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -2976,7 +2976,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 4
@@ -3017,7 +3017,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -3055,7 +3055,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -3697,7 +3697,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "add_fixed_measured_increase",
+     "doing": "count_on_from_larger",
      "input_evidence": {
       "extracted": {
        "change": 12,
@@ -3745,7 +3745,7 @@
     }
    ],
    "enactment": {
-    "doing": "add_fixed_measured_increase",
+    "doing": "count_on_from_larger",
     "kind": "count_on_from_larger",
     "lesson_input": {
      "extracted": {
@@ -4202,7 +4202,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -4243,7 +4243,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -4282,7 +4282,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 3
@@ -4323,7 +4323,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -4837,7 +4837,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "inscribe_fixed_cardinality",
+     "doing": "recursive_place_value_inscription",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -4887,7 +4887,7 @@
     }
    ],
    "enactment": {
-    "doing": "inscribe_fixed_cardinality",
+    "doing": "recursive_place_value_inscription",
     "kind": "recursive_place_value_inscription",
     "lesson_input": {
      "extracted": {
@@ -5166,7 +5166,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "iterate_fixed_equal_groups",
+     "doing": "repeat_equal_groups",
      "input_evidence": {
       "extracted": {
        "group_size": 5,
@@ -5209,7 +5209,7 @@
     }
    ],
    "enactment": {
-    "doing": "iterate_fixed_equal_groups",
+    "doing": "repeat_equal_groups",
     "kind": "repeat_equal_groups",
     "lesson_input": {
      "extracted": {
@@ -5911,7 +5911,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_distances_to_bracketing_multiples",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "base": 10,
@@ -5979,7 +5979,7 @@
     }
    ],
    "enactment": {
-    "doing": "compare_distances_to_bracketing_multiples",
+    "doing": "place_value_comparison",
     "kind": "place_value_comparison",
     "lesson_input": {
      "extracted": {
@@ -6260,7 +6260,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "iterate_fixed_rectangle_area_units",
+     "doing": "rectangle_area_unit_iteration",
      "input_evidence": {
       "extracted": {
        "length": 17,
@@ -6308,7 +6308,7 @@
      }
     },
     {
-     "doing": "iterate_fixed_rectangle_area_units",
+     "doing": "rectangle_area_unit_iteration",
      "input_evidence": {
       "extracted": {
        "length": 6,
@@ -6350,7 +6350,7 @@
     }
    ],
    "enactment": {
-    "doing": "iterate_fixed_rectangle_area_units",
+    "doing": "rectangle_area_unit_iteration",
     "kind": "rectangle_area_unit_iteration",
     "lesson_input": {
      "extracted": {
@@ -6443,7 +6443,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 8
@@ -6485,7 +6485,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 8
@@ -6523,7 +6523,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -6615,7 +6615,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -6655,7 +6655,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 8
@@ -6701,7 +6701,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -6859,7 +6859,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -6897,7 +6897,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -7021,7 +7021,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "iterate_fixed_unit_fraction",
+     "doing": "unit_fraction_iteration",
      "input_evidence": {
       "extracted": {
        "fraction": "3/4"
@@ -7058,7 +7058,7 @@
      }
     },
     {
-     "doing": "iterate_fixed_unit_fraction",
+     "doing": "unit_fraction_iteration",
      "input_evidence": {
       "extracted": {
        "fraction": "2/3"
@@ -7096,7 +7096,7 @@
     }
    ],
    "enactment": {
-    "doing": "iterate_fixed_unit_fraction",
+    "doing": "unit_fraction_iteration",
     "kind": "unit_fraction_iteration",
     "lesson_input": {
      "extracted": {
@@ -7564,7 +7564,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -7604,7 +7604,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -7690,7 +7690,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 4
@@ -7727,7 +7727,7 @@
      }
     },
     {
-     "doing": "partition_fixed_whole",
+     "doing": "unit_fraction_partition",
      "input_evidence": {
       "extracted": {
        "parts": 2
@@ -7769,7 +7769,7 @@
     }
    ],
    "enactment": {
-    "doing": "partition_fixed_whole",
+    "doing": "unit_fraction_partition",
     "kind": "unit_fraction_partition",
     "lesson_input": {
      "extracted": {
@@ -7930,7 +7930,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "convert_measurement_unit_by_iteration",
+     "doing": "unit_conversion_by_iteration",
      "input_evidence": {
       "extracted": {
        "factor": 1000,
@@ -7986,7 +7986,7 @@
     }
    ],
    "enactment": {
-    "doing": "convert_measurement_unit_by_iteration",
+    "doing": "unit_conversion_by_iteration",
     "kind": "unit_conversion_by_iteration",
     "lesson_input": {
      "extracted": {
@@ -8747,7 +8747,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "search_fixed_area_factor_pairs",
+     "doing": "rectangle_factor_pair_search",
      "input_evidence": {
       "extracted": {
        "area": 30
@@ -8793,7 +8793,7 @@
     }
    ],
    "enactment": {
-    "doing": "search_fixed_area_factor_pairs",
+    "doing": "rectangle_factor_pair_search",
     "kind": "rectangle_factor_pair_search",
     "lesson_input": {
      "extracted": {
@@ -9599,7 +9599,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_fixed_decimals",
+     "doing": "decimal_comparison_by_aligned_units",
      "input_evidence": {
       "extracted": {
        "left": "0.51",
@@ -9657,7 +9657,7 @@
      }
     },
     {
-     "doing": "compare_fixed_decimals",
+     "doing": "decimal_comparison_by_aligned_units",
      "input_evidence": {
       "extracted": {
        "left": "1.1",
@@ -9717,7 +9717,7 @@
     }
    ],
    "enactment": {
-    "doing": "compare_fixed_decimals",
+    "doing": "decimal_comparison_by_aligned_units",
     "kind": "decimal_comparison_by_aligned_units",
     "lesson_input": {
      "extracted": {
@@ -9935,7 +9935,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_numerals_built_from_fixed_digits",
+     "doing": "place_value_comparison",
      "input_evidence": {
       "extracted": {
        "arrangement": "machine_selected_least_and_greatest",
@@ -9988,7 +9988,7 @@
     }
    ],
    "enactment": {
-    "doing": "compare_numerals_built_from_fixed_digits",
+    "doing": "place_value_comparison",
     "kind": "place_value_comparison",
     "lesson_input": {
      "extracted": {
@@ -10371,7 +10371,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "convert_measurement_unit_by_iteration",
+     "doing": "unit_conversion_by_iteration",
      "input_evidence": {
       "extracted": {
        "factor": 1000,
@@ -10424,7 +10424,7 @@
      }
     },
     {
-     "doing": "read_fixed_liquid_volume_scale",
+     "doing": "liquid_volume_scale_reading",
      "input_evidence": {
       "extracted": {
        "interval_count": 1,
@@ -10477,7 +10477,7 @@
      }
     },
     {
-     "doing": "convert_measurement_unit_by_iteration",
+     "doing": "unit_conversion_by_iteration",
      "input_evidence": {
       "extracted": {
        "factor": 1000,
@@ -10532,7 +10532,7 @@
     }
    ],
    "enactment": {
-    "doing": "convert_measurement_unit_by_iteration",
+    "doing": "unit_conversion_by_iteration",
     "kind": "unit_conversion_by_iteration",
     "lesson_input": {
      "extracted": {
@@ -10721,7 +10721,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "convert_measurement_unit_by_iteration",
+     "doing": "unit_conversion_by_iteration",
      "input_evidence": {
       "extracted": {
        "factor": 12,
@@ -10768,7 +10768,7 @@
      }
     },
     {
-     "doing": "convert_measurement_unit_by_iteration",
+     "doing": "unit_conversion_by_iteration",
      "input_evidence": {
       "extracted": {
        "factor": 3,
@@ -10822,7 +10822,7 @@
     }
    ],
    "enactment": {
-    "doing": "convert_measurement_unit_by_iteration",
+    "doing": "unit_conversion_by_iteration",
     "kind": "unit_conversion_by_iteration",
     "lesson_input": {
      "extracted": {
@@ -11038,7 +11038,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "iterate_fixed_rectangle_area_units",
+     "doing": "rectangle_area_unit_iteration",
      "input_evidence": {
       "extracted": {
        "length": 96,
@@ -11081,7 +11081,7 @@
     }
    ],
    "enactment": {
-    "doing": "iterate_fixed_rectangle_area_units",
+    "doing": "rectangle_area_unit_iteration",
     "kind": "rectangle_area_unit_iteration",
     "lesson_input": {
      "extracted": {
@@ -12444,7 +12444,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "search_fixed_area_factor_pairs",
+     "doing": "rectangle_factor_pair_search",
      "input_evidence": {
       "extracted": {
        "area": 36
@@ -12492,7 +12492,7 @@
     }
    ],
    "enactment": {
-    "doing": "search_fixed_area_factor_pairs",
+    "doing": "rectangle_factor_pair_search",
     "kind": "rectangle_factor_pair_search",
     "lesson_input": {
      "extracted": {
@@ -12751,7 +12751,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "iterate_fixed_prism_layers",
+     "doing": "rectangular_prism_volume_layer_iteration",
      "input_evidence": {
       "extracted": {
        "height": 12,
@@ -12794,7 +12794,7 @@
      }
     },
     {
-     "doing": "iterate_fixed_prism_layers",
+     "doing": "rectangular_prism_volume_layer_iteration",
      "input_evidence": {
       "extracted": {
        "height": 15,
@@ -12839,7 +12839,7 @@
     }
    ],
    "enactment": {
-    "doing": "iterate_fixed_prism_layers",
+    "doing": "rectangular_prism_volume_layer_iteration",
     "kind": "rectangular_prism_volume_layer_iteration",
     "lesson_input": {
      "extracted": {
@@ -13181,7 +13181,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "compare_fixed_decimals",
+     "doing": "decimal_comparison_by_aligned_units",
      "input_evidence": {
       "extracted": {
        "left": "0.909",
@@ -13228,7 +13228,7 @@
      }
     },
     {
-     "doing": "compare_adjacent_members_of_a_printed_ordering",
+     "doing": "decimal_comparison_by_aligned_units",
      "input_evidence": {
       "extracted": {
        "ordering_members": [
@@ -13286,7 +13286,7 @@
      }
     },
     {
-     "doing": "compare_adjacent_members_of_a_printed_ordering",
+     "doing": "decimal_comparison_by_aligned_units",
      "input_evidence": {
       "extracted": {
        "ordering_members": [
@@ -13314,25 +13314,16 @@
      "kind": "decimal_comparison_by_aligned_units",
      "operation": "decimal",
      "run": {
-      "goal": "action_automata_registry:run_action_automaton(decimal,decimal_comparison_by_aligned_units,decimal_pair(5654,10,556040,1000),ignored,Outcome,Trace)",
+      "error": "goal failed",
       "id": "lesson_0055",
       "kind": "decimal_comparison_by_aligned_units",
       "operation": "decimal",
-      "outcome": "action_outcome(decimal_comparison_by_aligned_units,[classification(productive),cluster(decimal_magnitude_comparison),automaton_state(decimal_place_value_coordination),vocabulary([decimal_mark,common_decimal_unit,scale_alignment,equivalent_numeral,magnitude_comparison]),result(more),expected(more),validity(correct),operands(decimal_pair(5654,10,556040,1000)),components(decimal_comparison_components(5654,10,556040,1000,1000,565400,556040,more)),representation(aligned_decimal_units(common_scale(1000),left_units(565400),right_units(556040))),invariant(compare_only_after_common_unit_alignment)])",
-      "status": "observed",
-      "trace": "[identify_operand_scales(10,1000),choose_common_decimal_scale(1000),align_decimal_units(5654,10,565400),align_decimal_units(556040,1000,556040),compare_aligned_decimal_units(565400,556040,more)]",
-      "trace_actions": [
-       "identify_operand_scales",
-       "choose_common_decimal_scale",
-       "align_decimal_units",
-       "align_decimal_units",
-       "compare_aligned_decimal_units"
-      ]
+      "status": "failed"
      }
     }
    ],
    "enactment": {
-    "doing": "compare_fixed_decimals",
+    "doing": "decimal_comparison_by_aligned_units",
     "kind": "decimal_comparison_by_aligned_units",
     "lesson_input": {
      "extracted": {
@@ -13361,7 +13352,7 @@
      }
     },
     "operation": "decimal",
-    "other_successful_candidates": 2,
+    "other_successful_candidates": 1,
     "run": {
      "goal": "action_automata_registry:run_action_automaton(decimal,decimal_comparison_by_aligned_units,decimal_pair(909,1000,91,100),ignored,Outcome,Trace)",
      "id": "lesson_0053",
@@ -13639,7 +13630,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "plot_fixed_ordered_pairs",
+     "doing": "ordered_pair_coordinate_plot",
      "input_evidence": {
       "extracted": {
        "points": [
@@ -13682,7 +13673,7 @@
     }
    ],
    "enactment": {
-    "doing": "plot_fixed_ordered_pairs",
+    "doing": "ordered_pair_coordinate_plot",
     "kind": "ordered_pair_coordinate_plot",
     "lesson_input": {
      "extracted": {
@@ -14118,7 +14109,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "candidate_attempts": [
     {
-     "doing": "search_fixed_perimeter_side_pairs",
+     "doing": "rectangle_perimeter_side_pair_search",
      "input_evidence": {
       "extracted": {
        "perimeter": 12
@@ -14160,7 +14151,7 @@
      }
     },
     {
-     "doing": "search_fixed_area_factor_pairs",
+     "doing": "rectangle_factor_pair_search",
      "input_evidence": {
       "extracted": {
        "area": 16
@@ -14203,7 +14194,7 @@
     }
    ],
    "enactment": {
-    "doing": "search_fixed_perimeter_side_pairs",
+    "doing": "rectangle_perimeter_side_pair_search",
     "kind": "rectangle_perimeter_side_pair_search",
     "lesson_input": {
      "extracted": {
@@ -32670,50 +32661,6 @@
         "compare_aligned_decimal_units"
        ]
       }
-     },
-     {
-      "input_evidence": {
-       "extracted": {
-        "ordering_members": [
-         "565.4",
-         "556.040"
-        ],
-        "position": "first_pair"
-       },
-       "span": {
-        "end_line": 287,
-        "line": 284,
-        "numeric_tokens": [
-         "565.4",
-         "556.040",
-         "565.004"
-        ],
-        "position": "student_task_statement(4)",
-        "refusal": null,
-        "source": "curriculum/im_teacher_guides/grade5/unit5/lesson9.md",
-        "task_209_evidence_excerpt": null,
-        "task_209_evidence_position": false,
-        "text": "Write these numbers in order from least to greatest: 565.4, 556.040, 565.004"
-       }
-      },
-      "lesson": "IM-G5-U5-L9",
-      "origin": "lesson_span",
-      "run": {
-       "goal": "action_automata_registry:run_action_automaton(decimal,decimal_comparison_by_aligned_units,decimal_pair(5654,10,556040,1000),ignored,Outcome,Trace)",
-       "id": "lesson_0055",
-       "kind": "decimal_comparison_by_aligned_units",
-       "operation": "decimal",
-       "outcome": "action_outcome(decimal_comparison_by_aligned_units,[classification(productive),cluster(decimal_magnitude_comparison),automaton_state(decimal_place_value_coordination),vocabulary([decimal_mark,common_decimal_unit,scale_alignment,equivalent_numeral,magnitude_comparison]),result(more),expected(more),validity(correct),operands(decimal_pair(5654,10,556040,1000)),components(decimal_comparison_components(5654,10,556040,1000,1000,565400,556040,more)),representation(aligned_decimal_units(common_scale(1000),left_units(565400),right_units(556040))),invariant(compare_only_after_common_unit_alignment)])",
-       "status": "observed",
-       "trace": "[identify_operand_scales(10,1000),choose_common_decimal_scale(1000),align_decimal_units(5654,10,565400),align_decimal_units(556040,1000,556040),compare_aligned_decimal_units(565400,556040,more)]",
-       "trace_actions": [
-        "identify_operand_scales",
-        "choose_common_decimal_scale",
-        "align_decimal_units",
-        "align_decimal_units",
-        "compare_aligned_decimal_units"
-       ]
-      }
      }
     ],
     "kind": "decimal_comparison_by_aligned_units",
@@ -47360,7 +47307,7 @@
    "action_class": "enacted_with_lesson_inputs",
    "disposition": "The header match is discarded; only a complete tracked volume task can qualify.",
    "enactment": {
-    "doing": "iterate_fixed_prism_layers",
+    "doing": "rectangular_prism_volume_layer_iteration",
     "kind": "rectangular_prism_volume_layer_iteration",
     "lesson_input": {
      "extracted": {

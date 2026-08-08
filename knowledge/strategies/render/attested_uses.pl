@@ -62,7 +62,7 @@ attested_use_pattern(number_line_jumps_for_arithmetic, 'jump on a number line to
 attested_use_pattern(one_to_one_correspondence, 'connect two sets element by element').
 attested_use_pattern(partition_for_fraction_comparison, 'partition to compare two fractions').
 attested_use_pattern(partition_region_into_sections, 'partition a region into sections (unequal or unlabeled)').
-attested_use_pattern(partition_whole_into_equal_parts, 'partition a whole into equal parts to name a fraction').
+attested_use_pattern(partition_into_equal_parts, 'partition a whole into equal parts to name a fraction').
 attested_use_pattern(place_value_chart_for_columns, 'organize digits in a place-value chart with regrouping').
 attested_use_pattern(pose_or_solve_word_problem, 'pose or solve a word problem in prose + arithmetic').
 attested_use_pattern(represent_quantity_spatially, 'represent a quantity spatially without a more specific verb').
@@ -84,7 +84,7 @@ use_pattern_denotes(base_ten_blocks_for_regrouping, whole_number_subtraction(_, 
 use_pattern_denotes(count_collection_with_counters, whole_number(_)).
 use_pattern_denotes(equal_groups_for_multiplication, multiplication(_, _)).
 use_pattern_denotes(number_line_jumps_for_arithmetic, whole_number_addition(_, _)).
-use_pattern_denotes(partition_whole_into_equal_parts, fraction(_, _)).
+use_pattern_denotes(partition_into_equal_parts, fraction(_, _)).
 use_pattern_denotes(place_value_chart_for_columns, whole_number_addition(_, _)).
 use_pattern_denotes(shade_part_to_name_fraction, fraction(_, _)).
 use_pattern_denotes(subitize_or_make_ten, subitizing(_)).
@@ -96,15 +96,15 @@ attested_representation_use(area_model, algebraic, partition_region_into_section
 attested_representation_use(area_model, algebraic, area_model_for_fraction, 5, ['ESM_Arcavi_2003_Role/p20_1.png', 'ESM_Brink_1993_Different/p2_1.png', 'IJSME_Ferrara_2014_How/p14_1.png']).
 attested_representation_use(area_model, algebraic, bar_model_for_multiplicative_reasoning, 4, ['JMB_Ho_2014_Model/p6_1.png', 'JRME_Ng_2009_Model/p20_1.png', 'JRME_Ng_2009_Model/p27_1.png']).
 attested_representation_use(area_model, algebraic, area_model_for_multiplication, 3, ['IJMEST_Koban_2015_Consequences/p16_1.png', 'JMTE_Caglayan_2013_Prospective/p12_2.png', 'MERJ_Hallagan_2006_Case/p16_1.png']).
-attested_representation_use(area_model, algebraic, partition_whole_into_equal_parts, 3, ['ESM_Hackenberg_2016_Students''/p14_1.png', 'FLM_Watson_1988_Three/p7_1.png', 'JMB_Hackenberg_2013_Fractional/p12_1.png']).
+attested_representation_use(area_model, algebraic, partition_into_equal_parts, 3, ['ESM_Hackenberg_2016_Students''/p14_1.png', 'FLM_Watson_1988_Three/p7_1.png', 'JMB_Hackenberg_2013_Fractional/p12_1.png']).
 attested_representation_use(area_model, algebraic, area_model_for_measurement, 1, ['ZDM_Depaepe_2010_Teachers''/p11_2.png']).
 attested_representation_use(area_model, algebraic, shade_part_to_name_fraction, 1, ['JMB_Hackenberg_2013_Fractional/p12_2.png']).
-attested_representation_use(area_model, combinatorial, partition_whole_into_equal_parts, 1, ['JMB_Hackenberg_2013_Fractional/p12_1.png']).
+attested_representation_use(area_model, combinatorial, partition_into_equal_parts, 1, ['JMB_Hackenberg_2013_Fractional/p12_1.png']).
 attested_representation_use(area_model, combinatorial, shade_part_to_name_fraction, 1, ['JMB_Hackenberg_2013_Fractional/p12_2.png']).
 attested_representation_use(area_model, decimal, area_model_for_fraction, 4, ['ESM_Moskal_2000_Making/p10_1.png', 'JMB_Singer_2008_Between/p12_2.png', 'JMB_Singer_2008_Between/p13_1.png']).
-attested_representation_use(area_model, decimal, partition_whole_into_equal_parts, 2, ['ZDM_Sembiring_2008_Reforming/p10_1.png', 'ZDM_Sembiring_2008_Reforming/p12_2.png']).
+attested_representation_use(area_model, decimal, partition_into_equal_parts, 2, ['ZDM_Sembiring_2008_Reforming/p10_1.png', 'ZDM_Sembiring_2008_Reforming/p12_2.png']).
 attested_representation_use(area_model, decimal, partition_region_into_sections, 1, ['JMTE_Cai_2017_Mathematical/p15_1.png']).
-attested_representation_use(area_model, fraction, partition_whole_into_equal_parts, 48, ['ESM_Brizuela_2005_Young/p15_2.png', 'ESM_Cadez_2018_How/p17_1.png', 'ESM_Hackenberg_2016_Students''/p14_1.png']).
+attested_representation_use(area_model, fraction, partition_into_equal_parts, 48, ['ESM_Brizuela_2005_Young/p15_2.png', 'ESM_Cadez_2018_How/p17_1.png', 'ESM_Hackenberg_2016_Students''/p14_1.png']).
 attested_representation_use(area_model, fraction, shade_part_to_name_fraction, 20, ['ESM_Cadez_2018_How/p11_2.png', 'ESM_Cadez_2018_How/p12_1.png', 'ESM_Cadez_2018_How/p14_2.png']).
 attested_representation_use(area_model, fraction, area_model_for_fraction, 8, ['ESM_Glade_2017_Students''/p12_1.png', 'ESM_Pirie_1992_Creating/p8_1.png', 'IJMEST_Alenazi_2016_Examining/p17_2.png']).
 attested_representation_use(area_model, fraction, area_model_for_multiplication, 5, ['ESM_Pirie_1992_Creating/p17_1.png', 'JMB_Osana_2011_Obstacles/p14_1.png', 'JMB_Webel_2016_Meaning/p10_2.png']).
@@ -116,12 +116,12 @@ attested_representation_use(area_model, geometric, partition_region_into_section
 attested_representation_use(area_model, geometric, area_model_for_multiplication, 2, ['ESM_Baturo_1996_Student/p20_1.png', 'MERJ_Hallagan_2006_Case/p16_1.png']).
 attested_representation_use(area_model, geometric, shade_part_to_name_fraction, 2, ['ESM_Hasemann_1995_Concept/p12_1.png', 'ESM_Hasemann_1995_Concept/p13_1.png']).
 attested_representation_use(area_model, geometric, area_model_for_measurement, 1, ['JMTE_Baxter_2010_Social/p12_1.png']).
-attested_representation_use(area_model, geometric, partition_whole_into_equal_parts, 1, ['ESM_Hasemann_1995_Concept/p9_1.png']).
+attested_representation_use(area_model, geometric, partition_into_equal_parts, 1, ['ESM_Hasemann_1995_Concept/p9_1.png']).
 attested_representation_use(area_model, measurement, area_model_for_multiplication, 13, ['ESM_Baturo_1996_Student/p20_1.png', 'JMB_Wickstrom_2017_Pre-service/p10_2.png', 'JMB_Wickstrom_2017_Pre-service/p12_1.png']).
 attested_representation_use(area_model, measurement, area_model_for_measurement, 11, ['JMB_Wickstrom_2017_Pre-service/p10_3.png', 'JMB_Wickstrom_2017_Pre-service/p11_1.png', 'JMB_Wickstrom_2017_Pre-service/p12_2.png']).
 attested_representation_use(area_model, measurement, area_model_for_fraction, 9, ['ESM_Douady_1989_Un/p21_1.png', 'JMB_Wickstrom_2017_Pre-service/p13_2.png', 'JMB_Wickstrom_2017_Pre-service/p9_1.png']).
 attested_representation_use(area_model, measurement, partition_region_into_sections, 3, ['JMTE_Boote_2018_Abc/p15_1.png', 'JRME_Lo_1997_Developing/p18_1.png', 'JRME_Moore_2014_Quantitative/p23_2.png']).
-attested_representation_use(area_model, measurement, partition_whole_into_equal_parts, 3, ['JMB_Hackenberg_2013_Fractional/p12_1.png', 'ZDM_Sembiring_2008_Reforming/p10_1.png', 'ZDM_Sembiring_2008_Reforming/p12_2.png']).
+attested_representation_use(area_model, measurement, partition_into_equal_parts, 3, ['JMB_Hackenberg_2013_Fractional/p12_1.png', 'ZDM_Sembiring_2008_Reforming/p10_1.png', 'ZDM_Sembiring_2008_Reforming/p12_2.png']).
 attested_representation_use(area_model, measurement, shade_part_to_name_fraction, 1, ['JMB_Hackenberg_2013_Fractional/p12_2.png']).
 attested_representation_use(area_model, other, area_model_for_measurement, 1, ['ZDM_Depaepe_2010_Teachers''/p11_2.png']).
 attested_representation_use(area_model, percent, area_model_for_fraction, 1, ['ESM_Heuvelpanhuizen_1994_Improvement/p29_1.png']).
@@ -130,15 +130,15 @@ attested_representation_use(area_model, percent, shade_part_to_name_fraction, 1,
 attested_representation_use(area_model, probability, area_model_for_fraction, 1, ['ZDM_Pfannkuch_2012_Conceptual/p7_1.png']).
 attested_representation_use(area_model, proportional, area_model_for_fraction, 4, ['JMB_diSessa_1991_Inventing/p14_1.png', 'JMTE_Boote_2018_Abc/p12_1.png', 'JMTE_Orrill_2012_Making/p12_1.png']).
 attested_representation_use(area_model, proportional, partition_region_into_sections, 3, ['JMTE_Boote_2018_Abc/p15_1.png', 'JRME_Ellis_2011_Generalizing-promoting/p14_1.png', 'JRME_Lo_1997_Developing/p18_1.png']).
-attested_representation_use(area_model, proportional, partition_whole_into_equal_parts, 2, ['FLM_Watson_1988_Three/p7_1.png', 'JMTE_Orrill_2012_Making/p10_3.png']).
+attested_representation_use(area_model, proportional, partition_into_equal_parts, 2, ['FLM_Watson_1988_Three/p7_1.png', 'JMTE_Orrill_2012_Making/p10_3.png']).
 attested_representation_use(area_model, proportional, area_model_for_measurement, 1, ['ZDM_Depaepe_2010_Teachers''/p11_2.png']).
 attested_representation_use(area_model, proportional, shade_part_to_name_fraction, 1, ['MERJ_Wright_2014_Frequencies/p21_2.png']).
 attested_representation_use(area_model, ratio, shade_part_to_name_fraction, 1, ['MERJ_Wright_2014_Frequencies/p21_2.png']).
-attested_representation_use(area_model, rational, partition_whole_into_equal_parts, 4, ['ESM_Reynolds_1995_Addressing/p16_1.png', 'ESM_Xie_2017_Examining/p13_1.png', 'JMB_Singer_2008_Between/p12_2.png']).
+attested_representation_use(area_model, rational, partition_into_equal_parts, 4, ['ESM_Reynolds_1995_Addressing/p16_1.png', 'ESM_Xie_2017_Examining/p13_1.png', 'JMB_Singer_2008_Between/p12_2.png']).
 attested_representation_use(area_model, statistics, area_model_for_fraction, 1, ['ZDM_Pfannkuch_2012_Conceptual/p7_1.png']).
 attested_representation_use(area_model, whole_number, area_model_for_fraction, 7, ['ESM_Brink_1993_Different/p2_1.png', 'JMB_Singer_2008_Between/p12_2.png', 'JMB_Singer_2008_Between/p13_1.png']).
 attested_representation_use(area_model, whole_number, area_model_for_multiplication, 5, ['MTL_Izsak_2004_Teaching/p28_1.png', 'MTL_Izsak_2004_Teaching/p29_1.png', 'MTL_Izsak_2004_Teaching/p30_1.png']).
-attested_representation_use(area_model, whole_number, partition_whole_into_equal_parts, 4, ['ESM_Reynolds_1995_Addressing/p16_1.png', 'JRME_Bray_2011_Collective/p19_1.png', 'ZDM_Sembiring_2008_Reforming/p10_1.png']).
+attested_representation_use(area_model, whole_number, partition_into_equal_parts, 4, ['ESM_Reynolds_1995_Addressing/p16_1.png', 'JRME_Bray_2011_Collective/p19_1.png', 'ZDM_Sembiring_2008_Reforming/p10_1.png']).
 attested_representation_use(area_model, whole_number, bar_model_for_multiplicative_reasoning, 2, ['JRME_Ng_2009_Model/p20_1.png', 'JRME_Ng_2009_Model/p27_1.png']).
 attested_representation_use(area_model, whole_number, partition_region_into_sections, 2, ['JMTE_Cai_2017_Mathematical/p15_1.png', 'JRME_Lo_1997_Developing/p18_1.png']).
 attested_representation_use(area_model, whole_number, area_model_for_measurement, 1, ['JMTE_Baxter_2010_Social/p12_1.png']).
@@ -152,7 +152,7 @@ attested_representation_use(base_ten_blocks, combinatorial, base_ten_blocks_for_
 attested_representation_use(base_ten_blocks, decimal, base_ten_blocks_for_place_value, 1, ['JMB_Singer_2008_Between/p12_1.png']).
 attested_representation_use(base_ten_blocks, fraction, base_ten_blocks_for_regrouping, 3, ['JMB_Boyce_2017_Dylans/p6_1.png', 'JMB_Yankelewitz_2010_Task/p6_1.png', 'JRME_Cai_1995_Cognitive/p82_1.png']).
 attested_representation_use(base_ten_blocks, fraction, base_ten_blocks_for_place_value, 2, ['ESM_Hackenberg_2016_Students''/p12_2.png', 'JRME_Lamon_1996_Development/p18_1.png']).
-attested_representation_use(base_ten_blocks, fraction, partition_whole_into_equal_parts, 2, ['ESM_Peck_2016_Reinventing/p11_1.png', 'JRME_Hackenberg_2015_Relationships/p25_1.png']).
+attested_representation_use(base_ten_blocks, fraction, partition_into_equal_parts, 2, ['ESM_Peck_2016_Reinventing/p11_1.png', 'JRME_Hackenberg_2015_Relationships/p25_1.png']).
 attested_representation_use(base_ten_blocks, fraction, partition_for_fraction_comparison, 1, ['ESM_Hackenberg_2016_Students''/p12_1.png']).
 attested_representation_use(base_ten_blocks, geometric, base_ten_blocks_for_place_value, 1, ['JMB_Singer_2008_Between/p12_1.png']).
 attested_representation_use(base_ten_blocks, geometric, base_ten_blocks_for_regrouping, 1, ['JMB_Boyce_2017_Dylans/p6_1.png']).
@@ -161,13 +161,13 @@ attested_representation_use(base_ten_blocks, measurement, base_ten_blocks_for_pl
 attested_representation_use(base_ten_blocks, probability, base_ten_blocks_for_place_value, 1, ['JRME_English_2016_Development/p19_1.png']).
 attested_representation_use(base_ten_blocks, proportional, base_ten_blocks_for_place_value, 1, ['JRME_Hackenberg_2015_Relationships/p25_1.png']).
 attested_representation_use(base_ten_blocks, rational, base_ten_blocks_for_place_value, 1, ['JMB_Singer_2008_Between/p12_1.png']).
-attested_representation_use(base_ten_blocks, rational, partition_whole_into_equal_parts, 1, ['JRME_Hackenberg_2015_Relationships/p25_1.png']).
+attested_representation_use(base_ten_blocks, rational, partition_into_equal_parts, 1, ['JRME_Hackenberg_2015_Relationships/p25_1.png']).
 attested_representation_use(base_ten_blocks, statistics, base_ten_blocks_for_regrouping, 1, ['JRME_Cai_1995_Cognitive/p82_1.png']).
 attested_representation_use(base_ten_blocks, whole_number, base_ten_blocks_for_regrouping, 8, ['ESM_Son_2016_Moving/p22_1.png', 'ESM_Treffers_1991_Meeting/p7_1.png', 'JMB_Boyce_2017_Dylans/p6_1.png']).
 attested_representation_use(base_ten_blocks, whole_number, base_ten_blocks_for_place_value, 6, ['ESM_Bednarz_1982_Understanding/p19_1.png', 'ESM_Bednarz_1982_Understanding/p20_1.png', 'JMB_Lee_2007_Making/p8_1.png']).
 attested_representation_use(base_ten_blocks, whole_number, area_model_for_fraction, 1, ['ZDM_Gellert_2014_Students/p7_1.png']).
 attested_representation_use(fraction_bars, algebraic, shade_part_to_name_fraction, 7, ['ESM_Pirie_1994_Growth/p11_1.png', 'IJSME_Lee_2014_Relationships/p14_1.png', 'JMB_Hackenberg_2013_Fractional/p11_1.png']).
-attested_representation_use(fraction_bars, algebraic, partition_whole_into_equal_parts, 4, ['ESM_Hackenberg_2016_Students''/p11_1.png', 'ESM_Hackenberg_2016_Students''/p15_2.png', 'JRME_Hackenberg_2015_Relationships/p18_1.png']).
+attested_representation_use(fraction_bars, algebraic, partition_into_equal_parts, 4, ['ESM_Hackenberg_2016_Students''/p11_1.png', 'ESM_Hackenberg_2016_Students''/p15_2.png', 'JRME_Hackenberg_2015_Relationships/p18_1.png']).
 attested_representation_use(fraction_bars, algebraic, bar_model_for_multiplicative_reasoning, 3, ['FLM_Watson_1988_Three/p3_1.png', 'FLM_Watson_1988_Three/p4_4.png', 'JRME_Ng_2009_Model/p23_1.png']).
 attested_representation_use(fraction_bars, algebraic, partition_region_into_sections, 2, ['JMB_Hackenberg_2013_Fractional/p11_2.png', 'JRME_Hackenberg_2015_Relationships/p21_1.png']).
 attested_representation_use(fraction_bars, algebraic, represent_quantity_spatially, 2, ['JMB_Hackenberg_2013_Fractional/p17_1.png', 'ZDM_Garderen_2014_Challenges/p9_1.png']).
@@ -180,9 +180,9 @@ attested_representation_use(fraction_bars, combinatorial, partition_region_into_
 attested_representation_use(fraction_bars, combinatorial, represent_quantity_spatially, 1, ['JMB_Hackenberg_2013_Fractional/p17_1.png']).
 attested_representation_use(fraction_bars, decimal, partition_for_fraction_comparison, 3, ['IJSME_Yang_2004_Study/p17_1.png', 'IJSME_Yang_2004_Study/p18_1.png', 'JMTE_Dyson_2013_Prospective/p8_1.png']).
 attested_representation_use(fraction_bars, decimal, area_model_for_fraction, 1, ['ZDM_Sembiring_2008_Reforming/p12_3.png']).
-attested_representation_use(fraction_bars, decimal, partition_whole_into_equal_parts, 1, ['ZDM_Sembiring_2008_Reforming/p12_4.png']).
+attested_representation_use(fraction_bars, decimal, partition_into_equal_parts, 1, ['ZDM_Sembiring_2008_Reforming/p12_4.png']).
 attested_representation_use(fraction_bars, decimal, represent_quantity_spatially, 1, ['IJSME_Almeida_2016_Strategies/p8_1.png']).
-attested_representation_use(fraction_bars, fraction, partition_whole_into_equal_parts, 56, ['ESM_Brizuela_2005_Young/p11_1.png', 'ESM_Brizuela_2005_Young/p14_1.png', 'ESM_Brizuela_2005_Young/p16_1.png']).
+attested_representation_use(fraction_bars, fraction, partition_into_equal_parts, 56, ['ESM_Brizuela_2005_Young/p11_1.png', 'ESM_Brizuela_2005_Young/p14_1.png', 'ESM_Brizuela_2005_Young/p16_1.png']).
 attested_representation_use(fraction_bars, fraction, shade_part_to_name_fraction, 33, ['ESM_Cadez_2018_How/p17_2.png', 'ESM_Hasemann_1981_Difficulties/p9_1.png', 'ESM_Hasemann_1995_Concept/p12_2.png']).
 attested_representation_use(fraction_bars, fraction, partition_for_fraction_comparison, 16, ['ESM_Boaler_1993_Encouraging/p24_2.png', 'ESM_Hackenberg_2016_Students''/p15_1.png', 'ESM_Lee_2017_Pre-service/p13_1.png']).
 attested_representation_use(fraction_bars, fraction, represent_quantity_spatially, 9, ['ESM_Lee_2017_Pre-service/p12_1.png', 'ESM_Lee_2017_Pre-service/p14_1.png', 'IJSME_Almeida_2016_Strategies/p8_1.png']).
@@ -191,18 +191,18 @@ attested_representation_use(fraction_bars, fraction, area_model_for_fraction, 4,
 attested_representation_use(fraction_bars, fraction, area_model_for_multiplication, 4, ['IJMEST_Alenazi_2016_Examining/p11_1.png', 'JMB_Webel_2016_Meaning/p12_2.png', 'JMTE_Lovin_2018_Pre-k-/p9_1.png']).
 attested_representation_use(fraction_bars, fraction, partition_region_into_sections, 3, ['JRME_Lamon_1996_Development/p12_1.png', 'JRME_Lamon_1996_Development/p14_1.png', 'JRME_Lewis_2014_Difference/p28_1.png']).
 attested_representation_use(fraction_bars, geometric, shade_part_to_name_fraction, 3, ['ESM_Hasemann_1995_Concept/p12_2.png', 'ESM_Pirie_1994_Growth/p11_1.png', 'JMB_Clements_2000_From/p24_1.png']).
-attested_representation_use(fraction_bars, geometric, partition_whole_into_equal_parts, 1, ['ZDM_Confrey_2015_Design/p8_1.png']).
+attested_representation_use(fraction_bars, geometric, partition_into_equal_parts, 1, ['ZDM_Confrey_2015_Design/p8_1.png']).
 attested_representation_use(fraction_bars, measurement, represent_quantity_spatially, 3, ['IJSME_Almeida_2016_Strategies/p8_1.png', 'JMB_Hackenberg_2013_Fractional/p17_1.png', 'ZDM_Garderen_2014_Challenges/p9_1.png']).
 attested_representation_use(fraction_bars, measurement, shade_part_to_name_fraction, 2, ['JMB_Hackenberg_2013_Fractional/p11_1.png', 'JMB_Hackenberg_2013_Fractional/p17_2.png']).
 attested_representation_use(fraction_bars, measurement, area_model_for_fraction, 1, ['ZDM_Sembiring_2008_Reforming/p12_3.png']).
 attested_representation_use(fraction_bars, measurement, partition_region_into_sections, 1, ['JMB_Hackenberg_2013_Fractional/p11_2.png']).
-attested_representation_use(fraction_bars, measurement, partition_whole_into_equal_parts, 1, ['ZDM_Sembiring_2008_Reforming/p12_4.png']).
+attested_representation_use(fraction_bars, measurement, partition_into_equal_parts, 1, ['ZDM_Sembiring_2008_Reforming/p12_4.png']).
 attested_representation_use(fraction_bars, other, area_model_for_fraction, 1, ['ESM_Klein_2012_How/p12_1.png']).
 attested_representation_use(fraction_bars, other, represent_quantity_spatially, 1, ['ZDM_Garderen_2014_Challenges/p9_1.png']).
 attested_representation_use(fraction_bars, other, shade_part_to_name_fraction, 1, ['JMB_Clements_2000_From/p24_1.png']).
 attested_representation_use(fraction_bars, percent, area_model_for_fraction, 1, ['MERJ_Wright_2014_Frequencies/p16_1.png']).
 attested_representation_use(fraction_bars, percent, bar_model_for_multiplicative_reasoning, 1, ['MERJ_Wright_2014_Frequencies/p19_1.png']).
-attested_representation_use(fraction_bars, proportional, partition_whole_into_equal_parts, 6, ['JMB_Norton_2013_Cognitive/p9_1.png', 'JMB_SaenzLudlow_2003_Collective/p15_1.png', 'JRME_Empson_2003_Low-performing/p23_1.png']).
+attested_representation_use(fraction_bars, proportional, partition_into_equal_parts, 6, ['JMB_Norton_2013_Cognitive/p9_1.png', 'JMB_SaenzLudlow_2003_Collective/p15_1.png', 'JRME_Empson_2003_Low-performing/p23_1.png']).
 attested_representation_use(fraction_bars, proportional, shade_part_to_name_fraction, 5, ['JMB_Clements_2000_From/p24_1.png', 'JMB_SaenzLudlow_2003_Collective/p15_2.png', 'JRME_Hackenberg_2015_Relationships/p18_2.png']).
 attested_representation_use(fraction_bars, proportional, bar_model_for_multiplicative_reasoning, 4, ['FLM_Watson_1988_Three/p3_1.png', 'FLM_Watson_1988_Three/p4_4.png', 'JRME_Izsak_2017_Preservice/p27_1.png']).
 attested_representation_use(fraction_bars, proportional, partition_region_into_sections, 3, ['JMB_Norton_2013_Cognitive/p6_1.png', 'JRME_Hackenberg_2015_Relationships/p21_1.png', 'JRME_Izsak_2017_Preservice/p25_1.png']).
@@ -210,11 +210,11 @@ attested_representation_use(fraction_bars, proportional, area_model_for_fraction
 attested_representation_use(fraction_bars, proportional, partition_for_fraction_comparison, 1, ['MERJ_Hackenberg_2010_Mathematical/p15_1.png']).
 attested_representation_use(fraction_bars, ratio, area_model_for_fraction, 1, ['MERJ_Wright_2014_Frequencies/p16_1.png']).
 attested_representation_use(fraction_bars, ratio, bar_model_for_multiplicative_reasoning, 1, ['MERJ_Wright_2014_Frequencies/p19_1.png']).
-attested_representation_use(fraction_bars, ratio, partition_whole_into_equal_parts, 1, ['ZDM_Confrey_2015_Design/p8_1.png']).
-attested_representation_use(fraction_bars, rational, partition_whole_into_equal_parts, 5, ['JMB_Norton_2013_Cognitive/p6_1.png', 'JMB_Norton_2013_Cognitive/p9_1.png', 'JRME_Hackenberg_2015_Relationships/p18_1.png']).
+attested_representation_use(fraction_bars, ratio, partition_into_equal_parts, 1, ['ZDM_Confrey_2015_Design/p8_1.png']).
+attested_representation_use(fraction_bars, rational, partition_into_equal_parts, 5, ['JMB_Norton_2013_Cognitive/p6_1.png', 'JMB_Norton_2013_Cognitive/p9_1.png', 'JRME_Hackenberg_2015_Relationships/p18_1.png']).
 attested_representation_use(fraction_bars, rational, shade_part_to_name_fraction, 3, ['JRME_Hackenberg_2015_Relationships/p18_2.png', 'JRME_Hackenberg_2015_Relationships/p19_1.png', 'JRME_Hackenberg_2015_Relationships/p19_2.png']).
 attested_representation_use(fraction_bars, statistics, partition_region_into_sections, 1, ['IJMEST_Zazkis_2013_Students''/p8_1.png']).
-attested_representation_use(fraction_bars, whole_number, partition_whole_into_equal_parts, 5, ['JMB_SaenzLudlow_2003_Collective/p15_1.png', 'JMB_Ulrich_2016_Tacitly/p12_1.png', 'JMTE_Steinberg_2004_Inquiry/p19_1.png']).
+attested_representation_use(fraction_bars, whole_number, partition_into_equal_parts, 5, ['JMB_SaenzLudlow_2003_Collective/p15_1.png', 'JMB_Ulrich_2016_Tacitly/p12_1.png', 'JMTE_Steinberg_2004_Inquiry/p19_1.png']).
 attested_representation_use(fraction_bars, whole_number, area_model_for_fraction, 1, ['ZDM_Sembiring_2008_Reforming/p12_3.png']).
 attested_representation_use(fraction_bars, whole_number, bar_model_for_multiplicative_reasoning, 1, ['JRME_Ng_2009_Model/p23_1.png']).
 attested_representation_use(fraction_bars, whole_number, partition_for_fraction_comparison, 1, ['MERJ_Hackenberg_2010_Mathematical/p15_1.png']).
@@ -317,7 +317,7 @@ attested_representation_use(number_line, decimal, partition_region_into_sections
 attested_representation_use(number_line, decimal, mark_intervals_on_number_line, 1, ['JMB_Widjaja_2011_Locating/p8_1.png']).
 attested_representation_use(number_line, decimal, sketch_graph_on_axes, 1, ['JMB_Karsenty_2007_Exploring/p12_1.png']).
 attested_representation_use(number_line, fraction, mark_intervals_on_number_line, 8, ['ESM_Yilmaz_2018_Investigation/p6_1.png', 'IJMEST_Alenazi_2016_Examining/p15_1.png', 'JMB_Hackenberg_2013_Fractional/p15_1.png']).
-attested_representation_use(number_line, fraction, partition_whole_into_equal_parts, 8, ['IJMEST_Alenazi_2016_Examining/p16_1.png', 'JMB_Hackenberg_2009_Students''/p7_1.png', 'JMTE_Orrill_2012_Making/p17_1.png']).
+attested_representation_use(number_line, fraction, partition_into_equal_parts, 8, ['IJMEST_Alenazi_2016_Examining/p16_1.png', 'JMB_Hackenberg_2009_Students''/p7_1.png', 'JMTE_Orrill_2012_Making/p17_1.png']).
 attested_representation_use(number_line, fraction, represent_quantity_spatially, 6, ['JMTE_Lovin_2018_Pre-k-/p22_1.png', 'JMTE_Orrill_2012_Making/p19_1.png', 'JRME_Izsak_2008_Teaching/p16_1.png']).
 attested_representation_use(number_line, fraction, double_number_line_for_proportion, 4, ['IJMEST_Alenazi_2016_Examining/p13_2.png', 'JMTE_Orrill_2012_Making/p10_2.png', 'JMTE_Orrill_2012_Making/p16_1.png']).
 attested_representation_use(number_line, fraction, number_line_jumps_for_arithmetic, 2, ['ESM_Courey_2012_Academic/p9_1.png', 'JMB_Hackenberg_2013_Fractional/p14_1.png']).
@@ -339,7 +339,7 @@ attested_representation_use(number_line, proportional, double_number_line_for_pr
 attested_representation_use(number_line, proportional, mark_intervals_on_number_line, 9, ['IJSME_Cheek_2012_Students''/p12_1.png', 'IJSME_Cheek_2012_Students''/p16_1.png', 'JMB_Ramful_2008_Reversibility/p9_1.png']).
 attested_representation_use(number_line, proportional, represent_quantity_spatially, 5, ['JMTE_Orrill_2012_Making/p19_1.png', 'JRME_Hackenberg_2015_Relationships/p28_1.png', 'JRME_Izsak_2017_Preservice/p18_1.png']).
 attested_representation_use(number_line, proportional, number_line_jumps_for_arithmetic, 4, ['ZDM_Lobato_2015_Leveraging/p11_1.png', 'ZDM_Lobato_2015_Leveraging/p12_1.png', 'ZDM_Lobato_2015_Leveraging/p14_2.png']).
-attested_representation_use(number_line, proportional, partition_whole_into_equal_parts, 1, ['JMTE_Orrill_2012_Making/p17_1.png']).
+attested_representation_use(number_line, proportional, partition_into_equal_parts, 1, ['JMTE_Orrill_2012_Making/p17_1.png']).
 attested_representation_use(number_line, ratio, double_number_line_for_proportion, 5, ['MERJ_Wright_2014_Frequencies/p12_1.png', 'MERJ_Wright_2014_Frequencies/p14_1.png', 'MERJ_Wright_2014_Frequencies/p15_1.png']).
 attested_representation_use(number_line, ratio, number_line_jumps_for_arithmetic, 4, ['ZDM_Lobato_2015_Leveraging/p11_1.png', 'ZDM_Lobato_2015_Leveraging/p12_1.png', 'ZDM_Lobato_2015_Leveraging/p14_2.png']).
 attested_representation_use(number_line, ratio, mark_intervals_on_number_line, 3, ['ZDM_Lobato_2015_Leveraging/p11_2.png', 'ZDM_Lobato_2015_Leveraging/p11_3.png', 'ZDM_Lobato_2015_Leveraging/p6_1.png']).
@@ -353,7 +353,7 @@ attested_representation_use(number_line, whole_number, double_number_line_for_pr
 attested_representation_use(number_line, whole_number, represent_quantity_spatially, 3, ['ESM_Baruk_1987_Realite/p6_1.png', 'ZDM_Lobato_2015_Leveraging/p13_1.png', 'ZDM_Lobato_2015_Leveraging/p14_1.png']).
 attested_representation_use(place_value_chart, algebraic, place_value_chart_for_columns, 1, ['JMB_Ho_2014_Model/p9_1.png']).
 attested_representation_use(place_value_chart, fraction, base_ten_blocks_for_place_value, 1, ['JMB_Neuberger_2012_Benefits/p12_2.png']).
-attested_representation_use(place_value_chart, fraction, partition_whole_into_equal_parts, 1, ['JRME_Lamon_1996_Development/p19_1.png']).
+attested_representation_use(place_value_chart, fraction, partition_into_equal_parts, 1, ['JRME_Lamon_1996_Development/p19_1.png']).
 attested_representation_use(place_value_chart, geometric, place_value_chart_for_columns, 1, ['JMTE_Project_2011_Measuring/p14_1.png']).
 attested_representation_use(place_value_chart, other, place_value_chart_for_columns, 1, ['MTL_McClain_2003_Supporting/p16_1.png']).
 attested_representation_use(place_value_chart, probability, place_value_chart_for_columns, 1, ['JMTE_Project_2011_Measuring/p14_1.png']).
@@ -369,7 +369,7 @@ attested_representation_use(set_grouping, combinatorial, count_collection_with_c
 attested_representation_use(set_grouping, decimal, count_collection_with_counters, 1, ['JMB_Singer_2008_Between/p11_1.png']).
 attested_representation_use(set_grouping, decimal, place_value_chart_for_columns, 1, ['RME_OReilly_1999_Students''/p10_1.png']).
 attested_representation_use(set_grouping, fraction, count_collection_with_counters, 15, ['ESM_Hasemann_1995_Concept/p8_1.png', 'ESM_Pirie_1992_Creating/p17_2.png', 'ESM_Pirie_1992_Creating/p18_1.png']).
-attested_representation_use(set_grouping, fraction, partition_whole_into_equal_parts, 7, ['FLM_Pirie_1988_Understanding/p3_1.png', 'JMB_Baek_2017_Preservice/p7_2.png', 'JMB_Hackenberg_2013_Fractional/p10_1.png']).
+attested_representation_use(set_grouping, fraction, partition_into_equal_parts, 7, ['FLM_Pirie_1988_Understanding/p3_1.png', 'JMB_Baek_2017_Preservice/p7_2.png', 'JMB_Hackenberg_2013_Fractional/p10_1.png']).
 attested_representation_use(set_grouping, fraction, equal_groups_for_multiplication, 4, ['ESM_Levenson_2013_Exploring/p7_1.png', 'JMB_Baek_2017_Preservice/p7_1.png', 'JMB_Nabors_2003_From/p30_3.png']).
 attested_representation_use(set_grouping, fraction, group_for_division_or_sharing, 4, ['ESM_Peck_2016_Reinventing/p10_1.png', 'IJSME_Lee_2014_Relationships/p13_1.png', 'JMB_Olive_2006_Making/p17_1.png']).
 attested_representation_use(set_grouping, fraction, bar_model_for_multiplicative_reasoning, 2, ['IJSME_Lee_2014_Relationships/p16_1.png', 'JRME_Ng_2009_Model/p25_1.png']).
@@ -444,4 +444,3 @@ denotation_gap(base_ten_blocks, partition_for_fraction_comparison, 1).
 denotation_gap(number_line, bar_model_for_multiplicative_reasoning, 1).
 denotation_gap(set_grouping, partition_for_fraction_comparison, 1).
 denotation_gap(set_grouping, partition_region_into_sections, 1).
-

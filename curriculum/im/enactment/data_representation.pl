@@ -215,7 +215,7 @@ enactment_move(display_question_set, 2, count_each_category(display)).
 enactment_move(display_question_set, 3, total_two_categories(category_pairs)).
 enactment_move(display_question_set, 4, compare_two_categories(category_pairs)).
 enactment_move(display_question_set, 5, total_all_categories(display)).
-enactment_move(display_question_set, 6, name_extremes(display)).
+enactment_move(display_question_set, 6, select_extremal(display)).
 
 enactment_move(notice_and_wonder, 1, read_display(display)).
 enactment_move(notice_and_wonder, 2, derive_noticings(display)).
@@ -235,12 +235,12 @@ enactment_move(table_from_rule, 4, answer_index_questions(terms)).
 enactment_move(table_from_rule, 5, state_column_relationship(terms)).
 
 enactment_move(constraint_fill_table, 1, read_constraint(constraint)).
-enactment_move(constraint_fill_table, 2, enumerate_solutions(constraint)).
+enactment_move(constraint_fill_table, 2, enumerate_candidates(constraint)).
 enactment_move(constraint_fill_table, 3, record_rows(solutions)).
 enactment_move(constraint_fill_table, 4, check_rows_against_constraint(solutions)).
 
 enactment_move(adjudicate_against_data, 1, read_data(data)).
-enactment_move(adjudicate_against_data, 2, evaluate_each_claim(claims)).
+enactment_move(adjudicate_against_data, 2, test_criteria(claims)).
 enactment_move(adjudicate_against_data, 3, repair_refused_claims(claims)).
 enactment_move(adjudicate_against_data, 4, report_verdicts(claims)).
 
@@ -508,7 +508,7 @@ run_move(total_all_categories, _, _, _Inputs, S, S, Result) :-
     length(Pairs, N),
     format(atom(Result), "~w in all across ~w categories", [Total, N]).
 
-run_move(name_extremes, _, _, _Inputs, S, S, Result) :-
+run_move(select_extremal, _, _, _Inputs, S, S, Result) :-
     memberchk(display-D, S),
     D = numeric(_, Values), !,
     display_pairs(D, Pairs),
@@ -517,7 +517,7 @@ run_move(name_extremes, _, _, _Inputs, S, S, Result) :-
     value_text(Vmode, VmT),
     format(atom(Result), "most common value ~w with ~w marks; ~w marks over ~w positions",
            [VmT, Cmode, N, Distinct]).
-run_move(name_extremes, _, _, _Inputs, S, S, Result) :-
+run_move(select_extremal, _, _, _Inputs, S, S, Result) :-
     memberchk(display-D, S),
     display_pairs(D, Pairs),
     max_pair(Pairs, Amax-Nmax),
@@ -647,7 +647,7 @@ run_move(read_constraint, _, _, Inputs, S, [constraint-C | S], Result) :-
     memberchk(constraint-C, Inputs),
     constraint_text(C, Result).
 
-run_move(enumerate_solutions, _, _, Inputs, S, [solutions-Sols | S], Result) :-
+run_move(enumerate_candidates, _, _, Inputs, S, [solutions-Sols | S], Result) :-
     memberchk(constraint-C, S),
     (   memberchk(count-N, Inputs) -> true ; N = 5 ),
     solutions_for(C, N, Sols),
@@ -680,7 +680,7 @@ run_move(read_data, _, _, Inputs, S, [display-D | S], Result) :-
     input_display(Inputs, D),
     display_summary(D, Result).
 
-run_move(evaluate_each_claim, _, _, Inputs, S, [rulings-Rs | S], Result) :-
+run_move(test_criteria, _, _, Inputs, S, [rulings-Rs | S], Result) :-
     memberchk(display-D, S),
     memberchk(claims-Claims, Inputs),
     findall(ruling(Text, Test, Holds),

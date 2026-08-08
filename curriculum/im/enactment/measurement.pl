@@ -12,7 +12,7 @@
  *
  * ## What an enactment does not settle
  *
- * Running `iterate_unit_along_extent` on IM-G1-U6-L6 reports a length in paper
+ * Running `linear_unit_iteration` on IM-G1-U6-L6 reports a length in paper
  * clips. No paper clip was laid against a strip of tape. The enactment models
  * the count-and-report structure of the task and prints the arithmetic that
  * structure commits a class to; the physical act stays with the class. Every
@@ -83,14 +83,14 @@
 %   reading came from. `scripts/checks/check_measurement_enactment.py` re-reads
 %   every line cited here and requires the snippet back.
 
-enactment_form(iterate_unit_along_extent,
+enactment_form(linear_unit_iteration,
                'Lay one unit end to end along an extent and report how many \c
                 intervals it took.',
                warrant('IM-G1-U6-L6',
                        'curriculum/im_teacher_guides/grade1/unit6/lesson6.md',
                        312,
                        "Use paper clips to measure each strip of tape.")).
-enactment_form(reunitize_same_extent,
+enactment_form(unit_conversion_by_iteration,
                'Measure one extent twice with units of different size and \c
                 relate the two counts by the factor between the units.',
                warrant('IM-G2-U3-L9',
@@ -111,7 +111,7 @@ enactment_form(pack_region_with_unit,
                        'curriculum/im_teacher_guides/grade5/unit8/lesson8.md',
                        132,
                        "The wagon bed is approximately 27 feet long, 13")).
-enactment_form(change_measured_quantity,
+enactment_form(unit_preserving_measured_quantity_change,
                'Add or take away a measured amount and keep the unit on the \c
                 result.',
                warrant('IM-G3-U3-L2',
@@ -160,10 +160,10 @@ enactment_form(resolve_measure_to_scale_grain,
 %
 %   One sentence per form, carried on every emitted row.
 
-form_does_not_claim(iterate_unit_along_extent,
+form_does_not_claim(linear_unit_iteration,
     'The count came from the lesson text or from a machine stand-in; no unit \c
      was laid against a physical object.').
-form_does_not_claim(reunitize_same_extent,
+form_does_not_claim(unit_conversion_by_iteration,
     'The conversion factor was taken from the lesson, not measured; the \c
      enactment does not establish that the two units relate as stated.').
 form_does_not_claim(partition_extent_into_unit_pieces,
@@ -172,7 +172,7 @@ form_does_not_claim(partition_extent_into_unit_pieces,
 form_does_not_claim(pack_region_with_unit,
     'The covering is a count of unit copies over stated dimensions; no region \c
      was tiled and no leftover shape was fitted.').
-form_does_not_claim(change_measured_quantity,
+form_does_not_claim(unit_preserving_measured_quantity_change,
     'The unit is carried through the arithmetic by construction, so the \c
      enactment cannot be evidence that a learner would carry it.').
 form_does_not_claim(compose_value_from_denominations,
@@ -204,17 +204,17 @@ form_does_not_claim(resolve_measure_to_scale_grain,
 %   every emitted step verb is declared here, so a move cannot be a label for a
 %   verb the code never runs.
 
-enactment_move(iterate_unit_along_extent, 1, establish_unit(unit)).
-enactment_move(iterate_unit_along_extent, 2, partition_unit_into_equal_intervals(subdivisions)).
-enactment_move(iterate_unit_along_extent, 3, iterate_interval_from_zero(unit_count)).
-enactment_move(iterate_unit_along_extent, 4, read_accumulated_length(measure)).
-enactment_move(iterate_unit_along_extent, 5, recount_boundary_marks_as_intervals(overcount)).
+enactment_move(linear_unit_iteration, 1, establish_unit(unit)).
+enactment_move(linear_unit_iteration, 2, partition_unit_into_equal_intervals(subdivisions)).
+enactment_move(linear_unit_iteration, 3, iterate_interval_from_zero(unit_count)).
+enactment_move(linear_unit_iteration, 4, read_accumulated_length(measure)).
+enactment_move(linear_unit_iteration, 5, recount_boundary_marks_as_intervals(overcount)).
 
-enactment_move(reunitize_same_extent, 1, establish_equivalence(conversion_factor)).
-enactment_move(reunitize_same_extent, 2, iterate_conversion_group(unit_count)).
-enactment_move(reunitize_same_extent, 3, multiply_unit_count(converted)).
-enactment_move(reunitize_same_extent, 4, relabel_as_smaller_unit(to_unit)).
-enactment_move(reunitize_same_extent, 5, contrast_relabel_without_iterating(unscaled)).
+enactment_move(unit_conversion_by_iteration, 1, establish_equivalence(conversion_factor)).
+enactment_move(unit_conversion_by_iteration, 2, iterate_conversion_group(unit_count)).
+enactment_move(unit_conversion_by_iteration, 3, multiply_unit_count(converted)).
+enactment_move(unit_conversion_by_iteration, 4, relabel_as_smaller_unit(to_unit)).
+enactment_move(unit_conversion_by_iteration, 5, contrast_relabel_without_iterating(unscaled)).
 
 enactment_move(partition_extent_into_unit_pieces, 1, set_group_size(piece_size)).
 enactment_move(partition_extent_into_unit_pieces, 2, repeatedly_remove_group_size(extent)).
@@ -223,17 +223,17 @@ enactment_move(partition_extent_into_unit_pieces, 4, preserve_leftover_as_remain
 
 enactment_move(pack_region_with_unit, 1, name_unit_region(unit)).
 enactment_move(pack_region_with_unit, 2, tile_region_with_unit(dimensions)).
-enactment_move(pack_region_with_unit, 3, count_unit_regions(unit_region_count)).
+enactment_move(pack_region_with_unit, 3, count_units(unit_region_count)).
 enactment_move(pack_region_with_unit, 4, compare_count_to_capacity(capacity)).
 
-enactment_move(change_measured_quantity, 1, establish_common_measurement_unit(unit)).
-enactment_move(change_measured_quantity, 2, perform_grounded_quantity_change(operands)).
-enactment_move(change_measured_quantity, 3, retain_measurement_unit(result)).
-enactment_move(change_measured_quantity, 4, contrast_bare_numeral(unit_dropped)).
+enactment_move(unit_preserving_measured_quantity_change, 1, establish_common_measurement_unit(unit)).
+enactment_move(unit_preserving_measured_quantity_change, 2, perform_grounded_quantity_change(operands)).
+enactment_move(unit_preserving_measured_quantity_change, 3, retain_measurement_unit(result)).
+enactment_move(unit_preserving_measured_quantity_change, 4, contrast_bare_numeral(unit_dropped)).
 
 enactment_move(compose_value_from_denominations, 1, establish_equivalence(denominations)).
 enactment_move(compose_value_from_denominations, 2, iterate_conversion_group(holding)).
-enactment_move(compose_value_from_denominations, 3, accumulate_total_value(total)).
+enactment_move(compose_value_from_denominations, 3, accumulate_total(total)).
 enactment_move(compose_value_from_denominations, 4, spend_from_total(remainder)).
 
 enactment_move(read_circular_scale, 1, place_hour_hand(hour)).
@@ -248,7 +248,7 @@ enactment_move(bracket_unknown_measure, 4, test_bracket_contains(actual)).
 enactment_move(bracket_unknown_measure, 5, report_bracket_width(width)).
 
 enactment_move(sort_against_benchmark, 1, fix_benchmark(benchmark)).
-enactment_move(sort_against_benchmark, 2, compare_candidate_to_benchmark(candidates)).
+enactment_move(sort_against_benchmark, 2, judge_against_benchmark(candidates)).
 enactment_move(sort_against_benchmark, 3, place_candidate_in_band(bands)).
 enactment_move(sort_against_benchmark, 4, report_bands(band_report)).
 
@@ -268,46 +268,46 @@ enactment_move(resolve_measure_to_scale_grain, 4, report_what_the_scale_settles(
 %   of that line in the live tree. A lesson may carry more than one form when
 %   its task statement asks for more than one doing.
 
-lesson_enactment_form('IM-G1-U6-L6', iterate_unit_along_extent,
+lesson_enactment_form('IM-G1-U6-L6', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade1/unit6/lesson6.md', 312,
              "Use paper clips to measure each strip of tape.")).
 lesson_enactment_form('IM-G1-U6-L6', resolve_measure_to_scale_grain,
     evidence('curriculum/im_teacher_guides/grade1/unit6/lesson6.md', 217,
              "Andre says the workbook is 5 paper clips long.")).
-lesson_enactment_form('IM-G1-U6-L8', iterate_unit_along_extent,
+lesson_enactment_form('IM-G1-U6-L8', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade1/unit6/lesson8.md', 157,
              "Represent your measurement using drawings,")).
-lesson_enactment_form('IM-G1-U6-L9', iterate_unit_along_extent,
+lesson_enactment_form('IM-G1-U6-L9', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade1/unit6/lesson9.md', 161,
              "Give each group centimeter cubes.")).
 lesson_enactment_form('IM-G1-U7-L13', read_circular_scale,
     evidence('curriculum/im_teacher_guides/grade1/unit7/lesson13.md', 409,
              "1. Circle the 3 clocks that show 5 o")).
-lesson_enactment_form('IM-G2-U3-L1', iterate_unit_along_extent,
+lesson_enactment_form('IM-G2-U3-L1', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson1.md', 160,
              "Use straws to measure your string. The string")).
 lesson_enactment_form('IM-G2-U3-L1', resolve_measure_to_scale_grain,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson1.md', 372,
              "2. Clare got 6 when she measured the same rectangle.")).
-lesson_enactment_form('IM-G2-U3-L2', reunitize_same_extent,
+lesson_enactment_form('IM-G2-U3-L2', unit_conversion_by_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson2.md', 187,
              "1. Measure the length of the bearded dragon")).
 lesson_enactment_form('IM-G2-U3-L4', bracket_unknown_measure,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson4.md', 173,
              "1. Record an estimate that is:")).
-lesson_enactment_form('IM-G2-U3-L5', iterate_unit_along_extent,
+lesson_enactment_form('IM-G2-U3-L5', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson5.md', 162,
              "The tape pieces on the floor represent the lengths")).
 lesson_enactment_form('IM-G2-U3-L5', sort_against_benchmark,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson5.md', 396,
              "He measured it and said it was about 13")).
-lesson_enactment_form('IM-G2-U3-L8', iterate_unit_along_extent,
+lesson_enactment_form('IM-G2-U3-L8', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson8.md', 175,
              "1. Find 2 items that are about an inch long.")).
-lesson_enactment_form('IM-G2-U3-L9', reunitize_same_extent,
+lesson_enactment_form('IM-G2-U3-L9', unit_conversion_by_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson9.md', 209,
              "1. Work with your group. Measure the tape strips")).
-lesson_enactment_form('IM-G2-U3-L14', iterate_unit_along_extent,
+lesson_enactment_form('IM-G2-U3-L14', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit3/lesson14.md', 173,
              "1. Trace your hand. (Spread your fingers wide.)")).
 lesson_enactment_form('IM-G2-U6-L11', read_circular_scale,
@@ -328,16 +328,16 @@ lesson_enactment_form('IM-G2-U6-L18', compose_value_from_denominations,
 lesson_enactment_form('IM-G2-U6-L22', compose_value_from_denominations,
     evidence('curriculum/im_teacher_guides/grade2/unit6/lesson22.md', 141,
              "Han has $40 to spend this weekend. He and his")).
-lesson_enactment_form('IM-G2-U9-L3', iterate_unit_along_extent,
+lesson_enactment_form('IM-G2-U9-L3', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade2/unit9/lesson3.md', 178,
              "Draw 3 lines on the map to show each trip. Each line")).
-lesson_enactment_form('IM-G2-U9-L3', change_measured_quantity,
+lesson_enactment_form('IM-G2-U9-L3', unit_preserving_measured_quantity_change,
     evidence('curriculum/im_teacher_guides/grade2/unit9/lesson3.md', 178,
              "Draw 3 lines on the map to show each trip. Each line")).
 lesson_enactment_form('IM-G3-U2-L7', sort_against_benchmark,
     evidence('curriculum/im_teacher_guides/grade3/unit2/lesson7.md', 149,
              "make sense to measure with square meters.")).
-lesson_enactment_form('IM-G3-U3-L2', change_measured_quantity,
+lesson_enactment_form('IM-G3-U3-L2', unit_preserving_measured_quantity_change,
     evidence('curriculum/im_teacher_guides/grade3/unit3/lesson2.md', 199,
              "Solve each problem. Explain or show your")).
 lesson_enactment_form('IM-G3-U3-L21', compose_value_from_denominations,
@@ -349,13 +349,13 @@ lesson_enactment_form('IM-G3-U5-L12', partition_extent_into_unit_pieces,
 lesson_enactment_form('IM-G3-U5-L17', bracket_unknown_measure,
     evidence('curriculum/im_teacher_guides/grade3/unit5/lesson17.md', 88,
              "What is the length of this ladybug?")).
-lesson_enactment_form('IM-G3-U6-L1', iterate_unit_along_extent,
+lesson_enactment_form('IM-G3-U6-L1', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade3/unit6/lesson1.md', 156,
              "Use the ruler from your teacher to measure the")).
 lesson_enactment_form('IM-G3-U6-L2', bracket_unknown_measure,
     evidence('curriculum/im_teacher_guides/grade3/unit6/lesson2.md', 96,
              "What is the length of the paper clip?")).
-lesson_enactment_form('IM-G3-U6-L3', iterate_unit_along_extent,
+lesson_enactment_form('IM-G3-U6-L3', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade3/unit6/lesson3.md', 105,
              "Look at the rulers you have been using to measure")).
 lesson_enactment_form('IM-G3-U6-L3', resolve_measure_to_scale_grain,
@@ -367,7 +367,7 @@ lesson_enactment_form('IM-G3-U6-L6', sort_against_benchmark,
 lesson_enactment_form('IM-G3-U6-L9', bracket_unknown_measure,
     evidence('curriculum/im_teacher_guides/grade3/unit6/lesson9.md', 82,
              "This clock only has an hour hand.")).
-lesson_enactment_form('IM-G3-U6-L10', change_measured_quantity,
+lesson_enactment_form('IM-G3-U6-L10', unit_preserving_measured_quantity_change,
     evidence('curriculum/im_teacher_guides/grade3/unit6/lesson10.md', 154,
              "1. Kiran arrived at the bus stop")).
 lesson_enactment_form('IM-G3-U8-L5', compose_value_from_denominations,
@@ -379,19 +379,19 @@ lesson_enactment_form('IM-G3-U8-L14', bracket_unknown_measure,
 lesson_enactment_form('IM-G4-U4-L23', sort_against_benchmark,
     evidence('curriculum/im_teacher_guides/grade4/unit4/lesson23.md', 139,
              "Here are some facts about insects.")).
-lesson_enactment_form('IM-G4-U5-L9', reunitize_same_extent,
+lesson_enactment_form('IM-G4-U5-L9', unit_conversion_by_iteration,
     evidence('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 321,
              "1.   a. Estimate: How many times do we fill the")).
-lesson_enactment_form('IM-G4-U5-L10', reunitize_same_extent,
+lesson_enactment_form('IM-G4-U5-L10', unit_conversion_by_iteration,
     evidence('curriculum/im_teacher_guides/grade4/unit5/lesson10.md', 162,
              "How are the three units related?")).
-lesson_enactment_form('IM-G4-U5-L15', reunitize_same_extent,
+lesson_enactment_form('IM-G4-U5-L15', unit_conversion_by_iteration,
     evidence('curriculum/im_teacher_guides/grade4/unit5/lesson15.md', 282,
              "While on an outing, a group of friends had a stone-")).
 lesson_enactment_form('IM-G4-U6-L22', compose_value_from_denominations,
     evidence('curriculum/im_teacher_guides/grade4/unit6/lesson22.md', 151,
              "1. There are 45 students going on a field trip to a")).
-lesson_enactment_form('IM-G4-U6-L26', iterate_unit_along_extent,
+lesson_enactment_form('IM-G4-U6-L26', linear_unit_iteration,
     evidence('curriculum/im_teacher_guides/grade4/unit6/lesson26.md', 145,
              "Follow these steps to make paper flowers:")).
 lesson_enactment_form('IM-G4-U9-L10', bracket_unknown_measure,
@@ -521,95 +521,95 @@ lesson_meta('IM-G5-U8-L15', '5', 'curriculum/im_teacher_guides/grade5/unit8/less
 enactment_input(L, F, [input(form, F, derived(lesson_enactment_form))|Rest]) :-
     lesson_inputs(L, F, Rest).
 
-% --- iterate_unit_along_extent -----------------------------------------
-lesson_inputs('IM-G1-U6-L6', iterate_unit_along_extent,
+% --- linear_unit_iteration -----------------------------------------
+lesson_inputs('IM-G1-U6-L6', linear_unit_iteration,
     [ input(unit, paper_clip, curriculum('curriculum/im_teacher_guides/grade1/unit6/lesson6.md', 312)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 5, curriculum('curriculum/im_teacher_guides/grade1/unit6/lesson6.md', 217))
     ]).
-lesson_inputs('IM-G1-U6-L8', iterate_unit_along_extent,
+lesson_inputs('IM-G1-U6-L8', linear_unit_iteration,
     [ input(unit, centimeter_cube, curriculum('curriculum/im_teacher_guides/grade1/unit6/lesson8.md', 51)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 110, stand_in('The string is cut in the classroom. 110 is the upper bound the lesson states for the lengths it expects.'))
     ]).
-lesson_inputs('IM-G1-U6-L9', iterate_unit_along_extent,
+lesson_inputs('IM-G1-U6-L9', linear_unit_iteration,
     [ input(unit, centimeter_cube, curriculum('curriculum/im_teacher_guides/grade1/unit6/lesson9.md', 161)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 24, stand_in('The animal strip is taped up in the classroom, so the machine supplies a length of 24 cubes.'))
     ]).
-lesson_inputs('IM-G2-U3-L1', iterate_unit_along_extent,
+lesson_inputs('IM-G2-U3-L1', linear_unit_iteration,
     [ input(unit, centimeter_cube, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson1.md', 363)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 6, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson1.md', 372))
     ]).
-lesson_inputs('IM-G2-U3-L5', iterate_unit_along_extent,
+lesson_inputs('IM-G2-U3-L5', linear_unit_iteration,
     [ input(unit, meter, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson5.md', 162)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 3, stand_in('The reptile tapes are laid on the classroom floor, so the machine supplies a Gila monster of 3 meters.'))
     ]).
-lesson_inputs('IM-G2-U3-L8', iterate_unit_along_extent,
+lesson_inputs('IM-G2-U3-L8', linear_unit_iteration,
     [ input(unit, inch, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson8.md', 175)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 7, stand_in('The marker and the book come from the room, so the machine supplies a marker of 7 inches.'))
     ]).
-lesson_inputs('IM-G2-U3-L14', iterate_unit_along_extent,
+lesson_inputs('IM-G2-U3-L14', linear_unit_iteration,
     [ input(unit, inch, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson14.md', 173)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 6, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson14.md', 391))
     ]).
-lesson_inputs('IM-G2-U9-L3', iterate_unit_along_extent,
+lesson_inputs('IM-G2-U9-L3', linear_unit_iteration,
     [ input(unit, centimeter, curriculum('curriculum/im_teacher_guides/grade2/unit9/lesson3.md', 178)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 8, stand_in('The line from Trenton to Harrisburg is drawn by the student, so the machine supplies 8 centimeters.'))
     ]).
-lesson_inputs('IM-G3-U6-L1', iterate_unit_along_extent,
+lesson_inputs('IM-G3-U6-L1', linear_unit_iteration,
     [ input(unit, inch, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson1.md', 156)),
       input(subdivisions, 2, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson1.md', 238)),
       input(unit_count, 7, stand_in('The objects come from the room, so the machine supplies an object of seven half-inches.'))
     ]).
-lesson_inputs('IM-G3-U6-L3', iterate_unit_along_extent,
+lesson_inputs('IM-G3-U6-L3', linear_unit_iteration,
     [ input(unit, inch, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson3.md', 105)),
       input(subdivisions, 4, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson3.md', 9)),
       input(unit_count, 14, stand_in('The objects come from the room, so the machine supplies an object of fourteen quarter-inches.'))
     ]).
-lesson_inputs('IM-G4-U6-L26', iterate_unit_along_extent,
+lesson_inputs('IM-G4-U6-L26', linear_unit_iteration,
     [ input(unit, inch, curriculum('curriculum/im_teacher_guides/grade4/unit6/lesson26.md', 145)),
       input(subdivisions, 1, derived(whole_units_only)),
       input(unit_count, 11, stand_in('The tissue paper is handed out in class, so the machine supplies a sheet that takes eleven one-inch folds.'))
     ]).
 
-% --- reunitize_same_extent ---------------------------------------------
-lesson_inputs('IM-G2-U3-L2', reunitize_same_extent,
+% --- unit_conversion_by_iteration ---------------------------------------------
+lesson_inputs('IM-G2-U3-L2', unit_conversion_by_iteration,
     [ input(from_unit, ten_centimeter_tool, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson2.md', 187)),
       input(to_unit, centimeter, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson2.md', 187)),
       input(conversion_factor, 10, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson2.md', 187)),
       input(unit_count, 2, stand_in('The bearded dragon picture is handed out, so the machine supplies a length of two ten-centimeter tools.'))
     ]).
-lesson_inputs('IM-G2-U3-L9', reunitize_same_extent,
+lesson_inputs('IM-G2-U3-L9', unit_conversion_by_iteration,
     [ input(from_unit, foot, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson9.md', 219)),
       input(to_unit, inch, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson9.md', 219)),
       input(conversion_factor, 12, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson9.md', 219)),
       input(unit_count, 16, curriculum('curriculum/im_teacher_guides/grade2/unit3/lesson9.md', 473))
     ]).
-lesson_inputs('IM-G4-U5-L9', reunitize_same_extent,
+lesson_inputs('IM-G4-U5-L9', unit_conversion_by_iteration,
     [ input(from_unit, kilogram, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 187)),
       input(to_unit, gram, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 187)),
       input(conversion_factor, 1000, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 187)),
       input(unit_count, 2, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 187))
     ]).
-lesson_inputs('IM-G4-U5-L9', reunitize_same_extent,
+lesson_inputs('IM-G4-U5-L9', unit_conversion_by_iteration,
     [ input(from_unit, liter, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 321)),
       input(to_unit, hundred_milliliter_glass, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 321)),
       input(conversion_factor, 10, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 321)),
       input(unit_count, 1, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson9.md', 321))
     ]).
-lesson_inputs('IM-G4-U5-L10', reunitize_same_extent,
+lesson_inputs('IM-G4-U5-L10', unit_conversion_by_iteration,
     [ input(from_unit, meter, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson10.md', 162)),
       input(to_unit, centimeter, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson10.md', 162)),
       input(conversion_factor, 100, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson10.md', 162)),
       input(unit_count, 30, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson10.md', 163))
     ]).
-lesson_inputs('IM-G4-U5-L15', reunitize_same_extent,
+lesson_inputs('IM-G4-U5-L15', unit_conversion_by_iteration,
     [ input(from_unit, foot, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson15.md', 285)),
       input(to_unit, inch, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson15.md', 285)),
       input(conversion_factor, 12, curriculum('curriculum/im_teacher_guides/grade4/unit5/lesson15.md', 285)),
@@ -666,20 +666,20 @@ lesson_inputs('IM-G5-U8-L8', pack_region_with_unit,
       input(capacity, 9, curriculum('curriculum/im_teacher_guides/grade5/unit8/lesson8.md', 134))
     ]).
 
-% --- change_measured_quantity ------------------------------------------
-lesson_inputs('IM-G2-U9-L3', change_measured_quantity,
+% --- unit_preserving_measured_quantity_change ------------------------------------------
+lesson_inputs('IM-G2-U9-L3', unit_preserving_measured_quantity_change,
     [ input(unit, centimeter, curriculum('curriculum/im_teacher_guides/grade2/unit9/lesson3.md', 178)),
       input(operation, add, curriculum('curriculum/im_teacher_guides/grade2/unit9/lesson3.md', 191)),
       input(left, 8, stand_in('The lines are drawn by the student, so the machine supplies 8 centimeters for the first leg.')),
       input(right, 5, stand_in('The machine supplies 5 centimeters for the second leg.'))
     ]).
-lesson_inputs('IM-G3-U3-L2', change_measured_quantity,
+lesson_inputs('IM-G3-U3-L2', unit_preserving_measured_quantity_change,
     [ input(unit, foot, curriculum('curriculum/im_teacher_guides/grade3/unit3/lesson2.md', 205)),
       input(operation, add, curriculum('curriculum/im_teacher_guides/grade3/unit3/lesson2.md', 205)),
       input(left, 115, curriculum('curriculum/im_teacher_guides/grade3/unit3/lesson2.md', 205)),
       input(right, 131, curriculum('curriculum/im_teacher_guides/grade3/unit3/lesson2.md', 205))
     ]).
-lesson_inputs('IM-G3-U6-L10', change_measured_quantity,
+lesson_inputs('IM-G3-U6-L10', unit_preserving_measured_quantity_change,
     [ input(unit, minute_past_midnight, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson10.md', 156)),
       input(operation, add, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson10.md', 159)),
       input(left, 927, curriculum('curriculum/im_teacher_guides/grade3/unit6/lesson10.md', 156)),
@@ -897,7 +897,7 @@ in(Inputs, Key, Value) :- memberchk(input(Key, Value, _), Inputs).
 
 
 % --- form 1 -------------------------------------------------------------
-run_form(iterate_unit_along_extent, In, Steps, Artifact) :-
+run_form(linear_unit_iteration, In, Steps, Artifact) :-
     in(In, unit, Unit), in(In, subdivisions, D), in(In, unit_count, N),
     integer(D), D > 0, integer(N), N > 0,
     action_automata_registry:run_action_automaton(
@@ -917,7 +917,7 @@ run_form(iterate_unit_along_extent, In, Steps, Artifact) :-
     strip_artifact(N, D, Unit, Length, Artifact).
 
 % --- form 2 -------------------------------------------------------------
-run_form(reunitize_same_extent, In, Steps, Artifact) :-
+run_form(unit_conversion_by_iteration, In, Steps, Artifact) :-
     in(In, from_unit, From), in(In, to_unit, To),
     in(In, conversion_factor, F), in(In, unit_count, N),
     integer(F), F > 1, integer(N), N >= 0,
@@ -975,7 +975,7 @@ run_form(pack_region_with_unit, In, Steps, Artifact) :-
     capacity_step(Cap, Count, CapResult),
     Steps = [ step(1, name_unit_region, Unit, unit_region(Unit)),
               step(2, tile_region_with_unit, Region, Shape),
-              step(3, count_unit_regions, Region, copies(Count, Unit)),
+              step(3, count_units, Region, copies(Count, Unit)),
               step(4, compare_count_to_capacity, Cap, CapResult)
             ],
     pack_artifact(Region, Unit, Count, Artifact).
@@ -1001,7 +1001,7 @@ pack_artifact(rectangle_from_area(Area, Side), Unit, _, scene(area_unit_covering
 pack_artifact(Region, Unit, Count, printed(unit_region_count(Region, Count, Unit))).
 
 % --- form 5 -------------------------------------------------------------
-run_form(change_measured_quantity, In, Steps, Artifact) :-
+run_form(unit_preserving_measured_quantity_change, In, Steps, Artifact) :-
     in(In, unit, Unit), in(In, operation, Op),
     in(In, left, A), in(In, right, B),
     memberchk(Op, [add, subtract]),
@@ -1034,7 +1034,7 @@ run_form(compose_value_from_denominations, In, Steps, Artifact) :-
     spend_step(VU, Cost, Total, Remainder),
     Steps = [ step(1, establish_equivalence, Ds, in_units(VU, Ds)),
               step(2, iterate_conversion_group, Hs, subtotals(Lines)),
-              step(3, accumulate_total_value, Lines, total(Total, VU)),
+              step(3, accumulate_total, Lines, total(Total, VU)),
               step(4, spend_from_total, Cost, Remainder)
             ],
     Artifact = printed(value_table(Lines, total(Total, VU), Remainder)).
@@ -1134,7 +1134,7 @@ run_form(sort_against_benchmark, In, Steps, Artifact) :-
             ),
             Bands),
     Steps = [ step(1, fix_benchmark, band_bounds(Bounds, Labels), in_units(Unit)),
-              step(2, compare_candidate_to_benchmark, Cands, Placed),
+              step(2, judge_against_benchmark, Cands, Placed),
               step(3, place_candidate_in_band, Placed, Bands),
               step(4, report_bands, Bands, bands_reported(Bands))
             ],

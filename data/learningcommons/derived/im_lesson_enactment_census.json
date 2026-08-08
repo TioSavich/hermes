@@ -156,19 +156,7 @@
    }
   },
   {
-   "form": "change_measured_quantity",
-   "gloss": "Add or take away a measured amount and keep the unit on the result.",
-   "lane": "measurement_task",
-   "lessons": 3,
-   "moves": 4,
-   "warrant": {
-    "line": 199,
-    "source": "curriculum/im_teacher_guides/grade3/unit3/lesson2.md",
-    "text": "Solve each problem. Explain or show your"
-   }
-  },
-  {
-   "form": "compare_two_collections",
+   "form": "compare_cardinalities_one_to_one",
    "gloss": "Match two collections one to one and say which holds more.",
    "lane": "counting_place_value_or_comparison",
    "lessons": 2,
@@ -312,7 +300,7 @@
    }
   },
   {
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "gloss": "Lay one unit end to end along an extent and report how many intervals it took.",
    "lane": "measurement_task",
    "lessons": 11,
@@ -408,18 +396,6 @@
    }
   },
   {
-   "form": "partition_strip_into_named_parts",
-   "gloss": "Partition a strip that represents 1 into the equal parts a task names in words, and label every part with its unit fraction.",
-   "lane": "fraction_model_reasoning",
-   "lessons": 3,
-   "moves": 4,
-   "warrant": {
-    "line": 196,
-    "source": "curriculum/im_teacher_guides/grade4/unit2/lesson4.md",
-    "text": "Use one blank strip to show tenths."
-   }
-  },
-  {
    "form": "read_circular_scale",
    "gloss": "Read a time from two hands on one dial, where the minute hand iterates five-minute intervals and the hour hand carries the coarser count.",
    "lane": "measurement_task",
@@ -441,18 +417,6 @@
     "line": 158,
     "source": "curriculum/im_teacher_guides/grade5/unit5/lesson7.md",
     "text": "1728 weigh 6.867 grams."
-   }
-  },
-  {
-   "form": "reunitize_same_extent",
-   "gloss": "Measure one extent twice with units of different size and relate the two counts by the factor between the units.",
-   "lane": "measurement_task",
-   "lessons": 5,
-   "moves": 5,
-   "warrant": {
-    "line": 209,
-    "source": "curriculum/im_teacher_guides/grade2/unit3/lesson9.md",
-    "text": "1. Work with your group. Measure the tape strips"
    }
   },
   {
@@ -549,6 +513,42 @@
     "line": 174,
     "source": "curriculum/im_teacher_guides/grade3/unit1/lesson2.md",
     "text": "       2. Represent the same data in a bar graph.                   bottom axis for bike, walk, bus, van, car, and train."
+   }
+  },
+  {
+   "form": "unit_conversion_by_iteration",
+   "gloss": "Measure one extent twice with units of different size and relate the two counts by the factor between the units.",
+   "lane": "measurement_task",
+   "lessons": 5,
+   "moves": 5,
+   "warrant": {
+    "line": 209,
+    "source": "curriculum/im_teacher_guides/grade2/unit3/lesson9.md",
+    "text": "1. Work with your group. Measure the tape strips"
+   }
+  },
+  {
+   "form": "unit_fraction_partition",
+   "gloss": "Partition a strip that represents 1 into the equal parts a task names in words, and label every part with its unit fraction.",
+   "lane": "fraction_model_reasoning",
+   "lessons": 3,
+   "moves": 4,
+   "warrant": {
+    "line": 196,
+    "source": "curriculum/im_teacher_guides/grade4/unit2/lesson4.md",
+    "text": "Use one blank strip to show tenths."
+   }
+  },
+  {
+   "form": "unit_preserving_measured_quantity_change",
+   "gloss": "Add or take away a measured amount and keep the unit on the result.",
+   "lane": "measurement_task",
+   "lessons": 3,
+   "moves": 4,
+   "warrant": {
+    "line": 199,
+    "source": "curriculum/im_teacher_guides/grade3/unit3/lesson2.md",
+    "text": "Solve each problem. Explain or show your"
    }
   }
  ],
@@ -656,7 +656,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "1",
    "input_provenance": "curriculum",
    "lesson": "IM-G1-U6-L6",
@@ -689,7 +689,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "1",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G1-U6-L8",
@@ -700,7 +700,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "1",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G1-U6-L9",
@@ -832,7 +832,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "2",
    "input_provenance": "curriculum",
    "lesson": "IM-G2-U3-L1",
@@ -854,7 +854,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "2",
    "input_provenance": "curriculum",
    "lesson": "IM-G2-U3-L14",
@@ -865,7 +865,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "reunitize_same_extent",
+   "form": "unit_conversion_by_iteration",
    "grade": "2",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G2-U3-L2",
@@ -887,7 +887,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "2",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G2-U3-L5",
@@ -909,7 +909,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "2",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G2-U3-L8",
@@ -920,7 +920,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "reunitize_same_extent",
+   "form": "unit_conversion_by_iteration",
    "grade": "2",
    "input_provenance": "curriculum",
    "lesson": "IM-G2-U3-L9",
@@ -1128,19 +1128,8 @@
    "verdict": "well_formed"
   },
   {
-   "artifact_kind": "printed",
-   "form": "change_measured_quantity",
-   "grade": "2",
-   "input_provenance": "machine_supplied",
-   "lesson": "IM-G2-U9-L3",
-   "prior_action_class": "not_enacted_by_measured_inventory",
-   "steps": 4,
-   "subclass": "measurement_task",
-   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: left, right"
-  },
-  {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "2",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G2-U9-L3",
@@ -1148,6 +1137,17 @@
    "steps": 5,
    "subclass": "measurement_task",
    "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: unit_count"
+  },
+  {
+   "artifact_kind": "printed",
+   "form": "unit_preserving_measured_quantity_change",
+   "grade": "2",
+   "input_provenance": "machine_supplied",
+   "lesson": "IM-G2-U9-L3",
+   "prior_action_class": "not_enacted_by_measured_inventory",
+   "steps": 4,
+   "subclass": "measurement_task",
+   "verdict": "partial: the curriculum leaves these to the classroom, so the machine supplied them: left, right"
   },
   {
    "artifact_kind": "scene",
@@ -1360,7 +1360,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "change_measured_quantity",
+   "form": "unit_preserving_measured_quantity_change",
    "grade": "3",
    "input_provenance": "curriculum",
    "lesson": "IM-G3-U3-L2",
@@ -1437,7 +1437,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "partition_strip_into_named_parts",
+   "form": "unit_fraction_partition",
    "grade": "3",
    "input_provenance": "curriculum",
    "lesson": "IM-G3-U5-L2",
@@ -1448,7 +1448,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "3",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G3-U6-L1",
@@ -1459,7 +1459,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "change_measured_quantity",
+   "form": "unit_preserving_measured_quantity_change",
    "grade": "3",
    "input_provenance": "curriculum",
    "lesson": "IM-G3-U6-L10",
@@ -1481,7 +1481,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "3",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G3-U6-L3",
@@ -1712,7 +1712,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "partition_strip_into_named_parts",
+   "form": "unit_fraction_partition",
    "grade": "4",
    "input_provenance": "curriculum",
    "lesson": "IM-G4-U2-L1",
@@ -1723,7 +1723,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "partition_strip_into_named_parts",
+   "form": "unit_fraction_partition",
    "grade": "4",
    "input_provenance": "curriculum",
    "lesson": "IM-G4-U2-L4",
@@ -1844,7 +1844,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "reunitize_same_extent",
+   "form": "unit_conversion_by_iteration",
    "grade": "4",
    "input_provenance": "curriculum",
    "lesson": "IM-G4-U5-L10",
@@ -1866,7 +1866,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "reunitize_same_extent",
+   "form": "unit_conversion_by_iteration",
    "grade": "4",
    "input_provenance": "curriculum",
    "lesson": "IM-G4-U5-L15",
@@ -1877,7 +1877,7 @@
   },
   {
    "artifact_kind": "printed",
-   "form": "reunitize_same_extent",
+   "form": "unit_conversion_by_iteration",
    "grade": "4",
    "input_provenance": "curriculum",
    "lesson": "IM-G4-U5-L9",
@@ -1921,7 +1921,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "iterate_unit_along_extent",
+   "form": "linear_unit_iteration",
    "grade": "4",
    "input_provenance": "machine_supplied",
    "lesson": "IM-G4-U6-L26",
@@ -2647,7 +2647,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "compare_two_collections",
+   "form": "compare_cardinalities_one_to_one",
    "grade": "K",
    "input_provenance": "machine_supplied",
    "lesson": "IM-GK-U7-L2",
@@ -2680,7 +2680,7 @@
   },
   {
    "artifact_kind": "scene",
-   "form": "compare_two_collections",
+   "form": "compare_cardinalities_one_to_one",
    "grade": "K",
    "input_provenance": "machine_supplied",
    "lesson": "IM-GK-U8-L8",
