@@ -337,9 +337,12 @@ def main() -> int:
     parser.add_argument("--pair-filter", choices=PAIR_FILTERS, default=None,
                         help="R1's pair filter; there is no default, see the "
                              "module docstring")
-    parser.add_argument("--output-dir", type=Path,
-                        default=ROOT / ".bigred-output/2026-08-08-loops-wave1",
-                        help="where the shard manifests are written")
+    parser.add_argument("--output-dir", type=Path, default=None,
+                        help="where the shard manifests are written; defaults "
+                             "to the run's own wave directory (wave1 for R1, "
+                             "wave2 for R2 — run_r2.slurm reads wave2, and the "
+                             "2026-08-08 launch lost 64 shards to manifests "
+                             "shipped into wave1)")
     parser.add_argument("--pairs-per-task", type=int, default=None,
                         help="default 25 for R1, 12 for R2 (amendment B)")
     parser.add_argument("--pair-budget-s", type=float, default=600.0)
@@ -360,6 +363,9 @@ def main() -> int:
 
     # The two runs carry different defaults and neither should inherit the
     # other's: R1 keeps every separating input, R2 caps witnesses at 200.
+    if arguments.output_dir is None:
+        wave = "wave2" if arguments.r2 else "wave1"
+        arguments.output_dir = ROOT / f".bigred-output/2026-08-08-loops-{wave}"
     if arguments.r2:
         if arguments.pairs_per_task is None:
             arguments.pairs_per_task = 12

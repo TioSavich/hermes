@@ -18,6 +18,9 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import Mock, patch
+
+import run_loop_array as array_runner
 
 ROOT = Path(__file__).resolve().parents[3]
 DRIVER = ROOT / "scripts/bigred/loops/loop_driver.pl"
@@ -273,7 +276,7 @@ ROW_FIELDS = {
     "input": dict, "evidence": dict, "outcome": str, "consumer": str,
 }
 OUTCOMES = {"certified_candidate", "no_candidate", "refused", "timeout",
-            "resource_error", "uninstantiated"}
+            "resource_error", "uninstantiated", "not_walked"}
 EVIDENCE_KINDS = {"separating_input", "coincidence_region", "failed_derivation",
                   "byte_identical_bridge", "trace_match"}
 
@@ -654,6 +657,118 @@ def check_r2_directed_walk() -> None:
            released["consumer"][:60])
 
 
+def check_r2_pair_budget_partial() -> None:
+    print("\n[12] R2: a pair-budget timeout retains both partial censuses",
+          flush=True)
+    item = {
+        "run": "r2",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "target": {"family": "division",
+                   "kind": "missing_factor_repeated_addition"},
+        "pair_budget_s": 0.02,
+        "input_timeout_s": 1,
+        "max_witnesses": 200,
+    }
+    rows = run_item_rows(item, timeout=60)
+    record("the pair-budget stop emits both directed rows",
+           len(rows) == 2, f"{len(rows)} row(s)")
+    if len(rows) != 2:
+        return
+    timeout_row, sibling_row = rows
+    problems = [problem for row in rows for problem in validate_row(row)]
+    record("the timeout pair keeps the shared row schema", not problems,
+           "; ".join(problems) or "both rows validate")
+    record("both directions record the pair-budget timeout",
+           all(row.get("outcome") == "timeout"
+               and row.get("candidate_type") == "pair_budget_timeout"
+               and row.get("evidence", {}).get("walk") == "pair_budget"
+               for row in rows),
+           "; ".join(
+               f"{row.get('outcome')}/{row.get('candidate_type')}"
+               for row in rows
+           ))
+    walked = [row.get("evidence", {}).get("walked_points") for row in rows]
+    record("both directions retain the same nonzero partial walk",
+           walked[0] == walked[1]
+           and isinstance(walked[0], int)
+           and 0 < walked[0] < timeout_row.get("input", {}).get("points", 0),
+           f"walked_points={walked}")
+    item["key"] = (
+        "r2:addition/base_ones_chunking|"
+        "division/missing_factor_repeated_addition"
+    )
+    with tempfile.TemporaryDirectory() as workspace:
+        manifest = Path(workspace) / "shard.jsonl"
+        output = Path(workspace) / "rows.jsonl"
+        manifest.write_text(json.dumps(item) + "\n", encoding="utf-8")
+        completed = subprocess.run(
+            [sys.executable, str(RUNNER), "--manifest", str(manifest),
+             "--output", str(output), "--watchdog-s", "30"],
+            cwd=str(ROOT), text=True, capture_output=True, timeout=60,
+            check=False,
+        )
+        retained = [json.loads(line) for line in
+                    output.read_text(encoding="utf-8").splitlines()
+                    if line.strip()] if output.is_file() else []
+        record("the runner retains keys on both timeout-path rows",
+               completed.returncode == 0 and len(retained) == 2
+               and all(row.get("item_key") == item["key"]
+                       and row.get("key") for row in retained),
+               f"returncode={completed.returncode}; {len(retained)} row(s)")
+
+
+def check_r2_external_failure_rows() -> None:
+    print("\n[13] R2: external failures retain two convention-shaped rows",
+          flush=True)
+    item = {
+        "run": "r2",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "target": {"family": "division",
+                   "kind": "missing_factor_repeated_addition"},
+        "schema": '{"a":"integer","b":"integer"}',
+    }
+
+    no_row_process = Mock()
+    no_row_process.communicate.return_value = (
+        "", "fixture process exited before writing a row"
+    )
+    with patch.object(array_runner.subprocess, "Popen",
+                      return_value=no_row_process):
+        no_row_rows, disposition = array_runner.run_item(item, watchdog_s=30)
+    no_row_sibling = no_row_rows[1] if len(no_row_rows) == 2 else {}
+    record("a no-row R2 process yields its failed row and reverse sibling",
+           disposition == "no_row" and len(no_row_rows) == 2
+           and no_row_rows[0].get("candidate_type") == "no_row"
+           and no_row_sibling.get("outcome") == "not_walked"
+           and no_row_sibling.get("evidence", {}).get("reason")
+               == "sibling_no_row",
+           f"disposition={disposition}; {len(no_row_rows)} row(s); "
+           f"reason={no_row_sibling.get('evidence', {}).get('reason')}")
+
+    timeout_process = Mock()
+    timeout_process.communicate.side_effect = [
+        subprocess.TimeoutExpired(cmd="swipl", timeout=1),
+        ("", ""),
+    ]
+    with patch.object(array_runner.subprocess, "Popen",
+                      return_value=timeout_process):
+        timeout_rows, disposition = array_runner.run_item(item, watchdog_s=1)
+    shapes = [set((row.get("evidence") or {}).keys()) for row in timeout_rows]
+    record("watchdog rows use one R2 evidence kind and field set",
+           disposition == "timeout" and len(timeout_rows) == 2
+           and all(row.get("evidence", {}).get("kind") == "failed_derivation"
+                   for row in timeout_rows)
+           and shapes[0] == shapes[1],
+           f"disposition={disposition}; field_counts="
+           f"{[len(shape) for shape in shapes]}")
+    timeout_sibling = timeout_rows[1] if len(timeout_rows) == 2 else {}
+    record("the watchdog sibling names the external failure class",
+           timeout_sibling.get("outcome") == "not_walked"
+           and timeout_sibling.get("evidence", {}).get("reason")
+               == "sibling_watchdog_timeout",
+           f"reason={timeout_sibling.get('evidence', {}).get('reason')}")
+
+
 def lens_probe(refuser: str, receiver: str, validities: list[str],
                out_region: int) -> tuple[str, dict]:
     """Call release_quality/2 and r2_lens/8 on a constructed released region."""
@@ -687,7 +802,7 @@ def lens_probe(refuser: str, receiver: str, validities: list[str],
 
 
 def check_r2_lenses() -> None:
-    print("\n[12] R2 — the L2 thresholds and the accidentally_correct exclusion",
+    print("\n[14] R2 — the L2 thresholds and the accidentally_correct exclusion",
           flush=True)
     deformation = "multiplication/add_instead_of_multiply"   # registered
     productive = "subtraction/take_away_base_ones"           # not registered
@@ -727,7 +842,7 @@ def check_r2_lenses() -> None:
 
 
 def check_r2_resume() -> None:
-    print("\n[13] R2 — resume idempotence across a two-row item", flush=True)
+    print("\n[15] R2 — resume idempotence across a two-row item", flush=True)
     item = {
         "run": "r2",
         "key": "r2:geometry/angle_as_ray_length|geometry/angle_turn_measurement",
@@ -785,7 +900,9 @@ def main() -> int:
                   check_archetype_map_against_tree, check_r1_walk,
                   check_r5_reproduction, check_resume, check_watchdog,
                   check_compendium_reader, check_separation_audit,
-                  check_r2_directed_walk, check_r2_lenses, check_r2_resume):
+                  check_r2_directed_walk, check_r2_pair_budget_partial,
+                  check_r2_external_failure_rows,
+                  check_r2_lenses, check_r2_resume):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip

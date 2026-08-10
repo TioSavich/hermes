@@ -130,7 +130,7 @@ def append_row(path: Path, row: dict) -> None:
 
 def fallback_row(item: dict, outcome: str, candidate_type: str,
                  note: str, elapsed_ms: int) -> dict:
-    """A row for an item whose Prolog run produced none."""
+    """An R1 row for an item whose Prolog run produced none."""
     run = str(item.get("run", "?"))
     source = item.get("source") or {}
     target = item.get("target") or {}
@@ -148,6 +148,73 @@ def fallback_row(item: dict, outcome: str, candidate_type: str,
         },
         "outcome": outcome,
         "consumer": CONSUMERS.get(run, CONSUMERS["r1"]),
+    }
+
+
+def r2_failure_row(item: dict, outcome: str, candidate_type: str,
+                   failure_class: str, note: str, elapsed_ms: int,
+                   *, reverse: bool = False) -> dict:
+    """One directed R2 row when the external process yields no census."""
+    source = item.get("source") or {}
+    target = item.get("target") or {}
+    if reverse:
+        source, target = target, source
+        source_outcome = "not_walked"
+        target_outcome = "not_walked"
+        walk = "not_walked"
+        reason = f"sibling_{failure_class}"
+        row_outcome = "not_walked"
+        row_candidate_type = (
+            "sibling_timeout" if outcome == "timeout" else "sibling_failure"
+        )
+    else:
+        source_outcome = note
+        target_outcome = note
+        walk = failure_class
+        reason = failure_class
+        row_outcome = outcome
+        row_candidate_type = candidate_type
+    return {
+        "run": "r2",
+        "candidate_type": row_candidate_type,
+        "source": {"family": source.get("family"), "kind": source.get("kind")},
+        "target": {"family": target.get("family"), "kind": target.get("kind")},
+        "input": {"schema": item.get("schema"), "bounds": None, "points": 0},
+        "evidence": {
+            "kind": "failed_derivation",
+            "source_outcome": source_outcome,
+            "target_outcome": target_outcome,
+            "elapsed_ms": elapsed_ms,
+            "walked_points": 0,
+            "released_count": 0,
+            "released_witnesses": [],
+            "witnesses_truncated": False,
+            "released_validity_counts": {},
+            "release_quality": "not_assessed",
+            "receiver_incorrect_out_of_region": 0,
+            "out_of_region_incorrect_witness": None,
+            "license": {},
+            "lens_flags": {
+                "l1": False,
+                "l2": False,
+                "l3": False,
+                "receiver_is_registered_deformation": None,
+                "strong_released_points": 0,
+                "clean_released_points": 0,
+                "l3_kernel_half": (
+                    "not assessed because the direction was not walked"
+                ),
+            },
+            "crossing_actions": [],
+            "walk": walk,
+            "reason": reason,
+        },
+        "outcome": row_outcome,
+        "candidate_lens": "unlensed",
+        "consumer": (
+            "the R2 closure accounting and backfill queue; the direction has "
+            "no crisis-release judgment"
+        ),
     }
 
 
@@ -186,17 +253,42 @@ def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
         except subprocess.TimeoutExpired:
             pass
         elapsed_ms = round((time.monotonic() - started) * 1000)
-        return (
-            [fallback_row(item, "timeout", "watchdog_kill",
-                          f"killed by the watchdog after {watchdog_s:g}s",
-                          elapsed_ms)],
-            "timeout",
-        )
+        note = f"killed by the watchdog after {watchdog_s:g}s"
+        if str(item.get("run")) == "r2" and item.get("target"):
+            rows = [
+                r2_failure_row(
+                    item, "timeout", "watchdog_kill", "watchdog_timeout",
+                    note, elapsed_ms
+                ),
+                r2_failure_row(
+                    item, "timeout", "watchdog_kill", "watchdog_timeout",
+                    note, elapsed_ms, reverse=True
+                ),
+            ]
+        else:
+            rows = [
+                fallback_row(item, "timeout", "watchdog_kill", note, elapsed_ms)
+            ]
+        return rows, "timeout"
 
     elapsed_ms = round((time.monotonic() - started) * 1000)
     lines = [ln for ln in stdout.splitlines() if ln.strip().startswith("{")]
     if not lines:
         note = (stderr.strip() or "the driver wrote no row")[:400]
+        if str(item.get("run")) == "r2" and item.get("target"):
+            return (
+                [
+                    r2_failure_row(
+                        item, "resource_error", "no_row", "no_row",
+                        note, elapsed_ms
+                    ),
+                    r2_failure_row(
+                        item, "resource_error", "no_row", "no_row",
+                        note, elapsed_ms, reverse=True
+                    ),
+                ],
+                "no_row",
+            )
         return (
             [fallback_row(item, "resource_error", "no_row", note, elapsed_ms)],
             "no_row",
@@ -207,6 +299,21 @@ def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
         try:
             row = json.loads(line)
         except json.JSONDecodeError as error:
+            if str(item.get("run")) == "r2" and item.get("target"):
+                note = f"{error}"
+                return (
+                    [
+                        r2_failure_row(
+                            item, "resource_error", "malformed_row",
+                            "malformed_row", note, elapsed_ms
+                        ),
+                        r2_failure_row(
+                            item, "resource_error", "malformed_row",
+                            "malformed_row", note, elapsed_ms, reverse=True
+                        ),
+                    ],
+                    "malformed",
+                )
             return (
                 [fallback_row(item, "resource_error", "malformed_row",
                               f"{error}", elapsed_ms)],
@@ -214,6 +321,21 @@ def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
             )
         missing = [field for field in REQUIRED_ROW_FIELDS if field not in row]
         if missing:
+            if str(item.get("run")) == "r2" and item.get("target"):
+                note = "row lacked " + ", ".join(missing)
+                return (
+                    [
+                        r2_failure_row(
+                            item, "resource_error", "incomplete_row",
+                            "incomplete_row", note, elapsed_ms
+                        ),
+                        r2_failure_row(
+                            item, "resource_error", "incomplete_row",
+                            "incomplete_row", note, elapsed_ms, reverse=True
+                        ),
+                    ],
+                    "incomplete",
+                )
             return (
                 [fallback_row(item, "resource_error", "incomplete_row",
                               "row lacked " + ", ".join(missing), elapsed_ms)],

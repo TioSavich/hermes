@@ -1269,7 +1269,7 @@ r2_lens(machine(RefuserF, _), machine(ReceiverF, ReceiverK), Released,
               l3_kernel_half: "unavailable until R3 produces the \c
                                kernel_dependency overlay"}.
 
-r2_verdict(_, pair_budget, "resource_error", "pair_budget_spent") :- !.
+r2_verdict(_, pair_budget, "timeout", "pair_budget_timeout") :- !.
 r2_verdict(licensed, _, "certified_candidate", "crisis_release") :- !.
 r2_verdict(unlicensed, _, "no_candidate", "release_without_licence") :- !.
 r2_verdict(empty, _, "no_candidate", "no_release").
