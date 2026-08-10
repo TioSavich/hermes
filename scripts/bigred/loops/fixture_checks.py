@@ -278,7 +278,8 @@ ROW_FIELDS = {
 OUTCOMES = {"certified_candidate", "no_candidate", "refused", "timeout",
             "resource_error", "uninstantiated", "not_walked"}
 EVIDENCE_KINDS = {"separating_input", "coincidence_region", "failed_derivation",
-                  "byte_identical_bridge", "trace_match"}
+                  "byte_identical_bridge", "trace_match",
+                  "adapted_execution_bridge"}
 
 
 def validate_row(row: dict) -> list[str]:
@@ -1196,6 +1197,683 @@ def check_r3_unverified_and_strength() -> None:
            f"type={rows[0]['candidate_type'] if rows else None}")
 
 
+# --------------------------------------------------------------------------
+# 20-24. R4 — the contract-bridge adapter search.
+#
+# A pair the authored library genuinely bridges, a pair whose unit relabel has
+# no witness and therefore certifies nothing, two kinds of miss that must not
+# wear one name, a spent budget, and the library itself. The warrant refusal is
+# the one these five exist for: an adapter that fits mechanically and drops a
+# unit is the type-level pun the design's ceremony refuses by rule, and a run
+# that could not tell it from a bridge would hand the ceremony the pun.
+# --------------------------------------------------------------------------
+
+R4_DRIVER = ROOT / "scripts/bigred/loops/r4_driver.pl"
+R4_ADAPTERS = ROOT / "scripts/bigred/loops/r4_adapters.pl"
+
+
+def run_r4_item(item: dict, timeout: int = 600) -> dict:
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(PATHS), "-l", str(R4_DRIVER),
+         "-g", "r4_driver:main_item", "-t", "halt"],
+        cwd=str(ROOT), text=True, capture_output=True, timeout=timeout,
+        input=json.dumps(item) + "\n", check=False,
+    )
+    line = next((ln for ln in completed.stdout.splitlines()
+                 if ln.strip().startswith("{")), "")
+    if not line:
+        raise RuntimeError(f"r4_driver wrote no row: {completed.stderr[:400]}")
+    return json.loads(line)
+
+
+def r4_swipl(goal: str, timeout: int = 300) -> str:
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(PATHS), "-l", str(R4_DRIVER), "-g", goal,
+         "-t", "halt"],
+        cwd=str(ROOT), text=True, capture_output=True, timeout=timeout,
+        check=False,
+    )
+    if completed.returncode:
+        raise RuntimeError(
+            f"goal failed ({completed.returncode}): "
+            f"{completed.stderr.strip()[:600]}"
+        )
+    return completed.stdout
+
+
+def check_r4_bridge_hit() -> None:
+    print("\n[20] R4 — a pair the authored library genuinely bridges",
+          flush=True)
+    # The source's answer becomes the target's first operand and the target's
+    # second operand is threaded from the source's own input: on the grid point
+    # {a:12, b:24} that is 12 + 24 = 36, then 36 - 24. A two-step task, and the
+    # smallest honest one.
+    item = {
+        "run": "r4",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "target": {"family": "subtraction", "kind": "count_up_missing_addend"},
+        "adapter": "identity",
+        "sample_count": 6, "pair_budget_s": 120, "input_timeout_s": 10,
+    }
+    row = run_r4_item(item)
+    evidence = row["evidence"]
+    print(f"      adapter : {evidence['adapter']} "
+          f"{evidence['adapter_signature']}", flush=True)
+    print(f"      landing : {evidence['placement_path']} "
+          f"(placement {evidence['placement_index']} of "
+          f"{evidence['placements_available']}, "
+          f"{evidence['placements_run']} run)", flush=True)
+    print(f"      samples : {evidence['samples_bridged']} bridged of "
+          f"{evidence['samples_available']} the source computed on, "
+          f"{evidence['grid_points_probed']} grid points probed", flush=True)
+    print(f"      row     : {row['outcome']} / {row['candidate_type']} in "
+          f"{evidence['elapsed_ms']} ms", flush=True)
+
+    problems = validate_row(row)
+    record("the bridge row validates against the shared output schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("a pair bridged on every computed sample is a candidate",
+           row["outcome"] == "certified_candidate"
+           and row["candidate_type"].startswith("contract_bridge")
+           and evidence["kind"] == "adapted_execution_bridge",
+           f"type={row['candidate_type']} kind={evidence['kind']} "
+           f"{evidence['samples_bridged']}/{evidence['samples_available']}")
+    record("the landing slot is on the row, so the bridge is executable",
+           evidence["placement_path"] == ".a"
+           and evidence["placement_index"] == 1,
+           f"placement {evidence['placement_index']} at "
+           f"{evidence['placement_path']}")
+
+    records = evidence["sample_records"]
+    record("every sample carries all three warrant records",
+           bool(records) and all(
+               sample["units"] and sample["roles"] and sample["boundary"]
+               for sample in records),
+           f"{len(records)} sample record(s), each with units, roles and "
+           f"boundary")
+    record("the roles record names where each slot's value came from",
+           bool(records)
+           and "threaded from the source input" in records[0]["roles"]
+           and ".a" in records[0]["roles"],
+           records[0]["roles"] if records else "no records")
+
+    # Receipt executability: the adapted input on the row is re-run through the
+    # target machine here, and must reproduce the row's own target result. A
+    # receipt nobody can bind licenses nothing.
+    replay = next((sample for sample in records
+                   if sample["adapted_input"] and sample["target_result"]), None)
+    if replay is None:
+        record("the recorded adapted input re-runs", False,
+               "no sample carried both an adapted input and a target result")
+    else:
+        goal = (
+            "use_module(library(http/json)), "
+            "atom_json_dict('%s', Input, [value_string_as(string)]), "
+            "loop_driver:aa_run(subtraction, count_up_missing_addend, Input, "
+            "Outcome), term_string(Outcome, S), format('REPLAY ~w~n', [S])"
+            % json.dumps(replay["adapted_input"]).replace("'", "\\'")
+        )
+        replayed = ""
+        for line in r4_swipl(goal).splitlines():
+            if line.startswith("REPLAY "):
+                replayed = line.split(None, 1)[1].strip()
+        record("the recorded adapted input re-runs to the recorded result",
+               replayed == replay["target_result"],
+               f"{replay['adapted_input']} -> {replayed!r} against the row's "
+               f"{replay['target_result']!r}")
+
+    # A ROW WHOSE CARRIED VALUE IS A RATIONAL, because JSON has none.
+    # statistics/mean_as_fair_share answers rational(27,5); row 12 carries it as
+    # 27 rdiv 5 into a positive_number slot; json_write_dict writes 5.4. The
+    # float is NOT what the target machine received, so the receipt binds only
+    # through carried_value_exact.
+    rational_row = run_r4_item({
+        "run": "r4",
+        "source": {"family": "statistics", "kind": "mean_as_fair_share"},
+        "target": {"family": "geometry",
+                   "kind": "polygon_perimeter_boundary_accumulation"},
+        "adapter": "project_rational_magnitude",
+        "sample_count": 8, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    rational_evidence = rational_row["evidence"]
+    exact_sample = next(
+        (sample for sample in rational_evidence["sample_records"]
+         if sample["status"] == "bridged"
+         and "r" in str(sample["carried_value_exact"])), None)
+    if exact_sample is None:
+        record("a rational carried value is recorded exactly", False,
+               "no bridged sample carried a rational")
+    else:
+        floated = exact_sample["adapted_input"]["sides"][0]
+        print(f"      rational: carried {exact_sample['carried_value_exact']}, "
+              f"written to JSON as {floated}", flush=True)
+        record("a rational carried value is recorded exactly beside its float",
+               isinstance(floated, float)
+               and str(exact_sample["carried_value_exact"]) != str(floated),
+               f"carried_value_exact={exact_sample['carried_value_exact']!r} "
+               f"against adapted_input {floated!r}")
+
+        # Rebuild the adapted input by putting the exact value back at the
+        # placement path, and re-run. The float must NOT reproduce the row.
+        goal = (
+            "use_module(library(http/json)), "
+            "term_string(Exact, \"%s\"), "
+            "Rebuilt = _{kind: \"polygon_sides_with_unit\", sides: [Exact], "
+            "            unit: \"%s\"}, "
+            "loop_driver:aa_run(geometry, polygon_perimeter_boundary_accumulation, "
+            "                   Rebuilt, ExactOutcome), "
+            "term_string(ExactOutcome, ExactString), "
+            "format('EXACT ~w~n', [ExactString]), "
+            "Floated = _{kind: \"polygon_sides_with_unit\", sides: [%r], "
+            "            unit: \"%s\"}, "
+            "loop_driver:aa_run(geometry, polygon_perimeter_boundary_accumulation, "
+            "                   Floated, FloatOutcome), "
+            "term_string(FloatOutcome, FloatString), "
+            "format('FLOAT ~w~n', [FloatString])"
+            % (exact_sample["carried_value_exact"],
+               exact_sample["adapted_input"]["unit"],
+               floated,
+               exact_sample["adapted_input"]["unit"])
+        )
+        replays = {}
+        for line in r4_swipl(goal).splitlines():
+            for tag in ("EXACT", "FLOAT"):
+                if line.startswith(tag + " "):
+                    replays[tag] = line.split(None, 1)[1].strip()
+        record("the exact value rebinds the receipt and the float does not",
+               replays.get("EXACT") == exact_sample["target_result"]
+               and replays.get("FLOAT") != exact_sample["target_result"],
+               f"exact -> {replays.get('EXACT')!r}; "
+               f"float -> {replays.get('FLOAT')!r}; "
+               f"row -> {exact_sample['target_result']!r}")
+
+
+def check_r4_warrant_refusal() -> None:
+    print("\n[21] R4 — a unit relabel computes nothing without a witness, and "
+          "the inverse of a declared witness is one", flush=True)
+    # RULING R1 (2026-08-10): a declared factor licenses its own inverse,
+    # because one yard being three feet is one fact and not two.
+    # measurement/unit_conversion_by_iteration answers quantity(Count x Factor,
+    # foot); the target contract's from_unit is the unit OF its count and
+    # threads from the source's own input to yard. The sample declares
+    # scaling(yard, foot, Factor), so the relabel reads its inverse and the
+    # magnitude returns to the count it started from — eleven feet back to one
+    # yard, which is a bridge and lands on an integer slot exactly.
+    inverse = run_r4_item({
+        "run": "r4",
+        "source": {"family": "measurement", "kind": "unit_conversion_by_iteration"},
+        "target": {"family": "measurement",
+                   "kind": "change_unit_label_without_scaling"},
+        "adapter": "unit_relabel_with_scaling_witness",
+        "sample_count": 8, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    inverse_evidence = inverse["evidence"]
+    inverse_sample = next((sample for sample in
+                           inverse_evidence["sample_records"]
+                           if sample["status"] == "bridged"), None)
+    print(f"      inverse : {inverse['candidate_type']}, "
+          f"{inverse_evidence['samples_bridged']} bridged on "
+          f"{inverse_evidence['distinct_adapted_inputs']} distinct inputs",
+          flush=True)
+    if inverse_sample:
+        print(f"        {inverse_sample['units']}", flush=True)
+    problems = validate_row(inverse)
+    record("the inverse-witness row validates against the shared schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("the inverse of a declared witness licenses the relabel",
+           inverse["outcome"] == "certified_candidate"
+           and inverse_sample is not None
+           and "inverted(scaling(" in inverse_sample["units"],
+           f"type={inverse['candidate_type']}; units="
+           f"{inverse_sample['units'] if inverse_sample else None!r}")
+    record("the row says which direction it read the witness in",
+           inverse_sample is not None
+           and "the inverse of the declared witness"
+           in inverse_sample["transform"],
+           inverse_sample["transform"] if inverse_sample else "no sample")
+
+    # AND THE REFUSAL MOVES TO BOUNDARY, which is where it belongs.
+    # measurement/change_unit_label_without_scaling is the misconception: it
+    # relabels yards as feet without scaling, so it answers quantity(Count,
+    # foot) and the honest inverse gives Count/Factor yards — one eleventh of a
+    # yard, which an integer count slot cannot hold. The bridge is dimensionally
+    # sound and the target contract cannot take it.
+    row = run_r4_item({
+        "run": "r4",
+        "source": {"family": "measurement",
+                   "kind": "change_unit_label_without_scaling"},
+        "target": {"family": "measurement",
+                   "kind": "unit_conversion_by_iteration"},
+        "adapter": "unit_relabel_with_scaling_witness",
+        "sample_count": 8, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    evidence = row["evidence"]
+    refusals = evidence["warrant_refusals"]
+    print(f"      source answers {evidence['source_outcome']}", flush=True)
+    print(f"      refusals : {refusals}", flush=True)
+
+    problems = validate_row(row)
+    record("the warrant-refusal row validates against the shared schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("an unscaled relabel is a refusal, not a bridge",
+           row["outcome"] == "no_candidate"
+           and row["candidate_type"] == "warrant_refused"
+           and evidence["samples_bridged"] == 0
+           and evidence["kind"] == "failed_derivation",
+           f"type={row['candidate_type']} bridged="
+           f"{evidence['samples_bridged']} kind={evidence['kind']}")
+    record("under ruling R1 the refusal reads boundary, and names the value",
+           bool(refusals)
+           and all(entry["obligation"] == "boundary" for entry in refusals)
+           and any("outside integer" in entry["reason"]
+                   for entry in refusals),
+           "; ".join(f"{entry['obligation']}: {entry['reason']}"
+                     for entry in refusals) or "no refusal recorded")
+
+    # Row 5 must not quietly do row 6's work: offered the same relabel with no
+    # mode to license it, carry_measured_magnitude still refuses at units.
+    preserved = run_r4_item({
+        "run": "r4",
+        "source": {"family": "measurement", "kind": "unit_conversion_by_iteration"},
+        "target": {"family": "measurement",
+                   "kind": "change_unit_label_without_scaling"},
+        "adapter": "carry_measured_magnitude",
+        "sample_count": 6, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    preserved_refusals = preserved["evidence"]["warrant_refusals"]
+    record("the preserving row still refuses a relabel it is not licensed for",
+           preserved["candidate_type"] == "warrant_refused"
+           and any("relabelled_without_witness" in entry["reason"]
+                   for entry in preserved_refusals),
+           "; ".join(entry["reason"] for entry in preserved_refusals)
+           or "no refusal recorded")
+
+    # A dimension change is refused too, and for a different reason: the only
+    # witness shape the library admits relates two NAMED units by a factor, and
+    # square(centimeter) is not a named unit. Carrying an area into a linear
+    # unit slot is geometry/linear_unit_for_area_or_volume, a modelled
+    # misconception rather than a bridge.
+    area_item = {
+        "run": "r4",
+        "source": {"family": "geometry", "kind": "area_unit_covering"},
+        "target": {"family": "geometry", "kind": "count_overlapping_area_tiles"},
+        "adapter": "carry_measured_magnitude",
+        "sample_count": 4, "pair_budget_s": 120, "input_timeout_s": 10,
+    }
+    area_row = run_r4_item(area_item)
+    area_refusals = area_row["evidence"]["warrant_refusals"]
+    record("a dimension change has no witness and is refused as one",
+           area_row["candidate_type"] == "warrant_refused"
+           and any("unit_not_nameable" in entry["reason"]
+                   for entry in area_refusals),
+           "; ".join(entry["reason"] for entry in area_refusals)
+           or "no refusal recorded")
+
+    # The rule itself, called directly, so the fixture tests the library's
+    # semantics and not only one pair's luck.
+    goal = (
+        "r4_adapters:unit_disposition(unit(foot), unit(yard), [], relabel, A), "
+        "format('NOWITNESS ~w~n', [A]), "
+        "r4_adapters:unit_disposition(unit(foot), unit(yard), "
+        "  [scaling(foot, yard, 3)], relabel, B), format('WITNESS ~w~n', [B]), "
+        "r4_adapters:unit_disposition(unit(centimeter), none, [], preserve, C), "
+        "format('DROPPED ~w~n', [C]), "
+        "r4_adapters:unit_disposition(unit(inch), unit(inch), [], preserve, D), "
+        "format('PRESERVED ~w~n', [D]), "
+        "r4_adapters:unit_disposition(unit(foot), unit(yard), "
+        "  [scaling(yard, foot, 3)], relabel, E), format('INVERSE ~w~n', [E]), "
+        "r4_adapters:unit_disposition(unit(foot), unit(yard), "
+        "  [scaling(yard, foot, 0)], relabel, F), format('ZERO ~w~n', [F])"
+    )
+    dispositions = {}
+    for line in r4_swipl(goal).splitlines():
+        for tag in ("NOWITNESS", "WITNESS", "DROPPED", "PRESERVED", "INVERSE",
+                    "ZERO"):
+            if line.startswith(tag + " "):
+                dispositions[tag] = line.split(None, 1)[1].strip()
+    record("the units rule refuses a witnessless relabel and admits a witnessed one",
+           dispositions.get("NOWITNESS") == "relabelled_without_witness(foot,yard)"
+           and dispositions.get("WITNESS") == "rescaled(foot,yard,3)",
+           f"without -> {dispositions.get('NOWITNESS')!r}; "
+           f"with -> {dispositions.get('WITNESS')!r}")
+    record("a declared witness licenses its inverse, and a zero factor does not",
+           dispositions.get("INVERSE")
+           == "rescaled(foot,yard,1r3,inverted(scaling(yard,foot,3)))"
+           and dispositions.get("ZERO")
+           == "relabelled_without_witness(foot,yard)",
+           f"inverse -> {dispositions.get('INVERSE')!r}; "
+           f"zero factor -> {dispositions.get('ZERO')!r}")
+    record("a target with no unit slot drops the unit, and that is a refusal",
+           dispositions.get("DROPPED") == "dropped(centimeter)"
+           and dispositions.get("PRESERVED") == "preserved(inch)",
+           f"no slot -> {dispositions.get('DROPPED')!r}; "
+           f"same unit -> {dispositions.get('PRESERVED')!r}")
+
+
+def check_r4_misses() -> None:
+    print("\n[22] R4 — the two kinds of miss do not wear one name", flush=True)
+    # The target machine declines the adapted input. The adapter did its work;
+    # the machine's own domain refused the result. Calling that an
+    # incompatibility of the library would put the blame in the wrong place.
+    declined = run_r4_item({
+        "run": "r4",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "target": {"family": "addition", "kind": "make_ten_split_leftover"},
+        "adapter": "identity",
+        "sample_count": 5, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    declined_evidence = declined["evidence"]
+    print(f"      declined: {declined['candidate_type']}, "
+          f"{declined_evidence['samples_target_refused']} sample(s) the target "
+          f"machine would not take", flush=True)
+    problems = validate_row(declined)
+    record("the target-refusal row validates against the shared schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("a target machine that declines is not a measured incompatibility",
+           declined["candidate_type"] == "target_refused"
+           and declined_evidence["samples_target_refused"] > 0
+           and declined_evidence["walk"] == "completed",
+           f"type={declined['candidate_type']} declined="
+           f"{declined_evidence['samples_target_refused']}")
+
+    # A target contract with a slot neither the adapter nor the source's own
+    # input reaches. Nothing is invented to fill it; the row names the path.
+    unreachable = run_r4_item({
+        "run": "r4",
+        "source": {"family": "geometry",
+                   "kind": "rectangle_perimeter_boundary_traversal"},
+        "target": {"family": "geometry", "kind": "parallelogram_area_base_height"},
+        "adapter": "carry_measured_magnitude",
+        "sample_count": 4, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    unreachable_evidence = unreachable["evidence"]
+    unfilled = [sample["unfilled_path"]
+                for sample in unreachable_evidence["sample_records"]
+                if sample["unfilled_path"]]
+    print(f"      unreachable: {unreachable['candidate_type']}, "
+          f"unfilled {unfilled}", flush=True)
+    record("an unfillable slot is a measured incompatibility naming the path",
+           unreachable["candidate_type"] == "measured_incompatible"
+           and bool(unfilled),
+           f"type={unreachable['candidate_type']} unfilled={unfilled}")
+    record("nothing was invented to fill it",
+           unreachable_evidence["samples_bridged"] == 0
+           and all(sample["adapted_input"] is None
+                   for sample in unreachable_evidence["sample_records"]),
+           f"{unreachable_evidence['samples_bridged']} bridged; no adapted "
+           f"input was built")
+
+    # TWENTY BRIDGED SAMPLES ARE NOT TWENTY PIECES OF EVIDENCE. The carried
+    # value overwrites the slot it lands in, so two grid inputs can produce one
+    # adapted input. division/divide_larger_by_smaller carried into the single
+    # typed slot of a signed-number list is the case: every sample bridges and
+    # the quotients repeat.
+    correlated = run_r4_item({
+        "run": "r4",
+        "source": {"family": "division", "kind": "divide_larger_by_smaller"},
+        "target": {"family": "integer",
+                   "kind": "signed_number_location_and_order"},
+        "adapter": "project_quotient",
+        "sample_count": 20, "pair_budget_s": 120, "input_timeout_s": 10,
+    })
+    correlated_evidence = correlated["evidence"]
+    print(f"      correlated: {correlated_evidence['samples_bridged']} bridged "
+          f"on {correlated_evidence['distinct_adapted_inputs']} distinct "
+          f"adapted inputs -> {correlated['candidate_type']}", flush=True)
+    record("a bridged sample count is not a distinct-input count",
+           correlated_evidence["samples_bridged"]
+           > correlated_evidence["distinct_adapted_inputs"]
+           and correlated_evidence["distinct_adapted_inputs"] > 0,
+           f"{correlated_evidence['samples_bridged']} bridged from "
+           f"{correlated_evidence['distinct_adapted_inputs']} distinct inputs")
+    record("evidence strength keys on the distinct count, not the sample count",
+           correlated["candidate_type"] == "contract_bridge_thin_evidence"
+           and correlated_evidence["evidence_strength"] == "grid_limited",
+           f"type={correlated['candidate_type']} "
+           f"strength={correlated_evidence['evidence_strength']} on "
+           f"{correlated_evidence['distinct_adapted_inputs']} of "
+           f"{correlated_evidence['samples_required']} required")
+
+    # The counter itself, called directly: two structurally identical adapted
+    # inputs are ONE, even though each dict carries its own fresh tag variable
+    # and ==/2 therefore separates them.
+    goal = (
+        "dict_pairs(A, _, [a-1, b-2]), dict_pairs(B, _, [a-1, b-2]), "
+        "dict_pairs(C, _, [a-9, b-2]), "
+        "r4_driver:distinct_adapted_inputs("
+        "  [ _{status: \"bridged\", adapted_input: A}, "
+        "    _{status: \"bridged\", adapted_input: B}, "
+        "    _{status: \"bridged\", adapted_input: C}, "
+        "    _{status: \"target_refused\", adapted_input: C} ], N), "
+        "format('DISTINCT ~w~n', [N]), "
+        "( A == B -> Same = yes ; Same = no ), format('IDENTICAL ~w~n', [Same])"
+    )
+    counted = {}
+    for line in r4_swipl(goal).splitlines():
+        for tag in ("DISTINCT", "IDENTICAL"):
+            if line.startswith(tag + " "):
+                counted[tag] = line.split(None, 1)[1].strip()
+    record("identical adapted inputs count once, despite distinct dict tags",
+           counted.get("DISTINCT") == "2" and counted.get("IDENTICAL") == "no",
+           f"three bridged records, two shapes -> {counted.get('DISTINCT')} "
+           f"distinct; raw ==/2 says identical={counted.get('IDENTICAL')}")
+
+    # The verdict itself, called directly, on the priority the ceremony reads.
+    goal = (
+        "r4_driver:r4_verdict(0, 5, 0, 2, completed, \"design\", "
+        "  [_{obligation: \"units\", reason: \"r\", samples: 1}], 0, OA, TA), "
+        "format('V1 ~w ~w~n', [OA, TA]), "
+        "r4_driver:r4_verdict(0, 5, 0, 2, completed, \"design\", [], 5, OB, TB), "
+        "format('V2 ~w ~w~n', [OB, TB]), "
+        "r4_driver:r4_verdict(0, 5, 0, 2, pair_budget, \"design\", [], 5, OC, TC), "
+        "format('V3 ~w ~w~n', [OC, TC]), "
+        "r4_driver:r4_verdict(5, 5, 5, 2, completed, \"design\", [], 0, OD, TD), "
+        "format('V4 ~w ~w~n', [OD, TD]), "
+        "r4_driver:r4_verdict(5, 5, 5, 2, completed, \"grid_limited\", [], 0, OE, TE), "
+        "format('V5 ~w ~w~n', [OE, TE]), "
+        "r4_driver:r4_verdict(20, 20, 1, 2, completed, \"design\", [], 0, OF, TF), "
+        "format('V6 ~w ~w~n', [OF, TF])"
+    )
+    verdicts = {}
+    for line in r4_swipl(goal).splitlines():
+        for tag in ("V1", "V2", "V3", "V4", "V5", "V6"):
+            if line.startswith(tag + " "):
+                verdicts[tag] = line.split(None, 1)[1].strip()
+    record("the verdict keeps a warrant refusal apart from a target refusal",
+           verdicts.get("V1") == "no_candidate warrant_refused"
+           and verdicts.get("V2") == "no_candidate target_refused",
+           f"warrant -> {verdicts.get('V1')!r}; "
+           f"target -> {verdicts.get('V2')!r}")
+    record("a spent budget outranks every miss",
+           verdicts.get("V3") == "timeout pair_budget_exhausted",
+           f"budget + declines -> {verdicts.get('V3')!r}")
+    record("a thin grid certifies under its own name, never the design's",
+           verdicts.get("V4") == "certified_candidate contract_bridge"
+           and verdicts.get("V5")
+           == "certified_candidate contract_bridge_thin_evidence",
+           f"design -> {verdicts.get('V4')!r}; "
+           f"grid_limited -> {verdicts.get('V5')!r}")
+    record("twenty bridges on one distinct input certify nothing",
+           verdicts.get("V6") == "no_candidate insufficient_distinct_inputs",
+           f"20 bridged, 1 distinct -> {verdicts.get('V6')!r}")
+
+
+def check_r4_budget_guard() -> None:
+    print("\n[23] R4 — a spent (pair, adapter) budget yields an explicit row",
+          flush=True)
+    item = {
+        "run": "r4",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "target": {"family": "subtraction", "kind": "count_up_missing_addend"},
+        "adapter": "identity",
+        "sample_count": 6, "pair_budget_s": 0.001, "input_timeout_s": 1,
+    }
+    row = run_r4_item(item, timeout=120)
+    evidence = row["evidence"]
+    print(f"      row : {row['outcome']} / {row['candidate_type']}, "
+          f"walk={evidence['walk']}", flush=True)
+    problems = validate_row(row)
+    record("the budget-stop row keeps the shared output schema", not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("a spent budget is a timeout and never an incompatibility",
+           row["outcome"] == "timeout"
+           and row["candidate_type"] == "pair_budget_exhausted"
+           and evidence["walk"] == "pair_budget",
+           f"outcome={row['outcome']} type={row['candidate_type']} "
+           f"walk={evidence['walk']}")
+
+    # The external failure path: R4 walks one (pair, adapter) per item, so it
+    # retains one row, and that row must not read as a search that finished.
+    failed_process = Mock()
+    failed_process.communicate.return_value = (
+        "", "fixture process exited before writing a row"
+    )
+    with patch.object(array_runner.subprocess, "Popen",
+                      return_value=failed_process):
+        rows, disposition = array_runner.run_item(
+            item, watchdog_s=30, driver=R4_DRIVER)
+    record("an R4 process that writes no row still leaves one behind",
+           disposition == "no_row" and len(rows) == 1
+           and rows[0]["run"] == "r4"
+           and rows[0]["candidate_type"] == "no_row"
+           and rows[0]["evidence"]["walk"] == "no_row"
+           and rows[0]["evidence"]["adapter"] == "identity",
+           f"disposition={disposition}; {len(rows)} row(s); "
+           f"type={rows[0]['candidate_type'] if rows else None}")
+
+
+def check_r4_library() -> None:
+    print("\n[24] R4 — the adapter library is complete and self-consistent",
+          flush=True)
+    goal = (
+        "r4_adapters:adapter_count(N), format('COUNT ~w~n', [N]), "
+        "forall(r4_adapters:adapter(Id, signature(A, R, P), Obligations), "
+        "  format('ROW ~w|~w|~w|~w|~w~n', [Id, A, R, P, Obligations])), "
+        "aggregate_all(count, r4_adapters:uncarried(_, _), U), "
+        "format('UNCARRIED ~w~n', [U])"
+    )
+    rows = []
+    count = 0
+    uncarried = 0
+    for line in r4_swipl(goal).splitlines():
+        if line.startswith("COUNT "):
+            count = int(line.split()[1])
+        elif line.startswith("UNCARRIED "):
+            uncarried = int(line.split()[1])
+        elif line.startswith("ROW "):
+            rows.append(line[4:].split("|"))
+    for identifier, accepts, route, produces, obligations in rows:
+        print(f"      {identifier:36s} {accepts} via {route} -> {produces}  "
+              f"{obligations}", flush=True)
+
+    record("the library carries the design's twelve rows",
+           count == 12 and len(rows) == 12,
+           f"{count} adapter/3 rows")
+    record("every row declares units, roles and boundary",
+           all("units" in obligations and "roles" in obligations
+               and "boundary" in obligations
+               for *_, obligations in rows),
+           "; ".join(f"{identifier}={obligations}"
+                     for identifier, *_, obligations in rows[:2]) + " ...")
+    record("the shapes the library will not carry are named, not silent",
+           uncarried >= 5,
+           f"{uncarried} uncarried shape class(es) recorded")
+
+    # Every row must have a transform clause, or the manifest would offer items
+    # nothing can run. adapt/6 is called with a carrier of the kind the row
+    # declares it reads, and must either produce or refuse — never fail.
+    goal = (
+        "forall(( r4_adapters:adapter_id(Id), "
+        "         fixture_carrier(Kind, Carrier, Route), "
+        "         r4_adapters:adapter_reads(Id, Kind, Route) ), "
+        "( ( r4_adapters:adapt(Id, Carrier, Route, "
+        "      context(unit(yard), [scaling(foot, yard, 3)]), Produced, _) "
+        "  -> functor(Produced, F, _) ; F = no_clause ), "
+        "  format('ADAPT ~w ~w~n', [Id, F]) ))"
+    )
+    helper = (
+        "fixture_carrier(magnitude_dimensionless, magnitude(6, dimensionless), "
+        "  direct). "
+        "fixture_carrier(magnitude_dimensionless, magnitude(6, dimensionless), "
+        "  unwrapped(1)). "
+        "fixture_carrier(magnitude_with_unit, magnitude(6, unit(foot)), "
+        "  field(quantity/2)). "
+        "fixture_carrier(fraction, fraction(3, 4), field(fraction/2)). "
+        "fixture_carrier(decimal, decimal(28, 10), field(decimal/3)). "
+        "fixture_carrier(quotient_remainder, quotient_remainder(6, 2), "
+        "  field(quotient_remainder/2))."
+    )
+    with tempfile.NamedTemporaryFile("w", suffix=".pl", delete=False) as handle:
+        handle.write(helper + "\n")
+        helper_path = Path(handle.name)
+    try:
+        completed = subprocess.run(
+            ["swipl", "-q", "-l", str(PATHS), "-l", str(R4_DRIVER),
+             "-l", str(helper_path), "-g", goal, "-t", "halt"],
+            cwd=str(ROOT), text=True, capture_output=True, timeout=300,
+            check=False,
+        )
+        reached = {}
+        for line in completed.stdout.splitlines():
+            if line.startswith("ADAPT "):
+                _, identifier, functor = line.split()
+                reached.setdefault(identifier, set()).add(functor)
+    finally:
+        helper_path.unlink(missing_ok=True)
+
+    # A row whose Route is `direct` only sees the direct carrier, and one whose
+    # Route is `unwrapped` only sees the unwrapped one; the goal above offers
+    # both, so every row should have been exercised at least once.
+    missing = [identifier for identifier, *_ in rows
+               if identifier not in reached]
+    no_clause = sorted(identifier for identifier, functors in reached.items()
+                       if functors == {"no_clause"})
+    record("every row in the library has a transform clause that runs",
+           not missing and not no_clause,
+           f"unexercised={missing or 'none'}; without a clause="
+           f"{no_clause or 'none'}")
+
+    # The relabel row, offered a carrier whose unit already matches, must not
+    # quietly do the other row's work.
+    goal = (
+        "r4_adapters:adapt(unit_relabel_with_scaling_witness, "
+        "  magnitude(6, unit(yard)), field('quantity/2'), "
+        "  context(unit(yard), []), Produced, _), "
+        "term_string(Produced, S), format('SAMEUNIT ~w~n', [S])"
+    )
+    same_unit = ""
+    for line in r4_swipl(goal).splitlines():
+        if line.startswith("SAMEUNIT "):
+            same_unit = line.split(None, 1)[1].strip()
+    record("the relabel row declines a sample that needs no relabel",
+           same_unit == "refused(no_relabel_required(yard))",
+           f"same unit -> {same_unit!r}")
+
+    # An item naming an adapter outside the library gets a row saying so. A
+    # manifest typo that failed the item instead would surface as a dead
+    # process, which reads as the cluster's fault rather than the manifest's.
+    unknown = run_r4_item({
+        "run": "r4",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "target": {"family": "addition", "kind": "count_on_from_larger"},
+        "adapter": "an_adapter_the_library_does_not_carry",
+    })
+    problems = validate_row(unknown)
+    record("an item naming an adapter outside the library gets a row saying so",
+           not problems
+           and unknown["candidate_type"] == "no_adapter_row"
+           and unknown["outcome"] == "uninstantiated"
+           and len(unknown["evidence"]["adapter_obligations"]) == 12,
+           f"type={unknown['candidate_type']}; "
+           f"{'; '.join(problems) or 'row valid'}; "
+           f"{len(unknown['evidence']['adapter_obligations'])} known rows "
+           f"listed on it")
+
+
 def main() -> int:
     print("Big Red loop substrate — offline fixture checks", flush=True)
     print(f"repo: {ROOT}", flush=True)
@@ -1207,7 +1885,9 @@ def main() -> int:
                   check_r2_external_failure_rows,
                   check_r2_lenses, check_r2_resume,
                   check_r3_known_dependency, check_r3_measured_resister,
-                  check_r3_budget_guard, check_r3_unverified_and_strength):
+                  check_r3_budget_guard, check_r3_unverified_and_strength,
+                  check_r4_bridge_hit, check_r4_warrant_refusal,
+                  check_r4_misses, check_r4_budget_guard, check_r4_library):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip

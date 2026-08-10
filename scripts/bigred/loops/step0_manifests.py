@@ -36,6 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 DRIVER = ROOT / "scripts/bigred/loops/loop_driver.pl"
 R3_DRIVER = ROOT / "scripts/bigred/loops/r3_driver.pl"
+R4_DRIVER = ROOT / "scripts/bigred/loops/r4_driver.pl"
 PATHS = ROOT / "paths.pl"
 HARVEST_ROOT = ROOT / "hermes/app/runtime/experiments/g68_harvest"
 
@@ -48,6 +49,16 @@ R3_WALL_S = 4 * 60 * 60          # --time=4:00:00
 R3_STARTUP_RESERVE_S = 30 * 60   # conda activate, swipl load, checkpoint writes
 R3_WATCHDOG_MARGIN_S = 120       # the external kill sits above the polite stop
 R3_REAP_GRACE_S = 30             # run_loop_array.py's wait on a killed child
+
+# R4's shard arithmetic, the same shape as R3's. The wall is the wave table's
+# row 4; the reserve is smaller than R3's because R4's per-item swipl load
+# happens inside each item's own watchdog rather than once per shard, so what
+# the reserve covers is the job's own setup — conda activate, the manifest
+# read — and 10 minutes of a 2-hour wall is generous for that.
+R4_WALL_S = 2 * 60 * 60
+R4_STARTUP_RESERVE_S = 10 * 60
+R4_WATCHDOG_MARGIN_S = 120
+R4_REAP_GRACE_S = 30
 
 # A record can be scored for reproduction only if something in it records what
 # the answer WAS. The names are read from the data rather than assumed: if the
@@ -541,6 +552,201 @@ def emit_r3(arguments) -> int:
     return 0
 
 
+def bridge_census() -> dict:
+    """R4's step 0, measured in one swipl pass.
+
+    Two things are measured rather than read, and both are named on the way
+    out. The output side of the design's "static schema filter" is a
+    MEASUREMENT: the tree declares an input schema per machine and nothing at
+    all about the result, so r4_driver runs each machine on the verified
+    example its own contract row carries and classifies the result term through
+    the authored carrier table. The input side is genuinely static — a join
+    over schema strings.
+    """
+    goal = (
+        "r4_driver:measure_signatures, "
+        "forall(r4_driver:signature_memo(machine(F,K), Kind, _, _), "
+        "  format('sig\\t~w\\t~w\\t~w~n', [F, K, Kind])), "
+        "forall(r4_driver:unmeasured_source(machine(F,K), Reason), "
+        "  format('unmeasured\\t~w\\t~w\\t~w~n', [F, K, Reason])), "
+        "forall(r4_adapters:adapter_id(A), format('adapter\\t~w~n', [A])), "
+        "r4_driver:bridge_manifest(Rows), "
+        "forall(member(bridge(SF,SK,TF,TK,A,P), Rows), "
+        "  format('item\\t~w\\t~w\\t~w\\t~w\\t~w\\t~w~n', [SF,SK,TF,TK,A,P]))"
+    )
+    census = {
+        "signatures": [], "unmeasured": [], "adapters": [], "items": [],
+    }
+    for line in swipl_lines(goal, timeout=1800, extra_files=(R4_DRIVER,)):
+        fields = line.split("\t")
+        tag = fields[0]
+        if tag == "sig" and len(fields) == 4:
+            census["signatures"].append(tuple(fields[1:]))
+        elif tag == "unmeasured" and len(fields) == 4:
+            census["unmeasured"].append(tuple(fields[1:]))
+        elif tag == "adapter" and len(fields) == 2:
+            census["adapters"].append(fields[1])
+        elif tag == "item" and len(fields) == 7:
+            census["items"].append({
+                "source": (fields[1], fields[2]),
+                "target": (fields[3], fields[4]),
+                "adapter": fields[5],
+                "placements": int(fields[6]),
+            })
+    return census
+
+
+def r4_items_per_task(pair_budget: float) -> tuple[int, int, int]:
+    """(items per task, watchdog seconds, seconds each item reserves)."""
+    watchdog = int(pair_budget) + R4_WATCHDOG_MARGIN_S
+    per_item = watchdog + R4_REAP_GRACE_S
+    usable = R4_WALL_S - R4_STARTUP_RESERVE_S
+    return max(1, usable // per_item), watchdog, per_item
+
+
+def write_r4_shards(items, output_dir: Path, per_task: int, costs,
+                    settings: dict) -> list[Path]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for stale in output_dir.glob("r4_shard_*.jsonl"):
+        stale.unlink()
+    shard_count = max(1, -(-len(items) // per_task))
+
+    def cost_of(item) -> int:
+        source = "{}/{}".format(*item["source"])
+        target = "{}/{}".format(*item["target"])
+        return max(costs.get(source, 0), costs.get(target, 0))
+
+    ordered = sorted(items, key=lambda item: -cost_of(item))
+    buckets: list[list] = [[] for _ in range(shard_count)]
+    for index, item in enumerate(ordered):
+        buckets[index % shard_count].append(item)
+
+    written = []
+    for number, bucket in enumerate(buckets):
+        shard = output_dir / f"r4_shard_{number:04d}.jsonl"
+        with shard.open("w", encoding="utf-8") as handle:
+            for item in bucket:
+                source_family, source_kind = item["source"]
+                target_family, target_kind = item["target"]
+                row = {
+                    "run": "r4",
+                    "key": (f"r4:{source_family}/{source_kind}"
+                            f"|{target_family}/{target_kind}"
+                            f"|{item['adapter']}"),
+                    "source": {"family": source_family, "kind": source_kind},
+                    "target": {"family": target_family, "kind": target_kind},
+                    "adapter": item["adapter"],
+                    "reachable_placements": item["placements"],
+                }
+                row.update(settings)
+                handle.write(json.dumps(row, sort_keys=True) + "\n")
+        written.append(shard)
+    return written
+
+
+def emit_r4(arguments) -> int:
+    """R4's manifest: one item per (ordered pair, adapter) the filter admits.
+
+    R4 needs no pair filter of R1's kind. Its filter is the contract-bridge
+    one: can THIS adapter carry what the source machine measurably answers into
+    a slot of the target machine's contract, with every other slot of that
+    contract reachable from the schema's own literals or the source's own
+    input? Every admitted combination gets an item and every attempted item
+    produces a row.
+    """
+    print("== R4 contract-bridge adapter manifest ==", flush=True)
+    census = bridge_census()
+    signatures = census["signatures"]
+    unmeasured = census["unmeasured"]
+    items = census["items"]
+    adapters = census["adapters"]
+
+    by_kind: dict[str, int] = {}
+    for _, _, kind in signatures:
+        by_kind[kind] = by_kind.get(kind, 0) + 1
+    never = [row for row in unmeasured if row[2] == "never_computed"]
+    no_carrier = [row for row in unmeasured if row[2] == "no_carrier"]
+
+    total_machines = len(signatures) + len(unmeasured)
+    print(f"contracted machines             : {total_machines}", flush=True)
+    print(f"  with a measured output carrier: {len(signatures)}", flush=True)
+    for kind, count in sorted(by_kind.items(), key=lambda row: -row[1]):
+        print(f"      {kind:26s}: {count}", flush=True)
+    print(f"  computed, no authored carrier : {len(no_carrier)} "
+          f"-> r4_adapters:uncarried/2 names the shapes", flush=True)
+    print(f"  did not compute on their own verified example: {len(never)} "
+          f"-> cannot be a bridge source", flush=True)
+
+    pairs = {(item["source"], item["target"]) for item in items}
+    print(f"\nstatically compatible ordered pairs : {len(pairs)} "
+          f"(the design estimated <=5,000)", flush=True)
+    print(f"(pair, adapter) items               : {len(items)}", flush=True)
+    by_adapter: dict[str, int] = {name: 0 for name in adapters}
+    for item in items:
+        by_adapter[item["adapter"]] = by_adapter.get(item["adapter"], 0) + 1
+    for name in adapters:
+        count = by_adapter.get(name, 0)
+        note = "  <- no compatible pair in this corpus" if count == 0 else ""
+        print(f"    {name:36s}: {count}{note}", flush=True)
+    runs = sum(min(item["placements"], arguments.max_placements)
+               for item in items) * arguments.samples_per_bridge * 2
+    print(f"upper bound on machine runs         : {runs:,} "
+          f"({arguments.samples_per_bridge} samples x 2 machines x the "
+          f"reachable placements)", flush=True)
+
+    per_task, watchdog, per_item = r4_items_per_task(arguments.bridge_budget_s)
+    if arguments.items_per_task:
+        per_task = arguments.items_per_task
+    shard_count = max(1, -(-len(items) // per_task))
+    print(f"\nshard arithmetic from the guards:", flush=True)
+    print(f"  (pair, adapter) budget {int(arguments.bridge_budget_s)}s "
+          f"(the design's 5 min)", flush=True)
+    print(f"  + watchdog margin {R4_WATCHDOG_MARGIN_S}s "
+          f"-> --watchdog-s {watchdog}", flush=True)
+    print(f"  + reap grace      {R4_REAP_GRACE_S}s "
+          f"-> {per_item}s reserved per item", flush=True)
+    print(f"  wall {R4_WALL_S}s - startup reserve {R4_STARTUP_RESERVE_S}s "
+          f"= {R4_WALL_S - R4_STARTUP_RESERVE_S}s usable", flush=True)
+    print(f"  -> {(R4_WALL_S - R4_STARTUP_RESERVE_S) // per_item} items fit a "
+          f"2:00:00 shard; running {per_task}", flush=True)
+    print(f"  -> {len(items)} items / {per_task} = {shard_count} shards, "
+          f"sbatch array range 0-{shard_count - 1}", flush=True)
+    wave_table_shards = max(1, -(-len(items) // 50))
+    print(f"  the wave table's 50/task would be {wave_table_shards} shards "
+          f"(0-{wave_table_shards - 1}) and reserve "
+          f"{50 * per_item:,}s against a {R4_WALL_S}s wall; the guard "
+          f"arithmetic above is what this manifest uses", flush=True)
+
+    if arguments.census:
+        return 0
+
+    costs = measured_machine_cost(arguments.r1_collection)
+    if costs:
+        print(f"measured machine costs read     : {len(costs)} machines from "
+              f"{arguments.r1_collection}", flush=True)
+    else:
+        print(f"measured machine costs read     : none at "
+              f"{arguments.r1_collection}; shards deal in enumeration order",
+              flush=True)
+
+    settings = {
+        "pair_budget_s": arguments.bridge_budget_s,
+        "input_timeout_s": arguments.bridge_input_timeout_s,
+        "sample_count": arguments.samples_per_bridge,
+        "max_placements": arguments.max_placements,
+    }
+    shards = write_r4_shards(items, arguments.output_dir, per_task, costs,
+                             settings)
+    last = len(shards) - 1
+    print(f"\nR4 manifest written under {arguments.output_dir}", flush=True)
+    print(f"  {len(items)} items across {len(shards)} shards at "
+          f"{per_task}/task, cost-interleaved", flush=True)
+    print(f"  sbatch array range: 0-{last}", flush=True)
+    print(f"  run_loop_array.py --driver scripts/bigred/loops/r4_driver.pl "
+          f"--watchdog-s {watchdog}", flush=True)
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pair-filter", choices=PAIR_FILTERS, default=None,
@@ -567,6 +773,25 @@ def main() -> int:
     parser.add_argument("--r3", action="store_true",
                         help="write R3's depth-1 kernel re-derivation manifest, "
                              "one item per machine")
+    parser.add_argument("--r4", action="store_true",
+                        help="write R4's contract-bridge manifest, one item "
+                             "per (ordered pair, adapter) the filter admits")
+    parser.add_argument("--items-per-task", type=int, default=None,
+                        help="R4 shard size; the default is computed from the "
+                             "per-(pair, adapter) budget and the 2:00:00 wall "
+                             "and printed")
+    parser.add_argument("--bridge-budget-s", type=float, default=300.0,
+                        help="R4's cumulative per-(pair, adapter) guard "
+                             "(the design's 5 minutes). R1 and R2 keep their "
+                             "own --pair-budget-s; the runs do not share one")
+    parser.add_argument("--bridge-input-timeout-s", type=float, default=60.0,
+                        help="R4's per-item inner bound (the design's 60 s)")
+    parser.add_argument("--samples-per-bridge", type=int, default=20,
+                        help="R4's sample inputs per (pair, adapter); the "
+                             "design asks for 20")
+    parser.add_argument("--max-placements", type=int, default=3,
+                        help="R4's landing slots tried per item, in the "
+                             "target contract's document order")
     parser.add_argument("--machines-per-task", type=int, default=None,
                         help="R3 shard size; the default is computed from the "
                              "machine budget and the 4:00:00 wall and printed")
@@ -591,7 +816,11 @@ def main() -> int:
     # another's: R1 keeps every separating input, R2 caps witnesses at 200, and
     # R3 has no witness list at all.
     if arguments.output_dir is None:
-        if arguments.r3:
+        if arguments.r4:
+            arguments.output_dir = (
+                ROOT / ".bigred-output/2026-08-10-loops-wave4-r4"
+            )
+        elif arguments.r3:
             arguments.output_dir = (
                 ROOT / ".bigred-output/2026-08-10-loops-wave3-r3"
             )
@@ -600,6 +829,8 @@ def main() -> int:
             arguments.output_dir = (
                 ROOT / f".bigred-output/2026-08-08-loops-{wave}"
             )
+    if arguments.r4:
+        return emit_r4(arguments)
     if arguments.r3:
         return emit_r3(arguments)
     if arguments.r2:

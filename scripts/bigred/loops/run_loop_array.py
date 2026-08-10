@@ -58,6 +58,11 @@ CONSUMERS = {
         " queries in the path-graph design + the R2 lens l3 kernel half + the"
         " breadth reel's composition handoffs"
     ),
+    "r4": (
+        "the contract_bridge candidate queue for the admission ceremony + the"
+        " stage-2 gap report's missing-contract inventory + the breadth reel's"
+        " grade-cut upgrade queue"
+    ),
 }
 
 REQUIRED_ROW_FIELDS = (
@@ -279,10 +284,66 @@ def r3_failure_row(item: dict, outcome: str, candidate_type: str,
     }
 
 
+def r4_failure_row(item: dict, outcome: str, candidate_type: str,
+                   failure_class: str, note: str, elapsed_ms: int) -> dict:
+    """The one R4 row for a (pair, adapter) whose external process yielded none.
+
+    R4 walks one ordered pair under one adapter per item, so there is no
+    sibling direction to keep. What has to survive is that this row is NOT a
+    measured incompatibility: `candidate_type` never reads
+    `measured_incompatible` on this path, because a process that died says
+    nothing about whether the adapter fits.
+    """
+    source = item.get("source") or {}
+    target = item.get("target") or {}
+    return {
+        "run": "r4",
+        "candidate_type": candidate_type,
+        "source": {"family": source.get("family"), "kind": source.get("kind")},
+        "target": {"family": target.get("family"), "kind": target.get("kind")},
+        "input": {"schema": item.get("schema"), "bounds": None, "points": 0},
+        "evidence": {
+            "kind": "failed_derivation",
+            "source_outcome": note,
+            "target_outcome": "no adapted input was run",
+            "elapsed_ms": elapsed_ms,
+            "adapter": item.get("adapter"),
+            "adapter_signature": None,
+            "adapter_obligations": [],
+            "source_schema": None,
+            "target_schema": None,
+            "placements_available": 0,
+            "placements_run": 0,
+            "placement_path": None,
+            "placement_index": 0,
+            "grid_points_available": 0,
+            "grid_points_probed": 0,
+            "source_computed": 0,
+            "source_refused": 0,
+            "source_errored": 0,
+            "samples_required": 0,
+            "samples_available": 0,
+            "samples_evaluated": 0,
+            "samples_bridged": 0,
+            "samples_warranted": 0,
+            "warrant_refusals": [],
+            "sample_records": [],
+            "evidence_strength": "not reached",
+            "walk": failure_class,
+            "reason": failure_class,
+        },
+        "outcome": outcome,
+        "consumer": CONSUMERS["r4"],
+    }
+
+
 def failure_rows(item: dict, outcome: str, candidate_type: str,
                  failure_class: str, note: str, elapsed_ms: int) -> list[dict]:
     """The retained rows for an item whose Prolog process produced none."""
     run = str(item.get("run"))
+    if run == "r4":
+        return [r4_failure_row(item, outcome, candidate_type, failure_class,
+                               note, elapsed_ms)]
     if run == "r3":
         return [r3_failure_row(item, outcome, candidate_type, failure_class,
                                note, elapsed_ms)]
@@ -304,10 +365,10 @@ def run_item(item: dict, watchdog_s: float,
     driver writes, rather than the first, is what keeps R2's second direction
     from being silently dropped.
 
-    The driver is a parameter because R3 lives in its own module beside
-    loop_driver.pl rather than inside it, which is what keeps the R1 and R2
-    paths unchanged. The entry goal follows the module name, so a driver file
-    named r3_driver.pl is entered at r3_driver:main_item.
+    The driver is a parameter because R3 and R4 live in their own modules
+    beside loop_driver.pl rather than inside it, which is what keeps the R1 and
+    R2 paths unchanged. The entry goal follows the module name, so a driver
+    file named r4_driver.pl is entered at r4_driver:main_item.
     """
     started = time.monotonic()
     command = [
@@ -390,8 +451,9 @@ def main() -> int:
                         help="stop after this many items (0 = the whole shard)")
     parser.add_argument("--driver", type=Path, default=DRIVER,
                         help="the Prolog driver to run each item through; the "
-                             "default carries R1 and R2, and R3 passes "
-                             "scripts/bigred/loops/r3_driver.pl")
+                             "default carries R1 and R2, R3 passes "
+                             "scripts/bigred/loops/r3_driver.pl and R4 passes "
+                             "scripts/bigred/loops/r4_driver.pl")
     arguments = parser.parse_args()
 
     if not arguments.manifest.is_file():
