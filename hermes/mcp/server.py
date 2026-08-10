@@ -58,6 +58,7 @@ CORE_TO_WORKER = {
     "deontic_up_level": "deontic_up_level",
     "commitment_match": "commitment_match",
     "strategy_trace": "strategy_trace",
+    "list_strategies": "list_strategies",
     "lesson_arithmetic_demonstration": "lesson_arithmetic_demonstration",
     "strategy_recognize": "strategy_recognize",
     "incompatibility_contexts": "incompatibility_contexts",
@@ -91,7 +92,7 @@ CORE_TOOLS = (
     ("deontic_up_level", "Return named up-level questions for unresolved commitment gaps.", ("agent", "commitments")),
     ("commitment_match", "Match reading content through the strategy/misconception and literature-canonical vocabularies. Each match labels its matcher; it abstains when neither complete-name gate admits a term.", ("content",)),
     ("strategy_recognize", "Align ordinary classroom language to 114 execution-observed strategy traces. Confidence is unshared surface evidence times trace coverage, capped at one. A partial_trace requires at least two steps in trace order from two distinct surfaces and at least one full step of unshared evidence. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("content",)),
-    ("strategy_trace", "Run one registered strategy with an optional input object. The schema lists the registry-backed names, operation pairing, and worked inputs. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
+    ("strategy_trace", "Run one registered strategy with an optional input object. The strategy parameter takes one of the registry-backed names, and the input schema carries every name with its operation pairing and a worked input. A caller that reads only a parameter's type and enum receives no names at all, because the names are declared as a oneOf; call list_strategies for names, operations, and worked inputs whenever the declaration reaches you without them. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
     ("lesson_enactment_list", "List every lesson with an executable enactment, all distinct forms declared for each lesson, and named refusals with the machine each would need. The first enactment call lazily loads five lanes and may take about eleven seconds in this checkout.", ()),
     ("lesson_enactment_run", "Run every distinct enactment form declared for one lesson and return each result through the strategy-trace response shape. Each trace carries its verdict, input provenance, and what_it_does_not_claim sentence. A lesson with no declared enactment returns a not-covered error; call lesson_enactment_list to inspect named refusals. The first enactment call may take about eleven seconds.", ("lesson",)),
     ("diagnose_error", "Return encoded misconception rows whose recorded exemplar input matches the stated domain and input and whose runnable rule reproduces got. This operation is exemplar-bound rather than abductive; an empty result is an abstention rather than a verdict that the work is correct.", ("domain", "input", "got")),
@@ -107,6 +108,7 @@ CORE_TOOLS = (
 # catalog. They are available to MCP callers without changing the branch-agent
 # carving.
 CORE_STANDALONE_TOOLS = (
+    ("list_strategies", "List registered strategy names with their operation, cluster, and whether a worked input is recorded. Every name returned is a name strategy_trace accepts, so this is the discovery step for a caller whose strategy_trace declaration arrived without its name list. Filter by operation or by a name substring; results are paged. Expected time: a few seconds on the first call while the worker starts.", ("operation", "contains", "limit", "offset")),
     ("abduce_error", "Run the closed registry of arithmetic misconception rules on one ground input and return the candidate rules that reproduce got, with their recorded db_row citations. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("domain", "input", "got")),
     ("lesson_arithmetic_demonstration", "List the four compiled IM-G1-U3-L17 addition tasks or run one selected task against an observed whole-number answer. The result returns productive and dropped-leftover traces, a candidate match or explicit abstention, and never diagnoses the student. Work transcription remains request-local and is not returned or persisted.", ("lesson", "task_id", "observed_answer", "work_transcription")),
     ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
@@ -273,6 +275,13 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
         properties["input"] = {
             "type": "object",
             "description": "Optional override for the worked input shown with the selected strategy.",
+        }
+    elif name == "list_strategies":
+        properties = {
+            "operation": {"type": "string", "minLength": 1, "description": "Exact operation to retain, such as fraction or subtraction. Call without arguments to receive the operation inventory."},
+            "contains": {"type": "string", "minLength": 1, "description": "Case-insensitive substring of the strategy name."},
+            "limit": {"type": "integer", "minimum": 1, "maximum": 100, "description": "Names to return; defaults to 25 and cannot exceed 100."},
+            "offset": {"type": "integer", "minimum": 0, "description": "Zero-based name offset; defaults to 0."},
         }
     elif name == "prolog_query":
         properties = {
@@ -619,6 +628,8 @@ class HermesMCPServer:
             return self.lesson_deformation_chart(arguments)
         if name == "lesson_deformation_chart_detail":
             return self.lesson_deformation_chart_detail(arguments)
+        if name == "list_strategies":
+            return self.list_strategies(arguments)
         worker_op = CORE_TO_WORKER[name]
         payload = dict(arguments)
         value = self._worker_request(worker_op, **payload)
@@ -1127,6 +1138,73 @@ class HermesMCPServer:
         value = self._worker_request("monitoring_chart_export", lesson_code=code)
         if not isinstance(value, dict):
             raise ToolCallError("monitoring_chart returned an invalid chart.", kind="worker_failure")
+        return value
+
+    def list_strategies(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        """Serve strategy names as a page, because the catalog is not a reply.
+
+        The worker's own catalog runs to about 30 000 tokens, which no caller
+        can hold beside a conversation. Discovery therefore returns the name,
+        its operation, and whether a worked input is recorded, filtered and
+        paged; the caller reads a name here and runs it through strategy_trace.
+        """
+        limit = self._bounded_integer(arguments, "limit", default=25, minimum=1, maximum=100)
+        offset = self._bounded_integer(arguments, "offset", default=0, minimum=0, maximum=None)
+        catalog = self._worker_request("list_strategies")
+        rows = catalog.get("strategies", []) if isinstance(catalog, dict) else []
+        operations = catalog.get("operations", []) if isinstance(catalog, dict) else []
+        operation = arguments.get("operation")
+        contains = arguments.get("contains")
+        matched = [
+            {
+                "name": row.get("kind"),
+                "operation": row.get("operation"),
+                "cluster": row.get("cluster"),
+                "worked_input_recorded": bool(row.get("has_fsm")),
+            }
+            for row in rows
+            if isinstance(row, dict)
+            and (operation is None or row.get("operation") == operation)
+            and (contains is None or contains.casefold() in str(row.get("kind", "")).casefold())
+        ]
+        # Both filters answer a miss the same way. A filter that returns an
+        # empty page while its neighbour refuses teaches a caller that one kind
+        # of nothing is a result and the other is a limit.
+        if not matched and (operation is not None or contains is not None):
+            stated = ", ".join(
+                part for part in (
+                    f"operation {operation!r}" if operation is not None else "",
+                    f"name substring {contains!r}" if contains is not None else "",
+                ) if part
+            )
+            raise ToolCallError(
+                f"list_strategies has no strategy for {stated}.",
+                kind="not_covered",
+                extra={"operations": operations},
+            )
+        matched.sort(key=lambda row: (str(row["operation"]), str(row["name"])))
+        page = matched[offset : offset + limit]
+        return {
+            "total": int(catalog.get("count", len(rows))) if isinstance(catalog, dict) else len(rows),
+            "operations": operations,
+            "matched": len(matched),
+            "limit": limit,
+            "offset": offset,
+            "has_more": offset + len(page) < len(matched),
+            "strategies": page,
+            "run_with": "strategy_trace",
+        }
+
+    @staticmethod
+    def _bounded_integer(arguments: dict[str, Any], key: str, *, default: int, minimum: int, maximum: int | None) -> int:
+        """Accept the paging argument the caller sent, or say why it was refused."""
+        raw = arguments.get(key, default)
+        value = HermesMCPServer._coerce_integer(raw)
+        if value is None:
+            raise ToolCallError(f"list_strategies {key} must be an integer.", kind="malformed_input")
+        if value < minimum or (maximum is not None and value > maximum):
+            bound = f"between {minimum} and {maximum}" if maximum is not None else f"at least {minimum}"
+            raise ToolCallError(f"list_strategies {key} must be {bound}.", kind="malformed_input")
         return value
 
     def monitoring_chart(self, arguments: dict[str, Any]) -> dict[str, Any]:
