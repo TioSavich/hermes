@@ -893,6 +893,309 @@ def check_r2_resume() -> None:
                f"outcome={no_receiver[0]['outcome'] if no_receiver else 'none'}")
 
 
+# --------------------------------------------------------------------------
+# 16-18. R3 — the depth-1 kernel re-derivation sweep.
+#
+# One machine that re-derives, one that does not, and one budget that stops the
+# walk. The three together are what keeps a resister row readable: a miss and a
+# stop must never wear the same candidate_type, or absence starts reading as a
+# measured result.
+# --------------------------------------------------------------------------
+
+R3_DRIVER = ROOT / "scripts/bigred/loops/r3_driver.pl"
+
+
+def run_r3_item(item: dict, timeout: int = 600) -> dict:
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(PATHS), "-l", str(R3_DRIVER),
+         "-g", "r3_driver:main_item", "-t", "halt"],
+        cwd=str(ROOT), text=True, capture_output=True, timeout=timeout,
+        input=json.dumps(item) + "\n", check=False,
+    )
+    line = next((ln for ln in completed.stdout.splitlines()
+                 if ln.strip().startswith("{")), "")
+    if not line:
+        raise RuntimeError(f"r3_driver wrote no row: {completed.stderr[:400]}")
+    return json.loads(line)
+
+
+def r3_swipl(goal: str, timeout: int = 300) -> str:
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(PATHS), "-l", str(R3_DRIVER), "-g", goal,
+         "-t", "halt"],
+        cwd=str(ROOT), text=True, capture_output=True, timeout=timeout,
+        check=False,
+    )
+    if completed.returncode:
+        raise RuntimeError(
+            f"goal failed ({completed.returncode}): "
+            f"{completed.stderr.strip()[:600]}"
+        )
+    return completed.stdout
+
+
+def check_r3_known_dependency() -> None:
+    print("\n[16] R3 — a known kernel dependency re-derives at depth 1",
+          flush=True)
+    # counting/recursive_place_value_inscription calls K6 and returns the
+    # kernel's numeral unchanged (counting_action_pairs.pl:343-357). It is the
+    # ground truth for a hit: if the sweep cannot find this one, it can find
+    # nothing.
+    item = {
+        "run": "r3",
+        "source": {"family": "counting",
+                   "kind": "recursive_place_value_inscription"},
+        "machine_budget_s": 120, "composition_timeout_s": 10,
+    }
+    row = run_r3_item(item)
+    evidence = row["evidence"]
+    print(f"      space : {evidence['compositions_enumerated']} depth-1 "
+          f"compositions, {evidence['compositions_applicable']} applicable "
+          f"at the first screen point", flush=True)
+    print(f"      walk  : probed {evidence['grid_points_probed']} of "
+          f"{evidence['grid_points_available']} grid points, "
+          f"{evidence['machine_computed']} computed, "
+          f"{evidence['machine_refused']} refused", flush=True)
+    print(f"      row   : {row['outcome']} / {row['candidate_type']} in "
+          f"{evidence['elapsed_ms']} ms", flush=True)
+
+    problems = validate_row(row)
+    record("the R3 row validates against the shared output schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("the known dependency is certified at depth 1",
+           row["outcome"] == "certified_candidate"
+           and row["candidate_type"] == "kernel_dependency",
+           f"outcome={row['outcome']} type={row['candidate_type']}")
+    record("the bridge proof is byte-identical, not numeric",
+           evidence["kind"] == "byte_identical_bridge"
+           and evidence["source_outcome"] == evidence["target_outcome"],
+           f"machine and composition both answered "
+           f"{evidence['source_outcome'][:56]}")
+    tested = len(evidence["screen_inputs"]) + len(evidence["verification_inputs"])
+    record("the row carries all 110 inputs the candidacy rests on",
+           tested == 110 and evidence["evidence_strength"] == "design",
+           f"{len(evidence['screen_inputs'])} screened + "
+           f"{len(evidence['verification_inputs'])} verified = {tested}")
+    record("the winning kernel is named on the row",
+           row["target"]["kind"] == "recollect_base_cycles",
+           f"target={row['target']}")
+
+    # Receipt executability: the row's composition is a term, not a caption.
+    # Read the printed string back and run it against the row's own first
+    # screen input; an unbindable receipt licenses nothing.
+    composition = evidence["candidate_compositions"][0]
+    first_input = json.dumps(evidence["screen_inputs"][0])
+    goal = (
+        "use_module(library(http/json)), "
+        f"term_string(Composition, {json.dumps(composition)}), "
+        f"atom_json_dict({json.dumps(first_input)}, Input, "
+        "[value_string_as(string)]), "
+        "r3_driver:apply_composition(Composition, Input, Result), "
+        "format('REPLAY ~q~n', [Result])"
+    )
+    replayed = ""
+    for line in r3_swipl(goal).splitlines():
+        if line.startswith("REPLAY "):
+            replayed = line.split(None, 1)[1].strip()
+    record("the recorded composition re-runs from its printed string",
+           replayed == evidence["source_outcome"],
+           f"replay gave {replayed[:56]!r}")
+
+
+def check_r3_measured_resister() -> None:
+    print("\n[17] R3 — a machine with no depth-1 composition is a MEASURED "
+          "resister", flush=True)
+    item = {
+        "run": "r3",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "machine_budget_s": 120, "composition_timeout_s": 10,
+    }
+    row = run_r3_item(item)
+    evidence = row["evidence"]
+    print(f"      machine answers {evidence['source_outcome'][:64]}", flush=True)
+    print(f"      searched {evidence['compositions_enumerated']} compositions, "
+          f"{evidence['compositions_applicable']} ran, "
+          f"{evidence['compositions_screen_passed']} passed the screen",
+          flush=True)
+
+    problems = validate_row(row)
+    record("the resister row validates against the shared output schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("an exhausted search is a measured resister, not a silence",
+           row["outcome"] == "no_candidate"
+           and row["candidate_type"] == "measured_resister"
+           and evidence["walk"] == "completed",
+           f"type={row['candidate_type']} walk={evidence['walk']}")
+    record("the resister row says how much was searched",
+           evidence["compositions_enumerated"] > 0
+           and evidence["compositions_applicable"] > 0
+           and evidence["compositions_truncated"] is False,
+           f"{evidence['compositions_applicable']} of "
+           f"{evidence['compositions_enumerated']} compositions ran; "
+           f"truncated={evidence['compositions_truncated']}")
+    record("the two kernels depth 1 cannot bind are named on the row",
+           sorted(evidence["kernels_unbindable"])
+           == ["compare_place_sequences_by_significance",
+               "refine_bracket_by_order"],
+           ", ".join(evidence["kernels_unbindable"]))
+    record("every R3 row names a consumer", bool(row["consumer"]),
+           row["consumer"][:60])
+
+
+def check_r3_budget_guard() -> None:
+    print("\n[18] R3 — a spent machine budget yields an explicit row",
+          flush=True)
+    item = {
+        "run": "r3",
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "machine_budget_s": 0.02, "composition_timeout_s": 1,
+    }
+    row = run_r3_item(item, timeout=120)
+    evidence = row["evidence"]
+    print(f"      row   : {row['outcome']} / {row['candidate_type']}, "
+          f"walk={evidence['walk']}", flush=True)
+
+    problems = validate_row(row)
+    record("the budget-stop row keeps the shared output schema", not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("a spent budget is a timeout and never a resister",
+           row["outcome"] == "timeout"
+           and row["candidate_type"] == "machine_budget_exhausted"
+           and evidence["walk"] == "machine_budget",
+           f"outcome={row['outcome']} type={row['candidate_type']} "
+           f"walk={evidence['walk']}")
+
+    # The verdict itself, called directly: a budget stop outranks an exhausted
+    # search even when the search found nothing and enumerated everything, and
+    # it outranks an unconfirmed screen-passer too.
+    goal = (
+        "r3_driver:r3_verdict([], [], machine_budget, false, \"design\", "
+        "OutcomeA, TypeA, _), format('V1 ~w ~w~n', [OutcomeA, TypeA]), "
+        "r3_driver:r3_verdict([], [], completed, false, \"design\", "
+        "OutcomeB, TypeB, _), format('V2 ~w ~w~n', [OutcomeB, TypeB]), "
+        "r3_driver:r3_verdict([], [comp(1,k,g,[])], machine_budget, false, "
+        "\"design\", OutcomeC, TypeC, _), format('V3 ~w ~w~n', [OutcomeC, TypeC])"
+    )
+    verdicts = {}
+    for line in r3_swipl(goal).splitlines():
+        for tag in ("V1", "V2", "V3"):
+            if line.startswith(tag + " "):
+                verdicts[tag] = line.split(None, 1)[1].strip()
+    record("the verdict separates a stop from an exhausted search",
+           verdicts.get("V1") == "timeout machine_budget_exhausted"
+           and verdicts.get("V2") == "no_candidate measured_resister",
+           f"stopped -> {verdicts.get('V1')!r}; "
+           f"exhausted -> {verdicts.get('V2')!r}")
+    record("a stop outranks an unconfirmed screen-passer",
+           verdicts.get("V3") == "timeout machine_budget_exhausted",
+           f"budget + unverified -> {verdicts.get('V3')!r}")
+
+    # The cumulative budget is checked INSIDE a confirmation run, so a budget
+    # that dies partway through 100 held-out inputs stops gracefully instead of
+    # waiting for the external watchdog.
+    goal = (
+        "get_time(T), "
+        "r3_driver:agrees_on([], c, 10, T, 0, Empty), "
+        "format('EMPTY ~w~n', [Empty]), "
+        "r3_driver:agrees_on([point(point(1), 1)], c, 10, T, 0, Dead), "
+        "format('DEAD ~w~n', [Dead]), "
+        "r3_driver:screened(budget, c, [x], T, 0, 10, 50, "
+        "  st(tally(1,0,0,0), [], [], none, completed), State), "
+        "format('SCREENED ~w~n', [State])"
+    )
+    signals = {}
+    for line in r3_swipl(goal).splitlines():
+        for tag in ("EMPTY", "DEAD", "SCREENED"):
+            if line.startswith(tag + " "):
+                signals[tag] = line.split(None, 1)[1].strip()
+    record("a budget that dies inside a confirmation stops gracefully",
+           signals.get("DEAD") == "budget"
+           and signals.get("EMPTY") == "agreed"
+           and "machine_budget" in signals.get("SCREENED", ""),
+           f"empty={signals.get('EMPTY')} dead_budget={signals.get('DEAD')} "
+           f"screened={signals.get('SCREENED')}")
+
+
+def check_r3_unverified_and_strength() -> None:
+    print("\n[19] R3 — an absent confirmation set never certifies, and a small "
+          "item never certifies itself", flush=True)
+    # Six screen points and no held-out points: the composition that answered
+    # every screen point is real, and nothing confirms it. Certifying here
+    # would make `byte_identical_bridge` mean "agreed with the inputs that
+    # chose it".
+    item = {
+        "run": "r3",
+        "source": {"family": "counting",
+                   "kind": "recursive_place_value_inscription"},
+        "machine_budget_s": 120, "composition_timeout_s": 10,
+        "sample_count": 6, "verify_count": 0,
+    }
+    row = run_r3_item(item)
+    evidence = row["evidence"]
+    print(f"      screen {evidence['screen_size']}, verification "
+          f"{evidence['verification_size']}, "
+          f"{evidence['compositions_screen_passed']} passed the screen",
+          flush=True)
+    problems = validate_row(row)
+    record("the unverified row validates against the shared output schema",
+           not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("a screen-passer with no held-out set is NOT certified",
+           row["outcome"] == "no_candidate"
+           and row["candidate_type"] == "kernel_dependency_unverified"
+           and evidence["kind"] == "failed_derivation"
+           and evidence["candidate_compositions"] == []
+           and row["target"]["kind"] is None,
+           f"outcome={row['outcome']} type={row['candidate_type']} "
+           f"kind={evidence['kind']}")
+    record("the unconfirmed composition stays on the row, out of the "
+           "candidate list",
+           len(evidence["unverified_compositions"]) == 1
+           and "recollect_base_cycles" in evidence["unverified_compositions"][0],
+           f"{len(evidence['unverified_compositions'])} unverified: "
+           f"{evidence['unverified_compositions'][0][:60] if evidence['unverified_compositions'] else None}")
+
+    # evidence_strength reads the DRIVER's defaults, not the item's, so an item
+    # that lowers the counts cannot stamp its own row as a full run.
+    small = {
+        "run": "r3",
+        "source": {"family": "counting",
+                   "kind": "recursive_place_value_inscription"},
+        "machine_budget_s": 120, "composition_timeout_s": 10,
+        "sample_count": 2, "verify_count": 3,
+    }
+    small_row = run_r3_item(small)
+    small_evidence = small_row["evidence"]
+    record("a five-input item reads grid_limited, never design",
+           small_evidence["evidence_strength"] == "grid_limited"
+           and small_row["candidate_type"] == "kernel_dependency_thin_evidence"
+           and small_evidence["screen_size_required"] == 110,
+           f"strength={small_evidence['evidence_strength']} "
+           f"type={small_row['candidate_type']} "
+           f"required={small_evidence['screen_size_required']} against "
+           f"{small_evidence['screen_size'] + small_evidence['verification_size']} tested")
+
+    # The external failure path: R3 walks one machine, so it retains one row,
+    # and that row must not read as a search that finished.
+    failed_process = Mock()
+    failed_process.communicate.return_value = (
+        "", "fixture process exited before writing a row"
+    )
+    with patch.object(array_runner.subprocess, "Popen",
+                      return_value=failed_process):
+        rows, disposition = array_runner.run_item(
+            item, watchdog_s=30, driver=R3_DRIVER)
+    record("an R3 process that writes no row still leaves one behind",
+           disposition == "no_row" and len(rows) == 1
+           and rows[0]["run"] == "r3"
+           and rows[0]["candidate_type"] == "no_row"
+           and rows[0]["evidence"]["walk"] == "no_row",
+           f"disposition={disposition}; {len(rows)} row(s); "
+           f"type={rows[0]['candidate_type'] if rows else None}")
+
+
 def main() -> int:
     print("Big Red loop substrate — offline fixture checks", flush=True)
     print(f"repo: {ROOT}", flush=True)
@@ -902,7 +1205,9 @@ def main() -> int:
                   check_compendium_reader, check_separation_audit,
                   check_r2_directed_walk, check_r2_pair_budget_partial,
                   check_r2_external_failure_rows,
-                  check_r2_lenses, check_r2_resume):
+                  check_r2_lenses, check_r2_resume,
+                  check_r3_known_dependency, check_r3_measured_resister,
+                  check_r3_budget_guard, check_r3_unverified_and_strength):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip

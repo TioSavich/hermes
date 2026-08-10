@@ -52,6 +52,12 @@ CONSUMERS = {
         "the G_walk crisis_release candidate queue (admission ceremony, L2 and"
         " L3 first) + the rung-map seam report + the stage-2 gap report"
     ),
+    "r3": (
+        "the kernel admission ceremony on knowledge/strategies/abstraction/"
+        "kernel_gate_pilot.pl + the kernel_dependency overlay and blast-radius"
+        " queries in the path-graph design + the R2 lens l3 kernel half + the"
+        " breadth reel's composition handoffs"
+    ),
 }
 
 REQUIRED_ROW_FIELDS = (
@@ -218,19 +224,97 @@ def r2_failure_row(item: dict, outcome: str, candidate_type: str,
     }
 
 
-def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
+def r3_failure_row(item: dict, outcome: str, candidate_type: str,
+                   failure_class: str, note: str, elapsed_ms: int) -> dict:
+    """The one R3 row for a machine whose external process yielded no census.
+
+    R3 walks one machine per item, so there is no sibling direction to keep;
+    what has to survive is the distinction between a search that finished
+    empty and a search that never finished. `walk` carries the failure class,
+    and `candidate_type` never reads `measured_resister` on this path.
+    """
+    source = item.get("source") or {}
+    return {
+        "run": "r3",
+        "candidate_type": candidate_type,
+        "source": {"family": source.get("family"), "kind": source.get("kind")},
+        "target": {"family": None, "kind": None},
+        "input": {"schema": item.get("schema"), "bounds": None, "points": 0},
+        "evidence": {
+            "kind": "failed_derivation",
+            "source_outcome": note,
+            "target_outcome": "no composition was run",
+            "elapsed_ms": elapsed_ms,
+            "depth": 1,
+            "grid_points_available": 0,
+            "grid_points_probed": 0,
+            "machine_computed": 0,
+            "machine_refused": 0,
+            "machine_errored": 0,
+            "screen_inputs": [],
+            "verification_inputs": [],
+            "screen_size": 0,
+            "screen_size_required": 0,
+            "verification_size": 0,
+            "evidence_strength": "not reached",
+            "input_integer_leaves": [],
+            "input_integer_leaf_count": 0,
+            "input_other_leaf_count": 0,
+            "input_leaves_truncated": False,
+            "kernels_unbindable": [],
+            "compositions_enumerated": 0,
+            "compositions_truncated": False,
+            "compositions_applicable": 0,
+            "compositions_screen_passed": 0,
+            "compositions_verified": 0,
+            "verifications_spent": 0,
+            "candidate_compositions": [],
+            "candidate_kernels": [],
+            "nearest_miss": None,
+            "walk": failure_class,
+            "reason": failure_class,
+        },
+        "outcome": outcome,
+        "consumer": CONSUMERS["r3"],
+    }
+
+
+def failure_rows(item: dict, outcome: str, candidate_type: str,
+                 failure_class: str, note: str, elapsed_ms: int) -> list[dict]:
+    """The retained rows for an item whose Prolog process produced none."""
+    run = str(item.get("run"))
+    if run == "r3":
+        return [r3_failure_row(item, outcome, candidate_type, failure_class,
+                               note, elapsed_ms)]
+    if run == "r2" and item.get("target"):
+        return [
+            r2_failure_row(item, outcome, candidate_type, failure_class,
+                           note, elapsed_ms),
+            r2_failure_row(item, outcome, candidate_type, failure_class,
+                           note, elapsed_ms, reverse=True),
+        ]
+    return [fallback_row(item, outcome, candidate_type, note, elapsed_ms)]
+
+
+def run_item(item: dict, watchdog_s: float,
+             driver: Path = DRIVER) -> tuple[list[dict], str]:
     """Run one item in its own Prolog process. Returns (rows, disposition).
 
-    An item yields one row for R1 and two for R2. Reading every row the driver
-    writes, rather than the first, is what keeps R2's second direction from
-    being silently dropped.
+    An item yields one row for R1 and R3 and two for R2. Reading every row the
+    driver writes, rather than the first, is what keeps R2's second direction
+    from being silently dropped.
+
+    The driver is a parameter because R3 lives in its own module beside
+    loop_driver.pl rather than inside it, which is what keeps the R1 and R2
+    paths unchanged. The entry goal follows the module name, so a driver file
+    named r3_driver.pl is entered at r3_driver:main_item.
     """
     started = time.monotonic()
     command = [
         "swipl", "-q",
         "-l", str(PATHS),
-        "-l", str(DRIVER),
-        "-g", "loop_driver:main_item",
+        "-l", str(driver),
+        "-g", f"{driver.stem}:main_item",
         "-t", "halt",
     ]
     process = subprocess.Popen(
@@ -254,43 +338,17 @@ def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
             pass
         elapsed_ms = round((time.monotonic() - started) * 1000)
         note = f"killed by the watchdog after {watchdog_s:g}s"
-        if str(item.get("run")) == "r2" and item.get("target"):
-            rows = [
-                r2_failure_row(
-                    item, "timeout", "watchdog_kill", "watchdog_timeout",
-                    note, elapsed_ms
-                ),
-                r2_failure_row(
-                    item, "timeout", "watchdog_kill", "watchdog_timeout",
-                    note, elapsed_ms, reverse=True
-                ),
-            ]
-        else:
-            rows = [
-                fallback_row(item, "timeout", "watchdog_kill", note, elapsed_ms)
-            ]
+        rows = failure_rows(item, "timeout", "watchdog_kill",
+                            "watchdog_timeout", note, elapsed_ms)
         return rows, "timeout"
 
     elapsed_ms = round((time.monotonic() - started) * 1000)
     lines = [ln for ln in stdout.splitlines() if ln.strip().startswith("{")]
     if not lines:
         note = (stderr.strip() or "the driver wrote no row")[:400]
-        if str(item.get("run")) == "r2" and item.get("target"):
-            return (
-                [
-                    r2_failure_row(
-                        item, "resource_error", "no_row", "no_row",
-                        note, elapsed_ms
-                    ),
-                    r2_failure_row(
-                        item, "resource_error", "no_row", "no_row",
-                        note, elapsed_ms, reverse=True
-                    ),
-                ],
-                "no_row",
-            )
         return (
-            [fallback_row(item, "resource_error", "no_row", note, elapsed_ms)],
+            failure_rows(item, "resource_error", "no_row", "no_row",
+                         note, elapsed_ms),
             "no_row",
         )
 
@@ -299,46 +357,17 @@ def run_item(item: dict, watchdog_s: float) -> tuple[list[dict], str]:
         try:
             row = json.loads(line)
         except json.JSONDecodeError as error:
-            if str(item.get("run")) == "r2" and item.get("target"):
-                note = f"{error}"
-                return (
-                    [
-                        r2_failure_row(
-                            item, "resource_error", "malformed_row",
-                            "malformed_row", note, elapsed_ms
-                        ),
-                        r2_failure_row(
-                            item, "resource_error", "malformed_row",
-                            "malformed_row", note, elapsed_ms, reverse=True
-                        ),
-                    ],
-                    "malformed",
-                )
             return (
-                [fallback_row(item, "resource_error", "malformed_row",
-                              f"{error}", elapsed_ms)],
+                failure_rows(item, "resource_error", "malformed_row",
+                             "malformed_row", f"{error}", elapsed_ms),
                 "malformed",
             )
         missing = [field for field in REQUIRED_ROW_FIELDS if field not in row]
         if missing:
-            if str(item.get("run")) == "r2" and item.get("target"):
-                note = "row lacked " + ", ".join(missing)
-                return (
-                    [
-                        r2_failure_row(
-                            item, "resource_error", "incomplete_row",
-                            "incomplete_row", note, elapsed_ms
-                        ),
-                        r2_failure_row(
-                            item, "resource_error", "incomplete_row",
-                            "incomplete_row", note, elapsed_ms, reverse=True
-                        ),
-                    ],
-                    "incomplete",
-                )
             return (
-                [fallback_row(item, "resource_error", "incomplete_row",
-                              "row lacked " + ", ".join(missing), elapsed_ms)],
+                failure_rows(item, "resource_error", "incomplete_row",
+                             "incomplete_row",
+                             "row lacked " + ", ".join(missing), elapsed_ms),
                 "incomplete",
             )
         if not row.get("consumer"):
@@ -359,13 +388,17 @@ def main() -> int:
                              "item's own budget so the polite stop wins first")
     parser.add_argument("--limit", type=int, default=0,
                         help="stop after this many items (0 = the whole shard)")
+    parser.add_argument("--driver", type=Path, default=DRIVER,
+                        help="the Prolog driver to run each item through; the "
+                             "default carries R1 and R2, and R3 passes "
+                             "scripts/bigred/loops/r3_driver.pl")
     arguments = parser.parse_args()
 
     if not arguments.manifest.is_file():
         print(f"manifest not found: {arguments.manifest}", flush=True)
         return 2
-    if not DRIVER.is_file():
-        print(f"driver not found: {DRIVER}", flush=True)
+    if not arguments.driver.is_file():
+        print(f"driver not found: {arguments.driver}", flush=True)
         return 2
 
     arguments.output.parent.mkdir(parents=True, exist_ok=True)
@@ -383,7 +416,8 @@ def main() -> int:
         if arguments.limit and written >= arguments.limit:
             print(f"stopping at --limit {arguments.limit}", flush=True)
             break
-        rows, disposition = run_item(item, arguments.watchdog_s)
+        rows, disposition = run_item(item, arguments.watchdog_s,
+                                     arguments.driver)
         for index, row in enumerate(rows):
             row["item_key"] = key
             source = row.get("source") or {}

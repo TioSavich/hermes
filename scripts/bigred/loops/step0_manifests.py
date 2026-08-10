@@ -35,10 +35,19 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 DRIVER = ROOT / "scripts/bigred/loops/loop_driver.pl"
+R3_DRIVER = ROOT / "scripts/bigred/loops/r3_driver.pl"
 PATHS = ROOT / "paths.pl"
 HARVEST_ROOT = ROOT / "hermes/app/runtime/experiments/g68_harvest"
 
 PAIR_FILTERS = ("schema_only", "schema_and_archetype")
+
+# R3's shard arithmetic. The wall and the reserve are the sbatch request the
+# design's wave table row 3 fixes; everything else follows from the run's own
+# guards, and emit_r3 prints the division rather than asserting its answer.
+R3_WALL_S = 4 * 60 * 60          # --time=4:00:00
+R3_STARTUP_RESERVE_S = 30 * 60   # conda activate, swipl load, checkpoint writes
+R3_WATCHDOG_MARGIN_S = 120       # the external kill sits above the polite stop
+R3_REAP_GRACE_S = 30             # run_loop_array.py's wait on a killed child
 
 # A record can be scored for reproduction only if something in it records what
 # the answer WAS. The names are read from the data rather than assumed: if the
@@ -50,11 +59,14 @@ ANSWER_FIELDS = (
 )
 
 
-def swipl_lines(goal: str, timeout: int = 300) -> list[str]:
+def swipl_lines(goal: str, timeout: int = 300,
+                extra_files: tuple[Path, ...] = ()) -> list[str]:
     """Run a goal against the driver and return its stdout lines."""
+    loads: list[str] = []
+    for path in (DRIVER,) + extra_files:
+        loads += ["-l", str(path)]
     completed = subprocess.run(
-        ["swipl", "-q", "-l", str(PATHS), "-l", str(DRIVER), "-g", goal,
-         "-t", "halt"],
+        ["swipl", "-q", "-l", str(PATHS)] + loads + ["-g", goal, "-t", "halt"],
         cwd=str(ROOT), text=True, capture_output=True, timeout=timeout,
         check=False,
     )
@@ -332,6 +344,203 @@ def emit_r2(arguments) -> int:
     return 0
 
 
+def machine_census() -> list[dict]:
+    """One row per contracted machine: grid, input leaves, composition space.
+
+    The composition count comes from r3_driver's own enumeration on the first
+    grid point of the machine's schema, so the manifest reports the space the
+    run will actually walk rather than the design's estimate of it.
+    """
+    goal = (
+        "r3_driver:default(max_leaves, MaxLeaves), "
+        "forall(loop_driver:contracted_machine(machine(F,K)), "
+        "( loop_driver:machine_schema(machine(F,K), S), "
+        "  (   loop_driver:grid_plan(S, bounds(_, P), _), "
+        "      once(loop_driver:grid_input(S, _, I)) "
+        "  ->  T = instantiated, "
+        "      r3_driver:input_leaves(I, MaxLeaves, "
+        "                             leaves(Leaves, LeafCount, Others, _)), "
+        "      r3_driver:composition_space(Leaves, 1000000, space(_, C, _)) "
+        "  ;   T = uninstantiated, P = 0, LeafCount = 0, Others = 0, C = 0 "
+        "  ), "
+        "  format('~w\\t~w\\t~w\\t~w\\t~w\\t~w\\t~w~n', "
+        "         [F, K, T, P, LeafCount, Others, C]) ))"
+    )
+    rows = []
+    for line in swipl_lines(goal, timeout=900, extra_files=(R3_DRIVER,)):
+        fields = line.split("\t")
+        if len(fields) != 7:
+            continue
+        rows.append({
+            "family": fields[0],
+            "kind": fields[1],
+            "grid": fields[2],
+            "points": int(fields[3]),
+            "integer_leaves": int(fields[4]),
+            "other_leaves": int(fields[5]),
+            "compositions": int(fields[6]),
+        })
+    return rows
+
+
+def measured_machine_cost(collection: Path | None) -> dict[str, int]:
+    """Per-machine wall time read off a completed R1 or R2 collection.
+
+    R3 runs one machine per item, so the pair costs R1 measured become a
+    per-machine upper bound: the slowest walk a machine took part in. Dealing
+    the slow machines across shards rather than letting them clump is the same
+    reason R2's manifest interleaves.
+    """
+    costs: dict[str, int] = {}
+    if collection is None or not collection.is_dir():
+        return costs
+    for path in sorted(collection.rglob("*.jsonl")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            elapsed = int((row.get("evidence") or {}).get("elapsed_ms") or 0)
+            for side in ("source", "target"):
+                machine = row.get(side) or {}
+                family = machine.get("family")
+                kind = machine.get("kind")
+                if not family or not kind:
+                    continue
+                key = f"{family}/{kind}"
+                costs[key] = max(costs.get(key, 0), elapsed)
+    return costs
+
+
+def r3_machines_per_task(machine_budget: float) -> tuple[int, int, int]:
+    """(machines per task, watchdog seconds, seconds each machine reserves)."""
+    watchdog = int(machine_budget) + R3_WATCHDOG_MARGIN_S
+    per_machine = watchdog + R3_REAP_GRACE_S
+    usable = R3_WALL_S - R3_STARTUP_RESERVE_S
+    return max(1, usable // per_machine), watchdog, per_machine
+
+
+def write_r3_shards(machines, output_dir: Path, per_task: int, costs,
+                    settings: dict) -> list[Path]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for stale in output_dir.glob("r3_shard_*.jsonl"):
+        stale.unlink()
+    shard_count = max(1, -(-len(machines) // per_task))
+    ordered = sorted(
+        machines,
+        key=lambda row: -costs.get(f"{row['family']}/{row['kind']}", 0),
+    )
+    buckets: list[list] = [[] for _ in range(shard_count)]
+    for index, row in enumerate(ordered):
+        buckets[index % shard_count].append(row)
+
+    written = []
+    for number, bucket in enumerate(buckets):
+        shard = output_dir / f"r3_shard_{number:04d}.jsonl"
+        with shard.open("w", encoding="utf-8") as handle:
+            for row in bucket:
+                item = {
+                    "run": "r3",
+                    "key": f"r3:{row['family']}/{row['kind']}",
+                    "source": {"family": row["family"], "kind": row["kind"]},
+                }
+                item.update(settings)
+                handle.write(json.dumps(item, sort_keys=True) + "\n")
+        written.append(shard)
+    return written
+
+
+def emit_r3(arguments) -> int:
+    """R3's manifest: one item per machine, the depth-1 composition sweep.
+
+    R3 needs no pair filter. Its unit is a single machine against the kernel
+    set, so every contracted machine gets an item and every attempted item
+    produces a row — a candidate, a measured resister, or the reason neither
+    could be reached.
+    """
+    print("== R3 depth-1 kernel re-derivation manifest ==", flush=True)
+    machines = machine_census()
+    gridded = [row for row in machines if row["grid"] == "instantiated"]
+    ungridded = [row for row in machines if row["grid"] != "instantiated"]
+    spaces = sorted(row["compositions"] for row in gridded)
+    total_space = sum(spaces)
+    median = spaces[len(spaces) // 2] if spaces else 0
+    thin = [row for row in gridded
+            if row["points"] < arguments.sample_count + arguments.verify_count]
+    truncated = [row for row in gridded
+                 if row["compositions"] > arguments.max_compositions]
+
+    print(f"contracted machines            : {len(machines)}", flush=True)
+    print(f"  with an authored grid        : {len(gridded)}", flush=True)
+    print(f"  without one                  : {len(ungridded)} "
+          f"-> uninstantiated(schema)", flush=True)
+    print(f"depth-1 compositions per machine: median {median}, "
+          f"max {spaces[-1] if spaces else 0}, total {total_space:,}",
+          flush=True)
+    print(f"  above --max-compositions {arguments.max_compositions}: "
+          f"{len(truncated)} machine(s) -> search_truncated, never resister",
+          flush=True)
+    print(f"grids under the design's {arguments.sample_count}+"
+          f"{arguments.verify_count} inputs: {len(thin)} machine(s) "
+          f"-> evidence_strength grid_limited", flush=True)
+
+    per_task, watchdog, per_machine = r3_machines_per_task(
+        arguments.machine_budget_s)
+    if arguments.machines_per_task:
+        per_task = arguments.machines_per_task
+    shard_count = max(1, -(-len(machines) // per_task))
+    print(f"\nshard arithmetic from the guards:", flush=True)
+    print(f"  machine budget   {int(arguments.machine_budget_s)}s "
+          f"(the design's 45 min)", flush=True)
+    print(f"  + watchdog margin {R3_WATCHDOG_MARGIN_S}s "
+          f"-> --watchdog-s {watchdog}", flush=True)
+    print(f"  + reap grace      {R3_REAP_GRACE_S}s "
+          f"-> {per_machine}s reserved per machine", flush=True)
+    print(f"  wall {R3_WALL_S}s - startup reserve {R3_STARTUP_RESERVE_S}s "
+          f"= {R3_WALL_S - R3_STARTUP_RESERVE_S}s usable", flush=True)
+    print(f"  -> {(R3_WALL_S - R3_STARTUP_RESERVE_S) // per_machine} machines "
+          f"fit a 4:00:00 shard; running {per_task}", flush=True)
+    print(f"  -> {len(machines)} machines / {per_task} = {shard_count} shards, "
+          f"sbatch array range 0-{shard_count - 1}", flush=True)
+
+    if arguments.census:
+        return 0
+
+    costs = measured_machine_cost(arguments.r1_collection)
+    if costs:
+        print(f"measured machine costs read    : {len(costs)} machines from "
+              f"{arguments.r1_collection}", flush=True)
+    else:
+        print(f"measured machine costs read    : none at "
+              f"{arguments.r1_collection}; shards deal in enumeration order",
+              flush=True)
+
+    settings = {
+        "machine_budget_s": arguments.machine_budget_s,
+        "composition_timeout_s": arguments.composition_timeout_s,
+        "sample_count": arguments.sample_count,
+        "verify_count": arguments.verify_count,
+        "max_compositions": arguments.max_compositions,
+    }
+    shards = write_r3_shards(machines, arguments.output_dir, per_task, costs,
+                             settings)
+    last = len(shards) - 1
+    print(f"\nR3 manifest written under {arguments.output_dir}", flush=True)
+    print(f"  {len(machines)} machines across {len(shards)} shards at "
+          f"{per_task}/task, cost-interleaved", flush=True)
+    print(f"  sbatch array range: 0-{last}", flush=True)
+    print(f"  run_loop_array.py --driver scripts/bigred/loops/r3_driver.pl "
+          f"--watchdog-s {watchdog}", flush=True)
+    if shard_count != len(shards):
+        print(f"  (shard count {len(shards)} differs from the predicted "
+              f"{shard_count}; the written count is the one to submit)",
+              flush=True)
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pair-filter", choices=PAIR_FILTERS, default=None,
@@ -355,17 +564,44 @@ def main() -> int:
                         help="measure and print only; write nothing")
     parser.add_argument("--r2", action="store_true",
                         help="write R2's directed-replay manifest instead of R1's")
+    parser.add_argument("--r3", action="store_true",
+                        help="write R3's depth-1 kernel re-derivation manifest, "
+                             "one item per machine")
+    parser.add_argument("--machines-per-task", type=int, default=None,
+                        help="R3 shard size; the default is computed from the "
+                             "machine budget and the 4:00:00 wall and printed")
+    parser.add_argument("--machine-budget-s", type=float, default=2700.0,
+                        help="R3's cumulative per-machine guard (45 minutes)")
+    parser.add_argument("--composition-timeout-s", type=float, default=120.0,
+                        help="R3's per-composition-sample inner bound")
+    parser.add_argument("--sample-count", type=int, default=10,
+                        help="R3's screen size")
+    parser.add_argument("--verify-count", type=int, default=100,
+                        help="R3's confirmation size, run before a row writes")
+    parser.add_argument("--max-compositions", type=int, default=20000,
+                        help="R3's stop against a blown-up space; a machine "
+                             "above it records search_truncated, not resister")
     parser.add_argument("--r1-collection", type=Path,
                         default=ROOT / ".bigred-collected/2026-08-08-loops-wave1-r1/rows",
                         help="a completed R1 collection, read for measured "
                              "per-pair cost so shards interleave by it")
     arguments = parser.parse_args()
 
-    # The two runs carry different defaults and neither should inherit the
-    # other's: R1 keeps every separating input, R2 caps witnesses at 200.
+    # The three runs carry different defaults and none should inherit
+    # another's: R1 keeps every separating input, R2 caps witnesses at 200, and
+    # R3 has no witness list at all.
     if arguments.output_dir is None:
-        wave = "wave2" if arguments.r2 else "wave1"
-        arguments.output_dir = ROOT / f".bigred-output/2026-08-08-loops-{wave}"
+        if arguments.r3:
+            arguments.output_dir = (
+                ROOT / ".bigred-output/2026-08-10-loops-wave3-r3"
+            )
+        else:
+            wave = "wave2" if arguments.r2 else "wave1"
+            arguments.output_dir = (
+                ROOT / f".bigred-output/2026-08-08-loops-{wave}"
+            )
+    if arguments.r3:
+        return emit_r3(arguments)
     if arguments.r2:
         if arguments.pairs_per_task is None:
             arguments.pairs_per_task = 12
