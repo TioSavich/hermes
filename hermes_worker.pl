@@ -83,6 +83,7 @@ load_runtime :-
     use_module(pml(discourse_features), []),
     use_module(pml(discourse_pragmatics), []),
     use_module(pml(trace_adjudication), []),
+    use_module(strategies(automaton_role_input_decoder), []),
     use_module(hermes(encyclopedia)),
     use_module(hermes(commitment_matcher), []),
     use_module(misconceptions(literature_deontic_bridge),
@@ -2070,7 +2071,7 @@ run_dispatch_call(call(Module:Pred, ArgSpec, [gate(axiom_pack(Pack))]),
 worker_strategy_trace_dict(StrategyName, Input, Dict) :-
     is_dict(Input),
     get_dict(kind, Input, Kind),
-    strategy_trace_wave_kind(Kind),
+    automaton_role_input_decoder:role_input_kind(Kind),
     !,
     hermes_encyclopedia:strategy_lookup_name(StrategyName, LookupName),
     hermes_encyclopedia:term_text_string(LookupName, NameStr),
@@ -2097,226 +2098,10 @@ worker_strategy_trace_dict(StrategyName, Input, Dict) :-
     hermes_encyclopedia:strategy_trace_dict(StrategyName, Input, Dict).
 
 strategy_trace_wave_inputs_result(Input, A, B, Result) :-
-    catch(( strategy_trace_wave_inputs(Input, A, B)
+    catch(( automaton_role_input_decoder:decode_role_inputs(Input, A, B)
           -> Result = ok
           ;  Result = failed
           ), _Error, Result = exception).
-
-strategy_trace_wave_kind("signed_subtraction").
-strategy_trace_wave_kind("signed_multiplication").
-strategy_trace_wave_kind("signed_division").
-strategy_trace_wave_kind("ratio_pair_unit_rate").
-strategy_trace_wave_kind("ratio_pairs_proportionality_test").
-strategy_trace_wave_kind("ratio_pair_solve_at_x").
-strategy_trace_wave_kind("circle_co_measurement").
-strategy_trace_wave_kind("triangle_conditions").
-strategy_trace_wave_kind("angle_relation").
-strategy_trace_wave_kind("frequency_record").
-strategy_trace_wave_kind("sample_population_distribution").
-strategy_trace_wave_kind("diagram_relation").
-strategy_trace_wave_kind("percent_change").
-strategy_trace_wave_kind("signed_linear_expression").
-
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "signed_subtraction"), !,
-    hermes_encyclopedia:json_integer_field(Input, minuend, Minuend),
-    hermes_encyclopedia:json_integer_field(Input, subtrahend, Subtrahend),
-    A = minuend(Minuend), B = subtrahend(Subtrahend).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "signed_multiplication"), !,
-    hermes_encyclopedia:json_integer_field(Input, multiplier, Multiplier),
-    hermes_encyclopedia:json_integer_field(Input, multiplicand, Multiplicand),
-    A = multiplier(Multiplier), B = multiplicand(Multiplicand).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "signed_division"), !,
-    hermes_encyclopedia:json_integer_field(Input, dividend, Dividend),
-    hermes_encyclopedia:json_integer_field(Input, divisor, Divisor),
-    Divisor =\= 0,
-    A = dividend(Dividend), B = divisor(Divisor).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "ratio_pair_unit_rate"), !,
-    strategy_trace_positive_number_field(Input, first, First),
-    strategy_trace_positive_number_field(Input, second, Second),
-    hermes_encyclopedia:json_atom_field(Input, referent, Referent),
-    memberchk(Referent, [first_per_second, second_per_first]),
-    A = ratio_pair(First, Second), B = unit_rate(Referent).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input),
-    get_dict(kind, Input, "ratio_pairs_proportionality_test"), !,
-    get_dict(pairs, Input, JsonPairs),
-    is_list(JsonPairs),
-    JsonPairs = [_, _|_],
-    maplist(strategy_trace_ratio_pair, JsonPairs, Pairs),
-    get_dict(test, Input, "proportionality_test"),
-    A = ratio_pairs(Pairs), B = proportionality_test.
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "ratio_pair_solve_at_x"), !,
-    strategy_trace_positive_number_field(Input, first, First),
-    strategy_trace_positive_number_field(Input, second, Second),
-    hermes_encyclopedia:json_nonnegative_number_field(Input, target_x, TargetX),
-    A = ratio_pair(First, Second), B = solve_at_x(TargetX).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "circle_co_measurement"), !,
-    hermes_encyclopedia:json_atom_field(Input, given_measure, GivenMeasure),
-    strategy_trace_positive_number_field(Input, value, Value),
-    hermes_encyclopedia:json_atom_field(Input, unit, Unit),
-    hermes_encyclopedia:json_atom_field(
-        Input, requested_measure, RequestedMeasure),
-    get_dict(pi, Input, Pi),
-    hermes_encyclopedia:json_positive_integer_field(Pi, n, PiNumerator),
-    hermes_encyclopedia:json_positive_integer_field(Pi, d, PiDenominator),
-    strategy_trace_circle_request(
-        GivenMeasure, RequestedMeasure,
-        rational(PiNumerator, PiDenominator), B),
-    A = circle_measure(GivenMeasure, Value, Unit).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "triangle_conditions"), !,
-    hermes_encyclopedia:json_atom_field(Input, condition, Condition),
-    memberchk(Condition, [sss, sas, asa, aas, ssa, aaa]),
-    get_dict(measures, Input, Measures),
-    strategy_trace_three_positive_numbers(Measures, ThreeMeasures),
-    Conditions =.. [Condition|ThreeMeasures],
-    A = triangle_conditions(Conditions), B = classify.
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "angle_relation"), !,
-    strategy_trace_positive_number_field(Input, whole, Whole),
-    get_dict(known_parts, Input, KnownParts),
-    is_list(KnownParts),
-    KnownParts = [_|_],
-    maplist(strategy_trace_positive_number, KnownParts),
-    hermes_encyclopedia:json_atom_field(Input, unknown, Unknown),
-    A = angle_relation(whole(Whole), known_parts(KnownParts)),
-    B = unknown(Unknown).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "frequency_record"), !,
-    hermes_encyclopedia:json_atom_field(Input, event, Event),
-    hermes_encyclopedia:json_nonnegative_integer_field(
-        Input, successes, Successes),
-    hermes_encyclopedia:json_positive_integer_field(Input, trials, Trials),
-    Successes =< Trials,
-    get_dict(context, Input, "repeated_experiment"),
-    A = frequency_record(Event, Successes, Trials),
-    B = estimate_context(repeated_experiment).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input),
-    get_dict(kind, Input, "sample_population_distribution"), !,
-    get_dict(sample, Input, Sample),
-    get_dict(population, Input, Population),
-    get_dict(tolerances, Input, Tolerances),
-    strategy_trace_profile(Sample, SampleData, SampleShape),
-    strategy_trace_profile(Population, PopulationData, PopulationShape),
-    hermes_encyclopedia:json_nonnegative_number_field(
-        Tolerances, center, CenterTolerance),
-    hermes_encyclopedia:json_nonnegative_number_field(
-        Tolerances, spread, SpreadTolerance),
-    A = sample(SampleData, shape(SampleShape)),
-    B = population(PopulationData, shape(PopulationShape),
-                   tolerances(center(CenterTolerance),
-                              spread(SpreadTolerance))).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "diagram_relation"), !,
-    hermes_encyclopedia:json_atom_field(
-        Input, representation, Representation),
-    memberchk(Representation, [tape, hanger]),
-    hermes_encyclopedia:json_positive_integer_field(Input, groups, Groups),
-    get_dict(group_expression, Input, JsonGroupExpression),
-    strategy_trace_diagram_expression(
-        JsonGroupExpression, GroupExpression),
-    hermes_encyclopedia:json_number_field(Input, additional, Additional),
-    hermes_encyclopedia:json_number_field(Input, total, Total),
-    hermes_encyclopedia:json_atom_field(
-        Input, equation_form, EquationForm),
-    memberchk(EquationForm,
-              [px_plus_q_equals_r, p_times_x_plus_q_equals_r]),
-    A = diagram(Representation, equal_groups(Groups, GroupExpression),
-                additional(number(Additional)), total(number(Total))),
-    B = equation_form(EquationForm).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "percent_change"), !,
-    hermes_encyclopedia:json_atom_field(Input, amount_role, AmountRole),
-    memberchk(AmountRole, [original_amount, changed_amount]),
-    hermes_encyclopedia:json_nonnegative_number_field(Input, amount, Amount),
-    hermes_encyclopedia:json_nonnegative_number_field(
-        Input, rate_percent, Percent),
-    hermes_encyclopedia:json_atom_field(Input, direction, Direction),
-    memberchk(Direction, [increase, decrease]),
-    hermes_encyclopedia:json_atom_field(Input, target, Target),
-    memberchk(Target, [new_amount, original_amount]),
-    AmountTerm =.. [AmountRole, Amount],
-    A = percent_change(AmountTerm, rate_percent(Percent),
-                       direction(Direction)),
-    B = target(Target).
-strategy_trace_wave_inputs(Input, A, B) :-
-    is_dict(Input), get_dict(kind, Input, "signed_linear_expression"), !,
-    get_dict(variable_terms, Input, JsonVariableTerms),
-    get_dict(constant_terms, Input, JsonConstantTerms),
-    is_list(JsonVariableTerms),
-    is_list(JsonConstantTerms),
-    maplist(strategy_trace_signed_variable_item,
-            JsonVariableTerms, VariableItems),
-    maplist(strategy_trace_signed_constant_item,
-            JsonConstantTerms, ConstantItems),
-    append(VariableItems, ConstantItems, Items),
-    Items = [_|_],
-    get_dict(direction, Input, "combine_like_terms"),
-    A = signed_linear_expression(Items),
-    B = rewrite_direction(combine_like_terms).
-
-strategy_trace_positive_number_field(Dict, Key, Value) :-
-    hermes_encyclopedia:json_positive_number_field(Dict, Key, Value).
-
-strategy_trace_positive_number(Value) :-
-    number(Value),
-    Value > 0.
-
-strategy_trace_three_positive_numbers([A, B, C], [A, B, C]) :-
-    maplist(strategy_trace_positive_number, [A, B, C]).
-
-strategy_trace_ratio_pair(Dict, ratio_pair(First, Second)) :-
-    is_dict(Dict),
-    strategy_trace_positive_number_field(Dict, first, First),
-    strategy_trace_positive_number_field(Dict, second, Second).
-
-strategy_trace_circle_request(
-    diameter, circumference, Pi, circumference_with_pi(Pi)).
-strategy_trace_circle_request(
-    circumference, diameter, Pi, diameter_with_pi(Pi)).
-
-strategy_trace_profile(Dict, Values, Shape) :-
-    is_dict(Dict),
-    get_dict(values, Dict, Values),
-    is_list(Values),
-    Values = [_, _|_],
-    maplist(hermes_encyclopedia:nonnegative_json_integer, Values),
-    hermes_encyclopedia:json_atom_field(Dict, shape, Shape).
-
-strategy_trace_diagram_expression(Dict, var(Name)) :-
-    is_dict(Dict), get_dict(node, Dict, "var"), !,
-    hermes_encyclopedia:json_atom_field(Dict, name, Name).
-strategy_trace_diagram_expression(Dict, number(Value)) :-
-    is_dict(Dict), get_dict(node, Dict, "number"), !,
-    hermes_encyclopedia:json_number_field(Dict, value, Value).
-strategy_trace_diagram_expression(Dict, add(Left, Right)) :-
-    is_dict(Dict), get_dict(node, Dict, "add"), !,
-    get_dict(left, Dict, JsonLeft),
-    get_dict(right, Dict, JsonRight),
-    strategy_trace_diagram_expression(JsonLeft, Left),
-    strategy_trace_diagram_expression(JsonRight, Right).
-
-strategy_trace_signed_variable_item(Dict, Item) :-
-    is_dict(Dict),
-    hermes_encyclopedia:json_atom_field(Dict, operation, Operation),
-    memberchk(Operation, [add, subtract]),
-    hermes_encyclopedia:json_number_field(Dict, coefficient, Coefficient),
-    hermes_encyclopedia:json_atom_field(Dict, variable, Variable),
-    Item =.. [Operation, term(Coefficient, var(Variable))].
-
-strategy_trace_signed_constant_item(Dict, Item) :-
-    is_dict(Dict),
-    hermes_encyclopedia:json_atom_field(Dict, operation, Operation),
-    memberchk(Operation, [add, subtract]),
-    hermes_encyclopedia:json_number_field(Dict, value, Value),
-    Item =.. [Operation, constant(Value)].
 
 dispatch_call_args([], _Bound, [], []).
 dispatch_call_args([Spec|Specs], Bound, [Arg|Args], Outputs) :-

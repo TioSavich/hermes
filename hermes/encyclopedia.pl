@@ -58,6 +58,7 @@
 :- use_module(strategies(math/action_automata_registry)).
 :- use_module(strategies(automaton_input_contracts),
               [ automaton_input_contract/5 ]).
+:- use_module(strategies(automaton_role_input_decoder), []).
 :- use_module(strategies(hermeneutic_calculator)).
 :- use_module(strategies(visualization)).
 :- use_module(math(algebraic_action_pairs),
@@ -682,14 +683,21 @@ num_value(_, 0).
 
 %!  trace_inputs(+Input, -A, -B) is det.
 %
-%   Pull a/b operands out of the input dict; default 0 when absent so a
-%   strategy can at least be attempted. A "kind" key selects a family-specific
-%   operand pair. The counting family carries its base and its collection
+%   Pull operands out of the input dict. Role-bearing inputs use the shared
+%   contract decoder and raise a kind-bearing error when malformed. A "kind"
+%   key selects a family-specific operand pair. The counting family carries
+%   its base and its collection
 %   extents in the operand terms themselves, so "count_pair", "cardinality",
 %   and "collection_pair" decode to counts/2 + base/1, an integer + base/1,
 %   and counts/2 + extents/2. Without those three the eight registered
 %   counting automata were unreachable from this seam: the a/b fallback hands
 %   them bare integers, and every counting clause head requires a term.
+trace_inputs(Input, A, B) :-
+    is_dict(Input),
+    get_dict(kind, Input, Kind),
+    automaton_role_input_decoder:role_input_kind(Kind),
+    !,
+    automaton_role_input_decoder:decode_role_inputs(Input, A, B).
 trace_inputs(Input, A, B) :-
     is_dict(Input), get_dict(kind, Input, "decimal_unit_conversion"), !,
     json_nonnegative_integer_field(Input, count, Count),
@@ -1056,6 +1064,8 @@ trace_inputs(Input, A, B) :-
         dict_num(D, left_extent, LeftSize, LeftExtent),
         dict_num(D, right_extent, RightSize, RightExtent)
     ->  A = counts(LeftSize, RightSize), B = extents(LeftExtent, RightExtent)
+    % The numeric compatibility fallback remains for inputs with no kind
+    % recognized by role_input_kind/1 or the legacy structured clauses above.
     ;   dict_num(D, a, 0, A),
         dict_num(D, b, 0, B)
     ).

@@ -18226,6 +18226,7 @@ knowledge/strategies/action_grammar.pl
 knowledge/strategies/action_vocabulary_map.pl
 knowledge/strategies/attested_phrases.pl
 knowledge/strategies/automaton_input_contracts.pl
+knowledge/strategies/automaton_role_input_decoder.pl
 knowledge/strategies/canonical_phrases.pl
 knowledge/strategies/composition_engine.pl
 knowledge/strategies/deformation_coincidence.pl

@@ -54,6 +54,7 @@ run action_grammar.py       python3 "$CHECKS_DIR/action_grammar.py"
 run corpus_window.py        python3 "$CHECKS_DIR/corpus_window.py"
 run review_surface.py       python3 "$CHECKS_DIR/review_surface.py"
 run automaton_input_contracts.py python3 "$CHECKS_DIR/automaton_input_contracts.py"
+run shared_role_input_decoder.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/shared_role_input_decoder.pl" -g main -t halt
 run relevance_negation.py   python3 "$CHECKS_DIR/relevance_negation.py"
 run lesson_topics_cache.py  python3 "$CHECKS_DIR/lesson_topics_cache.py"
 run canonical_phrases.py    python3 "$CHECKS_DIR/canonical_phrases.py"
