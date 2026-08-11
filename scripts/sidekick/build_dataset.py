@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import random
 import sys
 import threading
@@ -49,6 +50,11 @@ from wave2_pools import (  # noqa: E402
 MENU_SIZE = 8
 PER_SUBJECT = 4
 SUBJECTS_PER_CALL = 4
+# The live wave-2 build admitted 380 of 544 C1 arithmetic framing slots
+# (69.9%). Across class C, 244 of about 2,000 turns were too short. Use a
+# conservative authored floor so raw teacher slots are not reported as rows.
+CLASS_C_ADMISSION_RATE_FLOOR = 0.65
+C1_ARITHMETIC_POOL_GROWTH = 16
 DEFAULT_OUTPUT = RUNTIME / "datasets" / "sidekick-6000.jsonl"
 DEFAULT_PROBE = RUNTIME / "probes" / "probe-v1.jsonl"
 
@@ -101,6 +107,47 @@ def require_exact(label: str, target: int, available: int) -> None:
     """Refuse an output census that differs from its exact target."""
     if available != target:
         raise RuntimeError(f"{label}: target {target}, available {available}")
+
+
+def discounted_capacity(raw_slots: int) -> int:
+    """Return the conservative number of admitted rows planned from slots."""
+    return math.floor(raw_slots * CLASS_C_ADMISSION_RATE_FLOOR)
+
+
+def subjects_for_discounted_target(target: int) -> int:
+    """Return subjects needed for `target` after the class-C admission floor."""
+    return math.ceil(target / (PER_SUBJECT * CLASS_C_ADMISSION_RATE_FLOOR))
+
+
+def planned_framing_slots(
+    units: Sequence[tuple[str, Sequence[tuple[str, str, dict[str, Any]]], str, int]],
+    cache: dict[str, Any],
+) -> tuple[dict[str, int], dict[str, int]]:
+    """Count actual cached turns and requested turns for uncached subjects."""
+    by_identity: dict[str, int] = {}
+    source_totals = {"cached": 0, "requested": 0}
+    for _, group, kind, requested in units:
+        key = f"framing:{kind}:" + "|".join(identity for identity, _, _ in group)
+        stored = cache.get(key)
+        if not isinstance(stored, dict):
+            for identity, _, _ in group:
+                by_identity[identity] = requested
+                source_totals["requested"] += requested
+            continue
+        if len(group) == 1:
+            identity = group[0][0]
+            turns = stored.get("turns", [])
+            count = sum(isinstance(turn, str) for turn in turns) if isinstance(turns, list) else 0
+            by_identity[identity] = count
+            source_totals["cached"] += count
+            continue
+        body = stored.get("subjects", {})
+        for identity, _, _ in group:
+            turns = body.get(identity, []) if isinstance(body, dict) else []
+            count = sum(isinstance(turn, str) for turn in turns) if isinstance(turns, list) else 0
+            by_identity[identity] = count
+            source_totals["cached"] += count
+    return by_identity, source_totals
 
 
 
@@ -197,7 +244,7 @@ def grounded_reply(triple: "Triple") -> str:
         )
     if kind == "chart" and isinstance(result, dict):
         names = ", ".join(seed.get("anticipated", [])[:4])
-        sections = len(result.get("sections", []))
+        sections = "the recorded"
         if names:
             return f"The inventory for {seed.get('lesson', 'that lesson')} anticipates {names}, across {sections} sections."
         return f"The inventory for {seed.get('lesson', 'that lesson')} carries {sections} sections and names no anticipated method."
@@ -405,7 +452,7 @@ def known_fact_items(count: int, rng: random.Random) -> list[dict[str, Any]]:
             term, truth, spoken = f"{a}*{b}={a * b}", str(a * b), f"{a} times {b}"
         elif style == "difference":
             a, b = rng.randint(30, 99), rng.randint(2, 29)
-            term, truth, spoken = f"{a}-{b}={a - b}", str(a - b), f"{a} take away {b}"
+            term, truth, spoken = f"{a} - {b} = {a - b}", str(a - b), f"{a} take away {b}"
         else:
             d = rng.choice([3, 4, 5, 6, 8])
             term = f"1/{d} + 1/{d} = 2/{d}"
@@ -459,9 +506,13 @@ def main() -> int:
 
     # ---- class C: no triple, but the same teacher and the same gates.
     c_rng = random.Random(arguments.seed ^ 0xC240)
-    # Arithmetic validation admitted 128/204 subjects in phase 1. Keep that
-    # measured overage rather than assuming every generated claim is readable.
-    arithmetic_subjects = -(-c_target["C1_arithmetic"] // PER_SUBJECT) * 2 + 4
+    # Preserve the seed-stable 204-subject pool and append new identities. The
+    # checker-readable subtraction spelling above recovers its sound claims.
+    arithmetic_subjects = (
+        -(-c_target["C1_arithmetic"] // PER_SUBJECT) * 2
+        + 4
+        + C1_ARITHMETIC_POOL_GROWTH
+    )
     known = known_fact_items(arithmetic_subjects, c_rng)
     c_units: list[CUnit] = []
     for index, item in enumerate(known):
@@ -490,9 +541,7 @@ def main() -> int:
         if t.narrative_seed and t.sub_kind != "recognize"
         and "doubl" not in (t.subject + " " + json.dumps(t.narrative_seed)).casefold()
     ]
-    surface_subjects = min(
-        len(surface_pool), -(-c_target["C3"] // PER_SUBJECT) * 5 // 4
-    )
+    surface_subjects = min(len(surface_pool), subjects_for_discounted_target(c_target["C3"]))
     surface_sources = c_rng.sample(surface_pool, surface_subjects)
     for triple in surface_sources:
         c_units.append(CUnit(
@@ -506,7 +555,7 @@ def main() -> int:
         and isinstance(t.calls[-1].response.get("result"), dict)
         and t.calls[-1].response["result"].get("expected") is not None
     ]
-    c4_subjects = min(len(c4_pool), -(-c_target["C4"] // PER_SUBJECT) * 5 // 4)
+    c4_subjects = min(len(c4_pool), subjects_for_discounted_target(c_target["C4"]))
     for triple in c_rng.sample(c4_pool, c4_subjects):
         call = triple.calls[-1]
         expected = str(call.response["result"]["expected"])
@@ -530,7 +579,7 @@ def main() -> int:
         "C4": sum(u.sub_kind == "C4" for u in c_units) * PER_SUBJECT,
     }
     print(json.dumps({"wave2_targets": target, "class_c_targets": c_target,
-                      "class_c_subject_capacity": capacity}, sort_keys=True), flush=True)
+                      "class_c_authored_slot_ceiling": capacity}, sort_keys=True), flush=True)
 
     # ---- the core validates its own class-C1 data, out of process
     terms = [
@@ -644,14 +693,32 @@ def main() -> int:
     print(f"{len(units)} teacher framing batches; {len(teacher.cache)} entries already cached; "
           f"{len(missing_framing_units)} framing calls await the teacher", flush=True)
     if arguments.plan_only:
-        effective_capacity = dict(capacity)
-        effective_capacity["C1_arithmetic"] = sum(validated.values()) * PER_SUBJECT
+        c_framing_units = [unit for unit in units if unit[0].startswith("C:")]
+        framing_slots, framing_slot_sources = planned_framing_slots(c_framing_units, teacher.cache)
+        raw_capacity = {
+            "C1_arithmetic": sum(
+                framing_slots.get(unit.identity, 0)
+                for unit in c_units
+                if unit.c1_kind == "arithmetic" and validated.get(unit.seed.get("term", ""), False)
+            ),
+            "C1_definition": sum(
+                framing_slots.get(unit.identity, 0)
+                for unit in c_units if unit.c1_kind == "definition"
+            ),
+            "C2": sum(framing_slots.get(unit.identity, 0) for unit in c_units if unit.sub_kind == "C2"),
+            "C3": sum(framing_slots.get(unit.identity, 0) for unit in c_units if unit.sub_kind == "C3"),
+            "C4": sum(framing_slots.get(unit.identity, 0) for unit in c_units if unit.sub_kind == "C4"),
+        }
+        margin_discounted_capacity = {
+            key: discounted_capacity(slots) for key, slots in raw_capacity.items()
+        }
         short = {
-            key: c_target[key] - effective_capacity[key]
-            for key in c_target if effective_capacity[key] < c_target[key]
+            key: c_target[key] - margin_discounted_capacity[key]
+            for key in c_target if margin_discounted_capacity[key] < c_target[key]
         }
         planned_reply_rows = sum(
-            PER_SUBJECT for unit in c_units if unit.sub_kind in {"C2", "C3"}
+            framing_slots.get(unit.identity, 0)
+            for unit in c_units if unit.sub_kind in {"C2", "C3"}
         )
         planned_reply_calls = -(-planned_reply_rows // 6)
         plan_summary = {
@@ -663,7 +730,10 @@ def main() -> int:
                 "D_multi_call_relay": 360,
             },
             "class_c_subkind_census": c_target,
-            "effective_subject_capacity": effective_capacity,
+            "class_c_admission_rate_floor": CLASS_C_ADMISSION_RATE_FLOOR,
+            "raw_slot_capacity": raw_capacity,
+            "margin_discounted_capacity": margin_discounted_capacity,
+            "framing_slot_sources": framing_slot_sources,
             "authored_pools": {
                 "definition_pairs": len(DEFINITION_PAIRS),
                 "base_out_of_scope_scopes": len(BASE_OUT_OF_SCOPE_SCOPES),

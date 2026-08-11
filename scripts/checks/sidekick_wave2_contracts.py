@@ -16,7 +16,14 @@ for candidate in (str(ROOT), str(SIDEKICK)):
     if candidate not in sys.path:
         sys.path.insert(0, candidate)
 
-from build_dataset import require_capacity, require_exact  # noqa: E402
+from build_dataset import (  # noqa: E402
+    CLASS_C_ADMISSION_RATE_FLOOR,
+    discounted_capacity,
+    planned_framing_slots,
+    require_capacity,
+    require_exact,
+    subjects_for_discounted_target,
+)
 from measure_floors import score_reply  # noqa: E402
 
 
@@ -51,10 +58,31 @@ def main() -> int:
     else:
         raise AssertionError("a post-gate sub-kind shortfall did not fail hard")
 
+    assert CLASS_C_ADMISSION_RATE_FLOOR == 0.65
+    assert discounted_capacity(615) == 399
+    assert discounted_capacity(616) == 400
+    assert subjects_for_discounted_target(400) == 154
+
+    slot_units = [
+        ("C:known_fact:0", [("cached-one", "", {})], "known_fact", 4),
+        ("C:surface:0", [("cached-a", "", {}), ("cached-b", "", {})], "surface", 4),
+        ("C:already_answered:0", [("uncached", "", {})], "already_answered", 4),
+    ]
+    slot_cache = {
+        "framing:known_fact:cached-one": {"turns": ["first", "second"]},
+        "framing:surface:cached-a|cached-b": {
+            "subjects": {"cached-a": ["one"], "cached-b": ["one", "two", "three"]}
+        },
+    }
+    slots, sources = planned_framing_slots(slot_units, slot_cache)
+    assert slots == {"cached-one": 2, "cached-a": 1, "cached-b": 3, "uncached": 4}
+    assert sources == {"cached": 6, "requested": 4}
+
     print(
         "PASS sidekick wave 2 contracts: spelled fractions support only their slash forms; "
         "unsupported assertions remain rejected; exact-mix shortfalls fail hard before and "
-        "after gates"
+        "after gates; 616 raw slots clear a 400-row target only under the 0.65 admission floor; "
+        "cached batches contribute their stored turns"
     )
     return 0
 

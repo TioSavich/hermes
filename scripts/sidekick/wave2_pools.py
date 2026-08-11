@@ -77,6 +77,18 @@ DEFINITION_PAIRS = (
     ("diameter", "A diameter is a segment through a circle's center with endpoints on the circle."),
     ("circumference", "Circumference is the distance around a circle."),
     ("area", "Area measures how much two-dimensional region a figure covers."),
+    ("numerator", "A numerator tells how many equal parts a fraction names."),
+    ("minuend", "A minuend is the quantity another quantity is subtracted from."),
+    ("reciprocal", "A reciprocal exchanges the numerator and denominator of a nonzero fraction."),
+    ("greatest common factor", "The greatest common factor is the largest whole number that divides each given whole number evenly."),
+    ("least common multiple", "The least common multiple is the smallest positive multiple shared by the given whole numbers."),
+    ("absolute value", "Absolute value is a number's distance from zero on a number line."),
+    ("integer", "An integer is a whole number, its opposite, or zero."),
+    ("rational number", "A rational number can be written as a quotient of two integers with a nonzero divisor."),
+    ("acute angle", "An acute angle measures less than a right angle."),
+    ("obtuse angle", "An obtuse angle measures more than a right angle and less than a straight angle."),
+    ("right angle", "A right angle measures one quarter of a full turn."),
+    ("line segment", "A line segment is the part of a line between two endpoints."),
 )
 
 
@@ -196,6 +208,36 @@ NEW_OUT_OF_SCOPE_SCOPES = (
     "making classroom announcements shorter and easier to follow",
     "planning how to share an unpopular schedule change",
     "asking for clarification when two administrators give conflicting directions",
+    "coordinating a pickup change with the front office",
+    "helping a student find a misplaced lunch box",
+    "planning a welcome note for a new instructional assistant",
+    "responding when the classroom door will not latch",
+    "choosing a routine for returning library books",
+    "asking a family which name they prefer in school messages",
+    "making a private plan for distributing hygiene supplies",
+    "helping a student wait for a delayed ride home",
+    "responding when several coats look alike",
+    "planning where a service animal can rest during class",
+    "setting a routine for reporting broken pencils",
+    "asking the office to correct a misspelled badge",
+    "helping a student carry a large project safely",
+    "responding when a classroom plant causes an allergy concern",
+    "planning a quiet greeting for a student who arrives late",
+    "choosing how to store umbrellas near the entrance",
+    "making a plan for a student to retrieve forgotten medication",
+    "asking a colleague to lower the volume of a hallway conversation",
+    "helping a family locate the school's lost and found",
+    "responding when a student needs a replacement name tag",
+    "planning how to distribute permission slips discreetly",
+    "setting a routine for checking borrowed headphones back in",
+    "asking the custodian about an unusual smell in the room",
+    "helping a student prepare for an early dismissal",
+    "responding when a delivery blocks the classroom entrance",
+    "planning a place for wet umbrellas to dry",
+    "choosing language for a reminder about shared lockers",
+    "making a plan for returning an item left by a visitor",
+    "asking the office when a repaired chair will return",
+    "helping a student contact a caregiver after an activity is canceled",
 )
 
 
@@ -211,6 +253,6 @@ def scope_faults(scopes: Iterable[str]) -> list[str]:
     return [scope for scope in scopes if CORE_SURFACE.search(scope)]
 
 
-assert len(DEFINITION_PAIRS) == 65
-assert len(NEW_OUT_OF_SCOPE_SCOPES) == 100
+assert len(DEFINITION_PAIRS) == 77
+assert len(NEW_OUT_OF_SCOPE_SCOPES) == 130
 assert not scope_faults(BASE_OUT_OF_SCOPE_SCOPES + NEW_OUT_OF_SCOPE_SCOPES)

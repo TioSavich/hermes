@@ -29,7 +29,7 @@ can stall, and preserves the order-dependent teacher cache keys.
 
 `build_dataset.py` now targets A/B/C/D at 25/15/40/20 percent. Its class-C trim
 is controlled separately at C3 960, C1 arithmetic 400, C1 definition 200, C4
-480, and C2 360 for a 6,000-row candidate. The 65 reviewed definitions and 100
+480, and C2 360 for a 6,000-row candidate. The 77 reviewed definitions and 130
 new out-of-scope subjects live in `wave2_pools.py`; definition replies are
 authored there and the teacher writes only their framings. Use the offline plan
 before opening the teacher channel:
@@ -41,8 +41,11 @@ python3 scripts/sidekick/build_dataset.py --offline --plan-only \
   --triples <wave2-triples> --cache <copied-teacher-cache>
 ```
 
-The plan reports the exact class census, effective pool capacity after the
-class-C1 core check, and the teacher calls still missing from the copied cache.
+The plan reports the exact class census, raw class-C framing slots after the
+class-C1 core check, and capacity discounted by the authored 0.65 admission
+floor. Cached batches contribute the turns they actually hold; uncached batches
+contribute the turns their prompts request. The report fails if any discounted
+class-C bucket misses its fixed target, before a teacher channel is opened.
 
 ## Running it
 

@@ -860,7 +860,10 @@ canonical_term_strings(Left, Right, Outcome, Trace,
 probe(Id, Operation, Kind, Left, Right) :-
     Goal = action_automata_registry:run_action_automaton(
                Operation, Kind, Left, Right, Outcome, Trace),
-    catch(call_with_time_limit(5, once(Goal)), Error,
+    % The limit is wall-clock and the slowest honest goal costs ~4.5 s of
+    % grounded arithmetic on a six-digit operand; 5 s made that goal a
+    % coin flip under load. 20 s bounds a hang without taxing honest work.
+    catch(call_with_time_limit(20, once(Goal)), Error,
           (message_to_string(Error, Message), failed(Id, Operation, Kind, Message))),
     is_list(Trace), Trace = [_|_], !,
     trace_actions(Trace, Actions),
