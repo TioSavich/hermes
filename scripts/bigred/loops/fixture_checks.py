@@ -1413,6 +1413,7 @@ def check_r3_depth2_eligibility() -> None:
 
 R4_DRIVER = ROOT / "scripts/bigred/loops/r4_driver.pl"
 R4_ADAPTERS = ROOT / "scripts/bigred/loops/r4_adapters.pl"
+R4_DOCKET = ROOT / "scripts/bigred/loops/r4_admission_docket.py"
 
 
 def run_r4_item(item: dict, timeout: int = 600) -> dict:
@@ -2077,6 +2078,186 @@ def check_r4_library() -> None:
            f"listed on it")
 
 
+# --------------------------------------------------------------------------
+# 28. R4 admission docket — anchored collection, census, bands, and blanks.
+# --------------------------------------------------------------------------
+
+def check_r4_docket_fixture() -> None:
+    print("\n[28] R4 docket — anchored rows, census, bands, and blank verdicts",
+          flush=True)
+
+    def row(key: str, source_family: str, source_kind: str,
+            target_family: str, target_kind: str, candidate_type: str,
+            outcome: str, adapter: str, distinct: int = 0,
+            bridged: int = 0) -> dict:
+        return {
+            "run": "r4",
+            "key": key,
+            "item_key": f"fixture-{key}",
+            "source": {"family": source_family, "kind": source_kind},
+            "target": {"family": target_family, "kind": target_kind},
+            "candidate_type": candidate_type,
+            "outcome": outcome,
+            "evidence": {
+                "adapter": adapter,
+                "distinct_adapted_inputs": distinct,
+                "samples_bridged": bridged,
+                "sample_records": [],
+            },
+        }
+
+    rows = [
+        row("typed-rank-first", "addition", "fixture_source",
+            "multiplication", "fixture_target", "contract_bridge",
+            "certified_candidate", "project_quotient", 9, 9),
+        row("typed-seam-weight", "fraction", "fixture_source",
+            "division", "fixture_target", "contract_bridge",
+            "certified_candidate", "integer_over_one_to_fraction_object",
+            8, 20),
+        row("identity-same", "addition", "fixture_source_a",
+            "addition", "fixture_target_a", "contract_bridge",
+            "certified_candidate", "identity", 6, 6),
+        row("identity-cross", "addition", "fixture_source_b",
+            "subtraction", "fixture_target_b",
+            "contract_bridge_thin_evidence", "certified_candidate",
+            "identity", 3, 5),
+        row("identity-same-thin", "geometry", "fixture_source_a",
+            "geometry", "fixture_target_a",
+            "contract_bridge_thin_evidence", "certified_candidate",
+            "identity", 2, 4),
+        row("warrant", "measurement", "fixture_source",
+            "geometry", "fixture_target", "warrant_refused",
+            "no_candidate", "carry_measured_magnitude"),
+        row("incompatible", "ratio", "fixture_source",
+            "algebraic", "fixture_target", "measured_incompatible",
+            "no_candidate", "identity"),
+        row("target", "counting", "fixture_source",
+            "integer", "fixture_target", "target_refused",
+            "no_candidate", "identity"),
+        row("source", "statistics", "fixture_source",
+            "calculus", "fixture_target", "source_never_computed",
+            "no_candidate", "identity"),
+        {
+            "run": "r4",
+            "key": "malformed-target",
+            "item_key": "fixture-malformed-target",
+            "source": {"family": "addition", "kind": "fixture_malformed"},
+            "target": {"family": "subtraction"},
+            "candidate_type": "fixture_malformed",
+            "outcome": "no_candidate",
+            "evidence": {"adapter": "identity", "sample_records": []},
+        },
+    ]
+
+    with tempfile.TemporaryDirectory() as workspace:
+        root = Path(workspace)
+        collection = root / "rows"
+        output = root / "docket"
+        collection.mkdir()
+        shard_text = "\n".join(
+            json.dumps(item, sort_keys=True) for item in rows
+        ) + "\n"
+        (collection / "r4_rows_0003.jsonl").write_text(
+            shard_text, encoding="utf-8"
+        )
+        (collection / "r4_rows_0003 2.jsonl").write_text(
+            shard_text, encoding="utf-8"
+        )
+        (collection / "r4_rows_0004.jsonl").write_text(
+            "\n\n", encoding="utf-8"
+        )
+        completed = subprocess.run(
+            [sys.executable, str(R4_DOCKET), "--rows", str(collection),
+             "--output-dir", str(output), "--witnesses", "1"],
+            cwd=str(ROOT), text=True, capture_output=True, timeout=60,
+            check=False,
+        )
+        if completed.returncode:
+            raise RuntimeError(
+                f"docket exited {completed.returncode}: "
+                f"{completed.stderr.strip()[:400]}"
+            )
+        docket_path = output / "2026-08-10-r4-admission-docket.json"
+        payload = json.loads(docket_path.read_text(encoding="utf-8"))
+
+    print(f"      files   : {payload['row_files_read']} counted, "
+          f"{len(payload['row_files_skipped'])} skipped; "
+          f"{payload['recomputed_counts']['rows_total']} rows",
+          flush=True)
+    record("the docket counts anchored shards, including an empty one, once",
+           payload["row_files_read"] == 2
+           and payload["recomputed_counts"]["row_files"] == 2
+           and payload["recomputed_counts"]["rows_total"] == 10
+           and payload["row_files_skipped"] == ["r4_rows_0003 2.jsonl"],
+           f"counted={payload['row_files_read']}; "
+           f"skipped={payload['row_files_skipped']}; "
+           f"rows={payload['recomputed_counts']['rows_total']}")
+
+    record("the docket excludes malformed machines from its ordered-pair count",
+           payload["rows_lacking_a_machine"] == 1
+           and payload["recomputed_counts"]["ordered_pairs"] == 9,
+           f"malformed={payload['rows_lacking_a_machine']}; "
+           f"ordered_pairs={payload['recomputed_counts']['ordered_pairs']}")
+
+    expected_counts = {
+        "certified_candidates": 5,
+        "contract_bridge": 3,
+        "contract_bridge_thin_evidence": 2,
+        "warrant_refused": 1,
+        "measured_incompatible": 1,
+        "target_refused": 1,
+        "source_never_computed": 1,
+    }
+    measured_counts = {
+        key: payload["recomputed_counts"][key] for key in expected_counts
+    }
+    print(f"      census  : {measured_counts}", flush=True)
+    record("the docket recomputes the constructed outcome census exactly",
+           measured_counts == expected_counts,
+           f"measured={measured_counts}; expected={expected_counts}")
+
+    typed = payload["band_one_typed_converters"]
+    identity = payload["band_two_identity_bridges"]
+    typed_keys = [item["source_row"]["key"] for item in typed]
+    same_keys = [item["source_row"]["key"]
+                 for item in identity["same_family"]]
+    cross_keys = [item["source_row"]["key"]
+                  for item in identity["cross_family"]]
+    seam_row = next(
+        item for item in typed
+        if item["source_row"]["key"] == "typed-seam-weight"
+    )
+    print(f"      bands   : typed={typed_keys}; same={same_keys}; "
+          f"cross={cross_keys}; seam={seam_row['seam_relevant']}",
+          flush=True)
+    record("the docket applies the ruled bands and mechanical identity split",
+           typed_keys == ["typed-rank-first", "typed-seam-weight"]
+           and same_keys == ["identity-same", "identity-same-thin"]
+           and cross_keys == ["identity-cross"]
+           and seam_row["band"] == "typed_converters"
+           and seam_row["seam_relevant"] == [1],
+           f"typed={typed_keys}; same={same_keys}; cross={cross_keys}; "
+           f"seam={seam_row['seam_relevant']}")
+
+    print(f"      weight  : {seam_row['distinct_adapted_inputs']} distinct from "
+          f"{seam_row['samples_bridged']} bridged samples; rank "
+          f"{seam_row['rank']}", flush=True)
+    record("the docket reads distinct adapted inputs as evidence weight",
+           seam_row["distinct_adapted_inputs"] == 8
+           and seam_row["samples_bridged"] == 20
+           and seam_row["rank"] == 2,
+           f"weight={seam_row['distinct_adapted_inputs']}; "
+           f"samples={seam_row['samples_bridged']}; rank={seam_row['rank']}")
+
+    emitted = typed + identity["same_family"] + identity["cross_family"]
+    blanks = sum(item.get("question_preservation") == "" for item in emitted)
+    print(f"      verdict : {blanks}/{len(emitted)} question-preservation "
+          "fields blank", flush=True)
+    record("the docket leaves question preservation blank on every row",
+           blanks == len(emitted),
+           f"{blanks}/{len(emitted)} emitted rows carry an empty field")
+
+
 def main() -> int:
     print("Big Red loop substrate — offline fixture checks", flush=True)
     print(f"repo: {ROOT}", flush=True)
@@ -2092,7 +2273,8 @@ def main() -> int:
                   check_r3_depth2_composition, check_r3_depth2_miss,
                   check_r3_depth2_eligibility,
                   check_r4_bridge_hit, check_r4_warrant_refusal,
-                  check_r4_misses, check_r4_budget_guard, check_r4_library):
+                  check_r4_misses, check_r4_budget_guard, check_r4_library,
+                  check_r4_docket_fixture):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip
