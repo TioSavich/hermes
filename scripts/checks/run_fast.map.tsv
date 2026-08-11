@@ -3,6 +3,7 @@
 # Globs are repository-relative Bash patterns separated by semicolons. A dash means none.
 bundle_app_manifest	no	python3 scripts/bundle/app_manifest.py --verify	scripts/bundle/*;paths.pl;hermes_worker.pl;hermes/**;knowledge/**;curriculum/**;formal/**	scripts/bundle/app_manifest.txt;hermes/capability_registry.pl;curriculum/im/generated/**;formal/incompatibility/incompatibility_sets_*.pl	data/asktm/**;data/research/**;data/research_assets/**	-
 root_resolver.py	no	python3 scripts/checks/root_resolver.py	scripts/checks/root_resolver.py;hermes/app/root.py;hermes/app/workflow/lib/monitoring.py	-	-	-
+worker_readline_deadline.py	no	python3 scripts/checks/worker_readline_deadline.py	scripts/checks/worker_readline_deadline.py;hermes/app/worker.py	-	-	-
 route_registry.py	no	python3 scripts/checks/route_registry.py	scripts/checks/route_registry.py;hermes/app/routes/**	-	-	-
 witness_registry.py	no	python3 scripts/checks/witness_registry.py	scripts/checks/witness_registry.py;hermes_worker.pl;hermes/dispatch_spec.pl;hermes/app/routes/worker.py;hermes/mcp/**	hermes/capability_registry.pl	-	-
 witness_defaults.py	no	python3 scripts/checks/witness_defaults.py	scripts/checks/witness_defaults.py;hermes/web/witnesses.html	-	-	-

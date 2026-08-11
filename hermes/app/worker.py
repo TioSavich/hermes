@@ -54,6 +54,8 @@ class PersistentPrologWorker:
         # thread keeps the pipe empty and retains the tail for crash reports.
         self._stderr_tail: deque[str] = deque(maxlen=400)
         self._stderr_thread: threading.Thread | None = None
+        self._stdout_buffer = bytearray()
+        self._stdout_proc: subprocess.Popen[str] | None = None
 
     def request(self, op: str, **payload: Any) -> Any:
         request = {"id": self._next_id(), "op": op, **payload}
@@ -90,6 +92,8 @@ class PersistentPrologWorker:
             return
         proc = self._proc
         self._proc = None
+        self._stdout_buffer.clear()
+        self._stdout_proc = None
         if proc.poll() is None:
             proc.terminate()
             try:
@@ -134,6 +138,7 @@ class PersistentPrologWorker:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
             bufsize=1,
         )
         self._stderr_tail = deque(maxlen=400)
@@ -216,9 +221,22 @@ class PersistentPrologWorker:
         restart_on_timeout: bool = True,
     ) -> str:
         assert proc.stdout is not None
+        # _ensure_started can replace a dead process without passing through
+        # close(), so this identity check is the only reset on that path.
+        if self._stdout_proc is not proc:
+            self._stdout_buffer.clear()
+            self._stdout_proc = proc
         deadline = time.monotonic() + (self.timeout if timeout is None else timeout)
         fd = proc.stdout.fileno()
-        while time.monotonic() < deadline:
+        os.set_blocking(fd, False)
+        while True:
+            newline = self._stdout_buffer.find(b"\n")
+            if newline >= 0:
+                line = bytes(self._stdout_buffer[:newline])
+                del self._stdout_buffer[: newline + 1]
+                return line.decode("utf-8")
+            if time.monotonic() >= deadline:
+                break
             if proc.poll() is not None:
                 # Give the drainer a beat to flush the final stderr lines.
                 if self._stderr_thread is not None:
@@ -230,9 +248,12 @@ class PersistentPrologWorker:
             readable, _, _ = select.select([fd], [], [], min(0.1, remaining))
             if not readable:
                 continue
-            line = proc.stdout.readline()
-            if line:
-                return line.rstrip("\n")
+            try:
+                chunk = os.read(fd, 65536)
+            except BlockingIOError:
+                continue
+            if chunk:
+                self._stdout_buffer.extend(chunk)
         if not restart_on_timeout:
             raise TimeoutError("worker boot handshake timed out")
         self.restart()

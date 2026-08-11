@@ -220,14 +220,12 @@ GATE_NAMES = ("shape_ok", "provenance_ok", "ngram_ok", "framing_ok", "reexecuted
 
 
 class WorkerHolder:
-    """A replaceable worker, because a stalled one cannot be waited out.
+    """A replaceable worker with a second wall-clock boundary.
 
-    `PersistentPrologWorker._readline` selects against a deadline and then
-    calls `readline`, which blocks until a whole line arrives. An operation
-    that emits a partial line and stalls therefore hangs the client past its
-    own timeout. Re-execution runs on a thread with a wall clock; when one
-    stalls, the row is dropped as not reproducing and the server is replaced,
-    so the stall costs one row instead of the build.
+    `PersistentPrologWorker` bounds partial-line reads at its own deadline.
+    Re-execution still runs on a thread with a wall clock around the full call.
+    When an operation stalls, the row is dropped as not reproducing and the
+    server is replaced, so one stalled operation does not hold the full build.
     """
 
     def __init__(self, factory: Any) -> None:
