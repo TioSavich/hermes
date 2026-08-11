@@ -13,14 +13,17 @@ check that can only say PASS teaches nothing when it later fails.
 from __future__ import annotations
 
 import json
+import io
 import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from contextlib import redirect_stdout
 from unittest.mock import Mock, patch
 
 import run_loop_array as array_runner
+import step0_manifests as step0
 
 ROOT = Path(__file__).resolve().parents[3]
 DRIVER = ROOT / "scripts/bigred/loops/loop_driver.pl"
@@ -1104,11 +1107,37 @@ def check_r3_budget_guard() -> None:
         "format('DEAD ~w~n', [Dead]), "
         "r3_driver:screened(budget, c, [x], T, 0, 10, 50, "
         "  st(tally(1,0,0,0), [], [], none, completed), State), "
-        "format('SCREENED ~w~n', [State])"
+        "format('SCREENED ~w~n', [State]), "
+        "Input = _{n:3}, "
+        "Composition = comp(2, "
+        "  comp(1,complete_to_unit,whole_number(const(10)),[part(in(n))]), "
+        "  comp(1,partition_regroup,integer_line, "
+        "       [unit(prior),plan(partition(in(n)))])), "
+        "r3_driver:apply_composition(Composition, Input, Result), "
+        "get_time(D2Now), D2Started is D2Now - 1, "
+        "r3_driver:step_composition(Composition, [point(Input,Result)], "
+        "  [point(Input,Result)], D2Started, 0.5, limits(10,5), "
+        "  st(tally(0,0,0,0),[],[],none,completed), D2State), "
+        "D2State = st(D2Tally,D2Candidates,D2Unverified,D2Nearest,D2Stopped), "
+        "r3_driver:candidate_row(2, machine(fixture,depth_2), "
+        "  _{schema:fixture,bounds:\"fixture\",points:2}, D2Started, "
+        "  probe(2,2,2,0,0), sizes(1,1,1,0,false,1,1,false), "
+        "  [leaf(n,3)], [point(Input,Result)], [point(Input,Result)], "
+        "  D2Tally, D2Candidates, D2Unverified, D2Nearest, D2Stopped, "
+        "  D2Row), "
+        "get_dict(outcome, D2Row, D2Outcome), "
+        "get_dict(candidate_type, D2Row, D2Type), "
+        "get_dict(evidence, D2Row, D2Evidence), "
+        "get_dict(walk, D2Evidence, D2Walk), "
+        "get_dict(candidate_compositions, D2Evidence, D2CandidateStrings), "
+        "get_dict(unverified_compositions, D2Evidence, D2UnverifiedStrings), "
+        "length(D2UnverifiedStrings, D2UnverifiedCount), "
+        "format('D2BUDGET ~w ~w ~w ~q ~w~n', "
+        "       [D2Outcome,D2Type,D2Walk,D2CandidateStrings,D2UnverifiedCount])"
     )
     signals = {}
     for line in r3_swipl(goal).splitlines():
-        for tag in ("EMPTY", "DEAD", "SCREENED"):
+        for tag in ("EMPTY", "DEAD", "SCREENED", "D2BUDGET"):
             if line.startswith(tag + " "):
                 signals[tag] = line.split(None, 1)[1].strip()
     record("a budget that dies inside a confirmation stops gracefully",
@@ -1117,6 +1146,10 @@ def check_r3_budget_guard() -> None:
            and "machine_budget" in signals.get("SCREENED", ""),
            f"empty={signals.get('EMPTY')} dead_budget={signals.get('DEAD')} "
            f"screened={signals.get('SCREENED')}")
+    record("a depth-2 verification budget death writes a graceful non-candidate row",
+           signals.get("D2BUDGET")
+           == "timeout machine_budget_exhausted machine_budget [] 1",
+           f"row={signals.get('D2BUDGET')}")
 
 
 def check_r3_unverified_and_strength() -> None:
@@ -1198,7 +1231,177 @@ def check_r3_unverified_and_strength() -> None:
 
 
 # --------------------------------------------------------------------------
-# 20-24. R4 — the contract-bridge adapter search.
+# 20-22. R3 depth 2 — executable chaining, a miss, and eligibility accounting.
+# --------------------------------------------------------------------------
+
+def check_r3_depth2_composition() -> None:
+    print("\n[20] R3 depth 2 — one result feeds a second kernel application",
+          flush=True)
+    goal = (
+        "Input = _{n:3}, "
+        "Composition = comp(2, "
+        "  comp(1,complete_to_unit,whole_number(const(10)),[part(in(n))]), "
+        "  comp(1,partition_regroup,integer_line,"
+        "       [unit(prior),plan(partition(in(n)))])), "
+        "r3_driver:apply_composition(Composition, Input, Result), "
+        "get_time(T), "
+        "r3_driver:search([Composition], [point(Input,Result)], "
+        "  [point(Input,Result)], T, 60, limits(10,5), "
+        "  st(tally(0,0,0,0),[],[],none,completed), State), "
+        "format('D2HIT ~q ~q~n', [Result,State]), "
+        "r3_driver:candidate_row(2, machine(fixture,depth_2), "
+        "  _{schema:fixture,bounds:\"fixture\",points:2}, T, "
+        "  probe(2,2,2,0,0), sizes(1,1,1,0,false,1,1,false), "
+        "  [leaf(n,3)], [point(Input,Result)], [point(Input,Result)], "
+        "  tally(1,1,1,1), [Composition], [], none, completed, Row), "
+        "get_dict(evidence, Row, Evidence), "
+        "get_dict(candidate_kernels, Evidence, CandidateKernels), "
+        "format('D2ROW ~q~n', [CandidateKernels]), "
+        "r3_driver:composition_count(2,[leaf(a,1),leaf(b,2)],Count), "
+        "format('D2COUNT ~w~n', [Count])"
+    )
+    signals = {}
+    for line in r3_swipl(goal).splitlines():
+        if line.startswith("D2HIT "):
+            signals["hit"] = line.split(None, 1)[1]
+        if line.startswith("D2COUNT "):
+            signals["count"] = int(line.split()[1])
+        if line.startswith("D2ROW "):
+            signals["kernels"] = line.split(None, 1)[1]
+    hit = signals.get("hit", "")
+    record("the fixture-authored depth-2 receipt runs both kernels",
+           hit.startswith("made(3,part_unit(3,complement(7))) "), hit[:120])
+    record("the depth-2 receipt clears strict identity on screen and verify",
+           "tally(1,1,1,1)" in hit and "comp(2," in hit, hit[-180:])
+    record("a depth-2 candidate row lists both kernels in execution order",
+           signals.get("kernels")
+           == "[complete_to_unit,partition_regroup]",
+           f"candidate_kernels={signals.get('kernels')}")
+    record("the two-leaf authored depth-2 space is measured near the design bar",
+           signals.get("count") == 27324,
+           f"{signals.get('count')} compositions")
+
+
+def check_r3_depth2_miss() -> None:
+    print("\n[21] R3 depth 2 — a disagreement stays a miss and a real row says "
+          "depth 2", flush=True)
+    goal = (
+        "Input = _{n:3}, "
+        "Composition = comp(2, "
+        "  comp(1,complete_to_unit,whole_number(const(10)),[part(in(n))]), "
+        "  comp(1,partition_regroup,integer_line,"
+        "       [unit(prior),plan(partition(in(n)))])), "
+        "get_time(T), "
+        "r3_driver:search([Composition], "
+        "  [point(Input,made(2,part_unit(2,complement(7))))], [], "
+        "  T, 60, limits(10,5), "
+        "  st(tally(0,0,0,0),[],[],none,completed), State), "
+        "format('D2MISS ~q~n', [State])"
+    )
+    miss = next((line.split(None, 1)[1] for line in r3_swipl(goal).splitlines()
+                 if line.startswith("D2MISS ")), "")
+    record("a depth-2 disagreement does not enter either candidate list",
+           miss.startswith("st(tally(1,0,0,0),[],[],"), miss)
+
+    item = {
+        "run": "r3", "depth": 2,
+        "source": {"family": "addition", "kind": "base_ones_chunking"},
+        "machine_budget_s": 120, "composition_timeout_s": 10,
+        "sample_count": 2, "verify_count": 3, "max_compositions": 40,
+    }
+    row = run_r3_item(item)
+    evidence = row["evidence"]
+    problems = validate_row(row)
+    record("the depth-2 miss row keeps the shared output schema", not problems,
+           "; ".join(problems) or "every field present and on its enum")
+    record("every field carrying search depth reads 2",
+           evidence["depth"] == 2 and row["candidate_type"] == "search_truncated",
+           f"depth={evidence['depth']} type={row['candidate_type']}")
+    record("the row distinguishes total space from the attempted prefix",
+           evidence["compositions_enumerated"] > 40
+           and evidence["compositions_attempted"] == 40,
+           f"{evidence['compositions_attempted']} attempted of "
+           f"{evidence['compositions_enumerated']}")
+    record("depth 2 names only the still-unbindable rational-bracket kernel",
+           evidence["kernels_unbindable"] == ["refine_bracket_by_order"],
+           repr(evidence["kernels_unbindable"]))
+
+    failed_process = Mock()
+    failed_process.communicate.return_value = (
+        "", "depth-2 fixture process exited before writing a row"
+    )
+    with patch.object(array_runner.subprocess, "Popen",
+                      return_value=failed_process):
+        rows, disposition = array_runner.run_item(
+            item, watchdog_s=30, driver=R3_DRIVER)
+    record("an external depth-2 failure row also carries depth 2",
+           disposition == "no_row" and len(rows) == 1
+           and rows[0]["evidence"]["depth"] == 2
+           and rows[0]["evidence"]["compositions_attempted"] == 0,
+           f"disposition={disposition}; depth="
+           f"{rows[0]['evidence']['depth'] if rows else None}")
+
+
+def check_r3_depth2_eligibility() -> None:
+    print("\n[22] R3 depth 2 — the collected depth-1 census governs eligibility",
+          flush=True)
+    census = step0.r3_depth2_collection_census(step0.R3_DEPTH1_COLLECTION)
+    counts = census["counts"]
+    record("the collection accounts for all 246 depth-1 machines",
+           len(census["rows"]) == 246
+           and len(census["eligible"]) == 209
+           and len(census["excluded"]) == 37,
+           f"{len(census['eligible'])} eligible + "
+           f"{len(census['excluded'])} excluded = {len(census['rows'])}")
+    record("the eligible population is 206 resisters plus 3 insufficient rows",
+           counts["measured_resister"]
+           + counts["measured_resister_thin_grid"] == 206
+           and counts["insufficient_computed_samples"] == 3,
+           f"resisters={counts['measured_resister'] + counts['measured_resister_thin_grid']} "
+           f"insufficient={counts['insufficient_computed_samples']}")
+    hits = {"counting/recursive_place_value_inscription",
+            "counting/inscribe_cardinality"}
+    record("both depth-1 hits are absent from the eligible set",
+           hits.isdisjoint(census["eligible"])
+           and all(census["excluded"].get(key) == "certified at depth 1"
+                   for key in hits),
+           ", ".join(sorted(hits)))
+
+    output = io.StringIO()
+    with redirect_stdout(output):
+        step0.print_r3_depth2_collection_census(census)
+    printed = output.getvalue()
+    record("the exclusion census prints all three reasons and accounting",
+           "excluded depth-1 hits       : 2 -> certified at depth 1" in printed
+           and "excluded never-computed     : 30 -> unsearchable" in printed
+           and "excluded uninstantiated     : 5 -> unsearchable" in printed
+           and "accounted                   : 246/246" in printed,
+           "hits=2, never-computed=30, uninstantiated=5, accounted=246/246")
+
+    machines = [
+        {"family": "counting", "kind": "recursive_place_value_inscription"},
+        {"family": "addition", "kind": "base_ones_chunking"},
+    ]
+    small_census = {"eligible": {"addition/base_ones_chunking"}}
+    eligible = step0.filter_r3_depth2_machines(machines, small_census)
+    with tempfile.TemporaryDirectory() as directory:
+        shards = step0.write_r3_shards(
+            eligible, Path(directory), 4, {},
+            {"depth": 2, "machine_budget_s": 2700,
+             "composition_timeout_s": 120, "sample_count": 10,
+             "verify_count": 100, "max_compositions": 0},
+        )
+        manifest_rows = [json.loads(line) for line in
+                         shards[0].read_text(encoding="utf-8").splitlines()]
+    record("a depth-1 hit cannot appear in a depth-2 manifest",
+           len(manifest_rows) == 1
+           and manifest_rows[0]["source"]["kind"] == "base_ones_chunking"
+           and manifest_rows[0]["depth"] == 2,
+           repr(manifest_rows))
+
+
+# --------------------------------------------------------------------------
+# 23-27. R4 — the contract-bridge adapter search.
 #
 # A pair the authored library genuinely bridges, a pair whose unit relabel has
 # no witness and therefore certifies nothing, two kinds of miss that must not
@@ -1242,7 +1445,7 @@ def r4_swipl(goal: str, timeout: int = 300) -> str:
 
 
 def check_r4_bridge_hit() -> None:
-    print("\n[20] R4 — a pair the authored library genuinely bridges",
+    print("\n[23] R4 — a pair the authored library genuinely bridges",
           flush=True)
     # The source's answer becomes the target's first operand and the target's
     # second operand is threaded from the source's own input: on the grid point
@@ -1390,7 +1593,7 @@ def check_r4_bridge_hit() -> None:
 
 
 def check_r4_warrant_refusal() -> None:
-    print("\n[21] R4 — a unit relabel computes nothing without a witness, and "
+    print("\n[24] R4 — a unit relabel computes nothing without a witness, and "
           "the inverse of a declared witness is one", flush=True)
     # RULING R1 (2026-08-10): a declared factor licenses its own inverse,
     # because one yard being three feet is one fact and not two.
@@ -1554,7 +1757,7 @@ def check_r4_warrant_refusal() -> None:
 
 
 def check_r4_misses() -> None:
-    print("\n[22] R4 — the two kinds of miss do not wear one name", flush=True)
+    print("\n[25] R4 — the two kinds of miss do not wear one name", flush=True)
     # The target machine declines the adapted input. The adapter did its work;
     # the machine's own domain refused the result. Calling that an
     # incompatibility of the library would put the blame in the wrong place.
@@ -1703,7 +1906,7 @@ def check_r4_misses() -> None:
 
 
 def check_r4_budget_guard() -> None:
-    print("\n[23] R4 — a spent (pair, adapter) budget yields an explicit row",
+    print("\n[26] R4 — a spent (pair, adapter) budget yields an explicit row",
           flush=True)
     item = {
         "run": "r4",
@@ -1747,7 +1950,7 @@ def check_r4_budget_guard() -> None:
 
 
 def check_r4_library() -> None:
-    print("\n[24] R4 — the adapter library is complete and self-consistent",
+    print("\n[27] R4 — the adapter library is complete and self-consistent",
           flush=True)
     goal = (
         "r4_adapters:adapter_count(N), format('COUNT ~w~n', [N]), "
@@ -1886,6 +2089,8 @@ def main() -> int:
                   check_r2_lenses, check_r2_resume,
                   check_r3_known_dependency, check_r3_measured_resister,
                   check_r3_budget_guard, check_r3_unverified_and_strength,
+                  check_r3_depth2_composition, check_r3_depth2_miss,
+                  check_r3_depth2_eligibility,
                   check_r4_bridge_hit, check_r4_warrant_refusal,
                   check_r4_misses, check_r4_budget_guard, check_r4_library):
         try:

@@ -1,14 +1,14 @@
 :- encoding(utf8).
-/** <module> r3_driver — the kernel re-derivation sweep, depth 1
+/** <module> r3_driver — the kernel re-derivation sweep, depths 1 and 2
  *
  * Run R3 of the design in
  * `.superpowers/sdd/task-2026-08-08-engineer-bigred-loops.md`: for each
- * contracted machine M, search the depth-1 kernel/gate composition space for a
- * composition whose result term is the SAME TERM as M's own on every sampled
- * input. A match is a `kernel_dependency` candidate with a byte-identical
- * bridge proof. An exhausted search with no match is a MEASURED RESISTER — the
- * row says how much was searched, so that a miss reads as work done rather
- * than as work skipped.
+ * contracted machine M, search the requested kernel/gate composition depth
+ * for a composition whose result term is the SAME TERM as M's own on every
+ * sampled input. A match is a `kernel_dependency` candidate with a
+ * byte-identical bridge proof. An exhausted search with no match is a MEASURED
+ * RESISTER — the row says how much was searched, so that a miss reads as work
+ * done rather than as work skipped.
  *
  * WHY A SIBLING MODULE. loop_driver.pl carries R1 and R2 and their collected
  * rows; this file adds R3 without editing a line of it, so the R1/R2 Prolog
@@ -28,15 +28,26 @@
  * authored constant fills. apply_composition/3 grounds those slots against a
  * real input and runs the kernel, so a composition recorded in a row is a term
  * a reader can run again. An unrunnable receipt licenses nothing, so the
- * fixture re-runs one from its printed string.
+ * fixture re-runs one from its printed string. A depth-2 composition is
+ *
+ *     comp(2, FirstComp, SecondComp)
+ *
+ * where both children are depth-1 `comp/4` terms and `prior` in SecondComp is
+ * replaced by FirstComp's WHOLE result term. There is no implicit projection,
+ * renaming, or numeric coercion between the applications. The authored depth-2
+ * language contains the two result-to-input handoffs the current kernel types
+ * license: any first result can become K3's unit, and a K6 numeral can occupy
+ * both numeral arguments of K5. The latter self-comparison is deliberately
+ * narrow: one first application supplies one term, so inventing a different
+ * second numeral would not be a two-application chain.
  *
  * WHAT DEPTH 1 CANNOT REACH, recorded rather than hidden. Two of the seven
  * kernels take structured arguments — refine_bracket_by_order wants a rational
  * bracket, compare_place_sequences_by_significance wants numeral/4 terms — and
  * no numeric grid leaf supplies either. At depth 1 they contribute zero
- * compositions, and every row says so in `kernels_unbindable`. Reaching them
- * needs a kernel whose OUTPUT is such a term feeding a second kernel, which is
- * depth 2 and a later wave.
+ * compositions, and every row says so in `kernels_unbindable`. At depth 2 K5
+ * becomes bindable from K6's numeral result. K4 remains unbindable because no
+ * current kernel returns its rational target/bracket/cut arguments.
  *
  * IDENTITY IS THE CANDIDATE TEST, AND IT IS STRICT. Result terms are compared
  * with ==/2 on whole terms, never with =:=. Two terms agreeing numerically
@@ -59,6 +70,8 @@
             gate_spec/2,
             arg_spec/3,
             composition_space/3,
+            composition_space/4,
+            composition_count/3,
             apply_composition/3,
             composition_string/2,
             payload_relation/3,
@@ -265,9 +278,10 @@ arg_spec(recollect_base_cycles, Leaves, [cardinality(in(Path))]) :-
     member(leaf(Path, _), Leaves).
 arg_spec(enumerate_positive_integer_pairs, _, []).
 
-%!  kernel_unbindable(?Kernel) is nondet.
-kernel_unbindable(refine_bracket_by_order).
-kernel_unbindable(compare_place_sequences_by_significance).
+%!  kernel_unbindable(+Depth, ?Kernel) is nondet.
+kernel_unbindable(1, refine_bracket_by_order).
+kernel_unbindable(1, compare_place_sequences_by_significance).
+kernel_unbindable(2, refine_bracket_by_order).
 
 r3_kernel(complete_to_unit).
 r3_kernel(iterate_to_target).
@@ -279,10 +293,20 @@ r3_kernel(enumerate_positive_integer_pairs).
 
 %!  composition_space(+Leaves, +MaxCompositions, -Space) is det.
 %
-%   Space is space(Compositions, Enumerated, Capped). Compositions are dealt
-%   round robin across the kernels, so a cap that bites removes the tail of
-%   every kernel rather than the whole of the last one.
-composition_space(Leaves, MaxCompositions, space(Compositions, Enumerated, Capped)) :-
+%   Backward-compatible depth-1 entry point.
+composition_space(Leaves, MaxCompositions, Space) :-
+    composition_space(1, Leaves, MaxCompositions, Space).
+
+%!  composition_space(+Depth, +Leaves, +MaxCompositions, -Space) is det.
+%
+%   Space is space(Compositions, Enumerated, Capped). At depth 1 compositions
+%   are dealt round robin across kernels. At depth 2 the count is computed
+%   without materialising the full cross product, and at most MaxCompositions
+%   receipts are retained. A nonpositive maximum means no cap; the production
+%   walk uses the lazy generator below so the 45-minute machine budget, not
+%   list construction, stops an uncapped search.
+composition_space(1, Leaves, MaxCompositions,
+                  space(Compositions, Enumerated, Capped)) :-
     findall(Kernel-Bucket,
             ( r3_kernel(Kernel),
               findall(comp(1, Kernel, GateSpec, ArgSpec),
@@ -294,13 +318,93 @@ composition_space(Leaves, MaxCompositions, space(Compositions, Enumerated, Cappe
     findall(Bucket, member(_-Bucket, Buckets0), Buckets),
     deal_round_robin(Buckets, All),
     length(All, Enumerated),
-    (   Enumerated > MaxCompositions
+    cap_compositions(All, Enumerated, MaxCompositions,
+                     Compositions, Capped).
+composition_space(2, Leaves, MaxCompositions,
+                  space(Compositions, Enumerated, Capped)) :-
+    composition_count(2, Leaves, Enumerated),
+    (   MaxCompositions > 0,
+        Enumerated > MaxCompositions
+    ->  Retained = MaxCompositions,
+        Capped = true
+    ;   Retained = Enumerated,
+        Capped = false
+    ),
+    findnsols(Retained, Composition,
+              depth_composition(2, Leaves, Composition), Compositions).
+
+cap_compositions(All, Enumerated, MaxCompositions, Compositions, Capped) :-
+    (   MaxCompositions > 0,
+        Enumerated > MaxCompositions
     ->  length(Compositions, MaxCompositions),
         append(Compositions, _, All),
         Capped = true
     ;   Compositions = All,
         Capped = false
     ).
+
+%!  composition_count(+Depth, +Leaves, -Count) is det.
+%
+%   Count the authored language algebraically. This is used by step 0 and by
+%   the row writer, so a multi-million composition space is measured without
+%   first allocating a multi-million-term list.
+composition_count(1, Leaves, Count) :-
+    length(Leaves, LeafCount),
+    gate_spec_count(Leaves, GateCount),
+    Count is GateCount * (4 * LeafCount * LeafCount + 2 * LeafCount + 1).
+composition_count(2, Leaves, Count) :-
+    length(Leaves, LeafCount),
+    gate_spec_count(Leaves, GateCount),
+    composition_count(1, Leaves, FirstCount),
+    K3SecondCount is 2 * LeafCount * GateCount,
+    K6FirstCount is LeafCount * GateCount,
+    K5SecondCount is LeafCount + 1,
+    Count is FirstCount * K3SecondCount + K6FirstCount * K5SecondCount.
+
+gate_spec_count(Leaves, Count) :-
+    aggregate_all(count, gate_spec(Leaves, _), Count).
+
+%!  depth_composition(+Depth, +Leaves, -Composition) is nondet.
+%
+%   The generator is the production walk's search space. Keeping it nondet
+%   lets the cumulative machine budget interrupt depth 2 without allocating
+%   the whole cross product.
+depth_composition(1, Leaves, Composition) :-
+    composition_count(1, Leaves, Count),
+    composition_space(1, Leaves, Count, space(Compositions, _, false)),
+    member(Composition, Compositions).
+depth_composition(2, Leaves, comp(2, First, Second)) :-
+    depth1_compositions(Leaves, Firsts),
+    depth2_k3_second(Leaves, Second),
+    member(First, Firsts).
+depth_composition(2, Leaves, comp(2, First, Second)) :-
+    depth1_compositions(Leaves, Firsts),
+    member(First, Firsts),
+    First = comp(1, recollect_base_cycles, _, _),
+    depth2_k5_second(Leaves, Second).
+
+depth1_compositions(Leaves, Compositions) :-
+    composition_count(1, Leaves, Count),
+    composition_space(1, Leaves, Count, space(Compositions, _, false)).
+
+% K3 accepts a structured unit. The prior result is retained whole as that
+% unit; the plan count and the gate still come from the original input.
+depth2_k3_second(Leaves,
+                 comp(1, partition_regroup, GateSpec,
+                      [unit(prior), plan(Plan)])) :-
+    member(leaf(Path, _), Leaves),
+    member(Shape, [regroup, partition]),
+    Plan =.. [Shape, in(Path)],
+    gate_spec(Leaves, GateSpec).
+
+% K6 is the only current kernel whose whole result has K5's numeral/4 sort.
+% One first application produces one numeral, so the only two-slot binding
+% available without invention is a self-comparison.
+depth2_k5_second(Leaves,
+                 comp(1, compare_place_sequences_by_significance,
+                      positional_numerals(Parameter),
+                      [left(prior), right(prior)])) :-
+    radix_parameter(Leaves, Parameter).
 
 deal_round_robin(Buckets, Dealt) :-
     exclude(==([]), Buckets, NonEmpty),
@@ -322,6 +426,37 @@ apply_composition(comp(1, Kernel, GateSpec, ArgSpec), Input, Result) :-
     ground_spec(GateSpec, Input, Gate),
     ground_spec(ArgSpec, Input, Args),
     run_kernel(Kernel, Gate, Args, run(_, _, _, _, Result)).
+apply_composition(comp(2, First, Second), Input, Result) :-
+    apply_composition(First, Input, Prior),
+    apply_second_composition(Second, Input, Prior, Result).
+
+apply_second_composition(comp(1, Kernel, GateSpec, ArgSpec), Input, Prior,
+                         Result) :-
+    ground_second_spec(GateSpec, Input, Prior, Gate),
+    ground_second_spec(ArgSpec, Input, Prior, Args),
+    run_kernel(Kernel, Gate, Args, run(_, _, _, _, Result)).
+
+ground_second_spec(prior, _, Prior, Prior) :- !.
+ground_second_spec(in(Path), Input, _, Value) :-
+    !,
+    leaf_value(Path, Input, Value).
+ground_second_spec(const(Value), _, _, Value) :- !.
+ground_second_spec(Spec, _, _, _) :-
+    var(Spec),
+    !,
+    fail.
+ground_second_spec(Spec, Input, Prior, Ground) :-
+    compound(Spec),
+    !,
+    Spec =.. [Functor|Arguments],
+    ground_second_specs(Arguments, Input, Prior, GroundArguments),
+    Ground =.. [Functor|GroundArguments].
+ground_second_spec(Spec, _, _, Spec).
+
+ground_second_specs([], _, _, []).
+ground_second_specs([Spec|Rest0], Input, Prior, [Ground|Rest]) :-
+    ground_second_spec(Spec, Input, Prior, Ground),
+    ground_second_specs(Rest0, Input, Prior, Rest).
 
 ground_spec(in(Path), Input, Value) :-
     !,
@@ -559,6 +694,52 @@ search([Composition|Rest], Screen, Verify, Started, Budget, Limits,
         )
     ).
 
+%!  search_generated(+Depth, +Leaves, +MaxCompositions, +Screen, +Verify,
+%!                   +Started, +Budget, +Limits, +State0,
+%!                   -State, -Attempted) is det.
+%
+%   Walk the depth's nondet composition generator without retaining its full
+%   output. The mutable box is local bookkeeping across generator backtracking;
+%   every stored state is ground. `composition_limit` retains the depth-1 cap
+%   semantics, while `machine_budget` remains the dominant depth-2 stop when
+%   MaxCompositions is nonpositive.
+search_generated(Depth, Leaves, MaxCompositions, Screen, Verify,
+                 Started, Budget, Limits, State0, State, Attempted) :-
+    Box = box(State0, 0),
+    catch(
+        (   depth_composition(Depth, Leaves, Composition),
+            arg(2, Box, Seen0),
+            (   MaxCompositions > 0,
+                Seen0 >= MaxCompositions
+            ->  throw(r3_stop(composition_limit))
+            ;   true
+            ),
+            get_time(Now),
+            Elapsed is Now - Started,
+            (   Elapsed >= Budget
+            ->  arg(1, Box, Held0),
+                set_stopped(Held0, machine_budget, Held),
+                nb_setarg(1, Box, Held),
+                throw(r3_stop(machine_budget))
+            ;   true
+            ),
+            Seen is Seen0 + 1,
+            nb_setarg(2, Box, Seen),
+            arg(1, Box, Current),
+            step_composition(Composition, Screen, Verify, Started, Budget,
+                             Limits, Current, Next),
+            nb_setarg(1, Box, Next),
+            (   Next = st(_, _, _, _, machine_budget)
+            ->  throw(r3_stop(machine_budget))
+            ;   fail
+            )
+        ;   true
+        ),
+        r3_stop(_),
+        true),
+    arg(1, Box, State),
+    arg(2, Box, Attempted).
+
 set_stopped(st(Tally, Candidates, Unverified, Nearest, _), Reason,
             st(Tally, Candidates, Unverified, Nearest, Reason)).
 
@@ -668,19 +849,19 @@ r3_consumer(
      queries in the path-graph design + the R2 lens l3 kernel half + the \c
      breadth reel's composition handoffs").
 
-%!  base_evidence(-Evidence) is det.
+%!  base_evidence(+Depth, -Evidence) is det.
 %
 %   One evidence field set for every R3 row, so a consumer reading a resister
 %   row and a candidate row reads the same keys. Each row builder overwrites
 %   what it measured; what it did not reach keeps the zero below, and the
 %   `walk` field says which of the two it is.
-base_evidence(Evidence) :-
-    findall(K, kernel_unbindable(K), Unbindable),
+base_evidence(Depth, Evidence) :-
+    findall(K, kernel_unbindable(Depth, K), Unbindable),
     Evidence = _{kind: "failed_derivation",
                  source_outcome: "not reached",
                  target_outcome: "no composition was run",
                  elapsed_ms: 0,
-                 depth: 1,
+                 depth: Depth,
                  grid_points_available: 0,
                  grid_points_probed: 0,
                  machine_computed: 0,
@@ -698,6 +879,7 @@ base_evidence(Evidence) :-
                  input_leaves_truncated: false,
                  kernels_unbindable: Unbindable,
                  compositions_enumerated: 0,
+                 compositions_attempted: 0,
                  compositions_truncated: false,
                  compositions_applicable: 0,
                  compositions_screen_passed: 0,
@@ -709,9 +891,9 @@ base_evidence(Evidence) :-
                  nearest_miss: null,
                  walk: "not_walked"}.
 
-%!  r3_evidence(+Measured, -Evidence) is det.
-r3_evidence(Measured, Evidence) :-
-    base_evidence(Base),
+%!  r3_evidence(+Depth, +Measured, -Evidence) is det.
+r3_evidence(Depth, Measured, Evidence) :-
+    base_evidence(Depth, Base),
     Evidence = Base.put(Measured).
 
 main_item :-
@@ -723,13 +905,14 @@ main_item :-
 %!  r3_row(+Item, -Row) is det.
 r3_row(Item, Row) :-
     item_run(Item, r3),
+    item_depth(Item, Depth),
     item_machine(Item, source, machine(Family, Kind)),
     item_number(Item, machine_budget_s, MachineBudget),
     item_number(Item, composition_timeout_s, Timeout),
     item_number(Item, sample_count, SampleCount),
     item_number(Item, verify_count, VerifyCount),
     item_number(Item, probe_multiple, ProbeMultiple),
-    item_number(Item, max_compositions, MaxCompositions),
+    item_max_compositions(Item, Depth, MaxCompositions),
     item_number(Item, max_verifications, MaxVerifications),
     item_number(Item, max_leaves, MaxLeaves),
     item_number(Item, min_points, MinPoints),
@@ -739,18 +922,19 @@ r3_row(Item, Row) :-
     ;   Schema = null
     ),
     (   Schema == null
-    ->  no_contract_row(Family, Kind, Started, Row)
+    ->  no_contract_row(Depth, Family, Kind, Started, Row)
     ;   grid_plan(Schema, Bounds, _)
-    ->  walked_row(machine(Family, Kind), Schema, Bounds,
+    ->  walked_row(Depth, machine(Family, Kind), Schema, Bounds,
                    budgets(MachineBudget, Timeout),
                    counts(SampleCount, VerifyCount, ProbeMultiple,
                           MaxCompositions, MaxVerifications, MaxLeaves,
                           MinPoints),
                    Started, Row)
-    ;   no_grid_row(Family, Kind, Schema, Started, Row)
+    ;   no_grid_row(Depth, Family, Kind, Schema, Started, Row)
     ).
 
-walked_row(machine(Family, Kind), Schema, Bounds, budgets(MachineBudget, Timeout),
+walked_row(Depth, machine(Family, Kind), Schema, Bounds,
+           budgets(MachineBudget, Timeout),
            counts(SampleCount, VerifyCount, ProbeMultiple, MaxCompositions,
                   MaxVerifications, MaxLeaves, MinPoints),
            Started, Row) :-
@@ -772,22 +956,28 @@ walked_row(machine(Family, Kind), Schema, Bounds, budgets(MachineBudget, Timeout
     InputField = _{schema: Schema, bounds: BoundsString, points: AuthoredPoints},
     design_total(Required),
     (   Computing < MinPoints
-    ->  insufficient_row(machine(Family, Kind), InputField, Started,
+    ->  insufficient_row(Depth, machine(Family, Kind), InputField, Started,
                          probe(GridTotal, Probed, Computing, Refused, Errored),
                          Required, CollectStopped, Row)
     ;   Screen = [point(FirstInput, _)|_],
         input_leaves(FirstInput, MaxLeaves, Leaves),
         Leaves = leaves(LeafList, LeafTotal, OtherTotal, LeavesTruncated),
-        composition_space(LeafList, MaxCompositions,
-                          space(Compositions, Enumerated, Capped)),
-        search(Compositions, Screen, Verify, Started, MachineBudget,
-               limits(Timeout, MaxVerifications),
-               st(tally(0, 0, 0, 0), [], [], none, CollectStopped),
-               st(Tally, Candidates, Unverified, Nearest, Stopped)),
-        candidate_row(machine(Family, Kind), InputField, Started,
+        composition_count(Depth, LeafList, Enumerated),
+        (   MaxCompositions > 0,
+            Enumerated > MaxCompositions
+        ->  Capped = true
+        ;   Capped = false
+        ),
+        search_generated(Depth, LeafList, MaxCompositions, Screen, Verify,
+                         Started, MachineBudget,
+                         limits(Timeout, MaxVerifications),
+                         st(tally(0, 0, 0, 0), [], [], none, CollectStopped),
+                         st(Tally, Candidates, Unverified, Nearest, Stopped),
+                         Attempted),
+        candidate_row(Depth, machine(Family, Kind), InputField, Started,
                       probe(GridTotal, Probed, Computing, Refused, Errored),
                       sizes(ScreenCount, VerifyActual, LeafTotal, OtherTotal,
-                            LeavesTruncated, Enumerated, Capped),
+                            LeavesTruncated, Enumerated, Attempted, Capped),
                       LeafList, Screen, Verify, Tally, Candidates, Unverified,
                       Nearest, Stopped, Row)
     ).
@@ -809,10 +999,10 @@ split_points(Points, SampleCount, Screen, Verify) :-
                 Verify)
     ).
 
-candidate_row(machine(Family, Kind), InputField, Started,
+candidate_row(Depth, machine(Family, Kind), InputField, Started,
               probe(GridTotal, Probed, Computing, Refused, Errored),
               sizes(ScreenCount, VerifyCount, LeafTotal, OtherTotal,
-                    LeavesTruncated, Enumerated, Capped),
+                    LeavesTruncated, Enumerated, Attempted, Capped),
               LeafList, Screen, Verify, tally(App, Pass, Ver, Spent),
               Candidates, Unverified, Nearest, Stopped, Row) :-
     maplist(composition_string, Candidates, CandidateStrings),
@@ -831,7 +1021,8 @@ candidate_row(machine(Family, Kind), InputField, Started,
     ),
     r3_verdict(Candidates, Unverified, Stopped, Capped, Strength,
                Outcome, CandidateType, Kernels),
-    (   Candidates = [comp(_, WinningKernel, _, _)|_]
+    (   Candidates = [Winning|_],
+        composition_terminal_kernel(Winning, WinningKernel)
     ->  Target = _{family: "kernel_gate_pilot", kind: WinningKernel}
     ;   Target = _{family: null, kind: null}
     ),
@@ -841,7 +1032,7 @@ candidate_row(machine(Family, Kind), InputField, Started,
     ),
     atom_string(Stopped, StoppedString),
     r3_consumer(Consumer),
-    r3_evidence(_{kind: EvidenceKind,
+    r3_evidence(Depth, _{kind: EvidenceKind,
                   source_outcome: MachineString,
                   target_outcome: CompositionString,
                   elapsed_ms: ElapsedMs,
@@ -861,6 +1052,7 @@ candidate_row(machine(Family, Kind), InputField, Started,
                   input_other_leaf_count: OtherTotal,
                   input_leaves_truncated: LeavesTruncated,
                   compositions_enumerated: Enumerated,
+                  compositions_attempted: Attempted,
                   compositions_truncated: Capped,
                   compositions_applicable: App,
                   compositions_screen_passed: Pass,
@@ -907,8 +1099,7 @@ candidate_row(machine(Family, Kind), InputField, Started,
 %   `certified_candidate` at the outcome field.
 r3_verdict(Candidates, Unverified, Stopped, Capped, Strength,
            Outcome, CandidateType, Kernels) :-
-    findall(Kernel, member(comp(_, Kernel, _, _), Candidates), Kernels0),
-    sort(Kernels0, Kernels),
+    candidate_kernels(Candidates, Kernels),
     (   Candidates \== [], Strength == "design"
     ->  Outcome = "certified_candidate", CandidateType = "kernel_dependency"
     ;   Candidates \== []
@@ -925,6 +1116,35 @@ r3_verdict(Candidates, Unverified, Stopped, Capped, Strength,
     ->  Outcome = "no_candidate", CandidateType = "measured_resister_thin_grid"
     ;   Outcome = "no_candidate", CandidateType = "measured_resister"
     ).
+
+candidate_kernels(Candidates, Kernels) :-
+    Candidates = [comp(2, _, _)|_],
+    !,
+    findall(Kernel,
+            ( member(Composition, Candidates),
+              composition_candidate_kernel(Composition, Kernel) ),
+            Kernels0),
+    list_to_set(Kernels0, Kernels).
+candidate_kernels(Candidates, Kernels) :-
+    findall(Kernel,
+            ( member(Composition, Candidates),
+              composition_terminal_kernel(Composition, Kernel) ),
+            Kernels0),
+    sort(Kernels0, Kernels).
+
+composition_terminal_kernel(comp(1, Kernel, _, _), Kernel).
+composition_terminal_kernel(comp(2, _, Second), Kernel) :-
+    composition_terminal_kernel(Second, Kernel).
+
+%   candidate_kernels is consumed as the dependency's kernel inventory, not
+%   merely as its terminal target. Depth 2 preserves composition order so the
+%   row names its first application before its second; depth 1 keeps its prior
+%   sorted behavior in candidate_kernels/2.
+composition_candidate_kernel(comp(1, Kernel, _, _), Kernel).
+composition_candidate_kernel(comp(2, First, _), Kernel) :-
+    composition_candidate_kernel(First, Kernel).
+composition_candidate_kernel(comp(2, _, Second), Kernel) :-
+    composition_candidate_kernel(Second, Kernel).
 
 %   source_outcome and target_outcome keep the R1/R2 reading: what each side
 %   answered at the first screen point. For a candidate they are the same
@@ -952,7 +1172,7 @@ nearest_dict(nearest(Composition, MachineTerm, KernelTerm, Relation),
 points_inputs(Points, Inputs) :-
     findall(Input, member(point(Input, _), Points), Inputs).
 
-insufficient_row(machine(Family, Kind), InputField, Started,
+insufficient_row(Depth, machine(Family, Kind), InputField, Started,
                  probe(GridTotal, Probed, Computing, Refused, Errored),
                  Required, Stopped, Row) :-
     elapsed_ms(Started, ElapsedMs),
@@ -964,7 +1184,7 @@ insufficient_row(machine(Family, Kind), InputField, Started,
     ),
     atom_string(Stopped, StoppedString),
     r3_consumer(Consumer),
-    r3_evidence(_{source_outcome: "the machine computed on too few probed \c
+    r3_evidence(Depth, _{source_outcome: "the machine computed on too few probed \c
                                    grid points to screen a composition",
                   elapsed_ms: ElapsedMs,
                   evidence_strength: "grid_limited",
@@ -986,10 +1206,10 @@ insufficient_row(machine(Family, Kind), InputField, Started,
             outcome: Outcome,
             consumer: Consumer}.
 
-no_grid_row(Family, Kind, Schema, Started, Row) :-
+no_grid_row(Depth, Family, Kind, Schema, Started, Row) :-
     elapsed_ms(Started, ElapsedMs),
     r3_consumer(Consumer),
-    r3_evidence(_{source_outcome: "the contract schema carries no authored \c
+    r3_evidence(Depth, _{source_outcome: "the contract schema carries no authored \c
                                    grid",
                   elapsed_ms: ElapsedMs,
                   walk: "no_grid_plan"},
@@ -1003,10 +1223,10 @@ no_grid_row(Family, Kind, Schema, Started, Row) :-
             outcome: "uninstantiated",
             consumer: Consumer}.
 
-no_contract_row(Family, Kind, Started, Row) :-
+no_contract_row(Depth, Family, Kind, Started, Row) :-
     elapsed_ms(Started, ElapsedMs),
     r3_consumer(Consumer),
-    r3_evidence(_{source_outcome: "no automaton_input_contract row names \c
+    r3_evidence(Depth, _{source_outcome: "no automaton_input_contract row names \c
                                    this machine",
                   elapsed_ms: ElapsedMs,
                   walk: "no_contract_row"},
@@ -1047,6 +1267,30 @@ item_machine(Item, Key, machine(Family, Kind)) :-
     get_dict(kind, Sub, KindString),
     atom_string(Family, FamilyString),
     atom_string(Kind, KindString).
+
+item_depth(Item, Depth) :-
+    (   get_dict(depth, Item, Given), integer(Given)
+    ->  Depth = Given
+    ;   Depth = 1
+    ),
+    (   memberchk(Depth, [1, 2])
+    ->  true
+    ;   throw(error(domain_error(r3_depth, Depth),
+                    context(r3_driver:r3_row/2,
+                            'R3 supports composition depths 1 and 2')))
+    ).
+
+% Depth 1 retains the original 20,000-term blow-up guard. Depth 2 is lazy and
+% therefore defaults to uncapped: its 45-minute cumulative budget is the stop
+% authorized by the design. A fixture or operator can still supply a positive
+% max_compositions, and such a row says search_truncated rather than resister.
+item_max_compositions(Item, Depth, Value) :-
+    (   get_dict(max_compositions, Item, Given), number(Given)
+    ->  Value = Given
+    ;   Depth =:= 2
+    ->  Value = 0
+    ;   default(max_compositions, Value)
+    ).
 
 item_number(Item, Key, Value) :-
     default(Key, Default),

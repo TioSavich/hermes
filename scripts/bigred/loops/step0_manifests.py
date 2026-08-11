@@ -31,6 +31,7 @@ import argparse
 import json
 import subprocess
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -39,6 +40,9 @@ R3_DRIVER = ROOT / "scripts/bigred/loops/r3_driver.pl"
 R4_DRIVER = ROOT / "scripts/bigred/loops/r4_driver.pl"
 PATHS = ROOT / "paths.pl"
 HARVEST_ROOT = ROOT / "hermes/app/runtime/experiments/g68_harvest"
+R3_DEPTH1_COLLECTION = (
+    ROOT / ".bigred-collected/2026-08-10-loops-wave3-r3/rows"
+)
 
 PAIR_FILTERS = ("schema_only", "schema_and_archetype")
 
@@ -355,12 +359,117 @@ def emit_r2(arguments) -> int:
     return 0
 
 
-def machine_census() -> list[dict]:
+R3_DEPTH2_ELIGIBLE_TYPES = {
+    "measured_resister",
+    "measured_resister_thin_grid",
+    "insufficient_computed_samples",
+}
+R3_DEPTH2_EXCLUSION_REASONS = {
+    "kernel_dependency": "certified at depth 1",
+    "kernel_dependency_thin_evidence": "certified at depth 1",
+    "machine_never_computed": "unsearchable: machine never computed",
+    "uninstantiated_schema": "unsearchable: schema has no authored grid",
+}
+
+
+def r3_depth2_collection_census(collection: Path) -> dict:
+    """Read the depth-1 rows and account for every depth-2 decision.
+
+    A duplicate machine or an unknown candidate type is a refusal, because
+    either would make absence from the depth-2 manifest ambiguous.
+    """
+    if not collection.is_dir():
+        raise SystemExit(f"R3 depth-1 collection not found: {collection}")
+    rows: dict[str, dict] = {}
+    counts: Counter[str] = Counter()
+    for path in sorted(collection.glob("*.jsonl")):
+        for number, line in enumerate(
+                path.read_text(encoding="utf-8").splitlines(), start=1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as error:
+                raise SystemExit(
+                    f"invalid R3 row at {path}:{number}: {error}"
+                ) from error
+            source = row.get("source") or {}
+            key = f"{source.get('family')}/{source.get('kind')}"
+            if key in rows:
+                raise SystemExit(f"duplicate R3 depth-1 machine row: {key}")
+            candidate_type = row.get("candidate_type")
+            known = (candidate_type in R3_DEPTH2_ELIGIBLE_TYPES
+                     or candidate_type in R3_DEPTH2_EXCLUSION_REASONS)
+            if not known:
+                raise SystemExit(
+                    f"unclassified R3 depth-1 candidate_type for {key}: "
+                    f"{candidate_type!r}"
+                )
+            rows[key] = row
+            counts[candidate_type] += 1
+
+    eligible = {
+        key for key, row in rows.items()
+        if row["candidate_type"] in R3_DEPTH2_ELIGIBLE_TYPES
+    }
+    excluded = {
+        key: R3_DEPTH2_EXCLUSION_REASONS[row["candidate_type"]]
+        for key, row in rows.items() if key not in eligible
+    }
+    return {
+        "collection": collection,
+        "rows": rows,
+        "counts": counts,
+        "eligible": eligible,
+        "excluded": excluded,
+    }
+
+
+def print_r3_depth2_collection_census(census: dict) -> None:
+    counts = census["counts"]
+    resisters = (counts["measured_resister"]
+                 + counts["measured_resister_thin_grid"])
+    insufficient = counts["insufficient_computed_samples"]
+    hits = (counts["kernel_dependency"]
+            + counts["kernel_dependency_thin_evidence"])
+    never = counts["machine_never_computed"]
+    uninstantiated = counts["uninstantiated_schema"]
+    print(f"depth-1 collection rows        : {len(census['rows'])} from "
+          f"{census['collection']}", flush=True)
+    print(f"  eligible resisters          : {resisters} -> searched at depth 2",
+          flush=True)
+    print(f"  eligible insufficient rows  : {insufficient} -> searched at depth 2",
+          flush=True)
+    print(f"  excluded depth-1 hits       : {hits} -> certified at depth 1",
+          flush=True)
+    print(f"  excluded never-computed     : {never} -> unsearchable; machine never "
+          "computed", flush=True)
+    print(f"  excluded uninstantiated     : {uninstantiated} -> unsearchable; schema "
+          "has no authored grid", flush=True)
+    accounted = len(census["eligible"]) + len(census["excluded"])
+    print(f"  accounted                   : {accounted}/{len(census['rows'])}",
+          flush=True)
+
+
+def filter_r3_depth2_machines(machines: list[dict], census: dict) -> list[dict]:
+    """Join the live machine census to the eligible depth-1 row keys."""
+    by_key = {f"{row['family']}/{row['kind']}": row for row in machines}
+    missing = sorted(census["eligible"] - set(by_key))
+    if missing:
+        raise SystemExit(
+            "eligible depth-1 machines missing from the live tree: "
+            + ", ".join(missing)
+        )
+    return [by_key[key] for key in sorted(census["eligible"])]
+
+
+def machine_census(depth: int = 1) -> list[dict]:
     """One row per contracted machine: grid, input leaves, composition space.
 
-    The composition count comes from r3_driver's own enumeration on the first
-    grid point of the machine's schema, so the manifest reports the space the
-    run will actually walk rather than the design's estimate of it.
+    The composition count comes from r3_driver's own authored-language count
+    on the first grid point of the machine's schema, so the manifest reports
+    the space the run will actually walk rather than the design's estimate.
     """
     goal = (
         "r3_driver:default(max_leaves, MaxLeaves), "
@@ -371,7 +480,7 @@ def machine_census() -> list[dict]:
         "  ->  T = instantiated, "
         "      r3_driver:input_leaves(I, MaxLeaves, "
         "                             leaves(Leaves, LeafCount, Others, _)), "
-        "      r3_driver:composition_space(Leaves, 1000000, space(_, C, _)) "
+        f"      r3_driver:composition_count({depth}, Leaves, C) "
         "  ;   T = uninstantiated, P = 0, LeafCount = 0, Others = 0, C = 0 "
         "  ), "
         "  format('~w\\t~w\\t~w\\t~w\\t~w\\t~w\\t~w~n', "
@@ -426,6 +535,31 @@ def measured_machine_cost(collection: Path | None) -> dict[str, int]:
     return costs
 
 
+def measured_r3_machine_cost(collection: Path | None) -> dict[str, int]:
+    """Per-source-machine wall time from the completed R3 depth-1 rows."""
+    costs: dict[str, int] = {}
+    if collection is None or not collection.is_dir():
+        return costs
+    for path in sorted(collection.rglob("*.jsonl")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            source = row.get("source") or {}
+            family = source.get("family")
+            kind = source.get("kind")
+            if not family or not kind:
+                continue
+            key = f"{family}/{kind}"
+            elapsed = int((row.get("evidence") or {}).get("elapsed_ms") or 0)
+            costs[key] = max(costs.get(key, 0), elapsed)
+    return costs
+
+
 def r3_machines_per_task(machine_budget: float) -> tuple[int, int, int]:
     """(machines per task, watchdog seconds, seconds each machine reserves)."""
     watchdog = int(machine_budget) + R3_WATCHDOG_MARGIN_S
@@ -465,15 +599,24 @@ def write_r3_shards(machines, output_dir: Path, per_task: int, costs,
 
 
 def emit_r3(arguments) -> int:
-    """R3's manifest: one item per machine, the depth-1 composition sweep.
+    """R3's manifest: one item per eligible machine at the requested depth.
 
-    R3 needs no pair filter. Its unit is a single machine against the kernel
-    set, so every contracted machine gets an item and every attempted item
-    produces a row — a candidate, a measured resister, or the reason neither
-    could be reached.
+    Depth 1 covers every contracted machine. Depth 2 joins the live census to
+    the depth-1 collection and includes only resisters and insufficient-sample
+    rows; every excluded class is printed with its reason before a manifest can
+    be written.
     """
-    print("== R3 depth-1 kernel re-derivation manifest ==", flush=True)
-    machines = machine_census()
+    depth = 2 if arguments.r3_depth2 else 1
+    print(f"== R3 depth-{depth} kernel re-derivation manifest ==", flush=True)
+    all_machines = machine_census(depth)
+    if depth == 2:
+        collection_census = r3_depth2_collection_census(
+            arguments.r3_depth1_collection
+        )
+        print_r3_depth2_collection_census(collection_census)
+        machines = filter_r3_depth2_machines(all_machines, collection_census)
+    else:
+        machines = all_machines
     gridded = [row for row in machines if row["grid"] == "instantiated"]
     ungridded = [row for row in machines if row["grid"] != "instantiated"]
     spaces = sorted(row["compositions"] for row in gridded)
@@ -482,18 +625,24 @@ def emit_r3(arguments) -> int:
     thin = [row for row in gridded
             if row["points"] < arguments.sample_count + arguments.verify_count]
     truncated = [row for row in gridded
-                 if row["compositions"] > arguments.max_compositions]
+                 if arguments.max_compositions > 0
+                 and row["compositions"] > arguments.max_compositions]
 
-    print(f"contracted machines            : {len(machines)}", flush=True)
+    population_label = "eligible machines" if depth == 2 else "contracted machines"
+    print(f"{population_label:<31}: {len(machines)}", flush=True)
     print(f"  with an authored grid        : {len(gridded)}", flush=True)
     print(f"  without one                  : {len(ungridded)} "
           f"-> uninstantiated(schema)", flush=True)
-    print(f"depth-1 compositions per machine: median {median}, "
+    print(f"depth-{depth} compositions per machine: median {median}, "
           f"max {spaces[-1] if spaces else 0}, total {total_space:,}",
           flush=True)
-    print(f"  above --max-compositions {arguments.max_compositions}: "
-          f"{len(truncated)} machine(s) -> search_truncated, never resister",
-          flush=True)
+    if arguments.max_compositions > 0:
+        print(f"  above --max-compositions {arguments.max_compositions}: "
+              f"{len(truncated)} machine(s) -> search_truncated, never resister",
+              flush=True)
+    else:
+        print("  composition cap             : none; the cumulative machine "
+              "budget dominates", flush=True)
     print(f"grids under the design's {arguments.sample_count}+"
           f"{arguments.verify_count} inputs: {len(thin)} machine(s) "
           f"-> evidence_strength grid_limited", flush=True)
@@ -503,7 +652,7 @@ def emit_r3(arguments) -> int:
     if arguments.machines_per_task:
         per_task = arguments.machines_per_task
     shard_count = max(1, -(-len(machines) // per_task))
-    print(f"\nshard arithmetic from the guards:", flush=True)
+    print("\nshard arithmetic from the guards:", flush=True)
     print(f"  machine budget   {int(arguments.machine_budget_s)}s "
           f"(the design's 45 min)", flush=True)
     print(f"  + watchdog margin {R3_WATCHDOG_MARGIN_S}s "
@@ -520,16 +669,20 @@ def emit_r3(arguments) -> int:
     if arguments.census:
         return 0
 
-    costs = measured_machine_cost(arguments.r1_collection)
+    cost_collection = (arguments.r3_depth1_collection
+                       if depth == 2 else arguments.r1_collection)
+    costs = (measured_r3_machine_cost(cost_collection)
+             if depth == 2 else measured_machine_cost(cost_collection))
     if costs:
         print(f"measured machine costs read    : {len(costs)} machines from "
-              f"{arguments.r1_collection}", flush=True)
+              f"{cost_collection}", flush=True)
     else:
         print(f"measured machine costs read    : none at "
-              f"{arguments.r1_collection}; shards deal in enumeration order",
+              f"{cost_collection}; shards deal in enumeration order",
               flush=True)
 
     settings = {
+        "depth": depth,
         "machine_budget_s": arguments.machine_budget_s,
         "composition_timeout_s": arguments.composition_timeout_s,
         "sample_count": arguments.sample_count,
@@ -539,7 +692,8 @@ def emit_r3(arguments) -> int:
     shards = write_r3_shards(machines, arguments.output_dir, per_task, costs,
                              settings)
     last = len(shards) - 1
-    print(f"\nR3 manifest written under {arguments.output_dir}", flush=True)
+    print(f"\nR3 depth-{depth} manifest written under {arguments.output_dir}",
+          flush=True)
     print(f"  {len(machines)} machines across {len(shards)} shards at "
           f"{per_task}/task, cost-interleaved", flush=True)
     print(f"  sbatch array range: 0-{last}", flush=True)
@@ -773,6 +927,9 @@ def main() -> int:
     parser.add_argument("--r3", action="store_true",
                         help="write R3's depth-1 kernel re-derivation manifest, "
                              "one item per machine")
+    parser.add_argument("--r3-depth2", action="store_true",
+                        help="write R3's depth-2 manifest from the eligible "
+                             "depth-1 collection rows")
     parser.add_argument("--r4", action="store_true",
                         help="write R4's contract-bridge manifest, one item "
                              "per (ordered pair, adapter) the filter admits")
@@ -803,14 +960,22 @@ def main() -> int:
                         help="R3's screen size")
     parser.add_argument("--verify-count", type=int, default=100,
                         help="R3's confirmation size, run before a row writes")
-    parser.add_argument("--max-compositions", type=int, default=20000,
+    parser.add_argument("--max-compositions", type=int, default=None,
                         help="R3's stop against a blown-up space; a machine "
-                             "above it records search_truncated, not resister")
+                             "above it records search_truncated, not resister; "
+                             "default 20000 at depth 1 and uncapped at depth 2")
     parser.add_argument("--r1-collection", type=Path,
                         default=ROOT / ".bigred-collected/2026-08-08-loops-wave1-r1/rows",
                         help="a completed R1 collection, read for measured "
                              "per-pair cost so shards interleave by it")
+    parser.add_argument("--r3-depth1-collection", type=Path,
+                        default=R3_DEPTH1_COLLECTION,
+                        help="completed R3 depth-1 rows used to derive the "
+                             "depth-2 population and measured shard costs")
     arguments = parser.parse_args()
+
+    if arguments.r3 and arguments.r3_depth2:
+        parser.error("choose --r3 or --r3-depth2, not both")
 
     # The three runs carry different defaults and none should inherit
     # another's: R1 keeps every separating input, R2 caps witnesses at 200, and
@@ -819,6 +984,10 @@ def main() -> int:
         if arguments.r4:
             arguments.output_dir = (
                 ROOT / ".bigred-output/2026-08-10-loops-wave4-r4"
+            )
+        elif arguments.r3_depth2:
+            arguments.output_dir = (
+                ROOT / ".bigred-output/2026-08-10-loops-wave3-r3-depth2"
             )
         elif arguments.r3:
             arguments.output_dir = (
@@ -831,7 +1000,9 @@ def main() -> int:
             )
     if arguments.r4:
         return emit_r4(arguments)
-    if arguments.r3:
+    if arguments.r3 or arguments.r3_depth2:
+        if arguments.max_compositions is None:
+            arguments.max_compositions = 0 if arguments.r3_depth2 else 20000
         return emit_r3(arguments)
     if arguments.r2:
         if arguments.pairs_per_task is None:
