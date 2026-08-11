@@ -20,6 +20,30 @@ is `.superpowers/sdd/task-2026-08-10-sidekick-design.md`; the phase-0 report is
 | `train_sidekick.py` | LoRA on the text tower with the mask above. Phase 0 runs it only as the law-zero proof. |
 | `run_lawzero_smoke.slurm` | That proof on `gpu-debug`: steps, checkpoint, resume, adapter confirmed as a file. |
 
+## Wave 2 dataset build
+
+`triples.py --base <phase-1-triples>` copies the executed phase-1 bank byte for
+byte and appends the wave-2 A-recognize, B-repair, and D multi-call pools. This
+path avoids re-executing the phase-1 monitoring-chart pool, whose worker call
+can stall, and preserves the order-dependent teacher cache keys.
+
+`build_dataset.py` now targets A/B/C/D at 25/15/40/20 percent. Its class-C trim
+is controlled separately at C3 960, C1 arithmetic 400, C1 definition 200, C4
+480, and C2 360 for a 6,000-row candidate. The 65 reviewed definitions and 100
+new out-of-scope subjects live in `wave2_pools.py`; definition replies are
+authored there and the teacher writes only their framings. Use the offline plan
+before opening the teacher channel:
+
+```sh
+export PYTHONPATH=scripts/sidekick
+python3 scripts/sidekick/triples.py --base <phase-1-triples> --output <wave2-triples>
+python3 scripts/sidekick/build_dataset.py --offline --plan-only \
+  --triples <wave2-triples> --cache <copied-teacher-cache>
+```
+
+The plan reports the exact class census, effective pool capacity after the
+class-C1 core check, and the teacher calls still missing from the copied cache.
+
 ## Running it
 
 The renderer needs the checkpoint's template and vocabulary, which are not in

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the phase-1 training set: executed calls, narrative framings, gates.
+"""Assemble the wave-2 training set: executed calls, narrative framings, gates.
 
 The tool half comes from `triples.py` and is true by execution. The narrative
 half comes from the 31 B teacher and is admitted only if it passes the framing
@@ -19,6 +19,7 @@ import sys
 import threading
 import time
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Sequence
 
@@ -38,12 +39,68 @@ from hermes.mcp.server import HermesMCPServer  # noqa: E402
 from measure_floors import score_reply  # noqa: E402
 from teacher import Teacher, admissible, framing_prompt, reply_prompt  # noqa: E402
 from triples import HELD_OUT_TOOLS, NUMBER_WORDS, Triple, say_fraction, words  # noqa: E402
+from wave2_pools import (  # noqa: E402
+    BASE_OUT_OF_SCOPE_SCOPES,
+    DEFINITION_PAIRS,
+    NEW_OUT_OF_SCOPE_SCOPES,
+    scope_faults,
+)
 
 MENU_SIZE = 8
 PER_SUBJECT = 4
 SUBJECTS_PER_CALL = 4
 DEFAULT_OUTPUT = RUNTIME / "datasets" / "sidekick-6000.jsonl"
 DEFAULT_PROBE = RUNTIME / "probes" / "probe-v1.jsonl"
+
+
+@dataclass
+class CUnit:
+    identity: str
+    subject: str
+    seed: dict[str, Any]
+    framing_kind: str
+    sub_kind: str
+    reply: str = ""
+    prior: list[dict[str, Any]] = field(default_factory=list)
+    required_menu: list[str] = field(default_factory=list)
+    c1_kind: str = ""
+
+
+def class_targets(rows: int) -> dict[str, int]:
+    """Wave-2 decision mix, with D held at its non-discretionary floor."""
+    target = {
+        "A": round(rows * 0.25),
+        "B": round(rows * 0.15),
+        "C": round(rows * 0.40),
+        "D": round(rows * 0.20),
+    }
+    if sum(target.values()) != rows:
+        target["A"] += rows - sum(target.values())
+    return target
+
+
+def class_c_targets(rows: int) -> dict[str, int]:
+    """Controlled C trim; at C=2400 this is 960/400/200/480/360."""
+    target = {
+        "C3": round(rows * 0.40),
+        "C1_arithmetic": round(rows / 6),
+        "C1_definition": round(rows / 12),
+        "C4": round(rows * 0.20),
+    }
+    target["C2"] = rows - sum(target.values())
+    return target
+
+
+def require_capacity(label: str, target: int, available: int) -> None:
+    """Refuse a trim whose admitted pool cannot meet its exact target."""
+    if available < target:
+        raise RuntimeError(f"{label}: target {target}, available {available}")
+
+
+def require_exact(label: str, target: int, available: int) -> None:
+    """Refuse an output census that differs from its exact target."""
+    if available != target:
+        raise RuntimeError(f"{label}: target {target}, available {available}")
 
 
 
@@ -168,6 +225,15 @@ def grounded_reply(triple: "Triple") -> str:
             return f"Hermes can run {len(result['lessons'])} lessons end to end."
         counts = result.get("counts", {})
         return f"The catalog reports {json.dumps(counts)[:120]}."
+    if kind in {"recognize", "repair_after_abstention"} and isinstance(result, list):
+        names = [
+            words(str(row.get("kind", row.get("candidate_strategy", {}).get("kind", ""))))
+            for row in result[:3] if isinstance(row, dict)
+        ]
+        names = [name for name in names if name]
+        if names:
+            return f"Hermes returns {', '.join(names)} as candidate alignments, not diagnoses of the student."
+        return "Hermes returns candidate alignments for that explanation, not a diagnosis of the student."
     if kind == "discover_then_trace":
         first = triple.calls[0].response.get("result", {})
         expected = (result or {}).get("expected") if isinstance(result, dict) else None
@@ -259,7 +325,13 @@ class Assembler:
 
     # ---- row assembly
 
-    def rows_from(self, triple: Triple, turns: Sequence[str], replies: Sequence[str]) -> list[Row]:
+    def rows_from(
+        self,
+        triple: Triple,
+        turns: Sequence[str],
+        replies: Sequence[str],
+        framing_kind: str,
+    ) -> list[Row]:
         rows: list[Row] = []
         answer_terms = self.answer_terms(triple)
         support = " ".join(
@@ -270,6 +342,11 @@ class Assembler:
             if not ok:
                 self.reject(f"framing: {why}")
                 continue
+            if triple.sub_kind in {"recognize", "repair_after_abstention"}:
+                content = str(triple.narrative_seed.get("student_said", "")).casefold()
+                if content and content in turn.casefold():
+                    self.reject("recognition framing copied the executed action wording")
+                    continue
             if triple.row_class == "D":
                 reply = relay(triple.calls[-1])
             else:
@@ -289,9 +366,10 @@ class Assembler:
                     **triple.provenance,
                     "framing": "teacher_31b",
                     "teacher_model": self.teacher.model,
-                    "reply_source": "template_bound" if triple.row_class == "D" else "teacher_31b",
+                    "reply_source": "template_bound" if triple.row_class == "D" else "grounded_template",
                     "sub_kind": triple.sub_kind,
                     "triple": triple.id,
+                    "framing_kind": framing_kind,
                 },
             ))
         return rows
@@ -353,7 +431,13 @@ def main() -> int:
     parser.add_argument("--reply-deadline", type=int, default=3600)
     parser.add_argument("--reexecute-sample", type=int, default=250)
     parser.add_argument("--offline", action="store_true", help="assemble from the teacher cache without opening the channel")
+    parser.add_argument(
+        "--plan-only", action="store_true",
+        help="with --offline, verify pool arithmetic and report missing teacher units without assembling",
+    )
     arguments = parser.parse_args()
+    if arguments.plan_only and not arguments.offline:
+        parser.error("--plan-only requires --offline")
 
     rng = random.Random(arguments.seed)
     triples = [Triple.from_dict(json.loads(line))
@@ -365,12 +449,8 @@ def main() -> int:
         by_class.setdefault(triple.row_class, []).append(triple)
     print({key: len(value) for key, value in by_class.items()}, flush=True)
 
-    target = {
-        "A": round(arguments.rows * 0.35),
-        "B": round(arguments.rows * 0.20),
-        "C": round(arguments.rows * 0.20),
-        "D": round(arguments.rows * 0.25),
-    }
+    target = class_targets(arguments.rows)
+    c_target = class_c_targets(target["C"])
     chat = GemmaChatFormat()
     server = HermesMCPServer("core", REPO_ROOT)
     teacher = Teacher(arguments.cache, dry_run=arguments.offline)
@@ -378,26 +458,85 @@ def main() -> int:
     started = time.time()
 
     # ---- class C: no triple, but the same teacher and the same gates.
-    known = known_fact_items(target["C"] // 6 + 4, rng)
-    c_units: list[tuple[str, str, dict[str, Any], str]] = []
+    c_rng = random.Random(arguments.seed ^ 0xC240)
+    # Arithmetic validation admitted 128/204 subjects in phase 1. Keep that
+    # measured overage rather than assuming every generated claim is readable.
+    arithmetic_subjects = -(-c_target["C1_arithmetic"] // PER_SUBJECT) * 2 + 4
+    known = known_fact_items(arithmetic_subjects, c_rng)
+    c_units: list[CUnit] = []
     for index, item in enumerate(known):
-        c_units.append((f"c1-{index:04d}", f"the value of {item['spoken']}", item, "known_fact"))
-    scopes = [
-        "a group that will not settle after the launch", "a parent who wants nightly worksheets",
-        "a colleague whose worksheets do the thinking", "a child who finishes in four minutes",
-        "an observation by the principal next week", "running out of time before the share-out",
-        "a student who cried during the quiz", "seating a group of four",
-        "a co-teacher who talks over you", "asking for more planning time",
-        "a family asking for extra practice", "a student who will not work with a partner",
-    ]
+        c_units.append(CUnit(
+            identity=f"c1-{index:04d}", subject=f"the value of {item['spoken']}",
+            seed=item, framing_kind="known_fact", sub_kind="C1",
+            reply=f"{item['spoken'].capitalize()} is {item['truth']}.", c1_kind="arithmetic",
+        ))
+    for index, (term, definition) in enumerate(DEFINITION_PAIRS):
+        c_units.append(CUnit(
+            identity=f"c1d-{index:04d}", subject=f"the mathematical term {term}",
+            seed={"term": term}, framing_kind="known_definition", sub_kind="C1",
+            reply=definition, c1_kind="definition",
+        ))
+    scopes = list(BASE_OUT_OF_SCOPE_SCOPES + NEW_OUT_OF_SCOPE_SCOPES)
+    faults = scope_faults(scopes)
+    if faults:
+        raise SystemExit(f"class-C2 scope names a core operation: {faults[0]}")
     for index, scope in enumerate(scopes):
-        c_units.append((f"c2-{index:04d}", scope, {"situation": scope}, "out_of_scope"))
-    surface_sources = [t for t in by_class.get("A", []) if t.narrative_seed][: target["C"] // 2]
+        c_units.append(CUnit(
+            identity=f"c2-{index:04d}", subject=scope, seed={"situation": scope},
+            framing_kind="out_of_scope", sub_kind="C2",
+        ))
+    surface_pool = [
+        t for t in by_class.get("A", [])
+        if t.narrative_seed and t.sub_kind != "recognize"
+        and "doubl" not in (t.subject + " " + json.dumps(t.narrative_seed)).casefold()
+    ]
+    surface_subjects = min(
+        len(surface_pool), -(-c_target["C3"] // PER_SUBJECT) * 5 // 4
+    )
+    surface_sources = c_rng.sample(surface_pool, surface_subjects)
     for triple in surface_sources:
-        c_units.append((f"c3-{triple.id}", triple.subject, triple.narrative_seed, "surface"))
+        c_units.append(CUnit(
+            identity=f"c3-{triple.id}", subject=triple.subject, seed=triple.narrative_seed,
+            framing_kind="surface", sub_kind="C3",
+        ))
+
+    c4_pool = [
+        t for t in by_class.get("A", [])
+        if t.sub_kind == "trace" and t.calls
+        and isinstance(t.calls[-1].response.get("result"), dict)
+        and t.calls[-1].response["result"].get("expected") is not None
+    ]
+    c4_subjects = min(len(c4_pool), -(-c_target["C4"] // PER_SUBJECT) * 5 // 4)
+    for triple in c_rng.sample(c4_pool, c4_subjects):
+        call = triple.calls[-1]
+        expected = str(call.response["result"]["expected"])
+        strategy = str(call.arguments.get("strategy", "that strategy"))
+        prior = conversation(
+            f"Run {words(strategy)} for me on its worked input.",
+            [call.to_dict()],
+            f"Hermes reports {expected}.",
+        )
+        c_units.append(CUnit(
+            identity=f"c4-{triple.id}", subject="the result already supplied in the preceding turn",
+            seed={"answer": expected}, framing_kind="already_answered", sub_kind="C4",
+            reply=f"It came out to {expected}.", prior=prior, required_menu=["strategy_trace"],
+        ))
+
+    capacity = {
+        "C1_arithmetic": sum(u.c1_kind == "arithmetic" for u in c_units) * PER_SUBJECT,
+        "C1_definition": sum(u.c1_kind == "definition" for u in c_units) * PER_SUBJECT,
+        "C2": sum(u.sub_kind == "C2" for u in c_units) * PER_SUBJECT,
+        "C3": sum(u.sub_kind == "C3" for u in c_units) * PER_SUBJECT,
+        "C4": sum(u.sub_kind == "C4" for u in c_units) * PER_SUBJECT,
+    }
+    print(json.dumps({"wave2_targets": target, "class_c_targets": c_target,
+                      "class_c_subject_capacity": capacity}, sort_keys=True), flush=True)
 
     # ---- the core validates its own class-C1 data, out of process
-    terms = [item["term"] for _, _, item, kind in c_units if kind == "known_fact" and item.get("term")]
+    terms = [
+        unit.seed["term"] for unit in c_units
+        if unit.c1_kind == "arithmetic" and unit.seed.get("term")
+    ]
     validated: dict[str, bool] = {}
     if terms:
         import subprocess
@@ -424,6 +563,7 @@ def main() -> int:
 
     # ---- batch every teacher unit, then run them through the pool.
     units: list[tuple[str, Sequence[tuple[str, str, dict[str, Any]]], str, int]] = []
+    framing_kind_by_id: dict[str, str] = {}
     plan = [
         ("A", by_class.get("A", []), target["A"]),
         ("B", by_class.get("B", []), target["B"]),
@@ -437,33 +577,111 @@ def main() -> int:
     for row_class, pool, wanted in plan:
         if not pool:
             continue
-        narrative_share = 0.75 if row_class == "A" else (0.6 if row_class == "B" else 0.5)
-        for start in range(0, len(pool), SUBJECTS_PER_CALL):
-            group = pool[start : start + SUBJECTS_PER_CALL]
-            kind = "narrative" if rng.random() < narrative_share else (
-                "limit" if row_class == "D" else "direct"
-            )
-            units.append((
-                f"{row_class}:{start}",
-                [(t.id, t.subject, t.narrative_seed) for t in group],
-                kind,
-                per_triple[row_class],
-            ))
-    for start in range(0, len(c_units), SUBJECTS_PER_CALL):
-        group = c_units[start : start + SUBJECTS_PER_CALL]
-        kinds = {unit[3] for unit in group}
-        if len(kinds) > 1:
+        recognition = [
+            triple for triple in pool
+            if triple.sub_kind in {"recognize", "repair_after_abstention"}
+        ]
+        multi_relay = [triple for triple in pool if triple.sub_kind == "multi_call_relay"]
+        ordinary = [
+            triple for triple in pool
+            if triple not in recognition and triple not in multi_relay
+        ]
+        for segment_name, segment in (
+            ("base", ordinary), ("recognize", recognition), ("multi_relay", multi_relay)
+        ):
+            for start in range(0, len(segment), SUBJECTS_PER_CALL):
+                group = segment[start : start + SUBJECTS_PER_CALL]
+                identities = "|".join(t.id for t in group)
+                if segment_name == "recognize":
+                    kind = "recognize"
+                elif segment_name == "multi_relay":
+                    kind = "limit"
+                else:
+                    allowed = (("narrative", "direct") if row_class != "D"
+                               else ("limit", "narrative"))
+                    cached_kind = next(
+                        (candidate for candidate in allowed
+                         if f"framing:{candidate}:{identities}" in teacher.cache), None
+                    )
+                    if cached_kind:
+                        kind = cached_kind
+                    elif row_class == "A":
+                        kind = "narrative"
+                    elif row_class == "D":
+                        kind = "limit"
+                    else:
+                        kind = "narrative" if (start // SUBJECTS_PER_CALL) % 5 < 3 else "direct"
+                recorded_kind = "narrative" if kind == "recognize" else kind
+                for triple in group:
+                    framing_kind_by_id[triple.id] = recorded_kind
+                units.append((
+                    f"{row_class}:{segment_name}:{start}",
+                    [(t.id, t.subject, t.narrative_seed) for t in group],
+                    kind,
+                    5 if any(
+                        triple.sub_kind in {"repair_after_abstention", "multi_call_relay"}
+                        for triple in group
+                    ) else per_triple[row_class],
+                ))
+    for kind in ("known_fact", "known_definition", "out_of_scope", "surface", "already_answered"):
+        kind_units = [unit for unit in c_units if unit.framing_kind == kind]
+        for start in range(0, len(kind_units), SUBJECTS_PER_CALL):
+            group = kind_units[start : start + SUBJECTS_PER_CALL]
             for unit in group:
-                units.append((f"C:{unit[0]}", [(unit[0], unit[1], unit[2])], unit[3], 4))
-            continue
-        units.append((
-            f"C:{start}",
-            [(unit[0], unit[1], unit[2]) for unit in group],
-            group[0][3],
-            4,
-        ))
+                framing_kind_by_id[unit.identity] = kind
+            units.append((
+                f"C:{kind}:{start}",
+                [(unit.identity, unit.subject, unit.seed) for unit in group],
+                kind,
+                PER_SUBJECT,
+            ))
 
-    print(f"{len(units)} teacher batches; {len(teacher.cache)} already cached", flush=True)
+    missing_framing_units = [
+        {"kind": kind, "subjects": [identity for identity, _, _ in group]}
+        for _, group, kind, _ in units
+        if f"framing:{kind}:" + "|".join(identity for identity, _, _ in group) not in teacher.cache
+    ]
+    print(f"{len(units)} teacher framing batches; {len(teacher.cache)} entries already cached; "
+          f"{len(missing_framing_units)} framing calls await the teacher", flush=True)
+    if arguments.plan_only:
+        effective_capacity = dict(capacity)
+        effective_capacity["C1_arithmetic"] = sum(validated.values()) * PER_SUBJECT
+        short = {
+            key: c_target[key] - effective_capacity[key]
+            for key in c_target if effective_capacity[key] < c_target[key]
+        }
+        planned_reply_rows = sum(
+            PER_SUBJECT for unit in c_units if unit.sub_kind in {"C2", "C3"}
+        )
+        planned_reply_calls = -(-planned_reply_rows // 6)
+        plan_summary = {
+            "mode": "offline_plan",
+            "class_census": target,
+            "within_class_census": {
+                "A_recognize": 180,
+                "B_repair_after_abstention": 225,
+                "D_multi_call_relay": 360,
+            },
+            "class_c_subkind_census": c_target,
+            "effective_subject_capacity": effective_capacity,
+            "authored_pools": {
+                "definition_pairs": len(DEFINITION_PAIRS),
+                "base_out_of_scope_scopes": len(BASE_OUT_OF_SCOPE_SCOPES),
+                "new_out_of_scope_scopes": len(NEW_OUT_OF_SCOPE_SCOPES),
+            },
+            "teacher": {
+                "framing_batches_total": len(units),
+                "framing_calls_awaiting": len(missing_framing_units),
+                "c2_c3_reply_rows_planned": planned_reply_rows,
+                "c2_c3_reply_calls_awaiting": planned_reply_calls,
+                "total_calls_awaiting": len(missing_framing_units) + planned_reply_calls,
+            },
+            "short": short,
+        }
+        print("OFFLINE PLAN " + json.dumps(plan_summary, sort_keys=True), flush=True)
+        teacher.close()
+        server.close()
+        return 1 if short else 0
     framings: dict[str, list[str]] = {}
     done = 0
 
@@ -486,50 +704,55 @@ def main() -> int:
         if not turns:
             assembler.reject("no admissible framing was returned")
             continue
-        rows.extend(assembler.rows_from(triple, turns, replies.get(triple.id, [])))
+        rows.extend(assembler.rows_from(
+            triple, turns, replies.get(triple.id, []), framing_kind_by_id.get(triple.id, "")
+        ))
 
     # class C rows, with C1 validated by the symbolic core
     c_rows: list[Row] = []
-    for identity, subject, seed, kind in c_units:
-        turns = framings.get(identity, [])
+    for unit in c_units:
+        turns = framings.get(unit.identity, [])
         for turn in turns:
-            ok, why = admissible(turn)
+            forbidden = [str(unit.seed.get("answer", ""))] if unit.sub_kind == "C4" else []
+            ok, why = admissible(turn, forbidden)
             if not ok:
                 assembler.reject(f"framing: {why}")
                 continue
-            if kind == "known_fact":
+            if unit.c1_kind == "arithmetic":
                 # The core checked these in a child process before assembly; a
                 # claim it could not read, or never reached, is not admitted.
-                if not validated.get(seed.get("term", ""), False):
+                if not validated.get(unit.seed.get("term", ""), False):
                     assembler.reject("C1 claim did not check out against the core")
                     continue
-                reply = f"{seed['spoken'].capitalize()} is {seed['truth']}."
-                sub = "C1"
-            elif kind == "out_of_scope":
-                reply = ""
-                sub = "C2"
-            else:
-                reply = ""
-                sub = "C3"
+            reply = unit.reply
             c_rows.append(Row(
                 id=assembler.identity("C"),
                 row_class="C",
-                menu=assembler.menu([]),
+                menu=assembler.menu(unit.required_menu),
                 user_turn=turn.strip(),
                 calls=[],
                 reply=reply,
+                prior=list(unit.prior),
                 provenance={
-                    "source": f"authored class {sub} subject with a teacher framing",
-                    "row": identity, "executed_at": now(), "worker_sha": assembler.sha,
+                    "source": f"authored class {unit.sub_kind} subject with a teacher framing",
+                    "row": unit.identity, "executed_at": now(), "worker_sha": assembler.sha,
                     "framing": "teacher_31b", "teacher_model": teacher.model,
-                    "reply_source": "template_bound" if sub == "C1" else "teacher_31b",
-                    "sub_kind": sub,
-                    "checked_by": "check_math_claim" if sub == "C1" else "",
+                    "reply_source": "authored" if unit.sub_kind in {"C1", "C4"} else "teacher_31b",
+                    "sub_kind": unit.sub_kind,
+                    "c1_kind": unit.c1_kind,
+                    "framing_kind": framing_kind_by_id.get(unit.identity, ""),
+                    "checked_by": "check_math_claim" if unit.c1_kind == "arithmetic" else "",
                 },
             ))
 
     # C2 and C3 replies come from the teacher, one batch per row group
     pending = [row for row in c_rows if not row.reply]
+    planned_c_reply_rows = sum(
+        PER_SUBJECT for unit in c_units if unit.sub_kind in {"C2", "C3"}
+    )
+    planned_c_reply_calls = -(-planned_c_reply_rows // 6)
+    print(f"class-C2/C3 reply plan: up to {planned_c_reply_rows} rows in "
+          f"{planned_c_reply_calls} teacher calls after framing admission", flush=True)
     done = 0
 
     def c_reply_batch(group: Sequence[Row]) -> list[tuple[str, str]]:
@@ -548,6 +771,12 @@ def main() -> int:
         ]
 
     groups = [pending[start:start + 6] for start in range(0, len(pending), 6)]
+    missing_reply_groups = sum(
+        1 for group in groups
+        if "creply:" + "|".join(row.id for row in group) not in teacher.cache
+    )
+    print(f"class-C2/C3 reply batches: {len(groups)} total; "
+          f"{missing_reply_groups} calls await the teacher", flush=True)
     by_id: dict[str, str] = {}
     pool_executor = ThreadPoolExecutor(max_workers=arguments.workers)
     for found in map_bounded(pool_executor, c_reply_batch, groups, float(arguments.reply_deadline), "class C replies"):
@@ -558,17 +787,68 @@ def main() -> int:
     for row in c_rows:
         if not row.reply:
             row.reply = by_id.get(row.id, "").strip()
-    c_rows = [row for row in c_rows if row.reply.strip()]
+    checked_c_rows: list[Row] = []
+    for row in c_rows:
+        if not row.reply.strip():
+            continue
+        if row.provenance.get("sub_kind") in {"C2", "C3"}:
+            unsupported, _ = score_reply(row.reply, row.user_turn, row.row_class)
+            if unsupported:
+                assembler.reject(f"class-C reply asserts outside the turn: {unsupported[0]}")
+                continue
+        checked_c_rows.append(row)
+    c_rows = checked_c_rows
     rows.extend(c_rows)
 
     # ---- trim to the mix, then gate
     trimmed: list[Row] = []
-    for row_class, wanted in target.items():
+    special_targets = {
+        "A": ("recognize", 180),
+        "B": ("repair_after_abstention", 225),
+        "D": ("multi_call_relay", 360),
+    }
+    for row_class in ("A", "B", "D"):
+        wanted = target[row_class]
         pool = [row for row in rows if row.row_class == row_class]
+        special_kind, special_wanted = special_targets[row_class]
+        special = [row for row in pool if row.provenance.get("sub_kind") == special_kind]
+        ordinary = [row for row in pool if row.provenance.get("sub_kind") != special_kind]
+        rng.shuffle(special)
+        rng.shuffle(ordinary)
+        require_capacity(
+            f"class {row_class} sub-kind {special_kind}", special_wanted, len(special)
+        )
+        ordinary_wanted = wanted - special_wanted
+        require_capacity(f"class {row_class} base", ordinary_wanted, len(ordinary))
+        trimmed.extend(special[:special_wanted])
+        trimmed.extend(ordinary[:ordinary_wanted])
+    c_buckets: dict[str, list[Row]] = {key: [] for key in c_target}
+    for row in (row for row in rows if row.row_class == "C"):
+        sub_kind = str(row.provenance.get("sub_kind", ""))
+        if sub_kind == "C1":
+            key = f"C1_{row.provenance.get('c1_kind', '')}"
+        else:
+            key = sub_kind
+        if key in c_buckets:
+            c_buckets[key].append(row)
+        else:
+            assembler.reject(f"unknown class-C trim bucket {key or '<empty>'}")
+    for key, wanted in c_target.items():
+        pool = c_buckets[key]
         rng.shuffle(pool)
-        if len(pool) < wanted:
-            assembler.reject(f"class {row_class} short by {wanted - len(pool)} rows")
+        require_capacity(f"class C sub-kind {key}", wanted, len(pool))
         trimmed.extend(pool[:wanted])
+    candidate_census = {
+        "classes": {key: sum(row.row_class == key for row in trimmed) for key in ("A", "B", "C", "D")},
+        "within_class": {
+            sub_kind: sum(row.provenance.get("sub_kind") == sub_kind for row in trimmed)
+            for sub_kind, _ in special_targets.values()
+        },
+        "class_c": {
+            key: min(len(c_buckets[key]), wanted) for key, wanted in c_target.items()
+        },
+    }
+    print("trimmed candidate census " + json.dumps(candidate_census, sort_keys=True), flush=True)
     rng.shuffle(trimmed)
 
     held_out = None
@@ -594,8 +874,44 @@ def main() -> int:
     if over_length:
         kept = [row for row in kept if row.id not in set(over_length)]
 
+    # Gates and the length ceiling can only remove rows. Recheck the exact
+    # decision mix before writing so a successful process cannot leave an
+    # off-mix artifact.
+    for row_class, (sub_kind, wanted) in special_targets.items():
+        require_exact(
+            f"class {row_class} sub-kind {sub_kind} after gates",
+            wanted,
+            sum(
+                row.row_class == row_class and row.provenance.get("sub_kind") == sub_kind
+                for row in kept
+            ),
+        )
+    for key, wanted in c_target.items():
+        require_exact(
+            f"class C sub-kind {key} after gates",
+            wanted,
+            sum(
+                row.row_class == "C" and (
+                    (row.provenance.get("sub_kind") == "C1"
+                     and key == f"C1_{row.provenance.get('c1_kind', '')}")
+                    or row.provenance.get("sub_kind") == key
+                )
+                for row in kept
+            ),
+        )
+    for row_class, wanted in target.items():
+        require_exact(
+            f"class {row_class} after gates",
+            wanted,
+            sum(row.row_class == row_class for row in kept),
+        )
+
     path = write(kept, arguments.output)
     summary = report.summary()
+    framing_kinds_complete = all(
+        row.provenance.get("framing_kind") in {"narrative", "direct"}
+        for row in kept if row.row_class == "A"
+    )
     summary.update({
         "written": len(kept),
         "dropped_by_gate": len(failed),
@@ -605,18 +921,42 @@ def main() -> int:
             "cache": str(arguments.cache), "channel_failures": len(teacher.failures),
             "first_failures": teacher.failures[:5],
         },
+        "teacher_generation_plan": {
+            "framing_batches_total": len(units),
+            "framing_calls_awaiting": len(missing_framing_units),
+            "c2_c3_reply_rows_planned": planned_c_reply_rows,
+            "c2_c3_reply_calls_planned": planned_c_reply_calls,
+            "c2_c3_reply_calls_awaiting_after_framings": missing_reply_groups,
+        },
+        "class_c_subject_capacity": capacity,
         "rejections": assembler.rejections,
         "worker_stalls_during_reexecution": holder.stalls,
         "class_counts_written": {
             row_class: sum(1 for row in kept if row.row_class == row_class)
             for row_class in ("A", "B", "C", "D")
         },
-        "narrative_share_class_a": round(sum(
-            1 for row in kept if row.row_class == "A" and "narrative" in str(row.provenance.get("kind", "narrative"))
-        ) / max(1, sum(1 for row in kept if row.row_class == "A")), 3),
+        "wave2_subkind_counts_written": {
+            sub_kind: sum(row.provenance.get("sub_kind") == sub_kind for row in kept)
+            for sub_kind in ("recognize", "repair_after_abstention", "multi_call_relay")
+        },
+        "class_c_counts_written": {
+            key: sum(
+                1 for row in kept if row.row_class == "C" and (
+                    (row.provenance.get("sub_kind") == "C1"
+                     and key == f"C1_{row.provenance.get('c1_kind', '')}")
+                    or (row.provenance.get("sub_kind") == key)
+                )
+            ) for key in c_target
+        },
+        "framing_kind_recorded_class_a": framing_kinds_complete,
         "path": str(path), "dataset_sha": dataset_sha(path), "worker_sha": worker_sha(),
         "elapsed_s": round(time.time() - started, 1),
     })
+    if framing_kinds_complete:
+        summary["narrative_share_class_a"] = round(sum(
+            1 for row in kept
+            if row.row_class == "A" and row.provenance.get("framing_kind") == "narrative"
+        ) / max(1, sum(1 for row in kept if row.row_class == "A")), 3)
     (path.parent / f"{path.stem}-gates.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2), flush=True)
     teacher.close()

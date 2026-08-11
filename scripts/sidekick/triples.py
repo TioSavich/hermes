@@ -50,6 +50,7 @@ HELD_OUT_TOOLS = frozenset({
 PAYLOAD_CAP_TOKENS = 1200
 CONTRACTS = "knowledge/strategies/automaton_input_contracts.pl"
 GRAPH = "docs/research/assets/automata/full_graph.json"
+RECOGNIZER = "hermes/strategy_recognizer.pl"
 
 
 @dataclass
@@ -437,6 +438,61 @@ class TripleBank:
             )
             made += 1
 
+    def recognition_candidates(self) -> list[tuple[dict[str, Any], str, str]]:
+        """Build controlled candidates, leaving admission to live execution.
+
+        `generate_strategy_variant/4` in the recognizer obtains its canonical
+        variant from these same execution-observed action labels. Rebuilding
+        that bounded form from the returned trace avoids a private Prolog call:
+        the only admitted training call is still the public core operation.
+        """
+        candidates: list[tuple[dict[str, Any], str, str]] = []
+        contracts = [row for row in self.server._strategy_contracts if row["example"]]
+        for contract in contracts:
+            trace = self.run(
+                "strategy_trace", {"strategy": contract["name"], "input": contract["example"]}
+            )
+            if trace is None or trace.response_class != "result":
+                continue
+            local_actions: list[str] = []
+            for step in trace.response.get("result", {}).get("steps", []):
+                label = str(step.get("label", ""))
+                local = label.split("(", 1)[0]
+                if local:
+                    local_actions.append(local)
+            if len(local_actions) < 2:
+                continue
+            rendered = [words(action) for action in local_actions]
+            variants = (
+                ". ".join(rendered) + ".",
+                "First I " + ". Then I ".join(rendered) + ".",
+                "The student said, I " + "; then I ".join(rendered) + ".",
+            )
+            for content in variants:
+                candidates.append((contract, content, contract["source"]))
+        self.rng.shuffle(candidates)
+        return candidates
+
+    def recognitions(self, wanted: int) -> Iterator[Triple]:
+        """A-recognize: keep only candidate phrasings the live worker reaches."""
+        made = 0
+        for contract, content, source in self.recognition_candidates():
+            if made >= wanted:
+                return
+            call = self.run("strategy_recognize", {"content": content})
+            if call is None or call.response_class != "result":
+                continue
+            yield Triple(
+                id=self.identity("A"), row_class="A", sub_kind="recognize",
+                calls=[call], subject=f"a student explaining {content!r}",
+                provenance=self.provenance(
+                    RECOGNIZER, source, harvest="worker_result_required",
+                    source_strategy=contract["name"],
+                ),
+                narrative_seed={"student_said": content},
+            )
+            made += 1
+
     # ------------------------------------------------------------- class B
 
     def discovery_chains(self, wanted: int) -> Iterator[Triple]:
@@ -545,6 +601,31 @@ class TripleBank:
                 subject=f"the {words(kind)} machine and what it shares with others",
                 provenance=self.provenance(GRAPH, f"{family}/{kind}", chain="machine then borrows"),
                 narrative_seed={"family": family, "kind": words(kind)},
+            )
+            made += 1
+
+    def repair_chains(self, wanted: int) -> Iterator[Triple]:
+        """B-repair: a broad abstention followed by a result-bearing reformulation."""
+        made = 0
+        for contract, content, source in self.recognition_candidates():
+            if made >= wanted:
+                return
+            first = self.run("strategy_recognize", {"content": "I worked with the numbers."})
+            if first is None or first.response_class == "result":
+                continue
+            second = self.run("strategy_recognize", {"content": content})
+            if second is None or second.response_class != "result":
+                continue
+            yield Triple(
+                id=self.identity("B"), row_class="B", sub_kind="repair_after_abstention",
+                calls=[first, second],
+                subject=f"a student's fuller explanation after a broad description returned nothing",
+                provenance=self.provenance(
+                    RECOGNIZER, source,
+                    chain="broad strategy recognition then evidence-bearing reformulation",
+                    source_strategy=contract["name"],
+                ),
+                narrative_seed={"student_said": content, "first_attempt": "I worked with the numbers."},
             )
             made += 1
 
@@ -722,6 +803,60 @@ class TripleBank:
                     narrative_seed={"lesson": code, "section": words(section)},
                 )
 
+    def multi_call_limits(self, wanted: int) -> Iterator[Triple]:
+        """D multi-call relay: two honest limits, with the last one relayed."""
+        made = 0
+        for grade in (9, 10, 11, 12):
+            for unit in range(1, 7):
+                for lesson in (8, 15, 22):
+                    if made >= wanted:
+                        return
+                    code = f"IM-G{grade}-U{unit}-L{lesson}"
+                    first = self.run("monitoring_chart", {"code": code})
+                    second = self.run("lesson_deformation_chart", {"code": code})
+                    if first is None or second is None:
+                        continue
+                    if first.response_class == "result" or second.response_class == "result":
+                        continue
+                    yield Triple(
+                        id=self.identity("D"), row_class="D", sub_kind="multi_call_relay",
+                        calls=[first, second], subject=f"planning unavailable lesson {code}",
+                        provenance=self.provenance(
+                            "worker refusal vocabulary", f"multi-limit:{code}",
+                            chain="monitoring chart then deformation chart",
+                        ),
+                        narrative_seed={"lesson": code},
+                    )
+                    made += 1
+
+        invented = (
+            "spiral_addition_wheel", "rainbow_subtraction_arc", "staircase_product_method",
+            "mirror_division_path", "triangle_sum_ladder", "bead_exchange_shortcut",
+            "clock_face_fraction_fold", "diagonal_decimal_shift", "zigzag_ratio_table",
+            "corner_counting_rule", "balance_beam_percent", "nested_grouping_route",
+            "arrow_chain_addition", "folded_number_line", "paired_column_sweep",
+            "circle_partition_jump", "reverse_array_walk", "tally_bundle_switch",
+        )
+        for name in invented:
+            if made >= wanted:
+                return
+            first = self.run("strategy_trace", {"strategy": name, "input": {"a": 63, "b": 29}})
+            second = self.run("strategy_trace", {"strategy": name, "input": {"a": 18, "b": 7}})
+            if first is None or second is None:
+                continue
+            if first.response_class == "result" or second.response_class == "result":
+                continue
+            yield Triple(
+                id=self.identity("D"), row_class="D", sub_kind="multi_call_relay",
+                calls=[first, second], subject=f"the unregistered {words(name)} method",
+                provenance=self.provenance(
+                    "worker refusal vocabulary", f"multi-limit:{name}",
+                    chain="strategy trace retried with a simpler input",
+                ),
+                narrative_seed={"method": words(name)},
+            )
+            made += 1
+
     # ------------------------------------------------------------- helpers
 
     _codes: list[str] | None = None
@@ -766,13 +901,45 @@ def build(server: HermesMCPServer, chat: GemmaChatFormat, targets: dict[str, int
         ("B chart", bank.chart_chains, targets["B"] * 20 // 100),
         ("B lookup", bank.lookup_chains, targets["B"] * 10 // 100),
         ("D limits", bank.limits, targets["D"]),
+        # Wave 2 pools append after every phase-1 pool. Existing triple ids and
+        # teacher cache groupings therefore retain their order-dependent keys.
+        ("A recognize", bank.recognitions, 60),
+        ("B repair", bank.repair_chains, 60),
+        ("D multi relay", bank.multi_call_limits, 90),
     ]
     triples: list[Triple] = []
     for label, maker, wanted in plan:
+        if label == "A recognize":
+            # The appended wave has its own seed stream, so rebuilding the old
+            # pools or using --base produces the same appended candidates.
+            bank.rng = random.Random(seed ^ 0x52D2)
         produced = list(maker(wanted))
         print(f"  {label:14s} {len(produced):5d} of {wanted:5d} wanted", flush=True)
         triples.extend(produced)
     return triples, bank
+
+
+def append_wave2(
+    server: HermesMCPServer, chat: GemmaChatFormat, base: list[Triple], seed: int
+) -> tuple[list[Triple], TripleBank]:
+    """Append only the wave-2 pools to an already executed phase-1 bank."""
+    bank = TripleBank(server, chat, seed)
+    bank.rng = random.Random(seed ^ 0x52D2)
+    numeric_ids = [
+        int(triple.id.rsplit("-", 1)[-1]) for triple in base
+        if triple.id.rsplit("-", 1)[-1].isdigit()
+    ]
+    bank.counter = max(numeric_ids, default=0)
+    additions: list[Triple] = []
+    for label, maker, wanted in (
+        ("A recognize", bank.recognitions, 60),
+        ("B repair", bank.repair_chains, 60),
+        ("D multi relay", bank.multi_call_limits, 90),
+    ):
+        produced = list(maker(wanted))
+        print(f"  {label:14s} {len(produced):5d} of {wanted:5d} wanted", flush=True)
+        additions.extend(produced)
+    return [*base, *additions], bank
 
 
 def main() -> int:
@@ -786,14 +953,26 @@ def main() -> int:
     parser.add_argument("--b", type=int, default=400)
     parser.add_argument("--d", type=int, default=500)
     parser.add_argument("--seed", type=int, default=20260810)
+    parser.add_argument(
+        "--base", type=Path,
+        help="append wave-2 pools to this executed phase-1 triple file instead of rebuilding it",
+    )
     arguments = parser.parse_args()
 
     chat = GemmaChatFormat()
     server = HermesMCPServer("core", REPO_ROOT)
     try:
-        triples, bank = build(
-            server, chat, {"A": arguments.a, "B": arguments.b, "D": arguments.d}, arguments.seed
-        )
+        if arguments.base:
+            base = [
+                Triple.from_dict(json.loads(line))
+                for line in arguments.base.read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            ]
+            triples, bank = append_wave2(server, chat, base, arguments.seed)
+        else:
+            triples, bank = build(
+                server, chat, {"A": arguments.a, "B": arguments.b, "D": arguments.d}, arguments.seed
+            )
     finally:
         server.close()
     arguments.output.parent.mkdir(parents=True, exist_ok=True)

@@ -223,9 +223,22 @@ def framing_prompt(kind: str, subject: str, seed: dict[str, Any], count: int) ->
             "Each turn asks a small arithmetic or vocabulary question a teacher would expect an "
             "immediate answer to, with no classroom story attached."
         ),
+        "known_definition": (
+            "Each turn asks what the supplied term means or how it is used in mathematics. "
+            "Keep the request short and do not supply the definition in the question."
+        ),
         "out_of_scope": (
             "Each turn asks for help with something entirely outside mathematics content — "
             "classroom management, a colleague, a parent, timing, or the teacher's own workload."
+        ),
+        "already_answered": (
+            "The preceding conversation already supplied the result. Each turn asks only for that "
+            "same result to be repeated or stated more plainly, without introducing a new question."
+        ),
+        "recognize": (
+            "Each turn describes what a student actually did in ordinary classroom language and "
+            "asks what recorded strategy it may align with. Translate the supplied action wording; "
+            "do not copy that wording or any underscored name into the turn."
         ),
     }
     return (

@@ -88,18 +88,32 @@ ORDINALS = {"half": 2, "third": 3, "quarter": 4, "fourth": 4, "fifth": 5, "sixth
             "seventh": 7, "eighth": 8, "ninth": 9, "tenth": 10, "twelfth": 12}
 
 
+def fraction_denominator(word: str) -> int | None:
+    """Return the denominator named by a singular or plural fraction word."""
+    if word in ORDINALS:
+        return ORDINALS[word]
+    if word == "halves":
+        return 2
+    if word.endswith("s") and word[:-1] in ORDINALS:
+        return ORDINALS[word[:-1]]
+    return None
+
+
 def expand_number_words(text: str) -> str:
-    """Add digit forms for numbers a turn spells out.
+    """Add digit and slash forms for quantities a turn spells out.
 
     A teacher writes "fifty-two take away twenty-seven"; a reply writes
     "52 - 27". Without this the reply's digits read as assertions nobody
-    made, and the confabulation count inflates on wording alone.
+    made. Likewise, "one third" supports a reply's "1/3", but it does not
+    support any other fraction.
     """
     words = re.findall(r"[a-z]+", text.casefold())
     found: set[int] = set()
+    fractions: set[str] = set()
     index = 0
     while index < len(words):
         word = words[index]
+        value: int | None = None
         if word in TENS:
             value = TENS[word]
             if index + 1 < len(words) and words[index + 1] in UNITS and UNITS[words[index + 1]] < 10:
@@ -114,8 +128,13 @@ def expand_number_words(text: str) -> str:
             found.add(value)
         elif word in ORDINALS:
             found.add(ORDINALS[word])
+        if value is not None and index + 1 < len(words):
+            denominator = fraction_denominator(words[index + 1])
+            if denominator is not None:
+                fractions.add(f"{value}/{denominator}")
         index += 1
-    return text + " " + " ".join(str(value) for value in sorted(found))
+    additions = [*(str(value) for value in sorted(found)), *sorted(fractions)]
+    return text + " " + " ".join(additions)
 
 
 def normalize(text: str) -> str:
@@ -418,16 +437,56 @@ def summarize_cut(attempts: list[Attempt], arm: str, cut: str) -> dict[str, Any]
 
 
 THRESHOLDS = {
-    "formulation_hit": {"floor_point": 0.256, "must_exceed": 0.411, "target": 0.55,
-                        "basis": "untuned upper 95% Wilson bound, probe-v0 offered arm"},
-    "refusal_relay": {"floor_point": 0.600, "must_exceed": 0.754, "target": 0.85,
-                      "basis": "untuned upper 95% Wilson bound, probe-v0 offered arm"},
-    "confabulation_limit": {"floor_point": 0.190, "must_not_exceed": 0.190,
-                            "basis": "untuned point estimate; falsifier 4 is disqualifying"},
-    "spurious_call": {"tripwire": 0.161,
-                      "basis": "untuned upper 95% Wilson bound; class C returns to 40% if crossed"},
-    "evidence_yield": {"floor_offered": 0.200, "floor_mandated": 0.220,
-                       "basis": "untuned probe-v0, call_when_needed x formulation_hit"},
+    "implicit": {
+        "evidence_yield": {
+            "floor_point": 0.157,
+            "must_exceed": 0.280,
+            "standing": "decisive",
+            "basis": "probe-v1 offered arm, 8/51; upper 95% Wilson bound",
+        },
+        "formulation_hit": {
+            "floor_point": 0.400,
+            "must_exceed": 0.613,
+            "standing": "decisive",
+            "basis": "probe-v1 offered arm, 8/20; upper 95% Wilson bound",
+        },
+    },
+    "limit": {
+        "refusal_relay": {
+            "floor_point": 0.600,
+            "must_exceed": 0.754,
+            "standing": "decisive",
+            "basis": "Amendment B ratchet; the published 0.754 bar is not lowered",
+        },
+        "confabulation": {
+            "floor_point": 0.146,
+            "must_not_exceed": 0.146,
+            "standing": "disqualifying",
+            "basis": "probe-v1 offered arm, 6/41; tuned point estimate may not exceed it",
+        },
+    },
+    "no_call": {
+        "spurious_call": {
+            "floor_point": 0.000,
+            "tripwire": 0.133,
+            "standing": "decisive",
+            "basis": "probe-v1 offered arm, 0/25; upper 95% Wilson bound",
+        },
+    },
+    "explicit": {
+        "evidence_yield": {
+            "floor_point": 0.500,
+            "must_exceed": 0.701,
+            "standing": "advisory",
+            "basis": "probe-v1 offered arm, 10/20; upper 95% Wilson bound",
+        },
+        "formulation_hit": {
+            "floor_point": 0.625,
+            "must_exceed": 0.815,
+            "standing": "advisory",
+            "basis": "probe-v1 offered arm, 10/16; upper 95% Wilson bound",
+        },
+    },
 }
 
 
@@ -436,40 +495,47 @@ def judge(cuts: dict[str, dict[str, Any]]) -> dict[str, Any]:
     verdicts: dict[str, Any] = {}
     for cut in ("explicit", "implicit"):
         body = cuts.get(cut) or {}
+        cut_thresholds = THRESHOLDS[cut]
         hit = (body.get("formulation_hit") or {}).get("rate")
         if hit is not None:
             verdicts[f"formulation_hit[{cut}]"] = {
                 "measured": hit,
-                "must_exceed": THRESHOLDS["formulation_hit"]["must_exceed"],
-                "passes": hit > THRESHOLDS["formulation_hit"]["must_exceed"],
+                "must_exceed": cut_thresholds["formulation_hit"]["must_exceed"],
+                "passes": hit > cut_thresholds["formulation_hit"]["must_exceed"],
+                "standing": cut_thresholds["formulation_hit"]["standing"],
             }
         if body.get("evidence_yield") is not None:
             verdicts[f"evidence_yield[{cut}]"] = {
                 "measured": body["evidence_yield"],
-                "untuned_floor_offered": THRESHOLDS["evidence_yield"]["floor_offered"],
+                "untuned_floor_offered": cut_thresholds["evidence_yield"]["floor_point"],
+                "must_exceed": cut_thresholds["evidence_yield"]["must_exceed"],
+                "passes": body["evidence_yield"] > cut_thresholds["evidence_yield"]["must_exceed"],
+                "standing": cut_thresholds["evidence_yield"]["standing"],
             }
     limit = cuts.get("limit") or {}
     relay = (limit.get("refusal_relay") or {}).get("rate")
     if relay is not None:
         verdicts["refusal_relay"] = {
             "measured": relay,
-            "must_exceed": THRESHOLDS["refusal_relay"]["must_exceed"],
-            "passes": relay > THRESHOLDS["refusal_relay"]["must_exceed"],
+            "must_exceed": THRESHOLDS["limit"]["refusal_relay"]["must_exceed"],
+            "passes": relay > THRESHOLDS["limit"]["refusal_relay"]["must_exceed"],
+            "standing": THRESHOLDS["limit"]["refusal_relay"]["standing"],
         }
     confab = (limit.get("confabulation") or {}).get("rate")
     if confab is not None:
         verdicts["confabulation[limit]"] = {
             "measured": confab,
-            "must_not_exceed": THRESHOLDS["confabulation_limit"]["must_not_exceed"],
-            "passes": confab <= THRESHOLDS["confabulation_limit"]["must_not_exceed"],
+            "must_not_exceed": THRESHOLDS["limit"]["confabulation"]["must_not_exceed"],
+            "passes": confab <= THRESHOLDS["limit"]["confabulation"]["must_not_exceed"],
             "disqualifying": True,
         }
     spurious = (cuts.get("no_call") or {}).get("spurious_call", {}).get("rate")
     if spurious is not None:
         verdicts["spurious_call"] = {
             "measured": spurious,
-            "tripwire": THRESHOLDS["spurious_call"]["tripwire"],
-            "tripped": spurious > THRESHOLDS["spurious_call"]["tripwire"],
+            "tripwire": THRESHOLDS["no_call"]["spurious_call"]["tripwire"],
+            "tripped": spurious > THRESHOLDS["no_call"]["spurious_call"]["tripwire"],
+            "standing": THRESHOLDS["no_call"]["spurious_call"]["standing"],
         }
     return verdicts
 
