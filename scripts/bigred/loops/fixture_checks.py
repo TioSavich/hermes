@@ -22,6 +22,7 @@ from pathlib import Path
 from contextlib import redirect_stdout
 from unittest.mock import Mock, patch
 
+import admission_docket as docket
 import run_loop_array as array_runner
 import step0_manifests as step0
 
@@ -2258,6 +2259,211 @@ def check_r4_docket_fixture() -> None:
            f"{blanks}/{len(emitted)} emitted rows carry an empty field")
 
 
+# --------------------------------------------------------------------------
+# 29. R2 admission docket — residual timeout partial evidence.
+# --------------------------------------------------------------------------
+
+def check_r2_docket_partial_evidence() -> None:
+    print("\n[29] R2 docket — timeout partial evidence and grid coverage",
+          flush=True)
+
+    def row(key: str, source: tuple[str, str], target: tuple[str, str],
+            walked: int, planned: int, l2: bool,
+            validity: str) -> dict:
+        return {
+            "run": "r2",
+            "key": key,
+            "item_key": key.split("#", 1)[0],
+            "source": {"family": source[0], "kind": source[1]},
+            "target": {"family": target[0], "kind": target[1]},
+            "candidate_type": "pair_budget_timeout",
+            "outcome": "timeout",
+            "input": {
+                "schema": '{"a":"integer","b":"integer"}',
+                "bounds": "bounds(a_b,100)",
+                "points": planned,
+            },
+            "evidence": {
+                "walk": "pair_budget",
+                "walked_points": walked,
+                "source_outcome": "refused(domain)",
+                "target_outcome": f"result(1,1,{validity})",
+                "released_count": 1,
+                "released_validity_counts": {validity: 1},
+                "released_witnesses": [
+                    {"input": {"a": 1, "b": 1}, "validity": validity}
+                ],
+                "witnesses_truncated": False,
+                "lens_flags": {
+                    "l1": False,
+                    "l2": l2,
+                    "l3": l2,
+                    "strong_released_points": 1 if l2 else 0,
+                },
+            },
+        }
+
+    def watchdog_row(source: tuple[str, str], target: tuple[str, str],
+                     *, sibling: bool = False) -> dict:
+        if sibling:
+            source, target = target, source
+            candidate_type = "sibling_timeout"
+            outcome = "not_walked"
+            walk = "not_walked"
+            reason = "sibling_watchdog_timeout"
+            source_outcome = target_outcome = "not_walked"
+        else:
+            candidate_type = "watchdog_kill"
+            outcome = "timeout"
+            walk = "watchdog_timeout"
+            reason = "watchdog_timeout"
+            source_outcome = target_outcome = (
+                "killed by the watchdog after 1320s"
+            )
+        direction = f"{source[0]}/{source[1]}->{target[0]}/{target[1]}"
+        return {
+            "run": "r2",
+            "key": f"watchdog#{direction}",
+            "item_key": "watchdog",
+            "source": {"family": source[0], "kind": source[1]},
+            "target": {"family": target[0], "kind": target[1]},
+            "candidate_type": candidate_type,
+            "outcome": outcome,
+            "input": {"schema": None, "bounds": None, "points": 0},
+            "evidence": {
+                "walk": walk,
+                "reason": reason,
+                "walked_points": 0,
+                "source_outcome": source_outcome,
+                "target_outcome": target_outcome,
+                "released_count": 0,
+                "released_validity_counts": {},
+                "released_witnesses": [],
+                "witnesses_truncated": False,
+                "lens_flags": {"l1": False, "l2": False, "l3": False},
+            },
+        }
+
+    l2_pair = (
+        ("addition", "fixture_partial_source"),
+        ("division", "fixture_partial_receiver"),
+    )
+    other_pair = (
+        ("geometry", "fixture_fragment_source"),
+        ("measurement", "fixture_fragment_receiver"),
+    )
+    watchdog_pair = (
+        ("multiplication", "fixture_watchdog_source"),
+        ("subtraction", "fixture_watchdog_receiver"),
+    )
+    rows = [
+        row("l2#forward", l2_pair[0], l2_pair[1], 90, 100, True,
+            "contextually_correct"),
+        row("l2#reverse", l2_pair[1], l2_pair[0], 90, 100, False,
+            "incorrect"),
+        row("other#forward", other_pair[0], other_pair[1], 5, 100, False,
+            "correct"),
+        row("other#reverse", other_pair[1], other_pair[0], 5, 100, False,
+            "incorrect"),
+        watchdog_row(watchdog_pair[0], watchdog_pair[1]),
+        watchdog_row(watchdog_pair[0], watchdog_pair[1], sibling=True),
+    ]
+
+    with tempfile.TemporaryDirectory() as workspace:
+        collection = Path(workspace) / "rows"
+        collection.mkdir()
+        (collection / "r2_rows_0000.jsonl").write_text(
+            "\n".join(json.dumps(value, sort_keys=True) for value in rows)
+            + "\n",
+            encoding="utf-8",
+        )
+        entries = docket.build_r2_partial_evidence(
+            docket.read_rows(collection)
+        )
+        summary = docket.partial_evidence_summary(entries)
+
+    measured_pairs = {
+        (
+            docket.machine_name(entry["pair"]["first"]),
+            docket.machine_name(entry["pair"]["second"]),
+        )
+        for entry in entries
+    }
+    record("the partial-evidence section has one entry per timeout pair",
+           len(entries) == 3 and len(measured_pairs) == 3,
+           f"{len(entries)} entries for {len(measured_pairs)} pairs")
+    record("L2-flagged timeout evidence is ordered first",
+           [entry["l2_flagged"] for entry in entries]
+           == [True, False, False]
+           and [entry["rank"] for entry in entries] == [1, 2, 3],
+           f"order={[entry['priority'] for entry in entries]}")
+
+    coverage = [entry["grid_coverage"] for entry in entries]
+    print("      coverage: " + "; ".join(
+        f"{item['points_walked']}/{item['planned_grid_points']} "
+        f"({item['coverage_percent']}%)" for item in coverage
+    ), flush=True)
+    record("grid coverage keeps measured numerators and denominators",
+           coverage[0]["points_walked"] == 90
+           and coverage[0]["planned_grid_points"] == 100
+           and coverage[0]["coverage_ratio"] == 0.9
+           and coverage[1]["points_walked"] == 5
+           and coverage[1]["planned_grid_points"] == 100
+           and coverage[1]["coverage_ratio"] == 0.05,
+           f"ratios={[item['coverage_ratio'] for item in coverage]}")
+
+    watchdog = next(
+        entry for entry in entries
+        if entry["coverage_band"] == "denominator_unavailable"
+    )
+    watchdog_coverage = watchdog["grid_coverage"]
+    record("watchdog sentinels do not fabricate a zero-percent grid walk",
+           watchdog_coverage["points_walked"] == 0
+           and watchdog_coverage["planned_grid_points"] is None
+           and watchdog_coverage["coverage_ratio"] is None
+           and watchdog_coverage["coverage_percent"] is None
+           and watchdog["coverage_band"] == "denominator_unavailable"
+           and bool(watchdog_coverage["limit"])
+           and [
+               (direction["outcome"], direction["walk"])
+               for direction in watchdog["directions"]
+           ] == [
+               ("timeout", "watchdog_timeout"),
+               ("not_walked", "not_walked"),
+           ],
+           f"coverage={watchdog_coverage}; "
+           f"directions={[(direction['outcome'], direction['walk']) for direction in watchdog['directions']]}")
+
+    expected_distribution = {
+        "complete": 0,
+        "90_to_under_100_percent": 1,
+        "50_to_under_90_percent": 0,
+        "over_0_to_under_50_percent": 1,
+        "zero_percent": 0,
+        "denominator_unavailable": 1,
+    }
+    record("the partial-evidence summary counts the constructed collection",
+           summary["entry_count"] == 3
+           and summary["l2_flagged_entry_count"] == 1
+           and summary["l2_flagged_timeout_row_count"] == 1
+           and summary["coverage_ratio_available_entries"] == 2
+           and summary["coverage_distribution"] == expected_distribution,
+           f"summary={summary}")
+
+    retained = entries[0]["directions"][0]["retained_point_outcomes"]
+    record("the section retains measured per-point outcomes and lens flags",
+           bool(retained)
+           and retained[0]["validity"] == "contextually_correct"
+           and any(direction["lens_flags"].get("l2") is True
+                   for direction in entries[0]["directions"]),
+           f"point outcomes={retained}; "
+           f"l2 rows={entries[0]['l2_flagged_timeout_rows']}")
+    blanks = sum(entry.get("question_preservation") == "" for entry in entries)
+    record("partial-evidence verdict fields remain blank",
+           blanks == len(entries),
+           f"{blanks}/{len(entries)} entries carry an empty field")
+
+
 def main() -> int:
     print("Big Red loop substrate — offline fixture checks", flush=True)
     print(f"repo: {ROOT}", flush=True)
@@ -2274,7 +2480,8 @@ def main() -> int:
                   check_r3_depth2_eligibility,
                   check_r4_bridge_hit, check_r4_warrant_refusal,
                   check_r4_misses, check_r4_budget_guard, check_r4_library,
-                  check_r4_docket_fixture):
+                  check_r4_docket_fixture,
+                  check_r2_docket_partial_evidence):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip

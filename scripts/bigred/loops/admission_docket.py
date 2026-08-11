@@ -30,6 +30,9 @@ DEFAULT_R1_ROWS = (
 DEFAULT_R2_ROWS = (
     ROOT / ".bigred-collected/2026-08-08-loops-wave2-r2/rows"
 )
+DEFAULT_R2_BACKFILL_ROWS = (
+    ROOT / ".bigred-collected/2026-08-10-loops-wave2-r2-backfill/rows"
+)
 DEFAULT_OUTPUT_DIR = ROOT / "docs/research/internal"
 DEFAULT_BACKFILL_DIR = (
     ROOT / ".bigred-output/2026-08-09-loops-wave2-r2-backfill"
@@ -355,6 +358,198 @@ def build_r2_docket(r2_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return docket
 
 
+def partial_direction(row: dict[str, Any]) -> dict[str, Any]:
+    """Retain one directed row's measured partial-walk evidence."""
+    evidence = row.get("evidence") or {}
+    witnesses = list(evidence.get("released_witnesses") or [])
+    return {
+        "source": row.get("source"),
+        "target": row.get("target"),
+        "outcome": row.get("outcome"),
+        "candidate_type": row.get("candidate_type"),
+        "walk": evidence.get("walk"),
+        "reason": evidence.get("reason"),
+        "outcomes_so_far": {
+            "source": evidence.get("source_outcome"),
+            "target": evidence.get("target_outcome"),
+            "released_validity_counts": (
+                evidence.get("released_validity_counts") or {}
+            ),
+        },
+        "released_count": int(evidence.get("released_count") or 0),
+        "lens_flags": evidence.get("lens_flags") or {},
+        "retained_point_outcomes": witnesses,
+        "sample_point_outcomes": witness_sample(witnesses),
+        "point_outcomes_truncated": bool(evidence.get("witnesses_truncated")),
+        "source_row": {
+            "key": row.get("key"),
+            "item_key": row.get("item_key"),
+            "file": row.get("_collection_file"),
+            "line": row.get("_collection_line"),
+        },
+    }
+
+
+def pair_grid_coverage(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Recover a pair's shared walk numerator and planned denominator."""
+    walked_values = sorted({
+        value
+        for row in rows
+        for value in [(row.get("evidence") or {}).get("walked_points")]
+        if isinstance(value, int) and not isinstance(value, bool) and value >= 0
+    })
+    planned_values = sorted({
+        value
+        for row in rows
+        for value in [(row.get("input") or {}).get("points")]
+        if isinstance(value, int) and not isinstance(value, bool) and value > 0
+    })
+    limits: list[str] = []
+    walked = walked_values[0] if len(walked_values) == 1 else None
+    planned = planned_values[0] if len(planned_values) == 1 else None
+    if not walked_values:
+        limits.append("points walked are not recoverable from these rows")
+    elif len(walked_values) > 1:
+        limits.append(
+            "directed rows carry different points-walked values; no shared "
+            "numerator is reported"
+        )
+    if not planned_values:
+        limits.append(
+            "planned grid size is not recoverable from these rows; coverage "
+            "ratio is unavailable"
+        )
+    elif len(planned_values) > 1:
+        limits.append(
+            "directed rows carry different planned grid sizes; no shared "
+            "denominator is reported"
+        )
+
+    ratio = None
+    percent = None
+    if walked is not None and planned is not None:
+        ratio = round(walked / planned, 6)
+        percent = round(100 * walked / planned, 2)
+    return {
+        "points_walked": walked,
+        "planned_grid_points": planned,
+        "coverage_ratio": ratio,
+        "coverage_percent": percent,
+        "observed_points_walked_values": walked_values,
+        "observed_planned_grid_values": planned_values,
+        "limit": "; ".join(limits),
+    }
+
+
+def partial_coverage_band(coverage: dict[str, Any]) -> str:
+    percent = coverage.get("coverage_percent")
+    if percent is None:
+        return "denominator_unavailable"
+    if percent >= 100:
+        return "complete"
+    if percent >= 90:
+        return "90_to_under_100_percent"
+    if percent >= 50:
+        return "50_to_under_90_percent"
+    if percent > 0:
+        return "over_0_to_under_50_percent"
+    return "zero_percent"
+
+
+def build_r2_partial_evidence(
+    rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Group residual timeout evidence into one entry per unordered pair."""
+    pairs: defaultdict[Pair, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        source = machine(row, "source")
+        target = machine(row, "target")
+        if source is None or target is None:
+            continue
+        pairs[canonical_pair(source, target)].append(row)
+
+    entries = []
+    for pair, pair_rows in pairs.items():
+        timeout_rows = [
+            row for row in pair_rows if row.get("outcome") == "timeout"
+        ]
+        if not timeout_rows:
+            continue
+        directions = sorted(
+            (partial_direction(row) for row in pair_rows),
+            key=lambda row: (
+                machine_name(row.get("source") or {}),
+                machine_name(row.get("target") or {}),
+            ),
+        )
+        coverage = pair_grid_coverage(pair_rows)
+        l2_timeout_rows = sum(
+            ((row.get("evidence") or {}).get("lens_flags") or {}).get("l2")
+            is True
+            for row in timeout_rows
+        )
+        entries.append({
+            "rank": 0,
+            "priority": "L2" if l2_timeout_rows else "other",
+            "l2_flagged": bool(l2_timeout_rows),
+            "l2_flagged_timeout_rows": l2_timeout_rows,
+            "pair": {
+                "first": {"family": pair[0][0], "kind": pair[0][1]},
+                "second": {"family": pair[1][0], "kind": pair[1][1]},
+            },
+            "timeout_row_count": len(timeout_rows),
+            "grid_coverage": coverage,
+            "coverage_band": partial_coverage_band(coverage),
+            "directions": directions,
+            "question_preservation": "",
+        })
+
+    entries.sort(key=lambda entry: (
+        not entry["l2_flagged"],
+        -float(
+            entry["grid_coverage"]["coverage_ratio"]
+            if entry["grid_coverage"]["coverage_ratio"] is not None
+            else -1
+        ),
+        machine_name(entry["pair"]["first"]),
+        machine_name(entry["pair"]["second"]),
+    ))
+    for rank, entry in enumerate(entries, start=1):
+        entry["rank"] = rank
+    return entries
+
+
+def partial_evidence_summary(
+    entries: list[dict[str, Any]],
+) -> dict[str, Any]:
+    distribution = Counter(entry["coverage_band"] for entry in entries)
+    return {
+        "entry_count": len(entries),
+        "timeout_row_count": sum(
+            entry["timeout_row_count"] for entry in entries
+        ),
+        "l2_flagged_entry_count": sum(entry["l2_flagged"] for entry in entries),
+        "l2_flagged_timeout_row_count": sum(
+            entry["l2_flagged_timeout_rows"] for entry in entries
+        ),
+        "coverage_ratio_available_entries": sum(
+            entry["grid_coverage"]["coverage_ratio"] is not None
+            for entry in entries
+        ),
+        "coverage_distribution": {
+            name: distribution[name]
+            for name in (
+                "complete",
+                "90_to_under_100_percent",
+                "50_to_under_90_percent",
+                "over_0_to_under_50_percent",
+                "zero_percent",
+                "denominator_unavailable",
+            )
+        },
+    }
+
+
 def action_automaton_pairs() -> dict[str, list[dict[str, str]]]:
     """Read the live action_automaton_pair/4 registry through its Prolog API."""
     goal = (
@@ -610,6 +805,8 @@ def render_markdown(payload: dict[str, Any]) -> str:
     accounting = payload["accounting"]
     cross_check = payload["count_cross_check"]
     r2_docket = payload["r2_docket"]
+    partial_evidence = payload["r2_timeout_partial_evidence"]
+    partial_summary = payload["r2_timeout_partial_evidence_summary"]
     r1_docket = payload["r1_docket"]
     vpv = payload["vpv_prime_candidates"]
     admitted_vpv = [row for row in vpv if not row["below_evidence_floor"]]
@@ -664,6 +861,76 @@ def render_markdown(payload: dict[str, Any]) -> str:
     for item in accounting["backfill_pairs"]:
         lines.append(
             f"- {machine_name(item['source'])} | {machine_name(item['target'])}"
+        )
+
+    coverage_distribution = partial_summary["coverage_distribution"]
+    lines.extend([
+        "",
+        "## R2 timeout partial evidence",
+        "",
+        f"Residual timeout pairs: {partial_summary['entry_count']}. "
+        f"L2-flagged pair entries: "
+        f"{partial_summary['l2_flagged_entry_count']}; L2-flagged timeout "
+        f"rows: {partial_summary['l2_flagged_timeout_row_count']}. L2 entries "
+        "come first. Question preservation remains blank.",
+        "",
+        "Grid coverage records the shared points walked over input.points "
+        "when both values are recoverable. Coverage ratios are available for "
+        f"{partial_summary['coverage_ratio_available_entries']} entries. "
+        "Distribution: " + "; ".join(
+            f"{name} {count}"
+            for name, count in coverage_distribution.items()
+            if count
+        ) + ".",
+        "",
+        "Retained point outcomes are released-witness input/validity records. "
+        "The JSON keeps every retained record; the Markdown samples at most "
+        "three per direction. released_validity_counts carries the exact "
+        "partial-walk aggregate even when witness retention is capped.",
+        "",
+        "| Rank | Priority | Pair | Grid coverage | Directional outcomes so "
+        "far | Lens flags | Point-outcome samples | Question preservation |",
+        "|---:|---|---|---|---|---|---|---|",
+    ])
+    for entry in partial_evidence:
+        direction_outcomes = [
+            {
+                "source": direction["source"],
+                "target": direction["target"],
+                "outcome": direction["outcome"],
+                "walk": direction["walk"],
+                "outcomes_so_far": direction["outcomes_so_far"],
+                "released_count": direction["released_count"],
+            }
+            for direction in entry["directions"]
+        ]
+        lens_flags = [
+            {
+                "source": direction["source"],
+                "target": direction["target"],
+                "lens_flags": direction["lens_flags"],
+            }
+            for direction in entry["directions"]
+        ]
+        point_samples = [
+            {
+                "source": direction["source"],
+                "target": direction["target"],
+                "sample": direction["sample_point_outcomes"],
+                "truncated": direction["point_outcomes_truncated"],
+            }
+            for direction in entry["directions"]
+        ]
+        pair_name = (
+            f"{machine_name(entry['pair']['first'])} and "
+            f"{machine_name(entry['pair']['second'])}"
+        )
+        lines.append(
+            f"| {entry['rank']} | {entry['priority']} | {pair_name} | "
+            f"{markdown_cell(entry['grid_coverage'])} | "
+            f"{markdown_cell(direction_outcomes)} | "
+            f"{markdown_cell(lens_flags)} | "
+            f"{markdown_cell(point_samples)} |  |"
         )
 
     lines.extend([
@@ -788,6 +1055,9 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "nonempty release.",
         "- The collected R2 witness lists are capped at 200. The JSON retains "
         "every collected witness; the Markdown shows at most three.",
+        "- A timeout partial-evidence coverage ratio is omitted when the row "
+        "does not retain a positive planned grid size. The entry names that "
+        "limit and does not invent a denominator.",
         "- L3 records action-alphabet evidence only until the R3 overlay exists.",
         "- The finite grids support candidate review. They do not prove behavior "
         "outside the authored grids.",
@@ -845,6 +1115,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--r1-rows", type=Path, default=DEFAULT_R1_ROWS)
     parser.add_argument("--r2-rows", type=Path, default=DEFAULT_R2_ROWS)
+    parser.add_argument(
+        "--r2-backfill-rows", type=Path, default=DEFAULT_R2_BACKFILL_ROWS,
+        help="R2 backfill rows that carry residual timeout partial walks",
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument(
         "--backfill-output-dir", type=Path, default=DEFAULT_BACKFILL_DIR
@@ -857,6 +1131,7 @@ def main() -> int:
 
     r1_rows = read_rows(arguments.r1_rows)
     r2_rows = read_rows(arguments.r2_rows)
+    r2_backfill_rows = read_rows(arguments.r2_backfill_rows)
     try:
         accounting = close_r2_accounting(r1_rows, r2_rows)
     except AccountingError as error:
@@ -880,6 +1155,8 @@ def main() -> int:
     print(f"pair budget                 : {arguments.pair_budget_s:g} s", flush=True)
 
     r2_docket = build_r2_docket(r2_rows)
+    partial_evidence = build_r2_partial_evidence(r2_backfill_rows)
+    partial_summary = partial_evidence_summary(partial_evidence)
     r1_docket = build_r1_docket(r1_rows)
     vpv_prime, unsupported = build_vpv_prime(r1_rows, r2_rows)
     cross_check = count_cross_check(r1_docket, r2_docket, r2_rows)
@@ -897,6 +1174,7 @@ def main() -> int:
         "source_directories": {
             "r1": str(arguments.r1_rows),
             "r2": str(arguments.r2_rows),
+            "r2_backfill": str(arguments.r2_backfill_rows),
         },
         "ceremony_rules": {
             "automatic_admission": False,
@@ -912,6 +1190,8 @@ def main() -> int:
         },
         "count_cross_check": cross_check,
         "r2_docket": r2_docket,
+        "r2_timeout_partial_evidence_summary": partial_summary,
+        "r2_timeout_partial_evidence": partial_evidence,
         "r1_class_counts": {
             name: measured_classes[name] for name in class_names
         },
@@ -935,6 +1215,22 @@ def main() -> int:
     markdown_path.write_text(render_markdown(payload), encoding="utf-8")
 
     print(f"\nR2 docket rows             : {len(r2_docket)}", flush=True)
+    print(
+        "R2 timeout partial pairs   : "
+        f"{partial_summary['entry_count']}",
+        flush=True,
+    )
+    print(
+        "R2 timeout L2 rows/pairs   : "
+        f"{partial_summary['l2_flagged_timeout_row_count']}/"
+        f"{partial_summary['l2_flagged_entry_count']}",
+        flush=True,
+    )
+    print(
+        "R2 timeout coverage        : "
+        f"{compact_json(partial_summary['coverage_distribution'])}",
+        flush=True,
+    )
     print(f"R1 equalizer rows          : {len(r1_docket)}", flush=True)
     print("\n== R1 class table ==", flush=True)
     print("class | count", flush=True)
