@@ -18,13 +18,28 @@ for candidate in (str(ROOT), str(SIDEKICK)):
 
 from build_dataset import (  # noqa: E402
     CLASS_C_ADMISSION_RATE_FLOOR,
+    POST_GATE_REFILL_ITERATION_CAP,
     discounted_capacity,
     planned_framing_slots,
+    refill_after_gates,
     require_capacity,
     require_exact,
     subjects_for_discounted_target,
 )
+from dataset import Row  # noqa: E402
 from measure_floors import score_reply  # noqa: E402
+
+
+def synthetic_recognize(row_id: str) -> Row:
+    return Row(
+        id=row_id,
+        row_class="A",
+        menu=[],
+        user_turn="synthetic recognize turn",
+        calls=[],
+        reply="synthetic reply",
+        provenance={"source": "synthetic", "sub_kind": "recognize"},
+    )
 
 
 def main() -> int:
@@ -59,6 +74,7 @@ def main() -> int:
         raise AssertionError("a post-gate sub-kind shortfall did not fail hard")
 
     assert CLASS_C_ADMISSION_RATE_FLOOR == 0.65
+    assert POST_GATE_REFILL_ITERATION_CAP == 5
     assert discounted_capacity(615) == 399
     assert discounted_capacity(616) == 400
     assert subjects_for_discounted_target(400) == 154
@@ -77,6 +93,58 @@ def main() -> int:
     slots, sources = planned_framing_slots(slot_units, slot_cache)
     assert slots == {"cached-one": 2, "cached-a": 1, "cached-b": 3, "uncached": 4}
     assert sources == {"cached": 6, "requested": 4}
+
+    selected = synthetic_recognize("selected-gate-drop")
+    replacement = synthetic_recognize("surplus-replacement")
+    gated_ids: list[str] = []
+
+    def synthetic_gate(additions: list[Row]) -> list[Row]:
+        gated_ids.extend(row.id for row in additions)
+        return [row for row in additions if row.id != selected.id]
+
+    exact_trim = [selected]
+    post_gate_kept = synthetic_gate(exact_trim)
+    restored, restored_summary = refill_after_gates(
+        post_gate_kept,
+        [replacement],
+        {"A:recognize": 1},
+        lambda row: "A:recognize",
+        synthetic_gate,
+    )
+    require_exact(
+        "class A sub-kind recognize after gates",
+        1,
+        sum(row.provenance.get("sub_kind") == "recognize" for row in restored),
+    )
+    assert [row.id for row in restored] == ["surplus-replacement"]
+    assert gated_ids == ["selected-gate-drop", "surplus-replacement"]
+    assert restored_summary["short_after_refill"] == {}
+    print(
+        "PASS post-gate refill restores an exact recognize bucket from ordered surplus "
+        "after the selected row is gate-dropped"
+    )
+
+    insufficient, insufficient_summary = refill_after_gates(
+        post_gate_kept,
+        [],
+        {"A:recognize": 1},
+        lambda row: "A:recognize",
+        lambda additions: additions,
+    )
+    assert insufficient_summary["short_after_refill"] == {"A:recognize": 1}
+    try:
+        require_exact(
+            "class A sub-kind recognize after gates",
+            1,
+            sum(row.provenance.get("sub_kind") == "recognize" for row in insufficient),
+        )
+    except RuntimeError as failure:
+        assert str(failure) == (
+            "class A sub-kind recognize after gates: target 1, available 0"
+        )
+        print(f"PASS insufficient post-gate surplus fails hard: {failure}")
+    else:
+        raise AssertionError("insufficient post-gate surplus did not fail hard")
 
     print(
         "PASS sidekick wave 2 contracts: spelled fractions support only their slash forms; "

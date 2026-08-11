@@ -22,7 +22,7 @@ import time
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any, Callable, Sequence
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parents[1]
@@ -57,6 +57,7 @@ CLASS_C_ADMISSION_RATE_FLOOR = 0.65
 C1_ARITHMETIC_POOL_GROWTH = 16
 DEFAULT_OUTPUT = RUNTIME / "datasets" / "sidekick-6000.jsonl"
 DEFAULT_PROBE = RUNTIME / "probes" / "probe-v1.jsonl"
+POST_GATE_REFILL_ITERATION_CAP = 5
 
 
 @dataclass
@@ -107,6 +108,84 @@ def require_exact(label: str, target: int, available: int) -> None:
     """Refuse an output census that differs from its exact target."""
     if available != target:
         raise RuntimeError(f"{label}: target {target}, available {available}")
+
+
+def refill_after_gates(
+    kept: Sequence[Row],
+    surplus: Sequence[Row],
+    bucket_targets: dict[str, int],
+    bucket_for: Callable[[Row], str],
+    admit: Callable[[list[Row]], list[Row]],
+    *,
+    iteration_cap: int = POST_GATE_REFILL_ITERATION_CAP,
+) -> tuple[list[Row], dict[str, Any]]:
+    """Top up short buckets from their untrimmed surplus, with a hard bound.
+
+    `admit` applies the dataset gates and token ceiling to one new batch. Rows
+    already in `kept` never pass through it. Surplus order is significant: the
+    caller supplies rows in the order established by its seeded bucket shuffles.
+    """
+    if iteration_cap < 1:
+        raise ValueError("post-gate refill iteration cap must be positive")
+
+    accepted = list(kept)
+    surplus_by_bucket = {key: [] for key in bucket_targets}
+    for row in surplus:
+        key = bucket_for(row)
+        if key in surplus_by_bucket:
+            surplus_by_bucket[key].append(row)
+
+    rounds: list[dict[str, Any]] = []
+    for iteration in range(1, iteration_cap + 1):
+        counts = {
+            key: sum(bucket_for(row) == key for row in accepted)
+            for key in bucket_targets
+        }
+        additions: list[Row] = []
+        drawn: dict[str, int] = {}
+        for key, target in bucket_targets.items():
+            shortfall = max(0, target - counts[key])
+            if not shortfall:
+                continue
+            pool = surplus_by_bucket[key]
+            take = min(shortfall, len(pool))
+            if take:
+                additions.extend(pool[:take])
+                del pool[:take]
+                drawn[key] = take
+        if not additions:
+            break
+
+        admitted = list(admit(additions))
+        addition_ids = {row.id for row in additions}
+        if any(row.id not in addition_ids for row in admitted):
+            raise ValueError("post-gate refill admitted a row outside its addition batch")
+        accepted.extend(admitted)
+        rounds.append({
+            "iteration": iteration,
+            "drawn": drawn,
+            "admitted": {
+                key: sum(bucket_for(row) == key for row in admitted)
+                for key in drawn
+            },
+        })
+
+    final_counts = {
+        key: sum(bucket_for(row) == key for row in accepted)
+        for key in bucket_targets
+    }
+    return accepted, {
+        "iteration_cap": iteration_cap,
+        "rounds": rounds,
+        "short_after_refill": {
+            key: target - final_counts[key]
+            for key, target in bucket_targets.items()
+            if final_counts[key] < target
+        },
+        "surplus_remaining": {
+            key: len(pool) for key, pool in surplus_by_bucket.items()
+        },
+    }
 
 
 def discounted_capacity(raw_slots: int) -> int:
@@ -872,6 +951,7 @@ def main() -> int:
 
     # ---- trim to the mix, then gate
     trimmed: list[Row] = []
+    surplus: list[Row] = []
     special_targets = {
         "A": ("recognize", 180),
         "B": ("repair_after_abstention", 225),
@@ -892,6 +972,8 @@ def main() -> int:
         require_capacity(f"class {row_class} base", ordinary_wanted, len(ordinary))
         trimmed.extend(special[:special_wanted])
         trimmed.extend(ordinary[:ordinary_wanted])
+        surplus.extend(special[special_wanted:])
+        surplus.extend(ordinary[ordinary_wanted:])
     c_buckets: dict[str, list[Row]] = {key: [] for key in c_target}
     for row in (row for row in rows if row.row_class == "C"):
         sub_kind = str(row.provenance.get("sub_kind", ""))
@@ -908,6 +990,7 @@ def main() -> int:
         rng.shuffle(pool)
         require_capacity(f"class C sub-kind {key}", wanted, len(pool))
         trimmed.extend(pool[:wanted])
+        surplus.extend(pool[wanted:])
     candidate_census = {
         "classes": {key: sum(row.row_class == key for row in trimmed) for key in ("A", "B", "C", "D")},
         "within_class": {
@@ -925,28 +1008,70 @@ def main() -> int:
     if arguments.probe.is_file():
         held_out = {row.id: row.user_turn for row in read_rows(arguments.probe)}
     holder = WorkerHolder(lambda: HermesMCPServer("core", REPO_ROOT))
-    report = run_gates(trimmed, server=server, chat=chat, overlap=OverlapGate(), tools={
-        tool["name"]: tool for tool in server._public_tools
-    }, held_out=held_out, held_out_label=arguments.probe.name, holder=holder,
-       reexecute_sample=arguments.reexecute_sample)
-    for row in trimmed:
-        row.gates = report.per_row.get(row.id, {})
-    failed = {failure["id"] for failure in report.failures}
-    kept = [row for row in trimmed if row.id not in failed]
+    overlap_gate = OverlapGate()
+    tools_by_name = {tool["name"]: tool for tool in server._public_tools}
 
-    over_length = []
-    for row in list(kept):
-        rendered = chat.render(row.messages(), [
-            tool for tool in server._public_tools if tool["name"] in row.menu
-        ])
-        if len(rendered.ids) > 4096:
-            over_length.append(row.id)
-    if over_length:
-        kept = [row for row in kept if row.id not in set(over_length)]
+    def gate_batch(batch: list[Row]) -> tuple[list[Row], Any, set[str], list[str]]:
+        batch_report = run_gates(
+            batch, server=server, chat=chat, overlap=overlap_gate, tools=tools_by_name,
+            held_out=held_out, held_out_label=arguments.probe.name, holder=holder,
+            reexecute_sample=arguments.reexecute_sample,
+        )
+        for row in batch:
+            row.gates = batch_report.per_row.get(row.id, {})
+        batch_failed = {failure["id"] for failure in batch_report.failures}
+        batch_kept = [row for row in batch if row.id not in batch_failed]
+        batch_over_length = []
+        for row in batch_kept:
+            rendered = chat.render(row.messages(), [
+                tool for tool in server._public_tools if tool["name"] in row.menu
+            ])
+            if len(rendered.ids) > 4096:
+                batch_over_length.append(row.id)
+        if batch_over_length:
+            over_length_ids = set(batch_over_length)
+            batch_kept = [row for row in batch_kept if row.id not in over_length_ids]
+        return batch_kept, batch_report, batch_failed, batch_over_length
 
-    # Gates and the length ceiling can only remove rows. Recheck the exact
-    # decision mix before writing so a successful process cannot leave an
-    # off-mix artifact.
+    kept, report, failed, over_length = gate_batch(trimmed)
+
+    def refill_bucket(row: Row) -> str:
+        if row.row_class == "C":
+            sub_kind = str(row.provenance.get("sub_kind", ""))
+            if sub_kind == "C1":
+                return f"C:C1_{row.provenance.get('c1_kind', '')}"
+            return f"C:{sub_kind}"
+        special_kind, _ = special_targets[row.row_class]
+        if row.provenance.get("sub_kind") == special_kind:
+            return f"{row.row_class}:{special_kind}"
+        return f"{row.row_class}:base"
+
+    refill_targets: dict[str, int] = {}
+    for row_class, (sub_kind, wanted) in special_targets.items():
+        refill_targets[f"{row_class}:{sub_kind}"] = wanted
+        refill_targets[f"{row_class}:base"] = target[row_class] - wanted
+    for key, wanted in c_target.items():
+        refill_targets[f"C:{key}"] = wanted
+
+    refill_reports = []
+    refill_failed: list[str] = []
+    refill_over_length: list[str] = []
+
+    def admit_refill(additions: list[Row]) -> list[Row]:
+        admitted, addition_report, addition_failed, addition_over_length = gate_batch(additions)
+        refill_reports.append(addition_report)
+        refill_failed.extend(sorted(addition_failed))
+        refill_over_length.extend(addition_over_length)
+        return admitted
+
+    kept, refill_summary = refill_after_gates(
+        kept, surplus, refill_targets, refill_bucket, admit_refill
+    )
+    if refill_reports:
+        rng.shuffle(kept)
+
+    # Recheck the exact decision mix after the bounded refill so a successful
+    # process cannot leave an off-mix artifact.
     for row_class, (sub_kind, wanted) in special_targets.items():
         require_exact(
             f"class {row_class} sub-kind {sub_kind} after gates",
@@ -984,8 +1109,14 @@ def main() -> int:
     )
     summary.update({
         "written": len(kept),
-        "dropped_by_gate": len(failed),
-        "dropped_over_4096": len(over_length),
+        "dropped_by_gate": len(failed) + len(refill_failed),
+        "dropped_over_4096": len(over_length) + len(refill_over_length),
+        "post_gate_refill": {
+            **refill_summary,
+            "gate_batches": [batch_report.summary() for batch_report in refill_reports],
+            "dropped_by_gate": len(refill_failed),
+            "dropped_over_4096": len(refill_over_length),
+        },
         "teacher": {
             "model": teacher.model, "calls": teacher.calls, "usage": teacher.usage,
             "cache": str(arguments.cache), "channel_failures": len(teacher.failures),

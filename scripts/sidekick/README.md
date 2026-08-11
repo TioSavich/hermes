@@ -47,6 +47,11 @@ floor. Cached batches contribute the turns they actually hold; uncached batches
 contribute the turns their prompts request. The report fails if any discounted
 class-C bucket misses its fixed target, before a teacher channel is opened.
 
+After the exact trim, the builder runs the dataset gates and 4,096-token
+ceiling. If either check drops a row, a bounded five-round refill draws only
+from unselected rows in the same seeded bucket and applies the same checks to
+those additions. The final exact-census checks still refuse any short bucket.
+
 ## Running it
 
 The renderer needs the checkpoint's template and vocabulary, which are not in
