@@ -23,6 +23,8 @@ from contextlib import redirect_stdout
 from unittest.mock import Mock, patch
 
 import admission_docket as docket
+import build_kernel_dependency_overlay as kernel_overlay
+import recompute_r2_kernel_lens as kernel_lens
 import run_loop_array as array_runner
 import step0_manifests as step0
 
@@ -2464,6 +2466,111 @@ def check_r2_docket_partial_evidence() -> None:
            f"{blanks}/{len(entries)} entries carry an empty field")
 
 
+# --------------------------------------------------------------------------
+# 33. The ceremony-admitted kernel store and bounded R2 lens recompute.
+# --------------------------------------------------------------------------
+
+def check_kernel_overlay_and_recompute() -> None:
+    print("\n[33] kernel overlay — exact rows and bounded R2 recompute",
+          flush=True)
+    rows = kernel_overlay.verify_store()
+    machines = [
+        f"{row['machine']['family']}/{row['machine']['kind']}" for row in rows
+    ]
+    record("the kernel overlay parses with exactly the two ruled machines",
+           len(rows) == 2 and machines == [
+               "counting/recursive_place_value_inscription",
+               "counting/inscribe_cardinality",
+           ],
+           f"rows={len(rows)} machines={machines}")
+    mua_types = {row["mua_type"] for row in rows}
+    record("mua_type round-trips through the Prolog store",
+           mua_types == {kernel_overlay.MUA_TYPE},
+           f"mua_type={sorted(mua_types)}")
+
+    def fixture_row(
+        source: str,
+        target: str,
+        *,
+        source_family: str = "counting",
+        target_family: str = "counting",
+    ) -> dict:
+        return {
+            "key": f"fixture:{source}->{target}",
+            "source": {"family": source_family, "kind": source},
+            "target": {"family": target_family, "kind": target},
+            "outcome": "certified_candidate",
+            "candidate_type": "crisis_release",
+            "candidate_lens": "l1",
+            "evidence": {
+                "lens_flags": {
+                    "l1": True,
+                    "l2": False,
+                    "l3": False,
+                    "receiver_is_registered_deformation": False,
+                    "strong_released_points": 1,
+                    "clean_released_points": 1,
+                    "l3_kernel_half": "unavailable fixture",
+                }
+            },
+        }
+
+    fixture = [
+        fixture_row("compare_ones_digits_only", "place_value_comparison"),
+        fixture_row(
+            "omit_highest_place_regrouping",
+            "recursive_place_value_inscription",
+        ),
+        fixture_row(
+            "spatial_extent_as_cardinality",
+            "compare_cardinalities_one_to_one",
+        ),
+    ]
+    result = kernel_lens.recompute(fixture, rows)
+    flips = [
+        (item["source"], item["target"]) for item in result["l3_flips"]
+    ]
+    record("the synthetic recompute flips exactly the pre-registered row",
+           flips == [kernel_lens.EXPECTED_FLIP],
+           f"counting_rows={result['counting_rows_examined']} flips={flips}")
+    indexed = {
+        (kernel_lens.machine_name(item["source"]),
+         kernel_lens.machine_name(item["target"])): item
+        for item in result["rows"]
+    }
+    flip_row = indexed[kernel_lens.EXPECTED_FLIP]
+    negatives = [
+        item for pair, item in indexed.items()
+        if pair != kernel_lens.EXPECTED_FLIP
+    ]
+    pinned = (
+        result["assignment_scope"] == ["l3", "l3_kernel_half"]
+        and flip_row["flags_after"]["l1"] is True
+        and flip_row["flags_after"]["l2"] is False
+        and flip_row["flags_after"]["l3"] is True
+        and all(item["flags_after"]["l3"] is False for item in negatives)
+    )
+    record("the fixture pins the assignment scope and ruled row states",
+           pinned,
+           "assigned=l3,l3_kernel_half; flip l1/l2/l3=true/false/true; "
+           f"negative_l3={[item['flags_after']['l3'] for item in negatives]}")
+
+    cross_family = fixture_row(
+        "cross_family_refuser",
+        "recursive_place_value_inscription",
+        source_family="addition",
+    )
+    cross_result = kernel_lens.recompute([cross_family], rows)
+    cross_row = cross_result["rows"][0]
+    record("a cross-family receiver in the overlay satisfies the kernel half",
+           cross_row["kernel_half_satisfied"] is True
+           and cross_row["flags_after"]["l3"] is True,
+           "addition/cross_family_refuser -> "
+           "counting/recursive_place_value_inscription: "
+           f"kernel_half={cross_row['kernel_half_satisfied']} "
+           f"l3={cross_row['flags_after']['l3']}")
+
+
 def main() -> int:
     print("Big Red loop substrate — offline fixture checks", flush=True)
     print(f"repo: {ROOT}", flush=True)
@@ -2481,7 +2588,8 @@ def main() -> int:
                   check_r4_bridge_hit, check_r4_warrant_refusal,
                   check_r4_misses, check_r4_budget_guard, check_r4_library,
                   check_r4_docket_fixture,
-                  check_r2_docket_partial_evidence):
+                  check_r2_docket_partial_evidence,
+                  check_kernel_overlay_and_recompute):
         try:
             check()
         except Exception as error:  # a broken check is a failure, not a skip

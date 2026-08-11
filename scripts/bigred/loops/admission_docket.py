@@ -832,8 +832,12 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "VPV-prime rows are ceremony-adjudicated candidates, never automatic "
         "admissions. Meaning-use typing is analysis over admitted edges only.",
         "",
-        "The L3 flag records the action-alphabet half only. Its kernel half "
-        "remains unavailable until R3 produces the kernel_dependency overlay.",
+        "The collected row strings predate the kernel_dependency overlay and "
+        "remain unchanged. The tracked overlay now exists. The bounded "
+        "recompute in docs/research/internal/2026-08-11-r2-kernel-lens-"
+        "recompute.json examines only the three counting rows and moves "
+        "omit_highest_place_regrouping to recursive_place_value_inscription "
+        "from L1-only to L3.",
         "",
         "## R2 closure accounting",
         "",
@@ -1181,7 +1185,11 @@ def main() -> int:
             "question_preservation_default": "",
             "typing_scope": "analysis over admitted edges only",
             "l3_kernel_half": (
-                "unavailable until R3 produces the kernel_dependency overlay"
+                "collected row strings predate the tracked overlay and remain "
+                "unchanged; docs/research/internal/2026-08-11-r2-kernel-lens-"
+                "recompute.json assigns only l3 and l3_kernel_half for the "
+                "three counting rows and flips omit_highest_place_regrouping "
+                "to recursive_place_value_inscription"
             ),
         },
         "accounting": {

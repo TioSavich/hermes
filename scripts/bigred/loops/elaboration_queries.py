@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Run Q1-Q3 over the tracked admitted learner-path edge store.
+"""Run Q1-Q3 over the tracked admitted edge and kernel overlay stores.
 
 Reachability comes only from crisis_release/8 facts in admitted_edges.pl.
 The store's registry wrapper supplies the machine universe for Q1; registry
-membership and all overlays remain non-reachability metadata.
+membership and the kernel overlay remain non-reachability metadata.
 """
 
 from __future__ import annotations
@@ -20,11 +20,12 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[3]
 PATHS = ROOT / "paths.pl"
 STORE = ROOT / "scripts/bigred/loops/admitted_edges.pl"
+KERNEL_STORE = ROOT / "scripts/bigred/loops/kernel_dependency_overlay.pl"
 OUTPUT_JSON = (
-    ROOT / "docs/research/internal/2026-08-09-elaboration-queries.json"
+    ROOT / "docs/research/internal/2026-08-11-elaboration-queries.json"
 )
-OUTPUT_MD = ROOT / "docs/research/internal/2026-08-09-elaboration-queries.md"
-WAVE = "2026-08-09-wave1"
+OUTPUT_MD = ROOT / "docs/research/internal/2026-08-11-elaboration-queries.md"
+WAVE = "2026-08-09-wave1-with-2026-08-10-kernel-overlay"
 SEAM_SOURCE = "docs/research/internal/2026-08-08-learner-path-graph-design.md"
 SEAM_SCOUT = "docs/research/2026-08-06-learner-paths.md"
 
@@ -144,15 +145,18 @@ def machine_name(machine: Machine) -> str:
     return f"{machine[0]}/{machine[1]}"
 
 
-def read_store() -> tuple[list[dict[str, Any]], list[Machine]]:
-    """Read admitted edges and the registry universe through the store module."""
+def read_store() -> tuple[
+    list[dict[str, Any]], list[Machine], list[dict[str, Any]]
+]:
+    """Read reachability and annotation rows through their Prolog modules."""
     goal = (
         "use_module(library(http/json)),"
         "findall(D,admitted_edges:admitted_edge_dict(D),Edges),"
         "findall(_{family:F,kind:K},admitted_edges:registered_machine(F,K),Ms0),"
         "sort(Ms0,Machines),"
-        "json_write_dict(current_output,_{edges:Edges,machines:Machines},"
-        "[width(0)]),nl"
+        "findall(KD,kernel_dependency_overlay:kernel_dependency_dict(KD),KDs),"
+        "json_write_dict(current_output,_{edges:Edges,machines:Machines,"
+        "kernel_dependencies:KDs},[width(0)]),nl"
     )
     completed = subprocess.run(
         [
@@ -162,6 +166,8 @@ def read_store() -> tuple[list[dict[str, Any]], list[Machine]]:
             str(PATHS),
             "-s",
             str(STORE),
+            "-s",
+            str(KERNEL_STORE),
             "-g",
             goal,
             "-t",
@@ -174,7 +180,7 @@ def read_store() -> tuple[list[dict[str, Any]], list[Machine]]:
     )
     if completed.returncode:
         raise QueryError(
-            "admitted store failed to load: "
+            "tracked overlay stores failed to load: "
             f"{completed.stderr.strip()[:1000]}"
         )
     line = next(
@@ -188,9 +194,15 @@ def read_store() -> tuple[list[dict[str, Any]], list[Machine]]:
     machines = sorted(
         (row["family"], row["kind"]) for row in payload["machines"]
     )
+    kernel_dependencies = payload["kernel_dependencies"]
     if len(edges) != 34:
         raise QueryError(f"store exposes {len(edges)} admitted edges, expected 34")
-    return edges, machines
+    if len(kernel_dependencies) != 2:
+        raise QueryError(
+            "kernel overlay exposes "
+            f"{len(kernel_dependencies)} rows, expected 2"
+        )
+    return edges, machines, kernel_dependencies
 
 
 def edge_endpoints(edge: dict[str, Any]) -> tuple[Machine, Machine]:
@@ -443,7 +455,11 @@ def q3_hybrid_walks(
     }
 
 
-def build_result(edges: list[dict[str, Any]], machines: list[Machine]) -> dict[str, Any]:
+def build_result(
+    edges: list[dict[str, Any]],
+    machines: list[Machine],
+    kernel_dependencies: list[dict[str, Any]],
+) -> dict[str, Any]:
     pairs = [edge_endpoints(edge) for edge in edges]
     if len(pairs) != len(set(pairs)):
         raise QueryError("admitted store contains duplicate directed pairs")
@@ -453,12 +469,16 @@ def build_result(edges: list[dict[str, Any]], machines: list[Machine]) -> dict[s
         "generated_for": WAVE,
         "graph": {
             "source_store": "scripts/bigred/loops/admitted_edges.pl",
+            "kernel_overlay_store": (
+                "scripts/bigred/loops/kernel_dependency_overlay.pl"
+            ),
             "reachability_edge_types": ["crisis_release"],
             "admitted_edge_count": len(edges),
             "registered_machine_count": len(machines),
             "cross_family_edge_count": cross_family,
             "lens_counts": dict(sorted(Counter(edge["lens"] for edge in edges).items())),
-            "kernel_dependency_edge_count": 0,
+            "kernel_dependency_edge_count": len(kernel_dependencies),
+            "kernel_dependencies": kernel_dependencies,
             "overlay_rule": "overlays annotate results and do not extend reachability",
         },
         "q1_elaboration_radius": q1_radius(edges, machines),
@@ -477,7 +497,7 @@ def render_markdown(result: dict[str, Any]) -> str:
     ]
     zero_count = q1["machine_count"] - len(nonzero)
     lines = [
-        "# Bounded elaboration queries: 2026-08-09 wave 1",
+        "# Bounded elaboration queries: wave 1 with kernel overlay",
         "",
         "## Scope",
         "",
@@ -485,8 +505,10 @@ def render_markdown(result: dict[str, Any]) -> str:
         f"It contains {graph['admitted_edge_count']} admitted `crisis_release` "
         f"edges over a registry universe of {graph['registered_machine_count']} "
         f"machines. All {graph['admitted_edge_count']} edges carry the L2 lens, "
-        f"and {graph['cross_family_edge_count']} cross a family. The current "
-        "`kernel_dependency` overlay has zero rows and does not extend reachability.",
+        f"and {graph['cross_family_edge_count']} cross a family. The tracked "
+        f"`kernel_dependency` overlay at `{graph['kernel_overlay_store']}` has "
+        f"{graph['kernel_dependency_edge_count']} rows. The queries read and "
+        "report those annotations; they do not extend reachability.",
         "",
         "## Q1: elaboration radius",
         "",
@@ -574,8 +596,8 @@ def main() -> int:
         ),
     )
     args = parser.parse_args()
-    edges, machines = read_store()
-    result = build_result(edges, machines)
+    edges, machines, kernel_dependencies = read_store()
+    result = build_result(edges, machines, kernel_dependencies)
     json_text = json.dumps(result, indent=2, sort_keys=True) + "\n"
     markdown_text = render_markdown(result)
 
@@ -614,7 +636,8 @@ def main() -> int:
         f"delta_flags={q1['flagged_machine_count']} "
         f"seams_unreached={q2['unreached_count']}/{q2['seam_count']} "
         f"hybrid_candidates={q3['candidate_count']} "
-        f"paths_examined={q3['paths_examined']}"
+        f"paths_examined={q3['paths_examined']} "
+        f"kernel_dependencies={result['graph']['kernel_dependency_edge_count']}"
     )
     return 0
 
