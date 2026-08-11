@@ -52,6 +52,11 @@
 :- module(loop_driver,
           [ grid_plan/3,
             grid_input/3,
+            machine_grid_plan/4,
+            machine_grid_input/4,
+            machine_grid_point_count/3,
+            machine_grid_overlay_point_count/3,
+            computing_grid_fixture/2,
             grid_status/2,
             grid_point_count/2,
             contract_schema/1,
@@ -119,6 +124,7 @@ contract_schema(Schema) :-
 %   lit(Value)                 a ground literal, taken from the schema itself
 %   vary(ints(Lo, Hi))         a varying integer leaf
 %   vary(members([T, ...]))    a varying leaf over authored alternatives
+%   correlated_power(Lo, Hi)   equal powers and three-factor expansions
 %
 % Bound choices, and why they are what they are. The integer pair carries the
 % design's own grid, 0..49 by 0..49. Every other schema is held at or under a
@@ -195,10 +201,11 @@ grid_plan('{\"base\":\"positive_integer\",\"kind\":\"count_pair\",\"left\":\"int
           bounds(count_pair, 1000),
           obj([base-vary(ints(1,10)), kind-lit("count_pair"), left-vary(ints(0,9)), right-vary(ints(0,9))])).
 
-%  2 machine(s); 12 grid points.
+%  2 machine(s); 24 grid points. The R4 design bar is 20, and 1..24 leaves
+%  four points of headroom when a placement stops at its first refusal.
 grid_plan('{\"kind\":\"angle_measure\",\"degrees\":\"positive_integer\"}',
-          bounds(angle_measure, 12),
-          obj([kind-lit("angle_measure"), degrees-vary(ints(1,12))])).
+          bounds(angle_measure, 24),
+          obj([kind-lit("angle_measure"), degrees-vary(ints(1,24))])).
 
 %  2 machine(s); 144 grid points.
 grid_plan('{\"kind\":\"area_known_side\",\"area\":\"positive_integer\",\"known_side\":\"positive_integer\"}',
@@ -265,10 +272,13 @@ grid_plan('{\"kind\":\"frequency_record\",\"event\":\"atom\",\"successes\":\"int
           bounds(frequency_record, 156),
           obj([kind-lit("frequency_record"), event-vary(members([lit("win")])), successes-vary(ints(0,12)), trials-vary(ints(1,12)), context-lit("repeated_experiment")])).
 
-%  2 machine(s); 13 grid points.
+%  2 machine(s); 100 grid points. Both machines accept exactly lt, lte, gt,
+%  and gte. The variable remains x because its atom contract records no domain;
+%  the integer bound widens across zero while the four relations supply the
+%  requested design width.
 grid_plan('{\"kind\":\"inequality\",\"variable\":\"atom\",\"relation\":\"atom\",\"bound\":\"integer\"}',
-          bounds(inequality, 13),
-          obj([kind-lit("inequality"), variable-vary(members([lit("x")])), relation-vary(members([lit("lt")])), bound-vary(ints(0,12))])).
+          bounds(inequality, 100),
+          obj([kind-lit("inequality"), variable-vary(members([lit("x")])), relation-vary(members([lit("lt"), lit("lte"), lit("gt"), lit("gte")])), bound-vary(ints(-12,12))])).
 
 %  2 machine(s); 1000 grid points.
 grid_plan('{\"kind\":\"linear_equation\",\"a\":\"integer\",\"b\":\"integer\",\"c\":\"integer\"}',
@@ -375,10 +385,11 @@ grid_plan('{\"kind\":\"volume_known_base\",\"volume\":\"positive_integer\",\"len
           bounds(volume_known_base, 1000),
           obj([kind-lit("volume_known_base"), volume-vary(ints(1,10)), length-vary(ints(1,10)), width-vary(ints(1,10))])).
 
-%  1 machine(s); 60 grid points.
+%  1 machine(s); 24 correlated grid points. The contract example comes first;
+%  the remaining 23 part lists have distinct exact sums.
 grid_plan('{\"kind\":\"angle_parts\",\"parts\":[\"positive_integer\"],\"whole\":\"positive_integer\"}',
-          bounds(angle_parts, 60),
-          obj([kind-lit("angle_parts"), parts-vary(members([arr([lit(35), lit(50), lit(45)]), arr([lit(36), lit(51), lit(46)]), arr([lit(35), lit(45), lit(50)]), arr([lit(35), lit(35), lit(35)]), arr([lit(45), lit(50), lit(35)])])), whole-vary(ints(1,12))])).
+          bounds(angle_parts, 24),
+          correlated_angle_parts(31, 53)).
 
 %  1 machine(s); 48 grid points.
 grid_plan('{\"kind\":\"angle_relation\",\"whole\":\"positive_number\",\"known_parts\":[\"positive_number\"],\"unknown\":\"atom\"}',
@@ -440,10 +451,12 @@ grid_plan('{\"kind\":\"expression_assignment\",\"expression\":{\"node\":\"add\",
           bounds(expression_assignment, 169),
           obj([kind-lit("expression_assignment"), expression-obj([node-lit("add"), left-obj([node-lit("mult"), left-obj([node-lit("var"), name-vary(members([lit("x")]))]), right-obj([node-lit("int"), value-vary(ints(0,12))])]), right-obj([node-lit("int"), value-vary(ints(0,12))])]), assignments-vary(members([arr([obj([variable-lit("x"), value-lit(4)])])]))])).
 
-%  1 machine(s); 243 grid points.
+%  1 machine(s); 20 correlated grid points. The schema fixes the expanded
+%  expression at three factors, so exponent 3 is the only schema-conforming
+%  arity; each factor is the power's base.
 grid_plan('{\"kind\":\"expression_pair\",\"left\":{\"node\":\"power\",\"base\":{\"node\":\"int\",\"value\":\"integer\"},\"exponent\":\"integer\"},\"right\":{\"node\":\"mult\",\"left\":{\"node\":\"int\",\"value\":\"integer\"},\"right\":{\"node\":\"mult\",\"left\":{\"node\":\"int\",\"value\":\"integer\"},\"right\":{\"node\":\"int\",\"value\":\"integer\"}}}}',
-          bounds(expression_pair, 243),
-          obj([kind-lit("expression_pair"), left-obj([node-lit("power"), base-obj([node-lit("int"), value-vary(ints(0,2))]), exponent-vary(ints(0,2))]), right-obj([node-lit("mult"), left-obj([node-lit("int"), value-vary(ints(0,2))]), right-obj([node-lit("mult"), left-obj([node-lit("int"), value-vary(ints(0,2))]), right-obj([node-lit("int"), value-vary(ints(0,2))])])])])).
+          bounds(expression_pair, 20),
+          correlated_power(0, 19)).
 
 %  1 machine(s); 625 grid points.
 grid_plan('{\"kind\":\"fraction_minuend_subtrahend\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}',
@@ -543,6 +556,197 @@ grid_plan('{\"kind\":\"triangle_conditions\",\"condition\":\"atom\",\"measures\"
 % totals: plans=80 covered_machines=241 skipped_machines=5
 
 
+% --------------------------------------------------------------------------
+% Machine-aware overlays for shared schemas
+%
+% An overlay supplements its shared grid. machine_grid_input/4 enumerates the
+% named overlay first and then the unchanged grid_plan/3 points. A machine with
+% no overlay gets exactly grid_input/3, including order. This keeps the shared
+% 69-machine integer-pair and 19-machine fraction-pair tables intact.
+% --------------------------------------------------------------------------
+
+grid_overlay(machine(fraction, co_denominator_make_base_transfer),
+             '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}',
+             bounds(co_denominator_make_base_transfer, 87), Template) :-
+    co_denominator_overlay_template(Template).
+grid_overlay(machine(fraction, co_denominator_make_ten_split_leftover),
+             '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}',
+             bounds(co_denominator_make_ten_split_leftover, 87), Template) :-
+    co_denominator_overlay_template(Template).
+
+grid_overlay(machine(integer, drop_sign_use_magnitude_sum),
+             '{\"a\":\"integer\",\"b\":\"integer\"}',
+             bounds(drop_sign_use_magnitude_sum, 300),
+             obj([a-vary(ints(-12,-1)), b-vary(ints(-12,12))])).
+
+grid_overlay(machine(subtraction, borrow_across_zero_cascade),
+             '{\"a\":\"integer\",\"b\":\"integer\"}',
+             bounds(borrow_across_zero_cascade, 24), Template) :-
+    zero_cascade_overlay_template(Template).
+grid_overlay(machine(subtraction, borrow_across_zero_no_cascade),
+             '{\"a\":\"integer\",\"b\":\"integer\"}',
+             bounds(borrow_across_zero_no_cascade, 24), Template) :-
+    zero_cascade_overlay_template(Template).
+
+% Same-denominator regions hold the fractional unit fixed within each region.
+% Denominators vary independently of the operative base 10. Numerator ranges
+% supply the distance to the next multiple of 10: 10 for 6..9 and 50 for
+% 47..49. The value 50 is a target multiple, not a second operative base.
+co_denominator_overlay_template(
+    vary(members([
+        obj([kind-lit("fraction_pair"), left-obj([n-vary(ints(6,9)), d-lit(5)]), right-obj([n-vary(ints(4,8)), d-lit(5)])]),
+        obj([kind-lit("fraction_pair"), left-obj([n-vary(ints(6,9)), d-lit(10)]), right-obj([n-vary(ints(4,8)), d-lit(10)])]),
+        obj([kind-lit("fraction_pair"), left-obj([n-vary(ints(6,9)), d-lit(12)]), right-obj([n-vary(ints(4,8)), d-lit(12)])]),
+        obj([kind-lit("fraction_pair"), left-obj([n-vary(ints(47,49)), d-lit(100)]), right-obj([n-vary(ints(21,29)), d-lit(100)])])
+    ]))).
+
+% The 24 minuends have a zero tens column, a nonzero hundreds donor, and an
+% ones digit below 9. Subtracting 9 requires a zero-cascade borrow and yields
+% 24 distinct results.
+zero_cascade_overlay_template(zero_cascade_region(1, 3, 0, 7, 9)).
+
+
+%!  machine_grid_plan(+Machine, +SchemaString, -Bounds, -Template) is semidet.
+%
+%   The effective additive plan for Machine. Overlay points come first; the
+%   schema's shared plan remains the second component and is never replaced.
+machine_grid_plan(Machine, Schema,
+                  bounds(machine_overlay(OverlayName, SharedName), Points),
+                  overlay(OverlayTemplate, SharedTemplate)) :-
+    grid_overlay(Machine, Schema, bounds(OverlayName, OverlayPoints),
+                 OverlayTemplate),
+    % Every current overlay schema also has a shared grid_plan/3. The cut
+    % makes that an invariant: a future overlay without a shared plan would
+    % fail here instead of becoming an overlay-only plan.
+    !,
+    grid_plan(Schema, bounds(SharedName, SharedPoints), SharedTemplate),
+    Points is OverlayPoints + SharedPoints.
+machine_grid_plan(_Machine, Schema, Bounds, Template) :-
+    grid_plan(Schema, Bounds, Template).
+
+
+%!  machine_grid_input(+Machine, +SchemaString, ?Bounds, -Input) is nondet.
+%
+%   Input follows the effective plan selected for Machine. R3 and R4 read the
+%   overlay prefix size, stratify within that prefix first, and then stratify
+%   within the shared suffix using the remaining nominal budget. This ordering
+%   is the contract that keeps their probe budgets from being spent on the
+%   shared grid before the repaired region.
+machine_grid_input(Machine, Schema, Bounds, Input) :-
+    machine_grid_plan(Machine, Schema, Bounds, Template),
+    expand_machine_template(Template, Input).
+
+expand_machine_template(overlay(Overlay, _Shared), Input) :-
+    expand_template(Overlay, Input).
+expand_machine_template(overlay(_Overlay, Shared), Input) :-
+    expand_machine_template(Shared, Input).
+expand_machine_template(Template, Input) :-
+    Template \= overlay(_, _),
+    expand_template(Template, Input).
+
+
+%!  machine_grid_point_count(+Machine, +SchemaString, -Points) is semidet.
+machine_grid_point_count(Machine, Schema, Points) :-
+    machine_grid_plan(Machine, Schema, bounds(_, Points), _).
+
+
+%!  machine_grid_overlay_point_count(+Machine, +SchemaString, -Points) is det.
+%
+%   Length of the effective plan's overlay prefix. Zero means the machine uses
+%   the shared plan unchanged; probe consumers preserve their legacy sequence
+%   exactly in that case.
+machine_grid_overlay_point_count(Machine, Schema, Points) :-
+    (   grid_overlay(Machine, Schema, bounds(_, OverlayPoints), _)
+    ->  Points = OverlayPoints
+    ;   Points = 0
+    ).
+
+
+% R1 and R2 compare two machines on one walk. If either participant has an
+% overlay, its points precede the shared grid; two overlays precede it in
+% source/target order. The shared grid occurs once.
+pair_grid_plan(MachineA, MachineB, Schema,
+               bounds(machine_overlays(OverlayNames, SharedName), Points),
+               Template) :-
+    findall(overlay(Name, OverlayPoints, OverlayTemplate),
+            ( member(Machine, [MachineA, MachineB]),
+              grid_overlay(Machine, Schema, bounds(Name, OverlayPoints),
+                           OverlayTemplate) ),
+            Overlays),
+    Overlays \== [],
+    !,
+    grid_plan(Schema, bounds(SharedName, SharedPoints), SharedTemplate),
+    overlay_summary(Overlays, OverlayNames, OverlayPointCount,
+                    SharedTemplate, Template),
+    Points is OverlayPointCount + SharedPoints.
+pair_grid_plan(_MachineA, _MachineB, Schema, Bounds, Template) :-
+    grid_plan(Schema, Bounds, Template).
+
+overlay_summary(Overlays, Names, Total, Shared, Template) :-
+    deduplicate_overlay_templates(Overlays, UniqueOverlays),
+    overlay_summary_unique(UniqueOverlays, Names, Total, Shared, Template).
+
+deduplicate_overlay_templates(Overlays, UniqueOverlays) :-
+    deduplicate_overlay_templates(Overlays, [], UniqueOverlays).
+
+deduplicate_overlay_templates([], _Seen, []).
+deduplicate_overlay_templates([overlay(_Name, _Points, Template)|Rest], Seen,
+                              Unique) :-
+    overlay_template_seen(Template, Seen),
+    !,
+    deduplicate_overlay_templates(Rest, Seen, Unique).
+deduplicate_overlay_templates([overlay(Name, Points, Template)|Rest], Seen,
+                              [overlay(Name, Points, Template)|Unique]) :-
+    deduplicate_overlay_templates(Rest, [Template|Seen], Unique).
+
+overlay_template_seen(Template, [Seen|_]) :-
+    Template == Seen,
+    !.
+overlay_template_seen(Template, [_|Rest]) :-
+    overlay_template_seen(Template, Rest).
+
+overlay_summary_unique([], [], 0, Shared, Shared).
+overlay_summary_unique([overlay(Name, Points, Head)|Rest], [Name|Names], Total,
+                       Shared, overlay(Head, Tail)) :-
+    overlay_summary_unique(Rest, Names, RestPoints, Shared, Tail),
+    Total is Points + RestPoints.
+
+pair_grid_input(MachineA, MachineB, Schema, Bounds, Input) :-
+    pair_grid_plan(MachineA, MachineB, Schema, Bounds, Template),
+    expand_machine_template(Template, Input).
+
+pair_grid_point_count(MachineA, MachineB, Schema, Points) :-
+    pair_grid_plan(MachineA, MachineB, Schema, bounds(_, Points), _).
+
+
+% Ten required computing fixtures. The focused check proves that each fact is
+% selected by machine_grid_input/4 and computes through aa_run/4.
+computing_grid_fixture(machine(algebraic, exponential_equivalence_by_expansion),
+    _{kind:"expression_pair",
+      left:_{node:"power", base:_{node:"int", value:2}, exponent:3},
+      right:_{node:"mult", left:_{node:"int", value:2},
+              right:_{node:"mult", left:_{node:"int", value:2},
+                      right:_{node:"int", value:2}}}}).
+computing_grid_fixture(machine(fraction, co_denominator_make_base_transfer),
+    _{kind:"fraction_pair", left:_{n:47,d:100}, right:_{n:28,d:100}}).
+computing_grid_fixture(machine(fraction, co_denominator_make_ten_split_leftover),
+    _{kind:"fraction_pair", left:_{n:7,d:10}, right:_{n:8,d:10}}).
+computing_grid_fixture(machine(geometry, angle_additive_composition),
+    _{kind:"angle_parts", parts:[35,50,45], whole:130}).
+computing_grid_fixture(machine(integer, drop_sign_use_magnitude_sum),
+    _{a: -7, b:3}).
+computing_grid_fixture(machine(subtraction, borrow_across_zero_cascade),
+    _{a:102, b:9}).
+computing_grid_fixture(machine(subtraction, borrow_across_zero_no_cascade),
+    _{a:102, b:9}).
+computing_grid_fixture(machine(geometry, angle_as_ray_length),
+    _{kind:"angle_measure", degrees:20}).
+computing_grid_fixture(machine(geometry, angle_turn_measurement),
+    _{kind:"angle_measure", degrees:20}).
+computing_grid_fixture(machine(integer, inequality_as_boundary_point),
+    _{kind:"inequality", variable:"x", relation:"gte", bound: -12}).
+
+
 %!  grid_input(+SchemaString, ?Bounds, -Input) is nondet.
 %
 %   Input is a JSON-shaped dict conforming to SchemaString, drawn from the
@@ -554,6 +758,27 @@ grid_input(Schema, Bounds, Input) :-
     grid_plan(Schema, Bounds, Template),
     expand_template(Template, Input).
 
+expand_template(correlated_power(Lo, Hi),
+                _{kind:"expression_pair",
+                  left:_{node:"power", base:_{node:"int", value:Base},
+                         exponent:3},
+                  right:_{node:"mult", left:_{node:"int", value:Base},
+                          right:_{node:"mult",
+                                  left:_{node:"int", value:Base},
+                                  right:_{node:"int", value:Base}}}}) :-
+    between(Lo, Hi, Base).
+expand_template(correlated_angle_parts(_Lo, _Hi),
+                _{kind:"angle_parts", parts:[35,50,45], whole:130}).
+expand_template(correlated_angle_parts(Lo, Hi),
+                _{kind:"angle_parts", parts:[20,30,Third], whole:Whole}) :-
+    between(Lo, Hi, Third),
+    Whole is 50 + Third.
+expand_template(zero_cascade_region(DonorLo, DonorHi, OnesLo, OnesHi,
+                                    Subtrahend),
+                _{a:Minuend, b:Subtrahend}) :-
+    between(DonorLo, DonorHi, Donor),
+    between(OnesLo, OnesHi, Ones),
+    Minuend is Donor * 100 + Ones.
 expand_template(obj(Pairs0), Dict) :-
     expand_pairs(Pairs0, Pairs),
     dict_pairs(Dict, _, Pairs).
@@ -792,13 +1017,15 @@ r1_row(Item, Row) :-
         InputField = _{schema: null, bounds: null, points: 0},
         CandidateType = "pair_rejected"
     ;   machine_schema(machine(FamilyA, KindA), Schema),
-        (   grid_plan(Schema, Bounds, _)
+        (   pair_grid_plan(machine(FamilyA, KindA), machine(FamilyB, KindB),
+                           Schema, Bounds, _)
         ->  r1_walk(Schema, FamilyA, KindA, FamilyB, KindB,
                     Started, Budget, InputTimeout, MaxWitnesses,
                     Accumulator),
             r1_evidence(Accumulator, Started, Evidence),
             r1_verdict(Accumulator, Outcome, CandidateType),
-            grid_point_count(Schema, Points),
+            pair_grid_point_count(machine(FamilyA, KindA),
+                                  machine(FamilyB, KindB), Schema, Points),
             term_string(Bounds, BoundsString),
             InputField = _{schema: Schema, bounds: BoundsString,
                            points: Points}
@@ -826,7 +1053,10 @@ r1_row(Item, Row) :-
 %       Truncated, FirstWitness, Stopped)
 r1_walk(Schema, FamilyA, KindA, FamilyB, KindB, Started, Budget,
         InputTimeout, MaxWitnesses, Accumulator) :-
-    findall(Input, grid_input(Schema, _, Input), Inputs),
+    findall(Input,
+            pair_grid_input(machine(FamilyA, KindA), machine(FamilyB, KindB),
+                            Schema, _, Input),
+            Inputs),
     Empty = acc(0, 0, 0, 0, 0, [], 0, false, none, completed),
     walk_inputs(Inputs, FamilyA, KindA, FamilyB, KindB, Started, Budget,
                 InputTimeout, MaxWitnesses, Empty, Accumulator).
@@ -1047,7 +1277,10 @@ crossing_actions(RefuserFamily, ReceiverFamily, ReceiverKind, Shared) :-
 %   drift apart.
 r2_walk(Schema, FamilyA, KindA, FamilyB, KindB, Started, Budget,
         InputTimeout, Points, Stopped) :-
-    findall(Input, grid_input(Schema, _, Input), Inputs),
+    findall(Input,
+            pair_grid_input(machine(FamilyA, KindA), machine(FamilyB, KindB),
+                            Schema, _, Input),
+            Inputs),
     r2_points(Inputs, FamilyA, KindA, FamilyB, KindB, Started, Budget,
               InputTimeout, [], Reversed, completed, Stopped),
     reverse(Reversed, Points).
@@ -1163,10 +1396,12 @@ r2_rows(Item, Rows) :-
         ;   true
         ),
         machine_schema(machine(FamilyA, KindA), Schema),
-        (   grid_plan(Schema, Bounds, _)
+        (   pair_grid_plan(machine(FamilyA, KindA), machine(FamilyB, KindB),
+                           Schema, Bounds, _)
         ->  r2_walk(Schema, FamilyA, KindA, FamilyB, KindB, Started, Budget,
                     InputTimeout, Points, Stopped),
-            grid_point_count(Schema, GridPoints),
+            pair_grid_point_count(machine(FamilyA, KindA),
+                                  machine(FamilyB, KindB), Schema, GridPoints),
             term_string(Bounds, BoundsString),
             r2_directed_row(ab, machine(FamilyA, KindA), machine(FamilyB, KindB),
                             Points, Stopped, Schema, BoundsString, GridPoints,

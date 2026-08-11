@@ -85,6 +85,7 @@
             source_signature/4,
             statically_compatible/4,
             bridge_sample/6,
+            machine_probe_indices/6,
             r4_row/2,
             main_item/0
           ]).
@@ -100,8 +101,10 @@
               [ contracted_machine/1,
                 machine_schema/2,
                 grid_plan/3,
-                grid_input/3,
-                grid_point_count/2,
+                machine_grid_plan/4,
+                machine_grid_input/4,
+                machine_grid_point_count/3,
+                machine_grid_overlay_point_count/3,
                 aa_run/4
               ]).
 :- use_module(strategies(automaton_input_contracts),
@@ -921,9 +924,11 @@ bridge_manifest(Rows) :-
 % ==========================================================================
 % 8. THE WALK
 %
-% Sampling follows r3_driver.pl: the probe order is built in ROUNDS spread over
-% the whole grid, so that a walk stopping as soon as it has enough computing
-% points still holds points from across the grid rather than the front of it.
+% Sampling follows r3_driver.pl. Rounds spread within a machine overlay before
+% they spread over the shared remainder. With no overlay, rounds remain spread
+% over the whole grid exactly as before, so a walk stopping as soon as it has
+% enough computing points still holds points from across the grid rather than
+% the front of it.
 % ==========================================================================
 
 stratified_indices(Total, Wanted, Indices) :-
@@ -949,6 +954,37 @@ stratified_probe(Total, Wanted, Rounds, Probe) :-
         numlist(0, Last, All),
         probe_rounds(All, Wanted, Rounds, Probe)
     ).
+
+%!  machine_probe_indices(+Machine, +Schema, +Total, +Wanted, +Rounds,
+%!                        -Probe) is det.
+%
+%   The real R4 probe path. The overlay prefix is stratified first; when it fits
+%   the nominal Wanted*Rounds budget every prefix point is included, and when
+%   it does not the prefix is capped at that budget. Only a genuinely unspent
+%   budget is stratified over the shared suffix. With no overlay, the legacy
+%   stratified sequence is returned without an added ordering step.
+machine_probe_indices(Machine, Schema, Total, Wanted, Rounds, Probe) :-
+    machine_grid_overlay_point_count(Machine, Schema, OverlayPoints),
+    (   OverlayPoints =:= 0
+    ->  stratified_probe(Total, Wanted, Rounds, Probe)
+    ;   overlay_first_probe(Total, OverlayPoints, Wanted, Rounds, Probe)
+    ).
+
+overlay_first_probe(Total, OverlayPoints, Wanted, Rounds, Probe) :-
+    PrefixCount is min(OverlayPoints, Total),
+    Budget is max(Wanted, 0) * max(Rounds, 0),
+    PrefixBudget is min(PrefixCount, Budget),
+    stratified_probe(PrefixCount, Wanted, Rounds, Prefix0),
+    take_first(PrefixBudget, Prefix0, Prefix),
+    SharedTotal is max(Total - PrefixCount, 0),
+    SharedBudget is Budget - PrefixBudget,
+    stratified_probe(SharedTotal, Wanted, Rounds, SharedRelative0),
+    take_first(SharedBudget, SharedRelative0, SharedRelative),
+    maplist(offset_index(PrefixCount), SharedRelative, Shared),
+    append(Prefix, Shared, Probe).
+
+offset_index(Offset, Relative, Absolute) :-
+    Absolute is Offset + Relative.
 
 probe_rounds(_, _, Rounds, []) :-
     Rounds =< 0,
@@ -1210,7 +1246,7 @@ r4_row(Item, Row) :-
     ->  no_adapter_row(Source, Target, Adapter, Started, Row)
     ;   ( SourceSchema == null ; TargetSchema == null )
     ->  no_contract_row(Source, Target, Adapter, Started, Row)
-    ;   \+ grid_plan(SourceSchema, _, _)
+    ;   \+ machine_grid_plan(Source, SourceSchema, _, _)
     ->  no_grid_row(Source, Target, Adapter, SourceSchema, TargetSchema,
                     Started, Row)
     ;   walked_row(Source, Target, Adapter,
@@ -1230,7 +1266,8 @@ walked_row(Source, Target, Adapter, schemas(SourceSchema, TargetSchema),
     placement_positions(TargetSchema, Produced, AllPlacements),
     length(AllPlacements, PlacementCount),
     take_first(MaxPlacements, AllPlacements, Placements),
-    findall(Input, grid_input(SourceSchema, _, Input), GridInputs),
+    findall(Input, machine_grid_input(Source, SourceSchema, _, Input),
+            GridInputs),
     length(GridInputs, GridTotal),
     %   The landing slots are checked BEFORE the source machine is run. A
     %   target contract with nowhere to put the produced value cannot be
@@ -1241,7 +1278,8 @@ walked_row(Source, Target, Adapter, schemas(SourceSchema, TargetSchema),
     ->  no_placement_row(Source, Target, Adapter,
                          schemas(SourceSchema, TargetSchema),
                          probe(GridTotal, 0, 0, 0, 0), Started, Row)
-    ;   stratified_probe(GridTotal, SampleCount, ProbeMultiple, Indices),
+    ;   machine_probe_indices(Source, SourceSchema, GridTotal, SampleCount,
+                              ProbeMultiple, Indices),
         findall(Input, ( member(Index, Indices), nth0(Index, GridInputs, Input) ),
                 Probes),
         collect_inputs(Probes, Source, Started, budget(Budget, Timeout),
@@ -1293,11 +1331,11 @@ bridged_row(Source, Target, Adapter, schemas(SourceSchema, TargetSchema),
     !,
     elapsed_ms(Started, ElapsedMs),
     atom_string(Adapter, AdapterString),
-    (   grid_plan(SourceSchema, Bounds, _)
+    (   machine_grid_plan(Source, SourceSchema, Bounds, _)
     ->  term_string(Bounds, BoundsString)
     ;   BoundsString = null
     ),
-    (   grid_point_count(SourceSchema, AuthoredPoints)
+    (   machine_grid_point_count(Source, SourceSchema, AuthoredPoints)
     ->  true
     ;   AuthoredPoints = 0
     ),

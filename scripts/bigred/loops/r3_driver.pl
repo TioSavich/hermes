@@ -75,6 +75,7 @@
             apply_composition/3,
             composition_string/2,
             payload_relation/3,
+            machine_probe_indices/6,
             r3_row/2,
             main_item/0
           ]).
@@ -89,9 +90,10 @@
 :- use_module(loop_driver,
               [ contracted_machine/1,
                 machine_schema/2,
-                grid_plan/3,
-                grid_input/3,
-                grid_point_count/2,
+                machine_grid_plan/4,
+                machine_grid_input/4,
+                machine_grid_point_count/3,
+                machine_grid_overlay_point_count/3,
                 aa_run/4
               ]).
 :- use_module(strategies('abstraction/kernel_gate_pilot'),
@@ -552,16 +554,20 @@ occurs_within([Term|Rest], Sub, Budget) :-
 % ==========================================================================
 % 5. THE WALK
 %
-% Sampling is stratified over the whole authored grid, not taken off the
-% front: a machine whose refusals cluster at small operands would otherwise be
-% sampled entirely inside its refusal region.
+% A machine overlay is a deliberately repaired region, so the probe stratifies
+% within that prefix before stratifying within the shared remainder. With no
+% overlay, sampling remains stratified over the whole authored grid exactly as
+% before: a machine whose refusals cluster at small operands would otherwise
+% be sampled entirely inside its refusal region.
 %
 % Spreading the index SET is not enough, because the walk stops as soon as it
 % has enough computing points, and a spread set visited in grid order still
 % delivers the front of the grid. So the probe order is built in ROUNDS: round
-% one is Sample+Verify indices spread evenly across the whole grid, round two
-% is the same number spread evenly across what round one left, and so on. Stop
-% where it may, the points in hand span the grid.
+% one is Sample+Verify indices spread evenly across the active stratum (the
+% whole grid when there is no overlay; otherwise the overlay prefix first and
+% the shared suffix second), round two is the same number spread evenly across
+% what round one left, and so on. Stop where it may, the points in hand span
+% the stratum being visited.
 % ==========================================================================
 
 %!  stratified_indices(+Total, +Wanted, -Indices) is det.
@@ -594,6 +600,43 @@ stratified_probe(Total, Wanted, Rounds, Probe) :-
         numlist(0, Last, All),
         probe_rounds(All, Wanted, Rounds, Probe)
     ).
+
+%!  machine_probe_indices(+Machine, +Schema, +Total, +Wanted, +Rounds,
+%!                        -Probe) is det.
+%
+%   The real R3 probe path. The overlay prefix is stratified first; when it fits
+%   the nominal budget every prefix point is included, and when it does not the
+%   prefix is capped at that budget. Only a genuinely unspent budget is then
+%   stratified over the shared suffix. A machine without an overlay delegates
+%   to stratified_probe/4 unchanged, preserving the legacy sequence exactly.
+machine_probe_indices(Machine, Schema, Total, Wanted, Rounds, Probe) :-
+    machine_grid_overlay_point_count(Machine, Schema, OverlayPoints),
+    (   OverlayPoints =:= 0
+    ->  stratified_probe(Total, Wanted, Rounds, Probe)
+    ;   overlay_first_probe(Total, OverlayPoints, Wanted, Rounds, Probe)
+    ).
+
+overlay_first_probe(Total, OverlayPoints, Wanted, Rounds, Probe) :-
+    PrefixCount is min(OverlayPoints, Total),
+    Budget is max(Wanted, 0) * max(Rounds, 0),
+    PrefixBudget is min(PrefixCount, Budget),
+    stratified_probe(PrefixCount, Wanted, Rounds, Prefix0),
+    take_probe_prefix(PrefixBudget, Prefix0, Prefix),
+    SharedTotal is max(Total - PrefixCount, 0),
+    SharedBudget is Budget - PrefixBudget,
+    stratified_probe(SharedTotal, Wanted, Rounds, SharedRelative0),
+    take_probe_prefix(SharedBudget, SharedRelative0, SharedRelative),
+    maplist(offset_index(PrefixCount), SharedRelative, Shared),
+    append(Prefix, Shared, Probe).
+
+take_probe_prefix(Count, List, Prefix) :-
+    length(List, Length),
+    Keep is min(Count, Length),
+    length(Prefix, Keep),
+    append(Prefix, _, List).
+
+offset_index(Offset, Relative, Absolute) :-
+    Absolute is Offset + Relative.
 
 probe_rounds(_, _, Rounds, []) :-
     Rounds =< 0,
@@ -923,7 +966,7 @@ r3_row(Item, Row) :-
     ),
     (   Schema == null
     ->  no_contract_row(Depth, Family, Kind, Started, Row)
-    ;   grid_plan(Schema, Bounds, _)
+    ;   machine_grid_plan(machine(Family, Kind), Schema, Bounds, _)
     ->  walked_row(Depth, machine(Family, Kind), Schema, Bounds,
                    budgets(MachineBudget, Timeout),
                    counts(SampleCount, VerifyCount, ProbeMultiple,
@@ -938,10 +981,13 @@ walked_row(Depth, machine(Family, Kind), Schema, Bounds,
            counts(SampleCount, VerifyCount, ProbeMultiple, MaxCompositions,
                   MaxVerifications, MaxLeaves, MinPoints),
            Started, Row) :-
-    findall(Input, grid_input(Schema, _, Input), GridInputs),
+    findall(Input,
+            machine_grid_input(machine(Family, Kind), Schema, _, Input),
+            GridInputs),
     length(GridInputs, GridTotal),
     Wanted is SampleCount + VerifyCount,
-    stratified_probe(GridTotal, Wanted, ProbeMultiple, Indices),
+    machine_probe_indices(machine(Family, Kind), Schema, GridTotal, Wanted,
+                          ProbeMultiple, Indices),
     findall(Input, ( member(Index, Indices), nth0(Index, GridInputs, Input) ),
             Probes),
     collect_points(Probes, Family, Kind, Started, MachineBudget, Wanted,
@@ -951,7 +997,7 @@ walked_row(Depth, machine(Family, Kind), Schema, Bounds,
     split_points(Points, SampleCount, Screen, Verify),
     length(Screen, ScreenCount),
     length(Verify, VerifyActual),
-    grid_point_count(Schema, AuthoredPoints),
+    machine_grid_point_count(machine(Family, Kind), Schema, AuthoredPoints),
     term_string(Bounds, BoundsString),
     InputField = _{schema: Schema, bounds: BoundsString, points: AuthoredPoints},
     design_total(Required),
