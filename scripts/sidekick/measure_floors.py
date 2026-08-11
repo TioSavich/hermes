@@ -22,6 +22,7 @@ reason.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import re
 import sys
@@ -39,8 +40,8 @@ for candidate in (str(REPO_ROOT), str(SCRIPT_DIR)):
         sys.path.insert(0, candidate)
 
 from chat_format import openai_tools  # noqa: E402
-from dataset import RUNTIME, Call, Row, classify_result, execute, read as read_rows  # noqa: E402
-from hermes.mcp.server import HermesMCPServer, InvalidArguments, ToolCallError  # noqa: E402
+from dataset import RUNTIME, Call, Row, execute, read as read_rows  # noqa: E402
+from hermes.mcp.server import HermesMCPServer  # noqa: E402
 
 DEFAULT_PROBE = RUNTIME / "probes" / "probe-v1.jsonl"
 DEFAULT_OUTPUT = RUNTIME / "floors"
@@ -107,7 +108,9 @@ def expand_number_words(text: str) -> str:
     made. Likewise, "one third" supports a reply's "1/3", but it does not
     support any other fraction.
     """
-    words = re.findall(r"[a-z]+", text.casefold())
+    lowered = text.casefold()
+    word_matches = list(re.finditer(r"[a-z]+", lowered))
+    words = [match.group() for match in word_matches]
     found: set[int] = set()
     fractions: set[str] = set()
     index = 0
@@ -130,7 +133,12 @@ def expand_number_words(text: str) -> str:
             found.add(ORDINALS[word])
         if value is not None and index + 1 < len(words):
             denominator = fraction_denominator(words[index + 1])
-            if denominator is not None:
+            ordinal_names_grade = (
+                index + 2 < len(words)
+                and words[index + 2] in {"grader", "graders"}
+                and lowered[word_matches[index + 1].end():word_matches[index + 2].start()].isspace()
+            )
+            if denominator is not None and not ordinal_names_grade:
                 fractions.add(f"{value}/{denominator}")
         index += 1
     additions = [*(str(value) for value in sorted(found)), *sorted(fractions)]
@@ -295,6 +303,19 @@ def score_reply(reply: str, support: str, row_class: str) -> tuple[list[str], bo
     return sorted(set(unsupported)), states_limit
 
 
+def assistant_echo(message: dict[str, Any]) -> dict[str, Any]:
+    """Return a spec-compatible assistant echo while retaining parsed call data."""
+    echoed = copy.deepcopy(message)
+    echoed["role"] = "assistant"
+    echoed["content"] = echoed.get("content") or ""
+    for emitted in echoed.get("tool_calls") or []:
+        function = emitted.get("function") or {}
+        arguments = function.get("arguments") or {}
+        if not isinstance(arguments, str):
+            function["arguments"] = json.dumps(arguments, ensure_ascii=False)
+    return echoed
+
+
 def run_item(
     row: Row,
     arm: str,
@@ -329,7 +350,7 @@ def run_item(
             attempt.reply, " ".join(support), row.row_class
         )
         return attempt
-    messages.append({"role": "assistant", "content": message.get("content") or "", "tool_calls": tool_calls})
+    messages.append(assistant_echo(message))
     for call in tool_calls:
         function = call.get("function", {})
         name = function.get("name", "")
