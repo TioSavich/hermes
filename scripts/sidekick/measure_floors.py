@@ -42,7 +42,7 @@ from chat_format import openai_tools  # noqa: E402
 from dataset import RUNTIME, Call, Row, classify_result, execute, read as read_rows  # noqa: E402
 from hermes.mcp.server import HermesMCPServer, InvalidArguments, ToolCallError  # noqa: E402
 
-DEFAULT_PROBE = RUNTIME / "probes" / "probe-v0.jsonl"
+DEFAULT_PROBE = RUNTIME / "probes" / "probe-v1.jsonl"
 DEFAULT_OUTPUT = RUNTIME / "floors"
 ENDPOINT = "http://127.0.0.1:11434/api/chat"
 BACKEND = "http://127.0.0.1:11434"
@@ -126,8 +126,10 @@ def normalize(text: str) -> str:
 class Attempt:
     item: str
     row_class: str
+    cut: str
     arm: str
     called: bool
+    expected_tool: str = ""
     calls: list[dict[str, Any]] = field(default_factory=list)
     reply: str = ""
     latency_s: float = 0.0
@@ -199,17 +201,33 @@ def backend_fingerprint(model: str, timeout: float = 30.0) -> dict[str, Any]:
     return fingerprint
 
 
-def chat(messages: list[dict[str, Any]], tools: list[dict[str, Any]], model: str, timeout: float) -> tuple[dict[str, Any], float, str]:
-    body = {
-        "model": model,
-        "messages": messages,
-        "tools": tools,
-        "stream": False,
-        "think": False,
-        "options": {"temperature": 0.0, "num_predict": 600},
-    }
+def chat(
+    messages: list[dict[str, Any]],
+    tools: list[dict[str, Any]],
+    model: str,
+    timeout: float,
+    endpoint: str = ENDPOINT,
+    backend: str = "ollama",
+) -> tuple[dict[str, Any], float, str]:
+    """One turn, through either serving path, normalized to one message shape.
+
+    Two backends because the comparison demands it: Ollama serves the Q4_K_M
+    files on the laptop, and llama-server serves the 16-bit build on a GPU node
+    so the quantization price can be priced. The reply is normalized here so
+    nothing downstream knows which one answered.
+    """
+    if backend == "ollama":
+        body: dict[str, Any] = {
+            "model": model, "messages": messages, "tools": tools, "stream": False,
+            "think": False, "options": {"temperature": 0.0, "num_predict": 600},
+        }
+    else:
+        body = {
+            "model": model, "messages": messages, "tools": tools, "stream": False,
+            "temperature": 0.0, "max_tokens": 600,
+        }
     request = urllib.request.Request(
-        ENDPOINT, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
+        endpoint, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
     )
     started = time.time()
     try:
@@ -217,7 +235,19 @@ def chat(messages: list[dict[str, Any]], tools: list[dict[str, Any]], model: str
             payload = json.loads(response.read())
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
         return {}, time.time() - started, f"transport_failed: {type(exc).__name__} {exc}"
-    return payload.get("message", {}), time.time() - started, "ok"
+    if backend == "ollama":
+        return payload.get("message", {}), time.time() - started, "ok"
+    choices = payload.get("choices") or [{}]
+    message = dict(choices[0].get("message") or {})
+    # An OpenAI-shaped tool call carries its arguments as a JSON string.
+    for call in message.get("tool_calls") or []:
+        function = call.get("function") or {}
+        if isinstance(function.get("arguments"), str):
+            try:
+                function["arguments"] = json.loads(function["arguments"])
+            except json.JSONDecodeError:
+                function["arguments"] = {"__unparsed__": function["arguments"]}
+    return message, time.time() - started, "ok"
 
 
 def score_reply(reply: str, support: str, row_class: str) -> tuple[list[str], bool | None]:
@@ -253,14 +283,20 @@ def run_item(
     declarations: dict[str, dict[str, Any]],
     model: str,
     timeout: float,
+    endpoint: str = ENDPOINT,
+    backend: str = "ollama",
 ) -> Attempt:
     menu = openai_tools(declarations[name] for name in row.menu)
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": ARMS[arm]},
         {"role": "user", "content": row.user_turn},
     ]
-    attempt = Attempt(item=row.id, row_class=row.row_class, arm=arm, called=False)
-    message, latency, transport = chat(messages, menu, model, timeout)
+    attempt = Attempt(
+        item=row.id, row_class=row.row_class,
+        cut=str(row.provenance.get("cut", row.row_class)), arm=arm, called=False,
+        expected_tool=row.calls[0].name if row.calls else "",
+    )
+    message, latency, transport = chat(messages, menu, model, timeout, endpoint, backend)
     attempt.latency_s += latency
     attempt.transport = transport
     if transport != "ok":
@@ -300,7 +336,7 @@ def run_item(
             {"name": name, "arguments": arguments, "response_class": response_class, "response": executed}
         )
         messages.append({"role": "tool", "name": name, "content": payload})
-    message, latency, transport = chat(messages, menu, model, timeout)
+    message, latency, transport = chat(messages, menu, model, timeout, endpoint, backend)
     attempt.latency_s += latency
     if transport != "ok":
         attempt.transport = transport
@@ -312,47 +348,143 @@ def run_item(
     return attempt
 
 
+def wilson(hits: int, total: int, z: float = 1.96) -> tuple[float | None, float | None]:
+    """A rate without its interval is a number pretending to be a finding."""
+    if not total:
+        return None, None
+    from math import sqrt
+
+    rate = hits / total
+    denominator = 1 + z * z / total
+    centre = (rate + z * z / (2 * total)) / denominator
+    half = z * sqrt(rate * (1 - rate) / total + z * z / (4 * total * total)) / denominator
+    return round(max(0.0, centre - half), 4), round(min(1.0, centre + half), 4)
+
+
+def rate(hits: int, total: int) -> dict[str, Any]:
+    low, high = wilson(hits, total)
+    return {
+        "rate": round(hits / total, 4) if total else None,
+        "counts": [hits, total],
+        "wilson95": [low, high],
+    }
+
+
+def summarize_cut(attempts: list[Attempt], arm: str, cut: str) -> dict[str, Any]:
+    """One cut, on its own. Pooling two cuts reports the authoring mix."""
+    rows = [a for a in attempts if a.arm == arm and a.cut == cut and a.transport == "ok"]
+    if not rows:
+        return {"cut": cut, "items": 0}
+    called = sum(1 for a in rows if a.called)
+    attempted = sum(a.formulation_attempts for a in rows)
+    hits = sum(a.formulation_hits for a in rows)
+    grounded = [a for a in rows if a.reply.strip() and a.calls]
+    body: dict[str, Any] = {
+        "cut": cut,
+        "items": len(rows),
+        "call_when_needed": rate(called, len(rows)),
+        "formulation_hit": rate(hits, attempted),
+        "confabulation": rate(sum(1 for a in grounded if a.unsupported), len(grounded)),
+        "mean_latency_s": round(sum(a.latency_s for a in rows) / len(rows), 2),
+    }
+    if cut in {"explicit", "implicit"}:
+        call_rate = called / len(rows)
+        hit_rate = hits / attempted if attempted else 0.0
+        # The headline. A call that returns nothing cannot ground a reply, so
+        # the product is the end-to-end quantity; both factors stay visible
+        # because the product alone hides which half moved.
+        body["evidence_yield"] = round(call_rate * hit_rate, 4)
+    if cut == "limit":
+        relayed = sum(1 for a in rows if a.states_limit and not a.unsupported)
+        body["refusal_relay"] = rate(relayed, len(rows))
+    if cut == "no_call":
+        body["spurious_call"] = rate(called, len(rows))
+    if cut == "heldout":
+        # Generality, scored on the deployed path: the name, the server's own
+        # argument validation, and whether the call came back with anything.
+        emitted = [a for a in rows if a.calls]
+        named = sum(1 for a in emitted if a.calls[0]["name"] == a.expected_tool)
+        valid = sum(
+            1 for a in emitted
+            if a.calls[0]["response"].get("ok") is not False
+            or a.calls[0]["response"].get("error", {}).get("type") != "malformed_input"
+        )
+        executable = sum(1 for a in emitted if a.calls[0]["response_class"] == "result")
+        body["tool_name_match"] = rate(named, len(rows))
+        body["schema_valid_arguments"] = rate(valid, len(emitted))
+        body["executability"] = rate(executable, len(rows))
+        body["tools_reached"] = sorted({a.calls[0]["name"] for a in emitted})
+    return body
+
+
+THRESHOLDS = {
+    "formulation_hit": {"floor_point": 0.256, "must_exceed": 0.411, "target": 0.55,
+                        "basis": "untuned upper 95% Wilson bound, probe-v0 offered arm"},
+    "refusal_relay": {"floor_point": 0.600, "must_exceed": 0.754, "target": 0.85,
+                      "basis": "untuned upper 95% Wilson bound, probe-v0 offered arm"},
+    "confabulation_limit": {"floor_point": 0.190, "must_not_exceed": 0.190,
+                            "basis": "untuned point estimate; falsifier 4 is disqualifying"},
+    "spurious_call": {"tripwire": 0.161,
+                      "basis": "untuned upper 95% Wilson bound; class C returns to 40% if crossed"},
+    "evidence_yield": {"floor_offered": 0.200, "floor_mandated": 0.220,
+                       "basis": "untuned probe-v0, call_when_needed x formulation_hit"},
+}
+
+
+def judge(cuts: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """State each threshold verdict once, so none can be said to have moved."""
+    verdicts: dict[str, Any] = {}
+    for cut in ("explicit", "implicit"):
+        body = cuts.get(cut) or {}
+        hit = (body.get("formulation_hit") or {}).get("rate")
+        if hit is not None:
+            verdicts[f"formulation_hit[{cut}]"] = {
+                "measured": hit,
+                "must_exceed": THRESHOLDS["formulation_hit"]["must_exceed"],
+                "passes": hit > THRESHOLDS["formulation_hit"]["must_exceed"],
+            }
+        if body.get("evidence_yield") is not None:
+            verdicts[f"evidence_yield[{cut}]"] = {
+                "measured": body["evidence_yield"],
+                "untuned_floor_offered": THRESHOLDS["evidence_yield"]["floor_offered"],
+            }
+    limit = cuts.get("limit") or {}
+    relay = (limit.get("refusal_relay") or {}).get("rate")
+    if relay is not None:
+        verdicts["refusal_relay"] = {
+            "measured": relay,
+            "must_exceed": THRESHOLDS["refusal_relay"]["must_exceed"],
+            "passes": relay > THRESHOLDS["refusal_relay"]["must_exceed"],
+        }
+    confab = (limit.get("confabulation") or {}).get("rate")
+    if confab is not None:
+        verdicts["confabulation[limit]"] = {
+            "measured": confab,
+            "must_not_exceed": THRESHOLDS["confabulation_limit"]["must_not_exceed"],
+            "passes": confab <= THRESHOLDS["confabulation_limit"]["must_not_exceed"],
+            "disqualifying": True,
+        }
+    spurious = (cuts.get("no_call") or {}).get("spurious_call", {}).get("rate")
+    if spurious is not None:
+        verdicts["spurious_call"] = {
+            "measured": spurious,
+            "tripwire": THRESHOLDS["spurious_call"]["tripwire"],
+            "tripped": spurious > THRESHOLDS["spurious_call"]["tripwire"],
+        }
+    return verdicts
+
+
 def summarize(attempts: list[Attempt], arm: str) -> dict[str, Any]:
-    arm_attempts = [attempt for attempt in attempts if attempt.arm == arm and attempt.transport == "ok"]
-    needed = [a for a in arm_attempts if a.row_class in {"A", "B", "D"}]
-    spurious = [a for a in arm_attempts if a.row_class == "C"]
-    limits = [a for a in arm_attempts if a.row_class == "D"]
-    replied = [a for a in arm_attempts if a.reply.strip()]
-    call_when_needed = sum(1 for a in needed if a.called) / len(needed) if needed else 0.0
-    spurious_rate = sum(1 for a in spurious if a.called) / len(spurious) if spurious else 0.0
-    formulation_attempts = sum(a.formulation_attempts for a in arm_attempts)
-    formulation_hits = sum(a.formulation_hits for a in arm_attempts)
-    relayed = [a for a in limits if a.states_limit and not a.unsupported]
-    # Confabulation is defined against a tool result, so it is counted only
-    # where one came back. A reply with no call behind it asserts from memory
-    # by construction; that failure is `call_when_needed`, not this one.
-    grounded = [a for a in replied if a.calls]
+    cuts = {
+        cut: summarize_cut(attempts, arm, cut)
+        for cut in sorted({a.cut for a in attempts if a.arm == arm})
+    }
     return {
         "arm": arm,
-        "items": len(arm_attempts),
-        "call_when_needed": round(call_when_needed, 4),
-        "call_when_needed_counts": [sum(1 for a in needed if a.called), len(needed)],
-        "spurious_call": round(spurious_rate, 4),
-        "spurious_call_counts": [sum(1 for a in spurious if a.called), len(spurious)],
-        "net_disposition": round(call_when_needed - spurious_rate, 4),
-        "formulation_hit": round(formulation_hits / formulation_attempts, 4) if formulation_attempts else None,
-        "formulation_counts": [formulation_hits, formulation_attempts],
-        "refusal_relay": round(len(relayed) / len(limits), 4) if limits else None,
-        "refusal_relay_counts": [len(relayed), len(limits)],
-        "confabulation": round(sum(1 for a in grounded if a.unsupported) / len(grounded), 4) if grounded else None,
-        "confabulation_counts": [sum(1 for a in grounded if a.unsupported), len(grounded)],
-        "confabulation_by_class": {
-            klass: [
-                sum(1 for a in grounded if a.row_class == klass and a.unsupported),
-                sum(1 for a in grounded if a.row_class == klass),
-            ]
-            for klass in ("A", "C", "D")
-        },
-        "unsupported_in_replies_with_no_call": [
-            sum(1 for a in replied if not a.calls and a.unsupported),
-            sum(1 for a in replied if not a.calls),
-        ],
-        "mean_latency_s": round(sum(a.latency_s for a in arm_attempts) / len(arm_attempts), 2) if arm_attempts else None,
+        "items": sum(1 for a in attempts if a.arm == arm and a.transport == "ok"),
+        "pooling": "cuts are reported apart; a pooled call rate tracks the authoring mix",
+        "cuts": cuts,
+        "verdicts": judge(cuts),
         "transport_failures": sum(1 for a in attempts if a.arm == arm and a.transport != "ok"),
     }
 
@@ -365,6 +497,9 @@ def main() -> int:
     parser.add_argument("--arms", nargs="+", default=list(ARMS))
     parser.add_argument("--limit", type=int, default=0, help="items per arm; 0 runs the whole probe")
     parser.add_argument("--timeout", type=float, default=300.0)
+    parser.add_argument("--endpoint", default=ENDPOINT)
+    parser.add_argument("--backend", choices=("ollama", "openai"), default="ollama")
+    parser.add_argument("--label", default="", help="names this run in the summary")
     parser.add_argument(
         "--rescore",
         type=Path,
@@ -410,7 +545,10 @@ def main() -> int:
     rows = read_rows(arguments.probe)
     if arguments.limit:
         rows = rows[: arguments.limit]
-    fingerprint = backend_fingerprint(arguments.model)
+    fingerprint = (backend_fingerprint(arguments.model) if arguments.backend == "ollama"
+                   else {"model": arguments.model, "endpoint": arguments.endpoint,
+                         "backend": "llama-server", "pinned": False,
+                         "note": "served from a local GGUF; the file path is the pin"})
     print(json.dumps(fingerprint), flush=True)
     server = HermesMCPServer("core", REPO_ROOT)
     declarations = {tool["name"]: tool for tool in server._public_tools}
@@ -420,7 +558,8 @@ def main() -> int:
         for arm in arguments.arms:
             started = time.time()
             for index, row in enumerate(rows, start=1):
-                attempt = run_item(row, arm, server, declarations, arguments.model, arguments.timeout)
+                attempt = run_item(row, arm, server, declarations, arguments.model,
+                                   arguments.timeout, arguments.endpoint, arguments.backend)
                 attempts.append(attempt)
                 print(
                     f"{arm:9s} {index:3d}/{len(rows)} {row.id:18s} class={row.row_class} "
@@ -432,7 +571,7 @@ def main() -> int:
     finally:
         server.close()
 
-    stamp = time.strftime("%Y%m%dT%H%M%S")
+    stamp = (arguments.label + "-" if arguments.label else "") + time.strftime("%Y%m%dT%H%M%S")
     transcript = arguments.output / f"floors-{stamp}.jsonl"
     with transcript.open("w", encoding="utf-8") as handle:
         for attempt in attempts:

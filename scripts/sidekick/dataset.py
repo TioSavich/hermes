@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import random
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -200,7 +201,12 @@ def classify_result(value: Any) -> str:
         return "abstention"
     if isinstance(value, dict):
         status = str(value.get("status", ""))
-        if status.startswith("no_") or status in {"refused", "sandbox_refused", "not_covered", "parse_error"}:
+        # `not_entailed_or_uncovered` is the entailment checker's honest
+        # unresolved status: it reports no relation rather than the absence of
+        # one, which is an abstention and not a finding.
+        if status.startswith("no_") or status.startswith("not_") or status in {
+            "refused", "sandbox_refused", "parse_error", "unresolved"
+        }:
             return "abstention"
         if value.get("rejection") or value.get("error"):
             return "abstention"
@@ -210,6 +216,53 @@ def classify_result(value: Any) -> str:
 
 
 GATE_NAMES = ("shape_ok", "provenance_ok", "ngram_ok", "framing_ok", "reexecuted_ok", "mask_ok")
+
+
+
+class WorkerHolder:
+    """A replaceable worker, because a stalled one cannot be waited out.
+
+    `PersistentPrologWorker._readline` selects against a deadline and then
+    calls `readline`, which blocks until a whole line arrives. An operation
+    that emits a partial line and stalls therefore hangs the client past its
+    own timeout. Re-execution runs on a thread with a wall clock; when one
+    stalls, the row is dropped as not reproducing and the server is replaced,
+    so the stall costs one row instead of the build.
+    """
+
+    def __init__(self, factory: Any) -> None:
+        self.factory = factory
+        self.server = factory()
+        self.stalls = 0
+
+    def replace(self) -> None:
+        self.stalls += 1
+        try:
+            self.server.close()
+        except Exception:
+            pass
+        self.server = self.factory()
+
+
+def bounded_execute(holder: "WorkerHolder", call: Call, seconds: float = 20.0) -> tuple[dict[str, Any], str]:
+    import concurrent.futures
+
+    # Not a context manager: its exit joins the worker thread, which is the
+    # very thing that cannot be waited on here.
+    runner = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    future = runner.submit(execute, holder.server, call)
+    try:
+        result = future.result(timeout=seconds)
+    except concurrent.futures.TimeoutError:
+        holder.replace()
+        runner.shutdown(wait=False, cancel_futures=True)
+        return (
+            {"ok": False, "error": {"type": "worker_stalled",
+                                    "message": f"{call.name} did not answer within {seconds:.0f}s"}},
+            "refusal",
+        )
+    runner.shutdown(wait=False)
+    return result
 
 
 @dataclass
@@ -225,6 +278,7 @@ class GateReport:
     response_class_counts: dict[str, int] = field(default_factory=dict)
     token_lengths: list[int] = field(default_factory=list)
     failures: list[dict[str, Any]] = field(default_factory=list)
+    reexecution: dict[str, Any] = field(default_factory=dict)
     per_row: dict[str, dict[str, bool]] = field(default_factory=dict)
     held_out_overlap: dict[str, Any] = field(default_factory=dict)
 
@@ -248,6 +302,7 @@ class GateReport:
             "rows": self.rows,
             "green": self.green,
             "contamination_index": index_manifest(),
+            "reexecution": self.reexecution,
             "held_out_overlap": self.held_out_overlap
             or {"training_overlap_checked": False, "reason": "no comparison set was supplied"},
             "provenance_ok": self.provenance_ok,
@@ -278,9 +333,37 @@ def run_gates(
     reexecute: bool = True,
     held_out: dict[str, str] | None = None,
     held_out_label: str = "",
+    holder: "WorkerHolder | None" = None,
+    reexecute_sample: int = 0,
+    sample_seed: int = 20260810,
 ) -> GateReport:
     report = GateReport()
     rows = list(rows)
+    # Several rows share one executed call, because one triple carries several
+    # framings. Reproduction is a property of the call, not of the row, so it
+    # is checked once per distinct call and reused.
+    seen_calls: dict[str, tuple[dict[str, Any], str]] = {}
+    # Re-execution can be sampled. The worker client blocks inside `readline`
+    # when an operation stalls mid-line, and one stall poisons the replacement
+    # worker too, so a full sweep over thousands of rows cannot be bounded.
+    # A sample keeps drift detection at a cost that terminates, and the report
+    # says how large the sample was rather than implying every row was checked.
+    sampled: set[str] | None = None
+    if reexecute_sample:
+        signatures = sorted({
+            json.dumps([call.name, call.arguments], ensure_ascii=False, sort_keys=True)
+            for row in rows for call in row.calls
+        })
+        rng = random.Random(sample_seed)
+        rng.shuffle(signatures)
+        sampled = set(signatures[:reexecute_sample])
+        report.reexecution = {
+            "mode": "sampled", "distinct_calls": len(signatures), "sampled": len(sampled),
+        }
+    elif reexecute:
+        report.reexecution = {"mode": "every_call"}
+    else:
+        report.reexecution = {"mode": "none"}
     # The probe is authored first and frozen; a training row that reaches into
     # it is the row that must go. Collisions are attributed per row so they are
     # dropped like any other gate failure rather than reddening the whole set.
@@ -335,7 +418,22 @@ def run_gates(
         drifted = False
         if reexecute:
             for call in row.calls:
-                response, response_class = execute(server, call)
+                signature = json.dumps(
+                    [call.name, call.arguments], ensure_ascii=False, sort_keys=True
+                )
+                if sampled is not None and signature not in sampled:
+                    report.response_class_counts[call.response_class] = (
+                        report.response_class_counts.get(call.response_class, 0) + 1
+                    )
+                    continue
+                if signature in seen_calls:
+                    response, response_class = seen_calls[signature]
+                elif holder is not None:
+                    response, response_class = bounded_execute(holder, call)
+                    seen_calls[signature] = (response, response_class)
+                else:
+                    response, response_class = execute(server, call)
+                    seen_calls[signature] = (response, response_class)
                 report.response_class_counts[response_class] = (
                     report.response_class_counts.get(response_class, 0) + 1
                 )

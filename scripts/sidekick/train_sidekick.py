@@ -99,6 +99,7 @@ def main() -> int:
     parser.add_argument("--model", default="google/gemma-4-E2B-it")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--max-steps", type=int, default=20)
+    parser.add_argument("--epochs", type=float, default=0.0, help="train for whole epochs instead of a step count")
     parser.add_argument("--save-steps", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--accumulation", type=int, default=8)
@@ -159,9 +160,12 @@ def main() -> int:
     print(f"trainable {trainable} of {total} ({100 * trainable / total:.3f}%)", flush=True)
 
     arguments.output.mkdir(parents=True, exist_ok=True)
+    schedule: dict[str, Any] = (
+        {"num_train_epochs": arguments.epochs} if arguments.epochs else {"max_steps": arguments.max_steps}
+    )
     training = TrainingArguments(
         output_dir=str(arguments.output),
-        max_steps=arguments.max_steps,
+        **schedule,
         per_device_train_batch_size=arguments.batch_size,
         gradient_accumulation_steps=arguments.accumulation,
         learning_rate=arguments.learning_rate,
@@ -185,7 +189,7 @@ def main() -> int:
     started = time.time()
     result = trainer.train(resume_from_checkpoint=resume)
     elapsed = time.time() - started
-    steps = result.global_step - (int(Path(resume).name.split("-")[1]) if resume else 0)
+    steps = max(1, result.global_step - (int(Path(resume).name.split("-")[1]) if resume else 0))
     tokens = steps * arguments.batch_size * arguments.accumulation * (data.token_total / max(1, len(data)))
     throughput = {
         "steps": steps,
