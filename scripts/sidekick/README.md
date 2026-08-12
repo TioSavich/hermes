@@ -52,6 +52,30 @@ ceiling. If either check drops a row, a bounded five-round refill draws only
 from unselected rows in the same seeded bucket and applies the same checks to
 those additions. The final exact-census checks still refuse any short bucket.
 
+## Wave 3 per-round build
+
+`build_wave3_sequences.py` reads the frozen wave-2 rows and emits one training
+sequence per assistant round. It requires the collected M-1 artifact to
+recompute outcome (c) over call-bearing records before building. Call sequences
+end with the measured token ids `[50, 1]`; reply, relay, and class-C sequences
+keep the canonical turn close.
+
+The builder checks four normalization shapes before the full pass: renderer
+arguments are mappings, HTTP wire arguments are JSON strings, and normalizing
+the wire objects back to mappings preserves token ids. Its mask check treats
+closed historical tool-response spans separately from the terminal `[50, 1]`
+state. It also reruns the 13-gram benchmark and 8-gram held-out gates, refuses
+any sequence over 4,096 tokens, checks the exact 10,860-sequence census, and
+re-renders the final JSONL for token accounting.
+
+```sh
+export PYTHONPATH=scripts/sidekick
+python3 scripts/sidekick/build_wave3_sequences.py
+```
+
+The outputs are `datasets/sidekick-wave3-seqs.jsonl` and
+`datasets/sidekick-wave3-seqs-gates.json` under the ignored sidekick runtime.
+
 ## Running it
 
 The renderer needs the checkpoint's template and vocabulary, which are not in
