@@ -418,12 +418,12 @@
       "standards": 22,
       "synthesis": 42,
       "unclassified": 9,
-      "workflow": 17,
+      "workflow": 18,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 88,
+      "orphan_module": 89,
       "routed_only": 15,
       "routed_paged": 189,
       "unrouted": 12
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 52
+      "undetermined": 53
     },
-    "total": 314,
+    "total": 315,
     "unrouted": 12
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -538,6 +538,20 @@
       "module": "geometry_figures",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "curriculum/im/enactment/support/geometry_figures.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated source-sliced IM task instances",
+          "path": "curriculum/im/generated/compiled_defragged_task_instances.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "compiled_defragged_task_instances",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/compiled_defragged_task_instances.pl",
       "verdict": "undetermined"
     },
     {

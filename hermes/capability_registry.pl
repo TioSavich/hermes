@@ -232,6 +232,7 @@ capability('curriculum/im/enactment/geometry_construction.pl', 'geometry_constru
 capability('curriculum/im/enactment/measurement.pl', 'im_enactment_measurement', 'workflow', [], orphan_module).
 capability('curriculum/im/enactment/support/data_representation_lessons.pl', 'data_representation_lessons', 'workflow', [], orphan_module).
 capability('curriculum/im/enactment/support/geometry_figures.pl', 'geometry_figures', 'workflow', [], orphan_module).
+capability('curriculum/im/generated/compiled_defragged_task_instances.pl', 'compiled_defragged_task_instances', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/compiled_receipt_routes.pl', 'compiled_receipt_routes', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'workflow', [], orphan_module).
 capability('curriculum/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
