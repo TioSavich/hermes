@@ -17,6 +17,7 @@ is `.superpowers/sdd/task-2026-08-10-sidekick-design.md`; the phase-0 report is
 | `build_pilot.py` | Builds pilot rows backward from executed worker calls, in the design's four decision classes. |
 | `build_probe.py` | Authors the disposition probe and executes the reference call behind each item. |
 | `measure_floors.py` | Runs the probe through the untuned checkpoint in two arms, executes every call it emits, and scores disposition, formulation, refusal relay, and confabulation. |
+| `shadow_scorer.py` | Runs the G5 read-only two-round diagnostic beside a frozen one-round transcript and cross-tabs sequential-navigation outcomes without computing floors or moving bars. |
 | `train_sidekick.py` | LoRA on the text tower with the mask above. Phase 0 runs it only as the law-zero proof. |
 | `run_lawzero_smoke.slurm` | That proof on `gpu-debug`: steps, checkpoint, resume, adapter confirmed as a file. |
 
@@ -75,6 +76,35 @@ python3 scripts/sidekick/build_wave3_sequences.py
 
 The outputs are `datasets/sidekick-wave3-seqs.jsonl` and
 `datasets/sidekick-wave3-seqs-gates.json` under the ignored sidekick runtime.
+
+## G5 two-round shadow scorer
+
+`shadow_scorer.py` is a separate diagnostic runner. It imports the frozen
+instrument's chat transport, assistant echo, worker execution, reply scoring,
+probe reader, and backend fingerprint. It does not import the threshold table
+or judge and refuses command-line requests containing `floor`, `judge`, or
+`threshold` options.
+
+Each item may execute calls from the first two assistant responses. A response
+without calls is the final reply and ends the item unchanged. When the second
+response calls tools, the runner executes those calls and requests one final
+reply. Any call emitted in that final response is recorded and left unexecuted.
+
+The required one-round transcript supplies item outcomes for the cross-tab:
+
+```sh
+export PYTHONPATH=scripts/sidekick
+python3 scripts/sidekick/shadow_scorer.py \
+  --one-round-transcript hermes/app/runtime/experiments/sidekick/floors/floors-<run>.jsonl
+```
+
+The transcript and summary are written beside the floors files as
+`shadow-<timestamp>.jsonl` and `shadow-<timestamp>.json`. Every cut reports
+second-call emission, second-call executability, final relay, and final grounded
+reply. The cross-tab names one-round relay misses recovered after bounded
+navigation and one-round formulation hits that never execute the probe's
+requested operation. These columns are diagnostic; the summary records
+`bars_moved: false` and `verdict_floors_computed: false`.
 
 ## Running it
 

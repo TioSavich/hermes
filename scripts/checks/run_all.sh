@@ -27,6 +27,7 @@ run mcp_search_rows.py      python3 "$CHECKS_DIR/mcp_search_rows.py"
 run mcp_full_graph.py       python3 "$CHECKS_DIR/mcp_full_graph.py"
 run task_240_branch_agents.py python3 "$CHECKS_DIR/task_240_branch_agents.py"
 run sidekick_strategy_surface.py python3 "$CHECKS_DIR/sidekick_strategy_surface.py"
+run sidekick_shadow_scorer.py python3 "$CHECKS_DIR/sidekick_shadow_scorer.py"
 # The three below read the sidekick's local runtime — the checkpoint's template
 # and vocabulary, M-1 evidence, and built rows. They print SKIP and pass when it is
 # absent, because nothing tracked may hard-require a gitignored input.
