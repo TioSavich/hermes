@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "id": "bar-chart",
+  "kind": "bar-chart",
+  "title": "Books read this month",
+  "description": "Counts supplied for four book genres.",
+  "canvas": {
+    "width": 640,
+    "height": 420
+  },
+  "axes": {
+    "xLabel": "Genre",
+    "yLabel": "Books"
+  },
+  "categories": [
+    {"label": "Fiction", "value": 8},
+    {"label": "History", "value": 5},
+    {"label": "Science", "value": 7},
+    {"label": "Poetry", "value": 3}
+  ]
+}

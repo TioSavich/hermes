@@ -1,6 +1,8 @@
 """Public monitoring and coverage routes."""
 from __future__ import annotations
 
+import urllib.parse
+from pathlib import Path
 from typing import Any
 
 from hermes.app import worker
@@ -12,10 +14,42 @@ from hermes.app.scripts import verify_monitoring_visuals
 LESSON_DEMONSTRATION_KEYS = frozenset({
     "lesson", "lesson_code", "task_id", "observed_answer", "work_transcription"
 })
+LESSON_VISUAL_SUFFIXES = frozenset({".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"})
+LESSON_VISUAL_ROOTS = (
+    Path("curriculum/im_teacher_guides"),
+    Path("hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides"),
+)
 
 
 def _lesson_code(ctx: Any) -> str:
     return str(ctx.payload.get("lesson_code") or ctx.payload.get("lesson") or "").strip()
+
+
+def resolve_lesson_visual(repo_root: Path, asset: str) -> Path | None:
+    """Resolve one lesson-owned image without exposing either artifact tree."""
+    relative = Path(asset)
+    if relative.is_absolute() or relative.suffix.lower() not in LESSON_VISUAL_SUFFIXES:
+        return None
+    target = (repo_root / relative).resolve()
+    if not target.is_file():
+        return None
+    for relative_root in LESSON_VISUAL_ROOTS:
+        allowed = (repo_root / relative_root).resolve()
+        if target == allowed or allowed in target.parents:
+            return target
+    return None
+
+
+def lesson_visual(ctx: Any) -> None:
+    values = urllib.parse.parse_qs(ctx.parsed.query, keep_blank_values=True).get("asset", [])
+    if len(values) != 1:
+        ctx._send_json({"error": "one lesson visual asset is required"}, status=400)
+        return
+    target = resolve_lesson_visual(ctx.repo_root, values[0])
+    if target is None:
+        ctx._send_json({"error": "lesson visual is unavailable"}, status=404)
+        return
+    ctx._send_file(target)
 
 
 def _bounded_monitoring_request(
@@ -194,6 +228,7 @@ def render_coverage(ctx: Any) -> None:
     ctx._send_json({"ok": True, "result": ctx.worker_request("render_coverage")})
 
 ROUTES = (
+    Route("GET", "/api/lesson_visual", lesson_visual),
     Route("POST", "/api/field_context", field_context),
     Route("POST", "/api/monitoring_chart_export", monitoring_chart_export),
     Route("POST", "/api/ranked_figures", ranked_figures),

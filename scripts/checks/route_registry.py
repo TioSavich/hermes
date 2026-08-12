@@ -44,6 +44,7 @@ POST /api/transcript_report public llm
 POST /api/media_transcribe public llm
 POST /api/pml_score public llm
 POST /api/misconception_search public misconception_search
+GET /api/lesson_visual public monitoring
 POST /api/field_context public monitoring
 POST /api/monitoring_chart_export public monitoring
 POST /api/ranked_figures public monitoring

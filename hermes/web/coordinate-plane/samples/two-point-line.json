@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "id": "two-point-line",
+  "kind": "coordinate-plane",
+  "title": "Line through A and B",
+  "description": "An infinite line determined by A and B, with a separate segment CD.",
+  "canvas": {
+    "width": 640,
+    "height": 420
+  },
+  "axes": {
+    "xLabel": "x",
+    "yLabel": "y"
+  },
+  "points": [
+    {"x": -2, "y": 1, "label": "A"},
+    {"x": 3, "y": 4, "label": "B"},
+    {"x": -1, "y": -2, "label": "C"},
+    {"x": 2, "y": -2, "label": "D"}
+  ],
+  "lines": [
+    {
+      "type": "through-points",
+      "points": [{"x": -2, "y": 1}, {"x": 3, "y": 4}],
+      "label": "AB"
+    },
+    {
+      "type": "segment",
+      "from": {"x": -1, "y": -2},
+      "to": {"x": 2, "y": -2},
+      "label": "segment CD",
+      "color": "#3f7f89"
+    }
+  ]
+}

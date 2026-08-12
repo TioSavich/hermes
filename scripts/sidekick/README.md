@@ -21,6 +21,20 @@ is `.superpowers/sdd/task-2026-08-10-sidekick-design.md`; the phase-0 report is
 | `train_sidekick.py` | LoRA on the text tower with the mask above. Phase 0 runs it only as the law-zero proof. |
 | `run_lawzero_smoke.slurm` | That proof on `gpu-debug`: steps, checkpoint, resume, adapter confirmed as a file. |
 
+## Display-marker culling contract
+
+Lesson pages may add `$...$` around arithmetic expressions for MathJax. Those
+delimiters belong only to the display layer. Stored curriculum rows remain
+verbatim, and training conversations must not teach either Markdown or TeX
+delimiters as part of ordinary lesson language.
+
+`training_text.py:cull_display_math_markers` recursively removes paired
+display markers containing a mathematical operator. `Row.messages()` applies that
+cull after the conversation is assembled and before chat-template rendering,
+mask construction, token counting, or training. Currency such as `$5` is not a
+paired arithmetic marker and is retained. A future extractor that bypasses
+`Row.messages()` must apply the same cull before writing a training artifact.
+
 ## Wave 2 dataset build
 
 `triples.py --base <phase-1-triples>` copies the executed phase-1 bank byte for

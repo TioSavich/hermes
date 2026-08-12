@@ -17973,6 +17973,13 @@ hermes/web/contact-sheets/goal-e-gallery.png
 hermes/web/contact-sheets/goal-e-monitoring-chart.png
 hermes/web/contact-sheets/goal-e-scoreboard.png
 hermes/web/contact-sheets/goal-e-visualizations.png
+hermes/web/coordinate-plane/README.md
+hermes/web/coordinate-plane/grapher.js
+hermes/web/coordinate-plane/index.html
+hermes/web/coordinate-plane/samples/bar-chart.json
+hermes/web/coordinate-plane/samples/dot-plot.json
+hermes/web/coordinate-plane/samples/linear-function.json
+hermes/web/coordinate-plane/samples/two-point-line.json
 hermes/web/coordination.html
 hermes/web/counting.html
 hermes/web/crisis.html

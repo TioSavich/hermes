@@ -181,6 +181,7 @@ KEEP_MD = {
     "curriculum/im/README.md",
     "knowledge/misconceptions/README.md",
     "hermes/web/README.md",
+    "hermes/web/coordinate-plane/README.md",
     "hermes/web/render/README.md",
     "formal/pml/README.md",
     "hermes/representation/README.md",

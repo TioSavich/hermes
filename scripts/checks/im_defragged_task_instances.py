@@ -13,27 +13,34 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 ARTIFACT = ROOT / "curriculum/im/generated/compiled_defragged_task_instances.pl"
 COMPILED = ROOT / "curriculum/im/generated/compiled_task_instances.pl"
+GRADE8_COMPILED = ROOT / "curriculum/im/generated/grade_8_extracted_task_instances.pl"
 GENERATOR = ROOT / "scripts/curriculum/build_im_defragged_task_instances.py"
 FIXTURES = ROOT / "scripts/checks/fixtures/im_defrag_source_spans.json"
 EXPECTED_STATUS = Counter(
     {
-        "already_complete": 547,
-        "recovered": 1261,
+        "already_complete": 834,
+        "recovered": 1273,
         "recovered_with_referent": 3,
-        "blocked_missing_visual": 23,
-        "blocked_layout": 312,
+        "blocked_missing_visual": 164,
+        "blocked_layout": 385,
     }
 )
 EXPECTED_BLOCKERS = Counter(
     {
-        "none": 1811,
+        "none": 2110,
         "required_visual_asset_unresolved": 23,
         "pdf_source_absent_no_unique_markdown_join": 242,
         "joined_source_span_not_complete": 60,
         "task_external_evidence_no_unique_productive_peer": 9,
         "known_cross_page_layout_refusal": 1,
+        "expression_missing_from_markdown": 135,
+        "expression_missing_without_visual": 70,
+        "curriculum_text_absent_after_docling": 6,
+        "task_section_contains_no_curriculum_text": 3,
     }
 )
 SWI_GOAL = r"""use_module(library(http/json)),use_module(curriculum/im/generated/compiled_defragged_task_instances), forall(compiled_defragged_task_instances:defragged_task_instance(Id,L,T,D),(term_string(T,TS,[quoted(true)]),get_dict(source_evidence,D,E),term_string(E,ES,[quoted(true)]),del_dict(source_evidence,D,_,D1),del_dict(visuals,D1,Vs,D2),length(Vs,VC),put_dict(_{record_id:Id,lesson:L,task_term:TS,evidence_term:ES,visual_count:VC},D2,O),json_write_dict(current_output,O,[width(0)]),nl)),halt."""
@@ -61,12 +68,11 @@ def read_rows() -> list[dict]:
         fail(f"artifact JSON projection failed: {exc}")
 
 
-def scan_compiled_facts() -> list[bytes]:
-    data = COMPILED.read_bytes()
+def scan_file_facts(path: Path, prefix: str) -> list[bytes]:
+    data = path.read_bytes()
     if not data.isascii():
         fail("compiled task artifact is no longer ASCII-rendered")
     text = data.decode("ascii")
-    prefix = "compiled_lesson_task_instance("
     facts = []
     cursor = 0
     while True:
@@ -103,6 +109,13 @@ def scan_compiled_facts() -> list[bytes]:
     return facts
 
 
+def scan_compiled_facts() -> list[bytes]:
+    return [
+        *scan_file_facts(COMPILED, "compiled_lesson_task_instance("),
+        *scan_file_facts(GRADE8_COMPILED, "extracted_lesson_task_instance("),
+    ]
+
+
 def decode_segment(segment: dict, cache: dict[str, bytes]) -> str:
     path = segment["path"]
     candidate = (ROOT / path).resolve()
@@ -125,6 +138,12 @@ def decode_segment(segment: dict, cache: dict[str, bytes]) -> str:
         return raw.decode("utf-8")
     if decoder in {"json_string_ascii", "json_string_utf8"}:
         return json.loads(b'"' + raw + b'"')
+    if decoder == "docling_json_text_v1":
+        return " ".join(json.loads(b'"' + raw + b'"').split())
+    if decoder == "docling_formula_spacing_v1":
+        from scripts.curriculum import recover_docling_grade8 as recovery
+
+        return recovery.normalize_formula(json.loads(b'"' + raw + b'"'))
     fail(f"unknown decoder for {segment['id']}: {decoder}")
 
 
@@ -178,7 +197,7 @@ def check_provenance(rows: list[dict]) -> None:
 
 def check_identity(rows: list[dict]) -> None:
     facts = scan_compiled_facts()
-    if len(facts) != 2146 or len(rows) != 2146:
+    if len(facts) != 2659 or len(rows) != 2659:
         fail(f"one-to-one row count drift: compiled={len(facts)}, defrag={len(rows)}")
     ids = [row["record_id"] for row in rows]
     if len(ids) != len(set(ids)):
@@ -205,17 +224,17 @@ def check_census(rows: list[dict]) -> None:
         fail(f"status census drift: {status}")
     if blockers != EXPECTED_BLOCKERS:
         fail(f"blocker census drift: {blockers}")
-    if sum(row["visual_count"] for row in rows) != 23:
-        fail("visual absence-marker count is not 23")
+    if sum(row["visual_count"] for row in rows) != 164:
+        fail("visual absence-marker count is not 164")
     if (
         sum(
             row["status"]
             in {"already_complete", "recovered", "recovered_with_referent"}
             for row in rows
         )
-        != 1811
+        != 2110
     ):
-        fail("eligible record count is not 1,811")
+        fail("eligible record count is not 2,110")
 
 
 def check_visual_markers() -> None:
@@ -313,8 +332,8 @@ def main() -> None:
     check_l17_type_specimen()
     check_double_generation()
     print(
-        "PASS im defrag: 2,146 rows; 1,811 usable; 312 layout blocks; "
-        "23 visual blocks; 20 spans; byte provenance and double generation"
+        "PASS im defrag: 2,659 rows; 2,110 usable; 385 layout blocks; "
+        "164 visual blocks; 20 spans; byte provenance and double generation"
     )
 
 

@@ -1,6 +1,6 @@
 /** <module> Generated research-measurement provenance registry
  *
- * The denominator is every explicit quantitative-result statement in the 35
+ * The denominator is every explicit quantitative-result statement in the 36
  * top-level Markdown reports in docs/research/: a non-code prose line with
  * a percentage or cohort ratio, or a Markdown table data row under a header
  * that names a quantitative field. A table row is one measurement vector;
@@ -63,7 +63,7 @@ measurement_receipt(measurement(37), 'docs/research/2026-07-25-the-window-was-as
 measurement_receipt(measurement(38), 'docs/research/2026-07-25-the-window-was-asked.md', 'table_lines(56,60)', 'table header: | | count |; row: | shards only | 1 |', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(39), 'docs/research/2026-07-25-the-window-was-asked.md', 'table_lines(56,61)', 'table header: | | count |; row: | neither | 20 |', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(40), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(15,17)', 'table header: | status | count |; row: | `lazy_reachable` | 10 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
-measurement_receipt(measurement(41), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(15,18)', 'table header: | status | count |; row: | `orphan_module` | 89 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
+measurement_receipt(measurement(41), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(15,18)', 'table header: | status | count |; row: | `orphan_module` | 98 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(42), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(15,19)', 'table header: | status | count |; row: | `routed_only` | 15 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(43), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(15,20)', 'table header: | status | count |; row: | `routed_paged` | 189 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(44), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(15,21)', 'table header: | status | count |; row: | `unrouted` | 12 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
@@ -83,7 +83,7 @@ measurement_receipt(measurement(57), 'docs/research/2026-07-25-what-the-repo-kno
 measurement_receipt(measurement(58), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(25,40)', 'table header: | class | count |; row: | `standards` | 22 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(59), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(25,41)', 'table header: | class | count |; row: | `synthesis` | 42 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(60), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(25,42)', 'table header: | class | count |; row: | `unclassified` | 9 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
-measurement_receipt(measurement(61), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(25,43)', 'table header: | class | count |; row: | `workflow` | 18 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
+measurement_receipt(measurement(61), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(25,43)', 'table header: | class | count |; row: | `workflow` | 27 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(62), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(25,44)', 'table header: | class | count |; row: | `zeeman` | 4 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(63), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,50)', 'table header: | verdict | count |; row: | `consumed_by_check` | 6 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(64), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,51)', 'table header: | verdict | count |; row: | `consumed_by_builder` | 2 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
@@ -91,7 +91,7 @@ measurement_receipt(measurement(65), 'docs/research/2026-07-25-what-the-repo-kno
 measurement_receipt(measurement(66), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,53)', 'table header: | verdict | count |; row: | `deliberately_unloaded` | 4 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(67), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,54)', 'table header: | verdict | count |; row: | `stalled_input` | 3 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(68), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,55)', 'table header: | verdict | count |; row: | `superseded` | 0 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
-measurement_receipt(measurement(69), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,56)', 'table header: | verdict | count |; row: | `undetermined` | 53 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
+measurement_receipt(measurement(69), 'docs/research/2026-07-25-what-the-repo-knows-about-itself.md', 'table_lines(48,56)', 'table header: | verdict | count |; row: | `undetermined` | 62 |', live_script('scripts/research/build_self_description_census.py'), ['hermes/capability_registry.pl'], resolved_live_method).
 measurement_receipt(measurement(70), 'docs/research/2026-07-26-mathtutorbench-nine-columns.md', 'line(135)', '**Coverage is not the problem.** Prolog adjudicates **99%** of every equation', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(71), 'docs/research/2026-07-26-mathtutorbench-nine-columns.md', 'line(136)', 'the reader hands it — 471 of 478 from incorrect student solutions, 462 of 466', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(72), 'docs/research/2026-07-26-mathtutorbench-nine-columns.md', 'line(154)', 'fell from 8 to 3 of about 465, 1.7% to 0.6%, with extraction unchanged.', none_recorded, none_recorded, method_not_recorded).
@@ -352,13 +352,15 @@ measurement_receipt(measurement(326), 'docs/research/2026-08-08-ab-experiment-fi
 measurement_receipt(measurement(327), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,191)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L4/L5 equation-binding retries exhausted | 73 | 72 | 145 |', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(328), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,192)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | L5 result-binding retries exhausted | 48 | 19 | 67 |', none_recorded, none_recorded, method_not_recorded).
 measurement_receipt(measurement(329), 'docs/research/2026-08-08-ab-experiment-finding.md', 'table_lines(183,193)', 'table header: | Questionnaire internal system-abstention event | Incorrect | Correct | All |; row: | **internal system-abstention events** | **811** | **320** | **1,131** |', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(330), 'docs/research/2026-08-12-defrag-solver-coverage.md', 'line(43)', '**1,808 / 1,811 = 99.8%.** The three refusals are', none_recorded, none_recorded, method_not_recorded).
+measurement_receipt(measurement(331), 'docs/research/2026-08-12-defrag-solver-coverage.md', 'line(75)', 'It claims: for 99.8% of the usable defragged tasks, a registered,', none_recorded, none_recorded, method_not_recorded).
 
-measurement_denominator(explicit_quantitative_result_statement, 329).
+measurement_denominator(explicit_quantitative_result_statement, 331).
 measurement_resolution_count(resolved_live_method, 81).
 measurement_resolution_count(resolved_method_data_missing, 1).
 measurement_resolution_count(method_ambiguous, 5).
 measurement_resolution_count(data_method_unrecorded, 26).
-measurement_resolution_count(method_not_recorded, 216).
+measurement_resolution_count(method_not_recorded, 218).
 
 measurement_control(coverage_absence_registry, 'scripts/extract_coverage_absence_registry.py', resolved_live_method).
 measurement_control(self_description_census, 'scripts/research/build_self_description_census.py', resolved_live_method).

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "id": "dot-plot",
+  "kind": "dot-plot",
+  "title": "Number of books read",
+  "description": "Each dot records one supplied value.",
+  "canvas": {
+    "width": 640,
+    "height": 360
+  },
+  "axes": {
+    "xLabel": "Books",
+    "tickStep": 1
+  },
+  "values": [1, 2, 2, 3, 3, 3, 4, 4, 5, 6, 6, 6, 6]
+}

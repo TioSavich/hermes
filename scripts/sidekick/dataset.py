@@ -25,6 +25,7 @@ from typing import Any, Iterable, Sequence
 from chat_format import GemmaChatFormat, conversation
 from contamination import SPLIT_GRAM, OverlapGate, index_manifest, provenance_hits, split_overlap
 from supervision import MaskViolation, build as build_mask, check as check_mask
+from training_text import cull_display_math_markers
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = REPO_ROOT / "hermes" / "app" / "runtime" / "experiments" / "sidekick"
@@ -105,7 +106,7 @@ class Row:
                 self.reply,
             )
         )
-        return messages
+        return cull_display_math_markers(messages)
 
 
 def write(rows: Sequence[Row], path: Path) -> Path:

@@ -203,7 +203,7 @@ class RequestContext:
         parsed_routes = {
             "/", "/api/knowledge", "/api/visualize/coordination",
             "/api/reorganize", "/api/fraction/render", "/api/fraction/compare",
-            "/api/unit_coordination.svg",
+            "/api/unit_coordination.svg", "/api/lesson_visual",
         }
         if self.method == "GET" and self.parsed.path in parsed_routes:
             return self.parsed.path

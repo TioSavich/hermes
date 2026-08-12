@@ -56,6 +56,7 @@ run action_grammar.py       python3 "$CHECKS_DIR/action_grammar.py"
 run corpus_window.py        python3 "$CHECKS_DIR/corpus_window.py"
 run review_surface.py       python3 "$CHECKS_DIR/review_surface.py"
 run automaton_input_contracts.py python3 "$CHECKS_DIR/automaton_input_contracts.py"
+run strategy_trace_worker_guard.py python3 "$CHECKS_DIR/strategy_trace_worker_guard.py"
 run shared_role_input_decoder.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/shared_role_input_decoder.pl" -g main -t halt
 run grid_overlays.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -l "$CHECKS_DIR/grid_overlays.pl" -g grid_overlays_check:main -t halt
 run relevance_negation.py   python3 "$CHECKS_DIR/relevance_negation.py"
@@ -85,6 +86,7 @@ run build_equation_verifications python3 "$CHECKS_DIR/../curriculum/build_equati
 run equation_verification_witness.py python3 "$CHECKS_DIR/equation_verification_witness.py"
 run strategy_task_span_refusal.py python3 "$CHECKS_DIR/strategy_task_span_refusal.py"
 run im_defragged_task_instances.py python3 "$CHECKS_DIR/im_defragged_task_instances.py"
+run k7_guide_questions.py python3 "$CHECKS_DIR/k7_guide_questions.py"
 run extract_vision_lesson_digest_audit python3 "$CHECKS_DIR/../extract_vision_lesson_digest_audit.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 # After the census: the census writes a docs/research report, and the measurement
@@ -96,6 +98,7 @@ run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
 run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
 run monitoring_route_budget.py python3 "$CHECKS_DIR/monitoring_route_budget.py"
 run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_client_guard.py"
+run lesson_typesetting.py python3 "$CHECKS_DIR/lesson_typesetting.py"
 run lesson_arithmetic_demonstration.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/lesson_arithmetic_demonstration.pl" -g main -t halt
 run vertical_slice_build1.py python3 "$CHECKS_DIR/vertical_slice_build1.py"
 run crosswalk_load.sh       bash "$CHECKS_DIR/crosswalk_load.sh"

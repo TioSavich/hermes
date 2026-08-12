@@ -1041,8 +1041,12 @@ def build() -> dict[str, object]:
     # 315 from 2026-08-12: compiled_defragged_task_instances — the defrag
     # artifact's generated module (orphan by design; consumers arrive in
     # later slices).
-    if len(registry_rows) != 315:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 315")
+    # 324 later on 2026-08-12: the defrag consumers arrived (the worker's
+    # display fallback reads the artifact, so it left the orphan set), and
+    # the nine per-grade extracted guide-question modules entered
+    # (grade_k..grade_8; pending review; compiled context consumes them).
+    if len(registry_rows) != 324:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 324")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1110,8 +1114,14 @@ def build() -> dict[str, object]:
     # 89 from 2026-08-12: compiled_defragged_task_instances.pl joins as a
     # generated orphan; its consumers (training pairs, chart referents,
     # page typesetting) land in later slices.
-    if len(orphan_records) != 89:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 89")
+    # 98 later on 2026-08-12: the defrag artifact LEFT the orphan set (the
+    # worker's display fallback consumes it), while ten extraction modules
+    # entered — grade_8_extracted_task_instances plus the nine per-grade
+    # extracted guide-question files. Their consumers are the compiled
+    # context (built, not loaded) and the coming question-mining slices;
+    # unconsumed here means stalled pipeline input, never vestige.
+    if len(orphan_records) != 98:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 98")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

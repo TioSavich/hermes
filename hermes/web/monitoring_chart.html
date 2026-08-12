@@ -4,8 +4,16 @@
 <title>Monitoring chart &mdash; IM-G2-U2-L2</title>
 <link rel="stylesheet" href="hermes-tokens.css">
 <link rel="stylesheet" href="render/host.css">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="monitoring"></script>
 <script src="render/request.js"></script>
+<script src="render/lesson-typesetting.js"></script>
 <style>
  /* Colors come from hermes-tokens. Gold = a corpus binding promoted by the
     triage; reject = a low-coherence one; corpus = a manifest-sourced figure. */
@@ -67,7 +75,12 @@
  .lesson-context{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem}
  .context-card{border:1px solid var(--line);border-radius:8px;padding:.8rem;background:var(--paper-cool)}
  .context-card h3{font-size:.9rem;margin:0 0 .35rem}.context-card p{margin:.2rem 0}
- .guide-item{white-space:pre-line}.guide-source{display:block;color:var(--muted);font-size:.75rem;margin-top:.25rem}
+ .guide-item{margin:.35rem 0 1rem}.guide-source{display:block;color:var(--muted);font-size:.75rem;margin-top:.25rem}
+ .lesson-display-paragraph{margin:.25rem 0 .65rem}.lesson-display-list{margin:.3rem 0 .7rem;padding-left:1.35rem}
+ .lesson-display-list li{margin:.2rem 0}.lesson-display-subitem{margin-left:1.1rem;list-style:circle}
+ .lesson-source-visual{margin:.65rem 0;max-width:100%;background:var(--paper)}
+ .lesson-source-visual img{max-width:100%;max-height:420px;object-fit:contain;margin:0 auto}
+ .lesson-source-status{font-size:.78rem;color:var(--rust);font-weight:700}
  .strategy-list{display:grid;gap:.65rem;padding:0;list-style:none}
  .strategy-list li{border-left:3px solid var(--gold);padding:.35rem .65rem;background:var(--paper-cool)}
 .strategy-name{font-weight:700}.strategy-cue,.strategy-question{display:block;font-size:.86rem;color:var(--muted)}
@@ -601,8 +614,8 @@ trace.</p>
       var section = document.createElement('section');
       var heading = document.createElement('h3');
       heading.textContent = title;
-      var body = document.createElement('p');
-      body.textContent = text || 'Not included in the lesson notes.';
+      var body = document.createElement('div');
+      HermesLessonTypesetting.renderInto(body, text || 'Not included in the lesson notes.');
       section.appendChild(heading);
       section.appendChild(body);
       return section;
@@ -611,8 +624,10 @@ trace.</p>
     function renderTomorrowCard(chart, context) {
       context = context || {};
       var goal = el('lesson-goal').textContent;
-      var tasks = Array.isArray(chart.registered_task_instances) ? chart.registered_task_instances : [];
-      var task = tasks.length ? (tasks[0].excerpt || tasks[0].task || '') : '';
+      var displayTasks = Array.isArray(chart.display_task_instances) ? chart.display_task_instances : [];
+      var registeredTasks = Array.isArray(chart.registered_task_instances) ? chart.registered_task_instances : [];
+      var tasks = displayTasks.length ? displayTasks : registeredTasks;
+      var task = tasks.length ? (tasks[0].statement || tasks[0].excerpt || tasks[0].task || '') : '';
       if (!task && Array.isArray(chart.activity_prompt) && chart.activity_prompt.length) task = chart.activity_prompt[0].text || '';
       var strategies = (context.strategies || chart.anticipated_strategies || []).slice(0, 3);
       var clusters = context.monitoring_clusters || [];
@@ -682,21 +697,51 @@ trace.</p>
         return;
       }
       items.forEach(function (item) {
-        var p = document.createElement('p');
-        p.className = 'guide-item';
+        var article = document.createElement('article');
+        article.className = 'guide-item';
         var heading = document.createElement('b');
         heading.textContent = item.heading || 'Teacher guide excerpt';
-        p.appendChild(heading);
-        p.appendChild(document.createElement('br'));
-        p.appendChild(document.createTextNode(item.text || ''));
+        article.appendChild(heading);
+        var body = document.createElement('div');
+        body.className = 'lesson-display-body';
+        HermesLessonTypesetting.renderInto(body, item.text || '');
+        article.appendChild(body);
         var source = document.createElement('span');
         source.className = 'guide-source';
         source.textContent = (item.source_guide || 'source guide')
           + (typeof item.line === 'number' ? ', line ' + item.line : '');
-        p.appendChild(source);
-        target.appendChild(p);
+        article.appendChild(source);
+        target.appendChild(article);
       });
     }
+
+    function normalizeSnapshotLessonText() {
+      document.querySelectorAll('#lesson-task .guide-item, #lesson-sequence .guide-item').forEach(function (item) {
+        if (item.querySelector('.lesson-display-body')) return;
+        var source = item.querySelector('.guide-source');
+        var lineBreak = item.querySelector('br');
+        if (!lineBreak) return;
+        var text = '';
+        var node = lineBreak.nextSibling;
+        while (node && node !== source) {
+          text += node.textContent || '';
+          var next = node.nextSibling;
+          item.removeChild(node);
+          node = next;
+        }
+        item.removeChild(lineBreak);
+        var body = document.createElement('div');
+        body.className = 'lesson-display-body';
+        HermesLessonTypesetting.renderInto(body, text);
+        item.insertBefore(body, source || null);
+      });
+    }
+
+    normalizeSnapshotLessonText();
+    window.addEventListener('load', function () {
+      HermesLessonTypesetting.typeset(el('lesson-task'));
+      HermesLessonTypesetting.typeset(el('lesson-sequence'));
+    });
 
     function renderGuideQuestionCards(items) {
       var target = el('student-work-guide-questions');
@@ -751,18 +796,76 @@ trace.</p>
       target.textContent = '';
       target.appendChild(noteP('The full activity prompt is not carried here; these registered task instances are the excerpts the live payload does carry.'));
       items.forEach(function (item) {
-        var p = document.createElement('p');
-        p.className = 'guide-item';
+        var article = document.createElement('article');
+        article.className = 'guide-item';
         var heading = document.createElement('b');
-        heading.textContent = 'Registered task instance — ' + (item.position || 'lesson task');
-        p.appendChild(heading);
-        p.appendChild(document.createElement('br'));
-        p.appendChild(document.createTextNode(item.excerpt || item.task || ''));
+        heading.textContent = 'Registered task instance: ' + (item.position || 'lesson task');
+        article.appendChild(heading);
+        var body = document.createElement('div');
+        body.className = 'lesson-display-body';
+        HermesLessonTypesetting.renderInto(body, item.excerpt || item.task || '');
+        article.appendChild(body);
         var source = document.createElement('span');
         source.className = 'guide-source';
         source.textContent = item.source || 'registered source';
-        p.appendChild(source);
-        target.appendChild(p);
+        article.appendChild(source);
+        target.appendChild(article);
+      });
+    }
+
+    function lessonVisualPaths(item) {
+      var seen = {};
+      return (Array.isArray(item.visuals) ? item.visuals : []).filter(function (asset) {
+        asset = String(asset || '');
+        if (!/\.(?:gif|jpe?g|png|svg|webp)$/i.test(asset) || seen[asset]) return false;
+        seen[asset] = true;
+        return true;
+      });
+    }
+
+    function renderDisplayTaskInstances(items) {
+      var target = el('lesson-task');
+      target.textContent = '';
+      target.appendChild(noteP('These complete task statements come from the source-sliced lesson store. Typesetting is applied only on this page.'));
+      items.forEach(function (item) {
+        var article = document.createElement('article');
+        article.className = 'guide-item';
+        var heading = document.createElement('b');
+        heading.textContent = 'Lesson task: ' + (item.position || 'lesson task');
+        article.appendChild(heading);
+        if (item.status === 'blocked_missing_visual') {
+          var status = document.createElement('div');
+          status.className = 'lesson-source-status';
+          status.textContent = 'blocked_missing_visual: ' + (item.blocker || 'the source visual is required');
+          article.appendChild(status);
+        }
+        var body = document.createElement('div');
+        body.className = 'lesson-display-body';
+        HermesLessonTypesetting.renderInto(body, item.statement || '');
+        article.appendChild(body);
+        lessonVisualPaths(item).forEach(function (asset) {
+          var url = '/api/lesson_visual?asset=' + encodeURIComponent(asset);
+          var figure = document.createElement('figure');
+          figure.className = 'lesson-source-visual';
+          var link = document.createElement('a');
+          link.href = url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          var image = document.createElement('img');
+          image.src = url;
+          image.alt = 'Source visual for ' + (item.position || 'this lesson task');
+          link.appendChild(image);
+          var caption = document.createElement('figcaption');
+          caption.textContent = asset.split('/').pop() + ' (lesson source artifact)';
+          figure.appendChild(link);
+          figure.appendChild(caption);
+          article.appendChild(figure);
+        });
+        var source = document.createElement('span');
+        source.className = 'guide-source';
+        source.textContent = item.source || 'compiled defragged lesson source';
+        article.appendChild(source);
+        target.appendChild(article);
       });
     }
 
@@ -816,12 +919,24 @@ trace.</p>
       configureDemonstration(code);
       renderGuideQuestionCards(chart.guide_questions);
 
+      var prompts = chart.activity_prompt || context.activity_prompt;
+      var displayTasks = Array.isArray(chart.display_task_instances)
+        ? chart.display_task_instances : [];
       var registeredTasks = Array.isArray(chart.registered_task_instances)
         ? chart.registered_task_instances : [];
-      if (registeredTasks.length) {
+      var imageDependentTasks = displayTasks.filter(function (item) {
+        return item.status === 'blocked_missing_visual' && lessonVisualPaths(item).length;
+      });
+      if (imageDependentTasks.length) {
+        renderDisplayTaskInstances(displayTasks);
+      } else if (Array.isArray(prompts) && prompts.length) {
+        renderGuideItems('lesson-task', prompts, '');
+      } else if (displayTasks.length) {
+        renderDisplayTaskInstances(displayTasks);
+      } else if (registeredTasks.length) {
         renderRegisteredTaskInstances(registeredTasks);
       } else {
-        renderGuideItems('lesson-task', chart.activity_prompt || context.activity_prompt,
+        renderGuideItems('lesson-task', [],
           'The live lesson payload does not carry the activity prompt. Open the teacher guide before teaching this lesson.');
       }
       var anchors = (context.standards || []).filter(function (row) { return row.framework === 'im_lesson'; });
@@ -979,6 +1094,9 @@ trace.</p>
       var deformationChart = chart.deformation_chart && chart.deformation_chart.chart;
       renderMonitoringVisuals(code, deformationChart);
       renderTomorrowCard(chart, context);
+      HermesLessonTypesetting.typeset(el('lesson-task'));
+      HermesLessonTypesetting.typeset(el('lesson-sequence'));
+      HermesLessonTypesetting.typeset(el('card-body'));
 
       // Point the drawer at the live lesson's leading strand: the first
       // operation in STRAND_ORDER that any of its strategies carries.

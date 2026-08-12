@@ -53,6 +53,7 @@
 :- use_module(library(lists)).
 :- use_module(library(apply)).
 :- use_module(library(pairs)).
+:- use_module(library(time), [ call_with_time_limit/2 ]).
 :- use_module(library(http/json), [ atom_json_dict/3 ]).
 
 :- use_module(strategies(math/action_automata_registry)).
@@ -360,21 +361,122 @@ strategy_trace_dict(StrategyName0, Input, Dict) :-
     term_text_string(LookupName, NameStr),
     trace_inputs_result(Input, A, B, DecodeResult),
     (   DecodeResult == ok
-    ->  (   catch(run_named_strategy(LookupName, A, B, Result, History),
-                  _Err, fail)
-        ->  trace_result_dict(LookupName, NameStr, A, B, Result, History, Dict)
-        ;   Dict = _{
-                strategy: NameStr,
-                ok: false,
-                representation: "fsm",
-                result: "",
-                steps: [],
-                jumps: [],
-                note: "Strategy could not be run on the given input (no matching operator/strategy, or the run failed)."
-            }
-        )
+    ->  strategy_trace_decoded_dict(LookupName, NameStr, A, B, Dict)
     ;   trace_input_error_dict(LookupName, NameStr, Input, Dict)
     ).
+
+% The grounded whole-number machines represent an integer as one tally per
+% unit. Their measured safe reach is therefore a magnitude contract, not a
+% numeral-length contract. Check it before any machine constructs a
+% recollection. Counting and decimal machines use different representations
+% and remain outside this bound.
+grounded_arithmetic_input_bound(5000).
+strategy_trace_execution_bound_seconds(5).
+
+strategy_trace_decoded_dict(LookupName, NameStr, A, B, Dict) :-
+    strategy_trace_execution_contract(LookupName, A, B, Contract),
+    (   Contract = refused(Operation, Magnitude, Bound)
+    ->  trace_magnitude_refusal_dict(
+            LookupName, NameStr, Operation, Magnitude, Bound, Dict)
+    ;   strategy_trace_execution_bound_seconds(Seconds),
+        catch(call_with_time_limit(
+                  Seconds,
+                  strategy_trace_execution_dict(
+                      LookupName, NameStr, A, B, Dict)),
+              Error,
+              trace_execution_exception_dict(
+                  Error, LookupName, NameStr, Seconds, Dict))
+    ).
+
+strategy_trace_execution_contract(LookupName, A, B,
+        refused(Operation, Magnitude, Bound)) :-
+    once(action_automata_registry:action_automaton_cluster(
+             Operation, LookupName, _)),
+    grounded_arithmetic_operation(Operation),
+    integer(A),
+    integer(B),
+    Magnitude is max(abs(A), abs(B)),
+    grounded_arithmetic_input_bound(Bound),
+    Magnitude > Bound,
+    !.
+strategy_trace_execution_contract(_LookupName, _A, _B, admitted).
+
+grounded_arithmetic_operation(addition).
+grounded_arithmetic_operation(subtraction).
+grounded_arithmetic_operation(multiplication).
+grounded_arithmetic_operation(division).
+
+strategy_trace_execution_dict(LookupName, NameStr, A, B, Dict) :-
+    (   catch(run_named_strategy(LookupName, A, B, Result, History),
+              Error, fail_unless_time_limit(Error))
+    ->  trace_result_dict(LookupName, NameStr, A, B, Result, History, Dict)
+    ;   Dict = _{
+            strategy: NameStr,
+            ok: false,
+            representation: "fsm",
+            result: "",
+            steps: [],
+            jumps: [],
+            note: "Strategy could not be run on the given input (no matching operator/strategy, or the run failed)."
+        }
+    ).
+
+trace_magnitude_refusal_dict(LookupName, NameStr, Operation, Magnitude, Bound,
+        _{
+            strategy: NameStr,
+            ok: false,
+            representation: "fsm",
+            result: "",
+            steps: [],
+            jumps: [],
+            error: Message,
+            note: Message,
+            refusal: _{
+                kind: "grounded_arithmetic_magnitude_bound",
+                operation: OperationString,
+                input_kind: InputKind,
+                magnitude: Magnitude,
+                bound: Bound
+            }
+        }) :-
+    term_text_string(Operation, OperationString),
+    term_text_string(LookupName, InputKind),
+    format(string(Message),
+           "Input magnitude ~w exceeds this grounded-arithmetic machine's bound of ~w.",
+           [Magnitude, Bound]).
+
+trace_execution_exception_dict(Error, LookupName, NameStr, Seconds, Dict) :-
+    (   time_limit_exception(Error)
+    ->  term_text_string(LookupName, InputKind),
+        format(string(Message),
+               "Strategy execution exceeded the ~w second bound.",
+               [Seconds]),
+        Dict = _{
+            strategy: NameStr,
+            ok: false,
+            representation: "fsm",
+            result: "",
+            steps: [],
+            jumps: [],
+            error: Message,
+            note: Message,
+            refusal: _{
+                kind: "strategy_execution_time_bound",
+                input_kind: InputKind,
+                bound_seconds: Seconds
+            }
+        }
+    ;   throw(Error)
+    ).
+
+fail_unless_time_limit(Error) :-
+    (   time_limit_exception(Error)
+    ->  throw(Error)
+    ;   fail
+    ).
+
+time_limit_exception(time_limit_exceeded).
+time_limit_exception(error(time_limit_exceeded, _)).
 
 trace_inputs_result(Input, A, B, Result) :-
     catch(( trace_inputs(Input, A, B) -> Result = ok ; Result = failed ),
@@ -515,7 +617,8 @@ trace_result_dict(StrategyName, NameStr, _A, _B, Result0, History, Dict) :-
     trace_representation(Result0, Representation),
     term_text_string(Result, ResultStr),
     history_steps(History, Steps),
-    (   catch(visualization:strategy_jumps_witness(StrategyName, History, JumpWitness0), _, fail)
+    (   catch(visualization:strategy_jumps_witness(StrategyName, History, JumpWitness0),
+              Error, fail_unless_time_limit(Error))
     ->  get_dict(jumps, JumpWitness0, Jumps0),
         sanitize_jumps(Jumps0, Jumps),
         strategy_jump_witness_dict(JumpWitness0, JumpWitness)

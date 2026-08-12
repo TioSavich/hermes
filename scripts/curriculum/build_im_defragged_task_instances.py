@@ -19,11 +19,18 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 COMPILED = ROOT / "curriculum/im/generated/compiled_task_instances.pl"
+GRADE8_COMPILED = (
+    ROOT / "curriculum/im/generated/grade_8_extracted_task_instances.pl"
+)
 RECOVERED = ROOT / "curriculum/im/generated/recovered_task_spans.json"
+JSON_RECOVERY_DIR = (
+    ROOT / "hermes/app/runtime/experiments/docling_grade8_recovery/checkpoints"
+)
 OUTPUT = ROOT / "curriculum/im/generated/compiled_defragged_task_instances.pl"
 
 sys.path.insert(0, str(ROOT / "scripts/curriculum"))
 import compile_action_mappings as compiler  # noqa: E402
+import vision_statement_contract  # noqa: E402
 
 
 EXPECTED_OUTCOMES = Counter(
@@ -41,9 +48,11 @@ STATUS = {
     "recoverable_with_referent_context": "recovered_with_referent",
     "blocked_by_missing_image": "blocked_missing_visual",
     "blocked_by_layout": "blocked_layout",
+    "json_task_recovered": "recovered",
+    "vision_task_recovered": "recovered",
 }
 
-SWI_GOAL = r"""use_module(library(http/json)),use_module(curriculum/im/generated/compiled_task_instances), forall((compiled_task_instances:compiled_lesson_task_instance(L,T,Evd),Evd=..[task_evidence,rule(R),S,position(P),excerpt(E)|_]), (term_string(T,TS,[quoted(true)]),term_string(R,RS,[quoted(true)]),term_string(P,PS,[quoted(true)]),term_string(Evd,ES,[quoted(true)]),(S=source(Path,lines(A,B))->K=markdown,Src=Path,Start=A,End=B;S=source(e343_pdf(Path,pages(Pg)))->K=pdf,Src=Path,Start=Pg,End=Pg;S=source(recovered_task_spans(Path,lesson(_),position(RP)))->K=recovered,Src=Path,Start=RP,End=RP),json_write_dict(current_output,_{lesson:L,task:TS,rule:RS,source_kind:K,source:Src,start:Start,end:End,position:PS,excerpt:E,evidence_term:ES},[width(0)]),nl)), halt."""
+SWI_GOAL = r"""use_module(library(http/json)),use_module(curriculum/im/generated/compiled_task_instances,[]),use_module(curriculum/im/generated/grade_8_extracted_task_instances,[]), forall(((compiled_task_instances:compiled_lesson_task_instance(L,T,Evd);grade_8_extracted_task_instances:extracted_lesson_task_instance(L,T,Evd)),Evd=..[task_evidence,rule(R),S,position(P),excerpt(E)|Extra]), (term_string(T,TS,[quoted(true)]),term_string(R,RS,[quoted(true)]),term_string(P,PS,[quoted(true)]),term_string(Evd,ES,[quoted(true)]),(memberchk(extraction_status(US),Extra)->true;US=legacy),(memberchk(blocker(UB),Extra)->true;UB=none),(S=source(Path,lines(A,B))->K=markdown,Src=Path,Start=A,End=B;S=source(e343_pdf(Path,pages(Pg)))->K=pdf,Src=Path,Start=Pg,End=Pg;S=source(recovered_task_spans(Path,lesson(_),position(RP)))->K=recovered,Src=Path,Start=RP,End=RP),json_write_dict(current_output,_{lesson:L,task:TS,rule:RS,source_kind:K,source:Src,start:Start,end:End,position:PS,excerpt:E,evidence_term:ES,upstream_status:US,upstream_blocker:UB},[width(0)]),nl)), halt."""
 
 IMPERATIVE = re.compile(
     r"^(?:\d+[a-z]?\.\s*)?(?:for each[^,.?]*,\s*)?"
@@ -333,7 +342,22 @@ def classify(rows: list[dict]) -> list[dict]:
             for start, end in failed.get(row["lesson"], []):
                 if not (row["end"] < start or row["start"] > end):
                     row["failed_layout"] = True
-        if not row["fragment"]:
+        upstream_status = row.get("upstream_status", "legacy")
+        if upstream_status == "complete":
+            outcome = "already_standalone"
+        elif upstream_status == "recovered":
+            outcome = (
+                "vision_task_recovered"
+                if "recovery(vision(" in row["evidence_term"]
+                else "json_task_recovered"
+            )
+        elif upstream_status == "blocked_missing_visual":
+            outcome = "blocked_by_missing_image"
+        elif upstream_status == "blocked_layout":
+            outcome = "blocked_by_layout"
+        elif upstream_status != "legacy":
+            fail(f"unknown upstream extraction status: {upstream_status}")
+        elif not row["fragment"]:
             outcome = "already_standalone"
         elif row["visual"] or (span and row["full_visual"]):
             outcome = "blocked_by_missing_image"
@@ -346,7 +370,9 @@ def classify(rows: list[dict]) -> list[dict]:
         else:
             outcome = "blocked_by_layout"
         row["outcome"] = outcome
-        if outcome == "blocked_by_layout":
+        if upstream_status != "legacy" and outcome.startswith("blocked_by_"):
+            row["blocker"] = row.get("upstream_blocker", "upstream_blocker_missing")
+        elif outcome == "blocked_by_layout":
             if row["failed_layout"]:
                 row["blocker"] = "known_cross_page_layout_refusal"
             elif row["source_kind"] == "pdf" and span is None:
@@ -360,9 +386,13 @@ def classify(rows: list[dict]) -> list[dict]:
         else:
             row["blocker"] = "none"
         results.append(row)
-    outcomes = Counter(row["outcome"] for row in results)
-    if len(results) != 2146 or outcomes != EXPECTED_OUTCOMES:
-        fail(f"scout census drift: rows={len(results)}, outcomes={outcomes}")
+    legacy = results[:2146]
+    legacy_outcomes = Counter(row["outcome"] for row in legacy)
+    if len(legacy) != 2146 or legacy_outcomes != EXPECTED_OUTCOMES:
+        fail(
+            f"legacy scout census drift: rows={len(legacy)}, "
+            f"outcomes={legacy_outcomes}"
+        )
     return results
 
 
@@ -548,12 +578,34 @@ def map_encoded_statement(
     return StatementMap(statement, mapped, _target_ranges(statement))
 
 
-def scan_compiled_facts() -> list[dict]:
-    data = COMPILED.read_bytes()
+def map_text_file_statement(target: str, path: str) -> StatementMap:
+    statement = norm(target)
+    data = SOURCES.read(path)
+    decoded = data.decode("utf-8")
+    # Shared contract: the whitespace-normalized statement must be an exact,
+    # contiguous character sequence in the description; surrounding text or
+    # punctuation is not part of the statement.
+    span = vision_statement_contract.normalized_contiguous_span(statement, decoded)
+    if span is None:
+        fail(f"vision statement does not map to its description file: {path}")
+    matches = list(TOKEN.finditer(decoded, *span))
+    mapped = []
+    for match in matches:
+        start = len(decoded[: match.start()].encode("utf-8"))
+        end = len(decoded[: match.end()].encode("utf-8"))
+        mapped.append(
+            MappedToken(
+                match.group(0), path, start, end, SOURCES.line(path, start), "utf8"
+            )
+        )
+    return StatementMap(statement, mapped, _target_ranges(statement))
+
+
+def scan_compiled_file(path: Path, prefix: str, *, expected: int | None) -> list[dict]:
+    data = path.read_bytes()
     if not data.isascii():
         fail("compiled task artifact unexpectedly contains non-ASCII bytes")
     text = data.decode("ascii")
-    prefix = "compiled_lesson_task_instance("
     facts = []
     cursor = 0
     while True:
@@ -585,11 +637,24 @@ def scan_compiled_facts() -> list[dict]:
                     break
         if end is None:
             fail(f"unterminated compiled fact at byte {start}")
-        facts.append({"start": start, "end": end, "text": text[start:end]})
+        facts.append(
+            {"start": start, "end": end, "text": text[start:end], "path": path}
+        )
         cursor = end
-    if len(facts) != 2146:
-        fail(f"expected 2146 compiled facts, found {len(facts)}")
+    if expected is not None and len(facts) != expected:
+        fail(f"expected {expected} compiled facts in {path.name}, found {len(facts)}")
     return facts
+
+
+def scan_compiled_facts() -> list[dict]:
+    return [
+        *scan_compiled_file(
+            COMPILED, "compiled_lesson_task_instance(", expected=2146
+        ),
+        *scan_compiled_file(
+            GRADE8_COMPILED, "extracted_lesson_task_instance(", expected=None
+        ),
+    ]
 
 
 def compiled_excerpt_map(row: dict, fact: dict) -> StatementMap:
@@ -603,7 +668,7 @@ def compiled_excerpt_map(row: dict, fact: dict) -> StatementMap:
     return map_encoded_statement(
         row["excerpt"],
         row["excerpt"],
-        str(COMPILED.relative_to(ROOT)),
+        str(fact["path"].relative_to(ROOT)),
         content_start,
         raw,
     )
@@ -637,6 +702,74 @@ def recovered_string_locations() -> dict[tuple[str, str], tuple[int, bytes, str]
             fail(f"recovered sidecar decode drift: {row['lesson']}/{row['position']}")
         locations[(row["lesson"], row["position"])] = (start, raw, decoded)
     return locations
+
+
+def json_recovery_records() -> dict[tuple[str, str], dict]:
+    records = {}
+    if not JSON_RECOVERY_DIR.is_dir():
+        return records
+    for path in sorted(JSON_RECOVERY_DIR.glob("IM-G8-*.json")):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for task in payload.get("tasks", []):
+            recovery = task.get("recovery")
+            if task.get("extraction_status") != "recovered" or not isinstance(
+                recovery, dict
+            ):
+                continue
+            key = (payload["lesson"], task["position"])
+            if key in records:
+                fail(f"duplicate JSON recovery checkpoint: {key}")
+            records[key] = recovery
+    return records
+
+
+def map_json_recovery_statement(target: str, recovery: dict) -> StatementMap:
+    from scripts.curriculum import recover_docling_grade8 as json_recovery
+
+    statement = norm(target)
+    if statement != recovery.get("normalized_statement"):
+        fail("JSON recovery statement differs from its checkpoint rendering")
+    tokens = []
+    ranges = []
+    cursor = 0
+    for item in recovery.get("items", []):
+        normalized = item["normalized"]
+        if not normalized:
+            continue
+        path = item["path"]
+        start = item["byte_start"]
+        end = item["byte_end"]
+        raw_content = SOURCES.read(path)[start:end]
+        try:
+            decoded = json.loads(b'"' + raw_content + b'"')
+        except json.JSONDecodeError as exc:
+            fail(f"cannot decode JSON recovery bytes in {path}: {exc}")
+        if decoded != item["raw"]:
+            fail(f"JSON recovery raw value drift at {path}:{item['ref']}")
+        if json_recovery.normalize_item(item["kind"], decoded) != normalized:
+            fail(f"JSON recovery normalization drift at {path}:{item['ref']}")
+        if tokens:
+            cursor += 1
+        ranges.append((cursor, cursor + len(normalized)))
+        cursor += len(normalized)
+        decoder = (
+            json_recovery.NORMALIZATION_RULE
+            if item["kind"] == "formula"
+            else "docling_json_text_v1"
+        )
+        tokens.append(
+            MappedToken(
+                normalized,
+                path,
+                start,
+                end,
+                item["line"],
+                decoder,
+            )
+        )
+    if " ".join(token.text for token in tokens) != statement:
+        fail("JSON recovery items do not reconstruct the normalized statement")
+    return StatementMap(statement, tokens, ranges)
 
 
 class SegmentStore:
@@ -761,7 +894,7 @@ def visuals_for(row: dict, mapping: StatementMap, store: SegmentStore) -> list[d
     if row["outcome"] != "blocked_by_missing_image":
         return []
     match = VISUAL_SURFACE.search(mapping.statement)
-    if not match:
+    if not match and row.get("upstream_status") == "legacy":
         fail(f"visual-blocked row has no visual surface: {row['lesson']}/{row['task']}")
     path = mapping.tokens[0].path
     if path.startswith("curriculum/im_teacher_guides/"):
@@ -773,13 +906,16 @@ def visuals_for(row: dict, mapping: StatementMap, store: SegmentStore) -> list[d
     else:
         status = "missing_from_absent_pdf"
         asset = "none"
+    surface = match.group(0) if match else "source visual"
     return [
         {
-            "surface": match.group(0),
+            "surface": surface,
             "status": status,
             "asset": asset,
-            "source_segments": store.add_tokens(
-                mapping.token_slice(match.start(), match.end())
+            "source_segments": (
+                store.add_tokens(mapping.token_slice(match.start(), match.end()))
+                if match
+                else []
             ),
         }
     ]
@@ -834,7 +970,9 @@ def _dict(tag: str, value: dict, *, atoms: set[str] = frozenset()) -> str:
 
 def render(results: list[dict], facts: list[dict]) -> str:
     recovered_locations = recovered_string_locations()
+    json_recoveries = json_recovery_records()
     occurrence: Counter[str] = Counter()
+    status_counts = Counter(STATUS[row["outcome"]] for row in results)
     lines = [
         "/** <module> Generated source-sliced IM task instances",
         " *",
@@ -846,9 +984,11 @@ def render(results: list[dict], facts: list[dict]) -> str:
         "            defragged_task_instance_summary/2",
         "          ]).",
         "",
-        "defragged_task_instance_summary(2146,",
-        "    counts{already_complete:547, recovered:1261, recovered_with_referent:3,",
-        "           blocked_missing_visual:23, blocked_layout:312}).",
+        f"defragged_task_instance_summary({len(results)},",
+        "    counts{" + ", ".join(
+            f"{status}:{count}"
+            for status, count in sorted(status_counts.items())
+        ) + "}).",
         "",
     ]
     for row, fact in zip(results, facts):
@@ -861,7 +1001,11 @@ def render(results: list[dict], facts: list[dict]) -> str:
         occurrence[digest] += 1
         record_id = f"im_defrag_{digest}_{occurrence[digest]}"
         outcome = row["outcome"]
-        if outcome == "already_standalone":
+        if outcome in {
+            "already_standalone",
+            "json_task_recovered",
+            "vision_task_recovered",
+        }:
             statement = row["excerpt"]
         elif outcome in {
             "complete_task_recovered",
@@ -877,7 +1021,18 @@ def render(results: list[dict], facts: list[dict]) -> str:
         mapping = None
         if statement:
             span = row["span"]
-            if row["source_kind"] == "recovered" and span is not None:
+            if outcome == "json_task_recovered":
+                key = (row["lesson"], root_position(row["position"]))
+                recovery = json_recoveries.get(key)
+                if recovery is None:
+                    fail(f"missing JSON recovery checkpoint: {key}")
+                mapping = map_json_recovery_statement(statement, recovery)
+            elif outcome == "vision_task_recovered":
+                match = re.search(r"description_file\('([^']+)'\)", row["evidence_term"])
+                if match is None:
+                    fail("vision recovery lacks a description file")
+                mapping = map_text_file_statement(statement, match.group(1))
+            elif row["source_kind"] == "recovered" and span is not None:
                 key = (row["lesson"], root_position(row["position"]))
                 content_start, raw, decoded = recovered_locations[key]
                 mapping = map_encoded_statement(
@@ -901,7 +1056,11 @@ def render(results: list[dict], facts: list[dict]) -> str:
                 mapping = compiled_excerpt_map(row, fact)
             statement = mapping.statement
             statement_segments = store.add_tokens(mapping.tokens)
-            referents = referents_for(row, mapping, store)
+            referents = (
+                []
+                if outcome in {"json_task_recovered", "vision_task_recovered"}
+                else referents_for(row, mapping, store)
+            )
             visuals = visuals_for(row, mapping, store)
         else:
             statement_segments = []

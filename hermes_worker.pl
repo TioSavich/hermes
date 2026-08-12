@@ -83,7 +83,6 @@ load_runtime :-
     use_module(pml(discourse_features), []),
     use_module(pml(discourse_pragmatics), []),
     use_module(pml(trace_adjudication), []),
-    use_module(strategies(automaton_role_input_decoder), []),
     use_module(hermes(encyclopedia)),
     use_module(hermes(commitment_matcher), []),
     use_module(misconceptions(literature_deontic_bridge),
@@ -172,6 +171,7 @@ load_runtime :-
     use_module(math(fraction_cgi_dispatch), []),
     use_module(im_lessons(lesson_deformation_chart), []),
     use_module(im_lessons('generated/compiled_task_instances'), []),
+    use_module(im_lessons('generated/compiled_defragged_task_instances'), []),
     use_module(im_lessons(lesson_arithmetic_demonstration), []),
     % The notation monitoring chart (519 lessons, GK-G6, four operations). Import-free for the same
     % reason as lesson_deformation_chart: its monitoring_chart_*/N predicates
@@ -2042,17 +2042,16 @@ dispatch_integer(Value, Integer) :-
     integer(Number),
     Integer = Number.
 
-% The 2026-08-06 action-automaton wave added role-bearing operands after the
-% encyclopedia decoder's 2026-08-03 structured families. Keep this worker
-% seam additive: only the new kind tags enter the extension; every earlier
-% input continues through hermes_encyclopedia:strategy_trace_dict/3 unchanged.
+% Keep every strategy input genre on the encyclopedia's shared decoder,
+% magnitude contract, and execution deadline. The worker adds only the JSONL
+% response envelope at this seam.
 run_dispatch_call(
         call(hermes_encyclopedia:strategy_trace_dict,
              [strategy, input, out(dict)]), Bound, Outcome) :-
     !,
     memberchk(strategy-Strategy, Bound),
     memberchk(input-Input, Bound),
-    worker_strategy_trace_dict(Strategy, Input, Dict),
+    hermes_encyclopedia:strategy_trace_dict(Strategy, Input, Dict),
     Outcome = success([dict-Dict]).
 run_dispatch_call(call(Module:Pred, ArgSpec), Bound, Outcome) :-
     dispatch_call_args(ArgSpec, Bound, Args, Outputs),
@@ -2067,41 +2066,6 @@ run_dispatch_call(call(Module:Pred, ArgSpec, [gate(axiom_pack(Pack))]),
     ->  run_dispatch_call(call(Module:Pred, ArgSpec), Bound, Outcome)
     ;   Outcome = axiom_pack_disabled(Pack)
     ).
-
-worker_strategy_trace_dict(StrategyName, Input, Dict) :-
-    is_dict(Input),
-    get_dict(kind, Input, Kind),
-    automaton_role_input_decoder:role_input_kind(Kind),
-    !,
-    hermes_encyclopedia:strategy_lookup_name(StrategyName, LookupName),
-    hermes_encyclopedia:term_text_string(LookupName, NameStr),
-    strategy_trace_wave_inputs_result(Input, A, B, DecodeResult),
-    (   DecodeResult == ok
-    ->  (   catch(hermes_encyclopedia:run_named_strategy(
-                      LookupName, A, B, Result, History), _Error, fail)
-        ->  hermes_encyclopedia:trace_result_dict(
-                LookupName, NameStr, A, B, Result, History, Dict)
-        ;   Dict = _{
-                strategy: NameStr,
-                ok: false,
-                representation: "fsm",
-                result: "",
-                steps: [],
-                jumps: [],
-                note: "The automaton could not be run on the given input (no matching operation/kind, or the run failed)."
-            }
-        )
-    ;   hermes_encyclopedia:trace_input_error_dict(
-            LookupName, NameStr, Input, Dict)
-    ).
-worker_strategy_trace_dict(StrategyName, Input, Dict) :-
-    hermes_encyclopedia:strategy_trace_dict(StrategyName, Input, Dict).
-
-strategy_trace_wave_inputs_result(Input, A, B, Result) :-
-    catch(( automaton_role_input_decoder:decode_role_inputs(Input, A, B)
-          -> Result = ok
-          ;  Result = failed
-          ), _Error, Result = exception).
 
 dispatch_call_args([], _Bound, [], []).
 dispatch_call_args([Spec|Specs], Bound, [Arg|Args], Outputs) :-
@@ -3179,6 +3143,7 @@ monitoring_chart_export_dict(Code, Dict) :-
     maplist(gap_move_export_dict, GapMoves, GapMoveDicts),
     deformation_chart_scope_export(Code, DeformationChartDict),
     registered_task_instances_export(Code, TaskInstances),
+    display_task_instances_export(Code, DisplayTaskInstances),
     atom_string(Code, CodeString),
     Dict0 = _{
         lesson_code: CodeString,
@@ -3192,6 +3157,7 @@ monitoring_chart_export_dict(Code, Dict) :-
         figures: FigureDict,
         deformation_chart: DeformationChartDict,
         registered_task_instances: TaskInstances,
+        display_task_instances: DisplayTaskInstances,
         inferential_strength: InferentialStrengthDict,
         pml_facts: PMLDicts
     },
@@ -3299,6 +3265,96 @@ registered_task_instances_export(Code, Dicts) :-
             ),
             Dicts0),
     sort(Dicts0, Dicts).
+
+%!  display_task_instances_export(+Code, -Dicts) is det.
+%
+%   Display-only companions for lessons whose prompt compiler has no complete
+%   excerpt. The defragged artifact remains verbatim: the browser applies
+%   typesetting rules when it inserts `statement`. Layout-blocked rows stay
+%   withheld; visual-blocked rows remain named and carry only their source
+%   artifact paths.
+display_task_instances_export(Code, Dicts) :-
+    findall(Line-Dict,
+            display_task_instance_candidate(Code, Line, Dict),
+            Pairs0),
+    keysort(Pairs0, Pairs),
+    dedupe_display_task_instances(Pairs, [], Dicts).
+
+display_task_instance_candidate(Code, Line, Dict) :-
+    compiled_defragged_task_instances:defragged_task_instance(Id, Code, Task, Record),
+    get_dict(status, Record, Status),
+    memberchk(Status, [already_complete, recovered, recovered_with_referent,
+                       blocked_missing_visual]),
+    get_dict(complete_statement, Record, Statement),
+    string(Statement),
+    Statement \== "",
+    get_dict(source_evidence, Record, Evidence),
+    display_source_line(Evidence, Line),
+    display_source_text(Evidence, SourceText),
+    display_position_text(Evidence, PositionText),
+    display_visual_paths(Record, Evidence, VisualPaths),
+    term_to_text(Id, IdText),
+    term_to_text(Task, TaskText),
+    term_to_text(Status, StatusText),
+    get_dict(blocker, Record, Blocker),
+    term_to_text(Blocker, BlockerText),
+    Dict = _{id: IdText,
+             task: TaskText,
+             statement: Statement,
+             status: StatusText,
+             blocker: BlockerText,
+             source: SourceText,
+             position: PositionText,
+             visuals: VisualPaths}.
+
+display_source_line(Evidence, Line) :-
+    sub_term(source(_Source, lines(Line, _End)), Evidence),
+    integer(Line),
+    !.
+display_source_line(_Evidence, 999999999).
+
+display_source_text(Evidence, SourceText) :-
+    sub_term(source(Source, lines(_Start, _End)), Evidence),
+    !,
+    term_to_text(Source, SourceText).
+display_source_text(Evidence, SourceText) :-
+    sub_term(source(Source), Evidence),
+    !,
+    term_to_text(Source, SourceText).
+display_source_text(_Evidence, "compiled defragged lesson source").
+
+display_position_text(Evidence, PositionText) :-
+    sub_term(position(Position), Evidence),
+    !,
+    term_to_text(Position, PositionText).
+display_position_text(_Evidence, "lesson task").
+
+display_visual_paths(Record, Evidence, VisualPaths) :-
+    findall(PathText,
+            display_visual_path(Record, Evidence, PathText),
+            Paths0),
+    sort(Paths0, VisualPaths).
+
+display_visual_path(Record, _Evidence, PathText) :-
+    get_dict(visuals, Record, Visuals),
+    member(Visual, Visuals),
+    is_dict(Visual),
+    get_dict(asset, Visual, Path),
+    term_to_text(Path, PathText).
+display_visual_path(_Record, Evidence, PathText) :-
+    sub_term(visual_provenance(VisualSources), Evidence),
+    member(VisualSource, VisualSources),
+    VisualSource =.. [visual_source, asset(Path)|_Rest],
+    term_to_text(Path, PathText).
+
+dedupe_display_task_instances([], _Seen, []).
+dedupe_display_task_instances([_Line-Dict|Rest], Seen, Dicts) :-
+    Statement = Dict.statement,
+    (   memberchk(Statement, Seen)
+    ->  dedupe_display_task_instances(Rest, Seen, Dicts)
+    ;   Dicts = [Dict|Tail],
+        dedupe_display_task_instances(Rest, [Statement|Seen], Tail)
+    ).
 
 registered_task_instance_export(
         Task,

@@ -350,7 +350,16 @@ def run_item(
             attempt.reply, " ".join(support), row.row_class
         )
         return attempt
-    messages.append(assistant_echo(message))
+    # The two wires disagree about argument form: /v1 requires a JSON
+    # string, native /api/chat requires a mapping and 400s on a string
+    # (both measured 2026-08-12). The echo follows the backend.
+    if backend == "ollama":
+        echoed = copy.deepcopy(message)
+        echoed["role"] = "assistant"
+        echoed["content"] = echoed.get("content") or ""
+        messages.append(echoed)
+    else:
+        messages.append(assistant_echo(message))
     for call in tool_calls:
         function = call.get("function", {})
         name = function.get("name", "")

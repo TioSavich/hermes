@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-hermes-base="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes coordinate-plane grapher</title>
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="visualizations"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper-bg, #f4ead6); color: var(--ink, #1b1810);
+           font: 16px/1.5 var(--serif, Georgia, serif); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 2.2rem 1.4rem 4rem; }
+    h1 { margin: 0 0 .35rem; font-size: 1.75rem; }
+    .lede { max-width: 70ch; margin: 0 0 .6rem; color: var(--muted, #665f4f); }
+    .back { display: inline-block; margin-bottom: 1.4rem; color: var(--gold-deep, #a97c24);
+            font: 12px/1.4 var(--mono, ui-monospace, monospace); }
+    .demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .demo { min-width: 0; padding: 1rem; border: 1px solid var(--line, #cdbfa2);
+            border-radius: 10px; background: rgba(255,253,247,.72); }
+    .demo h2 { margin: 0 0 .2rem; font-size: 1.05rem; }
+    .demo p { margin: 0 0 .7rem; color: var(--muted, #665f4f); font-size: .9rem; }
+    .stage { min-height: 250px; }
+    .stage svg { display: block; width: 100%; height: auto; }
+    .source { margin-top: .6rem; font: 11px/1.4 var(--mono, ui-monospace, monospace);
+              color: var(--gold-deep, #a97c24); }
+    .error { color: var(--tension, #b5563f); }
+    @media (max-width: 760px) { .demos { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Coordinate-plane grapher</h1>
+    <p class="lede">Four declarative specifications draw a linear function, a line through two points, a bar chart, and a dot plot. The renderer places only the marks named in each specification.</p>
+    <a class="back" href="../visualizations.html">Back to Hermes visualizers &rarr;</a>
+
+    <div class="demos">
+      <section class="demo" data-demo="linear-function">
+        <h2>Linear function</h2>
+        <p>Slope-intercept form with three supplied points.</p>
+        <div class="stage" id="stage-linear-function"></div>
+        <div class="source">samples/linear-function.json</div>
+      </section>
+      <section class="demo" data-demo="two-point-line">
+        <h2>Two-point line and segment</h2>
+        <p>A line through A and B, plus the segment CD.</p>
+        <div class="stage" id="stage-two-point-line"></div>
+        <div class="source">samples/two-point-line.json</div>
+      </section>
+      <section class="demo" data-demo="bar-chart">
+        <h2>Bar chart</h2>
+        <p>Four supplied category counts.</p>
+        <div class="stage" id="stage-bar-chart"></div>
+        <div class="source">samples/bar-chart.json</div>
+      </section>
+      <section class="demo" data-demo="dot-plot">
+        <h2>Dot plot</h2>
+        <p>Repeated values stack above their positions.</p>
+        <div class="stage" id="stage-dot-plot"></div>
+        <div class="source">samples/dot-plot.json</div>
+      </section>
+    </div>
+  </main>
+
+  <script type="application/json" data-demo-spec="linear-function" data-sample="samples/linear-function.json">
+{
+  "version": 1,
+  "id": "linear-function",
+  "kind": "coordinate-plane",
+  "title": "Linear function y = 2x - 1",
+  "description": "The line y = 2x - 1 and three specified points.",
+  "canvas": {"width": 640, "height": 420},
+  "axes": {"xLabel": "x", "yLabel": "y"},
+  "points": [
+    {"x": -1, "y": -3, "label": "(-1, -3)"},
+    {"x": 0, "y": -1, "label": "(0, -1)"},
+    {"x": 2, "y": 3, "label": "(2, 3)"}
+  ],
+  "lines": [
+    {"type": "slope-intercept", "slope": 2, "intercept": -1, "label": "y = 2x - 1"}
+  ]
+}
+  </script>
+  <script type="application/json" data-demo-spec="two-point-line" data-sample="samples/two-point-line.json">
+{
+  "version": 1,
+  "id": "two-point-line",
+  "kind": "coordinate-plane",
+  "title": "Line through A and B",
+  "description": "An infinite line determined by A and B, with a separate segment CD.",
+  "canvas": {"width": 640, "height": 420},
+  "axes": {"xLabel": "x", "yLabel": "y"},
+  "points": [
+    {"x": -2, "y": 1, "label": "A"},
+    {"x": 3, "y": 4, "label": "B"},
+    {"x": -1, "y": -2, "label": "C"},
+    {"x": 2, "y": -2, "label": "D"}
+  ],
+  "lines": [
+    {"type": "through-points", "points": [{"x": -2, "y": 1}, {"x": 3, "y": 4}], "label": "AB"},
+    {"type": "segment", "from": {"x": -1, "y": -2}, "to": {"x": 2, "y": -2}, "label": "segment CD", "color": "#3f7f89"}
+  ]
+}
+  </script>
+  <script type="application/json" data-demo-spec="bar-chart" data-sample="samples/bar-chart.json">
+{
+  "version": 1,
+  "id": "bar-chart",
+  "kind": "bar-chart",
+  "title": "Books read this month",
+  "description": "Counts supplied for four book genres.",
+  "canvas": {"width": 640, "height": 420},
+  "axes": {"xLabel": "Genre", "yLabel": "Books"},
+  "categories": [
+    {"label": "Fiction", "value": 8},
+    {"label": "History", "value": 5},
+    {"label": "Science", "value": 7},
+    {"label": "Poetry", "value": 3}
+  ]
+}
+  </script>
+  <script type="application/json" data-demo-spec="dot-plot" data-sample="samples/dot-plot.json">
+{
+  "version": 1,
+  "id": "dot-plot",
+  "kind": "dot-plot",
+  "title": "Number of books read",
+  "description": "Each dot records one supplied value.",
+  "canvas": {"width": 640, "height": 360},
+  "axes": {"xLabel": "Books", "tickStep": 1},
+  "values": [1, 2, 2, 3, 3, 3, 4, 4, 5, 6, 6, 6, 6]
+}
+  </script>
+  <script src="grapher.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      document.querySelectorAll('[data-demo-spec]').forEach(function (node) {
+        var id = node.getAttribute('data-demo-spec');
+        var target = document.getElementById('stage-' + id);
+        try {
+          window.HermesGrapher.renderInto(target, JSON.parse(node.textContent));
+        } catch (error) {
+          target.className += ' error';
+          target.textContent = 'The demo specification could not be drawn: ' + error.message;
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

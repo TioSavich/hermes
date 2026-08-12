@@ -300,7 +300,10 @@ def _code_for_middle_guide(path: pathlib.Path) -> str:
     match = MIDDLE_GUIDE_RE.fullmatch(path.parent.name)
     if match is None:
         raise SystemExit(f"unrecognized Docling teacher-guide path: {path}")
-    grade, unit, lesson = match.groups()
+    band = match.group("band")
+    grade = "K" if band == "Kindergarten" else band.removeprefix("Grade")
+    unit = match.group("unit")
+    lesson = match.group("lesson")
     return f"IM-G{grade}-U{int(unit)}-L{int(lesson)}"
 
 

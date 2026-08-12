@@ -22,6 +22,11 @@ python3 scripts/curriculum/build_equation_verifications.py       # --check to co
 python3 scripts/curriculum/compile_action_mappings.py            # --check to compare only
 python3 scripts/curriculum/ingest_vision.py --apply              # omit --apply for a dry run
 python3 scripts/curriculum/build_lesson_evidence.py              # --check to compare only
+python3 scripts/curriculum/extract_docling_grade.py --grade 8
+python3 scripts/curriculum/recover_docling_grade8.py
+python3 scripts/curriculum/recover_docling_grade8_vision.py --derive-only
+python3 scripts/curriculum/build_im_defragged_task_instances.py
+python3 scripts/research/extract_lesson_context.py
 swipl -q -l paths.pl -g "consult('scripts/curriculum/mini_atlas.pl')"
 ```
 
@@ -41,6 +46,39 @@ longer supports, so the ledger supplies the Prolog verdicts and nothing else.
 block at the top of the file. Rerouting a corpus is one line there; `--check`
 is what says the reroute was faithful. `ingest_vision.py` follows the same
 shape.
+
+`extract_docling_grade.py` reads the linear Grade 6-8 Docling lesson guides.
+It checkpoints one JSON record per lesson under the ignored app runtime,
+copies task text with physical source spans, and writes pending assessing and
+advancing questions in the same term shape as the reviewed L17 records. A task
+whose expression is absent stays in the output with a named blocker and the
+available image, description-file, and model provenance. The extractor does
+not treat Granite descriptions as curriculum-authored text. `--lessons` runs a
+bounded pilot, `--refresh` replaces compatible checkpoints, and `--check`
+compares the full extraction with its generated outputs.
+
+`recover_docling_grade8.py` runs only after the base Grade 8 checkpoints exist.
+It flattens each `document.json` body tree in recorded reading order, aligns the
+in-scope task headings, and copies allowed JSON text, list, formula, table, and
+key-value items. Each recovery retains the raw JSON string, self-reference,
+collection index, page and bounding box, byte range, and a separate rendering.
+`docling_formula_spacing_v1` deterministically removes Docling's character
+spacing in formulas; it does not alter the stored raw value. Rows the JSON does
+not settle retain their original blocker.
+
+`recover_docling_grade8_vision.py` derives the remaining image-bearing residue
+from those JSON checkpoints. Its default worklist is narrower than the full
+residue: an existing picture description must explicitly transcribe task text.
+A live call uses `gemma-4-31B-it` with 2,500 output tokens and a 300-attempt hard
+limit. Only an `ok`, certain statement that occurs in the description can enter
+the facts. `--derive-only` writes the worklist without contacting REALLMS.
+
+The Grade 8 task facts are an additional input to
+`build_im_defragged_task_instances.py`. Its summary is computed from the loaded
+facts while its legacy 2,146-row census remains an asserted compatibility
+boundary. Grade 8 questions enter `compiled_lesson_context.pl` as
+`pending_human_review`; the serving predicate continues to return approved
+records only.
 
 ## What the ports cost, and what they did not buy
 
@@ -63,16 +101,16 @@ failure; it does not move grade 6-7 coverage.
 `learner(activity_contract)` both resolve through the `learner` alias in
 `paths.pl`.
 
-## Inputs this checkout does not carry
+## Source boundaries
 
-- The teacher-guide corpus stops at grade 6. `curriculum/im_teacher_guides/`
-  holds 879 lesson guides across kindergarten through grade 6, and grade 6 is
-  partial. Grades 7 and 8 have no guides, so every grade 7-8 attachment comes
-  from the vision digest or the scope-and-sequence batches instead.
-- The vision harvests are snapshots. Re-running the vision extraction needs the
-  original Illustrative Mathematics grade 6-8 unit teacher-guide PDFs, named
-  like `Grade6-1-Unit-teacher-guide-.pdf`, and the vision-run machinery that
-  produced the JSON. Neither the PDFs nor those runs are carried here.
+`curriculum/im_teacher_guides/` carries the fixed-width elementary extracts.
+The app runtime's Docling corpus carries the linear Grade 6-8 lesson guides,
+their exported image assets, and model-attributed picture descriptions. The
+two guide genres have separate readers and share canonical lesson codes.
+
+The vision harvests are snapshots. Re-running their PDF extraction still
+requires the original Grade 6-8 unit teacher-guide PDFs and the external
+vision-run machinery that produced the JSON.
 
 Vendored 2026-07-21 from `/Users/tio/Documents/GitHub/umedcta-formalization`,
 which stays read-only.

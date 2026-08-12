@@ -418,12 +418,12 @@
       "standards": 22,
       "synthesis": 42,
       "unclassified": 9,
-      "workflow": 18,
+      "workflow": 27,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 89,
+      "orphan_module": 98,
       "routed_only": 15,
       "routed_paged": 189,
       "unrouted": 12
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 53
+      "undetermined": 62
     },
-    "total": 315,
+    "total": 324,
     "unrouted": 12
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -544,20 +544,6 @@
       "capability_class": "workflow",
       "evidence": [
         {
-          "locator": "/** <module> Generated source-sliced IM task instances",
-          "path": "curriculum/im/generated/compiled_defragged_task_instances.pl",
-          "relation": "source inspected"
-        }
-      ],
-      "module": "compiled_defragged_task_instances",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
-      "path": "curriculum/im/generated/compiled_defragged_task_instances.pl",
-      "verdict": "undetermined"
-    },
-    {
-      "capability_class": "workflow",
-      "evidence": [
-        {
           "locator": "/** <module> Generated verified receipt contrast routes",
           "path": "curriculum/im/generated/compiled_receipt_routes.pl",
           "relation": "source inspected"
@@ -577,6 +563,146 @@
       "note": "The evidence ledger reads its route and defect facts to decide whether a receipt licenses structured_negative, and the PUSU runner loads it for the receipt contrast lane.",
       "path": "curriculum/im/generated/compiled_receipt_routes.pl",
       "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_1_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_1_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_1_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_2_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_2_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_2_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_3_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_3_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_3_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_4_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_4_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_4_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_5_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_5_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_5_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_6_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_6_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_6_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_7_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_7_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_7_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_8_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_8_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_8_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated source-backed Docling task instances",
+          "path": "curriculum/im/generated/grade_8_extracted_task_instances.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_8_extracted_task_instances",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_8_extracted_task_instances.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated pending Docling guide-question records",
+          "path": "curriculum/im/generated/grade_k_extracted_guide_questions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "grade_k_extracted_guide_questions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/grade_k_extracted_guide_questions.pl",
+      "verdict": "undetermined"
     },
     {
       "capability_class": "workflow",

@@ -32,13 +32,18 @@ L17_SOURCE = "curriculum/im_teacher_guides/grade1/unit3/lesson17.md"
 
 ANCHOR_RE = re.compile(r"_Anchor ID: `([^`]+)`")
 MIDDLE_GUIDE_RE = re.compile(
-    r"Grade([678])-(\d+)-(\d+)-Lesson-teacher-guide-$"
+    r"(?P<band>Kindergarten|Grade[1-8])-(?P<unit>\d+)-(?P<lesson>\d+)-"
+    r"Lesson-teacher-guide-$"
 )
 MIDDLE_TASK_RE = re.compile(
     r"^(?:## |- )Student Task Statement(?: \d+)?$"
 )
 MIDDLE_CUTOFF_RE = re.compile(
     r"^## (?:Lesson \d+ (?:Summary|Practice Problems)|Glossary)$"
+)
+GUIDE_QUESTION_START_RE = re.compile(
+    r"\b(?:What|How|Why|Which|Where|When|Who|Can|Could|Would|"
+    r"Do|Does|Did|Is|Are|Was|Were|If)\b"
 )
 PICTURE_DESCRIPTION_RE = re.compile(
     r"^!\[Picture \d+\]\([^\n]+\)\n\n(.*?)\n\nProvenance: `[^`]+`$",
@@ -97,6 +102,14 @@ class GuideQuestion:
 @dataclass(frozen=True)
 class LessonAbsence:
     code: str
+    source: str
+    reason: str
+
+
+@dataclass(frozen=True)
+class GuideQuestionAbsence:
+    code: str
+    purpose: str
     source: str
     reason: str
 
@@ -407,7 +420,10 @@ def middle_guide_code(path: Path) -> str | None:
     match = MIDDLE_GUIDE_RE.fullmatch(path.parent.name)
     if not match:
         return None
-    grade, unit, lesson = match.groups()
+    band = match.group("band")
+    grade = "K" if band == "Kindergarten" else band.removeprefix("Grade")
+    unit = match.group("unit")
+    lesson = match.group("lesson")
     return f"IM-G{grade}-U{int(unit)}-L{int(lesson)}"
 
 
@@ -532,6 +548,189 @@ def parse_middle_guide(
     return LessonContext(code, source, tuple(prompts), tuple(sequences)), None, failures
 
 
+def _middle_question_candidates(
+    path: Path, *, include_student_tasks: bool
+) -> list[tuple[str, str, int]]:
+    """Return exact, single-line guide questions before the lesson appendix."""
+    lines = path.read_text(encoding="utf-8").splitlines()
+    excluded = picture_description_lines(path, lines)
+    if excluded is None:
+        raise ValueError(f"picture annotations cannot be separated: {path}")
+    body_start = next(
+        (index for index, line in enumerate(lines) if line == "## Activity Narrative"),
+        0,
+    )
+    body_end = next(
+        (
+            index
+            for index, line in enumerate(lines[body_start:], body_start)
+            if MIDDLE_CUTOFF_RE.fullmatch(line)
+        ),
+        len(lines),
+    )
+    excluded_headings = (
+        "Student Response",
+        "Extension Student Response",
+        "Are You Ready for More?",
+        "Solution",
+        "Goals",
+        "Learning Targets",
+    )
+    candidates: list[tuple[str, str, int]] = []
+    index = body_start
+    while index < body_end:
+        raw_heading = lines[index]
+        if not (
+            raw_heading.startswith("## ")
+            or MIDDLE_TASK_RE.fullmatch(raw_heading)
+            or raw_heading
+            in {"- Activity Synthesis", "- Lesson Synthesis", "- Launch"}
+        ):
+            index += 1
+            continue
+        heading = raw_heading.removeprefix("## ").removeprefix("- ").strip()
+        section_end = index + 1
+        while section_end < body_end and not lines[section_end].startswith("## "):
+            section_end += 1
+        is_student_task = heading.startswith("Student Task Statement")
+        excluded_section = any(heading.startswith(value) for value in excluded_headings)
+        if not excluded_section and (include_student_tasks or not is_student_task):
+            for line_index in range(index + 1, section_end):
+                if line_index in excluded or lines[line_index].startswith("!["):
+                    continue
+                text = lines[line_index].strip().removeprefix("- ").strip()
+                previous_end = 0
+                for question_end in (
+                    match.start() for match in re.finditer(r"\?", text)
+                ):
+                    starts = [
+                        match.start()
+                        for match in GUIDE_QUESTION_START_RE.finditer(
+                            text, previous_end, question_end
+                        )
+                    ]
+                    if starts:
+                        question = text[starts[-1] : question_end + 1].strip(
+                            " '\"\u201c\u201d"
+                        )
+                        if 8 <= len(question) <= 500:
+                            candidates.append((heading, question, line_index + 1))
+                    previous_end = question_end + 1
+        index = section_end
+    return candidates
+
+
+def extract_docling_guide_questions(
+    path: Path, *, label_origin: str
+) -> tuple[tuple[GuideQuestion, ...], tuple[GuideQuestionAbsence, ...]]:
+    """Select exact assessing and advancing candidates from one Docling guide."""
+    code = middle_guide_code(path)
+    if code is None:
+        raise ValueError(f"unrecognized Docling guide path: {path}")
+    def complete(candidate: tuple[str, str, int]) -> bool:
+        text = candidate[1]
+        return not (
+            re.search(r"(?<!\.)\s+[.,;:](?!\.)", text)
+            or re.search(
+                r"\b(?:What|Which) does (?:represent|mean|equal)\b", text
+            )
+            or re.search(r"\b(?:of|by|to|from|with)\s*\?", text)
+        )
+
+    candidates = [
+        candidate
+        for candidate in _middle_question_candidates(
+            path, include_student_tasks=False
+        )
+        if complete(candidate)
+    ]
+    if len(candidates) < 2:
+        candidates = [
+            candidate
+            for candidate in _middle_question_candidates(
+                path, include_student_tasks=True
+            )
+            if complete(candidate)
+        ]
+    source = path.relative_to(ROOT).as_posix()
+    if len(candidates) < 2:
+        absences = tuple(
+            GuideQuestionAbsence(
+                code=code,
+                purpose=purpose,
+                source=source,
+                reason="fewer_than_two_exact_guide_questions",
+            )
+            for purpose in ("assessing", "advancing")
+        )
+        return (), absences
+
+    assessing_heading_order = (
+        "Building on Student Thinking",
+        "Responding to Student Thinking",
+        "Launch",
+        "Activity Narrative",
+        "Math Community",
+        "Consider asking:",
+        "Discuss with students:",
+    )
+    advancing_heading_order = (
+        "Activity Synthesis",
+        "Lesson Synthesis",
+        "More Chances",
+    )
+
+    def first_for_headings(headings: tuple[str, ...]) -> tuple[str, str, int] | None:
+        return next(
+            (
+                candidate
+                for heading in headings
+                for candidate in candidates
+                if candidate[0] == heading
+            ),
+            None,
+        )
+
+    assessing = first_for_headings(assessing_heading_order) or candidates[0]
+    advancing = first_for_headings(advancing_heading_order)
+    if advancing is None or advancing == assessing:
+        advancing = next(
+            candidate for candidate in reversed(candidates) if candidate != assessing
+        )
+    def record(purpose: str, candidate: tuple[str, str, int]) -> GuideQuestion:
+        heading, text, line = candidate
+        return GuideQuestion(
+            code=code,
+            purpose=purpose,
+            text=text,
+            source=source,
+            line_start=line,
+            line_end=line,
+            activity_location=heading,
+            label_origin=label_origin,
+            review_status="pending_human_review",
+        )
+
+    questions = (record("assessing", assessing), record("advancing", advancing))
+    for question in questions:
+        validate_guide_question(question)
+    return questions, ()
+
+
+def extract_middle_guide_questions(path: Path) -> tuple[GuideQuestion, GuideQuestion]:
+    """Retain the Grade 8 extraction contract used by its pipeline.
+
+    These questions are exact source quotes, but their assessing/advancing
+    assignment comes from the heading rules, so the origin is the machine's.
+    """
+    questions, absences = extract_docling_guide_questions(
+        path, label_origin="machine_classification"
+    )
+    if absences or len(questions) != 2:
+        raise ValueError(f"fewer than two exact guide questions: {path}")
+    return questions
+
+
 def prolog_atom(value: str) -> str:
     return "'" + value.replace("\\", "\\\\").replace("'", "\\'") + "'"
 
@@ -556,11 +755,32 @@ def cited_span_contains(question_text: str, cited_lines: list[str]) -> bool:
 
 
 def validate_guide_question(question: GuideQuestion) -> None:
-    if question.code != L17_CODE or question.source != L17_SOURCE:
-        raise ValueError("guide-question input is restricted to the reviewed L17 guide")
+    if question.code == L17_CODE and question.source == L17_SOURCE:
+        pass
+    else:
+        match = re.fullmatch(
+            r"hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
+            r"TeacherLessonGuides/(?P<band>Kindergarten|Grade[1-8])/"
+            r"(?P=band)-(?P<unit>\d+)-(?P<lesson>\d+)-"
+            r"Lesson-teacher-guide-/document\.md",
+            question.source,
+        )
+        if match is None:
+            raise ValueError("guide-question source is outside the declared guide corpora")
+        band = match.group("band")
+        grade = "K" if band == "Kindergarten" else band.removeprefix("Grade")
+        expected_code = (
+            f"IM-G{grade}-U{int(match.group('unit'))}-L{int(match.group('lesson'))}"
+        )
+        if question.code != expected_code:
+            raise ValueError("guide-question lesson identity does not match its source")
     if question.purpose not in {"assessing", "advancing"}:
         raise ValueError(f"unsupported guide-question purpose: {question.purpose}")
-    if question.label_origin not in {"author_heading", "human_classification"}:
+    if question.label_origin not in {
+        "author_heading",
+        "human_classification",
+        "machine_classification",
+    }:
         raise ValueError(
             f"unsupported guide-question label origin: {question.label_origin}"
         )
@@ -609,11 +829,11 @@ def validate_guide_question(question: GuideQuestion) -> None:
             raise ValueError("author-heading records do not carry a human reviewer")
     else:
         if question.author_heading is not None or question.author_heading_line is not None:
-            raise ValueError("human classification cannot claim an author heading")
+            raise ValueError("classified question cannot claim an author heading")
         if question.review_status == "approved" and not question.reviewer:
-            raise ValueError("approved human classification requires reviewer evidence")
+            raise ValueError("approved classification requires reviewer evidence")
         if question.review_status == "pending_human_review" and question.reviewer is not None:
-            raise ValueError("pending human classification cannot name a reviewer")
+            raise ValueError("pending classification cannot name a reviewer")
 
 
 def validated_guide_questions() -> tuple[GuideQuestion, ...]:
@@ -664,6 +884,7 @@ def guide_question_term(question: GuideQuestion) -> str:
 def render(
     contexts: list[LessonContext],
     questions: tuple[GuideQuestion, ...],
+    question_absences: tuple[GuideQuestionAbsence, ...],
     absences: list[LessonAbsence],
     failures: Counter[str],
     guide_count: int,
@@ -679,6 +900,7 @@ def render(
         ":- module(compiled_lesson_context,",
         "          [ compiled_lesson_context/4,",
         "            compiled_lesson_guide_question/2,",
+        "            compiled_lesson_guide_question_absent/3,",
         "            compiled_lesson_context_summary/3,",
         "            compiled_lesson_context_defeat/2,",
         "            compiled_lesson_context_absent/3",
@@ -686,6 +908,7 @@ def render(
         "",
         ":- dynamic compiled_lesson_context_absent/3.",
         ":- dynamic compiled_lesson_guide_question/2.",
+        ":- dynamic compiled_lesson_guide_question_absent/3.",
         "",
         f"compiled_lesson_context_summary({guide_count}, {prompt_count}, {sequence_count}).",
     ]
@@ -722,6 +945,17 @@ def render(
                 "",
             ]
         )
+    for absence in question_absences:
+        lines.extend(
+            [
+                "compiled_lesson_guide_question_absent(",
+                f"    {prolog_atom(absence.code)},",
+                f"    {absence.purpose},",
+                f"    absence(source_guide({prolog_atom(absence.source)}), "
+                f"reason({prolog_atom(absence.reason)}))).",
+                "",
+            ]
+        )
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -729,6 +963,7 @@ def compile_cache() -> tuple[
     str,
     list[LessonContext],
     list[LessonAbsence],
+    tuple[GuideQuestionAbsence, ...],
     Counter[str],
     int,
 ]:
@@ -754,12 +989,43 @@ def compile_cache() -> tuple[
         if absence:
             absences.append(absence)
     contexts.sort(key=lambda context: context.code)
-    questions = validated_guide_questions()
+    question_guides = [
+        path
+        for grade in (
+            "Kindergarten",
+            "Grade1",
+            "Grade2",
+            "Grade3",
+            "Grade4",
+            "Grade5",
+            "Grade6",
+            "Grade7",
+            "Grade8",
+        )
+        for path in sorted((MIDDLE_GUIDES / grade).glob("*/document.md"))
+    ]
+    extracted_questions: list[GuideQuestion] = []
+    question_absences: list[GuideQuestionAbsence] = []
+    for guide in question_guides:
+        guide_questions, guide_absences = extract_docling_guide_questions(
+            guide, label_origin="machine_classification"
+        )
+        extracted_questions.extend(guide_questions)
+        question_absences.extend(guide_absences)
+    questions = (*validated_guide_questions(), *extracted_questions)
     source_count = len(guides) + len(middle_guides)
     return (
-        render(contexts, questions, absences, failures, source_count),
+        render(
+            contexts,
+            questions,
+            tuple(question_absences),
+            absences,
+            failures,
+            source_count,
+        ),
         contexts,
         absences,
+        tuple(question_absences),
         failures,
         source_count,
     )
@@ -770,7 +1036,7 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="fail if the cache is stale")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
-    rendered, contexts, absences, failures, source_count = compile_cache()
+    rendered, contexts, absences, question_absences, failures, source_count = compile_cache()
     output = args.output if args.output.is_absolute() else ROOT / args.output
     output_label = output.relative_to(ROOT) if output.is_relative_to(ROOT) else output
     if args.check:
@@ -785,11 +1051,13 @@ def main() -> int:
         print(f"wrote {output_label}")
     print(
         "guides={guides} prompt_lessons={prompts} "
-        "sequence_lessons={sequences} absent_lessons={absences}".format(
+        "sequence_lessons={sequences} absent_lessons={absences} "
+        "question_absences={question_absences}".format(
             guides=source_count,
             prompts=sum(bool(context.prompts) for context in contexts),
             sequences=sum(bool(context.sequences) for context in contexts),
             absences=len(absences),
+            question_absences=len(question_absences),
         )
     )
     for pattern, count in sorted(failures.items()):
