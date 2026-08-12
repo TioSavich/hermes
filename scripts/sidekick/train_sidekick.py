@@ -13,6 +13,7 @@ response.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import random
@@ -31,8 +32,15 @@ import torch  # noqa: E402
 from torch.utils.data import Dataset  # noqa: E402
 
 from chat_format import GemmaChatFormat  # noqa: E402
+from build_wave3_sequences import SequenceRow, render_sequence  # noqa: E402
 from dataset import Row, read as read_rows  # noqa: E402
-from supervision import IGNORE, build as build_mask, check as check_mask  # noqa: E402
+from supervision import (  # noqa: E402
+    IGNORE,
+    build as build_mask,
+    build_sequence,
+    check as check_mask,
+    check_sequence,
+)
 
 PROJECTIONS = ("q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj")
 FROZEN_TOWERS = ("vision", "audio")
@@ -56,6 +64,77 @@ class SidekickDataset(Dataset):
                 ids, labels = ids[-max_length:], labels[-max_length:]
             self.token_total += len(ids)
             self.examples.append({"input_ids": ids, "labels": labels})
+
+    def __len__(self) -> int:
+        return len(self.examples)
+
+    def __getitem__(self, index: int) -> dict[str, list[int]]:
+        return self.examples[index]
+
+
+class SidekickSequenceDataset(Dataset):
+    """Prebuilt wave-3 sequences, independently G2-checked at load time."""
+
+    def __init__(
+        self,
+        path: Path,
+        expected_sha256: str,
+        chat: GemmaChatFormat,
+        tools: dict[str, dict[str, Any]],
+        max_length: int,
+    ) -> None:
+        actual_sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual_sha256 != expected_sha256:
+            raise ValueError(
+                f"sequence dataset sha256 mismatch: expected {expected_sha256}, "
+                f"got {actual_sha256}"
+            )
+
+        self.examples: list[dict[str, list[int]]] = []
+        self.source_count = 0
+        self.dropped = 0
+        self.token_total = 0
+        with path.open(encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                if not line.strip():
+                    continue
+                try:
+                    sequence = SequenceRow.from_dict(json.loads(line))
+                    rendered = render_sequence(chat, sequence, tools)
+                    supervision = build_sequence(chat, rendered, sequence.kind)
+                    check_sequence(chat, rendered, supervision, sequence.kind)
+                except Exception as exc:
+                    raise ValueError(
+                        f"sequence dataset failed closed at line {line_number}: {exc}"
+                    ) from exc
+
+                self.source_count += 1
+                render_sha256 = hashlib.sha256(
+                    rendered.text.encode("utf-8")
+                ).hexdigest()
+                if (
+                    sequence.token_count != len(supervision.ids)
+                    or sequence.labeled_token_count != supervision.supervised_count
+                    or sequence.render_sha256 != render_sha256
+                ):
+                    raise ValueError(
+                        f"sequence dataset metadata disagrees with render at line "
+                        f"{line_number} ({sequence.id})"
+                    )
+                if len(supervision.ids) > max_length:
+                    self.dropped += 1
+                    continue
+                self.token_total += len(supervision.ids)
+                self.examples.append(
+                    {
+                        "input_ids": supervision.ids,
+                        "labels": supervision.labels,
+                    }
+                )
+
+        if not self.examples:
+            raise ValueError("sequence dataset contains no trainable examples")
+        self.sha256 = actual_sha256
 
     def __len__(self) -> int:
         return len(self.examples)
@@ -95,7 +174,17 @@ def text_tower_targets(model: torch.nn.Module) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--rows", type=Path, required=True)
+    inputs = parser.add_mutually_exclusive_group(required=True)
+    inputs.add_argument("--rows", type=Path)
+    inputs.add_argument(
+        "--sequences",
+        type=Path,
+        help="wave-3 per-round sequence JSONL; bypasses the legacy Row path",
+    )
+    parser.add_argument(
+        "--dataset-sha",
+        help="required sha256 identity for --sequences",
+    )
     parser.add_argument("--model", default="google/gemma-4-E2B-it")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--max-steps", type=int, default=20)
@@ -112,6 +201,10 @@ def main() -> int:
     parser.add_argument("--resume", action="store_true", help="continue from the last checkpoint in --output")
     parser.add_argument("--tools", type=Path, help="JSON list of tool declarations; defaults to the live core surface")
     arguments = parser.parse_args()
+    if arguments.sequences is not None and arguments.dataset_sha is None:
+        parser.error("--sequences requires --dataset-sha")
+    if arguments.sequences is None and arguments.dataset_sha is not None:
+        parser.error("--dataset-sha is valid only with --sequences")
 
     random.seed(arguments.seed)
     torch.manual_seed(arguments.seed)
@@ -129,13 +222,28 @@ def main() -> int:
         declarations = list(HermesMCPServer("core", REPO_ROOT)._public_tools)
     tools = {tool["name"]: tool for tool in declarations}
 
-    rows = read_rows(arguments.rows)
-    data = SidekickDataset(rows, chat, tools, arguments.max_length)
-    print(
-        f"rows {len(data)} tokens {data.token_total} truncated {data.truncated} "
-        f"mean {data.token_total / max(1, len(data)):.0f}",
-        flush=True,
-    )
+    if arguments.sequences is not None:
+        data = SidekickSequenceDataset(
+            arguments.sequences,
+            arguments.dataset_sha,
+            chat,
+            tools,
+            arguments.max_length,
+        )
+        print(
+            f"sequences {data.source_count} loaded {len(data)} tokens {data.token_total} "
+            f"dropped {data.dropped} mean {data.token_total / max(1, len(data)):.0f} "
+            f"sha256 {data.sha256} G2 checked {data.source_count}",
+            flush=True,
+        )
+    else:
+        rows = read_rows(arguments.rows)
+        data = SidekickDataset(rows, chat, tools, arguments.max_length)
+        print(
+            f"rows {len(data)} tokens {data.token_total} truncated {data.truncated} "
+            f"mean {data.token_total / max(1, len(data)):.0f}",
+            flush=True,
+        )
 
     started = time.time()
     model = AutoModelForCausalLM.from_pretrained(arguments.model, dtype=torch.bfloat16)
