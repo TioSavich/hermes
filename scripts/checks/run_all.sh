@@ -84,6 +84,7 @@ run equation_verification_sidecar_segmenter.py python3 "$CHECKS_DIR/equation_ver
 run build_equation_verifications python3 "$CHECKS_DIR/../curriculum/build_equation_verifications.py" --check
 run equation_verification_witness.py python3 "$CHECKS_DIR/equation_verification_witness.py"
 run strategy_task_span_refusal.py python3 "$CHECKS_DIR/strategy_task_span_refusal.py"
+run im_defragged_task_instances.py python3 "$CHECKS_DIR/im_defragged_task_instances.py"
 run extract_vision_lesson_digest_audit python3 "$CHECKS_DIR/../extract_vision_lesson_digest_audit.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 # After the census: the census writes a docs/research report, and the measurement
