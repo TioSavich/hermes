@@ -85,12 +85,17 @@
  .student-work-form select,.student-work-form input,.student-work-form textarea{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:.45rem .55rem}
  .student-work-form .work-transcription{grid-column:1/-1}.student-work-form button{width:fit-content;font:inherit;padding:.45rem .8rem}
  .demo-reading{border-left:4px solid var(--gold);padding:.55rem .75rem;margin:1rem 0;background:var(--paper-cool)}
+ .guide-question-panel{margin:1rem 0}.guide-question-panel h3{font-size:1rem;margin:.2rem 0}
+ .guide-question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+ .guide-question-card{border:1px solid var(--gold-pale);border-radius:8px;padding:.7rem .8rem;background:var(--paper-warm)}
+ .guide-question-card h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 .3rem;color:var(--gold-deep)}
+ .guide-question-card p{margin:.2rem 0}.guide-question-meta{color:var(--muted);font-size:.75rem}
  .demo-drawers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
  .demo-drawer{max-width:none}.demo-drawer .stage{min-height:220px}.demo-drawer figcaption{font-size:.9rem;color:var(--ink-soft)}
  .demo-controls{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;margin:.8rem 0}.demo-controls input{flex:1;min-width:160px}
  .demo-traces pre{white-space:pre-wrap;overflow-wrap:anywhere;font:.76rem/1.45 ui-monospace,monospace;color:var(--muted)}
  @media(max-width:720px){.visual-pair{grid-template-columns:1fr}}
- @media(max-width:720px){.student-work-form,.demo-drawers{grid-template-columns:1fr}.student-work-form .work-transcription{grid-column:auto}}
+ @media(max-width:720px){.student-work-form,.demo-drawers,.guide-question-grid{grid-template-columns:1fr}.student-work-form .work-transcription{grid-column:auto}}
  /* The embedded visualizer. host.css styles .stage/.controls/.calc-bar; this
     wraps them in a card and shows the student-facing caption regardless of
     the body view class (the chart has no audience toggle). */
@@ -165,6 +170,11 @@ when the app is off, the committed lesson below stays put.</p>
   <p id='student-work-task-source' class='guide-source' hidden></p>
   <p id='student-work-status' class='note' role='status'>Connect the app to load the compiled tasks.</p>
   <div id='student-work-reading' class='demo-reading' hidden></div>
+  <section class='guide-question-panel' aria-labelledby='student-work-guide-question-heading'>
+    <h3 id='student-work-guide-question-heading'>Guide questions for the trace comparison</h3>
+    <p class='note'>These reviewed questions support inquiry across productive, candidate, and abstention results. Trace-match status is reported separately.</p>
+    <div id='student-work-guide-questions' class='guide-question-grid'></div>
+  </section>
   <div id='student-work-drawings' hidden>
     <div class='demo-controls' aria-label='Shared drawing controls'>
       <button id='student-work-prev' type='button'>&larr; Prev</button>
@@ -223,7 +233,7 @@ How are the tools alike? How are they different?
 • Connect students’ approaches to the learning goal by asking:
 ◦ “What did you notice about the different tools we used?”
 ◦ “What is different about using connecting cubes and using base-ten blocks?”
-◦ “What is different about using a diagram instead of using blocks?”<span class='guide-source'>curriculum/im_teacher_guides/grade2/unit2/lesson2.md, line 225</span></p></div><div id='lesson-questions'><p><b>Assess:</b> What quantity is unknown? How does the representation show it?</p><p><b>Advance:</b> How could you use a different tool to find the same unknown?</p></div></section>
+◦ “What is different about using a diagram instead of using blocks?”<span class='guide-source'>curriculum/im_teacher_guides/grade2/unit2/lesson2.md, line 225</span></p></div><div><h4>Monitoring-cluster questions</h4><div id='lesson-questions'><p><b>Assess:</b> What quantity is unknown? How does the representation show it?</p><p><b>Advance:</b> How could you use a different tool to find the same unknown?</p></div></div></section>
 
 <h2>Generated strategy and error filmstrips</h2>
 <p class='note'>Where a committed pair exists, the productive strategy and documented error are shown together. These SVGs are static assets; they do not require the app.</p>
@@ -611,6 +621,9 @@ trace.</p>
         assess = assess.concat(cluster.assessing_questions || []);
         advance = advance.concat(cluster.advancing_questions || []);
       });
+      var guideQuestions = Array.isArray(chart.guide_questions) ? chart.guide_questions : [];
+      var guideAssess = guideQuestions.filter(function (item) { return item.purpose === 'assessing'; });
+      var guideAdvance = guideQuestions.filter(function (item) { return item.purpose === 'advancing'; });
       var body = el('card-body');
       body.textContent = '';
       body.appendChild(cardSection('Lesson goal', goal));
@@ -632,6 +645,13 @@ trace.</p>
       if (chart.lesson_code !== DEMONSTRATION_LESSON) {
         body.appendChild(cardSection('Assess question', assess[0] || 'No assess question is attached to this lesson yet.'));
         body.appendChild(cardSection('Advance question', advance[0] || 'No advance question is attached to this lesson yet.'));
+      } else {
+        guideAssess.forEach(function (item) {
+          body.appendChild(cardSection('Reviewed guide assess question', item.text));
+        });
+        guideAdvance.forEach(function (item) {
+          body.appendChild(cardSection('Reviewed guide advance question', item.text));
+        });
       }
       var visual = document.querySelector('#monitoring-visuals img');
       if (visual) {
@@ -675,6 +695,54 @@ trace.</p>
           + (typeof item.line === 'number' ? ', line ' + item.line : '');
         p.appendChild(source);
         target.appendChild(p);
+      });
+    }
+
+    function renderGuideQuestionCards(items) {
+      var target = el('student-work-guide-questions');
+      target.textContent = '';
+      var questions = Array.isArray(items) ? items : [];
+      ['assessing', 'advancing'].forEach(function (purpose) {
+        var rows = questions.filter(function (item) { return item.purpose === purpose; });
+        if (!rows.length) {
+          var absent = document.createElement('div');
+          absent.className = 'guide-question-card';
+          var absentHeading = document.createElement('h4');
+          absentHeading.textContent = plainName(purpose);
+          absent.appendChild(absentHeading);
+          absent.appendChild(noteP('No reviewed ' + purpose + ' guide question is served in this payload.'));
+          target.appendChild(absent);
+          return;
+        }
+        rows.forEach(function (item) {
+          var card = document.createElement('article');
+          card.className = 'guide-question-card';
+          var heading = document.createElement('h4');
+          heading.textContent = plainName(purpose);
+          card.appendChild(heading);
+          var text = document.createElement('p');
+          text.textContent = item.text || '';
+          card.appendChild(text);
+          var span = item.source_span || {};
+          var meta = document.createElement('p');
+          meta.className = 'guide-question-meta';
+          meta.textContent = (item.source_guide || 'source guide')
+            + (typeof span.start === 'number' && typeof span.end === 'number'
+              ? ':' + span.start + '-' + span.end : '')
+            + ' | ' + (item.activity_location || 'lesson location unavailable')
+            + ' | label origin: ' + (item.label_origin || 'unavailable')
+            + ' | review status: ' + (item.review_status || 'unavailable');
+          card.appendChild(meta);
+          var evidence = item.review_evidence || {};
+          if (evidence.kind === 'author_heading') {
+            var origin = document.createElement('p');
+            origin.className = 'guide-question-meta';
+            origin.textContent = 'Authored heading: ' + (evidence.heading || '')
+              + (typeof evidence.line === 'number' ? ', line ' + evidence.line : '');
+            card.appendChild(origin);
+          }
+          target.appendChild(card);
+        });
       });
     }
 
@@ -746,6 +814,7 @@ trace.</p>
       el('chart-title').textContent = 'Monitoring chart — ' + title;
       el('chart-code').textContent = code;
       configureDemonstration(code);
+      renderGuideQuestionCards(chart.guide_questions);
 
       var registeredTasks = Array.isArray(chart.registered_task_instances)
         ? chart.registered_task_instances : [];
@@ -766,6 +835,8 @@ trace.</p>
         assess = assess.concat(cluster.assessing_questions || []);
         advance = advance.concat(cluster.advancing_questions || []);
       });
+      var guideQuestions = Array.isArray(chart.guide_questions) ? chart.guide_questions : [];
+      var guideAssess = guideQuestions.filter(function (item) { return item.purpose === 'assessing'; });
       var questions = el('lesson-questions');
       questions.textContent = '';
       if (!assess.length && !advance.length) {
@@ -819,11 +890,13 @@ trace.</p>
           ? 'Listen for: ' + vocabulary.map(plainName).join(', ') + '.'
           : 'The live payload carries no observation cue for this strategy.';
         item.appendChild(cue);
-        if (code !== DEMONSTRATION_LESSON) {
+        if (code !== DEMONSTRATION_LESSON || guideAssess.length) {
           var question = document.createElement('span');
           question.className = 'strategy-question';
-          question.textContent = assess.length
-            ? 'Ask: “' + assess[0] + '”'
+          var suggested = code === DEMONSTRATION_LESSON
+            ? guideAssess[0].text : assess[0];
+          question.textContent = suggested
+            ? 'Ask: “' + suggested + '”'
             : 'No suggested question is attached to this strategy.';
           item.appendChild(question);
         }

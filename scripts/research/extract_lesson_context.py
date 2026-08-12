@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Compile verbatim activity prompts and synthesis sequences from IM guides.
+"""Compile verbatim activity prompts, sequences, and reviewed guide questions.
 
 The K-5 teacher guides are fixed-width Markdown extracts of two-column PDFs.
-The grade 6-8 guides are linear Docling Markdown.  This compiler only accepts
-the labelled ``Student Task Statement``, ``Activity Synthesis``, and ``Lesson
-Synthesis`` regions.  It emits nothing for a region whose labelled boundaries
-cannot be recovered conservatively.
+The grade 6-8 guides are linear Docling Markdown.  Prompt and sequence
+extraction only accepts the labelled ``Student Task Statement``, ``Activity
+Synthesis``, and ``Lesson Synthesis`` regions.  Guide questions are a separate,
+narrow reviewed input: their exact text, source span, authored location, label
+origin, and review status are checked against the source guide before emission.
 """
 
 from __future__ import annotations
@@ -26,6 +27,8 @@ MIDDLE_GUIDES = (
     / "TeacherLessonGuides"
 )
 OUTPUT = ROOT / "curriculum/im/generated/compiled_lesson_context.pl"
+L17_CODE = "IM-G1-U3-L17"
+L17_SOURCE = "curriculum/im_teacher_guides/grade1/unit3/lesson17.md"
 
 ANCHOR_RE = re.compile(r"_Anchor ID: `([^`]+)`")
 MIDDLE_GUIDE_RE = re.compile(
@@ -76,10 +79,106 @@ class LessonContext:
 
 
 @dataclass(frozen=True)
+class GuideQuestion:
+    code: str
+    purpose: str
+    text: str
+    source: str
+    line_start: int
+    line_end: int
+    activity_location: str
+    label_origin: str
+    review_status: str
+    author_heading: str | None = None
+    author_heading_line: int | None = None
+    reviewer: str | None = None
+
+
+@dataclass(frozen=True)
 class LessonAbsence:
     code: str
     source: str
     reason: str
+
+
+# This is intentionally not a corpus classifier.  It is the reviewed L17 input
+# named by the vertical-slice specification.  Human-classified advancing
+# candidates remain pending until a reviewer is recorded.
+REVIEWED_GUIDE_QUESTIONS = (
+    GuideQuestion(
+        code=L17_CODE,
+        purpose="assessing",
+        text=(
+            "What is the sum? How do you know? What equation can I write to "
+            "show the total?"
+        ),
+        source=L17_SOURCE,
+        line_start=200,
+        line_end=204,
+        activity_location="Activity 1 — Launch",
+        label_origin="author_heading",
+        review_status="approved",
+        author_heading="Launch",
+        author_heading_line=179,
+    ),
+    GuideQuestion(
+        code=L17_CODE,
+        purpose="assessing",
+        text="What did _____ do to represent the problem?",
+        source=L17_SOURCE,
+        line_start=294,
+        line_end=297,
+        activity_location="Activity 2 — Activity Synthesis",
+        label_origin="author_heading",
+        review_status="approved",
+        author_heading="Activity Synthesis",
+        author_heading_line=286,
+    ),
+    GuideQuestion(
+        code=L17_CODE,
+        purpose="advancing",
+        text=(
+            "How are the different strategies similar? How are they different?"
+        ),
+        source=L17_SOURCE,
+        line_start=249,
+        line_end=253,
+        activity_location=(
+            "Activity 2 — Access for English Language Learners, MLR7 Compare "
+            "and Connect"
+        ),
+        label_origin="human_classification",
+        review_status="approved",
+        reviewer="Tio Savich (2026-08-12): approved as advancing",
+    ),
+    GuideQuestion(
+        code=L17_CODE,
+        purpose="advancing",
+        text="If I add 7, how could we record the sum with an equation?",
+        source=L17_SOURCE,
+        line_start=316,
+        line_end=323,
+        activity_location="Lesson Synthesis",
+        label_origin="human_classification",
+        review_status="approved",
+        reviewer="Tio Savich (2026-08-12): approved as advancing",
+    ),
+    GuideQuestion(
+        code=L17_CODE,
+        purpose="advancing",
+        text=(
+            "How can I write one equation to show that these two expressions "
+            "are equivalent?"
+        ),
+        source=L17_SOURCE,
+        line_start=316,
+        line_end=323,
+        activity_location="Lesson Synthesis",
+        label_origin="human_classification",
+        review_status="approved",
+        reviewer="Tio Savich (2026-08-12): approved as advancing",
+    ),
+)
 
 
 def raw_extract(text: str) -> tuple[list[str], int] | None:
@@ -436,6 +535,82 @@ def prolog_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+def normalized_source_text(value: str) -> str:
+    """Normalize PDF column wrapping without changing words or punctuation."""
+    return " ".join(value.split())
+
+
+def cited_span_contains(question_text: str, cited_lines: list[str]) -> bool:
+    """Accept an exact question only in a fixed-column projection of its span."""
+    expected = normalized_source_text(question_text)
+    widest = max((len(line) for line in cited_lines), default=0)
+    return any(
+        expected in normalized_source_text("\n".join(line[column:] for line in cited_lines))
+        for column in range(widest + 1)
+    )
+
+
+def validate_guide_question(question: GuideQuestion) -> None:
+    if question.code != L17_CODE or question.source != L17_SOURCE:
+        raise ValueError("guide-question input is restricted to the reviewed L17 guide")
+    if question.purpose not in {"assessing", "advancing"}:
+        raise ValueError(f"unsupported guide-question purpose: {question.purpose}")
+    if question.label_origin not in {"author_heading", "human_classification"}:
+        raise ValueError(
+            f"unsupported guide-question label origin: {question.label_origin}"
+        )
+    if question.review_status not in {"approved", "pending_human_review"}:
+        raise ValueError(
+            f"unsupported guide-question review status: {question.review_status}"
+        )
+
+    source_path = ROOT / question.source
+    try:
+        # ``splitlines`` treats the PDF form-feed marker as a line boundary;
+        # source citations use physical Markdown newline numbers instead.
+        source_lines = source_path.read_text(encoding="utf-8").split("\n")
+    except (OSError, UnicodeError) as exc:
+        raise ValueError(f"guide-question source cannot be read: {question.source}") from exc
+    if not (1 <= question.line_start <= question.line_end <= len(source_lines)):
+        raise ValueError(
+            f"guide-question span is outside its source: "
+            f"{question.source}:{question.line_start}-{question.line_end}"
+        )
+    cited_lines = source_lines[question.line_start - 1 : question.line_end]
+    if not cited_span_contains(question.text, cited_lines):
+        raise ValueError(
+            f"guide-question text is absent from its cited span: "
+            f"{question.source}:{question.line_start}-{question.line_end}"
+        )
+
+    if question.label_origin == "author_heading":
+        if question.author_heading is None or question.author_heading_line is None:
+            raise ValueError("author_heading origin requires an exact heading and line")
+        if not (1 <= question.author_heading_line <= len(source_lines)):
+            raise ValueError("author heading line is outside the guide source")
+        heading_line = source_lines[question.author_heading_line - 1]
+        if question.author_heading not in heading_line:
+            raise ValueError(
+                f"claimed author heading is absent at {question.source}:"
+                f"{question.author_heading_line}"
+            )
+        if question.reviewer is not None:
+            raise ValueError("author-heading records do not carry a human reviewer")
+    else:
+        if question.author_heading is not None or question.author_heading_line is not None:
+            raise ValueError("human classification cannot claim an author heading")
+        if question.review_status == "approved" and not question.reviewer:
+            raise ValueError("approved human classification requires reviewer evidence")
+        if question.review_status == "pending_human_review" and question.reviewer is not None:
+            raise ValueError("pending human classification cannot name a reviewer")
+
+
+def validated_guide_questions() -> tuple[GuideQuestion, ...]:
+    for question in REVIEWED_GUIDE_QUESTIONS:
+        validate_guide_question(question)
+    return REVIEWED_GUIDE_QUESTIONS
+
+
 def item_term(item: Item) -> str:
     return (
         "context_item("
@@ -449,8 +624,35 @@ def list_term(items: tuple[Item, ...]) -> str:
     return "[\n        " + ",\n        ".join(item_term(item) for item in items) + "\n    ]"
 
 
+def review_evidence_term(question: GuideQuestion) -> str:
+    if question.label_origin == "author_heading":
+        assert question.author_heading is not None
+        assert question.author_heading_line is not None
+        return (
+            f"author_heading({prolog_string(question.author_heading)}, "
+            f"line({question.author_heading_line}))"
+        )
+    if question.reviewer:
+        return f"human_review({prolog_string(question.reviewer)})"
+    return "none"
+
+
+def guide_question_term(question: GuideQuestion) -> str:
+    return (
+        "guide_question("
+        f"{question.purpose}, {prolog_string(question.text)}, "
+        f"source_guide({prolog_atom(question.source)}), "
+        f"source_span({question.line_start}, {question.line_end}), "
+        f"activity_location({prolog_string(question.activity_location)}), "
+        f"label_origin({question.label_origin}), "
+        f"review_status({question.review_status}), "
+        f"review_evidence({review_evidence_term(question)}))"
+    )
+
+
 def render(
     contexts: list[LessonContext],
+    questions: tuple[GuideQuestion, ...],
     absences: list[LessonAbsence],
     failures: Counter[str],
     guide_count: int,
@@ -458,19 +660,21 @@ def render(
     prompt_count = sum(bool(context.prompts) for context in contexts)
     sequence_count = sum(bool(context.sequences) for context in contexts)
     lines = [
-        "/** <module> Generated verbatim IM lesson prompts and synthesis sequences",
+        "/** <module> Generated verbatim IM lesson prompts, sequences, and guide questions",
         " *",
         " * Generated by scripts/research/extract_lesson_context.py.",
         " * Do not edit by hand; update the extractor or source guides and regenerate.",
         " */",
         ":- module(compiled_lesson_context,",
         "          [ compiled_lesson_context/4,",
+        "            compiled_lesson_guide_question/2,",
         "            compiled_lesson_context_summary/3,",
         "            compiled_lesson_context_defeat/2,",
         "            compiled_lesson_context_absent/3",
         "          ]).",
         "",
         ":- dynamic compiled_lesson_context_absent/3.",
+        ":- dynamic compiled_lesson_guide_question/2.",
         "",
         f"compiled_lesson_context_summary({guide_count}, {prompt_count}, {sequence_count}).",
     ]
@@ -495,6 +699,15 @@ def render(
                 f"    {list_term(context.prompts)},",
                 f"    {list_term(context.sequences)},",
                 f"    source({prolog_atom(context.source)})).",
+                "",
+            ]
+        )
+    for question in questions:
+        lines.extend(
+            [
+                "compiled_lesson_guide_question(",
+                f"    {prolog_atom(question.code)},",
+                f"    {guide_question_term(question)}).",
                 "",
             ]
         )
@@ -530,9 +743,10 @@ def compile_cache() -> tuple[
         if absence:
             absences.append(absence)
     contexts.sort(key=lambda context: context.code)
+    questions = validated_guide_questions()
     source_count = len(guides) + len(middle_guides)
     return (
-        render(contexts, absences, failures, source_count),
+        render(contexts, questions, absences, failures, source_count),
         contexts,
         absences,
         failures,

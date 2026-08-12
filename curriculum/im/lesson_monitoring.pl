@@ -46,7 +46,9 @@
 :- use_module('generated/compiled_action_mappings',
               [compiled_lesson_strategy/4]).
 :- use_module('generated/compiled_lesson_context',
-              [compiled_lesson_context/4]).
+              [ compiled_lesson_context/4,
+                compiled_lesson_guide_question/2
+              ]).
 :- use_module(incompat(incompatibility_discovery),
               [ classify_candidate_set/3
               ]).
@@ -172,17 +174,25 @@ monitoring_chart_export(Code,
 
 %!  lesson_guide_context_dict(+LessonCode, -Dict) is semidet.
 %
-%   Verbatim prompt and synthesis excerpts from the attributed teacher guide.
+%   Verbatim prompt and synthesis excerpts plus reviewed guide-question
+%   records from the attributed teacher guide. Pending human classifications
+%   are compiled for review but are never included in this served dictionary.
 %   A field is omitted when the compiler recovered no honest excerpt for it.
 lesson_guide_context_dict(Code, Dict) :-
     compiled_lesson_context(Code, Prompts, Sequences, source(Source)),
-    ( Prompts \== [] ; Sequences \== [] ),
     atom_string(Source, SourceText),
     maplist(context_item_dict(SourceText), Prompts, PromptDicts),
     maplist(context_item_dict(SourceText), Sequences, SequenceDicts),
+    findall(QuestionDict,
+            ( compiled_lesson_guide_question(Code, Question),
+              served_guide_question_dict(Question, QuestionDict)
+            ),
+            QuestionDicts),
+    ( Prompts \== [] ; Sequences \== [] ; QuestionDicts \== [] ),
     Context0 = _{source_guide: SourceText},
     put_context_field(activity_prompt, PromptDicts, Context0, Context1),
-    put_context_field(discussion_sequence, SequenceDicts, Context1, Dict).
+    put_context_field(discussion_sequence, SequenceDicts, Context1, Context2),
+    put_context_field(guide_questions, QuestionDicts, Context2, Dict).
 
 context_item_dict(Source, context_item(Heading, Text, line(Line)), _{
     heading: Heading,
@@ -190,6 +200,40 @@ context_item_dict(Source, context_item(Heading, Text, line(Line)), _{
     line: Line,
     source_guide: Source
 }).
+
+served_guide_question_dict(
+        guide_question(Purpose,
+                       Text,
+                       source_guide(Source),
+                       source_span(Start, End),
+                       activity_location(ActivityLocation),
+                       label_origin(LabelOrigin),
+                       review_status(approved),
+                       review_evidence(ReviewEvidence)),
+        _{ purpose: Purpose,
+           text: Text,
+           source_guide: SourceText,
+           source_span: _{start: Start, end: End},
+           activity_location: ActivityLocation,
+           label_origin: LabelOrigin,
+           review_status: approved,
+           review_evidence: ReviewEvidenceDict
+         }) :-
+    memberchk(Purpose, [assessing, advancing]),
+    atom(Source),
+    sub_atom(Source, 0, _, _, 'curriculum/im_teacher_guides/'),
+    Start =< End,
+    served_review_evidence(LabelOrigin, ReviewEvidence, ReviewEvidenceDict),
+    atom_string(Source, SourceText).
+
+served_review_evidence(author_heading,
+                       author_heading(Heading, line(Line)),
+                       _{kind: author_heading, heading: Heading, line: Line}).
+served_review_evidence(human_classification,
+                       human_review(Reviewer),
+                       _{kind: human_review, reviewer: Reviewer}) :-
+    string(Reviewer),
+    Reviewer \== "".
 
 put_context_field(_Key, [], Dict, Dict) :- !.
 put_context_field(Key, Items, Dict0, Dict) :-
