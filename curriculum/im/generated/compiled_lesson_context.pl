@@ -18239,7 +18239,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L17',
-    guide_question(assessing, "What did _____ do to represent the problem?", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson17.md'), source_span(294, 297), activity_location("Activity 2 — Activity Synthesis"), label_origin(author_heading), review_status(approved), review_evidence(author_heading("Activity Synthesis", line(286))))).
+    guide_question(assessing, "What did _____ do to represent the problem?", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson17.md'), source_span(294, 297), activity_location("Activity 2 — Activity Synthesis"), label_origin(author_heading), review_status(culled_by_reviewer), review_evidence(author_heading("Activity Synthesis", line(286))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L17',

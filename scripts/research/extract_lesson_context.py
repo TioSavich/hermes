@@ -130,9 +130,14 @@ REVIEWED_GUIDE_QUESTIONS = (
         line_end=297,
         activity_location="Activity 2 — Activity Synthesis",
         label_origin="author_heading",
-        review_status="approved",
+        review_status="culled_by_reviewer",
         author_heading="Activity Synthesis",
         author_heading_line=286,
+        reviewer=(
+            "Tio Savich (2026-08-12): culled — the question requires another "
+            "student's work; unsuitable for a solo student unless a work "
+            "sample is shown"
+        ),
     ),
     GuideQuestion(
         code=L17_CODE,
@@ -559,7 +564,7 @@ def validate_guide_question(question: GuideQuestion) -> None:
         raise ValueError(
             f"unsupported guide-question label origin: {question.label_origin}"
         )
-    if question.review_status not in {"approved", "pending_human_review"}:
+    if question.review_status not in {"approved", "pending_human_review", "culled_by_reviewer"}:
         raise ValueError(
             f"unsupported guide-question review status: {question.review_status}"
         )
@@ -594,7 +599,13 @@ def validate_guide_question(question: GuideQuestion) -> None:
                 f"claimed author heading is absent at {question.source}:"
                 f"{question.author_heading_line}"
             )
-        if question.reviewer is not None:
+        if question.review_status == "culled_by_reviewer":
+            # Culling is a review act on serving suitability, not a claim
+            # about label provenance; it is the one author-heading state
+            # that carries reviewer evidence.
+            if not question.reviewer:
+                raise ValueError("a culled record requires reviewer evidence")
+        elif question.reviewer is not None:
             raise ValueError("author-heading records do not carry a human reviewer")
     else:
         if question.author_heading is not None or question.author_heading_line is not None:

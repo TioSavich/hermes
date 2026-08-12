@@ -102,8 +102,9 @@ def check_guide_question_payload(worker: PersistentPrologWorker) -> None:
     assert response["ok"] is True, response
     result = response["result"]
     questions = result.get("guide_questions", [])
-    assert len(questions) == 5
+    assert len(questions) == 4
     assert {question["purpose"] for question in questions} == {"assessing", "advancing"}
+    assert "culled_by_reviewer" not in str(result)
     assert all(question["review_status"] == "approved" for question in questions)
     by_purpose = {
         purpose: [q for q in questions if q["purpose"] == purpose]
@@ -126,6 +127,9 @@ def check_guide_question_source_contract() -> None:
     advancing = [q for q in records if q.purpose == "advancing"]
     assert len(advancing) == 3
     assert all(q.review_status == "approved" and q.reviewer for q in advancing)
+    culled = [q for q in records if q.review_status == "culled_by_reviewer"]
+    assert len(culled) == 1
+    assert culled[0].reviewer and "culled" in culled[0].reviewer
 
     cluster_source = replace(
         records[0],
